@@ -1,0 +1,862 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-86-110",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/kinker-86-110/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 110-86 (even side, 1893), 2024-11-29 strip in late sun. One row of kinker-1890-plain-brick fronts, 3 axes on ~5 m, heavy consoled cornice at ~14.2 m (strip rows 271-283; 3DBAG 16.9-17.1 m reads the mansards), one pediment dormer per house. Three head variants read on the zoomed strip: a dotted white block course at the window heads (110-100, bands: painted head line 0.3 m; pass 1 tried windowSurround stone-lintel, a thin grey slab invisible at gallery size), white keystones on flat brick heads (98, 96, 92), segmental heads with ornamented tympana on storeys 1-2 (94, 90, 86-88). Shops read on the strip; the pand-reference crops are other dates (2018-2025) and only confirm layout."
+ },
+ "types": [
+  "kinker-1890-plain-brick"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012165799",
+   "slug": "kinker-165799",
+   "address": "Kinkerstraat 110",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#806548",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #806548 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bands": "painted",
+     "bandLines": [
+      "head"
+     ],
+     "bandHeights": {
+      "head": 0.3
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#e8e2cf",
+      "fascia": false,
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-dutch",
+       "colour": "#d9a559"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 1: two orange-and-white striped Dutch awnings over a cafe terrace, no lettering; OSM node amenity=cafe Coffee Room"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-11-29",
+    "name": "Coffee Room",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 494157348,
+     "name": "Coffee Room"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 3 axes, white blocked flat lintels, consoled cornice, one pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+     "iron wall anchors between the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236027",
+   "slug": "kinker-236027",
+   "address": "Kinkerstraat 106-108",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#776148",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #776148 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bands": "painted",
+     "bandLines": [
+      "head"
+     ],
+     "bandHeights": {
+      "head": 0.3
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "name": "Camino Taqueria",
+        "sign": {
+         "text": "CAMINO",
+         "textColour": "#e0302a",
+         "mount": "glazing"
+        },
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "medium",
+        "evidence": "strip.jpg pand 2 left module: white pui, red stall riser, red \"CAMINO\" neon in the glass; OSM node amenity=restaurant Camino Taqueria"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "medium",
+        "evidence": "strip.jpg pand 2 right module: the same white pui, centre double door on the module line"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Camino Taqueria",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2809199166,
+     "name": "Camino Taqueria"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): two 3-axis modules, white blocked flat lintels, two pediment dormers",
+    "photoRows": [
+     4,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+     "red-painted stall riser (no stall riser colour on a module shop drawn as low)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159635",
+   "slug": "kinker-159635",
+   "address": "Kinkerstraat 104",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#816e4e",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #816e4e on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bands": "painted",
+     "bandLines": [
+      "head"
+     ],
+     "bandHeights": {
+      "head": 0.3
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#6f9a7e",
+      "fascia": false,
+      "name": "Indianaweg",
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#5a2b26"
+      },
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 3 (zoom): green pui with a five-light transom over the display window, dark red house door left, small \"INDIANAWEG\" plaque in the window; OSM shop=clothes"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Indianaweg",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2809199126,
+     "name": "Indianaweg"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): 3 axes, red brick like 106-100, white blocked flat lintels, pediment dormer. The cluster assignment (kinker-1895-painted-band, C13) is overruled: the front is red brick with 3 axes like its neighbours",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+     "iron wall anchors between the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012152925",
+   "slug": "kinker-152925",
+   "address": "Kinkerstraat 102",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#817057",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #817057 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bands": "painted",
+     "bandLines": [
+      "head"
+     ],
+     "bandHeights": {
+      "head": 0.3
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Massage & Acupunctuur",
+      "sign": {
+       "text": "Massage & Acupunctuur",
+       "textColour": "#3c9a46",
+       "mount": "fascia",
+       "background": "#f0eee4",
+       "span": 0.95
+      },
+      "entrance": "right",
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 4 (zoom): white pui, green \"Massage & Acupunctuur\" lettering on the fascia, brown louvred panel over the window, glazed door right; no OSM node"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "Massage & Acupunctuur",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): 3 axes on 4.3 m, white blocked flat lintels, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+     "brown louvred timber panel filling the shop transom"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160809",
+   "slug": "kinker-160809",
+   "address": "Kinkerstraat 100",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#8c7a5d",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #8c7a5d on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bands": "painted",
+     "bandLines": [
+      "head"
+     ],
+     "bandHeights": {
+      "head": 0.3
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#3a3532",
+      "fascia": true,
+      "name": "Swiss Juwelier",
+      "sign": {
+       "text": "Swiss Juwelier",
+       "textColour": "#c4232a",
+       "mount": "fascia",
+       "background": "#efece2"
+      },
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#efece2",
+      "evidence": "strip.jpg pand 5 (zoom): white fascia with red \"Swiss\" and black \"JUWELIER\", graffiti on the shutter below; no OSM node"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Swiss Juwelier",
+    "category": "shop=jewelry",
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): 3 axes, white blocked flat lintels, larger pediment dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+     "graffiti roller shutter down over the shop"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158180",
+   "slug": "kinker-158180",
+   "address": "Kinkerstraat 98",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#7d6248",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #7d6248 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "windowHead": {
+      "kind": "flat",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2c2824",
+      "fascia": false,
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 6 (zoom): dark timber pui with pilasters, lit display window, no legible name"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "dark timber pui, no legible lettering on the 2024-11-29 strip; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6 (zoom): 3 axes, flat brick heads with a white keystone, iron anchors, consoled cornice with frieze, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors between the windows",
+     "flat brick arches (strekken) over the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156028",
+   "slug": "kinker-156028",
+   "address": "Kinkerstraat 96",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#7a5e44",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #7a5e44 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "windowHead": {
+      "kind": "flat",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 7 (zoom): white pui, dark glass with a red light strip; no lettering legible"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "no legible name on the 2024-11-29 strip; the 2025-06-30 reference crop shows \"Buddha Nails\" (later date, not used)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7 (zoom): 3 axes, flat brick heads with white keystones, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors between the windows",
+     "flat brick arches (strekken) over the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236213",
+   "slug": "kinker-236213",
+   "address": "Kinkerstraat 92-94",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#836749",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #836749 on the 2024-11-29 strip"
+    },
+    "modules": [
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "flat",
+        "archRing": {
+         "colour": "stone",
+         "style": "none",
+         "keystone": true
+        }
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#6f9a6e",
+        "fascia": true,
+        "name": "SuperBra",
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 8 left module (94): green pui and deep green fascia with \"BRAFITTING SALON\" and a script logo; OSM shop=clothes SuperBra"
+       }
+      }
+     },
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "segmental",
+        "storeys": [
+         1,
+         2
+        ],
+        "tympanum": "stone"
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#6f9a6e",
+        "fascia": true,
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 8 right module (92): the same green pui, centre double doors on the module line"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "SuperBra",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2441927953,
+     "name": "SuperBra"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "\"BRAFITTING SALON\" lettered on the fascia; the logo is not legible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8 (zoom): left module flat heads with white keystones, right module segmental heads with ornamented tympana on storeys 1-2; two pediment dormers",
+    "photoRows": [
+     4,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors between the windows",
+     "carved ornament in the tympana drawn as plain stone fills"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012155794",
+   "slug": "kinker-155794",
+   "address": "Kinkerstraat 90",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#926e4b",
+     "evidence": "palette-from-strip.ts --face=kinker-86-110: wall median #926e4b on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "tympanum": "stone"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "E-cigarette store",
+      "sign": {
+       "text": "E-cigarette store",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#2e3236"
+      },
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 9 (zoom): white pui, \"E-cigarette store\" in white and blue over the window, \"Mr-Joy\" painted on the panel below; no OSM node"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "E-cigarette store",
+    "category": "shop=e-cigarette",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "\"Mr-Joy\" painted on the lower panel as well"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9 (zoom): 3 axes on 4.2 m, segmental heads with ornamented tympana on storeys 1-2, flat heads on storey 3, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors between the windows",
+     "carved ornament in the tympana drawn as plain stone fills"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012233580",
+   "slug": "kinker-233580",
+   "address": "Kinkerstraat 86-88",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "red-brown",
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "tympanum": "stone"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#e6d7a6",
+      "fascia": true,
+      "name": "Corner Inn",
+      "sign": {
+       "text": "Corner Inn",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#2a2f6e"
+      },
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "glazing": "transom",
+      "stallriser": "low",
+      "fasciaColour": "#2a2f6e",
+      "evidence": "strip.jpg pand 10 (zoom): cream-painted ground storey with a row of small leaded transom lights, dark blue fascia lettered \"...INN\", roller shutter; OSM amenity=fast_food Corner Inn"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Corner Inn",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 494157345,
+     "name": "Corner Inn"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10 (zoom, low sun): corner pand, 3 axes, segmental heads with ornamented tympana on storeys 1-2, flat on storey 3, flat top with one low roof box",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the strip wall median (#d7a569) is direct low sun on the brick; the type palette is kept instead of a measured wall",
+     "a low flat roof box on the roof (the plain-brick type has no box crown)",
+     "cream-painted ground storey wall",
+     "carved ornament in the tympana drawn as plain stone fills"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "165799: the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+  "165799: iron wall anchors between the windows",
+  "236027: the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+  "236027: red-painted stall riser (no stall riser colour on a module shop drawn as low)",
+  "159635: the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+  "159635: iron wall anchors between the windows",
+  "152925: the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+  "152925: brown louvred timber panel filling the shop transom",
+  "160809: the head course is a dotted course of white blocks alternating with brick (about 0.3 m tall, across the whole front at the window heads); drawn as a continuous painted head band (bands: painted, head 0.3 m)",
+  "160809: graffiti roller shutter down over the shop",
+  "158180: iron wall anchors between the windows",
+  "158180: flat brick arches (strekken) over the windows",
+  "156028: iron wall anchors between the windows",
+  "156028: flat brick arches (strekken) over the windows",
+  "236213: iron wall anchors between the windows",
+  "236213: carved ornament in the tympana drawn as plain stone fills",
+  "155794: iron wall anchors between the windows",
+  "155794: carved ornament in the tympana drawn as plain stone fills",
+  "233580: the strip wall median (#d7a569) is direct low sun on the brick; the type palette is kept instead of a measured wall",
+  "233580: a low flat roof box on the roof (the plain-brick type has no box crown)",
+  "233580: cream-painted ground storey wall",
+  "233580: carved ornament in the tympana drawn as plain stone fills"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012236027",
+    "front": "m0",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236027",
+    "front": "m1",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012165799",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012159635",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012152925",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012160809",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012158180",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012156028",
+    "stripRow": 277,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236213",
+    "front": "m0",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236213",
+    "front": "m1",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012155794",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the consoled cornice of the 110-90 row at rows 271-283 (14.1-14.4 m); 3DBAG eaves 16.9-17.1 m carry the mansard out to the facade, re-pitched from the cornice"
+   }
+  ]
+ }
+}
