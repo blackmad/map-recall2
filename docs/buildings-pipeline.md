@@ -480,7 +480,7 @@ before the bundles are rebuilt. iPhone measurement is still pending.
   A stone or voussoir arch ring under 4.5 cm is lifted to 4.5 cm (Amsterdams Lyceum's 3 cm gateway rings sat in the
   tight band), lettering is closed strokes a sheet layer off its surface (1.2 cm sheets were coplanar; lifted alone
   their edges float), and a layered curtain wall may stand on `ground: "mesh-plinth"`: the glass skin with a closed
-  dark panel (door slot) 4.5 cm off it over the ground storey and the grid above it (Stadsloket West). A layered
+  dark panel (door slot) 9 cm off it over the ground storey and the grid above it (Stadsloket West). A layered
   loading door is two leaves with one meeting stile and a 4-segment head (Entrepotdok's hoists every third bay at
   11.8k). One synthetic `largeTier.test.ts` case per pair.
 - Large-tier kit overlaps (2026-10-14, batch 3; fixed behind `layeredKit: true`): without the flag

@@ -137,9 +137,9 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
 
 /**
  * Mesh plinth under a layered curtain wall (Stadsloket West's west fronts): a closed dark panel over the ground storey,
- * standing one sheet layer (4.5 cm) off the glass skin, so it shares no plane with the glass or with the grid above it
- * (transoms 9 cm, mullions 13.5 cm); it breaks round openings cut into the ground storey (an entrance). Returns the
- * number of panel pieces drawn.
+ * standing two sheet layers (9 cm) off the glass skin, beyond the audit's 8 cm near band (at 4.5 cm the whole plinth
+ * read as 259 m2 of near-coplanar face), and clear of the grid, which starts above it; it breaks round openings cut
+ * into the ground storey (an entrance). Returns the number of panel pieces drawn.
  */
 function drawPlinthPanel(c: PanelCtx, v0: number, v1: number, slot: string): number {
   if (v1 - v0 < 0.5) return 0;
@@ -148,7 +148,7 @@ function drawPlinthPanel(c: PanelCtx, v0: number, v1: number, slot: string): num
   for (const [a0, b0] of intervals(c.p, v0, v1, 0.25)) {
     let pieces: [number, number][] = [[a0, b0]];
     for (const [s0, s1] of holes) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.2)) as [number, number][]);
-    for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, 0, SHEET_PITCH, part); n++; }
+    for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, 0, 2 * SHEET_PITCH, part); n++; }
   }
   return n;
 }
