@@ -1,0 +1,118 @@
+{
+ "schemaVersion": 1,
+ "id": "revaleiland-437-250186",
+ "pand": "0363100012250186",
+ "signature": [
+  "recessed-balcony-stack",
+  "red-brick-cream-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w05-230",
+   "bearing": 230,
+   "lengthM": 25.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002621_pano_0006_000090",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "recessed-balcony-stack",
+     "kind": "balcony-ironwork",
+     "where": "three stacked brick balconies with glass rails in a recess spanning storeys 2-4",
+     "approxSizeM": [
+      4,
+      10
+     ],
+     "plan": "simplified",
+     "how": "walls[0] balconies on storeys 1-3 with glass rails in bay 2",
+     "seenIn": "TMX7316010203-002621_pano_0006_000090"
+    },
+    {
+     "id": "red-brick-cream-windows",
+     "kind": "window-shape",
+     "where": "five storeys of red brick with pairs and triples of cream-framed windows over a dark plinth",
+     "approxSizeM": [
+      26,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 7 bays, string courses, wide windows",
+     "seenIn": "TMX7316010203-002621_pano_0006_000090"
+    },
+    {
+     "id": "entrance-doors",
+     "kind": "other",
+     "where": "red and orange doors with a letterbox board in a brick surround",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "two 1 m doors in the plinth storey"
+     },
+     "seenIn": "TMX7316010203-002621_pano_0006_000090"
+    },
+    {
+     "id": "slot-window-tower",
+     "kind": "window-shape",
+     "where": "set-back top floor with four tall slot windows and a curved parapet",
+     "approxSizeM": [
+      8,
+      4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "above the eaves line, drawn as the 3DBAG massing only"
+     },
+     "seenIn": "TMX7316010203-002621_pano_0006_000090"
+    }
+   ]
+  },
+  {
+   "tag": "w03-140",
+   "bearing": 140,
+   "lengthM": 27.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001596_pano_0000_000080",
+   "capturedAt": "2020-01-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-balcony-stack",
+     "kind": "balcony-ironwork",
+     "where": "two balcony columns under a central brick pier, glass not yet fitted",
+     "approxSizeM": [
+      7,
+      10
+     ],
+     "plan": "simplified",
+     "how": "walls[1] glass-railed balcony stack in bay 2",
+     "seenIn": "TMX7316010203-001596_pano_0000_000080"
+    },
+    {
+     "id": "se-brick-grid",
+     "kind": "window-shape",
+     "where": "four storeys of window pairs in cream frames over a dark plinth under construction",
+     "approxSizeM": [
+      29,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 5 storeys x 5 bays, string courses",
+     "seenIn": "TMX7316010203-001596_pano_0000_000080"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

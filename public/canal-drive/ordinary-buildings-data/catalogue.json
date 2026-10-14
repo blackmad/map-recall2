@@ -49093,6 +49093,315 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T03:49:29.005Z"
+    },
+    {
+      "id": "ordinary-0363100012250186",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012250186",
+      "name": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland): 2020 apartment block round a courtyard, five storeys of red brick with cream-framed windows, stacked glass-railed balconies in recesses, a dark brick plinth and a set-back top floor with slot windows",
+      "hash": "9f787322cfe01ab43950c24fc214c45f949f5cf16cf1e2e6ab43263e606bdbdc",
+      "sha256": "9f787322cfe01ab43950c24fc214c45f949f5cf16cf1e2e6ab43263e606bdbdc",
+      "bytes": 843536,
+      "triangles": 11451,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -46.586,
+          0,
+          -44.653
+        ],
+        "max": [
+          40.571,
+          19.725,
+          41.777
+        ]
+      },
+      "anchor": [
+        4.8813726,
+        52.3941326
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8819701,
+              52.3941254
+            ],
+            [
+              4.8818888,
+              52.394184
+            ],
+            [
+              4.8818956,
+              52.3941876
+            ],
+            [
+              4.881873,
+              52.394204
+            ],
+            [
+              4.881866,
+              52.3942004
+            ],
+            [
+              4.8817164,
+              52.3943085
+            ],
+            [
+              4.8817232,
+              52.394312
+            ],
+            [
+              4.8817005,
+              52.3943284
+            ],
+            [
+              4.8816936,
+              52.3943248
+            ],
+            [
+              4.8816862,
+              52.3943302
+            ],
+            [
+              4.8816931,
+              52.3943337
+            ],
+            [
+              4.8816702,
+              52.39435
+            ],
+            [
+              4.8816635,
+              52.3943465
+            ],
+            [
+              4.8815136,
+              52.3944547
+            ],
+            [
+              4.8815204,
+              52.3944583
+            ],
+            [
+              4.8814976,
+              52.3944745
+            ],
+            [
+              4.8814909,
+              52.3944711
+            ],
+            [
+              4.8814329,
+              52.394513
+            ],
+            [
+              4.8814397,
+              52.3945165
+            ],
+            [
+              4.8814151,
+              52.3945341
+            ],
+            [
+              4.8813481,
+              52.3944991
+            ],
+            [
+              4.881349,
+              52.3944984
+            ],
+            [
+              4.8810801,
+              52.3943589
+            ],
+            [
+              4.8810745,
+              52.3943629
+            ],
+            [
+              4.8810476,
+              52.3943493
+            ],
+            [
+              4.8810534,
+              52.3943451
+            ],
+            [
+              4.8810444,
+              52.3943404
+            ],
+            [
+              4.8810387,
+              52.3943445
+            ],
+            [
+              4.881012,
+              52.3943307
+            ],
+            [
+              4.8810178,
+              52.3943266
+            ],
+            [
+              4.8806885,
+              52.3941557
+            ],
+            [
+              4.8809423,
+              52.3939726
+            ],
+            [
+              4.8809357,
+              52.3939692
+            ],
+            [
+              4.8809585,
+              52.3939526
+            ],
+            [
+              4.8809652,
+              52.3939561
+            ],
+            [
+              4.8809725,
+              52.3939509
+            ],
+            [
+              4.8809659,
+              52.3939474
+            ],
+            [
+              4.8809887,
+              52.3939308
+            ],
+            [
+              4.8809954,
+              52.3939343
+            ],
+            [
+              4.8812353,
+              52.3937613
+            ],
+            [
+              4.8812383,
+              52.3937595
+            ],
+            [
+              4.8812426,
+              52.3937579
+            ],
+            [
+              4.8812449,
+              52.3937573
+            ],
+            [
+              4.8812474,
+              52.3937569
+            ],
+            [
+              4.8812524,
+              52.3937566
+            ],
+            [
+              4.8812575,
+              52.393757
+            ],
+            [
+              4.8812599,
+              52.3937575
+            ],
+            [
+              4.8812622,
+              52.3937582
+            ],
+            [
+              4.8812664,
+              52.3937599
+            ],
+            [
+              4.8815787,
+              52.3939221
+            ],
+            [
+              4.8815844,
+              52.3939179
+            ],
+            [
+              4.8816111,
+              52.3939318
+            ],
+            [
+              4.8816054,
+              52.393936
+            ],
+            [
+              4.8816143,
+              52.3939406
+            ],
+            [
+              4.88162,
+              52.3939365
+            ],
+            [
+              4.8816468,
+              52.3939504
+            ],
+            [
+              4.8816411,
+              52.3939545
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.73,
+      "height": 19.73,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-revaleiland-437-250186.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012250186"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "revaleiland-437-250186",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012250186/w05-230.jpg",
+          "staging/pand-reference-walls/0363100012250186/w03-140.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 7b",
+          "brick-bay-grid 5st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Revaleiland 437 (BAG pand 0363100012250186, built 2020, 372 3DBAG wall surfaces, roof max 19.7 m): a large perimeter block on the Revaleiland in the Java-eiland / Eastern Docklands, about 75 m square with a courtyard of lower inner blocks. Photographed (finished): the south-west front (w04-230 2020-05-15, w05-230 2022-06-22: red brick, cream-framed windows in pairs and triples, a stack of three glass-railed balconies in a recess, red and orange entrance doors, a white shopfront at the south-east end, a set-back top floor with slot windows and a curved parapet). The south-east front is seen in construction (w02-140, w03-140 2020-01-29: same brick, same balcony stack with the glass still missing). The north-west and north-east fronts have only 2017 site photographs and a 2019 scaffold (w01-320, w06-320, w07-50, w08-50), so those two stay blank.",
+        "walls[0] = SW panels 129 and 68 (26.7 m and 25.2 m, eaves 16.2): 5 storeys x 7 bays with string courses and one glass-railed balcony stack on storeys 1-3 in bay 2 (a 6-bay rhythm left a 4.8 m2 flush-window overlap). walls[1] = SE panels 36 and 80 (29 m and 28 m): 5 storeys x 5 bays (budget), same balcony stack (construction view). Simplified: the plinth is the ground storey of the same brick (the photographed one is darker), window pairs and triples are evenly spaced wide windows, the red entrance doors and the white shopfront are plain bays. Not drawn: the north-west and north-east outer fronts (no finished photograph; an inferred copy of the other fronts cost 24k triangles and was dropped), the set-back top-floor blocks with slot windows and the curved parapet (3DBAG massing in brick colour), the courtyard walls and the inner blocks, which stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250186",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:11:07.107Z"
     }
   ]
 }
