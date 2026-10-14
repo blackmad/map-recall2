@@ -14,6 +14,7 @@ import { herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
+import { groundLookFrom, groundPalette } from './groundLook';
 import { drawnGrey, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
@@ -1189,4 +1190,37 @@ test('ground light: level sunlit ground draws its palette luminance; the road st
   // docs/LOOK.md §Driving corridor readability: the road under the rider never below the shade-side range (65–75).
   assert.ok(drawnGrey(asphalt, FLAT_GROUND_GAIN, true) >= 75, `asphalt in cast shadow draws ${drawnGrey(asphalt, FLAT_GROUND_GAIN, true)}`);
   assert.ok(asphalt < klinker, 'asphalt stays darker than the klinker carriageway');
+});
+
+// ------------------------------------------------------------- ground look variants (user 2026-10-14, "city too dark")
+test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish hit their luma targets and keep the legend ΔE ≥ 20', () => {
+  const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  const rgbOf = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const d = groundPalette('default');
+  assert.equal(d.street, STREET_GROUND); assert.equal(d.tones, GROUND_TONES);
+  const def = basemapGroundPatches([{ id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'water', type: 'fill', 'source-layer': 'water' }]);
+  assert.deepEqual(def.map(p => p.value), ['rgb(86,88,93)', '#46707c', '#46707c'], 'default basemap patches unchanged');
+  // Targets: measured = the dehazed sunlit orthophoto medians (docs/ground-tones-20261014.md); bright road ~130 / pavement ~175; legacy-ish road ~200 / pavement ~215 / water ~170.
+  const target: Record<string, { asphalt: number; pavement: number; water: number }> = { measured: { asphalt: 166, pavement: 165, water: 54 }, bright: { asphalt: 130, pavement: 175, water: 118 }, 'legacy-ish': { asphalt: 200, pavement: 215, water: 170 } };
+  for (const look of ['measured', 'bright', 'legacy-ish'] as const) {
+    const { street, tones } = groundPalette(look);
+    assert.ok(Math.abs(luma(street.asphalt.base) - target[look].asphalt) <= 4, `${look} road luma ${luma(street.asphalt.base).toFixed(0)}`);
+    assert.ok(Math.abs(luma(street.pavement.base) - target[look].pavement) <= 4, `${look} pavement luma ${luma(street.pavement.base).toFixed(0)}`);
+    assert.ok(Math.abs(luma(rgbOf(tones.water)) - target[look].water) <= 4, `${look} water luma ${luma(rgbOf(tones.water)).toFixed(0)}`);
+    for (const [a, b] of [['asphalt', 'cycle'], ['asphalt', 'klinker'], ['klinker', 'cycle']] as const) {
+      const e = deltaE(street[a].base, street[b].base);
+      assert.ok(e >= 20, `${look} ${a}/${b} ΔE ${e.toFixed(1)}`);
+    }
+    // Only ground: paint, rails, bollards, parks and woods are today's.
+    for (const k of ['paint', 'rail', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
+    for (const k of ['park', 'wood', 'lawn', 'shrub', 'bed', 'bark', 'sand', 'gravel', 'parkGravel'] as const) assert.equal(tones[k], GROUND_TONES[k]);
+    assert.equal(tones.pond, tones.water);
+    if (look !== 'measured') { const [r, g, b] = rgbOf(tones.water); assert.ok(g > b && g > r, `${look} canal grey-green, not teal: ${tones.water}`); }
+  }
+  assert.equal(groundLookFrom('?ownGround=1&groundLook=bright'), 'bright');
+  assert.equal(groundLookFrom('?groundLook=legacy-ish'), 'legacy-ish');
+  assert.equal(groundLookFrom('?groundLook=nonsense'), 'default');
+  assert.equal(groundLookFrom(''), 'default');
+  const bright = basemapGroundPatches([{ id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('bright'));
+  assert.equal(bright[0].value, groundPalette('bright').tones.water);
 });
