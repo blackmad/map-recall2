@@ -220,6 +220,7 @@ async function main(): Promise<void> {
   await pocketRegressions();
   await openingRegressions();
   await approachRegressions();
+  await zooRegressions();
   await parkFillRegressions();
   await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
@@ -400,6 +401,48 @@ async function approachRegressions(): Promise<void> {
     const on = await probe(store), off = await probe(noApproaches);
     check(on.every(p => p.endsWith('deck+band')), `${id} (${label}): deck top and cycle band from the leaf to both quays (${on.join(' ')})`);
     check(off.filter(p => p.endsWith('deck+band')).length === 0, `${id}: without the approaches the leaf floats (${off.join(' ')}) (the pin is live)`);
+  }
+}
+
+/**
+ * Zoos are green ground (ride review 2026-10-14): Artis (tourism=zoo, OSM a8733446) was missing from the extract, so
+ * its grounds drew as bare land, a sand plaza from the Entrepotdok and the Plantage Middenlaan. A 12 × 12 grid of
+ * probes inside its outline: at most 5 % may read bare land (10 % in its own cell or in the neighbour holding its west third)
+ * (the land grid poked through the 8 m fill in hollows: 14 % before groundCell's underGreen cull, 54 % in the
+ * neighbour); with the area dropped from the cell's input the land share is back over half (the pin is live).
+ */
+const ZOOS: [string, string][] = [['a8733446', 'Artis']];
+async function zooRegressions(): Promise<void> {
+  for (const [id, label] of ZOOS) {
+    let found: { key: string; ring: [number, number][] } | null = null;
+    for (const k of store.osmCells) {
+      const cell = await store.osmCell(k);
+      const a = cell?.areas.find(x => x.id === id);
+      if (a) { found = { key: k, ring: a.rings[0].map(([lng, lat]) => toLocal(lng, lat)) }; break; }
+    }
+    if (!found) { check(false, `${id} (${label}): in the OSM cells`); continue; }
+    const { key, ring } = found;
+    const inside = (x: number, y: number) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+    const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]), probes: [number, number][] = [];
+    for (let i = 0; i < 12; i++) for (let j = 0; j < 12; j++) {
+      const x = Math.min(...xs) + (Math.max(...xs) - Math.min(...xs)) * (i + 0.5) / 12, y = Math.min(...ys) + (Math.max(...ys) - Math.min(...ys)) * (j + 0.5) / 12;
+      if (inside(x, y)) probes.push([x, y]);
+    }
+    const share = async (drop: boolean) => {
+      const cells: BuiltCell[] = [];
+      for (const k of GroundStore.neighbours(key).filter(n => store.covers(n))) {
+        const input = await store.cellInput(k, 0);
+        cells.push(buildCell(drop && input.osm ? { ...input, osm: { ...input.osm, areas: input.osm.areas.filter(a => a.id !== id) } } : input));
+      }
+      // The land is culled under the fill in the owner cell and its neighbours (groundCell underGreen): report both.
+      const [r0, r1, r2, r3] = store.cellRect(key), own = (x: number, y: number) => x >= r0 && x < r2 && y >= r1 && y < r3;
+      const tops = probes.map(([x, y]) => cells.map(c => layersAt(c, x, y)).find(r => r.top)?.top ?? 'none');
+      const land = (sel: boolean) => { const i = probes.map((q, k) => k).filter(k => own(probes[k][0], probes[k][1]) === sel); return i.filter(k => tops[k] === 'land').length / Math.max(1, i.length); };
+      return { own: land(true), neighbour: land(false), all: tops.filter(t => t === 'land').length / Math.max(1, tops.length) };
+    };
+    const on = await share(false), off = await share(true);
+    check(on.all <= 0.05 && on.own <= 0.1 && on.neighbour <= 0.1, `${id} (${label}): ${(on.all * 100).toFixed(0)} % of ${probes.length} probes inside it read bare land (${(on.own * 100).toFixed(0)} % in its own cell, ${(on.neighbour * 100).toFixed(0)} % in the neighbour's)`);
+    check(off.all > 0.5, `${id}: without the zoo area ${(off.all * 100).toFixed(0)} % read bare land (the pin is live)`);
   }
 }
 

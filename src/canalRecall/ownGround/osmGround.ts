@@ -38,6 +38,8 @@ export function areaKind(tags: Record<string, string>): AreaKind | null {
   if (tags.leisure === 'pitch') return 'grass';
   if (['grass', 'meadow', 'village_green', 'flowerbed', 'recreation_ground'].includes(tags.landuse)) return 'grass';
   if (tags.landuse === 'cemetery' || tags.landuse === 'allotments') return 'park';
+  // Zoos and petting farms (ride review 2026-10-14: Artis read as a sand plaza): green ground under their own paths.
+  if (tags.tourism === 'zoo') return 'park';
   if (tags.natural === 'grass') return 'grass';
   if (tags.natural === 'scrub' || tags.natural === 'wood') return 'wood';
   return null;
