@@ -47434,6 +47434,162 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:28:47.575Z"
+    },
+    {
+      "id": "ordinary-0363100012239388",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012239388",
+      "name": "Oostelijke Handelskade 749, Amsterdam-Centrum (Oostelijke Handelskade): 2012 residential and office blocks in warehouse style with tall round-arched brick arcades, cream string courses and a rusticated base",
+      "hash": "48541c24f3a6fed50ff75fd3e9986d86d7f34eaddab8c00403d7307702af5e88",
+      "sha256": "48541c24f3a6fed50ff75fd3e9986d86d7f34eaddab8c00403d7307702af5e88",
+      "bytes": 1044456,
+      "triangles": 11751,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -79.954,
+          0.001,
+          -22.61
+        ],
+        "max": [
+          111.466,
+          25.721,
+          47.421
+        ]
+      },
+      "anchor": [
+        4.9303573,
+        52.3754361
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9291824,
+              52.3755096
+            ],
+            [
+              4.9292171,
+              52.3755036
+            ],
+            [
+              4.9292097,
+              52.3754876
+            ],
+            [
+              4.9319298,
+              52.3750159
+            ],
+            [
+              4.9319971,
+              52.3751609
+            ],
+            [
+              4.9317405,
+              52.3752053
+            ],
+            [
+              4.9317738,
+              52.3752775
+            ],
+            [
+              4.9313646,
+              52.3753484
+            ],
+            [
+              4.9313562,
+              52.3753302
+            ],
+            [
+              4.9308208,
+              52.3754228
+            ],
+            [
+              4.9307958,
+              52.3753687
+            ],
+            [
+              4.9304038,
+              52.3754366
+            ],
+            [
+              4.9304371,
+              52.3755088
+            ],
+            [
+              4.9300192,
+              52.3755811
+            ],
+            [
+              4.9300108,
+              52.3755629
+            ],
+            [
+              4.9295865,
+              52.3756363
+            ],
+            [
+              4.9295615,
+              52.3755823
+            ],
+            [
+              4.9292764,
+              52.3756316
+            ],
+            [
+              4.9292491,
+              52.3755728
+            ],
+            [
+              4.9292145,
+              52.3755788
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 25.72,
+      "height": 25.72,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oostelijke-handelskade-749-239388.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012239388"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oostelijke-handelskade-749-239388",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012239388/w01-196.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 9b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: window spacing is uniform where the photograph alternates single and paired arches, the stone dressing blocks and keystones are the kit arch band and keystones, the black steel oriel stacks, the iron balconies and the DartDesign sign are not modelled. Not drawn: the eastern 38 m of each south front (surfaces 3 and 9 are shared with the north and west panels and doubled the triangle count), the north and end walls and the small outbuilding, which stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239388",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:32:28.012Z"
     }
   ]
 }
