@@ -20,13 +20,13 @@ export function gableCrown(c: PanelCtx, stats: KitStats, eaves: number, statue: 
   const p = c.p, w = p.uMax - p.uMin, part = c.part();
   let apexU = p.uMin + w / 2, apexV = -1;
   for (let u = p.uMin + 0.3; u < p.uMax - 0.3; u += 0.1) { const t = topAt(p, u); if (t > apexV) { apexV = t; apexU = u; } }
-  const ball = (u: number, v: number, r: number) => geom(c, STONE, new T.SphereGeometry(r, 6, 4), u, v + r, 0.2, part);
+  const ball = (u: number, v: number, r: number) => geom(c, STONE, new T.SphereGeometry(r, 5, 3), u, v + r, 0.2, part);
   for (const u of [p.uMin + 0.45, p.uMax - 0.45]) {
     const t = topAt(p, u);
     if (t < eaves - 0.5) continue;
     solid(c, STONE, u - 0.25, u + 0.25, t - 0.35, t + 0.75, 0, 0.5, part);
     solid(c, STONE, u - 0.32, u + 0.32, t + 0.75, t + 0.9, 0, 0.58, part);
-    ball(u, t + 0.9, 0.24);
+    // (the pier balls are 0.24 m: below a gallery pixel, only the apex ball and finial are drawn)
   }
   if (statue) {
     solid(c, STONE, apexU - 0.35, apexU + 0.35, apexV - 0.3, apexV + 0.55, 0, 0.7, part);

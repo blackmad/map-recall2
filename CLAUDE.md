@@ -70,6 +70,12 @@ working behavior, and leave it easier for the next session to continue.
 - Prefer bounded, explainable learning mechanics: spaced review, novelty-aware
   routing with detour caps, and bonuses for meaningful infrastructure such as
   separated cycle paths.
+- Building lanes (large recipes, block faces, ordinary kits) are expected
+  to improve the kit as they go: when the photo shows something the kit
+  cannot express, add the component or system in that lane (typed, tested,
+  byte-identical when absent) instead of fitting the nearest existing
+  option, and report what the kit still cannot say. Likeness to the photo
+  is the acceptance bar, not gates passing.
 - Treat OSM topology and display geometry as imperfect data. At junctions,
   bridges, boundaries, and split same-name ways, use measured tolerances,
   hysteresis, deduplication, and regression coverage rather than assumptions.

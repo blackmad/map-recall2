@@ -237,6 +237,7 @@ owns (`wallSurfaces`, indices from `walls.ts`, never coordinates) and:
 | `entrance` | `true` or `{bay, storeys, canopy}`: recessed glazed entrance; `storeys > 1` = an entrance hall |
 | `signage` | text (A–Z, 0–9, `&'-.`, ≤ 60) or `{text, colour, mount}` with mount `fascia`, `wall`, `glazing` or `canopy` |
 | `garageDoors`, `stringCourses`, `cornice`, `piers`, `balconies` | components |
+| `garageBays` | list of bay indices (needs `baysPerStorey`): recessed garage doors in exactly those ground-storey bays of the widest panel, an alternative to `garageDoors` (which counts from the right end). Used where loading doors stand mid-front (Nieuwe Hemweg 34, 14H, 56, Klaprozenweg 31, Metaalbewerkerweg 23) |
 | `police` | `{stripe, lamp}`: white fascia band with diagonal blue stripes and a POLITIE plate; blue lamp by the entrance (needs an entrance) |
 | `crosses` | `{count, size: small\|medium\|large, colour, side: left\|right}`: St Andrew's crosses (Amsterdam's three-cross emblem) stacked down a top corner of the widest panel, each two closed diagonal prisms (`drawStAndrewsCross`; flat glyphs counted as open edges). Used by Stadsloket Noord/West and Stadsdeel Nieuw-West |
 | `palette` | per-group `brick`/`frame`/`stone` overrides |
@@ -264,6 +265,37 @@ sheets), `notes[]` (evidence: what each group is, what was left out and why).
   fall back to flush (counted in the report).
 - Entrance: the middle bay unless `bay` is given; < 1.6 m wide openings get a
   single door. Garage doors take bays from the right and need ≥ 2.8 m bays.
+
+### Scope and acceptance (user review, 2026-10-14; plan "Large tier to photo likeness")
+
+The large tier is for grid-fronted buildings: modern blocks, sheds, halls,
+schools, offices whose fronts are a repeating bay rhythm. Ornamented
+historic fronts (stepped or swung gables, stone dressings, arcades, glass
+passage roofs; Singel 457 was uninstalled for this) go to a bespoke
+landmark builder. Acceptance is side by side with the rectified panorama
+crop of each street-facing wall group: wall colour family and lightness,
+glazing fraction per storey, window shape class and column rhythm must read
+the same at gallery size, measured from the crop (`measure.ts`, lane A of
+the plan) rather than guessed, and the contact sheet carries the numbers
+and a PASS / WARN / FAIL / NO EVIDENCE line. Geometry gates passing is not
+acceptance; a sheet without a photo on it is not a review; no sheet, no
+merge. A wrong kit is worse than the plain 3DBAG box, so "uninstall" is a
+valid outcome. **Kit lanes improve the kit.** A large-recipe or block-face
+lane that finds the photo showing something the kit cannot say (a colour
+split along a front, glass columns, an arch shape, a canopy, a ledge, a
+band) adds the component or system in the same lane, with a test and
+byte-identical default output, rather than fitting the nearest thing the
+kit already has; fitting inside the current vocabulary is how batches 5–7
+went wrong. Every lane report lists what the kit still cannot express
+for its houses, and that list feeds the next kit pass (user, 2026-10-14:
+"kit wins but kit needs a lot of help"). The user also wants both routes tried where the kit cannot
+express a front: a measured kit and a stylised photo-derived texture, judged
+side by side (plan `docs/plans/large-tier-likeness-and-streets-20261014.md`).
+Batches 5–7 were judged "awful" on exactly these points (Apollohal's glazed
+hall drawn as punched windows in tan brick, Waagdragerhof's dark brick and
+tall strips as orange brick with small squares, Houthavenkade 26's glass
+balcony columns as white slabs) and are being re-fitted; batches 7 and
+public-buildings 4 are held unmerged until the likeness pass runs on them.
 
 ### Gates (`largeGates.ts`, on the decoded GLB)
 
@@ -574,7 +606,7 @@ gable).
 - Wall groups are authored by surface index; `walls.ts` lists them, but a
   re-extracted 3DBAG item renumbers surfaces (re-run `walls.ts`, fit-golden
   catches the change).
-- Not installed anywhere: large recipes are not in the catalogues yet.
+- Installed: ~100 large recipes are in `ordinary-buildings-data/catalogue.json` (`recipe-large-*.glb`); `check:stale-installs` keeps them current with the golden.
 
 ## Known gaps
 
@@ -1169,6 +1201,31 @@ Remaining errors (on the strip sheets, listed as `schemaLimits` in the types): t
 dormers with a gap at the party wall (a dormer reaching the party wall fails the library's footprint check), white
 stucco top storeys and tympana are not modelled, the tower-dormers have no light, De Clercqstraat corbel tables are a
 bracketed cornice, D dormers are centred on the BAG front rather than the visual module.
+
+#### Shared house-type library (`scripts/block-face/types/<district>/<id>.json`)
+
+A type that more than one face (or street) will place lives in the library instead of in one face's intent. One type per
+file, the same `HouseTypeIntent` shape as an inline type plus `district` (must equal the folder name) and, optionally,
+`schemaLimits: string[]` (what the schema cannot express about the type, shown with its evidence). `evidence` is
+required as for inline types. The file name is the type id (`clercq-e-corbel-brick.json`), and an id exists in exactly
+one district.
+
+A face references a library type by putting its id string in `types`, alone or mixed with inline objects:
+
+```json
+"types": ["clercq-e-corbel-brick", "clercq-f-stucco-mansard", {"schemaVersion": 1, "kind": "house-type", "id": "my-local-type", "...": "..."}]
+```
+
+Placements (`"type": {"type": "clercq-e-corbel-brick", ...}`) are unchanged: they name the id, whichever way it was
+declared. Code: `src/canalRecall/blockFace/typeLibrary.ts` (`TypeLoader`, `fileTypeLoader(dir)`, `resolveTypeList`;
+test beside it). `validateBlockFace(input, order, load)`, `houseIntents(face, load)` and `resolveFaceTypes(face, load)`
+take a loader that defaults to the filesystem library; an unknown id, a duplicate id (inline vs library or twice) and a
+file whose id or district disagrees with its path are validation errors. `scripts/block-face/compile.ts` and
+`scripts/building-tiles/compile-recipes.ts` pass the loader explicitly. The tile compiler hashes the resolved types
+(not the id strings) into `sources.faces`, and the library types' content into `sources.types`, so editing a library
+file invalidates every tile whose face places it. De Clercqstraat's three types (`oud-west`) are the first entries;
+moving them out of `clercq-236681/intent.json` changed no compiled output (chunk GLB, manifest entry and report
+byte-identical, every face's resolved house intents identical).
 
 ## Recipe tiles (migration step 3, `?recipeTiles=1`, 2026-10-13)
 

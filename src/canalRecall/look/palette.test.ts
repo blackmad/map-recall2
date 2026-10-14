@@ -1,7 +1,7 @@
 // node --import tsx --test src/canalRecall/look/*.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BUILDING_LOOKS, CITY_ROOF, FLAT_ROOF_GREYS, LOOK_VARIANTS, PERIOD_FROM, PERIOD_PRIORS, PERIODS, PHOTO_WALL_CELL_MEAN, ROOF_TONES, cellSetOf, foliageDisplayHex, GROUND_TONES, hexToRgb, lookHex, periodForYear, rgbToHsl, roofTone } from './palette.ts';
+import { BUILDING_LOOKS, CITY_ROOF, FLAT_ROOF_GREYS, LOOK_VARIANTS, PERIOD_FROM, PERIOD_PRIORS, PERIODS, PHOTO_WALL_CELL_MEAN, ROOF_TONES, cellSetOf, foliageDisplayHex, GROUND_TONES, hexToRgb, lookHex, periodForYear, rgbToHsl, roofTone, cityTint, cityWallTint, BRICK_CELL_MEAN } from './palette.ts';
 import { PARITY_TOLERANCE, faceNormal, lumaSpread, meanLuma } from './lookParityMath.ts';
 
 test('one era scheme: 1860 / 1915 / 1945, a boundary belongs to the period it opens', () => {
@@ -60,4 +60,24 @@ test('mood: own-ground water is no longer teal-black, pavers are lighter than we
   assert.ok(rgbToHsl(hexToRgb(GROUND_TONES.water))[2] > 0.3, 'water lightness');
   const luma = ([r, g, b]: readonly number[]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
   assert.ok(luma(GROUND_TONES.land.base) > 150 && luma(GROUND_TONES.paving.base) > luma(GROUND_TONES.land.base));
+});
+
+test('measured walls bypass the brick clamp: cell mean x tint lands on the authored lightness', () => {
+  const L = (hex: string) => rgbToHsl(hexToRgb(hex))[2];
+  const afterCell = (hex: string) => { const [r, g, b] = hexToRgb(hex).map(v => Math.round(v * BRICK_CELL_MEAN)); return L('#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('')); };
+  for (const hex of ['#3a2a28', '#8a3e2e', '#d8d2c4', '#6a6a70']) {
+    // Unmeasured: byte-identical to the clamped mapping, with or without the (absent) source.
+    assert.equal(cityTint('brick', hex), cityWallTint(hex));
+    assert.equal(cityTint('brick', hex, null), cityWallTint(hex));
+    assert.equal(cityTint('accent', hex, undefined), cityWallTint(hex));
+    const measured = cityTint('brick', hex, 'measured');
+    assert.ok(Math.abs(afterCell(measured) - L(hex)) <= 0.02, `${hex}: ${measured} -> ${afterCell(measured)} vs ${L(hex)}`);
+  }
+  // The clamp would have lifted the dark wall to L 0.3 and tanned the pale one; measured does neither.
+  assert.ok(L(cityWallTint('#3a2a28')) >= 0.3 - 1e-9 && afterCell(cityTint('brick', '#3a2a28', 'measured')) < 0.25);
+  assert.ok(L(cityWallTint('#d8d2c4')) <= 0.6 + 1e-9 && afterCell(cityTint('brick', '#d8d2c4', 'measured')) > 0.75);
+  // Only brick/accent are touched; every other slot ignores the source.
+  for (const slot of ['stucco', 'stone', 'frame', 'door', 'glass', 'paint', 'roofTile', 'slate', 'bitumen'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
+  // Below L 0.18 the floor holds.
+  assert.ok(afterCell(cityTint('brick', '#0a0808', 'measured')) >= 0.17);
 });

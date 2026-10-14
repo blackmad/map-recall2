@@ -1,0 +1,95 @@
+{
+ "schemaVersion": 1,
+ "id": "de-schreeuw-oosterpark",
+ "signature": [
+  "ds-blades"
+ ],
+ "walls": [
+  {
+   "tag": "n-110",
+   "bearing": 110,
+   "lengthM": 3.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_001498",
+   "capturedAt": null,
+   "note": "Profile side: the stacked blades read as the head in profile with the hair streaming back; the 2020 panorama from the north-east sees it from the front-right.",
+   "items": [
+    {
+     "id": "ds-blades",
+     "kind": "sculpture",
+     "where": "seven stainless blades forming a head in profile: chest bulge, throat notch, up-thrown chin, open mouth, nose, brow, hair ribbons trailing back",
+     "approxSizeM": [
+      2,
+      3.7
+     ],
+     "plan": "modelled",
+     "how": "builder: one extruded profile silhouette, seven copies stepped back and down at the head",
+     "seenIn": "commons:2020_De_Schreeuw_(08).jpg"
+    },
+    {
+     "id": "ds-plate",
+     "kind": "lettering",
+     "where": "stainless plate in the grass at the foot with the title and a text",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "simplified",
+     "how": "builder: flat plate with the raised title DE SCHREEUW; the explanatory text is too small to read",
+     "seenIn": "commons:2020_De_Schreeuw_(01).jpg"
+    }
+   ],
+   "centre": [
+    4.9222558,
+    52.3595317
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-290",
+   "bearing": 290,
+   "lengthM": 3.4,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear: inferred from the front and side photos; simplified.",
+   "items": [],
+   "centre": [
+    4.9222558,
+    52.3595317
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: 2020 De Schreeuw (01)",
+   "url": "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(01)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2020 De Schreeuw (03)",
+   "url": "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(03)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2020 De Schreeuw (06)",
+   "url": "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(06)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2020 De Schreeuw (08)",
+   "url": "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(08)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: De schreeuw - oosterpark",
+   "url": "https://commons.wikimedia.org/wiki/File:De_schreeuw_-_oosterpark",
+   "licence": "CC BY-SA 3.0 (Commons uploader (photo of the sculpture by Jeroen Henneman))"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

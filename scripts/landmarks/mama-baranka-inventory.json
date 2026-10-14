@@ -1,0 +1,95 @@
+{
+ "schemaVersion": 1,
+ "id": "mama-baranka",
+ "signature": [
+  "mb-woman"
+ ],
+ "walls": [
+  {
+   "tag": "n-200",
+   "bearing": 200,
+   "lengthM": 2.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001892_pano_0000_002483",
+   "capturedAt": null,
+   "note": "Front: Commons photo (1) shows the woman with the child at her left breast; the 2018-2021 panoramas show only a grey privacy box where the statue stands.",
+   "items": [
+    {
+     "id": "mb-woman",
+     "kind": "sculpture",
+     "where": "rough-cast woman, legs apart, heavy lumpy body, child held at the left breast, arm across the front, short curled hair, face lifted",
+     "approxSizeM": [
+      0.8,
+      2
+     ],
+     "plan": "simplified",
+     "how": "builder: overlapping tapered lumps for legs, hips, chest and arms, a child ball at the left breast, scattered thumb-mark lumps, portrait head with curls",
+     "seenIn": "commons:Mama_Baranka_in_2019_(1).jpg"
+    },
+    {
+     "id": "mb-disc",
+     "kind": "lettering",
+     "where": "irregular thin bronze disc 2.4 m across on the lawn with a spiral of incised text (not legible)",
+     "approxSizeM": [
+      2.4,
+      0.12
+     ],
+     "plan": "simplified",
+     "how": "builder: three overlapping flat blobs with three arcs of dark line plates where the text runs; no words invented",
+     "seenIn": "commons:Mama_Baranka_in_2019_(2).jpg"
+    }
+   ],
+   "centre": [
+    4.8744933,
+    52.3593173
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-020",
+   "bearing": 20,
+   "lengthM": 2.4,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear: inferred from the front and side photos; simplified.",
+   "items": [],
+   "centre": [
+    4.8744933,
+    52.3593173
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Mama Baranka in 2019 (1)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(1)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: Mama Baranka in 2019 (2)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(2)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: Mama Baranka in 2019 (4)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(4)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: Mama Baranka in 2019 (6)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(6)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap node 6052790489 (statue)",
+   "url": "https://www.openstreetmap.org/node/6052790489",
+   "licence": "ODbL"
+  }
+ ]
+}
