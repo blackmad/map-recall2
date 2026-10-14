@@ -6,51 +6,48 @@
  "address": "Kloveniersburgwal 72 (former Binnengasthuis, now University of Amsterdam), Amsterdam: Nieuwe Hoogstraat row-house fronts, the 1900s GASTHUIS APOTHEEK brick range, a 1930s curved brick wing and a 1950s beige block",
  "sources": [
   {
-   "id": "pano-2022-12-15-w01",
+   "id": "pano-2022-12-15-w01-16",
    "kind": "street-panorama",
    "capturedAt": "2022-12-15",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002862_pano_0004_000074/",
-   "image": "staging/pand-reference-walls/0363100012171179/w01-16.jpg",
+   "image": "source-data://pand-reference-walls/0363100012171179/w01-16.jpg",
+   "sha256": "693d66ac4fcbb5b420906e32574f7947be719b20c2f429236cef530868f5af71",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-07-03-w06",
+   "id": "pano-2025-07-03-w06-192",
    "kind": "street-panorama",
    "capturedAt": "2025-07-03",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_03-29-47_03261/",
-   "image": "staging/pand-reference-walls/0363100012171179/w06-192.jpg",
+   "image": "source-data://pand-reference-walls/0363100012171179/w06-192.jpg",
+   "sha256": "3721e4a0906abf67abcc294c7526c669ea90a3c5fb13f89be9b40902e706328c",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-01-22-w04",
+   "id": "pano-2021-01-22-w04-121",
    "kind": "street-panorama",
    "capturedAt": "2021-01-22",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001192/",
-   "image": "staging/pand-reference-walls/0363100012171179/w04-121.jpg",
+   "image": "source-data://pand-reference-walls/0363100012171179/w04-121.jpg",
+   "sha256": "8c9b27db4f6e8da33ae3a56d7d7213305c85926ec6fc285f2b19d3265041509b",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-01-22-w02",
+   "id": "pano-2021-01-22-w02-122",
    "kind": "street-panorama",
    "capturedAt": "2021-01-22",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001194/",
-   "image": "staging/pand-reference-walls/0363100012171179/w02-122.jpg",
+   "image": "source-data://pand-reference-walls/0363100012171179/w02-122.jpg",
+   "sha256": "7701a888e4efd3c2198ea07e1e1300d698efbeb5c5e006df95cec4d28a79e463",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2017-07-06-w05",
+   "id": "pano-2019-01-14-w03-300L",
    "kind": "street-panorama",
-   "capturedAt": "2017-07-06",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_001483/",
-   "image": "staging/pand-reference-walls/0363100012171179/w05-121.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2025-06-30-w03",
-   "kind": "street-panorama",
-   "capturedAt": "2025-06-30",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_01393/",
-   "image": "staging/pand-reference-walls/0363100012171179/w03-300.jpg",
+   "capturedAt": "2019-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001051_pano_0002_001700/",
+   "image": "source-data://pand-reference-walls/0363100012171179/w03-300L.jpg",
+   "sha256": "8900fadea3e78670d4d8041e05e32db2e1c978c159e95763479f22c766dca4af",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -75,6 +72,17 @@
     "brick": "#6e5448",
     "frame": "#efe9d8",
     "stone": "#d8d0b8"
+   },
+   "hand": [
+    "palette",
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.6499999999999999,
+    "sill": 0.28
    }
   },
   {
@@ -97,13 +105,22 @@
     "portal": true
    },
    "palette": {
-    "brick": "#8a4a38",
+    "brick": "#5c5b57",
     "frame": "#2a2a2a",
     "stone": "#9a9690"
    },
    "signage": {
     "text": "GASTHUIS APOTHEEK",
     "colour": "#d8d0b8"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.397,
+    "h": 0.649,
+    "sill": 0.33
    }
   },
   {
@@ -121,9 +138,18 @@
    "deepBars": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#6a3c30",
+    "brick": "#7a655b",
     "frame": "#efe9d8",
     "stone": "#efe9d8"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.569,
+    "h": 0.6,
+    "sill": 0.38
    }
   },
   {
@@ -139,9 +165,23 @@
    "deepBars": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#c8b894",
+    "brick": "#938369",
     "frame": "#8a6a48",
-    "stone": "#c8b894"
+    "stone": "#c8b894",
+    "glass": "#60625c"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "wallSplit": {
+    "at": 0.711,
+    "brick": "#765f4d"
+   },
+   "windowShape": {
+    "w": 0.748,
+    "h": 0.6,
+    "sill": 0.25
    }
   },
   {
@@ -158,10 +198,16 @@
    "windows": "cross",
    "deepBars": true,
    "palette": {
-    "brick": "#8a5a44",
+    "brick": "#b8996e",
     "frame": "#efe9d8",
     "stone": "#d8d0b8"
-   }
+   },
+   "hand": [
+    "palette",
+    "system",
+    "baysPerStorey",
+    "palette.brick"
+   ]
   },
   {
    "wallSurfaces": [
@@ -175,9 +221,18 @@
    "deepBars": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#6e7a88",
+    "brick": "#6f5b54",
     "frame": "#e8eef2",
     "stone": "#c0c8d0"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.654,
+    "h": 0.65,
+    "sill": 0.3
    }
   }
  ],
@@ -198,6 +253,18 @@
   "walls[0] = the north run on Nieuwe Hoogstraat (panel 10, 9.4 m surfaces only): three storeys of row-house fronts with white-framed windows over shopfronts, cornice. The 12 m gable surfaces and the 7.7 m surface are left blank. 6 bays of ~4 m stand for the ~20 narrower row-house axes (22 bays cost 16k tris).",
   "walls[1] = panel 56 (w06-192): the 1900s brick range with grey stone ground storey, iron-barred windows and the arched GASTHUIS APOTHEEK portal. Drawn as 4 storeys x 3 bays, a portal entrance in bay 2 and GASTHUIS APOTHEEK fascia lettering. Simplified: the carved cartouche, scrolls and the sculpture group on the right pier, the iron window grilles.",
   "walls[2] = panel 60 (w04-121): the 1930s brick wing with the white curved window band, drawn as 4 storeys of wide windows with white string courses; the curved bay and the wrap-round balcony band are straight. walls[3] = panel 286 (w02-122): the 1950s beige block, 4 storeys x 7 bays of plain windows. walls[4] = four 14.5 m surfaces of the canal gable row (w05-121), 4 storeys x 4 bays; the gables are the 3DBAG roof. walls[5] = panel 12 (w03-300): the grey-blue brick wing with a curved front, 4 storeys x 5 bays; the curve is straight.",
-  "Not drawn: the long south front (panel 55) and the inner court walls (no panorama within 35 m); the green copper roof of the curved wing."
- ]
+  "Not drawn: the long south front (panel 55) and the inner court walls (no panorama within 35 m); the green copper roof of the curved wing.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #625e59 not used (not darker than the wall #5c5b57 by 10 L*, or tinted): kit glass kept; walls[2] glass #646b71 not used (not darker than the wall #7a655b by 10 L*, or tinted): kit glass kept; walls[3] wall split #938369 | #765f4d at 71 % (dE 15); walls[5] glass #514843 not used (not darker than the wall #6f5b54 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ]
+ }
 }
