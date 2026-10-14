@@ -1,0 +1,64 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:50:59.474Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012071767",
+   "addresses": [
+    "Kinkerstraat 390"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 390-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000952542"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 124-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000952543"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130085",
+   "addresses": [
+    "Kinkerstraat 386",
+    "Kinkerstraat 388"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 386-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000706431"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006428730,
+     "lngLat": [
+      4.860635,
+      52.3645316
+     ],
+     "tags": {
+      "name": "Retro Witgoed",
+      "shop": "appliance"
+     },
+     "fetchedAt": "2026-10-14T09:50:59.474Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

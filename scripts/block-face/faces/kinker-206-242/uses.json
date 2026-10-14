@@ -1,0 +1,675 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:20:24.540Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236953",
+   "addresses": [
+    "Kinkerstraat 242A",
+    "Kinkerstraat 242B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 242A",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001965364"
+    },
+    {
+     "address": "Kinkerstraat 242B",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001965365"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4711284143,
+     "lngLat": [
+      4.8656069,
+      52.3656138
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "242",
+      "addr:postcode": "1053EN",
+      "addr:street": "Kinkerstraat",
+      "beauty": "tanning",
+      "name": "Sun City",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237297",
+   "addresses": [
+    "Kinkerstraat 240"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 240",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 220,
+     "bagId": "0363010012103546"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160838",
+   "addresses": [
+    "Kinkerstraat 238A",
+    "Kinkerstraat 238B",
+    "Kinkerstraat 238"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 238A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001021245"
+    },
+    {
+     "address": "Kinkerstraat 238B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001021247"
+    },
+    {
+     "address": "Kinkerstraat 238-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001040576"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809215643,
+     "lngLat": [
+      4.8657143,
+      52.3656429
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "238-H",
+      "addr:postcode": "1053EN",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "cuisine": "sushi",
+      "delivery": "yes",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "name": "Asian King",
+      "opening_hours": "Mo-Su 11:45-22:00",
+      "operator": "Asian Kong",
+      "outdoor_seating": "no",
+      "phone": "+31 20 341 8430",
+      "smoking": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "only",
+      "website": "https://www.asianking.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165141",
+   "addresses": [
+    "Kinkerstraat 236"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 236-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001040575"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006318922,
+     "lngLat": [
+      4.8657777,
+      52.365661
+     ],
+     "tags": {
+      "beauty": "nails",
+      "name": "American Nails",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152992",
+   "addresses": [
+    "Kinkerstraat 234"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 234-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705980"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163768",
+   "addresses": [
+    "Kinkerstraat 232"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 232-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705970"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226916,
+     "lngLat": [
+      4.8658792,
+      52.3656835
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "232-H",
+      "addr:postcode": "1053EN",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "indoor_seating": "yes",
+      "name": "Monopoly",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162560",
+   "addresses": [
+    "Kinkerstraat 230"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 230-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000705965"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809215630,
+     "lngLat": [
+      4.8659376,
+      52.3657013
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "230-H",
+      "addr:postcode": "1053EN",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "cuisine": "colombian",
+      "name": "Cartagena",
+      "opening_hours": "Su-Th 14:00-22:00; Fr 12:00-22:00,12:00-23:00",
+      "phone": "+31 6 27476740",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://cartagenarestaurant.nl/",
+      "website:menu": "https://www.thefork.nl/restaurant/cartagena-r826556"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161056",
+   "addresses": [
+    "Kinkerstraat 228",
+    "Kinkerstraat 228A",
+    "Kinkerstraat 228B",
+    "Kinkerstraat 228C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 228",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000705950"
+    },
+    {
+     "address": "Kinkerstraat 228A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000705951"
+    },
+    {
+     "address": "Kinkerstraat 228B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000705952"
+    },
+    {
+     "address": "Kinkerstraat 228C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000705953"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006378074,
+     "lngLat": [
+      4.8659963,
+      52.3657152
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "ô mai café"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166034",
+   "addresses": [
+    "Kinkerstraat 224",
+    "Kinkerstraat 224A",
+    "Kinkerstraat 224B",
+    "Kinkerstraat 224C",
+    "Kinkerstraat 224D",
+    "Kinkerstraat 226"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 224",
+     "use": "winkelfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000705939"
+    },
+    {
+     "address": "Kinkerstraat 224A",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012061475"
+    },
+    {
+     "address": "Kinkerstraat 224B",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012061476"
+    },
+    {
+     "address": "Kinkerstraat 224C",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012061477"
+    },
+    {
+     "address": "Kinkerstraat 224D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012061478"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236982",
+   "addresses": [
+    "Kinkerstraat 222A",
+    "Kinkerstraat 222B",
+    "Kinkerstraat 222C",
+    "Kinkerstraat 222D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 222A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010001025225"
+    },
+    {
+     "address": "Kinkerstraat 222B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025226"
+    },
+    {
+     "address": "Kinkerstraat 222C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025227"
+    },
+    {
+     "address": "Kinkerstraat 222D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025228"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226914,
+     "lngLat": [
+      4.8661418,
+      52.3657474
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "224",
+      "addr:postcode": "1053EM",
+      "addr:street": "Kinkerstraat",
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237261",
+   "addresses": [
+    "Kinkerstraat 220A",
+    "Kinkerstraat 220B",
+    "Kinkerstraat 220C",
+    "Kinkerstraat 220D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 220D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010003763627"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236886",
+   "addresses": [
+    "Kinkerstraat 218A",
+    "Kinkerstraat 218B",
+    "Kinkerstraat 218C",
+    "Kinkerstraat 218D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 218B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025219"
+    },
+    {
+     "address": "Kinkerstraat 218C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025220"
+    },
+    {
+     "address": "Kinkerstraat 218D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025221"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233589",
+   "addresses": [
+    "Kinkerstraat 212",
+    "Kinkerstraat 214",
+    "Kinkerstraat 216",
+    "Kinkerstraat 216A",
+    "Kinkerstraat 216B",
+    "Kinkerstraat 216C",
+    "Kinkerstraat 216D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 216",
+     "use": "winkelfunctie",
+     "areaM2": 462,
+     "bagId": "0363010000705909"
+    },
+    {
+     "address": "Kinkerstraat 216A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025214"
+    },
+    {
+     "address": "Kinkerstraat 216B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025215"
+    },
+    {
+     "address": "Kinkerstraat 216C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025216"
+    },
+    {
+     "address": "Kinkerstraat 216D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001025217"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226913,
+     "lngLat": [
+      4.8664447,
+      52.365818
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "208",
+      "addr:postcode": "1053EM",
+      "addr:street": "Kinkerstraat",
+      "brand": "Etos",
+      "brand:wikidata": "Q2609459",
+      "brand:wikipedia": "nl:Etos",
+      "name": "Etos",
+      "opening_hours": "Mo-We,Fr 09:00-18:30; Th 09:00-21:00; Sa 09:00-18:00; PH 11:00-18:00",
+      "phone": "+31 228 565 656",
+      "ref": "6202",
+      "shop": "chemist",
+      "website": "https://www.etos.nl/winkels/amsterdam/kinkerstraat-208-6202/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2452226921,
+     "lngLat": [
+      4.8663665,
+      52.3658002
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "214",
+      "addr:postcode": "1053EM",
+      "addr:street": "Kinkerstraat",
+      "branch": "Amsterdam",
+      "brand": "Action",
+      "brand:wikidata": "Q2634111",
+      "brand:wikipedia": "nl:Action (winkel)",
+      "name": "Action",
+      "phone": "+31 228 565 656",
+      "shop": "variety_store",
+      "website": "https://www.action.com/nl-nl/winkels/amsterdam-kinkerstraat/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160871",
+   "addresses": [
+    "Kinkerstraat 208",
+    "Kinkerstraat 210"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 208-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 12,
+     "bagId": "0363010012124644"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159816",
+   "addresses": [
+    "Kinkerstraat 206A",
+    "Kinkerstraat 206B",
+    "Kinkerstraat 206C",
+    "Kinkerstraat 206D",
+    "Kinkerstraat 206E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 206A",
+     "use": "industriefunctie",
+     "areaM2": 48,
+     "bagId": "0363010000705883"
+    },
+    {
+     "address": "Kinkerstraat 206B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705884"
+    },
+    {
+     "address": "Kinkerstraat 206C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705885"
+    },
+    {
+     "address": "Kinkerstraat 206D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705886"
+    },
+    {
+     "address": "Kinkerstraat 206E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001171801"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4714011114,
+     "lngLat": [
+      4.8666169,
+      52.3658609
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "206",
+      "addr:postcode": "1053EM",
+      "addr:street": "Kinkerstraat",
+      "alt_name": "Tex & Leder",
+      "check_date:opening_hours": "2023-12-31",
+      "name": "Tex Leder",
+      "note": "No working website;  Does this shop still exist?",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 412 5448",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 7329930371,
+     "lngLat": [
+      4.8667449,
+      52.3658911
+     ],
+     "tags": {
+      "check_date": "2025-01-17",
+      "male": "yes",
+      "name": "Imperial barbershop",
+      "opening_hours": "Mo-Sa 10:00-19:00",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:20:24.540Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  }
+ ]
+}

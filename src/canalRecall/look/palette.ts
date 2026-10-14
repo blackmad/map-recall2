@@ -525,9 +525,38 @@ export function cityMeasuredWallTint(hex: string): string {
   const [h, s, l] = rgbToHsl(hexToRgb(hex)), [r, g, b] = hexToRgb(rgbToHex(hslToRgb([h, s, Math.max(l, MEASURED_WALL_MIN_L)])));
   return rgbToHex([r, g, b].map(v => Math.min(255, Math.round(v / BRICK_CELL_MEAN))) as RGB);
 }
+/**
+ * Measured glass (`tintSource: 'measured'` on a glass slot) samples its own pane cell: the glass pane's gradient and
+ * sky streak (slotCells.ts `paintGlassCanvas`) in grey, compressed to 188-255 so a tint can reach a pale reflective
+ * pane. The unmeasured glass cell is already blue-grey and takes a white tint, so it never shows the authored colour
+ * (dark #1e262c and reflective #8e9ea4 both drew the same blue-grey); its mean (~0.37 L) also caps any tint below
+ * a pale pane. Pure, so the mean below is exact. `y` runs down the pane (0 = head), on a GLASS_TINT_CELL_W x _H grid.
+ */
+export const GLASS_TINT_CELL_W = 32, GLASS_TINT_CELL_H = 64;
+export function glassTintCellValue(x: number, y: number): number {
+  const t = y / (GLASS_TINT_CELL_H - 1), base = t < 0.5 ? 255 - 47 * (t / 0.5) : 208 - 20 * ((t - 0.5) / 0.5);
+  // The sky streak of paintGlassCanvas, at this grid's scale: a band leaning left, over the upper 55 % of the pane.
+  const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+  return Math.round(streak ? base + (255 - base) * 0.16 : base);
+}
+/** Mean of the measured-glass cell, 0..255. */
+export const GLASS_TINT_CELL_MEAN = (() => {
+  let sum = 0;
+  for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+  return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+})();
+/** A measured glass colour: the authored hex divided by the measured-glass cell mean, so cell x tint lands on it (pale panes up to ~0.84 per channel). */
+export function cityMeasuredGlassTint(hex: string): string {
+  return rgbToHex(hexToRgb(hex).map(v => Math.min(255, Math.round(v / (GLASS_TINT_CELL_MEAN / 255)))) as RGB);
+}
+/** The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour. */
+export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass'];
+export const isMeasuredTint = (slot: MaterialSlot, source?: TintSource | null) => source === MEASURED_TINT_SOURCE && MEASURED_SLOTS.includes(slot);
+
 /** An authored slot colour mapped into the city palette range. */
 export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | null): string {
   if (source === MEASURED_TINT_SOURCE && (slot === 'brick' || slot === 'accent')) return cityMeasuredWallTint(hex);
+  if (source === MEASURED_TINT_SOURCE && slot === 'glass') return cityMeasuredGlassTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);

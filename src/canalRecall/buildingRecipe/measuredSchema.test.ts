@@ -1,0 +1,42 @@
+/** Measured-facade schema (2026-10-14): `palette.glass`, `windowShape`, `hand`, `measured`, source-data images. Opt-in, default fit unchanged. */
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {validateLargeIntent} from './largeIntent.ts';
+import {fitLarge, KIT_GLASS} from './fitLarge.ts';
+import type {BuildingFacts} from './facts.ts';
+
+const HOUSES = 'scripts/building-recipes/houses', ID = 'politie-van-leijenberghlaan';
+const raw = () => JSON.parse(fs.readFileSync(`${HOUSES}/${ID}/intent.json`, 'utf8'));
+const facts = (): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${ID}/facts.json`, 'utf8'));
+
+test('measured schema: fractions only, known keys, source-data images need a sha256', () => {
+  const base = raw(), w0 = base.walls[0];
+  const ok = {...base, palette: {...base.palette, glass: '#3c4448'}, measured: {date: '2026-10-14', groups: [0]},
+    walls: [{...w0, palette: {...w0.palette, glass: '#404850'}, windowShape: {w: 0.55, h: 0.7, sill: 0.15}, hand: ['baysPerStorey', 'palette.frame']}, ...base.walls.slice(1)]};
+  assert.equal(validateLargeIntent(ok).id, ID);
+  const bad = (patch: object, re: RegExp) => assert.throws(() => validateLargeIntent({...base, walls: [{...w0, ...patch}, ...base.walls.slice(1)]}), re);
+  bad({windowShape: {w: 1.4, h: 0.7, sill: 0.1}}, /windowShape.w/);
+  bad({windowShape: {w: 0.5, h: 0.8, sill: 0.3}}, /leave a head/);
+  bad({windowShape: {w: 0.5, h: 0.6, sill: 0.1, widthM: 2}}, /widthM/);
+  bad({hand: ['nonsense']}, /hand/);
+  assert.throws(() => validateLargeIntent({...base, sources: [{...base.sources[0], image: 'source-data://pand-reference-walls/x/w01-1.jpg'}]}), /sha256/);
+  assert.throws(() => validateLargeIntent({...base, measured: {date: '2026-10-14', groups: [99]}}), /measured.groups/);
+});
+
+test('measured schema: palette.glass gets its own slot, windowShape sizes the windows, absent fields leave the fit unchanged', () => {
+  const base = validateLargeIntent(raw()), f = facts();
+  const plain = fitLarge(base, f).recipe;
+  assert.equal(plain.spec.palette.glass, KIT_GLASS);
+  const w0 = base.walls[0];
+  const intent = validateLargeIntent({...base, palette: {...base.palette, glass: '#3c4448'}, walls: [{...w0, palette: {...w0.palette, glass: '#405060'}, windowShape: {w: 0.55, h: 0.7, sill: 0.15}}, ...base.walls.slice(1)]});
+  const r = fitLarge(intent, f).recipe, g = r.groups[0];
+  assert.equal(r.spec.palette.glass, '#3c4448');
+  assert.equal(g.slots.glass, 'glass@g0');
+  assert.equal(r.spec.palette['glass@g0'], '#405060');
+  const win = r.spec.systems[g.specSystem].typical.win!;
+  assert.equal(win.w, 0.55); assert.equal(win.h, 0.7);
+  assert.ok(Math.abs(win.sill! - 0.15 * g.storeyHeightsM[1]) < 0.002, `sill ${win.sill}`);
+  assert.equal(r.groups[1].slots.glass, 'glass');
+  assert.deepEqual(r.spec.systems[r.groups[1].specSystem], plain.spec.systems[plain.groups[1].specSystem]);
+});

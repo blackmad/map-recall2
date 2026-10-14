@@ -13,6 +13,7 @@ import * as T from 'three';
 import type {CanalHouseRecipe, CanalhousePoint} from '../canalhouseRecipes.ts';
 import {ROOF_COLOURS, type FitReport} from './fit.ts';
 import {swatch, type CanalHouseIntent, type FrontIntent} from './intent.ts';
+import {steppedTowerCap} from './amsterdamSchool.ts';
 
 const facadeOf = (group: T.Group, id: string) => group.getObjectByName(`elevation/${id}`) as T.Group | undefined;
 const material = (colour: string) => new T.MeshStandardMaterial({color: colour, roughness: 1});
@@ -34,7 +35,7 @@ export function dressHistoric(group: T.Group, intent: CanalHouseIntent, fit: Fit
 }
 
 /** Facade-frame copy of the recipe ring around one front: the corners of the frontage and the party-wall neighbours. */
-function frontEnds(group: T.Group, recipe: CanalHouseRecipe, f: FitReport['fronts'][number]) {
+export function frontEnds(group: T.Group, recipe: CanalHouseRecipe, f: FitReport['fronts'][number]) {
   const facade = facadeOf(group, f.id)!;
   group.updateMatrixWorld(true);
   const inv = facade.matrixWorld.clone().invert(), ring = recipe.footprint.value[f.polygonIndex].outer, n = ring.length;
@@ -165,6 +166,7 @@ export function addTowers(group: T.Group, intent: CanalHouseIntent, recipe: Cana
     const facade = facadeOf(group, f.id);
     if (!f.towers?.length || !facade) continue;
     for (const [i, t] of f.towers.entries()) {
+      if (t.corner) continue; // corner towers: amsterdamSchool.ts addCornerTowers
       const depth = Math.min(t.widthM, 4), x0 = t.leftM, x1 = t.leftM + t.widthM, y0 = t.bottomM, y1 = t.topM, z0 = -0.16, z1 = -depth;
       const values: number[] = [], quad = (a: number[], b: number[], c: number[], d: number[]) => values.push(...a, ...b, ...c, ...a, ...c, ...d);
       quad([x0, y0, z1], [x0, y0, z0], [x0, y1, z0], [x0, y1, z1]); // left, facing -x
@@ -174,6 +176,7 @@ export function addTowers(group: T.Group, intent: CanalHouseIntent, recipe: Cana
       const wall = new T.Mesh(body, (shell?.material as T.Material) ?? material(recipe.palette.value.wall));
       wall.name = `tower/${f.id}-${i}/body`; wall.userData = {component: 'tower', surface: 'wall', pandId: intent.pandId};
       facade.add(wall);
+      if (t.cap === 'stepped') { added += steppedTowerCap(facade, [[x0, 0.02], [x1, 0.02], [x1, z1], [x0, z1]], y1, (wall.material as T.Material), material(ROOF_COLOURS[intent.roof.material].steep), `tower/${f.id}-${i}`, intent.pandId); continue; }
       // Cap: overhangs the walls by 8 cm (front and sides), pyramid apex over the centre.
       const o = 0.08, cx = (x0 + x1) / 2, cz = (0.02 + o + z1 - o) / 2, apex = t.cap === 'pyramid' ? y1 + 0.75 * t.widthM : y1 + 0.12;
       const c = [[x0 - o, y1, 0.02 + o], [x1 + o, y1, 0.02 + o], [x1 + o, y1, z1 - o], [x0 - o, y1, z1 - o]];

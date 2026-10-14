@@ -1,0 +1,70 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-prinsen-167765",
+ "pandId": "0363100012167765",
+ "address": "Prinsengracht (BAG 1650; dark-painted brick, white segmental-headed frames over a timber pui)",
+ "sources": [
+  {
+   "id": "pano-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/pand-reference-walls/0363100012167765/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Prinsengracht",
+   "gable": "cornice",
+   "storeys": 3,
+   "bays": 4,
+   "doorBay": null,
+   "basement": "none",
+   "cornice": "simple",
+   "hoist": false,
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "window",
+     "window",
+     "glazed-door",
+     "window"
+    ],
+    "colour": "#e6e2d8",
+    "evidence": "front.jpg 2021-01-22: white timber pui with a beam, glazed bays with transom lights (right half behind a tree)"
+   },
+   "windows": "six-pane",
+   "storeyWindows": {
+    "2": "sash"
+   },
+   "windowShare": 0.66,
+   "windowHeights": [
+    0.7,
+    0.74,
+    0.7
+   ],
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     1,
+     2
+    ]
+   }
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#2e2826",
+  "frame": "white",
+  "door": "#2a2a2a",
+  "stone": "#e6e2d8",
+  "cornice": "#ece9e0"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front.jpg 2021-01-22. Four bays of white frames with segmental heads (rise ~0.12 on 1.2 m, no ring): first floor 1.2 x 2.1 m two across and three up, second floor 1.2 x 1.5 m two by two; dark painted brick #2d2826."
+ ]
+}

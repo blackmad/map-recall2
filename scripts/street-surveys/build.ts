@@ -77,7 +77,7 @@ const recipeEntries = catalogue.models.filter((m: any) => m.category === 'street
 const recipes: RecipeRef[] = recipeEntries.map((m: any) => ({id: m.recipe?.id ?? m.id, pandId: m.buildingId.split('.').at(-1)}));
 
 await fs.mkdir(THUMBS, {recursive: true});
-const faceIds = (await fs.readdir(FACES)).filter(f => existsSync(path.join(FACES, f, 'discovery.json'))).sort();
+const faceIds = (await fs.readdir(FACES)).filter(f => !f.startsWith('_') && existsSync(path.join(FACES, f, 'discovery.json'))).sort();
 const streets = new Map<string, StreetSurvey>();
 const streetOf = (name: string) => { if (!streets.has(name)) streets.set(name, {street: name, faces: [], recipeHouses: []}); return streets.get(name)!; };
 const faceRefs: FaceRef[] = [];

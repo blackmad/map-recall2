@@ -944,7 +944,7 @@
         "commit": "65cf81b476c757a363f59aec86a76db824b48598",
         "path": "models/jan-evertsen-north-canopy-pilot/"
       },
-      "preview": "./jan-evertsen-pilot.html",
+      "preview": "./street-generator-demos.html",
       "nextAction": "Review recessed ground assembly in actual game, run frozen128/122/119 transfer challenges and desktop/touch stationary-rider pans/GPU timing before accepting expansion.",
       "runtimePilot": {
         "status": "installed-bounded-pilot",

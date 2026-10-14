@@ -13,7 +13,8 @@ import type {ArchKind} from '../blockBuilding/arch.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
-export const CORNICES = ['none', 'simple', 'bracketed', 'heavy'] as const;
+/** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
+export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as const;
 export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
 export const CROWN_CAP_RISES = ['low', 'normal'] as const;
 export const CROWN_CAP_SPANS = ['narrow', 'medium', 'wide'] as const;
@@ -21,13 +22,44 @@ export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'rig
 export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
 export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
 export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as const;
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light'] as const;
+/**
+ * Window kinds (pane layout drawn as glazing bars). Canal-belt survey 2026-10-14 (docs/canal-house-windows-and-accents-20261014.md):
+ * `sash-6-over-6` the 18th-c. sliding sash, three panes across and two up in each sash, thin bars and a heavier meeting
+ * rail at half height; `sash-8-over-8` the wide sash, four across and two up per sash; `sash-9-over-9` the tall bel-etage
+ * sash, three across and three up per sash; `six-pane` two across and three up (the 19th-c. replacement of small panes);
+ * `t-window` the 19th-c. T-venster: an undivided transom light over a pair of casements (a transom at 0.76 of the height,
+ * the mullion below it only); `small-over-one` the c.1900 window: a small-paned top sash (three across, two up) over large
+ * lower panes; `cross-transom` the 17th-c. kruiskozijn: a heavy mullion and a transom at 0.6 of the height with small
+ * panes in the four lights.
+ * `ladder` (Amsterdam School, 1915-1935): a tall narrow light 0.55-0.75 m wide and about 0.7 of the storey high, with
+ * 4-6 horizontal glazing bars and no vertical bar; a bay wide enough for two lights and a 0.16 m pier holds a PAIR
+ * (the pairing follows `bayWidths`).
+ */
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom'] as const;
+export type WindowKind = typeof WINDOWS[number];
+/** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
+export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
+/** `solid`: a continuous ring; `blocks`: five radiating stone blocks with brick between (the 17th-c. block arch); `none`: no ring, only the keystone (19th-c. carved keystones over plain brick heads). */
+export const ARCH_RING_STYLES = ['solid', 'blocks', 'none'] as const;
+/** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, or the `frame` paint. */
+export const ARCH_RING_COLOURS = ['stone', 'band', 'frame'] as const;
+/** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
+export const DIMINISHING_WINDOW_HEIGHTS = [0.73, 0.76, 0.72, 0.72, 0.7, 0.68] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
 export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
-export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone'] as const;
+/** `sill`: a projecting stone sill alone (no lintel), the commonest 18th/19th-c. canal-belt dressing. */
+export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'sill'] as const;
 export const QUOINS = ['none', 'stone'] as const;
-export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch'] as const;
+/**
+ * Shop canopy. `fabric-straight`/`fabric-dutch`: a sloped fabric awning. `rigid` (Amsterdam School luifel): a horizontal
+ * slab 1.2 m deep and 0.16 m thick whose underside sits 2 cm over the shop-glass head (over the fascia board when the
+ * shop has one), with a 0.3 m vertical fascia on its nose (6 cm thick, top flush with the slab, hanging 0.14 m below it).
+ * It covers `extent` (default the whole front, 5 cm short of each end). A block face's `continuity.canopy` group sets one
+ * height for its members and runs each member's slab to the shared party plane, so the row reads as one slab while each
+ * pand keeps its own piece (blockFace/intent.ts).
+ */
+export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch', 'rigid'] as const;
 export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
 /** Historic (17th/18th-c.) canal-house vocabulary, see `HistoricFrontIntent`. */
 export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
@@ -37,7 +69,10 @@ export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
 export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel'] as const;
 export type GroundBay = typeof GROUND_BAYS[number];
 export const DORMER_STYLES = ['plain', 'pediment', 'pointed'] as const;
-export const TOWER_CAPS = ['pyramid', 'flat'] as const;
+/** Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab). */
+export const TOWER_CAPS = ['pyramid', 'flat', 'stepped'] as const;
+/** Cap on the top storey of a multi-bay erker (`bayWindows.bays`): a hipped lean-to roof, a flat slab, or none (a plain closure). */
+export const ERKER_CAPS = ['hip', 'flat', 'none'] as const;
 /** Largest forward lean a front may declare (degrees); real Amsterdam fronts lean up to ~2 degrees ("op vlucht"). */
 export const MAX_LEAN_DEGREES = 3;
 
@@ -58,8 +93,13 @@ export interface IntentSource {
   capturedAt: string;
   url?: string;
   license?: string;
-  /** Local reference image (repo-relative), e.g. the facts-step panorama crop. */
+  /**
+   * Local reference image (repo-relative), e.g. the facts-step panorama crop, or an archived crop in the source-data
+   * repo: `source-data://pand-reference-walls/<pand>/<file>`, resolved under `$MAP_RECALL_SOURCE_DATA` (sourceData.ts).
+   */
   image?: string;
+  /** sha256 of `image` (required for `source-data://` images; resolution fails loudly when the bytes differ). */
+  sha256?: string;
 }
 
 export interface FrontIntent {
@@ -133,6 +173,38 @@ export interface FrontIntent {
   souterrain?: boolean;
   cornice: typeof CORNICES[number];
   windows: typeof WINDOWS[number];
+  /** Window kind per storey where it differs from `windows` (key = storey index from the ground, or "last"): a cross-transom ground storey under sashes, 6-over-6 sashes under 8-over-8 bel-etage ones. */
+  storeyWindows?: Record<string, WindowKind>;
+  /**
+   * Window heads on the window storeys (`storeys`, default every storey above the ground): `segmental` = a shallow arc
+   * (rise 0.08 x the window width, the survey median of 0.03-0.10), `round` = a semicircle, `flat` = square (the default). `archRing`
+   * lays a ring of `colour` round the head (`widthCourses` brick courses deep, default 3 = about 0.17 m; `style: "blocks"`
+   * = five radiating blocks with brick between) with an optional keystone block at the crown; without it the head stays
+   * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
+   * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
+   */
+  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number}};
+  /** Window width as a share of the front (all windows of a full storey together, 0.3..0.8; survey median 0.66). Default: the legacy 58 % of an equal-pier bay. Only on the shared equal-pier grid (not with bayWidths). */
+  windowShare?: number;
+  /**
+   * Window height per storey as a share of the storey height (ground storey first; one entry per storey, 0.3..0.9), or
+   * `diminishing` for the survey medians (`DIMINISHING_WINDOW_HEIGHTS`: bel-etage tallest, the attic storey smallest).
+   * The window head keeps a fixed share of wall above it; the sill moves. Default: the legacy 0.62 / 0.6 - 0.02 per storey.
+   */
+  windowHeights?: 'diminishing' | number[];
+  /** Speklagen: stone courses (`palette.band`, else `stone`) every `spacing` brick courses, each `courses` deep (default 2), from the plinth to the eaves. With `bands: "speklagen"`. */
+  speklagen?: {spacing: number; courses?: number};
+  /**
+   * Relative storey heights, ground storey first (one weight per storey, 0.4..3; metres work too: they are normalised to
+   * the wall). Canal-belt survey medians: bel-etage 1.45, first 1, second 0.97, top 0.85 of the first floor. Replaces the
+   * default rule (ground 1.1 or 1.32 with `tallGround`, uppers diminishing 4 % per storey). A low basement is unaffected; a
+   * souterrain weighs one unit unless the list has one more entry than `storeys`, the souterrain's weight first.
+   */
+  storeyHeights?: number[];
+  /** `low`: a 0.45 m stone plinth with the basement wall in brick above it (default `full`: stone over the whole basement height). */
+  plinth?: 'full' | 'low';
+  /** Vertical iron bars in the basement lights (traliewerk). */
+  basementBars?: boolean;
   /** 0-based storeys whose windows have round-arched heads (often the top storey under a parapet). */
   archedStoreys?: number[];
   /** Relieving arches over arched/segmental windows: stone dressing, the palette's band brick, or none. Default: band brick when the palette has one, else stone. */
@@ -148,10 +220,37 @@ export interface FrontIntent {
   quoins?: typeof QUOINS[number];
   /** Iron/stone balcony guards on upper-storey windows. `storeys` are 0-based (ground = 0, so >= 1); the window becomes a full-height French window. */
   balconies?: { storeys: number[]; bays: number[]; projecting?: boolean };
-  /** Glazed bay windows (erkers): the windows of these upper storeys in `bay` become one projecting three-face bay each. */
-  bayWindows?: { bay: number; storeys: number[] };
-  /** Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick). */
-  bands?: 'none' | 'storey' | 'lintel' | 'both';
+  /**
+   * Glazed bay windows (erkers). `bay`: the windows of these upper storeys in that bay become one projecting three-face
+   * bay each. `bays` instead of `bay` (Amsterdam School multi-bay erker): ONE bay projecting 0.55 m over the span of the
+   * inclusive axes `{from, to}` (8 cm in from the span's bay edges), rising through the listed consecutive storeys as one
+   * stack. Each storey: a solid stallriser panel 0.85 m high (wall brick) under a front light divided into two lights per
+   * spanned axis, one light in each angled side (0.25 m return), a 0.2 m head panel; closed at its foot and top. `cap` on
+   * the top storey: `hip` (a lean-to hipped roof rising 0.45 m to the wall, roof colour), `flat` (a 0.12 m slab overhanging
+   * 6 cm, trim colour) or `none` (default: the closure only).
+   */
+  bayWindows?: { bay?: number; bays?: {from: number; to: number}; storeys: number[]; cap?: typeof ERKER_CAPS[number] };
+  /**
+   * Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick).
+   * `courses` (Amsterdam School brick banding, needs `palette.band`): the storeys in `courseStoreys` are laid whole in the
+   * band brick (a 4 cm facing, cut around the openings), and every storey above the ground carries thin raised courses
+   * at its lintel line in the band brick: 3 courses (2 on storeys under 2.8 m), 5 cm high, 11 cm apart, 7 cm proud,
+   * starting 5 cm over the storey's window heads. A multi-bay erker interrupts both.
+   */
+  bands?: 'none' | 'storey' | 'lintel' | 'both' | 'courses' | 'speklagen';
+  /** `bands: courses`: 0-based storeys laid whole in the band brick (ground = 0 only without a shopfront/ground front). */
+  courseStoreys?: number[];
+  /**
+   * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
+   * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
+   * of a lisene shared across the party wall (its outer face follows the party plane); `full` is a whole 0.45 m lisene.
+   */
+  lisenes?: { leftEnd?: 'half' | 'full'; rightEnd?: 'half' | 'full' };
+  /**
+   * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
+   * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
+   */
+  windowHoods?: boolean;
   /** The same house module repeated along this front (rows built together, double fronts). */
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
@@ -178,8 +277,15 @@ export interface FrontIntent {
   dormerStyle?: typeof DORMER_STYLES[number];
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
-  /** A brick tower rising over bays `bays` (inclusive axes) `rise` upper-storey heights above the eaves, with a pyramid or flat cap; one light per storey of rise. */
-  tower?: {bays: {from: number; to: number}; rise: number; cap: typeof TOWER_CAPS[number]};
+  /**
+   * A brick tower rising over bays `bays` (inclusive axes) `rise` upper-storey heights above the eaves, with a pyramid,
+   * flat or stepped cap; one light per storey of rise. `corner: true` instead of `bays` (a multi-front corner pand): the
+   * tower stands on the corner where this front meets the pand's other front. Its plan is square (a parallelogram on an
+   * oblique corner) with the two front planes as its outer walls and a side of clamp(0.3 x the shorter front, 2.4, 4.2) m
+   * along each front from the shared corner; both fronts rise over that end (one light per storey of rise on each), two
+   * inner walls and the cap close it. The two fronts must meet in one footprint vertex (within 0.3 m).
+   */
+  tower?: {bays?: {from: number; to: number}; corner?: boolean; rise: number; cap: typeof TOWER_CAPS[number]};
   /**
    * Clip street-side details (cornice, bands, sills, gable ornament) at oblique party walls so nothing crosses the party
    * plane (trapezoidal plots meet the front up to ~20 degrees off square). Block faces set it for every house with
@@ -280,7 +386,13 @@ const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance'
 const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align'];
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
-export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number } }
+/**
+ * `rigid`: a slab canopy (see AWNING_STYLES); `fasciaColour` paints its nose fascia (default the canopy colour).
+ * `glassBlocks` (rigid only; Jan Evertsenstraat): a glass-block band in the wall over the canopy, from 2 cm over the slab
+ * to 8 cm under the first-storey sills (at most 1.1 m, at least 0.4 m), 1.5 cm proud, with a 0.2 m mortar grid 3 cm
+ * wide; brick piers 0.25 m wide stay at party-wall ends, 0.05 m at free ends.
+ */
+export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number }; fasciaColour?: string; glassBlocks?: boolean }
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent {
@@ -293,6 +405,8 @@ export interface PaletteIntent {
    * (a front's palette cannot change the material).
    */
   wallMaterial?: typeof WALL_MATERIALS[number];
+  /** Large tier only: the glazing colour (default the kit's dark glass `#2a3a42`); measured from the photo by `measure.ts`. */
+  glass?: string;
 }
 export const WALL_MATERIALS = ['brick', 'stucco'] as const;
 /**
@@ -325,6 +439,7 @@ export interface CanalHouseIntent {
  * windows into the exact walls. Validated by `validateLargeIntent` (largeIntent.ts); list a house's surfaces with
  * `scripts/building-recipes/walls.ts`.
  */
+export interface LargeWindowShape {w: number; h: number; sill: number}
 export interface TiltedBaysIntent {every?: number; first?: number; bays?: number[]; storeys?: number[]}
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
@@ -363,8 +478,30 @@ export interface LargeWallIntent {
   police?: {stripe?: boolean; lamp?: boolean};
   /** What this group's wall is made of when it differs from the house (`palette.wallMaterial`); see GROUP_WALL_MATERIALS. */
   wallMaterial?: typeof GROUP_WALL_MATERIALS[number];
-  /** Group colours when they differ from the house palette (`brick` = this group's wall). */
-  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone'>>;
+  /**
+   * Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing, `arch` = the
+   * brick arch rings over arched openings, default a shade darker than the wall).
+   */
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string};
+  /**
+   * Measured window proportions (`measure.ts` from the rectified photo; replaces the `windows` preset's size): `w` window
+   * width as a fraction of the bay, `h` height as a fraction of the storey, `sill` sill height as a fraction of the storey.
+   * Proportions only, never metres. brick-bay-grid, ribbon-windows and plinth-shopfronts upper rows.
+   */
+  windowShape?: LargeWindowShape;
+  /**
+   * `glazed-hall` (Apollohal): the brick base rises to `base` (fraction of the eaves height); above it one glass skin to the
+   * eaves, divided into `lights` columns per bay (`baysPerStorey` = the structural posts) and `rows` rows by a mullion grid.
+   */
+  hall?: {base: number; lights: number; rows: number};
+  /**
+   * `glazed-columns` (Houthavenkade 26): full-height glass stripes over the listed bays (of `baysPerStorey`, adjacent bays
+   * join into one stripe) from storey `from` (default 1) up, `share` of the run's width (default 0.9); `slabs`: the stripe
+   * is an enclosed balcony bay 0.45 m deep with a slab at every storey line, else a flush glass band with frame transoms.
+   */
+  columns?: {bays: number[]; share?: number; from?: number; slabs?: boolean};
+  /** Fields of this group set by hand that `measure.ts --write` must keep (e.g. `["palette.brick", "baysPerStorey"]`). */
+  hand?: string[];
   /**
    * Arched heads: on the upper-storey windows, on the ground openings (with `ground: "portals"` or a windowed ground),
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
@@ -443,6 +580,11 @@ export interface LargeBuildingIntent {
    * when the LoD2.2 ground has drifted from it (IoU < 0.90). Default `lod22`: the LoD2.2 shell verbatim.
    */
   footprint?: 'lod22' | 'bag';
+  /**
+   * The intent carries values measured from the rectified photos (`measure.ts --write`, the evidence in
+   * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
+   */
+  measured?: {date: string; groups: number[]};
   notes?: string[];
 }
 
@@ -501,8 +643,20 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (typeof f.hoist !== 'boolean') problems.push(`${at}.hoist must be boolean`);
     if (f.shutters !== undefined) oneOf(f.shutters, ['none', 'ground', 'all'], `${at}.shutters`);
     if (f.balconies) { f.balconies.storeys.forEach(v => count(v, `${at}.balconies.storeys`, 1, f.storeys - 1)); f.balconies.bays.forEach(v => count(v, `${at}.balconies.bays`, 0, 15)); }
-    if (f.bayWindows) { count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15); f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1)); }
-    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both'], `${at}.bands`);
+    if (f.bayWindows) {
+      if (f.bayWindows.bays === undefined) count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15);
+      else problems.push(...erkerProblems(f, at));
+      f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1));
+    }
+    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses', 'speklagen'], `${at}.bands`);
+    if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
+    if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
+    if (f.lisenes !== undefined) {
+      const l = f.lisenes as Record<string, unknown>;
+      if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd'].includes(k)) || Object.values(l).some(v => v !== 'half' && v !== 'full') || !Object.keys(l).length) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full"`);
+      if (f.repeat) problems.push(`${at}.lisenes: not on a repeated front`);
+    }
+    problems.push(...windowProblems(f, at, oneOf));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
@@ -598,6 +752,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       oneOf(aw.style, AWNING_STYLES, `${at}.shopfront.awning.style`);
       colour(aw.colour, `${at}.shopfront.awning.colour`);
       if (aw.extent && !(aw.extent.from >= 0 && aw.extent.to <= 1 && aw.extent.to - aw.extent.from >= 0.15)) problems.push(`${at}.shopfront.awning.extent: need 0 <= from < to <= 1 covering at least 0.15`);
+      if (aw.fasciaColour !== undefined) { colour(aw.fasciaColour, `${at}.shopfront.awning.fasciaColour`); if (aw.style !== 'rigid') problems.push(`${at}.shopfront.awning.fasciaColour: only a rigid canopy has a fascia`); }
+      if (aw.glassBlocks !== undefined && (aw.glassBlocks !== true || aw.style !== 'rigid')) problems.push(`${at}.shopfront.awning.glassBlocks: true, and only over a rigid canopy`);
     } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
     for (const [k, v] of Object.entries(f.palette ?? {})) {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
@@ -605,6 +761,9 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     problems.push(...historicProblems(f, at, colour, oneOf));
   }
+  const corners = Array.isArray(intent?.fronts) ? intent.fronts.filter(f => f?.tower?.corner) : [];
+  if (corners.length > 1) problems.push('tower.corner: one corner tower per pand (on one of the two fronts that meet at the corner)');
+  if (corners.length && intent.fronts.length < 2) problems.push(`front ${corners[0].id}.tower.corner: a corner tower needs a pand with two fronts`);
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
@@ -629,6 +788,70 @@ export function storeyAxesOf(f: FrontIntent, s: number): number[] | null {
 }
 
 export const swatch = (value: string): string => SWATCHES[value] ?? value;
+
+/** Problems with a multi-bay erker (`bayWindows.bays`): axes on the grid, consecutive storeys, cap. */
+function erkerProblems(f: FrontIntent, at: string): string[] {
+  const p: string[] = [], bw = f.bayWindows!, b = bw.bays!, grid = frontGrid(f);
+  if (bw.bay !== undefined) p.push(`${at}.bayWindows: bay and bays are alternatives`);
+  if (!b || !Number.isInteger(b.from) || !Number.isInteger(b.to) || b.from < 0 || b.to >= grid || b.from > b.to) p.push(`${at}.bayWindows.bays: {from, to} bay axes within 0..${grid - 1}`);
+  const st = Array.isArray(bw.storeys) ? bw.storeys : [];
+  if (!st.length || st.some((s, i) => i > 0 && s !== st[i - 1] + 1)) p.push(`${at}.bayWindows.storeys: one or more consecutive storeys, ascending (the erker is one stack)`);
+  if (bw.cap !== undefined && !ERKER_CAPS.includes(bw.cap)) p.push(`${at}.bayWindows.cap: ${JSON.stringify(bw.cap)} not in ${ERKER_CAPS.join('|')}`);
+  if (f.repeat) p.push(`${at}.bayWindows.bays: not on a repeated front`);
+  return p;
+}
+
+/** Problems with brick course banding (`bands: courses`, `courseStoreys`). */
+function courseProblems(f: FrontIntent, palette: PaletteIntent | undefined, at: string): string[] {
+  const p: string[] = [];
+  if (f.bands !== 'courses') return [`${at}.courseStoreys: only with bands "courses"`];
+  if (!(f.palette?.band ?? palette?.band)) p.push(`${at}.bands: courses are laid in the band brick; give palette.band`);
+  const list = f.courseStoreys;
+  if (list !== undefined && (!Array.isArray(list) || list.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= list[i - 1])))) p.push(`${at}.courseStoreys: ascending storey indices within 0..${f.storeys - 1}`);
+  if (Array.isArray(list) && list.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.courseStoreys: the ground storey holds a shop/ground front; band the upper storeys`);
+  return p;
+}
+
+/** Problems with the canal-belt window/accent fields (2026-10-14); all optional and never checked when absent. */
+function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
+  const p: string[] = [], storeyKey = (k: string) => k === 'last' || (Number.isInteger(Number(k)) && Number(k) >= 0 && Number(k) < f.storeys);
+  for (const [k, v] of Object.entries(f.storeyWindows ?? {})) {
+    if (!storeyKey(k)) p.push(`${at}.storeyWindows.${k}: key must be a storey index or "last"`);
+    oneOf(v, WINDOWS.filter(w => w !== 'shop'), `${at}.storeyWindows.${k}`);
+  }
+  const h = f.windowHead;
+  if (h !== undefined) {
+    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing)`);
+    oneOf(h?.kind, WINDOW_HEADS, `${at}.windowHead.kind`);
+    if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
+    if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);
+    if (f.windows === 'arched') p.push(`${at}.windowHead: windows "arched" already sets a head; pick a pane layout`);
+    const r = h?.archRing;
+    if (r !== undefined) {
+      for (const k of Object.keys(r ?? {})) if (!['colour', 'style', 'keystone', 'widthCourses'].includes(k)) p.push(`${at}.windowHead.archRing.${k}: unknown field (colour, style, keystone, widthCourses)`);
+      if (r?.style !== undefined) oneOf(r.style, ARCH_RING_STYLES, `${at}.windowHead.archRing.style`);
+      if (r?.style === 'none' && !r.keystone) p.push(`${at}.windowHead.archRing: style "none" draws only the keystone; set keystone: true`);
+      oneOf(r?.colour, ARCH_RING_COLOURS, `${at}.windowHead.archRing.colour`);
+      if (r?.keystone !== undefined && typeof r.keystone !== 'boolean') p.push(`${at}.windowHead.archRing.keystone must be boolean`);
+      if (r?.widthCourses !== undefined && !(Number.isInteger(r.widthCourses) && r.widthCourses >= 1 && r.widthCourses <= 6)) p.push(`${at}.windowHead.archRing.widthCourses: integer 1..6`);
+      if (h?.kind === 'flat' && !r?.keystone) p.push(`${at}.windowHead.archRing: a flat head has no arch; only a keystone (keystone: true) stands on it`);
+    } else if (h?.kind === 'relieving') p.push(`${at}.windowHead: a relieving arch needs archRing {colour}`);
+  }
+  const wh = f.windowHeights;
+  if (wh !== undefined && wh !== 'diminishing' && (!Array.isArray(wh) || wh.length !== f.storeys || wh.some(v => !(typeof v === 'number' && v >= 0.3 && v <= 0.9)))) p.push(`${at}.windowHeights: "diminishing" or one share 0.3..0.9 per storey (${f.storeys})`);
+  if (f.windowShare !== undefined && (typeof f.windowShare !== 'number' || !(f.windowShare >= 0.3 && f.windowShare <= 0.8) || f.bayWidths !== undefined || f.piers === 'margin')) p.push(`${at}.windowShare: 0.3..0.8 of the front, on the equal-pier grid (not with bayWidths or piers "margin")`);
+  if (f.speklagen !== undefined) {
+    const s = f.speklagen;
+    if (f.bands !== 'speklagen') p.push(`${at}.speklagen: needs bands "speklagen"`);
+    if (!s || !Number.isInteger(s.spacing) || s.spacing < 4 || s.spacing > 30) p.push(`${at}.speklagen.spacing: integer 4..30 brick courses`);
+    if (s?.courses !== undefined && !(Number.isInteger(s.courses) && s.courses >= 1 && s.courses <= 5 && s.courses < s.spacing)) p.push(`${at}.speklagen.courses: integer 1..5, less than spacing`);
+  } else if (f.bands === 'speklagen') p.push(`${at}.bands: "speklagen" needs speklagen {spacing}`);
+  if (f.storeyHeights !== undefined && (!Array.isArray(f.storeyHeights) || (f.storeyHeights.length !== f.storeys && !(f.souterrain && f.storeyHeights.length === f.storeys + 1)) || f.storeyHeights.some(v => !(typeof v === 'number' && v >= 0.4 && v <= 6)))) p.push(`${at}.storeyHeights: one relative height per storey (${f.storeys}; with a souterrain optionally one more, the souterrain first), each 0.4..6`);
+  else if (f.storeyHeights && Math.max(...f.storeyHeights) / Math.min(...f.storeyHeights) > 3) p.push(`${at}.storeyHeights: tallest storey more than 3x the lowest`);
+  if (f.plinth !== undefined) oneOf(f.plinth, ['full', 'low'], `${at}.plinth`);
+  if (f.basementBars !== undefined && (typeof f.basementBars !== 'boolean' || (f.basementBars && f.basement !== 'windows' && f.basement !== 'stoop-and-windows'))) p.push(`${at}.basementBars: boolean, and needs basement windows`);
+  return p;
+}
 
 const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
 const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
@@ -674,7 +897,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   }
   if (f.tower !== undefined) {
     const t = f.tower;
-    if (!t?.bays || !Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.tower.bays: {from, to} bay axes within 0..${grid - 1}`);
+    if (t?.corner !== undefined && t.corner !== true) problems.push(`${at}.tower.corner: true (or leave it out)`);
+    if (t?.corner) { if (t.bays !== undefined) problems.push(`${at}.tower: corner and bays are alternatives`); if (f.repeat) problems.push(`${at}.tower.corner: not on a repeated front`); }
+    else if (!t?.bays ||!Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.tower.bays: {from, to} bay axes within 0..${grid - 1}`);
     if (!(t?.rise >= 0.5 && t.rise <= 3)) problems.push(`${at}.tower.rise: 0.5..3 upper-storey heights above the eaves`);
     oneOf(t?.cap, TOWER_CAPS, `${at}.tower.cap`);
   }

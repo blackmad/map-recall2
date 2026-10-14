@@ -1,4 +1,4 @@
-import type {InterwarLocalPoint} from './interwarFrontageLayout.js';
+import type {FrontageLocalPoint} from './frontageQuads.js';
 import type {RegularCanalRect,RegularCanalQuad,RegularCanalRole,RegularCanalPart} from './regularCanalFrontage.js';
 
 /** Explicit observed tiers. The envelope never supplies floors or scales heights. */
@@ -71,7 +71,7 @@ export function planRepeatedTerraceFrontage(input:{lengthM:number;baseM:number;t
   const doorRect=rect(axes[r.entrance.axisIndex],r.ground,r.entrance.axisIndex);
   const plan:RepeatedTerraceFrontagePlan={axes,windows:[],quads:[],cutRects:[],wallSegments:[],access:{...doorRect,height:r.entrance.leafHeightM,axis:axes[r.entrance.axisIndex],out:back+.005}};
   const fits=(a:RegularCanalRect)=>a.left>=.05-1e-8&&a.left+a.width<=L-.05+1e-8&&a.bottom>=base-1e-8&&a.bottom+a.height<=top-.1+1e-8;
-  const quad=(role:RepeatedTerraceRole,part:RepeatedTerracePart,points:RepeatedTerraceQuad['points'],normal:InterwarLocalPoint,rowIndex?:number,axisIndex?:number)=>{
+  const quad=(role:RepeatedTerraceRole,part:RepeatedTerracePart,points:RepeatedTerraceQuad['points'],normal:FrontageLocalPoint,rowIndex?:number,axisIndex?:number)=>{
     const uv:RepeatedTerraceQuad['uv']=[[0,0],[1,0],[1,1],[0,1]],a=points[0],b=points[1],c=points[2],u=b.map((v,i)=>v-a[i]),v=c.map((n,i)=>n-a[i]);
     const cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
     if(cross.reduce((s,n,i)=>s+n*normal[i],0)<0){[points[1],points[3]]=[points[3],points[1]];[uv[1],uv[3]]=[uv[3],uv[1]];}

@@ -1,7 +1,7 @@
 // node --import tsx --test src/canalRecall/look/*.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BUILDING_LOOKS, CITY_ROOF, FLAT_ROOF_GREYS, LOOK_VARIANTS, PERIOD_FROM, PERIOD_PRIORS, PERIODS, PHOTO_WALL_CELL_MEAN, ROOF_TONES, cellSetOf, foliageDisplayHex, GROUND_TONES, hexToRgb, lookHex, periodForYear, rgbToHsl, roofTone, cityTint, cityWallTint, BRICK_CELL_MEAN } from './palette.ts';
+import { BUILDING_LOOKS, CITY_ROOF, FLAT_ROOF_GREYS, LOOK_VARIANTS, PERIOD_FROM, PERIOD_PRIORS, PERIODS, PHOTO_WALL_CELL_MEAN, ROOF_TONES, cellSetOf, foliageDisplayHex, GROUND_TONES, hexToRgb, lookHex, periodForYear, rgbToHsl, roofTone, cityTint, cityWallTint, BRICK_CELL_MEAN, GLASS_TINT_CELL_H, GLASS_TINT_CELL_MEAN, GLASS_TINT_CELL_W, cityMeasuredGlassTint, glassTintCellValue } from './palette.ts';
 import { PARITY_TOLERANCE, faceNormal, lumaSpread, meanLuma } from './lookParityMath.ts';
 
 test('one era scheme: 1860 / 1915 / 1945, a boundary belongs to the period it opens', () => {
@@ -76,8 +76,29 @@ test('measured walls bypass the brick clamp: cell mean x tint lands on the autho
   // The clamp would have lifted the dark wall to L 0.3 and tanned the pale one; measured does neither.
   assert.ok(L(cityWallTint('#3a2a28')) >= 0.3 - 1e-9 && afterCell(cityTint('brick', '#3a2a28', 'measured')) < 0.25);
   assert.ok(L(cityWallTint('#d8d2c4')) <= 0.6 + 1e-9 && afterCell(cityTint('brick', '#d8d2c4', 'measured')) > 0.75);
-  // Only brick/accent are touched; every other slot ignores the source.
-  for (const slot of ['stucco', 'stone', 'frame', 'door', 'glass', 'paint', 'roofTile', 'slate', 'bitumen'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
+  // Only brick/accent (and glass, its own test) are touched; every other slot ignores the source.
+  for (const slot of ['stucco', 'stone', 'frame', 'door', 'paint', 'roofTile', 'slate', 'bitumen'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
   // Below L 0.18 the floor holds.
   assert.ok(afterCell(cityTint('brick', '#0a0808', 'measured')) >= 0.17);
 });
+
+test('measured glass: the grey pane cell x tint lands on the authored glass colour; unmeasured glass stays white-tinted', () => {
+  // The pane cell: grey, head 255 to sill 188, so a tint can reach a pale reflective pane.
+  let lo = 255, hi = 0;
+  for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) { const v = glassTintCellValue(x, y); lo = Math.min(lo, v); hi = Math.max(hi, v); }
+  assert.deepEqual([lo, hi], [188, 255]);
+  assert.ok(GLASS_TINT_CELL_MEAN > 205 && GLASS_TINT_CELL_MEAN < 225, String(GLASS_TINT_CELL_MEAN));
+  assert.ok(glassTintCellValue(8, 4) > glassTintCellValue(28, 4), 'the sky streak crosses the upper pane');
+  const onCell = (hex: string) => hexToRgb(hex).map(v => v * GLASS_TINT_CELL_MEAN / 255);
+  // Dark (Waagdragerhof, Apollohal) and grey-blue reflective (Houthavenkade 26) glass, the hexes lane C sampled.
+  for (const hex of ['#1e262c', '#2a3a42', '#3a4650', '#46545c', '#6c7f8a', '#8e9ea4']) {
+    assert.equal(cityTint('glass', hex), '#ffffff', 'unmeasured glass: unchanged');
+    assert.equal(cityTint('glass', hex, null), '#ffffff');
+    const tint = cityMeasuredGlassTint(hex);
+    assert.equal(cityTint('glass', hex, 'measured'), tint);
+    onCell(tint).forEach((v, i) => assert.ok(Math.abs(v - hexToRgb(hex)[i]) <= 1.5, `${hex} channel ${i}: ${v}`));
+  }
+  // Dark and reflective glass no longer draw the same pane.
+  assert.notEqual(cityTint('glass', '#1e262c', 'measured'), cityTint('glass', '#8e9ea4', 'measured'));
+});
+

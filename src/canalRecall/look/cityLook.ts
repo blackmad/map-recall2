@@ -37,9 +37,9 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
-import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
+import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, isMeasuredTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
-import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
+import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
@@ -64,7 +64,7 @@ export function cityLookEnabled(search?: string): boolean {
 // ---------------------------------------------------------------------------
 
 /** Cells only the city look paints: the 20th-century brick and the smooth white render (variants, chosen per mesh). */
-export type SlotVariantCell = 'brick20' | 'whiteStucco';
+export type SlotVariantCell = 'brick20' | 'whiteStucco' | 'glassTint';
 
 export type SlotLayer = {
   cell: SlotCell | 'white' | SlotVariantCell;
@@ -121,6 +121,8 @@ export const SLOT_LAYERS: readonly SlotLayer[] = [
   // canal brick's gain, so it renders lighter by that ratio; the white render is gained to its mean like stucco.
   { cell: 'brick20', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
   { cell: 'whiteStucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: WHITE_STUCCO_GAIN * CITY_LIT_LEVEL, skyTint: false },
+  // 2026-10-14: measured glass (`tintSource: 'measured'`): the pane in grey, so the authored glass colour shows (palette.ts `glassTintCellValue`).
+  { cell: 'glassTint', tileM: SLOT_TILE_M.glass, clampUv: true, litGain: 1, skyTint: true },
 ];
 export const SLOT_LAYER_COUNT = SLOT_LAYERS.length;
 
@@ -132,7 +134,11 @@ export type SlotVariantHints = {
   year?: number | null;
   /** The material is named for white (`white`, `cream`, `ivory`): the smooth white render rather than the grained stucco. */
   white?: boolean;
-  /** `measured`: the tint is a surveyed wall colour; brick/accent skip the city clamp (palette.ts `cityMeasuredWallTint`). */
+  /**
+   * `measured`: the tint is a surveyed colour. Brick/accent skip the city clamp (palette.ts `cityMeasuredWallTint`) and
+   * always sample the canal brick, whose mean that tint divides by (the lighter 20th-century cell drew a measured wall
+   * 0.02-0.03 L light); glass samples the grey measured-glass pane (`cityMeasuredGlassTint`).
+   */
   source?: TintSource;
 };
 
@@ -141,8 +147,9 @@ export const BRICK20_FROM = PERIOD_FROM.school;
 
 /** The slot layer (ordinal after the bay cells) a material slot samples. Frame and paint read plain white. */
 export function slotLayerOf(slot: MaterialSlot, hints: SlotVariantHints = {}): number {
-  const cell = SLOT_CELL[slot];
-  if (cell === 'brick' && typeof hints.year === 'number' && hints.year >= BRICK20_FROM) return CELL_ORDINAL.brick20;
+  const cell = SLOT_CELL[slot], measured = hints.source === 'measured';
+  if (cell === 'glass' && measured) return CELL_ORDINAL.glassTint;
+  if (cell === 'brick' && !measured && typeof hints.year === 'number' && hints.year >= BRICK20_FROM) return CELL_ORDINAL.brick20;
   if (cell === 'stucco' && hints.white) return CELL_ORDINAL.whiteStucco;
   return cell === 'frame' ? CELL_ORDINAL.white : CELL_ORDINAL[cell];
 }
@@ -212,7 +219,7 @@ const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
  * never calls this.
  */
 export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null): string {
-  if (source === 'measured' && (slot === 'brick' || slot === 'accent')) return cityTint(slot, hex, source);
+  if (isMeasuredTint(slot, source)) return cityTint(slot, hex, source);
   const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
   if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
   if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
@@ -242,6 +249,7 @@ function slotCanvas(doc: Document, cell: SlotLayer['cell'], brick: CanvasImageSo
     case 'white': case 'frame': return paintWhiteCanvas(doc);
     case 'door': return paintDoorCanvas(doc);
     case 'glass': return paintGlassCanvas(doc);
+    case 'glassTint': return paintGlassTintCanvas(doc);
     case 'tile': return roofCanvas(doc, 'tile');
     case 'slate': return roofCanvas(doc, 'slate');
     case 'flat': return roofCanvas(doc, 'flat');

@@ -2,7 +2,8 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
-// Own ground in the game (`?ownGround=1`, docs/research/own-ground-20261009.md).
+// Own ground in the game (on by default since 2026-10-14; `?ownGround=0` opts out;
+// docs/research/own-ground-20261009.md). The tests pin it on or off with the window global.
 // Opt-in, needs the GPU and the network basemap:
 //   OWN_GROUND=1 PW_PORT=4417 npx playwright test own-ground-game --project=desktop
 //   OWN_GROUND=1 PW_PORT=4417 npx playwright test own-ground-game --project=iphone

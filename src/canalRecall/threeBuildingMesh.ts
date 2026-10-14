@@ -1,7 +1,6 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from './rendererShared/lightRig.js';
 import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
-import { planInterwarGroundFrontage, type InterwarGroundFrontagePlan } from './interwarGroundFrontage.js';
 import { planCompoundFrontage, type CompoundFrontagePlan } from './compoundFrontageLayout.js';
 import { planRegularCanalFrontage, type RegularCanalFrontagePlan } from './regularCanalFrontage.js';
 import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from './repeatedTerraceFrontage.js';
@@ -18,7 +17,6 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 //     hidden by touching a few bytes instead of rebuilding the mesh.
 // Positions are metres east / north / up from a caller-supplied origin.
 
-import { interwarStreetPhase, planInterwarFrontage, type InterwarFrontagePlan } from './interwarFrontageLayout.js';
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2 } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
@@ -529,20 +527,6 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
         ?planRepeatedTerraceFrontage({lengthM:layout.lengthM,baseM:base,topM:top,recipe:b.recipe.repeatedTerraceFrontage,direction:compoundDirection(b,first,origin)}):undefined;
       if(terrace&&mode==='walls')frontageTriangles.push(...regularCanalTriangles(terrace,first,b));
-      // Defining window groups live in the wall chunk, so near-detail LOD cannot erase them.
-      const interwar = b.recipe?.interwarFrontage && b.layers && b.plainLayer !== undefined
-        && run.every(({e}) => !e.hole && Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
-        ? planInterwarFrontage({lengthM:layout.lengthM,baseM:base,topM:top,groundM:layout.groundM,recipe:b.recipe.interwarFrontage,...interwarRowPhase(b,first,origin,layout.lengthM)}) : undefined;
-      if(interwar && mode==='walls') frontageTriangles.push(...interwarTriangles(interwar,first,b));
-      const groundFrontage=b.recipe?.interwarGround&&b.layers&&b.plainLayer!==undefined&&base<.5&&interwar
-        ? planInterwarGroundFrontage({lengthM:layout.lengthM,baseM:base,groundM:layout.groundM,recipe:b.recipe.interwarGround}) : undefined;
-      if(groundFrontage){
-        const look=b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo';
-        const shop=bayLookFor(b.id,b.streetAppearance?.year??null,b.heightM,look,'shopWindow',b.recipe);
-        const offset=b.streetAppearance?.look==='procedural'?PROCEDURAL_RECIPE_LAYER_OFFSET:0;
-        b={...b,layers:{...b.layers!,ground:shop.layers.ground+offset}};
-        if(mode==='walls')frontageTriangles.push(...interwarGroundTriangles(groundFrontage,first,b));
-      }
       groundSeen = Math.min(groundSeen, layout.groundM);
       // Polygon vertices do not create additional observed stacks: one eligible facet owns
       // each continuous facade. Keep relief contained on that facet, without seam matching.
@@ -566,7 +550,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(groundFrontage||compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -579,15 +563,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
         const paint = paintTint ? [paintTint[0], paintTint[1], paintTint[2], tint[3]] as [number, number, number, number] : tint;
         // u counts bays along the whole run, so the bay grid carries on round a kink.
-        if(compound||regular||terrace||groundFrontage){
-          for(const piece of (compound??regular??terrace??groundFrontage!).wallSegments){
+        if(compound||regular||terrace){
+          for(const piece of (compound??regular??terrace)!.wallSegments){
             const a=Math.max(s,piece.left),end=Math.min(s+e.len,piece.left+piece.width);if(end<=a)continue;
             quads.push({e,u0:a/5,u1:end/5,v0:piece.bottom/3,v1:(piece.bottom+piece.height)/3,tint,layer:b.plainLayer!,accent,z0:piece.bottom,z1:piece.bottom+piece.height,along0:(a-s)/e.len,along1:(end-s)/e.len});
           }
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
-        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: (b.plainWalls || interwar) && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
         if (parapet && b.plainLayer !== undefined) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
@@ -776,49 +760,6 @@ function compoundDirection(b:MeshBuilding,e:Edge,origin:Origin):1|-1 {
   return (e.x1-e.x0)*dx+(e.y1-e.y0)*dy<0?-1:1;
 }
 
-function interwarRowPhase(b:MeshBuilding,e:Edge,origin:Origin,lengthM:number):{projectionPhase:number;projectionStep:1|-1} {
-  const profile=b.streetAppearance?.profiles.find(p=>p.id===b.recipe?.profileId);
-  if(!profile)return {projectionPhase:0,projectionStep:1};
-  const kx=111320*Math.cos(origin.lat*Math.PI/180),[a,c]=profile.segment;
-  const ax=(a[0]-origin.lng)*kx,ay=(a[1]-origin.lat)*110540,dx=(c[0]-a[0])*kx,dy=(c[1]-a[1])*110540,len=Math.hypot(dx,dy);
-  if(!len)return {projectionPhase:0,projectionStep:1};
-  const start=(e.x0-ax)*dx/len+(e.y0-ay)*dy/len;
-  const end=(e.x1-ax)*dx/len+(e.y1-ay)*dy/len;
-  return interwarStreetPhase(start,end,lengthM,b.recipe!.interwarFrontage!.groupPitchM);
-}
-
-
-/** True cut portico backs, source shop glass and a separate customer door remain textured. */
-function interwarGroundTriangles(plan:InterwarGroundFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
-  const r=b.recipe!.interwarGround!,openings=recipeBayOpenings(b.id,b.recipe!,b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo');
-  const ux=(e.x1-e.x0)/e.len,uy=(e.y1-e.y0)/e.len;
-  const world=([a,o,z]:number[]):[number,number,number]=>[e.x0+ux*a+e.nx*o,e.y0+uy*a+e.ny*o,z];
-  const material=(q:InterwarGroundFrontagePlan['quads'][number])=>{
-    // The stock school door contains a fanlight and an overpainted floor band.
-    // Use its rectangular relief panel, while the recessed geometry owns access.
-    if(q.role==='door')return {layer:b.layers!.door,hex:'#35413d',rect:[openings.door.axis-openings.door.width/2+14/520,openings.door.top-148/340,openings.door.width-28/520,66/340]};
-    // Keep the painted glazing gradient above the school cell's floor band.
-    if(q.role==='shopGlass'||q.role==='shopDoor')return {layer:b.layers!.ground,hex:'#ffffff',rect:[.42,.24,.06,.31]};
-    return {layer:q.role==='wall'?b.plainLayer!:b.lid!.flatLayer,hex:q.role==='wall'?b.wallHex:r.frameHex??b.recipe!.frameHex??'#e5e5d8',rect:[.5,.5,0,0]};
-  };
-  const tris=plan.quads.flatMap(q=>{
-    const m=material(q),n:[number,number,number]=[ux*q.normal[0]+e.nx*q.normal[1],uy*q.normal[0]+e.ny*q.normal[1],q.normal[2]],p=q.points.map(world);
-    const uv=q.uv.map(([u,v]):[number,number]=>[m.rect[0]+m.rect[2]*u,m.rect[1]+m.rect[3]*v]);
-    return [[0,1,2],[0,2,3]].map(ids=>{
-      const ab=p[ids[1]].map((v,i)=>v-p[ids[0]][i]),ac=p[ids[2]].map((v,i)=>v-p[ids[0]][i]),cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
-      if(cross.reduce((sum,v,i)=>sum+v*n[i],0)<0)ids=[ids[0],ids[2],ids[1]];
-      return {p:ids.map(i=>p[i]),uv:ids.map(i=>uv[i]),n,hex:m.hex,layer:m.layer,accentHex:q.role==='door'?'#35413d':r.frameHex??b.recipe!.frameHex};
-    });
-  });
-  // A small upright pull makes the source-selected glass customer leaf readable as access.
-  if(plan.shopDoor){
-    const door=plan.shopDoor.opening,a=door.left+door.width-.14,z=door.bottom+door.height*.45;
-    const p=[[a,.065,z],[a+.035,.065,z],[a+.035,.065,z+.3],[a,.065,z+.3]].map(world),n:[number,number,number]=[e.nx,e.ny,0];
-    for(const ids of [[0,1,2],[0,2,3]]){const ab=p[ids[1]].map((v,i)=>v-p[ids[0]][i]),ac=p[ids[2]].map((v,i)=>v-p[ids[0]][i]);if((ab[1]*ac[2]-ab[2]*ac[1])*n[0]+(ab[2]*ac[0]-ab[0]*ac[2])*n[1]<0)[ids[1],ids[2]]=[ids[2],ids[1]];tris.push({p:ids.map(i=>p[i]),uv:ids.map(()=>[.5,.5] as [number,number]),n,hex:'#454b49',layer:b.lid!.flatLayer,accentHex:r.frameHex??b.recipe!.frameHex});}
-  }
-  return tris;
-}
-
 /** Crop glass from the active atlas, while shared geometry owns white frames and transoms. */
 /** Coupled zones and their cut access belong to ordinary wall LOD, including textures. */
 function compoundTriangles(plan:CompoundFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
@@ -881,30 +822,6 @@ function regularCanalTriangles(plan:RegularCanalFrontagePlan|RepeatedTerraceFron
         accentHex:door?(q.role==='door-panel'?'#526057':'#35413d'):frame,
         lit:!!b.recipe!.repeatedTerraceFrontage&&(q.role==='frame'||q.role==='stone'||q.role==='glass')};
     });
-  });
-}
-
-function interwarTriangles(plan:InterwarFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
-  const r=b.recipe!.interwarFrontage!,openings=recipeBayOpenings(b.id,b.recipe!,b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo').upper;
-  const width=openings.widths?.[0]??openings.width,axis=openings.axes[0];
-  const u0=axis-width*.24,u1=axis-width*.22;
-  // The stock school first vertical muntin starts inside the former -.21..-.13
-  // crop. This interior stays glazing through full/half atlas linear filtering.
-  // Physical framing owns subdivisions.
-  const v0=openings.sill+(openings.head-openings.sill)*.10,v1=openings.sill+(openings.head-openings.sill)*.19;
-  const ux=(e.x1-e.x0)/e.len,uy=(e.y1-e.y0)/e.len;
-  const world=([a,o,z]:number[]):[number,number,number]=>[e.x0+ux*a+e.nx*o,e.y0+uy*a+e.ny*o,z];
-  return plan.quads.flatMap(q=>{
-    const n:[number,number,number]=[ux*q.normal[0]+e.nx*q.normal[1],uy*q.normal[0]+e.ny*q.normal[1],q.normal[2]];
-    const p=q.points.map(world),uv=q.uv.map(([u,v]):[number,number]=>q.role==='glass'?[u0+(u1-u0)*u,v0+(v1-v0)*v]:[.5,.5]);
-    // Local wall frames may be left-handed in world XY; correct using actual world normals.
-    const tri=(a:number,c:number,d:number):SignTri=>{
-      let ids=[a,c,d];const ab=p[c].map((v,i)=>v-p[a][i]),ac=p[d].map((v,i)=>v-p[a][i]);
-      const cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
-      if(cross.reduce((sum,v,i)=>sum+v*n[i],0)<0)ids=[a,d,c];
-      return {p:ids.map(i=>p[i]),uv:ids.map(i=>uv[i]),n,hex:q.role==='glass'?'#ffffff':q.role==='frame'?r.frameHex??b.recipe!.frameHex??'#e5e5d8':q.role==='cap'?r.capHex??'#454b49':b.wallHex,layer:q.role==='glass'?b.layers!.upper:b.lid!.flatLayer,accentHex:r.frameHex??b.recipe!.frameHex};
-    };
-    return [tri(0,1,2),tri(0,2,3)];
   });
 }
 

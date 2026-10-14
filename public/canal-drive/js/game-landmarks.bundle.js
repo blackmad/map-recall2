@@ -41879,6 +41879,217 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE"
       }
+    },
+    {
+      id: "gandhi-churchill-laan",
+      name: "Mahatma Gandhi statue (Churchill-laan)",
+      landmarkId: "extract_landmarks_37868198",
+      modelUrl: "./models/gandhi-churchill-laan.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8932492,
+          52.3470354
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.8,
+        widthMetres: 8.8
+      },
+      surveyed: {
+        anchor: [
+          4.8932492,
+          52.3470354
+        ],
+        northOffsetDegrees: 0,
+        source: 'Backlog destination "Mahatma Gandhi" (extract_landmarks_37868198) on the median of the Churchill-laan; the walking bronze, the limestone block with its MAHATMA GANDHI plate, the cobble circles, benches and hedge read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Antony Antony CC BY 2.0; Evanherk CC BY-SA 3.0) and 2018-2022 panoramas that show the statue small from both carriageways; the facing (90 degrees, +-30, along the carriageways) and all sizes are estimates'
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#4a4038",
+        stone: "#c9c2ae",
+        greyBrick: "#8a857c",
+        green: "#4f6b3c",
+        ochre: "#8a6a45",
+        dark: "#2d3033",
+        frame: "#8f8a7f"
+      },
+      attribution: {
+        title: "Gandhi statue (Churchill-laan) - original low-poly reconstruction",
+        author: "Map Recall; after the Gandhi statue on the Churchill-laan median",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(5).jpg",
+        modifications: "Original texture-free low-poly figure, plinth, paving, benches and hedge built from Commons photographs: Gandhi (Amsterdam) 1-5 (Ceescamel, CC BY-SA 4.0), Statue of Gandhi, Amsterdam (Antony Antony, CC BY 2.0), Gandhi churchilllaan (Evanherk, CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "de-schreeuw-oosterpark",
+      name: "De Schreeuw (Oosterpark)",
+      landmarkId: "extract_landmarks_889547307",
+      modelUrl: "./models/de-schreeuw-oosterpark.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9222558,
+          52.3595317
+        ],
+        headingDegrees: 0,
+        lengthMetres: 3.4,
+        widthMetres: 2.4
+      },
+      surveyed: {
+        anchor: [
+          4.9222558,
+          52.3595317
+        ],
+        northOffsetDegrees: 0,
+        source: 'Backlog destination "De Schreeuw" (extract_landmarks_889547307, 52.35959 N 4.92236 E); the statue itself stands 10 m SW of that point at 52.35953 N 4.92226 E (three panoramas of 2016 and 2020, ray intersection, +-4 m, so the anchor is the intersection); the seven stainless blades and the plate read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; De schreeuw - oosterpark CC BY-SA 3.0); the facing (110 degrees, +-30) and the 3.7 m height are estimates'
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#a9aeb0",
+        concrete: "#8a8d8e"
+      },
+      attribution: {
+        title: "De Schreeuw (Oosterpark) - original low-poly reconstruction",
+        author: "Map Recall; after De Schreeuw by Jeroen Henneman (2007)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(08).jpg",
+        modifications: "Original texture-free low-poly blades and plate built from Commons photographs: 2020 De Schreeuw 01, 03, 06, 08 (Ceescamel, CC BY-SA 4.0) and De schreeuw - oosterpark (CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "waterdraagster-bellamyplein",
+      name: "De Waterdraagster met vissen (Bellamyplein)",
+      landmarkId: "extract_landmarks_1336248768",
+      modelUrl: "./models/waterdraagster-bellamyplein.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8676653,
+          52.3680209
+        ],
+        headingDegrees: 0,
+        lengthMetres: 13,
+        widthMetres: 13
+      },
+      surveyed: {
+        anchor: [
+          4.8676653,
+          52.3680209
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 9465999990 (waterdraagster), 2303927479 and 2303927486 (the two fish, Leo Braat) and backlog destination extract_landmarks_1336248768; the Waterdraagster, Vis I and Vis II read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Marion Golsteijn CC BY-SA 3.0); the basin rim is the circle through the three nodes (centre 6 m north, radius 5.9 m); the panoramas show only the gate piers and the water 22 m away; the facing (0, the figure looks to the pond centre) and the sizes are estimates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#5b4a33",
+        concrete: "#e6e4dc",
+        dark: "#3f4245",
+        blue: "#5c7c8a"
+      },
+      attribution: {
+        title: "De Waterdraagster met vissen - original low-poly reconstruction",
+        author: "Map Recall; after the fountain by Leo Braat on the Bellamyplein",
+        sourceUrl: "https://www.openstreetmap.org/node/9465999990",
+        modifications: "Original texture-free low-poly woman, two fish and basin rim built from Commons photographs: 2021 Waterdraagster met vissen (Ceescamel, CC BY-SA 4.0) and Waterdraagster 4 (Marion Golsteijn, CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "mama-baranka",
+      name: "Mama Baranka (Moeder Rots, Vondelpark)",
+      landmarkId: "extract_landmarks_1989090735",
+      modelUrl: "./models/mama-baranka.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8744933,
+          52.3593173
+        ],
+        headingDegrees: 0,
+        lengthMetres: 2.8,
+        widthMetres: 2.8
+      },
+      surveyed: {
+        anchor: [
+          4.8744933,
+          52.3593173
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 6052790489 (statue) and backlog destination extract_landmarks_1989090735; the rough-cast woman with child and the inscribed bronze disc read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0); every panorama blurs the statue with a grey box, so the facing (200 degrees, +-60) comes from the photos alone and is a weak estimate; the disc text is not legible and is modelled as incised arcs"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#5b5348",
+        dark: "#26292b"
+      },
+      attribution: {
+        title: "Mama Baranka - original low-poly reconstruction",
+        author: "Map Recall; after Mama Baranka by Nelson Carrilho in the Vondelpark",
+        sourceUrl: "https://www.openstreetmap.org/node/6052790489",
+        modifications: "Original texture-free low-poly figure and disc built from Commons photographs: Mama Baranka in 2019 (1)(2)(4)(6) (Ceescamel, CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "spanjemonument",
+      name: "Spanjemonument (Amsterdam-Noord)",
+      landmarkId: "extract_landmarks_1299755268",
+      modelUrl: "./models/spanjemonument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9138603,
+          52.3874585
+        ],
+        headingDegrees: 0,
+        lengthMetres: 9,
+        widthMetres: 14
+      },
+      surveyed: {
+        anchor: [
+          4.9138603,
+          52.3874585
+        ],
+        northOffsetDegrees: 0,
+        source: 'Backlog destination "Spanjemonument" (extract_landmarks_1299755268); the steel ribbon, the two flying bronzes, the paving circle and the brick wall with its pink plaque read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Eddy Roos CC BY-SA 4.0) and Gemeente Amsterdam panorama TMX7316010203-001303_pano_0002_000532 (2019, CC BY 4.0, 5 m away); the facing (235 degrees, +-30, the flight direction) comes from that panorama; the wall position (3.7 m ahead of the flight) and the 5.4 m height are estimates'
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#b5babc",
+        bronze: "#4a3b2e",
+        greyBrick: "#8b6a58",
+        brick: "#9a5240",
+        pink: "#b06f6a",
+        white: "#efe9db"
+      },
+      attribution: {
+        title: "Spanjemonument - original low-poly reconstruction",
+        author: "Map Recall; after the Spanjemonument in Amsterdam-Noord",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Spanje_monument_groot.jpg",
+        modifications: "Original texture-free low-poly steel ribbon, flying figures, paving and wall built from Commons photographs: 2021 Spanjemonument beeld 1-3 and plaquette 1 (Ceescamel, CC BY-SA 4.0) and Spanje monument groot (Eddy Roos, CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
     }
   ];
 
@@ -47246,6 +47457,7 @@ Map source: ${osmUrl(places[i][0])}`);
     }
     return { index, distance };
   }
+  var START_HEADING_SNAP_RAD = Math.PI / 6;
 
   // src/canalRecall/game/driveByTrigger.ts
   var DRIVE_BY_RADIUS = 135;
