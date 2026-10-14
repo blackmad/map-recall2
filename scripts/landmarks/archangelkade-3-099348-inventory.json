@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 1,
+ "id": "archangelkade-3-099348",
+ "pand": "0363100012099348",
+ "signature": [
+  "ribbed-steel-barrel-hall"
+ ],
+ "walls": [
+  {
+   "tag": "w01-323",
+   "bearing": 323,
+   "lengthM": 75.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002498_pano_0003_000228",
+   "capturedAt": "2022-04-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbed-steel-barrel-hall",
+     "kind": "window-shape",
+     "where": "75 m wall of vertical-ribbed sheet steel under a barrel roof, no windows",
+     "approxSizeM": [
+      75,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[0] blank two-storey wall with 24 vertical piers as ribs",
+     "seenIn": "TMX7316010203-002498_pano_0003_000228"
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "two grey downpipes dividing the wall into thirds",
+     "approxSizeM": [
+      0.2,
+      8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 10 cm pipe on a 75 m wall"
+     },
+     "seenIn": "TMX7316010203-002498_pano_0003_000228"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -49402,6 +49402,98 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:11:07.107Z"
+    },
+    {
+      "id": "ordinary-0363100012099348",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012099348",
+      "name": "Archangelkade 3D, Amsterdam-West (Houthavens / Haparandaweg industrial strip): 1978 barrel-roofed warehouse hall, 75 m by 60 m, clad in pale vertical-ribbed sheet steel with a curved eaves line and downpipes at the bays",
+      "hash": "0a3c67da5c1358080c223b780c6e5d958ae3e14624f75e61ad5dac1efbc983d9",
+      "sha256": "0a3c67da5c1358080c223b780c6e5d958ae3e14624f75e61ad5dac1efbc983d9",
+      "bytes": 103500,
+      "triangles": 1382,
+      "materials": 5,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -48.109,
+          -0.001,
+          -46.752
+        ],
+        "max": [
+          48.052,
+          11.86,
+          46.598
+        ]
+      },
+      "anchor": [
+        4.8699535,
+        52.3954355
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8701195,
+              52.3958558
+            ],
+            [
+              4.8692475,
+              52.3954422
+            ],
+            [
+              4.8697877,
+              52.395016
+            ],
+            [
+              4.8706596,
+              52.3954281
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 11.86,
+      "height": 11.86,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-archangelkade-3-099348.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012099348"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "archangelkade-3-099348",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012099348/w01-323.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 2st 24b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 0 (NW, 75 m, eaves 8.8; surface 1): drawn as a blank two-storey wall with 24 vertical piers standing in for the sheet-steel ribs, in pale render. Simplified: the true ribs are 20 cm apart, the piers are one per 3 m bay; the curved eaves line is the 3DBAG roof. Not drawn: the downpipes (too small), the doors on the unphotographed sides; the other three walls stay blank pale render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012099348",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:12:05.740Z"
     }
   ]
 }
