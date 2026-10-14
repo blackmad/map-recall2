@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "leidsekade-106-173447",
+ "pandId": "0363100012173447",
+ "address": "Leidsekade 106 / Max Euweplein (Holland Casino Amsterdam), Amsterdam-Centrum: 1991 casino with a white-tiled curved upper storey over a red-steel and timber-pergola canal front, joined to a 1900s brick-and-stone Leidsekade townhouse range",
+ "sources": [
+  {
+   "id": "pano-2025-07-14-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-14_05-25-22_01962/",
+   "image": "staging/pand-reference-walls/0363100012173447/w01-314.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-18-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001967_pano_0000_000698/",
+   "image": "staging/pand-reference-walls/0363100012173447/w03-257.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-18-w03-2",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001967_pano_0000_000698/",
+   "image": "staging/pand-reference-walls/0363100012173447/w03-257.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-18-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001968_pano_0000_000136/",
+   "image": "staging/pand-reference-walls/0363100012173447/w04-245.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    533
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "cross",
+   "deepBars": true,
+   "stoneStoreys": [
+    0
+   ],
+   "cornice": true,
+   "entrance": {
+    "bay": 1,
+    "portal": true
+   },
+   "palette": {
+    "brick": "#8a4e3a",
+    "frame": "#efe6d4",
+    "stone": "#9a9aa0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    392
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#4a4a4e",
+    "frame": "#c8302a",
+    "stone": "#8a8a8e"
+   }
+  },
+  {
+   "wallSurfaces": [
+    4
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "wallMaterial": "stone",
+   "signage": {
+    "text": "HOLLAND CASINO",
+    "colour": "#d8d0b8",
+    "mount": "cornice"
+   },
+   "palette": {
+    "brick": "#e8e8e4",
+    "frame": "#3a3e44",
+    "stone": "#e8e8e4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    20,
+    190
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "wallMaterial": "stone",
+   "palette": {
+    "brick": "#e8e8e4",
+    "frame": "#3a3e44",
+    "stone": "#e8e8e4"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#9a5a44",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "stone": "#9a9890"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Leidsekade 106 (BAG, 1991) is the Holland Casino block on the Singelgracht at Max Euweplein: a 1990s casino with a curved white-tiled upper storey, a glazed ground and mezzanine floor under a timber pergola on red steel columns, joined at the north to a retained 1900s brick-and-stone Leidsekade townhouse range. 537 3DBAG wall surfaces; four fronts are drawn (w01-314 townhouse entrance, w03-257 and w04-245 canal fronts), everything else stays blank.",
+  "walls[0] = panel 426 (NW, 28 m, eaves 20.7): the townhouse range: a grey stone base with barred basement windows, brick above with stone-surround windows, and the arched entrance portal with fluted stone pilasters carrying relief panels (bay 1). Drawn as 5 storeys x 7 bays, stone storey 0, a portal entrance and a cornice. Simplified: the carved pilaster reliefs, the entrance canopy and balcony, the cast lamp standard.",
+  "walls[1] = panel 329 (W, 24.5 m, 5.9-12.2 m): the canal-front glazed floors with the red steel columns and yellow-framed shop windows, drawn as glazed ground plus one wide-window storey in a red frame colour. walls[2] = panel 3 and walls[3] = panel 18 (W and NE): the white-tiled upper storey with deep-set windows, one wide-window storey; the panel 3 front carries HOLLAND CASINO lettering on its cornice. Simplified: the curved plan (straight facets in 3DBAG), the timber pergola and its steel posts and rails, the lattice balustrade, the heart-banner window graphics, the flagpoles.",
+  "Not drawn: the east and south fronts and the lower casino roofs (no panorama within 35 m)."
+ ]
+}
