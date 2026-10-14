@@ -28,6 +28,26 @@ test('the chase bike keeps its own colours in the open and draws after the build
   // them yellow. (Where a building covers the bike, yellow is correct.)
   await page.evaluate(() => { (window as any).canalRecallGame._updateRacing = () => {}; });
   await page.waitForTimeout(300);
+  // The phone layout parks HUD (joystick, question card, notices) over the player, and a DOM overlay in the clip
+  // makes every frame identical. Hide everything that is not on the map canvas's own ancestor chain.
+  await page.evaluate(() => {
+    const canvas = (window as any).canalRecallGame.vectorMap.map.getCanvas() as HTMLElement;
+    for (let node: HTMLElement | null = canvas; node && node !== document.body; node = node.parentElement) {
+      for (const sibling of Array.from(node.parentElement?.children ?? []) as HTMLElement[]) {
+        if (sibling !== node) sibling.style.visibility = 'hidden';
+      }
+    }
+  });
+  // Take every building layer out for the pixel comparison. Where the player spawns varies run to run (Nes vs
+  // Leidseplein with the same seed) and on Nes the player stands on a kerb behind a roof, so B and C are then
+  // identical and nothing is tested. The old bug painted the bike yellow in the open, which needs no building.
+  await page.evaluate(() => {
+    const map = (window as any).canalRecallGame.vectorMap.map;
+    for (const id of map.style._order as string[]) {
+      if (id !== 'player-bike-3d' && /building|facade|roof|landmark|three/.test(id)) map.setLayoutProperty(id, 'visibility', 'none');
+    }
+  });
+  await page.waitForTimeout(500);
   const box = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     const ll = g.vectorMap.worldToLngLat(g.player.x, g.player.y, g.osmLoader);

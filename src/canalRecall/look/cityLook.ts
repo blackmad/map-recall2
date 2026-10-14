@@ -37,7 +37,7 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
-import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
+import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
@@ -132,6 +132,8 @@ export type SlotVariantHints = {
   year?: number | null;
   /** The material is named for white (`white`, `cream`, `ivory`): the smooth white render rather than the grained stucco. */
   white?: boolean;
+  /** `measured`: the tint is a surveyed wall colour; brick/accent skip the city clamp (palette.ts `cityMeasuredWallTint`). */
+  source?: TintSource;
 };
 
 /** Brick from this year on samples the 20th-century brick (docs/LOOK.md "One era scheme"). */
@@ -209,7 +211,8 @@ const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
  * with the legacy recipe look) with the review corrections above. Flag off
  * never calls this.
  */
-export function cityLookTint(slot: MaterialSlot, hex: string): string {
+export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null): string {
+  if (source === 'measured' && (slot === 'brick' || slot === 'accent')) return cityTint(slot, hex, source);
   const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
   if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
   if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
@@ -220,8 +223,8 @@ export function cityLookTint(slot: MaterialSlot, hex: string): string {
 }
 
 /** A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. */
-export function slotTintBytes(slot: MaterialSlot, hex: string): [number, number, number, number] {
-  const [r, g, b] = hexToRgb(cityLookTint(slot, hex));
+export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null): [number, number, number, number] {
+  const [r, g, b] = hexToRgb(cityLookTint(slot, hex, source));
   return [r, g, b, 255];
 }
 
@@ -577,11 +580,11 @@ export function slotIneligible(material: any): string | null {
 }
 
 /** Slot + tint a material declares, or (when `infer`) what its name and colour say. Null = leave it. */
-export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean } | null {
+export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource } | null {
   const ud = material?.userData ?? {};
   if (isMaterialSlot(ud.materialSlot) && typeof ud.tint === 'string') {
     // Inferred extras written into a GLB only take part under the flag (they are, here).
-    return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE };
+    return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(ud.tintSource === 'measured' ? { source: 'measured' as const } : {}) };
   }
   if (!infer || slotIneligible(material) || !material.color) return null;
   const tint = '#' + material.color.getHexString();
@@ -592,7 +595,7 @@ export function slotForMaterial(material: any, infer: boolean): { slot: Material
 /** Write `layer` (slot ordinal) and `tint` on a geometry; false when it already carries different ones. */
 export function setSlotAttributes(THREE: any, geometry: any, slot: MaterialSlot, hex: string, hints: SlotVariantHints = {}): boolean {
   const n = geometry.getAttribute('position')?.count ?? 0;
-  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex);
+  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex, hints.source);
   const prior = geometry.getAttribute('layer'), priorTint = geometry.getAttribute('tint');
   if (prior && priorTint) {
     const same = prior.getX(0) === layer && Math.round(priorTint.getX(0) * 255) === tint[0] && Math.round(priorTint.getY(0) * 255) === tint[1] && Math.round(priorTint.getZ(0) * 255) === tint[2];
@@ -699,7 +702,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         const hasUv = !!geometry.getAttribute('uv');
         if (!hasUv && !geometry.getAttribute('normal')) geometry.computeVertexNormals();
         // Variants: the BAG year picks the brick; an inferred white material takes the smooth render.
-        const hints: SlotVariantHints = { year, white: found.inferred && isWhiteWord(o.material.name) };
+        const hints: SlotVariantHints = { year, white: found.inferred && isWhiteWord(o.material.name), source: found.source };
         if (!setSlotAttributes(THREE, geometry, found.slot, found.tint, hints)) {
           // A geometry shared with another material: give this mesh its own attributes.
           geometry = o.geometry = geometry.clone();
@@ -708,7 +711,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         }
         const previous = o.material;
         o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side });
-        o.userData.citySlot = { slot: found.slot, tint: found.tint, inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };
+        o.userData.citySlot = { slot: found.slot, tint: found.tint, ...(found.source ? { source: found.source } : {}), inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };
         if (!previous.userData?.[CITY_LOOK_SHARED]) previous.dispose();
         changed++;
       });

@@ -59,7 +59,7 @@ export async function canalhouseGroupToGlb(id: string, group: T.Object3D, option
     if (material.map) throw Error('Canalhouse originals must be texture-free');
     const surface = object.userData.surface as string, preset = surface === 'roof' ? roofPreset : undefined;
     const slot = options.slotFor?.(object);
-    const key = material.color.getHexString() + (preset ? '_roof' : '') + (slot ? `_${slot}` : ''), bucket = buckets.get(key) ?? {material, positions: [], normals: [], uvs: [], surface, roofPreset: preset, slot};
+    const key = material.color.getHexString() + (preset ? '_roof' : '') + (slot ? `_${slot}` : '') + (object.material.userData?.tintSource === 'measured' ? '_measured' : ''), bucket = buckets.get(key) ?? {material, positions: [], normals: [], uvs: [], surface, roofPreset: preset, slot};
     buckets.set(key, bucket);
     const geometry: T.BufferGeometry = (object.geometry.index ? object.geometry.toNonIndexed() : object.geometry.clone()).applyMatrix4(object.matrixWorld);
     // Baking a reflected facade basis must also reverse its triangle winding.
@@ -83,7 +83,7 @@ export async function canalhouseGroupToGlb(id: string, group: T.Object3D, option
   });
   for (const [key, bucket] of buckets) {
     const c = bucket.material.color;
-    const material = doc.createMaterial(key).setExtras({canalhouseSurface: bucket.surface, ...(bucket.slot ? {materialSlot: bucket.slot, tint: '#' + c.getHexString()} : {})}).setBaseColorFactor([c.r, c.g, c.b, 1]).setMetallicFactor(0).setRoughnessFactor(.9);
+    const material = doc.createMaterial(key).setExtras({canalhouseSurface: bucket.surface, ...(bucket.slot ? {materialSlot: bucket.slot, tint: '#' + c.getHexString(), ...(bucket.material.userData?.tintSource === 'measured' ? {tintSource: 'measured'} : {})} : {})}).setBaseColorFactor([c.r, c.g, c.b, 1]).setMetallicFactor(0).setRoughnessFactor(.9);
     const primitive = doc.createPrimitive().setMaterial(material)
       .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(Float32Array.from(bucket.positions)).setBuffer(buffer))
       .setAttribute('NORMAL', doc.createAccessor().setType('VEC3').setArray(Float32Array.from(bucket.normals)).setBuffer(buffer));

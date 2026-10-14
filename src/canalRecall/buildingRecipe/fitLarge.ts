@@ -281,7 +281,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     if (entrance?.portal) palette[`crest@g${gi}`] = shade(palette[slots.stone] ?? palette.stone, 0.68);
     if (w.lantern && main) { const l = placeLantern(facts, anchorRD, main); if (l) lanterns.push(l); else warnings.push(`walls[${gi}].lantern: no roof behind the main panel`); }
     let garage: LargeGroupFit['garage'] = null;
-    if (w.garageDoors && main) {
+    if (w.garageBays && main) garage = {panel: main.index, bays: w.garageBays.filter(b => b < bays && b !== entrance?.bay).sort((a, b) => a - b)};
+    if (w.garageDoors && !w.garageBays && main) {
       const list: number[] = [];
       for (let b = bays - 1; b >= 0 && list.length < w.garageDoors; b--) if (b !== entrance?.bay) list.push(b);
       if (list.length < w.garageDoors) warnings.push(`walls[${gi}]: ${w.garageDoors} garage doors but only ${list.length} free bays`);

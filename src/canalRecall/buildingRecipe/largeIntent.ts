@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'windowShape', 'hand', 'hall', 'columns'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'windowShape', 'hand', 'hall', 'columns'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -108,6 +108,12 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.crosses.side !== undefined) oneOf(w.crosses.side, ['left', 'right'], `${at}.crosses.side`);
     }
     if (w.garageDoors !== undefined) count(w.garageDoors, `${at}.garageDoors`, 1, 8);
+    if (w.garageBays !== undefined) {
+      if (!Array.isArray(w.garageBays) || !w.garageBays.length) problems.push(`${at}.garageBays: list of bay indices`);
+      else w.garageBays.forEach(b => count(b, `${at}.garageBays`, 0, (w.baysPerStorey ?? 80) - 1));
+      if (w.baysPerStorey === undefined) problems.push(`${at}.garageBays needs baysPerStorey`);
+      if (w.garageDoors !== undefined) problems.push(`${at}: garageDoors and garageBays are alternatives`);
+    }
     for (const k of ['stringCourses', 'cornice', 'piers'] as const) bool(w[k], `${at}.${k}`);
     if (w.balconies !== undefined) {
       if (!Array.isArray(w.balconies.storeys) || !w.balconies.storeys.length) problems.push(`${at}.balconies.storeys: list of storeys (1 = first floor)`);

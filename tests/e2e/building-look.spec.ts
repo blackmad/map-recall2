@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
+import { renderSpecs } from '../../scripts/look/measured-swatches';
 
 // The Building look setting switches looks live without a reload (Photo by default;
 // the retired MapLibre pattern layer survives as `?buildings3d=off`), and a
@@ -202,3 +203,23 @@ test('shadow fill: brick in cast shadow stays readable, lit walls do not move', 
 });
 /** Mid-grey brick, south wall, under the rig with no shadows (docs/LOOK.md §Parity and §City look, 2026-10-13). */
 const SUN_SIDE_GREY: Record<string, number> = { generic: 108.3, recipe: 102.4, landmark: 106.0, 'city-generic': 105.1, 'city-recipe': 109.2, 'city-landmark': 109.2 };
+
+// A measured wall colour (material extras `tintSource: 'measured'`) survives the city look's brick clamp: the rendered brick swatch
+// lands on the authored colour (the paint slot keeps authored colours, so it is the reference), the unmeasured one stays clamped.
+test('a measured brick material renders at its authored colour, an unmeasured one stays inside the city range', async ({ page }) => {
+  test.setTimeout(120_000);
+  const hexes = ['#3a2a28', '#8a3e2e', '#d8d2c4'];
+  const specs = hexes.flatMap(hex => [
+    { slot: 'paint', hex, label: 'authored' },
+    { slot: 'brick', hex, label: 'unmeasured' },
+    { slot: 'brick', hex, source: 'measured' as const, label: 'measured' },
+  ]);
+  const { means } = await renderSpecs(page, specs, 3);
+  const lum = ([r, g, b]: number[]) => (Math.max(r, g, b) + Math.min(r, g, b)) / 2 / 255;
+  hexes.forEach((hex, i) => {
+    const [authored, unmeasured, measured] = means.slice(i * 3, i * 3 + 3).map(lum);
+    expect(Math.abs(measured - authored), `${hex} measured`).toBeLessThan(0.03);
+    // The mid brick sits inside the city range already; the dark and the pale one are what the clamp moves.
+    if (i !== 1) expect(Math.abs(unmeasured - authored), `${hex} unmeasured is clamped`).toBeGreaterThan(0.05);
+  });
+});
