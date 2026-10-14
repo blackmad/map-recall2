@@ -29808,10 +29808,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165051",
       "name": "Beursplein 5, Amsterdam: 1913 stone-and-brick bank block (Euronext), Warmoesstraat front",
-      "hash": "3bb22922302a5add5117a44e71977ec31f34d72188697a213e4c0bc323b94d8c",
-      "sha256": "3bb22922302a5add5117a44e71977ec31f34d72188697a213e4c0bc323b94d8c",
-      "bytes": 671632,
-      "triangles": 8557,
+      "hash": "8e0d82c14cd0f57ce6269f3ff1bdda7eec5882ca022a0314dbd2a1ef795ebde6",
+      "sha256": "8e0d82c14cd0f57ce6269f3ff1bdda7eec5882ca022a0314dbd2a1ef795ebde6",
+      "bytes": 699228,
+      "triangles": 8953,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -30527,7 +30527,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165051",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T22:18:58.768Z"
+      "updatedAt": "2026-10-14T03:05:04.040Z"
     },
     {
       "id": "ordinary-0363100012165746",
