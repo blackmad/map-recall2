@@ -1221,6 +1221,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
+  8"): the remaining gaps are mostly statues and memorials; the
+  face-blurred ones (Johnny Jordaan group, Theo Thijssen, Carmiggelt,
+  Winkler Prins, Hildo Krop figures) need licensed Commons photos;
+  Spinoza's inventory `how` text still describes the old cone and its
+  curls are low-poly; Teun de Jager unverified against a close photo;
+  Westermoskee NW/SW walls and SE porch unphotographed.
 - **Large tier after batch 4** (2026-10-14, HISTORY "Dominant buildings,
   batch 4"): kit limits to fix: wall-mounted letters leave open edges on
   some shells; the lantern floats off split panels (Pijlsteeg 31); a
