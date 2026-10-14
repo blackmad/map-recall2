@@ -1,5 +1,81 @@
 # Canal Recall — what is built
 
+## Live play at the Singelgracht: road paint, light, near detail, the brick quay, houseboat berths (2026-10-14, user)
+
+Three lanes (`lane/live-play-20261014`, `-light-`, `-detail-`) from the
+user's screenshots on the first own-ground rides, each with before/after
+frames in `docs/images/live-play-20261014/` and on the demo page.
+**Road paint** ("road painting in ownground still not there"): the
+cross-sections drew lane lines and zebras but nothing at junctions, so
+painted cycle lanes stopped at the junction edge, no arm had a stop line
+or give-way teeth, cycle paths left a bare gap across side streets, and
+0.10–0.12 m lines broke into specks from the chase camera. (The premise
+that the legacy MapLibre ground painted markings was wrong: it paints
+none.) New `ownGround/roadMarkings.ts`, wired into `streets.ts`, near ring
+only, everything read from the ways because the extract has no node
+tags: stop lines at signalised junctions (a `crossing=traffic_signals`
+or `crossing:signals=yes` node within 30 m, behind any mapped crossing),
+give-way teeth on lower-class arms (not exits, woonerven, bus/tram ways),
+cycle lanes carried through the junction in red with block markings
+where a side road opens, cycle-path crossings without a tag get block
+markings with red between them; lines widened to 0.15 m (`PAINT_LINE_M`).
+Named regression Nassaukade / Frederik Hendrikplantsoen, node
+n2306196651: paint within 30 m 43 → 70 m², red 224 → 296 m²
+(`test:own-ground`); e2e `own-ground-paint.spec.ts` (cockpit, `OWN_GROUND=1`)
+white pixels in the junction box 0.99 % → 1.46–1.53 %, bound 1.25 %. No
+bike pictograms, arrows or node-tag zebras yet (no node tags in the
+extract). **Too dark**: own ground is lit by the shared frame's sun and
+sky, which draws level ground at 0.83 of its palette colour (0.64 in
+shadow), and the asphalt prior [72,74,78] rendered at luma 67 in sun /
+59 in shade. New `ownGround/groundLight.ts`: a brightness-only gain of
+1.208 on ground materials and the far ring (the sun keeps its warmth);
+asphalt [86,88,93] (88 sun / 78 shade). Facades untouched (132.9 before
+and after). Mean luma, boat spot: scene 108 → 116, road 81 → 99, pavement
+138 → 150, water 96 → 105; the legacy basemap is 182 / 234 / 246 / 187,
+so own ground is still ~60 luma below it, and that gap is now palette
+(near-white legacy streets, pale water), a look decision on the board.
+**Low detail from close**: facade window cells fade to their mean colour
+by on-screen texels per pixel on the foreshortened vertical axis; at the
+boat camera that is ~18 texels/px and the `[4, 10]` threshold assumed a
+window is ~20 texels when it is ~55 × 150, so the built detail was
+flattened into bands. `FACADE_TIER_FROM/TO_TEXELS` 16/30 in
+`roofTier.ts`: windows stay to ~220 m, flat by ~300 m. Checked and
+cleared: recipe tiles (off, but no tile covers this stretch; frames
+identical with `?recipeTiles=1`), near-tier radius (follows the rider),
+budget culling (none). Perf unchanged (16.7 ms; map render 3.6 / 6.1 ms;
+three.js 1.2 ms; 892 MB). 1,526 pands in the Singelgracht box have no
+recipe faces (Marnixkade 73, Nassaukade 46, Marnixstraat 98 …).
+**Road on one side, red on the other** (Houtmankade): the west quay is
+`highway=primary surface=asphalt` (BGT gesloten verharding) with a
+separate red cycleway; the east quay is `highway=residential
+embedded_rails=tram`, no surface tag, BGT open verharding (brick). The
+east quay really is brick with tram rails, but the klinker [128,82,66]
+was ΔE 18 from the cycle red and read as a cycle path. Klinker now
+[122,90,80] (ΔE 26), laid as herringbone in mixed tones
+(`streetTextures.ts`); `osmGround.ts` has an explicit six-class surface
+legend (asphalt, cycle, fietsstraat, brick, concrete, gravel); a
+fietsstraat (`cyclestreet=yes`, `bicycle_road=yes`, `surface:colour=red`)
+is a red road with edge lines and no centre line (none tagged in the
+current extract). Houtmankade pair pinned in `test:own-ground`.
+**Ground into houseboats**: the own-ground water is the OpenFreeMap z14
+snapshot, generalised by a metre or more, while houseboats are OSM
+footprints; with land 1.77 m above water, boats past the generalised
+shore sat under the quay, its coping or a path band. New `moorings.ts`:
+every boat partly outside the water, or with a quay wall through it,
+gets a berth (hull's minimum-area rectangle + 0.4 m becomes water at the
+polygon's level, the wall through it dropped, a new wall on the land
+side): 420 berths of 3,083 boats; in the seven Frederik Hendrikbuurt /
+Westerkanaal / Spaarndammerbuurt cells 34 of 440 boats covered before, 0
+after (`scripts/own-ground/check-houseboat-land.ts`, `MOORINGS=0` for
+the before). Tools: `scripts/live-play-shots.mjs` (pose hold,
+`BUNDLES_DIR`, `EVAL_JS`, `CAMZOOM`, `TIER`) and `live-play-compare.mjs`.
+Checks on the lane: lint, `test:own-ground` 69/69, canal-elevation 11/11,
+look 56/56, fit-golden 140 identical, `check:own-ground-cells`, the paint
+e2e. Merge conflicts (bundles, the shots script added on all three
+branches, one import, the ride-perf filename) resolved by hand; the
+own-ground, worker and three-buildings bundles rebuilt here.
+
+
 ## Canal-house windows and white accents measured into the kit (2026-10-14, user)
 
 Lane `lane/canal-windows-20261014`, from the user's priority ("window shape
