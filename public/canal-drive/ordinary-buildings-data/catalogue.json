@@ -35579,10 +35579,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012114605",
       "name": "Distelweg 88, Amsterdam-Noord: 1948 distribution warehouse clad in grey sandwich panels on the Buiksloterkanaal side (BAG: one industrial unit)",
-      "hash": "4c1141b544729a711b72c0a1104bc037b67cb572f91b1360e8f428f942d91fe7",
-      "sha256": "4c1141b544729a711b72c0a1104bc037b67cb572f91b1360e8f428f942d91fe7",
-      "bytes": 52796,
-      "triangles": 522,
+      "hash": "b46a00775358b4eeb0fee969f73120c13450c25c1d087a6404b058be49476508",
+      "sha256": "b46a00775358b4eeb0fee969f73120c13450c25c1d087a6404b058be49476508",
+      "bytes": 54480,
+      "triangles": 546,
       "materials": 6,
       "textures": 0,
       "scale": 1,
@@ -35734,7 +35734,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012114605",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:10:08.215Z"
+      "updatedAt": "2026-10-14T03:05:58.976Z"
     },
     {
       "id": "ordinary-0363100012202277",
