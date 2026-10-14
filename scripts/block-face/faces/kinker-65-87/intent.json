@@ -1,0 +1,1084 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-65-87",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/kinker-65-87/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 65-87 (odd side, to Bilderdijkkade), all 1893. Three gabled fronts (65, 67 stepped; 69 pointed, the left part of BAG pand 69-73), the 6-axis 71-73 front with blocked arches and two dormers, and the narrow row 75-87 (3 axes on 3.3-4.4 m, brick-relief tympana, frieze, pediment dormers, tall shop grounds). Strip 2024-11-29 (low sun)."
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "kinker-1893-plain-step-gable",
+   "district": "oud-west",
+   "description": "Face-local (kinker-65-87 pands 1-2, Kinkerstraat 65 and 67, 1893): plain red-brown brick without speklagen or painted courses, flat heads, iron anchors, 4 upper storeys, a stepped gable with one attic light under a relieving arch. Inline because no library type has it: plain-brick has no gable crown, and the gabled types (neo-renaissance, brick-arched) carry speklagen or painted courses that a placement cannot remove (speklagen needs bands speklagen; bandLines needs bands painted).",
+   "fit": {
+    "widthM": [
+     5.5,
+     6.3
+    ],
+    "storeys": [
+     5
+    ]
+   },
+   "body": {
+    "storeys": 5,
+    "bays": 3,
+    "cornice": "none",
+    "windows": "t-window",
+    "windowHeights": [
+     0.7,
+     0.72,
+     0.72,
+     0.72,
+     0.7
+    ]
+   },
+   "crowns": {
+    "step-2": {
+     "gable": "step",
+     "crownSteps": 2,
+     "crownRise": 1.3,
+     "atticWindows": 1,
+     "note": "65: two steps a side, narrow top"
+    },
+    "step-3": {
+     "gable": "step",
+     "crownSteps": 3,
+     "crownRise": 1.2,
+     "atticWindows": 1,
+     "note": "67: three steps a side"
+    }
+   },
+   "palettes": {
+    "red-brown-65-67": {
+     "brick": "#77553a",
+     "frame": "#b8bfa4",
+     "door": "black",
+     "stone": "#bac1a5",
+     "cornice": "#b8bfa4"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "2-3 axes",
+    "identicalBays": "equal axes",
+    "windowsPerStorey": "ground: shop | 1-4: 2-3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "shop",
+    "signage": "per house",
+    "roofline": "stepped gable with one attic light",
+    "photoGables": 1,
+    "schemaLimits": [
+     "iron wall anchors",
+     "relieving arch over the attic light"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "kinker-65-87",
+     "pands": [
+      "106015",
+      "156997"
+     ],
+     "citation": "strip.jpg 2024-11-29 pands 1-2: plain brick, flat heads, anchors, stepped gables"
+    }
+   ],
+   "notes": [
+    "Palette: mean of palette-from-strip walls #714a2d and #7e5e40 (sunlit 2024-11-29). Candidate for the Oud-West library (types lane)."
+   ]
+  },
+  "kinker-1895-painted-band",
+  "kinker-1890-plain-brick"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012106015",
+   "slug": "kinker-106015",
+   "address": "Kinkerstraat 65",
+   "type": {
+    "type": "kinker-1893-plain-step-gable",
+    "crown": "step-2",
+    "overrides": {
+     "bays": 2,
+     "palette": {
+      "brick": "#714a2d"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#e0c020",
+      "fascia": true,
+      "name": "Sleutelkluis",
+      "entrance": "right",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-11-29 pand 1: yellow-painted shopfront and fascia, yellow lettering (...SLEUTEL... partly legible); OSM node 494157363 craft=key_cutter"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "Sleutelkluis",
+    "category": "craft=key_cutter",
+    "osm": {
+     "type": "node",
+     "id": 494157363,
+     "name": "Sleutelkluis"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "fascia lettering partly legible (SLEUTEL...)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: plain brick, 2 axes x 4 upper storeys, flat heads, iron anchors, a stepped gable (2 steps) with one attic light under a relieving arch",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156997",
+   "slug": "kinker-156997",
+   "address": "Kinkerstraat 67",
+   "type": {
+    "type": "kinker-1893-plain-step-gable",
+    "crown": "step-3",
+    "ground": {
+     "shopfront": {
+      "colour": "#1f4f8f",
+      "fascia": true,
+      "name": "Mount Everest",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 2: blue fascia and pui, white lettering illegible, an arched house door left; OSM node 2441927952 shop=newsagent"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Mount Everest",
+    "category": "shop=newsagent",
+    "osm": {
+     "type": "node",
+     "id": 2441927952,
+     "name": "Mount Everest"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2: plain brick, 3 axes x 4 upper storeys (storey 1 with an arched door bay left), flat heads, anchors, stepped gable with one attic light",
+    "photoRows": [
+     1,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "round-arched door bay on storey 1"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236453",
+   "slug": "kinker-236453",
+   "address": "Kinkerstraat 69-73",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "palette": "dark-brown",
+    "storeys": 5,
+    "overrides": {
+     "bays": 3,
+     "windowHeights": [
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.68
+     ]
+    },
+    "modules": [
+     {
+      "crown": "neck-gable",
+      "share": 0.3,
+      "overrides": {
+       "windowHead": {
+        "kind": "flat"
+       },
+       "windowSurround": "keystone"
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#202020",
+        "fascia": true,
+        "name": "Vitaminstore",
+        "sign": {
+         "text": "VITAMINSTORE",
+         "textColour": "#ffffff",
+         "mount": "fascia"
+        },
+        "entrance": "left",
+        "glazing": "single",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-11-29 pand 3 left (69): black fascia lettered vitaminstore; OSM node 11395814497"
+       }
+      }
+     },
+     {
+      "crown": "pediment-dormer",
+      "share": 0.35,
+      "ground": {
+       "shopfront": {
+        "colour": "#2f8f8a",
+        "fascia": true,
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-11-29 pand 3 centre (71): teal fascia with white lettering (illegible)"
+       }
+      }
+     },
+     {
+      "crown": "pediment-dormer",
+      "share": 0.35,
+      "ground": {
+       "shopfront": {
+        "colour": "#3a2a20",
+        "fascia": true,
+        "fasciaColour": "#e8e2cc",
+        "name": "Seoul Food",
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-11-29 pand 3 right (73): cream board ...FOOD; OSM node 2809777617 amenity=restaurant"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Vitaminstore",
+    "category": "shop=nutrition_supplements",
+    "osm": {
+     "type": "node",
+     "id": 11395814497,
+     "name": "Vitaminstore"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "three shops: Vitaminstore (69), teal shop (71, illegible), Seoul Food (73, OSM 2809777617, board ...FOOD)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3: BAG pand 69-73 is two fronts: 69 a 3-axis gabled front (flat heads under keystones, a straight-sided pointed gable with one light), 71-73 a 6-axis front (blocked segmental arches with keystones on storeys 1-3, flat heads on storey 4, frieze cornice with consoles, two pediment dormers)",
+    "photoRows": [
+     3,
+     9,
+     9,
+     9,
+     9,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "69 has a straight-sided pointed gable: one placement takes one type and the painted-band type has no pointed gable, so it is drawn as the type neck gable",
+     "storey 4 of 71-73 has flat heads under keystones"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012155934",
+   "slug": "kinker-155934",
+   "address": "Kinkerstraat 75",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "palette": {
+      "band": "#7a4a30",
+      "brick": "#6b533a"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "#c8c8c0",
+      "fascia": true,
+      "fasciaColour": "#c0281e",
+      "name": "Larry's",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-11-29 pand 4: red board over a white pui with a mezzanine"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Larry's",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2809777639,
+     "name": "Larry's"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "red board, lettering illegible"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 4: 3.7 m, 3 narrow axes",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012096181",
+   "slug": "kinker-096181",
+   "address": "Kinkerstraat 77",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "palette": {
+      "band": "#7a4a30"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "white",
+      "fascia": false,
+      "name": "Ja &Ro",
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "medium",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 5: white pui with a mezzanine light, no legible sign"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "Ja &Ro",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 2441927955,
+     "name": "Ja &Ro"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 5: 3 axes",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157331",
+   "slug": "kinker-157331",
+   "address": "Kinkerstraat 79",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "palette": {
+      "band": "#7a4a30"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "#e0601e",
+      "fascia": true,
+      "fasciaColour": "#f0eee6",
+      "name": "Massage Salon Oranje",
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-11-29 pand 6: orange-painted shopfront under a white board, white mezzanine with arched lights"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "Massage Salon Oranje",
+    "category": "shop=massage",
+    "osm": {
+     "type": "node",
+     "id": 12160371748,
+     "name": "Massage Salon Oranje"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "orange shopfront with a white board (lettering illegible) agrees with the name"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 6: 3 axes",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156102",
+   "slug": "kinker-156102",
+   "address": "Kinkerstraat 81",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "palette": {
+      "band": "#7a4a30"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "white",
+      "fascia": true,
+      "fasciaColour": "#e8b818",
+      "name": "Wesile",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 7: yellow board over a white pui; three pointed (Gothic) lights in the white mezzanine over the house door"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "Wesile",
+    "category": "shop=locksmith",
+    "osm": {
+     "type": "node",
+     "id": 12160371747,
+     "name": "Wesile"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "yellow board, lettering illegible"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 7: 3 axes",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop",
+     "pointed Gothic mezzanine lights"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012162717",
+   "slug": "kinker-162717",
+   "address": "Kinkerstraat 83",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "palette": {
+      "band": "#7a4a30"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "white",
+      "fascia": true,
+      "fasciaColour": "#f0eee6",
+      "name": "Vegan Sushi Bar",
+      "sign": {
+       "text": "VEGAN SUSHI BAR",
+       "textColour": "#2a9a3a",
+       "mount": "fascia"
+      },
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-11-29 pand 8: green VEGAN SUSHI BAR letters on a white board"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Vegan Sushi Bar",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2441927947,
+     "name": "Vegan Sushi Bar"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 8: 3 axes",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161747",
+   "slug": "kinker-161747",
+   "address": "Kinkerstraat 85",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "palette": {
+      "band": "#7a4a30"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "#3a2a20",
+      "fascia": false,
+      "name": "Couscous Bar",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#6a3a22"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 9: brown awning over a dark front"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Couscous Bar",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12160371749,
+     "name": "Couscous Bar"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "brown awning, no legible lettering"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 9: 3 axes",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156991",
+   "slug": "kinker-156991",
+   "address": "Kinkerstraat 87",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       2,
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      },
+      "tympanum": "band"
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      4
+     ],
+     "cornice": "bracketed",
+     "storeyHeights": [
+      1.15,
+      0.85,
+      1,
+      1,
+      0.95
+     ],
+     "windowHeights": [
+      0.7,
+      0.6,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "windowShare": 0.6,
+     "bays": 2,
+     "palette": {
+      "band": "#7a4a30",
+      "brick": "#6f5a40"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "storeys": 2,
+      "colour": "#2a2a2a",
+      "fascia": false,
+      "name": "Bar Billie",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#c0281e"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 10: red awning over a dark front (corner Bilderdijkkade)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "photoDate": "2024-11-29",
+    "name": "Bar Billie",
+    "category": "amenity=pub",
+    "osm": {
+     "type": "node",
+     "id": 494157354,
+     "name": "Bar Billie"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "red awning, lettering illegible"
+   },
+   "rhythm": {
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 10: 3.3 m corner, 2 axes visible, a tall brick wall dormer",
+    "schemaLimits": [
+     "brick-relief tympana (carved brick fans) drawn as plain band-brick fills",
+     "brick frieze with cream panels and paired consoles drawn as the bracketed cornice",
+     "the shop and its mezzanine (white boards, arched or wide lights) drawn as one two-storey shop",
+     "tall brick wall dormer drawn as the type pediment dormer"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012236453",
+    "front": "m0",
+    "stripRow": 300,
+    "evidence": "strip.jpg pand 3 left (69): gable foot at row 300 (14.6 m)"
+   },
+   {
+    "pand": "0363100012236453",
+    "front": "m1",
+    "stripRow": 232,
+    "evidence": "strip.jpg pand 3 (71-73): top of the cornice at row 232 (16.3 m), one line over both modules"
+   },
+   {
+    "pand": "0363100012236453",
+    "front": "m2",
+    "stripRow": 232,
+    "evidence": "strip.jpg pand 3 (71-73): top of the cornice at row 232 (16.3 m), one line over both modules"
+   },
+   {
+    "pand": "0363100012155934",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012096181",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012157331",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012156102",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012162717",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012161747",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012156991",
+    "stripRow": 295,
+    "frontRoof": {},
+    "evidence": "strip.jpg pands 4-10: top of the bracketed cornice of the 75-87 row at row 295 (14.7 m); 3DBAG eaves 15.2-17.3 m carry the mansard out to the facade, re-pitched from the cornice"
+   }
+  ],
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30
+  }
+ },
+ "limitations": [
+  "69-73 is one BAG pand with two fronts of different types (gabled 69, 6-axis 71-73); a placement takes one type, so 69 is the painted-band neck gable instead of its straight-sided pointed gable.",
+  "75-87: brick-relief tympana (carved brick fans over the segmental heads) drawn as plain band-brick fills; frieze panels and consoles.",
+  "81: pointed Gothic mezzanine lights. 67: round-arched door bay on storey 1. 87: a brick wall dormer.",
+  "Iron wall anchors (65, 67)."
+ ]
+}

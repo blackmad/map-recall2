@@ -1,0 +1,943 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-173-225",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-173-225/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 173-225 (odd side), one 1982 urban-renewal block: an arcade of square piers under a grey canopy band with the shops set back, three storeys of white casements (wide-narrow-wide triples), a set-back cream top storey behind a balustrade with projecting cream penthouse bays (dark red panel, grey ledge) over 183-187, 195-199 and 209-211 and 219-223. Every pand places kinker-1985-infill (flat crown) as ~5.4 m modules. Strip 2024-12-11."
+ },
+ "types": [
+  "kinker-1985-infill"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012148565",
+   "slug": "kinker-148565",
+   "address": "Kinkerstraat 173-177",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 module 1: orange DOPPIO letters on the canopy band; OSM node 5750117779 amenity=cafe",
+        "name": "Doppio Espresso"
+       }
+      },
+      "share": 0.3753
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 module 2: MultiVlaai on the canopy band; OSM node 2809771472 shop=pastry",
+        "name": "MultiVlaai"
+       }
+      },
+      "mirror": true,
+      "share": 0.3753
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 module 3: shop behind the arcade under the bay-window stack"
+       }
+      },
+      "share": 0.2494,
+      "overrides": {
+       "bays": [
+        1,
+        2,
+        2,
+        2
+       ],
+       "bayWindows": {
+        "bays": {
+         "from": 0,
+         "to": 1
+        },
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "cap": "flat"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-11",
+    "name": "Doppio Espresso",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 5750117779,
+     "name": "Doppio Espresso"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "second shop MultiVlaai (OSM 2809771472, lettered on the canopy)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: 14.2 m, arcade, 3 storeys of paired lights, cream top storey flush on the left, a three-storey glazed bay window on the right (shared with 177B)",
+    "photoRows": [
+     3,
+     9,
+     9,
+     9
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)",
+     "the last 2.9 m steps back 0.85 m under the bay-window stack; that module runs from the return corner to the end (its facade plane approximated as an inset)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012115555",
+   "slug": "kinker-115555",
+   "address": "Kinkerstraat 177B",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "none",
+        "glazing": "split",
+        "displayWindows": 1,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 2: shop under the bay-window stack"
+       }
+      },
+      "share": 0.3482,
+      "mirror": false,
+      "overrides": {
+       "bays": [
+        1,
+        2,
+        2,
+        2
+       ],
+       "bayWindows": {
+        "bays": {
+         "from": 0,
+         "to": 1
+        },
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "cap": "flat"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 2: lit board on the canopy band (illegible); OSM node 2452226915 shop=seafood",
+        "name": "Volendam Vishandel"
+       }
+      },
+      "mirror": false,
+      "share": 0.6518
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Volendam Vishandel",
+    "category": "shop=seafood",
+    "osm": {
+     "type": "node",
+     "id": 2452226915,
+     "name": "Volendam Vishandel"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2: bay-window stack left (in a 0.85 m recess of the footprint), a wide-narrow-wide triple right; cream top storey set back",
+    "photoRows": [
+     2,
+     6,
+     6,
+     6
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)",
+     "split at the footprint step into two fronts; the bay-window module runs from the recess to the return corner"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012085030",
+   "slug": "kinker-085030",
+   "address": "Kinkerstraat 179-181",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 3 left: red DISCENTER letters on the canopy band",
+        "name": "Discenter"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 3 right: blue lettering on the canopy band (illegible); a delivery truck in front"
+       }
+      },
+      "mirror": true
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Discenter",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "two shops; no OSM node; right shop lettering illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3: 10.9 m, 2 modules, a cream penthouse bay with a dark red panel over the left module",
+    "photoRows": [
+     2,
+     6,
+     6,
+     6
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)",
+     "projecting cream penthouse bay with a dark red panel and grey ledge"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012087255",
+   "slug": "kinker-087255",
+   "address": "Kinkerstraat 183",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "fasciaColour": "#8a8f8c",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 4: black board ULIVOTO FASHION; OSM node 4833026126 shop=clothes",
+      "name": "Ulivoto Fashion",
+      "sign": {
+       "text": "ULIVOTO FASHION",
+       "textColour": "#ffffff",
+       "mount": "fascia",
+       "background": "#1e1e1e"
+      }
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Ulivoto Fashion",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4833026126,
+     "name": "Ulivoto Fashion"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4: one wide-narrow-wide module, cream top storey set back",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012119385",
+   "slug": "kinker-119385",
+   "address": "Kinkerstraat 185",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3,
+      2
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "fasciaColour": "#8a8f8c",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 5: red B&B FEESTARTIKELEN letters; OSM node 4833026125 shop=gift",
+      "name": "B&B feestartikelen",
+      "sign": {
+       "text": "B&B FEESTARTIKELEN",
+       "textColour": "#d42a2a",
+       "mount": "fascia",
+       "background": "#e8e8e2"
+      }
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "B&B feestartikelen",
+    "category": "shop=gift",
+    "osm": {
+     "type": "node",
+     "id": 4833026125,
+     "name": "B&B feestartikelen"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5: one module of paired lights under a cream penthouse bay",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cream penthouse storey drawn as brick",
+     "projecting cream penthouse bay"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012111903",
+   "slug": "kinker-111903",
+   "address": "Kinkerstraat 187",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "fasciaColour": "#8a8f8c",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 6: dark shop behind the arcade; OSM node 2452226918 shop=photo",
+      "name": "Solleveld"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Solleveld",
+    "category": "shop=photo",
+    "osm": {
+     "type": "node",
+     "id": 2452226918,
+     "name": "Solleveld"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6: one wide-narrow-wide module",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012151677",
+   "slug": "kinker-151677",
+   "address": "Kinkerstraat 189-207",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 7 module 1: white KELLYS EXPAT SHOPPING on a black board; OSM node 2809772061 shop=convenience",
+        "name": "Kellys Expat Shopping",
+        "sign": {
+         "text": "KELLYS EXPAT SHOPPING",
+         "textColour": "#ffffff",
+         "mount": "fascia",
+         "background": "#1e1e1e"
+        }
+       }
+      },
+      "share": 0.17086
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 7 module 2: Kellys (continued)"
+       }
+      },
+      "mirror": true,
+      "share": 0.17086
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 7 recessed middle: We Are Vintage script lettering; OSM node 7058869173 shop=clothes",
+        "name": "We Are Vintage"
+       }
+      },
+      "share": 0.18195
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "We Are Vintage (continued)"
+       }
+      },
+      "mirror": true,
+      "share": 0.18195
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 7 right: shop with green displays"
+       }
+      },
+      "share": 0.14745
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 7 right: shop behind the arcade"
+       }
+      },
+      "mirror": true,
+      "share": 0.14693
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Kellys Expat Shopping",
+    "category": "shop=convenience",
+    "osm": {
+     "type": "node",
+     "id": 2809772061,
+     "name": "Kellys Expat Shopping"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "second shop We Are Vintage (OSM 7058869173, script lettering on the canopy)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7: 31.2 m; the middle 10.3 m (197-201) is set back 0.85 m under a continuous cream penthouse with dark red panels; 2 modules each on the left, the recess and the right, the returns inside the recess modules",
+    "photoRows": [
+     6,
+     18,
+     18,
+     18
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)",
+     "the recess modules run from the return corners (facade planes approximated as insets of 0.85 m)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012078442",
+   "slug": "kinker-078442",
+   "address": "Kinkerstraat 205",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "fasciaColour": "#8a8f8c",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 8: green Specsavers oval on the dark canopy band; OSM node 4733575071 shop=optician",
+      "name": "Specsavers"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Specsavers",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 4733575071,
+     "name": "Specsavers"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8: one wide-narrow-wide module",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "set-back cream top storey: the 3DBAG roof mass stands in for it (no windows, roof colour)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012130890",
+   "slug": "kinker-130890",
+   "address": "Kinkerstraat 205-211",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3,
+      2
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 9 left: green Pearle lettering; OSM node 4732828611 shop=optician",
+        "name": "Pearle"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 9 right: shop behind the arcade; OSM node 2452226922 craft=shoemaker",
+        "name": "Shoe Point"
+       }
+      },
+      "mirror": true
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Pearle",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 4732828611,
+     "name": "Pearle"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "second unit Shoe Point (OSM 2452226922, no legible sign)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9: 9.9 m, 2 modules under a cream penthouse bay",
+    "photoRows": [
+     2,
+     6,
+     6,
+     6,
+     4
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cream penthouse storey drawn as brick",
+     "projecting cream penthouse bay"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012131204",
+   "slug": "kinker-131204",
+   "address": "Kinkerstraat 213-225",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3,
+      2
+     ],
+     "palette": {
+      "brick": "#3a2f20"
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 10: C&A in white letters on the dark canopy band",
+        "name": "C&A",
+        "sign": {
+         "text": "C&A",
+         "textColour": "#ffffff",
+         "mount": "fascia",
+         "background": "#2a3438"
+        }
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "C&A (continued)"
+       }
+      },
+      "mirror": true
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#8a8f8c",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "evidence": "C&A (continued)"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "C&A",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "C&A lettered on the canopy; OSM lists Norah (shop=clothes) and Lansuplant (shop=florist) inside the pand"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10: 18.8 m, 3 modules, a cream penthouse bay over 219-223",
+    "photoRows": [
+     3,
+     9,
+     9,
+     9,
+     6
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the cream penthouse storey drawn as brick",
+     "projecting cream penthouse bay"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ },
+ "limitations": [
+  "Set-back cream top storey behind a balustrade (whole block): the fronts stop at the brick wall top (3DBAG eaves 12.3-12.9 m) and the 3DBAG roof mass stands in for the set-back storey; where the cream penthouse bays come forward (185, 209-211, 219-223: eaves 15.1 m) the cream storey is drawn as brick. The kit has no set-back storey or one-storey material change.",
+  "Projecting cream penthouse bays with a dark red panel and a grey ledge (183-187, 195-199, 209-211, 219-223).",
+  "Arcade: square piers in front of set-back shops under a grey canopy band; drawn as a flush shopfront with a grey fascia.",
+  "195-201: the middle 15 m of the front steps back about 1.5 m."
+ ]
+}

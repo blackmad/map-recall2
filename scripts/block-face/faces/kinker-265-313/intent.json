@@ -1,0 +1,488 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-265-313",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-265-313/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 265-313 (odd side), one 1992 block of grey-brown brick: 16.4 m bay units, each a recessed loggia with round projecting balconies between two three-storey glazed grid bays, a ribbon window on the top storey, shops behind an arcade under a canopy. The cluster table assigns kinker-1985-infill (auto); the photo matches no library type, so every pand places the infill type with the unit written as overrides (bay widths, six-pane windows, projecting balconies on the loggia axis). Strip 2024-12-11."
+ },
+ "types": [
+  "kinker-1985-infill"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012215185",
+   "slug": "kinker-215185",
+   "address": "Kinkerstraat 265-283",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "modules": [
+     {
+      "share": 0.2872,
+      "overrides": {
+       "bays": [
+        3,
+        3,
+        3,
+        3,
+        1
+       ],
+       "windowShare": 0.62,
+       "windows": "six-pane",
+       "windowHeights": [
+        0.8,
+        0.88,
+        0.88,
+        0.88,
+        0.55
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         1
+        ],
+        "projecting": true
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#6a6c64",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 unit 1: shops behind the arcade, lettering illegible"
+       }
+      }
+     },
+     {
+      "share": 0.2872,
+      "overrides": {
+       "bays": [
+        3,
+        3,
+        3,
+        3,
+        1
+       ],
+       "windowShare": 0.62,
+       "windows": "six-pane",
+       "windowHeights": [
+        0.8,
+        0.88,
+        0.88,
+        0.88,
+        0.55
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         1
+        ],
+        "projecting": true
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#6a6c64",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 unit 2: red vodafone Ziggo letters on the canopy; OSM node 4876549924 shop=mobile_phone",
+        "name": "Vodafone Ziggo"
+       }
+      }
+     },
+     {
+      "share": 0.2872,
+      "overrides": {
+       "bays": [
+        3,
+        3,
+        3,
+        3,
+        1
+       ],
+       "windowShare": 0.62,
+       "windows": "six-pane",
+       "windowHeights": [
+        0.8,
+        0.88,
+        0.88,
+        0.88,
+        0.55
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         1
+        ],
+        "projecting": true
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#6a6c64",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 unit 3: shops behind the arcade (Hans Anders, De Meesterslijpers in OSM), lettering illegible"
+       }
+      }
+     },
+     {
+      "share": 0.1384,
+      "overrides": {
+       "bays": [
+        2,
+        2,
+        2,
+        2,
+        1
+       ],
+       "windowShare": 0.62,
+       "windows": "six-pane",
+       "windowHeights": [
+        0.8,
+        0.88,
+        0.88,
+        0.88,
+        0.55
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         1
+        ],
+        "projecting": true
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#6a6c64",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 1 half unit 4: shop behind the arcade"
+       }
+      }
+     }
+    ],
+    "overrides": {
+     "palette": {
+      "brick": "#45473a"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Vodafone Ziggo",
+    "category": "shop=mobile_phone",
+    "osm": {
+     "type": "node",
+     "id": 4876549924,
+     "name": "Vodafone Ziggo"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "OSM also lists Hans Anders (optician) and De Meesterslijpers (houseware) in the pand; their signs are illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: 57.1 m, three and a half bay units",
+    "photoRows": [
+     10,
+     11,
+     11,
+     11,
+     4
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "glazed curtain-wall bays (a 3-storey mullion-and-transom grid with dark spandrel panels) drawn as wide six-pane windows per storey",
+     "recessed loggia behind the round balconies drawn flush",
+     "arcade piers in front of set-back shops drawn as a flush shopfront"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012126730",
+   "slug": "kinker-126730",
+   "address": "Kinkerstraat 285-291",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "overrides": {
+     "bays": [
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "windowShare": 0.62,
+     "windows": "six-pane",
+     "windowHeights": [
+      0.8,
+      0.88,
+      0.88,
+      0.88,
+      0.55
+     ],
+     "balconies": {
+      "storeys": [
+       1,
+       2,
+       3
+      ],
+      "bays": [
+       0
+      ],
+      "projecting": true
+     },
+     "palette": {
+      "brick": "#45473a"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "fasciaColour": "#6a6c64",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 3,
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 2: shop behind the arcade, unlit"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "unlit shop, no sign; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2: 8.5 m, the right half of bay unit 4 (its loggia half and glazed bay)",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "glazed curtain-wall bays (a 3-storey mullion-and-transom grid with dark spandrel panels) drawn as wide six-pane windows per storey",
+     "recessed loggia behind the round balconies drawn flush",
+     "arcade piers in front of set-back shops drawn as a flush shopfront"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012093995",
+   "slug": "kinker-093995",
+   "address": "Kinkerstraat 293-313",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "modules": [
+     {
+      "share": 0.5,
+      "overrides": {
+       "bays": [
+        3,
+        3,
+        3,
+        3,
+        1
+       ],
+       "windowShare": 0.62,
+       "windows": "six-pane",
+       "windowHeights": [
+        0.8,
+        0.88,
+        0.88,
+        0.88,
+        0.55
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         1
+        ],
+        "projecting": true
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#6a6c64",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 3 unit 1: red HEMA letters on the canopy; OSM node 501817310 shop=department_store",
+        "name": "HEMA",
+        "sign": {
+         "text": "HEMA",
+         "textColour": "#e8281e",
+         "mount": "fascia"
+        }
+       }
+      }
+     },
+     {
+      "share": 0.5,
+      "overrides": {
+       "bays": [
+        3,
+        3,
+        3,
+        3,
+        1
+       ],
+       "windowShare": 0.62,
+       "windows": "six-pane",
+       "windowHeights": [
+        0.8,
+        0.88,
+        0.88,
+        0.88,
+        0.55
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         1
+        ],
+        "projecting": true
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": true,
+        "fasciaColour": "#6a6c64",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 3 unit 2: HEMA (second entrance)",
+        "name": "HEMA",
+        "sign": {
+         "text": "HEMA",
+         "textColour": "#e8281e",
+         "mount": "fascia"
+        }
+       }
+      }
+     }
+    ],
+    "overrides": {
+     "palette": {
+      "brick": "#45473a"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "HEMA",
+    "category": "shop=department_store",
+    "osm": {
+     "type": "node",
+     "id": 501817310,
+     "name": "HEMA"
+    },
+    "bag": [
+     "gezondheidszorgfunctie",
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3: 32.8 m, two bay units",
+    "photoRows": [
+     6,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "glazed curtain-wall bays (a 3-storey mullion-and-transom grid with dark spandrel panels) drawn as wide six-pane windows per storey",
+     "recessed loggia behind the round balconies drawn flush",
+     "arcade piers in front of set-back shops drawn as a flush shopfront"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ },
+ "limitations": [
+  "The 1992 block matches no library type: glazed curtain-wall bays (mullion-and-transom grids with dark spandrel panels over three storeys) are drawn as wide six-pane windows; the kit has no curtain-wall bay.",
+  "Recessed loggias behind the round projecting balconies are drawn flush (the kit balconies are rectangular).",
+  "Arcade: piers in front of set-back shops under a canopy, drawn as a flush shopfront with a grey fascia."
+ ]
+}
