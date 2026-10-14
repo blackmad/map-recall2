@@ -520,6 +520,12 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
     }
   }
 
+  // A bascule leaf's kerbs: a stone strip along both edges of each leaf, so the leaf reads as a slab with its edge.
+  if (kind === 'bascule' && input.lod === 0) for (const [l0, l1] of input.leaves ?? []) for (const side of [1, -1] as const) {
+    const a = rowAt(rows, l0 + 0.06), b = rowAt(rows, l1 - 0.06), ea = side > 0 ? a.L : a.R, eb = side > 0 ? b.L : b.R, za = side > 0 ? a.zL : a.zR, zb = side > 0 ? b.zL : b.zR;
+    const ia: Vec2 = [ea[0] - a.n[0] * side * 0.12, ea[1] - a.n[1] * side * 0.12], ib: Vec2 = [eb[0] - b.n[0] * side * 0.12, eb[1] - b.n[1] * side * 0.12];
+    beam(m, [ia[0], ia[1], za + 0.06], [ib[0], ib[1], zb + 0.06], 0.09, C.stone, true);
+  }
   const tFaces = m.indices.length / 3;
   // Arch ends: the springing faces of the piers and abutments, across the width from the spring down past the water, facing the opening.
   for (const a of lv.ring ? arches : []) for (const [s, dir] of [[a.s0, 1], [a.s1, -1]] as const) {
@@ -715,5 +721,38 @@ export function basculeUnit(m: MeshArrays, P: (a: number, b: number) => Vec2, u:
   box(m, bc, u, 0.5, across - 0.1, pivot + slope * back - 1.0, pivot + slope * back - Bh, col);
 }
 
+/**
+ * Two kinds of movable bridge in Amsterdam (user 2026-10-14, the Haarlemmerpoort and Zoutkeetsgracht bascules "look
+ * bad"; the aimed panoramas, scripts/bridge-reference/thumb.ts): the ophaalbrug with an overhead portal and balance
+ * beams (the Magere Brug, timber register bridges) and the basculebrug whose counterweight sits in a basement under
+ * the deck: no portal, red-and-white signal masts at the ends, barrier boxes (Willemsbrug, Bullebak, the
+ * Zoutkeetsgracht bridge). Hand readings first, then the register: timber or unknown is a portal, steel and concrete
+ * a basement.
+ */
+export type BasculeStyle = 'portal' | 'basement';
+export const BASCULE_STYLE: Readonly<Record<string, BasculeStyle>> = { BRU0242: 'portal', BRU0237: 'portal', BRU0151: 'basement', BRU0149: 'basement', BRU0345: 'basement' };
+export const basculeStyle = (id: string | null | undefined, hint: RegisterHint | null): BasculeStyle =>
+  (id && BASCULE_STYLE[id]) || (hint && hint.material !== 'wood' && hint.material !== 'other' ? 'basement' : 'portal');
+
+/** Signal masts and barrier boxes of a basement bascule, metres. */
+export const MAST = { height: 7.2, half: 0.11, bands: 4, box: [0.35, 0.3, 1.1] as const };
+/**
+ * A basement bascule's furniture at one approach end: a red-and-white mast on each side (banded near, plain far) and a
+ * barrier box at its foot. `P(a, b)` maps (along, across) to the scene.
+ */
+export function basementEnd(m: MeshArrays, P: (a: number, b: number) => Vec2, u: Vec2, at: number, side: readonly [number, number], deckZ: (q: Vec2) => number, far = false): void {
+  const red = hex('#b8322c'), white = hex('#ecebe4'), grey = hex('#4a4d4f');
+  for (const b of side) {
+    const q = P(at, b), z = deckZ(q);
+    if (far) { if (b === side[0]) box(m, q, u, MAST.half * 1.5, MAST.half * 1.5, z - 0.2, z + MAST.height, red, false); continue; }
+    const step = MAST.height / MAST.bands;
+    for (let k = 0; k < MAST.bands; k++) box(m, q, u, MAST.half, MAST.half, z + k * step - (k === 0 ? 0.2 : 0), z + (k + 1) * step, k % 2 ? white : red, false);
+    const bq = P(at, b + (b > (side[0] + side[1]) / 2 ? -0.6 : 0.6));
+    box(m, bq, u, MAST.box[0], MAST.box[1], deckZ(bq) - 0.1, deckZ(bq) + MAST.box[2], grey);
+  }
+}
+
 /** Bascule colour from the register: traditional timber ophaalbruggen (the Magere Brug) white, steel and concrete ones Amsterdam green. */
-export const basculeColour = (hint: RegisterHint | null): RGB => (hint?.material === 'wood' ? KIT_COLOURS.white : KIT_COLOURS.green);
+/** Hand colours from the aimed panoramas where the register rule is wrong (the Zoutkeetsgracht bridge's leaf and tube railings are white). */
+export const BASCULE_COLOUR: Readonly<Record<string, 'white' | 'green'>> = { BRU0345: 'white' };
+export const basculeColour = (hint: RegisterHint | null, id?: string | null): RGB => (id && BASCULE_COLOUR[id] ? KIT_COLOURS[BASCULE_COLOUR[id]] : hint?.material === 'wood' ? KIT_COLOURS.white : KIT_COLOURS.green);

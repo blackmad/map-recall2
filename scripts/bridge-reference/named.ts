@@ -15,7 +15,9 @@ export const AMSTEL = ['BRU0035', 'BRU0036', 'BRU0076', 'BRU0077', 'BRU0250'];
  * Rozengracht/Westermarkt, Reestraat), from the streets crossing each footprint (main below).
  */
 export const RADIAL = ['BRU0042', 'BRU0051', 'BRU0106', 'BRU0022', 'BRU0024', 'BRU0025', 'BRU0026', 'BRU0027', 'BRU0029', 'BRU0034', 'BRU0037', 'BRU0041', 'BRU0043', 'BRU0044', 'BRU0046', 'BRU0047', 'BRU0048', 'BRU0049', 'BRU0054', 'BRU0060', 'BRU0061', 'BRU0064', 'BRU0065', 'BRU0066', 'BRU0067', 'BRU0069', 'BRU0070', 'BRU0075'];
-export const NAMED: readonly string[] = [...new Set([...SEVEN_BRIDGES, ...LANDMARKS, ...AMSTEL, ...RADIAL])];
+/** Named bascules (user screenshots 2026-10-14): the Magere Brug, the Haarlemmerpoort pair (Willemsbrug, Bullebak), the Zoutkeetsgracht bridge. */
+export const BASCULES = ['BRU0242', 'BRU0151', 'BRU0149', 'BRU0345'];
+export const NAMED: readonly string[] = [...new Set([...SEVEN_BRIDGES, ...LANDMARKS, ...AMSTEL, ...RADIAL, ...BASCULES])];
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const { readFileSync } = await import('node:fs');

@@ -30,7 +30,8 @@ const OUT = 'artifacts/bridges';
 async function one(id: string, detail: boolean): Promise<{ id: string; face: BridgeFace | null; reads: { view: FaceView; crop: FaceCrop; r: FaceReading }[]; error?: string }> {
   const face = bridgeFace(id);
   if (!face) return { id, face, reads: [], error: 'no face' };
-  const views = await bridgeViews(face);
+  // Movable bridges: the quays' land panoramas too (the Singelgracht at the Haarlemmerpoort has no boat mission).
+  const views = await bridgeViews(face, { land: face.register?.type === 'Beweegbare brug' });
   const reads: { view: FaceView; crop: FaceCrop; r: FaceReading }[] = [];
   mkdirSync(`${OUT}/${id}`, { recursive: true });
   for (const view of views) {

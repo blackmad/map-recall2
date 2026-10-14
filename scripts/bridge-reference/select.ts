@@ -83,7 +83,9 @@ export async function rectifyBridgeFace(face: BridgeFace, view: FaceView, ppm = 
   if (view.surface === 'water' && !(lens.pose.z - face.waterNAP >= 0.6 && lens.pose.z - face.waterNAP <= 1.8)) {
     source = `water level + 1.15 m (published ${lens.pose.z.toFixed(2)} implausible for a boat)`; lens = { ...lens, pose: { ...lens.pose, z: face.waterNAP + 1.15 } };
   }
-  const baseZ = face.waterNAP - FACE_FOOT_M, topZ = face.crownNAP + FACE_HEADROOM_M;
+  // A movable bridge's portal stands ~6.5 m over the deck (bridgeKit FRAME.postHeight): the face takes it in.
+  const movable = face.register?.type === 'Beweegbare brug';
+  const baseZ = face.waterNAP - FACE_FOOT_M, topZ = face.crownNAP + (movable ? 8 : FACE_HEADROOM_M);
   const out = rectifyFacade(pano.img, { ...lens.pose, headingDeg: 0, pitchDeg: 0, rollDeg: 0 }, { start: view.wall.a, end: view.wall.b, baseZ, topZ }, { pixelsPerMetre: ppm, camera: AMSTERDAM_WORLD_ALIGNED, maxPixels: 4_000_000 });
   return { data: out.data, width: out.width, height: out.height, ppm: out.width / out.wallWidthM, baseZ, topZ, missingFraction: out.missingFraction, flipped: view.side > 0, cameraZ: lens.pose.z, heightSource: source };
 }

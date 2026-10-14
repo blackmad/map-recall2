@@ -1,7 +1,7 @@
 // Bridge kit tests (lane bridge-kit 2026-10-13); imported by ownGround.test.ts so `npm run test:own-ground` runs them.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
+import { basculeStyle, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
 import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, movableFrame } from './decks';
 import type { DeckSurface } from './surface';
@@ -127,6 +127,18 @@ test('bridge facts: the kit honours count, shape, family and the named budget', 
   const one = buildKit({ ...base, facts: { arches: 1, shapes: ['round'], family: 'brick-red', parapet: 'iron-rail', named: false } }).info;
   assert.equal(one.arches, 1);
   assert.ok(one.triangles <= KIT_BUDGET.near);
+});
+
+// User 2026-10-14 (the Haarlemmerpoort and Zoutkeetsgracht bascules "look bad"): their aimed panoramas show basement
+// bascules, no portal: signal masts and barrier boxes. The Magere Brug keeps its portals.
+test('bascules: portal or basement by the panoramas, then the register', () => {
+  assert.equal(basculeStyle('BRU0242', registerHint('BRU0242')), 'portal', 'Magere Brug');
+  for (const id of ['BRU0151', 'BRU0149', 'BRU0345']) assert.equal(basculeStyle(id, registerHint(id)), 'basement', id);
+  assert.equal(basculeStyle(null, null), 'portal');
+  const m = { positions: [] as number[], uvs: [] as number[], indices: [] as number[], colors: [] as number[] };
+  basementEnd(m, (a, b) => [a, b], [1, 0], 0, [3, -3], () => 1);
+  const zs = m.positions.filter((_, i) => i % 3 === 2);
+  assert.ok(Math.max(...zs) >= 1 + MAST.height - 1e-6 && Math.min(...zs) <= 1 - 0.1, 'masts stand on the deck and reach their height');
 });
 
 // User 2026-10-14 ("disconnected bridge", a Houthavens footbridge, BRU2433-2435): the water mask ran past the measured
