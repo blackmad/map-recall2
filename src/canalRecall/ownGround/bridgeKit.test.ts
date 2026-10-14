@@ -3,7 +3,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
-import { flatDeckBody, movableFrame } from './decks';
+import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, movableFrame } from './decks';
+import type { DeckSurface } from './surface';
 
 /** A 24 m humped deck along +x, 8 m wide, over `water` metres of canal centred at x = 20. */
 function rows(water = 16, crown = 1.2, halfWidth = 4): KitRow[] {
@@ -126,4 +127,19 @@ test('bridge facts: the kit honours count, shape, family and the named budget', 
   const one = buildKit({ ...base, facts: { arches: 1, shapes: ['round'], family: 'brick-red', parapet: 'iron-rail', named: false } }).info;
   assert.equal(one.arches, 1);
   assert.ok(one.triangles <= KIT_BUDGET.near);
+});
+
+// User 2026-10-14 ("disconnected bridge", a Houthavens footbridge, BRU2433-2435): the water mask ran past the measured
+// deck span, so the deck hung short of both banks. The drawn deck reaches on to the bank by the abutment depth.
+test('deck ends: a deck whose measured span stops over water reaches on to both banks', () => {
+  const n = 81, s = Float64Array.from({ length: n }, (_, i) => i * 0.5), x = s.slice(), y = new Float64Array(n), hw = new Float64Array(n).fill(1.7);
+  const h = Float64Array.from(s, v => (v > 12 && v < 28 ? 1.2 * Math.sin(Math.PI * (v - 12) / 16) : 0));
+  const deck = { profile: { id: 'T', x, y, s, h, halfWidth: hw, deck: [14, 26], water: null, family: 'concrete-deck' }, z: Float64Array.from(h, v => 1 + v), ends: [1, 1], span: [0, n - 1], ease: [2, 2] } as unknown as DeckSurface;
+  const water = (px: number) => px > 11.5 && px < 28.5; // the canal runs 2.5 m past each measured deck end
+  const { reach, landed } = deckReach(deck, px => water(px));
+  assert.deepEqual(landed, [true, true]);
+  assert.ok(reach[0] <= 11.5 - ABUTMENT_DEPTH_M + 0.51 && reach[1] >= 28.5 + ABUTMENT_DEPTH_M - 0.51, `reach ${reach}`);
+  assert.deepEqual(floatingEnds(deck, px => water(px), () => 1, () => 1), []);
+  // A canal wider than the reach: still floating, and the check says so.
+  assert.equal(floatingEnds(deck, px => px > 0 && px < 39, () => 1, () => 1).length, 2);
 });
