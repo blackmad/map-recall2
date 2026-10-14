@@ -1,0 +1,187 @@
+{
+ "id": "kattenburgerstraat-164930",
+ "pandId": "0363100012164930",
+ "date": "2026-10-14",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 228,
+   "verdict": "NO EVIDENCE",
+   "reasons": [
+    "foliage 41 % > 25 %"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012164930/w02-315.jpg",
+    "sha256": "d43684e468e358e0af25fb11ccb8c09d657c78c1cd3aa9736c2be2bab16c05ca",
+    "panoId": "b_20250130_0915_Track06_Sphere_00064",
+    "capturedAt": "2025-01-30",
+    "obliquityDeg": 0.8,
+    "cameraDistM": 21.8
+   },
+   "pieces": [
+    {
+     "tag": "w02-315",
+     "ref": "source-data://pand-reference-walls/0363100012164930/w02-315.jpg",
+     "sha256": "d43684e468e358e0af25fb11ccb8c09d657c78c1cd3aa9736c2be2bab16c05ca",
+     "capturedAt": "2025-01-30",
+     "u0": 0,
+     "u1": 81.8
+    }
+   ],
+   "coverage": 0.999,
+   "placement": {
+    "offsetM": 0.018,
+    "angleDeg": 0.005,
+    "overlap": 1,
+    "along": [
+     0.028,
+     81.884
+    ],
+    "shift": {
+     "uM": 0.3,
+     "vM": 0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 81.856,
+     "v0": 0,
+     "v1": 13.815
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.3,
+     "vM": 0.5
+    },
+    "iou": 0.291,
+    "wall": {
+     "photo": "#342a18",
+     "photoRaw": "#3d321c",
+     "model": "#4e3e32",
+     "modelToday": "#4e3e32",
+     "photoFamily": "paint",
+     "modelFamily": "brick",
+     "photoMaterial": "painted-black",
+     "modelMaterial": "brick-grey",
+     "dL": 0.102,
+     "dHue": -12.9,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#0e1107",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.448,
+      0.277,
+      0.111,
+      null,
+      null
+     ],
+     "model": [
+      null,
+      0.384,
+      0.401,
+      0.443,
+      null,
+      null
+     ],
+     "photoMean": 0.298,
+     "modelMean": 0.362,
+     "maxDiff": 0.332,
+     "meanDiff": 0.064,
+     "pass": false
+    },
+    "columns": {
+     "photo": 55,
+     "model": 12,
+     "pass": false
+    },
+    "shape": {
+     "photo": null,
+     "model": "wide",
+     "pass": null
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "ribbon"
+    },
+    "ground": {
+     "photo": 0.634,
+     "model": 0
+    },
+    "evidence": {
+     "usable": 0.538,
+     "foliage": 0.409,
+     "washedOut": 0.066,
+     "obliquityDeg": 0.8,
+     "cameraDistM": 21.8,
+     "widthM": 81.86,
+     "abstain": [
+      "foliage 41 % > 25 %"
+     ]
+    }
+   },
+   "measured": {
+    "wall": "#342a18",
+    "wallRaw": "#3d321c",
+    "glass": "#0e1107",
+    "trim": "#414442",
+    "glazing": 0.307,
+    "storeyGlazing": [
+     null,
+     0.457,
+     0.298,
+     0.113,
+     null,
+     null
+    ],
+    "ground": 0.682,
+    "bays": 55,
+    "pitchM": 1.488,
+    "storeyM": 2.66,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      249,
+      252,
+      251
+     ],
+     "gain": 0.857,
+     "wb": [
+      1.006,
+      0.995,
+      0.999
+     ]
+    },
+    "usable": 0.525,
+    "foliage": 0.409,
+    "washedOut": 0.066,
+    "split": null
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no evidence: foliage 41 % > 25 %"
+    ]
+   }
+  },
+  {
+   "group": 1,
+   "panel": 205,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 205"
+    ]
+   }
+  }
+ ]
+}

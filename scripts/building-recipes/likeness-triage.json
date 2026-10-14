@@ -59,5 +59,100 @@
   "outcome": "refit",
   "look": "Pale steel sheds read right but too white against overcast grey-white ribbed cladding.",
   "note": "cladding #b4bbc0 by hand from w03-27 (the measured #a2acb3 is the overcast crop raw); the saw-tooth roof glazing is the 3DBAG roof."
+ },
+ "politie-ij-tunnel": {
+  "outcome": "refit",
+  "look": "Mid-brown brick with wide ribbon windows against near-black-brown brick with mixed ribbon bands and small vertical windows.",
+  "note": "measured dark brick per group; walls[0] small windows by hand 0.40 x 0.50 (measured as full-height slots). The mixed ribbon/punched storeys on one face stay one system per group (listed)."
+ },
+ "politie-houtmankade": {
+  "outcome": "refit",
+  "look": "Cream block against a dark brown brick slab with a dense window grid.",
+  "note": "walls[2] measured #615449, window height fixed (0.95 slot -> 0.58); walls[0] NO EVIDENCE (foliage and washed out, 2016 crop) kept as authored: inferred."
+ },
+ "politie-oost-watergraafsmeer": {
+  "outcome": "refit",
+  "look": "Red brick tower against dark grey-brown brick fronts with tall narrow windows.",
+  "note": "measured per face (#4e4f53, #574c4a, #413333); walls[3] too oblique to judge (47.5 deg): hand #574c4a from walls[1]."
+ },
+ "politie-postjesweg": {
+  "outcome": "refit",
+  "look": "Saturated orange-red brick with large windows against a deep red brick front with small windows and a grey-brown brick east wing.",
+  "note": "red by hand #8e3b2c (the light-trim normalisation reads the saturated red as #5f342b; the crop and overlay read redder), measured grey #5b5650 on walls[3] with small windows by hand; walls[2]'s crop shows the neighbouring AVONDVERKOOP shop: inferred."
+ },
+ "politie-meer-en-vaart": {
+  "outcome": "refit",
+  "look": "Pale cream ribbon block against a grey-beige concrete front with ribbon windows.",
+  "note": "walls[1] measured #5d5a55, walls[0] hand #776f62 (foliage 41 %), ribbon height by hand 0.42 (WARN)."
+ },
+ "politie-flierbosdreef": {
+  "outcome": "inferred",
+  "look": "Small pale pavilion; the only crop is a car park view with parked vans (usable 36 %), the other street wall has none.",
+  "note": "NO EVIDENCE / NO PHOTO on both street walls, and no sampled route sees it (ride visibility 0): recorded as inferred, left installed."
+ },
+ "politie-boven-ij": {
+  "outcome": "inferred",
+  "look": "Pale grey concrete office with ribbon windows reads right behind the trees.",
+  "note": "NO EVIDENCE on both photographed fronts (foliage 37 %, washed 33 %), no sampled route sees it: inferred, left installed."
+ },
+ "politiepost-ijburg": {
+  "outcome": "refit",
+  "look": "Bright red brick against dark brown brick IJburg blocks.",
+  "note": "measured per face (#41322a, #3d2d25, #5e3f35), walls[2] window height fixed (0.95 slot -> 0.58)."
+ },
+ "politie-amsterdam-johan-huizingalaan": {
+  "outcome": "keep",
+  "look": "Grey-framed glazed office with white spandrel bands reads right against the photographed fronts (glass and pale grey panels).",
+  "note": "walls[2] FAIL is family 'paint vs brick' on a panel front whose frames the photo reads as wall; walls[0], [4] behind foliage. Not re-fitted."
+ },
+ "entrepotdok-164981": {
+  "outcome": "refit",
+  "look": "Warm red-brown warehouse row against dark grey-brown warehouse brick with arched loading doors and shutters.",
+  "note": "measured per face; walls[3] hand #5f544c (49.5 deg oblique). The warehouse shutters, hoist beams and the varied gables are not in the kit (listed)."
+ },
+ "overtoom-283-084999": {
+  "outcome": "refit",
+  "look": "White block with dense tall windows against tan brick with wide white-framed windows (Reade).",
+  "note": "measured tan per face; bays 16 -> 6 and 8 -> 3 with wide windows by hand (0.72 x 0.50), WARN/FAIL only on a storey band."
+ },
+ "amstel-142-186290": {
+  "outcome": "uninstall",
+  "look": "Plain brown brick grid against an ornamented historic front (stone bands and dressings, tall decorated windows, a shop front).",
+  "note": "Ornament, not a kit gap: bespoke builder if it returns (ride-visible, 161 sampled routes)."
+ },
+ "nieuwpoortstraat-126319": {
+  "outcome": "refit",
+  "look": "Pale grey block against grey-brown brick fronts with punched windows.",
+  "note": "measured per face (#6d665e, #605d5c); system and bays kept."
+ },
+ "kattenburgerstraat-164930": {
+  "outcome": "refit",
+  "look": "Red-brown gallery slab with ribbons against a dark brown slab seen through trees.",
+  "note": "hand #4e3e32 between the leafy crop's #342a18 and the authored red (foliage 41 %): inferred."
+ },
+ "beursplein-5-165051": {
+  "outcome": "uninstall",
+  "look": "Red and cream banded kit against the 1913 bank block: dark brick with stone dressings, carved bays, balconies and a richly ornamented corner.",
+  "note": "Ornament: bespoke builder (ride-visible, 61 sampled routes); every street wall is also NO EVIDENCE (obliquity 48-49 deg, foliage)."
+ },
+ "damrak-77-165746": {
+  "outcome": "uninstall",
+  "look": "Red brick grid against the 1893 Damrak front: dark brick with stone-banded gothic-revival bays, tall mullioned windows and a gabled crown.",
+  "note": "Ornament: bespoke builder (ride-visible, 58 sampled routes)."
+ },
+ "oz-achterburgwal-233-180196": {
+  "outcome": "refit",
+  "look": "Orange brick with square windows against dark purple-brown brick with segmental-arched, white-framed windows.",
+  "note": "measured/hand #5a4a42 on both faces, segmental window arches and white frames (vocabulary present); walls[0] camera 6.8 m (NO EVIDENCE) but reads the same."
+ },
+ "warmoesstraat-garage-165687": {
+  "outcome": "refit",
+  "look": "Tan car-park grid against a grey-brown brick grid of square panels; the Warmoesstraat face is grey stone.",
+  "note": "walls[2] hand #8a837c (47 deg oblique), walls[3] measured #5e584e; walls[0], [1] have no crop."
+ },
+ "engelsesteeg-165098": {
+  "outcome": "refit",
+  "look": "Orange hotel brick reads right on the Engelsesteeg front; the south face is brown brick with tall white-framed windows, drawn tan.",
+  "note": "walls[1] measured #6e6256 with windows by hand 0.45 x 0.55; walls[2]'s crop shows a neighbouring canal house: inferred."
  }
 }

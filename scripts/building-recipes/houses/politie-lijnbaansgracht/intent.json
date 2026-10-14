@@ -72,7 +72,16 @@
    "alignWith": 1,
    "baysPerStorey": 12,
    "ground": "system",
-   "windows": "plain"
+   "windows": "plain",
+   "palette": {
+    "brick": "#5b4f4b",
+    "frame": "#e6e4dc"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -95,7 +104,8 @@
   "date": "2026-10-14",
   "groups": [
    0,
-   1
+   1,
+   2
   ]
  }
 }

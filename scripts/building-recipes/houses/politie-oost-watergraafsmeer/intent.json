@@ -1,28 +1,167 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-oost-watergraafsmeer",
-  "pandId": "0363100012131469",
-  "address": "Politiebureau Oost Watergraafsmeer, Linnaeusstraat 111, Amsterdam (2003)",
-  "sources": [
-    {"id": "pano-2025-09-26-west", "kind": "street-panorama", "capturedAt": "2025-09-26", "image": "staging/pand-reference-walls/0363100012131469/w01-249.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_11-45-18_00037/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2019-05-23-north", "kind": "street-panorama", "capturedAt": "2019-05-23", "image": "staging/pand-reference-walls/0363100012131469/w02-341.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001205_pano_0000_001394/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2022-06-13-south", "kind": "street-panorama", "capturedAt": "2022-06-13", "image": "staging/pand-reference-walls/0363100012131469/w03-161.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002591_pano_0000_005823/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "inferred-east", "kind": "street-panorama", "capturedAt": "2025-09-26", "image": "staging/pand-reference-walls/0363100012131469/w01-249.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-26_11-45-18_00037/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [4, 5], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 11, "ground": "system", "windows": "plain"},
-    {"wallSurfaces": [6], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 11, "ground": "system", "windows": "plain", "entrance": {"bay": 9, "storeys": 1}, "signage": {"text": "POLITIE", "colour": "#c9a24a", "mount": "wall"}},
-    {"wallSurfaces": [2], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 8, "ground": "system", "windows": "plain", "entrance": {"bay": 0, "storeys": 1}, "garageDoors": 1, "police": {"lamp": true}},
-    {"wallSurfaces": [1], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 11, "ground": "system", "windows": "plain"}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#6a3f38", "frame": "#7a5a46", "door": "#2f3a40", "stone": "#9a968c"},
-  "notes": [
-    "2003 four-storey police bureau, a rounded rectangle of dark red-brown brick with brown-framed windows on Linnaeusstraat / Kruislaan (the whole pand: 34.2 x 23.3 m, 19.7 m eaves, 3DBAG panels 3, 4, 1 and 0). Three fronts from panoramas: west (2025-09-26, w01-249): four rows, tall windows on the first floor and ground floor shutters; north (2019-05-23, w02-341, sun-flared): a dark door at the right end of the ground floor and gold POLITIE lettering high on the right on the second floor; south (2022-06-13, w03-161): a roller-shutter vehicle bay at the right end, a glazed entrance at the left under a street sign, and a blue diamond POLITIE blade sign at the left.",
-    "The east wall (panel 0, 34.2 m, bearing 71) has no panorama (candidates 0) and is INFERRED: the same brick grid as the west front, same bay rhythm, no components. A previous attempt left it blank and audit:glb failed on the 34 m blank wall.",
-    "Ornaments: POLITIE lettering in gold on the north wall (MODELLED, wall signage; the kit centres it over the entrance bay at the right, the photo has it one storey higher and left of the door: position deviation about 2.5 m); dark door at the north end (MODELLED, entrance); roller-shutter vehicle bay on the south (MODELLED, garageDoors 1); south glazed entrance with blue diamond blade sign (entrance MODELLED, blade SIMPLIFIED as the kit blue lamp: same colour and position by the entrance, a box not a diamond); blue sign on the west front's right edge (SKIPPED: the same police blade on the corner, a duplicate of the south one, not on the rectified crop); ground-floor roller shutters on the west front (SKIPPED: shutter slats are texture at 15 mm, the window reveal is kept); security cameras and the flagpole (SKIPPED: 0.2 m and slender fixtures, not stable between captures); no striped band, canopy or crest visible."
-  ],
- "layeredKit": true
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-oost-watergraafsmeer",
+ "pandId": "0363100012131469",
+ "address": "Politiebureau Oost Watergraafsmeer, Linnaeusstraat 111, Amsterdam (2003)",
+ "sources": [
+  {
+   "id": "pano-2025-06-19-w02-250",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_10-17-35_00977/",
+   "image": "source-data://pand-reference-walls/0363100012131469/w02-250.jpg",
+   "sha256": "438bff6926cf4fbc826324c895a53579449a52555e46db2c9a57a5bb4f47524b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-01-12-w03-341L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002417_pano_0002_000027/",
+   "image": "source-data://pand-reference-walls/0363100012131469/w03-341L.jpg",
+   "sha256": "4e9c5a30cb5415f27b39cfe8705cf7ac1c41a4a74ba88eb03d5a6fec43f575ab",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-29-w04-161",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001679_pano_0000_001262/",
+   "image": "source-data://pand-reference-walls/0363100012131469/w04-161.jpg",
+   "sha256": "9dc159fc0e960e991b6e2371c9a502bbd8f8bae9e22c90d53329f5f97864b048",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    4,
+    5
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#4e4f53"
+   },
+   "windowShape": {
+    "w": 0.357,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "windows": "plain",
+   "entrance": {
+    "bay": 9,
+    "storeys": 1
+   },
+   "signage": {
+    "text": "POLITIE",
+    "colour": "#c9a24a",
+    "mount": "wall"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#574c4a"
+   },
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.45,
+    "sill": 0.45
+   }
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "plain",
+   "entrance": {
+    "bay": 0,
+    "storeys": 1
+   },
+   "garageDoors": 1,
+   "police": {
+    "lamp": true
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#413333"
+   },
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.8,
+    "sill": 0.15
+   }
+  },
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick"
+   ],
+   "palette": {
+    "brick": "#574c4a"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#6a3f38",
+  "frame": "#7a5a46",
+  "door": "#2f3a40",
+  "stone": "#9a968c"
+ },
+ "notes": [
+  "2003 four-storey police bureau, a rounded rectangle of dark red-brown brick with brown-framed windows on Linnaeusstraat / Kruislaan (the whole pand: 34.2 x 23.3 m, 19.7 m eaves, 3DBAG panels 3, 4, 1 and 0). Three fronts from panoramas: west (2025-09-26, w01-249): four rows, tall windows on the first floor and ground floor shutters; north (2019-05-23, w02-341, sun-flared): a dark door at the right end of the ground floor and gold POLITIE lettering high on the right on the second floor; south (2022-06-13, w03-161): a roller-shutter vehicle bay at the right end, a glazed entrance at the left under a street sign, and a blue diamond POLITIE blade sign at the left.",
+  "The east wall (panel 0, 34.2 m, bearing 71) has no panorama (candidates 0) and is INFERRED: the same brick grid as the west front, same bay rhythm, no components. A previous attempt left it blank and audit:glb failed on the 34 m blank wall.",
+  "Ornaments: POLITIE lettering in gold on the north wall (MODELLED, wall signage; the kit centres it over the entrance bay at the right, the photo has it one storey higher and left of the door: position deviation about 2.5 m); dark door at the north end (MODELLED, entrance); roller-shutter vehicle bay on the south (MODELLED, garageDoors 1); south glazed entrance with blue diamond blade sign (entrance MODELLED, blade SIMPLIFIED as the kit blue lamp: same colour and position by the entrance, a box not a diamond); blue sign on the west front's right edge (SKIPPED: the same police blade on the corner, a duplicate of the south one, not on the rectified crop); ground-floor roller shutters on the west front (SKIPPED: shutter slats are texture at 15 mm, the window reveal is kept); security cameras and the flagpole (SKIPPED: 0.2 m and slender fixtures, not stable between captures); no striped band, canopy or crest visible.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3e5a6c not used (not darker than the wall #4e4f53 by 10 L*, or tinted): kit glass kept; walls[1] glass #505c5e not used (not darker than the wall #574c4a by 10 L*, or tinted): kit glass kept; walls[2] glass #322927 not used (not darker than the wall #413333 by 10 L*, or tinted): kit glass kept."
+ ],
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
+ }
 }
