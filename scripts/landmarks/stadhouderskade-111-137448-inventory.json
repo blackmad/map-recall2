@@ -1,0 +1,139 @@
+{
+ "schemaVersion": 1,
+ "id": "stadhouderskade-111-137448",
+ "pand": "0363100012137448",
+ "signature": [
+  "dark-rowhouse-shopfronts",
+  "red-brick-wing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-6",
+   "bearing": 6,
+   "lengthM": 77.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002117_pano_0000_000320",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "dark-rowhouse-shopfronts",
+     "kind": "window-shape",
+     "where": "dark painted-brick row-house fronts with cream surrounds, cornices and glazed shopfronts",
+     "approxSizeM": [
+      60,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[0]/[1] 4 storeys of plain windows on a plinth-shopfront ground with cornice and string courses; per-house gables and colour changes are not drawn",
+     "seenIn": "TMX7316010203-002117_pano_0000_000320"
+    },
+    {
+     "id": "shop-fascias",
+     "kind": "sign",
+     "where": "Albert Heijn, Blokker and small-shop fascias at ground level",
+     "approxSizeM": [
+      30,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant fascias and awnings change between captures"
+     },
+     "seenIn": "TMX7316010203-002117_pano_0000_000320"
+    }
+   ]
+  },
+  {
+   "tag": "w02-155",
+   "bearing": 155,
+   "lengthM": 54.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002913_pano_0004_000232",
+   "capturedAt": "2023-01-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "red-brick-wing",
+     "kind": "window-shape",
+     "where": "dark red-brick wing with cream string courses and grouped multi-light windows",
+     "approxSizeM": [
+      41,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys x 9 bays cross windows with string courses",
+     "seenIn": "TMX7316010203-002913_pano_0004_000232"
+    }
+   ]
+  },
+  {
+   "tag": "w03-186",
+   "bearing": 186,
+   "lengthM": 29.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002115_pano_0000_003743",
+   "capturedAt": "2021-04-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "balcony-stack",
+     "kind": "balcony-ironwork",
+     "where": "stack of iron-railed balconies at the right-hand bay of the 1950s block",
+     "approxSizeM": [
+      3,
+      9
+     ],
+     "plan": "modelled",
+     "how": "walls[3].balconies bays [2] on storeys 2-4, bar rail",
+     "seenIn": "TMX7316010203-002115_pano_0000_003743"
+    },
+    {
+     "id": "albert-heijn-gate",
+     "kind": "sign",
+     "where": "white Albert Heijn / Blokker entrance gate and canopy beside the block",
+     "approxSizeM": [
+      12,
+      4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the gate is a separate low structure outside this pand footprint"
+     },
+     "seenIn": "TMX7316010203-002115_pano_0000_003743"
+    }
+   ]
+  },
+  {
+   "tag": "w04-6",
+   "bearing": 6,
+   "lengthM": 24.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003239",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-186",
+   "bearing": 186,
+   "lengthM": 17.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002913_pano_0004_000070",
+   "capturedAt": "2023-01-03",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

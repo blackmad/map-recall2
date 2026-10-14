@@ -1,0 +1,58 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "van-oldenbarneveldtstraat-48-137990",
+ "pandId": "0363100012137990",
+ "address": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West: 2006 apartment block in buff brick with a curved east front, a glazed entrance bay and shop/office plinth",
+ "sources": [
+  {
+   "id": "pano-2022-12-14-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002854_pano_0013_000052/",
+   "image": "staging/pand-reference-walls/0363100012137990/w01-111.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    52,
+    58,
+    74
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 11,
+   "ground": "glazed",
+   "windows": "two-light",
+   "deepBars": true,
+   "stringCourses": true,
+   "entrance": {
+    "bay": 5,
+    "storeys": 1
+   },
+   "palette": {
+    "brick": "#d2a96a",
+    "frame": "#e8e6dc",
+    "stone": "#c8c0b0"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#d2a96a",
+  "frame": "#e8e6dc",
+  "door": "#2a2e32",
+  "stone": "#c8c0b0"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Van Oldenbarneveldtstraat 48 (BAG, 2006): a buff-brick apartment block with shop/office plinth round a courtyard; only the east front on the street (panel 50, w01-111, 2022-12-14) has a panorama within 35 m, the south, north and west fronts (w02-201, w03-20, w04-113) have none and stay blank (otherWalls).",
+  "walls[0] = panel 50: ground storey of glazed shop/office bays with a central double-door entrance (bay 5, marked with the 50-52 / 54-56 house numbers and letter boxes), four storeys of paired French windows in 11 bays separated by thin string courses, a set-back attic with three wide windows (the 3DBAG roof). Drawn as 5 storeys x 11 bays, two-light windows. Simplified: the slight curve of the front (straight in 3DBAG), the Juliet balconies and the set-back attic terrace; the house numbers and letter boxes are below the component grain."
+ ]
+}

@@ -1,0 +1,151 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pijlsteeg-31-165293",
+ "pandId": "0363100012165293",
+ "address": "Pijlsteeg 31 / Warmoesstraat 173, Amsterdam: Grand Hotel Krasnapolsky block (stone-and-brick hotel front, 1970s concrete arcade wing, Damstraat corner fronts)",
+ "sources": [
+  {
+   "id": "pano-2020-04-21-w06",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001658_pano_0000_002180/",
+   "image": "staging/pand-reference-walls/0363100012165293/w06-307.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-05-10-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001174_pano_0000_003049/",
+   "image": "staging/pand-reference-walls/0363100012165293/w01-208.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_02272/",
+   "image": "staging/pand-reference-walls/0363100012165293/w05-212.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-08-w07",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0001_001710/",
+   "image": "staging/pand-reference-walls/0363100012165293/w07-208.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    73
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "cross",
+   "deepBars": true,
+   "stoneStoreys": [
+    0,
+    1
+   ],
+   "cornice": true,
+   "entrance": {
+    "bay": 3,
+    "portal": true
+   },
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "rail": "bars"
+   },
+   "palette": {
+    "brick": "#9a4a38",
+    "frame": "#efe8d6",
+    "stone": "#cdbb98"
+   }
+  },
+  {
+   "wallSurfaces": [
+    128,
+    129
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "windows": "narrow",
+   "deepBars": true,
+   "wallMaterial": "stone",
+   "palette": {
+    "brick": "#8a8378",
+    "frame": "#2a2e30",
+    "stone": "#7a7468"
+   },
+   "blankStoreys": [
+    2
+   ]
+  },
+  {
+   "wallSurfaces": [
+    600
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "stringCourses": true,
+   "wallMaterial": "stone",
+   "palette": {
+    "brick": "#d8cfba",
+    "frame": "#8a9aa8",
+    "stone": "#d8cfba"
+   }
+  },
+  {
+   "wallSurfaces": [
+    83,
+    156
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "stringCourses": true,
+   "wallMaterial": "stone",
+   "palette": {
+    "brick": "#d8cfba",
+    "frame": "#9a2a2a",
+    "stone": "#d8cfba"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#9a4a38",
+  "frame": "#e9e2d0",
+  "door": "#2a2a2a",
+  "stone": "#cbb899"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Pijlsteeg 31 (BAG, built 1994 as the latest rebuild) is the Grand Hotel Krasnapolsky block between Warmoesstraat, Damstraat and Pijlsteeg: 701 3DBAG wall surfaces round several courts, so only the four photographed street runs are drawn and every other wall stays blank brick (otherWalls).",
+  "walls[0] = panel 70 (NW, w06-307): the hotel front on Warmoesstraat: a granite ground and first floor with a row of three shop windows and the arched NH GRAND HOTEL KRASNAPOLSKY entrance in the right-hand bay flanked by two lanterns, iron-railed balconies over the ground floor, two brick storeys with stone surrounds and piers, a loggia-like attic of tall windows under a flat roof. Drawn as 5 storeys x 4 bays, stone on storeys 0-1, a portal entrance, bar balconies on storey 1, cornice. Simplified: the two entrance lanterns (the lantern component floats 10 cm off this panel's wall and fails parts-attached); the carved stone cartouches and the string of stone caps between the brick piers; the attic loggia (one window per bay); the entrance lettering.",
+  "walls[1] = panel 121 (SW, w01-208): the 1970s concrete gallery wing on the Damstraat side: a shop arcade on slim piers, one storey of nine tall curved glass bays between brick-faced piers under a deep concrete fascia, and a blank attic band with eleven small vents. Drawn as ground glazed, one tall narrow-window storey in stone material and a blank attic storey. Simplified: the curved (barrel) glazing is flat, the stepped concrete corbels on the attic are not drawn.",
+  "walls[2] = panel 475 (SW, w05-212): the hotel front on the Damstraat corner, a cream-painted stone front with a three-bay glazed ground floor under an awning, a signed fascia (HOTEL) and tall blue-grey framed windows. walls[3] = panel 80 (SW, w07-208): the red-framed Asian Spirit shopfront with a tall mullioned shop window and iron-red upper glazing. Both are drawn as glazed ground plus wide-window storeys; the shop lettering, awnings and the HOTEL fascia sign are not modelled (shop signage is tenant-specific and was changed within the capture year).",
+  "Not photographed or not exposed: the courts, the Pijlsteeg side and the north-east wings (no panorama within 35 m or only over scaffolding); they stay blank."
+ ]
+}

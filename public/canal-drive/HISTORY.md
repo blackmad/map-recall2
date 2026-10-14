@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## Dominant buildings, batch 4 (2026-10-14, night)
+
+Lane `large/dominant-4-20261014`, the first batch authored on the
+layered kit (coplanar overlap 0 everywhere; the `zfight-near` 2–8 cm
+warnings remain as on Hotel Arena). Twelve recipes: the Grand Hotel
+Krasnapolsky block on the Pijlsteeg (four fronts; entrance lanterns
+skipped, the lantern component fails `parts-attached` there), the former
+Binnengasthuis on the Kloveniersburgwal (GASTHUIS APOTHEEK portal
+letters, 1930s curved wing), Van Oldenbarneveldtstraat 48, the 1960
+Schaafstraat workshop hall, Asterweg 19 (open truss arcade; wall letters
+skipped, 32 m of open edge), the Van der Palmkade serpentine block
+(round-arch loggias), Stadhouderskade 111, Tilanusstraat 23 (its louvred
+glass tower as ribbon windows), Grasweg 41, Holland Casino on the
+Leidsekade (portal range, glazed canal floors, HOLLAND CASINO letters),
+the 1903 Hoogte Kadijk 400 hall with giant arched windows, and the Park
+Centraal hotel's bowed glass-balcony front with the arched MOMO corner.
+Eighteen ranked pands dropped for data: open edges on the bare 3DBAG
+shell (Singel 457 40.7 m, Gillis van Ledenberchstraat 34, Hirschpassage
+2, WG-plein 600, Buiksloterweg 5C, Revaleiland 58, Da Costakade 146),
+footprint IoU below 0.90 (Van Hallstraat 703 at 0.889, Wichersstraat 70,
+Libau-eiland 106, Hobbemastraat 18, Papaverhof 60, Piri Reisplein 39), no
+panorama (Dijksgracht 15B), nothing to draw (Isaac Gogelweg 6,
+Tesselschadestraat 1, Eerste Boerhaavestraat 33F), stale panoramas
+(Kruldistelstraat 13). Kit limits met: wall-mounted letters open edges on
+some shells; the lantern floats 10 cm off the wall on a split panel; a
+balcony run on an arched storey hides the arch heads; the eaves gate
+samples the lowest roof along a panel so mixed-height panels must be
+listed by surface; `baysPerStorey` counts on the widest split panel so
+surface lists make bays expensive (22 bays on 24 m cost 16k tris).
+
+
 ## Tropenmuseum, second pass (2026-10-14, night)
 
 Lane `landmarks/tropenmuseum-2-20261014`. Three faces measured at

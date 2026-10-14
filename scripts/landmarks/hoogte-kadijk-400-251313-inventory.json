@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "id": "hoogte-kadijk-400-251313",
+ "pand": "0363100012251313",
+ "signature": [
+  "giant-arched-hall-windows",
+  "office-wing-entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-31",
+   "bearing": 31,
+   "lengthM": 38.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_001030",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "giant-arched-hall-windows",
+     "kind": "window-shape",
+     "where": "row of giant round-arched multi-light windows with stone dressings over a brick base with grilles",
+     "approxSizeM": [
+      38,
+      8
+     ],
+     "plan": "simplified",
+     "how": "walls[0] round-arched narrow windows on storeys 1-2 with stone arch bands, 6 bays; real wall has 6 giant windows plus about 12 small arches",
+     "seenIn": "TMX7316010203-002541_pano_0001_001030"
+    },
+    {
+     "id": "small-arch-clerestory",
+     "kind": "window-shape",
+     "where": "small round-arched windows in threes under a corbelled cornice, pilaster strips between bays",
+     "approxSizeM": [
+      38,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[0] second arched storey on the same 6-bay rhythm; corbels and pilasters not drawn",
+     "seenIn": "TMX7316010203-002541_pano_0001_001030"
+    },
+    {
+     "id": "basement-grilles",
+     "kind": "balcony-ironwork",
+     "where": "low iron grilles at the foot of the hall wall",
+     "approxSizeM": [
+      20,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "bars under 3 cm in a 0.5 m high basement strip"
+     },
+     "seenIn": "TMX7316010203-002541_pano_0001_001030"
+    }
+   ]
+  },
+  {
+   "tag": "w02-121",
+   "bearing": 121,
+   "lengthM": 32.9,
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track03_Sphere_00004",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "office-wing-entrance",
+     "kind": "window-shape",
+     "where": "stone-stepped entrance with dark double door and iron canopy under five storeys of paired windows",
+     "approxSizeM": [
+      33,
+      17
+     ],
+     "plan": "simplified",
+     "how": "walls[1] portal entrance bay 2, 5 storeys x 5 bays cross windows with string courses; steps and canopy not drawn",
+     "seenIn": "b_20241210_1246_Track03_Sphere_00004"
+    }
+   ]
+  },
+  {
+   "tag": "w03-31",
+   "bearing": 31,
+   "lengthM": 28.6,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000070_pano_0001_000052",
+   "capturedAt": "2016-06-07",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w04-31",
+   "bearing": 31,
+   "lengthM": 23,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001665_pano_0000_000935",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
