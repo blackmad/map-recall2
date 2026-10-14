@@ -48,6 +48,12 @@ export interface BuildingFacts {
    */
   measuredEavesM?: Record<string, number>;
   /**
+   * Rigid shop canopy of a block-face `continuity.canopy` group, per intent front id: the group's one slab underside
+   * (metres above this pand's ground) and which ends (viewer's left/right) run onto a party wall shared with a group
+   * neighbour. Set by blockFace/compile.ts; absent = the front's own canopy height and free ends.
+   */
+  canopyM?: Record<string, {bottomM: number; joinLeft: boolean; joinRight: boolean}>;
+  /**
    * Where `roofsRD` came from when it is not 3DBAG: `recipe` = generated from the house design and plot depth
    * (blockFace/recipeRoof.ts); 3DBAG is then an upper bound only (`surveyRoofMaxM`, main-body p95 `capM`).
    */

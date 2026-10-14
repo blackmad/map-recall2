@@ -1,0 +1,302 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "demo-school",
+ "street": "De Clercqstraat",
+ "sources": [
+  {
+   "id": "synthetic-amsterdam-school-demo",
+   "kind": "human-review",
+   "capturedAt": "2026-10-14",
+   "license": "synthetic demo, no photograph"
+  }
+ ],
+ "authoring": {
+  "author": "claude (Amsterdam School component lane)",
+  "passes": 1,
+  "note": "SYNTHETIC, NOT A SURVEY and never installed (underscore folder). The pand geometry (BAG/3DBAG) is De Clercqstraat 22-2 (clercq-236681) with the two corner pands re-read with their second street; the designs are an invented 1920s Amsterdam School shop row that exercises the five components of the Jan Evertsenstraat set: rigid continuous canopies (two continuity.canopy groups), ladder windows paired per bay, multi-bay erkers (hip and flat caps), brick course banding, and corner towers (a shared-vertex corner with a stepped cap, a chamfered corner with a pyramid cap)."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012153066",
+   "slug": "demo-153066",
+   "address": "De Clercqstraat 22 (synthetic)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "De Clercqstraat",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 3, 3, 3],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3],
+      "tower": {"corner": true, "rise": 1.0, "cap": "stepped"},
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "centre-recessed", "displayWindows": 2, "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     },
+     {
+      "id": "front1",
+      "street": "Bilderdijkkade",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 2,
+      "doorBay": 0,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3]
+     }
+    ],
+    "roof": {"material": "red-tile"},
+    "palette": {"brick": "#5e3b30", "band": "#a0703f", "frame": "cream", "door": "dark-green", "stone": "sandstone"}
+   },
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "3 axes on the street, 2 round the corner", "windowsPerStorey": "ground: shop | 1-3: 3 ladder pairs", "symmetry": "none: the corner tower takes the left end", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice; stepped corner tower", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012236262",
+   "slug": "demo-236262",
+   "address": "De Clercqstraat 18 (synthetic)",
+   "design": {
+    "fronts": [
+     {
+      "id": "m0",
+      "street": "De Clercqstraat",
+      "share": 0.33,
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 2, 2, 2],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3],
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "centre", "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     },
+     {
+      "id": "m1",
+      "street": "De Clercqstraat",
+      "share": 0.34,
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 2, 2, 2],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3],
+      "bayWindows": {"bays": {"from": 0, "to": 1}, "storeys": [1, 2], "cap": "hip"},
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "centre", "displayWindows": 2, "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     },
+     {
+      "id": "m2",
+      "street": "De Clercqstraat",
+      "share": 0.33,
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 2, 2, 2],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3],
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "centre", "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     }
+    ],
+    "roof": {"material": "red-tile"},
+    "palette": {"brick": "#5e3b30", "band": "#a0703f", "frame": "cream", "door": "dark-green", "stone": "sandstone"}
+   },
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "3 house modules of 2 axes, ladder pairs", "windowsPerStorey": "ground: 3 shops | 1-2: 4 pairs + a two-axis erker on the middle module | 3: 6 pairs", "symmetry": "symmetric about the erker", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012158603",
+   "slug": "demo-158603",
+   "address": "De Clercqstraat 14 (synthetic)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "De Clercqstraat",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 2, 2, 2],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [2],
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "left-recessed", "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     }
+    ],
+    "roof": {"material": "red-tile"},
+    "palette": {"brick": "#5e3b30", "band": "#a0703f", "frame": "cream", "door": "dark-green", "stone": "sandstone"}
+   },
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "2 axes, ladder pairs", "windowsPerStorey": "ground: shop | 1-3: 2 pairs", "symmetry": "symmetric uppers", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012159182",
+   "slug": "demo-159182",
+   "address": "De Clercqstraat 12 (synthetic)",
+   "sameAs": "0363100012158603",
+   "overrides": {"fronts": [{"shopfront": {"entrance": "right-recessed"}}]},
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "2 axes, ladder pairs", "windowsPerStorey": "ground: shop | 1-3: 2 pairs", "symmetry": "mirror of 14", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012236681",
+   "slug": "demo-236681",
+   "address": "De Clercqstraat 10 (synthetic)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "De Clercqstraat",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 4, 4, 2],
+      "axisGrid": 4,
+      "bayWidths": [1, 0.9, 0.9, 1],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "bayWindows": {"bays": {"from": 1, "to": 2}, "storeys": [1, 2], "cap": "flat"},
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "centre-recessed", "displayWindows": 2, "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     }
+    ],
+    "roof": {"material": "red-tile"},
+    "palette": {"brick": "#5e3b30", "band": "#a0703f", "frame": "cream", "door": "dark-green", "stone": "sandstone"}
+   },
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "4 axes, the middle two under an erker", "windowsPerStorey": "ground: shop | 1-3: 2 ladder pairs + a three-storey erker", "symmetry": "symmetric about the erker", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice; erker with a flat cap", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012157618",
+   "slug": "demo-157618",
+   "address": "De Clercqstraat 6 (synthetic)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "De Clercqstraat",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 2,
+      "doorBay": 1,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [0, 3]
+     }
+    ],
+    "roof": {"material": "red-tile"},
+    "palette": {"brick": "#5e3b30", "band": "#a0703f", "frame": "cream", "door": "dark-green", "stone": "sandstone"}
+   },
+   "groundFloor": {"use": "residential", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic: a residential house breaks the canopy run"},
+   "rhythm": {"bays": "2 axes", "windowsPerStorey": "ground: window + door | 1-3: 2 ladder pairs", "symmetry": "none", "groundFloor": "residential", "signage": "none", "roofline": "flat cornice", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012156454",
+   "slug": "demo-156454",
+   "address": "De Clercqstraat 4 (synthetic)",
+   "sameAs": "0363100012158603",
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "2 axes, ladder pairs", "windowsPerStorey": "ground: shop | 1-3: 2 pairs", "symmetry": "symmetric uppers", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012156960",
+   "slug": "demo-156960",
+   "address": "De Clercqstraat 2 (synthetic)",
+   "sameAs": "0363100012158603",
+   "overrides": {"fronts": [{"shopfront": {"entrance": "right-recessed"}}]},
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "2 axes, ladder pairs", "windowsPerStorey": "ground: shop | 1-3: 2 pairs", "symmetry": "symmetric uppers", "groundFloor": "shop under a rigid canopy", "signage": "none", "roofline": "flat cornice", "citation": "synthetic demo (no photo)"}
+  },
+  {
+   "pandId": "0363100012116526",
+   "slug": "demo-116526",
+   "address": "Nassaukade 152 (synthetic)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "De Clercqstraat",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [0, 1, 1, 1],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3],
+      "tower": {"corner": true, "rise": 1.2, "cap": "pyramid"},
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "none", "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+     },
+     {
+      "id": "front1",
+      "street": "Nassaukade",
+      "gable": "flat",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": [4, 4, 4, 4],
+      "doorBay": 3,
+      "basement": "none",
+      "windows": "ladder",
+      "hoist": false,
+      "bands": "courses",
+      "courseStoreys": [3]
+     }
+    ],
+    "roof": {"material": "red-tile"},
+    "palette": {"brick": "#5e3b30", "band": "#a0703f", "frame": "cream", "door": "dark-green", "stone": "sandstone"}
+   },
+   "groundFloor": {"use": "shop", "photoDate": "2026-10-14", "agreement": "photo-only", "note": "synthetic"},
+   "rhythm": {"bays": "1 axis on De Clercqstraat, 4 on Nassaukade", "windowsPerStorey": "ground: shop | 1-3: ladder pairs", "symmetry": "none: chamfered corner with a tower", "groundFloor": "shop under its own canopy", "signage": "none", "roofline": "flat cornice; pyramid corner tower", "citation": "synthetic demo (no photo)"}
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {"source": "recipe", "pitchDeg": 30, "evidence": "synthetic: low attic roofs hidden behind the cornice"},
+  "canopy": [
+   {"pands": ["0363100012153066", "0363100012236262", "0363100012158603", "0363100012159182", "0363100012236681"], "evidence": "synthetic: one rigid canopy runs from the corner tower to the erker house"},
+   {"pands": ["0363100012156454", "0363100012156960"], "evidence": "synthetic: a second run after the residential house"}
+  ],
+  "measuredEaves": [
+   {"pand": "0363100012153066", "stripRow": 241, "evidence": "synthetic: the row's cornice line (clercq-236681 strip scale)"},
+   {"pand": "0363100012236262", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012158603", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012159182", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012236681", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012157618", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012156454", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012156960", "stripRow": 241, "evidence": "synthetic: same line"},
+   {"pand": "0363100012116526", "stripRow": 241, "evidence": "synthetic: same line"}
+  ]
+ }
+}

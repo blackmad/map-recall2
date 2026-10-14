@@ -1,0 +1,132 @@
+{
+ "face": "_demo-school",
+ "image": "staging/block-face/_demo-school/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 3069,
+ "height": 818,
+ "groundNAP": 1.134,
+ "heightM": 20.45,
+ "frame": {
+  "midRD": [
+   120012.63624305555,
+   487222.8879444444
+  ],
+  "uRD": [
+   0.9361894231352463,
+   0.35149589472665926
+  ],
+  "nRD": [
+   0.35149589472665926,
+   -0.9361894231352463
+  ]
+ },
+ "x0M": -46.77,
+ "x1M": 29.94,
+ "date": "SYNTHETIC (no photo: placeholder strip; geometry of clercq-236681 pands)",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012153066",
+   "x0M": -46.77,
+   "x1M": -38.1,
+   "px": [
+    0,
+    347
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012236262",
+   "x0M": -32.63,
+   "x1M": -14.71,
+   "px": [
+    566,
+    1283
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012158603",
+   "x0M": -14.71,
+   "x1M": -8.73,
+   "px": [
+    1283,
+    1522
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012159182",
+   "x0M": -8.73,
+   "x1M": -2.58,
+   "px": [
+    1522,
+    1768
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012236681",
+   "x0M": -2.58,
+   "x1M": 9.24,
+   "px": [
+    1768,
+    2241
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012157618",
+   "x0M": 9.24,
+   "x1M": 14.66,
+   "px": [
+    2241,
+    2458
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012156454",
+   "x0M": 14.66,
+   "x1M": 20.18,
+   "px": [
+    2457,
+    2678
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012156960",
+   "x0M": 20.18,
+   "x1M": 25.71,
+   "px": [
+    2678,
+    2899
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  },
+  {
+   "pandId": "0363100012116526",
+   "x0M": 25.71,
+   "x1M": 29.94,
+   "px": [
+    2899,
+    3068
+   ],
+   "date": "synthetic",
+   "fallbackDate": false
+  }
+ ],
+ "candidatesByDate": [],
+ "description": "synthetic placeholder strip (no photograph)",
+ "attribution": "none (synthetic)",
+ "note": "Synthetic Amsterdam School demo on the De Clercqstraat 22-2 pands: the strip scale, frame and spans of clercq-236681, no photograph."
+}

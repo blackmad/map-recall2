@@ -124,6 +124,14 @@ export interface BlockFaceIntent {
       pitchDeg?: number};
     /** Clip street-side details at oblique party walls on every house of the face (FrontIntent `partyClip`). */
     partyClip?: boolean;
+    /**
+     * Rigid shop canopies that read as ONE continuous slab across party walls (Amsterdam School shop rows): each group
+     * lists neighbouring pands (street order, adjacent) whose street front has `shopfront.awning.style: "rigid"`. The
+     * compile gives every member the group's one slab height (the median of the members' own glass-head heights) and runs
+     * each joined end onto the shared party plane, so neighbours' pieces meet without a gap or an overlap; each pand keeps
+     * its own piece (pandRanges). Absent = every canopy on its own, byte-identical. `evidence`: what on the strip shows it.
+     */
+    canopy?: {pands: string[]; evidence: string}[];
     notes?: string[];
   };
   authoring?: {author: string; startedAt?: string; finishedAt?: string; passes: number; note?: string};
@@ -155,6 +163,31 @@ export function houseIntents(face: BlockFaceIntent): CanalHouseIntent[] {
   const withClip = (d: HouseDesign): HouseDesign => face.continuity?.partyClip ? {...d, fronts: d.fronts.map(f => ({partyClip: true, ...f}))} : d;
   return face.houses.map(h => validateIntent({schemaVersion: 1, kind: 'canal-house', id: h.slug, pandId: h.pandId, address: h.address, sources: face.sources, ...withClip(designOf(h)),
     notes: [...(designOf(h).notes ?? []), ...(h.sameAs ? [`sameAs ${h.sameAs} (block face ${face.id})`] : [])]}));
+}
+
+/** The street front of a face house that carries a rigid canopy, if any. */
+export const rigidCanopyFront = (intent: CanalHouseIntent, street: string) => intent.fronts.find(f => f.street === street && f.shopfront?.awning?.style === 'rigid');
+
+/** Problems with `continuity.canopy`: adjacent members in street order, each with a rigid canopy on the face street, evidence. */
+function canopyProblems(face: BlockFaceIntent, intents: CanalHouseIntent[]): string[] {
+  const groups = face?.continuity?.canopy;
+  if (groups === undefined) return [];
+  if (!Array.isArray(groups)) return ['continuity.canopy must be a list of {pands, evidence} groups'];
+  const p: string[] = [], seen = new Set<string>(), order = (face.houses ?? []).map(h => h.pandId);
+  groups.forEach((g, k) => {
+    const at = `continuity.canopy[${k}]`, idx = (g?.pands ?? []).map(x => order.indexOf(x));
+    if (!Array.isArray(g?.pands) || g.pands.length < 2) p.push(`${at}: a continuous canopy joins two or more pands`);
+    if (!g?.evidence) p.push(`${at}: needs evidence (what on the strip shows one continuous slab)`);
+    idx.forEach((i, j) => {
+      const pand = g.pands[j];
+      if (i < 0) { p.push(`${at}: ${pand} is not on this face`); return; }
+      if (j > 0 && i !== idx[j - 1] + 1) p.push(`${at}: members must be neighbours in street order (${pand.slice(-6)} does not follow ${g.pands[j - 1].slice(-6)})`);
+      if (seen.has(pand)) p.push(`${at}: ${pand.slice(-6)} is in two canopy groups`);
+      seen.add(pand);
+      if (intents[i] && !rigidCanopyFront(intents[i], face.street)) p.push(`${at}: ${pand.slice(-6)} has no rigid canopy (shopfront.awning.style "rigid") on its ${face.street} front`);
+    });
+  });
+  return p;
 }
 
 /** Validate a parsed face intent: houses, uses vs shopfronts, continuity references. Throws one error listing every problem. */
@@ -239,6 +272,7 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
     if (roof?.keepSurvey?.length && !roof.evidence) problems.push('continuity.roof.keepSurvey needs evidence (why those pands keep the 3DBAG roof)');
   }
   if (face?.continuity?.partyClip !== undefined && typeof face.continuity.partyClip !== 'boolean') problems.push('continuity.partyClip must be boolean');
+  problems.push(...canopyProblems(face, intents));
   if (problems.length) throw Error(`Invalid block face ${face?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return face;
 }
