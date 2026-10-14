@@ -8,7 +8,7 @@ import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
-import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
+import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
@@ -722,7 +722,9 @@ const fsStore = () => new GroundStore(async path => {
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
 });
 
-for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665]] as const) {
+// BRU0009 Torensluis (2026-10-14): its e2e hump readout flipped on main while this deck, its body and top were
+// byte-identical to the bridge lane's; the crown (1.66 m over the higher end) is pinned here, not only in pixels.
+for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665], ['BRU0009', 4.88938, 52.37455]] as const) {
   test(`regression (streamed cell): ${id} deck is placed and street bands ride over it`, { skip: !haveCells }, async () => {
     const store = fsStore();
     await store.init();
@@ -951,6 +953,23 @@ test('belt audit deck top: a tram rail lying on a street band is street, over th
   assert.equal(deckStreetTop([{ layer: 'tram', z: 1.2 }, { layer: 'asphalt', z: 1.2 - RAIL_ON_BAND_M - 0.01 }]), false);
   assert.equal(deckStreetTop([{ layer: 'deckBody', z: 2.517 }, { layer: 'cycle', z: 2.422 }]), false);
   assert.equal(deckStreetTop([]), false);
+});
+
+test('belt audit quay samples: a shore split into 0.5 m pieces near a berth samples as the uncut shore (Westerdok, 2026-10-14)', () => {
+  // The berth rule (moorings.ts) re-cuts shores near a houseboat into collinear 0.5 m pieces; the audit sampled
+  // each piece, so the reviewed Westerdok spot went from 16 to 106 samples and its key moved off KNOWN.
+  const shore: [number, number][] = [[0, 0], [40, 0], [40, 23]];
+  const split: [number, number][] = [[0, 0]];
+  for (let i = 1; i <= 80; i++) split.push([i * 0.5, 0]);
+  for (let i = 1; i <= 46; i++) split.push([40, i * 0.5]);
+  assert.deepEqual(shoreSamples(split), shoreSamples(shore));
+  assert.equal(shoreSamples(shore).length, 8 + 4);
+  // A real corner is kept, a doubled vertex is dropped, a hairpin is not merged into one segment.
+  assert.equal(shoreSamples([[0, 0], [10, 0], [10, 0], [10, 10]]).length, 4);
+  assert.equal(shoreSamples([[0, 0], [10, 0], [5, 0]]).length, 3);
+  // Reviewed spots match a finding a metre or two off, not the next spot along the dock.
+  assert.ok(spotDistanceM('4.90719,52.38449', '4.90721,52.38449') < KNOWN_SPOT_M);
+  assert.ok(spotDistanceM('4.90719,52.38449', '4.90768,52.38468') > KNOWN_SPOT_M);
 });
 
 test('bridge bands carry vertices across: a 5 m band over a 4.2 m deck follows it instead of sagging under it (BRU0292)', () => {

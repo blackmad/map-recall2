@@ -1427,7 +1427,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   of 48 named sheets pass, two bascule styles, decks reach the banks, 190
   more decks measured, 499 still flat). Open: BRU0036 (belt audit sends it
   flat) and BRU0040 (no boat view); the Torensluis arches read taller and
-  narrower than the photo; Blauwbrug balusters thin; bascule deck surface
+  narrower than the photo and its e2e hump reading from pixels is a
+  warning, not an assertion, since 2026-10-14 (two false alarms; read the
+  hump from the own-ground store's deck geometry instead; HISTORY "Bridge
+  regressions on main were two readings");
+  Blauwbrug balusters thin; bascule deck surface
   matched to the approach, portal lamps, railings continuous with the
   approaches; the 15 known floating ends; the 499 flat decks (128 AHN
   tree gaps now mostly covered by the surface model, the rest viaducts

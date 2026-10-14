@@ -16,7 +16,7 @@ import { join } from 'node:path';
 import { GroundStore, fromLocal, toLocal, WATER_Z } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
-import { deckStreetTop } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { deckStreetTop, KNOWN_SPOT_M, shoreSamples, spotDistanceM } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const flag = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -43,6 +43,7 @@ const KNOWN: Record<string, string> = {
   'quay-flooded:4.86232,52.37057': 'Westerpark: the -1.77 plane (default or boezem level; the join was not verified) stands 1.08 m above the ground',
   'quay-flooded:4.90719,52.38449': 'IJ-side docks: default -1.77 plane over ground 0.6 m lower',
   'quay-flooded:4.90905,52.38494': 'IJ-side docks: default plane 0.4 m over the ground',
+  'quay-flooded:4.90768,52.38468': 'IJ-side docks (2026-10-14, after the houseboat berths): the same dock quay between 4.90719 and 4.90905, ground -2.05 under the default -1.77 plane; a berth cut the shore line there, which moved its 5 m samples onto a point 0.29 m under the plane (without berths the nearest sample reads -0.24, flush)',
   'quay-flooded:4.87420,52.36047': 'Postjeskade polder (-3.47): ground 0.29 m under the plane',
   'quay-flooded:4.87340,52.36003': 'Postjeskade polder (-3.47): ground 0.27 m under the plane',
 };
@@ -133,15 +134,12 @@ for (const k of cells) {
   if (!geo) continue;
   geo.shores.forEach((line, si) => {
     const level = geo.shoreLevels?.[si] ?? WATER_Z;
-    for (let i = 0; i + 1 < line.length; i++) {
-      const [ax, ay] = line[i], [bx, by] = line[i + 1], len = Math.hypot(bx - ax, by - ay), n = Math.max(1, Math.floor(len / 5));
-      for (let t = 0; t < n; t++) {
-        const x = ax + (bx - ax) * t / n, y = ay + (by - ay) * t / n;
-        if (!inBox(x, y) || underDeck(x, y)) continue;
-        const gap = store.surface.height(x, y) - level;
-        samples++;
-        if (gap < -0.25) flooded.push({ gap, x, y, level }); else if (gap < 0.25) flush++; else if (gap > 3.5) cliffs.push({ gap, x, y, level });
-      }
+    // Every 5 m per segment, collinear pieces merged first: a shore split finely near a berth is not over-sampled.
+    for (const [x, y] of shoreSamples(line, 5)) {
+      if (!inBox(x, y) || underDeck(x, y)) continue;
+      const gap = store.surface.height(x, y) - level;
+      samples++;
+      if (gap < -0.25) flooded.push({ gap, x, y, level }); else if (gap < 0.25) flush++; else if (gap > 3.5) cliffs.push({ gap, x, y, level });
     }
   });
 }
@@ -191,7 +189,9 @@ console.log('named locations:');
 
 const byKind = new Map<string, Failure[]>();
 for (const f of failures) byKind.set(f.kind, [...(byKind.get(f.kind) ?? []), f]);
-const isKnown = (f: Failure) => `${f.kind}:${f.id}` in KNOWN;
+// Quay spots are named by their worst sample, which moves when the shore is re-split: a reviewed spot matches within KNOWN_SPOT_M.
+const knownSpots = Object.keys(KNOWN).filter(k => k.startsWith('quay-flooded:')).map(k => k.slice('quay-flooded:'.length));
+const isKnown = (f: Failure) => `${f.kind}:${f.id}` in KNOWN || (f.kind === 'quay-flooded' && knownSpots.some(k => spotDistanceM(k, f.id) <= KNOWN_SPOT_M));
 for (const [kind, list] of byKind) { console.log(`${kind}: ${list.length} (${list.filter(isKnown).length} known)`); for (const f of list.slice(0, 15)) console.log(`  ${isKnown(f) ? 'known' : 'NEW  '} ${f.id} @ ${f.where}: ${f.detail}`); }
 if (flag('json')) writeFileSync(flag('json')!, JSON.stringify({ box: [W, S, E, N], decks, samples, flush, flooded: floodSpots.slice(0, 40).map(s => ({ at: at(s.x, s.y), ...s })), cliffs: cliffSpots.slice(0, 40).map(s => ({ at: at(s.x, s.y), ...s })), steep, failures }, null, 1));
 const fresh = failures.filter(f => !isKnown(f));
