@@ -167,7 +167,7 @@ async function run(faceId: string, house?: string) {
 
 if (process.argv[1]?.endsWith('gable-from-photo.ts')) {
   if (process.argv.includes('--all')) {
-    for (const f of (await fs.readdir(FACES)).sort()) if (existsSync(path.join(FACES, f, 'intent.json')) && existsSync(path.join(FACES, f, 'strip.json'))) await run(f);
+    for (const f of (await fs.readdir(FACES)).sort()) if (!f.startsWith('_') && existsSync(path.join(FACES, f, 'intent.json')) && existsSync(path.join(FACES, f, 'strip.json'))) await run(f);
   } else if (arg('house')) await run(arg('strip-face') ?? (() => { throw Error('--house needs --strip-face'); })(), arg('house'));
   else if (arg('face')) await run(arg('face')!);
   else throw Error('Use --face=<id> | --all | --house=<id> --strip-face=<face>');

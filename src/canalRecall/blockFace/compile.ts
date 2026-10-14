@@ -22,7 +22,7 @@ import {compileChunk, chunkFrame} from '../streetChunks/compileChunk.ts';
 import {findContacts} from '../streetChunks/party.ts';
 import {fitEaves, shiftFactsHeights} from '../streetChunks/ground.ts';
 import type {ChunkResult} from '../streetChunks/types.ts';
-import {houseIntents, type BlockFaceIntent} from './intent.ts';
+import {houseIntents, rigidCanopyFront, type BlockFaceIntent} from './intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
@@ -387,6 +387,29 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     recipeRoofs = made.filter((m): m is NonNullable<typeof m> => !!m).map(m => m.report);
     return {...plan, facts: plan.facts.map((f, i) => made[i]?.facts ?? f)};
   };
+  /** Continuous rigid canopies (`continuity.canopy`): one slab height per group, joined ends on the party planes. */
+  const withCanopies = (plan: FaceGroundPlan): FaceGroundPlan => {
+    if (!face.continuity.canopy?.length) return plan;
+    const out = [...plan.facts];
+    for (const g of face.continuity.canopy) {
+      const idx = g.pands.map(p => face.houses.findIndex(h => h.pandId === p));
+      // Every canopy front of a member on the face street (house modules of one pand, left to right), at its own height.
+      const members = idx.flatMap(i => {
+        const street = intents[i].fronts.filter(f => f.street === face.street), rigid = (k: number) => street[k]?.shopfront?.awning?.style === 'rigid';
+        const fit = fitIntent(intents[i], plan.facts[i]).report;
+        return street.flatMap((front, k) => {
+          if (!rigid(k)) return [];
+          const natural = fit.fronts.find(r => r.id === front.id)?.canopy;
+          if (!natural) throw Error(`${m6(face.houses[i].pandId)}/${front.id}: continuity.canopy member has no rigid canopy in its fit (no shop glass?)`);
+          // Joined: to the neighbouring canopy module of this pand, or (at the pand's ends) across the party wall to a group neighbour.
+          return [{i, front: front.id, bottomM: natural.bottomM, joinLeft: k > 0 ? rigid(k - 1) : idx.includes(i - 1), joinRight: k < street.length - 1 ? rigid(k + 1) : idx.includes(i + 1)}];
+        });
+      });
+      const bottomM = cm(median(members.map(m => m.bottomM)));
+      for (const m of members) out[m.i] = {...out[m.i], canopyM: {...(out[m.i].canopyM ?? {}), [m.front]: {bottomM, joinLeft: m.joinLeft, joinRight: m.joinRight}}};
+    }
+    return {...plan, facts: out};
+  };
   let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip);
   let photoCrowns: BlockFaceResult['photoCrowns'];
   if (face.continuity.crownFromPhoto?.length) {
@@ -395,7 +418,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     intents = applyPhotoCrowns(intents, patches);
     photoCrowns = {patches, kept};
   }
-  ground = withRoofs(ground);
+  ground = withCanopies(withRoofs(ground));
   let chunk = await compile();
   const frontSnaps: FrontSnap[] = [];
   for (let pass = 0; pass < 2; pass++) {
@@ -404,7 +427,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     if (!todo.length) break;
     current = snapFrontSteps(current, todo.map(x => ({i: x.i, stepM: x.stepM!})), chunk.frame.nRD);
     for (const x of todo) frontSnaps.push({left: face.houses[x.i].pandId, right: face.houses[x.i + 1].pandId, stepBeforeM: cm(x.stepM!), pass: pass + 1});
-    ground = withRoofs(planFaceGround(face, current, undefined, options.strip));
+    ground = withCanopies(withRoofs(planFaceGround(face, current, undefined, options.strip)));
     chunk = await compile();
   }
   const stepsAfter = groundCornerSteps(await decodePands(chunk.glb, intents.length));

@@ -1,5 +1,7 @@
 # Jan Evertsenstraat native house GLB pilot
 
+> **Retired 2026-10-14.** These drafts were based on a Google Street View screenshot and are retired. The pilot code, the pilot page and the street profile have been deleted. Jan Evertsenstraat will be authored as block faces with the Amsterdam School kit (rigid canopy, ladder windows, multi-bay erker, course banding, corner tower; see `docs/buildings-pipeline.md`). The live inputs are this README, `beeldbank-acquisition.json` and `bag-rollout-inventory.json`. The other JSON files here are historical review records.
+
 Two **unaccepted native-footprint drafts**, not researched POIs and not asserted to be Jan Evertsenstraat 94. The supplied Google Street View screenshot (uploaded January 2019, image capture April 2017) supports the shop/canopy assembly but crops the upper elevation and roof. The nearby Kruidvat label is not an address relationship. Search results suggest Kwakman occupied number 94; official VBO-to-Pand ownership remains unavailable.
 
 - `NL.IMBAG.Pand.0363100012118917`: installed native polygon; 16.5 m extract height; pale framed shop variant, four provisional upper rows.
