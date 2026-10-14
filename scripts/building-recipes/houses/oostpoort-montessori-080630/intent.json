@@ -79,6 +79,7 @@
  "layeredKit": true,
  "notes": [
   "Soembawastraat 63 (BAG pand 0363100012080630, built 1932): OSM maps the Montessori Lyceum Oostpoort here; the building itself carries a Valentijnschool sign (w02-283, 2018), an Amsterdam School building of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof. walls[0] = west front (panel 4, surface 6): entrance in a stone portal, VALENTIJNSCHOOL sign; walls[1] = north front (panel 12, surface 17, w01-13).",
-  "Simplified: the oval sign plate, the stair window at the left edge, the attic frieze (three real window pitches 6/9/12 averaged to ten bays); the south and east walls (party and court) stay blank."
+  "Simplified: the oval sign plate, the stair window at the left edge, the attic frieze (three real window pitches 6/9/12 averaged to ten bays); the south and east walls (party and court) stay blank.",
+  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w02-283 (window shape tall vs photo square, 8 vs 4 columns), walls[1] FAIL against w01-13 (dark purple-brown #352d2f vs the model's saturated red #7c3a34, glazing 0.30 vs 0.62). At gallery size the model reads bright red where the photos read dark purple-brown, and the top storey is a frieze of small square windows, not full windows. Re-fit colour and the frieze storey before re-installing."
  ]
 }
