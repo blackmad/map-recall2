@@ -1,0 +1,147 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "da-costakade-146-236799",
+ "pandId": "0363100012236799",
+ "address": "Da Costakade 146, Amsterdam-West: 1903 factory block, a yellow-brick front of large workshop windows on Da Costakade, a red-brick range with balconies beside it, and a red-brick back range with a lettered band on the street behind",
+ "sources": [
+  {
+   "id": "pano-2025-07-31-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-31_08-46-40_01995/",
+   "image": "staging/pand-reference-walls/0363100012236799/w01-248.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-11-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001702_pano_0000_005491/",
+   "image": "staging/pand-reference-walls/0363100012236799/w02-67.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "street": "Da Costakade",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "windows": "transom",
+   "deepBars": true,
+   "stringCourses": true,
+   "piers": true,
+   "arches": {
+    "windows": "segmental",
+    "ground": "segmental",
+    "band": "brick",
+    "storeys": [
+     0,
+     1
+    ]
+   },
+   "palette": {
+    "brick": "#b08a5a",
+    "frame": "#efece4",
+    "stone": "#d8ccb0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    46,
+    70,
+    146,
+    305,
+    306,
+    307,
+    315,
+    317
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "cross",
+   "deepBars": true,
+   "stringCourses": true,
+   "cornice": true,
+   "palette": {
+    "brick": "#7a4232",
+    "frame": "#efece4",
+    "stone": "#c8bca4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    104
+   ],
+   "system": "ribbon-windows",
+   "storeys": 7,
+   "ground": "glazed",
+   "wallMaterial": "stone",
+   "deepBars": true,
+   "palette": {
+    "brick": "#9a9c98",
+    "frame": "#d8dad6",
+    "stone": "#9a9c98"
+   }
+  },
+  {
+   "wallSurfaces": [
+    9,
+    150,
+    364,
+    190,
+    186,
+    393
+   ],
+   "street": "Da Costakade",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "stringCourses": true,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "rail": "bars",
+    "every": 3,
+    "first": 1
+   },
+   "palette": {
+    "brick": "#7a4232",
+    "frame": "#efece4",
+    "stone": "#c8bca4"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#7a4232",
+  "frame": "#efece4",
+  "door": "#6a4a2a",
+  "stone": "#c8bca4"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "notes": [
+  "Da Costakade 146 (BAG, built 1903) is a factory block that runs through from Da Costakade to the street behind it. On Da Costakade there is a yellow-brick workshop front with large segmental-arched windows between piers, and beside it a red-brick range with balconies and a gable. On the back street there is a red-brick range with a lettered stone band, and a later grey-tiled glass block. 430 wall surfaces. The LoD2.2 shell has 5.7 m of open edge (four short step walls); shellRepair closes all of it with 4 strips.",
+  "walls[0] = surface 11 of panel 8 (w01-248): the yellow-brick workshop front. 4 storeys x 11 bays of transom windows, segmental arches on the lower two storeys, piers and string courses. walls[3] = the rest of panel 8 (w01-248): the red-brick range on Da Costakade, 5 storeys x 7 bays with bar balconies on every third bay of storeys 1-3. Its gable is the 3DBAG roof mass.",
+  "walls[1] = the brick part of panel 41 (w02-67): the red-brick back range, 6 storeys x 7 bays of cross windows with string courses and a cornice. walls[2] = surface 104 (w02-67): the grey-tiled glass block, drawn as ribbon windows over a glazed ground.",
+  "Simplified: the lettered band on the back range (a string course at that height, no letters), the stepped gable and the dormers (3DBAG roof masses), and the curved glass bay of the glass block (straight)."
+ ]
+}

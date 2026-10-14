@@ -55,6 +55,9 @@ export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding): {
   const topo = topology(tris);
   g('no-floating-parts', topo.floating.length === 0, topo.floating.length, '0 components detached from ground/shell');
   g('open-edges', topo.openEdgeLengthM <= 2, {edges: topo.openEdges, lengthM: +topo.openEdgeLengthM.toFixed(1)}, '<= 2 m of genuine open edge above ground (T-junction seams excluded)');
+  // shell repair (opt-in): the bare host's open edge and footprint IoU before and after the repair, for the record
+  const sr = built.fit.shellRepair;
+  if (sr) g('shell-repair', sr.openAfterM <= 2, {mode: sr.mode, openBeforeM: sr.openBeforeM, openAfterM: sr.openAfterM, patches: {cap: sr.patches.cap, strip: sr.patches.strip, seam: sr.patches.seam}, iouBefore: sr.iouBefore, iouAfter: sr.iouAfter}, 'repaired bare shell <= 2 m open edge (shellRepair.ts)');
   const b = built.blockGates;
   g('parts-attached', b.floatingOk && b.gapOk, {parts: b.parts, maxGapCm: b.maxGapCm, floating: b.floatingDetail}, 'every block-kit part within 5 cm of the 3DBAG shell or an attached part');
   return {gates, topology: topo};

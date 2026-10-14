@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "gillis-van-ledenberchstraat-34-117498",
+ "pandId": "0363100012117498",
+ "address": "Gillis van Ledenberchstraat 34, Amsterdam-West (Frederik Hendrikbuurt): a cream-rendered canal front on the Kostverlorenvaart side with a glazed top storey, and a curved brown-brick street block on Gillis van Ledenberchstraat",
+ "sources": [
+  {
+   "id": "pano-2017-03-07-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2017-03-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000198_pano_0001_000086/",
+   "image": "staging/pand-reference-walls/0363100012117498/w01-298.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-22-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002055_pano_0000_000640/",
+   "image": "staging/pand-reference-walls/0363100012117498/w03-112.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-30-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002369_pano_0007_000050/",
+   "image": "staging/pand-reference-walls/0363100012117498/w02-112.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "blankStoreys": [
+    0
+   ],
+   "windows": "wide",
+   "wallMaterial": "render",
+   "deepBars": true,
+   "palette": {
+    "brick": "#e6e0cf",
+    "frame": "#5e6468",
+    "stone": "#d8d2c2"
+   }
+  },
+  {
+   "wallSurfaces": [
+    13,
+    12
+   ],
+   "street": "Gillis van Ledenberchstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "stringCourses": true,
+   "palette": {
+    "brick": "#7a4a3e",
+    "frame": "#d8d4c8",
+    "stone": "#b8b0a0"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7a4a3e",
+  "frame": "#d8d4c8",
+  "door": "#4a2a24",
+  "stone": "#b8b0a0"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "notes": [
+  "Gillis van Ledenberchstraat 34 (BAG, built 1932) is a long block with two faces: a cream-rendered canal front of 60 m on the west side, and a brown-brick front on Gillis van Ledenberchstraat on the east side. The canal front has two rows of grouped windows over a blank base and a glazed top storey. The street front has four storeys over glazed doors. 204 wall surfaces. The LoD2.2 shell has 33.9 m of open edge (eight missing step walls between the 4.7 m wings and the main block). shellRepair closes all of it with 8 strips.",
+  "walls[0] = panel 7 (w01-298): the canal front. 3 storeys with the base blank, then two rows of 14 grouped wide windows in grey frames, in render. The glazed top storey is the 3DBAG set-back mass and is not drawn as glass.",
+  "walls[1] = panels 11 and 10 (w03-112): the brick street front. 4 storeys x 7 bays of wide windows with stone string courses. Panels 25 and 33 on the same street line touch taller neighbouring pands (party walls in the kit) and stay blank, as do the low 4.7 m wings."
+ ]
+}

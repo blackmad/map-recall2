@@ -431,6 +431,16 @@ export interface LargeBuildingIntent {
    * plane (compose `wallProfileOf`), so none leaves coplanar overlap.
    */
   layeredKit?: boolean;
+  /**
+   * Shell repair (opt-in, 2026-10-14, shellRepair.ts): close the open edges of a defective 3DBAG LoD2.2 shell with
+   * caps, wall strips and seams before the fit. Patches are wall surfaces from 90000 up (`walls.ts` lists them).
+   */
+  shellRepair?: boolean;
+  /**
+   * `bag`: build the massing on the BAG LoD0 outline (LoD2.2 roof planes clipped to it, walls from the repair strips)
+   * when the LoD2.2 ground has drifted from it (IoU < 0.90). Default `lod22`: the LoD2.2 shell verbatim.
+   */
+  footprint?: 'lod22' | 'bag';
   notes?: string[];
 }
 
