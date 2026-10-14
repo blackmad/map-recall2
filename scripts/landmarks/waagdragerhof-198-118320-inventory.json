@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "id": "waagdragerhof-198-118320",
+ "pand": "0363100012118320",
+ "signature": [
+  "pakhuis-lettered-arches",
+  "tower-over-warehouse"
+ ],
+ "walls": [
+  {
+   "tag": "w04-196",
+   "bearing": 196,
+   "lengthM": 28.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002900_pano_0009_000017",
+   "capturedAt": "2022-12-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-over-warehouse",
+     "kind": "tower",
+     "where": "eleven-storey dark red brick tower with a glazed ground standing over the warehouse range",
+     "approxSizeM": [
+      28,
+      34
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 11 storeys x 8 bays with a glazed ground; the grey cantilever volume near the top is the 3DBAG shell",
+     "seenIn": "TMX7316010203-002900_pano_0009_000017"
+    }
+   ]
+  },
+  {
+   "tag": "w03-286",
+   "bearing": 286,
+   "lengthM": 28.7,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01389",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-west-front",
+     "kind": "window-shape",
+     "where": "tower west wall of plain window grid with the glazed ground",
+     "approxSizeM": [
+      29,
+      34
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 11 storeys x 6 bays glazed ground",
+     "seenIn": "recording_2025-06-16_08-26-12_01389"
+    }
+   ]
+  },
+  {
+   "tag": "w05-196",
+   "bearing": 196,
+   "lengthM": 24.8,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01388",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "pakhuis-lettered-arches",
+     "kind": "lettering",
+     "where": "five tall arched windows each carrying one word PAK HUIS WIL HEL MINA over a brick plinth",
+     "approxSizeM": [
+      25,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[2] two storeys of round arches with brick arch bands; PAKHUIS WILHELMINA as one name band on a frieze board",
+     "seenIn": "recording_2025-06-16_08-26-12_01388"
+    }
+   ]
+  },
+  {
+   "tag": "w01-16",
+   "bearing": 16,
+   "lengthM": 100,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002801_pano_0003_000082",
+   "capturedAt": "2022-09-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-arched-warehouse",
+     "kind": "window-shape",
+     "where": "long north front of the warehouse with round-arched windows and orange arch bands in three storeys",
+     "approxSizeM": [
+      30,
+      13
+     ],
+     "plan": "simplified",
+     "how": "walls[3] 3 storeys x 6 bays round arches with brick arch bands",
+     "seenIn": "TMX7316010203-002801_pano_0003_000082"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
