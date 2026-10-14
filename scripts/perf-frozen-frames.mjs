@@ -14,6 +14,8 @@ const SPOTS = [
   { name: 'dam', lng: 4.8925, lat: 52.3727, bearing: 300 },
   { name: 'westerkerk', lng: 4.8853, lat: 52.3740, bearing: 270 },
   { name: 'munt', lng: 4.8945, lat: 52.3668, bearing: 200 },
+  // Nieuwmarkt: the Waag's turrets are OSM pyramidal caps (pyramidal-roofs layer).
+  { name: 'waag', lng: 4.9000, lat: 52.3719, bearing: 0 },
   { name: 'rijksmuseum', lng: 4.8850, lat: 52.3616, bearing: 180 },
   // The rider inside the Royal Palace's block: the bike's x-ray shows through the building.
   { name: 'in-block', lng: 4.8906, lat: 52.3729, bearing: 0 },
