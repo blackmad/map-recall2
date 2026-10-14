@@ -1,0 +1,8 @@
+{
+  "_doc": "Large recipes whose fit-golden moved on purpose while the installed GLB stays the old one; check:stale-installs reports them as held, not stale. Remove an id when it is re-installed.",
+  "held": {
+    "apollolaan-4-134507": "re-fit (glazed hall) awaiting lane B2: palette.glass and measured tint in the city look (2026-10-14)",
+    "houthavenkade-26-247232": "re-fit (two-tone glazed columns) awaiting lane B2 (2026-10-14)",
+    "waagdragerhof-198-118320": "re-fit (french-window ledge, arched warehouse) awaiting lane B2 (2026-10-14)"
+  }
+}
