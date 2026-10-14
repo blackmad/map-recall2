@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {exposedWalls} from '../../../scripts/pand-reference/select.ts';
 import {pointInRing} from '../../../scripts/pand-reference/core.ts';
-import {bestCropForPanel, cropFrame, matchCropToPanel, type CropWall, type PanelPlan, type Xy} from './cropToPanel.ts';
+import {bestCropForPanel, cropFrame, matchCropToPanel, panelCoverage, type CropWall, type PanelPlan, type Xy} from './cropToPanel.ts';
 
 // An L footprint (RD metres), given clockwise on purpose: exposedWalls makes it counter-clockwise first.
 const L = [[0, 0], [0, 20], [10, 20], [10, 8], [30, 8], [30, 0], [0, 0]].map(([x, y]) => ({x: 1000 + x, y: 2000 + y}));
@@ -52,4 +52,15 @@ test('matchCropToPanel: exact panel matches with increasing along, opposite face
   const east = walls.find(w => Math.abs(w.mid.x - 1030) < 1e-6)!;
   const best = bestCropForPanel([crop([east.a.x, east.a.y], [east.b.x, east.b.y], 'east'), crop(a, b, 'south')], panelOn(a, b), anchor);
   assert.equal(best?.crop.tag, 'south');
+});
+
+test('panelCoverage: a panel over two footprint edges is covered in two pieces; the leaf-off crop wins where both cover', () => {
+  const a: Xy = [1000, 2000], m: Xy = [1015, 2000], b: Xy = [1030, 2000];
+  const left = {...crop(a, m, 'left'), foliage: 0}, right = {...crop(m, b, 'right'), foliage: 0};
+  const cov = panelCoverage([left, right], panelOn(a, b), anchor);
+  assert.equal(cov.coverage, 1);
+  assert.deepEqual(cov.pieces.map(p => [p.crop.tag, Math.round(p.u0), Math.round(p.u1)]), [['left', 0, 15], ['right', 15, 30]]);
+  const summer = {...crop(a, b, 'summer'), foliage: 0.3, capturedAt: '2025-06-01'}, winter = {...crop(a, b, 'winter'), foliage: 0.01, capturedAt: '2020-01-01'};
+  assert.deepEqual(panelCoverage([summer, winter], panelOn(a, b), anchor).pieces.map(p => p.crop.tag), ['winter']);
+  assert.equal(panelCoverage([crop(a, [1010, 2000], 'short')], panelOn(a, b), anchor).coverage, 0.333);
 });

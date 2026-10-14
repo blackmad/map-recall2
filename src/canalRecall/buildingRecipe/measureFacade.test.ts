@@ -95,3 +95,19 @@ test('missing pixels and a tree blob: left out, grid still found', () => {
   near(m.pitchM!, 3, 0.2, 'pitch'); assert.equal(m.columns, 10);
   assert.ok(dE(m.wall.raw, BRICK) < 5);
 });
+
+// Houthavenkade 26 (pand 0363100012247232) g0: one 3DBAG plane, yellow-brown brick on the left ~55 %, dark brick on the right.
+test('two bricks side by side on one plane: split along u measured; a one-brick front has none', () => {
+  const DARK: Rgb = [70, 58, 56], c = punched(3, 0.5, 0.55, 0.25);
+  // repaint the wall (not the glass) right of 18 m dark brick
+  const {rgb, width, height} = {rgb: c.image.rgb, width: c.width, height: c.height};
+  for (let y = 0; y < height; y++) for (let x = Math.round(18 * PPM); x < width; x++) { const p = y * width + x; if (Math.abs(rgb[p * 3] - BRICK[0]) < 10 && Math.abs(rgb[p * 3 + 1] - BRICK[1]) < 10) rgb.set(DARK, p * 3); }
+  const m = measureFacade({image: c.image, box: box(30), lines: LINES});
+  assert.ok(m.split, 'split found');
+  near(m.split!.at, 0.6, 0.05, 'split at');
+  // normalised colours (as palette.brick): the left is the lighter, redder brick
+  const l = rgbToLab(hexRgb(m.split!.left)), r = rgbToLab(hexRgb(m.split!.right));
+  assert.ok(l[0] > r[0] + 15 && l[1] > r[1] + 10, `${m.split!.left} | ${m.split!.right}`);
+  assert.equal(measureFacade({image: punched(3, 0.5, 0.55, 0.25).image, box: box(30), lines: LINES}).split, null);
+});
+const hexRgb = (h: string): Rgb => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as Rgb;

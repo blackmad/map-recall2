@@ -60,17 +60,53 @@ export function matchCropToPanel(c: CropWall, p: PanelPlan, anchorRD: Xy): CropM
   return {relation, tag: c.tag, panel: p.index, offsetM: r3(offsetM), angleDeg: r3(angleDeg), overlapFraction: r3(overlapFraction), alongAtUMin: r3(s0), alongAtUMax: r3(s1)};
 }
 
-/** The best matching crop for a panel: most overlap, then the straightest view, then the newest. */
+/**
+ * The best matching crop for a panel: the evidence quality `min(1, overlap) - foliage - washedOut / 2 - obliquity / 90`
+ * (a leaf-off, straight, full view wins over a newer summer one), then the newest.
+ */
 export function bestCropForPanel(crops: CropWall[], p: PanelPlan, anchorRD: Xy): {crop: CropWall; match: CropMatch} | null {
   const ok = crops.map(crop => ({crop, match: matchCropToPanel(crop, p, anchorRD)})).filter(m => m.match.relation === 'match');
-  ok.sort((x, y) => Math.min(1, y.match.overlapFraction) - Math.min(1, x.match.overlapFraction) || (x.crop.obliquityDeg ?? 90) - (y.crop.obliquityDeg ?? 90) || (y.crop.capturedAt ?? '').localeCompare(x.crop.capturedAt ?? ''));
+  ok.sort((x, y) => quality(y) - quality(x) || (y.crop.capturedAt ?? '').localeCompare(x.crop.capturedAt ?? ''));
   return ok[0] ?? null;
+}
+
+/** Evidence quality of a crop for a panel (higher is better). */
+export const cropQuality = (m: {crop: CropWall; match: CropMatch}) => Math.min(1, m.match.overlapFraction) - (m.crop.foliage ?? 0) - (m.crop.washedOut ?? 0) / 2 - (m.crop.obliquityDeg ?? 90) / 90;
+const quality = cropQuality;
+
+export interface CoveragePiece { crop: CropWall; match: CropMatch; u0: number; u1: number }
+/**
+ * A panel photographed in pieces: a 3DBAG plane often spans two BAG footprint edges (a tower front over two pands'
+ * walls, a block over a jog). Every crop on the panel's plane (offset, angle and facing within the match thresholds,
+ * any overlap) can cover part of it; along the panel (0.1 m steps) the best-quality covering crop wins, and the pieces
+ * are its runs. Evidence when the union covers >= 60 % of the panel width (CROP_MIN_OVERLAP).
+ */
+export function panelCoverage(crops: CropWall[], p: PanelPlan, anchorRD: Xy, stepM = 0.1): {pieces: CoveragePiece[]; coverage: number} {
+  const cands = crops.map(crop => ({crop, match: matchCropToPanel(crop, p, anchorRD)})).filter(m => m.match.relation === 'match' || m.match.relation === 'overlap').filter(m => m.match.overlapFraction > 0);
+  const width = p.uMax - p.uMin, pieces: CoveragePiece[] = [];
+  let covered = 0;
+  for (let u = p.uMin + stepM / 2; u < p.uMax; u += stepM) {
+    let best: (typeof cands)[number] | null = null;
+    for (const c of cands) {
+      const {len} = cropFrame(c.crop.a, c.crop.b), k = (c.match.alongAtUMax - c.match.alongAtUMin) / Math.max(1e-6, width), along = c.match.alongAtUMin + (u - p.uMin) * k;
+      if (along < 0 || along > len) continue;
+      if (!best || quality(c) > quality(best) + 1e-9) best = c;
+    }
+    if (!best) continue;
+    covered += stepM;
+    const last = pieces[pieces.length - 1];
+    if (last && last.crop === best.crop && Math.abs(last.u1 - (u - stepM / 2)) < 1e-6) last.u1 = Math.min(p.uMax, u + stepM / 2);
+    else pieces.push({crop: best.crop, match: best.match, u0: Math.max(p.uMin, u - stepM / 2), u1: Math.min(p.uMax, u + stepM / 2)});
+  }
+  return {pieces, coverage: Math.round(Math.min(1, covered / Math.max(1e-6, width)) * 1000) / 1000};
 }
 
 /** walls.json (v2) rows with a crop -> CropWall (file names relative to the pand directory). */
 export function cropsOfWallsJson(json: {walls: any[]}): CropWall[] {
   return json.walls.filter(w => w.crop && w.wallRD && w.ppm).map(w => ({
-    tag: w.tag, file: `${w.tag}.jpg`, a: w.wallRD.a, b: w.wallRD.b, normal: w.wallRD.normal, ppm: w.ppm, widthPx: w.widthPx, heightPx: w.heightPx,
+    tag: w.tag, file: `${w.tag}.jpg`, a: w.wallRD.a, b: w.wallRD.b, normal: w.wallRD.normal,
+    // the scale actually used: rectifyFacade lowers the requested ppm on long or tall walls (maxPixels), and older archives recorded the request
+    ppm: w.widthPx && w.wallWidthM ? w.widthPx / w.wallWidthM : w.ppm, widthPx: w.widthPx, heightPx: w.heightPx,
     wallHeightM: w.wallHeightM, baseZ: w.baseZ, capturedAt: w.capturedAt, panoId: w.panoId, obliquityDeg: w.obliquityDeg, cameraDistM: w.cameraDistM,
     foliage: w.foliage, washedOut: w.washedOut, missingFraction: w.missingFraction, sha256: w.sha256, cameraRD: w.cameraRD,
   }));
