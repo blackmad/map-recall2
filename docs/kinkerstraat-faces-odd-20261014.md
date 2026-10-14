@@ -9,13 +9,13 @@ OSM and BAG uses from each face's `uses.json`. Every face was compiled with `com
 |---|---|---|---|---|---|
 | kinker-1-29 | 11 | 24,700 | 2024-12-11 | plain-brick 7, 1985-infill 1 | `kinker-1885-wall-dormer` (19, 21, 23) |
 | kinker-31-49 | 10 | 15,698 | 2024-12-11 | plain-brick 9, neo-renaissance 1 | - |
-| kinker-49-63 | 9 | 24,044 | 2024-11-29 | neo-renaissance 4, plain-brick 2, brick-arched 3 | - |
-| kinker-65-87 | 10 | 21,175 | 2024-11-29 | plain-brick 7, painted-band 1 | `kinker-1893-plain-step-gable` (65, 67) |
+| kinker-49-63 | 9 | 23,312 | 2024-11-29 | neo-renaissance 4, plain-brick 2, brick-arched 3 | - |
+| kinker-65-87 | 10 | 20,311 | 2024-11-29 | plain-brick 7, painted-band 1 | `kinker-1893-plain-step-gable` (65, 67) |
 | kinker-173-225 | 10 | 29,517 | 2024-12-11 | 1985-infill 10 | - |
 | kinker-315-359 | 19 | 42,735 | 2024-12-11 | 1902-balcony-axis 18, 1985-infill 1 | - |
 | kinker-363-371 | 4 | 13,706 | 2024-12-11 | 1902-balcony-axis 4 (flat heads) | - |
 | kinker-265-313 | 3 | 14,540 | 2024-12-11 | 1985-infill 3 (bay unit as overrides) | - |
-| **total** | **76** | **186,115** | | | |
+| **total** | **76** | **184,519** | | | |
 
 Gates and interference pass on all eight faces. The GLB audit's z-fight check fails on every Kinkerstraat face,
 including the two proof faces at current main (2-30: 115 m², 109-161: 148 m² coplanar): the overlap is in the INFERRED
@@ -41,8 +41,8 @@ that audit line.
 - **Wall colour**: `palette-from-strip.ts` per pand; where the type palette was more than 24 (sum of RGB) off, the
   measured brick goes in `overrides.palette.brick` (a 3 cm facing). The render lifts and saturates: where the first
   review missed, the input was compensated by the photo-minus-model difference (31, 33, 45, 47, 49, 173-225, 315-319,
-  363-371). The facing roughly doubles a front's triangles (23: 2,300 → 4,048), so four pands keep the type palette to
-  stay under the 3,000-per-front budget (23, 57, 63, 69-73).
+  363-371). The facing roughly doubles a front's triangles (23: 2,300 → 4,048), so five pands keep the type palette to
+  stay under the 3,000-per-front budget (23, 57, 59, 63, 69-73; 59 since the accents pass added white courses and springers to brick-arched).
 - **Cornices** measured on the strip (`measuredEaves` with `frontRoof`) where 3DBAG eaves read a mansard or a rear roof
   (51, 69-73, 75-87, 323-357, 367-371); 1-29, 31-49, 49-63 and 65-87 use recipe roofs at 30° so 3DBAG pyramids and
   mansards do not stand over the cornice line; 173-225 keeps the 3DBAG roof as the set-back storey's mass.
@@ -72,7 +72,7 @@ that audit line.
 | Projecting cream penthouse bays (red panel, grey ledge) | 5 | 179-181, 185, 189-207, 209-211, 213-225 |
 | Centre brick wall dormer through the cornice (no library crown) | 5 | 19, 21, 23 (inline type), 49 corner, 87 |
 | Brick look clamps colour: black paint lifts to olive, sunlit light brick darkens, light walls saturate | 4 | 31, 47, 63, 87 (wall check fails) |
-| Per-front facing doubles triangles: measured brick dropped for the budget | 4 | 23, 57, 63, 69-73 |
+| Per-front facing doubles triangles: measured brick dropped for the budget | 5 | 23, 57, 59, 63, 69-73 |
 | Pair gable over two pands (one gable per front instead) | 4 | 331+333, 343+345 |
 | Sunburst voussoirs | 3 | 51, 53, 53A |
 | Dormers on the neo-renaissance type (no dormer crown) | 3 | 49A, 53, 49 corner side dormers |
@@ -140,7 +140,7 @@ Limitations (in the intent): Iron wall anchors on every 1883-1885 front (no kit 
 
 Limitations (in the intent): Kinkerstraat 31: black paint (painted-band type has no crown without a dormer; a placement cannot change the wall material). Drawn as dark brick; Kinkerstraat 33: plain flat-topped box dormer with a white frame drawn as the type pediment dormer (plain-brick has no plain-dormer crown); Kinkerstraat 49: centre brick wall dormer with a flat cap between two small dormers; not drawn (neo-renaissance has no wall-dormer crown); Iron wall anchors; tall carved keystones drawn as plain keystone blocks.
 
-### kinker-49-63 (9 pands, 24,044 tris, gates pass)
+### kinker-49-63 (9 pands, 23,312 tris, gates pass)
 
 ![kinker-49-63](images/kinkerstraat/kinker-49-63-sheet.jpg)
 
@@ -151,14 +151,14 @@ Limitations (in the intent): Kinkerstraat 31: black paint (painted-band type has
 | 164246 | Kinkerstraat 53 | kinker-1886-neo-renaissance (none) | Cafe Amoi (amenity=restaurant), osm-only | #746757 / #706658 | read; pediment dormer and corbel cornice missing. |
 | 161889 | Kinkerstraat 53A | kinker-1886-neo-renaissance (point-gable) | other, bag-only | #6e6051 / #706658 | right. |
 | 162119 | Kinkerstraat 55 | kinker-1890-plain-brick (pediment-dormer) | shop, bag-only | #715e4f / #7d6a4d | right. |
-| 153083 | Kinkerstraat 57 | kinker-1890-brick-arched (pediment-dormer) | De Kinker, photo-only | #795f4c / #765b45 | right; frieze consoles missing. |
-| 163977 | Kinkerstraat 59 | kinker-1890-brick-arched (pediment-dormer) | Hulp GSM, photo-only | #91745b / #8b735e | right. |
+| 153083 | Kinkerstraat 57 | kinker-1890-brick-arched (pediment-dormer) | De Kinker, photo-only | #775e4b / #765b45 | right; frieze consoles missing. |
+| 163977 | Kinkerstraat 59 | kinker-1890-brick-arched (pediment-dormer) | Hulp GSM, photo-only | #8f725a / #765b45 | right. |
 | 159845 | Kinkerstraat 61 | kinker-1890-plain-brick (pediment-dormer) | shop, bag-only | #7e6752 / #846e56 | right. |
-| 133467 | Kinkerstraat 63 | kinker-1890-brick-arched (pediment-dormer) | Bakery Cafe Mensink (shop=bakery), osm-and-photo | #7a6457 / #765b45 ✗ too saturated (+0.09) | read; wall slightly too saturated (FAIL +0.09 sat) - facing would break 3000-tri budget. |
+| 133467 | Kinkerstraat 63 | kinker-1890-brick-arched (pediment-dormer) | Bakery Cafe Mensink (shop=bakery), osm-and-photo | #786356 / #765b45 ✗ too saturated (+0.10) | read; wall slightly too saturated (FAIL +0.09 sat) - facing would break 3000-tri budget. |
 
 Limitations (in the intent): Sunburst voussoirs (radiating white blocks) over the storey-1 windows of 51-53A: drawn as blocked arches; 49A: blind brick pier with its own stepped gable over the left third; drawn as a one-axis module; 51: gable scrollwork and finials on the pointed and stepped gables; 53: pedimented dormer and 49A dormer on the neo-renaissance type (no dormer crown variant); 53/53A: corbel-table cornice; stoops up to the house doors (groundFront has no stoop on a wall ground).
 
-### kinker-65-87 (10 pands, 21,175 tris, gates pass)
+### kinker-65-87 (10 pands, 20,311 tris, gates pass)
 
 ![kinker-65-87](images/kinkerstraat/kinker-65-87-sheet.jpg)
 
