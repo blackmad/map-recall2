@@ -47726,6 +47726,342 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:53:57.893Z"
+    },
+    {
+      "id": "ordinary-0363100012093853",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012093853",
+      "name": "Van Beuningenstraat 48, Amsterdam-West (Staatsliedenbuurt): 1978 social-housing block of tan brick with grey concrete bands, balcony runs and rounded corners, in four storeys on the south-east and three on the north-west",
+      "hash": "dd603a410bca15e34aaff3978acecedf718cdc49bc2f3dd4397772a074a564b7",
+      "sha256": "dd603a410bca15e34aaff3978acecedf718cdc49bc2f3dd4397772a074a564b7",
+      "bytes": 679500,
+      "triangles": 9349,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -44.902,
+          0,
+          -51.017
+        ],
+        "max": [
+          52.897,
+          18.87,
+          47.425
+        ]
+      },
+      "anchor": [
+        4.8771257,
+        52.3838067
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8765607,
+              52.3835742
+            ],
+            [
+              4.8765608,
+              52.3835646
+            ],
+            [
+              4.8766048,
+              52.3835383
+            ],
+            [
+              4.8766209,
+              52.3835383
+            ],
+            [
+              4.8766837,
+              52.3835008
+            ],
+            [
+              4.8766837,
+              52.3834912
+            ],
+            [
+              4.8767277,
+              52.3834649
+            ],
+            [
+              4.8767435,
+              52.383465
+            ],
+            [
+              4.8768865,
+              52.3833798
+            ],
+            [
+              4.8774465,
+              52.3837306
+            ],
+            [
+              4.8773034,
+              52.3838162
+            ],
+            [
+              4.8773032,
+              52.3838259
+            ],
+            [
+              4.8772385,
+              52.3838645
+            ],
+            [
+              4.8772224,
+              52.3838642
+            ],
+            [
+              4.8772127,
+              52.3838581
+            ],
+            [
+              4.8771899,
+              52.3838717
+            ],
+            [
+              4.8774678,
+              52.3840461
+            ],
+            [
+              4.8774371,
+              52.3840644
+            ],
+            [
+              4.877462,
+              52.3840801
+            ],
+            [
+              4.8774757,
+              52.3840719
+            ],
+            [
+              4.8774877,
+              52.3840794
+            ],
+            [
+              4.8775047,
+              52.3840693
+            ],
+            [
+              4.8775203,
+              52.3840791
+            ],
+            [
+              4.8775616,
+              52.3840545
+            ],
+            [
+              4.8775439,
+              52.3840434
+            ],
+            [
+              4.8775442,
+              52.3840365
+            ],
+            [
+              4.8775694,
+              52.3840214
+            ],
+            [
+              4.8775807,
+              52.3840214
+            ],
+            [
+              4.8775984,
+              52.3840325
+            ],
+            [
+              4.8776846,
+              52.3839811
+            ],
+            [
+              4.8776207,
+              52.383941
+            ],
+            [
+              4.8776209,
+              52.383934
+            ],
+            [
+              4.8776463,
+              52.3839188
+            ],
+            [
+              4.8776578,
+              52.3839189
+            ],
+            [
+              4.8777216,
+              52.383959
+            ],
+            [
+              4.8777675,
+              52.3839316
+            ],
+            [
+              4.8778997,
+              52.3840147
+            ],
+            [
+              4.8774776,
+              52.3842665
+            ],
+            [
+              4.8769179,
+              52.3839153
+            ],
+            [
+              4.8770618,
+              52.3838304
+            ],
+            [
+              4.8770816,
+              52.3838321
+            ],
+            [
+              4.8771019,
+              52.3838201
+            ],
+            [
+              4.8770834,
+              52.3838081
+            ],
+            [
+              4.877127,
+              52.3837823
+            ],
+            [
+              4.8771428,
+              52.3837825
+            ],
+            [
+              4.8771527,
+              52.3837887
+            ],
+            [
+              4.8771756,
+              52.383775
+            ],
+            [
+              4.8769022,
+              52.3836037
+            ],
+            [
+              4.8768607,
+              52.3836285
+            ],
+            [
+              4.8768665,
+              52.3836321
+            ],
+            [
+              4.8768663,
+              52.3836391
+            ],
+            [
+              4.8768407,
+              52.3836544
+            ],
+            [
+              4.8768293,
+              52.3836543
+            ],
+            [
+              4.8767443,
+              52.3837051
+            ],
+            [
+              4.8767442,
+              52.3837121
+            ],
+            [
+              4.8767185,
+              52.3837274
+            ],
+            [
+              4.8767071,
+              52.3837273
+            ],
+            [
+              4.876643,
+              52.383687
+            ],
+            [
+              4.8765971,
+              52.3837143
+            ],
+            [
+              4.8764762,
+              52.3836385
+            ],
+            [
+              4.8764579,
+              52.3836267
+            ],
+            [
+              4.8764816,
+              52.3836119
+            ],
+            [
+              4.8764978,
+              52.3836118
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 18.87,
+      "height": 18.87,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-van-beuningenstraat-48-093853.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012093853"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "van-beuningenstraat-48-093853",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012093853/w02-135.jpg",
+          "staging/pand-reference-walls/0363100012093853/w01-315.jpg",
+          "staging/pand-reference-walls/0363100012093853/w03-45.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 13b",
+          "brick-bay-grid 3st 13b",
+          "brick-bay-grid 3st 9b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the photographed balcony runs are continuous recessed loggias in alternating bays, drawn as slab balconies in every fourth bay; the 3DBAG plan keeps the rounded corners as short straight facets; the grey bands are the kit string courses; the south-west and cylindrical end walls (w06-225, w08-315), the courtyard faces (panels 118, 70, 20) and the stair-tower walls are not drawn and stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093853",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:55:57.009Z"
     }
   ]
 }
