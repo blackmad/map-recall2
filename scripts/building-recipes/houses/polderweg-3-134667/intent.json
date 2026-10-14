@@ -1,0 +1,117 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "polderweg-3-134667",
+ "pandId": "0363100012134667",
+ "address": "Polderweg 3, Amsterdam-Oost (Watergraafsmeer): 1999 campus building, a four-storey bar with continuous ribbon glazing and white balcony fascias over a recessed glazed ground and a set-back top floor, joined to a timber-clad sports hall with a curved roof and steel ribs",
+ "sources": [
+  {
+   "id": "pano-2021-05-28-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-05-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002142_pano_0000_000340/",
+   "image": "staging/pand-reference-walls/0363100012134667/w02-161.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-05-23-w07",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001205_pano_0000_001450/",
+   "image": "staging/pand-reference-walls/0363100012134667/w07-161.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-09-10-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2020-09-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001920_pano_0006_000044/",
+   "image": "staging/pand-reference-walls/0363100012134667/w01-317.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    78,
+    80,
+    15
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "ground": "glazed",
+   "wallMaterial": "stucco",
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "rail": "bars"
+   },
+   "palette": {
+    "brick": "#e4e0d2",
+    "frame": "#cfd6d8",
+    "stone": "#e8e6dc"
+   }
+  },
+  {
+   "wallSurfaces": [
+    74,
+    76,
+    77,
+    82,
+    8
+   ],
+   "system": "ribbon-windows",
+   "storeys": 1,
+   "ground": "system",
+   "wallMaterial": "stucco",
+   "palette": {
+    "brick": "#d8d2c2",
+    "frame": "#9aa6aa",
+    "stone": "#e8e6dc"
+   }
+  },
+  {
+   "wallSurfaces": [
+    34,
+    35,
+    62,
+    125,
+    36,
+    63,
+    127,
+    133
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "ground": "glazed",
+   "blankStoreys": [
+    1
+   ],
+   "palette": {
+    "brick": "#6e5e50",
+    "frame": "#aeb8bc",
+    "stone": "#8a8a86"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#c9c3b4",
+  "frame": "#cfd6d8",
+  "door": "#2a2a2a",
+  "stone": "#e8e6dc"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Polderweg 3 (BAG pand 0363100012134667, built 1999, 136 3DBAG wall surfaces, 70 m long, roof max 23.4 m): a campus building in Watergraafsmeer. Three fronts are photographed: the south front (w02-161 2021-05-28 and w07-161 2019-05-23), a four-storey bar with white concrete balcony fascias, continuous strip windows with metal rails and a glazed recessed ground storey (the piloti ground); and the north-west side (w01-317 and w04-317, 2020-09-10, oblique at 53 degrees) where a timber-clad sports hall with a curved roof, steel arch ribs and a glazed ground band meets the bar. The partly hidden lettering on the hall (w04-317) reads only 'orth...' and is not used.",
+  "walls[0] = panels 60 and 12 (S, 68.5 m and 23.5 m, eaves 14.8): the 4-storey front drawn as ribbon windows over a glazed ground with balcony runs on storeys 1-3 (bars). walls[1] = panels 58 and 7 (S, eaves 20.5, ground 14.8): the set-back top floor, one storey of ribbon glazing. walls[2] = panels 29 and 30 (NW, 75.7 m and 36.8 m, eaves 5.9-16.3): the timber hall wall, a glazed ground band under a closed timber storey. Simplified: the white balcony slabs are one slab and rail per storey run, the steel ribs of the hall and the lamp are not modelled, the curved roof is the 3DBAG roof.",
+  "Not drawn: the north front of the bar (panels 14, 31, 82, no panorama within 35 m), the east hall front (panel 15 end) and the south-east wing, which stay blank wall."
+ ]
+}

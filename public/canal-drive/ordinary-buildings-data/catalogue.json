@@ -46429,6 +46429,296 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T01:47:23.080Z"
+    },
+    {
+      "id": "ordinary-0363100012134667",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012134667",
+      "name": "Polderweg 3, Amsterdam-Oost (Watergraafsmeer): 1999 campus building, a four-storey bar with continuous ribbon glazing and white balcony fascias over a recessed glazed ground and a set-back top floor, joined to a timber-clad sports hall with a curved roof and steel ribs",
+      "hash": "3ca548442a174cb31ab760ffeef78db06d01c53077ae0f14a6a133975e2ed0a9",
+      "sha256": "3ca548442a174cb31ab760ffeef78db06d01c53077ae0f14a6a133975e2ed0a9",
+      "bytes": 700128,
+      "triangles": 9472,
+      "materials": 12,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -59.483,
+          0.001,
+          -81.027
+        ],
+        "max": [
+          62.633,
+          23.435,
+          40.273
+        ]
+      },
+      "anchor": [
+        4.9291463,
+        52.3581127
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9284379,
+              52.3578939
+            ],
+            [
+              4.9284632,
+              52.3578993
+            ],
+            [
+              4.9284978,
+              52.3578385
+            ],
+            [
+              4.9284867,
+              52.3578361
+            ],
+            [
+              4.9284941,
+              52.3578232
+            ],
+            [
+              4.9284958,
+              52.3578235
+            ],
+            [
+              4.9285228,
+              52.3577768
+            ],
+            [
+              4.9285329,
+              52.357759
+            ],
+            [
+              4.9294817,
+              52.3579641
+            ],
+            [
+              4.9294815,
+              52.3579644
+            ],
+            [
+              4.9295082,
+              52.35797
+            ],
+            [
+              4.9294735,
+              52.3580304
+            ],
+            [
+              4.9295843,
+              52.3580543
+            ],
+            [
+              4.9296116,
+              52.3580367
+            ],
+            [
+              4.929635,
+              52.3579965
+            ],
+            [
+              4.9299598,
+              52.3580674
+            ],
+            [
+              4.9299494,
+              52.3580852
+            ],
+            [
+              4.9299227,
+              52.358132
+            ],
+            [
+              4.9299245,
+              52.3581324
+            ],
+            [
+              4.9299174,
+              52.3581452
+            ],
+            [
+              4.9299058,
+              52.3581426
+            ],
+            [
+              4.92987,
+              52.3582032
+            ],
+            [
+              4.9298973,
+              52.3582092
+            ],
+            [
+              4.9298899,
+              52.3582218
+            ],
+            [
+              4.9298874,
+              52.3582215
+            ],
+            [
+              4.9298604,
+              52.3582672
+            ],
+            [
+              4.9298509,
+              52.3582852
+            ],
+            [
+              4.9295058,
+              52.3582112
+            ],
+            [
+              4.9293929,
+              52.358283
+            ],
+            [
+              4.9295125,
+              52.3583528
+            ],
+            [
+              4.9295227,
+              52.3583462
+            ],
+            [
+              4.9296418,
+              52.3584158
+            ],
+            [
+              4.9296463,
+              52.3584128
+            ],
+            [
+              4.9300601,
+              52.3586557
+            ],
+            [
+              4.9297655,
+              52.3588439
+            ],
+            [
+              4.9293517,
+              52.358601
+            ],
+            [
+              4.929355,
+              52.3585989
+            ],
+            [
+              4.9285517,
+              52.3581294
+            ],
+            [
+              4.9285123,
+              52.3581079
+            ],
+            [
+              4.928426,
+              52.3580709
+            ],
+            [
+              4.9283793,
+              52.3580557
+            ],
+            [
+              4.9283309,
+              52.3580424
+            ],
+            [
+              4.9282949,
+              52.3580346
+            ],
+            [
+              4.9282943,
+              52.3580342
+            ],
+            [
+              4.9283034,
+              52.3580187
+            ],
+            [
+              4.9283043,
+              52.358019
+            ],
+            [
+              4.9283132,
+              52.3580037
+            ],
+            [
+              4.9282743,
+              52.3579955
+            ],
+            [
+              4.9283267,
+              52.3579041
+            ],
+            [
+              4.9284199,
+              52.3579243
+            ],
+            [
+              4.9284299,
+              52.3579069
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 23.43,
+      "height": 23.43,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-polderweg-3-134667.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012134667"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "polderweg-3-134667",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012134667/w02-161.jpg",
+          "staging/pand-reference-walls/0363100012134667/w07-161.jpg",
+          "staging/pand-reference-walls/0363100012134667/w01-317.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 25b",
+          "ribbon-windows 1st 26b",
+          "ribbon-windows 2st 28b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Polderweg 3 (BAG pand 0363100012134667, built 1999, 136 3DBAG wall surfaces, 70 m long, roof max 23.4 m): a campus building in Watergraafsmeer. Three fronts are photographed: the south front (w02-161 2021-05-28 and w07-161 2019-05-23), a four-storey bar with white concrete balcony fascias, continuous strip windows with metal rails and a glazed recessed ground storey (the piloti ground); and the north-west side (w01-317 and w04-317, 2020-09-10, oblique at 53 degrees) where a timber-clad sports hall with a curved roof, steel arch ribs and a glazed ground band meets the bar. The partly hidden lettering on the hall (w04-317) reads only 'orth...' and is not used.",
+        "walls[0] = panels 60 and 12 (S, 68.5 m and 23.5 m, eaves 14.8): the 4-storey front drawn as ribbon windows over a glazed ground with balcony runs on storeys 1-3 (bars). walls[1] = panels 58 and 7 (S, eaves 20.5, ground 14.8): the set-back top floor, one storey of ribbon glazing. walls[2] = panels 29 and 30 (NW, 75.7 m and 36.8 m, eaves 5.9-16.3): the timber hall wall, a glazed ground band under a closed timber storey. Simplified: the white balcony slabs are one slab and rail per storey run, the steel ribs of the hall and the lamp are not modelled, the curved roof is the 3DBAG roof.",
+        "Not drawn: the north front of the bar (panels 14, 31, 82, no panorama within 35 m), the east hall front (panel 15 end) and the south-east wing, which stay blank wall."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134667",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:13:42.683Z"
     }
   ]
 }
