@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "id": "stadhouderskade-25-233471",
+ "pand": "0363100012233471",
+ "signature": [
+  "park-centraal-balcony-front",
+  "arched-corner-range",
+  "park-centraal-sign"
+ ],
+ "walls": [
+  {
+   "tag": "w01-246",
+   "bearing": 246,
+   "lengthM": 36.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002920_pano_0000_000143",
+   "capturedAt": "2023-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "dark-stone-balcony-range",
+     "kind": "balcony-ironwork",
+     "where": "dark grey stone range with iron balconies in some bays over PC BAGS and POV GALLERY shopfronts",
+     "approxSizeM": [
+      36,
+      17
+     ],
+     "plan": "simplified",
+     "how": "walls[2] plinth-shopfront ground, balconies every third bay on storeys 2-3",
+     "seenIn": "TMX7316010203-002920_pano_0000_000143"
+    }
+   ]
+  },
+  {
+   "tag": "w02-1",
+   "bearing": 1,
+   "lengthM": 31.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_002449",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "park-centraal-balcony-front",
+     "kind": "balcony-ironwork",
+     "where": "bowed seven-storey hotel front with a continuous glass-railed balcony run on every floor over a glazed lobby",
+     "approxSizeM": [
+      27,
+      22
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 7 storeys x 8 bays, glass balcony runs on storeys 1-6, glazed ground; the bow is straight",
+     "seenIn": "TMX7316010203-001675_pano_0000_002449"
+    },
+    {
+     "id": "park-centraal-sign",
+     "kind": "sign",
+     "where": "Park Centraal lettering over the lobby and the oval roof sign",
+     "approxSizeM": [
+      6,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "hotel signage replaced between captures; the roof oval is a separate rooftop structure"
+     },
+     "seenIn": "TMX7316010203-001675_pano_0000_002449"
+    }
+   ]
+  },
+  {
+   "tag": "w03-157",
+   "bearing": 157,
+   "lengthM": 27.5,
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track10_Sphere_00016",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w04-1",
+   "bearing": 1,
+   "lengthM": 20.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002548_pano_0000_000344",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "arched-corner-range",
+     "kind": "window-shape",
+     "where": "brick shopfront ground with MOMO fascias, arched first-floor windows with white dressings and balcony rail, dormer roofline",
+     "approxSizeM": [
+      20,
+      17
+     ],
+     "plan": "simplified",
+     "how": "walls[1] plinth-shopfront ground, round-arched windows on storey 1, cornice; dressings and dormers left to the roof",
+     "seenIn": "TMX7316010203-002548_pano_0000_000344"
+    },
+    {
+     "id": "momo-fascias",
+     "kind": "sign",
+     "where": "MOMO restaurant fascias and awnings",
+     "approxSizeM": [
+      18,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant fascias and awnings"
+     },
+     "seenIn": "TMX7316010203-002548_pano_0000_000344"
+    }
+   ]
+  },
+  {
+   "tag": "w05-68",
+   "bearing": 68,
+   "lengthM": 17.4,
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track22_Sphere_00769",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "cream-corner-house",
+     "kind": "balcony-ironwork",
+     "where": "cream stucco corner house with a curved balcony balustrade",
+     "approxSizeM": [
+      10,
+      12
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the cream corner house belongs to the north-east wall of the pand, not covered by a drawn group"
+     },
+     "seenIn": "b_20241121_0951_Track22_Sphere_00769"
+    }
+   ]
+  },
+  {
+   "tag": "w06-246",
+   "bearing": 246,
+   "lengthM": 17,
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track07_Sphere_00080",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
