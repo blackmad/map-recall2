@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "clercq-nassaukade-corner",
+  "district": "oud-west",
+  "description": "1898 corner house at the Nassaukade end (Nassaukade 152): F's cornice and mansard on a narrow 2-axis front without balconies, dark corner shopfront; the chamfered corner and the Nassaukade side are not on this face",
+  "fit": {
+    "widthM": [
+      4,
+      4.5
+    ],
+    "storeys": [
+      4
+    ]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 2,
+    "cornice": "heavy",
+    "windows": "cross",
+    "windowSurround": "keystone"
+  },
+  "crowns": {
+    "two-dormers": {
+      "gable": "cornice",
+      "roofFront": "mansard",
+      "dormers": 2,
+      "dormerStyle": "pediment"
+    }
+  },
+  "palettes": {
+    "red-brown-brick": {
+      "brick": "#715850",
+      "frame": "white",
+      "door": "black",
+      "stone": "white",
+      "cornice": "white"
+    }
+  },
+  "roof": {
+    "material": "slate"
+  },
+  "rhythm": {
+    "bays": "2 window axes",
+    "windowsPerStorey": "ground: shop | 1: 2 | 2: 2 | 3: 2 | mansard: 2 dormers",
+    "symmetry": "symmetric",
+    "groundFloor": "dark corner shopfront",
+    "signage": "none legible",
+    "roofline": "heavy white cornice continuing F's line; mansard with two small dormers",
+    "photoRows": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "the chamfered corner and the Nassaukade front are not modelled on this face (inferred: one front)"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "clercq-236681",
+      "pands": [
+        "116526"
+      ],
+      "citation": "strip.jpg pand 9"
+    }
+  ]
+}

@@ -29,7 +29,9 @@ import {fileURLToPath} from 'node:url';
 process.env.BLOCK_FACE_SOURCE_PACK ??= '/Users/blackmad/Code/map-recall2-source-data/models';
 
 const {compileBlockFace} = await import('../../src/canalRecall/blockFace/compile.ts');
-const {validateBlockFace, houseIntents} = await import('../../src/canalRecall/blockFace/intent.ts');
+const {validateBlockFace, houseIntents, resolveFaceTypes} = await import('../../src/canalRecall/blockFace/intent.ts');
+const {fileTypeLoader} = await import('../../src/canalRecall/blockFace/typeLibrary.ts');
+const typeLoader = fileTypeLoader();
 const {compileChunk, groupBlockFaces} = await import('../../src/canalRecall/streetChunks/index.ts');
 const {compileBuilding} = await import('../../src/canalRecall/buildingRecipe/compile.ts');
 const {fitIntent} = await import('../../src/canalRecall/buildingRecipe/fit.ts');
@@ -91,7 +93,7 @@ const meanLngLat = (pts: [number, number][]): [number, number] => [pts.reduce((s
 
 async function loadFace(faceId: string) {
   const dir = path.join(FACES_DIR, faceId), discovery = await readJson(path.join(dir, 'discovery.json'));
-  const face = validateBlockFace(await readJson(path.join(dir, 'intent.json')), discovery.members);
+  const face = validateBlockFace(await readJson(path.join(dir, 'intent.json')), discovery.members, typeLoader);
   const facts = new Map<string, any>();
   for (const h of face.houses) facts.set(h.pandId, await readJson(path.join(dir, 'pands', h.pandId, 'facts.json')));
   return {face, facts, dir};
@@ -125,11 +127,14 @@ async function collectEntries(): Promise<{entries: Entry[]; sources: Record<stri
   };
   // Block faces.
   const faceIds = (await fs.readdir(FACES_DIR)).filter(f => PILOT.faces.some(p => f.startsWith(p))).sort();
-  const facePands = new Set<string>(), faceHash = createHash('sha256');
+  const facePands = new Set<string>(), faceHash = createHash('sha256'), libraryTypes = new Map<string, string>();
   for (const faceId of faceIds) {
     const {face, facts} = await loadFace(faceId);
-    faceHash.update(JSON.stringify(face));
-    const intents = houseIntents(face), anchors = face.houses.map(h => centroidLngLat(facts.get(h.pandId)));
+    // Library types (`types: ['id']`) hash by content, so editing a library file invalidates every face that places it.
+    const resolvedTypes = resolveFaceTypes(face, typeLoader);
+    for (const [k, t] of (face.types ?? []).entries()) if (typeof t === 'string') libraryTypes.set(t, JSON.stringify(resolvedTypes[k]));
+    faceHash.update(JSON.stringify(face.types ? {...face, types: resolvedTypes} : face));
+    const intents = houseIntents(face, typeLoader), anchors = face.houses.map(h => centroidLngLat(facts.get(h.pandId)));
     const group = `face:${faceId}`, groupAnchor = meanLngLat(anchors);
     face.houses.forEach((h, i) => {
       facePands.add(h.pandId);
@@ -164,7 +169,8 @@ async function collectEntries(): Promise<{entries: Entry[]; sources: Record<stri
   // Building types.
   if (PILOT.types) {
     const raw = await fs.readFile(`${PUBLIC}/building-types/instances.json`, 'utf8'), list = JSON.parse(raw);
-    sources.types = sha(raw).slice(0, 16);
+    const libraryJson = [...libraryTypes.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([, j]) => j).join('\n');
+    sources.types = sha(raw + libraryJson).slice(0, 16);
     for (const inst of list) add({key: inst.pand, recipe: {kind: 'type', intent: `type:${inst.unit}`, mid: plainMid(inst.pand, inst.anchor, /brick/.test(inst.variant) ? 'brick' : null), covers: [full(inst.pand)]}, anchor: inst.anchor, group: `type:${inst.pand}`});
   }
   // Landmarks / installed models as kind glb.
