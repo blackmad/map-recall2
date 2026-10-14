@@ -1,5 +1,62 @@
 # Canal Recall — what is built
 
+## Kinkerstraat type library: seven Oud-West types, two proof faces (2026-10-14)
+
+Lane `lane/kinkerstraat-types-20261014` (plan Part 2 step 3). Every
+strip clustered with `detect-house-types.ts` and the new
+`scripts/research/cluster-street-types.ts` (362 modules, 43 clusters
+across the street, per-face tables of pand → cluster → type).
+Seven types under `scripts/block-face/types/oud-west/kinker-*.json`,
+counts over the 217 survey pands (hand-cited in evidence / assigned to
+the nearest exemplar): 1890 plain brick 53 (22), 1890 brick-arched 51
+(19), 1985 infill 38 (18), 1902 balcony-axis 36 (13), 1895 painted-band
+15 (8), 1886 neo-renaissance 11 (9), 1900 stucco front 3 (3), no photo
+10. Two expectations of the plan were wrong on the strips: stucco fronts
+are rare (three), and there are no eared surrounds; the white dressing
+here is blocked heads (springers and keystone), keystone-only heads and
+continuous courses. Palettes are measured strip medians from the new
+`scripts/block-face/palette-from-strip.ts` +
+`blockFace/stripPalette.ts` (wall, accent, frame, band, cornice, fascia
+per pand; band heights read from the pier columns so curtains and
+frames are not counted; the 18-4 row measures a sill course and a
+springing course on every upper storey at 5.1, 7.15, 7.95, 9.97, 10.8,
+12.85 m). The types use the canal-windows keys (`t-window`,
+`windowHead.archRing` blocks + keystone, `windowHeights`,
+`storeyHeights`, `frieze`, `sill`, `speklagen`); two keys the lane had
+first added were dropped for them. New components, optional, tested,
+byte-identical when absent (all 22 non-Kinkerstraat face chunks sha256
+identical; fit-golden 148 identical): `windowHead.tympanum: stone|band`
+(glass stops square at the springing line, the arch segment above is a
+fill 2 cm proud, ring blocks and keystone stay at the crown) and
+`dormerStyle: "box"` (flat-topped dormer with cheeks and back in the
+wall material, 0.75 m high, 5 cm behind the facade; the infill's brick
+roof boxes). Proof faces compiled, not installed, sheets in
+`docs/images/kinkerstraat/`: **kinker-109-161** (13 infill pands,
+17,723 tris; storey lines, axes, the wide middle-storey window, the flat
+top with roof boxes and 11 of 13 wall colours right; wrong: a flush
+double-height shop where the photo has a recessed arcade with a gallery,
+missing stair slots and the drum corner over 125, glazed roof-box
+fronts; second pass fixed a one-storey offset and white pointed dormers
+that read as gables) and **kinker-2-30** (16 pands, 28,695 tris; all 16
+wall colours within tolerance, storeys, axes, T-windows, blocked arches
+with keystones, cornice line, dormer rhythm and shop colours right;
+wrong: the white sill and impost courses are missing, the frieze is a
+plain slab, no dormer-cheek scrolls, 22-24's round shell dormers drawn
+as pediments, the corner block's blind white axes glazed). The courses
+wait on the Nassaukade 506 lane's `bands: "painted"`; when it lands the
+brick-arched body gets `"bands": "painted", "bandHeights": {"sill":
+0.04, "head": 0.05}` and the black-painted palette switches to
+`wallMaterial: "painted-brick"` (spelled out in
+`docs/kinkerstraat-types-20261014.md`). Kit gaps listed there: painted
+courses and the dotted impost-block variant, recessed arcade with a
+first-floor gallery, set-back cream top storey and drum corner, stair
+slots, sunburst voussoirs and speklagen stepping around arches, round
+shell dormers and scrolled cheeks, frieze consoles, blind painted axes,
+dark roof-box fronts, wall anchors, narrow centre French windows (1902
+type), brick flat-arch lintels. Checks: lint, block-face 69/69,
+building-recipes 144/144 (new `kinkerstraat.test.ts`).
+
+
 ## Multi-view tools: TRELLIS.2 with four photos gives the statue a back (2026-10-14, user)
 
 Lane `lane/multiview-tools-20261014`, from the user's questions ("tripoSR,

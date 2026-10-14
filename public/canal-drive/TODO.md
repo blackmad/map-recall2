@@ -1384,8 +1384,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `blockFace/typeLibrary.ts`); Kinkerstraat survey DONE (HISTORY "Kinkerstraat surveyed": 217 pands,
   28 faces with strips; large/bespoke candidates listed; `kinker-240-240`
   no sightline; the two halls need another capture date); Oud-West type
-  library (1890 brick-arched, 1900 stucco front, 1985 infill) with palettes
-  from strip medians; face lanes of ~10 pands, never `compile.ts --install`;
+  library DONE (HISTORY "Kinkerstraat type library": seven types over 207
+  pands, measured palettes, two proof faces compiled; the brick-arched
+  type gets its white courses when the Nassaukade 506 lane's `bands:
+  "painted"` lands); face lanes for the remaining 26 faces at ~10 pands
+  each, never `compile.ts --install`; the kinker-109-161 arcade ground
+  and the 2-30 shell dormers / frieze consoles are kit gaps to add in those
+  lanes;
   review lane with the camera-matched row, likeness and a verdict per pand,
   ride shots at five points; Amsterdam School components DONE (HISTORY
   "Amsterdam School components"; plus glass-block band, lisenes, window
