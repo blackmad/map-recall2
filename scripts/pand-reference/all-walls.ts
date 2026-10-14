@@ -2,6 +2,7 @@
  * One street-level reference per exposed wall of a pand (the stock run.ts keeps only the front).
  *
  *   npx tsx scripts/pand-reference/all-walls.ts --pand=0363100012186086 [--min-len=14] [--max=8] [--out=staging/pand-reference-walls] [--archive]
+ *     [--date=2019,2022-05] [--exclude-date=2024-12-11] [--exclude-pano=<id>,...] [--segment=30] [--walls=1,4] [--suffix=d19] [--min-dist=5]
  *
  * For each exposed (non-party) wall >= min-len metres: the best panorama within 35 m (same ranking as run.ts), a
  * rectified straight-on crop and an aimed thumbnail, written to <out>/<pand>/w<NN>-<bearing>.{jpg,thumb.jpg} and
@@ -13,6 +14,12 @@
  * measurement needs to place it: wall endpoints and outward normal (RD), ppm, wall height, ground (baseZ), camera RD
  * position and heading, foliage / washed-out / missing fractions and the sha256 of the jpg. The crop's x runs from
  * `wallRD.a` (the viewer's left, facing the wall from outside) to `wallRD.b`; y runs down from `baseZ + wallHeightM`.
+ *
+ * Another capture day or a long wall (panoPick.ts): `--date=` keeps only panoramas whose timestamp starts with one of
+ * the prefixes, `--exclude-date=` / `--exclude-pano=` drop them; `--segment=<m>` cuts walls longer than that into equal
+ * pieces with a panorama each (tags `w01-67s1`, `s2`, ...); `--walls=` limits the run to those wall numbers (the NN of
+ * the tag); `--suffix=` appends to every tag; `--min-dist=` lets a camera stand nearer than 5 m (a narrow street). Runs with any of `--segment`, `--walls`, `--suffix` merge into the
+ * existing walls.json (rows of the same tag replaced, the rest kept); without them the output is as before.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -21,6 +28,7 @@ import sharp from 'sharp';
 import { findPands, neighbourhood, normId, rdToLngLat } from './core.ts';
 import { exposedWalls, listPanos, rankPanos } from './select.ts';
 import { loadPano, rectifyWall, aimedThumbnail } from './rectify.ts';
+import { filterPanos, mergeWallRows, parsePanoFilter, segmentTag, segmentWall } from '../../src/canalRecall/buildingRecipe/panoPick.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const archive = process.argv.includes('--archive');
@@ -33,13 +41,21 @@ const fp = (await findPands([pand])).get(pand);
 if (!fp) throw new Error(`pand not in building tiles: ${pand}`);
 const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
 const walls = exposedWalls(fp, await neighbourhood(centre)).filter(w => w.len >= minLen).sort((a, b) => b.len - a.len).slice(0, max);
-const rows: any[] = [];
+const panoFilter = parsePanoFilter(process.argv), segM = Number(arg('segment', '0')), suffix = arg('suffix');
+const minDist = Number(arg('min-dist', '5'));
+const onlyWalls = arg('walls').split(',').filter(Boolean).map(Number);
+const merging = segM > 0 || onlyWalls.length > 0 || suffix !== '';
+const rows: any[] = [], rerun: string[] = [];
 const r2 = (v: number) => Math.round(v * 100) / 100, r4 = (v: number) => Math.round(v * 1e4) / 1e4;
 let i = 0;
-for (const w of walls) {
-  const bearing = Math.round((Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360);
-  const tag = `w${String(++i).padStart(2, '0')}-${bearing}`;
-  const ranked = rankPanos(w, await listPanos(w.mid));
+for (const whole of walls) {
+  const bearing = Math.round((Math.atan2(whole.nx, whole.ny) * 180 / Math.PI + 360) % 360);
+  const wallTag = `w${String(++i).padStart(2, '0')}-${bearing}`;
+  if (onlyWalls.length && !onlyWalls.includes(i)) continue;
+  rerun.push(wallTag);
+  for (const w of segmentWall(whole, segM)) {
+  const tag = segmentTag(wallTag, w.segment, suffix);
+  const ranked = filterPanos(rankPanos(w, await listPanos(w.mid), minDist), panoFilter);
   const [lng, lat] = rdToLngLat(w.mid);
   const base: any = { bearing, lengthM: Math.round(w.len * 10) / 10, centre: [lng, lat], height: fp.height, candidates: ranked.length,
     wallRD: { a: [r2(w.a.x), r2(w.a.y)], b: [r2(w.b.x), r2(w.b.y)], normal: [r4(w.nx), r4(w.ny)] } };
@@ -70,5 +86,7 @@ for (const w of walls) {
     rows.push(row);
     console.log(JSON.stringify(row));
   }
+  }
 }
-await fs.writeFile(path.join(out, 'walls.json'), JSON.stringify({ pand, licence: 'Gemeente Amsterdam panorama, CC BY 4.0', ...(archive ? { schema: 'pand-reference-walls/v2', minLenM: minLen, max } : {}), walls: rows }, null, 1));
+const previous = merging ? await fs.readFile(path.join(out, 'walls.json'), 'utf8').then(t => JSON.parse(t).walls as any[], () => []) : [];
+await fs.writeFile(path.join(out, 'walls.json'), JSON.stringify({ pand, licence: 'Gemeente Amsterdam panorama, CC BY 4.0', ...(archive ? { schema: 'pand-reference-walls/v2', minLenM: minLen, max } : {}), walls: merging ? mergeWallRows(previous, rows, rerun, suffix) : rows }, null, 1));
