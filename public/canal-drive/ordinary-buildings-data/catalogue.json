@@ -44782,9 +44782,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137448",
       "name": "Stadhouderskade 111 / Tweede Jan van der Heijdenstraat, Amsterdam-Zuid (De Pijp): 1872 block of dark painted brick shopfront rows, a red-brick factory-style wing with cream window bands and a 1950s balcony block round a supermarket yard",
-      "hash": "2915b7f0325b54d79c29750deb93fa27348566a4996383c8329ab090bc1144ab",
-      "sha256": "2915b7f0325b54d79c29750deb93fa27348566a4996383c8329ab090bc1144ab",
-      "bytes": 471560,
+      "hash": "b3e490cb9a5ef040ca9f9dc6b0aa1974819387e448522b1d3bc91031ac34da93",
+      "sha256": "b3e490cb9a5ef040ca9f9dc6b0aa1974819387e448522b1d3bc91031ac34da93",
+      "bytes": 471496,
       "triangles": 6008,
       "materials": 12,
       "textures": 0,
@@ -44950,7 +44950,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137448",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:41:15.688Z"
+      "updatedAt": "2026-10-14T03:13:33.946Z"
     },
     {
       "id": "ordinary-0363100012240319",
