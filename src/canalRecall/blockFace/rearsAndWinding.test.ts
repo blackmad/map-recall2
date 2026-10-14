@@ -145,3 +145,13 @@ test('Bilderdijkstraat 157757|164549: a 5 cm survey front step is snapped flush;
   const mc = load('marnix-c'), rc = await compileBlockFace(mc.face, mc.facts);
   assert.ok(!rc.frontSnaps.some(x => Math.abs(x.stepBeforeM) > 0.1));
 });
+
+test('Kinkerstraat 68-70|64-66: a pand wrapping behind its neighbour is not read as street details overhanging the party line', async () => {
+  // 236325 (64-66) shares 161359's rear edge as well as the party wall; its footprint centroid lies left of the party
+  // line. The overhang gate measured every street detail of both fronts as reaching past the line (8.57 / 7.63 m).
+  const {face, facts, strip} = load('kinker-56-84');
+  const r = await compileBlockFace(face, facts, undefined, {strip});
+  const it = r.interference.find(i => i.left.endsWith('161359') && i.right.endsWith('236325'))!;
+  assert.deepEqual(it.detailOverhangM, {left: 0, right: 0});
+  assert.deepEqual(r.interference.filter(i => !i.pass), []);
+});

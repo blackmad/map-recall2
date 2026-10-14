@@ -1,0 +1,506 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-56-84",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/kinker-56-84/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 84-56 (even side, Bilderdijkstraat to Da Costakade), 2024-11-29 low-sun strip. 76-84 is a 1979 infill block (kinker-1985-infill, one front with its own 13-axis grid); 56-74 are the 1893 Neo-Renaissance speklagen row (kinker-1886-neo-renaissance, 2 axes per module, step/pointed gables and two gabled dormers). Shops read on the pand-reference zoom crops (same day)."
+ },
+ "types": [
+  "kinker-1985-infill",
+  "kinker-1886-neo-renaissance"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012152566",
+   "slug": "kinker-152566",
+   "address": "Kinkerstraat 76-84",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "measuredPalette": {
+     "brick": "#635e52",
+     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #635e52 on the 2024-11-29 strip"
+    },
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      4,
+      13,
+      13,
+      13
+     ],
+     "bayWidths": [
+      1,
+      1.8,
+      1,
+      1,
+      1,
+      1,
+      1.8,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "windows": "plain",
+     "storeyHeights": [
+      1.4,
+      1,
+      1,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#3b3a36",
+      "fascia": true,
+      "name": "Xenos",
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2f3433"
+      },
+      "shopShare": 0.7,
+      "glazing": "split",
+      "displayWindows": 4,
+      "stallriser": "low",
+      "fasciaColour": "#e6e6dc",
+      "evidence": "strip.jpg 2024-11-29 + pand-reference 152566 front.jpg: brick piers, a white fascia panel over each display window, sale posters (-30%, ALLES MOET WEG) in the glass; no name lettered; OSM node 11381128459 shop=houseware; a small shop and a dark garage door at 80-84 on the right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Xenos",
+    "category": "shop=houseware",
+    "osm": {
+     "type": "node",
+     "id": 11381128459,
+     "name": "Xenos"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "no lettering legible, only sale posters; BAG unit is Bilderdijkstraat 169 (541 m2)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 1979 brown brick block, ground shop, 3 storeys of narrow and wide plain windows (13 per storey) under a flat parapet at ~14.6 m (strip row 260), two raised blocks to ~17.2 m with a fourth storey of windows",
+    "photoRows": [
+     5,
+     13,
+     13,
+     13
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "two raised blocks standing on the roof with a fourth storey of windows (5 lights): drawn as the 3DBAG roof mass without windows",
+     "white concrete lintel strips over the storey 1-3 windows and white spandrel panels under the right half windows are not drawn",
+     "irregular narrow/wide window pattern differs per storey; the model repeats storey 1 on every storey"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158903",
+   "slug": "kinker-158903",
+   "address": "Kinkerstraat 72-74",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "crown": "point-gable",
+    "measuredPalette": {
+     "brick": "#615e51",
+     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #615e51 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "name": "oliver green",
+      "sign": {
+       "text": "oliver green",
+       "textColour": "white",
+       "mount": "glazing"
+      },
+      "entrance": "centre",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "black"
+      },
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "evidence": "pand-reference 158903 front.jpg (2024-11-29): white timber pui, black doors both sides, glazed centre door, \"oliver green\" in white on the transom glass; no OSM node"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "oliver green",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 2 axes, speklagen, sunburst heads on storey 2, round heads on storey 3, tall pointed gable with two attic lights",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "two attic lights in the pointed gable (the crown draws one)",
+     "sunburst voussoirs drawn as blocked arches"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161359",
+   "slug": "kinker-161359",
+   "address": "Kinkerstraat 68-70",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "measuredPalette": {
+     "brick": "#636257",
+     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #636257 on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "modules": [
+     {
+      "crown": "step-gable",
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 3 left module (70): white pui behind the tram shelter, a \"C\" logo in each transom; name not legible"
+       }
+      }
+     },
+     {
+      "crown": "point-gable",
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 3 right module (68): white pui, same \"C\" transom logos"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "white pui behind the Bilderdijkstraat tram shelter, \"C\" logos on the transoms, no legible name, no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): two 2-axis modules, sunburst heads on storey 2, a step gable (70) and a pointed gable with two lights (68)",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     3
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "sunburst voussoirs drawn as blocked arches",
+     "two attic lights in the pointed gable of 68 (the crown draws one)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236325",
+   "slug": "kinker-236325",
+   "address": "Kinkerstraat 64-66",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "measuredPalette": {
+     "brick": "#69695b",
+     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #69695b on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "modules": [
+     {
+      "crown": "step-gable",
+      "ground": {
+       "shopfront": {
+        "colour": "#2b2d2a",
+        "fascia": false,
+        "name": "Ai Asian Food",
+        "sign": {
+         "text": "Ai Asian Food",
+         "textColour": "white",
+         "mount": "glazing"
+        },
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "pand-reference 236325 front.jpg: dark sign panel in the glass \"AI ASIAN FOOD - sushi, take away, delivery\"; no OSM node"
+       }
+      }
+     },
+     {
+      "crown": "step-gable",
+      "ground": {
+       "groundFront": {
+        "kind": "pui",
+        "bays": [
+         "door",
+         "glazed-door",
+         "door"
+        ],
+        "colour": "white",
+        "evidence": "strip.jpg pand 4 right module (64): white pui with two black house doors and a glazed door between"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Ai Asian Food",
+    "category": "amenity=restaurant",
+    "bag": [
+     "industriefunctie",
+     "woonfunctie",
+     "winkelfunctie",
+     "overige gebruiksfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "sushi take-away read on the glass; the right module (64) is house doors"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): two 2-axis modules with speklagen; round-headed top storey with white tympana; a small step gable (66) and a tall step gable (64)",
+    "photoRows": [
+     3,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "the step gable of 66 is a small two-step gable about 2.5 m tall; the model draws the type step gable (about 4 m) on both modules"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236441",
+   "slug": "kinker-236441",
+   "address": "Kinkerstraat 56-62",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "measuredPalette": {
+     "brick": "#6b695b",
+     "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #6b695b on the 2024-11-29 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "modules": [
+     {
+      "share": 0.205,
+      "crown": "none",
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "name": "GO NKD",
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "awning": {
+         "style": "fabric-straight",
+         "colour": "#3a3b3a"
+        },
+        "evidence": "pand-reference 236441 front.jpg: dark awning lettered \"Wax - Brow - Face Bar\" with GO NKD logos (62); OSM node 13200728924 shop=beauty"
+       }
+      }
+     },
+     {
+      "share": 0.21,
+      "crown": "none",
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "entrance": "none",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "awning": {
+         "style": "fabric-straight",
+         "colour": "#3a3b3a"
+        },
+        "evidence": "60: second window of the waxing bar under the same awning, black house door right"
+       }
+      }
+     },
+     {
+      "share": 0.235,
+      "crown": "step-gable",
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": false,
+        "name": "Teahouse",
+        "sign": {
+         "text": "Teahouse",
+         "textColour": "#3cbf3c",
+         "mount": "glazing"
+        },
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "58: green \"Teahouse\" and \"Tea to go\" lettering on the glass; OSM node 11030461568 shop=tea"
+       }
+      }
+     },
+     {
+      "share": 0.35,
+      "crown": "point-gable",
+      "ground": {
+       "shopfront": {
+        "colour": "white",
+        "fascia": true,
+        "name": "OTEMBA - ramen",
+        "sign": {
+         "text": "OTEMBA RAMEN",
+         "textColour": "#e0d8b8",
+         "mount": "fascia",
+         "background": "#2f302e"
+        },
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "black"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "56: dark fascia lettered \"OTEMBA RAMEN\" twice, GYOZA poster; OSM node 4149464500 amenity=restaurant"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "GO NKD",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 13200728924,
+     "name": "GO NKD"
+    },
+    "bag": [
+     "overige gebruiksfunctie",
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "four modules: 62-60 GO NKD (waxing, lettered awning), 58 Teahouse (OSM 11030461568, lettered), 56 OTEMBA - ramen (OSM 4149464500, lettered fascia)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): four 2-axis modules; 62 and 60 under gabled dormers, 58 a step gable, 56 a pointed gable; speklagen, sunburst and fan heads",
+    "photoRows": [
+     6,
+     8,
+     8,
+     8,
+     4
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "62 and 60 carry a gabled stone dormer each behind the cornice; the type has no dormer crown, so they are left off (cornice only)",
+     "sunburst voussoirs drawn as blocked arches",
+     "the corner bay of 56 round Da Costakade is not on the strip"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "152566: two raised blocks standing on the roof with a fourth storey of windows (5 lights): drawn as the 3DBAG roof mass without windows",
+  "152566: white concrete lintel strips over the storey 1-3 windows and white spandrel panels under the right half windows are not drawn",
+  "152566: irregular narrow/wide window pattern differs per storey; the model repeats storey 1 on every storey",
+  "158903: two attic lights in the pointed gable (the crown draws one)",
+  "158903: sunburst voussoirs drawn as blocked arches",
+  "161359: sunburst voussoirs drawn as blocked arches",
+  "161359: two attic lights in the pointed gable of 68 (the crown draws one)",
+  "236325: the step gable of 66 is a small two-step gable about 2.5 m tall; the model draws the type step gable (about 4 m) on both modules",
+  "236441: 62 and 60 carry a gabled stone dormer each behind the cornice; the type has no dormer crown, so they are left off (cornice only)",
+  "236441: sunburst voussoirs drawn as blocked arches",
+  "236441: the corner bay of 56 round Da Costakade is not on the strip",
+  "152566: the 3DBAG roof over the flat 1979 block reads as a hipped slate roof with one brick box; the photo has a flat parapet with sky above and two raised brick blocks (a recipe roof was tried on pass 2 and drew a 3 m slate attic over the whole width, worse)"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ }
+}
