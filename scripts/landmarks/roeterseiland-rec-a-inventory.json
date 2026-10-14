@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": 1,
+  "id": "roeterseiland-rec-a",
+  "pand": "0363100012185420",
+  "brief": "scripts/landmarks/roeterseiland-rec-a-brief.md",
+  "signature": [
+    "bridge-passage-soffit",
+    "law-school-tower",
+    "city-room-glazing",
+    "podium-curtain-wall"
+  ],
+  "walls": [
+    {
+      "tag": "w01-280",
+      "bearing": 280,
+      "lengthM": 65.2,
+      "centre": [
+        4.9110024,
+        52.363625
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001681_pano_0000_003275",
+      "capturedAt": "2020-04-29",
+      "checked": true,
+      "items": [
+        {
+          "id": "west-steel-window-grid",
+          "kind": "window-shape",
+          "where": "four storeys of large steel-framed multi-light windows on Roetersstraat, 3.6 m bays",
+          "approxSizeM": [
+            64,
+            15
+          ],
+          "plan": "modelled",
+          "how": "flush window sheets with two mullions and a transom per bay (roeterseiland-builder flush style west-beige), 4 storeys of 3.8 m",
+          "seenIn": "TMX7316010203-001681_pano_0000_003275"
+        },
+        {
+          "id": "west-ground-shopfronts",
+          "kind": "window-shape",
+          "where": "ground storey: shop-front glazing, entrances and a bike row along the pavement",
+          "approxSizeM": [
+            64,
+            4
+          ],
+          "plan": "simplified",
+          "how": "ground storey carries the same window sheets as the upper storeys; no shop fascias or entrances drawn",
+          "seenIn": "TMX7316010203-001681_pano_0000_003275"
+        },
+        {
+          "id": "west-curved-eave",
+          "kind": "other",
+          "where": "rounded corner and shallow overhanging eave line at the top of the block",
+          "approxSizeM": [
+            64,
+            1
+          ],
+          "plan": "simplified",
+          "how": "flat 3DBAG roof edge, no eave overhang",
+          "seenIn": "TMX7316010203-001681_pano_0000_003275"
+        }
+      ]
+    },
+    {
+      "tag": "w02-253",
+      "bearing": 253,
+      "lengthM": 57.3,
+      "centre": [
+        4.9119465,
+        52.3632283
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-000354_pano_0002_000218",
+      "capturedAt": "2017-07-06",
+      "checked": true,
+      "items": [
+        {
+          "id": "bridge-passage-soffit",
+          "kind": "other",
+          "where": "the 38 m wide, 15.2 m high canal passage under the bridge block with its dark mirrored soffit and glazed channel walls",
+          "approxSizeM": [
+            38,
+            15.2
+          ],
+          "plan": "modelled",
+          "how": "roeterseiland-void.ts: shell clipped to the soffit, soffit quad, two glazed channel walls with 1.2 m mullion boxes",
+          "seenIn": "TMX7316010203-000354_pano_0002_000218",
+          "sheetBox": [
+            0.01,
+            0.4,
+            0.69,
+            0.66
+          ]
+        },
+        {
+          "id": "city-room-glazing",
+          "kind": "window-shape",
+          "where": "two storeys of glass curtain wall with a transom over the passage",
+          "approxSizeM": [
+            38,
+            7.5
+          ],
+          "plan": "modelled",
+          "how": "glass sheet per 1.83 m bay with closed-box mullion/transom grid on the kit sheet layers (drawCurtainGrid)",
+          "seenIn": "TMX7316010203-000354_pano_0002_000218",
+          "sheetBox": [
+            0,
+            0.15,
+            0.7,
+            0.4
+          ]
+        },
+        {
+          "id": "bridge-upper-window-grid",
+          "kind": "window-shape",
+          "where": "seven storeys of tall narrow windows in dark metal-brick above the city room",
+          "approxSizeM": [
+            38,
+            22
+          ],
+          "plan": "modelled",
+          "how": "flush frame+glass sheets at 1.83 m pitch, storey 3.76 m (flush style bridge)",
+          "seenIn": "TMX7316010203-000354_pano_0002_000218",
+          "sheetBox": [
+            0,
+            0,
+            1,
+            0.14
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "w03-163",
+      "bearing": 163,
+      "lengthM": 55.6,
+      "centre": [
+        4.9127288,
+        52.3636423
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_000883",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [],
+      "note": "wall of the neighbouring 1932 brick wing (pand 0363100012253754, large recipe installed), inside the brief ring but outside the 3DBAG shell of this pand"
+    },
+    {
+      "tag": "w04-343",
+      "bearing": 343,
+      "lengthM": 51.2,
+      "centre": [
+        4.9113473,
+        52.3630109
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_000894",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [
+        {
+          "id": "law-school-tower",
+          "kind": "tower",
+          "where": "the dark banded tower block over the podium: seven ribbon storeys, set back on the west and north",
+          "approxSizeM": [
+            35,
+            31
+          ],
+          "plan": "modelled",
+          "how": "roeterseiland-builder tower hook: 3.45 m ribbon windows with two mullions and a clerestory strip per 4.45 m storey",
+          "seenIn": "TMX7316010203-001975_pano_0000_000894",
+          "sheetBox": [
+            0.17,
+            0,
+            0.68,
+            0.55
+          ]
+        },
+        {
+          "id": "podium-curtain-wall",
+          "kind": "window-shape",
+          "where": "three storeys of glass curtain wall with 1.8 m glass fins round the tower base",
+          "approxSizeM": [
+            51,
+            12.2
+          ],
+          "plan": "modelled",
+          "how": "layered-kit curtain-wall group: glass skin with mullion/transom boxes on the sheet layers",
+          "seenIn": "TMX7316010203-001975_pano_0000_000894",
+          "sheetBox": [
+            0,
+            0.55,
+            1,
+            0.95
+          ]
+        },
+        {
+          "id": "law-school-entrance-canopy",
+          "kind": "canopy",
+          "where": "staff entrance with a flat canopy right of centre of the north front",
+          "approxSizeM": [
+            6,
+            3.5
+          ],
+          "plan": "modelled",
+          "how": "kit recessed entrance and canopy on the podium panel (group entrance)",
+          "seenIn": "TMX7316010203-001975_pano_0000_000894",
+          "sheetBox": [
+            0.57,
+            0.8,
+            0.72,
+            0.92
+          ]
+        },
+        {
+          "id": "law-school-lettering",
+          "kind": "lettering",
+          "where": "AMSTERDAM LAW SCHOOL in serif capitals on the top row of the glass, right end of the podium",
+          "approxSizeM": [
+            9,
+            0.5
+          ],
+          "plan": "modelled",
+          "how": "stroke-font lettering on the podium glass (drawLettering), sans form of the serif original",
+          "seenIn": "TMX7316010203-001975_pano_0000_000894",
+          "sheetBox": [
+            0.8,
+            0.54,
+            1,
+            0.6
+          ]
+        },
+        {
+          "id": "podium-diamond-panels",
+          "kind": "other",
+          "where": "perforated diamond-pattern opaque panels beside the entrance at ground level",
+          "approxSizeM": [
+            4,
+            2
+          ],
+          "plan": "simplified",
+          "how": "plain glazing; the panels are 2 % of the front",
+          "seenIn": "TMX7316010203-001975_pano_0000_000894"
+        }
+      ]
+    },
+    {
+      "tag": "w05-30",
+      "bearing": 30,
+      "lengthM": 50.8,
+      "centre": [
+        4.9128288,
+        52.3642004
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_001010",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [],
+      "note": "wall of the neighbouring 1932 brick wing (pand 0363100012253754)"
+    },
+    {
+      "tag": "w06-73",
+      "bearing": 73,
+      "lengthM": 47.1,
+      "centre": [
+        4.9121552,
+        52.3633814
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_000886",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [
+        {
+          "id": "passage-east-front",
+          "kind": "other",
+          "where": "east front of the passage: soffit 15 m over the water, glazed channel walls either side, stone steps and a steel footbridge in front",
+          "approxSizeM": [
+            38,
+            15.2
+          ],
+          "plan": "modelled",
+          "how": "same passage geometry as the west front; the footbridge is a separate BGT object and not part of this pand",
+          "seenIn": "TMX7316010203-001975_pano_0000_000886"
+        },
+        {
+          "id": "city-room-glazing-east",
+          "kind": "window-shape",
+          "where": "city room glazing with two rows of panes over the passage",
+          "approxSizeM": [
+            38,
+            7.5
+          ],
+          "plan": "modelled",
+          "how": "as on the west front",
+          "seenIn": "TMX7316010203-001975_pano_0000_000886"
+        }
+      ]
+    },
+    {
+      "tag": "w07-343",
+      "bearing": 343,
+      "lengthM": 46.3,
+      "centre": [
+        4.9115152,
+        52.3642103
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-000354_pano_0002_000110",
+      "capturedAt": "2017-07-06",
+      "checked": true,
+      "items": [
+        {
+          "id": "north-grey-windows",
+          "kind": "window-shape",
+          "where": "four storeys of paired windows with teal frames in grey cladding",
+          "approxSizeM": [
+            46,
+            14
+          ],
+          "plan": "modelled",
+          "how": "flush window sheets with a mullion, teal frame colour (flush style north-grey)",
+          "seenIn": "TMX7316010203-000354_pano_0002_000110"
+        }
+      ]
+    },
+    {
+      "tag": "w08-253",
+      "bearing": 253,
+      "lengthM": 32.5,
+      "centre": [
+        4.9112089,
+        52.3625204
+      ],
+      "evidence": "photo",
+      "panoId": "b_20241210_1246_Track30_Sphere_00077",
+      "capturedAt": "2024-12-10",
+      "checked": true,
+      "items": [
+        {
+          "id": "podium-west-curve",
+          "kind": "window-shape",
+          "where": "curved glass front with alternating glass and perforated opaque fins, 1.8 m pitch",
+          "approxSizeM": [
+            32.5,
+            12
+          ],
+          "plan": "modelled",
+          "how": "curtain-wall group on the faceted 3DBAG curve",
+          "seenIn": "b_20241210_1246_Track30_Sphere_00077"
+        },
+        {
+          "id": "uva-talen-lettering",
+          "kind": "lettering",
+          "where": "UvA Talen in orange on the ground-storey glazing at the right end",
+          "approxSizeM": [
+            5.2,
+            0.8
+          ],
+          "plan": "modelled",
+          "how": "stroke-font lettering on panel 465 (addSignatureItems)",
+          "seenIn": "b_20241210_1246_Track30_Sphere_00077"
+        },
+        {
+          "id": "de-roeter-logos",
+          "kind": "sign",
+          "where": "round De Roeter cafe logos on the ground glazing",
+          "approxSizeM": [
+            1.2,
+            1.2
+          ],
+          "plan": "skipped",
+          "seenIn": "b_20241210_1246_Track30_Sphere_00077",
+          "skip": {
+            "reason": "temporary",
+            "note": "tenant branding that changes with the lease"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "w09-73",
+      "bearing": 73,
+      "lengthM": 32.4,
+      "centre": [
+        4.9125561,
+        52.3630939
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001908_pano_0000_004246",
+      "capturedAt": "2020-09-07",
+      "checked": true,
+      "items": [
+        {
+          "id": "se-wing-raked-windows",
+          "kind": "window-shape",
+          "where": "narrow windows with raked (slanted) brick reveals in a long-format dark red-brown brick wall",
+          "approxSizeM": [
+            32,
+            8.4
+          ],
+          "plan": "simplified",
+          "how": "recessed narrow windows with square reveals at 3.1 m pitch; the raked soldier courses are not drawn",
+          "seenIn": "TMX7316010203-001908_pano_0000_004246"
+        }
+      ]
+    },
+    {
+      "tag": "w10-167",
+      "bearing": 167,
+      "lengthM": 27.6,
+      "centre": [
+        4.9114602,
+        52.363415
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_000892",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [
+        {
+          "id": "west-drum-ribbons",
+          "kind": "window-shape",
+          "where": "rounded beige corner drum with two ribbon-window strips and small square windows",
+          "approxSizeM": [
+            27.6,
+            15
+          ],
+          "plan": "simplified",
+          "how": "window sheets on the faceted drum, four equal storeys instead of the two ribbons",
+          "seenIn": "TMX7316010203-001975_pano_0000_000892"
+        }
+      ]
+    },
+    {
+      "tag": "w11-300",
+      "bearing": 300,
+      "lengthM": 25,
+      "centre": [
+        4.9122935,
+        52.3640885
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w12-253",
+      "bearing": 253,
+      "lengthM": 25,
+      "centre": [
+        4.9122481,
+        52.3638211
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w13-343",
+      "bearing": 343,
+      "lengthM": 21.9,
+      "centre": [
+        4.9127817,
+        52.3629852
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w14-343",
+      "bearing": 343,
+      "lengthM": 20.8,
+      "centre": [
+        4.9120915,
+        52.3643207
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_001003",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [],
+      "note": "wall of the neighbouring 1932 brick wing (pand 0363100012253754)"
+    },
+    {
+      "tag": "w15-343",
+      "bearing": 343,
+      "lengthM": 20.6,
+      "centre": [
+        4.9119294,
+        52.3629547
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002047_pano_0000_001463",
+      "capturedAt": "2021-03-18",
+      "checked": true,
+      "items": [
+        {
+          "id": "entrance-columns",
+          "kind": "colonnade",
+          "where": "two slender round white columns, 11.5 m apart, under the cantilever of the bridge block in front of the glass entrance hall",
+          "approxSizeM": [
+            11.5,
+            9.1
+          ],
+          "plan": "modelled",
+          "how": "two 0.4 m cylinders 9.1 m tall (addSignatureItems)",
+          "seenIn": "TMX7316010203-002047_pano_0000_001463"
+        },
+        {
+          "id": "entrance-hall-glazing",
+          "kind": "window-shape",
+          "where": "tall glass entrance hall with transom bars and door pairs",
+          "approxSizeM": [
+            20,
+            9
+          ],
+          "plan": "simplified",
+          "how": "plain 3DBAG wall at the hall back; the hall glazing is not cut",
+          "seenIn": "TMX7316010203-002047_pano_0000_001463"
+        },
+        {
+          "id": "uva-etched-lettering",
+          "kind": "lettering",
+          "where": "Universiteit van Amsterdam in thin letters on the hall glass",
+          "approxSizeM": [
+            6,
+            0.4
+          ],
+          "plan": "skipped",
+          "seenIn": "TMX7316010203-002047_pano_0000_001463",
+          "skip": {
+            "reason": "too-small",
+            "note": "0.4 m etched letters seen through glass"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "w16-73",
+      "bearing": 73,
+      "lengthM": 20.1,
+      "centre": [
+        4.91298,
+        52.362929
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001908_pano_0000_004249",
+      "capturedAt": "2020-09-07",
+      "checked": true,
+      "items": [],
+      "note": "north end wall of the south-east brick wing, 8.6 m, same brick as w09"
+    },
+    {
+      "tag": "w17-163",
+      "bearing": 163,
+      "lengthM": 18.2,
+      "centre": [
+        4.9121335,
+        52.3641964
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w18-253",
+      "bearing": 253,
+      "lengthM": 18,
+      "centre": [
+        4.9110298,
+        52.362864
+      ],
+      "evidence": "photo",
+      "panoId": "b_20241210_1246_Track30_Sphere_00069",
+      "capturedAt": "2024-12-10",
+      "checked": true,
+      "items": [],
+      "note": "west podium glazing, same curtain wall as w08"
+    },
+    {
+      "tag": "w19-73",
+      "bearing": 73,
+      "lengthM": 18,
+      "centre": [
+        4.9117452,
+        52.3630037
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002047_pano_0000_001461",
+      "capturedAt": "2021-03-18",
+      "checked": true,
+      "items": [
+        {
+          "id": "uva-fascia-lettering",
+          "kind": "lettering",
+          "where": "UNIVERSITEIT VAN AMSTERDAM in raised letters along the east fascia of the cantilever",
+          "approxSizeM": [
+            16,
+            0.9
+          ],
+          "plan": "modelled",
+          "how": "stroke-font lettering on panel 274 at 10.6 m",
+          "seenIn": "TMX7316010203-002047_pano_0000_001461"
+        },
+        {
+          "id": "abc-entrance-sign",
+          "kind": "sign",
+          "where": "ABC in three coloured squares (burgundy, blue, orange) at the corner under the overhang",
+          "approxSizeM": [
+            2.7,
+            1.3
+          ],
+          "plan": "modelled",
+          "how": "three wall boxes on panel 49, colours from the crop",
+          "seenIn": "TMX7316010203-002047_pano_0000_001461"
+        },
+        {
+          "id": "cantilever-soffit",
+          "kind": "other",
+          "where": "the cantilevered end of the bridge block over the plaza, light grey soffit",
+          "approxSizeM": [
+            20,
+            20
+          ],
+          "plan": "modelled",
+          "how": "the 3DBAG wall bases at 9.1 m",
+          "seenIn": "TMX7316010203-002047_pano_0000_001461"
+        }
+      ]
+    },
+    {
+      "tag": "w20-73",
+      "bearing": 73,
+      "lengthM": 16.5,
+      "centre": [
+        4.9130765,
+        52.3637945
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w21-120",
+      "bearing": 120,
+      "lengthM": 16.5,
+      "centre": [
+        4.913113,
+        52.3640071
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w22-162",
+      "bearing": 162,
+      "lengthM": 16.2,
+      "centre": [
+        4.9116396,
+        52.3635737
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-000354_pano_0002_000224",
+      "capturedAt": "2017-07-06",
+      "checked": true,
+      "items": [],
+      "note": "underside of the steel footbridge and stone steps at the passage (the bridge is a BGT object)"
+    },
+    {
+      "tag": "w23-73",
+      "bearing": 73,
+      "lengthM": 15.7,
+      "centre": [
+        4.911757,
+        52.3640721
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w24-73",
+      "bearing": 73,
+      "lengthM": 15.7,
+      "centre": [
+        4.911865,
+        52.3638336
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w25-54",
+      "bearing": 54,
+      "lengthM": 14.9,
+      "centre": [
+        4.9115917,
+        52.3634973
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w26-253",
+      "bearing": 253,
+      "lengthM": 14.9,
+      "centre": [
+        4.9110865,
+        52.3627199
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002542_pano_0000_000554",
+      "capturedAt": "2022-04-25",
+      "checked": true,
+      "items": [],
+      "note": "west podium glazing, same curtain wall as w08"
+    },
+    {
+      "tag": "w27-253",
+      "bearing": 253,
+      "lengthM": 14.4,
+      "centre": [
+        4.911785,
+        52.3635347
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-000354_pano_0002_000225",
+      "capturedAt": "2017-07-06",
+      "checked": true,
+      "items": [],
+      "note": "passage west end, steps and the dark glass end of the bridge block"
+    },
+    {
+      "tag": "w28-253",
+      "bearing": 253,
+      "lengthM": 14.1,
+      "centre": [
+        4.9119757,
+        52.3642331
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w29-343",
+      "bearing": 343,
+      "lengthM": 14,
+      "centre": [
+        4.9121142,
+        52.3636683
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w30-343",
+      "bearing": 343,
+      "lengthM": 13.9,
+      "centre": [
+        4.9123868,
+        52.3632137
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_000887",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [
+        {
+          "id": "se-wing-round-windows",
+          "kind": "window-shape",
+          "where": "a row of round-ended dark windows in the low black-clad north face of the south-east wing",
+          "approxSizeM": [
+            14,
+            3
+          ],
+          "plan": "simplified",
+          "how": "narrow rectangular recessed windows",
+          "seenIn": "TMX7316010203-001975_pano_0000_000887"
+        }
+      ]
+    },
+    {
+      "tag": "w31-163",
+      "bearing": 163,
+      "lengthM": 12.5,
+      "centre": [
+        4.9121386,
+        52.3635999
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_000887",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [],
+      "note": "glazed pedestrian link between the bridge-block tower and the 1932 wing; at the edge of the shell, not modelled as a separate part (3DBAG has the link inside the wall panels)"
+    },
+    {
+      "tag": "w32-163",
+      "bearing": 163,
+      "lengthM": 12.1,
+      "centre": [
+        4.9118069,
+        52.364156
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w33-73",
+      "bearing": 73,
+      "lengthM": 11.8,
+      "centre": [
+        4.911921,
+        52.3639744
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w34-253",
+      "bearing": 253,
+      "lengthM": 11.8,
+      "centre": [
+        4.9112176,
+        52.3640963
+      ],
+      "evidence": "photo",
+      "panoId": "b_20241210_1246_Track30_Sphere_00042",
+      "capturedAt": "2024-12-10",
+      "checked": true,
+      "items": [],
+      "note": "north-west grey-clad wing, same cladding as w07"
+    },
+    {
+      "tag": "w35-73",
+      "bearing": 73,
+      "lengthM": 11.8,
+      "centre": [
+        4.9119768,
+        52.3637258
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w36-73",
+      "bearing": 73,
+      "lengthM": 11.8,
+      "centre": [
+        4.9118654,
+        52.3642232
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001975_pano_0000_001003",
+      "capturedAt": "2021-01-22",
+      "checked": true,
+      "items": [],
+      "note": "wall of the 1932 wing / north wings, not part of the shell"
+    },
+    {
+      "tag": "w37-54",
+      "bearing": 54,
+      "lengthM": 9.2,
+      "centre": [
+        4.9111256,
+        52.3638804
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w38-252",
+      "bearing": 252,
+      "lengthM": 9.1,
+      "centre": [
+        4.9113672,
+        52.3640268
+      ],
+      "evidence": "photo",
+      "panoId": "b_20241210_1246_Track30_Sphere_00140",
+      "capturedAt": "2024-12-10",
+      "checked": true,
+      "items": [],
+      "note": "grey cladding with teal windows, same as w07"
+    },
+    {
+      "tag": "w39-167",
+      "bearing": 167,
+      "lengthM": 8.7,
+      "centre": [
+        4.9109811,
+        52.3633456
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-000354_pano_0002_000214",
+      "capturedAt": "2017-07-06",
+      "checked": true,
+      "items": [
+        {
+          "id": "west-diamond-glazing",
+          "kind": "window-shape",
+          "where": "rhombus-lattice glazing and a curved overhanging roof on the west end of the beige block",
+          "approxSizeM": [
+            8.7,
+            6
+          ],
+          "plan": "simplified",
+          "how": "plain window sheets; no lattice and no curved roof",
+          "seenIn": "TMX7316010203-000354_pano_0002_000214"
+        }
+      ]
+    },
+    {
+      "tag": "w40-163",
+      "bearing": 163,
+      "lengthM": 8.4,
+      "centre": [
+        4.9118887,
+        52.3639122
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Gemeente Amsterdam panoramas",
+      "url": "https://api.data.amsterdam.nl/panorama/",
+      "licence": "CC BY 4.0"
+    },
+    {
+      "name": "3DBAG LoD2.2",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185420",
+      "licence": "CC BY 4.0"
+    },
+    {
+      "name": "BAG pand 0363100012185420",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012185420/",
+      "licence": "CC0"
+    }
+  ]
+}

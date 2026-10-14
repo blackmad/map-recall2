@@ -1244,7 +1244,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   inside the far radius); phone layout and iPhone measurement for the
   far ring; 22 parks and 110 playgrounds without BGT polygons.
 - **Public buildings, next** (2026-10-14, HISTORY "Schools as large
-  recipes"): Roeterseiland REC-A
+  recipes", "Roeterseiland REC-A"): REC-A second pass (podium panels
+  49/176 and the long north wall blank because the audit's wall raster
+  fails on two 320 m² triangles: split them; west-beige top row; the
+  diamond lattice; strips); CREA (pand 0363100012164972) as a large
+  recipe; then
   survey lane (pand 0363100012185420); remaining with usable panoramas:
   Hogeschool van Amsterdam, Gerrit Rietveld Academie, Het 4e Gymnasium,
   Metis and Oostpoort Montessori, Spinoza, the UvA Spui building; AMC,
