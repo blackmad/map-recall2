@@ -48954,6 +48954,231 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T03:02:01.437Z"
+    },
+    {
+      "id": "ordinary-0363100012134507",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012134507",
+      "name": "Apollolaan 4 / Stadionweg 5 (Apollohal), Amsterdam-Zuid (Olympisch Kwartier): 1934 sports hall of brick with a tall glazed upper hall, a curved glass roof edge, brick entrance annexes with round windows and a canopied glass entrance",
+      "hash": "a0794c4a64e9b060b8c363ef44be2301efe76aeeeaa85b8872c5dab7532245d6",
+      "sha256": "a0794c4a64e9b060b8c363ef44be2301efe76aeeeaa85b8872c5dab7532245d6",
+      "bytes": 361404,
+      "triangles": 4844,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -39.005,
+          0,
+          -40.876
+        ],
+        "max": [
+          51.398,
+          14.47,
+          56.521
+        ]
+      },
+      "anchor": [
+        4.8842397,
+        52.3485081
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8843759,
+              52.3486964
+            ],
+            [
+              4.8844149,
+              52.3487158
+            ],
+            [
+              4.8842803,
+              52.348817
+            ],
+            [
+              4.8842825,
+              52.3488181
+            ],
+            [
+              4.8842425,
+              52.3488479
+            ],
+            [
+              4.8841445,
+              52.3487985
+            ],
+            [
+              4.8841314,
+              52.3488083
+            ],
+            [
+              4.884188,
+              52.3488368
+            ],
+            [
+              4.8841367,
+              52.3488751
+            ],
+            [
+              4.8840674,
+              52.3488405
+            ],
+            [
+              4.8840662,
+              52.3488414
+            ],
+            [
+              4.8839478,
+              52.3487824
+            ],
+            [
+              4.8839255,
+              52.3487991
+            ],
+            [
+              4.8838985,
+              52.3487856
+            ],
+            [
+              4.8839207,
+              52.3487688
+            ],
+            [
+              4.883819,
+              52.3487181
+            ],
+            [
+              4.8837967,
+              52.3487348
+            ],
+            [
+              4.8837696,
+              52.3487213
+            ],
+            [
+              4.8837919,
+              52.3487046
+            ],
+            [
+              4.8836657,
+              52.3486416
+            ],
+            [
+              4.8842834,
+              52.3481773
+            ],
+            [
+              4.8843509,
+              52.3481264
+            ],
+            [
+              4.8843517,
+              52.3481268
+            ],
+            [
+              4.884354,
+              52.348125
+            ],
+            [
+              4.8843526,
+              52.3481243
+            ],
+            [
+              4.8843814,
+              52.3481025
+            ],
+            [
+              4.8843612,
+              52.3480924
+            ],
+            [
+              4.8844545,
+              52.3480222
+            ],
+            [
+              4.8844749,
+              52.3480323
+            ],
+            [
+              4.884486,
+              52.348024
+            ],
+            [
+              4.8845172,
+              52.3480013
+            ],
+            [
+              4.884997,
+              52.3482406
+            ],
+            [
+              4.8849623,
+              52.3482662
+            ],
+            [
+              4.8849536,
+              52.3482619
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 14.47,
+      "height": 14.47,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-apollolaan-4-134507.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012134507"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "apollolaan-4-134507",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012134507/w01-231.jpg",
+          "staging/pand-reference-walls/0363100012134507/w04-321.jpg",
+          "staging/pand-reference-walls/0363100012134507/w05-321.jpg",
+          "staging/pand-reference-walls/0363100012134507/w06-231.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 22b",
+          "brick-bay-grid 2st 3b",
+          "curtain-wall 1st 20b",
+          "brick-bay-grid+entrance 1st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 22 (SW, 66.6 m, eaves 11.9): a blank brick plinth under two glazed bands, drawn as 3 storeys with a blank ground and 22 bays of wide windows without sills. walls[1] = panels 21, 13 and 17 (NW, 11 m, 10 m and 9 m, eaves 6.3): the two-storey brick annex fronts with white-framed windows, 2 storeys x 3 bays. walls[2] = panel 14 (NW, 35.7 m, eaves 12.1 over a 6.8 m base): the glazed gable of the hall above the annexes, drawn as a one-storey curtain wall with mullions and transoms, with APOLLOHAL on a name band (the photographed letters are on the glass). walls[3] = panel 31 (SW end, 9.8 m, eaves 3.6): the glazed entrance under a flat canopy, one storey with a glazed ground and an entrance with canopy in bay 1.",
+        "Simplified: the glass gable is a flat curtain wall (the photographed hall edge is curved), the clerestory on the long flank is wide windows over a blank base, the entrance is a canopy and a glazed door set in three bays, the round windows of the annexes are not modelled and stay plain wall. Not drawn: the south-east end wall, the north-east long wall (panels 63, 44, 26, no panorama) and the low service range on the north-east, which stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134507",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:10:07.638Z"
     }
   ]
 }
