@@ -1,0 +1,286 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:28:12.747Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158968",
+   "addresses": [
+    "Kinkerstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 31-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705278"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160646",
+   "addresses": [
+    "Kinkerstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 33-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000705286"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155369",
+   "addresses": [
+    "Kinkerstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000705298"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160073",
+   "addresses": [
+    "Kinkerstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000705311"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 926571671,
+     "lngLat": [
+      4.8745177,
+      52.3677331
+     ],
+     "tags": {
+      "check_date": "2025-10-02",
+      "name": "De Hoge Bi Fietswinkel",
+      "opening_hours": "Tu-Fr 09:00-17:30; Sa 10:00-17:00",
+      "payment:cash": "yes",
+      "shop": "bicycle",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:28:12.747Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160074",
+   "addresses": [
+    "Kinkerstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705325"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167106",
+   "addresses": [
+    "Kinkerstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000958046"
+    },
+    {
+     "address": "Kinkerstraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012128962"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7533672000,
+     "lngLat": [
+      4.8743467,
+      52.3677088
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41",
+      "addr:postcode": "1053DD",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Madam Fifi",
+      "outdoor_seating": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:28:12.747Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159384",
+   "addresses": [
+    "Kinkerstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 43-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000705348"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809441379,
+     "lngLat": [
+      4.8742464,
+      52.3677066
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43-H",
+      "addr:postcode": "1053DD",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "cuisine": "indian",
+      "indoor_seating": "yes",
+      "name": "Tandoori Express",
+      "opening_hours": "Mo-Su 11:30-23:45",
+      "outdoor_seating": "no",
+      "phone": "+31 20 412 1621",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://tandooriexpress.nl/"
+     },
+     "fetchedAt": "2026-10-14T09:28:12.747Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154359",
+   "addresses": [
+    "Kinkerstraat 45A",
+    "Kinkerstraat 45B",
+    "Kinkerstraat 45",
+    "Kinkerstraat 45C",
+    "Kinkerstraat 45D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 45-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012089020"
+    },
+    {
+     "address": "Kinkerstraat 45C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012123552"
+    },
+    {
+     "address": "Kinkerstraat 45D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012123553"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161457",
+   "addresses": [
+    "Kinkerstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 47-H",
+     "use": "logiesfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001008989"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157926",
+   "addresses": [
+    "Kinkerstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Da Costakade 167-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000613584"
+    },
+    {
+     "address": "Kinkerstraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001006026"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2296369771,
+     "lngLat": [
+      4.8738526,
+      52.3676172
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling:glass_bottles": "yes",
+      "recycling:textiles": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-14T09:28:12.747Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  }
+ ]
+}

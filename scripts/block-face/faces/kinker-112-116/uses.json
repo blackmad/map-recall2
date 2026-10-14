@@ -1,0 +1,124 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:10:17.492Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164444",
+   "addresses": [
+    "Kinkerstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000705630"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809201184,
+     "lngLat": [
+      4.8700923,
+      52.3667748
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118-H",
+      "addr:postcode": "1053ED",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "Glam by Mooi",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:10:17.492Z",
+     "match": "frontage",
+     "distanceM": 4.4
+    },
+    {
+     "type": "node",
+     "id": 4942879221,
+     "lngLat": [
+      4.8701633,
+      52.3667941
+     ],
+     "tags": {
+      "addr:housenumber": "116-H",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2024-09-01",
+      "male": "yes",
+      "name": "Knip je Knap",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T09:10:17.492Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166997",
+   "addresses": [
+    "Kinkerstraat 112",
+    "Kinkerstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010001019568"
+    },
+    {
+     "address": "Kinkerstraat 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 28,
+     "bagId": "0363010003713718"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157331,
+     "lngLat": [
+      4.8703125,
+      52.3668148
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "112",
+      "addr:postcode": "1053ED",
+      "addr:street": "Kinkerstraat",
+      "amenity": "cafe",
+      "check_date": "2026-09-17",
+      "check_date:opening_hours": "2026-09-07",
+      "contact:instagram": "lot61coffee",
+      "cost:coffee": "EUR2",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "level": "0",
+      "name": "LOT61 Coffee Roasters",
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su,PH 09:00-18:00",
+      "outdoor_seating": "no",
+      "toilets:wheelchair": "no",
+      "website": "https://lot61.com/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:10:17.492Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

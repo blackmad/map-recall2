@@ -1,0 +1,45 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:48:39.297Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012067825",
+   "addresses": [
+    "Kinkerstraat 382",
+    "Kinkerstraat 384"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 382-H",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000706423"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11041760905,
+     "lngLat": [
+      4.8607645,
+      52.3644977
+     ],
+     "tags": {
+      "check_date:opening_hours": "2024-02-24",
+      "name": "Missy Curves",
+      "opening_hours:signed": "no",
+      "shop": "beauty",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:48:39.297Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,329 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:19:49.934Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157310",
+   "addresses": [
+    "Kinkerstraat 202"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 202-H",
+     "use": "winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010012085266"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4714011114,
+     "lngLat": [
+      4.8666169,
+      52.3658609
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "206",
+      "addr:postcode": "1053EM",
+      "addr:street": "Kinkerstraat",
+      "alt_name": "Tex & Leder",
+      "check_date:opening_hours": "2023-12-31",
+      "name": "Tex Leder",
+      "note": "No working website;  Does this shop still exist?",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 412 5448",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    },
+    {
+     "type": "node",
+     "id": 7329930371,
+     "lngLat": [
+      4.8667449,
+      52.3658911
+     ],
+     "tags": {
+      "check_date": "2025-01-17",
+      "male": "yes",
+      "name": "Imperial barbershop",
+      "opening_hours": "Mo-Sa 10:00-19:00",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161134",
+   "addresses": [
+    "Kinkerstraat 200"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 200-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705853"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7330001519,
+     "lngLat": [
+      4.8667952,
+      52.3659048
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "200",
+      "addr:postcode": "1053EL",
+      "addr:street": "Kinkerstraat",
+      "beauty": "nails",
+      "name": "Nails by Bianca",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159351",
+   "addresses": [
+    "Kinkerstraat 192",
+    "Kinkerstraat 194",
+    "Kinkerstraat 196",
+    "Kinkerstraat 198"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 192-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000705821"
+    },
+    {
+     "address": "Kinkerstraat 194-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 518,
+     "bagId": "0363010012111983"
+    }
+   ],
+   "units": 19,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809211166,
+     "lngLat": [
+      4.866986,
+      52.3659516
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "194",
+      "addr:postcode": "1053EL",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "brand": "McDonald's",
+      "brand:wikidata": "Q38076",
+      "brand:wikipedia": "en:McDonald's",
+      "check_date": "2025-01-17",
+      "contact:phone": "+31 20 616 7026",
+      "cuisine": "burger",
+      "description": "McDonald's Amsterdam Kinkerstraat",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "McDonald's",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://mcdonaldsrestaurant.nl/amsterdam-kinkerstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4724996015,
+     "lngLat": [
+      4.8670164,
+      52.3659927
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "190-192",
+      "addr:postcode": "1053EL",
+      "addr:street": "Kinkerstraat",
+      "brand": "Holland & Barrett",
+      "brand:website": "https://www.hollandandbarrett.nl/",
+      "brand:wikidata": "Q5880870",
+      "brand:wikipedia": "nl:Holland & Barrett",
+      "check_date": "2025-01-17",
+      "name": "Holland & Barrett",
+      "old_name": "De Tuinen",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 10:00-18:00; Su 12:00-17:00",
+      "phone": "+31 20 888 5031",
+      "shop": "health_food",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012129253",
+   "addresses": [
+    "Kinkerstraat 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 188-H",
+     "use": "winkelfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000705816"
+    },
+    {
+     "address": "Ten Katestraat 40-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012085303"
+    },
+    {
+     "address": "Kinkerstraat 188-H",
+     "use": "winkelfunctie",
+     "areaM2": 350,
+     "bagId": "0363010012089793"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679407,
+     "lngLat": [
+      4.8672706,
+      52.3661289
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "check_date": "2026-09-09",
+      "name": "Asian-caribbean Market",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160226",
+   "addresses": [
+    "Kinkerstraat 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 186-H",
+     "use": "winkelfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000705811"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226912,
+     "lngLat": [
+      4.8671832,
+      52.3659855
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "188",
+      "addr:postcode": "1053EM",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "check_date": "2025-01-17",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Best doner & snacks",
+      "outdoor_seating": "yes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012073962",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 42A",
+     "use": "winkelfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000825406"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9874435908,
+     "lngLat": [
+      4.867343,
+      52.3660362
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "186",
+      "addr:postcode": "1053EL",
+      "addr:street": "Kinkerstraat",
+      "amenity": "cafe",
+      "cuisine": "coffee_shop",
+      "indoor_seating": "yes",
+      "name": "Five Ways Coffee",
+      "outdoor_seating": "no",
+      "source:date": "2014-03-24",
+      "website": "https://www.fivewayscoffee.com/"
+     },
+     "fetchedAt": "2026-10-14T09:19:49.934Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
