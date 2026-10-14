@@ -26,6 +26,7 @@ import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
+import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
 import { fillPockets, POCKET_LIFT } from './pockets';
 import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
 import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
@@ -758,6 +759,21 @@ test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverl
     for (const k of keys) cells.push(buildCell(await store.cellInput(k, lod)));
     const r = bandCoverage(cells, ways);
     assert.ok(r.share >= DE_CLERCQSTRAAT.minShare, `LOD ${lod}: ${(100 * r.share).toFixed(1)} % street, misses ${JSON.stringify(r.misses.slice(0, 5))}`);
+  }
+});
+
+// Every bridge the bridge-fidelity e2e names: its crown over the higher end is the pinned value (the e2e reads the same in the page).
+test('pinned deck crowns (bridge-fidelity e2e set)', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const { bridgesFromExtract } = await import('../../../tests/e2e/ownGroundBridges');
+  for (const b of bridgesFromExtract(Object.keys(PINNED_CROWNS))) {
+    const [x, y] = storeToLocal(b.lng, b.lat);
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === b.id)) break; }
+    const deck = store.surface.decks.find(d => d.profile.id === b.id)!;
+    assert.ok(deck, `${b.id} placed`);
+    const crown = crownOverHigherEnd(Array.from(deck.profile.x, (_, i) => store.surface.height(deck.profile.x[i], deck.profile.y[i])), deck.ends), pin = PINNED_CROWNS[b.id];
+    assert.ok(Math.abs(crown - pin.crownM) <= pin.tolM, `${b.id} crown ${crown.toFixed(3)} vs pinned ${pin.crownM}`);
   }
 });
 
