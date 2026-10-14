@@ -581,7 +581,10 @@ export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | 
  * Amsterdammertjes. Base RGB for the procedural textures; joints darker.
  */
 export const STREET_GROUND = {
-  asphalt: { base: [72, 74, 78] as RGB },
+  // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
+  // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
+  // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
+  asphalt: { base: [86, 88, 93] as RGB },
   cycle: { base: [150, 66, 58] as RGB },
   // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
   // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
