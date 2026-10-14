@@ -447,9 +447,11 @@ export interface LargeWallIntent {
   /**
    * `glazed-columns` (Houthavenkade 26): full-height glass stripes over the listed bays (of `baysPerStorey`, adjacent bays
    * join into one stripe) from storey `from` (default 1) up, `share` of the run's width (default 0.9); `slabs`: the stripe
-   * is an enclosed balcony bay 0.45 m deep with a slab at every storey line, else a flush glass band with frame transoms.
+   * is an enclosed balcony bay 0.45 m deep with a slab at every storey line, else a flush glass band with frame transoms;
+   * `glass`: the columns' own glazing colour when it differs from the punched windows' (Houthavenkade 26: reflective
+   * grey balcony glass beside dark window panes), default the group's glass.
    */
-  columns?: {bays: number[]; share?: number; from?: number; slabs?: boolean};
+  columns?: {bays: number[]; share?: number; from?: number; slabs?: boolean; glass?: string};
   /** Fields of this group set by hand that `measure.ts --write` must keep (e.g. `["palette.brick", "baysPerStorey"]`). */
   hand?: string[];
   /**

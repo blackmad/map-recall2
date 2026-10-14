@@ -28,3 +28,13 @@ test('likenessGate: no crops keeps the legacy state; an allowance without a note
   assert.throws(() => parseAllowInferred('2'), /needs <group>:<note>/);
   assert.throws(() => parseAllowInferred('2:ok'), /needs <group>:<note>/);
 });
+
+test('likenessVerdict: a column-count miss alone is WARN (bay-pitch detection counts mullion halves); with a colour or glazing miss it is FAIL', async () => {
+  const {likenessVerdict} = await import('./likeness.ts');
+  const base = {abstain: [] as string[], fails: [] as string[], warns: [] as string[], iou: 0.6};
+  assert.equal(likenessVerdict(base), 'PASS');
+  assert.equal(likenessVerdict({...base, warns: ['columns 16 vs photo 30']}), 'WARN');
+  assert.equal(likenessVerdict({...base, iou: 0.3}), 'WARN');
+  assert.equal(likenessVerdict({...base, fails: ['wall dL +0.17'], warns: ['columns 3 vs photo 2']}), 'FAIL');
+  assert.equal(likenessVerdict({...base, abstain: ['foliage 32 % > 25 %'], fails: ['wall dL +0.17']}), 'NO EVIDENCE');
+});
