@@ -1406,8 +1406,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   has the 26-pand strip, facts and uses, no intent yet) and the
   Street-View pilot retired; the two long-red tests are green (HISTORY
   "3DBAG ground outliers": stale survey paths re-recorded, a VM harness
-  fixed); Jan Evertsenstraat survey lane running; then Jan Evertsenstraat
-  (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
+  fixed); Jan Evertsenstraat survey DONE (HISTORY "Jan Evertsenstraat
+  surveyed": 148 pands, 19 faces, type sketch; the plan's "erker" type is
+  rare there, 4 of 148, hood-lisene 40 and lintel-band 18 are the bodies);
+  next: the De Baarsjes type library (`scripts/block-face/types/de-baarsjes/`
+  from the sketch's exemplars, with the kit gaps it lists: box bay with
+  hood, stacked balconettes, tall parapet zone, two-tone piers, glass-block
+  band signs), then face lanes; re-run `commercial-merge.ts` for
+  Kinkerstraat from a checkout with its staged crops (uses on 0 of 217
+  pands, bug fixed in the survey lane); Mercatorplein towers
   and arcades bespoke (lane running), De Hallen DONE as a staged recipe
   behind its landmark (HISTORY "De Hallen measured and staged"; retire
   the landmark and install when the kit does glass ridge lights and

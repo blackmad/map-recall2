@@ -1,5 +1,61 @@
 # Canal Recall — what is built
 
+## Jan Evertsenstraat surveyed: 148 pands, 19 faces, the De Baarsjes type sketch (2026-10-14)
+
+Lane `lane/jan-evertsen-survey-20261014` (plan Part 2 step 7, survey
+half). BAG has 148 pands with a current Jan Evertsenstraat address, not
+the ~168 the plan counted (a 120 m buffer finds the same 148); 1910s is 6
+not 18. Style groups: 1920s Amsterdam School (1925–27) 123 (odd 65, even
+58), 1910s (1912–13) 6, 1939 6, post-war 13. Faces: even 4-44 (17), 52-66
+(6), 68-92 (10), 94-142 (26, re-seeded at no. 126 because the corner seed
+stopped after 96), 144-150 (4), 152-160 (5); odd 1-1 (5), 7-41 (18), 43-57
+(8), 59-89 (15), 91-135 (19), 137-143 (4), 145-155 (6), 171-175 (1),
+201-267, 269-335, 337-403, 405-471, 473-781 (2 each). Strips fused from
+one capture day each (2024-12-06; 4-44 and 7-41 from 2021-03-26 leaf-off;
+1-1 from 2022-12-12), coverage 1.0. No frontage: 162, 164; no sightline:
+none; strip only: 57 (side wall only), 473–715 (not in the tiles); washed
+out: 32, 34, 42, 44, 58, 60, 86, 94, 102, 122, 132, 134; trees on the upper
+storeys with Beeldbank cover 74–78, 84, 98, 114, 121–125, without 145,
+151, 152, 153, 155, 158; scaffold 87; 63 pands carry Beeldbank references
+(the 1960 Dijkstra aerial excluded as copyrighted). Tooling:
+`street-style.ts` (hyphenated index names, `commercial-faces.ts
+--style=de-baarsjes`, Oud-West default), `commercial-merge.ts --beeldbank`
+(by reference, nothing fetched) and `--notes`
+(`scripts/street-surveys/notes/jan-evertsenstraat.json`), each pand's
+strip span, `run.ts --street` falling back to `streets-routing.json`,
+`intake.ts` backing off 30 s then 90 s between Overpass rounds (the first
+pass lost 7 of 19 faces). **Bug found:** `commercial-merge.ts` never
+merged ground-floor uses, so `kinkerstraat.json` has uses on 0 of 217
+pands; fixed (146 of 148 here), Kinkerstraat to be re-merged from a
+checkout that has its staged crops. Large/bespoke candidates: the
+Mercatorplein clock tower 107349 (bespoke, 37.5 m), a possible twin tower
+073289 (29.8 m, confirm from a photo), 144 (106884: 20.9 m tower, pointed
+oriels, two-arch arcade), 121–125 (085815, 37.3 m, large recipe), 52–56
+corner mass, 40 (089629: corner tower and half-round oriels), raised or
+stepped corner masses at 20–24, 35/31–37/39/41, 66, 91, 94, the
+Hotelschool 171–175 (148630, 100.7 m), 473–715 (134306, 60 m tower),
+717–781 (113136), the Knijtijzer slabs 203–471 (ordinary kit); 3DBAG reads
+eaves at 3–6 m on corners 52–56, 89, 91, 92, 94 and 64 (`measuredEaves`
+on the face pass). Type sketch over the 148: bodies lintel-band 18 (13,
+23, 32), hood-lisene 40 (101, 118, 126), balcony-slot 14 (61, 69, 81),
+ladder/small-pane plain 19 (49, 60, 70), 1926–27 white attic under a tile
+roof 12 (141, 148, 154), 1939 with dormers 5, corner and end masses 16;
+crowns tall plain parapet 91, raised corner tower flat top 7 (no pyramid
+cap on any street front), raised stair-tower ends 7 (the plan's
+"raised-centre", at row ends), tile roof over the white attic 13;
+components rigid canopy ~95, glass-block band 73, two-bay erker only 4,
+no separate dark plinth course. Kit gaps: side-hung casements with a
+fixed top light, the tall parapet zone, the single-bay box bay with hood,
+stacked balconettes, white bands with two-tone brick piers, the
+small-pane top-light grid, the white attic and brick balcony bands, signs
+on the glass-block band, corner oriels and friezes. Archive: source-data
+c399ed38 (crops and reference.json for 207 pands, all-walls for 21, 19
+strips), merged to source-data main 8e36d460. Files:
+`docs/jan-evertsenstraat-survey-20261014.md`,
+`scripts/street-surveys/streets/jan-evertsenstraat.json`,
+`scripts/block-face/faces/evertsen-*/`. Nothing authored or installed.
+
+
 ## Ride review, Jordaan and Plantage: three fixes, seventeen rows (2026-10-14)
 
 Lane `lane/ride-review-jordaan-plantage-20261014`. New
