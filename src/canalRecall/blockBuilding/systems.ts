@@ -59,6 +59,8 @@ export interface SystemFit {
   screen?: boolean;
   /** layered kit (intent `layeredKit`): a curtain wall is a glass skin (the group's wall) with a mullion grid component, no cut openings */
   layered?: boolean;
+  /** measured window proportions (intent `windowShape`): width of the bay, height of the storey, sill in metres; overrides the `windows` preset's size */
+  shape?: { w: number; h: number; sillM: number };
 }
 
 /** Glass-block perforation in a screen cell: a small square opening with a cross of 3.5 cm closed bars, no frame ring or sill. */
@@ -111,7 +113,7 @@ function groundRow(f: SystemFit, upper: Row): Row {
 
 /** Expand a system name into a compose `System`. */
 export function largeSystem(name: LargeSystemName, f: SystemFit): System {
-  const s = f.slots, g = glazing(f.windows);
+  const s = f.slots, g = { ...glazing(f.windows), ...(f.shape ? { w: f.shape.w, h: f.shape.h, sill: f.shape.sillM } : {}) };
   const bands = f.stringCourses ? [{ slot: s.stone, h: 0.16, out: 0.05, skipGround: false }] : undefined;
   const piers = f.piers ? { w: 0.36, out: 0.1, slot: s.stone, segments: 3 } : null;
   let typical: Row;
@@ -122,7 +124,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       break;
     case 'ribbon-windows':
       // One opening per bay per storey with a slim pier between bays: reads as a continuous band of glazing.
-      typical = { kind: 'ribbon', pier: 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
+      typical = { kind: 'ribbon', pier: f.shape ? Math.max(0.12, +((1 - f.shape.w) * f.pitchM).toFixed(3)) : 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
       break;
     case 'curtain-wall':
       // Layered kit: the wall is the glass skin and the grid a component (largeCompile `drawCurtainGrid`): nothing is cut.
