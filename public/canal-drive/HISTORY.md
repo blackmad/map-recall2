@@ -1,5 +1,56 @@
 # Canal Recall — what is built
 
+## Kinkerstraat odd side authored: eight faces, 76 pands, 184,519 tris (2026-10-14)
+
+Lane `lane/kinkerstraat-odd-20261014` (plan Part 2 step 4). Faces
+`kinker-1-29` (11 pands, 24,700 tris), `31-49` (10, 15,698), `49-63` (9,
+23,312), `65-87` (10, 20,311), `173-225` (10, 29,517), `315-359` (19,
+42,735), `363-371` (4, 13,706), `265-313` (3, 14,540), compiled without
+`--install` on the accents kit (merged origin/main at 48752138 and
+re-reviewed all eight; Kinkerstraat 59 then drew 3,036 tris on its front
+from the measured-brick facing and keeps the type palette instead). The
+sheet headers say GATES FAIL from the GLB audit's z-fight check, which
+fails on every Kinkerstraat face including the proof faces 2-30 and
+109-161 on main: the overlap is in the inferred rear facades (1-29 drops
+from 187 m² to 1.5 m² with `--no-rears`); no intent fixes it, the
+rear-facade lane does. Verdicts at gallery size
+(`docs/images/kinkerstraat/<face>-sheet.jpg`, doc
+`docs/kinkerstraat-faces-odd-20261014.md`): 1-29 right on 8 of 11 (19-23
+on an inline centre wall-dormer type; wrong: no. 1's windows too wide,
+21-23's white-painted first storey drawn as brick, 7-17's irregular lights
+made regular); 31-49 storeys, axes, dormers right, wall check fails on 31
+(black paint renders olive #494b3b vs #282b24) and 47 (sunlit brick too
+dark); 49-63 the neo-renaissance and brick-arched rows read with white
+springers, 51 a four-module front, the shop at 51 conflicts (OSM Mano
+Bakery vs sign Chez Rome), 63 too saturated; 65-87 65 and 67 on an inline
+plain step-gable type, cornices read, missing brick-relief tympana, frieze
+panels and the shops' mezzanine, 87 too saturated; 173-225 the 1985
+infill reads, arcade piers, cream set-back top storey and penthouse bays
+cannot be drawn; 315-359 the balcony-axis row reads with the corner block
+in two modules, pointed gables drawn as bell gables, shared gables become
+one per front, the drum corner bay and gallery missing; 363-371 (1914–16,
+no library type) balcony-axis with flat heads, gable shape and 371's
+chimney wrong or missing; 265-313 (1992 loggia block) infill with a
+16.4 m bay unit as overrides, the glazed grid bays as ~1.5 m windows,
+loggias and arcade flush. Brick-arched window width does not show on this
+side: the three 3-axis fronts measure 0.55, 0.56, 0.59 of the front
+against the type's 0.55. Kit gaps counted in pands: iron wall anchors 21,
+arcade piers 13, frieze panels and consoles 13, straight-sided pointed
+gables 10 fronts, set-back top storey 10, brick-relief tympana 7, shop
+mezzanine 7, penthouse bays 5, centre wall dormer (inline type) 5,
+measured brick dropped for the triangle budget 5, brick render clamping
+dark and light colours 4, shared gable over two pands 4, sunburst
+voussoirs 3, dormers on neo-renaissance 3, curtain-wall bays and loggias
+3, one-storey paint 3, footprint step over 0.5 m 3, gable scrollwork 2,
+plain step-gable (inline type) 2, stoops on a wall ground 2, and one each
+of painted-brick per placement, one type per pand, blind front part,
+gable over part of a module, drum bay with gallery, Gothic mezzanine
+lights, plain flat dormer, corbel-table cornice, chimney beside a gable.
+Library candidates: `kinker-1885-wall-dormer`, `kinker-1893-plain-step-gable`.
+Checks: lint, block-face 84, fit-golden 153 identical; no kit or src
+change, so every other face's chunk is unchanged.
+
+
 ## De Hallen measured and staged behind its landmark; the two Kinkerstraat halls installed (2026-10-14)
 
 Lane `lane/de-hallen-20261014` (plan Part 2 step 8). The brief's pand ids
