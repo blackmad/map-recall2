@@ -1,0 +1,188 @@
+{
+ "id": "cygnus",
+ "pandId": "0363100012109375",
+ "date": "2026-10-14",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 117,
+   "verdict": "FAIL",
+   "reasons": [
+    "glazing storey band off by 0.25"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012109375/w01-260L.jpg",
+    "sha256": "d4c47ef273598ddf7bd85d7156a1ea34afd1c974e79860e3ae29ffa547e41701",
+    "panoId": "TMX7316010203-001009_pano_0010_000056",
+    "capturedAt": "2018-12-12",
+    "obliquityDeg": 4.5,
+    "cameraDistM": 24.3
+   },
+   "pieces": [
+    {
+     "tag": "w01-260L",
+     "ref": "source-data://pand-reference-walls/0363100012109375/w01-260L.jpg",
+     "sha256": "d4c47ef273598ddf7bd85d7156a1ea34afd1c974e79860e3ae29ffa547e41701",
+     "capturedAt": "2018-12-12",
+     "u0": 0,
+     "u1": 47.787
+    }
+   ],
+   "coverage": 1,
+   "placement": {
+    "offsetM": 0.225,
+    "angleDeg": 0.007,
+    "overlap": 1,
+    "along": [
+     0.839,
+     48.626
+    ],
+    "shift": {
+     "uM": 0.1,
+     "vM": 0.5
+    },
+    "box": {
+     "u0": -3.273,
+     "u1": 44.514,
+     "v0": 0.001,
+     "v1": 25.894
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.1,
+     "vM": 0.5
+    },
+    "iou": 0.449,
+    "wall": {
+     "photo": "#43372e",
+     "photoRaw": "#43372e",
+     "model": "#43372e",
+     "modelToday": "#43372e",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-grey",
+     "modelMaterial": "brick-grey",
+     "dL": 0,
+     "dHue": 0,
+     "pass": true
+    },
+    "glass": {
+     "photo": "#3b4143",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.323,
+      0.633,
+      0.739,
+      0.702,
+      0.699,
+      0.789,
+      0.555,
+      0.486,
+      null
+     ],
+     "model": [
+      null,
+      0.564,
+      0.564,
+      0.584,
+      0.539,
+      0.539,
+      0.539,
+      0.564,
+      0.564,
+      null
+     ],
+     "photoMean": 0.607,
+     "modelMean": 0.554,
+     "maxDiff": 0.25,
+     "meanDiff": 0.053,
+     "pass": false
+    },
+    "columns": {
+     "photo": 26,
+     "model": 26,
+     "pass": true
+    },
+    "shape": {
+     "photo": "tall",
+     "model": "tall",
+     "pass": true
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "punched"
+    },
+    "ground": {
+     "photo": null,
+     "model": 0.901
+    },
+    "evidence": {
+     "usable": 0.937,
+     "foliage": 0.038,
+     "washedOut": 0.007,
+     "obliquityDeg": 4.5,
+     "cameraDistM": 24.3,
+     "widthM": 47.79,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#43372e",
+    "wallRaw": "#43372e",
+    "glass": "#3b4143",
+    "trim": "#57646c",
+    "glazing": 0.608,
+    "storeyGlazing": [
+     null,
+     0.333,
+     0.514,
+     0.826,
+     0.728,
+     0.672,
+     0.717,
+     0.618,
+     0.48,
+     null
+    ],
+    "ground": null,
+    "bays": 27,
+    "pitchM": 1.798,
+    "storeyM": 4.43,
+    "window": {
+     "w": 0.25,
+     "h": 1,
+     "sill": 0,
+     "aspect": 6.19,
+     "shape": "tall"
+    },
+    "frontClass": "columns",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": null,
+     "gain": 1,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    "usable": 0.92,
+    "foliage": 0.038,
+    "washedOut": 0.007,
+    "split": null
+   },
+   "gaps": {
+    "kit": [
+     "glazed-columns: full-height glazing in bays across storey lines, drawn as brick-bay-grid (glazed-columns needs the column bays by hand)",
+     "window-shape-range: measured 0.25x1 outside the windowShape range"
+    ],
+    "evidence": []
+   }
+  }
+ ]
+}

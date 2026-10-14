@@ -6,19 +6,12 @@
  "address": "Oudezijds Achterburgwal 233-237 / Vendelstraat 7, Amsterdam: rounded 19th-century brick building of the University of Amsterdam, with a baroque carved gateway",
  "sources": [
   {
-   "id": "pano-2017-03-27-w02-283",
-   "kind": "street-panorama",
-   "capturedAt": "2017-03-27",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000224_pano_0000_000756/",
-   "image": "staging/pand-reference-walls/0363100012180196/w02-283.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
    "id": "pano-2023-03-20-w03-103",
    "kind": "street-panorama",
    "capturedAt": "2023-03-20",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002999_pano_0002_000035/",
-   "image": "staging/pand-reference-walls/0363100012180196/w03-103.jpg",
+   "image": "source-data://pand-reference-walls/0363100012180196/w03-103.jpg",
+   "sha256": "0df2a3ac842f11e21f2ec644fd15a2d0f12336b21dba9912ece1a65e9adb78e9",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -35,10 +28,18 @@
    "cornice": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#a4553f",
-    "frame": "#2a2a2a",
+    "brick": "#5a4a42",
+    "frame": "#ece9e0",
     "stone": "#e0d2b8"
-   }
+   },
+   "arches": {
+    "windows": "segmental"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -55,10 +56,15 @@
    "cornice": true,
    "stringCourses": true,
    "palette": {
-    "brick": "#a4553f",
+    "brick": "#5a4a42",
     "frame": "#2a2a2a",
     "stone": "#e0d2b8"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -73,6 +79,14 @@
  },
  "notes": [
   "Oudezijds Achterburgwal 233-237 (BAG: oldest part 1686, rebuilt later; roof max 22.1 m): the university building behind the Oudemanhuispoort side. Three photographed fronts. West (w02-283, 2017): a curved/rounded brick wing, four levels with a half-sunk ground floor, stone string courses, segmental brick arches over the first-floor windows and a moulded stone cornice; an iron stair leads to a side door. West (w01-282, 2025): a gabled brick house, then a baroque carved stone gateway (cartouche with crest, volutes, rusticated jambs, double leaf door with roundels) set in a lower wing with cornice. East (w03-103, 2023): brick with stone string courses, arched-brick window heads with keystone blocks and a tall arched door.",
-  "Modelled: the west (w02-283) and east (w03-103) fronts as brick-bay-grid groups (4 storeys, cornice, stone string courses). The baroque gateway (w01-282) sits on the 28 m west wall (3DBAG panel 266) whose LoD2.2 surfaces are an all-party wall (16.8 m of party height over 14.9 m eaves), so it carries no group and no entrance; it is listed in the inventory as skipped (not visible in the shell). Simplified: the segmental arch heads are flat; the rounded wing is straight (3DBAG LoD2.2 plane). Not modelled: the iron stair, lamp posts, the roof lantern and chimney. North and courtyard walls have no photograph and stay blank."
- ]
+  "Modelled: the west (w02-283) and east (w03-103) fronts as brick-bay-grid groups (4 storeys, cornice, stone string courses). The baroque gateway (w01-282) sits on the 28 m west wall (3DBAG panel 266) whose LoD2.2 surfaces are an all-party wall (16.8 m of party height over 14.9 m eaves), so it carries no group and no entrance; it is listed in the inventory as skipped (not visible in the shell). Simplified: the segmental arch heads are flat; the rounded wing is straight (3DBAG LoD2.2 plane). Not modelled: the iron stair, lamp posts, the roof lantern and chimney. North and courtyard walls have no photograph and stay blank.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #3b2a23 not used (not darker than the wall #232424 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
+  ]
+ }
 }

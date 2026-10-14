@@ -1,25 +1,131 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "stadsloket-oost",
-  "pandId": "0363100012233553",
-  "address": "Stadsloket Oost, Oranje-Vrijstaatplein 2, Amsterdam (2008 office block, 81 m long; stadsloket and municipal offices)",
-  "sources": [
-    {"id": "pano-2020-04-29-s", "kind": "street-panorama", "capturedAt": "2020-04-29", "image": "staging/pand-reference-walls/0363100012233553/w03-161.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001679_pano_0000_000714/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2018-05-24-n", "kind": "street-panorama", "capturedAt": "2018-05-24", "image": "staging/pand-reference-walls/0363100012233553/w01-341.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000749_pano_0000_002486/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [120, 163, 217], "system": "brick-bay-grid", "storeys": 3, "baysPerStorey": 14, "ground": "system", "windows": "plain", "stringCourses": true, "entrance": {"bay": 6, "storeys": 1}},
-    {"wallSurfaces": [41], "system": "brick-bay-grid", "storeys": 2, "baysPerStorey": 14, "ground": "system", "windows": "low", "frames": false},
-    {"wallSurfaces": [40], "system": "brick-bay-grid", "storeys": 2, "baysPerStorey": 14, "ground": "system", "windows": "low", "frames": false}
-  ],
-  "otherWalls": "blank",
-  "closedBands": true,
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#b98f67", "frame": "#4b4f53", "door": "#4b4f53", "stone": "#bfbab0", "wallMaterial": "stucco"},
-  "notes": [
-    "2008 office complex (pand 0363100012233553, 242 LoD2.2 surfaces, 81 m long, courtyard plan) behind Oranje-Vrijstaatplein 2; the whole pand is modelled. South front (surfaces 120/163/217, 2020-04-29 panorama w03-161, 8 m away): yellow-brown brick with a dark-grey steel frame, three storeys of tall paired windows in recessed brick reveals, a ground storey with full-height glazed doors and a grey stone plinth, one projecting glass oriel bay on the top storey at the centre-right. North low wing (surface 41, 7.4 m high, 2018-05-24 w01-341, 8 m away): a brick wall with two bands of long slot windows set in a concrete-framed ribbon and a deep flat eaves slab; east low wing (surface 40) the same.",
-    "Ornaments: no Stadsloket/Gemeente Amsterdam sign, logo band or crest is legible in the 2018/2019/2020 panoramas of these fronts, so no signage is modelled (SKIPPED: not-visible; the stadsloket entrance on the Oranje-Vrijstaatplein side has no panorama in range). Glazed door entrance MODELLED as one recessed glazed entrance at bay 6 of the south front; string courses MODELLED; the dark steel window frames MODELLED as the frame colour; the slot-window ribbon of the low wings SIMPLIFIED to low wide windows (two storeys, 14 bays, no concrete surround); the glass oriel on the south front SKIPPED (too-small); the stepped taller south wings (surfaces 36/65/157) and the courtyard walls have no panorama and stay blank; the saw-tooth roofs are kept as surveyed by 3DBAG.",
-    "closedBands closes the string courses (open-edge gate)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadsloket-oost",
+ "pandId": "0363100012233553",
+ "address": "Stadsloket Oost, Oranje-Vrijstaatplein 2, Amsterdam (2008 office block, 81 m long; stadsloket and municipal offices)",
+ "sources": [
+  {
+   "id": "pano-2020-04-29-w03-161",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001679_pano_0000_000714/",
+   "image": "source-data://pand-reference-walls/0363100012233553/w03-161.jpg",
+   "sha256": "c0617549e69d676d088dd3233cda3ebaf75e4ff92b952b6d767373db12e5e203",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-24-w01-341",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000749_pano_0000_002486/",
+   "image": "source-data://pand-reference-walls/0363100012233553/w01-341.jpg",
+   "sha256": "e437bd90bb8b6330d5155ecd92e0c070e50f7c90509b4b7a568c28f5ac3b7602",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-05-23-w02-71",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001205_pano_0000_000794/",
+   "image": "source-data://pand-reference-walls/0363100012233553/w02-71.jpg",
+   "sha256": "a5c92872733e07ff8081de5aa4be06a02706d6dbb891deca3f92193c84f16a29",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    120,
+    163,
+    217
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "entrance": {
+    "bay": 6,
+    "storeys": 1
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#a6856f",
+    "glass": "#564f4a"
+   },
+   "windowShape": {
+    "w": 0.43,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    41
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "low",
+   "frames": false,
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {}
+  },
+  {
+   "wallSurfaces": [
+    40
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "low",
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#f4c190",
+    "glass": "#766d5f"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#b98f67",
+  "frame": "#4b4f53",
+  "door": "#4b4f53",
+  "stone": "#bfbab0",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "2008 office complex (pand 0363100012233553, 242 LoD2.2 surfaces, 81 m long, courtyard plan) behind Oranje-Vrijstaatplein 2; the whole pand is modelled. South front (surfaces 120/163/217, 2020-04-29 panorama w03-161, 8 m away): yellow-brown brick with a dark-grey steel frame, three storeys of tall paired windows in recessed brick reveals, a ground storey with full-height glazed doors and a grey stone plinth, one projecting glass oriel bay on the top storey at the centre-right. North low wing (surface 41, 7.4 m high, 2018-05-24 w01-341, 8 m away): a brick wall with two bands of long slot windows set in a concrete-framed ribbon and a deep flat eaves slab; east low wing (surface 40) the same.",
+  "Ornaments: no Stadsloket/Gemeente Amsterdam sign, logo band or crest is legible in the 2018/2019/2020 panoramas of these fronts, so no signage is modelled (SKIPPED: not-visible; the stadsloket entrance on the Oranje-Vrijstaatplein side has no panorama in range). Glazed door entrance MODELLED as one recessed glazed entrance at bay 6 of the south front; string courses MODELLED; the dark steel window frames MODELLED as the frame colour; the slot-window ribbon of the low wings SIMPLIFIED to low wide windows (two storeys, 14 bays, no concrete surround); the glass oriel on the south front SKIPPED (too-small); the stepped taller south wings (surfaces 36/65/157) and the courtyard walls have no panorama and stay blank; the saw-tooth roofs are kept as surveyed by 3DBAG.",
+  "closedBands closes the string courses (open-edge gate).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #4d3f33 not used (not darker than the wall #4a463f by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
   ]
+ }
 }

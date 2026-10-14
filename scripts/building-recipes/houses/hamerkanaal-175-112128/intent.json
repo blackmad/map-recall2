@@ -6,27 +6,12 @@
  "address": "Gedempt Hamerkanaal 175, Amsterdam-Noord (Hamerkwartier): 1911 workshop complex on the former Hamerkanaal, a four-storey brick-and-teal ribbon-window block on the street front and small brick workshop and house ranges on the canal side",
  "sources": [
   {
-   "id": "pano-2025-09-04-w01",
-   "kind": "street-panorama",
-   "capturedAt": "2025-09-04",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-04_06-44-53_02763/",
-   "image": "staging/pand-reference-walls/0363100012112128/w01-79.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-01-23-w05",
+   "id": "pano-2020-01-23-w05-169",
    "kind": "street-panorama",
    "capturedAt": "2020-01-23",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001587_pano_0000_002248/",
-   "image": "staging/pand-reference-walls/0363100012112128/w05-169.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-01-23-w06",
-   "kind": "street-panorama",
-   "capturedAt": "2020-01-23",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001587_pano_0000_002247/",
-   "image": "staging/pand-reference-walls/0363100012112128/w06-169.jpg",
+   "image": "source-data://pand-reference-walls/0363100012112128/w05-169.jpg",
+   "sha256": "d4adbee0a8fba10289973287c798b7e8f6079c5adaa9d3203e97c2b82fb88c59",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -46,7 +31,12 @@
     "brick": "#a08468",
     "frame": "#e8e6dc",
     "stone": "#c4baa6"
-   }
+   },
+   "hand": [
+    "palette",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -61,11 +51,20 @@
    "windows": "plain",
    "deepBars": true,
    "palette": {
-    "brick": "#5a4a46",
+    "brick": "#554e4a",
     "frame": "#e8e6dc",
     "stone": "#9a9086"
    },
-   "garageDoors": 1
+   "garageDoors": 1,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.65,
+    "sill": 0.15
+   }
   },
   {
    "wallSurfaces": [
@@ -81,7 +80,11 @@
     "brick": "#5e4640",
     "frame": "#e8e6dc",
     "stone": "#9a9086"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -99,6 +102,13 @@
  "notes": [
   "Gedempt Hamerkanaal 175 (BAG pand 0363100012112128, built 1911, 180 3DBAG wall surfaces, roof max 15.6 m): a workshop and office complex in the Hamerkwartier of Amsterdam-Noord, next to the Kromhout/Stork works recipe of batch 3. Three walls have panoramas: the long east front (w01-79, 2025-09-04) and the two canal-side ranges (w05-169 and w06-169, 2020-01-23); the west, north and south-west walls (w02-259, w03-349, w04-259) have no panorama within 35 m.",
   "walls[0] = panel 17 (E, 78.7 m, eaves 14.2, surface 135): a four-storey brick front of paired white-framed windows in 16 bays with pale string courses and a teal-clad top storey, shutter-fronted ground. Drawn as 4 storeys x 16 bays with string courses. walls[1] = panel 28 (S, 21.7 m, eaves 6.9-7.7): a dark brick two-storey range with a glazed roller door at its left end, drawn as 2 storeys x 6 bays and one garage door. walls[2] = panel 20 (S, 21 m, eaves 9.7): the dark brick three-storey house with a hipped roof, drawn as 3 storeys x 5 bays.",
-  "Simplified: the teal top storey is brick-coloured (one palette per group), the ground shutters are plain window openings, the white window surrounds are the kit frames, the hipped and pitched roofs are the 3DBAG roofs. Not drawn: the west, north and south-west walls (no panorama within 35 m) and the stepped grey-clad upper block behind the house, which stay blank wall."
- ]
+  "Simplified: the teal top storey is brick-coloured (one palette per group), the ground shutters are plain window openings, the white window surrounds are the kit frames, the hipped and pitched roofs are the 3DBAG roofs. Not drawn: the west, north and south-west walls (no panorama within 35 m) and the stepped grey-clad upper block behind the house, which stay blank wall.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #4a5056 not used (not darker than the wall #554e4a by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   1
+  ]
+ }
 }

@@ -6,19 +6,21 @@
  "address": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
  "sources": [
   {
-   "id": "pano-2017-07-06-sw",
+   "id": "pano-2017-07-06-w05-235",
    "kind": "street-panorama",
    "capturedAt": "2017-07-06",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000246/",
-   "image": "staging/pand-reference-walls/0363100012168172/w05-235.jpg",
+   "image": "source-data://pand-reference-walls/0363100012168172/w05-235.jpg",
+   "sha256": "266089a8f296debc8b0e5f45360a1ca0e52be47ee25b37ee75c72a2c154408d4",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2016-06-09-e",
+   "id": "pano-2016-06-09-w03-91",
    "kind": "street-panorama",
    "capturedAt": "2016-06-09",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000073_pano_0003_000676/",
-   "image": "staging/pand-reference-walls/0363100012168172/w03-91.jpg",
+   "image": "source-data://pand-reference-walls/0363100012168172/w03-91.jpg",
+   "sha256": "8b41412f5d8870b79adbe6212f3a522ddc5824a9748f8367a0dfba1676ee0b2e",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -42,7 +44,7 @@
    "windows": "plain",
    "cornice": true,
    "palette": {
-    "brick": "#7a4e3e",
+    "brick": "#5d5550",
     "frame": "#e8e6df",
     "stone": "#d8cfb8"
    },
@@ -50,6 +52,16 @@
     "text": "UNIVERSITEIT VAN AMSTERDAM",
     "colour": "#3a3430",
     "mount": "cornice"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.611,
+    "h": 0.58,
+    "sill": 0.28
    }
   },
   {
@@ -72,7 +84,13 @@
     "frame": "#c98a3a",
     "stone": "#e8e6df"
    },
-   "wallMaterial": "render"
+   "wallMaterial": "render",
+   "hand": [
+    "palette",
+    "windowShape",
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -90,6 +108,14 @@
   "Group 0 (SW run on the canal, surfaces from panels 54/195/57/64/69/226; w05-235, 2017-07-06): five-storey brown brick civic front with a pale cornice and a UNIVERSITEIT VAN AMSTERDAM name band under it, nine axes of tall white-framed sashes. Modelled as brick-bay-grid, 5 storeys, 8-9 bays, cornice; the name band lettering, the banded arched cellar windows and the entrance are not modelled (the entrance and lettering sit on a neighbouring wall).",
   "Group 1 (E wall, panel 104; w03-91, 2016-06-09): white rendered block with orange-framed wide windows, glass-block stair, a curved balcony stack and a glass entrance canopy. Modelled as 3 storeys of low windows in pale cream brick (the house has one wall material, brick; render would need a per-group wallMaterial). Not modelled: curved balconies, glass-block stair, canopy and the fourth floor (the eaves allow three storeys here).",
   "All other walls (courtyard, N, S, NE) are blank: no photograph.",
-  "Components lane (2026-10-13): walls[0] carries the UNIVERSITEIT VAN AMSTERDAM name on its cornice face (signage mount cornice; w05-235 shows it on the pale entablature); walls[1] is white render (wallMaterial render: the stucco slot), no longer cream brick. Supersedes the notes that the name band is not modelled and that render needs a per-group wallMaterial."
- ]
+  "Components lane (2026-10-13): walls[0] carries the UNIVERSITEIT VAN AMSTERDAM name on its cornice face (signage mount cornice; w05-235 shows it on the pale entablature); walls[1] is white render (wallMaterial render: the stucco slot), no longer cream brick. Supersedes the notes that the name band is not modelled and that render needs a per-group wallMaterial.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #545b5d not used (not darker than the wall #5d5550 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
+  ]
+ }
 }
