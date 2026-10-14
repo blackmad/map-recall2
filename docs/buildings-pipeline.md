@@ -237,6 +237,7 @@ owns (`wallSurfaces`, indices from `walls.ts`, never coordinates) and:
 | `entrance` | `true` or `{bay, storeys, canopy}`: recessed glazed entrance; `storeys > 1` = an entrance hall |
 | `signage` | text (A–Z, 0–9, `&'-.`, ≤ 60) or `{text, colour, mount}` with mount `fascia`, `wall`, `glazing` or `canopy` |
 | `garageDoors`, `stringCourses`, `cornice`, `piers`, `balconies` | components |
+| `garageBays` | list of bay indices (needs `baysPerStorey`): recessed garage doors in exactly those ground-storey bays of the widest panel, an alternative to `garageDoors` (which counts from the right end). Used where loading doors stand mid-front (Nieuwe Hemweg 34, 14H, 56, Klaprozenweg 31, Metaalbewerkerweg 23) |
 | `police` | `{stripe, lamp}`: white fascia band with diagonal blue stripes and a POLITIE plate; blue lamp by the entrance (needs an entrance) |
 | `crosses` | `{count, size: small\|medium\|large, colour, side: left\|right}`: St Andrew's crosses (Amsterdam's three-cross emblem) stacked down a top corner of the widest panel, each two closed diagonal prisms (`drawStAndrewsCross`; flat glyphs counted as open edges). Used by Stadsloket Noord/West and Stadsdeel Nieuw-West |
 | `palette` | per-group `brick`/`frame`/`stone` overrides |

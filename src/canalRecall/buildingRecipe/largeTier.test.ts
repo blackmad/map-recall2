@@ -573,3 +573,17 @@ test('layeredKit is the default for kind: large (false keeps the legacy kit); me
   assert.equal(built.components.plinths, 2);
   assert.equal(built.components.curtainGrids, 2);
 });
+
+test('garageBays puts garage doors in exactly the listed bays; absent = identical to garageDoors from the right', async () => {
+  const base = validateLargeIntent(raw('politie-van-leijenberghlaan'));
+  const at = (g: Partial<LargeBuildingIntent['walls'][number]>) => validateLargeIntent({...base, walls: base.walls.map((w, i) => i === 2 ? {...w, baysPerStorey: 5, ...g} : w)});
+  const f = facts('politie-van-leijenberghlaan');
+  const fitBays = (g: Partial<LargeBuildingIntent['walls'][number]>) => fitLarge(at(g), f).recipe.groups[2].garage?.bays;
+  assert.deepEqual(fitBays({garageBays: [0, 2]}), [0, 2]);
+  assert.deepEqual(fitBays({garageDoors: 2}), [3, 4]);
+  assert.throws(() => at({garageBays: [1], garageDoors: 1}), /alternatives/);
+  assert.throws(() => validateLargeIntent({...base, walls: base.walls.map((w, i) => i === 2 ? {...w, garageBays: [1]} : w)}), /baysPerStorey/);
+  const {built, gates} = await gatesOf(at({garageBays: [0, 2]}), f);
+  assert.equal(built.components.garageDoors, 2);
+  assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
+});
