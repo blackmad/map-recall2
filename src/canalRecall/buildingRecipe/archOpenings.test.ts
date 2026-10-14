@@ -101,7 +101,7 @@ test('arch outline: convex CCW, exact springing points and apex, analytic head a
     assert.deepEqual(head[0][0], w); assert.deepEqual(head[head.length - 1][0], 0);
     assert.equal(head[0][1], head[head.length - 1][1]);
     assert.ok(Math.abs(Math.max(...o.map(p => p[1])) - h) < 1e-12, `${kind}: apex at the opening top`);
-    const s = head[0][1], exact = kind === 'round' ? Math.PI * w * w / 8 : kind === 'pointed' ? w * w * (Math.PI / 3 - Math.sqrt(3) / 4) : (() => { const r = 0.18 * w, R = (w * w / 4 + r * r) / (2 * r), al = Math.asin(w / 2 / R); return R * R * al - (w / 2) * (R - r); })();
+    const s = head[0][1], exact = kind === 'chamfered' ? 0.18 * w * (w - 0.18 * w) : kind === 'round' ? Math.PI * w * w / 8 : kind === 'pointed' ? w * w * (Math.PI / 3 - Math.sqrt(3) / 4) : (() => { const r = 0.18 * w, R = (w * w / 4 + r * r) / (2 * r), al = Math.asin(w / 2 / R); return R * R * al - (w / 2) * (R - r); })();
     const headArea = polyArea(o) - w * s;
     assert.ok(headArea <= exact + 1e-9 && headArea > exact * 0.985, `${kind}: head ${headArea.toFixed(4)} vs ${exact.toFixed(4)}`);
   }
@@ -162,7 +162,7 @@ test('golden: the arched synthetic wall is stable', () => {
   };
   assert.deepEqual(ARCH_KINDS.map(hash), GOLDEN);
 });
-const GOLDEN = ['917:8dbd6058b4374935', '917:5ca94ea4d624d34f', '917:784723b7dcf7326c'];
+const GOLDEN = ['917:8dbd6058b4374935', '917:5ca94ea4d624d34f', '917:784723b7dcf7326c', '755:b22d643322492e3d'];
 
 // --- large tier: arches, portals, loading axes, name boards ---
 const HOUSES = 'scripts/building-recipes/houses';

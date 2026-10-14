@@ -4,6 +4,7 @@
  * (blue-and-white striped POLITIE band, blue lamp), plus roof plant boxes on the roof. Every part is built on or
  * cut into the exact wall plane, so attachment holds by construction (block-kit gates check it).
  */
+import * as T from 'three';
 import { type PanelCtx, type Cell, stripBox, intervals, barQuad, solid, SHEET_PITCH } from './compose.ts';
 import { fitsPanel, rectPoly } from './panels.ts';
 import { MeshBuilder, type V3, add, scale, sub } from './mesh.ts';
@@ -324,6 +325,50 @@ export function drawStoneStorey(c: PanelCtx, v0: number, v1: number, slot: Slot)
   if (v1 - ht > 0.15) n += drawBand(c, slot, ht, v1, FACING_OUT);
   if (ht - hb > 0.15) n += drawBand(c, slot, hb, ht, FACING_OUT);
   void p;
+  return n;
+}
+
+/**
+ * Arcade facing (ground `arcade`, Mercatorplein): over the chamfered openings already cut in the ground storey, a rendered
+ * lintel band from the openings' springing line to `top` that follows each opening's shoulders and flat head (one
+ * polygon per run of wall, so the shoulders are render, not brick), and a pier facing from `base` up to the springing
+ * line between the openings. Both are closed solids FACING_OUT proud of the wall. Returns the parts drawn (0 when the
+ * panel has no arcade opening).
+ */
+export function drawArcadeFacing(c: PanelCtx, base: number, top: number, slots: { band: Slot; pier: Slot }): number {
+  const arches = [...c.holes.values()].flat().filter(h => h.length > 4 && h[2] < base + 0.4 && h[3] < top) as [number, number, number, number, [number, number][]][];
+  if (!arches.length) return 0;
+  arches.sort((a, b) => a[0] - b[0]);
+  const spring = Math.min(...arches.map(h => h[4][2][1])), out = FACING_OUT;
+  let n = 0;
+  for (const [a0, b0] of intervals(c.p, spring, top, 0.25)) {
+    const own = arches.filter(h => h[0] >= a0 - 0.01 && h[1] <= b0 + 0.01);
+    if (!own.length) continue;
+    // band outline, counter-clockwise (u right, v up): along the springing line, up and over every opening head
+    const poly: [number, number][] = [[a0, spring]];
+    for (const h of own) { const o = h[4]; poly.push([h[0], o[5][1]], o[4], o[3], [h[1], o[2][1]]); }
+    poly.push([b0, spring], [b0, top], [a0, top]);
+    const clean = poly.filter((q, i) => { const r = poly[(i + 1) % poly.length]; return Math.hypot(q[0] - r[0], q[1] - r[1]) > 1e-6; });
+    const part = c.part(), P = (q: [number, number], d: number) => c.P(q[0], q[1], d);
+    for (const f of T.ShapeUtils.triangulateShape(clean.map(q => new T.Vector2(q[0], q[1])), [])) {
+      c.mesh.tri(slots.band, P(clean[f[0]], out), P(clean[f[1]], out), P(clean[f[2]], out), part, c.p.n);
+      c.mesh.tri(slots.band, P(clean[f[0]], 0), P(clean[f[1]], 0), P(clean[f[2]], 0), part, scale(c.p.n, -1));
+    }
+    for (let i = 0; i < clean.length; i++) {
+      const q = clean[i], r = clean[(i + 1) % clean.length], du = r[0] - q[0], dv = r[1] - q[1];
+      // outward normal of a CCW edge: (dv, -du) in (u, v)
+      c.mesh.quad(slots.band, P(q, 0), P(r, 0), P(r, out), P(q, out), part, add(scale(c.p.r, dv), scale(UP, -du)));
+    }
+    n++;
+    // pier facings between the openings (and at the run's ends) below the springing line
+    const edges = [a0, ...own.flatMap(h => [h[0], h[1]]), b0];
+    for (let i = 0; i + 1 < edges.length; i += 2) {
+      const u0 = edges[i], u1 = edges[i + 1];
+      if (u1 - u0 < 0.2 || spring - base < 0.3 || !fitsPanel(c.p, rectPoly(u0, u1, base, spring), 0.01)) continue;
+      c.box(slots.pier, u0, u1, base, spring, 0, out, c.part());
+      n++;
+    }
+  }
   return n;
 }
 
