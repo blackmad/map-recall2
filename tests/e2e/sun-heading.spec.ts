@@ -289,13 +289,16 @@ for (const query of QUERIES) {
     await settle(page);
     report.landmarkSuns = await page.evaluate(() => {
       const l = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
-      return (l?._entries ?? []).filter((e: any) => e.scene).map((e: any) => {
+      // One scene per model (`?landmarkBatch=0`), or the one scene for all of them, lit in its anchor world.
+      const scenes = (l?._entries ?? []).filter((e: any) => e.scene).map((e: any) => ({ id: e.spec.id, scene: e.scene, m: e.transform.elements }));
+      if (l?._batchLegacy && l._batchScene && l._mercatorFromWorld) scenes.push({ id: 'one-scene', scene: l._batchScene, m: l._mercatorFromWorld });
+      return scenes.map((e: any) => {
         const suns = e.scene.children.filter((c: any) => c.isDirectionalLight).sort((a: any, b: any) => b.intensity - a.intensity);
         if (!suns.length) return null;
-        const m = e.transform.elements, p = suns[0].position;
+        const m = e.m, p = suns[0].position;
         const x = m[0] * p.x + m[4] * p.y + m[8] * p.z, y = -(m[1] * p.x + m[5] * p.y + m[9] * p.z), z = m[2] * p.x + m[6] * p.y + m[10] * p.z;
         const len = Math.hypot(x, y, z);
-        return { id: e.spec.id, azimuthDeg: Math.round(((Math.atan2(x, y) * 180 / Math.PI) + 360) % 360), elevationDeg: Math.round(Math.asin(z / len) * 180 / Math.PI) };
+        return { id: e.id, azimuthDeg: Math.round(((Math.atan2(x, y) * 180 / Math.PI) + 360) % 360), elevationDeg: Math.round(Math.asin(z / len) * 180 / Math.PI) };
       }).filter(Boolean);
     });
     writeFileSync(join(dir, 'sun-heading.json'), JSON.stringify(report, null, 1));
