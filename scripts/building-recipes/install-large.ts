@@ -22,10 +22,19 @@ import {meshHashOf} from './mesh-hash.ts';
 import {compileLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {closeRenderer} from './render.ts';
+import {loadBagTiles} from '../lib/bagTileIndex.ts';
 
 const CATALOGUE = 'public/canal-drive/ordinary-buildings-data/catalogue.json', MODELS = 'public/canal-drive/models/ordinary-buildings', ARTIFACTS = 'artifacts/building-recipes';
 /** Gallery/placement fields of a replaced hand-built entry that still describe the same building. */
 const CARRY = ['cameraBearing', 'galleryFrontage', 'gallerySecondary', 'referenceImages', 'retainedNeighbors'] as const;
+
+let bagIndex: ReturnType<typeof loadBagTiles> | null = null;
+/** Hand-mapped OSM outlines the base tiles still draw under a pand (the pand's `osm` alias, a separate tier-4 feature):
+ * hiding only the pand reveals them, so the entry lists them as `aliases` (the runtime suppresses buildingId + aliases) too (Rietveld Academie: w57860150, 1928 m2, 32.4 m). */
+function linkedOsmOutlines(pand: string): string[] {
+  bagIndex ??= loadBagTiles('public/data/extracts/amsterdam/bag-tiles/14');
+  return (bagIndex.pands.get(`NL.IMBAG.Pand.${pand}`)?.osm ?? []).filter(id => bagIndex!.osmOnly.has(id));
+}
 
 const io = new NodeIO().registerExtensions([KHRMeshQuantization]);
 async function bounds(bytes: Uint8Array) {
@@ -62,6 +71,7 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
     anchor: ll(ax, ay), footprint: {type: 'Polygon', coordinates: facts.bagFootprintRD.map(ring => ring.map(p => ll(p[0], p[1])))},
     nativeHeight: +facts.heights.roofMaxM.toFixed(2), height: +b.max[1].toFixed(2),
     modelUrl: `./models/ordinary-buildings/recipe-large-${id}.glb`, suppress: [`NL.IMBAG.Pand.${pand}`],
+    ...(linkedOsmOutlines(pand).length ? {aliases: linkedOsmOutlines(pand)} : {}),
     ...carried,
     // Not 'building-recipes': that tag means a street-survey recipe house (buildingCategory.test.ts).
     source: 'building-recipes-large', recipe: {id, kind: 'large', intentSources: intent.sources.map(s => s.image ?? s.id), gates: report.gates.map(g => `${g.id}:${g.pass ? 'pass' : 'FAIL'}`),
