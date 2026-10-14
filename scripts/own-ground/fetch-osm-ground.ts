@@ -38,6 +38,7 @@ function overpassQuery(bb: string): string {
       way[leisure~"^(park|garden|playground|pitch|common)$"](${bb});
       relation[leisure~"^(park|garden)$"](${bb});
       way[landuse~"^(grass|recreation_ground|cemetery|village_green|flowerbed|meadow)$"](${bb});
+      way[tourism=zoo](${bb}); relation[tourism=zoo](${bb});
       way[natural~"^(grass|scrub|wood)$"](${bb});
       way[place=square](${bb}); relation[place=square](${bb});
       way[amenity=parking][parking!~"underground|multi-storey"](${bb});

@@ -23,7 +23,7 @@ import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, enco
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
+import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
@@ -1289,4 +1289,19 @@ test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish 
   assert.equal(groundLookFrom('?groundLook=default'), 'default');
   const bright = basemapGroundPatches([{ id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('bright'));
   assert.equal(bright[0].value, groundPalette('bright').tones.water);
+});
+
+test('a movable leaf gets fixed spans to the quays its bridge way reaches (Nijlpaardenbrug BRU1907)', () => {
+  // A 10 x 4 m leaf along x at x 15..25; the OSM bridge way runs quay to quay, x 0..40.
+  const leaf: Vec2[] = [[15, -2], [25, -2], [25, 2], [15, 2]];
+  const spans = movableApproaches(leaf, [[[0, 0.3], [40, 0.3]]]);
+  assert.equal(spans.length, 2, 'one span either side');
+  const xs = spans.map(r => r.map(p => p[0])).map(x => [Math.min(...x), Math.max(...x)]).sort((a, b) => a[0] - b[0]);
+  assert.ok(Math.abs(xs[0][0] - 0) < 1e-6 && Math.abs(xs[0][1] - 15.05) < 1e-6, `west span to the way's end, overlapping the leaf (${xs[0]})`);
+  assert.ok(Math.abs(xs[1][0] - 24.95) < 1e-6 && Math.abs(xs[1][1] - 40) < 1e-6, `east span (${xs[1]})`);
+  for (const r of spans) { const ys = r.map(p => p[1]); assert.ok(Math.abs(Math.min(...ys) + 2) < 1e-6 && Math.abs(Math.max(...ys) - 2) < 1e-6, 'as wide as the leaf'); }
+  assert.equal(movableApproaches(leaf, [[[16, 0], [24, 0]]]).length, 0, 'a way that ends on the leaf adds nothing');
+  assert.equal(movableApproaches(leaf, [[[0, 30], [40, 30]]]).length, 0, 'a way that misses the leaf adds nothing');
+  const long = movableApproaches(leaf, [[[-100, 0], [40, 0]]]).flatMap(r => r.map(p => p[0]));
+  assert.ok(Math.abs(Math.min(...long) - (15 - APPROACH_MAX_M)) < 1e-6, 'capped at APPROACH_MAX_M');
 });

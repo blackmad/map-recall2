@@ -1,5 +1,62 @@
 # Canal Recall — what is built
 
+## Ride review, Jordaan and Plantage: three fixes, seventeen rows (2026-10-14)
+
+Lane `lane/ride-review-jordaan-plantage-20261014`. New
+`scripts/ride-review-shots.mjs` runs one seeded ride in chase view at
+1280×800, holding the pose every 60 m, at turns over 25°, 35 m before each
+routed bridge and at named landmarks, quiz cards visible; specs in
+`scripts/ride-review/`; every frame viewed in 2×2 grids at 640 px, suspects
+at full size (`docs/images/ride-review-20261014/{jordaan,plantage}-contact.jpg`,
+doc `docs/ride-review-jordaan-plantage-20261014.md`). **Fixes:** (1) movable
+leaves get their fixed spans: the Nijlpaardenbrug BRU1907 was a 10 m leaf
+floating mid-canal with the cycleway cut at both quays, because the
+register footprint of a movable bridge is the leaf only while the OSM way
+runs 36 m quay to quay; `movableApproaches` in `decks.ts` extends the leaf
+along each OSM bridge way through it (leaf width, at most 30 m a side),
+`groundStore.cellInput` adds these spans as flat decks exempt from the
+water cut on street bands, the portal stays on the leaf; named regression
+BRU1907 in `check:own-ground-cells` (deck and cycle band at 0.2/0.3/0.7/0.8
+of the way). (2) Landmark roof wash uses the frame's up: with the
+Westertoren card open the whole Westerkerk turned orange, walls included,
+because the highlight passed up = +y which is north in the shared frame;
+`LANDMARK_WORLD_UP` in `look/highlight.ts` (+z in the shared frame, +y in
+the older paths), measured up vector [-0.06, 0, -1] → [0, 1, 0]; `test:look`
+reproduces the chain. (3) Zoos are green: the city fetch never queried
+`tourism=zoo`, so Artis read as a sand plaza; `areaKind` maps zoo to park,
+`fetch-osm-ground.ts` queries it, `scripts/own-ground/add-zoo-areas.ts`
+(osmium from the cached extract) added 16 zoo polygons to 15 published
+cells (Artis plus 15 petting farms, 19.8 ha); turning Artis green exposed
+bare land through the green in hollows (14 % of Artis, 54 % of its west
+third in the next cell), so `groundCell` skips land squares wholly inside
+a park-class area of the cell or its neighbours (small risk of a gap at
+the far ring's coarser neighbour; none seen at Wertheimpark or the
+Hortus); named regression a8733446 (3 % bare land over 72 probes, 53 %
+without the zoo). **Open rows** (place as lng, lat, bearing): Jordaan J2
+the Westerkerk roofs still get the small-target wash though the church
+fills ~15 % of the frame (the marker measures the boost on the tower
+footprint); J3 the Westertoren is out of frame until ~100 m (chase pitch);
+J4 inner-block gardens draw as bare sand, blocks read as squares (no OSM
+area, default land); J5 Bloemgracht houses at 30–60 m are flat grey boxes
+(streamed tier); J6 grey slabs over the four corners of the
+Nieuwe-Wercksbrug BRU0063 (deck top 4–10 m onto land, wider than the
+street bands); J7 playground slabs and a white frame float on the
+Noordermarkt; J8 the Egelantiersgracht mouth looks closed (Pansemertbrug
+BRU0124 a flush 8.4 m deck). Plantage P3 the Entrepotdok warehouses are
+long dark boxes with khaki roofs and loose gable stubs; P4 the Walter
+Süskindbrug BRU0237 reads as a thin white wire cube (movable without deck
+data drawn as posts and beam); P5 no Artis main gate; P6 the Hollandsche
+Schouwburg is an ordinary terrace front; P7 dark-brown windowless masses
+across from Artis; P8 a pale facade ripples along a curved footprint
+(unchecked); P9 the Mahatma Gandhiplantsoen sits on a ~1 m hedge box.
+Cleared: the HUD; a "Which street are you on now?" prompt for the
+Prinsengracht stayed open 45 s with the name nowhere on screen (the quiz
+working as designed). Two capture problems were the lane's own: trees
+vanished when the dev server died mid-run, and early Bloemgracht frames
+rode on the routing extract's straight two-node line. Checks: own-ground
+71, canal-elevation 11, look 59, own-ground-cells 0 FAIL.
+
+
 ## Kinkerstraat odd side authored: eight faces, 76 pands, 184,519 tris (2026-10-14)
 
 Lane `lane/kinkerstraat-odd-20261014` (plan Part 2 step 4). Faces
