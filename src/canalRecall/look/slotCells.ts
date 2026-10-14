@@ -9,6 +9,7 @@
  * 2026-10-13 so both draw the same pixels.
  */
 import {paintRoofCell} from '../roofCells.ts';
+import {GLASS_TINT_CELL_H, GLASS_TINT_CELL_W, glassTintCellValue} from './palette.ts';
 
 /** Brick cell: the city's bay-texture wall (Bricks057 photo + mortar coursing), neutralised and lifted like calmBayLayers('photo'). */
 export function paintBrickCanvas(doc: Document, brick?: CanvasImageSource | null): HTMLCanvasElement {
@@ -49,6 +50,18 @@ export function paintGlassCanvas(doc: Document): HTMLCanvasElement {
   ctx.fillStyle = g; ctx.fillRect(0, 0, 64, 128);
   ctx.fillStyle = 'rgba(235,242,248,0.16)';
   ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(34, 0); ctx.lineTo(4, 70); ctx.lineTo(-20, 70); ctx.closePath(); ctx.fill();
+  return canvas;
+}
+
+/** Measured glass pane (UV 0..1 per pane): the glass gradient and streak in grey, for an authored tint (palette.ts `glassTintCellValue`). */
+export function paintGlassTintCanvas(doc: Document): HTMLCanvasElement {
+  const canvas = doc.createElement('canvas'); canvas.width = GLASS_TINT_CELL_W; canvas.height = GLASS_TINT_CELL_H;
+  const ctx = canvas.getContext('2d')!, image = ctx.createImageData(GLASS_TINT_CELL_W, GLASS_TINT_CELL_H);
+  for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) {
+    const i = (y * GLASS_TINT_CELL_W + x) * 4, v = glassTintCellValue(x, y);
+    image.data[i] = image.data[i + 1] = image.data[i + 2] = v; image.data[i + 3] = 255;
+  }
+  ctx.putImageData(image, 0, 0);
   return canvas;
 }
 

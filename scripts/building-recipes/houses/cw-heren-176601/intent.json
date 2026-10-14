@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-heren-176601",
+ "pandId": "0363100012176601",
+ "address": "Herengracht (BAG 1727; late-19th-c. front: dark frames, segmental heads, carved white keystones, white stone base)",
+ "sources": [
+  {
+   "id": "pano-2017-07-07",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-07",
+   "image": "staging/pand-reference-walls/0363100012176601/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Herengracht",
+   "gable": "cornice",
+   "storeys": 4,
+   "bays": 3,
+   "doorBay": null,
+   "gridAt": {
+    "from": -0.08,
+    "to": 0.92
+   },
+   "basement": "windows",
+   "souterrain": true,
+   "basementBars": true,
+   "cornice": "bracketed",
+   "hoist": false,
+   "storeyHeights": [
+    0.6,
+    1.0,
+    0.98,
+    0.85,
+    0.75
+   ],
+   "windows": "t-window",
+   "windowShare": 0.55,
+   "windowHeights": [
+    0.85,
+    0.78,
+    0.75,
+    0.7
+   ],
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "archRing": {
+     "colour": "stone",
+     "style": "none",
+     "keystone": true
+    }
+   },
+   "windowSurround": "sill"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#5a4a3c",
+  "frame": "#2b2420",
+  "door": "#2b2420",
+  "stone": "#ddd9cc"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front.jpg 2017-07-07 (summer leaves over the top storeys; front-alt.jpg 2023-02-27 shows the details but its scale is off by ~1.5x). Dark brown-black frames in deep reveals, shallow segmental heads, T-windows, carved lantern-shaped white keystones (a plain block in the kit), white stone souterrain base with barred basement lights."
+ ]
+}

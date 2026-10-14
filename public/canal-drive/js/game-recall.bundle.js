@@ -47112,6 +47112,7 @@
     }
     return { index, distance };
   }
+  var START_HEADING_SNAP_RAD = Math.PI / 6;
 
   // src/canalRecall/game/recallRuntime.ts
   var DISTRACTOR_COUNT = 3;

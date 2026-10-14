@@ -627,7 +627,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
   Haag need extracts; footprint tiles to a worker; the Leaflet map picker
   (`map-picker.js:243`) also loads live OSM tiles — replace it too.
-- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.6 MB
+- **Own ground ON BY DEFAULT since 2026-10-14 (HISTORY "Own ground on by
+  default"; `?ownGround=0` opts out); leftovers of the original item** (city-wide, 294 cells, 29.6 MB
   gzip after 2026-10-13). Data blockers cleared 2026-10-13 (HISTORY): per-polder
   water levels, BGT width per way (73.6% of drawable ways), 931 measured
   bridges. Remaining before default-on: a desktop ride-perf measurement with
@@ -738,7 +739,9 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   profile.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
-- **Own ground after the 2026-10-13/14 lanes (HISTORY)**: still open
+- **Own ground after the 2026-10-13/14 lanes (HISTORY)**, now post-flip (the
+  desktop default is on; iPhone ride-perf and the phone default still
+  unmeasured): still open
   before a desktop default-on in the belt: bridge-kit leftovers (the
   Blauwbrug and BRU0063 hit the 600-tri budget so their arches are 4–5
   segments and have no lamps; the Magere Brug railing is sparse at ~9 m
@@ -1233,8 +1236,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   plinth for the ~6 groups, kit primitives for slab and lettered
   memorials; before any install decide bronze tint vs vertex colour and
   the freedom-of-panorama question (user); automate photo pick → cut-out
-  (IS-Net fallback) → TripoSR → decimate → strip as one command; re-ask
-  the city for the mobile-mapping cloud host; the backlog needs a pass that
+  (IS-Net fallback) → TripoSR → decimate → strip as one command (batch
+  lane running); Object Capture tried (HISTORY "Object Capture"): only a
+  same-photographer Commons series gives a front half, panoramas resolve
+  nothing, so it is a reference check, not a route; re-ask the city for
+  the mobile-mapping cloud host; the backlog needs a pass that
   marks built ids and location matches as done (Carmiggelt, Winkler Prins,
   Anne Frank, Walraven van Hall, Multatuli still read pending); dedupe the
   Thijssen/Jordaan lines in `build-manual-landmarks.ts`; left from the
@@ -1246,10 +1252,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Westermoskee NW/SW walls and SE porch unphotographed.
 - **P0 Live play, 2026-10-14 (user screenshots on the live site, boat ride
   Hugo de Grootgracht → IJ-toren with `?ownGround=1`)**, lanes running:
-  (a) own ground becomes the default, `?ownGround=0` opts out, desktop
-  ride-perf measured before/after; (b) the boat and chase camera start
-  facing away from the route's first leg (spawn heading vs first-leg
-  bearing; seeded e2e); (c) own-ground road paint is thinner than the
+  (a) DONE own ground is the default (+2.5 ms main thread, +90 MB, frame
+  time unchanged); (b) DONE the start faces the first leg (HISTORY "Own
+  ground on by default; the start faces the first leg"); (c) own-ground road paint is thinner than the
   legacy ground's (centre/edge lines, zebras, stop lines, cycle symbols,
   painted names; Singelgracht/Nassaukade junction as the regression);
   (d) the scene reads too dark in own-ground mode (luminance table vs the
@@ -1279,10 +1284,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `measure.ts`, the sheet with verdict, the install gate), lane B measured
   tint bypass (`tintSource: 'measured'`), lane C kit vocabulary DONE
   (HISTORY "Large kit vocabulary"; the three re-fits are held in
-  `scripts/building-recipes/held-installs.json` until lane B2 fixes the
-  look: `cityTint('glass')` white for all glass, measured dark walls
-  near-black and the plum half pale grey in the city-look column; then
-  install and drop the hold), the texture prototype DONE and lost to the kit on all three (HISTORY
+  `scripts/building-recipes/held-installs.json` until the reconciliation lane
+  (lane A's measured values on lane C's systems, with lane B2's look fix
+  merged: measured glass now reaches the game, the near-black column was
+  the sheet's raw-colour path, HISTORY "Measured glass reaches the game")
+  installs them and drops the hold), the texture prototype DONE and lost to the kit on all three (HISTORY
   "Texture prototype"; a fairer second try only if lane C's kit fails
   likeness: 16 px/m, no posterisation, lit by the look), lane D triage of
   the ~100 installed houses (re-fit / uninstall / bespoke) and
@@ -1369,9 +1375,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   are not modelled; walls with no photo stay inferred kit walls.
 - **P1 Commercial streets: Kinkerstraat, then Jan Evertsenstraat** (plan
   Part 2, user 2026-10-14): shared type library DONE (`scripts/block-face/types/<district>/`,
-  `blockFace/typeLibrary.ts`); Kinkerstraat survey lane
-  (`street-pands.ts`, `pand-reference --street`, intake per face, ~209
-  pands: 1880s–1900s 161, 1910s 13, 1980s infill 31); Oud-West type
+  `blockFace/typeLibrary.ts`); Kinkerstraat survey DONE (HISTORY "Kinkerstraat surveyed": 217 pands,
+  28 faces with strips; large/bespoke candidates listed; `kinker-240-240`
+  no sightline; the two halls need another capture date); Oud-West type
   library (1890 brick-arched, 1900 stucco front, 1985 infill) with palettes
   from strip medians; face lanes of ~10 pands, never `compile.ts --install`;
   review lane with the camera-matched row, likeness and a verdict per pand,
@@ -1389,6 +1395,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `look/palette.ts` keyed by CBS buurt with a per-pand district index in
   the facts sidecar and the streamed rigid canopy; a destination on each
   street for the seeded ride.
+- **P1 Canal-house windows and white accents** (user 2026-10-14 "window shape
+  on canal houses is important to me, as are white-brick accents"): the
+  survey keys are in the kit (HISTORY "Canal-house windows and white
+  accents measured into the kit"; eight `cw-*` regression houses, not
+  installed). Open: the sixteen things the kit still cannot say listed
+  there, first the four the photos show most (loading-door axes, shutters
+  whose field the fit ignores, fanlights, carved keystones); the Nassaukade
+  506 benchmark block (user photo 2026-10-14: painted bands at sill and
+  lintel, eared surrounds with keystones, timber bracketed balconies, a bay
+  window, pediment dormers, painted-black brick; lane running) and the
+  Oud-West type lane build on these keys; then a pass over the installed
+  canal-belt recipes with `windowHeights: 'diminishing'` and the measured
+  `windowShare`.
 - **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14 "are we
   accurately modeling the brick bridges"): arch count, material and
   railing type per bridge from the register and aimed panoramas into
@@ -1398,6 +1417,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   DSM for the 128 tree gaps, per-span profiles for the viaducts). Named
   regressions: the Seven Bridges stretch of the Reguliersgracht, the
   Torensluis. Default-on steps unchanged.
+- **P2 Route start guard**: report when the planned route's first point is
+  far behind the spawn (the start-heading bug's root cause; the fix reads
+  the leg from the spawn, the planner could also snap better).
 - **Parks, next** (2026-10-14, HISTORY "Parks from the BGT survey"):
   lawn/bed/shrub as flat tones only (a stipple or relief pass); BGT walls all at 0.75 m; 22 parks and 110 playgrounds without
   BGT polygons; the raw BGT cache is archived in
