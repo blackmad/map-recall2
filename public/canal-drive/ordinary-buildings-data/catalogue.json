@@ -45119,6 +45119,186 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T01:42:48.619Z"
+    },
+    {
+      "id": "ordinary-0363100012201637",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012201637",
+      "name": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 grey-clad industrial block 36 m high with a curved eaves line and sparse small windows, mostly hidden by trees",
+      "hash": "bb6bb51f35bead8cf205f9757b075e165b148dc33707f78ed0b8f38cbf78aa31",
+      "sha256": "bb6bb51f35bead8cf205f9757b075e165b148dc33707f78ed0b8f38cbf78aa31",
+      "bytes": 60900,
+      "triangles": 680,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -73.488,
+          0.001,
+          -27.759
+        ],
+        "max": [
+          56.029,
+          37.073,
+          28.447
+        ]
+      },
+      "anchor": [
+        4.899412,
+        52.3910964
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8999067,
+              52.391158
+            ],
+            [
+              4.8999265,
+              52.3911603
+            ],
+            [
+              4.899887,
+              52.3912866
+            ],
+            [
+              4.8996909,
+              52.3912635
+            ],
+            [
+              4.8997272,
+              52.3911471
+            ],
+            [
+              4.8996384,
+              52.3911365
+            ],
+            [
+              4.8995733,
+              52.3913465
+            ],
+            [
+              4.8993796,
+              52.3913237
+            ],
+            [
+              4.8993804,
+              52.3913209
+            ],
+            [
+              4.8987797,
+              52.3912506
+            ],
+            [
+              4.8985654,
+              52.3912252
+            ],
+            [
+              4.8985847,
+              52.391169
+            ],
+            [
+              4.8983313,
+              52.391137
+            ],
+            [
+              4.8984339,
+              52.3908443
+            ],
+            [
+              4.8986893,
+              52.3908773
+            ],
+            [
+              4.8987028,
+              52.3908378
+            ],
+            [
+              4.8989075,
+              52.3908622
+            ],
+            [
+              4.8992106,
+              52.3908977
+            ],
+            [
+              4.8992091,
+              52.390902
+            ],
+            [
+              4.8999606,
+              52.3909898
+            ],
+            [
+              4.8999635,
+              52.3909807
+            ],
+            [
+              4.900236,
+              52.3910133
+            ],
+            [
+              4.900203,
+              52.3911166
+            ],
+            [
+              4.8999483,
+              52.3910862
+            ],
+            [
+              4.899948,
+              52.3910872
+            ],
+            [
+              4.8999293,
+              52.391085
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 37.07,
+      "height": 37.07,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-grasweg-41-201637.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012201637"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "grasweg-41-201637",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012201637/w05-80.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 9st 4b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 45 (E, 24.6 m, party 6.9 m below): the grey cladding with small windows in three rows, drawn as 9 storeys x 4 bays of low windows with the other storeys blank (render/stone material grey). Every other wall is blank grey (palette brick set to the cladding grey) and the flat roof is bitumen. Simplified: the curved cap on the eaves line (straight in 3DBAG), the horizontal cladding ribs, the window positions (read from one oblique photo)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012201637",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T01:43:36.335Z"
     }
   ]
 }

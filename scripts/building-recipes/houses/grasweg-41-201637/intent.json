@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "grasweg-41-201637",
+ "pandId": "0363100012201637",
+ "address": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 grey-clad industrial block 36 m high with a curved eaves line and sparse small windows, mostly hidden by trees",
+ "sources": [
+  {
+   "id": "pano-2016-07-08-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2016-07-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000105_pano_0001_007089/",
+   "image": "staging/pand-reference-walls/0363100012201637/w05-80.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    53
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 4,
+   "ground": "blank",
+   "windows": "low",
+   "blankStoreys": [
+    0,
+    1,
+    2,
+    5,
+    7,
+    8
+   ],
+   "deepBars": true,
+   "wallMaterial": "stone",
+   "palette": {
+    "brick": "#a8acb0",
+    "frame": "#5a6a74",
+    "stone": "#a8acb0"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#a8acb0",
+  "frame": "#5a6a74",
+  "door": "#3a4a58",
+  "stone": "#7a8a8a"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Grasweg 41S (BAG, 2010; Buiksloterham, Noord): a 36 m grey metal-clad industrial block with a curved eaves line and low annexes (6.9-8.9 m) to the west. The panoramas show it only through tree cover and over a blue site fence: w01-349 (north, 22 m away) is all foliage, w05-80 (east, 34 m, 20 degree obliquity) shows the grey cladding with a few small windows under a curved cap, w08-349 shows the low annex behind the fence.",
+  "walls[0] = panel 45 (E, 24.6 m, party 6.9 m below): the grey cladding with small windows in three rows, drawn as 9 storeys x 4 bays of low windows with the other storeys blank (render/stone material grey). Every other wall is blank grey (palette brick set to the cladding grey) and the flat roof is bitumen. Simplified: the curved cap on the eaves line (straight in 3DBAG), the horizontal cladding ribs, the window positions (read from one oblique photo).",
+  "Not drawn or not seen: the north, south and west walls (tree cover) and the annexes."
+ ]
+}
