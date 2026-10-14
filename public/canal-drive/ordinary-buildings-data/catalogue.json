@@ -47589,7 +47589,11 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239388",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:32:28.012Z"
+      "updatedAt": "2026-10-14T02:32:28.012Z",
+      "aliases": [
+        "NL.IMBAG.Pand.0363100012239386",
+        "NL.IMBAG.Pand.0363100012239387"
+      ]
     },
     {
       "id": "ordinary-0363100012118320",
