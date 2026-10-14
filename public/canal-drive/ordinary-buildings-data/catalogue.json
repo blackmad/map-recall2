@@ -39560,579 +39560,15 @@
       "meshHash": "5d3e942e31bac56a"
     },
     {
-      "id": "ordinary-0363100012165293",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012165293",
-      "name": "Pijlsteeg 31 / Warmoesstraat 173, Amsterdam: Grand Hotel Krasnapolsky block (stone-and-brick hotel front, 1970s concrete arcade wing, Damstraat corner fronts)",
-      "hash": "ebd7fb76b396cab6c600526881367ca563b6fa866e285c7708b0a15448d6b664",
-      "sha256": "ebd7fb76b396cab6c600526881367ca563b6fa866e285c7708b0a15448d6b664",
-      "bytes": 547328,
-      "triangles": 6789,
-      "materials": 15,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -50.104,
-          0,
-          -56.557
-        ],
-        "max": [
-          83.765,
-          27.557,
-          81.686
-        ]
-      },
-      "anchor": [
-        4.8949574,
-        52.3727268
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8953983,
-              52.3720649
-            ],
-            [
-              4.8953987,
-              52.3720653
-            ],
-            [
-              4.8956151,
-              52.3719953
-            ],
-            [
-              4.8956653,
-              52.3720007
-            ],
-            [
-              4.8957766,
-              52.3720877
-            ],
-            [
-              4.8957723,
-              52.3720911
-            ],
-            [
-              4.8957742,
-              52.3720931
-            ],
-            [
-              4.8954886,
-              52.3721845
-            ],
-            [
-              4.8951827,
-              52.3722808
-            ],
-            [
-              4.895216,
-              52.372319
-            ],
-            [
-              4.8952076,
-              52.3723216
-            ],
-            [
-              4.8952402,
-              52.37236
-            ],
-            [
-              4.8953866,
-              52.3723132
-            ],
-            [
-              4.8954267,
-              52.372368
-            ],
-            [
-              4.8953083,
-              52.3724023
-            ],
-            [
-              4.895279,
-              52.372367
-            ],
-            [
-              4.895229,
-              52.372383
-            ],
-            [
-              4.8953526,
-              52.3725274
-            ],
-            [
-              4.8953733,
-              52.3725211
-            ],
-            [
-              4.8953939,
-              52.3725456
-            ],
-            [
-              4.8953946,
-              52.3725466
-            ],
-            [
-              4.8953949,
-              52.3725476
-            ],
-            [
-              4.8953949,
-              52.3725492
-            ],
-            [
-              4.8953941,
-              52.3725507
-            ],
-            [
-              4.8953922,
-              52.3725525
-            ],
-            [
-              4.8953901,
-              52.3725535
-            ],
-            [
-              4.8952776,
-              52.3725895
-            ],
-            [
-              4.8952952,
-              52.3726092
-            ],
-            [
-              4.8953938,
-              52.3725775
-            ],
-            [
-              4.8954762,
-              52.3726786
-            ],
-            [
-              4.8958938,
-              52.3725512
-            ],
-            [
-              4.8959208,
-              52.372582
-            ],
-            [
-              4.8958081,
-              52.3726188
-            ],
-            [
-              4.8959144,
-              52.3727361
-            ],
-            [
-              4.896033,
-              52.3726981
-            ],
-            [
-              4.8961857,
-              52.3728832
-            ],
-            [
-              4.8955997,
-              52.3730661
-            ],
-            [
-              4.8956011,
-              52.3730677
-            ],
-            [
-              4.8955421,
-              52.3730862
-            ],
-            [
-              4.8955363,
-              52.3730792
-            ],
-            [
-              4.8951539,
-              52.3731987
-            ],
-            [
-              4.89516,
-              52.3732057
-            ],
-            [
-              4.8951428,
-              52.3732113
-            ],
-            [
-              4.8951416,
-              52.3732097
-            ],
-            [
-              4.8950586,
-              52.3732355
-            ],
-            [
-              4.894899,
-              52.3731408
-            ],
-            [
-              4.8949007,
-              52.3731398
-            ],
-            [
-              4.8948732,
-              52.3731233
-            ],
-            [
-              4.8948713,
-              52.3731245
-            ],
-            [
-              4.8948632,
-              52.3731193
-            ],
-            [
-              4.8948643,
-              52.3731187
-            ],
-            [
-              4.8948263,
-              52.3730943
-            ],
-            [
-              4.8948252,
-              52.3730949
-            ],
-            [
-              4.8948186,
-              52.3730907
-            ],
-            [
-              4.894824,
-              52.3730876
-            ],
-            [
-              4.8947997,
-              52.373072
-            ],
-            [
-              4.8947944,
-              52.3730751
-            ],
-            [
-              4.8947888,
-              52.3730715
-            ],
-            [
-              4.8947941,
-              52.3730684
-            ],
-            [
-              4.8947744,
-              52.3730557
-            ],
-            [
-              4.894769,
-              52.3730588
-            ],
-            [
-              4.894763,
-              52.3730549
-            ],
-            [
-              4.8947683,
-              52.3730518
-            ],
-            [
-              4.8947485,
-              52.3730391
-            ],
-            [
-              4.8947432,
-              52.3730422
-            ],
-            [
-              4.8947376,
-              52.3730386
-            ],
-            [
-              4.894743,
-              52.3730355
-            ],
-            [
-              4.8947187,
-              52.3730199
-            ],
-            [
-              4.8947133,
-              52.373023
-            ],
-            [
-              4.8947123,
-              52.3730232
-            ],
-            [
-              4.8947063,
-              52.3730191
-            ],
-            [
-              4.8947075,
-              52.3730185
-            ],
-            [
-              4.894702,
-              52.3730148
-            ],
-            [
-              4.8947068,
-              52.3730122
-            ],
-            [
-              4.8946852,
-              52.3729975
-            ],
-            [
-              4.8946805,
-              52.3730001
-            ],
-            [
-              4.8946756,
-              52.3729967
-            ],
-            [
-              4.8946745,
-              52.3729973
-            ],
-            [
-              4.8946686,
-              52.3729933
-            ],
-            [
-              4.8946702,
-              52.3729924
-            ],
-            [
-              4.8945754,
-              52.3729246
-            ],
-            [
-              4.8945743,
-              52.3729251
-            ],
-            [
-              4.8945441,
-              52.3729044
-            ],
-            [
-              4.8944935,
-              52.3728692
-            ],
-            [
-              4.8944843,
-              52.3728625
-            ],
-            [
-              4.8944854,
-              52.3728619
-            ],
-            [
-              4.8944506,
-              52.3728352
-            ],
-            [
-              4.8944494,
-              52.3728357
-            ],
-            [
-              4.8944446,
-              52.3728321
-            ],
-            [
-              4.8944431,
-              52.3728328
-            ],
-            [
-              4.8942648,
-              52.3726866
-            ],
-            [
-              4.894266,
-              52.3726861
-            ],
-            [
-              4.8942244,
-              52.3726524
-            ],
-            [
-              4.8942258,
-              52.3726517
-            ],
-            [
-              4.8942225,
-              52.3726491
-            ],
-            [
-              4.894231,
-              52.3726457
-            ],
-            [
-              4.8942301,
-              52.3726448
-            ],
-            [
-              4.8943296,
-              52.3726053
-            ],
-            [
-              4.8943305,
-              52.3726062
-            ],
-            [
-              4.894339,
-              52.3726028
-            ],
-            [
-              4.8943399,
-              52.3726036
-            ],
-            [
-              4.8946145,
-              52.372499
-            ],
-            [
-              4.8946532,
-              52.3724846
-            ],
-            [
-              4.8946589,
-              52.372483
-            ],
-            [
-              4.8946624,
-              52.3724876
-            ],
-            [
-              4.8946783,
-              52.3724831
-            ],
-            [
-              4.8946778,
-              52.3724822
-            ],
-            [
-              4.8946776,
-              52.3724812
-            ],
-            [
-              4.8946778,
-              52.3724802
-            ],
-            [
-              4.8946782,
-              52.3724792
-            ],
-            [
-              4.8946789,
-              52.3724783
-            ],
-            [
-              4.8946798,
-              52.3724775
-            ],
-            [
-              4.894681,
-              52.3724769
-            ],
-            [
-              4.8946824,
-              52.3724763
-            ],
-            [
-              4.8949444,
-              52.3723925
-            ],
-            [
-              4.8949215,
-              52.3723633
-            ],
-            [
-              4.8948865,
-              52.3723743
-            ],
-            [
-              4.8947898,
-              52.3722617
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 27.56,
-      "height": 27.56,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-pijlsteeg-31-165293.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012165293"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "pijlsteeg-31-165293",
-        "kind": "large",
-        "intentSources": [
-          "staging/pand-reference-walls/0363100012165293/w06-307.jpg",
-          "staging/pand-reference-walls/0363100012165293/w01-208.jpg",
-          "staging/pand-reference-walls/0363100012165293/w05-212.jpg",
-          "staging/pand-reference-walls/0363100012165293/w07-208.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "eaves-vs-3dbag/walls[3]:pass",
-          "storey-height/walls[3]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "brick-bay-grid+entrance 5st 4b",
-          "brick-bay-grid 3st 9b",
-          "brick-bay-grid 5st 3b",
-          "brick-bay-grid 5st 3b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Pijlsteeg 31 (BAG, built 1994 as the latest rebuild) is the Grand Hotel Krasnapolsky block between Warmoesstraat, Damstraat and Pijlsteeg: 701 3DBAG wall surfaces round several courts, so only the four photographed street runs are drawn and every other wall stays blank brick (otherWalls).",
-        "walls[1] = panel 121 (SW, w01-208): the 1970s concrete gallery wing on the Damstraat side: a shop arcade on slim piers, one storey of nine tall curved glass bays between brick-faced piers under a deep concrete fascia, and a blank attic band with eleven small vents. Drawn as ground glazed, one tall narrow-window storey in stone material and a blank attic storey. Simplified: the curved (barrel) glazing is flat, the stepped concrete corbels on the attic are not drawn.",
-        "walls[2] = panel 475 (SW, w05-212): the hotel front on the Damstraat corner, a cream-painted stone front with a three-bay glazed ground floor under an awning, a signed fascia (HOTEL) and tall blue-grey framed windows. walls[3] = panel 80 (SW, w07-208): the red-framed Asian Spirit shopfront with a tall mullioned shop window and iron-red upper glazing. Both are drawn as glazed ground plus wide-window storeys; the shop lettering, awnings and the HOTEL fascia sign are not modelled (shop signage is tenant-specific and was changed within the capture year).",
-        "Not photographed or not exposed: the courts, the Pijlsteeg side and the north-east wings (no panorama within 35 m or only over scaffolding); they stay blank."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165293",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T03:10:47.755Z",
-      "meshHash": "d7960739b02e50de"
-    },
-    {
       "id": "ordinary-0363100012171179",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171179",
       "name": "Kloveniersburgwal 72 (former Binnengasthuis, now University of Amsterdam), Amsterdam: Nieuwe Hoogstraat row-house fronts, the 1900s GASTHUIS APOTHEEK brick range, a 1930s curved brick wing and a 1950s beige block",
-      "hash": "9fd5c640c6f479ba8719aaed98d8e641eb2f3e7f34232fe62bf2de75d66df1c2",
-      "sha256": "9fd5c640c6f479ba8719aaed98d8e641eb2f3e7f34232fe62bf2de75d66df1c2",
-      "bytes": 790924,
-      "triangles": 10242,
-      "materials": 23,
+      "hash": "b605e8ea62929b54ea8a3dc078a9249b9206525f9b4acd29d6152aeaf98761ae",
+      "sha256": "b605e8ea62929b54ea8a3dc078a9249b9206525f9b4acd29d6152aeaf98761ae",
+      "bytes": 809688,
+      "triangles": 10458,
+      "materials": 25,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -40827,12 +40263,11 @@
         "id": "kloveniersburgwal-72-171179",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012171179/w01-16.jpg",
-          "staging/pand-reference-walls/0363100012171179/w06-192.jpg",
-          "staging/pand-reference-walls/0363100012171179/w04-121.jpg",
-          "staging/pand-reference-walls/0363100012171179/w02-122.jpg",
-          "staging/pand-reference-walls/0363100012171179/w05-121.jpg",
-          "staging/pand-reference-walls/0363100012171179/w03-300.jpg"
+          "source-data://pand-reference-walls/0363100012171179/w01-16.jpg",
+          "source-data://pand-reference-walls/0363100012171179/w06-192.jpg",
+          "source-data://pand-reference-walls/0363100012171179/w04-121.jpg",
+          "source-data://pand-reference-walls/0363100012171179/w02-122.jpg",
+          "source-data://pand-reference-walls/0363100012171179/w03-300L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -40867,28 +40302,34 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.23 mean 0.50 vs photo 0.73)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (wall family brick vs photo paint, glazing storey band off by 0.23 mean 0.50 vs photo 0.73) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.18; window shape tall vs photo square; columns 3 vs photo 2)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18, window shape tall vs photo square, columns 3 vs photo 2) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[2] likeness WARN (mask IoU 0.306 < 0.45).",
+        "walls[3] not confirmed by the photo (FAIL (window shape square vs photo tall; columns 7 vs photo 13)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape square vs photo tall, columns 7 vs photo 13) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[4] not confirmed by the photo (NO EVIDENCE (foliage 28 % > 25 %)); inferred: foliage 28 %, buff brick by hand from the leafy crop",
+        "walls[5] likeness WARN (columns 5 vs photo 9).",
         "Kloveniersburgwal 72 (BAG, built 1757 core) is the former Binnengasthuis block (now University of Amsterdam) between Nieuwe Hoogstraat, Kloveniersburgwal and Oudezijds Achterburgwal; 468 3DBAG wall surfaces round several courts. Six photographed street runs are drawn (w01-16, w06-192, w04-121, w02-122, w05-121, w03-300); courts, the long south front (panel 55, no photograph) and every other wall stay blank (otherWalls).",
-        "walls[0] = the north run on Nieuwe Hoogstraat (panel 10, 9.4 m surfaces only): three storeys of row-house fronts with white-framed windows over shopfronts, cornice. The 12 m gable surfaces and the 7.7 m surface are left blank. 6 bays of ~4 m stand for the ~20 narrower row-house axes (22 bays cost 16k tris)."
+        "walls[0] = the north run on Nieuwe Hoogstraat (panel 10, 9.4 m surfaces only): three storeys of row-house fronts with white-framed windows over shopfronts, cornice. The 12 m gable surfaces and the 7.7 m surface are left blank. 6 bays of ~4 m stand for the ~20 narrower row-house axes (22 bays cost 16k tris).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 5 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #625e59 not used (not darker than the wall #5c5b57 by 10 L*, or tinted): kit glass kept; walls[2] glass #646b71 not used (not darker than the wall #7a655b by 10 L*, or tinted): kit glass kept; walls[3] wall split #938369 | #765f4d at 71 % (dE 15); walls[5] glass #514843 not used (not darker than the wall #6f5b54 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171179",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:09:09.130Z",
-      "meshHash": "d3c85e9974df1642"
+      "updatedAt": "2026-10-14T14:04:22.068Z",
+      "meshHash": "913ba0e5597d051a"
     },
     {
       "id": "ordinary-0363100012137990",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137990",
       "name": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West: 2006 apartment block in buff brick with a curved east front, a glazed entrance bay and shop/office plinth",
-      "hash": "91e6d95110cd8daa5183101056b527c222e17d2ef921992cdfb5266b6fcf04fd",
-      "sha256": "91e6d95110cd8daa5183101056b527c222e17d2ef921992cdfb5266b6fcf04fd",
-      "bytes": 287256,
+      "hash": "26ae8bb49e30721cc789e9c996090b9e323ecad8ad6b2c161033030a6b43961b",
+      "sha256": "26ae8bb49e30721cc789e9c996090b9e323ecad8ad6b2c161033030a6b43961b",
+      "bytes": 287032,
       "triangles": 3666,
-      "materials": 8,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -41189,7 +40630,7 @@
         "id": "van-oldenbarneveldtstraat-48-137990",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012137990/w01-111.jpg"
+          "source-data://pand-reference-walls/0363100012137990/w01-111.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -41209,28 +40650,29 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.29 mean 0.40 vs photo 0.16; window shape tall vs photo wide; columns 11 vs photo 7)); inferred: the only crop is backlit and reads the buff brick grey, buff kept from the sunlit thumbnail w01-111",
         "Van Oldenbarneveldtstraat 48 (BAG, 2006): a buff-brick apartment block with shop/office plinth round a courtyard; only the east front on the street (panel 50, w01-111, 2022-12-14) has a panorama within 35 m, the south, north and west fronts (w02-201, w03-20, w04-113) have none and stay blank (otherWalls).",
-        "walls[0] = panel 50: ground storey of glazed shop/office bays with a central double-door entrance (bay 5, marked with the 50-52 / 54-56 house numbers and letter boxes), four storeys of paired French windows in 11 bays separated by thin string courses, a set-back attic with three wide windows (the 3DBAG roof). Drawn as 5 storeys x 11 bays, two-light windows. Simplified: the slight curve of the front (straight in 3DBAG), the Juliet balconies and the set-back attic terrace; the house numbers and letter boxes are below the component grain."
+        "walls[0] = panel 50: ground storey of glazed shop/office bays with a central double-door entrance (bay 5, marked with the 50-52 / 54-56 house numbers and letter boxes), four storeys of paired French windows in 11 bays separated by thin string courses, a set-back attic with three wide windows (the 3DBAG roof). Drawn as 5 storeys x 11 bays, two-light windows. Simplified: the slight curve of the front (straight in 3DBAG), the Juliet balconies and the set-back attic terrace; the house numbers and letter boxes are below the component grain.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #465356 not used (not darker than the wall #51514f by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137990",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:14:55.020Z",
-      "meshHash": "c1532e16c6b78210"
+      "updatedAt": "2026-10-14T14:04:25.956Z",
+      "meshHash": "6bef82423ab48801"
     },
     {
       "id": "ordinary-0363100012091631",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012091631",
       "name": "Schaafstraat 17, Amsterdam-Noord (Overhoeks industrial estate): 1960 workshop hall with painted cream and grey banded walls and a clerestory glazing strip",
-      "hash": "ac328cf74aeb273ee71b217663565c531e69c8f84f8b3201a45af775e023e730",
-      "sha256": "ac328cf74aeb273ee71b217663565c531e69c8f84f8b3201a45af775e023e730",
-      "bytes": 112624,
+      "hash": "d10b5af745982de107bd61dcaf497ac3f91792cd34acd82c1d24e0c64baecd6f",
+      "sha256": "d10b5af745982de107bd61dcaf497ac3f91792cd34acd82c1d24e0c64baecd6f",
+      "bytes": 115424,
       "triangles": 1357,
-      "materials": 9,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -41347,9 +40789,9 @@
         "id": "schaafstraat-17-091631",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012091631/w01-169.jpg",
-          "staging/pand-reference-walls/0363100012091631/w02-259.jpg",
-          "staging/pand-reference-walls/0363100012091631/w03-79.jpg"
+          "source-data://pand-reference-walls/0363100012091631/w01-169.jpg",
+          "source-data://pand-reference-walls/0363100012091631/w02-259L.jpg",
+          "source-data://pand-reference-walls/0363100012091631/w03-79L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -41375,27 +40817,30 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0..2] = panels 46 (S), 41 (W) and 55 (E): a painted wall (white/cream over a grey plinth band) topped by a continuous clerestory glazing strip between slim posts about 5 m apart. Drawn as ribbon-windows, 2 storeys, ground storey blank (render) and low windows in the upper storey; the east wall carries the turquoise frame colour. Simplified: the grey plinth band (one wall colour), the workshop roller doors and the west wall bay doors; the north annexes and the roof lights are blank/3DBAG roof; the flat roof is bitumen."
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.46 mean 0.31 vs photo 0.74)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.46 mean 0.31 vs photo 0.74) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.25 mean 0.31 vs photo 0.56)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.25 mean 0.31 vs photo 0.56) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.33 mean 0.41 vs photo 0.71)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.33 mean 0.41 vs photo 0.71) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0..2] = panels 46 (S), 41 (W) and 55 (E): a painted wall (white/cream over a grey plinth band) topped by a continuous clerestory glazing strip between slim posts about 5 m apart. Drawn as ribbon-windows, 2 storeys, ground storey blank (render) and low windows in the upper storey; the east wall carries the turquoise frame colour. Simplified: the grey plinth band (one wall colour), the workshop roller doors and the west wall bay doors; the north annexes and the roof lights are blank/3DBAG roof; the flat roof is bitumen.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #38302f not used (not darker than the wall #47474a by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012091631",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:32:17.987Z",
-      "meshHash": "8004992ba0fe22cd"
+      "updatedAt": "2026-10-14T14:04:29.708Z",
+      "meshHash": "d8bf3fa5e35a69de"
     },
     {
       "id": "ordinary-0363100012134024",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134024",
       "name": "Asterweg 17-19, Amsterdam-Noord (Buiksloterham): 2006 brick office-and-workshop block with a raised brick storey carried over an open steel-truss ground floor",
-      "hash": "fbcf98c7c4e0fd19b8797c4d2e749ae788e9f6c59cbaa28eb03f0c7c215f97e2",
-      "sha256": "fbcf98c7c4e0fd19b8797c4d2e749ae788e9f6c59cbaa28eb03f0c7c215f97e2",
-      "bytes": 94348,
-      "triangles": 1131,
-      "materials": 7,
+      "hash": "3d9fe7d5a6979bd53d12e4b9687f8a348f8ea2c77bda98bc5933faafb6b54ae6",
+      "sha256": "3d9fe7d5a6979bd53d12e4b9687f8a348f8ea2c77bda98bc5933faafb6b54ae6",
+      "bytes": 95236,
+      "triangles": 1130,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -41548,7 +40993,7 @@
         "id": "asterweg-19-134024",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012134024/w02-74.jpg"
+          "source-data://pand-reference-walls/0363100012134024/w02-74L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -41568,28 +41013,28 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (glazing  mean 0.28 vs photo 0.68)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing  mean 0.28 vs photo 0.68) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "Asterweg 17-19 (BAG, 2006; Buiksloterham): a brick workshop-and-office block whose raised upper storey is carried over an open ground floor on diagonal steel trusses. 116 3DBAG wall surfaces; the east front (panel 0, w02-74, 2021-06-16, 60 m) is the only street front with a panorama within 35 m, the rest stays blank (otherWalls).",
         "walls[0] = panel 0: a brick storey with a continuous ribbon of low windows under the eaves (the ASTERWEG 17 - 19 sign sits on the wall below it), over a ground floor that is glazed at the left end and an open dark arcade with galvanised diagonal trusses to the right, closing in a brick ramp wall. Drawn as ribbon-windows, 2 storeys, 20 bays, ground storey blank brick with a glazed entrance in bay 1. Simplified: the open arcade and the truss legs (the wall is solid; steel bars under 3 cm and an open void cannot be cut into a 3DBAG wall), the glazed lobby beyond bay 1. Skipped: the ASTERWEG 17-19 wall lettering (the wall-mounted letters leave 32 m of open edge in the export)."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134024",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:07:12.074Z",
-      "meshHash": "f3f059086f3371a2"
+      "updatedAt": "2026-10-14T14:04:33.307Z",
+      "meshHash": "8f74d38285bfa44c"
     },
     {
       "id": "ordinary-0363100012120309",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012120309",
       "name": "Van der Palmkade 191, Amsterdam-West: 2001 serpentine apartment block in dark brick with a cream first-floor band, round-arched loggias and terraced attic storeys facing the canal",
-      "hash": "c7e47691a62faf36a293659001e3218c72636e3fcde75324fdfe62f4213e970e",
-      "sha256": "c7e47691a62faf36a293659001e3218c72636e3fcde75324fdfe62f4213e970e",
-      "bytes": 528344,
-      "triangles": 6488,
-      "materials": 8,
+      "hash": "ec95fe2d9bbf60bfbb34631a2703b47bf354cf46d69adbb120e5ba490fecae32",
+      "sha256": "ec95fe2d9bbf60bfbb34631a2703b47bf354cf46d69adbb120e5ba490fecae32",
+      "bytes": 526980,
+      "triangles": 6463,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42630,7 +42075,7 @@
         "id": "van-der-palmkade-191-120309",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012120309/w02-97.jpg"
+          "source-data://pand-reference-walls/0363100012120309/w02-97.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -42650,207 +42095,29 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.43; window shape tall vs photo wide; columns 5 vs photo 2)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.43, window shape tall vs photo wide, columns 5 vs photo 2) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "Van der Palmkade 191 (BAG, 2001): a serpentine apartment block along the Van der Palmkade, 654 3DBAG wall surfaces in a long S-curve; only the east canal front (panel 216, w02-97, 2021-01-14, 24 m) is drawn; every other wall stays blank (otherWalls).",
-        "walls[0] = surfaces 550, 290 and 224 of panel 216 (the 13 m surface 380 is a recess left blank): a dark-brick base with shop windows, a cream first-floor band with two windows per bay, round-arched loggias on the second storey, a storey of windows with blue infill panels and a stepped, terraced attic with a pergola. Drawn as 5 storeys x 5 bays, wide windows, stone storey 1 (cream) and round arch heads on storey 2. Simplified: the open loggia depth (the arches carry glazed windows), the blue infill panels, the pergola beams and the terraced attic (3DBAG roof); the white dot roundels in the brick are below the component grain."
+        "walls[0] = surfaces 550, 290 and 224 of panel 216 (the 13 m surface 380 is a recess left blank): a dark-brick base with shop windows, a cream first-floor band with two windows per bay, round-arched loggias on the second storey, a storey of windows with blue infill panels and a stepped, terraced attic with a pergola. Drawn as 5 storeys x 5 bays, wide windows, stone storey 1 (cream) and round arch heads on storey 2. Simplified: the open loggia depth (the arches carry glazed windows), the blue infill panels, the pergola beams and the terraced attic (3DBAG roof); the white dot roundels in the brick are below the component grain.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #43423f not used (not darker than the wall #504140 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120309",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:14:42.385Z",
-      "meshHash": "ac43884f1151e08c"
-    },
-    {
-      "id": "ordinary-0363100012137448",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012137448",
-      "name": "Stadhouderskade 111 / Tweede Jan van der Heijdenstraat, Amsterdam-Zuid (De Pijp): 1872 block of dark painted brick shopfront rows, a red-brick factory-style wing with cream window bands and a 1950s balcony block round a supermarket yard",
-      "hash": "fea2c7b2978e6763fc15c0f6310f8f8d02807e2087e78c50696d07c3b0f2edd2",
-      "sha256": "fea2c7b2978e6763fc15c0f6310f8f8d02807e2087e78c50696d07c3b0f2edd2",
-      "bytes": 461904,
-      "triangles": 5876,
-      "materials": 12,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -52.171,
-          0.001,
-          -33.972
-        ],
-        "max": [
-          53.448,
-          18.672,
-          24.051
-        ]
-      },
-      "anchor": [
-        4.8972971,
-        52.3572799
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8980791,
-              52.357515
-            ],
-            [
-              4.8976493,
-              52.357541
-            ],
-            [
-              4.8969454,
-              52.357582
-            ],
-            [
-              4.8969206,
-              52.3574352
-            ],
-            [
-              4.8965632,
-              52.3574578
-            ],
-            [
-              4.8965315,
-              52.3572574
-            ],
-            [
-              4.8966281,
-              52.3572519
-            ],
-            [
-              4.8966332,
-              52.3572842
-            ],
-            [
-              4.8968931,
-              52.3572694
-            ],
-            [
-              4.8968657,
-              52.3570887
-            ],
-            [
-              4.8972974,
-              52.3570646
-            ],
-            [
-              4.8972978,
-              52.3570638
-            ],
-            [
-              4.8973117,
-              52.3570653
-            ],
-            [
-              4.8973115,
-              52.3570662
-            ],
-            [
-              4.8974689,
-              52.3571118
-            ],
-            [
-              4.8974686,
-              52.3571121
-            ],
-            [
-              4.8980378,
-              52.35728
-            ]
-          ],
-          [
-            [
-              4.8979062,
-              52.3573411
-            ],
-            [
-              4.8977485,
-              52.3572962
-            ],
-            [
-              4.8977655,
-              52.3574014
-            ],
-            [
-              4.8979145,
-              52.3573924
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 18.67,
-      "height": 18.67,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-stadhouderskade-111-137448.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012137448"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "stadhouderskade-111-137448",
-        "kind": "large",
-        "intentSources": [
-          "staging/pand-reference-walls/0363100012137448/w01-6.jpg",
-          "staging/pand-reference-walls/0363100012137448/w01-6.jpg",
-          "staging/pand-reference-walls/0363100012137448/w02-155.jpg",
-          "staging/pand-reference-walls/0363100012137448/w03-186.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "eaves-vs-3dbag/walls[3]:pass",
-          "storey-height/walls[3]:pass",
-          "eaves-vs-3dbag/walls[4]:pass",
-          "storey-height/walls[4]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "brick-bay-grid 4st 5b",
-          "brick-bay-grid 4st 4b",
-          "brick-bay-grid 3st 2b",
-          "brick-bay-grid 4st 9b",
-          "brick-bay-grid 5st 3b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Stadhouderskade 111 (BAG, built 1872) is the De Pijp block round the Albert Heijn/Blokker yard between Stadhouderskade and Tweede Jan van der Heijdenstraat; 359 3DBAG wall surfaces, many party walls. Photographed fronts: w01-6 (north street run, 2021-04-26), w02-155 (the SE brick wing, 2021-04-23), w03-186 (the supermarket gate with the 1950s brick block, 2021-04-23). w04-6 and w05-186 are close-ups of the same fronts. Everything else stays blank (otherWalls).",
-        "walls[0] and walls[1] = the north run on the street, two sets of 3DBAG surfaces of the 14.5-15 m row-house fronts (surfaces 83, 95, 165, 166, 183 and 130, 185, 202, 352, 353): dark painted brick, cream window surrounds and cornice, glazed shopfronts. Drawn as 4 storeys, 5 and 4 bays, plain windows, a plinth-shopfront ground, cornice and string courses. The other row-house surfaces (12.2-13.7 m) and the differing rooflines are left blank/3DBAG roof; the individual gables and house-by-house colour changes are not modelled."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137448",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T04:41:57.882Z",
-      "meshHash": "019586c280d892ce"
+      "updatedAt": "2026-10-14T14:04:37.330Z",
+      "meshHash": "4d2c34d9df0a3307"
     },
     {
       "id": "ordinary-0363100012240319",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012240319",
       "name": "Tilanusstraat 23K, Amsterdam-Oost: 2013 block of red-brick gridded wings and a curved louvred glass tower, round a retained 1900s brick school range",
-      "hash": "4dc2beb551e902ad29b3cca15cb8476920f142d3d7c3b8a43e041141c9fa5e26",
-      "sha256": "4dc2beb551e902ad29b3cca15cb8476920f142d3d7c3b8a43e041141c9fa5e26",
-      "bytes": 600636,
-      "triangles": 8135,
-      "materials": 12,
+      "hash": "423a0bebee3c016bd16c9f14a9155444bf467316125c6c154b7ace8c0e00ce73",
+      "sha256": "423a0bebee3c016bd16c9f14a9155444bf467316125c6c154b7ace8c0e00ce73",
+      "bytes": 589836,
+      "triangles": 7971,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -42963,9 +42230,9 @@
         "id": "tilanusstraat-23-240319",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012240319/w01-160.jpg",
-          "staging/pand-reference-walls/0363100012240319/w02-250.jpg",
-          "staging/pand-reference-walls/0363100012240319/w03-340.jpg"
+          "source-data://pand-reference-walls/0363100012240319/w01-160L.jpg",
+          "source-data://pand-reference-walls/0363100012240319/w02-250L.jpg",
+          "source-data://pand-reference-walls/0363100012240319/w03-340.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -42991,17 +42258,20 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall dL -0.30; glazing storey band off by 0.42 mean 0.26 vs photo 0.53; columns 18 vs photo 48)); inferred: the crop is a low-sun December photo (#ffa169), orange-red kept by hand",
+        "walls[1] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing storey band off by 0.25)); inferred: louvred glass tower: the likeness reads the glass as paint, grey glass kept",
+        "walls[2] not confirmed by the photo (FAIL (window shape tall vs photo wide; columns 9 vs photo 6)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape tall vs photo wide, columns 9 vs photo 6) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "Tilanusstraat 23K (BAG, 2013; Amsterdam-Oost, Eerste Boerhaavestraat side): a block of red-brick gridded wings, a curved glass tower with stacked louvre bands on the Tilanusstraat corner and, along the east side, a retained 1900s brick school range with a stone oriel. 117 3DBAG wall surfaces; three street fronts are drawn (w01-160 south, w02-250 west tower, w03-340 north), the rest stays blank.",
-        "walls[0] = panel 32 (S, 77 m, eaves 18.5): red clinker brick with deep-set paired windows in gridded bays, drawn as 5 storeys x 18 bays of narrow windows; the stepped upper floors (31.9 m surfaces) and the curved corner are straight/blank. walls[1] = panel 33 (W, 46 m, eaves 31.9): the louvred tower front, a glazed ground storey (shop/lobby) under eight bands of grey louvres and glass; drawn as ribbon-windows, 8 storeys x 6 bays of wide windows in a grey stone-material skin. The real front is a curved glass skin with continuous aluminium louvre blades: the curve and the louvres are not modelled (a curtain-wall grid was tried and read as a square grid). walls[2] = panel 6 (N, 37 m, eaves 15.5): dark brown brick with tall paired windows, 4 storeys x 9 bays."
+        "walls[0] = panel 32 (S, 77 m, eaves 18.5): red clinker brick with deep-set paired windows in gridded bays, drawn as 5 storeys x 18 bays of narrow windows; the stepped upper floors (31.9 m surfaces) and the curved corner are straight/blank. walls[1] = panel 33 (W, 46 m, eaves 31.9): the louvred tower front, a glazed ground storey (shop/lobby) under eight bands of grey louvres and glass; drawn as ribbon-windows, 8 storeys x 6 bays of wide windows in a grey stone-material skin. The real front is a curved glass skin with continuous aluminium louvre blades: the curve and the louvres are not modelled (a curtain-wall grid was tried and read as a square grid). walls[2] = panel 6 (N, 37 m, eaves 15.5): dark brown brick with tall paired windows, 4 storeys x 9 bays.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #2a2a27 not used (not darker than the wall #3f2e26 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:14:24.708Z",
-      "meshHash": "9f86be00b8ecd9b2"
+      "updatedAt": "2026-10-14T14:04:43.662Z",
+      "meshHash": "137db65499f93bd8"
     },
     {
       "id": "ordinary-0363100012201637",
@@ -43185,696 +42455,15 @@
       "meshHash": "4a89443b1c8a3102"
     },
     {
-      "id": "ordinary-0363100012173447",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012173447",
-      "name": "Leidsekade 106 / Max Euweplein (Holland Casino Amsterdam), Amsterdam-Centrum: 1991 casino with a white-tiled curved upper storey over a red-steel and timber-pergola canal front, joined to a 1900s brick-and-stone Leidsekade townhouse range",
-      "hash": "62f636aacfc2b0744d99b06e3286417b65e21c13a545606b08f1e0be736a9cf8",
-      "sha256": "62f636aacfc2b0744d99b06e3286417b65e21c13a545606b08f1e0be736a9cf8",
-      "bytes": 513008,
-      "triangles": 6451,
-      "materials": 16,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -29.389,
-          0,
-          -43.085
-        ],
-        "max": [
-          28.442,
-          29.519,
-          39.953
-        ]
-      },
-      "anchor": [
-        4.8822091,
-        52.3626398
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8825681,
-              52.3627199
-            ],
-            [
-              4.8825594,
-              52.3627284
-            ],
-            [
-              4.8825547,
-              52.3627326
-            ],
-            [
-              4.8825449,
-              52.3627407
-            ],
-            [
-              4.8825344,
-              52.3627484
-            ],
-            [
-              4.8825232,
-              52.3627558
-            ],
-            [
-              4.8825174,
-              52.3627594
-            ],
-            [
-              4.8825053,
-              52.3627662
-            ],
-            [
-              4.8824926,
-              52.3627727
-            ],
-            [
-              4.8824861,
-              52.3627758
-            ],
-            [
-              4.8824726,
-              52.3627816
-            ],
-            [
-              4.8824593,
-              52.3627867
-            ],
-            [
-              4.8824469,
-              52.362791
-            ],
-            [
-              4.8824345,
-              52.3627948
-            ],
-            [
-              4.8824222,
-              52.3627982
-            ],
-            [
-              4.8824072,
-              52.3628019
-            ],
-            [
-              4.8826233,
-              52.3629398
-            ],
-            [
-              4.8824764,
-              52.3630264
-            ],
-            [
-              4.8821882,
-              52.3628435
-            ],
-            [
-              4.8821803,
-              52.3628391
-            ],
-            [
-              4.8821762,
-              52.362837
-            ],
-            [
-              4.8821677,
-              52.3628331
-            ],
-            [
-              4.8821621,
-              52.3628309
-            ],
-            [
-              4.882157,
-              52.362829
-            ],
-            [
-              4.8821464,
-              52.3628255
-            ],
-            [
-              4.8821355,
-              52.3628226
-            ],
-            [
-              4.8821243,
-              52.3628201
-            ],
-            [
-              4.8821186,
-              52.3628191
-            ],
-            [
-              4.8821128,
-              52.3628182
-            ],
-            [
-              4.8821011,
-              52.3628167
-            ],
-            [
-              4.8820893,
-              52.3628159
-            ],
-            [
-              4.8820833,
-              52.3628156
-            ],
-            [
-              4.8820774,
-              52.3628155
-            ],
-            [
-              4.8820655,
-              52.3628157
-            ],
-            [
-              4.8820536,
-              52.3628164
-            ],
-            [
-              4.8820419,
-              52.3628177
-            ],
-            [
-              4.8820361,
-              52.3628185
-            ],
-            [
-              4.8820303,
-              52.3628195
-            ],
-            [
-              4.882019,
-              52.3628218
-            ],
-            [
-              4.8820135,
-              52.3628231
-            ],
-            [
-              4.8820034,
-              52.3628259
-            ],
-            [
-              4.8820012,
-              52.3628263
-            ],
-            [
-              4.8819969,
-              52.3628268
-            ],
-            [
-              4.8819924,
-              52.3628268
-            ],
-            [
-              4.8819881,
-              52.3628264
-            ],
-            [
-              4.8819839,
-              52.3628255
-            ],
-            [
-              4.88198,
-              52.3628241
-            ],
-            [
-              4.8819765,
-              52.3628223
-            ],
-            [
-              4.8819736,
-              52.3628201
-            ],
-            [
-              4.8819714,
-              52.3628176
-            ],
-            [
-              4.8819699,
-              52.3628149
-            ],
-            [
-              4.8819693,
-              52.3628122
-            ],
-            [
-              4.881956,
-              52.3628102
-            ],
-            [
-              4.8819458,
-              52.3628355
-            ],
-            [
-              4.8819437,
-              52.3628352
-            ],
-            [
-              4.8819024,
-              52.3628504
-            ],
-            [
-              4.8819013,
-              52.362853
-            ],
-            [
-              4.8818516,
-              52.3628455
-            ],
-            [
-              4.8818474,
-              52.362856
-            ],
-            [
-              4.881827,
-              52.362853
-            ],
-            [
-              4.8818206,
-              52.3628645
-            ],
-            [
-              4.8817752,
-              52.3628588
-            ],
-            [
-              4.8817833,
-              52.3628291
-            ],
-            [
-              4.8817816,
-              52.3628289
-            ],
-            [
-              4.8817894,
-              52.36281
-            ],
-            [
-              4.8817774,
-              52.3627798
-            ],
-            [
-              4.8817897,
-              52.3627493
-            ],
-            [
-              4.881823,
-              52.3627261
-            ],
-            [
-              4.8818306,
-              52.3627071
-            ],
-            [
-              4.8818526,
-              52.3627104
-            ],
-            [
-              4.8818572,
-              52.3626991
-            ],
-            [
-              4.8818425,
-              52.3626968
-            ],
-            [
-              4.8818408,
-              52.3627013
-            ],
-            [
-              4.8818335,
-              52.3627001
-            ],
-            [
-              4.8818375,
-              52.3626901
-            ],
-            [
-              4.8817807,
-              52.3626823
-            ],
-            [
-              4.8818066,
-              52.3626114
-            ],
-            [
-              4.8818262,
-              52.3625583
-            ],
-            [
-              4.8818494,
-              52.3625037
-            ],
-            [
-              4.8818845,
-              52.3624392
-            ],
-            [
-              4.8819398,
-              52.3624513
-            ],
-            [
-              4.8819627,
-              52.3624179
-            ],
-            [
-              4.881974,
-              52.3624019
-            ],
-            [
-              4.8819857,
-              52.3623863
-            ],
-            [
-              4.8819979,
-              52.3623708
-            ],
-            [
-              4.8820048,
-              52.3623629
-            ],
-            [
-              4.8820175,
-              52.3623476
-            ],
-            [
-              4.8820308,
-              52.3623325
-            ],
-            [
-              4.882036,
-              52.3623277
-            ],
-            [
-              4.882054,
-              52.3623351
-            ],
-            [
-              4.8820716,
-              52.3623169
-            ],
-            [
-              4.88209,
-              52.3622989
-            ],
-            [
-              4.8821383,
-              52.3623172
-            ],
-            [
-              4.8821424,
-              52.3623137
-            ],
-            [
-              4.8821448,
-              52.3623146
-            ],
-            [
-              4.8821748,
-              52.3622887
-            ],
-            [
-              4.8821727,
-              52.3622876
-            ],
-            [
-              4.8821821,
-              52.3622806
-            ],
-            [
-              4.8821871,
-              52.3622831
-            ],
-            [
-              4.8821826,
-              52.3622865
-            ],
-            [
-              4.8821955,
-              52.3622943
-            ],
-            [
-              4.8822005,
-              52.3623232
-            ],
-            [
-              4.8822469,
-              52.3623199
-            ],
-            [
-              4.8822603,
-              52.3623272
-            ],
-            [
-              4.8822655,
-              52.3623242
-            ],
-            [
-              4.8822699,
-              52.362327
-            ],
-            [
-              4.8822653,
-              52.3623297
-            ],
-            [
-              4.8822691,
-              52.3623321
-            ],
-            [
-              4.882306,
-              52.3623103
-            ],
-            [
-              4.882373,
-              52.362353
-            ],
-            [
-              4.8823433,
-              52.3623706
-            ],
-            [
-              4.8824392,
-              52.3624316
-            ],
-            [
-              4.8824084,
-              52.3624733
-            ],
-            [
-              4.8824155,
-              52.3624753
-            ],
-            [
-              4.8824294,
-              52.3624798
-            ],
-            [
-              4.8824428,
-              52.3624847
-            ],
-            [
-              4.8824557,
-              52.3624902
-            ],
-            [
-              4.8824681,
-              52.3624961
-            ],
-            [
-              4.8824741,
-              52.3624992
-            ],
-            [
-              4.8824799,
-              52.3625024
-            ],
-            [
-              4.8824911,
-              52.3625091
-            ],
-            [
-              4.8825016,
-              52.3625163
-            ],
-            [
-              4.8825114,
-              52.3625238
-            ],
-            [
-              4.8825205,
-              52.3625316
-            ],
-            [
-              4.8825248,
-              52.3625356
-            ],
-            [
-              4.8825287,
-              52.3625396
-            ],
-            [
-              4.8825359,
-              52.3625477
-            ],
-            [
-              4.8825424,
-              52.362556
-            ],
-            [
-              4.8825454,
-              52.3625603
-            ],
-            [
-              4.8825507,
-              52.3625689
-            ],
-            [
-              4.8825552,
-              52.3625778
-            ],
-            [
-              4.8825589,
-              52.3625867
-            ],
-            [
-              4.8825618,
-              52.3625958
-            ],
-            [
-              4.8825629,
-              52.3626004
-            ],
-            [
-              4.8825645,
-              52.3626095
-            ],
-            [
-              4.882565,
-              52.3626142
-            ],
-            [
-              4.8825653,
-              52.3626234
-            ],
-            [
-              4.8826116,
-              52.3626235
-            ],
-            [
-              4.8826111,
-              52.3626336
-            ],
-            [
-              4.8826105,
-              52.3626387
-            ],
-            [
-              4.8826087,
-              52.3626487
-            ],
-            [
-              4.882606,
-              52.3626587
-            ],
-            [
-              4.8826025,
-              52.3626686
-            ],
-            [
-              4.8825981,
-              52.3626783
-            ],
-            [
-              4.8825928,
-              52.3626879
-            ],
-            [
-              4.8825899,
-              52.3626927
-            ],
-            [
-              4.8825834,
-              52.362702
-            ],
-            [
-              4.8825762,
-              52.3627111
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 29.52,
-      "height": 29.52,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-leidsekade-106-173447.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012173447"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "leidsekade-106-173447",
-        "kind": "large",
-        "intentSources": [
-          "staging/pand-reference-walls/0363100012173447/w01-314.jpg",
-          "staging/pand-reference-walls/0363100012173447/w03-257.jpg",
-          "staging/pand-reference-walls/0363100012173447/w03-257.jpg",
-          "staging/pand-reference-walls/0363100012173447/w04-245.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "eaves-vs-3dbag/walls[3]:pass",
-          "storey-height/walls[3]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "brick-bay-grid+entrance 5st 7b",
-          "brick-bay-grid 2st 8b",
-          "brick-bay-grid 1st 6b",
-          "brick-bay-grid 1st 5b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Leidsekade 106 (BAG, 1991) is the Holland Casino block on the Singelgracht at Max Euweplein: a 1990s casino with a curved white-tiled upper storey, a glazed ground and mezzanine floor under a timber pergola on red steel columns, joined at the north to a retained 1900s brick-and-stone Leidsekade townhouse range. 537 3DBAG wall surfaces; four fronts are drawn (w01-314 townhouse entrance, w03-257 and w04-245 canal fronts), everything else stays blank."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012173447",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T03:09:18.232Z",
-      "meshHash": "e310850b5006ed1e"
-    },
-    {
       "id": "ordinary-0363100012251313",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012251313",
       "name": "Hoogte Kadijk 400, Amsterdam-Centrum: 1903 brick industrial hall with giant arched windows and a small arched clerestory row, and a five-storey brick office wing with a stepped entrance",
-      "hash": "b4d0151b90fd9d4a6dcc599f6400c5c562c59f130d0d6dc76ca8fd20a12ac311",
-      "sha256": "b4d0151b90fd9d4a6dcc599f6400c5c562c59f130d0d6dc76ca8fd20a12ac311",
-      "bytes": 428980,
-      "triangles": 4900,
-      "materials": 11,
+      "hash": "ff5b10e82b3f565f98248112de0e4e27c4299da1962aaf5368887c2643588743",
+      "sha256": "ff5b10e82b3f565f98248112de0e4e27c4299da1962aaf5368887c2643588743",
+      "bytes": 431032,
+      "triangles": 4898,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44055,8 +42644,8 @@
         "id": "hoogte-kadijk-400-251313",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012251313/w01-31.jpg",
-          "staging/pand-reference-walls/0363100012251313/w02-121.jpg"
+          "source-data://pand-reference-walls/0363100012251313/w01-31.jpg",
+          "source-data://pand-reference-walls/0363100012251313/w02-121.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -44079,242 +42668,19 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.63 mean 0.21 vs photo 0.62; columns 6 vs photo 44)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.63 mean 0.21 vs photo 0.62, columns 6 vs photo 44) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.18; window shape square vs photo tall; columns 5 vs photo 7)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18, window shape square vs photo tall, columns 5 vs photo 7) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "Hoogte Kadijk 400 (BAG, built 1903; Kadijken, Amsterdam-Centrum): a brick industrial hall with giant round-arched windows and a small arched clerestory row, beside a five-storey brick office wing with a stepped stoop and a double door; 97 3DBAG wall surfaces. Photographed: w01-31 and w03-31, w04-31 (the long north-east hall wall), w02-121 (the south-east office front, 8.6 m away). Everything else stays blank (otherWalls); the 120 m south-west wall and the courtyard are not photographed.",
-        "walls[0] = panels 11 and 2 (NE hall wall, eaves 15.2 m): a brick base with basement grilles, a storey of tall round-arched windows with stone dressings and a second storey of small arched windows under a corbelled cornice, pilaster strips between the bays. Drawn as 3 storeys x 6 bays, blank base, round-arched narrow windows on storeys 1 and 2 with stone arch bands. Simplified: the giant windows and the small arches share one bay rhythm (the real wall has 6 giant windows and about 12 small arches), the multi-light glazing bars, the pilaster strips and corbel course, the basement grilles."
+        "walls[0] = panels 11 and 2 (NE hall wall, eaves 15.2 m): a brick base with basement grilles, a storey of tall round-arched windows with stone dressings and a second storey of small arched windows under a corbelled cornice, pilaster strips between the bays. Drawn as 3 storeys x 6 bays, blank base, round-arched narrow windows on storeys 1 and 2 with stone arch bands. Simplified: the giant windows and the small arches share one bay rhythm (the real wall has 6 giant windows and about 12 small arches), the multi-light glazing bars, the pilaster strips and corbel course, the basement grilles.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #50463f not used (not darker than the wall #4f4644 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012251313",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:08:18.708Z",
-      "meshHash": "7fca8bc9620cab7a"
-    },
-    {
-      "id": "ordinary-0363100012233471",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012233471",
-      "name": "Stadhouderskade 25 (Park Centraal Amsterdam hotel and the MOMO corner), Amsterdam-Zuid: 1930 block with a stone-and-brick arched corner range on Stadhouderskade, a dark stone balcony range and a bowed hotel front with continuous glazed balconies",
-      "hash": "1e1fd45253e0b429dfd7a6402e9c6c1f61fc7cb98c9a052695fcd58fb86c66e0",
-      "sha256": "1e1fd45253e0b429dfd7a6402e9c6c1f61fc7cb98c9a052695fcd58fb86c66e0",
-      "bytes": 543956,
-      "triangles": 6988,
-      "materials": 14,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -30.552,
-          0.001,
-          -27.135
-        ],
-        "max": [
-          48.166,
-          29.635,
-          29.732
-        ]
-      },
-      "anchor": [
-        4.8829041,
-        52.3613528
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8832933,
-              52.3615822
-            ],
-            [
-              4.8828359,
-              52.3615859
-            ],
-            [
-              4.8828358,
-              52.3615796
-            ],
-            [
-              4.8825382,
-              52.3615811
-            ],
-            [
-              4.8825382,
-              52.3615774
-            ],
-            [
-              4.8825353,
-              52.3615774
-            ],
-            [
-              4.8825057,
-              52.3615876
-            ],
-            [
-              4.8824721,
-              52.3615833
-            ],
-            [
-              4.8824531,
-              52.3615658
-            ],
-            [
-              4.8824597,
-              52.3615451
-            ],
-            [
-              4.8824857,
-              52.3615342
-            ],
-            [
-              4.882488,
-              52.3615311
-            ],
-            [
-              4.8824823,
-              52.3615295
-            ],
-            [
-              4.8825846,
-              52.3613909
-            ],
-            [
-              4.8825739,
-              52.3613881
-            ],
-            [
-              4.8827906,
-              52.3610895
-            ],
-            [
-              4.8828779,
-              52.3611129
-            ],
-            [
-              4.8828829,
-              52.3611059
-            ],
-            [
-              4.8829133,
-              52.3611144
-            ],
-            [
-              4.8829061,
-              52.3611242
-            ],
-            [
-              4.8829453,
-              52.361135
-            ],
-            [
-              4.8829484,
-              52.3611307
-            ],
-            [
-              4.8829653,
-              52.3611353
-            ],
-            [
-              4.8829642,
-              52.3611368
-            ],
-            [
-              4.8831201,
-              52.3611803
-            ],
-            [
-              4.8831296,
-              52.361167
-            ],
-            [
-              4.8832179,
-              52.3611906
-            ],
-            [
-              4.883221,
-              52.3611865
-            ],
-            [
-              4.8832405,
-              52.3611917
-            ],
-            [
-              4.8832425,
-              52.3611889
-            ],
-            [
-              4.8836119,
-              52.3612872
-            ],
-            [
-              4.8835606,
-              52.3613607
-            ],
-            [
-              4.8834095,
-              52.3613213
-            ],
-            [
-              4.8833124,
-              52.361466
-            ],
-            [
-              4.8833023,
-              52.3615823
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 29.64,
-      "height": 29.64,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-stadhouderskade-25-233471.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012233471"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "stadhouderskade-25-233471",
-        "kind": "large",
-        "intentSources": [
-          "staging/pand-reference-walls/0363100012233471/w02-1.jpg",
-          "staging/pand-reference-walls/0363100012233471/w04-1.jpg",
-          "staging/pand-reference-walls/0363100012233471/w01-246.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "brick-bay-grid 7st 8b",
-          "brick-bay-grid 5st 5b",
-          "brick-bay-grid 5st 8b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Stadhouderskade 25 (BAG, built 1930; Park Centraal Amsterdam hotel sign on the north front, MOMO restaurant on the corner range) is a block on the Stadhouderskade with a bowed seven-storey hotel front with continuous glazed balcony runs, an older dark-stone corner range with white dressings and arched first-floor windows, and a dark stone balcony range on the south-west. 240 3DBAG wall surfaces; three fronts are drawn (w02-1, w04-1, w01-246), w03-157, w05-68 and w06-246 are close views of the same ranges and of the cream corner house; everything else stays blank."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233471",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T03:13:42.209Z",
-      "meshHash": "9c5e0c1f73b09c04"
+      "updatedAt": "2026-10-14T14:04:49.858Z",
+      "meshHash": "eba479ac55d3b377"
     },
     {
       "id": "ordinary-0363100012134667",
@@ -44612,11 +42978,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012170734",
       "name": "Valckenierstraat 65, Amsterdam-Centrum (Roeterseiland): 1963 university laboratory block, four storeys of brick ribbon windows with cream bands over a dark plinth, a two-storey steel-window canal wing and a brick tower with a chimney stack",
-      "hash": "adfe09b6e8e18a86056951f7f8677cd7fa87e2efc4b0b38c18c5882a396fc7ee",
-      "sha256": "adfe09b6e8e18a86056951f7f8677cd7fa87e2efc4b0b38c18c5882a396fc7ee",
-      "bytes": 860952,
+      "hash": "1ad0d3e49c5518715ac56cff96daca847aaef4ba6def09eed7673d4ae29b719c",
+      "sha256": "1ad0d3e49c5518715ac56cff96daca847aaef4ba6def09eed7673d4ae29b719c",
+      "bytes": 864628,
       "triangles": 11908,
-      "materials": 10,
+      "materials": 14,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -44711,10 +43077,9 @@
         "id": "valckenierstraat-65-170734",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012170734/w01-163.jpg",
-          "staging/pand-reference-walls/0363100012170734/w01-163.jpg",
-          "staging/pand-reference-walls/0363100012170734/w03-253.jpg",
-          "staging/pand-reference-walls/0363100012170734/w04-343.jpg"
+          "source-data://pand-reference-walls/0363100012170734/w01-163L.jpg",
+          "source-data://pand-reference-walls/0363100012170734/w03-253.jpg",
+          "source-data://pand-reference-walls/0363100012170734/w04-343.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -44743,16 +43108,20 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m)."
+        "walls[0] likeness WARN (mask IoU 0.307 < 0.45).",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.16)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.16) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.18 mean 0.48 vs photo 0.81)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18 mean 0.48 vs photo 0.81) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #544f3e not used (not darker than the wall #765e52 by 10 L*, or tinted): kit glass kept; walls[3] glass #444946 not used (not darker than the wall #4e4740 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170734",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:43.829Z",
-      "meshHash": "94fe650b707554b1"
+      "updatedAt": "2026-10-14T14:04:55.535Z",
+      "meshHash": "77e483d9057689d1"
     },
     {
       "id": "ordinary-0363100012247232",
@@ -45007,9 +43376,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012112128",
       "name": "Gedempt Hamerkanaal 175, Amsterdam-Noord (Hamerkwartier): 1911 workshop complex on the former Hamerkanaal, a four-storey brick-and-teal ribbon-window block on the street front and small brick workshop and house ranges on the canal side",
-      "hash": "cea1d947da6a6d915f5f1dfd32a877638a43108f36c4d9f643265ec1889e2754",
-      "sha256": "cea1d947da6a6d915f5f1dfd32a877638a43108f36c4d9f643265ec1889e2754",
-      "bytes": 457152,
+      "hash": "046e26689955a3e0ba16cd7c8303d9004251ff3782507925cdea7aad3bef7e8d",
+      "sha256": "046e26689955a3e0ba16cd7c8303d9004251ff3782507925cdea7aad3bef7e8d",
+      "bytes": 457184,
       "triangles": 6084,
       "materials": 12,
       "textures": 0,
@@ -45128,9 +43497,7 @@
         "id": "hamerkanaal-175-112128",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012112128/w01-79.jpg",
-          "staging/pand-reference-walls/0363100012112128/w05-169.jpg",
-          "staging/pand-reference-walls/0363100012112128/w06-169.jpg"
+          "source-data://pand-reference-walls/0363100012112128/w05-169.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -45156,25 +43523,28 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the teal top storey is brick-coloured (one palette per group), the ground shutters are plain window openings, the white window surrounds are the kit frames, the hipped and pitched roofs are the 3DBAG roofs. Not drawn: the west, north and south-west walls (no panorama within 35 m) and the stepped grey-clad upper block behind the house, which stay blank wall."
+        "walls[0] not confirmed by the photo (NO EVIDENCE (washed out 54 % > 30 %)); inferred: washed out 54 %, pale ribbon block reads the same on the sheet",
+        "walls[1] likeness WARN (columns 6 vs photo 8; mask IoU 0.277 < 0.45).",
+        "walls[2] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
+        "Simplified: the teal top storey is brick-coloured (one palette per group), the ground shutters are plain window openings, the white window surrounds are the kit frames, the hipped and pitched roofs are the 3DBAG roofs. Not drawn: the west, north and south-west walls (no panorama within 35 m) and the stepped grey-clad upper block behind the house, which stay blank wall.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #4a5056 not used (not darker than the wall #554e4a by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012112128",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:36.569Z",
-      "meshHash": "f86efc8377fa36fd"
+      "updatedAt": "2026-10-14T14:05:00.939Z",
+      "meshHash": "52e1c064d4272eb7"
     },
     {
       "id": "ordinary-0363100012253824",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253824",
       "name": "Nieuwe Achtergracht 100, Amsterdam-Centrum (Roeterseiland): 1923 five-storey brick office building on the canal with cream-framed multi-pane windows, a central stair tower with a bowed oriel and entrance, stone bands and an overhanging copper roof edge",
-      "hash": "c642c54de555f1c884edff0f669646234a719b0c004597848373589c54460663",
-      "sha256": "c642c54de555f1c884edff0f669646234a719b0c004597848373589c54460663",
-      "bytes": 313704,
+      "hash": "d836fec301a990fdde9e48c0fa3c60cf476b73005aa3ba8eb62f2e4df0abb6df",
+      "sha256": "d836fec301a990fdde9e48c0fa3c60cf476b73005aa3ba8eb62f2e4df0abb6df",
+      "bytes": 313584,
       "triangles": 4131,
       "materials": 10,
       "textures": 0,
@@ -45301,7 +43671,7 @@
         "id": "nieuwe-achtergracht-100-253824",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012253824/w01-343.jpg"
+          "source-data://pand-reference-walls/0363100012253824/w01-343.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -45321,28 +43691,29 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] likeness WARN (mask IoU 0.194 < 0.45).",
         "Nieuwe Achtergracht 100 (BAG pand 0363100012253824, built 1923, 162 3DBAG wall surfaces, roof max 26.6 m): a five-storey Amsterdam School office building on the Nieuwe Achtergracht in the Roeterseiland campus (a twin footprint pand 0363100012170299 has the same 2,657 m2 footprint area in the backlog and is probably an overlapping registration of the same block, so it is not modelled separately). Four fronts were fetched: the north canal front (w01-343, 2021-01-22, and w02-343, 2017-07-06, the same front), a washed-out west view (w04-250, 2025-01-20) and an oblique view of the neighbouring dark-brick house on the east (w08-73, 2022-04-25); w03, w05, w06 and w07 have no panorama within 35 m.",
-        "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall."
+        "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554640 not used (not darker than the wall #574d47 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253824",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:38.084Z",
-      "meshHash": "8957a84efa45e787"
+      "updatedAt": "2026-10-14T14:05:03.723Z",
+      "meshHash": "7bcd9f00895da02f"
     },
     {
       "id": "ordinary-0363100012239388",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012239388",
       "name": "Oostelijke Handelskade 749, Amsterdam-Centrum (Oostelijke Handelskade): 2012 residential and office blocks in warehouse style with tall round-arched brick arcades, cream string courses and a rusticated base",
-      "hash": "ee6b24f147b46225b5229c6913c8f5d6ecd8922494f5a10b1cd46faff5329764",
-      "sha256": "ee6b24f147b46225b5229c6913c8f5d6ecd8922494f5a10b1cd46faff5329764",
-      "bytes": 1033956,
+      "hash": "7a55f435c40761e6449c7dc43f0bcd13e03457099d2a231e63434fe036f9028a",
+      "sha256": "7a55f435c40761e6449c7dc43f0bcd13e03457099d2a231e63434fe036f9028a",
+      "bytes": 1034904,
       "triangles": 11601,
-      "materials": 8,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -45459,7 +43830,7 @@
         "id": "oostelijke-handelskade-749-239388",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012239388/w01-196.jpg"
+          "source-data://pand-reference-walls/0363100012239388/w01-196.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -45479,15 +43850,16 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: window spacing is uniform where the photograph alternates single and paired arches, the stone dressing blocks and keystones are the kit arch band and keystones, the black steel oriel stacks, the iron balconies and the DartDesign sign are not modelled. Not drawn: the eastern 38 m of each south front (surfaces 3 and 9 are shared with the north and west panels and doubled the triangle count), the north and end walls and the small outbuilding, which stay blank brick."
+        "walls[0] not confirmed by the photo (FAIL (window shape tall vs photo square; columns 9 vs photo 6)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape tall vs photo square, columns 9 vs photo 6) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "Simplified: window spacing is uniform where the photograph alternates single and paired arches, the stone dressing blocks and keystones are the kit arch band and keystones, the black steel oriel stacks, the iron balconies and the DartDesign sign are not modelled. Not drawn: the eastern 38 m of each south front (surfaces 3 and 9 are shared with the north and west panels and doubled the triangle count), the north and end walls and the small outbuilding, which stay blank brick.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #383a39 not used (not darker than the wall #544743 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239388",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:39.007Z",
+      "updatedAt": "2026-10-14T14:06:17.026Z",
       "aliases": [
         "NL.IMBAG.Pand.0363100012239386",
         "NL.IMBAG.Pand.0363100012239387"
@@ -45978,18 +44350,18 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012147097",
       "name": "Balboaplein 48, Amsterdam-West (Bos en Lommer): 2004 perimeter housing block of red brick with deep balcony loggias on the south, ribbon-window north front and slate-grey clad upper storeys on the east, around courtyards",
-      "hash": "050b9f6fb04f1b53183ef11f12d12ed21143fe2d9b8be5d674ab7f97e5a69923",
-      "sha256": "050b9f6fb04f1b53183ef11f12d12ed21143fe2d9b8be5d674ab7f97e5a69923",
-      "bytes": 719576,
+      "hash": "85652e46f79eebad61f0692ec666f9aca0794083f6bda1301297db813edf12a0",
+      "sha256": "85652e46f79eebad61f0692ec666f9aca0794083f6bda1301297db813edf12a0",
+      "bytes": 720344,
       "triangles": 9649,
-      "materials": 9,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
           -34.15,
           0,
-          -51.665
+          -51.674
         ],
         "max": [
           30.992,
@@ -46295,9 +44667,9 @@
         "id": "balboaplein-48-147097",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012147097/w02-170.jpg",
-          "staging/pand-reference-walls/0363100012147097/w03-350.jpg",
-          "staging/pand-reference-walls/0363100012147097/w05-80.jpg"
+          "source-data://pand-reference-walls/0363100012147097/w02-170.jpg",
+          "source-data://pand-reference-walls/0363100012147097/w03-350.jpg",
+          "source-data://pand-reference-walls/0363100012147097/w05-80.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -46323,16 +44695,18 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the red brick ground storey of the east wing takes the slate colour with the floors above (one palette per group), the slate scale pattern is a flat colour, the deep loggias are slab balconies in alternate bays, window sizes are one pattern per group; the stepped slate roofs and roof terraces are 3DBAG roof geometry. Not drawn: the west front, the courtyard faces and the wings between, which stay blank brick."
+        "walls[0] not confirmed by the photo (FAIL (wall hue -14 deg; glazing storey band off by 0.24)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (wall hue -14 deg, glazing storey band off by 0.24) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[2] not confirmed by the photo (FAIL (window shape square vs photo wide; columns 6 vs photo 4)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (window shape square vs photo wide, columns 6 vs photo 4) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "Simplified: the red brick ground storey of the east wing takes the slate colour with the floors above (one palette per group), the slate scale pattern is a flat colour, the deep loggias are slab balconies in alternate bays, window sizes are one pattern per group; the stepped slate roofs and roof terraces are 3DBAG roof geometry. Not drawn: the west front, the courtyard faces and the wings between, which stay blank brick.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #817c74 not used (not darker than the wall #7f8283 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012147097",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:35.733Z",
-      "meshHash": "2d85dd97c2ffd3be"
+      "updatedAt": "2026-10-14T14:05:09.873Z",
+      "meshHash": "c4c6c5062aa897c6"
     },
     {
       "id": "ordinary-0363100012134507",
@@ -46569,10 +44943,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012243487",
       "name": "Spinozastraat 51 / Sarphatistraat 104, Amsterdam-Centrum (Weesperbuurt): 2017 hotel and apartment block in sand-yellow ceramic brick with deep square window frames and green glazed roof slopes, wrapped round a retained 1890s brick-and-cream corner house and warehouse on the Sarphatistraat",
-      "hash": "1a719317c42efbe7c6f56178b9771feb0ec1fa0ff50189eaa30992694677a4de",
-      "sha256": "1a719317c42efbe7c6f56178b9771feb0ec1fa0ff50189eaa30992694677a4de",
-      "bytes": 875532,
-      "triangles": 11777,
+      "hash": "c33610c5705d8613aad09f668b1a1948a464bcee45abb2d99c538418cede5ce5",
+      "sha256": "c33610c5705d8613aad09f668b1a1948a464bcee45abb2d99c538418cede5ce5",
+      "bytes": 835492,
+      "triangles": 11335,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -46742,9 +45116,9 @@
         "id": "spinozastraat-51-243487",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012243487/w01-162.jpg",
-          "staging/pand-reference-walls/0363100012243487/w02-342.jpg",
-          "staging/pand-reference-walls/0363100012243487/w05-341.jpg"
+          "source-data://pand-reference-walls/0363100012243487/w01-162.jpg",
+          "source-data://pand-reference-walls/0363100012243487/w02-342L.jpg",
+          "source-data://pand-reference-walls/0363100012243487/w05-341L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -46770,582 +45144,30 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the photographed 3-storey frame grid (double-height window frames with a deep brick reveal) is one wide window per storey and bay, the green ceramic roof slopes are the 3DBAG roof in slate, the pedimented dormers of the old house, its cream stone bands and the warehouse box windows (w07-341) are not modelled. Not drawn: the east wing (panel 17), the round north-east corner, the courtyard walls and the low wings, which stay blank yellow brick; the east front would take 5 more storeys of windows and pushed the model past 12k triangles."
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.23; glazing storey band off by 0.35 mean 0.42 vs photo 0.31)); inferred: the crop is in shade, sand-yellow ceramic brick kept by hand from the label and walls[1]",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.16; window shape wide vs photo square; columns 8 vs photo 13)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.16, window shape wide vs photo square, columns 8 vs photo 13) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[2] likeness WARN (mask IoU 0.129 < 0.45).",
+        "Simplified: the photographed 3-storey frame grid (double-height window frames with a deep brick reveal) is one wide window per storey and bay, the green ceramic roof slopes are the 3DBAG roof in slate, the pedimented dormers of the old house, its cream stone bands and the warehouse box windows (w07-341) are not modelled. Not drawn: the east wing (panel 17), the round north-east corner, the courtyard walls and the low wings, which stay blank yellow brick; the east front would take 5 more storeys of windows and pushed the model past 12k triangles.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #201f1e not used (not darker than the wall #352e2a by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243487",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:25:42.751Z",
-      "meshHash": "5506b36a292cab4c"
-    },
-    {
-      "id": "ordinary-0363100012165488",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012165488",
-      "name": "Hirschpassage 2 (Hirsch building, Leidseplein), Amsterdam-Centrum: 1912 sandstone department-store block with a round-arched ground arcade, giant pilasters, iron balconies, a heavy cornice and a balustraded attic",
-      "hash": "a3aac84c6e073e54056859bef06af80d350d0bdb2bb95573df55ff466c4a87ff",
-      "sha256": "a3aac84c6e073e54056859bef06af80d350d0bdb2bb95573df55ff466c4a87ff",
-      "bytes": 792380,
-      "triangles": 10116,
-      "materials": 8,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -41.931,
-          0,
-          -23.835
-        ],
-        "max": [
-          31.79,
-          38.571,
-          47.593
-        ]
-      },
-      "anchor": [
-        4.8825409,
-        52.3634114
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8829458,
-              52.3633447
-            ],
-            [
-              4.8829522,
-              52.3633477
-            ],
-            [
-              4.8829383,
-              52.3633587
-            ],
-            [
-              4.8829319,
-              52.3633557
-            ],
-            [
-              4.8828933,
-              52.3633863
-            ],
-            [
-              4.8828997,
-              52.3633893
-            ],
-            [
-              4.8828858,
-              52.3634003
-            ],
-            [
-              4.8828794,
-              52.3633973
-            ],
-            [
-              4.8828408,
-              52.3634279
-            ],
-            [
-              4.8828472,
-              52.3634309
-            ],
-            [
-              4.8828436,
-              52.3634337
-            ],
-            [
-              4.88285,
-              52.3634368
-            ],
-            [
-              4.8827388,
-              52.3635249
-            ],
-            [
-              4.8827324,
-              52.3635219
-            ],
-            [
-              4.8827288,
-              52.3635246
-            ],
-            [
-              4.8827225,
-              52.3635216
-            ],
-            [
-              4.8826838,
-              52.3635523
-            ],
-            [
-              4.8826902,
-              52.3635553
-            ],
-            [
-              4.8826763,
-              52.3635663
-            ],
-            [
-              4.8826699,
-              52.3635633
-            ],
-            [
-              4.8826313,
-              52.3635939
-            ],
-            [
-              4.8826377,
-              52.3635969
-            ],
-            [
-              4.8826193,
-              52.3636115
-            ],
-            [
-              4.8826169,
-              52.3636104
-            ],
-            [
-              4.8826129,
-              52.3636136
-            ],
-            [
-              4.88261,
-              52.3636122
-            ],
-            [
-              4.8826058,
-              52.3636156
-            ],
-            [
-              4.8826029,
-              52.3636142
-            ],
-            [
-              4.8825962,
-              52.3636174
-            ],
-            [
-              4.8825951,
-              52.3636165
-            ],
-            [
-              4.8825894,
-              52.3636188
-            ],
-            [
-              4.8825834,
-              52.3636208
-            ],
-            [
-              4.8825772,
-              52.3636225
-            ],
-            [
-              4.8825707,
-              52.3636238
-            ],
-            [
-              4.8825641,
-              52.3636248
-            ],
-            [
-              4.8825574,
-              52.3636254
-            ],
-            [
-              4.8825504,
-              52.3636257
-            ],
-            [
-              4.8825434,
-              52.3636255
-            ],
-            [
-              4.8825365,
-              52.3636251
-            ],
-            [
-              4.8825296,
-              52.3636242
-            ],
-            [
-              4.882523,
-              52.363623
-            ],
-            [
-              4.8825165,
-              52.3636214
-            ],
-            [
-              4.8825161,
-              52.3636223
-            ],
-            [
-              4.8825071,
-              52.3636208
-            ],
-            [
-              4.8825052,
-              52.3636224
-            ],
-            [
-              4.8824999,
-              52.3636199
-            ],
-            [
-              4.8824985,
-              52.363621
-            ],
-            [
-              4.8824746,
-              52.3636097
-            ],
-            [
-              4.8824796,
-              52.3636058
-            ],
-            [
-              4.8824298,
-              52.3635823
-            ],
-            [
-              4.8824249,
-              52.3635862
-            ],
-            [
-              4.8824069,
-              52.3635777
-            ],
-            [
-              4.8824118,
-              52.3635738
-            ],
-            [
-              4.8823617,
-              52.36355
-            ],
-            [
-              4.8823567,
-              52.3635539
-            ],
-            [
-              4.8823389,
-              52.3635455
-            ],
-            [
-              4.8823438,
-              52.3635416
-            ],
-            [
-              4.8822938,
-              52.3635179
-            ],
-            [
-              4.8822888,
-              52.3635218
-            ],
-            [
-              4.8822708,
-              52.3635132
-            ],
-            [
-              4.8822757,
-              52.3635093
-            ],
-            [
-              4.8822257,
-              52.3634857
-            ],
-            [
-              4.8822207,
-              52.3634896
-            ],
-            [
-              4.8822028,
-              52.3634811
-            ],
-            [
-              4.8822077,
-              52.3634772
-            ],
-            [
-              4.8821576,
-              52.3634535
-            ],
-            [
-              4.8821527,
-              52.3634574
-            ],
-            [
-              4.8821347,
-              52.3634489
-            ],
-            [
-              4.8821397,
-              52.363445
-            ],
-            [
-              4.8820898,
-              52.3634214
-            ],
-            [
-              4.8820848,
-              52.3634253
-            ],
-            [
-              4.8820671,
-              52.3634168
-            ],
-            [
-              4.882072,
-              52.3634129
-            ],
-            [
-              4.8820219,
-              52.3633892
-            ],
-            [
-              4.8820169,
-              52.3633931
-            ],
-            [
-              4.8819989,
-              52.3633846
-            ],
-            [
-              4.8820039,
-              52.3633807
-            ],
-            [
-              4.8819539,
-              52.363357
-            ],
-            [
-              4.881949,
-              52.363361
-            ],
-            [
-              4.881926,
-              52.3633501
-            ],
-            [
-              4.8821074,
-              52.363208
-            ],
-            [
-              4.8820567,
-              52.3631838
-            ],
-            [
-              4.8822257,
-              52.3630503
-            ],
-            [
-              4.8822197,
-              52.3630474
-            ],
-            [
-              4.8822367,
-              52.363034
-            ],
-            [
-              4.8822427,
-              52.3630368
-            ],
-            [
-              4.8823112,
-              52.3629827
-            ],
-            [
-              4.8824348,
-              52.3630619
-            ],
-            [
-              4.8825485,
-              52.3631154
-            ],
-            [
-              4.8825724,
-              52.3630964
-            ],
-            [
-              4.8825955,
-              52.3631073
-            ],
-            [
-              4.8825906,
-              52.3631112
-            ],
-            [
-              4.8826406,
-              52.3631348
-            ],
-            [
-              4.8826455,
-              52.3631309
-            ],
-            [
-              4.8826636,
-              52.3631395
-            ],
-            [
-              4.8826587,
-              52.3631434
-            ],
-            [
-              4.8827088,
-              52.3631671
-            ],
-            [
-              4.8827137,
-              52.3631632
-            ],
-            [
-              4.8827317,
-              52.3631717
-            ],
-            [
-              4.8827268,
-              52.3631756
-            ],
-            [
-              4.8827767,
-              52.3631992
-            ],
-            [
-              4.8827817,
-              52.3631953
-            ],
-            [
-              4.8827997,
-              52.3632038
-            ],
-            [
-              4.8827947,
-              52.3632077
-            ],
-            [
-              4.8828448,
-              52.3632314
-            ],
-            [
-              4.8828498,
-              52.3632275
-            ],
-            [
-              4.8828677,
-              52.363236
-            ],
-            [
-              4.8828628,
-              52.3632399
-            ],
-            [
-              4.8829127,
-              52.3632636
-            ],
-            [
-              4.8829177,
-              52.3632597
-            ],
-            [
-              4.8829358,
-              52.3632682
-            ],
-            [
-              4.8829309,
-              52.3632721
-            ],
-            [
-              4.8829807,
-              52.3632957
-            ],
-            [
-              4.8829857,
-              52.3632918
-            ],
-            [
-              4.8830089,
-              52.3633028
-            ],
-            [
-              4.8829909,
-              52.3633171
-            ],
-            [
-              4.8829845,
-              52.363314
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 38.57,
-      "height": 38.57,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-hirschpassage-2-165488.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012165488"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "hirschpassage-2-165488",
-        "kind": "large",
-        "intentSources": [
-          "staging/pand-reference-walls-short/0363100012165488/w16-322.jpg",
-          "staging/pand-reference-walls/0363100012165488/w02-52.jpg",
-          "staging/pand-reference-walls-short/0363100012165488/w19-142.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "shell-repair:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "brick-bay-grid 5st 1b",
-          "brick-bay-grid 5st 3b",
-          "brick-bay-grid 5st 1b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = the ten Leidseplein bay facets (bearing 323, w16-322); walls[1] = the Leidsestraat bays and the 12.4 m facet before the curve (bearing 53, w02-52); walls[2] = the south-east bays (bearing 143, w19-142). All three share walls[0]'s storey lines: 5 storeys, the top one blank for the frieze. Each has one bay per pilaster facet (3 on the 12.4 m facet), a round-arched ground portal with a voussoir band, a wide window standing for the three windows of each bay, and iron balconies on storeys 1-3. The pilaster fronts and returns stay plain stone (otherWalls, house palette in the stone colour).",
-        "Simplified: the giant Corinthian pilasters (the 3DBAG facets give their depth, no capitals), the stone balustrades over the arcade and on the attic (balcony rails stand for the first), and the dome (3DBAG roof mass). The curved corner facets are blank. The brick house on the Hirschpassage side (w01-233) is a separate front and is left blank."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165488",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T04:41:52.088Z",
-      "meshHash": "07c0b2d5d4c3b767"
+      "updatedAt": "2026-10-14T14:05:14.635Z",
+      "meshHash": "79b235f2befc599c"
     },
     {
       "id": "ordinary-0363100012233657",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012233657",
       "name": "WG-plein 600 (former Wilhelmina Gasthuis pavilion), Amsterdam-West: 1931 dark-brown brick hospital wing, five storeys of grouped white windows on the WG-plein side and a two-storey canal front with glazed bay windows on the Kostverlorenvaart",
-      "hash": "77692193e2f41fb715a9b490592f503cc18b526bf3ee2745c987075b1f9bb6ca",
-      "sha256": "77692193e2f41fb715a9b490592f503cc18b526bf3ee2745c987075b1f9bb6ca",
-      "bytes": 868604,
+      "hash": "852ffa44a7343a97ebcfd199221ea4758e73147ba7d8d4e55fa9117cc599c8d5",
+      "sha256": "852ffa44a7343a97ebcfd199221ea4758e73147ba7d8d4e55fa9117cc599c8d5",
+      "bytes": 871072,
       "triangles": 11505,
-      "materials": 7,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -47690,8 +45512,8 @@
         "id": "wg-plein-600-233657",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012233657/w02-157.jpg",
-          "staging/pand-reference-walls/0363100012233657/w01-337.jpg"
+          "source-data://pand-reference-walls/0363100012233657/w02-157.jpg",
+          "source-data://pand-reference-walls/0363100012233657/w01-337.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -47715,28 +45537,30 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.21; window shape tall vs photo square; columns 9 vs photo 4)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.21, window shape tall vs photo square, columns 9 vs photo 4) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.18 mean 0.26 vs photo 0.48; columns 18 vs photo 56)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.18 mean 0.26 vs photo 0.48, columns 18 vs photo 56) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "walls[0] = panels 10, 189 and 60 (w02-157): the five-storey WG-plein fronts. 5 storeys x 9 bays of white cross windows (the photographed groups of three), with a cornice. The low end surfaces 60 and 447 (18.7 m tops) stay blank so that the eaves gate reads the main roof.",
-        "walls[1] = panel 18 (w01-337): the 89 m canal front. Two storeys of cross windows (18 bays) over a blank basement, with a cornice. Simplified: the projecting glazed bay windows and the rooftop glass boxes are the 3DBAG masses in the wall brick."
+        "walls[1] = panel 18 (w01-337): the 89 m canal front. Two storeys of cross windows (18 bays) over a blank basement, with a cornice. Simplified: the projecting glazed bay windows and the rooftop glass boxes are the 3DBAG masses in the wall brick.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #554f46 not used (not darker than the wall #5e5144 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233657",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:41:58.793Z",
-      "meshHash": "8ab8ba272e8c9dca"
+      "updatedAt": "2026-10-14T14:05:20.468Z",
+      "meshHash": "fe0a4e8f823642e5"
     },
     {
       "id": "ordinary-0363100012236799",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236799",
       "name": "Da Costakade 146, Amsterdam-West: 1903 factory block, a yellow-brick front of large workshop windows on Da Costakade, a red-brick range with balconies beside it, and a red-brick back range with a lettered band on the street behind",
-      "hash": "b7f819db678f41ec2be4e8e96b34ab0e94c56d7880fe64b855133c33a86069b1",
-      "sha256": "b7f819db678f41ec2be4e8e96b34ab0e94c56d7880fe64b855133c33a86069b1",
-      "bytes": 899676,
-      "triangles": 11707,
-      "materials": 12,
+      "hash": "fe861282f5b4f29681887480851b08002ddf6604147947596a155d767fa9b0d1",
+      "sha256": "fe861282f5b4f29681887480851b08002ddf6604147947596a155d767fa9b0d1",
+      "bytes": 885148,
+      "triangles": 11484,
+      "materials": 14,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -47945,8 +45769,8 @@
         "id": "da-costakade-146-236799",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012236799/w01-248.jpg",
-          "staging/pand-reference-walls/0363100012236799/w02-67.jpg"
+          "source-data://pand-reference-walls/0363100012236799/w01-248L.jpg",
+          "source-data://pand-reference-walls/0363100012236799/w02-67L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -47976,26 +45800,28 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+        "walls[0] not confirmed by the photo (FAIL (wall dL +0.30; columns 5 vs photo 7)); inferred: the crop is a December shade, yellow brick kept by hand from the label",
+        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.38 mean 0.41 vs photo 0.10; columns 7 vs photo 16)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.38 mean 0.41 vs photo 0.10, columns 7 vs photo 16) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #615c59 not used (not darker than the wall #7b6d6a by 10 L*, or tinted): kit glass kept; walls[2] glass #6b7375 not used (not darker than the wall #6c6862 by 10 L*, or tinted): kit glass kept; walls[3] glass #393e42 not used (not darker than the wall #4a3e39 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236799",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:41:48.887Z",
-      "meshHash": "ba627cc61c9fa079"
+      "updatedAt": "2026-10-14T14:05:28.475Z",
+      "meshHash": "759afe4d677c4ef2"
     },
     {
       "id": "ordinary-0363100012209785",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012209785",
       "name": "Asterweg 19B, Amsterdam-Noord (Tuindorp Buiksloot business park): 2005 three-storey block of grey exposed-aggregate concrete panels with curved corners, ribbon windows and a projecting corner box window, over a low concrete plinth with a car-park undercroft",
-      "hash": "dab1ca83131ac3312465f187ef796e6d2d67e9d3f8e621683f8e074d8da1e61a",
-      "sha256": "dab1ca83131ac3312465f187ef796e6d2d67e9d3f8e621683f8e074d8da1e61a",
-      "bytes": 72096,
+      "hash": "736834519c67337707ecc6a486e7aec920f03187d318d9ca1492aa37c1d00043",
+      "sha256": "736834519c67337707ecc6a486e7aec920f03187d318d9ca1492aa37c1d00043",
+      "bytes": 73012,
       "triangles": 867,
-      "materials": 6,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48072,7 +45898,7 @@
         "id": "asterweg-19b-209785",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012209785/w03-74.jpg"
+          "source-data://pand-reference-walls/0363100012209785/w03-74L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -48092,15 +45918,17 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete."
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.20 mean 0.32 vs photo 0.44; columns 7 vs photo 11)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.20 mean 0.32 vs photo 0.44, columns 7 vs photo 11) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #423b3c not used (not darker than the wall #473c3b by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012209785",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:46:56.416Z"
+      "updatedAt": "2026-10-14T14:05:34.479Z",
+      "meshHash": "e18b2a1eff26e325"
     },
     {
       "id": "ordinary-0363100012202276",
@@ -48217,11 +46045,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012250186",
       "name": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland): 2020 apartment block round a courtyard, five storeys of red brick with cream-framed windows, stacked glass-railed balconies in recesses, a dark brick plinth and a set-back top floor with slot windows",
-      "hash": "9f787322cfe01ab43950c24fc214c45f949f5cf16cf1e2e6ab43263e606bdbdc",
-      "sha256": "9f787322cfe01ab43950c24fc214c45f949f5cf16cf1e2e6ab43263e606bdbdc",
-      "bytes": 843536,
-      "triangles": 11451,
-      "materials": 9,
+      "hash": "577dffecb7098dcccfbc9861baa80a2b171962b924504e7de33713e1e175d75c",
+      "sha256": "577dffecb7098dcccfbc9861baa80a2b171962b924504e7de33713e1e175d75c",
+      "bytes": 847892,
+      "triangles": 11513,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48486,8 +46314,8 @@
         "id": "revaleiland-437-250186",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012250186/w05-230.jpg",
-          "staging/pand-reference-walls/0363100012250186/w03-140.jpg"
+          "source-data://pand-reference-walls/0363100012250186/w04-230L.jpg",
+          "source-data://pand-reference-walls/0363100012250186/w02-140.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -48510,16 +46338,19 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.17)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.17) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.22; window shape square vs photo tall; columns 5 vs photo 8)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.22, window shape square vs photo tall, columns 5 vs photo 8) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "Revaleiland 437 (BAG pand 0363100012250186, built 2020, 372 3DBAG wall surfaces, roof max 19.7 m): a large perimeter block on the Revaleiland in the Java-eiland / Eastern Docklands, about 75 m square with a courtyard of lower inner blocks. Photographed (finished): the south-west front (w04-230 2020-05-15, w05-230 2022-06-22: red brick, cream-framed windows in pairs and triples, a stack of three glass-railed balconies in a recess, red and orange entrance doors, a white shopfront at the south-east end, a set-back top floor with slot windows and a curved parapet). The south-east front is seen in construction (w02-140, w03-140 2020-01-29: same brick, same balcony stack with the glass still missing). The north-west and north-east fronts have only 2017 site photographs and a 2019 scaffold (w01-320, w06-320, w07-50, w08-50), so those two stay blank.",
-        "walls[0] = SW panels 129 and 68 (26.7 m and 25.2 m, eaves 16.2): 5 storeys x 7 bays with string courses and one glass-railed balcony stack on storeys 1-3 in bay 2 (a 6-bay rhythm left a 4.8 m2 flush-window overlap). walls[1] = SE panels 36 and 80 (29 m and 28 m): 5 storeys x 5 bays (budget), same balcony stack (construction view). Simplified: the plinth is the ground storey of the same brick (the photographed one is darker), window pairs and triples are evenly spaced wide windows, the red entrance doors and the white shopfront are plain bays. Not drawn: the north-west and north-east outer fronts (no finished photograph; an inferred copy of the other fronts cost 24k triangles and was dropped), the set-back top-floor blocks with slot windows and the curved parapet (3DBAG massing in brick colour), the courtyard walls and the inner blocks, which stay blank brick."
+        "walls[0] = SW panels 129 and 68 (26.7 m and 25.2 m, eaves 16.2): 5 storeys x 7 bays with string courses and one glass-railed balcony stack on storeys 1-3 in bay 2 (a 6-bay rhythm left a 4.8 m2 flush-window overlap). walls[1] = SE panels 36 and 80 (29 m and 28 m): 5 storeys x 5 bays (budget), same balcony stack (construction view). Simplified: the plinth is the ground storey of the same brick (the photographed one is darker), window pairs and triples are evenly spaced wide windows, the red entrance doors and the white shopfront are plain bays. Not drawn: the north-west and north-east outer fronts (no finished photograph; an inferred copy of the other fronts cost 24k triangles and was dropped), the set-back top-floor blocks with slot windows and the curved parapet (3DBAG massing in brick colour), the courtyard walls and the inner blocks, which stay blank brick.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4f4f4e not used (not darker than the wall #6b3e33 by 10 L*, or tinted): kit glass kept; walls[1] glass #3f3834 not used (not darker than the wall #5f3c30 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250186",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:11:07.107Z"
+      "updatedAt": "2026-10-14T14:05:38.550Z",
+      "meshHash": "0358901359906faf"
     },
     {
       "id": "ordinary-0363100012099348",
@@ -48710,11 +46541,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165821",
       "name": "Louise Wentstraat 230, Amsterdam-Oost (Weesperzijde / Amstelkade side of the Oosterpark district): 1992 housing complex of grey-brown brick with dark horizontal bands, four-storey street fronts under a stepped upper floor, curved ends and glazed stair-tower columns",
-      "hash": "63f7848f1f89749e8f31c650dd7d896531075f1cae1caa1465762dc4996ffc06",
-      "sha256": "63f7848f1f89749e8f31c650dd7d896531075f1cae1caa1465762dc4996ffc06",
-      "bytes": 793308,
+      "hash": "b56838ce50887675f3a4dcaa42852b796d95df2ab98d7d1e3cf9fc230b7f00e7",
+      "sha256": "b56838ce50887675f3a4dcaa42852b796d95df2ab98d7d1e3cf9fc230b7f00e7",
+      "bytes": 796096,
       "triangles": 10696,
-      "materials": 7,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -49011,9 +46842,8 @@
         "id": "louise-wentstraat-230-165821",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
-          "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
-          "staging/pand-reference-walls/0363100012165821/w02-45.jpg"
+          "source-data://pand-reference-walls/0363100012165821/w01-315.jpg",
+          "source-data://pand-reference-walls/0363100012165821/w02-45.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -49039,16 +46869,20 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.34 mean 0.38 vs photo 0.62)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.34 mean 0.38 vs photo 0.62) is a measurement limit (frames read as trim, storey bands, mullion counts)",
+        "walls[1] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, kept as fitted, not confirmed by a photo",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.24 mean 0.31 vs photo 0.44; window shape wide vs photo square)); inferred: re-fitted from the measured crop and reviewed on the sheet, colour and rhythm read the same, the remaining miss (glazing storey band off by 0.24 mean 0.31 vs photo 0.44, window shape wide vs photo square) is a measurement limit (frames read as trim, storey bands, mullion counts)",
         "walls[0] = panel 31 (NW, 88 m, eaves 12.8; surface 36): 4 storeys x 18 bays with string courses. walls[1] = panels 8 and 293 (NW, 61 m and 34 m, eaves 15.5 over a 12.8 m base; surfaces 10, 386): the set-back top floor, one ribbon-window storey. walls[2] = panels 21 and 102 (NE end, 42 m and 31 m, eaves 12.8 and 15.5; surfaces 26, 116): 4 storeys x 8 bays with string courses. Simplified: the dark bands are string courses, window groups are evenly spaced wide windows; 18 bays instead of the photographed 20 to stay inside the triangle budget. Not drawn: the glazed stair-tower columns, the curved south end, the courtyard fronts and the 27 m corner towers (3DBAG massing in brick colour, left blank brick).",
-        "Everything not listed stays blank brick."
+        "Everything not listed stays blank brick.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #3f3b31 not used (not darker than the wall #534a3f by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165821",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:14:47.658Z"
+      "updatedAt": "2026-10-14T14:05:44.675Z",
+      "meshHash": "d6b6cd650021c4c9"
     },
     {
       "id": "ordinary-0363100012129127",
