@@ -46865,6 +46865,246 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:18:28.619Z"
+    },
+    {
+      "id": "ordinary-0363100012247232",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012247232",
+      "name": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
+      "hash": "c7fe912f6291a16744f5bb0e8bf50ca021e40da46c7b983ae6c9b54035bf3a15",
+      "sha256": "c7fe912f6291a16744f5bb0e8bf50ca021e40da46c7b983ae6c9b54035bf3a15",
+      "bytes": 902728,
+      "triangles": 11929,
+      "materials": 14,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -56.144,
+          -2.194,
+          -18.764
+        ],
+        "max": [
+          34.039,
+          29.772,
+          51.704
+        ]
+      },
+      "anchor": [
+        4.8763886,
+        52.3943534
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8766071,
+              52.394307
+            ],
+            [
+              4.8766486,
+              52.3943285
+            ],
+            [
+              4.8766348,
+              52.3943385
+            ],
+            [
+              4.8766661,
+              52.3943547
+            ],
+            [
+              4.8766799,
+              52.3943448
+            ],
+            [
+              4.8767802,
+              52.3943968
+            ],
+            [
+              4.8767665,
+              52.3944067
+            ],
+            [
+              4.8768029,
+              52.3944256
+            ],
+            [
+              4.8768167,
+              52.3944157
+            ],
+            [
+              4.8768588,
+              52.3944375
+            ],
+            [
+              4.8768548,
+              52.3944404
+            ],
+            [
+              4.8768875,
+              52.3944571
+            ],
+            [
+              4.8768316,
+              52.3944968
+            ],
+            [
+              4.8767989,
+              52.3944801
+            ],
+            [
+              4.8767389,
+              52.3945236
+            ],
+            [
+              4.8766972,
+              52.3945019
+            ],
+            [
+              4.8767115,
+              52.3944916
+            ],
+            [
+              4.8766756,
+              52.394473
+            ],
+            [
+              4.8766614,
+              52.3944833
+            ],
+            [
+              4.8765606,
+              52.394431
+            ],
+            [
+              4.8765748,
+              52.3944207
+            ],
+            [
+              4.876539,
+              52.3944021
+            ],
+            [
+              4.8765247,
+              52.3944123
+            ],
+            [
+              4.8764877,
+              52.3943931
+            ],
+            [
+              4.8764851,
+              52.3943949
+            ],
+            [
+              4.8755883,
+              52.3944083
+            ],
+            [
+              4.8755865,
+              52.3943601
+            ],
+            [
+              4.8755881,
+              52.3943601
+            ],
+            [
+              4.8755881,
+              52.3943597
+            ],
+            [
+              4.8756265,
+              52.3943592
+            ],
+            [
+              4.8756247,
+              52.3943059
+            ],
+            [
+              4.8755864,
+              52.3943065
+            ],
+            [
+              4.8755864,
+              52.3943062
+            ],
+            [
+              4.8755846,
+              52.3943063
+            ],
+            [
+              4.8755688,
+              52.3939025
+            ],
+            [
+              4.8762298,
+              52.3938927
+            ],
+            [
+              4.876441,
+              52.3938897
+            ],
+            [
+              4.8768741,
+              52.3941141
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 29.77,
+      "height": 29.77,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-houthavenkade-26-247232.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012247232"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "houthavenkade-26-247232",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
+          "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
+          "staging/pand-reference-walls/0363100012247232/w02-182.jpg",
+          "staging/pand-reference-walls/0363100012247232/w03-272.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 8st 10b",
+          "ribbon-windows 1st 20b",
+          "brick-bay-grid 3st 9b",
+          "brick-bay-grid 6st 7b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247232",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:21:38.673Z"
     }
   ]
 }

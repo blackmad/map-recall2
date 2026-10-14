@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "houthavenkade-26-247232",
+ "pandId": "0363100012247232",
+ "address": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
+ "sources": [
+  {
+   "id": "pano-2025-09-29-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
+   "image": "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-w01-2",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
+   "image": "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-01-29-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001596_pano_0001_000109/",
+   "image": "staging/pand-reference-walls/0363100012247232/w02-182.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-22-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_07-40-29_00769/",
+   "image": "staging/pand-reference-walls/0363100012247232/w03-272.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    316,
+    326,
+    371
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 10,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "balconies": {
+    "storeys": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "rail": "glass",
+    "every": 3,
+    "first": 1
+   },
+   "palette": {
+    "brick": "#a8683c",
+    "frame": "#7a848a",
+    "stone": "#b8b2a4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    134,
+    510
+   ],
+   "system": "ribbon-windows",
+   "storeys": 1,
+   "palette": {
+    "brick": "#5a463e",
+    "frame": "#7a848a",
+    "stone": "#b8b2a4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    37,
+    98,
+    251,
+    252
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#5e5650",
+    "frame": "#6a747a",
+    "stone": "#9a968c"
+   }
+  },
+  {
+   "wallSurfaces": [
+    34,
+    250,
+    271
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "windows": "narrow",
+   "deepBars": true,
+   "palette": {
+    "brick": "#6a5448",
+    "frame": "#8a949a",
+    "stone": "#b8b2a4"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#7a5240",
+  "frame": "#8a949a",
+  "door": "#2a2a2a",
+  "stone": "#b8b2a4"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Houthavenkade 26 (BAG pand 0363100012247232, built 2018, 510 3DBAG wall surfaces, roof max 29.8 m): a large residential block on the Houthavens quay, the 2018 development north of the Westerpark. Five walls were fetched: the north canal front (w01-2, 2025-09-29), the south range (w02-182, 2020-01-29), the west front (w03-272, 2024-10-22), the north-east end (w05-50, 2024-10-09) and a 2016 construction view (w04-140) that shows only the site hoarding.",
+  "walls[0] = panel 269 (N, 61 m, eaves 25.5 over a 28.8 m top): orange brick on the west half and dark brown on the east, eight storeys with narrow window columns and glass-railed balcony columns, glazed commercial ground; drawn as 8 storeys x 10 bays with a glazed ground and balconies in every third bay on storeys 2-7. walls[1] = panels 122 (N, ground 25.5): the set-back glazed top floor, one ribbon-window storey. walls[2] = panels 36 and 37 parts (S, 59 m, eaves 10.6, surfaces 37, 98, 251, 252): three storeys of large windows in dark brick over a glazed ground. walls[3] = panel 33 parts (W, surfaces 34, 250, 271, eaves 16.7): six storeys of narrow windows over a glazed shop ground.",
+  "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m."
+ ]
+}
