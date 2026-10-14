@@ -666,3 +666,14 @@ test('garageBays puts garage doors in exactly the listed bays; absent = identica
   assert.equal(built.components.garageDoors, 2);
   assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
 });
+
+test('measured groups export their wall and arch-ring slots with tintSource measured; houses without a measured record do not', () => {
+  const tinted = (id: string) => {
+    const g = (compileBuilding(validateLargeIntent(raw(id)), facts(id)) as import('./largeCompile.ts').CompiledLargeBuilding).group, out: string[] = [];
+    g.traverse(o => { const m = (o as {material?: {userData?: {tintSource?: string}}}).material; if (m?.userData?.tintSource === 'measured') out.push(o.name); });
+    return out.sort();
+  };
+  assert.deepEqual(tinted('houthavenkade-26-247232'), ['wall/wall@g0', 'wall/wall@g1']);
+  assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
+  assert.deepEqual(tinted('politie-van-leijenberghlaan'), []);
+});

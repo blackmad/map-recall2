@@ -199,6 +199,8 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
     m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
+    // measured wall colour (export-glb writes `tintSource: 'measured'`; the look then keeps it instead of clamping it)
+    if (recipe.measuredSlots?.includes(name.slice(name.indexOf('/') + 1))) m.material.userData = {tintSource: 'measured'};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {

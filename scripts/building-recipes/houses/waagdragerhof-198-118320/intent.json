@@ -60,7 +60,13 @@
     "frame": "#4e4a46",
     "stone": "#8c8e8c",
     "glass": "#3a4650"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "palette.glass",
+    "baysPerStorey",
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -82,7 +88,13 @@
     "frame": "#4e4a46",
     "stone": "#8c8e8c",
     "glass": "#3a4650"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "palette.glass",
+    "baysPerStorey",
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -116,7 +128,13 @@
     "w": 0.62,
     "h": 0.84,
     "sill": 0.06
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "palette.arch",
+    "baysPerStorey",
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -147,7 +165,13 @@
     "h": 0.86,
     "sill": 0.04
    },
-   "cornice": true
+   "cornice": true,
+   "hand": [
+    "palette.brick",
+    "palette.arch",
+    "baysPerStorey",
+    "windowShape"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -162,6 +186,15 @@
  },
  "closedBands": true,
  "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
+ },
  "notes": [
   "Waagdragerhof 198 (BAG pand 0363100012118320, built 2004, 126 3DBAG wall surfaces, roof max 34.9 m): the Pakhuis Wilhelmina block, a long retained brick warehouse of two to three storeys with round-arched windows and orange brick arch bands, with a dark red brick tower block of eleven storeys with a glazed commercial ground standing behind and over it, with a grey-clad bridging volume at the top. Four walls are drawn from panoramas: the tower south front (w04-196, 2022-12-28), the tower west front (w03-286, 2025-06-16), the warehouse south front with five tall arched windows lettered PAK HUIS WIL HEL MINA (w05-196, 2025-06-16) and the warehouse north front (w01-16, 2022-09-06, a 100 m crop).",
   "walls[0] = panel 14 (S, 28 m, eaves 33.6): eleven storeys of dark red brick with plain windows over a glazed ground, 8 bays. walls[1] = surface 25 of panel 7 (W, eaves 33.5): the same storeys, 6 bays. walls[2] = panel 21 (S, 24.9 m, eaves 12.8): the warehouse south wall, two storeys of round-arched windows with a brick arch band and arched ground, 5 bays, with PAKHUIS WILHELMINA as a name band over the arches. walls[3] = panel 27 (N, 30 m, eaves 12.8): the warehouse north front, three storeys of round-arched windows with arch bands, 6 bays.",
@@ -169,6 +202,7 @@
   "Re-fit 2026-10-14 (kit vocabulary lane) from w03-286 (west, 13 window columns over 28.7 m) and w04-196 (south): the tower fronts are french-window-ledge, 13 columns of two-leaf French windows 0.5 of the 2.2 m bay wide and 0.75 of the storey tall over a continuous grey concrete ledge at every storey line, a Juliet rail bar across the lower third, no frame ring (the frames are dark and read as glass; budget). Brick #4a302b dark purple-brown (photo raw #3d2e2a under overcast in w04-196, #4f4c52 with a blue sky cast in w03-286, #4f403f after balancing on the grey ledges), glass dark #3a4650 (photo raw #394650 / #39494f), ledges #8c8e8c.",
   "walls[2] (w05-196): the five tall segmental-arched windows are one storey of openings 0.62 of the bay wide and 0.84 of the wall tall with a transom, as photographed, instead of two storeys of round-arched windows.",
   "walls[3] (w01-16, the five tall bays at the east end of the north front): one storey of tall segmental-arched windows 0.6 of the bay wide and 0.86 of the wall tall, white frames (#e2e2dc) with two lights and five horizontal bars (the three storeys of glazing and their dark spandrels inside one opening), arch rings #8a4c40 (photo raw #614441, redder than the wall; saturated so the ring reads at gallery size), the white cornice #d8d6cc on dark purple-brown brick #5e4a4c (photo raw #594c4e); walls[2] (w05-196) the same brick with the orange arched surrounds as its arch ring #a85c3e and white frames. The warehouse openings of walls[2] have no frame ring (frames false; budget).",
-  "House brick #5a4446 (the unlisted warehouse wings and tower backs): the purple-brown of w01-16, not the orange-red of the first fit."
+  "House brick #5a4446 (the unlisted warehouse wings and tower backs): the purple-brown of w01-16, not the orange-red of the first fit.",
+  "measured: the wall, glass and arch-ring colours and the rhythm of walls [0], [1], [2], [3] were sampled by hand from the rectified crops (2026-10-14, kit vocabulary lane; numbers in the notes above), not by measure.ts; `hand` keeps them when measure.ts --write runs. Their wall slots export tintSource measured."
  ]
 }
