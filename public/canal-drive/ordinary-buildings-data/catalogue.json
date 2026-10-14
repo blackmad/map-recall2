@@ -50107,6 +50107,168 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:16:24.946Z"
+    },
+    {
+      "id": "ordinary-0363100012201629",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012201629",
+      "name": "Centrale Groothandelsmarkt 168, Amsterdam-West (Food Center): 1935 wholesale distribution hall, a 39 m south-east loading front with nine blue sectional dock doors under black dock shelters, a ribbon of office windows above and a glazed entrance at the end",
+      "hash": "9d78fe83a981e5848d6e9a03f195152dc3c62af031a8f3d2f5343a1afeb640b3",
+      "sha256": "9d78fe83a981e5848d6e9a03f195152dc3c62af031a8f3d2f5343a1afeb640b3",
+      "bytes": 101068,
+      "triangles": 1293,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -44.855,
+          0,
+          -37.717
+        ],
+        "max": [
+          29.359,
+          9.788,
+          41.514
+        ]
+      },
+      "anchor": [
+        4.8642046,
+        52.3789046
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8643894,
+              52.3789493
+            ],
+            [
+              4.8644475,
+              52.3789914
+            ],
+            [
+              4.8644465,
+              52.3789919
+            ],
+            [
+              4.8645879,
+              52.3790933
+            ],
+            [
+              4.8642983,
+              52.379244
+            ],
+            [
+              4.8641574,
+              52.3791421
+            ],
+            [
+              4.8641564,
+              52.3791426
+            ],
+            [
+              4.8640092,
+              52.3790364
+            ],
+            [
+              4.86389,
+              52.3790984
+            ],
+            [
+              4.8635465,
+              52.3788511
+            ],
+            [
+              4.8637102,
+              52.3787659
+            ],
+            [
+              4.8636632,
+              52.3787321
+            ],
+            [
+              4.863795,
+              52.3786635
+            ],
+            [
+              4.863842,
+              52.3786973
+            ],
+            [
+              4.8641651,
+              52.3785298
+            ],
+            [
+              4.8645006,
+              52.3787695
+            ],
+            [
+              4.8645388,
+              52.378797
+            ],
+            [
+              4.8645407,
+              52.378796
+            ],
+            [
+              4.8646366,
+              52.3788646
+            ],
+            [
+              4.8645053,
+              52.3789326
+            ],
+            [
+              4.8644705,
+              52.3789074
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 9.79,
+      "height": 9.79,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cgm-168-201629.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012201629"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cgm-168-201629",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012201629/w01-131.jpg",
+          "staging/pand-reference-walls/0363100012201629/w02-311.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 2st 9b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 19 and 17 (SE, 39 m and 10 m, eaves 9.8; surfaces 22, 25, 20): 2 storeys of ribbon windows over a blank ground with eight garage doors (the intent limit) in the blue door colour, the ninth bay left plain and a white cornice band. walls[1] = panels 14 and 6 (NW flank, 36 m, eaves 9.7; surfaces 17, 8): blank white render. Simplified: the black dock shelters and the dock plinths are not modelled (the doors are plain recessed panels), the glazed strips in the doors are not drawn, the entrance bay at the right end is a plain bay. Not drawn: the clearly lower south-west and north-east wings (7.2 m and 5.9 m eaves), which stay blank white render, and the signs on the north-east end."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012201629",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:17:30.395Z"
     }
   ]
 }
