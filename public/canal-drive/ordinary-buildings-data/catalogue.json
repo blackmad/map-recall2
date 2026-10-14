@@ -26304,10 +26304,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012089344",
       "name": "Politiebureau Meer en Vaart, Meer en Vaart 284, Amsterdam (1982)",
-      "hash": "87baea853e7a6771027b02acb3cc3b2e255b04a764326cfb448db42f232a3d1c",
-      "sha256": "87baea853e7a6771027b02acb3cc3b2e255b04a764326cfb448db42f232a3d1c",
-      "bytes": 134096,
-      "triangles": 1710,
+      "hash": "485a12c5f4050f24932ac1a2867ea4ab00bcafc9b30e4274472a461bcc0e439b",
+      "sha256": "485a12c5f4050f24932ac1a2867ea4ab00bcafc9b30e4274472a461bcc0e439b",
+      "bytes": 167696,
+      "triangles": 2190,
       "materials": 6,
       "textures": 0,
       "scale": 1,
@@ -26449,7 +26449,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012089344",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:29.401Z",
+      "updatedAt": "2026-10-14T03:11:57.002Z",
       "bagYear": 1982
     },
     {
