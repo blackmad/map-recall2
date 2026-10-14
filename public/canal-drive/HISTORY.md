@@ -1,5 +1,63 @@
 # Canal Recall — what is built
 
+## Amsterdam School components for block faces; the Street-View pilot retired (2026-10-14)
+
+Lane `lane/amsterdam-school-20261014` (plan Part 2 step 6). Eight
+components in `buildingRecipe/fit.ts` (layout) and the new
+`buildingRecipe/amsterdamSchool.ts` (meshes built after the library;
+`applyAmsterdamSchool` returns null when a house uses none, so absent
+components are byte-identical: fit-golden 140/140, all 21 face chunks
+hash identically): **rigid continuous canopy** (`shopfront.awning.style:
+"rigid"`, optional `fasciaColour`; a 1.2 × 0.16 m slab 2 cm over the
+shop-glass head with a 0.3 × 0.06 m nose fascia; `continuity.canopy:
+[{pands, evidence}]` on the face joins neighbours at the median height,
+each pand keeping its own mesh so `pandRanges` hold; the validator
+rejects single-pand groups, non-neighbours, missing evidence; proportions
+from `shopCanopies.ts`, which stays for the streamed tier with a note),
+**ladder window** (`windows: "ladder"`, 0.55–0.75 m lights at 0.68 storey
+with 4–6 bars, paired per bay with a 0.16 m pier), **multi-bay erker**
+(`bayWindows: {bays: {from, to}, storeys, cap: hip|flat|none}`, 0.55 m
+projection, 0.25 m returns, a 0.85 m stallriser per storey), **brick
+course banding** (`bands: "courses"`, `courseStoreys`, `palette.band`;
+whole storeys faced in the band brick plus 2–3 raised courses over the
+heads), **corner tower** (`tower: {corner: true, rise, cap:
+pyramid|flat|stepped}` on a two-front pand; plan from the two front
+planes, rhombus on a shared vertex, five points on a chamfer; `stepped`
+also for ordinary towers), and three the Jan Evertsenstraat strip
+demanded under the standing rule: **glass-block band**
+(`awning.glassBlocks: true`, a glazed band over the slab to 8 cm under the
+first sills with a 0.2 m mortar grid), **brick lisenes** (`lisenes:
+{leftEnd, rightEnd}` half|full, 0.1 m proud with a corbel cap, a half
+lisene meeting the neighbour's on the party plane) and **window hoods**
+(`windowHoods: true`, a 0.12 m ledge 0.22 m proud). Tests:
+`blockFace/amsterdamSchool.test.ts` (11) on the synthetic face
+`scripts/block-face/faces/_demo-school/` (nine De Clercqstraat pands with
+invented intents, 28,188 tris, not installed; the sweeps skip `_` faces).
+The real input for the street: `faces/_jan-evertsen-94/` (nos. 94–142, 26
+pands, panoramas 2024-12-06, facts/uses/discovery, no intent yet). What
+the kit still cannot say on that stretch: side-hung casements with a
+fixed top light (the street's dominant window), the tall plain parapet
+zone, no. 94's stepped corner mass, the clock tower, gateway and canted
+bay of pand 107349 (bespoke or large tier), signs on the glass-block band.
+**Retired**: the Street-View-based Jan Evertsenstraat pilot
+(`scripts/jan-evertsen-pilot/`, `interwar*Frontage*` modules and tests,
+`fixtures/interwarPilotProfiles.json`, `scopedStreetAppearance.test.ts`,
+`public/canal-drive/jan-evertsen-pilot.html`, the
+`jan-evertsen-canopy-candidate-native-pair` profile in the installed
+profiles, `profiles.json` and `frontage-survey.json`, the interwar code
+in `threeBuildingMesh.ts`, `streetAppearance.ts`, `sourceVisualRoof.ts`,
+`shopCanopies.ts`; shared quad types moved to `frontageQuads.ts`); the
+integrator also removed the pilot GLBs under `models/jan-evertsen-pilot/`
+and `demo-assets/jan-evertsen/` and dropped the deleted tests from the
+`test:street-rendering-core` and `test:street-appearance` scripts. Kept:
+`docs/references/jan-evertsen-pilot/` with the README's retirement line,
+the Beeldbank acquisition and BAG rollout inventories. Two tests in those
+suites were already red on main before this merge and stay on the board:
+`scripts/street-appearance/audit-frontages.test.ts` (source-hash
+mismatches across files no lane touched) and the pyramid case in
+`surveyedEnvelopeTransport.test.ts`.
+
+
 ## Large kit vocabulary: glazed hall, glazed columns, French-window ledge; the three complaint houses re-fitted (2026-10-14)
 
 Lane `lane/large-vocabulary-20261014` (plan Part 1 lane C), on lane A's

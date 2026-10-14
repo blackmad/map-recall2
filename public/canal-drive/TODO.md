@@ -1375,10 +1375,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   library (1890 brick-arched, 1900 stucco front, 1985 infill) with palettes
   from strip medians; face lanes of ~10 pands, never `compile.ts --install`;
   review lane with the camera-matched row, likeness and a verdict per pand,
-  ride shots at five points; Amsterdam School components (rigid continuous
-  canopy with face continuity, ladder window, multi-bay erker with cap,
-  brick course banding, corner tower) and the retirement of the
-  Street-View-based Jan Evertsenstraat pilot; then Jan Evertsenstraat
+  ride shots at five points; Amsterdam School components DONE (HISTORY
+  "Amsterdam School components"; plus glass-block band, lisenes, window
+  hoods; still missing: side-hung casements with a fixed top light, the
+  plain parapet zone, stepped corner masses; `faces/_jan-evertsen-94/`
+  has the 26-pand strip, facts and uses, no intent yet) and the
+  Street-View pilot retired; two tests already red on main:
+  `scripts/street-appearance/audit-frontages.test.ts` (source-hash
+  mismatches) and the pyramid case in `surveyedEnvelopeTransport.test.ts`
+  (fix or re-record); then Jan Evertsenstraat
   (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
   and arcades bespoke, De Hallen as a large recipe; district style packs in
   `look/palette.ts` keyed by CBS buurt with a per-pand district index in
