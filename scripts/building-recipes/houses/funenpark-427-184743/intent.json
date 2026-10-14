@@ -85,7 +85,15 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "low"
+   "windows": "low",
+   "palette": {
+    "brick": "#3e3832"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -98,7 +106,15 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "low"
+   "windows": "low",
+   "palette": {
+    "brick": "#3e3832"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -111,7 +127,15 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "low"
+   "windows": "low",
+   "palette": {
+    "brick": "#3e3832"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -135,10 +159,15 @@
    "windows": "low",
    "curve": true,
    "palette": {
-    "brick": "#8a5a44",
+    "brick": "#3e3832",
     "frame": "#4a6a42",
     "stone": "#b0aca4"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -152,10 +181,15 @@
    "sills": false,
    "windows": "low",
    "palette": {
-    "brick": "#8a5a44",
+    "brick": "#3e3832",
     "frame": "#4a6a42",
     "stone": "#b0aca4"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -167,7 +201,15 @@
    "ground": "system",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "palette": {
+    "brick": "#413f39"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -179,7 +221,15 @@
    "ground": "system",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "palette": {
+    "brick": "#3e3832"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -191,7 +241,15 @@
    "ground": "system",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "palette": {
+    "brick": "#3e3832"
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -209,5 +267,18 @@
   "Modelled: eight wall groups split by the height steps of the 3DBAG walls (surface lists, not panels, because panel 7, 17 and 86 each hold two or three heights): the south front in three groups (4, 6 and 5 storeys) and the east arc in two (5 storeys as one curve, 6 storeys at the north end) as ribbon windows over a glazed ground floor with green frames; the west brick front in three groups (4, 5 and 6 storeys) as a brick bay grid. Roofs and unlisted walls are the 3DBAG LoD2.2 shell (the courtyard side, the arm ends and the north block are blank). Bays are wide (6-9 m ribbons) to stay under 12k triangles.",
   "Simplified: the green timber shutters and the vertical green fins are the frame colour only, the loggia recesses are plain ribbon windows, the stepped upper storeys keep the 3DBAG roof lines. Not modelled: balconies, the entrance arches to the courtyards and the shop signs (no frontal photograph)."
  ],
- "closedBands": true
+ "closedBands": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ]
+ }
 }
