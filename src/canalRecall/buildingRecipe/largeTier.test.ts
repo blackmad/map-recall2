@@ -574,6 +574,85 @@ test('layeredKit is the default for kind: large (false keeps the legacy kit); me
   assert.equal(built.components.curtainGrids, 2);
 });
 
+// ---------------------------------------------------------------------------------------------------------------
+// Kit vocabulary for the rejected pilots (2026-10-14): Apollohal's glazed hall, Houthavenkade 26's glass balcony
+// columns, Waagdragerhof's French windows over storey ledges, arch ring colour, and openings trimmed into a stepped wall.
+
+test('glazed hall: the wall is the glass skin, a brick base facing, sill, mullion grid and structural posts on it; no coplanar overlap (Apollohal)', async () => {
+  const wall = await layeredWall(), {drawGlazedHall} = await import('../blockBuilding/components.ts');
+  const sys = {pitch: 6, lines: [0, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
+  let boxes = 0;
+  const hook = (c: Parameters<typeof drawGlazedHall>[0], info: {cells: Parameters<typeof drawGlazedHall>[1]}) => { boxes += drawGlazedHall(c, info.cells, 3.6, 8.95, 10, 4, {wall: 'wall', frame: 'frame', stone: 'stone'}); };
+  const skin = {wallSlotFor: () => 'glass'}, bare = wall(sys, true, skin), hall = wall(sys, true, {...skin, panelHook: hook});
+  assert.ok(boxes > 20, `${boxes} boxes`);
+  assert.ok(hall.tris > bare.tris + 200 && hall.tris < bare.tris + 1500, `${hall.tris - bare.tris} triangles for a 12 m hall front`);
+  assert.equal(hall.m2, 0);
+  assert.ok(hall.mesh.slots.get('glass')!.positions.length > 0);
+});
+
+test('glazed columns: enclosed glass bays with edge posts and a slab per storey line over the listed bays, no coplanar overlap', async () => {
+  const wall = await layeredWall(), {drawGlazedColumns} = await import('../blockBuilding/components.ts');
+  const win = {w: 0.5, h: 0.6, sill: 0.8, frame: 'frame', glass: 'glass', frameW: 0.06};
+  const sys = {pitch: 1.5, lines: [0, 3, 6, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const, cycle: [{kind: 'punched' as const, win}, {kind: 'wall' as const}, {kind: 'wall' as const}, {kind: 'punched' as const, win}]}};
+  for (const slabs of [true, false]) {
+    let stripes = 0;
+    const hook = (c: Parameters<typeof drawGlazedColumns>[0], info: {levels: number[]; cells: Parameters<typeof drawGlazedColumns>[1]}) => { stripes += drawGlazedColumns(c, info.cells, info.levels, b => b % 4 === 1 || b % 4 === 2, 1, 0.95, slabs, 8.8, {glass: 'glass', frame: 'frame', stone: 'stone'}); };
+    const r = wall(sys, true, {panelHook: hook});
+    assert.equal(stripes, 2, 'two runs of two adjacent column bays on the 12 m front');
+    assert.equal(r.m2, 0, slabs ? 'balcony bays' : 'flush bands');
+  }
+});
+
+test('french-window-ledge: tall windows over a continuous ledge under every sill, optional segmental heads; no coplanar overlap', async () => {
+  const {largeSystem, FRENCH_WINDOW} = await import('../blockBuilding/systems.ts');
+  const slots = {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame', arch: 'arch'};
+  const fit = {pitchM: 2, lines: [0, 3, 6, 9], ground: 'system' as const, slots, layered: true, deepBars: true};
+  const sys = largeSystem('french-window-ledge', fit), win = sys.typical.win!, band = sys.bands!.at(-1)!;
+  assert.equal(win.h, FRENCH_WINDOW.h);
+  assert.ok(band.lift! + band.h / 2 <= win.sill! - 0.01, 'ledge top under the sill');
+  assert.equal(largeSystem('french-window-ledge', {...fit, shape: {w: 0.5, h: 0.78, sillM: 0.05}}).typical.win!.sill, FRENCH_WINDOW.ledgeH + 0.02, 'a measured sill never sinks into the ledge');
+  const wall = await layeredWall();
+  assert.equal(wall(sys, true).m2, 0);
+  const arched = largeSystem('french-window-ledge', {...fit, arches: {windows: 'segmental'}});
+  assert.equal(arched.typical.win!.arch?.kind, 'segmental');
+  assert.equal(wall(arched, true).m2, 0);
+});
+
+test('kit vocabulary in intents: hall/columns validated, palette.arch colours the arch ring, the systems fit and compile', () => {
+  const base = raw('waagdragerhof-198-118320'), w = base.walls;
+  assert.throws(() => validateLargeIntent({...base, walls: [{...w[0], system: 'glazed-hall', hall: undefined}, ...w.slice(1)]}), /hall/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...w[0], system: 'glazed-hall', hall: {base: 0.4, lights: 10, rows: 3, pitchM: 1}}, ...w.slice(1)]}), /pitchM/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...w[0], system: 'glazed-columns', columns: {bays: [99]}}, ...w.slice(1)]}), /columns.bays/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...w[0], hall: {base: 0.4, lights: 10, rows: 3}}, ...w.slice(1)]}), /only system glazed-hall/);
+  const {recipe} = fitLarge(validateLargeIntent(base), facts('waagdragerhof-198-118320'));
+  assert.equal(recipe.spec.palette['arch@g3'], '#8a4c40');
+  assert.deepEqual(recipe.groups.map(g => g.system), ['french-window-ledge', 'french-window-ledge', 'brick-bay-grid', 'brick-bay-grid']);
+  const apollo = fitLarge(validateLargeIntent(raw('apollolaan-4-134507')), facts('apollolaan-4-134507')).recipe.groups[0];
+  assert.deepEqual([apollo.system, apollo.hall?.lights, apollo.hall?.rows], ['glazed-hall', 26, 6]);
+  assert.ok(Math.abs(apollo.hall!.baseM - 0.4 * apollo.eavesM) < 0.01);
+  const hk = fitLarge(validateLargeIntent(raw('houthavenkade-26-247232')), facts('houthavenkade-26-247232')).recipe.groups;
+  assert.deepEqual(hk.slice(0, 2).map(g => [g.system, g.columns?.slabs, g.slots.wall]), [['glazed-columns', true, 'wall@g0'], ['glazed-columns', true, 'wall@g1']]);
+});
+
+test('the three re-fitted pilots pass the large-tier gates within the 12k budget', async () => {
+  for (const id of ['apollolaan-4-134507', 'houthavenkade-26-247232', 'waagdragerhof-198-118320']) {
+    const {gates, tris, built} = await gatesOf(validateLargeIntent(raw(id)), facts(id));
+    assert.ok(tris.length <= LARGE_BUDGET_TRIANGLES, `${id}: ${tris.length}`);
+    assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), [], id);
+    assert.equal(built.stats.proud ?? 0, 0, id);
+  }
+});
+
+test('Singel 457 Kalverstraat front at 6 storeys: the head that stood 3 mm into the stepped 3DBAG outline is trimmed and cut, not laid proud', () => {
+  const id = 'singel-457-165086', intent = raw(id);
+  intent.walls[3].storeys = 6;
+  const built = compileBuilding(validateLargeIntent(intent), facts(id)) as import('./largeCompile.ts').CompiledLargeBuilding;
+  assert.equal(built.stats.proud, 0);
+  assert.equal(built.stats.trimmed, 1);
+  // installed (5 storeys) nothing is trimmed: the stat is absent and the mesh unchanged (large-mesh-hashes)
+  assert.equal((compileBuilding(validateLargeIntent(raw(id)), facts(id)) as import('./largeCompile.ts').CompiledLargeBuilding).stats.trimmed, undefined);
+});
+
 test('garageBays puts garage doors in exactly the listed bays; absent = identical to garageDoors from the right', async () => {
   const base = validateLargeIntent(raw('politie-van-leijenberghlaan'));
   const at = (g: Partial<LargeBuildingIntent['walls'][number]>) => validateLargeIntent({...base, walls: base.walls.map((w, i) => i === 2 ? {...w, baysPerStorey: 5, ...g} : w)});
@@ -586,4 +665,15 @@ test('garageBays puts garage doors in exactly the listed bays; absent = identica
   const {built, gates} = await gatesOf(at({garageBays: [0, 2]}), f);
   assert.equal(built.components.garageDoors, 2);
   assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
+});
+
+test('measured groups export their wall and arch-ring slots with tintSource measured; houses without a measured record do not', () => {
+  const tinted = (id: string) => {
+    const g = (compileBuilding(validateLargeIntent(raw(id)), facts(id)) as import('./largeCompile.ts').CompiledLargeBuilding).group, out: string[] = [];
+    g.traverse(o => { const m = (o as {material?: {userData?: {tintSource?: string}}}).material; if (m?.userData?.tintSource === 'measured') out.push(o.name); });
+    return out.sort();
+  };
+  assert.deepEqual(tinted('houthavenkade-26-247232'), ['wall/wall@g0', 'wall/wall@g1']);
+  assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
+  assert.deepEqual(tinted('politie-van-leijenberghlaan'), []);
 });

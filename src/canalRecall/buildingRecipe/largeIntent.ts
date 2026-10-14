@@ -8,8 +8,8 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways'];
-const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'notes'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'windowShape', 'hand', 'hall', 'columns'];
+const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
 export function validateLargeIntent(input: unknown): LargeBuildingIntent {
@@ -42,13 +42,22 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   else for (const s of intent.sources) {
     oneOf(s.kind, SOURCE_KINDS, `source ${s.id}.kind`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(s.capturedAt ?? '')) problems.push(`source ${s.id}.capturedAt must be YYYY-MM-DD`);
+    if (s.sha256 !== undefined && !/^[0-9a-f]{64}$/.test(s.sha256)) problems.push(`source ${s.id}.sha256 must be 64 hex digits`);
+    if (s.image?.startsWith('source-data://') && !s.sha256) problems.push(`source ${s.id}: a source-data:// image needs its sha256`);
+  }
+  if (intent?.measured !== undefined) {
+    const m = intent.measured;
+    if (!m || !/^\d{4}-\d{2}-\d{2}$/.test(m.date ?? '')) problems.push('measured.date must be YYYY-MM-DD');
+    if (!Array.isArray(m?.groups)) problems.push('measured.groups: list of wall-group indices');
+    else m.groups.forEach(g => count(g, 'measured.groups', 0, Math.max(0, (intent.walls?.length ?? 1) - 1)));
+    for (const k of Object.keys(m ?? {})) if (!['date', 'groups'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups)`);
   }
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');
   if (intent?.roof !== undefined) oneOf(intent.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
-  for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  for (const k of ['shutters', 'stone', 'band', 'cornice', 'glass'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   const seen = new Map<number, number>();
   if (!Array.isArray(intent?.walls) || !intent.walls.length) problems.push('at least one wall group is required');
@@ -132,7 +141,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.arches.windows !== undefined) oneOf(w.arches.windows, ARCH_KINDS, `${at}.arches.windows`);
       if (w.arches.ground !== undefined) oneOf(w.arches.ground, ARCH_KINDS, `${at}.arches.ground`);
       if (w.arches.band !== undefined) oneOf(w.arches.band, ['brick', 'stone', 'voussoir', 'none'], `${at}.arches.band`);
-      if (w.arches.windows !== undefined && w.system !== 'brick-bay-grid') problems.push(`${at}.arches.windows: arched windows need system brick-bay-grid`);
+      if (w.arches.windows !== undefined && !['brick-bay-grid', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.arches.windows: arched windows need system brick-bay-grid or french-window-ledge`);
     }
     if (w.gateways !== undefined) {
       for (const k of Object.keys(w.gateways)) if (!['bays', 'arch'].includes(k)) problems.push(`${at}.gateways.${k}: unknown field (bays, arch)`);
@@ -180,7 +189,42 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       else w.nameBoards.forEach((n, k) => { if (typeof n !== 'string' || (n !== '' && !SIGN_TEXT.test(n)) || n.length > 24) problems.push(`${at}.nameBoards[${k}]: up to 24 of A-Z a-z 0-9 & ' - . space`); });
       if (!w.hoist) problems.push(`${at}.nameBoards: boards hang over the hoist-bay portals; add hoist`);
     }
-    for (const [k, v] of Object.entries(w.palette ?? {})) { if (!['brick', 'frame', 'stone'].includes(k)) problems.push(`${at}.palette.${k}: only brick, frame, stone per group`); else colour(v, `${at}.palette.${k}`); }
+    for (const [k, v] of Object.entries(w.palette ?? {})) { if (!['brick', 'frame', 'stone', 'glass', 'arch'].includes(k)) problems.push(`${at}.palette.${k}: only brick, frame, stone, glass, arch per group`); else colour(v, `${at}.palette.${k}`); }
+    if (w.palette?.arch !== undefined && !w.arches && !w.hoist) problems.push(`${at}.palette.arch: the arch ring colour needs arches or hoist`);
+    if (w.windowShape !== undefined) {
+      const s = w.windowShape;
+      for (const k of Object.keys(s ?? {})) if (!['w', 'h', 'sill'].includes(k)) problems.push(`${at}.windowShape.${k}: unknown field (w, h, sill: fractions of bay / storey)`);
+      const frac = (v: unknown, k: string, lo: number, hi: number) => { if (typeof v !== 'number' || !(v >= lo && v <= hi)) problems.push(`${at}.windowShape.${k}: fraction ${lo}..${hi}`); };
+      frac(s?.w, 'w', 0.08, 0.98); frac(s?.h, 'h', 0.08, 0.98); frac(s?.sill, 'sill', 0, 0.9);
+      if (typeof s?.h === 'number' && typeof s?.sill === 'number' && s.h + s.sill > 0.98) problems.push(`${at}.windowShape: sill + h must leave a head (<= 0.98 of the storey)`);
+      if (!['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts', 'glazed-columns', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.windowShape: only brick-bay-grid, ribbon-windows, plinth-shopfronts, glazed-columns, french-window-ledge windows take a measured shape`);
+      if (w.screen) problems.push(`${at}.windowShape: not with screen (glass-block perforations)`);
+    }
+    if (w.system === 'glazed-hall') {
+      const h = w.hall;
+      if (!h) problems.push(`${at}.hall: glazed-hall needs hall {base, lights, rows}`);
+      else {
+        for (const k of Object.keys(h)) if (!['base', 'lights', 'rows'].includes(k)) problems.push(`${at}.hall.${k}: unknown field (base, lights, rows)`);
+        if (typeof h.base !== 'number' || !(h.base >= 0.05 && h.base <= 0.8)) problems.push(`${at}.hall.base: fraction 0.05..0.8 of the eaves height`);
+        count(h.lights, `${at}.hall.lights`, 1, 60); count(h.rows, `${at}.hall.rows`, 1, 40);
+      }
+      if (intent.layeredKit === false) problems.push(`${at}: a glazed hall's wall is its glass skin (layered kit only)`);
+    } else if (w.hall !== undefined) problems.push(`${at}.hall: only system glazed-hall`);
+    if (w.system === 'glazed-columns') {
+      const c = w.columns;
+      if (!c) problems.push(`${at}.columns: glazed-columns needs columns {bays, share?, from?, slabs?}`);
+      else {
+        for (const k of Object.keys(c)) if (!['bays', 'share', 'from', 'slabs'].includes(k)) problems.push(`${at}.columns.${k}: unknown field (bays, share, from, slabs)`);
+        if (!Array.isArray(c.bays) || !c.bays.length) problems.push(`${at}.columns.bays: list of bay indices`);
+        else c.bays.forEach(b => count(b, `${at}.columns.bays`, 0, (w.baysPerStorey ?? 80) - 1));
+        if (w.baysPerStorey === undefined) problems.push(`${at}.columns.bays needs baysPerStorey`);
+        if (c.share !== undefined && (typeof c.share !== 'number' || !(c.share >= 0.3 && c.share <= 1))) problems.push(`${at}.columns.share: fraction 0.3..1`);
+        if (c.from !== undefined) count(c.from, `${at}.columns.from`, 0, 39);
+        bool(c.slabs, `${at}.columns.slabs`);
+      }
+    } else if (w.columns !== undefined) problems.push(`${at}.columns: only system glazed-columns`);
+    if (['glazed-hall', 'glazed-columns', 'french-window-ledge'].includes(w.system) && (w.balconies || w.hoist || w.tiltedBays || w.screen || w.gateways || w.blankStoreys)) problems.push(`${at}: ${w.system} takes no balconies, hoist, tiltedBays, screen, gateways or blankStoreys`);
+    if (w.hand !== undefined) { if (!Array.isArray(w.hand)) problems.push(`${at}.hand: list of field paths`); else for (const k of w.hand) if (typeof k !== 'string' || !WALL_KEYS.includes(k.split('.')[0])) problems.push(`${at}.hand: ${JSON.stringify(k)} is not a wall-group field`); }
   });
   if (problems.length) throw new Error(`Invalid large intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return intent;
