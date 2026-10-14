@@ -12,6 +12,10 @@
 // - The riding surface (relief + measured decks) is also sampled here on the
 //   main thread for the rider's pose and for model bases (buildings, trees,
 //   landmarks), with the same data and frame the worker builds from.
+// - The far ring (farRing.ts): from the air, when the view reaches past the
+//   capped resident ring, 2 km blocks of flat-coloured land, water, green and
+//   street bands out to FAR_MAX_M; a block's 1 km part hides while the
+//   resident ring draws that cell.
 //
 // Renderer-agnostic on purpose: nothing here calls MapLibre. The shared frame
 // supplies the camera; `GroundHost` is the thin adapter the page implements
@@ -22,6 +26,7 @@ import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer, type Packed
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { residentRadius, viewReachM } from './residency.js';
+import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
@@ -48,6 +53,8 @@ export interface OwnGroundOptions {
   minZoom?: number;
   /** Park surfaces and furniture from parks-v1 (default on; `?parks=0` or `window.__canalRecallParks = false` turns them off). */
   parks?: boolean;
+  /** The far ring beyond the resident cells from the air (default on; `?farGround=0` turns it off). */
+  far?: boolean;
 }
 
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
@@ -61,6 +68,8 @@ type LngLat = [number, number];
 
 /** `fade`: a cell that just arrived dissolves in over FADE_MS (screen-door dither on per-cell material clones); the clones go when it ends. */
 interface Fade { start: number; uniform: { value: number }; meshes: { mesh: any; original: any; clone: any }[] }
+/** A far block on screen: one mesh per 1 km part, keyed by the streamed cell it stands in for. */
+interface FarResident { key: string; group: any; parts: Map<string, any>; triangles: number; bytes: number }
 interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
 
 const RADIUS_M = 1400;
@@ -120,13 +129,20 @@ export class OwnGround {
   private readonly requestedAt = new Map<string, number>();
   /** The last build's stats per cell key (cost per park cell: triangles per layer, build ms). */
   private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1 }>();
+  /** Far ring radius now (0: the resident ring reaches what the camera sees). */
+  private farRadius = 0;
+  private readonly far = new Map<string, FarResident>();
+  private readonly farPending = new Set<string>();
+  /** Far blocks with nothing to draw (outside the extracts). */
+  private readonly farEmpty = new Set<string>();
+  private readonly farStats = { built: 0, buildMs: [] as number[] };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -164,6 +180,9 @@ export class OwnGround {
 
   dispose(full = true): void {
     for (const key of [...this.resident.keys()]) this.drop(key);
+    for (const key of [...this.far.keys()]) this.dropFar(key);
+    this.farPending.clear();
+    this.farEmpty.clear();
     this.pending.clear();
     this.installQueue.length = 0;
     this.prepared.clear();
@@ -184,8 +203,10 @@ export class OwnGround {
   update(lngLat: LngLat, zoom: number, pitchDeg = 60): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
-    const radius = residentRadius(viewReachM(zoom, pitchDeg, lngLat[1]), this.opts.radiusM, this.opts.aerialRadiusM);
+    const reach = viewReachM(zoom, pitchDeg, lngLat[1]), radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
+    const far = this.opts.far ? farRadiusM(reach, radius) : 0;
+    if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
     if (!this.ready) return;
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();
   }
@@ -272,6 +293,66 @@ export class OwnGround {
       for (const key of [...this.prepared]) if (!keep.has(key)) this.prepared.delete(key);
     }
     this.store.forgetCells(new Set([...keep].flatMap(k => GroundStore.neighbours(k))));
+    this.updateFar(keep);
+  }
+
+  /** Far blocks: ask for the ones the far radius reaches that the resident ring does not wholly draw; drop distant ones. */
+  private updateFar(resident: ReadonlySet<string>): void {
+    if (!this.centre) return;
+    const cellRect = (k: string) => this.store.cellRect(k), centreCell = this.store.cellAt(this.centre[0], this.centre[1]), size = this.store.elevation.cellSizeM;
+    const keepR = this.farRadius ? this.farRadius + FAR_KEEP_M : 0;
+    const kept = new Set(farBlocksWithin(this.centre, centreCell, keepR, size, cellRect).map(b => b.key));
+    for (const key of [...this.far.keys()]) if (!kept.has(key)) this.dropFar(key);
+    for (const key of [...this.farPending]) if (!kept.has(key)) this.farPending.delete(key);
+    for (const { key } of farBlocksWithin(this.centre, centreCell, this.farRadius, size, cellRect)) {
+      if (this.far.has(key) || this.farPending.has(key) || this.farEmpty.has(key)) continue;
+      const cells = farBlockCells(key).filter(k => this.store.covers(k));
+      if (!cells.length) { this.farEmpty.add(key); continue; }
+      if (cells.every(k => resident.has(k))) continue;
+      this.farPending.add(key);
+      this.worker?.postMessage({ type: 'far', key, gen: this.gen });
+    }
+  }
+
+  private installFar(b: BuiltFar): void {
+    const THREE = this.THREE, t0 = performance.now();
+    this.dropFar(b.key);
+    if (!this.base.far) this.base.far = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 });
+    const group = new THREE.Group(), parts = new Map<string, any>();
+    group.name = `own-ground/far/${b.key}`;
+    group.matrixAutoUpdate = false;
+    for (const p of b.parts) {
+      const mesh = new THREE.Mesh(this.geometry(p.mesh), this.base.far);
+      mesh.name = `far/${p.key}`;
+      mesh.matrixAutoUpdate = false;
+      // Under the resident ring's ground (drawn first) and never in the shadow pass.
+      mesh.renderOrder = -1;
+      parts.set(p.key, mesh);
+      group.add(mesh);
+    }
+    this.root.add(group);
+    this.far.set(b.key, { key: b.key, group, parts, triangles: b.stats.triangles, bytes: b.stats.bytes });
+    this.farStats.built++;
+    this.farStats.buildMs.push(b.stats.buildMs);
+    this.stats.installMs.push(performance.now() - t0);
+    this.syncFar();
+    this.host.repaint();
+  }
+
+  private dropFar(key: string): void {
+    const f = this.far.get(key);
+    if (!f) return;
+    this.root.remove(f.group);
+    for (const m of f.parts.values()) m.geometry.dispose();
+    this.far.delete(key);
+  }
+
+  /** A far part hides once the resident ring draws its cell (after the cell's dissolve). */
+  private syncFar(): void {
+    for (const f of this.far.values()) for (const [key, mesh] of f.parts) {
+      const r = this.resident.get(key);
+      mesh.visible = !r || !!r.fade;
+    }
   }
 
   private prepareMain(key: string): void {
@@ -286,6 +367,12 @@ export class OwnGround {
 
   private onWorker(msg: any): void {
     if (msg.type === 'ready') { this.workerReady = true; return; }
+    if (msg.type === 'error' && msg.far) { this.stats.errors.push(`far ${msg.far}: ${msg.message}`.slice(0, 400)); this.farPending.delete(msg.far); return; }
+    if (msg.type === 'far') {
+      if (msg.gen !== this.gen || !this.farPending.delete(msg.key)) return;
+      if (msg.far) this.installFar(msg.far as BuiltFar); else this.farEmpty.add(msg.key);
+      return;
+    }
     if (msg.type === 'error') { this.stats.errors.push(`${msg.key ?? ''}: ${msg.message}`.slice(0, 400)); if (msg.key) this.pending.delete(msg.key); return; }
     if (msg.type !== 'cell' || msg.gen !== this.gen) return;
     const cell = msg.cell as BuiltCell;
@@ -436,6 +523,7 @@ export class OwnGround {
         for (const { mesh, original, clone } of f.meshes) { mesh.material = original; clone.dispose(); }
         r.fade = undefined;
         this.fading.delete(key);
+        this.syncFar();
       }
     }
     this.host.repaint();
@@ -500,6 +588,7 @@ export class OwnGround {
     this.root.add(group);
     this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null, fade });
     if (fade) this.fading.add(cell.key);
+    this.syncFar();
     this.stats.installMs.push(performance.now() - t0);
     const asked = this.requestedAt.get(`${cell.key}:${cell.lod}`);
     if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${cell.lod}`); }
@@ -517,6 +606,7 @@ export class OwnGround {
     for (const m of r.materials) m.dispose();
     for (const t of r.textures) t.dispose();
     this.resident.delete(key);
+    this.syncFar();
   }
 
   // ------------------------------------------------------------------ surface queries
@@ -739,6 +829,11 @@ export class OwnGround {
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,
       downloadedKB: Object.fromEntries(Object.entries(this.store.loadedBytes).map(([k, v]) => [k, Math.round(v / 1024)])),
       overlays: Object.fromEntries(Object.entries(this.overlays).map(([k, m]) => [k, m ? m.geometry.index.count / 3 : 0])),
+      far: {
+        radiusM: this.farRadius, blocks: this.far.size, pending: this.farPending.size, built: this.farStats.built, buildMsMedian: median(this.farStats.buildMs),
+        parts: [...this.far.values()].reduce((n, f) => n + f.parts.size, 0), partsShown: [...this.far.values()].reduce((n, f) => n + [...f.parts.values()].filter(m => m.visible).length, 0),
+        triangles: [...this.far.values()].reduce((n, f) => n + f.triangles, 0), geometryMB: +([...this.far.values()].reduce((n, f) => n + f.bytes, 0) / 1048576).toFixed(1),
+      },
       errors: this.stats.errors.slice(-5),
     };
   }

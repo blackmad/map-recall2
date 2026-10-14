@@ -16,7 +16,9 @@ import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SurfaceIndex, type ParksCell } from './parks';
-import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
+import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
+import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
+import type { OsmGroundExtract } from './osmGround';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -1005,4 +1007,32 @@ test('park fill culling: a fill triangle inside one BGT surface goes; one over a
   const kept = cullCovered(merge([tri([[2, 2], [8, 2], [2, 8]]), tri([[10, 10], [17, 10], [10, 17]])]), raster);
   assert.equal(kept.mesh.indices.length, 3);
   assert.equal(kept.mesh.positions.length, 9, 'vertices compacted');
+});
+
+test('far ring: radius only past the resident ring, blocks nearest first, one part per covered cell, under budget', () => {
+  assert.equal(farRadiusM(1800, 2000), 0, 'the resident ring reaches the view');
+  assert.equal(farRadiusM(3200, 2000), 4000);
+  assert.equal(farRadiusM(40000, 2000), FAR_MAX_M);
+  assert.deepEqual(farBlockCells('-1_0'), ['-2_0', '-1_0', '-2_1', '-1_1']);
+  assert.equal(farBlockOf('-1_1'), '-1_0');
+  const cellRect = (k: string): [number, number, number, number] => { const [cx, cy] = k.split('_').map(Number); return [cx * 1000, cy * 1000, cx * 1000 + 1000, cy * 1000 + 1000]; };
+  const blocks = farBlocksWithin([500, 500], '0_0', 2500, 1000, cellRect);
+  assert.equal(blocks[0].key, '0_0');
+  assert.ok(blocks.every((b, i) => i === 0 || b.d >= blocks[i - 1].d), 'nearest first');
+  assert.ok(blocks.some(b => b.key === '1_0') && !blocks.some(b => b.key === '2_0'), 'block 2_0 starts 3.5 km away');
+  assert.deepEqual(simplify([[0, 0], [10, 0.5], [20, 0], [30, 10]], 1), [[0, 0], [20, 0], [30, 10]]);
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const osm = { version: 1, box: '', centre: [0, 0], fetched: '', attribution: '', areas: [{ id: 'a', kind: 'park', rings: [[[100, 100], [300, 100], [300, 300], [100, 300], [100, 100]]] }],
+    ways: [{ id: 1, tags: { highway: 'residential' }, g: [[0, 500], [1000, 500]] }, { id: 2, tags: { highway: 'primary' }, g: [[500, 0], [500, 1000]] }] } as unknown as OsmGroundExtract;
+  const water = { polygons: [[[[600, 600], [900, 600], [900, 900], [600, 900]]]], shores: [] } as WaterGeometry;
+  const b = buildFarBlock({ key: '0_0', rect: [0, 0, 1000, 1000], ground: () => 1, project: p => ll(p as Vec2), cells: [{ key: '0_0', rect: [0, 0, 1000, 1000], osm, water }] });
+  assert.deepEqual(b.parts.map(p => p.key), ['0_0']);
+  assert.equal(b.stats.byLayer.land, 2 * 20 * 20, 'a 50 m grid over 1 km');
+  assert.equal(b.stats.byLayer.green, 2);
+  assert.equal(b.stats.byLayer.water, 2);
+  assert.equal(b.stats.byLayer.street, 4, 'two straight bands, one quad each');
+  assert.ok(b.stats.triangles <= FAR_BLOCK_BUDGET && b.parts[0].mesh.colors, 'vertex coloured, under budget');
+  const zs = [...b.parts[0].mesh.positions].filter((_, i) => i % 3 === 2);
+  assert.equal(Math.min(...zs), 1, 'land on the relief');
+  assert.ok(Math.abs(Math.max(...zs) - 1 - FAR_LIFT.street) < 1e-6, 'streets lifted over the relief');
 });

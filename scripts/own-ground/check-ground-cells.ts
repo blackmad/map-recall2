@@ -12,6 +12,7 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
 import { flatHintAt, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
@@ -217,6 +218,7 @@ async function main(): Promise<void> {
   await pocketRegressions();
   await openingRegressions();
   await parkFillRegressions();
+  await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
@@ -366,6 +368,21 @@ async function openingRegressions(): Promise<void> {
     const on = await under(store), off = await under(noOpenings);
     check(!on.bad.length && (store.openedDecks.get(owner) ?? [...store.openedDecks.values()].flat()).includes(id), `${id} (${label}): water opened under it, ${on.probes - on.bad.length}/${on.probes} probes free of land and quay walls${on.bad.length ? ` (${on.bad.slice(0, 4).join(' ')})` : ''}`);
     check(off.bad.length > 0, `${id}: without the opening ${off.bad.length}/${off.probes} probes hit land or a quay wall (the pin is live)`);
+  }
+}
+
+/**
+ * The far ring (lane belt audit 2026-10-14): the aerial views over Nieuw-West and Noord that ended in an edge. Each
+ * named block builds all four parts with land, water, green and streets, within FAR_BLOCK_BUDGET and without dropping
+ * a street tier (measured 6.6k-11.7k triangles, 0.4-0.75 MB, 4-14 ms).
+ */
+async function farRingRegressions(): Promise<void> {
+  for (const [label, lng, lat] of [['Nieuw-West (Osdorpplein)', 4.8020, 52.3590], ['Noord (Buikslotermeerplein)', 4.9380, 52.4000], ['Noord (NDSM)', 4.8960, 52.4010]] as const) {
+    const [x, y] = toLocal(lng, lat), key = farBlockOf(store.cellAt(x, y)), input = await store.farInput(key);
+    if (!input) { check(false, `far ring ${label}: block ${key} has no input`); continue; }
+    const b = buildFarBlock(input), L = b.stats.byLayer;
+    check(b.parts.length === 4 && L.land > 0 && L.water > 0 && L.green > 0 && L.street > 0 && b.stats.tiers === 4 && b.stats.triangles <= FAR_BLOCK_BUDGET,
+      `far ring ${label} (block ${key}): ${b.parts.length} parts, ${b.stats.triangles} triangles (land ${L.land}, water ${L.water}, green ${L.green}, street ${L.street}), ${(b.stats.bytes / 1048576).toFixed(2)} MB, ${b.stats.buildMs} ms, street tiers ${b.stats.tiers}/4 (want <= ${FAR_BLOCK_BUDGET}, all layers)`);
   }
 }
 

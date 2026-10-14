@@ -22,6 +22,7 @@ import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import type { CellInput } from './groundCell.js';
+import { farBlockCells, type FarBlockInput } from './farRing.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
 export const GAME_ORIGIN = { lng: 4.9, lat: 52.37 } as const;
@@ -408,6 +409,25 @@ export class GroundStore {
       decks: this.decks(key), deckRingsAround, flatDecks: this.flatDecks(key), flatDeckMeta: this.flatDeckMeta(key),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays,
+      project: p => toLocal(p[0], p[1]),
+    };
+  }
+
+  /**
+   * A far block's input (farRing.ts): its streamed cells that the OSM extract and the relief cover, their water and
+   * OSM ground, and the relief over the block (loaded here; the next eviction drops it again). Null: nothing to draw.
+   */
+  async farInput(blockKey: string): Promise<FarBlockInput | null> {
+    const keys = farBlockCells(blockKey).filter(k => this.osmCells.has(k) && this.covers(k));
+    if (!keys.length) return null;
+    const rects = keys.map(k => this.cellRect(k));
+    const rect: Rect = [Math.min(...rects.map(r => r[0])), Math.min(...rects.map(r => r[1])), Math.max(...rects.map(r => r[2])), Math.max(...rects.map(r => r[3]))];
+    await this.ensureRelief(rect);
+    const [water, osm] = await Promise.all([Promise.all(keys.map(k => this.waterCell(k))), Promise.all(keys.map(k => this.osmCell(k)))]);
+    return {
+      key: blockKey, rect,
+      cells: keys.map((k, i) => ({ key: k, rect: rects[i], water: water[i], osm: osm[i] })),
+      ground: (x, y) => { const z = this.surface.ground(x, y); return z === z ? z : 0; },
       project: p => toLocal(p[0], p[1]),
     };
   }
