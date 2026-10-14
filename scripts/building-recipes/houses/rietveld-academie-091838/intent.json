@@ -1,0 +1,100 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "rietveld-academie-091838",
+ "pandId": "0363100012091838",
+ "address": "Gerrit Rietveld Academie and Sandberg Instituut, Fred. Roeskestraat 96-98, Amsterdam: a 2006 art-school complex, a seven-storey tower clad in grey pressed-metal dimples over a fully glazed ground storey carrying the school name in the glass, beside a low two-storey glazed block lettered SANDBERG INSTITUUT",
+ "sources": [
+  {
+   "id": "pano-2024-09-02-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-02_06-51-56_00461/",
+   "image": "staging/pand-reference-walls/0363100012091838/w03-177.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-30-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-30_07-32-23_00064/",
+   "image": "staging/pand-reference-walls/0363100012091838/w05-177.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "blankStoreys": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "windows": "low",
+   "wallMaterial": "stucco",
+   "entrance": {
+    "bay": 2,
+    "storeys": 2
+   },
+   "signage": {
+    "text": "RIETVELD ACADEMIE",
+    "colour": "#d8dadc",
+    "mount": "glazing"
+   },
+   "palette": {
+    "brick": "#868a8e",
+    "frame": "#2e3236",
+    "stone": "#9a9a98"
+   }
+  },
+  {
+   "wallSurfaces": [
+    8
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "low",
+   "entrance": {
+    "bay": 6,
+    "storeys": 2
+   },
+   "signage": {
+    "text": "SANDBERG INSTITUUT",
+    "colour": "#d8dadc",
+    "mount": "glazing"
+   },
+   "palette": {
+    "brick": "#a8aaa8",
+    "frame": "#2e3236",
+    "stone": "#9a9a98"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#8a8e92",
+  "frame": "#2e3236",
+  "door": "#2e3236",
+  "stone": "#9a9a98"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Gerrit Rietveld Academie / Sandberg Instituut (BAG pand 0363100012091838, built 2006, 35 3DBAG wall surfaces in two shells, roof max 32.4 m): Fred. Roeskestraat 96-98, identified by the 96/98 plate and the RIETVELD ACADEMIE / SANDBERG INSTITUUT lettering in the glass (w03-177, 2024; w05-177, 2025). A 40 m by 16 m tower of grey dimpled pressed-metal cladding over a glazed ground storey, beside a two-storey glazed block.",
+  "3DBAG numbers the wall surfaces of the tower and the low block from 1 each, so a listed surface index claims both shells; the groups use 7 (tower south, plus a 4 m inner wall of the low block) and 8 (low block south, plus a 1.7 m tower pier).",
+  "Simplified: the dimple relief (wallMaterial stucco in grey), the upper tower windows (the photos are behind trees; the dark slits are not countable, so the five upper storeys stay blank), the second lettering line, the type specimen on the glass. The north, east and west walls had no panorama (candidates 0) and stay blank."
+ ]
+}
