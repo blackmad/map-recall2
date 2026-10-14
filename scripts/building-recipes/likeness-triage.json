@@ -1,0 +1,63 @@
+{
+ "politie-van-leijenberghlaan": {
+  "outcome": "refit",
+  "look": "Red-brown brick ribbon block against a two-tone front: grey concrete for the north 40 %, dark brown-grey brick for the rest, three storeys of ribbon windows (the model's ground was blank).",
+  "note": "walls[0] grey #7c7a74 | brown #5b4b44 split at 0.40 by hand (the measured wall is the brown part; no split detected), ground windowed, ribbon height by hand 0.58; walls[2], [4] measured colour, glazing refined. Columns and window shape are mullion counts (64 at 0.8 m): allowed as inferred."
+ },
+ "leidsestraat-67-large": {
+  "outcome": "uninstall",
+  "look": "Ornamented corner block (domed corner turret, dark painted Kerkstraat front with tall arched windows and a shop arcade) drawn as red brick with white cross windows; no kit fit reads as this building.",
+  "note": "Ornament: bespoke builder (ride-visible, 54 sampled routes)."
+ },
+ "politie-oost-zeeburg": {
+  "outcome": "refit",
+  "look": "Pale painted box against a brown-grey brick front with narrow vertical windows.",
+  "note": "walls[0] measured brick #665f58, windowShape tall slits (refined), system kept."
+ },
+ "politie-zuidoost-gaasperdam": {
+  "outcome": "refit",
+  "look": "A full glass curtain wall against a grey framed front of two fully glazed storeys between red posts.",
+  "note": "curtain-wall -> brick-bay-grid (measured punched), grey #726f6f, 10 bays, glazed ground, windowShape 0.90 x 0.86 by hand; PASS. The red posts are not in the kit (coloured pilasters on a framed front)."
+ },
+ "kattenburg-wings-164938": {
+  "outcome": "refit",
+  "look": "Purple-brown brick with grey windows on the Kattenburgerstraat wing against a near-black painted brick front with white-framed sash windows; the yellow canal wing reads right.",
+  "note": "walls[0] measured #645f5f, windowShape by hand 0.42 x 0.55 (the refinement turned white-framed panes into full-height slits); walls[1] washed out (NO EVIDENCE) but the yellow brick and window rhythm read the same on the sheet: allowed as inferred."
+ },
+ "heinekenplein-130580": {
+  "outcome": "keep",
+  "look": "Red-orange brick block with small punched windows reads right against the Heinekenplein front (w01-96 thumbnail, overcast).",
+  "note": "The measured wall #4e443f is the shadow side of a low-sun crop (w02-96, 2022-01-11): a measurement miss, not a model error. walls[1], [2] have no matched crop (curved fronts); same brick all round."
+ },
+ "politie-lijnbaansgracht": {
+  "outcome": "refit",
+  "look": "Purple-brown brick with grey windows reads close; the photo's brown-grey brick has white-framed windows, smaller on walls[0] and larger on walls[1].",
+  "note": "measured brick both groups, white frames, windowShape walls[1] by hand 0.60 x 0.62 (refinement made slits); remaining FAIL is a storey-band count on walls[0]."
+ },
+ "politie-nieuwezijds-voorburgwal": {
+  "outcome": "refit",
+  "look": "Beige ribbon block against a teal glass-grid front (walls[0]) and a dark glazed corner (walls[2]).",
+  "note": "walls[0], [2] ribbon -> layered curtain-wall with hand glass (teal #2c5257, dark #3a3f3a); walls[1] measured. The curtain glass is the wall in the layered kit, so the likeness reads 'wall not drawn': allowed as inferred."
+ },
+ "quellijnstraat-36-098847": {
+  "outcome": "refit",
+  "look": "Red-brown brick with big white-framed windows against dark grey-brown Amsterdam School brick with small windows and garage gates.",
+  "note": "measured brick per group, windowShape by hand (0.42-0.45 x 0.36-0.42; the measurement read 0.98 x 0.08 and slits). The bay window and the rounded corner stay unmodelled."
+ },
+ "haarlemmerweg-325-110408": {
+  "outcome": "refit-system",
+  "system": "louvre-screen",
+  "look": "Red brick ribbon block against a car park whose decks are screened by pale and dark vertical louvres over a brick shop plinth; the glass deck front (walls[3]) is drawn pale and blank.",
+  "note": "Needs a louvre/lamella screen system (full-height vertical fins at ~0.3 m pitch in their own colour over a plinth). Left installed."
+ },
+ "meeuwenlaan-132-101771": {
+  "outcome": "refit",
+  "look": "Yellow brick school wings read right (washed and leafy crops); the three-storey wing (walls[2]) is dark brown brick with large white-framed windows, drawn tan with slits; the glass wings grey, not white.",
+  "note": "walls[2] measured #544b46 with large windows (PASS), walls[3] measured grey; walls[0], [1], [4] NO EVIDENCE (washed out, foliage) but read the same: inferred."
+ },
+ "rigakade-8-078289": {
+  "outcome": "refit",
+  "look": "Pale steel sheds read right but too white against overcast grey-white ribbed cladding.",
+  "note": "cladding #b4bbc0 by hand from w03-27 (the measured #a2acb3 is the overcast crop raw); the saw-tooth roof glazing is the 3DBAG roof."
+ }
+}
