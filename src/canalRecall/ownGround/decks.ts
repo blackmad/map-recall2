@@ -17,7 +17,7 @@
 import earcut from 'earcut';
 import { drapeTriangles, emptyMesh, vertex, type MeshArrays } from './drape.js';
 import {
-  basculeColour, basculeLeaves, basculeUnit, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
+  basculeColour, basculeLeaves, basculeUnit, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
   type BridgeKind, type KitRow, type RGB,
 } from './bridgeKit.js';
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
@@ -88,8 +88,9 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
   }
   const widths = onSpan.map(i => 2 * p.halfWidth[i]).sort((a, b) => a - b), width = widths[widths.length >> 1] ?? 2 * p.halfWidth[idx[0]];
   const hump = Math.max(0, ...onSpan.map(i => p.h[i])), waterM = spans.reduce((s, [a, b]) => s + Math.max(0, b - a), 0);
-  const kind = measuredKind(p.family, width, hump, waterM, hint);
-  const { mesh, info: k } = buildKit({ id: p.id, kind, material: materialOf(p.family, hint), rows, parapet: [p.deck[0], p.deck[1]], spans, waterZ, lod: detail ? 0 : 1 });
+  const facts = bridgeFacts(p.id);
+  const kind = measuredKind(p.family, width, hump, waterM, hint, facts);
+  const { mesh, info: k } = buildKit({ id: p.id, kind, material: materialOf(p.family, hint), rows, parapet: [p.deck[0], p.deck[1]], spans, waterZ, lod: detail ? 0 : 1, facts });
   info?.push({ id: p.id, kind, triangles: k.triangles, level: k.level, railingPosts: k.railingPosts, piers: k.piers, arches: k.arches, abutments: k.abutments, lamps: k.lamps, topRows: idx.length });
   return mesh;
 }
@@ -250,12 +251,13 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
   }
   const centre = ringFrame(ring, u).centre, found = flatHintAt(centre[0], centre[1]), hint = found?.hint ?? null;
   const widths = rows.map(r => Math.hypot(r.L[0] - r.R[0], r.L[1] - r.R[1])).sort((a, b) => a - b);
-  const kind = flatKind(false, widths[widths.length >> 1], hint);
+  const facts = found ? bridgeFacts(found.id) : null;
+  const kind = flatKind(false, widths[widths.length >> 1], hint, facts);
   const leaves = kind === 'bascule' ? basculeLeaves(ringFrame(ring, u).along).leaves : undefined;
   const { mesh, info } = buildKit({
     id: found?.id ?? '', kind, material: kind === 'arch' ? 'masonry' : hint?.material ?? 'concrete', rows,
     parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness,
-    leaves, colour: kind === 'bascule' ? basculeColour(hint) : undefined, lateralTol: 0.5,
+    leaves, colour: kind === 'bascule' ? basculeColour(hint) : undefined, lateralTol: 0.5, facts,
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
     budget: kind === 'bascule' ? (lod === 0 ? KIT_BUDGET.near : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, lod === 0) : undefined,
   });

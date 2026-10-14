@@ -61,14 +61,15 @@ export const rgbHsl = (r: number, g: number, b: number): [number, number, number
 };
 
 export function familyOf([h, s, l]: [number, number, number]): Family {
-  const warm = h < 40 || h > 330;
-  if (l > 0.66 && s < 0.25) return 'render-white';
-  if (warm && s >= 0.18 && l < 0.3) return 'brick-dark';
-  if (warm && s >= 0.18) return 'brick-red';
-  if (!warm && h > 70 && h < 220 && l < 0.38) return 'steel';
-  if (l < 0.24) return s >= 0.1 && warm ? 'brick-dark' : 'steel';
-  if (s < 0.14 && l < 0.52) return 'concrete';
-  return 'stone';
+  // Calibrated on the 2017 boat crops: overcast brick reads desaturated brown (Reguliersgracht #47423a, h 43 s .13 l .25),
+  // sunlit brick red-brown (s ≥ .25); stone and render light; steel and concrete grey without the warm cast.
+  const warm = h < 55 || h > 330;
+  if (l > 0.62 && s < 0.3) return 'render-white';
+  if (l >= 0.45) return warm && s >= 0.3 ? 'brick-red' : 'stone';
+  if (warm && s >= 0.09) return l < 0.24 ? 'brick-dark' : 'brick-red';
+  if (!warm && h > 70 && h < 220 && s >= 0.06) return 'steel';
+  if (l < 0.3) return 'steel';
+  return 'concrete';
 }
 
 const med = (v: number[]) => { const s = [...v].sort((p, q) => p - q); return s[s.length >> 1] ?? 0; };
