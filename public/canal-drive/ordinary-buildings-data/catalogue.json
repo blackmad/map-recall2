@@ -25314,10 +25314,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171032",
       "name": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35, Amsterdam (Spui-Nieuwezijds corner, 1996)",
-      "hash": "0742c50304a7bc5311030a60e7e36a50570266a56858b15da778cc6f850e2331",
-      "sha256": "0742c50304a7bc5311030a60e7e36a50570266a56858b15da778cc6f850e2331",
-      "bytes": 191636,
-      "triangles": 2425,
+      "hash": "b902d72f4f8c14f0f5a609f07a879d4d48c80402719a6cda56037e2487759d7d",
+      "sha256": "b902d72f4f8c14f0f5a609f07a879d4d48c80402719a6cda56037e2487759d7d",
+      "bytes": 212488,
+      "triangles": 2757,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -25325,7 +25325,7 @@
         "min": [
           -21.297,
           0,
-          -14.713
+          -14.803
         ],
         "max": [
           11.498,
@@ -25504,7 +25504,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171032",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:26.036Z",
+      "updatedAt": "2026-10-14T01:09:06.168Z",
       "bagYear": 1996
     },
     {
