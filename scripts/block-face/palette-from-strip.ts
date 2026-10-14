@@ -4,6 +4,9 @@
  *
  *   node --import tsx scripts/block-face/palette-from-strip.ts --face=kinker-2-30 [--json]
  *   node --import tsx scripts/block-face/palette-from-strip.ts --street=kinkerstraat     # every face of a street survey
+ *   ... --frame=<hex>   the model's frame colour (default each pand's measured frame): adds `paint`, the painted-stone
+ *                       colour that reads against the drawn frames as the photo's band reads against its frames
+ *                       (stripPalette.ts `paintFromFrames`; for `palette.stone` with `stoneMaterial: painted`)
  *
  * Eaves per pand come from the street survey (`scripts/street-surveys/streets/<street>.json`, survey.eavesM) when given,
  * else from the face's `pands/<id>/facts.json` (heights.eavesM), else 14 m. Writes
@@ -12,12 +15,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {measureStripPalette, type StripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
+import {measureStripPalette, paintFromFrames, type StripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
+import {cityFrameTint} from '../../src/canalRecall/look/palette.ts';
+import {swatch} from '../../src/canalRecall/buildingRecipe/intent.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const FACES = 'scripts/block-face/faces';
 
-export interface PandPalette extends StripPalette { face: string; pandId: string; label: string; eavesM: number; widthM: number; buildYear?: number }
+export interface PandPalette extends StripPalette { face: string; pandId: string; label: string; eavesM: number; widthM: number; buildYear?: number;
+  /** Painted-stone colour (`--frame` or the measured frame, drawn through the city frame tint), and the photo's band (else accent) to frame luma ratio. */
+  paint?: string | null; paintRatio?: number }
 
 export async function faceStripPalettes(face: string, survey?: Map<string, any>): Promise<PandPalette[]> {
   const strip = JSON.parse(fs.readFileSync(path.join(FACES, face, 'strip.json'), 'utf8'));
@@ -34,11 +41,12 @@ export async function faceStripPalettes(face: string, survey?: Map<string, any>)
     }
     eavesM ??= 14;
     const p = measureStripPalette({rgb, width: info.width, height: info.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM});
-    return {face, pandId: s.pandId, label: sv?.label ?? s.pandId.slice(-6), eavesM, widthM: +(s.x1M - s.x0M).toFixed(2), buildYear: sv?.buildYear, ...p};
+    const modelFrame = arg('frame') ? swatch(arg('frame')!) : p.frame, painted = (p.band ?? p.accent) && p.frame && modelFrame ? paintFromFrames((p.band ?? p.accent)!, p.frame, cityFrameTint(modelFrame)) : null;
+    return {face, pandId: s.pandId, label: sv?.label ?? s.pandId.slice(-6), eavesM, widthM: +(s.x1M - s.x0M).toFixed(2), buildYear: sv?.buildYear, ...p, paint: painted?.paint ?? null, ...(painted ? {paintRatio: painted.ratio} : {})};
   });
 }
 
-export const paletteLine = (p: PandPalette) => `${p.pandId.slice(-6)} ${String(p.label).padEnd(22)} wall ${p.wall ?? '-'}${p.stucco ? ' (stucco)' : ''} accent ${p.accent ?? '-'} frame ${p.frame ?? '-'} band ${p.band ?? '-'} cornice ${p.cornice ?? '-'} fascia ${p.fascia ?? '-'} | wall/accent/glass ${p.shares.wall}/${p.shares.accent}/${p.shares.glass} | bands ${p.bandRunsM.map(r => r.join('-')).join(' ') || '-'}`;
+export const paletteLine = (p: PandPalette) => `${p.pandId.slice(-6)} ${String(p.label).padEnd(22)} wall ${p.wall ?? '-'}${p.stucco ? ' (stucco)' : ''} accent ${p.accent ?? '-'} frame ${p.frame ?? '-'} band ${p.band ?? '-'} cornice ${p.cornice ?? '-'} fascia ${p.fascia ?? '-'} paint ${p.paint ?? '-'}${p.paintRatio ? ` (x${p.paintRatio})` : ''} | wall/accent/glass ${p.shares.wall}/${p.shares.accent}/${p.shares.glass} | bands ${p.bandRunsM.map(r => r.join('-')).join(' ') || '-'}`;
 
 if (process.argv[1]?.endsWith('palette-from-strip.ts')) {
   const street = arg('street'), face = arg('face');
