@@ -48062,6 +48062,366 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:57:25.184Z"
+    },
+    {
+      "id": "ordinary-0363100012147097",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012147097",
+      "name": "Balboaplein 48, Amsterdam-West (Bos en Lommer): 2004 perimeter housing block of red brick with deep balcony loggias on the south, ribbon-window north front and slate-grey clad upper storeys on the east, around courtyards",
+      "hash": "b689d0ac1f37c22b747a78b593485a8c497c58c977e806103e1220330d3ef3be",
+      "sha256": "b689d0ac1f37c22b747a78b593485a8c497c58c977e806103e1220330d3ef3be",
+      "bytes": 719832,
+      "triangles": 9649,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -34.15,
+          0,
+          -51.665
+        ],
+        "max": [
+          30.992,
+          20.29,
+          55.714
+        ]
+      },
+      "anchor": [
+        4.856445,
+        52.3689001
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8567434,
+              52.3690581
+            ],
+            [
+              4.8567408,
+              52.369058
+            ],
+            [
+              4.8567226,
+              52.3691171
+            ],
+            [
+              4.8567214,
+              52.369117
+            ],
+            [
+              4.856714,
+              52.369141
+            ],
+            [
+              4.8567125,
+              52.3691408
+            ],
+            [
+              4.8567112,
+              52.3691446
+            ],
+            [
+              4.8567098,
+              52.3691446
+            ],
+            [
+              4.8567084,
+              52.3691483
+            ],
+            [
+              4.8567069,
+              52.3691482
+            ],
+            [
+              4.8567056,
+              52.369152
+            ],
+            [
+              4.8567043,
+              52.3691519
+            ],
+            [
+              4.8566416,
+              52.369358
+            ],
+            [
+              4.8565707,
+              52.3693499
+            ],
+            [
+              4.8565665,
+              52.369365
+            ],
+            [
+              4.856414,
+              52.3693476
+            ],
+            [
+              4.8560152,
+              52.3693019
+            ],
+            [
+              4.8560197,
+              52.3692867
+            ],
+            [
+              4.8559391,
+              52.3692775
+            ],
+            [
+              4.8559631,
+              52.3691967
+            ],
+            [
+              4.8559621,
+              52.3691963
+            ],
+            [
+              4.8559629,
+              52.3691926
+            ],
+            [
+              4.8559616,
+              52.3691922
+            ],
+            [
+              4.8559625,
+              52.3691885
+            ],
+            [
+              4.8559612,
+              52.3691882
+            ],
+            [
+              4.855962,
+              52.3691845
+            ],
+            [
+              4.8559607,
+              52.3691842
+            ],
+            [
+              4.8559676,
+              52.3691625
+            ],
+            [
+              4.8559478,
+              52.3691604
+            ],
+            [
+              4.8561413,
+              52.3685263
+            ],
+            [
+              4.8561614,
+              52.3685285
+            ],
+            [
+              4.8561676,
+              52.3685074
+            ],
+            [
+              4.8561689,
+              52.3685075
+            ],
+            [
+              4.8561703,
+              52.3685038
+            ],
+            [
+              4.8561718,
+              52.3685038
+            ],
+            [
+              4.856173,
+              52.3685001
+            ],
+            [
+              4.8561745,
+              52.3685001
+            ],
+            [
+              4.8561757,
+              52.3684964
+            ],
+            [
+              4.8561779,
+              52.3684966
+            ],
+            [
+              4.8562026,
+              52.3684155
+            ],
+            [
+              4.8562828,
+              52.3684245
+            ],
+            [
+              4.8562876,
+              52.3684097
+            ],
+            [
+              4.8568397,
+              52.3684727
+            ],
+            [
+              4.8568346,
+              52.3684877
+            ],
+            [
+              4.8569049,
+              52.3684957
+            ],
+            [
+              4.8568425,
+              52.3687016
+            ],
+            [
+              4.8568436,
+              52.3687021
+            ],
+            [
+              4.8568429,
+              52.3687058
+            ],
+            [
+              4.8568441,
+              52.3687062
+            ],
+            [
+              4.8568433,
+              52.36871
+            ],
+            [
+              4.8568445,
+              52.3687102
+            ],
+            [
+              4.8568435,
+              52.3687141
+            ],
+            [
+              4.8568448,
+              52.3687144
+            ],
+            [
+              4.8568372,
+              52.3687381
+            ],
+            [
+              4.8568383,
+              52.3687385
+            ],
+            [
+              4.8568201,
+              52.368798
+            ],
+            [
+              4.8568228,
+              52.3687982
+            ]
+          ],
+          [
+            [
+              4.8562211,
+              52.3689985
+            ],
+            [
+              4.8561792,
+              52.3691324
+            ],
+            [
+              4.8561583,
+              52.3692015
+            ],
+            [
+              4.8564912,
+              52.3692393
+            ],
+            [
+              4.8565341,
+              52.3691
+            ],
+            [
+              4.8565533,
+              52.3690366
+            ]
+          ],
+          [
+            [
+              4.8566333,
+              52.368776
+            ],
+            [
+              4.8566524,
+              52.3687128
+            ],
+            [
+              4.856696,
+              52.3685733
+            ],
+            [
+              4.8563618,
+              52.368535
+            ],
+            [
+              4.8563002,
+              52.3687381
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 20.29,
+      "height": 20.29,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-balboaplein-48-147097.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012147097"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "balboaplein-48-147097",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012147097/w02-170.jpg",
+          "staging/pand-reference-walls/0363100012147097/w03-350.jpg",
+          "staging/pand-reference-walls/0363100012147097/w05-80.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 8b",
+          "brick-bay-grid 5st 8b",
+          "brick-bay-grid 5st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the red brick ground storey of the east wing takes the slate colour with the floors above (one palette per group), the slate scale pattern is a flat colour, the deep loggias are slab balconies in alternate bays, window sizes are one pattern per group; the stepped slate roofs and roof terraces are 3DBAG roof geometry. Not drawn: the west front, the courtyard faces and the wings between, which stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012147097",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:59:40.458Z"
     }
   ]
 }

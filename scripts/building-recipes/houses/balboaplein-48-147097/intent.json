@@ -1,0 +1,114 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "balboaplein-48-147097",
+ "pandId": "0363100012147097",
+ "address": "Balboaplein 48, Amsterdam-West (Bos en Lommer): 2004 perimeter housing block of red brick with deep balcony loggias on the south, ribbon-window north front and slate-grey clad upper storeys on the east, around courtyards",
+ "sources": [
+  {
+   "id": "pano-2024-12-06-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241206_0806_Track36_Sphere_00050/",
+   "image": "staging/pand-reference-walls/0363100012147097/w02-170.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-22-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002024_pano_0000_000553/",
+   "image": "staging/pand-reference-walls/0363100012147097/w03-350.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-04-30-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2019-04-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001149_pano_0000_001087/",
+   "image": "staging/pand-reference-walls/0363100012147097/w05-80.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    121,
+    140
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "balconies": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "rail": "solid",
+    "every": 2,
+    "first": 0
+   },
+   "palette": {
+    "brick": "#8a4636",
+    "frame": "#d6d8d4",
+    "stone": "#c0b8a8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    111,
+    177,
+    21
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#8a4636",
+    "frame": "#d6d8d4",
+    "stone": "#c0b8a8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    187,
+    174
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#58606a",
+    "frame": "#d6d8d4",
+    "stone": "#8a4636"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#8a4636",
+  "frame": "#cfd2d0",
+  "door": "#2a2a2a",
+  "stone": "#c0b8a8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Balboaplein 48 (BAG pand 0363100012147097, built 2004, 359 3DBAG wall surfaces, roof max 20.3 m): a large 2004 perimeter block of social and private housing in Bos en Lommer, four to five storeys of dark red brick round three courtyards, with the street-side upper floors on the east clad in grey-blue slate scales over a red brick base. Six walls have panoramas; three are drawn: the south front (w02-170, 2024-12-06), the north front (w03-350, 2021-02-22) and the east front (w05-80, 2019-04-30; w04-80 and w06-80 show the same slate-clad east wings); the long west front (w01-260, 2017-04-20, a 72 m crop of a glazed community building in red brick and grey) is not drawn.",
+  "walls[0] = panel 103 (S, 38.2 m, eaves 14.9): red brick, five floors, large slab-edged loggia balconies in alternate bays over a glazed brick ground; drawn as 5 storeys x 8 bays with solid-rail balconies in every second bay on storeys 2-4. walls[1] = panel 19 (N, 38.2 m, eaves 14.8): the same red brick with ribbon-like paired windows, 5 storeys x 8 bays. walls[2] = panel 73 (E, 23.3 m, eaves 14.8): grey-blue slate cladding with paired white-framed windows over a red brick ground, drawn as 5 storeys x 6 bays in a slate colour.",
+  "Simplified: the red brick ground storey of the east wing takes the slate colour with the floors above (one palette per group), the slate scale pattern is a flat colour, the deep loggias are slab balconies in alternate bays, window sizes are one pattern per group; the stepped slate roofs and roof terraces are 3DBAG roof geometry. Not drawn: the west front, the courtyard faces and the wings between, which stay blank brick."
+ ]
+}
