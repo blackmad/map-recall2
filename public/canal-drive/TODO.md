@@ -1290,8 +1290,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   deck between brick approaches, abutments short of the quay walls (the
   bascule type is a rebuild: pylons, beams, counterweight, leaf with kerbs,
   width from BGT, abutments meeting the quay, continuous railings, lamps);
-  all three in the bridges lane, each with a before/after frame on the
-  demo page when it lands.
+  all three DONE in the bridges lane (HISTORY "Bridges per bridge"; the
+  bascules have counterweights under the deck in the panoramas, so masts
+  and barrier boxes, not portals).
 - **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
   "User review + plan", "Large tier reconciled"): lanes A, B, B2, C and
   the reconciliation are DONE; the five pilots are installed from
@@ -1413,15 +1414,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Oud-West type lane build on these keys; then a pass over the installed
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
-- **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14 "are we
-  accurately modeling the brick bridges"): arch count, material and
-  railing type per bridge from the register and aimed panoramas into
-  `bridgeHints.ts` (with `hand`), a likeness sheet per named bridge, budget
-  tiers by ride visibility (1,500 tris for named canal-belt bridges), and
-  the flat 689 (BGT bridge-polygon axis for the 127 without an OSM way, AHN
-  DSM for the 128 tree gaps, per-span profiles for the viaducts). Named
-  regressions: the Seven Bridges stretch of the Reguliersgracht, the
-  Torensluis. Default-on steps unchanged.
+- **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14): the
+  lane is DONE (HISTORY "Bridges per bridge": 255 bridges with facts, 43
+  of 48 named sheets pass, two bascule styles, decks reach the banks, 190
+  more decks measured, 499 still flat). Open: BRU0036 (belt audit sends it
+  flat) and BRU0040 (no boat view); the Torensluis arches read taller and
+  narrower than the photo; Blauwbrug balusters thin; bascule deck surface
+  matched to the approach, portal lamps, railings continuous with the
+  approaches; the 15 known floating ends; the 499 flat decks (128 AHN
+  tree gaps now mostly covered by the surface model, the rest viaducts
+  and the unnumbered); kit gaps: Blauwbrug lantern columns on pedestals,
+  bridge-keeper's houses, tram wires; automatic arch-count and parapet
+  readings are not trusted (5/12, 11/23) and need a better detector or
+  more hand readings; budget tiers by ride visibility not started.
 - **P2 Route start guard**: report when the planned route's first point is
   far behind the spawn (the start-heading bug's root cause; the fix reads
   the leg from the spawn, the planner could also snap better).

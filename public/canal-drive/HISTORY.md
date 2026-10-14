@@ -1,5 +1,62 @@
 # Canal Recall — what is built
 
+## Bridges per bridge: 255 with facts, 43 of 48 named sheets pass, 190 more decks measured, bascules as the panoramas show them (2026-10-14, user)
+
+Lane `lane/bridge-fidelity-20261014` (plan Part 3; the user's three bridge
+screenshots). **Facts:** `scripts/bridge-reference/{select,classify,
+geometry,sheet,thumb,run}.ts` rectify the water-side face of a bridge
+from the boat panoramas (431 of 1,595 numbered bridges seen, 348
+readings) and aim perspective views at the bascules; checked against 45
+hand readings (Seven Bridges, Torensluis, Blauwbrug, Magere Brug,
+Hogesluis BRU0063, the Amstel bridges, the radial crossings) the
+automatic family was right 18/23 but arch count 5/12, shape 7/10,
+parapet 11/23, so only the family is used automatically: 255 bridges
+carry facts (45 hand, 207 family-only, 3 register-only) in
+`bridgeHints.ts` with a `hand` override. **Sheets** (`artifacts/bridges/
+<id>/sheet.png`: photo | model | 50 % overlay with openings, family,
+parapet and a PASS/FAIL line; copies in `docs/images/bridges/`): 43 of
+48 named bridges PASS (Seven Bridges 0031/0032/0038/0039/0071–0074,
+Torensluis 0009, Blauwbrug 0236, Hogesluis 0063, Amstel
+0035/0076/0077/0250, all 28 radial crossings); BRU0036 FAIL (the belt
+audit sent it back to flat), BRU0040 no boat view, the four bascules
+with perspective sheets and notes. **Bascules** (user: "bridge looks
+bad", "bad" at the Haarlemmerpoort and the Zoutkeetsgracht): the aimed
+panoramas show the Willemsbrug BRU0151, Bullebak BRU0149 and
+Zoutkeetsgracht BRU0345 keep their counterweight under the deck, no
+overhead portal or balance beams (the brief's portal request was wrong),
+so the kit draws two bascule styles: those three get red-and-white
+signal masts and barrier boxes at both ends, white tube railings on 0345;
+the Magere Brug keeps its portals, whose posts now stand on the deck;
+leaves get kerbs; the white frame in the Zoutkeetsgracht screenshot is
+not in the panoramas and is gone. Not done: deck surface matched to the
+approach road, portal lamps, railings continuous with the approaches.
+**Disconnected bridges** (user: the Spaarndammerbuurt footbridge): decks
+reach the bank plus 1 m; the census fails the build on any new floating
+end (15 known remain); the Houthavens footbridges BRU2433–2435 land on
+both banks (e2e). **Flat decks:** 190 of the 689 unmeasured are measured
+(147 from the AHN surface model where the terrain model had gaps, 41 from
+the BGT axis, 49 per span; 5 recovered then failed the belt audit and
+stay flat: 0036, 0079, 2520, 0359, 2521): 1,121 measured, 499 flat;
+`bridges.json` 1.20 → 1.40 MB raw, 448 → 522 KB gzipped, cells
+unchanged. **Found by the new e2e** (`own-ground-bridge-fidelity.spec.ts`,
+helper `ownGroundBridges.ts`): the Torensluis is a 22 m road off-centre
+over a 44 m bridge and quay walls at the water edge stood across the
+canal filling two of its three arches; measured decks now widen to the
+bridge outline's cross-section on each side of the road (182 decks, at
+most +25 m) and quay walls are skipped under a deck. E2e: Seven Bridges
+3 openings / 82 px hump, Torensluis 4 openings / 28 px, BRU0073 158 px,
+BRU0038 296 px, all four bascules with masts or portals over the deck;
+the Blauwbrug hump check is skipped (level deck). Checks on the lane:
+lint, own-ground 67, canal-elevation 11, `check:own-ground-cells`,
+`check:own-ground-belt` 7 findings all KNOWN, census 0 over budget, 0
+new floating ends. Still open: the Torensluis arches taller and narrower
+than the photo, BRU0040, the Blauwbrug balusters thin at sheet scale; the
+kit cannot say the Blauwbrug's lantern columns on pedestals,
+bridge-keeper's houses, tram wires over the Bullebak. Inputs archived in
+source-data `datasets/bridges-20261014/{flat-decks,panoramas}/`. The
+own-ground bundles are rebuilt here.
+
+
 ## 3DBAG ground outliers: 540 pands drawn 3–12 m too tall, the rule and the patch; the lock island stays; two stale tests (2026-10-14)
 
 Lane `lane/water-anomalies-20261014`. **The grey box in the Singelgracht**
