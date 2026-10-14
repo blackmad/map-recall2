@@ -1,0 +1,60 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oostelijke-handelskade-749-239388",
+ "pandId": "0363100012239388",
+ "address": "Oostelijke Handelskade 749, Amsterdam-Centrum (Oostelijke Handelskade): 2012 residential and office blocks in warehouse style with tall round-arched brick arcades, cream string courses and a rusticated base",
+ "sources": [
+  {
+   "id": "pano-2016-05-17-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2016-05-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000052_pano_0000_000864/",
+   "image": "staging/pand-reference-walls/0363100012239388/w01-196.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    7,
+    16,
+    61
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "stringCourses": true,
+   "arches": {
+    "windows": "round",
+    "ground": "round",
+    "band": "brick"
+   },
+   "palette": {
+    "brick": "#7a4a3e",
+    "frame": "#2c3a3a",
+    "stone": "#d8cdb4"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#7a4a3e",
+  "frame": "#2c3a3a",
+  "door": "#2a2a2a",
+  "stone": "#d8cdb4"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Oostelijke Handelskade 749 (BAG pand 0363100012239388, built 2012, 167 3DBAG wall surfaces, roof max 25.7 m): two long residential-and-office blocks in warehouse style on the Oostelijke Handelskade in the Eastern Docklands, with tall brick arcades, cream string courses, stone-dressed arched windows and projecting black steel oriel stacks. Three walls were photographed: the 193 m south quay front (w01-196, 2016-05-17, one panorama crop of both blocks), the side street end (w02-16, 2025-06-16, a north end with a stone-dressed arched corner window, black oriels and a DartDesign sign) and the east end (w03-106, 2024-10-16).",
+  "walls[0] = surfaces 7, 16 and 61 (S, panels 84 and 8, the 36 m western part of each block, eaves 23.7): four storeys of round-arched windows, one arch per bay with a brick arch band and cream string courses between the storeys, the ground storey arched too. Drawn as 4 storeys x 9 bays on the widest panel (about 4 m wide windows spaced across 85 m). The budget allows one group: 9 bays on the 36 m and 36 m parts was the most the 12k triangle limit held (12 bays cost 13.3k).",
+  "Simplified: window spacing is uniform where the photograph alternates single and paired arches, the stone dressing blocks and keystones are the kit arch band and keystones, the black steel oriel stacks, the iron balconies and the DartDesign sign are not modelled. Not drawn: the eastern 38 m of each south front (surfaces 3 and 9 are shared with the north and west panels and doubled the triangle count), the north and end walls and the small outbuilding, which stay blank brick."
+ ]
+}

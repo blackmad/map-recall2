@@ -1,0 +1,116 @@
+{
+ "schemaVersion": 1,
+ "id": "oostelijke-handelskade-749-239388",
+ "pand": "0363100012239388",
+ "signature": [
+  "arched-warehouse-arcade",
+  "black-steel-oriels"
+ ],
+ "walls": [
+  {
+   "tag": "w01-196",
+   "bearing": 196,
+   "lengthM": 192.6,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000052_pano_0000_000864",
+   "capturedAt": "2016-05-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "arched-warehouse-arcade",
+     "kind": "colonnade",
+     "where": "tall round-arched brick windows in stacked storeys with cream string courses and a rusticated brick base, repeated along two 85 m blocks",
+     "approxSizeM": [
+      85,
+      24
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 4 storeys x 9 bays round arches with brick arch bands and string courses on the western 36 m of each block",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    },
+    {
+     "id": "black-steel-oriels",
+     "kind": "balcony-ironwork",
+     "where": "projecting black steel oriel stacks up the corner bays",
+     "approxSizeM": [
+      3,
+      20
+     ],
+     "plan": "simplified",
+     "how": "left as plain brick on the 3DBAG shell; the layered kit has no oriel component and the 12k budget holds no extra group",
+     "seenIn": "TMX7315120208-000052_pano_0000_000864"
+    }
+   ]
+  },
+  {
+   "tag": "w02-16",
+   "bearing": 16,
+   "lengthM": 20.2,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01579",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "north end of the west block on a side street",
+   "items": [
+    {
+     "id": "stone-dressed-arch-windows",
+     "kind": "window-shape",
+     "where": "arched windows with stone imposts, keystones and iron balconies on the corner bay",
+     "approxSizeM": [
+      3,
+      20
+     ],
+     "plan": "simplified",
+     "how": "walls[0] arch bands with keystones on the south front only; this end wall stays blank",
+     "seenIn": "recording_2025-06-16_08-26-12_01579"
+    },
+    {
+     "id": "tenant-sign",
+     "kind": "sign",
+     "where": "DartDesign letters on the ground floor wall",
+     "approxSizeM": [
+      3,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a tenant name sign"
+     },
+     "seenIn": "recording_2025-06-16_08-26-12_01579"
+    }
+   ]
+  },
+  {
+   "tag": "w03-106",
+   "bearing": 106,
+   "lengthM": 16.8,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-16_13-17-24_01856",
+   "capturedAt": "2024-10-16",
+   "checked": true,
+   "note": "east end wall of the east block; same arches as the south front",
+   "items": [
+    {
+     "id": "east-end-arches",
+     "kind": "window-shape",
+     "where": "arched windows on the east end of the east block",
+     "approxSizeM": [
+      17,
+      24
+     ],
+     "plan": "simplified",
+     "how": "left as plain brick on the 3DBAG shell (blank wall), same arch rhythm as walls[0]",
+     "seenIn": "recording_2024-10-16_13-17-24_01856"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
