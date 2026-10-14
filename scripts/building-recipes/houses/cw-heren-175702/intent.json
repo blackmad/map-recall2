@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-heren-175702",
+ "pandId": "0363100012175702",
+ "address": "Herengracht (BAG 1615 step gable; black-painted brick, white speklagen and block arches)",
+ "sources": [
+  {
+   "id": "pano-2021-01-25",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25",
+   "image": "staging/pand-reference-walls/0363100012175702/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Herengracht",
+   "gable": "step",
+   "crownSteps": 3,
+   "atticWindows": 3,
+   "storeys": 2,
+   "bays": 3,
+   "doorBay": 2,
+   "tallGround": true,
+   "basement": "stoop",
+   "souterrain": true,
+   "cornice": "none",
+   "hoist": false,
+   "windows": "sash-6-over-6",
+   "storeyWindows": {
+    "0": "sash-9-over-9"
+   },
+   "windowShare": 0.65,
+   "windowHeights": [
+    0.69,
+    0.66
+   ],
+   "storeyHeights": [
+    0.75,
+    1.38,
+    1.0
+   ],
+   "windowHead": {
+    "kind": "relieving",
+    "storeys": [
+     1
+    ],
+    "archRing": {
+     "colour": "stone",
+     "style": "blocks",
+     "widthCourses": 4
+    }
+   },
+   "bands": "speklagen",
+   "speklagen": {
+    "spacing": 18,
+    "courses": 2
+   },
+   "windowSurround": "sill"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#3f3a33",
+  "frame": "white",
+  "door": "#2c3a33",
+  "stone": "#ecebe2"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front.jpg 2021-01-25 (ground at 1.4 m on the crop). Black-painted brick (sunlit #7e7362), white speklagen 0.10 m deep every ~1.0 m (profile x1.85-2.2: 8.08-8.26, 10.28-10.36, 11.26-11.34, 13.74), five-block white relieving arches over the first-floor windows, 6-over-6 sashes 1.2 x 2.2 m, ground 1.2 x 3.25 m small-pane sashes, door with ogee-tracery transom (not modelled)."
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-prinsen-179169",
+ "pandId": "0363100012179169",
+ "address": "Prinsengracht (BAG 1800; black-painted brick, six-pane windows diminishing upward)",
+ "sources": [
+  {
+   "id": "pano-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/pand-reference-walls/0363100012179169/front-alt.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Prinsengracht",
+   "gable": "cornice",
+   "storeys": 4,
+   "bays": 3,
+   "doorBay": 0,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "plinth": "low",
+   "cornice": "simple",
+   "hoist": false,
+   "storeyHeights": [
+    1.7,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "windows": "six-pane",
+   "storeyWindows": {
+    "3": "sash"
+   },
+   "windowShare": 0.68,
+   "windowHeights": [
+    0.72,
+    0.9,
+    0.72,
+    0.6
+   ]
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#2e2c2c",
+  "frame": "white",
+  "door": "#1e1e1e",
+  "stone": "#e6e2d8"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front-alt.jpg 2021-01-22. Windows 1.25 m wide, 3.0 / 2.2 / 1.75 / 1.45 m tall from the bel-etage up; white frames, no stone sills; a purple-red string course over the bel-etage (#7a6175, not modelled); half-height basement lights beside the stoop."
+ ]
+}

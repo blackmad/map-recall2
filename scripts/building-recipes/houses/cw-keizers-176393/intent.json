@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-keizers-176393",
+ "pandId": "0363100012176393",
+ "address": "Keizersgracht (BAG 1770; dark-painted front, segmental-headed 6-over-6 sashes)",
+ "sources": [
+  {
+   "id": "pano-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/pand-reference-walls/0363100012176393/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Keizersgracht",
+   "gable": "bell",
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": 3,
+   "doorBay": 0,
+   "basement": "stoop",
+   "souterrain": true,
+   "plinth": "low",
+   "cornice": "none",
+   "hoist": false,
+   "storeyHeights": [
+    1.6,
+    1.0,
+    1.05
+   ],
+   "windows": "sash-6-over-6",
+   "storeyWindows": {
+    "0": "sash-9-over-9"
+   },
+   "windowShare": 0.67,
+   "windowHeights": [
+    0.76,
+    0.82,
+    0.72
+   ],
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     0,
+     1,
+     2
+    ]
+   }
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#303639",
+  "frame": "cream",
+  "door": "#1e2326",
+  "stone": "#e4dcc4"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front.jpg 2021-01-22. Dark grey painted brick #303639; cream frames with segmental frame heads (rise ~0.08 on 1.15 m, no ring); ground 1.15 x 3.5 m, first 1.15 x 2.3, second 1.15 x 1.85 (6-over-6); bell gable with one attic light (thumb.jpg); dark-painted like its neighbours."
+ ]
+}

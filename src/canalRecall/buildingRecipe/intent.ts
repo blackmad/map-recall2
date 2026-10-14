@@ -13,7 +13,8 @@ import type {ArchKind} from '../blockBuilding/arch.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
-export const CORNICES = ['none', 'simple', 'bracketed', 'heavy'] as const;
+/** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
+export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as const;
 export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
 export const CROWN_CAP_RISES = ['low', 'normal'] as const;
 export const CROWN_CAP_SPANS = ['narrow', 'medium', 'wide'] as const;
@@ -21,11 +22,31 @@ export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'rig
 export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
 export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
 export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as const;
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light'] as const;
+/**
+ * Window kinds (pane layout drawn as glazing bars). Canal-belt survey 2026-10-14 (docs/canal-house-windows-and-accents-20261014.md):
+ * `sash-6-over-6` the 18th-c. sliding sash, three panes across and two up in each sash, thin bars and a heavier meeting
+ * rail at half height; `sash-8-over-8` the wide sash, four across and two up per sash; `sash-9-over-9` the tall bel-etage
+ * sash, three across and three up per sash; `six-pane` two across and three up (the 19th-c. replacement of small panes);
+ * `t-window` the 19th-c. T-venster: an undivided transom light over a pair of casements (a transom at 0.76 of the height,
+ * the mullion below it only); `small-over-one` the c.1900 window: a small-paned top sash (three across, two up) over large
+ * lower panes; `cross-transom` the 17th-c. kruiskozijn: a heavy mullion and a transom at 0.6 of the height with small
+ * panes in the four lights.
+ */
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom'] as const;
+export type WindowKind = typeof WINDOWS[number];
+/** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
+export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
+/** `solid`: a continuous ring; `blocks`: five radiating stone blocks with brick between (the 17th-c. block arch); `none`: no ring, only the keystone (19th-c. carved keystones over plain brick heads). */
+export const ARCH_RING_STYLES = ['solid', 'blocks', 'none'] as const;
+/** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, or the `frame` paint. */
+export const ARCH_RING_COLOURS = ['stone', 'band', 'frame'] as const;
+/** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
+export const DIMINISHING_WINDOW_HEIGHTS = [0.73, 0.76, 0.72, 0.72, 0.7, 0.68] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
 export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
-export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone'] as const;
+/** `sill`: a projecting stone sill alone (no lintel), the commonest 18th/19th-c. canal-belt dressing. */
+export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'sill'] as const;
 export const QUOINS = ['none', 'stone'] as const;
 export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch'] as const;
 export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
@@ -133,6 +154,38 @@ export interface FrontIntent {
   souterrain?: boolean;
   cornice: typeof CORNICES[number];
   windows: typeof WINDOWS[number];
+  /** Window kind per storey where it differs from `windows` (key = storey index from the ground, or "last"): a cross-transom ground storey under sashes, 6-over-6 sashes under 8-over-8 bel-etage ones. */
+  storeyWindows?: Record<string, WindowKind>;
+  /**
+   * Window heads on the window storeys (`storeys`, default every storey above the ground): `segmental` = a shallow arc
+   * (rise 0.08 x the window width, the survey median of 0.03-0.10), `round` = a semicircle, `flat` = square (the default). `archRing`
+   * lays a ring of `colour` round the head (`widthCourses` brick courses deep, default 3 = about 0.17 m; `style: "blocks"`
+   * = five radiating blocks with brick between) with an optional keystone block at the crown; without it the head stays
+   * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
+   * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
+   */
+  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number}};
+  /** Window width as a share of the front (all windows of a full storey together, 0.3..0.8; survey median 0.66). Default: the legacy 58 % of an equal-pier bay. Only on the shared equal-pier grid (not with bayWidths). */
+  windowShare?: number;
+  /**
+   * Window height per storey as a share of the storey height (ground storey first; one entry per storey, 0.3..0.9), or
+   * `diminishing` for the survey medians (`DIMINISHING_WINDOW_HEIGHTS`: bel-etage tallest, the attic storey smallest).
+   * The window head keeps a fixed share of wall above it; the sill moves. Default: the legacy 0.62 / 0.6 - 0.02 per storey.
+   */
+  windowHeights?: 'diminishing' | number[];
+  /** Speklagen: stone courses (`palette.band`, else `stone`) every `spacing` brick courses, each `courses` deep (default 2), from the plinth to the eaves. With `bands: "speklagen"`. */
+  speklagen?: {spacing: number; courses?: number};
+  /**
+   * Relative storey heights, ground storey first (one weight per storey, 0.4..3; metres work too: they are normalised to
+   * the wall). Canal-belt survey medians: bel-etage 1.45, first 1, second 0.97, top 0.85 of the first floor. Replaces the
+   * default rule (ground 1.1 or 1.32 with `tallGround`, uppers diminishing 4 % per storey). A low basement is unaffected; a
+   * souterrain weighs one unit unless the list has one more entry than `storeys`, the souterrain's weight first.
+   */
+  storeyHeights?: number[];
+  /** `low`: a 0.45 m stone plinth with the basement wall in brick above it (default `full`: stone over the whole basement height). */
+  plinth?: 'full' | 'low';
+  /** Vertical iron bars in the basement lights (traliewerk). */
+  basementBars?: boolean;
   /** 0-based storeys whose windows have round-arched heads (often the top storey under a parapet). */
   archedStoreys?: number[];
   /** Relieving arches over arched/segmental windows: stone dressing, the palette's band brick, or none. Default: band brick when the palette has one, else stone. */
@@ -151,7 +204,7 @@ export interface FrontIntent {
   /** Glazed bay windows (erkers): the windows of these upper storeys in `bay` become one projecting three-face bay each. */
   bayWindows?: { bay: number; storeys: number[] };
   /** Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick). */
-  bands?: 'none' | 'storey' | 'lintel' | 'both';
+  bands?: 'none' | 'storey' | 'lintel' | 'both' | 'speklagen';
   /** The same house module repeated along this front (rows built together, double fronts). */
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
@@ -502,7 +555,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.shutters !== undefined) oneOf(f.shutters, ['none', 'ground', 'all'], `${at}.shutters`);
     if (f.balconies) { f.balconies.storeys.forEach(v => count(v, `${at}.balconies.storeys`, 1, f.storeys - 1)); f.balconies.bays.forEach(v => count(v, `${at}.balconies.bays`, 0, 15)); }
     if (f.bayWindows) { count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15); f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1)); }
-    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both'], `${at}.bands`);
+    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'speklagen'], `${at}.bands`);
+    problems.push(...windowProblems(f, at, oneOf));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
@@ -629,6 +683,47 @@ export function storeyAxesOf(f: FrontIntent, s: number): number[] | null {
 }
 
 export const swatch = (value: string): string => SWATCHES[value] ?? value;
+
+/** Problems with the canal-belt window/accent fields (2026-10-14); all optional and never checked when absent. */
+function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
+  const p: string[] = [], storeyKey = (k: string) => k === 'last' || (Number.isInteger(Number(k)) && Number(k) >= 0 && Number(k) < f.storeys);
+  for (const [k, v] of Object.entries(f.storeyWindows ?? {})) {
+    if (!storeyKey(k)) p.push(`${at}.storeyWindows.${k}: key must be a storey index or "last"`);
+    oneOf(v, WINDOWS.filter(w => w !== 'shop'), `${at}.storeyWindows.${k}`);
+  }
+  const h = f.windowHead;
+  if (h !== undefined) {
+    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing)`);
+    oneOf(h?.kind, WINDOW_HEADS, `${at}.windowHead.kind`);
+    if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
+    if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);
+    if (f.windows === 'arched') p.push(`${at}.windowHead: windows "arched" already sets a head; pick a pane layout`);
+    const r = h?.archRing;
+    if (r !== undefined) {
+      for (const k of Object.keys(r ?? {})) if (!['colour', 'style', 'keystone', 'widthCourses'].includes(k)) p.push(`${at}.windowHead.archRing.${k}: unknown field (colour, style, keystone, widthCourses)`);
+      if (r?.style !== undefined) oneOf(r.style, ARCH_RING_STYLES, `${at}.windowHead.archRing.style`);
+      if (r?.style === 'none' && !r.keystone) p.push(`${at}.windowHead.archRing: style "none" draws only the keystone; set keystone: true`);
+      oneOf(r?.colour, ARCH_RING_COLOURS, `${at}.windowHead.archRing.colour`);
+      if (r?.keystone !== undefined && typeof r.keystone !== 'boolean') p.push(`${at}.windowHead.archRing.keystone must be boolean`);
+      if (r?.widthCourses !== undefined && !(Number.isInteger(r.widthCourses) && r.widthCourses >= 1 && r.widthCourses <= 6)) p.push(`${at}.windowHead.archRing.widthCourses: integer 1..6`);
+      if (h?.kind === 'flat' && !r?.keystone) p.push(`${at}.windowHead.archRing: a flat head has no arch; only a keystone (keystone: true) stands on it`);
+    } else if (h?.kind === 'relieving') p.push(`${at}.windowHead: a relieving arch needs archRing {colour}`);
+  }
+  const wh = f.windowHeights;
+  if (wh !== undefined && wh !== 'diminishing' && (!Array.isArray(wh) || wh.length !== f.storeys || wh.some(v => !(typeof v === 'number' && v >= 0.3 && v <= 0.9)))) p.push(`${at}.windowHeights: "diminishing" or one share 0.3..0.9 per storey (${f.storeys})`);
+  if (f.windowShare !== undefined && (typeof f.windowShare !== 'number' || !(f.windowShare >= 0.3 && f.windowShare <= 0.8) || f.bayWidths !== undefined || f.piers === 'margin')) p.push(`${at}.windowShare: 0.3..0.8 of the front, on the equal-pier grid (not with bayWidths or piers "margin")`);
+  if (f.speklagen !== undefined) {
+    const s = f.speklagen;
+    if (f.bands !== 'speklagen') p.push(`${at}.speklagen: needs bands "speklagen"`);
+    if (!s || !Number.isInteger(s.spacing) || s.spacing < 4 || s.spacing > 30) p.push(`${at}.speklagen.spacing: integer 4..30 brick courses`);
+    if (s?.courses !== undefined && !(Number.isInteger(s.courses) && s.courses >= 1 && s.courses <= 5 && s.courses < s.spacing)) p.push(`${at}.speklagen.courses: integer 1..5, less than spacing`);
+  } else if (f.bands === 'speklagen') p.push(`${at}.bands: "speklagen" needs speklagen {spacing}`);
+  if (f.storeyHeights !== undefined && (!Array.isArray(f.storeyHeights) || (f.storeyHeights.length !== f.storeys && !(f.souterrain && f.storeyHeights.length === f.storeys + 1)) || f.storeyHeights.some(v => !(typeof v === 'number' && v >= 0.4 && v <= 6)))) p.push(`${at}.storeyHeights: one relative height per storey (${f.storeys}; with a souterrain optionally one more, the souterrain first), each 0.4..6`);
+  else if (f.storeyHeights && Math.max(...f.storeyHeights) / Math.min(...f.storeyHeights) > 3) p.push(`${at}.storeyHeights: tallest storey more than 3x the lowest`);
+  if (f.plinth !== undefined) oneOf(f.plinth, ['full', 'low'], `${at}.plinth`);
+  if (f.basementBars !== undefined && (typeof f.basementBars !== 'boolean' || (f.basementBars && f.basement !== 'windows' && f.basement !== 'stoop-and-windows'))) p.push(`${at}.basementBars: boolean, and needs basement windows`);
+  return p;
+}
 
 const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
 const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
