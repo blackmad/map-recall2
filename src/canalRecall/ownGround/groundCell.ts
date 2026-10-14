@@ -47,7 +47,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -202,7 +202,29 @@ export function buildCell(input: CellInput): BuiltCell {
     landCulled++;
     return true;
   };
-  const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2)) && !underOwnSurface(x, y);
+  // The OSM green fills (park and grass areas, allotments, zoos) hide the land quads wholly inside them (ride review
+  // 2026-10-14, Artis): a fill drapes at 8 m between vertices on the land grid's surface, so in a hollow of the 5 m grid
+  // the land poked through it (14 % of the zoo read bare land). Nine points of the quad must lie inside one ring, and
+  // none where a BGT park surface took the fill's place (that surface may be a neighbour's, not built here). A
+  // neighbour's area counts too (an area is drawn whole by the cell of its bbox centre: Artis's west third lies in the
+  // next cell, 54 % bare land there); at the resident ring's edge that cell may be the far ring's, or the basemap's.
+  const greenAreas = [...areas, ...(input.osmAround ?? []).flatMap(o => o.areas)];
+  const greenRings = greenAreas.filter(a => areaLayer[a.kind] === 'park').flatMap(a => a.rings.map(r => r.slice(0, -1).map(input.project)))
+    .filter(r => r.length >= 3).map(pts => ({ pts, bb: [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] }))
+    .filter(g => g.bb[2] > x0 && g.bb[0] < x1 && g.bb[3] > y0 && g.bb[1] < y1);
+  let greenCulled = 0;
+  const underGreen = (x: number, y: number) => {
+    if (!greenRings.length) return false;
+    const h = step / 2 + 0.25, probes: Vec2[] = [];
+    for (const dx of [-h, 0, h]) for (const dy of [-h, 0, h]) probes.push([x + dx, y + dy]);
+    if (cover && probes.some(q => cover!.find(q[0], q[1]) >= 0)) return false;
+    for (const g of greenRings) {
+      if (x - h < g.bb[0] || x + h > g.bb[2] || y - h < g.bb[1] || y + h > g.bb[3]) continue;
+      if (probes.every(q => pointInRing(g.pts, q[0], q[1]))) { greenCulled++; return true; }
+    }
+    return false;
+  };
+  const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2)) && !underOwnSurface(x, y) && !underGreen(x, y);
   add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand));
 
   // Areas.
@@ -297,7 +319,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled },
   };
 }
 
