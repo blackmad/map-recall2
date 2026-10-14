@@ -1,5 +1,215 @@
 # Canal Recall — what is built
 
+## Hosting: auto-prune after every deploy, bursts deploy once (2026-10-14)
+
+Deploys failed on the 10 GB Hosting quota again this morning (24 failed
+runs; 521 stored versions listed, of which the finalized ones from the
+last 24 hours were the 10 GB). Every push to main deploys both sites
+(~190 MB canalrecall + ~100 MB edumap), 27–72 deploys a day in October,
+so the quota holds about half a day. The user chose both fixes: the deploy
+workflow now runs `scripts/hosting/prune-versions.mjs --keep=3 --apply`
+after a successful deploy with the same service account (keeps the live
+release and the newest three per site, never fails the deploy), and
+`cancel-in-progress: true` so a burst of pushes deploys once. The manual
+"Prune Firebase Hosting versions" workflow and `npm run hosting:prune`
+stay for emergencies.
+
+
+## Texture prototype: the kit wins on all three complaint houses (2026-10-14, night)
+
+The user said to keep improving the kit and try the photo texture too, so
+a lane built the texture route on the three complaint houses
+(`docs/texture-prototype-20261014.md`, `docs/images/texture-prototype/`;
+`scripts/building-recipes/export-textured.ts` lands with lane A's
+tooling it depends on): every street-facing panel matched to its
+rectified panorama crop, exposure-normalised, masked pixels (foliage,
+missing, the bottom 2.5 m for vehicles) inpainted from the nearest wall
+rows, posterised to 12 colours from the brick cell tones at 8 px/m, one
+atlas per house, mapped through the crop-to-panel offsets, rendered beside
+the installed kit and the photo at 640 px and 200 px. Verdict, the lane's
+and the integrator's: kit on all three. Houthavenkade 26's texture does
+show the orange/plum split the kit misses, but windows become blotches,
+the bay columns smears, the ground floor repeats the storey above, and at
+3/4 the wall is a billboard; Apollohal's only panorama (2017-04) is behind
+trees in leaf so 62 % was inpainted; Waagdragerhof's arches, the one thing
+that identifies it, become ragged blobs and the hazy panorama turns the
+brick pink-grey. Textured walls skip the look's baked sun shading and read
+darker and colder than kit walls on the same model. Cost: 3–6× the kit's
+GPU memory uncompressed (about level with UASTC, which `toktx` was not
+installed to measure), 4–9× smaller to download, 5–6 draws vs 11–14. So the
+texture is not a shipping route; what it proved is which facts the kit
+lacks (the colour split, the glazing fraction, the arch shape), which lane
+C's vocabulary and lane A's measurement supply. Two bugs found in lane A's
+tooling and sent back: `walls.json` records the requested 50 px/m even when
+the rectifier lowers the scale on long walls, and the foliage test misses
+spring leaves. Also: the `tileBuildings` golden was re-recorded for three
+large recipes installed since (Da Costakade 146, Hirschpassage 2,
+Leidsekade 106) and one changed row, De Balie (uninstalled recipe compiled
+by the tile compiler, 1,307 → 1,733 tris from kit changes in the batches).
+
+
+## Measured tint, the shared house-type library, the sculpture prototype, motorkade-1 restored (2026-10-14, night)
+
+Three plan lanes merged. **Measured tint** (`lane/measured-tint-20261014`,
+plan Part 1 lane B): a wall whose colour was measured from the photo now
+renders at that colour. `cityWallTint`'s clamp (brick lightness 0.3–0.6,
+saturation 0.12–0.5) is untouched because it protects the ~343k streamed
+buildings; the bypass is the pattern the file already used for the slate
+exception: the exporter writes `tintSource: 'measured'` into material
+extras when `material.userData.tintSource === 'measured'` (measured and
+unmeasured buckets never merge), `slotForMaterial` reads it, and
+`cityMeasuredWallTint` in `palette.ts` returns the authored hex (L floored
+at 0.18) divided by the brick cell mean (225/255) so cell × tint lands on
+the authored colour; the same source parameter runs through `cityTint`,
+`cityLookTint`, `slotTintBytes`, `dress`, `recipeLook.ts`,
+`galleryReview.ts`, `render-page.ts` and `writeTile.ts` so sheets and
+converted tiles match the game. Swatches through the real look: dark
+`#3a2a28` rendered 79,57,54 before and 57,42,39 after; pale `#d8d2c4`
+rendered tan 151,140,115 before and 213,207,193 after. Tests in
+`palette.test.ts`, `cityLook.test.ts` (162 pass) and a Playwright case in
+`building-look.spec.ts`; unmeasured output byte-identical (fit-golden,
+large-mesh hashes). Nothing sets the flag yet; lane A's fit does.
+**Shared house-type library** (`lane/type-library-20261014`, plan Part 2
+step 1): `BlockFaceIntent.types` accepts ids next to inline types; a
+library type is one file at `scripts/block-face/types/<district>/<id>.json`
+(`HouseTypeIntent` plus `district` equal to the folder, required
+`evidence`, optional `schemaLimits`); `blockFace/typeLibrary.ts` holds
+`fileTypeLoader` (rejects id/district mismatches and ids in several
+districts), `mapTypeLoader` for tests and `resolveTypeList`;
+`validateBlockFace` and `houseIntents` take the loader; duplicate ids in
+any mix are a validation error; `compile.ts` and `compile-recipes.ts`
+pass the loader and fold the resolved library content into
+`sources.faces`/`sources.types` so a library edit invalidates the faces
+that use it. De Clercqstraat's three types moved to
+`types/oud-west/` and the face references them; its chunk, manifest entry
+and report hash identically before and after; all 21 faces' resolved
+house intents hash identically; fit-golden 140 identical. The tile golden
+test (`tileBuildings/golden.test.ts`) was already red before this lane:
+an extra `large` pand `0363100012236799` in the Bilderdijkstraat pilot
+tiles. **Sculpture reconstruction prototype**
+(`lane/sculpture-prototype-20261014`, plan Part 4;
+`docs/sculpture-reconstruction-20261014.md`, `scripts/sculptures/`): the
+city's 2025 mobile-mapping cloud is catalogued (19–30 M points per tile
+near each statue) but its file host `files.lidar.data.amsterdam.nl` does
+not resolve (contact datateam.geo@amsterdam.nl); the PDOK 2025 8 cm
+surface model is top-down only (Gandhi a 1 m mound, Thijssen a 10.7 m
+column of lime canopy, De Dokwerker a 3.4 m post) and is useful only for
+position and height; TripoSR (MIT) on the M4 Pro with MPS and scikit-image
+marching cubes gives a recognisable real-height ~6k-tri figure in ~20 s
+from one licensed Commons photo (De Dokwerker: Rietman CC BY-SA 4.0,
+stance and chin right, back invented but plausible; Gandhi: Antony Antony
+CC BY 2.0, pose, shawl and book right, staff a stub, plinth half height,
+2007 flowers baked on; Theo Thijssen: Alf van Beem PD, block and desk
+right, man and boy fused). Strips kit vs A vs B on the demo page.
+Recommendation: route B for the ~18 single figures on plinths and for
+organic abstract forms, per-figure route B placed on a kit plinth for the
+~6 groups, kit primitives for the ~13 slab and lettered memorials;
+Hunyuan3D-2 excluded (licence bars EU use), TRELLIS and InstantMesh need
+CUDA. Open before any install: bronze tint vs vertex colour, whether
+Dutch freedom of panorama covers a 3D model of a copyrighted sculpture
+(the user's call), near vs far range. **motorkade-1**: the Tropenmuseum
+merge dropped its entry from `signature-landmarks.json` (the lane rebuilt
+the manifest from a branch that predated the model), so
+`modelAssetVersions.json` lost its fingerprint and `check:manual-landmarks`
+failed on main; rebuilt with `--only=motorkade-1`.
+
+
+## User review: the large-tier batches and the kit statues are rejected; the plan (2026-10-14, night)
+
+The user looked at the demo page and rejected two product lines. The
+large-recipe "dominant buildings" batches: "these both totally miss the
+tone of these windows" (Apollohal: a glazed hall drawn as 22 small punched
+windows in tan brick; Waagdragerhof: dark purple-brown brick with tall
+French windows drawn as bright orange brick with small squares), "horrible"
+(Houthavenkade 26: full-height glass balcony columns drawn as white slabs
+on orange brick), "awful reconstruction" (Singel 457: an ornamented
+Dutch-Renaissance front with the Kalverpassage glass roof drawn as a flat
+bay grid), "The dominant buildings kit work is doing an awful job, please
+revisit". And the statues: "these sculptures are bizarre - I thought we
+were trying to do 3d reconstructions?". Both are right, and the
+integrator had passed all of them in gallery review. Causes found in
+code: palettes hand-guessed, glass hard-coded, systems defaulting to
+`brick-bay-grid` with punched windows whatever the photo shows,
+`cityWallTint` clamping brick lightness to 0.3–0.6 so dark or pale walls
+render tan anyway, the contact sheet pairing photos to wall groups
+positionally (`large.ts:70`) and showing a grey tile when the gitignored
+crops are missing, geometry-only gates; statues through the figure kit
+although the plan put sculptures on a reconstruction track. Actions:
+Singel 457 uninstalled (bespoke queue); batches 7 and public-buildings 4
+held unmerged (`large/dominant-7-20261014`,
+`large/public-buildings-4-20261014`; their tooling commits `garageBays`
+and the installer's OSM-outline aliases cherry-picked); no new dominant
+batches; the plan "Large tier to photo likeness; commercial streets with
+a district style" approved 2026-10-14
+(`docs/plans/large-tier-likeness-and-streets-20261014.md`): lane A
+measurement and likeness tooling (crops archived to the source-data repo,
+crop-to-panel mapping, measured palette and window grid, likeness score
+and verdict on the sheet, install gate), lane B measured tint bypass in
+the look, lane C kit vocabulary (glazed hall, glazed columns,
+French-window ledge), a texture prototype on the three complaint houses
+run alongside the kit (the user: "keep making the kit better, try both"),
+lane D triage of the ~100 installed houses with ride-visibility ranking;
+Kinkerstraat first on block faces with a shared type library per
+district, then Jan Evertsenstraat with an Amsterdam School component set
+(the Street-View-based pilot retired); bridges to per-bridge fidelity;
+sculptures by reconstruction (PDOK 8 cm cloud, TripoSR; the city's
+mobile-mapping cloud host is dead). The acceptance rule is in
+`docs/buildings-pipeline.md` "Scope and acceptance".
+
+## Tropenmuseum, third pass (2026-10-14, night)
+
+Lane `landmarks/tropenmuseum-3-20261014`. Budget first: the `TROP_*` env
+toggles became typed `TropenmuseumOptions`/`PavilionOptions`; a two-pass
+compile (`tropenmuseum-hidden.ts`) leaves window cells plain brick where a
+horizontal ray meets a back-facing wall within 40 m (courts and wings,
+about 1k tris); cross windows single-light on wings under 7 storeys;
+lighter anchors, figures, globes, dentils, fanlight, stair; party-wall
+bearings narrowed to [61, 151, 331]; `tropenmuseum-groups.ts` repointed at
+the current facts (it read stale rhombus facts). Rebuilt HEAD was 33,673
+tris / 502,484 B (over the 500 KB gate); after the pass 33,332 / 496,552,
+lod1 7.4k. Modelled from 32 m rectified panorama crops
+(`tropenmuseum-tall-crops.ts`, CC BY 4.0): the north pavilions' stages
+above 22 m (quoins, hood-ringed windows, paired two-tier centre windows
+with piers and head cornice, relief panel, blind-arch groups, console
+cornice at 27.7–29.5 m, clock panel with dial; w10's cornice corrected to
+21.8–22.35 m), the connecting block (`tropenmuseum-block.ts`: a brick slab
+from 12 m buries 3DBAG's slate roof, arched triple head, hooded side
+windows, cornice at 16.45–16.95 m, stage at 0.7 scale, windows applied
+proud since the host has nothing to cut), the south gable wing
+(`tropenmuseum-gablewing.ts`: hooded first-floor windows, three
+round-arched windows over relief fields, string courses, gable grid, oval
+cartouche, pediment, ball finials) and the east risalit from Alf van
+Beem's public-domain Commons photo (`tropenmuseum-risalit.ts`: five-step
+stair, arched door with pilasters and entablature, oval window with two
+reclining figures, flank windows, triangular-hooded windows, gable grid;
+heights ±0.3 m from one frontal photo). Eight 36-tri lion masks on the
+cornice consoles. zfight-near rose to 72 m² (applied windows 4 cm proud).
+Left: the swung gables keep 3DBAG's plain outline, the south-pavilion
+clock dormer, relief iconography, arcade tracery, risalit souterrain
+arches, the wing's ground floor; 3.4 KB of byte headroom; the inventory
+still says "two-light" where wings are single-light.
+
+## Landmark queue, batch 10 (2026-10-14, night)
+
+Lane `landmarks/queue-10-20261014`, five statues from licensed Commons
+photos (mostly Ceescamel, CC BY-SA 4.0; recorded in the inventory
+`sources` and spec attribution) and the panoramas, still through the
+figure, clothing, instrument and animal kits (the last batch on that
+path; see the review entry above): Gandhi on the Churchill-laan (5.4k
+tris: striding bronze with glasses, shawl, dhoti, staff and book, the
+lettered limestone block, two cobble circles, benches, hedge arc), De
+Schreeuw in the Oosterpark (1.4k: seven stainless blades cut from one
+profile; anchored 10 m from the backlog point by ray-intersecting three
+panoramas), Waterdraagster met vissen on the Bellamyplein (3.2k: carrier,
+two fish, basin rim through its three OSM nodes), Mama Baranka in the
+Vondelpark (3.4k; the panoramas blur her, facing from photos 200 ± 60) and
+the Spanjemonument in Noord (4.9k: two bronzes off a steel ribbon, the
+NO PASARAN plaque wall). All pass `audit:glb`. The backlog still lists
+Carmiggelt, Winkler Prins, Anne Frank, Walraven van Hall and Multatuli as
+pending though they exist; `build-manual-landmarks.ts` carries duplicated
+Thijssen/Jordaan import and dispatch lines.
+
+
 ## Desktop perf, third pass (2026-10-14, night)
 
 Lane `perf/desktop-3-20261014`, `docs/performance/desktop-20261014.md`

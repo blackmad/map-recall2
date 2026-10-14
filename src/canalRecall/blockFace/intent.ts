@@ -12,6 +12,7 @@
  * coordinates or metres: everything metric comes from facts.
  */
 import {validateIntent, type CanalHouseIntent, type IntentSource} from '../buildingRecipe/intent.ts';
+import {resolveTypeList, defaultTypeLoader, type TypeLoader} from './typeLibrary.ts';
 import {placementProblems, resolvePlacement, typeProblems, type HousePlacement, type HouseTypeIntent} from './houseType.ts';
 
 export const GROUND_USES = ['residential', 'shop', 'restaurant', 'cafe', 'bar', 'services', 'office', 'vacant', 'other'] as const;
@@ -81,8 +82,9 @@ export interface BlockFaceIntent {
   street: string;
   /** The strip and panoramas the author looked at. */
   sources: IntentSource[];
-  /** House types the houses place (blockFace/houseType.ts). Absent = every house has its own design or sameAs. */
-  types?: HouseTypeIntent[];
+  /** House types the houses place (blockFace/houseType.ts): inline, or a string id of a shared library type
+   * (`scripts/block-face/types/<district>/<id>.json`, blockFace/typeLibrary.ts). Absent = every house has its own design or sameAs. */
+  types?: (HouseTypeIntent | string)[];
   houses: BlockFaceHouse[];
   continuity: {
     /** `shared`: one street level for the face (median 3DBAG ground). */
@@ -144,9 +146,9 @@ const merge = (a: any, b: any): any => {
 };
 
 /** Resolve every house to a validated canal-house intent (identity from the face, design from itself or its `sameAs`). */
-export function houseIntents(face: BlockFaceIntent): CanalHouseIntent[] {
+export function houseIntents(face: BlockFaceIntent, load: TypeLoader = defaultTypeLoader): CanalHouseIntent[] {
   const byPand = new Map(face.houses.map(h => [h.pandId, h]));
-  const types = new Map((face.types ?? []).map(t => [t.id, t]));
+  const types = new Map(resolveFaceTypes(face, load).map(t => [t.id, t]));
   const designOf = (h: BlockFaceHouse, depth = 0): HouseDesign => {
     if (h.design) return h.design;
     if (h.type) {
@@ -190,26 +192,34 @@ function canopyProblems(face: BlockFaceIntent, intents: CanalHouseIntent[]): str
   return p;
 }
 
+/** The face's types with library ids resolved to inline types (what the compiler and the recipe hash see). */
+export function resolveFaceTypes(face: BlockFaceIntent, load: TypeLoader = defaultTypeLoader): HouseTypeIntent[] {
+  const r = resolveTypeList(face.types, load);
+  if (r.problems.length) throw Error(r.problems.join('; '));
+  return r.types;
+}
+
 /** Validate a parsed face intent: houses, uses vs shopfronts, continuity references. Throws one error listing every problem. */
-export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIntent {
+export function validateBlockFace(input: unknown, order?: string[], load: TypeLoader = defaultTypeLoader): BlockFaceIntent {
   const face = input as BlockFaceIntent, problems: string[] = [];
   if (face?.kind !== 'block-face' || face.schemaVersion !== 1) problems.push('kind must be "block-face", schemaVersion 1');
   if (!Array.isArray(face?.houses) || face.houses.length < 2) problems.push('a block face needs at least two houses');
   const pands = new Set(face?.houses?.map(h => h.pandId) ?? []);
   // House types: definitions, then placements; a typed house's rhythm is its type's plus what the house states.
-  const types = new Map((face?.types ?? []).map(t => [t?.id, t]));
   if (face?.types !== undefined && !Array.isArray(face.types)) problems.push('types must be a list of house types');
-  for (const t of face?.types ?? []) problems.push(...typeProblems(t));
-  if (types.size !== (face?.types?.length ?? 0)) problems.push('types: duplicate type ids');
+  const resolved = resolveTypeList(Array.isArray(face?.types) ? face.types : undefined, load);
+  problems.push(...resolved.problems);
+  const types = new Map(resolved.types.map(t => [t?.id, t]));
+  for (const t of resolved.types) problems.push(...typeProblems(t));
   problems.push(...placementProblems(types, face?.houses ?? []));
   for (const h of face?.houses ?? []) {
     if ([h.design, h.sameAs, h.type].filter(x => x !== undefined).length > 1) problems.push(`house ${h.pandId?.slice(-6)}: design, sameAs and type are alternatives`);
     if (h.type && types.has(h.type.type)) h.rhythm = {...types.get(h.type.type)!.rhythm, ...(h.rhythm ?? {})} as RhythmSpec;
   }
-  for (const t of face?.types ?? []) if (!(face?.houses ?? []).some(h => h.type?.type === t.id)) problems.push(`type ${t.id} is placed by no house`);
+  for (const t of resolved.types) if (!(face?.houses ?? []).some(h => h.type?.type === t.id)) problems.push(`type ${t.id} is placed by no house`);
   if (order && face?.houses && face.houses.map(h => h.pandId).join() !== order.join()) problems.push(`houses must be listed left to right in street order: ${order.map(p => p.slice(-6)).join(' ')}`);
   let intents: CanalHouseIntent[] = [];
-  try { intents = houseIntents(face); } catch (e) { problems.push((e as Error).message); }
+  try { intents = houseIntents(face, load); } catch (e) { problems.push((e as Error).message); }
   for (const [i, h] of (face?.houses ?? []).entries()) {
     const at = `house ${h.pandId?.slice(-6)}`;
     const g = h.groundFloor;

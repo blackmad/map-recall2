@@ -18,8 +18,10 @@ permissions:
 
 concurrency:
   group: firebase-hosting
-  # Finish publishing both sites; keep only the newest pending push.
-  cancel-in-progress: false
+  # A burst of pushes deploys once: a newer push cancels the run in progress
+  # (2026-10-14, user's call). A cancelled firebase deploy leaves at most a
+  # CREATED version, which stores nothing against the quota.
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -89,6 +91,15 @@ jobs:
               sleep 5
             done
           done
+      # Retention Firebase's maxVersions does not do: delete stored versions
+      # beyond the live one and the newest 3 per site, so ~40 deploys a day
+      # cannot fill the 10 GB quota again (2026-10-14, user's call). Never fails
+      # the deploy.
+      - name: Prune stored hosting versions
+        if: success()
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
+        run: node scripts/hosting/prune-versions.mjs --keep=3 --apply || echo "prune failed; deploy is live"
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

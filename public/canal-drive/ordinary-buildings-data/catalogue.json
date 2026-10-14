@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-8,
+          -5.2452087118126656e-08,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-8,
+          9.536743306171047e-08,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-7,
+          -3.814697322468419e-07,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-8,
+          -4.7683716530855236e-08,
           -8.861071586608887
         ],
         "max": [
@@ -48945,336 +48945,6 @@
       ],
       "updatedAt": "2026-10-14T03:25:42.751Z",
       "meshHash": "5506b36a292cab4c"
-    },
-    {
-      "id": "ordinary-0363100012165086",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012165086",
-      "name": "Singel 457 / Kalverstraat (Kalverpassage), Amsterdam-Centrum: red-brick Singel range with white stone bands and a stepped centre gable, a pale stone curved corner block, and the grey-brick Kalverpassage entrance block on Kalverstraat",
-      "hash": "a58a1fce6377f78c90788594cbaad404050a07740654f335cd6e2888bbf033c4",
-      "sha256": "a58a1fce6377f78c90788594cbaad404050a07740654f335cd6e2888bbf033c4",
-      "bytes": 917836,
-      "triangles": 11347,
-      "materials": 15,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -59.115,
-          -2.564,
-          -39.046
-        ],
-        "max": [
-          71.249,
-          30.87,
-          35.502
-        ]
-      },
-      "anchor": [
-        4.8914715,
-        52.3674545
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8921521,
-              52.3676073
-            ],
-            [
-              4.8920286,
-              52.3675462
-            ],
-            [
-              4.8919793,
-              52.3675808
-            ],
-            [
-              4.8919318,
-              52.3675582
-            ],
-            [
-              4.8918082,
-              52.3676479
-            ],
-            [
-              4.891879,
-              52.3676794
-            ],
-            [
-              4.8918723,
-              52.3676851
-            ],
-            [
-              4.8919592,
-              52.3677238
-            ],
-            [
-              4.8919155,
-              52.3677499
-            ],
-            [
-              4.8918969,
-              52.3677615
-            ],
-            [
-              4.8918538,
-              52.3677881
-            ],
-            [
-              4.8917057,
-              52.3677223
-            ],
-            [
-              4.8916137,
-              52.3677891
-            ],
-            [
-              4.8915494,
-              52.3677559
-            ],
-            [
-              4.8914812,
-              52.3678055
-            ],
-            [
-              4.8912858,
-              52.367725
-            ],
-            [
-              4.8912949,
-              52.3677153
-            ],
-            [
-              4.8911604,
-              52.367668
-            ],
-            [
-              4.8910822,
-              52.3677512
-            ],
-            [
-              4.8910247,
-              52.3677305
-            ],
-            [
-              4.8910777,
-              52.3676739
-            ],
-            [
-              4.8910151,
-              52.3676513
-            ],
-            [
-              4.8910261,
-              52.3676396
-            ],
-            [
-              4.8909657,
-              52.3676177
-            ],
-            [
-              4.8910084,
-              52.3675736
-            ],
-            [
-              4.8909359,
-              52.3675473
-            ],
-            [
-              4.8909698,
-              52.3675126
-            ],
-            [
-              4.8908243,
-              52.3674582
-            ],
-            [
-              4.8908097,
-              52.3674731
-            ],
-            [
-              4.8907506,
-              52.3674523
-            ],
-            [
-              4.8907331,
-              52.367471
-            ],
-            [
-              4.8906507,
-              52.367442
-            ],
-            [
-              4.8906581,
-              52.3674342
-            ],
-            [
-              4.890604,
-              52.3674152
-            ],
-            [
-              4.8907127,
-              52.3672996
-            ],
-            [
-              4.8907025,
-              52.3672692
-            ],
-            [
-              4.8907032,
-              52.3672683
-            ],
-            [
-              4.8909183,
-              52.3672403
-            ],
-            [
-              4.8909186,
-              52.3672413
-            ],
-            [
-              4.8914022,
-              52.36718
-            ],
-            [
-              4.8914029,
-              52.3671822
-            ],
-            [
-              4.8914323,
-              52.3671773
-            ],
-            [
-              4.8916815,
-              52.3671485
-            ],
-            [
-              4.8917114,
-              52.3671467
-            ],
-            [
-              4.8917118,
-              52.3671496
-            ],
-            [
-              4.891744,
-              52.3671477
-            ],
-            [
-              4.8917436,
-              52.3671447
-            ],
-            [
-              4.8917642,
-              52.3671435
-            ],
-            [
-              4.8917719,
-              52.367145
-            ],
-            [
-              4.8917893,
-              52.3671437
-            ],
-            [
-              4.8917963,
-              52.3671416
-            ],
-            [
-              4.8918183,
-              52.3671402
-            ],
-            [
-              4.891821,
-              52.3671407
-            ],
-            [
-              4.8919071,
-              52.3671888
-            ],
-            [
-              4.8921684,
-              52.3673273
-            ],
-            [
-              4.8922372,
-              52.3672742
-            ],
-            [
-              4.8925183,
-              52.3673917
-            ],
-            [
-              4.8925135,
-              52.3673935
-            ],
-            [
-              4.8924263,
-              52.367435
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 30.87,
-      "height": 30.87,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-singel-457-165086.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012165086"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "singel-457-165086",
-        "kind": "large",
-        "intentSources": [
-          "staging/pand-reference-walls/0363100012165086/w01-192.jpg",
-          "staging/pand-reference-walls/0363100012165086/w02-46.jpg",
-          "staging/pand-reference-walls/0363100012165086/w03-190.jpg",
-          "staging/pand-reference-walls/0363100012165086/w04-192.jpg",
-          "staging/pand-reference-walls/0363100012165086/w05-45.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "eaves-vs-3dbag/walls[3]:pass",
-          "storey-height/walls[3]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "shell-repair:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "brick-bay-grid+entrance 5st 10b",
-          "brick-bay-grid 5st 2b",
-          "brick-bay-grid 5st 4b",
-          "brick-bay-grid 5st 6b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = surfaces 340 + 238 (w01-192): the colonnade run and the east stepped gable of the red-brick Singel range. 3DBAG models the rooftop colonnade as solid wall to 17.4 m, so the range is drawn as 5 storeys with the top one blank (the colonnade zone). That gives 4 rows of white-framed cross windows under brick segmental arches with white stone bands, and the arched passage portal (KO) in bay 5. The gable takes the storey lines above (one window). Surfaces 532 and 123 at the east end stay blank: with them the 3DBAG eaves gate reads the roof behind them (14.7 m) and fails.",
-        "walls[1] = surface 19 (w04-192): the colonnade run west of the west gable, on walls[0]'s storey lines. The west stepped gable (296) and surface 115 are blank. With them in a group, the eaves gate reads the gable's mono-pitch roof from 14.4 m against a 16.4-17.2 m wall top and fails.",
-        "walls[3] = panel 45 (w02-46): the Kalverpassage entrance block on Kalverstraat in grey-brown brick. It has a glazed passage ground with a blank band over it, a glass-railed balcony run, and the vertical KALVERPASSAGE sign as wall lettering. 6 bays for the photographed 7 (triangle budget).",
-        "Simplified or not drawn: the Amsterdam arms over the west door, the cartouches and gable finials, the pergola and the glass pavilion roofs (the 3DBAG roof carries their mass), and the lattice ceiling and round piers of the passage. The dark glass corner on Kalverstraat (w05-45, 10 m) and the court walls are blank (otherWalls)."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165086",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T04:53:57.656Z",
-      "meshHash": "4987b432cd597ef0"
     },
     {
       "id": "ordinary-0363100012165488",

@@ -72,7 +72,7 @@ function materialTable(root: THREE.Object3D): ReviewMaterial[] {
         const inf = !skipped && hex ? inferMaterialSlot(m.name, hex) : null;
         const slot = declared ?? inf?.slot ?? null;
         row = { name: m?.name ?? '', hex, slot, rule: declared ? 'declared' : inf?.rule ?? '', confidence: declared ? 'declared' : inf?.confidence ?? null,
-          cityTint: slot && hex ? cityLookTint(slot, m.userData?.tint ?? hex) : null, cell: null, skipped, meshes: 0 };
+          cityTint: slot && hex ? cityLookTint(slot, m.userData?.tint ?? hex, m.userData?.tintSource) : null, cell: null, skipped, meshes: 0 };
         byKey.set(key, row);
       }
       row.meshes++;

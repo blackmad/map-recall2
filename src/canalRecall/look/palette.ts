@@ -509,8 +509,25 @@ export function cityRoofTint(slot: 'roofTile' | 'slate' | 'bitumen', hex: string
   if (slot === 'slate') return l < 0.27 ? CITY_ROOF.slate[1] : l < 0.31 ? CITY_ROOF.slate[0] : CITY_ROOF.slate[2];
   return l < 0.4 ? CITY_ROOF.flat[2] : CITY_ROOF.flat[0];
 }
+/** Where a slot colour came from. `measured` = sampled/surveyed from the real wall (bypasses the brick clamp); anything else = authored/prior. */
+export type TintSource = 'measured';
+export const MEASURED_TINT_SOURCE: TintSource = 'measured';
+/** Lowest lightness a measured wall keeps (CITY_BRICK_LIGHTNESS floors at 0.3; a dark purple-brown front is ~0.19). */
+export const MEASURED_WALL_MIN_L = 0.18;
+/** Mean of the painted brick cell as a 0..1 multiplier (calmBayLayers / slotCells lift it to PHOTO_WALL_CELL_MEAN). */
+export const BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+/**
+ * A measured wall colour that survives the runtime tint. `cityWallTint` clamps L to 0.3-0.6 and S to 0.12-0.5 (it protects
+ * the streamed city), so a dark or pale measured wall would render tan. The authored hex (L floored at 0.18) is divided
+ * per channel by the brick cell mean, so cell x tint lands on the authored colour (the SLATE_KEEP_FROM_L pattern).
+ */
+export function cityMeasuredWallTint(hex: string): string {
+  const [h, s, l] = rgbToHsl(hexToRgb(hex)), [r, g, b] = hexToRgb(rgbToHex(hslToRgb([h, s, Math.max(l, MEASURED_WALL_MIN_L)])));
+  return rgbToHex([r, g, b].map(v => Math.min(255, Math.round(v / BRICK_CELL_MEAN))) as RGB);
+}
 /** An authored slot colour mapped into the city palette range. */
-export function cityTint(slot: MaterialSlot, hex: string): string {
+export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | null): string {
+  if (source === MEASURED_TINT_SOURCE && (slot === 'brick' || slot === 'accent')) return cityMeasuredWallTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);

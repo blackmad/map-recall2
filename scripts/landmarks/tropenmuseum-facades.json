@@ -6,52 +6,996 @@
   "walls": {
     "w10-61": {
       "what": "north museum pavilion, Linnaeusstraat (east) face",
-      "panel": 322, "surfaces": [379], "sToU": -9.7, "faceS": [0, 11.0],
-      "crop": "w10-61.jpg", "pano": "TMX7316010203-002310_pano_0001_001995", "captured": "2021-09-15", "ppm": 50.08, "obliquity": "12 deg",
-      "plinth": {"y": [3.87, 4.02], "out": 0.1},
-      "souterrain": {"s": [0.97, 3.9, 5.4, 8.3], "w": 0.95, "y": [1.1, 2.95]},
-      "side": {"s": [[0.65, 1.5], [7.85, 8.75]], "pad": 0.12},
-      "centre": {"lights": [[3.4, 4.1], [4.33, 5.03], [5.3, 6.05]], "surround": [3.25, 6.2]},
-      "floors": [
-        {"sideLower": [4.4, 6.4], "sideUpper": [6.7, 7.75], "cLower": [4.4, 6.4], "cUpper": [6.7, 7.75], "relief": {"y": [8.1, 9.1], "cornice": [9.15, 9.5], "ledge": [7.85, 8.05]}},
-        {"sideLower": [9.8, 11.8], "sideUpper": [12.15, 13.2], "cLower": [9.8, 11.8], "cUpper": [12.15, 13.2], "relief": {"y": [13.6, 14.6], "cornice": [14.65, 14.95], "ledge": [13.4, 13.6]}},
-        {"sideLower": [15.15, 16.85], "sideUpper": [17.2, 18.3], "cLower": [15.1, 16.85], "cUpper": [17.2, 18.3], "arch": {"spring": 18.55, "top": 19.63, "ring": 20.1}}
+      "panel": 322,
+      "surfaces": [
+        379
       ],
-      "anchors": {"s": [2.25, 6.95], "y0": [8.0, 13.4, 20.2], "h": 1.4},
-      "cornice": {"y": [21.45, 22.0], "s": [0.1, 10.9]},
-      "inferred": ["dentil cornice at y 21.45-22.0: above the crop top (21.46); placed 0.45 m above w12's cornice because this crop's plinth is 0.45 m higher", "centre triple surround widths and the ledge depths (0.1-0.12 m)", "relief slab depth 0.06 m and its frame 0.1 m: shadows only"]
+      "sToU": -9.7,
+      "faceS": [
+        0,
+        11.0
+      ],
+      "crop": "w10-61.jpg",
+      "pano": "TMX7316010203-002310_pano_0001_001995",
+      "captured": "2021-09-15",
+      "ppm": 50.08,
+      "obliquity": "12 deg",
+      "plinth": {
+        "y": [
+          3.87,
+          4.02
+        ],
+        "out": 0.1
+      },
+      "souterrain": {
+        "s": [
+          0.97,
+          3.9,
+          5.4,
+          8.3
+        ],
+        "w": 0.95,
+        "y": [
+          1.1,
+          2.95
+        ]
+      },
+      "side": {
+        "s": [
+          [
+            0.65,
+            1.5
+          ],
+          [
+            7.85,
+            8.75
+          ]
+        ],
+        "pad": 0.12
+      },
+      "centre": {
+        "lights": [
+          [
+            3.4,
+            4.1
+          ],
+          [
+            4.33,
+            5.03
+          ],
+          [
+            5.3,
+            6.05
+          ]
+        ],
+        "surround": [
+          3.25,
+          6.2
+        ]
+      },
+      "floors": [
+        {
+          "sideLower": [
+            4.4,
+            6.4
+          ],
+          "sideUpper": [
+            6.7,
+            7.75
+          ],
+          "cLower": [
+            4.4,
+            6.4
+          ],
+          "cUpper": [
+            6.7,
+            7.75
+          ],
+          "relief": {
+            "y": [
+              8.1,
+              9.1
+            ],
+            "cornice": [
+              9.15,
+              9.5
+            ],
+            "ledge": [
+              7.85,
+              8.05
+            ]
+          }
+        },
+        {
+          "sideLower": [
+            9.8,
+            11.8
+          ],
+          "sideUpper": [
+            12.15,
+            13.2
+          ],
+          "cLower": [
+            9.8,
+            11.8
+          ],
+          "cUpper": [
+            12.15,
+            13.2
+          ],
+          "relief": {
+            "y": [
+              13.6,
+              14.6
+            ],
+            "cornice": [
+              14.65,
+              14.95
+            ],
+            "ledge": [
+              13.4,
+              13.6
+            ]
+          }
+        },
+        {
+          "sideLower": [
+            15.15,
+            16.85
+          ],
+          "sideUpper": [
+            17.2,
+            18.3
+          ],
+          "cLower": [
+            15.1,
+            16.85
+          ],
+          "cUpper": [
+            17.2,
+            18.3
+          ],
+          "arch": {
+            "spring": 18.55,
+            "top": 19.63,
+            "ring": 20.1
+          }
+        }
+      ],
+      "anchors": {
+        "s": [
+          2.25,
+          6.95
+        ],
+        "y0": [
+          8.0,
+          13.4,
+          20.2
+        ],
+        "h": 1.4
+      },
+      "cornice": {
+        "y": [
+          21.8,
+          22.35
+        ],
+        "s": [
+          0.1,
+          10.9
+        ]
+      },
+      "inferred": [
+        "dentil cornice at y 21.45-22.0: above the crop top (21.46); placed 0.45 m above w12's cornice because this crop's plinth is 0.45 m higher",
+        "centre triple surround widths and the ledge depths (0.1-0.12 m)",
+        "relief slab depth 0.06 m and its frame 0.1 m: shadows only"
+      ],
+      "stage": true
     },
     "w12-331": {
       "what": "north museum pavilion, Mauritskade face (the corner the rider passes)",
-      "panel": 330, "surfaces": [388], "sToU": -0.11, "faceS": [0.1, 11.55],
-      "crop": "w12-331.jpg", "pano": "recording_2025-09-30_11-08-39_00754", "captured": "2025-09-30", "ppm": 49.92, "obliquity": "2 deg",
-      "plinth": {"y": [3.45, 3.65], "out": 0.1},
-      "souterrain": {"s": [2.3, 5.05, 6.5, 9.3], "w": 0.95, "y": [0.72, 2.5]},
-      "side": {"s": [[1.9, 2.85], [8.85, 9.8]], "pad": 0.12},
-      "centre": {"lights": [[4.5, 5.28], [5.46, 6.24], [6.42, 7.2]], "surround": [4.35, 7.3]},
-      "floors": [
-        {"sideLower": [3.9, 5.85], "sideUpper": [6.1, 7.15], "cLower": [3.9, 5.85], "cUpper": [6.1, 7.15], "relief": {"y": [7.5, 8.5], "cornice": [8.65, 9.1], "ledge": [7.3, 7.5]}},
-        {"sideLower": [9.15, 11.1], "sideUpper": [11.5, 12.5], "cLower": [9.15, 11.1], "cUpper": [11.5, 12.5], "relief": {"y": [12.9, 13.85], "cornice": [14.1, 14.4], "ledge": [12.6, 12.9]}},
-        {"sideLower": [14.4, 16.0], "sideUpper": [16.45, 17.45], "cLower": [14.43, 15.98], "cUpper": [16.35, 17.35], "arch": {"spring": 17.75, "top": 18.7, "ring": 19.55}}
+      "panel": 330,
+      "surfaces": [
+        388
       ],
-      "anchors": {"s": [3.6, 8.05], "y0": [7.45, 12.7, 19.35], "h": 1.35},
-      "cornice": {"y": [20.95, 21.5], "s": [0.1, 11.55]},
-      "inferred": ["leftmost souterrain arch at s 2.3: behind the road sign, mirrored about the wall axis (s 5.8) from the arch at 9.3", "floor 2 centre triple behind the banner (y 9.15-12.5): taken from the same bay on w10-61", "the crop ends at 21.54 m: the cornice's console blocks with lion masks (s 4.1-4.9, 6.9-7.7) are drawn as plain stone blocks"]
+      "sToU": -0.11,
+      "faceS": [
+        0.1,
+        11.55
+      ],
+      "crop": "w12-331.jpg",
+      "pano": "recording_2025-09-30_11-08-39_00754",
+      "captured": "2025-09-30",
+      "ppm": 49.92,
+      "obliquity": "2 deg",
+      "plinth": {
+        "y": [
+          3.45,
+          3.65
+        ],
+        "out": 0.1
+      },
+      "souterrain": {
+        "s": [
+          2.3,
+          5.05,
+          6.5,
+          9.3
+        ],
+        "w": 0.95,
+        "y": [
+          0.72,
+          2.5
+        ]
+      },
+      "side": {
+        "s": [
+          [
+            1.9,
+            2.85
+          ],
+          [
+            8.85,
+            9.8
+          ]
+        ],
+        "pad": 0.12
+      },
+      "centre": {
+        "lights": [
+          [
+            4.5,
+            5.28
+          ],
+          [
+            5.46,
+            6.24
+          ],
+          [
+            6.42,
+            7.2
+          ]
+        ],
+        "surround": [
+          4.35,
+          7.3
+        ]
+      },
+      "floors": [
+        {
+          "sideLower": [
+            3.9,
+            5.85
+          ],
+          "sideUpper": [
+            6.1,
+            7.15
+          ],
+          "cLower": [
+            3.9,
+            5.85
+          ],
+          "cUpper": [
+            6.1,
+            7.15
+          ],
+          "relief": {
+            "y": [
+              7.5,
+              8.5
+            ],
+            "cornice": [
+              8.65,
+              9.1
+            ],
+            "ledge": [
+              7.3,
+              7.5
+            ]
+          }
+        },
+        {
+          "sideLower": [
+            9.15,
+            11.1
+          ],
+          "sideUpper": [
+            11.5,
+            12.5
+          ],
+          "cLower": [
+            9.15,
+            11.1
+          ],
+          "cUpper": [
+            11.5,
+            12.5
+          ],
+          "relief": {
+            "y": [
+              12.9,
+              13.85
+            ],
+            "cornice": [
+              14.1,
+              14.4
+            ],
+            "ledge": [
+              12.6,
+              12.9
+            ]
+          }
+        },
+        {
+          "sideLower": [
+            14.4,
+            16.0
+          ],
+          "sideUpper": [
+            16.45,
+            17.45
+          ],
+          "cLower": [
+            14.43,
+            15.98
+          ],
+          "cUpper": [
+            16.35,
+            17.35
+          ],
+          "arch": {
+            "spring": 17.75,
+            "top": 18.7,
+            "ring": 19.55
+          }
+        }
+      ],
+      "anchors": {
+        "s": [
+          3.6,
+          8.05
+        ],
+        "y0": [
+          7.45,
+          12.7,
+          19.35
+        ],
+        "h": 1.35
+      },
+      "cornice": {
+        "y": [
+          20.95,
+          21.5
+        ],
+        "s": [
+          0.1,
+          11.55
+        ]
+      },
+      "inferred": [
+        "leftmost souterrain arch at s 2.3: behind the road sign, mirrored about the wall axis (s 5.8) from the arch at 9.3",
+        "floor 2 centre triple behind the banner (y 9.15-12.5): taken from the same bay on w10-61",
+        "the crop ends at 21.54 m: the cornice's console blocks with lion masks (s 4.1-4.9, 6.9-7.7) are drawn as plain stone blocks"
+      ],
+      "stage": true
     },
     "w16-61": {
       "what": "connecting block south of the north pavilion (surface 172): the same three-bay pattern at 3.9 m floor pitch",
-      "panel": 156, "surfaces": [172], "sToU": 0, "faceS": [0.1, 9.0],
-      "crop": "w16-61.jpg", "pano": "TMX7316010203-001674_pano_0000_003626", "captured": "2020-04-24", "ppm": 50.2, "obliquity": "6 deg",
-      "plinth": {"y": [3.4, 3.65], "out": 0.1},
-      "souterrain": {"s": [1.77, 3.95, 5.05, 7.15], "w": 0.75, "y": [1.34, 2.7]},
-      "side": {"s": [[1.45, 2.1], [6.85, 7.5]], "pad": 0.1},
-      "centre": {"lights": [[3.55, 4.1], [4.27, 4.82], [4.97, 5.5]], "surround": [3.4, 5.65]},
-      "floors": [
-        {"sideLower": [3.75, 5.2], "sideUpper": [5.45, 6.2], "cLower": [3.8, 5.2], "cUpper": [5.5, 6.24], "relief": {"y": [6.6, 7.2], "cornice": [7.35, 7.7], "ledge": [6.35, 6.55]}},
-        {"sideLower": [7.7, 9.25], "sideUpper": [9.55, 10.35], "cLower": [7.74, 9.2], "cUpper": [9.5, 10.3], "relief": {"y": [10.6, 11.05], "cornice": [11.25, 11.6], "ledge": [10.4, 10.55]}}
+      "panel": 156,
+      "surfaces": [
+        172
       ],
-      "anchors": {"s": [2.75, 6.2], "y0": [6.45, 10.4], "h": 0.9},
-      "inferred": ["the panel stops at 12.01 m: the third floor (11.66-14 m, round-arched head to 15.6 m), the cornice at 16.4 m and the arcade stage above stand on other 3DBAG planes and are not drawn", "the right-hand souterrain arch at 7.15 sits behind a lamp post and fence in the crop"]
+      "sToU": 0,
+      "faceS": [
+        0.1,
+        9.0
+      ],
+      "crop": "w16-61.jpg",
+      "pano": "TMX7316010203-001674_pano_0000_003626",
+      "captured": "2020-04-24",
+      "ppm": 50.2,
+      "obliquity": "6 deg",
+      "plinth": {
+        "y": [
+          3.4,
+          3.65
+        ],
+        "out": 0.1
+      },
+      "souterrain": {
+        "s": [
+          1.77,
+          3.95,
+          5.05,
+          7.15
+        ],
+        "w": 0.75,
+        "y": [
+          1.34,
+          2.7
+        ]
+      },
+      "side": {
+        "s": [
+          [
+            1.45,
+            2.1
+          ],
+          [
+            6.85,
+            7.5
+          ]
+        ],
+        "pad": 0.1
+      },
+      "centre": {
+        "lights": [
+          [
+            3.55,
+            4.1
+          ],
+          [
+            4.27,
+            4.82
+          ],
+          [
+            4.97,
+            5.5
+          ]
+        ],
+        "surround": [
+          3.4,
+          5.65
+        ]
+      },
+      "floors": [
+        {
+          "sideLower": [
+            3.75,
+            5.2
+          ],
+          "sideUpper": [
+            5.45,
+            6.2
+          ],
+          "cLower": [
+            3.8,
+            5.2
+          ],
+          "cUpper": [
+            5.5,
+            6.24
+          ],
+          "relief": {
+            "y": [
+              6.6,
+              7.2
+            ],
+            "cornice": [
+              7.35,
+              7.7
+            ],
+            "ledge": [
+              6.35,
+              6.55
+            ]
+          }
+        },
+        {
+          "sideLower": [
+            7.7,
+            9.25
+          ],
+          "sideUpper": [
+            9.55,
+            10.35
+          ],
+          "cLower": [
+            7.74,
+            9.2
+          ],
+          "cUpper": [
+            9.5,
+            10.3
+          ],
+          "relief": {
+            "y": [
+              10.6,
+              11.05
+            ],
+            "cornice": [
+              11.25,
+              11.6
+            ],
+            "ledge": [
+              10.4,
+              10.55
+            ]
+          }
+        }
+      ],
+      "anchors": {
+        "s": [
+          2.75,
+          6.2
+        ],
+        "y0": [
+          6.45,
+          10.4
+        ],
+        "h": 0.9
+      },
+      "inferred": [
+        "the panel stops at 12.01 m: the third floor (11.66-14 m, round-arched head to 15.6 m), the cornice at 16.4 m and the arcade stage above stand on other 3DBAG planes and are not drawn",
+        "the right-hand souterrain arch at 7.15 sits behind a lamp post and fence in the crop"
+      ],
+      "block": {
+        "what": "the third floor, cornice and arcade stage of the connecting block above its 12 m 3DBAG panel; 3DBAG has a 4 m slate roof there and the stage 3 m behind the face on panel 283 (v 16.45-26.94)",
+        "slab": {
+          "y": [
+            12.0,
+            22.55
+          ],
+          "depth": 3.0,
+          "inset": 0.12
+        },
+        "third": {
+          "sideLower": [
+            11.75,
+            13.1
+          ],
+          "sideUpper": [
+            13.4,
+            14.3
+          ],
+          "cLower": [
+            11.7,
+            13.05
+          ],
+          "cUpper": [
+            13.4,
+            14.15
+          ],
+          "arch": {
+            "spring": 14.3,
+            "top": 15.35
+          },
+          "hoodRise": 0.3
+        },
+        "cornice": {
+          "y": [
+            16.45,
+            16.95
+          ],
+          "out": 0.4
+        },
+        "stage": {
+          "yc": 16.95,
+          "k": 0.7
+        },
+        "measuredBy": "tall-w16-61-0.jpg (TMX7316010203-001674_pano_0000_003626, 2020-04-24, Gemeente Amsterdam CC BY 4.0, 50.2 px/m): arched triple head py 840-1015, cornice py 745-775, stage py 465-745",
+        "inferred": [
+          "the slab is flush with the lower face: the crop shows the stage at the same horizontal scale as the lower floors, although 3DBAG puts panel 283 3 m back",
+          "the stage is the pavilion's pattern at 0.7"
+        ]
+      }
+    }
+  },
+  "stagePattern": {
+    "measuredBy": "Tropenmuseum third pass, 2026-10-14: 32 m tall rectified crops (tall-w12-331-0.jpg 2025-09-30 and tall-w10-61-0.jpg 2021-09-15, Gemeente Amsterdam panoramas CC BY 4.0, 50 px/m, made by scripts/landmarks/tropenmuseum-tall-crops.ts), read in pixel rows. The stage above the dentil cornice repeats on both north-pavilion faces; every y is metres above the cornice's top edge (`cornice.y[1]`), every s is relative to the face: side windows sit on the existing `side.s`, the centre pair on the centre triple's axis.",
+    "sideLower": [
+      0.06,
+      1.3
+    ],
+    "sideLedge": [
+      1.3,
+      1.6
+    ],
+    "sideUpper": [
+      1.95,
+      2.85
+    ],
+    "sideHoodRise": 0.6,
+    "centreLower": [
+      0.1,
+      1.38
+    ],
+    "centreUpper": [
+      2.06,
+      3.06
+    ],
+    "centreSurroundHalf": 1.1,
+    "centreLightW": 0.8,
+    "centreLightGap": 0.24,
+    "centreHead": [
+      3.06,
+      3.55
+    ],
+    "arcade": {
+      "spring": 4.9,
+      "rise": 0.38,
+      "w": 0.7,
+      "pitch": 0.9,
+      "count": 4,
+      "band": [
+        4.25,
+        4.75
+      ]
+    },
+    "relief": {
+      "y": [
+        5.0,
+        5.9
+      ],
+      "half": 0.95,
+      "ledge": [
+        4.85,
+        5.0
+      ],
+      "cornice": [
+        5.9,
+        6.15
+      ]
+    },
+    "bigCornice": {
+      "y": [
+        6.2,
+        8.0
+      ],
+      "slabLow": [
+        6.2,
+        6.5
+      ],
+      "blocks": [
+        6.5,
+        7.45
+      ],
+      "slabHigh": [
+        7.45,
+        8.0
+      ],
+      "pitch": 0.9,
+      "blockW": 0.45
+    },
+    "clockPanel": {
+      "y": [
+        8.0,
+        10.6
+      ],
+      "half": 1.7
+    },
+    "quoin": {
+      "y": [
+        0.0,
+        8.0
+      ],
+      "w": 0.4
+    },
+    "inferred": [
+      "w10's dentil cornice is 21.8-22.35 m in the tall crop (the second pass inferred 21.45-22.0 above its crop top)",
+      "the arcade arches' carved brick tracery, the console profiles and the clock panel's frame"
+    ]
+  },
+  "gableWings": {
+    "w11-61": {
+      "what": "south gable wing, Linnaeusstraat (east) face: three arched windows over reliefs, a swung gable with a window grid, an oval cartouche and a pediment",
+      "panel": 152,
+      "surfaces": [
+        168,
+        606
+      ],
+      "sToU": 0,
+      "skipFrom": 1,
+      "crop": "tall-w11-61-0.jpg",
+      "pano": "TMX7316010203-001674_pano_0000_003626",
+      "captured": "2020-04-24",
+      "ppm": 50.0,
+      "obliquity": "37 deg",
+      "floor1": {
+        "windows": [
+          [
+            1.5,
+            3.3
+          ],
+          [
+            4.2,
+            6.8
+          ],
+          [
+            7.7,
+            9.4
+          ]
+        ],
+        "lower": [
+          4.0,
+          5.7
+        ],
+        "upper": [
+          6.0,
+          6.9
+        ],
+        "hoodTop": 7.5,
+        "lights": [
+          1,
+          3,
+          1
+        ]
+      },
+      "string": [
+        {
+          "y": [
+            8.5,
+            9.0
+          ],
+          "out": 0.18
+        },
+        {
+          "y": [
+            13.7,
+            13.9
+          ],
+          "out": 0.1
+        },
+        {
+          "y": [
+            17.8,
+            18.0
+          ],
+          "out": 0.12
+        }
+      ],
+      "reliefs": {
+        "s": [
+          [
+            1.3,
+            3.7
+          ],
+          [
+            4.3,
+            6.8
+          ],
+          [
+            7.5,
+            10.0
+          ]
+        ],
+        "y": [
+          12.55,
+          13.45
+        ]
+      },
+      "arched": {
+        "s": [
+          [
+            1.3,
+            3.7
+          ],
+          [
+            4.3,
+            6.8
+          ],
+          [
+            7.5,
+            10.0
+          ]
+        ],
+        "y": [
+          14.0,
+          16.9
+        ]
+      },
+      "gable": {
+        "grid": {
+          "cols": [
+            [
+              4.4,
+              5.0
+            ],
+            [
+              5.2,
+              5.8
+            ],
+            [
+              6.1,
+              6.65
+            ]
+          ],
+          "rows": [
+            [
+              19.0,
+              20.1
+            ],
+            [
+              20.5,
+              21.2
+            ],
+            [
+              21.6,
+              22.3
+            ]
+          ]
+        },
+        "singles": [
+          [
+            3.0,
+            3.55
+          ],
+          [
+            7.5,
+            8.05
+          ]
+        ],
+        "singleRows": [
+          [
+            19.0,
+            20.1
+          ],
+          [
+            20.5,
+            21.2
+          ]
+        ],
+        "cartouche": {
+          "s": 5.4,
+          "y": 24.2,
+          "rx": 0.5,
+          "ry": 0.6
+        },
+        "pediment": {
+          "s": [
+            4.4,
+            6.6
+          ],
+          "y": [
+            26.2,
+            27.0
+          ]
+        },
+        "balls": [
+          [
+            2.7,
+            24.2
+          ],
+          [
+            8.1,
+            24.2
+          ],
+          [
+            1.0,
+            22.0
+          ],
+          [
+            9.8,
+            22.0
+          ]
+        ]
+      },
+      "inferred": [
+        "the ground floor and the first-floor banner field (y 9-12.2) are behind signs and a banner: not drawn",
+        "the swung gable outline stays 3DBAG's: only the pieces on it are drawn",
+        "ball and statue positions on the shoulders from the oblique crop"
+      ]
+    }
+  },
+  "risalits": {
+    "w13-61": {
+      "what": "east risalit with the side entrance (Linnaeusstraat 2a): portal with oval window and reclining figures over a stair, tall ground-floor windows, three hooded first-floor windows, a gable window grid",
+      "panel": 138,
+      "surfaces": [
+        151,
+        154
+      ],
+      "sToU": 0,
+      "photo": "Commons File:Tropenmuseum, Linnaeusstraat foto 2.jpg (Alf van Beem, public domain)",
+      "scale": "about 44 px/m: the risalit is 440 px wide in the photo and 10.3 m in 3DBAG; heights read from the stair top (door sill 1.65 m)",
+      "stair": {
+        "s": [
+          3.4,
+          6.5
+        ],
+        "steps": 5,
+        "rise": 0.33,
+        "tread": 0.4
+      },
+      "door": {
+        "s": [
+          4.15,
+          5.8
+        ],
+        "y": [
+          1.65,
+          4.6
+        ]
+      },
+      "surround": {
+        "half": 1.25,
+        "top": 5.4,
+        "pilaster": 0.4
+      },
+      "oval": {
+        "s": 4.98,
+        "y": 6.4,
+        "rx": 0.55,
+        "ry": 0.38
+      },
+      "figures": {
+        "y": 6.0,
+        "dx": 0.95
+      },
+      "string": [
+        {
+          "y": [
+            3.0,
+            3.2
+          ],
+          "out": 0.14
+        },
+        {
+          "y": [
+            7.7,
+            7.9
+          ],
+          "out": 0.1
+        }
+      ],
+      "flank": {
+        "s": [
+          [
+            1.35,
+            2.5
+          ],
+          [
+            7.5,
+            8.75
+          ]
+        ],
+        "y": [
+          3.5,
+          6.9
+        ]
+      },
+      "floor1": {
+        "s": [
+          [
+            1.7,
+            3.0
+          ],
+          [
+            4.2,
+            5.9
+          ],
+          [
+            7.2,
+            8.8
+          ]
+        ],
+        "y": [
+          8.5,
+          11.4
+        ],
+        "hoodTop": 12.1
+      },
+      "grid": {
+        "s": [
+          3.4,
+          6.8
+        ],
+        "rows": [
+          [
+            14.6,
+            15.7
+          ],
+          [
+            16.0,
+            17.1
+          ]
+        ],
+        "mulls": 2
+      },
+      "inferred": [
+        "heights above the door sill from a single frontal photograph with a few degrees of obliquity (+-0.3 m)",
+        "the swung gable profile and its volutes stay 3DBAG's triangle; the existing crown (piers, statue) is kept",
+        "the souterrain arches under the stair"
+      ]
     }
   }
 }

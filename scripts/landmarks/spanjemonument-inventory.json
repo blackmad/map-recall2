@@ -1,0 +1,120 @@
+{
+ "schemaVersion": 1,
+ "id": "spanjemonument",
+ "signature": [
+  "sp-figures",
+  "sp-stem"
+ ],
+ "walls": [
+  {
+   "tag": "n-235",
+   "bearing": 235,
+   "lengthM": 9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001303_pano_0002_000532",
+   "capturedAt": null,
+   "note": "Side view: the figures fly to the left of a view looking WNW (panorama 2019); the stem curves under them.",
+   "items": [
+    {
+     "id": "sp-figures",
+     "kind": "sculpture",
+     "where": "two bronze figures flying horizontally over the stem tip, one above and behind the other, arms stretched forward",
+     "approxSizeM": [
+      1.8,
+      1.4
+     ],
+     "plan": "simplified",
+     "how": "builder: figure kit leaned fully forward with clothing-kit limbs and a portrait head; the second figure rolled and offset",
+     "seenIn": "commons:2021_Spanjemonument-beeld_(1).jpg"
+    },
+    {
+     "id": "sp-stem",
+     "kind": "other",
+     "where": "stainless-steel ribbon rising 5 m from a round foot in an S-curve to the flying pair",
+     "approxSizeM": [
+      0.2,
+      5.2
+     ],
+     "plan": "modelled",
+     "how": "builder: squashed tube along a Catmull-Rom curve on a steel foot disc",
+     "seenIn": "commons:Spanje_monument_groot.jpg"
+    },
+    {
+     "id": "sp-plaque",
+     "kind": "lettering",
+     "where": "pink granite plaque in a low brick wall, first line 1936-1939 NO PASARAN, further text illegible",
+     "approxSizeM": [
+      1.9,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "builder: pink plate with the one legible line as raised stroke letters; the text below is left out",
+     "seenIn": "commons:2021_Spanjemonument-plaquette_(1).jpg"
+    },
+    {
+     "id": "sp-paving",
+     "kind": "other",
+     "where": "circle of brick paving 6 m across round the foot",
+     "approxSizeM": [
+      6,
+      0.04
+     ],
+     "plan": "modelled",
+     "how": "builder: low disc",
+     "seenIn": "commons:2021_Spanjemonument-beeld_(2).jpg"
+    }
+   ],
+   "centre": [
+    4.9138603,
+    52.3874585
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-055",
+   "bearing": 55,
+   "lengthM": 9,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear: inferred from the front and side photos; simplified.",
+   "items": [],
+   "centre": [
+    4.9138603,
+    52.3874585
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: 2021 Spanjemonument-beeld (1)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(1)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2021 Spanjemonument-beeld (2)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(2)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2021 Spanjemonument-beeld (3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(3)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2021 Spanjemonument-plaquette (1)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-plaquette_(1)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: Spanje monument groot",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanje_monument_groot",
+   "licence": "CC BY-SA 4.0 (Eddy Roos)"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
