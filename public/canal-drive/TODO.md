@@ -1244,6 +1244,26 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Spinoza's inventory `how` text still describes the old cone and its
   curls are low-poly; Teun de Jager unverified against a close photo;
   Westermoskee NW/SW walls and SE porch unphotographed.
+- **P0 Live play, 2026-10-14 (user screenshots on the live site, boat ride
+  Hugo de Grootgracht → IJ-toren with `?ownGround=1`)**, lanes running:
+  (a) own ground becomes the default, `?ownGround=0` opts out, desktop
+  ride-perf measured before/after; (b) the boat and chase camera start
+  facing away from the route's first leg (spawn heading vs first-leg
+  bearing; seeded e2e); (c) own-ground road paint is thinner than the
+  legacy ground's (centre/edge lines, zebras, stop lines, cycle symbols,
+  painted names; Singelgracht/Nassaukade junction as the regression);
+  (d) the scene reads too dark in own-ground mode (luminance table vs the
+  legacy ground, fix in the ground material or the look's shade); (e) quay
+  houses 30–60 m from the boat on the Singelgracht render as plain streamed
+  boxes (near-tier radius, recipe tiles default, or no faces authored:
+  name the streets); (f) one quay asphalt with a red lane, the facing quay
+  all red-brown (fietsstraat vs brick paving: tags, legend, regression);
+  (g) the Singelgracht bascule bridge at the Haarlemmerpoort draws as thin
+  green outlines on a bare deck with no abutments, railings or lamps;
+  (h) a footbridge in the Spaarndammerbuurt floats disconnected from both
+  banks (deck must overlap the abutments and meet the quay top; count
+  floating ends in the own-ground tests). Each gets a before/after frame
+  on the demo page when it lands.
 - **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
   "User review"; `docs/plans/large-tier-likeness-and-streets-20261014.md`
   Part 1): lane A measurement and likeness tooling (crops archived to
