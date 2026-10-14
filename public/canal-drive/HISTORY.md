@@ -1,5 +1,80 @@
 # Canal Recall — what is built
 
+## Large tier triaged: 95 houses measured, 54 re-fitted to the photo, 12 uninstalled (2026-10-14)
+
+Lane `lane/large-triage-20261014` (plan Part 1 lane D). Crops archived for
+94 pands (source-data b348d50f8, 2,791 files; Politie Zuid has no crops,
+its pand is missing from the BAG tiles), measured with `measure.ts`,
+ranked worst-first on the installed state in
+`artifacts/building-recipes/likeness/report.md` (force-added with the
+`before/` snapshots and `houses.tsv`); verdicts in
+`scripts/building-recipes/likeness-triage.json`; index of the worst 20 as
+installed | re-fitted or uninstalled | photo in
+`docs/images/large-tier/triage-20261014.jpg`. Outcomes: re-fit cheap 65,
+keep 11, uninstall 12, re-fit after a new system 1, inferred 6.
+**Re-fitted and re-installed (54):** the police stations (Oost-Zeeburg,
+Lijnbaansgracht, IJ-tunnel, Houtmankade, Postjesweg, Meer en Vaart), the
+Kattenburg wings and Kattenburgerstraat, Quellijnstraat 36, Entrepotdok,
+Overtoom 283, OZ Achterburgwal 233, Engelsesteeg, Westerdok 186086 and
+748, Aambeeldstraat, OBA Javaplein, Olympisch Kwartier and Linnaeus, the
+stadsloketten Oost, Noord, Zuidoost and West, Stadsdeel Nieuw-West,
+Hamerkanaal 209 and 175, CGM 190, Hotel Arena, Utrechtsestraat 15,
+Funenpark 427, Buitenzagerij 45, Barlaeus, Vossius, Weteringstraat 16,
+Montessori Van Ostade, Rijksakademie, Cygnus, Kloveniersburgwal 72, Van
+Oldenbarneveldtstraat 48, Schaafstraat 17, Asterweg 19 and 19b, Van der
+Palmkade 191, Tilanusstraat 23, Hoogte Kadijk 400, Valckenierstraat 65,
+Nieuwe Achtergracht 100, Oostelijke Handelskade 749, Balboaplein 48,
+Spinozastraat 51, WG-plein 600, Da Costakade 146, Revaleiland 437, Louise
+Wentstraat 230. The common fixes: measured wall colours (the authored
+brick was usually 0.1–0.3 L lighter and redder than the photo) and hand
+window shapes where the refine loop made slits; shaded, leafy or low-sun
+crops kept a hand colour with an `--allow-inferred` note.
+**Uninstalled (12)**, recipe and intent kept with a note, GLB, catalogue
+entry and cover gone: ornamented historic fronts for bespoke if they
+return (Leidsestraat 67, Amstel 142, Beursplein 5, Damrak 77, Pijlsteeg 31
+Krasnapolsky, Stadhouderskade 25, Hirschpassage 2); no matching photo on
+ride-visible fronts (OBA Mercatorplein, also an ornamented Amsterdam
+School front; Plantage Middenlaan 52 with curved balcony bands; the
+Amsterdams Lyceum gate arches; Leidsekade 106 Holland Casino); an
+irregular row of separate fronts (Stadhouderskade 111). **Keep (11)**,
+the measured FAIL from shade or backlight in the crop: Heinekenplein,
+Politie Johan Huizingalaan, Marnixstraat 248, CGM 114, 183 and 168, Berlage
+Lyceum, Reade, Polderweg 3, Van Beuningenstraat 48, Archangelkade 3.
+**Inferred (6):** Politie Flierbosdreef, Boven-IJ, Zuid-De Pijp, Distelweg
+88 (blank), Grasweg 41, Asterweg 37. **Unverified:** 11 "re-fit cheap"
+verdicts have no re-install the lane could account for (Oude Turfmarkt
+168172, Nieuwe Achtergracht 253754, Politie Van Leijenberghlaan,
+Zuidoost-Gaasperdam, Nieuwezijds Voorburgwal, Oost-Watergraafsmeer,
+Politiepost IJburg, Meeuwenlaan 132, Rigakade 8, Nieuwpoortstraat 126319,
+Warmoesstraat garage); on the board. Kit needs by count: ornamented
+historic fronts 8 (bespoke, not the kit), a louvre screen 2 (Haarlemmerweg
+325, the one waiting re-fit, and Tilanusstraat 23), and one each of a
+second `wallSplit` per group, coloured posts on framed fronts, glazed
+infill, mixed ribbon and punched storeys in one group, warehouse shutters
+and hoist beams, a bay window with a rounded corner, a full-height hall
+arch with a stepped gable, striped brick banding, stone string courses,
+curved balcony bands, through-passage gate arches, a carved stone portal,
+awnings, saw-tooth roof glazing, a curtain-wall glazing share. OBA
+Olympisch Kwartier walls[0] keeps its preset window (every measured shape
+opened 4–15 m of open edges across merged 3DBAG surfaces). **Ride
+visibility** replaces footprint ÷ distance:
+`scripts/building-recipes/ride-visibility.ts` samples 2,000 seeded bike
+routes, counts route metres within 60 m with an unblocked line of sight,
+weighted by visible wall length, written as `rideVisibility` into
+`dominant-building-backlog.json` (new top 10: 0012185418, 0012098925,
+0012186093, 0012243823, the Amsterdamse Hogeschool voor de Kunsten,
+0012165293, 1489746218, 0012087570, 1489746219, 0012165077; the old top 10
+now rank 6, 93, 121, 138, 329, 145, 609, 24, 69, 70; Rasphuispoort 16,
+Allard Pierson 18, Van Gendt Hallen 166); `build-dominant-building-backlog.ts`
+does not carry the field yet, so a regenerated backlog loses it until
+`ride-visibility.ts --write` is re-run. Two test fixtures moved to Politie
+West Overtoomsesluis because the old fixture house is now measured.
+Checks: building-recipes 162, geometry-audit, block-kit-installed,
+fit-golden and 112 meshes identical after the golden update (each batch's
+diff touched only that batch), stale-installs strict 0, covers, osm-under
+0, audit:glb per re-installed house.
+
+
 ## Jan Evertsenstraat surveyed: 148 pands, 19 faces, the De Baarsjes type sketch (2026-10-14)
 
 Lane `lane/jan-evertsen-survey-20261014` (plan Part 2 step 7, survey
