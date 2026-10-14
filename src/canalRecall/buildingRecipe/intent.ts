@@ -21,13 +21,27 @@ export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'rig
 export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
 export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
 export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as const;
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light'] as const;
+/**
+ * Window joinery. `ladder` (Amsterdam School, 1915-1935): a tall narrow light 0.55-0.75 m wide and about 0.7 of the
+ * storey high, with 4-6 horizontal glazing bars (one per ~0.5 m of height) and no vertical bar. A bay whose cell is wide
+ * enough for two such lights and a 0.16 m brick pier (cells of about 1.6 m and more) holds a PAIR of ladder lights, a
+ * narrower bay one: the pairing follows the bay widths (`bayWidths`: wide entries pair, narrow ones stay single).
+ */
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder'] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
 export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
 export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone'] as const;
 export const QUOINS = ['none', 'stone'] as const;
-export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch'] as const;
+/**
+ * Shop canopy. `fabric-straight`/`fabric-dutch`: a sloped fabric awning. `rigid` (Amsterdam School luifel): a horizontal
+ * slab 1.2 m deep and 0.16 m thick whose underside sits 2 cm over the shop-glass head (over the fascia board when the
+ * shop has one), with a 0.3 m vertical fascia on its nose (6 cm thick, top flush with the slab, hanging 0.14 m below it).
+ * It covers `extent` (default the whole front, 5 cm short of each end). A block face's `continuity.canopy` group sets one
+ * height for its members and runs each member's slab to the shared party plane, so the row reads as one slab while each
+ * pand keeps its own piece (blockFace/intent.ts).
+ */
+export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch', 'rigid'] as const;
 export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
 /** Historic (17th/18th-c.) canal-house vocabulary, see `HistoricFrontIntent`. */
 export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
@@ -37,7 +51,10 @@ export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
 export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel'] as const;
 export type GroundBay = typeof GROUND_BAYS[number];
 export const DORMER_STYLES = ['plain', 'pediment', 'pointed'] as const;
-export const TOWER_CAPS = ['pyramid', 'flat'] as const;
+/** Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab). */
+export const TOWER_CAPS = ['pyramid', 'flat', 'stepped'] as const;
+/** Cap on the top storey of a multi-bay erker (`bayWindows.bays`): a hipped lean-to roof, a flat slab, or none (a plain closure). */
+export const ERKER_CAPS = ['hip', 'flat', 'none'] as const;
 /** Largest forward lean a front may declare (degrees); real Amsterdam fronts lean up to ~2 degrees ("op vlucht"). */
 export const MAX_LEAN_DEGREES = 3;
 
@@ -148,10 +165,26 @@ export interface FrontIntent {
   quoins?: typeof QUOINS[number];
   /** Iron/stone balcony guards on upper-storey windows. `storeys` are 0-based (ground = 0, so >= 1); the window becomes a full-height French window. */
   balconies?: { storeys: number[]; bays: number[]; projecting?: boolean };
-  /** Glazed bay windows (erkers): the windows of these upper storeys in `bay` become one projecting three-face bay each. */
-  bayWindows?: { bay: number; storeys: number[] };
-  /** Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick). */
-  bands?: 'none' | 'storey' | 'lintel' | 'both';
+  /**
+   * Glazed bay windows (erkers). `bay`: the windows of these upper storeys in that bay become one projecting three-face
+   * bay each. `bays` instead of `bay` (Amsterdam School multi-bay erker): ONE bay projecting 0.55 m over the span of the
+   * inclusive axes `{from, to}` (8 cm in from the span's bay edges), rising through the listed consecutive storeys as one
+   * stack. Each storey: a solid stallriser panel 0.85 m high (wall brick) under a front light divided into two lights per
+   * spanned axis, one light in each angled side (0.25 m return), a 0.2 m head panel; closed at its foot and top. `cap` on
+   * the top storey: `hip` (a lean-to hipped roof rising 0.45 m to the wall, roof colour), `flat` (a 0.12 m slab overhanging
+   * 6 cm, trim colour) or `none` (default: the closure only).
+   */
+  bayWindows?: { bay?: number; bays?: {from: number; to: number}; storeys: number[]; cap?: typeof ERKER_CAPS[number] };
+  /**
+   * Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick).
+   * `courses` (Amsterdam School brick banding, needs `palette.band`): the storeys in `courseStoreys` are laid whole in the
+   * band brick (a 4 cm facing, cut around the openings), and every storey above the ground carries thin raised courses
+   * at its lintel line in the band brick: 3 courses (2 on storeys under 2.8 m), 5 cm high, 11 cm apart, 7 cm proud,
+   * starting 5 cm over the storey's window heads. A multi-bay erker interrupts both.
+   */
+  bands?: 'none' | 'storey' | 'lintel' | 'both' | 'courses';
+  /** `bands: courses`: 0-based storeys laid whole in the band brick (ground = 0 only without a shopfront/ground front). */
+  courseStoreys?: number[];
   /** The same house module repeated along this front (rows built together, double fronts). */
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
@@ -178,8 +211,15 @@ export interface FrontIntent {
   dormerStyle?: typeof DORMER_STYLES[number];
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
-  /** A brick tower rising over bays `bays` (inclusive axes) `rise` upper-storey heights above the eaves, with a pyramid or flat cap; one light per storey of rise. */
-  tower?: {bays: {from: number; to: number}; rise: number; cap: typeof TOWER_CAPS[number]};
+  /**
+   * A brick tower rising over bays `bays` (inclusive axes) `rise` upper-storey heights above the eaves, with a pyramid,
+   * flat or stepped cap; one light per storey of rise. `corner: true` instead of `bays` (a multi-front corner pand): the
+   * tower stands on the corner where this front meets the pand's other front. Its plan is square (a parallelogram on an
+   * oblique corner) with the two front planes as its outer walls and a side of clamp(0.3 x the shorter front, 2.4, 4.2) m
+   * along each front from the shared corner; both fronts rise over that end (one light per storey of rise on each), two
+   * inner walls and the cap close it. The two fronts must meet in one footprint vertex (within 0.3 m).
+   */
+  tower?: {bays?: {from: number; to: number}; corner?: boolean; rise: number; cap: typeof TOWER_CAPS[number]};
   /**
    * Clip street-side details (cornice, bands, sills, gable ornament) at oblique party walls so nothing crosses the party
    * plane (trapezoidal plots meet the front up to ~20 degrees off square). Block faces set it for every house with
@@ -280,7 +320,8 @@ const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance'
 const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align'];
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
-export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number } }
+/** `rigid`: a slab canopy (see AWNING_STYLES); `fasciaColour` paints its nose fascia (default the canopy colour). */
+export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number }; fasciaColour?: string }
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent {
@@ -499,8 +540,13 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (typeof f.hoist !== 'boolean') problems.push(`${at}.hoist must be boolean`);
     if (f.shutters !== undefined) oneOf(f.shutters, ['none', 'ground', 'all'], `${at}.shutters`);
     if (f.balconies) { f.balconies.storeys.forEach(v => count(v, `${at}.balconies.storeys`, 1, f.storeys - 1)); f.balconies.bays.forEach(v => count(v, `${at}.balconies.bays`, 0, 15)); }
-    if (f.bayWindows) { count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15); f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1)); }
-    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both'], `${at}.bands`);
+    if (f.bayWindows) {
+      if (f.bayWindows.bays === undefined) count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15);
+      else problems.push(...erkerProblems(f, at));
+      f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1));
+    }
+    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses'], `${at}.bands`);
+    if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
@@ -596,6 +642,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       oneOf(aw.style, AWNING_STYLES, `${at}.shopfront.awning.style`);
       colour(aw.colour, `${at}.shopfront.awning.colour`);
       if (aw.extent && !(aw.extent.from >= 0 && aw.extent.to <= 1 && aw.extent.to - aw.extent.from >= 0.15)) problems.push(`${at}.shopfront.awning.extent: need 0 <= from < to <= 1 covering at least 0.15`);
+      if (aw.fasciaColour !== undefined) { colour(aw.fasciaColour, `${at}.shopfront.awning.fasciaColour`); if (aw.style !== 'rigid') problems.push(`${at}.shopfront.awning.fasciaColour: only a rigid canopy has a fascia`); }
     } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
     for (const [k, v] of Object.entries(f.palette ?? {})) {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
@@ -603,6 +650,9 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     problems.push(...historicProblems(f, at, colour, oneOf));
   }
+  const corners = Array.isArray(intent?.fronts) ? intent.fronts.filter(f => f?.tower?.corner) : [];
+  if (corners.length > 1) problems.push('tower.corner: one corner tower per pand (on one of the two fronts that meet at the corner)');
+  if (corners.length && intent.fronts.length < 2) problems.push(`front ${corners[0].id}.tower.corner: a corner tower needs a pand with two fronts`);
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
@@ -627,6 +677,29 @@ export function storeyAxesOf(f: FrontIntent, s: number): number[] | null {
 }
 
 export const swatch = (value: string): string => SWATCHES[value] ?? value;
+
+/** Problems with a multi-bay erker (`bayWindows.bays`): axes on the grid, consecutive storeys, cap. */
+function erkerProblems(f: FrontIntent, at: string): string[] {
+  const p: string[] = [], bw = f.bayWindows!, b = bw.bays!, grid = frontGrid(f);
+  if (bw.bay !== undefined) p.push(`${at}.bayWindows: bay and bays are alternatives`);
+  if (!b || !Number.isInteger(b.from) || !Number.isInteger(b.to) || b.from < 0 || b.to >= grid || b.from > b.to) p.push(`${at}.bayWindows.bays: {from, to} bay axes within 0..${grid - 1}`);
+  const st = Array.isArray(bw.storeys) ? bw.storeys : [];
+  if (!st.length || st.some((s, i) => i > 0 && s !== st[i - 1] + 1)) p.push(`${at}.bayWindows.storeys: one or more consecutive storeys, ascending (the erker is one stack)`);
+  if (bw.cap !== undefined && !ERKER_CAPS.includes(bw.cap)) p.push(`${at}.bayWindows.cap: ${JSON.stringify(bw.cap)} not in ${ERKER_CAPS.join('|')}`);
+  if (f.repeat) p.push(`${at}.bayWindows.bays: not on a repeated front`);
+  return p;
+}
+
+/** Problems with brick course banding (`bands: courses`, `courseStoreys`). */
+function courseProblems(f: FrontIntent, palette: PaletteIntent | undefined, at: string): string[] {
+  const p: string[] = [];
+  if (f.bands !== 'courses') return [`${at}.courseStoreys: only with bands "courses"`];
+  if (!(f.palette?.band ?? palette?.band)) p.push(`${at}.bands: courses are laid in the band brick; give palette.band`);
+  const list = f.courseStoreys;
+  if (list !== undefined && (!Array.isArray(list) || list.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= list[i - 1])))) p.push(`${at}.courseStoreys: ascending storey indices within 0..${f.storeys - 1}`);
+  if (Array.isArray(list) && list.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.courseStoreys: the ground storey holds a shop/ground front; band the upper storeys`);
+  return p;
+}
 
 const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
 const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
@@ -672,7 +745,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   }
   if (f.tower !== undefined) {
     const t = f.tower;
-    if (!t?.bays || !Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.tower.bays: {from, to} bay axes within 0..${grid - 1}`);
+    if (t?.corner !== undefined && t.corner !== true) problems.push(`${at}.tower.corner: true (or leave it out)`);
+    if (t?.corner) { if (t.bays !== undefined) problems.push(`${at}.tower: corner and bays are alternatives`); if (f.repeat) problems.push(`${at}.tower.corner: not on a repeated front`); }
+    else if (!t?.bays ||!Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.tower.bays: {from, to} bay axes within 0..${grid - 1}`);
     if (!(t?.rise >= 0.5 && t.rise <= 3)) problems.push(`${at}.tower.rise: 0.5..3 upper-storey heights above the eaves`);
     oneOf(t?.cap, TOWER_CAPS, `${at}.tower.cap`);
   }
