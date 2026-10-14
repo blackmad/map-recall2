@@ -1,25 +1,102 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-houtmankade",
-  "pandId": "0363100012083091",
-  "address": "Politiebureau Houtmankade, Houtmankade 34, Amsterdam (1993; police bureau on the ground floor of a curved housing block, one pand)",
-  "sources": [
-    {"id": "pano-2025-06-17-east", "kind": "street-panorama", "capturedAt": "2025-06-17", "image": "staging/pand-reference-walls/0363100012083091/w01-107.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_10-48-55_00697/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-06-17-east-top", "kind": "street-panorama", "capturedAt": "2025-06-17", "image": "staging/pand-reference-walls/0363100012083091/w01-107.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_10-48-55_00697/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2021-01-14-north", "kind": "street-panorama", "capturedAt": "2021-01-14", "image": "staging/pand-reference-walls/0363100012083091/w02-12.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001951_pano_0000_000159/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [54], "system": "ribbon-windows", "storeys": 2, "baysPerStorey": 8, "ground": "system", "windows": "plain"},
-    {"wallSurfaces": [256, 100, 175], "system": "ribbon-windows", "storeys": 1, "baysPerStorey": 9, "ground": "system", "windows": "plain"},
-    {"wallSurfaces": [104], "system": "brick-bay-grid", "storeys": 7, "baysPerStorey": 6, "ground": "glazed", "windows": "plain", "entrance": {"bay": 2, "storeys": 1, "canopy": true}}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#d8c2a0", "frame": "#8a9ca0", "door": "#3a3a3a", "stone": "#9aa7a8", "wallMaterial": "stucco"},
-  "notes": [
-    "1993 curved block on the Houtmankade (256 LoD2.2 wall surfaces): the police bureau fills the glazed two-storey plinth of the east/north sides, apartments with curved white balcony fronts above. East plinth (panel 49, surface 54, 38 m) from the 2025-06-17 panorama (w01-107): grey-blue glazed ground floors in a column grid under a cream band, roller blinds over the upper glass; the setback top storey (panel 88, surfaces 100/175/256) as a glazed bay-window ribbon; north wall (panel 92, surface 104, 26 m) from the 2021-01-14 panorama (w02-12): cream rendered wall with seven rows of grouped windows over the glazed plinth.",
-    "Ornaments from the panoramas: no POLITIE lettering, blue lamp, striped band, canopy or crest is on any photographed wall (the only POLITIE visible is the livery of a parked van, which is street furniture), so none is modelled: not present, not skipped. The arched entrance canopy on the north plinth is MODELLED (entrance bay 2 with a flat canopy, SIMPLIFIED from the round arch). Skipped with reasons: the sloping access ramp with railings (it stands on the quay outside the pand footprint, so it is not part of this building volume); the round balcony fronts with white railings on the east upper levels (the 3DBAG curve is already straight, and the balcony slab edge is below the 5 cm attachment grain once flattened); grey roller blinds (texture, not geometry); the grey columns between plinth bays (SIMPLIFIED: the ribbon grid has no columns).",
-    "East upper apartment panels (60, 85, 183), the south wall (21 m, 2025-09-29 panorama at 41 deg obliquity), the west side (2019, obliquity 44 deg) are too oblique or unphotographed and stay blank (audit:glb reports the blank walls)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-houtmankade",
+ "pandId": "0363100012083091",
+ "address": "Politiebureau Houtmankade, Houtmankade 34, Amsterdam (1993; police bureau on the ground floor of a curved housing block, one pand)",
+ "sources": [
+  {
+   "id": "pano-2021-01-14-w03-12",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001951_pano_0000_000159/",
+   "image": "source-data://pand-reference-walls/0363100012083091/w03-12.jpg",
+   "sha256": "3e9747f034646d657edd5f72cb0632158444df5d808a0fed2ee7dc0cc256a4b0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    54
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    256,
+    100,
+    175
+   ],
+   "system": "ribbon-windows",
+   "storeys": 1,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    104
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "windows": "plain",
+   "entrance": {
+    "bay": 2,
+    "storeys": 1,
+    "canopy": true
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#615449",
+    "glass": "#383d40"
+   },
+   "windowShape": {
+    "w": 0.531,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#d8c2a0",
+  "frame": "#8a9ca0",
+  "door": "#3a3a3a",
+  "stone": "#9aa7a8",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "1993 curved block on the Houtmankade (256 LoD2.2 wall surfaces): the police bureau fills the glazed two-storey plinth of the east/north sides, apartments with curved white balcony fronts above. East plinth (panel 49, surface 54, 38 m) from the 2025-06-17 panorama (w01-107): grey-blue glazed ground floors in a column grid under a cream band, roller blinds over the upper glass; the setback top storey (panel 88, surfaces 100/175/256) as a glazed bay-window ribbon; north wall (panel 92, surface 104, 26 m) from the 2021-01-14 panorama (w02-12): cream rendered wall with seven rows of grouped windows over the glazed plinth.",
+  "Ornaments from the panoramas: no POLITIE lettering, blue lamp, striped band, canopy or crest is on any photographed wall (the only POLITIE visible is the livery of a parked van, which is street furniture), so none is modelled: not present, not skipped. The arched entrance canopy on the north plinth is MODELLED (entrance bay 2 with a flat canopy, SIMPLIFIED from the round arch). Skipped with reasons: the sloping access ramp with railings (it stands on the quay outside the pand footprint, so it is not part of this building volume); the round balcony fronts with white railings on the east upper levels (the 3DBAG curve is already straight, and the balcony slab edge is below the 5 cm attachment grain once flattened); grey roller blinds (texture, not geometry); the grey columns between plinth bays (SIMPLIFIED: the ribbon grid has no columns).",
+  "East upper apartment panels (60, 85, 183), the south wall (21 m, 2025-09-29 panorama at 41 deg obliquity), the west side (2019, obliquity 44 deg) are too oblique or unphotographed and stay blank (audit:glb reports the blank walls).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 2 take the photo's wall and glass colour, window shape, bay count and front class."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   2
   ]
+ }
 }

@@ -6,7 +6,7 @@ import {validateLargeIntent} from './largeIntent.ts';
 import {fitLarge, KIT_GLASS} from './fitLarge.ts';
 import type {BuildingFacts} from './facts.ts';
 
-const HOUSES = 'scripts/building-recipes/houses', ID = 'politie-van-leijenberghlaan';
+const HOUSES = 'scripts/building-recipes/houses', ID = 'politie-west-overtoomsesluis';
 const raw = () => JSON.parse(fs.readFileSync(`${HOUSES}/${ID}/intent.json`, 'utf8'));
 const facts = (): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${ID}/facts.json`, 'utf8'));
 

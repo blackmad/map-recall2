@@ -6,35 +6,21 @@
  "address": "Centrale Groothandelsmarkt 190, Amsterdam (Food Center, Jan van Galenstraat): 1935 wholesale market hall with loading docks (Miedema AGF, Gebr. de Mooij)",
  "sources": [
   {
-   "id": "pano-2022-04-29-w01",
+   "id": "pano-2019-01-07-w01-258L",
    "kind": "street-panorama",
-   "capturedAt": "2022-04-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000516/",
-   "image": "staging/pand-reference-walls/0363100012202277/w01-258.jpg",
+   "capturedAt": "2019-01-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001040_pano_0006_000204/",
+   "image": "source-data://pand-reference-walls/0363100012202277/w01-258L.jpg",
+   "sha256": "241234aac04784e189c319f30fd70fe4cb195bdfce10da470efa43124e5560f1",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2022-04-29-w01",
-   "kind": "street-panorama",
-   "capturedAt": "2022-04-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000516/",
-   "image": "staging/pand-reference-walls/0363100012202277/w01-258.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-02-07-w03",
+   "id": "pano-2020-02-07-w03-78",
    "kind": "street-panorama",
    "capturedAt": "2020-02-07",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001630_pano_0001_001272/",
-   "image": "staging/pand-reference-walls/0363100012202277/w03-78.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2022-04-29-w05",
-   "kind": "street-panorama",
-   "capturedAt": "2022-04-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000863/",
-   "image": "staging/pand-reference-walls/0363100012202277/w05-78.jpg",
+   "image": "source-data://pand-reference-walls/0363100012202277/w03-78.jpg",
+   "sha256": "a6ae98a492fb354abdcc28944d4b7f84f936be992b7c37213fc06d97cce17b43",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -53,12 +39,21 @@
    "ground": "system",
    "deepBars": true,
    "palette": {
-    "brick": "#8d7762",
+    "brick": "#42424e",
     "frame": "#2f4a8f",
-    "stone": "#c9b99a"
+    "stone": "#c9b99a",
+    "glass": "#383737"
    },
    "windows": "two-light",
-   "sills": false
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "wallSplit": {
+    "at": 0.293,
+    "brick": "#594f48"
+   }
   },
   {
    "wallSurfaces": [
@@ -81,7 +76,13 @@
     "mount": "wall"
    },
    "sills": false,
-   "garageDoors": 6
+   "garageDoors": 6,
+   "hand": [
+    "palette",
+    "windowShape",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -99,15 +100,20 @@
    ],
    "cornice": true,
    "palette": {
-    "brick": "#cbc8bf",
+    "brick": "#544943",
     "frame": "#6e8a8a",
-    "stone": "#b8b4a8"
+    "stone": "#b8b4a8",
+    "glass": "#232424"
    },
    "signage": {
     "text": "GEBR. DE MOOIJ AMSTERDAM",
     "colour": "#a8222a",
     "mount": "cornice"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -139,8 +145,17 @@
  "notes": [
   "Centrale Groothandelsmarkt 190 (BAG: 1935; five shops and one industrial unit, 9,421 m2): one of the wholesale market halls at the Jan van Galenstraat Food Center. Three walls are photographed: the west dock front (w01-258, panorama 2022-04-29: a low beige-brown brick block of loading docks with yellow roller doors, blue-trimmed office windows over the docks and a pale cladding bay carrying a large Miedema AGF banner), the east arcade front (w03-78, 2020-02-07: a pale concrete frame with a deep canopy, roller doors under it and shop signs such as De Stigter AGF, Fresco del Sol and the red Gebr. de Mooij Amsterdam roof lettering) and the east gable (w05-78: white cladding with green rib trim, no openings).",
   "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six yellow sectional dock doors with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
-  "Simplified: the yellow roller doors are recessed sectional garage doors (layered kit: leaf, ribs and frame on separate sheet layers), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
+  "Simplified: the yellow roller doors are recessed sectional garage doors (layered kit: leaf, ribs and frame on separate sheet layers), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] wall split #42424e | #594f48 at 29 % (dE 15.2)."
  ],
  "closedBands": true,
- "layeredKit": true
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
+  ]
+ }
 }

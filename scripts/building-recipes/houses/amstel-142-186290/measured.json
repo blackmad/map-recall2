@@ -1,0 +1,189 @@
+{
+ "id": "amstel-142-186290",
+ "pandId": "0363100012186290",
+ "date": "2026-10-14",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 41,
+   "verdict": "FAIL",
+   "reasons": [
+    "wall hue -14 deg",
+    "columns 3 vs photo 6"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012186290/w04-6L.jpg",
+    "sha256": "a99509a2d76c6cb971d4010360fdcc384aeea35841496fae812234b05cbd1d3f",
+    "panoId": "TMX7316010203-001975_pano_0000_001150",
+    "capturedAt": "2021-01-22",
+    "obliquityDeg": 0.3,
+    "cameraDistM": 28.8
+   },
+   "pieces": [
+    {
+     "tag": "w04-6L",
+     "ref": "source-data://pand-reference-walls/0363100012186290/w04-6L.jpg",
+     "sha256": "a99509a2d76c6cb971d4010360fdcc384aeea35841496fae812234b05cbd1d3f",
+     "capturedAt": "2021-01-22",
+     "u0": 0,
+     "u1": 13
+    }
+   ],
+   "coverage": 0.989,
+   "placement": {
+    "offsetM": 0.264,
+    "angleDeg": 0.098,
+    "overlap": 0.988,
+    "along": [
+     0.15,
+     13.296
+    ],
+    "shift": {
+     "uM": 0.3,
+     "vM": 0.5
+    },
+    "box": {
+     "u0": 0,
+     "u1": 13.146,
+     "v0": 0,
+     "v1": 16.191
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0.3,
+     "vM": 0.5
+    },
+    "iou": 0.233,
+    "wall": {
+     "photo": "#8f7d64",
+     "photoRaw": "#8f7d64",
+     "model": "#8a6450",
+     "modelToday": "#8a6450",
+     "photoFamily": "brick",
+     "modelFamily": "brick",
+     "photoMaterial": "brick-yellow",
+     "modelMaterial": "brick-red-brown",
+     "dL": -0.049,
+     "dHue": -14.2,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#686f73",
+     "model": "#586a75"
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.374,
+      0.407,
+      0.31,
+      0.366,
+      null
+     ],
+     "model": [
+      null,
+      0.359,
+      0.361,
+      0.328,
+      0.427,
+      null
+     ],
+     "photoMean": 0.361,
+     "modelMean": 0.373,
+     "maxDiff": 0.061,
+     "meanDiff": 0.012,
+     "pass": true
+    },
+    "columns": {
+     "photo": 6,
+     "model": 3,
+     "pass": false
+    },
+    "shape": {
+     "photo": "tall",
+     "model": "tall",
+     "pass": true
+    },
+    "classes": {
+     "photo": "columns",
+     "model": "columns"
+    },
+    "ground": {
+     "photo": 0.26,
+     "model": 0.457
+    },
+    "evidence": {
+     "usable": 0.882,
+     "foliage": 0.078,
+     "washedOut": 0.089,
+     "obliquityDeg": 0.3,
+     "cameraDistM": 28.8,
+     "widthM": 13.15,
+     "abstain": []
+    }
+   },
+   "measured": {
+    "wall": "#8f7d64",
+    "wallRaw": "#8f7d64",
+    "glass": "#686f73",
+    "trim": "#a4aba5",
+    "glazing": 0.352,
+    "storeyGlazing": [
+     null,
+     0.345,
+     0.389,
+     0.401,
+     0.347,
+     null
+    ],
+    "ground": 0.282,
+    "bays": 6,
+    "pitchM": 2.031,
+    "storeyM": 2.6,
+    "window": {
+     "w": 0.6,
+     "h": 1,
+     "sill": 0,
+     "aspect": 2.56,
+     "shape": "tall"
+    },
+    "frontClass": "columns",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": null,
+     "gain": 1,
+     "wb": [
+      1,
+      1,
+      1
+     ]
+    },
+    "usable": 0.841,
+    "foliage": 0.078,
+    "washedOut": 0.089,
+    "split": null
+   },
+   "gaps": {
+    "kit": [
+     "glazed-columns: full-height glazing in bays across storey lines, drawn as brick-bay-grid (glazed-columns needs the column bays by hand)",
+     "window-shape-range: measured 0.6x1 outside the windowShape range"
+    ],
+    "evidence": []
+   }
+  },
+  {
+   "group": 1,
+   "panel": 87,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 87"
+    ]
+   }
+  }
+ ]
+}

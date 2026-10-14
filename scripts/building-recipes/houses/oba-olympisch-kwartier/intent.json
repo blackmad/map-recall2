@@ -1,32 +1,308 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "oba-olympisch-kwartier",
-  "pandId": "0363100012073586",
-  "address": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
-  "sources": [
-    {"id": "pano-s-front", "kind": "street-panorama", "capturedAt": "2020-05-13", "image": "staging/pand-reference-walls/0363100012073586/w01-168.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001708_pano_0000_001092/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-e-front", "kind": "street-panorama", "capturedAt": "2019-04-30", "image": "staging/pand-reference-walls/0363100012073586/w02-78.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001151_pano_0001_000403/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-n-front", "kind": "street-panorama", "capturedAt": "2020-05-13", "image": "staging/pand-reference-walls/0363100012073586/w03-344.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001704_pano_0000_002283/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [262, 149, 150, 147, 301, 124, 261, 205], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 6, "ground": "plinth-shopfronts", "windows": "two-light", "stringCourses": true, "frames": false, "entrance": {"bay": 3, "storeys": 1}, "signage": {"text": "OBA", "colour": "#f2efe6", "mount": "wall"}},
-    {"wallSurfaces": [41, 68, 189], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 5, "ground": "plinth-shopfronts", "windows": "two-light", "stringCourses": true, "frames": false},
-    {"wallSurfaces": [5, 127], "system": "blank"},
-    {"wallSurfaces": [9], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 6, "ground": "plinth-shopfronts", "windows": "plain", "stringCourses": true, "frames": false, "sills": false},
-    {"wallSurfaces": [7, 6], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 4, "ground": "plinth-shopfronts", "windows": "plain", "stringCourses": true, "frames": false, "sills": false},
-    {"wallSurfaces": [71], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 6, "ground": "system", "windows": "plain", "frames": false, "sills": false},
-    {"wallSurfaces": [153], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 7, "ground": "system", "windows": "plain", "frames": false, "sills": false},
-    {"wallSurfaces": [248], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 5, "ground": "system", "windows": "plain", "frames": false, "sills": false},
-    {"wallSurfaces": [81], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 5, "ground": "system", "windows": "plain", "frames": false, "sills": false}
-  ],
-  "otherWalls": "blank",
-  "closedBands": true,
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#8f3a2c", "frame": "#cfd2d0", "door": "#7a2a22", "stone": "#c9bfa4", "wallMaterial": "stucco"},
-  "notes": [
-    "2005 perimeter housing block around a courtyard (pand 0363100012073586, 320 LoD2.2 wall surfaces) with the OBA Olympisch Kwartier library at street level; the whole pand is modelled. Street fronts only: south front (2020-05-13 panorama, w01-168; surfaces 262/149/150/147/301/124/261/205 as one six-storey group, 41/68/189 as the lower stepped part), east front (2019-04-30, w02-78) and north front (w03-344). Photographed: dark red brick storeys with horizontal string courses and wide paired windows, a cream stone plinth with shopfronts and tall glazed bays at the ground, a few recessed upper storeys.",
-    "Ornaments: shopfront plinth MODELLED (plinth-shopfronts); string courses MODELLED; entrance door SIMPLIFIED (one recessed glazed entrance at bay 3 of the south front; the real library entrance is not identifiable from the panoramas); OBA lettering SIMPLIFIED (cream lettering OBA on the wall over that entrance: no OBA sign is legible in the panoramas, so this carries the library identity); cream stone plinth colour MODELLED only as the stone palette; stair/lift towers and balconies SKIPPED (inside the 3DBAG roof volume); the arched gate portal at the right of the east front SKIPPED (surfaces 5/127 are not planar: 6-10 cm off any plane, so they are a blank group); shop signs and parked vans SKIPPED (temporary).",
-    "Courtyard walls have no panorama and stay blank; wall groups are split per 3DBAG panel because merged panels with slightly different planes failed the parts-attached gate (gap 8 cm). closedBands closes the string courses (open-edge gate). Eaves differ 16/19 m between wings; each group follows its own eaves."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oba-olympisch-kwartier",
+ "pandId": "0363100012073586",
+ "address": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
+ "sources": [
+  {
+   "id": "pano-2019-01-04-w01-168L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001036_pano_0004_000014/",
+   "image": "source-data://pand-reference-walls/0363100012073586/w01-168L.jpg",
+   "sha256": "c6dc7a0619862d7369a9eb4a1990188cfd1014779c87dcf48918a3d1fb00da69",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-03-21-w07-78",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002460_pano_0003_000468/",
+   "image": "source-data://pand-reference-walls/0363100012073586/w07-78.jpg",
+   "sha256": "ac7242c5c9feb98f88f0ee1663936436e05679147269d226d46d3c09f7e5a2dc",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-04-30-w02-78",
+   "kind": "street-panorama",
+   "capturedAt": "2019-04-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001151_pano_0001_000403/",
+   "image": "source-data://pand-reference-walls/0363100012073586/w02-78.jpg",
+   "sha256": "c41c5ce4dad2a015a15815e83029b6e74b35f231e0793cb310c8064414d46472",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-05-w05-346",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-05",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241105_0934_Track11_Sphere_00039/",
+   "image": "source-data://pand-reference-walls/0363100012073586/w05-346.jpg",
+   "sha256": "eeab39f9c3bbcba8a22e3244bb0fa1623be46a1ad7262018789d82ce34fa05f0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-05-w03-344L",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-05",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241105_0934_Track11_Sphere_00031/",
+   "image": "source-data://pand-reference-walls/0363100012073586/w03-344L.jpg",
+   "sha256": "cd9368d52582f754f90ff5d524f2c041d503c5ba570c656a5fb8d6617fea627e",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    262,
+    149,
+    150,
+    147,
+    301,
+    124,
+    261,
+    205
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "ground": "plinth-shopfronts",
+   "windows": "two-light",
+   "stringCourses": true,
+   "frames": false,
+   "entrance": {
+    "bay": 3,
+    "storeys": 1
+   },
+   "signage": {
+    "text": "OBA",
+    "colour": "#f2efe6",
+    "mount": "wall"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#5c3d33"
+   }
+  },
+  {
+   "wallSurfaces": [
+    41,
+    68,
+    189
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "plinth-shopfronts",
+   "windows": "two-light",
+   "stringCourses": true,
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#4a3537"
+   },
+   "windowShape": {
+    "w": 0.535,
+    "h": 0.7,
+    "sill": 0.05
+   }
+  },
+  {
+   "wallSurfaces": [
+    5,
+    127
+   ],
+   "system": "blank"
+  },
+  {
+   "wallSurfaces": [
+    9
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "stringCourses": true,
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#906553",
+    "glass": "#493e3a"
+   },
+   "windowShape": {
+    "w": 0.408,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    7,
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 4,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "stringCourses": true,
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#65493d",
+    "glass": "#332c28"
+   },
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.6,
+    "sill": 0.1
+   }
+  },
+  {
+   "wallSurfaces": [
+    71
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#8e5f49"
+   },
+   "windowShape": {
+    "w": 0.371,
+    "h": 0.45,
+    "sill": 0.4
+   }
+  },
+  {
+   "wallSurfaces": [
+    153
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#8c6858",
+    "glass": "#47443c"
+   },
+   "windowShape": {
+    "w": 0.44,
+    "h": 0.65,
+    "sill": 0.3
+   }
+  },
+  {
+   "wallSurfaces": [
+    248
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#8b5946"
+   },
+   "windowShape": {
+    "w": 0.376,
+    "h": 0.4,
+    "sill": 0.45
+   }
+  },
+  {
+   "wallSurfaces": [
+    81
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#735b50"
+   },
+   "windowShape": {
+    "w": 0.285,
+    "h": 0.451,
+    "sill": 0.4
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#8f3a2c",
+  "frame": "#cfd2d0",
+  "door": "#7a2a22",
+  "stone": "#c9bfa4",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "2005 perimeter housing block around a courtyard (pand 0363100012073586, 320 LoD2.2 wall surfaces) with the OBA Olympisch Kwartier library at street level; the whole pand is modelled. Street fronts only: south front (2020-05-13 panorama, w01-168; surfaces 262/149/150/147/301/124/261/205 as one six-storey group, 41/68/189 as the lower stepped part), east front (2019-04-30, w02-78) and north front (w03-344). Photographed: dark red brick storeys with horizontal string courses and wide paired windows, a cream stone plinth with shopfronts and tall glazed bays at the ground, a few recessed upper storeys.",
+  "Ornaments: shopfront plinth MODELLED (plinth-shopfronts); string courses MODELLED; entrance door SIMPLIFIED (one recessed glazed entrance at bay 3 of the south front; the real library entrance is not identifiable from the panoramas); OBA lettering SIMPLIFIED (cream lettering OBA on the wall over that entrance: no OBA sign is legible in the panoramas, so this carries the library identity); cream stone plinth colour MODELLED only as the stone palette; stair/lift towers and balconies SKIPPED (inside the 3DBAG roof volume); the arched gate portal at the right of the east front SKIPPED (surfaces 5/127 are not planar: 6-10 cm off any plane, so they are a blank group); shop signs and parked vans SKIPPED (temporary).",
+  "Courtyard walls have no panorama and stay blank; wall groups are split per 3DBAG panel because merged panels with slightly different planes failed the parts-attached gate (gap 8 cm). closedBands closes the string courses (open-edge gate). Eaves differ 16/19 m between wings; each group follows its own eaves.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 3, 4, 5, 6, 7, 8 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #483838 not used (not darker than the wall #5c3d33 by 10 L*, or tinted): kit glass kept; walls[1] glass #363132 not used (not darker than the wall #4a3537 by 10 L*, or tinted): kit glass kept; walls[5] glass #525f5b not used (not darker than the wall #8e5f49 by 10 L*, or tinted): kit glass kept; walls[7] glass #4e5f6d not used (not darker than the wall #8b5946 by 10 L*, or tinted): kit glass kept; walls[8] glass #465f65 not used (not darker than the wall #735b50 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
   ]
+ }
 }

@@ -1,25 +1,119 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "oba-linnaeus",
-  "pandId": "0363100012122086",
-  "address": "OBA Linnaeus, Linnaeusstraat 44, Amsterdam (1916 pand; library in the ground floor of a 1950s-style brick front with two 1916 houses attached)",
-  "sources": [
-    {"id": "pano-2022-05-18-e", "kind": "street-panorama", "capturedAt": "2022-05-18", "image": "staging/pand-reference-walls/0363100012122086/w01-70.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002586_pano_0001_000231/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-06-20-sw", "kind": "street-panorama", "capturedAt": "2025-06-20", "image": "staging/pand-reference-walls/0363100012122086/w02-246.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_08-09-45_04783/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [22, 74], "system": "ribbon-windows", "storeys": 4, "ground": "plinth-shopfronts", "signage": {"text": "ZYXWVU TSRQP ONM LKJIHG FEDCBA", "colour": "#d8242a", "mount": "fascia"}},
-    {"wallSurfaces": [11, 21, 40, 68, 79], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 4, "ground": "plinth-shopfronts", "windows": "plain", "signage": {"text": "OBA", "colour": "#d8242a", "mount": "fascia"}, "entrance": {"bay": 1, "storeys": 1}},
-    {"wallSurfaces": [24, 53, 70], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 6, "ground": "system", "windows": "plain"}
-  ],
-  "otherWalls": "blank",
-  "closedBands": true,
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#7a4034", "frame": "#e8e8e2", "door": "#26365e", "stone": "#d8d2c4", "wallMaterial": "stucco"},
-  "notes": [
-    "Pand 0363100012122086 (1916, 86 LoD2.2 surfaces) found by the OSM point: the OSM address (Linnaeusstraat 44) geocodes 434 m away in PDOK, so the match used the BAG pand under the mapped point. It is the OBA Linnaeus ground floor of a four-storey 1950s-style brick front (ten ribbon bays of white-framed windows between brick spandrels, 2022-05-18 panorama w01-70, 12 m away) with two 1916 brick houses attached at the right (gabled, balconies, stone window dressings).",
-    "Signature (seen, 2022-05-18): (1) the red letter band across the shopfront fascia reading the alphabet in reverse, ZYXWVU TSRQP ONM LKJIHG FEDCBA, in mirrored/rotated glyphs: MODELLED as the kit fascia lettering with that text (the glyph rotation and mirroring SIMPLIFIED to plain capitals; the kit scales the text to the fascia, so it is small); (2) two red lower-case 'oba' logos, one over the left shop unit and a blade sign over the right unit: SIMPLIFIED (one 'OBA' fascia lettering over the right-hand unit, in logo red; the left logo SKIPPED: the group allows one sign); (3) tall glazed shopfront with stone piers: MODELLED (plinth-shopfronts); (4) the 1916 houses' stone window dressings, wrought balconies and gable: SKIPPED (too-small) except the 3DBAG gable and roof volume which are kept as surveyed.",
-    "Ribbon windows are the kit ribbon system (10 bays) against the photographed 9 paired ribbons. The SW end (2025-06-20, w02-246) is a plain white rendered wall with two window columns: modelled as a plain brick-bay-grid wall (render colour SKIPPED: palette is one brick colour). closedBands closes the fascia bands (open-edge gate)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oba-linnaeus",
+ "pandId": "0363100012122086",
+ "address": "OBA Linnaeus, Linnaeusstraat 44, Amsterdam (1916 pand; library in the ground floor of a 1950s-style brick front with two 1916 houses attached)",
+ "sources": [
+  {
+   "id": "pano-2020-02-03-w01-70L",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001619_pano_0004_000114/",
+   "image": "source-data://pand-reference-walls/0363100012122086/w01-70L.jpg",
+   "sha256": "68872f6519ed808f372df5025ab1c203dc0332ce7f1c52f53b88db06db6c1692",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    22,
+    74
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "ground": "plinth-shopfronts",
+   "signage": {
+    "text": "ZYXWVU TSRQP ONM LKJIHG FEDCBA",
+    "colour": "#d8242a",
+    "mount": "fascia"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#3d3533"
+   }
+  },
+  {
+   "wallSurfaces": [
+    11,
+    21,
+    40,
+    68,
+    79
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 4,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "signage": {
+    "text": "OBA",
+    "colour": "#d8242a",
+    "mount": "fascia"
+   },
+   "entrance": {
+    "bay": 1,
+    "storeys": 1
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#6d5351",
+    "glass": "#423c3d"
+   },
+   "windowShape": {
+    "w": 0.416,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    24,
+    53,
+    70
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7a4034",
+  "frame": "#e8e8e2",
+  "door": "#26365e",
+  "stone": "#d8d2c4",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "Pand 0363100012122086 (1916, 86 LoD2.2 surfaces) found by the OSM point: the OSM address (Linnaeusstraat 44) geocodes 434 m away in PDOK, so the match used the BAG pand under the mapped point. It is the OBA Linnaeus ground floor of a four-storey 1950s-style brick front (ten ribbon bays of white-framed windows between brick spandrels, 2022-05-18 panorama w01-70, 12 m away) with two 1916 brick houses attached at the right (gabled, balconies, stone window dressings).",
+  "Signature (seen, 2022-05-18): (1) the red letter band across the shopfront fascia reading the alphabet in reverse, ZYXWVU TSRQP ONM LKJIHG FEDCBA, in mirrored/rotated glyphs: MODELLED as the kit fascia lettering with that text (the glyph rotation and mirroring SIMPLIFIED to plain capitals; the kit scales the text to the fascia, so it is small); (2) two red lower-case 'oba' logos, one over the left shop unit and a blade sign over the right unit: SIMPLIFIED (one 'OBA' fascia lettering over the right-hand unit, in logo red; the left logo SKIPPED: the group allows one sign); (3) tall glazed shopfront with stone piers: MODELLED (plinth-shopfronts); (4) the 1916 houses' stone window dressings, wrought balconies and gable: SKIPPED (too-small) except the 3DBAG gable and roof volume which are kept as surveyed.",
+  "Ribbon windows are the kit ribbon system (10 bays) against the photographed 9 paired ribbons. The SW end (2025-06-20, w02-246) is a plain white rendered wall with two window columns: modelled as a plain brick-bay-grid wall (render colour SKIPPED: palette is one brick colour). closedBands closes the fascia bands (open-edge gate).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #323235 not used (not darker than the wall #3d3533 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
   ]
+ }
 }

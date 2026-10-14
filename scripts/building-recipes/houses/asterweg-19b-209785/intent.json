@@ -6,11 +6,12 @@
  "address": "Asterweg 19B, Amsterdam-Noord (Tuindorp Buiksloot business park): 2005 three-storey block of grey exposed-aggregate concrete panels with curved corners, ribbon windows and a projecting corner box window, over a low concrete plinth with a car-park undercroft",
  "sources": [
   {
-   "id": "pano-2021-06-16-w03",
+   "id": "pano-2022-01-25-w03-74L",
    "kind": "street-panorama",
-   "capturedAt": "2021-06-16",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002181_pano_0000_004655/",
-   "image": "staging/pand-reference-walls/0363100012209785/w03-74.jpg",
+   "capturedAt": "2022-01-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002438_pano_0001_000044/",
+   "image": "source-data://pand-reference-walls/0363100012209785/w03-74L.jpg",
+   "sha256": "4be8849257fc797d25a394dd72cff1e37519b9c85cf353a7765a484fc6e7da1d",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -28,10 +29,14 @@
    "windows": "low",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#6e6c6a",
+    "brick": "#473c3b",
     "frame": "#e8e8e4",
     "stone": "#a8a6a0"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -49,6 +54,13 @@
  "layeredKit": true,
  "notes": [
   "Asterweg 19B (BAG pand 0363100012209785, built 2005, 63 3DBAG wall surfaces, roof max 13.9 m): a long business-park block of the Buiksloot industrial estate, about 100 m by 30 m with a stepped courtyard side. One panorama within 35 m shows it: the east end (w03-74, 2021-06-16). The long north and south walls and the courtyard have no panorama (w01-344 and w02-253 have no pano within 35 m).",
-  "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete."
- ]
+  "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #423b3c not used (not darker than the wall #473c3b by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0
+  ]
+ }
 }
