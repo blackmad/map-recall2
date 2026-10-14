@@ -1,0 +1,5 @@
+{ "mode": "car", "dest": "Artis", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "nijlpaardenbrug-bike", "at": [4.913571, 52.368379, 34] }
+  ] }
