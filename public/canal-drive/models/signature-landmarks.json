@@ -50809,6 +50809,87 @@
         "bytes": 134392,
         "triangles": 7713
       }
+    },
+    "johnny-jordaan-groep": {
+      "id": "johnny-jordaan-groep",
+      "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      "landmarkId": "osm_artwork_1704741755",
+      "modelUrl": "./models/johnny-jordaan-groep.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8822208,
+          52.3701124
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 8.6,
+        "widthMetres": 4.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.8822208,
+          52.3701124
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#34423d",
+        "concrete": "#bfbdb6",
+        "ochre": "#7b6b55",
+        "gold": "#8b5a35",
+        "greyBrick": "#4f504f"
+      },
+      "attribution": {
+        "title": "Johnny Jordaanplein group - original low-poly reconstruction",
+        "author": "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        "sourceUrl": "https://www.openstreetmap.org/node/1704741755",
+        "modifications": "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE"
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.6674675941467285,
+          -1.1920929132713809e-08,
+          -1.0434201955795288
+        ],
+        "max": [
+          4.181951999664307,
+          2.994999885559082,
+          4.112924098968506
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8822208,
+          52.3701124
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 7.849419593811035,
+        "heightMetres": 2.994999897480011,
+        "depthMetres": 5.156344294548035,
+        "depthCoverage": 1.1209444118582685
+      },
+      "triangles": 11524,
+      "bytes": 114068,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "46ed1052706b578e",
+        "buildVersion": 2,
+        "bytes": 38284,
+        "triangles": 1820
+      }
     }
   }
 }

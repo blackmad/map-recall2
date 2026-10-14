@@ -1714,5 +1714,11 @@
     "buildVersion": 2,
     "bytes": 71164,
     "triangles": 3348
+  },
+  "johnny-jordaan-groep": {
+    "sourceHash": "46ed1052706b578e",
+    "buildVersion": 2,
+    "bytes": 38284,
+    "triangles": 1820
   }
 }
