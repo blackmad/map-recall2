@@ -7,6 +7,8 @@ import type {WinParams} from '../../src/canalRecall/blockBuilding/spec';
 export interface KitStats {openings: number; failed: string[]; drawn: string[]}
 export const BAR = 0.04;
 export const STONE = 'stone', FRAME = 'frame', GLASS = 'glass', DARK = 'door', WALL = 'wall';
+/** wrought iron: a slot the opening audit reads as host trim (an isolated 'dark' part counts as a detached opening assembly) */
+export const IRON = 'cross';
 
 /** A closed box (the compile sets closedBoxes, so PanelCtx.box already closes its back). */
 export function solid(c: PanelCtx, slot: string, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part = c.part()) {
@@ -59,9 +61,9 @@ export {barQuad};
 
 /** Wrought-iron tie-rod anchor (sieranker): a thin stem with a diamond, two side leaves and a crown, `h` tall, standing on the wall. */
 export function anchorIron(c: PanelCtx, u: number, v0: number, h: number, part = c.part()) {
-  geom(c, DARK, new T.BoxGeometry(0.05, h, 0.1), u, v0 + h / 2, 0.05, part);
-  geom(c, DARK, new T.BoxGeometry(0.22, 0.22, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.7, 0.085, part);
-  geom(c, DARK, new T.BoxGeometry(0.1, 0.1, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.95, 0.085, part);
+  geom(c, IRON, new T.BoxGeometry(0.05, h, 0.1), u, v0 + h / 2, 0.05, part);
+  geom(c, IRON, new T.BoxGeometry(0.22, 0.22, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.7, 0.085, part);
+  geom(c, IRON, new T.BoxGeometry(0.1, 0.1, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.95, 0.085, part);
 }
 /** Round ornamental ring (oculus surround): stone ring with a glass disc and `bosses` cartouche blocks. */
 export function oculus(c: PanelCtx, u: number, v: number, outer: number, glass: number, bosses = 8) {

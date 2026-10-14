@@ -1,0 +1,14 @@
+{
+  "id": "tropenmuseum",
+  "name": "Tropenmuseum (Wereldmuseum Amsterdam)",
+  "modelUrl": "./models/tropenmuseum.glb",
+  "pandId": "0363100012237251",
+  "partyWallBearings": [61, 151, 241, 331],
+  "blankWallNotes": {
+    "why": "audit:glb reads partyWallBearings as blank-wall exemptions (bearings within 15 degrees). None of these walls adjoins a neighbouring building: the complex is one 321-vertex BAG pand, and the blank panels below are enclosed or rear walls that tropenmuseum-groups.ts leaves windowless on purpose (no panorama sees them, so nothing may be invented). Every wall a panorama does see is windowed or listed in tropenmuseum-inventory.json.",
+    "61": "NE: panels of the inner light court and the gaps between the east-front wings (a roof at least 6 m high within 12 m straight out), the roof-terrace upper stages (windows only where the wall stands on the ground, lowest edge under 3.5 m), and the pavilion tent-roof stages above the measured faces (tropenmuseum-facades.json stops at the dentil cornice)",
+    "151": "SE: Oosterpark-side service wings and courtyard walls behind trees (inventory w03, w05, w21, w23, w27, w32, w33, w55, w58: no panorama or ornament-free)",
+    "241": "SW: rear wings and the quadrant's back walls (inventory w02, w06, w14, w20, w22, w24, w25, w30, w43, w60)",
+    "331": "NW: narrow returns of the Mauritskade wing (1.1-2.6 m wide slivers of the stepped gables and turrets) and the upper stages of the enclosed light court"
+  }
+}
