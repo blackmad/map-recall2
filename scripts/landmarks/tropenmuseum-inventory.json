@@ -262,13 +262,13 @@
         {
           "id": "np-clock-dial-ne",
           "kind": "clock",
-          "where": "dormer clock on the tent roof",
+          "where": "clock panel over the console cornice, in the dormer wall that rises through the tent roof",
           "approxSizeM": [
             1.4,
             1.4
           ],
-          "plan": "simplified",
-          "how": "pavilionOrnaments dial",
+          "plan": "modelled",
+          "how": "pavilionStage (tropenmuseum-pavilion.ts): stone clock panel and dial (stone ring, dark face, two hands) on the 3DBAG dormer wall at 29.5-32 m; the rule-based dial of pavilionOrnaments is off",
           "seenIn": "TMX7316010203-002310_pano_0001_001995"
         },
         {
@@ -292,7 +292,7 @@
             0.55
           ],
           "plan": "modelled",
-          "how": "pavilionFace cornice with dentil blocks; its height (21.45 m) is inferred from w12-331 because it lies above the crop",
+          "how": "pavilionFace cornice with dentil blocks at 21.8-22.35 m, measured in the tall crop (the second pass had inferred 21.45-22.0 above its crop top)",
           "seenIn": "TMX7316010203-002310_pano_0001_001995"
         },
         {
@@ -306,6 +306,42 @@
           "plan": "modelled",
           "how": "pavilionFace souterrain: arch openings with stone band, imposts and keystone, iron frames",
           "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        },
+        {
+          "id": "np-stage-windows-ne",
+          "kind": "window-shape",
+          "where": "stage above the dentil cornice: a rectangular and an arched window per side, a pair of two-light windows in two tiers over the centre",
+          "approxSizeM": [
+            10.5,
+            4.0
+          ],
+          "how": "pavilionStage: windows cut into the 3DBAG wall (rect, arched with imposts, paired lights), stone piers, transom and head cornice, hood rings; pattern in facades.json stagePattern, read off the tall crop",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995",
+          "plan": "modelled"
+        },
+        {
+          "id": "np-blind-arcade-ne",
+          "kind": "other",
+          "where": "two groups of four blind arches on a corbelled band under the console cornice",
+          "approxSizeM": [
+            3.6,
+            1.0
+          ],
+          "how": "pavilionStage: stone band plus four shallow arch prisms per group (iron slot); the arches carry no brick tracery",
+          "plan": "simplified",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        },
+        {
+          "id": "np-console-cornice-ne",
+          "kind": "other",
+          "where": "deep console cornice under the clock panel, 27.7-29.5 m",
+          "approxSizeM": [
+            11.5,
+            1.8
+          ],
+          "how": "pavilionStage: lower slab, console blocks at 0.9 m pitch, upper slab; lion masks on two of the consoles (lionMask)",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995",
+          "plan": "modelled"
         }
       ]
     },
@@ -363,6 +399,42 @@
             "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
           },
           "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        },
+        {
+          "id": "gw-arched-windows",
+          "kind": "window-shape",
+          "where": "three round-arched three-light windows over carved relief fields (three heads each)",
+          "approxSizeM": [
+            9,
+            3
+          ],
+          "how": "gableWingFace (tropenmuseum-gablewing.ts): arched openings with stone band, imposts and keystone; the relief fields are stone slabs without iconography",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626",
+          "plan": "modelled"
+        },
+        {
+          "id": "gw-first-floor",
+          "kind": "window-shape",
+          "where": "first-floor windows with small hoods and the string courses",
+          "approxSizeM": [
+            9,
+            3.5
+          ],
+          "how": "gableWingFace: cut windows with lights per the crop, hood slabs, three stone string courses",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626",
+          "plan": "modelled"
+        },
+        {
+          "id": "gw-gable-grid",
+          "kind": "window-shape",
+          "where": "window grid in the swung gable, oval cartouche, pediment and ball finials",
+          "approxSizeM": [
+            5,
+            9
+          ],
+          "how": "gableWingFace: three tiers of applied windows (cut windows left coplanar glass in the audit), cartouche disc, pediment prism, ball finials; the swung outline stays 3DBAG's",
+          "plan": "simplified",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
         }
       ]
     },
@@ -394,13 +466,13 @@
         {
           "id": "np-clock-dial",
           "kind": "clock",
-          "where": "dormer kapel in the tent roof with a clock dial",
+          "where": "clock panel over the console cornice, in the dormer wall that rises through the tent roof",
           "approxSizeM": [
             1.4,
             1.4
           ],
-          "plan": "simplified",
-          "how": "pavilionOrnaments: dial disc, ring and two hands where the wall rises over the eaves",
+          "plan": "modelled",
+          "how": "pavilionStage (tropenmuseum-pavilion.ts): stone clock panel and dial (stone ring, dark face, two hands) on the 3DBAG dormer wall at 29.5-32 m; the rule-based dial of pavilionOrnaments is off",
           "seenIn": "recording_2025-09-30_11-08-39_00754"
         },
         {
@@ -436,7 +508,7 @@
             0.55
           ],
           "plan": "modelled",
-          "how": "pavilionFace cornice at 20.95-21.5 m; the console blocks are plain stone, the lion masks are not modelled",
+          "how": "pavilionFace cornice at 20.95-21.5 m with console blocks; lion masks on the two centre consoles (lionMask, tropenmuseum-kit.ts)",
           "seenIn": "recording_2025-09-30_11-08-39_00754"
         },
         {
@@ -462,6 +534,54 @@
           "plan": "modelled",
           "how": "pavilionFace arched head opening with arch band, imposts and keystone",
           "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-stage-windows",
+          "kind": "window-shape",
+          "where": "stage above the dentil cornice: a rectangular and an arched window per side, a pair of two-light windows in two tiers over the centre",
+          "approxSizeM": [
+            10.5,
+            4.0
+          ],
+          "how": "pavilionStage: windows cut into the 3DBAG wall (rect, arched with imposts, paired lights), stone piers, transom and head cornice, hood rings; pattern in facades.json stagePattern, read off the tall crop",
+          "seenIn": "recording_2025-09-30_11-08-39_00754",
+          "plan": "modelled"
+        },
+        {
+          "id": "np-blind-arcade",
+          "kind": "other",
+          "where": "two groups of four blind arches on a corbelled band under the console cornice",
+          "approxSizeM": [
+            3.6,
+            1.0
+          ],
+          "how": "pavilionStage: stone band plus four shallow arch prisms per group (iron slot); the arches carry no brick tracery",
+          "plan": "simplified",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-console-cornice",
+          "kind": "other",
+          "where": "deep console cornice under the clock panel, 27.7-29.5 m",
+          "approxSizeM": [
+            11.5,
+            1.8
+          ],
+          "how": "pavilionStage: lower slab, console blocks at 0.9 m pitch, upper slab; lion masks on two of the consoles (lionMask)",
+          "seenIn": "recording_2025-09-30_11-08-39_00754",
+          "plan": "modelled"
+        },
+        {
+          "id": "np-lion-masks",
+          "kind": "sculpture",
+          "where": "lion masks on the cornice consoles of the north pavilion (two on the 21 m cornice, two on the console cornice above)",
+          "approxSizeM": [
+            0.4,
+            0.45
+          ],
+          "how": "lionMask: brow slab, muzzle and chin blocks (36 triangles each), repeated on the consoles",
+          "seenIn": "recording_2025-09-30_11-08-39_00754",
+          "plan": "modelled"
         }
       ]
     },
@@ -473,12 +593,49 @@
         4.9229198,
         52.3623956
       ],
-      "evidence": "inferred",
-      "panoId": null,
-      "capturedAt": null,
+      "evidence": "photo",
+      "panoId": "commons:Tropenmuseum, Linnaeusstraat foto 2.jpg",
+      "capturedAt": "2017-05-20",
       "checked": true,
-      "items": [],
-      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+      "items": [
+        {
+          "id": "risalit-portal",
+          "kind": "colonnade",
+          "where": "side entrance: stair, arched door in a stone surround with pilasters and an entablature",
+          "approxSizeM": [
+            3.1,
+            5.4
+          ],
+          "how": "risalitFace (tropenmuseum-risalit.ts): five steps, dark door with an arched head, arch ring, pilasters and a head slab",
+          "seenIn": "commons:Tropenmuseum, Linnaeusstraat foto 2.jpg",
+          "plan": "modelled"
+        },
+        {
+          "id": "risalit-oval-figures",
+          "kind": "sculpture",
+          "where": "oval window over the door with two reclining figures",
+          "approxSizeM": [
+            2.6,
+            1.0
+          ],
+          "how": "risalitFace: stone ring and glass disc on an ellipse, two reclining() figures; no carved cartouche",
+          "plan": "simplified",
+          "seenIn": "commons:Tropenmuseum, Linnaeusstraat foto 2.jpg"
+        },
+        {
+          "id": "risalit-windows",
+          "kind": "window-shape",
+          "where": "tall ground-floor windows either side of the portal, three first-floor windows under triangular hoods, gable window grid",
+          "approxSizeM": [
+            8,
+            9
+          ],
+          "how": "risalitFace: applied windows on 9 cm brick plates (the skewed 3DBAG wall takes no cut openings), triangular hoods, string courses",
+          "seenIn": "commons:Tropenmuseum, Linnaeusstraat foto 2.jpg",
+          "plan": "modelled"
+        }
+      ],
+      "note": "no panorama sees this wall; read from Commons \"Tropenmuseum, Linnaeusstraat foto 2.jpg\" (Alf van Beem, public domain)"
     },
     {
       "tag": "w14-241",
@@ -547,7 +704,7 @@
             5
           ],
           "plan": "modelled",
-          "how": "helmet() and pavilionOrnaments dial on surfaces 168/606",
+          "how": "helmet() at the south pavilion apex (98.0, -11.2); surfaces 168/606 are the gable wing, so the clock-dial rule is off there",
           "seenIn": "TMX7316010203-001674_pano_0000_003626"
         },
         {
@@ -573,6 +730,30 @@
           "plan": "modelled",
           "how": "pavilionFace souterrain arches (surface 172, up to its 12 m top)",
           "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        },
+        {
+          "id": "cb-third-floor",
+          "kind": "window-shape",
+          "where": "third floor of the connecting block: arched triple head over two tiers of triple lights, side windows with hoods",
+          "approxSizeM": [
+            9,
+            4
+          ],
+          "how": "connectingBlock (tropenmuseum-block.ts): a brick slab on the 156 panel plane from 12 m buries 3DBAG's slate roof; windows applied to its face (proudWindow), arched head as a glass fan in a stone ring",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626",
+          "plan": "modelled"
+        },
+        {
+          "id": "cb-cornice-stage",
+          "kind": "other",
+          "where": "console cornice at 16.45-16.95 m and the stage above it: paired windows, blind arcades, relief, console cornice (the pavilion pattern at 0.7)",
+          "approxSizeM": [
+            9,
+            5.6
+          ],
+          "how": "connectingBlock: cornice with consoles, then pavilionStage at scale 0.7 with applied windows; the stage is drawn flush with the face although 3DBAG puts panel 283 3 m back",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626",
+          "plan": "modelled"
         }
       ]
     },
@@ -1702,6 +1883,16 @@
       "name": "Gemeente Amsterdam panoramas",
       "url": "https://api.data.amsterdam.nl/panorama/",
       "licence": "CC BY 4.0"
+    },
+    {
+      "name": "Commons: Tropenmuseum, Linnaeusstraat foto 2.jpg (Alf van Beem, 2017-05-20; the east risalit)",
+      "url": "https://commons.wikimedia.org/wiki/File:Tropenmuseum,_Linnaeusstraat_foto_2.jpg",
+      "licence": "Public domain"
+    },
+    {
+      "name": "Commons: Overzicht van de voorgevel - Amsterdam - 20015370 - RCE.jpg (Rijksdienst voor het Cultureel Erfgoed; consulted for the composition, nothing measured)",
+      "url": "https://commons.wikimedia.org/wiki/File:Overzicht_van_de_voorgevel_-_Amsterdam_-_20015370_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0"
     }
   ]
 }

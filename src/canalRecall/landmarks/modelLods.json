@@ -1433,7 +1433,7 @@
     "bytes": 99436,
     "triangles": 4885
   },
-  "motorkade-1": {
+  "motorkade-01": {
     "sourceHash": "213f6500739ce2f7",
     "buildVersion": 2,
     "bytes": 91260,
@@ -1698,10 +1698,10 @@
     "triangles": 1232
   },
   "tropenmuseum": {
-    "sourceHash": "d2909afed0619af2",
+    "sourceHash": "d3e4d6a2ca7d2941",
     "buildVersion": 2,
-    "bytes": 134392,
-    "triangles": 7713
+    "bytes": 128164,
+    "triangles": 7372
   },
   "spinoza-standbeeld": {
     "sourceHash": "705002e5ff4d04dd",

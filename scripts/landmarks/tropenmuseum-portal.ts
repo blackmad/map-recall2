@@ -22,7 +22,7 @@ export function portalFront(c: PanelCtx, stats: KitStats) {
     {lower: [13.55, 14.85], upper: [15.2, 16.3], sill: 13.3, head: 16.5},
   ];
   for (const f of floors) for (const [a, b] of cols) {
-    opening(c, stats, 'portal-front window', U(a), U(b), f.lower[0], f.lower[1], {...win, mullAt: [0.5], rowsAt: [0.5]});
+    opening(c, stats, 'portal-front window', U(a), U(b), f.lower[0], f.lower[1], {...win, mullAt: [0.5]});
     opening(c, stats, 'portal-front window', U(a), U(b), f.upper[0], f.upper[1], {...win, mullAt: [0.5]});
   }
   for (const [a, b] of [[4.1, 4.7], [5.0, 5.6]] as [number, number][]) {
@@ -42,8 +42,7 @@ export function portalFront(c: PanelCtx, stats: KitStats) {
   }
   // ---- hoods: segmental arch rings over every group (three small arches over the centre), a keystone boss on each -------------------
   const hood = (a: number, b: number, spring: number) => {
-    archRing(c, STONE, U(a), U(b), spring, 0.42, 0.1, 0.12, 0, 6);
-    solid(c, STONE, U((a + b) / 2 - 0.07), U((a + b) / 2 + 0.07), spring + 0.42, spring + 0.62, 0, 0.18);
+    archRing(c, STONE, U(a), U(b), spring, 0.42, 0.1, 0.12, 0, 4);
   };
   for (const spring of [12.2, 16.55]) {
     hood(0.98, 2.09, spring); hood(7.54, 8.64, spring);
@@ -83,20 +82,19 @@ export function portalFront(c: PanelCtx, stats: KitStats) {
     opening(c, stats, 'portal door', U(3.72), U(5.98), 1.85, 4.3, {frame: DARK, glass: GLASS, frameW: 0.08, mullAt: [0.5], rowsAt: [0.4]});
     // fanlight in the arch: a glass segment 6 cm into the stone opening with the wrought-iron grille (radial bars and two rings) in front of it
     geom(c, GLASS, extrude(shapeOf([[3.72, 4.3], [5.98, 4.3], ...archHead(3.72, 5.98, 4.3, 1.13, 10).reverse()].map(([x, v]) => [U(x), v] as [number, number])), 0.04), 0, 0, 0.08, part);
-    for (let i = 0; i < 7; i++) {
-      const a = Math.PI * (0.12 + 0.76 * i / 6);
+    for (let i = 0; i < 5; i++) {
+      const a = Math.PI * (0.12 + 0.76 * i / 4);
       geom(c, DARK, new T.BoxGeometry(1.0, 0.035, 0.035).rotateZ(a), U(4.85) + Math.cos(a) * 0.5, 4.3 + Math.sin(a) * 0.5, 0.15, part);
     }
-    geom(c, DARK, new T.TorusGeometry(0.62, 0.02, 4, 14, Math.PI), U(4.85), 4.3, 0.15, part);
-    geom(c, DARK, new T.TorusGeometry(1.02, 0.02, 4, 16, Math.PI), U(4.85), 4.3, 0.15, part);
+    geom(c, DARK, new T.TorusGeometry(0.8, 0.025, 3, 10, Math.PI), U(4.85), 4.3, 0.15, part);  // one ring (two cost 240 triangles)
     // right: oculus and the side door with its own head
     oculus(c, U(8.15), 5.4, 0.9, 0.5, 8);
     solid(c, STONE, U(7.45), U(7.6), 1.8, 4.75, 0, 0.25, part); solid(c, STONE, U(8.5), U(8.65), 1.8, 4.75, 0, 0.25, part);
     archRing(c, STONE, U(7.6), U(8.5), 4.4, 0.32, 0.15, 0.25, 0, 6);
     opening(c, stats, 'side door', U(7.62), U(8.48), 1.85, 4.45, {frame: DARK, glass: DARK, frameW: 0.06, mullAt: [0.33, 0.66], rowsAt: [0.5]});
     // stair: ten treads, globe posts at the head
-    for (let k = 0; k < 10; k++) solid(c, STONE, U(1.5), U(8.2), 0, 0.18 * (10 - k), k * 0.33, (k + 1) * 0.33, part);
-    for (const x of [1.35, 8.35]) { solid(c, STONE, U(x - 0.22), U(x + 0.22), 0, 2.4, 0.3, 0.74, part); geom(c, STONE, new T.SphereGeometry(0.3, 10, 8), U(x), 2.7, 0.52, part); }
+    for (let k = 0; k < 7; k++) solid(c, STONE, U(1.5), U(8.2), 0, 0.26 * (7 - k), k * 0.47, (k + 1) * 0.47, part);   // ten treads of the survey, seven drawn
+    for (const x of [1.35, 8.35]) { solid(c, STONE, U(x - 0.22), U(x + 0.22), 0, 2.4, 0.3, 0.74, part); geom(c, STONE, new T.SphereGeometry(0.3, 8, 6), U(x), 2.7, 0.52, part); }
   }
   // ---- anchors (sieranker) between the windows ------------------------------------------------------------------------------------
   for (const [x, v, h] of [[2.64, 6.9, 1.0], [6.98, 7.0, 1.0], [2.67, 12.0, 1.2], [6.98, 12.0, 1.2]] as [number, number, number][]) anchorIron(c, U(x), v, h);
@@ -110,7 +108,7 @@ export function portalGable(c: PanelCtx, stats: KitStats) {
   for (const x of [1.6, 8.1]) {
     solid(c, STONE, U(x - 0.22), U(x + 0.22), 19.55, 20.95, 0, 0.3, part);
     solid(c, STONE, U(x - 0.28), U(x + 0.28), 20.95, 21.1, 0, 0.36, part);
-    geom(c, STONE, new T.SphereGeometry(0.2, 10, 8), U(x), 21.3, 0.15, part);
+    geom(c, STONE, new T.SphereGeometry(0.2, 8, 6), U(x), 21.3, 0.15, part);
   }
   for (const [a, b] of [[1.82, 2.5], [7.2, 7.88]] as [number, number][]) geom(c, STONE, extrude(shapeOf([[U(a), 19.95], [U(b), 19.95], ...archHead(U(a), U(b), 19.95, 0.55, 8).reverse()]), 0.2), 0, 0, 0, part);
   solid(c, STONE, U(2.35), U(7.35), 21.62, 22.0, 0, 0.22, part);
