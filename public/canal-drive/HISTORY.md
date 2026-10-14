@@ -1,5 +1,55 @@
 # Canal Recall — what is built
 
+## Large kit vocabulary: glazed hall, glazed columns, French-window ledge; the three complaint houses re-fitted (2026-10-14)
+
+Lane `lane/large-vocabulary-20261014` (plan Part 1 lane C), on lane A's
+schema commit (`palette.glass`, `windowShape`, `hand`, `measured`,
+`sources[].sha256`, cherry-picked). New systems in `blockBuilding/systems.ts`
+and `components.ts`, wired through `fitLarge.ts`, `largeCompile.ts`,
+`largeIntent.ts`: **`glazed-hall`** (`hall {base, lights, rows}`: the
+group's wall becomes the glass skin with a brick base of `base` × eaves,
+a stone sill, a mullion grid of `lights` per structural bay × `rows`, wide
+posts at the bay joints; needs the layered kit), **`glazed-columns`**
+(`columns {bays, share?, from?, slabs?}`: full-height glass stripes on the
+listed bays from storey `from`, enclosed 0.45 m balconies with a slab per
+storey when `slabs`, 18 cm edge posts, drawn as runs of storeys ≤ 9 m,
+punched windows elsewhere), **`french-window-ledge`** (windows 0.5 bay ×
+0.75 storey, thin frame, Juliet bar, continuous ledge under every sill;
+takes `windowShape` and `arches.windows`), a `windows: "stacked"` preset
+(two lights, five bars) and `walls[].palette.arch` for arch-ring colour;
+`palette.glass` gets its own slot wherever the tier draws glass; groups in
+`intent.measured.groups` mark their wall and arch-ring materials
+`tintSource: 'measured'` (lane B's key). The Singel 457 seam: not a
+straddle (dissolve had merged the three surfaces) but a face outline that
+steps back at 13.28 m with the window head 3 mm in the gap; an opening
+that cannot be cut now moves its head or sill by up to 10 cm and is cut
+there instead of laid proud (regression: Singel 457 at 6 storeys, 1 proud
+→ 0, 1 trimmed; its intent stays at 5 storeys). Re-fits, not installed:
+Apollohal 3,812 tris (glazed hall, base 0.40 of the eaves as in the photo,
+26 lights × 6 rows per bay, pale tan base, dark grey-blue glass);
+Houthavenkade 26 11,708 (front split on its two 3DBAG surfaces: orange
+east 21 bays, plum-brown west 11 bays, both glazed columns with slabs at
+the photographed heights, grey reflective glass; the orange half's window
+frames dropped for budget); Waagdragerhof 10,250 (tower french-window
+ledge, 13 columns, brick `#4a302b`; warehouse north front tall segmental
+stacked windows with white frames, rings and cornice on purple-brown
+`#5e4a4c`). Byte-identity: 107/107 large meshes and 140/140 recipes
+identical apart from the three pilots; zfight-near on Apollohal 252 → 13 m²,
+Houthavenkade 171 → 22 m². The comparison sheet (installed | re-fit |
+3/4 | city-look | photo) is on the demo page; the integrator's verdict:
+the raw re-fits read right against the photos (two-tone glass columns,
+the glazed band on a plinth, white-ringed arches), but the city-look
+column shows two look bugs that block installing: `cityTint('glass')`
+returns white for every glass material so `palette.glass` never reaches
+the game, and measured dark walls render near-black and Houthavenkade's
+plum half pale grey (the measured bypass applied twice or on the wrong
+slot). Lane B2 holds those. Still missing per the lane: APOLLOHAL letters,
+louvres and canopy; Houthavenkade's mid-height transoms, corner frames and
+brick shop piers; Waagdragerhof's paired small arches, hoist-door axes,
+spandrel panels, dentil cornice, PAKHUIS WILHELMINA lettering, the bridge
+volume and stepped tower top.
+
+
 ## Hosting: auto-prune after every deploy, bursts deploy once (2026-10-14)
 
 Deploys failed on the 10 GB Hosting quota again this morning (24 failed
