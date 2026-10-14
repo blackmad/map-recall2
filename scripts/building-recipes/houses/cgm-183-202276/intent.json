@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "cgm-183-202276",
+ "pandId": "0363100012202276",
+ "address": "Centrale Groothandelsmarkt 183, Amsterdam-West (Food Center): 1935 wholesale food warehouse (De Kweker) with a 106 m west front of concrete-block piers under grey cladding, a loading canopy, an office ribbon and a raised centre block carrying the DE KWEKER sign",
+ "sources": [
+  {
+   "id": "pano-2022-04-29-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000686/",
+   "image": "staging/pand-reference-walls/0363100012202276/w01-258.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-06-13-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000790_pano_0000_005184/",
+   "image": "staging/pand-reference-walls/0363100012202276/w02-347.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1,
+    15,
+    16
+   ],
+   "system": "blank",
+   "cornice": true,
+   "signage": {
+    "text": "DE KWEKER",
+    "colour": "#e8e8e8",
+    "mount": "cornice"
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#b4b8b0",
+    "frame": "#e8e8e4",
+    "stone": "#a8a49a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    4,
+    5,
+    28
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 5,
+   "ground": "blank",
+   "blankStoreys": [
+    1
+   ],
+   "entrance": {
+    "bay": 1
+   },
+   "signage": {
+    "text": "ONTVANGST GOEDEREN",
+    "colour": "#e8e8e8",
+    "mount": "fascia"
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#b4b8b0",
+    "frame": "#e8e8e4",
+    "stone": "#a8a49a"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#b8b4a8",
+  "frame": "#e8e8e4",
+  "door": "#8a2a2a",
+  "stone": "#b0aca0",
+  "wallMaterial": "stucco"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Centrale Groothandelsmarkt 183 (BAG pand 0363100012202276, built 1935, 37 3DBAG wall surfaces, roof max 13.0 m): the De Kweker food wholesale warehouse in the Food Center Amsterdam, a long low hall with a curved roof. Photographed: the 106 m west front (w01-258, 2022-04-29), the north receiving end (w02-347, 2018-06-13) and the south end under a 50-year banner (w03-168, 2018-06-13).",
+  "walls[0] = panel 0 (W, 105 m, eaves 9.0, top 11.8; surfaces 1, 15, 16): grey cladding over concrete-block piers with the raised centre block carrying the DE KWEKER sign board; drawn as a blank render wall with the letters on a cornice band (the office ribbon covers only the middle 25 m, which one group per panel cannot isolate, so no windows are cut). walls[1] = panels 3 and 22 (N, 29 m and 9 m): the receiving end, drawn as a two-storey wall with a blank upper storey, a receiving door in bay 1 and ONTVANGST GOEDEREN on a fascia. Simplified: the cantilevered loading canopy, the red roller-shutter doors, the office ribbon and the white cold-store annex are not modelled; the sign board is letters, not a printed banner; the curved roof is the 3DBAG roof. Not drawn: the east wall and the south end (blank, banner only)."
+ ]
+}
