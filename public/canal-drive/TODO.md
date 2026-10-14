@@ -1272,9 +1272,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   and the Frederik Hendrikbuurt / Jordaan edge; the `recipeTiles` default
   after a ride that crosses a pilot tile; a node-tag sidecar in the extract
   (give_way, stop, traffic_signals, crossing nodes) and `cyclestreet` tags
-  so markings come from data, not priors; the tall grey box in the
-  Singelgracht water at ~4.8789, 52.3797 and the mid-canal land blob on
-  the Westerkanaal at ~4.8839, 52.3876, both uninvestigated;
+  so markings come from data, not priors; the grey box in the Singelgracht
+  and the Westerkanaal land blob are DONE (HISTORY "3DBAG ground
+  outliers": a real pand with a bad 3DBAG ground, 540 such pands citywide,
+  410 patched; the blob is the lock's middle head, pinned); open from
+  that: the five readers of `b3_h_maaiveld` that bypass `trustedGroundNap`
+  (`buildingRecipe/facts.ts`, `blockFace/compile.ts`,
+  `buildingTypes/facts.ts`, `streetChunks/ground.ts`,
+  `facade/sources/netherlands.ts`) and a full `build-bag-buildings.ts`
+  rebuild so the rule, not the patch, is the source;
   (c)–(g) are DONE above as (c)–(g); still open: (h) the Singelgracht
   bascule at the Haarlemmerpoort draws as thin green outlines on a bare
   deck, no abutments, railings or lamps; (i) a Spaarndammerbuurt footbridge
@@ -1386,10 +1392,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   hoods; still missing: side-hung casements with a fixed top light, the
   plain parapet zone, stepped corner masses; `faces/_jan-evertsen-94/`
   has the 26-pand strip, facts and uses, no intent yet) and the
-  Street-View pilot retired; two tests already red on main:
-  `scripts/street-appearance/audit-frontages.test.ts` (source-hash
-  mismatches) and the pyramid case in `surveyedEnvelopeTransport.test.ts`
-  (fix or re-record); then Jan Evertsenstraat
+  Street-View pilot retired; the two long-red tests are green (HISTORY
+  "3DBAG ground outliers": stale survey paths re-recorded, a VM harness
+  fixed); Jan Evertsenstraat survey lane running; then Jan Evertsenstraat
   (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
   and arcades bespoke, De Hallen as a large recipe; district style packs in
   `look/palette.ts` keyed by CBS buurt with a per-pand district index in

@@ -1,5 +1,53 @@
 # Canal Recall — what is built
 
+## 3DBAG ground outliers: 540 pands drawn 3–12 m too tall, the rule and the patch; the lock island stays; two stale tests (2026-10-14)
+
+Lane `lane/water-anomalies-20261014`. **The grey box in the Singelgracht**
+(user's live-play frames, ~4.8789, 52.3797) is a real low industrial
+pand, Nassaukade 63X (`NL.IMBAG.Pand.0363100012124441`), drawn 15.6 m
+tall because 3DBAG's ground (`b3_h_maaiveld`) for it is a failed estimate
+of −9.67 NAP under a +5.9 NAP roof. A scan of all 273,599 cached 3DBAG
+pands against the AHN terrain extract (`ground-height-v1`) shows 3DBAG
+ground normally a median 0.14 m below the terrain, but 540 pands more than
+3 m below it, bunched on a few repeated values (−6.36, −6.46, −6.73,
+−8.38, −9.67 NAP), among them canal-belt houses inflated by 5–8 m. Rule
+`trustedGroundNap` in `src/canalRecall/bag3dCityJson.ts`: when 3DBAG's
+ground is more than `GROUND_OUTLIER_M` = 3 m below the AHN terrain under
+the footprint, the height is measured from the terrain; 3DBAG's ground
+is kept for pands built after 2021 (after the AHN4 survey), where the
+roof would clear the terrain by under 2 m (sunken pands), and where there
+is no terrain sample; the LoD1.2 volume fallback is skipped when the
+ground is replaced. `readBagBuildings(city, terrainAt?)`, new
+`scripts/lib/terrainField.ts`, `build-bag-buildings.ts` passes the
+terrain. `scripts/fix-bag-ground-outliers.ts` writes the report and with
+`--publish` patched the published tiles in place: 410 pands, 363
+building-tile heights, 369 bag-tile heights/eaves/ridges and 369 facts
+descriptors across 184 files, heights down 3.0–12.5 m (median 5.0);
+Nassaukade 63X 15.57 → 5.42 m. The frontage survey pins three of those
+tiles by hash, rebaked, `profiles.json` byte-identical. Tests in
+`test:bag-tiles` (19/19): the outlier replaced, plausible/newer/sunken
+grounds kept, the published tile carries the re-measured height. Not yet
+on the rule: `buildingRecipe/facts.ts`, `blockFace/compile.ts`,
+`buildingTypes/facts.ts`, `streetChunks/ground.ts`,
+`facade/sources/netherlands.ts` read `b3_h_maaiveld` directly (board).
+**The Westerkanaal land blob** (~4.8839, 52.3876) is the middle head of
+the Westerkanaalschutsluis lock (OSM w797542031 / w1308281538, a ~75 m²
+island in water multipolygon r1142453 that the OpenFreeMap snapshot
+keeps; the PDOK aerial shows the concrete head with lamps between the two
+passages), not a BGT feature or a berth artefact; pinned as a regression
+in `test:own-ground` (71/71) with and without berths; the kit cannot show
+the lock gates or the catwalk. **Two tests red since before 2026-10-14:**
+`audit-frontages.test.ts` was stale (the retired Jan Evertsen profile
+left its paths and a since re-keyed tile in the survey; re-recorded with
+`bake-frontages.ts`, 80 → 70 paths, frontages byte-identical,
+`test:street-appearance` 98/98); the pyramid case in
+`surveyedEnvelopeTransport.test.ts` had a broken harness (it stripped
+only the first `import` of `pyramidal-roofs-source.js` before loading it
+in a VM; a second import and a `THREE.Scene` added in 1c78b5a5 threw a
+SyntaxError before any assertion; it now strips every import and stubs
+`Scene`, 8/8). Frames in `docs/images/live-play-20261014/anomaly-*.jpg`.
+
+
 ## Large tier reconciled: measured values on the kit systems, five pilots installed, three schools uninstalled (2026-10-14)
 
 Lane `lane/large-reconcile-20261014` (plan Part 1, lanes A + C + B2
