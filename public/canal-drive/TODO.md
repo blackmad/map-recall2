@@ -1395,6 +1395,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `look/palette.ts` keyed by CBS buurt with a per-pand district index in
   the facts sidecar and the streamed rigid canopy; a destination on each
   street for the seeded ride.
+- **P1 Canal-house windows and white accents** (user 2026-10-14 "window shape
+  on canal houses is important to me, as are white-brick accents"): the
+  survey keys are in the kit (HISTORY "Canal-house windows and white
+  accents measured into the kit"; eight `cw-*` regression houses, not
+  installed). Open: the sixteen things the kit still cannot say listed
+  there, first the four the photos show most (loading-door axes, shutters
+  whose field the fit ignores, fanlights, carved keystones); the Nassaukade
+  506 benchmark block (user photo 2026-10-14: painted bands at sill and
+  lintel, eared surrounds with keystones, timber bracketed balconies, a bay
+  window, pediment dormers, painted-black brick; lane running) and the
+  Oud-West type lane build on these keys; then a pass over the installed
+  canal-belt recipes with `windowHeights: 'diminishing'` and the measured
+  `windowShare`.
 - **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14 "are we
   accurately modeling the brick bridges"): arch count, material and
   railing type per bridge from the register and aimed panoramas into
