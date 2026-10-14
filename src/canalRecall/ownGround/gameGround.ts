@@ -32,6 +32,7 @@ import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { GROUND_TONES as G, STREET_GROUND } from '../look/palette.js';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
+import { FLAT_GROUND_GAIN } from './groundLight.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -87,6 +88,8 @@ const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
+/** Materials that are objects on the ground, not the ground: lit by the rig as is (no FLAT_GROUND_GAIN). */
+const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram']);
 const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 
 export class OwnGround {
@@ -318,7 +321,7 @@ export class OwnGround {
   private installFar(b: BuiltFar): void {
     const THREE = this.THREE, t0 = performance.now();
     this.dropFar(b.key);
-    if (!this.base.far) this.base.far = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 });
+    if (!this.base.far) { this.base.far = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 }); this.base.far.color.multiplyScalar(FLAT_GROUND_GAIN); }
     const group = new THREE.Group(), parts = new Map<string, any>();
     group.name = `own-ground/far/${b.key}`;
     group.matrixAutoUpdate = false;
@@ -473,6 +476,8 @@ export class OwnGround {
       furniture: std({ vertexColors: true, roughness: 0.8, side: THREE.DoubleSide }),
     };
     for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
+    // Level sunlit ground draws its palette luminance (groundLight.ts); objects standing on it keep the rig's light as the buildings do.
+    for (const [layer, m] of Object.entries(M)) if (!UNGAINED.has(layer)) m.color.multiplyScalar(FLAT_GROUND_GAIN);
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
     const overlay = (color: string, k: number, o: Record<string, unknown> = {}) => new THREE.MeshBasicMaterial({ color, polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k, ...o });
     M.routeCasing = overlay('#03121c', 5, { transparent: true, opacity: 0.75, depthWrite: false });
