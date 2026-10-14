@@ -1,0 +1,7 @@
+{ "mode": "boat", "dest": "Artis", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "nijlpaardenbrug-boat", "at": [4.913013, 52.368881, 119] },
+    { "name": "armand-sunierbrug-boat", "at": [4.91795, 52.36770, 125] },
+    { "name": "bru0080-boat", "at": [4.91905, 52.36850, 160] }
+  ] }
