@@ -36759,10 +36759,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169214",
       "name": "Utrechtsestraat 15 / Rembrandtplein, Amsterdam (Booking.com HQ): 1932 Amsterdam School office block, brick with granite base, stepped to 36 m",
-      "hash": "bbf0c3d4845c60a588cafd3f7d189717b0a74ef3a036caffdc46c280ffd3232d",
-      "sha256": "bbf0c3d4845c60a588cafd3f7d189717b0a74ef3a036caffdc46c280ffd3232d",
-      "bytes": 699508,
-      "triangles": 8911,
+      "hash": "14fd26b54b6a0b1c43ad9ab3659b3fe341d113248f1e98b4a7ed678b065acc40",
+      "sha256": "14fd26b54b6a0b1c43ad9ab3659b3fe341d113248f1e98b4a7ed678b065acc40",
+      "bytes": 737944,
+      "triangles": 9407,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -36948,7 +36948,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169214",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:00:48.635Z"
+      "updatedAt": "2026-10-14T03:14:33.034Z"
     },
     {
       "id": "ordinary-0363100012185422",
