@@ -48951,10 +48951,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165086",
       "name": "Singel 457 / Kalverstraat (Kalverpassage), Amsterdam-Centrum: red-brick Singel range with white stone bands and a stepped centre gable, a pale stone curved corner block, and the grey-brick Kalverpassage entrance block on Kalverstraat",
-      "hash": "dfcb1af1e6365c205c875f648b3ec35e711006de343141ffc22785e54606a3a2",
-      "sha256": "dfcb1af1e6365c205c875f648b3ec35e711006de343141ffc22785e54606a3a2",
-      "bytes": 950236,
-      "triangles": 11765,
+      "hash": "a58a1fce6377f78c90788594cbaad404050a07740654f335cd6e2888bbf033c4",
+      "sha256": "a58a1fce6377f78c90788594cbaad404050a07740654f335cd6e2888bbf033c4",
+      "bytes": 917836,
+      "triangles": 11347,
       "materials": 15,
       "textures": 0,
       "scale": 1,
@@ -49257,7 +49257,7 @@
           "brick-bay-grid+entrance 5st 10b",
           "brick-bay-grid 5st 2b",
           "brick-bay-grid 5st 4b",
-          "brick-bay-grid 6st 6b"
+          "brick-bay-grid 5st 6b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
@@ -49273,8 +49273,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165086",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:46:43.613Z",
-      "meshHash": "a7492cb3eeaa79c7"
+      "updatedAt": "2026-10-14T04:53:57.656Z",
+      "meshHash": "4987b432cd597ef0"
     },
     {
       "id": "ordinary-0363100012165488",

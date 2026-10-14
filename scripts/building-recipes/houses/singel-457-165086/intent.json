@@ -90,6 +90,7 @@
       "alignWith": 0,
       "baysPerStorey": 2,
       "blankStoreys": [
+        3,
         4
       ],
       "arches": {
@@ -148,7 +149,7 @@
       ],
       "street": "Kalverstraat",
       "system": "brick-bay-grid",
-      "storeys": 6,
+      "storeys": 5,
       "baysPerStorey": 6,
       "ground": "glazed",
       "blankStoreys": [
@@ -195,6 +196,7 @@
     "walls[2] = panels 277, 308, 50, 43 and the curve facets 186/29/24/31 (w03-190): the curved pale stone corner block. It has shop windows on the ground, a tall first storey and glass-railed balconies on the upper storeys, with one bay rhythm round the curve.",
     "walls[3] = panel 45 (w02-46): the Kalverpassage entrance block on Kalverstraat in grey-brown brick. It has a glazed passage ground with a blank band over it, a glass-railed balcony run, and the vertical KALVERPASSAGE sign as wall lettering. 6 bays for the photographed 7 (triangle budget).",
     "Simplified or not drawn: the Amsterdam arms over the west door, the cartouches and gable finials, the pergola and the glass pavilion roofs (the 3DBAG roof carries their mass), and the lattice ceiling and round piers of the passage. The dark glass corner on Kalverstraat (w05-45, 10 m) and the court walls are blank (otherWalls).",
-    "walls[2]/[3] sills off: the wall-profile fix (layered default) put the house at 12,257 tris; the curved stone corner and the Kalverstraat block lose least."
+    "walls[2]/[3] sills off: the wall-profile fix (layered default) put the house at 12,257 tris; the curved stone corner and the Kalverstraat block lose least.",
+    "walls[3] storeys 5 (photo reads 6): at 6 the storey-4 window in bay 0 straddles the horizontal seam between 3DBAG surfaces 46 and 208, cannot be cut, and is laid 1.5 cm proud (3.1 m² coplanar z-fight); a kit cut across coplanar merged surfaces would let it go back to 6."
   ]
 }
