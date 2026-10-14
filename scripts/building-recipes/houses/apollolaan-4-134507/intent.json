@@ -1,0 +1,132 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "apollolaan-4-134507",
+ "pandId": "0363100012134507",
+ "address": "Apollolaan 4 / Stadionweg 5 (Apollohal), Amsterdam-Zuid (Olympisch Kwartier): 1934 sports hall of brick with a tall glazed upper hall, a curved glass roof edge, brick entrance annexes with round windows and a canopied glass entrance",
+ "sources": [
+  {
+   "id": "pano-2017-04-19-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2017-04-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000263_pano_0001_001030/",
+   "image": "staging/pand-reference-walls/0363100012134507/w01-231.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-13-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001706_pano_0000_002372/",
+   "image": "staging/pand-reference-walls/0363100012134507/w04-321.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-13-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001706_pano_0000_002367/",
+   "image": "staging/pand-reference-walls/0363100012134507/w05-321.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-05-w06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-05",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241105_1055_Track29_Sphere_00126/",
+   "image": "staging/pand-reference-walls/0363100012134507/w06-231.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    27
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 22,
+   "ground": "blank",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#a89070",
+    "frame": "#8ea8b4",
+    "stone": "#c8c0ac"
+   },
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    23,
+    15,
+    19
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#9a5a44",
+    "frame": "#e8e6dc",
+    "stone": "#c8c0ac"
+   }
+  },
+  {
+   "wallSurfaces": [
+    16,
+    90
+   ],
+   "system": "curtain-wall",
+   "storeys": 1,
+   "ground": "glazed",
+   "signage": {
+    "text": "APOLLOHAL",
+    "colour": "#b8c4c0",
+    "mount": "cornice"
+   },
+   "palette": {
+    "brick": "#9a5a44",
+    "frame": "#8ea8b4",
+    "stone": "#c8c0ac"
+   }
+  },
+  {
+   "wallSurfaces": [
+    34
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "entrance": {
+    "bay": 1,
+    "canopy": true
+   },
+   "palette": {
+    "brick": "#a89070",
+    "frame": "#8ea8b4",
+    "stone": "#c8c0ac"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#a89070",
+  "frame": "#9ab0b8",
+  "door": "#2a2a2a",
+  "stone": "#c8c0ac"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Apollolaan 4 / Stadionweg 5 (BAG pand 0363100012134507, built 1934, 98 3DBAG wall surfaces, roof max 14.5 m): the Apollohal, the 1934 sports hall of the Olympic quarter in Amsterdam-Zuid: a long brick hall with a glazed clerestory and a curved glass roof edge, flanked by two-storey brick annexes with round windows and a canopied glass entrance on the Stadionweg side. Photographed: the long south-west flank (w01-231, 2017-04-19), the north-west annexes and glazed gable (w04-321 and w05-321, 2020-05-13) and the glazed entrance (w06-231, 2024-11-05); w02-51 and w03-51 have no panorama within 35 m.",
+  "walls[0] = panel 22 (SW, 66.6 m, eaves 11.9): a blank brick plinth under two glazed bands, drawn as 3 storeys with a blank ground and 22 bays of wide windows without sills. walls[1] = panels 21, 13 and 17 (NW, 11 m, 10 m and 9 m, eaves 6.3): the two-storey brick annex fronts with white-framed windows, 2 storeys x 3 bays. walls[2] = panel 14 (NW, 35.7 m, eaves 12.1 over a 6.8 m base): the glazed gable of the hall above the annexes, drawn as a one-storey curtain wall with mullions and transoms, with APOLLOHAL on a name band (the photographed letters are on the glass). walls[3] = panel 31 (SW end, 9.8 m, eaves 3.6): the glazed entrance under a flat canopy, one storey with a glazed ground and an entrance with canopy in bay 1.",
+  "Simplified: the glass gable is a flat curtain wall (the photographed hall edge is curved), the clerestory on the long flank is wide windows over a blank base, the entrance is a canopy and a glazed door set in three bays, the round windows of the annexes are not modelled and stay plain wall. Not drawn: the south-east end wall, the north-east long wall (panels 63, 44, 26, no panorama) and the low service range on the north-east, which stay blank brick."
+ ]
+}

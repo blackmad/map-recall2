@@ -1,0 +1,122 @@
+{
+ "schemaVersion": 1,
+ "id": "apollolaan-4-134507",
+ "pand": "0363100012134507",
+ "signature": [
+  "apollohal-glass-gable",
+  "hall-name-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w01-231",
+   "bearing": 231,
+   "lengthM": 74,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000263_pano_0001_001030",
+   "capturedAt": "2017-04-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "hall-long-flank",
+     "kind": "window-shape",
+     "where": "long south-west flank: blank brick plinth under a tall glazed clerestory with a curved glass roof edge",
+     "approxSizeM": [
+      66,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 3 storeys with blank ground and wide windows without sills; the roof edge curve is 3DBAG roof",
+     "seenIn": "TMX7316010203-000263_pano_0001_001030"
+    }
+   ]
+  },
+  {
+   "tag": "w04-321",
+   "bearing": 321,
+   "lengthM": 11.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001706_pano_0000_002372",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-annex-round-windows",
+     "kind": "window-shape",
+     "where": "two-storey brick annex with white-framed windows and a round window by the entrance",
+     "approxSizeM": [
+      11,
+      6
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 2 storeys x 3 bays; the round window is left as a plain wall",
+     "seenIn": "TMX7316010203-001706_pano_0000_002372"
+    }
+   ]
+  },
+  {
+   "tag": "w05-321",
+   "bearing": 321,
+   "lengthM": 10.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001706_pano_0000_002367",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "apollohal-glass-gable",
+     "kind": "window-shape",
+     "where": "tall glass gable of the hall over the annexes with mullions and transoms",
+     "approxSizeM": [
+      35,
+      6
+     ],
+     "plan": "modelled",
+     "how": "walls[2] curtain wall group with drawCurtainGrid mullions and transoms",
+     "seenIn": "TMX7316010203-001706_pano_0000_002367"
+    },
+    {
+     "id": "hall-name-lettering",
+     "kind": "lettering",
+     "where": "APOLLOHAL in large letters on the glazed gable",
+     "approxSizeM": [
+      8,
+      1.2
+     ],
+     "plan": "modelled",
+     "how": "walls[2] signage APOLLOHAL on a name band",
+     "seenIn": "TMX7316010203-001706_pano_0000_002367"
+    }
+   ]
+  },
+  {
+   "tag": "w06-231",
+   "bearing": 231,
+   "lengthM": 10,
+   "evidence": "photo",
+   "panoId": "b_20241105_1055_Track29_Sphere_00126",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "canopied-glass-entrance",
+     "kind": "canopy",
+     "where": "glazed entrance hall with a flat projecting canopy",
+     "approxSizeM": [
+      10,
+      6
+     ],
+     "plan": "modelled",
+     "how": "walls[3] entrance with canopy in bay 1 of a glazed one-storey group on panel 31",
+     "seenIn": "b_20241105_1055_Track29_Sphere_00126"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
