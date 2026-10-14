@@ -122,11 +122,10 @@ Task {
 }
 
 do {
-    try session.process(requests: [
-        .poses,
-        .modelFile(url: out.appendingPathComponent("model.usdz"), detail: detail),
-        .modelFile(url: out.appendingPathComponent("obj", isDirectory: true), detail: detail),
-    ])
+    // .raw is refused (processError) when a .usdz file is requested too; write only the OBJ folder for it.
+    var requests: [PhotogrammetrySession.Request] = [.poses, .modelFile(url: out.appendingPathComponent("obj", isDirectory: true), detail: detail)]
+    if detailName != "raw" { requests.append(.modelFile(url: out.appendingPathComponent("model.usdz"), detail: detail)) }
+    try session.process(requests: requests)
 } catch {
     report["error"] = "\(error)"
     writeReport("process-failed")

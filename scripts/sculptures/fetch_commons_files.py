@@ -48,10 +48,14 @@ for title in titles:
            "downloadUrl": info.get("thumburl") or info["url"], "admitted": admitted}
     if admitted:
         name = re.sub(r"[^A-Za-z0-9._-]+", "_", page["title"][5:])
-        time.sleep(1.5)
-        body = fetch(rec["downloadUrl"])
-        with open(os.path.join(out, name), "wb") as f:
-            f.write(body)
+        path = os.path.join(out, name)
+        if os.path.exists(path):  # resume after a 429 abort
+            body = open(path, "rb").read()
+        else:
+            time.sleep(1.5)
+            body = fetch(rec["downloadUrl"])
+            with open(path, "wb") as f:
+                f.write(body)
         rec["local"], rec["sha256"] = name, hashlib.sha256(body).hexdigest()
     records.append(rec)
     print(rec["title"], "|", lic, "|", rec["author"], "|", "admitted" if admitted else "REFUSED")
