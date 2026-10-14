@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -41686,6 +41686,569 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:26:36.733Z"
+    },
+    {
+      "id": "ordinary-0363100012165293",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012165293",
+      "name": "Pijlsteeg 31 / Warmoesstraat 173, Amsterdam: Grand Hotel Krasnapolsky block (stone-and-brick hotel front, 1970s concrete arcade wing, Damstraat corner fronts)",
+      "hash": "59f61cad0fdec57cdfb8e557c7afae4094b0db7e6ae43c4b46e767145723bc90",
+      "sha256": "59f61cad0fdec57cdfb8e557c7afae4094b0db7e6ae43c4b46e767145723bc90",
+      "bytes": 548520,
+      "triangles": 6807,
+      "materials": 15,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -50.104,
+          0,
+          -56.557
+        ],
+        "max": [
+          83.765,
+          27.557,
+          81.686
+        ]
+      },
+      "anchor": [
+        4.8949574,
+        52.3727268
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8953983,
+              52.3720649
+            ],
+            [
+              4.8953987,
+              52.3720653
+            ],
+            [
+              4.8956151,
+              52.3719953
+            ],
+            [
+              4.8956653,
+              52.3720007
+            ],
+            [
+              4.8957766,
+              52.3720877
+            ],
+            [
+              4.8957723,
+              52.3720911
+            ],
+            [
+              4.8957742,
+              52.3720931
+            ],
+            [
+              4.8954886,
+              52.3721845
+            ],
+            [
+              4.8951827,
+              52.3722808
+            ],
+            [
+              4.895216,
+              52.372319
+            ],
+            [
+              4.8952076,
+              52.3723216
+            ],
+            [
+              4.8952402,
+              52.37236
+            ],
+            [
+              4.8953866,
+              52.3723132
+            ],
+            [
+              4.8954267,
+              52.372368
+            ],
+            [
+              4.8953083,
+              52.3724023
+            ],
+            [
+              4.895279,
+              52.372367
+            ],
+            [
+              4.895229,
+              52.372383
+            ],
+            [
+              4.8953526,
+              52.3725274
+            ],
+            [
+              4.8953733,
+              52.3725211
+            ],
+            [
+              4.8953939,
+              52.3725456
+            ],
+            [
+              4.8953946,
+              52.3725466
+            ],
+            [
+              4.8953949,
+              52.3725476
+            ],
+            [
+              4.8953949,
+              52.3725492
+            ],
+            [
+              4.8953941,
+              52.3725507
+            ],
+            [
+              4.8953922,
+              52.3725525
+            ],
+            [
+              4.8953901,
+              52.3725535
+            ],
+            [
+              4.8952776,
+              52.3725895
+            ],
+            [
+              4.8952952,
+              52.3726092
+            ],
+            [
+              4.8953938,
+              52.3725775
+            ],
+            [
+              4.8954762,
+              52.3726786
+            ],
+            [
+              4.8958938,
+              52.3725512
+            ],
+            [
+              4.8959208,
+              52.372582
+            ],
+            [
+              4.8958081,
+              52.3726188
+            ],
+            [
+              4.8959144,
+              52.3727361
+            ],
+            [
+              4.896033,
+              52.3726981
+            ],
+            [
+              4.8961857,
+              52.3728832
+            ],
+            [
+              4.8955997,
+              52.3730661
+            ],
+            [
+              4.8956011,
+              52.3730677
+            ],
+            [
+              4.8955421,
+              52.3730862
+            ],
+            [
+              4.8955363,
+              52.3730792
+            ],
+            [
+              4.8951539,
+              52.3731987
+            ],
+            [
+              4.89516,
+              52.3732057
+            ],
+            [
+              4.8951428,
+              52.3732113
+            ],
+            [
+              4.8951416,
+              52.3732097
+            ],
+            [
+              4.8950586,
+              52.3732355
+            ],
+            [
+              4.894899,
+              52.3731408
+            ],
+            [
+              4.8949007,
+              52.3731398
+            ],
+            [
+              4.8948732,
+              52.3731233
+            ],
+            [
+              4.8948713,
+              52.3731245
+            ],
+            [
+              4.8948632,
+              52.3731193
+            ],
+            [
+              4.8948643,
+              52.3731187
+            ],
+            [
+              4.8948263,
+              52.3730943
+            ],
+            [
+              4.8948252,
+              52.3730949
+            ],
+            [
+              4.8948186,
+              52.3730907
+            ],
+            [
+              4.894824,
+              52.3730876
+            ],
+            [
+              4.8947997,
+              52.373072
+            ],
+            [
+              4.8947944,
+              52.3730751
+            ],
+            [
+              4.8947888,
+              52.3730715
+            ],
+            [
+              4.8947941,
+              52.3730684
+            ],
+            [
+              4.8947744,
+              52.3730557
+            ],
+            [
+              4.894769,
+              52.3730588
+            ],
+            [
+              4.894763,
+              52.3730549
+            ],
+            [
+              4.8947683,
+              52.3730518
+            ],
+            [
+              4.8947485,
+              52.3730391
+            ],
+            [
+              4.8947432,
+              52.3730422
+            ],
+            [
+              4.8947376,
+              52.3730386
+            ],
+            [
+              4.894743,
+              52.3730355
+            ],
+            [
+              4.8947187,
+              52.3730199
+            ],
+            [
+              4.8947133,
+              52.373023
+            ],
+            [
+              4.8947123,
+              52.3730232
+            ],
+            [
+              4.8947063,
+              52.3730191
+            ],
+            [
+              4.8947075,
+              52.3730185
+            ],
+            [
+              4.894702,
+              52.3730148
+            ],
+            [
+              4.8947068,
+              52.3730122
+            ],
+            [
+              4.8946852,
+              52.3729975
+            ],
+            [
+              4.8946805,
+              52.3730001
+            ],
+            [
+              4.8946756,
+              52.3729967
+            ],
+            [
+              4.8946745,
+              52.3729973
+            ],
+            [
+              4.8946686,
+              52.3729933
+            ],
+            [
+              4.8946702,
+              52.3729924
+            ],
+            [
+              4.8945754,
+              52.3729246
+            ],
+            [
+              4.8945743,
+              52.3729251
+            ],
+            [
+              4.8945441,
+              52.3729044
+            ],
+            [
+              4.8944935,
+              52.3728692
+            ],
+            [
+              4.8944843,
+              52.3728625
+            ],
+            [
+              4.8944854,
+              52.3728619
+            ],
+            [
+              4.8944506,
+              52.3728352
+            ],
+            [
+              4.8944494,
+              52.3728357
+            ],
+            [
+              4.8944446,
+              52.3728321
+            ],
+            [
+              4.8944431,
+              52.3728328
+            ],
+            [
+              4.8942648,
+              52.3726866
+            ],
+            [
+              4.894266,
+              52.3726861
+            ],
+            [
+              4.8942244,
+              52.3726524
+            ],
+            [
+              4.8942258,
+              52.3726517
+            ],
+            [
+              4.8942225,
+              52.3726491
+            ],
+            [
+              4.894231,
+              52.3726457
+            ],
+            [
+              4.8942301,
+              52.3726448
+            ],
+            [
+              4.8943296,
+              52.3726053
+            ],
+            [
+              4.8943305,
+              52.3726062
+            ],
+            [
+              4.894339,
+              52.3726028
+            ],
+            [
+              4.8943399,
+              52.3726036
+            ],
+            [
+              4.8946145,
+              52.372499
+            ],
+            [
+              4.8946532,
+              52.3724846
+            ],
+            [
+              4.8946589,
+              52.372483
+            ],
+            [
+              4.8946624,
+              52.3724876
+            ],
+            [
+              4.8946783,
+              52.3724831
+            ],
+            [
+              4.8946778,
+              52.3724822
+            ],
+            [
+              4.8946776,
+              52.3724812
+            ],
+            [
+              4.8946778,
+              52.3724802
+            ],
+            [
+              4.8946782,
+              52.3724792
+            ],
+            [
+              4.8946789,
+              52.3724783
+            ],
+            [
+              4.8946798,
+              52.3724775
+            ],
+            [
+              4.894681,
+              52.3724769
+            ],
+            [
+              4.8946824,
+              52.3724763
+            ],
+            [
+              4.8949444,
+              52.3723925
+            ],
+            [
+              4.8949215,
+              52.3723633
+            ],
+            [
+              4.8948865,
+              52.3723743
+            ],
+            [
+              4.8947898,
+              52.3722617
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 27.56,
+      "height": 27.56,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-pijlsteeg-31-165293.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012165293"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "pijlsteeg-31-165293",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012165293/w06-307.jpg",
+          "staging/pand-reference-walls/0363100012165293/w01-208.jpg",
+          "staging/pand-reference-walls/0363100012165293/w05-212.jpg",
+          "staging/pand-reference-walls/0363100012165293/w07-208.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 4b",
+          "brick-bay-grid 3st 9b",
+          "brick-bay-grid 5st 3b",
+          "brick-bay-grid 5st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Pijlsteeg 31 (BAG, built 1994 as the latest rebuild) is the Grand Hotel Krasnapolsky block between Warmoesstraat, Damstraat and Pijlsteeg: 701 3DBAG wall surfaces round several courts, so only the four photographed street runs are drawn and every other wall stays blank brick (otherWalls).",
+        "walls[1] = panel 121 (SW, w01-208): the 1970s concrete gallery wing on the Damstraat side: a shop arcade on slim piers, one storey of nine tall curved glass bays between brick-faced piers under a deep concrete fascia, and a blank attic band with eleven small vents. Drawn as ground glazed, one tall narrow-window storey in stone material and a blank attic storey. Simplified: the curved (barrel) glazing is flat, the stepped concrete corbels on the attic are not drawn.",
+        "walls[2] = panel 475 (SW, w05-212): the hotel front on the Damstraat corner, a cream-painted stone front with a three-bay glazed ground floor under an awning, a signed fascia (HOTEL) and tall blue-grey framed windows. walls[3] = panel 80 (SW, w07-208): the red-framed Asian Spirit shopfront with a tall mullioned shop window and iron-red upper glazing. Both are drawn as glazed ground plus wide-window storeys; the shop lettering, awnings and the HOTEL fascia sign are not modelled (shop signage is tenant-specific and was changed within the capture year).",
+        "Not photographed or not exposed: the courts, the Pijlsteeg side and the north-east wings (no panorama within 35 m or only over scaffolding); they stay blank."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165293",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T01:11:33.396Z"
     }
   ]
 }

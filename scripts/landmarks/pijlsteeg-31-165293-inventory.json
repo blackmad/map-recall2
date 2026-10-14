@@ -1,0 +1,211 @@
+{
+ "schemaVersion": 1,
+ "id": "pijlsteeg-31-165293",
+ "pand": "0363100012165293",
+ "signature": [
+  "hotel-front-entrance",
+  "gallery-glass-bays"
+ ],
+ "walls": [
+  {
+   "tag": "w01-208",
+   "bearing": 208,
+   "lengthM": 46.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_003049",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "gallery-glass-bays",
+     "kind": "window-shape",
+     "where": "nine tall curved glass bays between brick piers over a shop arcade, under a deep concrete fascia",
+     "approxSizeM": [
+      46,
+      8
+     ],
+     "plan": "simplified",
+     "how": "walls[1] ground glazed + one tall narrow-window storey in stone material on 9 bays; the barrel curve of the glazing is flat",
+     "seenIn": "TMX7316010203-001174_pano_0000_003049"
+    },
+    {
+     "id": "attic-corbels",
+     "kind": "other",
+     "where": "stepped concrete corbels and vents on the blank attic band",
+     "approxSizeM": [
+      46,
+      2
+     ],
+     "plan": "simplified",
+     "how": "the attic storey is plain wall; corbels are below the component grain",
+     "seenIn": "TMX7316010203-001174_pano_0000_003049"
+    }
+   ]
+  },
+  {
+   "tag": "w02-28",
+   "bearing": 28,
+   "lengthM": 45.4,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w03-27",
+   "bearing": 27,
+   "lengthM": 44.8,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-28",
+   "bearing": 28,
+   "lengthM": 29.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001662_pano_0000_001459",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-block-doors",
+     "kind": "other",
+     "where": "timber double doors in a glass-block and lattice surround on the north-east side wall",
+     "approxSizeM": [
+      3,
+      3.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a single door leaf pair on a wall that is otherwise blank in the recipe (no panorama of the whole wall)"
+     },
+     "seenIn": "TMX7316010203-001662_pano_0000_001459"
+    }
+   ]
+  },
+  {
+   "tag": "w05-212",
+   "bearing": 212,
+   "lengthM": 25.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02272",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "hotel-fascia-sign",
+     "kind": "sign",
+     "where": "HOTEL sign letters on the cream fascia above the glazed ground floor",
+     "approxSizeM": [
+      5,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage and awnings, replaced between captures"
+     },
+     "seenIn": "recording_2025-06-16_06-42-40_02272"
+    }
+   ]
+  },
+  {
+   "tag": "w06-307",
+   "bearing": 307,
+   "lengthM": 20.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001658_pano_0000_002180",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "hotel-front-entrance",
+     "kind": "canopy",
+     "where": "right-hand bay: arched NH GRAND HOTEL KRASNAPOLSKY entrance flanked by two lanterns",
+     "approxSizeM": [
+      4,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] portal entrance in bay 3 on the stone ground storey; the arch head, the lettering and the two lanterns are not drawn (the lantern component fails parts-attached on this panel)",
+     "seenIn": "TMX7316010203-001658_pano_0000_002180"
+    },
+    {
+     "id": "hotel-balconies",
+     "kind": "balcony-ironwork",
+     "where": "iron-railed balconies over the ground-floor windows, one per bay",
+     "approxSizeM": [
+      18,
+      1
+     ],
+     "plan": "modelled",
+     "how": "walls[0].balconies storey 1, bar rail",
+     "seenIn": "TMX7316010203-001658_pano_0000_002180"
+    },
+    {
+     "id": "carved-cartouches",
+     "kind": "relief",
+     "where": "carved stone panels between the brick piers and over the first-floor windows",
+     "approxSizeM": [
+      14,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "panels under 0.4 m deep relief at 15 cm scale, unreadable at ride distance"
+     },
+     "seenIn": "TMX7316010203-001658_pano_0000_002180"
+    }
+   ]
+  },
+  {
+   "tag": "w07-208",
+   "bearing": 208,
+   "lengthM": 20.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001710",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "shopfront-red-frames",
+     "kind": "window-shape",
+     "where": "red-framed mullioned shop window with arched transom and ASIAN SPIRIT lettering",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "simplified",
+     "how": "walls[3] glazed ground storey with the frame colour set red; the arched transom and lettering are not drawn",
+     "seenIn": "TMX7316010203-002031_pano_0001_001710"
+    }
+   ]
+  },
+  {
+   "tag": "w08-118",
+   "bearing": 118,
+   "lengthM": 18.2,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
