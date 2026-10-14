@@ -255,8 +255,8 @@
             2.6,
             0.9
           ],
-          "plan": "simplified",
-          "how": "pavilionOrnaments, same frieze as the Mauritskade face",
+          "plan": "modelled",
+          "how": "pavilionFace (tropenmuseum-pavilion.ts, measured in tropenmuseum-facades.json): relief slab at the measured size under a dentil cornice and a ledge; the carved figures are not modelled (no invented iconography)",
           "seenIn": "TMX7316010203-002310_pano_0001_001995"
         },
         {
@@ -280,7 +280,31 @@
             3
           ],
           "plan": "modelled",
-          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "how": "pavilionFace: round-arched triple head (arch band, imposts, keystone) over two tiers of triple lights, side windows with corniced hoods, round-arched barred souterrain windows; all from the 50 px/m crop",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        },
+        {
+          "id": "np-dentil-cornice-ne",
+          "kind": "other",
+          "where": "stone dentil cornice under the stage above the third floor",
+          "approxSizeM": [
+            10.8,
+            0.55
+          ],
+          "plan": "modelled",
+          "how": "pavilionFace cornice with dentil blocks; its height (21.45 m) is inferred from w12-331 because it lies above the crop",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        },
+        {
+          "id": "np-souterrain-arches-ne",
+          "kind": "window-shape",
+          "where": "four round-arched barred windows in the raised souterrain under the string course",
+          "approxSizeM": [
+            0.95,
+            1.85
+          ],
+          "plan": "modelled",
+          "how": "pavilionFace souterrain: arch openings with stone band, imposts and keystone, iron frames",
           "seenIn": "TMX7316010203-002310_pano_0001_001995"
         }
       ]
@@ -363,8 +387,8 @@
             2.6,
             0.9
           ],
-          "plan": "simplified",
-          "how": "pavilionOrnaments: stone frieze panels with four relief figure stubs; no iconography",
+          "plan": "modelled",
+          "how": "pavilionFace (tropenmuseum-pavilion.ts, measured in tropenmuseum-facades.json): relief slab at the measured size under a dentil cornice and a ledge; the carved figures are not modelled (no invented iconography)",
           "seenIn": "recording_2025-09-30_11-08-39_00754"
         },
         {
@@ -400,7 +424,43 @@
             0.9
           ],
           "plan": "modelled",
-          "how": "anchorIron on alternate floors",
+          "how": "anchorIron at the measured positions (tropenmuseum-facades.json), one per bay line and floor",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-dentil-cornice",
+          "kind": "other",
+          "where": "dentil cornice with console blocks under the stage above the arched head",
+          "approxSizeM": [
+            11.4,
+            0.55
+          ],
+          "plan": "modelled",
+          "how": "pavilionFace cornice at 20.95-21.5 m; the console blocks are plain stone, the lion masks are not modelled",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-souterrain-arches",
+          "kind": "window-shape",
+          "where": "three visible round-arched barred souterrain windows (a fourth behind the road sign, mirrored)",
+          "approxSizeM": [
+            0.95,
+            1.8
+          ],
+          "plan": "modelled",
+          "how": "pavilionFace souterrain arches",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-arched-head",
+          "kind": "window-shape",
+          "where": "round-arched triple window head over the third-floor triple, with stone voussoir blocks",
+          "approxSizeM": [
+            2.65,
+            2.0
+          ],
+          "plan": "modelled",
+          "how": "pavilionFace arched head opening with arch band, imposts and keystone",
           "seenIn": "recording_2025-09-30_11-08-39_00754"
         }
       ]
@@ -498,8 +558,20 @@
             2.6,
             0.9
           ],
-          "plan": "simplified",
-          "how": "pavilionOrnaments frieze",
+          "plan": "modelled",
+          "how": "pavilionFace (tropenmuseum-pavilion.ts, measured in tropenmuseum-facades.json): relief slab at the measured size under a dentil cornice and a ledge; the carved figures are not modelled (no invented iconography)",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        },
+        {
+          "id": "sp-souterrain-arches",
+          "kind": "window-shape",
+          "where": "four round-arched barred souterrain windows",
+          "approxSizeM": [
+            0.75,
+            1.4
+          ],
+          "plan": "modelled",
+          "how": "pavilionFace souterrain arches (surface 172, up to its 12 m top)",
           "seenIn": "TMX7316010203-001674_pano_0000_003626"
         }
       ]

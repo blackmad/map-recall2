@@ -45,9 +45,9 @@ export function gableCrown(c: PanelCtx, stats: KitStats, eaves: number, statue: 
  * centre window of the first two floors above the ground storey, iron anchors between the bays on every other floor, and a clock dial
  * on the wall top rising over the eaves.
  */
-export function pavilionOrnaments(c: PanelCtx, stats: KitStats, cells: Cell[], eaves: number, dial: boolean) {
+export function pavilionOrnaments(c: PanelCtx, stats: KitStats, cells: Cell[], eaves: number, dial: boolean, measured = false) {
   const p = c.p, part = c.part();
-  const centre = cells.filter(k => k.bay === Math.floor(k.bays / 2) && k.floor >= 1 && k.floor <= 2);
+  const centre = measured ? [] : cells.filter(k => k.bay === Math.floor(k.bays / 2) && k.floor >= 1 && k.floor <= 2);
   for (const k of centre) {
     const uc = (k.u0 + k.u1) / 2, hw = Math.min(1.3, (k.u1 - k.u0) / 2 - 0.2), v0 = k.v0 + 0.12;
     solid(c, STONE, uc - hw, uc + hw, v0, v0 + 0.78, 0, 0.1, part);                       // frieze ground
@@ -58,7 +58,7 @@ export function pavilionOrnaments(c: PanelCtx, stats: KitStats, cells: Cell[], e
       geom(c, STONE, new T.SphereGeometry(0.1, 5, 4), u, v0 + 0.7, 0.15, part);
     }
   }
-  for (const k of cells.filter(k => k.floor >= 1 && k.floor % 2 === 1 && k.bay < k.bays - 1)) anchorIron(c, k.u1, k.v0 + 0.25, 0.9, part);
+  if (!measured) for (const k of cells.filter(k => k.floor >= 1 && k.floor % 2 === 1 && k.bay < k.bays - 1)) anchorIron(c, k.u1, k.v0 + 0.25, 0.9, part);
   // clock dial on the wall top where it rises over the eaves (the kapel): the highest spot where the whole dial fits inside the wall
   let bestU = 0, bestV = -1, bestR = 0;
   for (let u = p.uMin + 0.9; dial && u < p.uMax - 0.9; u += 0.1) {

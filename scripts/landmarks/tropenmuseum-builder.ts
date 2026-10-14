@@ -7,9 +7,10 @@ import {barQuad, drawOpening, type PanelCtx} from '../../src/canalRecall/blockBu
 import {recess} from '../../src/canalRecall/blockBuilding/components';
 import {fitsPanel, rectPoly, type Panel} from '../../src/canalRecall/blockBuilding/panels';
 import type {WinParams} from '../../src/canalRecall/blockBuilding/spec';
-import {BAR, type KitStats} from './tropenmuseum-kit';
+import {BAR, IRON, type KitStats} from './tropenmuseum-kit';
 import {portalFront, portalGable, PORTAL_SURFACES} from './tropenmuseum-portal';
 import {gableCrown, pavilionOrnaments} from './tropenmuseum-ornaments';
+import {pavilionFace, pavilionWallOf, skipFloors} from './tropenmuseum-pavilion';
 import {largeSurfaceSet, panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge';
 import intentJson from './tropenmuseum-intent.json';
 import factsJson from './tropenmuseum-facts.json';
@@ -57,13 +58,21 @@ export function tropenmuseumHooks(stats: TropenmuseumStats): LargeCompileHooks {
   return {
     budget: 40000,
     barOffsetM: BAR,
-    skipCell: p => has(p, ...PORTAL_SURFACES),
+    afterCompose: (_m, recipe) => { recipe.spec.palette[IRON] = '#3a3a3a'; }, // wrought-iron slot, see IRON in the kit
+    skipCell: (p, floor) => {
+      if (has(p, ...PORTAL_SURFACES)) return true;
+      if (process.env.TROP_NO_FACES) return false;
+      const w = pavilionWallOf(surfacesOf(p));
+      return !!w && w.panel === p.index && floor < skipFloors(w);
+    },
     panelHook: (c, info) => {
       if (process.env.TROP_PLAIN) return;
       if (has(c.p, ...PORTAL_SURFACES)) { portalFront(c, stats); portalGable(c, stats); return; }
       const eaves = panelEaves(c.p);
       const pav = PAVILIONS.find(q => has(c.p, ...q.surfaces));
-      if (pav) pavilionOrnaments(c, stats, info.cells, eaves, pav.dial);
+      const face = process.env.TROP_NO_FACES ? undefined : pavilionWallOf(surfacesOf(c.p));
+      if (face && face.panel === c.p.index) pavilionFace(c, stats, face);
+      if (pav) pavilionOrnaments(c, stats, info.cells, eaves, pav.dial, !!face && face.panel === c.p.index);
       const crown = GABLES.find(g => has(c.p, ...g.surfaces));
       if (crown) gableCrown(c, stats, eaves, crown.statue);
     },
@@ -82,7 +91,7 @@ export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools) {
   const all: number[] = [];
   built.group.traverse(o => {
     if (!(o instanceof T.Mesh)) return;
-    const name = PALETTE[o.userData.materialSlot as string];
+    const name = o.name.endsWith('/cross') ? 'slate' : PALETTE[o.userData.materialSlot as string]; // IRON: wrought iron reads as host trim in the opening audit
     if (!name) throw Error(`tropenmuseum: no palette colour for materialSlot ${o.userData.materialSlot}`);
     const src = o.geometry as T.BufferGeometry, g = src.index ? src.toNonIndexed() : src.clone(), a = g.getAttribute('position');
     // The 3DBAG shell has sunken ramps below the street: the landmark ground is y = 0, so drop what lies fully below it and clamp the rest.
@@ -140,6 +149,8 @@ function capShellHoles(pos: number[]): number[] {
     if (perim < 5) continue;
     const v = loop.map(e => [pos[e.a * 3], pos[e.a * 3 + 1], pos[e.a * 3 + 2]]);
     if (Math.max(...v.map(p => p[1])) < 8) continue; // door recesses and plinth trim are not shell seams
+    // the hand-modelled pavilion faces (pavilion.ts) leave their own open edges below 24 m: no cap over those
+    if (Math.max(...v.map(p => p[1])) < 24 && v.every(p => (p[0] > 70 && p[0] < 90 && p[2] > -52 && p[2] < -38) || (p[0] > 94 && p[0] < 101 && p[2] > -37 && p[2] < -26))) continue;
     // the cap's triangles run against the loop's edges so each boundary edge is paired
     for (let i = 1; i < v.length - 1; i++) out.push(...v[0], ...v[i + 1], ...v[i]);
   }
