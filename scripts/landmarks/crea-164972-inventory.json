@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "id": "crea-164972",
+ "pand": "0363100012164972",
+ "signature": [
+  "arched-windows",
+  "arched-entrance"
+ ],
+ "walls": [
+  {
+   "tag": "w01-343",
+   "bearing": 343,
+   "lengthM": 59.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000883",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "arched-windows",
+     "kind": "window-shape",
+     "where": "north front: five storeys of segmental-arched windows in the left block (16 bays) and four storeys in the right block (13 bays)",
+     "approxSizeM": [
+      59,
+      18
+     ],
+     "plan": "modelled",
+     "how": "walls[0] and walls[1] arches.windows segmental, band none",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883"
+    },
+    {
+     "id": "arched-entrance",
+     "kind": "other",
+     "where": "at the foot of the right block: a pale stone surround with an arched double door",
+     "approxSizeM": [
+      4,
+      5
+     ],
+     "plan": "simplified",
+     "how": "entrance bay 0 with portal; the arch of the real door is not drawn",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883"
+    },
+    {
+     "id": "glass-top-storey",
+     "kind": "window-shape",
+     "where": "over the right block: a glazed set-back storey",
+     "approxSizeM": [
+      24,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "not drawn as glass: the storey is the 3DBAG roof mass in bitumen",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883"
+    },
+    {
+     "id": "cornice-bands",
+     "kind": "other",
+     "where": "a pale stone cornice band between the fourth storey and the glass storey, string courses between floors",
+     "approxSizeM": [
+      24,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "stringCourses on walls[1]",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883"
+    }
+   ]
+  },
+  {
+   "tag": "w04-343",
+   "bearing": 343,
+   "lengthM": 26.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001447",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "cafe-glass",
+     "kind": "lettering",
+     "where": "ground-floor glazing: CREA CAFE and TO GO written in white on the glass",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "window-glass lettering about 0.6 m high on a front whose rectified crop is closer than the wall it is mapped to"
+     },
+     "seenIn": "TMX7316010203-002047_pano_0000_001447"
+    }
+   ]
+  },
+  {
+   "tag": "w02-252",
+   "bearing": 252,
+   "lengthM": 26.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_001458",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "dark-wing",
+     "kind": "other",
+     "where": "west wing: dark grey brick over a perforated-metal base with tall narrow windows stepping up the slope of the wall",
+     "approxSizeM": [
+      26,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[4] one blank ground storey and four storeys of six tall windows in dark brick",
+     "seenIn": "TMX7316010203-002047_pano_0000_001458"
+    }
+   ]
+  },
+  {
+   "tag": "w05-163",
+   "bearing": 163,
+   "lengthM": 24.9,
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track02_Sphere_00057",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "court-windows",
+     "kind": "window-shape",
+     "where": "court wall: dark red brick with rows of small square windows in pale sills",
+     "approxSizeM": [
+      19,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[5] 5 storeys x 8 bays",
+     "seenIn": "b_20250120_1330_Track02_Sphere_00057"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000883/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001447/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001458/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_1330_Track02_Sphere_00057/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

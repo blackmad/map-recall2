@@ -88,7 +88,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.hall && info.cells.length && drawGlazedHall(c, info.cells, g.hall.baseM, panelEaves(p) - 0.05, g.hall.lights, g.hall.rows, {wall: s.wall, frame: s.frame, stone: s.stone})) counts.glazedHalls = (counts.glazedHalls ?? 0) + 1;
   if (g.columns && info.cells.length) {
     const col = g.columns, every = Math.max(1, g.bays, ...col.bays.map(b => b + 1));
-    const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: s.glass, frame: s.frame, stone: s.stone});
+    const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: col.glass ?? s.glass, frame: s.frame, stone: s.stone});
     if (k) counts.glassColumns = (counts.glassColumns ?? 0) + k;
   }
   if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
@@ -190,17 +190,54 @@ function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'f
   return deg > 30 ? 'steep' : deg > 8 ? 'low' : 'flat';
 }
 
+/**
+ * Wall colour splits (intent `wallSplit`): the group's wall triangles on its main panel whose centroid lies right of the
+ * split (`u > uM`, within 1.5 m of the wall plane) move to the split slot; triangles straddling the split are clipped
+ * at it (a straight vertical colour change). Returns the number of triangles moved or clipped. No splits: nothing changes.
+ */
+export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], panels: Panel[]): number {
+  let moved = 0;
+  for (const g of groups) {
+    if (!g.split) continue;
+    const p = panels.find(q => q.index === g.split!.panel), src = mesh.slots.get(g.slots.wall);
+    if (!p || !src) continue;
+    const keep = {positions: [] as number[], parts: [] as number[]}, out = mesh.slots.get(g.split.slot) ?? {positions: [], parts: []};
+    const uOf = (q: number[]) => (q[0] - p.o[0]) * p.r[0] + (q[1] - p.o[1]) * p.r[1] + (q[2] - p.o[2]) * p.r[2];
+    const nOf = (q: number[]) => (q[0] - p.o[0]) * p.n[0] + (q[1] - p.o[1]) * p.n[1] + (q[2] - p.o[2]) * p.n[2];
+    const emit = (dst: typeof keep, poly: number[][], part: number) => { for (let i = 1; i + 1 < poly.length; i++) { dst.positions.push(...poly[0], ...poly[i], ...poly[i + 1]); dst.parts.push(part); } };
+    for (let t = 0; t < src.parts.length; t++) {
+      const v = [0, 1, 2].map(i => src.positions.slice(t * 9 + i * 3, t * 9 + i * 3 + 3)), part = src.parts[t];
+      const c = [0, 1, 2].map(i => (v[0][i] + v[1][i] + v[2][i]) / 3), us = v.map(uOf);
+      const onPanel = Math.abs(nOf(c)) <= 1.5 && Math.min(...us) <= p.uMax + 0.05 && Math.max(...us) >= p.uMin - 0.05;
+      if (!onPanel || Math.max(...us) <= g.split.uM + 1e-4) { emit(keep, v, part); continue; }
+      if (Math.min(...us) >= g.split.uM - 1e-4) { emit(out, v, part); moved++; continue; }
+      // straddles the split: clip into the left and right polygons so the colour change is a straight vertical line
+      const left: number[][] = [], right: number[][] = [];
+      for (let i = 0; i < 3; i++) {
+        const a = v[i], b = v[(i + 1) % 3], ua = us[i], ub = us[(i + 1) % 3];
+        (ua <= g.split.uM ? left : right).push(a);
+        if ((ua - g.split.uM) * (ub - g.split.uM) < 0) { const k = (g.split.uM - ua) / (ub - ua), x = [0, 1, 2].map(j => a[j] + (b[j] - a[j]) * k); left.push(x); right.push(x); }
+      }
+      emit(keep, left, part); emit(out, right, part); moved++;
+    }
+    mesh.slots.set(g.slots.wall, keep);
+    if (out.parts.length) mesh.slots.set(g.split.slot, out);
+  }
+  return moved;
+}
+
 /** MeshBuilder slots → Three meshes (one per slot; roofs one per slope class) tagged for the GLB exporter. */
 export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe): T.Group {
   const group = new T.Group(); group.name = recipe.id;
   const roofColours = ROOF_COLOURS[recipe.roof.material], roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(recipe.roof.material) ? 'slate' : 'roofTile';
-  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string) => {
+  const measured = new Set(recipe.measuredSlots ?? []);
+  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string) => {
     if (!positions.length) return;
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
     m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
     // measured wall colour (export-glb writes `tintSource: 'measured'`; the look then keeps it instead of clamping it)
-    if (recipe.measuredSlots?.includes(name.slice(name.indexOf('/') + 1))) m.material.userData = {tintSource: 'measured'};
+    if (slot && measured.has(slot)) m.material.userData = {tintSource: 'measured'};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
@@ -213,7 +250,7 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
     const colour = recipe.spec.palette[slot];
     if (!colour) throw Error(`large tier: slot ${slot} has no palette colour`);
     const {materialSlot, surface} = largeMaterialSlot(slot, recipe);
-    add(`${surface}/${slot}`, s.positions, colour, materialSlot, surface);
+    add(`${surface}/${slot}`, s.positions, colour, materialSlot, surface, slot);
   }
   return group;
 }
@@ -264,6 +301,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   });
   drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
+  applyWallSplits(res.mesh, recipe.groups, res.panels);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
   const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? 12000});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};

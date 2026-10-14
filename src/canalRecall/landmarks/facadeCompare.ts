@@ -22,6 +22,8 @@ export type MaterialSoup = {
   materials: {name: string; rgb: [number, number, number];
     /** glTF extras: the shared-look slot (look/palette.ts MaterialSlot) under both names, its tint, and `inferred` when not authored. */
     slot?: string; materialSlot?: string; tint?: string; materialSlotSource?: string;
+    /** glTF extras `tintSource: "measured"`: the tint was measured from a photo and the city look draws it as is */
+    tintSource?: 'measured';
     /** KHR_materials_unlit (decals, printed signs): exempt from slot coverage. */
     unlit?: boolean;
     /** glTF doubleSided: both sides are drawn, so a face can z-fight from behind (geometryAudit auditZFight). */
@@ -62,6 +64,9 @@ export type FacadeInventory = {
   heightM?: [number, number];
   /** Only geometry within this many metres of the facade's front-most plane counts (default 10). */
   depthBand?: number;
+  /** The front-most plane's depth (position · outward normal) when known, instead of the 98th percentile over the span:
+   * the large-tier likeness pins it to its panel, so a nearer wing or tower in the span cannot push the band off it. */
+  frontDepth?: number;
   /** The openings form a deliberately staggered pattern (a diamond lattice): the rhythm audit then checks sizes only, not levels, missing columns or alignment. */
   staggered?: boolean;
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
@@ -123,7 +128,7 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
   const depths: number[] = [];
   for (let v = 0; v < nv; v++) if (inSpan(T[v])) depths.push(D[v]);
   depths.sort((a, b) => a - b);
-  const front = depths.length ? depths[Math.floor(depths.length * 0.98)] : 0;
+  const front = f.frontDepth ?? (depths.length ? depths[Math.floor(depths.length * 0.98)] : 0);
   const minDepth = front - (f.depthBand ?? 10);
 
   let tMin = Infinity, tMax = -Infinity, yMin = Infinity, yMax = -Infinity;
