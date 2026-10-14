@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -46435,10 +46435,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134667",
       "name": "Polderweg 3, Amsterdam-Oost (Watergraafsmeer): 1999 campus building, a four-storey bar with continuous ribbon glazing and white balcony fascias over a recessed glazed ground and a set-back top floor, joined to a timber-clad sports hall with a curved roof and steel ribs",
-      "hash": "3ca548442a174cb31ab760ffeef78db06d01c53077ae0f14a6a133975e2ed0a9",
-      "sha256": "3ca548442a174cb31ab760ffeef78db06d01c53077ae0f14a6a133975e2ed0a9",
-      "bytes": 700128,
-      "triangles": 9472,
+      "hash": "fac1d09c567f12f825b184ac2b1425f2b1e776231dc2c723382c4d3553da7411",
+      "sha256": "fac1d09c567f12f825b184ac2b1425f2b1e776231dc2c723382c4d3553da7411",
+      "bytes": 700720,
+      "triangles": 9480,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -46718,7 +46718,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134667",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:13:42.683Z"
+      "updatedAt": "2026-10-14T03:25:40.915Z"
     },
     {
       "id": "ordinary-0363100012170734",
@@ -46864,17 +46864,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170734",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:18:28.619Z"
+      "updatedAt": "2026-10-14T03:25:43.829Z"
     },
     {
       "id": "ordinary-0363100012247232",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012247232",
       "name": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
-      "hash": "c7fe912f6291a16744f5bb0e8bf50ca021e40da46c7b983ae6c9b54035bf3a15",
-      "sha256": "c7fe912f6291a16744f5bb0e8bf50ca021e40da46c7b983ae6c9b54035bf3a15",
-      "bytes": 902728,
-      "triangles": 11929,
+      "hash": "e3cf16cd7de225a5fe7dcf8a1057979e321494de85904fb75a0e66665be93479",
+      "sha256": "e3cf16cd7de225a5fe7dcf8a1057979e321494de85904fb75a0e66665be93479",
+      "bytes": 900208,
+      "triangles": 11893,
       "materials": 14,
       "textures": 0,
       "scale": 1,
@@ -47104,16 +47104,16 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247232",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:21:38.673Z"
+      "updatedAt": "2026-10-14T03:25:37.204Z"
     },
     {
       "id": "ordinary-0363100012112128",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012112128",
       "name": "Gedempt Hamerkanaal 175, Amsterdam-Noord (Hamerkwartier): 1911 workshop complex on the former Hamerkanaal, a four-storey brick-and-teal ribbon-window block on the street front and small brick workshop and house ranges on the canal side",
-      "hash": "cb49c46e5c4bca6bc2553d3561cc6371cb11a3b05f10b1be77c6ce75d9fce0d8",
-      "sha256": "cb49c46e5c4bca6bc2553d3561cc6371cb11a3b05f10b1be77c6ce75d9fce0d8",
-      "bytes": 457344,
+      "hash": "cea1d947da6a6d915f5f1dfd32a877638a43108f36c4d9f643265ec1889e2754",
+      "sha256": "cea1d947da6a6d915f5f1dfd32a877638a43108f36c4d9f643265ec1889e2754",
+      "bytes": 457152,
       "triangles": 6084,
       "materials": 12,
       "textures": 0,
@@ -47268,16 +47268,16 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012112128",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:25:53.889Z"
+      "updatedAt": "2026-10-14T03:25:36.569Z"
     },
     {
       "id": "ordinary-0363100012253824",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253824",
       "name": "Nieuwe Achtergracht 100, Amsterdam-Centrum (Roeterseiland): 1923 five-storey brick office building on the canal with cream-framed multi-pane windows, a central stair tower with a bowed oriel and entrance, stone bands and an overhanging copper roof edge",
-      "hash": "1868680a3a34c6e6b9e5c71cca9910fcd2897a374c0fee775e0efd0a8982f804",
-      "sha256": "1868680a3a34c6e6b9e5c71cca9910fcd2897a374c0fee775e0efd0a8982f804",
-      "bytes": 313800,
+      "hash": "c642c54de555f1c884edff0f669646234a719b0c004597848373589c54460663",
+      "sha256": "c642c54de555f1c884edff0f669646234a719b0c004597848373589c54460663",
+      "bytes": 313704,
       "triangles": 4131,
       "materials": 10,
       "textures": 0,
@@ -47433,17 +47433,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253824",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:28:47.575Z"
+      "updatedAt": "2026-10-14T03:25:38.084Z"
     },
     {
       "id": "ordinary-0363100012239388",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012239388",
       "name": "Oostelijke Handelskade 749, Amsterdam-Centrum (Oostelijke Handelskade): 2012 residential and office blocks in warehouse style with tall round-arched brick arcades, cream string courses and a rusticated base",
-      "hash": "48541c24f3a6fed50ff75fd3e9986d86d7f34eaddab8c00403d7307702af5e88",
-      "sha256": "48541c24f3a6fed50ff75fd3e9986d86d7f34eaddab8c00403d7307702af5e88",
-      "bytes": 1044456,
-      "triangles": 11751,
+      "hash": "ee6b24f147b46225b5229c6913c8f5d6ecd8922494f5a10b1cd46faff5329764",
+      "sha256": "ee6b24f147b46225b5229c6913c8f5d6ecd8922494f5a10b1cd46faff5329764",
+      "bytes": 1033956,
+      "triangles": 11601,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -47589,7 +47589,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239388",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:32:28.012Z",
+      "updatedAt": "2026-10-14T03:25:39.007Z",
       "aliases": [
         "NL.IMBAG.Pand.0363100012239386",
         "NL.IMBAG.Pand.0363100012239387"
@@ -47600,10 +47600,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118320",
       "name": "Waagdragerhof 198 (Pakhuis Wilhelmina), Amsterdam-Centrum (Veemkade, KNSM-eiland): 2004 block with an eleven-storey dark red brick residential tower over the retained arched brick warehouse Pakhuis Wilhelmina, whose tall arched windows carry the lettering PAK HUIS WIL HEL MINA",
-      "hash": "63d9336f035a55949e034e8ff69f5e12bf1a1ac9da0d80f5977e67a97c8c2e47",
-      "sha256": "63d9336f035a55949e034e8ff69f5e12bf1a1ac9da0d80f5977e67a97c8c2e47",
-      "bytes": 882584,
-      "triangles": 10790,
+      "hash": "d8b8a6e8ed46a2b5a57eadbf6347e7b3aff92e2502c81dfc402b36b602a0fa52",
+      "sha256": "d8b8a6e8ed46a2b5a57eadbf6347e7b3aff92e2502c81dfc402b36b602a0fa52",
+      "bytes": 904844,
+      "triangles": 11070,
       "materials": 13,
       "textures": 0,
       "scale": 1,
@@ -47729,7 +47729,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118320",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:53:57.893Z"
+      "updatedAt": "2026-10-14T03:25:46.535Z"
     },
     {
       "id": "ordinary-0363100012093853",
@@ -48065,16 +48065,16 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093853",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:57:25.184Z"
+      "updatedAt": "2026-10-14T03:25:44.912Z"
     },
     {
       "id": "ordinary-0363100012147097",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012147097",
       "name": "Balboaplein 48, Amsterdam-West (Bos en Lommer): 2004 perimeter housing block of red brick with deep balcony loggias on the south, ribbon-window north front and slate-grey clad upper storeys on the east, around courtyards",
-      "hash": "b689d0ac1f37c22b747a78b593485a8c497c58c977e806103e1220330d3ef3be",
-      "sha256": "b689d0ac1f37c22b747a78b593485a8c497c58c977e806103e1220330d3ef3be",
-      "bytes": 719832,
+      "hash": "050b9f6fb04f1b53183ef11f12d12ed21143fe2d9b8be5d674ab7f97e5a69923",
+      "sha256": "050b9f6fb04f1b53183ef11f12d12ed21143fe2d9b8be5d674ab7f97e5a69923",
+      "bytes": 719576,
       "triangles": 9649,
       "materials": 9,
       "textures": 0,
@@ -48425,17 +48425,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012147097",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T02:59:40.458Z"
+      "updatedAt": "2026-10-14T03:25:35.733Z"
     },
     {
       "id": "ordinary-0363100012134507",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134507",
       "name": "Apollolaan 4 / Stadionweg 5 (Apollohal), Amsterdam-Zuid (Olympisch Kwartier): 1934 sports hall of brick with a tall glazed upper hall, a curved glass roof edge, brick entrance annexes with round windows and a canopied glass entrance",
-      "hash": "a0794c4a64e9b060b8c363ef44be2301efe76aeeeaa85b8872c5dab7532245d6",
-      "sha256": "a0794c4a64e9b060b8c363ef44be2301efe76aeeeaa85b8872c5dab7532245d6",
-      "bytes": 361404,
-      "triangles": 4844,
+      "hash": "7ae2d8b32d75c6c95dee32e0b54e0816bb9824a45c4f1f93de894b394060282d",
+      "sha256": "7ae2d8b32d75c6c95dee32e0b54e0816bb9824a45c4f1f93de894b394060282d",
+      "bytes": 382636,
+      "triangles": 5140,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -48650,17 +48650,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134507",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:10:07.638Z"
+      "updatedAt": "2026-10-14T03:25:35.003Z"
     },
     {
       "id": "ordinary-0363100012243487",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012243487",
       "name": "Spinozastraat 51 / Sarphatistraat 104, Amsterdam-Centrum (Weesperbuurt): 2017 hotel and apartment block in sand-yellow ceramic brick with deep square window frames and green glazed roof slopes, wrapped round a retained 1890s brick-and-cream corner house and warehouse on the Sarphatistraat",
-      "hash": "6d655bfcb77ff2e9e9d0cecea136ea6b6be29cc781f4b5d7ae76ceeda92d3974",
-      "sha256": "6d655bfcb77ff2e9e9d0cecea136ea6b6be29cc781f4b5d7ae76ceeda92d3974",
-      "bytes": 876084,
-      "triangles": 11789,
+      "hash": "1a719317c42efbe7c6f56178b9771feb0ec1fa0ff50189eaa30992694677a4de",
+      "sha256": "1a719317c42efbe7c6f56178b9771feb0ec1fa0ff50189eaa30992694677a4de",
+      "bytes": 875532,
+      "triangles": 11777,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -48866,7 +48866,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243487",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:13:12.086Z"
+      "updatedAt": "2026-10-14T03:25:42.751Z"
     }
   ]
 }
