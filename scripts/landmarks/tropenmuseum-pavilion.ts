@@ -23,13 +23,16 @@ export const pavilionWallOf = (surfaces: number[]) => PAVILION_WALLS.find(w => w
 
 const WIN = {frame: FRAME, glass: GLASS, frameW: 0.05, sillOnWall: true};
 
-export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall) {
-  if (process.env.TROP_ONLY && Number(process.env.TROP_ONLY) !== w.panel) return;
+/** Debug switches (formerly TROP_ONLY / TROP_SKIP): draw one panel only, or leave out relief slabs, anchors or the cornice. */
+export interface PavilionOptions {only?: number; skip?: ('relief' | 'anchors' | 'cornice')[]}
+
+export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall, opt: PavilionOptions = {}) {
+  if (opt.only !== undefined && opt.only !== w.panel) return;
   const U = (s: number) => s + w.sToU, part = c.part(), what = `pavilion ${w.what}`;
   const lo = (s: number) => Math.max(U(s), c.p.uMin + 0.04), hi = (s: number) => Math.min(U(s), c.p.uMax - 0.04);
   const slab = (s0: number, s1: number, y0: number, y1: number, out: number) => solid(c, STONE, lo(s0), hi(s1), y0, y1, 0, out, part);
   const dentils = (s0: number, s1: number, y0: number, y1: number, out: number) => {
-    const pitch = s1 - s0 > 5 ? 0.45 : 0.3, wd = pitch / 2;
+    const pitch = s1 - s0 > 5 ? 0.6 : 0.4, wd = pitch / 2; // coarser than the real ~0.2 m dentils: one block per ~3 gallery pixels at riding distance
     for (let s = s0 + 0.05; s + wd < s1; s += pitch) solid(c, STONE, U(s), U(s + wd), y0, y1, 0, out, part);
   };
   // ---- string course, souterrain arches ------------------------------------------------------------------------------------------------
@@ -37,7 +40,7 @@ export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall) {
   for (const s of w.souterrain.s) {
     const a = s - w.souterrain.w / 2, b = s + w.souterrain.w / 2;
     opening(c, stats, `${what} souterrain arch`, U(a), U(b), w.souterrain.y[0], w.souterrain.y[1], {
-      frame: IRON, glass: GLASS, frameW: 0.05, sillOnWall: true, mullAt: [0.5], rowsAt: [0.5],
+      frame: IRON, glass: GLASS, frameW: 0.05, sillOnWall: true, mullAt: [0.5],
       arch: {kind: 'round', segments: 4, band: {slot: STONE, t: 0.07, out: 0.05, imposts: STONE, keystone: STONE}},
     });
   }
@@ -77,7 +80,7 @@ export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall) {
       opening(c, stats, `${what} arched head`, U(a), U(b), spring, f.arch.top, {...WIN, mullAt: [0.333, 0.667], arch: {kind: 'round', segments: 8, band: {slot: STONE, t, out: 0.08, imposts: STONE, keystone: STONE}}});
     } else slab(cs0, cs1, f.cUpper[1] + 0.02, f.cUpper[1] + 0.12, 0.1);
     // relief slab under a dentil cornice and a ledge: the carved field has no iconography modelled
-    if (f.relief && !process.env.TROP_SKIP?.includes("relief")) {
+    if (f.relief && !opt.skip?.includes('relief')) {
       const r = f.relief, a = cs0 + 0.05, b = cs1 - 0.05;
       slab(cs0 - 0.05, cs1 + 0.05, r.ledge[0], r.ledge[1], 0.12);
       slab(a + 0.1, b - 0.1, r.y[0], r.y[1], 0.1);
@@ -86,9 +89,9 @@ export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall) {
       dentils(cs0 + 0.1, cs1 - 0.1, r.cornice[0] + 0.02, r.cornice[1] - 0.12, 0.1);
     }
   });
-  if (!process.env.TROP_SKIP?.includes("anchors")) w.anchors.s.forEach(s => w.anchors.y0.forEach(y => anchorIron(c, U(s), y, w.anchors.h, part)));
+  if (!opt.skip?.includes('anchors')) w.anchors.s.forEach(s => w.anchors.y0.forEach(y => anchorIron(c, U(s), y, w.anchors.h, part)));
   // ---- the cornice under the stage above ---------------------------------------------------------------------------------------------
-  if (w.cornice && !process.env.TROP_SKIP?.includes("cornice")) {
+  if (w.cornice && !opt.skip?.includes('cornice')) {
     const [y0, y1] = w.cornice.y, [s0, s1] = w.cornice.s;
     slab(s0, s1, y0, y0 + (y1 - y0) * 0.35, 0.2);
     dentils(s0 + 0.1, s1 - 0.1, y0 + (y1 - y0) * 0.35, y0 + (y1 - y0) * 0.65, 0.28);

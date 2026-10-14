@@ -10,8 +10,9 @@ import type {WinParams} from '../../src/canalRecall/blockBuilding/spec';
 import {BAR, IRON, type KitStats} from './tropenmuseum-kit';
 import {portalFront, portalGable, PORTAL_SURFACES} from './tropenmuseum-portal';
 import {gableCrown, pavilionOrnaments} from './tropenmuseum-ornaments';
-import {pavilionFace, pavilionWallOf, skipFloors} from './tropenmuseum-pavilion';
+import {pavilionFace, pavilionWallOf, skipFloors, type PavilionOptions} from './tropenmuseum-pavilion';
 import {largeSurfaceSet, panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge';
+import {hiddenCells, type CellsByPanel} from './tropenmuseum-hidden';
 import intentJson from './tropenmuseum-intent.json';
 import factsJson from './tropenmuseum-facts.json';
 
@@ -30,7 +31,19 @@ const FACTS = factsJson as unknown as BuildingFacts;
  * as a thin spike of 3-5 planes (42.5-45.3 m); those triangles are dropped and a lantern, onion helmet, spire, ball and vane are modelled
  * from the panoramas (w10-61, w16-61: onion helmet with a finial rod) within the same 45.3 m.
  */
-const HELMETS_OFF = !!process.env.TROP_NO_HELMET;
+/** Debug switches for isolating one part of the model (formerly the TROP_* environment variables); the shipped build uses none. */
+export interface TropenmuseumOptions extends PavilionOptions {
+  /** no copper helmets on the two museum pavilions */
+  noHelmet?: boolean;
+  /** leave the measured pavilion faces out (the kit draws plain windows there) */
+  noFaces?: boolean;
+  /** skip every bespoke panel hook (portal, pavilions, gable crowns) */
+  plain?: boolean;
+  /** keep the window cells that look into the light courts (the shipped build leaves them as plain brick, see tropenmuseum-hidden.ts) */
+  keepHiddenCells?: boolean;
+  /** leave out the portal, the gable crowns or the pavilion rule ornaments (clock dial, rule relief frieze) */
+  without?: ('portal' | 'crowns' | 'ornaments')[];
+}
 /** Dropping 3DBAG's spike opens boundary loops in the shell (audit holes), so the modelled helmet is seated over it instead. */
 const REMOVE_SPIKE = false;
 const HELMETS: {x: number; z: number; y0: number; top: number}[] = [{x: 80.6, z: -42.5, y0: 40.9, top: 45.3}, {x: 98.0, z: -11.2, y0: 42.2, top: 45.2}];
@@ -54,40 +67,49 @@ const GABLES: {surfaces: number[]; statue: boolean}[] = [
 
 export interface TropenmuseumStats extends KitStats {triangles: number}
 
-export function tropenmuseumHooks(stats: TropenmuseumStats): LargeCompileHooks {
+export function tropenmuseumHooks(stats: TropenmuseumStats, opt: TropenmuseumOptions = {}, hidden?: Set<string>, collect?: CellsByPanel): LargeCompileHooks {
   return {
     budget: 40000,
     barOffsetM: BAR,
     afterCompose: (_m, recipe) => { recipe.spec.palette[IRON] = '#3a3a3a'; }, // wrought-iron slot, see IRON in the kit
-    skipCell: (p, floor) => {
+    skipCell: (p, floor, bay) => {
       if (has(p, ...PORTAL_SURFACES)) return true;
-      if (process.env.TROP_NO_FACES) return false;
+      if (hidden?.has(`${p.index}:${floor}:${bay}`)) return true;
+      if (opt.noFaces) return false;
       const w = pavilionWallOf(surfacesOf(p));
       return !!w && w.panel === p.index && floor < skipFloors(w);
     },
     panelHook: (c, info) => {
-      if (process.env.TROP_PLAIN) return;
-      if (has(c.p, ...PORTAL_SURFACES)) { portalFront(c, stats); portalGable(c, stats); return; }
+      collect?.set(c.p.index, info.cells);
+      if (opt.plain) return;
+      if (has(c.p, ...PORTAL_SURFACES)) { if (opt.without?.includes('portal')) return; portalFront(c, stats); portalGable(c, stats); return; }
       const eaves = panelEaves(c.p);
       const pav = PAVILIONS.find(q => has(c.p, ...q.surfaces));
-      const face = process.env.TROP_NO_FACES ? undefined : pavilionWallOf(surfacesOf(c.p));
-      if (face && face.panel === c.p.index) pavilionFace(c, stats, face);
-      if (pav) pavilionOrnaments(c, stats, info.cells, eaves, pav.dial, !!face && face.panel === c.p.index);
+      const face = opt.noFaces ? undefined : pavilionWallOf(surfacesOf(c.p));
+      if (face && face.panel === c.p.index) pavilionFace(c, stats, face, opt);
+      if (pav && !opt.without?.includes('ornaments')) pavilionOrnaments(c, stats, info.cells, eaves, pav.dial, !!face && face.panel === c.p.index);
       const crown = GABLES.find(g => has(c.p, ...g.surfaces));
-      if (crown) gableCrown(c, stats, eaves, crown.statue);
+      if (crown && !opt.without?.includes('crowns')) gableCrown(c, stats, eaves, crown.statue);
     },
   };
 }
 
-export function compileTropenmuseum() {
+export function compileTropenmuseum(opt: TropenmuseumOptions = {}) {
   const intent = validateLargeIntent(intentJson);
   const stats: TropenmuseumStats = {triangles: 0, openings: 0, failed: [], drawn: []};
-  const built = compileLargeBuilding(intent, FACTS, tropenmuseumHooks(stats));
+  let hidden: Set<string> | undefined;
+  if (!opt.keepHiddenCells) {
+    // pass 1 collects every panel's cells; the second pass leaves out the ones that face a court wall
+    const cells: CellsByPanel = new Map();
+    const first = compileLargeBuilding(intent, FACTS, tropenmuseumHooks({triangles: 0, openings: 0, failed: [], drawn: []}, {...opt, plain: true}, undefined, cells));
+    hidden = hiddenCells(first.panels, cells);
+  }
+  const built = compileLargeBuilding(intent, FACTS, tropenmuseumHooks(stats, opt, hidden));
   return {built, stats};
 }
 
-export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools) {
-  const {built} = compileTropenmuseum();
+export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools, opt: TropenmuseumOptions = {}) {
+  const {built} = compileTropenmuseum(opt);
   const all: number[] = [];
   built.group.traverse(o => {
     if (!(o instanceof T.Mesh)) return;
@@ -114,7 +136,7 @@ export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools) {
     const out = new T.BufferGeometry(); out.setAttribute('position', new T.Float32BufferAttribute(cap, 3)); out.computeVertexNormals();
     b.add(out, 'brick');
   }
-  if (!HELMETS_OFF) for (const h of HELMETS) helmet(b, h);
+  if (!opt.noHelmet) for (const h of HELMETS) helmet(b, h);
 }
 
 /**

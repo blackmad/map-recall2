@@ -96,7 +96,7 @@ export function portalFront(c: PanelCtx, stats: KitStats) {
     opening(c, stats, 'side door', U(7.62), U(8.48), 1.85, 4.45, {frame: DARK, glass: DARK, frameW: 0.06, mullAt: [0.33, 0.66], rowsAt: [0.5]});
     // stair: ten treads, globe posts at the head
     for (let k = 0; k < 10; k++) solid(c, STONE, U(1.5), U(8.2), 0, 0.18 * (10 - k), k * 0.33, (k + 1) * 0.33, part);
-    for (const x of [1.35, 8.35]) { solid(c, STONE, U(x - 0.22), U(x + 0.22), 0, 2.4, 0.3, 0.74, part); geom(c, STONE, new T.SphereGeometry(0.3, 10, 8), U(x), 2.7, 0.52, part); }
+    for (const x of [1.35, 8.35]) { solid(c, STONE, U(x - 0.22), U(x + 0.22), 0, 2.4, 0.3, 0.74, part); geom(c, STONE, new T.SphereGeometry(0.3, 8, 6), U(x), 2.7, 0.52, part); }
   }
   // ---- anchors (sieranker) between the windows ------------------------------------------------------------------------------------
   for (const [x, v, h] of [[2.64, 6.9, 1.0], [6.98, 7.0, 1.0], [2.67, 12.0, 1.2], [6.98, 12.0, 1.2]] as [number, number, number][]) anchorIron(c, U(x), v, h);
@@ -110,7 +110,7 @@ export function portalGable(c: PanelCtx, stats: KitStats) {
   for (const x of [1.6, 8.1]) {
     solid(c, STONE, U(x - 0.22), U(x + 0.22), 19.55, 20.95, 0, 0.3, part);
     solid(c, STONE, U(x - 0.28), U(x + 0.28), 20.95, 21.1, 0, 0.36, part);
-    geom(c, STONE, new T.SphereGeometry(0.2, 10, 8), U(x), 21.3, 0.15, part);
+    geom(c, STONE, new T.SphereGeometry(0.2, 8, 6), U(x), 21.3, 0.15, part);
   }
   for (const [a, b] of [[1.82, 2.5], [7.2, 7.88]] as [number, number][]) geom(c, STONE, extrude(shapeOf([[U(a), 19.95], [U(b), 19.95], ...archHead(U(a), U(b), 19.95, 0.55, 8).reverse()]), 0.2), 0, 0, 0, part);
   solid(c, STONE, U(2.35), U(7.35), 21.62, 22.0, 0, 0.22, part);

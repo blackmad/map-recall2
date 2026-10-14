@@ -59,11 +59,10 @@ export function deepRecess(c: PanelCtx, stats: KitStats, what: string, u0: numbe
 }
 export {barQuad};
 
-/** Wrought-iron tie-rod anchor (sieranker): a thin stem with a diamond, two side leaves and a crown, `h` tall, standing on the wall. */
+/** Wrought-iron tie-rod anchor (sieranker): a thin stem with a diamond, `h` tall, standing on the wall (the side leaves and crown are below gallery-pixel size). */
 export function anchorIron(c: PanelCtx, u: number, v0: number, h: number, part = c.part()) {
   geom(c, IRON, new T.BoxGeometry(0.05, h, 0.1), u, v0 + h / 2, 0.05, part);
-  geom(c, IRON, new T.BoxGeometry(0.22, 0.22, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.7, 0.085, part);
-  geom(c, IRON, new T.BoxGeometry(0.1, 0.1, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.95, 0.085, part);
+  geom(c, IRON, new T.BoxGeometry(0.26, 0.26, 0.05).rotateZ(Math.PI / 4), u, v0 + h * 0.75, 0.085, part);
 }
 /** Round ornamental ring (oculus surround): stone ring with a glass disc and `bosses` cartouche blocks. */
 export function oculus(c: PanelCtx, u: number, v: number, outer: number, glass: number, bosses = 8) {
@@ -79,17 +78,17 @@ export function oculus(c: PanelCtx, u: number, v: number, outer: number, glass: 
 /** Standing figure (robe, chest, arms, head) on a pedestal top at v, `h` tall. */
 export function figure(c: PanelCtx, slot: string, u: number, v: number, d: number, h: number, wide = 1) {
   const k = h / 2.25, part = c.part();
-  geom(c, slot, new T.CylinderGeometry(0.22 * k * wide, 0.27 * k * wide, 1.2 * k, 8), u, v + 0.6 * k, d, part);
-  geom(c, slot, new T.CylinderGeometry(0.29 * k * wide, 0.22 * k * wide, 0.55 * k, 8), u, v + 1.47 * k, d, part);
+  geom(c, slot, new T.CylinderGeometry(0.22 * k * wide, 0.27 * k * wide, 1.2 * k, 6), u, v + 0.6 * k, d, part);
+  geom(c, slot, new T.CylinderGeometry(0.29 * k * wide, 0.22 * k * wide, 0.55 * k, 6), u, v + 1.47 * k, d, part);
   for (const side of [-1, 1]) geom(c, slot, new T.BoxGeometry(0.12 * k, 0.8 * k, 0.14 * k), u + side * 0.32 * k * wide, v + 1.25 * k, d + 0.02, part);
-  geom(c, slot, new T.SphereGeometry(0.16 * k, 8, 6), u, v + 2.0 * k, d, part);
+  geom(c, slot, new T.SphereGeometry(0.16 * k, 6, 4), u, v + 2.0 * k, d, part);
   return part;
 }
 /** Reclining figure (tympanum): body along u, raised head and knees. */
 export function reclining(c: PanelCtx, slot: string, u: number, v: number, d: number, len: number, flip = 1) {
   const part = c.part(), k = len / 1.2;
-  geom(c, slot, new T.CylinderGeometry(0.13 * k, 0.15 * k, len * 0.8, 8).rotateZ(Math.PI / 2), u, v + 0.15 * k, d, part);
-  geom(c, slot, new T.SphereGeometry(0.13 * k, 8, 6), u - flip * len * 0.42, v + 0.4 * k, d, part);
+  geom(c, slot, new T.CylinderGeometry(0.13 * k, 0.15 * k, len * 0.8, 6).rotateZ(Math.PI / 2), u, v + 0.15 * k, d, part);
+  geom(c, slot, new T.SphereGeometry(0.13 * k, 6, 4), u - flip * len * 0.42, v + 0.4 * k, d, part);
   geom(c, slot, new T.CylinderGeometry(0.08 * k, 0.09 * k, 0.55 * k, 6).rotateZ(Math.PI / 3 * flip), u + flip * len * 0.3, v + 0.38 * k, d, part);
   return part;
 }
