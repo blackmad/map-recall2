@@ -22,6 +22,14 @@
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
+   "id": "pano-2025-09-29-w01-3",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
+   "image": "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
    "id": "pano-2020-01-29-w02",
    "kind": "street-panorama",
    "capturedAt": "2020-01-29",
@@ -41,33 +49,71 @@
  "walls": [
   {
    "wallSurfaces": [
-    316,
     326,
     371
    ],
-   "system": "brick-bay-grid",
+   "system": "glazed-columns",
    "storeys": 8,
-   "baysPerStorey": 10,
+   "baysPerStorey": 21,
    "ground": "glazed",
-   "windows": "wide",
    "deepBars": true,
-   "balconies": {
-    "storeys": [
+   "columns": {
+    "bays": [
+     1,
      2,
-     3,
-     4,
-     5,
-     6,
-     7
+     7,
+     8,
+     11,
+     12,
+     17,
+     18
     ],
-    "rail": "glass",
-    "every": 3,
-    "first": 1
+    "share": 0.95,
+    "from": 1,
+    "slabs": true
+   },
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.6,
+    "sill": 0.26
    },
    "palette": {
-    "brick": "#a8683c",
-    "frame": "#7a848a",
-    "stone": "#b8b2a4"
+    "brick": "#b4835c",
+    "frame": "#d0d2ce",
+    "stone": "#9c9a94",
+    "glass": "#8e9ea4"
+   },
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    316
+   ],
+   "system": "glazed-columns",
+   "alignWith": 0,
+   "baysPerStorey": 11,
+   "ground": "glazed",
+   "deepBars": true,
+   "columns": {
+    "bays": [
+     1,
+     4,
+     7
+    ],
+    "share": 0.98,
+    "from": 1,
+    "slabs": true
+   },
+   "windowShape": {
+    "w": 0.66,
+    "h": 0.72,
+    "sill": 0.12
+   },
+   "palette": {
+    "brick": "#5e4a44",
+    "frame": "#d0d2ce",
+    "stone": "#9c9a94",
+    "glass": "#8e9ea4"
    }
   },
   {
@@ -129,13 +175,16 @@
   "brick": "#7a5240",
   "frame": "#8a949a",
   "door": "#2a2a2a",
-  "stone": "#b8b2a4"
+  "stone": "#b8b2a4",
+  "glass": "#3a464e"
  },
  "closedBands": true,
  "layeredKit": true,
  "notes": [
   "Houthavenkade 26 (BAG pand 0363100012247232, built 2018, 510 3DBAG wall surfaces, roof max 29.8 m): a large residential block on the Houthavens quay, the 2018 development north of the Westerpark. Five walls were fetched: the north canal front (w01-2, 2025-09-29), the south range (w02-182, 2020-01-29), the west front (w03-272, 2024-10-22), the north-east end (w05-50, 2024-10-09) and a 2016 construction view (w04-140) that shows only the site hoarding.",
   "walls[0] = panel 269 (N, 61 m, eaves 25.5 over a 28.8 m top): orange brick on the west half and dark brown on the east, eight storeys with narrow window columns and glass-railed balcony columns, glazed commercial ground; drawn as 8 storeys x 10 bays with a glazed ground and balconies in every third bay on storeys 2-7. walls[1] = panels 122 (N, ground 25.5): the set-back glazed top floor, one ribbon-window storey. walls[2] = panels 36 and 37 parts (S, 59 m, eaves 10.6, surfaces 37, 98, 251, 252): three storeys of large windows in dark brick over a glazed ground. walls[3] = panel 33 parts (W, surfaces 34, 250, 271, eaves 16.7): six storeys of narrow windows over a glazed shop ground.",
-  "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m."
+  "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m.",
+  "Re-fit 2026-10-14 (kit vocabulary lane) from w01-2: the north front is two groups on its two 3DBAG surfaces, as the photo splits it: orange brick #b4835c (surfaces 326 and 371, east 31.4 m, the left half seen from the quay; photo raw #bc8f68 in low sun) and dark purple-brown #5e4a44 (surface 316, west 29 m; photo raw #69544a), both glazed-columns: full-height enclosed glass balcony bays 0.45 m deep with a slab at every storey line from storey 1 up, grey reflective glass #8e9ea4 (photo raw #8ea2a6 / #949496). Orange: 21 bays of 1.5 m, four two-bay columns (centres 3.0, 12.0, 17.9, 26.9 m; photo 2.7, 11.7, 17.6, 26.5 m) and narrow windows 0.5 x 0.6 between them; dark: 11 bays of 2.64 m, columns in bays 1, 4, 7 (centres 4.0, 11.9, 19.8 m; photo 4.4, 11.9, 19.4 m) and large windows 0.66 x 0.72. Sources are listed in wall-group order (the sheet pairs them positionally).",
+  "Budget (12k): the orange half's narrow windows have no frame ring (frames false), 12.4k with one."
  ]
 }
