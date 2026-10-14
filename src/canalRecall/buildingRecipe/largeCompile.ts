@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, intervals, SHEET_PITCH, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawCurtainGrid, drawEntrance, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawCurtainGrid, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -15,7 +15,7 @@ import type {LargeBuildingIntent} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { glazedHalls?: number; glassColumns?: number; curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -83,6 +83,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const plinth = g.ground === 'mesh-plinth', cells = plinth ? info.cells.filter(x => x.floor > 0) : info.cells, top = panelEaves(p) - 0.05;
     if (plinth && drawPlinthPanel(c, Math.max(0, p.vMin), groundTop, s.door)) counts.plinths = (counts.plinths ?? 0) + 1;
     if (cells.length && top - p.vMin > 2 && drawCurtainGrid(c, cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
+  }
+  // Glazed hall over its brick base; glass columns over their bays (after the openings, before the cornice).
+  if (g.hall && info.cells.length && drawGlazedHall(c, info.cells, g.hall.baseM, panelEaves(p) - 0.05, g.hall.lights, g.hall.rows, {wall: s.wall, frame: s.frame, stone: s.stone})) counts.glazedHalls = (counts.glazedHalls ?? 0) + 1;
+  if (g.columns && info.cells.length) {
+    const col = g.columns, every = Math.max(1, g.bays, ...col.bays.map(b => b + 1));
+    const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: s.glass, frame: s.frame, stone: s.stone});
+    if (k) counts.glassColumns = (counts.glassColumns ?? 0) + k;
   }
   if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
   if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
@@ -192,6 +199,8 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
     m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
+    // measured wall colour (export-glb writes `tintSource: 'measured'`; the look then keeps it instead of clamping it)
+    if (recipe.measuredSlots?.includes(name.slice(name.indexOf('/') + 1))) m.material.userData = {tintSource: 'measured'};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
@@ -242,8 +251,8 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
     ...(hooks.glassBackM !== undefined ? {glassBackM: hooks.glassBackM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => recipe.panelSystem?.[p.index] ?? groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
-    // layered kit: a curtain wall's 3DBAG wall is its glass skin (the grid is drawn on it)
-    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.slots.wall; },
+    // layered kit: a curtain wall's (and a glazed hall's) 3DBAG wall is its glass skin (the grid and the hall's brick base are drawn on it)
+    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
       const g = groupOf(p.index);
       if (hooks.skipCell?.(p, floor, bay, bays, g)) return true;

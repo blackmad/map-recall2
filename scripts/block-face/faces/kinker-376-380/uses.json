@@ -1,0 +1,110 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:55:05.620Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160877",
+   "addresses": [
+    "Kinkerstraat 380"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 380-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000706418"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006420258,
+     "lngLat": [
+      4.8609377,
+      52.3644977
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Yarnhugs",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-14T09:55:05.620Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158308",
+   "addresses": [
+    "Kinkerstraat 378"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 378-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000706413"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006431601,
+     "lngLat": [
+      4.8610065,
+      52.3645178
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "De Kinker",
+      "shop": "tobacco"
+     },
+     "fetchedAt": "2026-10-14T09:55:05.620Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165323",
+   "addresses": [
+    "Kinkerstraat 376"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 376-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000706409"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006443305,
+     "lngLat": [
+      4.8610723,
+      52.3645338
+     ],
+     "tags": {
+      "amenity": "money_transfer",
+      "brand": "Ria",
+      "brand:wikidata": "Q18643673",
+      "check_date": "2025-10-07",
+      "name": "Ria"
+     },
+     "fetchedAt": "2026-10-14T09:55:05.620Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

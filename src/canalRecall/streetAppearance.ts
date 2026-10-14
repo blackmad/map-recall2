@@ -1,5 +1,3 @@
-import { validateInterwarGroundFrontageRecipe } from './interwarGroundFrontage.js';
-import { validateInterwarFrontageRecipe } from './interwarFrontageLayout.js';
 import { validateCompoundFrontageRecipe } from './compoundFrontageLayout.js';
 import { validateRegularCanalFrontageRecipe } from './regularCanalFrontage.js';
 import { validateRepeatedTerraceFrontageRecipe } from './repeatedTerraceFrontage.js';
@@ -14,10 +12,6 @@ export interface ArchitecturalRecipe {
   regularCanalFrontage?: import('./regularCanalFrontage.js').RegularCanalFrontageRecipe;
   /** Coupled unequal facade zones, selected from observed complete street fronts. */
   compoundFrontage?: import('./compoundFrontageLayout.js').CompoundFrontageRecipe;
-  /** Source-observed interwar window groups; shared layout, confined to admitted frontages. */
-  interwarGround?: import('./interwarGroundFrontage.js').InterwarGroundFrontageRecipe;
-  roofFamily?: 'flat-parapet';
-  interwarFrontage?: import('./interwarFrontageLayout.js').InterwarFrontageRecipe;
   family: 'masonry' | 'punched' | 'ribbon' | 'curtain';
   period: 'canal' | 'c19' | 'school' | 'postwar' | 'modern' | 'tower';
   wallHex?: string; frameHex?: string; groundWallHex?: string;
@@ -370,15 +364,15 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       if(r.wallMaterial!=null&&!['brick','smooth'].includes(r.wallMaterial))throw Error('invalid recipe wall material');
       if(r.openingGroup!=null&&(!['canal-two','canal-three'].includes(r.openingGroup)||r.family!=='masonry'||r.period!=='canal'))throw Error('incompatible frontage opening group');
       if(r.groundAssembly!=null&&(!['tall-side-entry','tall-commercial'].includes(r.groundAssembly)||!r.openingGroup))throw Error('incompatible frontage ground assembly');
-      if(r.interwarGround!=null&&(!validateInterwarGroundFrontageRecipe(r.interwarGround)||r.family!=='masonry'||r.period!=='school'||!r.shopCanopy))throw Error('invalid interwar ground frontage');
-      if(r.interwarFrontage!=null&&(!validateInterwarFrontageRecipe(r.interwarFrontage)||r.family!=='masonry'||r.period!=='school'))throw Error('invalid interwar frontage');
-      if(r.compoundFrontage!=null&&(!validateCompoundFrontageRecipe(r.compoundFrontage)||r.family!=='masonry'||!['canal','c19','school'].includes(r.period)||r.interwarFrontage||r.interwarGround||r.shopCanopy))throw Error('invalid compound frontage');
-      if(r.regularCanalFrontage!=null&&(!validateRegularCanalFrontageRecipe(r.regularCanalFrontage)||r.family!=='masonry'||!['canal','c19'].includes(r.period)||r.compoundFrontage||r.interwarFrontage||r.interwarGround||r.shopCanopy||r.entranceAssembly||r.facadeAssembly))throw Error('invalid regular canal frontage');
-      if(r.repeatedTerraceFrontage!=null&&(!validateRepeatedTerraceFrontageRecipe(r.repeatedTerraceFrontage)||r.family!=='masonry'||r.period!=='c19'||!p.buildingIds?.length||r.compoundFrontage||r.regularCanalFrontage||r.interwarFrontage||r.interwarGround||r.shopCanopy||r.entranceAssembly||r.facadeAssembly||r.crownShape))throw Error('invalid repeated terrace frontage');
+      // The Jan Evertsenstraat interwar pilot (interwarGround/interwarFrontage/roofFamily) is retired: such streets are block faces built with the Amsterdam School kit (buildingRecipe/amsterdamSchool.ts).
+      const retired=r as {interwarGround?:unknown;interwarFrontage?:unknown;roofFamily?:unknown};
+      if(retired.interwarGround!=null||retired.interwarFrontage!=null||retired.roofFamily!=null)throw Error('retired interwar frontage fields (Jan Evertsenstraat pilot)');
+      if(r.compoundFrontage!=null&&(!validateCompoundFrontageRecipe(r.compoundFrontage)||r.family!=='masonry'||!['canal','c19','school'].includes(r.period)||r.shopCanopy))throw Error('invalid compound frontage');
+      if(r.regularCanalFrontage!=null&&(!validateRegularCanalFrontageRecipe(r.regularCanalFrontage)||r.family!=='masonry'||!['canal','c19'].includes(r.period)||r.compoundFrontage||r.shopCanopy||r.entranceAssembly||r.facadeAssembly))throw Error('invalid regular canal frontage');
+      if(r.repeatedTerraceFrontage!=null&&(!validateRepeatedTerraceFrontageRecipe(r.repeatedTerraceFrontage)||r.family!=='masonry'||r.period!=='c19'||!p.buildingIds?.length||r.compoundFrontage||r.regularCanalFrontage||r.shopCanopy||r.entranceAssembly||r.facadeAssembly||r.crownShape))throw Error('invalid repeated terrace frontage');
       if(r.repeatedTerraceRoof!=null){const t=r.repeatedTerraceRoof;
         if(!r.repeatedTerraceFrontage||!Number.isFinite(t.riseM)||t.riseM<1.5||t.riseM>3.5||!Number.isFinite(t.widthM)||t.widthM<2||t.widthM>4.5||!['spout','step'].includes(t.gable)||t.exposedEnds!==undefined&&(!Array.isArray(t.exposedEnds)||t.exposedEnds.length!==2||t.exposedEnds.some(v=>typeof v!=='boolean')))throw Error('invalid repeated terrace roof');
       }
-      if(r.roofFamily!=null&&(r.roofFamily!=='flat-parapet'||!r.interwarFrontage))throw Error('invalid source roof family');
       if(r.shopCanopy!=null){
         const c=r.shopCanopy;
         if(c.kind!=='continuous-rigid'||r.family!=='masonry'||!['c19','school'].includes(r.period)||!Number.isFinite(c.projectionM)||c.projectionM<.3||c.projectionM>1.8||!Number.isFinite(c.fasciaHeightM)||c.fasciaHeightM<.12||c.fasciaHeightM>.4||![c.fasciaHex,c.edgeHex].every(hex=>/^#[a-f0-9]{6}$/i.test(hex)))throw Error('invalid source shop canopy');

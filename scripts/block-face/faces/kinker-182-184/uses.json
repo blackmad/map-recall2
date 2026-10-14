@@ -1,0 +1,476 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:19:39.061Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236981",
+   "addresses": [
+    "Kinkerstraat 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 184",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000546044"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157333,
+     "lngLat": [
+      4.8676189,
+      52.3661076
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "name": "Geldmaat",
+      "shop": "money",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9876011987,
+     "lngLat": [
+      4.867585,
+      52.3661065
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "no",
+      "cash_in:sealbags": "yes",
+      "cash_out": "no",
+      "check_date": "2025-01-17",
+      "description": "Alleen sealbag storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "ref": "1053009",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053009"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12628149974,
+     "lngLat": [
+      4.8675887,
+      52.366101
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "no",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "ref": "1053009",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053009"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828364,
+     "lngLat": [
+      4.867578,
+      52.366117
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_out": "yes",
+      "cash_out:coins": "yes",
+      "cash_out:notes": "no",
+      "description": "Alleen muntrollen opnemen",
+      "fee": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053184",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053184"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828365,
+     "lngLat": [
+      4.8675749,
+      52.3661221
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:coins": "yes",
+      "cash_in:notes": "no",
+      "cash_out": "no",
+      "description": "Alleen munten storten",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053184",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053184"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828366,
+     "lngLat": [
+      4.8675717,
+      52.3661272
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:coins": "yes",
+      "cash_in:notes": "no",
+      "cash_out": "no",
+      "description": "Alleen munten storten",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053184",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053184"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828367,
+     "lngLat": [
+      4.8676233,
+      52.3661399
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053010",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053010"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828368,
+     "lngLat": [
+      4.8676264,
+      52.3661349
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053010",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053010"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828369,
+     "lngLat": [
+      4.8676295,
+      52.3661299
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053010",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053010"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828370,
+     "lngLat": [
+      4.8676326,
+      52.3661249
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053010",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053010"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828371,
+     "lngLat": [
+      4.8676356,
+      52.3661199
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053010",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053010"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13041828372,
+     "lngLat": [
+      4.8676387,
+      52.3661149
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-22:00",
+      "ref": "1053010",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1053010"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233470",
+   "addresses": [
+    "Kinkerstraat 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 182",
+     "use": "winkelfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000546014"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452238275,
+     "lngLat": [
+      4.8676921,
+      52.3661259
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "182",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "Kema Vlees",
+      "opening_hours": "Mo-Sa 08:00-18:00",
+      "payment:cash": "yes",
+      "shop": "butcher",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2452238280,
+     "lngLat": [
+      4.8677799,
+      52.3661532
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "180",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "brand": "Primera",
+      "brand:website": "https://www.primera.nl",
+      "brand:wikidata": "Q2176149",
+      "brand:wikipedia": "nl:Primera (winkelketen)",
+      "check_date": "2025-10-02",
+      "name": "Primera",
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa 08:00-17:00",
+      "payment:cash": "yes",
+      "phone": "+31 20 683 6364",
+      "post_office": "post_partner",
+      "shop": "newsagent",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.primera.nl/primera-kinkerstraat",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:19:39.061Z",
+     "match": "frontage",
+     "distanceM": 4.3
+    }
+   ]
+  }
+ ]
+}

@@ -2,7 +2,7 @@
  * Headless-Chromium (WebGL via SwiftShader) renders of building GLBs and the
  * contact sheet: reference photo | recipe front | recipe 3/4 | existing model 3/4.
  *
- *   node --import tsx scripts/building-recipes/render.ts --house=keizers-575 [--existing=public/canal-drive/models/ordinary-buildings/0363100012176752.glb] [--textures]
+ *   node --import tsx scripts/building-recipes/render.ts --house=keizers-575 [--existing=public/canal-drive/models/ordinary-buildings/0363100012176752.glb] [--city-look [--year=<BAG year>]] [--flat]
  *   node --import tsx scripts/building-recipes/render.ts --row=bloemgracht-78,bloemgracht-80,... --out=artifacts/building-recipes/row-x.png
  */
 import fs from 'node:fs/promises';
@@ -35,12 +35,18 @@ async function cityBrick() {
   if (brickUrl === undefined) brickUrl = `data:image/jpeg;base64,${(await fs.readFile('public/canal-drive/materials/ambientcg/Bricks057/colour.jpg')).toString('base64')}`;
   return brickUrl;
 }
-export async function renderModels(models: RenderModel[], views: RenderView[], textures?: Record<string, string>): Promise<Buffer[]> {
+/**
+ * Which game look dresses the models: the default recipe look (the game with `?cityLook` off), or `city: true` for the
+ * city look with the BAG `year`'s brick. There is no raw-material option: a sheet column always shows what the game
+ * draws (render-page.ts `render`). `useFlatMaterials()` keeps the GLB's own flat lit colours for geometry review.
+ */
+export interface RenderLook { city?: boolean; year?: number | null }
+export async function renderModels(models: RenderModel[], views: RenderView[], look?: RenderLook): Promise<Buffer[]> {
+  if (look && Object.keys(look).some(k => k !== 'city' && k !== 'year')) throw Error('renderModels: trial texture maps were retired 2026-10-14 (they skipped the game look); pass {city: true, year} for the city look');
   const p = await getPage();
   const brick = await cityBrick();
   const payload = await Promise.all(models.map(async m => ({...m, base64: (await fs.readFile(m.file)).toString('base64')})));
-  const tex = textures ? Object.fromEntries(await Promise.all(Object.entries(textures).map(async ([k, f]) => [k, `data:image/png;base64,${(await fs.readFile(f)).toString('base64')}`]))) : undefined;
-  const urls: string[] = await p.evaluate(([m, v, t, b]) => (window as any).renderGlbs(m, v, t, b), [payload, views, tex, brick] as const);
+  const urls: string[] = await p.evaluate(([m, v, l, b]) => (window as any).renderGlbs(m, v, l, b), [payload, views, look, brick] as const);
   return urls.map(u => Buffer.from(u.split(',')[1], 'base64'));
 }
 
@@ -77,7 +83,7 @@ export async function contactSheet(panels: {image: Buffer; text: string}[], out:
   await sharp({create: {width, height, channels: 3, background: '#f4f4f2'}}).composite(comps).png().toFile(out);
 }
 
-export async function houseContactSheet(id: string, existing?: {file: string; anchor: number[]}, textures?: Record<string, string>) {
+export async function houseContactSheet(id: string, existing?: {file: string; anchor: number[]}, look?: RenderLook) {
   const facts: BuildingFacts = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'facts.json'), 'utf8'));
   const report = JSON.parse(await fs.readFile(path.join(ARTIFACTS, id, 'report.json'), 'utf8'));
   const sheets: string[] = [];
@@ -86,7 +92,7 @@ export async function houseContactSheet(id: string, existing?: {file: string; an
     const height = Math.max(...report.fit.fronts.map((f: any) => f.crownTopM), facts.heights.roofMaxM) + 1;
     const normal = [ff.outwardNormalRD[0], -ff.outwardNormalRD[1]];
     const local = rdToRecipeLocal(mid, report.anchorRD), views = frontViews(local, normal, ff.widthM, height);
-    const [front, three] = await renderModels([{file: path.join(ARTIFACTS, id, 'model.glb')}], [views.front, views.threeQuarter], textures);
+    const [front, three] = await renderModels([{file: path.join(ARTIFACTS, id, 'model.glb')}], [views.front, views.threeQuarter], look);
     const photos = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'photos.json'), 'utf8').catch(() => '[]'));
     // Prefer the photo the intent author cited for this front; fall back to the facts-step panorama crop.
     const intent = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'intent.json'), 'utf8'));
@@ -107,7 +113,7 @@ export async function houseContactSheet(id: string, existing?: {file: string; an
 }
 
 /** Street-row view: several recipe models placed in a shared frame, seen from across the street. */
-export async function rowSheet(ids: string[], out: string, textures?: Record<string, string>) {
+export async function rowSheet(ids: string[], out: string, look?: RenderLook) {
   const all = await Promise.all(ids.map(async id => ({id, facts: JSON.parse(await fs.readFile(path.join(HOUSES, id, 'facts.json'), 'utf8')) as BuildingFacts, report: JSON.parse(await fs.readFile(path.join(ARTIFACTS, id, 'report.json'), 'utf8'))})));
   const origin = all[0].report.anchorRD;
   const models = all.map(h => ({file: path.join(ARTIFACTS, h.id, 'model.glb'), position: [h.report.anchorRD[0] - origin[0], 0, origin[1] - h.report.anchorRD[1]]}));
@@ -117,14 +123,14 @@ export async function rowSheet(ids: string[], out: string, textures?: Record<str
   const n = all.map(h => h.facts.fronts[0].outwardNormalRD).reduce((s, v) => [s[0] + v[0], s[1] + v[1]], [0, 0]), len = Math.hypot(n[0], n[1]);
   const width = Math.hypot(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys)), height = Math.max(...all.map(h => h.facts.heights.roofMaxM)) + 2;
   const views = frontViews(rdToRecipeLocal(mid, origin), [n[0] / len, -n[1] / len], width, height, {width: 1400, height: 700});
-  const [front, three] = await renderModels(models, [views.front, views.threeQuarter], textures);
+  const [front, three] = await renderModels(models, [views.front, views.threeQuarter], look);
   await fs.mkdir(path.dirname(out), {recursive: true});
   await sharp({create: {width: 1400, height: 1408, channels: 3, background: '#ffffff'}}).composite([{input: front, top: 0, left: 0}, {input: three, top: 708, left: 0}]).png().toFile(out);
   return out;
 }
 
 /** Review sheet for a handful of houses: one column per house, rows = reference crop | recipe front | recipe 3/4. */
-export async function columnsSheet(ids: string[], out: string, panel = {width: 300, height: 440}, textures?: Record<string, string>) {
+export async function columnsSheet(ids: string[], out: string, panel = {width: 300, height: 440}, look?: RenderLook) {
   const cols: Buffer[] = [];
   for (const id of ids) {
     const facts: BuildingFacts = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'facts.json'), 'utf8'));
@@ -133,7 +139,7 @@ export async function columnsSheet(ids: string[], out: string, panel = {width: 3
     const ff = facts.fronts[0], mid = [(ff.endpointsRD[0][0] + ff.endpointsRD[1][0]) / 2, (ff.endpointsRD[0][1] + ff.endpointsRD[1][1]) / 2];
     const height = Math.max(...report.fit.fronts.map((f: any) => f.crownTopM), facts.heights.roofMaxM) + 1;
     const views = frontViews(rdToRecipeLocal(mid, report.anchorRD), [ff.outwardNormalRD[0], -ff.outwardNormalRD[1]], ff.widthM, height, {width: panel.width * 2, height: panel.height * 2});
-    const [front, three] = await renderModels([{file: path.join(ARTIFACTS, id, 'model.glb')}], [views.front, views.threeQuarter], textures);
+    const [front, three] = await renderModels([{file: path.join(ARTIFACTS, id, 'model.glb')}], [views.front, views.threeQuarter], look);
     const cited = intent.sources?.[0]?.image;
     const photo = cited ? await fs.readFile(cited).catch(() => null) : null;
     const tiles = [photo ?? await sharp({create: {width: 4, height: 5, channels: 3, background: '#dddddd'}}).png().toBuffer(), front, three];
@@ -149,13 +155,14 @@ export async function columnsSheet(ids: string[], out: string, panel = {width: 3
 if (process.argv[1]?.endsWith('building-recipes/render.ts')) {
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
   if (process.argv.includes('--flat')) useFlatMaterials();
-  const textures = process.argv.includes('--textures') ? {brick: 'artifacts/building-recipes/textures/brick-256.png', roofTile: 'artifacts/building-recipes/textures/roof-tile-256.png', slate: 'artifacts/building-recipes/textures/roof-tile-256.png'} : undefined;
+  // `--city-look`: the city look (`?cityLook=1`) instead of the default recipe look; `--textures` (trial tiles) was retired.
+  const look: RenderLook | undefined = process.argv.includes('--city-look') ? {city: true, year: arg('year') ? Number(arg('year')) : null} : undefined;
   try {
-    if (arg('sheet')) console.log(await columnsSheet(arg('sheet')!.split(','), arg('out') ?? `${ARTIFACTS}/sheet.png`, undefined, textures));
-    if (arg('row')) console.log(await rowSheet(arg('row')!.split(','), arg('out') ?? `${ARTIFACTS}/row.png`, textures));
+    if (arg('sheet')) console.log(await columnsSheet(arg('sheet')!.split(','), arg('out') ?? `${ARTIFACTS}/sheet.png`, undefined, look));
+    if (arg('row')) console.log(await rowSheet(arg('row')!.split(','), arg('out') ?? `${ARTIFACTS}/row.png`, look));
     for (const id of (arg('house') ?? '').split(',').filter(Boolean)) {
       const ex = arg('existing'), anchor = arg('existing-anchor')?.split(',').map(Number);
-      console.log(await houseContactSheet(id, ex && anchor ? {file: ex, anchor} : undefined, textures));
+      console.log(await houseContactSheet(id, ex && anchor ? {file: ex, anchor} : undefined, look));
     }
   } finally { await closeRenderer(); }
 }

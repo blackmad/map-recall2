@@ -1,4 +1,4 @@
-import type {InterwarLocalPoint,InterwarMaterialRole} from './interwarFrontageLayout.js';
+import type {FrontageLocalPoint,FrontageMaterialRole} from './frontageQuads.js';
 
 /** Source-selected metre positions relative to the native wall base. They never
  * rescale to a factual height or inherit the neighboring zone's floor axes. */
@@ -33,9 +33,9 @@ export type CompoundPart='main-window'|'shaft-principal'|'shaft-sidelight'|'shaf
   |'shaft-body'|'shaft-body-return'|'shaft-body-cap'|'cornice'|'cornice-block';
 export interface CompoundRect {left:number;bottom:number;width:number;height:number}
 export interface CompoundQuad {
-  role:InterwarMaterialRole;part:CompoundPart;zone:'main'|'shaft';
-  points:[InterwarLocalPoint,InterwarLocalPoint,InterwarLocalPoint,InterwarLocalPoint];
-  normal:InterwarLocalPoint;uv:[[number,number],[number,number],[number,number],[number,number]];
+  role:FrontageMaterialRole;part:CompoundPart;zone:'main'|'shaft';
+  points:[FrontageLocalPoint,FrontageLocalPoint,FrontageLocalPoint,FrontageLocalPoint];
+  normal:FrontageLocalPoint;uv:[[number,number],[number,number],[number,number],[number,number]];
   rowIndex?:number;axisIndex?:number;
 }
 export interface CompoundWindow extends CompoundRect {
@@ -121,13 +121,13 @@ export function planCompoundFrontage(input:{lengthM:number;baseM:number;topM:num
   const surround:CompoundRect={left:axes[0]-g.openingWidthM/2-g.frameWidthM,bottom:base+g.bottomM,width:axes[2]-axes[0]+g.openingWidthM+2*g.frameWidthM,height:g.heightM};
   if(!fits(surround,'main')||r.mainRows.some(v=>v.bottomM<g.bottomM+g.heightM+.10)
     ||s.rows.some(v=>v.bottomM<s.groundLights.bottomM+s.groundLights.heightM+.10))return;
-  const quad=(role:InterwarMaterialRole,part:CompoundPart,zone:'main'|'shaft',points:CompoundQuad['points'],normal:InterwarLocalPoint,rowIndex?:number,axisIndex?:number)=>{
+  const quad=(role:FrontageMaterialRole,part:CompoundPart,zone:'main'|'shaft',points:CompoundQuad['points'],normal:FrontageLocalPoint,rowIndex?:number,axisIndex?:number)=>{
     const uv:CompoundQuad['uv']=[[0,0],[1,0],[1,1],[0,1]],a=points[0],b=points[1],c=points[2],u=b.map((v,i)=>v-a[i]),v=c.map((w,i)=>w-a[i]);
     const cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
     if(cross.reduce((sum,n,i)=>sum+n*normal[i],0)<0){[points[1],points[3]]=[points[3],points[1]];[uv[1],uv[3]]=[uv[3],uv[1]];}
     plan.quads.push({role,part,zone,points,normal,uv,rowIndex,axisIndex});
   };
-  const front=(role:InterwarMaterialRole,part:CompoundPart,zone:'main'|'shaft',a:CompoundRect,out:number,rowIndex?:number,axisIndex?:number)=>
+  const front=(role:FrontageMaterialRole,part:CompoundPart,zone:'main'|'shaft',a:CompoundRect,out:number,rowIndex?:number,axisIndex?:number)=>
     quad(role,part,zone,[[a.left,out,a.bottom],[a.left+a.width,out,a.bottom],[a.left+a.width,out,a.bottom+a.height],[a.left,out,a.bottom+a.height]],[0,1,0],rowIndex,axisIndex);
   let failed=false;
   const body=s.body?{left:shaftAxis-s.body.widthM/2,bottom:base+s.body.bottomM,width:s.body.widthM,height:s.body.topM-s.body.bottomM}:undefined;

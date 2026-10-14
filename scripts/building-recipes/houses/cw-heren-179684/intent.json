@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-heren-179684",
+ "pandId": "0363100012179684",
+ "address": "Herengracht (BAG 1615; 19th-c. front with T-windows and white sills)",
+ "sources": [
+  {
+   "id": "pano-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/pand-reference-walls/0363100012179684/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Herengracht",
+   "gable": "cornice",
+   "storeys": 3,
+   "bays": 3,
+   "doorBay": 0,
+   "basement": "none",
+   "cornice": "frieze",
+   "hoist": false,
+   "storeyHeights": [
+    1.35,
+    1.0,
+    0.9
+   ],
+   "windows": "t-window",
+   "windowShare": 0.68,
+   "windowHeights": [
+    0.75,
+    0.72,
+    0.8
+   ],
+   "windowSurround": "sill"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#a4886f",
+  "frame": "white",
+  "door": "#1f2a24",
+  "stone": "#f0efe0",
+  "cornice": "#ece9e0"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front.jpg 2021-01-22. T-windows (transom at 0.76, the mullion below only) 1.25 x 2.05 / 1.9 m, ground 1.2 x 2.75 m; white stone sills #f4f4dd; orange-red brick #9c8068-#ad927c sunlit; black iron wall anchors over the piers (not modelled); white attic box with one light over the cornice."
+ ]
+}

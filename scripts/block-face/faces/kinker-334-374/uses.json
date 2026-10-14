@@ -1,0 +1,788 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:57:54.686Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166359",
+   "addresses": [
+    "Kinkerstraat 374"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 374-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000980446"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006424145,
+     "lngLat": [
+      4.8611399,
+      52.3645496
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Toko Restu",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161284",
+   "addresses": [
+    "Kinkerstraat 372"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 372-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000706400"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006423109,
+     "lngLat": [
+      4.8612019,
+      52.3645629
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Super Service",
+      "shop": "dry_cleaning"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158310",
+   "addresses": [
+    "Kinkerstraat 370"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 370-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000706394"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006424210,
+     "lngLat": [
+      4.8612685,
+      52.3645794
+     ],
+     "tags": {
+      "male": "yes",
+      "name": "Royal Kapsalon",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163986",
+   "addresses": [
+    "Kinkerstraat 368"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 368-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012569584"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236565",
+   "addresses": [
+    "Kinkerstraat 366"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 366-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012569583"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006439665,
+     "lngLat": [
+      4.8614071,
+      52.3646132
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Chada",
+      "shop": "massage",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164085",
+   "addresses": [
+    "Kinkerstraat 364"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 364-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012569582"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006405214,
+     "lngLat": [
+      4.8614767,
+      52.3646343
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Yamie Pastabar",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167064",
+   "addresses": [
+    "Kinkerstraat 362",
+    "Kinkerstraat 362A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 362A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001164785"
+    },
+    {
+     "address": "Kinkerstraat 362-H",
+     "use": "winkelfunctie",
+     "areaM2": 280,
+     "bagId": "0363010003721346"
+    },
+    {
+     "address": "Kinkerstraat 362-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012569581"
+    },
+    {
+     "address": "Kinkerstraat 362-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012569585"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006420764,
+     "lngLat": [
+      4.8615448,
+      52.3646491
+     ],
+     "tags": {
+      "name": "Shavenn",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159164",
+   "addresses": [
+    "Kinkerstraat 360"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 360",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012153574"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006432724,
+     "lngLat": [
+      4.8616216,
+      52.3646628
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "indoor_seating": "yes",
+      "name": "Happy Snack",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164263",
+   "addresses": [
+    "Kinkerstraat 358"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 358-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000706352"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006438200,
+     "lngLat": [
+      4.8616752,
+      52.3646802
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Himalaya",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166628",
+   "addresses": [
+    "Kinkerstraat 356"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 356-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000706345"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006438607,
+     "lngLat": [
+      4.8617556,
+      52.3646912
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "All Skin Clinic",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160054",
+   "addresses": [
+    "Kinkerstraat 354"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 354-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000706337"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006426985,
+     "lngLat": [
+      4.8618259,
+      52.3647073
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Droomgordijnen",
+      "shop": "curtain"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160347",
+   "addresses": [
+    "Kinkerstraat 352",
+    "Kinkerstraat 352A",
+    "Kinkerstraat 352B",
+    "Kinkerstraat 352C",
+    "Kinkerstraat 352D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 352-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000706329"
+    },
+    {
+     "address": "Kinkerstraat 352A",
+     "use": "winkelfunctie",
+     "areaM2": 160,
+     "bagId": "0363010010953145"
+    },
+    {
+     "address": "Kinkerstraat 352B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010010953146"
+    },
+    {
+     "address": "Kinkerstraat 352C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010010953147"
+    },
+    {
+     "address": "Kinkerstraat 352D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010010953148"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155971",
+   "addresses": [
+    "Kinkerstraat 350",
+    "Kinkerstraat 350A",
+    "Kinkerstraat 350B",
+    "Kinkerstraat 350C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 350-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000706321"
+    },
+    {
+     "address": "Kinkerstraat 350A",
+     "use": "kantoorfunctie",
+     "areaM2": 75,
+     "bagId": "0363010010953142"
+    },
+    {
+     "address": "Kinkerstraat 350B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010010953143"
+    },
+    {
+     "address": "Kinkerstraat 350C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010010953144"
+    },
+    {
+     "address": "Kinkerstraat 350A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 240,
+     "bagId": "0363010012080625"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006438199,
+     "lngLat": [
+      4.8619546,
+      52.3647422
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Infinity Kitchen",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157710",
+   "addresses": [
+    "Kinkerstraat 348"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 348-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000957028"
+    },
+    {
+     "address": "Kinkerstraat 348-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012072284"
+    },
+    {
+     "address": "Kinkerstraat 348-O",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012072285"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006385053,
+     "lngLat": [
+      4.8620257,
+      52.3647667
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "indoor_seating": "no",
+      "name": "Mountain Nepal",
+      "outdoor_seating": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156317",
+   "addresses": [
+    "Kinkerstraat 346"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 346-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000706306"
+    },
+    {
+     "address": "Kinkerstraat 346-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 252,
+     "bagId": "0363010011877293"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809227778,
+     "lngLat": [
+      4.8621072,
+      52.3647714
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "348",
+      "addr:postcode": "1053GE",
+      "addr:street": "Kinkerstraat",
+      "amenity": "hookah_lounge",
+      "check_date": "2025-10-07",
+      "name": "Hookah Lounge"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167305",
+   "addresses": [
+    "Kinkerstraat 344"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 344-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000706298"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006415452,
+     "lngLat": [
+      4.8621637,
+      52.3647874
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Kinker",
+      "shop": "tobacco"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12006432385,
+     "lngLat": [
+      4.8621925,
+      52.3647915
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "indoor_seating": "no",
+      "name": "Sushi Shiwo",
+      "outdoor_seating": "no",
+      "takeaway": "only"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160344",
+   "addresses": [
+    "Kinkerstraat 338",
+    "Kinkerstraat 340",
+    "Kinkerstraat 342"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 338-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000706274"
+    },
+    {
+     "address": "Kinkerstraat 340-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000706282"
+    },
+    {
+     "address": "Kinkerstraat 342-H",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000706290"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4899442422,
+     "lngLat": [
+      4.8623371,
+      52.3648322
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Gold Center Amsterdam",
+      "name:nl": "Gold Center Amsterdam",
+      "shop": "jewelry",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12006425227,
+     "lngLat": [
+      4.8622531,
+      52.3648085
+     ],
+     "tags": {
+      "female": "yes",
+      "male": "yes",
+      "name": "Baroud",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T09:57:54.686Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012072741",
+   "addresses": [
+    "Kinkerstraat 334",
+    "Kinkerstraat 336B",
+    "Kinkerstraat 336E",
+    "Kinkerstraat 336F",
+    "Kinkerstraat 336A",
+    "Kinkerstraat 336C",
+    "Kinkerstraat 336D",
+    "Kinkerstraat 336G",
+    "Kinkerstraat 336H",
+    "Kinkerstraat 336L",
+    "Kinkerstraat 336K",
+    "Kinkerstraat 336M",
+    "Kinkerstraat 336N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 334",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000685177"
+    },
+    {
+     "address": "Kinkerstraat 336B",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010001982052"
+    },
+    {
+     "address": "Kinkerstraat 336E",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010001982053"
+    },
+    {
+     "address": "Kinkerstraat 336F",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010001982054"
+    },
+    {
+     "address": "Kinkerstraat 336A",
+     "use": "woonfunctie",
+     "areaM2": 15,
+     "bagId": "0363010001982055"
+    },
+    {
+     "address": "Kinkerstraat 336C",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010001982056"
+    },
+    {
+     "address": "Kinkerstraat 336D",
+     "use": "woonfunctie",
+     "areaM2": 15,
+     "bagId": "0363010001982057"
+    },
+    {
+     "address": "Kinkerstraat 336G",
+     "use": "woonfunctie",
+     "areaM2": 15,
+     "bagId": "0363010001982058"
+    },
+    {
+     "address": "Kinkerstraat 336H",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010001982059"
+    },
+    {
+     "address": "Kinkerstraat 336L",
+     "use": "woonfunctie",
+     "areaM2": 13,
+     "bagId": "0363010001982060"
+    },
+    {
+     "address": "Kinkerstraat 336K",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010001982061"
+    },
+    {
+     "address": "Kinkerstraat 336M",
+     "use": "woonfunctie",
+     "areaM2": 16,
+     "bagId": "0363010001982062"
+    },
+    {
+     "address": "Kinkerstraat 336N",
+     "use": "woonfunctie",
+     "areaM2": 17,
+     "bagId": "0363010001982063"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  }
+ ]
+}

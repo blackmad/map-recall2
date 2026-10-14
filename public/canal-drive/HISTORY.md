@@ -1,5 +1,301 @@
 # Canal Recall — what is built
 
+## Canal-house windows and white accents measured into the kit (2026-10-14, user)
+
+Lane `lane/canal-windows-20261014`, from the user's priority ("window shape
+on canal houses is important to me, as are white-brick accents in
+facades"). A survey of 35 canal-belt pands (1610s–1905; 29 measured, the
+rest had bad crops; `docs/canal-house-windows-and-accents-20261014.md`
+carries every measurement and hex) gives era medians the kit had wrong:
+window height is 0.73 / 0.76 / 0.72 of the storey on ground / first /
+second (the old default was 0.58–0.62), windows take 0.66 of the front
+width (old 0.51), absolute heights shrink upward (3.0 / 2.2 / 1.75 /
+1.45 m on 179169), frames are white or cream on 27 of 29 fronts, a third
+of the fronts are near-black painted brick (#2d2826, #303639, #3f3a33),
+speklagen are 0.10–0.16 m tall every 0.45–1.1 m, arch rings 3–4 courses
+or 5 blocks, quoins 0.33 m blocks at a 0.56 m pitch; window kind by era:
+cross windows (17th c.), 6/8/9-over sashes (18th), six-pane, 2-over-2 and
+T-windows (19th), small-pane upper sash over one pane (c.1900). New
+optional keys in `intent.ts` + `fit.ts`, tested in
+`streetComponents.test.ts` (10/10), byte-identical when absent
+(fit-golden 140 unchanged, 107 large meshes identical): window layouts
+`sash-6-over-6`, `sash-8-over-8`, `sash-9-over-9`, `six-pane`, `t-window`,
+`small-over-one`, `cross-transom` (whole front or per storey via
+`storeyWindows`; bars clamped 1.5 cm inside the pane); `windowHead {kind:
+segmental (rise 0.08 of the width, the survey median) | round |
+relieving (square window under an arch spanning width + 0.12 m), storeys,
+archRing {colour stone|band|frame, style solid|blocks|none}, keystone}`;
+`windowShare`; `windowHeights` per storey or `'diminishing'` (heads on a
+common line at 0.86 of the storey); `storeyHeights`; `bands: 'speklagen'`
+with `{spacing, courses}` (white courses 2 cm proud); `windowSurround:
+'sill'`; `plinth: 'low'` (0.45 m stone); `basementBars`; `cornice:
+'frieze'`. Eight surveyed houses re-fitted as `cw-*` recipes (929–2,467
+tris, every gate), each with a photo | model | overlay sheet
+(`docs/images/canal-windows/<id>.jpg`): Herengracht 175702 and 179665
+(block arches and speklagen land on the photo's courses), Keizersgracht
+176393 (bell gable, near-black) and 171052, Prinsengracht 179169
+(diminishing heights) and 167765 (segmental frame heads), Herengracht
+179684 (T-windows) and 176601. Fixes after looking at 640 px: segmental
+rise 0.14 → 0.08 (heads had read as round arches), `storeyHeights` and
+`plinth` so storeys line up, 176393 made a bell gable. Not installed;
+they are the regression set for the canal-belt vocabulary. What the kit
+still cannot say (its list, items 1–16): loading-door axes with date
+stones, shutters (the field exists, the fit ignores it), door transoms
+and fanlights, carved keystones, blokband, speklagen at opening lines, a
+single string course, quoins with set block size, lugged architraves and
+hoods and stone door surrounds, oculi and cartouches, gable claw pieces
+and scrolls, wall anchors, basement doors and double stoops, frame width
+(fixed 0.07 m), stucco fronts with pilasters, some dormers against the
+open-edges gate. The Nassaukade 506 and Oud-West type lanes build on
+these keys.
+
+
+## Own ground on by default; the start faces the first leg, not the snapped node (2026-10-14, user)
+
+Lane `lane/own-ground-default-20261014`. **Own ground default** (user:
+"make ownground the default"): `OWN_GROUND_DEFAULT = true` in
+`vector-map.js`; `?ownGround=0` or `window.__canalRecallOwnGround = false`
+turns it off, `?ownGround=1` still works, and an explicit `?sharedFrame=0`
+turns it off too (the own ground draws through the shared frame) unless
+`?ownGround=1` is given; `own-ground-default.spec.ts` (7/7) pins all of
+that. The old `?elevation=1` stencil layer now needs `?ownGround=0`, so
+`canal-elevation.spec.ts` and `CANAL_ELEVATION=1` in `ride-perf.spec.ts`
+switch own ground off; `ride-perf.spec.ts` gained `OWN_GROUND=0|1`.
+Desktop ride-perf on the fixed ride, medians of three runs, off → on:
+frame interval 16.7/16.8/16.8 ms unchanged (locked to the display, no
+long frames either way), map render 2.35 → 3.5 ms median, three.js work
+0.73 → 2.11 ms per frame, JS heap 788 → 881 MB. The real cost is ~2.5 ms
+of main-thread work and ~90 MB; if that headroom is needed, cut the far
+ring (LOD 1 cells) first, then parks and allotments, junction rings, the
+4 m relief. `index.html` bumps `vector-map.js?v=20261014-ownground` so
+cached copies do not keep the old default. **Start heading** (user:
+"camera starting in the wrong direction", boat at the Hugo de
+Grootgracht): the planned route begins at the graph node the start was
+snapped to, which can lie behind the spawn (12 m west there), and
+`startHeading` measured its look-ahead from that first point, so a route
+running east past the boat made the boat and the chase camera face west;
+boat seed 2468ace0 and bike seed 1234abcd did the same. Fix in
+`src/canalRecall/game/routeSelection.ts`: the first leg is read from the
+spawn's closest point on the first ~300 m of the route (a later
+near-equal segment wins so a doubled-back route reads where it passes the
+spawn again; off-route spawns face the route; the road or canal direction
+is kept within 30° of the leg, else the leg itself); restarts and new
+rides use the same spawn code. `scripts/check-start-heading.ts` adds the
+real boat and bike routes plus doubled-back, sideways and loop cases;
+`start-heading.spec.ts` covers nine seeded rides and the user's start,
+spawn heading and camera forward each within 30° of the first leg (11/11
+desktop); `START_HEADING_OFF=old` swaps the old algorithm in and the
+pinned boat start then fails. `check:canal` green on the lane. Also
+found: `.cache/.cache` was a symlink to its own parent and crashed the
+vite dev server with ELOOP in any worktree with a `.cache` link
+(removed); and `check:canal` rebuilds nine bundles main had out of date
+(building-style, building-tiles, game-landmarks, game-recall, game-ui,
+notice-cards, orientation-pois, recall-store, three), rebuilt and
+committed here.
+
+
+## Measured glass reaches the game; the sheet's city-look column was the liar (2026-10-14)
+
+Lane `lane/measured-look-20261014` (plan Part 1 lane B, second pass). The
+two "look bugs" the kit-vocabulary sheet showed were one real and one
+false. **False:** measured dark walls were never near-black in the game;
+the sheet's "re-fit, city-look tints" column came from lane C's scratch
+`compare.ts`, which passed trial texture tiles to `renderModels`, and that
+branch of `render-page.ts` skipped the game look and drew the GLB's raw
+colours under a hemisphere + sun light (Waagdragerhof's `#4a302b` tower
+rendered 31,18,16 there while both game looks drew it 78,50,46, ΔL
++0.01); Houthavenkade's "pale grey" plum half was the raw reflective
+glass. The trace from intent → fit slot → export extras →
+`slotForMaterial` → `cityLookTint` → shader ruled out a double bypass, a
+shade multiplication and a stucco/paint mis-slot. Fix: `render-page.ts`
+and `render.ts` always draw through a game look (`renderModels(models,
+views, {city, year})`, `--city-look [--year=]`); the `--textures` path is
+retired and a texture map now throws. **Real:** `cityTint('glass')`
+returned white for every glass, so `palette.glass` never reached the game.
+Glass with `tintSource: 'measured'` now uses a twelfth slot layer,
+`glassTint` (the pane gradient and sky streak in grey, 188–255), tinted by
+`cityMeasuredGlassTint` (hex ÷ the cell's exact mean), in `palette.ts`,
+`slotCells.ts`, `cityLook.ts`, `recipeLook.ts` and `writeTile.ts`; a new
+layer because the old blue-grey pane's mean caps any tint below pale
+reflective glass; unmeasured glass unchanged. `fitLarge` adds a measured
+group's `glass@g<i>` to `measuredSlots` (not in the fit-golden hash).
+Also found: measured brick in 20th-century buildings sampled the lighter
+`brick20` cell and drew 0.02–0.03 L light; measured brick now always
+samples the canal brick. Result on the three re-fits: every measured
+wall, arch ring and glass within 0.02 L of its authored hex in both game
+looks (`scripts/look/measured-walls.ts` id-pass table; e.g. Houthavenkade
+glass `#8e9ea4` rendered 89,107,118 before, 141,157,163 after; Apollohal
+glass `#46545c` 106,126,139 → 74,88,97). Tests: look 40/40 (measured glass
+cell × tint within 1.5 per channel for six hexes; layer choice; `dress`
+attributes), building-recipes 134, fit-golden 140 identical, large meshes
+107 identical, tileBuildings 18/18, Playwright `building-look.spec.ts`
+with a new case loading a re-fit GLB in both looks (every material within
+0.05 L, the looks within 0.02 of each other); the city-look gallery review
+on six installed models is pixel-identical (no installed model carries
+`tintSource` yet). Atlas +1/12 (~0.5 MB at 256 px). `docs/LOOK.md` gained
+"Measured colours". The re-fits still wait for the reconciliation lane
+(lane A's measured values on lane C's systems) before they install.
+
+
+## Kinkerstraat surveyed (217 pands, 28 faces); Object Capture tried on the statues (2026-10-14)
+
+**Kinkerstraat** (`lane/kinkerstraat-survey-20261014`, plan Part 2 step 2):
+`scripts/street-surveys/streets/kinkerstraat.json` indexes all 217 BAG
+pands with a Kinkerstraat address: side, year and style group
+(revolutiebouw 1880–1909: 167; 1910s: 11; 1980s urban-renewal infill: 32;
+other 7), frontage width, 3DBAG eaves/ridge/storeys, BAG ground use with
+the OSM name and category, crop path, panorama ids and dates, washed-out
+fractions, flags, and the face id. Four scripts beside `street-pands.ts`
+(`commercial-faces.ts` proposes faces by cross street, `commercial-intake.ts`
+runs the intakes, `commercial-merge.ts` builds the index,
+`commercial-sheets.ts` the per-side contact sheets). 28 faces under
+`scripts/block-face/faces/kinker-*/` with discovery, strip and uses (odd
+1–29 … 363–371; even 2–30 … 392), strips fused from one capture day
+(2024-12-11, four faces 2024-11-29), coverage 1.0; the bend at 334–390
+split into four faces; `kinker-240-240` has no sightline (pand 160986 in
+front); nos. 118, 142, 180, 204 have the address but no wall on the
+street. 22 corner pands' cross-street crops were replaced by their
+Kinkerstraat wall (`crop.streetWall`). Ten fronts are washed out in both
+capture years (scaffolding or overexposure; the strip sidesteps most of
+it). Large-tier or bespoke candidates: the two halls 32–54 (1999, 59.6 m)
+and 89–105 (De Hallen, 65.7 m), the 1992 infill blocks 265–283 and
+293–313, the 2183 m² block behind 227–263, wide 1890s fronts 7–17 and
+126–138, the 1982 infill corners 189–207 and 213–225, and 125–149,
+173–177, 315–319, 109 (three fronts). Crops, strips and the per-pand
+references are in `map-recall2-source-data` (`pand-reference-walls/`,
+`block-face-strips/kinker-*/`, `pand-reference-kinkerstraat/`; commit
+1296fa70, not pushed). `run.ts --street` missed 10 of the 217 (centroid
+radius) and was topped up by `--ids`. No intents yet; the type-library
+lane takes it from here.
+
+**Object Capture** (`lane/objcap-20261014`, plan Part 4): Apple's
+PhotogrammetrySession runs on this Mac (`scripts/sculptures/objcap/`,
+Swift; `pano-views.ts` renders 40° pinhole views at the statue from every
+panorama in a radius; `objcap_post.py` aligns panorama sets to RD by the
+known view directions, crops, scales, decimates, exports a textured and a
+material-slot GLB in Blender; `objcap_summary.py` pins every run and
+licence in `multiview-20261014.json`). Thirteen runs: the panoramas never
+resolve a figure (135–200 px tall behind hedges and poles; a 4.2 m
+featureless column for De Dokwerker, a spike for Gandhi), mixed sets and
+the 274-photo archive fail with `processError` because the photos split
+into non-overlapping groups, and one set works: De Dokwerker from 16
+Commons photos by one photographer (Rietman 2013, CC BY-SA 4.0), a real
+textured front half with an open back. Verdict: not shippable; a
+front-half reference to check TripoSR against, and the panoramas give a
+cheap position and height check (column top 4.2–4.3 m vs the 4.13 m kit).
+TripoSR stays the route; a closed figure would need a dedicated walk-around
+capture of ~40 photos. Strips on the demo page and under
+`docs/images/sculptures/`.
+
+
+## Amsterdam School components for block faces; the Street-View pilot retired (2026-10-14)
+
+Lane `lane/amsterdam-school-20261014` (plan Part 2 step 6). Eight
+components in `buildingRecipe/fit.ts` (layout) and the new
+`buildingRecipe/amsterdamSchool.ts` (meshes built after the library;
+`applyAmsterdamSchool` returns null when a house uses none, so absent
+components are byte-identical: fit-golden 140/140, all 21 face chunks
+hash identically): **rigid continuous canopy** (`shopfront.awning.style:
+"rigid"`, optional `fasciaColour`; a 1.2 × 0.16 m slab 2 cm over the
+shop-glass head with a 0.3 × 0.06 m nose fascia; `continuity.canopy:
+[{pands, evidence}]` on the face joins neighbours at the median height,
+each pand keeping its own mesh so `pandRanges` hold; the validator
+rejects single-pand groups, non-neighbours, missing evidence; proportions
+from `shopCanopies.ts`, which stays for the streamed tier with a note),
+**ladder window** (`windows: "ladder"`, 0.55–0.75 m lights at 0.68 storey
+with 4–6 bars, paired per bay with a 0.16 m pier), **multi-bay erker**
+(`bayWindows: {bays: {from, to}, storeys, cap: hip|flat|none}`, 0.55 m
+projection, 0.25 m returns, a 0.85 m stallriser per storey), **brick
+course banding** (`bands: "courses"`, `courseStoreys`, `palette.band`;
+whole storeys faced in the band brick plus 2–3 raised courses over the
+heads), **corner tower** (`tower: {corner: true, rise, cap:
+pyramid|flat|stepped}` on a two-front pand; plan from the two front
+planes, rhombus on a shared vertex, five points on a chamfer; `stepped`
+also for ordinary towers), and three the Jan Evertsenstraat strip
+demanded under the standing rule: **glass-block band**
+(`awning.glassBlocks: true`, a glazed band over the slab to 8 cm under the
+first sills with a 0.2 m mortar grid), **brick lisenes** (`lisenes:
+{leftEnd, rightEnd}` half|full, 0.1 m proud with a corbel cap, a half
+lisene meeting the neighbour's on the party plane) and **window hoods**
+(`windowHoods: true`, a 0.12 m ledge 0.22 m proud). Tests:
+`blockFace/amsterdamSchool.test.ts` (11) on the synthetic face
+`scripts/block-face/faces/_demo-school/` (nine De Clercqstraat pands with
+invented intents, 28,188 tris, not installed; the sweeps skip `_` faces).
+The real input for the street: `faces/_jan-evertsen-94/` (nos. 94–142, 26
+pands, panoramas 2024-12-06, facts/uses/discovery, no intent yet). What
+the kit still cannot say on that stretch: side-hung casements with a
+fixed top light (the street's dominant window), the tall plain parapet
+zone, no. 94's stepped corner mass, the clock tower, gateway and canted
+bay of pand 107349 (bespoke or large tier), signs on the glass-block band.
+**Retired**: the Street-View-based Jan Evertsenstraat pilot
+(`scripts/jan-evertsen-pilot/`, `interwar*Frontage*` modules and tests,
+`fixtures/interwarPilotProfiles.json`, `scopedStreetAppearance.test.ts`,
+`public/canal-drive/jan-evertsen-pilot.html`, the
+`jan-evertsen-canopy-candidate-native-pair` profile in the installed
+profiles, `profiles.json` and `frontage-survey.json`, the interwar code
+in `threeBuildingMesh.ts`, `streetAppearance.ts`, `sourceVisualRoof.ts`,
+`shopCanopies.ts`; shared quad types moved to `frontageQuads.ts`); the
+integrator also removed the pilot GLBs under `models/jan-evertsen-pilot/`
+and `demo-assets/jan-evertsen/` and dropped the deleted tests from the
+`test:street-rendering-core` and `test:street-appearance` scripts. Kept:
+`docs/references/jan-evertsen-pilot/` with the README's retirement line,
+the Beeldbank acquisition and BAG rollout inventories. Two tests in those
+suites were already red on main before this merge and stay on the board:
+`scripts/street-appearance/audit-frontages.test.ts` (source-hash
+mismatches across files no lane touched) and the pyramid case in
+`surveyedEnvelopeTransport.test.ts`.
+
+
+## Large kit vocabulary: glazed hall, glazed columns, French-window ledge; the three complaint houses re-fitted (2026-10-14)
+
+Lane `lane/large-vocabulary-20261014` (plan Part 1 lane C), on lane A's
+schema commit (`palette.glass`, `windowShape`, `hand`, `measured`,
+`sources[].sha256`, cherry-picked). New systems in `blockBuilding/systems.ts`
+and `components.ts`, wired through `fitLarge.ts`, `largeCompile.ts`,
+`largeIntent.ts`: **`glazed-hall`** (`hall {base, lights, rows}`: the
+group's wall becomes the glass skin with a brick base of `base` × eaves,
+a stone sill, a mullion grid of `lights` per structural bay × `rows`, wide
+posts at the bay joints; needs the layered kit), **`glazed-columns`**
+(`columns {bays, share?, from?, slabs?}`: full-height glass stripes on the
+listed bays from storey `from`, enclosed 0.45 m balconies with a slab per
+storey when `slabs`, 18 cm edge posts, drawn as runs of storeys ≤ 9 m,
+punched windows elsewhere), **`french-window-ledge`** (windows 0.5 bay ×
+0.75 storey, thin frame, Juliet bar, continuous ledge under every sill;
+takes `windowShape` and `arches.windows`), a `windows: "stacked"` preset
+(two lights, five bars) and `walls[].palette.arch` for arch-ring colour;
+`palette.glass` gets its own slot wherever the tier draws glass; groups in
+`intent.measured.groups` mark their wall and arch-ring materials
+`tintSource: 'measured'` (lane B's key). The Singel 457 seam: not a
+straddle (dissolve had merged the three surfaces) but a face outline that
+steps back at 13.28 m with the window head 3 mm in the gap; an opening
+that cannot be cut now moves its head or sill by up to 10 cm and is cut
+there instead of laid proud (regression: Singel 457 at 6 storeys, 1 proud
+→ 0, 1 trimmed; its intent stays at 5 storeys). Re-fits, not installed:
+Apollohal 3,812 tris (glazed hall, base 0.40 of the eaves as in the photo,
+26 lights × 6 rows per bay, pale tan base, dark grey-blue glass);
+Houthavenkade 26 11,708 (front split on its two 3DBAG surfaces: orange
+east 21 bays, plum-brown west 11 bays, both glazed columns with slabs at
+the photographed heights, grey reflective glass; the orange half's window
+frames dropped for budget); Waagdragerhof 10,250 (tower french-window
+ledge, 13 columns, brick `#4a302b`; warehouse north front tall segmental
+stacked windows with white frames, rings and cornice on purple-brown
+`#5e4a4c`). Byte-identity: 107/107 large meshes and 140/140 recipes
+identical apart from the three pilots; zfight-near on Apollohal 252 → 13 m²,
+Houthavenkade 171 → 22 m². The comparison sheet (installed | re-fit |
+3/4 | city-look | photo) is on the demo page; the integrator's verdict:
+the raw re-fits read right against the photos (two-tone glass columns,
+the glazed band on a plinth, white-ringed arches), but the city-look
+column shows two look bugs that block installing: `cityTint('glass')`
+returns white for every glass material so `palette.glass` never reaches
+the game, and measured dark walls render near-black and Houthavenkade's
+plum half pale grey (the measured bypass applied twice or on the wrong
+slot). Lane B2 holds those. Still missing per the lane: APOLLOHAL letters,
+louvres and canopy; Houthavenkade's mid-height transoms, corner frames and
+brick shop piers; Waagdragerhof's paired small arches, hoist-door axes,
+spandrel panels, dentil cornice, PAKHUIS WILHELMINA lettering, the bridge
+volume and stepped tower top.
+
+
 ## Hosting: auto-prune after every deploy, bursts deploy once (2026-10-14)
 
 Deploys failed on the 10 GB Hosting quota again this morning (24 failed

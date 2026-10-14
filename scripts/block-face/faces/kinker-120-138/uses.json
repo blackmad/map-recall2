@@ -1,0 +1,471 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:10:43.741Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233461",
+   "addresses": [
+    "Kinkerstraat 126B",
+    "Kinkerstraat 126C",
+    "Kinkerstraat 126D",
+    "Kinkerstraat 128B",
+    "Kinkerstraat 128C",
+    "Kinkerstraat 128D",
+    "Kinkerstraat 128E",
+    "Kinkerstraat 128F",
+    "Kinkerstraat 130A",
+    "Kinkerstraat 130C",
+    "Kinkerstraat 130D",
+    "Kinkerstraat 132B",
+    "Kinkerstraat 132C",
+    "Kinkerstraat 132D",
+    "Kinkerstraat 134",
+    "Kinkerstraat 136",
+    "Kinkerstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tollensstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 237,
+     "bagId": "0363010000975444"
+    },
+    {
+     "address": "Tollensstraat 65-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005932"
+    },
+    {
+     "address": "Kinkerstraat 126B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001012580"
+    },
+    {
+     "address": "Kinkerstraat 126C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001012581"
+    },
+    {
+     "address": "Kinkerstraat 126D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001012582"
+    },
+    {
+     "address": "Kinkerstraat 128B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001012583"
+    },
+    {
+     "address": "Kinkerstraat 128C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001012584"
+    },
+    {
+     "address": "Kinkerstraat 128D",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001012585"
+    },
+    {
+     "address": "Kinkerstraat 130A",
+     "use": "winkelfunctie",
+     "areaM2": 455,
+     "bagId": "0363010001012586"
+    },
+    {
+     "address": "Kinkerstraat 130C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001012587"
+    },
+    {
+     "address": "Kinkerstraat 130D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001012588"
+    },
+    {
+     "address": "Kinkerstraat 132B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001012589"
+    },
+    {
+     "address": "Kinkerstraat 132C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010001012590"
+    },
+    {
+     "address": "Kinkerstraat 132D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001012591"
+    },
+    {
+     "address": "Tollensstraat 63A",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001012592"
+    },
+    {
+     "address": "Tollensstraat 63B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001012593"
+    },
+    {
+     "address": "Tollensstraat 63C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001012594"
+    },
+    {
+     "address": "Tollensstraat 63D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001012595"
+    },
+    {
+     "address": "Kinkerstraat 130A",
+     "use": "winkelfunctie",
+     "areaM2": 451,
+     "bagId": "0363010012095681"
+    },
+    {
+     "address": "Tollensstraat 63",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 4,
+     "bagId": "0363010012095682"
+    },
+    {
+     "address": "Kinkerstraat 138-H",
+     "use": "winkelfunctie",
+     "areaM2": 267,
+     "bagId": "0363010012108239"
+    },
+    {
+     "address": "Kinkerstraat 128E",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012116230"
+    },
+    {
+     "address": "Kinkerstraat 128F",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012116231"
+    },
+    {
+     "address": "Tollensstraat 65A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012118658"
+    },
+    {
+     "address": "Tollensstraat 65B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012118659"
+    },
+    {
+     "address": "Tollensstraat 65C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012118660"
+    },
+    {
+     "address": "Tollensstraat 65E",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010012118662"
+    },
+    {
+     "address": "Tollensstraat 65F",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012118663"
+    },
+    {
+     "address": "Tollensstraat 65D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012118661"
+    }
+   ],
+   "units": 44,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2327314810,
+     "lngLat": [
+      4.8698161,
+      52.3666534
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "check_date:collection_times": "2025-10-02",
+      "collection_times": "Mo-Fr 17:00",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "frontage",
+     "distanceM": 2.1
+    },
+    {
+     "type": "node",
+     "id": 2772298382,
+     "lngLat": [
+      4.8695707,
+      52.3666394
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "134-138",
+      "addr:postcode": "1053EE",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "Legerdump",
+      "note": "Ze verkopen o.a. outdoor kleding maar ook andere outdoor gear, kompassen, messen, veldflessen, etc. Ook luchtbuksen.",
+      "opening_hours": "Mo 12:00-18:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "shop": "outdoor",
+      "website": "https://www.armysurplus.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11049877818,
+     "lngLat": [
+      4.8694363,
+      52.3667246
+     ],
+     "tags": {
+      "addr:housenumber": "65",
+      "addr:postcode": "1053RS",
+      "addr:street": "Tollensstraat",
+      "amenity": "cafe",
+      "check_date": "2026-09-19",
+      "check_date:opening_hours": "2026-09-19",
+      "name": "Fred's Koffie",
+      "opening_hours": "Mo-Fr 07:30-18:00; Sa-Su 09:00-18:00",
+      "website": "http://fredskoffie.nl"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12160371750,
+     "lngLat": [
+      4.8697821,
+      52.3667171
+     ],
+     "tags": {
+      "brand": "Pets Place",
+      "brand:wikidata": "Q116951772",
+      "check_date": "2025-10-02",
+      "name": "Pets Place",
+      "shop": "pet",
+      "website": "https://www.petsplace.nl/dierenwinkel-amsterdam",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105633561,
+     "lngLat": [
+      4.8697114,
+      52.3665722
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    },
+    {
+     "type": "node",
+     "id": 13105643463,
+     "lngLat": [
+      4.8699542,
+      52.3666519
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236198",
+   "addresses": [
+    "Kinkerstraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 122-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000705642"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2441927948,
+     "lngLat": [
+      4.8699733,
+      52.3667288
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122",
+      "addr:postcode": "1053ED",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "check_date": "2024-09-01",
+      "cuisine": "burger",
+      "indoor_seating": "yes",
+      "name": "Paindemie",
+      "outdoor_seating": "no",
+      "website": "https://www.paindemie-amsterdam.com",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153271",
+   "addresses": [
+    "Kinkerstraat 120",
+    "Kinkerstraat 120C",
+    "Kinkerstraat 120D",
+    "Kinkerstraat 120E",
+    "Kinkerstraat 120F",
+    "Kinkerstraat 120B",
+    "Kinkerstraat 120A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 120-H",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000705637"
+    },
+    {
+     "address": "Kinkerstraat 120C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000705638"
+    },
+    {
+     "address": "Kinkerstraat 120D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000705639"
+    },
+    {
+     "address": "Kinkerstraat 120E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705640"
+    },
+    {
+     "address": "Kinkerstraat 120F",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012136230"
+    },
+    {
+     "address": "Kinkerstraat 120B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012136262"
+    },
+    {
+     "address": "Kinkerstraat 120A",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012136261"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809201184,
+     "lngLat": [
+      4.8700923,
+      52.3667748
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118-H",
+      "addr:postcode": "1053ED",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "Glam by Mooi",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "frontage",
+     "distanceM": 3.5
+    },
+    {
+     "type": "node",
+     "id": 4942879221,
+     "lngLat": [
+      4.8701633,
+      52.3667941
+     ],
+     "tags": {
+      "addr:housenumber": "116-H",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2024-09-01",
+      "male": "yes",
+      "name": "Knip je Knap",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T09:10:43.741Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  }
+ ]
+}

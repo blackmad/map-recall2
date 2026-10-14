@@ -1,0 +1,4579 @@
+{
+ "note": "Multi-view prototype 2026-10-14 (docs/sculpture-reconstruction-20261014.md, 'Multi-view: Object Capture'). Outputs are gitignored under artifacts/sculpture-reconstruction/<id>/.",
+ "statues": {
+  "de-dokwerker": {
+   "panoramas": {
+    "panos": {
+     "radiusM": 40,
+     "fovDeg": 40,
+     "byYear": {
+      "2016": 24,
+      "2017": 3,
+      "2018": 9,
+      "2019": 3,
+      "2020": 22,
+      "2021": 10,
+      "2022": 16,
+      "2024": 16,
+      "2025": 21
+     },
+     "licence": "CC BY 4.0, Gemeente Amsterdam (panorama API api.data.amsterdam.nl/panorama)",
+     "views": [
+      {
+       "file": "images/p000.jpg",
+       "panoId": "TMX7315120208-000070_pano_0019_000054",
+       "timestamp": "2016-06-07T13:11:20.504110Z",
+       "distM": 39.98,
+       "bearingDeg": 55.9,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p001.jpg",
+       "panoId": "TMX7315120208-000070_pano_0019_000055",
+       "timestamp": "2016-06-07T13:11:21.054060Z",
+       "distM": 39.02,
+       "bearingDeg": 63,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p002.jpg",
+       "panoId": "TMX7315120208-000070_pano_0019_000056",
+       "timestamp": "2016-06-07T13:11:21.619030Z",
+       "distM": 38.69,
+       "bearingDeg": 70.3,
+       "statueHeightPx": 136
+      },
+      {
+       "file": "images/p003.jpg",
+       "panoId": "TMX7315120208-000070_pano_0019_000057",
+       "timestamp": "2016-06-07T13:11:22.209040Z",
+       "distM": 38.97,
+       "bearingDeg": 77.7,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p004.jpg",
+       "panoId": "TMX7315120208-000070_pano_0019_000058",
+       "timestamp": "2016-06-07T13:11:22.829120Z",
+       "distM": 39.87,
+       "bearingDeg": 84.9,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p005.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000294",
+       "timestamp": "2016-08-17T08:52:51.132790Z",
+       "distM": 39.77,
+       "bearingDeg": 39.9,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p006.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000295",
+       "timestamp": "2016-08-17T08:52:51.687760Z",
+       "distM": 37.52,
+       "bearingDeg": 46.5,
+       "statueHeightPx": 140
+      },
+      {
+       "file": "images/p007.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000296",
+       "timestamp": "2016-08-17T08:52:52.297750Z",
+       "distM": 35.84,
+       "bearingDeg": 53.8,
+       "statueHeightPx": 147
+      },
+      {
+       "file": "images/p008.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000297",
+       "timestamp": "2016-08-17T08:52:52.982730Z",
+       "distM": 34.83,
+       "bearingDeg": 61.6,
+       "statueHeightPx": 151
+      },
+      {
+       "file": "images/p009.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000298",
+       "timestamp": "2016-08-17T08:52:53.817750Z",
+       "distM": 34.53,
+       "bearingDeg": 69.6,
+       "statueHeightPx": 152
+      },
+      {
+       "file": "images/p010.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000299",
+       "timestamp": "2016-08-17T08:52:54.942710Z",
+       "distM": 34.92,
+       "bearingDeg": 77.6,
+       "statueHeightPx": 151
+      },
+      {
+       "file": "images/p011.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000300",
+       "timestamp": "2016-08-17T08:52:56.632790Z",
+       "distM": 35.9,
+       "bearingDeg": 85.2,
+       "statueHeightPx": 146
+      },
+      {
+       "file": "images/p012.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000301",
+       "timestamp": "2016-08-17T08:52:59.342740Z",
+       "distM": 37.43,
+       "bearingDeg": 92.2,
+       "statueHeightPx": 140
+      },
+      {
+       "file": "images/p013.jpg",
+       "panoId": "TMX7316060226-000030_pano_0008_000302",
+       "timestamp": "2016-08-17T08:53:10.612630Z",
+       "distM": 39.33,
+       "bearingDeg": 98.3,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p014.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001719",
+       "timestamp": "2016-11-24T09:58:22.867890Z",
+       "distM": 38.64,
+       "bearingDeg": 39.2,
+       "statueHeightPx": 136
+      },
+      {
+       "file": "images/p015.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001720",
+       "timestamp": "2016-11-24T09:58:23.547880Z",
+       "distM": 36.26,
+       "bearingDeg": 45.6,
+       "statueHeightPx": 145
+      },
+      {
+       "file": "images/p016.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001721",
+       "timestamp": "2016-11-24T09:58:24.237890Z",
+       "distM": 34.43,
+       "bearingDeg": 52.8,
+       "statueHeightPx": 153
+      },
+      {
+       "file": "images/p017.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001722",
+       "timestamp": "2016-11-24T09:58:24.912830Z",
+       "distM": 33.21,
+       "bearingDeg": 60.7,
+       "statueHeightPx": 158
+      },
+      {
+       "file": "images/p018.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001723",
+       "timestamp": "2016-11-24T09:58:25.573030Z",
+       "distM": 32.65,
+       "bearingDeg": 69,
+       "statueHeightPx": 161
+      },
+      {
+       "file": "images/p019.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001724",
+       "timestamp": "2016-11-24T09:58:26.237900Z",
+       "distM": 32.77,
+       "bearingDeg": 77.4,
+       "statueHeightPx": 160
+      },
+      {
+       "file": "images/p020.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001725",
+       "timestamp": "2016-11-24T09:58:26.922850Z",
+       "distM": 33.61,
+       "bearingDeg": 85.6,
+       "statueHeightPx": 156
+      },
+      {
+       "file": "images/p021.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001726",
+       "timestamp": "2016-11-24T09:58:27.622880Z",
+       "distM": 35.13,
+       "bearingDeg": 93.1,
+       "statueHeightPx": 150
+      },
+      {
+       "file": "images/p022.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001727",
+       "timestamp": "2016-11-24T09:58:28.332790Z",
+       "distM": 37.19,
+       "bearingDeg": 99.9,
+       "statueHeightPx": 141
+      },
+      {
+       "file": "images/p023.jpg",
+       "panoId": "TMX7316010203-000190_pano_0000_001728",
+       "timestamp": "2016-11-24T09:58:29.057850Z",
+       "distM": 39.73,
+       "bearingDeg": 105.9,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p024.jpg",
+       "panoId": "TMX7316010203-000221_pano_0000_001376",
+       "timestamp": "2017-03-23T10:50:13.747710Z",
+       "distM": 37.57,
+       "bearingDeg": 53.8,
+       "statueHeightPx": 140
+      },
+      {
+       "file": "images/p025.jpg",
+       "panoId": "TMX7316010203-000221_pano_0000_001377",
+       "timestamp": "2017-03-23T10:50:16.037840Z",
+       "distM": 35.83,
+       "bearingDeg": 69,
+       "statueHeightPx": 147
+      },
+      {
+       "file": "images/p026.jpg",
+       "panoId": "TMX7316010203-000221_pano_0000_001378",
+       "timestamp": "2017-03-23T10:50:17.817690Z",
+       "distM": 36.87,
+       "bearingDeg": 84.6,
+       "statueHeightPx": 143
+      },
+      {
+       "file": "images/p027.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002207",
+       "timestamp": "2018-05-08T11:13:05.497160Z",
+       "distM": 38.96,
+       "bearingDeg": 38.5,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p028.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002208",
+       "timestamp": "2018-05-08T11:13:06.092210Z",
+       "distM": 36.4,
+       "bearingDeg": 45.1,
+       "statueHeightPx": 144
+      },
+      {
+       "file": "images/p029.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002209",
+       "timestamp": "2018-05-08T11:13:06.692190Z",
+       "distM": 34.45,
+       "bearingDeg": 52.7,
+       "statueHeightPx": 153
+      },
+      {
+       "file": "images/p030.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002210",
+       "timestamp": "2018-05-08T11:13:07.297190Z",
+       "distM": 33.23,
+       "bearingDeg": 60.9,
+       "statueHeightPx": 158
+      },
+      {
+       "file": "images/p031.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002211",
+       "timestamp": "2018-05-08T11:13:07.917180Z",
+       "distM": 32.79,
+       "bearingDeg": 69.6,
+       "statueHeightPx": 160
+      },
+      {
+       "file": "images/p032.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002212",
+       "timestamp": "2018-05-08T11:13:08.557170Z",
+       "distM": 33.09,
+       "bearingDeg": 78.3,
+       "statueHeightPx": 159
+      },
+      {
+       "file": "images/p033.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002213",
+       "timestamp": "2018-05-08T11:13:09.237200Z",
+       "distM": 34.07,
+       "bearingDeg": 86.6,
+       "statueHeightPx": 154
+      },
+      {
+       "file": "images/p034.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002214",
+       "timestamp": "2018-05-08T11:13:09.967160Z",
+       "distM": 35.69,
+       "bearingDeg": 94.3,
+       "statueHeightPx": 147
+      },
+      {
+       "file": "images/p035.jpg",
+       "panoId": "TMX7316010203-000711_pano_0000_002215",
+       "timestamp": "2018-05-08T11:13:10.767170Z",
+       "distM": 37.88,
+       "bearingDeg": 101.3,
+       "statueHeightPx": 139
+      },
+      {
+       "file": "images/p036.jpg",
+       "panoId": "TMX7316010203-001181_pano_0000_005450",
+       "timestamp": "2019-05-14T08:05:12.300790Z",
+       "distM": 39.78,
+       "bearingDeg": 61.7,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p037.jpg",
+       "panoId": "TMX7316010203-001181_pano_0000_005451",
+       "timestamp": "2019-05-14T08:05:13.440800Z",
+       "distM": 39.31,
+       "bearingDeg": 68.7,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p038.jpg",
+       "panoId": "TMX7316010203-001181_pano_0000_005452",
+       "timestamp": "2019-05-14T08:05:14.370800Z",
+       "distM": 39.39,
+       "bearingDeg": 75.8,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p039.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000511",
+       "timestamp": "2020-01-10T11:45:01.087920Z",
+       "distM": 38.48,
+       "bearingDeg": 39.7,
+       "statueHeightPx": 137
+      },
+      {
+       "file": "images/p040.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000512",
+       "timestamp": "2020-01-10T11:45:01.567910Z",
+       "distM": 36.06,
+       "bearingDeg": 46.5,
+       "statueHeightPx": 146
+      },
+      {
+       "file": "images/p041.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000513",
+       "timestamp": "2020-01-10T11:45:02.077890Z",
+       "distM": 34.26,
+       "bearingDeg": 54,
+       "statueHeightPx": 154
+      },
+      {
+       "file": "images/p042.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000514",
+       "timestamp": "2020-01-10T11:45:02.622860Z",
+       "distM": 33.12,
+       "bearingDeg": 62.3,
+       "statueHeightPx": 159
+      },
+      {
+       "file": "images/p043.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000515",
+       "timestamp": "2020-01-10T11:45:03.202870Z",
+       "distM": 32.72,
+       "bearingDeg": 70.9,
+       "statueHeightPx": 161
+      },
+      {
+       "file": "images/p044.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000516",
+       "timestamp": "2020-01-10T11:45:03.832850Z",
+       "distM": 33.08,
+       "bearingDeg": 79.5,
+       "statueHeightPx": 159
+      },
+      {
+       "file": "images/p045.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000517",
+       "timestamp": "2020-01-10T11:45:04.537870Z",
+       "distM": 34.17,
+       "bearingDeg": 87.7,
+       "statueHeightPx": 154
+      },
+      {
+       "file": "images/p046.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000518",
+       "timestamp": "2020-01-10T11:45:05.432870Z",
+       "distM": 35.89,
+       "bearingDeg": 95.2,
+       "statueHeightPx": 147
+      },
+      {
+       "file": "images/p047.jpg",
+       "panoId": "TMX7316010203-001552_pano_0001_000519",
+       "timestamp": "2020-01-10T11:45:06.807860Z",
+       "distM": 38.15,
+       "bearingDeg": 101.8,
+       "statueHeightPx": 138
+      },
+      {
+       "file": "images/p048.jpg",
+       "panoId": "TMX7316010203-001658_pano_0000_000801",
+       "timestamp": "2020-04-21T07:38:55.611400Z",
+       "distM": 39.57,
+       "bearingDeg": 59.3,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p049.jpg",
+       "panoId": "TMX7316010203-001658_pano_0000_000802",
+       "timestamp": "2020-04-21T07:38:56.381380Z",
+       "distM": 38.88,
+       "bearingDeg": 66.6,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p050.jpg",
+       "panoId": "TMX7316010203-001658_pano_0000_000803",
+       "timestamp": "2020-04-21T07:38:57.396310Z",
+       "distM": 38.85,
+       "bearingDeg": 73.9,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p051.jpg",
+       "panoId": "TMX7316010203-001658_pano_0000_000804",
+       "timestamp": "2020-04-21T07:38:58.921360Z",
+       "distM": 39.49,
+       "bearingDeg": 81.2,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p052.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000198",
+       "timestamp": "2020-04-21T11:17:37.653840Z",
+       "distM": 39.61,
+       "bearingDeg": 37.3,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p053.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000199",
+       "timestamp": "2020-04-21T11:17:38.008800Z",
+       "distM": 36.95,
+       "bearingDeg": 43.8,
+       "statueHeightPx": 142
+      },
+      {
+       "file": "images/p054.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000200",
+       "timestamp": "2020-04-21T11:17:38.363840Z",
+       "distM": 34.86,
+       "bearingDeg": 51.2,
+       "statueHeightPx": 151
+      },
+      {
+       "file": "images/p055.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000201",
+       "timestamp": "2020-04-21T11:17:38.723840Z",
+       "distM": 33.42,
+       "bearingDeg": 59.4,
+       "statueHeightPx": 157
+      },
+      {
+       "file": "images/p056.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000202",
+       "timestamp": "2020-04-21T11:17:39.083840Z",
+       "distM": 32.74,
+       "bearingDeg": 68.1,
+       "statueHeightPx": 161
+      },
+      {
+       "file": "images/p057.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000203",
+       "timestamp": "2020-04-21T11:17:39.448960Z",
+       "distM": 32.84,
+       "bearingDeg": 77,
+       "statueHeightPx": 160
+      },
+      {
+       "file": "images/p058.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000204",
+       "timestamp": "2020-04-21T11:17:39.818810Z",
+       "distM": 33.73,
+       "bearingDeg": 85.7,
+       "statueHeightPx": 156
+      },
+      {
+       "file": "images/p059.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000205",
+       "timestamp": "2020-04-21T11:17:40.193830Z",
+       "distM": 35.36,
+       "bearingDeg": 93.7,
+       "statueHeightPx": 149
+      },
+      {
+       "file": "images/p060.jpg",
+       "panoId": "TMX7316010203-001664_pano_0000_000206",
+       "timestamp": "2020-04-21T11:17:40.573820Z",
+       "distM": 37.65,
+       "bearingDeg": 100.8,
+       "statueHeightPx": 140
+      },
+      {
+       "file": "images/p061.jpg",
+       "panoId": "TMX7316010203-002042_pano_0000_000302",
+       "timestamp": "2021-03-15T12:25:20.186900Z",
+       "distM": 39.14,
+       "bearingDeg": 78.8,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p062.jpg",
+       "panoId": "TMX7316010203-002042_pano_0000_001288",
+       "timestamp": "2021-03-15T12:51:58.253120Z",
+       "distM": 39.99,
+       "bearingDeg": 57.5,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p063.jpg",
+       "panoId": "TMX7316010203-002042_pano_0000_001289",
+       "timestamp": "2021-03-15T12:51:58.748130Z",
+       "distM": 39.13,
+       "bearingDeg": 64.6,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p064.jpg",
+       "panoId": "TMX7316010203-002042_pano_0000_001290",
+       "timestamp": "2021-03-15T12:51:59.253140Z",
+       "distM": 38.88,
+       "bearingDeg": 71.9,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p065.jpg",
+       "panoId": "TMX7316010203-002306_pano_0003_000021",
+       "timestamp": "2021-09-09T12:41:05.943050Z",
+       "distM": 39.24,
+       "bearingDeg": 65.7,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p066.jpg",
+       "panoId": "TMX7316010203-002306_pano_0003_000022",
+       "timestamp": "2021-09-09T12:41:07.708030Z",
+       "distM": 39.07,
+       "bearingDeg": 73.2,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p067.jpg",
+       "panoId": "TMX7316010203-002306_pano_0003_000023",
+       "timestamp": "2021-09-09T12:42:11.257780Z",
+       "distM": 39.58,
+       "bearingDeg": 80.1,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p068.jpg",
+       "panoId": "TMX7316010203-002310_pano_0000_000016",
+       "timestamp": "2021-09-15T07:19:22.121650Z",
+       "distM": 39.25,
+       "bearingDeg": 64.2,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p069.jpg",
+       "panoId": "TMX7316010203-002310_pano_0000_000017",
+       "timestamp": "2021-09-15T07:19:22.986650Z",
+       "distM": 38.91,
+       "bearingDeg": 71.5,
+       "statueHeightPx": 135
+      },
+      {
+       "file": "images/p070.jpg",
+       "panoId": "TMX7316010203-002310_pano_0000_000018",
+       "timestamp": "2021-09-15T07:19:23.941630Z",
+       "distM": 39.27,
+       "bearingDeg": 78.8,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p071.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000173",
+       "timestamp": "2022-04-25T06:45:01.725490Z",
+       "distM": 38.31,
+       "bearingDeg": 39.3,
+       "statueHeightPx": 137
+      },
+      {
+       "file": "images/p072.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000174",
+       "timestamp": "2022-04-25T06:45:02.235680Z",
+       "distM": 35.9,
+       "bearingDeg": 46,
+       "statueHeightPx": 146
+      },
+      {
+       "file": "images/p073.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000175",
+       "timestamp": "2022-04-25T06:45:02.780500Z",
+       "distM": 34.1,
+       "bearingDeg": 53.6,
+       "statueHeightPx": 154
+      },
+      {
+       "file": "images/p074.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000176",
+       "timestamp": "2022-04-25T06:45:03.380500Z",
+       "distM": 32.96,
+       "bearingDeg": 61.9,
+       "statueHeightPx": 160
+      },
+      {
+       "file": "images/p075.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000177",
+       "timestamp": "2022-04-25T06:45:04.075490Z",
+       "distM": 32.57,
+       "bearingDeg": 70.6,
+       "statueHeightPx": 161
+      },
+      {
+       "file": "images/p076.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000178",
+       "timestamp": "2022-04-25T06:45:04.950490Z",
+       "distM": 32.94,
+       "bearingDeg": 79.1,
+       "statueHeightPx": 160
+      },
+      {
+       "file": "images/p077.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000179",
+       "timestamp": "2022-04-25T06:45:07.275430Z",
+       "distM": 34.03,
+       "bearingDeg": 86.7,
+       "statueHeightPx": 155
+      },
+      {
+       "file": "images/p078.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000180",
+       "timestamp": "2022-04-25T06:45:09.565430Z",
+       "distM": 35.67,
+       "bearingDeg": 94,
+       "statueHeightPx": 147
+      },
+      {
+       "file": "images/p079.jpg",
+       "panoId": "TMX7316010203-002541_pano_0000_000181",
+       "timestamp": "2022-04-25T06:45:10.550450Z",
+       "distM": 37.9,
+       "bearingDeg": 100.8,
+       "statueHeightPx": 139
+      },
+      {
+       "file": "images/p080.jpg",
+       "panoId": "TMX7316010203-002542_pano_0000_001720",
+       "timestamp": "2022-04-25T08:39:52.013210Z",
+       "distM": 39.9,
+       "bearingDeg": 59.4,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p081.jpg",
+       "panoId": "TMX7316010203-002542_pano_0000_001721",
+       "timestamp": "2022-04-25T08:39:53.243340Z",
+       "distM": 39.24,
+       "bearingDeg": 66.7,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p082.jpg",
+       "panoId": "TMX7316010203-002542_pano_0000_001722",
+       "timestamp": "2022-04-25T08:39:54.638080Z",
+       "distM": 39.22,
+       "bearingDeg": 74.1,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p083.jpg",
+       "panoId": "TMX7316010203-002542_pano_0000_001723",
+       "timestamp": "2022-04-25T08:39:55.888070Z",
+       "distM": 39.88,
+       "bearingDeg": 81.4,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p084.jpg",
+       "panoId": "TMX7316010203-002544_pano_0000_003017",
+       "timestamp": "2022-04-26T07:35:12.322100Z",
+       "distM": 39.66,
+       "bearingDeg": 61.4,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p085.jpg",
+       "panoId": "TMX7316010203-002544_pano_0000_003018",
+       "timestamp": "2022-04-26T07:35:13.097060Z",
+       "distM": 39.16,
+       "bearingDeg": 68.6,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p086.jpg",
+       "panoId": "TMX7316010203-002544_pano_0000_003019",
+       "timestamp": "2022-04-26T07:35:14.217030Z",
+       "distM": 39.27,
+       "bearingDeg": 75.8,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p087.jpg",
+       "panoId": "b_20241203_1333_Track01_Sphere_00157",
+       "timestamp": "2024-12-03T12:54:10Z",
+       "distM": 39.69,
+       "bearingDeg": 57.1,
+       "statueHeightPx": 132
+      },
+      {
+       "file": "images/p088.jpg",
+       "panoId": "b_20241203_1333_Track01_Sphere_00158",
+       "timestamp": "2024-12-03T12:54:11Z",
+       "distM": 38.8,
+       "bearingDeg": 64.7,
+       "statueHeightPx": 136
+      },
+      {
+       "file": "images/p089.jpg",
+       "panoId": "b_20241203_1333_Track01_Sphere_00159",
+       "timestamp": "2024-12-03T12:54:12Z",
+       "distM": 38.6,
+       "bearingDeg": 73.2,
+       "statueHeightPx": 136
+      },
+      {
+       "file": "images/p090.jpg",
+       "panoId": "b_20241203_1333_Track01_Sphere_00160",
+       "timestamp": "2024-12-03T12:54:13Z",
+       "distM": 39.17,
+       "bearingDeg": 80.8,
+       "statueHeightPx": 134
+      },
+      {
+       "file": "images/p091.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00153",
+       "timestamp": "2024-12-18T11:10:49Z",
+       "distM": 39.52,
+       "bearingDeg": 26.6,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p092.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00154",
+       "timestamp": "2024-12-18T11:10:50Z",
+       "distM": 36.36,
+       "bearingDeg": 32.5,
+       "statueHeightPx": 145
+      },
+      {
+       "file": "images/p093.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00155",
+       "timestamp": "2024-12-18T11:10:51Z",
+       "distM": 33.54,
+       "bearingDeg": 39.4,
+       "statueHeightPx": 157
+      },
+      {
+       "file": "images/p094.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00156",
+       "timestamp": "2024-12-18T11:10:52Z",
+       "distM": 31.25,
+       "bearingDeg": 47.2,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p095.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00157",
+       "timestamp": "2024-12-18T11:10:53Z",
+       "distM": 29.55,
+       "bearingDeg": 56.1,
+       "statueHeightPx": 178
+      },
+      {
+       "file": "images/p096.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00158",
+       "timestamp": "2024-12-18T11:10:54Z",
+       "distM": 28.62,
+       "bearingDeg": 65.9,
+       "statueHeightPx": 184
+      },
+      {
+       "file": "images/p097.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00159",
+       "timestamp": "2024-12-18T11:10:55Z",
+       "distM": 28.62,
+       "bearingDeg": 76,
+       "statueHeightPx": 184
+      },
+      {
+       "file": "images/p098.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00160",
+       "timestamp": "2024-12-18T11:10:56Z",
+       "distM": 29.56,
+       "bearingDeg": 85.7,
+       "statueHeightPx": 178
+      },
+      {
+       "file": "images/p099.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00161",
+       "timestamp": "2024-12-18T11:10:57Z",
+       "distM": 31.27,
+       "bearingDeg": 94.6,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p100.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00162",
+       "timestamp": "2024-12-18T11:10:59Z",
+       "distM": 33.6,
+       "bearingDeg": 102.4,
+       "statueHeightPx": 157
+      },
+      {
+       "file": "images/p101.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00163",
+       "timestamp": "2024-12-18T11:11:00Z",
+       "distM": 36.45,
+       "bearingDeg": 109.2,
+       "statueHeightPx": 144
+      },
+      {
+       "file": "images/p102.jpg",
+       "panoId": "b_20241218_1119_Track06_Sphere_00164",
+       "timestamp": "2024-12-18T11:11:01Z",
+       "distM": 39.63,
+       "bearingDeg": 114.9,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p103.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02991",
+       "timestamp": "2025-06-19T04:08:25Z",
+       "distM": 38.56,
+       "bearingDeg": 26.9,
+       "statueHeightPx": 136
+      },
+      {
+       "file": "images/p104.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02992",
+       "timestamp": "2025-06-19T04:08:26Z",
+       "distM": 35.45,
+       "bearingDeg": 33,
+       "statueHeightPx": 148
+      },
+      {
+       "file": "images/p105.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02994",
+       "timestamp": "2025-06-19T04:08:27Z",
+       "distM": 30.41,
+       "bearingDeg": 48.1,
+       "statueHeightPx": 173
+      },
+      {
+       "file": "images/p106.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02993",
+       "timestamp": "2025-06-19T04:08:27Z",
+       "distM": 32.69,
+       "bearingDeg": 40,
+       "statueHeightPx": 161
+      },
+      {
+       "file": "images/p107.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02996",
+       "timestamp": "2025-06-19T04:08:28Z",
+       "distM": 28.09,
+       "bearingDeg": 67.2,
+       "statueHeightPx": 187
+      },
+      {
+       "file": "images/p108.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02995",
+       "timestamp": "2025-06-19T04:08:28Z",
+       "distM": 28.83,
+       "bearingDeg": 57.3,
+       "statueHeightPx": 182
+      },
+      {
+       "file": "images/p109.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02997",
+       "timestamp": "2025-06-19T04:08:29Z",
+       "distM": 28.19,
+       "bearingDeg": 77.4,
+       "statueHeightPx": 187
+      },
+      {
+       "file": "images/p110.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02998",
+       "timestamp": "2025-06-19T04:08:29Z",
+       "distM": 29.1,
+       "bearingDeg": 87.2,
+       "statueHeightPx": 181
+      },
+      {
+       "file": "images/p111.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_02999",
+       "timestamp": "2025-06-19T04:08:30Z",
+       "distM": 30.86,
+       "bearingDeg": 96.2,
+       "statueHeightPx": 170
+      },
+      {
+       "file": "images/p112.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03000",
+       "timestamp": "2025-06-19T04:08:31Z",
+       "distM": 33.28,
+       "bearingDeg": 104,
+       "statueHeightPx": 158
+      },
+      {
+       "file": "images/p113.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03001",
+       "timestamp": "2025-06-19T04:08:31Z",
+       "distM": 36.26,
+       "bearingDeg": 110.6,
+       "statueHeightPx": 145
+      },
+      {
+       "file": "images/p114.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03002",
+       "timestamp": "2025-06-19T04:08:32Z",
+       "distM": 39.68,
+       "bearingDeg": 116.1,
+       "statueHeightPx": 133
+      },
+      {
+       "file": "images/p115.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03658",
+       "timestamp": "2025-06-19T04:18:36Z",
+       "distM": 38.73,
+       "bearingDeg": 43.5,
+       "statueHeightPx": 136
+      },
+      {
+       "file": "images/p116.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03660",
+       "timestamp": "2025-06-19T04:18:37Z",
+       "distM": 35.37,
+       "bearingDeg": 58.1,
+       "statueHeightPx": 149
+      },
+      {
+       "file": "images/p117.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03659",
+       "timestamp": "2025-06-19T04:18:37Z",
+       "distM": 36.75,
+       "bearingDeg": 50.5,
+       "statueHeightPx": 143
+      },
+      {
+       "file": "images/p118.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03662",
+       "timestamp": "2025-06-19T04:18:38Z",
+       "distM": 34.62,
+       "bearingDeg": 74.5,
+       "statueHeightPx": 152
+      },
+      {
+       "file": "images/p119.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03661",
+       "timestamp": "2025-06-19T04:18:38Z",
+       "distM": 34.66,
+       "bearingDeg": 66.2,
+       "statueHeightPx": 152
+      },
+      {
+       "file": "images/p120.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03663",
+       "timestamp": "2025-06-19T04:18:39Z",
+       "distM": 35.24,
+       "bearingDeg": 82.6,
+       "statueHeightPx": 149
+      },
+      {
+       "file": "images/p121.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03664",
+       "timestamp": "2025-06-19T04:18:39Z",
+       "distM": 36.5,
+       "bearingDeg": 90.4,
+       "statueHeightPx": 144
+      },
+      {
+       "file": "images/p122.jpg",
+       "panoId": "recording_2025-06-19_03-28-47_03665",
+       "timestamp": "2025-06-19T04:18:40Z",
+       "distM": 38.37,
+       "bearingDeg": 97.5,
+       "statueHeightPx": 137
+      },
+      {
+       "file": "images/p123.jpg",
+       "panoId": "recording_2025-06-19_06-21-49_00490",
+       "timestamp": "2025-06-19T06:31:22Z",
+       "distM": 39.55,
+       "bearingDeg": 87.6,
+       "statueHeightPx": 133
+      }
+     ]
+    }
+   },
+   "commons": [
+    {
+     "title": "File:Amsterdam, De dokwerker 02.JPG",
+     "local": "Amsterdam_De_dokwerker_02.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:36:59",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_02.JPG",
+     "sha256": "4246885c977470ac052dbc2fc928d06efc33630c67461160184e30a831fe8fe2",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdam, De dokwerker 03.JPG",
+     "local": "Amsterdam_De_dokwerker_03.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:37:14",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_03.JPG",
+     "sha256": "1bbcf3509d165afafc94f7973747b8ffdcf983eb3349582fb178029cf1171394",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdam, De dokwerker 05.JPG",
+     "local": "Amsterdam_De_dokwerker_05.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:37:40",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_05.JPG",
+     "sha256": "1a6bd3f2529dd5e92c83f529169f66687a2fff07ecb730398b455da3240c8efa",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdam, De dokwerker 07.JPG",
+     "local": "Amsterdam_De_dokwerker_07.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:37:46",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG",
+     "sha256": "e9203bf95740defdf0072ce5b7ca8b15cb4bccf67a8d1c7e5ca3dcbbabedd085",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdam, De dokwerker 08.JPG",
+     "local": "Amsterdam_De_dokwerker_08.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:37:49",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_08.JPG",
+     "sha256": "edf83f56fa88ff68598f361a2241f24bb199ae2ec73f438a55389434f9323ac6",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdam, De dokwerker 09.JPG",
+     "local": "Amsterdam_De_dokwerker_09.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:38:02",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_09.JPG",
+     "sha256": "3e2ed3720ae4c86c5fb1f67d014e8790893289755347e2dd25daccb1d76ee6bc",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdam, De dokwerker 10.JPG",
+     "local": "Amsterdam_De_dokwerker_10.JPG",
+     "author": "A.A.W.J. Rietman",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2013-08-16 14:38:10",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_10.JPG",
+     "sha256": "6d8f387459b44ca172939ab6ae4f31af7c16cd790a64b23adb7c761f175c49e0",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdamse stadsgezichten Dokwerker, Bestanddeelnr 254-8669.jpg",
+     "local": "Amsterdamse_stadsgezichten_Dokwerker_Bestanddeelnr_254-8669.jpg",
+     "author": "Bert Verhoeff / Anefo",
+     "licence": "CC0",
+     "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+     "date": "1970-07-17",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdamse_stadsgezichten_Dokwerker,_Bestanddeelnr_254-8669.jpg",
+     "sha256": "b8d6281dfc589865a938a0639941858d7c01df0b308e4f1cd2a6d5ce7ce515b3",
+     "admitted": true
+    },
+    {
+     "title": "File:Amsterdamse stadsgezichten Dokwerker, Bestanddeelnr 254-8670.jpg",
+     "local": "Amsterdamse_stadsgezichten_Dokwerker_Bestanddeelnr_254-8670.jpg",
+     "author": "Bert Verhoeff / Anefo",
+     "licence": "CC0",
+     "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+     "date": "1970-07-17",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Amsterdamse_stadsgezichten_Dokwerker,_Bestanddeelnr_254-8670.jpg",
+     "sha256": "65e33e3fde3d1c821343c56b7694dd64696bacd3cdd5b42f61d7316b280510a4",
+     "admitted": true
+    },
+    {
+     "title": "File:De Dokwerker - Mari Andriessen.jpg",
+     "local": "De_Dokwerker_-_Mari_Andriessen.jpg",
+     "author": "Pierrette13",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2018-02-27 14:26:46",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:De_Dokwerker_-_Mari_Andriessen.jpg",
+     "sha256": "8e0a6c150d61e3d011169715bf8a65092ccee154a6c9cafd99abc476ebfa43ec",
+     "admitted": true
+    },
+    {
+     "title": "File:De Dokwerker, Amsterdam.JPG",
+     "local": "De_Dokwerker_Amsterdam.JPG",
+     "author": "Gus Maussen",
+     "licence": "CC BY-SA 3.0 nl",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/nl/deed.en",
+     "date": "2010-06-19",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:De_Dokwerker,_Amsterdam.JPG",
+     "sha256": "8152d273f6d437a0b3792f7f851785ecc63c14d0e7b8d3e3645f7856580522ff",
+     "admitted": true
+    },
+    {
+     "title": "File:De Dokwerker.jpg",
+     "local": "De_Dokwerker.jpg",
+     "author": "S Sepp",
+     "licence": "CC BY-SA 3.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "date": "2007-10-12",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:De_Dokwerker.jpg",
+     "sha256": "e9a56b4244ebaa9fab003f1dd5e7dd7049eaad8e3cf876dd89eae7ed4c4e49f9",
+     "admitted": true
+    },
+    {
+     "title": "File:Dokwerker (Amsterdam).JPG",
+     "local": "Dokwerker_Amsterdam_.JPG",
+     "author": "The original uploader was P.H. Louw at Dutch Wikipedia.",
+     "licence": "CC BY 2.5 nl",
+     "licenceUrl": "https://creativecommons.org/licenses/by/2.5/nl/deed.en",
+     "date": "10 September 2005 (original upload date)",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Dokwerker_(Amsterdam).JPG",
+     "sha256": "ca99aa4698de9c90bcae95af6db58c823800bdede800d67f3968019b1623ebe7",
+     "admitted": true
+    },
+    {
+     "title": "File:Dokwerker-Statue-Amsterdam.jpg",
+     "local": "Dokwerker-Statue-Amsterdam.jpg",
+     "author": "acediscovery",
+     "licence": "CC BY 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+     "date": "2020-06-14 10:49:22",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Dokwerker-Statue-Amsterdam.jpg",
+     "sha256": "cac194b395e270d5cd636271054c7cc59ea9baea082a2bc4e5aaebfa986b076f",
+     "admitted": true
+    },
+    {
+     "title": "File:Februari staking 2008.JPG",
+     "local": "Februari_staking_2008.JPG",
+     "author": "Iijjccoo",
+     "licence": "Public domain",
+     "licenceUrl": null,
+     "date": "2008-02-25",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Februari_staking_2008.JPG",
+     "sha256": "f6dabeae1c4ee2cd6f2fc17cd199fce39adb002e3f2992845e47934080f091c0",
+     "admitted": true
+    },
+    {
+     "title": "File:Jonas Daniel Meijerplein 5 met De Dokwerker - Rijksmonument 2034.jpg",
+     "local": "Jonas_Daniel_Meijerplein_5_met_De_Dokwerker_-_Rijksmonument_2034.jpg",
+     "author": "Zanaq",
+     "licence": "CC BY-SA 3.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "date": "2011-10-09",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Jonas_Daniel_Meijerplein_5_met_De_Dokwerker_-_Rijksmonument_2034.jpg",
+     "sha256": "c8357c011581caf48a07428ed8200a158a8e60fd3a7a5caed4ab7650966be86f",
+     "admitted": true
+    }
+   ],
+   "runs": {
+    "oc-both": {
+     "photos": 140,
+     "registered": null,
+     "seconds": 35.6,
+     "status": "failed",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError",
+     "input": "sets/both",
+     "objTriangles": null
+    },
+    "oc-both-nomask": {
+     "photos": 140,
+     "registered": null,
+     "seconds": 36.4,
+     "status": "failed",
+     "detail": "reduced",
+     "masking": false,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both-nomask/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both-nomask/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError",
+     "input": "sets/both",
+     "objTriangles": null
+    },
+    "oc-both-normal": {
+     "photos": 140,
+     "registered": null,
+     "seconds": 23.2,
+     "status": "failed",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "normal",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both-normal/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both-normal/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError",
+     "input": "sets/both",
+     "objTriangles": null
+    },
+    "oc-both-retry": {
+     "photos": 140,
+     "registered": null,
+     "seconds": 35.8,
+     "status": "failed",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both-retry/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-both-retry/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError",
+     "input": "sets/both",
+     "objTriangles": null
+    },
+    "oc-commons": {
+     "photos": 16,
+     "registered": 13,
+     "seconds": 28.4,
+     "status": "ok",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "sets/commons",
+     "objTriangles": 25000,
+     "post": {
+      "dok": {
+       "obj": "artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-commons/obj",
+       "height": 4.13,
+       "facingDeg": 252.0,
+       "alignment": {
+        "method": "camera x-axes for gravity, optical axes for the centre, front photo for yaw, height for scale",
+        "front": "Amsterdam_De_dokwerker_07.JPG",
+        "upResidual": 0.0005,
+        "medianAxisMissModel": 0.065,
+        "provisionalScale": 7.4229
+       },
+       "modelMeanCheck": [
+        0.0175,
+        0.2724,
+        0.0356
+       ],
+       "rawTriangles": 25000,
+       "nearAnchor": {
+        "r1": [
+         10162,
+         -3.04,
+         -1.15,
+         1.72
+        ],
+        "r2": [
+         12523,
+         -3.09,
+         -1.39,
+         1.71
+        ],
+        "r4": [
+         12557,
+         -3.09,
+         -1.39,
+         1.71
+        ],
+        "r8": [
+         12557,
+         -3.09,
+         -1.39,
+         1.71
+        ]
+       },
+       "croppedTriangles": 25000,
+       "measuredHeightProvisional": 4.95,
+       "components": [
+        25000
+       ],
+       "finalScale": 0.834,
+       "footprintM": [
+        2.56,
+        2.62
+       ],
+       "triangles": 6000,
+       "stoneTriangles": 3021
+      }
+     }
+    },
+    "oc-commons-all": {
+     "photos": 274,
+     "registered": null,
+     "seconds": 114.5,
+     "status": "failed",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-commons-all/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-commons-all/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.reduced, geometry: nil): processError",
+     "input": "sets/commons-all",
+     "objTriangles": null
+    },
+    "oc-panos": {
+     "photos": 124,
+     "registered": 114,
+     "seconds": 88,
+     "status": "ok",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "panos/images",
+     "objTriangles": 24999,
+     "post": {
+      "r15": {
+       "obj": "artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-panos/obj",
+       "height": 4.13,
+       "facingDeg": 252.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 114,
+        "inliers3m": 114,
+        "rmsInliersM": 0.661,
+        "medianRotationErrorDeg": 0.37,
+        "maxM": 2.963,
+        "scaleModelToM": 60.4881,
+        "groundNap": 0.72,
+        "axesMeetM": [
+         0.22,
+         0.12,
+         1.94
+        ]
+       },
+       "modelMeanCheck": [
+        -0.1048,
+        0.2048,
+        -0.0384
+       ],
+       "rawTriangles": 24999,
+       "nearAnchor": {
+        "r1": [
+         168,
+         0.31,
+         1.89,
+         4.18
+        ],
+        "r2": [
+         217,
+         -0.3,
+         1.33,
+         4.17
+        ],
+        "r4": [
+         319,
+         -2.24,
+         0.72,
+         4.13
+        ],
+        "r8": [
+         894,
+         -6.26,
+         0.16,
+         16.4
+        ]
+       },
+       "croppedTriangles": 395,
+       "measuredHeightM": 4.81,
+       "components": [
+        395
+       ],
+       "finalScale": 1.0,
+       "footprintM": [
+        3.73,
+        3.45
+       ],
+       "triangles": 395,
+       "stoneTriangles": 136
+      }
+     }
+    },
+    "oc-panos-full": {
+     "photos": 124,
+     "registered": 114,
+     "seconds": 80.3,
+     "status": "ok",
+     "detail": "full",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "panos/images",
+     "objTriangles": 29640,
+     "post": {
+      "r15": {
+       "obj": "artifacts/sculpture-reconstruction/de-dokwerker/multiview/oc-panos-full/obj",
+       "height": 4.13,
+       "facingDeg": 252.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 114,
+        "inliers3m": 114,
+        "rmsInliersM": 0.583,
+        "medianRotationErrorDeg": 0.47,
+        "maxM": 2.155,
+        "scaleModelToM": 60.4216,
+        "groundNap": 0.72,
+        "axesMeetM": [
+         0.19,
+         0.1,
+         1.91
+        ]
+       },
+       "modelMeanCheck": [
+        -0.1578,
+        0.2338,
+        -0.0172
+       ],
+       "rawTriangles": 29640,
+       "nearAnchor": {
+        "r1": [
+         170,
+         0.48,
+         2.18,
+         4.34
+        ],
+        "r2": [
+         226,
+         -0.81,
+         1.5,
+         4.34
+        ],
+        "r4": [
+         444,
+         -2.97,
+         0.3,
+         4.26
+        ],
+        "r8": [
+         1505,
+         -9.73,
+         -1.11,
+         16.52
+        ]
+       },
+       "croppedTriangles": 394,
+       "measuredHeightM": 4.84,
+       "components": [
+        394
+       ],
+       "finalScale": 1.0,
+       "footprintM": [
+        3.31,
+        3.22
+       ],
+       "triangles": 394,
+       "stoneTriangles": 139
+      }
+     }
+    }
+   }
+  },
+  "gandhi-churchill-laan": {
+   "panoramas": {
+    "panos-tight": {
+     "radiusM": 25,
+     "fovDeg": 14,
+     "byYear": {
+      "2016": 13,
+      "2017": 7,
+      "2018": 6,
+      "2019": 28,
+      "2020": 37,
+      "2021": 12,
+      "2022": 24,
+      "2023": 7,
+      "2024": 12,
+      "2025": 12
+     },
+     "licence": "CC BY 4.0, Gemeente Amsterdam (panorama API api.data.amsterdam.nl/panorama)",
+     "views": [
+      {
+       "file": "images/p000.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001634",
+       "timestamp": "2016-07-26T11:45:18.043600Z",
+       "distM": 24.8,
+       "bearingDeg": 224.5,
+       "statueHeightPx": 492
+      },
+      {
+       "file": "images/p001.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001635",
+       "timestamp": "2016-07-26T11:45:18.503420Z",
+       "distM": 21.98,
+       "bearingDeg": 214.3,
+       "statueHeightPx": 555
+      },
+      {
+       "file": "images/p002.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001636",
+       "timestamp": "2016-07-26T11:45:18.963410Z",
+       "distM": 20.05,
+       "bearingDeg": 201.6,
+       "statueHeightPx": 608
+      },
+      {
+       "file": "images/p003.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001637",
+       "timestamp": "2016-07-26T11:45:19.428460Z",
+       "distM": 19.3,
+       "bearingDeg": 187.1,
+       "statueHeightPx": 632
+      },
+      {
+       "file": "images/p004.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001638",
+       "timestamp": "2016-07-26T11:45:19.888460Z",
+       "distM": 19.82,
+       "bearingDeg": 172.4,
+       "statueHeightPx": 615
+      },
+      {
+       "file": "images/p005.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001639",
+       "timestamp": "2016-07-26T11:45:20.353420Z",
+       "distM": 21.52,
+       "bearingDeg": 159.3,
+       "statueHeightPx": 567
+      },
+      {
+       "file": "images/p006.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001640",
+       "timestamp": "2016-07-26T11:45:20.818460Z",
+       "distM": 24.16,
+       "bearingDeg": 148.6,
+       "statueHeightPx": 505
+      },
+      {
+       "file": "images/p007.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003715",
+       "timestamp": "2016-07-26T12:23:10.275960Z",
+       "distM": 22.33,
+       "bearingDeg": 35,
+       "statueHeightPx": 547
+      },
+      {
+       "file": "images/p008.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003716",
+       "timestamp": "2016-07-26T12:23:10.845960Z",
+       "distM": 20.3,
+       "bearingDeg": 22.6,
+       "statueHeightPx": 601
+      },
+      {
+       "file": "images/p009.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003717",
+       "timestamp": "2016-07-26T12:23:11.410940Z",
+       "distM": 19.45,
+       "bearingDeg": 8.3,
+       "statueHeightPx": 627
+      },
+      {
+       "file": "images/p010.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003718",
+       "timestamp": "2016-07-26T12:23:11.970970Z",
+       "distM": 19.89,
+       "bearingDeg": 353.8,
+       "statueHeightPx": 613
+      },
+      {
+       "file": "images/p011.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003719",
+       "timestamp": "2016-07-26T12:23:12.540970Z",
+       "distM": 21.51,
+       "bearingDeg": 340.7,
+       "statueHeightPx": 568
+      },
+      {
+       "file": "images/p012.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003720",
+       "timestamp": "2016-07-26T12:23:13.125970Z",
+       "distM": 24.07,
+       "bearingDeg": 329.8,
+       "statueHeightPx": 507
+      },
+      {
+       "file": "images/p013.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000732",
+       "timestamp": "2017-04-12T10:28:54.266430Z",
+       "distM": 24.56,
+       "bearingDeg": 43.1,
+       "statueHeightPx": 497
+      },
+      {
+       "file": "images/p014.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000733",
+       "timestamp": "2017-04-12T10:28:55.126420Z",
+       "distM": 20.01,
+       "bearingDeg": 20,
+       "statueHeightPx": 610
+      },
+      {
+       "file": "images/p015.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000734",
+       "timestamp": "2017-04-12T10:28:55.996420Z",
+       "distM": 19.91,
+       "bearingDeg": 351.1,
+       "statueHeightPx": 613
+      },
+      {
+       "file": "images/p016.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000735",
+       "timestamp": "2017-04-12T10:28:56.876420Z",
+       "distM": 24.31,
+       "bearingDeg": 327.6,
+       "statueHeightPx": 502
+      },
+      {
+       "file": "images/p017.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000761",
+       "timestamp": "2017-04-12T10:29:51.261010Z",
+       "distM": 24.19,
+       "bearingDeg": 219.4,
+       "statueHeightPx": 505
+      },
+      {
+       "file": "images/p018.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000762",
+       "timestamp": "2017-04-12T10:29:52.145980Z",
+       "distM": 20.43,
+       "bearingDeg": 195.1,
+       "statueHeightPx": 597
+      },
+      {
+       "file": "images/p019.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000763",
+       "timestamp": "2017-04-12T10:29:53.046130Z",
+       "distM": 21.24,
+       "bearingDeg": 167.3,
+       "statueHeightPx": 575
+      },
+      {
+       "file": "images/p020.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000384",
+       "timestamp": "2018-06-06T08:58:59.812820Z",
+       "distM": 22.3,
+       "bearingDeg": 215.7,
+       "statueHeightPx": 547
+      },
+      {
+       "file": "images/p021.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000385",
+       "timestamp": "2018-06-06T08:59:00.332760Z",
+       "distM": 20.23,
+       "bearingDeg": 203.1,
+       "statueHeightPx": 603
+      },
+      {
+       "file": "images/p022.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000386",
+       "timestamp": "2018-06-06T08:59:00.857840Z",
+       "distM": 19.29,
+       "bearingDeg": 188.5,
+       "statueHeightPx": 632
+      },
+      {
+       "file": "images/p023.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000387",
+       "timestamp": "2018-06-06T08:59:01.387770Z",
+       "distM": 19.68,
+       "bearingDeg": 173.5,
+       "statueHeightPx": 620
+      },
+      {
+       "file": "images/p024.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000388",
+       "timestamp": "2018-06-06T08:59:01.922770Z",
+       "distM": 21.32,
+       "bearingDeg": 160,
+       "statueHeightPx": 573
+      },
+      {
+       "file": "images/p025.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000389",
+       "timestamp": "2018-06-06T08:59:02.462800Z",
+       "distM": 23.98,
+       "bearingDeg": 148.8,
+       "statueHeightPx": 509
+      },
+      {
+       "file": "images/p026.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000628",
+       "timestamp": "2019-01-04T08:24:20.863550Z",
+       "distM": 24.31,
+       "bearingDeg": 221.6,
+       "statueHeightPx": 502
+      },
+      {
+       "file": "images/p027.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000629",
+       "timestamp": "2019-01-04T08:24:21.328560Z",
+       "distM": 21.67,
+       "bearingDeg": 210.8,
+       "statueHeightPx": 563
+      },
+      {
+       "file": "images/p028.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000630",
+       "timestamp": "2019-01-04T08:24:21.788600Z",
+       "distM": 19.99,
+       "bearingDeg": 197.8,
+       "statueHeightPx": 610
+      },
+      {
+       "file": "images/p029.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000631",
+       "timestamp": "2019-01-04T08:24:22.248530Z",
+       "distM": 19.5,
+       "bearingDeg": 183.3,
+       "statueHeightPx": 626
+      },
+      {
+       "file": "images/p030.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000632",
+       "timestamp": "2019-01-04T08:24:22.708540Z",
+       "distM": 20.3,
+       "bearingDeg": 168.9,
+       "statueHeightPx": 601
+      },
+      {
+       "file": "images/p031.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000633",
+       "timestamp": "2019-01-04T08:24:23.168570Z",
+       "distM": 22.24,
+       "bearingDeg": 156.5,
+       "statueHeightPx": 549
+      },
+      {
+       "file": "images/p032.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001595",
+       "timestamp": "2019-01-04T08:38:13.625840Z",
+       "distM": 24.21,
+       "bearingDeg": 219.6,
+       "statueHeightPx": 504
+      },
+      {
+       "file": "images/p033.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001596",
+       "timestamp": "2019-01-04T08:38:14.070800Z",
+       "distM": 21.76,
+       "bearingDeg": 208.6,
+       "statueHeightPx": 561
+      },
+      {
+       "file": "images/p034.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001597",
+       "timestamp": "2019-01-04T08:38:14.520800Z",
+       "distM": 20.27,
+       "bearingDeg": 195.5,
+       "statueHeightPx": 602
+      },
+      {
+       "file": "images/p035.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001598",
+       "timestamp": "2019-01-04T08:38:14.970840Z",
+       "distM": 19.96,
+       "bearingDeg": 181.2,
+       "statueHeightPx": 611
+      },
+      {
+       "file": "images/p036.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001599",
+       "timestamp": "2019-01-04T08:38:15.425830Z",
+       "distM": 20.89,
+       "bearingDeg": 167.2,
+       "statueHeightPx": 584
+      },
+      {
+       "file": "images/p037.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001600",
+       "timestamp": "2019-01-04T08:38:15.885910Z",
+       "distM": 22.93,
+       "bearingDeg": 155.2,
+       "statueHeightPx": 532
+      },
+      {
+       "file": "images/p038.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001830",
+       "timestamp": "2019-01-04T08:41:37.063960Z",
+       "distM": 22.14,
+       "bearingDeg": 36.4,
+       "statueHeightPx": 551
+      },
+      {
+       "file": "images/p039.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001831",
+       "timestamp": "2019-01-04T08:41:37.493960Z",
+       "distM": 20.08,
+       "bearingDeg": 23.9,
+       "statueHeightPx": 608
+      },
+      {
+       "file": "images/p040.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001832",
+       "timestamp": "2019-01-04T08:41:37.923960Z",
+       "distM": 19.21,
+       "bearingDeg": 9.4,
+       "statueHeightPx": 635
+      },
+      {
+       "file": "images/p041.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001833",
+       "timestamp": "2019-01-04T08:41:38.348970Z",
+       "distM": 19.65,
+       "bearingDeg": 354.5,
+       "statueHeightPx": 621
+      },
+      {
+       "file": "images/p042.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001834",
+       "timestamp": "2019-01-04T08:41:38.768990Z",
+       "distM": 21.29,
+       "bearingDeg": 341.1,
+       "statueHeightPx": 573
+      },
+      {
+       "file": "images/p043.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001835",
+       "timestamp": "2019-01-04T08:41:39.188950Z",
+       "distM": 23.92,
+       "bearingDeg": 330.2,
+       "statueHeightPx": 510
+      },
+      {
+       "file": "images/p044.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000175",
+       "timestamp": "2019-05-08T09:14:28.489860Z",
+       "distM": 23.57,
+       "bearingDeg": 35.8,
+       "statueHeightPx": 518
+      },
+      {
+       "file": "images/p045.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000176",
+       "timestamp": "2019-05-08T09:14:28.939910Z",
+       "distM": 21.46,
+       "bearingDeg": 24.1,
+       "statueHeightPx": 569
+      },
+      {
+       "file": "images/p046.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000177",
+       "timestamp": "2019-05-08T09:14:29.389830Z",
+       "distM": 20.44,
+       "bearingDeg": 10.7,
+       "statueHeightPx": 597
+      },
+      {
+       "file": "images/p047.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000178",
+       "timestamp": "2019-05-08T09:14:29.844950Z",
+       "distM": 20.62,
+       "bearingDeg": 356.7,
+       "statueHeightPx": 592
+      },
+      {
+       "file": "images/p048.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000179",
+       "timestamp": "2019-05-08T09:14:30.305150Z",
+       "distM": 21.95,
+       "bearingDeg": 343.7,
+       "statueHeightPx": 556
+      },
+      {
+       "file": "images/p049.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000180",
+       "timestamp": "2019-05-08T09:14:30.775000Z",
+       "distM": 24.29,
+       "bearingDeg": 332.6,
+       "statueHeightPx": 503
+      },
+      {
+       "file": "images/p050.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002411",
+       "timestamp": "2019-05-08T09:46:53.914900Z",
+       "distM": 23.06,
+       "bearingDeg": 201.6,
+       "statueHeightPx": 529
+      },
+      {
+       "file": "images/p051.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002412",
+       "timestamp": "2019-05-08T09:46:54.614860Z",
+       "distM": 21.94,
+       "bearingDeg": 188.6,
+       "statueHeightPx": 556
+      },
+      {
+       "file": "images/p052.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002413",
+       "timestamp": "2019-05-08T09:46:55.294830Z",
+       "distM": 22.14,
+       "bearingDeg": 175.1,
+       "statueHeightPx": 551
+      },
+      {
+       "file": "images/p053.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002414",
+       "timestamp": "2019-05-08T09:46:55.939900Z",
+       "distM": 23.66,
+       "bearingDeg": 162.7,
+       "statueHeightPx": 516
+      },
+      {
+       "file": "images/p054.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000686",
+       "timestamp": "2020-01-06T11:55:38.618840Z",
+       "distM": 24.86,
+       "bearingDeg": 222.7,
+       "statueHeightPx": 491
+      },
+      {
+       "file": "images/p055.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000687",
+       "timestamp": "2020-01-06T11:55:39.028970Z",
+       "distM": 22.19,
+       "bearingDeg": 212.4,
+       "statueHeightPx": 550
+      },
+      {
+       "file": "images/p056.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000688",
+       "timestamp": "2020-01-06T11:55:39.438780Z",
+       "distM": 20.43,
+       "bearingDeg": 199.8,
+       "statueHeightPx": 597
+      },
+      {
+       "file": "images/p057.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000689",
+       "timestamp": "2020-01-06T11:55:39.848790Z",
+       "distM": 19.81,
+       "bearingDeg": 185.7,
+       "statueHeightPx": 616
+      },
+      {
+       "file": "images/p058.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000690",
+       "timestamp": "2020-01-06T11:55:40.258790Z",
+       "distM": 20.43,
+       "bearingDeg": 171.5,
+       "statueHeightPx": 597
+      },
+      {
+       "file": "images/p059.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000691",
+       "timestamp": "2020-01-06T11:55:40.673720Z",
+       "distM": 22.19,
+       "bearingDeg": 159,
+       "statueHeightPx": 550
+      },
+      {
+       "file": "images/p060.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000692",
+       "timestamp": "2020-01-06T11:55:41.093720Z",
+       "distM": 24.81,
+       "bearingDeg": 148.7,
+       "statueHeightPx": 492
+      },
+      {
+       "file": "images/p061.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001583",
+       "timestamp": "2020-01-06T12:14:04.364180Z",
+       "distM": 24.07,
+       "bearingDeg": 37.3,
+       "statueHeightPx": 507
+      },
+      {
+       "file": "images/p062.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001584",
+       "timestamp": "2020-01-06T12:14:04.929170Z",
+       "distM": 21.7,
+       "bearingDeg": 26,
+       "statueHeightPx": 562
+      },
+      {
+       "file": "images/p063.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001585",
+       "timestamp": "2020-01-06T12:14:05.484170Z",
+       "distM": 20.36,
+       "bearingDeg": 12.6,
+       "statueHeightPx": 599
+      },
+      {
+       "file": "images/p064.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001586",
+       "timestamp": "2020-01-06T12:14:06.034350Z",
+       "distM": 20.28,
+       "bearingDeg": 358.2,
+       "statueHeightPx": 602
+      },
+      {
+       "file": "images/p065.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001587",
+       "timestamp": "2020-01-06T12:14:06.584140Z",
+       "distM": 21.44,
+       "bearingDeg": 344.6,
+       "statueHeightPx": 569
+      },
+      {
+       "file": "images/p066.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001588",
+       "timestamp": "2020-01-06T12:14:07.139180Z",
+       "distM": 23.69,
+       "bearingDeg": 333,
+       "statueHeightPx": 515
+      },
+      {
+       "file": "images/p067.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000675",
+       "timestamp": "2020-05-13T06:41:50.175950Z",
+       "distM": 23.54,
+       "bearingDeg": 36.1,
+       "statueHeightPx": 519
+      },
+      {
+       "file": "images/p068.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000676",
+       "timestamp": "2020-05-13T06:41:50.640920Z",
+       "distM": 21.39,
+       "bearingDeg": 24.5,
+       "statueHeightPx": 570
+      },
+      {
+       "file": "images/p069.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000677",
+       "timestamp": "2020-05-13T06:41:51.111160Z",
+       "distM": 20.3,
+       "bearingDeg": 11,
+       "statueHeightPx": 601
+      },
+      {
+       "file": "images/p070.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000678",
+       "timestamp": "2020-05-13T06:41:51.585940Z",
+       "distM": 20.43,
+       "bearingDeg": 356.9,
+       "statueHeightPx": 597
+      },
+      {
+       "file": "images/p071.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000679",
+       "timestamp": "2020-05-13T06:41:52.060960Z",
+       "distM": 21.72,
+       "bearingDeg": 343.8,
+       "statueHeightPx": 562
+      },
+      {
+       "file": "images/p072.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000680",
+       "timestamp": "2020-05-13T06:41:52.540940Z",
+       "distM": 24.01,
+       "bearingDeg": 332.6,
+       "statueHeightPx": 508
+      },
+      {
+       "file": "images/p073.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000975",
+       "timestamp": "2020-05-13T06:44:53.099400Z",
+       "distM": 22.99,
+       "bearingDeg": 218.8,
+       "statueHeightPx": 531
+      },
+      {
+       "file": "images/p074.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000976",
+       "timestamp": "2020-05-13T06:44:53.619610Z",
+       "distM": 20.63,
+       "bearingDeg": 207,
+       "statueHeightPx": 592
+      },
+      {
+       "file": "images/p075.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000977",
+       "timestamp": "2020-05-13T06:44:54.139370Z",
+       "distM": 19.32,
+       "bearingDeg": 193,
+       "statueHeightPx": 631
+      },
+      {
+       "file": "images/p076.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000978",
+       "timestamp": "2020-05-13T06:44:54.659350Z",
+       "distM": 19.28,
+       "bearingDeg": 178,
+       "statueHeightPx": 633
+      },
+      {
+       "file": "images/p077.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000979",
+       "timestamp": "2020-05-13T06:44:55.179360Z",
+       "distM": 20.49,
+       "bearingDeg": 163.9,
+       "statueHeightPx": 595
+      },
+      {
+       "file": "images/p078.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000980",
+       "timestamp": "2020-05-13T06:44:55.699350Z",
+       "distM": 22.79,
+       "bearingDeg": 152.1,
+       "statueHeightPx": 536
+      },
+      {
+       "file": "images/p079.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003216",
+       "timestamp": "2020-07-06T06:37:01.492810Z",
+       "distM": 23.68,
+       "bearingDeg": 36.1,
+       "statueHeightPx": 515
+      },
+      {
+       "file": "images/p080.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003217",
+       "timestamp": "2020-07-06T06:37:02.017810Z",
+       "distM": 21.56,
+       "bearingDeg": 24.6,
+       "statueHeightPx": 566
+      },
+      {
+       "file": "images/p081.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003218",
+       "timestamp": "2020-07-06T06:37:02.542820Z",
+       "distM": 20.49,
+       "bearingDeg": 11.2,
+       "statueHeightPx": 595
+      },
+      {
+       "file": "images/p082.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003219",
+       "timestamp": "2020-07-06T06:37:03.067810Z",
+       "distM": 20.64,
+       "bearingDeg": 357.2,
+       "statueHeightPx": 591
+      },
+      {
+       "file": "images/p083.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003220",
+       "timestamp": "2020-07-06T06:37:03.597770Z",
+       "distM": 21.96,
+       "bearingDeg": 344.1,
+       "statueHeightPx": 556
+      },
+      {
+       "file": "images/p084.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003221",
+       "timestamp": "2020-07-06T06:37:04.132820Z",
+       "distM": 24.27,
+       "bearingDeg": 333,
+       "statueHeightPx": 503
+      },
+      {
+       "file": "images/p085.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003447",
+       "timestamp": "2020-07-07T07:58:50.692330Z",
+       "distM": 22.42,
+       "bearingDeg": 219.8,
+       "statueHeightPx": 544
+      },
+      {
+       "file": "images/p086.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003448",
+       "timestamp": "2020-07-07T07:58:51.182650Z",
+       "distM": 20.06,
+       "bearingDeg": 207.9,
+       "statueHeightPx": 608
+      },
+      {
+       "file": "images/p087.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003449",
+       "timestamp": "2020-07-07T07:58:51.672330Z",
+       "distM": 18.8,
+       "bearingDeg": 193.5,
+       "statueHeightPx": 649
+      },
+      {
+       "file": "images/p088.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003450",
+       "timestamp": "2020-07-07T07:58:52.157300Z",
+       "distM": 18.84,
+       "bearingDeg": 178.2,
+       "statueHeightPx": 648
+      },
+      {
+       "file": "images/p089.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003451",
+       "timestamp": "2020-07-07T07:58:52.642390Z",
+       "distM": 20.15,
+       "bearingDeg": 163.9,
+       "statueHeightPx": 605
+      },
+      {
+       "file": "images/p090.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003452",
+       "timestamp": "2020-07-07T07:58:53.122350Z",
+       "distM": 22.56,
+       "bearingDeg": 152.1,
+       "statueHeightPx": 541
+      },
+      {
+       "file": "images/p091.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002769",
+       "timestamp": "2021-04-22T10:12:07.399050Z",
+       "distM": 22.59,
+       "bearingDeg": 215.7,
+       "statueHeightPx": 540
+      },
+      {
+       "file": "images/p092.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002770",
+       "timestamp": "2021-04-22T10:12:07.839110Z",
+       "distM": 20.54,
+       "bearingDeg": 203.3,
+       "statueHeightPx": 594
+      },
+      {
+       "file": "images/p093.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002771",
+       "timestamp": "2021-04-22T10:12:08.284070Z",
+       "distM": 19.63,
+       "bearingDeg": 188.9,
+       "statueHeightPx": 621
+      },
+      {
+       "file": "images/p094.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002772",
+       "timestamp": "2021-04-22T10:12:08.729110Z",
+       "distM": 20,
+       "bearingDeg": 174.3,
+       "statueHeightPx": 610
+      },
+      {
+       "file": "images/p095.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002773",
+       "timestamp": "2021-04-22T10:12:09.184120Z",
+       "distM": 21.55,
+       "bearingDeg": 160.9,
+       "statueHeightPx": 566
+      },
+      {
+       "file": "images/p096.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002774",
+       "timestamp": "2021-04-22T10:12:09.644110Z",
+       "distM": 24.11,
+       "bearingDeg": 149.9,
+       "statueHeightPx": 506
+      },
+      {
+       "file": "images/p097.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002833",
+       "timestamp": "2021-04-22T10:13:25.738470Z",
+       "distM": 24.13,
+       "bearingDeg": 40.1,
+       "statueHeightPx": 506
+      },
+      {
+       "file": "images/p098.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002834",
+       "timestamp": "2021-04-22T10:13:26.238500Z",
+       "distM": 21.62,
+       "bearingDeg": 29.2,
+       "statueHeightPx": 565
+      },
+      {
+       "file": "images/p099.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002835",
+       "timestamp": "2021-04-22T10:13:26.748460Z",
+       "distM": 20.08,
+       "bearingDeg": 16,
+       "statueHeightPx": 608
+      },
+      {
+       "file": "images/p100.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002836",
+       "timestamp": "2021-04-22T10:13:27.268450Z",
+       "distM": 19.76,
+       "bearingDeg": 1.5,
+       "statueHeightPx": 618
+      },
+      {
+       "file": "images/p101.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002837",
+       "timestamp": "2021-04-22T10:13:27.798470Z",
+       "distM": 20.69,
+       "bearingDeg": 347.5,
+       "statueHeightPx": 590
+      },
+      {
+       "file": "images/p102.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002838",
+       "timestamp": "2021-04-22T10:13:28.343470Z",
+       "distM": 22.74,
+       "bearingDeg": 335.4,
+       "statueHeightPx": 537
+      },
+      {
+       "file": "images/p103.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000179",
+       "timestamp": "2022-01-10T11:21:12.897280Z",
+       "distM": 24.29,
+       "bearingDeg": 218.5,
+       "statueHeightPx": 503
+      },
+      {
+       "file": "images/p104.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000180",
+       "timestamp": "2022-01-10T11:21:13.262300Z",
+       "distM": 21.89,
+       "bearingDeg": 207.4,
+       "statueHeightPx": 558
+      },
+      {
+       "file": "images/p105.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000181",
+       "timestamp": "2022-01-10T11:21:13.627290Z",
+       "distM": 20.5,
+       "bearingDeg": 194.2,
+       "statueHeightPx": 595
+      },
+      {
+       "file": "images/p106.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000182",
+       "timestamp": "2022-01-10T11:21:13.992320Z",
+       "distM": 20.29,
+       "bearingDeg": 180.1,
+       "statueHeightPx": 601
+      },
+      {
+       "file": "images/p107.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000183",
+       "timestamp": "2022-01-10T11:21:14.362330Z",
+       "distM": 21.3,
+       "bearingDeg": 166.3,
+       "statueHeightPx": 573
+      },
+      {
+       "file": "images/p108.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000184",
+       "timestamp": "2022-01-10T11:21:14.732310Z",
+       "distM": 23.38,
+       "bearingDeg": 154.5,
+       "statueHeightPx": 522
+      },
+      {
+       "file": "images/p109.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000039",
+       "timestamp": "2022-01-10T11:25:01.830180Z",
+       "distM": 22.92,
+       "bearingDeg": 36.7,
+       "statueHeightPx": 533
+      },
+      {
+       "file": "images/p110.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000040",
+       "timestamp": "2022-01-10T11:25:02.445160Z",
+       "distM": 20.82,
+       "bearingDeg": 24.7,
+       "statueHeightPx": 586
+      },
+      {
+       "file": "images/p111.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000041",
+       "timestamp": "2022-01-10T11:25:03.040370Z",
+       "distM": 19.81,
+       "bearingDeg": 10.8,
+       "statueHeightPx": 616
+      },
+      {
+       "file": "images/p112.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000042",
+       "timestamp": "2022-01-10T11:25:03.620160Z",
+       "distM": 20.03,
+       "bearingDeg": 356.4,
+       "statueHeightPx": 609
+      },
+      {
+       "file": "images/p113.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000043",
+       "timestamp": "2022-01-10T11:25:04.195150Z",
+       "distM": 21.43,
+       "bearingDeg": 343.1,
+       "statueHeightPx": 570
+      },
+      {
+       "file": "images/p114.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000044",
+       "timestamp": "2022-01-10T11:25:04.770140Z",
+       "distM": 23.81,
+       "bearingDeg": 331.9,
+       "statueHeightPx": 513
+      },
+      {
+       "file": "images/p115.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002683",
+       "timestamp": "2022-03-24T07:56:45.866710Z",
+       "distM": 23.53,
+       "bearingDeg": 217.7,
+       "statueHeightPx": 519
+      },
+      {
+       "file": "images/p116.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002684",
+       "timestamp": "2022-03-24T07:56:46.231680Z",
+       "distM": 21.27,
+       "bearingDeg": 206.2,
+       "statueHeightPx": 574
+      },
+      {
+       "file": "images/p117.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002685",
+       "timestamp": "2022-03-24T07:56:46.596710Z",
+       "distM": 20.05,
+       "bearingDeg": 192.6,
+       "statueHeightPx": 608
+      },
+      {
+       "file": "images/p118.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002686",
+       "timestamp": "2022-03-24T07:56:46.961680Z",
+       "distM": 20.05,
+       "bearingDeg": 178.2,
+       "statueHeightPx": 609
+      },
+      {
+       "file": "images/p119.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002687",
+       "timestamp": "2022-03-24T07:56:47.326710Z",
+       "distM": 21.23,
+       "bearingDeg": 164.7,
+       "statueHeightPx": 575
+      },
+      {
+       "file": "images/p120.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002688",
+       "timestamp": "2022-03-24T07:56:47.696720Z",
+       "distM": 23.48,
+       "bearingDeg": 153.1,
+       "statueHeightPx": 520
+      },
+      {
+       "file": "images/p121.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001177",
+       "timestamp": "2022-09-05T10:18:29.328460Z",
+       "distM": 23.33,
+       "bearingDeg": 37.1,
+       "statueHeightPx": 523
+      },
+      {
+       "file": "images/p122.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001178",
+       "timestamp": "2022-09-05T10:18:29.798440Z",
+       "distM": 21.04,
+       "bearingDeg": 25.6,
+       "statueHeightPx": 580
+      },
+      {
+       "file": "images/p123.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001179",
+       "timestamp": "2022-09-05T10:18:30.263500Z",
+       "distM": 19.79,
+       "bearingDeg": 12,
+       "statueHeightPx": 616
+      },
+      {
+       "file": "images/p124.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001180",
+       "timestamp": "2022-09-05T10:18:30.728520Z",
+       "distM": 19.78,
+       "bearingDeg": 357.5,
+       "statueHeightPx": 617
+      },
+      {
+       "file": "images/p125.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001181",
+       "timestamp": "2022-09-05T10:18:31.188470Z",
+       "distM": 20.99,
+       "bearingDeg": 343.9,
+       "statueHeightPx": 581
+      },
+      {
+       "file": "images/p126.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001182",
+       "timestamp": "2022-09-05T10:18:31.648460Z",
+       "distM": 23.25,
+       "bearingDeg": 332.3,
+       "statueHeightPx": 525
+      },
+      {
+       "file": "images/p127.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000029",
+       "timestamp": "2023-01-03T11:34:58.053210Z",
+       "distM": 24.28,
+       "bearingDeg": 41,
+       "statueHeightPx": 503
+      },
+      {
+       "file": "images/p128.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000030",
+       "timestamp": "2023-01-03T11:34:58.593070Z",
+       "distM": 21.78,
+       "bearingDeg": 30.5,
+       "statueHeightPx": 560
+      },
+      {
+       "file": "images/p129.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000031",
+       "timestamp": "2023-01-03T11:34:59.133060Z",
+       "distM": 20.19,
+       "bearingDeg": 17.8,
+       "statueHeightPx": 604
+      },
+      {
+       "file": "images/p130.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000032",
+       "timestamp": "2023-01-03T11:34:59.678020Z",
+       "distM": 19.72,
+       "bearingDeg": 3.8,
+       "statueHeightPx": 619
+      },
+      {
+       "file": "images/p131.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000033",
+       "timestamp": "2023-01-03T11:35:00.228240Z",
+       "distM": 20.43,
+       "bearingDeg": 349.9,
+       "statueHeightPx": 597
+      },
+      {
+       "file": "images/p132.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000034",
+       "timestamp": "2023-01-03T11:35:00.788010Z",
+       "distM": 22.22,
+       "bearingDeg": 337.6,
+       "statueHeightPx": 549
+      },
+      {
+       "file": "images/p133.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000035",
+       "timestamp": "2023-01-03T11:35:01.358050Z",
+       "distM": 24.86,
+       "bearingDeg": 327.5,
+       "statueHeightPx": 491
+      },
+      {
+       "file": "images/p134.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05963",
+       "timestamp": "2024-09-05T08:21:12Z",
+       "distM": 24.78,
+       "bearingDeg": 41.8,
+       "statueHeightPx": 493
+      },
+      {
+       "file": "images/p135.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05965",
+       "timestamp": "2024-09-05T08:21:13Z",
+       "distM": 20.39,
+       "bearingDeg": 18.8,
+       "statueHeightPx": 599
+      },
+      {
+       "file": "images/p136.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05964",
+       "timestamp": "2024-09-05T08:21:13Z",
+       "distM": 22.13,
+       "bearingDeg": 31.4,
+       "statueHeightPx": 552
+      },
+      {
+       "file": "images/p137.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05966",
+       "timestamp": "2024-09-05T08:21:14Z",
+       "distM": 19.81,
+       "bearingDeg": 4.6,
+       "statueHeightPx": 616
+      },
+      {
+       "file": "images/p138.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05967",
+       "timestamp": "2024-09-05T08:21:14Z",
+       "distM": 20.5,
+       "bearingDeg": 350.5,
+       "statueHeightPx": 595
+      },
+      {
+       "file": "images/p139.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05968",
+       "timestamp": "2024-09-05T08:21:15Z",
+       "distM": 22.33,
+       "bearingDeg": 338.1,
+       "statueHeightPx": 547
+      },
+      {
+       "file": "images/p140.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06266",
+       "timestamp": "2024-09-05T08:24:18Z",
+       "distM": 20.4,
+       "bearingDeg": 202.6,
+       "statueHeightPx": 598
+      },
+      {
+       "file": "images/p141.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06265",
+       "timestamp": "2024-09-05T08:24:18Z",
+       "distM": 22.4,
+       "bearingDeg": 215,
+       "statueHeightPx": 545
+      },
+      {
+       "file": "images/p142.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06267",
+       "timestamp": "2024-09-05T08:24:19Z",
+       "distM": 19.51,
+       "bearingDeg": 188.4,
+       "statueHeightPx": 625
+      },
+      {
+       "file": "images/p143.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06268",
+       "timestamp": "2024-09-05T08:24:19Z",
+       "distM": 19.87,
+       "bearingDeg": 173.8,
+       "statueHeightPx": 614
+      },
+      {
+       "file": "images/p144.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06269",
+       "timestamp": "2024-09-05T08:24:20Z",
+       "distM": 21.42,
+       "bearingDeg": 160.5,
+       "statueHeightPx": 570
+      },
+      {
+       "file": "images/p145.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06270",
+       "timestamp": "2024-09-05T08:24:20Z",
+       "distM": 23.9,
+       "bearingDeg": 149.7,
+       "statueHeightPx": 511
+      },
+      {
+       "file": "images/p146.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01409",
+       "timestamp": "2025-07-14T13:18:20Z",
+       "distM": 20.52,
+       "bearingDeg": 22.1,
+       "statueHeightPx": 595
+      },
+      {
+       "file": "images/p147.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01408",
+       "timestamp": "2025-07-14T13:18:20Z",
+       "distM": 22.49,
+       "bearingDeg": 34.4,
+       "statueHeightPx": 543
+      },
+      {
+       "file": "images/p148.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01410",
+       "timestamp": "2025-07-14T13:18:21Z",
+       "distM": 19.67,
+       "bearingDeg": 8,
+       "statueHeightPx": 620
+      },
+      {
+       "file": "images/p149.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01411",
+       "timestamp": "2025-07-14T13:18:22Z",
+       "distM": 20.06,
+       "bearingDeg": 353.6,
+       "statueHeightPx": 608
+      },
+      {
+       "file": "images/p150.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01412",
+       "timestamp": "2025-07-14T13:18:22Z",
+       "distM": 21.58,
+       "bearingDeg": 340.5,
+       "statueHeightPx": 565
+      },
+      {
+       "file": "images/p151.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01413",
+       "timestamp": "2025-07-14T13:18:23Z",
+       "distM": 24.09,
+       "bearingDeg": 329.6,
+       "statueHeightPx": 507
+      },
+      {
+       "file": "images/p152.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01710",
+       "timestamp": "2025-07-14T13:22:15Z",
+       "distM": 21.13,
+       "bearingDeg": 209.8,
+       "statueHeightPx": 578
+      },
+      {
+       "file": "images/p153.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01709",
+       "timestamp": "2025-07-14T13:22:15Z",
+       "distM": 23.65,
+       "bearingDeg": 220.9,
+       "statueHeightPx": 516
+      },
+      {
+       "file": "images/p154.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01711",
+       "timestamp": "2025-07-14T13:22:16Z",
+       "distM": 19.56,
+       "bearingDeg": 196.4,
+       "statueHeightPx": 624
+      },
+      {
+       "file": "images/p155.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01712",
+       "timestamp": "2025-07-14T13:22:17Z",
+       "distM": 19.18,
+       "bearingDeg": 181.7,
+       "statueHeightPx": 636
+      },
+      {
+       "file": "images/p156.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01713",
+       "timestamp": "2025-07-14T13:22:18Z",
+       "distM": 20.12,
+       "bearingDeg": 167.3,
+       "statueHeightPx": 607
+      },
+      {
+       "file": "images/p157.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01714",
+       "timestamp": "2025-07-14T13:22:18Z",
+       "distM": 22.19,
+       "bearingDeg": 154.9,
+       "statueHeightPx": 550
+      }
+     ]
+    },
+    "panos": {
+     "radiusM": 25,
+     "fovDeg": 40,
+     "byYear": {
+      "2016": 13,
+      "2017": 7,
+      "2018": 6,
+      "2019": 28,
+      "2020": 37,
+      "2021": 12,
+      "2022": 24,
+      "2023": 7,
+      "2024": 12,
+      "2025": 12
+     },
+     "licence": "CC BY 4.0, Gemeente Amsterdam (panorama API api.data.amsterdam.nl/panorama)",
+     "views": [
+      {
+       "file": "images/p000.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001634",
+       "timestamp": "2016-07-26T11:45:18.043600Z",
+       "distM": 24.8,
+       "bearingDeg": 224.5,
+       "statueHeightPx": 164
+      },
+      {
+       "file": "images/p001.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001635",
+       "timestamp": "2016-07-26T11:45:18.503420Z",
+       "distM": 21.98,
+       "bearingDeg": 214.3,
+       "statueHeightPx": 185
+      },
+      {
+       "file": "images/p002.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001636",
+       "timestamp": "2016-07-26T11:45:18.963410Z",
+       "distM": 20.05,
+       "bearingDeg": 201.6,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p003.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001637",
+       "timestamp": "2016-07-26T11:45:19.428460Z",
+       "distM": 19.3,
+       "bearingDeg": 187.1,
+       "statueHeightPx": 211
+      },
+      {
+       "file": "images/p004.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001638",
+       "timestamp": "2016-07-26T11:45:19.888460Z",
+       "distM": 19.82,
+       "bearingDeg": 172.4,
+       "statueHeightPx": 205
+      },
+      {
+       "file": "images/p005.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001639",
+       "timestamp": "2016-07-26T11:45:20.353420Z",
+       "distM": 21.52,
+       "bearingDeg": 159.3,
+       "statueHeightPx": 189
+      },
+      {
+       "file": "images/p006.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_001640",
+       "timestamp": "2016-07-26T11:45:20.818460Z",
+       "distM": 24.16,
+       "bearingDeg": 148.6,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p007.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003715",
+       "timestamp": "2016-07-26T12:23:10.275960Z",
+       "distM": 22.33,
+       "bearingDeg": 35,
+       "statueHeightPx": 182
+      },
+      {
+       "file": "images/p008.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003716",
+       "timestamp": "2016-07-26T12:23:10.845960Z",
+       "distM": 20.3,
+       "bearingDeg": 22.6,
+       "statueHeightPx": 200
+      },
+      {
+       "file": "images/p009.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003717",
+       "timestamp": "2016-07-26T12:23:11.410940Z",
+       "distM": 19.45,
+       "bearingDeg": 8.3,
+       "statueHeightPx": 209
+      },
+      {
+       "file": "images/p010.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003718",
+       "timestamp": "2016-07-26T12:23:11.970970Z",
+       "distM": 19.89,
+       "bearingDeg": 353.8,
+       "statueHeightPx": 204
+      },
+      {
+       "file": "images/p011.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003719",
+       "timestamp": "2016-07-26T12:23:12.540970Z",
+       "distM": 21.51,
+       "bearingDeg": 340.7,
+       "statueHeightPx": 189
+      },
+      {
+       "file": "images/p012.jpg",
+       "panoId": "TMX7316060226-000005_pano_0000_003720",
+       "timestamp": "2016-07-26T12:23:13.125970Z",
+       "distM": 24.07,
+       "bearingDeg": 329.8,
+       "statueHeightPx": 169
+      },
+      {
+       "file": "images/p013.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000732",
+       "timestamp": "2017-04-12T10:28:54.266430Z",
+       "distM": 24.56,
+       "bearingDeg": 43.1,
+       "statueHeightPx": 166
+      },
+      {
+       "file": "images/p014.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000733",
+       "timestamp": "2017-04-12T10:28:55.126420Z",
+       "distM": 20.01,
+       "bearingDeg": 20,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p015.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000734",
+       "timestamp": "2017-04-12T10:28:55.996420Z",
+       "distM": 19.91,
+       "bearingDeg": 351.1,
+       "statueHeightPx": 204
+      },
+      {
+       "file": "images/p016.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000735",
+       "timestamp": "2017-04-12T10:28:56.876420Z",
+       "distM": 24.31,
+       "bearingDeg": 327.6,
+       "statueHeightPx": 167
+      },
+      {
+       "file": "images/p017.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000761",
+       "timestamp": "2017-04-12T10:29:51.261010Z",
+       "distM": 24.19,
+       "bearingDeg": 219.4,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p018.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000762",
+       "timestamp": "2017-04-12T10:29:52.145980Z",
+       "distM": 20.43,
+       "bearingDeg": 195.1,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p019.jpg",
+       "panoId": "TMX7316010203-000258_pano_0002_000763",
+       "timestamp": "2017-04-12T10:29:53.046130Z",
+       "distM": 21.24,
+       "bearingDeg": 167.3,
+       "statueHeightPx": 192
+      },
+      {
+       "file": "images/p020.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000384",
+       "timestamp": "2018-06-06T08:58:59.812820Z",
+       "distM": 22.3,
+       "bearingDeg": 215.7,
+       "statueHeightPx": 182
+      },
+      {
+       "file": "images/p021.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000385",
+       "timestamp": "2018-06-06T08:59:00.332760Z",
+       "distM": 20.23,
+       "bearingDeg": 203.1,
+       "statueHeightPx": 201
+      },
+      {
+       "file": "images/p022.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000386",
+       "timestamp": "2018-06-06T08:59:00.857840Z",
+       "distM": 19.29,
+       "bearingDeg": 188.5,
+       "statueHeightPx": 211
+      },
+      {
+       "file": "images/p023.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000387",
+       "timestamp": "2018-06-06T08:59:01.387770Z",
+       "distM": 19.68,
+       "bearingDeg": 173.5,
+       "statueHeightPx": 207
+      },
+      {
+       "file": "images/p024.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000388",
+       "timestamp": "2018-06-06T08:59:01.922770Z",
+       "distM": 21.32,
+       "bearingDeg": 160,
+       "statueHeightPx": 191
+      },
+      {
+       "file": "images/p025.jpg",
+       "panoId": "TMX7316010203-000777_pano_0000_000389",
+       "timestamp": "2018-06-06T08:59:02.462800Z",
+       "distM": 23.98,
+       "bearingDeg": 148.8,
+       "statueHeightPx": 170
+      },
+      {
+       "file": "images/p026.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000628",
+       "timestamp": "2019-01-04T08:24:20.863550Z",
+       "distM": 24.31,
+       "bearingDeg": 221.6,
+       "statueHeightPx": 167
+      },
+      {
+       "file": "images/p027.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000629",
+       "timestamp": "2019-01-04T08:24:21.328560Z",
+       "distM": 21.67,
+       "bearingDeg": 210.8,
+       "statueHeightPx": 188
+      },
+      {
+       "file": "images/p028.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000630",
+       "timestamp": "2019-01-04T08:24:21.788600Z",
+       "distM": 19.99,
+       "bearingDeg": 197.8,
+       "statueHeightPx": 204
+      },
+      {
+       "file": "images/p029.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000631",
+       "timestamp": "2019-01-04T08:24:22.248530Z",
+       "distM": 19.5,
+       "bearingDeg": 183.3,
+       "statueHeightPx": 209
+      },
+      {
+       "file": "images/p030.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000632",
+       "timestamp": "2019-01-04T08:24:22.708540Z",
+       "distM": 20.3,
+       "bearingDeg": 168.9,
+       "statueHeightPx": 200
+      },
+      {
+       "file": "images/p031.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_000633",
+       "timestamp": "2019-01-04T08:24:23.168570Z",
+       "distM": 22.24,
+       "bearingDeg": 156.5,
+       "statueHeightPx": 183
+      },
+      {
+       "file": "images/p032.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001595",
+       "timestamp": "2019-01-04T08:38:13.625840Z",
+       "distM": 24.21,
+       "bearingDeg": 219.6,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p033.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001596",
+       "timestamp": "2019-01-04T08:38:14.070800Z",
+       "distM": 21.76,
+       "bearingDeg": 208.6,
+       "statueHeightPx": 187
+      },
+      {
+       "file": "images/p034.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001597",
+       "timestamp": "2019-01-04T08:38:14.520800Z",
+       "distM": 20.27,
+       "bearingDeg": 195.5,
+       "statueHeightPx": 201
+      },
+      {
+       "file": "images/p035.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001598",
+       "timestamp": "2019-01-04T08:38:14.970840Z",
+       "distM": 19.96,
+       "bearingDeg": 181.2,
+       "statueHeightPx": 204
+      },
+      {
+       "file": "images/p036.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001599",
+       "timestamp": "2019-01-04T08:38:15.425830Z",
+       "distM": 20.89,
+       "bearingDeg": 167.2,
+       "statueHeightPx": 195
+      },
+      {
+       "file": "images/p037.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001600",
+       "timestamp": "2019-01-04T08:38:15.885910Z",
+       "distM": 22.93,
+       "bearingDeg": 155.2,
+       "statueHeightPx": 177
+      },
+      {
+       "file": "images/p038.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001830",
+       "timestamp": "2019-01-04T08:41:37.063960Z",
+       "distM": 22.14,
+       "bearingDeg": 36.4,
+       "statueHeightPx": 184
+      },
+      {
+       "file": "images/p039.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001831",
+       "timestamp": "2019-01-04T08:41:37.493960Z",
+       "distM": 20.08,
+       "bearingDeg": 23.9,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p040.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001832",
+       "timestamp": "2019-01-04T08:41:37.923960Z",
+       "distM": 19.21,
+       "bearingDeg": 9.4,
+       "statueHeightPx": 212
+      },
+      {
+       "file": "images/p041.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001833",
+       "timestamp": "2019-01-04T08:41:38.348970Z",
+       "distM": 19.65,
+       "bearingDeg": 354.5,
+       "statueHeightPx": 207
+      },
+      {
+       "file": "images/p042.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001834",
+       "timestamp": "2019-01-04T08:41:38.768990Z",
+       "distM": 21.29,
+       "bearingDeg": 341.1,
+       "statueHeightPx": 191
+      },
+      {
+       "file": "images/p043.jpg",
+       "panoId": "TMX7316010203-001036_pano_0000_001835",
+       "timestamp": "2019-01-04T08:41:39.188950Z",
+       "distM": 23.92,
+       "bearingDeg": 330.2,
+       "statueHeightPx": 170
+      },
+      {
+       "file": "images/p044.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000175",
+       "timestamp": "2019-05-08T09:14:28.489860Z",
+       "distM": 23.57,
+       "bearingDeg": 35.8,
+       "statueHeightPx": 173
+      },
+      {
+       "file": "images/p045.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000176",
+       "timestamp": "2019-05-08T09:14:28.939910Z",
+       "distM": 21.46,
+       "bearingDeg": 24.1,
+       "statueHeightPx": 190
+      },
+      {
+       "file": "images/p046.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000177",
+       "timestamp": "2019-05-08T09:14:29.389830Z",
+       "distM": 20.44,
+       "bearingDeg": 10.7,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p047.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000178",
+       "timestamp": "2019-05-08T09:14:29.844950Z",
+       "distM": 20.62,
+       "bearingDeg": 356.7,
+       "statueHeightPx": 197
+      },
+      {
+       "file": "images/p048.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000179",
+       "timestamp": "2019-05-08T09:14:30.305150Z",
+       "distM": 21.95,
+       "bearingDeg": 343.7,
+       "statueHeightPx": 185
+      },
+      {
+       "file": "images/p049.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_000180",
+       "timestamp": "2019-05-08T09:14:30.775000Z",
+       "distM": 24.29,
+       "bearingDeg": 332.6,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p050.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002411",
+       "timestamp": "2019-05-08T09:46:53.914900Z",
+       "distM": 23.06,
+       "bearingDeg": 201.6,
+       "statueHeightPx": 177
+      },
+      {
+       "file": "images/p051.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002412",
+       "timestamp": "2019-05-08T09:46:54.614860Z",
+       "distM": 21.94,
+       "bearingDeg": 188.6,
+       "statueHeightPx": 186
+      },
+      {
+       "file": "images/p052.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002413",
+       "timestamp": "2019-05-08T09:46:55.294830Z",
+       "distM": 22.14,
+       "bearingDeg": 175.1,
+       "statueHeightPx": 184
+      },
+      {
+       "file": "images/p053.jpg",
+       "panoId": "TMX7316010203-001170_pano_0000_002414",
+       "timestamp": "2019-05-08T09:46:55.939900Z",
+       "distM": 23.66,
+       "bearingDeg": 162.7,
+       "statueHeightPx": 172
+      },
+      {
+       "file": "images/p054.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000686",
+       "timestamp": "2020-01-06T11:55:38.618840Z",
+       "distM": 24.86,
+       "bearingDeg": 222.7,
+       "statueHeightPx": 164
+      },
+      {
+       "file": "images/p055.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000687",
+       "timestamp": "2020-01-06T11:55:39.028970Z",
+       "distM": 22.19,
+       "bearingDeg": 212.4,
+       "statueHeightPx": 183
+      },
+      {
+       "file": "images/p056.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000688",
+       "timestamp": "2020-01-06T11:55:39.438780Z",
+       "distM": 20.43,
+       "bearingDeg": 199.8,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p057.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000689",
+       "timestamp": "2020-01-06T11:55:39.848790Z",
+       "distM": 19.81,
+       "bearingDeg": 185.7,
+       "statueHeightPx": 205
+      },
+      {
+       "file": "images/p058.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000690",
+       "timestamp": "2020-01-06T11:55:40.258790Z",
+       "distM": 20.43,
+       "bearingDeg": 171.5,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p059.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000691",
+       "timestamp": "2020-01-06T11:55:40.673720Z",
+       "distM": 22.19,
+       "bearingDeg": 159,
+       "statueHeightPx": 183
+      },
+      {
+       "file": "images/p060.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_000692",
+       "timestamp": "2020-01-06T11:55:41.093720Z",
+       "distM": 24.81,
+       "bearingDeg": 148.7,
+       "statueHeightPx": 164
+      },
+      {
+       "file": "images/p061.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001583",
+       "timestamp": "2020-01-06T12:14:04.364180Z",
+       "distM": 24.07,
+       "bearingDeg": 37.3,
+       "statueHeightPx": 169
+      },
+      {
+       "file": "images/p062.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001584",
+       "timestamp": "2020-01-06T12:14:04.929170Z",
+       "distM": 21.7,
+       "bearingDeg": 26,
+       "statueHeightPx": 188
+      },
+      {
+       "file": "images/p063.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001585",
+       "timestamp": "2020-01-06T12:14:05.484170Z",
+       "distM": 20.36,
+       "bearingDeg": 12.6,
+       "statueHeightPx": 200
+      },
+      {
+       "file": "images/p064.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001586",
+       "timestamp": "2020-01-06T12:14:06.034350Z",
+       "distM": 20.28,
+       "bearingDeg": 358.2,
+       "statueHeightPx": 201
+      },
+      {
+       "file": "images/p065.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001587",
+       "timestamp": "2020-01-06T12:14:06.584140Z",
+       "distM": 21.44,
+       "bearingDeg": 344.6,
+       "statueHeightPx": 190
+      },
+      {
+       "file": "images/p066.jpg",
+       "panoId": "TMX7316010203-001534_pano_0001_001588",
+       "timestamp": "2020-01-06T12:14:07.139180Z",
+       "distM": 23.69,
+       "bearingDeg": 333,
+       "statueHeightPx": 172
+      },
+      {
+       "file": "images/p067.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000675",
+       "timestamp": "2020-05-13T06:41:50.175950Z",
+       "distM": 23.54,
+       "bearingDeg": 36.1,
+       "statueHeightPx": 173
+      },
+      {
+       "file": "images/p068.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000676",
+       "timestamp": "2020-05-13T06:41:50.640920Z",
+       "distM": 21.39,
+       "bearingDeg": 24.5,
+       "statueHeightPx": 190
+      },
+      {
+       "file": "images/p069.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000677",
+       "timestamp": "2020-05-13T06:41:51.111160Z",
+       "distM": 20.3,
+       "bearingDeg": 11,
+       "statueHeightPx": 200
+      },
+      {
+       "file": "images/p070.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000678",
+       "timestamp": "2020-05-13T06:41:51.585940Z",
+       "distM": 20.43,
+       "bearingDeg": 356.9,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p071.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000679",
+       "timestamp": "2020-05-13T06:41:52.060960Z",
+       "distM": 21.72,
+       "bearingDeg": 343.8,
+       "statueHeightPx": 187
+      },
+      {
+       "file": "images/p072.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000680",
+       "timestamp": "2020-05-13T06:41:52.540940Z",
+       "distM": 24.01,
+       "bearingDeg": 332.6,
+       "statueHeightPx": 170
+      },
+      {
+       "file": "images/p073.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000975",
+       "timestamp": "2020-05-13T06:44:53.099400Z",
+       "distM": 22.99,
+       "bearingDeg": 218.8,
+       "statueHeightPx": 177
+      },
+      {
+       "file": "images/p074.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000976",
+       "timestamp": "2020-05-13T06:44:53.619610Z",
+       "distM": 20.63,
+       "bearingDeg": 207,
+       "statueHeightPx": 197
+      },
+      {
+       "file": "images/p075.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000977",
+       "timestamp": "2020-05-13T06:44:54.139370Z",
+       "distM": 19.32,
+       "bearingDeg": 193,
+       "statueHeightPx": 210
+      },
+      {
+       "file": "images/p076.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000978",
+       "timestamp": "2020-05-13T06:44:54.659350Z",
+       "distM": 19.28,
+       "bearingDeg": 178,
+       "statueHeightPx": 211
+      },
+      {
+       "file": "images/p077.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000979",
+       "timestamp": "2020-05-13T06:44:55.179360Z",
+       "distM": 20.49,
+       "bearingDeg": 163.9,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p078.jpg",
+       "panoId": "TMX7316010203-001704_pano_0000_000980",
+       "timestamp": "2020-05-13T06:44:55.699350Z",
+       "distM": 22.79,
+       "bearingDeg": 152.1,
+       "statueHeightPx": 179
+      },
+      {
+       "file": "images/p079.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003216",
+       "timestamp": "2020-07-06T06:37:01.492810Z",
+       "distM": 23.68,
+       "bearingDeg": 36.1,
+       "statueHeightPx": 172
+      },
+      {
+       "file": "images/p080.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003217",
+       "timestamp": "2020-07-06T06:37:02.017810Z",
+       "distM": 21.56,
+       "bearingDeg": 24.6,
+       "statueHeightPx": 189
+      },
+      {
+       "file": "images/p081.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003218",
+       "timestamp": "2020-07-06T06:37:02.542820Z",
+       "distM": 20.49,
+       "bearingDeg": 11.2,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p082.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003219",
+       "timestamp": "2020-07-06T06:37:03.067810Z",
+       "distM": 20.64,
+       "bearingDeg": 357.2,
+       "statueHeightPx": 197
+      },
+      {
+       "file": "images/p083.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003220",
+       "timestamp": "2020-07-06T06:37:03.597770Z",
+       "distM": 21.96,
+       "bearingDeg": 344.1,
+       "statueHeightPx": 185
+      },
+      {
+       "file": "images/p084.jpg",
+       "panoId": "TMX7316010203-001788_pano_0000_003221",
+       "timestamp": "2020-07-06T06:37:04.132820Z",
+       "distM": 24.27,
+       "bearingDeg": 333,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p085.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003447",
+       "timestamp": "2020-07-07T07:58:50.692330Z",
+       "distM": 22.42,
+       "bearingDeg": 219.8,
+       "statueHeightPx": 182
+      },
+      {
+       "file": "images/p086.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003448",
+       "timestamp": "2020-07-07T07:58:51.182650Z",
+       "distM": 20.06,
+       "bearingDeg": 207.9,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p087.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003449",
+       "timestamp": "2020-07-07T07:58:51.672330Z",
+       "distM": 18.8,
+       "bearingDeg": 193.5,
+       "statueHeightPx": 216
+      },
+      {
+       "file": "images/p088.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003450",
+       "timestamp": "2020-07-07T07:58:52.157300Z",
+       "distM": 18.84,
+       "bearingDeg": 178.2,
+       "statueHeightPx": 216
+      },
+      {
+       "file": "images/p089.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003451",
+       "timestamp": "2020-07-07T07:58:52.642390Z",
+       "distM": 20.15,
+       "bearingDeg": 163.9,
+       "statueHeightPx": 202
+      },
+      {
+       "file": "images/p090.jpg",
+       "panoId": "TMX7316010203-001793_pano_0000_003452",
+       "timestamp": "2020-07-07T07:58:53.122350Z",
+       "distM": 22.56,
+       "bearingDeg": 152.1,
+       "statueHeightPx": 180
+      },
+      {
+       "file": "images/p091.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002769",
+       "timestamp": "2021-04-22T10:12:07.399050Z",
+       "distM": 22.59,
+       "bearingDeg": 215.7,
+       "statueHeightPx": 180
+      },
+      {
+       "file": "images/p092.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002770",
+       "timestamp": "2021-04-22T10:12:07.839110Z",
+       "distM": 20.54,
+       "bearingDeg": 203.3,
+       "statueHeightPx": 198
+      },
+      {
+       "file": "images/p093.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002771",
+       "timestamp": "2021-04-22T10:12:08.284070Z",
+       "distM": 19.63,
+       "bearingDeg": 188.9,
+       "statueHeightPx": 207
+      },
+      {
+       "file": "images/p094.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002772",
+       "timestamp": "2021-04-22T10:12:08.729110Z",
+       "distM": 20,
+       "bearingDeg": 174.3,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p095.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002773",
+       "timestamp": "2021-04-22T10:12:09.184120Z",
+       "distM": 21.55,
+       "bearingDeg": 160.9,
+       "statueHeightPx": 189
+      },
+      {
+       "file": "images/p096.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002774",
+       "timestamp": "2021-04-22T10:12:09.644110Z",
+       "distM": 24.11,
+       "bearingDeg": 149.9,
+       "statueHeightPx": 169
+      },
+      {
+       "file": "images/p097.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002833",
+       "timestamp": "2021-04-22T10:13:25.738470Z",
+       "distM": 24.13,
+       "bearingDeg": 40.1,
+       "statueHeightPx": 169
+      },
+      {
+       "file": "images/p098.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002834",
+       "timestamp": "2021-04-22T10:13:26.238500Z",
+       "distM": 21.62,
+       "bearingDeg": 29.2,
+       "statueHeightPx": 188
+      },
+      {
+       "file": "images/p099.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002835",
+       "timestamp": "2021-04-22T10:13:26.748460Z",
+       "distM": 20.08,
+       "bearingDeg": 16,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p100.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002836",
+       "timestamp": "2021-04-22T10:13:27.268450Z",
+       "distM": 19.76,
+       "bearingDeg": 1.5,
+       "statueHeightPx": 206
+      },
+      {
+       "file": "images/p101.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002837",
+       "timestamp": "2021-04-22T10:13:27.798470Z",
+       "distM": 20.69,
+       "bearingDeg": 347.5,
+       "statueHeightPx": 197
+      },
+      {
+       "file": "images/p102.jpg",
+       "panoId": "TMX7316010203-002114_pano_0000_002838",
+       "timestamp": "2021-04-22T10:13:28.343470Z",
+       "distM": 22.74,
+       "bearingDeg": 335.4,
+       "statueHeightPx": 179
+      },
+      {
+       "file": "images/p103.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000179",
+       "timestamp": "2022-01-10T11:21:12.897280Z",
+       "distM": 24.29,
+       "bearingDeg": 218.5,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p104.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000180",
+       "timestamp": "2022-01-10T11:21:13.262300Z",
+       "distM": 21.89,
+       "bearingDeg": 207.4,
+       "statueHeightPx": 186
+      },
+      {
+       "file": "images/p105.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000181",
+       "timestamp": "2022-01-10T11:21:13.627290Z",
+       "distM": 20.5,
+       "bearingDeg": 194.2,
+       "statueHeightPx": 198
+      },
+      {
+       "file": "images/p106.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000182",
+       "timestamp": "2022-01-10T11:21:13.992320Z",
+       "distM": 20.29,
+       "bearingDeg": 180.1,
+       "statueHeightPx": 201
+      },
+      {
+       "file": "images/p107.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000183",
+       "timestamp": "2022-01-10T11:21:14.362330Z",
+       "distM": 21.3,
+       "bearingDeg": 166.3,
+       "statueHeightPx": 191
+      },
+      {
+       "file": "images/p108.jpg",
+       "panoId": "TMX7316010203-002408_pano_0008_000184",
+       "timestamp": "2022-01-10T11:21:14.732310Z",
+       "distM": 23.38,
+       "bearingDeg": 154.5,
+       "statueHeightPx": 174
+      },
+      {
+       "file": "images/p109.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000039",
+       "timestamp": "2022-01-10T11:25:01.830180Z",
+       "distM": 22.92,
+       "bearingDeg": 36.7,
+       "statueHeightPx": 178
+      },
+      {
+       "file": "images/p110.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000040",
+       "timestamp": "2022-01-10T11:25:02.445160Z",
+       "distM": 20.82,
+       "bearingDeg": 24.7,
+       "statueHeightPx": 195
+      },
+      {
+       "file": "images/p111.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000041",
+       "timestamp": "2022-01-10T11:25:03.040370Z",
+       "distM": 19.81,
+       "bearingDeg": 10.8,
+       "statueHeightPx": 205
+      },
+      {
+       "file": "images/p112.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000042",
+       "timestamp": "2022-01-10T11:25:03.620160Z",
+       "distM": 20.03,
+       "bearingDeg": 356.4,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p113.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000043",
+       "timestamp": "2022-01-10T11:25:04.195150Z",
+       "distM": 21.43,
+       "bearingDeg": 343.1,
+       "statueHeightPx": 190
+      },
+      {
+       "file": "images/p114.jpg",
+       "panoId": "TMX7316010203-002408_pano_0010_000044",
+       "timestamp": "2022-01-10T11:25:04.770140Z",
+       "distM": 23.81,
+       "bearingDeg": 331.9,
+       "statueHeightPx": 171
+      },
+      {
+       "file": "images/p115.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002683",
+       "timestamp": "2022-03-24T07:56:45.866710Z",
+       "distM": 23.53,
+       "bearingDeg": 217.7,
+       "statueHeightPx": 173
+      },
+      {
+       "file": "images/p116.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002684",
+       "timestamp": "2022-03-24T07:56:46.231680Z",
+       "distM": 21.27,
+       "bearingDeg": 206.2,
+       "statueHeightPx": 191
+      },
+      {
+       "file": "images/p117.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002685",
+       "timestamp": "2022-03-24T07:56:46.596710Z",
+       "distM": 20.05,
+       "bearingDeg": 192.6,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p118.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002686",
+       "timestamp": "2022-03-24T07:56:46.961680Z",
+       "distM": 20.05,
+       "bearingDeg": 178.2,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p119.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002687",
+       "timestamp": "2022-03-24T07:56:47.326710Z",
+       "distM": 21.23,
+       "bearingDeg": 164.7,
+       "statueHeightPx": 192
+      },
+      {
+       "file": "images/p120.jpg",
+       "panoId": "TMX7316010203-002474_pano_0001_002688",
+       "timestamp": "2022-03-24T07:56:47.696720Z",
+       "distM": 23.48,
+       "bearingDeg": 153.1,
+       "statueHeightPx": 173
+      },
+      {
+       "file": "images/p121.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001177",
+       "timestamp": "2022-09-05T10:18:29.328460Z",
+       "distM": 23.33,
+       "bearingDeg": 37.1,
+       "statueHeightPx": 174
+      },
+      {
+       "file": "images/p122.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001178",
+       "timestamp": "2022-09-05T10:18:29.798440Z",
+       "distM": 21.04,
+       "bearingDeg": 25.6,
+       "statueHeightPx": 193
+      },
+      {
+       "file": "images/p123.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001179",
+       "timestamp": "2022-09-05T10:18:30.263500Z",
+       "distM": 19.79,
+       "bearingDeg": 12,
+       "statueHeightPx": 206
+      },
+      {
+       "file": "images/p124.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001180",
+       "timestamp": "2022-09-05T10:18:30.728520Z",
+       "distM": 19.78,
+       "bearingDeg": 357.5,
+       "statueHeightPx": 206
+      },
+      {
+       "file": "images/p125.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001181",
+       "timestamp": "2022-09-05T10:18:31.188470Z",
+       "distM": 20.99,
+       "bearingDeg": 343.9,
+       "statueHeightPx": 194
+      },
+      {
+       "file": "images/p126.jpg",
+       "panoId": "TMX7316010203-002797_pano_0000_001182",
+       "timestamp": "2022-09-05T10:18:31.648460Z",
+       "distM": 23.25,
+       "bearingDeg": 332.3,
+       "statueHeightPx": 175
+      },
+      {
+       "file": "images/p127.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000029",
+       "timestamp": "2023-01-03T11:34:58.053210Z",
+       "distM": 24.28,
+       "bearingDeg": 41,
+       "statueHeightPx": 168
+      },
+      {
+       "file": "images/p128.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000030",
+       "timestamp": "2023-01-03T11:34:58.593070Z",
+       "distM": 21.78,
+       "bearingDeg": 30.5,
+       "statueHeightPx": 187
+      },
+      {
+       "file": "images/p129.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000031",
+       "timestamp": "2023-01-03T11:34:59.133060Z",
+       "distM": 20.19,
+       "bearingDeg": 17.8,
+       "statueHeightPx": 201
+      },
+      {
+       "file": "images/p130.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000032",
+       "timestamp": "2023-01-03T11:34:59.678020Z",
+       "distM": 19.72,
+       "bearingDeg": 3.8,
+       "statueHeightPx": 206
+      },
+      {
+       "file": "images/p131.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000033",
+       "timestamp": "2023-01-03T11:35:00.228240Z",
+       "distM": 20.43,
+       "bearingDeg": 349.9,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p132.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000034",
+       "timestamp": "2023-01-03T11:35:00.788010Z",
+       "distM": 22.22,
+       "bearingDeg": 337.6,
+       "statueHeightPx": 183
+      },
+      {
+       "file": "images/p133.jpg",
+       "panoId": "TMX7316010203-002914_pano_0003_000035",
+       "timestamp": "2023-01-03T11:35:01.358050Z",
+       "distM": 24.86,
+       "bearingDeg": 327.5,
+       "statueHeightPx": 164
+      },
+      {
+       "file": "images/p134.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05963",
+       "timestamp": "2024-09-05T08:21:12Z",
+       "distM": 24.78,
+       "bearingDeg": 41.8,
+       "statueHeightPx": 164
+      },
+      {
+       "file": "images/p135.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05965",
+       "timestamp": "2024-09-05T08:21:13Z",
+       "distM": 20.39,
+       "bearingDeg": 18.8,
+       "statueHeightPx": 200
+      },
+      {
+       "file": "images/p136.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05964",
+       "timestamp": "2024-09-05T08:21:13Z",
+       "distM": 22.13,
+       "bearingDeg": 31.4,
+       "statueHeightPx": 184
+      },
+      {
+       "file": "images/p137.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05966",
+       "timestamp": "2024-09-05T08:21:14Z",
+       "distM": 19.81,
+       "bearingDeg": 4.6,
+       "statueHeightPx": 205
+      },
+      {
+       "file": "images/p138.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05967",
+       "timestamp": "2024-09-05T08:21:14Z",
+       "distM": 20.5,
+       "bearingDeg": 350.5,
+       "statueHeightPx": 198
+      },
+      {
+       "file": "images/p139.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_05968",
+       "timestamp": "2024-09-05T08:21:15Z",
+       "distM": 22.33,
+       "bearingDeg": 338.1,
+       "statueHeightPx": 182
+      },
+      {
+       "file": "images/p140.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06266",
+       "timestamp": "2024-09-05T08:24:18Z",
+       "distM": 20.4,
+       "bearingDeg": 202.6,
+       "statueHeightPx": 199
+      },
+      {
+       "file": "images/p141.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06265",
+       "timestamp": "2024-09-05T08:24:18Z",
+       "distM": 22.4,
+       "bearingDeg": 215,
+       "statueHeightPx": 182
+      },
+      {
+       "file": "images/p142.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06267",
+       "timestamp": "2024-09-05T08:24:19Z",
+       "distM": 19.51,
+       "bearingDeg": 188.4,
+       "statueHeightPx": 208
+      },
+      {
+       "file": "images/p143.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06268",
+       "timestamp": "2024-09-05T08:24:19Z",
+       "distM": 19.87,
+       "bearingDeg": 173.8,
+       "statueHeightPx": 205
+      },
+      {
+       "file": "images/p144.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06269",
+       "timestamp": "2024-09-05T08:24:20Z",
+       "distM": 21.42,
+       "bearingDeg": 160.5,
+       "statueHeightPx": 190
+      },
+      {
+       "file": "images/p145.jpg",
+       "panoId": "recording_2024-09-05_05-59-45_06270",
+       "timestamp": "2024-09-05T08:24:20Z",
+       "distM": 23.9,
+       "bearingDeg": 149.7,
+       "statueHeightPx": 170
+      },
+      {
+       "file": "images/p146.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01409",
+       "timestamp": "2025-07-14T13:18:20Z",
+       "distM": 20.52,
+       "bearingDeg": 22.1,
+       "statueHeightPx": 198
+      },
+      {
+       "file": "images/p147.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01408",
+       "timestamp": "2025-07-14T13:18:20Z",
+       "distM": 22.49,
+       "bearingDeg": 34.4,
+       "statueHeightPx": 181
+      },
+      {
+       "file": "images/p148.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01410",
+       "timestamp": "2025-07-14T13:18:21Z",
+       "distM": 19.67,
+       "bearingDeg": 8,
+       "statueHeightPx": 207
+      },
+      {
+       "file": "images/p149.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01411",
+       "timestamp": "2025-07-14T13:18:22Z",
+       "distM": 20.06,
+       "bearingDeg": 353.6,
+       "statueHeightPx": 203
+      },
+      {
+       "file": "images/p150.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01412",
+       "timestamp": "2025-07-14T13:18:22Z",
+       "distM": 21.58,
+       "bearingDeg": 340.5,
+       "statueHeightPx": 189
+      },
+      {
+       "file": "images/p151.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01413",
+       "timestamp": "2025-07-14T13:18:23Z",
+       "distM": 24.09,
+       "bearingDeg": 329.6,
+       "statueHeightPx": 169
+      },
+      {
+       "file": "images/p152.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01710",
+       "timestamp": "2025-07-14T13:22:15Z",
+       "distM": 21.13,
+       "bearingDeg": 209.8,
+       "statueHeightPx": 193
+      },
+      {
+       "file": "images/p153.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01709",
+       "timestamp": "2025-07-14T13:22:15Z",
+       "distM": 23.65,
+       "bearingDeg": 220.9,
+       "statueHeightPx": 172
+      },
+      {
+       "file": "images/p154.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01711",
+       "timestamp": "2025-07-14T13:22:16Z",
+       "distM": 19.56,
+       "bearingDeg": 196.4,
+       "statueHeightPx": 208
+      },
+      {
+       "file": "images/p155.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01712",
+       "timestamp": "2025-07-14T13:22:17Z",
+       "distM": 19.18,
+       "bearingDeg": 181.7,
+       "statueHeightPx": 212
+      },
+      {
+       "file": "images/p156.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01713",
+       "timestamp": "2025-07-14T13:22:18Z",
+       "distM": 20.12,
+       "bearingDeg": 167.3,
+       "statueHeightPx": 202
+      },
+      {
+       "file": "images/p157.jpg",
+       "panoId": "recording_2025-07-14_12-49-24_01714",
+       "timestamp": "2025-07-14T13:22:18Z",
+       "distM": 22.19,
+       "bearingDeg": 154.9,
+       "statueHeightPx": 183
+      }
+     ]
+    }
+   },
+   "commons": [
+    {
+     "title": "File:Gandhi (Amsterdam) (1).jpg",
+     "local": "Gandhi_Amsterdam_1_.jpg",
+     "author": "Ceescamel",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2018-09-13 15:22:38",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(1).jpg",
+     "sha256": "56db7c3ce79f5857f2c61f61f73956cbc019e56bebfcbece5fbccf569723d411",
+     "admitted": true
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (2).jpg",
+     "local": "Gandhi_Amsterdam_2_.jpg",
+     "author": "Ceescamel",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2018-09-13 15:22:55",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(2).jpg",
+     "sha256": "595a8373db890595355f23ffeda8908de42392f0139cdddfc83ca1787b9c63c5",
+     "admitted": true
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (3).jpg",
+     "local": "Gandhi_Amsterdam_3_.jpg",
+     "author": "Ceescamel",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2018-09-13 15:23:06",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(3).jpg",
+     "sha256": "e43f9b6691428e857013f9a94048e7aba9156b88552d3d985794d57e9bfbde93",
+     "admitted": true
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (4).jpg",
+     "local": "Gandhi_Amsterdam_4_.jpg",
+     "author": "Ceescamel",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2018-09-13 15:23:26",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(4).jpg",
+     "sha256": "5c856215aae5092ba5f3287faab74615b0006ff0b02f7be11d3f3cbc1b3775c4",
+     "admitted": true
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (5).jpg",
+     "local": "Gandhi_Amsterdam_5_.jpg",
+     "author": "Ceescamel",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "date": "2018-09-13 15:23:43",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(5).jpg",
+     "sha256": "dce87529c57f9a3297b84d3a9bf359aab0b9c010627c97032cefd1ec8c8edf47",
+     "admitted": true
+    },
+    {
+     "title": "File:Gandhi churchilllaan.jpg",
+     "local": "Gandhi_churchilllaan.jpg",
+     "author": "w:nl:Gebruiker:Evanherk",
+     "licence": "CC BY-SA 3.0",
+     "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+     "date": "",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_churchilllaan.jpg",
+     "sha256": "f38c68f821e55a445b8b401f7409c3a4f0994615ef879d53ad702004b55f696f",
+     "admitted": true
+    },
+    {
+     "title": "File:Mahatma Ghandi - panoramio.jpg",
+     "local": "Mahatma_Ghandi_-_panoramio.jpg",
+     "author": "Michal Huniewicz",
+     "licence": "CC BY 3.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+     "date": "21 September 2008 (original upload date)",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Mahatma_Ghandi_-_panoramio.jpg",
+     "sha256": "e48b59ab863c650f1d2c5dfc926bc91814f2544a955439b7c00ac7fdc5c31548",
+     "admitted": true
+    },
+    {
+     "title": "File:Statue of Gandhi, Amsterdam.jpg",
+     "local": "Statue_of_Gandhi_Amsterdam.jpg",
+     "author": "Antony Antony",
+     "licence": "CC BY 2.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+     "date": "2007-01-30 15:19:17",
+     "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi,_Amsterdam.jpg",
+     "sha256": "b5814f631391b8f0c18c3de1e12269868ec5e3aae4b922c9e56821fcf9857cdd",
+     "admitted": true
+    }
+   ],
+   "runs": {
+    "oc-both": {
+     "photos": 164,
+     "registered": null,
+     "seconds": 48.8,
+     "status": "failed",
+     "detail": "full",
+     "masking": true,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-both/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.full, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-both/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.full, geometry: nil): processError",
+     "input": "sets/both",
+     "objTriangles": null
+    },
+    "oc-both-reduced": {
+     "photos": 164,
+     "registered": 82,
+     "seconds": 210,
+     "status": "ok",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "sets/both",
+     "objTriangles": 24999,
+     "post": {
+      "r6": {
+       "obj": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-both-reduced/obj",
+       "height": 3.2,
+       "facingDeg": 90.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 81,
+        "inliers3m": 78,
+        "rmsInliersM": 0.769,
+        "medianRotationErrorDeg": 0.26,
+        "maxM": 3.334,
+        "scaleModelToM": 47.9848,
+        "groundNap": 0.4,
+        "axesMeetM": [
+         -0.04,
+         0.06,
+         1.63
+        ]
+       },
+       "modelMeanCheck": [
+        0.2028,
+        0.3903,
+        0.0833
+       ],
+       "rawTriangles": 24999,
+       "nearAnchor": {
+        "r1": [
+         133,
+         -0.01,
+         1.31,
+         2.71
+        ],
+        "r2": [
+         226,
+         -1.02,
+         0.99,
+         2.65
+        ],
+        "r4": [
+         563,
+         -5.11,
+         0.09,
+         2.53
+        ],
+        "r8": [
+         1979,
+         -5.12,
+         -0.18,
+         8.28
+        ]
+       },
+       "croppedTriangles": 1128,
+       "measuredHeightM": 3.55,
+       "components": [
+        1128,
+        30,
+        2,
+        1,
+        1
+       ],
+       "finalScale": 1.0,
+       "footprintM": [
+        11.0,
+        12.49
+       ],
+       "triangles": 1128,
+       "stoneTriangles": 260
+      },
+      "r15": {
+       "obj": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-both-reduced/obj",
+       "height": 3.2,
+       "facingDeg": 90.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 81,
+        "inliers3m": 78,
+        "rmsInliersM": 0.769,
+        "medianRotationErrorDeg": 0.26,
+        "maxM": 3.334,
+        "scaleModelToM": 47.9848,
+        "groundNap": 0.4,
+        "axesMeetM": [
+         -0.04,
+         0.06,
+         1.63
+        ]
+       },
+       "modelMeanCheck": [
+        0.2028,
+        0.3903,
+        0.0833
+       ],
+       "rawTriangles": 24999,
+       "nearAnchor": {
+        "r1": [
+         133,
+         -0.01,
+         1.31,
+         2.71
+        ],
+        "r2": [
+         226,
+         -1.02,
+         0.99,
+         2.65
+        ],
+        "r4": [
+         563,
+         -5.11,
+         0.09,
+         2.53
+        ],
+        "r8": [
+         1979,
+         -5.12,
+         -0.18,
+         8.28
+        ]
+       },
+       "croppedTriangles": 362,
+       "measuredHeightM": 3.5,
+       "components": [
+        362
+       ],
+       "finalScale": 1.0,
+       "footprintM": [
+        3.04,
+        3.28
+       ],
+       "triangles": 362,
+       "stoneTriangles": 44
+      }
+     }
+    },
+    "oc-commons": {
+     "photos": 6,
+     "registered": 4,
+     "seconds": 12.6,
+     "status": "ok",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "sets/commons",
+     "objTriangles": 6020,
+     "post": {
+      "gandhi": {
+       "obj": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-commons/obj",
+       "height": 3.2,
+       "facingDeg": 90.0,
+       "alignment": {
+        "method": "camera x-axes for gravity, optical axes for the centre, front photo for yaw, height for scale",
+        "front": "Statue_of_Gandhi_Amsterdam.jpg",
+        "upResidual": 0.0007,
+        "medianAxisMissModel": 0.154,
+        "provisionalScale": 20.1534
+       },
+       "rawTriangles": 6020,
+       "error": "crop is empty"
+      }
+     }
+    },
+    "oc-panos": {
+     "photos": 158,
+     "registered": 75,
+     "seconds": 92.6,
+     "status": "ok",
+     "detail": "reduced",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "panos/images",
+     "objTriangles": 25000,
+     "post": {
+      "gandhi": {
+       "obj": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-panos/obj",
+       "height": 3.2,
+       "facingDeg": 90.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 75,
+        "inliers3m": 72,
+        "rmsInliersM": 0.695,
+        "medianRotationErrorDeg": 0.24,
+        "maxM": 10.815,
+        "scaleModelToM": 48.4722,
+        "groundNap": 0.4,
+        "axesMeetM": [
+         -0.05,
+         -0.61,
+         1.68
+        ]
+       },
+       "modelMeanCheck": [
+        0.1141,
+        0.4521,
+        0.0255
+       ],
+       "rawTriangles": 25000,
+       "nearAnchor": {
+        "r1": [
+         147,
+         -7.41,
+         -0.92,
+         1.47
+        ],
+        "r2": [
+         277,
+         -7.51,
+         -2.68,
+         1.35
+        ],
+        "r4": [
+         567,
+         -7.67,
+         -2.64,
+         1.35
+        ],
+        "r8": [
+         1916,
+         -7.72,
+         -0.37,
+         13.17
+        ]
+       },
+       "croppedTriangles": 158,
+       "measuredHeightM": 2.43,
+       "components": [
+        158
+       ],
+       "finalScale": 1.316,
+       "footprintM": [
+        2.97,
+        3.7
+       ],
+       "triangles": 158,
+       "stoneTriangles": 29
+      }
+     }
+    },
+    "oc-panos-full": {
+     "photos": 158,
+     "registered": 76,
+     "seconds": 185.2,
+     "status": "ok",
+     "detail": "full",
+     "masking": true,
+     "sensitivity": "high",
+     "error": null,
+     "input": "panos/images",
+     "objTriangles": 26427,
+     "post": {
+      "r6": {
+       "obj": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-panos-full/obj",
+       "height": 3.2,
+       "facingDeg": 90.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 76,
+        "inliers3m": 76,
+        "rmsInliersM": 0.734,
+        "medianRotationErrorDeg": 0.43,
+        "maxM": 2.891,
+        "scaleModelToM": 48.6988,
+        "groundNap": 0.4,
+        "axesMeetM": [
+         0.01,
+         -0.02,
+         1.7
+        ]
+       },
+       "modelMeanCheck": [
+        0.1162,
+        0.5456,
+        0.0757
+       ],
+       "rawTriangles": 26427,
+       "nearAnchor": {
+        "r1": [
+         144,
+         -1.83,
+         0.08,
+         1.35
+        ],
+        "r2": [
+         297,
+         -3.26,
+         -0.47,
+         1.3
+        ],
+        "r4": [
+         925,
+         -6.43,
+         -1.94,
+         7.85
+        ],
+        "r8": [
+         2584,
+         -6.36,
+         -0.55,
+         12.52
+        ]
+       },
+       "croppedTriangles": 1242,
+       "measuredHeightM": 13.37,
+       "components": [
+        1014,
+        228
+       ],
+       "finalScale": 1.0,
+       "footprintM": [
+        10.1,
+        12.15
+       ],
+       "triangles": 1242,
+       "stoneTriangles": 413
+      },
+      "gandhi": {
+       "obj": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-panos-full/obj",
+       "height": 3.2,
+       "facingDeg": 90.0,
+       "alignment": {
+        "method": "rotation from panorama view orientations, scale and offset from camera centres",
+        "panoramaViews": 76,
+        "inliers3m": 76,
+        "rmsInliersM": 0.734,
+        "medianRotationErrorDeg": 0.43,
+        "maxM": 2.891,
+        "scaleModelToM": 48.6988,
+        "groundNap": 0.4,
+        "axesMeetM": [
+         0.01,
+         -0.02,
+         1.7
+        ]
+       },
+       "modelMeanCheck": [
+        0.1162,
+        0.5456,
+        0.0757
+       ],
+       "rawTriangles": 26427,
+       "nearAnchor": {
+        "r1": [
+         144,
+         -1.83,
+         0.08,
+         1.35
+        ],
+        "r2": [
+         297,
+         -3.26,
+         -0.47,
+         1.3
+        ],
+        "r4": [
+         925,
+         -6.43,
+         -1.94,
+         7.85
+        ],
+        "r8": [
+         2584,
+         -6.36,
+         -0.55,
+         12.52
+        ]
+       },
+       "croppedTriangles": 278,
+       "measuredHeightM": 2.13,
+       "components": [
+        278,
+        1
+       ],
+       "finalScale": 1.5,
+       "footprintM": [
+        4.68,
+        3.84
+       ],
+       "triangles": 278,
+       "stoneTriangles": 86
+      }
+     }
+    },
+    "oc-panos-raw": {
+     "photos": 158,
+     "registered": null,
+     "seconds": 68.6,
+     "status": "failed",
+     "detail": "raw",
+     "masking": true,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-panos-raw/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.raw, geometry: nil): processError\nposes: processError",
+     "input": "panos/images",
+     "objTriangles": null
+    },
+    "oc-panos-tight": {
+     "photos": 158,
+     "registered": null,
+     "seconds": 39.4,
+     "status": "failed",
+     "detail": "full",
+     "masking": true,
+     "sensitivity": "high",
+     "error": "modelFile(url: artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-panos-tight/obj/ -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.full, geometry: nil): processError\nposes: processError\nmodelFile(url: artifacts/sculpture-reconstruction/gandhi-churchill-laan/multiview/oc-panos-tight/model.usdz -- file:///Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b80400e12f7622f/, detail: RealityFoundation.PhotogrammetrySession.Request.Detail.full, geometry: nil): processError",
+     "input": "panos-tight/images",
+     "objTriangles": null
+    }
+   }
+  }
+ }
+}

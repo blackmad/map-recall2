@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "22480235d4dd617e",
+  "revision": "95a4c289c9219ee9",
   "origin": {
     "lng": 4.9,
     "lat": 52.37
@@ -219,44 +219,6 @@
         "#c6baa3": 2,
         "#744a3d": 2,
         "#393b3e": 1
-      }
-    },
-    {
-      "id": "jan-evertsen-canopy-candidate-native-pair",
-      "frontages": [
-        {
-          "buildingId": "NL.IMBAG.Pand.0363100012096187",
-          "recipeIndex": 0,
-          "frontage": {
-            "start": [
-              4.852090009565,
-              52.370490979569
-            ],
-            "end": [
-              4.852174990435,
-              52.370506020431
-            ],
-            "widthM": 6.010429
-          }
-        },
-        {
-          "buildingId": "NL.IMBAG.Pand.0363100012118917",
-          "recipeIndex": 0,
-          "frontage": {
-            "start": [
-              4.852005971305,
-              52.370476061293
-            ],
-            "end": [
-              4.852090028695,
-              52.370490938707
-            ],
-            "widthM": 5.945129
-          }
-        }
-      ],
-      "palette": {
-        "#92775c": 2
       }
     },
     {
