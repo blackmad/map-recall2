@@ -43516,10 +43516,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134024",
       "name": "Asterweg 17-19, Amsterdam-Noord (Buiksloterham): 2006 brick office-and-workshop block with a raised brick storey carried over an open steel-truss ground floor",
-      "hash": "b4154caa0699c66c0f1b9ad21c6934c30e3cd70529ce5f1c9e5e50e6f7c6a277",
-      "sha256": "b4154caa0699c66c0f1b9ad21c6934c30e3cd70529ce5f1c9e5e50e6f7c6a277",
-      "bytes": 93668,
-      "triangles": 1125,
+      "hash": "fbcf98c7c4e0fd19b8797c4d2e749ae788e9f6c59cbaa28eb03f0c7c215f97e2",
+      "sha256": "fbcf98c7c4e0fd19b8797c4d2e749ae788e9f6c59cbaa28eb03f0c7c215f97e2",
+      "bytes": 94348,
+      "triangles": 1131,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -43702,7 +43702,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134024",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:37:57.301Z"
+      "updatedAt": "2026-10-14T03:07:12.074Z"
     },
     {
       "id": "ordinary-0363100012120309",
