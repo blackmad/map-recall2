@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -46940,11 +46940,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012247232",
       "name": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
-      "hash": "a68483665522d85314848ad664c866245aaf7e372dbc74f2cca754c01112eeb8",
-      "sha256": "a68483665522d85314848ad664c866245aaf7e372dbc74f2cca754c01112eeb8",
-      "bytes": 882076,
-      "triangles": 11634,
-      "materials": 15,
+      "hash": "784366ef1d1e5fc064ccf46d200c6c1501b2804866ea2a76a23db1dcb727f8b8",
+      "sha256": "784366ef1d1e5fc064ccf46d200c6c1501b2804866ea2a76a23db1dcb727f8b8",
+      "bytes": 843456,
+      "triangles": 11149,
+      "materials": 18,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -46956,7 +46956,7 @@
         "max": [
           34.039,
           29.772,
-          51.682
+          51.702
         ]
       },
       "anchor": [
@@ -47135,7 +47135,8 @@
         "intentSources": [
           "source-data://pand-reference-walls/0363100012247232/w01-2L.jpg",
           "source-data://pand-reference-walls/0363100012247232/w02-182.jpg",
-          "source-data://pand-reference-walls/0363100012247232/w03-272.jpg"
+          "source-data://pand-reference-walls/0363100012247232/w03-272.jpg",
+          "source-data://pand-reference-walls/0363100012247232/w01-2.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -47151,12 +47152,15 @@
           "storey-height/walls[2]:pass",
           "eaves-vs-3dbag/walls[3]:pass",
           "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 8st 10b",
+          "glazed-columns 8st 21b",
+          "glazed-columns 8st 11b",
           "ribbon-windows 1st 20b",
           "brick-bay-grid 3st 6b",
           "brick-bay-grid 6st 7b"
@@ -47164,21 +47168,20 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (columns 10 vs photo 8; window shape square vs photo wide)); inferred: two-brick split and glazing (0.29 vs 0.34) measured and applied, 10 bays for the triangle budget where the photo has about 20 (photo pitch locks on 8)",
-        "walls[1] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, hand ribbon kept",
-        "walls[2] not confirmed by the photo (FAIL (window shape square vs photo wide)); inferred: measured colour and glazing (0.23 vs 0.28) applied, fails on window shape class square vs wide",
-        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.22 mean 0.30 vs photo 0.12; window shape tall vs photo square)); inferred: measured colour applied, French windows by hand (measured shape 0.3x0.2 was wrong), glazing band off by 0.22",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.33 mean 0.59 vs photo 0.33)); inferred: measured dark brick and the measured 0.65 x 0.65 window shape applied with lane C's glazed columns - the photo classes the panes as trim so its glazing (0.33) undercounts the windows that line up in the overlay",
+        "walls[2] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches this panel, hand ribbon kept",
+        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.22 mean 0.44 vs photo 0.23)); inferred: measured colour, 6 bays and 0.65 x 0.60 window shape applied - photo glazing 0.23 undercounts panes it classes as trim, the windows line up in the overlay",
+        "walls[4] not confirmed by the photo (FAIL (glazing storey band off by 0.22 mean 0.30 vs photo 0.12; window shape tall vs photo square)); inferred: measured colour and 7 bays applied, tall windows behind Juliet bars by hand (measured shape 0.3 x 0.2 misses them), photo glazing 0.12 undercounts",
         "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m.",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4a5451 not used (not darker than the wall #524947 by 10 L*, or tinted): kit glass kept; walls[0] wall split #7a6b55 | #504947 at 50 % (dE 19.8); walls[2] glass #575960 not used (not darker than the wall #615b54 by 10 L*, or tinted): kit glass kept; walls[3] glass #2f557d not used (not darker than the wall #524c52 by 10 L*, or tinted): kit glass kept.",
-        "Kit gap (photo review 2026-10-14): walls[0] ~20 window columns and projecting glazed bay columns are not modelled at that density: the 12k triangle budget affords 10 bays, so windows are wider than the photo's."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #726f5d not used (not darker than the wall #917b5c by 10 L*, or tinted): kit glass kept; walls[1] glass #3f4248 not used (not darker than the wall #494341 by 10 L*, or tinted): kit glass kept; walls[3] glass #575960 not used (not darker than the wall #615b54 by 10 L*, or tinted): kit glass kept; walls[4] glass #2f557d not used (not darker than the wall #524c52 by 10 L*, or tinted): kit glass kept."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247232",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T10:02:11.996Z",
-      "meshHash": "f5892c346f2c10c1"
+      "updatedAt": "2026-10-14T12:27:06.853Z",
+      "meshHash": "1cbce19047f0d737"
     },
     {
       "id": "ordinary-0363100012112128",
@@ -47677,23 +47680,23 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118320",
       "name": "Waagdragerhof 198 (Pakhuis Wilhelmina), Amsterdam-Centrum (Veemkade, KNSM-eiland): 2004 block with an eleven-storey dark red brick residential tower over the retained arched brick warehouse Pakhuis Wilhelmina, whose tall arched windows carry the lettering PAK HUIS WIL HEL MINA",
-      "hash": "774729342b314a4bb49bfb3aba5f74fbb8a37439f68fa98d3f6f3b2c2276fc96",
-      "sha256": "774729342b314a4bb49bfb3aba5f74fbb8a37439f68fa98d3f6f3b2c2276fc96",
-      "bytes": 918016,
-      "triangles": 11667,
-      "materials": 16,
+      "hash": "72cc492e7c9c2888a5fbe9c4f565367018ab7bfa1f3172f5bde645a02db05788",
+      "sha256": "72cc492e7c9c2888a5fbe9c4f565367018ab7bfa1f3172f5bde645a02db05788",
+      "bytes": 669916,
+      "triangles": 8840,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
           -51.184,
           0.001,
-          -39.82
+          -40.089
         ],
         "max": [
           51.089,
           34.94,
-          30.519
+          30.634
         ]
       },
       "anchor": [
@@ -47791,29 +47794,28 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 11st 12b",
-          "brick-bay-grid 11st 8b",
-          "brick-bay-grid 2st 5b",
-          "brick-bay-grid 3st 6b"
+          "french-window-ledge 11st 13b",
+          "french-window-ledge 11st 8b",
+          "brick-bay-grid 1st 5b",
+          "brick-bay-grid 1st 6b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.16)); inferred: measured colour, 12 bays and glazing (0.42 vs 0.42) applied, one storey band off by 0.16 where the blurred top of the tower and a tree confuse the photo",
-        "walls[1] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.59 mean 0.34 vs photo 0.66)); inferred: photo mixes tower brick with grey ledges and an annex, hand brick and window shape kept (photo glazing 0.66 is the misread brick)",
-        "walls[2] not confirmed by the photo (FAIL (wall not drawn; glazing  mean 0.00 vs photo 0.33; columns none vs photo 5; window shape none vs photo tall)); inferred: arched glazed bays with lettering not in the kit, model elevation draws no wall here",
-        "walls[3] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.33 mean 0.39 vs photo 0.65; window shape square vs photo tall)); inferred: photo segmented almost entirely as glazing, hand brick and arched window shape kept",
+        "walls[0] not confirmed by the photo (FAIL (wall family brick vs photo paint)); inferred: the photo wall cluster is mortar and shadow in a December crop (#262120, paint family) - lane C's dark red-brown brick #4a302b matches the median of the crop's brick pixels, 13 French-window bays (photo 12)",
+        "walls[1] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing storey band off by 0.51 mean 0.42 vs photo 0.66)); inferred: the photo wall cluster is window surrounds (#34373a) and its glazing 0.66 counts dark brick - tower brick #4a302b by hand, 8 measured bays, measured 0.45 x 0.85 window kept",
+        "walls[2] not confirmed by the photo (FAIL (wall family brick vs photo paint; glazing  mean 0.59 vs photo 0.34)); inferred: the photo wall cluster is the window frames (#464746) - the warehouse brick measured on walls[3] applied, arched stacked windows (lane C) line up with the photo, its glazing counts white-framed panes as trim",
+        "walls[3] not confirmed by the photo (FAIL (glazing  mean 0.56 vs photo 0.31)); inferred: measured purple-brown brick applied, arched windows line up in the overlay, photo glazing 0.31 counts the white-framed panes as trim",
         "Simplified: the five photographed arches are tall double-height windows glazed in two halves and the kit draws two storeys of arched windows; the lettering is one name band over the arches where the photograph shows one word per arch on the glass; the dark metal bridge-volume and balconies of the tower are not modelled; the tower bay counts are reduced (8 and 6 against about 14 photographed window columns) to stay inside 12k triangles. Not drawn: the tower east and north walls, the courtyard and the north warehouse wings (panels 48, 86 and 84, eaves 18), which stay blank brick.",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #322521 not used (not darker than the wall #262120 by 10 L*, or tinted): kit glass kept; walls[1] glass #413c3b not used (not darker than the wall #34373a by 10 L*, or tinted): kit glass kept; walls[2] glass #3d5061 not used (not darker than the wall #464746 by 10 L*, or tinted): kit glass kept; walls[2] walls: glazed columns measured; the kit has no glazed-columns system yet (lane C), brick-bay-grid kept with a full-height window shape.",
-        "Kit gap (photo review 2026-10-14): walls[0] the continuous horizontal storey ledges of the tower are not modelled (the measurement does not detect ledges; stringCourses not set); walls[2] the full-height arched glazed bays with painted name lettering (Pakhuis Wilhelmina) are not modelled."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #322521 not used (not darker than the wall #262120 by 10 L*, or tinted): kit glass kept; walls[1] glass #413c3b not used (not darker than the wall #34373a by 10 L*, or tinted): kit glass kept; walls[2] glass #3d5061 not used (not darker than the wall #464746 by 10 L*, or tinted): kit glass kept; walls[3] glass #64635d not used (not darker than the wall #735c59 by 10 L*, or tinted): kit glass kept."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118320",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T10:02:08.058Z",
-      "meshHash": "f8dc68364b30b81f"
+      "updatedAt": "2026-10-14T12:27:10.941Z",
+      "meshHash": "231e966ba221bf07"
     },
     {
       "id": "ordinary-0363100012093853",
@@ -48518,11 +48520,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012134507",
       "name": "Apollolaan 4 / Stadionweg 5 (Apollohal), Amsterdam-Zuid (Olympisch Kwartier): 1934 sports hall of brick with a tall glazed upper hall, a curved glass roof edge, brick entrance annexes with round windows and a canopied glass entrance",
-      "hash": "75a3eb205728a3dafff579918be863a631ccf5932378b6ddc7da40b67ea76c3f",
-      "sha256": "75a3eb205728a3dafff579918be863a631ccf5932378b6ddc7da40b67ea76c3f",
-      "bytes": 329804,
-      "triangles": 4394,
-      "materials": 11,
+      "hash": "6e86ff0525c1e8cebe798aab256d567a43ff77f538a9d50535f1b73237c6ceca",
+      "sha256": "6e86ff0525c1e8cebe798aab256d567a43ff77f538a9d50535f1b73237c6ceca",
+      "bytes": 268588,
+      "triangles": 3516,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -48695,7 +48697,8 @@
         "id": "apollolaan-4-134507",
         "kind": "large",
         "intentSources": [
-          "source-data://pand-reference-walls/0363100012134507/w04-321L.jpg"
+          "source-data://pand-reference-walls/0363100012134507/w04-321L.jpg",
+          "source-data://pand-reference-walls/0363100012134507/w01-231.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -48716,7 +48719,7 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 3st 22b",
+          "glazed-hall 1st 4b",
           "brick-bay-grid 2st 2b",
           "curtain-wall 1st 20b",
           "brick-bay-grid+entrance 1st 3b"
@@ -48724,22 +48727,23 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 32 % > 25 %)); inferred: foliage hides the flank (32 %), hand palette and bays from the 2024-11 leaf-off panorama kept",
-        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.15)); inferred: measured colour and glazing applied (glazing 0.40 vs 0.40), fails one storey band by 0.15 behind a tree, glazed columns drawn as tall windows",
+        "walls[0] not confirmed by the photo (NO EVIDENCE (foliage 32 % > 25 %)); inferred: foliage hides the 2024 flank (32 %), glazed hall (lane C) with its base and glass hand-sampled from the 2017 crop w01-231",
+        "walls[1] not confirmed by the photo (FAIL (window shape none vs photo tall; columns none vs photo 2)); inferred: measured grey-brown wall applied, 2 measured bays with wide windows - the front mixes a glazed shopfront under a blank panel with brick and a clerestory ribbon, which the kit cannot say per bay",
         "walls[2] not confirmed by the photo (NO PHOTO); inferred: no archived crop matches the glazed gable (4.8 m off the BAG edge), curtain wall by hand",
         "walls[3] not confirmed by the photo (NO EVIDENCE (usable upper cells 25 % < 40 %; foliage 33 % > 25 %)); inferred: foliage and 25 % usable cells, hand palette kept",
         "walls[0] = panel 22 (SW, 66.6 m, eaves 11.9): a blank brick plinth under two glazed bands, drawn as 3 storeys with a blank ground and 22 bays of wide windows without sills. walls[1] = panels 21, 13 and 17 (NW, 11 m, 10 m and 9 m, eaves 6.3): the two-storey brick annex fronts with white-framed windows, 2 storeys x 3 bays. walls[2] = panel 14 (NW, 35.7 m, eaves 12.1 over a 6.8 m base): the glazed gable of the hall above the annexes, drawn as a one-storey curtain wall with mullions and transoms, with APOLLOHAL on a name band (the photographed letters are on the glass). walls[3] = panel 31 (SW end, 9.8 m, eaves 3.6): the glazed entrance under a flat canopy, one storey with a glazed ground and an entrance with canopy in bay 1.",
         "Simplified: the glass gable is a flat curtain wall (the photographed hall edge is curved), the clerestory on the long flank is wide windows over a blank base, the entrance is a canopy and a glazed door set in three bays, the round windows of the annexes are not modelled and stay plain wall. Not drawn: the south-east end wall, the north-east long wall (panels 63, 44, 26, no panorama) and the low service range on the north-east, which stay blank brick.",
-        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #5e605e not used (not darker than the wall #5f5950 by 10 L*, or tinted): kit glass kept; walls[1] walls: glazed columns measured; the kit has no glazed-columns system yet (lane C), brick-bay-grid kept with a full-height window shape.",
-        "Kit gap (photo review 2026-10-14): walls[1] glazed columns (full-height glazing across storey lines between brick piers) drawn as tall punched windows; walls[0] the curtain wall over a buff brick plinth on one flank is not modelled (no curtain-over-plinth system)."
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #5e605e not used (not darker than the wall #5f5950 by 10 L*, or tinted): kit glass kept.",
+        "Reconciled 2026-10-14 (lane A measurement on lane C's systems): `hand` holds every group's system and walls[0]'s and walls[3]'s bay counts (lane C's choice); walls[1]'s 2 bays are measured (lane C kept the original 3; the photo w04-321L shows two bays). walls[0] stays lane C's hand sample from w01-231 (2017): the 2024 crop of that flank is NO EVIDENCE (foliage 32 %), so its brick #a2937e and glass #46545c remain hand-sampled measured values (hand palette.brick, palette.glass). walls[0] is a glazed hall: a measured windowShape is meaningless there (no punched windows; the hall's lights and rows are the shape), so none is written. walls[1]: wall #5f5950 measured (grey-brown, not lane C's orange #9a5a44); its measured shape 0.40 x 1.00 (\"glazed columns\") was rejected on review: the annex is a glazed shopfront under a blank panel beside brick with a ribbon clerestory, not full-height columns, so the wide preset is kept (hand windowShape).",
+        "Kit gap: walls[1] mixes bays of different systems on one front (glazed shopfront under a blank screen panel | brick with a clerestory ribbon); the kit has one system per group. walls[0] APOLLOHAL letters on the base and the roof-edge louvres; walls[2] the curved glass roof edge."
       ],
       "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134507",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T10:01:56.509Z",
-      "meshHash": "f85b78136ce140af"
+      "updatedAt": "2026-10-14T12:26:47.268Z",
+      "meshHash": "f5a47365288094ec"
     },
     {
       "id": "ordinary-0363100012243487",
@@ -51232,9 +51236,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012129127",
       "name": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
-      "hash": "95752e6d6e5ccff2e5c0242aba88b23c1b4f0b0cc586603df1fad02b8f920f39",
-      "sha256": "95752e6d6e5ccff2e5c0242aba88b23c1b4f0b0cc586603df1fad02b8f920f39",
-      "bytes": 869600,
+      "hash": "cd4d42790647bb11de76c616958b395309824a9f21be83e7029ef64150b8df52",
+      "sha256": "cd4d42790647bb11de76c616958b395309824a9f21be83e7029ef64150b8df52",
+      "bytes": 869796,
       "triangles": 11809,
       "materials": 14,
       "textures": 0,
@@ -51394,7 +51398,7 @@
       "limitations": [
         "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.37; columns 8 vs photo 28)); inferred: reflective glass as light as the spandrels makes the photo glazing unreliable, ribbon and bays by hand, measured concrete colour applied",
         "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.41 mean 0.52 vs photo 0.68)); inferred: measured colour applied, 12 ribbon bays for the triangle budget (photo about 25 mullions), glazing band off by 0.41",
-        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.20; columns none vs photo 2; window shape none vs photo square)); inferred: measured colour and glazing (0.66 vs 0.61) applied, one band off by 0.20",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.20; window shape none vs photo square; columns none vs photo 2)); inferred: measured colour and glazing (0.66 vs 0.61) applied, one band off by 0.20",
         "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render."
       ],
       "reviewState": "large-recipe-likeness-inferred",
@@ -51402,7 +51406,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129127",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T10:02:25.792Z",
+      "updatedAt": "2026-10-14T12:27:17.977Z",
       "meshHash": "0d1725c303229321"
     },
     {
@@ -52930,10 +52934,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012129398",
       "name": "Spinoza Lyceum, Peter van Anrooystraat 8, Amsterdam (built 1957): a white concrete-frame school, four-storey south-east wing with orange timber window panels under awnings over a low band of grid windows, a stair and canopy entrance, and a three-storey west wing of eleven timber-framed bays",
-      "hash": "6d63395fef34adb18b214e4edffdfd7fc29e1382953fb9ef6b2e91d561d0f0e0",
-      "sha256": "6d63395fef34adb18b214e4edffdfd7fc29e1382953fb9ef6b2e91d561d0f0e0",
+      "hash": "cf2af540939a834109ec9e8461dcdaec7b5f3c3b89760fdd4ad36c7bba51bd48",
+      "sha256": "cf2af540939a834109ec9e8461dcdaec7b5f3c3b89760fdd4ad36c7bba51bd48",
       "meshHash": "5d79685f4cffa915",
-      "bytes": 476064,
+      "bytes": 476132,
       "triangles": 6548,
       "materials": 11,
       "textures": 0,
@@ -53160,7 +53164,7 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (columns 16 vs photo 30)); inferred: measured colour and glazing (0.57 vs 0.65) applied, fails only on columns (16 piers by hand vs 30 counted including mullions)",
+        "walls[0] likeness WARN (columns 16 vs photo 30).",
         "walls[1] not confirmed by the photo (FAIL (window shape square vs photo tall)); inferred: measured colour and glazing (0.59 vs 0.58) applied, fails only on window shape class tall vs square",
         "Simplified: awnings (temporary), stair flights, solid timber parapet boards; two-light windows on the south-east wing keep the triangle count under 12k (wide windows were 12.1k); the other wings and the rear walls had no panorama or are not photographed and stay blank.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554943 not used (not darker than the wall #584c45 by 10 L*, or tinted): kit glass kept; walls[1] glass #545456 not used (not darker than the wall #594643 by 10 L*, or tinted): kit glass kept.",
@@ -53171,7 +53175,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129398",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T10:02:22.008Z"
+      "updatedAt": "2026-10-14T12:27:14.870Z"
     }
   ]
 }

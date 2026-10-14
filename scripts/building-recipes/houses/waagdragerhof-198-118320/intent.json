@@ -6,35 +6,47 @@
  "address": "Waagdragerhof 198 (Pakhuis Wilhelmina), Amsterdam-Centrum (Veemkade, KNSM-eiland): 2004 block with an eleven-storey dark red brick residential tower over the retained arched brick warehouse Pakhuis Wilhelmina, whose tall arched windows carry the lettering PAK HUIS WIL HEL MINA",
  "sources": [
   {
-   "id": "pano-2022-12-28-w04",
+   "id": "pano-2022-12-28-w09-196L",
    "kind": "street-panorama",
    "capturedAt": "2022-12-28",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002900_pano_0009_000017/",
-   "image": "staging/pand-reference-walls/0363100012118320/w04-196.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002900_pano_0009_000012/",
+   "image": "source-data://pand-reference-walls/0363100012118320/w09-196L.jpg",
+   "sha256": "337a79d960a03372c4c6b6e7d5d407f241ccad1ddc200ea97ecf1e167558cc14",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-06-16-w03",
+   "id": "pano-2022-12-28-w04-196",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-28",
+   "image": "source-data://pand-reference-walls/0363100012118320/w04-196.jpg",
+   "sha256": "58f6cc0c7c95eb1c8aeca2f4cb7b471366e10571c85033310fb8686a654b8a06",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w03-286",
    "kind": "street-panorama",
    "capturedAt": "2025-06-16",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01389/",
-   "image": "staging/pand-reference-walls/0363100012118320/w03-286.jpg",
+   "image": "source-data://pand-reference-walls/0363100012118320/w03-286.jpg",
+   "sha256": "c00d25c068efb95bfe2ed43177c317f30985330c3a430b51e45074f06ddcc2aa",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-06-16-w05",
+   "id": "pano-2025-06-16-w05-196",
    "kind": "street-panorama",
    "capturedAt": "2025-06-16",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01388/",
-   "image": "staging/pand-reference-walls/0363100012118320/w05-196.jpg",
+   "image": "source-data://pand-reference-walls/0363100012118320/w05-196.jpg",
+   "sha256": "3924fa601edaddcd1fdd06e8ba2c379227e7738f291faaabb1d08f77cc0a8d9c",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2022-09-06-w01",
+   "id": "pano-2022-09-06-w01-16",
    "kind": "street-panorama",
    "capturedAt": "2022-09-06",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002801_pano_0003_000082/",
-   "image": "staging/pand-reference-walls/0363100012118320/w01-16.jpg",
+   "image": "source-data://pand-reference-walls/0363100012118320/w01-16.jpg",
+   "sha256": "36ee3d6581f032c8cdb018d5dca317c0b73d0e530006706107dbbecf03db4570",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -58,14 +70,12 @@
    "palette": {
     "brick": "#4a302b",
     "frame": "#4e4a46",
-    "stone": "#8c8e8c",
-    "glass": "#3a4650"
+    "stone": "#8c8e8c"
    },
    "hand": [
-    "palette.brick",
-    "palette.glass",
+    "system",
     "baysPerStorey",
-    "windowShape"
+    "palette.brick"
    ]
   },
   {
@@ -74,25 +84,23 @@
    ],
    "system": "french-window-ledge",
    "storeys": 11,
-   "baysPerStorey": 13,
+   "baysPerStorey": 8,
    "ground": "glazed",
    "deepBars": true,
    "frames": false,
    "windowShape": {
-    "w": 0.5,
-    "h": 0.75,
-    "sill": 0.06
+    "w": 0.45,
+    "h": 0.85,
+    "sill": 0.13
    },
    "palette": {
     "brick": "#4a302b",
     "frame": "#4e4a46",
-    "stone": "#8c8e8c",
-    "glass": "#3a4650"
+    "stone": "#8c8e8c"
    },
    "hand": [
+    "system",
     "palette.brick",
-    "palette.glass",
-    "baysPerStorey",
     "windowShape"
    ]
   },
@@ -113,7 +121,7 @@
     "band": "brick"
    },
    "palette": {
-    "brick": "#5e4a4c",
+    "brick": "#735c59",
     "frame": "#e2e2dc",
     "stone": "#c8c4bc",
     "arch": "#a85c3e"
@@ -130,10 +138,11 @@
     "sill": 0.06
    },
    "hand": [
-    "palette.brick",
-    "palette.arch",
+    "system",
     "baysPerStorey",
-    "windowShape"
+    "windowShape",
+    "palette.brick",
+    "palette.arch"
    ]
   },
   {
@@ -155,7 +164,7 @@
     "band": "brick"
    },
    "palette": {
-    "brick": "#5e4a4c",
+    "brick": "#735c59",
     "frame": "#e2e2dc",
     "stone": "#d8d6cc",
     "arch": "#8a4c40"
@@ -167,10 +176,10 @@
    },
    "cornice": true,
    "hand": [
-    "palette.brick",
-    "palette.arch",
+    "system",
     "baysPerStorey",
-    "windowShape"
+    "windowShape",
+    "palette.arch"
    ]
   }
  ],
@@ -203,6 +212,8 @@
   "walls[2] (w05-196): the five tall segmental-arched windows are one storey of openings 0.62 of the bay wide and 0.84 of the wall tall with a transom, as photographed, instead of two storeys of round-arched windows.",
   "walls[3] (w01-16, the five tall bays at the east end of the north front): one storey of tall segmental-arched windows 0.6 of the bay wide and 0.86 of the wall tall, white frames (#e2e2dc) with two lights and five horizontal bars (the three storeys of glazing and their dark spandrels inside one opening), arch rings #8a4c40 (photo raw #614441, redder than the wall; saturated so the ring reads at gallery size), the white cornice #d8d6cc on dark purple-brown brick #5e4a4c (photo raw #594c4e); walls[2] (w05-196) the same brick with the orange arched surrounds as its arch ring #a85c3e and white frames. The warehouse openings of walls[2] have no frame ring (frames false; budget).",
   "House brick #5a4446 (the unlisted warehouse wings and tower backs): the purple-brown of w01-16, not the orange-red of the first fit.",
-  "measured: the wall, glass and arch-ring colours and the rhythm of walls [0], [1], [2], [3] were sampled by hand from the rectified crops (2026-10-14, kit vocabulary lane; numbers in the notes above), not by measure.ts; `hand` keeps them when measure.ts --write runs. Their wall slots export tintSource measured."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #322521 not used (not darker than the wall #262120 by 10 L*, or tinted): kit glass kept; walls[1] glass #413c3b not used (not darker than the wall #34373a by 10 L*, or tinted): kit glass kept; walls[2] glass #3d5061 not used (not darker than the wall #464746 by 10 L*, or tinted): kit glass kept; walls[3] glass #64635d not used (not darker than the wall #735c59 by 10 L*, or tinted): kit glass kept.",
+  "Reconciled 2026-10-14 (lane A measurement on lane C's systems): `hand` holds every group's system and the bay counts of walls[0], [2], [3] (lane C; walls[0] 13 vs measured 12 is within the column tolerance); walls[1]'s 8 bays are measured (lane C copied 13 from walls[0]; the photo w03-286 shows 8 window columns). Brick: the photos' wall clusters on the tower are mortar and shadow (#262120 from the December crop w09-196L at gain 1, #34373a from w03-286, family paint), so walls[0] and [1] keep lane C's hand #4a302b, which matches the median of the brick-red pixels in both crops (#3e2f2c to #473c3a raw); walls[3] takes the measured #735c59 (w01-16, light-trim normalised); walls[2]'s measurement took the window frames (#464746) and it shares walls[3]'s brick (same warehouse). Glass: no front's measured glass reads as glass, so the kit's dark glass is used (lane C's #3a4650 hand value is dropped). windowShape: walls[0] lane C's French window (no measured shape), walls[1] measured 0.45 x 0.85 kept by hand (the refinement widened it to 0.70 because the photo's glazing 0.66 counts the dark brick as glass), walls[2] and [3] lane C's arched shapes (no measured shape; the photo labels the white-framed panes as trim, glazing 0.31-0.34 against 0.56-0.59 drawn, while the overlay lines up arch for arch).",
+  "Kit gap: the tower's light rendered band storeys (w03-286), paired small arches and hoist-door axes of the warehouse, spandrel panels, the dentil cornice, the PAKHUIS WILHELMINA lettering on the glass, the bridge volume and stepped tower top."
  ]
 }
