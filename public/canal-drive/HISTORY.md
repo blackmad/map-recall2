@@ -1,5 +1,48 @@
 # Canal Recall — what is built
 
+## Measured glass reaches the game; the sheet's city-look column was the liar (2026-10-14)
+
+Lane `lane/measured-look-20261014` (plan Part 1 lane B, second pass). The
+two "look bugs" the kit-vocabulary sheet showed were one real and one
+false. **False:** measured dark walls were never near-black in the game;
+the sheet's "re-fit, city-look tints" column came from lane C's scratch
+`compare.ts`, which passed trial texture tiles to `renderModels`, and that
+branch of `render-page.ts` skipped the game look and drew the GLB's raw
+colours under a hemisphere + sun light (Waagdragerhof's `#4a302b` tower
+rendered 31,18,16 there while both game looks drew it 78,50,46, ΔL
++0.01); Houthavenkade's "pale grey" plum half was the raw reflective
+glass. The trace from intent → fit slot → export extras →
+`slotForMaterial` → `cityLookTint` → shader ruled out a double bypass, a
+shade multiplication and a stucco/paint mis-slot. Fix: `render-page.ts`
+and `render.ts` always draw through a game look (`renderModels(models,
+views, {city, year})`, `--city-look [--year=]`); the `--textures` path is
+retired and a texture map now throws. **Real:** `cityTint('glass')`
+returned white for every glass, so `palette.glass` never reached the game.
+Glass with `tintSource: 'measured'` now uses a twelfth slot layer,
+`glassTint` (the pane gradient and sky streak in grey, 188–255), tinted by
+`cityMeasuredGlassTint` (hex ÷ the cell's exact mean), in `palette.ts`,
+`slotCells.ts`, `cityLook.ts`, `recipeLook.ts` and `writeTile.ts`; a new
+layer because the old blue-grey pane's mean caps any tint below pale
+reflective glass; unmeasured glass unchanged. `fitLarge` adds a measured
+group's `glass@g<i>` to `measuredSlots` (not in the fit-golden hash).
+Also found: measured brick in 20th-century buildings sampled the lighter
+`brick20` cell and drew 0.02–0.03 L light; measured brick now always
+samples the canal brick. Result on the three re-fits: every measured
+wall, arch ring and glass within 0.02 L of its authored hex in both game
+looks (`scripts/look/measured-walls.ts` id-pass table; e.g. Houthavenkade
+glass `#8e9ea4` rendered 89,107,118 before, 141,157,163 after; Apollohal
+glass `#46545c` 106,126,139 → 74,88,97). Tests: look 40/40 (measured glass
+cell × tint within 1.5 per channel for six hexes; layer choice; `dress`
+attributes), building-recipes 134, fit-golden 140 identical, large meshes
+107 identical, tileBuildings 18/18, Playwright `building-look.spec.ts`
+with a new case loading a re-fit GLB in both looks (every material within
+0.05 L, the looks within 0.02 of each other); the city-look gallery review
+on six installed models is pixel-identical (no installed model carries
+`tintSource` yet). Atlas +1/12 (~0.5 MB at 256 px). `docs/LOOK.md` gained
+"Measured colours". The re-fits still wait for the reconciliation lane
+(lane A's measured values on lane C's systems) before they install.
+
+
 ## Kinkerstraat surveyed (217 pands, 28 faces); Object Capture tried on the statues (2026-10-14)
 
 **Kinkerstraat** (`lane/kinkerstraat-survey-20261014`, plan Part 2 step 2):
