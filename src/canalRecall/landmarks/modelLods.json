@@ -1702,5 +1702,11 @@
     "buildVersion": 2,
     "bytes": 124360,
     "triangles": 7037
+  },
+  "roeterseiland-rec-a": {
+    "sourceHash": "7e2a0a7dd6bdf95d",
+    "buildVersion": 2,
+    "bytes": 104240,
+    "triangles": 6514
   }
 }
