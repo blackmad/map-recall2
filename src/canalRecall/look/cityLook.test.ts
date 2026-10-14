@@ -2,8 +2,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { MATERIAL_SLOTS, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN } from './palette.ts';
-import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
+import { MATERIAL_SLOTS, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
+import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
 test('flag: only ?cityLook=1 turns the city look on', () => {
@@ -141,6 +141,31 @@ test('variants: 20th-century brick by BAG year, smooth white render for white-na
   assert.equal(SLOT_LAYERS[wall.geometry.getAttribute('layer').getX(0)].cell, 'brick20');
   assert.equal(SLOT_LAYERS[trim.geometry.getAttribute('layer').getX(0)].cell, 'whiteStucco');
   assert.equal(SLOT_LAYERS[render.geometry.getAttribute('layer').getX(0)].cell, 'stucco', 'a stucco name keeps the grained stucco');
+});
+
+test('measured brick/accent: cell x tint lands on the authored hex; every unmeasured path is unchanged', () => {
+  const L = (hex: string) => rgbToHsl(hexToRgb(hex))[2];
+  const cell = (hex: string) => { const [r, g, b] = hexToRgb(hex).map(v => Math.round(v * BRICK_CELL_MEAN)); return rgbToHex([r, g, b]); };
+  for (const slot of ['brick', 'accent'] as const) for (const hex of ['#3a2a28', '#8a3e2e', '#d8d2c4']) {
+    assert.equal(cityLookTint(slot, hex), cityLookTint(slot, hex, null), 'no source = unchanged');
+    assert.ok(Math.abs(L(cell(cityLookTint(slot, hex, 'measured'))) - L(hex)) <= 0.02, `${slot} ${hex}`);
+    assert.deepEqual(slotTintBytes(slot, hex, 'measured'), [...hexToRgb(cityLookTint(slot, hex, 'measured')), 255]);
+  }
+  assert.ok(L(cityLookTint('brick', '#3a2a28')) >= 0.3 - 1e-9, 'unmeasured dark wall is still clamped');
+  assert.equal(cityLookTint('stucco', '#d8d2c4', 'measured'), cityLookTint('stucco', '#d8d2c4'));
+  assert.equal(cityLookTint('slate', '#8f9698', 'measured'), cityLookTint('slate', '#8f9698'));
+  // slotForMaterial reads the extra; untagged materials are as before.
+  const base = { materialSlot: 'brick', tint: '#3a2a28' };
+  assert.deepEqual(slotForMaterial({ userData: { ...base, tintSource: 'measured' } }, false), { slot: 'brick', tint: '#3a2a28', inferred: false, source: 'measured' });
+  assert.deepEqual(slotForMaterial({ userData: base }, false), { slot: 'brick', tint: '#3a2a28', inferred: false });
+  assert.equal(slotForMaterial({ userData: { ...base, tintSource: 'prior' } }, false)!.source, undefined);
+  // dress writes the measured tint into the geometry attribute.
+  const city = createCityLook(THREE, { brick: null });
+  const wall = new THREE.Mesh(new THREE.BoxGeometry(4, 6, 3), new THREE.MeshStandardMaterial({ color: '#3a2a28', userData: { ...base, tintSource: 'measured' } }));
+  wall.material.userData = { ...base, tintSource: 'measured' };
+  city.dress(wall, { lit: false });
+  assert.equal(Math.round(wall.geometry.getAttribute('tint').getX(0) * 255), hexToRgb(cityLookTint('brick', '#3a2a28', 'measured'))[0]);
+  assert.equal(wall.userData.citySlot.source, 'measured');
 });
 
 test('review corrections: light slate keeps its lightness, mid-grey joinery and dark stone keep their colour (flag on only)', () => {

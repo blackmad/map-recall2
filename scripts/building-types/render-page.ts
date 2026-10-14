@@ -48,7 +48,7 @@ function dress(root: THREE.Object3D) {
     // The game's recipe look maps every authored tint through cityTint (brick: photo-sampled colour -> city lightness range), so the
     // review render does the same; the authored `tint` is therefore the colour sampled from the sunlit photo.
     const tint = (m.userData as {tint?: string}).tint;
-    if (slot && tint && slot !== 'glass' && textures[slot]) m.color.set(cityTint(slot as RecipeSlot, tint));
+    if (slot && tint && slot !== 'glass' && textures[slot]) m.color.set(cityTint(slot as RecipeSlot, tint, (m.userData as {tintSource?: 'measured'}).tintSource));
     if (slot && textures[slot]) { m.map = textures[slot]; m.color.multiplyScalar(slot === 'brick' ? BRICK_GAIN : 1.05); m.needsUpdate = true; }
     if (slot === 'glass') { m.roughness = 0.15; m.metalness = 0.35; m.color.multiplyScalar(1.2); }
   });
