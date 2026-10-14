@@ -278,6 +278,7 @@ import {buildLieverdje} from './lieverdje-builder';
 import {buildAnneFrankMerwedeplein} from './anne-frank-merwedeplein-builder';
 import {buildWalravenVanHall} from './walraven-van-hall-builder';
 import {buildAuschwitzMonument} from './auschwitz-monument-builder';
+import {buildSpinozaStandbeeld} from './spinoza-standbeeld-builder';
 import {buildSarphatimonument} from './sarphatimonument-builder';
 import {buildWilhelminaRuiterstandbeeld} from './wilhelmina-ruiterstandbeeld-builder';
 import {buildVondelmonument} from './vondelmonument-builder';
@@ -731,6 +732,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='anne-frank-merwedeplein')buildAnneFrankMerwedeplein(w,d,helpers);
     else if(id==='walraven-van-hall')buildWalravenVanHall(w,d,helpers);
     else if(id==='auschwitz-monument')buildAuschwitzMonument(w,d,helpers);
+    else if(id==='spinoza-standbeeld')buildSpinozaStandbeeld(w,d,helpers);
     else if(id==='sarphatimonument')buildSarphatimonument(w,d,helpers);
     else if(id==='wilhelmina-ruiterstandbeeld')buildWilhelminaRuiterstandbeeld(w,d,helpers);
     else if(id==='slavernijmonument')buildSlavernijmonument(w,d,helpers);

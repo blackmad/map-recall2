@@ -1,0 +1,106 @@
+{
+ "schemaVersion": 1,
+ "id": "spinoza-standbeeld",
+ "signature": [
+  "sp-figure",
+  "sp-polyhedron",
+  "sp-inscription"
+ ],
+ "walls": [
+  {
+   "tag": "e-110",
+   "bearing": 110,
+   "lengthM": 5.9,
+   "centre": [
+    4.8991992,
+    52.3679383
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track35_Sphere_00080",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "note": "The street-side (east) edge with the cut inscription, the polyhedron and the figure (panoramas 00080/00081 and TMX 002926 46).",
+   "items": [
+    {
+     "id": "sp-figure",
+     "kind": "sculpture",
+     "where": "bronze figure at the north end of the slab: long cloak with vertical folds, narrow shoulders, curly shoulder-length hair, calm face turned toward the polyhedron, small bird and leaf shapes raised on the cloak",
+     "approxSizeM": [
+      1,
+      2.3
+     ],
+     "plan": "simplified",
+     "how": "builder: elliptic cloak cylinder with a slight hem flare, nine fold ribs, shoulder ellipsoid, ellipsoid skull with brow, nose, mouth and chin, nine curls and a crown; fourteen raised bird/leaf ellipsoids; no cloak creases below rib scale",
+     "seenIn": "b_20250130_0915_Track35_Sphere_00080"
+    },
+    {
+     "id": "sp-polyhedron",
+     "kind": "sculpture",
+     "where": "dark stone polyhedron resting on a vertex at the south end of the slab",
+     "approxSizeM": [
+      1.1,
+      1
+     ],
+     "plan": "simplified",
+     "how": "builder: stretched, tilted icosahedron (20 faces) seated on the slab; the real faces are irregular",
+     "seenIn": "b_20250130_0915_Track35_Sphere_00080"
+    },
+    {
+     "id": "sp-inscription",
+     "kind": "lettering",
+     "where": "HET DOEL VAN DE STAAT IS DE VRIJHEID cut along the east edge, SPINOZA on the step at the figure end",
+     "approxSizeM": [
+      2.1,
+      0.14
+     ],
+     "plan": "simplified",
+     "how": "builder: raised stroke-font capitals (letterBoxes) in dark grey; the real letters are incised serif capitals",
+     "seenIn": "b_20250130_0915_Track35_Sphere_00080"
+    },
+    {
+     "id": "sp-slab",
+     "kind": "other",
+     "where": "oval granite slab 0.5 m high on a slightly proud footing course, a low step block under the figure",
+     "approxSizeM": [
+      3.1,
+      5.9
+     ],
+     "plan": "modelled",
+     "how": "builder: the OSM outline extruded, footing course, step block",
+     "seenIn": "b_20250130_0915_Track35_Sphere_00080"
+    }
+   ]
+  },
+  {
+   "tag": "w-290",
+   "bearing": 290,
+   "lengthM": 5.9,
+   "centre": [
+    4.8991992,
+    52.3679383
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "The canal side: plain granite edge, figure from behind; seen only over the slab in the east views.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap way 175846077",
+   "url": "https://www.openstreetmap.org/way/175846077",
+   "licence": "ODbL"
+  },
+  {
+   "name": "Category:Spinozamonument Amsterdam (Wikimedia Commons)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Spinozamonument_Amsterdam",
+   "licence": "per-file, consulted for the inscription only"
+  }
+ ]
+}

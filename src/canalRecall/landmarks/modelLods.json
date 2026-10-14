@@ -1702,5 +1702,11 @@
     "buildVersion": 2,
     "bytes": 124360,
     "triangles": 7037
+  },
+  "spinoza-standbeeld": {
+    "sourceHash": "317aba732712b2c1",
+    "buildVersion": 2,
+    "bytes": 19948,
+    "triangles": 868
   }
 }
