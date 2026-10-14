@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "nassau-1900-three-axis",
+  "district": "oud-west",
+  "description": "1900 Nassaukade row (145-148): three equal axes over a tall ground storey with the door on the left axis, white painted bands at the sill and transom line of every storey, white eared heads with keystone blocks, sills on consoles, heavy white cornice, one pointed pediment dormer; brick or painted brick, a balcony arrangement per house",
+  "fit": {
+    "widthM": [
+      6.0,
+      7.4
+    ],
+    "storeys": [
+      4
+    ]
+  },
+  "body": {
+    "windows": "two-light",
+    "windowSurround": "eared-keystone",
+    "windowSills": "consoles",
+    "bands": "painted",
+    "bandLines": [
+      "sill",
+      "transom"
+    ],
+    "bandHeights": {
+      "sill": 0.15,
+      "transom": 0.13
+    },
+    "cornice": "heavy",
+    "storeys": 4,
+    "bays": 3,
+    "balconies": {
+      "storeys": [
+        3
+      ],
+      "bays": [
+        1
+      ]
+    }
+  },
+  "crowns": {
+    "pointed-dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "pointed",
+      "note": "one white dormer with a pointed pediment and a carved sunburst fan, centred over the cornice"
+    },
+    "mansard-dormer": {
+      "gable": "cornice",
+      "cornice": "simple",
+      "roofFront": "mansard",
+      "dormers": 1,
+      "dormerAt": [
+        {
+          "from": 0.3,
+          "to": 0.7
+        }
+      ],
+      "note": "147: a tall slate mansard with swept (bell) sides instead of the cornice, a wide three-light white dormer in it"
+    }
+  },
+  "grounds": {
+    "door-left": {
+      "doorBay": 0,
+      "basement": "none",
+      "tallGround": true,
+      "note": "double door with a many-paned fanlight on the left axis, two tall windows"
+    }
+  },
+  "palettes": {
+    "dark-brown-brick": {
+      "brick": "#806e5e",
+      "frame": "white-painted",
+      "door": "#1f2324",
+      "stone": "white-painted",
+      "cornice": "white-painted"
+    },
+    "tan-brick": {
+      "brick": "#a98f76",
+      "frame": "white-painted",
+      "door": "#1f2324",
+      "stone": "white-painted",
+      "cornice": "white-painted"
+    },
+    "black-paint": {
+      "brick": "#615a47",
+      "frame": "white-painted",
+      "door": "#1f2324",
+      "stone": "white-painted",
+      "cornice": "white-painted",
+      "wallMaterial": "painted-brick"
+    }
+  },
+  "roof": {
+    "material": "slate"
+  },
+  "rhythm": {
+    "bays": "3 equal window axes; the door axis is the left one",
+    "identicalBays": "storeys 1-3: three T-windows (top light over a pair of casements) of one width",
+    "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | dormer: 1",
+    "symmetry": "upper storeys symmetric; door on the left",
+    "groundFloor": "residential: double door with a fanlight, two tall windows",
+    "signage": "none",
+    "roofline": "heavy white cornice (14.0-15.4 m), one pointed pediment dormer; 147 a bell-sided mansard with a three-light dormer",
+    "photoRows": [
+      3,
+      3,
+      3,
+      3,
+      1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0
+  },
+  "schemaLimits": [
+    "T-windows (an undivided top light over two casements) are drawn as two-light (the mullion runs through the top light): the canal-windows lane's `windows: \"t-window\"` says it once merged",
+    "measured window heights per storey (0.57 / 0.56 / 0.64 of the storey on 148) are the fitted proportions; the canal-windows lane's `windowHeights` says them once merged",
+    "the band at the transom line is a flat stucco strip; the real ones are moulded",
+    "iron balconettes on storey 3 are the library guard, not the wrought scroll grille"
+  ],
+  "evidence": [
+    {
+      "face": "nassau-145-152",
+      "pands": [
+        "157426",
+        "160273",
+        "160704"
+      ],
+      "citation": "strip.jpg 2024-11-21 pands 4-6 (148, 147, 146): same axes, bands, eared heads and cornice line; 147 has the mansard"
+    }
+  ]
+}
