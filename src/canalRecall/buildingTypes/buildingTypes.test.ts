@@ -8,6 +8,7 @@ import {generate, layoutBays, mirrorBays} from './generate.ts';
 import {bakeWorld} from './glb.ts';
 import {FACADE_IDS, validateSpec, type TypeSpec} from './spec.ts';
 import {paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes} from './facts.ts';
+import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
 
 const TYPES = path.join(import.meta.dirname, 'types');
 const load = (f: string) => JSON.parse(fs.readFileSync(path.join(TYPES, f), 'utf8')) as TypeSpec;
@@ -429,4 +430,26 @@ test('terraced houses: params from 3DBAG keep dak_min as the eaves and hold noth
   assert.equal(params.lengthM, rect.length);
   assert.ok(params.lengthM < params.widthM, 'frontage first');
   assert.ok(spec.eavesRangeM![0] < params.eavesM && params.eavesM < spec.eavesRangeM![1]);
+});
+
+// Named regression Nassaukade 63X (0363100012124441): 3DBAG ground −9.67 NAP under a +5.9 roof. With the terrain field
+// and the footprint, eaves and placement stand on the trusted ground (bag3dCityJson.ts `pandGroundNap`).
+test('params from 3DBAG attributes stand on the trusted ground (Nassaukade 63X); an ordinary pand is unchanged', () => {
+  const fixture = JSON.parse(fs.readFileSync(new URL('../fixtures/bag3d-nassaukade-63x.json', import.meta.url), 'utf8'));
+  const pand = (item: any) => {
+    const t = item.metadata.transform, b: any = Object.values(item.feature.CityObjects).find((o: any) => o.type === 'Building');
+    const ringRd = b.geometry.find((g: any) => g.lod === '0').boundaries[0][0].map((i: number) => item.feature.vertices[i]).map((v: number[]) => [v[0] * t.scale[0] + t.translate[0], v[1] * t.scale[1] + t.translate[1]]);
+    return {attrs: b.attributes, ringRd};
+  };
+  const rect = minimumRotatedRectangle(block(14.4, 10.5)), terrainAt = sharedTerrain();
+  const outlier = pand(fixture.outlier);
+  const raw = paramsFromFacts(T6, rect, outlier.attrs, null);
+  const trusted = paramsFromFacts(T6, rect, outlier.attrs, null, {}, {terrainAt, ringRd: outlier.ringRd});
+  assert.ok(Math.abs(raw.groundNapM - -9.674) < 0.001 && raw.params.eavesM > 15, `raw eaves ${raw.params.eavesM}`);
+  assert.ok(Math.abs(trusted.groundNapM - 0.47) < 0.01, `ground ${trusted.groundNapM}`);
+  assert.ok(Math.abs(trusted.params.eavesM - (outlier.attrs.b3_h_dak_50p - trusted.groundNapM)) < 1e-9 && trusted.params.eavesM < 6, `eaves ${trusted.params.eavesM}`);
+  assert.ok(trusted.warnings.some(w => w.includes('failed estimate')));
+  const ordinary = pand(fixture.ordinary);
+  assert.deepEqual(paramsFromFacts(T6, rect, ordinary.attrs, null, {}, {terrainAt, ringRd: ordinary.ringRd}), paramsFromFacts(T6, rect, ordinary.attrs, null));
+  assert.equal(paramsFromFacts(T6, rect, ordinary.attrs, null).groundNapM, ordinary.attrs.b3_h_maaiveld);
 });

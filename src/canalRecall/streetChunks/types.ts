@@ -7,6 +7,7 @@
  * origin on the frontage, +X along the street left to right as seen from the
  * street, +Y up, +Z outward (towards the street).
  */
+import type {TerrainAt} from '../bag3dCityJson.ts';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 
@@ -45,6 +46,8 @@ export interface ChunkOptions {
   eavesSnapStepM?: number;
   /** Snapped cluster may not span more than this. */
   eavesSnapSpanM?: number;
+  /** AHN terrain (scripts/lib/terrainField.ts): houses stand on their trusted ground (`trustFactsGround`) before re-grounding. */
+  terrainAt?: TerrainAt | null;
   /** Drop party walls (default true). False builds the same merged mesh with every wall kept (the "before" control). */
   trimPartyWalls?: boolean;
   /** Footprint edges closer than this are one party wall. */
