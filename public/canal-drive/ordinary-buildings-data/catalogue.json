@@ -24942,10 +24942,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012130580",
       "name": "Heinekenplein block, Amsterdam (De Pijp): 1995 brick block with a 32 m tower at its north end",
-      "hash": "22755e07286996170904cdb7b3980c5321966e2d184856c93c5b43e2036bde8c",
-      "sha256": "22755e07286996170904cdb7b3980c5321966e2d184856c93c5b43e2036bde8c",
-      "bytes": 573728,
-      "triangles": 7747,
+      "hash": "9ae7c6119181d07afdad8f578ac7c9608df329890c00f68dc5c4f57e5adaec0a",
+      "sha256": "9ae7c6119181d07afdad8f578ac7c9608df329890c00f68dc5c4f57e5adaec0a",
+      "bytes": 564596,
+      "triangles": 7612,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -25100,10 +25100,7 @@
       "height": 35.17,
       "modelUrl": "./models/ordinary-buildings/recipe-large-heinekenplein-130580.glb",
       "suppress": [
-        "NL.IMBAG.Pand.0363100012080460",
-        "NL.IMBAG.Pand.0363100012130580",
-        "NL.IMBAG.Pand.0363100012139518",
-        "NL.IMBAG.Pand.0363100012232488"
+        "NL.IMBAG.Pand.0363100012130580"
       ],
       "source": "building-recipes-large",
       "recipe": {
@@ -25146,7 +25143,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012130580",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T14:22:45.752Z",
+      "updatedAt": "2026-10-14T03:08:07.307Z",
       "aliases": [
         "NL.IMBAG.Pand.0363100012080460",
         "NL.IMBAG.Pand.0363100012139518",
