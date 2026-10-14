@@ -34820,10 +34820,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012078772",
       "name": "Stadsloket Zuidoost, Anton de Komplein 150, Amsterdam (2006 red-brick civic office on a glazed arcade)",
-      "hash": "a102b162271300d641e7fda5f5811411fb8b374437a5d8a345d257a06f4dff0d",
-      "sha256": "a102b162271300d641e7fda5f5811411fb8b374437a5d8a345d257a06f4dff0d",
-      "bytes": 632816,
-      "triangles": 8499,
+      "hash": "22d51098275bfd8ab3b7094efb2b4e522eaa3da085fd436b5dc7d50a50c8e871",
+      "sha256": "22d51098275bfd8ab3b7094efb2b4e522eaa3da085fd436b5dc7d50a50c8e871",
+      "bytes": 696588,
+      "triangles": 9355,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -34959,7 +34959,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078772",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:43:12.310Z"
+      "updatedAt": "2026-10-14T03:14:14.620Z"
     },
     {
       "id": "ordinary-0363100012076903",
