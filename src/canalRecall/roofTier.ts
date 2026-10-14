@@ -26,10 +26,18 @@ export const ROOF_TIER_FAR_FADE_M = 40;
  * stipple on zoom out", user 2026-10-13, Singelgracht at ~300 m). The cell arrays already carry mipmaps, trilinear
  * and anisotropic filtering; what still sparkles is a window of under ~2 px. `cellTier` is `[from, to]` in texels per
  * pixel: below `from` the cell is exactly the filtered sample, above `to` it is the cell's mean colour (last mip),
- * crossfaded between. A window 20 texels wide is 2 px at 10 texels per pixel, so it is lost only past `to`.
+ * crossfaded between.
+ *
+ * The rate is the larger of the two axes, and on a wall seen from the chase camera (pitch 48°, eye ~127 m up and
+ * ~190 m out) that is the foreshortened vertical. A cell is one bay (3.6-5 m, 256 texels: ~51-71 texels a metre)
+ * by one storey (~3 m: ~85 texels a metre), so a window is ~55 texels wide and ~150 tall. At [4, 10] the quay
+ * houses 30-60 m from the boat (vertical rate ~18 texels/px, windows still ~7 x 8 px) went to their mean colour:
+ * "why such low detail from so close?" (user, Singelgracht, 2026-10-14). At [16, 30] they keep their windows up to
+ * ~220 m from the eye and are flat again by ~300 m (windows ~4 x 5 px, where the dots read as stipple; the
+ * 0.16-zoom aerial at ~770 m is flat as before). docs/images/live-play-20261014/item3-*.
  */
-export const FACADE_TIER_FROM_TEXELS = 4;
-export const FACADE_TIER_TO_TEXELS = 10;
+export const FACADE_TIER_FROM_TEXELS = 16;
+export const FACADE_TIER_TO_TEXELS = 30;
 export const FACADE_TIER_OFF: [number, number] = [-1, -1];
 export const facadeTierUniform = (): [number, number] => [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS];
 
