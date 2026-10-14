@@ -32,7 +32,7 @@ import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
-import { buildPrismIndex, pickPrism, type PrismEntry } from './prismPick.js';
+import { buildPrismGrid, buildPrismIndex, pickPrism, pickPrismGrid, type PrismEntry, type PrismGrid } from './prismPick.js';
 import { ORIGIN, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -298,6 +298,10 @@ export class ThreeBuildings {
   private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }>; lift?: GroundLift }>();
   /** Click index per installed chunk, built on its first click (`prismPick.ts`). */
   private readonly pickIndex = new WeakMap<object, PrismEntry[]>();
+  /** Its grid (`prismPick.ts` `buildPrismGrid`): a pick tests only the buildings in the cells its ray crosses. */
+  private readonly pickGrid = new WeakMap<object, PrismGrid>();
+  /** Own ground: the range of a chunk's applied lifts, keyed by its size and the hidden revision (bounds the grid walk). */
+  private readonly liftBounds = new WeakMap<object, { key: string; min: number; max: number }>();
   /** Own ground (`?ownGround=1`): a building's base on the relief; undefined = not known yet, null = no relief there. */
   private groundBase: GroundBaseFn | null = null;
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
@@ -371,16 +375,24 @@ export class ThreeBuildings {
       if (sphere && !ray.intersectsSphere(sphere)) continue;
       let index = this.pickIndex.get(chunk);
       if (!index) this.pickIndex.set(chunk, index = buildPrismIndex(chunk.source, ORIGIN));
+      let grid = this.pickGrid.get(chunk);
+      if (!grid || grid.entries !== index) this.pickGrid.set(chunk, grid = buildPrismGrid(index));
       toLocal.copy(chunk.mesh.matrixWorld).invert();
       const o = near.clone().applyMatrix4(toLocal), d = far.clone().applyMatrix4(toLocal).sub(o);
       const hiddenAttribute = chunk.mesh.geometry.getAttribute('hidden');
       const lift = chunk.lift?.applied;
-      const hit = pickPrism(index, [o.x, o.y, o.z], [d.x, d.y, d.z], id => lift?.get(id) ?? 0, id => {
+      const bounds = this.liftRange(lift);
+      const skip = (id: string) => {
         const range = chunk.ranges.get(id);
         if (!range || this.hidden.has(id)) return true;
         const hidden = hiddenAttribute?.getX(range.start);
         return hidden > 0.5 && hidden < 1.5;
-      });
+      };
+      const liftOf = (id: string) => lift?.get(id) ?? 0;
+      // `window.__canalRecallPrismGrid = false`: every prism of the chunk (the same hit; in-page A/B).
+      const hit = (globalThis as any).__canalRecallPrismGrid === false
+        ? pickPrism(index, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip)
+        : pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
       if (!hit) continue;
       const point = o.clone().addScaledVector(d, hit.t).applyMatrix4(chunk.mesh.matrixWorld);
       const depth = point.applyMatrix4(projection).z;
@@ -395,6 +407,18 @@ export class ThreeBuildings {
         featureTarget: { source: 'osm-building-appearance', id: hit.entry.id } };
     }
     return result;
+  }
+
+  /** Lowest and highest own-ground lift applied in a chunk (0, 0 without one). */
+  private liftRange(applied: Map<string, number> | undefined): { min: number; max: number } {
+    if (!applied?.size) return { min: 0, max: 0 };
+    const key = `${applied.size}|${this.hiddenRevision}`;
+    let bounds = this.liftBounds.get(applied);
+    if (bounds?.key === key) return bounds;
+    let min = 0, max = 0;
+    for (const z of applied.values()) { if (z < min) min = z; if (z > max) max = z; }
+    this.liftBounds.set(applied, bounds = { key, min, max });
+    return bounds;
   }
 
   getLook(): BuildingLook { return this.requestedLook; }

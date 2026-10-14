@@ -181,8 +181,9 @@ const raw = await page.evaluate(() => {
     resident: {buildingVertices: tb?.vertices ?? null, buildingChunks: tb?.chunks ?? null, buildingGeometryMB: tb ? +tb.geometryMB.toFixed(1) : null, textureMB: tb ? +tb.textureMB.toFixed(1) : null, ownGroundTriangles: og?.triangles ?? null, ownGroundMB: og?.geometryMB ?? null},
     labels: vm._labelOverlay?.stats ?? null, now: performance.now()};
 });
-// EXTRA_EVAL='<js expression>': evaluated in the page after the window, printed (ad-hoc probes).
-if (process.env.EXTRA_EVAL) console.log('extra', JSON.stringify(await page.evaluate(process.env.EXTRA_EVAL)));
+// EXTRA_EVAL='<js expression>' (or '@file.js'): evaluated in the page after the window, printed (ad-hoc probes).
+const extra = process.env.EXTRA_EVAL?.startsWith('@') ? fs.readFileSync(process.env.EXTRA_EVAL.slice(1), 'utf8') : process.env.EXTRA_EVAL;
+if (extra) console.log('extra', JSON.stringify(await page.evaluate(extra)));
 let hot = [], gcMs = null, profileMs = null;
 if (profiling) {
   const windowMs = Date.now() - wallStart;
