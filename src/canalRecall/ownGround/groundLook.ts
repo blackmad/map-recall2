@@ -54,11 +54,11 @@ export const GROUND_LOOK_TONES: Readonly<Record<Exclude<GroundLook, 'default'>, 
 }>> = {
   measured: {
     asphalt: [168, 166, 157], pavement: [172, 164, 151], klinker: [172, 133, 108], cycle: [242, 145, 142],
-    water: [50, 55, 55], parking: [160, 158, 151], parkPath: [174, 172, 164],
+    water: [50, 55, 55], land: [172, 164, 151], paving: [176, 168, 155], square: [180, 172, 158], parking: [160, 158, 151], parkPath: [174, 172, 164],
   },
   bright: {
     asphalt: [132, 130, 124], pavement: [183, 174, 161], klinker: [138, 101, 78], cycle: [204, 107, 106],
-    water: [104, 122, 114], parking: [126, 125, 120], parkPath: [142, 140, 134],
+    water: [104, 122, 114], land: [185, 174, 156], paving: [194, 184, 167], square: [198, 187, 169], parking: [126, 125, 120], parkPath: [142, 140, 134],
   },
   'legacy-ish': {
     asphalt: [202, 200, 193], pavement: [222, 214, 202], klinker: [199, 159, 134], cycle: [255, 167, 163],
