@@ -1249,8 +1249,9 @@ test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish 
   }
   assert.equal(groundLookFrom('?ownGround=1&groundLook=bright'), 'bright');
   assert.equal(groundLookFrom('?groundLook=legacy-ish'), 'legacy-ish');
-  assert.equal(groundLookFrom('?groundLook=nonsense'), 'default');
-  assert.equal(groundLookFrom(''), 'default');
+  assert.equal(groundLookFrom('?groundLook=nonsense'), 'bright');
+  assert.equal(groundLookFrom(''), 'bright');
+  assert.equal(groundLookFrom('?groundLook=default'), 'default');
   const bright = basemapGroundPatches([{ id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('bright'));
   assert.equal(bright[0].value, groundPalette('bright').tones.water);
 });

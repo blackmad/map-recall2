@@ -1,5 +1,69 @@
 # Canal Recall — what is built
 
+## Ground tones measured from the orthophoto; `bright` is the ground look; measured glass keeps the sky (2026-10-14, user)
+
+**Ground look** (lane `lane/ground-look-20261014`, user "city too
+dark" after the first light pass). Real Amsterdam ground tones measured
+on the PDOK 8 cm orthophoto (126 tiles, sampled on the own-ground OSM
+band labels over the Singelgracht, Houtmankade and Prinsengracht, label
+noise and tree crowns dropped, the aerial's blue haze subtracted in
+linear light, sun and shadow split per surface;
+`scripts/own-ground/measure-ground-tones.ts`,
+`docs/ground-tones-20261014.md`): sunlit asphalt 168,166,157 (luma 166),
+pavement 172,164,151 (165), klinker 160,146,135 (148), cycle red
+185,165,151 (168), canal water seen from above 50,55,55 (54). So from
+above the ground is bright and nearly one lightness and the legend lives
+in hue; and today's default missed the legend bar (asphalt/klinker ΔE
+18.5). Three palettes in `ownGround/groundLook.ts` behind `?groundLook=`:
+`measured` (the orthophoto values with brick and cycle red saturated to
+clear ΔE 20), `bright` (road 130, pavement 175, grey-green canal 118),
+`legacy-ish` (road 200, pavement 215, pale water 170); `gameGround.ts`,
+`groundWorker.ts`, `farRing.ts` and `basemapPalette.ts` take their
+colours from the look; paint, rails, bollards, parks, trees and facades
+unchanged; the old palette byte-identical as `default`. Luma at the
+Singelgracht boat spot (scene / road / pavement / water): default 131 /
+110 / 144 / 105; measured 130 / 169 / 153 / 57; bright 139 / 145 / 156 /
+119; legacy-ish 157 / 199 / 163 / 170; the legacy basemap 176 / 240 /
+223 / 187; facades identical across looks. Verdict at gallery size:
+`measured` is the data but fails as a look (streets and pavements one
+beige, the canal a black slot); `legacy-ish` washes out (cycle red
+candy-pink, the corridor loses contrast); `bright` keeps grey-green
+water, mid-grey roads against pale pavements, red cycle tracks and the
+brick quay distinct, and fixes the asphalt/brick ΔE. Integrator decision:
+`bright` is the default (`GROUND_LOOK_DEFAULT`), `?groundLook=default`
+gives the old palette; if it should be lighter still, the lane's next
+step is bright with the road at ~150 and a deeper cycle red (~190,96,92
+instead of the slightly salmon 204,107,106). Note: this lane stopped its
+dev server with a pattern kill that took every worktree's server with it;
+lanes now stop only the PID they started.
+**Measured glass keeps the sky** (lane `lane/measured-glass-sky-20261014`,
+user: "old seems better for glass? lighter?" on the Waagdragerhof row of
+the measured-pilots sheet). A crop's glass colour is the glass under that
+sky, not a material; drawing the exact hex lost the sky-lit pane. Rule in
+`look/palette.ts`: a measured pane keeps its measured hue and saturation,
+its lightness is floored at the stock pane's (L = max(measured L, 0.40);
+the 0.5 blend was rejected because `#3a4650` would land at L 0.335, still
+darker than the unmeasured windows beside it), and the `glassTint` layer
+is now the stock pane's own brightness profile in grey (top 255 with the
+streak, bottom ~103, mean 158; it had been squeezed into 188–255 and drew
+measured panes flatter than stock); above ~0.62 per channel the tint
+scales down as a whole so the hue holds (Houthavenkade's column glass
+loses 0.022 L). Apollohal's hall glass `#46545c`: 106,126,139 stock →
+74,88,97 exact → 102,122,135 now; Houthavenkade's column glass `#8e9ea4`
+141,157,163 → 137,152,158 with the gradient and streak visible.
+Waagdragerhof itself no longer carries measured glass (the
+reconciliation dropped lane C's hand `#3a4650` for the kit glass), so the
+user's exact case is pinned by a unit test instead. `measureFacade.ts`
+and `measure.ts` say the look does the lift; intents unchanged. Sheets:
+`docs/images/look/measured-pilots.jpg` (five columns) and
+`measured-glass-ride.jpg` (ride camera, before | after). Tests: look
+58/58 (floor, hue and saturation held, stock contrast, the `#3a4650`
+pin), fit-golden 153 identical, 112 meshes identical, Playwright
+`building-look.spec.ts` 8/8 with the measured case on Apollohal and
+Houthavenkade (L within −0.03..+0.09 of max(hex L, 0.40), hue within
+10°). Eight bundles carry the palette change.
+
+
 ## Bridges per bridge: 255 with facts, 43 of 48 named sheets pass, 190 more decks measured, bascules as the panoramas show them (2026-10-14, user)
 
 Lane `lane/bridge-fidelity-20261014` (plan Part 3; the user's three bridge
