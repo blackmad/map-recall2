@@ -1,0 +1,146 @@
+{
+ "schemaVersion": 1,
+ "id": "tilanusstraat-23-240319",
+ "pand": "0363100012240319",
+ "signature": [
+  "louvred-glass-tower",
+  "clinker-brick-grid-wing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-160",
+   "bearing": 160,
+   "lengthM": 77.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001184_pano_0002_000090",
+   "capturedAt": "2019-05-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "clinker-brick-grid-wing",
+     "kind": "window-shape",
+     "where": "red clinker brick wing with deep-set paired windows in gridded bays and a stepped roofline",
+     "approxSizeM": [
+      77,
+      18
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 18 bays narrow windows; stepped roofline and curved corner left to the 3DBAG roof",
+     "seenIn": "TMX7316010203-001184_pano_0002_000090"
+    }
+   ]
+  },
+  {
+   "tag": "w02-250",
+   "bearing": 250,
+   "lengthM": 48.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000723_pano_0003_000196",
+   "capturedAt": "2018-05-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "louvred-glass-tower",
+     "kind": "window-shape",
+     "where": "curved glass tower front under stacked aluminium louvre bands, glazed ground-floor lobby",
+     "approxSizeM": [
+      46,
+      32
+     ],
+     "plan": "simplified",
+     "how": "walls[1] ribbon-windows 8 storeys x 6 bays in a grey skin over a glazed ground storey; the curve and the louvre blades are not drawn",
+     "seenIn": "TMX7316010203-000723_pano_0003_000196"
+    }
+   ]
+  },
+  {
+   "tag": "w03-340",
+   "bearing": 340,
+   "lengthM": 37.3,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000062_pano_0000_000120",
+   "capturedAt": "2016-06-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-brick-front",
+     "kind": "window-shape",
+     "where": "dark brown brick north front with tall paired windows",
+     "approxSizeM": [
+      37,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys x 9 bays narrow windows",
+     "seenIn": "TMX7315120208-000062_pano_0000_000120"
+    }
+   ]
+  },
+  {
+   "tag": "w04-70",
+   "bearing": 70,
+   "lengthM": 32,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_08-12-25_03060",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "school-stone-oriel",
+     "kind": "other",
+     "where": "retained 1900s school range: stone oriel with carved crest, blue-brick plinth band, white-framed windows",
+     "approxSizeM": [
+      32,
+      8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the range shares a party-wall footprint with the new wing in 3DBAG and its panel cannot be isolated from the recipe groups"
+     },
+     "seenIn": "recording_2024-10-02_08-12-25_03060"
+    }
+   ]
+  },
+  {
+   "tag": "w05-340",
+   "bearing": 340,
+   "lengthM": 20.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000721_pano_0000_000867",
+   "capturedAt": "2018-05-15",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w06-250",
+   "bearing": 250,
+   "lengthM": 14.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002138_pano_0000_000637",
+   "capturedAt": "2021-05-12",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w07-70",
+   "bearing": 70,
+   "lengthM": 14.6,
+   "evidence": "photo",
+   "panoId": "recording_2024-12-20_09-04-31_06707",
+   "capturedAt": "2024-12-20",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
