@@ -1,0 +1,40 @@
+{
+ "schemaVersion": 1,
+ "id": "asterweg-37-240270",
+ "pand": "0363100012240270",
+ "signature": [
+  "horizontal-ribbed-cladding"
+ ],
+ "walls": [
+  {
+   "tag": "w02-344",
+   "bearing": 344,
+   "lengthM": 70.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000301_pano_0000_006223",
+   "capturedAt": "2017-05-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "horizontal-ribbed-cladding",
+     "kind": "window-shape",
+     "where": "70 m wall of horizontally ribbed grey sheet steel with no openings",
+     "approxSizeM": [
+      70,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[0] grey render wall with string-course bands as ribs",
+     "seenIn": "TMX7316010203-000301_pano_0000_006223"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

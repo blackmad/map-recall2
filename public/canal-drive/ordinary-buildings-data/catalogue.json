@@ -49494,6 +49494,98 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:12:05.740Z"
+    },
+    {
+      "id": "ordinary-0363100012240270",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012240270",
+      "name": "Asterweg 37, Amsterdam-Noord (Buiksloot business park): 2014 distribution hall, 70 m by 46 m, clad in grey horizontally ribbed sheet steel with a slightly curved roof edge and a stepped north front",
+      "hash": "488f6ee22b603b783c65a6fb5ebd3a1c340f8584d821cbf135ecfe4a67afa0b4",
+      "sha256": "488f6ee22b603b783c65a6fb5ebd3a1c340f8584d821cbf135ecfe4a67afa0b4",
+      "bytes": 16784,
+      "triangles": 147,
+      "materials": 4,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -40.324,
+          0.001,
+          -32.246
+        ],
+        "max": [
+          40.254,
+          9.621,
+          32.178
+        ]
+      },
+      "anchor": [
+        4.9020068,
+        52.3921804
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9014134,
+              52.3922892
+            ],
+            [
+              4.9016098,
+              52.3918892
+            ],
+            [
+              4.9026002,
+              52.3920717
+            ],
+            [
+              4.9024038,
+              52.3924714
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 9.62,
+      "height": 9.62,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-asterweg-37-240270.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012240270"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "asterweg-37-240270",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012240270/w02-344.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 2, 3, 24 and 13 (N, 70 m, 21 m, 23 m and 6 m, eaves 9.2-9.6; surfaces 3, 4, 28, 15): drawn as a plain grey render wall (the 3DBAG shell; the string courses requested on blank storeys draw nothing, so there are no ribs). Simplified: the real ribs are a few centimetres deep and 20 cm apart and are not modelled; the curved roof edge is the 3DBAG roof. Not drawn: the other three walls (no panorama), which stay blank grey render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240270",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:12:55.225Z"
     }
   ]
 }
