@@ -8,7 +8,7 @@
 // GROUND_TONES), so the edge disappears in colour. Buildings, labels, POIs,
 // boundaries and the game's own overlays are left alone.
 
-import { GROUND_TONES as G, STREET_GROUND } from '../look/palette.js';
+import { groundLookFrom, groundPalette, type GroundPalette } from './groundLook.js';
 
 export interface StyleLayerLike { id: string; type: string; 'source-layer'?: string }
 export interface PaintPatch { id: string; property: string; value: string }
@@ -16,9 +16,9 @@ export interface PaintPatch { id: string; property: string; value: string }
 type RGB = readonly [number, number, number];
 const css = (c: RGB) => `rgb(${c[0]},${c[1]},${c[2]})`;
 
-/** The own-ground colour for a basemap layer, or null to leave it. */
-export function basemapGroundColour(layer: StyleLayerLike): string | null {
-  const id = layer.id, src = layer['source-layer'] ?? '';
+/** The own-ground colour for a basemap layer, or null to leave it (in the page's `?groundLook` palette by default). */
+export function basemapGroundColour(layer: StyleLayerLike, palette: GroundPalette = groundPalette(groundLookFrom())): string | null {
+  const id = layer.id, src = layer['source-layer'] ?? '', { street: STREET_GROUND, tones: G } = palette;
   if (layer.type === 'background') return css(G.land.base);
   if (layer.type !== 'fill' && layer.type !== 'line') return null;
   if (src === 'water' || src === 'waterway' || /^water(way)?(_|$)/.test(id)) return G.water;
@@ -36,10 +36,10 @@ export function basemapGroundColour(layer: StyleLayerLike): string | null {
 }
 
 /** Paint patches (property, value) for every basemap ground layer of a style. */
-export function basemapGroundPatches(layers: readonly StyleLayerLike[]): PaintPatch[] {
+export function basemapGroundPatches(layers: readonly StyleLayerLike[], palette: GroundPalette = groundPalette(groundLookFrom())): PaintPatch[] {
   const out: PaintPatch[] = [];
   for (const layer of layers) {
-    const colour = basemapGroundColour(layer);
+    const colour = basemapGroundColour(layer, palette);
     if (!colour) continue;
     const property = layer.type === 'background' ? 'background-color' : layer.type === 'fill' ? 'fill-color' : 'line-color';
     out.push({ id: layer.id, property, value: colour });

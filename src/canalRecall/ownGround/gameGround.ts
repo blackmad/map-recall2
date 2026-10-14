@@ -30,7 +30,7 @@ import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar }
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
-import { GROUND_TONES as G, STREET_GROUND } from '../look/palette.js';
+import { groundLookFrom, groundPalette, type GroundLook } from './groundLook.js';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 
@@ -57,6 +57,8 @@ export interface OwnGroundOptions {
   parks?: boolean;
   /** The far ring beyond the resident cells from the air (default on; `?farGround=0` turns it off). */
   far?: boolean;
+  /** Ground palette variant (groundLook.ts; default from `?groundLook=`). Colour only. */
+  groundLook?: GroundLook;
 }
 
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
@@ -146,7 +148,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), groundLook: groundLookFrom(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -167,7 +169,7 @@ export class OwnGround {
       this.worker = new Worker(this.opts.workerUrl);
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, groundLook: this.opts.groundLook });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -405,6 +407,7 @@ export class OwnGround {
   /** Base materials (as the prototype page); cut layers are cloned per cell with that cell's mask. */
   private makeMaterials(): void {
     const THREE = this.THREE;
+    const { street: STREET_GROUND, tones: G } = groundPalette(this.opts.groundLook);
     let seed = 99;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
     const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => {
