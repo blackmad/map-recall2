@@ -45303,10 +45303,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012173447",
       "name": "Leidsekade 106 / Max Euweplein (Holland Casino Amsterdam), Amsterdam-Centrum: 1991 casino with a white-tiled curved upper storey over a red-steel and timber-pergola canal front, joined to a 1900s brick-and-stone Leidsekade townhouse range",
-      "hash": "b8215cf27f05228f5f18ab331187eeae6f8cbd364253560e5f83bec22281b44e",
-      "sha256": "b8215cf27f05228f5f18ab331187eeae6f8cbd364253560e5f83bec22281b44e",
-      "bytes": 478796,
-      "triangles": 5971,
+      "hash": "62f636aacfc2b0744d99b06e3286417b65e21c13a545606b08f1e0be736a9cf8",
+      "sha256": "62f636aacfc2b0744d99b06e3286417b65e21c13a545606b08f1e0be736a9cf8",
+      "bytes": 513008,
+      "triangles": 6451,
       "materials": 16,
       "textures": 0,
       "scale": 1,
@@ -45976,7 +45976,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012173447",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:44:39.829Z"
+      "updatedAt": "2026-10-14T03:09:18.232Z"
     },
     {
       "id": "ordinary-0363100012251313",
