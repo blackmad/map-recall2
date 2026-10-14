@@ -10,14 +10,13 @@
   ],
   "walls": [
     {"wallSurfaces": [130, 343], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 14, "ground": "plinth-shopfronts", "windows": "two-light", "signage": {"text": "OBA", "colour": "#e2231a", "mount": "canopy"}, "entrance": {"bay": 7, "storeys": 2, "canopy": true}, "piers": true, "stringCourses": true},
-    {"wallSurfaces": [21, 175, 205], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 26, "ground": "plinth-shopfronts", "windows": "plain", "frames": false},
-    {"wallSurfaces": [1, 118, 160, 295, 296], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 20, "ground": "system", "windows": "plain", "frames": false},
-    {"wallSurfaces": [11, 176], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 10, "ground": "system", "windows": "plain", "frames": false}
+    {"wallSurfaces": [21, 175, 205], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 26, "ground": "plinth-shopfronts", "windows": "plain", "frames": false, "sills": false},
+    {"wallSurfaces": [1, 118, 160, 295, 296], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 20, "ground": "system", "windows": "plain", "frames": false, "sills": false},
+    {"wallSurfaces": [11, 176], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 10, "ground": "system", "windows": "plain", "frames": false, "sills": false}
   ],
   "otherWalls": "blank",
   "roof": {"material": "zinc"},
   "palette": {"brick": "#c19a86", "frame": "#3a3d3f", "door": "#c9701f", "stone": "#9a9a98", "wallMaterial": "stucco"},
-  "layeredKit": false,
   "notes": [
     "2011 perimeter housing block (pand 0363100012238726, 343 LoD2.2 wall surfaces, 98 m long) with the OBA Javaplein library on its ground floor; the whole pand is modelled. South front (surfaces 130/343, 2017-04-04 panorama, 18 m away): pale pink brick with grey-brick piers, paired windows with stone lintels and rail balustrades, a two-storey arcade ground with shopfronts and a double-height glazed bay with an orange wooden door (the library entrance); north long front (2020-09-08 panorama) five brick storeys over a shopfront plinth with a dormer storey; SW and E fronts the same brick grid.",
     "Ornaments: OBA lettering SIMPLIFIED (kit canopy lettering 'OBA' in OBA red over the entrance hall; the 2017 panorama shows no OBA sign on this front, so this is the library identity, not a photographed sign); orange entrance door MODELLED as the door colour; grey-brick piers MODELLED as piers; arcade canopy slabs over the shopfronts SIMPLIFIED (entrance canopy and shopfront plinth only); stone lintels and balcony rails SKIPPED (too-small); dormer row on the north front SKIPPED (3DBAG roof carries the volume); shop signs and awnings SKIPPED (temporary); the 3DBAG tower/stair volume (roof max 36 m) is kept as surveyed.",

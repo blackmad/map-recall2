@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Layered re-installs, part two: the 58 stale houses (2026-10-14, night)
+
+Lane `large/reinstall-58-20261014`. `scripts/building-recipes/
+stale-installs.ts` lists every large house whose golden hash at its GLB's
+last commit differs from today's golden (the installed GLB is quantized,
+so it cannot be hashed directly): 47 before the layered default, 58 after
+it (the 11 batch-4 houses). All 58 are re-installed with one commit per
+house; every after-audit passes with zfight-near warnings only, and five
+old GLBs that FAILed coplanar z-fight (Amstel 142, Hoogte Kadijk 400,
+Leidsestraat 67, Nieuwpoortstraat, OBA Linnaeus) now pass. Three of the
+four opted-out houses joined the layered kit after a triangle diet: OBA
+Javaplein (13.2k → 10.3k, sills off on the three non-south groups,
+coplanar 20.8 m² → 0), OBA Olympisch Kwartier (12.7k → 10.5k, sills only
+on the entrance front, 18.6 → 0), Stadsdeel Nieuw-West (13.4k → 10.2k,
+`baysPerStorey: 9` matching the eight fins, 32.3 → 0). Politie West
+Overtoomsesluis stays `layeredKit: false` and uninstalled: it fails
+footprint-vs-bag at 0.749 with or without the kit. Two houses (Nieuwe
+Achtergracht 253754, Warmoesstraat garage) produced byte-identical GLBs,
+so only their catalogue entries changed. Seven large recipes are not
+installed at all (De Balie, Ledenberch 38, Nieuwendijk HM,
+Passeerdersstraat, Politie West, Social History, Roeterseiland REC-A). The
+one remaining coplanar FAIL, Stadhouderskade 111 (2.6 m², glass against
+brick where a 4-storey grid ran into the gable), is fixed in the figures
+lane that follows.
+
+
 ## Dominant buildings, batch 5 (2026-10-14, night)
 
 Lane `large/dominant-5-20261014`, eleven layered recipes (the twelfth,
