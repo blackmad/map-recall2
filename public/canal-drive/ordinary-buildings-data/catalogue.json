@@ -43004,6 +43004,347 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T01:34:05.724Z"
+    },
+    {
+      "id": "ordinary-0363100012137990",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012137990",
+      "name": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West: 2006 apartment block in buff brick with a curved east front, a glazed entrance bay and shop/office plinth",
+      "hash": "d909bd7ad2c9ea42cfda87de60a1e635bc327ed03306fa78dde071d119a17d41",
+      "sha256": "d909bd7ad2c9ea42cfda87de60a1e635bc327ed03306fa78dde071d119a17d41",
+      "bytes": 287256,
+      "triangles": 3666,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -29.217,
+          0,
+          -47.64
+        ],
+        "max": [
+          48.664,
+          22.574,
+          43.632
+        ]
+      },
+      "anchor": [
+        4.8737771,
+        52.3753951
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8744774,
+              52.3754051
+            ],
+            [
+              4.8744793,
+              52.3754047
+            ],
+            [
+              4.874483,
+              52.3754106
+            ],
+            [
+              4.8744668,
+              52.3754142
+            ],
+            [
+              4.874491,
+              52.3754546
+            ],
+            [
+              4.8743258,
+              52.3754912
+            ],
+            [
+              4.874261,
+              52.3755058
+            ],
+            [
+              4.874234,
+              52.3754608
+            ],
+            [
+              4.8739209,
+              52.3755312
+            ],
+            [
+              4.8739521,
+              52.3755785
+            ],
+            [
+              4.8739745,
+              52.3755729
+            ],
+            [
+              4.8739978,
+              52.3756082
+            ],
+            [
+              4.8741297,
+              52.3755755
+            ],
+            [
+              4.8742462,
+              52.3757518
+            ],
+            [
+              4.8740798,
+              52.375793
+            ],
+            [
+              4.8740963,
+              52.3758179
+            ],
+            [
+              4.8740692,
+              52.3758246
+            ],
+            [
+              4.8738595,
+              52.3755058
+            ],
+            [
+              4.8737127,
+              52.3755419
+            ],
+            [
+              4.8735853,
+              52.3755738
+            ],
+            [
+              4.8735821,
+              52.3755687
+            ],
+            [
+              4.8735839,
+              52.3755683
+            ],
+            [
+              4.8735583,
+              52.3755297
+            ],
+            [
+              4.8735565,
+              52.3755301
+            ],
+            [
+              4.8735531,
+              52.375525
+            ],
+            [
+              4.873555,
+              52.3755246
+            ],
+            [
+              4.8735293,
+              52.375486
+            ],
+            [
+              4.8735279,
+              52.3754863
+            ],
+            [
+              4.8735244,
+              52.3754811
+            ],
+            [
+              4.8735259,
+              52.3754808
+            ],
+            [
+              4.8735002,
+              52.3754421
+            ],
+            [
+              4.8734983,
+              52.3754426
+            ],
+            [
+              4.8734949,
+              52.3754375
+            ],
+            [
+              4.8734969,
+              52.375437
+            ],
+            [
+              4.8734711,
+              52.3753982
+            ],
+            [
+              4.8734691,
+              52.3753988
+            ],
+            [
+              4.8734657,
+              52.3753937
+            ],
+            [
+              4.8734678,
+              52.3753932
+            ],
+            [
+              4.8734423,
+              52.3753547
+            ],
+            [
+              4.8734421,
+              52.3753545
+            ],
+            [
+              4.8734402,
+              52.375355
+            ],
+            [
+              4.8734369,
+              52.37535
+            ],
+            [
+              4.8734388,
+              52.3753495
+            ],
+            [
+              4.8734131,
+              52.3753108
+            ],
+            [
+              4.8734116,
+              52.3753112
+            ],
+            [
+              4.8734082,
+              52.375306
+            ],
+            [
+              4.8734097,
+              52.3753057
+            ],
+            [
+              4.8733841,
+              52.375267
+            ],
+            [
+              4.873382,
+              52.3752675
+            ],
+            [
+              4.8733787,
+              52.3752625
+            ],
+            [
+              4.8733807,
+              52.375262
+            ],
+            [
+              4.8733551,
+              52.3752233
+            ],
+            [
+              4.873353,
+              52.3752239
+            ],
+            [
+              4.8733501,
+              52.3752195
+            ],
+            [
+              4.8733726,
+              52.3752144
+            ],
+            [
+              4.8735617,
+              52.3751676
+            ],
+            [
+              4.873586,
+              52.3752044
+            ],
+            [
+              4.8740194,
+              52.3751073
+            ],
+            [
+              4.8739915,
+              52.3750608
+            ],
+            [
+              4.8742396,
+              52.375005
+            ],
+            [
+              4.874242,
+              52.375009
+            ],
+            [
+              4.8742256,
+              52.3750127
+            ],
+            [
+              4.8742492,
+              52.3750519
+            ],
+            [
+              4.8742655,
+              52.3750482
+            ],
+            [
+              4.8744551,
+              52.3753641
+            ],
+            [
+              4.8744533,
+              52.3753646
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 22.57,
+      "height": 22.57,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-van-oldenbarneveldtstraat-48-137990.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012137990"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "van-oldenbarneveldtstraat-48-137990",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012137990/w01-111.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 11b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Van Oldenbarneveldtstraat 48 (BAG, 2006): a buff-brick apartment block with shop/office plinth round a courtyard; only the east front on the street (panel 50, w01-111, 2022-12-14) has a panorama within 35 m, the south, north and west fronts (w02-201, w03-20, w04-113) have none and stay blank (otherWalls).",
+        "walls[0] = panel 50: ground storey of glazed shop/office bays with a central double-door entrance (bay 5, marked with the 50-52 / 54-56 house numbers and letter boxes), four storeys of paired French windows in 11 bays separated by thin string courses, a set-back attic with three wide windows (the 3DBAG roof). Drawn as 5 storeys x 11 bays, two-light windows. Simplified: the slight curve of the front (straight in 3DBAG), the Juliet balconies and the set-back attic terrace; the house numbers and letter boxes are below the component grain."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137990",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T01:35:18.497Z"
     }
   ]
 }

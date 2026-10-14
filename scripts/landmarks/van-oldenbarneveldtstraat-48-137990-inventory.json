@@ -1,0 +1,101 @@
+{
+ "schemaVersion": 1,
+ "id": "van-oldenbarneveldtstraat-48-137990",
+ "pand": "0363100012137990",
+ "signature": [
+  "entrance-bay",
+  "buff-brick-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-111",
+   "bearing": 111,
+   "lengthM": 37.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002854_pano_0013_000052",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-bay",
+     "kind": "window-shape",
+     "where": "central double-door entrance with letter boxes and house numbers 50-52 / 54-56 in a glazed ground storey",
+     "approxSizeM": [
+      4,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] entrance bay 5 on a glazed ground storey; numbers and letter boxes not drawn",
+     "seenIn": "TMX7316010203-002854_pano_0013_000052"
+    },
+    {
+     "id": "buff-brick-front",
+     "kind": "window-shape",
+     "where": "four storeys of paired French windows in buff brick with a set-back attic",
+     "approxSizeM": [
+      37,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 11 bays two-light windows, string courses; straight, not curved",
+     "seenIn": "TMX7316010203-002854_pano_0013_000052"
+    },
+    {
+     "id": "juliet-balconies",
+     "kind": "balcony-ironwork",
+     "where": "thin glass Juliet balconies on some upper windows",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "glass rails under 3 cm thick on a few bays, below the component grain"
+     },
+     "seenIn": "TMX7316010203-002854_pano_0013_000052"
+    }
+   ]
+  },
+  {
+   "tag": "w02-201",
+   "bearing": 201,
+   "lengthM": 31.4,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w03-20",
+   "bearing": 20,
+   "lengthM": 22.7,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-113",
+   "bearing": 113,
+   "lengthM": 21.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
