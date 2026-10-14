@@ -26457,10 +26457,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012143903",
       "name": "Politiebureau Flierbosdreef, Flierbosdreef 15, Amsterdam (1985; a large industrial-looking complex with metal cladding)",
-      "hash": "a00acb5cd1ddaf7c0385674fd2d683631605ef6303fdb43aaea0f887f028b33b",
-      "sha256": "a00acb5cd1ddaf7c0385674fd2d683631605ef6303fdb43aaea0f887f028b33b",
-      "bytes": 80012,
-      "triangles": 869,
+      "hash": "ab5a034054ab8b349c07c99e2ef238cecc5221c938d93e6617ced044365ab743",
+      "sha256": "ab5a034054ab8b349c07c99e2ef238cecc5221c938d93e6617ced044365ab743",
+      "bytes": 88972,
+      "triangles": 997,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -26634,7 +26634,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012143903",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:29.940Z",
+      "updatedAt": "2026-10-14T03:11:26.712Z",
       "bagYear": 1985
     },
     {
