@@ -9,18 +9,27 @@
 import type { Row, System, WinParams } from './spec.ts';
 import type { ArchKind, ArchParams } from './arch.ts';
 
-export const LARGE_SYSTEMS = ['brick-bay-grid', 'ribbon-windows', 'curtain-wall', 'plinth-shopfronts', 'blank'] as const;
+/**
+ * - `glazed-hall`: a brick base, then one glass skin up to the eaves with a mullion grid (largeCompile `drawGlazedHall`);
+ * - `glazed-columns`: punched brick bays with full-height glass stripes in the listed bays (`drawGlazedColumns`);
+ * - `french-window-ledge`: tall two-leaf windows (0.75 of the storey) over a continuous ledge at every storey line.
+ */
+export const LARGE_SYSTEMS = ['brick-bay-grid', 'ribbon-windows', 'curtain-wall', 'plinth-shopfronts', 'blank', 'glazed-hall', 'glazed-columns', 'french-window-ledge'] as const;
 export type LargeSystemName = typeof LARGE_SYSTEMS[number];
 /** `mesh-plinth` (layered curtain wall only): the glass skin runs down to the ground and a closed dark panel covers the ground storey (largeCompile `drawPlinthPanel`). */
 export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
-export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide'] as const;
+export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide', 'stacked'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
 
 /** Default bay pitch (m) per system when the intent gives no bay count. */
 export const DEFAULT_PITCH_M: Record<LargeSystemName, number> = {
   'brick-bay-grid': 3.2, 'ribbon-windows': 2.7, 'curtain-wall': 1.8, 'plinth-shopfronts': 4.5, blank: 6,
+  'glazed-hall': 15, 'glazed-columns': 1.5, 'french-window-ledge': 2.2,
 };
+
+/** French window: width of the bay, height of the storey, sill (m) over the storey line; the ledge stands under the sill. */
+export const FRENCH_WINDOW = { w: 0.5, h: 0.75, sillM: 0.2, ledgeH: 0.14, ledgeOut: 0.12, rail: 0.3 };
 
 export interface SystemFit {
   pitchM: number;
@@ -61,6 +70,8 @@ export interface SystemFit {
   layered?: boolean;
   /** measured window proportions (intent `windowShape`): width of the bay, height of the storey, sill in metres; overrides the `windows` preset's size */
   shape?: { w: number; h: number; sillM: number };
+  /** glazed-columns: bays (of `bays` per storey, cycling) that carry a glass stripe instead of windows */
+  columnBays?: number[];
 }
 
 /** Glass-block perforation in a screen cell: a small square opening with a cross of 3.5 cm closed bars, no frame ring or sill. */
@@ -93,6 +104,8 @@ const glazing = (w: LargeWindow | undefined): Partial<WinParams> => {
     case 'narrow': return { w: 0.46, h: 0.56, sill: 0.95 };
     // Wide multi-light school windows two thirds of the bay: four lights and a transom (Amsterdam School classrooms).
     case 'wide': return { w: 0.68, h: 0.58, sill: 0.8, mull: 3, transom: 0.72 };
+    // Tall warehouse window spanning several storeys: two lights and five horizontal bars (Pakhuis Wilhelmina's north front).
+    case 'stacked': return { mull: 1, rows: 5 };
     default: return {};
   }
 };
@@ -114,7 +127,7 @@ function groundRow(f: SystemFit, upper: Row): Row {
 /** Expand a system name into a compose `System`. */
 export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   const s = f.slots, g = { ...glazing(f.windows), ...(f.shape ? { w: f.shape.w, h: f.shape.h, sill: f.shape.sillM } : {}) };
-  const bands = f.stringCourses ? [{ slot: s.stone, h: 0.16, out: 0.05, skipGround: false }] : undefined;
+  let bands: System['bands'] = f.stringCourses ? [{ slot: s.stone, h: 0.16, out: 0.05, skipGround: false }] : undefined;
   const piers = f.piers ? { w: 0.36, out: 0.1, slot: s.stone, segments: 3 } : null;
   let typical: Row;
   switch (name) {
@@ -136,8 +149,26 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       typical = { kind: 'punched', win: { w: 0.5, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: s.stone, ...g } };
       break;
     case 'blank':
+    // Glazed hall: the brick base and the glass skin are components over plain wall (largeCompile `drawGlazedHall`).
+    case 'glazed-hall':
       typical = { kind: 'wall' };
       break;
+    case 'glazed-columns': {
+      // The brick bays' windows (narrow by default); the column bays are left as wall for the glass stripe component.
+      const win: Row = { kind: 'punched', win: { w: 0.42, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: null, frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
+      const list = f.columnBays ?? [], every = Math.max(1, f.bays ?? 1, ...list.map(b => b + 1));
+      typical = list.length ? { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (list.includes(k) ? ({ kind: 'wall' } as Row) : win)) } : win;
+      break;
+    }
+    case 'french-window-ledge': {
+      // A Juliet rail bar across the lower third (the French-window read at range; two leaves would cost a second deep bar per window), a thin frame, no sill box (the ledge is the sill).
+      const F = FRENCH_WINDOW;
+      typical = { kind: 'punched', win: { w: F.w, h: F.h, sill: F.sillM, rowsAt: [F.rail], frame: s.frame, glass: s.glass, sillSlot: null, frameW: f.frames === false ? 0 : 0.04, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
+      typical.win!.sill = Math.max(F.ledgeH + 0.02, typical.win!.sill ?? F.sillM);
+      // arched heads (`arches.windows`, e.g. segmental) with the group's arch ring (`palette.arch`)
+      if (f.arches?.windows) typical = { ...typical, win: { ...typical.win!, ...archFor(f.arches.windows, f) } };
+      break;
+    }
   }
   // Perforated screen: glass blocks in one bay of three, the pattern shifted by two bays per storey (scattered, as built).
   if (f.screen && name !== 'blank') typical = { kind: 'wall', cycle: [{ kind: 'punched', win: glassBlock(f) }, { kind: 'wall' }, { kind: 'wall' }], shift: 2 };
@@ -186,6 +217,11 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       const box: Row = { ...under, win: { ...under.win, sillSlot: null, tilt: { slot: s.stone, ...TILT_FRAME } } };
       rowOverrides[String(st)] = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => ((list ? list.includes(k) : k === at) ? box : under)) };
     }
+  }
+  // French windows: a continuous ledge at every storey line above the ground, its top 2 cm under the window sill.
+  if (name === 'french-window-ledge') {
+    const F = FRENCH_WINDOW, sill = (typical.cycle ? undefined : typical.win?.sill) ?? F.sillM;
+    bands = [...(bands ?? []), { slot: s.stone, h: F.ledgeH, out: F.ledgeOut, skipGround: false, lift: sill - 0.02 - F.ledgeH / 2 }];
   }
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}) };
 }
