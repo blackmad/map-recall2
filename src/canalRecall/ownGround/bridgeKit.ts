@@ -29,7 +29,8 @@
 // tolerance, arch segments, post step, lamps) until it fits.
 
 import { emptyMesh, vertex, type MeshArrays } from './drape.js';
-import { BRIDGE_CODES, FLAT_HINTS } from './bridgeHints.js';
+import { BRIDGE_CODES, BRIDGE_FACTS, FLAT_HINTS } from './bridgeHints.js';
+import { cityTint } from '../look/palette.js';
 import type { Vec2 } from './surface.js';
 
 export type RGB = [number, number, number];
@@ -39,8 +40,70 @@ export const hex = (h: string): RGB => { const v = parseInt(h.slice(1), 16); ret
 export type BridgeKind = 'arch' | 'girder' | 'footbridge' | 'bascule';
 export type BridgeMaterial = 'masonry' | 'steel' | 'concrete' | 'wood' | 'other';
 
-/** Triangles per bridge body: near ring (LOD 0) and far ring (LOD 1). The deck top strip is counted apart (it is the riding surface). */
-export const KIT_BUDGET = { near: 600, far: 60 } as const;
+/**
+ * Triangles per bridge body: near ring (LOD 0) and far ring (LOD 1). The deck top strip is counted apart (it is the riding surface).
+ * Named canal-belt bridges (bridgeHints BRIDGE_FACTS tier, the ride's most-seen: the Seven Bridges, Torensluis, Blauwbrug,
+ * Magere Brug, the radial crossings, the Amstel) take `named`: full arch segments, balusters and lamps.
+ */
+export const KIT_BUDGET = { near: 600, far: 60, named: 1500, namedFar: 100 } as const;
+
+// ------------------------------------------------------------------ per-bridge facts
+
+export type ArchShape = 'segmental' | 'round' | 'flat';
+export type BridgeFamily = 'brick-red' | 'brick-dark' | 'stone' | 'render-white' | 'concrete' | 'steel';
+export type ParapetClass = 'stone-balustrade' | 'iron-rail' | 'brick-parapet' | 'none';
+export const ARCH_SHAPES: readonly ArchShape[] = ['segmental', 'round', 'flat'];
+export const BRIDGE_FAMILIES: readonly BridgeFamily[] = ['brick-red', 'brick-dark', 'stone', 'render-white', 'concrete', 'steel'];
+export const PARAPET_CLASSES: readonly ParapetClass[] = ['stone-balustrade', 'iron-rail', 'brick-parapet', 'none'];
+
+/** What the panoramas (or a hand reading of them) say about one bridge (scripts/own-ground/build-bridge-hints.ts). */
+export interface BridgeFacts {
+  /** Openings under the deck (arches or girder spans), when measured. */
+  arches?: number;
+  /** Shape per opening (one entry: all openings). */
+  shapes?: ArchShape[];
+  /** Openings as fractions of the deck span, with the crown's drop under the deck edge (m). */
+  openings?: [number, number, number][];
+  family?: BridgeFamily;
+  parapet?: ParapetClass;
+  /** The named tier (KIT_BUDGET.named). */
+  named: boolean;
+}
+
+/** Encoded: [arches (0 unknown), shape letters ('s','r','f' per opening or one), family index (-1), parapet index (-1), named (0/1), ...openings flattened]. */
+export type FactsCode = readonly (number | string)[];
+export function encodeFacts(f: BridgeFacts): FactsCode {
+  return [f.arches ?? 0, (f.shapes ?? []).map(s => s[0]).join(''), f.family ? BRIDGE_FAMILIES.indexOf(f.family) : -1, f.parapet ? PARAPET_CLASSES.indexOf(f.parapet) : -1, f.named ? 1 : 0, ...(f.openings ?? []).flat()];
+}
+export function decodeFacts(c: FactsCode): BridgeFacts {
+  const [arches, shapes, family, parapet, named, ...rest] = c as [number, string, number, number, number, ...number[]];
+  const letter: Record<string, ArchShape> = { s: 'segmental', r: 'round', f: 'flat' };
+  const openings: [number, number, number][] = [];
+  for (let i = 0; i + 2 < rest.length; i += 3) openings.push([rest[i], rest[i + 1], rest[i + 2]]);
+  return {
+    ...(arches ? { arches } : {}), ...(shapes ? { shapes: [...shapes].map(s => letter[s]) } : {}),
+    ...(family >= 0 ? { family: BRIDGE_FAMILIES[family] } : {}), ...(parapet >= 0 ? { parapet: PARAPET_CLASSES[parapet] } : {}),
+    ...(openings.length ? { openings } : {}), named: named === 1,
+  };
+}
+/** Facts of a BRU id, or null. */
+export function bridgeFacts(id: string): BridgeFacts | null {
+  const m = /^BRU(\d+)$/.exec(id), c = m ? (BRIDGE_FACTS as Record<number, FactsCode>)[Number(m[1])] : undefined;
+  return c ? decodeFacts(c) : null;
+}
+
+/** Wall colours per material family, through the city look's slot tints (look/palette.ts cityTint). */
+export interface FamilyPalette { spandrel: RGB; pier: RGB; ring: RGB; key: RGB; vault: RGB; coping: RGB }
+const slotTint = (slot: 'brick' | 'stone' | 'stucco', h: string): RGB => hex(cityTint(slot, h));
+export const FAMILY_PALETTE: Record<BridgeFamily, FamilyPalette> = {
+  'brick-red': { spandrel: slotTint('brick', '#8a4c3b'), pier: slotTint('brick', '#7e4636'), ring: slotTint('stone', '#b5ad9e'), key: slotTint('stone', '#d2cab8'), vault: hex('#5c3a2f'), coping: slotTint('stone', '#b5ad9e') },
+  'brick-dark': { spandrel: hex('#5f3e33'), pier: hex('#56382e'), ring: slotTint('stone', '#a49c8d'), key: slotTint('stone', '#c7bfad'), vault: hex('#3e2a23'), coping: slotTint('stone', '#a49c8d') },
+  stone: { spandrel: slotTint('stone', '#bdb6a6'), pier: slotTint('stone', '#aea796'), ring: slotTint('stone', '#d0c9b8'), key: slotTint('stone', '#e0d9c8'), vault: hex('#5d5850'), coping: slotTint('stone', '#cfc8b8') },
+  'render-white': { spandrel: slotTint('stucco', '#e9e6dd'), pier: slotTint('stucco', '#e1ded4'), ring: slotTint('stucco', '#f1eee6'), key: slotTint('stucco', '#f6f3ec'), vault: hex('#6b6862'), coping: slotTint('stucco', '#f1eee6') },
+  concrete: { spandrel: hex('#a9a49b'), pier: hex('#9d988f'), ring: hex('#b4afa6'), key: hex('#b4afa6'), vault: hex('#56534e'), coping: hex('#b4afa6') },
+  // A riveted girder (the Prinsengracht radials): the fascia steel, the piers brick with stone caps.
+  steel: { spandrel: hex('#3f4d47'), pier: slotTint('brick', '#7e4636'), ring: hex('#3f4d47'), key: hex('#3f4d47'), vault: hex('#2e3532'), coping: slotTint('stone', '#b5ad9e') },
+};
 
 /** Bridge colours (sRGB). Brick and natural stone after the canal-belt bridges; Amsterdam railing green. */
 export const KIT_COLOURS = {
@@ -98,15 +161,18 @@ const FAMILY_MATERIAL: Record<string, BridgeMaterial> = { 'masonry-arch': 'mason
  * 3.5 m. Otherwise girder.
  */
 export const ARCH_MIN_HUMP_M = 0.45;
-export function measuredKind(family: string, width: number, hump: number, waterM: number, hint: RegisterHint | null): BridgeKind {
+export function measuredKind(family: string, width: number, hump: number, waterM: number, hint: RegisterHint | null, facts: BridgeFacts | null = null): BridgeKind {
+  // Measured openings (panorama or hand): the face is drawn opening by opening, arches and girder spans alike.
+  if (facts?.arches && width >= 3) return 'arch';
   if (hint?.light && width < 4.5) return 'footbridge';
   if (family === 'masonry-arch' || hint?.material === 'masonry') return width < 3 ? 'footbridge' : 'arch';
   if (hint?.classic && family !== 'wooden-deck' && hump >= ARCH_MIN_HUMP_M && waterM <= 60 && width >= 3) return 'arch';
   return width < 3.5 ? 'footbridge' : 'girder';
 }
 /** The kit for an unmeasured footprint (its across width from the crossing axis). */
-export function flatKind(movable: boolean, across: number, hint: RegisterHint | null): BridgeKind {
+export function flatKind(movable: boolean, across: number, hint: RegisterHint | null, facts: BridgeFacts | null = null): BridgeKind {
   if (movable || hint?.movable) return 'bascule';
+  if (facts?.arches && across >= 3) return 'arch';
   if (hint?.material === 'masonry' && across >= 3) return 'arch';
   if (across < 3.5 || (hint?.light && across < 4.5)) return 'footbridge';
   return 'girder';
@@ -178,6 +244,8 @@ export interface KitInput {
   lateralTol?: number;
   /** Triangle budget override (tests). */
   budget?: number;
+  /** Per-bridge facts (bridgeFacts): arch count, shapes, openings, family, parapet, named tier. */
+  facts?: BridgeFacts | null;
 }
 
 export interface KitInfo { kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number }
@@ -264,13 +332,15 @@ const NEAR_LEVELS: Level[] = [
   { tol: 0.2, archSegs: 3, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: true, inner: true, soffit: true, land: false },
   // Last resort for a long or ragged footprint (a lock complex): the water faces, the parapet's outer face and one rail.
   { tol: 0.5, archSegs: 3, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: true, inner: false, soffit: false, land: false },
+  // A long, ragged newly measured deck (BRU0359, flat-deck recovery 2026-10-14): faces and the parapet's outer face only.
+  { tol: 1.0, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
 ];
 // The far ring (LOD 1, past ~350 m): the silhouette only. No railings, no walls over land (the relief hides most of them).
 const FAR_LEVELS: Level[] = [
   { tol: 0.1, archSegs: 4, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: true, land: true },
   { tol: 0.2, archSegs: 3, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: true, land: false },
   { tol: 0.4, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
-  { tol: 0.8, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
+  { tol: 0.8, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },  { tol: 3, archSegs: 1, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
 ];
 
 /** Base post spacing per kind, metres (scaled by the level). */
@@ -279,7 +349,8 @@ const POST_STEP: Record<BridgeKind, number> = { arch: 5, girder: 2.6, footbridge
 /** Build one bridge's body, coarsening until it fits the budget. */
 export function buildKit(raw: KitInput): { mesh: MeshArrays; info: KitInfo } {
   const input = { ...raw, rows: cleanWater(raw.rows, raw.spans) };
-  const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = input.budget ?? (input.lod === 0 ? KIT_BUDGET.near : KIT_BUDGET.far);
+  const named = !!raw.facts?.named;
+  const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = input.budget ?? (input.lod === 0 ? (named ? KIT_BUDGET.named : KIT_BUDGET.near) : (named ? KIT_BUDGET.namedFar : KIT_BUDGET.far));
   let last: { mesh: MeshArrays; info: KitInfo } | null = null;
   for (let k = 0; k < levels.length; k++) {
     last = buildAt(input, levels[k], k);
@@ -294,7 +365,21 @@ export function buildKitAtLevel(input: KitInput, level: number): { mesh: MeshArr
   return buildAt(input, levels[Math.min(level, levels.length - 1)], level);
 }
 
-interface Arch { s0: number; s1: number; spring: number; crown: number; R: number; mid: number }
+interface Arch { s0: number; s1: number; spring: number; crown: number; R: number; mid: number; shape: ArchShape }
+
+/** Opening widths for n openings: the middle widest (the boat channel), the outer ones smaller. */
+export function openingRatios(n: number): number[] {
+  if (n === 1) return [1];
+  if (n === 3) return [1, 1.6, 1];
+  if (n === 5) return [0.8, 1, 1.3, 1, 0.8];
+  return Array.from({ length: n }, (_, j) => 1 + 0.25 * (1 - Math.abs(j - (n - 1) / 2) / Math.max(1, (n - 1) / 2)));
+}
+/** The colours a kit body uses: the family palette when the bridge has one, else the canal-belt brick defaults. */
+function paletteOf(facts: BridgeFacts | null | undefined): FamilyPalette {
+  if (facts?.family) return FAMILY_PALETTE[facts.family];
+  const C = KIT_COLOURS;
+  return { spandrel: C.brick, pier: C.brick, ring: C.stone, key: C.keystone, vault: C.brickShade, coping: C.stone };
+}
 
 /** Optional trace of each attempt (the census's --trace): stations and triangles per part. */
 export const kitTrace: { fn: ((id: string, level: number, parts: Record<string, number>) => void) | null } = { fn: null };
@@ -306,11 +391,37 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   const C = KIT_COLOURS;
   const thickness = input.thickness ?? (kind === 'footbridge' ? 0.3 : input.material === 'steel' ? 0.5 : 0.55);
   const fascia: RGB = input.material === 'steel' ? C.steel : input.material === 'wood' ? C.wood : input.material === 'masonry' ? C.brick : C.concrete;
+  const facts = input.facts ?? null, pal = paletteOf(facts);
 
   // Arches (arch kind): one per span up to PIER_SPAN_M, three up to 60 m, five beyond; piers between.
   const arches: Arch[] = [], piers: number[] = [];
   const zAt = (s: number) => rowAt(rows, s).z;
-  for (const [w0, w1] of input.spans) {
+  if (kind === 'arch' && facts?.arches) {
+    // Measured openings: at their measured places (fractions of the deck span), else the count spread over the water.
+    const [p0, p1] = input.parapet, len = p1 - p0;
+    let cuts: [number, number, number | null][];
+    if (facts.openings?.length) cuts = facts.openings.map(([f0, f1, drop]) => [p0 + f0 * len, p0 + f1 * len, drop]);
+    else {
+      const ws = input.spans.length ? input.spans : [[p0 + len * 0.15, p1 - len * 0.15] as [number, number]];
+      const w0 = Math.max(p0, Math.min(...ws.map(w => w[0]))), w1 = Math.min(p1, Math.max(...ws.map(w => w[1]))), n = facts.arches;
+      const ratio = openingRatios(n), total = ratio.reduce((a, b) => a + b, 0), span = Math.max(1, w1 - w0);
+      const cut = ratio.map((_, j) => w0 + span * ratio.slice(0, j).reduce((a, b) => a + b, 0) / total).concat(w1);
+      cuts = ratio.map((_, j) => [cut[j] + (j > 0 ? PIER_LEN / 2 : 0), cut[j + 1] - (j < n - 1 ? PIER_LEN / 2 : 0), null]);
+      for (let j = 1; j < n; j++) piers.push(cut[j]);
+    }
+    cuts.forEach(([s0, s1, drop], j) => {
+      if (s1 - s0 < 0.8) return;
+      const shape = facts.shapes?.[j] ?? facts.shapes?.[0] ?? 'segmental', half = (s1 - s0) / 2, mid = (s0 + s1) / 2;
+      const under = zAt(mid) - COPE_M - (shape === 'flat' ? 0.35 : RING_M + 0.12);
+      const crown = Math.min(under, drop !== null ? zAt(mid) - drop : under);
+      if (crown - waterZ < 0.5) return;
+      if (shape === 'flat') { arches.push({ s0, s1, spring: crown, crown, R: Infinity, mid, shape }); return; }
+      let spring = shape === 'round' ? crown - half : waterZ + 0.25, rise = crown - spring;
+      if (spring < waterZ + 0.1) { spring = waterZ + 0.1; rise = crown - spring; }
+      if (rise > half) { spring = crown - half; rise = half; }
+      arches.push({ s0, s1, spring, crown, R: (half * half + rise * rise) / (2 * rise), mid, shape });
+    });
+  } else for (const [w0, w1] of input.spans) {
     const span = w1 - w0;
     if (span < 1.5) continue;
     if (kind === 'arch') {
@@ -329,7 +440,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
         // Segmental arch; a rise over the half chord becomes a semicircle on raised springs.
         if (rise > half) { spring = crown - half; rise = half; }
         const R = (half * half + rise * rise) / (2 * rise);
-        arches.push({ s0, s1, spring, crown, R, mid });
+        arches.push({ s0, s1, spring, crown, R, mid, shape: 'segmental' });
       }
     } else if (span > (kind === 'footbridge' ? 20 : PIER_SPAN_M)) { // a light footbridge spans a canal-belt canal in one
       const nb = Math.max(2, Math.min(7, Math.round(span / BAY_M)));
@@ -340,6 +451,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   const archOf = (s: number) => arches.find(a => s >= a.s0 - 1e-6 && s <= a.s1 + 1e-6) ?? null;
   // The vault never rises into the ring and coping under a deck that falls faster than the arch.
   const intrados = (a: Arch, s: number) => {
+    if (a.shape === 'flat') return Math.min(a.crown, zAt(s) - COPE_M - 0.3);
     const u = Math.max(-1, Math.min(1, (s - a.mid) / ((a.s1 - a.s0) / 2))) * (a.s1 - a.s0) / 2;
     return Math.max(a.spring, Math.min(a.crown - a.R + Math.sqrt(Math.max(0, a.R * a.R - u * u)), zAt(s) - COPE_M - RING_M - 0.05));
   };
@@ -350,7 +462,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   if (input.lod === 0) for (const [l0, l1] of input.leaves ?? []) extra.push(l0 - 0.05, l0 + 0.05, l1 - 0.05, l1 + 0.05);
   const spine = spineStations(rows, lv.tol, extra, input.lod === 0, input.lateralTol), segs = Math.max(2, Math.round(lv.archSegs * (arches.length > 1 ? 0.75 : 1)));
   const archSt: number[] = [];
-  for (const a of arches) for (let j = 0; j <= segs; j++) archSt.push(a.s0 + (a.s1 - a.s0) * j / segs);
+  for (const a of arches) { const n = a.shape === 'flat' ? 1 : segs; for (let j = 0; j <= n; j++) archSt.push(a.s0 + (a.s1 - a.s0) * j / n); }
   // Inside an arch its own segments carry the face; a spine station there stays only where the deck edge leaves their chord by > 3 cm.
   const keepSpine = (s: number) => {
     const a = arches.find(x => s > x.s0 + 0.04 && s < x.s1 - 0.04);
@@ -384,12 +496,12 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
         if (lv.ring) {
           // Under the parapet the stone coping (the parapet's proud outer face, parapet()) covers the top COPE_M.
           const cope = mid > input.parapet[0] && mid < input.parapet[1] ? COPE_M : 0;
-          wall(ba, bb, za - cope, zb - cope, C.brick);
+          wall(ba, bb, za - cope, zb - cope, arch ? pal.spandrel : pal.pier);
           if (arch) {
-            const key = Math.abs(mid - arch.mid) < (arch.s1 - arch.s0) / (2 * segs) + 1e-6;
-            wall(intrados(arch, a.s), intrados(arch, b.s), ba, bb, key ? C.keystone : C.stone);
+            const key = arch.shape !== 'flat' && Math.abs(mid - arch.mid) < (arch.s1 - arch.s0) / (2 * segs) + 1e-6;
+            wall(intrados(arch, a.s), intrados(arch, b.s), ba, bb, key ? pal.key : pal.ring);
           }
-        } else wall(arch ? intrados(arch, a.s) : ba, arch ? intrados(arch, b.s) : bb, za, zb, C.brick);
+        } else wall(arch ? intrados(arch, a.s) : ba, arch ? intrados(arch, b.s) : bb, za, zb, arch ? pal.spandrel : pal.pier);
       } else {
         const bottom = (w: boolean, g: number, z: number) => (w ? z - thickness : Math.min(g, z) - BURY);
         const col = inJoint(mid) ? C.joint : inLeaf(mid) ? input.colour ?? fascia : water ? fascia : C.brick;
@@ -399,7 +511,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
     // Underside over water: the vault in an arch, else the soffit (girder kinds).
     if (arch) {
       const ia = intrados(arch, a.s), ib = intrados(arch, b.s);
-      if (lv.soffit) face(m, [[a.L[0], a.L[1], ia], [a.R[0], a.R[1], ia], [b.R[0], b.R[1], ib], [b.L[0], b.L[1], ib]], C.brickShade, [0, 0, -1]);
+      if (lv.soffit) face(m, [[a.L[0], a.L[1], ia], [a.R[0], a.R[1], ia], [b.R[0], b.R[1], ib], [b.L[0], b.L[1], ib]], pal.vault, [0, 0, -1]);
     } else if (kind !== 'arch' && lv.soffit && a.water && b.water) {
       const za = a.z - thickness, zb = b.z - thickness;
       face(m, [[a.L[0], a.L[1], za], [a.R[0], a.R[1], za], [b.R[0], b.R[1], zb], [b.L[0], b.L[1], zb]], inJoint(mid) ? C.joint : C.soffit, [0, 0, -1]);
@@ -410,7 +522,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   // Arch ends: the springing faces of the piers and abutments, across the width from the spring down past the water, facing the opening.
   for (const a of lv.ring ? arches : []) for (const [s, dir] of [[a.s0, 1], [a.s1, -1]] as const) {
     const r = rowAt(rows, s), u = [r.n[1] * dir, -r.n[0] * dir, 0];
-    face(m, [[r.L[0], r.L[1], a.spring], [r.R[0], r.R[1], a.spring], [r.R[0], r.R[1], waterZ - 0.4], [r.L[0], r.L[1], waterZ - 0.4]], C.brick, u);
+    face(m, [[r.L[0], r.L[1], a.spring], [r.R[0], r.R[1], a.spring], [r.R[0], r.R[1], waterZ - 0.4], [r.L[0], r.L[1], waterZ - 0.4]], pal.pier, u);
   }
   if (kind === 'arch') info.abutments = arches.length ? 2 : 0;
   if ((kind !== 'arch' || !arches.length) && lv.land) {
@@ -447,13 +559,22 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
   const [p0, p1] = [Math.max(rows[0].s, input.parapet[0]), Math.min(rows[rows.length - 1].s, input.parapet[1])];
   if (p1 - p0 < 1) return;
   // The parapet follows the deck edge's height alone (within the 3-4 cm its outer face reaches down over the face below); rails a little coarser.
-  const ps = [p0, ...spineStations(rows, Math.min(lv.tol, 0.05), [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3), p1], P = ps.map(s => rowAt(rows, s));
+  const ps = [p0, ...spineStations(rows, lv.tol >= 0.5 ? lv.tol : Math.min(lv.tol, 0.05), [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3), p1], P = ps.map(s => rowAt(rows, s));
   const railSpine = spineStations(rows, 0.06, [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3);
   const wood = input.material === 'wood';
   // A bascule's railing takes the bridge's colour (the Magere Brug's is white like its portals).
   const railColour = kind === 'bascule' && input.colour ? input.colour : wood ? C.woodRail : C.iron;
-  const style = kind === 'arch'
-    ? { plinth: 0.45, width: 0.34, plinthCol: C.stone, post: 0.15, postCol: C.stone, postTop: 1.12, railCol: C.iron, rail: RAILING.rail / 2 }
+  const facts = input.facts ?? null, pal = paletteOf(facts), cls = facts?.parapet;
+  // A measured parapet class: the stone balustrade (the arch style, balusters on the named tier), an iron rail on a
+  // low coping, a solid brick parapet, or the coping alone.
+  const style = cls === 'iron-rail'
+    ? { plinth: 0.14, width: 0.3, plinthCol: pal.coping, post: RAILING.post / 2, postCol: C.iron, postTop: RAILING.height, railCol: C.iron, rail: RAILING.rail / 2 }
+    : cls === 'brick-parapet'
+      ? { plinth: 0.95, width: 0.32, plinthCol: pal.pier, post: 0, postCol: C.iron, postTop: 0, railCol: C.iron, rail: 0 }
+      : cls === 'none'
+        ? { plinth: 0.1, width: 0.3, plinthCol: pal.coping, post: 0, postCol: C.iron, postTop: 0, railCol: C.iron, rail: 0 }
+        : kind === 'arch' || cls === 'stone-balustrade'
+    ? { plinth: 0.45, width: 0.34, plinthCol: cls ? pal.coping : C.stone, post: 0.15, postCol: cls ? pal.coping : C.stone, postTop: 1.12, railCol: C.iron, rail: RAILING.rail / 2 }
     : kind === 'footbridge'
       ? { plinth: 0, width: 0.1, plinthCol: C.steel, post: RAILING.post / 2, postCol: wood ? C.woodRail : C.iron, postTop: RAILING.height, railCol: wood ? C.woodRail : C.iron, rail: RAILING.rail / 2 }
       : { plinth: 0.14, width: RAILING.plinthWidth, plinthCol: fascia, post: RAILING.post / 2, postCol: railColour, postTop: RAILING.height, railCol: railColour, rail: RAILING.rail / 2 };
@@ -471,9 +592,10 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       face(m, [[a0[0], a0[1], za + h], [b0[0], b0[1], zb + h], [b1[0], b1[1], zb + h], [a1[0], a1[1], za + h]], style.plinthCol, [0, 0, 1]);
       face(m, [[a1[0], a1[1], za], [b1[0], b1[1], zb], [b1[0], b1[1], zb + h], [a1[0], a1[1], za + h]], style.plinthCol, [-o[0], -o[1], 0]);
     }
-    if (!lv.railings) continue;
+    const len = p1 - p0;
+    if (lv.railings && style.post > 0) {
     // Posts at even spacing, rails straight from post to post.
-    const len = p1 - p0, count = Math.max(1, Math.round(len / Math.min(len, POST_STEP[kind] * lv.postStep)));
+    const count = Math.max(1, Math.round(len / Math.min(len, POST_STEP[kind] * lv.postStep)));
     const posts: { c: Vec2; z: number; u: Vec2 }[] = [];
     for (let i = 0; i <= count; i++) {
       const r = rowAt(rows, p0 + len * i / count), o = out(r);
@@ -481,7 +603,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       posts.push({ c, z: zt(r), u: [o[1], -o[0]] });
       // Footbridge posts hang down the edge beam's face: deck and railing are one piece.
       const z0 = kind === 'footbridge' ? zt(r) - 0.25 : zt(r) + style.plinth - 0.02;
-      if (kind === 'arch') box(m, c, [o[1], -o[0]], style.post, style.post, z0, zt(r) + style.postTop, style.postCol);
+      if (kind === 'arch' && cls !== 'iron-rail') box(m, c, [o[1], -o[0]], style.post, style.post, z0, zt(r) + style.postTop, style.postCol);
       else {
         // An iron or timber post is a flat bar facing the water and the road (4 triangles; its 7 cm edge and top are never seen).
         const u: Vec2 = [o[1], -o[0]], h = style.post, z1 = zt(r) + style.postTop;
@@ -491,7 +613,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       }
       info.railingPosts++;
     }
-    const levels = kind === 'arch' ? [RAILING.height - 0.08] : [RAILING.height, ...(lv.midRail || kind === 'footbridge' ? [0.55] : [])];
+    const levels = kind === 'arch' && cls !== 'iron-rail' ? [RAILING.height - 0.08] : [RAILING.height, ...(lv.midRail || kind === 'footbridge' || cls === 'iron-rail' ? [0.55] : [])];
     // Rails follow the hump (knots where the edge leaves the chord by > 6 cm), passing the posts.
     const knots = [p0, ...railSpine, p1]
       .filter((s, k, all) => k === 0 || s - all[k - 1] > 0.3 || s === p1)
@@ -499,6 +621,16 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     for (let i = 0; i + 1 < knots.length; i++) for (const h of levels) {
       const a = knots[i], b = knots[i + 1];
       beam(m, [a.c[0], a.c[1], a.z + h], [b.c[0], b.c[1], b.z + h], h >= RAILING.height - 0.1 ? style.rail * 1.4 : style.rail, style.railCol, true);
+    }
+    // Balusters (stone balustrade, named tier, full detail): a flat stone baluster every 0.45 m between the plinth and the rail, outer face only.
+    if (cls === 'stone-balustrade' && facts?.named && lv.postStep === 1) {
+      const nb = Math.floor(len / 0.45);
+      for (let i = 1; i < nb; i++) {
+        const r = rowAt(rows, p0 + len * i / nb), o = out(r), u: Vec2 = [o[1], -o[0]], c = inward(r, -0.01), z0 = zt(r) + style.plinth, z1 = zt(r) + RAILING.height - 0.12;
+        const a: Vec2 = [c[0] - u[0] * 0.06, c[1] - u[1] * 0.06], b: Vec2 = [c[0] + u[0] * 0.06, c[1] + u[1] * 0.06];
+        face(m, [[a[0], a[1], z0], [b[0], b[1], z0], [b[0], b[1], z1], [a[0], a[1], z1]], style.postCol, [o[0], o[1], 0]);
+      }
+    }
     }
     // Lamp posts at the quarter points (arch kind): a pole on the plinth, a lantern and a cap.
     if (kind === 'arch' && lv.lamps && len >= 6) for (const f of lv.lamps >= 4 ? [0.25, 0.75] : [side > 0 ? 0.25 : 0.75]) {

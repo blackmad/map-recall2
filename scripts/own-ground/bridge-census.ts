@@ -6,14 +6,14 @@
 //   npx tsx scripts/own-ground/bridge-census.ts --json=out.json
 //   … --ids=BRU0242 --trace                 # every coarsening attempt: stations and triangles per part
 //
-// Exit code 1 when a bridge body is over budget (KIT_BUDGET: 600 near, 60 far).
+// Exit code 1 when a bridge body is over budget (KIT_BUDGET: 600 near, 60 far; named 1,500 / 100).
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, fromLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, CANAL_WATER_Z } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { flatDeckBody, footprintAxis, movableFrame, pointInRing } from '../../src/canalRecall/ownGround/decks.ts';
-import { flatHintAt, kitTrace, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { bridgeFacts, flatHintAt, kitTrace, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { buildWaterMask, maskDistance, type WaterGeometry } from '../../src/canalRecall/ownGround/water.ts';
 import { isBridgeWay, prepareWays } from '../../src/canalRecall/ownGround/streets.ts';
 
@@ -73,7 +73,9 @@ async function main(): Promise<void> {
   const q = (a: number[], f: number) => { const s = [...a].sort((x, y) => x - y); return s[Math.min(s.length - 1, Math.floor(f * s.length))] ?? 0; };
   console.log(JSON.stringify({ cells: cells.length, bridgeBodyTriangles: { near: bridgeLayer0, far: bridgeLayer1 }, deckTopTriangles: top0, cellTriangles: { near: cellTris0, far: cellTris1 } }));
   for (const [kind, t] of Object.entries(byKind)) console.log(`${kind.padEnd(10)} n=${String(t.n).padStart(4)}  near median ${q(t.near, 0.5)} p95 ${q(t.near, 0.95)} max ${Math.max(...t.near)}   far median ${q(t.far, 0.5)} max ${Math.max(...t.far)}`);
-  const over = rows.filter(r => r.near > KIT_BUDGET.near || r.far > KIT_BUDGET.far);
+  // Named canal-belt bridges (bridgeHints BRIDGE_FACTS) take the named tier.
+  const named = (r: Row) => !!bridgeFacts(r.id.split('?')[0])?.named;
+  const over = rows.filter(r => r.near > (named(r) ? KIT_BUDGET.named : KIT_BUDGET.near) || r.far > (named(r) ? KIT_BUDGET.namedFar : KIT_BUDGET.far));
   console.log(`over budget: ${over.length}`, over.slice(0, 30).map(r => `${r.id}:${r.kind}:${r.near}/${r.far}`).join(' '));
   if (only) for (const r of rows) console.log(JSON.stringify(r));
   if (flag('json')) writeFileSync(flag('json')!, JSON.stringify({ byKind, rows }, null, 1));

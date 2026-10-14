@@ -1,7 +1,7 @@
 // Bridge kit tests (lane bridge-kit 2026-10-13); imported by ownGround.test.ts so `npm run test:own-ground` runs them.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildKit, buildKitAtLevel, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeKind, type KitRow } from './bridgeKit';
+import { bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
 import { flatDeckBody, movableFrame } from './decks';
 
@@ -94,4 +94,36 @@ test('bascule: two portals with a gap between their beam heads; leaf joints on t
   const flat = flatDeckBody(ring, () => 0.5, x => x > 5 && x < 35);
   assert.ok(flat.kind === 'girder' || flat.kind === 'bascule');
   assert.ok(flat.triangles <= KIT_BUDGET.near, `flat ${flat.triangles}`);
+});
+
+// Lane bridge-fidelity 2026-10-14: per-bridge facts from the boat panoramas (hand readings for the named bridges).
+test('bridge facts: named bridges carry their measured arches, family and parapet', () => {
+  const f: BridgeFacts = { arches: 3, shapes: ['segmental', 'flat', 'segmental'], family: 'stone', parapet: 'stone-balustrade', openings: [[0.05, 0.3, 0.8], [0.35, 0.65, 0.7], [0.7, 0.95, 0.8]], named: true };
+  assert.deepEqual(decodeFacts(encodeFacts(f)), f);
+  const blauw = bridgeFacts('BRU0236');
+  assert.equal(blauw?.arches, 3, 'Blauwbrug: three openings');
+  assert.deepEqual(blauw?.shapes, ['segmental', 'flat', 'segmental'], 'Blauwbrug: segmental side arches, a flat middle span');
+  assert.equal(blauw?.family, 'stone'); assert.equal(blauw?.parapet, 'stone-balustrade'); assert.ok(blauw?.named);
+  for (const id of ['BRU0031', 'BRU0032', 'BRU0038', 'BRU0039', 'BRU0074', 'BRU0073', 'BRU0071', 'BRU0072']) assert.equal(bridgeFacts(id)?.family, 'brick-red', `${id}: Seven Bridges brick`);
+  assert.equal(bridgeFacts('BRU0038')?.arches, 3, 'Keizersgracht at the Reguliersgracht: three arches');
+  assert.equal(bridgeFacts('BRU0009')?.arches, 3, 'Torensluis: three arches');
+  assert.equal(bridgeFacts('BRU0063')?.shapes?.[0], 'flat', 'Nieuwe-Wercksbrug: girder spans on piers');
+  assert.equal(measuredKind('steel-deck', 9, 0.2, 19, registerHint('BRU0063'), bridgeFacts('BRU0063')), 'arch', 'measured openings draw opening by opening');
+});
+
+test('bridge facts: the kit honours count, shape, family and the named budget', () => {
+  const base = input('arch', 0, 18, 8);
+  const plain = buildKit(base).info;
+  const facts: BridgeFacts = { arches: 3, shapes: ['segmental', 'flat', 'segmental'], family: 'stone', parapet: 'stone-balustrade', named: true };
+  const { mesh, info } = buildKit({ ...base, facts });
+  assert.equal(info.arches, 3);
+  assert.ok(info.triangles <= KIT_BUDGET.named && info.triangles > plain.triangles, `named ${info.triangles} vs ${plain.triangles}`);
+  assert.ok(info.lamps >= 2, 'named: lamps back');
+  const stone = FAMILY_PALETTE.stone.spandrel, c = mesh.colors!;
+  let hits = 0;
+  for (let i = 0; i < c.length; i += 3) if (Math.abs(c[i] - stone[0]) < 1e-6 && Math.abs(c[i + 1] - stone[1]) < 1e-6) hits++;
+  assert.ok(hits > 20, 'stone spandrels');
+  const one = buildKit({ ...base, facts: { arches: 1, shapes: ['round'], family: 'brick-red', parapet: 'iron-rail', named: false } }).info;
+  assert.equal(one.arches, 1);
+  assert.ok(one.triangles <= KIT_BUDGET.near);
 });
