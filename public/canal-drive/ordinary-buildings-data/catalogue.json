@@ -50269,6 +50269,126 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:17:30.395Z"
+    },
+    {
+      "id": "ordinary-0363100012078289",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012078289",
+      "name": "Rigakade 8, Amsterdam-West (Houthavens industrial strip): 1988 builders' merchant (Jongeneel) of pale ribbed-steel sheds, a four-gable saw-tooth north-east end with a blue loading gate and a south-west shop front with a blue HOUT PLAAT SHOP BOUWMATERIALEN fascia over a glazed entrance",
+      "hash": "94a7d7eaefe79fe96bfa7f9178b8cd86a6868c43798e60895347db8e210047d2",
+      "sha256": "94a7d7eaefe79fe96bfa7f9178b8cd86a6868c43798e60895347db8e210047d2",
+      "bytes": 144220,
+      "triangles": 1745,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -32.778,
+          0,
+          -81.571
+        ],
+        "max": [
+          45.87,
+          10.885,
+          25.578
+        ]
+      },
+      "anchor": [
+        4.8757159,
+        52.3949999
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8752338,
+              52.3949778
+            ],
+            [
+              4.8755413,
+              52.394884
+            ],
+            [
+              4.8755129,
+              52.3948495
+            ],
+            [
+              4.8756824,
+              52.3947977
+            ],
+            [
+              4.875675,
+              52.3947886
+            ],
+            [
+              4.8757358,
+              52.3947701
+            ],
+            [
+              4.8757715,
+              52.3948137
+            ],
+            [
+              4.8757731,
+              52.3948133
+            ],
+            [
+              4.8763844,
+              52.3955697
+            ],
+            [
+              4.875849,
+              52.3957339
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 10.89,
+      "height": 10.88,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-rigakade-8-078289.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012078289"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "rigakade-8-078289",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012078289/w05-207.jpg",
+          "staging/pand-reference-walls/0363100012078289/w03-27.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 2st 3b",
+          "brick-bay-grid 1st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 26 and 17 (SW, 17 m, eaves 10.4 and 8.8; surfaces 36, 21, 49, 54): a glazed ground with an entrance in the middle bay and the name as a short fascia plate over the entrance (not the full-width blue band), blank upper storey; 2 storeys x 3 bays. walls[1] = panel 3 (NE end, 40 m, eaves 8.1 under 10.4 m gables; surfaces 4, 22, 32, 34, 35, 43, 47, 50): blank render with one blue loading gate (garage door) on the right. Simplified: the saw-tooth gables are the 3DBAG roof and walls, the railing and sign boards are not modelled; the fascia colour is the stone slot (blue). Not drawn: the 94 m flanks and the south-east end, which stay blank pale render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078289",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:18:24.112Z"
     }
   ]
 }
