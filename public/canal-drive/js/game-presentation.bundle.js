@@ -47245,6 +47245,7 @@
   function isReviewStop(poi) {
     return !!poi && typeof poi.reviewStop === "string";
   }
+  var START_HEADING_SNAP_RAD = Math.PI / 6;
 
   // src/canalRecall/game/trackpadTwist.ts
   var TWIST_DEADZONE_DEG = 6;
