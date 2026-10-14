@@ -3,12 +3,17 @@
  * surfaces) with its outward bearing, width, height and the surface indices an intent's `walls[].wallSurfaces` lists,
  * plus a labelled plan (artifacts/building-recipes/<id>/walls-plan.png). Needs facts from `facts.ts --large`.
  *
- *   node --import tsx scripts/building-recipes/walls.ts --house=<id> [--min-width=2] [--detail]
+ *   node --import tsx scripts/building-recipes/walls.ts --house=<id> [--min-width=2] [--detail] [--repair] [--footprint=bag]
+ *
+ * With an intent that sets `shellRepair` / `footprint` (or the flags, before the intent exists) the table is of the
+ * repaired shell (shellRepair.ts): repair patches are surfaces from 90000 up.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
-import {largeSurfaceSet, bearingOfNormal, panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
+import {largeSurfaceSet, largeShellFacts, bearingOfNormal, panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
+import {strictMergeClasses} from '../../src/canalRecall/buildingRecipe/shellRepair.ts';
+import type {LargeBuildingIntent} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {buildHost} from '../../src/canalRecall/blockBuilding/panels.ts';
 import {MeshBuilder} from '../../src/canalRecall/blockBuilding/mesh.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
@@ -16,9 +21,16 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const id = arg('house'), minWidth = Number(arg('min-width', '1.5'));
 if (!id) throw Error('Use --house=<id>');
-const facts: BuildingFacts = JSON.parse(await fs.readFile(path.join('scripts/building-recipes/houses', id, 'facts.json'), 'utf8'));
+const rawFacts: BuildingFacts = JSON.parse(await fs.readFile(path.join('scripts/building-recipes/houses', id, 'facts.json'), 'utf8'));
+const intent: Partial<LargeBuildingIntent> = await fs.readFile(path.join('scripts/building-recipes/houses', id, 'intent.json'), 'utf8').then(JSON.parse, () => ({}));
+const footprint = (arg('footprint') || intent.footprint) as LargeBuildingIntent['footprint'];
+const repair = process.argv.includes('--repair') || !!intent.shellRepair;
+const {facts, shell} = largeShellFacts({shellRepair: repair, footprint} as LargeBuildingIntent, rawFacts);
+if (shell) console.log(`shell repair: open ${shell.openBeforeM} -> ${shell.openAfterM} m (caps ${shell.patches.cap}, strips ${shell.patches.strip}, seams ${shell.patches.seam}); IoU ${shell.iouBefore} -> ${shell.iouAfter}`);
 const {set} = largeSurfaceSet(facts);
-const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true});
+// shellRepair: panels as the fit builds them (only truly coplanar walls merge), ignoring wall groups
+const strict = repair ? strictMergeClasses(set.walls) : null;
+const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true, ...(strict ? {mergeKey: (wi: number) => strict[wi]} : {})});
 const compass = (b: number) => ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(b / 45) % 8];
 const ranges = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b), out: string[] = []; for (let i = 0; i < s.length;) { let j = i; while (j + 1 < s.length && s[j + 1] === s[j] + 1) j++; out.push(j > i ? `${s[i]}-${s[j]}` : `${s[i]}`); i = j + 1; } return out.join(','); };
 const rows = panels.filter(p => p.uMax - p.uMin >= minWidth).sort((a, b) => (b.uMax - b.uMin) * b.vMax - (a.uMax - a.uMin) * a.vMax);
