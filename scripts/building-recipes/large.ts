@@ -22,6 +22,8 @@ import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/l
 import {bearingOfNormal} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
 import {decodeTriangles} from './compile.ts';
 import {closeRenderer, contactSheet, renderModels} from './render.ts';
+import {houseLikeness, likenessRows, likenessSummary, type GroupLikeness} from './likeness-house.ts';
+import {pandWallsDir} from './sourceData.ts';
 
 const HOUSES = 'scripts/building-recipes/houses', ARTIFACTS = 'artifacts/building-recipes';
 const readJson = async (file: string) => JSON.parse(await fs.readFile(file, 'utf8'));
@@ -46,15 +48,29 @@ export async function compileLargeHouse(id: string) {
     triangles: glb.triangles, bytes: glb.bytes.length, materials: glb.materials, sha256: createHash('sha256').update(glb.bytes).digest('hex'),
     gates, topology: {components: topology.components, floating: topology.floating, openEdges: topology.openEdges, openEdgeLengthM: +topology.openEdgeLengthM.toFixed(2), openEdgeSamples: topology.openEdgeSamples},
     passed: gates.every(g => g.pass), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
-  await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 1) + '\n');
-  return {report, built, intent};
+  // Likeness to the archived photos (needs MAP_RECALL_SOURCE_DATA; a warning, not a gate: install-large decides).
+  // Tints the intent measured (measure.ts --write): drawn as measured once the exporter marks them `tintSource: "measured"`.
+  const measuredTints = new Set<string>();
+  for (const gi of intent.measured?.groups ?? []) for (const c of [intent.walls[gi]?.palette?.brick, intent.walls[gi]?.palette?.glass]) if (c?.startsWith('#')) measuredTints.add(c.toLowerCase());
+  const likeness = await houseLikeness(built, path.join(out, 'model.glb'), measuredTints);
+  const withLikeness = {...report, likeness: likeness ? likenessSummary(likeness) : null};
+  await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(withLikeness, null, 1) + '\n');
+  return {report: withLikeness, built, intent, likeness};
 }
 
 /** Front-on and 3/4 views of a wall-group's main panel, plus two aerials. */
-export async function largeContactSheets(id: string, built: CompiledLargeBuilding, intent: {sources: {image?: string; capturedAt: string}[]}) {
+/** One-line likeness for a sheet header: per photographed group its verdict. */
+export function likenessLine(likeness: GroupLikeness[] | null | undefined) {
+  if (!likeness) return 'likeness: no archived photos (MAP_RECALL_SOURCE_DATA)';
+  const m = likeness.filter(g => g.likeness);
+  return m.length ? 'likeness ' + m.map(g => `g${g.group} ${g.likeness!.verdict}`).join(', ') : 'likeness: no photographed group';
+}
+
+export async function largeContactSheets(id: string, built: CompiledLargeBuilding, _intent: unknown, likeness?: GroupLikeness[] | null) {
   const file = path.join(ARTIFACTS, id, 'model.glb'), sheets: string[] = [], r = built.recipe;
   const top = Math.max(built.facts.heights.roofMaxM, 6), report = await readJson(path.join(ARTIFACTS, id, 'report.json'));
   const status = `${report.triangles} tris · ${report.passed ? 'gates pass' : 'GATE FAIL ' + report.gates.filter((g: any) => !g.pass).map((g: any) => g.id).join(', ')}`;
+  const like = new Map((likeness ?? []).map(g => [g.group, g]));
   for (const g of r.groups) {
     const p = g.mainPanel === null ? undefined : built.panels[g.mainPanel];
     if (!p || (!g.entrance && g.widthM < 6)) continue;
@@ -67,12 +83,24 @@ export async function largeContactSheets(id: string, built: CompiledLargeBuildin
       {eye: [mid[0] + rx * dist * 0.75, top * 0.8, mid[2] + rz * dist * 0.75], target: [mid[0], top * 0.4, mid[2]], fov: 40, ...size},
     ];
     const [front, three] = await renderModels([{file}], views);
-    const src = intent.sources[g.index] ?? intent.sources[0];
-    const photo = src?.image ? await fs.readFile(src.image).catch(() => null) : null;
+    // The photo is the archived crop matched to this group's main panel (cropToPanel), not sources[g.index].
+    const gl = like.get(g.index), crop = gl?.crop;
+    const photo = crop ? await fs.readFile(path.join(pandWallsDir(r.pandId), crop.file)).catch(() => null) : null;
     const out = path.join(ARTIFACTS, id, `contact-walls-${g.index}.png`);
+    const verdict = gl?.likeness ? `likeness ${gl.likeness.verdict}` : gl ? 'likeness: no matched photo' : 'likeness: not measured';
+    const legacy = path.join(ARTIFACTS, id, `.views-${g.index}.png`);
     await contactSheet([
-      {image: photo ?? await sharp({create: {width: 8, height: 6, channels: 3, background: '#dddddd'}}).png().toBuffer(), text: photo ? `reference ${src.capturedAt} (panorama, CC BY 4.0)` : 'no reference photo'},
-      {image: front, text: `walls[${g.index}] ${g.system} · ${g.storeys} st · ${g.bays} bays`}, {image: three, text: status}], out, {width: 640, height: 448}, `${id} — walls[${g.index}] (${g.bearingDeg}°)`);
+      {image: photo ?? await sharp({create: {width: 8, height: 6, channels: 3, background: '#dddddd'}}).png().toBuffer(), text: photo ? `reference ${crop!.capturedAt} ${crop!.tag} (panorama, CC BY 4.0)` : 'no matched reference photo'},
+      {image: front, text: `walls[${g.index}] ${g.system} · ${g.storeys} st · ${g.bays} bays`}, {image: three, text: status}], gl?.likeness ? legacy : out, {width: 640, height: 448}, `${id} — walls[${g.index}] (${g.bearingDeg}°) — ${verdict} · ${status}`);
+    if (gl?.likeness) {
+      // Rows: photo | model elevation | overlay; swatches, numbers, verdict; the front and 3/4 views.
+      const {row1, row2, width} = await likenessRows(gl, 640);
+      const views = await sharp(legacy).toBuffer(), vm = await sharp(views).metadata(), r1 = await sharp(row1).metadata(), r2 = await sharp(row2).metadata();
+      const W = Math.max(width, vm.width!), title = Buffer.from(`<svg width="${W}" height="40"><text x="10" y="27" font-family="Helvetica, Arial" font-size="22" font-weight="bold" fill="#1f2328">${`${id} — walls[${g.index}] (${g.bearingDeg}°) — ${verdict} · ${status}`.replace(/&/g, '&amp;')}</text></svg>`);
+      await sharp({create: {width: W, height: 40 + r1.height! + 8 + r2.height! + 8 + vm.height!, channels: 3, background: '#f4f4f2'}})
+        .composite([{input: title, left: 0, top: 0}, {input: row1, left: 0, top: 40}, {input: row2, left: 0, top: 48 + r1.height!}, {input: views, left: 0, top: 56 + r1.height! + r2.height!}]).png().toFile(out);
+      await fs.rm(legacy, {force: true});
+    }
     sheets.push(out);
   }
   // Aerials from the footprint centre, two opposite corners.
@@ -81,7 +109,7 @@ export async function largeContactSheets(id: string, built: CompiledLargeBuildin
   const d = ext * 1.6, size = {width: 800, height: 600};
   const aerial = await renderModels([{file}], [[1, 1], [-1, -1]].map(([sx, sz]) => ({eye: [cx + sx * d * 0.7, top + d * 0.55, cz + sz * d * 0.7], target: [cx, top * 0.35, cz], fov: 35, ...size})));
   const out = path.join(ARTIFACTS, id, 'contact-aerial.png');
-  await contactSheet([{image: aerial[0], text: 'aerial from south-east'}, {image: aerial[1], text: 'aerial from north-west'}], out, {width: 640, height: 480}, `${id} — ${status}`);
+  await contactSheet([{image: aerial[0], text: 'aerial from south-east'}, {image: aerial[1], text: 'aerial from north-west'}], out, {width: 640, height: 480}, `${id} — ${status} · ${likenessLine(likeness)}`);
   sheets.push(out);
   return sheets;
 }
@@ -92,12 +120,14 @@ if (process.argv[1]?.endsWith('building-recipes/large.ts')) {
   let failed = false;
   try {
     for (const id of ids) {
-      const {report, built, intent} = await compileLargeHouse(id);
+      const {report, built, intent, likeness} = await compileLargeHouse(id);
       const bad = report.gates.filter(g => !g.pass);
       failed ||= bad.length > 0;
       console.log(`${id}: ${report.triangles} tris, ${report.bytes} B, ${(report.timings.fitCompileMs + report.timings.exportGateMs).toFixed(0)} ms, openings ${report.compose.recessed ?? 0} recessed / ${report.compose.proud ?? 0} flush, components ${JSON.stringify(report.components)}, gates ${bad.length ? 'FAIL ' + bad.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ') : 'pass'}`);
       for (const w of report.fit.warnings) console.log(`  warn: ${w}`);
-      if (!process.argv.includes('--no-render')) for (const s of await largeContactSheets(id, built, intent)) console.log(`  ${s}`);
+      console.log(`  ${likenessLine(likeness)}`);
+      for (const g of likeness ?? []) if (g.likeness) { const L = g.likeness; console.log(`    walls[${g.group}] ${L.verdict}: wall ${L.wall.photo} vs ${L.wall.model} (dL ${L.wall.dL}), glazing ${L.glazing.photoMean} vs ${L.glazing.modelMean}, columns ${L.columns.photo} vs ${L.columns.model}, shape ${L.shape.photo} vs ${L.shape.model}, IoU ${L.iou}${L.reasons.length ? ' — ' + L.reasons.join('; ') : ''}`); }
+      if (!process.argv.includes('--no-render')) for (const s of await largeContactSheets(id, built, intent, likeness)) console.log(`  ${s}`);
     }
   } finally { await closeRenderer(); }
   if (process.argv.includes('--strict') && failed) process.exit(1);
