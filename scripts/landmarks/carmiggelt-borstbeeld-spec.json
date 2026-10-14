@@ -1,0 +1,41 @@
+{
+  "id": "carmiggelt-borstbeeld",
+  "name": "Simon Carmiggelt bust (Weteringplantsoen)",
+  "landmarkId": "osm_artwork_440673918",
+  "modelUrl": "./models/carmiggelt-borstbeeld.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8887091,
+      52.3598612
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 0.6,
+    "widthMetres": 0.6
+  },
+  "surveyed": {
+    "anchor": [
+      4.8887091,
+      52.3598612
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM node 440673918 (Simon Carmiggelt, bust by Kees Verkade, 1988); bust read from Anefo photographs 934-3460..3464 (Rob Croes, CC0, 1988-10-25); the 2020 panoramas show only a blurred pillar; facing (150 degrees, +-45) and the pillar and bust sizes are estimates. The brief placed it on the Kloveniersburgwal; OSM and the 1988 photographs put it in the Weteringplantsoen"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#3a4440",
+    "concrete": "#c1bcb2",
+    "greyBrick": "#4b4c4c"
+  },
+  "attribution": {
+    "title": "Simon Carmiggelt bust - original low-poly reconstruction",
+    "author": "Map Recall; after the 1988 bust by Kees Verkade",
+    "sourceUrl": "https://www.openstreetmap.org/node/440673918",
+    "modifications": "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE"
+  }
+}

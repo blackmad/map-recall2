@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "id": "carmiggelt-borstbeeld",
+ "signature": [
+  "cg-bust",
+  "cg-pillar"
+ ],
+ "walls": [
+  {
+   "tag": "se-150",
+   "bearing": 150,
+   "lengthM": 0.5,
+   "evidence": "photo",
+   "panoId": "commons:Borstbeeld_Simon_Carmiggelt_Kronkel_onthuld_in_Amsterdam_Bestanddeelnr_934-3464.jpg",
+   "capturedAt": "1988-10-25",
+   "note": "Profile and three-quarter views of the bust on its pillar at the unveiling (Anefo, CC0).",
+   "items": [
+    {
+     "id": "cg-bust",
+     "kind": "sculpture",
+     "where": "rough-hewn bronze bust with thick glasses, swept hair, jacket and open collar",
+     "approxSizeM": [
+      0.6,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "builder: bust kit (torso, shoulders, neck, head with glasses and hair, lapels, collar)",
+     "seenIn": "commons:Borstbeeld_Simon_Carmiggelt_Kronkel_onthuld_in_Amsterdam_Bestanddeelnr_934-3464.jpg"
+    },
+    {
+     "id": "cg-pillar",
+     "kind": "other",
+     "where": "square speckled-granite pillar with a projecting cap and a small plaque",
+     "approxSizeM": [
+      0.58,
+      1.1
+     ],
+     "plan": "modelled",
+     "how": "builder: box, cap slab and plate",
+     "seenIn": "commons:Borstbeeld_Simon_Carmiggelt_Kronkel_onthuld_in_Amsterdam_Bestanddeelnr_934-3464.jpg"
+    }
+   ],
+   "centre": [
+    4.8887091,
+    52.3598612
+   ],
+   "checked": true
+  },
+  {
+   "tag": "nw-330",
+   "bearing": 330,
+   "lengthM": 0.5,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back: not photographed; plain.",
+   "items": [],
+   "centre": [
+    4.8887091,
+    52.3598612
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam, Anefo 934-3464",
+   "url": "https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg",
+   "licence": "CC0 (Rob Croes / Anefo)"
+  },
+  {
+   "name": "OpenStreetMap node 440673918",
+   "url": "https://www.openstreetmap.org/node/440673918",
+   "licence": "ODbL"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
