@@ -56,6 +56,10 @@ for (const spec of places) {
   // Hold the pose: re-apply each frame in case the boat physics nudges it.
   await page.waitForTimeout(settle);
   await page.evaluate(() => window.__hideCards && window.__hideCards());
+  // CAMZOOM=<z> sets the game camera zoom (0.16 is the aerial demo spot).
+  if (process.env.CAMZOOM) { await page.evaluate(z => { canalRecallGame.camera.zoom = z; }, Number(process.env.CAMZOOM)); await page.waitForTimeout(500); }
+  // TIER=from,to overrides the facade cells' screen-footprint tier (roofTier.ts) on every resident chunk (A/B only).
+  if (process.env.TIER) { await page.evaluate((tier) => { for (const e of canalRecallGame.vectorMap._threeBuildings.chunks.values()) { const u = e.mesh?.material?.uniforms; if (u?.cellTier) u.cellTier.value = tier; } canalRecallGame.vectorMap.map.triggerRepaint(); }, process.env.TIER.split(',').map(Number)); await page.waitForTimeout(500); }
   // EVAL_JS=<file>: a function body run in the page before each shot (e.g. answer a question so its name is painted).
   if (process.env.EVAL_JS) { await page.evaluate(src => (0, eval)(src), fs.readFileSync(process.env.EVAL_JS, 'utf8')); await page.waitForTimeout(Number(process.env.EVAL_WAIT_MS || 1500)); }
   const info = await page.evaluate(() => {
