@@ -502,7 +502,7 @@ test('layered kit: a curtain grid over a bent glass skin, emitted per facet, and
     if (c.p.n[2] < 0.9) return;
     profile = c.profile; members = c.p.members?.length ?? 0;
     const cells = withPlinth ? info.cells.filter(x => x.floor > 0) : info.cells;
-    if (withPlinth) { c.box('door', c.p.uMin, c.p.uMax, 0, info.levels[1], 0, 0.045, c.part()); plinth++; }
+    if (withPlinth) { c.box('door', c.p.uMin, c.p.uMax, 0, info.levels[1], 0, 0.09, c.part()); plinth++; }
     drawCurtainGrid(c, cells, info.levels, 'frame', 8.95);
   };
   const skin = {wallSlotFor: () => 'glass'};
@@ -522,7 +522,7 @@ test('layered kit: a curtain grid over a bent glass skin, emitted per facet, and
   assert.ok(n > 0 && worst < 0.01, `glass skin off the bent profile by ${worst} m`);
   const withPlinth = bent(sys, true, {...skin, panelHook: hook(true)});
   assert.ok(plinth > 0);
-  assert.equal(withPlinth.m2, 0, 'the plinth panel (4.5 cm) shares no plane with the skin or the grid above it');
+  assert.equal(withPlinth.m2, 0, 'the plinth panel (9 cm) shares no plane with the skin or the grid above it');
 });
 
 test('layered kit: a thin stone arch ring (3 cm) stands a full sheet layer off the wall (ring/brick)', async () => {
