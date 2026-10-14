@@ -667,13 +667,15 @@ test('garageBays puts garage doors in exactly the listed bays; absent = identica
   assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
 });
 
-test('measured groups export their wall and arch-ring slots with tintSource measured; houses without a measured record do not', () => {
+test('measured groups export their wall, arch-ring and own glass slots with tintSource measured; houses without a measured record do not', () => {
   const tinted = (id: string) => {
     const g = (compileBuilding(validateLargeIntent(raw(id)), facts(id)) as import('./largeCompile.ts').CompiledLargeBuilding).group, out: string[] = [];
     g.traverse(o => { const m = (o as {material?: {userData?: {tintSource?: string}}}).material; if (m?.userData?.tintSource === 'measured') out.push(o.name); });
     return out.sort();
   };
-  assert.deepEqual(tinted('houthavenkade-26-247232'), ['wall/wall@g0', 'wall/wall@g1']);
+  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0', 'glass/glass@g1', 'wall/wall@g0', 'wall/wall@g1']);
+  // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not.
+  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'wall/wall@g0']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
   assert.deepEqual(tinted('politie-van-leijenberghlaan'), []);
 });
