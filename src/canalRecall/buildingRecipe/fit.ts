@@ -66,6 +66,11 @@ export const LADDER = {minM: 0.55, maxM: 0.75, pierM: 0.16, heightK: 0.68, sillK
 export const ladderBars = (heightM: number): number[] => { const n = clamp(Math.round(heightM / 0.5), 4, 6); return Array.from({length: n}, (_, k) => round((k + 1) / (n + 1), 4)); };
 /** Multi-bay erker (`bayWindows.bays`) proportions. */
 export const ERKER = {depthM: 0.55, returnM: 0.25, insetM: 0.08, stallriserM: 0.85, headM: 0.2, closureM: 0.08};
+/** Timber balcony on brackets (`balconies.style: timber-bracketed`): platform, guard and bracket proportions. */
+export const TIMBER_BALCONY = {projectM: 0.75, slabM: 0.14, sideM: 0.25, guardM: 1.0, bracketPitchM: 1.1, balusterPitchM: 0.16, endInsetM: 0.05};
+/** Painted stucco dressings of the 1900 Oud-West set (`bands: painted`, `windowSurround: eared-keystone`, `windowSills: consoles`). */
+export const PAINTED = {bandSillM: 0.14, bandTransomM: 0.1, bandHeadM: 0.17, transomK: 0.78, bandDepthM: 0.04, headM: 0.1, headDepthM: 0.08, headRunM: 0.12, blockM: 0.13, blockHM: 0.25, blockDepthM: 0.11, keyPitchM: 0.4,
+  sillM: 0.08, sillDepthM: 0.1, sillRunM: 0.12, consoleWM: 0.1, consoleHM: 0.16, consoleDepthM: 0.08};
 /** Rigid shop canopy (`awning.style: rigid`) proportions, from the streamed continuous canopy (shopCanopies.ts) widened to the Amsterdam School luifel. */
 export const RIGID_CANOPY = {projectM: 1.2, thicknessM: 0.16, fasciaM: 0.3, fasciaDepthM: 0.06, clearM: 0.02, endInsetM: 0.05};
 
@@ -91,7 +96,9 @@ export interface FitReport {
     /** Brick lisenes (`lisenes`), facade x; `party` marks the end whose outer face follows the party plane. */
     lisenes?: {leftM: number; widthM: number; bottomM: number; topM: number; party: 'start' | 'end' | null}[];
     /** Multi-bay erker (facade x): its stack's top, plan and cap. */
-    erker?: {leftM: number; widthM: number; frontWidthM: number; depthM: number; topM: number; cap: 'hip' | 'flat' | 'none'};
+    erker?: {leftM: number; widthM: number; frontWidthM: number; depthM: number; topM: number; cap: 'hip' | 'flat' | 'none'; finish?: 'painted'};
+    /** Timber balconies on brackets (facade x): one per storey run of neighbouring balcony bays; `floorM` = platform top. */
+    timberBalconies?: {id: string; leftM: number; widthM: number; floorM: number; projectM: number; slabM: number; guardM: number; rail: 'turned' | 'iron'}[];
     /** Eaves from a photo measurement (block-face strip) instead of the 3DBAG profile. */ measuredEaves?: boolean}[];
   warnings: string[];
   /** Height the model may exceed the LoD2.2 roof max by: 3DBAG LoD2.2 has no dormers, so declared dormers stand above it. */
@@ -275,7 +282,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         glazedBays.push({id: `bay-s${s}-b${b}`, leftM: centre - bw / 2, bottomM: y + h * 0.12, widthM: bw, heightM: bh, depthM: 0.55, frontWidthM: bw * 0.72, lowerPanelM: 0.28, upperPanelM: 0.22, frameWidthM: 0.05, frameDepthM: 0.06, glassDepthM: 0.02, verticalBars: [.5], horizontalBars: [.3]});
         continue;
       }
-      const balcony = f.balconies?.storeys.includes(s) && f.balconies.bays.includes(b);
+      const balcony = f.balconies?.storeys.includes(s) && (f.balconies.storeyBays?.[String(s)] ?? f.balconies.bays).includes(b);
       if (balcony) {
         balconies.push({storey: s, bay: b});
         const balW = Math.min(winW * 1.15, winW + 0.3 * Math.max(0, pitch - winW));
@@ -660,15 +667,21 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // Bay windows, balcony guards and masonry courses (street-house features).
     const idFor = (k: number, base: string) => `${pieces.length > 1 ? `${front.id}-` : ''}${base}${count > 1 ? `-m${k}` : ''}`;
     if (layout.glazedBays.length) elevation.glazedBays = seen(Array.from({length: count}, (_, k) => layout.glazedBays.map(g => ({...g, id: idFor(k, g.id), leftM: round(flipX(place(k, g.leftM!, g.widthM), g.widthM))}))).flat());
-    if (layout.balconies.length) {
+    // Timber balconies on brackets are built after the library (oudWest.ts); the library keeps only the French windows.
+    // `styleStoreys` keeps the library guard on the other balcony storeys.
+    const timberAt = (s: number) => front.balconies?.style === 'timber-bracketed' && (front.balconies.styleStoreys ?? front.balconies.storeys).includes(s);
+    const timberBalconies = layout.balconies.some(b => timberAt(b.storey)) ? timberBalconyRuns(front, {...layout, balconies: layout.balconies.filter(b => timberAt(b.storey))}, elevation.openings.value, pieces.length > 1 ? `${front.id}-` : '', width, warnings) : undefined;
+    const guarded = timberBalconies ? layout.balconies.filter(b => !timberAt(b.storey)) : layout.balconies;
+    if (guarded.length) {
       const projecting = !!front.balconies?.projecting;
-      elevation.balconies = seen(Array.from({length: count}, (_, k) => layout.balconies.map(b => {
+      elevation.balconies = seen(Array.from({length: count}, (_, k) => guarded.map(b => {
         const opening = moduleOpenings.find(o => o.id === `${count > 1 ? '' : ''}s${b.storey}-b${b.bay}${count > 1 ? `-m${k}` : ''}`)!;
         return {id: idFor(k, `rail-s${b.storey}-b${b.bay}`), openingId: pieces.length > 1 ? `${front.id}-${opening.id}` : opening.id, heightM: 0.9, depthM: projecting ? 0.6 : 0.12, barWidthM: 0.02, posts: projecting ? 9 : 7, ...(projecting ? {projection: {widthM: round(opening.widthM + 0.5), slabThicknessM: 0.12, pierWidthM: 0.06}} : {})};
       })).flat());
     }
     const bandBrick = !!(front.palette?.band ?? intent.palette.band);
     if (front.bands === 'courses' && layout.school) lintelBands = brickCourses(front, layout, width, flipX);
+    else if (front.bands === 'painted') lintelBands = paintedBands(front, layout, elevation.openings.value, width, flipX);
     else if (front.bands && front.bands !== 'none') {
       const bottoms: number[] = []; let acc = layout.groundBase;
       for (const h of layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0)) { bottoms.push(acc); acc += h; }
@@ -859,6 +872,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(o.id);
         if (!m || o.kind !== 'window' || !wanted.includes(Number(m[1]))) continue;
         const top = o.bottomM + o.heightM, ox = 0.07, oy = o.id;
+        if (front.windowSurround === 'eared-keystone') { dressings.push(...earedHead(o, oy, width)); continue; }
         if (front.windowSurround === 'sill') {
           dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
         } else if (front.windowSurround === 'keystone') {
@@ -880,6 +894,14 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         if (!m || o.kind !== 'window' || !(front.windowHead!.storeys ? front.windowHead!.storeys.includes(s) : s > 0)) continue;
         const kw = round(clamp(o.widthM * 0.18, 0.16, 0.26)), top = front.windowHead!.kind === 'relieving' ? relieving(o).top : headTop.get(o.id) ?? o.bottomM + o.heightM;
         dressings.push({id: `keystone-${o.id}`, kind: 'slab', leftM: round(o.leftM + o.widthM / 2 - kw / 2), bottomM: round(top - 0.02), widthM: kw, heightM: round(ringM + 0.08), depthM: 0.06, surface: ringSurface ?? 'stone'});
+      }
+    }
+    if (front.windowSills === 'consoles') {
+      const wanted = front.surroundStoreys ?? Array.from({length: front.storeys}, (_, k) => k).filter(k => k > 0 || !front.shopfront);
+      for (const o of elevation.openings.value) {
+        const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(o.id);
+        if (!m || o.kind !== 'window' || !wanted.includes(Number(m[1])) || layout.balconies.some(b => o.id.endsWith(`s${b.storey}-b${b.bay}`))) continue;
+        dressings.push(...consoleSill(o, o.id, width));
       }
     }
     if (front.quoins === 'stone') {
@@ -925,7 +947,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
       ...(canopy ? {canopy} : {}),
       ...(lisenes ? {lisenes} : {}),
-      ...(erker ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none'}} : {})});
+      ...(erker ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
+      ...(timberBalconies ? {timberBalconies} : {})});
   }
   // The corner tower's body stands on the lower of the two fronts' eaves, to the shared top.
   if (corner) for (const r of reports) for (const t of r.towers ?? []) if (t.corner) { t.bottomM = corner.bottomM; t.topM = corner.topM!; }
@@ -957,6 +980,81 @@ function brickCourses(front: FrontIntent, layout: Layout, width: number, flipX: 
     const limit = s + 1 < heights.length ? school.bottoms[s] + heights[s] + heights[s + 1] * 0.12 : school.bottoms[s] + heights[s] - 0.02;
     for (let k = 0; k < n; k++) { const bottom = head + 0.05 + k * 0.11; if (bottom + 0.05 > limit) break; push(`course-s${s}-${k}`, s, bottom, 0.05, 0.07); }
   }
+  return out;
+}
+
+/**
+ * Timber balconies (`balconies.style: timber-bracketed`): per storey, the French windows of neighbouring balcony bays form
+ * one run; the platform reaches `sideM` past the run on both sides (kept 5 cm inside the front) at the storey floor.
+ * Facade x (the openings are already in the facade frame).
+ */
+function timberBalconyRuns(front: FrontIntent, layout: Layout, openings: CanalhouseOpening[], prefix: string, width: number, warnings: string[]): NonNullable<FitReport['fronts'][number]['timberBalconies']> {
+  const t = TIMBER_BALCONY, out: NonNullable<FitReport['fronts'][number]['timberBalconies']> = [];
+  for (const s of [...new Set(layout.balconies.map(b => b.storey))].sort((a, b) => a - b)) {
+    const bays = layout.balconies.filter(b => b.storey === s).map(b => b.bay).sort((a, b) => a - b), runs: number[][] = [];
+    for (const b of bays) { const last = runs.at(-1); if (last && b === last.at(-1)! + 1) last.push(b); else runs.push([b]); }
+    runs.forEach((run, k) => {
+      const os = run.map(b => openings.find(o => o.id === `${prefix}s${s}-b${b}`)).filter((o): o is CanalhouseOpening => !!o);
+      if (!os.length) return;
+      const left = Math.max(t.endInsetM, Math.min(...os.map(o => o.leftM)) - t.sideM), right = Math.min(width - t.endInsetM, Math.max(...os.map(o => o.leftM + o.widthM)) + t.sideM);
+      if (right - left < 0.8) { warnings.push(`${front.id}: timber balcony s${s} is ${round(right - left, 2)} m wide; skipped`); return; }
+      out.push({id: `${prefix}timber-s${s}${runs.length > 1 ? `-${k}` : ''}`, leftM: round(left), widthM: round(right - left), floorM: round(Math.min(...os.map(o => o.bottomM)) - 0.04), projectM: t.projectM, slabM: t.slabM, guardM: t.guardM, rail: front.balconies?.rail ?? 'turned'});
+    });
+  }
+  return out;
+}
+
+/** The storey (0 = ground) of a storey window id (`s2-b1`, `front-s2-b1a`), or null. */
+const storeyOf = (id: string) => { const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(id); return m ? Number(m[1]) : null; };
+
+/**
+ * Painted stucco bands (`bands: painted`): on every band storey one band under the window sills and one at the window
+ * heads, across the whole front (stone colour; the library cuts them around the openings). Sill and head lines are the
+ * storey's ordinary windows (French windows and doors, which reach the floor, are left out); a storey without any uses
+ * the fitted proportions. A multi-bay erker interrupts them on its storeys. Facade x.
+ */
+function paintedBands(front: FrontIntent, layout: Layout, openings: CanalhouseOpening[], width: number, flipX: (x: number, w: number) => number): CanalhouseFacadeBlock[] {
+  const heights = layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0), full = Math.floor(width * 1000) / 1000, out: CanalhouseFacadeBlock[] = [];
+  const hs = front.bandHeights?.sill ?? PAINTED.bandSillM, hh = front.bandHeights?.head ?? PAINTED.bandHeadM, ht = front.bandHeights?.transom ?? PAINTED.bandTransomM;
+  const lines = front.bandLines ?? ['sill', 'head'];
+  const storeys = front.bandStoreys ?? heights.map((_, s) => s).filter(s => s > 0 || !(front.shopfront || front.groundFront));
+  const erker = layout.school?.erker, gap = erker ? [flipX(erker.leftM, erker.widthM) - 0.01, flipX(erker.leftM, erker.widthM) + erker.widthM + 0.01] : null;
+  let bottom = layout.groundBase;
+  const bottoms = heights.map(h => { const b = bottom; bottom += h; return b; });
+  for (const s of storeys) {
+    const h = heights[s], b0 = bottoms[s], mine = openings.filter(o => o.kind === 'window' && storeyOf(o.id) === s && o.bottomM > b0 + 0.15);
+    const sill = mine.length ? Math.min(...mine.map(o => o.bottomM)) : b0 + h * 0.22, head = mine.length ? Math.max(...mine.map(o => o.bottomM + o.heightM)) : b0 + h * 0.8;
+    const transom = sill + (head - sill) * PAINTED.transomK;
+    const runs: [number, number][] = gap && erker!.storeys.includes(s) ? ([[0, gap[0]], [gap[1], full]] as [number, number][]).filter(([a, c]) => c - a > 0.1) : [[0, full]];
+    const push = (id: string, y: number, bh: number) => runs.forEach(([a, c], k) => out.push({id: runs.length > 1 ? `${id}-${k}` : id, leftM: round(Math.max(0, a)), bottomM: round(y), widthM: Math.floor((Math.min(full, c) - Math.max(0, a)) * 1000) / 1000, heightM: round(bh), depthM: PAINTED.bandDepthM, surface: 'stone'}));
+    if (lines.includes('sill')) push(`painted-sill-s${s}`, Math.max(b0 + 0.02, sill - hs), Math.min(hs, sill - b0 - 0.02));
+    if (lines.includes('transom')) push(`painted-transom-s${s}`, transom - ht / 2, ht);
+    // The head band stays under the next storey's sill band.
+    if (lines.includes('head')) push(`painted-head-s${s}`, head, Math.min(hh, b0 + h - head - 0.02));
+  }
+  return out.filter(b => b.heightM >= 0.04 && b.widthM > 0.1);
+}
+
+/**
+ * Eared head with keystones (`windowSurround: eared-keystone`) over one window: a head band `headRunM` past both jambs,
+ * an ear block standing on each end of it and keystone blocks between them (one per `keyPitchM` of window width, at least
+ * one). Facade x; blocks that would leave the front are dropped.
+ */
+export function earedHead(o: CanalhouseOpening, id: string, width: number) {
+  const p = PAINTED, top = o.bottomM + o.heightM, out: Extract<CanalhouseDressing, {kind: 'slab'}>[] = [];
+  const l = Math.max(0.01, o.leftM - p.headRunM), r = Math.min(width - 0.01, o.leftM + o.widthM + p.headRunM);
+  out.push({id: `head-${id}`, kind: 'slab', leftM: round(l), bottomM: round(top - 0.01), widthM: round(r - l), heightM: p.headM, depthM: p.headDepthM, surface: 'stone'});
+  const keys = Math.max(1, Math.round(o.widthM / p.keyPitchM) - 1), xs = [l, ...Array.from({length: keys}, (_, k) => o.leftM + o.widthM * (k + 1) / (keys + 1) - p.blockM / 2), r - p.blockM];
+  xs.forEach((x, k) => out.push({id: `${k === 0 ? 'ear-l' : k === xs.length - 1 ? 'ear-r' : `key-${k}`}-${id}`, kind: 'slab', leftM: round(x), bottomM: round(top + 0.01), widthM: p.blockM, heightM: p.blockHM, depthM: p.blockDepthM, surface: 'stone'}));
+  return out;
+}
+
+/** Sill slab under one window (`windowSills: consoles`) on two console blocks. Facade x. */
+export function consoleSill(o: CanalhouseOpening, id: string, width: number) {
+  const p = PAINTED, l = Math.max(0.01, o.leftM - p.sillRunM), r = Math.min(width - 0.01, o.leftM + o.widthM + p.sillRunM), y = o.bottomM - p.sillM + 0.01;
+  const out: Extract<CanalhouseDressing, {kind: 'slab'}>[] = [{id: `sill-${id}`, kind: 'slab', leftM: round(l), bottomM: round(y), widthM: round(r - l), heightM: p.sillM, depthM: p.sillDepthM, surface: 'stone'}];
+  if (y - p.consoleHM > 0.05) for (const [side, x] of [['l', l + 0.04], ['r', r - 0.04 - p.consoleWM]] as const)
+    out.push({id: `console-${side}-${id}`, kind: 'slab', leftM: round(x), bottomM: round(y - p.consoleHM), widthM: p.consoleWM, heightM: p.consoleHM, depthM: p.consoleDepthM, surface: 'stone'});
   return out;
 }
 
