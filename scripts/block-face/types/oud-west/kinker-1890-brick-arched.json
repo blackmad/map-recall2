@@ -26,11 +26,6 @@
         "keystone": true
       }
     },
-    "bands": "painted",
-    "bandHeights": {
-      "sill": 0.04,
-      "head": 0.05
-    },
     "windowHeights": [
       0.7,
       0.7,
@@ -161,7 +156,7 @@
   ],
   "schemaLimits": [
     "dotted impost course (blocks) vs the continuous painted head band",
-    "white tympanum lunettes over the top-storey arches (244-332 236631, 156795) are not in the kit",
+    "white tympanum lunettes (244-332 236631, 156795) are a placement override (windowHead.tympanum: stone)",
     "rubbed-brick arch ring colour",
     "dormer scroll cheeks"
   ],

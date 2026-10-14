@@ -26,9 +26,15 @@
     "windows": "two-light"
   },
   "crowns": {
+    "roof-boxes": {
+      "gable": "flat",
+      "dormers": 2,
+      "dormerStyle": "box",
+      "note": "109-161: two dark brick roof boxes per module standing on the wall top (dormerStyle box: brick cheeks, flat top); the first sheet pass with the white pointed plain dormer read worse than none"
+    },
     "flat": {
       "gable": "flat",
-      "note": "flat wall top; the dark brick roof boxes standing on it (two per module on 109-161) are left out: the kit's dormers are white trim with a pointed roof, which reads worse than none (first sheet pass)"
+      "note": "flat wall top (173-225 behind the set-back top storey)"
     }
   },
   "palettes": {
@@ -61,7 +67,7 @@
     "photoGables": 0,
     "schemaLimits": [
       "the recessed two-storey arcade with a first-floor gallery (piers, gallery rail, shops set back ~3 m) is drawn as a flush double-height shopfront with a mezzanine band",
-      "dark brick roof boxes on the wall top (no dark/brick dormer in the kit)",
+      "the roof boxes' fronts are glazed with white frames in the kit; on the photo they are dark",
       "the wide three-light window on storey 3 is drawn about 1.5 m wide (photo ~2.2 m)",
       "recessed glazed stair slots between modules",
       "the curved drum corner and cream set-back top storey of 125 and 173-225 are not in the kit"
@@ -101,7 +107,6 @@
   ],
   "schemaLimits": [
     "arcade with gallery",
-    "roof boxes",
     "set-back top storey",
     "drum corner",
     "stair slots"

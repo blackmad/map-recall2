@@ -41,6 +41,7 @@ export type WindowKind = typeof WINDOWS[number];
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
 /** `solid`: a continuous ring; `blocks`: five radiating stone blocks with brick between (the 17th-c. block arch); `none`: no ring, only the keystone (19th-c. carved keystones over plain brick heads). */
 export const ARCH_RING_STYLES = ['solid', 'blocks', 'none'] as const;
+export const TYMPANUM_FILLS = ['stone', 'band'] as const;
 /** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, or the `frame` paint. */
 export const ARCH_RING_COLOURS = ['stone', 'band', 'frame'] as const;
 /** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
@@ -68,7 +69,8 @@ export const ROOF_GABLETS = ['crest', 'pediment'] as const;
 export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
 export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel'] as const;
 export type GroundBay = typeof GROUND_BAYS[number];
-export const DORMER_STYLES = ['plain', 'pediment', 'pointed'] as const;
+/** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
+export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box'] as const;
 /** Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab). */
 export const TOWER_CAPS = ['pyramid', 'flat', 'stepped'] as const;
 /** Cap on the top storey of a multi-bay erker (`bayWindows.bays`): a hipped lean-to roof, a flat slab, or none (a plain closure). */
@@ -183,7 +185,14 @@ export interface FrontIntent {
    * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
    * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
    */
-  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number}};
+  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number};
+    /**
+     * Tympanum (Kinkerstraat 1886-1897: 49-53, 288, 298): the arched part of a segmental or round head is a solid painted
+     * fill (`stone`, or the palette's band brick) instead of glass. The glazing stops square at the springing line (the
+     * head minus the arch rise); the fill is the arch segment over it, 2 cm proud, under the ring. A keystone stays at the
+     * arch crown.
+     */
+    tympanum?: typeof TYMPANUM_FILLS[number]};
   /** Window width as a share of the front (all windows of a full storey together, 0.3..0.8; survey median 0.66). Default: the legacy 58 % of an equal-pier bay. Only on the shared equal-pier grid (not with bayWidths). */
   windowShare?: number;
   /**
@@ -821,7 +830,8 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   }
   const h = f.windowHead;
   if (h !== undefined) {
-    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing)`);
+    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing, tympanum)`);
+    if (h?.tympanum !== undefined) { oneOf(h.tympanum, TYMPANUM_FILLS, `${at}.windowHead.tympanum`); if (h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head`); }
     oneOf(h?.kind, WINDOW_HEADS, `${at}.windowHead.kind`);
     if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
     if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);

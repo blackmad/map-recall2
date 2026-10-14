@@ -24,7 +24,8 @@
         "colour": "stone",
         "style": "blocks",
         "keystone": true
-      }
+      },
+      "tympanum": "stone"
     },
     "bands": "speklagen",
     "speklagen": {
@@ -82,7 +83,7 @@
     "photoGables": 1,
     "schemaLimits": [
       "radiating white voussoirs (sunburst arches) are drawn as blocked arches (springers, two voussoirs, keystone)",
-      "white tympana in the round heads are glazed",
+      "white tympana are drawn on every head storey (windowHead.tympanum); on the photo the top storey's heads are glazed",
       "speklagen are evenly spaced every 14 courses (0.77 m, the photo median); on the photo they also step around the arch springers",
       "gable scrolls and pinnacles"
     ]
@@ -118,7 +119,6 @@
   ],
   "schemaLimits": [
     "sunburst voussoirs",
-    "tympana",
     "multiple speklagen per storey",
     "gable scrollwork"
   ],
