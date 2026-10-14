@@ -46,7 +46,16 @@
    "sills": false,
    "windows": "narrow",
    "piers": true,
-   "cornice": true
+   "cornice": true,
+   "balconies": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "every": 3,
+    "first": 2
+   }
   },
   {
    "wallSurfaces": [
@@ -99,7 +108,8 @@
  "notes": [
   "Plantage Middenlaan 52 (BAG: built 2022; 294 dwellings, a health-care, a sport, an office and five other units; 6,543 m2 footprint, 22 m): a courtyard housing block on the site of the 1970s Plantage building (the 2018 panorama w01-210 shows that demolished building behind site fencing, so no south-west wall is cited). The new block is photographed on three walls: the north-east street front (w02-30, 2023-01-13: dark brown brick, tall vertical piers between narrow windows, cream stone balcony slabs with moulded edges and a continuous stone belt course over a high ground floor, a zinc mansard roof with dormers), the courtyard front (w03-30, 2025-06-19: the same grid in buff brick with glazed balcony rails) and the north-west front (w04-300, 2023-01-13: dark brick with deep cream balcony slabs on brick piers).",
   "Modelled: three 6-storey groups (street front panels 8 and 6; courtyard panel 98 in buff brick; north-west panels 24 and 14) of narrow-window bays between brick piers under a stone cornice (a top parapet band in the photographs); six storeys rather than the seven counted in the photograph because a seventh storey leaves the last pier of panel 8 floating (no-floating-parts gate). Zinc roof as surveyed by 3DBAG LoD2.2. The cornice is also what attaches the last top-storey pier of panel 8 to the shell (gate no-floating-parts).",
-  "Simplified: the moulded stone slab edges are plain balcony slabs, the cantilevered stone balcony slabs are not drawn (balconies stacked 21k triangles and left 20 m2 of frame/glass z-fight at the 12k budget), the stone belt course over the ground floor is not drawn (the kit only offers a course on every storey line, which reads as a grid), the ground-floor double doors and recessed loggias are plain ground windows, the dormers are the 3DBAG roof geometry. Not modelled: the south-west and south-east walls and the inner courtyard walls other than panel 98 (no current photograph)."
+  "Simplified: the moulded stone slab edges are plain balcony slabs, balconies (layered kit: one slab, rail and pair of cheeks per balcony) are drawn on the street front only, in every third bay on storeys 2-4 as in w02-30; the courtyard and north-west balconies would exceed the 12k budget (11,997 triangles with the street front alone), the stone belt course over the ground floor is not drawn (the kit only offers a course on every storey line, which reads as a grid), the ground-floor double doors and recessed loggias are plain ground windows, the dormers are the 3DBAG roof geometry. Not modelled: the south-west and south-east walls and the inner courtyard walls other than panel 98 (no current photograph)."
  ],
- "closedBands": true
+ "closedBands": true,
+ "layeredKit": true
 }

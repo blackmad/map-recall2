@@ -376,3 +376,85 @@ test('gateways: arched carriage openings (92 % of a bay) in the listed ground ba
   const plain = validateLargeIntent({...base, walls: [{...base.walls[0], gateways: undefined}, ...base.walls.slice(1)]});
   assert.equal(Object.values(fitLarge(plain, f).recipe.spec.systems)[0].ground.cycle, undefined);
 });
+
+// ---------------------------------------------------------------------------------------------------------------
+// Layered kit (intent `layeredKit`): garage doors, portals/arches with frames, curtain walls and stacked balconies on a
+// synthetic 12 x 9 m wall (two 3DBAG strips), measured with the geometry audit's coplanar metric (zfight + tight m2).
+
+async function layeredWall() {
+  const {compose} = await import('../blockBuilding/compose.ts');
+  const {auditZFight} = await import('../landmarks/geometryAudit.ts');
+  type P3 = [number, number, number];
+  const W = (rings: P3[][], surface: number) => ({rings, onFootprintEdge: true, surface});
+  const set = {
+    pandId: '0000000000000000', anchor: [0, 0] as [number, number], groundNap: 0, heightMax: 9, constructionYear: 1900,
+    walls: [
+      W([[[-6, 0, 4], [0, 0, 4], [0, 9, 4], [-6, 9, 4]]], 0), W([[[0, 0, 4], [6, 0, 4], [6, 9, 4], [0, 9, 4]]], 1),
+      W([[[6, 0, -4], [-6, 0, -4], [-6, 9, -4], [6, 9, -4]]], 2), W([[[6, 0, 4], [6, 0, -4], [6, 9, -4], [6, 9, 4]]], 3), W([[[-6, 0, -4], [-6, 0, 4], [-6, 9, 4], [-6, 9, -4]]], 4),
+    ],
+    roofs: [{rings: [[[-6, 9, 4], [0, 9, 4], [6, 9, 4], [6, 9, -4], [-6, 9, -4]]] as P3[][], slopeDeg: 0}],
+    ground: [{rings: [[[-6, 0, 4], [6, 0, 4], [6, 0, -4], [-6, 0, -4]]] as P3[][]}],
+    neighbours: [],
+  };
+  const palette = {wall: '#7a4a3a', arch: '#6a3a2a', roof: '#555555', frame: '#eeeeee', glass: '#223344', door: '#222222', stone: '#dddddd', rail: '#333333'};
+  /** Compose the south wall with the given system (and an optional panel hook), legacy or layered; coplanar m2 and triangles. */
+  return (system: import('../blockBuilding/spec.ts').System, layered: boolean, opts: Partial<import('../blockBuilding/compose.ts').ComposeOptions> = {}) => {
+    const spec = {id: 'layered-test', pandId: '0000000000000000', name: 'layered', palette, levels: {groundM: 3.4, storeyM: 2.8, lines: [0, 3.4, 6.2, 9]}, systems: {s: system}, default: 's'};
+    const {mesh} = compose(set, spec, {recessM: 0.18, closedBoxes: true, sealSlivers: true, layered, systemFor: p => (p.n[2] > 0.9 ? 's' : null), ...opts});
+    const positions: number[] = [], triMaterial: number[] = [], names = [...mesh.slots.keys()];
+    names.forEach((slot, k) => { const v = mesh.slots.get(slot)!.positions; for (let i = 0; i < v.length; i += 9) { positions.push(...v.slice(i, i + 9)); triMaterial.push(k); } });
+    const soup = {positions, indices: Array.from({length: positions.length / 3}, (_, i) => i), triMaterial, materials: names.map(name => ({name, rgb: [0.5, 0.5, 0.5] as [number, number, number]}))};
+    const z = auditZFight(soup);
+    return {m2: +(z.area + z.tightArea).toFixed(2), tris: mesh.triangles};
+  };
+}
+
+test('layered kit: garage doors (leaf, ribs and frame on their own sheet layers) leave no coplanar overlap; legacy ribs do', async () => {
+  const wall = await layeredWall(), {drawGarageDoor} = await import('../blockBuilding/components.ts');
+  const sys = {pitch: 4, lines: [0, 3.9, 6.5, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
+  let drawn = 0;
+  const panelHook = (c: Parameters<typeof drawGarageDoor>[0], info: {cells: Parameters<typeof drawGarageDoor>[1][]}) => { for (const cell of info.cells) if (cell.floor === 0 && drawGarageDoor(c, cell, {door: 'door', frame: 'frame'})) drawn++; };
+  const legacy = wall(sys, false, {panelHook}), layered = wall(sys, true, {panelHook});
+  assert.equal(drawn, 6, 'three doors per compose');
+  assert.ok(legacy.m2 > 0.5, `legacy ribs 1.5 cm off the leaf: ${legacy.m2} m2`);
+  assert.equal(layered.m2, 0);
+});
+
+test('layered kit: arched portals and framed arched windows with a flush brick band leave no coplanar overlap', async () => {
+  const wall = await layeredWall();
+  const arch = {kind: 'segmental' as const, band: {slot: 'arch', t: 0.22, out: 0, imposts: 'stone'}};
+  const win = {w: 0.6, h: 0.6, sill: 0.85, mull: 1, transom: 0.7, frame: 'frame', glass: 'glass', frameW: 0.07, arch};
+  const portal = {w: 0.5, h: 0.78, sill: 0.06, mull: 1, frameW: 0, frame: 'frame', glass: 'door', arch: {...arch, kind: 'round' as const}};
+  const sys = {pitch: 2, ground: {kind: 'punched' as const, win: portal}, typical: {kind: 'punched' as const, win}};
+  const legacy = wall(sys, false), layered = wall(sys, true);
+  assert.ok(legacy.m2 > 1, `legacy: band 1.2 cm on the wall, bars 1.5 cm on the glass: ${legacy.m2} m2`);
+  assert.equal(layered.m2, 0);
+});
+
+test('layered kit: a curtain wall is a glass skin with a closed mullion grid standing off it (round a cut entrance)', async () => {
+  const wall = await layeredWall(), {drawCurtainGrid, drawEntrance} = await import('../blockBuilding/components.ts');
+  const sys = {pitch: 1.5, lines: [0, 3.4, 6.2, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
+  const hook = (grid: boolean) => (c: Parameters<typeof drawCurtainGrid>[0], info: {levels: number[]; cells: Parameters<typeof drawCurtainGrid>[1]}) => {
+    const mid = info.cells.filter(x => x.floor === 0 && x.bay === 3);
+    if (mid.length) drawEntrance(c, {u0: mid[0].u0 - 0.5, u1: mid[0].u1 + 0.5, v0: mid[0].v0, v1: mid[0].v1}, info.levels, {frame: 'frame', glass: 'glass', door: 'door', stone: 'stone'}, false);
+    if (grid) drawCurtainGrid(c, info.cells, info.levels, 'frame', 8.95);
+  };
+  const skin = {wallSlotFor: () => 'glass'};
+  const legacy = wall(sys, false, {...skin, panelHook: hook(false)}), layered = wall(sys, true, {...skin, panelHook: hook(true)}), bare = wall(sys, true, {...skin, panelHook: hook(false)});
+  assert.ok(legacy.m2 > 0.1, `legacy entrance bars 1.5 cm off the glass: ${legacy.m2} m2`);
+  assert.ok(layered.tris > bare.tris + 100, 'the grid is drawn');
+  assert.equal(layered.m2, 0);
+});
+
+test('layered kit: balconies on three storeys share one slab and rail per storey run, cost a fraction, and never z-fight', async () => {
+  const wall = await layeredWall(), {MAX_RAIL_RODS} = await import('../blockBuilding/compose.ts');
+  const balcony = (kind: 'bars' | 'rods') => ({kind: 'balcony' as const, balcony: {depth: 1.2, slab: {h: 0.18, slot: 'stone'}, rail: {kind, h: 1.0, slot: 'rail', top: 'frame'}, back: {w: 0.7, h: 0.72, sill: 0.25, frame: 'frame', glass: 'glass', mull: 1}}});
+  for (const kind of ['bars', 'rods'] as const) {
+    const sys = {pitch: 1.5, lines: [0, 2.6, 5.2, 7.8, 9], ground: balcony(kind), typical: balcony(kind)};
+    const legacy = wall(sys, false), layered = wall(sys, true);
+    assert.ok(legacy.m2 > 1, `${kind}: legacy ${legacy.m2} m2`);
+    assert.equal(layered.m2, 0, kind);
+    assert.ok(layered.tris < legacy.tris * 0.75, `${kind}: ${layered.tris} vs ${legacy.tris} triangles`);
+  }
+  assert.ok(MAX_RAIL_RODS <= 48);
+});

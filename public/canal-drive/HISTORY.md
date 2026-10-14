@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## Layered kit: the large-tier overlaps closed (2026-10-14, night)
+
+Lane `large/layered-kit-20261014`. Behind a new top-level intent field
+`layeredKit: true` (same pattern as `closedBands`; default compose stays
+byte-identical for all 92 fits and 59 meshes): garage doors and portals
+close the recess at the back with closed `barQuad` ribs on the 4.5 cm
+layer and an 8 cm frame ring on the 9 cm layer; arched-head bars are
+closed boxes off the glass honouring the group's `barD`; the flush brick
+arch band (1.2 cm, z-fighting the brick) is a ring 4.5 cm proud with
+soffit and outer faces, imposts and keystone 4.5 cm prouder;
+`arches.ground` also arches a windowed ground; a curtain wall makes the
+3DBAG wall the glass skin with `drawCurtainGrid` mullions (13.5 cm) and
+transoms (9 cm) as closed 10 cm boxes; balconies are one slab, rail, top
+rail and cheek pair per storey run with rods capped at 48, alternate
+storeys 4.5 cm further out, cheeks inset 4.5 cm from piers, and
+`balconies.every/first/bays` pick bays. Four `largeTier.test.ts` cases
+assert 0 m² with the layered kit and > 0 without. Re-installed: Hotel
+Arena (segmental arched ground heads and the glass pavilion, 12.2 + 8.8
+m² → 0, 8.0k tris), CGM 190 (six yellow sectional dock doors, 3.3 → 0),
+CGM 114 (four roller doors, 2.2 → 0), Plantage Middenlaan 52
+(street-front balconies every third bay on storeys 2–4, 23.7 → 0 m²,
+11,997 tris; all three fronts would exceed 12k). Hamerkanaal was not
+re-installed: its photo shows arched windows and a glazed hall, no dock
+doors. Eight older houses use these features without the flag
+(Entrepotdok, OBA Mercatorplein, Stadsloket West, five police bureaus):
+Entrepotdok with the flag goes 55.8 → 0 m² but 11.2k → 16.0k tris, over
+budget; `install-large.ts` also drops the `bagYear` six of them carry.
+
+
 ## Tropenmuseum surveyed and built (2026-10-14, night)
 
 Lane `landmarks/tropenmuseum-20261014`. The whole complex is BAG pand

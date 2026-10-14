@@ -1233,12 +1233,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Hogeschool van Amsterdam, Gerrit Rietveld Academie, Het 4e Gymnasium,
   Metis and Oostpoort Montessori, Spinoza, the UvA Spui building; AMC,
   VUmc, AvL and BovenIJ are blocked on panoramas or BAG matching.
-- **Large tier after batch 3** (2026-10-14): fix the kit overlaps that
-  batch 3 worked around (`garageDoors`/`portals`, `arches` with frames,
-  `curtain-wall`: 2–18 m² coplanar frame/glass; stacked balconies 9k tris
-  and z-fighting) so the Hotel Arena gets its arched ground-floor heads
-  and docks get real doors; Distelweg 88 to `render`+`stucco`; Plantage
-  Middenlaan 52 is 6 storeys (7 in the photo: the top pier floats); the
+- **Large tier after the layered kit** (2026-10-14, HISTORY "Layered
+  kit"): `install-large.ts` must keep `bagYear`, then re-install the
+  eight older feature users and the eight schools with `layeredKit`
+  (Entrepotdok needs a budget raise or fewer rods: 16.0k tris with the
+  flag); make `layeredKit` the default once they pass; the Arena's real
+  brick relieving arches over flat heads with a stone keystone are not a
+  kit shape; Distelweg 88 to `render`+`stucco`; Plantage Middenlaan 52 is
+  6 storeys (7 in the photo) and its slab mouldings are not modelled; the
   Utrechtsestraat 15 roof pavilion, Weteringstraat cantilever bands and
   Funenpark loggias are not modelled; six dropped pands need shell or
   footprint fixes first (Westerdoksdijk 9, Volewijkshof 6, Grasweg 698,

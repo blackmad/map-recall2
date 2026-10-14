@@ -352,8 +352,9 @@ export interface LargeWallIntent {
   cornice?: boolean;
   /** Projecting piers at the bay joints. */
   piers?: boolean;
-  /** Storeys (0 = ground) with a balcony in every bay. */
-  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; /** Only in these bays of the widest panel (a balcony over the entrance); default every bay. */ bays?: number[]};
+  /** Storeys (0 = ground) with a balcony in every bay, or only in every `every`-th bay from `first`, or the listed `bays`
+   *  (of `baysPerStorey`, e.g. a balcony over the entrance); neighbouring balcony bays join into one balcony in the layered kit. */
+  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; every?: number; first?: number; bays?: number[]};
   /** Storeys (0 = ground) with no openings (a blank floor over a shop, a plant floor). */
   blankStoreys?: number[];
   /** Police signature components: blue-and-white striped POLITIE band over the ground floor, blue lamp beside the entrance. */
@@ -421,6 +422,13 @@ export interface LargeBuildingIntent {
   palette: PaletteIntent;
   /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
   closedBands?: boolean;
+  /**
+   * Layered kit (opt-in, 2026-10-14): garage doors, portals, arched heads, curtain walls and balconies built on distinct
+   * sheet layers as closed boxes (door leaf, ribs and frame; arch bars off the glass and the flush arch band as a closed
+   * ring; a glass skin with a mullion grid; one slab and rail per balcony storey), so none leaves coplanar overlap.
+   * Earlier recipes stay byte-identical.
+   */
+  layeredKit?: boolean;
   notes?: string[];
 }
 
