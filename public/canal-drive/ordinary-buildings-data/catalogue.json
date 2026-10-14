@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -45019,7 +45019,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137448",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:47:17.322Z"
+      "updatedAt": "2026-10-14T04:41:57.882Z",
+      "meshHash": "019586c280d892ce"
     },
     {
       "id": "ordinary-0363100012240319",
@@ -49279,9 +49280,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165488",
       "name": "Hirschpassage 2 (Hirsch building, Leidseplein), Amsterdam-Centrum: 1912 sandstone department-store block with a round-arched ground arcade, giant pilasters, iron balconies, a heavy cornice and a balustraded attic",
-      "hash": "1e9c3e9819ab3a36d22456c7a2bf3610336ac48da761cbe3f054747e5410569a",
-      "sha256": "1e9c3e9819ab3a36d22456c7a2bf3610336ac48da761cbe3f054747e5410569a",
-      "bytes": 794876,
+      "hash": "a3aac84c6e073e54056859bef06af80d350d0bdb2bb95573df55ff466c4a87ff",
+      "sha256": "a3aac84c6e073e54056859bef06af80d350d0bdb2bb95573df55ff466c4a87ff",
+      "bytes": 792380,
       "triangles": 10116,
       "materials": 8,
       "textures": 0,
@@ -49826,7 +49827,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165488",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:37:35.435Z"
+      "updatedAt": "2026-10-14T04:41:52.088Z",
+      "meshHash": "07c0b2d5d4c3b767"
     },
     {
       "id": "ordinary-0363100012233657",
@@ -50216,17 +50218,18 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233657",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:37:36.717Z"
+      "updatedAt": "2026-10-14T04:41:58.793Z",
+      "meshHash": "8ab8ba272e8c9dca"
     },
     {
       "id": "ordinary-0363100012236799",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236799",
       "name": "Da Costakade 146, Amsterdam-West: 1903 factory block, a yellow-brick front of large workshop windows on Da Costakade, a red-brick range with balconies beside it, and a red-brick back range with a lettered band on the street behind",
-      "hash": "7d905307de67c1c21766ee0917137be8b333a05d8d159f6387202819d103aba8",
-      "sha256": "7d905307de67c1c21766ee0917137be8b333a05d8d159f6387202819d103aba8",
-      "bytes": 902756,
-      "triangles": 11751,
+      "hash": "b7f819db678f41ec2be4e8e96b34ab0e94c56d7880fe64b855133c33a86069b1",
+      "sha256": "b7f819db678f41ec2be4e8e96b34ab0e94c56d7880fe64b855133c33a86069b1",
+      "bytes": 899676,
+      "triangles": 11707,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -50474,7 +50477,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236799",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:42:07.323Z"
+      "updatedAt": "2026-10-14T04:41:48.887Z",
+      "meshHash": "ba627cc61c9fa079"
     },
     {
       "id": "ordinary-0363100012209785",

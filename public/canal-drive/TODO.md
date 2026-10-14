@@ -1230,14 +1230,27 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Spinoza's inventory `how` text still describes the old cone and its
   curls are low-poly; Teun de Jager unverified against a close photo;
   Westermoskee NW/SW walls and SE porch unphotographed.
-- **Large tier after batch 4** (2026-10-14, HISTORY "Dominant buildings,
-  batch 4"): kit limits to fix: wall-mounted letters leave open edges on
-  some shells; the lantern floats off split panels (Pijlsteeg 31); a
-  balcony run on an arched storey hides the arch heads; the eaves gate
-  should sample per surface; `baysPerStorey` on surface-listed groups;
-  Tilanusstraat's louvred tower and the Krasnapolsky/Binnengasthuis
-  courts are blank; the 3DBAG open-edge pands (Singel 457, Hirschpassage
-  2, WG-plein 600…) need a shell-repair step before any recipe.
+- **Large tier after batches 4–6** (2026-10-14, HISTORY "Dominant
+  buildings, batch 4/5/6"): kit limits to fix: wall-mounted letters leave
+  open edges on some shells and place nothing on a group without an
+  entrance (`cornice` mount does); the lantern floats off split panels
+  (Pijlsteeg 31); a balcony run on an arched storey hides the arch heads;
+  the eaves gate samples the lowest roof along a panel, so mixed-height
+  surfaces must be split into groups (an override per group would let
+  Singel 457's west gable draw); `baysPerStorey` on surface-listed groups;
+  `garageDoors` caps at 8 (CGM 168 has nine); a 3DBAG surface in two
+  panels doubles a group's triangles (dedupe); a stone arch band with
+  `stringCourses`/`cornice` on the same group overlaps (use `brick`); the
+  probe's storey-height failures on low sheds mask shell failures.
+  Missing components: an oriel stack (Oostelijke Handelskade 749), the
+  Waagdragerhof double-height arches with per-arch lettering, ceramic
+  roofs (Spinozastraat 51), a cheaper ribbon-window frame (Stadsdeel
+  Nieuw-West, Wibautstraat 78), a cheaper balcony scheme for Revaleiland
+  437's blank NW/NE fronts. Blank: Tilanusstraat's louvred tower, the
+  Krasnapolsky/Binnengasthuis courts, Weteringstraat cantilever bands,
+  Funenpark loggias, Revaleiland's slot-window blocks, Wibautstraat's cone
+  piers, Louise Wentstraat's glazed stair columns. Reserves for batch 7:
+  Klaprozenweg 31, Papaverweg 34, Postjesweg 1 (check `politie-postjesweg`).
 - **Own ground after the belt lane** (2026-10-14, HISTORY "belt audit
   clean, pockets…"): a BGT-driven sidewalk/road fill for land over BGT
   road away from junctions (Oud-West 11.6k m² per 300 m window); pocket
@@ -1258,8 +1271,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **Large tier after the layered re-installs** (2026-10-14, HISTORY
   "Layered re-installs, part two"): `check:stale-installs` is in the gate
   and must stay at 0 after every golden change; Politie West
-  Overtoomsesluis fails footprint-vs-bag 0.749 (3DBAG shell, needs the
-  shell-repair pre-step or a BAG-outline rebuild); seven large recipes are
+  Overtoomsesluis fails footprint-vs-bag 0.749 (try `shellRepair: true`,
+  HISTORY "3DBAG shell repair"); Revaleiland 58 is 0.2 m over the open-edge
+  limit after repair; Gillis van Ledenberchstraat 34 needs its ground
+  outline cut to the overlapping pands; `footprint: "bag"` needs polygon
+  union/adjacency before its walls close; an eaves override per group
+  would let Singel 457's west gable draw; seven large recipes are
   not installed (De Balie, Ledenberch 38, Nieuwendijk HM, Passeerdersstraat,
   Politie West, Social History, Roeterseiland REC-A) and should be installed
   or deleted; Stadsdeel Nieuw-West's ribbon mullions still eat the budget
