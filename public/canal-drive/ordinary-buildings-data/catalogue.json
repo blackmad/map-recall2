@@ -33907,10 +33907,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012122086",
       "name": "OBA Linnaeus, Linnaeusstraat 44, Amsterdam (1916 pand; library in the ground floor of a 1950s-style brick front with two 1916 houses attached)",
-      "hash": "eef1abe8043916ee7bfa1c4e1249fa433aa45fac9acf94dde3bebcea1d97a93b",
-      "sha256": "eef1abe8043916ee7bfa1c4e1249fa433aa45fac9acf94dde3bebcea1d97a93b",
-      "bytes": 201052,
-      "triangles": 2539,
+      "hash": "aa4f34b1b5f42efeb8a9bf1f0355024300cd42bfca070d4e9d49361f7ec56e39",
+      "sha256": "aa4f34b1b5f42efeb8a9bf1f0355024300cd42bfca070d4e9d49361f7ec56e39",
+      "bytes": 327708,
+      "triangles": 4243,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -34058,7 +34058,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122086",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:31:37.473Z"
+      "updatedAt": "2026-10-14T03:10:02.240Z"
     },
     {
       "id": "ordinary-0363100012151434",
