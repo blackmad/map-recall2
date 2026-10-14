@@ -12,6 +12,7 @@ import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './
 import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
+import { drawnGrey, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
@@ -1035,4 +1036,16 @@ test('far ring: radius only past the resident ring, blocks nearest first, one pa
   const zs = [...b.parts[0].mesh.positions].filter((_, i) => i % 3 === 2);
   assert.equal(Math.min(...zs), 1, 'land on the relief');
   assert.ok(Math.abs(Math.max(...zs) - 1 - FAR_LIFT.street) < 1e-6, 'streets lifted over the relief');
+});
+
+test('ground light: level sunlit ground draws its palette luminance; the road stays above the shade floor in cast shadow (live play 2026-10-14)', () => {
+  // Before the gain the rig drew level ground at 0.83 of its albedo (sRGB ≈ 0.92): the "city too dark".
+  assert.ok(Math.abs(flatGroundLuminance() - 0.828) < 0.01, `rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(FLAT_GROUND_GAIN * flatGroundLuminance() - 1) < 1e-9);
+  for (const v of [60, 104, 164, 220]) assert.ok(Math.abs(drawnGrey(v, FLAT_GROUND_GAIN) - v) < 0.01, `palette ${v} draws ${drawnGrey(v, FLAT_GROUND_GAIN)}`);
+  const asphalt = 0.2126 * STREET_GROUND.asphalt.base[0] + 0.7152 * STREET_GROUND.asphalt.base[1] + 0.0722 * STREET_GROUND.asphalt.base[2];
+  const klinker = 0.2126 * STREET_GROUND.klinker.base[0] + 0.7152 * STREET_GROUND.klinker.base[1] + 0.0722 * STREET_GROUND.klinker.base[2];
+  // docs/LOOK.md §Driving corridor readability: the road under the rider never below the shade-side range (65–75).
+  assert.ok(drawnGrey(asphalt, FLAT_GROUND_GAIN, true) >= 75, `asphalt in cast shadow draws ${drawnGrey(asphalt, FLAT_GROUND_GAIN, true)}`);
+  assert.ok(asphalt < klinker, 'asphalt stays darker than the klinker carriageway');
 });
