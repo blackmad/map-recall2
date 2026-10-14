@@ -6,12 +6,12 @@
  *   node --import tsx scripts/street-surveys/commercial-intake.ts --street=Kinkerstraat [--only=kinker-1-29,...] [--no-strip]
  */
 import fs from 'node:fs/promises';
-import path from 'node:path';
 import {intake} from '../block-face/intake.ts';
+import {streetFile} from './street-style.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const street = arg('street') ?? 'Kinkerstraat', only = arg('only')?.split(',');
-const file = path.join('scripts/street-surveys/streets', `${street.toLowerCase()}.json`);
+const file = streetFile(street);
 const doc = JSON.parse(await fs.readFile(file, 'utf8'));
 const covered = new Map<string, string>();
 for (const f of doc.faces) {

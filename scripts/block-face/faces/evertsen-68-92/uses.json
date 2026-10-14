@@ -1,0 +1,293 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:02:43.401Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012134746",
+   "addresses": [
+    "Jan Evertsenstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 92-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000684347"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1338199805,
+     "lngLat": [
+      4.8537803,
+      52.37084
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "cuisine": "burger",
+      "name": "'t Eefje"
+     },
+     "fetchedAt": "2026-10-14T13:02:43.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144630",
+   "addresses": [
+    "Jan Evertsenstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 90-H",
+     "use": "winkelfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000684339"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092098",
+   "addresses": [
+    "Jan Evertsenstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000684328"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130169",
+   "addresses": [
+    "Jan Evertsenstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 86-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000684321"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4882389419,
+     "lngLat": [
+      4.8541076,
+      52.3708708
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "name": "Cafetaria Roza"
+     },
+     "fetchedAt": "2026-10-14T13:02:43.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012126326",
+   "addresses": [
+    "Jan Evertsenstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 84-H",
+     "use": "winkelfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000684313"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101228",
+   "addresses": [
+    "Jan Evertsenstraat 80",
+    "Jan Evertsenstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000684297"
+    },
+    {
+     "address": "Jan Evertsenstraat 82-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000684305"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4882389415,
+     "lngLat": [
+      4.8543142,
+      52.3709175
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "name": "Bakkerij Hicret"
+     },
+     "fetchedAt": "2026-10-14T13:02:43.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012140338",
+   "addresses": [
+    "Jan Evertsenstraat 74",
+    "Jan Evertsenstraat 76",
+    "Jan Evertsenstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 74-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000684273"
+    },
+    {
+     "address": "Jan Evertsenstraat 76-H",
+     "use": "winkelfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000684281"
+    },
+    {
+     "address": "Jan Evertsenstraat 78-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000684289"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4882389416,
+     "lngLat": [
+      4.8548801,
+      52.3710166
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "Cafe Zandvoort"
+     },
+     "fetchedAt": "2026-10-14T13:02:43.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012096302",
+   "addresses": [
+    "Jan Evertsenstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000684265"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4882389417,
+     "lngLat": [
+      4.8549566,
+      52.3710264
+     ],
+     "tags": {
+      "name": "Slagerij Dilmohamed",
+      "shop": "butcher"
+     },
+     "fetchedAt": "2026-10-14T13:02:43.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012079120",
+   "addresses": [
+    "Jan Evertsenstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010001005417"
+    },
+    {
+     "address": "Jan Evertsenstraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012079328"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4882389418,
+     "lngLat": [
+      4.8550545,
+      52.3710403
+     ],
+     "tags": {
+      "name": "Hombre Amsterdam",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-14T13:02:43.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012096961",
+   "addresses": [
+    "Jan Evertsenstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 68",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000684254"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

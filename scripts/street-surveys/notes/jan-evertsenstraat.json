@@ -1,0 +1,21 @@
+{
+ "street": "Jan Evertsenstraat",
+ "source": "hand review of the fused block-face strips (staging/block-face/evertsen-*/strip-labelled.png, archived under block-face-strips/ in map-recall2-source-data), 2026-10-14",
+ "pands": {
+  "74": {"treesUpperStoreys": true, "note": "street tree in front of the right half (nos. 76-78) on all three upper storeys in the 2024-12-06 strip; bare branches, windows readable through them"},
+  "84": {"treesUpperStoreys": true, "note": "bare tree across the left bay of the upper storeys (2024-12-06)"},
+  "98": {"treesUpperStoreys": true, "note": "tree over the left windows of all upper storeys (2024-12-06)"},
+  "114": {"treesUpperStoreys": true, "note": "tree over the middle window column (2024-12-06)"},
+  "121": {"treesUpperStoreys": true, "note": "tree and pole ghosted across the upper storeys of the 37 m front in the fused strip (2024-12-06); window grid only half legible"},
+  "145": {"treesUpperStoreys": true, "note": "bare tree crown across the stair tower and first two storeys (2024-12-06)"},
+  "147": {"note": "light branches over the white top storey only"},
+  "149": {"note": "light branches over the roof line only"},
+  "151": {"treesUpperStoreys": true, "note": "branches across all upper storeys and the dormer (2024-12-06)"},
+  "153": {"treesUpperStoreys": true, "note": "branches across all upper storeys and the dormer (2024-12-06)"},
+  "155": {"treesUpperStoreys": true, "note": "dense branches over the raised end mass's upper two storeys (2024-12-06)"},
+  "152": {"treesUpperStoreys": true, "note": "branches over the stair tower and top storey (2024-12-06)"},
+  "158": {"treesUpperStoreys": true, "note": "a tree in front of the whole front from the first floor up; windows half legible (2024-12-06)"},
+  "87": {"scaffolding": true, "note": "front wrapped in blue scaffold netting in the 2024-12-06 strip; use the 2021/2022 crops"},
+  "69": {"note": "thin climber/branches over the right bay, windows legible"}
+ }
+}
