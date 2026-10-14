@@ -26092,10 +26092,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012131469",
       "name": "Politiebureau Oost Watergraafsmeer, Linnaeusstraat 111, Amsterdam (2003)",
-      "hash": "7ae6f6f0d279080b89e2b8a4578b98c0845863d7f50d26280343b3bf11e7e7c7",
-      "sha256": "7ae6f6f0d279080b89e2b8a4578b98c0845863d7f50d26280343b3bf11e7e7c7",
-      "bytes": 427092,
-      "triangles": 5800,
+      "hash": "5c23bc2acb90b2b2c2e5535df4bbcd390cc2625e69e2d15d900272f7f4f4534e",
+      "sha256": "5c23bc2acb90b2b2c2e5535df4bbcd390cc2625e69e2d15d900272f7f4f4534e",
+      "bytes": 445052,
+      "triangles": 6062,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -26193,7 +26193,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012131469",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:28.321Z",
+      "updatedAt": "2026-10-14T01:08:51.640Z",
       "bagYear": 2003
     },
     {
