@@ -1254,19 +1254,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Hogeschool van Amsterdam, Gerrit Rietveld Academie, Het 4e Gymnasium,
   Metis and Oostpoort Montessori, Spinoza, the UvA Spui building; AMC,
   VUmc, AvL and BovenIJ are blocked on panoramas or BAG matching.
-- **Large tier after the layered default** (2026-10-14, HISTORY
-  "layeredKit is the default"): re-install the 47 houses whose compiled
-  mesh changed (installed GLBs are the old geometry); a triangle diet for
-  the four opted-out houses (OBA Javaplein, OBA Olympisch Kwartier,
-  Politie West Overtoomsesluis, Stadsdeel Nieuw-West) so they can take
-  the layered kit; lettering now costs 5× the triangles (shared stroke
-  geometry); the Arena's brick relieving arches over flat heads are not a
-  kit shape; Plantage Middenlaan 52 is 6 storeys (7 in the photo) and its
-  slab mouldings are not modelled; the Utrechtsestraat 15 roof pavilion,
-  Weteringstraat cantilever bands and Funenpark loggias are not modelled;
-  batch 5: an oriel-stack component (Oostelijke Handelskade 749), the
-  Waagdragerhof double-height arches, Spinozastraat's ceramic roofs; a
-  3DBAG surface in two panels doubles a group's triangles (dedupe).
+- **Large tier after the layered re-installs** (2026-10-14, HISTORY
+  "Layered re-installs, part two"): `stale-installs.ts` must report 0 after
+  every golden change (run it in `check:canal`); Politie West
+  Overtoomsesluis fails footprint-vs-bag 0.749 (3DBAG shell, needs the
+  shell-repair pre-step or a BAG-outline rebuild); seven large recipes are
+  not installed (De Balie, Ledenberch 38, Nieuwendijk HM, Passeerdersstraat,
+  Politie West, Social History, Roeterseiland REC-A) and should be installed
+  or deleted; Stadsdeel Nieuw-West's ribbon mullions still eat the budget
+  (a cheaper ribbon-window frame); the catalogue `updatedAt` churns on every
+  re-install and should be dropped from the diff.
 - **American Hotel leftovers** (2026-10-14): the tower drum (R 1.75 at
   [-7.6, 18.3]) stands inside the 3DBAG tower block below 28 m while the
   footprint's bulge fits a circle at (-7.66, 19.59); decide whether the
