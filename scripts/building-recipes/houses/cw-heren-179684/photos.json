@@ -1,0 +1,18 @@
+[
+ {
+  "front": "front0",
+  "panoId": "TMX7316010203-003013_pano_0013_000030",
+  "timestamp": "2023-03-27T10:27:15.861600Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/03/27/TMX7316010203-003013/pano_0013_000030/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121199.42598344004,
+   487930.363520975
+  ],
+  "headingDeg": 306.01226779649835,
+  "fovDeg": 89.32519530599907,
+  "pitchDeg": 32.370907171754226,
+  "distanceM": 6.650519193941953,
+  "image": "artifacts/building-recipes/cw-heren-179684/photo-front0.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
