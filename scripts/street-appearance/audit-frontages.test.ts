@@ -1,6 +1,7 @@
 import test from 'node:test';
 // Re-recorded 2026-10-14 with bake-frontages.ts: 57a49cee retired the Jan Evertsen profile but left its street paths and tile 8412/5384 (re-keyed in 870a8bed) in the survey; every remaining cohort's frontages are byte-identical after the rebake.
 // Re-recorded again the same day after fix-bag-ground-outliers.ts re-measured pands with a failed 3DBAG ground in tiles 8414/5383, 8414/5384, 8415/5384; profiles.json unchanged.
+// Re-recorded again 2026-10-14 after the terrain rule's reach test (bag3dCityJson.ts GROUND_REACH_M) restored split-level pands in tiles 8414/5383 and 8415/5384; frontages and profiles.json unchanged, only the tile hashes.
 import assert from 'node:assert/strict';
 import { auditFrontages } from './audit-frontages.ts';
 import { assessStreetAppearanceSourceAdmission } from './survey-admission.ts';
