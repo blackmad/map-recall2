@@ -10438,7 +10438,7 @@
       "bounds": {
         "min": [
           -13.674473762512207,
-          -1.5258789289873675e-06,
+          -0.0000015258789289873675,
           -57.618064880371094
         ],
         "max": [
@@ -14142,7 +14142,7 @@
       "attribution": {
         "title": "De Gooyer",
         "author": "Map Recall",
-        "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+        "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-05-molen-de-gooyer/",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
@@ -18836,7 +18836,7 @@
       "attribution": {
         "title": "Kazerne Anton",
         "author": "Map Recall",
-        "sourceUrl": "https://www.me-2.nl/project/kazerne-anton-amsterdam-amstelland/",
+        "sourceUrl": "https://www.me-02.nl/project/kazerne-anton-amsterdam-amstelland/",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
@@ -27465,7 +27465,7 @@
       "bounds": {
         "min": [
           -46.43899917602539,
-          -1.5258789289873675e-06,
+          -0.0000015258789289873675,
           -94.0999984741211
         ],
         "max": [
@@ -32337,7 +32337,7 @@
       "bounds": {
         "min": [
           -63.781795501708984,
-          -3.051757857974735e-06,
+          -0.000003051757857974735,
           -32.63179397583008
         ],
         "max": [
@@ -36225,10 +36225,10 @@
         "triangles": 4885
       }
     },
-    "motorkade-1": {
-      "id": "motorkade-1",
+    "motorkade-01": {
+      "id": "motorkade-01",
       "name": "Motorkade 1",
-      "modelUrl": "./models/motorkade-1.glb",
+      "modelUrl": "./models/motorkade-01.glb",
       "suppressOsmIds": [
         "NL.IMBAG.Pand.0363100012247879"
       ],
@@ -50779,7 +50779,7 @@
         "min": [
           -75.11699676513672,
           0,
-          -50.94512176513672
+          -51.17261505126953
         ],
         "max": [
           114.73087310791016,
@@ -50800,17 +50800,17 @@
       "extent": {
         "widthMetres": 189.84786987304688,
         "heightMetres": 45.29999923706055,
-        "depthMetres": 93.25512313842773,
-        "depthCoverage": 0.7331377605222306
+        "depthMetres": 93.48261642456055,
+        "depthCoverage": 0.7349262297528345
       },
-      "triangles": 33453,
-      "bytes": 499720,
+      "triangles": 33332,
+      "bytes": 496552,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d2909afed0619af2",
+        "sourceHash": "d3e4d6a2ca7d2941",
         "buildVersion": 2,
-        "bytes": 134392,
-        "triangles": 7713
+        "bytes": 128164,
+        "triangles": 7372
       }
     },
     "roeterseiland-rec-a": {
