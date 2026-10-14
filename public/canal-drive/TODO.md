@@ -1241,7 +1241,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `garageDoors` caps at 8 (CGM 168 has nine); a 3DBAG surface in two
   panels doubles a group's triangles (dedupe); a stone arch band with
   `stringCourses`/`cornice` on the same group overlaps (use `brick`); the
-  probe's storey-height failures on low sheds mask shell failures.
+  probe's storey-height failures on low sheds mask shell failures; an
+  opening that straddles the seam between two coplanar merged 3DBAG
+  surfaces cannot be cut and is laid 1.5 cm proud, which the z-fight gate
+  rejects (Singel 457's Kalverstraat front dropped to 5 storeys for it;
+  cut across coplanar merged surfaces instead).
   Missing components: an oriel stack (Oostelijke Handelskade 749), the
   Waagdragerhof double-height arches with per-arch lettering, ceramic
   roofs (Spinozastraat 51), a cheaper ribbon-window frame (Stadsdeel
