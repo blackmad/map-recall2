@@ -1,5 +1,45 @@
 # Canal Recall — what is built
 
+## Multi-view tools: TRELLIS.2 with four photos gives the statue a back (2026-10-14, user)
+
+Lane `lane/multiview-tools-20261014`, from the user's questions ("tripoSR,
+could we get it to use multiple photos?", TRELLIS.2, trellis-mac,
+trellis2-apple). Survey of 17 tools in
+`docs/multiview-reconstruction-survey-20261014.md` (multi-image support,
+licence, runs on this Mac): TRELLIS v1 is multi-image but CUDA-only;
+TRELLIS.2-4B is single-image upstream with two gated helpers (DINOv3,
+manual approval; RMBG-2.0, CC BY-NC); the two Apple ports run (trellis-mac
+on MPS, trellis2-apple on MLX) but neither takes several images; Hunyuan3D
+still excludes the EU; SAM 3D needs a 32 GB NVIDIA box; VGGT and π³
+weights are CC BY-NC, MapAnything's Apache. Trial on De Dokwerker
+(`docs/images/sculptures/de-dokwerker-tools.jpg`, rows kit | TripoSR |
+TRELLIS.2 one photo on both ports | TRELLIS.2 four photos on both ports |
+VGGT | MapAnything): the lane re-added TRELLIS v1's multi-image method to
+both ports (stochastic: one photo per sampling step; multidiffusion:
+every step averages all photos), converted timm's ungated DINOv3 copy
+(matches to 4.9e-6; allowed under Meta's DINOv3 licence) and skipped
+RMBG by feeding cut-outs. One photo: 2.7 min on MPS, 2 min on MLX, a
+holed figure with detached forearms, no better than TripoSR's 20 s. Nine
+images stochastic did not converge. Four Commons photos (0/90/180/−90°)
+multidiffusion: 9.5 min MPS, 7 min MLX (26.7 GB), head, arms and legs
+coherent from every side: the first statue whose sides and back come
+from photographs. VGGT on 50° panorama crops registers to 0.9 m / 0.46°
+and measures the height at 4.3 m (kit 4.13 m) but gives a lumpy front
+relief; MapAnything a blob; tight telephoto crops fail to register. No
+panorama is within 25 m of De Dokwerker and all stand west of the
+square (front ±35°), so panoramas measure height and position, never
+shape. Route: single figures with 3–4 side photos → TRELLIS.2
+multidiffusion on the MLX port; TripoSR stays the one-photo fallback;
+groups one run per figure; abstract and lettered memorials stay kit
+primitives. trellis2-apple needed `--no-build-isolation`, a C++20 flag
+and the Eigen submodule in a private copy; its Metal packages want the
+Xcode Metal Toolchain (not installed, user's call); the MLX path runs
+without them. Tools, venvs and 17 GB of weights in
+`~/Code/map-recall2-sculpt/mv/`, outside the repo.
+`decimate_scale_glb.py` gained welding, fragment filtering, `--remesh`
+and `--plinth`. The batch lane was switched to this route.
+
+
 ## Live play at the Singelgracht: road paint, light, near detail, the brick quay, houseboat berths (2026-10-14, user)
 
 Three lanes (`lane/live-play-20261014`, `-light-`, `-detail-`) from the
