@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "kinker-1890-plain-brick",
+  "district": "oud-west",
+  "description": "The commonest Kinkerstraat front (1883-1897: 1-29, 31-49, 65-87, 86-110, 206-234, 244-332): plain red-brown brick, 3 axes on ~6 m (2 on narrow pands), flat-headed sash windows under brick lintels, white frames, heavy cream stucco cornice with consoles; crowns: one pediment dormer with a finial, none, a round-topped dormer; shop ground",
+  "fit": {
+    "widthM": [
+      4.0,
+      6.3
+    ],
+    "storeys": [
+      4,
+      5
+    ]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "heavy",
+    "windows": "t-window",
+    "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.7
+    ]
+  },
+  "crowns": {
+    "pediment-dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "note": "one pedimented dormer with a zinc finial per house (31-49 pands 2-9, 65-87 pands 4-10)"
+    },
+    "none": {
+      "gable": "cornice",
+      "note": "cornice only (2-30 pand 1, 1-29 pand 1)"
+    }
+  },
+  "palettes": {
+    "red-brown": {
+      "brick": "#766449",
+      "frame": "#b8b6a4",
+      "door": "black",
+      "stone": "#b8b9a7",
+      "cornice": "#b4b69e"
+    },
+    "kinker-2-30": {
+      "brick": "#735a47",
+      "frame": "#bcc4b2",
+      "door": "black",
+      "stone": "#cbd4c1",
+      "cornice": "#b4b69e"
+    }
+  },
+  "roof": {
+    "material": "slate"
+  },
+  "rhythm": {
+    "bays": "3 window axes (2 on 4-5 m pands)",
+    "identicalBays": "upper storeys: equal axes, no balconies",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "shop per house, residential door beside it",
+    "signage": "per house",
+    "roofline": "heavy cream cornice with consoles; one pediment dormer",
+    "photoRows": [
+      1,
+      3,
+      3,
+      3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "brick flat-arch lintels over the windows are not drawn",
+      "iron wall anchors"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "kinker-31-49",
+      "pands": [
+        "155369",
+        "160073",
+        "160074",
+        "167106",
+        "159384",
+        "154359",
+        "161457"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 3-9: identical 3-axis plain fronts with pediment dormers; detect-house-types kinker-31-49 type A (7 modules)"
+    },
+    {
+      "face": "kinker-65-87",
+      "pands": [
+        "155934",
+        "096181",
+        "157331",
+        "156102",
+        "162717",
+        "161747"
+      ],
+      "citation": "strip.jpg 2024-11-29 pands 4-9"
+    },
+    {
+      "face": "kinker-206-242",
+      "pands": [
+        "163768",
+        "162560",
+        "161056",
+        "236982",
+        "237261",
+        "236886"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 6-12"
+    },
+    {
+      "face": "kinker-2-30",
+      "pands": [
+        "157476",
+        "235988",
+        "160746"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 1, 4, 5 (zoom): plain brick; 22-24 have segmental heads and 5 storeys"
+    }
+  ],
+  "schemaLimits": [
+    "brick flat arches",
+    "iron wall anchors",
+    "cornice frieze panels",
+    "round-topped dormers with a shell hood (22-24) are drawn as pediment dormers: the pointed dormer read far too tall on the first sheet"
+  ],
+  "notes": [
+    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json): red-brown = median of 22 exemplar pands (mixed 2024-11-29 sunlit and 2024-12-11 overcast strips); kinker-2-30 from 235988 (24)."
+  ]
+}

@@ -442,6 +442,13 @@ function archRing(left: number, top: number, w: number, rise: number, ringM: num
   return [...arc(radius + ringM), ...arc(radius + 0.005).reverse()];
 }
 
+/** The arch segment of a segmental/round head (springing line to crown), as a closed outline: the arc left to right, then the chord back. */
+export function archSegment(left: number, top: number, w: number, rise: number): CanalhousePoint[] {
+  const radius = w * w / (8 * rise) + rise / 2, cx = left + w / 2, cy = top - radius, n = rise < w * 0.3 ? 4 : 8;
+  const start = Math.asin(clamp((top - rise - cy) / radius, -1, 1));
+  return Array.from({length: n + 1}, (_, i) => { const a = Math.PI - start - (Math.PI - 2 * start) * i / n; return [round(cx + radius * Math.cos(a), 4), round(cy + radius * Math.sin(a), 4)] as CanalhousePoint; });
+}
+
 interface GableLight { left: number; width: number; bottom: number; height: number }
 /** Crown height at x (the upper value on a vertical step, as the library's wall support). */
 function profileHeightAt(profile: CanalhousePoint[], x: number): number {
@@ -636,6 +643,20 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       });
       if (rings.length) elevation.ornaments = seen(rings);
     }
+    // Tympanum (`windowHead.tympanum`): the glass stops square at the springing line and the arch segment over it is a fill.
+    const headTop = new Map<string, number>();
+    if (front.windowHead?.tympanum && (front.windowHead.kind === 'segmental' || front.windowHead.kind === 'round')) {
+      const fill = front.windowHead.tympanum === 'band' ? 'accent' as const : 'stone' as const, tymp: CanalhouseOrnament[] = [];
+      elevation.openings.value = elevation.openings.value.map(o => {
+        if (o.kind !== 'window' || o.head !== 'segmental' || !o.headRiseM || o.id.includes('shop') || !onHeadStorey(o.id)) return o;
+        const top = o.bottomM + o.heightM, rise = o.headRiseM;
+        headTop.set(o.id, top);
+        tymp.push({id: `tympanum-${o.id}`, profile: archSegment(o.leftM, top, o.widthM, rise), depthM: 0.02, fill});
+        const {head: _h, headRiseM: _r, headSegments: _s, ...square} = o;
+        return {...square, heightM: round(o.heightM - rise)};
+      });
+      if (tymp.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...tymp]);
+    }
     // Bay windows, balcony guards and masonry courses (street-house features).
     const idFor = (k: number, base: string) => `${pieces.length > 1 ? `${front.id}-` : ''}${base}${count > 1 ? `-m${k}` : ''}`;
     if (layout.glazedBays.length) elevation.glazedBays = seen(Array.from({length: count}, (_, k) => layout.glazedBays.map(g => ({...g, id: idFor(k, g.id), leftM: round(flipX(place(k, g.leftM!, g.widthM), g.widthM))}))).flat());
@@ -775,9 +796,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const style = front.dormerStyle ?? 'plain';
       // Pediment: a triangular trim pediment over a projecting frame. Pointed: a tall pointed roof. On a mansard the dormer
       // stands on the roof face, its front just behind the cornice.
-      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : {roofRiseM: 0.45};
-      const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : {setbackM: 0.35, heightM: 1.45};
-      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const}; }));
+      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'box' ? {roofRiseM: 0} : {roofRiseM: 0.45};
+      // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
+      const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : {setbackM: 0.35, heightM: 1.45};
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' ? 'wall' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
@@ -856,7 +878,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       for (const o of elevation.openings.value) {
         const m = /(?:^|-)s(\d+)-b\d+(?:-m\d+)?$/.exec(o.id), s = m ? Number(m[1]) : -1;
         if (!m || o.kind !== 'window' || !(front.windowHead!.storeys ? front.windowHead!.storeys.includes(s) : s > 0)) continue;
-        const kw = round(clamp(o.widthM * 0.18, 0.16, 0.26)), top = front.windowHead!.kind === 'relieving' ? relieving(o).top : o.bottomM + o.heightM;
+        const kw = round(clamp(o.widthM * 0.18, 0.16, 0.26)), top = front.windowHead!.kind === 'relieving' ? relieving(o).top : headTop.get(o.id) ?? o.bottomM + o.heightM;
         dressings.push({id: `keystone-${o.id}`, kind: 'slab', leftM: round(o.leftM + o.widthM / 2 - kw / 2), bottomM: round(top - 0.02), widthM: kw, heightM: round(ringM + 0.08), depthM: 0.06, surface: ringSurface ?? 'stone'});
       }
     }
