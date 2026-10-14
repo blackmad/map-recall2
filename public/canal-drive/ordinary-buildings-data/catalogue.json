@@ -24140,10 +24140,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012172459",
       "name": "Leidsestraat 67–71 / Kerkstraat 50–52",
-      "hash": "b403ca4851ab2482fbc7313daaf3799079dedd1c7bddeb3171690ab7414ef38a",
-      "sha256": "b403ca4851ab2482fbc7313daaf3799079dedd1c7bddeb3171690ab7414ef38a",
-      "bytes": 123504,
-      "triangles": 1487,
+      "hash": "990437a583a9af23da4b410276cb3a5e6bbc4d721e9d5622c7d4c15ac07cad97",
+      "sha256": "990437a583a9af23da4b410276cb3a5e6bbc4d721e9d5622c7d4c15ac07cad97",
+      "bytes": 194080,
+      "triangles": 2463,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -24291,14 +24291,15 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Leidsestraat (surface 15, 7.7 m, 16.2 m eaves): 1966 front. Shop window under a fascia (ICI PARIS XL, 2025), a blank brick storey over the shop, then two ribbon-window storeys with transoms (2022 and 2025 panoramas); three bays of two-light ribbons."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T11:15:15.627Z",
+      "updatedAt": "2026-10-14T03:09:28.435Z",
       "bagYear": 1966
     },
     {
