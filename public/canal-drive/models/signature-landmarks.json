@@ -1093,6 +1093,78 @@
         "triangles": 4631
       }
     },
+    "teun-de-jager": {
+      "id": "teun-de-jager",
+      "name": "Teun de Jager (Vondelpark)",
+      "landmarkId": "osm_artwork_5653694042",
+      "modelUrl": "./models/teun-de-jager.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86322,
+          52.35761
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 0.7,
+        "widthMetres": 0.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.86322,
+          52.35761
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM node 5653694042 \"Teun de Jager\" (Jan Bronner, 1958); figure and plinth read from Gemeente Amsterdam panoramas (2017-2020, 8 m away); the facing (250 degrees, +-25), figure height (1.75 m) and block size are visual estimates; the face and coat folds are not legible and are simplified"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "stone": "#c3bfb0",
+        "bronze": "#2c3835"
+      },
+      "attribution": {
+        "title": "Teun de Jager - original low-poly reconstruction",
+        "author": "Map Recall; after the 1958 statue by Jan Bronner",
+        "sourceUrl": "https://www.openstreetmap.org/node/5653694042",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure and plinth from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.4357823431491852,
+          -1.1920929132713809e-08,
+          -0.4357823431491852
+        ],
+        "max": [
+          0.4357823431491852,
+          2.930000066757202,
+          0.4357823431491852
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86322,
+          52.35761
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 0.8715646862983704,
+        "heightMetres": 2.9300000786781313,
+        "depthMetres": 0.8715646862983704,
+        "depthCoverage": 1.245092408997672
+      },
+      "triangles": 680,
+      "bytes": 9036,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
     "westerkerk": {
       "id": "westerkerk",
       "name": "Westerkerk / Westertoren",

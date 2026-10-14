@@ -281,6 +281,7 @@ import {buildAuschwitzMonument} from './auschwitz-monument-builder';
 import {buildSpinozaStandbeeld} from './spinoza-standbeeld-builder';
 import {buildJoodsVerzetsmonument} from './joods-verzetsmonument-builder';
 import {buildFigureDecoupee} from './figure-decoupee-builder';
+import {buildTeunDeJager} from './teun-de-jager-builder';
 import {buildWestermoskee} from './westermoskee-builder';
 import {buildSarphatimonument} from './sarphatimonument-builder';
 import {buildWilhelminaRuiterstandbeeld} from './wilhelmina-ruiterstandbeeld-builder';
@@ -738,6 +739,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='spinoza-standbeeld')buildSpinozaStandbeeld(w,d,helpers);
     else if(id==='joods-verzetsmonument')buildJoodsVerzetsmonument(w,d,helpers);
     else if(id==='figure-decoupee')buildFigureDecoupee(w,d,helpers);
+    else if(id==='teun-de-jager')buildTeunDeJager(w,d,helpers);
     else if(id==='westermoskee')buildWestermoskee(w,d,helpers);
     else if(id==='sarphatimonument')buildSarphatimonument(w,d,helpers);
     else if(id==='wilhelmina-ruiterstandbeeld')buildWilhelminaRuiterstandbeeld(w,d,helpers);
