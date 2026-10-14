@@ -1386,10 +1386,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   no sightline; the two halls need another capture date); Oud-West type
   library DONE (HISTORY "Kinkerstraat type library": seven types over 207
   pands, measured palettes, two proof faces compiled; the brick-arched
-  type has its white courses and springer rows since the accents pass); face lanes for the remaining 26 faces at ~10 pands
-  each, never `compile.ts --install`; the kinker-109-161 arcade ground
-  and the 2-30 shell dormers / frieze consoles are kit gaps to add in those
-  lanes;
+  type has its white courses and springer rows since the accents pass); the odd side is DONE as eight
+  faces, 76 pands (HISTORY "Kinkerstraat odd side authored"; the even
+  side lane is running); never `compile.ts --install`; next on the street:
+  the rear-facade lane (the GLB z-fight on every face is the inferred
+  rears), `compile-recipes.ts --faces=kinker-` into recipe tiles and the
+  changed-pand page, ride shots at five points, the wall-colour misses (31
+  black paint renders olive, 47 sunlit brick too dark, 63 and 87 too
+  saturated, 21-23's painted first storey), the library candidates
+  `kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable`, and the kit
+  gaps by count (wall anchors 21, arcade piers 13, frieze panels and
+  consoles 13, pointed gables 10, set-back top storey 10, brick-relief
+  tympana 7, shop mezzanine 7, 109-161 arcade ground, 2-30 shell dormers);
   review lane with the camera-matched row, likeness and a verdict per pand,
   ride shots at five points; Amsterdam School components DONE (HISTORY
   "Amsterdam School components"; plus glass-block band, lisenes, window
