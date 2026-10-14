@@ -1,5 +1,63 @@
 # Canal Recall — what is built
 
+## Large tier reconciled: measured values on the kit systems, five pilots installed, three schools uninstalled (2026-10-14)
+
+Lane `lane/large-reconcile-20261014` (plan Part 1, lanes A + C + B2
+joined). Lane A's measurement (`measureFacade.ts`, `likeness.ts`,
+`likenessGate.ts`, `cropToPanel.ts`, `measure.ts`, `likeness-house.ts`,
+the install gate, `wallSplit`, `source-data://` refs with sha256, the
+two all-walls bugs: scale on long walls and spring-leaf masking) and lane
+C's systems now live on one branch; `WALL_KEYS` and the validators are the
+union; `measuredSlots` is one deduplicated list (wall, glass, split, arch
+ring, `glass@g<i>`, the new column glass); measured slots are marked on
+`material.userData` (what `export-glb` reads; lane A's object mark was
+never exported). New: `columns.glass` (the glass columns' own glazing
+colour; Houthavenkade's columns are reflective grey, its windows dark);
+the likeness elevation's depth band is pinned to the panel's plane + 1 m
+(it took the front-most geometry, so Waagdragerhof walls[2] 10 m behind a
+nearer volume rendered blank and failed as "wall not drawn"); the column
+check is WARN-only (the detector counts mullions and ribbon panes: Spinoza
+g0 30 against 16 bays, Wibautstraat g0 28 against 8 ribbons, both rhythms
+right); the per-band 0.20 proposal was not applied (it flips nothing the
+sheets call wrong; the remaining glazing misses come from white-framed
+panes classed as trim, 0.12–0.34 undercounts, and dark brick reading as
+"paint", both named in `measure.ts` as the next measurement lane's
+targets). The three shared pilots start from lane C's intent with every
+system and bay count in `hand`, then `measure.ts --write` for colours,
+window shapes and remaining bays, hand values where the sheet showed the
+measurement wrong: Waagdragerhof tower keeps `#4a302b` (the measured
+cluster was mortar and surrounds), walls[1] 8 measured bays, walls[2]
+takes walls[3]'s `#735c59`; Houthavenkade two groups on the two 3DBAG
+surfaces (lane C's split beats `wallSplit`), measured `#917b5c` and
+`#494341`, walls[3] 6 bays, walls[1]/[3] measured shapes, walls[4] hand;
+Apollohal glazed hall with the 2017 hand sample (2024 crop foliage-blocked),
+walls[1] measured `#5f5950` (lane C had orange `#9a5a44`). Wibautstraat
+78: the only crop is overcast (2023-01-02) and the measured `#8a867e`
+averaged spandrels with dark column faces with no trim to normalise
+against; spandrel hand colour `#a09c92` (city-look L 0.541 against the
+photo's 0.539; before 0.469). Installed with `--allow-inferred` notes:
+Apollohal 3,516 tris (was 5,140), Houthavenkade 11,149 (11,893),
+Waagdragerhof 8,840 (11,070), Spinoza 6,548 (new), Wibautstraat 11,809
+(10,617); `held-installs.json` empty. Verdicts at gallery size
+(`docs/images/large-tier/reconcile-20261014.jpg`, nine rows): Apollohal
+much closer (glass hall over a pale base, annex still a compromise);
+Houthavenkade reads like the photo's two-tone front with glass balcony
+columns; Waagdragerhof right colour family, arches line up, the tower's
+light band storeys and paired windows still missing, warehouse brick
+reads more purple than the photo; Spinoza good; Wibautstraat now at the
+photo's lightness. The four schools from the held
+`large/public-buildings-4` merge got their photo sheets (crops archived
+in source-data): Metis Montessori (tan brick vs a dark grey-brown painted
+front), Oostpoort/Valentijn (saturated red vs dark purple-brown, a frieze
+of small square windows drawn as full windows) and Rietveld Academie
+(NO EVIDENCE, the ribbon bands and white perforated screen missing)
+uninstalled with notes, recipes kept; CREA never installed (footprint
+IoU 0.895). `covers.json` rebuilt (Spinoza the only school). Checks: lint,
+building-recipes 152, fit-golden 145 identical, large meshes 112
+identical, geometry-audit 47, stale-installs strict 0, covers,
+osm-under-models 0, audit:glb PASS on the five.
+
+
 ## Statue batch 1: one command, 13 statues, five beat the kit, none shipped (2026-10-14)
 
 Lane `lane/sculpture-batch-20261014` (plan Part 4, route B). `node

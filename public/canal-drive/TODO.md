@@ -1287,35 +1287,21 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   all three in the bridges lane, each with a before/after frame on the
   demo page when it lands.
 - **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
-  "User review"; `docs/plans/large-tier-likeness-and-streets-20261014.md`
-  Part 1): lane A measurement and likeness tooling (crops archived to
-  source-data, `cropToPanel.ts`, `measureFacade.ts`, `likeness.ts`,
-  `measure.ts`, the sheet with verdict, the install gate), lane B measured
-  tint bypass (`tintSource: 'measured'`), lane C kit vocabulary DONE
-  (HISTORY "Large kit vocabulary"; the three re-fits are held in
-  `scripts/building-recipes/held-installs.json` until the reconciliation lane
-  (lane A's measured values on lane C's systems, with lane B2's look fix
-  merged: measured glass now reaches the game, the near-black column was
-  the sheet's raw-colour path, HISTORY "Measured glass reaches the game")
-  installs them and drops the hold), the texture prototype DONE and lost to the kit on all three (HISTORY
-  "Texture prototype"; a fairer second try only if lane C's kit fails
-  likeness: 16 px/m, no posterisation, lit by the look), lane D triage of
-  the ~100 installed houses (re-fit / uninstall / bespoke) and
-  `ride-visibility.ts` replacing footprint ÷ distance. Held unmerged until
-  the likeness pass: `large/dominant-7-20261014` (12 houses) and
-  `large/public-buildings-4-20261014` (4 schools, CREA at IoU 0.895);
-  their tooling commits are cherry-picked. Singel 457 uninstalled, bespoke
-  queue (recipe folder kept). `tileBuildings/golden.test.ts` is red on
-  main: an extra `large` pand `0363100012236799` in the Bilderdijkstraat
-  pilot tiles that `pilot-golden.json` does not list (re-record or
-  explain). Kit limits still open from batches 4–6: wall-mounted letters
-  leave open edges and need an entrance; the lantern floats off split
-  panels; a balcony run on an arched storey hides the arch heads; the
-  eaves gate samples the lowest roof along a panel; `garageDoors` caps at
-  8; a 3DBAG surface in two panels doubles a group's triangles; missing
-  components: oriel stack, double-height arches with lettering, ceramic
-  roofs, cheaper ribbon frames, cheaper balcony scheme; no ground-floor
-  colour slot (78 % of fronts differ at the ground).
+  "User review + plan", "Large tier reconciled"): lanes A, B, B2, C and
+  the reconciliation are DONE; the five pilots are installed from
+  measured values on the kit systems with inferred notes. Open: (1) the
+  measurement lane for the two named limits in `measure.ts` (white-framed
+  panes classed as trim → glazing undercount; dark brick reading as
+  paint); (2) lane D, the triage of the other ~65 installed large houses
+  (archive crops, measure, likeness report worst-first, re-fit / uninstall
+  per the rule in the plan; ride-visibility ranking replaces footprint ÷
+  distance); (3) the held `large/dominant-7-20261014` branch gets the same
+  pass and merges only passers; (4) kit gaps per pilot listed in the
+  HISTORY entry (Waagdragerhof's light band storeys and paired windows,
+  Houthavenkade's column transoms, Spinoza's mullioned doubles,
+  Wibautstraat's finned top storey); (5) re-fit Metis, Oostpoort and
+  Rietveld after (1), Rietveld needs a dimpled-metal skin and a perforated
+  white screen component.
 - **Own ground after the belt lane** (2026-10-14, HISTORY "belt audit
   clean, pockets…"): a BGT-driven sidewalk/road fill for land over BGT
   road away from junctions (Oud-West 11.6k m² per 300 m window); pocket
