@@ -50817,6 +50817,254 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:20:06.149Z"
+    },
+    {
+      "id": "ordinary-0363100012110408",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012110408",
+      "name": "Haarlemmerweg 325, Amsterdam-West (Westergasfabriek district): Q-Park Westergasfabriek, a curved multi-storey car park with brick-fronted shops on its ground floor and three decks screened by pale translucent louvres, and a concrete south front with the car-park entrance",
+      "hash": "065b2cea9a63b04533ac11301379467c7a81e0c88ad9ed77b39864d6dd8d4d12",
+      "sha256": "065b2cea9a63b04533ac11301379467c7a81e0c88ad9ed77b39864d6dd8d4d12",
+      "bytes": 754604,
+      "triangles": 10297,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -39.006,
+          -0.001,
+          -44.113
+        ],
+        "max": [
+          23.232,
+          19.07,
+          14.118
+        ]
+      },
+      "anchor": [
+        4.86606,
+        52.3847404
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8662398,
+              52.3851213
+            ],
+            [
+              4.8662385,
+              52.3851213
+            ],
+            [
+              4.8662379,
+              52.3851376
+            ],
+            [
+              4.8654825,
+              52.3851273
+            ],
+            [
+              4.8654845,
+              52.3850698
+            ],
+            [
+              4.865487,
+              52.3850698
+            ],
+            [
+              4.8654873,
+              52.385061
+            ],
+            [
+              4.8654848,
+              52.385061
+            ],
+            [
+              4.8655014,
+              52.3846064
+            ],
+            [
+              4.8660877,
+              52.3846139
+            ],
+            [
+              4.8660871,
+              52.3846319
+            ],
+            [
+              4.8661153,
+              52.3846326
+            ],
+            [
+              4.8661158,
+              52.3846288
+            ],
+            [
+              4.8661166,
+              52.3846267
+            ],
+            [
+              4.8661172,
+              52.3846256
+            ],
+            [
+              4.8661188,
+              52.3846237
+            ],
+            [
+              4.866121,
+              52.3846219
+            ],
+            [
+              4.8661236,
+              52.3846204
+            ],
+            [
+              4.8661267,
+              52.3846192
+            ],
+            [
+              4.8661283,
+              52.3846188
+            ],
+            [
+              4.8661318,
+              52.3846181
+            ],
+            [
+              4.8661335,
+              52.3846179
+            ],
+            [
+              4.8661371,
+              52.3846178
+            ],
+            [
+              4.8661389,
+              52.3846179
+            ],
+            [
+              4.8661425,
+              52.3846184
+            ],
+            [
+              4.8661442,
+              52.3846188
+            ],
+            [
+              4.8661458,
+              52.3846192
+            ],
+            [
+              4.8661489,
+              52.3846204
+            ],
+            [
+              4.8661515,
+              52.384622
+            ],
+            [
+              4.8661537,
+              52.3846237
+            ],
+            [
+              4.8661554,
+              52.3846257
+            ],
+            [
+              4.866156,
+              52.3846268
+            ],
+            [
+              4.8661567,
+              52.3846289
+            ],
+            [
+              4.8661568,
+              52.3846312
+            ],
+            [
+              4.8661517,
+              52.3846683
+            ],
+            [
+              4.8661641,
+              52.384669
+            ],
+            [
+              4.8661872,
+              52.384619
+            ],
+            [
+              4.8664029,
+              52.3846486
+            ],
+            [
+              4.8662687,
+              52.3850329
+            ],
+            [
+              4.8662715,
+              52.3850333
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.07,
+      "height": 19.07,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-325-110408.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012110408"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-325-110408",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012110408/w01-359.jpg",
+          "staging/pand-reference-walls/0363100012110408/w02-269.jpg",
+          "staging/pand-reference-walls/0363100012110408/w04-179.jpg",
+          "staging/pand-reference-walls/0363100012110408/w05-168.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 13b",
+          "ribbon-windows 4st 13b",
+          "ribbon-windows 4st 10b",
+          "ribbon-windows+entrance 4st 4b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012110408",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:21:36.875Z"
     }
   ]
 }
