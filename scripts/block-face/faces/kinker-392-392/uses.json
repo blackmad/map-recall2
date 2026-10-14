@@ -1,0 +1,25 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012197936",
+   "addresses": [
+    "Kinkerstraat 392"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 392",
+     "use": "logiesfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012072466"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

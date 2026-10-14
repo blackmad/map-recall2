@@ -1,0 +1,461 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:27:10.700Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166843",
+   "addresses": [
+    "Kinkerstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000705117"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13075064150,
+     "lngLat": [
+      4.8762133,
+      52.3682182
+     ],
+     "tags": {
+      "check_date": "2025-08-15",
+      "name": "Orange Copy",
+      "shop": "copyshop"
+     },
+     "fetchedAt": "2026-10-14T09:27:10.700Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158478",
+   "addresses": [
+    "Kinkerstraat 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 1A",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012105535"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166689",
+   "addresses": [
+    "Kinkerstraat 3",
+    "Kinkerstraat 3A",
+    "Kinkerstraat 3B",
+    "Kinkerstraat 3C",
+    "Kinkerstraat 3D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 3-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000956993"
+    },
+    {
+     "address": "Kinkerstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001964156"
+    },
+    {
+     "address": "Kinkerstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001964157"
+    },
+    {
+     "address": "Kinkerstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001964158"
+    },
+    {
+     "address": "Kinkerstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001964159"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156139",
+   "addresses": [
+    "Kinkerstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000705136"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103619",
+   "addresses": [
+    "Kinkerstraat 7",
+    "Kinkerstraat 9B",
+    "Kinkerstraat 9A",
+    "Kinkerstraat 9C",
+    "Kinkerstraat 9D",
+    "Kinkerstraat 9F",
+    "Kinkerstraat 9E",
+    "Kinkerstraat 9G",
+    "Kinkerstraat 9H",
+    "Kinkerstraat 11",
+    "Kinkerstraat 13",
+    "Kinkerstraat 15A",
+    "Kinkerstraat 15B",
+    "Kinkerstraat 15D",
+    "Kinkerstraat 15C",
+    "Kinkerstraat 15E",
+    "Kinkerstraat 15F",
+    "Kinkerstraat 15H",
+    "Kinkerstraat 15G",
+    "Kinkerstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950791"
+    },
+    {
+     "address": "Kinkerstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950792"
+    },
+    {
+     "address": "Kinkerstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950793"
+    },
+    {
+     "address": "Kinkerstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950794"
+    },
+    {
+     "address": "Kinkerstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950795"
+    },
+    {
+     "address": "Kinkerstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950796"
+    },
+    {
+     "address": "Kinkerstraat 15D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950797"
+    },
+    {
+     "address": "Kinkerstraat 15C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950798"
+    },
+    {
+     "address": "Kinkerstraat 15E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950799"
+    },
+    {
+     "address": "Kinkerstraat 15F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950800"
+    },
+    {
+     "address": "Kinkerstraat 9F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950801"
+    },
+    {
+     "address": "Kinkerstraat 9E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000950802"
+    },
+    {
+     "address": "Kinkerstraat 9G",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000950803"
+    },
+    {
+     "address": "Kinkerstraat 9H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000950804"
+    },
+    {
+     "address": "Kinkerstraat 15H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000950805"
+    },
+    {
+     "address": "Kinkerstraat 15G",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000950806"
+    },
+    {
+     "address": "Kinkerstraat 7",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000950807"
+    },
+    {
+     "address": "Kinkerstraat 11",
+     "use": "winkelfunctie",
+     "areaM2": 257,
+     "bagId": "0363010000950808"
+    },
+    {
+     "address": "Kinkerstraat 13",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000950809"
+    },
+    {
+     "address": "Kinkerstraat 17",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000950810"
+    },
+    {
+     "address": "Kinkerstraat 11",
+     "use": "winkelfunctie",
+     "areaM2": 264,
+     "bagId": "0363010012125530"
+    }
+   ],
+   "units": 21,
+   "osm": [
+    {
+     "type": "node",
+     "id": 410190115,
+     "lngLat": [
+      4.875641,
+      52.3681294
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling:paper": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-14T09:27:10.700Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    },
+    {
+     "type": "node",
+     "id": 2809448153,
+     "lngLat": [
+      4.8758429,
+      52.3680958
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7",
+      "addr:postcode": "1053DB",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Ashoka kinker",
+      "outdoor_seating": "no",
+      "phone": "+31 20 341 7812",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:27:10.700Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158983",
+   "addresses": [
+    "Kinkerstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000705215"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165338",
+   "addresses": [
+    "Kinkerstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010001020499"
+    },
+    {
+     "address": "Kinkerstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012072644"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159971",
+   "addresses": [
+    "Kinkerstraat 23",
+    "Kinkerstraat 23A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 23-H",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000705237"
+    },
+    {
+     "address": "Kinkerstraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012108452"
+    },
+    {
+     "address": "Kinkerstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012108453"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157023",
+   "addresses": [
+    "Kinkerstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000705251"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155746",
+   "addresses": [
+    "Kinkerstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 27-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000705259"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158003",
+   "addresses": [
+    "Kinkerstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 29-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000705270"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 410190119,
+     "lngLat": [
+      4.8749323,
+      52.3678746
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling:paper": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-14T09:27:10.700Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    },
+    {
+     "type": "node",
+     "id": 12468019132,
+     "lngLat": [
+      4.874983,
+      52.3679183
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Frites & Frites"
+     },
+     "fetchedAt": "2026-10-14T09:27:10.700Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

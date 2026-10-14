@@ -1,0 +1,448 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T08:56:35.432Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157476",
+   "addresses": [
+    "Kinkerstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 30-H",
+     "use": "industriefunctie",
+     "areaM2": 90,
+     "bagId": "0363010000705274"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809222376,
+     "lngLat": [
+      4.874878,
+      52.3681255
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "30-1",
+      "addr:postcode": "1053DV",
+      "addr:street": "Kinkerstraat",
+      "name": "The Genius Worstenbrood",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236471",
+   "addresses": [
+    "Kinkerstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 28-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000705263"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809219278,
+     "lngLat": [
+      4.8749656,
+      52.368133
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28-H",
+      "addr:postcode": "1053DV",
+      "addr:street": "Kinkerstraat",
+      "name": "Casa Brasil Portugal",
+      "name:pt": "Casa Brasil Portugal",
+      "opening_hours": "Mo-Fr 10:00-18:00; Sa 09:00-18:00",
+      "phone": "+31 20 362 7316",
+      "shop": "grocery",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158140",
+   "addresses": [
+    "Kinkerstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000705255"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235988",
+   "addresses": [
+    "Kinkerstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000705244"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4508436591,
+     "lngLat": [
+      4.8750969,
+      52.3681888
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24",
+      "addr:postcode": "1053DV",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "cuisine": "british;irish",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "The Greasy Spoon",
+      "opening_hours": "Th-Mo 09:00-17:00",
+      "website": "https://www.thegreasyspoon.nl"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160746",
+   "addresses": [
+    "Kinkerstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 22-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705230"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236814",
+   "addresses": [
+    "Kinkerstraat 18",
+    "Kinkerstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 18-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000705211"
+    },
+    {
+     "address": "Kinkerstraat 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705223"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8950380560,
+     "lngLat": [
+      4.8752736,
+      52.368212
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18,20",
+      "addr:postcode": "1053DV",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "cuisine": "lebanese",
+      "delivery": "Mo-Sa 17:30-21:00",
+      "name": "Beyrouth",
+      "opening_hours": "Mo-Sa 17:30-22:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 616 0635",
+      "reservation": "yes",
+      "takeaway": "yes",
+      "toilets": "yes",
+      "website": "https://www.restaurantbeyrouth.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236360",
+   "addresses": [
+    "Kinkerstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 16-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000705201"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236379",
+   "addresses": [
+    "Kinkerstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000705190"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163174",
+   "addresses": [
+    "Kinkerstraat 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 12C-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705179"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155541",
+   "addresses": [
+    "Kinkerstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 12B-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000705175"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4825417024,
+     "lngLat": [
+      4.875502,
+      52.3682884
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12 B-HS",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "email": "mozzicopizza@gmail.com",
+      "name": "Mozzico",
+      "phone": "+31 20 786 7329",
+      "website": "https://mozzico.nl"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236383",
+   "addresses": [
+    "Kinkerstraat 12A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 12A-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705171"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164188",
+   "addresses": [
+    "Kinkerstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001009628"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162482",
+   "addresses": [
+    "Kinkerstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000705152"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237357",
+   "addresses": [
+    "Kinkerstraat 4",
+    "Kinkerstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000705132"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2606068014,
+     "lngLat": [
+      4.8757105,
+      52.3683387
+     ],
+     "tags": {
+      "check_date": "2025-08-15",
+      "name": "TeleWorld",
+      "opening_hours": "Mo-Sa 09:30 - 17:30",
+      "phone": "+31 20 683 40 01",
+      "shop": "mobile_phone",
+      "website": "https://www.tele-world.nl/"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163325",
+   "addresses": [
+    "Kinkerstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 2-H",
+     "use": "winkelfunctie",
+     "areaM2": 16,
+     "bagId": "0363010000705122"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161331",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 330-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000748529"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809226867,
+     "lngLat": [
+      4.8759444,
+      52.3684089
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "330-H",
+      "addr:postcode": "1053LT",
+      "addr:street": "Nassaukade",
+      "amenity": "cafe",
+      "branch": "Nassaukade",
+      "brand": "Cafecito",
+      "check_date": "2025-08-15",
+      "contact:instagram": "cafecito_nl",
+      "cuisine": "coffee",
+      "email": "coffee@cafecito.nl",
+      "indoor_seating": "yes",
+      "name": "Cafecito",
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa-Su 09:00-18:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://cafecito.nl"
+     },
+     "fetchedAt": "2026-10-14T08:56:35.432Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

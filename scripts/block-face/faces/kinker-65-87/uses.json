@@ -1,0 +1,505 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:29:21.933Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012106015",
+   "addresses": [
+    "Kinkerstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 65-H",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000789291"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157363,
+     "lngLat": [
+      4.8720407,
+      52.3670237
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "65",
+      "addr:postcode": "1053DG",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-16",
+      "craft": "key_cutter",
+      "name": "Sleutelkluis",
+      "website": "https://www.desleutelkluis.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156997",
+   "addresses": [
+    "Kinkerstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 67-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000957029"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2441927952,
+     "lngLat": [
+      4.8719359,
+      52.3669957
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "67",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-08-25",
+      "name": "Mount Everest",
+      "shop": "newsagent",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236453",
+   "addresses": [
+    "Kinkerstraat 69",
+    "Kinkerstraat 71A",
+    "Kinkerstraat 71B",
+    "Kinkerstraat 71C",
+    "Kinkerstraat 71D",
+    "Kinkerstraat 71E",
+    "Kinkerstraat 73A",
+    "Kinkerstraat 73B",
+    "Kinkerstraat 73C",
+    "Kinkerstraat 73D",
+    "Kinkerstraat 73E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 69-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000705468"
+    },
+    {
+     "address": "Kinkerstraat 71A",
+     "use": "winkelfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001029176"
+    },
+    {
+     "address": "Kinkerstraat 71B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029177"
+    },
+    {
+     "address": "Kinkerstraat 71C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029178"
+    },
+    {
+     "address": "Kinkerstraat 71D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029179"
+    },
+    {
+     "address": "Kinkerstraat 71E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029180"
+    },
+    {
+     "address": "Kinkerstraat 73A",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029198"
+    },
+    {
+     "address": "Kinkerstraat 73B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029199"
+    },
+    {
+     "address": "Kinkerstraat 73C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029202"
+    },
+    {
+     "address": "Kinkerstraat 73D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029204"
+    },
+    {
+     "address": "Kinkerstraat 73E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001029206"
+    }
+   ],
+   "units": 22,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809777617,
+     "lngLat": [
+      4.8716759,
+      52.3669702
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "73A",
+      "addr:postcode": "1053DG",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-08-28",
+      "check_date:opening_hours": "2026-08-28",
+      "cuisine": "korean",
+      "indoor_seating": "yes",
+      "name": "Seoul Food",
+      "opening_hours": "Tu-Su 12:00-20:00",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11395814497,
+     "lngLat": [
+      4.8718122,
+      52.3670049
+     ],
+     "tags": {
+      "branch": "Amsterdam Kinkerstraat",
+      "brand": "Vitaminstore",
+      "brand:wikidata": "Q123535847",
+      "name": "Vitaminstore",
+      "opening_hours": "Mo 10:00-18:00; Tu-Sa 09:00-18:00; Su 11:00-17:00",
+      "phone": "+31 20 6120020",
+      "shop": "nutrition_supplements",
+      "website": "https://www.vitaminstore.nl/shop/vitaminstore-amsterdam-kinkerstraat"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155934",
+   "addresses": [
+    "Kinkerstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 75-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000705501"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809777639,
+     "lngLat": [
+      4.8715961,
+      52.3669596
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "75-H",
+      "addr:postcode": "1053DG",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "indoor_seating": "yes",
+      "name": "Larry's",
+      "opening_hours": "Tu-Su 12:00-20:30",
+      "outdoor_seating": "no",
+      "phone": "+31 6 10 27 66 24",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.larrys.nl"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012096181",
+   "addresses": [
+    "Kinkerstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 77-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000696887"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2441927955,
+     "lngLat": [
+      4.8715626,
+      52.3669281
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "81",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "female": "yes",
+      "male": "yes",
+      "name": "Ja &Ro",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157331",
+   "addresses": [
+    "Kinkerstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 79-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000705525"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12160371748,
+     "lngLat": [
+      4.8714925,
+      52.3669175
+     ],
+     "tags": {
+      "addr:housenumber": "79",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "Massage Salon Oranje",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156102",
+   "addresses": [
+    "Kinkerstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000705538"
+    },
+    {
+     "address": "Kinkerstraat 81-O",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705539"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12160371747,
+     "lngLat": [
+      4.8714315,
+      52.3668992
+     ],
+     "tags": {
+      "check_date": "2025-10-02",
+      "name": "Wesile",
+      "shop": "locksmith",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162717",
+   "addresses": [
+    "Kinkerstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 83-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000705549"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2441927947,
+     "lngLat": [
+      4.8713845,
+      52.3668829
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "83",
+      "addr:postcode": "1053DH",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "changing_table": "no",
+      "check_date": "2025-10-02",
+      "cuisine": "sushi",
+      "diet:vegan": "only",
+      "diet:vegetarian": "only",
+      "indoor_seating": "yes",
+      "name": "Vegan Sushi Bar",
+      "opening_hours": "Mo-Su 12:00-21:00",
+      "outdoor_seating": "no",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161747",
+   "addresses": [
+    "Kinkerstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 85-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000705554"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12160371749,
+     "lngLat": [
+      4.8713221,
+      52.3668736
+     ],
+     "tags": {
+      "addr:housenumber": "85",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-09-02",
+      "contact:instagram": "https://www.instagram.com/couscousbar.nl",
+      "cuisine": "moroccan",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Couscous Bar",
+      "opening_hours": "12:00-21:30",
+      "website": "https://couscousbar.nl"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156991",
+   "addresses": [
+    "Kinkerstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 69-H",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000944599"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157354,
+     "lngLat": [
+      4.8712673,
+      52.3668601
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "87",
+      "addr:postcode": "1053DH",
+      "addr:street": "Kinkerstraat",
+      "amenity": "pub",
+      "check_date": "2024-09-02",
+      "contact:instagram": "https://www.instagram.com/barbillieamsterdam",
+      "indoor_seating": "yes",
+      "name": "Bar Billie",
+      "opening_hours": "Mo-We 14:00-24:00; Th 14:00-01:00; Fr 14:00-03:00; Sa 12:00-03:00; Su 12:00-24:00",
+      "outdoor_seating": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:29:21.933Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

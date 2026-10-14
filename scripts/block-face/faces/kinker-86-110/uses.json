@@ -1,0 +1,336 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:38:51.733Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165799",
+   "addresses": [
+    "Kinkerstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000949343"
+    },
+    {
+     "address": "Kinkerstraat 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012072281"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157348,
+     "lngLat": [
+      4.8711152,
+      52.3670458
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "110-H",
+      "addr:postcode": "1053EC",
+      "addr:street": "Kinkerstraat",
+      "amenity": "cafe",
+      "check_date": "2024-09-01",
+      "check_date:opening_hours": "2023-06-14",
+      "cost:coffee": "EUR2",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "name": "Coffee Room",
+      "opening_hours": "Mo-Fr 08:00-18:00; Su 09:00-19:00; Sa 08:00-19:00",
+      "opening_hours:signed": "no",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 612 4527",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://coffeeroom.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:38:51.733Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2105991817,
+     "lngLat": [
+      4.8710929,
+      52.3669973
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "check_date": "2025-10-02",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "ref": "12100",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-14T09:38:51.733Z",
+     "match": "frontage",
+     "distanceM": 4.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236027",
+   "addresses": [
+    "Kinkerstraat 106",
+    "Kinkerstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 106-H",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000705607"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809199166,
+     "lngLat": [
+      4.8712629,
+      52.3670935
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "106-H",
+      "addr:postcode": "1053EC",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-09-02",
+      "contact:instagram": "camino.amsterdam",
+      "cuisine": "mexican",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Camino Taqueria",
+      "opening_hours": "Mo-Th,Su 17:00-22:00; Fr 17:00-23:00; Sa 12:00-23:00",
+      "outdoor_seating": "no",
+      "phone": "+31 6 21354072",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://camino-amsterdam.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:38:51.733Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159635",
+   "addresses": [
+    "Kinkerstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 104-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000705602"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809199126,
+     "lngLat": [
+      4.8713173,
+      52.3671034
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "104-H",
+      "addr:postcode": "1053EC",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-06-07",
+      "name": "Indianaweg",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:38:51.733Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152925",
+   "addresses": [
+    "Kinkerstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 102-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000705598"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160809",
+   "addresses": [
+    "Kinkerstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 100-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000705593"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158180",
+   "addresses": [
+    "Kinkerstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 98-H",
+     "use": "winkelfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000705587"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156028",
+   "addresses": [
+    "Kinkerstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 96-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705582"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236213",
+   "addresses": [
+    "Kinkerstraat 92",
+    "Kinkerstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 92-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000705574"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2441927953,
+     "lngLat": [
+      4.8717064,
+      52.3672183
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92",
+      "addr:postcode": "1053EB",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "SuperBra",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:38:51.733Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155794",
+   "addresses": [
+    "Kinkerstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 90-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705569"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233580",
+   "addresses": [
+    "Kinkerstraat 86",
+    "Kinkerstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 86-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000705558"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157345,
+     "lngLat": [
+      4.8718715,
+      52.3672623
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "changing_table": "no",
+      "check_date": "2025-01-16",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Corner Inn",
+      "opening_hours": "Mo-Th 14:00-01:00; Fr-Sa 14:00-04:00; Su 14:00-03:00",
+      "outdoor_seating": "no",
+      "payment:cash": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:38:51.733Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

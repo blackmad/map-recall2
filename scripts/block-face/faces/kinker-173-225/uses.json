@@ -1,0 +1,1118 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:33:16.225Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148565",
+   "addresses": [
+    "Kinkerstraat 173A",
+    "Kinkerstraat 173B",
+    "Kinkerstraat 175A",
+    "Kinkerstraat 175B",
+    "Kinkerstraat 175D",
+    "Kinkerstraat 175E",
+    "Kinkerstraat 175F",
+    "Kinkerstraat 175C",
+    "Kinkerstraat 177A",
+    "Kinkerstraat 177D",
+    "Kinkerstraat 177E",
+    "Kinkerstraat 177C",
+    "Kinkerstraat 177F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 175A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000705795"
+    },
+    {
+     "address": "Kinkerstraat 175B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000705796"
+    },
+    {
+     "address": "Kinkerstraat 175D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000705798"
+    },
+    {
+     "address": "Kinkerstraat 175E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000705799"
+    },
+    {
+     "address": "Kinkerstraat 175F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000705800"
+    },
+    {
+     "address": "Kinkerstraat 177A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705801"
+    },
+    {
+     "address": "Kinkerstraat 177D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000705804"
+    },
+    {
+     "address": "Kinkerstraat 173A",
+     "use": "winkelfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000985577"
+    },
+    {
+     "address": "Kinkerstraat 173B",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000985578"
+    },
+    {
+     "address": "Kinkerstraat 175C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705797"
+    },
+    {
+     "address": "Kinkerstraat 177E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705805"
+    },
+    {
+     "address": "Kinkerstraat 177C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705803"
+    },
+    {
+     "address": "Kinkerstraat 177F",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705806"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809771472,
+     "lngLat": [
+      4.8673991,
+      52.3658137
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "173A",
+      "addr:postcode": "1053DP",
+      "addr:street": "Kinkerstraat",
+      "branch": "Amsterdam Kinkerstraat",
+      "brand": "MultiVlaai",
+      "brand:website": "https://www.multivlaai.nl",
+      "brand:wikidata": "Q5439846",
+      "email": "kinkerstraat@multivlaai.nl",
+      "indoor_seating": "yes",
+      "name": "MultiVlaai",
+      "opening_hours": "Mo-Sa 09:00-18:00; Su 12:00-18:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 4121499",
+      "shop": "pastry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.multivlaai.nl/multivlaai-amsterdam-kinkerstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5750117779,
+     "lngLat": [
+      4.867464,
+      52.3658244
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "173",
+      "addr:postcode": "1053DS",
+      "addr:street": "Kinkerstraat",
+      "amenity": "cafe",
+      "brand": "Doppio Espresso",
+      "brand:wikidata": "Q108927102",
+      "cuisine": "coffee_shop",
+      "indoor_seating": "yes",
+      "name": "Doppio Espresso",
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa-Su 09:00-18:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 214 9125",
+      "takeaway": "yes",
+      "website": "https://doppio-espresso.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012115555",
+   "addresses": [
+    "Kinkerstraat 177B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 177B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705802"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226915,
+     "lngLat": [
+      4.8672389,
+      52.3657783
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "181",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "Volendam Vishandel",
+      "shop": "seafood",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012085030",
+   "addresses": [
+    "Kinkerstraat 179",
+    "Kinkerstraat 181"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 179",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000705807"
+    },
+    {
+     "address": "Kinkerstraat 181",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000705808"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087255",
+   "addresses": [
+    "Kinkerstraat 183"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 183",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000705809"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4833026126,
+     "lngLat": [
+      4.8670182,
+      52.3657304
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "183",
+      "addr:postcode": "1053DP",
+      "addr:street": "Kinkerstraat",
+      "name": "Ulivoto Fashion",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012119385",
+   "addresses": [
+    "Kinkerstraat 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 185",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705810"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4833026125,
+     "lngLat": [
+      4.8669306,
+      52.365707
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "185",
+      "addr:postcode": "1053DP",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "B&B feestartikelen",
+      "name:nl": "B&B feestartikelen",
+      "shop": "gift",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111903",
+   "addresses": [
+    "Kinkerstraat 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 187",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705815"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226918,
+     "lngLat": [
+      4.8668618,
+      52.3656856
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "187",
+      "addr:postcode": "1053DR",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-22",
+      "name": "Solleveld",
+      "opening_hours": "Mo 12:00-18:00; Tu-Fr 09:00-18:00; Sa 09:00-17:00",
+      "operator": "Solleveld",
+      "payment:cash": "yes",
+      "phone": "+31 20 618 5899",
+      "shop": "photo",
+      "website": "https://fotosolleveld.com/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012151677",
+   "addresses": [
+    "Kinkerstraat 189",
+    "Kinkerstraat 191",
+    "Kinkerstraat 193",
+    "Kinkerstraat 195A",
+    "Kinkerstraat 195E",
+    "Kinkerstraat 195D",
+    "Kinkerstraat 195B",
+    "Kinkerstraat 195C",
+    "Kinkerstraat 195F",
+    "Kinkerstraat 197F",
+    "Kinkerstraat 197D",
+    "Kinkerstraat 197C",
+    "Kinkerstraat 197A",
+    "Kinkerstraat 197E",
+    "Kinkerstraat 197B",
+    "Kinkerstraat 199B",
+    "Kinkerstraat 199D",
+    "Kinkerstraat 199E",
+    "Kinkerstraat 199F",
+    "Kinkerstraat 199C",
+    "Kinkerstraat 199A",
+    "Kinkerstraat 201A",
+    "Kinkerstraat 201B",
+    "Kinkerstraat 201E",
+    "Kinkerstraat 201F",
+    "Kinkerstraat 201D",
+    "Kinkerstraat 201C",
+    "Kinkerstraat 203A",
+    "Kinkerstraat 203C",
+    "Kinkerstraat 203F",
+    "Kinkerstraat 203D",
+    "Kinkerstraat 203B",
+    "Kinkerstraat 203E",
+    "Kinkerstraat 207"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 189",
+     "use": "winkelfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000705819"
+    },
+    {
+     "address": "Kinkerstraat 191",
+     "use": "winkelfunctie",
+     "areaM2": 273,
+     "bagId": "0363010000705820"
+    },
+    {
+     "address": "Kinkerstraat 193",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000705825"
+    },
+    {
+     "address": "Kinkerstraat 195A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705829"
+    },
+    {
+     "address": "Kinkerstraat 197F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000705843"
+    },
+    {
+     "address": "Kinkerstraat 199B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705848"
+    },
+    {
+     "address": "Kinkerstraat 201A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000705857"
+    },
+    {
+     "address": "Kinkerstraat 201B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000705858"
+    },
+    {
+     "address": "Kinkerstraat 201E",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000705861"
+    },
+    {
+     "address": "Kinkerstraat 201F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000705862"
+    },
+    {
+     "address": "Kinkerstraat 203A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705866"
+    },
+    {
+     "address": "Kinkerstraat 203C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705868"
+    },
+    {
+     "address": "Kinkerstraat 207",
+     "use": "winkelfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000705887"
+    },
+    {
+     "address": "Kinkerstraat 195E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705833"
+    },
+    {
+     "address": "Kinkerstraat 201D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000705860"
+    },
+    {
+     "address": "Kinkerstraat 199D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705850"
+    },
+    {
+     "address": "Kinkerstraat 197D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000705841"
+    },
+    {
+     "address": "Kinkerstraat 199E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705851"
+    },
+    {
+     "address": "Kinkerstraat 203F",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705872"
+    },
+    {
+     "address": "Kinkerstraat 203D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000705870"
+    },
+    {
+     "address": "Kinkerstraat 199F",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705852"
+    },
+    {
+     "address": "Kinkerstraat 203B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705867"
+    },
+    {
+     "address": "Kinkerstraat 195D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000705832"
+    },
+    {
+     "address": "Kinkerstraat 199C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705849"
+    },
+    {
+     "address": "Kinkerstraat 197C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705840"
+    },
+    {
+     "address": "Kinkerstraat 195B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705830"
+    },
+    {
+     "address": "Kinkerstraat 195C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705831"
+    },
+    {
+     "address": "Kinkerstraat 197A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705838"
+    },
+    {
+     "address": "Kinkerstraat 197E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705842"
+    },
+    {
+     "address": "Kinkerstraat 199A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705847"
+    },
+    {
+     "address": "Kinkerstraat 201C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000705859"
+    },
+    {
+     "address": "Kinkerstraat 197B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705839"
+    },
+    {
+     "address": "Kinkerstraat 203E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705871"
+    },
+    {
+     "address": "Kinkerstraat 195F",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705834"
+    }
+   ],
+   "units": 34,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809772061,
+     "lngLat": [
+      4.866817,
+      52.3656277
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "189",
+      "addr:postcode": "1053DR",
+      "addr:street": "Kinkerstraat",
+      "name": "Kellys Expat Shopping",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 7058869173,
+     "lngLat": [
+      4.8667716,
+      52.3656654
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "193",
+      "addr:postcode": "1053DR",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "check_date:opening_hours": "2023-12-31",
+      "name": "We Are Vintage",
+      "not:brand:wikidata": "Q1987861",
+      "opening_hours": "Mo-Su 11:00-19:00",
+      "phone": "+31 20 785 2777",
+      "second_hand": "yes",
+      "shop": "clothes",
+      "website": "https://www.wearevintage.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012078442",
+   "addresses": [
+    "Kinkerstraat 205B",
+    "Kinkerstraat 205D",
+    "Kinkerstraat 205C",
+    "Kinkerstraat 205A",
+    "Kinkerstraat 205E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 205B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705878"
+    },
+    {
+     "address": "Kinkerstraat 205D",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705880"
+    },
+    {
+     "address": "Kinkerstraat 205C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705879"
+    },
+    {
+     "address": "Kinkerstraat 205A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705877"
+    },
+    {
+     "address": "Kinkerstraat 205E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000705881"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4733575071,
+     "lngLat": [
+      4.8663619,
+      52.3655781
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "207-209",
+      "addr:postcode": "1053DS",
+      "addr:street": "Kinkerstraat",
+      "brand": "Specsavers",
+      "brand:wikidata": "Q2000610",
+      "brand:wikipedia": "en:Specsavers",
+      "check_date": "2025-01-17",
+      "name": "Specsavers",
+      "opening_hours": "Mo 10:00-17:30; Sa 09:30-17:00; Tu-Fr 09:30-17:30",
+      "operator": "Specsavers",
+      "phone": "+31 20 616 5122",
+      "shop": "optician",
+      "website": "https://www.specsavers.nl/winkelzoeker/amsterdamkinkerstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012130890",
+   "addresses": [
+    "Kinkerstraat 205F",
+    "Kinkerstraat 209",
+    "Kinkerstraat 211B",
+    "Kinkerstraat 211A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 211B",
+     "use": "winkelfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000558868"
+    },
+    {
+     "address": "Kinkerstraat 205F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000705882"
+    },
+    {
+     "address": "Kinkerstraat 209",
+     "use": "winkelfunctie",
+     "areaM2": 530,
+     "bagId": "0363010000705891"
+    },
+    {
+     "address": "Kinkerstraat 211A",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000941741"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452226922,
+     "lngLat": [
+      4.8662346,
+      52.3655476
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "211A",
+      "addr:postcode": "1053DS",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2023-04-30",
+      "craft": "shoemaker",
+      "email": "shoe-point@live.nl",
+      "name": "Shoe Point",
+      "opening_hours": "Mo 11:00-18:00; Tu-Sa 09:30-18:00; Sa 09:30-17:00",
+      "phone": "+31 20 686 0879",
+      "website": "https://www.shoe-point.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4732828611,
+     "lngLat": [
+      4.8662848,
+      52.3655603
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "211",
+      "addr:postcode": "1053DS",
+      "addr:street": "Kinkerstraat",
+      "brand": "Pearle",
+      "brand:wikidata": "Q2231148",
+      "brand:wikipedia": "nl:Pearle",
+      "check_date": "2025-01-27",
+      "name": "Pearle",
+      "opening_hours": "Mo 11:00-18:00; Tu-Fr 09:30-18:00; Sa 09:30-17:00",
+      "operator": "Pearl",
+      "phone": "+31 20 616 2360",
+      "shop": "optician",
+      "website": "https://www.pearle.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131204",
+   "addresses": [
+    "Kinkerstraat 213",
+    "Kinkerstraat 215A",
+    "Kinkerstraat 215B",
+    "Kinkerstraat 215C",
+    "Kinkerstraat 215D",
+    "Kinkerstraat 215E",
+    "Kinkerstraat 215F",
+    "Kinkerstraat 217A",
+    "Kinkerstraat 217B",
+    "Kinkerstraat 217C",
+    "Kinkerstraat 217D",
+    "Kinkerstraat 217E",
+    "Kinkerstraat 219A",
+    "Kinkerstraat 219B",
+    "Kinkerstraat 219C",
+    "Kinkerstraat 219D",
+    "Kinkerstraat 219E",
+    "Kinkerstraat 221A",
+    "Kinkerstraat 221B",
+    "Kinkerstraat 221C",
+    "Kinkerstraat 221D",
+    "Kinkerstraat 221E",
+    "Kinkerstraat 223A",
+    "Kinkerstraat 223F",
+    "Kinkerstraat 223H",
+    "Kinkerstraat 223K",
+    "Kinkerstraat 223N",
+    "Kinkerstraat 223G",
+    "Kinkerstraat 223D",
+    "Kinkerstraat 223M",
+    "Kinkerstraat 223B",
+    "Kinkerstraat 223C",
+    "Kinkerstraat 223L",
+    "Kinkerstraat 223E",
+    "Kinkerstraat 225"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 213",
+     "use": "winkelfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000705899"
+    },
+    {
+     "address": "Kinkerstraat 215A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000705903"
+    },
+    {
+     "address": "Kinkerstraat 215B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000705904"
+    },
+    {
+     "address": "Kinkerstraat 215C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000705905"
+    },
+    {
+     "address": "Kinkerstraat 215D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705906"
+    },
+    {
+     "address": "Kinkerstraat 215E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705907"
+    },
+    {
+     "address": "Kinkerstraat 217A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705910"
+    },
+    {
+     "address": "Kinkerstraat 217B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705911"
+    },
+    {
+     "address": "Kinkerstraat 217C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000705912"
+    },
+    {
+     "address": "Kinkerstraat 217D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705913"
+    },
+    {
+     "address": "Kinkerstraat 219A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705915"
+    },
+    {
+     "address": "Kinkerstraat 219B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705916"
+    },
+    {
+     "address": "Kinkerstraat 219C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705917"
+    },
+    {
+     "address": "Kinkerstraat 219D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705918"
+    },
+    {
+     "address": "Kinkerstraat 221A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705920"
+    },
+    {
+     "address": "Kinkerstraat 221B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705921"
+    },
+    {
+     "address": "Kinkerstraat 221C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705922"
+    },
+    {
+     "address": "Kinkerstraat 221D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705923"
+    },
+    {
+     "address": "Kinkerstraat 221E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000705924"
+    },
+    {
+     "address": "Kinkerstraat 223A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000705927"
+    },
+    {
+     "address": "Kinkerstraat 223F",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000705932"
+    },
+    {
+     "address": "Kinkerstraat 223H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000705934"
+    },
+    {
+     "address": "Kinkerstraat 223K",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705935"
+    },
+    {
+     "address": "Kinkerstraat 223N",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000705938"
+    },
+    {
+     "address": "Kinkerstraat 225",
+     "use": "winkelfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000705944"
+    },
+    {
+     "address": "Kinkerstraat 223G",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705933"
+    },
+    {
+     "address": "Kinkerstraat 223D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705930"
+    },
+    {
+     "address": "Kinkerstraat 219E",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000705919"
+    },
+    {
+     "address": "Kinkerstraat 223M",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705937"
+    },
+    {
+     "address": "Kinkerstraat 223B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705928"
+    },
+    {
+     "address": "Kinkerstraat 223C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705929"
+    },
+    {
+     "address": "Kinkerstraat 217E",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000705914"
+    },
+    {
+     "address": "Kinkerstraat 223L",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705936"
+    },
+    {
+     "address": "Kinkerstraat 215F",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000705908"
+    },
+    {
+     "address": "Kinkerstraat 223E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705931"
+    }
+   ],
+   "units": 35,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809772614,
+     "lngLat": [
+      4.8661052,
+      52.3655095
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "213",
+      "addr:postcode": "1053DS",
+      "addr:street": "Kinkerstraat",
+      "branch": "Amsterdam Kinkerstraat",
+      "brand": "Norah",
+      "brand:website": "https://www.norah.eu",
+      "brand:wikidata": "Q136475857",
+      "clothes": "women",
+      "name": "Norah",
+      "phone": "+31 20 2246502",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.norah.eu/nl/norah-amsterdam-kinkerstraat"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4711284146,
+     "lngLat": [
+      4.865734,
+      52.3654323
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "225",
+      "addr:postcode": "1053DS",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-27",
+      "name": "Lansuplant",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 09:00-18:00; Su 12:00-17:00",
+      "phone": "+31 20 612 4445",
+      "shop": "florist",
+      "website": "https://www.facebook.com/Lansuplant-kinkerstraat-281177142070749/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:33:16.225Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
