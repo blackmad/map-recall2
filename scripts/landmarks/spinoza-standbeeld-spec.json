@@ -1,0 +1,42 @@
+{
+  "id": "spinoza-standbeeld",
+  "name": "Spinoza statue (Zwanenburgwal)",
+  "landmarkId": "osm_way_175846077",
+  "modelUrl": "./models/spinoza-standbeeld.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8991992,
+      52.3679383
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 6.2,
+    "widthMetres": 3.4
+  },
+  "surveyed": {
+    "anchor": [
+      4.8991992,
+      52.3679383
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM artwork way 175846077 (tourism=artwork, Nicolas Dings, 2008): the slab outline is the mapped polygon; figure, polyhedron and lettered edge placed from Gemeente Amsterdam panoramas (2018-2025); the facing (slab axis 180, head about 200 degrees) and the 2.3 m figure height are visual estimates"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#5b4636",
+    "concrete": "#9b9a95",
+    "greyBrick": "#6f706c",
+    "dark": "#1f2123"
+  },
+  "attribution": {
+    "title": "Spinoza statue - original low-poly reconstruction",
+    "author": "Map Recall; commemorated sculpture by Nicolas Dings (2008)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Spinozamonument_Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly figure, polyhedron and granite slab. Plan from the OSM outline (ODbL), form and lettering from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+  }
+}

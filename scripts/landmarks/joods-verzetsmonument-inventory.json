@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "id": "joods-verzetsmonument",
+ "signature": [
+  "jv-stele",
+  "jv-text"
+ ],
+ "walls": [
+  {
+   "tag": "e-85",
+   "bearing": 85,
+   "lengthM": 0.86,
+   "centre": [
+    4.8989,
+    52.3676
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_003721",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "note": "The wide face toward the quay with the gilt block (panoramas 003721/3722/3723 of 2018-05-08, 00073 of 2025-01-30).",
+   "items": [
+    {
+     "id": "jv-stele",
+     "kind": "other",
+     "where": "tall stele of polished black stone, flat-topped with a thin lighter cap, on a low plinth slab",
+     "approxSizeM": [
+      0.86,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "builder: boxes for plinth, stele and cap",
+     "seenIn": "TMX7316010203-000711_pano_0000_003721"
+    },
+    {
+     "id": "jv-text",
+     "kind": "lettering",
+     "where": "gilt text block in the middle of the wide face (five lines) and a strip of gilt lines on the narrow left face",
+     "approxSizeM": [
+      0.56,
+      0.4
+     ],
+     "plan": "simplified",
+     "how": "builder: five gilt line plates and a lettered date line on the wide face, six short plates on the narrow face; the wording is not legible at panorama resolution and is not invented",
+     "seenIn": "TMX7316010203-000711_pano_0000_003721"
+    }
+   ]
+  },
+  {
+   "tag": "w-265",
+   "bearing": 265,
+   "lengthM": 0.86,
+   "centre": [
+    4.8989,
+    52.3676
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back (canal side): plain polished stone; not photographed from this side.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Jewish WW2 resistance memorial (Amstel 1, unveiled 16 October 1988), descriptive text only",
+   "url": "https://aroundus.com/p/8631744-jewish-ww2-resistance-memorial",
+   "licence": "facts only, no text copied"
+  }
+ ]
+}

@@ -1,6 +1,152 @@
 {
   "generatedBy": "scripts/build-signature-landmark.ts",
   "models": {
+    "figure-decoupee": {
+      "id": "figure-decoupee",
+      "name": "Figure decoupee (Picasso, Vondelpark)",
+      "landmarkId": "osm_artwork_538934266",
+      "modelUrl": "./models/figure-decoupee.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86802,
+          52.35747
+        ],
+        "headingDegrees": 50,
+        "lengthMetres": 3.3,
+        "widthMetres": 0.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.86802,
+          52.35747
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM node 538934266 \"Figure decoupee\" (Pablo Picasso, 1965); position and orientation from Gemeente Amsterdam panoramas (2020-2025); the facing (about 140 degrees, +-20), the 4.4 m height and the 0.25 m thickness are visual estimates; outline traced from the Wikimedia Commons photo Figure decoupee in 2019 (1) by Cees (CC BY-SA 4.0)"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "concrete": "#c9c6bb",
+        "greyBrick": "#34332f"
+      },
+      "attribution": {
+        "title": "Figure decoupee - original low-poly reconstruction",
+        "author": "Map Recall; after the 1965 sculpture by Pablo Picasso and Carl Nesjar",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Figure_d%C3%A9coup%C3%A9e_in_2019_(1).jpg",
+        "licence": "Original project asset (outline traced from a CC BY-SA 4.0 photograph by Cees)",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free extruded outline with engraved line strips, hand-traced from a CC BY-SA 4.0 Commons photo and Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -1.3663603067398071,
+          -0.05000000074505806,
+          -1.122633457183838
+        ],
+        "max": [
+          1.3041338920593262,
+          4.336461544036865,
+          1.1748476028442383
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86802,
+          52.35747
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 50,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 2.6704941987991333,
+        "heightMetres": 4.386461544781923,
+        "depthMetres": 2.297481060028076,
+        "depthCoverage": 7.658270200093588
+      },
+      "triangles": 852,
+      "bytes": 14544,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "joods-verzetsmonument": {
+      "id": "joods-verzetsmonument",
+      "name": "Joods Verzetsmonument (Amstel 1)",
+      "landmarkId": "osm_memorial_jewish_ww2_resistance",
+      "modelUrl": "./models/joods-verzetsmonument.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8989,
+          52.3676
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 1.1,
+        "widthMetres": 0.75
+      },
+      "surveyed": {
+        "anchor": [
+          4.8989,
+          52.3676
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial \"Jewish WW2 resistance memorial\", Amstel 1, unveiled 1988); stele position and faces read from Gemeente Amsterdam panoramas (2016-2025); the facing (east) and the 2.5 m height are visual estimates; the gilt wording is not legible at panorama resolution"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "dark": "#16181b",
+        "concrete": "#8f8d88",
+        "greyBrick": "#2a2c2f",
+        "gold": "#b8974a"
+      },
+      "attribution": {
+        "title": "Joods Verzetsmonument - original low-poly reconstruction",
+        "author": "Map Recall; commemorated monument unveiled 16 October 1988",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Jewish%20WW2%20resistance%20memorial%20Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly stele and plinth. Proportions and the placement of the gilt text from Gemeente Amsterdam panoramas (CC BY 4.0); the wording is not legible and is not reproduced. No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.4165276885032654,
+          6.705522803684971e-10,
+          -0.5801547169685364
+        ],
+        "max": [
+          0.4165276885032654,
+          2.5899999141693115,
+          0.5801547169685364
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8989,
+          52.3676
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 1.1603094339370728,
+        "heightMetres": 2.589999913498759,
+        "depthMetres": 0.8330553770065308,
+        "depthCoverage": 1.1107405026753743
+      },
+      "triangles": 720,
+      "bytes": 15464,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
     "royal-palace": {
       "name": "Royal Palace of Amsterdam",
       "landmarkId": "extract_landmarks_342809743",
@@ -767,6 +913,86 @@
         "triangles": 6909
       }
     },
+    "spinoza-standbeeld": {
+      "id": "spinoza-standbeeld",
+      "name": "Spinoza statue (Zwanenburgwal)",
+      "landmarkId": "osm_way_175846077",
+      "modelUrl": "./models/spinoza-standbeeld.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8991992,
+          52.3679383
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 6.2,
+        "widthMetres": 3.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8991992,
+          52.3679383
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM artwork way 175846077 (tourism=artwork, Nicolas Dings, 2008): the slab outline is the mapped polygon; figure, polyhedron and lettered edge placed from Gemeente Amsterdam panoramas (2018-2025); the facing (slab axis 180, head about 200 degrees) and the 2.3 m figure height are visual estimates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#5b4636",
+        "concrete": "#9b9a95",
+        "greyBrick": "#6f706c",
+        "dark": "#1f2123"
+      },
+      "attribution": {
+        "title": "Spinoza statue - original low-poly reconstruction",
+        "author": "Map Recall; commemorated sculpture by Nicolas Dings (2008)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Spinozamonument_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure, polyhedron and granite slab. Plan from the OSM outline (ODbL), form and lettering from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -1.522682547569275,
+          -1.726547887500129e-16,
+          -3.2292895317077637
+        ],
+        "max": [
+          1.723803162574768,
+          2.745000123977661,
+          2.819666624069214
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8991992,
+          52.3679383
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.0489561557769775,
+        "heightMetres": 2.745000123977661,
+        "depthMetres": 3.246485710144043,
+        "depthCoverage": 0.9548487382776597
+      },
+      "triangles": 4836,
+      "bytes": 53800,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "82f4b88017100004",
+        "buildVersion": 2,
+        "bytes": 25964,
+        "triangles": 1218
+      }
+    },
     "stadhuis": {
       "id": "stadhuis",
       "name": "Stadhuis / Nationale Opera & Ballet",
@@ -866,6 +1092,78 @@
         "bytes": 84924,
         "triangles": 4631
       }
+    },
+    "teun-de-jager": {
+      "id": "teun-de-jager",
+      "name": "Teun de Jager (Vondelpark)",
+      "landmarkId": "osm_artwork_5653694042",
+      "modelUrl": "./models/teun-de-jager.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86322,
+          52.35761
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 0.7,
+        "widthMetres": 0.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.86322,
+          52.35761
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM node 5653694042 \"Teun de Jager\" (Jan Bronner, 1958); figure and plinth read from Gemeente Amsterdam panoramas (2017-2020, 8 m away); the facing (250 degrees, +-25), figure height (1.75 m) and block size are visual estimates; the face and coat folds are not legible and are simplified"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "stone": "#c3bfb0",
+        "bronze": "#2c3835"
+      },
+      "attribution": {
+        "title": "Teun de Jager - original low-poly reconstruction",
+        "author": "Map Recall; after the 1958 statue by Jan Bronner",
+        "sourceUrl": "https://www.openstreetmap.org/node/5653694042",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure and plinth from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.4357823431491852,
+          -1.1920929132713809e-08,
+          -0.4357823431491852
+        ],
+        "max": [
+          0.4357823431491852,
+          2.930000066757202,
+          0.4357823431491852
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86322,
+          52.35761
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 0.8715646862983704,
+        "heightMetres": 2.9300000786781313,
+        "depthMetres": 0.8715646862983704,
+        "depthCoverage": 1.245092408997672
+      },
+      "triangles": 680,
+      "bytes": 9036,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "westerkerk": {
       "id": "westerkerk",
@@ -6744,6 +7042,368 @@
       "triangles": 516,
       "bytes": 11000,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "westermoskee": {
+      "id": "westermoskee",
+      "name": "Westermoskee",
+      "landmarkId": "lm-extract_landmarks_1632187034",
+      "modelUrl": "./models/westermoskee.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012241498"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.860635764455046,
+          52.36622136425853
+        ],
+        "headingDegrees": 38,
+        "lengthMetres": 33,
+        "widthMetres": 38
+      },
+      "surveyed": {
+        "anchor": [
+          4.860635764455046,
+          52.36622136425853
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012241498 (built 2015, 1,005 m2) and 3DBAG LoD2.2 (ground NAP 0.61 m, arcade cornice 8.9 m, upper hall 17.8 m, dome apex 25.8 m, minaret 32.6 m), native east/south metres from the 3DBAG vertex mean; facades, arcade, cupolas, minaret and dome read from Gemeente Amsterdam panoramas (2022-2025); the north-west and south-west fronts are inferred; the 3DBAG porch box on the south-east front is not modelled because no panorama shows it"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8608191880307805,
+              52.36609414956568
+            ],
+            [
+              4.860793295986343,
+              52.366105889272674
+            ],
+            [
+              4.860787568415809,
+              52.366108488225876
+            ],
+            [
+              4.860781648169778,
+              52.36610381523998
+            ],
+            [
+              4.860747609516489,
+              52.366077024220175
+            ],
+            [
+              4.860742518232912,
+              52.366073020011264
+            ],
+            [
+              4.860725702652746,
+              52.366059778194476
+            ],
+            [
+              4.860700348287722,
+              52.366039820510856
+            ],
+            [
+              4.860675765024901,
+              52.36602045944192
+            ],
+            [
+              4.8605683472261685,
+              52.366071364580684
+            ],
+            [
+              4.860528480633041,
+              52.366090268210094
+            ],
+            [
+              4.8604485261615435,
+              52.36612815533384
+            ],
+            [
+              4.860420191376885,
+              52.36614158277403
+            ],
+            [
+              4.860422161263714,
+              52.36614137583329
+            ],
+            [
+              4.860418934223465,
+              52.36614359043421
+            ],
+            [
+              4.860417696004191,
+              52.36614276704031
+            ],
+            [
+              4.860384281935927,
+              52.36615859856132
+            ],
+            [
+              4.860347427405208,
+              52.36617606850675
+            ],
+            [
+              4.860356272137193,
+              52.366182983488265
+            ],
+            [
+              4.860346792256985,
+              52.366187516061885
+            ],
+            [
+              4.860283327172452,
+              52.366217863836816
+            ],
+            [
+              4.860333350628192,
+              52.36625736289055
+            ],
+            [
+              4.860363009715662,
+              52.36628079110046
+            ],
+            [
+              4.860433528553939,
+              52.36633647835637
+            ],
+            [
+              4.860458271248986,
+              52.366356019938316
+            ],
+            [
+              4.860520208083988,
+              52.36640493714043
+            ],
+            [
+              4.860524726587451,
+              52.36640277322075
+            ],
+            [
+              4.86054409983438,
+              52.366393512153564
+            ],
+            [
+              4.860585341898732,
+              52.366373787765376
+            ],
+            [
+              4.8605930055016,
+              52.366370127892445
+            ],
+            [
+              4.860601922651796,
+              52.36637713305461
+            ],
+            [
+              4.860630715435731,
+              52.366363473927066
+            ],
+            [
+              4.860677418532625,
+              52.366341338118346
+            ],
+            [
+              4.860678821391253,
+              52.36634066128906
+            ],
+            [
+              4.8606810321951235,
+              52.36634242373053
+            ],
+            [
+              4.860708215808163,
+              52.36636414216069
+            ],
+            [
+              4.860754210097639,
+              52.36634234470379
+            ],
+            [
+              4.860735751176283,
+              52.3663277653965
+            ],
+            [
+              4.860725743667367,
+              52.36631984763388
+            ],
+            [
+              4.860724579911998,
+              52.366318934696984
+            ],
+            [
+              4.860755911718154,
+              52.36630411842367
+            ],
+            [
+              4.860785309338283,
+              52.366290210291396
+            ],
+            [
+              4.8608271392089994,
+              52.36627042551862
+            ],
+            [
+              4.86085940121716,
+              52.36625516396672
+            ],
+            [
+              4.860882626904452,
+              52.36624417634978
+            ],
+            [
+              4.860887266610122,
+              52.36624788194948
+            ],
+            [
+              4.860891571732424,
+              52.366251325417124
+            ],
+            [
+              4.860911367198346,
+              52.36626710601115
+            ],
+            [
+              4.860936084653354,
+              52.36626898647138
+            ],
+            [
+              4.860954927940091,
+              52.366259830834274
+            ],
+            [
+              4.860958315269686,
+              52.36624533967825
+            ],
+            [
+              4.8609522933891345,
+              52.366240567384224
+            ],
+            [
+              4.860943260464125,
+              52.36623341792988
+            ],
+            [
+              4.860918597490263,
+              52.36623189722287
+            ],
+            [
+              4.860914828762176,
+              52.36622903135602
+            ],
+            [
+              4.860930380243655,
+              52.36622136204218
+            ],
+            [
+              4.860907383102532,
+              52.3662031854673
+            ],
+            [
+              4.860891513514886,
+              52.366190639936036
+            ],
+            [
+              4.860864370977072,
+              52.3661691733865
+            ],
+            [
+              4.860819540680902,
+              52.36613372415507
+            ],
+            [
+              4.860818900558409,
+              52.366133226983266
+            ],
+            [
+              4.8608443706864275,
+              52.36612116183623
+            ],
+            [
+              4.860846112849969,
+              52.366122823326016
+            ],
+            [
+              4.860853562742786,
+              52.36611984555437
+            ],
+            [
+              4.860825479927347,
+              52.36608977354738
+            ],
+            [
+              4.8608176241803145,
+              52.36609230911348
+            ],
+            [
+              4.8608191880307805,
+              52.36609414956568
+            ]
+          ]
+        ]
+      },
+      "materialOverrides": {
+        "brick": "#9a5c4b",
+        "greyBrick": "#5d3d37",
+        "ochre": "#c9a56e",
+        "stone": "#e4dfd2",
+        "white": "#f2efe8",
+        "slate": "#848e8a",
+        "gold": "#c6a24e",
+        "glass": "#5b7186",
+        "dark": "#2a2927"
+      },
+      "attribution": {
+        "title": "Westermoskee - original low-poly reconstruction",
+        "author": "Map Recall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Westermoskee",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly mosque: massing from BAG/3DBAG (CC0 / CC BY 4.0), arcade, cupolas, minaret and dome measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "bagYear": 2015,
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -25.125688552856445,
+          -1.9073486612342094e-07,
+          -22.04391860961914
+        ],
+        "max": [
+          22.255102157592773,
+          32.869998931884766,
+          23.23446273803711
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.860635764455046,
+          52.36622136425853
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 38,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 47.38079071044922,
+        "heightMetres": 32.86999912261963,
+        "depthMetres": 45.27838134765625,
+        "depthCoverage": 1.191536351254112
+      },
+      "triangles": 22320,
+      "bytes": 251204,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "443a9ca11112e4fa",
+        "buildVersion": 2,
+        "bytes": 71164,
+        "triangles": 3348
+      }
     },
     "willet-holthuysen": {
       "id": "willet-holthuysen",

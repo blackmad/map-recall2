@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "id": "teun-de-jager",
+ "signature": [
+  "tj-figure",
+  "tj-plinth"
+ ],
+ "walls": [
+  {
+   "tag": "sw-250",
+   "bearing": 250,
+   "lengthM": 0.68,
+   "centre": [
+    4.86322,
+    52.35761
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0003_000360",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "note": "Front of the statue as seen from the south-west and west (000360 of 2017-04-13, 003003 of 2020-08-27, 001141/001142 of 2018-06-07).",
+   "items": [
+    {
+     "id": "tj-figure",
+     "kind": "sculpture",
+     "where": "slim standing bronze man in a long coat and brimmed hat, left forearm raised with a jug, right arm hanging",
+     "approxSizeM": [
+      0.5,
+      1.75
+     ],
+     "plan": "simplified",
+     "how": "builder: tapered coat cylinder, shoulder and head ellipsoids, hat brim and crown, arm limbs, jug cylinder; face and folds are not legible",
+     "seenIn": "TMX7316010203-000259_pano_0003_000360"
+    },
+    {
+     "id": "tj-plinth",
+     "kind": "other",
+     "where": "pale stone block with a dark bronze cap slab",
+     "approxSizeM": [
+      0.68,
+      1.2
+     ],
+     "plan": "modelled",
+     "how": "builder: stone box and cap slab",
+     "seenIn": "TMX7316010203-000259_pano_0003_000360"
+    }
+   ]
+  },
+  {
+   "tag": "ne-070",
+   "bearing": 70,
+   "lengthM": 0.68,
+   "centre": [
+    4.86322,
+    52.35761
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000781_pano_0000_001141",
+   "capturedAt": "2018-06-07",
+   "checked": true,
+   "note": "Back of the figure seen in profile from the other panoramas; plain coat.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap node 5653694042",
+   "url": "https://www.openstreetmap.org/node/5653694042",
+   "licence": "ODbL"
+  }
+ ]
+}

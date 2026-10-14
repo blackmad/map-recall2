@@ -1,0 +1,189 @@
+{
+ "schemaVersion": 1,
+ "id": "westermoskee",
+ "pand": "NL.IMBAG.Pand.0363100012241498",
+ "signature": [
+  "wm-minaret",
+  "wm-arcade",
+  "wm-cupolas",
+  "wm-dome",
+  "wm-stripes"
+ ],
+ "walls": [
+  {
+   "tag": "se-128",
+   "bearing": 128,
+   "lengthM": 28.3,
+   "centre": [
+    4.860635764455046,
+    52.36622136425853
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_11-43-48_00013",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "note": "South-east front: nine-bay arcade, striped wall behind, cupola row, upper hall, minaret at the east corner (recording_2025-07-31 00010..00017, TMX 002554 000901, 002378 0007 000074).",
+   "items": [
+    {
+     "id": "wm-arcade",
+     "kind": "colonnade",
+     "where": "two-storey-high arcade along the whole front: nine bays of white columns with capitals, thick white arch rings with keystones, brick spandrels, a projecting white cornice at 8.9 m",
+     "approxSizeM": [
+      28.3,
+      8.9
+     ],
+     "plan": "modelled",
+     "how": "builder: cylinders, capital blocks, extruded arch rings and spandrels, keystone boxes, cornice box (arcade(), 3.07 m pitch)",
+     "seenIn": "recording_2025-07-31_11-43-48_00013"
+    },
+    {
+     "id": "wm-stripes",
+     "kind": "other",
+     "where": "striped brick wall behind the columns: dark brown bands alternating with ochre bands to 5.7 m, plain red brick above",
+     "approxSizeM": [
+      28.3,
+      8.4
+     ],
+     "plan": "modelled",
+     "how": "builder: dark base with ochre band boxes 4.5 cm proud every 0.9 m and a red brick course above",
+     "seenIn": "recording_2025-07-31_11-43-48_00013"
+    },
+    {
+     "id": "wm-windows",
+     "kind": "window-shape",
+     "where": "tall white-framed rectangular windows with mullions and transoms, small round-arched windows above, per bay",
+     "approxSizeM": [
+      1.1,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "builder: win(): white surround ring, glass, mullion and two transoms; arched variant",
+     "seenIn": "recording_2025-07-31_11-43-48_00013"
+    },
+    {
+     "id": "wm-cupolas",
+     "kind": "dome",
+     "where": "row of small lead cupolas on cornice blocks with gilt crescents above the arcade cornice, one per bay",
+     "approxSizeM": [
+      2.5,
+      4
+     ],
+     "plan": "modelled",
+     "how": "builder: cupola(): brick drum, two white cornice steps, lead dome, gilt pole and crescent",
+     "seenIn": "recording_2025-07-31_11-43-48_00013"
+    },
+    {
+     "id": "wm-minaret",
+     "kind": "tower",
+     "where": "brick minaret at the east corner on a round turret, white band, two balconies with balustrades, lead spire",
+     "approxSizeM": [
+      4,
+      32.6
+     ],
+     "plan": "modelled",
+     "how": "builder: turret and tapering shaft cylinders, balcony discs with posts and rails, spire",
+     "seenIn": "recording_2025-07-31_11-43-48_00010"
+    }
+   ]
+  },
+  {
+   "tag": "ne-038",
+   "bearing": 38,
+   "lengthM": 34.7,
+   "centre": [
+    4.860635764455046,
+    52.36622136425853
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002378_pano_0008_000220",
+   "capturedAt": "2022-01-03",
+   "checked": true,
+   "note": "North-east front along the street: eleven-bay arcade, cupola row, upper hall with dentil cornice and round-arched windows (TMX 002378 pano 0007 000070/72, 0008 000220).",
+   "items": [
+    {
+     "id": "wm-arcade-ne",
+     "kind": "colonnade",
+     "where": "the same arcade continues along the north-east front: eleven bays",
+     "approxSizeM": [
+      34.7,
+      8.9
+     ],
+     "plan": "modelled",
+     "how": "builder: arcade() on the north-east face",
+     "seenIn": "TMX7316010203-002378_pano_0008_000220"
+    },
+    {
+     "id": "wm-hall",
+     "kind": "window-shape",
+     "where": "upper hall: red brick walls, round-arched windows with white surrounds and oculi, white dentil cornice at 17.2-17.8 m",
+     "approxSizeM": [
+      19.3,
+      8.3
+     ],
+     "plan": "modelled",
+     "how": "builder: chamfered prism, win() arched, dentil boxes, cornice slab",
+     "seenIn": "TMX7316010203-002378_pano_0007_000072"
+    },
+    {
+     "id": "wm-dome",
+     "kind": "dome",
+     "where": "shallow lead dome over the hall with a gilt finial (hidden from the street by the cupolas; apex from 3DBAG)",
+     "approxSizeM": [
+      17.8,
+      8.6
+     ],
+     "plan": "simplified",
+     "how": "builder: ellipsoid dome with gilt pole and crescent; no ribs or lantern are visible in the panoramas",
+     "seenIn": "TMX7316010203-002378_pano_0007_000072"
+    }
+   ]
+  },
+  {
+   "tag": "nw-308",
+   "bearing": 308,
+   "lengthM": 28.3,
+   "centre": [
+    4.860635764455046,
+    52.36622136425853
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "North-west annex front: no panorama sees it; arcade-height cornice and plain windows inferred from the 3DBAG wall heights (6.5-8.7 m).",
+   "items": []
+  },
+  {
+   "tag": "sw-218",
+   "bearing": 218,
+   "lengthM": 34.7,
+   "centre": [
+    4.860635764455046,
+    52.36622136425853
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "South-west front: not photographed; plain striped wall and windows inferred from 3DBAG.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG pand 0363100012241498",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012241498",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012241498/",
+   "licence": "CC0"
+  }
+ ]
+}
