@@ -382,6 +382,59 @@ test('gateways: arched carriage openings (92 % of a bay) in the listed ground ba
   assert.equal(Object.values(fitLarge(plain, f).recipe.spec.systems)[0].ground.cycle, undefined);
 });
 
+test('hallDoors: glazed square-headed hall doors in the listed ground bays, side windows kept; validated (De Hallen gables)', async () => {
+  const {largeSystem, HALL_DOOR} = await import('../blockBuilding/systems.ts');
+  const slots = {frame: 'f', stone: 's', glass: 'g', door: 'd', curtain: 'c'};
+  const fit = {pitchM: 1.94, lines: [0, 5.04, 10.1], ground: 'system', bays: 5, deepBars: true, shape: {w: 0.45, h: 0.5, sillM: 1.5}, slots};
+  const sys = largeSystem('brick-bay-grid', {...fit, hallDoors: {bays: [1, 2, 3], h: 0.82}} as never);
+  assert.deepEqual(sys.ground.cycle?.map(r => r.win?.w), [0.45, HALL_DOOR.w, HALL_DOOR.w, HALL_DOOR.w, 0.45]);
+  const door = sys.ground.cycle![1].win!;
+  assert.equal(door.h, 0.82); assert.equal(door.glass, 'g'); assert.equal(door.mull, 1); assert.equal(door.rows, 4); assert.equal(door.arch, undefined); assert.equal(door.sillSlot, null);
+  const arched = largeSystem('brick-bay-grid', {...fit, arches: {band: 'stone'}, hallDoors: {bays: [0], arch: 'round', lights: 3}} as never).ground.cycle![0].win!;
+  assert.equal(arched.arch?.kind, 'round'); assert.equal(arched.mull, 2); assert.equal(arched.sill, HALL_DOOR.archedSill); assert.equal(arched.arch?.band?.slot, 's');
+  // without hallDoors the ground row is untouched (default byte-identical)
+  assert.equal(largeSystem('brick-bay-grid', fit as never).ground.cycle, undefined);
+  // validation
+  const base = raw('amsterdams-lyceum'), w0 = {...base.walls[0], gateways: undefined};
+  const v = (hd: unknown, extra: object = {}) => validateLargeIntent({...base, walls: [{...w0, hallDoors: hd, ...extra}, ...base.walls.slice(1)]});
+  assert.ok(v({bays: [1], h: 0.7, lights: 2, rows: 4}));
+  assert.throws(() => v({bays: [99]}), /hallDoors.bays/);
+  assert.throws(() => v({bays: [1], h: 1.2}), /hallDoors.h/);
+  assert.throws(() => v({bays: [1], lights: 9}), /hallDoors.lights/);
+  assert.throws(() => v({bays: [1], spare: 1}), /hallDoors.spare/);
+  assert.throws(() => v({bays: [1]}, {entrance: true}), /hallDoors: not with/);
+});
+
+test('groundClamp: De Hallen\'s sunken ramp is lifted to the ground, faces on the ground dropped; default unchanged', async () => {
+  const {largeSurfaceSet} = await import('./fitLarge.ts');
+  const f = facts('de-hallen-236693');
+  const minY = (set: {walls: {rings: number[][][]}[]; roofs: {rings: number[][][]}[]}) => Math.min(...[...set.walls, ...set.roofs].flatMap(s => s.rings.flat().map(p => p[1])));
+  const plain = largeSurfaceSet(f).set, clamped = largeSurfaceSet(f, {groundClamp: true}).set;
+  assert.ok(minY(plain) < -0.8);
+  assert.equal(minY(clamped), 0);
+  assert.ok(clamped.roofs.length < plain.roofs.length && clamped.roofs.length >= plain.roofs.length - 3);
+  assert.ok(clamped.walls.length <= plain.walls.length);
+  assert.deepEqual(largeSurfaceSet(f, {}).set, plain);
+  assert.throws(() => validateLargeIntent({...raw('de-hallen-236693'), groundClamp: 'yes'}), /groundClamp/);
+});
+
+test('glazedStoreys: listed upper storeys take the glazed shop row, the others keep theirs; validated (Kinkerstraat 32-54 mezzanine)', async () => {
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const slots = {frame: 'f', stone: 's', glass: 'g', door: 'd', curtain: 'c'};
+  const fit = {pitchM: 1.7, lines: [0, 3.4, 6.1, 8.8, 11.5], ground: 'glazed', deepBars: true, slots};
+  const plain = largeSystem('brick-bay-grid', fit as never), sys = largeSystem('brick-bay-grid', {...fit, glazedStoreys: [1]} as never);
+  assert.equal(plain.rowOverrides, undefined);
+  assert.deepEqual(Object.keys(sys.rowOverrides!), ['1']);
+  assert.deepEqual(sys.rowOverrides!['1'], sys.ground);
+  assert.equal(sys.rowOverrides!['1'].kind, 'glazed');
+  assert.deepEqual(sys.typical, plain.typical);
+  const base = raw('amsterdams-lyceum'), w0 = base.walls[0];
+  const v = (extra: object) => validateLargeIntent({...base, walls: [{...w0, ...extra}, ...base.walls.slice(1)]});
+  assert.ok(v({glazedStoreys: [1]}));
+  assert.throws(() => v({glazedStoreys: [0]}), /glazedStoreys/);
+  assert.throws(() => v({glazedStoreys: [1], blankStoreys: [1]}), /not both blank and glazed/);
+});
+
 // ---------------------------------------------------------------------------------------------------------------
 // Layered kit (intent `layeredKit`): garage doors, portals/arches with frames, curtain walls and stacked balconies on a
 // synthetic 12 x 9 m wall (two 3DBAG strips), measured with the geometry audit's coplanar metric (zfight + tight m2).

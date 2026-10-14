@@ -43,6 +43,8 @@ export interface SystemFit {
   balconyStoreys?: number[];
   /** storeys (0 = ground) drawn as plain wall */
   blankStoreys?: number[];
+  /** storeys (0 = ground) glazed like a shop ground across every bay (a glazed mezzanine over the shops) */
+  glazedStoreys?: number[];
   balconyRail?: 'glass' | 'bars' | 'solid';
   /** balconies only in every `every`-th bay from `first`, or the listed bays (of `bays` per storey); default every bay */
   balconyBays?: { every?: number; first?: number; bays?: number[] };
@@ -54,6 +56,8 @@ export interface SystemFit {
   hoist?: { every?: number; first?: number; bays?: number[]; arch?: ArchKind };
   /** a carriage gateway through the ground storey in the listed bays: a dark arched opening one bay wide, the other ground bays plain wall */
   gateways?: { bays: number[]; arch?: ArchKind };
+  /** glazed hall doors in the listed ground bays (of `bays` per storey): square-headed (or arched) white-framed grids, the other ground bays keep the ground row */
+  hallDoors?: HallDoors;
   /** bays per storey on the group's widest panel (for `hoist.bays`) */
   bays?: number;
   /** false = no projecting stone sills */
@@ -76,6 +80,16 @@ export interface SystemFit {
 
 /** Glass-block perforation in a screen cell: a small square opening with a cross of 3.5 cm closed bars, no frame ring or sill. */
 const glassBlock = (f: SystemFit): WinParams => ({ w: 0.62, h: 0.34, sill: 0.95, mull: 1, rows: 1, frameW: 0, sillSlot: null, barD: 0.035, frame: f.slots.stone, glass: f.slots.glass });
+
+/**
+ * Glazed hall doors (De Hallen's tram-hall gables, 2026-10-14): in the listed ground bays a door opening `h` of the ground
+ * storey tall and 94 % of the bay wide, down to 2 cm off the ground, glazed in `lights` columns and `rows` rows of
+ * white-framed panes, square-headed unless `arch` is given. Adjacent door bays read as one wide portal split by slim
+ * piers of wall; the other ground bays keep the system's ground row (the side windows).
+ */
+export interface HallDoors { bays: number[]; arch?: ArchKind; lights?: number; rows?: number; h?: number }
+/** `archedSill`: arch.ts cuts an arched opening only clear of the wall's foot (a square one may trim its sill instead), so arched doors start 12 cm up. */
+export const HALL_DOOR = { w: 0.94, h: 0.78, sill: 0.02, archedSill: 0.12, lights: 2, rows: 4 };
 
 export interface TiltedBays { every?: number; first?: number; bays?: number[]; storeys?: number[] }
 
@@ -186,6 +200,9 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   }
   // Storeys without openings (a blank storage floor over a shop, a plant floor): plain wall rows.
   for (const st of f.blankStoreys ?? []) rowOverrides[String(st)] = { kind: 'wall' };
+  // Glazed upper storeys (Kinkerstraat 32-54: the shops' mezzanine is one glass band over the shop windows): the
+  // `glazed` ground row, framed glazing 90 % of each bay down to a low sill, on the listed storeys.
+  for (const st of f.glazedStoreys ?? []) if (st > 0) rowOverrides[String(st)] = groundRow({ ...f, ground: 'glazed' }, typical);
   let ground = name === 'curtain-wall' && f.layered && (f.ground === 'system' || f.ground === 'glazed') ? typical
     : groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, archedStoreys.includes(0) ? archedRow() : typical);
   // Loading-door axis: a cycle of rows per bay with the hoist row at `first` (cycle index = bay % every).
@@ -206,6 +223,12 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     const every = Math.max(1, f.bays ?? 1, ...f.gateways.bays.map(b => b + 1));
     const gate: Row = { kind: 'punched', win: { w: 0.92, h: 0.86, sill: 0.06, mull: 0, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.gateways.arch ?? 'round', f) } };
     ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (f.gateways!.bays.includes(k) ? gate : ({ kind: 'wall' } as Row))) };
+  }
+  // Glazed hall doors (De Hallen gables): white-framed glazed doors in the listed ground bays, the other bays keep the ground row.
+  if (f.hallDoors && name !== 'blank') {
+    const hd = f.hallDoors, every = Math.max(1, f.bays ?? 1, ...hd.bays.map(b => b + 1)), other = ground;
+    const door: Row = { kind: 'punched', win: { w: HALL_DOOR.w, h: hd.h ?? HALL_DOOR.h, sill: hd.arch ? HALL_DOOR.archedSill : HALL_DOOR.sill, mull: (hd.lights ?? HALL_DOOR.lights) - 1, rows: hd.rows ?? HALL_DOOR.rows, frameW: f.frames === false ? 0 : 0.07, frame: s.frame, glass: s.glass, sillSlot: null, ...(f.deepBars ? { barD: 0.035 } : {}), ...archFor(hd.arch, f) } };
+    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (hd.bays.includes(k) ? door : other)) };
   }
   // Tilted bay windows: a cycle per bay on the chosen storeys, the box frame replacing the sill.
   for (const tb of !f.tilted || name === 'blank' ? [] : Array.isArray(f.tilted) ? f.tilted : [f.tilted]) {

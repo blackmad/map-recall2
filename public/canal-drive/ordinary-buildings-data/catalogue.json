@@ -52782,6 +52782,302 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T12:27:14.870Z"
+    },
+    {
+      "id": "ordinary-0363100012137280",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012137280",
+      "name": "Kinkerstraat 32-54, Amsterdam-West (Oud-West): 1999 block of 37 units at the De Hallen end of the Kinkerstraat, six storeys of red-brown brick with a grid of punched windows over a glazed shop ground and mezzanine, a set-back top floor",
+      "hash": "8fe60252eac1898ec2fea1a03f2fc0354cbc86d06a5afd9e01681e7f253e510f",
+      "sha256": "8fe60252eac1898ec2fea1a03f2fc0354cbc86d06a5afd9e01681e7f253e510f",
+      "meshHash": "0afe8417d84a50bf",
+      "bytes": 645156,
+      "triangles": 8708,
+      "materials": 13,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -34.324,
+          0.001,
+          -19.084
+        ],
+        "max": [
+          33.439,
+          25.246,
+          27.028
+        ]
+      },
+      "anchor": [
+        4.8741507,
+        52.3680693
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8738289,
+              52.3678362
+            ],
+            [
+              4.8738364,
+              52.367825
+            ],
+            [
+              4.8738549,
+              52.3678299
+            ],
+            [
+              4.8746421,
+              52.3680344
+            ],
+            [
+              4.8745578,
+              52.3681566
+            ],
+            [
+              4.8745457,
+              52.3681735
+            ],
+            [
+              4.8745441,
+              52.3681761
+            ],
+            [
+              4.8744978,
+              52.3682423
+            ],
+            [
+              4.8742476,
+              52.3681768
+            ],
+            [
+              4.8740237,
+              52.3681174
+            ],
+            [
+              4.8738894,
+              52.3680837
+            ],
+            [
+              4.8738435,
+              52.3681501
+            ],
+            [
+              4.8736464,
+              52.3680989
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 25.25,
+      "height": 25.25,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-kinkerstraat-32-137280.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012137280"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "kinkerstraat-32-137280",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012137280/w01-157s1L.jpg",
+          "source-data://pand-reference-walls/0363100012137280/w01-157s3.jpg",
+          "source-data://pand-reference-walls/0363100012137280/w01-157s2.jpg",
+          "source-data://pand-reference-walls/0363100012137280/w01-157s4L.jpg",
+          "source-data://pand-reference-walls/0363100012137280/w03-67L.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 6st 9b",
+          "brick-bay-grid 6st 11b",
+          "brick-bay-grid 6st 8b",
+          "brick-bay-grid 6st 2b",
+          "brick-bay-grid 6st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.37 mean 0.29 vs photo 0.43; window shape square vs photo wide; columns 9 vs photo 2)); inferred: white-framed windows of the dark west wing undercounted by the photo mask (photo glazing counts frames and mortar), grid and colour read right - kit gap red shop awnings",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.48)); inferred: glazed mezzanine (glazedStoreys, new) lines up storey for storey, the photo band undercounts the mezzanine and counts sky behind the set-back attic - kit gap red shop awnings and the dormered attic",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.46 mean 0.60 vs photo 0.18; columns 10 vs photo 8)); inferred: orange and dark brick on one 3DBAG surface drawn with wallSplit, the likeness mask counts the orange half as not-wall - kit gap mezzanine glazing on one side of a split only",
+        "walls[3] not confirmed by the photo (FAIL (glazing storey band off by 0.69 mean 0.30 vs photo 0.58; window shape none vs photo tall; columns none vs photo 2)); inferred: two narrow stair-core slots (surfaces 84 and 93) at the orange block - kit gap recessed full-height glazed slot",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #545959 not used (not darker than the wall #825746 by 10 L*, or tinted): kit glass kept; walls[2] glass #494a4c not used (not darker than the wall #4b4440 by 10 L*, or tinted): kit glass kept; walls[3] wall split #a66554 | #542f26 at 47 % (dE 28.5); walls[4] glass #646c6e not used (not darker than the wall #706868 by 10 L*, or tinted): kit glass kept."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137280",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T13:27:56.041Z"
+    },
+    {
+      "id": "ordinary-0363100012092013",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012092013",
+      "name": "Kinkerstraat 89-105, Amsterdam-West (Oud-West): 1987 urban-renewal block opposite De Hallen, five storeys of grey-beige rendered panels with white window bands, cantilevered balconies and yellow-tiled stair towers over a shop ground",
+      "hash": "fd5866fbdcb2c6d8062212fc1f4afbfe99b5ec0cc78765de3d6f22e2dbd96bfb",
+      "sha256": "fd5866fbdcb2c6d8062212fc1f4afbfe99b5ec0cc78765de3d6f22e2dbd96bfb",
+      "meshHash": "9e97f47685c635c2",
+      "bytes": 248472,
+      "triangles": 3205,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -38.299,
+          0.001,
+          -40.281
+        ],
+        "max": [
+          41.625,
+          19.754,
+          15.555
+        ]
+      },
+      "anchor": [
+        4.8701755,
+        52.3662994
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8697267,
+              52.366258
+            ],
+            [
+              4.8697821,
+              52.3661773
+            ],
+            [
+              4.8699106,
+              52.3662104
+            ],
+            [
+              4.8698974,
+              52.3662297
+            ],
+            [
+              4.8703369,
+              52.3663478
+            ],
+            [
+              4.8704654,
+              52.3661608
+            ],
+            [
+              4.8705887,
+              52.3661926
+            ],
+            [
+              4.8705917,
+              52.3661882
+            ],
+            [
+              4.8707874,
+              52.3662386
+            ],
+            [
+              4.870494,
+              52.3666628
+            ],
+            [
+              4.8696117,
+              52.3664248
+            ]
+          ],
+          [
+            [
+              4.8698533,
+              52.3662938
+            ],
+            [
+              4.8703512,
+              52.366428
+            ],
+            [
+              4.870367,
+              52.366406
+            ],
+            [
+              4.8698686,
+              52.3662716
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.75,
+      "height": 19.75,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-kinkerstraat-89-092013.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012092013"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "kinkerstraat-89-092013",
+        "kind": "large",
+        "intentSources": [
+          "source-data://pand-reference-walls/0363100012092013/w01-337s3b.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w01-337s1.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w01-337s2bL.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w01-337s4.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w01-337s5bL.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w02-67.jpg",
+          "source-data://pand-reference-walls/0363100012092013/w01-337s2.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 5st 9b",
+          "ribbon-windows 5st 7b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.16)); inferred: rendered front, nine bays of white-framed window bands and storey lines read the same, wall colour and glazing pass, the band check fails on the cantilevered balcony slabs and yellow-tiled stair towers drawn as wall - kit gap cantilevered balconies on chosen bays with tiled stair towers between",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #6a6d6c not used (not darker than the wall #786b61 by 10 L*, or tinted): kit glass kept; walls[0] wall split #675c4f | #857c6a at 62 % (dE 15.8)."
+      ],
+      "reviewState": "large-recipe-likeness-inferred",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092013",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T13:28:09.332Z"
     }
   ]
 }
