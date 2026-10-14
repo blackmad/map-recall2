@@ -20,10 +20,10 @@ import { isBridgeWay, prepareWays } from '../../src/canalRecall/ownGround/street
 const ROOT = 'public/data/extracts/amsterdam';
 /**
  * Belt bridges whose end still floats after the reach to the bank (2026-10-14 baseline, 15 ends): footbridges to the
- * Oosterdok floating promenade (BRU2209-2212), park ponds whose water polygon runs past 12 m along the crossing
+ * Oosterdok floating promenade (BRU2209-2212), the Muntsluis lock (BRU0001, water past both ends of its span), park ponds whose water polygon runs past 12 m along the crossing
  * (Vondelpark BRU2553-2556, Sarphatipark BRU0172), BRU0232, BRU0252, BRU1901, BRU2520; Houthavens BRU2430 (Gevlebrug, measured by the flat-deck recovery) and BRU0349. A new id fails the census.
  */
-const FLOATING_KNOWN = new Set(['BRU2430', 'BRU0349', 'BRU0172', 'BRU0232', 'BRU0252', 'BRU1901', 'BRU2209', 'BRU2210', 'BRU2211', 'BRU2212', 'BRU2520', 'BRU2553', 'BRU2554', 'BRU2555', 'BRU2556']);
+const FLOATING_KNOWN = new Set(['BRU0001', 'BRU2430', 'BRU0349', 'BRU0172', 'BRU0232', 'BRU0252', 'BRU1901', 'BRU2209', 'BRU2210', 'BRU2211', 'BRU2212', 'BRU2520', 'BRU2553', 'BRU2554', 'BRU2555', 'BRU2556']);
 const flag = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const [W, S, E, N] = (flag('box') ?? '4.855,52.355,4.915,52.385').split(',').map(Number);
 const only = flag('ids')?.split(',');

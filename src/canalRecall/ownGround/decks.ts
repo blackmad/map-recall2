@@ -85,7 +85,7 @@ export function floatingEnds(deck: DeckSurface, overWater: WaterTest, height: He
   for (const end of [0, 1] as const) {
     if (!landed[end]) { out.push({ end, reason: `over water ${DECK_REACH_MAX_M} m past the deck` }); continue; }
     let i = 0; while (i < p.s.length - 1 && p.s[i] < reach[end]) i++;
-    const x = p.x[i], y = p.y[i], dz = Math.max(deck.z[i], height(x, y)) - ground(x, y);
+    const x = p.x[i], y = p.y[i], dz = height(x, y) - ground(x, y);
     if (Math.abs(dz) > DECK_END_TOL_M && !overWater(x, y)) out.push({ end, reason: `deck ${dz.toFixed(2)} m off the bank` });
   }
   return out;
@@ -147,7 +147,9 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
   const all: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) all.push(i);
   // Every `stride`-th station (1 m at 0.5 m stations): on a hump the coarser chords sag under the bands, never over them.
-  const idx = all.filter((_, k) => k % stride === 0 || k === all.length - 1);
+  // The stride keeps its phase from the measured span's first station, so a reach to the bank leaves the chords over the hump as they were.
+  const k0 = Math.max(0, all.findIndex(i => p.s[i] >= p.deck[0] - 0.5)), k0m = ((k0 % stride) + stride) % stride;
+  const idx = all.filter((_, k) => k % stride === k0m || k === 0 || k === all.length - 1);
   if (idx.length < 2) return m;
   const J = Math.max(2, across), base = m.positions.length / 3;
   for (const i of idx) {
@@ -155,9 +157,9 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
     const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
     for (let j = 0; j <= J; j++) {
       const t = hw * (1 - 2 * j / J), x = p.x[i] + nx * t, y = p.y[i] + ny * t;
-      // Past the measured span (a reach to the bank) the surface there may be the canal relief: the profile carries the top.
-      const off = p.s[i] < p.deck[0] - 0.5 || p.s[i] > p.deck[1] + 0.5;
-      vertex(m, x, y, (off ? Math.max(deck.z[i], height(x, y)) : height(x, y)) + DECK_TOP_LIFT, DECK_TOP);
+      // Past the measured span (a reach to the bank) the top stays on the riding surface too: the street bands drawn on it
+      // must stay on top (BRU0077 in the belt audit, a top on the profile's z rose 2 cm over the klinker band).
+      vertex(m, x, y, height(x, y) + DECK_TOP_LIFT, DECK_TOP);
     }
   }
   // Left (+n) to right per row; the next row is +s. (+s) × (−n) is up, so a row's j → j+1 then the next row is counter-clockwise from above.
@@ -331,10 +333,10 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
     parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness,
     leaves, colour: kind === 'bascule' ? basculeColour(hint) : undefined, lateralTol: 0.5, facts,
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
-    budget: kind === 'bascule' ? (lod === 0 ? KIT_BUDGET.near : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, lod === 0) : undefined,
+    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0) : undefined,
   });
   // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
-  if (kind === 'bascule' && lod === 1 && info.triangles > KIT_BUDGET.far - frameTriangles(ringFrame(ring, u).along, false)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
+  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
   return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level, floating };
 }
 

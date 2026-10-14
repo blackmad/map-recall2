@@ -63,6 +63,12 @@ const OUT_NAME = V3 ? 'bridge-surfaces-v3.json' : 'bridge-surfaces-v2.json';
 const ONLY = args.includes('--only') ? new Set(args[args.indexOf('--only') + 1].split(',')) : null;
 const DUMP = args.includes('--dump');
 const SUSPECT_HUMP_M = 2.5, DECK_END_ABOVE_MAX_M = 1.0;
+/**
+ * v3 decks the own-ground belt audit (scripts/own-ground/audit-belt.ts) rejected on 2026-10-14: a 0.5 m step over its
+ * limit (BRU0036 0.44 m, BRU0079 0.32 m, BRU2520 0.25 m) or a deck top over the street bands (BRU0359, BRU2521).
+ * They stay flat until the profile method handles them.
+ */
+const AUDIT_REJECTED = new Set(['BRU0036', 'BRU0079', 'BRU2520', 'BRU0359', 'BRU2521']);
 const dist = (a: P, b: P) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 const round = (v: number) => Math.round(v * 1000) / 1000;
 
@@ -549,7 +555,7 @@ async function main(): Promise<void> {
   outcomes.sort((a, b) => a.id.localeCompare(b.id));
   // The rows are the extract's fallback list, so v3 holds only bridges that are not measured yet.
   const already = new Set(bridges.measured.map(b => b.id));
-  const written = outcomes.filter(o => o.status === 'ok' && !o.movable && !already.has(o.id));
+  const written = outcomes.filter(o => o.status === 'ok' && !o.movable && !already.has(o.id) && !(V3 && AUDIT_REJECTED.has(o.id)));
   const generated = 'scripts/elevation/build-bridge-surfaces-v2.ts' + (V3 ? ' ' + args.filter(a => ['--bgt-axis', '--dsm-fallback', '--per-span'].includes(a)).join(' ') : '');
   const file = { version: 1, renderHeightDatum: 'local-game-ground', generated, bridges: written.map(o => o.profile) };
   const json = JSON.stringify(file);
