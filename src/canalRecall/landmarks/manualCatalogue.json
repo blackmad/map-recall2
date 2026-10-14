@@ -39161,5 +39161,89 @@
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE"
     }
+  },
+  {
+    "id": "johnny-jordaan-groep",
+    "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+    "landmarkId": "osm_artwork_1704741755",
+    "modelUrl": "./models/johnny-jordaan-groep.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8822208,
+        52.3701124
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 8.6,
+      "widthMetres": 4.6
+    },
+    "surveyed": {
+      "anchor": [
+        4.8822208,
+        52.3701124
+      ],
+      "northOffsetDegrees": 0,
+      "source": "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "assetKind": "memorial",
+    "materialOverrides": {
+      "bronze": "#34423d",
+      "concrete": "#bfbdb6",
+      "ochre": "#7b6b55",
+      "gold": "#8b5a35",
+      "greyBrick": "#4f504f"
+    },
+    "attribution": {
+      "title": "Johnny Jordaanplein group - original low-poly reconstruction",
+      "author": "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+      "sourceUrl": "https://www.openstreetmap.org/node/1704741755",
+      "modifications": "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE"
+    }
+  },
+  {
+    "id": "theo-thijssen-standbeeld",
+    "name": "Theo Thijssen monument (Lindengracht)",
+    "landmarkId": "osm_artwork_250624675",
+    "modelUrl": "./models/theo-thijssen-standbeeld.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8874628,
+        52.3806423
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 1.7,
+      "widthMetres": 1.3
+    },
+    "surveyed": {
+      "anchor": [
+        4.8874628,
+        52.3806423
+      ],
+      "northOffsetDegrees": 0,
+      "source": "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "assetKind": "memorial",
+    "materialOverrides": {
+      "bronze": "#3a3f3c",
+      "greyBrick": "#46494b",
+      "concrete": "#7f8283"
+    },
+    "attribution": {
+      "title": "Theo Thijssen monument - original low-poly reconstruction",
+      "author": "Map Recall; after the 1960 monument by Hans Bayens",
+      "sourceUrl": "https://www.openstreetmap.org/node/250624675",
+      "modifications": "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE"
+    }
   }
 ]
