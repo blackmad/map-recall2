@@ -3200,6 +3200,16 @@
       "updatedAt": "2026-10-14T04:53:42.587Z",
       "version": "24c26183d26c021a",
       "dateSource": "asset-update"
+    },
+    "spanjemonument": {
+      "updatedAt": "2026-10-14T04:55:19.521Z",
+      "version": "5dce32739bc8cd46",
+      "dateSource": "asset-update"
+    },
+    "spanjemonument.lod1": {
+      "updatedAt": "2026-10-14T04:55:20.310Z",
+      "version": "b9d35d723a1bd688",
+      "dateSource": "asset-update"
     }
   }
 }

@@ -313,6 +313,7 @@ import {buildGandhiChurchillLaan} from './gandhi-churchill-laan-builder';
 import {buildDeSchreeuwOosterpark} from './de-schreeuw-oosterpark-builder';
 import {buildWaterdraagsterBellamyplein} from './waterdraagster-bellamyplein-builder';
 import {buildMamaBaranka} from './mama-baranka-builder';
+import {buildSpanjemonument} from './spanjemonument-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
@@ -795,6 +796,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-schreeuw-oosterpark')buildDeSchreeuwOosterpark(w,d,helpers);
     else if(id==='waterdraagster-bellamyplein')buildWaterdraagsterBellamyplein(w,d,helpers);
     else if(id==='mama-baranka')buildMamaBaranka(w,d,helpers);
+    else if(id==='spanjemonument')buildSpanjemonument(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
