@@ -26,6 +26,12 @@ import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellR
 
 /** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
 export const KIT_GLASS = '#2a3a42';
+
+/** A split fraction of a panel snapped to the nearest bay boundary (bays of ~`pitchM` filling the panel; never the ends). */
+export function splitAtBay(uMin: number, uMax: number, pitchM: number, at: number): number {
+  const W = uMax - uMin, n = Math.max(2, Math.round(W / Math.max(0.5, pitchM))), k = Math.max(1, Math.min(n - 1, Math.round(at * n)));
+  return r3(uMin + k / n * W);
+}
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
 export const CROSS_SIZE_M = {small: 1.4, medium: 2.2, large: 3.2} as const;
@@ -39,6 +45,8 @@ export interface LargeGroupFit {
   panels: number[]; surfaces: number[]; mainPanel: number | null; bearingDeg: number | null;
   widthM: number; eavesM: number; flatTop: boolean; storeys: number; storeyHeightsM: number[]; lines: number[];
   bays: number; pitchM: number; ground: LargeGround; cornice: boolean; deepBars?: boolean;
+  /** second wall colour right of `uM` on the main panel (intent `wallSplit`, at a bay boundary; slot `wall@g<i>/r`) */
+  split?: {panel: number; uM: number; slot: string};
   /** perforated-brick screen lattice over the group's walls */
   screen?: boolean;
   entrance: {panel: number; bay: number; storeys: number; canopy: boolean; portal?: boolean} | null;
@@ -58,7 +66,7 @@ export interface LargeGroupFit {
   /** glazed-hall: brick base top (m) and the mullion grid (lights per bay, rows) */
   hall?: {baseM: number; lights: number; rows: number};
   /** glazed-columns: glass stripes over these bays (cycling per `bays`) from storey `from` */
-  columns?: {bays: number[]; share: number; from: number; slabs: boolean};
+  columns?: {bays: number[]; share: number; from: number; slabs: boolean; glass?: string};
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -74,10 +82,14 @@ export interface LargeBuildingRecipe {
   panelSystem?: Record<number, string>;
   /** roof lanterns (`walls[].lantern`), local metres; only present when a group asks for one */
   lanterns?: Lantern[];
-  /** wall, arch-ring and own glass slots of the groups in `intent.measured.groups`: exported with `tintSource: 'measured'` so the look keeps their measured colour (only present when the intent has a measured record) */
-  measuredSlots?: string[];
   /** recipe material slot per block-kit wall slot of a group with its own `wallMaterial` (only present when a group sets one) */
   slotMaterial?: Record<string, string>;
+  /**
+   * block-kit slots whose colour was measured from the photo (intent `measured.groups`: the group's own wall, glass,
+   * wall-split and arch-ring slots): exported with `tintSource: "measured"` so the city look draws them as is; only present
+   * when the intent is measured
+   */
+  measuredSlots?: string[];
 }
 export interface LargeFitReport {
   groups: {index: number; system: string; panels: number; surfaces: number; widthM: number; eavesM: number; storeys: number; storeyHeightsM: number[]; bays: number; pitchM: number; entrance: boolean; garageDoors: number}[];
@@ -237,6 +249,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     roof: '#555555', 'police-blue': '#1d3f8f', 'police-white': '#eeeeea', plant: '#8d8c88', sign: swatch(pal.frame),
   };
   if (intent.walls.some(w => w.nameBoards?.length)) Object.assign(palette, {board: '#ecebe4', 'board-text': '#1c1c1c'});
+  const measuredSlots: string[] = [], measuredGroups = new Set(intent.measured?.groups ?? []);
   const aligned = new Map<number, ReturnType<typeof storeyLines>>(), panelSystem: Record<number, string> = {}, slotMaterial: Record<string, string> = {}, lanterns: Lantern[] = [];
   intent.walls.forEach((w: LargeWallIntent, gi) => {
     const own = panels.filter(p => panelGroup[p.index] === gi);
@@ -251,6 +264,16 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     if (w.palette?.frame) { slots.frame = `frame@g${gi}`; palette[slots.frame] = swatch(w.palette.frame); }
     if (w.palette?.stone) { slots.stone = `stone@g${gi}`; palette[slots.stone] = swatch(w.palette.stone); }
     if (w.palette?.glass) { slots.glass = `glass@g${gi}`; palette[slots.glass] = swatch(w.palette.glass); }
+    let splitSlot: string | undefined;
+    if (w.wallSplit) {
+      if (slots.wall === 'wall') { slots.wall = `wall@g${gi}`; palette[slots.wall] = palette.wall; }
+      splitSlot = `${slots.wall}/r`; palette[splitSlot] = swatch(w.wallSplit.brick);
+      if (slotMaterial[slots.wall]) slotMaterial[splitSlot] = slotMaterial[slots.wall];
+    }
+    if (measuredGroups.has(gi)) { if (w.palette?.brick) measuredSlots.push(slots.wall); if (w.palette?.glass) measuredSlots.push(slots.glass); if (splitSlot) measuredSlots.push(splitSlot); }
+    // The glass columns' own glazing (columns.glass): a glass slot of its own beside the punched windows' glass.
+    const colGlass = w.columns?.glass ? `glass@g${gi}c` : undefined;
+    if (colGlass) { palette[colGlass] = swatch(w.columns!.glass!); if (measuredGroups.has(gi)) measuredSlots.push(colGlass); }
     palette[slots.curtain] = palette[slots.frame];
     // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
@@ -312,21 +335,23 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
       ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
-      ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs}} : {}),
-      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}), slots});
+      ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
+      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
+      ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
   const otherLines = storeyLines(otherTop, true, undefined, civicM, year !== null && year < 1945 ? 1.15 : 1, otherTop);
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
-  // Measured groups (intent `measured`): their own wall, arch-ring and glass slots carry the measured colour into the look.
-  const measuredSlots = [...new Set((intent.measured?.groups ?? []).flatMap(gi => { const g = groups[gi]; return !g ? [] : [g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined); }))];
+  // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the
+  // look (with the wall, glass and split slots pushed above); deduplicated.
+  for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
   const unlistedSurfaces = set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
   const spec: BlockSpec = {id: intent.id, pandId: intent.pandId, name: intent.address, palette, levels: {groundM: civicM, storeyM: civicM}, systems, default: 'other', roofSlot: 'roof', wallSlot: 'wall'};
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
   if (intent.roofPlant && !roofPlant.length) warnings.push('roofPlant: no flat roof of 40 m² with room for a lift overrun');
   const recipe: LargeBuildingRecipe = {id: intent.id, pandId: intent.pandId, anchorRD, set, spec, panelGroup, wallGroup, groups, other: {system: otherName, specSystem: 'other'}, roofPlant, recessM: LARGE_RECESS_M,
-    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: pal.wallMaterial ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {}), ...(lanterns.length ? {lanterns} : {}), ...(measuredSlots.length ? {measuredSlots} : {})};
+    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: pal.wallMaterial ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {}), ...(lanterns.length ? {lanterns} : {}), ...(measuredSlots.length ? {measuredSlots: [...new Set(measuredSlots)]} : {})};
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),

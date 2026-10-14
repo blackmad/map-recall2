@@ -634,6 +634,24 @@ test('kit vocabulary in intents: hall/columns validated, palette.arch colours th
   assert.deepEqual(hk.slice(0, 2).map(g => [g.system, g.columns?.slabs, g.slots.wall]), [['glazed-columns', true, 'wall@g0'], ['glazed-columns', true, 'wall@g1']]);
 });
 
+// Houthavenkade 26: reflective grey balcony-column glass beside dark punched panes on the same front.
+test('columns.glass: validated; the glass columns draw in their own glass slot, the punched windows keep the group glass; absent = one glass slot', async () => {
+  const {compileLargeBuilding} = await import('./largeCompile.ts');
+  const base = raw('houthavenkade-26-247232'), w0 = base.walls[0], f = facts('houthavenkade-26-247232');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...w0, columns: {...w0.columns, glass: 'silvery'}}, ...base.walls.slice(1)]}), /columns.glass/);
+  const noCol = {...w0, columns: {...w0.columns}}; delete noCol.columns.glass;
+  const plain = compileLargeBuilding(validateLargeIntent({...base, walls: [noCol, ...base.walls.slice(1)]}), f);
+  const split = compileLargeBuilding(validateLargeIntent({...base, walls: [{...noCol, columns: {...noCol.columns, glass: '#8e9ea4'}}, ...base.walls.slice(1)]}), f);
+  assert.equal(split.recipe.groups[0].columns?.glass, 'glass@g0c');
+  assert.equal(split.recipe.spec.palette['glass@g0c'], '#8e9ea4');
+  const tris = (c: typeof plain, name: string) => { const m = c.group.children.find(x => x.name === name) as any; return m ? m.geometry.attributes.position.count / 3 : 0; };
+  const glass0 = plain.recipe.groups[0].slots.glass;
+  assert.equal(tris(plain, 'glass/glass@g0c'), 0);
+  assert.ok(tris(split, 'glass/glass@g0c') > 0);
+  assert.equal(tris(split, 'glass/glass@g0c') + tris(split, `glass/${glass0}`), tris(plain, `glass/${glass0}`), 'the same glass, two slots');
+  assert.ok(tris(split, `glass/${glass0}`) > 0, 'the punched windows keep the group glass');
+});
+
 test('the three re-fitted pilots pass the large-tier gates within the 12k budget', async () => {
   for (const id of ['apollolaan-4-134507', 'houthavenkade-26-247232', 'waagdragerhof-198-118320']) {
     const {gates, tris, built} = await gatesOf(validateLargeIntent(raw(id)), facts(id));
@@ -673,9 +691,10 @@ test('measured groups export their wall, arch-ring and own glass slots with tint
     g.traverse(o => { const m = (o as {material?: {userData?: {tintSource?: string}}}).material; if (m?.userData?.tintSource === 'measured') out.push(o.name); });
     return out.sort();
   };
-  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0', 'glass/glass@g1', 'wall/wall@g0', 'wall/wall@g1']);
+  // Houthavenkade: the balcony columns' own reflective glass (columns.glass) is measured; the punched windows keep the kit glass (the photo's pane glass reads no darker than the brick).
+  assert.deepEqual(tinted('houthavenkade-26-247232'), ['glass/glass@g0c', 'glass/glass@g1c', 'wall/wall@g0', 'wall/wall@g1', 'wall/wall@g3', 'wall/wall@g4']);
   // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not.
-  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'wall/wall@g0']);
+  assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'wall/wall@g0', 'wall/wall@g1']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
   assert.deepEqual(tinted('politie-van-leijenberghlaan'), []);
 });

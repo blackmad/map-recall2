@@ -1,0 +1,114 @@
+{
+ "schemaVersion": 1,
+ "id": "metis-montessori-080098",
+ "pand": "0363100012080098",
+ "signature": [
+  "bar-windows",
+  "entrance-canopy"
+ ],
+ "walls": [
+  {
+   "tag": "w01-337",
+   "bearing": 337,
+   "lengthM": 36.4,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_09-22-37_00516",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "bar-windows",
+     "kind": "window-shape",
+     "where": "upper floor: nine blue-framed double windows under a deep brick course; ground floor lower windows in the same nine bays",
+     "approxSizeM": [
+      34,
+      6
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 2 storeys x 9 bays, wide windows in navy frames; the white lower panes of the real windows are one glass colour here",
+     "seenIn": "recording_2025-06-20_09-22-37_00516"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "centre, recessed double door under a dark canopy band",
+     "approxSizeM": [
+      6,
+      4
+     ],
+     "plan": "modelled",
+     "how": "entrance bay 4 with canopy",
+     "seenIn": "recording_2025-06-20_09-22-37_00516"
+    },
+    {
+     "id": "tagline",
+     "kind": "lettering",
+     "where": "on the canopy band over the entrance, small multi-coloured words in a row",
+     "approxSizeM": [
+      8,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "words about 0.3 m high and illegible at the 8 m camera distance; no name of the school is lettered on the wall"
+     },
+     "seenIn": "recording_2025-06-20_09-22-37_00516"
+    },
+    {
+     "id": "round-vents",
+     "kind": "other",
+     "where": "a row of small round vents under the roof edge above the windows",
+     "approxSizeM": [
+      30,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm discs"
+     },
+     "seenIn": "recording_2025-06-20_09-22-37_00516"
+    }
+   ]
+  },
+  {
+   "tag": "w02-247",
+   "bearing": 247,
+   "lengthM": 22.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002776_pano_0001_000692",
+   "capturedAt": "2022-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "stair-balcony",
+     "kind": "balcony-ironwork",
+     "where": "south-west end: an open steel stair and a balcony on a concrete slab, red doors on both floors",
+     "approxSizeM": [
+      8,
+      6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the only panorama is flared by sunlight and the wall stays blank brick"
+     },
+     "seenIn": "TMX7316010203-002776_pano_0001_000692"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_09-22-37_00516/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002776_pano_0001_000692/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

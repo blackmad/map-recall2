@@ -6,27 +6,21 @@
  "address": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
  "sources": [
   {
-   "id": "pano-2023-01-02-w03",
+   "id": "pano-2023-01-02-w03-70",
    "kind": "street-panorama",
    "capturedAt": "2023-01-02",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002910_pano_0007_000073/",
-   "image": "staging/pand-reference-walls/0363100012129127/w03-70.jpg",
+   "image": "source-data://pand-reference-walls/0363100012129127/w03-70.jpg",
+   "sha256": "65186df4f69915c2dc181954794d0ae0a7bfef47f55bdfb2e22ad01b60161958",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2019-12-19-w02",
+   "id": "pano-2019-12-19-w02-340",
    "kind": "street-panorama",
    "capturedAt": "2019-12-19",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001527_pano_0000_000624/",
-   "image": "staging/pand-reference-walls/0363100012129127/w02-340.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2019-12-19-w02-2",
-   "kind": "street-panorama",
-   "capturedAt": "2019-12-19",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001527_pano_0000_000624/",
-   "image": "staging/pand-reference-walls/0363100012129127/w02-340.jpg",
+   "image": "source-data://pand-reference-walls/0363100012129127/w02-340.jpg",
+   "sha256": "6481c93feeff591fbaa162c5fff39ea6f8233664feccdd2943fbbc0f1a0fd8f6",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -52,11 +46,17 @@
    },
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d8d6cc",
+    "brick": "#a09c92",
     "frame": "#3a4048",
-    "stone": "#c4c2b8"
+    "stone": "#c4c2b8",
+    "glass": "#5c5b5d"
    },
-   "baysPerStorey": 8
+   "baysPerStorey": 8,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick"
+   ]
   },
   {
    "wallSurfaces": [
@@ -67,11 +67,16 @@
    "ground": "glazed",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d8d6cc",
+    "brick": "#625f5a",
     "frame": "#3a4048",
-    "stone": "#c4c2b8"
+    "stone": "#c4c2b8",
+    "glass": "#3c3b3c"
    },
-   "baysPerStorey": 8
+   "baysPerStorey": 12,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -83,11 +88,17 @@
    "ground": "glazed",
    "wallMaterial": "render",
    "palette": {
-    "brick": "#d8d6cc",
+    "brick": "#5e5c59",
     "frame": "#3a4048",
-    "stone": "#c4c2b8"
+    "stone": "#c4c2b8",
+    "glass": "#333435"
    },
-   "baysPerStorey": 2
+   "baysPerStorey": 2,
+   "windowShape": {
+    "w": 0.98,
+    "h": 0.63,
+    "sill": 0.35
+   }
   }
  ],
  "otherWalls": "blank",
@@ -105,6 +116,17 @@
  "layeredKit": true,
  "notes": [
   "Wibautstraat 78 (BAG pand 0363100012129127, built 1966, 145 3DBAG wall surfaces, roof max 31.4 m): the long rounded eight-storey block on the east side of the Wibautstraat with a supermarket at its foot, 63 m by 30 m. Photographed: the east front on the Wibautstraat (w03-70 2025, w05-70 2024, w08-70), the north end (w02-340), the west and south sides (w01-250, w04-160, w06-160, w07-250): pale brick bands between continuous dark ribbon windows on every floor, a crown of two lattice storeys with square windows at the top, a glazed ground storey with a blue Albert Heijn sign under a canopy carried on inverted-cone piers.",
-  "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render."
- ]
+  "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class.",
+  "Measurement limits: walls[0] reflective window glass under an overcast sky is as light as the concrete spandrels, so the photo glazing is unreliable; ribbon system and bays kept by hand. walls[1] 12 ribbon bays for the triangle budget where the photo has ~25 mullions.",
+  "walls[0] spandrel: overcast crop, lightened to the trim-normalised photo (2026-10-14 reconcile). The only archived crop of this 28.7 m front is w03-70 (2023-01-02, overcast; the archive has no other date for this wall and all-walls.ts picks one panorama per wall). measure.ts's wall cluster #8a867e mixes the spandrels with the dark column faces and frames (the light trim normalisation found no trim: gain 1); the spandrel bands alone have the median #908c83 (HSL L 0.54) in the crop, and the city look drew #8a867e at L 0.47 on this facing. Hand #a09c92 draws the spandrel at the photo's L within 0.05; the measured dark window glass #5c5b5d is kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
+  ]
+ }
 }

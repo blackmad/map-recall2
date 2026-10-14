@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oostpoort-montessori-080630",
+ "pandId": "0363100012080630",
+ "address": "Soembawastraat 63, Amsterdam (Montessori Lyceum Oostpoort at this address; the building carries a Valentijnschool sign): a 1932 Amsterdam School school of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof, a stone-framed entrance beside a tall stair window",
+ "sources": [
+  {
+   "id": "pano-2018-05-24-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000748_pano_0000_004587/",
+   "image": "staging/pand-reference-walls/0363100012080630/w02-283.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-05-11-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2016-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000047_pano_0000_003649/",
+   "image": "staging/pand-reference-walls/0363100012080630/w01-13.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "cross",
+   "entrance": {
+    "bay": 2,
+    "portal": true
+   },
+   "signage": {
+    "text": "VALENTIJNSCHOOL",
+    "colour": "#2a5aa8",
+    "mount": "cornice"
+   },
+   "cornice": true,
+   "palette": {
+    "brick": "#5e2c28",
+    "frame": "#e8e0c0",
+    "stone": "#d8d0b0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    17
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "cross",
+   "cornice": true,
+   "palette": {
+    "brick": "#5a2a26",
+    "frame": "#e8e0c0",
+    "stone": "#d8d0b0"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "red-tile"
+ },
+ "palette": {
+  "brick": "#5a2a26",
+  "frame": "#e8e0c0",
+  "door": "#6a1e18",
+  "stone": "#d8d0b0"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Soembawastraat 63 (BAG pand 0363100012080630, built 1932): OSM maps the Montessori Lyceum Oostpoort here; the building itself carries a Valentijnschool sign (w02-283, 2018), an Amsterdam School building of dark purple-brown brick, three storeys of cream-framed multi-pane windows under a deep cream cornice with an attic frieze of small windows and a hipped tile roof. walls[0] = west front (panel 4, surface 6): entrance in a stone portal, VALENTIJNSCHOOL sign; walls[1] = north front (panel 12, surface 17, w01-13).",
+  "Simplified: the oval sign plate, the stair window at the left edge, the attic frieze (three real window pitches 6/9/12 averaged to ten bays); the south and east walls (party and court) stay blank.",
+  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w02-283 (window shape tall vs photo square, 8 vs 4 columns), walls[1] FAIL against w01-13 (dark purple-brown #352d2f vs the model's saturated red #7c3a34, glazing 0.30 vs 0.62). At gallery size the model reads bright red where the photos read dark purple-brown, and the top storey is a frieze of small square windows, not full windows. Re-fit colour and the frieze storey before re-installing."
+ ]
+}
