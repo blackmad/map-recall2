@@ -27009,10 +27009,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012116154",
       "name": "'Politie Amsterdam' (OSM node 2808423606), Johan Huizingalaan 757, Amsterdam (BAG: built 1959, usage bijeenkomstfunctie)",
-      "hash": "9b3c8f6090ec9099c4d2d5746510e60dec2e8e5ae781cf16145ae8e57f4eb89f",
-      "sha256": "9b3c8f6090ec9099c4d2d5746510e60dec2e8e5ae781cf16145ae8e57f4eb89f",
-      "bytes": 492616,
-      "triangles": 6839,
+      "hash": "bd15b0cd648f53823fa35b425268c280bb8ddb01065d51338cf27842135741e6",
+      "sha256": "bd15b0cd648f53823fa35b425268c280bb8ddb01065d51338cf27842135741e6",
+      "bytes": 587696,
+      "triangles": 8199,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -27252,7 +27252,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012116154",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:31.894Z",
+      "updatedAt": "2026-10-14T03:11:06.874Z",
       "bagYear": 1959
     },
     {
