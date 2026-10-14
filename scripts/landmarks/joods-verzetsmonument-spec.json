@@ -1,0 +1,42 @@
+{
+  "id": "joods-verzetsmonument",
+  "name": "Joods Verzetsmonument (Amstel 1)",
+  "landmarkId": "osm_memorial_jewish_ww2_resistance",
+  "modelUrl": "./models/joods-verzetsmonument.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8989,
+      52.3676
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 1.1,
+    "widthMetres": 0.75
+  },
+  "surveyed": {
+    "anchor": [
+      4.8989,
+      52.3676
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination point (OSM memorial \"Jewish WW2 resistance memorial\", Amstel 1, unveiled 1988); stele position and faces read from Gemeente Amsterdam panoramas (2016-2025); the facing (east) and the 2.5 m height are visual estimates; the gilt wording is not legible at panorama resolution"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "dark": "#16181b",
+    "concrete": "#8f8d88",
+    "greyBrick": "#2a2c2f",
+    "gold": "#b8974a"
+  },
+  "attribution": {
+    "title": "Joods Verzetsmonument - original low-poly reconstruction",
+    "author": "Map Recall; commemorated monument unveiled 16 October 1988",
+    "sourceUrl": "https://www.openstreetmap.org/search?query=Jewish%20WW2%20resistance%20memorial%20Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly stele and plinth. Proportions and the placement of the gilt text from Gemeente Amsterdam panoramas (CC BY 4.0); the wording is not legible and is not reproduced. No pixels or third-party meshes imported."
+  }
+}
