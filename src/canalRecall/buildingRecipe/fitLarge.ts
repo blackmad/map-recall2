@@ -24,6 +24,8 @@ import type {Lantern} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 
+/** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
+export const KIT_GLASS = '#2a3a42';
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
 export const CROSS_SIZE_M = {small: 1.4, medium: 2.2, large: 3.2} as const;
@@ -225,7 +227,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   const year = facts.heights.builtYear, civicM = year !== null && year < 1945 ? CIVIC_STOREY_M.pre1945 : CIVIC_STOREY_M.post1945;
   const pal = intent.palette, groups: LargeGroupFit[] = [], systems: Record<string, System> = {};
   const palette: Record<string, string> = {
-    wall: swatch(pal.brick), frame: swatch(pal.frame), door: swatch(pal.door), stone: swatch(pal.stone ?? 'sandstone'), glass: '#2a3a42',
+    wall: swatch(pal.brick), frame: swatch(pal.frame), door: swatch(pal.door), stone: swatch(pal.stone ?? 'sandstone'), glass: pal.glass ? swatch(pal.glass) : KIT_GLASS,
     roof: '#555555', 'police-blue': '#1d3f8f', 'police-white': '#eeeeea', plant: '#8d8c88', sign: swatch(pal.frame),
   };
   if (intent.walls.some(w => w.nameBoards?.length)) Object.assign(palette, {board: '#ecebe4', 'board-text': '#1c1c1c'});
@@ -242,6 +244,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     if (w.palette?.frame) { slots.frame = `frame@g${gi}`; palette[slots.frame] = swatch(w.palette.frame); }
     if (w.palette?.stone) { slots.stone = `stone@g${gi}`; palette[slots.stone] = swatch(w.palette.stone); }
+    if (w.palette?.glass) { slots.glass = `glass@g${gi}`; palette[slots.glass] = swatch(w.palette.glass); }
     palette[slots.curtain] = palette[slots.frame];
     // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
@@ -282,6 +285,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     const specSystem = SYSTEM_SLOT(gi);
     systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, slots: {...slots, ...(arch ? {arch} : {})},
+      ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
