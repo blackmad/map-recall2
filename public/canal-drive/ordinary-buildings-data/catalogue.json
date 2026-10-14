@@ -41463,10 +41463,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137257",
       "name": "Reade (Jan van Breemen Instituut), Dr. Jan van Breemenstraat 3, Amsterdam (1967 rehabilitation centre, long low ribbon-window wings)",
-      "hash": "357c9593db6890b9b3eed9f57d31a95d1b9b89df9678bb617efd82eb047914f3",
-      "sha256": "357c9593db6890b9b3eed9f57d31a95d1b9b89df9678bb617efd82eb047914f3",
-      "bytes": 95348,
-      "triangles": 1097,
+      "hash": "3b0876125c0d5179547d18b5750564f6653715c0dd54b6e095c230ebc43369ec",
+      "sha256": "3b0876125c0d5179547d18b5750564f6653715c0dd54b6e095c230ebc43369ec",
+      "bytes": 108788,
+      "triangles": 1289,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -41685,7 +41685,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137257",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:26:36.733Z"
+      "updatedAt": "2026-10-14T01:06:55.764Z"
     }
   ]
 }

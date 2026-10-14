@@ -44,5 +44,6 @@
  "notes": [
   "Reade (Jan van Breemen Instituut), Dr. Jan van Breemenstraat 3 (pand 0363100012137257, 1967, 145 LoD2.2 surfaces, roof max 17.4 m). West front (2022-05-03 w01-269, 10 m away, surfaces 8 and 91, 63 m): two storeys of grey rendered bands carrying long ribbons of paired casement windows between concrete piers, a flat roof edge with a recessed top storey and a louvred stair/plant box at the right. The east, north and south wings have photos of their own but were not described (they are 3-storey wings of the same ribbon type); they stay blank.",
   "MODELLED: the 63 m west wing as two storeys of ribbon windows with a pier between ten bays, grey render, the rest of the massing verbatim. SIMPLIFIED: the real windows are paired casements with a lighter central pane; the kit's ribbon is a plain glazed strip with narrow piers; the louvred box at the right is the 3DBAG roof block without louvres. SKIPPED: no-parking signs and cars (temporary), the three-storey east and south wings (not photographed in this pass: blank), the dark vertical louvres on the roof box (too small)."
- ]
+ ],
+ "layeredKit": true
 }
