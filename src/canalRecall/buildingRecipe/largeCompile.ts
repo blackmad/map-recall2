@@ -185,8 +185,8 @@ function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'f
 
 /**
  * Wall colour splits (intent `wallSplit`): the group's wall triangles on its main panel whose centroid lies right of the
- * split (`u > uM`, within 1.5 m of the wall plane) move to the split slot. Host walls are cut at bay boundaries, so a
- * split snapped to one leaves a clean edge. Returns the number of triangles moved. No splits: nothing changes.
+ * split (`u > uM`, within 1.5 m of the wall plane) move to the split slot; triangles straddling the split are clipped
+ * at it (a straight vertical colour change). Returns the number of triangles moved or clipped. No splits: nothing changes.
  */
 export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], panels: Panel[]): number {
   let moved = 0;
@@ -195,11 +195,23 @@ export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], pane
     const p = panels.find(q => q.index === g.split!.panel), src = mesh.slots.get(g.slots.wall);
     if (!p || !src) continue;
     const keep = {positions: [] as number[], parts: [] as number[]}, out = mesh.slots.get(g.split.slot) ?? {positions: [], parts: []};
+    const uOf = (q: number[]) => (q[0] - p.o[0]) * p.r[0] + (q[1] - p.o[1]) * p.r[1] + (q[2] - p.o[2]) * p.r[2];
+    const nOf = (q: number[]) => (q[0] - p.o[0]) * p.n[0] + (q[1] - p.o[1]) * p.n[1] + (q[2] - p.o[2]) * p.n[2];
+    const emit = (dst: typeof keep, poly: number[][], part: number) => { for (let i = 1; i + 1 < poly.length; i++) { dst.positions.push(...poly[0], ...poly[i], ...poly[i + 1]); dst.parts.push(part); } };
     for (let t = 0; t < src.parts.length; t++) {
-      const v = src.positions.slice(t * 9, t * 9 + 9), c = [0, 1, 2].map(i => (v[i] + v[i + 3] + v[i + 6]) / 3), d = [c[0] - p.o[0], c[1] - p.o[1], c[2] - p.o[2]];
-      const u = d[0] * p.r[0] + d[1] * p.r[1] + d[2] * p.r[2], n = d[0] * p.n[0] + d[1] * p.n[1] + d[2] * p.n[2];
-      const on = Math.abs(n) <= 1.5 && u > g.split.uM && u <= p.uMax + 0.05;
-      const dst = on ? out : keep; dst.positions.push(...v); dst.parts.push(src.parts[t]); if (on) moved++;
+      const v = [0, 1, 2].map(i => src.positions.slice(t * 9 + i * 3, t * 9 + i * 3 + 3)), part = src.parts[t];
+      const c = [0, 1, 2].map(i => (v[0][i] + v[1][i] + v[2][i]) / 3), us = v.map(uOf);
+      const onPanel = Math.abs(nOf(c)) <= 1.5 && Math.min(...us) <= p.uMax + 0.05 && Math.max(...us) >= p.uMin - 0.05;
+      if (!onPanel || Math.max(...us) <= g.split.uM + 1e-4) { emit(keep, v, part); continue; }
+      if (Math.min(...us) >= g.split.uM - 1e-4) { emit(out, v, part); moved++; continue; }
+      // straddles the split: clip into the left and right polygons so the colour change is a straight vertical line
+      const left: number[][] = [], right: number[][] = [];
+      for (let i = 0; i < 3; i++) {
+        const a = v[i], b = v[(i + 1) % 3], ua = us[i], ub = us[(i + 1) % 3];
+        (ua <= g.split.uM ? left : right).push(a);
+        if ((ua - g.split.uM) * (ub - g.split.uM) < 0) { const k = (g.split.uM - ua) / (ub - ua), x = [0, 1, 2].map(j => a[j] + (b[j] - a[j]) * k); left.push(x); right.push(x); }
+      }
+      emit(keep, left, part); emit(out, right, part); moved++;
     }
     mesh.slots.set(g.slots.wall, keep);
     if (out.parts.length) mesh.slots.set(g.split.slot, out);

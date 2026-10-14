@@ -24,11 +24,13 @@ import {closeRenderer} from './render.ts';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
 import type {IntentSource, LargeBuildingIntent, LargeWallIntent} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {requireSourceData} from './sourceData.ts';
+import {rgbToLab} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 
 const HOUSES = 'scripts/building-recipes/houses';
 const today = () => new Date().toISOString().slice(0, 10);
 const SYSTEM_OF = {punched: 'brick-bay-grid', ribbon: 'ribbon-windows', curtain: 'curtain-wall'} as const;
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
+const hexRgb = (h: string): [number, number, number] => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as [number, number, number];
 
 /** The intent fields a measurement proposes for one group (nothing for groups without evidence). */
 export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: {system: boolean; bays: boolean}): {patch: Partial<LargeWallIntent>; notes: string[]} {
@@ -37,7 +39,13 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: {system
   const hand = new Set(w.hand ?? []), patch: Partial<LargeWallIntent> = {};
   const palette = {...(w.palette ?? {})};
   if (!hand.has('palette.brick') && !hand.has('palette')) palette.brick = m.wall;
-  if (!hand.has('palette.glass') && !hand.has('palette') && m.glass) palette.glass = m.glass;
+  // glass only when it reads as glass (clearly darker than the wall, nearly neutral); reflective panes in a dull photo
+  // measure as wall-toned mid-greys (Waagdragerhof 198 g0 #46342d on #3d3332) and would hide the windows
+  if (!hand.has('palette.glass') && !hand.has('palette') && m.glass) {
+    const gl = rgbToLab(hexRgb(m.glass)), wl = rgbToLab(hexRgb(m.wall));
+    if (gl[0] <= wl[0] - 10 && Math.hypot(gl[1], gl[2]) < 15) palette.glass = m.glass;
+    else { delete palette.glass; notes.push(`glass ${m.glass} not used (not darker than the wall ${m.wall} by 10 L*, or tinted): kit glass kept`); }
+  }
   patch.palette = palette;
   let system = w.system;
   if (opts.system && !hand.has('system')) {
@@ -77,6 +85,34 @@ export function groupGaps(w: LargeWallIntent, g: GroupLikeness): {kit: string[];
   if (m.window && (m.window.w > 0.98 || m.window.h > 0.98 || m.window.w < 0.08 || m.window.h < 0.08)) kit.push(`window-shape-range: measured ${m.window.w}x${m.window.h} outside the windowShape range`);
   if (m.frontClass === 'curtain' && w.system === 'plinth-shopfronts') kit.push('curtain-over-plinth: curtain glazing above a shopfront plinth on one group; no kit system');
   return {kit, evidence};
+}
+
+/**
+ * Close the loop on glazing: the folded window extents and the kit's frames and bay layout do not reproduce the photo's
+ * glazing exactly, so compile, compare the model's upper-storey glazing with the photo's and rescale the group's
+ * windowShape (width by photo / model, height only for what the width range cannot take, sill kept) until within 0.05, at most three rounds. Groups with
+ * `windowShape` in `hand`, without a measured shape, or without evidence are left alone.
+ */
+async function refineGlazing(id: string, file: string) {
+  for (let round = 1; round <= 3; round++) {
+    const {likeness} = await compileLargeHouse(id), intent: LargeBuildingIntent = JSON.parse(await fs.readFile(file, 'utf8'));
+    let changed = 0;
+    for (const g of likeness ?? []) {
+      const w = intent.walls[g.group], L = g.likeness;
+      if (!L || L.verdict === 'NO EVIDENCE' || !w.windowShape || w.hand?.includes('windowShape') || !intent.measured?.groups.includes(g.group)) continue;
+      const p = L.glazing.photoMean, m = L.glazing.modelMean;
+      if (m < 0.02 || Math.abs(p - m) <= 0.05) continue;
+      // width first (the storey lines fix the folded height better than the bay pitch fixes the width); height only for
+      // what the width cannot take within its range
+      const s = w.windowShape, ww = clamp(+(s.w * p / m).toFixed(3), 0.08, 0.98), rest = (p / m) / (ww / s.w), h = clamp(+(s.h * rest).toFixed(3), 0.08, 0.98 - s.sill);
+      if (Math.abs(h - s.h) < 0.005 && Math.abs(ww - s.w) < 0.005) continue;
+      console.log(`  refine walls[${g.group}] round ${round}: glazing model ${m.toFixed(2)} vs photo ${p.toFixed(2)}; windowShape ${s.w}x${s.h} -> ${ww}x${h}`);
+      w.windowShape = {...s, w: ww, h}; changed++;
+    }
+    if (!changed) return;
+    validateLargeIntent(intent);
+    await fs.writeFile(file, JSON.stringify(intent, null, 1));
+  }
 }
 
 export async function measureHouse(id: string, opts: {write: boolean; system: boolean; bays: boolean; debug?: boolean}) {
@@ -120,6 +156,7 @@ export async function measureHouse(id: string, opts: {write: boolean; system: bo
     validateLargeIntent(intent);
     await fs.writeFile(file, JSON.stringify(intent, null, 1));
     console.log(`  wrote ${file}: groups ${measuredGroups.join(', ')}`);
+    await refineGlazing(id, file);
   }
   return out;
 }

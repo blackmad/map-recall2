@@ -103,11 +103,13 @@ export function wallSplit(cells: number[], colOf: (k: number) => number, cols: n
   const idx = lab.map((_, i) => i).filter(i => ok[i]); if (idx.length < 5) return null;
   const dE = (a: Rgb, b: Rgb) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
   const med = (is: number[]): Rgb => [0, 1, 2].map(c => median(is.map(i => lab[i]![c]))) as Rgb;
-  let best: {n: number; d: number; l: Rgb; r: Rgb} | null = null;
+  let best: {n: number; d: number; l: Rgb; r: Rgb; sse: number} | null = null;
   for (let n = Math.ceil(idx.length * 0.2); n <= Math.floor(idx.length * 0.8); n++) {
     const L = idx.slice(0, n), R = idx.slice(n), l = med(L), r = med(R), d = dE(l, r);
     const spread = Math.max(median(L.map(i => dE(lab[i]!, l))), median(R.map(i => dE(lab[i]!, r))));
-    if (d > 15 && spread < d / 2 && (!best || d > best.d)) best = {n, d, l, r};
+    // least squares: the cut that leaves each side most uniform (maximising the difference pulls the cut inward)
+    const sse = L.reduce((x, i) => x + dE(lab[i]!, l) ** 2, 0) + R.reduce((x, i) => x + dE(lab[i]!, r) ** 2, 0);
+    if (d > 15 && spread < d / 2 && (!best || sse < best.sse)) best = {n, d, l, r, sse};
   }
   if (!best) return null;
   const side = (is: number[]) => hex(medRgb(is.flatMap(i => strips[i])));
@@ -242,9 +244,13 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   // the brightest near-neutral cells (white frames, sills, light curtains); glass is neutral too, so a high quantile
   const neutral = pool.filter(k => Math.hypot(lab[k][1], lab[k][2]) < 12), refPool = neutral.length >= pool.length * 0.01 ? neutral : pool;
   const Lref = quant(refPool.map(k => lab[k][0]), 0.97), refCells = refPool.filter(k => lab[k][0] >= Lref);
-  const ref = refCells.length ? medRgb(refCells.map(k => mean[k])) : null;
+  // A reference only when it is real light trim: clearly lighter than the typical cell (>= 25 L*). On a dull overcast
+  // front with no white frames the brightest neutral cells are just grey (Houthavenkade 26 g3: the gain hit the clamp and
+  // dark red-brown brick came out light mauve), so the exposure is left raw there.
+  const Lmid = median(pool.map(k => lab[k][0]));
+  const ref = refCells.length && Lref - Lmid >= 25 ? medRgb(refCells.map(k => mean[k])) : null;
   const refY = ref ? (ref[0] + ref[1] + ref[2]) / 3 : 0;
-  const gain = ref && refY > 1 ? Math.max(0.75, Math.min(1.6, 215 / refY)) : 1;
+  const gain = ref && refY > 1 ? Math.max(0.75, Math.min(1.45, 215 / refY)) : 1;
   const wb: [number, number, number] = ref && refY > 1 ? [0, 1, 2].map(c => Math.max(0.92, Math.min(1.08, refY / Math.max(1, ref[c])))) as [number, number, number] : [1, 1, 1];
   const norm = (c: Rgb): Rgb => c.map((v, i) => Math.max(0, Math.min(255, v * gain * wb[i]))) as Rgb;
 
@@ -399,7 +405,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const split = wallSplit(allUsable.filter(k => mask[k] === MASK.wall && isUpper(Math.floor(k / cols))), k => k % cols, cols, k => norm(mean[k]));
   const clusters = centres.map((c, i) => ({lab: c.map(v => +v.toFixed(1)) as Rgb, share: +share[i].toFixed(3), warm: warm(c), score: +score[i].toFixed(4), mixed: mixed[i], enrich: +enrich[i].toFixed(2), conn: +shape[i].conn.toFixed(2), span: [+shape[i].spanW.toFixed(2), +shape[i].spanH.toFixed(2)], wall: wallSet[i]}));
   return {labels: Int8Array.from(cellOf), zoned, clusters, wallCluster: wallC, threshold: +tau.toFixed(1), cols, rows, cell, box, mask, usableFraction: +usableFraction.toFixed(3), foliageFraction: +foliageFraction.toFixed(3), washedOutFraction: +washedOutFraction.toFixed(3),
-    normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 (gain 0.75..1.6, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number]},
+    normalisation: {method: 'light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)', ref: ref ? ref.map(Math.round) as Rgb : null, gain: +gain.toFixed(3), wb: wb.map(v => +v.toFixed(3)) as [number, number, number]},
     wall: {raw: wallRaw.map(Math.round) as Rgb, normalised: wallN.map(Math.round) as Rgb, hex: hex(wallN), rawHex: hex(wallRaw), cells: wallCells.length},
     glass: glassRaw && glassN ? {raw: glassRaw.map(Math.round) as Rgb, normalised: glassN.map(Math.round) as Rgb, hex: hex(glassN), rawHex: hex(glassRaw), cells: darkCells.length} : null,
     trim: trimN ? {normalised: trimN.map(Math.round) as Rgb, hex: hex(trimN), cells: trimCells.length} : null,
