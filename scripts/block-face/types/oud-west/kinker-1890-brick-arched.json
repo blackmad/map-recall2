@@ -22,15 +22,25 @@
       "kind": "segmental",
       "archRing": {
         "colour": "stone",
-        "style": "blocks",
-        "keystone": true
+        "style": "springers",
+        "keystone": true,
+        "springerSize": [
+          0.32,
+          0.28
+        ]
       }
     },
     "windowHeights": [
       0.7,
-      0.7,
-      0.7,
-      0.68
+      0.635,
+      0.651,
+      0.655
+    ],
+    "headLines": [
+      0.86,
+      0.94,
+      0.856,
+      0.793
     ],
     "windowShare": 0.55,
     "bands": "painted",
@@ -40,8 +50,9 @@
     ],
     "bandHeights": {
       "sill": 0.1,
-      "transom": 0.12
-    }
+      "transom": 0.08
+    },
+    "bandTransomAt": 0.63
   },
   "crowns": {
     "pediment-dormer": {
@@ -80,15 +91,17 @@
       "brick": "#604e3d",
       "frame": "#a7a89d",
       "door": "black",
-      "stone": "#acaf9f",
-      "cornice": "#bebdae"
+      "stone": "#eae7dc",
+      "cornice": "#bebdae",
+      "stoneMaterial": "painted"
     },
     "dark-brown": {
       "brick": "#4b4639",
       "frame": "#a0a099",
       "door": "black",
-      "stone": "#acaf9f",
-      "cornice": "#bebdae"
+      "stone": "#dddad0",
+      "cornice": "#bebdae",
+      "stoneMaterial": "painted"
     },
     "red-brown-sunlit": {
       "brick": "#6c5440",
@@ -118,10 +131,10 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the dark rubbed-brick ring under the white blocks is not drawn (no band brick measured)",
-      "the impost course on the photo is a dotted line of white blocks at the springing line; the kit's painted head band is continuous (bands: painted)",
+      "the dark rubbed-brick ring between the white springers is not drawn (no band brick measured; the springers style draws no ring)",
+      "the springers are square slabs; the photo's are wedge-shaped, rising toward the arch (a V over each pier)",
       "pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze",
-      "iron wall anchors between the windows are not drawn"
+      "iron wall anchors between the windows (in the gap between two springers) are not drawn"
     ]
   },
   "evidence": [
@@ -171,13 +184,14 @@
     }
   ],
   "schemaLimits": [
-    "dotted impost course (blocks) vs the continuous painted head band",
     "white tympanum lunettes (244-332 236631, 156795) are a placement override (windowHead.tympanum: stone)",
     "rubbed-brick arch ring colour",
-    "dormer scroll cheeks"
+    "dormer scroll cheeks",
+    "red-brown-sunlit palette keeps the unmeasured stone (no white course measured on its strips)"
   ],
   "notes": [
     "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json); kinker-2-30 = median of pands 6-14 on the overcast 2024-12-11 strip, cornice from 236814 (the only cornice whose light pixels pass 35 %).",
-    "Bands: bands painted (Oud-West 1900 lane, merged 2026-10-14) on the sill and transom lines, 0.10 and 0.12 m: the white sill course and the upper course measured as band rows 0.10-0.13 m tall on 162482 and 236814 (evidence above). The planned 0.04 / 0.05 m sill + head bands were 2 px at 40 px/m and put the upper line on the arch springing, ~0.75 m above the photo course."
+    "Bands: bands painted (Oud-West 1900 lane, merged 2026-10-14) on the sill and transom lines, 0.10 and 0.12 m: the white sill course and the upper course measured as band rows 0.10-0.13 m tall on 162482 and 236814 (evidence above). The planned 0.04 / 0.05 m sill + head bands were 2 px at 40 px/m and put the upper line on the arch springing, ~0.75 m above the photo course.",
+    "White courses and heads (kit lane 2026-10-14): archRing style springers (springerSize [0.32, 0.28]: the white impost blocks of 162482 at 12.75-13.05 m, 0.30-0.35 m long from each jamb, 0.09 m apart over the pier); headLines 0.94 / 0.856 / 0.793 and windowHeights 0.635 / 0.651 / 0.655 put the arch crowns at the springer rows (7.15, 9.97, 12.75 m + the 0.08 m rise) and the sills on the sill courses (5.2, 8.05, 10.9 m) of 162482 and 236814 on the kit's 15.19 m storeys [4.22, 3.20, 3.07, 2.95]; the thin continuous course is the transom band at 0.63 of the window (6.43 / 9.28 / 12.11 m measured), 0.08 m; stone = paint from palette-from-strip.ts (band-to-frame luma ratio x the drawn frame): median #eae7dc of the 7 pands with band rows (ratios 1.008-1.115), dark-brown #dddad0 (163325, accent = frame), stoneMaterial painted so the look keeps it white."
   ]
 }
