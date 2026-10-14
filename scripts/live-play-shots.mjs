@@ -56,6 +56,8 @@ for (const spec of places) {
   // Hold the pose: re-apply each frame in case the boat physics nudges it.
   await page.waitForTimeout(settle);
   await page.evaluate(() => window.__hideCards && window.__hideCards());
+  // EVAL_JS=<file>: a function body run in the page before each shot (e.g. answer a question so its name is painted).
+  if (process.env.EVAL_JS) { await page.evaluate(src => (0, eval)(src), fs.readFileSync(process.env.EVAL_JS, 'utf8')); await page.waitForTimeout(Number(process.env.EVAL_WAIT_MS || 1500)); }
   const info = await page.evaluate(() => {
     const g = canalRecallGame, vm = g.vectorMap, og = vm._ownGround;
     const tb = vm._tileBuildings || vm._recipeTiles || null;

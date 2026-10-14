@@ -11,6 +11,7 @@ import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHe
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures';
+import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
@@ -19,7 +20,7 @@ import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowed
 import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SurfaceIndex, type ParksCell } from './parks';
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
-import type { OsmGroundExtract } from './osmGround';
+import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -1081,6 +1082,54 @@ test('regression (Houtmankade pair, user 2026-10-14): the west quay is asphalt w
   assert.equal(east.bands[0].surface, 'klinker');
   assert.ok(east.rails.length > 0, 'the two dark lines are tram rails');
   assert.ok(!east.bands.some(b => b.surface === 'cycle'), 'nothing on the east quay is cycle red');
+});
+
+// ------------------------------------------------------------- junction road markings (user 2026-10-14)
+test('junction markings: a side street gives way with shark teeth, a signalised junction gets stop lines, a painted cycle lane runs through', () => {
+  assert.equal(mouthMarking('residential', 5, false), 'giveWay');
+  assert.equal(mouthMarking('primary', 5, false), null, 'the main road keeps priority, unmarked');
+  assert.equal(mouthMarking('residential', 1, false), null, 'equal classes: rechts voorrang, unmarked');
+  assert.equal(mouthMarking('residential', 5, true), 'stop');
+  assert.equal(mouthMarking('service', 5, false), null, 'an exit is not a junction arm to mark');
+  const m = emptyMesh();
+  assert.equal(sharkTeeth(m, { o: [0, 0], u: [1, 0] }, 0.15, 2.9, () => 0, 0.05), 4, '2.75 m inbound half: four teeth at a 0.75 m pitch');
+  assert.ok(m.positions.length > 0);
+  // A T: primary along x (two-way, painted cycle lanes both sides), a residential side street north from x = 0.
+  const main: OsmWay = { id: 1, tags: { highway: 'primary', cycleway: 'lane', lanes: '2', sidewalk: 'no' }, g: [[-60, 0], [0, 0], [60, 0]] };
+  const side: OsmWay = { id: 2, tags: { highway: 'residential', sidewalk: 'no' }, g: [[0, 0], [0, 50]] };
+  const local = (ways: OsmWay[]) => prepareWays(ways, p => [p[0], p[1]]);
+  const plain = buildStreets(local([main, side]), () => 0);
+  assert.equal(plain.stats.markings.giveWays, 1, 'the side street gives way');
+  assert.ok(plain.stats.markings.teeth >= 2);
+  assert.equal(plain.stats.markings.stopLines, 0);
+  assert.equal(plain.stats.markings.laneLinks, 2, 'both cycle lanes carried through the junction');
+  assert.equal(plain.stats.markings.cycleCrossings, 1, 'the north lane crosses the side street mouth: block markings');
+  const teeth = faces(plain.paint).filter(f => f.c[1] > 3 && f.c[1] < 12 && f.c[0] < 0 && f.c[0] > -3);
+  assert.ok(teeth.length >= 2, 'teeth on the side street, on its inbound (west) half');
+  const crossing: OsmWay = { id: 3, tags: { highway: 'footway', footway: 'crossing', crossing: 'traffic_signals' }, g: [[-4, 8], [4, 8]] };
+  const lit = buildStreets(local([main, side, crossing]), () => 0);
+  assert.equal(lit.stats.markings.stopLines, 3, 'signalised: every arm gets a stop line across its inbound half');
+  assert.equal(lit.stats.markings.giveWays, 0, 'and no teeth');
+});
+
+test('regression (Nassaukade / Frederik Hendrikplantsoen, OSM n2306196651, user 2026-10-14): the junction carries its road paint', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.8776303, 52.3785795);
+  const cell = buildCell(await store.cellInput(store.cellAt(x, y), 0));
+  const area = (layer: 'paint' | 'cycle') => {
+    const mesh = cell.layers[layer]!, p = mesh.positions, idx = mesh.indices;
+    let a = 0;
+    for (let t = 0; t < idx.length; t += 3) {
+      const i = idx[t] * 3, j = idx[t + 1] * 3, k = idx[t + 2] * 3;
+      if (Math.hypot((p[i] + p[j] + p[k]) / 3 - x, (p[i + 1] + p[j + 1] + p[k + 1]) / 3 - y) > 30) continue;
+      a += Math.abs((p[j] - p[i]) * (p[k + 1] - p[i + 1]) - (p[k] - p[i]) * (p[j + 1] - p[i + 1])) / 2;
+    }
+    return a;
+  };
+  // Within 30 m: paint 43 m² and red 224 m² before the junction markings, 70 m² and 296 m² after.
+  assert.ok(area('paint') >= 60, `paint ${area('paint').toFixed(1)} m²`);
+  assert.ok(area('cycle') >= 270, `cycle red ${area('cycle').toFixed(1)} m² (lanes carried through)`);
 });
 
 test('park fill culling: a fill triangle inside one BGT surface goes; one over a hole or across two surfaces stays', () => {

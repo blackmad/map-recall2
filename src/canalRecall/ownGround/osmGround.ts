@@ -137,6 +137,12 @@ export interface CrossSection {
 }
 
 const KERB_M = 0.11;
+/**
+ * Longitudinal road lines (centre dashes, edge lines, cycle-lane edges), metres. Painted 0.10–0.15 m;
+ * drawn at the top of that range: from the chase camera (~150 m) a pixel is ~0.2 m, and 0.10–0.12 m
+ * lines aliased into broken specks (user 2026-10-14, "road painting in ownground still not there").
+ */
+export const PAINT_LINE_M = 0.15;
 const SIDEWALK_M = 1.8;
 const TRACK_M = 2.1;
 const LANE_M = 1.6;
@@ -283,7 +289,7 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     const s = side === 'left' ? 1 : -1, kind = cyc[side];
     if (kind === 'lane') {
       bands.push({ kind: 'cycle_lane', surface: 'cycle', offset: s * (edge[side] + LANE_M / 2), width: LANE_M, raised: 0, kerb: 'none' });
-      paint.push({ offset: s * edge[side], width: 0.1, dash: [1, 1] });
+      paint.push({ offset: s * edge[side], width: PAINT_LINE_M, dash: [1, 1] });
       edge[side] += LANE_M;
     } else if (kind === 'track') {
       const track = bgtCycle ?? TRACK_M;
@@ -303,9 +309,9 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
   // No centre line on a one-way street or a fietsstraat (cyclestreet / bicycle_road): it is one lane.
   const cycleStreet = tags.cyclestreet === 'yes' || tags.bicycle_road === 'yes' || cls === 'fietsstraat';
   const centre = !cycleStreet && ((lanes >= 2 && !oneway) || (style.centre && !oneway && !lanes));
-  if (centre) paint.push({ offset: 0, width: 0.12, dash: [3, 5] });
+  if (centre) paint.push({ offset: 0, width: PAINT_LINE_M, dash: [3, 5] });
   if (hw.startsWith('primary') || hw.startsWith('secondary') || hw.startsWith('trunk') || cls === 'fietsstraat') {
-    paint.push({ offset: half - 0.3, width: 0.12, dash: null }, { offset: -(half - 0.3), width: 0.12, dash: null });
+    paint.push({ offset: half - 0.3, width: PAINT_LINE_M, dash: null }, { offset: -(half - 0.3), width: PAINT_LINE_M, dash: null });
   }
   // Tram tracks in the street: two-way (or two-way for buses and trams) streets carry a track each way, 3 m apart.
   const rails: number[] = [];
