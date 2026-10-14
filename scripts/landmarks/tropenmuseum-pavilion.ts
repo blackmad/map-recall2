@@ -1,6 +1,6 @@
 import * as T from 'three';
 import type {PanelCtx} from '../../src/canalRecall/blockBuilding/compose';
-import {anchorIron, archHead, archRing, extrude, FRAME, geom, shapeOf, IRON, GLASS, KitStats, opening, solid, STONE} from './tropenmuseum-kit';
+import {anchorIron, archHead, archRing, extrude, FRAME, geom, proudWindow, shapeOf, IRON, GLASS, KitStats, opening, solid, STONE} from './tropenmuseum-kit';
 import facades from './tropenmuseum-facades.json';
 
 /**
@@ -16,6 +16,8 @@ export interface PavilionWall {
   plinth: {y: Pair; out: number}; souterrain: {s: number[]; w: number; y: Pair};
   side: {s: Pair[]; pad: number}; centre: {lights: Pair[]; surround: Pair};
   floors: Floor[]; anchors: {s: number[]; y0: number[]; h: number}; cornice?: {y: Pair; s: Pair}; stage?: boolean;
+  /** a bespoke slab above the 3DBAG face (the connecting block): see tropenmuseum-block.ts */
+  block?: unknown;
 }
 /** The stage above the dentil cornice (blind arcades, paired windows, relief, big cornice, clock panel), in metres above the cornice's top edge. */
 export interface StagePattern {
@@ -26,7 +28,7 @@ export interface StagePattern {
   bigCornice: {y: Pair; slabLow: Pair; blocks: Pair; slabHigh: Pair; pitch: number; blockW: number};
   clockPanel: {y: Pair; half: number}; quoin: {y: Pair; w: number};
 }
-export const STAGE = (facades as unknown as {stagePattern: StagePattern}).stagePattern;
+export const STAGE_FULL = (facades as unknown as {stagePattern: StagePattern}).stagePattern;
 export const PAVILION_WALLS = Object.values((facades as unknown as {walls: Record<string, PavilionWall>}).walls);
 /** the kit floors (4.4 m pitch) a measured wall replaces: those whose cells start below the measured top */
 export const skipFloors = (w: PavilionWall) => w.stage ? 99 : w.cornice ? 5 : 2;
@@ -118,7 +120,32 @@ export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall, opt:
  * over a ledge and an arched window under a blind arch, over the centre a pair of two-light windows in two tiers, a relief panel, two
  * four-arch blind arcades on a corbelled band, the big console cornice and the clock panel. The 3DBAG wall carries all of it (v to 32 m).
  */
-function pavilionStage(c: PanelCtx, stats: KitStats, w: PavilionWall, yc: number) {
+export interface StageOpts {
+  /** vertical and horizontal scale of the pattern (the connecting block's stage is the pavilion's at ~0.7) */
+  k?: number;
+  /** windows applied to the face instead of cut into the host wall (a bespoke slab carries the stage) */
+  proud?: boolean;
+  /** the clock panel and dial over the big cornice (north pavilions only) */
+  clock?: boolean;
+}
+/** STAGE with every y and width scaled by k */
+function scaled(k: number): StagePattern {
+  const P = (a: Pair): Pair => [a[0] * k, a[1] * k], S = STAGE_FULL;
+  return {
+    sideLower: P(S.sideLower), sideLedge: P(S.sideLedge), sideUpper: P(S.sideUpper), sideHoodRise: S.sideHoodRise * k,
+    centreLower: P(S.centreLower), centreUpper: P(S.centreUpper), centreSurroundHalf: S.centreSurroundHalf * k, centreLightW: S.centreLightW * k, centreLightGap: S.centreLightGap * k, centreHead: P(S.centreHead),
+    arcade: {spring: S.arcade.spring * k, rise: S.arcade.rise * k, w: S.arcade.w * k, pitch: S.arcade.pitch * k, count: S.arcade.count, band: P(S.arcade.band)},
+    relief: {y: P(S.relief.y), half: S.relief.half * k, ledge: P(S.relief.ledge), cornice: P(S.relief.cornice)},
+    bigCornice: {y: P(S.bigCornice.y), slabLow: P(S.bigCornice.slabLow), blocks: P(S.bigCornice.blocks), slabHigh: P(S.bigCornice.slabHigh), pitch: S.bigCornice.pitch * k, blockW: S.bigCornice.blockW * k},
+    clockPanel: {y: P(S.clockPanel.y), half: S.clockPanel.half * k}, quoin: {y: P(S.quoin.y), w: S.quoin.w},
+  };
+}
+
+export function pavilionStage(c: PanelCtx, stats: KitStats, w: PavilionWall, yc: number, o: StageOpts = {}) {
+  const k = o.k ?? 1, STAGE = k === 1 ? STAGE_FULL : scaled(k), clock = o.clock ?? true;
+  const win = (what: string, u0: number, u1: number, v0: number, v1: number, p: Parameters<typeof opening>[7], mull = true, rows = true) => {
+    if (o.proud) proudWindow(c, u0, u1, v0, v1, mull, rows); else opening(c, stats, what, u0, u1, v0, v1, p);
+  };
   const U = (s: number) => s + w.sToU, part = c.part(), what = `pavilion ${w.what} stage`;
   const lo = (s: number) => Math.max(U(s), c.p.uMin + 0.04), hi = (s: number) => Math.min(U(s), c.p.uMax - 0.04);
   const slab = (s0: number, s1: number, y0: number, y1: number, out: number) => solid(c, STONE, lo(s0), hi(s1), yc + y0, yc + y1, 0, out, part);
@@ -131,19 +158,19 @@ function pavilionStage(c: PanelCtx, stats: KitStats, w: PavilionWall, yc: number
   t = mark('quoins', t);
   // side windows: a rectangular light over the cornice, a ledge, an arched light under a blind arch hood
   for (const [a, b] of w.side.s) {
-    opening(c, stats, `${what} side window`, U(a), U(b), yc + STAGE.sideLower[0], yc + STAGE.sideLower[1], {...WIN, mullAt: [0.5], rowsAt: [0.5]});
+    win(`${what} side window`, U(a), U(b), yc + STAGE.sideLower[0], yc + STAGE.sideLower[1], {...WIN, mullAt: [0.5], rowsAt: [0.5]});
     slab(a - 0.1, b + 0.1, STAGE.sideLedge[0], STAGE.sideLedge[1], 0.1);
-    opening(c, stats, `${what} side arched window`, U(a), U(b), yc + STAGE.sideUpper[0], yc + STAGE.sideUpper[1], {
+    win(`${what} side arched window`, U(a), U(b), yc + STAGE.sideUpper[0], yc + STAGE.sideUpper[1], {
       ...WIN, mullAt: [0.5], arch: {kind: 'round', segments: 4, band: {slot: STONE, t: 0.06, out: 0.05, imposts: STONE, keystone: null}},
-    });
+    }, true, false);
     archRing(c, STONE, U(a - 0.08), U(b + 0.08), yc + STAGE.sideUpper[1] + 0.2, STAGE.sideHoodRise * 0.6, 0.07, 0.05, 0, 4);
   }
   t = mark('side windows', t);
   // centre: two tiers of two lights between stone piers, a transom course and a head cornice
   const lw = STAGE.centreLightW, gap = STAGE.centreLightGap, L0 = mid - lw - gap / 2, L1 = mid + lw + gap / 2, sh = STAGE.centreSurroundHalf;
   for (const [y0, y1] of [STAGE.centreLower, STAGE.centreUpper]) {
-    for (const [a, b] of [[L0, L0 + lw], [L1 - lw, L1]] as Pair[]) opening(c, stats, `${what} centre window`, U(a), U(b), yc + y0, yc + y1, {...WIN, rowsAt: [0.5], mullAt: []});
-    slab(mid - sh, L0 - 0.03, y0 - 0.1, y1 + 0.05, 0.08); slab(L0 + lw + 0.03, L1 - lw - 0.03, y0 - 0.1, y1 + 0.05, 0.08); slab(L1 + 0.03, mid + sh, y0 - 0.1, y1 + 0.05, 0.08);
+    for (const [a, b] of [[L0, L0 + lw], [L1 - lw, L1]] as Pair[]) win(`${what} centre window`, U(a), U(b), yc + y0, yc + y1, {...WIN, rowsAt: [0.5], mullAt: []}, false, true);
+    slab(mid - sh, L0 - 0.03, y0 - 0.1, y1 + 0.05, 0.09); slab(L0 + lw + 0.03, L1 - lw - 0.03, y0 - 0.1, y1 + 0.05, 0.09); slab(L1 + 0.03, mid + sh, y0 - 0.1, y1 + 0.05, 0.09);
   }
   slab(mid - sh, mid + sh, STAGE.centreLower[1] + 0.03, STAGE.centreUpper[0] - 0.03, 0.1);
   slab(mid - sh - 0.08, mid + sh + 0.08, STAGE.centreHead[0], STAGE.centreHead[1], 0.16);
@@ -151,7 +178,7 @@ function pavilionStage(c: PanelCtx, stats: KitStats, w: PavilionWall, yc: number
   // relief panel under the big cornice
   const R = STAGE.relief;
   slab(mid - R.half - 0.1, mid + R.half + 0.1, R.ledge[0], R.ledge[1], 0.12);
-  slab(mid - R.half, mid + R.half, R.y[0], R.y[1], 0.08);
+  slab(mid - R.half, mid + R.half, R.y[0], R.y[1], 0.09);
   slab(mid - R.half - 0.1, mid + R.half + 0.1, R.cornice[0], R.cornice[1], 0.14);
   t = mark('relief', t);
   // blind arcades on a corbelled band over each side window axis
@@ -171,6 +198,7 @@ function pavilionStage(c: PanelCtx, stats: KitStats, w: PavilionWall, yc: number
   slab(f0, f1, B.slabLow[0], B.slabLow[1], 0.28);
   for (let s = f0 + 0.2; s + B.blockW < f1; s += B.pitch) slab(s, s + B.blockW, B.blocks[0], B.blocks[1], 0.42);
   slab(f0 - 0.05, f1 + 0.05, B.slabHigh[0], B.slabHigh[1], 0.6);
+  if (!clock) { mark('cornice', t); stats.drawn.push(`${what}: ${marks.join(', ')} (total ${c.mesh.triangles - t0})`); return; }
   const P = STAGE.clockPanel;
   slab(mid - P.half, mid + P.half, P.y[0], Math.min(P.y[1], c.p.vMax - 0.05 - yc), 0.12);
   mark('cornice+clock panel', t);

@@ -54,7 +54,7 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 6,
-   "windows": "two-light",
+   "windows": "plain",
    "ground": "system",
    "frames": false,
    "sills": false
@@ -86,7 +86,7 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "windows": "two-light",
+   "windows": "plain",
    "ground": "system",
    "frames": false,
    "sills": false

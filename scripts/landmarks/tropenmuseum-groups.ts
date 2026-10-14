@@ -11,7 +11,7 @@
  *    tall as the panel);
  *  - an enclosed panel (courtyard, light court, gap between wings: a roof >= 6 m high within 12 m straight out) is blank too;
  *  - storeys under the eaves = round((eaves - 0.15) / 4.4), one group per (style, storey count);
- *  - cross windows are two-light on wings of 5+ storeys and single lights below (GLB byte budget, see STACKED_TWO_LIGHT_ABOVE);
+ *  - cross windows are two-light on the 7-storey pavilion towers and single lights below (GLB byte budget, see STACKED_TWO_LIGHT_ABOVE);
  *  - style `long`: the museum's two long wings (register: "negen traveeen breed, getoogde negenruits vensters") get round-arched
  *    windows; everything else the cross windows with stone mullions the register describes for the Instituut.
  */
@@ -25,8 +25,8 @@ const facts: BuildingFacts = JSON.parse(fs.readFileSync('scripts/landmarks/trope
 const {set, anchorRD} = largeSurfaceSet(facts);
 const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true});
 
-/** Cross windows keep their stone mullion (two-light) only on wings of 5 or more storeys; below that a single light reads the same at gallery size and saves ~1.6k triangles. */
-const STACKED_TWO_LIGHT_ABOVE = 4;
+/** Cross windows keep their stone mullion (two-light) only on wings of 7 storeys (the pavilion towers); below that a single light reads the same at gallery size and saves ~1.6k triangles. */
+const STACKED_TWO_LIGHT_ABOVE = 6;
 export interface PanelRow {index: number; bearing: number; width: number; eaves: number; ground: number; top: number; partyH: number; surfaces: number[]; storeys: number; blank: boolean; style: 'long' | 'cross'; tier: 'street' | 'rear'; at: [number, number]}
 /** Enclosed: another roof stands at least 6 m high within 12 m straight out from the panel (courtyards, the light court, gaps between wings). */
 const enclosed = (p: ReturnType<typeof buildHost>['panels'][number]) => {

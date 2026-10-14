@@ -10,6 +10,9 @@ import type {WinParams} from '../../src/canalRecall/blockBuilding/spec';
 import {BAR, IRON, type KitStats} from './tropenmuseum-kit';
 import {portalFront, portalGable, PORTAL_SURFACES} from './tropenmuseum-portal';
 import {gableCrown, pavilionOrnaments} from './tropenmuseum-ornaments';
+import {risalitFace, risalitOf} from './tropenmuseum-risalit';
+import {gableWingFace, gableWingOf} from './tropenmuseum-gablewing';
+import {connectingBlock, type BlockSpec} from './tropenmuseum-block';
 import {pavilionFace, pavilionWallOf, skipFloors, type PavilionOptions} from './tropenmuseum-pavilion';
 import {largeSurfaceSet, panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge';
 import {hiddenCells, type CellsByPanel} from './tropenmuseum-hidden';
@@ -42,7 +45,7 @@ export interface TropenmuseumOptions extends PavilionOptions {
   /** keep the window cells that look into the light courts (the shipped build leaves them as plain brick, see tropenmuseum-hidden.ts) */
   keepHiddenCells?: boolean;
   /** leave out the portal, the gable crowns or the pavilion rule ornaments (clock dial, rule relief frieze) */
-  without?: ('portal' | 'crowns' | 'ornaments')[];
+  without?: ('portal' | 'crowns' | 'ornaments' | 'block' | 'gablewing' | 'risalit')[];
 }
 /** Dropping 3DBAG's spike opens boundary loops in the shell (audit holes), so the modelled helmet is seated over it instead. */
 const REMOVE_SPIKE = false;
@@ -76,6 +79,10 @@ export function tropenmuseumHooks(stats: TropenmuseumStats, opt: TropenmuseumOpt
       if (has(p, ...PORTAL_SURFACES)) return true;
       if (hidden?.has(`${p.index}:${floor}:${bay}`)) return true;
       if (opt.noFaces) return false;
+      const gw = opt.without?.includes('gablewing') ? undefined : gableWingOf(surfacesOf(p));
+      if (gw && gw.panel === p.index) return floor >= gw.skipFrom;
+      const rs = opt.without?.includes('risalit') ? undefined : risalitOf(surfacesOf(p));
+      if (rs && rs.panel === p.index) return true;
       const w = pavilionWallOf(surfacesOf(p));
       return !!w && w.panel === p.index && floor < skipFloors(w);
     },
@@ -84,9 +91,13 @@ export function tropenmuseumHooks(stats: TropenmuseumStats, opt: TropenmuseumOpt
       if (opt.plain) return;
       if (has(c.p, ...PORTAL_SURFACES)) { if (opt.without?.includes('portal')) return; portalFront(c, stats); portalGable(c, stats); return; }
       const eaves = panelEaves(c.p);
+      const gw = opt.without?.includes('gablewing') ? undefined : gableWingOf(surfacesOf(c.p));
+      if (gw && gw.panel === c.p.index) gableWingFace(c, stats, gw);
+      const rs = opt.without?.includes('risalit') ? undefined : risalitOf(surfacesOf(c.p));
+      if (rs && rs.panel === c.p.index) risalitFace(c, stats, rs);
       const pav = PAVILIONS.find(q => has(c.p, ...q.surfaces));
       const face = opt.noFaces ? undefined : pavilionWallOf(surfacesOf(c.p));
-      if (face && face.panel === c.p.index) pavilionFace(c, stats, face, opt);
+      if (face && face.panel === c.p.index) { pavilionFace(c, stats, face, opt); if (face.block && !opt.without?.includes('block')) connectingBlock(c, stats, face as typeof face & {block: BlockSpec}); }
       if (pav && !opt.without?.includes('ornaments')) pavilionOrnaments(c, stats, info.cells, eaves, pav.dial, !!face && face.panel === c.p.index);
       const crown = GABLES.find(g => has(c.p, ...g.surfaces));
       if (crown && !opt.without?.includes('crowns')) gableCrown(c, stats, eaves, crown.statue);
