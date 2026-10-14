@@ -1253,16 +1253,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   upper tower moves ~1.3 m south against the pitched views; inventory
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
-- **Tropenmuseum, second pass** (2026-10-14, HISTORY "Tropenmuseum
-  surveyed and built"): east-front pavilions and risalit gable from the
-  photos (round-arched triple windows, souterrain arches, relief panels,
-  dentil cornice); Mauritskade corner sheet; a measured `-spec.json` so
-  blank-wall exemptions are declared; add to `SNAP_OPENING_IDS`.
-  Landmark backlog "pending" flags are stale for many ids (Munttoren,
-  Schreierstoren, Amstelkerk, Zuiderkerk, Waag, Posthoornkerk, Hortus, the
-  Lutherse kerken, Trippenhuis, Carré, Concertgebouw…): regenerate from
-  the catalogue before the next queue lane; the remaining gaps are mostly
-  statues and memorials.
+- **Tropenmuseum, third pass** (2026-10-14, HISTORY "Tropenmuseum, second
+  pass"): the pavilion stages above ~22 m (blind arcade, clock panel,
+  paired windows), the connecting block above its 12 m panel (arched
+  third floor, cornice ~16.4 m, arcade stage), the south pavilion face
+  and the risalit gable (needs a better crop / Commons photo), lion
+  masks; 280 B of GLB budget left so cut elsewhere first; the spec's
+  party-wall bearings cover the whole range (narrow them); tidy the
+  `TROP_*` env toggles.
 - **Large tier after the components lane** (2026-10-14): OZ Achterburgwal
   233 needs a per-group party-wall override to place its baroque gateway
   (panel 266 hits a neighbour on one of three probes); Engelsesteeg's

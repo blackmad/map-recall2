@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## Tropenmuseum, second pass (2026-10-14, night)
+
+Lane `landmarks/tropenmuseum-2-20261014`. Three faces measured at
+100 px/m on a metre grid (`tropenmuseum-facades.json`): the north
+pavilion's east front (souterrain arches, string course, three floors of
+side windows and centre triples, round-arched head, relief slabs,
+anchors), its Mauritskade face (same plus the dentil cornice at
+20.95–21.5 m) and the connecting block at a 3.9 m floor pitch. A typed
+`tropenmuseum-pavilion.ts` draws them from the JSON and the kit's own
+cells on those panels are skipped; reliefs are slabs with a ledge (no
+carved iconography); anchors and souterrain frames use a new `IRON` slot
+because the opening audit read dark anchors as detached openings;
+`capShellHoles` no longer caps loops inside the face regions below 24 m
+(it was fan-filling the faces' open edges, 28 m² of z-fight).
+`tropenmuseum-spec.json` declares party-wall bearings [61, 151, 241,
+331] which clears the 15 blank-wall warnings but hides a genuinely blank
+wall on those sides too. 33.5k tris, 499.7 KB (280 B under the limit:
+anything more needs a cut), lod1 7.7k. Warnings: see-through 2 → 0,
+blank-wall 17 → 0, near z-fight 19.8 → 23.7 m² (worst patch outside the
+new work), detached 6, inverted roof 1, rhythm 3. Inferred: the w10
+cornice height, one souterrain arch behind a road sign, one floor-2
+triple behind a banner, ledge and slab depths. Left: pavilion stages
+above ~22 m (blind arcade, clock panel, paired windows), the connecting
+block above its 12 m panel, the south pavilion (oblique crop) and the
+risalit gable (no panorama), the lion masks; debug env toggles
+`TROP_ONLY`/`TROP_SKIP`/`TROP_NO_FACES` to tidy.
+
+
 ## Layered kit re-installs (2026-10-14, night)
 
 Lane `large/layered-reinstall-20261014`. `install-large.ts` now has
