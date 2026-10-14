@@ -506,11 +506,19 @@ export interface LargeWallIntent {
   /**
    * `glazed-columns` (Houthavenkade 26): full-height glass stripes over the listed bays (of `baysPerStorey`, adjacent bays
    * join into one stripe) from storey `from` (default 1) up, `share` of the run's width (default 0.9); `slabs`: the stripe
-   * is an enclosed balcony bay 0.45 m deep with a slab at every storey line, else a flush glass band with frame transoms.
+   * is an enclosed balcony bay 0.45 m deep with a slab at every storey line, else a flush glass band with frame transoms;
+   * `glass`: the columns' own glazing colour when it differs from the punched windows' (Houthavenkade 26: reflective
+   * grey balcony glass beside dark window panes), default the group's glass.
    */
-  columns?: {bays: number[]; share?: number; from?: number; slabs?: boolean};
+  columns?: {bays: number[]; share?: number; from?: number; slabs?: boolean; glass?: string};
   /** Fields of this group set by hand that `measure.ts --write` must keep (e.g. `["palette.brick", "baysPerStorey"]`). */
   hand?: string[];
+  /**
+   * Two wall materials side by side on the group's main panel (measured, `measureFacade` `split`): the wall right of `at`
+   * (fraction of the main panel width from the viewer's left; snapped to a bay boundary) is `brick`; the left keeps the
+   * group's `palette.brick`. Houthavenkade 26: yellow-brown and dark brick on one 3DBAG plane.
+   */
+  wallSplit?: {at: number; brick: string};
   /**
    * Arched heads: on the upper-storey windows, on the ground openings (with `ground: "portals"` or a windowed ground),
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,

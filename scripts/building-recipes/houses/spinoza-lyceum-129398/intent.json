@@ -1,0 +1,116 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "spinoza-lyceum-129398",
+ "pandId": "0363100012129398",
+ "address": "Spinoza Lyceum, Peter van Anrooystraat 8, Amsterdam (built 1957): a white concrete-frame school, four-storey south-east wing with orange timber window panels under awnings over a low band of grid windows, a stair and canopy entrance, and a three-storey west wing of eleven timber-framed bays",
+ "sources": [
+  {
+   "id": "pano-2017-12-20-w01-156L",
+   "kind": "street-panorama",
+   "capturedAt": "2017-12-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000521_pano_0000_002153/",
+   "image": "source-data://pand-reference-walls/0363100012129398/w01-156L.jpg",
+   "sha256": "20d7b63e937b88214efb2ae16de7b8539d1aaf3cc6d3e1dac18ce57abab8b65d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-03-w02-252L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001034_pano_0007_001469/",
+   "image": "source-data://pand-reference-walls/0363100012129398/w02-252L.jpg",
+   "sha256": "be37faf5a2c82cd2ecedb3a1a2bbca3e7c8b53567c5bc4a656a1faf7f181913c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    85,
+    106
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 16,
+   "ground": "system",
+   "wallMaterial": "stucco",
+   "piers": true,
+   "entrance": {
+    "bay": 5,
+    "canopy": true
+   },
+   "signage": {
+    "text": "SPINOZA",
+    "colour": "#7a5a3a",
+    "mount": "canopy"
+   },
+   "palette": {
+    "brick": "#584c45",
+    "frame": "#b8643c",
+    "stone": "#e8e6dc"
+   },
+   "windowShape": {
+    "w": 0.85,
+    "h": 0.6,
+    "sill": 0.25
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    112
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "wallMaterial": "stucco",
+   "piers": true,
+   "palette": {
+    "brick": "#594643",
+    "frame": "#b8643c",
+    "stone": "#e8e6dc"
+   },
+   "windowShape": {
+    "w": 0.85,
+    "h": 0.6,
+    "sill": 0.25
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#e4e2d8",
+  "frame": "#b8643c",
+  "door": "#8a2a22",
+  "stone": "#e8e6dc"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Spinoza Lyceum (BAG pand 0363100012129398, built 1957, 113 3DBAG wall surfaces, roof max 18.3 m), Peter van Anrooystraat 8 (the OSM node; schools.json's earlier Spinozastraat 41 was a residential address). White concrete frame with orange timber window panels: walls[0] = the 74 m south-east wing (panels 68 and 80, surfaces 85 and 106, w01-156, 2024) with an entrance under a concrete canopy plate SPINOZA; walls[1] = the west wing (panel 85, surface 112, w02-252, 2016), 11 bays.",
+  "Simplified: awnings (temporary), stair flights, solid timber parapet boards; two-light windows on the south-east wing keep the triangle count under 12k (wide windows were 12.1k); the other wings and the rear walls had no panorama or are not photographed and stay blank.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #554943 not used (not darker than the wall #584c45 by 10 L*, or tinted): kit glass kept; walls[1] glass #545456 not used (not darker than the wall #594643 by 10 L*, or tinted): kit glass kept.",
+  "Kit gap (photo review 2026-10-14): the concrete frame with timber spandrel and window infill is not modelled as such; drawn as ribbon windows (frame colour from the hand palette)."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
+  ]
+ }
+}
