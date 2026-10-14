@@ -43701,10 +43701,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012120309",
       "name": "Van der Palmkade 191, Amsterdam-West: 2001 serpentine apartment block in dark brick with a cream first-floor band, round-arched loggias and terraced attic storeys facing the canal",
-      "hash": "7e56b230615a869a79c20cede3dc5716c01ec25414c2c3026595d36b2ccaca43",
-      "sha256": "7e56b230615a869a79c20cede3dc5716c01ec25414c2c3026595d36b2ccaca43",
-      "bytes": 529604,
-      "triangles": 6506,
+      "hash": "c7e47691a62faf36a293659001e3218c72636e3fcde75324fdfe62f4213e970e",
+      "sha256": "c7e47691a62faf36a293659001e3218c72636e3fcde75324fdfe62f4213e970e",
+      "bytes": 528344,
+      "triangles": 6488,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -44775,7 +44775,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120309",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:39:02.809Z"
+      "updatedAt": "2026-10-14T03:14:42.385Z"
     },
     {
       "id": "ordinary-0363100012137448",
