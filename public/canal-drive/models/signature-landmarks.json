@@ -51192,6 +51192,78 @@
       "triangles": 1968,
       "bytes": 19164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kinderbrug-jongen-konijnen": {
+      "id": "kinderbrug-jongen-konijnen",
+      "name": "Kinderbrug: Boy with rabbits (Hildo Krop)",
+      "landmarkId": "osm_artwork_4370459609",
+      "modelUrl": "./models/kinderbrug-jongen-konijnen.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88594,
+          52.34728
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 1.4,
+        "widthMetres": 1.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.88594,
+          52.34728
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM node 4370459609 (Hildo Krop 1931, bridge 420); group read from Wikimedia Commons photographs (Alf van Beem public domain; Marcelmulder68 CC BY-SA 3.0 nl); the facing 180 stands on panorama TMX7316010203-001170_pano_0000_000080 (back of the boy against the Amstel hotel buildings; the girl is assumed to match); pier height (2.3 m) and group size are estimates scaled off the girl head"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "stone": "#c9c3b2",
+        "brick": "#8f4c3b"
+      },
+      "attribution": {
+        "title": "Kinderbrug: Boy with rabbits (Hildo Krop) - original low-poly reconstruction",
+        "author": "Map Recall; after the group by Hildo Krop on bridge 420",
+        "sourceUrl": "https://www.openstreetmap.org/node/4370459609",
+        "modifications": "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE"
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.675000011920929,
+          4.7683716530855236e-08,
+          -0.574999988079071
+        ],
+        "max": [
+          0.675000011920929,
+          3.4600000381469727,
+          0.574999988079071
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88594,
+          52.34728
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 1.350000023841858,
+        "heightMetres": 3.459999990463256,
+        "depthMetres": 1.149999976158142,
+        "depthCoverage": 0.9583333134651184
+      },
+      "triangles": 1272,
+      "bytes": 13724,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
