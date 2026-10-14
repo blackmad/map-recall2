@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Desktop perf, third pass (2026-10-14, night)
+
+Lane `perf/desktop-3-20261014`, `docs/performance/desktop-20261014.md`
+"Third pass". Other lanes loaded the machine all night (load 3–19) and
+interleaved runs drifted 20–30 % even in untouched owners, so every fix
+has a runtime switch and `ride-perf-owners.mjs AB_ON=… AB_OFF=…` flips it
+every 500 ms inside one 12 s window; untouched owners agree within 0.05
+ms. Fixes, main-thread ms per frame on the desktop ride: (1) legacy
+landmarks in one scene with one render (`batchedLegacyFrame.ts`: a
+metre world about an anchor, re-based after 1.5 km, one light set aimed
+through the anchor, a custom sort keeping the per-model draw order;
+`?landmarkBatch=0` keeps the old path) 0.49 → 0.31 chase, 1.55 → 0.99
+aerial; (2) shared-frame x-ray drawn by the vehicle twins, so the overlay
+is one render, 4.09 → 2.58 for the sharedFrame owner; (3) city prism
+picks through a grid per chunk (`prismPick.ts`), 0.38 → 0.03 ms per pick;
+(4) MapLibre zoom hold under 1e-6 (the ~1e-8 per-frame jitter fired
+`zoom` and a full style re-evaluation on 180 of 180 frames, now 3) plus
+the highlight casing hidden until an accent target exists (it drew every
+outline on every tile at opacity 0), 3.16 → 2.75 chase; (5) legacy
+pyramidal roofs in one scene, 0.38 → 0.23. All five: default 4.15 →
+3.69, own ground 6.82 → 5.85, shared 6.64 → 5.34, aerial 7.40 → 6.13.
+Pixels (`scripts/perf-frozen-frames.mjs`, frozen camera, on/off/on): at
+the noise floor except the landmark batch, whose 85–245 of 1.3 M pixels
+differ by z-fight speckle from float32 rounding of a different matrix
+factorisation (not visible at 4× crop; batching cannot be bit-identical).
+MapLibre layer cost measured by hiding groups: 146 style layers cost
+0.6–1.0 ms CPU, no single layer worth removing; the remaining 2–3 ms is
+per-frame overhead (`hasTransitions` 0.3–0.4, tile culling and clip masks
+~0.6, custom-layer projection ~0.16 for 15 legacy custom layers).
+Per-layer GPU timer queries are unusable on this Mac (ANGLE on Metal).
+`DESKTOP_BUDGET` unchanged: no 2× headroom on the loaded machine.
+
+
 ## Dominant buildings, batch 6 (2026-10-14, night)
 
 Lane `large/dominant-6-20261014`, twelve layered recipes from the 3 km
