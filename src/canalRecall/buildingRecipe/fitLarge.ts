@@ -340,9 +340,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
   const otherLines = storeyLines(otherTop, true, undefined, civicM, year !== null && year < 1945 ? 1.15 : 1, otherTop);
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
-  // Measured groups (intent `measured`): their own wall and arch-ring slots also carry the measured colour into the look
-  // (with the wall, glass and split slots pushed above); deduplicated.
-  for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`].filter(sl => sl !== 'wall' && palette[sl] !== undefined)); }
+  // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the
+  // look (with the wall, glass and split slots pushed above); deduplicated.
+  for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
   const unlistedSurfaces = set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
   const spec: BlockSpec = {id: intent.id, pandId: intent.pandId, name: intent.address, palette, levels: {groundM: civicM, storeyM: civicM}, systems, default: 'other', roofSlot: 'roof', wallSlot: 'wall'};
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];

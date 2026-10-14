@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { MATERIAL_SLOTS, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
+import { MATERIAL_SLOTS, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
 import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
@@ -22,7 +22,7 @@ test('slot table: every material slot samples a layer; frame and paint read plai
   assert.equal(SLOT_LAYERS[slotLayerOf('paint')].cell, 'white');
   assert.equal(slotLayerOf('brick'), slotLayerOf('accent'), 'accent courses are brick');
   assert.equal(SLOT_LAYERS[slotLayerOf('glass')].clampUv, true);
-  assert.equal(SLOT_LAYERS.filter(l => l.clampUv).length, 1, 'only glass clamps');
+  assert.deepEqual(SLOT_LAYERS.filter(l => l.clampUv).map(l => l.cell), ['glass', 'glassTint'], 'only the glass panes clamp');
   // The brick cell is lifted to the bay cells' mean; lit, it shows its tint (look/palette.ts litWallGain).
   // Lit, the city look's level (CITY_LIT_LEVEL) brings the reference brick into docs/LOOK.md's band.
   assert.ok(Math.abs(SLOT_LAYERS[slotLayerOf('brick')].litGain * PHOTO_WALL_CELL_MEAN - 255 * CITY_LIT_LEVEL) < 1e-9);
@@ -32,9 +32,9 @@ test('slot table: every material slot samples a layer; frame and paint read plai
   assert.equal(params.length, SLOT_LAYER_COUNT);
   assert.ok(Math.abs(params[slotLayerOf('brick')][0] - 1 / 3.36) < 1e-12, 'brick repeats every 3.36 m');
   // Append-only ordering: the ordinal is written into slot meshes.
-  assert.deepEqual(SLOT_LAYERS.map(l => l.cell), ['brick', 'stucco', 'stone', 'white', 'door', 'glass', 'tile', 'slate', 'flat', 'brick20', 'whiteStucco']);
-  // 11 layers of 256² RGBA + RG with mipmaps: the cost of the slot table in the shared array.
-  assert.equal(slotLayerBytes(256), Math.round(11 * 65536 * 6 * 4 / 3));
+  assert.deepEqual(SLOT_LAYERS.map(l => l.cell), ['brick', 'stucco', 'stone', 'white', 'door', 'glass', 'tile', 'slate', 'flat', 'brick20', 'whiteStucco', 'glassTint']);
+  // 12 layers of 256² RGBA + RG with mipmaps: the cost of the slot table in the shared array.
+  assert.equal(slotLayerBytes(256), Math.round(12 * 65536 * 6 * 4 / 3));
 });
 
 test('slot tints are the city palette mapping (one rule for recipe houses and landmarks)', () => {
@@ -191,3 +191,41 @@ test('review corrections: light slate keeps its lightness, mid-grey joinery and 
   // Every other slot is the palette mapping.
   for (const slot of ['stucco', 'door', 'glass', 'roofTile', 'bitumen', 'paint'] as const) assert.equal(cityLookTint(slot, '#8a7656'), cityTint(slot, '#8a7656'), slot);
 });
+
+test('measured glass samples the grey pane with the authored tint; measured brick keeps the canal brick whatever the year', () => {
+  const glass = SLOT_LAYERS[slotLayerOf('glass', { source: 'measured' })];
+  assert.equal(glass.cell, 'glassTint');
+  // Same pane behaviour as the unmeasured glass: per-pane UVs clamped, sky tint when lit, no gain.
+  const plain = SLOT_LAYERS[slotLayerOf('glass')];
+  assert.equal(plain.cell, 'glass');
+  assert.deepEqual([glass.clampUv, glass.skyTint, glass.litGain, glass.tileM], [plain.clampUv, plain.skyTint, plain.litGain, plain.tileM]);
+  for (const hex of ['#1e262c', '#8e9ea4']) {
+    assert.equal(cityLookTint('glass', hex), '#ffffff', 'unmeasured glass: unchanged');
+    assert.equal(cityLookTint('glass', hex, 'measured'), cityMeasuredGlassTint(hex));
+  }
+  // The 20th-century brick is painted lighter (BRICK20_CELL_MEAN 238 vs 225): a measured tint divides by the canal
+  // brick's mean, so a measured wall samples that cell in every era; unmeasured brick keeps the era variant.
+  assert.equal(SLOT_LAYERS[slotLayerOf('brick', { year: 2004, source: 'measured' })].cell, 'brick');
+  assert.equal(SLOT_LAYERS[slotLayerOf('accent', { year: 1934, source: 'measured' })].cell, 'brick');
+  assert.equal(SLOT_LAYERS[slotLayerOf('brick', { year: 2004 })].cell, 'brick20');
+  // dress: the glass extra reaches the attributes (Houthavenkade 26's reflective glass, Waagdragerhof's dark glass).
+  const city = createCityLook(THREE, { brick: null });
+  const pane = (hex: string, source?: string) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 2), new THREE.MeshStandardMaterial({ color: hex }));
+    m.material.userData = { materialSlot: 'glass', tint: hex, ...(source ? { tintSource: source } : {}) };
+    return m;
+  };
+  const dark = pane('#1e262c', 'measured'), pale = pane('#8e9ea4', 'measured'), kit = pane('#8e9ea4');
+  for (const m of [dark, pale, kit]) city.dress(m, { lit: false, year: 2018 });
+  const tintOf = (m: any) => [0, 1, 2].map(i => Math.round(m.geometry.getAttribute('tint').getComponent(0, i) * 255));
+  assert.deepEqual(tintOf(dark), hexToRgb(cityMeasuredGlassTint('#1e262c')));
+  assert.deepEqual(tintOf(pale), hexToRgb(cityMeasuredGlassTint('#8e9ea4')));
+  assert.deepEqual(tintOf(kit), [255, 255, 255]);
+  assert.equal(SLOT_LAYERS[dark.userData.citySlot.layer].cell, 'glassTint');
+  assert.equal(SLOT_LAYERS[kit.userData.citySlot.layer].cell, 'glass');
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), new THREE.MeshStandardMaterial());
+  wall.material.userData = { materialSlot: 'brick', tint: '#4a302b', tintSource: 'measured' };
+  city.dress(wall, { lit: false, year: 2004 });
+  assert.equal(SLOT_LAYERS[wall.userData.citySlot.layer].cell, 'brick');
+});
+
