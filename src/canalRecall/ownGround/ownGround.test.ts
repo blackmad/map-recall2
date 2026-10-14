@@ -23,6 +23,8 @@ import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measured
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { fillPockets, POCKET_LIFT } from './pockets';
+import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
+import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
 import type { DeckProfile } from '../elevation/bridgeDeck';
 import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
@@ -989,6 +991,44 @@ test('water opens under a footbridge whose water polygon stops at it (Melkmeisje
   for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
   assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
   assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
+});
+
+test('a houseboat half over the generalised shore gets its berth opened: water under the hull, the wall behind it', () => {
+  // A canal y 0..10 along x with its north bank at y = 10; a 4 x 12 m boat at y 7..11 (1 m over the bank), one wholly in the water, one on land.
+  const geo = { polygons: [[[[0, 0], [40, 0], [40, 10], [0, 10]] as Vec2[]]], shores: [[[0, 10], [40, 10]]] as Vec2[][] };
+  const box = (x: number, y0: number, y1: number): Vec2[] => [[x, y0], [x + 12, y0], [x + 12, y1], [x, y1], [x, y0]];
+  const boats = [{ id: 'over', ring: box(2, 7, 11) }, { id: 'afloat', ring: box(20, 2, 6) }, { id: 'yard', ring: box(26, 14, 18) }];
+  const r = openUnderHouseboats(geo, boats, [0, -5, 40, 25], -1.77);
+  assert.deepEqual(r.opened, ['over']);
+  const berth = berthRect(boats[0].ring, MOORING_MARGIN_M)!;
+  assert.ok(Math.abs(berth.area - 48) < 1e-6, 'min-area rectangle of the hull');
+  const mask = buildWaterMask(r.geo, -2, -5, 42, 25, 0.25, 4);
+  for (const [x, y] of [[3, 10.8], [8, 10.5], [13.5, 10.9]] as Vec2[]) assert.ok(maskDistance(mask, x, y) < 0, `water under the hull at ${x},${y}`);
+  assert.ok(maskDistance(mask, 8, 12) > 0, 'land past the berth');
+  // The old wall no longer runs through the hull; a new one stands behind it (water on its left).
+  const crosses = (line: Vec2[]) => line.some((a, i) => i > 0 && (a[0] + line[i - 1][0]) / 2 > 2 && (a[0] + line[i - 1][0]) / 2 < 14 && Math.abs((a[1] + line[i - 1][1]) / 2 - 10) < 0.01);
+  assert.ok(!r.geo.shores.some(crosses), 'no wall through the boat');
+  const behind = r.geo.shores.filter(l => l.some(p => Math.abs(p[1] - 11.4) < 1e-6));
+  assert.equal(behind.length, 1, 'one wall around the berth on the land side');
+  const top = behind[0].filter(p => Math.abs(p[1] - 11.4) < 1e-6);
+  assert.ok(top[0][0] > top[top.length - 1][0], 'its back runs west (water on its left, to the south)');
+  assert.ok(behind[0].every(p => p[1] > 9.9), 'only where the berth is on land');
+});
+
+const haveBoats = existsSync('public/data/extracts/amsterdam/houseboats.json') && existsSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json');
+test('regression (houseboats, user 2026-10-14): no houseboat in the Frederik Hendrikbuurt / Westerkanaal / Spaarndammerbuurt cells lies under land', { skip: !haveBoats }, async () => {
+  const store = fsStore();
+  await store.init();
+  const boats = (JSON.parse(readFileSync('public/data/extracts/amsterdam/houseboats.json', 'utf8')).boats as { id: string; ring: [number, number][] }[]).map(b => ({ id: b.id, ring: b.ring.map(([lng, lat]) => storeToLocal(lng, lat)) }));
+  let total = 0;
+  const covered: unknown[] = [];
+  for (const key of HOUSEBOAT_LAND_CELLS) {
+    if (!store.covers(key)) continue;
+    const r = houseboatsOnLand(buildCell(await store.cellInput(key, 0)), boats);
+    total += r.boats; covered.push(...r.covered.map(c => ({ key, ...c })));
+  }
+  assert.ok(total > 300, `boats checked: ${total}`);
+  assert.deepEqual(covered, [], 'houseboat footprints under land');
 });
 
 test('park fill culling: a fill triangle inside one BGT surface goes; one over a hole or across two surfaces stays', () => {
