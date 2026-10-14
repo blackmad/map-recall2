@@ -1,0 +1,103 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "wg-plein-600-233657",
+ "pandId": "0363100012233657",
+ "address": "WG-plein 600 (former Wilhelmina Gasthuis pavilion), Amsterdam-West: 1931 dark-brown brick hospital wing, five storeys of grouped white windows on the WG-plein side and a two-storey canal front with glazed bay windows on the Kostverlorenvaart",
+ "sources": [
+  {
+   "id": "pano-2021-03-25-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002060_pano_0000_003787/",
+   "image": "staging/pand-reference-walls/0363100012233657/w02-157.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-03-10-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2017-03-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000199_pano_0002_000384/",
+   "image": "staging/pand-reference-walls/0363100012233657/w01-337.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    11,
+    89,
+    227,
+    228,
+    230,
+    405,
+    512,
+    66,
+    92,
+    97,
+    348,
+    466
+   ],
+   "street": "WG-plein",
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "cross",
+   "deepBars": true,
+   "cornice": true,
+   "palette": {
+    "brick": "#5a4034",
+    "frame": "#efece4",
+    "stone": "#c8c0b0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    19,
+    181,
+    182,
+    211,
+    212,
+    232,
+    234,
+    448,
+    453
+   ],
+   "street": "Kostverlorenvaart",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 18,
+   "ground": "system",
+   "blankStoreys": [
+    0
+   ],
+   "windows": "cross",
+   "deepBars": true,
+   "cornice": true,
+   "palette": {
+    "brick": "#5a4034",
+    "frame": "#efece4",
+    "stone": "#c8c0b0"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#5a4034",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "stone": "#c8c0b0"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "shellRepair": true,
+ "notes": [
+  "WG-plein 600 (BAG, built 1931) is a pavilion of the former Wilhelmina Gasthuis: a dark-brown brick wing of five storeys on the WG-plein side and two storeys over a basement on the Kostverlorenvaart, with later glazed rooftop boxes and bay windows. 539 wall surfaces. The LoD2.2 shell has 12.8 m of open edge (seven short step walls between the roof levels); shellRepair closes all of it with 7 strips.",
+  "walls[0] = panels 10, 189 and 60 (w02-157): the five-storey WG-plein fronts. 5 storeys x 9 bays of white cross windows (the photographed groups of three), with a cornice. The low end surfaces 60 and 447 (18.7 m tops) stay blank so that the eaves gate reads the main roof.",
+  "walls[1] = panel 18 (w01-337): the 89 m canal front. Two storeys of cross windows (18 bays) over a blank basement, with a cornice. Simplified: the projecting glazed bay windows and the rooftop glass boxes are the 3DBAG masses in the wall brick."
+ ]
+}

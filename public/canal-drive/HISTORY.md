@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## 3DBAG shell repair (2026-10-14, night)
+
+Lane `domain/shell-repair-20261014`. `shellRepair: true` on a large
+intent closes a LoD2.2 shell's open edges before fitting (the open-edge
+rule is the gate's own): caps on flat loops unless already half covered,
+wall strips under an open roof edge down to the next roof or the ground
+minus the walls already in that plane, strips up from an open wall top,
+seams across vertical slits ≤ 0.6 m, and wall-spike clamping only on
+triangles touching an open edge, so sound shells never move. Patches
+become wall surfaces numbered from 90000 that `walls.ts --repair` lists
+and groups can claim; with the flag on, only truly coplanar walls merge
+into a panel (`strictMergeClasses`), which alone fixed Westerdoksdijk 9
+and Buiksloterweg 5C. A `shell-repair` gate line reports open edge and
+IoU before and after. Seven of the eight open-edge pands repair; four are
+installed: Singel 457 (red-brick colonnade run, curved stone corner,
+KALVERPASSAGE block; its west gable stays blank because a wall standing
+above its roof fails the eaves gate), Hirschpassage 2 (arched portals and
+iron balconies per 4.3 m pilaster bay), WG-plein 600, Da Costakade 146.
+Gillis van Ledenberchstraat 34 is authored but not installed (1300 m² BAG
+overlap with pands 238383/243844 fails `check:osm-under-models`);
+Revaleiland 58 is still 0.2 m over the open-edge limit. `footprint:
+"bag"` rebuilds the shell from the BAG outline split by roof planes: IoU 1
+but 76–1250 m of open edge on real data, so it is not usable yet. The
+nine IoU pands are not drift (parking decks, courtyards, podium pands
+under neighbouring towers, buildings newer than the lidar, the
+Museumplein garage): the IoU gate is the wrong test for them and they
+stay dropped. New scripts `shell-survey.ts`, `shell-debug.ts`,
+`shell-footprint.ts`; twelve synthetic-shell unit tests. Houses without
+either flag are byte-identical.
+
+
 ## Stale-install check made exact (2026-10-14, night)
 
 `install-large.ts` now records `meshHash` (the golden's compiled-mesh hash,

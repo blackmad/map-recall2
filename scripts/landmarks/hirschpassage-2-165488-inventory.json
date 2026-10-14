@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "id": "hirschpassage-2-165488",
+ "pand": "0363100012165488",
+ "signature": [
+  "ground-arcade",
+  "pilaster-bays",
+  "iron-balconies",
+  "corner-dome"
+ ],
+ "walls": [
+  {
+   "tag": "w16-322",
+   "bearing": 322,
+   "lengthM": 4.3,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01982",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "note": "one of ten 4.3 m pilaster-bay facets of the Leidseplein front; the photo shows the whole front",
+   "items": [
+    {
+     "id": "ground-arcade",
+     "kind": "window-shape",
+     "where": "round-arched shop arcade, one arch per pilaster bay, rusticated stone",
+     "approxSizeM": [43, 6],
+     "plan": "simplified",
+     "how": "walls[0..2] ground portals with round arches and a voussoir band, one per bay facet",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "pilaster-bays",
+     "kind": "colonnade",
+     "where": "giant Corinthian pilasters framing bays of three windows over three storeys",
+     "approxSizeM": [43, 14],
+     "plan": "simplified",
+     "how": "the 3DBAG pilaster facets give the depth; one wide window per bay per storey; capitals not drawn",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "iron-balconies",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron balconies across each bay on the upper storeys, a stone balustrade over the arcade",
+     "approxSizeM": [4, 1],
+     "plan": "simplified",
+     "how": "walls[0..2] bar-rail balconies on storeys 1-3",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "cornice-attic",
+     "kind": "other",
+     "where": "heavy modillion cornice and balustraded attic along the top",
+     "approxSizeM": [43, 2],
+     "plan": "simplified",
+     "how": "group cornices and a blank frieze storey; the attic balustrade is the 3DBAG roof edge",
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    },
+    {
+     "id": "wc-kiosk",
+     "kind": "other",
+     "where": "public toilet kiosk on the pavement in front of the arcade",
+     "approxSizeM": [3, 3],
+     "plan": "skipped",
+     "skip": {"reason": "temporary", "note": "street furniture, not part of the building"},
+     "seenIn": "recording_2025-07-14_05-25-22_01982"
+    }
+   ]
+  },
+  {
+   "tag": "w02-52",
+   "bearing": 52,
+   "lengthM": 12.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_005656",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-dome",
+     "kind": "dome",
+     "where": "copper dome with lantern over the Leidseplein / Leidsestraat corner",
+     "approxSizeM": [8, 6],
+     "plan": "simplified",
+     "how": "the 3DBAG roof mass over the corner tower, copper roof material",
+     "seenIn": "TMX7316010203-001675_pano_0000_005656"
+    },
+    {
+     "id": "curved-corner-front",
+     "kind": "window-shape",
+     "where": "the front curving round the corner under the dome",
+     "approxSizeM": [15, 22],
+     "plan": "simplified",
+     "how": "walls[1] draws the bays up to the curve; the 3DBAG corner facets are plain stone",
+     "seenIn": "TMX7316010203-001675_pano_0000_005656"
+    }
+   ]
+  },
+  {
+   "tag": "w19-142",
+   "bearing": 142,
+   "lengthM": 4.3,
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00214",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "note": "south-east bays: the same arcade, pilaster and balcony system as the Leidseplein front",
+   "items": []
+  },
+  {
+   "tag": "w01-233",
+   "bearing": 233,
+   "lengthM": 18.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000714_pano_0001_004373",
+   "capturedAt": "2018-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-house-portal",
+     "kind": "window-shape",
+     "where": "brick house on the Hirschpassage side with a carved stone porch and stoop",
+     "approxSizeM": [3, 5],
+     "plan": "skipped",
+     "skip": {"reason": "not-visible", "note": "in the narrow Hirschpassage behind the block, out of sight from the driving corridor; wall left blank"},
+     "seenIn": "TMX7316010203-000714_pano_0001_004373"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"}
+ ]
+}

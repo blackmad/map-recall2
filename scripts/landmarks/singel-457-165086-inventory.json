@@ -1,0 +1,170 @@
+{
+ "schemaVersion": 1,
+ "id": "singel-457-165086",
+ "pand": "0363100012165086",
+ "signature": [
+  "red-brick-singel-range",
+  "passage-portal",
+  "kalverpassage-sign",
+  "curved-stone-corner"
+ ],
+ "walls": [
+  {
+   "tag": "w01-192",
+   "bearing": 192,
+   "lengthM": 33.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000214",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "red-brick-singel-range",
+     "kind": "window-shape",
+     "where": "red-brick Singel range: four rows of white-framed cross windows under brick segmental arches with white stone bands",
+     "approxSizeM": [34, 15],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 10 bays, cross windows, segmental brick arches, string courses; top storey blank where 3DBAG's solid colonnade stands",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214"
+    },
+    {
+     "id": "passage-portal",
+     "kind": "window-shape",
+     "where": "arched passage entrance (KO) in the middle of the range with a stone surround",
+     "approxSizeM": [4, 4.5],
+     "plan": "simplified",
+     "how": "walls[0] entrance portal in bay 5",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214"
+    },
+    {
+     "id": "east-stepped-gable",
+     "kind": "other",
+     "where": "stepped east gable with arched window, volutes and finials",
+     "approxSizeM": [9, 7],
+     "plan": "simplified",
+     "how": "the 3DBAG gable mass with walls[0]'s storey lines carried up (one window); volutes and finials left to the roof mass",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214"
+    },
+    {
+     "id": "amsterdam-arms",
+     "kind": "crest",
+     "where": "gilded Amsterdam arms over the west stone door",
+     "approxSizeM": [1.2, 1.2],
+     "plan": "skipped",
+     "skip": {"reason": "too-small", "note": "a 1.2 m crest over a door; reads as a dot at driving distance"},
+     "seenIn": "TMX7316010203-000354_pano_0001_000214"
+    },
+    {
+     "id": "rooftop-colonnade",
+     "kind": "colonnade",
+     "where": "pergola colonnade along the roof terrace over the brick range, glass pavilion roofs behind",
+     "approxSizeM": [24, 3],
+     "plan": "simplified",
+     "how": "3DBAG carries it as a solid wall band to 17.4 m; drawn as the blank top storey of walls[0]",
+     "seenIn": "TMX7316010203-000354_pano_0001_000214"
+    }
+   ]
+  },
+  {
+   "tag": "w02-46",
+   "bearing": 46,
+   "lengthM": 26.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_000568",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "kalverpassage-sign",
+     "kind": "lettering",
+     "where": "vertical KALVERPASSAGE sign on the grey-brick entrance block",
+     "approxSizeM": [1, 7],
+     "plan": "simplified",
+     "how": "walls[3] signage KALVERPASSAGE on the wall above the passage (horizontal)",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568"
+    },
+    {
+     "id": "passage-arcade",
+     "kind": "canopy",
+     "where": "two-storey glazed passage entrance with round piers and a lattice ceiling",
+     "approxSizeM": [20, 6],
+     "plan": "simplified",
+     "how": "walls[3] glazed ground and a blank band over it; piers and lattice ceiling not drawn",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568"
+    },
+    {
+     "id": "kalverstraat-balcony-run",
+     "kind": "balcony-ironwork",
+     "where": "glass-railed balcony run across the upper storeys",
+     "approxSizeM": [20, 1],
+     "plan": "simplified",
+     "how": "walls[3] glass balconies on storey 3",
+     "seenIn": "TMX7316010203-002037_pano_0000_000568"
+    }
+   ]
+  },
+  {
+   "tag": "w03-190",
+   "bearing": 190,
+   "lengthM": 19.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000217",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-stone-corner",
+     "kind": "balcony-ironwork",
+     "where": "curved pale stone corner block with shop windows and glass-railed balconies on the upper storeys",
+     "approxSizeM": [19, 18],
+     "plan": "simplified",
+     "how": "walls[2] stone wall material, plinth shopfronts, glass balconies on storeys 3-4, one bay rhythm round the curve",
+     "seenIn": "TMX7316010203-000354_pano_0001_000217"
+    },
+    {
+     "id": "shop-fascias",
+     "kind": "sign",
+     "where": "tenant fascias over the shop windows",
+     "approxSizeM": [10, 0.5],
+     "plan": "skipped",
+     "skip": {"reason": "temporary", "note": "tenant signage"},
+     "seenIn": "TMX7316010203-000354_pano_0001_000217"
+    }
+   ]
+  },
+  {
+   "tag": "w04-192",
+   "bearing": 192,
+   "lengthM": 15,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000212",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-stepped-gable",
+     "kind": "other",
+     "where": "west stepped gable over the KALVER entrance, arched window and finials",
+     "approxSizeM": [8, 7],
+     "plan": "simplified",
+     "how": "the 3DBAG gable mass in the wall brick, blank; walls[1] draws the colonnade run beside it",
+     "seenIn": "TMX7316010203-000354_pano_0001_000212"
+    }
+   ]
+  },
+  {
+   "tag": "w05-45",
+   "bearing": 45,
+   "lengthM": 10.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000719",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "note": "dark glass corner on Kalverstraat: a shopfront and a curved glass bay; blank in this recipe",
+   "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"}
+ ]
+}
