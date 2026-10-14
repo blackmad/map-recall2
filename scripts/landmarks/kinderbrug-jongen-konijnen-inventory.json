@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "kinderbrug-jongen-konijnen",
+ "signature": [
+  "kb-boy",
+  "kb-pier"
+ ],
+ "walls": [
+  {
+   "tag": "s-180",
+   "bearing": 180,
+   "lengthM": 1.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001170_pano_0000_000080",
+   "capturedAt": "2019-05-08",
+   "note": "South-end pier; the Commons photos show the girl group from the front and the boy from behind and the side.",
+   "items": [
+    {
+     "id": "kb-boy",
+     "kind": "sculpture",
+     "where": "granite bald boy between two huge curled shell-wings, rabbits beside him",
+     "approxSizeM": [
+      1.2,
+      1.1
+     ],
+     "plan": "simplified",
+     "how": "builder: torso, shoulders, head, arms, two wing ellipsoids, four rabbits",
+     "seenIn": "commons:Jongen_met_konijnen_beeld_op_de_Kinder_tjes_brug_brug_420_Muzenplein_over_Boerenwetering_in_Amsterdam-Zuid.JPG"
+    },
+    {
+     "id": "kb-pier",
+     "kind": "other",
+     "where": "brick pier with a granite cap and slab carrying the group",
+     "approxSizeM": [
+      1.35,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "builder: brick box, cap slab and group slab",
+     "seenIn": "commons:Brug_420_Kinderbrug_pic_7.JPG"
+    }
+   ],
+   "centre": [
+    4.88594,
+    52.34728
+   ],
+   "checked": true
+  },
+  {
+   "tag": "n-000",
+   "bearing": 0,
+   "lengthM": 1.4,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back of the pier: plain brick.",
+   "items": [],
+   "centre": [
+    4.88594,
+    52.34728
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Brug 420 Kinderbrug pic 7",
+   "url": "https://commons.wikimedia.org/wiki/File:Brug_420_Kinderbrug_pic_7.JPG",
+   "licence": "Public domain (Alf van Beem)"
+  },
+  {
+   "name": "Wikimedia Commons: Brug over Boerenwetering (Beeld van Jongen met konijnen)",
+   "url": "https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_(Beeld_van_Jongen_met_konijnen).JPG",
+   "licence": "CC BY-SA 3.0 nl (Marcelmulder68)"
+  },
+  {
+   "name": "OpenStreetMap node 4370459609",
+   "url": "https://www.openstreetmap.org/node/4370459609",
+   "licence": "ODbL"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
