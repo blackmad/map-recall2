@@ -1,0 +1,138 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:37:45.338Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012089984",
+   "addresses": [
+    "Kinkerstraat 363",
+    "Kinkerstraat 365A",
+    "Kinkerstraat 365B",
+    "Kinkerstraat 365C",
+    "Kinkerstraat 365D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 363",
+     "use": "winkelfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000706367"
+    },
+    {
+     "address": "Kinkerstraat 365A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000706373"
+    },
+    {
+     "address": "Kinkerstraat 365B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000706374"
+    },
+    {
+     "address": "Kinkerstraat 365C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000706375"
+    },
+    {
+     "address": "Kinkerstraat 365D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001036236"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089983",
+   "addresses": [
+    "Kinkerstraat 367"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 367-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000706381"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237269",
+   "addresses": [
+    "Kinkerstraat 369"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 369-H",
+     "use": "winkelfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000706390"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006434566,
+     "lngLat": [
+      4.8604852,
+      52.3643321
+     ],
+     "tags": {
+      "amenity": "bar",
+      "check_date": "2026-10-11",
+      "name": "Flamingo's"
+     },
+     "fetchedAt": "2026-10-14T09:37:45.338Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012101517",
+   "addresses": [
+    "Kinkerstraat 371"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 371",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000706399"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4909653622,
+     "lngLat": [
+      4.8603402,
+      52.3643815
+     ],
+     "tags": {
+      "amenity": "internet_cafe",
+      "check_date": "2025-03-01",
+      "name": "Citynet",
+      "name:nl": "Citynet",
+      "payment:cash": "yes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:37:45.338Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

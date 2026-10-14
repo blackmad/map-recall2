@@ -1,0 +1,1225 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:46:46.291Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159927",
+   "addresses": [
+    "Kinkerstraat 326",
+    "Kinkerstraat 328",
+    "Kinkerstraat 330",
+    "Kinkerstraat 332"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000685993"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 57-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000686001"
+    },
+    {
+     "address": "Kinkerstraat 332-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012073621"
+    },
+    {
+     "address": "Kinkerstraat 328-H",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010012073622"
+    }
+   ],
+   "units": 25,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1215448494,
+     "lngLat": [
+      4.8627749,
+      52.3649397
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "330-332",
+      "addr:postcode": "1053GD",
+      "addr:street": "Kinkerstraat",
+      "amenity": "cafe",
+      "brand": "Coffee Company",
+      "brand:wikidata": "Q108927063",
+      "cost:coffee": "EUR3",
+      "cuisine": "coffee_shop",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Coffee Company",
+      "opening_hours": "09:00-19:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 235 1130",
+      "smoking": "no",
+      "takeaway": "yes",
+      "website": "https://coffeecompany.nl/locations/kinkerstraat-330-332",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4688265763,
+     "lngLat": [
+      4.8628809,
+      52.364963
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "326-328",
+      "addr:street": "Kinkerstraat",
+      "beauty": "tanning",
+      "check_date": "2025-01-17",
+      "name": "Sunday's Amsterdam Kinkerstraat",
+      "opening_hours": "Mo-Fr 08:00-22:00; Sa-Su 08:00-21:00",
+      "phone": "+31 20 616 2341",
+      "shop": "beauty",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5453933922,
+     "lngLat": [
+      4.8629824,
+      52.3649875
+     ],
+     "tags": {
+      "check_date": "2025-01-17",
+      "name": "Gekaapt",
+      "opening_hours": "Tu-Fr 11:00-18:00; Mo 12:00-18:00; Su 12:00-17:00",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236616",
+   "addresses": [
+    "Kinkerstraat 322",
+    "Kinkerstraat 324"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 322-H",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000706222"
+    },
+    {
+     "address": "Kinkerstraat 324-H",
+     "use": "industriefunctie",
+     "areaM2": 256,
+     "bagId": "0363010012079292"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153405",
+   "addresses": [
+    "Kinkerstraat 320"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 320-H",
+     "use": "winkelfunctie",
+     "areaM2": 285,
+     "bagId": "0363010000706214"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4737294034,
+     "lngLat": [
+      4.863142,
+      52.3650282
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "316-318",
+      "addr:postcode": "1053GD",
+      "addr:street": "Kinkerstraat",
+      "check_date:opening_hours": "2023-04-20",
+      "email": "info@robel.nl",
+      "full_name": "Conceptstore Gekaapt",
+      "name": "Gekaapt",
+      "note": "formerly here: Men project men, Robel shoes.",
+      "shop": "clothes",
+      "website": "https://www.gekaapt.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236512",
+   "addresses": [
+    "Kinkerstraat 316",
+    "Kinkerstraat 318"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 316-H",
+     "use": "winkelfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000706205"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006380629,
+     "lngLat": [
+      4.8632047,
+      52.3650483
+     ],
+     "tags": {
+      "check_date": "2026-10-11",
+      "name": "The Spa",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157584",
+   "addresses": [
+    "Kinkerstraat 314"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 314-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000706200"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5453933923,
+     "lngLat": [
+      4.863305,
+      52.3650682
+     ],
+     "tags": {
+      "check_date:opening_hours": "2025-01-27",
+      "name": "Project 86 Men",
+      "opening_hours:signed": "no",
+      "shop": "clothes",
+      "website": "https://www.p86men.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235902",
+   "addresses": [
+    "Kinkerstraat 312"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 312-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000706196"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4688265764,
+     "lngLat": [
+      4.8633792,
+      52.3650739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "312",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "changing_table": "no",
+      "check_date": "2026-10-11",
+      "cuisine": "turkish",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Dönerland Eethuis",
+      "opening_hours": "Mo-Th 11:00-01:00, Sa 11:00-03:00, Su 12:00-01:00",
+      "outdoor_seating": "no",
+      "payment:cash": "yes",
+      "takeaway": "yes",
+      "toilets": "yes",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236531",
+   "addresses": [
+    "Kinkerstraat 308",
+    "Kinkerstraat 310"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 308-H",
+     "use": "winkelfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000706183"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006361820,
+     "lngLat": [
+      4.863451,
+      52.3651022
+     ],
+     "tags": {
+      "amenity": "money_transfer",
+      "name": "Moneytrans",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236250",
+   "addresses": [
+    "Kinkerstraat 306"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 306-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000706176"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809223563,
+     "lngLat": [
+      4.863536,
+      52.3651285
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "306",
+      "addr:postcode": "1053GC",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "Hazel Notenen & zuidvruchten",
+      "opening_hours": "Mo 11:00-18:30; Tu-Sa 10:00-18:30",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.hazelnoten.net/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236258",
+   "addresses": [
+    "Kinkerstraat 304"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 304-H",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000706169"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4294260145,
+     "lngLat": [
+      4.8635849,
+      52.3651504
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "304",
+      "addr:postcode": "1053GC",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "Nicole",
+      "note": "Kledingreparatie & stomerij",
+      "opening_hours": "Mo-We,Fr 08:00-19:00; Th 08:00-21:00; Sa 08:00-18:00",
+      "shop": "dry_cleaning",
+      "website": "https://nicolestomerij.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235916",
+   "addresses": [
+    "Kinkerstraat 298",
+    "Kinkerstraat 300",
+    "Kinkerstraat 302"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 298-H",
+     "use": "winkelfunctie",
+     "areaM2": 224,
+     "bagId": "0363010000706150"
+    },
+    {
+     "address": "Kinkerstraat 300-1",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012143190"
+    },
+    {
+     "address": "Kinkerstraat 300-2",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012143191"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4737294033,
+     "lngLat": [
+      4.8637192,
+      52.3651744
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "298-302",
+      "addr:postcode": "1053GC",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "Hong Kong Superstore",
+      "opening_hours": "Mo 12:00-18:00; Tu,We,Fr 10:00-18:00; Th 10:00-19:00; Sa 10:00-17:00",
+      "origin": "asian",
+      "phone": "+31 20 334 3341",
+      "shop": "variety_store",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235880",
+   "addresses": [
+    "Kinkerstraat 296"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 296-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000706137"
+    },
+    {
+     "address": "Kinkerstraat 296-4V",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001963630"
+    },
+    {
+     "address": "Kinkerstraat 296-4A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001963744"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809220866,
+     "lngLat": [
+      4.8638175,
+      52.3651929
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "296-H",
+      "addr:postcode": "1053GC",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2024-03-09",
+      "name": "U Break I Fix Amsterdam",
+      "panoramax": "d49e101c-5e73-46c3-be53-d0bf20465399",
+      "repair": "yes",
+      "shop": "mobile_phone",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ubreakifix.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156795",
+   "addresses": [
+    "Kinkerstraat 294"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 294-H",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000706133"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4876549923,
+     "lngLat": [
+      4.8638886,
+      52.3652012
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "294",
+      "addr:postcode": "1053GC",
+      "addr:street": "Kinkerstraat",
+      "name": "Ab-art",
+      "name:nl": "Ab-art",
+      "opening_hours": "Mo 12:00-18:00; Tu,We,Fr,Sa 10:00-18:00; Th 10:00-21:00",
+      "phone": "+31 6 19690556",
+      "shop": "hairdresser",
+      "website": "http://www.hairstudioabart.nl/"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012061473",
+   "addresses": [
+    "Kinkerstraat 288",
+    "Kinkerstraat 290A",
+    "Kinkerstraat 290B",
+    "Kinkerstraat 290C",
+    "Kinkerstraat 290D",
+    "Kinkerstraat 292A",
+    "Kinkerstraat 292B",
+    "Kinkerstraat 292C",
+    "Kinkerstraat 292D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 288",
+     "use": "winkelfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000706122"
+    },
+    {
+     "address": "Kinkerstraat 290A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000706125"
+    },
+    {
+     "address": "Kinkerstraat 290B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000706126"
+    },
+    {
+     "address": "Kinkerstraat 290C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000706127"
+    },
+    {
+     "address": "Kinkerstraat 290D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000706128"
+    },
+    {
+     "address": "Kinkerstraat 292A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000706129"
+    },
+    {
+     "address": "Kinkerstraat 292B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000706130"
+    },
+    {
+     "address": "Kinkerstraat 292C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000706131"
+    },
+    {
+     "address": "Kinkerstraat 292D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000706132"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809219299,
+     "lngLat": [
+      4.8640464,
+      52.365265
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "288",
+      "addr:postcode": "1053GB",
+      "addr:street": "Kinkerstraat",
+      "name": "Cycle",
+      "service:bicycle:pump": "no",
+      "service:bicycle:repair": "no",
+      "shop": "bicycle",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236631",
+   "addresses": [
+    "Kinkerstraat 284",
+    "Kinkerstraat 284F",
+    "Kinkerstraat 284E",
+    "Kinkerstraat 284D",
+    "Kinkerstraat 284C",
+    "Kinkerstraat 284B",
+    "Kinkerstraat 284A",
+    "Kinkerstraat 286"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 284-H",
+     "use": "winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000706110"
+    },
+    {
+     "address": "Kinkerstraat 284F",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012601622"
+    },
+    {
+     "address": "Kinkerstraat 284E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012601621"
+    },
+    {
+     "address": "Kinkerstraat 284D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012601620"
+    },
+    {
+     "address": "Kinkerstraat 284C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012601619"
+    },
+    {
+     "address": "Kinkerstraat 284B",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012601618"
+    },
+    {
+     "address": "Kinkerstraat 284A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012601617"
+    },
+    {
+     "address": "Kinkerstraat 286",
+     "use": "winkelfunctie",
+     "areaM2": 182,
+     "bagId": "0363010012601616"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4876504722,
+     "lngLat": [
+      4.8641293,
+      52.3652638
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "284-286",
+      "addr:postcode": "1053GB",
+      "addr:street": "Kinkerstraat",
+      "email": "info@nusselein.nl",
+      "name": "Nusselein",
+      "name:nl": "Nusselein",
+      "opening_hours": "Tu-Fr 09:30-17:30; Sa 09:30-17:00",
+      "operator": "Nusselein",
+      "phone": "+31 20 618 3070",
+      "shop": "jewelry",
+      "website": "https://www.nusselein.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167053",
+   "addresses": [
+    "Kinkerstraat 282"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 282-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000706105"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4876504721,
+     "lngLat": [
+      4.8642245,
+      52.36529
+     ],
+     "tags": {
+      "check_date": "2026-10-11",
+      "name": "De Indian Mart",
+      "origin": "indian",
+      "shop": "convenience",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236233",
+   "addresses": [
+    "Kinkerstraat 280"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 280-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000706099"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006380628,
+     "lngLat": [
+      4.86427,
+      52.3653008
+     ],
+     "tags": {
+      "name": "Mydollishhair",
+      "shop": "beauty",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154164",
+   "addresses": [
+    "Kinkerstraat 278"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157025",
+   "addresses": [
+    "Kinkerstraat 274",
+    "Kinkerstraat 274A",
+    "Kinkerstraat 274B",
+    "Kinkerstraat 274C",
+    "Kinkerstraat 276A",
+    "Kinkerstraat 276B",
+    "Kinkerstraat 276C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 274",
+     "use": "winkelfunctie",
+     "areaM2": 310,
+     "bagId": "0363010001019127"
+    },
+    {
+     "address": "Kinkerstraat 274A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001019128"
+    },
+    {
+     "address": "Kinkerstraat 274B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001019129"
+    },
+    {
+     "address": "Kinkerstraat 274C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001019130"
+    },
+    {
+     "address": "Kinkerstraat 276A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001019131"
+    },
+    {
+     "address": "Kinkerstraat 276B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001019132"
+    },
+    {
+     "address": "Kinkerstraat 276C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001019133"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809218196,
+     "lngLat": [
+      4.8644393,
+      52.365335
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "274",
+      "addr:postcode": "1053GB",
+      "addr:street": "Kinkerstraat",
+      "brand": "Praxis City",
+      "brand:wikidata": "Q124871026",
+      "check_date": "2025-08-17",
+      "name": "Praxis City",
+      "opening_hours": "Mo-Sa 09:00-18:00; Su 12:00-17:00",
+      "operator": "Praxis",
+      "operator:wikidata": "Q2741995",
+      "phone": "+31 20 219 1506",
+      "shop": "doityourself",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.praxis.nl/storedetail/2350/amsterdam-praxis-city",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160192",
+   "addresses": [
+    "Kinkerstraat 272"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159323",
+   "addresses": [
+    "Kinkerstraat 270"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 270-H",
+     "use": "winkelfunctie",
+     "areaM2": 266,
+     "bagId": "0363010000706079"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006348523,
+     "lngLat": [
+      4.8645541,
+      52.3653683
+     ],
+     "tags": {
+      "name": "Gustil",
+      "opening_hours": "Mo-We,Fr 10:00-18:00; Th 10:00-20:00",
+      "shop": "beauty",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153531",
+   "addresses": [
+    "Kinkerstraat 268"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156893",
+   "addresses": [
+    "Kinkerstraat 266"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236219",
+   "addresses": [
+    "Kinkerstraat 264"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 264-H",
+     "use": "winkelfunctie",
+     "areaM2": 340,
+     "bagId": "0363010000706069"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237017",
+   "addresses": [
+    "Kinkerstraat 260A",
+    "Kinkerstraat 260B",
+    "Kinkerstraat 260C",
+    "Kinkerstraat 260D",
+    "Kinkerstraat 260E",
+    "Kinkerstraat 260F",
+    "Kinkerstraat 262"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 260A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001002889"
+    },
+    {
+     "address": "Kinkerstraat 260B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001002890"
+    },
+    {
+     "address": "Kinkerstraat 260C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001002891"
+    },
+    {
+     "address": "Kinkerstraat 260D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001002892"
+    },
+    {
+     "address": "Kinkerstraat 260E",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001002893"
+    },
+    {
+     "address": "Kinkerstraat 260F",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001002894"
+    },
+    {
+     "address": "Kinkerstraat 262",
+     "use": "winkelfunctie",
+     "areaM2": 239,
+     "bagId": "0363010001002896"
+    },
+    {
+     "address": "Kinkerstraat 262",
+     "use": "winkelfunctie",
+     "areaM2": 624,
+     "bagId": "0363010012079653"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156816",
+   "addresses": [
+    "Kinkerstraat 252",
+    "Kinkerstraat 254",
+    "Kinkerstraat 256",
+    "Kinkerstraat 258"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 252-H",
+     "use": "winkelfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000706033"
+    },
+    {
+     "address": "Kinkerstraat 256-H",
+     "use": "winkelfunctie",
+     "areaM2": 217,
+     "bagId": "0363010000706051"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 501807343,
+     "lngLat": [
+      4.8648548,
+      52.3654375
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "241",
+      "addr:postcode": "1053EP",
+      "addr:street": "Kinkerstraat",
+      "brand": "Zeeman",
+      "brand:website": "https://www.zeeman.com",
+      "brand:wikidata": "Q184399",
+      "brand:wikipedia": "nl:Zeeman (winkel)",
+      "check_date": "2025-01-17",
+      "check_date:opening_hours": "2023-07-01",
+      "name": "Zeeman",
+      "opening_hours": "Mo 12:00-18:00; Tu,We,Fr 09:30-18:00; Th 09:30-20:00; Sa 09:30-17:00",
+      "phone": "+31 88 007 0238",
+      "shop": "clothes",
+      "website": "https://www.zeeman.com/nl/store/amsterdam-kinkerstr--kinkerstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233496",
+   "addresses": [
+    "Kinkerstraat 244",
+    "Kinkerstraat 246A",
+    "Kinkerstraat 246B",
+    "Kinkerstraat 246C",
+    "Kinkerstraat 246D",
+    "Kinkerstraat 248C",
+    "Kinkerstraat 248D",
+    "Kinkerstraat 248B",
+    "Kinkerstraat 248A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 244",
+     "use": "winkelfunctie",
+     "areaM2": 388,
+     "bagId": "0363010000706013"
+    },
+    {
+     "address": "Kinkerstraat 246A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000706015"
+    },
+    {
+     "address": "Kinkerstraat 246B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000706016"
+    },
+    {
+     "address": "Kinkerstraat 246C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000706017"
+    },
+    {
+     "address": "Kinkerstraat 246D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010003701288"
+    },
+    {
+     "address": "Kinkerstraat 248C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000706030"
+    },
+    {
+     "address": "Kinkerstraat 248D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000706031"
+    },
+    {
+     "address": "Kinkerstraat 248B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000706029"
+    },
+    {
+     "address": "Kinkerstraat 248A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000706028"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809216531,
+     "lngLat": [
+      4.8653055,
+      52.3655671
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "244",
+      "addr:postcode": "1053GA",
+      "addr:street": "Kinkerstraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-We,Fr 09:00-19:00; Th 09:00-21:00; Sa 09:00-18:00; Su 12:00-17:00; PH off",
+      "operator": "AS Watson health & Beauty Benelux",
+      "ref": "3239",
+      "shop": "chemist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-3239",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:46:46.291Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,588 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:30:24.147Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012092013",
+   "addresses": [
+    "Kinkerstraat 89",
+    "Kinkerstraat 93",
+    "Kinkerstraat 95",
+    "Kinkerstraat 97",
+    "Kinkerstraat 99",
+    "Kinkerstraat 101",
+    "Kinkerstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 542",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000585697"
+    },
+    {
+     "address": "Bilderdijkkade 544",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000585703"
+    },
+    {
+     "address": "Bilderdijkkade 546",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000585704"
+    },
+    {
+     "address": "Bilderdijkkade 548",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000585705"
+    },
+    {
+     "address": "Bilderdijkkade 550",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000585706"
+    },
+    {
+     "address": "Bilderdijkkade 552",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000585707"
+    },
+    {
+     "address": "Bilderdijkkade 554",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000585708"
+    },
+    {
+     "address": "Bilderdijkkade 558",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000585709"
+    },
+    {
+     "address": "Bilderdijkkade 560",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000585710"
+    },
+    {
+     "address": "Bilderdijkkade 562",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000585711"
+    },
+    {
+     "address": "Bilderdijkkade 564",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000585712"
+    },
+    {
+     "address": "Bilderdijkkade 566",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000585713"
+    },
+    {
+     "address": "Bilderdijkkade 568",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000585714"
+    },
+    {
+     "address": "Bilderdijkkade 570",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000585715"
+    },
+    {
+     "address": "Bilderdijkkade 572",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000585716"
+    },
+    {
+     "address": "Bilderdijkkade 574",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000585717"
+    },
+    {
+     "address": "Kinkerstraat 93",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000705577"
+    },
+    {
+     "address": "Kinkerstraat 95",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000705581"
+    },
+    {
+     "address": "Kinkerstraat 97",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000705586"
+    },
+    {
+     "address": "Kinkerstraat 99",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000705592"
+    },
+    {
+     "address": "Kinkerstraat 101",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000705597"
+    },
+    {
+     "address": "Kinkerstraat 105",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000705606"
+    },
+    {
+     "address": "Tollensstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000828805"
+    },
+    {
+     "address": "Tollensstraat 103",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828806"
+    },
+    {
+     "address": "Tollensstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828807"
+    },
+    {
+     "address": "Tollensstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828808"
+    },
+    {
+     "address": "Tollensstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828809"
+    },
+    {
+     "address": "Tollensstraat 111",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000828810"
+    },
+    {
+     "address": "Tollensstraat 113",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000828812"
+    },
+    {
+     "address": "Tollensstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828814"
+    },
+    {
+     "address": "Tollensstraat 117",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828816"
+    },
+    {
+     "address": "Tollensstraat 119",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000828818"
+    },
+    {
+     "address": "Tollensstraat 121",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000828820"
+    },
+    {
+     "address": "Tollensstraat 123",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000828822"
+    },
+    {
+     "address": "Tollensstraat 125",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828824"
+    },
+    {
+     "address": "Tollensstraat 127",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828826"
+    },
+    {
+     "address": "Tollensstraat 129",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000828828"
+    },
+    {
+     "address": "Tollensstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828830"
+    },
+    {
+     "address": "Tollensstraat 133",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000828832"
+    },
+    {
+     "address": "Tollensstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000828834"
+    },
+    {
+     "address": "Tollensstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000828836"
+    },
+    {
+     "address": "Tollensstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828838"
+    },
+    {
+     "address": "Tollensstraat 141",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000828840"
+    },
+    {
+     "address": "Tollensstraat 143",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828842"
+    },
+    {
+     "address": "Tollensstraat 145",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828844"
+    },
+    {
+     "address": "Tollensstraat 147",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828846"
+    },
+    {
+     "address": "Tollensstraat 149",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828848"
+    },
+    {
+     "address": "Tollensstraat 151",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000828850"
+    },
+    {
+     "address": "Tollensstraat 153",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828852"
+    },
+    {
+     "address": "Tollensstraat 155",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828854"
+    },
+    {
+     "address": "Tollensstraat 157",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828856"
+    },
+    {
+     "address": "Tollensstraat 159",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828857"
+    },
+    {
+     "address": "Tollensstraat 161",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000828858"
+    },
+    {
+     "address": "Tollensstraat 163",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000828859"
+    },
+    {
+     "address": "Tollensstraat 165",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000828860"
+    },
+    {
+     "address": "Tollensstraat 167",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000828861"
+    },
+    {
+     "address": "Tollensstraat 169",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000828862"
+    },
+    {
+     "address": "Tollensstraat 171",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000828863"
+    },
+    {
+     "address": "Tollensstraat 173",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000828864"
+    },
+    {
+     "address": "Tollensstraat 175",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000828865"
+    },
+    {
+     "address": "Tollensstraat 177",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828866"
+    },
+    {
+     "address": "Tollensstraat 179",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828867"
+    },
+    {
+     "address": "Tollensstraat 181",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000828868"
+    },
+    {
+     "address": "Tollensstraat 183",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828869"
+    },
+    {
+     "address": "Tollensstraat 185",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828870"
+    },
+    {
+     "address": "Tollensstraat 187",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000828871"
+    },
+    {
+     "address": "Tollensstraat 189",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000828872"
+    },
+    {
+     "address": "Tollensstraat 191",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000828873"
+    },
+    {
+     "address": "Kinkerstraat 89",
+     "use": "winkelfunctie",
+     "areaM2": 961,
+     "bagId": "0363010011323535"
+    }
+   ],
+   "units": 69,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157341,
+     "lngLat": [
+      4.8703682,
+      52.366607
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89",
+      "addr:postcode": "1053DJ",
+      "addr:street": "Kinkerstraat",
+      "brand": "Albert Heijn",
+      "brand:wikidata": "Q1653985",
+      "brand:wikipedia": "nl:Albert Heijn (supermarkt)",
+      "check_date": "2024-09-01",
+      "name": "Albert Heijn",
+      "opening_hours": "Mo-Sa 08:00-22:00; Su 10:00-20:00",
+      "payment:cash": "yes",
+      "phone": "+31 20 618 0088",
+      "ref": "1497",
+      "shop": "supermarket",
+      "website": "https://www.ah.nl/winkel/1497",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:30:24.147Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2441927950,
+     "lngLat": [
+      4.8698362,
+      52.3664498
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "101",
+      "addr:postcode": "1053DK",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "Lowie Kopie",
+      "shop": "copyshop",
+      "website": "https://www.lowiekopie.nl/winkels",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:30:24.147Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4943034921,
+     "lngLat": [
+      4.8700862,
+      52.3665272
+     ],
+     "tags": {
+      "addr:housenumber": "93",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "female": "yes",
+      "male": "yes",
+      "name": "Haarstudio Dames en Heren",
+      "name:nl": "Haarstudio Dames en Heren",
+      "shop": "hairdresser",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:30:24.147Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9097824033,
+     "lngLat": [
+      4.8703848,
+      52.3665811
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "89",
+      "addr:postcode": "1053DJ",
+      "addr:street": "Kinkerstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "In Albert Heijn",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "ref": "1053003",
+      "source": "Geldmaat",
+      "source:date": "2025-06-08",
+      "speech_output": "yes",
+      "website": "https://www.locatiewijzer.geldmaat.nl/nl/location/1053003"
+     },
+     "fetchedAt": "2026-10-14T09:30:24.147Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12160371745,
+     "lngLat": [
+      4.8699502,
+      52.3664868
+     ],
+     "tags": {
+      "addr:housenumber": "97",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2024-09-01",
+      "name": "Alles",
+      "shop": "convenience",
+      "website": "https://1234alles.nl"
+     },
+     "fetchedAt": "2026-10-14T09:30:24.147Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12160371746,
+     "lngLat": [
+      4.8700146,
+      52.3665007
+     ],
+     "tags": {
+      "addr:housenumber": "95",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-09-01",
+      "cuisine": "mediterranean",
+      "indoor_seating": "no",
+      "name": "Tasty Eten",
+      "outdoor_seating": "no",
+      "phone": "+31 6 27577378",
+      "takeaway": "only"
+     },
+     "fetchedAt": "2026-10-14T09:30:24.147Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
