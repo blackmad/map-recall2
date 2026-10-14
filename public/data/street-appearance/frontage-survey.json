@@ -1,19 +1,11 @@
 {
   "schemaVersion": 1,
-  "revision": "95a4c289c9219ee9",
+  "revision": "ab7b5315a1a34a47",
   "origin": {
     "lng": 4.9,
     "lat": 52.37
   },
   "sources": [
-    {
-      "file": "public/data/extracts/amsterdam/building-tiles/14/8412/5384.geojson.gz",
-      "sha256": "a99197c84e90cd689f5c38eaac5e4842b1964886708789f4af4f6b522da01d6d"
-    },
-    {
-      "file": "public/data/extracts/amsterdam/building-facts/14/8412/5384.json.gz",
-      "sha256": "abe259b4e6e77a2dab0c852669eef4560bad1805bf03e501e10d55d93522c262"
-    },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
       "sha256": "174af77f92baab83b9e0c168b75e29a5cf4e1746b533f071cf557f85291172a0"
@@ -62,7 +54,7 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "4bcb5e5b6bf8358c72a60ebe2622f80c176d4ac94e6cb1bf3fe599440463d0fb"
+      "sha256": "b926ceca2dcaea897d3c8b948fe7d7b03ba2917413387c35e51dc046b8cef1e8"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
@@ -70,7 +62,7 @@
     },
     {
       "file": "src/canalRecall/streetAppearance.ts",
-      "sha256": "d0e50f3a4954888a415c0c079858fcbe1eb07f1af7620cdc9c6016b5c8f3744c"
+      "sha256": "e761c3aa08068ab31e627f6031f77055c871aa054118f35e7c3570c2cb984ba6"
     },
     {
       "file": "src/canalRecall/streetFacadeRendering.ts",
@@ -78,15 +70,15 @@
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "2b127476e2e7169fb60226f811bbc3f5b190dbbafa274f562e3a9e289bb08970"
+      "sha256": "bd2391fdf34be637b5a1d7af03bb38dfcc21427e0bd2fbe8471fa5bef28d0646"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "fd55be089f00d9c8e287f764ffdefb65bcd4accf97de6ae12386fecada90fbae"
+      "sha256": "655c0f39daaaec94c814afebbc3c24462410919f8bec3333b34039addf90ba43"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
-      "sha256": "eef9408957f60efbeb583346a60ee3bd57328d2caba0dab8101fe7cea1669cbd"
+      "sha256": "173b5dee12fc658a42504c8fc343a60c1b4974b077353d12b56c7a9ac1d68c58"
     },
     {
       "file": "src/canalRecall/streetFronts.ts",
@@ -94,7 +86,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingsBrowser.ts",
-      "sha256": "95b4ae4c725012130657b46be254997edba5fcac39a081987e64eb72d7dfc1ce"
+      "sha256": "a191b490f1ab0fc59347a13583b265871c27c326e098f1a27b94becefcd3ffbb"
     },
     {
       "file": "src/canalRecall/streetCrown.ts",
@@ -102,11 +94,11 @@
     },
     {
       "file": "src/canalRecall/bayLook.ts",
-      "sha256": "030ae54ea42c18de2028ca9da34718db3ab973f27ba4220f9311d32a401b433a"
+      "sha256": "fd445782f265c8d07b107206d9247074f28c871a9e8846d052456088f12cd7bc"
     },
     {
       "file": "src/canalRecall/bayTextures.ts",
-      "sha256": "aa1c81f31f8f77f51299204016fde76b1e67df2975a0c5a169746c026f43fb6d"
+      "sha256": "0bd8d500f55db373c2db56c3bf874c0a093a6376a5fd8f0e93dad6078a81d65d"
     },
     {
       "file": "src/canalRecall/facadeOrnaments.ts",
@@ -126,7 +118,7 @@
     },
     {
       "file": "src/canalRecall/shopCanopies.ts",
-      "sha256": "eaf819d484563c70588159a3a711dd5b7fb19b52e2d771b73b70991d3a84e00c"
+      "sha256": "81e156a1a00cb87081b13de3b6ca0ecbb54ef0dfcb193893f7c232d83cf15ee4"
     },
     {
       "file": "src/canalRecall/glassBlockTexture.ts",
@@ -134,23 +126,23 @@
     },
     {
       "file": "src/canalRecall/facadeLayout.ts",
-      "sha256": "3cbdd581afd8b1b3abbc505d78b89873d70373ef654717aac69722bc838c8f8c"
+      "sha256": "12f3ff7e314c072eece517a8ca92eec4dc1fb77c7a7a30179468787ee862a71a"
     },
     {
       "file": "src/canalRecall/sourceVisualRoof.ts",
-      "sha256": "e0540a50dec8248e8f3a607b9c2640fdcd1050fef456b60268309e29bec55a76"
+      "sha256": "0de3b1af74dc9f80d4b99a46cc57c49de31d55ff02d0a33898ea1fe0fabdc44b"
     },
     {
       "file": "src/canalRecall/roofMesh.ts",
-      "sha256": "8c3c2e069a6678d1f2c443df2e4f7f14b86ffdc6379a6ff6520986c29ea53348"
+      "sha256": "01bc06f2bd8007e3cc6153c5cfff8e23f994dc8e7cf3784094059359c2dc25f0"
     }
   ],
-  "streetFrontPathsSha256": "e725f87ad3584711fc1d154fcfa9b4247146fe4ef968723e0f159f71dc66a3cf",
-  "streetSegments": 167,
+  "streetFrontPathsSha256": "8bc67d18dfd30b51e795bb7973589ca8c63d43565c9913d41723e03ec8bd7078",
+  "streetSegments": 153,
   "neighborHaloM": 25,
-  "features": 441,
-  "exposedRuns": 36,
-  "assignments": 35,
+  "features": 361,
+  "exposedRuns": 34,
+  "assignments": 33,
   "profiles": [
     {
       "id": "bethanienstraat-observed-historic-pair",
