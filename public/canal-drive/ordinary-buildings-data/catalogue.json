@@ -51236,8 +51236,8 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012129127",
       "name": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
-      "hash": "cd4d42790647bb11de76c616958b395309824a9f21be83e7029ef64150b8df52",
-      "sha256": "cd4d42790647bb11de76c616958b395309824a9f21be83e7029ef64150b8df52",
+      "hash": "0e2298573ea4fc27838d960b56750f889788630ac5f4d28a23011ddbdcffcdf5",
+      "sha256": "0e2298573ea4fc27838d960b56750f889788630ac5f4d28a23011ddbdcffcdf5",
       "bytes": 869796,
       "triangles": 11809,
       "materials": 14,
@@ -51396,7 +51396,7 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.37; columns 8 vs photo 28)); inferred: reflective glass as light as the spandrels makes the photo glazing unreliable, ribbon and bays by hand, measured concrete colour applied",
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.37; columns 8 vs photo 28)); inferred: overcast crop - spandrel lightened by hand to the photo's spandrel bands (#908c83, L 0.54 drawn), ribbon and bays by hand, reflective glass as light as the spandrels makes the photo glazing unreliable",
         "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.41 mean 0.52 vs photo 0.68)); inferred: measured colour applied, 12 ribbon bays for the triangle budget (photo about 25 mullions), glazing band off by 0.41",
         "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.20; window shape none vs photo square; columns none vs photo 2)); inferred: measured colour and glazing (0.66 vs 0.61) applied, one band off by 0.20",
         "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render."
@@ -51406,7 +51406,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129127",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T12:27:17.977Z",
+      "updatedAt": "2026-10-14T12:37:53.739Z",
       "meshHash": "0d1725c303229321"
     },
     {
