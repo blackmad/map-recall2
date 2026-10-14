@@ -42253,10 +42253,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171179",
       "name": "Kloveniersburgwal 72 (former Binnengasthuis, now University of Amsterdam), Amsterdam: Nieuwe Hoogstraat row-house fronts, the 1900s GASTHUIS APOTHEEK brick range, a 1930s curved brick wing and a 1950s beige block",
-      "hash": "2946d899291f862303d42519411bf3b5f54391a3ee824631e7dc24098f37961e",
-      "sha256": "2946d899291f862303d42519411bf3b5f54391a3ee824631e7dc24098f37961e",
-      "bytes": 742584,
-      "triangles": 9642,
+      "hash": "9fd5c640c6f479ba8719aaed98d8e641eb2f3e7f34232fe62bf2de75d66df1c2",
+      "sha256": "9fd5c640c6f479ba8719aaed98d8e641eb2f3e7f34232fe62bf2de75d66df1c2",
+      "bytes": 790924,
+      "triangles": 10242,
       "materials": 23,
       "textures": 0,
       "scale": 1,
@@ -43001,7 +43001,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171179",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:34:05.724Z"
+      "updatedAt": "2026-10-14T03:09:09.130Z"
     },
     {
       "id": "ordinary-0363100012137990",
