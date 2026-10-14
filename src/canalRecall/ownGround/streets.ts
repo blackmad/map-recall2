@@ -21,6 +21,7 @@ import { crossSection, type BgtWidthDm, type Band, type CrossSection, type OsmWa
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, pointAt, ribbon, stations, triangleCount, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
 import earcut from 'earcut';
+import { bar, blocks, crossingStation, isSignalCrossing, mouthMarking, rankOf, sharkTeeth, strip, CROSSING_REACH_M, SIGNAL_REACH_M, STOP_LINE_M } from './roadMarkings.js';
 
 /** Height above the relief per layer (metres): later layers win the depth test. */
 export const LIFT = {
@@ -39,8 +40,11 @@ export type StreetLayer = Surface | 'paint' | 'kerb' | 'tram' | 'bollard';
 export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
   /** Every junction node of the graph (not only the owned ones): the pocket fill looks near them (pockets.ts). */
   junctionPoints: Vec2[];
-  stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number; junctions: number; corners: number };
+  stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number; junctions: number; corners: number; markings: MarkingStats };
 };
+
+/** Junction road markings drawn (roadMarkings.ts). */
+export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number }
 
 export interface LocalWay { id: number; tags: Record<string, string>; points: Vec2[]; section: CrossSection; bw?: BgtWidthDm }
 
@@ -385,17 +389,19 @@ export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
  * `only` limits which ways emit geometry while the junction graph still sees
  * all of them (the prototype builds bridge ways separately, uncut by the water mask).
  */
-export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number } = {}): StreetMeshes {
+export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean } = {}): StreetMeshes {
   const step = opts.step ?? 3;
   // Vertices across a band (bridge bands: the deck is often narrower than the mapped carriageway, so a band with
   // vertices only on its two edges spans from the relief beside the deck to the relief beside it and sags under the
   // deck top in the middle; BRU0292 Schottenburchsbrug sat 0.15 m under it).
   const acrossOf = (width: number) => (opts.acrossStep ? Math.max(width > 7 ? 2 : 1, Math.ceil(width / opts.acrossStep)) : undefined);
-  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0 }, junctionPoints: [] as Vec2[] } as StreetMeshes;
+  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0, markings: { stopLines: 0, giveWays: 0, teeth: 0, laneLinks: 0, cycleCrossings: 0, blocks: 0 } }, junctionPoints: [] as Vec2[] } as StreetMeshes;
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
   const discDone = new Set<string>();
   const shadowed = shadowedWays(ways);
+  const signalPoints = ways.filter(w => isSignalCrossing(w.tags)).flatMap(w => w.points);
+  const crossingWays = ways.filter(isCrossing);
   for (const w of ways) {
     if (opts.only && !opts.only(w)) continue;
     if (shadowed.has(w.id)) continue;
@@ -465,6 +471,8 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     }
     // Tram rails: two per track at standard gauge, through junctions (the tracks do not stop there).
     for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) ribbon(out.tram, w.points, o + r, 0.07, height, LIFT.rail, { step });
+    // A separate cycle path crossing a carriageway untagged leaves a gap there (pathCuts): mark it as a cycle crossing.
+    if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height);
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
@@ -478,8 +486,98 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     if (n.kind !== 'junction') continue;
     out.stats.junctions++;
     for (const c of n.corners) out.stats.corners += cornerPatches(out, n, c, height, step);
+    if (opts.markings !== false) junctionMarkings(out, n, signalPoints, crossingWays, height);
   }
   return out;
+}
+
+/** Arm polyline from the node outward (way points from the node's index in the arm's direction). */
+function armLine(a: Arm): Vec2[] {
+  const pts: Vec2[] = [];
+  for (let j = a.i; j >= 0 && j < a.way.points.length; j += a.sign) pts.push(a.way.points[j]);
+  return pts;
+}
+
+/**
+ * Stop lines or shark teeth across each arm's inbound lanes, and painted cycle
+ * lanes carried through to their straight-through partner (roadMarkings.ts).
+ */
+function junctionMarkings(out: StreetMeshes, n: Node, signals: readonly Vec2[], crossings: readonly LocalWay[], height: HeightFn): void {
+  const st = out.stats.markings;
+  const signalised = signals.some(p => Math.hypot(p[0] - n.p[0], p[1] - n.p[1]) <= SIGNAL_REACH_M);
+  for (const a of n.arms) {
+    const hw = a.way.tags.highway ?? '';
+    const otherBest = Math.max(0, ...n.arms.filter(b => b.way !== a.way).map(b => rankOf(b.way.tags.highway)));
+    const mark = mouthMarking(hw, otherBest, signalised);
+    if (!mark || isBridgeWay(a.way)) continue;
+    const cw = a.way.section.bands[0].width, ow = a.way.tags.oneway === 'yes' ? 1 : a.way.tags.oneway === '-1' ? -1 : 0;
+    // Inbound lanes: traffic toward the node keeps right, which is the arm's left (leftOf(dir)); a one-way arm is all or nothing.
+    if (ow && ow === a.sign) continue;
+    const [l0, l1] = ow ? [-cw / 2 + 0.1, cw / 2 - 0.1] : [0.15, cw / 2 - 0.1];
+    const line = armLine(a), ls = stations(line), total = ls[ls.length - 1];
+    let t = a.trim + 0.5;
+    // Before a crossing mapped across the arm (zebra, cycle crossing), as painted.
+    for (const c of crossings) for (let i = 0; i + 1 < c.points.length; i++) {
+      const s = crossingStation(line, c.points[i], c.points[i + 1]);
+      if (s !== null && s <= a.trim + CROSSING_REACH_M) t = Math.max(t, s + c.section.coreHalfWidth + 0.5);
+    }
+    if (t + 1 > total) continue;
+    const o = pointAt(line, ls, t), q = pointAt(line, ls, Math.min(total, t + 1)), d = dirOf(o, q);
+    if (mark === 'stop') { bar(out.paint, { o, u: d }, l0, l1, STOP_LINE_M, height, LIFT.paint); st.stopLines++; }
+    else { st.teeth += sharkTeeth(out.paint, { o, u: d }, l0, l1, height, LIFT.paint); st.giveWays++; }
+  }
+  // Painted cycle lanes through the junction: a's left side runs on into b's right side (b roughly opposite a).
+  const lane = (a: Arm, side: 'left' | 'right') => a.way.section.bands.find(b => b.kind === 'cycle_lane' && ((a.sign > 0) === (side === 'left') ? b.offset > 0 : b.offset < 0));
+  for (const a of n.arms) for (const b of n.arms) {
+    if (a === b) continue;
+    const dev = 180 - Math.abs(((a.angle - b.angle) * 180 / Math.PI + 540) % 360 - 180);
+    if (dev > CONTINUE_DEG) continue;
+    const la = lane(a, 'left'), lb = lane(b, 'right');
+    if (!la || !lb) continue;
+    const na = leftOf(a.dir), nb = leftOf(b.dir), oa = Math.abs(la.offset), ob = Math.abs(lb.offset), w = Math.min(la.width, lb.width);
+    const A: Vec2 = [n.p[0] + a.dir[0] * a.trim + na[0] * oa, n.p[1] + a.dir[1] * a.trim + na[1] * oa];
+    const B: Vec2 = [n.p[0] + b.dir[0] * b.trim - nb[0] * ob, n.p[1] + b.dir[1] * b.trim - nb[1] * ob];
+    strip(out.cycle, A, B, w, height, LIFT.cycleLane);
+    st.laneLinks++;
+    // A side arm opens between a and b counter-clockwise (on a's left): the lane crosses its mouth.
+    const span = (b.angle - a.angle + 2 * Math.PI) % (2 * Math.PI);
+    const side = n.arms.some(c => c !== a && c !== b && (c.angle - a.angle + 2 * Math.PI) % (2 * Math.PI) < span - 1e-6 && (c.angle - a.angle + 2 * Math.PI) % (2 * Math.PI) > 1e-6);
+    const e = dirOf(A, B), m: Vec2 = [-e[1], e[0]], h = w / 2 - BLOCK_HALF;
+    const edge = (k: number): [Vec2, Vec2] => [[A[0] + m[0] * k, A[1] + m[1] * k], [B[0] + m[0] * k, B[1] + m[1] * k]];
+    if (side) { for (const k of [h, -h]) { const [p, q] = edge(k); st.blocks += blocks(out.paint, p, q, height, LIFT.paint); } st.cycleCrossings++; }
+    else {
+      // No side road: the lane just runs on; its line toward the road (the side nearer the junction centre) dashed as on the arms.
+      const inner = [h, -h].reduce((best, k) => { const [p] = edge(k); const dd = Math.hypot(p[0] - n.p[0], p[1] - n.p[1]); return dd < best.d ? { k, d: dd } : best; }, { k: h, d: Infinity }).k;
+      dashed(out.paint, edge(inner), 0, 0.1, [1, 1], height, LIFT.paint);
+    }
+  }
+}
+
+/** Half a block (centred 0.2 m inside a lane edge). */
+const BLOCK_HALF = 0.2;
+
+/**
+ * Where a separate cycle path crosses a carriageway at a shared node with no
+ * crossing way mapped, pathCuts leaves a gap the width of the road: mark it
+ * as a cycle crossing (blocks along both edges; red between them over a side
+ * street, class unclassified or lower, where Amsterdam carries the path's red
+ * across). Returns the number of blocks.
+ */
+function cyclePathCrossings(out: StreetMeshes, w: LocalWay, nodes: Map<string, Node>, st: readonly number[], height: HeightFn): number {
+  let count = 0;
+  const width = w.section.bands[0].width, last = w.points.length - 1;
+  w.points.forEach((p, i) => {
+    if (i === 0 || i === last) return;
+    const n = nodes.get(key(p));
+    if (!n || !n.arms.length || n.arms.every(a => a.way === w)) return;
+    const h = Math.min(n.roadHalf + 0.15, 12);
+    const a = pointAt(w.points, st, Math.max(0, st[i] - h)), b = pointAt(w.points, st, Math.min(st[last], st[i] + h));
+    const e = dirOf(a, b), m: Vec2 = [-e[1], e[0]], k = Math.max(0.3, width / 2 - BLOCK_HALF);
+    if (Math.max(...n.arms.map(x => rankOf(x.way.tags.highway))) <= 2) strip(out.cycle, a, b, width, height, LIFT.cycleLane);
+    for (const s of [k, -k]) count += blocks(out.paint, [a[0] + m[0] * s, a[1] + m[1] * s], [b[0] + m[0] * s, b[1] + m[1] * s], height, LIFT.paint);
+    out.stats.markings.cycleCrossings++;
+  });
+  return count;
 }
 
 /** Drape a simple polygon (earcut; a degenerate ring is skipped). */

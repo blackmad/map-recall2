@@ -21,6 +21,7 @@ import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
+import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 
@@ -72,7 +73,12 @@ export class GroundStore {
   readonly loadedBytes = { relief: 0, water: 0, osm: 0, parks: 0 };
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean } = {}) {}
+  /** `moorings`: open the water under houseboats the generalised water cuts (moorings.ts); off for the regression's before. */
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean } = {}) {}
+  /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
+  private boatsByCell = new Map<string, Boat[]>();
+  /** Boats whose berth was opened, per cell (named regressions, the lane report). */
+  readonly openedBerths = new Map<string, string[]>();
 
   private async json<T>(path: string): Promise<T> {
     return JSON.parse(new TextDecoder().decode(await this.fetchBytes(path))) as T;
@@ -86,6 +92,7 @@ export class GroundStore {
       this.json<OsmCellsManifest>(`${EXTRACTS.osm}/cells.json`).catch(() => null),
       this.json<WaterLevels>(`${EXTRACTS.water}/water-levels.json`).catch(() => null),
     ]);
+    const boats = this.options.moorings === false ? null : await this.json<{ boats: { id: string; ring: [number, number][] }[] }>('houseboats.json').catch(() => null);
     const parks = this.options.parks === false ? null : await this.json<ParksManifest>(`${EXTRACTS.parks}/cells.json`).catch(() => null);
     this.parkCells = new Set(parks?.version === 1 ? parks.cells : []);
     this.waterLevels = levels?.version === 1 ? levels : null;
@@ -103,6 +110,13 @@ export class GroundStore {
     for (const b of bridges.measured) { const k = cellOf(b.p[0], b.p[1]); (this.measuredByCell.get(k) ?? this.measuredByCell.set(k, []).get(k)!).push(b); }
     this.fallbackByCell = new Map();
     for (const b of bridges.fallback) { const k = cellOf(b.ring[0], b.ring[1]); (this.fallbackByCell.get(k) ?? this.fallbackByCell.set(k, []).get(k)!).push(b); }
+    this.boatsByCell = new Map();
+    for (const b of boats?.boats ?? []) {
+      if (b.ring.length < 4) continue;
+      const ring = b.ring.map(([lng, lat]) => toLocal(lng, lat));
+      const k = this.cellAt(ring.reduce((s, p) => s + p[0], 0) / ring.length, ring.reduce((s, p) => s + p[1], 0) / ring.length);
+      (this.boatsByCell.get(k) ?? this.boatsByCell.set(k, []).get(k)!).push({ id: b.id, ring });
+    }
   }
 
   /** elevation-v1 storage metres → game local metres. */
@@ -331,7 +345,11 @@ export class GroundStore {
     }
     const r = openUnderFootbridges(geo, decks, rect, WATER_Z);
     if (r.opened.length) this.openedDecks.set(key, r.opened);
-    return r.geo;
+    const boats = this.boatsByCell.get(key);
+    if (!boats?.length) return r.geo;
+    const m = openUnderHouseboats(r.geo, boats, rect, WATER_Z);
+    if (m.opened.length) this.openedBerths.set(key, m.opened);
+    return m.geo;
   }
 
   /** Scene z of a NAP level under this extract's datum. */

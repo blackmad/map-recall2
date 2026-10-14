@@ -31,6 +31,7 @@ import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { GROUND_TONES as G, STREET_GROUND } from '../look/palette.js';
+import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -431,7 +432,16 @@ export class OwnGround {
     };
     const M: Record<string, any> = {
       land: std({ map: pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
-      klinker: std({ map: pavers([...STREET_GROUND.klinker.base], STREET_GROUND.klinker.joint, 2, 0.2, 0.1), roughness: 0.9 }),
+      // Klinker carriageways: herringbone in mixed tones (streetTextures.ts), so a brick street never reads as cycle-path red.
+      klinker: std({ map: this.canvasTexture(512, 2, (g, s) => {
+        const units = 20, px = s / units, base = STREET_GROUND.klinker.base;
+        g.fillStyle = STREET_GROUND.klinker.joint; g.fillRect(0, 0, s, s);
+        for (const b of herringboneBricks(units, KLINKER_TONES.length)) {
+          const t = KLINKER_TONES[b.tone], v = (rnd() - 0.5) * 14;
+          g.fillStyle = `rgb(${base[0] * t[0] + v},${base[1] * t[1] + v},${base[2] * t[2] + v})`;
+          g.fillRect(b.x * px + 1.2, b.y * px + 1.2, b.w * px - 2.4, b.h * px - 2.4);
+        }
+      }), roughness: 0.9 }),
       asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.asphalt.base], 18)) }),
       cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.cycle.base], 18)), roughness: 0.85 }),
       // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).

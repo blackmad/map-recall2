@@ -576,14 +576,16 @@ export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | 
 
 /**
  * Display priors for the drawn street surfaces (not measured per street): red
- * asphalt cycle paths, brick-red klinker carriageways, grey-rose klinker
+ * asphalt cycle paths, brick-brown herringbone klinker carriageways, grey-rose klinker
  * pavements with a pale granite kerb, steel tram rails, oxblood
  * Amsterdammertjes. Base RGB for the procedural textures; joints darker.
  */
 export const STREET_GROUND = {
   asphalt: { base: [72, 74, 78] as RGB },
   cycle: { base: [150, 66, 58] as RGB },
-  klinker: { base: [128, 82, 66] as RGB, joint: '#5a463d' },
+  // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
+  // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
+  klinker: { base: [122, 90, 80] as RGB, joint: '#4b3d38' },
   pavement: { base: [174, 162, 152] as RGB, joint: '#7f756b' },
   kerb: '#cfcac0',
   paint: '#f2f0ea',
