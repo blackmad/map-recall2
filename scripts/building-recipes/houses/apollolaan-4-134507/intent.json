@@ -56,7 +56,13 @@
     "frame": "#6e7276",
     "stone": "#9a968c",
     "glass": "#46545c"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "palette.glass",
+    "baysPerStorey",
+    "hall"
+   ]
   },
   {
    "wallSurfaces": [
@@ -128,10 +134,17 @@
  },
  "closedBands": true,
  "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0
+  ]
+ },
  "notes": [
   "Apollolaan 4 / Stadionweg 5 (BAG pand 0363100012134507, built 1934, 98 3DBAG wall surfaces, roof max 14.5 m): the Apollohal, the 1934 sports hall of the Olympic quarter in Amsterdam-Zuid: a long brick hall with a glazed clerestory and a curved glass roof edge, flanked by two-storey brick annexes with round windows and a canopied glass entrance on the Stadionweg side. Photographed: the long south-west flank (w01-231, 2017-04-19), the north-west annexes and glazed gable (w04-321 and w05-321, 2020-05-13) and the glazed entrance (w06-231, 2024-11-05); w02-51 and w03-51 have no panorama within 35 m.",
   "walls[0] = panel 22 (SW, 66.6 m, eaves 11.9): a blank brick plinth under two glazed bands, drawn as 3 storeys with a blank ground and 22 bays of wide windows without sills. walls[1] = panels 21, 13 and 17 (NW, 11 m, 10 m and 9 m, eaves 6.3): the two-storey brick annex fronts with white-framed windows, 2 storeys x 3 bays. walls[2] = panel 14 (NW, 35.7 m, eaves 12.1 over a 6.8 m base): the glazed gable of the hall above the annexes, drawn as a one-storey curtain wall with mullions and transoms, with APOLLOHAL on a name band (the photographed letters are on the glass). walls[3] = panel 31 (SW end, 9.8 m, eaves 3.6): the glazed entrance under a flat canopy, one storey with a glazed ground and an entrance with canopy in bay 1.",
   "Simplified: the glass gable is a flat curtain wall (the photographed hall edge is curved), the clerestory on the long flank is wide windows over a blank base, the entrance is a canopy and a glazed door set in three bays, the round windows of the annexes are not modelled and stay plain wall. Not drawn: the south-east end wall, the north-east long wall (panels 63, 44, 26, no panorama) and the low service range on the north-east, which stay blank brick.",
-  "Re-fit 2026-10-14 (kit vocabulary lane) from w01-231: walls[0] is a glazed-hall, a tan-grey brick base to 0.4 of the eaves (photo 0.40) under one glass skin to the eaves with a mullion grid of 26 lights per structural bay (0.64 m; photo 0.63 m) and 6 rows (photo 6, about 1.03 m), structural posts every 16.6 m (photo about 15.1 m: 4 bays over 66.6 m), dark grey-blue glass #46545c (photo raw #596b74 with the sky reflected; darkened to the dark band the user reads) and a pale tan plinth #a2937e (photo raw #5c5347 under overcast, x1.75 by the light metal door panel). The APOLLOHAL letters on the base and the roof-edge louvres are not drawn."
+  "Re-fit 2026-10-14 (kit vocabulary lane) from w01-231: walls[0] is a glazed-hall, a tan-grey brick base to 0.4 of the eaves (photo 0.40) under one glass skin to the eaves with a mullion grid of 26 lights per structural bay (0.64 m; photo 0.63 m) and 6 rows (photo 6, about 1.03 m), structural posts every 16.6 m (photo about 15.1 m: 4 bays over 66.6 m), dark grey-blue glass #46545c (photo raw #596b74 with the sky reflected; darkened to the dark band the user reads) and a pale tan plinth #a2937e (photo raw #5c5347 under overcast, x1.75 by the light metal door panel). The APOLLOHAL letters on the base and the roof-edge louvres are not drawn.",
+  "measured: the wall, glass and arch-ring colours and the rhythm of walls [0] were sampled by hand from the rectified crops (2026-10-14, kit vocabulary lane; numbers in the notes above), not by measure.ts; `hand` keeps them when measure.ts --write runs. Their wall slots export tintSource measured."
  ]
 }
