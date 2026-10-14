@@ -48983,6 +48983,116 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T03:46:56.416Z"
+    },
+    {
+      "id": "ordinary-0363100012202276",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012202276",
+      "name": "Centrale Groothandelsmarkt 183, Amsterdam-West (Food Center): 1935 wholesale food warehouse (De Kweker) with a 106 m west front of concrete-block piers under grey cladding, a loading canopy, an office ribbon and a raised centre block carrying the DE KWEKER sign",
+      "hash": "5a600ae3d2e9a676bacf356203d3563640e040c3ae623622e7eb4750ee03111c",
+      "sha256": "5a600ae3d2e9a676bacf356203d3563640e040c3ae623622e7eb4750ee03111c",
+      "bytes": 130708,
+      "triangles": 1600,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -32.764,
+          0.001,
+          -80.822
+        ],
+        "max": [
+          18.191,
+          13.01,
+          28.872
+        ]
+      },
+      "anchor": [
+        4.8660715,
+        52.377148
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8660622,
+              52.3769056
+            ],
+            [
+              4.8660668,
+              52.3768934
+            ],
+            [
+              4.8662952,
+              52.3769251
+            ],
+            [
+              4.8662906,
+              52.3769373
+            ],
+            [
+              4.8663421,
+              52.3769445
+            ],
+            [
+              4.8659971,
+              52.3778741
+            ],
+            [
+              4.8655865,
+              52.3778163
+            ],
+            [
+              4.8659312,
+              52.3768873
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 13.01,
+      "height": 13.01,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cgm-183-202276.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012202276"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cgm-183-202276",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012202276/w01-258.jpg",
+          "staging/pand-reference-walls/0363100012202276/w02-347.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 2st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 0 (W, 105 m, eaves 9.0, top 11.8; surfaces 1, 15, 16): grey cladding over concrete-block piers with the raised centre block carrying the DE KWEKER sign board; drawn as a blank render wall with the letters on a cornice band (the office ribbon covers only the middle 25 m, which one group per panel cannot isolate, so no windows are cut). walls[1] = panels 3 and 22 (N, 29 m and 9 m): the receiving end, drawn as a two-storey wall with a blank upper storey, a receiving door in bay 1 and ONTVANGST GOEDEREN on a fascia. Simplified: the cantilevered loading canopy, the red roller-shutter doors, the office ribbon and the white cold-store annex are not modelled; the sign board is letters, not a printed banner; the curved roof is the 3DBAG roof. Not drawn: the east wall and the south end (blank, banner only)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202276",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:49:29.005Z"
     }
   ]
 }
