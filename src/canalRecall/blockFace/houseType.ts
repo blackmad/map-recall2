@@ -127,7 +127,10 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.lisenes) out.lisenes = {...(f.lisenes.rightEnd ? {leftEnd: f.lisenes.rightEnd} : {}), ...(f.lisenes.leftEnd ? {rightEnd: f.lisenes.leftEnd} : {})};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
   if (f.gridAt) out.gridAt = flipFrac(f.gridAt);
-  if (f.balconies) { const n = sameCount(f.balconies.storeys, 'balconies'); out.balconies = {...f.balconies, bays: f.balconies.bays.map(b => n - 1 - b).sort((p, q) => p - q)}; }
+  if (f.balconies) {
+    const n = sameCount(f.balconies.storeys, 'balconies'), flip = (l: number[]) => l.map(b => n - 1 - b).sort((p, q) => p - q);
+    out.balconies = {...f.balconies, bays: flip(f.balconies.bays), ...(f.balconies.storeyBays ? {storeyBays: Object.fromEntries(Object.entries(f.balconies.storeyBays).map(([k, v]) => [k, flip(v)]))} : {})};
+  }
   if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays)};
   else if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay!}; }  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse()};
   if (f.shopfront) {

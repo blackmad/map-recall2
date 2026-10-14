@@ -1,0 +1,3137 @@
+{
+ "street": "Nassaukade",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-10-14",
+ "pands": [
+  {
+   "pandId": "0363100012167279",
+   "buildYear": 1880,
+   "status": "Pand in gebruik",
+   "numbers": [
+    1
+   ],
+   "label": "Nassaukade 1",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012167164",
+   "buildYear": 1880,
+   "status": "Pand in gebruik",
+   "numbers": [
+    2
+   ],
+   "label": "Nassaukade 2",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157442",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    3
+   ],
+   "label": "Nassaukade 3",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156859",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    4
+   ],
+   "label": "Nassaukade 4",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160756",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    5
+   ],
+   "label": "Nassaukade 5",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158621",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    6
+   ],
+   "label": "Nassaukade 6",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012111072",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    7
+   ],
+   "label": "Nassaukade 7",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160309",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    8
+   ],
+   "label": "Nassaukade 8",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164616",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    9
+   ],
+   "label": "Nassaukade 9",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152790",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    10
+   ],
+   "label": "Nassaukade 10",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158461",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    11
+   ],
+   "label": "Nassaukade 11",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012101536",
+   "buildYear": 1997,
+   "status": "Pand in gebruik",
+   "numbers": [
+    12
+   ],
+   "label": "Nassaukade 12",
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164132",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    13
+   ],
+   "label": "Nassaukade 13",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160069",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    14
+   ],
+   "label": "Nassaukade 14",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163809",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    15
+   ],
+   "label": "Nassaukade 15",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012154374",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    16
+   ],
+   "label": "Nassaukade 16",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163987",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    17
+   ],
+   "label": "Nassaukade 17",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159807",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    18
+   ],
+   "label": "Nassaukade 18",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165722",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    19
+   ],
+   "label": "Nassaukade 19",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163438",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    20
+   ],
+   "label": "Nassaukade 20",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153285",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    21
+   ],
+   "label": "Nassaukade 21",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152892",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    22
+   ],
+   "label": "Nassaukade 22",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156862",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    23
+   ],
+   "label": "Nassaukade 23",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155826",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    24
+   ],
+   "label": "Nassaukade 24",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166836",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    25
+   ],
+   "label": "Nassaukade 25",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012167371",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    26
+   ],
+   "label": "Nassaukade 26",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156980",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    27
+   ],
+   "label": "Nassaukade 27",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012225420",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    30
+   ],
+   "label": "Nassaukade 30",
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012151785",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    31
+   ],
+   "label": "Nassaukade 31",
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166244",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    32
+   ],
+   "label": "Nassaukade 32",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153053",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    33
+   ],
+   "label": "Nassaukade 33",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163611",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    34
+   ],
+   "label": "Nassaukade 34",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161203",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    35
+   ],
+   "label": "Nassaukade 35",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156016",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    36
+   ],
+   "label": "Nassaukade 36",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156250",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    37
+   ],
+   "label": "Nassaukade 37",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166896",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    38
+   ],
+   "label": "Nassaukade 38",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159975",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    39
+   ],
+   "label": "Nassaukade 39",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155865",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    40
+   ],
+   "label": "Nassaukade 40",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156826",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    41
+   ],
+   "label": "Nassaukade 41",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157629",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    42
+   ],
+   "label": "Nassaukade 42",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165450",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    46
+   ],
+   "label": "Nassaukade 46",
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236888",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    47,
+    48
+   ],
+   "label": "Nassaukade 47–48",
+   "units": 13,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012202804",
+   "buildYear": 1954,
+   "status": "Pand in gebruik",
+   "numbers": [
+    50
+   ],
+   "label": "Nassaukade 50",
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157394",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    51
+   ],
+   "label": "Nassaukade 51",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158634",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    52
+   ],
+   "label": "Nassaukade 52",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153063",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    53
+   ],
+   "label": "Nassaukade 53",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165383",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    54
+   ],
+   "label": "Nassaukade 54",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012167423",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    55
+   ],
+   "label": "Nassaukade 55",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153376",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    56
+   ],
+   "label": "Nassaukade 56",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152876",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    57
+   ],
+   "label": "Nassaukade 57",
+   "units": 3,
+   "groundUses": [
+    "gezondheidszorgfunctie,woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165326",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    57
+   ],
+   "label": "Nassaukade 57",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161946",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    58
+   ],
+   "label": "Nassaukade 58",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157223",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    59
+   ],
+   "label": "Nassaukade 59",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160815",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    60
+   ],
+   "label": "Nassaukade 60",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012068608",
+   "buildYear": 1989,
+   "status": "Pand in gebruik",
+   "numbers": [
+    61,
+    62
+   ],
+   "label": "Nassaukade 61–62",
+   "units": 18,
+   "groundUses": [
+    "woonfunctie",
+    "onderwijsfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012128348",
+   "buildYear": 1989,
+   "status": "Pand in gebruik",
+   "numbers": [
+    62
+   ],
+   "label": "Nassaukade 62",
+   "units": 12,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012106140",
+   "buildYear": 1983,
+   "status": "Pand in gebruik",
+   "numbers": [
+    63
+   ],
+   "label": "Nassaukade 63",
+   "units": 18,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012124441",
+   "buildYear": 1990,
+   "status": "Pand in gebruik",
+   "numbers": [
+    63
+   ],
+   "label": "Nassaukade 63",
+   "units": 1,
+   "groundUses": [
+    "industriefunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159648",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    64
+   ],
+   "label": "Nassaukade 64",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158000",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    65
+   ],
+   "label": "Nassaukade 65",
+   "units": 5,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012165157",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    66
+   ],
+   "label": "Nassaukade 66",
+   "units": 5,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012156565",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    67
+   ],
+   "label": "Nassaukade 67",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164748",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    68
+   ],
+   "label": "Nassaukade 68",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236162",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    69
+   ],
+   "label": "Nassaukade 69",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158433",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    70
+   ],
+   "label": "Nassaukade 70",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012165451",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    71
+   ],
+   "label": "Nassaukade 71",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166372",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    72
+   ],
+   "label": "Nassaukade 72",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164521",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    73
+   ],
+   "label": "Nassaukade 73",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165649",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    74
+   ],
+   "label": "Nassaukade 74",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152460",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    75
+   ],
+   "label": "Nassaukade 75",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163331",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    76
+   ],
+   "label": "Nassaukade 76",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155766",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    77
+   ],
+   "label": "Nassaukade 77",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159327",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    78
+   ],
+   "label": "Nassaukade 78",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163804",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    79
+   ],
+   "label": "Nassaukade 79",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165859",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    80
+   ],
+   "label": "Nassaukade 80",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152453",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    81
+   ],
+   "label": "Nassaukade 81",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163101",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    82
+   ],
+   "label": "Nassaukade 82",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159285",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    83
+   ],
+   "label": "Nassaukade 83",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157189",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    84
+   ],
+   "label": "Nassaukade 84",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164853",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    85
+   ],
+   "label": "Nassaukade 85",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160865",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    86
+   ],
+   "label": "Nassaukade 86",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157780",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    87
+   ],
+   "label": "Nassaukade 87",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012162252",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    88
+   ],
+   "label": "Nassaukade 88",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236068",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    89
+   ],
+   "label": "Nassaukade 89",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236125",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    90
+   ],
+   "label": "Nassaukade 90",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166728",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    91
+   ],
+   "label": "Nassaukade 91",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159346",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    92
+   ],
+   "label": "Nassaukade 92",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161881",
+   "buildYear": 1886,
+   "status": "Pand in gebruik",
+   "numbers": [
+    93
+   ],
+   "label": "Nassaukade 93",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164278",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    98
+   ],
+   "label": "Nassaukade 98",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161528",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    99
+   ],
+   "label": "Nassaukade 99",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157739",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    100
+   ],
+   "label": "Nassaukade 100",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158706",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    101
+   ],
+   "label": "Nassaukade 101",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158210",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    102
+   ],
+   "label": "Nassaukade 102",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158813",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    103
+   ],
+   "label": "Nassaukade 103",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164577",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    104
+   ],
+   "label": "Nassaukade 104",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236341",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    105
+   ],
+   "label": "Nassaukade 105",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236645",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    106
+   ],
+   "label": "Nassaukade 106",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237224",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    107
+   ],
+   "label": "Nassaukade 107",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236962",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    108
+   ],
+   "label": "Nassaukade 108",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156009",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    109
+   ],
+   "label": "Nassaukade 109",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236529",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    110
+   ],
+   "label": "Nassaukade 110",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236456",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    111
+   ],
+   "label": "Nassaukade 111",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165924",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    112
+   ],
+   "label": "Nassaukade 112",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153524",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    113
+   ],
+   "label": "Nassaukade 113",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156829",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    114
+   ],
+   "label": "Nassaukade 114",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156560",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    115
+   ],
+   "label": "Nassaukade 115",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161795",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    116
+   ],
+   "label": "Nassaukade 116",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160222",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    117
+   ],
+   "label": "Nassaukade 117",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157831",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    118
+   ],
+   "label": "Nassaukade 118",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160823",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    119
+   ],
+   "label": "Nassaukade 119",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156534",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    120,
+    121
+   ],
+   "label": "Nassaukade 120–121",
+   "units": 9,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166096",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    122
+   ],
+   "label": "Nassaukade 122",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236308",
+   "buildYear": 1910,
+   "status": "Pand in gebruik",
+   "numbers": [
+    123
+   ],
+   "label": "Nassaukade 123",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie,winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012101375",
+   "buildYear": 1988,
+   "status": "Pand in gebruik",
+   "numbers": [
+    124
+   ],
+   "label": "Nassaukade 124",
+   "units": 1,
+   "groundUses": [
+    "onderwijsfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156290",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    125
+   ],
+   "label": "Nassaukade 125",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162387",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    126
+   ],
+   "label": "Nassaukade 126",
+   "units": 5,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158661",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    127
+   ],
+   "label": "Nassaukade 127",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163839",
+   "buildYear": 1890,
+   "status": "Pand in gebruik (niet ingemeten)",
+   "numbers": [
+    128
+   ],
+   "label": "Nassaukade 128",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236088",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    129
+   ],
+   "label": "Nassaukade 129",
+   "units": 6,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166471",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    134
+   ],
+   "label": "Nassaukade 134",
+   "units": 5,
+   "groundUses": [
+    "kantoorfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158911",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    135
+   ],
+   "label": "Nassaukade 135",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162291",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    136
+   ],
+   "label": "Nassaukade 136",
+   "units": 5,
+   "groundUses": [
+    "gezondheidszorgfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152883",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    137
+   ],
+   "label": "Nassaukade 137",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156131",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    138
+   ],
+   "label": "Nassaukade 138",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156901",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    139
+   ],
+   "label": "Nassaukade 139",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158752",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    140
+   ],
+   "label": "Nassaukade 140",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157005",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    141
+   ],
+   "label": "Nassaukade 141",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162782",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    142
+   ],
+   "label": "Nassaukade 142",
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159538",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    143
+   ],
+   "label": "Nassaukade 143",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159278",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    144
+   ],
+   "label": "Nassaukade 144",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159694",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    145
+   ],
+   "label": "Nassaukade 145",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160704",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    146
+   ],
+   "label": "Nassaukade 146",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160273",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    147
+   ],
+   "label": "Nassaukade 147",
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157426",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    148
+   ],
+   "label": "Nassaukade 148",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161422",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    149
+   ],
+   "label": "Nassaukade 149",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164843",
+   "buildYear": 1898,
+   "status": "Pand in gebruik",
+   "numbers": [
+    150
+   ],
+   "label": "Nassaukade 150",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012116526",
+   "buildYear": 1898,
+   "status": "Pand in gebruik",
+   "numbers": [
+    151,
+    152
+   ],
+   "label": "Nassaukade 151–152",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156215",
+   "buildYear": 1899,
+   "status": "Pand in gebruik",
+   "numbers": [
+    153
+   ],
+   "label": "Nassaukade 153",
+   "units": 7,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164841",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    154
+   ],
+   "label": "Nassaukade 154",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236641",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    155
+   ],
+   "label": "Nassaukade 155",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163874",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    156
+   ],
+   "label": "Nassaukade 156",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161400",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    157
+   ],
+   "label": "Nassaukade 157",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152484",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    158
+   ],
+   "label": "Nassaukade 158",
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158889",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    159
+   ],
+   "label": "Nassaukade 159",
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160733",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    160
+   ],
+   "label": "Nassaukade 160",
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165239",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    161
+   ],
+   "label": "Nassaukade 161",
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236458",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    162,
+    163
+   ],
+   "label": "Nassaukade 162–163",
+   "units": 7,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159530",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    164
+   ],
+   "label": "Nassaukade 164",
+   "units": 4,
+   "groundUses": [
+    "industriefunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153335",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    165
+   ],
+   "label": "Nassaukade 165",
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie,winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163545",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    166
+   ],
+   "label": "Nassaukade 166",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236191",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    167
+   ],
+   "label": "Nassaukade 167",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236122",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    168
+   ],
+   "label": "Nassaukade 168",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236016",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    169
+   ],
+   "label": "Nassaukade 169",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012235971",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    170
+   ],
+   "label": "Nassaukade 170",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153093",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    171
+   ],
+   "label": "Nassaukade 171",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163983",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    172
+   ],
+   "label": "Nassaukade 172",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160569",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    173
+   ],
+   "label": "Nassaukade 173",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160568",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    174
+   ],
+   "label": "Nassaukade 174",
+   "units": 4,
+   "groundUses": [
+    "gezondheidszorgfunctie,woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157536",
+   "buildYear": 1904,
+   "status": "Pand in gebruik",
+   "numbers": [
+    175
+   ],
+   "label": "Nassaukade 175",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164340",
+   "buildYear": 1904,
+   "status": "Pand in gebruik",
+   "numbers": [
+    176
+   ],
+   "label": "Nassaukade 176",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166093",
+   "buildYear": 1904,
+   "status": "Pand in gebruik",
+   "numbers": [
+    177
+   ],
+   "label": "Nassaukade 177",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162530",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    300
+   ],
+   "label": "Nassaukade 300",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162529",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    301
+   ],
+   "label": "Nassaukade 301",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162289",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    302
+   ],
+   "label": "Nassaukade 302",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157568",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    303
+   ],
+   "label": "Nassaukade 303",
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166694",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    304
+   ],
+   "label": "Nassaukade 304",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157131",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    304
+   ],
+   "label": "Nassaukade 304",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159934",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    305
+   ],
+   "label": "Nassaukade 305",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166290",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    306
+   ],
+   "label": "Nassaukade 306",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162090",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    307
+   ],
+   "label": "Nassaukade 307",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162089",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    308
+   ],
+   "label": "Nassaukade 308",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156555",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    309
+   ],
+   "label": "Nassaukade 309",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156556",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    310
+   ],
+   "label": "Nassaukade 310",
+   "units": 8,
+   "groundUses": [
+    "kantoorfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161701",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    311
+   ],
+   "label": "Nassaukade 311",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162083",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    312
+   ],
+   "label": "Nassaukade 312",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157238",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    313
+   ],
+   "label": "Nassaukade 313",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012156130",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    314
+   ],
+   "label": "Nassaukade 314",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164663",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    315
+   ],
+   "label": "Nassaukade 315",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162368",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    316
+   ],
+   "label": "Nassaukade 316",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012154241",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    317
+   ],
+   "label": "Nassaukade 317",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165898",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    318
+   ],
+   "label": "Nassaukade 318",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155657",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    319
+   ],
+   "label": "Nassaukade 319",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161762",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    320
+   ],
+   "label": "Nassaukade 320",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153200",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    321
+   ],
+   "label": "Nassaukade 321",
+   "units": 1,
+   "groundUses": [
+    "industriefunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158533",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    322
+   ],
+   "label": "Nassaukade 322",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012154100",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    327
+   ],
+   "label": "Nassaukade 327",
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157054",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    328
+   ],
+   "label": "Nassaukade 328",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157055",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    329
+   ],
+   "label": "Nassaukade 329",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012161331",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    330
+   ],
+   "label": "Nassaukade 330",
+   "units": 6,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166843",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    332
+   ],
+   "label": "Nassaukade 332",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012157649",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    333
+   ],
+   "label": "Nassaukade 333",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164057",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    334
+   ],
+   "label": "Nassaukade 334",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012128825",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    335
+   ],
+   "label": "Nassaukade 335",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156739",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    336
+   ],
+   "label": "Nassaukade 336",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012069666",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    337
+   ],
+   "label": "Nassaukade 337",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166266",
+   "buildYear": 1884,
+   "status": "Pand in gebruik",
+   "numbers": [
+    338
+   ],
+   "label": "Nassaukade 338",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012085603",
+   "buildYear": 1984,
+   "status": "Pand in gebruik",
+   "numbers": [
+    340
+   ],
+   "label": "Nassaukade 340",
+   "units": 14,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012125376",
+   "buildYear": 1995,
+   "status": "Pand in gebruik",
+   "numbers": [
+    341,
+    342,
+    343,
+    344,
+    345
+   ],
+   "label": "Nassaukade 341–345",
+   "units": 18,
+   "groundUses": [
+    "woonfunctie",
+    "industriefunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012243207",
+   "buildYear": 2010,
+   "status": "Pand in gebruik",
+   "numbers": [
+    342
+   ],
+   "label": "Nassaukade 342",
+   "units": 1,
+   "groundUses": [
+    "onderwijsfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012124002",
+   "buildYear": 1995,
+   "status": "Pand in gebruik",
+   "numbers": [
+    346,
+    347,
+    348
+   ],
+   "label": "Nassaukade 346–348",
+   "units": 9,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012071900",
+   "buildYear": 1995,
+   "status": "Pand in gebruik",
+   "numbers": [
+    349,
+    350
+   ],
+   "label": "Nassaukade 349–350",
+   "units": 10,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237159",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    351
+   ],
+   "label": "Nassaukade 351",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157835",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    352
+   ],
+   "label": "Nassaukade 352",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236345",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    353
+   ],
+   "label": "Nassaukade 353",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159621",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    354
+   ],
+   "label": "Nassaukade 354",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155664",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    354
+   ],
+   "label": "Nassaukade 354",
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152848",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    355
+   ],
+   "label": "Nassaukade 355",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155824",
+   "buildYear": 1884,
+   "status": "Pand in gebruik",
+   "numbers": [
+    356
+   ],
+   "label": "Nassaukade 356",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157582",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    356
+   ],
+   "label": "Nassaukade 356",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165353",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    357,
+    358
+   ],
+   "label": "Nassaukade 357–358",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163910",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    359
+   ],
+   "label": "Nassaukade 359",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156430",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    360
+   ],
+   "label": "Nassaukade 360",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236066",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    361
+   ],
+   "label": "Nassaukade 361",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012237295",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    362
+   ],
+   "label": "Nassaukade 362",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012156639",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    363
+   ],
+   "label": "Nassaukade 363",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156665",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    364
+   ],
+   "label": "Nassaukade 364",
+   "units": 5,
+   "groundUses": [
+    "industriefunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156211",
+   "buildYear": 1897,
+   "status": "Pand in gebruik",
+   "numbers": [
+    365
+   ],
+   "label": "Nassaukade 365",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156684",
+   "buildYear": 1941,
+   "status": "Pand in gebruik",
+   "numbers": [
+    366
+   ],
+   "label": "Nassaukade 366",
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164630",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    367
+   ],
+   "label": "Nassaukade 367",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162799",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    368
+   ],
+   "label": "Nassaukade 368",
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158725",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    369
+   ],
+   "label": "Nassaukade 369",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156527",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    370
+   ],
+   "label": "Nassaukade 370",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159968",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    371
+   ],
+   "label": "Nassaukade 371",
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156772",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    372
+   ],
+   "label": "Nassaukade 372",
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012130645",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    373
+   ],
+   "label": "Nassaukade 373",
+   "units": 19,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152522",
+   "buildYear": 1892,
+   "status": "Pand in gebruik",
+   "numbers": [
+    375
+   ],
+   "label": "Nassaukade 375",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158622",
+   "buildYear": 1892,
+   "status": "Pand in gebruik",
+   "numbers": [
+    376
+   ],
+   "label": "Nassaukade 376",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165188",
+   "buildYear": 1892,
+   "status": "Pand in gebruik",
+   "numbers": [
+    377
+   ],
+   "label": "Nassaukade 377",
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237312",
+   "buildYear": 1925,
+   "status": "Pand in gebruik",
+   "numbers": [
+    378,
+    379
+   ],
+   "label": "Nassaukade 378–379",
+   "units": 11,
+   "groundUses": [
+    "winkelfunctie",
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236744",
+   "buildYear": 1925,
+   "status": "Pand in gebruik",
+   "numbers": [
+    380,
+    381
+   ],
+   "label": "Nassaukade 380–381",
+   "units": 8,
+   "groundUses": [
+    "kantoorfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012138896",
+   "buildYear": 1920,
+   "status": "Pand in gebruik",
+   "numbers": [
+    382
+   ],
+   "label": "Nassaukade 382",
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie,overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156043",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    383
+   ],
+   "label": "Nassaukade 383",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012156462",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    384
+   ],
+   "label": "Nassaukade 384",
+   "units": 5,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012163690",
+   "buildYear": 1884,
+   "status": "Pand in gebruik",
+   "numbers": [
+    387
+   ],
+   "label": "Nassaukade 387",
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236234",
+   "buildYear": 1884,
+   "status": "Pand in gebruik",
+   "numbers": [
+    389
+   ],
+   "label": "Nassaukade 389",
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236892",
+   "buildYear": 1884,
+   "status": "Pand in gebruik",
+   "numbers": [
+    391
+   ],
+   "label": "Nassaukade 391",
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012072136",
+   "buildYear": 1940,
+   "status": "Pand in gebruik",
+   "numbers": [
+    393,
+    394
+   ],
+   "label": "Nassaukade 393–394",
+   "units": 6,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012243757",
+   "buildYear": 2016,
+   "status": "Pand in gebruik",
+   "numbers": [
+    900
+   ],
+   "label": "Nassaukade 900",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012202239",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    920
+   ],
+   "label": "Nassaukade 920",
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012186218",
+   "buildYear": 1885,
+   "status": "Pand in gebruik",
+   "numbers": [
+    930
+   ],
+   "label": "Nassaukade 930",
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012216872",
+   "buildYear": 1925,
+   "status": "Pand in gebruik",
+   "numbers": [
+    946
+   ],
+   "label": "Nassaukade 946",
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ]
+  }
+ ]
+}
