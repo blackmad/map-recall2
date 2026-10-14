@@ -1277,10 +1277,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Part 1): lane A measurement and likeness tooling (crops archived to
   source-data, `cropToPanel.ts`, `measureFacade.ts`, `likeness.ts`,
   `measure.ts`, the sheet with verdict, the install gate), lane B measured
-  tint bypass (`tintSource: 'measured'`), lane C kit vocabulary
-  (glazed-hall, glazed-columns, french-window-ledge, measured ribbon
-  piers, windowShape, palette.glass; cut openings across coplanar merged
-  surfaces), the texture prototype DONE and lost to the kit on all three (HISTORY
+  tint bypass (`tintSource: 'measured'`), lane C kit vocabulary DONE
+  (HISTORY "Large kit vocabulary"; the three re-fits are held in
+  `scripts/building-recipes/held-installs.json` until lane B2 fixes the
+  look: `cityTint('glass')` white for all glass, measured dark walls
+  near-black and the plum half pale grey in the city-look column; then
+  install and drop the hold), the texture prototype DONE and lost to the kit on all three (HISTORY
   "Texture prototype"; a fairer second try only if lane C's kit fails
   likeness: 16 px/m, no posterisation, lit by the look), lane D triage of
   the ~100 installed houses (re-fit / uninstall / bespoke) and

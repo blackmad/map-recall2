@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 
-const HOUSES = 'scripts/building-recipes/houses', GOLDEN = 'scripts/building-recipes/large-mesh-golden.json', MODELS = 'public/canal-drive/models/ordinary-buildings';
+const HOUSES = 'scripts/building-recipes/houses', GOLDEN = 'scripts/building-recipes/large-mesh-golden.json', HELD = 'scripts/building-recipes/held-installs.json', MODELS = 'public/canal-drive/models/ordinary-buildings';
 const git = (...a: string[]) => execFileSync('/usr/bin/git', a, {encoding: 'utf8', maxBuffer: 1 << 28}).trim();
 const content = new Map<string, Record<string, string>>();
 const goldenAt = (sha: string) => { if (!content.has(sha)) content.set(sha, JSON.parse(git('show', `${sha}:${GOLDEN}`))); return content.get(sha)!; };
@@ -38,7 +38,8 @@ const catalogue = new Map<string, string>(
 
 export function staleInstalls() {
   const golden: Record<string, string> = JSON.parse(fs.readFileSync(GOLDEN, 'utf8'));
-  const stale: {id: string; installed: string | undefined; golden: string}[] = [], notInstalled: string[] = [];
+  const held: Record<string, string> = JSON.parse(fs.readFileSync(HELD, 'utf8')).held ?? {};
+  const stale: {id: string; installed: string | undefined; golden: string}[] = [], notInstalled: string[] = [], heldStale: string[] = [];
   for (const id of fs.readdirSync(HOUSES).sort()) {
     const f = path.join(HOUSES, id, 'intent.json');
     if (!fs.existsSync(f) || JSON.parse(fs.readFileSync(f, 'utf8')).kind !== 'large') continue;
@@ -47,16 +48,17 @@ export function staleInstalls() {
     // Exact when the install recorded `meshHash` on its catalogue entry; otherwise the git heuristic.
     const recorded = catalogue.get(`recipe-large-${id}.glb`);
     const then = recorded ?? hashAtInstall(id, git('log', '-1', '--format=%H', '--', glb));
-    if (then !== golden[id]) stale.push({id, installed: then, golden: golden[id]});
+    if (then !== golden[id]) { if (held[id]) heldStale.push(`${id} (${held[id]})`); else stale.push({id, installed: then, golden: golden[id]}); }
   }
-  return {stale, notInstalled};
+  return {stale, notInstalled, heldStale};
 }
 if (process.argv[1]?.endsWith('stale-installs.ts')) {
-  const {stale, notInstalled} = staleInstalls();
+  const {stale, notInstalled, heldStale} = staleInstalls();
   if (process.argv.includes('--ids')) console.log(stale.map(s => s.id).join(','));
   else {
     for (const s of stale) console.log(`${s.id}: golden at install ${s.installed} -> ${s.golden}`);
-    console.log(`${stale.length} stale installs${notInstalled.length ? `; not installed: ${notInstalled.join(', ')}` : ''}`);
+    for (const h of heldStale) console.log(`held: ${h}`);
+    console.log(`${stale.length} stale installs${heldStale.length ? `, ${heldStale.length} held` : ''}${notInstalled.length ? `; not installed: ${notInstalled.join(', ')}` : ''}`);
   }
   if (process.argv.includes('--strict') && stale.length) process.exit(1);
 }
