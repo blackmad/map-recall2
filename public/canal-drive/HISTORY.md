@@ -1,5 +1,45 @@
 # Canal Recall — what is built
 
+## Own ground: belt audit clean, pockets, water under footbridges, park cull, far ring (2026-10-14, night)
+
+Lane `ground/belt-far-20261014`, five items. (1) `check:own-ground-belt`
+went from 18 NEW findings to 7, all KNOWN, over 183 decks and 1,647
+probes: a tram rail within 3.5 cm over a street band counts as street
+(`deckStreetTop`, `RAIL_ON_BAND_M` in `roadRegressions.ts`), bridge
+street bands get cross-section vertices (`acrossStep` 2 m at LOD 0, 3 m
+at LOD 1; +1.8 % triangles per belt cell), `deck-top:BRU2275` is KNOWN
+(the BRU0147 footprint overlaps the cycle deck); `deckTopRegressions`
+pins BRU0292/0293/0052/0030/0285. (2) Rozengracht corners: the literal
+"pave between kerbs within 6 m" rule barely helped (−3 to −12 m² per
+9 ha), so `pockets.ts` rasterises land pockets ≤ 40 m² within 30 m of a
+junction at 0.5 m and paves them with the surrounding majority surface:
+land over BGT road within 30 m of the Rozengracht junction 426 → 308 m²,
+false paving +7 to +31 m² per window, +0.9–2.0 % triangles and 90–130 ms
+build per LOD 0 cell (the weak spot); named regression
+`rozengracht-marnixstraat-ne` 25/25 street. (3) `openUnderFootbridges` in
+`water.ts`, driven by the measured decks (bridge kit untouched): 42
+footbridges opened city-wide including the Melkmeisjesbrug, 2.8 ms per
+water cell; BRU0016 reads 15/15 clear water. (4) The park fill under BGT
+surfaces is culled per triangle (a fill triangle goes only when its box
+grown by 0.5 m lies in one BGT surface; land quads under the cell's own
+surfaces go too, since the lawn sags up to 3.6 cm under the land grid):
+Cremerplein cell 373k → 351k tris (−6.0 %), Vondelpark −5.2 %, all 193
+park cells −2.51 M (−4.1 %); `render-topdown.ts` now uses the game's draw
+ranks. (5) `farRing.ts`: 2 km blocks built in the ground worker, one mesh
+per 1 km part with vertex colours (land on a 50 m relief grid, water,
+OSM park/grass/wood, street bands at mapped width, outlines simplified at
+3 m), hidden where the resident ring draws, wanted only when the view
+reaches past it (radius = reach rounded to 1 km, cap 7 km, 2 km
+hysteresis), ≤ 20k tris per block (all 92 blocks: median 6.7k, max 17.1k,
+36.5 MB total); desktop Nieuw-West aerial 10 blocks 86.6k tris 5.1 MB,
+frame median 16.4 → 16.5 ms; `?farGround=0` turns it off. Named
+regressions for Osdorpplein, Buikslotermeerplein and NDSM blocks; e2e
+"far ring" in `own-ground-defects.spec.ts`. Left: the far ring reads
+subtly against the recoloured basemap; residual land over BGT road away
+from junctions (Oud-West 11.6k m²) needs a BGT-driven fill; pocket build
+time; iPhone unmeasured.
+
+
 ## Layered kit: the large-tier overlaps closed (2026-10-14, night)
 
 Lane `large/layered-kit-20261014`. Behind a new top-level intent field
