@@ -118,6 +118,56 @@ test('aerial edge: Da Costakade 13 from 300 m above Nieuw-West, resident radius 
 });
 
 /**
+ * The far ring (farRing.ts, lane belt audit 2026-10-14): from the air the resident ring stops at the 2,000 m cap. Two
+ * aerial views, each with the far ring off and on: Nieuw-West looking west from Bos en Lommer, Noord looking north from
+ * the IJ. Screenshots, far stats (blocks, parts shown, triangles, MB, build ms) and the held-camera frame time.
+ */
+const FAR_VIEWS = [
+  ['nieuw-west', { lng: 4.845, lat: 52.3745, bearing: 270, zoom: 15.8, pitch: 76 }],
+  ['noord', { lng: 4.905, lat: 52.385, bearing: 10, zoom: 15.8, pitch: 76 }],
+] as const;
+
+test('far ring: aerial views over Nieuw-West and Noord, far ring off and on', async ({ page }, info) => {
+  test.setTimeout(1_800_000);
+  mkdirSync(OUT, { recursive: true });
+  const errors = await boot(page);
+  const rows: Record<string, unknown>[] = [];
+  for (const [name, view] of FAR_VIEWS) {
+    await teleport(page, view);
+    for (const far of [false, true]) {
+      await page.evaluate(({ view, far }) => {
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map, ground = vm._ownGround;
+        vm.__syncOriginal = vm.__syncOriginal || vm.sync;
+        vm.sync = () => {};
+        ground.opts.far = far;
+        map.setMaxPitch?.(85);
+        map.jumpTo({ center: [view.lng, view.lat], zoom: view.zoom, pitch: view.pitch, bearing: view.bearing });
+        ground.update([view.lng, view.lat], view.zoom, view.pitch);
+        map.triggerRepaint();
+      }, { view, far });
+      await expect.poll(async () => { const s = await status(page); return s.ready && !s.queued && !Object.keys(s.pending ?? {}).length && !s.far.pending; }, { timeout: 300_000, intervals: [1000] }).toBe(true);
+      await page.waitForTimeout(3000);
+      const perf = await page.evaluate(async () => {
+        const map = (window as any).canalRecallGame.vectorMap.map, times: number[] = [];
+        let last = performance.now();
+        for (let i = 0; i < 120; i++) { map.triggerRepaint(); await new Promise<void>(r => requestAnimationFrame(() => r())); const t = performance.now(); times.push(t - last); last = t; }
+        times.sort((a, b) => a - b);
+        return { medianMs: +times[60].toFixed(1), p95Ms: +times[114].toFixed(1) };
+      });
+      const s = await status(page);
+      await page.screenshot({ path: `${OUT}/${info.project.name}-far-${name}-${far ? 'on' : 'off'}.png` });
+      rows.push({ view: name, ring: far ? 'on' : 'off', residentRadius: s.radiusM, cells: Object.keys(s.cells).length, triangles: s.triangles, geometryMB: s.geometryMB, far: s.far, ...perf });
+      console.log(JSON.stringify(rows[rows.length - 1]));
+      expect(s.errors, JSON.stringify(s.errors)).toEqual([]);
+      if (far) expect(s.far.partsShown).toBeGreaterThan(0);
+      else expect(s.far.blocks).toBe(0);
+    }
+  }
+  writeFileSync(`${OUT}/${info.project.name}-far-ring.json`, JSON.stringify(rows, null, 1));
+  expect(errors).toEqual([]);
+});
+
+/**
  * Far-ring cell arrival: a straight ride east over Bos en Lommer / Oud-West at 20 m/s (cells arrive every few seconds), once
  * with the arrival dissolve off (fadeMs 0) and once on (400 ms). Reports rAF deltas and how many frames had a cell dissolving.
  *   PERF_RIDE=1 OWN_GROUND=1 PW_PORT=4460 SHOT_TAG=after npx playwright test own-ground-defects -g fade --project=desktop
