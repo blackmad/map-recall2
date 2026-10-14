@@ -6,43 +6,38 @@
  "address": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
  "sources": [
   {
-   "id": "pano-2021-09-23-s",
+   "id": "pano-2022-01-25-w03-163L",
    "kind": "street-panorama",
-   "capturedAt": "2021-09-23",
-   "image": "staging/pand-reference-walls/0363100012118358/w03-163.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_000014/",
+   "capturedAt": "2022-01-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002439_pano_0001_000018/",
+   "image": "source-data://pand-reference-walls/0363100012118358/w03-163L.jpg",
+   "sha256": "5d9d9cc1fc99747749016d6af2340ecd04ffb8993ce7e7c626d70d272b3326de",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-09-23-s",
+   "id": "pano-2021-09-23-w01-285",
    "kind": "street-panorama",
    "capturedAt": "2021-09-23",
-   "image": "staging/pand-reference-walls/0363100012118358/w03-163.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_000014/",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2021-09-23-w",
-   "kind": "street-panorama",
-   "capturedAt": "2021-09-23",
-   "image": "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_001423/",
+   "image": "source-data://pand-reference-walls/0363100012118358/w01-285.jpg",
+   "sha256": "f39570bd84d5bbecd736133100a34421baf6c0310e18d965745a87d793731f4e",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-09-23-w",
+   "id": "pano-2021-09-23-w11-285",
    "kind": "street-panorama",
    "capturedAt": "2021-09-23",
-   "image": "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_001423/",
+   "image": "source-data://pand-reference-walls/0363100012118358/w11-285.jpg",
+   "sha256": "982b13ae5e4beb456028191b53d34cde1951abd8825d6058b3f912dbf06e3adc",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-09-23-w",
+   "id": "pano-2024-12-23-w04-285L",
    "kind": "street-panorama",
-   "capturedAt": "2021-09-23",
-   "image": "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_001423/",
+   "capturedAt": "2024-12-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-12-23_09-14-39_09420/",
+   "image": "source-data://pand-reference-walls/0363100012118358/w04-285L.jpg",
+   "sha256": "88e5e2ffe4ea0457fc2296db08177c8c55dd18027a039b44ecf7b8cf08f91bd0",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -74,7 +69,11 @@
    },
    "palette": {
     "frame": "#7d8286"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -97,7 +96,18 @@
     "rail": "bars"
    },
    "palette": {
-    "frame": "#7d8286"
+    "frame": "#7d8286",
+    "brick": "#574d4d"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.389,
+    "sill": 0.28
    }
   },
   {
@@ -111,7 +121,13 @@
    "palette": {
     "frame": "#6a2a2f"
    },
-   "baysPerStorey": 20
+   "baysPerStorey": 20,
+   "hand": [
+    "palette",
+    "windowShape",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -125,7 +141,13 @@
    "palette": {
     "frame": "#6a2a2f"
    },
-   "baysPerStorey": 20
+   "baysPerStorey": 20,
+   "hand": [
+    "palette",
+    "windowShape",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -138,7 +160,11 @@
    "baysPerStorey": 14,
    "ground": "system",
    "windows": "plain",
-   "frames": false
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -158,7 +184,16 @@
   "South front (surfaces 35/153 and 31/32/45, 2021-09-23 panorama w03-163, sharp): dark brown brick, four storeys of balcony galleries with fine steel bar rails over a shop plinth (cream timber-clad fascias: MANZARAM, FEBO), a taller block at the right with deep loggias, and at the far left edge the red vertical stack of the three St Andrew's crosses on a pylon. West front (surfaces 6/9, w01-285, the A10 side, 65 m): a five-storey red-framed window wall with a rhythm of dark perforated screens in front of the glazing, over a dark mesh plinth.",
   "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab.",
   "The second west wall (surfaces 15/16/23, 2021-09-22 w04-285) is hidden behind a concrete ramp wall in its panorama; the red-framed storeys visible above it are the same facade as surfaces 6/9, so it carries the same curtain-wall group (INFERRED below the visible storeys). Both curtain walls use 20 bays per storey to fit the 12k budget (real pitch is finer).",
-  "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups glazed the ground storey for one install; they now carry ground \"mesh-plinth\": the glass skin with a closed dark panel over the ground storey, as the photo's dark mesh plinth (SIMPLIFIED: the mesh is a flat dark panel, no perforation)."
+  "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups glazed the ground storey for one install; they now carry ground \"mesh-plinth\": the glass skin with a closed dark panel over the ground storey, as the photo's dark mesh plinth (SIMPLIFIED: the mesh is a flat dark panel, no perforation).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #603c38 not used (not darker than the wall #574d4d by 10 L*, or tinted): kit glass kept."
  ],
- "layeredKit": true
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   1,
+   2,
+   3
+  ]
+ }
 }

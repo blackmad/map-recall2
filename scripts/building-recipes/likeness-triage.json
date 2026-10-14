@@ -154,5 +154,170 @@
   "outcome": "refit",
   "look": "Orange hotel brick reads right on the Engelsesteeg front; the south face is brown brick with tall white-framed windows, drawn tan.",
   "note": "walls[1] measured #6e6256 with windows by hand 0.45 x 0.55; walls[2]'s crop shows a neighbouring canal house: inferred."
+ },
+ "westerdok-186086": {
+  "outcome": "refit",
+  "look": "One tan brick and punched grid around a courtyard block whose fronts are several architects' work: dark grey and pale stone on the south, dark brown and yellow on the east, loggias and balconies.",
+  "note": "measure.ts found the south split (dark grey #474d56 | pale) and the dark brown east front; the east front's yellow third and the loggias are not expressed (a second split per group). walls[1], [2] NO EVIDENCE (foliage, washed): inferred."
+ },
+ "nieuwe-achtergracht-253754": {
+  "outcome": "refit",
+  "look": "Red brick UvA wing against dark brown brick with large square windows.",
+  "note": "measured per face (#5e4e41, #6e605a)."
+ },
+ "aambeeldstraat-202176": {
+  "outcome": "refit",
+  "look": "Blue-grey clad hall against a dark grey hall with a high glazed band.",
+  "note": "walls[0] measured #585955, walls[1] hand from walls[0] (foliage 26 %)."
+ },
+ "oude-turfmarkt-168172": {
+  "outcome": "refit",
+  "look": "Red brick with narrow windows against dark grey-brown brick with large windows (Oude Turfmarkt front); the east face (2016 crop) is a modern infill with wood-framed glazing, drawn white.",
+  "note": "walls[0] measured #5d5550, window height fixed; walls[1] kept white (the crop's dark wall cluster is the window frames and shade): inferred; a glazed infill system would say it better."
+ },
+ "oba-javaplein": {
+  "outcome": "refit",
+  "look": "Pink stucco-like grid against a grey-tan concrete grid on the square and brown brick neo-traditional fronts with gables on the side streets.",
+  "note": "measured per face (#8c7a6f, #4a3832, #64544b, #81614f); window heights fixed (0.10 and 0.98 slots). The gables and dormers of walls[3] are roof form (3DBAG), not facade."
+ },
+ "oba-olympisch-kwartier": {
+  "outcome": "refit",
+  "look": "One bright red brick on eight faces against several darker red-brown and purple-brown bricks.",
+  "note": "measured per face; walls[0] keeps the preset window (every measured windowShape there opened 4-15 m of open edge: an opening that straddles merged coplanar 3DBAG surfaces), walls[4] width by hand 0.72."
+ },
+ "oba-linnaeus": {
+  "outcome": "refit",
+  "look": "Red brick ribbons against dark brown brick with long ribbon windows over a shop plinth.",
+  "note": "measured (#3d3533, #6d5351), walls[1] window height fixed."
+ },
+ "oba-mercatorplein": {
+  "outcome": "uninstall",
+  "look": "Plain brick grid for the 1927 Amsterdam School block on Mercatorplein; the only crop is the glazed ground-floor canopy wing.",
+  "note": "NO PHOTO on both ride-visible block fronts (walls[0], [2]) and an ornamented Amsterdam School front: uninstall until crops exist; bespoke if it returns."
+ },
+ "stadsloket-oost": {
+  "outcome": "refit",
+  "look": "Tan brick reads right on the main front; the east face is a brighter yellow brick with a large arched entrance.",
+  "note": "walls[0] window height fixed (WARN), walls[2] measured yellow #f4c190; walls[1] kept tan (the crop's #4a463f is the shaded ribbon band): inferred. The big entrance arch is not modelled."
+ },
+ "stadsloket-noord": {
+  "outcome": "refit",
+  "look": "Mid-grey office against a near-black clad block with small window bands.",
+  "note": "measured near-black per face (#24282e, #2f2e3b, #37333d); walls[2] window width fixed."
+ },
+ "stadsloket-zuidoost": {
+  "outcome": "refit",
+  "look": "Red brick against dark brown brick with long window bands.",
+  "note": "measured per face (#6f4a3b, #6f625d, #716460)."
+ },
+ "stadsdeel-nieuw-west": {
+  "outcome": "refit",
+  "look": "White office with punched windows against a dark grey, heavily glazed office tower.",
+  "note": "measured grey per face; windows by hand 0.85 x 0.72 (glazing 0.61 vs photo 0.8: a curtain front over a brick-bay-grid budget). walls[0], [1], [4], [5] have no crop: kept as fitted."
+ },
+ "stadsloket-west": {
+  "outcome": "refit",
+  "look": "Brown housing over shops reads close; the Bos en Lommerplein curtain wall's red mullion grid stands in for a housing front with red-framed windows and balconies, and the low west face is mostly a blank grey wall.",
+  "note": "walls[1] measured #574d4d, window width fixed (measured 0.08); walls[2], [3] kept (layered curtain glass cannot be scored; walls[3]'s crop is a blank neighbour wall): inferred."
+ },
+ "hamerkanaal-209-243116": {
+  "outcome": "refit",
+  "look": "Red brick arched workshop and hall front against near-black-brown 1908 brick; the KROMHOUTHAL front is one huge glazed arch under a stepped gable.",
+  "note": "measured #3d3432 / #3d353c. Still missing: the hall's single full-height arched window and stepped gable (kit: a hall-front arch system)."
+ },
+ "cgm-190-202277": {
+  "outcome": "refit",
+  "look": "Tan market hall against dark brown brick behind loading docks, a canopy band and trucks.",
+  "note": "walls[0], [2] measured; walls[1] (the canopy band) kept: the crop is trucks and signage."
+ },
+ "distelweg-88-114605": {
+  "outcome": "inferred",
+  "look": "Grey clad warehouse drawn blank, as the 1948 sandwich-panel shed is.",
+  "note": "Its only group is blank, so the likeness has nothing to score; kept as fitted."
+ },
+ "hotel-arena-236788": {
+  "outcome": "refit",
+  "look": "Orange brick against the 1890 orphanage's dark brown brick with stone bands and arched windows; the pavilion wing's yellow brick reads right.",
+  "note": "walls[0] measured #70574d (WARN), walls[1] measured, window height fixed; walls[2] kept (the crop is in deep shade). The stone bands and the glazed roof pavilion are listed gaps."
+ },
+ "utrechtsestraat-15-169214": {
+  "outcome": "refit",
+  "look": "Brown brick office with stone piers reads close; the photo's multi-pane windows are wider than the kit's tall slots.",
+  "note": "measured colour (within 0.03 L) and window shapes per face; walls[0] behind foliage."
+ },
+ "marnixstraat-248-185422": {
+  "outcome": "keep",
+  "look": "White ribbon decks of the car park read right against the photos (white deck edges over dark openings).",
+  "note": "walls[0] FAIL is the dark deck interiors read as wall; walls[1], [2] washed out. Not re-fitted."
+ },
+ "funenpark-427-184743": {
+  "outcome": "refit",
+  "look": "Orange-red brick arcs against near-black-brown brick (2002 curved apartment arcs), mostly seen through trees.",
+  "note": "near-black brown by hand #3e3832 on all eight groups from the measured faces (#252c24-#413f39; the crops are leafy: NO EVIDENCE on seven): inferred."
+ },
+ "plantage-middenlaan-52-186093": {
+  "outcome": "uninstall",
+  "look": "A mostly blank brown box (one windowed front) against a 2022 brick courtyard block with stacked cream curved balcony bands on every street front.",
+  "note": "NO PHOTO on all three street fronts (crop coverage 0.54 / 0 / 0.59 under the 0.60 match; thumbnails w01-210L, w03-30L, w07-120 show the fronts) and ride-visible (217 sampled routes): uninstall. Needs curved balcony bands (kit) when it returns."
+ },
+ "westerdok-748-186003": {
+  "outcome": "refit",
+  "look": "Bright red brick against darker red-brown and brown brick blocks.",
+  "note": "measured per face; window heights fixed (0.90 slots)."
+ },
+ "cgm-114-202381": {
+  "outcome": "keep",
+  "look": "Pale market hall with green shutters and a sign fascia reads right against the photo (pale walls under a deep canopy, green roller shutters, signage).",
+  "note": "The measured #241d1c is the canopy's shade over the front: a measurement miss."
+ },
+ "buitenzagerij-45-100112": {
+  "outcome": "refit",
+  "look": "Tan brick comb of rows against grey-brown brick (2016 crop, a thin strip).",
+  "note": "walls[0] measured #736352; walls[1] has no crop."
+ },
+ "barlaeus": {
+  "outcome": "refit",
+  "look": "The striped school front reads close (red brick, white-ringed arched windows, a pale ground storey); the photo adds white horizontal bands and carved dressings. The rear wing is dark brown brick, drawn red.",
+  "note": "walls[0], [1] kept (colour and arches right; the measurement is washed out / reads the white bands); walls[2] measured #5d534b, window height fixed. Missing: horizontal white brick banding (a striped-brick wall pattern)."
+ },
+ "vossius": {
+  "outcome": "refit",
+  "look": "Red brick school against dark brown brick with multi-pane windows, mostly behind trees.",
+  "note": "measured per face where the crop allows; walls[0], [2] behind foliage: inferred."
+ },
+ "weteringstraat-16-184747": {
+  "outcome": "refit",
+  "look": "Brown brick office reads close; the measured fronts are a cooler grey-brown.",
+  "note": "measured per face (#675d5a, #574e48, #686360, #4a413f, #423735); system and bays kept."
+ },
+ "berlage-lyceum": {
+  "outcome": "keep",
+  "look": "Yellow brick school with framed multi-pane window groups reads right on all three fronts.",
+  "note": "walls[0]'s measured #7d6e52 is the shaded front (the photo is in shade); walls[1] washed out; walls[2] within 0.05 L. Not re-fitted."
+ },
+ "montessori-van-ostade": {
+  "outcome": "refit",
+  "look": "Light red brick against dark red-brown brick with tall framed windows.",
+  "note": "measured #68584f (WARN after re-fit)."
+ },
+ "rijksakademie": {
+  "outcome": "refit",
+  "look": "Light red brick with white-ringed arched windows against a mid-to-dark red-brown barracks brick, seen through trees.",
+  "note": "one brick by hand #6e4f42 on both fronts between the two crops (#8f7b65 leafy, #473f36 shaded): inferred."
+ },
+ "amsterdams-lyceum": {
+  "outcome": "uninstall",
+  "look": "A plain brick grid against a 1920 brick school whose Valeriusplein front is a pair of gate arches under a lettered band (HET AMSTERDAMS LYCEUM).",
+  "note": "NO PHOTO on both street fronts (ride-visible: 44 sampled routes) and the gate-arch passage is ornament the kit cannot say: uninstall; needs a through-passage arch system."
+ },
+ "cygnus": {
+  "outcome": "refit",
+  "look": "Pale grey office grid against a dark brown brick grid with deep windows.",
+  "note": "measured #43372e; windows by hand 0.72 x 0.74 (refine had them 0.98 tall)."
+ },
+ "reade": {
+  "outcome": "keep",
+  "look": "White ribbon-window rehab block reads close to the pale grey curved front with yellow awnings.",
+  "note": "the measured #545555 is the shaded ribbon band; low ride visibility (4 routes). The yellow awnings are not modelled."
  }
 }
