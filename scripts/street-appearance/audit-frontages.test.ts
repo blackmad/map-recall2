@@ -1,4 +1,5 @@
 import test from 'node:test';
+// Re-recorded 2026-10-14 with bake-frontages.ts: 57a49cee retired the Jan Evertsen profile but left its street paths and tile 8412/5384 (re-keyed in 870a8bed) in the survey; every remaining cohort's frontages are byte-identical after the rebake.
 import assert from 'node:assert/strict';
 import { auditFrontages } from './audit-frontages.ts';
 import { assessStreetAppearanceSourceAdmission } from './survey-admission.ts';
