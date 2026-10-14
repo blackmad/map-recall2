@@ -85,7 +85,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     if (cells.length && top - p.vMin > 2 && drawCurtainGrid(c, cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
   }
   // Glazed hall over its brick base; glass columns over their bays (after the openings, before the cornice).
-  if (g.hall && info.cells.length && drawGlazedHall(c, info.cells, g.hall.baseM, panelEaves(p) - 0.05, g.hall.lights, g.hall.rows, {glass: s.glass, frame: s.frame, stone: s.stone})) counts.glazedHalls = (counts.glazedHalls ?? 0) + 1;
+  if (g.hall && info.cells.length && drawGlazedHall(c, info.cells, g.hall.baseM, panelEaves(p) - 0.05, g.hall.lights, g.hall.rows, {wall: s.wall, frame: s.frame, stone: s.stone})) counts.glazedHalls = (counts.glazedHalls ?? 0) + 1;
   if (g.columns && info.cells.length) {
     const col = g.columns, every = Math.max(1, g.bays, ...col.bays.map(b => b + 1));
     const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: s.glass, frame: s.frame, stone: s.stone});
@@ -251,8 +251,8 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
     ...(hooks.glassBackM !== undefined ? {glassBackM: hooks.glassBackM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => recipe.panelSystem?.[p.index] ?? groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
-    // layered kit: a curtain wall's 3DBAG wall is its glass skin (the grid is drawn on it)
-    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.slots.wall; },
+    // layered kit: a curtain wall's (and a glazed hall's) 3DBAG wall is its glass skin (the grid and the hall's brick base are drawn on it)
+    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
       const g = groupOf(p.index);
       if (hooks.skipCell?.(p, floor, bay, bays, g)) return true;

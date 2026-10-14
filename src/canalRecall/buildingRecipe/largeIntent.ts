@@ -208,6 +208,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (typeof h.base !== 'number' || !(h.base >= 0.05 && h.base <= 0.8)) problems.push(`${at}.hall.base: fraction 0.05..0.8 of the eaves height`);
         count(h.lights, `${at}.hall.lights`, 1, 60); count(h.rows, `${at}.hall.rows`, 1, 40);
       }
+      if (intent.layeredKit === false) problems.push(`${at}: a glazed hall's wall is its glass skin (layered kit only)`);
     } else if (w.hall !== undefined) problems.push(`${at}.hall: only system glazed-hall`);
     if (w.system === 'glazed-columns') {
       const c = w.columns;
