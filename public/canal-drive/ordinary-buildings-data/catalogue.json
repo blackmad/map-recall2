@@ -34177,10 +34177,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012233553",
       "name": "Stadsloket Oost, Oranje-Vrijstaatplein 2, Amsterdam (2008 office block, 81 m long; stadsloket and municipal offices)",
-      "hash": "02790dbf931ac010ed219d2dc4ece81d30d84d2e5ee139d03ca1479eb5aa5e81",
-      "sha256": "02790dbf931ac010ed219d2dc4ece81d30d84d2e5ee139d03ca1479eb5aa5e81",
-      "bytes": 330948,
-      "triangles": 4262,
+      "hash": "5bf6f85ba71285417bc0624c20faeee948564c4cf60069e7b1dcaeee92525183",
+      "sha256": "5bf6f85ba71285417bc0624c20faeee948564c4cf60069e7b1dcaeee92525183",
+      "bytes": 337676,
+      "triangles": 4358,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -34605,7 +34605,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233553",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:35:54.752Z"
+      "updatedAt": "2026-10-14T03:14:03.598Z"
     },
     {
       "id": "ordinary-0363100012104378",
