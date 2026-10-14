@@ -1,0 +1,625 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:13:51.609Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158391",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Witte de Withstraat 153",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000874933"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159654",
+   "addresses": [
+    "Jan Evertsenstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000944725"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814134536,
+     "lngLat": [
+      4.8585125,
+      52.3713065
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012090327",
+   "addresses": [
+    "Jan Evertsenstraat 9",
+    "Jan Evertsenstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 11-H",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000684069"
+    },
+    {
+     "address": "Jan Evertsenstraat 9",
+     "use": "winkelfunctie",
+     "areaM2": 18,
+     "bagId": "0363010000946491"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814122189,
+     "lngLat": [
+      4.8583673,
+      52.3712162
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "cuisine": "chinese",
+      "name": "WONTON",
+      "website": "https://wontonams.nl"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2814135111,
+     "lngLat": [
+      4.8584101,
+      52.3712887
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012071876",
+   "addresses": [
+    "Jan Evertsenstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000684073"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814123536,
+     "lngLat": [
+      4.8582791,
+      52.3712066
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "Napoli Pizza",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012132952",
+   "addresses": [
+    "Jan Evertsenstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 15-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000684080"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814124862,
+     "lngLat": [
+      4.8582056,
+      52.3711973
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "shop": "tattoo",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012126159",
+   "addresses": [
+    "Jan Evertsenstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 17-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000684084"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814125892,
+     "lngLat": [
+      4.8581177,
+      52.3711789
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "cuisine": "lebanese",
+      "name": "Maz Mez",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012136734",
+   "addresses": [
+    "Jan Evertsenstraat 19"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125587",
+   "addresses": [
+    "Jan Evertsenstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000684097"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814127464,
+     "lngLat": [
+      4.8579274,
+      52.3711602
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Grapedistrict",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012081449",
+   "addresses": [
+    "Jan Evertsenstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000684102"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814127751,
+     "lngLat": [
+      4.8578538,
+      52.3711508
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23-H",
+      "addr:postcode": "1057BL",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "cafe",
+      "name": "Lara",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012063583",
+   "addresses": [
+    "Jan Evertsenstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000684110"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814128224,
+     "lngLat": [
+      4.857766,
+      52.3711324
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25-H",
+      "addr:postcode": "1057BM",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "cuisine": "turkish",
+      "name": "Konya Etliekmek",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012071593",
+   "addresses": [
+    "Jan Evertsenstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000684117"
+    },
+    {
+     "address": "Jan Evertsenstraat 27",
+     "use": "winkelfunctie",
+     "areaM2": 187,
+     "bagId": "0363010012135743"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125072",
+   "addresses": [
+    "Jan Evertsenstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000684125"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141138",
+   "addresses": [
+    "Jan Evertsenstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000684132"
+    },
+    {
+     "address": "Jan Evertsenstraat 31",
+     "use": "winkelfunctie",
+     "areaM2": 193,
+     "bagId": "0363010012135745"
+    },
+    {
+     "address": "Jan Evertsenstraat 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 308,
+     "bagId": "0363010012584934"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9423581853,
+     "lngLat": [
+      4.8575037,
+      52.3710879
+     ],
+     "tags": {
+      "check_date": "2024-08-31",
+      "name": "Fort Negen",
+      "opening_hours": "Mo-Sa 08:00-18:00; Su 08:00-16:00",
+      "shop": "bakery",
+      "website": "https://www.fortnegen.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012252159",
+   "addresses": [
+    "Jan Evertsenstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 33-H",
+     "use": "winkelfunctie",
+     "areaM2": 169,
+     "bagId": "0363010001005411"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147692",
+   "addresses": [
+    "Jan Evertsenstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000684147"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128604",
+   "addresses": [
+    "Jan Evertsenstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684156"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12147770701,
+     "lngLat": [
+      4.8572323,
+      52.3710879
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "cuisine": "sandwich",
+      "name": "Fort Negen Sandwichbar",
+      "opening_hours": "We-Sa 11:00-15:00"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120124",
+   "addresses": [
+    "Jan Evertsenstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000684164"
+    },
+    {
+     "address": "Jan Evertsenstraat 39",
+     "use": "winkelfunctie",
+     "areaM2": 197,
+     "bagId": "0363010012135747"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150064",
+   "addresses": [
+    "Jan Evertsenstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 41-H",
+     "use": "bijeenkomstfunctie,overige gebruiksfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000684172"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1338094260,
+     "lngLat": [
+      4.8571118,
+      52.3710583
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "41hs",
+      "addr:postcode": "1057BM",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "email": "ikwil@radijs-amsterdam.nl",
+      "name": "Radijs",
+      "opening_hours": "Su-Th 12:00-01:00; Fr-Sa 12:00-02:00",
+      "payment:coins": "yes",
+      "payment:debit_cards": "yes",
+      "payment:notes": "yes",
+      "phone": "+31 20 751 3232",
+      "website": "https://radijs-amsterdam.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2814130822,
+     "lngLat": [
+      4.8570651,
+      52.3710151
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41-H",
+      "addr:postcode": "1057BM",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "cafe",
+      "contact:phone": "+31 20 235 7175",
+      "name": "De Neef van Fred",
+      "opening_hours": "Tu-Fr 11:00-24:00; Sa,Su 00:00-01:00,11:00-24:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://deneefvanfred.goudvisch.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10799554505,
+     "lngLat": [
+      4.857093,
+      52.371007
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "De neef van Fred",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T13:13:51.609Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

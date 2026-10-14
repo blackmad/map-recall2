@@ -51,13 +51,17 @@ async function overpass(face: string, bboxLatLng: number[]): Promise<OsmBusiness
   if (!json) {
     const b = bboxLatLng.join(',');
     const q = `[out:json][timeout:60];(nwr["shop"](${b});nwr["amenity"](${b});nwr["craft"](${b});nwr["office"](${b});nwr["healthcare"](${b});nwr["tourism"](${b}););out center tags;`;
-    for (const endpoint of ['https://overpass-api.de/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter']) {
-      try {
-        const r = await fetch(endpoint, {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'map-recall/1.0 (block-face intake)'}, body: new URLSearchParams({data: q})});
-        if (!r.ok) continue;
-        json = {...(await r.json()), fetchedAt: new Date().toISOString(), endpoint, query: q};
-        break;
-      } catch { /* next endpoint */ }
+    // Three endpoints per round; between rounds back off (30 s, 90 s) instead of hammering a rate-limited server.
+    for (let round = 0; round < 3 && !json; round++) {
+      if (round) await new Promise(r => setTimeout(r, round === 1 ? 30_000 : 90_000));
+      for (const endpoint of ['https://overpass-api.de/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter']) {
+        try {
+          const r = await fetch(endpoint, {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'map-recall/1.0 (block-face intake)'}, body: new URLSearchParams({data: q})});
+          if (!r.ok) continue;
+          json = {...(await r.json()), fetchedAt: new Date().toISOString(), endpoint, query: q};
+          break;
+        } catch { /* next endpoint */ }
+      }
     }
     if (!json) throw Error('Overpass unavailable');
     await fs.mkdir(path.dirname(file), {recursive: true});

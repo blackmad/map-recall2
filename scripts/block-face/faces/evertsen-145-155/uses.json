@@ -1,0 +1,130 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:20:21.930Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012082977",
+   "addresses": [
+    "Jan Evertsenstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Orteliusstraat 191",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000764760"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138669",
+   "addresses": [
+    "Jan Evertsenstraat 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 147-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000684555"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092062",
+   "addresses": [
+    "Jan Evertsenstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 149-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000684564"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138602",
+   "addresses": [
+    "Jan Evertsenstraat 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 151-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000684571"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105558",
+   "addresses": [
+    "Jan Evertsenstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000684578"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131504",
+   "addresses": [
+    "Jan Evertsenstraat 155"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 155",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000684586"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6469465685,
+     "lngLat": [
+      4.8486697,
+      52.3696166
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "155",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "fast_food",
+      "check_date": "2025-06-25",
+      "indoor_seating": "yes",
+      "name": "Lunch Hoek",
+      "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 10:00-20:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 412 5846",
+      "website": "https://lunch-hoek-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-14T13:20:21.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

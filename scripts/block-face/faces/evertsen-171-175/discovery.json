@@ -1,0 +1,98 @@
+{
+ "street": "Jan Evertsenstraat",
+ "seed": "0363100012148630",
+ "members": [
+  "0363100012148630"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012121682",
+   "reason": "frontage 33.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012096074",
+   "reason": "frontage 103.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012114770",
+   "reason": "frontage 249.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012116571",
+   "reason": "frontage 209.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224556",
+   "reason": "no frontage on Jan Evertsenstraat: No footprint edge faces Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224557",
+   "reason": "frontage 108.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224558",
+   "reason": "frontage 203.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224567",
+   "reason": "frontage 213.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224568",
+   "reason": "no frontage on Jan Evertsenstraat: No footprint edge faces Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224569",
+   "reason": "no frontage on Jan Evertsenstraat: No footprint edge faces Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224570",
+   "reason": "no frontage on Jan Evertsenstraat: No footprint edge faces Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224572",
+   "reason": "frontage 187.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224573",
+   "reason": "frontage 193.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224574",
+   "reason": "frontage 194.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224575",
+   "reason": "frontage 181.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224576",
+   "reason": "frontage 72.7 m from Jan Evertsenstraat"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012148630",
+   "alongM": 0,
+   "widthM": 100.66,
+   "eavesM": 12.8,
+   "roofMaxM": 73.78,
+   "storeys3dbag": 0,
+   "builtYear": 1972,
+   "uncertainty": [
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain."
+   ]
+  }
+ ]
+}
