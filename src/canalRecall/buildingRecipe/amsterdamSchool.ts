@@ -222,7 +222,9 @@ export function addErkerCaps(group: T.Group, intent: CanalHouseIntent, recipe: C
       tri(values, FR, BR, RR, [1, 0.5, 0]);
       face(values, [BL, FL, FR, BR], [0, -1, 0]); // soffit
       face(values, [BL, RL, RR, BR], [0, 0, -1]); // against the wall
-      facade.add(meshOf(values, material(ROOF_COLOURS[intent.roof.material].steep), `erker-cap/${f.id}`, 'erker', 'roof', intent.pandId));
+      // A painted (timber) erker (`bayWindows.finish`) has its hipped cap in the trim colour too (oudWest.ts paints the panels).
+      const painted = e.finish === 'painted', trim = recipe.elevations.find(x => x.id === f.id)?.palette?.value.trim ?? recipe.palette.value.trim;
+      facade.add(meshOf(values, material(painted ? trim : ROOF_COLOURS[intent.roof.material].steep), `erker-cap/${f.id}`, 'erker', painted ? 'trim' : 'roof', intent.pandId));
     }
     added++;
   }
