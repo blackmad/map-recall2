@@ -1258,6 +1258,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Funenpark loggias, Revaleiland's slot-window blocks, Wibautstraat's cone
   piers, Louise Wentstraat's glazed stair columns. Reserves for batch 7:
   Klaprozenweg 31, Papaverweg 34, Postjesweg 1 (check `politie-postjesweg`).
+  Funenpark 427's west arc (2026-10-14, HISTORY "Funenpark west arc"):
+  the 5th-storey setback band over the 4-storey run is still blank (11.6k
+  of 12k spent), and the sloped degenerate facet 342 (surfaces 390, 507)
+  draws a dark diagonal across the 6-storey north end with a stepped gap
+  in the windows under it.
 - **Own ground after the belt lane** (2026-10-14, HISTORY "belt audit
   clean, pockets…"): a BGT-driven sidewalk/road fill for land over BGT
   road away from junctions (Oud-West 11.6k m² per 300 m window); pocket

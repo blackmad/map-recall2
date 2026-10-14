@@ -167,7 +167,8 @@
    "ground": "system",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "frames": false
   },
   {
    "wallSurfaces": [
@@ -179,7 +180,8 @@
    "ground": "system",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "frames": false
   },
   {
    "wallSurfaces": [
@@ -191,7 +193,59 @@
    "ground": "system",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    32,
+    91,
+    133,
+    411,
+    423,
+    25,
+    87,
+    395,
+    2,
+    344,
+    375,
+    373,
+    4,
+    3
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain",
+   "curve": true,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    391,
+    196,
+    515,
+    520,
+    248,
+    152,
+    422,
+    364,
+    436,
+    435,
+    153
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain",
+   "curve": true,
+   "frames": false
   }
  ],
  "otherWalls": "blank",
@@ -206,8 +260,9 @@
  },
  "notes": [
   "Funenpark 427 (BAG: built 2002; 273 dwellings, 22 shops, offices; 9,091 m2): the Funenpark housing blocks west of the Funen park, an L-shaped curved arc of four to six storeys. Three fronts are photographed: the south front along the Sumatrastraat side (w01-179, panorama 2020-04-22: a low curved front of four storeys, glazed ribbon loggias in pale green shutters over a glazed ground floor), the east front on the park side (w02-110, 2025-01-30: a curved glass curtain with vertical green fins and orange doors over a brick base) and the west front (w03-291, 2020-09-07: a curved brown brick wall of four to six storeys with regular tall windows).",
-  "Modelled: eight wall groups split by the height steps of the 3DBAG walls (surface lists, not panels, because panel 7, 17 and 86 each hold two or three heights): the south front in three groups (4, 6 and 5 storeys) and the east arc in two (5 storeys as one curve, 6 storeys at the north end) as ribbon windows over a glazed ground floor with green frames; the west brick front in three groups (4, 5 and 6 storeys) as a brick bay grid. Roofs and unlisted walls are the 3DBAG LoD2.2 shell (the courtyard side, the arm ends and the north block are blank). Bays are wide (6-9 m ribbons) to stay under 12k triangles.",
-  "Simplified: the green timber shutters and the vertical green fins are the frame colour only, the loggia recesses are plain ribbon windows, the stepped upper storeys keep the 3DBAG roof lines. Not modelled: balconies, the entrance arches to the courtyards and the shop signs (no frontal photograph)."
+  "Modelled: eight wall groups split by the height steps of the 3DBAG walls (surface lists, not panels, because panel 7, 17 and 86 each hold two or three heights): the south front in three groups (4, 6 and 5 storeys) and the east arc in two (5 storeys as one curve, 6 storeys at the north end) as ribbon windows over a glazed ground floor with green frames; the west brick front as a frameless brick bay grid: three groups (4, 5 and 6 storeys) on the long southern facet (panel 7) and two curved groups along the rest of the arc to the north (the 4-storey run at 15.3 m eaves, and the 6-storey north end at 24.2 m; the basement strip 389 and the slivers 372 and 421 stay blank). Roofs and unlisted walls are the 3DBAG LoD2.2 shell (the courtyard side, the arm ends and the north block are blank). Bays are wide (6-9 m ribbons) to stay under 12k triangles.",
+  "Simplified: the green timber shutters and the vertical green fins are the frame colour only, the loggia recesses are plain ribbon windows, the stepped upper storeys keep the 3DBAG roof lines. Not modelled: balconies, the entrance arches to the courtyards and the shop signs (no frontal photograph).",
+  "2026-10-14: the west arc north of panel 7 was blank (only surfaces 8, 83 and 486 were listed, so the other ~25 narrow 3DBAG facets of the curve fell to otherWalls), reported from the game near the Funenpark start. Not yet modelled: the 5th-storey setback band above the 4-storey run (ground 15.3, eaves 18.3; ~11.6k of the 12k budget is spent) and the sloped degenerate facet 342 (390, 507) that draws a dark diagonal across the north end."
  ],
  "closedBands": true
 }

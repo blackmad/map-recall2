@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Funenpark west arc gets its windows (2026-10-14, night)
+
+Reported from the game at the Funenpark start: the long brick west arc of
+Funenpark 427 (pand 0363100012184743) had windows only on its southern
+end. 3DBAG keeps that curve as ~25 narrow facets; the intent listed only
+the three surfaces of the long southern facet (8, 83, 486), so the rest
+fell to `otherWalls: blank`. Two `curve: true` brick-bay-grid groups now
+cover the 4-storey run (eaves 15.3 m, 3 bays on the widest 22.5 m facet)
+and the 6-storey north end (24.2 m, 5 bays on 39 m), leaving the basement
+strip 389 and the slivers 372/421 blank (389 failed `eaves-vs-3dbag`).
+To fit the 12k budget (12,753 framed), all five brick groups are
+frameless: 11,561 tris, gates pass. `deepBars: false` saved nothing.
+`audit:glb` FAILs as before (east courtyard blank walls, the 4.7 m
+basement below ground); the below-ground vertex count goes 4 -> 7 and
+the worst near-z-fight patch 0.8 -> 4.2 m2 on the north facet's
+basement. Fit and large-mesh goldens re-recorded for this house only.
+
 ## Desktop perf, third pass (2026-10-14, night)
 
 Lane `perf/desktop-3-20261014`, `docs/performance/desktop-20261014.md`
