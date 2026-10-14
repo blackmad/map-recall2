@@ -11,7 +11,8 @@ import type { ArchKind, ArchParams } from './arch.ts';
 
 export const LARGE_SYSTEMS = ['brick-bay-grid', 'ribbon-windows', 'curtain-wall', 'plinth-shopfronts', 'blank'] as const;
 export type LargeSystemName = typeof LARGE_SYSTEMS[number];
-export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals'] as const;
+/** `mesh-plinth` (layered curtain wall only): the glass skin runs down to the ground and a closed dark panel covers the ground storey (largeCompile `drawPlinthPanel`). */
+export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
 export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
@@ -97,7 +98,7 @@ const glazing = (w: LargeWindow | undefined): Partial<WinParams> => {
 function groundRow(f: SystemFit, upper: Row): Row {
   const s = f.slots;
   switch (f.ground) {
-    case 'blank': return { kind: 'wall' };
+    case 'blank': case 'mesh-plinth': return { kind: 'wall' };
     // Tall arched (or square-headed) doors in every bay: warehouse ground floors.
     case 'portals': return { kind: 'punched', win: { w: 0.5, h: 0.78, sill: 0.06, mull: 1, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.arches?.ground ?? 'round', f) } };
     case 'glazed': return { kind: 'glazed', win: { w: 0.9, h: 0.86, sill: 0.1, mull: 1, transom: 0.82, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
@@ -158,7 +159,9 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   if (f.hoist && name !== 'blank') {
     const list = f.hoist.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, f.hoist.every ?? 1), at = ((f.hoist.first ?? 0) % every + every) % every, kind = f.hoist.arch;
     const isHoist = (k: number) => (list ? list.includes(k) : k === at);
-    const door: Row = { kind: 'punched', win: { w: 0.72, h: 0.86, sill: 0.1, mull: 1, rowsAt: [0.36], frameW: f.frames === false ? 0 : 0.07, frame: s.frame, glass: s.glass, sillSlot: s.stone, sillH: 0.1, sillOut: 0.14, sillOnWall: true, ...(f.deepBars ? { barD: 0.035 } : {}), ...archFor(kind, f, { springBar: true }) } };
+    // layered kit: the loading door is two leaves (one meeting stile, no hatch rail) under a 4-segment head, so
+    // Entrepotdok's 33-bay front keeps a hoist axis every third bay within the 12k budget
+    const door: Row = { kind: 'punched', win: { w: 0.72, h: 0.86, sill: 0.1, mull: 1, ...(f.layered ? {} : { rowsAt: [0.36] }), frameW: f.frames === false ? 0 : 0.07, frame: s.frame, glass: s.glass, sillSlot: s.stone, sillH: 0.1, sillOut: 0.14, sillOnWall: true, ...(f.deepBars ? { barD: 0.035 } : {}), ...archFor(kind, f, { springBar: true, ...(f.layered ? { segments: 4 } : {}) }) } };
     const portal: Row = { kind: 'punched', win: { w: 0.8, h: 0.84, sill: 0.06, mull: 1, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.arches?.ground ?? kind, f) } };
     const cycle = (hoistRow: Row, other: Row): Row => ({ kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (isHoist(k) ? hoistRow : other)) });
     typical = cycle(door, typical);
