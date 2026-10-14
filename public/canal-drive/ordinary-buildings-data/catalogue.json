@@ -45979,6 +45979,231 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T01:44:39.829Z"
+    },
+    {
+      "id": "ordinary-0363100012251313",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012251313",
+      "name": "Hoogte Kadijk 400, Amsterdam-Centrum: 1903 brick industrial hall with giant arched windows and a small arched clerestory row, and a five-storey brick office wing with a stepped entrance",
+      "hash": "9d19d32fb36fbe3c4a0f74406d206760a0ab6c273f4a74c0cd5b0bc8f0bf0b88",
+      "sha256": "9d19d32fb36fbe3c4a0f74406d206760a0ab6c273f4a74c0cd5b0bc8f0bf0b88",
+      "bytes": 432864,
+      "triangles": 4940,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -48.214,
+          0.001,
+          -25.283
+        ],
+        "max": [
+          72.079,
+          27.542,
+          64.729
+        ]
+      },
+      "anchor": [
+        4.9217885,
+        52.366934
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9210802,
+              52.3668973
+            ],
+            [
+              4.922605,
+              52.3663557
+            ],
+            [
+              4.9228496,
+              52.3666108
+            ],
+            [
+              4.9227738,
+              52.3666381
+            ],
+            [
+              4.9227751,
+              52.3666399
+            ],
+            [
+              4.9224846,
+              52.3667443
+            ],
+            [
+              4.9224813,
+              52.3667409
+            ],
+            [
+              4.9224785,
+              52.3667419
+            ],
+            [
+              4.9224769,
+              52.3667402
+            ],
+            [
+              4.9224206,
+              52.3667603
+            ],
+            [
+              4.9224223,
+              52.3667622
+            ],
+            [
+              4.9224195,
+              52.3667631
+            ],
+            [
+              4.9224229,
+              52.3667667
+            ],
+            [
+              4.9219358,
+              52.3669429
+            ],
+            [
+              4.9219299,
+              52.366937
+            ],
+            [
+              4.9218788,
+              52.3669554
+            ],
+            [
+              4.9218848,
+              52.3669613
+            ],
+            [
+              4.9215229,
+              52.3670919
+            ],
+            [
+              4.9215221,
+              52.3670911
+            ],
+            [
+              4.9214457,
+              52.3671186
+            ],
+            [
+              4.9214466,
+              52.3671194
+            ],
+            [
+              4.9214276,
+              52.3671262
+            ],
+            [
+              4.9214267,
+              52.3671254
+            ],
+            [
+              4.9213504,
+              52.367153
+            ],
+            [
+              4.9213513,
+              52.3671538
+            ],
+            [
+              4.9213324,
+              52.3671607
+            ],
+            [
+              4.9213226,
+              52.3671504
+            ],
+            [
+              4.921303,
+              52.3671573
+            ],
+            [
+              4.9212831,
+              52.3671363
+            ],
+            [
+              4.9213027,
+              52.3671296
+            ],
+            [
+              4.9212505,
+              52.3670745
+            ],
+            [
+              4.9212491,
+              52.367075
+            ],
+            [
+              4.9211634,
+              52.3669842
+            ],
+            [
+              4.9211648,
+              52.3669837
+            ],
+            [
+              4.9211015,
+              52.366917
+            ],
+            [
+              4.9210994,
+              52.3669177
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 27.54,
+      "height": 27.54,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-hoogte-kadijk-400-251313.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012251313"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "hoogte-kadijk-400-251313",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012251313/w01-31.jpg",
+          "staging/pand-reference-walls/0363100012251313/w02-121.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 6b",
+          "brick-bay-grid+entrance 5st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Hoogte Kadijk 400 (BAG, built 1903; Kadijken, Amsterdam-Centrum): a brick industrial hall with giant round-arched windows and a small arched clerestory row, beside a five-storey brick office wing with a stepped stoop and a double door; 97 3DBAG wall surfaces. Photographed: w01-31 and w03-31, w04-31 (the long north-east hall wall), w02-121 (the south-east office front, 8.6 m away). Everything else stays blank (otherWalls); the 120 m south-west wall and the courtyard are not photographed.",
+        "walls[0] = panels 11 and 2 (NE hall wall, eaves 15.2 m): a brick base with basement grilles, a storey of tall round-arched windows with stone dressings and a second storey of small arched windows under a corbelled cornice, pilaster strips between the bays. Drawn as 3 storeys x 6 bays, blank base, round-arched narrow windows on storeys 1 and 2 with stone arch bands. Simplified: the giant windows and the small arches share one bay rhythm (the real wall has 6 giant windows and about 12 small arches), the multi-light glazing bars, the pilaster strips and corbel course, the basement grilles."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012251313",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T01:45:44.709Z"
     }
   ]
 }
