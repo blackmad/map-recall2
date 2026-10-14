@@ -34966,10 +34966,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012076903",
       "name": "Stadsdeelkantoor Nieuw-West, Plein '40-'45 1, Amsterdam (1964 ten-storey slab with vertical fins on a glazed podium)",
-      "hash": "f1612c19e93e24a14d500a691f6908fe2f2e262d09dba7c0ce70d072432c59e3",
-      "sha256": "f1612c19e93e24a14d500a691f6908fe2f2e262d09dba7c0ce70d072432c59e3",
-      "bytes": 755144,
-      "triangles": 10200,
+      "hash": "149c2c5e16f59146e94cb27fb66ba5774fcef1d2b3f044b6abe05bf29a005977",
+      "sha256": "149c2c5e16f59146e94cb27fb66ba5774fcef1d2b3f044b6abe05bf29a005977",
+      "bytes": 744968,
+      "triangles": 10152,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -35081,11 +35081,11 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "ribbon-windows 7st 17b",
-          "ribbon-windows 7st 17b",
+          "ribbon-windows 7st 9b",
+          "ribbon-windows 7st 9b",
           "ribbon-windows 10st 6b",
           "ribbon-windows 10st 6b",
-          "ribbon-windows 10st 17b",
+          "ribbon-windows 10st 9b",
           "ribbon-windows 7st 11b"
         ]
       },
@@ -35099,7 +35099,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012076903",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:45:25.346Z"
+      "updatedAt": "2026-10-14T03:16:27.025Z"
     },
     {
       "id": "ordinary-0363100012118358",
