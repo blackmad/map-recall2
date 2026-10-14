@@ -13,8 +13,9 @@
  * Distance = (1 - body NCC)/2 (best of direct and mirrored) + 0.6 x colour distance (|dL| x 2 + |dS| + |d accent| x 2).
  * Clusters = average-linkage agglomeration cut at `--cut`. Then every pand is ASSIGNED to the nearest library type
  * (`scripts/block-face/types/<district>/<prefix>*.json`, exemplars = the pands in each type's `evidence`), restricted
- * by build year (>= 1970: infill types, whose id contains a year >= 1970; else the historic types), with the body NCC
- * against the type's exemplars. A grey placeholder span (no photo) is reported as `no strip`.
+ * by build year (>= 1970: infill types, whose id contains a year >= 1970; else the historic types within 12 years of the
+ * BAG year), with the body NCC
+ * against the type's exemplars. Pands cited in a type's evidence keep that type (`hand`). A grey placeholder span (no photo) is reported as `no strip`.
  *
  * Writes staging/street-types/<street>/clusters.json and clusters.md (a table per face: pand -> cluster, type, NCC).
  */
@@ -96,7 +97,8 @@ const isInfill = (t: any) => Number((/(\d{4})/.exec(t.id) ?? [])[1]) >= 1970;
 const exemplars = new Map<string, Mod[]>(types.map(t => [t.id, live.filter(m => t.evidence.some((e: any) => e.pands.some((p: string) => m.pand.endsWith(p))))]));
 const assign = (m: Mod) => {
   const year = byPand.get(m.pand)?.buildYear ?? 1900;
-  const cands = types.filter(t => isInfill(t) === year >= 1970 && exemplars.get(t.id)!.length);
+  // Historic types only within 12 years of the pand's BAG year (the year in the type id): a 1883 front is not a 1902 type.
+  const cands = types.filter(t => isInfill(t) === year >= 1970 && exemplars.get(t.id)!.length && (year >= 1970 || Math.abs(Number((/(\d{4})/.exec(t.id) ?? [])[1]) - year) <= 12));
   const scored = cands.map(t => {
     const ex = exemplars.get(t.id)!.filter(e => e !== m);
     if (!ex.length) return {id: t.id, ncc: 1, d: 0};
@@ -106,21 +108,24 @@ const assign = (m: Mod) => {
   return scored[0];
 };
 
-interface Row { face: string; pand: string; label: string; address: string; year?: number; modules: number; cluster: string; clusterNcc: number | null; type: string | null; typeNcc: number | null; typeDist: number | null; wall: string | null; accent: number; stucco: boolean; note?: string }
+interface Row { face: string; pand: string; label: string; address: string; year?: number; modules: number; cluster: string; clusterNcc: number | null; type: string | null; typeNcc: number | null; typeDist: number | null; wall: string | null; accent: number; stucco: boolean; note?: string;
+  /** `hand`: the pand is cited in the type's evidence (labelled by eye on the strip); `auto`: nearest exemplars (leave-one-out NCC + colour). */
+  source?: 'hand' | 'auto'; inSurvey: boolean }
+const handType = (pand: string) => types.find(t => t.evidence.some((e: any) => e.pands.some((p: string) => pand.endsWith(p))))?.id as string | undefined;
 const rows: Row[] = [];
 for (const face of faces) for (const pand of [...new Set(mods.filter(m => m.face === face).map(m => m.pand))]) {
   const ms = mods.filter(m => m.pand === pand && m.face === face), ok = ms.filter(m => live.includes(m)), sv = byPand.get(pand);
-  if (!ok.length) { rows.push({face, pand, label: pand.slice(-6), address: sv?.label ?? '', year: sv?.buildYear, modules: ms.length, cluster: '-', clusterNcc: null, type: null, typeNcc: null, typeDist: null, wall: null, accent: 0, stucco: false, note: 'no strip (grey placeholder span)'}); continue; }
+  if (!ok.length) { rows.push({face, pand, label: pand.slice(-6), address: sv?.label ?? '', year: sv?.buildYear, modules: ms.length, cluster: '-', clusterNcc: null, type: null, typeNcc: null, typeDist: null, wall: null, accent: 0, stucco: false, note: 'no strip (grey placeholder span)', inSurvey: byPand.has(pand)}); continue; }
   const counts = new Map<string, number>(); ok.forEach(m => counts.set(clusterOf.get(m)!, (counts.get(clusterOf.get(m)!) ?? 0) + 1));
   const cluster = [...counts].sort((a, b) => b[1] - a[1])[0][0], med = medoid.get(cluster);
   const as = ok.map(assign).filter(Boolean), tc = new Map<string, number>(); as.forEach(a => tc.set(a!.id, (tc.get(a!.id) ?? 0) + 1));
-  const type = as.length ? [...tc].sort((a, b) => b[1] - a[1])[0][0] : null, ta = as.filter(a => a!.id === type);
+  const hand = handType(pand), type = hand ?? (as.length ? [...tc].sort((a, b) => b[1] - a[1])[0][0] : null), ta = as.filter(a => a!.id === type);
   rows.push({face, pand, label: pand.slice(-6), address: sv?.label ?? '', year: sv?.buildYear, modules: ms.length, cluster, clusterNcc: med ? +(ok.reduce((s, m) => s + bodyNcc(m, med), 0) / ok.length).toFixed(2) : null,
     type, typeNcc: ta.length ? +(ta.reduce((s, a) => s + a!.ncc, 0) / ta.length).toFixed(2) : null, typeDist: ta.length ? +(ta.reduce((s, a) => s + a!.d, 0) / ta.length).toFixed(3) : null,
-    wall: ok[0].pal.wall, accent: ok[0].pal.shares.accent, stucco: ok[0].pal.stucco});
+    wall: ok[0].pal.wall, accent: ok[0].pal.shares.accent, stucco: ok[0].pal.stucco, source: hand ? 'hand' : 'auto', inSurvey: byPand.has(pand)});
 }
 // Survey pands with no face (no frontage on the strip).
-for (const p of survey.pands) if (!rows.some(r => r.pand === p.pandId)) rows.push({face: p.face ?? '-', pand: p.pandId, label: p.pandId.slice(-6), address: p.label ?? '', year: p.buildYear, modules: 0, cluster: '-', clusterNcc: null, type: null, typeNcc: null, typeDist: null, wall: null, accent: 0, stucco: false, note: 'no face / no strip span'});
+for (const p of survey.pands) if (!rows.some(r => r.pand === p.pandId)) rows.push({face: p.face ?? '-', pand: p.pandId, label: p.pandId.slice(-6), address: p.label ?? '', year: p.buildYear, modules: 0, cluster: '-', clusterNcc: null, type: null, typeNcc: null, typeDist: null, wall: null, accent: 0, stucco: false, note: 'no face / no strip span', inSurvey: true});
 
 const out = `staging/street-types/${street}`;
 fs.mkdirSync(out, {recursive: true});
@@ -129,11 +134,14 @@ let md = `# ${survey.street}: street-wide clusters (module ${moduleM} m, cut ${c
 md += `| cluster | modules | medoid | faces |\n|---|---|---|---|\n`;
 clusters.filter(c => c.length > 1).forEach((c, k) => { md += `| C${String(k + 1).padStart(2, '0')} | ${c.length} | ${medoid.get(`C${String(k + 1).padStart(2, '0')}`)?.label} | ${[...new Set(c.map(i => live[i].face))].join(', ')} |\n`; });
 md += `\nsingletons: ${clusters.filter(c => c.length === 1).length}\n\n`;
-const typeCounts = new Map<string, number>(); rows.forEach(r => typeCounts.set(r.type ?? '(none)', (typeCounts.get(r.type ?? '(none)') ?? 0) + 1));
-md += `## Type counts (${rows.length} pands)\n\n| type | pands |\n|---|---|\n${[...typeCounts].sort((a, b) => b[1] - a[1]).map(([t, n]) => `| ${t} | ${n} |`).join('\n')}\n\n`;
+// Counts over the survey's pands (a pand on two strips counts once; face pands outside the survey are listed apart).
+const counted = new Map<string, Row>(); for (const r of rows) if (r.inSurvey && (!counted.has(r.pand) || (!counted.get(r.pand)!.type && r.type))) counted.set(r.pand, r);
+const typeCounts = new Map<string, {n: number; hand: number}>();
+for (const r of counted.values()) { const k = r.type ?? '(no photo)', c = typeCounts.get(k) ?? {n: 0, hand: 0}; c.n++; if (r.source === 'hand') c.hand++; typeCounts.set(k, c); }
+md += `## Type counts (${counted.size} survey pands; ${rows.filter(r => !r.inSurvey).length} face pands outside the survey not counted)\n\n| type | pands | of which hand-labelled exemplars |\n|---|---|---|\n${[...typeCounts].sort((a, b) => b[1].n - a[1].n).map(([t, c]) => `| ${t} | ${c.n} | ${c.hand} |`).join('\n')}\n\n`;
 for (const face of [...new Set(rows.map(r => r.face))]) {
-  md += `## ${face}\n\n| pand | address | year | modules | cluster | NCC to medoid | type | NCC to type | wall | accent |\n|---|---|---|---|---|---|---|---|---|---|\n`;
-  for (const r of rows.filter(r => r.face === face)) md += `| ${r.label} | ${r.address} | ${r.year ?? ''} | ${r.modules} | ${r.cluster} | ${r.clusterNcc ?? ''} | ${r.type ?? r.note ?? ''} | ${r.typeNcc ?? ''} | ${r.wall ?? ''}${r.stucco ? ' stucco' : ''} | ${r.accent} |\n`;
+  md += `## ${face}\n\n| pand | address | year | modules | cluster | NCC to medoid | type | how | NCC to type | wall | accent |\n|---|---|---|---|---|---|---|---|---|---|---|\n`;
+  for (const r of rows.filter(r => r.face === face)) md += `| ${r.label} | ${r.address} | ${r.year ?? ''} | ${r.modules} | ${r.cluster} | ${r.clusterNcc ?? ''} | ${r.type ?? r.note ?? ''} | ${r.source ?? ''} | ${r.typeNcc ?? ''} | ${r.wall ?? ''}${r.stucco ? ' stucco' : ''} | ${r.accent} |\n`;
   md += '\n';
 }
 fs.writeFileSync(path.join(out, 'clusters.md'), md);

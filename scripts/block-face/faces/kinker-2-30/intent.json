@@ -66,7 +66,14 @@
     "agreement": "osm-and-photo"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 1: 2 axes, plain brick, flat heads, cream cornice, no dormer"
+    "citation": "strip.jpg pand 1: 2 axes, plain brick, flat heads, cream cornice, no dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -123,7 +130,15 @@
     "citation": "strip.jpg pand 2 (zoom): black-painted brick, 3 axes, flat heads with tall white keystones, white frames, pedimented dormer",
     "schemaLimits": [
      "tall carved keystones (0.45 m) are drawn as plain keystone blocks"
-    ]
+    ],
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -170,7 +185,15 @@
     "schemaLimits": [
      "dark rubbed-brick decorative arch band under the keystones",
      "console sills"
-    ]
+    ],
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1
    }
   },
   {
@@ -193,6 +216,13 @@
       0.72,
       0.72,
       0.7
+     ],
+     "storeyHeights": [
+      3.2,
+      2.9,
+      2.9,
+      2.9,
+      2.8
      ]
     },
     "ground": {
@@ -227,7 +257,16 @@
     "agreement": "osm-only"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 4 (zoom): 3 axes x 4 upper storeys, plain brick, segmental heads, iron anchors, carved cream frieze cornice, round-topped dormer"
+    "citation": "strip.jpg pand 4 (zoom): 3 axes x 4 upper storeys, plain brick, segmental heads, iron anchors, carved cream frieze cornice, round-topped dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
    }
   },
   {
@@ -250,6 +289,13 @@
       0.72,
       0.72,
       0.7
+     ],
+     "storeyHeights": [
+      3.2,
+      2.9,
+      2.9,
+      2.9,
+      2.8
      ]
     },
     "ground": {
@@ -277,7 +323,16 @@
     "note": "dark shop glass, no lettering; BAG bijeenkomstfunctie"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 5 (zoom): 3 axes x 4 upper storeys, plain brick, segmental heads, iron anchors, carved cream frieze cornice, round-topped dormer"
+    "citation": "strip.jpg pand 5 (zoom): 3 axes x 4 upper storeys, plain brick, segmental heads, iron anchors, carved cream frieze cornice, round-topped dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
    }
   },
   {
@@ -340,7 +395,15 @@
     "note": "18 (left module) is a second shop with the same awning, unnamed"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 6: two 2-axis modules of the 18-4 row (7.8 m)"
+    "citation": "strip.jpg pand 6: two 2-axis modules of the 18-4 row (7.8 m)",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -372,7 +435,15 @@
     "note": "black shop, lettering on the fascia illegible"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 7: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 7: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -404,7 +475,15 @@
     "note": "black shop, door left, display window right"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 8: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 8: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -436,7 +515,15 @@
     "note": "varnished timber pui with pilasters, continuous over 12C-12A"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 9: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 9: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -475,7 +562,15 @@
     "agreement": "osm-only"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 10: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 10: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -507,7 +602,15 @@
     "note": "varnished timber pui with pilasters (12C-12A)"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 11: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 11: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -539,7 +642,15 @@
     "note": "black shop, roller shutter down on the left"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 12: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 12: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -585,7 +696,15 @@
     "note": "the OSM node sits in 4-6; the lettering is over 8"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 13: 2-axis module of the 18-4 row"
+    "citation": "strip.jpg pand 13: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -633,7 +752,15 @@
     "note": "two shops; the left continues TeleWorld (8)"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 14: two 2-axis modules (7.9 m)"
+    "citation": "strip.jpg pand 14: two 2-axis modules (7.9 m)",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0
    }
   },
   {
@@ -646,7 +773,11 @@
     "palette": "kinker-2-30",
     "overrides": {
      "bays": 3,
-     "windowShare": 0.6
+     "windowShare": 0.6,
+     "cornice": "simple",
+     "windowHead": {
+      "kind": "flat"
+     }
     },
     "ground": {
      "shopfront": {
@@ -672,7 +803,15 @@
     "agreement": "photo-only"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 15: 3 axes, white courses and blocked arches, dark brick stepped gable with one attic light"
+    "citation": "strip.jpg pand 15: 3 axes, white courses and blocked arches, dark brick stepped gable with one attic light",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
    }
   },
   {
@@ -684,7 +823,11 @@
     "crown": "none",
     "palette": "kinker-2-30",
     "overrides": {
-     "bays": 4
+     "bays": 4,
+     "cornice": "heavy",
+     "windowHead": {
+      "kind": "flat"
+     }
     },
     "ground": {
      "shopfront": {
@@ -722,7 +865,14 @@
     "schemaLimits": [
      "two of four axes are bricked up and painted white (blind windows): drawn as windows",
      "white-painted ground storey wall"
-    ]
+    ],
+    "photoRows": [
+     2,
+     4,
+     4,
+     4
+    ],
+    "photoGables": 0
    }
   }
  ],
@@ -734,48 +884,69 @@
   "measuredEaves": [
    {
     "pand": "0363100012236814",
+    "front": "m0",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236814",
+    "front": "m1",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
    },
    {
     "pand": "0363100012236360",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
    },
    {
     "pand": "0363100012236379",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
    },
    {
     "pand": "0363100012163174",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
    },
    {
     "pand": "0363100012155541",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
    },
    {
     "pand": "0363100012236383",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
    },
    {
     "pand": "0363100012164188",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
    },
    {
     "pand": "0363100012162482",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
    },
    {
     "pand": "0363100012237357",
+    "front": "m0",
     "stripRow": 235,
-    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m read the mansard"
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
+   },
+   {
+    "pand": "0363100012237357",
+    "front": "m1",
+    "stripRow": 235,
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
    },
    {
     "pand": "0363100012157476",
