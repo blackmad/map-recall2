@@ -627,7 +627,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
   Haag need extracts; footprint tiles to a worker; the Leaflet map picker
   (`map-picker.js:243`) also loads live OSM tiles — replace it too.
-- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.6 MB
+- **Own ground ON BY DEFAULT since 2026-10-14 (HISTORY "Own ground on by
+  default"; `?ownGround=0` opts out); leftovers of the original item** (city-wide, 294 cells, 29.6 MB
   gzip after 2026-10-13). Data blockers cleared 2026-10-13 (HISTORY): per-polder
   water levels, BGT width per way (73.6% of drawable ways), 931 measured
   bridges. Remaining before default-on: a desktop ride-perf measurement with
@@ -738,7 +739,9 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   profile.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
-- **Own ground after the 2026-10-13/14 lanes (HISTORY)**: still open
+- **Own ground after the 2026-10-13/14 lanes (HISTORY)**, now post-flip (the
+  desktop default is on; iPhone ride-perf and the phone default still
+  unmeasured): still open
   before a desktop default-on in the belt: bridge-kit leftovers (the
   Blauwbrug and BRU0063 hit the 600-tri budget so their arches are 4–5
   segments and have no lamps; the Magere Brug railing is sparse at ~9 m
@@ -1249,10 +1252,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Westermoskee NW/SW walls and SE porch unphotographed.
 - **P0 Live play, 2026-10-14 (user screenshots on the live site, boat ride
   Hugo de Grootgracht → IJ-toren with `?ownGround=1`)**, lanes running:
-  (a) own ground becomes the default, `?ownGround=0` opts out, desktop
-  ride-perf measured before/after; (b) the boat and chase camera start
-  facing away from the route's first leg (spawn heading vs first-leg
-  bearing; seeded e2e); (c) own-ground road paint is thinner than the
+  (a) DONE own ground is the default (+2.5 ms main thread, +90 MB, frame
+  time unchanged); (b) DONE the start faces the first leg (HISTORY "Own
+  ground on by default; the start faces the first leg"); (c) own-ground road paint is thinner than the
   legacy ground's (centre/edge lines, zebras, stop lines, cycle symbols,
   painted names; Singelgracht/Nassaukade junction as the regression);
   (d) the scene reads too dark in own-ground mode (luminance table vs the
@@ -1402,6 +1404,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   DSM for the 128 tree gaps, per-span profiles for the viaducts). Named
   regressions: the Seven Bridges stretch of the Reguliersgracht, the
   Torensluis. Default-on steps unchanged.
+- **P2 Route start guard**: report when the planned route's first point is
+  far behind the spawn (the start-heading bug's root cause; the fix reads
+  the leg from the spawn, the planner could also snap better).
 - **Parks, next** (2026-10-14, HISTORY "Parks from the BGT survey"):
   lawn/bed/shrub as flat tones only (a stipple or relief pass); BGT walls all at 0.75 m; 22 parks and 110 playgrounds without
   BGT polygons; the raw BGT cache is archived in
