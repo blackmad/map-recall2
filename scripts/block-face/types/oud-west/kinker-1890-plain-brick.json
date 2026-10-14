@@ -36,12 +36,6 @@
     "none": {
       "gable": "cornice",
       "note": "cornice only (2-30 pand 1, 1-29 pand 1)"
-    },
-    "round-dormer": {
-      "gable": "cornice",
-      "dormers": 1,
-      "dormerStyle": "pointed",
-      "note": "Kinkerstraat 22-24 (235988, 160746): a big round-topped dormer with a shell hood (modelled pointed)"
     }
   },
   "palettes": {
@@ -135,7 +129,8 @@
   "schemaLimits": [
     "brick flat arches",
     "iron wall anchors",
-    "cornice frieze panels"
+    "cornice frieze panels",
+    "round-topped dormers with a shell hood (22-24) are drawn as pediment dormers: the pointed dormer read far too tall on the first sheet"
   ],
   "notes": [
     "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json): red-brown = median of 22 exemplar pands (mixed 2024-11-29 sunlit and 2024-12-11 overcast strips); kinker-2-30 from 235988 (24)."

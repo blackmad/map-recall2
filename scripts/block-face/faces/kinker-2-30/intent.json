@@ -202,7 +202,7 @@
    "address": "Kinkerstraat 24",
    "type": {
     "type": "kinker-1890-plain-brick",
-    "crown": "round-dormer",
+    "crown": "pediment-dormer",
     "palette": "kinker-2-30",
     "storeys": 5,
     "overrides": {
@@ -275,7 +275,7 @@
    "address": "Kinkerstraat 22",
    "type": {
     "type": "kinker-1890-plain-brick",
-    "crown": "round-dormer",
+    "crown": "pediment-dormer",
     "palette": "kinker-2-30",
     "storeys": 5,
     "overrides": {
@@ -770,7 +770,7 @@
    "type": {
     "type": "kinker-1890-brick-arched",
     "crown": "step-gable",
-    "palette": "kinker-2-30",
+    "palette": "dark-brown",
     "overrides": {
      "bays": 3,
      "windowShare": 0.6,
