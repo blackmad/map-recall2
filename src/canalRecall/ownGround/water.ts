@@ -167,14 +167,15 @@ export const QUAY = { coping: [0.64, 0.61, 0.56] as [number, number, number], br
  * the relief at the bank down past the water plane: coping, brick, algae band.
  * Banks that are not above the water (beaches, reed edges) get no wall.
  */
-export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, defaultWaterZ: number, step = 2, capM = 0): MeshArrays {
+/** `skip(x, y)`: leave out a shore segment whose middle lies there (under a bridge deck, decks.ts underDeck). */
+export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, defaultWaterZ: number, step = 2, capM = 0, skip?: (x: number, y: number) => boolean): MeshArrays {
   const m = emptyMesh(true);
   for (let li = 0; li < geo.shores.length; li++) {
     const line = geo.shores[li], waterZ = geo.shoreLevels?.[li] ?? defaultWaterZ;
     const pts = densify(line, step);
     for (let i = 0; i + 1 < pts.length; i++) {
       const a = pts[i], b = pts[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy);
-      if (len < 1e-3) continue;
+      if (len < 1e-3 || skip?.((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)) continue;
       // Sample the bank half a metre inland (right of a→b), so a filled canal never lowers the top.
       const nx = dy / len, ny = -dx / len;
       const ta = Math.max(ground(a[0] + nx * 0.5, a[1] + ny * 0.5), ground(a[0], a[1])), tb = Math.max(ground(b[0] + nx * 0.5, b[1] + ny * 0.5), ground(b[0], b[1]));

@@ -13,7 +13,9 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
-import { flatHintAt, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { bridgeFacts, flatHintAt, KIT_BUDGET, registerHint } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+// Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
+const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
@@ -160,18 +162,24 @@ async function main(): Promise<void> {
       // decks behind brick arch faces), each within the kit's budget at both rings, pillars and railing on both edges.
       const info = near.stats.bridges.decks.find(d => d.id === id), farInfo = far.stats.bridges.decks.find(d => d.id === id);
       check(!!info && info.kind === 'arch' && info.arches >= 1, `${id}: drawn as an arch bridge (${info?.kind}, ${info?.arches} arches)`);
-      check(!!info && info.triangles <= KIT_BUDGET.near && !!farInfo && farInfo.triangles <= KIT_BUDGET.far, `${id}: ${info?.triangles} triangles near (≤ ${KIT_BUDGET.near}), ${farInfo?.triangles} far (≤ ${KIT_BUDGET.far})`);
+      const B = budgetOf(id);
+      check(!!info && info.triangles <= B.near && !!farInfo && farInfo.triangles <= B.far, `${id}: ${info?.triangles} triangles near (≤ ${B.near}), ${farInfo?.triangles} far (≤ ${B.far})`);
       check(!!info && info.railingPosts >= 4, `${id}: railings on both edges (${info?.railingPosts} posts, want ≥ 4)`);
       check(!!info && info.abutments >= 2, `${id}: abutments at both banks (${info?.abutments})`);
       const waterM = p.water ? p.water[1] - p.water[0] : 0;
-      check(!!info && (waterM > 13 ? info.piers >= 1 : waterM < 11 ? info.piers === 0 : true), `${id}: ${info?.piers} piers for ${waterM.toFixed(1)} m of water`);
+      // Measured openings (panorama facts) replace the rule by water width.
+      const f = bridgeFacts(id);
+      if (f?.arches) check(!!info && info.arches === f.arches, `${id}: ${info?.arches} openings (measured ${f.arches})`);
+      else check(!!info && (waterM > 13 ? info.piers >= 1 : waterM < 11 ? info.piers === 0 : true), `${id}: ${info?.piers} piers for ${waterM.toFixed(1)} m of water`);
     }
     check(!!near.layers.deckBody && (near.layers.deckBody.indices.length > 0), `${id}: deck body built`);
     check(!!near.layers.quay && !!near.layers.water, `${id}: quay walls and water in the cell`);
     check(near.lod === 0 && far.stats.triangles < near.stats.triangles * 0.6, `${id}: LOD 1 is lighter (${far.stats.triangles} vs ${near.stats.triangles} triangles)`);
   }
-  // Unmeasured (flat) decks: Raampoort (fixed, Singelgracht) and the Magere Brug (movable, Amstel, a double bascule).
-  for (const [id, lng, lat, frames] of [['BRU0165', 4.8755, 52.37408, 0], ['BRU0242', 4.90237, 52.36358, 2]] as const) {
+  // Unmeasured (flat) decks: the Magere Brug (movable, Amstel, a double bascule). Raampoort (BRU0165) and the Torensluis
+  // (BRU0009) are measured since the flat-deck recovery (2026-10-14).
+  for (const id of ['BRU0165', 'BRU0009']) check(store.surface.decks.some(d => d.profile.id === id), `${id}: measured deck (flat-deck recovery)`);
+  for (const [id, lng, lat, frames] of [['BRU0242', 4.90237, 52.36358, 2]] as const) {
     const [x, y] = toLocal(lng, lat);
     let owner = '';
     for (const k of GroundStore.neighbours(store.cellAt(x, y))) if (store.flatDeckMeta(k).some(f => f.id === id)) { owner = k; break; }
@@ -197,7 +205,7 @@ async function main(): Promise<void> {
     const near = await build(owner, 0), far = await build(owner, 1);
     const info = near.stats.bridges.decks.find(d => d.id === id), farInfo = far.stats.bridges.decks.find(d => d.id === id);
     check(!!info && info.kind === kind && (kind !== 'arch' || info.arches >= 1) && (kind !== 'footbridge' || info.railingPosts >= 8), `${id}: ${info?.kind} (want ${kind}), ${info?.arches} arches, ${info?.railingPosts} posts`);
-    check(!!info && info.triangles <= KIT_BUDGET.near && !!farInfo && farInfo.triangles <= KIT_BUDGET.far, `${id}: ${info?.triangles} triangles near, ${farInfo?.triangles} far`);
+    check(!!info && info.triangles <= budgetOf(id).near && !!farInfo && farInfo.triangles <= budgetOf(id).far, `${id}: ${info?.triangles} triangles near, ${farInfo?.triangles} far`);
     // An opening, not a causeway: at the deck's middle, the side faces end under the deck, above the relief's buried wall.
     const deck = store.surface.decks.find(d => d.profile.id === id)!, p = deck.profile, i = p.s.findIndex(s => s >= (p.deck[0] + p.deck[1]) / 2);
     const body = near.layers.deckBody!, pos = body.positions, dx = p.x[i + 1] - p.x[i - 1], dy = p.y[i + 1] - p.y[i - 1], dl = Math.hypot(dx, dy);
@@ -209,7 +217,8 @@ async function main(): Promise<void> {
     check(kind === 'arch' || lowest > store.surface.ground(p.x[i], p.y[i]) - 0.3, `${id}: open under its middle (body bottom ${lowest.toFixed(2)}, relief ${store.surface.ground(p.x[i], p.y[i]).toFixed(2)})`);
   }
   // The register types the unmeasured footprints: the Torensluis is masonry (arches), the Magere Brug a timber bascule (white).
-  for (const [id, want] of [['BRU0009', 'masonry'], ['BRU0242', 'wood']] as const) {
+  check(registerHint('BRU0009')?.material === 'masonry', 'BRU0009: the Torensluis is masonry in the register');
+  for (const [id, want] of [['BRU0242', 'wood']] as const) {
     const ring = [...store.osmCells].flatMap(k => store.flatDeckMeta(k).map((f, j) => (f.id === id ? store.flatDecks(k)[j] : null))).find(r => r);
     const hit = ring ? flatHintAt(ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length) : null;
     check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);

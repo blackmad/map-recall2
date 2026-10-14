@@ -1,9 +1,11 @@
 // Bridge kit tests (lane bridge-kit 2026-10-13); imported by ownGround.test.ts so `npm run test:own-ground` runs them.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildKit, buildKitAtLevel, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeKind, type KitRow } from './bridgeKit';
+import { basculeStyle, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
-import { flatDeckBody, movableFrame } from './decks';
+import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, measuredDeckTop, movableFrame, underDeck } from './decks';
+import { decodeProfile, sideWidths } from '../elevation/bridgeDeck';
+import type { DeckSurface } from './surface';
 
 /** A 24 m humped deck along +x, 8 m wide, over `water` metres of canal centred at x = 20. */
 function rows(water = 16, crown = 1.2, halfWidth = 4): KitRow[] {
@@ -94,4 +96,87 @@ test('bascule: two portals with a gap between their beam heads; leaf joints on t
   const flat = flatDeckBody(ring, () => 0.5, x => x > 5 && x < 35);
   assert.ok(flat.kind === 'girder' || flat.kind === 'bascule');
   assert.ok(flat.triangles <= KIT_BUDGET.near, `flat ${flat.triangles}`);
+});
+
+// Lane bridge-fidelity 2026-10-14: per-bridge facts from the boat panoramas (hand readings for the named bridges).
+test('bridge facts: named bridges carry their measured arches, family and parapet', () => {
+  const f: BridgeFacts = { arches: 3, shapes: ['segmental', 'flat', 'segmental'], family: 'stone', parapet: 'stone-balustrade', openings: [[0.05, 0.3, 0.8], [0.35, 0.65, 0.7], [0.7, 0.95, 0.8]], named: true };
+  assert.deepEqual(decodeFacts(encodeFacts(f)), f);
+  const blauw = bridgeFacts('BRU0236');
+  assert.equal(blauw?.arches, 3, 'Blauwbrug: three openings');
+  assert.deepEqual(blauw?.shapes, ['segmental', 'flat', 'segmental'], 'Blauwbrug: segmental side arches, a flat middle span');
+  assert.equal(blauw?.family, 'stone'); assert.equal(blauw?.parapet, 'stone-balustrade'); assert.ok(blauw?.named);
+  for (const id of ['BRU0031', 'BRU0032', 'BRU0038', 'BRU0039', 'BRU0074', 'BRU0073', 'BRU0071', 'BRU0072']) assert.equal(bridgeFacts(id)?.family, 'brick-red', `${id}: Seven Bridges brick`);
+  assert.equal(bridgeFacts('BRU0038')?.arches, 3, 'Keizersgracht at the Reguliersgracht: three arches');
+  assert.equal(bridgeFacts('BRU0009')?.arches, 3, 'Torensluis: three arches');
+  assert.equal(bridgeFacts('BRU0063')?.shapes?.[0], 'flat', 'Nieuwe-Wercksbrug: girder spans on piers');
+  assert.equal(measuredKind('steel-deck', 9, 0.2, 19, registerHint('BRU0063'), bridgeFacts('BRU0063')), 'arch', 'measured openings draw opening by opening');
+});
+
+test('bridge facts: the kit honours count, shape, family and the named budget', () => {
+  const base = input('arch', 0, 18, 8);
+  const plain = buildKit(base).info;
+  const facts: BridgeFacts = { arches: 3, shapes: ['segmental', 'flat', 'segmental'], family: 'stone', parapet: 'stone-balustrade', named: true };
+  const { mesh, info } = buildKit({ ...base, facts });
+  assert.equal(info.arches, 3);
+  assert.ok(info.triangles <= KIT_BUDGET.named && info.triangles > plain.triangles, `named ${info.triangles} vs ${plain.triangles}`);
+  assert.ok(info.lamps >= 2, 'named: lamps back');
+  const stone = FAMILY_PALETTE.stone.spandrel, c = mesh.colors!;
+  let hits = 0;
+  for (let i = 0; i < c.length; i += 3) if (Math.abs(c[i] - stone[0]) < 1e-6 && Math.abs(c[i + 1] - stone[1]) < 1e-6) hits++;
+  assert.ok(hits > 20, 'stone spandrels');
+  const one = buildKit({ ...base, facts: { arches: 1, shapes: ['round'], family: 'brick-red', parapet: 'iron-rail', named: false } }).info;
+  assert.equal(one.arches, 1);
+  assert.ok(one.triangles <= KIT_BUDGET.near);
+});
+
+// User 2026-10-14 (the Haarlemmerpoort and Zoutkeetsgracht bascules "look bad"): their aimed panoramas show basement
+// bascules, no portal: signal masts and barrier boxes. The Magere Brug keeps its portals.
+test('bascules: portal or basement by the panoramas, then the register', () => {
+  assert.equal(basculeStyle('BRU0242', registerHint('BRU0242')), 'portal', 'Magere Brug');
+  for (const id of ['BRU0151', 'BRU0149', 'BRU0345']) assert.equal(basculeStyle(id, registerHint(id)), 'basement', id);
+  assert.equal(basculeStyle(null, null), 'portal');
+  const m = { positions: [] as number[], uvs: [] as number[], indices: [] as number[], colors: [] as number[] };
+  basementEnd(m, (a, b) => [a, b], [1, 0], 0, [3, -3], () => 1);
+  const zs = m.positions.filter((_, i) => i % 3 === 2);
+  assert.ok(Math.max(...zs) >= 1 + MAST.height - 1e-6 && Math.min(...zs) <= 1 - 0.1, 'masts stand on the deck and reach their height');
+});
+
+// User 2026-10-14 ("disconnected bridge", a Houthavens footbridge, BRU2433-2435): the water mask ran past the measured
+// deck span, so the deck hung short of both banks. The drawn deck reaches on to the bank by the abutment depth.
+test('deck ends: a deck whose measured span stops over water reaches on to both banks', () => {
+  const n = 81, s = Float64Array.from({ length: n }, (_, i) => i * 0.5), x = s.slice(), y = new Float64Array(n), hw = new Float64Array(n).fill(1.7);
+  const h = Float64Array.from(s, v => (v > 12 && v < 28 ? 1.2 * Math.sin(Math.PI * (v - 12) / 16) : 0));
+  const deck = { profile: { id: 'T', x, y, s, h, halfWidth: hw, deck: [14, 26], water: null, family: 'concrete-deck' }, z: Float64Array.from(h, v => 1 + v), ends: [1, 1], span: [0, n - 1], ease: [2, 2] } as unknown as DeckSurface;
+  const water = (px: number) => px > 11.5 && px < 28.5; // the canal runs 2.5 m past each measured deck end
+  const { reach, landed } = deckReach(deck, px => water(px));
+  assert.deepEqual(landed, [true, true]);
+  assert.ok(reach[0] <= 11.5 - ABUTMENT_DEPTH_M + 0.51 && reach[1] >= 28.5 + ABUTMENT_DEPTH_M - 0.51, `reach ${reach}`);
+  assert.deepEqual(floatingEnds(deck, px => water(px), () => 1, () => 1), []);
+  // A canal wider than the reach: still floating, and the check says so.
+  assert.equal(floatingEnds(deck, px => px > 0 && px < 39, () => 1, () => 1).length, 2);
+});
+
+// Bridge-fidelity e2e 2026-10-14: the Torensluis is a 22 m road over a 44 m wide, off-centre bridge; the deck took the
+// road's width and the quay walls at the water polygon's edge across the canal filled two of its three arches.
+test('deck sides from the outline cross-section; no quay under a deck', () => {
+  const p: number[] = [];
+  for (let s = 0; s <= 30; s += 1) p.push(s * 10, 0, s * 100, s >= 8 && s <= 22 ? 150 : 0);
+  // Outline 30 m to the left of the road line, 4 m to its right; the road is 8 m wide.
+  const bridge = { id: 'T2', name: 'Test', roadIds: [], family: 'masonry-arch', width: 8, approachHalfWidth: 3, deck: [8, 22] as [number, number], water: [9, 21] as [number, number], outline: [80, -40, 220, -40, 220, 300, 80, 300], endpointNAP: [1, 1] as [number, number], p };
+  const prof = decodeProfile(bridge, 0.1);
+  assert.deepEqual(prof.sides, [29, 4], 'left capped at the half-width plus 25 m, right at the half-width');
+  const mid = prof.s.findIndex(s => s >= 15);
+  assert.deepEqual(sideWidths(prof, mid), [29, 4]);
+  assert.deepEqual(sideWidths(prof, 0), [prof.halfWidth[0], prof.halfWidth[0]], 'the approaches keep their own width');
+  const deck = { profile: prof, z: new Float64Array(prof.s.length).fill(1.5), ends: [0, 0] as [number, number], span: prof.deck, ease: [1, 1] as [number, number] };
+  const under = underDeck([deck]);
+  assert.ok(under(15, 20), 'a shore across the canal under the wide side is under the deck');
+  assert.ok(!under(15, -8), 'past the narrow side it is not');
+  assert.ok(!under(9.5, 20), 'the banks (the water extent ends) keep their quays');
+  const top = measuredDeckTop(deck, () => 1.5);
+  const ys = top.positions.filter((_, i) => i % 3 === 1);
+  assert.ok(Math.max(...ys) > 28 && Math.min(...ys) < -3.9, 'the top spans the outline');
+  // No outline wider than the road: unchanged.
+  assert.equal(decodeProfile({ ...bridge, outline: [80, -40, 220, -40, 220, 40, 80, 40] }, 0.1).sides, undefined);
 });
