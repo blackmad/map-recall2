@@ -1,0 +1,247 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:28:42.688Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160810",
+   "addresses": [
+    "Kinkerstraat 49A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 49A",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000705382"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809443947,
+     "lngLat": [
+      4.8731513,
+      52.3673998
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49A",
+      "addr:postcode": "1053DD",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2026-08-16",
+      "description": "Vegetables, fruits and deli",
+      "email": "info@seneragf.nl",
+      "name": "Sener Groente Fruit",
+      "phone": "+31 20 689 8648",
+      "shop": "greengrocer",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://seneragf.nl"
+     },
+     "fetchedAt": "2026-10-14T09:28:42.688Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236773",
+   "addresses": [
+    "Kinkerstraat 51",
+    "Kinkerstraat 51A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 51-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000705387"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809444844,
+     "lngLat": [
+      4.873047,
+      52.3673838
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51-H",
+      "addr:postcode": "1053DE",
+      "addr:street": "Kinkerstraat",
+      "name": "Mano Bakery",
+      "note:website": "2026-08-09: website linked naar een login page, Config foutje in de website?",
+      "opening_hours": "We-Fr 08:00-16:00; Sa-Su 09:00-16:00",
+      "phone": "+31 6 2890 6678",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.mano-bakery.com"
+     },
+     "fetchedAt": "2026-10-14T09:28:42.688Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164246",
+   "addresses": [
+    "Kinkerstraat 53"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7235507196,
+     "lngLat": [
+      4.8728916,
+      52.3673548
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2023-08-13",
+      "cuisine": "indonesian",
+      "name": "Cafe Amoi"
+     },
+     "fetchedAt": "2026-10-14T09:28:42.688Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161889",
+   "addresses": [
+    "Kinkerstraat 53A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 53A-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 111,
+     "bagId": "0363010001006030"
+    },
+    {
+     "address": "Kinkerstraat 53A-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001006032"
+    },
+    {
+     "address": "Kinkerstraat 53A-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 156,
+     "bagId": "0363010012076420"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162119",
+   "addresses": [
+    "Kinkerstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 55-H",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000705407"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153083",
+   "addresses": [
+    "Kinkerstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 57-H",
+     "use": "winkelfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000705416"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163977",
+   "addresses": [
+    "Kinkerstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 59-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705426"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159845",
+   "addresses": [
+    "Kinkerstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 61-H",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000956959"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133467",
+   "addresses": [
+    "Kinkerstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000789290"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411936971,
+     "lngLat": [
+      4.8724689,
+      52.3671993
+     ],
+     "tags": {
+      "name": "Mensink",
+      "shop": "bakery",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:28:42.688Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
