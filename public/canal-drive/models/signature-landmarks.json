@@ -963,7 +963,7 @@
         ],
         "max": [
           1.723803162574768,
-          2.819999933242798,
+          2.745000123977661,
           2.819666624069214
         ]
       },
@@ -979,18 +979,18 @@
       },
       "extent": {
         "widthMetres": 6.0489561557769775,
-        "heightMetres": 2.819999933242798,
+        "heightMetres": 2.745000123977661,
         "depthMetres": 3.246485710144043,
         "depthCoverage": 0.9548487382776597
       },
-      "triangles": 3660,
-      "bytes": 43924,
+      "triangles": 4836,
+      "bytes": 53800,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "317aba732712b2c1",
+        "sourceHash": "82f4b88017100004",
         "buildVersion": 2,
-        "bytes": 19948,
-        "triangles": 868
+        "bytes": 25964,
+        "triangles": 1218
       }
     },
     "stadhuis": {
