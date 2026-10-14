@@ -111,10 +111,13 @@ for (const id of [...new Set([...Object.keys(auto), ...Object.keys(HAND), ...NAM
     f = { named, ...(h.arches ? { arches: h.arches } : {}), ...(h.shapes ? { shapes: [...h.shapes].map(c => letters[c]) } : {}), ...(h.family ? { family: h.family } : {}), ...(h.parapet ? { parapet: h.parapet } : {}) };
     if (a?.openings && a.arches === h.arches) f.openings = a.openings;
     bySource.hand++;
-  } else if (a) {
-    f = { named, ...(a.arches ? { arches: a.arches } : {}), ...(a.shape ? { shapes: [a.shape] } : {}), ...(a.family ? { family: a.family } : {}), ...(a.parapet ? { parapet: a.parapet } : {}), ...(a.openings ? { openings: a.openings } : {}) };
+  } else if (a?.family && !(hints.get(Number(m[1]))?.material === 'masonry' && (a.family === 'steel' || a.family === 'concrete'))) {
+    // (A masonry register bridge read as steel or concrete is shade on brick: the 5 family misses above were all that.)
+    // Only the family is taken from the automatic reader: against the 45 hand readings (validate.ts, 2026-10-14) it agreed
+    // on the family 18/23 (brick vs brick-dark counted equal), the opening count 5/12, the shape 7/10, the parapet 11/23.
+    f = { named, family: a.family };
     bySource.panorama++;
-  } else { f = { named }; bySource['named, register only']++; }
+  } else if (named) { f = { named }; bySource['named, register only']++; } else continue;
   facts[Number(m[1])] = encodeFacts(f);
 }
 console.log(JSON.stringify({ facts: Object.keys(facts).length, bySource, autoWithArches: Object.values(auto).filter(a => a.arches).length }));
