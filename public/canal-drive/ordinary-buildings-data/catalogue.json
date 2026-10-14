@@ -39256,9 +39256,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169564",
       "name": "Barlaeus Gymnasium, Weteringschans 31, Amsterdam (1866 Neo-Renaissance school, Singelgracht side behind)",
-      "hash": "6858e0d567bcfda31a0aa85798d5d31ae38f39706f9d4f7770bc294ddfe7982d",
-      "sha256": "6858e0d567bcfda31a0aa85798d5d31ae38f39706f9d4f7770bc294ddfe7982d",
-      "bytes": 453812,
+      "hash": "ca1c81345ecc106763434b009a91584569434c5996af5ea8f4a53a889b16f36c",
+      "sha256": "ca1c81345ecc106763434b009a91584569434c5996af5ea8f4a53a889b16f36c",
+      "bytes": 453876,
       "triangles": 5673,
       "materials": 10,
       "textures": 0,
@@ -39461,17 +39461,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169564",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:06:20.615Z"
+      "updatedAt": "2026-10-14T01:04:57.091Z"
     },
     {
       "id": "ordinary-0363100012096365",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012096365",
       "name": "Vossius Gymnasium, Messchaertstraat 1, Amsterdam (1930 brick school, three wings, tiled roofs with dormer bands)",
-      "hash": "61c93a0902d3deaf95113ac320f61b943da33a4a8d4df2396d1cc03b02b7d95c",
-      "sha256": "61c93a0902d3deaf95113ac320f61b943da33a4a8d4df2396d1cc03b02b7d95c",
-      "bytes": 409152,
-      "triangles": 5445,
+      "hash": "eb529fa7f21dce8084e36c4fcc0f05f3aa35a159409996881214e952b23a53a3",
+      "sha256": "eb529fa7f21dce8084e36c4fcc0f05f3aa35a159409996881214e952b23a53a3",
+      "bytes": 565952,
+      "triangles": 7685,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -39763,17 +39763,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012096365",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:12:42.550Z"
+      "updatedAt": "2026-10-14T01:04:27.864Z"
     },
     {
       "id": "ordinary-0363100012127997",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012127997",
       "name": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
-      "hash": "7fd20944d96477684258014c18a73d3ec7ff6e913afdb5d95fb32d1782f6f6ac",
-      "sha256": "7fd20944d96477684258014c18a73d3ec7ff6e913afdb5d95fb32d1782f6f6ac",
-      "bytes": 211832,
-      "triangles": 2776,
+      "hash": "9f36f4a9269bd5fa056adfadc39adda990473f31b8de6c9c1ceca29ac9262467",
+      "sha256": "9f36f4a9269bd5fa056adfadc39adda990473f31b8de6c9c1ceca29ac9262467",
+      "bytes": 317000,
+      "triangles": 4280,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -40023,17 +40023,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127997",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:12:42.390Z"
+      "updatedAt": "2026-10-14T01:04:37.413Z"
     },
     {
       "id": "ordinary-0363100012236840",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236840",
       "name": "Montessori Lyceum Amsterdam, Van Ostadestraat 103, Amsterdam (1900 school: three tall storeys of window groups between slender piers)",
-      "hash": "69a4c02beba333ab23541a1c1107c1975f194959f60e6772120f41ef84194a18",
-      "sha256": "69a4c02beba333ab23541a1c1107c1975f194959f60e6772120f41ef84194a18",
-      "bytes": 112468,
-      "triangles": 1349,
+      "hash": "d5d1385240a22c5423cc37aff029f16112fcb566cd381b2bfb10369786bbfeed",
+      "sha256": "d5d1385240a22c5423cc37aff029f16112fcb566cd381b2bfb10369786bbfeed",
+      "bytes": 139352,
+      "triangles": 1733,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -40204,7 +40204,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236840",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:14:05.126Z"
+      "updatedAt": "2026-10-14T01:04:43.115Z"
     },
     {
       "id": "ordinary-0363100012149878",
