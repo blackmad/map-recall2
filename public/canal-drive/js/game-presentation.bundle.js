@@ -663,6 +663,18 @@
     modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
   };
   var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  function glassTintCellValue(x, y) {
+    const t = y / (GLASS_TINT_CELL_H - 1), base = t < 0.5 ? 255 - 47 * (t / 0.5) : 208 - 20 * ((t - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.round(streak ? base + (255 - base) * 0.16 : base);
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
