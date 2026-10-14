@@ -8,7 +8,11 @@
  *  - `paintErkers` (`bayWindows.finish: painted`): a timber erker's panels and closures in the trim colour (the library
  *    builds them in the wall brick); its cap follows in `addErkerCaps` (amsterdamSchool.ts).
  *  - `markPaintedBrick` (`palette.wallMaterial: painted-brick`): the wall materials carry `tintSource: measured`, so the
- *    look keeps the measured paint colour on the brick texture instead of lifting it into the city brick range.
+ *    look keeps the measured paint colour on the brick texture instead of lifting it into the city brick range; a dark
+ *    tympanum (`windowHead.tympanum: dark`) on such a wall is the same paint in shadow and is marked with it.
+ *  - `markPaintedStone` (`palette.stoneMaterial: painted`): the stone dressings (painted bands, springers, keystones, arch
+ *    rings, eared heads, console sills) carry `tintSource: measured`, so the look draws the measured white paint instead
+ *    of mixing it into the city's pale sandstone.
  *
  * The painted bands, eared heads and console sills are library dressings laid out in fit.ts. Facade-frame passes work in
  * the library's elevation frame (x along the front, y up, z outward from the wall plane).
@@ -131,12 +135,12 @@ export function paintErkers(group: T.Group, recipe: CanalHouseRecipe, fit: FitRe
   return painted;
 }
 
-/** Painted brick: every wall-surface material of the house exports its colour as a measured tint. */
-export function markPaintedBrick(group: T.Group): number {
+/** Every mesh `pick` selects exports its material colour as a measured tint (materials are cloned, never edited in place). */
+function markMeasured(group: T.Group, pick: (o: T.Mesh) => boolean): number {
   let marked = 0;
   const clones = new Map<T.Material, T.Material>();
   group.traverse(o => {
-    if (!(o instanceof T.Mesh) || o.userData.surface !== 'wall' || Array.isArray(o.material) || o.material.userData.tintSource) return;
+    if (!(o instanceof T.Mesh) || !pick(o) || Array.isArray(o.material) || o.material.userData.tintSource) return;
     let m = clones.get(o.material);
     if (!m) { const c = o.material.clone(); c.userData = {...o.material.userData, tintSource: 'measured'}; clones.set(o.material, c); m = c; }
     o.material = m; marked++;
@@ -144,10 +148,27 @@ export function markPaintedBrick(group: T.Group): number {
   return marked;
 }
 
+/** Painted brick: every wall-surface material of the house exports its colour as a measured tint. */
+export function markPaintedBrick(group: T.Group): number {
+  return markMeasured(group, o => o.userData.surface === 'wall');
+}
+
+/** Dark tympana (`windowHead.tympanum: dark`) on a painted-brick house: the same paint in shadow, a measured tint too. */
+export function markDarkTympana(group: T.Group): number {
+  return markMeasured(group, o => o.userData.surface === 'accent' && /(?:^|\/)ornament\/[^/]*tympanum-/.test(o.name));
+}
+
+/** Painted stone: every stone-surface material (the white stucco dressings) exports its colour as a measured tint. */
+export function markPaintedStone(group: T.Group): number {
+  return markMeasured(group, o => o.userData.surface === 'stone');
+}
+
 /** Every Oud-West pass, or null when the house uses none of the set (nothing is touched). */
 export function applyOudWest(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport) {
-  const painted = intent.palette.wallMaterial === 'painted-brick';
-  if (!painted && !fit.fronts.some(f => f.timberBalconies?.length || f.erker?.finish)) return null;
-  return {timberBalconies: addTimberBalconies(group, intent, recipe, fit), erkers: paintErkers(group, recipe, fit), paintedWalls: painted ? markPaintedBrick(group) : 0};
+  const painted = intent.palette.wallMaterial === 'painted-brick', paintedStone = intent.palette.stoneMaterial === 'painted';
+  if (!painted && !paintedStone && !fit.fronts.some(f => f.timberBalconies?.length || f.erker?.finish)) return null;
+  const dark = painted && intent.fronts.some(f => f.windowHead?.tympanum === 'dark');
+  return {timberBalconies: addTimberBalconies(group, intent, recipe, fit), erkers: paintErkers(group, recipe, fit), paintedWalls: painted ? markPaintedBrick(group) : 0,
+    ...(dark ? {darkTympana: markDarkTympana(group)} : {}), ...(paintedStone ? {paintedStone: markPaintedStone(group)} : {})};
 }
 
