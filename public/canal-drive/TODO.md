@@ -1303,10 +1303,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   measured values on the kit systems with inferred notes. Open: (1) the
   measurement lane for the two named limits in `measure.ts` (white-framed
   panes classed as trim → glazing undercount; dark brick reading as
-  paint); (2) lane D, the triage of the other ~65 installed large houses
-  (archive crops, measure, likeness report worst-first, re-fit / uninstall
-  per the rule in the plan; ride-visibility ranking replaces footprint ÷
-  distance); (3) the held `large/dominant-7-20261014` branch gets the same
+  paint); (2) lane D DONE (HISTORY "Large tier triaged": 54 re-fitted, 12
+  uninstalled, 11 kept, ride visibility written); open from it: verify the
+  11 "re-fit cheap" verdicts without a re-install (Oude Turfmarkt, Nieuwe
+  Achtergracht 253754, Politie Van Leijenberghlaan, Zuidoost-Gaasperdam,
+  Nieuwezijds Voorburgwal, Oost-Watergraafsmeer, Politiepost IJburg,
+  Meeuwenlaan 132, Rigakade 8, Nieuwpoortstraat, Warmoesstraat garage),
+  Haarlemmerweg 325 after a louvre-screen system, the 7 ornamented fronts
+  as bespoke builders, `build-dominant-building-backlog.ts` to carry
+  `rideVisibility`; (3) the held `large/dominant-7-20261014` branch gets the same
   pass and merges only passers; (4) kit gaps per pilot listed in the
   HISTORY entry (Waagdragerhof's light band storeys and paired windows,
   Houthavenkade's column transoms, Spinoza's mullioned doubles,
