@@ -9,7 +9,7 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
   const doc = await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder': MeshoptDecoder}).read(file);
   const mats = doc.getRoot().listMaterials();
   const materials = mats.map(m => {
-    const extras = (m.getExtras() ?? {}) as {materialSlot?: unknown; tint?: unknown; materialSlotSource?: unknown};
+    const extras = (m.getExtras() ?? {}) as {materialSlot?: unknown; tint?: unknown; materialSlotSource?: unknown; tintSource?: unknown};
     const slot = typeof extras.materialSlot === 'string' && extras.materialSlot ? extras.materialSlot : undefined;
     const tint = typeof extras.tint === 'string' && extras.tint ? extras.tint : undefined;
     return {name: m.getName() || 'unnamed', rgb: m.getBaseColorFactor().slice(0, 3).map(c => Math.round(255 * Math.pow(c, 1 / 2.2))) as [number, number, number],
@@ -17,6 +17,7 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
       ...(slot ? {slot, materialSlot: slot} : {}),
       ...(tint ? {tint} : {}),
       ...(typeof extras.materialSlotSource === 'string' ? {materialSlotSource: extras.materialSlotSource} : {}),
+      ...(extras.tintSource === 'measured' ? {tintSource: 'measured' as const} : {}),
       ...(m.getExtension('KHR_materials_unlit') ? {unlit: true} : {}),
       ...(m.getDoubleSided() ? {doubleSided: true} : {})};
   });

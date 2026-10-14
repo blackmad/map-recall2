@@ -183,15 +183,40 @@ function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'f
   return deg > 30 ? 'steep' : deg > 8 ? 'low' : 'flat';
 }
 
+/**
+ * Wall colour splits (intent `wallSplit`): the group's wall triangles on its main panel whose centroid lies right of the
+ * split (`u > uM`, within 1.5 m of the wall plane) move to the split slot. Host walls are cut at bay boundaries, so a
+ * split snapped to one leaves a clean edge. Returns the number of triangles moved. No splits: nothing changes.
+ */
+export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], panels: Panel[]): number {
+  let moved = 0;
+  for (const g of groups) {
+    if (!g.split) continue;
+    const p = panels.find(q => q.index === g.split!.panel), src = mesh.slots.get(g.slots.wall);
+    if (!p || !src) continue;
+    const keep = {positions: [] as number[], parts: [] as number[]}, out = mesh.slots.get(g.split.slot) ?? {positions: [], parts: []};
+    for (let t = 0; t < src.parts.length; t++) {
+      const v = src.positions.slice(t * 9, t * 9 + 9), c = [0, 1, 2].map(i => (v[i] + v[i + 3] + v[i + 6]) / 3), d = [c[0] - p.o[0], c[1] - p.o[1], c[2] - p.o[2]];
+      const u = d[0] * p.r[0] + d[1] * p.r[1] + d[2] * p.r[2], n = d[0] * p.n[0] + d[1] * p.n[1] + d[2] * p.n[2];
+      const on = Math.abs(n) <= 1.5 && u > g.split.uM && u <= p.uMax + 0.05;
+      const dst = on ? out : keep; dst.positions.push(...v); dst.parts.push(src.parts[t]); if (on) moved++;
+    }
+    mesh.slots.set(g.slots.wall, keep);
+    if (out.parts.length) mesh.slots.set(g.split.slot, out);
+  }
+  return moved;
+}
+
 /** MeshBuilder slots → Three meshes (one per slot; roofs one per slope class) tagged for the GLB exporter. */
 export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe): T.Group {
   const group = new T.Group(); group.name = recipe.id;
   const roofColours = ROOF_COLOURS[recipe.roof.material], roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(recipe.roof.material) ? 'slate' : 'roofTile';
-  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string) => {
+  const measured = new Set(recipe.measuredSlots ?? []);
+  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string) => {
     if (!positions.length) return;
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
-    m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
+    m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId, ...(slot && measured.has(slot) ? {tintSource: 'measured'} : {})};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
@@ -204,7 +229,7 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
     const colour = recipe.spec.palette[slot];
     if (!colour) throw Error(`large tier: slot ${slot} has no palette colour`);
     const {materialSlot, surface} = largeMaterialSlot(slot, recipe);
-    add(`${surface}/${slot}`, s.positions, colour, materialSlot, surface);
+    add(`${surface}/${slot}`, s.positions, colour, materialSlot, surface, slot);
   }
   return group;
 }
@@ -255,6 +280,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
   });
   drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
+  applyWallSplits(res.mesh, recipe.groups, res.panels);
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
   const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? 12000});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};
