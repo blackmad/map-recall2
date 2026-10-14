@@ -31,7 +31,11 @@ export async function loadPano(pick: PanoPick): Promise<{ img: Decoded; resoluti
   return null;
 }
 
-export type Crop = { jpeg: Buffer; width: number; height: number; ppm: number; wallWidthM: number; wallHeightM: number; missingFraction: number; baseZ: number; groundSource: string; washedOut: number; foliage: number };
+export type Crop = { jpeg: Buffer; width: number; height: number; ppm: number; wallWidthM: number; wallHeightM: number; missingFraction: number; baseZ: number; groundSource: string; washedOut: number; foliage: number;
+  /** per-pixel validity (255 = sampled from the panorama, 0 = behind the camera / off the image), width x height */
+  alpha: Uint8Array;
+  /** camera position (RD metres, z NAP) and heading of the panorama */
+  camera: { x: number; y: number; z: number; headingDeg: number } };
 
 /** Share of the mid-wall that is bright and nearly colourless: scaffolding sheeting, overexposure, fog. Brick and plaster fronts score < 0.1. */
 /** Share of the wall that is leaf-green (summer street trees in front of the wall). Heuristic, brick/plaster fronts score ~0. */
@@ -69,7 +73,10 @@ export function rectifyWall(pano: Decoded, pick: PanoPick, wall: Wall, tileHeigh
   // Missing pixels (behind camera / off image) render mid-grey; keep the rest.
   const rgba = Buffer.from(out.data.buffer, out.data.byteOffset, out.data.byteLength);
   const enc = jpeg.encode({ data: rgba, width: out.width, height: out.height }, 80);
-  return { jpeg: enc.data, width: out.width, height: out.height, ppm, wallWidthM: out.wallWidthM, wallHeightM: out.wallHeightM, missingFraction: out.missingFraction, baseZ: ground, groundSource, washedOut: washedOutFraction(out.data, out.width, out.height), foliage: foliageFraction(out.data, out.width, out.height) };
+  const alpha = new Uint8Array(out.width * out.height);
+  for (let i = 0; i < alpha.length; i++) alpha[i] = out.data[i * 4 + 3] === 255 ? 255 : 0;
+  return { jpeg: enc.data, width: out.width, height: out.height, ppm, wallWidthM: out.wallWidthM, wallHeightM: out.wallHeightM, missingFraction: out.missingFraction, baseZ: ground, groundSource, washedOut: washedOutFraction(out.data, out.width, out.height), foliage: foliageFraction(out.data, out.width, out.height),
+    alpha, camera: { x: lens.pose.x, y: lens.pose.y, z: lens.pose.z, headingDeg: Number(pick.record.heading ?? 0) } };
 }
 
 /** Aimed perspective view from the chosen panorama at the wall centre, via the public thumbnail endpoint. */
