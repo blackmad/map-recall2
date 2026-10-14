@@ -37,6 +37,12 @@ test.skip(!process.env.PERF_RIDE, 'set PERF_RIDE=1 to measure');
  * 2.6-2.9; label overlay mean 0.15-0.16 ms, worst 5.6-6.2 ms. Median and label
  * bounds keep ~2x over the loaded-machine numbers of 2026-10-13; p95 keeps
  * room for a tile batch.
+ *
+ * Own ground on by default (2026-10-14): the `default` variants now ride with the own ground and
+ * the shared frame. Fixed route, 3 runs x 2 default variants, medians off -> on: frame interval
+ * 16.7 -> 16.7 ms (display cadence), map render 2.35 -> 3.5 ms (p95 4.0 -> 5.3), three.js
+ * 0.73 -> 2.11 ms per frame, JS heap 788 -> 881 MB, no frame over 50 ms either way. The budget
+ * below still holds; `OWN_GROUND=0` measures the old default.
  */
 const DESKTOP_BUDGET = { mapRenderMedianMs: 4, mapRenderP95Ms: 10, labelFrameMeanMs: 0.4, labelFrameMaxMs: 20, framesOver100: 2 };
 
@@ -95,8 +101,11 @@ const results: Record<string, unknown>[] = [];
 for (const variant of variants) {
   test(`ride frame cost: ${variant.label}`, async ({ page }, info) => {
     test.setTimeout(300_000);
-    // CANAL_ELEVATION=1|0 forces the opt-in elevation layer on or off (docs/elevation.md).
-    if (process.env.CANAL_ELEVATION) await page.addInitScript((on: boolean) => { (window as any).__canalRecallElevation = on; }, process.env.CANAL_ELEVATION === '1');
+    // OWN_GROUND=1|0 forces the own ground (default on since 2026-10-14) on or off.
+    if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
+    // CANAL_ELEVATION=1|0 forces the opt-in elevation layer on or off (docs/elevation.md); the
+    // own ground retires that layer, so CANAL_ELEVATION=1 turns the own ground off.
+    if (process.env.CANAL_ELEVATION) await page.addInitScript((on: boolean) => { (window as any).__canalRecallElevation = on; if (on) (window as any).__canalRecallOwnGround = false; }, process.env.CANAL_ELEVATION === '1');
     // SHARED_FRAME=1|0 forces the shared three.js frame (rendererShared/) on or off; SHADOWS=0 drops its sun shadows.
     if (process.env.SHARED_FRAME) await page.addInitScript((on: boolean) => { (window as any).__canalRecallSharedFrame = on; }, process.env.SHARED_FRAME === '1');
     if (process.env.SHADOWS) await page.addInitScript((on: boolean) => { (window as any).__canalRecallShadows = on; }, process.env.SHADOWS === '1');
@@ -160,7 +169,7 @@ for (const variant of variants) {
     results.push(sample);
     console.log(JSON.stringify(sample));
     mkdirSync('artifacts/perf', { recursive: true });
-    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.CANAL_ELEVATION ? `-elevation${process.env.CANAL_ELEVATION}` : ''}${process.env.SHARED_FRAME ? `-shared${process.env.SHARED_FRAME}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}.json`, JSON.stringify(results, null, 2));
+    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.OWN_GROUND ? `-ownGround${process.env.OWN_GROUND}` : ''}${process.env.CANAL_ELEVATION ? `-elevation${process.env.CANAL_ELEVATION}` : ''}${process.env.SHARED_FRAME ? `-shared${process.env.SHARED_FRAME}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
     if (info.project.name === 'desktop' && variant.landmarks === 'default' && !process.env.SHARED_FRAME && !process.env.CANAL_ELEVATION) {
       expect(sample.mapRender.median, 'map render median (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderMedianMs);

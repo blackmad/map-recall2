@@ -800,22 +800,83 @@ export {
 // Which way the vehicle faces at the start.
 
 /**
- * How far out along the route (world px) the start looks, nearest first. The first leg is where
- * the rider actually begins, so the nearest distance that gives a clear direction decides; a
- * farther one only decides when every nearer one is ambiguous.
+ * How far out (world px, 3 px = 1 m) from the start the first leg is read, nearest first. The
+ * first leg is where the rider actually begins, so the nearest target far enough away to give a
+ * direction decides.
  */
 export const START_HEADING_LOOKAHEADS_PX = [35, 80, 150, 400] as const;
-/** A direction counts as clear when the route leaves at least this close to along the road. */
-export const START_HEADING_CLEAR = 0.35;
+/** A target closer than this to the start gives no usable direction. */
+export const START_HEADING_MIN_TARGET_PX = 20;
+/**
+ * Facing along the road or canal is kept when that is within this of the first leg; a leg that
+ * leaves at a sharper angle (a start at a junction, or a canal start whose route turns off at
+ * once) is faced directly instead of the axis under the vehicle. 30 degrees.
+ */
+export const START_HEADING_SNAP_RAD = Math.PI / 6;
+/** Two route segments this close (px) to the start count as equally near; the later one wins. */
+export const START_HEADING_TIE_PX = 1.5;
+/** How far along the route (px) the start's projection is looked for, so a route that later passes back by the start does not count. */
+export const START_HEADING_SEARCH_PX = 900;
+
+/**
+ * The part of the route ahead of the start: from the start's projection on the route's opening
+ * stretch onward. The planner's path begins at the graph node it snapped the start to, which can
+ * lie behind the spawn (2026-10-14: boat and bike starts whose first vertex was 20-25 m behind,
+ * with the route running back past the spawn), so reading targets from the first vertex faced
+ * the vehicle at that node instead of along the route.
+ */
+export function routeAheadOfStart(route: readonly WorldPoint[], start: WorldPoint): WorldPoint[] {
+  if (route.length < 2) return route.slice();
+  let best = { index: 0, t: 0, distance: Infinity };
+  let travelled = 0;
+  for (let i = 0; i < route.length - 1; i++) {
+    const a = route[i], b = route[i + 1];
+    const dx = b.x - a.x, dy = b.y - a.y, length = Math.hypot(dx, dy);
+    const t = length ? Math.max(0, Math.min(1, ((start.x - a.x) * dx + (start.y - a.y) * dy) / (length * length))) : 0;
+    const distance = Math.hypot(a.x + dx * t - start.x, a.y + dy * t - start.y);
+    // Ties go to the later segment: a route that runs from the spawn back to a node behind it
+    // and then returns past the spawn (a doubled-back first leg) starts where it passes again.
+    if (distance <= best.distance + START_HEADING_TIE_PX) best = { index: i, t, distance: Math.min(distance, best.distance) };
+    travelled += length;
+    if (travelled > START_HEADING_SEARCH_PX) break;
+  }
+  const a = route[best.index], b = route[best.index + 1];
+  const projection = { x: a.x + (b.x - a.x) * best.t, y: a.y + (b.y - a.y) * best.t };
+  return [projection, ...route.slice(best.index + 1)];
+}
+
+/**
+ * The bearing (radians, world frame, y down) of the route's first leg seen from the start, or
+ * null when neither the route nor the finish gives a direction (`start-heading.spec.ts` reads the
+ * first leg the same way, independently).
+ */
+export function firstLegBearing(
+  start: WorldPoint,
+  route: readonly WorldPoint[] | null | undefined,
+  finish: WorldPoint | null | undefined,
+): number | null {
+  const targets: WorldPoint[] = [];
+  if (route && route.length) {
+    const ahead = routeAheadOfStart(route, start);
+    for (const lookahead of START_HEADING_LOOKAHEADS_PX) {
+      targets.push(ahead.find(p => Math.hypot(p.x - start.x, p.y - start.y) >= lookahead) ?? ahead[ahead.length - 1]);
+    }
+  }
+  if (finish) targets.push(finish);
+  for (const target of targets) {
+    const dx = target.x - start.x, dy = target.y - start.y;
+    if (Math.hypot(dx, dy) >= START_HEADING_MIN_TARGET_PX) return Math.atan2(dy, dx);
+  }
+  return null;
+}
 
 /**
  * A road's tangent has two opposite directions and the extract stores one of them
  * arbitrarily, so a ride that starts from the road's own angle faces the route half
  * the time and away from it the other half (with the camera, which follows the heading,
- * behind a bike pointed the wrong way). Pick whichever of the two points toward where the
- * route goes first. A route that turns at the first junction reads differently at different
- * distances, so the nearest clear reading wins; with only weak readings, the strongest;
- * with no route yet, the finish; with neither, the road's own angle.
+ * behind a vehicle pointed the wrong way). Face the route's first leg: along the road or
+ * canal the way the leg goes when the leg runs within `START_HEADING_SNAP_RAD` of it, else
+ * straight down the leg. With no route, toward the finish; with neither, the road's own angle.
  */
 export function startHeading(
   roadAngle: number,
@@ -823,23 +884,9 @@ export function startHeading(
   route: readonly WorldPoint[] | null | undefined,
   finish: WorldPoint | null | undefined,
 ): number {
-  const targets: WorldPoint[] = [];
-  if (route && route.length) {
-    for (const lookahead of START_HEADING_LOOKAHEADS_PX) {
-      targets.push(route.find(p => Math.hypot(p.x - start.x, p.y - start.y) >= lookahead) ?? route[route.length - 1]);
-    }
-  }
-  if (finish) targets.push(finish);
-  let best = 0;
-  for (const target of targets) {
-    const dx = target.x - start.x, dy = target.y - start.y, length = Math.hypot(dx, dy);
-    if (length < 20) continue;
-    const along = (Math.cos(roadAngle) * dx + Math.sin(roadAngle) * dy) / length;
-    if (Math.abs(along) >= START_HEADING_CLEAR) { best = along; break; }
-    if (Math.abs(along) > Math.abs(best)) best = along;
-  }
-  // Exactly square across the road at every distance: neither direction is better, so keep the
-  // road's own. Even a weak signal beats a coin flip.
-  if (Math.abs(best) < 0.02) return roadAngle;
-  return best >= 0 ? roadAngle : roadAngle + Math.PI;
+  const leg = firstLegBearing(start, route, finish);
+  if (leg == null) return roadAngle;
+  const along = Math.cos(leg - roadAngle) >= 0 ? roadAngle : roadAngle + Math.PI;
+  const off = Math.abs(Math.atan2(Math.sin(leg - along), Math.cos(leg - along)));
+  return off <= START_HEADING_SNAP_RAD ? along : leg;
 }

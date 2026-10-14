@@ -8,7 +8,8 @@ bike/boat physics stay 2D and never read it.
 ## Flag
 
 Off by default. `?elevation=1` (or `window.__canalRecallElevation = true`
-before load). `vector-map.js` then loads `js/canal-elevation.bundle.js` on
+before load). Since 2026-10-14 the own ground (below) is on by default and
+retires this stencil layer, so it needs `?ownGround=0&elevation=1`. `vector-map.js` then loads `js/canal-elevation.bundle.js` on
 demand, so the flag-off path costs nothing. Built by `npm run build:canal-3d`
 (`scripts/build-3d-bundles.mjs`, target `canal-elevation`).
 
@@ -142,6 +143,34 @@ makes bridges legible.
   stone piers with a flat soffit).
 - Arch geometry, parapets and fascia colours are procedural interpretations of
   the municipal material, not surveyed shapes.
+
+## Own ground: on by default since 2026-10-14
+
+The user's call (2026-10-14): the own ground — measured terrain, water levels,
+BGT widths and the bridge kit — is the default ride. `?ownGround=0` (or
+`window.__canalRecallOwnGround = false`) opts out; `?ownGround=1` still works.
+An explicit `?sharedFrame=0` also turns it off unless `?ownGround=1` is given,
+since the own ground draws through the shared frame (which it still implies).
+`tests/e2e/own-ground-default.spec.ts` pins the flag table.
+
+Desktop cost on the fixed ride (`PERF_RIDE=1 PW_PORT=4514 npx playwright test
+ride-perf.spec.ts --project=desktop -g "ride frame cost: default"`, 3 runs x the
+two default variants, medians; before = `ownGround` off, after = default on):
+
+| | off (old default) | on (new default) |
+|---|---|---|
+| frame interval median / p95 / p99 | 16.7 / 16.8 / 16.8 ms | 16.7 / 16.8 / 16.8 ms |
+| frames over 50 / 100 ms | 0 / 0 | 0 / 0 |
+| map render median / p95 | 2.35 / 4.0 ms | 3.5 / 5.25 ms |
+| three.js layers per frame | 0.73 ms | 2.11 ms |
+| JS heap | 788 MB | 881 MB |
+
+The frame interval is pinned to display cadence either way (0 % frame-time
+loss); the cost is main-thread headroom, about +2.5 ms per frame (+80 % of our
+own CPU), and ~90 MB of heap. If that headroom is needed back, the levers in
+order are: the far ring (LOD 1 cells), the park layers and allotments, the
+junction rings, then 4 m relief everywhere (see the TODO size cuts). iPhone is
+still unmeasured.
 
 ## Own ground (`?ownGround=1`): ride review and default-on recommendation (2026-10-13)
 
