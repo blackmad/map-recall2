@@ -251,3 +251,86 @@ downloads in their own directories. The inline `# /// script` headers carry
 the pins, so `uv run --script` works too. To reproduce, check out TripoSR
 (`VAST-AI-Research/TripoSR` main, MIT) anywhere outside the repo and pass it
 as `--src`.
+
+## Batch 1: route B as one command on the single figures (2026-10-14)
+
+### The command
+
+```
+node --import tsx scripts/sculptures/reconstruct.ts --id=de-dokwerker
+node --import tsx scripts/sculptures/reconstruct.ts --id=anne-frank-merwedeplein --box=150,70,560,640 --rembg=isnet-general-use --kit-plinth
+node --import tsx scripts/sculptures/reconstruct.ts --id=<new> --title="File:X.jpg" --kit=<kit glb id> --height=2.6 --facing=250
+node --import tsx scripts/sculptures/reconstruct.ts --id=<new> --photo=<jpg> --page-url=<Commons page> --author="A" --licence="CC BY 4.0" --height=2.6
+```
+
+- **Inputs.** `--id` picks defaults from `scripts/sculptures/batch1.json` (kit model, Commons title, real height, facing).
+  Flags override them.
+  - The photo comes from `--title` (fetched with author and licence from the Commons API, refused unless CC0, PD, CC BY or CC BY-SA)
+    or from `--photo` plus `--page-url`, `--author` and `--licence`.
+  - Height defaults to the kit model's bounding-box height, facing to the kit builder's `FACING`.
+- **Steps.** Download, rembg cut-out (`--rembg=isnet-general-use` is the IS-Net fallback, `--box` crops one figure of a group),
+  TripoSR on MPS, scikit-image marching cubes, Open3D decimation to 6k triangles, scale to the real height, turn to the facing,
+  then material tagging in Node.
+  - **Material.** No photo colour is baked. Bronze and stone are copied from the kit model's own `bronze` and `stone` materials
+    (`materialSlot` plus `tint`, `materialSlotSource: inferred`). Triangles under `plinthTopM` take the stone slot.
+  - **`--kit-plinth`.** Use it when the photo plinth is wrong: the figure is scaled to `height - plinthTop`, lifted, and stood on
+    the kit's plinth triangles (all vertices under `plinthTop` and within 1.8 m of the origin).
+- **Output.** `artifacts/sculpture-reconstruction/<id>/{routeB.glb, compare.png, source.json}` plus `work/` (cut-out, raw mesh,
+  timings), `strips/` and `download/` (the photo, in its own directory). `compare.png` is the inputs row (photo, cut-out, network input)
+  above the kit strip and the route B strip. A copy under 300 KB goes to `docs/images/sculptures/<id>.jpg`.
+- **`source.json`** records the photo title, page URL, author, licence, date and sha1, the cut-out model, the settings and the timings.
+  It also records the result's triangle count and size and the material extras.
+- **Environment.** `scripts/sculptures/setup-env.sh` recreates the two venvs and the TripoSR checkout outside the repo
+  (`~/Code/map-recall2-sculpt`, or `SCULPTURE_TOOLS`).
+  - The two venvs: `venv-triposr` (torch) and `venv-o3d` (Open3D), because torch and Open3D segfault in one process.
+  - The TripoSR weights were already in the Hugging Face cache.
+- **Seconds** in the table are TripoSR load, cut-out, network and mesh extraction. Downloads, decimation and the two strips add
+  about 30 s more.
+- **Bug found and fixed.** The photo cache was keyed only by id, so re-running Anne Frank with a different photo silently reused the
+  first one. It is now keyed by the sha1 of the original. Commons' `upload.wikimedia.org` rate-limits (429) after about ten
+  downloads; the fetch now backs off for up to ten minutes.
+
+### Verdicts
+
+Strips are `docs/images/sculptures/<id>.jpg`: inputs row, kit row, route B row, all at the same camera distance. Every one was looked
+at at gallery size. None of these is installed.
+
+| id | Photo (Commons), author, licence | s | tris | Verdict | What is wrong |
+| --- | --- | --- | --- | --- | --- |
+| `de-dokwerker` | `Amsterdam, De dokwerker 07.JPG`, A.A.W.J. Rietman, CC BY-SA 4.0 | 17 | 6,000 | **Better than the kit** | The back is invented and smooth. The block carries the photo's stone relief and no 1941 lettering. Height and facing are the kit's estimates |
+| `gandhi-churchill-laan` | `Statue of Gandhi, Amsterdam.jpg`, Antony Antony, CC BY 2.0 | 18 | 6,000 | **Better figure, worse plinth** | The block is about half its height and the flowers are baked into its top. The staff is a stub. Fix with `--kit-plinth` and a photo box above the block |
+| `mama-baranka` | `Mama Baranka in 2019 (1).jpg`, Ceescamel, CC BY-SA 4.0 | 20 | 6,000 | **Better than the kit** (the kit is a cone with studs) | The back and sides are invented and lean. The hands read as a lump. A 3-photo TRELLIS.2 run is coherent all round but misses the base disc (see below) |
+| `waterdraagster-bellamyplein` | `2021 Waterdraagster met vissen-Waterdraagster (1).jpg`, Ceescamel, CC BY-SA 4.0 | 18 | 6,000 | **Better than the kit** (the kit figure is a stub on the rim) | The photo looks down, so the figure leans back. The kit strip is centred on the basin, so the framing differs. No water yoke |
+| `anne-frank-merwedeplein` | `Standbeeld Anne Frank - Merwedeplein - Amsterdam.jpg`, Maaike98, CC BY-SA 3.0 | 15 | 7,034 (with kit plinth) | **Needs a second photo** (about equal to the kit) | The only usable photo is tiny, with the figure behind the flowers, so the kit plinth had to be used. Face and bag are lumps. A photo of a framed sepia drawing (Jos WRSM) was tried first and rejected, because it shows a picture of the statue. The brief's Westerkerk statue is a different work; the kit model is the Merwedeplein one |
+| `multatuli-standbeeld` | `Multatuli Amsterdam (4133292208).jpg`, FaceMePLS, CC BY 2.0 | 15 | 6,346 (with kit plinth) | **Worse than the kit** (needs a second photo) | The photo is a night shot. The head is lumpy and the torso is a slab. The Paul van Galen RCE photos (CC BY-SA 4.0) cut the head off at the frame edge or merge a tourist into the cut-out, so they were rejected |
+| `theo-thijssen-man` | `Lindengracht, Theo Thijssen beeld foto 1.jpg`, Alf van Beem, public domain | 19 | 8,963 (with kit plinth) | **Man: better than the kit's man** | One figure per run, each on the kit block. The man is a recognisable seated figure; the back is invented. The kit desk is not in these rows |
+| `theo-thijssen-boy` | same photo, boy and desk box | 17 | 8,963 | **Worse** | The boy, the desk and the crossed legs fuse into fragments. A group needs hand placement and a second photo of the desk |
+| `carmiggelt-borstbeeld` | none | - | - | **Skipped** | The Commons photos found (Anefo 934-3460..3464, CC0) show the sculptor and the widow, not the bust. No frontal photo of the bust itself with a recorded licence. The first run (the Anefo portrait) was deleted |
+| `winkler-prins-monument` | `Monument Anthony Winkler Prins André Volten Frederiksplein.JPG`, Brbbl, CC BY-SA 3.0 | 32 | 6,000 | **Worse** (keep the kit) | It is a stack of discs, not a figure. The cut-out loses the discs and the network gives a twisted stick |
+| `walraven-van-hall` | `Walraven van Hall, vooraanzicht.jpg`, Ceescamel, CC BY-SA 4.0 | 27 | 6,000 | **Wrong class, worse** | It is a 10 m fallen tree, not a figure. The height scaling treats the root mass as upright. Needs a footprint scale and several photos |
+| `spinoza-standbeeld` | `Spinoza -.jpg`, Nicolas Dings (the sculptor), CC BY-SA 4.0 | 47 | 6,000 | **Better than the kit** | The cloak, relief studs and head read from all sides. The feet are missing and the cloak is bell-like. The slab and the polyhedron are not part of it |
+| `rembrandtmonument` | `Standbeeld van Rembrandt op het Rembrandtplein, RP-P-2019-371.jpg`, Rijksmuseum, CC0 | 64 | 5,999 | **Worse** (needs a modern photo) | The only licensed image is a 19th-century print with its lettering and railings, and the result keeps the print's text base. The kit model of this id is the Night Watch group, not the Rembrandt statue, so the comparison row shows a different object |
+| `wilhelmina-ruiterstandbeeld` | `Ruiterstandbeeld van koningin Wilhelmina - Amsterdam - 20362367 - RCE.jpg`, Loek Tangel, CC BY-SA 4.0 | 47 | 6,000 | **Mixed, needs a side photo** | The horse and rider silhouette is right from the side, but from the front the legs, chest and pedestal merge. The kit is blocky but separable |
+
+Totals: of 13 attempted, 5 are better than the kit as they stand (Dokwerker, Mama Baranka, Waterdraagster, Spinoza, Theo's man),
+Gandhi has a better figure with a worse plinth, and the rest are worse or need a second photo. Single-photo, well-lit, frontal
+subjects work. Night shots, prints, crowds, thin columns and group sculptures do not.
+
+### Multi-photo trial (TRELLIS.2 multidiffusion, on the merged `multiview/` scripts)
+
+Only Mama Baranka in this batch has three or more Commons photos from different sides by one author (Ceescamel 2019 (1), (3), (5):
+front, three-quarter, back). Three cut-outs were fed to `trellis2-apple` (MLX) in multidiffusion mode with
+`scripts/sculptures/multiview/run-multi-statue.sh`, then decimated with `--remesh=192`.
+
+- **Result:** `docs/images/sculptures/mama-baranka-multi.jpg`, third row. The figure is one coherent full body with a face, arms and a
+  back. It has no base disc: the cut-outs of the dark bronze against grass lost it. The grey and black shading in the strip is the GLB
+  without the material tag, which this trial did not add.
+- **Time:** about 7 minutes of generation on the MLX port (the machine was loaded).
+- **Provenance:** DINOv3 weights came through timm's ungated redistribution
+  (`timm/vit_large_patch16_dinov3_qkvb.lvd1689m`), under the DINOv3 License (see the multiview survey). Cut-outs used IS-Net.
+  Photos: Ceescamel, CC BY-SA 4.0, `File:Mama Baranka in 2019 (1).jpg`, `(3)` and `(5)`.
+- **Which statues got the multi-photo route:** Mama Baranka only. The other 12 fell back to TripoSR on one photo, because no set of
+  three or more licensed photos from different sides was found for them (Spinoza has three Commons files, two of them tiny or from
+  the same side; the Waterdraagster has Ceescamel and Golsteijn sets, but only some show the figure from other sides).
+  The sibling lanes cover De Dokwerker and Gandhi. A second multi-photo pass on the Waterdraagster, Wilhelmina (three RCE photos)
+  and Spinoza is the next step. It was not done here because each run costs about 7 minutes and 27 GB.
