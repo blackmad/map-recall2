@@ -6,35 +6,30 @@
  "address": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
  "sources": [
   {
-   "id": "pano-2025-09-29-w01",
+   "id": "pano-2019-11-06-w01-2L",
    "kind": "street-panorama",
-   "capturedAt": "2025-09-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
-   "image": "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
+   "capturedAt": "2019-11-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000463_pano_0000_003401/",
+   "image": "source-data://pand-reference-walls/0363100012247232/w01-2L.jpg",
+   "sha256": "8f1f9e6dd7b0a12cbc29f3c2c74974a7e31113962998a595fd4624683bcb8150",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-09-29-w01-2",
-   "kind": "street-panorama",
-   "capturedAt": "2025-09-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00183/",
-   "image": "staging/pand-reference-walls/0363100012247232/w01-2.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-01-29-w02",
+   "id": "pano-2020-01-29-w02-182",
    "kind": "street-panorama",
    "capturedAt": "2020-01-29",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001596_pano_0001_000109/",
-   "image": "staging/pand-reference-walls/0363100012247232/w02-182.jpg",
+   "image": "source-data://pand-reference-walls/0363100012247232/w02-182.jpg",
+   "sha256": "1dc490eb54a14864b76d81ec30af499e3815c556892aa8a985619fb8f0529883",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2024-10-22-w03",
+   "id": "pano-2024-10-22-w03-272",
    "kind": "street-panorama",
    "capturedAt": "2024-10-22",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_07-40-29_00769/",
-   "image": "staging/pand-reference-walls/0363100012247232/w03-272.jpg",
+   "image": "source-data://pand-reference-walls/0363100012247232/w03-272.jpg",
+   "sha256": "da4a36d463c605925aa4b2b2f99baa82c0d50ca1e9a0969265606ffddc031b9b",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -65,9 +60,21 @@
     "first": 1
    },
    "palette": {
-    "brick": "#a8683c",
+    "brick": "#7a6b55",
     "frame": "#7a848a",
     "stone": "#b8b2a4"
+   },
+   "hand": [
+    "baysPerStorey"
+   ],
+   "wallSplit": {
+    "at": 0.502,
+    "brick": "#504947"
+   },
+   "windowShape": {
+    "w": 0.32,
+    "h": 0.599,
+    "sill": 0.1
    }
   },
   {
@@ -92,14 +99,19 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 3,
-   "baysPerStorey": 9,
+   "baysPerStorey": 6,
    "ground": "glazed",
    "windows": "wide",
    "deepBars": true,
    "palette": {
-    "brick": "#5e5650",
+    "brick": "#615b54",
     "frame": "#6a747a",
     "stone": "#9a968c"
+   },
+   "windowShape": {
+    "w": 0.343,
+    "h": 0.6,
+    "sill": 0.15
    }
   },
   {
@@ -115,10 +127,18 @@
    "windows": "narrow",
    "deepBars": true,
    "palette": {
-    "brick": "#6a5448",
+    "brick": "#524c52",
     "frame": "#8a949a",
     "stone": "#b8b2a4"
-   }
+   },
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.8,
+    "sill": 0.05
+   },
+   "hand": [
+    "windowShape"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -136,6 +156,16 @@
  "notes": [
   "Houthavenkade 26 (BAG pand 0363100012247232, built 2018, 510 3DBAG wall surfaces, roof max 29.8 m): a large residential block on the Houthavens quay, the 2018 development north of the Westerpark. Five walls were fetched: the north canal front (w01-2, 2025-09-29), the south range (w02-182, 2020-01-29), the west front (w03-272, 2024-10-22), the north-east end (w05-50, 2024-10-09) and a 2016 construction view (w04-140) that shows only the site hoarding.",
   "walls[0] = panel 269 (N, 61 m, eaves 25.5 over a 28.8 m top): orange brick on the west half and dark brown on the east, eight storeys with narrow window columns and glass-railed balcony columns, glazed commercial ground; drawn as 8 storeys x 10 bays with a glazed ground and balconies in every third bay on storeys 2-7. walls[1] = panels 122 (N, ground 25.5): the set-back glazed top floor, one ribbon-window storey. walls[2] = panels 36 and 37 parts (S, 59 m, eaves 10.6, surfaces 37, 98, 251, 252): three storeys of large windows in dark brick over a glazed ground. walls[3] = panel 33 parts (W, surfaces 34, 250, 271, eaves 16.7): six storeys of narrow windows over a glazed shop ground.",
-  "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m."
- ]
+  "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4a5451 not used (not darker than the wall #524947 by 10 L*, or tinted): kit glass kept; walls[0] wall split #7a6b55 | #504947 at 50 % (dE 19.8); walls[2] glass #575960 not used (not darker than the wall #615b54 by 10 L*, or tinted): kit glass kept; walls[3] glass #2f557d not used (not darker than the wall #524c52 by 10 L*, or tinted): kit glass kept.",
+  "Kit gap (photo review 2026-10-14): walls[0] ~20 window columns and projecting glazed bay columns are not modelled at that density: the 12k triangle budget affords 10 bays, so windows are wider than the photo's."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   2,
+   3
+  ]
+ }
 }
