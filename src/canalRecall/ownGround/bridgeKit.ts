@@ -246,6 +246,8 @@ export interface KitInput {
   budget?: number;
   /** Per-bridge facts (bridgeFacts): arch count, shapes, openings, family, parapet, named tier. */
   facts?: BridgeFacts | null;
+  /** Stations of the lamp columns (set by the builder: over the piers between measured openings). */
+  lampsAt?: number[];
 }
 
 export interface KitInfo { kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number }
@@ -547,7 +549,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
 
   const tEnds = m.indices.length / 3;
   // Parapet and railings over the deck span.
-  if (lv.railings || lv.inner) parapet(m, input, lv, spine, info, fascia);
+  if (lv.railings || lv.inner) parapet(m, arches.length > 1 ? { ...input, lampsAt: arches.slice(1).map((a, j) => (arches[j].s1 + a.s0) / 2) } : input, lv, spine, info, fascia);
   info.triangles = m.indices.length / 3;
   kitTrace.fn?.(input.id, level, { stations: st.length, spine: spine.length, faces: tFaces, endsAndPiers: tEnds - tFaces, parapet: info.triangles - tEnds, posts: info.railingPosts });
   return { mesh: m, info };
@@ -567,8 +569,9 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
   const facts = input.facts ?? null, pal = paletteOf(facts), cls = facts?.parapet;
   // A measured parapet class: the stone balustrade (the arch style, balusters on the named tier), an iron rail on a
   // low coping, a solid brick parapet, or the coping alone.
+  // Iron rail: the canal-belt arches' stone coping is the parapet's outer face (COPE_M); over it only a thin cap.
   const style = cls === 'iron-rail'
-    ? { plinth: 0.14, width: 0.3, plinthCol: pal.coping, post: RAILING.post / 2, postCol: C.iron, postTop: RAILING.height, railCol: C.iron, rail: RAILING.rail / 2 }
+    ? { plinth: kind === 'arch' ? 0.05 : 0.14, width: 0.3, plinthCol: pal.coping, post: RAILING.post / 2, postCol: C.iron, postTop: RAILING.height, railCol: C.iron, rail: RAILING.rail / 2 }
     : cls === 'brick-parapet'
       ? { plinth: 0.95, width: 0.32, plinthCol: pal.pier, post: 0, postCol: C.iron, postTop: 0, railCol: C.iron, rail: 0 }
       : cls === 'none'
@@ -623,7 +626,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       beam(m, [a.c[0], a.c[1], a.z + h], [b.c[0], b.c[1], b.z + h], h >= RAILING.height - 0.1 ? style.rail * 1.4 : style.rail, style.railCol, true);
     }
     // Balusters (stone balustrade, named tier, full detail): a flat stone baluster every 0.45 m between the plinth and the rail, outer face only.
-    if (cls === 'stone-balustrade' && facts?.named && lv.postStep === 1) {
+    if (cls === 'stone-balustrade' && facts?.named && lv.postStep <= 1.5) {
       const nb = Math.floor(len / 0.45);
       for (let i = 1; i < nb; i++) {
         const r = rowAt(rows, p0 + len * i / nb), o = out(r), u: Vec2 = [o[1], -o[0]], c = inward(r, -0.01), z0 = zt(r) + style.plinth, z1 = zt(r) + RAILING.height - 0.12;
@@ -633,7 +636,10 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     }
     }
     // Lamp posts at the quarter points (arch kind): a pole on the plinth, a lantern and a cap.
-    if (kind === 'arch' && lv.lamps && len >= 6) for (const f of lv.lamps >= 4 ? [0.25, 0.75] : [side > 0 ? 0.25 : 0.75]) {
+    // With measured facts only the balustraded bridges carry lamps (the Blauwbrug's lantern columns stand over its piers);
+    // the canal-belt brick arches with an iron rail have none (Reguliersgracht, Torensluis faces).
+    const lampAt = facts?.parapet ? (cls === 'stone-balustrade' ? (input.lampsAt?.length ? input.lampsAt.map(s => (s - p0) / len) : [0.25, 0.75]) : []) : lv.lamps >= 4 ? [0.25, 0.75] : [side > 0 ? 0.25 : 0.75];
+    if (kind === 'arch' && lv.lamps && len >= 6) for (const f of lampAt) {
       const r = rowAt(rows, p0 + len * f), o = out(r), c = inward(r, style.width / 2), z = zt(r) + style.plinth;
       box(m, c, [o[1], -o[0]], 0.07, 0.07, z, z + 3.3, C.lampPole, false);
       box(m, c, [o[1], -o[0]], 0.17, 0.17, z + 3.3, z + 3.75, C.lantern, false);
