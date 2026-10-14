@@ -36225,186 +36225,6 @@
         "triangles": 4885
       }
     },
-    "motorkade-01": {
-      "id": "motorkade-01",
-      "name": "Motorkade 1",
-      "modelUrl": "./models/motorkade-01.glb",
-      "suppressOsmIds": [
-        "NL.IMBAG.Pand.0363100012247879"
-      ],
-      "spatialSuppression": false,
-      "footprint": {
-        "centre": [
-          4.919829419833952,
-          52.3841948367538
-        ],
-        "headingDegrees": 169,
-        "lengthMetres": 49,
-        "widthMetres": 44.18
-      },
-      "groundAltitudeMetres": 0,
-      "facingOffsetDegrees": 0,
-      "surveyed": {
-        "anchor": [
-          4.919683354485995,
-          52.384234752019374
-        ],
-        "northOffsetDegrees": 0,
-        "source": "PDOK BAG 0363100012247879 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
-      },
-      "materialOverrides": {
-        "gold": "#b9a05a",
-        "glass": "#6a8c9c",
-        "frame": "#a8924f",
-        "dark": "#2b2f31",
-        "concrete": "#b5b0a4",
-        "brick": "#c9b277",
-        "slate": "#5a5e60"
-      },
-      "preservePositionPrecision": true,
-      "attribution": {
-        "title": "Motorkade 1 original architecture",
-        "author": "Map Recall",
-        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247879",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
-      },
-      "buildingFootprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.920176763770926,
-              52.38425506260694
-            ],
-            [
-              4.920121382154497,
-              52.38443141600011
-            ],
-            [
-              4.919868045661283,
-              52.38440144033579
-            ],
-            [
-              4.91975473457346,
-              52.38438803292593
-            ],
-            [
-              4.919641423554515,
-              52.384374625407645
-            ],
-            [
-              4.919560782627217,
-              52.38436508565991
-            ],
-            [
-              4.919488606284046,
-              52.38435654995496
-            ],
-            [
-              4.919489730616524,
-              52.384353004264725
-            ],
-            [
-              4.919491690451211,
-              52.384346837473785
-            ],
-            [
-              4.919421582647178,
-              52.38433854357644
-            ],
-            [
-              4.919436644585972,
-              52.38429059092227
-            ],
-            [
-              4.919433050567361,
-              52.38429015430627
-            ],
-            [
-              4.919449875590371,
-              52.384236582330765
-            ],
-            [
-              4.919453484387247,
-              52.38423701001695
-            ],
-            [
-              4.919493775551268,
-              52.38410877125323
-            ],
-            [
-              4.91949018145203,
-              52.38410834362627
-            ],
-            [
-              4.919528724650153,
-              52.383985661314206
-            ],
-            [
-              4.919532333427377,
-              52.383986088998
-            ],
-            [
-              4.919540875124736,
-              52.38395888109171
-            ],
-            [
-              4.9202437255809945,
-              52.38404184247269
-            ],
-            [
-              4.920239621662586,
-              52.3840549572805
-            ],
-            [
-              4.920176763770926,
-              52.38425506260694
-            ]
-          ]
-        ]
-      },
-      "category": "ordinary",
-      "buildingCategory": "ordinary",
-      "bounds": {
-        "min": [
-          -17.60099983215332,
-          -0.0010000000474974513,
-          -22.642404556274414
-        ],
-        "max": [
-          38.55649948120117,
-          48.483001708984375,
-          31.002153396606445
-        ]
-      },
-      "placement": {
-        "anchor": [
-          4.919683354485995,
-          52.384234752019374
-        ],
-        "altitudeMetres": 0,
-        "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 169,
-        "scale": 1
-      },
-      "extent": {
-        "widthMetres": 56.15749931335449,
-        "heightMetres": 48.48400170903187,
-        "depthMetres": 53.64455795288086,
-        "depthCoverage": 1.214227205814415
-      },
-      "triangles": 22696,
-      "bytes": 338992,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "lod1": {
-        "sourceHash": "213f6500739ce2f7",
-        "buildVersion": 2,
-        "bytes": 91260,
-        "triangles": 4431
-      }
-    },
     "de-bazel": {
       "id": "de-bazel",
       "name": "De Bazel",
@@ -52679,7 +52499,13 @@
       },
       "triangles": 22696,
       "bytes": 339120,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ceded78930018e4f",
+        "buildVersion": 2,
+        "bytes": 91388,
+        "triangles": 4431
+      }
     }
   }
 }
