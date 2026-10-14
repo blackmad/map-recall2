@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
 import { renderSpecs } from '../../scripts/look/measured-swatches';
+import { PILOTS, loadWallPage, measurePilot } from '../../scripts/look/measured-walls';
 
 // The Building look setting switches looks live without a reload (Photo by default;
 // the retired MapLibre pattern layer survives as `?buildings3d=off`), and a
@@ -222,4 +223,27 @@ test('a measured brick material renders at its authored colour, an unmeasured on
     // The mid brick sits inside the city range already; the dark and the pale one are what the clamp moves.
     if (i !== 1) expect(Math.abs(unmeasured - authored), `${hex} unmeasured is clamped`).toBeGreaterThan(0.05);
   });
+});
+
+// A re-fitted large recipe with measured walls and glass (intent `measured`): Waagdragerhof's tower (dark purple-brown
+// #4a302b, dark glass #3a4650) and Houthavenkade 26's two fronts (orange #b4835c, plum-brown #5e4a44, reflective glass
+// #8e9ea4), compiled to GLB and drawn through the game's city look (BAG year brick) and its default recipe look. Every
+// measured material's rendered mean, with the facing's baked shade divided out, lands within 0.05 L of its authored hex,
+// and the two looks agree (scripts/look/measured-walls.ts; before 2026-10-14 every glass drew one blue-grey pane).
+test('a re-fitted recipe GLB draws its measured walls and glass at their authored colours in both game looks', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'one renderer is enough');
+  test.setTimeout(240_000);
+  await loadWallPage(page);
+  for (const pilot of [PILOTS[2], PILOTS[1]]) {
+    const { rows } = await measurePilot(page, pilot, ['city', 'legacy']);
+    expect(rows.map(r => r.role).sort()).toEqual(pilot === PILOTS[2] ? ['glass', 'glass', 'wall', 'wall'] : ['glass', 'glass', 'wall', 'wall', 'wall', 'wall']);
+    for (const r of rows) {
+      expect(r.pixels, `${r.material} visible`).toBeGreaterThan(500);
+      expect(Math.abs(r.dL), `${r.pilot} ${r.material} ${r.path}: ${r.unshaded} vs ${r.authored}`).toBeLessThan(0.05);
+    }
+    for (const r of rows.filter(x => x.path === 'city')) {
+      const legacy = rows.find(x => x.path === 'legacy' && x.material === r.material)!;
+      expect(Math.abs(r.dL - legacy.dL), `${r.material}: city and default look agree`).toBeLessThan(0.02);
+    }
+  }
 });
