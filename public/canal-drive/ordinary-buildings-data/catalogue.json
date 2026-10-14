@@ -35965,10 +35965,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236788",
       "name": "'s-Gravesandestraat 55 (Hotel Arena), Amsterdam-Oost: 1890 former orphanage (Roman Catholic Burgerweeshuis) with 2000s hotel wings, red brick with a glazed pavilion",
-      "hash": "3250eb3b48cbd7ecd64b33ad4c8b03d07547fdb54604620baf318d60d9aade6c",
-      "sha256": "3250eb3b48cbd7ecd64b33ad4c8b03d07547fdb54604620baf318d60d9aade6c",
-      "bytes": 668184,
-      "triangles": 8000,
+      "hash": "63d573da5dc26afe95ddeebef437b6e78d2db70c8e14decbab4128d486dfbb08",
+      "sha256": "63d573da5dc26afe95ddeebef437b6e78d2db70c8e14decbab4128d486dfbb08",
+      "bytes": 666532,
+      "triangles": 7970,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -36757,7 +36757,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236788",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:40:56.038Z"
+      "updatedAt": "2026-10-14T03:08:27.199Z"
     },
     {
       "id": "ordinary-0363100012169214",
