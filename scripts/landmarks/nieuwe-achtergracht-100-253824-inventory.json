@@ -1,0 +1,114 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuwe-achtergracht-100-253824",
+ "pand": "0363100012253824",
+ "signature": [
+  "stair-tower-entrance",
+  "copper-roof-edge"
+ ],
+ "walls": [
+  {
+   "tag": "w01-343",
+   "bearing": 343,
+   "lengthM": 49,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000911",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "stair-tower-entrance",
+     "kind": "window-shape",
+     "where": "central stair tower with a timber entrance door under a stone portal, bowed first-floor oriel and a hexagonal window above",
+     "approxSizeM": [
+      4,
+      24
+     ],
+     "plan": "simplified",
+     "how": "walls[0] portal entrance in bay 4 of 9; the oriel and hexagonal window are left as plain brick",
+     "seenIn": "TMX7316010203-001975_pano_0000_000911"
+    },
+    {
+     "id": "copper-roof-edge",
+     "kind": "other",
+     "where": "overhanging green-copper roof edge over a brick frieze",
+     "approxSizeM": [
+      45,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] cornice in a green-copper palette colour",
+     "seenIn": "TMX7316010203-001975_pano_0000_000911"
+    },
+    {
+     "id": "cream-window-ranges",
+     "kind": "window-shape",
+     "where": "two ranges of four wide cream-framed multi-pane windows per floor with stone sill bands",
+     "approxSizeM": [
+      45,
+      22
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 9 bays wide windows with string courses",
+     "seenIn": "TMX7316010203-001975_pano_0000_000911"
+    }
+   ]
+  },
+  {
+   "tag": "w02-343",
+   "bearing": 343,
+   "lengthM": 38.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0002_000194",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "note": "same canal front as w01-343 in 2017; nothing beyond the items listed there",
+   "items": []
+  },
+  {
+   "tag": "w04-250",
+   "bearing": 250,
+   "lengthM": 28.5,
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track01_Sphere_00008",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "note": "washed out by sun; only the 2-storey tall window range and three round plaques are readable, on the wing west of the drawn front, not drawn",
+   "items": [
+    {
+     "id": "round-plaques",
+     "kind": "relief",
+     "where": "three round stone plaques on the west wing wall",
+     "approxSizeM": [
+      1,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "small plaques on a wing that no wall group covers and a washed-out photograph"
+     },
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008"
+    }
+   ]
+  },
+  {
+   "tag": "w08-73",
+   "bearing": 73,
+   "lengthM": 17.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0000_000533",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "note": "oblique view of the dark-brick neighbouring house with arched windows; not part of this pand wall",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

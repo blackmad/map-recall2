@@ -47269,6 +47269,171 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:25:53.889Z"
+    },
+    {
+      "id": "ordinary-0363100012253824",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012253824",
+      "name": "Nieuwe Achtergracht 100, Amsterdam-Centrum (Roeterseiland): 1923 five-storey brick office building on the canal with cream-framed multi-pane windows, a central stair tower with a bowed oriel and entrance, stone bands and an overhanging copper roof edge",
+      "hash": "1868680a3a34c6e6b9e5c71cca9910fcd2897a374c0fee775e0efd0a8982f804",
+      "sha256": "1868680a3a34c6e6b9e5c71cca9910fcd2897a374c0fee775e0efd0a8982f804",
+      "bytes": 313800,
+      "triangles": 4131,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -29.308,
+          0,
+          -28.178
+        ],
+        "max": [
+          20.409,
+          26.636,
+          14.159
+        ]
+      },
+      "anchor": [
+        4.9091137,
+        52.362371
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9093958,
+              52.3624741
+            ],
+            [
+              4.9093189,
+              52.3626227
+            ],
+            [
+              4.9086832,
+              52.3624994
+            ],
+            [
+              4.9087601,
+              52.3623509
+            ],
+            [
+              4.9090133,
+              52.3624
+            ],
+            [
+              4.9090447,
+              52.3623395
+            ],
+            [
+              4.908898,
+              52.362311
+            ],
+            [
+              4.9089065,
+              52.3622945
+            ],
+            [
+              4.9088537,
+              52.3622842
+            ],
+            [
+              4.9088709,
+              52.3622509
+            ],
+            [
+              4.9089237,
+              52.3622611
+            ],
+            [
+              4.9089331,
+              52.362243
+            ],
+            [
+              4.9093853,
+              52.3623307
+            ],
+            [
+              4.9093759,
+              52.3623488
+            ],
+            [
+              4.9094135,
+              52.3623561
+            ],
+            [
+              4.9093963,
+              52.3623892
+            ],
+            [
+              4.9093588,
+              52.3623819
+            ],
+            [
+              4.9093501,
+              52.3623987
+            ],
+            [
+              4.9091839,
+              52.3623665
+            ],
+            [
+              4.9091569,
+              52.3624188
+            ],
+            [
+              4.909142,
+              52.3624159
+            ],
+            [
+              4.9091377,
+              52.3624241
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 26.64,
+      "height": 26.64,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-nieuwe-achtergracht-100-253824.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012253824"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "nieuwe-achtergracht-100-253824",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012253824/w01-343.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 9b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Nieuwe Achtergracht 100 (BAG pand 0363100012253824, built 1923, 162 3DBAG wall surfaces, roof max 26.6 m): a five-storey Amsterdam School office building on the Nieuwe Achtergracht in the Roeterseiland campus (a twin footprint pand 0363100012170299 has the same 2,657 m2 footprint area in the backlog and is probably an overlapping registration of the same block, so it is not modelled separately). Four fronts were fetched: the north canal front (w01-343, 2021-01-22, and w02-343, 2017-07-06, the same front), a washed-out west view (w04-250, 2025-01-20) and an oblique view of the neighbouring dark-brick house on the east (w08-73, 2022-04-25); w03, w05, w06 and w07 have no panorama within 35 m.",
+        "Simplified: the stair tower is the plain central bay with the entrance portal (the bowed oriel, the hexagonal window and the stair lights are not modelled), the paired window ranges are nine evenly spaced bays, the stone sill bands are string courses. Not drawn: the attic strip (panel 120), the west wall (washed out), the east and south walls (no usable panorama), which stay blank wall."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253824",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:28:47.575Z"
     }
   ]
 }
