@@ -1726,5 +1726,11 @@
     "buildVersion": 2,
     "bytes": 27932,
     "triangles": 1314
+  },
+  "winkler-prins-monument": {
+    "sourceHash": "dc04963f913b3880",
+    "buildVersion": 2,
+    "bytes": 16316,
+    "triangles": 720
   }
 }
