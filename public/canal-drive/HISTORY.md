@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## Hosting: auto-prune after every deploy, bursts deploy once (2026-10-14)
+
+Deploys failed on the 10 GB Hosting quota again this morning (24 failed
+runs; 521 stored versions listed, of which the finalized ones from the
+last 24 hours were the 10 GB). Every push to main deploys both sites
+(~190 MB canalrecall + ~100 MB edumap), 27–72 deploys a day in October,
+so the quota holds about half a day. The user chose both fixes: the deploy
+workflow now runs `scripts/hosting/prune-versions.mjs --keep=3 --apply`
+after a successful deploy with the same service account (keeps the live
+release and the newest three per site, never fails the deploy), and
+`cancel-in-progress: true` so a burst of pushes deploys once. The manual
+"Prune Firebase Hosting versions" workflow and `npm run hosting:prune`
+stay for emergencies.
+
+
 ## Texture prototype: the kit wins on all three complaint houses (2026-10-14, night)
 
 The user said to keep improving the kit and try the photo texture too, so
