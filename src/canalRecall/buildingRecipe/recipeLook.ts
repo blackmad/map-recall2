@@ -27,7 +27,7 @@ import {BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade} from '../rendererShare
 export {paintBrickCanvas, paintGlassCanvas, paintStuccoCanvas};
 import {cityLookEnabled, getCityLook, type CityLook} from '../look/cityLook.ts';
 import {INFERRED_SLOT_SOURCE} from '../look/materialSlotInference.ts';
-import {MATERIAL_SLOTS, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot} from '../look/palette.ts';
+import {MATERIAL_SLOTS, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type TintSource} from '../look/palette.ts';
 
 /** A GLB material's `materialSlot` extra (look/palette.ts owns the slot → cell/tint mapping). */
 export type RecipeSlot = MaterialSlot;
@@ -148,8 +148,8 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     }
   };
   const materials = new Map<string, any>();
-  const materialFor = (slot: RecipeSlot, tintHex: string, side: number) => {
-    const tint = cityTint(slot, tintHex), key = `${slot}|${tint}|${side}`;
+  const materialFor = (slot: RecipeSlot, tintHex: string, side: number, source?: TintSource | null) => {
+    const tint = cityTint(slot, tintHex, source), key = `${slot}|${tint}|${side}`;
     let m = materials.get(key);
     if (!m && lit) {
       // Same cell, same tint, same metre scale; the texture is decoded from
@@ -187,7 +187,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
         // Slots inferred into a legacy GLB (look/materialSlotInference.ts) only take part in the city look (`?cityLook=1`).
         if (o.material.userData.materialSlotSource === INFERRED_SLOT_SOURCE) return;
         const previous = o.material;
-        o.material = materialFor(slot, tint, previous.side);
+        o.material = materialFor(slot, tint, previous.side, previous.userData?.tintSource === 'measured' ? 'measured' : null);
         if (!previous.userData?.[RECIPE_LOOK_SHARED]) previous.dispose();
         changed++;
       });

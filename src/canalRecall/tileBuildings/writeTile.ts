@@ -210,9 +210,9 @@ export function gltfSlotIneligible(m: Material | null, prim: Primitive): string 
 }
 
 /** Slot + tint of a glTF material: authored extras, else inferred from its name and colour (cityLook `slotForMaterial`). */
-export function gltfSlot(m: Material): {slot: MaterialSlot; tint: string; inferred: boolean} {
+export function gltfSlot(m: Material): {slot: MaterialSlot; tint: string; inferred: boolean; source?: 'measured'} {
   const ex = (m.getExtras() ?? {}) as any;
-  if (isMaterialSlot(ex.materialSlot) && typeof ex.tint === 'string') return {slot: ex.materialSlot, tint: ex.tint, inferred: false};
+  if (isMaterialSlot(ex.materialSlot) && typeof ex.tint === 'string') return {slot: ex.materialSlot, tint: ex.tint, inferred: false, ...(ex.tintSource === 'measured' ? {source: 'measured' as const} : {})};
   const [r, g, b] = m.getBaseColorFactor(), tint = linearToSrgbHex(r, g, b), inf = inferMaterialSlot(m.getName(), tint);
   return {slot: inf.slot, tint: inf.tint, inferred: true};
 }
@@ -239,9 +239,9 @@ export async function convertGlbUnit(source: Uint8Array, extras: Record<string, 
     triangles += tri;
     const m = prim.getMaterial(), why = gltfSlotIneligible(m, prim);
     if (why) { passthrough.push({material: m?.getName() ?? '', why, triangles: tri}); continue; }
-    const {slot, tint, inferred: inf} = gltfSlot(m!);
+    const {slot, tint, inferred: inf, source} = gltfSlot(m!);
     if (inf) inferred++;
-    const n = pos.getCount(), layer = slotLayerOf(slot), bytes = slotTintBytes(slot, tint);
+    const n = pos.getCount(), layer = slotLayerOf(slot), bytes = slotTintBytes(slot, tint, source);
     if (!prim.getAttribute('NORMAL')) addFlatNormals(doc, prim);
     for (const sem of prim.listSemantics()) if (!['POSITION', 'NORMAL', 'TEXCOORD_0'].includes(sem)) prim.setAttribute(sem, null);
     prim.setAttribute('_LAYER', doc.createAccessor().setType('SCALAR').setArray(new Uint8Array(n).fill(layer)).setBuffer(buffer));
