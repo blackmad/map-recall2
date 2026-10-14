@@ -47457,6 +47457,7 @@ Map source: ${osmUrl(places[i][0])}`);
     }
     return { index, distance };
   }
+  var START_HEADING_SNAP_RAD = Math.PI / 6;
 
   // src/canalRecall/game/driveByTrigger.ts
   var DRIVE_BY_RADIUS = 135;

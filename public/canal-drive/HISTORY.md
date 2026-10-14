@@ -1,5 +1,49 @@
 # Canal Recall — what is built
 
+## Own ground on by default; the start faces the first leg, not the snapped node (2026-10-14, user)
+
+Lane `lane/own-ground-default-20261014`. **Own ground default** (user:
+"make ownground the default"): `OWN_GROUND_DEFAULT = true` in
+`vector-map.js`; `?ownGround=0` or `window.__canalRecallOwnGround = false`
+turns it off, `?ownGround=1` still works, and an explicit `?sharedFrame=0`
+turns it off too (the own ground draws through the shared frame) unless
+`?ownGround=1` is given; `own-ground-default.spec.ts` (7/7) pins all of
+that. The old `?elevation=1` stencil layer now needs `?ownGround=0`, so
+`canal-elevation.spec.ts` and `CANAL_ELEVATION=1` in `ride-perf.spec.ts`
+switch own ground off; `ride-perf.spec.ts` gained `OWN_GROUND=0|1`.
+Desktop ride-perf on the fixed ride, medians of three runs, off → on:
+frame interval 16.7/16.8/16.8 ms unchanged (locked to the display, no
+long frames either way), map render 2.35 → 3.5 ms median, three.js work
+0.73 → 2.11 ms per frame, JS heap 788 → 881 MB. The real cost is ~2.5 ms
+of main-thread work and ~90 MB; if that headroom is needed, cut the far
+ring (LOD 1 cells) first, then parks and allotments, junction rings, the
+4 m relief. `index.html` bumps `vector-map.js?v=20261014-ownground` so
+cached copies do not keep the old default. **Start heading** (user:
+"camera starting in the wrong direction", boat at the Hugo de
+Grootgracht): the planned route begins at the graph node the start was
+snapped to, which can lie behind the spawn (12 m west there), and
+`startHeading` measured its look-ahead from that first point, so a route
+running east past the boat made the boat and the chase camera face west;
+boat seed 2468ace0 and bike seed 1234abcd did the same. Fix in
+`src/canalRecall/game/routeSelection.ts`: the first leg is read from the
+spawn's closest point on the first ~300 m of the route (a later
+near-equal segment wins so a doubled-back route reads where it passes the
+spawn again; off-route spawns face the route; the road or canal direction
+is kept within 30° of the leg, else the leg itself); restarts and new
+rides use the same spawn code. `scripts/check-start-heading.ts` adds the
+real boat and bike routes plus doubled-back, sideways and loop cases;
+`start-heading.spec.ts` covers nine seeded rides and the user's start,
+spawn heading and camera forward each within 30° of the first leg (11/11
+desktop); `START_HEADING_OFF=old` swaps the old algorithm in and the
+pinned boat start then fails. `check:canal` green on the lane. Also
+found: `.cache/.cache` was a symlink to its own parent and crashed the
+vite dev server with ELOOP in any worktree with a `.cache` link
+(removed); and `check:canal` rebuilds nine bundles main had out of date
+(building-style, building-tiles, game-landmarks, game-recall, game-ui,
+notice-cards, orientation-pois, recall-store, three), rebuilt and
+committed here.
+
+
 ## Measured glass reaches the game; the sheet's city-look column was the liar (2026-10-14)
 
 Lane `lane/measured-look-20261014` (plan Part 1 lane B, second pass). The
