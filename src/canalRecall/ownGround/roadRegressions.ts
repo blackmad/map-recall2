@@ -158,3 +158,43 @@ export function strayHits(cells: readonly BuiltCell[], centre: [number, number],
   }
   return out;
 }
+
+/**
+ * Belt audit quay samples: each segment of the shore at `step` metres (at
+ * least its start), after merging runs of collinear vertices back into one
+ * segment. The berth rule (moorings.ts) splits shores near a houseboat into
+ * 0.5 m collinear pieces; sampled per piece, the Westerdok spot went from 16
+ * to 106 samples once the berths reached main and its worst sample moved
+ * 1.4 m, off its reviewed key (2026-10-14). Merged, an uncut shore samples
+ * exactly as before the berths.
+ */
+export function shoreSamples(line: readonly (readonly [number, number])[], step = 5, tolM = 0.01): [number, number][] {
+  const pts: (readonly [number, number])[] = [];
+  for (const p of line) {
+    if (pts.length && Math.hypot(p[0] - pts[pts.length - 1][0], p[1] - pts[pts.length - 1][1]) < 1e-9) continue;
+    if (pts.length >= 2) {
+      const a = pts[pts.length - 2], b = pts[pts.length - 1], len = Math.hypot(p[0] - a[0], p[1] - a[1]);
+      const off = len > 0 ? Math.abs((p[0] - a[0]) * (b[1] - a[1]) - (p[1] - a[1]) * (b[0] - a[0])) / len : 0;
+      const ahead = (b[0] - a[0]) * (p[0] - b[0]) + (b[1] - a[1]) * (p[1] - b[1]) > 0;
+      if (off < tolM && ahead) pts[pts.length - 1] = p;
+      else pts.push(p);
+    } else pts.push(p);
+  }
+  const out: [number, number][] = [];
+  for (let i = 0; i + 1 < pts.length; i++) {
+    const [ax, ay] = pts[i], [bx, by] = pts[i + 1], n = Math.max(1, Math.floor(Math.hypot(bx - ax, by - ay) / step));
+    for (let t = 0; t < n; t++) out.push([ax + (bx - ax) * t / n, ay + (by - ay) * t / n]);
+  }
+  return out;
+}
+
+/**
+ * A reviewed belt-audit spot ("lng,lat", 5 decimals) matches a finding within
+ * this many metres. Spots are 40 m clusters named by their worst sample, which
+ * moves when the shore around it is re-split; a new spot lies further off.
+ */
+export const KNOWN_SPOT_M = 15;
+export function spotDistanceM(a: string, b: string): number {
+  const [alng, alat] = a.split(',').map(Number), [blng, blat] = b.split(',').map(Number);
+  return Math.hypot((alng - blng) * 111320 * Math.cos(alat * Math.PI / 180), (alat - blat) * 111320);
+}
