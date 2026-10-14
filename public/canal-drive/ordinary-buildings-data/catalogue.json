@@ -23964,11 +23964,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012102565",
       "name": "Politiebureau Van Leijenberghlaan, Van Leijenberghlaan 1, Amsterdam (Buitenveldert)",
-      "hash": "5675f9ca7274f9ff300660b59f1c3b6253760388e2154c15a20b7701480d1f3c",
-      "sha256": "5675f9ca7274f9ff300660b59f1c3b6253760388e2154c15a20b7701480d1f3c",
-      "bytes": 615084,
-      "triangles": 8341,
-      "materials": 11,
+      "hash": "960584b7142ba6a9f94614ced980a8669ab5744f9a5eb4927c076716d538612a",
+      "sha256": "960584b7142ba6a9f94614ced980a8669ab5744f9a5eb4927c076716d538612a",
+      "bytes": 685392,
+      "triangles": 9263,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24085,6 +24085,9 @@
         "id": "politie-van-leijenberghlaan",
         "kind": "large",
         "intentSources": [
+          "source-data://pand-reference-walls/0363100012102565/w01-270.jpg",
+          "source-data://pand-reference-walls/0363100012102565/w02-90L.jpg",
+          "source-data://pand-reference-walls/0363100012102565/w03-180.jpg",
           "artifacts/building-recipes/politie-van-leijenberghlaan/photo-wall-van-leijenberghlaan.jpg",
           "staging/pand-reference/0363100012102565/thumb.jpg",
           "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-10.jpg",
@@ -24123,197 +24126,30 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (window shape square vs photo tall; columns 19 vs photo 64)); inferred: colour (grey/brown split), ribbon storeys and glazing read the same on the sheet, columns and window shape count the 0.8 m mullions of the ribbons",
         "Police components not used: no striped band, blue lamp, canopy or garage doors are visible in the 2016/2019/2025 panoramas; rooftop stair/lift cores are 3DBAG volumes already (roofPlant off).",
-        "Sides of the entrance box (surfaces 46, 52) and rooftop volumes stay blank (otherWalls)."
+        "Sides of the entrance box (surfaces 46, 52) and rooftop volumes stay blank (otherWalls).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #403535 not used (not darker than the wall #5b4b44 by 10 L*, or tinted): kit glass kept; walls[2] glass #3b3732 not used (not darker than the wall #493d32 by 10 L*, or tinted): kit glass kept; walls[4] glass #395455 not used (not darker than the wall #5e5855 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012102565",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:12:43.633Z",
+      "updatedAt": "2026-10-14T13:10:14.682Z",
       "bagYear": 1976,
-      "meshHash": "efc5fcf12ecc10f1"
-    },
-    {
-      "id": "ordinary-0363100012172459",
-      "category": "ordinary",
-      "buildingId": "NL.IMBAG.Pand.0363100012172459",
-      "name": "Leidsestraat 67–71 / Kerkstraat 50–52",
-      "hash": "990437a583a9af23da4b410276cb3a5e6bbc4d721e9d5622c7d4c15ac07cad97",
-      "sha256": "990437a583a9af23da4b410276cb3a5e6bbc4d721e9d5622c7d4c15ac07cad97",
-      "bytes": 194080,
-      "triangles": 2463,
-      "materials": 10,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -21.484,
-          0.001,
-          -15.579
-        ],
-        "max": [
-          20.468,
-          23.417,
-          10.307
-        ]
-      },
-      "anchor": [
-        4.8853524,
-        52.3651691
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8850346,
-              52.365232
-            ],
-            [
-              4.8852136,
-              52.3650932
-            ],
-            [
-              4.8852578,
-              52.3651151
-            ],
-            [
-              4.8853196,
-              52.3650763
-            ],
-            [
-              4.8854242,
-              52.3651388
-            ],
-            [
-              4.8854816,
-              52.3651029
-            ],
-            [
-              4.8856525,
-              52.3652049
-            ],
-            [
-              4.8855677,
-              52.3652581
-            ],
-            [
-              4.8853778,
-              52.3651622
-            ],
-            [
-              4.8851941,
-              52.3653078
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 23.42,
-      "height": 23.42,
-      "modelUrl": "./models/ordinary-buildings/recipe-large-leidsestraat-67-large.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012172459"
-      ],
-      "cameraBearing": -37.89006281019731,
-      "galleryFrontage": {
-        "target": [
-          4.885117006555844,
-          52.36527199831117
-        ],
-        "cameraBearing": -37.89006281019731,
-        "distanceMetres": 28,
-        "eyeHeightMetres": 6,
-        "targetHeightMetres": 10,
-        "referenceImages": [
-          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
-        ]
-      },
-      "gallerySecondary": {
-        "target": [
-          4.885612497832299,
-          52.36523349669421
-        ],
-        "cameraBearing": 45.567266409857936,
-        "distanceMetres": 28,
-        "eyeHeightMetres": 6,
-        "targetHeightMetres": 10,
-        "referenceImages": [
-          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
-        ]
-      },
-      "referenceImages": [
-        "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
-      ],
-      "retainedNeighbors": [
-        "NL.IMBAG.Pand.0363100012169041",
-        "NL.IMBAG.Pand.0363100012172452",
-        "NL.IMBAG.Pand.0363100012172458",
-        "NL.IMBAG.Pand.0363100012172460",
-        "NL.IMBAG.Pand.0363100012172461",
-        "NL.IMBAG.Pand.0363100012571533"
-      ],
-      "source": "building-recipes-large",
-      "recipe": {
-        "id": "leidsestraat-67-large",
-        "kind": "large",
-        "intentSources": [
-          "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
-          "artifacts/building-recipes/leidsestraat-67-large/photo-wall-leidsestraat.jpg",
-          "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
-          "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
-        ],
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/walls[0]:pass",
-          "storey-height/walls[0]:pass",
-          "eaves-vs-3dbag/walls[1]:pass",
-          "storey-height/walls[1]:pass",
-          "eaves-vs-3dbag/walls[2]:pass",
-          "storey-height/walls[2]:pass",
-          "eaves-vs-3dbag/walls[3]:pass",
-          "storey-height/walls[3]:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass",
-          "parts-attached:pass"
-        ],
-        "wallGroups": [
-          "ribbon-windows 4st 3b",
-          "brick-bay-grid+entrance 6st 1b",
-          "brick-bay-grid 5st 1b",
-          "brick-bay-grid+entrance 3st 6b"
-        ]
-      },
-      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
-      "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Leidsestraat (surface 15, 7.7 m, 16.2 m eaves): 1966 front. Shop window under a fascia (ICI PARIS XL, 2025), a blank brick storey over the shop, then two ribbon-window storeys with transoms (2022 and 2025 panoramas); three bays of two-light ribbons."
-      ],
-      "reviewState": "large-recipe-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
-        "https://api.data.amsterdam.nl/panorama/"
-      ],
-      "updatedAt": "2026-10-14T03:09:28.435Z",
-      "bagYear": 1966,
-      "meshHash": "4fd339209a834345"
+      "meshHash": "d7d3a6db84798b5d"
     },
     {
       "id": "ordinary-0363100012253728",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253728",
       "name": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
-      "hash": "ba0abac75e797f0b8db7959e7d34f724905a8da5d3f3ef76ba309f889d54c28d",
-      "sha256": "ba0abac75e797f0b8db7959e7d34f724905a8da5d3f3ef76ba309f889d54c28d",
-      "bytes": 152112,
-      "triangles": 1986,
-      "materials": 8,
+      "hash": "b29e4fc38be638e812f8132f204b94234601fc5fb3d03f72d1d8157f4834e790",
+      "sha256": "b29e4fc38be638e812f8132f204b94234601fc5fb3d03f72d1d8157f4834e790",
+      "bytes": 157696,
+      "triangles": 2050,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24458,6 +24294,7 @@
         "id": "politie-oost-zeeburg",
         "kind": "large",
         "intentSources": [
+          "source-data://pand-reference-walls/0363100012253728/w01-131.jpg",
           "staging/pand-reference/0363100012253728/front-alt.jpg"
         ],
         "gates": [
@@ -24473,36 +24310,37 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid+entrance 3st 24b"
+          "brick-bay-grid+entrance 3st 25b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] likeness WARN (mask IoU 0.25 < 0.45).",
         "2022 police bureau, a 45 m long rounded block (3DBAG panels 14 and 27) with a recessed upper level. Only the south-east long front (panel 14, surfaces 15 and 17) is described, from the 2025-09-25 panorama (front-alt.jpg) and the 2022 panorama thumbnail: light grey-brown brick, three storeys, white string courses, an upper band of tall windows, a middle band of small windows, and POLITIE lettered in blue on the wall (gold flame emblem not modelled). The lettering sits at about 55-70 % of the front in the panorama; the kit centres wall lettering over the entrance, so in the model it is above the glazed left-hand entrance end instead (position deviation, kept so the kit is exercised on a real wall).",
         "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
         "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
-        "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank)."
+        "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #575d65 not used (not darker than the wall #665f58 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253728",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:12:24.745Z",
+      "updatedAt": "2026-10-14T13:10:46.344Z",
       "bagYear": 2022,
-      "meshHash": "ba3af618c674e8b8"
+      "meshHash": "7d2a2b044d493409"
     },
     {
       "id": "ordinary-0363100012064423",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012064423",
       "name": "Politiebureau Zuidoost Gaasperdam, Remmerdenplein 102, Amsterdam (Gaasperdam)",
-      "hash": "bb6501345f3dc55f3a82ff335e5dbd10ea52ba596794143f7142614eaf4afc90",
-      "sha256": "bb6501345f3dc55f3a82ff335e5dbd10ea52ba596794143f7142614eaf4afc90",
-      "bytes": 27984,
-      "triangles": 287,
-      "materials": 7,
+      "hash": "3082c5c52fd09cafb36953bb54cec07926b9021b6d1ba6efa0ff6e416670cc91",
+      "sha256": "3082c5c52fd09cafb36953bb54cec07926b9021b6d1ba6efa0ff6e416670cc91",
+      "bytes": 71940,
+      "triangles": 879,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24599,6 +24437,7 @@
         "id": "politie-zuidoost-gaasperdam",
         "kind": "large",
         "intentSources": [
+          "source-data://pand-reference-walls/0363100012064423/w01-255.jpg",
           "staging/pand-reference/0363100012064423/front.jpg"
         ],
         "gates": [
@@ -24614,35 +24453,34 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "curtain-wall+entrance 2st 5b"
+          "brick-bay-grid+entrance 2st 10b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "Not modelled: the red columns and the full-width red roof overhang (no component for either; entrance.canopy is a single-entrance canopy and would not match), the grey spandrel panels (modelled as one curtain wall).",
         "No striped band, blue lamp, POLITIE lettering or garage doors are visible on this front, so police components and signage are not used.",
         "Other walls (north, east, south and the small wings) have no panorama in the cache and are left to otherWalls (blank)."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064423",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:09:21.942Z",
+      "updatedAt": "2026-10-14T13:10:49.282Z",
       "bagYear": 1996,
-      "meshHash": "b93ac028edf0fdcc"
+      "meshHash": "6dfa110311b7673e"
     },
     {
       "id": "ordinary-0363100012164938",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164938",
       "name": "Kattenburg (Marineterrein), Amsterdam: 1782 brick wings on Kattenburgerstraat and the canal",
-      "hash": "ac0dc96489e9b753a9e46a3872c1200e9aa9b15f068f465df06c30029e233e02",
-      "sha256": "ac0dc96489e9b753a9e46a3872c1200e9aa9b15f068f465df06c30029e233e02",
-      "bytes": 750512,
+      "hash": "8ad965f55628d565809ec917c90fa58d25fce228c6d12d1d9588084e811d94b1",
+      "sha256": "8ad965f55628d565809ec917c90fa58d25fce228c6d12d1d9588084e811d94b1",
+      "bytes": 751192,
       "triangles": 10161,
-      "materials": 9,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -24907,8 +24745,7 @@
         "id": "kattenburg-wings-164938",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012164938/w02-344.jpg",
-          "staging/pand-reference-walls/0363100012164938/w01-164.jpg"
+          "source-data://pand-reference-walls/0363100012164938/w04-344.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -24931,17 +24768,19 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used."
+        "walls[0] likeness WARN (mask IoU 0.093 < 0.45).",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (washed out 32 % > 30 %)); inferred: crop washed out by low sun (32 %), the yellow brick and the 14-bay sash rhythm read the same on the sheet",
+        "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e585c not used (not darker than the wall #645f5f by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164938",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:08:36.252Z",
+      "updatedAt": "2026-10-14T13:10:18.410Z",
       "bagYear": 1782,
-      "meshHash": "badaebb016e98eda"
+      "meshHash": "ff8bb5660ef2aa64"
     },
     {
       "id": "ordinary-0363100012130580",
@@ -25163,11 +25002,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169471",
       "name": "Politiebureau Lijnbaansgracht, Lijnbaansgracht 219, Amsterdam",
-      "hash": "9caf086d6f7103606d6e88a846ea9a61672b94e66270ad507741cfc795215fce",
-      "sha256": "9caf086d6f7103606d6e88a846ea9a61672b94e66270ad507741cfc795215fce",
-      "bytes": 242184,
-      "triangles": 3250,
-      "materials": 6,
+      "hash": "2438928c2ebcc19264fc9a200e98f3d969d213519ac9f3626f0c271cf512aca1",
+      "sha256": "2438928c2ebcc19264fc9a200e98f3d969d213519ac9f3626f0c271cf512aca1",
+      "bytes": 234224,
+      "triangles": 3114,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -25276,7 +25115,7 @@
         "id": "politie-lijnbaansgracht",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012169471/w01-232.jpg"
+          "source-data://pand-reference-walls/0363100012169471/w01-232.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -25296,39 +25135,42 @@
         ],
         "wallGroups": [
           "brick-bay-grid 5st 6b",
-          "brick-bay-grid 4st 12b",
+          "brick-bay-grid 4st 11b",
           "brick-bay-grid 4st 12b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Rear/NE, SE and NW walls and courtyard faces have no panorama in the cache and are left to otherWalls (blank; audit:glb warns blank-wall for them)."
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.19)); inferred: colour and window rhythm read the same, the storey-band miss is the narrow top storey",
+        "walls[1] not confirmed by the photo (FAIL (window shape tall vs photo square)); inferred: colour and glazing within 0.06, the shape class counts white frames as trim",
+        "walls[2] not confirmed by the photo (NO PHOTO); inferred: no archived crop of this panel, brick and windows carried from the measured walls[1]",
+        "Rear/NE, SE and NW walls and courtyard faces have no panorama in the cache and are left to otherWalls (blank; audit:glb warns blank-wall for them).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #504f54 not used (not darker than the wall #615450 by 10 L*, or tinted): kit glass kept; walls[1] glass #424447 not used (not darker than the wall #5b4f4b by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169471",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:32:17.182Z",
+      "updatedAt": "2026-10-14T13:10:22.545Z",
       "bagYear": 1977,
-      "meshHash": "6a96f8bf6341ee8e"
+      "meshHash": "3810b629a406a60d"
     },
     {
       "id": "ordinary-0363100012171032",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171032",
       "name": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35, Amsterdam (Spui-Nieuwezijds corner, 1996)",
-      "hash": "72335038d71a1adbecdeb7b7ffae78f10d1093c07e0db6a0d972155cd5f94eeb",
-      "sha256": "72335038d71a1adbecdeb7b7ffae78f10d1093c07e0db6a0d972155cd5f94eeb",
-      "bytes": 226376,
-      "triangles": 2949,
-      "materials": 11,
+      "hash": "e9b68afa3be72856541f02c9bc213d5d67068920e53e789cf28a708b2d974f3e",
+      "sha256": "e9b68afa3be72856541f02c9bc213d5d67068920e53e789cf28a708b2d974f3e",
+      "bytes": 154912,
+      "triangles": 1979,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
-          -21.297,
+          -21.36,
           0,
           -14.803
         ],
@@ -25468,10 +25310,8 @@
         "id": "politie-nieuwezijds-voorburgwal",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012171032/w01-315.jpg",
-          "staging/pand-reference-walls/0363100012171032/w01-315.jpg",
-          "staging/pand-reference-walls/0363100012171032/w03-316.jpg",
-          "staging/pand-reference-walls/0363100012171032/w05-6.jpg"
+          "source-data://pand-reference-walls/0363100012171032/w01-315.jpg",
+          "source-data://pand-reference-walls/0363100012171032/w03-316L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -25492,26 +25332,30 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "ribbon-windows 6st 5b",
-          "brick-bay-grid 5st 1b",
-          "ribbon-windows+entrance 6st 4b",
+          "curtain-wall 6st 8b",
+          "brick-bay-grid 5st 4b",
+          "curtain-wall+entrance 6st 6b",
           "curtain-wall 5st 4b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] not confirmed by the photo (FAIL (wall not drawn; glazing storey band off by 0.95 mean 1.00 vs photo 0.25; window shape none vs photo tall; columns none vs photo 14)); inferred: teal glass grid drawn as a layered curtain wall (glass is the wall, so the likeness cannot score it), colour by hand from w01-315",
+        "walls[1] not confirmed by the photo (FAIL (glazing storey band off by 0.20)); inferred: measured colour, the band miss is the narrow top storey",
+        "walls[2] not confirmed by the photo (FAIL (wall dL +0.54; glazing storey band off by 0.33 mean 1.00 vs photo 0.89)); inferred: dark glazed corner drawn as a layered curtain wall with the measured dark glass, the crop is sun-flared",
+        "walls[3] not confirmed by the photo (NO PHOTO); inferred: no archived crop of this panel, kept as authored",
         "Entrance front is a ribbon-windows system with a two-storey glazed entrance hall (a curtain-wall system with a glazed ground fails the parts-attached gate around the hall: fit warning, not a modelling choice). Not modelled: the continuous blue-green glazing bands of the photo (ribbons stand in), the vertical-slot brick cladding of the left part is simplified to two bays of ordinary punched windows (the slots are 0.3 m wide, below the grain of the bay system); the white concrete pier (panel 12 neighbour) is left as blank wall; the rooftop mast and flag are skipped (not part of the 3DBAG volume and not stable).",
-        "South, east and courtyard walls have no panorama (candidates 0) and are left to otherWalls (blank)."
+        "South, east and courtyard walls have no panorama (candidates 0) and are left to otherWalls (blank).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #383b32 not used (not darker than the wall #244951 by 10 L*, or tinted): kit glass kept; walls[1] walls: glazed columns measured; brick-bay-grid kept (glazed-columns needs its column bays placed by hand); walls[2] glass #41444a not used (not darker than the wall #3a3f3a by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171032",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:12:07.378Z",
+      "updatedAt": "2026-10-14T13:10:25.387Z",
       "bagYear": 1996,
-      "meshHash": "2e72e6aa865c58db"
+      "meshHash": "ea719cfcf1b90763"
     },
     {
       "id": "ordinary-0363100012142138",
@@ -51576,9 +51420,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012078289",
       "name": "Rigakade 8, Amsterdam-West (Houthavens industrial strip): 1988 builders' merchant (Jongeneel) of pale ribbed-steel sheds, a four-gable saw-tooth north-east end with a blue loading gate and a south-west shop front with a blue HOUT PLAAT SHOP BOUWMATERIALEN fascia over a glazed entrance",
-      "hash": "94a7d7eaefe79fe96bfa7f9178b8cd86a6868c43798e60895347db8e210047d2",
-      "sha256": "94a7d7eaefe79fe96bfa7f9178b8cd86a6868c43798e60895347db8e210047d2",
-      "bytes": 144220,
+      "hash": "3b226daf9caf01ada0031c4f105b432f5900ca905b93d932bfdf92ad8697cb9f",
+      "sha256": "3b226daf9caf01ada0031c4f105b432f5900ca905b93d932bfdf92ad8697cb9f",
+      "bytes": 144260,
       "triangles": 1745,
       "materials": 10,
       "textures": 0,
@@ -51657,8 +51501,7 @@
         "id": "rigakade-8-078289",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012078289/w05-207.jpg",
-          "staging/pand-reference-walls/0363100012078289/w03-27.jpg"
+          "source-data://pand-reference-walls/0363100012078289/w03-27.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -51681,26 +51524,29 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = panels 26 and 17 (SW, 17 m, eaves 10.4 and 8.8; surfaces 36, 21, 49, 54): a glazed ground with an entrance in the middle bay and the name as a short fascia plate over the entrance (not the full-width blue band), blank upper storey; 2 storeys x 3 bays. walls[1] = panel 3 (NE end, 40 m, eaves 8.1 under 10.4 m gables; surfaces 4, 22, 32, 34, 35, 43, 47, 50): blank render with one blue loading gate (garage door) on the right. Simplified: the saw-tooth gables are the 3DBAG roof and walls, the railing and sign boards are not modelled; the fascia colour is the stone slot (blue). Not drawn: the 94 m flanks and the south-east end, which stay blank pale render."
+        "walls[0] not confirmed by the photo (NO PHOTO); inferred: no archived crop of this panel, cladding colour from w03-27 (same sheds)",
+        "walls[1] not confirmed by the photo (FAIL (wall family paint vs photo brick; glazing  mean 0.01 vs photo 0.12)); inferred: ribbed steel cladding is 'paint' to the photo and 'brick' slot to the model, colour by hand from the crop, roof glazing is the 3DBAG roof",
+        "walls[0] = panels 26 and 17 (SW, 17 m, eaves 10.4 and 8.8; surfaces 36, 21, 49, 54): a glazed ground with an entrance in the middle bay and the name as a short fascia plate over the entrance (not the full-width blue band), blank upper storey; 2 storeys x 3 bays. walls[1] = panel 3 (NE end, 40 m, eaves 8.1 under 10.4 m gables; surfaces 4, 22, 32, 34, 35, 43, 47, 50): blank render with one blue loading gate (garage door) on the right. Simplified: the saw-tooth gables are the 3DBAG roof and walls, the railing and sign boards are not modelled; the fascia colour is the stone slot (blue). Not drawn: the 94 m flanks and the south-east end, which stay blank pale render.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #1c355c not used (not darker than the wall #a2acb3 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078289",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:18:24.112Z"
+      "updatedAt": "2026-10-14T13:10:37.011Z",
+      "meshHash": "38ecdf6896591caf"
     },
     {
       "id": "ordinary-0363100012101771",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012101771",
       "name": "Meeuwenlaan 132, Amsterdam-Noord (Van der Pekbuurt): 1936 school complex (Breders Beroepscollege), yellow-grey brick wings of two and three storeys with white-framed bar windows under hipped blue-tile roofs with dormers, and a low translucent-clad wing carrying giant grey letters",
-      "hash": "da9a46118f96675c9ed74e7e68c7dad7912ab6f0ea459d71ace8160dcb0542dc",
-      "sha256": "da9a46118f96675c9ed74e7e68c7dad7912ab6f0ea459d71ace8160dcb0542dc",
-      "bytes": 732352,
+      "hash": "ad171b0db1d51731cafbdaac736996dd3a652224be99e1cb2d23efdda125fd3b",
+      "sha256": "ad171b0db1d51731cafbdaac736996dd3a652224be99e1cb2d23efdda125fd3b",
+      "bytes": 734044,
       "triangles": 9872,
-      "materials": 13,
+      "materials": 15,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -52073,11 +51919,8 @@
         "id": "meeuwenlaan-132-101771",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012101771/w01-3.jpg",
-          "staging/pand-reference-walls/0363100012101771/w07-93.jpg",
-          "staging/pand-reference-walls/0363100012101771/w05-280.jpg",
-          "staging/pand-reference-walls/0363100012101771/w04-286.jpg",
-          "staging/pand-reference-walls/0363100012101771/w03-168.jpg"
+          "source-data://pand-reference-walls/0363100012101771/w05-280L.jpg",
+          "source-data://pand-reference-walls/0363100012101771/w04-286L.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -52109,15 +51952,20 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = panel 157 (N, 68 m, eaves 9.6; surface 198): 2 storeys x 17 bays of wide bar windows. walls[1] = panel 79 (E, 24 m, eaves 9.7; surfaces 88, 106): 2 storeys x 6 bays. walls[2] = panels 122, 5, 7 (W, 8 m each, eaves 13.8; surfaces 147, 7, 9): 3 storeys x 6 bays. walls[3] = panel 121 (W low wing, 34 m, eaves 5.3; surface 146): glazed ground under a translucent upper band with the letters BREDERS on a cornice band (the photograph cuts the word at BREDER; the S comes from the Breders banner). walls[4] = panel 110 (S low wing, 43 m, eaves 6.6; surface 133): the same wing with COLLEGE, inferred from the visible ...LEGE ending in a blank panel. Simplified: the real letters are about 3 m tall and run straight across the translucent panels, here a cornice-band lettering; dormers, chimneys and the hipped roofs are the 3DBAG roof; the red entrance doors and the school banner are not modelled. Not drawn: the south and east courtyard fronts, the tower block (22.9 m) and the gym (no panorama), which stay blank brick."
+        "walls[0] not confirmed by the photo (NO EVIDENCE (washed out 52 % > 30 %)); inferred: crop washed out (52 %), yellow brick and window rhythm read the same",
+        "walls[1] not confirmed by the photo (NO EVIDENCE (foliage 33 % > 25 %)); inferred: foliage 33 %, yellow brick and white-framed windows read the same",
+        "walls[3] not confirmed by the photo (FAIL (glazing  mean 0.69 vs photo 0.53; columns 8 vs photo 11)); inferred: measured grey cladding, glazing over by 0.16 on a low glazed wing",
+        "walls[4] not confirmed by the photo (NO EVIDENCE (foliage 40 % > 25 %)); inferred: foliage 40 %, grey glazed wing with lettering, kept as authored",
+        "walls[0] = panel 157 (N, 68 m, eaves 9.6; surface 198): 2 storeys x 17 bays of wide bar windows. walls[1] = panel 79 (E, 24 m, eaves 9.7; surfaces 88, 106): 2 storeys x 6 bays. walls[2] = panels 122, 5, 7 (W, 8 m each, eaves 13.8; surfaces 147, 7, 9): 3 storeys x 6 bays. walls[3] = panel 121 (W low wing, 34 m, eaves 5.3; surface 146): glazed ground under a translucent upper band with the letters BREDERS on a cornice band (the photograph cuts the word at BREDER; the S comes from the Breders banner). walls[4] = panel 110 (S low wing, 43 m, eaves 6.6; surface 133): the same wing with COLLEGE, inferred from the visible ...LEGE ending in a blank panel. Simplified: the real letters are about 3 m tall and run straight across the translucent panels, here a cornice-band lettering; dormers, chimneys and the hipped roofs are the 3DBAG roof; the red entrance doors and the school banner are not modelled. Not drawn: the south and east courtyard fronts, the tower block (22.9 m) and the gym (no panorama), which stay blank brick.",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #494947 not used (not darker than the wall #544b46 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012101771",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:20:06.149Z"
+      "updatedAt": "2026-10-14T13:10:31.953Z",
+      "meshHash": "b5d173b0468ed276"
     },
     {
       "id": "ordinary-0363100012110408",
@@ -52372,11 +52220,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012098847",
       "name": "Quellijnstraat 36, Amsterdam-Zuid (Weteringbuurt / Quellijnkwartier): 1927 brick block of the Amsterdam School period, a three- to five-storey north front with arched timber garage gates at ground level and a rounded corner, and a long three-storey canal front of small banded windows carrying the green Heineken name",
-      "hash": "4b44847c05de265a907f96e9ccc6c708f96ba040bff8d518cdb504162f4460b2",
-      "sha256": "4b44847c05de265a907f96e9ccc6c708f96ba040bff8d518cdb504162f4460b2",
-      "bytes": 432212,
+      "hash": "e2452b95eaa19f2e99154a8b074e22672c7e5fda046655269198549b46308c5f",
+      "sha256": "e2452b95eaa19f2e99154a8b074e22672c7e5fda046655269198549b46308c5f",
+      "bytes": 435196,
       "triangles": 5690,
-      "materials": 10,
+      "materials": 13,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -52497,9 +52345,8 @@
         "id": "quellijnstraat-36-098847",
         "kind": "large",
         "intentSources": [
-          "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
-          "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
-          "staging/pand-reference-walls/0363100012098847/w02-268.jpg"
+          "source-data://pand-reference-walls/0363100012098847/w01-6L.jpg",
+          "source-data://pand-reference-walls/0363100012098847/w02-268.jpg"
         ],
         "gates": [
           "triangle-budget:pass",
@@ -52525,15 +52372,19 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "walls[0] = panel 42 (N, 27 m, eaves 11.6; surface 51): 3 storeys x 6 bays with string courses and three garage doors on the ground. walls[1] = panel 51 (N, 28 m, eaves 15.0; surfaces 60, 216): 4 storeys x 6 bays with string courses. walls[2] = panel 70 (W, 52 m, eaves 10.0; surfaces 90, 91): 3 storeys x 13 bays of small windows (storey 3, the strip of the 11.9 m gable above the 10.0 m eaves, is blank: a window there overlapped the wall) with string courses and the HEINEKEN name letters on a cornice band (in the photograph the name sits in the middle of the wall, not on a cornice). Simplified: the gates are plain tall doors without arched heads, the rounded corner is 3DBAG facets, the green door and the ground-floor playground are not modelled. Not drawn: the east wings with the corner details, the courtyard walls and the 17 m rear blocks (blank brick)."
+        "walls[0] not confirmed by the photo (FAIL (glazing storey band off by 0.15; window shape square vs photo wide; columns 6 vs photo 10)); inferred: colour measured, small windows by hand (the measurement read 0.98 x 0.08), the bay window is not modelled",
+        "walls[1] likeness WARN (columns 6 vs photo 8; mask IoU 0.124 < 0.45).",
+        "walls[2] not confirmed by the photo (FAIL (glazing storey band off by 0.17; window shape square vs photo tall)); inferred: colour measured, small banded windows by hand, shape class counts frames as trim",
+        "walls[0] = panel 42 (N, 27 m, eaves 11.6; surface 51): 3 storeys x 6 bays with string courses and three garage doors on the ground. walls[1] = panel 51 (N, 28 m, eaves 15.0; surfaces 60, 216): 4 storeys x 6 bays with string courses. walls[2] = panel 70 (W, 52 m, eaves 10.0; surfaces 90, 91): 3 storeys x 13 bays of small windows (storey 3, the strip of the 11.9 m gable above the 10.0 m eaves, is blank: a window there overlapped the wall) with string courses and the HEINEKEN name letters on a cornice band (in the photograph the name sits in the middle of the wall, not on a cornice). Simplified: the gates are plain tall doors without arched heads, the rounded corner is 3DBAG facets, the green door and the ground-floor playground are not modelled. Not drawn: the east wings with the corner details, the courtyard walls and the 17 m rear blocks (blank brick).",
+        "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #464445 not used (not darker than the wall #68564f by 10 L*, or tinted): kit glass kept; walls[2] glass #393730 not used (not darker than the wall #493f38 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-gates-pass",
+      "reviewState": "large-recipe-likeness-inferred",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012098847",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T04:23:11.905Z"
+      "updatedAt": "2026-10-14T13:10:28.187Z",
+      "meshHash": "98a25837f9d9a4db"
     },
     {
       "id": "ordinary-0363100012129398",

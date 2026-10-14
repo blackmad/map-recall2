@@ -1,28 +1,120 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "leidsestraat-67-large",
-  "pandId": "0363100012172459",
-  "address": "Leidsestraat 67-71 / Kerkstraat 50A/B, 52",
-  "sources": [
-    {"id": "pano-2025-06-16-00039", "kind": "street-panorama", "capturedAt": "2025-06-16", "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2022-12-15-leidsestraat", "kind": "street-panorama", "capturedAt": "2022-12-15", "image": "artifacts/building-recipes/leidsestraat-67-large/photo-wall-leidsestraat.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-06-16-00039-right", "kind": "street-panorama", "capturedAt": "2025-06-16", "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-06-16-00180", "kind": "street-panorama", "capturedAt": "2025-06-16", "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [15], "street": "Leidsestraat", "system": "ribbon-windows", "storeys": 4, "baysPerStorey": 3, "ground": "plinth-shopfronts", "blankStoreys": [1], "windows": "cross", "signage": {"text": "ICI PARIS XL", "colour": "#d8487a"}},
-    {"wallSurfaces": [28], "system": "brick-bay-grid", "baysPerStorey": 1, "blankStoreys": [1, 2, 3], "entrance": {"bay": 0}},
-    {"wallSurfaces": [48], "system": "brick-bay-grid", "baysPerStorey": 1, "ground": "plinth-shopfronts", "windows": "two-light"},
-    {"wallSurfaces": [3, 12, 27, 65, 67], "street": "Kerkstraat", "system": "brick-bay-grid", "storeys": 3, "baysPerStorey": 6, "ground": "glazed", "windows": "cross", "entrance": {"bay": 5}, "palette": {"brick": "red-brown", "frame": "white-painted"}}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "black-tile"},
-  "palette": {"brick": "#4a3a33", "frame": "white-painted", "door": "black-painted", "stone": "grey-painted"},
-  "notes": [
-    "Leidsestraat (surface 15, 7.7 m, 16.2 m eaves): 1966 front. Shop window under a fascia (ICI PARIS XL, 2025), a blank brick storey over the shop, then two ribbon-window storeys with transoms (2022 and 2025 panoramas); three bays of two-light ribbons.",
-    "Surface 28 is the narrow stair tower to 23.4 m: the street door (no. 69) at its foot, plain brick with small windows only near the top. Surface 48 (right, 20.7 m) is the brick part with one large window per floor over a shop.",
-    "Kerkstraat (panel 2, 8.3 m): two neck-gabled fronts over a glazed shop + mezzanine base; six windows per storey; the gables come from the 3DBAG wall outline, so the attic row fills them where windows fit. The CHURCH door is the right-hand bay.",
-    "Replaces the canal-house intent (leidsestraat-67-kerkstraat-50), which blew the 3k budget (4,324 tris) and approximated the ribbons with plain windows; that house dir stays as the canal-house record."
-  ]
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "leidsestraat-67-large",
+ "pandId": "0363100012172459",
+ "address": "Leidsestraat 67-71 / Kerkstraat 50A/B, 52",
+ "sources": [
+  {
+   "id": "pano-2025-06-16-00039",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-12-15-leidsestraat",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "artifacts/building-recipes/leidsestraat-67-large/photo-wall-leidsestraat.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-00039-right",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-00180",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    15
+   ],
+   "street": "Leidsestraat",
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "plinth-shopfronts",
+   "blankStoreys": [
+    1
+   ],
+   "windows": "cross",
+   "signage": {
+    "text": "ICI PARIS XL",
+    "colour": "#d8487a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    28
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 1,
+   "blankStoreys": [
+    1,
+    2,
+    3
+   ],
+   "entrance": {
+    "bay": 0
+   }
+  },
+  {
+   "wallSurfaces": [
+    48
+   ],
+   "system": "brick-bay-grid",
+   "baysPerStorey": 1,
+   "ground": "plinth-shopfronts",
+   "windows": "two-light"
+  },
+  {
+   "wallSurfaces": [
+    3,
+    12,
+    27,
+    65,
+    67
+   ],
+   "street": "Kerkstraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "windows": "cross",
+   "entrance": {
+    "bay": 5
+   },
+   "palette": {
+    "brick": "red-brown",
+    "frame": "white-painted"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#4a3a33",
+  "frame": "white-painted",
+  "door": "black-painted",
+  "stone": "grey-painted"
+ },
+ "notes": [
+  "Leidsestraat (surface 15, 7.7 m, 16.2 m eaves): 1966 front. Shop window under a fascia (ICI PARIS XL, 2025), a blank brick storey over the shop, then two ribbon-window storeys with transoms (2022 and 2025 panoramas); three bays of two-light ribbons.",
+  "Surface 28 is the narrow stair tower to 23.4 m: the street door (no. 69) at its foot, plain brick with small windows only near the top. Surface 48 (right, 20.7 m) is the brick part with one large window per floor over a shop.",
+  "Kerkstraat (panel 2, 8.3 m): two neck-gabled fronts over a glazed shop + mezzanine base; six windows per storey; the gables come from the 3DBAG wall outline, so the attic row fills them where windows fit. The CHURCH door is the right-hand bay.",
+  "Replaces the canal-house intent (leidsestraat-67-kerkstraat-50), which blew the 3k budget (4,324 tris) and approximated the ribbons with plain windows; that house dir stays as the canal-house record.",
+  "Uninstalled 2026-10-14 (likeness triage, plan Part 1 lane D): every street-facing group FAILs against the archived crops (w01-323L, w02-46): an ornamented corner block (domed corner turret, a dark painted Kerkstraat front with tall arched windows, a shop arcade) drawn as red brick with white cross windows. Ornament, not a kit gap: a bespoke landmark builder if it is to come back (ride-visible: 54 of 2,000 sampled routes)."
+ ]
 }

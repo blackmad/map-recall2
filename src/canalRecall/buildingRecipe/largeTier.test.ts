@@ -696,5 +696,5 @@ test('measured groups export their wall, arch-ring and own glass slots with tint
   // The glazed hall's measured dark grey-blue glass reaches the look (look/palette.ts `cityMeasuredGlassTint`); the kit glass of unmeasured groups does not.
   assert.deepEqual(tinted('apollolaan-4-134507'), ['glass/glass@g0', 'wall/wall@g0', 'wall/wall@g1']);
   assert.ok(tinted('waagdragerhof-198-118320').includes('wall/arch@g3'));
-  assert.deepEqual(tinted('politie-van-leijenberghlaan'), []);
+  assert.deepEqual(tinted('politie-west-overtoomsesluis'), []);
 });
