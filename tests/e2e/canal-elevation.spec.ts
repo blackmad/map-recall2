@@ -75,7 +75,9 @@ for (const mode of ['flat', 'elevation'] as const) {
     test.setTimeout(420_000);
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(String(error.stack || error)));
-    await page.addInitScript((on: boolean) => { (window as any).__canalRecallElevation = on; }, mode === 'elevation');
+    // The stencil layer is the pre-own-ground elevation; own ground (on by default since
+    // 2026-10-14) retires it, so both modes here run with the own ground off.
+    await page.addInitScript((on: boolean) => { (window as any).__canalRecallElevation = on; (window as any).__canalRecallOwnGround = false; }, mode === 'elevation');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
     if (mode === 'elevation') {
       await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.elevationStatus().ready), { timeout: 60_000 }).toBe(true);

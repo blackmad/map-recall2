@@ -32,7 +32,7 @@ await page.evaluate(() => { const g = canalRecallGame; g._pickDestinationNear = 
 await page.locator('#route-card').evaluate(f => f.requestSubmit());
 await page.waitForFunction(() => canalRecallGame.player?.x && canalRecallGame.state === 4 && canalRecallGame.camera.introOverview === 0, null, {timeout: 180000});
 await page.waitForFunction(() => { const t = canalRecallGame.vectorMap._threeBuildings; return t?.ready && t.chunks.size && !t.pending.length && !t.inflight.size; }, null, {timeout: 180000});
-// `?ownGround=1`: wait for its streamed cells around the rider (built in a worker, installed one per frame).
+// Own ground (default; `?ownGround=0` opts out): wait for its streamed cells around the rider (built in a worker, installed one per frame).
 await page.waitForFunction(() => { const g = canalRecallGame.vectorMap._ownGround; if (!g) return true; const s = g.status(); return s.ready && !s.queued && !Object.keys(s.pending).length && Object.values(s.cells).includes(0); }, null, {timeout: 180000});
 await page.waitForTimeout(6000);
 const start = await page.evaluate(() => ({x: canalRecallGame.player.x, y: canalRecallGame.player.y, center: canalRecallGame.vectorMap.map.getCenter().toArray()}));

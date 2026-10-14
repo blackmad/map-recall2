@@ -34,10 +34,11 @@ const SHARED_FRAME_DEFAULT = false;
 // relief, streets by OSM cross-section, quays, sunken water and measured
 // bridge decks — streamed per 1 km cell from a worker, with the route line
 // and the question street draped on it (src/canalRecall/ownGround/,
-// docs/research/own-ground-20261009.md). Off by default; `?ownGround=1` or
-// window.__canalRecallOwnGround = true. Implies the shared frame, and replaces
-// the `?elevation=1` stencil layer (no MapLibre private state).
-const OWN_GROUND_DEFAULT = false;
+// docs/research/own-ground-20261009.md). On by default since 2026-10-14 (user);
+// `?ownGround=0` or window.__canalRecallOwnGround = false opts out, and an
+// explicit `?sharedFrame=0` does too unless `?ownGround=1` is also given.
+// Implies the shared frame, and replaces the `?elevation=1` stencil layer.
+const OWN_GROUND_DEFAULT = true;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
 // Basemap ground the own ground hides while it covers the rider: none. The
@@ -91,7 +92,8 @@ class VectorBasemap {
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
     this._elevationEnabled = canalRecallLookFlag('elevation', '__canalRecallElevation', CANAL_ELEVATION_DEFAULT);
     this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
-    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround', OWN_GROUND_DEFAULT);
+    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround',
+      OWN_GROUND_DEFAULT && canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', null) !== false);
     if (this._ownGroundEnabled) this._sharedFrameEnabled = true;
     // ?recipeTiles=1: the recipe-tile near tier (src/canalRecall/tileBuildings/) is a shared-frame participant.
     this._recipeTilesEnabled = canalRecallLookFlag('recipeTiles', '__canalRecallRecipeTiles', false);
