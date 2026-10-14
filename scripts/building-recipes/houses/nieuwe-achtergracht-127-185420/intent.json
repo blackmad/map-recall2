@@ -1,0 +1,106 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "nieuwe-achtergracht-127-185420",
+ "pandId": "0363100012185420",
+ "address": "Nieuwe Achtergracht 127 (Roeterseilandcampus, University of Amsterdam), Amsterdam-Centrum: campus complex of 1932 brick lecture and laboratory wings with a cream curved Roeterstraat front and 1990s-2010s glass-and-steel extensions, a dark glazed tower overhead",
+ "sources": [
+  {
+   "id": "pano-2021-01-22-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000883/",
+   "image": "staging/pand-reference-walls/0363100012185420/w03-163.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-29-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001681_pano_0000_003275/",
+   "image": "staging/pand-reference-walls/0363100012185420/w01-280.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-07-06-w07",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0002_000110/",
+   "image": "staging/pand-reference-walls/0363100012185420/w07-343.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    182,
+    269,
+    273,
+    300,
+    348,
+    496
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "stringCourses": true,
+   "palette": {
+    "brick": "#7a5a48",
+    "frame": "#e8e4d4",
+    "stone": "#c8bea8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    465
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#d8c8a0",
+    "frame": "#3a4a52",
+    "stone": "#c0b090"
+   }
+  },
+  {
+   "wallSurfaces": [
+    110
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#c8c8c0",
+    "frame": "#3a6a6a",
+    "stone": "#a8a8a0"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#7a5a48",
+  "frame": "#d8d4c4",
+  "door": "#2a2a2a",
+  "stone": "#c8bea8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Nieuwe Achtergracht 127 (BAG pand 0363100012185420, built 1990 in the BAG record, 672 3DBAG wall surfaces, 14,908 m2, roof max 59.2 m): the Roeterseilandcampus of the University of Amsterdam merged into one pand: 1930s brick lecture and laboratory wings round courtyards (the south wing on the Nieuwe Achtergracht with salmon-red sun blinds, the east wing with a chimney), the cream stone-and-glass-block building on the Roetersstraat, a light grey-clad extension on the north canal, a glass curtain-wall podium and a dark ribbed glazed tower over the Nieuwe Achtergracht. Eight walls were photographed; the UvA Talks sign appears on w08-253. Three fronts are drawn: the south canal wing (w03-163, 2021-01-22), the cream Roetersstraat front (w01-280, 2020-04-29) and the grey north extension (w07-343, 2017-07-06).",
+  "walls[0] = panel 173 (S, 70.7 m, eaves 12.2): four storeys of brown brick with paired windows behind salmon-red blinds and a low basement band, drawn as 4 storeys x 14 bays with string courses. walls[1] = panel 407 (W, 64 m, eaves 15.2, surface 465): the cream stone-clad Roetersstraat front with large steel-framed windows and glass-block panels, drawn as 4 storeys x 9 bays with dark frames. walls[2] = panel 107 (N, 51 m, eaves 12.2, surface 110): light grey panel cladding with teal-framed horizontal windows, 4 storeys x 10 bays.",
+  "Simplified: the salmon-red blinds are the window panes, the glass-block panels and the roof lantern strip of the cream front are not modelled, the grey cladding joints are flat colour. Not drawn: the glass curtain-wall podium and dark tower faces (w04-343, w02-253, w06-73, w08-253; the layered curtain wall would add thousands of triangles over the 12k budget), the chimney wing (w05-30), the courtyards and the other 600 surfaces, which stay blank brick on the 3DBAG shell. This is a minimal pass on a campus: most of the pand is unmodelled facade."
+ ]
+}

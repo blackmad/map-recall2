@@ -1,0 +1,183 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuwe-achtergracht-127-185420",
+ "pand": "0363100012185420",
+ "signature": [
+  "brick-lab-wing-blinds",
+  "cream-roeterstraat-front"
+ ],
+ "walls": [
+  {
+   "tag": "w03-163",
+   "bearing": 163,
+   "lengthM": 55.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000883",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-lab-wing-blinds",
+     "kind": "window-shape",
+     "where": "four storeys of brown brick lab wing with salmon-red sun blinds in paired window groups and a basement band",
+     "approxSizeM": [
+      70,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 4 storeys x 14 bays with string courses; the blinds read as window panes",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883"
+    }
+   ]
+  },
+  {
+   "tag": "w01-280",
+   "bearing": 280,
+   "lengthM": 65.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001681_pano_0000_003275",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "cream-roeterstraat-front",
+     "kind": "window-shape",
+     "where": "cream stone front with steel-framed window grids, a glass-block panel and a rooftop lantern strip",
+     "approxSizeM": [
+      64,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 4 storeys x 9 bays in a dark frame colour; the glass blocks and the lantern strip are not drawn",
+     "seenIn": "TMX7316010203-001681_pano_0000_003275"
+    }
+   ]
+  },
+  {
+   "tag": "w07-343",
+   "bearing": 343,
+   "lengthM": 46.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0002_000110",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "grey-panel-extension",
+     "kind": "window-shape",
+     "where": "light grey panel-clad extension with teal-framed horizontal windows",
+     "approxSizeM": [
+      51,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys x 10 bays",
+     "seenIn": "TMX7316010203-000354_pano_0002_000110"
+    }
+   ]
+  },
+  {
+   "tag": "w02-253",
+   "bearing": 253,
+   "lengthM": 57.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0002_000218",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "note": "dark curved glazed tower overhead seen from the canal; tower walls not drawn",
+   "items": [
+    {
+     "id": "dark-ribbed-glass-tower",
+     "kind": "tower",
+     "where": "dark ribbed glass tower cantilevered over the canal with a glazed podium below",
+     "approxSizeM": [
+      38,
+      45
+     ],
+     "plan": "simplified",
+     "how": "left to the 3DBAG shell in brick colour (blank wall); a curtain wall on it would exceed 12k triangles",
+     "seenIn": "TMX7316010203-000354_pano_0002_000218"
+    }
+   ]
+  },
+  {
+   "tag": "w04-343",
+   "bearing": 343,
+   "lengthM": 51.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000894",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "glass curtain-wall podium and dark tower; same items as w02-253",
+   "items": []
+  },
+  {
+   "tag": "w05-30",
+   "bearing": 30,
+   "lengthM": 50.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001010",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "1930s four-storey brick wing with a chimney stack and sash windows; not drawn (blank wall)",
+   "items": [
+    {
+     "id": "east-brick-wing-chimney",
+     "kind": "tower",
+     "where": "brick chimney stack beside the four-storey 1930s east wing",
+     "approxSizeM": [
+      3,
+      25
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG tower mass in brick colour",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010"
+    }
+   ]
+  },
+  {
+   "tag": "w06-73",
+   "bearing": 73,
+   "lengthM": 47.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000886",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "same dark tower over the canal as w02-253",
+   "items": []
+  },
+  {
+   "tag": "w08-253",
+   "bearing": 253,
+   "lengthM": 32.5,
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track30_Sphere_00077",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "uva-talks-sign",
+     "kind": "sign",
+     "where": "UvA Talks lettering on the glazed ground-floor cafe",
+     "approxSizeM": [
+      5,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a tenant sign on a glazed curtain wall that no wall group covers"
+     },
+     "seenIn": "b_20241210_1246_Track30_Sphere_00077"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
