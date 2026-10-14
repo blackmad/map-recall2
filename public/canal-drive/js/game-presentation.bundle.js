@@ -665,10 +665,15 @@
   var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
   var GLASS_TINT_CELL_W = 32;
   var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
   function glassTintCellValue(x, y) {
-    const t = y / (GLASS_TINT_CELL_H - 1), base = t < 0.5 ? 255 - 47 * (t / 0.5) : 208 - 20 * ((t - 0.5) / 0.5);
+    const t = y / (GLASS_TINT_CELL_H - 1);
+    const base = t < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t - 0.5) / 0.5);
     const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
-    return Math.round(streak ? base + (255 - base) * 0.16 : base);
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
   }
   var GLASS_TINT_CELL_MEAN = (() => {
     let sum = 0;

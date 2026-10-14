@@ -240,13 +240,26 @@ brick-coloured slot is one rule in every pipeline (asserted ≤ 1 %).
   (`cityMeasuredWallTint`, authored hex ÷ the canal brick mean) and always
   sample the canal brick, never `brick20`, whose lighter mean drew a measured
   wall 0.02–0.03 L light. Glass samples the appended **glassTint** layer, the
-  pane's gradient and sky streak in grey (188–255, `glassTintCellValue`), with
-  `cityMeasuredGlassTint` (hex ÷ its mean); unmeasured glass keeps the
-  blue-grey pane and a white tint, so dark and reflective glass used to draw
-  the same pane. Proof: `scripts/look/measured-walls.ts` renders the three
-  measured pilots through both game looks and measures every measured
-  material (÷ the baked shade) against its hex: all within 0.02 L
-  (`docs/images/look/measured-pilots.jpg`, Playwright "re-fitted recipe GLB").
+  stock pane's gradient and sky streak in grey at full strength (head 255,
+  sill ~103, `glassTintCellValue`), tinted by `cityMeasuredGlassTint`.
+  **Measured glass keeps the sky** (2026-10-14, user: "old seems better for
+  glass? lighter?"): glass measured from a crop is the glass under that day's
+  sky, not a material (overcast reads near-black), so the tint keeps the
+  measured hue and saturation and floors the lightness at the stock pane's,
+  L = max(measured, 0.40) (`MEASURED_GLASS_MIN_L`), then ÷ the cell mean;
+  paler glass keeps its own L up to the cell's reach (~0.62 per channel,
+  scaled as a whole beyond). Rule chosen over a 0.5 blend with the stock
+  mean, which still drew half the overcast darkness and left measured panes
+  darker than every unmeasured window. Intents keep the measured hex
+  (`measure.ts --write` unchanged); the lift is the look's. Unmeasured glass
+  keeps the blue-grey pane and a white tint. Proof:
+  `scripts/look/measured-walls.ts` renders the measured pilots through both
+  game looks: measured walls within 0.02 L of their hex, measured glass at
+  max(hex L, 0.40) or lighter in its hex's hue (Apollohal #46545c draws
+  102,122,135, the stock pane on that hall 106,126,139; Houthavenkade's
+  columns #8e9ea4 draw 137,152,158) (`docs/images/look/measured-pilots.jpg`
+  with a "glass keeps the sky" column, `measured-glass-ride.jpg` from the
+  ride camera; Playwright "re-fitted recipe GLB").
   Sheets (`scripts/building-recipes/render.ts`) always draw through a game
   look (`--city-look [--year=]` for this one); the `--textures` trial tiles,
   which drew raw GLB colours under a PBR rig and showed dark measured walls

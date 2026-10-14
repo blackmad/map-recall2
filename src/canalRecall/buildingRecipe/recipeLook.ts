@@ -138,7 +138,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     switch (SLOT_CELL[slot]) {
       case 'brick': return texture('brick', () => paintBrickCanvas(doc, options.brick));
       case 'glass': {
-        // Measured glass: the grey pane, so the authored colour shows (look/palette.ts `cityMeasuredGlassTint`).
+        // Measured glass: the stock pane in grey, tinted to the measured hue at the stock lightness or lighter (look/palette.ts `cityMeasuredGlassTint`).
         const t = source === 'measured' ? texture('glass-tint', () => paintGlassTintCanvas(doc)) : texture('glass', () => paintGlassCanvas(doc));
         t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; return t;
       }
