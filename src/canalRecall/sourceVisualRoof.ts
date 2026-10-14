@@ -25,12 +25,6 @@ export function sourceVisualRoof<T extends Feature>(feature: T, profiles: readon
     if (!front.frontage || selected?.heightMin != null && Number(p.height) < selected.heightMin || selected?.heightMax != null && Number(p.height) > selected.heightMax) continue;
     if (selected?.frontageMin != null && front.frontage.widthM < selected.frontageMin || selected?.frontageMax != null && front.frontage.widthM > selected.frontageMax) continue;
     const recipe = selected?.recipe;
-    if(recipe?.interwarFrontage&&recipe.roofFamily==='flat-parapet'){
-      const height=Number(p.height),parapetM=.12;
-      if(!Number.isFinite(height)||height<5)continue;
-      const plan:RoofPlan={kind:'parapet',gable:'plain',riseM:parapetM,parapetM,nativeEnvelopeM:parapetM,dormers:false,chimney:false,accents:false,material:'slate',tone:.4,seed:id,keepLid:true,trimHex:recipe.wallHex??'#76564c'};
-      return {feature:{...feature,properties:{...p,roofPlanned:true,roofShape:'parapet',roofEavesHeightM:height-parapetM}},plan};
-    }
     if(recipe?.repeatedTerraceFrontage&&recipe.repeatedTerraceRoof){
       const t=recipe.repeatedTerraceRoof,height=Number(p.height),eaves=height-t.riseM;
       const ring=localOuterRing(feature.geometry);if(!ring||!Number.isFinite(eaves)||eaves<5)continue;
