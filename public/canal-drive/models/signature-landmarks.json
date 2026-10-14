@@ -52265,6 +52265,86 @@
       "triangles": 1398,
       "bytes": 21976,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "waterdraagster-bellamyplein": {
+      "id": "waterdraagster-bellamyplein",
+      "name": "De Waterdraagster met vissen (Bellamyplein)",
+      "landmarkId": "extract_landmarks_1336248768",
+      "modelUrl": "./models/waterdraagster-bellamyplein.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8676653,
+          52.3680209
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 13,
+        "widthMetres": 13
+      },
+      "surveyed": {
+        "anchor": [
+          4.8676653,
+          52.3680209
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM nodes 9465999990 (waterdraagster), 2303927479 and 2303927486 (the two fish, Leo Braat) and backlog destination extract_landmarks_1336248768; the Waterdraagster, Vis I and Vis II read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Marion Golsteijn CC BY-SA 3.0); the basin rim is the circle through the three nodes (centre 6 m north, radius 5.9 m); the panoramas show only the gate piers and the water 22 m away; the facing (0, the figure looks to the pond centre) and the sizes are estimates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#5b4a33",
+        "concrete": "#e6e4dc",
+        "dark": "#3f4245",
+        "blue": "#5c7c8a"
+      },
+      "attribution": {
+        "title": "De Waterdraagster met vissen - original low-poly reconstruction",
+        "author": "Map Recall; after the fountain by Leo Braat on the Bellamyplein",
+        "sourceUrl": "https://www.openstreetmap.org/node/9465999990",
+        "modifications": "Original texture-free low-poly woman, two fish and basin rim built from Commons photographs: 2021 Waterdraagster met vissen (Ceescamel, CC BY-SA 4.0) and Waterdraagster 4 (Marion Golsteijn, CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE"
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -6.703157901763916,
+          -3.8328937018460615e-16,
+          -12.152510643005371
+        ],
+        "max": [
+          5.816023349761963,
+          1.4800000190734863,
+          0.36667028069496155
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8676653,
+          52.3680209
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 12.519181251525879,
+        "heightMetres": 1.4800000190734868,
+        "depthMetres": 12.519180923700333,
+        "depthCoverage": 0.9630139172077179
+      },
+      "triangles": 3224,
+      "bytes": 33420,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "9686e52663e2b64e",
+        "buildVersion": 2,
+        "bytes": 14776,
+        "triangles": 542
+      }
     }
   }
 }

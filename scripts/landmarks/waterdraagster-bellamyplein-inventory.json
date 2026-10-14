@@ -1,0 +1,118 @@
+{
+ "schemaVersion": 1,
+ "id": "waterdraagster-bellamyplein",
+ "signature": [
+  "wd-woman",
+  "wd-fish"
+ ],
+ "walls": [
+  {
+   "tag": "n-000",
+   "bearing": 0,
+   "lengthM": 12,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001500_pano_0000_003097",
+   "capturedAt": null,
+   "note": "North-looking front: the Waterdraagster on the south rim; the two fish stand on the opposite (north) rim. Panoramas see only the basin edge and the gate piers.",
+   "items": [
+    {
+     "id": "wd-woman",
+     "kind": "sculpture",
+     "where": "stylised woman with a fish-tail body on a square base, hands behind the head holding a jug, big staring eyes",
+     "approxSizeM": [
+      0.35,
+      1.1
+     ],
+     "plan": "simplified",
+     "how": "builder: tapered lumps, flared flukes, raised arms with elbows out, portrait head and jug; scale texture omitted",
+     "seenIn": "commons:2021_Waterdraagster_met_vissen-Waterdraagster_(1).jpg"
+    },
+    {
+     "id": "wd-fish",
+     "kind": "sculpture",
+     "where": "two bronze fish rearing from the rim: domed head, round eyes, wide mouth, side fins, tail on a square base",
+     "approxSizeM": [
+      0.45,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "builder: head ball, brow ridges, dark eyes and mouth, body lumps, fins",
+     "seenIn": "commons:2021_Waterdraagster_met_vissen-Vis_I_(1).jpg"
+    },
+    {
+     "id": "wd-rim",
+     "kind": "other",
+     "where": "low curved white concrete basin rim with a grated drain strip along its inside",
+     "approxSizeM": [
+      12,
+      0.42
+     ],
+     "plan": "modelled",
+     "how": "builder: extruded rings (rim and grate) and a floor disc on the circle through the three bronzes",
+     "seenIn": "commons:2021_Waterdraagster_met_vissen-Vis_II_(1).jpg"
+    }
+   ],
+   "centre": [
+    4.8676653,
+    52.3680209
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-180",
+   "bearing": 180,
+   "lengthM": 12,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear: inferred from the front and side photos; simplified.",
+   "items": [],
+   "centre": [
+    4.8676653,
+    52.3680209
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: 2021 Waterdraagster met vissen-Waterdraagster (1)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Waterdraagster_met_vissen-Waterdraagster_(1)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2021 Waterdraagster met vissen-Vis I (1)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Waterdraagster_met_vissen-Vis_I_(1)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: 2021 Waterdraagster met vissen-Vis II (1)",
+   "url": "https://commons.wikimedia.org/wiki/File:2021_Waterdraagster_met_vissen-Vis_II_(1)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: Waterdraagster 4",
+   "url": "https://commons.wikimedia.org/wiki/File:Waterdraagster_4",
+   "licence": "CC BY-SA 3.0 (Marion Golsteijn)"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap node 9465999990 (waterdraagster)",
+   "url": "https://www.openstreetmap.org/node/9465999990",
+   "licence": "ODbL"
+  },
+  {
+   "name": "OpenStreetMap node 2303927479 (fish)",
+   "url": "https://www.openstreetmap.org/node/2303927479",
+   "licence": "ODbL"
+  },
+  {
+   "name": "OpenStreetMap node 2303927486 (fish)",
+   "url": "https://www.openstreetmap.org/node/2303927486",
+   "licence": "ODbL"
+  }
+ ]
+}
