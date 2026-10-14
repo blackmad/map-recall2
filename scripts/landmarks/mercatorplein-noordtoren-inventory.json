@@ -60,7 +60,7 @@
      ],
      "plan": "modelled",
      "seenIn": "TMX7316010203-000994_pano_0000_002634",
-     "how": "kit brick-bay-grid windows, two per bay beside the erker (builder skips the erker axis)"
+     "how": "builder: framed windows laid on the kit wall (cream 10 cm frame ring, glass, bars, stone sill as closed boxes), two per bay beside the erker; the kit leaves the arcade front's upper storeys to the builder"
     },
     {
      "id": "n-hoist-beams",
@@ -139,7 +139,7 @@
      ],
      "plan": "modelled",
      "seenIn": "2025_09_26_08_31_34_00870",
-     "how": "builder: real through-passage (side walls, rendered soffit), stepped render frame as closed slabs, plinth and band strips"
+     "how": "builder: real through-passage (jambs, chamfered shoulders and rendered soffit through the gate), stepped render frame as a closed plate, plinth and render band plates"
     },
     {
      "id": "n-side-doors",
@@ -354,9 +354,12 @@
       11.6,
       1.3
      ],
-     "plan": "simplified",
+     "plan": "skipped",
      "seenIn": "2025_09_26_08_31_34_00863",
-     "how": "builder: a light glass band panel with a block grid of thin bars"
+     "skip": {
+      "reason": "not-visible",
+      "note": "belongs to the neighbouring corner pand 0363100012140699 in front of this wall, not to the landmark"
+     }
     },
     {
      "id": "n-shop-canopy",
@@ -366,12 +369,15 @@
       11.6,
       0.3
      ],
-     "plan": "modelled",
+     "plan": "skipped",
      "seenIn": "2025_09_26_08_31_34_00863",
-     "how": "builder: closed slab"
+     "skip": {
+      "reason": "not-visible",
+      "note": "belongs to the neighbouring corner pand 0363100012140699 in front of this wall, not to the landmark"
+     }
     }
    ],
-   "note": "Hoofdweg front of the east part: erkers and single windows over a shop row with a glass-block clerestory band and a continuous canopy."
+   "note": "The brief's Hoofdweg-facing wall of this pand: BAG pand 0363100012140699 (16.4 m) stands against its southern 4.6 m and the panorama crop (45 deg oblique, 34 m) shows that neighbour's front, with the glass-block band and canopy, not this pand's wall."
   },
   {
    "tag": "w06-252",

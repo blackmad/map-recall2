@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const house = arg('house'), minZ = Number(arg('min-z', '0'));
-const facts = JSON.parse(fs.readFileSync(`scripts/building-recipes/houses/${house}/facts.json`, 'utf8'));
+const facts = JSON.parse(fs.readFileSync(`scripts/landmarks/${house}-facts.json`, 'utf8'));
 const ring: number[][] = facts.bagFootprintRD[0];
 const cx = ring.reduce((s, p) => s + p[0], 0) / ring.length, cy = ring.reduce((s, p) => s + p[1], 0) / ring.length, g = facts.heights.groundNAP;
 const a = 74 * Math.PI / 180, b = 344 * Math.PI / 180;

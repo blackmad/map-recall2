@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "mercatorplein-noordtoren",
+ "pandId": "0363100012107349",
+ "address": "Mercatorplein north wall with the north tower and gatehouse, Amsterdam (Berlage 1925-27; rebuilt 1995-98)",
+ "sources": [
+  {
+   "id": "pano-2018-11-19-w01-165",
+   "kind": "street-panorama",
+   "capturedAt": "2018-11-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000994_pano_0000_002634/",
+   "image": "staging/pand-reference-walls/0363100012107349/w01-165.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w05-75",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_08_31_34_00863/",
+   "image": "staging/pand-reference-walls/0363100012107349/w05-75.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-25-w06-252",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_25_07_44_15_00773/",
+   "image": "staging/pand-reference-walls/0363100012107349/w06-252.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    142
+   ],
+   "street": "Mercatorplein",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 7,
+   "ground": "arcade",
+   "windows": "two-light",
+   "arcade": {
+    "pier": 0.18,
+    "walk": 0.47,
+    "head": 0.82,
+    "rise": 0.16,
+    "chamfer": 0.18,
+    "storeyFactor": 1.75
+   }
+  },
+  {
+   "wallSurfaces": [
+    27,
+    20,
+    31
+   ],
+   "street": "Mercatorplein",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "plinth-shopfronts",
+   "windows": "two-light"
+  },
+  {
+   "wallSurfaces": [
+    89,
+    119,
+    74,
+    12,
+    37,
+    38,
+    53,
+    75
+   ],
+   "street": "Mercatorstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "ground": "system",
+   "windows": "two-light"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7b5246",
+  "frame": "#e6dfca",
+  "door": "#4f4744",
+  "stone": "#9d978a",
+  "glass": "#3a4148"
+ },
+ "notes": [
+  "Kit part of the Mercatorplein north landmark: the 3DBAG shell of pand 0363100012107349 with the square's arcade front (ground arcade, seven chamfered openings) and the plain housing fronts (the east part's square and Hoofdweg walls are party walls: BAG pands 0363100012070081 and 0363100012140699 stand against them); the tower, the gatehouse over the Mercatorstraat underpass, the erkers, hoist beams and clock dials are drawn by scripts/landmarks/mercatorplein-noordtoren-builder.ts. Upper storeys of the arcade front are left to the builder (skipCell)."
+ ]
+}
