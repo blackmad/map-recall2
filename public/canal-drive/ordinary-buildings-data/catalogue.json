@@ -23964,10 +23964,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012102565",
       "name": "Politiebureau Van Leijenberghlaan, Van Leijenberghlaan 1, Amsterdam (Buitenveldert)",
-      "hash": "164233c9dde96d947e01455a977ffd43805fa6bd31dd3329f054f96bb075e4af",
-      "sha256": "164233c9dde96d947e01455a977ffd43805fa6bd31dd3329f054f96bb075e4af",
-      "bytes": 459432,
-      "triangles": 6123,
+      "hash": "5675f9ca7274f9ff300660b59f1c3b6253760388e2154c15a20b7701480d1f3c",
+      "sha256": "5675f9ca7274f9ff300660b59f1c3b6253760388e2154c15a20b7701480d1f3c",
+      "bytes": 615084,
+      "triangles": 8341,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -24132,7 +24132,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012102565",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T11:15:15.084Z",
+      "updatedAt": "2026-10-14T03:12:43.633Z",
       "bagYear": 1976
     },
     {
