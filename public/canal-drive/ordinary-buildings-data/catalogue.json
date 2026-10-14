@@ -34612,10 +34612,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012104378",
       "name": "Stadsloket Noord, Buikslotermeerplein 2000, Amsterdam (1999 black-brick office tower with the three St Andrew's crosses)",
-      "hash": "e7d0853555c9d33700d3f30b8228b5eeace0bd21bf6221d266a428e9f56f687f",
-      "sha256": "e7d0853555c9d33700d3f30b8228b5eeace0bd21bf6221d266a428e9f56f687f",
-      "bytes": 254168,
-      "triangles": 3331,
+      "hash": "61f7e16a9ee69cd7d736b102e712ba9587a014a7c1d99f397dcb91e1d5f12f17",
+      "sha256": "61f7e16a9ee69cd7d736b102e712ba9587a014a7c1d99f397dcb91e1d5f12f17",
+      "bytes": 256776,
+      "triangles": 3365,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -34813,7 +34813,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104378",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:41:18.388Z"
+      "updatedAt": "2026-10-14T03:13:51.000Z"
     },
     {
       "id": "ordinary-0363100012078772",
