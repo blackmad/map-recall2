@@ -53,7 +53,7 @@ export function paintGlassCanvas(doc: Document): HTMLCanvasElement {
   return canvas;
 }
 
-/** Measured glass pane (UV 0..1 per pane): the glass gradient and streak in grey, for an authored tint (palette.ts `glassTintCellValue`). */
+/** Measured glass pane (UV 0..1 per pane): the stock pane's gradient and streak in grey at full strength, for a measured tint (palette.ts `glassTintCellValue`). */
 export function paintGlassTintCanvas(doc: Document): HTMLCanvasElement {
   const canvas = doc.createElement('canvas'); canvas.width = GLASS_TINT_CELL_W; canvas.height = GLASS_TINT_CELL_H;
   const ctx = canvas.getContext('2d')!, image = ctx.createImageData(GLASS_TINT_CELL_W, GLASS_TINT_CELL_H);

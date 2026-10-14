@@ -526,18 +526,24 @@ export function cityMeasuredWallTint(hex: string): string {
   return rgbToHex([r, g, b].map(v => Math.min(255, Math.round(v / BRICK_CELL_MEAN))) as RGB);
 }
 /**
- * Measured glass (`tintSource: 'measured'` on a glass slot) samples its own pane cell: the glass pane's gradient and
- * sky streak (slotCells.ts `paintGlassCanvas`) in grey, compressed to 188-255 so a tint can reach a pale reflective
- * pane. The unmeasured glass cell is already blue-grey and takes a white tint, so it never shows the authored colour
- * (dark #1e262c and reflective #8e9ea4 both drew the same blue-grey); its mean (~0.37 L) also caps any tint below
- * a pale pane. Pure, so the mean below is exact. `y` runs down the pane (0 = head), on a GLASS_TINT_CELL_W x _H grid.
+ * Measured glass (`tintSource: 'measured'` on a glass slot) samples its own pane cell: the stock glass pane of
+ * slotCells.ts `paintGlassCanvas` (its gradient, head to sill, and its sky streak, at full strength) in grey, scaled so
+ * the brightest texel is 255, so a tint recolours the pane without flattening it. The unmeasured glass cell is already
+ * blue-grey and takes a white tint, so it never shows the authored colour (dark #1e262c and reflective #8e9ea4 both drew
+ * the same blue-grey). Pure, so the mean below is exact. `y` runs down the pane (0 = head), on a GLASS_TINT_CELL_W x _H
+ * grid. Until 2026-10-14 (user: "old seems better for glass? lighter?") this cell was the pane compressed to 188-255,
+ * which drew a measured pane flatter than every other window in the city.
  */
 export const GLASS_TINT_CELL_W = 32, GLASS_TINT_CELL_H = 64;
+/** Rec. 709 luma of the stock pane's gradient stops (#8aa1b0, #4d606c, #3c474e) and of its sky streak (rgba(235,242,248,0.16)). */
+const PANE_LUMA = [157.19, 92.83, 69.17] as const, STREAK_LUMA = 240.95, STREAK_ALPHA = 0.16;
+const PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
 export function glassTintCellValue(x: number, y: number): number {
-  const t = y / (GLASS_TINT_CELL_H - 1), base = t < 0.5 ? 255 - 47 * (t / 0.5) : 208 - 20 * ((t - 0.5) / 0.5);
+  const t = y / (GLASS_TINT_CELL_H - 1);
+  const base = t < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t - 0.5) / 0.5);
   // The sky streak of paintGlassCanvas, at this grid's scale: a band leaning left, over the upper 55 % of the pane.
   const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
-  return Math.round(streak ? base + (255 - base) * 0.16 : base);
+  return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
 }
 /** Mean of the measured-glass cell, 0..255. */
 export const GLASS_TINT_CELL_MEAN = (() => {
@@ -545,9 +551,24 @@ export const GLASS_TINT_CELL_MEAN = (() => {
   for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
   return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
 })();
-/** A measured glass colour: the authored hex divided by the measured-glass cell mean, so cell x tint lands on it (pale panes up to ~0.84 per channel). */
+/**
+ * Lightness floor of a measured glass colour: about the stock pane's mean as the game draws it (85,102,113 ÷ shade,
+ * L 0.39). Glass colour measured from a crop is the glass under that day's sky, not a material: an overcast crop reads
+ * panes near-black (Waagdragerhof's #3a4650, L 0.27), while on a ride glass shows the sky like every other window. So
+ * the measured hue and saturation are kept and the lightness is max(measured, 0.40); pale reflective glass
+ * (Houthavenkade's columns #8e9ea4, L 0.60) keeps its own. A 0.5 blend with the stock mean was rejected: it still
+ * draws half the overcast darkness, darker than every unmeasured window beside it, which is what the user objected to.
+ */
+export const MEASURED_GLASS_MIN_L = 0.40;
+/**
+ * A measured glass colour: hue and saturation of the authored hex at L >= MEASURED_GLASS_MIN_L, divided by the
+ * measured-glass cell mean so cell x tint lands on it. Beyond the palest the full-strength pane can reach (the cell
+ * mean, ~0.62 per channel) the tint is scaled down as a whole, so the hue holds.
+ */
 export function cityMeasuredGlassTint(hex: string): string {
-  return rgbToHex(hexToRgb(hex).map(v => Math.min(255, Math.round(v / (GLASS_TINT_CELL_MEAN / 255)))) as RGB);
+  const [h, s, l] = rgbToHsl(hexToRgb(hex)), lifted = l >= MEASURED_GLASS_MIN_L ? hexToRgb(hex) : hslToRgb([h, s, MEASURED_GLASS_MIN_L]);
+  const raw = lifted.map(v => v / (GLASS_TINT_CELL_MEAN / 255)), over = Math.max(1, ...raw.map(v => v / 255));
+  return rgbToHex(raw.map(v => Math.min(255, Math.round(v / over))) as RGB);
 }
 /** The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour. */
 export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass'];

@@ -1,10 +1,11 @@
 /**
  * Before/after sheet of the measured pilots in game tints, beside the photo: one row per pilot wall,
- *   photo | old sheet column (raw GLB colours x trial tiles) | game before | game after,
+ *   photo | old sheet column (raw GLB colours x trial tiles) | game before | game after [| game, glass keeps the sky],
  * with the measured materials' rendered RGB (÷ the facing's baked shade) against their authored hex under each image.
- * Reads two measured-walls.ts runs (labels), e.g. a `before` run on the parent commit and an `after` run:
+ * Reads measured-walls.ts runs (labels), e.g. a `before` run (`--unmeasured`, the stock look), an `after` run on the
+ * commit before 2026-10-14's glass lift and a `sky` run after it:
  *
- *   node --import tsx scripts/look/measured-pilots-sheet.ts --before=before --before-raw=before-raw --after=after \
+ *   node --import tsx scripts/look/measured-pilots-sheet.ts --before=before --before-raw=before-raw --after=after [--sky=sky] \
  *     [--dir=artifacts/look/measured-walls] [--out=artifacts/look/measured-pilots.png] [--jpg=docs/images/look/measured-pilots.jpg]
  */
 import fs from 'node:fs/promises';
@@ -16,6 +17,7 @@ const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slic
 const dir = arg('dir') ?? 'artifacts/look/measured-walls', out = arg('out') ?? 'artifacts/look/measured-pilots.png', jpg = arg('jpg') ?? 'docs/images/look/measured-pilots.jpg';
 const load = async (label: string) => JSON.parse(await fs.readFile(path.join(dir, `${label}.json`), 'utf8')) as {rows: Row[]; images: Record<string, string>};
 const before = await load(arg('before') ?? 'before'), beforeRaw = await load(arg('before-raw') ?? arg('before') ?? 'before'), after = await load(arg('after') ?? 'after');
+const sky = arg('sky') ? await load(arg('sky')!) : null;
 
 const W = 420, H = 294, CAP = 58, GAP = 6, TITLE = 30;
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -40,11 +42,12 @@ for (const [k, pl] of PILOTS.entries()) {
     panel(await fs.readFile(beforeRaw.images[`${k}-raw`]), 'old sheet column: raw GLB colours (not the game)', linesOf(beforeRaw.rows, k, 'raw')),
     panel(await fs.readFile(before.images[`${k}-city`]), 'game before (city look)', linesOf(before.rows, k, 'city')),
     panel(await fs.readFile(after.images[`${k}-city`]), 'game after (city look)', linesOf(after.rows, k, 'city')),
+    ...(sky ? [panel(await fs.readFile(sky.images[`${k}-city`]), 'game, glass keeps the sky (city look)', linesOf(sky.rows, k, 'city'))] : []),
   ]);
   const rw = panels.length * W + (panels.length - 1) * GAP, rh = H + CAP + 24;
   rows.push(await sharp({create: {width: rw, height: rh, channels: 3, background: '#f4f4f2'}}).composite(panels.map((input, i) => ({input, left: i * (W + GAP), top: 0}))).png().toBuffer());
 }
-const rw = 4 * W + 3 * GAP, rh = H + CAP + 24, total = TITLE + rows.length * (rh + GAP);
+const cols = sky ? 5 : 4, rw = cols * W + (cols - 1) * GAP, rh = H + CAP + 24, total = TITLE + rows.length * (rh + GAP);
 const title = `<svg width="${rw}" height="${TITLE}"><text x="8" y="21" font-family="Helvetica, Arial" font-size="17" font-weight="bold" fill="#1f2328">Measured pilots in game tints (swatches: authored | rendered ÷ baked shade)</text></svg>`;
 await fs.mkdir(path.dirname(out), {recursive: true});
 await sharp({create: {width: rw, height: total, channels: 3, background: '#f4f4f2'}})

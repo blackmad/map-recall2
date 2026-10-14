@@ -51,7 +51,10 @@ export function proposeGroup(w: LargeWallIntent, g: GroupLikeness, opts: {system
   const palette = {...(w.palette ?? {})};
   if (!hand.has('palette.brick') && !hand.has('palette')) palette.brick = m.wall;
   // glass only when it reads as glass (clearly darker than the wall, nearly neutral); reflective panes in a dull photo
-  // measure as wall-toned mid-greys (Waagdragerhof 198 g0 #46342d on #3d3332) and would hide the windows
+  // measure as wall-toned mid-greys (Waagdragerhof 198 g0 #46342d on #3d3332) and would hide the windows. The hex is
+  // written as measured: it is the glass under that crop's sky (overcast reads near-black), and the look, not this
+  // script, lifts it to the sky-lit pane (look/palette.ts `cityMeasuredGlassTint`, L >= MEASURED_GLASS_MIN_L), so the
+  // intents keep the evidence and the fit hashes do not move when the look is retuned.
   if (!hand.has('palette.glass') && !hand.has('palette') && m.glass) {
     const gl = rgbToLab(hexRgb(m.glass)), wl = rgbToLab(hexRgb(m.wall));
     if (gl[0] <= wl[0] - 10 && Math.hypot(gl[1], gl[2]) < 15) palette.glass = m.glass;

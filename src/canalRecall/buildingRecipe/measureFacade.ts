@@ -77,6 +77,12 @@ export interface FacadeMeasurement {
   /** cluster per cell (-1 = not clustered), for debugging */
   labels?: Int8Array;
   clusters?: {lab: Rgb; share: number; warm: boolean; score: number; mixed: boolean; enrich: number; conn: number; span: number[]; wall: boolean}[]; wallCluster?: number; threshold?: number;
+  /**
+   * Median colour of the dark not-wall cells. This is the glass under that crop's sky, not a material: panes are
+   * mirrors, so an overcast crop reads them near-black (Waagdragerhof 198 #3a4650, Apollohal #46545c) and a sunny one
+   * shows the sky or the street opposite. The game look keeps the measured hue and lifts the lightness to the stock
+   * pane's (look/palette.ts `MEASURED_GLASS_MIN_L`, `cityMeasuredGlassTint`); do not darken or lighten it here.
+   */
   glass: {raw: Rgb; normalised: Rgb; hex: string; rawHex: string; cells: number} | null;
   trim: {normalised: Rgb; hex: string; cells: number} | null;
   /** not-wall share of the usable cells over the upper storeys (>= groundBandM) */

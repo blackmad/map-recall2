@@ -5,7 +5,11 @@
  * authored hex. The baked shade of the wall's facing is divided out before the comparison (a north wall is drawn at
  * ~0.7 of its colour by design); `ΔL` is HSL lightness 0..1.
  *
- *   node --import tsx scripts/look/measured-walls.ts [--label=after] [--out=artifacts/look/measured-walls] [--paths=raw,legacy,city]
+ *   node --import tsx scripts/look/measured-walls.ts [--label=after] [--out=artifacts/look/measured-walls] [--paths=raw,legacy,city] [--unmeasured]
+ *
+ * `--unmeasured` drops the `tintSource` extras before dressing: the stock look every measured material had before
+ * 2026-10-14 (the sheet's "game before" column). Rows cover the measured wall, arch ring and glass (palette.glass and
+ * columns.glass) of the groups, plus the house's kit glass (`kit glass`, unmeasured, its tint as `authored`).
  *
  * Writes <out>/<label>.json (the table) and <out>/<label>-<pilot>-<path>.png (front views). `measured-pilots-sheet.ts`
  * composes the before/after sheet from two labels.
@@ -29,7 +33,7 @@ export const PILOTS: Pilot[] = [
 ];
 export const PATHS: WallPath[] = ['raw', 'legacy', 'city'];
 
-export type Row = {pilot: string; groups: number[]; material: string; role: 'wall' | 'arch' | 'glass'; authored: string; path: WallPath; year: number | null; shade: number; rgb: number[]; unshaded: number[]; dL: number; pixels: number};
+export type Row = {pilot: string; groups: number[]; material: string; role: 'wall' | 'arch' | 'glass' | 'kit glass'; authored: string; path: WallPath; year: number | null; shade: number; rgb: number[]; unshaded: number[]; dL: number; pixels: number};
 const L = (rgb: number[]) => rgbToHsl(rgb.map(v => Math.max(0, Math.min(255, Math.round(v)))) as [number, number, number])[2];
 
 async function bundle() {
@@ -60,9 +64,11 @@ function targetsOf(intent: any, groups: number[], materials: string[]) {
     if (name && !out.some(o => o.material === name)) out.push({material: name, role, authored: hex.toLowerCase()});
   };
   for (const g of groups) {
-    const pal = intent.walls[g].palette ?? {};
-    add(pal.brick, 'brick', 'wall'); add(pal.arch, 'brick', 'arch'); add(pal.glass, 'glass', 'glass');
+    const w = intent.walls[g], pal = w.palette ?? {};
+    add(pal.brick, 'brick', 'wall'); add(pal.arch, 'brick', 'arch'); add(pal.glass, 'glass', 'glass'); add(w.columns?.glass, 'glass', 'glass');
   }
+  // The kit (unmeasured) glass the house draws, so a front without measured glass still reports its panes.
+  for (const name of materials) if (/^[0-9a-f]{6}_glass$/.test(name) && !out.some(o => o.material === name)) out.push({material: name, role: 'kit glass', authored: '#' + name.slice(0, 6)});
   return out;
 }
 
@@ -79,7 +85,7 @@ async function trialTiles() {
 }
 
 /** One pilot wall: compile the recipe, render the front view through each path, measure each measured material. */
-export async function measurePilot(page: EvalPage, pl: Pilot, paths: WallPath[] = PATHS): Promise<{rows: Row[]; pngs: Partial<Record<WallPath, Buffer>>}> {
+export async function measurePilot(page: EvalPage, pl: Pilot, paths: WallPath[] = PATHS, unmeasured = false): Promise<{rows: Row[]; pngs: Partial<Record<WallPath, Buffer>>}> {
   const brickUrl = await dataUrl('public/canal-drive/materials/ambientcg/Bricks057/colour.jpg', 'image/jpeg');
   const rawMaps = paths.includes('raw') ? await trialTiles() : undefined;
   const {built, intent} = await compileLargeHouse(pl.id);
@@ -89,18 +95,19 @@ export async function measurePilot(page: EvalPage, pl: Pilot, paths: WallPath[] 
   const year: number | null = findYear(built.facts);
   const rows: Row[] = [], pngs: Partial<Record<WallPath, Buffer>> = {};
   for (const p of paths) {
-    const req: WallRequest = {base64: glb.toString('base64'), year: p === 'city' ? year : null, path: p, views: [view], targets: targets.map(t => t.material), brickUrl, ...(p === 'raw' && rawMaps ? {rawMaps} : {})};
+    const req: WallRequest = {base64: glb.toString('base64'), year: p === 'city' ? year : null, path: p, views: [view], targets: targets.map(t => t.material), brickUrl, unmeasured, ...(p === 'raw' && rawMaps ? {rawMaps} : {})};
     const [res] = await page.evaluate((r: WallRequest) => (window as any).renderWalls(r), req) as WallResult[];
     pngs[p] = Buffer.from(res.png.split(',')[1], 'base64');
     for (const t of targets) {
       const m = res.means[t.material], s = p === 'raw' ? 1 : shade, unshaded = m.rgb.map(v => v / s);
+      if (!m.pixels) continue;
       rows.push({pilot: pl.id, groups: pl.groups, material: t.material, role: t.role, authored: t.authored, path: p, year: req.year, shade: +s.toFixed(3), rgb: m.rgb.map(Math.round), unshaded: unshaded.map(Math.round), dL: +(L(unshaded) - L(hexToRgb(t.authored))).toFixed(3), pixels: m.pixels});
     }
   }
   return {rows, pngs};
 }
 
-export async function measurePilots(label: string, outDir: string, paths: WallPath[] = PATHS) {
+export async function measurePilots(label: string, outDir: string, paths: WallPath[] = PATHS, unmeasured = false) {
   const browser = await chromium.launch({args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist']});
   const page = await browser.newPage();
   await loadWallPage(page);
@@ -108,7 +115,7 @@ export async function measurePilots(label: string, outDir: string, paths: WallPa
   const rows: Row[] = [], images: Record<string, string> = {};
   try {
     for (const [k, pl] of PILOTS.entries()) {
-      const res = await measurePilot(page, pl, paths);
+      const res = await measurePilot(page, pl, paths, unmeasured);
       rows.push(...res.rows);
       for (const [p, png] of Object.entries(res.pngs)) {
         const file = path.join(outDir, `${label}-${k}-${p}.png`);
@@ -141,6 +148,6 @@ export function table(rows: Row[]) {
 
 if (process.argv[1]?.endsWith('measured-walls.ts')) {
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
-  const {rows} = await measurePilots(arg('label') ?? 'after', arg('out') ?? 'artifacts/look/measured-walls', arg('paths')?.split(',') as WallPath[] | undefined);
+  const {rows} = await measurePilots(arg('label') ?? 'after', arg('out') ?? 'artifacts/look/measured-walls', arg('paths')?.split(',') as WallPath[] | undefined, process.argv.includes('--unmeasured'));
   console.log(table(rows));
 }
