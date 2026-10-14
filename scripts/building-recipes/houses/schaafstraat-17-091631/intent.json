@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "schaafstraat-17-091631",
+ "pandId": "0363100012091631",
+ "address": "Schaafstraat 17, Amsterdam-Noord (Overhoeks industrial estate): 1960 workshop hall with painted cream and grey banded walls and a clerestory glazing strip",
+ "sources": [
+  {
+   "id": "pano-2021-12-24-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002343_pano_0000_000394/",
+   "image": "staging/pand-reference-walls/0363100012091631/w01-169.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-04-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-04_07-46-10_00420/",
+   "image": "staging/pand-reference-walls/0363100012091631/w02-259.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-29-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001729_pano_0000_002175/",
+   "image": "staging/pand-reference-walls/0363100012091631/w03-79.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    59
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "baysPerStorey": 14,
+   "ground": "blank",
+   "windows": "low",
+   "blankStoreys": [
+    0
+   ],
+   "deepBars": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#e4dfd0",
+    "frame": "#4a5a68",
+    "stone": "#9aa0a8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    51
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "baysPerStorey": 8,
+   "ground": "blank",
+   "windows": "low",
+   "blankStoreys": [
+    0
+   ],
+   "deepBars": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#e4dfd0",
+    "frame": "#4a5a68",
+    "stone": "#9aa0a8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    70,
+    82
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "baysPerStorey": 7,
+   "ground": "blank",
+   "windows": "low",
+   "blankStoreys": [
+    0
+   ],
+   "deepBars": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#f0eee8",
+    "frame": "#3aa0b8",
+    "stone": "#3aa0b8"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#e4dfd0",
+  "frame": "#4a5a68",
+  "door": "#3a4a58",
+  "stone": "#9aa0a8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Schaafstraat 17 (BAG, 1960; Overhoeks/Noord workshop estate): one long hall 7 m to the eaves with lower annexes (4.8 m) on the north side; 90 3DBAG wall surfaces. Photographed in the 2021-12-24 panorama (w01-169, 70 m south wall), w02-259 (west, 2025-09-04) and w03-79 (east, 2020-05-29, showing the white wall with a turquoise upper band and workshop doors).",
+  "walls[0..2] = panels 46 (S), 41 (W) and 55 (E): a painted wall (white/cream over a grey plinth band) topped by a continuous clerestory glazing strip between slim posts about 5 m apart. Drawn as ribbon-windows, 2 storeys, ground storey blank (render) and low windows in the upper storey; the east wall carries the turquoise frame colour. Simplified: the grey plinth band (one wall colour), the workshop roller doors and the west wall bay doors; the north annexes and the roof lights are blank/3DBAG roof; the flat roof is bitumen.",
+  "Not drawn: the north and rear fronts and the courts (no panorama within 35 m or only over parked vans and fencing)."
+ ]
+}

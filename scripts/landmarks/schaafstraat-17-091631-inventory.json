@@ -1,0 +1,169 @@
+{
+ "schemaVersion": 1,
+ "id": "schaafstraat-17-091631",
+ "pand": "0363100012091631",
+ "signature": [
+  "clerestory-strip",
+  "banded-painted-wall"
+ ],
+ "walls": [
+  {
+   "tag": "w01-169",
+   "bearing": 169,
+   "lengthM": 70.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002343_pano_0000_000394",
+   "capturedAt": "2021-12-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "clerestory-strip",
+     "kind": "window-shape",
+     "where": "continuous clerestory glazing strip under the eaves between slim posts",
+     "approxSizeM": [
+      70,
+      1.6
+     ],
+     "plan": "simplified",
+     "how": "walls[0] ribbon-windows, low windows in the upper storey on 14 bays",
+     "seenIn": "TMX7316010203-002343_pano_0000_000394"
+    },
+    {
+     "id": "banded-painted-wall",
+     "kind": "other",
+     "where": "wall painted in cream and grey horizontal bands with graffiti at the base",
+     "approxSizeM": [
+      70,
+      5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] blank render storey in one cream colour; the grey plinth band and the graffiti are not drawn",
+     "seenIn": "TMX7316010203-002343_pano_0000_000394"
+    }
+   ]
+  },
+  {
+   "tag": "w02-259",
+   "bearing": 259,
+   "lengthM": 38.5,
+   "evidence": "photo",
+   "panoId": "recording_2025-09-04_07-46-10_00420",
+   "capturedAt": "2025-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-wall-strip",
+     "kind": "window-shape",
+     "where": "same banded wall and clerestory strip on the west front",
+     "approxSizeM": [
+      38,
+      7
+     ],
+     "plan": "simplified",
+     "how": "walls[1] ribbon-windows, 8 bays, blank render ground storey",
+     "seenIn": "recording_2025-09-04_07-46-10_00420"
+    }
+   ]
+  },
+  {
+   "tag": "w03-79",
+   "bearing": 79,
+   "lengthM": 37.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001729_pano_0000_002175",
+   "capturedAt": "2020-05-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-turquoise-band",
+     "kind": "window-shape",
+     "where": "white wall with a turquoise upper cladding band and a workshop door",
+     "approxSizeM": [
+      37,
+      7
+     ],
+     "plan": "simplified",
+     "how": "walls[2] ribbon-windows with turquoise frame colour; the workshop door is not drawn",
+     "seenIn": "TMX7316010203-001729_pano_0000_002175"
+    },
+    {
+     "id": "workshop-doors",
+     "kind": "other",
+     "where": "roller doors in the east wall",
+     "approxSizeM": [
+      4,
+      4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "doors flush in a blank wall with no frame depth to model"
+     },
+     "seenIn": "TMX7316010203-001729_pano_0000_002175"
+    }
+   ]
+  },
+  {
+   "tag": "w04-259",
+   "bearing": 259,
+   "lengthM": 29.8,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_09-10-27_02294",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-349",
+   "bearing": 349,
+   "lengthM": 21.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002894_pano_0001_000009",
+   "capturedAt": "2022-12-27",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w06-304",
+   "bearing": 304,
+   "lengthM": 21.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001729_pano_0000_002158",
+   "capturedAt": "2020-05-29",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w07-260",
+   "bearing": 260,
+   "lengthM": 19.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_09-10-27_02299",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w08-79",
+   "bearing": 79,
+   "lengthM": 19.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_09-10-27_02250",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
