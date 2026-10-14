@@ -6,18 +6,24 @@
 //   npx tsx scripts/own-ground/bridge-census.ts --json=out.json
 //   … --ids=BRU0242 --trace                 # every coarsening attempt: stations and triangles per part
 //
-// Exit code 1 when a bridge body is over budget (KIT_BUDGET: 600 near, 60 far).
+// Exit code 1 when a deck end floats (decks.ts floatingEnds) or a bridge body is over budget (KIT_BUDGET: 600 near, 60 far; named 1,500 / 100).
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, fromLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, CANAL_WATER_Z } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { flatDeckBody, footprintAxis, movableFrame, pointInRing } from '../../src/canalRecall/ownGround/decks.ts';
-import { flatHintAt, kitTrace, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { bridgeFacts, flatHintAt, kitTrace, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { buildWaterMask, maskDistance, type WaterGeometry } from '../../src/canalRecall/ownGround/water.ts';
 import { isBridgeWay, prepareWays } from '../../src/canalRecall/ownGround/streets.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
+/**
+ * Belt bridges whose end still floats after the reach to the bank (2026-10-14 baseline, 15 ends): footbridges to the
+ * Oosterdok floating promenade (BRU2209-2212), the Muntsluis lock (BRU0001, water past both ends of its span), park ponds whose water polygon runs past 12 m along the crossing
+ * (Vondelpark BRU2553-2556, Sarphatipark BRU0172), BRU0232, BRU0252, BRU1901, BRU2520; Houthavens BRU2430 (Gevlebrug, measured by the flat-deck recovery) and BRU0349. A new id fails the census.
+ */
+const FLOATING_KNOWN = new Set(['BRU0001', 'BRU2430', 'BRU0349', 'BRU0172', 'BRU0232', 'BRU0252', 'BRU1901', 'BRU2209', 'BRU2210', 'BRU2211', 'BRU2212', 'BRU2520', 'BRU2553', 'BRU2554', 'BRU2555', 'BRU2556']);
 const flag = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const [W, S, E, N] = (flag('box') ?? '4.855,52.355,4.915,52.385').split(',').map(Number);
 const only = flag('ids')?.split(',');
@@ -36,6 +42,8 @@ async function main(): Promise<void> {
   if (process.argv.includes('--trace')) kitTrace.fn = (id, level, parts) => { if (!only || only.includes(id)) console.log('trace', id, level, JSON.stringify(parts)); };
   const cells = [...store.osmCells].filter(k => store.covers(k)).filter(k => { const [x0, y0, x1, y1] = store.cellRect(k); return inBox((x0 + x1) / 2, (y0 + y1) / 2); }).sort();
   const rows: Row[] = [];
+  // Deck ends that float (user 2026-10-14, the Houthavens footbridge): every deck overlaps both banks and meets the quay top.
+  const floating = new Set<string>();
   let bridgeLayer0 = 0, bridgeLayer1 = 0, top0 = 0, cellTris0 = 0, cellTris1 = 0;
   for (const k of cells) {
     await store.prepareCell(k);
@@ -44,6 +52,7 @@ async function main(): Promise<void> {
     const input0 = await store.cellInput(k, 0), near = buildCell(input0), far = buildCell(await store.cellInput(k, 1));
     bridgeLayer0 += near.stats.byLayer.deckBody ?? 0; bridgeLayer1 += far.stats.byLayer.deckBody ?? 0; top0 += near.stats.byLayer.deckTop ?? 0;
     cellTris0 += near.stats.triangles; cellTris1 += far.stats.triangles;
+    for (const f of near.stats.bridges.floating) if (!only || only.some(id => f.startsWith(id))) floating.add(f);
     const farInfo = new Map(far.stats.bridges.decks.map(d => [d.id, d]));
     for (const d of near.stats.bridges.decks) {
       if (only && !only.includes(d.id)) continue;
@@ -73,11 +82,15 @@ async function main(): Promise<void> {
   const q = (a: number[], f: number) => { const s = [...a].sort((x, y) => x - y); return s[Math.min(s.length - 1, Math.floor(f * s.length))] ?? 0; };
   console.log(JSON.stringify({ cells: cells.length, bridgeBodyTriangles: { near: bridgeLayer0, far: bridgeLayer1 }, deckTopTriangles: top0, cellTriangles: { near: cellTris0, far: cellTris1 } }));
   for (const [kind, t] of Object.entries(byKind)) console.log(`${kind.padEnd(10)} n=${String(t.n).padStart(4)}  near median ${q(t.near, 0.5)} p95 ${q(t.near, 0.95)} max ${Math.max(...t.near)}   far median ${q(t.far, 0.5)} max ${Math.max(...t.far)}`);
-  const over = rows.filter(r => r.near > KIT_BUDGET.near || r.far > KIT_BUDGET.far);
+  // Named canal-belt bridges (bridgeHints BRIDGE_FACTS) take the named tier.
+  const named = (r: Row) => !!bridgeFacts(r.id.split('?')[0])?.named;
+  const over = rows.filter(r => r.near > (named(r) ? KIT_BUDGET.named : KIT_BUDGET.near) || r.far > (named(r) ? KIT_BUDGET.namedFar : KIT_BUDGET.far));
   console.log(`over budget: ${over.length}`, over.slice(0, 30).map(r => `${r.id}:${r.kind}:${r.near}/${r.far}`).join(' '));
+  const fresh = [...floating].filter(f => !FLOATING_KNOWN.has(f.split(':')[0]));
+  console.log(`floating deck ends: ${floating.size} (${fresh.length} new)`, [...floating].slice(0, 30).join('  '));
   if (only) for (const r of rows) console.log(JSON.stringify(r));
   if (flag('json')) writeFileSync(flag('json')!, JSON.stringify({ byKind, rows }, null, 1));
-  process.exitCode = over.length ? 1 : 0;
+  process.exitCode = over.length || fresh.length ? 1 : 0;
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

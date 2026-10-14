@@ -47,7 +47,16 @@ export interface DeckProfile {
   water: [number, number] | null;
   deck: [number, number];
   bbox: [number, number, number, number];
+  /**
+   * Over the deck span, the half-widths to the left (+normal) and right of the road line where the municipal outline
+   * reaches more than OUTLINE_WIDER_M past `halfWidth` on a side (the Torensluis: a 22 m road over a 44 m wide bridge,
+   * off-centre). Undefined elsewhere.
+   */
+  sides?: [number, number];
 }
+
+/** An outline this much wider than the road deck on a side widens the deck there (DeckProfile.sides), at most OUTLINE_REACH_MAX_M. */
+export const OUTLINE_WIDER_M = 2, OUTLINE_REACH_MAX_M = 25;
 
 function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
@@ -92,7 +101,42 @@ export function decodeProfile(bridge: MeasuredBridge, quant: number, toScene: To
     minX = Math.min(minX, out.x[i] - r); maxX = Math.max(maxX, out.x[i] + r);
     minY = Math.min(minY, out.y[i] - r); maxY = Math.max(maxY, out.y[i] + r);
   }
-  return { id: bridge.id, name: bridge.name, family: bridge.family, ...out, water: bridge.water, deck: bridge.deck, bbox: [minX, minY, maxX, maxY] };
+  // The outline's reach either side of the road line at the deck middle.
+  let sides: [number, number] | undefined;
+  if (bridge.outline.length >= 6) {
+    const mid = out.s.findIndex(s => s >= (bridge.deck[0] + bridge.deck[1]) / 2), i = mid < 0 ? count >> 1 : mid;
+    const a = Math.max(0, i - 2), b = Math.min(count - 1, i + 2), dx = out.x[b] - out.x[a], dy = out.y[b] - out.y[a], l = Math.hypot(dx, dy) || 1;
+    // The outline's cross-section through the deck middle (not its extreme corners: a skewed crossing's corners reach
+    // far past the deck either side).
+    let left = 0, right = 0;
+    const pts: [number, number][] = [];
+    for (let k = 0; k + 1 < bridge.outline.length; k += 2) {
+      const [x, y] = toScene(bridge.outline[k] * quant, bridge.outline[k + 1] * quant);
+      pts.push([((x - out.x[i]) * dx + (y - out.y[i]) * dy) / l, (-(x - out.x[i]) * dy + (y - out.y[i]) * dx) / l]);
+    }
+    for (let k = 0; k < pts.length; k++) {
+      const [a0, c0] = pts[k], [a1, c1] = pts[(k + 1) % pts.length];
+      if ((a0 > 0) === (a1 > 0) || a0 === a1) continue;
+      const c = c0 + (c1 - c0) * (0 - a0) / (a1 - a0);
+      left = Math.max(left, c); right = Math.max(right, -c);
+    }
+    const hw = bridge.width / 2;
+    if (left > hw + OUTLINE_WIDER_M || right > hw + OUTLINE_WIDER_M) {
+      sides = [Math.min(Math.max(hw, left), hw + OUTLINE_REACH_MAX_M), Math.min(Math.max(hw, right), hw + OUTLINE_REACH_MAX_M)];
+      const r = Math.max(...sides) + 1;
+      for (let k = 0; k < count; k++) {
+        minX = Math.min(minX, out.x[k] - r); maxX = Math.max(maxX, out.x[k] + r);
+        minY = Math.min(minY, out.y[k] - r); maxY = Math.max(maxY, out.y[k] + r);
+      }
+    }
+  }
+  return { id: bridge.id, name: bridge.name, family: bridge.family, ...out, water: bridge.water, deck: bridge.deck, bbox: [minX, minY, maxX, maxY], ...(sides ? { sides } : {}) };
+}
+
+/** Half-widths left and right of the road line at station `i`: DeckProfile.sides over the deck span, else halfWidth. */
+export function sideWidths(p: DeckProfile, i: number): [number, number] {
+  const hw = p.halfWidth[i];
+  return p.sides && p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1] ? [Math.max(hw, p.sides[0]), Math.max(hw, p.sides[1])] : [hw, hw];
 }
 
 function tangentAt(p: DeckProfile, i: number): [number, number] {
