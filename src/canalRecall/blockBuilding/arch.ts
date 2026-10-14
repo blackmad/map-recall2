@@ -9,7 +9,7 @@
  * the springing points and the apex, so reveals, the wall hole and the back plane share vertices.
  */
 import * as T from 'three';
-import type { PanelCtx } from './compose.ts';
+import { barQuad, SHEET_PITCH, type PanelCtx } from './compose.ts';
 import { fitsPanel, insidePoly, rectPoly } from './panels.ts';
 import { add, scale, type V3 } from './mesh.ts';
 import type { Slot } from './spec.ts';
@@ -160,6 +160,8 @@ function triPoly(c: PanelCtx, slot: Slot, outer: UV[], holes: UV[][], Q: (u: num
 
 export interface ArchedWin {
   frame: Slot; glass: Slot; frameW: number; mullAt: number[]; rowsAt: number[]; arch: ArchParams;
+  /** glazing bar depth off the glass (layered kit only: closed boxes; otherwise bars are quads `c.barOut` in front) */
+  barD?: number;
 }
 
 /**
@@ -195,7 +197,10 @@ export function drawArchedOpening(c: PanelCtx, u0: number, u1: number, v0: numbe
   const s = v1 - archRise(u1 - u0, v1 - v0, w.arch);
   const rows = [...w.rowsAt.map(f => v0 + (v1 - v0) * f).filter(v => v < s - fw), ...(w.arch.springBar ? [s] : [])];
   if (w.mullAt.length || rows.length) {
-    const bars = c.part(), fw = bw, g = (a: number, b: number, lo: number, hi: number) => c.mesh.quad(w.frame, Q(a, lo, c.barOut), Q(b, lo, c.barOut), Q(b, hi, c.barOut), Q(a, hi, c.barOut), bars, n);
+    // layered kit: closed bar boxes from the glass out to `barD` (the legacy quad 1.5 cm in front of the glass z-fights it)
+    const bars = c.part(), fw = bw, g = c.layered
+      ? (a: number, b: number, lo: number, hi: number) => barQuad(c, w.frame, Q, a, b, lo, hi, 0, w.barD ?? SHEET_PITCH, bars)
+      : (a: number, b: number, lo: number, hi: number) => c.mesh.quad(w.frame, Q(a, lo, c.barOut), Q(b, lo, c.barOut), Q(b, hi, c.barOut), Q(a, hi, c.barOut), bars, n);
     for (const f of w.mullAt) {
       const u = u0 + (u1 - u0) * f, top = Math.min(topAt(inner, u - fw / 2), topAt(inner, u + fw / 2));
       if (top > v0 + fw + 0.1) g(u - fw / 2, u + fw / 2, v0 + fw, top);
@@ -222,7 +227,7 @@ export function drawArchedProud(c: PanelCtx, u0: number, u1: number, v0: number,
  * at the back when `c.closedBoxes`. Skipped where the band would leave the wall.
  */
 export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, a: ArchParams, band: ArchBand, onWall?: (u: number, v: number, d: number) => V3): boolean {
-  const head = archHead(u0, u1, v0, v1, a), t = band.t, out = band.out ?? 0.03, n = c.p.n;
+  const head = archHead(u0, u1, v0, v1, a), t = band.t, band0 = band.out ?? 0.03, n = c.p.n;
   // outward offset of each head vertex: mitred normals; the springing points move straight out sideways
   const normalOf = (i: number): UV => { const p = head[Math.max(0, i - 1)], q = head[Math.min(head.length - 1, i + 1)], dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1; return [dy / l, -dx / l]; };
   const outer: UV[] = head.map((p, i) => {
@@ -233,7 +238,10 @@ export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1
   const ring: UV[] = [...head, ...[...outer].reverse()];
   const xs = ring.map(q => q[0]), ys = ring.map(q => q[1]);
   if (!fits(c, Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys))) return false;
-  const M = onWall ?? ((u: number, v: number, d: number) => c.P(u, v, d)), back = !onWall && c.closedBoxes;
+  // Layered kit: a flush band (1.2 cm, coplanar with the wall to the audit) becomes a ring 4.5 cm proud, its blocks 4.5 cm
+  // prouder again; on a cut wall their back edges are seams on that wall, elsewhere they are closed at the back too.
+  const out = c.layered && band0 <= 0 ? SHEET_PITCH : band0;
+  const M = onWall ?? ((u: number, v: number, d: number) => c.P(u, v, d)), back = !onWall && (c.layered || c.closedBoxes);
   const part = c.part(), P = (q: UV, d: number) => M(q[0], q[1], d);
   if (out <= 0) return drawFlushBand(c, u0, u1, v0, v1, head, outer, band, M, part);
   for (let i = 0; i + 1 < head.length; i++) {
@@ -257,9 +265,11 @@ export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1
   }
   for (const [a0, a1, b0, b1, slot] of blocks) {
     if (!fits(c, a0, a1, b0, b1)) continue;
-    if (!onWall) { c.box(slot, a0, a1, b0, b1, 0, out + 0.03, c.part()); continue; }
-    // five faces on the cut wall's plane (the back is the wall)
-    const bp = c.part(), d1 = out + 0.03, Q = (u: number, v: number, d: number) => M(u, v, d), r = c.p.r;
+    if (!onWall && !c.layered) { c.box(slot, a0, a1, b0, b1, 0, out + 0.03, c.part()); continue; }
+    // five faces on the cut wall's plane (the back is the wall; off a cut wall the layered kit closes it). Layered blocks
+    // stand a full sheet layer prouder than the band (3 cm sits on the audit's tight-band edge where the keystone covers the ring).
+    const bp = c.part(), d1 = out + (c.layered ? SHEET_PITCH : 0.03), Q = (u: number, v: number, d: number) => M(u, v, d), r = c.p.r;
+    if (!onWall) c.mesh.quad(slot, Q(a0, b0, 0), Q(a0, b1, 0), Q(a1, b1, 0), Q(a1, b0, 0), bp, scale(n, -1));
     c.mesh.quad(slot, Q(a0, b0, d1), Q(a1, b0, d1), Q(a1, b1, d1), Q(a0, b1, d1), bp, n);
     c.mesh.quad(slot, Q(a0, b1, 0), Q(a1, b1, 0), Q(a1, b1, d1), Q(a0, b1, d1), bp, UP);
     c.mesh.quad(slot, Q(a0, b0, 0), Q(a1, b0, 0), Q(a1, b0, d1), Q(a0, b0, d1), bp, DOWN);
