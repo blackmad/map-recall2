@@ -407,7 +407,7 @@ export class GroundStore {
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
       decks: this.decks(key), deckRingsAround, flatDecks: this.flatDecks(key), flatDeckMeta: this.flatDeckMeta(key),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
-      parks: parksAround[around.indexOf(key)] ?? null, dropWays,
+      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays,
       project: p => toLocal(p[0], p[1]),
     };
   }

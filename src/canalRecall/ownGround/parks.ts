@@ -512,3 +512,133 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
   for (const k of Object.keys(layers) as (ParkLayer | SharedLayer)[]) if (!layers[k]!.indices.length) delete layers[k];
   return { layers, stats };
 }
+
+// ------------------------------------------------------------------ the OSM park fill under the survey
+
+/** The surfaces as a raster: `find` the surface id at a point (-1: none); `uniform`: every texel of a box is surface k. */
+export interface SurfaceRaster { find(x: number, y: number): number; uniform(ax: number, ay: number, bx: number, by: number, k: number): boolean }
+
+/** Point lookup over the BGT park surfaces of a cell neighbourhood (a 25 m bucket grid of their bboxes). */
+export class SurfaceIndex {
+  private readonly polys: { rings: Vec2[][]; box: [number, number, number, number]; flat: number[]; tris: number[] }[] = [];
+  private readonly grid = new Map<string, number[]>();
+  private static readonly G = 25;
+  /** Surfaces [0, own) belong to the first cell passed (drawn by the same build as the land under them). */
+  readonly own: number = 0;
+  constructor(cells: readonly (ParksCell | null | undefined)[]) {
+    const seen = new Set<ParksCell>();
+    for (const c of cells) {
+      if (!c || seen.has(c)) continue;
+      seen.add(c);
+      for (const s of c.surfaces) {
+        // Ponds are not culling cover: buildParks skips one the canal water already draws, and its edge is a bank.
+        if (s.k === 'pond') continue;
+        const rings = s.r.map(decodeLine);
+        if (!rings.length || rings[0].length < 3) continue;
+        const xs = rings[0].map(p => p[0]), ys = rings[0].map(p => p[1]);
+        const box: [number, number, number, number] = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)], k = this.polys.length;
+        // The cover is what buildParks draws: the same earcut triangles (a self-intersecting BGT ring loses areas there,
+        // and the Vondelpark had a 5 x 4 m one that the even-odd ring test called lawn).
+        const { flat, holes } = flatten(rings);
+        this.polys.push({ rings, box, flat, tris: flat.length >= 6 ? earcut(flat, holes) : [] });
+        const G = SurfaceIndex.G;
+        for (let gx = Math.floor(box[0] / G); gx <= Math.floor(box[2] / G); gx++) for (let gy = Math.floor(box[1] / G); gy <= Math.floor(box[3] / G); gy++) (this.grid.get(`${gx}:${gy}`) ?? this.grid.set(`${gx}:${gy}`, []).get(`${gx}:${gy}`)!).push(k);
+      }
+      if (c === cells[0]) (this as { own: number }).own = this.polys.length;
+    }
+  }
+  get size(): number { return this.polys.length; }
+  /** Bounding box of every surface (null: none). */
+  bounds(): [number, number, number, number] | null {
+    if (!this.polys.length) return null;
+    const b: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity];
+    for (const p of this.polys) { b[0] = Math.min(b[0], p.box[0]); b[1] = Math.min(b[1], p.box[1]); b[2] = Math.max(b[2], p.box[2]); b[3] = Math.max(b[3], p.box[3]); }
+    return b;
+  }
+  /** Index of a surface containing (x, y), or -1. */
+  find(x: number, y: number): number {
+    const G = SurfaceIndex.G;
+    for (const k of this.grid.get(`${Math.floor(x / G)}:${Math.floor(y / G)}`) ?? []) {
+      const { rings, box } = this.polys[k];
+      if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) continue;
+      let c = false;
+      for (const r of rings) for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const [xi, yi] = r[i], [xj, yj] = r[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; }
+      if (c) return k;
+    }
+    return -1;
+  }
+  contains(x: number, y: number): boolean { return this.find(x, y) >= 0; }
+
+  /**
+   * The surfaces over a box as a raster of surface ids + 1 (0: none) at `res`
+   * (a texel takes the surface its centre lies in). Cheap point lookups for the
+   * fill culling: a polygon test per sample cost 0.4–0.6 s per park cell.
+   */
+  raster(box: readonly [number, number, number, number], res: number): SurfaceRaster {
+    const [x0, y0] = box, W = Math.max(1, Math.ceil((box[2] - x0) / res)), H = Math.max(1, Math.ceil((box[3] - y0) / res));
+    if (this.polys.length >= 65535) throw new Error('SurfaceIndex.raster: too many surfaces for 16-bit ids');
+    const ids = new Uint16Array(W * H);
+    this.polys.forEach(({ box: b, flat, tris }, k) => {
+      if (b[2] < x0 || b[0] > box[2] || b[3] < y0 || b[1] > box[3]) return;
+      for (let t = 0; t < tris.length; t += 3) {
+        const ax = (flat[tris[t] * 2] - x0) / res - 0.5, ay = (flat[tris[t] * 2 + 1] - y0) / res - 0.5, bx = (flat[tris[t + 1] * 2] - x0) / res - 0.5, by = (flat[tris[t + 1] * 2 + 1] - y0) / res - 0.5, cx = (flat[tris[t + 2] * 2] - x0) / res - 0.5, cy = (flat[tris[t + 2] * 2 + 1] - y0) / res - 0.5;
+        const i0 = Math.max(0, Math.ceil(Math.min(ax, bx, cx))), i1 = Math.min(W - 1, Math.floor(Math.max(ax, bx, cx))), j0 = Math.max(0, Math.ceil(Math.min(ay, by, cy))), j1 = Math.min(H - 1, Math.floor(Math.max(ay, by, cy)));
+        const d = (by - cy) * (ax - cx) + (cx - bx) * (ay - cy);
+        if (i0 > i1 || j0 > j1 || Math.abs(d) < 1e-12) continue;
+        for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
+          const u = ((by - cy) * (i - cx) + (cx - bx) * (j - cy)) / d, v = ((cy - ay) * (i - cx) + (ax - cx) * (j - cy)) / d;
+          if (u >= -1e-9 && v >= -1e-9 && u + v <= 1 + 1e-9) ids[j * W + i] = k + 1;
+        }
+      }
+    });
+    return {
+      find: (x, y) => { const i = Math.floor((x - x0) / res), j = Math.floor((y - y0) / res); return i < 0 || j < 0 || i >= W || j >= H ? -1 : ids[j * W + i] - 1; },
+      uniform: (ax, ay, bx, by, k) => {
+        const i0 = Math.floor((ax - x0) / res), i1 = Math.floor((bx - x0) / res), j0 = Math.floor((ay - y0) / res), j1 = Math.floor((by - y0) / res);
+        if (i0 < 0 || j0 < 0 || i1 >= W || j1 >= H) return false;
+        for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) if (ids[j * W + i] !== k + 1) return false;
+        return true;
+      },
+    };
+  }
+}
+
+/** A culled triangle must lie inside one surface by this margin. */
+export const CULL_MARGIN_M = 0.5;
+/** Surface raster for the culling, metres per texel. */
+export const CULL_RES_M = 0.5;
+
+/**
+ * Drop the triangles of a draped fill that the BGT surfaces hide entirely (every
+ * texel of its box inside one surface, CULL_MARGIN_M clear of its edge), compacting the
+ * vertices (20–160k hidden triangles per park cell, the parks lane's next
+ * saving). Skipping a whole park at 90 % coverage (the handoff's rule) exposed the land
+ * in its unsurveyed tenth (42 of 459 visible-fill probes in cell -2_-2 turned
+ * to bare land); per triangle, the green stays wherever the survey has a gap.
+ */
+export function cullCovered(m: MeshArrays, index: SurfaceRaster): { mesh: MeshArrays; dropped: number } {
+  const p = m.positions, keep: number[] = [];
+  let dropped = 0;
+  if (!m.indices.length) return { mesh: m, dropped };
+  for (let t = 0; t < m.indices.length; t += 3) {
+    const a = m.indices[t] * 3, b = m.indices[t + 1] * 3, c = m.indices[t + 2] * 3;
+    // Hidden only when every texel of the triangle's box, grown by CULL_MARGIN_M, lies in one surface: holes in a lawn
+    // (a 5 x 4 m one in the Vondelpark sat between the corner and midpoint samples) and the slivers between two
+    // surveyed polygons stay green.
+    const k = index.find(p[a], p[a + 1]);
+    if (k >= 0 && index.uniform(Math.min(p[a], p[b], p[c]) - CULL_MARGIN_M, Math.min(p[a + 1], p[b + 1], p[c + 1]) - CULL_MARGIN_M, Math.max(p[a], p[b], p[c]) + CULL_MARGIN_M, Math.max(p[a + 1], p[b + 1], p[c + 1]) + CULL_MARGIN_M, k)) { dropped++; continue; }
+    keep.push(m.indices[t], m.indices[t + 1], m.indices[t + 2]);
+  }
+  if (!dropped) return { mesh: m, dropped };
+  const out = emptyMesh(!!m.colors), remap = new Map<number, number>();
+  for (const i of keep) {
+    let j = remap.get(i);
+    if (j === undefined) {
+      j = out.positions.length / 3; remap.set(i, j);
+      out.positions.push(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]); out.uvs.push(m.uvs[i * 2], m.uvs[i * 2 + 1]);
+      if (m.colors && out.colors) out.colors.push(m.colors[i * 3], m.colors[i * 3 + 1], m.colors[i * 3 + 2]);
+    }
+    out.indices.push(j);
+  }
+  return { mesh: out, dropped };
+}

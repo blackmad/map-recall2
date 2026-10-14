@@ -7,7 +7,7 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
-import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
@@ -15,7 +15,7 @@ import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
-import { benchesAlong, bgtParkSurface, buildParks, decodeLine, encodeLine, playgroundKit, playgroundPiece, PARK_LIFT, type ParksCell } from './parks';
+import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SurfaceIndex, type ParksCell } from './parks';
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
@@ -987,4 +987,22 @@ test('water opens under a footbridge whose water polygon stops at it (Melkmeisje
   for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
   assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
   assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
+});
+
+test('park fill culling: a fill triangle inside one BGT surface goes; one over a hole or across two surfaces stays', () => {
+  // Lawn A covers 0..20 x 0..20 with a 3 x 3 m hole at (12..15, 12..15); lawn B covers 20..40 x 0..20.
+  const cell = { version: 2, key: 't', parks: [], hedges: [], lines: [], points: [], dropWays: [], surfaces: [
+    { k: 'lawn', r: [encodeLine([[0, 0], [20, 0], [20, 20], [0, 20]]), encodeLine([[12, 12], [12, 15], [15, 15], [15, 12]])] },
+    { k: 'lawn', r: [encodeLine([[20, 0], [40, 0], [40, 20], [20, 20]])] },
+  ] } as unknown as ParksCell;
+  const index = new SurfaceIndex([cell]), raster = index.raster([-1, -1, 41, 21], CULL_RES_M);
+  assert.equal(index.own, 2, 'both surfaces belong to the first cell');
+  const tri = (pts: [number, number][]) => { const m = emptyMesh(); for (const [x, y] of pts) { m.positions.push(x, y, 0); m.uvs.push(0, 0); } m.indices.push(0, 1, 2); return m; };
+  assert.equal(cullCovered(tri([[2, 2], [8, 2], [2, 8]]), raster).dropped, 1, 'inside lawn A, clear of its edges');
+  assert.equal(cullCovered(tri([[10, 10], [17, 10], [10, 17]]), raster).dropped, 0, 'over the hole');
+  assert.equal(cullCovered(tri([[17, 2], [24, 2], [17, 8]]), raster).dropped, 0, 'across the seam between A and B');
+  assert.equal(cullCovered(tri([[0.2, 2], [6, 2], [0.2, 8]]), raster).dropped, 0, 'within CULL_MARGIN_M of the edge');
+  const kept = cullCovered(merge([tri([[2, 2], [8, 2], [2, 8]]), tri([[10, 10], [17, 10], [10, 17]])]), raster);
+  assert.equal(kept.mesh.indices.length, 3);
+  assert.equal(kept.mesh.positions.length, 9, 'vertices compacted');
 });
