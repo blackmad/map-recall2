@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "id": "cgm-183-202276",
+ "pand": "0363100012202276",
+ "signature": [
+  "dekweker-sign",
+  "loading-canopy-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-258",
+   "bearing": 258,
+   "lengthM": 106,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002552_pano_0002_000686",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "dekweker-sign",
+     "kind": "lettering",
+     "where": "DE KWEKER on a dark board over the raised centre block",
+     "approxSizeM": [
+      14,
+      4
+     ],
+     "plan": "simplified",
+     "how": "walls[0] DE KWEKER letters on a cornice band",
+     "seenIn": "TMX7316010203-002552_pano_0002_000686"
+    },
+    {
+     "id": "loading-canopy-front",
+     "kind": "canopy",
+     "where": "long flat loading canopy on posts over red roller doors, office ribbon above",
+     "approxSizeM": [
+      60,
+      5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] blank render; the canopy, the office ribbon and the doors are not drawn",
+     "seenIn": "TMX7316010203-002552_pano_0002_000686"
+    },
+    {
+     "id": "office-railing",
+     "kind": "balcony-ironwork",
+     "where": "railed terrace along the office ribbon",
+     "approxSizeM": [
+      20,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1 m railing on the canopy roof"
+     },
+     "seenIn": "TMX7316010203-002552_pano_0002_000686"
+    }
+   ]
+  },
+  {
+   "tag": "w02-347",
+   "bearing": 347,
+   "lengthM": 28.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000790_pano_0000_005184",
+   "capturedAt": "2018-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "ontvangst-plate",
+     "kind": "lettering",
+     "where": "ONTVANGST GOEDEREN on a white plate over the receiving door",
+     "approxSizeM": [
+      7,
+      2
+     ],
+     "plan": "simplified",
+     "how": "walls[1] fascia letters over a receiving entrance",
+     "seenIn": "TMX7316010203-000790_pano_0000_005184"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

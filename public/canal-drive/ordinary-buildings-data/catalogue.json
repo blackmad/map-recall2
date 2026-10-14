@@ -50475,6 +50475,2372 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T03:42:07.323Z"
+    },
+    {
+      "id": "ordinary-0363100012209785",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012209785",
+      "name": "Asterweg 19B, Amsterdam-Noord (Tuindorp Buiksloot business park): 2005 three-storey block of grey exposed-aggregate concrete panels with curved corners, ribbon windows and a projecting corner box window, over a low concrete plinth with a car-park undercroft",
+      "hash": "dab1ca83131ac3312465f187ef796e6d2d67e9d3f8e621683f8e074d8da1e61a",
+      "sha256": "dab1ca83131ac3312465f187ef796e6d2d67e9d3f8e621683f8e074d8da1e61a",
+      "bytes": 72096,
+      "triangles": 867,
+      "materials": 6,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -69.852,
+          0.001,
+          -22.968
+        ],
+        "max": [
+          43.36,
+          13.927,
+          34.99
+        ]
+      },
+      "anchor": [
+        4.9034387,
+        52.3902598
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.904076,
+              52.3902268
+            ],
+            [
+              4.9039906,
+              52.3904009
+            ],
+            [
+              4.9039063,
+              52.3903854
+            ],
+            [
+              4.9038662,
+              52.390468
+            ],
+            [
+              4.9038244,
+              52.3904601
+            ],
+            [
+              4.9038226,
+              52.3904639
+            ],
+            [
+              4.9024084,
+              52.3902041
+            ],
+            [
+              4.902539,
+              52.3899417
+            ],
+            [
+              4.9026285,
+              52.3899594
+            ],
+            [
+              4.9033253,
+              52.3900884
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 13.93,
+      "height": 13.93,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-asterweg-19b-209785.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012209785"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "asterweg-19b-209785",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012209785/w03-74.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 3st 7b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012209785",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:46:56.416Z"
+    },
+    {
+      "id": "ordinary-0363100012202276",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012202276",
+      "name": "Centrale Groothandelsmarkt 183, Amsterdam-West (Food Center): 1935 wholesale food warehouse (De Kweker) with a 106 m west front of concrete-block piers under grey cladding, a loading canopy, an office ribbon and a raised centre block carrying the DE KWEKER sign",
+      "hash": "5a600ae3d2e9a676bacf356203d3563640e040c3ae623622e7eb4750ee03111c",
+      "sha256": "5a600ae3d2e9a676bacf356203d3563640e040c3ae623622e7eb4750ee03111c",
+      "bytes": 130708,
+      "triangles": 1600,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -32.764,
+          0.001,
+          -80.822
+        ],
+        "max": [
+          18.191,
+          13.01,
+          28.872
+        ]
+      },
+      "anchor": [
+        4.8660715,
+        52.377148
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8660622,
+              52.3769056
+            ],
+            [
+              4.8660668,
+              52.3768934
+            ],
+            [
+              4.8662952,
+              52.3769251
+            ],
+            [
+              4.8662906,
+              52.3769373
+            ],
+            [
+              4.8663421,
+              52.3769445
+            ],
+            [
+              4.8659971,
+              52.3778741
+            ],
+            [
+              4.8655865,
+              52.3778163
+            ],
+            [
+              4.8659312,
+              52.3768873
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 13.01,
+      "height": 13.01,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cgm-183-202276.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012202276"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cgm-183-202276",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012202276/w01-258.jpg",
+          "staging/pand-reference-walls/0363100012202276/w02-347.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 2st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 0 (W, 105 m, eaves 9.0, top 11.8; surfaces 1, 15, 16): grey cladding over concrete-block piers with the raised centre block carrying the DE KWEKER sign board; drawn as a blank render wall with the letters on a cornice band (the office ribbon covers only the middle 25 m, which one group per panel cannot isolate, so no windows are cut). walls[1] = panels 3 and 22 (N, 29 m and 9 m): the receiving end, drawn as a two-storey wall with a blank upper storey, a receiving door in bay 1 and ONTVANGST GOEDEREN on a fascia. Simplified: the cantilevered loading canopy, the red roller-shutter doors, the office ribbon and the white cold-store annex are not modelled; the sign board is letters, not a printed banner; the curved roof is the 3DBAG roof. Not drawn: the east wall and the south end (blank, banner only)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202276",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:49:29.005Z"
+    },
+    {
+      "id": "ordinary-0363100012250186",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012250186",
+      "name": "Revaleiland 437, Amsterdam-Centrum (Java-eiland / Revaleiland): 2020 apartment block round a courtyard, five storeys of red brick with cream-framed windows, stacked glass-railed balconies in recesses, a dark brick plinth and a set-back top floor with slot windows",
+      "hash": "9f787322cfe01ab43950c24fc214c45f949f5cf16cf1e2e6ab43263e606bdbdc",
+      "sha256": "9f787322cfe01ab43950c24fc214c45f949f5cf16cf1e2e6ab43263e606bdbdc",
+      "bytes": 843536,
+      "triangles": 11451,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -46.586,
+          0,
+          -44.653
+        ],
+        "max": [
+          40.571,
+          19.725,
+          41.777
+        ]
+      },
+      "anchor": [
+        4.8813726,
+        52.3941326
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8819701,
+              52.3941254
+            ],
+            [
+              4.8818888,
+              52.394184
+            ],
+            [
+              4.8818956,
+              52.3941876
+            ],
+            [
+              4.881873,
+              52.394204
+            ],
+            [
+              4.881866,
+              52.3942004
+            ],
+            [
+              4.8817164,
+              52.3943085
+            ],
+            [
+              4.8817232,
+              52.394312
+            ],
+            [
+              4.8817005,
+              52.3943284
+            ],
+            [
+              4.8816936,
+              52.3943248
+            ],
+            [
+              4.8816862,
+              52.3943302
+            ],
+            [
+              4.8816931,
+              52.3943337
+            ],
+            [
+              4.8816702,
+              52.39435
+            ],
+            [
+              4.8816635,
+              52.3943465
+            ],
+            [
+              4.8815136,
+              52.3944547
+            ],
+            [
+              4.8815204,
+              52.3944583
+            ],
+            [
+              4.8814976,
+              52.3944745
+            ],
+            [
+              4.8814909,
+              52.3944711
+            ],
+            [
+              4.8814329,
+              52.394513
+            ],
+            [
+              4.8814397,
+              52.3945165
+            ],
+            [
+              4.8814151,
+              52.3945341
+            ],
+            [
+              4.8813481,
+              52.3944991
+            ],
+            [
+              4.881349,
+              52.3944984
+            ],
+            [
+              4.8810801,
+              52.3943589
+            ],
+            [
+              4.8810745,
+              52.3943629
+            ],
+            [
+              4.8810476,
+              52.3943493
+            ],
+            [
+              4.8810534,
+              52.3943451
+            ],
+            [
+              4.8810444,
+              52.3943404
+            ],
+            [
+              4.8810387,
+              52.3943445
+            ],
+            [
+              4.881012,
+              52.3943307
+            ],
+            [
+              4.8810178,
+              52.3943266
+            ],
+            [
+              4.8806885,
+              52.3941557
+            ],
+            [
+              4.8809423,
+              52.3939726
+            ],
+            [
+              4.8809357,
+              52.3939692
+            ],
+            [
+              4.8809585,
+              52.3939526
+            ],
+            [
+              4.8809652,
+              52.3939561
+            ],
+            [
+              4.8809725,
+              52.3939509
+            ],
+            [
+              4.8809659,
+              52.3939474
+            ],
+            [
+              4.8809887,
+              52.3939308
+            ],
+            [
+              4.8809954,
+              52.3939343
+            ],
+            [
+              4.8812353,
+              52.3937613
+            ],
+            [
+              4.8812383,
+              52.3937595
+            ],
+            [
+              4.8812426,
+              52.3937579
+            ],
+            [
+              4.8812449,
+              52.3937573
+            ],
+            [
+              4.8812474,
+              52.3937569
+            ],
+            [
+              4.8812524,
+              52.3937566
+            ],
+            [
+              4.8812575,
+              52.393757
+            ],
+            [
+              4.8812599,
+              52.3937575
+            ],
+            [
+              4.8812622,
+              52.3937582
+            ],
+            [
+              4.8812664,
+              52.3937599
+            ],
+            [
+              4.8815787,
+              52.3939221
+            ],
+            [
+              4.8815844,
+              52.3939179
+            ],
+            [
+              4.8816111,
+              52.3939318
+            ],
+            [
+              4.8816054,
+              52.393936
+            ],
+            [
+              4.8816143,
+              52.3939406
+            ],
+            [
+              4.88162,
+              52.3939365
+            ],
+            [
+              4.8816468,
+              52.3939504
+            ],
+            [
+              4.8816411,
+              52.3939545
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.73,
+      "height": 19.73,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-revaleiland-437-250186.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012250186"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "revaleiland-437-250186",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012250186/w05-230.jpg",
+          "staging/pand-reference-walls/0363100012250186/w03-140.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 7b",
+          "brick-bay-grid 5st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Revaleiland 437 (BAG pand 0363100012250186, built 2020, 372 3DBAG wall surfaces, roof max 19.7 m): a large perimeter block on the Revaleiland in the Java-eiland / Eastern Docklands, about 75 m square with a courtyard of lower inner blocks. Photographed (finished): the south-west front (w04-230 2020-05-15, w05-230 2022-06-22: red brick, cream-framed windows in pairs and triples, a stack of three glass-railed balconies in a recess, red and orange entrance doors, a white shopfront at the south-east end, a set-back top floor with slot windows and a curved parapet). The south-east front is seen in construction (w02-140, w03-140 2020-01-29: same brick, same balcony stack with the glass still missing). The north-west and north-east fronts have only 2017 site photographs and a 2019 scaffold (w01-320, w06-320, w07-50, w08-50), so those two stay blank.",
+        "walls[0] = SW panels 129 and 68 (26.7 m and 25.2 m, eaves 16.2): 5 storeys x 7 bays with string courses and one glass-railed balcony stack on storeys 1-3 in bay 2 (a 6-bay rhythm left a 4.8 m2 flush-window overlap). walls[1] = SE panels 36 and 80 (29 m and 28 m): 5 storeys x 5 bays (budget), same balcony stack (construction view). Simplified: the plinth is the ground storey of the same brick (the photographed one is darker), window pairs and triples are evenly spaced wide windows, the red entrance doors and the white shopfront are plain bays. Not drawn: the north-west and north-east outer fronts (no finished photograph; an inferred copy of the other fronts cost 24k triangles and was dropped), the set-back top-floor blocks with slot windows and the curved parapet (3DBAG massing in brick colour), the courtyard walls and the inner blocks, which stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250186",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:11:07.107Z"
+    },
+    {
+      "id": "ordinary-0363100012099348",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012099348",
+      "name": "Archangelkade 3D, Amsterdam-West (Houthavens / Haparandaweg industrial strip): 1978 barrel-roofed warehouse hall, 75 m by 60 m, clad in pale vertical-ribbed sheet steel with a curved eaves line and downpipes at the bays",
+      "hash": "0a3c67da5c1358080c223b780c6e5d958ae3e14624f75e61ad5dac1efbc983d9",
+      "sha256": "0a3c67da5c1358080c223b780c6e5d958ae3e14624f75e61ad5dac1efbc983d9",
+      "bytes": 103500,
+      "triangles": 1382,
+      "materials": 5,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -48.109,
+          -0.001,
+          -46.752
+        ],
+        "max": [
+          48.052,
+          11.86,
+          46.598
+        ]
+      },
+      "anchor": [
+        4.8699535,
+        52.3954355
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8701195,
+              52.3958558
+            ],
+            [
+              4.8692475,
+              52.3954422
+            ],
+            [
+              4.8697877,
+              52.395016
+            ],
+            [
+              4.8706596,
+              52.3954281
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 11.86,
+      "height": 11.86,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-archangelkade-3-099348.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012099348"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "archangelkade-3-099348",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012099348/w01-323.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 2st 24b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 0 (NW, 75 m, eaves 8.8; surface 1): drawn as a blank two-storey wall with 24 vertical piers standing in for the sheet-steel ribs, in pale render. Simplified: the true ribs are 20 cm apart, the piers are one per 3 m bay; the curved eaves line is the 3DBAG roof. Not drawn: the downpipes (too small), the doors on the unphotographed sides; the other three walls stay blank pale render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012099348",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:12:05.740Z"
+    },
+    {
+      "id": "ordinary-0363100012240270",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012240270",
+      "name": "Asterweg 37, Amsterdam-Noord (Buiksloot business park): 2014 distribution hall, 70 m by 46 m, clad in grey horizontally ribbed sheet steel with a slightly curved roof edge and a stepped north front",
+      "hash": "488f6ee22b603b783c65a6fb5ebd3a1c340f8584d821cbf135ecfe4a67afa0b4",
+      "sha256": "488f6ee22b603b783c65a6fb5ebd3a1c340f8584d821cbf135ecfe4a67afa0b4",
+      "bytes": 16784,
+      "triangles": 147,
+      "materials": 4,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -40.324,
+          0.001,
+          -32.246
+        ],
+        "max": [
+          40.254,
+          9.621,
+          32.178
+        ]
+      },
+      "anchor": [
+        4.9020068,
+        52.3921804
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9014134,
+              52.3922892
+            ],
+            [
+              4.9016098,
+              52.3918892
+            ],
+            [
+              4.9026002,
+              52.3920717
+            ],
+            [
+              4.9024038,
+              52.3924714
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 9.62,
+      "height": 9.62,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-asterweg-37-240270.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012240270"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "asterweg-37-240270",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012240270/w02-344.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 2, 3, 24 and 13 (N, 70 m, 21 m, 23 m and 6 m, eaves 9.2-9.6; surfaces 3, 4, 28, 15): drawn as a plain grey render wall (the 3DBAG shell; the string courses requested on blank storeys draw nothing, so there are no ribs). Simplified: the real ribs are a few centimetres deep and 20 cm apart and are not modelled; the curved roof edge is the 3DBAG roof. Not drawn: the other three walls (no panorama), which stay blank grey render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240270",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:12:55.225Z"
+    },
+    {
+      "id": "ordinary-0363100012165821",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012165821",
+      "name": "Louise Wentstraat 230, Amsterdam-Oost (Weesperzijde / Amstelkade side of the Oosterpark district): 1992 housing complex of grey-brown brick with dark horizontal bands, four-storey street fronts under a stepped upper floor, curved ends and glazed stair-tower columns",
+      "hash": "63f7848f1f89749e8f31c650dd7d896531075f1cae1caa1465762dc4996ffc06",
+      "sha256": "63f7848f1f89749e8f31c650dd7d896531075f1cae1caa1465762dc4996ffc06",
+      "bytes": 793308,
+      "triangles": 10696,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -50.762,
+          0.001,
+          -70.129
+        ],
+        "max": [
+          49.747,
+          26.983,
+          32.986
+        ]
+      },
+      "anchor": [
+        4.9238721,
+        52.3652383
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9241168,
+              52.3651918
+            ],
+            [
+              4.9241743,
+              52.3652279
+            ],
+            [
+              4.9241999,
+              52.3652437
+            ],
+            [
+              4.9241768,
+              52.3652577
+            ],
+            [
+              4.9242106,
+              52.3652786
+            ],
+            [
+              4.9242189,
+              52.3652736
+            ],
+            [
+              4.924385,
+              52.3653759
+            ],
+            [
+              4.9243669,
+              52.3653868
+            ],
+            [
+              4.9243896,
+              52.365401
+            ],
+            [
+              4.924426,
+              52.3653793
+            ],
+            [
+              4.9245999,
+              52.3654861
+            ],
+            [
+              4.9244867,
+              52.365555
+            ],
+            [
+              4.9245367,
+              52.3655868
+            ],
+            [
+              4.9245247,
+              52.3655939
+            ],
+            [
+              4.9245225,
+              52.3655955
+            ],
+            [
+              4.9240829,
+              52.3658632
+            ],
+            [
+              4.9240821,
+              52.3658627
+            ],
+            [
+              4.9240715,
+              52.3658694
+            ],
+            [
+              4.9240703,
+              52.3658686
+            ],
+            [
+              4.9240515,
+              52.3658686
+            ],
+            [
+              4.9240501,
+              52.3658693
+            ],
+            [
+              4.9240393,
+              52.3658628
+            ],
+            [
+              4.9240386,
+              52.3658633
+            ],
+            [
+              4.9231266,
+              52.3653021
+            ],
+            [
+              4.9232615,
+              52.3652169
+            ],
+            [
+              4.9232639,
+              52.3652184
+            ],
+            [
+              4.9232652,
+              52.3652176
+            ],
+            [
+              4.9232806,
+              52.3652271
+            ],
+            [
+              4.923303,
+              52.3652133
+            ],
+            [
+              4.9232836,
+              52.3652014
+            ],
+            [
+              4.9235151,
+              52.3650603
+            ],
+            [
+              4.923538,
+              52.3650745
+            ],
+            [
+              4.9235607,
+              52.3650608
+            ],
+            [
+              4.9235396,
+              52.3650478
+            ],
+            [
+              4.9235425,
+              52.3650457
+            ],
+            [
+              4.923528,
+              52.3650368
+            ],
+            [
+              4.9235426,
+              52.3650279
+            ],
+            [
+              4.9235395,
+              52.3650259
+            ],
+            [
+              4.9235839,
+              52.3649989
+            ],
+            [
+              4.9235893,
+              52.3650022
+            ],
+            [
+              4.9236394,
+              52.3649717
+            ],
+            [
+              4.9236339,
+              52.3649684
+            ],
+            [
+              4.9236786,
+              52.3649411
+            ],
+            [
+              4.9236829,
+              52.3649438
+            ],
+            [
+              4.9236823,
+              52.3649442
+            ],
+            [
+              4.9237039,
+              52.3649577
+            ],
+            [
+              4.9237224,
+              52.3649465
+            ],
+            [
+              4.9237583,
+              52.3649686
+            ],
+            [
+              4.9237493,
+              52.3649741
+            ],
+            [
+              4.9237993,
+              52.3650046
+            ],
+            [
+              4.923808,
+              52.3649991
+            ],
+            [
+              4.9238439,
+              52.3650213
+            ],
+            [
+              4.9238397,
+              52.3650238
+            ],
+            [
+              4.9238482,
+              52.3650292
+            ],
+            [
+              4.9238495,
+              52.3650284
+            ],
+            [
+              4.9238639,
+              52.3650373
+            ],
+            [
+              4.923849,
+              52.3650462
+            ],
+            [
+              4.9238521,
+              52.3650481
+            ],
+            [
+              4.9238343,
+              52.3650589
+            ],
+            [
+              4.9238575,
+              52.3650732
+            ],
+            [
+              4.9238755,
+              52.3650623
+            ],
+            [
+              4.9240416,
+              52.3651648
+            ],
+            [
+              4.9240333,
+              52.3651699
+            ],
+            [
+              4.9240669,
+              52.3651905
+            ],
+            [
+              4.9240901,
+              52.3651764
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 26.98,
+      "height": 26.98,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-louise-wentstraat-230-165821.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012165821"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "louise-wentstraat-230-165821",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
+          "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
+          "staging/pand-reference-walls/0363100012165821/w02-45.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 18b",
+          "ribbon-windows 1st 22b",
+          "brick-bay-grid 4st 8b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 31 (NW, 88 m, eaves 12.8; surface 36): 4 storeys x 18 bays with string courses. walls[1] = panels 8 and 293 (NW, 61 m and 34 m, eaves 15.5 over a 12.8 m base; surfaces 10, 386): the set-back top floor, one ribbon-window storey. walls[2] = panels 21 and 102 (NE end, 42 m and 31 m, eaves 12.8 and 15.5; surfaces 26, 116): 4 storeys x 8 bays with string courses. Simplified: the dark bands are string courses, window groups are evenly spaced wide windows; 18 bays instead of the photographed 20 to stay inside the triangle budget. Not drawn: the glazed stair-tower columns, the curved south end, the courtyard fronts and the 27 m corner towers (3DBAG massing in brick colour, left blank brick).",
+        "Everything not listed stays blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165821",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:14:47.658Z"
+    },
+    {
+      "id": "ordinary-0363100012129127",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012129127",
+      "name": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
+      "hash": "baafcc14f69a6675a2e04373dd5a065bfd6e850e9787726c9a535b53640438c2",
+      "sha256": "baafcc14f69a6675a2e04373dd5a065bfd6e850e9787726c9a535b53640438c2",
+      "bytes": 779916,
+      "triangles": 10617,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -40.552,
+          0.001,
+          -47.818
+        ],
+        "max": [
+          24.159,
+          31.447,
+          40.783
+        ]
+      },
+      "anchor": [
+        4.9106598,
+        52.355656
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9110018,
+              52.3554355
+            ],
+            [
+              4.9110031,
+              52.3554334
+            ],
+            [
+              4.9110168,
+              52.3554364
+            ],
+            [
+              4.9109936,
+              52.3554749
+            ],
+            [
+              4.9110044,
+              52.3554773
+            ],
+            [
+              4.9109475,
+              52.3555723
+            ],
+            [
+              4.9109379,
+              52.3555702
+            ],
+            [
+              4.9107929,
+              52.3558122
+            ],
+            [
+              4.910804,
+              52.3558148
+            ],
+            [
+              4.910745,
+              52.3559099
+            ],
+            [
+              4.9107354,
+              52.3559076
+            ],
+            [
+              4.910629,
+              52.356086
+            ],
+            [
+              4.9100613,
+              52.355957
+            ],
+            [
+              4.9100823,
+              52.3559224
+            ],
+            [
+              4.9100849,
+              52.355923
+            ],
+            [
+              4.9100851,
+              52.3559226
+            ],
+            [
+              4.9101486,
+              52.3558184
+            ],
+            [
+              4.9101463,
+              52.3558179
+            ],
+            [
+              4.9104637,
+              52.3552887
+            ],
+            [
+              4.9107695,
+              52.3553579
+            ],
+            [
+              4.9107808,
+              52.3553399
+            ],
+            [
+              4.9109824,
+              52.3553856
+            ],
+            [
+              4.910958,
+              52.3554256
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 31.45,
+      "height": 31.45,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-wibautstraat-78-129127.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012129127"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "wibautstraat-78-129127",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012129127/w03-70.jpg",
+          "staging/pand-reference-walls/0363100012129127/w02-340.jpg",
+          "staging/pand-reference-walls/0363100012129127/w02-340.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows+entrance 9st 8b",
+          "ribbon-windows 9st 8b",
+          "ribbon-windows 8st 2b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129127",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:16:24.946Z"
+    },
+    {
+      "id": "ordinary-0363100012201629",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012201629",
+      "name": "Centrale Groothandelsmarkt 168, Amsterdam-West (Food Center): 1935 wholesale distribution hall, a 39 m south-east loading front with nine blue sectional dock doors under black dock shelters, a ribbon of office windows above and a glazed entrance at the end",
+      "hash": "9d78fe83a981e5848d6e9a03f195152dc3c62af031a8f3d2f5343a1afeb640b3",
+      "sha256": "9d78fe83a981e5848d6e9a03f195152dc3c62af031a8f3d2f5343a1afeb640b3",
+      "bytes": 101068,
+      "triangles": 1293,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -44.855,
+          0,
+          -37.717
+        ],
+        "max": [
+          29.359,
+          9.788,
+          41.514
+        ]
+      },
+      "anchor": [
+        4.8642046,
+        52.3789046
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8643894,
+              52.3789493
+            ],
+            [
+              4.8644475,
+              52.3789914
+            ],
+            [
+              4.8644465,
+              52.3789919
+            ],
+            [
+              4.8645879,
+              52.3790933
+            ],
+            [
+              4.8642983,
+              52.379244
+            ],
+            [
+              4.8641574,
+              52.3791421
+            ],
+            [
+              4.8641564,
+              52.3791426
+            ],
+            [
+              4.8640092,
+              52.3790364
+            ],
+            [
+              4.86389,
+              52.3790984
+            ],
+            [
+              4.8635465,
+              52.3788511
+            ],
+            [
+              4.8637102,
+              52.3787659
+            ],
+            [
+              4.8636632,
+              52.3787321
+            ],
+            [
+              4.863795,
+              52.3786635
+            ],
+            [
+              4.863842,
+              52.3786973
+            ],
+            [
+              4.8641651,
+              52.3785298
+            ],
+            [
+              4.8645006,
+              52.3787695
+            ],
+            [
+              4.8645388,
+              52.378797
+            ],
+            [
+              4.8645407,
+              52.378796
+            ],
+            [
+              4.8646366,
+              52.3788646
+            ],
+            [
+              4.8645053,
+              52.3789326
+            ],
+            [
+              4.8644705,
+              52.3789074
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 9.79,
+      "height": 9.79,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cgm-168-201629.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012201629"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cgm-168-201629",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012201629/w01-131.jpg",
+          "staging/pand-reference-walls/0363100012201629/w02-311.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 2st 9b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 19 and 17 (SE, 39 m and 10 m, eaves 9.8; surfaces 22, 25, 20): 2 storeys of ribbon windows over a blank ground with eight garage doors (the intent limit) in the blue door colour, the ninth bay left plain and a white cornice band. walls[1] = panels 14 and 6 (NW flank, 36 m, eaves 9.7; surfaces 17, 8): blank white render. Simplified: the black dock shelters and the dock plinths are not modelled (the doors are plain recessed panels), the glazed strips in the doors are not drawn, the entrance bay at the right end is a plain bay. Not drawn: the clearly lower south-west and north-east wings (7.2 m and 5.9 m eaves), which stay blank white render, and the signs on the north-east end."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012201629",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:17:30.395Z"
+    },
+    {
+      "id": "ordinary-0363100012078289",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012078289",
+      "name": "Rigakade 8, Amsterdam-West (Houthavens industrial strip): 1988 builders' merchant (Jongeneel) of pale ribbed-steel sheds, a four-gable saw-tooth north-east end with a blue loading gate and a south-west shop front with a blue HOUT PLAAT SHOP BOUWMATERIALEN fascia over a glazed entrance",
+      "hash": "94a7d7eaefe79fe96bfa7f9178b8cd86a6868c43798e60895347db8e210047d2",
+      "sha256": "94a7d7eaefe79fe96bfa7f9178b8cd86a6868c43798e60895347db8e210047d2",
+      "bytes": 144220,
+      "triangles": 1745,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -32.778,
+          0,
+          -81.571
+        ],
+        "max": [
+          45.87,
+          10.885,
+          25.578
+        ]
+      },
+      "anchor": [
+        4.8757159,
+        52.3949999
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8752338,
+              52.3949778
+            ],
+            [
+              4.8755413,
+              52.394884
+            ],
+            [
+              4.8755129,
+              52.3948495
+            ],
+            [
+              4.8756824,
+              52.3947977
+            ],
+            [
+              4.875675,
+              52.3947886
+            ],
+            [
+              4.8757358,
+              52.3947701
+            ],
+            [
+              4.8757715,
+              52.3948137
+            ],
+            [
+              4.8757731,
+              52.3948133
+            ],
+            [
+              4.8763844,
+              52.3955697
+            ],
+            [
+              4.875849,
+              52.3957339
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 10.89,
+      "height": 10.88,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-rigakade-8-078289.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012078289"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "rigakade-8-078289",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012078289/w05-207.jpg",
+          "staging/pand-reference-walls/0363100012078289/w03-27.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 2st 3b",
+          "brick-bay-grid 1st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 26 and 17 (SW, 17 m, eaves 10.4 and 8.8; surfaces 36, 21, 49, 54): a glazed ground with an entrance in the middle bay and the name as a short fascia plate over the entrance (not the full-width blue band), blank upper storey; 2 storeys x 3 bays. walls[1] = panel 3 (NE end, 40 m, eaves 8.1 under 10.4 m gables; surfaces 4, 22, 32, 34, 35, 43, 47, 50): blank render with one blue loading gate (garage door) on the right. Simplified: the saw-tooth gables are the 3DBAG roof and walls, the railing and sign boards are not modelled; the fascia colour is the stone slot (blue). Not drawn: the 94 m flanks and the south-east end, which stay blank pale render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078289",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:18:24.112Z"
+    },
+    {
+      "id": "ordinary-0363100012101771",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012101771",
+      "name": "Meeuwenlaan 132, Amsterdam-Noord (Van der Pekbuurt): 1936 school complex (Breders Beroepscollege), yellow-grey brick wings of two and three storeys with white-framed bar windows under hipped blue-tile roofs with dormers, and a low translucent-clad wing carrying giant grey letters",
+      "hash": "da9a46118f96675c9ed74e7e68c7dad7912ab6f0ea459d71ace8160dcb0542dc",
+      "sha256": "da9a46118f96675c9ed74e7e68c7dad7912ab6f0ea459d71ace8160dcb0542dc",
+      "bytes": 732352,
+      "triangles": 9872,
+      "materials": 13,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -33.396,
+          0,
+          -54.274
+        ],
+        "max": [
+          75.446,
+          27.468,
+          30.01
+        ]
+      },
+      "anchor": [
+        4.9256828,
+        52.3887094
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9266533,
+              52.3891429
+            ],
+            [
+              4.9256531,
+              52.3891702
+            ],
+            [
+              4.9256552,
+              52.3891918
+            ],
+            [
+              4.9254908,
+              52.3891964
+            ],
+            [
+              4.925485,
+              52.3891175
+            ],
+            [
+              4.9254408,
+              52.389119
+            ],
+            [
+              4.9254358,
+              52.3890643
+            ],
+            [
+              4.9254196,
+              52.3890649
+            ],
+            [
+              4.9254029,
+              52.3889906
+            ],
+            [
+              4.9253842,
+              52.3889194
+            ],
+            [
+              4.9253624,
+              52.3888487
+            ],
+            [
+              4.9253425,
+              52.388792
+            ],
+            [
+              4.9253406,
+              52.3887924
+            ],
+            [
+              4.9251986,
+              52.388475
+            ],
+            [
+              4.9251975,
+              52.3884721
+            ],
+            [
+              4.9251968,
+              52.3884691
+            ],
+            [
+              4.9251967,
+              52.388466
+            ],
+            [
+              4.9251971,
+              52.388463
+            ],
+            [
+              4.9251979,
+              52.38846
+            ],
+            [
+              4.9251992,
+              52.3884571
+            ],
+            [
+              4.9252009,
+              52.3884545
+            ],
+            [
+              4.9252029,
+              52.3884521
+            ],
+            [
+              4.9252053,
+              52.3884498
+            ],
+            [
+              4.925208,
+              52.3884477
+            ],
+            [
+              4.9252112,
+              52.3884457
+            ],
+            [
+              4.9252147,
+              52.3884438
+            ],
+            [
+              4.9252184,
+              52.3884422
+            ],
+            [
+              4.9252224,
+              52.3884408
+            ],
+            [
+              4.9252285,
+              52.3884393
+            ],
+            [
+              4.9252342,
+              52.3884384
+            ],
+            [
+              4.9252392,
+              52.388438
+            ],
+            [
+              4.925243,
+              52.3884379
+            ],
+            [
+              4.9252469,
+              52.388438
+            ],
+            [
+              4.9252507,
+              52.3884383
+            ],
+            [
+              4.9252545,
+              52.3884387
+            ],
+            [
+              4.9254873,
+              52.3884696
+            ],
+            [
+              4.9254515,
+              52.3885707
+            ],
+            [
+              4.9254918,
+              52.3885764
+            ],
+            [
+              4.9255277,
+              52.3884753
+            ],
+            [
+              4.9261433,
+              52.3885572
+            ],
+            [
+              4.9261043,
+              52.3886692
+            ],
+            [
+              4.9260576,
+              52.3888016
+            ],
+            [
+              4.9260537,
+              52.3888099
+            ],
+            [
+              4.9259993,
+              52.3888022
+            ],
+            [
+              4.9260177,
+              52.3887509
+            ],
+            [
+              4.9260182,
+              52.3887484
+            ],
+            [
+              4.9260184,
+              52.3887459
+            ],
+            [
+              4.9260183,
+              52.3887433
+            ],
+            [
+              4.9260178,
+              52.3887408
+            ],
+            [
+              4.926017,
+              52.3887383
+            ],
+            [
+              4.9260159,
+              52.3887359
+            ],
+            [
+              4.9260144,
+              52.3887335
+            ],
+            [
+              4.9260126,
+              52.3887312
+            ],
+            [
+              4.9260103,
+              52.3887287
+            ],
+            [
+              4.9260075,
+              52.3887264
+            ],
+            [
+              4.9260044,
+              52.3887242
+            ],
+            [
+              4.926001,
+              52.3887222
+            ],
+            [
+              4.9259973,
+              52.3887204
+            ],
+            [
+              4.9259934,
+              52.3887189
+            ],
+            [
+              4.9259893,
+              52.3887175
+            ],
+            [
+              4.925831,
+              52.3886779
+            ],
+            [
+              4.9258273,
+              52.3886776
+            ],
+            [
+              4.9258253,
+              52.3886776
+            ],
+            [
+              4.9258215,
+              52.3886779
+            ],
+            [
+              4.9258178,
+              52.3886786
+            ],
+            [
+              4.9257275,
+              52.3887008
+            ],
+            [
+              4.9257249,
+              52.3887015
+            ],
+            [
+              4.9257202,
+              52.3887033
+            ],
+            [
+              4.925718,
+              52.3887044
+            ],
+            [
+              4.9257142,
+              52.3887069
+            ],
+            [
+              4.9257112,
+              52.3887098
+            ],
+            [
+              4.92571,
+              52.3887113
+            ],
+            [
+              4.9257084,
+              52.3887145
+            ],
+            [
+              4.9257076,
+              52.3887178
+            ],
+            [
+              4.9257016,
+              52.3888772
+            ],
+            [
+              4.9256884,
+              52.3888775
+            ],
+            [
+              4.9256906,
+              52.3889082
+            ],
+            [
+              4.9256256,
+              52.3889099
+            ],
+            [
+              4.9256319,
+              52.3889965
+            ],
+            [
+              4.9264762,
+              52.3889734
+            ],
+            [
+              4.9264648,
+              52.3888342
+            ],
+            [
+              4.9267815,
+              52.3888246
+            ],
+            [
+              4.9267889,
+              52.3889212
+            ],
+            [
+              4.9266362,
+              52.3889258
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 27.47,
+      "height": 27.47,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-meeuwenlaan-132-101771.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012101771"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "meeuwenlaan-132-101771",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012101771/w01-3.jpg",
+          "staging/pand-reference-walls/0363100012101771/w07-93.jpg",
+          "staging/pand-reference-walls/0363100012101771/w05-280.jpg",
+          "staging/pand-reference-walls/0363100012101771/w04-286.jpg",
+          "staging/pand-reference-walls/0363100012101771/w03-168.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 2st 17b",
+          "brick-bay-grid 2st 6b",
+          "brick-bay-grid 3st 6b",
+          "brick-bay-grid 1st 8b",
+          "brick-bay-grid 1st 8b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 157 (N, 68 m, eaves 9.6; surface 198): 2 storeys x 17 bays of wide bar windows. walls[1] = panel 79 (E, 24 m, eaves 9.7; surfaces 88, 106): 2 storeys x 6 bays. walls[2] = panels 122, 5, 7 (W, 8 m each, eaves 13.8; surfaces 147, 7, 9): 3 storeys x 6 bays. walls[3] = panel 121 (W low wing, 34 m, eaves 5.3; surface 146): glazed ground under a translucent upper band with the letters BREDERS on a cornice band (the photograph cuts the word at BREDER; the S comes from the Breders banner). walls[4] = panel 110 (S low wing, 43 m, eaves 6.6; surface 133): the same wing with COLLEGE, inferred from the visible ...LEGE ending in a blank panel. Simplified: the real letters are about 3 m tall and run straight across the translucent panels, here a cornice-band lettering; dormers, chimneys and the hipped roofs are the 3DBAG roof; the red entrance doors and the school banner are not modelled. Not drawn: the south and east courtyard fronts, the tower block (22.9 m) and the gym (no panorama), which stay blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012101771",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:20:06.149Z"
+    },
+    {
+      "id": "ordinary-0363100012110408",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012110408",
+      "name": "Haarlemmerweg 325, Amsterdam-West (Westergasfabriek district): Q-Park Westergasfabriek, a curved multi-storey car park with brick-fronted shops on its ground floor and three decks screened by pale translucent louvres, and a concrete south front with the car-park entrance",
+      "hash": "065b2cea9a63b04533ac11301379467c7a81e0c88ad9ed77b39864d6dd8d4d12",
+      "sha256": "065b2cea9a63b04533ac11301379467c7a81e0c88ad9ed77b39864d6dd8d4d12",
+      "bytes": 754604,
+      "triangles": 10297,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -39.006,
+          -0.001,
+          -44.113
+        ],
+        "max": [
+          23.232,
+          19.07,
+          14.118
+        ]
+      },
+      "anchor": [
+        4.86606,
+        52.3847404
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8662398,
+              52.3851213
+            ],
+            [
+              4.8662385,
+              52.3851213
+            ],
+            [
+              4.8662379,
+              52.3851376
+            ],
+            [
+              4.8654825,
+              52.3851273
+            ],
+            [
+              4.8654845,
+              52.3850698
+            ],
+            [
+              4.865487,
+              52.3850698
+            ],
+            [
+              4.8654873,
+              52.385061
+            ],
+            [
+              4.8654848,
+              52.385061
+            ],
+            [
+              4.8655014,
+              52.3846064
+            ],
+            [
+              4.8660877,
+              52.3846139
+            ],
+            [
+              4.8660871,
+              52.3846319
+            ],
+            [
+              4.8661153,
+              52.3846326
+            ],
+            [
+              4.8661158,
+              52.3846288
+            ],
+            [
+              4.8661166,
+              52.3846267
+            ],
+            [
+              4.8661172,
+              52.3846256
+            ],
+            [
+              4.8661188,
+              52.3846237
+            ],
+            [
+              4.866121,
+              52.3846219
+            ],
+            [
+              4.8661236,
+              52.3846204
+            ],
+            [
+              4.8661267,
+              52.3846192
+            ],
+            [
+              4.8661283,
+              52.3846188
+            ],
+            [
+              4.8661318,
+              52.3846181
+            ],
+            [
+              4.8661335,
+              52.3846179
+            ],
+            [
+              4.8661371,
+              52.3846178
+            ],
+            [
+              4.8661389,
+              52.3846179
+            ],
+            [
+              4.8661425,
+              52.3846184
+            ],
+            [
+              4.8661442,
+              52.3846188
+            ],
+            [
+              4.8661458,
+              52.3846192
+            ],
+            [
+              4.8661489,
+              52.3846204
+            ],
+            [
+              4.8661515,
+              52.384622
+            ],
+            [
+              4.8661537,
+              52.3846237
+            ],
+            [
+              4.8661554,
+              52.3846257
+            ],
+            [
+              4.866156,
+              52.3846268
+            ],
+            [
+              4.8661567,
+              52.3846289
+            ],
+            [
+              4.8661568,
+              52.3846312
+            ],
+            [
+              4.8661517,
+              52.3846683
+            ],
+            [
+              4.8661641,
+              52.384669
+            ],
+            [
+              4.8661872,
+              52.384619
+            ],
+            [
+              4.8664029,
+              52.3846486
+            ],
+            [
+              4.8662687,
+              52.3850329
+            ],
+            [
+              4.8662715,
+              52.3850333
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.07,
+      "height": 19.07,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-haarlemmerweg-325-110408.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012110408"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "haarlemmerweg-325-110408",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012110408/w01-359.jpg",
+          "staging/pand-reference-walls/0363100012110408/w02-269.jpg",
+          "staging/pand-reference-walls/0363100012110408/w04-179.jpg",
+          "staging/pand-reference-walls/0363100012110408/w05-168.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 13b",
+          "ribbon-windows 4st 13b",
+          "ribbon-windows 4st 10b",
+          "ribbon-windows+entrance 4st 4b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012110408",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:21:36.875Z"
+    },
+    {
+      "id": "ordinary-0363100012098847",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012098847",
+      "name": "Quellijnstraat 36, Amsterdam-Zuid (Weteringbuurt / Quellijnkwartier): 1927 brick block of the Amsterdam School period, a three- to five-storey north front with arched timber garage gates at ground level and a rounded corner, and a long three-storey canal front of small banded windows carrying the green Heineken name",
+      "hash": "4b44847c05de265a907f96e9ccc6c708f96ba040bff8d518cdb504162f4460b2",
+      "sha256": "4b44847c05de265a907f96e9ccc6c708f96ba040bff8d518cdb504162f4460b2",
+      "bytes": 432212,
+      "triangles": 5690,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -45.064,
+          0.002,
+          -31.514
+        ],
+        "max": [
+          35.196,
+          17.134,
+          23.84
+        ]
+      },
+      "anchor": [
+        4.8876363,
+        52.3566396
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888126,
+              52.3566914
+            ],
+            [
+              4.8881505,
+              52.356854
+            ],
+            [
+              4.8880629,
+              52.356859
+            ],
+            [
+              4.8880474,
+              52.3567564
+            ],
+            [
+              4.8877502,
+              52.3566901
+            ],
+            [
+              4.887778,
+              52.3568748
+            ],
+            [
+              4.8869758,
+              52.3569196
+            ],
+            [
+              4.887012,
+              52.3564558
+            ],
+            [
+              4.8872641,
+              52.3564421
+            ],
+            [
+              4.8872821,
+              52.3565617
+            ],
+            [
+              4.8873235,
+              52.3565725
+            ],
+            [
+              4.8873287,
+              52.3566076
+            ],
+            [
+              4.8874343,
+              52.3566016
+            ],
+            [
+              4.8875307,
+              52.3566269
+            ],
+            [
+              4.8875009,
+              52.3564288
+            ],
+            [
+              4.8875663,
+              52.3564251
+            ],
+            [
+              4.8875918,
+              52.3565943
+            ],
+            [
+              4.8877136,
+              52.3565874
+            ],
+            [
+              4.8877978,
+              52.3566099
+            ],
+            [
+              4.8880562,
+              52.3565953
+            ],
+            [
+              4.8880686,
+              52.3566778
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.13,
+      "height": 17.13,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-quellijnstraat-36-098847.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012098847"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "quellijnstraat-36-098847",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
+          "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
+          "staging/pand-reference-walls/0363100012098847/w02-268.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 6b",
+          "brick-bay-grid 4st 6b",
+          "brick-bay-grid 3st 13b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 42 (N, 27 m, eaves 11.6; surface 51): 3 storeys x 6 bays with string courses and three garage doors on the ground. walls[1] = panel 51 (N, 28 m, eaves 15.0; surfaces 60, 216): 4 storeys x 6 bays with string courses. walls[2] = panel 70 (W, 52 m, eaves 10.0; surfaces 90, 91): 3 storeys x 13 bays of small windows (storey 3, the strip of the 11.9 m gable above the 10.0 m eaves, is blank: a window there overlapped the wall) with string courses and the HEINEKEN name letters on a cornice band (in the photograph the name sits in the middle of the wall, not on a cornice). Simplified: the gates are plain tall doors without arched heads, the rounded corner is 3DBAG facets, the green door and the ground-floor playground are not modelled. Not drawn: the east wings with the corner details, the courtyard walls and the 17 m rear blocks (blank brick)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012098847",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:23:11.905Z"
     }
   ]
 }

@@ -1,0 +1,114 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "quellijnstraat-36-098847",
+ "pandId": "0363100012098847",
+ "address": "Quellijnstraat 36, Amsterdam-Zuid (Weteringbuurt / Quellijnkwartier): 1927 brick block of the Amsterdam School period, a three- to five-storey north front with arched timber garage gates at ground level and a rounded corner, and a long three-storey canal front of small banded windows carrying the green Heineken name",
+ "sources": [
+  {
+   "id": "pano-2024-09-04-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-04_05-35-54_04632/",
+   "image": "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-04-w01-2",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-04_05-35-54_04632/",
+   "image": "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-18-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001967_pano_0000_000611/",
+   "image": "staging/pand-reference-walls/0363100012098847/w02-268.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    51
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "garageDoors": 3,
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#7a5a4c",
+    "frame": "#f0eee6",
+    "stone": "#9a9488"
+   }
+  },
+  {
+   "wallSurfaces": [
+    60,
+    216
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#7a5a4c",
+    "frame": "#f0eee6",
+    "stone": "#9a9488"
+   }
+  },
+  {
+   "wallSurfaces": [
+    90,
+    91
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 13,
+   "ground": "system",
+   "windows": "plain",
+   "stringCourses": true,
+   "cornice": true,
+   "signage": {
+    "text": "HEINEKEN",
+    "colour": "#2a8a3a",
+    "mount": "cornice"
+   },
+   "deepBars": true,
+   "palette": {
+    "brick": "#6e5040",
+    "frame": "#f0eee6",
+    "stone": "#9a9488"
+   },
+   "blankStoreys": [
+    3
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7a5a4c",
+  "frame": "#f0eee6",
+  "door": "#5a2a22",
+  "stone": "#9a9488"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Quellijnstraat 36 (BAG pand 0363100012098847, built 1927, 220 3DBAG wall surfaces, roof max 17.1 m): a large 1920s brick block of the Quellijnkwartier with several wings round courtyards. Photographed: the 55 m north front (w01-6: brick with horizontal bands, a rounded corner at the left, three tall arched timber gates, a green door and a ground-floor playground), the 52 m west front on the canal (w02-268: three storeys of small windows in brick bands, a green HEINEKEN name, large dark openings at the right) and corner details on the east (w03-340, w04-186, w05-186). The identification as an Amsterdam School period block comes from the BAG year and the photographed brick bands and arched gates.",
+  "walls[0] = panel 42 (N, 27 m, eaves 11.6; surface 51): 3 storeys x 6 bays with string courses and three garage doors on the ground. walls[1] = panel 51 (N, 28 m, eaves 15.0; surfaces 60, 216): 4 storeys x 6 bays with string courses. walls[2] = panel 70 (W, 52 m, eaves 10.0; surfaces 90, 91): 3 storeys x 13 bays of small windows (storey 3, the strip of the 11.9 m gable above the 10.0 m eaves, is blank: a window there overlapped the wall) with string courses and the HEINEKEN name letters on a cornice band (in the photograph the name sits in the middle of the wall, not on a cornice). Simplified: the gates are plain tall doors without arched heads, the rounded corner is 3DBAG facets, the green door and the ground-floor playground are not modelled. Not drawn: the east wings with the corner details, the courtyard walls and the 17 m rear blocks (blank brick)."
+ ]
+}

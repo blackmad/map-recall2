@@ -1,0 +1,130 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "haarlemmerweg-325-110408",
+ "pandId": "0363100012110408",
+ "address": "Haarlemmerweg 325, Amsterdam-West (Westergasfabriek district): Q-Park Westergasfabriek, a curved multi-storey car park with brick-fronted shops on its ground floor and three decks screened by pale translucent louvres, and a concrete south front with the car-park entrance",
+ "sources": [
+  {
+   "id": "pano-2024-09-11-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-11_13-46-10_00184/",
+   "image": "staging/pand-reference-walls/0363100012110408/w01-359.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-11-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-11_08-54-20_00050/",
+   "image": "staging/pand-reference-walls/0363100012110408/w02-269.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-04-17-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2019-04-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001132_pano_0001_000266/",
+   "image": "staging/pand-reference-walls/0363100012110408/w04-179.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-09-11-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2024-09-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-11_08-54-20_00030/",
+   "image": "staging/pand-reference-walls/0363100012110408/w05-168.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    70,
+    100,
+    101
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "ground": "glazed",
+   "windows": "wide",
+   "palette": {
+    "brick": "#8a4a3a",
+    "frame": "#d4d8d8",
+    "stone": "#b0aea8"
+   },
+   "baysPerStorey": 13
+  },
+  {
+   "wallSurfaces": [
+    13
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "ground": "glazed",
+   "windows": "wide",
+   "palette": {
+    "brick": "#8a4a3a",
+    "frame": "#d4d8d8",
+    "stone": "#b0aea8"
+   },
+   "baysPerStorey": 13
+  },
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "ground": "glazed",
+   "windows": "wide",
+   "palette": {
+    "brick": "#8a4a3a",
+    "frame": "#d4d8d8",
+    "stone": "#b0aea8"
+   },
+   "baysPerStorey": 10
+  },
+  {
+   "wallSurfaces": [
+    54
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "ground": "blank",
+   "entrance": {
+    "bay": 2,
+    "canopy": true
+   },
+   "signage": {
+    "text": "Q PARK WESTERGASFABRIEK",
+    "colour": "#e8e8e8",
+    "mount": "canopy"
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#b0aea8",
+    "frame": "#8a9298",
+    "stone": "#9a9890"
+   },
+   "baysPerStorey": 4
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#8a4a3a",
+  "frame": "#d4d8d8",
+  "door": "#2a2a2a",
+  "stone": "#b0aea8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Haarlemmerweg 325 (BAG pand 0363100012110408, built 1913 per BAG; the building is the Q-Park Westergasfabriek multi-storey car park with shops, 107 3DBAG wall surfaces, roof max 19.1 m): a roughly 50 m by 40 m car-park block on the Haarlemmerweg. Photographed: the north front (w01-359 2023: a brick plinth with shopfronts and a LEEN BAKKER and SANIDIRECT fascia, three decks of translucent louvre screens above), the west front (w02-269: same, with badkamers shopfronts), the south front (w04-179: brick corner with the Leen Bakker shop) and the south entrance (w05-168: concrete decks and the car-park entrance under a dark canopy with the Q PARK WESTERGASFABRIEK sign). w03-78 (east) has no usable view.",
+  "walls[0] = panel 64 (N, 51 m, eaves 15.2; surfaces 70, 100, 101): 4 storeys x 13 bays of wide ribbon windows over a glazed shopfront ground (14.1k triangles at the default pitch). walls[1] = panel 11 (W, 50 m; surface 13) and walls[2] = panel 10 (S, 38 m; surface 11): the same. walls[3] = panel 50 (S entrance, 15 m, eaves 15.2; surface 54): concrete render, four open ribbon decks over a blank ground, an entrance with a canopy carrying the Q PARK WESTERGASFABRIEK sign. Simplified: the louvre screens are ribbon windows in a pale frame colour, the brick plinth is the wall colour under the glazed ground, the curved corners are the 3DBAG facets. Not drawn: the tenant signs (LEEN BAKKER, SANIDIRECT; shop tenants change), the east front and the inner deck ramps."
+ ]
+}
