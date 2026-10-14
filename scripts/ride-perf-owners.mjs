@@ -144,7 +144,7 @@ const tStart = await page.evaluate((noWrap) => {
   const tick = () => {
     const now = performance.now();
     const tbs = tb();
-    P.frames.push({t: now, dt: now - last, owners: cur.owners, calls: cur.calls, gl: cur.gl, chunks: tbs?.chunks?.size ?? 0, pending: tbs?.pending?.length ?? 0, redraws: vm._sharedFrame?.shadowRedraws ?? null});
+    P.frames.push({t: now, dt: now - last, ab: w.__abMode ?? null, owners: cur.owners, calls: cur.calls, gl: cur.gl, chunks: tbs?.chunks?.size ?? 0, pending: tbs?.pending?.length ?? 0, redraws: vm._sharedFrame?.shadowRedraws ?? null});
     cur = {owners: {}, calls: {}, gl: {draws: 0, tris: 0, tex: 0, texMB: 0, bufMB: 0, compile: 0, link: 0}};
     last = now;
     if (P.frames.length % 60 === 0 && performance.memory) P.heap.push(+(performance.memory.usedJSHeapSize / 1048576).toFixed(1));
@@ -153,6 +153,13 @@ const tStart = await page.evaluate((noWrap) => {
   requestAnimationFrame(tick);
   return performance.now();
 }, !!process.env.NO_WRAP);
+// AB_ON='<js>' AB_OFF='<js>': in-page A/B, switching every AB_MS (default 500) ms through the window; every frame is
+// tagged with the mode in force, and `ab` in the result has the frame times and owners per mode (same page, same
+// machine state: drift between runs cancels). The frame right after a switch is left out.
+if (process.env.AB_ON && process.env.AB_OFF) await page.evaluate(({on, off, ms}) => {
+  const w = window; w.__abMode = 1; (0, eval)(on);
+  w.__abTimer = setInterval(() => { w.__abMode = w.__abMode ? 0 : 1; (0, eval)(w.__abMode ? on : off); w.__abSwitchAt = performance.now(); }, ms);
+}, {on: process.env.AB_ON, off: process.env.AB_OFF, ms: Number(process.env.AB_MS || 500)});
 const wallStart = Date.now();
 if (view !== 'aerial') await page.keyboard.down('ArrowUp');
 // TRACE=1: a 4 s devtools timeline trace from the middle of the window (artifacts/perf-owners/<label>.trace.json).
@@ -218,7 +225,15 @@ const long = frames.filter(f => f.dt > 33).map(f => {
   return {t: Math.round(f.t), dt: r2(f.dt), top, calls, gl: {draws: f.gl.draws, link: f.gl.link, compile: f.gl.compile, tex: f.gl.tex, texMB: r2(f.gl.texMB), bufMB: r2(f.gl.bufMB)},
     loaf: loaf ? {dur: Math.round(loaf.dur), styleLayout: Math.round(loaf.styleLayout), scripts: loaf.scripts} : null};
 });
-const result = {label, view, device, qs, at: new Date().toISOString(), noWrap: !!process.env.NO_WRAP,
+const ab = !(process.env.AB_ON && process.env.AB_OFF) ? null : Object.fromEntries([['on', 1], ['off', 0]].map(([name, mode]) => {
+  const fs_ = frames.filter((f, i) => f.ab === mode && frames[i - 1]?.ab === mode);
+  const names = [...new Set(fs_.flatMap(f => Object.keys(f.owners)))];
+  const own = Object.fromEntries(names.map(o => [o, r2(sum(fs_.map(f => f.owners[o] || 0)) / fs_.length)]).sort((a, b) => b[1] - a[1]));
+  const d = fs_.map(f => f.dt);
+  return [name, {n: fs_.length, median: r2(pick(d, .5)), p95: r2(pick(d, .95)), ownedMsPerFrame: r2(sum(fs_.map(f => sum(Object.values(f.owners)))) / fs_.length),
+    drawCallsMedian: pick(fs_.map(f => f.gl.draws), .5), owners: own}];
+}));
+const result = {label, view, device, qs, at: new Date().toISOString(), noWrap: !!process.env.NO_WRAP, ab,
   frames: {n: dts.length, median: r2(pick(dts, .5)), p95: r2(pick(dts, .95)), p99: r2(pick(dts, .99)), mean: r2(sum(dts) / dts.length), over33: dts.filter(d => d > 33).length, over50: dts.filter(d => d > 50).length, over100: dts.filter(d => d > 100).length},
   ownedMsPerFrame: r2(sum(frames.map(f => sum(Object.values(f.owners)))) / frames.length),
   ownedP99Ms: r2(pick(frames.map(f => sum(Object.values(f.owners))), .99)), ownedMaxMs: r2(Math.max(...frames.map(f => sum(Object.values(f.owners))))),
@@ -227,6 +242,7 @@ const result = {label, view, device, qs, at: new Date().toISOString(), noWrap: !
   resident: raw.resident, labels: raw.labels, heapMB: raw.heapMB, heapSeries: raw.P.heap, gcMs, profileMs, longFrames: long, methods, hot,
   start: {x: Math.round(start.x), y: Math.round(start.y)}, end: {x: Math.round(raw.end.x), y: Math.round(raw.end.y)}, errors: errors.slice(0, 5)};
 console.log(JSON.stringify({label, frames: result.frames, ownedMsPerFrame: result.ownedMsPerFrame, gl: result.gl, gcMs, errors: errors.length}));
+if (ab) console.log(JSON.stringify(Object.fromEntries(Object.entries(ab).map(([k, v]) => [k, {n: v.n, median: v.median, p95: v.p95, owned: v.ownedMsPerFrame, draws: v.drawCallsMedian, top: Object.fromEntries(Object.entries(v.owners).slice(0, 8))}]))));
 fs.mkdirSync('artifacts/perf-owners', {recursive: true});
 fs.appendFileSync('artifacts/perf-owners/ride.jsonl', JSON.stringify(result) + '\n');
 fs.writeFileSync(`artifacts/perf-owners/${label}.json`, JSON.stringify(result, null, 1));

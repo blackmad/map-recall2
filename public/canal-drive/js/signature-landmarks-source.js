@@ -19,6 +19,7 @@ import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlot
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
+import { LANDMARK_SEQUENCE, anchorWorldFromMercator, bySequence, mercatorFromAnchorWorld, multiplyMat4, needsRebase, painterSortStable, reversePainterSortStable } from '../../../src/canalRecall/landmarks/batchedLegacyFrame.ts';
 import { applyMeshHighlight, highlightRecipe } from '../../../src/canalRecall/look/highlight.ts';
 import { enuDirectionInLocal, SUN_DIRECTION, sunDirection, DEFAULT_LIGHT_RIG } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 
@@ -108,6 +109,14 @@ export class SignatureLandmarks {
     this.activeLandmarkId = null;
     /** `?sharedFrame=1`: draw in the page's one three.js frame (no own layer, renderer or lights). */
     this.sharedFrame = options.sharedFrame || null;
+    // Legacy layer: every model in one scene, one render per frame (landmarks/batchedLegacyFrame.ts).
+    // Not under `?cityLook=1`, whose tier distance is measured from the model origin the per-model camera
+    // put the eye at; `?landmarkBatch=0` or `window.__canalRecallLandmarkBatch = false` keeps one render per model.
+    let batch = window.__canalRecallLandmarkBatch !== false;
+    try { batch &&= new URLSearchParams(window.location.search).get('landmarkBatch') !== '0'; } catch { /* no location */ }
+    this._batchLegacy = !this.sharedFrame && batch && !cityLookEnabled();
+    this._batchSequence = 0;
+    this._batchAnchor = null;
     this.layer = this._makeLayer();
     if (this.sharedFrame) this._attachShared(options.sharedOrder ?? 20);
     else map.addLayer(this.layer);
@@ -312,7 +321,8 @@ export class SignatureLandmarks {
 
   /** A legacy model scene skips three's per-render matrix walk; refresh it after its contents change. */
   _refreshSceneMatrices(entry) {
-    entry.scene?.updateMatrixWorld();
+    if (entry.scene) entry.scene.updateMatrixWorld();
+    else if (this._batchLegacy) entry.holder?.updateMatrixWorld(true);
   }
 
   /** Build the pick BVHs of a model that picks reach, in idle time, a mesh at a time. */
@@ -737,6 +747,13 @@ export class SignatureLandmarks {
         scene.add(fill);
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
+        // One scene for every model (`_batchLegacy`): its matrices are refreshed where they change (placement,
+        // re-base, level swap, highlight passes), and draws keep the old model-by-model order. Inside one model
+        // (one render per model) the sequence is constant and the sort is three's own.
+        scene.matrixWorldAutoUpdate = false;
+        renderer.setOpaqueSort(bySequence(painterSortStable));
+        renderer.setTransparentSort(bySequence(reversePainterSortStable));
+        owner._batchScene = scene;
         owner._setup(map, scene);
       },
       onRemove(map) {
@@ -747,8 +764,10 @@ export class SignatureLandmarks {
         map.off('moveend', owner._onMove);
         for (const type of ['move', 'resize', 'render']) map.off(type, owner._dropViewBounds);
         owner._pending.clear();
-        for (const entry of owner._entries) { owner._disposeModel(entry.group, entry.spec, entry.url); owner._disposeSpare(entry); }
+        for (const entry of owner._entries) { entry.holder?.parent?.remove(entry.holder); owner._disposeModel(entry.group, entry.spec, entry.url); owner._disposeSpare(entry); }
         owner._entries = [];
+        owner._batchAnchor = null;
+        owner._batchScene = null;
         owner.shown.clear();
         owner._loader = null;
         owner._lightScene = null;
@@ -758,6 +777,25 @@ export class SignatureLandmarks {
       },
       render(_gl, args) {
         if (owner._removed || !owner.enabled || !owner._entries.length) return;
+        if (owner._batchLegacy) {
+          let any = false;
+          for (const entry of owner._entries) {
+            // Shared WebGL canvas: distant landmarks should cost no draw calls.
+            const show = owner._nearby(entry.spec, entry.placement.anchor) && owner.canShowModel(entry.spec);
+            entry.holder.visible = show;
+            entry.pickProjection = null;
+            if (show) any = true;
+          }
+          if (!any) return;
+          owner._rebaseIfFar();
+          camera.projectionMatrix.fromArray(multiplyMat4(args.defaultProjectionData.mainMatrix, owner._mercatorFromWorld, owner._clipFromWorld));
+          const pickProjection = camera.projectionMatrix.clone();
+          for (const entry of owner._entries) if (entry.holder.visible) entry.pickProjection = pickProjection;
+          if (owner._recipeLook) owner._recipeLook.enuFromWorld.value.copy(owner._batchEnuFromWorld);
+          renderer.resetState();
+          renderer.render(scene, camera);
+          return;
+        }
         for (const entry of owner._entries) {
           // Shared WebGL canvas: distant landmarks should cost no render calls.
           if (!owner._nearby(entry.spec, entry.placement.anchor) || !owner.canShowModel(entry.spec)) { entry.pickProjection = null; continue; }
@@ -790,7 +828,8 @@ export class SignatureLandmarks {
   }
 
   _applyGroundBase(entry) {
-    if (!entry.holder || !entry.units) return false;
+    // Own ground is a shared-frame feature; a legacy holder maps Mercator to the anchor world instead.
+    if (!entry.holder || !entry.units || this._batchLegacy) return false;
     // Street chunks: each pand on its own relief (own-ground bundle helpers, src/canalRecall/ownGround/chunkBases.ts).
     if (entry.spec.chunkPands && this._groundBase && window.CanalRecallOwnGround?.separatePands) return this._applyChunkPandBases(entry);
     const base = this._groundBase ? this._groundBase(entry.placement.anchor, 3) : 0;
@@ -901,6 +940,12 @@ export class SignatureLandmarks {
       holder.matrixAutoUpdate = false;
       holder.add(group);
       this.sharedFrame.constructor.setShadows(group, true, true);
+    } else if (this._batchLegacy) {
+      // One scene: the holder maps Mercator to the anchor's world, its sequence keeps the old draw order.
+      holder = new THREE.Group();
+      holder.matrixAutoUpdate = false;
+      holder[LANDMARK_SEQUENCE] = ++this._batchSequence;
+      holder.add(group);
     } else {
       modelScene = new THREE.Scene();
       for (const light of scene.children.filter(child => child.isLight)) modelScene.add(light.clone());
@@ -938,14 +983,13 @@ export class SignatureLandmarks {
       enuFromWorld = new THREE.Matrix3().setFromMatrix4(transform);
       enuFromWorld.premultiply(new THREE.Matrix3().set(1, 0, 0, 0, -1, 0, 0, 0, 1)).multiplyScalar(1 / units);
     }
-    if (modelScene) {
-      // World-fixed lights: the rig's sun, its opposite fill and the sky's up, in this model's frame.
-      for (const light of modelScene.children) {
-        const enu = light.name === 'landmark-sun' ? SUN_DIRECTION : light.name === 'landmark-fill' ? FILL_DIRECTION : light.name === 'landmark-sky' ? [0, 0, 1] : null;
-        if (enu) light.position.fromArray(enuDirectionInLocal(transform.elements, enu));
-      }
-    }
-    if (holder) {
+    // World-fixed lights: the rig's sun, its opposite fill and the sky's up, in this model's frame.
+    if (modelScene) this._aimLights(modelScene, transform.elements);
+    if (holder && this._batchLegacy) {
+      if (!this._batchAnchor) this._rebase(coordinate.x, coordinate.y);
+      holder.matrix.fromArray(multiplyMat4(this._worldFromMercator, transform.elements));
+      scene.add(holder);
+    } else if (holder) {
       holder.matrix.copy(transform);
       holder.matrixWorldNeedsUpdate = true;
       this._sharedRoot.add(holder);
@@ -955,6 +999,7 @@ export class SignatureLandmarks {
     // (a level swap, highlight passes) updates it there (`_refreshSceneMatrices`).
     freezeStaticMatrices(modelScene || group);
     if (modelScene) { modelScene.updateMatrixWorld(true); modelScene.matrixWorldAutoUpdate = false; }
+    if (holder && this._batchLegacy) holder.updateMatrixWorld(true);
     const size = bounds.getSize(new THREE.Vector3());
     const entry = { spec, group, scene: modelScene, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld,
       // Level of detail: `level` is what `group` holds now; `spare` is the other level once loaded (detached, kept for reuse).
@@ -967,6 +1012,75 @@ export class SignatureLandmarks {
     this._applySuppression();
     this.onModelShown(spec, placement);
     map.triggerRepaint();
+  }
+
+  /** Aim a legacy scene's lights (world-fixed: sun, opposite fill, sky up) for a scene whose local → Mercator is `mercatorFromLocal`. */
+  _aimLights(scene, mercatorFromLocal) {
+    for (const light of scene.children) {
+      const enu = light.name === 'landmark-sun' ? SUN_DIRECTION : light.name === 'landmark-fill' ? FILL_DIRECTION : light.name === 'landmark-sky' ? [0, 0, 1] : null;
+      if (enu) light.position.fromArray(enuDirectionInLocal(mercatorFromLocal, enu));
+    }
+  }
+
+  /**
+   * Diagnostics (A/B in one page, the same frame): switch the legacy layer between one scene for every model
+   * (default) and one scene and render per model (`?landmarkBatch=0`). Returns the mode now in force.
+   */
+  setLegacyBatch(on) {
+    const scene = this._batchScene;
+    if (this.sharedFrame || !scene) return false;
+    on = !!on;
+    if (on === this._batchLegacy) return on;
+    this._batchLegacy = on;
+    for (const entry of this._entries) {
+      if (on) {
+        entry.scene = null;
+        if (!entry.holder) { entry.holder = new THREE.Group(); entry.holder.matrixAutoUpdate = false; entry.holder[LANDMARK_SEQUENCE] = ++this._batchSequence; }
+        entry.holder.add(entry.group);
+        if (!this._batchAnchor) this._rebase(entry.transform.elements[12], entry.transform.elements[13]);
+        entry.holder.matrix.fromArray(multiplyMat4(this._worldFromMercator, entry.transform.elements));
+        scene.add(entry.holder);
+        entry.holder.updateMatrixWorld(true);
+      } else {
+        entry.holder?.parent?.remove(entry.holder);
+        const modelScene = new THREE.Scene();
+        for (const light of scene.children.filter(child => child.isLight)) modelScene.add(light.clone());
+        modelScene.add(entry.group);
+        this._aimLights(modelScene, entry.transform.elements);
+        modelScene.updateMatrixWorld(true);
+        modelScene.matrixWorldAutoUpdate = false;
+        entry.scene = modelScene;
+      }
+    }
+    this.map.triggerRepaint();
+    return on;
+  }
+
+  /** Legacy one-scene frame: re-base the anchor world when the view centre is far from it (float32 on the GPU). */
+  _rebaseIfFar() {
+    const centre = this.map.getCenter();
+    const c = this.maplibregl.MercatorCoordinate.fromLngLat([centre.lng, centre.lat], 0);
+    if (needsRebase(this._batchAnchor, [c.x, c.y], c.meterInMercatorCoordinateUnits())) this._rebase(c.x, c.y);
+  }
+
+  /** Anchor the legacy scene's world at Mercator (x, y): holders, lights and the recipe look's ENU follow. */
+  _rebase(x, y) {
+    const scene = this._batchScene;
+    if (!scene) return;
+    const units = this.maplibregl.MercatorCoordinate.fromLngLat(new this.maplibregl.MercatorCoordinate(x, y, 0).toLngLat(), 0).meterInMercatorCoordinateUnits();
+    this._batchAnchor = [x, y];
+    this._mercatorFromWorld = mercatorFromAnchorWorld(x, y, units);
+    this._worldFromMercator = anchorWorldFromMercator(x, y, units);
+    this._clipFromWorld ||= new Array(16);
+    for (const entry of this._entries || []) {
+      if (entry.holder && entry.holder.parent === scene) entry.holder.matrix.fromArray(multiplyMat4(this._worldFromMercator, entry.transform.elements));
+    }
+    // The rig's sun, its opposite fill and the sky's up, in the anchor world (as each model's copy was aimed in its own).
+    this._aimLights(scene, this._mercatorFromWorld);
+    // Recipe look: world → east/north/up, the same construction as a model's own `enuFromWorld`.
+    this._batchEnuFromWorld = new THREE.Matrix3().setFromMatrix4(new THREE.Matrix4().fromArray(this._mercatorFromWorld))
+      .premultiply(new THREE.Matrix3().set(1, 0, 0, 0, -1, 0, 0, 0, 1)).multiplyScalar(1 / units);
+    scene.updateMatrixWorld(true);
   }
 
   /** Whether this spec has a lod1 sibling the loader may use. */
