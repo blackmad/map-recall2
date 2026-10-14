@@ -280,7 +280,15 @@ the plan) rather than guessed, and the contact sheet carries the numbers
 and a PASS / WARN / FAIL / NO EVIDENCE line. Geometry gates passing is not
 acceptance; a sheet without a photo on it is not a review; no sheet, no
 merge. A wrong kit is worse than the plain 3DBAG box, so "uninstall" is a
-valid outcome. The user also wants both routes tried where the kit cannot
+valid outcome. **Kit lanes improve the kit.** A large-recipe or block-face
+lane that finds the photo showing something the kit cannot say (a colour
+split along a front, glass columns, an arch shape, a canopy, a ledge, a
+band) adds the component or system in the same lane, with a test and
+byte-identical default output, rather than fitting the nearest thing the
+kit already has; fitting inside the current vocabulary is how batches 5–7
+went wrong. Every lane report lists what the kit still cannot express
+for its houses, and that list feeds the next kit pass (user, 2026-10-14:
+"kit wins but kit needs a lot of help"). The user also wants both routes tried where the kit cannot
 express a front: a measured kit and a stylised photo-derived texture, judged
 side by side (plan `docs/plans/large-tier-likeness-and-streets-20261014.md`).
 Batches 5–7 were judged "awful" on exactly these points (Apollohal's glazed
