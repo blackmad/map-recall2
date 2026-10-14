@@ -1708,5 +1708,11 @@
     "buildVersion": 2,
     "bytes": 19948,
     "triangles": 868
+  },
+  "westermoskee": {
+    "sourceHash": "443a9ca11112e4fa",
+    "buildVersion": 2,
+    "bytes": 71164,
+    "triangles": 3348
   }
 }
