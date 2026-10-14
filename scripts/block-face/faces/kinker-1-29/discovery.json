@@ -1,0 +1,1210 @@
+{
+ "street": "Kinkerstraat",
+ "seed": "0363100012166843",
+ "members": [
+  "0363100012166843",
+  "0363100012158478",
+  "0363100012166689",
+  "0363100012156139",
+  "0363100012103619",
+  "0363100012158983",
+  "0363100012165338",
+  "0363100012159971",
+  "0363100012157023",
+  "0363100012155746",
+  "0363100012158003"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012158968 21.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012154241",
+   "reason": "frontage 77.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012069666",
+   "reason": "frontage 36.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012071900",
+   "reason": "frontage 102.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012085603",
+   "reason": "frontage 47.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012086276",
+   "reason": "frontage 137.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012088841",
+   "reason": "frontage 77.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012103660",
+   "reason": "frontage 57.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012104946",
+   "reason": "frontage 58.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012124002",
+   "reason": "frontage 87.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012124342",
+   "reason": "frontage 45.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012125376",
+   "reason": "frontage 60.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012128825",
+   "reason": "sightline to Kinkerstraat crosses 0363100012157649"
+  },
+  {
+   "pandId": "0363100012138462",
+   "reason": "frontage 137.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012143296",
+   "reason": "frontage 37.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012152521",
+   "reason": "sightline to Kinkerstraat crosses 0363100012157476"
+  },
+  {
+   "pandId": "0363100012152568",
+   "reason": "frontage 135.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012152589",
+   "reason": "frontage 107.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012152624",
+   "reason": "frontage 134.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012152848",
+   "reason": "frontage 166.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153200",
+   "reason": "frontage 52.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153628",
+   "reason": "frontage 110.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012154100",
+   "reason": "frontage 30.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012154136",
+   "reason": "frontage 136.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012154317",
+   "reason": "frontage 165.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012154385",
+   "reason": "sightline to Kinkerstraat crosses 0363100012158968"
+  },
+  {
+   "pandId": "0363100012155657",
+   "reason": "frontage 65.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012155664",
+   "reason": "frontage 160.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012155731",
+   "reason": "frontage 151.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012155799",
+   "reason": "frontage 102.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012089346",
+   "reason": "frontage 172.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153000",
+   "reason": "frontage 110.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153048",
+   "reason": "frontage 176.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153613",
+   "reason": "frontage 167.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012154346",
+   "reason": "frontage 130.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012154369",
+   "reason": "frontage 172.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012067309",
+   "reason": "frontage 43.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012084787",
+   "reason": "frontage 76.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012089603",
+   "reason": "frontage 57.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012119844",
+   "reason": "frontage 79.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012131737",
+   "reason": "frontage 52.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012152383",
+   "reason": "frontage 62.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012152933",
+   "reason": "frontage 114.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153164",
+   "reason": "frontage 37.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012153311",
+   "reason": "frontage 74.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156130",
+   "reason": "frontage 95.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156555",
+   "reason": "frontage 125.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156556",
+   "reason": "frontage 119.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157131",
+   "reason": "frontage 157.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157238",
+   "reason": "frontage 101.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157568",
+   "reason": "frontage 166.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156458",
+   "reason": "frontage 86.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156482",
+   "reason": "sightline to Kinkerstraat crosses 0363100012155746"
+  },
+  {
+   "pandId": "0363100012156739",
+   "reason": "frontage 30.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156899",
+   "reason": "frontage 154.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156934",
+   "reason": "frontage 114.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157004",
+   "reason": "frontage 108.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157054",
+   "reason": "sightline to Kinkerstraat crosses 0363100012157055"
+  },
+  {
+   "pandId": "0363100012157055",
+   "reason": "sightline to Kinkerstraat crosses 0363100012161331"
+  },
+  {
+   "pandId": "0363100012157126",
+   "reason": "frontage 106.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157246",
+   "reason": "frontage 65.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157440",
+   "reason": "frontage 160.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157535",
+   "reason": "frontage 161.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157638",
+   "reason": "frontage 103.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157649",
+   "reason": "sightline to Kinkerstraat crosses 0363100012166843"
+  },
+  {
+   "pandId": "0363100012157749",
+   "reason": "frontage 35.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157807",
+   "reason": "frontage 52.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157834",
+   "reason": "frontage 145.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157835",
+   "reason": "frontage 140.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158028",
+   "reason": "frontage 53.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158255",
+   "reason": "frontage 159.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158289",
+   "reason": "frontage 61.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158533",
+   "reason": "frontage 52.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158587",
+   "reason": "frontage 97.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158611",
+   "reason": "frontage 136.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159047",
+   "reason": "frontage 137.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156446",
+   "reason": "frontage 115.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012156576",
+   "reason": "frontage 111.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157393",
+   "reason": "frontage 157.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158178",
+   "reason": "frontage 177.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158179",
+   "reason": "frontage 207.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012158497",
+   "reason": "frontage 172.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159117",
+   "reason": "frontage 172.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012157590",
+   "reason": "frontage 78.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159360",
+   "reason": "frontage 70.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159934",
+   "reason": "frontage 151.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161701",
+   "reason": "frontage 113.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162083",
+   "reason": "frontage 107.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162089",
+   "reason": "frontage 132.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162090",
+   "reason": "frontage 138.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162289",
+   "reason": "frontage 170.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162368",
+   "reason": "frontage 83.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162529",
+   "reason": "frontage 175.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159621",
+   "reason": "frontage 154.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159799",
+   "reason": "frontage 109.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159800",
+   "reason": "frontage 135.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160137",
+   "reason": "frontage 136.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160678",
+   "reason": "frontage 96.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160679",
+   "reason": "frontage 103.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160801",
+   "reason": "frontage 135.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161068",
+   "reason": "frontage 69.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161128",
+   "reason": "frontage 73.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161267",
+   "reason": "frontage 134.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161724",
+   "reason": "frontage 100.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161762",
+   "reason": "frontage 59.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162072",
+   "reason": "frontage 109.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162115",
+   "reason": "frontage 135.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162224",
+   "reason": "sightline to Kinkerstraat crosses 0363100012155746"
+  },
+  {
+   "pandId": "0363100012162236",
+   "reason": "frontage 107.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162285",
+   "reason": "frontage 157.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162794",
+   "reason": "frontage 76.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159634",
+   "reason": "frontage 98.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160065",
+   "reason": "frontage 121.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160463",
+   "reason": "frontage 176.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160622",
+   "reason": "frontage 177.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161265",
+   "reason": "frontage 136.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162013",
+   "reason": "frontage 207.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162271",
+   "reason": "frontage 130.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012162530",
+   "reason": "frontage 180.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012159577",
+   "reason": "frontage 100.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160351",
+   "reason": "frontage 108.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012160755",
+   "reason": "frontage 91.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161388",
+   "reason": "frontage 137.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161656",
+   "reason": "frontage 82.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161818",
+   "reason": "frontage 103.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012161866",
+   "reason": "frontage 102.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012163083",
+   "reason": "sightline to Kinkerstraat crosses 0363100012161457"
+  },
+  {
+   "pandId": "0363100012164663",
+   "reason": "frontage 89.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165898",
+   "reason": "frontage 71.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166290",
+   "reason": "frontage 144.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166694",
+   "reason": "frontage 161.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012163215",
+   "reason": "frontage 136.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012163498",
+   "reason": "frontage 40.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164057",
+   "reason": "sightline to Kinkerstraat crosses 0363100012157649"
+  },
+  {
+   "pandId": "0363100012164283",
+   "reason": "frontage 97.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164441",
+   "reason": "frontage 135.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164836",
+   "reason": "frontage 104.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165169",
+   "reason": "frontage 163.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165307",
+   "reason": "frontage 135.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165590",
+   "reason": "frontage 158.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165591",
+   "reason": "sightline to Kinkerstraat crosses 0363100012154385"
+  },
+  {
+   "pandId": "0363100012165701",
+   "reason": "frontage 137.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165767",
+   "reason": "frontage 161.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165932",
+   "reason": "frontage 103.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166073",
+   "reason": "frontage 107.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166180",
+   "reason": "frontage 104.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166266",
+   "reason": "frontage 41.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166379",
+   "reason": "frontage 70.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166486",
+   "reason": "frontage 81.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166562",
+   "reason": "frontage 58.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166814",
+   "reason": "frontage 136.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166838",
+   "reason": "frontage 162.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012163171",
+   "reason": "frontage 176.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012163832",
+   "reason": "frontage 94.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164150",
+   "reason": "frontage 142.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164805",
+   "reason": "frontage 162.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165670",
+   "reason": "frontage 176.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165783",
+   "reason": "frontage 102.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012165988",
+   "reason": "frontage 106.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166078",
+   "reason": "frontage 175.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166306",
+   "reason": "frontage 111.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166587",
+   "reason": "frontage 147.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166588",
+   "reason": "frontage 152.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166625",
+   "reason": "frontage 90.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166650",
+   "reason": "frontage 173.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166777",
+   "reason": "frontage 207.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012163461",
+   "reason": "frontage 66.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164420",
+   "reason": "frontage 86.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164571",
+   "reason": "frontage 32.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012164753",
+   "reason": "sightline to Kinkerstraat crosses 0363100012157926"
+  },
+  {
+   "pandId": "0363100012166778",
+   "reason": "frontage 42.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168918",
+   "reason": "frontage 134.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168919",
+   "reason": "frontage 132.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168920",
+   "reason": "frontage 131.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168921",
+   "reason": "frontage 137.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168928",
+   "reason": "frontage 152.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168930",
+   "reason": "frontage 136.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168932",
+   "reason": "frontage 166.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168937",
+   "reason": "frontage 162.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168938",
+   "reason": "frontage 168.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168939",
+   "reason": "frontage 189.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012168940",
+   "reason": "frontage 158.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174093",
+   "reason": "frontage 162.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174094",
+   "reason": "frontage 178.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174095",
+   "reason": "frontage 184.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174096",
+   "reason": "frontage 149.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174097",
+   "reason": "frontage 157.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174098",
+   "reason": "frontage 140.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174099",
+   "reason": "frontage 144.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174155",
+   "reason": "frontage 167.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174157",
+   "reason": "frontage 157.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174158",
+   "reason": "frontage 161.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174164",
+   "reason": "frontage 187.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174165",
+   "reason": "frontage 172.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174166",
+   "reason": "frontage 174.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174551",
+   "reason": "frontage 140.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174552",
+   "reason": "frontage 144.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174553",
+   "reason": "frontage 148.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174554",
+   "reason": "frontage 148.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174555",
+   "reason": "frontage 153.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012185421",
+   "reason": "no frontage on Kinkerstraat: No footprint edge faces Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012185422",
+   "reason": "frontage 99.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012210308",
+   "reason": "frontage 101.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012166867",
+   "reason": "frontage 106.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167031",
+   "reason": "frontage 166.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167043",
+   "reason": "frontage 146.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167057",
+   "reason": "sightline to Kinkerstraat crosses 0363100012155746"
+  },
+  {
+   "pandId": "0363100012167464",
+   "reason": "frontage 134.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167467",
+   "reason": "frontage 119.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167886",
+   "reason": "frontage 135.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012169550",
+   "reason": "frontage 53.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012173536",
+   "reason": "frontage 97.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174148",
+   "reason": "frontage 137.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174149",
+   "reason": "frontage 133.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012174152",
+   "reason": "frontage 132.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012189809",
+   "reason": "frontage 86.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012205646",
+   "reason": "frontage 71.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167024",
+   "reason": "frontage 125.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012167025",
+   "reason": "frontage 120.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012202201",
+   "reason": "frontage 42.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012224253",
+   "reason": "frontage 96.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012225200",
+   "reason": "frontage 89.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012229187",
+   "reason": "frontage 84.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012233799",
+   "reason": "frontage 78.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012243632",
+   "reason": "frontage 140.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012243634",
+   "reason": "frontage 122.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012245310",
+   "reason": "frontage 114.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012210725",
+   "reason": "sightline to Kinkerstraat crosses 0363100012156139"
+  },
+  {
+   "pandId": "0363100012211292",
+   "reason": "frontage 32.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012226330",
+   "reason": "frontage 44.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012233509",
+   "reason": "frontage 106.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012235256",
+   "reason": "frontage 147.8 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236345",
+   "reason": "frontage 147.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236389",
+   "reason": "frontage 158.3 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236679",
+   "reason": "frontage 30.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012237159",
+   "reason": "frontage 134.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012237211",
+   "reason": "frontage 30.2 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012237268",
+   "reason": "frontage 109.7 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012242951",
+   "reason": "frontage 163.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012243207",
+   "reason": "frontage 61.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012243757",
+   "reason": "no frontage on Kinkerstraat: No footprint edge faces Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236335",
+   "reason": "frontage 129.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236416",
+   "reason": "frontage 141.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236674",
+   "reason": "frontage 207.5 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236993",
+   "reason": "frontage 208.9 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012219988",
+   "reason": "frontage 61.6 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012236603",
+   "reason": "frontage 35.1 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012237141",
+   "reason": "frontage 108.0 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012243198",
+   "reason": "frontage 47.4 m from Kinkerstraat"
+  },
+  {
+   "pandId": "0363100012155541",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158140",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160746",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162482",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163174",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163325",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164188",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012202239",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235988",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236360",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236379",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236471",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236814",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237357",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012166843",
+   "alongM": 0,
+   "widthM": 11,
+   "eavesM": 14.77,
+   "roofMaxM": 17.38,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158478",
+   "alongM": 8.02,
+   "widthM": 5.04,
+   "eavesM": 14.42,
+   "roofMaxM": 18.64,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012166689",
+   "alongM": 13.24,
+   "widthM": 5.41,
+   "eavesM": 14.45,
+   "roofMaxM": 18.61,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156139",
+   "alongM": 18.73,
+   "widthM": 5.55,
+   "eavesM": 13.7,
+   "roofMaxM": 16.53,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012103619",
+   "alongM": 38.24,
+   "widthM": 33.48,
+   "eavesM": 15.48,
+   "roofMaxM": 15.48,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158983",
+   "alongM": 57.98,
+   "widthM": 5.99,
+   "eavesM": 15.02,
+   "roofMaxM": 18.84,
+   "storeys3dbag": 5,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165338",
+   "alongM": 63.6,
+   "widthM": 5.26,
+   "eavesM": 15.52,
+   "roofMaxM": 18.83,
+   "storeys3dbag": 5,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159971",
+   "alongM": 69.13,
+   "widthM": 5.79,
+   "eavesM": 15.39,
+   "roofMaxM": 19.01,
+   "storeys3dbag": 5,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157023",
+   "alongM": 74.75,
+   "widthM": 5.46,
+   "eavesM": 13.35,
+   "roofMaxM": 15.36,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155746",
+   "alongM": 80.25,
+   "widthM": 5.53,
+   "eavesM": 13.42,
+   "roofMaxM": 16.09,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158003",
+   "alongM": 85.48,
+   "widthM": 4.94,
+   "eavesM": 14.26,
+   "roofMaxM": 15.82,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  }
+ ]
+}

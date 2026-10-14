@@ -1,0 +1,892 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:36:33.423Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080487",
+   "addresses": [
+    "Kinkerstraat 315",
+    "Kinkerstraat 317",
+    "Kinkerstraat 319"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000686016"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000686018"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62E",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000686019"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62F",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000686020"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62G",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000686021"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000686022"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000686023"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000686024"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000686025"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000686026"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000686027"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64F",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000686028"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64G",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000686029"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 64H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000686030"
+    },
+    {
+     "address": "Kinkerstraat 315",
+     "use": "industriefunctie",
+     "areaM2": 100,
+     "bagId": "0363010000706204"
+    },
+    {
+     "address": "Kinkerstraat 317",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000706209"
+    },
+    {
+     "address": "Kinkerstraat 319",
+     "use": "winkelfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000706213"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000686015"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000686017"
+    }
+   ],
+   "units": 19,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809820542,
+     "lngLat": [
+      4.8625122,
+      52.3646381
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "315",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-07",
+      "name": "waar",
+      "name:en": "waar",
+      "shop": "gift",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4711284145,
+     "lngLat": [
+      4.8625885,
+      52.3646801
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "315",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2026-01-24",
+      "check_date:opening_hours": "2026-01-24",
+      "name": "Bestseller",
+      "opening_hours": "Mo-Sa 08:00-20:00; Su 10:00-20:00",
+      "operator": "Bestseller",
+      "payment:cash": "yes",
+      "phone": "+31 20 737 3053",
+      "shop": "newsagent",
+      "website": "https://www.bestselleronline.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4899458721,
+     "lngLat": [
+      4.862404,
+      52.3646156
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "317",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "name": "Beijing massage",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4899469721,
+     "lngLat": [
+      4.8623394,
+      52.3646034
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "319",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "beauty": "nails",
+      "check_date": "2023-06-30",
+      "check_date:opening_hours": "2023-07-01",
+      "name": "Universal nails",
+      "name:nl": "Universal nails",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 489 4881",
+      "shop": "beauty",
+      "website": "https://www.universal-nails.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160018",
+   "addresses": [
+    "Kinkerstraat 321"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 321-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000706218"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4899464726,
+     "lngLat": [
+      4.862292,
+      52.3645867
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "321",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "changing_table": "no",
+      "check_date:opening_hours": "2023-07-01",
+      "diet:vegetarian": "no",
+      "indoor_seating": "yes",
+      "name": "Le Paname",
+      "opening_hours:signed": "no",
+      "outdoor_seating": "no",
+      "toilets": "yes",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156907",
+   "addresses": [
+    "Kinkerstraat 323"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 323-H",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000706226"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4899464724,
+     "lngLat": [
+      4.8622222,
+      52.3645768
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "323",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-03-01",
+      "email": "info@gonulcoiffures.nl",
+      "female": "yes",
+      "name": "Gőnűl",
+      "name:nl": "Gőnűl",
+      "opening_hours": "Mo-We,Fr 09:00-18:00; Th 09:00-21:00; Sa 09:00-17:00",
+      "phone": "+31 20 612 2594",
+      "shop": "hairdresser",
+      "website": "https://www.gonulcoiffures.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165777",
+   "addresses": [
+    "Kinkerstraat 325"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 325-H",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000706233"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4899464725,
+     "lngLat": [
+      4.8621471,
+      52.3645596
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:postcode": "1053EV",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-03-01",
+      "email": "pior@hotmail.nl",
+      "name": "Pior",
+      "name:nl": "Pior",
+      "opening_hours": "Tu,We,Fr,Sa 10:00-18:00; Mo 13:00-18:00; Th 10:00-19:00",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237373",
+   "addresses": [
+    "Kinkerstraat 327",
+    "Kinkerstraat 329",
+    "Kinkerstraat 331"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 327-H",
+     "use": "winkelfunctie",
+     "areaM2": 257,
+     "bagId": "0363010000706240"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4899464722,
+     "lngLat": [
+      4.8619768,
+      52.3645207
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "327-331",
+      "addr:postcode": "1053EW",
+      "addr:street": "Kinkerstraat",
+      "brand": "DA",
+      "brand:wikidata": "Q4899756",
+      "name": "DA drogist",
+      "name:nl": "DA drogist",
+      "shop": "chemist",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4899464723,
+     "lngLat": [
+      4.86201,
+      52.364518
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "327-331",
+      "addr:postcode": "1053EW",
+      "addr:street": "Kinkerstraat",
+      "amenity": "pharmacy",
+      "check_date": "2025-03-01",
+      "dispensing": "yes",
+      "drive_through": "no",
+      "healthcare": "pharmacy",
+      "name": "Kinker Apotheek",
+      "opening_hours": "Mo-Fr 08:30-18:00; Sa 09:00-17:00",
+      "phone": "+31 20 618 0585",
+      "website": "https://www.kinkerapotheek.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153818",
+   "addresses": [
+    "Kinkerstraat 333"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 333-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000706259"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4893934121,
+     "lngLat": [
+      4.8618903,
+      52.3645103
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "changing_table": "no",
+      "check_date": "2025-03-01",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "'t Saotohuisje",
+      "opening_hours": "Mo-Fr 12:00-20:30; Sa,Su 16:00-20:30",
+      "outdoor_seating": "no",
+      "toilets": "yes",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12006460894,
+     "lngLat": [
+      4.8618533,
+      52.364576
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "frontage",
+     "distanceM": 6.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236064",
+   "addresses": [
+    "Kinkerstraat 335"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 335-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000706263"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809821715,
+     "lngLat": [
+      4.8618257,
+      52.3644876
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "335-H",
+      "addr:postcode": "1053EW",
+      "addr:street": "Kinkerstraat",
+      "dry_cleaning": "yes",
+      "laundry_service": "yes",
+      "name": "Kinker",
+      "self_service": "no",
+      "shop": "laundry",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160024",
+   "addresses": [
+    "Kinkerstraat 337"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 337-H",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000706270"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809821732,
+     "lngLat": [
+      4.861755,
+      52.3644735
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "337-H",
+      "addr:postcode": "1053EW",
+      "addr:street": "Kinkerstraat",
+      "craft": "upholsterer",
+      "name": "Ays",
+      "phone": "+31 6 81072883",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.stoffeerderays.nl"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235967",
+   "addresses": [
+    "Kinkerstraat 339"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 339-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000706278"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006460312,
+     "lngLat": [
+      4.8616956,
+      52.3644619
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "cuisine": "kebab",
+      "indoor_seating": "yes",
+      "name": "Aleppo Top",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152535",
+   "addresses": [
+    "Kinkerstraat 341"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 341-H",
+     "use": "winkelfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000706286"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006429284,
+     "lngLat": [
+      4.8616264,
+      52.3644437
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "ByLima",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153447",
+   "addresses": [
+    "Kinkerstraat 343"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 343-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000706294"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006430508,
+     "lngLat": [
+      4.8615696,
+      52.364431
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "craft": "electronics_repair",
+      "name": "Lenexo"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159990",
+   "addresses": [
+    "Kinkerstraat 345"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 345-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000706302"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006435673,
+     "lngLat": [
+      4.8614951,
+      52.3644117
+     ],
+     "tags": {
+      "name": "Snel Repair",
+      "shop": "repair"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236156",
+   "addresses": [
+    "Kinkerstraat 347"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 347-H",
+     "use": "winkelfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000706310"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6208129286,
+     "lngLat": [
+      4.8614507,
+      52.3643956
+     ],
+     "tags": {
+      "name": "De Kinker",
+      "shop": "bag"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158118",
+   "addresses": [
+    "Kinkerstraat 349"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006441390,
+     "lngLat": [
+      4.8613746,
+      52.3643762
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "cuisine": "chicken",
+      "indoor_seating": "yes",
+      "name": "Bobos Chicken",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164070",
+   "addresses": [
+    "Kinkerstraat 351"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 351-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000706325"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12010229722,
+     "lngLat": [
+      4.861301,
+      52.3643679
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "351",
+      "addr:postcode": "1053EX",
+      "addr:street": "Kinkerstraat",
+      "amenity": "post_office",
+      "name": "Pakketdienst de Kinker",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167386",
+   "addresses": [
+    "Kinkerstraat 353"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 353-H",
+     "use": "winkelfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000706333"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158666",
+   "addresses": [
+    "Kinkerstraat 355"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 355-H",
+     "use": "winkelfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000706341"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006442404,
+     "lngLat": [
+      4.8611771,
+      52.3643341
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Finalemente Brasil",
+      "shop": "supermarket",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236481",
+   "addresses": [
+    "Kinkerstraat 357"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155496",
+   "addresses": [
+    "Kinkerstraat 359"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 359-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000706356"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006430439,
+     "lngLat": [
+      4.8610255,
+      52.3642953
+     ],
+     "tags": {
+      "check_date": "2025-10-07",
+      "name": "Fred Koot",
+      "office": "estate_agent",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:36:33.423Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

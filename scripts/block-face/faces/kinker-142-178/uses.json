@@ -1,0 +1,721 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:42:31.851Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237396",
+   "addresses": [
+    "Kinkerstraat 178"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 178",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000545983"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452238280,
+     "lngLat": [
+      4.8677799,
+      52.3661532
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "180",
+      "addr:postcode": "1053EK",
+      "addr:street": "Kinkerstraat",
+      "brand": "Primera",
+      "brand:website": "https://www.primera.nl",
+      "brand:wikidata": "Q2176149",
+      "brand:wikipedia": "nl:Primera (winkelketen)",
+      "check_date": "2025-10-02",
+      "name": "Primera",
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa 08:00-17:00",
+      "payment:cash": "yes",
+      "phone": "+31 20 683 6364",
+      "post_office": "post_partner",
+      "shop": "newsagent",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.primera.nl/primera-kinkerstraat",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "frontage",
+     "distanceM": 2.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233413",
+   "addresses": [
+    "Kinkerstraat 176"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 176",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000545982"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237004",
+   "addresses": [
+    "Kinkerstraat 168A",
+    "Kinkerstraat 168B",
+    "Kinkerstraat 168C",
+    "Kinkerstraat 168D",
+    "Kinkerstraat 168E",
+    "Kinkerstraat 168F",
+    "Kinkerstraat 170A",
+    "Kinkerstraat 170B",
+    "Kinkerstraat 170C",
+    "Kinkerstraat 170D",
+    "Kinkerstraat 170E",
+    "Kinkerstraat 170F",
+    "Kinkerstraat 170G",
+    "Kinkerstraat 172A",
+    "Kinkerstraat 172B",
+    "Kinkerstraat 172C",
+    "Kinkerstraat 172D",
+    "Kinkerstraat 172E",
+    "Kinkerstraat 172F",
+    "Kinkerstraat 172G",
+    "Kinkerstraat 174B",
+    "Kinkerstraat 174C",
+    "Kinkerstraat 174E",
+    "Kinkerstraat 174G",
+    "Kinkerstraat 174H",
+    "Kinkerstraat 174L",
+    "Kinkerstraat 174K",
+    "Kinkerstraat 174D",
+    "Kinkerstraat 174J",
+    "Kinkerstraat 174F",
+    "Kinkerstraat 174A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 168A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936778"
+    },
+    {
+     "address": "Kinkerstraat 168B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000936779"
+    },
+    {
+     "address": "Kinkerstraat 168C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936780"
+    },
+    {
+     "address": "Kinkerstraat 168D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936781"
+    },
+    {
+     "address": "Kinkerstraat 168E",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000936782"
+    },
+    {
+     "address": "Kinkerstraat 168F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000936783"
+    },
+    {
+     "address": "Kinkerstraat 170A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936784"
+    },
+    {
+     "address": "Kinkerstraat 170B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000936785"
+    },
+    {
+     "address": "Kinkerstraat 170C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000936786"
+    },
+    {
+     "address": "Kinkerstraat 170D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936787"
+    },
+    {
+     "address": "Kinkerstraat 170E",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000936788"
+    },
+    {
+     "address": "Kinkerstraat 170F",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000936789"
+    },
+    {
+     "address": "Kinkerstraat 172A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936791"
+    },
+    {
+     "address": "Kinkerstraat 172B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000936792"
+    },
+    {
+     "address": "Kinkerstraat 172C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000936793"
+    },
+    {
+     "address": "Kinkerstraat 172D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000936794"
+    },
+    {
+     "address": "Kinkerstraat 172E",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000936795"
+    },
+    {
+     "address": "Kinkerstraat 172F",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000936796"
+    },
+    {
+     "address": "Kinkerstraat 174B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000936799"
+    },
+    {
+     "address": "Kinkerstraat 174C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000936800"
+    },
+    {
+     "address": "Kinkerstraat 174E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000936802"
+    },
+    {
+     "address": "Kinkerstraat 174G",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000936804"
+    },
+    {
+     "address": "Kinkerstraat 174H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000988664"
+    },
+    {
+     "address": "Kinkerstraat 174L",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000988665"
+    },
+    {
+     "address": "Kinkerstraat 174K",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000936806"
+    },
+    {
+     "address": "Kinkerstraat 174D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000936801"
+    },
+    {
+     "address": "Kinkerstraat 174J",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000936805"
+    },
+    {
+     "address": "Kinkerstraat 170G",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000936790"
+    },
+    {
+     "address": "Kinkerstraat 172G",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000936797"
+    },
+    {
+     "address": "Kinkerstraat 174F",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000936803"
+    },
+    {
+     "address": "Kinkerstraat 174A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000936798"
+    }
+   ],
+   "units": 31,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160298",
+   "addresses": [
+    "Kinkerstraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 166-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000705790"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452238287,
+     "lngLat": [
+      4.8681381,
+      52.3662397
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166",
+      "addr:postcode": "1053EJ",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "brand": "FEBO",
+      "brand:wikidata": "Q582245",
+      "brand:wikipedia": "nl:Febo (snackbar)",
+      "changing_table": "no",
+      "check_date": "2026-07-12",
+      "cuisine": "friture",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "FEBO",
+      "opening_hours": "Mo-Sa 11:00-21:00; Su 12:00-21:00",
+      "outdoor_seating": "no",
+      "panoramax": "100d5fab-069f-4fb1-bc2a-c105b1e6ceef",
+      "payment:cash": "yes",
+      "phone": "+31 20 618 2441",
+      "takeaway": "yes",
+      "website": "https://bestellen.febo.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156969",
+   "addresses": [
+    "Kinkerstraat 162",
+    "Kinkerstraat 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 162-H",
+     "use": "winkelfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000705783"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4943034824,
+     "lngLat": [
+      4.8681865,
+      52.3663147
+     ],
+     "tags": {
+      "check_date": "2025-10-02",
+      "check_date:opening_hours": "2025-10-02",
+      "name": "Angels beauty style",
+      "name:nl": "Angels beauty style",
+      "opening_hours": "Mo-We,Fr,Sa 09:00-19:00; Th 09:00-19:00; Su 13:00-18:00",
+      "shop": "beauty",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160768",
+   "addresses": [
+    "Kinkerstraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 160-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000705778"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4943034931,
+     "lngLat": [
+      4.8682943,
+      52.3663373
+     ],
+     "tags": {
+      "amenity": "bank",
+      "brand": "SNS Bank",
+      "brand:wikidata": "Q135338857",
+      "check_date": "2025-01-17",
+      "name": "SNS Bank",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012139609",
+   "addresses": [
+    "Kinkerstraat 156A",
+    "Kinkerstraat 156B",
+    "Kinkerstraat 156C",
+    "Kinkerstraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 156A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000705772"
+    },
+    {
+     "address": "Kinkerstraat 156B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000705773"
+    },
+    {
+     "address": "Kinkerstraat 156C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000705774"
+    },
+    {
+     "address": "Kinkerstraat 158",
+     "use": "winkelfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000705776"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4943034928,
+     "lngLat": [
+      4.868441,
+      52.366377
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "cuisine": "mexican",
+      "delivery": "yes",
+      "indoor_seating": "yes",
+      "name": "Salsa shop",
+      "opening_hours": "Mo-Su 12:00-21:00",
+      "outdoor_seating": "no",
+      "takeaway": "yes",
+      "website": "https://salsashop.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9097773040,
+     "lngLat": [
+      4.8683951,
+      52.3663262
+     ],
+     "tags": {
+      "amenity": "bank",
+      "brand": "SNS Bank",
+      "brand:wikidata": "Q135338857",
+      "name": "SNS Bank",
+      "opening_hours": "Mo 13:00-17:30; Tu-Fr 09:30-17:30",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157726",
+   "addresses": [
+    "Kinkerstraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 154-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000957053"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155310",
+   "addresses": [
+    "Kinkerstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 152-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000705763"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809207625,
+     "lngLat": [
+      4.8685967,
+      52.3663895
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "152-H",
+      "addr:postcode": "1053EH",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-10-02",
+      "name": "Vaperoutlet",
+      "name:nl": "Tannoly",
+      "shop": "e-cigarette",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236491",
+   "addresses": [
+    "Kinkerstraat 144",
+    "Kinkerstraat 146",
+    "Kinkerstraat 148",
+    "Kinkerstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 144-H",
+     "use": "winkelfunctie",
+     "areaM2": 306,
+     "bagId": "0363010000705733"
+    },
+    {
+     "address": "Kinkerstraat 148-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012073416"
+    },
+    {
+     "address": "Kinkerstraat 146-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012073417"
+    },
+    {
+     "address": "Kinkerstraat 150-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012073148"
+    },
+    {
+     "address": "Kinkerstraat 148-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012073149"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4943034924,
+     "lngLat": [
+      4.8687542,
+      52.3664821
+     ],
+     "tags": {
+      "name": "Maxella",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4943034925,
+     "lngLat": [
+      4.868725,
+      52.3664577
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "148",
+      "addr:postcode": "1053EG",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "changing_table": "no",
+      "cuisine": "sushi",
+      "indoor_seating": "no",
+      "name": "Sushi Only Amsterdam West",
+      "outdoor_seating": "no",
+      "takeaway": "only",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4943034926,
+     "lngLat": [
+      4.8686301,
+      52.366438
+     ],
+     "tags": {
+      "name": "Change laserclinic",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164341",
+   "addresses": [
+    "Kinkerstraat 142C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 142C-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000705723"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1815032698,
+     "lngLat": [
+      4.8690775,
+      52.3664958
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "142",
+      "addr:postcode": "1053EG",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2024-01-15",
+      "name": "de Volkskruidentuin",
+      "note": "Dit is een winkel met allerhande kruiden, thee, noten, etc. Niet echt een \"greengrocer\" maar ik weet er geen betere tag voor. - Ik denk denk deli is meer gepast.",
+      "shop": "spices",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "frontage",
+     "distanceM": 2.7
+    },
+    {
+     "type": "node",
+     "id": 12006329289,
+     "lngLat": [
+      4.8691343,
+      52.3665182
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "indoor_seating": "yes",
+      "name": "Meat the Balls",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:42:31.851Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  }
+ ]
+}
