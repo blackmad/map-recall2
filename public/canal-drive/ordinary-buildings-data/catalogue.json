@@ -43003,8 +43003,8 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137990",
       "name": "Van Oldenbarneveldtstraat 48-56, Amsterdam-West: 2006 apartment block in buff brick with a curved east front, a glazed entrance bay and shop/office plinth",
-      "hash": "d909bd7ad2c9ea42cfda87de60a1e635bc327ed03306fa78dde071d119a17d41",
-      "sha256": "d909bd7ad2c9ea42cfda87de60a1e635bc327ed03306fa78dde071d119a17d41",
+      "hash": "91e6d95110cd8daa5183101056b527c222e17d2ef921992cdfb5266b6fcf04fd",
+      "sha256": "91e6d95110cd8daa5183101056b527c222e17d2ef921992cdfb5266b6fcf04fd",
       "bytes": 287256,
       "triangles": 3666,
       "materials": 8,
@@ -43337,7 +43337,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137990",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:35:18.497Z"
+      "updatedAt": "2026-10-14T03:14:55.020Z"
     },
     {
       "id": "ordinary-0363100012091631",
