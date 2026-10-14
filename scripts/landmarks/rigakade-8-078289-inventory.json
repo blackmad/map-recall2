@@ -1,0 +1,90 @@
+{
+ "schemaVersion": 1,
+ "id": "rigakade-8-078289",
+ "pand": "0363100012078289",
+ "signature": [
+  "blue-name-fascia"
+ ],
+ "walls": [
+  {
+   "tag": "w05-207",
+   "bearing": 207,
+   "lengthM": 12.9,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-28-34_00545",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "blue-name-fascia",
+     "kind": "lettering",
+     "where": "blue band reading HOUT PLAAT SHOP BOUWMATERIALEN across the shop front",
+     "approxSizeM": [
+      13,
+      1
+     ],
+     "plan": "simplified",
+     "how": "walls[0] signage fascia: the letters sit on a short plate over the entrance, not a full-width blue band",
+     "seenIn": "recording_2024-10-09_07-28-34_00545"
+    },
+    {
+     "id": "shop-glazed-entrance",
+     "kind": "window-shape",
+     "where": "two windows flanking a glazed sliding entrance",
+     "approxSizeM": [
+      13,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[0] glazed ground with an entrance in bay 1",
+     "seenIn": "recording_2024-10-09_07-28-34_00545"
+    },
+    {
+     "id": "billboard",
+     "kind": "sign",
+     "where": "blue JONGENEEL billboard on the upper cladding",
+     "approxSizeM": [
+      3,
+      4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a printed banner on a frame, replaced regularly"
+     },
+     "seenIn": "recording_2024-10-09_07-28-34_00545"
+    }
+   ]
+  },
+  {
+   "tag": "w03-27",
+   "bearing": 27,
+   "lengthM": 40.7,
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000463_pano_0000_003330",
+   "capturedAt": "2019-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "sawtooth-gable-end",
+     "kind": "window-shape",
+     "where": "four saw-tooth gables over a pale cladded end with a blue loading gate and sign",
+     "approxSizeM": [
+      40,
+      8
+     ],
+     "plan": "simplified",
+     "how": "walls[1] blank render with one garage door; gables are 3DBAG roof",
+     "seenIn": "TMX7316060226-000463_pano_0000_003330"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

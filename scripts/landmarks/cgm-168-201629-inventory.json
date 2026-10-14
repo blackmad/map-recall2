@@ -1,0 +1,90 @@
+{
+ "schemaVersion": 1,
+ "id": "cgm-168-201629",
+ "pand": "0363100012201629",
+ "signature": [
+  "nine-dock-doors"
+ ],
+ "walls": [
+  {
+   "tag": "w01-131",
+   "bearing": 131,
+   "lengthM": 39.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001630_pano_0001_000692",
+   "capturedAt": "2020-02-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "nine-dock-doors",
+     "kind": "other",
+     "where": "nine blue sectional dock doors with black shelters on a numbered loading front",
+     "approxSizeM": [
+      36,
+      5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] garageDoors: 8 in the door colour (limit 8 of the 9 photographed); shelters not drawn",
+     "seenIn": "TMX7316010203-001630_pano_0001_000692"
+    },
+    {
+     "id": "office-ribbon",
+     "kind": "window-shape",
+     "where": "upper office ribbon with blinds under a white eaves band",
+     "approxSizeM": [
+      36,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[0] ribbon windows on storey 1 and a cornice",
+     "seenIn": "TMX7316010203-001630_pano_0001_000692"
+    },
+    {
+     "id": "dock-numbers",
+     "kind": "sign",
+     "where": "small orange bay numbers 1-9 over the doors",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm plates over each door"
+     },
+     "seenIn": "TMX7316010203-001630_pano_0001_000692"
+    }
+   ]
+  },
+  {
+   "tag": "w02-311",
+   "bearing": 311,
+   "lengthM": 36.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001630_pano_0001_000644",
+   "capturedAt": "2020-02-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-flank",
+     "kind": "window-shape",
+     "where": "plain white cladded flank under a curved eaves line",
+     "approxSizeM": [
+      36,
+      8
+     ],
+     "plan": "simplified",
+     "how": "walls[1] blank white render",
+     "seenIn": "TMX7316010203-001630_pano_0001_000644"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

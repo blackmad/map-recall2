@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "id": "haarlemmerweg-325-110408",
+ "pand": "0363100012110408",
+ "signature": [
+  "louvre-screen-decks",
+  "qpark-entrance-sign"
+ ],
+ "walls": [
+  {
+   "tag": "w01-359",
+   "bearing": 359,
+   "lengthM": 51.5,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_13-46-10_00184",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "louvre-screen-decks",
+     "kind": "window-shape",
+     "where": "three decks of pale translucent louvre screens over a brick shop plinth",
+     "approxSizeM": [
+      51,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 4 storeys of wide ribbon windows over a glazed ground",
+     "seenIn": "recording_2024-09-11_13-46-10_00184"
+    },
+    {
+     "id": "tenant-fascia",
+     "kind": "sign",
+     "where": "LEEN BAKKER and SANIDIRECT fascia boards over the shopfronts",
+     "approxSizeM": [
+      20,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "shop tenant signs that change"
+     },
+     "seenIn": "recording_2024-09-11_13-46-10_00184"
+    }
+   ]
+  },
+  {
+   "tag": "w02-269",
+   "bearing": 269,
+   "lengthM": 50.5,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_08-54-20_00050",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-louvre-front",
+     "kind": "window-shape",
+     "where": "west front: the same louvre decks over badkamers shopfronts",
+     "approxSizeM": [
+      50,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 4 storeys of wide ribbon windows over a glazed ground",
+     "seenIn": "recording_2024-09-11_08-54-20_00050"
+    }
+   ]
+  },
+  {
+   "tag": "w05-168",
+   "bearing": 168,
+   "lengthM": 15.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_08-54-20_00030",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "qpark-entrance-sign",
+     "kind": "sign",
+     "where": "dark entrance canopy with the Q PARK WESTERGASFABRIEK sign over the barrier gates",
+     "approxSizeM": [
+      15,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[3] entrance with canopy and letters on the canopy; the gates are not drawn",
+     "seenIn": "recording_2024-09-11_08-54-20_00030"
+    },
+    {
+     "id": "open-concrete-decks",
+     "kind": "window-shape",
+     "where": "four open concrete decks with parapet and mesh",
+     "approxSizeM": [
+      38,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[3] ribbon windows over a blank ground in grey render",
+     "seenIn": "recording_2024-09-11_08-54-20_00030"
+    }
+   ]
+  },
+  {
+   "tag": "w04-179",
+   "bearing": 179,
+   "lengthM": 39.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001132_pano_0001_000266",
+   "capturedAt": "2019-04-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-louvre-front",
+     "kind": "window-shape",
+     "where": "south front: brick plinth with the Leen Bakker shop under louvre decks",
+     "approxSizeM": [
+      38,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys of wide ribbon windows over a glazed ground",
+     "seenIn": "TMX7316010203-001132_pano_0001_000266"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "id": "wibautstraat-78-129127",
+ "pand": "0363100012129127",
+ "signature": [
+  "ribbon-band-tower-front",
+  "albert-heijn-canopy-sign"
+ ],
+ "walls": [
+  {
+   "tag": "w03-70",
+   "bearing": 70,
+   "lengthM": 28.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002910_pano_0007_000073",
+   "capturedAt": "2023-01-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-band-tower-front",
+     "kind": "window-shape",
+     "where": "eight floors of pale brick bands with continuous dark ribbon windows, crown of lattice windows",
+     "approxSizeM": [
+      60,
+      30
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 9 storeys x 8 bays of ribbon windows",
+     "seenIn": "TMX7316010203-002910_pano_0007_000073"
+    },
+    {
+     "id": "albert-heijn-canopy-sign",
+     "kind": "sign",
+     "where": "blue ALBERT HEIJN sign over the supermarket entrance under the canopy",
+     "approxSizeM": [
+      6,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "walls[0] canopy letters over an entrance",
+     "seenIn": "TMX7316010203-002910_pano_0007_000073"
+    },
+    {
+     "id": "cone-piers",
+     "kind": "colonnade",
+     "where": "inverted-cone concrete piers carrying the tower over the shop front",
+     "approxSizeM": [
+      2,
+      5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "2 m piers at the glazed ground, shown as the glazed ground storey"
+     },
+     "seenIn": "TMX7316010203-002910_pano_0007_000073"
+    }
+   ]
+  },
+  {
+   "tag": "w02-340",
+   "bearing": 340,
+   "lengthM": 41.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001527_pano_0000_000624",
+   "capturedAt": "2019-12-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-end-bands",
+     "kind": "window-shape",
+     "where": "north end: eight ribbon storeys under a lattice crown over a glazed ground",
+     "approxSizeM": [
+      41,
+      30
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 9 storeys x 8 bays over a glazed ground; walls[2] the 8-storey return",
+     "seenIn": "TMX7316010203-001527_pano_0000_000624"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "archangelkade-3-099348",
+ "pandId": "0363100012099348",
+ "address": "Archangelkade 3D, Amsterdam-West (Houthavens / Haparandaweg industrial strip): 1978 barrel-roofed warehouse hall, 75 m by 60 m, clad in pale vertical-ribbed sheet steel with a curved eaves line and downpipes at the bays",
+ "sources": [
+  {
+   "id": "pano-2022-04-08-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002498_pano_0003_000228/",
+   "image": "staging/pand-reference-walls/0363100012099348/w01-323.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 24,
+   "ground": "blank",
+   "blankStoreys": [
+    1
+   ],
+   "piers": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#d4d6d2",
+    "frame": "#8a9298",
+    "stone": "#b8bab4"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "zinc"
+ },
+ "palette": {
+  "brick": "#d4d6d2",
+  "frame": "#8a9298",
+  "door": "#5a5e60",
+  "stone": "#b8bab4",
+  "wallMaterial": "stucco"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Archangelkade 3D (BAG pand 0363100012099348, built 1978, 124 3DBAG wall surfaces, roof max 11.9 m): a barrel-roofed warehouse hall on the industrial strip between the Archangelkade and the Haparandaweg, about 75 m by 60 m. One panorama within 35 m shows it: the 75 m north-west flank (w01-323), a plain wall of pale vertical-ribbed sheet steel under a curved eaves line with two downpipes; w02-233 has no panorama.",
+  "walls[0] = panel 0 (NW, 75 m, eaves 8.8; surface 1): drawn as a blank two-storey wall with 24 vertical piers standing in for the sheet-steel ribs, in pale render. Simplified: the true ribs are 20 cm apart, the piers are one per 3 m bay; the curved eaves line is the 3DBAG roof. Not drawn: the downpipes (too small), the doors on the unphotographed sides; the other three walls stay blank pale render."
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "asterweg-37-240270",
+ "pandId": "0363100012240270",
+ "address": "Asterweg 37, Amsterdam-Noord (Buiksloot business park): 2014 distribution hall, 70 m by 46 m, clad in grey horizontally ribbed sheet steel with a slightly curved roof edge and a stepped north front",
+ "sources": [
+  {
+   "id": "pano-2017-05-18-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2017-05-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000301_pano_0000_006223/",
+   "image": "staging/pand-reference-walls/0363100012240270/w02-344.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    3,
+    4,
+    28,
+    15
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 3,
+   "ground": "blank",
+   "blankStoreys": [
+    1,
+    2
+   ],
+   "stringCourses": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#8e9296",
+    "frame": "#7a8288",
+    "stone": "#7a7e82"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "zinc"
+ },
+ "palette": {
+  "brick": "#8e9296",
+  "frame": "#7a8288",
+  "door": "#4a4e50",
+  "stone": "#7a7e82",
+  "wallMaterial": "stucco"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Asterweg 37 (BAG pand 0363100012240270, built 2014, 35 3DBAG wall surfaces, roof max 9.6 m): a grey sheet-steel distribution hall on the Buiksloot business park, about 70 m by 46 m. One panorama within 35 m shows it: the 70 m north flank (w02-344, one of the few views; the other three walls have none): a continuous wall of horizontally ribbed grey cladding with a curved roof edge, no openings, a few young street trees in front.",
+  "walls[0] = panels 2, 3, 24 and 13 (N, 70 m, 21 m, 23 m and 6 m, eaves 9.2-9.6; surfaces 3, 4, 28, 15): drawn as a grey render wall with string-course bands (147 triangles; the audit sees the bands 5 cm off the wall, 19.8 m2 of zfight-near warning). Simplified: the real ribs are a few centimetres deep and 20 cm apart, two bands stand in for them; the curved roof edge is the 3DBAG roof. Not drawn: the other three walls (no panorama), which stay blank grey render."
+ ]
+}

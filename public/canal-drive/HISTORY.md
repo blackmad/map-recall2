@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## Dominant buildings, batch 6 (2026-10-14, night)
+
+Lane `large/dominant-6-20261014`, twelve layered recipes from the 3 km
+ranking (footprint ÷ max(distance from the Dam, 300 m)), checked against
+the manual catalogue by footprint so no landmark is duplicated:
+Wibautstraat 78 (1966 ribbon-band tower over an Albert Heijn ground; the
+eaves gate samples the lowest roof along a panel, so mixed-height
+surfaces need separate groups), Meeuwenlaan 132 (1936 school, Breders
+Beroepscollege, five groups; BREDERS / COLLEGE lettering inferred from the
+partial BREDER / LEGE in the photos, noted), Centrale Groothandelsmarkt
+183 (1935 De Kweker, DE KWEKER and ONTVANGST GOEDEREN lettering) and 168
+(dock hall with eight blue doors; `garageDoors` caps at 8 where nine are
+photographed), Haarlemmerweg 325 (Q-Park Westergasfabriek, bay counts
+reduced from 14.1k to fit), Revaleiland 437 (2020 red-brick perimeter
+block with balcony stacks; the NW/NE fronts stay blank because the
+inferred copy cost 24k tris), Louise Wentstraat 230 (1992 banded brick),
+Quellijnstraat 36 (1927 brick block, garage gates, HEINEKEN front),
+Rigakade 8, Archangelkade 3D (ribbed-steel hall), Asterweg 19B and 37. All
+pass the gates and `audit:glb`; the zfight-near warnings are string
+courses 2–8 cm off the wall. A window landing on a face it does not fit
+becomes a flush opening with coplanar overlap; `baysPerStorey` or
+`blankStoreys` fixes it. Dropped: Krommeniestraat 75 (construction),
+NDSM-plein 88E (graffiti ring wall). Reserves for batch 7: Klaprozenweg
+31, Papaverweg 34, Postjesweg 1 (check against `politie-postjesweg`).
+Probed but unexamined after the probe's storey-height noise: Silodam
+219A, Entrepotdok 155, Sarphatistraat 149D, Van Bleiswijkstraat 8,
+Koivistokade 34, Nieuwpoortkade 2A. Not modelled: Revaleiland's slot-window
+blocks, Wibautstraat's cone piers, Louise Wentstraat's glazed stair
+columns, Haarlemmerweg's tenant signs.
+
+
 ## Figures, second pass: clothing, instrument and animal kits (2026-10-14, night)
 
 Lane `landmarks/figures-2-20261014`, from each model's recorded Commons
