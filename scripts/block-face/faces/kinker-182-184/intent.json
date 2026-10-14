@@ -1,0 +1,190 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-182-184",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-182-184/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 184-182 (even side, 1989 infill), 2024-12-11 overcast strip: one grey-brown brick block of 5 storeys, flat roof, regular two-light windows with white frames and dark lower panels, a glazed loggia stack cantilevered at the left end, a glazed balustrade over the shop storey, white courses at sill level. kinker-1985-infill on its own grid (the cluster agrees)."
+ },
+ "types": [
+  "kinker-1985-infill"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012236981",
+   "slug": "kinker-236981",
+   "address": "Kinkerstraat 184",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "measuredPalette": {
+     "brick": "#4a4c42",
+     "evidence": "palette-from-strip.ts --face=kinker-182-184: wall median #4a4c42 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "bays": [
+      1,
+      2,
+      2,
+      2,
+      2
+     ],
+     "bayWidths": [
+      1.7,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2826",
+      "fascia": true,
+      "name": "Geldmaat",
+      "sign": {
+       "text": "Geldmaat",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#e9e7e0"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 1: white fascia lettered \"geldmaat\" over a dark recessed front with a yellow panel; OSM shop=money Geldmaat (and ATM nodes)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Geldmaat",
+    "category": "shop=money",
+    "osm": {
+     "type": "node",
+     "id": 494157333,
+     "name": "Geldmaat"
+    },
+    "bag": [
+     "overige gebruiksfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): a cantilevered glazed loggia stack on storeys 1-3 at the left, one window axis right of it; the top storey has two windows over the loggia",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "glazed loggia stack cantilevered out over the pavement (drawn as a wide flush window)",
+     "glazed balustrade running over the shop storey (a first-floor terrace edge)",
+     "round dark wall vents beside the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012233470",
+   "slug": "kinker-233470",
+   "address": "Kinkerstraat 182",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "measuredPalette": {
+     "brick": "#4d4f44",
+     "evidence": "palette-from-strip.ts --face=kinker-182-184: wall median #4d4f44 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "bays": [
+      2,
+      3,
+      3,
+      3,
+      3
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#c8302a",
+      "fascia": true,
+      "name": "Kema Vlees",
+      "sign": {
+       "text": "Kema Vlees",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#d2412f"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#e04a2a"
+      },
+      "evidence": "strip.jpg pand 2: red fascia \"KEMA VLEES\", two red awnings; OSM shop=butcher Kema Vlees"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Kema Vlees",
+    "category": "shop=butcher",
+    "osm": {
+     "type": "node",
+     "id": 2452238275,
+     "name": "Kema Vlees"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "OSM also maps Primera here"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 3 window axes per storey, two-light windows with dark lower panels",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "glazed balustrade running over the shop storey (a first-floor terrace edge)",
+     "round dark wall vents beside the windows"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "236981: glazed loggia stack cantilevered out over the pavement (drawn as a wide flush window)",
+  "236981: glazed balustrade running over the shop storey (a first-floor terrace edge)",
+  "236981: round dark wall vents beside the windows",
+  "233470: glazed balustrade running over the shop storey (a first-floor terrace edge)",
+  "233470: round dark wall vents beside the windows"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ }
+}
