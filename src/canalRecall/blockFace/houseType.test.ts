@@ -52,7 +52,7 @@ test('placement validation: pairs must pair, variants must exist, crown fields s
   bad2.houses[0].type!.crown = 'nope';
   assert.throws(() => validateBlockFace(bad2), /no crown variant "nope"/);
   const bad3 = structuredClone(face);
-  (bad3.types![0].body as any).dormers = 1;
+  ((bad3.types![0] as HouseTypeIntent).body as any).dormers = 1;
   assert.throws(() => validateBlockFace(bad3), /body.dormers: belongs in a crown/);
 });
 
