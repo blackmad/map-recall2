@@ -574,7 +574,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       ...(front.palette ? {palette: seen(paletteFor(intent, front))} : {}),
     };
     // Relieving arches over arched heads: a brick-on-edge ring (band brick or stone dressing).
-    const ringSurface = front.archRings === 'none' ? null : front.archRings === 'stone' ? 'stone' as const : front.archRings === 'band' || (front.palette?.band ?? intent.palette.band) ? 'accent' as const : 'stone' as const;
+    const ringSurface = front.archRings === 'none' || (front.archRings === 'blocked' && !(front.palette?.band ?? intent.palette.band)) ? null : front.archRings === 'blocked' ? 'accent' as const : front.archRings === 'stone' ? 'stone' as const : front.archRings === 'band' || (front.palette?.band ?? intent.palette.band) ? 'accent' as const : 'stone' as const;
     if (ringSurface) {
       const rings = elevation.openings.value.filter(o => o.head === 'segmental' && o.headRiseM && !o.id.includes('shop')).map(o => ({id: `arch-${o.id}`, profile: archRing(o.leftM, o.bottomM + o.heightM, o.widthM, o.headRiseM!, 0.13), depthM: 0.03, fill: ringSurface}));
       if (rings.length) elevation.ornaments = seen(rings);
@@ -784,6 +784,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         }
       }
     }
+    // Blocked arch rings and painted courses (Kinkerstraat 1888-1897): stone slabs keyed to the window rows.
+    if (front.archRings === 'blocked') dressings.push(...elevation.openings.value.filter(o => o.kind === 'window' && o.head === 'segmental' && o.headRiseM && !o.id.includes('shop')).flatMap(o => archBlocks(o, full)));
+    if (front.stoneCourses) dressings.push(...stoneCourses(front, elevation.openings.value, full));
     if (front.quoins === 'stone') {
       // Alternating long/short corner blocks from the plinth to the eaves; blocks that would cross an opening are skipped.
       const base = layout.groundBase > 0 ? layout.groundBase : 0.3, pitch = 0.62, topLimit = eaves - corniceH - 0.2;
@@ -838,6 +841,60 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     simplifications: ['Facade metres fitted from intent counts and 3DBAG heights by fixed proportion rules; not rectified from photos.', ...warnings],
   };
   return {recipe, anchorRD: anchor, facts, report: {fronts: reports, warnings, roofAllowanceM: intent.fronts.some(f => f.dormers) ? 1.9 : 0, ...(cleanup.report.actions.length ? {roofCleanup: cleanup.report} : {})}};
+}
+
+type Slab = Extract<CanalhouseDressing, {kind: 'slab'}>;
+const slab = (id: string, left: number, bottom: number, w: number, h: number, depth: number, full: number): Slab | null => {
+  const l = Math.max(0.02, left), r = Math.min(full - 0.02, left + w);
+  return r - l < 0.05 ? null : {id, kind: 'slab', leftM: round(l), bottomM: round(bottom), widthM: round(r - l), heightM: round(h), depthM: depth, surface: 'stone'};
+};
+const storeyOf = (id: string) => { const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(id); return m ? Number(m[1]) : null; };
+
+/**
+ * `archRings: blocked`: stone blocks on a segmental arch: a springer at each foot (0.2 m wide, reaching 0.16 m out past
+ * the jamb and 4 cm over the frame, from 4 cm under the springing line, 0.2 m high), two mid voussoirs (0.14 x 0.18 m,
+ * standing on the arch at 22 % and 78 % of the span) and a keystone (clamp(0.16 w, 0.14, 0.22) wide, 0.24 m high).
+ */
+export function archBlocks(o: CanalhouseOpening, full: number): Slab[] {
+  const top = o.bottomM + o.heightM, rise = o.headRiseM ?? 0, spring = top - rise, w = o.widthM, out: (Slab | null)[] = [];
+  out.push(slab(`spr-l-${o.id}`, o.leftM - 0.16, spring - 0.04, 0.2, 0.2, 0.06, full), slab(`spr-r-${o.id}`, o.leftM + w - 0.04, spring - 0.04, 0.2, 0.2, 0.06, full));
+  for (const [side, f] of [['l', 0.22], ['r', 0.78]] as const) {
+    const archY = spring + rise * (1 - (1 - 2 * f) ** 2) + 0.02;
+    out.push(slab(`vou-${side}-${o.id}`, o.leftM + f * w - 0.07, archY, 0.14, 0.18, 0.06, full));
+  }
+  const kw = clamp(w * 0.16, 0.14, 0.22);
+  out.push(slab(`key-${o.id}`, o.leftM + w / 2 - kw / 2, top - 0.02, kw, 0.24, 0.065, full));
+  return out.filter((d): d is Slab => !!d);
+}
+
+/**
+ * `stoneCourses`: per window storey, a sill course (0.11 m, top on the median sill line) and/or an impost course (0.12 m
+ * centred 1 cm over the median springing line), both laid only between the openings that cross them, 4.5 cm proud.
+ */
+export function stoneCourses(front: FrontIntent, openings: CanalhouseOpening[], full: number): Slab[] {
+  const sc = front.stoneCourses!, wanted = sc.storeys ?? Array.from({length: front.storeys}, (_, k) => k).filter(k => k > 0 || (!front.shopfront && !front.groundFront));
+  const out: Slab[] = [];
+  const median = (v: number[]) => [...v].sort((a, b) => a - b)[Math.floor(v.length / 2)];
+  for (const s of wanted) {
+    const row = openings.filter(o => o.kind === 'window' && storeyOf(o.id) === s);
+    if (!row.length) continue;
+    const course = (kind: string, y0: number, h: number, blocks: boolean) => {
+      const cut = openings.filter(o => o.bottomM < y0 + h && o.bottomM + o.heightM > y0).map(o => [o.leftM - 0.01, o.leftM + o.widthM + 0.01] as [number, number]).sort((p, q) => p[0] - q[0]);
+      const free: [number, number][] = []; let x = 0.02;
+      for (const [a, b] of cut) { if (a > x) free.push([x, a]); x = Math.max(x, b); }
+      if (x < full - 0.02) free.push([x, full - 0.02]);
+      free.forEach(([a, b], k) => {
+        if (!blocks) { const d = slab(`${kind}-s${s}-${k}`, a, y0, b - a, h, 0.045, full); if (d) out.push(d); return; }
+        // Blocks: one at each end of the pier (against the window edges), then on a 0.55 m pitch between them.
+        const bw = 0.3, len = b - a, n = Math.max(0, Math.floor((len - 2 * bw) / 0.55));
+        const xs = len < 2 * bw + 0.1 ? [a + (len - Math.min(bw, len)) / 2] : [a, b - bw, ...Array.from({length: n}, (_, j) => a + bw + (len - 2 * bw) * (j + 1) / (n + 1) - bw / 2)];
+        xs.forEach((bx, j) => { const d = slab(`${kind}-s${s}-${k}-${j}`, bx, y0, Math.min(bw, len), h, 0.045, full); if (d) out.push(d); });
+      });
+    };
+    if (sc.sill) course('sill-course', median(row.map(o => o.bottomM)) - 0.11, 0.11, false);
+    if (sc.impost) course('impost', median(row.map(o => o.bottomM + o.heightM - (o.head === 'segmental' ? o.headRiseM ?? 0 : 0))) - 0.05, 0.12, sc.impost === 'blocks');
+  }
+  return out;
 }
 
 /**

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "kinker-1902-balcony-axis",
+  "district": "oud-west",
+  "description": "Kinkerstraat 1902-1903 rows (315-359, 334-374): dark red-brown brick, 3 axes, segmental-arched windows under brick relieving arches, the centre axis a stack of French windows with iron balconettes, simple brick cornice; crowns: a square dormer, a curved gable with an arched attic light, a stepped gable; shop ground",
+  "fit": {
+    "widthM": [
+      4.0,
+      6.0
+    ],
+    "storeys": [
+      4,
+      5
+    ]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "simple",
+    "windows": "arched",
+    "archRings": "band",
+    "balconies": {
+      "storeys": [
+        1,
+        2,
+        3
+      ],
+      "bays": [
+        1
+      ]
+    }
+  },
+  "crowns": {
+    "dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "plain",
+      "note": "315-359: a square brick dormer over the centre axis"
+    },
+    "neck-gable": {
+      "gable": "bell",
+      "crownRise": 0.9,
+      "atticWindows": 1,
+      "note": "315-359 pands 3, 6, 11, 16 (156907, 153818, 153447, 167386): a curved gable with one arched light"
+    },
+    "step-gable": {
+      "gable": "step",
+      "crownSteps": 3,
+      "crownRise": 1.0,
+      "atticWindows": 1,
+      "note": "334-374 pands 12-16: stepped gables"
+    }
+  },
+  "palettes": {
+    "dark-red-brown": {
+      "brick": "#5b4532",
+      "frame": "#a6aa9a",
+      "door": "black",
+      "stone": "#a6aa9a",
+      "band": "#4a3628",
+      "cornice": "#56432f"
+    }
+  },
+  "roof": {
+    "material": "black-tile"
+  },
+  "rhythm": {
+    "bays": "3 window axes",
+    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric about the centre axis",
+    "groundFloor": "shop per house",
+    "signage": "per house",
+    "roofline": "simple brick cornice; dormer or curved/stepped gable",
+    "photoRows": [
+      1,
+      3,
+      3,
+      3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "the narrow centre French window is drawn as wide as the side windows (+15 %)",
+      "curved neck gables are drawn as bell gables",
+      "the relieving-arch brick (#4a3628) is 0.8 x the measured wall, not measured separately"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "kinker-315-359",
+      "pands": [
+        "165777",
+        "237373",
+        "236064",
+        "160024",
+        "235967",
+        "152535",
+        "236156",
+        "158118",
+        "164070"
+      ],
+      "citation": "strip.jpg 2024-12-11: detect-house-types kinker-315-359 type A (10 modules) and B (gabled, 4 modules)"
+    },
+    {
+      "face": "kinker-334-374",
+      "pands": [
+        "159164",
+        "164263",
+        "166628",
+        "160054"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 8-11: centre balcony stacks (projecting iron balconies)"
+    }
+  ],
+  "schemaLimits": [
+    "narrow centre French window",
+    "curved gable",
+    "1902 projecting iron balconies (334-374) need `balconies.projecting` per placement"
+  ],
+  "notes": [
+    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (median of 13 exemplar pands)."
+  ]
+}
