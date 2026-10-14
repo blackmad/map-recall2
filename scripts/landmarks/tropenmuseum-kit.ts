@@ -107,3 +107,15 @@ export function proudWindow(c: PanelCtx, u0: number, u1: number, v0: number, v1:
   if (rows) solid(c, FRAME, u0, u1, (v0 + v1) / 2 - 0.025, (v0 + v1) / 2 + 0.025, d0 + 0.04, d0 + 0.09, part);
   return part;
 }
+
+/**
+ * Lion mask on a console block (the register's "leeuwenkoppen" under the pavilion cornices): a brow-and-cheek slab, a muzzle block and a
+ * chin block, 36 triangles, standing on a surface `d` out of the wall. `size` is the mask's width (m).
+ */
+export function lionMask(c: PanelCtx, u: number, v: number, d: number, size = 0.42, part = c.part()) {
+  const w = size, h = size * 1.15;
+  solid(c, STONE, u - w / 2, u + w / 2, v - h / 2, v + h / 2, d, d + 0.08, part);                       // brow, cheeks and mane
+  solid(c, STONE, u - w * 0.22, u + w * 0.22, v - h * 0.32, v + h * 0.1, d + 0.08, d + 0.16, part);    // muzzle
+  solid(c, STONE, u - w * 0.14, u + w * 0.14, v - h * 0.5 + 0.02, v - h * 0.32, d + 0.08, d + 0.13, part); // chin
+  return part;
+}
