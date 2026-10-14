@@ -34065,10 +34065,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012151434",
       "name": "OBA Mercatorplein, Mercatorplein 103, Amsterdam (1927 Amsterdam School block; library under the glazed canopy at the ground floor)",
-      "hash": "48e3195fc5a523216510609c4d42d29d5b612b793eacefa112b82632ffa0c29c",
-      "sha256": "48e3195fc5a523216510609c4d42d29d5b612b793eacefa112b82632ffa0c29c",
-      "bytes": 329620,
-      "triangles": 4448,
+      "hash": "e6ad14521e9df115a337544704c3dd46f14d2f1017eac1e474bc2c11786b5adc",
+      "sha256": "e6ad14521e9df115a337544704c3dd46f14d2f1017eac1e474bc2c11786b5adc",
+      "bytes": 342728,
+      "triangles": 4616,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -34176,7 +34176,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012151434",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:07:25.814Z"
+      "updatedAt": "2026-10-14T03:10:10.365Z"
     },
     {
       "id": "ordinary-0363100012233553",
