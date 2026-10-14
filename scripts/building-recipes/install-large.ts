@@ -18,6 +18,8 @@ import path from 'node:path';
 import {NodeIO} from '@gltf-transform/core';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {compileLargeHouse} from './large.ts';
+import {meshHashOf} from './mesh-hash.ts';
+import {compileLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {closeRenderer} from './render.ts';
 
@@ -56,7 +58,7 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
   const groups = built.recipe.groups.filter(g => g.system !== 'blank' || g.entrance);
   const entry = {
     id: entryId, category: 'ordinary' as const, buildingId: `NL.IMBAG.Pand.${pand}`, name: replaced?.name ?? intent.address,
-    hash: report.sha256, sha256: report.sha256, bytes: report.bytes, triangles: report.triangles, materials: report.materials, textures: 0, scale: 1, bounds: b,
+    hash: report.sha256, sha256: report.sha256, meshHash: meshHashOf(compileLargeBuilding(intent, built.facts, {budget: 1e9}).group), bytes: report.bytes, triangles: report.triangles, materials: report.materials, textures: 0, scale: 1, bounds: b,
     anchor: ll(ax, ay), footprint: {type: 'Polygon', coordinates: facts.bagFootprintRD.map(ring => ring.map(p => ll(p[0], p[1])))},
     nativeHeight: +facts.heights.roofMaxM.toFixed(2), height: +b.max[1].toFixed(2),
     modelUrl: `./models/ordinary-buildings/recipe-large-${id}.glb`, suppress: [`NL.IMBAG.Pand.${pand}`],

@@ -1255,8 +1255,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Metis and Oostpoort Montessori, Spinoza, the UvA Spui building; AMC,
   VUmc, AvL and BovenIJ are blocked on panoramas or BAG matching.
 - **Large tier after the layered re-installs** (2026-10-14, HISTORY
-  "Layered re-installs, part two"): `stale-installs.ts` must report 0 after
-  every golden change (run it in `check:canal`); Politie West
+  "Layered re-installs, part two"): `check:stale-installs` is in the gate
+  and must stay at 0 after every golden change; Politie West
   Overtoomsesluis fails footprint-vs-bag 0.749 (3DBAG shell, needs the
   shell-repair pre-step or a BAG-outline rebuild); seven large recipes are
   not installed (De Balie, Ledenberch 38, Nieuwendijk HM, Passeerdersstraat,
