@@ -266,6 +266,29 @@ sheets), `notes[]` (evidence: what each group is, what was left out and why).
 - Entrance: the middle bay unless `bay` is given; < 1.6 m wide openings get a
   single door. Garage doors take bays from the right and need ≥ 2.8 m bays.
 
+### Scope and acceptance (user review, 2026-10-14; plan "Large tier to photo likeness")
+
+The large tier is for grid-fronted buildings: modern blocks, sheds, halls,
+schools, offices whose fronts are a repeating bay rhythm. Ornamented
+historic fronts (stepped or swung gables, stone dressings, arcades, glass
+passage roofs; Singel 457 was uninstalled for this) go to a bespoke
+landmark builder. Acceptance is side by side with the rectified panorama
+crop of each street-facing wall group: wall colour family and lightness,
+glazing fraction per storey, window shape class and column rhythm must read
+the same at gallery size, measured from the crop (`measure.ts`, lane A of
+the plan) rather than guessed, and the contact sheet carries the numbers
+and a PASS / WARN / FAIL / NO EVIDENCE line. Geometry gates passing is not
+acceptance; a sheet without a photo on it is not a review; no sheet, no
+merge. A wrong kit is worse than the plain 3DBAG box, so "uninstall" is a
+valid outcome. The user also wants both routes tried where the kit cannot
+express a front: a measured kit and a stylised photo-derived texture, judged
+side by side (plan `docs/plans/large-tier-likeness-and-streets-20261014.md`).
+Batches 5–7 were judged "awful" on exactly these points (Apollohal's glazed
+hall drawn as punched windows in tan brick, Waagdragerhof's dark brick and
+tall strips as orange brick with small squares, Houthavenkade 26's glass
+balcony columns as white slabs) and are being re-fitted; batches 7 and
+public-buildings 4 are held unmerged until the likeness pass runs on them.
+
 ### Gates (`largeGates.ts`, on the decoded GLB)
 
 ≤ 12,000 triangles; finite and non-metallic; footprint IoU ≥ 0.90 against BAG
@@ -575,7 +598,7 @@ gable).
 - Wall groups are authored by surface index; `walls.ts` lists them, but a
   re-extracted 3DBAG item renumbers surfaces (re-run `walls.ts`, fit-golden
   catches the change).
-- Not installed anywhere: large recipes are not in the catalogues yet.
+- Installed: ~100 large recipes are in `ordinary-buildings-data/catalogue.json` (`recipe-large-*.glb`); `check:stale-installs` keeps them current with the golden.
 
 ## Known gaps
 
