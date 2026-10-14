@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "id": "leidsekade-106-173447",
+ "pand": "0363100012173447",
+ "signature": [
+  "casino-white-tile-storey",
+  "townhouse-entrance-portal",
+  "casino-sign"
+ ],
+ "walls": [
+  {
+   "tag": "w01-314",
+   "bearing": 314,
+   "lengthM": 29.1,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_01962",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "townhouse-entrance-portal",
+     "kind": "window-shape",
+     "where": "arched entrance with fluted stone pilasters carrying relief panels, brick arch and cartouche above, cast-iron lamp standard",
+     "approxSizeM": [
+      6,
+      5
+     ],
+     "plan": "simplified",
+     "how": "walls[0] portal entrance bay 1 on a stone ground storey; the pilaster reliefs and the lamp are not drawn",
+     "seenIn": "recording_2025-07-14_05-25-22_01962"
+    },
+    {
+     "id": "pilaster-reliefs",
+     "kind": "relief",
+     "where": "carved relief panels on the fluted stone pilasters",
+     "approxSizeM": [
+      1,
+      4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "panels a few centimetres deep on 0.5 m pilasters, below the component grain"
+     },
+     "seenIn": "recording_2025-07-14_05-25-22_01962"
+    }
+   ]
+  },
+  {
+   "tag": "w02-134",
+   "bearing": 134,
+   "lengthM": 21.3,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w03-257",
+   "bearing": 257,
+   "lengthM": 20.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000698",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "casino-white-tile-storey",
+     "kind": "window-shape",
+     "where": "curved white-tiled upper storey with deep-set windows over a pergola",
+     "approxSizeM": [
+      27,
+      4
+     ],
+     "plan": "simplified",
+     "how": "walls[2] one wide-window storey in a white skin; the curve is straight facets",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698"
+    },
+    {
+     "id": "casino-sign",
+     "kind": "lettering",
+     "where": "HOLLAND CASINO lettering on the roof edge with flagpoles",
+     "approxSizeM": [
+      8,
+      1
+     ],
+     "plan": "modelled",
+     "how": "walls[2].signage HOLLAND CASINO, cornice mount; the flagpoles are not drawn",
+     "seenIn": "TMX7316010203-001967_pano_0000_000698"
+    },
+    {
+     "id": "timber-pergola",
+     "kind": "canopy",
+     "where": "timber slat pergola on red steel columns over the canal terrace, lattice balustrade",
+     "approxSizeM": [
+      25,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "slats and posts under 10 cm, deep roof of open slats that a closed 3DBAG shell cannot hold"
+     },
+     "seenIn": "TMX7316010203-001967_pano_0000_000698"
+    }
+   ]
+  },
+  {
+   "tag": "w04-245",
+   "bearing": 245,
+   "lengthM": 14.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000136",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-glazed-floors",
+     "kind": "window-shape",
+     "where": "glazed ground and mezzanine floors with red steel columns and yellow window frames",
+     "approxSizeM": [
+      24,
+      6
+     ],
+     "plan": "simplified",
+     "how": "walls[1] glazed ground plus one wide-window storey in red frame colour",
+     "seenIn": "TMX7316010203-001968_pano_0000_000136"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
