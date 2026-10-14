@@ -1,5 +1,65 @@
 # Canal Recall — what is built
 
+## Ground from the terrain everywhere, with a reach test: 312 pands corrected, 98 split-level pands restored (2026-10-14)
+
+Lane `lane/ground-rule-everywhere-20261014`, the follow-up to "3DBAG
+ground outliers". One helper, `pandGroundNap(attributes, terrainAt,
+ringRd)` in `bag3dCityJson.ts`, samples the terrain under and around a
+footprint and applies `trustedGroundNap`; every reader goes through it:
+`readBagBuildings`, `buildingRecipe/facts.ts` (`buildFacts` with
+`terrainAt`, `heights.groundSource: 'terrain'` only when used, so
+ordinary facts are byte-identical; `regroundFacts` / `trustFactsGround`
+for committed facts, used by the recipe compile and large-tier CLIs),
+`blockFace/compile.ts` (`faceFactsOnTrustedGround`; the front-roof
+re-pitch and shell-top lines read `heights.groundNAP`),
+`streetChunks/ground.ts` (`planGround` trusts each house before the
+median), `buildingTypes/facts.ts` (`paramsFromFacts` returns
+`groundNapM`, `build.ts` places houses on it), and
+`facade/sources/netherlands.ts` (pure `bag3dPands` +
+`bag3dMassingRecords`, `fetchMassing({terrainAt})`); CLIs inject
+`sharedTerrain()` from `scripts/lib/terrainField.ts`. **The rule change:**
+the first rule had false positives, among them the main pand of four
+recipes (Stadsloket West, Politie West Overtoomsesluis, Volewijkshof 6,
+Westerdoksdijk 9): the AHN terrain under a footprint is interpolated
+across the building's gap, so a pand on split-level ground (a raised
+deck, a dike, a quay) reads the high side (Stadsloket West: 3DBAG ground
++0.82 NAP on the A10 side street, terrain under it +4.70 from the Bos en
+Lommerplein deck, +0.71 four metres outside the walls). Measured across
+the 410 replaced pands (lowest terrain 4 m outside the walls minus
+3DBAG's ground): 98 within 1.5 m (median ground −0.26 NAP, one on a
+fallback value), 4 between 1.5 and 2 m, the rest 2–12 m with 111 on the
+shared fallback values. `GROUND_REACH_M = 1.5`: 3DBAG's ground is kept
+when the terrain just outside the walls comes within 1.5 m of it; 312
+pands stay on the terrain (Nassaukade 63X 15.57 → 5.42 m, nearest
+outside terrain +0.29 against −9.67), 98 are restored. Unit tests per
+reader on Nassaukade 63X and its ordinary neighbour 0363100012207164
+(fixture `fixtures/bag3d-nassaukade-63x.json` from 3DBAG v20250903),
+Stadsloket West pinned as the split-level case; `streetChunks.test.ts`
+is now in `test:street-rendering-core`. No golden changed: 560 committed
+`facts.json` unchanged, fit-golden 153, 112 meshes, 24 face chunks all
+identical. **Published data** (own commit): `fix-bag-ground-outliers.ts`
+rewritten to sync tiles to the rule with staging, and
+`build-bag-buildings.ts --base=` ran a true `--tiles` rebuild on the
+staged building-tiles that agreed with the patch on every ground change
+(building-tiles come from the OSM merge whose `buildings-osm.geojson` is
+in no checkout, hence patch not full rebuild): building-tiles 66 heights
+in 39 files (64 raised back +3.02..+8.27 m, median +3.35, the split-level
+pands; 2 true outliers lowered −3.26 and −3.68 m that the first patch
+missed because tiles 8412/5383 and 8413/5383 are one compact JSON value),
+bag-tiles 73 features in 38 files, bag-facts 73 descriptors; the two
+frontage-survey tiles pinned by hash rebaked, frontages and
+`profiles.json` unchanged. Not published: the rebuild also fills eaves,
+ridge, roof and year for five pands in 8412/5384 missing since the Jan
+Evertsen re-key (earlier staleness, on the board). Frame:
+`docs/images/live-play-20261014/ground-outlier-canal-before-after.jpg`,
+a 5.4 m courtyard pand behind the Entrepotdok warehouses that poked above
+the roofline before (no Herengracht or Keizersgracht pand among the 312
+has a 5–8 m inflation; the closest were 4.1 and 3.2 m). Checks:
+bag-tiles 22, tile-buildings 18, street-appearance 98, building-recipes
+166, block-face 71, building-types 39, street-rendering-core 69,
+osm-under-models 0.
+
+
 ## Nassaukade 506: the user's benchmark block in the kit; white courses on Kinkerstraat (2026-10-14, user)
 
 Lanes `lane/nassaukade-506-20261014` and the merge lane

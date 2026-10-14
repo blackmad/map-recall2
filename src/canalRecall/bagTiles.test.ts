@@ -11,7 +11,9 @@ import { BuildingTileStreamer, loadBagCovers } from './buildingTilesBrowser.js';
 import type { Ring } from './buildingLadder.js';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { GROUND_OUTLIER_M, bagHeightM, trustedGroundNap } from './bag3dCityJson.js';
+import { GROUND_OUTLIER_M, GROUND_REACH_M, bagHeightM, pandGroundNap, sampleTerrain, trustedGroundNap } from './bag3dCityJson.js';
+import { bag3dMassingRecords, bag3dPands } from './facade/sources/netherlands.js';
+import { sharedTerrain } from '../../scripts/lib/terrainField.js';
 
 /** A square of `size` degrees with its south-west corner at (x, y), closed. */
 const square = (x: number, y: number, size = 0.0001): Ring => [[x, y], [x + size, y], [x + size, y + size], [x, y + size], [x, y]];
@@ -235,4 +237,52 @@ test('published tiles carry Nassaukade 63X at its re-measured height, not 15.6 m
   };
   for (const dir of ['building-tiles', 'bag-tiles']) assert.ok(feature(dir)?.properties.height < 7, `${dir}: ${feature(dir)?.properties.height}`);
   assert.ok(feature('bag-tiles').properties.eaves < 7);
+});
+
+// ------------------------------------------------- the terrain rule as the single ground (readers, 2026-10-14)
+// Nassaukade 63X and its nearest ordinary neighbour (0363100012207164) as 3DBAG v20250903 publishes them, read on the
+// committed AHN terrain extract: the shared entry point `pandGroundNap` and the 3DBAG massing reader that uses it.
+const groundFixture = JSON.parse(readFileSync(new URL('./fixtures/bag3d-nassaukade-63x.json', import.meta.url), 'utf8'));
+const fixtureRing = (item: any): number[][] => {
+  const t = item.metadata.transform, building: any = Object.values(item.feature.CityObjects).find((o: any) => o.type === 'Building');
+  return building.geometry.find((g: any) => g.lod === '0').boundaries[0][0].map((i: number) => item.feature.vertices[i]).map((v: number[]) => [v[0] * t.scale[0] + t.translate[0], v[1] * t.scale[1] + t.translate[1]]);
+};
+const fixtureAttributes = (item: any) => (Object.values(item.feature.CityObjects).find((o: any) => o.type === 'Building') as any).attributes;
+
+test('pandGroundNap: Nassaukade 63X stands on the terrain, its ordinary neighbour on 3DBAG; nothing injected keeps 3DBAG', () => {
+  const terrainAt = sharedTerrain()!;
+  const outlier = pandGroundNap(fixtureAttributes(groundFixture.outlier), terrainAt, fixtureRing(groundFixture.outlier));
+  assert.equal(outlier.source, 'terrain');
+  assert.ok(Math.abs(outlier.groundNapM! - NASSAUKADE_63X_TERRAIN_NAP) < 0.01, `ground ${outlier.groundNapM}`);
+  assert.ok(outlier.terrain!.aroundMinNapM! > -9.674 + GROUND_REACH_M, 'no low ground beside it: the −9.67 is a failed estimate');
+  const ordinary = pandGroundNap(fixtureAttributes(groundFixture.ordinary), terrainAt, fixtureRing(groundFixture.ordinary));
+  assert.deepEqual([ordinary.source, ordinary.groundNapM], ['3dbag', fixtureAttributes(groundFixture.ordinary).b3_h_maaiveld]);
+  assert.deepEqual(pandGroundNap(fixtureAttributes(groundFixture.outlier)), { groundNapM: -9.673999786376953, source: '3dbag', terrain: null });
+  // A closed ring samples the same as the open one.
+  const ring = fixtureRing(groundFixture.outlier);
+  assert.deepEqual(sampleTerrain(terrainAt, [...ring, ring[0]]), sampleTerrain(terrainAt, ring));
+});
+
+test('pandGroundNap: split-level ground is real ground (Stadsloket West against the Bos en Lommerplein deck)', () => {
+  // 0363100012118358: 3DBAG ground +0.82 NAP on the A10 side street; the terrain under the footprint is interpolated from
+  // the raised plaza at +4.7, 3.9 m above it. The terrain 4 m outside the walls comes down to +0.71: not a failed estimate.
+  const facts = JSON.parse(readFileSync(new URL('../../scripts/building-recipes/houses/stadsloket-west/facts.json', import.meta.url), 'utf8'));
+  const g = pandGroundNap(facts.attributes, sharedTerrain(), facts.bagFootprintRD[0]);
+  assert.ok(g.terrain!.underNapM! > facts.attributes.b3_h_maaiveld + GROUND_OUTLIER_M, `under ${g.terrain!.underNapM}`);
+  assert.deepEqual([g.source, g.groundNapM], ['3dbag', facts.attributes.b3_h_maaiveld]);
+  // The bare under-footprint number (no sample around) still replaces it: the reach test is what keeps it.
+  assert.equal(trustedGroundNap(facts.attributes, g.terrain!.underNapM).source, 'terrain');
+});
+
+test('3DBAG massing records (facade/sources/netherlands.ts): groundLevel is the trusted ground', () => {
+  const page = (item: any) => ({ CityObjects: item.feature.CityObjects, vertices: item.feature.vertices });
+  // Both items come from one tile, so one transform decodes both rings.
+  assert.deepEqual(groundFixture.outlier.metadata.transform, groundFixture.ordinary.metadata.transform);
+  const pands = bag3dPands([page(groundFixture.outlier), page(groundFixture.ordinary)], groundFixture.outlier.metadata.transform);
+  const [outlier, ordinary] = bag3dMassingRecords(pands, sharedTerrain());
+  assert.equal(outlier.buildingId, '0363100012124441');
+  assert.ok(Math.abs(outlier.groundLevel! - NASSAUKADE_63X_TERRAIN_NAP) < 0.01, `groundLevel ${outlier.groundLevel}`);
+  assert.equal(ordinary.groundLevel, fixtureAttributes(groundFixture.ordinary).b3_h_maaiveld);
+  // Without a terrain field the record is what the source publishes.
+  assert.equal(bag3dMassingRecords(pands)[0].groundLevel, -9.673999786376953);
 });

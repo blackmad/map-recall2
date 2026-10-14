@@ -15,6 +15,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { findArea, SURVEY_AREAS } from '../../src/canalRecall/facade/areas.ts';
 import { dutchSources } from '../../src/canalRecall/facade/sources/netherlands.ts';
+import { sharedTerrain } from '../lib/terrainField.ts';
 import type { CitySources, HeritageRecord, LngLat, MassingRecord, ProjectedPoint, RegistryBuilding, SemanticsRecord } from '../../src/canalRecall/facade/sources.ts';
 import { containsPoint, intersectsArea, resolveArea, type NamedWay, type ResolvedArea, type SurveyArea } from '../../src/canalRecall/facade/surveyArea.ts';
 import { loadNamedWays } from './fetch-area-features.ts';
@@ -118,7 +119,7 @@ async function reconnoitre(area: SurveyArea) {
   const ids = new Set(measured.map(b => b.buildingId));
   let massingRecords: MassingRecord[] = [];
   if (sources.massing) {
-    const fetched = await cached(`${area.areaId}-massing.json`, () => sources.massing!.fetchMassing(resolved.bboxLngLat, sources.crs));
+    const fetched = await cached(`${area.areaId}-massing.json`, () => sources.massing!.fetchMassing(resolved.bboxLngLat, sources.crs, { terrainAt: sharedTerrain() }));
     massingRecords = fetched.filter((m: MassingRecord) => ids.has(m.buildingId));
     const byForm = (form: string) => massingRecords.filter(m => m.roofForm === form);
     const errorsOf = (rows: MassingRecord[]) => rows.map(m => m.reconstructionError).filter((v): v is number => v !== null);

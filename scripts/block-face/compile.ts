@@ -20,6 +20,7 @@ import {classifyPartyLoops, openEdges} from '../../src/canalRecall/blockFace/par
 import {validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import {FACES, STAGING} from './intake.ts';
 import {photoReadings} from './gable-from-photo.ts';
 import {loadSoup} from '../audit-glb-quality.ts';
@@ -42,7 +43,7 @@ export async function compileFace(faceId: string) {
   const photoGables = face.continuity.crownFromPhoto?.length ? await photoReadings(faceId) : undefined;
   const roofArg = arg('roof') as 'recipe' | 'survey' | undefined;
   if (roofArg && !['recipe', 'survey'].includes(roofArg)) throw Error('--roof=recipe|survey');
-  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip, photoGables, roofSource: roofArg});
+  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip, photoGables, roofSource: roofArg, terrainAt: sharedTerrain()});
   if (result.recipeRoofs) for (const r of result.recipeRoofs) console.log(`  recipe roof ${r.pandId.slice(-6)}: ${r.form} eaves ${r.eavesM} -> ridge ${r.ridgeM} m (3DBAG p95 ${r.capM}, max ${r.surveyMaxM}); main depth ${r.mainDepthM}/${r.plotDepthM} m; wings ${r.wings.map(w => `${w.areaM2} m2 @${w.heightM}`).join(' ') || 'none'}; surfaces ${r.surfacesBefore} -> ${r.surfacesAfter}${r.notes.length ? ' | ' + r.notes.join('; ') : ''}`);
   if (result.photoCrowns) console.log(`  crowns from photo: ${result.photoCrowns.patches.map(p => `${p.pandId.slice(-6)}/${p.frontId} ${JSON.stringify(p.set)}`).join('; ') || 'none'}${result.photoCrowns.kept.length ? ` | kept authored: ${result.photoCrowns.kept.map(k => `${k.pand.slice(-6)}/${k.front} (${k.why})`).join('; ')}` : ''}`);
   const out = path.join(STAGING, faceId);
