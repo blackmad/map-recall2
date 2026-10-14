@@ -1262,8 +1262,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   green outlines on a bare deck with no abutments, railings or lamps;
   (h) a footbridge in the Spaarndammerbuurt floats disconnected from both
   banks (deck must overlap the abutments and meet the quay top; count
-  floating ends in the own-ground tests). Each gets a before/after frame
-  on the demo page when it lands.
+  floating ends in the own-ground tests); (i) the own-ground quay and its
+  path band run over the houseboats on the west bank north of the
+  Haarlemmerpoort (land must follow the BGT waterdeel edge; count houseboat
+  footprints under land cells); (j) the Zoutkeetsgracht bascule: hollow
+  floating portal, slab deck narrower than the approaches with bare plank
+  edges, asphalt deck between brick approaches, abutments short of the
+  quay walls: the bascule type is a rebuild (pylons, beams, counterweight,
+  leaf with kerbs, width from BGT, abutments meeting the quay, railings
+  continuous, lamps). Each gets a before/after frame on the demo page
+  when it lands.
 - **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
   "User review"; `docs/plans/large-tier-likeness-and-streets-20261014.md`
   Part 1): lane A measurement and likeness tooling (crops archived to
