@@ -1,0 +1,184 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "crea-164972",
+ "pandId": "0363100012164972",
+ "address": "CREA, Nieuwe Achtergracht 170, Amsterdam (UvA cultural student centre): a brown-brick warehouse block on the Nieuwe Achtergracht with five storeys of arched windows, a four-storey right wing with an arched stone entrance under a glass top storey, and a dark-brick west wing over a perforated-metal base",
+ "sources": [
+  {
+   "id": "pano-2021-01-22-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000883/",
+   "image": "staging/pand-reference-walls/0363100012164972/w01-343.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000883/",
+   "image": "staging/pand-reference-walls/0363100012164972/w01-343.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000883/",
+   "image": "staging/pand-reference-walls/0363100012164972/w01-343.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-18-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001447/",
+   "image": "staging/pand-reference-walls/0363100012164972/w04-343.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-18-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_001458/",
+   "image": "staging/pand-reference-walls/0363100012164972/w02-252.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-20-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_1330_Track02_Sphere_00057/",
+   "image": "staging/pand-reference-walls/0363100012164972/w05-163.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    55
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 16,
+   "ground": "system",
+   "windows": "plain",
+   "arches": {
+    "windows": "segmental",
+    "band": "none"
+   },
+   "palette": {
+    "brick": "#6e4a3a",
+    "frame": "#8a8e90",
+    "stone": "#a8a498"
+   }
+  },
+  {
+   "wallSurfaces": [
+    50
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 13,
+   "ground": "system",
+   "windows": "plain",
+   "arches": {
+    "windows": "segmental",
+    "band": "none"
+   },
+   "entrance": {
+    "bay": 0,
+    "portal": true
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#6a4034",
+    "frame": "#4a4c50",
+    "stone": "#b0aca0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    42
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#7a3a2c",
+    "frame": "#8a8e90",
+    "stone": "#a8a498"
+   }
+  },
+  {
+   "wallSurfaces": [
+    32
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 10,
+   "ground": "glazed",
+   "windows": "plain",
+   "palette": {
+    "brick": "#6a4a3c",
+    "frame": "#4a4c50",
+    "stone": "#a8a498"
+   }
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "blank",
+   "blankStoreys": [
+    0
+   ],
+   "windows": "plain",
+   "palette": {
+    "brick": "#46444a",
+    "frame": "#26262a",
+    "stone": "#6a6a6e"
+   }
+  },
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#7a4638",
+    "frame": "#8a8e90",
+    "stone": "#a8a498"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#6a4a3c",
+  "frame": "#4a4c50",
+  "door": "#3a2a22",
+  "stone": "#a8a498"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "CREA (BAG pand 0363100012164972, 61 3DBAG wall surfaces, roof max 19.5 m): the UvA cultural student centre on the Nieuwe Achtergracht. Photographed: the 59 m north front (w01-343, 2021): a left block of five storeys x 16 segmental-arched windows (surface 55), a right block of four storeys x 13 arched windows with an arched stone entrance in its left bay under a set-back glass storey (surface 50), a tower end (surface 42); the ground-floor cafe glazing (w04-343), the dark-brick west wing with a perforated-metal base (w02-252, panel 28 surface 36) and the red-brick court wall (w05-163, surface 7).",
+  "NOT INSTALLED: footprint-vs-bag fails at IoU 0.895 (limit 0.90). 3DBAG's LoD2.2 ground surface leaves out a 127 m2 block at the north-east corner (BAG 1217 m2, LoD2.2 1090 m2; the walls and roofs of that block are in the shell, its ground is not). The shell has no open edge, so shellRepair changes nothing; footprint 'bag' renumbers the wall surfaces and has 4.5 m of open edge (limit 2). Everything else passes (10,854 triangles, eaves and ridge within 0.3 m).",
+  "Simplified: five bays on the left block are blank passage in the real wall; the glass top storey is the 3DBAG roof mass; the glass-lettered CREA CAFE is not drawn; the south and east court walls without a panorama (w03-163 is 69% washed out, w06-163 is a flat brick sample) stay blank.",
+  "Not installed (footprint IoU 0.895 against BAG fails the gate). Photo review 2026-10-14 (reconcile lane, crops archived): walls[0], [2], [3] FAIL on wall lightness (the photo's brick is darker, dL +0.13 to +0.19), walls[4] on colour family, walls[1] WARN; glazing bands off by 0.18-0.38."
+ ],
+ "shellRepair": true
+}

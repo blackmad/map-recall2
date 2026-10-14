@@ -6,35 +6,21 @@
  "address": "Apollolaan 4 / Stadionweg 5 (Apollohal), Amsterdam-Zuid (Olympisch Kwartier): 1934 sports hall of brick with a tall glazed upper hall, a curved glass roof edge, brick entrance annexes with round windows and a canopied glass entrance",
  "sources": [
   {
-   "id": "pano-2017-04-19-w01",
+   "id": "pano-2022-03-23-w04-321L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002470_pano_0000_000056/",
+   "image": "source-data://pand-reference-walls/0363100012134507/w04-321L.jpg",
+   "sha256": "0ac28bf344a574a2adbfad0ae8cfd4cd5e97ddb011d41ea205cb86a73e790b46",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-04-19-w01-231",
    "kind": "street-panorama",
    "capturedAt": "2017-04-19",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000263_pano_0001_001030/",
-   "image": "staging/pand-reference-walls/0363100012134507/w01-231.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-05-13-w04",
-   "kind": "street-panorama",
-   "capturedAt": "2020-05-13",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001706_pano_0000_002372/",
-   "image": "staging/pand-reference-walls/0363100012134507/w04-321.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-05-13-w05",
-   "kind": "street-panorama",
-   "capturedAt": "2020-05-13",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001706_pano_0000_002367/",
-   "image": "staging/pand-reference-walls/0363100012134507/w05-321.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2024-11-05-w06",
-   "kind": "street-panorama",
-   "capturedAt": "2024-11-05",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241105_1055_Track29_Sphere_00126/",
-   "image": "staging/pand-reference-walls/0363100012134507/w06-231.jpg",
+   "image": "source-data://pand-reference-walls/0363100012134507/w01-231.jpg",
+   "sha256": "202a4cbf6006bca05827ccba3572ad283a46c78061f641ced41c3944f0ae9b84",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -58,10 +44,11 @@
     "glass": "#46545c"
    },
    "hand": [
-    "palette.brick",
-    "palette.glass",
+    "system",
     "baysPerStorey",
-    "hall"
+    "hall",
+    "palette.brick",
+    "palette.glass"
    ]
   },
   {
@@ -72,15 +59,20 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 2,
-   "baysPerStorey": 3,
+   "baysPerStorey": 2,
    "ground": "system",
    "windows": "wide",
    "deepBars": true,
    "palette": {
-    "brick": "#9a5a44",
+    "brick": "#5f5950",
     "frame": "#e8e6dc",
     "stone": "#c8c0ac"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ]
   },
   {
    "wallSurfaces": [
@@ -100,7 +92,10 @@
     "frame": "#8ea8b4",
     "stone": "#c8c0ac",
     "glass": "#46545c"
-   }
+   },
+   "hand": [
+    "system"
+   ]
   },
   {
    "wallSurfaces": [
@@ -118,7 +113,11 @@
     "brick": "#a89070",
     "frame": "#8ea8b4",
     "stone": "#c8c0ac"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -137,7 +136,8 @@
  "measured": {
   "date": "2026-10-14",
   "groups": [
-   0
+   0,
+   1
   ]
  },
  "notes": [
@@ -145,6 +145,8 @@
   "walls[0] = panel 22 (SW, 66.6 m, eaves 11.9): a blank brick plinth under two glazed bands, drawn as 3 storeys with a blank ground and 22 bays of wide windows without sills. walls[1] = panels 21, 13 and 17 (NW, 11 m, 10 m and 9 m, eaves 6.3): the two-storey brick annex fronts with white-framed windows, 2 storeys x 3 bays. walls[2] = panel 14 (NW, 35.7 m, eaves 12.1 over a 6.8 m base): the glazed gable of the hall above the annexes, drawn as a one-storey curtain wall with mullions and transoms, with APOLLOHAL on a name band (the photographed letters are on the glass). walls[3] = panel 31 (SW end, 9.8 m, eaves 3.6): the glazed entrance under a flat canopy, one storey with a glazed ground and an entrance with canopy in bay 1.",
   "Simplified: the glass gable is a flat curtain wall (the photographed hall edge is curved), the clerestory on the long flank is wide windows over a blank base, the entrance is a canopy and a glazed door set in three bays, the round windows of the annexes are not modelled and stay plain wall. Not drawn: the south-east end wall, the north-east long wall (panels 63, 44, 26, no panorama) and the low service range on the north-east, which stay blank brick.",
   "Re-fit 2026-10-14 (kit vocabulary lane) from w01-231: walls[0] is a glazed-hall, a tan-grey brick base to 0.4 of the eaves (photo 0.40) under one glass skin to the eaves with a mullion grid of 26 lights per structural bay (0.64 m; photo 0.63 m) and 6 rows (photo 6, about 1.03 m), structural posts every 16.6 m (photo about 15.1 m: 4 bays over 66.6 m), dark grey-blue glass #46545c (photo raw #596b74 with the sky reflected; darkened to the dark band the user reads) and a pale tan plinth #a2937e (photo raw #5c5347 under overcast, x1.75 by the light metal door panel). The APOLLOHAL letters on the base and the roof-edge louvres are not drawn.",
-  "measured: the wall, glass and arch-ring colours and the rhythm of walls [0] were sampled by hand from the rectified crops (2026-10-14, kit vocabulary lane; numbers in the notes above), not by measure.ts; `hand` keeps them when measure.ts --write runs. Their wall slots export tintSource measured."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #5e605e not used (not darker than the wall #5f5950 by 10 L*, or tinted): kit glass kept.",
+  "Reconciled 2026-10-14 (lane A measurement on lane C's systems): `hand` holds every group's system and walls[0]'s and walls[3]'s bay counts (lane C's choice); walls[1]'s 2 bays are measured (lane C kept the original 3; the photo w04-321L shows two bays). walls[0] stays lane C's hand sample from w01-231 (2017): the 2024 crop of that flank is NO EVIDENCE (foliage 32 %), so its brick #a2937e and glass #46545c remain hand-sampled measured values (hand palette.brick, palette.glass). walls[0] is a glazed hall: a measured windowShape is meaningless there (no punched windows; the hall's lights and rows are the shape), so none is written. walls[1]: wall #5f5950 measured (grey-brown, not lane C's orange #9a5a44); its measured shape 0.40 x 1.00 (\"glazed columns\") was rejected on review: the annex is a glazed shopfront under a blank panel beside brick with a ribbon clerestory, not full-height columns, so the wide preset is kept (hand windowShape).",
+  "Kit gap: walls[1] mixes bays of different systems on one front (glazed shopfront under a blank screen panel | brick with a clerestory ribbon); the kit has one system per group. walls[0] APOLLOHAL letters on the base and the roof-edge louvres; walls[2] the curved glass roof edge."
  ]
 }

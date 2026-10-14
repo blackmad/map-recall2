@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "id": "spinoza-lyceum-129398",
+ "pand": "0363100012129398",
+ "signature": [
+  "concrete-piers",
+  "timber-panels",
+  "spinoza-plate"
+ ],
+ "walls": [
+  {
+   "tag": "w01-156",
+   "bearing": 156,
+   "lengthM": 71.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_09-15-33_00944",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "concrete-piers",
+     "kind": "colonnade",
+     "where": "the whole south-east wing: white concrete columns between every pair of bays, full height",
+     "approxSizeM": [
+      48,
+      15
+     ],
+     "plan": "modelled",
+     "how": "piers true on the group, stone swatch off-white",
+     "seenIn": "recording_2024-09-02_09-15-33_00944"
+    },
+    {
+     "id": "timber-panels",
+     "kind": "window-shape",
+     "where": "four storeys of orange-brown timber window panels with solid parapet boards, a low band of grid windows at the foot",
+     "approxSizeM": [
+      48,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 4 storeys x 16 bays, two-light windows in an orange frame; the solid timber parapets are not drawn as separate panels",
+     "seenIn": "recording_2024-09-02_09-15-33_00944"
+    },
+    {
+     "id": "awnings",
+     "kind": "canopy",
+     "where": "white roll-out awnings over the timber panels on the upper floors",
+     "approxSizeM": [
+      40,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "retractable awnings, down on some bays and up on others in the photograph"
+     },
+     "seenIn": "recording_2024-09-02_09-15-33_00944"
+    },
+    {
+     "id": "entrance-stair",
+     "kind": "canopy",
+     "where": "under bay 5: a stair flight on both sides up to a recessed hall under a flat concrete canopy, a red door in the basement beneath",
+     "approxSizeM": [
+      10,
+      5
+     ],
+     "plan": "simplified",
+     "how": "entrance bay 5 with canopy; the stair flights are not drawn",
+     "seenIn": "recording_2024-09-02_09-15-33_00944"
+    },
+    {
+     "id": "spinoza-plate",
+     "kind": "sign",
+     "where": "on the entrance canopy edge: a small plate lettered SPINOZA",
+     "approxSizeM": [
+      2,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "signage SPINOZA, mount canopy",
+     "seenIn": "recording_2024-09-02_09-15-33_00944"
+    }
+   ]
+  },
+  {
+   "tag": "w02-252",
+   "bearing": 252,
+   "lengthM": 38.9,
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000013_pano_0001_000151",
+   "capturedAt": "2016-08-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-timber-grid",
+     "kind": "window-shape",
+     "where": "west wing: eleven bays, each two timber-framed windows over an orange board parapet, a low band of square-pane windows under them",
+     "approxSizeM": [
+      39,
+      10
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 3 storeys x 11 bays, wide windows in an orange frame; the low basement band is the ground storey of the grid",
+     "seenIn": "TMX7316060226-000013_pano_0001_000151"
+    },
+    {
+     "id": "west-piers",
+     "kind": "colonnade",
+     "where": "white concrete columns between every bay with a flat projecting slab over each storey",
+     "approxSizeM": [
+      39,
+      10
+     ],
+     "plan": "modelled",
+     "how": "piers true on the group",
+     "seenIn": "TMX7316060226-000013_pano_0001_000151"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-02_09-15-33_00944/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000013_pano_0001_000151/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

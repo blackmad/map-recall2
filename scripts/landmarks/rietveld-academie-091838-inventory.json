@@ -1,0 +1,136 @@
+{
+ "schemaVersion": 1,
+ "id": "rietveld-academie-091838",
+ "pand": "0363100012091838",
+ "signature": [
+  "pressed-cladding",
+  "glazed-ground",
+  "academie-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w03-177",
+   "bearing": 177,
+   "lengthM": 40.2,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_06-51-56_00461",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "pressed-cladding",
+     "kind": "other",
+     "where": "the whole tower south front above the ground storey: grey pressed-metal cladding with a regular dimple relief",
+     "approxSizeM": [
+      40,
+      27
+     ],
+     "plan": "simplified",
+     "how": "wallMaterial stucco in grey over the five blank upper storeys; the dimple relief is not drawn",
+     "seenIn": "recording_2024-09-02_06-51-56_00461"
+    },
+    {
+     "id": "glazed-ground",
+     "kind": "window-shape",
+     "where": "a fully glazed double-height ground storey under a ribbon of low windows on the first floor",
+     "approxSizeM": [
+      40,
+      8
+     ],
+     "plan": "modelled",
+     "how": "ground glazed, low windows on storey 1, eight bays",
+     "seenIn": "recording_2024-09-02_06-51-56_00461"
+    },
+    {
+     "id": "academie-lettering",
+     "kind": "lettering",
+     "where": "in the ground glazing at the left entrance: RIETVELD ACADEMIE SANDBERG INSTITUUT in white capitals",
+     "approxSizeM": [
+      4,
+      2
+     ],
+     "plan": "simplified",
+     "how": "signage RIETVELD ACADEMIE on the entrance hall glazing; the second line is not drawn",
+     "seenIn": "recording_2024-09-02_06-51-56_00461"
+    },
+    {
+     "id": "house-number",
+     "kind": "sign",
+     "where": "beside the door: 96 / 98",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 20 cm digit plate"
+     },
+     "seenIn": "recording_2024-09-02_06-51-56_00461"
+    }
+   ]
+  },
+  {
+   "tag": "w05-177",
+   "bearing": 177,
+   "lengthM": 28.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_07-32-23_00064",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "sandberg-glass",
+     "kind": "lettering",
+     "where": "low south block: SANDBERG INSTITUUT lettered on the glazed entrance",
+     "approxSizeM": [
+      4,
+      1
+     ],
+     "plan": "modelled",
+     "how": "signage SANDBERG INSTITUUT, mount glazing on a two-storey entrance hall",
+     "seenIn": "recording_2025-07-30_07-32-23_00064"
+    },
+    {
+     "id": "type-specimen",
+     "kind": "lettering",
+     "where": "in the glass left of the entrance: a stacked alphabet ABCDEFGHI ... in white",
+     "approxSizeM": [
+      2,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a type specimen printed on the glass, 5 cm strokes at 20 m"
+     },
+     "seenIn": "recording_2025-07-30_07-32-23_00064"
+    },
+    {
+     "id": "low-block-glazing",
+     "kind": "window-shape",
+     "where": "a two-storey glazed ground band under a pale concrete eaves slab, with a perforated-metal screen at the east end",
+     "approxSizeM": [
+      28,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 2 storeys, glazed ground and low windows; the metal screen is not drawn",
+     "seenIn": "recording_2025-07-30_07-32-23_00064"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-02_06-51-56_00461/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-30_07-32-23_00064/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
