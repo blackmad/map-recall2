@@ -72,4 +72,10 @@ test('Kinkerstraat proof faces (named regressions): 109-161 places the infill ty
   assert.equal(k8.windows, 't-window');
   assert.deepEqual(k8.windowHead?.archRing, {colour: 'stone', style: 'blocks', keystone: true}, 'Kinkerstraat 8: white blocked arch with keystone');
   assert.equal(row.find(i => i.pandId.endsWith('236471'))!.fronts[0].windowHead?.kind, 'flat', 'Kinkerstraat 28: flat heads under keystones');
+  // Oud-West 1900 keys wired after the Nassaukade merge: the 18-4 row's white sill and transom courses, 28's paint.
+  assert.equal(k8.bands, 'painted', 'Kinkerstraat 8: painted sill and transom courses');
+  assert.deepEqual(k8.bandLines, ['sill', 'transom']);
+  assert.deepEqual(k8.bandHeights, {sill: 0.1, transom: 0.12}, 'measured band rows, 0.10-0.13 m');
+  const k28 = row.find(i => i.pandId.endsWith('236471'))!;
+  assert.equal(k28.fronts[0].palette?.wallMaterial ?? k28.palette.wallMaterial, 'painted-brick', 'Kinkerstraat 28: black-painted brick');
 });
