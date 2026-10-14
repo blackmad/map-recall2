@@ -1,5 +1,68 @@
 # Canal Recall — what is built
 
+## White accents read white: painted stone tint, springer rows, round arches with dark tympana, measured head lines (2026-10-14, user)
+
+Lane `lane/oud-west-accents-20261014`, from the user's priority on white
+accents and the gallery-size review of the Kinkerstraat 18-4 and
+Nassaukade sheets. New keys, typed in `intent.ts`, laid out in `fit.ts`,
+marked in `oudWest.ts`, byte-identical when absent (fit-golden 153, 112
+meshes, 22 of 24 face chunks identical; only the two re-authored faces
+changed): `palette.stoneMaterial: "painted"` exports every stone-surface
+mesh (bands, springers, keystones, rings, eared heads, consoles, quoins)
+as a measured tint, and `cityMeasuredStoneTint` in `look/palette.ts`
+divides by the stone cell mean instead of the floor-and-mix that greyed
+it; `archRing.style: "springers"` with `springerSize: [length, height]`
+(no ring: a slab at each foot of the arch on the springing line, 6 cm
+proud, two over a narrow pier cut back to leave 0.09 m, the keystone cut
+at the eaves); `archRing.shape: "round"` (relieving arches, rise = half
+the span) and `archRing.springGap` (default 0.04 m above the head);
+`windowHead.tympanum: "dark"` (the arch field in `palette.band`, else the
+wall × 0.72, measured 0.67–0.80 on Nassaukade 150 and 147); `headLines`
+(one share per storey, needs a `windowHeights` list; the head sits there
+instead of the common 0.86); `bandTransomAt` (the transom band as a share
+of the window height, default 0.78). `palette-from-strip.ts` prints
+`paint`: the drawn frame colour × the photo's band-to-frame brightness
+ratio, because the overcast strips read white paint as light grey
+(#b2b3a8) and a raw median rendered grey next to the white frames.
+Measured painted-stone colours: `kinker-1890-brick-arched` #eae7dc
+(median of 7 pands; dark-brown palette #dddad0), `kinker-1895-painted-band`
+#e2e1d5 / #e3e1d5, `nassau-1900-three-axis` #eeeae0,
+`nassau-1900-two-axis-balcony` #f5f1e7 (measured on 149), 151-152
+#eeeae0; 150's stone is also its granite base, so its springers and
+keystone take the frame paint. Rendered vs photo on the same pier
+pixels: Kinkerstraat 8-10 sill course #a6a496 → #e0e0d9 (photo raw
+#ada99b, lit peak #c2c9c1, target #eae7dc); Nassaukade 148 storey-2 band
+~#c1bcb1 → #e1e1dd (photo #fefdce at golden hour); the brick did not
+move (8-10 #6b5744 vs #6d5543). Nassaukade 147's eaves re-measured at
+15.5 m (14.6 m hid the round arches under the cornice). Re-authored:
+kinker-2-30 (32,043 → 29,595 tris) and nassau-145-152 (19,441 → 19,159,
+heaviest front 2,887), all gates. Verdict at gallery size
+(`docs/images/kinkerstraat/kinker-2-30-row-18-4-zoom.jpg`,
+`docs/images/nassaukade-506/{photo-over-model,arches-147-150}.jpg`):
+the white reads as white as the frames; the 18-4 row has the dotted row
+at the springing, one springer pair per pier and a keystone per window
+within 0.12 m of the photo's rows (7.15, 9.97, 12.75 m), the thin course
+at the measured 0.63 of the window, the 5-block ring gone; 147 and 150
+show semicircular dark tympana with two white springers and a keystone,
+147 springing on its head band and 150 0.55 m above its heads; heads
+within ~0.1 m on 148, 149, 147, 150 and the 18-4 row (147 and 150 needed
+measured storey heights). Still wrong: 147's crown draws a cream cornice
+band where the photo has brick; the Kinkerstraat windows are ~0.8 m wide
+against the photo's 0.95 m (`windowShare` 0.55 in the type). Kit gaps:
+wedge-shaped springers and keystones (slabs are square), the dark
+rubbed-brick ring between springers on the 18-4 row, band lines per
+storey (147's storey-1 band sits mid-window, its upper bands at the
+heads; the kit has one set per front), 150's dark recessed course between
+head and springing, painted dressings and a granite base on one house
+(one stone colour per house), a per-house T-window transom (fixed 0.76),
+wall anchors between springers; the 1890 type's `red-brown-sunlit`
+palette keeps unmeasured stone (no white course on its strips). Tests:
+building-recipes 168, block-face 82, look 41, with named regressions on
+162482's impost rows, the heads of 148/149/147/150, the round arches, the
+painted-stone tints, `paintFromFrames`. Bundles rebuilt here for the
+look change.
+
+
 ## Bridge regressions on main were two readings, not the bridges (2026-10-14)
 
 Lane `lane/bridge-regressions-20261014`. After the bridges merge met the
