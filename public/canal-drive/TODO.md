@@ -1226,8 +1226,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ## P2 — Weight and reach
 - **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
   10" and "Figures, second pass"): STOP building statues with the figure
-  kit (user, 2026-10-14: "bizarre"); the sculpture reconstruction
-  prototype decides the route (plan Part 4); the backlog needs a pass that
+  kit (user, 2026-10-14: "bizarre"); the prototype (HISTORY "Measured
+  tint, the shared house-type library, the sculpture prototype") says
+  route B (TripoSR from one licensed Commons photo, ~20 s per statue) for
+  the ~18 single figures and organic forms, per-figure route B on a kit
+  plinth for the ~6 groups, kit primitives for slab and lettered
+  memorials; before any install decide bronze tint vs vertex colour and
+  the freedom-of-panorama question (user); automate photo pick → cut-out
+  (IS-Net fallback) → TripoSR → decimate → strip as one command; re-ask
+  the city for the mobile-mapping cloud host; the backlog needs a pass that
   marks built ids and location matches as done (Carmiggelt, Winkler Prins,
   Anne Frank, Walraven van Hall, Multatuli still read pending); dedupe the
   Thijssen/Jordaan lines in `build-manual-landmarks.ts`; left from the
@@ -1330,8 +1337,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the measured 2.1–4.3 m; the red lantern and the w13 glass-block ribbons
   are not modelled; walls with no photo stay inferred kit walls.
 - **P1 Commercial streets: Kinkerstraat, then Jan Evertsenstraat** (plan
-  Part 2, user 2026-10-14): shared type library (`scripts/block-face/types/<district>/`,
-  `BlockFaceIntent.types` accepting ids); Kinkerstraat survey lane
+  Part 2, user 2026-10-14): shared type library DONE (`scripts/block-face/types/<district>/`,
+  `blockFace/typeLibrary.ts`); Kinkerstraat survey lane
   (`street-pands.ts`, `pand-reference --street`, intake per face, ~209
   pands: 1880s–1900s 161, 1910s 13, 1980s infill 31); Oud-West type
   library (1890 brick-arched, 1900 stucco front, 1985 infill) with palettes
