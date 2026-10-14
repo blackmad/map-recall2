@@ -16,7 +16,8 @@ import {createRecipeLook, SOUTH_Z_ENU} from '../../src/canalRecall/buildingRecip
 
 export type WallPath = 'city' | 'legacy' | 'raw';
 export interface WallView { eye: number[]; target: number[]; fov: number; width: number; height: number }
-export interface WallRequest { base64: string; year: number | null; path: WallPath; views: WallView[]; targets: string[]; brickUrl: string; rawMaps?: Record<string, string> }
+/** `unmeasured`: drop every `tintSource` extra before dressing, so measured materials draw as the stock look did (the "game before" column). */
+export interface WallRequest { base64: string; year: number | null; path: WallPath; views: WallView[]; targets: string[]; brickUrl: string; rawMaps?: Record<string, string>; unmeasured?: boolean }
 export interface WallResult { png: string; means: Record<string, {rgb: number[]; pixels: number}> }
 
 const renderer = new T.WebGLRenderer({antialias: false, preserveDrawingBuffer: true});
@@ -38,7 +39,7 @@ async function renderWalls(req: WallRequest): Promise<WallResult[]> {
   const root = gltf.scene, scene = new T.Scene();
   scene.background = new T.Color('#c9d6e0');
   const meshes: {mesh: T.Mesh; name: string}[] = [];
-  root.traverse(o => { if (o instanceof T.Mesh) { meshes.push({mesh: o, name: (o.material as T.Material).name}); (o.material as T.Material).side = T.DoubleSide; } });
+  root.traverse(o => { if (o instanceof T.Mesh) { meshes.push({mesh: o, name: (o.material as T.Material).name}); (o.material as T.Material).side = T.DoubleSide; if (req.unmeasured) delete (o.material as T.Material).userData.tintSource; } });
   if (req.path === 'city') {
     const city = createCityLook(T, {brick: b, size: 256});
     await city.ready;
