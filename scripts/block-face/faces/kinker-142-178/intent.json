@@ -1,0 +1,917 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-142-178",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-142-178/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 178-142 (even side), 2024-12-11 overcast strip. 178-168: a 1989 flats block (kinker-1985-infill placed with its own grid: four storeys of tall windows with white sill lines, projecting balcony stacks, a continuous canopy with a glazed parapet over the shops). 166-160: a 1904-05 row of 2-axis modules with yellow brick courses and blocked arches (kinker-1890-brick-arched by eye; the cluster put kinker-1895-painted-band). 156-158: a 1976 infill with recessed loggias. 154-144: plain-brick fronts with anchors and pediment dormers. 142: a Neo-Renaissance step gable. Grey gap between 144 and 142 (no pand on the face)."
+ },
+ "types": [
+  "kinker-1985-infill",
+  "kinker-1890-brick-arched",
+  "kinker-1890-plain-brick",
+  "kinker-1886-neo-renaissance"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012237396",
+   "slug": "kinker-237396",
+   "address": "Kinkerstraat 178",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "measuredPalette": {
+     "brick": "#4d4f44",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #4d4f44 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": [
+      1,
+      4,
+      4,
+      4,
+      4
+     ],
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       0
+      ],
+      "projecting": true
+     },
+     "bands": "painted",
+     "bandLines": [
+      "sill"
+     ],
+     "bandHeights": {
+      "sill": 0.06
+     },
+     "windowShare": 0.62
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2c4f8f",
+      "fascia": true,
+      "name": "Primera",
+      "sign": {
+       "text": "Primera",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#23458a"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5d605b",
+       "glassBlocks": true
+      },
+      "evidence": "strip.jpg pand 1: blue fascia and blue awning lettered \"PRIMERA\"; OSM shop=newsagent Primera"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Primera",
+    "category": "shop=newsagent",
+    "osm": {
+     "type": "node",
+     "id": 2452238280,
+     "name": "Primera"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 1989 flats, four storeys of tall transomed windows (drawn as the type two-light windows: cross-transom frames broke the 3,000-triangle front budget) with thin white sill lines, a projecting balcony stack on the left axis (storeys 1-2), flat top",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4,
+     4
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the stall of the canopy is a glazed parapet of a first-floor terrace; drawn as the rigid canopy with a glass-block band"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012233413",
+   "slug": "kinker-233413",
+   "address": "Kinkerstraat 176",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "measuredPalette": {
+     "brick": "#505347",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #505347 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": [
+      1,
+      5,
+      5,
+      5,
+      5
+     ],
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       4
+      ],
+      "projecting": true
+     },
+     "bands": "painted",
+     "bandLines": [
+      "sill"
+     ],
+     "bandHeights": {
+      "sill": 0.06
+     },
+     "windowShare": 0.62
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#24211f",
+      "fascia": true,
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5d605b",
+       "glassBlocks": true
+      },
+      "evidence": "strip.jpg pand 2: black fascia with white script lettering (not legible), graffiti on the shutter of the left half"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "black fascia, white script lettering not legible on the 2024-12-11 strip; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 5 axes, balcony stack on the right axis (storeys 1-2)",
+    "photoRows": [
+     2,
+     5,
+     5,
+     5,
+     5
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012237004",
+   "slug": "kinker-237004",
+   "address": "Kinkerstraat 168-174",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "measuredPalette": {
+     "brick": "#515347",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #515347 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": [
+      1,
+      5,
+      5,
+      5,
+      5
+     ],
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "projecting": true
+     },
+     "bands": "painted",
+     "bandLines": [
+      "sill"
+     ],
+     "bandHeights": {
+      "sill": 0.06
+     },
+     "windowShare": 0.62
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#3a3833",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#e4e2da",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5d605b",
+       "glassBlocks": true
+      },
+      "evidence": "strip.jpg pand 3: white fascia (lettering not legible) over a dark glazed ground floor with a grid of mullions"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "glazed commercial ground floor, white fascia not legible; no BAG non-residential unit and no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): 5 axes, a two-axis balcony stack on the left (storeys 1-2)",
+    "photoRows": [
+     3,
+     5,
+     5,
+     5,
+     5
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012160298",
+   "slug": "kinker-160298",
+   "address": "Kinkerstraat 166",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#5c4c3c",
+     "stone": "#8c7b57",
+     "cornice": "#595846",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #5c4c3c on the 2024-12-11 strip; yellow brick courses sampled on the strip at x 1122-1145 rows 249-356 (#867756-#8c7b57); cornice median #595846"
+    },
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     },
+     "cornice": "bracketed",
+     "bandLines": [
+      "sill",
+      "transom",
+      "head"
+     ],
+     "bandHeights": {
+      "sill": 0.1,
+      "transom": 0.08,
+      "head": 0.08
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#3a2c26",
+      "fascia": false,
+      "name": "FEBO",
+      "sign": {
+       "text": "FEBO",
+       "textColour": "#ff6a2a",
+       "mount": "wall"
+      },
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#44403b"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 4: orange neon \"FEBO\" over a dark glazed front; OSM amenity=fast_food FEBO"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "FEBO",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2452238287,
+     "name": "FEBO"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): 2 axes, yellow brick sill/transom/head courses on every storey, blocked segmental arches on storeys 1-2, flat on 3, a white dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "arch rings of alternating yellow and red brick blocks are drawn as stone blocks in the yellow course colour",
+     "flat-topped white dormers with a cornice cap are drawn as the type pediment dormers",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156969",
+   "slug": "kinker-156969",
+   "address": "Kinkerstraat 162-164",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#5e4d3b",
+     "stone": "#8c7b57",
+     "cornice": "#575242",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #5e4d3b on the 2024-12-11 strip; yellow brick courses sampled on the strip at x 1122-1145 rows 249-356 (#867756-#8c7b57); cornice median #575242"
+    },
+    "modules": [
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "segmental",
+        "storeys": [
+         1,
+         2
+        ],
+        "archRing": {
+         "colour": "stone",
+         "style": "blocks",
+         "keystone": true
+        }
+       },
+       "cornice": "bracketed",
+       "bandLines": [
+        "sill",
+        "transom",
+        "head"
+       ],
+       "bandHeights": {
+        "sill": 0.1,
+        "transom": 0.08,
+        "head": 0.08
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#3a2c26",
+        "fascia": true,
+        "name": "Angel's Beauty Style",
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "#44403b"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#2a2420",
+        "evidence": "strip.jpg pand 5 left module: dark fascia lettered \"Angel's Beauty Style\", lit display window; OSM shop=beauty Angels beauty style"
+       }
+      }
+     },
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "segmental",
+        "storeys": [
+         1,
+         2
+        ],
+        "archRing": {
+         "colour": "stone",
+         "style": "blocks",
+         "keystone": true
+        }
+       },
+       "cornice": "bracketed",
+       "bandLines": [
+        "sill",
+        "transom",
+        "head"
+       ],
+       "bandHeights": {
+        "sill": 0.1,
+        "transom": 0.08,
+        "head": 0.08
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#3a2c26",
+        "fascia": false,
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "#44403b"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 5 right module: second window and a grey house door"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Angels beauty style",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 4943034824,
+     "name": "Angels beauty style"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): two 2-axis modules of the 166-160 row, two dormers",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "arch rings of alternating yellow and red brick blocks are drawn as stone blocks in the yellow course colour",
+     "flat-topped white dormers with a cornice cap are drawn as the type pediment dormers",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160768",
+   "slug": "kinker-160768",
+   "address": "Kinkerstraat 160",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#6a5440",
+     "stone": "#8c7b57",
+     "cornice": "#615845",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #6a5440 on the 2024-12-11 strip; yellow brick courses sampled on the strip at x 1122-1145 rows 249-356 (#867756-#8c7b57); cornice median #615845"
+    },
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     },
+     "cornice": "bracketed",
+     "bandLines": [
+      "sill",
+      "transom",
+      "head"
+     ],
+     "bandHeights": {
+      "sill": 0.1,
+      "transom": 0.08,
+      "head": 0.08
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2e2c2a",
+      "fascia": false,
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#44403b"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 6: dark pui with food photographs in the window; no lettering legible"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "OSM puts SNS Bank (amenity=bank) here, but the SNS fascia is on 156-158; the photo shows a food shop with menu photos. OSM \"Salsa shop\" (fast_food, mapped in 156-158) may be this unit"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6 (zoom): 2 axes of the 166-160 row, a dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "arch rings of alternating yellow and red brick blocks are drawn as stone blocks in the yellow course colour",
+     "flat-topped white dormers with a cornice cap are drawn as the type pediment dormers",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012139609",
+   "slug": "kinker-139609",
+   "address": "Kinkerstraat 156-158",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "measuredPalette": {
+     "brick": "#514a3c",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #514a3c on the 2024-12-11 strip"
+    },
+    "storeys": 4,
+    "overrides": {
+     "bays": [
+      1,
+      3,
+      3,
+      3
+     ],
+     "bayWidths": [
+      2.2,
+      2.0,
+      1.2
+     ],
+     "windows": "cross-transom",
+     "storeyHeights": [
+      1.25,
+      1,
+      1,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#6e6f6c",
+      "fascia": true,
+      "name": "SNS Bank",
+      "sign": {
+       "text": "SNS",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#4b2a83",
+       "span": 0.3
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#4b2a83",
+      "evidence": "strip.jpg pand 7: purple fascia with the SNS logo over a glazed bank front; OSM amenity=bank SNS Bank"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "SNS Bank",
+    "category": "amenity=bank",
+    "osm": {
+     "type": "node",
+     "id": 9097773040,
+     "name": "SNS Bank"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7 (zoom): 1976 dark brick, a wide window left, recessed loggias in the centre, a narrow window and a small square light right; a raised parapet block with chamfered shoulders over the centre",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "recessed loggias with railings in the centre axis are drawn as windows",
+     "small square lights beside the right windows",
+     "raised centre parapet with chamfered shoulders (the flat crown has none)",
+     "yellow coping strip on the left parapet"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157726",
+   "slug": "kinker-157726",
+   "address": "Kinkerstraat 154",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#806854",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #806854 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#4a2b20",
+      "fascia": false,
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 8: dark red-brown timber pui with leaded transom, white lettering painted on the glass (not legible)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "lettering painted on the glass is not legible on the strip; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8 (zoom): plain brick, 3 axes, flat heads, iron anchors, cornice with frieze, pediment dormer. The cluster type (kinker-1895-painted-band) is overruled: red brick, 3 axes, no white heads",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors",
+     "flat brick arches over the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012155310",
+   "slug": "kinker-155310",
+   "address": "Kinkerstraat 152",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#8a6850",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #8a6850 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1f1e1d",
+      "fascia": true,
+      "name": "Vaperoutlet",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 9: black pui and fascia with small gold lettering (not legible); OSM shop=e-cigarette Vaperoutlet"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Vaperoutlet",
+    "category": "shop=e-cigarette",
+    "osm": {
+     "type": "node",
+     "id": 2809207625,
+     "name": "Vaperoutlet"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9 (zoom): plain brick, 3 axes, anchors, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors",
+     "flat brick arches over the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236491",
+   "slug": "kinker-236491",
+   "address": "Kinkerstraat 144-150",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#967b65",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #967b65 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Ice Laser Nederland",
+      "sign": {
+       "text": "Ice Laser Nederland",
+       "textColour": "#3ad46a",
+       "mount": "fascia",
+       "background": "#e9ece4"
+      },
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 10: white pui, green \"ICE LASER NEDERLAND\" letters on the fascia, frosted glass"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Ice Laser Nederland",
+    "category": "shop=beauty",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "OSM has Change laserclinic (shop=beauty), Maxella and Sushi Only Amsterdam West on this pand; the strip fascia reads ICE LASER NEDERLAND"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10 (zoom): plain brick, 3 axes, anchors, heavier cornice, pediment dormer. The cluster type (kinker-1895-painted-band) is overruled by eye",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron wall anchors",
+     "flat brick arches over the windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164341",
+   "slug": "kinker-164341",
+   "address": "Kinkerstraat 142",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "crown": "step-gable",
+    "measuredPalette": {
+     "brick": "#7f7465",
+     "evidence": "palette-from-strip.ts --face=kinker-142-178: wall median #7f7465 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Hawawshi",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#f2efe6",
+      "evidence": "strip.jpg pand 11: white fascia \"HAWAWSHI - Egyptian streetfood\", glazed front; the lettering is left off (with it the front is 3,011 triangles, over the 3,000 budget)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Hawawshi",
+    "category": "amenity=fast_food",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "OSM has de Volkskruidentuin (shop=spices) and Meat the Balls (fast_food) here; the strip fascia reads HAWAWSHI Egyptian streetfood"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 11 (zoom): dark brick with white speklagen, 3 axes, blocked segmental arches, step gable with one attic light",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  }
+ ],
+ "limitations": [
+  "237396: the stall of the canopy is a glazed parapet of a first-floor terrace; drawn as the rigid canopy with a glass-block band",
+  "160298: arch rings of alternating yellow and red brick blocks are drawn as stone blocks in the yellow course colour",
+  "160298: flat-topped white dormers with a cornice cap are drawn as the type pediment dormers",
+  "160298: iron wall anchors",
+  "156969: arch rings of alternating yellow and red brick blocks are drawn as stone blocks in the yellow course colour",
+  "156969: flat-topped white dormers with a cornice cap are drawn as the type pediment dormers",
+  "156969: iron wall anchors",
+  "160768: arch rings of alternating yellow and red brick blocks are drawn as stone blocks in the yellow course colour",
+  "160768: flat-topped white dormers with a cornice cap are drawn as the type pediment dormers",
+  "160768: iron wall anchors",
+  "139609: recessed loggias with railings in the centre axis are drawn as windows",
+  "139609: small square lights beside the right windows",
+  "139609: raised centre parapet with chamfered shoulders (the flat crown has none)",
+  "139609: yellow coping strip on the left parapet",
+  "157726: iron wall anchors",
+  "157726: flat brick arches over the windows",
+  "155310: iron wall anchors",
+  "155310: flat brick arches over the windows",
+  "236491: iron wall anchors",
+  "236491: flat brick arches over the windows",
+  "face: the 236035 pand (Kinkerstraat 142, no strip span) between 144-150 and 142 is not on the face; the model shows the neighbours' flank walls and 3DBAG roofs in that gap",
+  "164341: shop lettering left off: sign glyphs pushed the front to 3,011 triangles, over the 3,000-per-front gate"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "canopy": [
+   {
+    "pands": [
+     "0363100012237396",
+     "0363100012233413",
+     "0363100012237004"
+    ],
+    "evidence": "strip.jpg pands 1-3 (zoom): one deep canopy with a translucent glazed parapet runs over all three shopfronts at 4.3-5.5 m"
+   }
+  ]
+ }
+}
