@@ -63,6 +63,8 @@ export type HoleRect = [u0: number, u1: number, v0: number, v1: number, outline?
  * same 4.5 cm plane, and neighbouring parts then tie. Depths of 0.08 and more (solids, trim) and negative (recessed) depths are untouched.
  */
 export const SHEET_PITCH = 0.045;
+/** An opening that cannot be cut may lose this much (m) of its head or sill to fit its wall (`drawRecessed`). */
+export const OPENING_TRIM_M = 0.1;
 function liftSheet(d: number): number {
   if (!(d > 0 && d < 0.08)) return d;
   return SHEET_PITCH * (d <= 0.025 ? 1 : d <= 0.04 ? 2 : d <= 0.065 ? 3 : 4);
@@ -135,7 +137,7 @@ class Ctx {
   wallSlot = 'wall';
   /** holes cut per member wall (index into `p.members`) */
   holes = new Map<number, HoleRect[]>();
-  stats = { recessed: 0, proud: 0 };
+  stats = { recessed: 0, proud: 0, trimmed: 0 };
   /** `ComposeOptions.closedBoxes` */
   closedBoxes = false;
   /** `ComposeOptions.closedBands` (recess mode only) */
@@ -358,12 +360,22 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
  * Large-tier opening: a hole in the host wall with four reveals `c.recess` deep, closed at the back by the glass and a
  * frame ring of width `frameW` in one plane (abutting, so nothing z-fights); glazing bars sit 1.5 cm in front of the
  * glass; sill/head/surround project from the wall face as usual. Where the opening cannot be cut (straddles two 3DBAG
- * surfaces) the same glass + frame ring is laid 1.5 cm in front of the wall instead, so its edges stay within the
- * open-edge gate's 2 cm. Returns the glass depth (negative = behind the wall face).
+ * surfaces, or pokes past a step in the wall outline by more than OPENING_TRIM_M) the same glass + frame ring is laid
+ * 1.5 cm in front of the wall instead, so its edges stay within the open-edge gate's 2 cm. Returns the glass depth
+ * (negative = behind the wall face).
  */
 function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams): number {
-  const frameSlot = w.frame ?? 'frame', glassSlot = w.glass ?? 'glass', fw = Math.min(w.frameW ?? 0.07, (u1 - u0) / 4, (v1 - v0) / 4), n = c.p.n;
-  const corners = c.cut(u0, u1, v0, v1);
+  const frameSlot = w.frame ?? 'frame', glassSlot = w.glass ?? 'glass', n = c.p.n;
+  let corners = c.cut(u0, u1, v0, v1);
+  // A head or sill a few cm into a step of the wall outline (Singel 457: the 3DBAG face steps back over the window at
+  // 13.28 m and the head stood 3 mm into the gap): lower the head, or raise the sill, by up to OPENING_TRIM_M and cut the
+  // opening there instead of laying it proud, where it z-fought the brick.
+  for (let t = 0.01; !corners && t <= OPENING_TRIM_M + 1e-9; t += 0.01) {
+    const h = +t.toFixed(2);
+    if ((corners = c.cut(u0, u1, v0, v1 - h))) { v1 -= h; c.stats.trimmed++; break; }
+    if ((corners = c.cut(u0, u1, v0 + h, v1))) { v0 += h; c.stats.trimmed++; break; }
+  }
+  const fw = Math.min(w.frameW ?? 0.07, (u1 - u0) / 4, (v1 - v0) / 4);
   let back: number, Q: (u: number, v: number, d: number) => V3;
   const part = c.part();
   if (corners) {
@@ -755,7 +767,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
   const roofSlot = spec.roofSlot ?? 'roof', wallSlot = spec.wallSlot ?? 'wall';
   const recess = opts.recessM ?? 0;
   const { panels, stats: hostStats } = buildHost(set, mesh, roofSlot, wallSlot, { deferWalls: recess > 0, dissolve: recess > 0, mergeKey: opts.mergeKey, sealSlivers: opts.sealSlivers });
-  const openingStats = { recessed: 0, proud: 0 };
+  const openingStats = { recessed: 0, proud: 0 }; let trimmed = 0;
   const hostTris = mesh.triangles;
   const assignment: ComposeResult['assignment'] = [];
   const g = spec.levels.groundM, s = spec.levels.storeyM;
@@ -776,7 +788,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     const finish = (levels: number[]) => {
       opts.panelHook?.(c, { system: sysName, levels, cells });
       if (recess > 0) emitWalls(mesh, p, c.holes, c.wallSlot, c.bent ? c.profile : null);
-      openingStats.recessed += c.stats.recessed; openingStats.proud += c.stats.proud;
+      openingStats.recessed += c.stats.recessed; openingStats.proud += c.stats.proud; trimmed += c.stats.trimmed;
     };
     if (!sysName) { finish([]); continue; }
     const sys: System | undefined = spec.systems[sysName]; if (!sys) throw new Error(`unknown system ${sysName}`);
@@ -821,7 +833,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
   }
   // signs
   if (opts.shaper) for (const sign of spec.signs ?? []) drawSign(mesh, panels, sign, opts.shaper);
-  return { mesh, panels, assignment, stats: { ...hostStats, panels: panels.length, hostTris, triangles: mesh.triangles, parts: mesh.partCount, ...(recess > 0 ? openingStats : {}) } };
+  return { mesh, panels, assignment, stats: { ...hostStats, panels: panels.length, hostTris, triangles: mesh.triangles, parts: mesh.partCount, ...(recess > 0 ? openingStats : {}), ...(trimmed ? { trimmed } : {}) } };
 }
 
 /** A member wall whose vertices leave its own (Newell) plane by more than 5 mm: 3DBAG facets dissolved across a bend. */

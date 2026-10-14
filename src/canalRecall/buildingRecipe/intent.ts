@@ -369,14 +369,28 @@ export interface LargeWallIntent {
   police?: {stripe?: boolean; lamp?: boolean};
   /** What this group's wall is made of when it differs from the house (`palette.wallMaterial`); see GROUP_WALL_MATERIALS. */
   wallMaterial?: typeof GROUP_WALL_MATERIALS[number];
-  /** Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing). */
-  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>>;
+  /**
+   * Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing, `arch` = the
+   * brick arch rings over arched openings, default a shade darker than the wall).
+   */
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string};
   /**
    * Measured window proportions (`measure.ts` from the rectified photo; replaces the `windows` preset's size): `w` window
    * width as a fraction of the bay, `h` height as a fraction of the storey, `sill` sill height as a fraction of the storey.
    * Proportions only, never metres. brick-bay-grid, ribbon-windows and plinth-shopfronts upper rows.
    */
   windowShape?: LargeWindowShape;
+  /**
+   * `glazed-hall` (Apollohal): the brick base rises to `base` (fraction of the eaves height); above it one glass skin to the
+   * eaves, divided into `lights` columns per bay (`baysPerStorey` = the structural posts) and `rows` rows by a mullion grid.
+   */
+  hall?: {base: number; lights: number; rows: number};
+  /**
+   * `glazed-columns` (Houthavenkade 26): full-height glass stripes over the listed bays (of `baysPerStorey`, adjacent bays
+   * join into one stripe) from storey `from` (default 1) up, `share` of the run's width (default 0.9); `slabs`: the stripe
+   * is an enclosed balcony bay 0.45 m deep with a slab at every storey line, else a flush glass band with frame transoms.
+   */
+  columns?: {bays: number[]; share?: number; from?: number; slabs?: boolean};
   /** Fields of this group set by hand that `measure.ts --write` must keep (e.g. `["palette.brick", "baysPerStorey"]`). */
   hand?: string[];
   /**

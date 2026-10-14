@@ -432,3 +432,86 @@ function drawLattice(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, t
   }
   return n;
 }
+
+/** Glazed hall: the glass skin on the first sheet layer, the mullion grid as CURTAIN_GRID, structural posts on the fourth layer. */
+export const GLAZED_HALL = { post: 0.24, postOut: 4 * SHEET_PITCH, sillH: 0.16, sillOut: 0.12, headGap: 0.06, maxSegM: 9 };
+
+/**
+ * Glazed hall (Apollohal): over a brick base up to `baseM`, one glass skin to `top` (closed boxes on the first sheet layer
+ * where the wall is present, at most `maxSegM` tall), a mullion grid on it (`lights` columns per structural bay of
+ * `cells`, `rows` rows; CURTAIN_GRID layers: transoms 9 cm, mullions 13.5 cm), wide structural posts at the bay joints
+ * from the ground to the top (18 cm off the wall) and a stone sill under the glass. Faces never share a plane: the glass
+ * stops 6 cm under the top rail's top and 1 cm over the sill. Returns the boxes drawn.
+ */
+export function drawGlazedHall(c: PanelCtx, cells: Cell[], baseM: number, top: number, lights: number, rows: number, slots: { glass: Slot; frame: Slot; stone: Slot }): number {
+  const p = c.p, H = GLAZED_HALL, base = Math.max(baseM, p.vMin + 0.3);
+  if (top - base < 1.5 || !cells.length) return 0;
+  let n = 0;
+  // glass skin, split into storey-sized slabs
+  const gTop = top - H.headGap, k = Math.max(1, Math.ceil((gTop - base) / H.maxSegM)), part = c.part();
+  for (let i = 0; i < k; i++) {
+    const lo = base + 0.01 + (gTop - base - 0.01) * i / k, hi = base + 0.01 + (gTop - base - 0.01) * (i + 1) / k;
+    for (const [a, b] of intervals(p, lo, hi, 0.25)) if (b - a > 0.3) { c.box(slots.glass, a, b, lo, hi, 0, SHEET_PITCH, part); n++; }
+  }
+  // the mullion grid: synthetic cells of `lights` per structural bay and `rows` rows over the glass
+  const bays = [...new Map(cells.map(x => [`${x.u0.toFixed(3)}`, x])).values()];
+  const grid: Cell[] = [];
+  for (const b of bays) for (let j = 0; j < lights; j++) grid.push({ u0: b.u0 + (b.u1 - b.u0) * j / lights, u1: b.u0 + (b.u1 - b.u0) * (j + 1) / lights, v0: base, v1: top, bay: b.bay, floor: 1, bays: b.bays });
+  const levels = Array.from({ length: rows }, (_, r) => base + (gTop - base) * r / rows);
+  n += drawLattice(c, grid, levels, slots.frame, top - 0.02, CURTAIN_GRID, false);
+  // sill under the glass
+  n += drawBand(c, slots.stone, base - H.sillH, base, H.sillOut);
+  // structural posts at the bay joints (and the panel ends), ground to top
+  const joints = [...new Set(bays.flatMap(x => [x.u0, x.u1]).map(u => Math.round(u * 1000) / 1000))];
+  const pp = c.part();
+  for (const u of joints) {
+    const a = Math.max(p.uMin, u - H.post / 2), b = Math.min(p.uMax, u + H.post / 2), lo = Math.max(0, p.vMin) + 0.02;
+    if (b - a < H.post * 0.6 || !fitsPanel(p, rectPoly(a, b, lo, top), 0)) continue;
+    const segs = Math.max(1, Math.ceil((top - lo) / H.maxSegM));
+    for (let i = 0; i < segs; i++) { c.box(slots.frame, a, b, lo + (top - lo) * i / segs, lo + (top - lo) * (i + 1) / segs, 0, H.postOut, pp); n++; }
+  }
+  return n;
+}
+
+/** Glass columns: an enclosed balcony bay (`slabs`) stands 0.45 m out, a flush glass band one sheet layer pair; frames and slabs proud of it. */
+export const GLASS_COLUMN = { bayOut: 0.45, flushOut: 2 * SHEET_PITCH, post: 0.1, slabH: 0.18, transomH: 0.1, slabOverhang: 0.12, maxSegM: 9 };
+
+/**
+ * Full-height glass stripes (Houthavenkade 26's glass balcony columns): over every run of adjacent column bays on the
+ * storeys from `from` up, a glass box `share` of the run wide, frame posts at both edges (one sheet layer
+ * proud of the glass front; glass and posts in runs of storeys at most 9 m tall) and at every storey line a slab (`slabs`, 0.18 m, two layers proud) or a
+ * frame transom, 12 cm past the glass sides. Glass, posts and slabs meet inside each other's volume, so no two faces share a plane. Returns stripes.
+ */
+export function drawGlazedColumns(c: PanelCtx, cells: Cell[], levels: number[], isColumn: (bay: number) => boolean, from: number, share: number, slabs: boolean, top: number, slots: { glass: Slot; frame: Slot; stone: Slot }): number {
+  const p = c.p, G = GLASS_COLUMN, D = slabs ? G.bayOut : G.flushOut;
+  const floors = [...new Set(cells.filter(x => x.floor >= from).map(x => x.floor))].sort((a, b) => a - b);
+  if (!floors.length) return 0;
+  const row = cells.filter(x => x.floor === floors[0]).sort((a, b) => a.u0 - b.u0), runs: [number, number][] = [];
+  for (const x of row) {
+    if (!isColumn(x.bay)) continue;
+    const last = runs[runs.length - 1];
+    if (last && Math.abs(last[1] - x.u0) < 1e-6) last[1] = x.u1; else runs.push([x.u0, x.u1]);
+  }
+  const lines = [...floors.map(f => levels[f]), Math.min(top, ...cells.filter(x => x.floor === floors[floors.length - 1]).map(x => x.v1))].filter((v, i, a) => i === 0 || v > a[i - 1] + 1.5);
+  let n = 0;
+  for (const [r0, r1] of runs) {
+    const m = (r1 - r0) * (1 - share) / 2, a = r0 + m, b = r1 - m, o = G.slabOverhang;
+    if (b - a < 0.6 || !fitsPanel(p, rectPoly(a - o, b + o, lines[0] - G.slabH / 2, lines[lines.length - 1] + G.slabH / 2), 0)) continue;
+    // glass and edge posts in runs of whole storeys up to maxSegM tall, split at storey lines (inside the slabs)
+    const gp = c.part(), fp = c.part();
+    for (let i = 0; i + 1 < lines.length;) {
+      let j = i + 1;
+      while (j + 1 < lines.length && lines[j + 1] - lines[i] <= GLASS_COLUMN.maxSegM) j++;
+      const lo = lines[i], hi = lines[j];
+      c.box(slots.glass, a, b, lo, hi, 0, D, gp);
+      // posts centred on the glass edges: their outer sides stand post/2 beyond the glass sides (clear of the 3 cm band)
+      c.box(slots.frame, a - G.post / 2, a + G.post / 2, lo, hi, 0, D + SHEET_PITCH, fp);
+      c.box(slots.frame, b - G.post / 2, b + G.post / 2, lo, hi, 0, D + SHEET_PITCH, fp);
+      i = j;
+    }
+    const sp = c.part(), h = slabs ? G.slabH : G.transomH;
+    for (const L of lines) c.box(slabs ? slots.stone : slots.frame, a - o, b + o, L - h / 2, L + h / 2, 0, D + 2 * SHEET_PITCH, sp);
+    n++;
+  }
+  return n;
+}
