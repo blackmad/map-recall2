@@ -1230,25 +1230,23 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   inside the far radius); phone layout and iPhone measurement for the
   far ring; 22 parks and 110 playgrounds without BGT polygons.
 - **Public buildings, next** (2026-10-14, HISTORY "Schools as large
-  recipes"): re-install the eight schools with `layeredKit: true` and
-  re-audit (1.5–51.9 m² glass/frame z-fight today); Roeterseiland REC-A
+  recipes"): Roeterseiland REC-A
   survey lane (pand 0363100012185420); remaining with usable panoramas:
   Hogeschool van Amsterdam, Gerrit Rietveld Academie, Het 4e Gymnasium,
   Metis and Oostpoort Montessori, Spinoza, the UvA Spui building; AMC,
   VUmc, AvL and BovenIJ are blocked on panoramas or BAG matching.
-- **Large tier after the layered kit** (2026-10-14, HISTORY "Layered
-  kit"): `install-large.ts` must keep `bagYear`, then re-install the
-  eight older feature users and the eight schools with `layeredKit`
-  (Entrepotdok needs a budget raise or fewer rods: 16.0k tris with the
-  flag); make `layeredKit` the default once they pass; the Arena's real
-  brick relieving arches over flat heads with a stone keystone are not a
-  kit shape; Distelweg 88 to `render`+`stucco`; Plantage Middenlaan 52 is
-  6 storeys (7 in the photo) and its slab mouldings are not modelled; the
-  Utrechtsestraat 15 roof pavilion, Weteringstraat cantilever bands and
-  Funenpark loggias are not modelled; six dropped pands need shell or
-  footprint fixes first (Westerdoksdijk 9, Volewijkshof 6, Grasweg 698,
-  Looiersgracht 83, Jan van Galenstraat); re-running `install-large.ts`
-  for Marnixstraat 248 drops its duplicate-pand alias.
+- **Large tier after the layered re-installs** (2026-10-14, HISTORY
+  "Layered kit re-installs"): make `layeredKit` the default (all feature
+  users are on it); the stone/brick band residue on Berlage (2.6 m²),
+  Montessori, Amsterdams Lyceum and Stadsloket West (4.0 m²) that
+  `closedBands` does not close; a curtain wall over a blank/mesh plinth;
+  Entrepotdok's hoist doors back to every 3rd bay within budget; the
+  Arena's brick relieving arches over flat heads are not a kit shape;
+  Plantage Middenlaan 52 is 6 storeys (7 in the photo) and its slab
+  mouldings are not modelled; the Utrechtsestraat 15 roof pavilion,
+  Weteringstraat cantilever bands and Funenpark loggias are not modelled;
+  six dropped pands need shell or footprint fixes first (Westerdoksdijk 9,
+  Volewijkshof 6, Grasweg 698, Looiersgracht 83, Jan van Galenstraat).
 - **American Hotel leftovers** (2026-10-14): the tower drum (R 1.75 at
   [-7.6, 18.3]) stands inside the 3DBAG tower block below 28 m while the
   footprint's bulge fits a circle at (-7.66, 19.59); decide whether the
