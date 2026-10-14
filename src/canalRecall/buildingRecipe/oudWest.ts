@@ -28,9 +28,9 @@ const meshOf = (values: number[], mat: T.Material, name: string, component: stri
 };
 
 /** Baluster and guard proportions of a timber balcony (metres). */
-export const BALUSTER = {shaftM: 0.045, bulbM: 0.08, bulbHM: 0.26, bulbAtK: 0.42, railHM: 0.06, railDM: 0.08, baseHM: 0.07, insetM: 0.04, ironBarM: 0.018, ironPitchM: 0.11};
+export const BALUSTER = {shaftM: 0.045, bulbM: 0.08, bulbHM: 0.26, bulbAtK: 0.42, railHM: 0.06, railDM: 0.08, baseHM: 0.07, insetM: 0.04, ironBarM: 0.018, ironPitchM: 0.14, turnedPitchM: 0.16};
 /** Carved bracket profile in (outward z, y below the platform underside), metres: a deep top arm curving down to the wall. */
-export const BRACKET_PROFILE: [number, number][] = [[0, 0], [0.6, 0], [0.56, -0.1], [0.42, -0.2], [0.24, -0.34], [0.1, -0.5], [0, -0.58]];
+export const BRACKET_PROFILE: [number, number][] = [[0, 0], [0.6, 0], [0.5, -0.16], [0.18, -0.42], [0, -0.58]];
 
 /** Box from (x0, y0, z0) to (x1, y1, z1); `skip` leaves out hidden faces ('top', 'bottom', 'back'). */
 function box(values: number[], x0: number, x1: number, y0: number, y1: number, z0: number, z1: number, skip: string[] = []) {
@@ -81,16 +81,17 @@ export function timberBalconyGeometry(b: Balcony): {platform: number[]; guard: n
     const rail = (ya: number, yb: number, w: number) => r.along === 'x' ? box(guard, r.a - w / 2, r.c + w / 2, ya, yb, r.at - w / 2, r.at + w / 2, ['back']) : box(guard, r.at - w / 2, r.at + w / 2, ya, yb, r.a, r.c, ['back']);
     rail(top - B.railHM, top, B.railDM);
     rail(y, y + B.baseHM, B.railDM * 0.8);
-    const pitch = b.rail === 'iron' ? B.ironPitchM : 0.16, count = Math.max(1, Math.floor((r.c - r.a) / pitch));
+    const pitch = b.rail === 'iron' ? B.ironPitchM : B.turnedPitchM, count = Math.max(1, Math.floor((r.c - r.a) / pitch));
     for (let k = 1; k < count; k++) {
       const t = r.a + (r.c - r.a) * k / count;
       const post = (w: number, ya: number, yb: number, skip: string[]) => r.along === 'x' ? box(guard, t - w / 2, t + w / 2, ya, yb, r.at - w / 2, r.at + w / 2, skip) : box(guard, r.at - w / 2, r.at + w / 2, ya, yb, t - w / 2, t + w / 2, skip);
-      if (b.rail === 'iron') post(B.ironBarM, y + B.baseHM, top - B.railHM, ['top', 'bottom']);
+      // Faces against the rails, and the inner (back) faces nobody sees from the street, are left out: 6 triangles a bar.
+      if (b.rail === 'iron') post(B.ironBarM, y + B.baseHM, top - B.railHM, ['top', 'bottom', 'back']);
       else {
-        // Turned baluster: a slim shaft and a bulb, both square in plan.
+        // Turned baluster: a slim shaft and a bulb, both square in plan (12 triangles).
         const span = b.guardM - B.railHM - B.baseHM, mid = y + B.baseHM + span * B.bulbAtK;
-        post(B.shaftM, y + B.baseHM, top - B.railHM, ['top', 'bottom']);
-        post(B.bulbM, mid - B.bulbHM / 2, mid + B.bulbHM / 2, []);
+        post(B.shaftM, y + B.baseHM, top - B.railHM, ['top', 'bottom', 'back']);
+        post(B.bulbM, mid - B.bulbHM / 2, mid + B.bulbHM / 2, ['top', 'bottom', 'back']);
       }
       balusters++;
     }
