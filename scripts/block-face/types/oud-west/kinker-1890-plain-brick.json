@@ -18,7 +18,13 @@
     "storeys": 4,
     "bays": 3,
     "cornice": "heavy",
-    "windows": "sash"
+    "windows": "t-window",
+    "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.7
+    ]
   },
   "crowns": {
     "pediment-dormer": {
@@ -74,7 +80,6 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "T-windows drawn as sash",
       "brick flat-arch lintels over the windows are not drawn",
       "iron wall anchors"
     ]
@@ -128,7 +133,6 @@
     }
   ],
   "schemaLimits": [
-    "T-window pane layout",
     "brick flat arches",
     "iron wall anchors",
     "cornice frieze panels"

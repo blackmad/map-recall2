@@ -18,8 +18,14 @@
     "storeys": 4,
     "bays": 3,
     "cornice": "simple",
-    "windows": "arched",
-    "archRings": "band",
+    "windows": "t-window",
+    "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+        "colour": "band",
+        "style": "solid"
+      }
+    },
     "balconies": {
       "storeys": [
         1,

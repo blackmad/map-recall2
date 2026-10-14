@@ -23,27 +23,12 @@
       2
     ],
     "cornice": "simple",
-    "windows": "two-light",
-    "balconies": {
-      "storeys": [
-        1
-      ],
-      "bays": [
-        0,
-        1
-      ]
-    }
+    "windows": "two-light"
   },
   "crowns": {
-    "roof-boxes": {
-      "gable": "flat",
-      "dormers": 2,
-      "dormerStyle": "plain",
-      "note": "109-161: two dark square roof boxes per module standing on the wall top"
-    },
     "flat": {
       "gable": "flat",
-      "note": "flat wall top"
+      "note": "flat wall top; the dark brick roof boxes standing on it (two per module on 109-161) are left out: the kit's dormers are white trim with a pointed roof, which reads worse than none (first sheet pass)"
     }
   },
   "palettes": {
@@ -61,13 +46,12 @@
   "rhythm": {
     "bays": "2 window axes per ~6 m module; storey 3 one wide window",
     "identicalBays": "storeys 2 and 4: two windows; storey 3: one wide window",
-    "windowsPerStorey": "ground: shop | 1: gallery | 2: 2 | 3: 1 | 4: 2",
+    "windowsPerStorey": "ground + 1: arcade (2 bays per module) | 2: 2 | 3: 1 | 4: 2",
     "symmetry": "modules alternate mirrored",
-    "groundFloor": "recessed shops behind dark piers",
+    "groundFloor": "recessed shops behind dark piers under a first-floor gallery: a double-height shopfront per module (shopfront.storeys 2) in the pier colour",
     "signage": "per shop",
     "roofline": "flat wall top, roof boxes",
     "photoRows": [
-      1,
       2,
       2,
       1,
@@ -76,7 +60,8 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the recessed two-storey arcade with a first-floor gallery is drawn as a shop storey plus a storey of French windows behind rails",
+      "the recessed two-storey arcade with a first-floor gallery (piers, gallery rail, shops set back ~3 m) is drawn as a flush double-height shopfront with a mezzanine band",
+      "dark brick roof boxes on the wall top (no dark/brick dormer in the kit)",
       "the wide three-light window on storey 3 is drawn about 1.5 m wide (photo ~2.2 m)",
       "recessed glazed stair slots between modules",
       "the curved drum corner and cream set-back top storey of 125 and 173-225 are not in the kit"
@@ -116,6 +101,7 @@
   ],
   "schemaLimits": [
     "arcade with gallery",
+    "roof boxes",
     "set-back top storey",
     "drum corner",
     "stair slots"
