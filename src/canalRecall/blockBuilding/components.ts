@@ -433,39 +433,34 @@ function drawLattice(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, t
   return n;
 }
 
-/** Glazed hall: the glass skin on the first sheet layer, the mullion grid as CURTAIN_GRID, structural posts on the fourth layer. */
-export const GLAZED_HALL = { post: 0.24, postOut: 4 * SHEET_PITCH, sillH: 0.16, sillOut: 0.12, headGap: 0.06, maxSegM: 9 };
+/** Glazed hall: the brick base on the facing layer over the glass skin, sill above it, mullion grid as CURTAIN_GRID, structural posts on the fourth layer. */
+export const GLAZED_HALL = { post: 0.24, postOut: 4 * SHEET_PITCH, sillH: 0.12, sillOut: 0.15, headGap: 0.06, maxSegM: 9 };
 
 /**
- * Glazed hall (Apollohal): over a brick base up to `baseM`, one glass skin to `top` (closed boxes on the first sheet layer
- * where the wall is present, at most `maxSegM` tall), a mullion grid on it (`lights` columns per structural bay of
- * `cells`, `rows` rows; CURTAIN_GRID layers: transoms 9 cm, mullions 13.5 cm), wide structural posts at the bay joints
- * from the ground to the top (18 cm off the wall) and a stone sill under the glass. Faces never share a plane: the glass
- * stops 6 cm under the top rail's top and 1 cm over the sill. Returns the boxes drawn.
+ * Glazed hall (Apollohal), layered kit: the group's 3DBAG wall is its glass skin (largeCompile `wallSlotFor`, as a layered
+ * curtain wall), so no brick stands behind the glass. Over it: the brick base up to `baseM` as closed facing bands on the
+ * 9 cm layer (`FACING_OUT`), a stone sill on top of the base (15 cm), a mullion grid above the sill (`lights` columns
+ * per structural bay of `cells`, `rows` rows; CURTAIN_GRID layers: transoms 9 cm, mullions 13.5 cm) and wide structural
+ * posts at the bay joints from the ground to the top (18 cm). Same-facing faces stay at least 9 cm apart from the glass
+ * and 3 cm from each other. Returns the parts drawn.
  */
-export function drawGlazedHall(c: PanelCtx, cells: Cell[], baseM: number, top: number, lights: number, rows: number, slots: { glass: Slot; frame: Slot; stone: Slot }): number {
-  const p = c.p, H = GLAZED_HALL, base = Math.max(baseM, p.vMin + 0.3);
+export function drawGlazedHall(c: PanelCtx, cells: Cell[], baseM: number, top: number, lights: number, rows: number, slots: { wall: Slot; frame: Slot; stone: Slot }): number {
+  const p = c.p, H = GLAZED_HALL, bot = Math.max(0, p.vMin), base = Math.max(baseM, bot + 0.3);
   if (top - base < 1.5 || !cells.length) return 0;
   let n = 0;
-  // glass skin, split into storey-sized slabs
-  const gTop = top - H.headGap, k = Math.max(1, Math.ceil((gTop - base) / H.maxSegM)), part = c.part();
-  for (let i = 0; i < k; i++) {
-    const lo = base + 0.01 + (gTop - base - 0.01) * i / k, hi = base + 0.01 + (gTop - base - 0.01) * (i + 1) / k;
-    for (const [a, b] of intervals(p, lo, hi, 0.25)) if (b - a > 0.3) { c.box(slots.glass, a, b, lo, hi, 0, SHEET_PITCH, part); n++; }
-  }
-  // the mullion grid: synthetic cells of `lights` per structural bay and `rows` rows over the glass
-  const bays = [...new Map(cells.map(x => [`${x.u0.toFixed(3)}`, x])).values()];
+  n += drawBand(c, slots.wall, bot, base, FACING_OUT);
+  n += drawBand(c, slots.stone, base, base + H.sillH, H.sillOut);
+  // the mullion grid: synthetic cells of `lights` per structural bay and `rows` rows over the glass, from the sill up
+  const bays = [...new Map(cells.map(x => [`${x.u0.toFixed(3)}`, x])).values()], g0 = base + H.sillH, gTop = top - H.headGap;
   const grid: Cell[] = [];
-  for (const b of bays) for (let j = 0; j < lights; j++) grid.push({ u0: b.u0 + (b.u1 - b.u0) * j / lights, u1: b.u0 + (b.u1 - b.u0) * (j + 1) / lights, v0: base, v1: top, bay: b.bay, floor: 1, bays: b.bays });
-  const levels = Array.from({ length: rows }, (_, r) => base + (gTop - base) * r / rows);
+  for (const b of bays) for (let j = 0; j < lights; j++) grid.push({ u0: b.u0 + (b.u1 - b.u0) * j / lights, u1: b.u0 + (b.u1 - b.u0) * (j + 1) / lights, v0: g0, v1: top, bay: b.bay, floor: 1, bays: b.bays });
+  const levels = Array.from({ length: rows }, (_, r) => g0 + (gTop - g0) * r / rows);
   n += drawLattice(c, grid, levels, slots.frame, top - 0.02, CURTAIN_GRID, false);
-  // sill under the glass
-  n += drawBand(c, slots.stone, base - H.sillH, base, H.sillOut);
-  // structural posts at the bay joints (and the panel ends), ground to top
+  // structural posts at the bay joints (not the panel ends), ground to top
   const joints = [...new Set(bays.flatMap(x => [x.u0, x.u1]).map(u => Math.round(u * 1000) / 1000))];
   const pp = c.part();
   for (const u of joints) {
-    const a = Math.max(p.uMin, u - H.post / 2), b = Math.min(p.uMax, u + H.post / 2), lo = Math.max(0, p.vMin) + 0.02;
+    const a = Math.max(p.uMin, u - H.post / 2), b = Math.min(p.uMax, u + H.post / 2), lo = bot + 0.02;
     if (b - a < H.post * 0.6 || !fitsPanel(p, rectPoly(a, b, lo, top), 0)) continue;
     const segs = Math.max(1, Math.ceil((top - lo) / H.maxSegM));
     for (let i = 0; i < segs; i++) { c.box(slots.frame, a, b, lo + (top - lo) * i / segs, lo + (top - lo) * (i + 1) / segs, 0, H.postOut, pp); n++; }
@@ -474,13 +469,13 @@ export function drawGlazedHall(c: PanelCtx, cells: Cell[], baseM: number, top: n
 }
 
 /** Glass columns: an enclosed balcony bay (`slabs`) stands 0.45 m out, a flush glass band one sheet layer pair; frames and slabs proud of it. */
-export const GLASS_COLUMN = { bayOut: 0.45, flushOut: 2 * SHEET_PITCH, post: 0.1, slabH: 0.18, transomH: 0.1, slabOverhang: 0.12, maxSegM: 9 };
+export const GLASS_COLUMN = { bayOut: 0.45, flushOut: 2 * SHEET_PITCH, post: 0.18, slabH: 0.18, transomH: 0.1, slabOverhang: 0.18, maxSegM: 9, /** fronts past the glass front: 9 and 18 cm, so glass, post and slab fronts stay clear of the 8 cm near band */ postOut: 2 * SHEET_PITCH, slabOut: 4 * SHEET_PITCH };
 
 /**
  * Full-height glass stripes (Houthavenkade 26's glass balcony columns): over every run of adjacent column bays on the
- * storeys from `from` up, a glass box `share` of the run wide, frame posts at both edges (one sheet layer
- * proud of the glass front; glass and posts in runs of storeys at most 9 m tall) and at every storey line a slab (`slabs`, 0.18 m, two layers proud) or a
- * frame transom, 12 cm past the glass sides. Glass, posts and slabs meet inside each other's volume, so no two faces share a plane. Returns stripes.
+ * storeys from `from` up, a glass box `share` of the run wide, frame posts at both edges (9 cm
+ * proud of the glass front; glass and posts in runs of storeys at most 9 m tall) and at every storey line a slab (`slabs`, 0.18 m, 18 cm proud) or a
+ * frame transom, 18 cm past the glass sides. Glass, posts and slabs meet inside each other's volume and same-facing faces stay 9 cm apart (posts 18 cm wide centred on the glass edges). Returns stripes.
  */
 export function drawGlazedColumns(c: PanelCtx, cells: Cell[], levels: number[], isColumn: (bay: number) => boolean, from: number, share: number, slabs: boolean, top: number, slots: { glass: Slot; frame: Slot; stone: Slot }): number {
   const p = c.p, G = GLASS_COLUMN, D = slabs ? G.bayOut : G.flushOut;
@@ -505,12 +500,12 @@ export function drawGlazedColumns(c: PanelCtx, cells: Cell[], levels: number[], 
       const lo = lines[i], hi = lines[j];
       c.box(slots.glass, a, b, lo, hi, 0, D, gp);
       // posts centred on the glass edges: their outer sides stand post/2 beyond the glass sides (clear of the 3 cm band)
-      c.box(slots.frame, a - G.post / 2, a + G.post / 2, lo, hi, 0, D + SHEET_PITCH, fp);
-      c.box(slots.frame, b - G.post / 2, b + G.post / 2, lo, hi, 0, D + SHEET_PITCH, fp);
+      c.box(slots.frame, a - G.post / 2, a + G.post / 2, lo, hi, 0, D + G.postOut, fp);
+      c.box(slots.frame, b - G.post / 2, b + G.post / 2, lo, hi, 0, D + G.postOut, fp);
       i = j;
     }
     const sp = c.part(), h = slabs ? G.slabH : G.transomH;
-    for (const L of lines) c.box(slabs ? slots.stone : slots.frame, a - o, b + o, L - h / 2, L + h / 2, 0, D + 2 * SHEET_PITCH, sp);
+    for (const L of lines) c.box(slabs ? slots.stone : slots.frame, a - o, b + o, L - h / 2, L + h / 2, 0, D + G.slabOut, sp);
     n++;
   }
   return n;

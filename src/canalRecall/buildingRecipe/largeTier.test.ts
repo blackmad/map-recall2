@@ -578,12 +578,12 @@ test('layeredKit is the default for kind: large (false keeps the legacy kit); me
 // Kit vocabulary for the rejected pilots (2026-10-14): Apollohal's glazed hall, Houthavenkade 26's glass balcony
 // columns, Waagdragerhof's French windows over storey ledges, arch ring colour, and openings trimmed into a stepped wall.
 
-test('glazed hall: glass skin over a brick base with a mullion grid and structural posts, no coplanar overlap (Apollohal)', async () => {
+test('glazed hall: the wall is the glass skin, a brick base facing, sill, mullion grid and structural posts on it; no coplanar overlap (Apollohal)', async () => {
   const wall = await layeredWall(), {drawGlazedHall} = await import('../blockBuilding/components.ts');
   const sys = {pitch: 6, lines: [0, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
   let boxes = 0;
-  const hook = (c: Parameters<typeof drawGlazedHall>[0], info: {cells: Parameters<typeof drawGlazedHall>[1]}) => { boxes += drawGlazedHall(c, info.cells, 3.6, 8.95, 10, 4, {glass: 'glass', frame: 'frame', stone: 'stone'}); };
-  const bare = wall(sys, true), hall = wall(sys, true, {panelHook: hook});
+  const hook = (c: Parameters<typeof drawGlazedHall>[0], info: {cells: Parameters<typeof drawGlazedHall>[1]}) => { boxes += drawGlazedHall(c, info.cells, 3.6, 8.95, 10, 4, {wall: 'wall', frame: 'frame', stone: 'stone'}); };
+  const skin = {wallSlotFor: () => 'glass'}, bare = wall(sys, true, skin), hall = wall(sys, true, {...skin, panelHook: hook});
   assert.ok(boxes > 20, `${boxes} boxes`);
   assert.ok(hall.tris > bare.tris + 200 && hall.tris < bare.tris + 1500, `${hall.tris - bare.tris} triangles for a 12 m hall front`);
   assert.equal(hall.m2, 0);
