@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "wibautstraat-78-129127",
+ "pandId": "0363100012129127",
+ "address": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
+ "sources": [
+  {
+   "id": "pano-2023-01-02-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002910_pano_0007_000073/",
+   "image": "staging/pand-reference-walls/0363100012129127/w03-70.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-19-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001527_pano_0000_000624/",
+   "image": "staging/pand-reference-walls/0363100012129127/w02-340.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-19-w02-2",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001527_pano_0000_000624/",
+   "image": "staging/pand-reference-walls/0363100012129127/w02-340.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    53,
+    104,
+    8,
+    7
+   ],
+   "system": "ribbon-windows",
+   "storeys": 9,
+   "ground": "glazed",
+   "entrance": {
+    "bay": 3,
+    "canopy": true
+   },
+   "signage": {
+    "text": "ALBERT HEIJN",
+    "colour": "#2a7fd0",
+    "mount": "canopy"
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#d8d6cc",
+    "frame": "#3a4048",
+    "stone": "#c4c2b8"
+   },
+   "baysPerStorey": 8
+  },
+  {
+   "wallSurfaces": [
+    106
+   ],
+   "system": "ribbon-windows",
+   "storeys": 9,
+   "ground": "glazed",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#d8d6cc",
+    "frame": "#3a4048",
+    "stone": "#c4c2b8"
+   },
+   "baysPerStorey": 8
+  },
+  {
+   "wallSurfaces": [
+    86,
+    45
+   ],
+   "system": "ribbon-windows",
+   "storeys": 8,
+   "ground": "glazed",
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#d8d6cc",
+    "frame": "#3a4048",
+    "stone": "#c4c2b8"
+   },
+   "baysPerStorey": 2
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#d8d6cc",
+  "frame": "#3a4048",
+  "door": "#2a2a2a",
+  "stone": "#c4c2b8",
+  "wallMaterial": "stucco"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Wibautstraat 78 (BAG pand 0363100012129127, built 1966, 145 3DBAG wall surfaces, roof max 31.4 m): the long rounded eight-storey block on the east side of the Wibautstraat with a supermarket at its foot, 63 m by 30 m. Photographed: the east front on the Wibautstraat (w03-70 2025, w05-70 2024, w08-70), the north end (w02-340), the west and south sides (w01-250, w04-160, w06-160, w07-250): pale brick bands between continuous dark ribbon windows on every floor, a crown of two lattice storeys with square windows at the top, a glazed ground storey with a blue Albert Heijn sign under a canopy carried on inverted-cone piers.",
+  "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render."
+ ]
+}
