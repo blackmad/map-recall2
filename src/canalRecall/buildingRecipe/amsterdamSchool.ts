@@ -9,6 +9,9 @@
  *  - `addErkerCaps`: the hipped or flat cap on a multi-bay erker (`bayWindows.bays`); the erker stack itself is the
  *    library's glazed bay module, one per storey.
  *  - `addCornerTowers`: the body and cap of a corner tower (`tower.corner`) behind the two fronts that rise over it.
+ *  - `addLisenes`: brick pilasters at front ends (`lisenes`), halves of a shared one meeting on the party plane.
+ *  - glass-block band over a rigid canopy (`awning.glassBlocks`), built with the canopy.
+ *  - `addWindowHoods`: projecting brick hoods over the upper windows (`windowHoods`).
  *  - `steppedTowerCap`: the stepped tower cap (two receding brick tiers under a flat slab), for every tower.
  *
  * Facade-frame passes work in the library's elevation frame (x along the front, y up, z outward); the corner tower works
@@ -80,6 +83,28 @@ export function steppedTowerCap(parent: T.Object3D, plan: [number, number][], y1
   return 1;
 }
 
+/** Glass-block band: pale grey-green blocks, a light mortar grid. */
+export const GLASS_BLOCK = {glass: '#aebbb8', mortar: '#d4d2ca', proudM: 0.015, gridProudM: 0.025, jointM: 0.03};
+
+/**
+ * Glass-block band over a rigid canopy (facade frame): one glass panel `proudM` in front of the wall (front face and its
+ * four 1.5 cm reveals) and the mortar joints of a `cellM` grid as flat strips just in front of it. About 2 triangles per
+ * joint: a 6 x 1 m band is ~90 triangles.
+ */
+export function glassBlockBand(b: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number}) {
+  const glass: number[] = [], grid: number[] = [], g = GLASS_BLOCK, x0 = b.leftM, x1 = b.leftM + b.widthM, y0 = b.bottomM, y1 = b.topM;
+  face(glass, [[x0, y0, g.proudM], [x1, y0, g.proudM], [x1, y1, g.proudM], [x0, y1, g.proudM]], [0, 0, 1]);
+  face(glass, [[x0, y1, 0], [x1, y1, 0], [x1, y1, g.proudM], [x0, y1, g.proudM]], [0, 1, 0]);
+  face(glass, [[x0, y0, 0], [x1, y0, 0], [x1, y0, g.proudM], [x0, y0, g.proudM]], [0, -1, 0]);
+  face(glass, [[x0, y0, 0], [x0, y1, 0], [x0, y1, g.proudM], [x0, y0, g.proudM]], [-1, 0, 0]);
+  face(glass, [[x1, y0, 0], [x1, y1, 0], [x1, y1, g.proudM], [x1, y0, g.proudM]], [1, 0, 0]);
+  const z = g.gridProudM, h = g.jointM / 2;
+  const nx = Math.max(1, Math.round(b.widthM / b.cellM)), ny = Math.max(1, Math.round((y1 - y0) / b.cellM));
+  for (let k = 0; k <= nx; k++) { const x = x0 + (x1 - x0) * k / nx, a = Math.max(x0, x - h), c = Math.min(x1, x + h); face(grid, [[a, y0, z], [c, y0, z], [c, y1, z], [a, y1, z]], [0, 0, 1]); }
+  for (let k = 0; k <= ny; k++) { const y = y0 + (y1 - y0) * k / ny, a = Math.max(y0, y - h), c = Math.min(y1, y + h); face(grid, [[x0, a, z], [x1, a, z], [x1, c, z], [x0, c, z]], [0, 0, 1]); }
+  return {glass, grid};
+}
+
 /**
  * Rigid canopies: a slab (wall to `projectM - fasciaDepthM`, `thicknessM` thick) and a fascia on its nose (`fasciaDepthM`
  * thick, `fasciaM` high, top flush with the slab). A party end follows the party plane, a free end is square.
@@ -106,7 +131,70 @@ export function addCanopies(group: T.Group, intent: CanalHouseIntent, recipe: Ca
     box(fascia, nose, c.projectM, top - c.fasciaM, top);
     facade.add(meshOf(slab, material(c.colour), `canopy/${f.id}/slab`, 'canopy', 'awning', intent.pandId));
     facade.add(meshOf(fascia, material(c.fasciaColour), `canopy/${f.id}/fascia`, 'canopy', 'awning', intent.pandId));
+    if (c.glassBlocks) {
+      const {glass, grid} = glassBlockBand(c.glassBlocks);
+      facade.add(meshOf(glass, material(GLASS_BLOCK.glass), `canopy/${f.id}/glass-blocks`, 'canopy', 'glass', intent.pandId));
+      facade.add(meshOf(grid, material(GLASS_BLOCK.mortar), `canopy/${f.id}/glass-block-grid`, 'canopy', 'trim', intent.pandId));
+    }
     added++;
+  }
+  return added;
+}
+
+/**
+ * Brick lisenes: a 0.1 m proud brick pier per `lisenes` entry and a 0.15 m corbel cap 0.16 m proud on top, in the wall
+ * material. A `party` end follows the party plane (like a joined canopy), so the two halves of a shared lisene meet in one
+ * plane.
+ */
+export function addLisenes(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport): number {
+  let added = 0;
+  const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+  const wall = (shell?.material as T.Material) ?? material(recipe.palette.value.wall);
+  for (const f of fit.fronts) {
+    const facade = group.getObjectByName(`elevation/${f.id}`);
+    if (!f.lisenes?.length || !facade) continue;
+    const {A, B, left, right} = frontEnds(group, recipe, f), values: number[] = [];
+    for (const l of f.lisenes) {
+      const x0 = (z: number) => l.party === 'start' ? A.x + (z - A.z) * left.x : l.leftM, x1 = (z: number) => l.party === 'end' ? B.x + (z - B.z) * right.x : l.leftM + l.widthM;
+      const box = (z1: number, y0: number, y1: number) => {
+        const L = (y: number, z: number): V3 => [x0(z), y, z], R = (y: number, z: number): V3 => [x1(z), y, z], z0 = -0.005;
+        face(values, [L(y0, z1), R(y0, z1), R(y1, z1), L(y1, z1)], [0, 0, 1]);
+        face(values, [L(y1, z0), R(y1, z0), R(y1, z1), L(y1, z1)], [0, 1, 0]);
+        face(values, [L(y0, z0), R(y0, z0), R(y0, z1), L(y0, z1)], [0, -1, 0]);
+        if (l.party !== 'start') face(values, [L(y0, z0), L(y0, z1), L(y1, z1), L(y1, z0)], [-1, 0, 0]);
+        if (l.party !== 'end') face(values, [R(y0, z0), R(y0, z1), R(y1, z1), R(y1, z0)], [1, 0, 0]);
+      };
+      box(0.1, l.bottomM, l.topM - 0.15);
+      box(0.16, l.topM - 0.15, l.topM);
+      added++;
+    }
+    facade.add(meshOf(values, wall, `lisenes/${f.id}`, 'lisene', 'wall', intent.pandId));
+  }
+  return added;
+}
+
+/**
+ * Window hoods (`windowHoods`): a 0.12 m high ledge 0.22 m proud, 2 cm over the head of every upper-storey window (a
+ * ladder pair `…a`/`…b` gets one hood over both), 0.1 m wider each side, in the wall material. Facade frame.
+ */
+export function addWindowHoods(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe): number {
+  let added = 0;
+  const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+  const wall = (shell?.material as T.Material) ?? material(recipe.palette.value.wall);
+  for (const front of intent.fronts) {
+    if (!front.windowHoods) continue;
+    const elevation = recipe.elevations.find(e => e.id === front.id), facade = group.getObjectByName(`elevation/${front.id}`);
+    if (!elevation || !facade) continue;
+    const spans = new Map<string, {l: number; r: number; head: number}>();
+    for (const o of elevation.openings.value) {
+      const m = /^(?:.*-)?s([1-9]\d*)-b(\d+)[ab]?$/.exec(o.id);
+      if (!m || o.kind !== 'window') continue;
+      const key = o.id.replace(/[ab]$/, ''), s = spans.get(key), head = o.bottomM + o.heightM;
+      spans.set(key, s ? {l: Math.min(s.l, o.leftM), r: Math.max(s.r, o.leftM + o.widthM), head: Math.max(s.head, head)} : {l: o.leftM, r: o.leftM + o.widthM, head});
+    }
+    const values: number[] = [];
+    for (const {l, r, head} of spans.values()) { prism(values, [[l - 0.1, -0.005], [r + 0.1, -0.005], [r + 0.1, 0.22], [l - 0.1, 0.22]], head + 0.02, head + 0.14, {bottom: true}); added++; }
+    if (values.length) facade.add(meshOf(values, wall, `window-hoods/${front.id}`, 'hood', 'wall', intent.pandId));
   }
   return added;
 }
@@ -175,6 +263,6 @@ export function addCornerTowers(group: T.Group, intent: CanalHouseIntent, recipe
 
 /** Every Amsterdam School pass, or null when the house uses none of the set (nothing is touched). */
 export function applyAmsterdamSchool(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport) {
-  if (!fit.fronts.some(f => f.canopy || f.erker || f.towers?.some(t => t.corner))) return null;
-  return {canopies: addCanopies(group, intent, recipe, fit), erkerCaps: addErkerCaps(group, intent, recipe, fit), cornerTowers: addCornerTowers(group, intent, recipe, fit)};
+  if (!fit.fronts.some(f => f.canopy || f.erker || f.lisenes || f.towers?.some(t => t.corner)) && !intent.fronts.some(f => f.windowHoods)) return null;
+  return {windowHoods: addWindowHoods(group, intent, recipe), lisenes: addLisenes(group, intent, recipe, fit), canopies: addCanopies(group, intent, recipe, fit), erkerCaps: addErkerCaps(group, intent, recipe, fit), cornerTowers: addCornerTowers(group, intent, recipe, fit)};
 }
