@@ -52193,6 +52193,78 @@
         "bytes": 38504,
         "triangles": 1830
       }
+    },
+    "de-schreeuw-oosterpark": {
+      "id": "de-schreeuw-oosterpark",
+      "name": "De Schreeuw (Oosterpark)",
+      "landmarkId": "extract_landmarks_889547307",
+      "modelUrl": "./models/de-schreeuw-oosterpark.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9222558,
+          52.3595317
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 3.4,
+        "widthMetres": 2.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.9222558,
+          52.3595317
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination \"De Schreeuw\" (extract_landmarks_889547307, 52.35959 N 4.92236 E); the statue itself stands 10 m SW of that point at 52.35953 N 4.92226 E (three panoramas of 2016 and 2020, ray intersection, +-4 m, so the anchor is the intersection); the seven stainless blades and the plate read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; De schreeuw - oosterpark CC BY-SA 3.0); the facing (110 degrees, +-30) and the 3.7 m height are estimates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "frame": "#a9aeb0",
+        "concrete": "#8a8d8e"
+      },
+      "attribution": {
+        "title": "De Schreeuw (Oosterpark) - original low-poly reconstruction",
+        "author": "Map Recall; after De Schreeuw by Jeroen Henneman (2007)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(08).jpg",
+        "modifications": "Original texture-free low-poly blades and plate built from Commons photographs: 2020 De Schreeuw 01, 03, 06, 08 (Ceescamel, CC BY-SA 4.0) and De schreeuw - oosterpark (CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE"
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -1.5627223253250122,
+          -1.490116086078075e-10,
+          -1.4522528648376465
+        ],
+        "max": [
+          1.6790437698364258,
+          3.8399999141693115,
+          1.0158352851867676
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9222558,
+          52.3595317
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 3.241766095161438,
+        "heightMetres": 3.839999914318323,
+        "depthMetres": 2.468088150024414,
+        "depthCoverage": 1.0283700625101726
+      },
+      "triangles": 1398,
+      "bytes": 21976,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
