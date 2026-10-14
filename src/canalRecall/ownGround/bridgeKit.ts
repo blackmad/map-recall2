@@ -323,7 +323,7 @@ export function cleanWater(rows: readonly KitRow[], spans: readonly [number, num
 
 // ------------------------------------------------------------------ the builder
 
-interface Level { tol: number; archSegs: number; postStep: number; lamps: number; midRail: boolean; ring: boolean; railings: boolean; inner: boolean; soffit: boolean; land: boolean }
+interface Level { flatFace?: boolean; tol: number; archSegs: number; postStep: number; lamps: number; midRail: boolean; ring: boolean; railings: boolean; inner: boolean; soffit: boolean; land: boolean }
 const NEAR_LEVELS: Level[] = [
   { tol: 0.03, archSegs: 8, postStep: 1, lamps: 4, midRail: true, ring: true, railings: true, inner: true, soffit: true, land: true },
   { tol: 0.045, archSegs: 8, postStep: 1.5, lamps: 4, midRail: false, ring: true, railings: true, inner: true, soffit: true, land: true },
@@ -333,14 +333,14 @@ const NEAR_LEVELS: Level[] = [
   // Last resort for a long or ragged footprint (a lock complex): the water faces, the parapet's outer face and one rail.
   { tol: 0.5, archSegs: 3, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: true, inner: false, soffit: false, land: false },
   // A long, ragged newly measured deck (BRU0359, flat-deck recovery 2026-10-14): faces and the parapet's outer face only.
-  { tol: 1.0, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
+  { flatFace: true, tol: 1.0, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
 ];
 // The far ring (LOD 1, past ~350 m): the silhouette only. No railings, no walls over land (the relief hides most of them).
 const FAR_LEVELS: Level[] = [
   { tol: 0.1, archSegs: 4, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: true, land: true },
   { tol: 0.2, archSegs: 3, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: true, land: false },
   { tol: 0.4, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
-  { tol: 0.8, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },  { tol: 3, archSegs: 1, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
+  { tol: 0.8, archSegs: 2, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },  { flatFace: true, tol: 3, archSegs: 1, postStep: 1e9, lamps: 0, midRail: false, ring: false, railings: false, inner: false, soffit: false, land: false },
 ];
 
 /** Base post spacing per kind, metres (scaled by the level). */
@@ -396,7 +396,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
   // Arches (arch kind): one per span up to PIER_SPAN_M, three up to 60 m, five beyond; piers between.
   const arches: Arch[] = [], piers: number[] = [];
   const zAt = (s: number) => rowAt(rows, s).z;
-  if (kind === 'arch' && facts?.arches) {
+  if (lv.flatFace) { /* last resort: the face as one wall, no openings */ } else if (kind === 'arch' && facts?.arches) {
     // Measured openings: at their measured places (fractions of the deck span), else the count spread over the water.
     const [p0, p1] = input.parapet, len = p1 - p0;
     let cuts: [number, number, number | null][];

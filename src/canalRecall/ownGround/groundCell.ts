@@ -21,7 +21,7 @@ import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
-import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
+import { DECK_REACH_MAX_M, deckReach, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, drapeBisect, CULL_MARGIN_M, CULL_RES_M, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
@@ -51,7 +51,7 @@ export interface BuiltCell {
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
-export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[] }
+export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[]; /** Deck ends that float (decks.ts floatingEnds; flat footprints still over water past the reach): "id:end:reason". */ floating: string[] }
 
 export interface CellInput {
   key: string;
@@ -248,11 +248,13 @@ export function buildCell(input: CellInput): BuiltCell {
     add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z));
     add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M));
   }
-  const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [] };
+  const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0));
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4);
+    const { reach } = deckReach(deck, overWater);
+    for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach));
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach);
     if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
@@ -260,7 +262,8 @@ export function buildCell(input: CellInput): BuiltCell {
   const bridgeLines = ways.filter(isBridgeWay).map(w => w.points);
   input.flatDecks.forEach((ring, k) => {
     const through = bridgeLines.filter(l => l.some(q => pointInRing(ring, q[0], q[1])) || l.some((q, i) => i > 0 && pointInRing(ring, (q[0] + l[i - 1][0]) / 2, (q[1] + l[i - 1][1]) / 2)));
-    const { top, body, railingPosts } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis: footprintAxis(ring, through).u });
+    const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis: footprintAxis(ring, through).u });
+    if (floating) bridges.floating.push(`${input.flatDeckMeta?.[k]?.id ?? 'flat'}:${floating} end(s) over water past ${DECK_REACH_MAX_M} m`);
     add('deckTop', top); add('deckBody', body);
     bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;
     let frames = 0;

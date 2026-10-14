@@ -48,6 +48,49 @@ function axisAt(p: { x: Float64Array; y: Float64Array }, i: number): [number, nu
   return [p.x[b] - p.x[a], p.y[b] - p.y[a]];
 }
 
+/**
+ * Deck ends on the bank (user 2026-10-14, a Houthavens footbridge "disconnected": the deck hung over the water short of
+ * both banks, the quay surfaces ending flush). A deck must overlap each bank by ABUTMENT_DEPTH_M and meet the quay top
+ * within DECK_END_TOL_M. Where the water mask runs past the measured deck span (the water polygon drawn under the
+ * approach), the drawn deck reaches on along the profile to the first station whose centre and both edges are on
+ * land, plus the abutment depth, at most DECK_REACH_MAX_M.
+ */
+export const ABUTMENT_DEPTH_M = 1.0, DECK_END_TOL_M = 0.15, DECK_REACH_MAX_M = 12;
+const onLandAt = (p: DeckSurface['profile'], i: number, overWater: WaterTest): boolean => {
+  const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
+  return !overWater(p.x[i], p.y[i]) && !overWater(p.x[i] + nx * hw, p.y[i] + ny * hw) && !overWater(p.x[i] - nx * hw, p.y[i] - ny * hw);
+};
+/** The station range the deck is drawn over: the measured span, reaching on to the banks (see ABUTMENT_DEPTH_M). */
+export function deckReach(deck: DeckSurface, overWater: WaterTest): { reach: [number, number]; landed: [boolean, boolean] } {
+  const p = deck.profile, n = p.s.length, reach: [number, number] = [p.deck[0], p.deck[1]], landed: [boolean, boolean] = [true, true];
+  for (const end of [0, 1] as const) {
+    const dir = end === 0 ? -1 : 1, limit = p.deck[end] + dir * DECK_REACH_MAX_M;
+    // The station at the deck end, then outward.
+    let i = end === 0 ? p.s.findIndex(v => v >= p.deck[0]) : n - 1 - [...p.s].reverse().findIndex(v => v <= p.deck[1]);
+    if (i < 0 || i >= n) continue;
+    if (onLandAt(p, i, overWater)) continue;
+    landed[end] = false;
+    for (i += dir; i >= 0 && i < n && (dir < 0 ? p.s[i] >= limit : p.s[i] <= limit); i += dir) {
+      if (!onLandAt(p, i, overWater)) continue;
+      reach[end] = Math.max(p.s[0], Math.min(p.s[n - 1], p.s[i] + dir * ABUTMENT_DEPTH_M));
+      landed[end] = true;
+      break;
+    }
+  }
+  return { reach, landed };
+}
+/** Ends of a drawn deck that float: still over water at the reach, or more than DECK_END_TOL_M off the bank's relief there. */
+export function floatingEnds(deck: DeckSurface, overWater: WaterTest, height: HeightFn, ground: HeightFn): { end: 0 | 1; reason: string }[] {
+  const p = deck.profile, { reach, landed } = deckReach(deck, overWater), out: { end: 0 | 1; reason: string }[] = [];
+  for (const end of [0, 1] as const) {
+    if (!landed[end]) { out.push({ end, reason: `over water ${DECK_REACH_MAX_M} m past the deck` }); continue; }
+    let i = 0; while (i < p.s.length - 1 && p.s[i] < reach[end]) i++;
+    const x = p.x[i], y = p.y[i], dz = Math.max(deck.z[i], height(x, y)) - ground(x, y);
+    if (Math.abs(dz) > DECK_END_TOL_M && !overWater(x, y)) out.push({ end, reason: `deck ${dz.toFixed(2)} m off the bank` });
+  }
+  return out;
+}
+
 /** What one measured deck drew (named regressions and the lane report). */
 export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number; topRows: number }
 
@@ -57,10 +100,10 @@ export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number
  * deck top and the tops of the side faces follow it exactly). `detail` false
  * is the far ring (LOD 1): the kit's far budget, no railings.
  */
-export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true): MeshArrays {
-  const p = deck.profile;
+export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true, reach?: [number, number]): MeshArrays {
+  const p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const idx: number[] = [];
-  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= p.deck[0] - 0.5 && p.s[i] <= p.deck[1] + 0.5) idx.push(i);
+  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) idx.push(i);
   if (idx.length < 2) return emptyMesh(true);
   const rows: KitRow[] = idx.map(i => {
     const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1;
@@ -99,10 +142,10 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
  * The deck top of a measured deck: a strip over its footprint (the deck span
  * plus half a metre), draped on the riding surface, under every street band.
  */
-export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2): MeshArrays {
-  const m = emptyMesh(true), p = deck.profile;
+export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number]): MeshArrays {
+  const m = emptyMesh(true), p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const all: number[] = [];
-  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= p.deck[0] - 0.5 && p.s[i] <= p.deck[1] + 0.5) all.push(i);
+  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) all.push(i);
   // Every `stride`-th station (1 m at 0.5 m stations): on a hump the coarser chords sag under the bands, never over them.
   const idx = all.filter((_, k) => k % stride === 0 || k === all.length - 1);
   if (idx.length < 2) return m;
@@ -112,7 +155,9 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
     const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
     for (let j = 0; j <= J; j++) {
       const t = hw * (1 - 2 * j / J), x = p.x[i] + nx * t, y = p.y[i] + ny * t;
-      vertex(m, x, y, height(x, y) + DECK_TOP_LIFT, DECK_TOP);
+      // Past the measured span (a reach to the bank) the surface there may be the canal relief: the profile carries the top.
+      const off = p.s[i] < p.deck[0] - 0.5 || p.s[i] > p.deck[1] + 0.5;
+      vertex(m, x, y, (off ? Math.max(deck.z[i], height(x, y)) : height(x, y)) + DECK_TOP_LIFT, DECK_TOP);
     }
   }
   // Left (+n) to right per row; the next row is +s. (+s) × (−n) is up, so a row's j → j+1 then the next row is counter-clockwise from above.
@@ -233,15 +278,42 @@ function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: W
  * axis). Masonry footprints (the Torensluis) get arches, movable ones the
  * bascule leaf, narrow ones the footbridge, the rest a girder.
  */
-export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2 } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number } {
+export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2 } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
   const top = emptyMesh(true);
   const flat = ring.flatMap(p => [p[0], p[1]]);
   drapeTriangles(top, flat, earcut(flat), height, topLift, 3, DECK_TOP);
   const u = opts.axis ?? footprintAxis(ring).u, lod = opts.railings === false ? 1 : 0;
   // A station a metre apart, at most ~40 along a long footprint (a lock complex: BRU0246 is 85 m with 127 ring vertices).
   const all = flatRows(ring, u, height, overWater, topLift, Math.max(1, (ringFrame(ring, u).along[1] - ringFrame(ring, u).along[0]) / 40));
+  // A footprint end still over water reaches on to the bank (ABUTMENT_DEPTH_M past the first land, at most DECK_REACH_MAX_M).
+  let floating = 0;
+  if (all.length >= 2) for (const end of [0, 1] as const) {
+    const r = end === 0 ? all[0] : all[all.length - 1], dir = end === 0 ? -1 : 1;
+    if (!r.water && !r.wL && !r.wR) continue;
+    const hw: Vec2 = [(r.L[0] - r.R[0]) / 2, (r.L[1] - r.R[1]) / 2];
+    const at = (d: number): KitRow => {
+      const c: Vec2 = [r.c[0] + u[0] * dir * d, r.c[1] + u[1] * dir * d], L: Vec2 = [c[0] + hw[0], c[1] + hw[1]], R: Vec2 = [c[0] - hw[0], c[1] - hw[1]];
+      const z = Math.max(r.z, height(c[0], c[1]) + topLift), zL = Math.max(r.zL, height(L[0], L[1]) + topLift), zR = Math.max(r.zR, height(R[0], R[1]) + topLift);
+      return { s: r.s + dir * d, c, n: r.n, L, R, z, zL, zR, water: overWater(c[0], c[1]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: height(L[0], L[1]), gR: height(R[0], R[1]) };
+    };
+    let land = -1;
+    for (let d = 0.5; d <= DECK_REACH_MAX_M; d += 0.5) { const q = at(d); if (!q.water && !q.wL && !q.wR) { land = d; break; } }
+    if (land < 0) { floating++; continue; }
+    const apron: KitRow[] = [];
+    for (let d = 1; d < land + ABUTMENT_DEPTH_M; d += 1) apron.push(at(d));
+    apron.push(at(land + ABUTMENT_DEPTH_M));
+    // The apron's top: quads from the end row out, at the deck's level until the bank.
+    const seq = [r, ...apron];
+    for (let k = 0; k + 1 < seq.length; k++) {
+      const a = seq[k], b = seq[k + 1], i0 = vertex(top, a.L[0], a.L[1], a.zL, DECK_TOP), i1 = vertex(top, a.R[0], a.R[1], a.zR, DECK_TOP), i2 = vertex(top, b.R[0], b.R[1], b.zR, DECK_TOP), i3 = vertex(top, b.L[0], b.L[1], b.zL, DECK_TOP);
+      // Counter-clockwise from above: L→R across, then outward along ±u.
+      const cross = (a.R[0] - a.L[0]) * (b.L[1] - a.L[1]) - (a.R[1] - a.L[1]) * (b.L[0] - a.L[0]);
+      if (cross > 0) top.indices.push(i0, i1, i2, i0, i2, i3); else top.indices.push(i0, i2, i1, i0, i3, i2);
+    }
+    if (end === 0) all.unshift(...apron.reverse()); else all.push(...apron);
+  }
   const first = all.findIndex(r => r.water), last = all.length - 1 - [...all].reverse().findIndex(r => r.water);
-  if (first < 0) return { top, body: emptyMesh(true), railingPosts: 0, kind: null, triangles: 0, level: 0 };
+  if (first < 0) return { top, body: emptyMesh(true), railingPosts: 0, kind: null, triangles: 0, level: 0, floating };
   const rows = all.slice(Math.max(0, first - 1), Math.min(all.length, last + 2));
   const spans: [number, number][] = [];
   for (let k = 0; k < rows.length; k++) if (rows[k].water) {
@@ -262,8 +334,8 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
     budget: kind === 'bascule' ? (lod === 0 ? KIT_BUDGET.near : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, lod === 0) : undefined,
   });
   // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
-  if (kind === 'bascule' && lod === 1 && info.triangles > KIT_BUDGET.far - frameTriangles(ringFrame(ring, u).along, false)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level };
-  return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level };
+  if (kind === 'bascule' && lod === 1 && info.triangles > KIT_BUDGET.far - frameTriangles(ringFrame(ring, u).along, false)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
+  return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level, floating };
 }
 
 /** An unmeasured footprint carries no water level: its kit body reaches this far under its lowest top (the belt quays stand ~1.8 m over the boezem). */
