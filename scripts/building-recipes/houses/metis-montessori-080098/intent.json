@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "metis-montessori-080098",
+ "pandId": "0363100012080098",
+ "address": "Metis Montessori Lyceum, Derde Oosterparkstraat 360, Amsterdam: a 1991 two-storey school in grey-brown brick, nine bays of blue-framed double windows over a deep brick course, a recessed entrance under a dark canopy band lettered with the school's tagline",
+ "sources": [
+  {
+   "id": "pano-2025-06-20-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_09-22-37_00516/",
+   "image": "staging/pand-reference-walls/0363100012080098/w01-337.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    9
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "wide",
+   "entrance": {
+    "bay": 4,
+    "canopy": true
+   },
+   "stringCourses": true,
+   "palette": {
+    "brick": "#7a6a58",
+    "frame": "#1e3a6a",
+    "stone": "#b8b4a8"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7a6a58",
+  "frame": "#1e3a6a",
+  "door": "#1e3a6a",
+  "stone": "#b8b4a8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Metis Montessori Lyceum (BAG pand 0363100012080098, built 1991, 20 3DBAG wall surfaces, roof max 7.2 m), Derde Oosterparkstraat 360: the 36 m north-west front (w01-337, 2025): two storeys of grey-brown brick, nine bays of blue-framed double windows over a deep brick course and a recessed entrance under a dark canopy band (surface 9). The tagline lettered on the canopy is illegible and the school is not named on the wall.",
+  "w02-247 (sun-flared) and w03-67 (a neighbouring red-and-white banded building, not this pand) are not used; the other walls stay blank."
+ ]
+}

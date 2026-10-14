@@ -1,0 +1,188 @@
+{
+ "schemaVersion": 1,
+ "id": "oostpoort-montessori-080630",
+ "pand": "0363100012080630",
+ "signature": [
+  "stone-portal",
+  "school-sign",
+  "eaves-cornice"
+ ],
+ "walls": [
+  {
+   "tag": "w02-283",
+   "bearing": 283,
+   "lengthM": 20.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000748_pano_0000_004587",
+   "capturedAt": "2018-05-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "stone-portal",
+     "kind": "other",
+     "where": "left of centre: double red doors in a stone frame, two square piers carrying a plain lintel slab",
+     "approxSizeM": [
+      3.5,
+      4
+     ],
+     "plan": "simplified",
+     "how": "entrance bay 2 with portal (jambs, entablature, pediment block); the real lintel is flat with no pediment",
+     "seenIn": "TMX7316010203-000748_pano_0000_004587"
+    },
+    {
+     "id": "school-sign",
+     "kind": "sign",
+     "where": "left of the portal on the first-floor line: blue oval plate with VALENTIJNSCHOOL in a grey slab typeface and a small figure emblem",
+     "approxSizeM": [
+      6,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "signage VALENTIJNSCHOOL on the cornice band in grey-blue; the oval plate and figure emblem are not drawn",
+     "seenIn": "TMX7316010203-000748_pano_0000_004587"
+    },
+    {
+     "id": "eaves-cornice",
+     "kind": "other",
+     "where": "a deep cream eaves cornice over a frieze of small attic windows between brick piers",
+     "approxSizeM": [
+      20,
+      1.5
+     ],
+     "plan": "modelled",
+     "how": "cornice true",
+     "seenIn": "TMX7316010203-000748_pano_0000_004587"
+    },
+    {
+     "id": "stair-window",
+     "kind": "window-shape",
+     "where": "left edge: a full-height multi-pane stair window in a cream frame",
+     "approxSizeM": [
+      2,
+      9
+     ],
+     "plan": "simplified",
+     "how": "drawn as the bay-0 window of the grid; the full-height glazing is not modelled",
+     "seenIn": "TMX7316010203-000748_pano_0000_004587"
+    },
+    {
+     "id": "attic-frieze",
+     "kind": "window-shape",
+     "where": "under the cornice: a row of ten small six-pane windows",
+     "approxSizeM": [
+      20,
+      1
+     ],
+     "plan": "simplified",
+     "how": "not drawn separately: the third storey of the grid stands in for it",
+     "seenIn": "TMX7316010203-000748_pano_0000_004587"
+    },
+    {
+     "id": "cream-windows",
+     "kind": "window-shape",
+     "where": "three storeys of cream-framed multi-pane windows, large on the first floor, six panes over two rows",
+     "approxSizeM": [
+      18,
+      10
+     ],
+     "plan": "modelled",
+     "how": "walls[0] 3 storeys x 8 bays, cross windows in cream frames",
+     "seenIn": "TMX7316010203-000748_pano_0000_004587"
+    }
+   ]
+  },
+  {
+   "tag": "w01-13",
+   "bearing": 13,
+   "lengthM": 21.1,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000047_pano_0000_003649",
+   "capturedAt": "2016-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-windows",
+     "kind": "window-shape",
+     "where": "north front: six wide ground windows, nine narrow tall first-floor windows, twelve small attic windows under the cornice",
+     "approxSizeM": [
+      20,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[1] one rhythm of 10 bays on 3 storeys; the three real pitches (6, 9, 12) are averaged",
+     "seenIn": "TMX7315120208-000047_pano_0000_003649"
+    },
+    {
+     "id": "north-cornice",
+     "kind": "other",
+     "where": "the same deep cream cornice under the hipped tile roof",
+     "approxSizeM": [
+      20,
+      1.5
+     ],
+     "plan": "modelled",
+     "how": "cornice true",
+     "seenIn": "TMX7315120208-000047_pano_0000_003649"
+    },
+    {
+     "id": "chimney-skylights",
+     "kind": "other",
+     "where": "a brick chimney stack on the ridge end and three roof skylights",
+     "approxSizeM": [
+      1.5,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "part of the 3DBAG roof shell (chimney) and 1 m skylights"
+     },
+     "seenIn": "TMX7315120208-000047_pano_0000_003649"
+    }
+   ]
+  },
+  {
+   "tag": "w04-103",
+   "bearing": 103,
+   "lengthM": 10.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000747_pano_0000_000543",
+   "capturedAt": "2018-05-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-vent",
+     "kind": "other",
+     "where": "east wall: a downpipe, a small louvred vent and a boarded ground window under a metal hood",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "one vent and one blocked window on a blank brick wall; the wall stays blank"
+     },
+     "seenIn": "TMX7316010203-000747_pano_0000_000543"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000748_pano_0000_004587/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000047_pano_0000_003649/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000747_pano_0000_000543/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
