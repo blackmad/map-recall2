@@ -33388,10 +33388,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012238726",
       "name": "OBA Javaplein, Javaplein 2, Amsterdam (2011; library in the ground floor of a perimeter housing block, one pand)",
-      "hash": "4c999dd1658ae5923dce1388a9a3452f0c769e04dfcf64f87fc672accbbc8dcd",
-      "sha256": "4c999dd1658ae5923dce1388a9a3452f0c769e04dfcf64f87fc672accbbc8dcd",
-      "bytes": 881076,
-      "triangles": 11740,
+      "hash": "ba6759698e1ba7d969041851ab16cef61861edeb164339e79ec617fbb4490f00",
+      "sha256": "ba6759698e1ba7d969041851ab16cef61861edeb164339e79ec617fbb4490f00",
+      "bytes": 778164,
+      "triangles": 10256,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -33402,9 +33402,9 @@
           -23.779
         ],
         "max": [
-          46.879,
+          46.837,
           36.106,
-          18.178
+          18.206
         ]
       },
       "anchor": [
@@ -33539,7 +33539,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238726",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:17:23.845Z"
+      "updatedAt": "2026-10-14T03:16:12.653Z"
     },
     {
       "id": "ordinary-0363100012073586",
