@@ -1,0 +1,45 @@
+{
+  "id": "gandhi-churchill-laan",
+  "name": "Mahatma Gandhi statue (Churchill-laan)",
+  "landmarkId": "extract_landmarks_37868198",
+  "modelUrl": "./models/gandhi-churchill-laan.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8932492,
+      52.3470354
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 8.8,
+    "widthMetres": 8.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.8932492,
+      52.3470354
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination \"Mahatma Gandhi\" (extract_landmarks_37868198) on the median of the Churchill-laan; the walking bronze, the limestone block with its MAHATMA GANDHI plate, the cobble circles, benches and hedge read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Antony Antony CC BY 2.0; Evanherk CC BY-SA 3.0) and 2018-2022 panoramas that show the statue small from both carriageways; the facing (90 degrees, +-30, along the carriageways) and all sizes are estimates"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#4a4038",
+    "stone": "#c9c2ae",
+    "greyBrick": "#8a857c",
+    "green": "#4f6b3c",
+    "ochre": "#8a6a45",
+    "dark": "#2d3033",
+    "frame": "#8f8a7f"
+  },
+  "attribution": {
+    "title": "Gandhi statue (Churchill-laan) - original low-poly reconstruction",
+    "author": "Map Recall; after the Gandhi statue on the Churchill-laan median",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(5).jpg",
+    "modifications": "Original texture-free low-poly figure, plinth, paving, benches and hedge built from Commons photographs: Gandhi (Amsterdam) 1-5 (Ceescamel, CC BY-SA 4.0), Statue of Gandhi, Amsterdam (Antony Antony, CC BY 2.0), Gandhi churchilllaan (Evanherk, CC BY-SA 3.0). No pixels or third-party meshes imported.",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE"
+  }
+}

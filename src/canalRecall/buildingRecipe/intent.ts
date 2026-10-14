@@ -388,6 +388,8 @@ export interface LargeWallIntent {
   signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
+  /** Recessed sectional garage doors in exactly these ground-storey bays of the widest panel (needs `baysPerStorey`); an alternative to `garageDoors`. */
+  garageBays?: number[];
   stringCourses?: boolean;
   /** Projecting cornice along the wall top. */
   cornice?: boolean;

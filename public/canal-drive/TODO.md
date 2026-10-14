@@ -1225,39 +1225,52 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 - **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
-  9" and "Figures, second pass"): the remaining gaps are statues and
-  memorials; the Commons route works for the blurred ones; left from the
+  10" and "Figures, second pass"): STOP building statues with the figure
+  kit (user, 2026-10-14: "bizarre"); the prototype (HISTORY "Measured
+  tint, the shared house-type library, the sculpture prototype") says
+  route B (TripoSR from one licensed Commons photo, ~20 s per statue) for
+  the ~18 single figures and organic forms, per-figure route B on a kit
+  plinth for the ~6 groups, kit primitives for slab and lettered
+  memorials; before any install decide bronze tint vs vertex colour and
+  the freedom-of-panorama question (user); automate photo pick → cut-out
+  (IS-Net fallback) → TripoSR → decimate → strip as one command; re-ask
+  the city for the mobile-mapping cloud host; the backlog needs a pass that
+  marks built ids and location matches as done (Carmiggelt, Winkler Prins,
+  Anne Frank, Walraven van Hall, Multatuli still read pending); dedupe the
+  Thijssen/Jordaan lines in `build-manual-landmarks.ts`; left from the
   figure pass: Anne Frank's coat body, Spinoza's ear falls, Johnny Meijer,
   the two north-end Kinderbrug groups (no open photo), Teun de Jager's
   facing;
   Spinoza's inventory `how` text still describes the old cone and its
   curls are low-poly; Teun de Jager unverified against a close photo;
   Westermoskee NW/SW walls and SE porch unphotographed.
-- **Large tier after batches 4–6** (2026-10-14, HISTORY "Dominant
-  buildings, batch 4/5/6"): kit limits to fix: wall-mounted letters leave
-  open edges on some shells and place nothing on a group without an
-  entrance (`cornice` mount does); the lantern floats off split panels
-  (Pijlsteeg 31); a balcony run on an arched storey hides the arch heads;
-  the eaves gate samples the lowest roof along a panel, so mixed-height
-  surfaces must be split into groups (an override per group would let
-  Singel 457's west gable draw); `baysPerStorey` on surface-listed groups;
-  `garageDoors` caps at 8 (CGM 168 has nine); a 3DBAG surface in two
-  panels doubles a group's triangles (dedupe); a stone arch band with
-  `stringCourses`/`cornice` on the same group overlaps (use `brick`); the
-  probe's storey-height failures on low sheds mask shell failures; an
-  opening that straddles the seam between two coplanar merged 3DBAG
-  surfaces cannot be cut and is laid 1.5 cm proud, which the z-fight gate
-  rejects (Singel 457's Kalverstraat front dropped to 5 storeys for it;
-  cut across coplanar merged surfaces instead).
-  Missing components: an oriel stack (Oostelijke Handelskade 749), the
-  Waagdragerhof double-height arches with per-arch lettering, ceramic
-  roofs (Spinozastraat 51), a cheaper ribbon-window frame (Stadsdeel
-  Nieuw-West, Wibautstraat 78), a cheaper balcony scheme for Revaleiland
-  437's blank NW/NE fronts. Blank: Tilanusstraat's louvred tower, the
-  Krasnapolsky/Binnengasthuis courts, Weteringstraat cantilever bands,
-  Funenpark loggias, Revaleiland's slot-window blocks, Wibautstraat's cone
-  piers, Louise Wentstraat's glazed stair columns. Reserves for batch 7:
-  Klaprozenweg 31, Papaverweg 34, Postjesweg 1 (check `politie-postjesweg`).
+- **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
+  "User review"; `docs/plans/large-tier-likeness-and-streets-20261014.md`
+  Part 1): lane A measurement and likeness tooling (crops archived to
+  source-data, `cropToPanel.ts`, `measureFacade.ts`, `likeness.ts`,
+  `measure.ts`, the sheet with verdict, the install gate), lane B measured
+  tint bypass (`tintSource: 'measured'`), lane C kit vocabulary
+  (glazed-hall, glazed-columns, french-window-ledge, measured ribbon
+  piers, windowShape, palette.glass; cut openings across coplanar merged
+  surfaces), the texture prototype DONE and lost to the kit on all three (HISTORY
+  "Texture prototype"; a fairer second try only if lane C's kit fails
+  likeness: 16 px/m, no posterisation, lit by the look), lane D triage of
+  the ~100 installed houses (re-fit / uninstall / bespoke) and
+  `ride-visibility.ts` replacing footprint ÷ distance. Held unmerged until
+  the likeness pass: `large/dominant-7-20261014` (12 houses) and
+  `large/public-buildings-4-20261014` (4 schools, CREA at IoU 0.895);
+  their tooling commits are cherry-picked. Singel 457 uninstalled, bespoke
+  queue (recipe folder kept). `tileBuildings/golden.test.ts` is red on
+  main: an extra `large` pand `0363100012236799` in the Bilderdijkstraat
+  pilot tiles that `pilot-golden.json` does not list (re-record or
+  explain). Kit limits still open from batches 4–6: wall-mounted letters
+  leave open edges and need an entrance; the lantern floats off split
+  panels; a balcony run on an arched storey hides the arch heads; the
+  eaves gate samples the lowest roof along a panel; `garageDoors` caps at
+  8; a 3DBAG surface in two panels doubles a group's triangles; missing
+  components: oriel stack, double-height arches with lettering, ceramic
+  roofs, cheaper ribbon frames, cheaper balcony scheme; no ground-floor
+  colour slot (78 % of fronts differ at the ground).
 - **Own ground after the belt lane** (2026-10-14, HISTORY "belt audit
   clean, pockets…"): a BGT-driven sidewalk/road fill for land over BGT
   road away from junctions (Oud-West 11.6k m² per 300 m window); pocket
@@ -1295,14 +1308,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   upper tower moves ~1.3 m south against the pitched views; inventory
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
-- **Tropenmuseum, third pass** (2026-10-14, HISTORY "Tropenmuseum, second
-  pass"): the pavilion stages above ~22 m (blind arcade, clock panel,
-  paired windows), the connecting block above its 12 m panel (arched
-  third floor, cornice ~16.4 m, arcade stage), the south pavilion face
-  and the risalit gable (needs a better crop / Commons photo), lion
-  masks; 280 B of GLB budget left so cut elsewhere first; the spec's
-  party-wall bearings cover the whole range (narrow them); tidy the
-  `TROP_*` env toggles.
+- **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
+  pass"): the swung gables (wing, risalit) keep 3DBAG's plain outline; the
+  south-pavilion clock dormer, relief iconography, arcade brick tracery,
+  risalit souterrain arches, the wing's ground floor and banner field;
+  only 3.4 KB of byte headroom (cut elsewhere first); inventory text says
+  "two-light" on now single-light wings; one 99 m² blank wall at bearing
+  61 unexplained.
 - **Large tier after the components lane** (2026-10-14): OZ Achterburgwal
   233 needs a per-group party-wall override to place its baroque gateway
   (panel 266 hits a neighbour on one of three probes); Engelsesteeg's
@@ -1325,6 +1337,32 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   undrawn projecting face; the Marnixstraat ground ribbon is taller than
   the measured 2.1–4.3 m; the red lantern and the w13 glass-block ribbons
   are not modelled; walls with no photo stay inferred kit walls.
+- **P1 Commercial streets: Kinkerstraat, then Jan Evertsenstraat** (plan
+  Part 2, user 2026-10-14): shared type library DONE (`scripts/block-face/types/<district>/`,
+  `blockFace/typeLibrary.ts`); Kinkerstraat survey lane
+  (`street-pands.ts`, `pand-reference --street`, intake per face, ~209
+  pands: 1880s–1900s 161, 1910s 13, 1980s infill 31); Oud-West type
+  library (1890 brick-arched, 1900 stucco front, 1985 infill) with palettes
+  from strip medians; face lanes of ~10 pands, never `compile.ts --install`;
+  review lane with the camera-matched row, likeness and a verdict per pand,
+  ride shots at five points; Amsterdam School components (rigid continuous
+  canopy with face continuity, ladder window, multi-bay erker with cap,
+  brick course banding, corner tower) and the retirement of the
+  Street-View-based Jan Evertsenstraat pilot; then Jan Evertsenstraat
+  (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
+  and arcades bespoke, De Hallen as a large recipe; district style packs in
+  `look/palette.ts` keyed by CBS buurt with a per-pand district index in
+  the facts sidecar and the streamed rigid canopy; a destination on each
+  street for the seeded ride.
+- **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14 "are we
+  accurately modeling the brick bridges"): arch count, material and
+  railing type per bridge from the register and aimed panoramas into
+  `bridgeHints.ts` (with `hand`), a likeness sheet per named bridge, budget
+  tiers by ride visibility (1,500 tris for named canal-belt bridges), and
+  the flat 689 (BGT bridge-polygon axis for the 127 without an OSM way, AHN
+  DSM for the 128 tree gaps, per-span profiles for the viaducts). Named
+  regressions: the Seven Bridges stretch of the Reguliersgracht, the
+  Torensluis. Default-on steps unchanged.
 - **Parks, next** (2026-10-14, HISTORY "Parks from the BGT survey"):
   lawn/bed/shrub as flat tones only (a stipple or relief pass); BGT walls all at 0.75 m; 22 parks and 110 playgrounds without
   BGT polygons; the raw BGT cache is archived in
