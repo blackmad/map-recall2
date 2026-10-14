@@ -46719,6 +46719,152 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:13:42.683Z"
+    },
+    {
+      "id": "ordinary-0363100012170734",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012170734",
+      "name": "Valckenierstraat 65, Amsterdam-Centrum (Roeterseiland): 1963 university laboratory block, four storeys of brick ribbon windows with cream bands over a dark plinth, a two-storey steel-window canal wing and a brick tower with a chimney stack",
+      "hash": "adfe09b6e8e18a86056951f7f8677cd7fa87e2efc4b0b38c18c5882a396fc7ee",
+      "sha256": "adfe09b6e8e18a86056951f7f8677cd7fa87e2efc4b0b38c18c5882a396fc7ee",
+      "bytes": 860952,
+      "triangles": 11908,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -40.781,
+          0.001,
+          -27.69
+        ],
+        "max": [
+          41.673,
+          32.803,
+          49.449
+        ]
+      },
+      "anchor": [
+        4.9144431,
+        52.3633865
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9150574,
+              52.3631304
+            ],
+            [
+              4.9147981,
+              52.363628
+            ],
+            [
+              4.914656,
+              52.3636003
+            ],
+            [
+              4.9146733,
+              52.363567
+            ],
+            [
+              4.9145913,
+              52.3635509
+            ],
+            [
+              4.9145468,
+              52.3636362
+            ],
+            [
+              4.9140239,
+              52.3635341
+            ],
+            [
+              4.9140685,
+              52.3634485
+            ],
+            [
+              4.9138449,
+              52.3634049
+            ],
+            [
+              4.9140865,
+              52.3629406
+            ]
+          ],
+          [
+            [
+              4.9141559,
+              52.3632848
+            ],
+            [
+              4.9146758,
+              52.3633863
+            ],
+            [
+              4.9147727,
+              52.3632004
+            ],
+            [
+              4.9142528,
+              52.3630988
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 32.8,
+      "height": 32.8,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-valckenierstraat-65-170734.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012170734"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "valckenierstraat-65-170734",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012170734/w01-163.jpg",
+          "staging/pand-reference-walls/0363100012170734/w01-163.jpg",
+          "staging/pand-reference-walls/0363100012170734/w03-253.jpg",
+          "staging/pand-reference-walls/0363100012170734/w04-343.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 14b",
+          "ribbon-windows 1st 25b",
+          "brick-bay-grid 4st 11b",
+          "ribbon-windows 2st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170734",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:18:28.619Z"
     }
   ]
 }
