@@ -1,5 +1,71 @@
 # Canal Recall — what is built
 
+## Measured tint, the shared house-type library, the sculpture prototype, motorkade-1 restored (2026-10-14, night)
+
+Three plan lanes merged. **Measured tint** (`lane/measured-tint-20261014`,
+plan Part 1 lane B): a wall whose colour was measured from the photo now
+renders at that colour. `cityWallTint`'s clamp (brick lightness 0.3–0.6,
+saturation 0.12–0.5) is untouched because it protects the ~343k streamed
+buildings; the bypass is the pattern the file already used for the slate
+exception: the exporter writes `tintSource: 'measured'` into material
+extras when `material.userData.tintSource === 'measured'` (measured and
+unmeasured buckets never merge), `slotForMaterial` reads it, and
+`cityMeasuredWallTint` in `palette.ts` returns the authored hex (L floored
+at 0.18) divided by the brick cell mean (225/255) so cell × tint lands on
+the authored colour; the same source parameter runs through `cityTint`,
+`cityLookTint`, `slotTintBytes`, `dress`, `recipeLook.ts`,
+`galleryReview.ts`, `render-page.ts` and `writeTile.ts` so sheets and
+converted tiles match the game. Swatches through the real look: dark
+`#3a2a28` rendered 79,57,54 before and 57,42,39 after; pale `#d8d2c4`
+rendered tan 151,140,115 before and 213,207,193 after. Tests in
+`palette.test.ts`, `cityLook.test.ts` (162 pass) and a Playwright case in
+`building-look.spec.ts`; unmeasured output byte-identical (fit-golden,
+large-mesh hashes). Nothing sets the flag yet; lane A's fit does.
+**Shared house-type library** (`lane/type-library-20261014`, plan Part 2
+step 1): `BlockFaceIntent.types` accepts ids next to inline types; a
+library type is one file at `scripts/block-face/types/<district>/<id>.json`
+(`HouseTypeIntent` plus `district` equal to the folder, required
+`evidence`, optional `schemaLimits`); `blockFace/typeLibrary.ts` holds
+`fileTypeLoader` (rejects id/district mismatches and ids in several
+districts), `mapTypeLoader` for tests and `resolveTypeList`;
+`validateBlockFace` and `houseIntents` take the loader; duplicate ids in
+any mix are a validation error; `compile.ts` and `compile-recipes.ts`
+pass the loader and fold the resolved library content into
+`sources.faces`/`sources.types` so a library edit invalidates the faces
+that use it. De Clercqstraat's three types moved to
+`types/oud-west/` and the face references them; its chunk, manifest entry
+and report hash identically before and after; all 21 faces' resolved
+house intents hash identically; fit-golden 140 identical. The tile golden
+test (`tileBuildings/golden.test.ts`) was already red before this lane:
+an extra `large` pand `0363100012236799` in the Bilderdijkstraat pilot
+tiles. **Sculpture reconstruction prototype**
+(`lane/sculpture-prototype-20261014`, plan Part 4;
+`docs/sculpture-reconstruction-20261014.md`, `scripts/sculptures/`): the
+city's 2025 mobile-mapping cloud is catalogued (19–30 M points per tile
+near each statue) but its file host `files.lidar.data.amsterdam.nl` does
+not resolve (contact datateam.geo@amsterdam.nl); the PDOK 2025 8 cm
+surface model is top-down only (Gandhi a 1 m mound, Thijssen a 10.7 m
+column of lime canopy, De Dokwerker a 3.4 m post) and is useful only for
+position and height; TripoSR (MIT) on the M4 Pro with MPS and scikit-image
+marching cubes gives a recognisable real-height ~6k-tri figure in ~20 s
+from one licensed Commons photo (De Dokwerker: Rietman CC BY-SA 4.0,
+stance and chin right, back invented but plausible; Gandhi: Antony Antony
+CC BY 2.0, pose, shawl and book right, staff a stub, plinth half height,
+2007 flowers baked on; Theo Thijssen: Alf van Beem PD, block and desk
+right, man and boy fused). Strips kit vs A vs B on the demo page.
+Recommendation: route B for the ~18 single figures on plinths and for
+organic abstract forms, per-figure route B placed on a kit plinth for the
+~6 groups, kit primitives for the ~13 slab and lettered memorials;
+Hunyuan3D-2 excluded (licence bars EU use), TRELLIS and InstantMesh need
+CUDA. Open before any install: bronze tint vs vertex colour, whether
+Dutch freedom of panorama covers a 3D model of a copyrighted sculpture
+(the user's call), near vs far range. **motorkade-1**: the Tropenmuseum
+merge dropped its entry from `signature-landmarks.json` (the lane rebuilt
+the manifest from a branch that predated the model), so
+`modelAssetVersions.json` lost its fingerprint and `check:manual-landmarks`
+failed on main; rebuilt with `--only=motorkade-1`.
+
+
 ## User review: the large-tier batches and the kit statues are rejected; the plan (2026-10-14, night)
 
 The user looked at the demo page and rejected two product lines. The

@@ -662,6 +662,7 @@
     school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
     modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
   };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;

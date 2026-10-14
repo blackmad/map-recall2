@@ -52,8 +52,8 @@
       "dateSource": "asset-update"
     },
     "american-hotel.lod1": {
-      "updatedAt": "2026-10-13T15:41:02.442Z",
-      "version": "61022d6b82c08c59",
+      "updatedAt": "2026-10-13T22:40:17.041Z",
+      "version": "696ababff634bb6a",
       "dateSource": "asset-update"
     },
     "amsta-de-poort": {
@@ -141,6 +141,11 @@
       "version": "75608e113736daa2",
       "dateSource": "git-history"
     },
+    "anne-frank-merwedeplein": {
+      "updatedAt": "2026-10-14T03:43:32.563Z",
+      "version": "d38753e44dd50457",
+      "dateSource": "asset-update"
+    },
     "arcam": {
       "updatedAt": "2026-10-04T02:29:48+02:00",
       "version": "6ee584e00b324458",
@@ -196,6 +201,11 @@
       "version": "4f8f4de3a8fcf29c",
       "dateSource": "asset-update"
     },
+    "auschwitz-monument": {
+      "updatedAt": "2026-10-13T22:52:13.729Z",
+      "version": "e0f0358e0880e8ba",
+      "dateSource": "asset-update"
+    },
     "badhuistheater": {
       "updatedAt": "2026-10-13T19:10:06.186Z",
       "version": "357b69f104d17af6",
@@ -219,6 +229,16 @@
     "beest-het-lab": {
       "updatedAt": "2026-10-06T10:41:24.593Z",
       "version": "ec32672c79476dd7",
+      "dateSource": "asset-update"
+    },
+    "begijnhof": {
+      "updatedAt": "2026-10-13T21:43:21.455Z",
+      "version": "f4572b102b6d517e",
+      "dateSource": "asset-update"
+    },
+    "begijnhof.lod1": {
+      "updatedAt": "2026-10-13T21:44:17.185Z",
+      "version": "f09f433c2ee4c54e",
       "dateSource": "asset-update"
     },
     "begijnhofkapel": {
@@ -364,6 +384,11 @@
     "canals-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:19.830Z",
       "version": "d4c77fe15650679c",
+      "dateSource": "asset-update"
+    },
+    "carmiggelt-borstbeeld": {
+      "updatedAt": "2026-10-14T02:33:25.586Z",
+      "version": "d1e3023dc9b56c31",
       "dateSource": "asset-update"
     },
     "cavia": {
@@ -646,6 +671,11 @@
       "version": "adfa50a12280e1b0",
       "dateSource": "asset-update"
     },
+    "de-schreeuw-oosterpark": {
+      "updatedAt": "2026-10-14T04:56:53.837Z",
+      "version": "efd3183658000f29",
+      "dateSource": "asset-update"
+    },
     "de-wester": {
       "updatedAt": "2026-10-13T20:21:19.879Z",
       "version": "8ad96681b320b7c3",
@@ -911,6 +941,16 @@
       "version": "8f526137f407f008",
       "dateSource": "asset-update"
     },
+    "gandhi-churchill-laan": {
+      "updatedAt": "2026-10-14T04:54:57.924Z",
+      "version": "42c051d7754d99f5",
+      "dateSource": "asset-update"
+    },
+    "gandhi-churchill-laan.lod1": {
+      "updatedAt": "2026-10-14T04:55:06.673Z",
+      "version": "61d98cdd04bd1810",
+      "dateSource": "asset-update"
+    },
     "gashouder": {
       "updatedAt": "2026-10-04T00:34:55+02:00",
       "version": "a61e26dbacb806f0",
@@ -1037,8 +1077,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-650-706.lod1": {
-      "updatedAt": "2026-10-10T13:42:19.989Z",
-      "version": "e75dc974bc19fd89",
+      "updatedAt": "2026-10-13T21:34:52.928Z",
+      "version": "d6c96a6ea95f00fc",
       "dateSource": "asset-update"
     },
     "haparandaweg-708-744": {
@@ -1072,8 +1112,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-870-900.lod1": {
-      "updatedAt": "2026-10-10T13:42:19.992Z",
-      "version": "50a818e191ba3503",
+      "updatedAt": "2026-10-13T21:34:52.931Z",
+      "version": "34b3b1d17dc16214",
       "dateSource": "asset-update"
     },
     "haparandaweg-9": {
@@ -1092,8 +1132,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-952-1002.lod1": {
-      "updatedAt": "2026-10-10T13:42:19.994Z",
-      "version": "1299a99eed2de747",
+      "updatedAt": "2026-10-13T21:34:52.932Z",
+      "version": "37b560a4a940b6be",
       "dateSource": "asset-update"
     },
     "hart-museum": {
@@ -1222,8 +1262,8 @@
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod1": {
-      "updatedAt": "2026-10-13T19:25:19.699Z",
-      "version": "afec3c67eb7bca2b",
+      "updatedAt": "2026-10-13T21:15:36.133Z",
+      "version": "7fe3e66e3f38c87d",
       "dateSource": "asset-update"
     },
     "hortus-greenhouses": {
@@ -1382,8 +1422,8 @@
       "dateSource": "asset-update"
     },
     "ing-house.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.061Z",
-      "version": "5cc7d3cd140c6809",
+      "updatedAt": "2026-10-13T23:53:30.076Z",
+      "version": "ae8d1193d027571a",
       "dateSource": "asset-update"
     },
     "jacob-bontiusplaats-9": {
@@ -1424,6 +1464,16 @@
     "jodenbreestraat-11.lod1": {
       "updatedAt": "2026-10-13T19:30:13.167Z",
       "version": "c81a62055f3830b3",
+      "dateSource": "asset-update"
+    },
+    "johnny-jordaan-groep": {
+      "updatedAt": "2026-10-14T03:38:27.062Z",
+      "version": "d1d0e32949f7736b",
+      "dateSource": "asset-update"
+    },
+    "johnny-jordaan-groep.lod1": {
+      "updatedAt": "2026-10-14T04:36:48.121Z",
+      "version": "cce8dfd589c633c2",
       "dateSource": "asset-update"
     },
     "joods-verzetsmonument": {
@@ -1491,6 +1541,16 @@
       "version": "c80b786c38440800",
       "dateSource": "asset-update"
     },
+    "kinderbrug-jongen-konijnen": {
+      "updatedAt": "2026-10-14T03:40:54.501Z",
+      "version": "8d143c4b8ebbaf69",
+      "dateSource": "asset-update"
+    },
+    "kinderbrug-meisje-eekhoorns": {
+      "updatedAt": "2026-10-14T03:40:53.482Z",
+      "version": "416e86e34db30383",
+      "dateSource": "asset-update"
+    },
     "kinderkookkafe": {
       "updatedAt": "2026-10-06T06:24:27.978Z",
       "version": "2a100f055a7ab05f",
@@ -1551,6 +1611,16 @@
       "version": "bde599187a2dd27a",
       "dateSource": "asset-update"
     },
+    "krijtberg": {
+      "updatedAt": "2026-10-13T22:13:25.022Z",
+      "version": "0c77e3b173b19e93",
+      "dateSource": "asset-update"
+    },
+    "krijtberg.lod1": {
+      "updatedAt": "2026-10-13T22:13:32.875Z",
+      "version": "eb8f65848adfa228",
+      "dateSource": "asset-update"
+    },
     "kriterion": {
       "updatedAt": "2026-10-07T08:28:12.141Z",
       "version": "d069a17f44212a81",
@@ -1586,6 +1656,11 @@
       "version": "0da226d361b14c2d",
       "dateSource": "asset-update"
     },
+    "lieverdje": {
+      "updatedAt": "2026-10-13T22:51:45.265Z",
+      "version": "549135ae0eefe8c5",
+      "dateSource": "asset-update"
+    },
     "ljg-synagoge": {
       "updatedAt": "2026-10-10T03:50:12.409Z",
       "version": "861e68bfbdcd399f",
@@ -1614,6 +1689,16 @@
     "luther-museum.lod1": {
       "updatedAt": "2026-10-10T13:42:20.178Z",
       "version": "bbd4007ab33490ef",
+      "dateSource": "asset-update"
+    },
+    "maagdenhuis": {
+      "updatedAt": "2026-10-13T20:55:41.236Z",
+      "version": "7eb5f89887c7f195",
+      "dateSource": "asset-update"
+    },
+    "maagdenhuis.lod1": {
+      "updatedAt": "2026-10-13T20:57:07.932Z",
+      "version": "6b0d10ba62f954f0",
       "dateSource": "asset-update"
     },
     "maarten-lutherkerk": {
@@ -1654,6 +1739,16 @@
     "magna-plaza.lod1": {
       "updatedAt": "2026-10-13T12:50:18.201Z",
       "version": "1bf3ef77285fa430",
+      "dateSource": "asset-update"
+    },
+    "mama-baranka": {
+      "updatedAt": "2026-10-14T04:52:53.977Z",
+      "version": "e2f64d7ee6cbffa6",
+      "dateSource": "asset-update"
+    },
+    "mama-baranka.lod1": {
+      "updatedAt": "2026-10-14T04:53:42.587Z",
+      "version": "24c26183d26c021a",
       "dateSource": "asset-update"
     },
     "max-euwe-centrum": {
@@ -1717,8 +1812,8 @@
       "dateSource": "asset-update"
     },
     "moco-museum.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.190Z",
-      "version": "5f681b11c86edc47",
+      "updatedAt": "2026-10-13T23:53:30.077Z",
+      "version": "312b3f70090dc48b",
       "dateSource": "asset-update"
     },
     "mondriaan-tower": {
@@ -1751,12 +1846,12 @@
       "version": "f944391fd70fc95a",
       "dateSource": "asset-update"
     },
-    "motorkade-01": {
-      "updatedAt": "2026-10-13T13:04:09.199Z",
-      "version": "213f6500739ce2f7",
+    "motorkade-1": {
+      "updatedAt": "2026-10-14T09:15:55.637Z",
+      "version": "ceded78930018e4f",
       "dateSource": "asset-update"
     },
-    "motorkade-01.lod1": {
+    "motorkade-1.lod1": {
       "updatedAt": "2026-10-13T13:20:20.223Z",
       "version": "6bd820f5642366a0",
       "dateSource": "asset-update"
@@ -1799,6 +1894,11 @@
     "muiderpoort.lod1": {
       "updatedAt": "2026-10-10T13:42:20.199Z",
       "version": "edbffc6299221f20",
+      "dateSource": "asset-update"
+    },
+    "multatuli-standbeeld": {
+      "updatedAt": "2026-10-13T22:55:59.563Z",
+      "version": "6230e69733011a16",
       "dateSource": "asset-update"
     },
     "multatuli": {
@@ -1956,6 +2056,16 @@
       "version": "b19e1ac9a55d5708",
       "dateSource": "asset-update"
     },
+    "noorderkerk": {
+      "updatedAt": "2026-10-13T22:05:49.322Z",
+      "version": "93f7f58651032213",
+      "dateSource": "asset-update"
+    },
+    "noorderkerk.lod1": {
+      "updatedAt": "2026-10-13T22:05:50.032Z",
+      "version": "11fb085d8b766695",
+      "dateSource": "asset-update"
+    },
     "oba-oosterdok": {
       "updatedAt": "2026-10-05T18:07:25+02:00",
       "version": "4fc90fd20e653331",
@@ -2067,8 +2177,8 @@
       "dateSource": "asset-update"
     },
     "opstandingskerk.lod1": {
-      "updatedAt": "2026-10-13T19:25:19.704Z",
-      "version": "10a1e1e7e2a00b98",
+      "updatedAt": "2026-10-13T20:06:44.674Z",
+      "version": "1e470c1449105a68",
       "dateSource": "asset-update"
     },
     "orgelpark": {
@@ -2147,8 +2257,8 @@
       "dateSource": "asset-update"
     },
     "palace-on-the-dam.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.435Z",
-      "version": "8a89ac0522a3d045",
+      "updatedAt": "2026-10-13T23:53:30.079Z",
+      "version": "f0661db0f7279051",
       "dateSource": "asset-update"
     },
     "paradiso": {
@@ -2326,6 +2436,16 @@
       "version": "9334244a9cdc9325",
       "dateSource": "asset-update"
     },
+    "rembrandtmonument": {
+      "updatedAt": "2026-10-13T22:04:17.336Z",
+      "version": "789043ca1e977063",
+      "dateSource": "asset-update"
+    },
+    "rembrandtmonument.lod1": {
+      "updatedAt": "2026-10-13T22:06:10.718Z",
+      "version": "33ee2bd8d2fdce5d",
+      "dateSource": "asset-update"
+    },
     "rialto": {
       "updatedAt": "2026-10-13T19:25:19.706Z",
       "version": "956f5bc48609ca1a",
@@ -2351,6 +2471,16 @@
       "version": "cb3c6b1145a498c1",
       "dateSource": "asset-update"
     },
+    "roeterseiland-rec-a": {
+      "updatedAt": "2026-10-14T02:27:26.486Z",
+      "version": "7e2a0a7dd6bdf95d",
+      "dateSource": "asset-update"
+    },
+    "roeterseiland-rec-a.lod1": {
+      "updatedAt": "2026-10-14T02:31:40.380Z",
+      "version": "36603df534ad3f7e",
+      "dateSource": "asset-update"
+    },
     "ronde-lutherse-kerk": {
       "updatedAt": "2026-10-13T13:04:09.031Z",
       "version": "2b779030928e6b45",
@@ -2369,6 +2499,16 @@
     "royal-theater-carre.lod1": {
       "updatedAt": "2026-10-10T13:42:20.472Z",
       "version": "46ced1ab0f503123",
+      "dateSource": "asset-update"
+    },
+    "sarphatimonument": {
+      "updatedAt": "2026-10-13T22:27:21.651Z",
+      "version": "2ebf7005547722f2",
+      "dateSource": "asset-update"
+    },
+    "sarphatimonument.lod1": {
+      "updatedAt": "2026-10-13T22:36:52.143Z",
+      "version": "10ef68827a11b172",
       "dateSource": "asset-update"
     },
     "scheepvaarthuis": {
@@ -2447,8 +2587,8 @@
       "dateSource": "asset-update"
     },
     "silodam.lod1": {
-      "updatedAt": "2026-10-13T20:21:25.389Z",
-      "version": "ae36a9eba2af1fe9",
+      "updatedAt": "2026-10-13T21:34:52.946Z",
+      "version": "f6ce3949cf741daf",
       "dateSource": "asset-update"
     },
     "singelkerk": {
@@ -2496,6 +2636,16 @@
       "version": "fdfb9135f791ef45",
       "dateSource": "asset-update"
     },
+    "slavernijmonument": {
+      "updatedAt": "2026-10-13T22:04:19.458Z",
+      "version": "876f3d4dfca9523a",
+      "dateSource": "asset-update"
+    },
+    "slavernijmonument.lod1": {
+      "updatedAt": "2026-10-13T22:06:10.726Z",
+      "version": "0243b1041947b4b7",
+      "dateSource": "asset-update"
+    },
     "sloterdijk-station": {
       "updatedAt": "2026-10-04T17:40:44+02:00",
       "version": "38d256e4825dfc69",
@@ -2516,14 +2666,24 @@
       "version": "5c8dad2119dbcb46",
       "dateSource": "asset-update"
     },
+    "spanjemonument": {
+      "updatedAt": "2026-10-14T04:55:19.521Z",
+      "version": "5dce32739bc8cd46",
+      "dateSource": "asset-update"
+    },
+    "spanjemonument.lod1": {
+      "updatedAt": "2026-10-14T04:55:20.310Z",
+      "version": "b9d35d723a1bd688",
+      "dateSource": "asset-update"
+    },
     "spinoza-standbeeld": {
       "updatedAt": "2026-10-14T03:41:35.199Z",
       "version": "705002e5ff4d04dd",
       "dateSource": "asset-update"
     },
     "spinoza-standbeeld.lod1": {
-      "updatedAt": "2026-10-14T03:28:56.960Z",
-      "version": "423b123d5b935676",
+      "updatedAt": "2026-10-14T04:36:48.124Z",
+      "version": "f131fdf8a7410a0e",
       "dateSource": "asset-update"
     },
     "stadhuis": {
@@ -2542,8 +2702,8 @@
       "dateSource": "asset-update"
     },
     "stadsschouwburg.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.562Z",
-      "version": "9eacdbd23e4516c3",
+      "updatedAt": "2026-10-13T23:53:30.081Z",
+      "version": "61f67045ceb7171d",
       "dateSource": "asset-update"
     },
     "stedelijk-museum": {
@@ -2626,6 +2786,16 @@
       "version": "b93ed7783c539338",
       "dateSource": "asset-update"
     },
+    "theo-thijssen-standbeeld": {
+      "updatedAt": "2026-10-14T02:52:15.133Z",
+      "version": "6faf541ad5ec9cef",
+      "dateSource": "asset-update"
+    },
+    "theo-thijssen-standbeeld.lod1": {
+      "updatedAt": "2026-10-14T02:54:28.617Z",
+      "version": "99d0ba6ada0a40fc",
+      "dateSource": "asset-update"
+    },
     "this-is-holland": {
       "updatedAt": "2026-10-13T14:30:26.972Z",
       "version": "ecb2668aa414b89e",
@@ -2639,6 +2809,16 @@
     "thomaskerk": {
       "updatedAt": "2026-10-09T22:07:23.833Z",
       "version": "b80127c8ba91dbcc",
+      "dateSource": "asset-update"
+    },
+    "thorbecke-standbeeld": {
+      "updatedAt": "2026-10-13T22:29:50.892Z",
+      "version": "41535bb315fa8feb",
+      "dateSource": "asset-update"
+    },
+    "thorbecke-standbeeld.lod1": {
+      "updatedAt": "2026-10-13T22:36:52.147Z",
+      "version": "df5fc6836d95eaf7",
       "dateSource": "asset-update"
     },
     "tobacco-theater": {
@@ -2674,6 +2854,16 @@
     "trippenhuis.lod1": {
       "updatedAt": "2026-10-10T13:42:20.579Z",
       "version": "9628f501e767f467",
+      "dateSource": "asset-update"
+    },
+    "tropenmuseum": {
+      "updatedAt": "2026-10-14T05:46:20.333Z",
+      "version": "d3e4d6a2ca7d2941",
+      "dateSource": "asset-update"
+    },
+    "tropenmuseum.lod1": {
+      "updatedAt": "2026-10-14T08:21:04.078Z",
+      "version": "aa9b2f260f97c174",
       "dateSource": "asset-update"
     },
     "tuschinski": {
@@ -2761,6 +2951,16 @@
       "version": "04a0a8638ae575b4",
       "dateSource": "asset-update"
     },
+    "vondelmonument": {
+      "updatedAt": "2026-10-13T22:04:18.378Z",
+      "version": "6ac87d4c2310cfcf",
+      "dateSource": "asset-update"
+    },
+    "vondelmonument.lod1": {
+      "updatedAt": "2026-10-13T22:06:10.729Z",
+      "version": "699ac1534d3e5509",
+      "dateSource": "asset-update"
+    },
     "vondelpark-bandstand": {
       "updatedAt": "2026-10-04T05:18:02+02:00",
       "version": "0e632fab53dc3740",
@@ -2846,6 +3046,26 @@
       "version": "d9c664eac2d1422d",
       "dateSource": "git-history"
     },
+    "walraven-van-hall": {
+      "updatedAt": "2026-10-13T22:56:01.350Z",
+      "version": "f8c7dbce34f4cc8e",
+      "dateSource": "asset-update"
+    },
+    "walraven-van-hall.lod1": {
+      "updatedAt": "2026-10-13T22:57:09.086Z",
+      "version": "431410df684768b6",
+      "dateSource": "asset-update"
+    },
+    "waterdraagster-bellamyplein": {
+      "updatedAt": "2026-10-14T04:55:00.275Z",
+      "version": "9686e52663e2b64e",
+      "dateSource": "asset-update"
+    },
+    "waterdraagster-bellamyplein.lod1": {
+      "updatedAt": "2026-10-14T04:55:06.681Z",
+      "version": "22e5f635227ed222",
+      "dateSource": "asset-update"
+    },
     "wereldmuseum-amsterdam": {
       "updatedAt": "2026-10-04T02:58:21+02:00",
       "version": "f735821ca778afe2",
@@ -2896,6 +3116,16 @@
       "version": "47cccb470d9f0ec4",
       "dateSource": "asset-update"
     },
+    "wilhelmina-ruiterstandbeeld": {
+      "updatedAt": "2026-10-13T22:20:20.393Z",
+      "version": "ce5ceee85bd19387",
+      "dateSource": "asset-update"
+    },
+    "wilhelmina-ruiterstandbeeld.lod1": {
+      "updatedAt": "2026-10-13T22:36:52.147Z",
+      "version": "cd3247c8e9fcbf58",
+      "dateSource": "asset-update"
+    },
     "willem-de-zwijgerkerk": {
       "updatedAt": "2026-10-13T15:41:03.523Z",
       "version": "509e8bfaa5a7f064",
@@ -2936,6 +3166,16 @@
       "version": "e045b72a9fa095f5",
       "dateSource": "asset-update"
     },
+    "winkler-prins-monument": {
+      "updatedAt": "2026-10-14T02:32:57.663Z",
+      "version": "dc04963f913b3880",
+      "dateSource": "asset-update"
+    },
+    "winkler-prins-monument.lod1": {
+      "updatedAt": "2026-10-14T02:54:28.497Z",
+      "version": "8236f27a203f801c",
+      "dateSource": "asset-update"
+    },
     "woongebouw-wladiwostok": {
       "updatedAt": "2026-10-10T07:58:07.456Z",
       "version": "4715e269f100f32a",
@@ -2974,241 +3214,6 @@
     "zuiveringshal-west.lod1": {
       "updatedAt": "2026-10-10T13:42:20.789Z",
       "version": "d7525cb723557381",
-      "dateSource": "asset-update"
-    },
-    "maagdenhuis": {
-      "updatedAt": "2026-10-13T20:55:41.236Z",
-      "version": "7eb5f89887c7f195",
-      "dateSource": "asset-update"
-    },
-    "maagdenhuis.lod1": {
-      "updatedAt": "2026-10-13T20:57:07.932Z",
-      "version": "6b0d10ba62f954f0",
-      "dateSource": "asset-update"
-    },
-    "rembrandtmonument": {
-      "updatedAt": "2026-10-13T22:04:17.336Z",
-      "version": "789043ca1e977063",
-      "dateSource": "asset-update"
-    },
-    "vondelmonument": {
-      "updatedAt": "2026-10-13T22:04:18.378Z",
-      "version": "6ac87d4c2310cfcf",
-      "dateSource": "asset-update"
-    },
-    "begijnhof": {
-      "updatedAt": "2026-10-13T21:43:21.455Z",
-      "version": "f4572b102b6d517e",
-      "dateSource": "asset-update"
-    },
-    "begijnhof.lod1": {
-      "updatedAt": "2026-10-13T21:34:40.014Z",
-      "version": "2a939f86bb4761c8",
-      "dateSource": "asset-update"
-    },
-    "slavernijmonument": {
-      "updatedAt": "2026-10-13T22:04:19.458Z",
-      "version": "876f3d4dfca9523a",
-      "dateSource": "asset-update"
-    },
-    "rembrandtmonument.lod1": {
-      "updatedAt": "2026-10-13T21:57:49.295Z",
-      "version": "abb36e8431fa3ee7",
-      "dateSource": "asset-update"
-    },
-    "slavernijmonument.lod1": {
-      "updatedAt": "2026-10-13T22:02:44.652Z",
-      "version": "b27530a154eb1a88",
-      "dateSource": "asset-update"
-    },
-    "vondelmonument.lod1": {
-      "updatedAt": "2026-10-13T22:00:42.600Z",
-      "version": "281d548344fd1363",
-      "dateSource": "asset-update"
-    },
-    "noorderkerk": {
-      "updatedAt": "2026-10-13T22:05:49.322Z",
-      "version": "93f7f58651032213",
-      "dateSource": "asset-update"
-    },
-    "noorderkerk.lod1": {
-      "updatedAt": "2026-10-13T22:05:50.032Z",
-      "version": "11fb085d8b766695",
-      "dateSource": "asset-update"
-    },
-    "krijtberg": {
-      "updatedAt": "2026-10-13T22:13:25.022Z",
-      "version": "0c77e3b173b19e93",
-      "dateSource": "asset-update"
-    },
-    "krijtberg.lod1": {
-      "updatedAt": "2026-10-13T22:13:32.875Z",
-      "version": "eb8f65848adfa228",
-      "dateSource": "asset-update"
-    },
-    "wilhelmina-ruiterstandbeeld": {
-      "updatedAt": "2026-10-13T22:20:20.393Z",
-      "version": "ce5ceee85bd19387",
-      "dateSource": "asset-update"
-    },
-    "wilhelmina-ruiterstandbeeld.lod1": {
-      "updatedAt": "2026-10-13T22:19:47.254Z",
-      "version": "2183d5769f1e2c38",
-      "dateSource": "asset-update"
-    },
-    "sarphatimonument": {
-      "updatedAt": "2026-10-13T22:27:21.651Z",
-      "version": "2ebf7005547722f2",
-      "dateSource": "asset-update"
-    },
-    "sarphatimonument.lod1": {
-      "updatedAt": "2026-10-13T22:27:09.967Z",
-      "version": "2b52b54544b24886",
-      "dateSource": "asset-update"
-    },
-    "thorbecke-standbeeld": {
-      "updatedAt": "2026-10-13T22:29:50.892Z",
-      "version": "41535bb315fa8feb",
-      "dateSource": "asset-update"
-    },
-    "thorbecke-standbeeld.lod1": {
-      "updatedAt": "2026-10-13T22:29:38.213Z",
-      "version": "5ba60ec746f77050",
-      "dateSource": "asset-update"
-    },
-    "anne-frank-merwedeplein": {
-      "updatedAt": "2026-10-14T03:43:32.563Z",
-      "version": "d38753e44dd50457",
-      "dateSource": "asset-update"
-    },
-    "auschwitz-monument": {
-      "updatedAt": "2026-10-13T22:52:13.729Z",
-      "version": "e0f0358e0880e8ba",
-      "dateSource": "asset-update"
-    },
-    "lieverdje": {
-      "updatedAt": "2026-10-13T22:51:45.265Z",
-      "version": "549135ae0eefe8c5",
-      "dateSource": "asset-update"
-    },
-    "multatuli-standbeeld": {
-      "updatedAt": "2026-10-13T22:55:59.563Z",
-      "version": "6230e69733011a16",
-      "dateSource": "asset-update"
-    },
-    "walraven-van-hall": {
-      "updatedAt": "2026-10-13T22:56:01.350Z",
-      "version": "f8c7dbce34f4cc8e",
-      "dateSource": "asset-update"
-    },
-    "walraven-van-hall.lod1": {
-      "updatedAt": "2026-10-13T22:52:14.391Z",
-      "version": "e1614c20896719fe",
-      "dateSource": "asset-update"
-    },
-    "tropenmuseum": {
-      "updatedAt": "2026-10-14T05:46:20.333Z",
-      "version": "d3e4d6a2ca7d2941",
-      "dateSource": "asset-update"
-    },
-    "tropenmuseum.lod1": {
-      "updatedAt": "2026-10-14T05:45:50.147Z",
-      "version": "97c8e0bcbc3329a4",
-      "dateSource": "asset-update"
-    },
-    "roeterseiland-rec-a": {
-      "updatedAt": "2026-10-14T02:27:26.486Z",
-      "version": "7e2a0a7dd6bdf95d",
-      "dateSource": "asset-update"
-    },
-    "johnny-jordaan-groep": {
-      "updatedAt": "2026-10-14T03:38:27.062Z",
-      "version": "d1d0e32949f7736b",
-      "dateSource": "asset-update"
-    },
-    "johnny-jordaan-groep.lod1": {
-      "updatedAt": "2026-10-14T02:54:28.583Z",
-      "version": "04d685973b4bdbf7",
-      "dateSource": "asset-update"
-    },
-    "theo-thijssen-standbeeld": {
-      "updatedAt": "2026-10-14T02:52:15.133Z",
-      "version": "6faf541ad5ec9cef",
-      "dateSource": "asset-update"
-    },
-    "theo-thijssen-standbeeld.lod1": {
-      "updatedAt": "2026-10-14T02:54:28.617Z",
-      "version": "99d0ba6ada0a40fc",
-      "dateSource": "asset-update"
-    },
-    "carmiggelt-borstbeeld": {
-      "updatedAt": "2026-10-14T02:33:25.586Z",
-      "version": "d1e3023dc9b56c31",
-      "dateSource": "asset-update"
-    },
-    "winkler-prins-monument": {
-      "updatedAt": "2026-10-14T02:32:57.663Z",
-      "version": "dc04963f913b3880",
-      "dateSource": "asset-update"
-    },
-    "winkler-prins-monument.lod1": {
-      "updatedAt": "2026-10-14T02:54:28.497Z",
-      "version": "8236f27a203f801c",
-      "dateSource": "asset-update"
-    },
-    "kinderbrug-meisje-eekhoorns": {
-      "updatedAt": "2026-10-14T03:40:53.482Z",
-      "version": "416e86e34db30383",
-      "dateSource": "asset-update"
-    },
-    "kinderbrug-jongen-konijnen": {
-      "updatedAt": "2026-10-14T03:40:54.501Z",
-      "version": "8d143c4b8ebbaf69",
-      "dateSource": "asset-update"
-    },
-    "gandhi-churchill-laan": {
-      "updatedAt": "2026-10-14T04:54:57.924Z",
-      "version": "42c051d7754d99f5",
-      "dateSource": "asset-update"
-    },
-    "gandhi-churchill-laan.lod1": {
-      "updatedAt": "2026-10-14T04:55:06.673Z",
-      "version": "61d98cdd04bd1810",
-      "dateSource": "asset-update"
-    },
-    "de-schreeuw-oosterpark": {
-      "updatedAt": "2026-10-14T04:56:53.837Z",
-      "version": "efd3183658000f29",
-      "dateSource": "asset-update"
-    },
-    "waterdraagster-bellamyplein": {
-      "updatedAt": "2026-10-14T04:55:00.275Z",
-      "version": "9686e52663e2b64e",
-      "dateSource": "asset-update"
-    },
-    "waterdraagster-bellamyplein.lod1": {
-      "updatedAt": "2026-10-14T04:55:06.681Z",
-      "version": "22e5f635227ed222",
-      "dateSource": "asset-update"
-    },
-    "mama-baranka": {
-      "updatedAt": "2026-10-14T04:52:53.977Z",
-      "version": "e2f64d7ee6cbffa6",
-      "dateSource": "asset-update"
-    },
-    "mama-baranka.lod1": {
-      "updatedAt": "2026-10-14T04:53:42.587Z",
-      "version": "24c26183d26c021a",
-      "dateSource": "asset-update"
-    },
-    "spanjemonument": {
-      "updatedAt": "2026-10-14T04:55:19.521Z",
-      "version": "5dce32739bc8cd46",
-      "dateSource": "asset-update"
-    },
-    "spanjemonument.lod1": {
-      "updatedAt": "2026-10-14T04:55:20.310Z",
-      "version": "b9d35d723a1bd688",
       "dateSource": "asset-update"
     }
   }
