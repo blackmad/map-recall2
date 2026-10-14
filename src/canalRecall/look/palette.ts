@@ -570,14 +570,26 @@ export function cityMeasuredGlassTint(hex: string): string {
   const raw = lifted.map(v => v / (GLASS_TINT_CELL_MEAN / 255)), over = Math.max(1, ...raw.map(v => v / 255));
   return rgbToHex(raw.map(v => Math.min(255, Math.round(v / over))) as RGB);
 }
-/** The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour. */
-export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass'];
+/** Mean of the stone cell (slotCells.ts `paintStoneCanvas`: 228 +- 8 noise) as a 0..1 multiplier. */
+export const STONE_CELL_MEAN = 228 / 255;
+/**
+ * A measured stone colour (`tintSource: 'measured'` on a stone slot: the painted white stucco dressings of the Oud-West
+ * fronts, `palette.stoneMaterial: painted`). `cityStoneTint` floors stone at L 0.62 and mixes it 45 % into the city's
+ * pale sandstone, which drew a measured white paint as a grey (#a5a395 on the Kinkerstraat sheet). The authored hex is
+ * divided per channel by the stone cell mean, so cell x tint lands on it (capped at white).
+ */
+export function cityMeasuredStoneTint(hex: string): string {
+  return rgbToHex(hexToRgb(hex).map(v => Math.min(255, Math.round(v / STONE_CELL_MEAN))) as RGB);
+}
+/** The slots a `measured` tint source applies to: walls (brick, accent) keep their colour, glass its pane colour, painted stone its paint. */
+export const MEASURED_SLOTS: readonly MaterialSlot[] = ['brick', 'accent', 'glass', 'stone'];
 export const isMeasuredTint = (slot: MaterialSlot, source?: TintSource | null) => source === MEASURED_TINT_SOURCE && MEASURED_SLOTS.includes(slot);
 
 /** An authored slot colour mapped into the city palette range. */
 export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | null): string {
   if (source === MEASURED_TINT_SOURCE && (slot === 'brick' || slot === 'accent')) return cityMeasuredWallTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'glass') return cityMeasuredGlassTint(hex);
+  if (source === MEASURED_TINT_SOURCE && slot === 'stone') return cityMeasuredStoneTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);
