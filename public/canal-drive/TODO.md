@@ -735,26 +735,21 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   profile.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
-- **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
-  desktop default-on in the belt: bridge-kit leftovers (the Blauwbrug and
-  BRU0063 hit the 600-tri budget so their arches are 4–5 segments and have
-  no lamps; the Magere Brug railing is sparse at ~9 m posts; the Torensluis'
-  42 m-wide footprint reads oddly from the water; flat-footprint water level
-  is a heuristic, lowest top − 1.8 m; the Melkmeisjesbrug's water polygon
-  stops at the bridge so a quay wall and land strip cross under it, a data
-  fix for the water layer); the belt audit's 18 tram-rail-tops-the-street
-  findings on bridges (BRU0030, BRU0041, BRU0001…; pre-existing, the audit
-  needs `tram` counted as a street surface or the rails lowered); land at
-  Rozengracht corners with no mapped sidewalk; a coarse far ring beyond the
-  2,000 m resident cap (memory, not frame time, is the cost: 23 cells 124 MB
-  at 2,000 m vs 41 cells 204 MB at 3,000 m); slope physics in `game.js` from
-  `riderPose().pitch`; hosting quota for 29.6 MB gz; iPhone ride-perf, the
-  larger ring and the fade on the phone; BRU0077's suspect 1.7 m hump and
-  the five flooded spots in the belt audit. Closed 2026-10-13 evening: the
-  junction stubs and cycle slivers, `area:highway` surfaces, far-ring
-  pop-in, the hard own-ground edge from the air.
-  A separate lane traces the user's "bouncy second route line" at the
-  Kostverlorenvaart: fixed 2026-10-13 (HISTORY, the boat's canvas question band).
+- **Own ground after the 2026-10-13/14 lanes (HISTORY)**: still open
+  before a desktop default-on in the belt: bridge-kit leftovers (the
+  Blauwbrug and BRU0063 hit the 600-tri budget so their arches are 4–5
+  segments and have no lamps; the Magere Brug railing is sparse at ~9 m
+  posts; the Torensluis' 42 m-wide footprint reads oddly from the water;
+  flat-footprint water level is a heuristic, lowest top − 1.8 m); slope
+  physics in `game.js` from `riderPose().pitch`; hosting quota for
+  29.6 MB gz; iPhone ride-perf, the larger ring and the fade on the phone;
+  BRU0077's suspect 1.7 m hump and the five flooded spots in the belt
+  audit. Closed 2026-10-14 night (HISTORY "belt audit clean"): the 18
+  tram-rail findings, the Melkmeisjesbrug water, Rozengracht corners, the
+  far ring. Closed 2026-10-13 evening: the junction stubs and cycle
+  slivers, `area:highway` surfaces, far-ring pop-in, the hard own-ground
+  edge from the air; the "bouncy second route line" at the
+  Kostverlorenvaart (the boat's canvas question band).
 - **`?bagTiles=1` default flip**: recommended by the default-on review
   (perf-neutral, `check:covers --strict` green, 0 without footprint);
   prerequisites done except `check:canal` on the flipped default and the
