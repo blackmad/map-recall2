@@ -115,7 +115,7 @@ const rootProjection = rootCamera.projectionMatrix.clone().multiply(rootCamera.m
 const facade = new THREE.Vector3(0, -11, 12).applyMatrix4(rootProjection);
 const px = (facade.x + 1) * 400, py = (1 - facade.y) * 300;
 const picker: any = Object.create(ThreeBuildings.prototype);
-Object.assign(picker, { visible: true, ready: true, THREE, look: 'photo', hidden: new Set(), pickIndex: new WeakMap(),
+Object.assign(picker, { visible: true, ready: true, THREE, look: 'photo', hidden: new Set(), pickIndex: new WeakMap(), pickGrid: new WeakMap(),
   map: { unproject: () => ({ lng: 4.9, lat: 52.37 }) }, camera: { projectionMatrix: rootProjection },
   chunks: new Map([['wall', { mesh: live, source: [installed], ranges: new Map(built.ranges.map(r => [r.id, { start: r.start, count: r.count }])) }]]) });
 (uploaded.getAttribute('position') as any).array = null;
