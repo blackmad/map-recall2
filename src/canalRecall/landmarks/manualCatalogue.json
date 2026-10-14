@@ -37149,6 +37149,9 @@
     "assetKind": "memorial",
     "materialOverrides": {
       "bronze": "#2e312d",
+      "dark": "#141715",
+      "ochre": "#5c6556",
+      "slate": "#4b554a",
       "concrete": "#8e8f8c",
       "sandstone": "#8a3a36",
       "white": "#e2dccb"

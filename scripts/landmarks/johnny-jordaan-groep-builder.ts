@@ -1,7 +1,9 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {memorialFrame} from './memorial-frame';
-import {bust, headOnFigure} from './bust-kit';
+import {bust, headOnFigure, portraitHead} from './bust-kit';
+import {dressFigure, lump} from './clothing-kit';
+import {accordion, bassNeckPoint, doubleBass} from './instrument-kit';
 import {letterBoxes, POSES} from './figure-kit';
 
 /**
@@ -56,24 +58,24 @@ export function buildJohnnyJordaanGroep(_w: number, _d: number, b: BuildingTools
     box(bx0, top, bz0, 1.12, 0.06, 0.88, BRONZE);
     const y0 = top + 0.06;
     const pose = POSES.standing();
-    pose.height = 1.8; pose.stout = 1.25; pose.chest = 1.3; pose.skirt = {len: 0.25, flare: 1.15};
-    pose.arms = {l: {pitch: 1.55, roll: 0.15, bend: 0.5}, r: {pitch: 0.7, roll: -0.2, bend: 1.2}};   // left hand up the neck, right hand low on the strings
-    pose.head = {pitch: 0.12, yaw: 0.25};
-    const bass = figure(pose, bx0 + 0.05, y0, bz0 - 0.1, BRONZE);
-    headOnFigure(fr0, bass, {sex: 'm', hair: 'wild', moustache: true, colour: BRONZE, scale: 1.1});
-    // the bass: lower and upper bouts, waist, neck and scroll, strings side
-    ball(bx0 - 0.28, y0 + 0.62, bz0 + 0.2, 0.27, 0.34, 0.095, BRONZE, 12);
-    ball(bx0 - 0.28, y0 + 1.1, bz0 + 0.2, 0.2, 0.26, 0.09, BRONZE, 12);
-    limb([bx0 - 0.28, y0 + 1.25, bz0 + 0.28], [bx0 - 0.22, y0 + 1.95, bz0 + 0.26], 0.035, 0.03, BRONZE, 6);
-    ball(bx0 - 0.215, y0 + 2.02, bz0 + 0.26, 0.045, 0.065, 0.045, BRONZE, 6);
-    box(bx0 - 0.28, y0, bz0 + 0.2, 0.04, 0.04, 0.05, BRONZE);
+    pose.height = 1.8; pose.lean = 0.1; pose.skirt = {len: 0.2, flare: 1.1};
+    pose.legs = {l: {pitch: 0.12, roll: 0.05}, r: {pitch: -0.1, roll: 0.1, bend: 0.2}};
+    pose.arms = {l: {pitch: 1.7, roll: 1.1, bend: 1.7}, r: {pitch: 0.1, roll: 0.4, bend: 1.0}};   // left hand up the neck at the face, right hand low on the strings
+    pose.head = {pitch: 0.1, yaw: 0.25};
+    const man = figure(pose, bx0 + 0.05, y0, bz0 - 0.1, BRONZE);
+    dressFigure(fr0, man, {height: 1.8, colour: BRONZE, jacket: 0.2, sleeve: 1.05, trouser: 1.0});
+    headOnFigure(fr0, man, {sex: 'm', hair: 'wild', moustache: true, colour: BRONZE, scale: 1.1});
+    // the bass: body with waist, neck, pegbox and scroll; the fingerboard passes through his raised left hand
+    const bo = {lean: 0.08, side: -0.1, scale: 0.95};
+    const grip = bassNeckPoint(new T.Vector3(0, 0, 0), bo, 1.45), hand = man.joints.handL;
+    doubleBass(fr0, new T.Vector3(hand.x - grip.x, y0, hand.z - grip.z + 0.02), {...bo, colour: BRONZE});
   }
   // ---- 2. Tante Leen: bust on a pillar
   plinth(-1.65, -0.1, 0.45, 0.45, 0.9, false);
-  bust(memorialFrame(b, FACING), {x: -1.65, y: 0.9, z: -0.1, scale: 1.2, sex: 'f', hair: 'wave', colour: BRONZE});
+  bust(memorialFrame(b, FACING), {x: -1.65, y: 0.9, z: -0.1, scale: 1.2, sex: 'f', hair: 'wave', detail: true, colour: BRONZE});
   // ---- 3. Johnny Jordaan: bust on a pillar (origin)
   plinth(0, 0, 0.45, 0.45, 0.9, false);
-  bust(memorialFrame(b, FACING), {x: 0, y: 0.9, z: 0, scale: 1.2, sex: 'm', hair: 'short', glasses: true, bow: true, colour: BRONZE});
+  bust(memorialFrame(b, FACING), {x: 0, y: 0.9, z: 0, scale: 1.2, sex: 'm', hair: 'short', glasses: true, bow: true, detail: true, colour: BRONZE});
   // the carved names on the pillar fronts
   const fr = memorialFrame(b, FACING);
   fr.lettering('TANTE LEEN', 0.05, 0.36, -1.65, 0.5, -0.1 + 0.225 - 0.003, 'front', 'gold', 0.012);
@@ -107,19 +109,41 @@ export function buildJohnnyJordaanGroep(_w: number, _d: number, b: BuildingTools
   {
     const cx = 3.3, cz = 0.75, top = 0.95;
     plinth(cx, cz, 1.15, 0.9, top);
-    // the man: half-length, shoulders turned a little towards the woman, in a pullover; a stout bust-like torso
     const frame = memorialFrame(b, FACING);
-    frame.box(cx - 0.18, top, cz + 0.05, 0.62, 0.34, 0.4, BRONZE);                   // waist and lap block
-    bust(frame, {x: cx - 0.18, y: top + 0.28, z: cz + 0.05, scale: 1.3, sex: 'm', hair: 'bald', glasses: true, collar: true, turn: -0.2, colour: BRONZE});
-    // the woman behind and above: torso column under a bust
-    ball(cx + 0.28, top + 0.9, cz - 0.28, 0.2, 0.55, 0.14, BRONZE, 10);
-    bust(frame, {x: cx + 0.28, y: top + 0.72, z: cz - 0.28, scale: 1.1, sex: 'f', hair: 'wave', turn: -0.15, colour: BRONZE});
-    // the accordion held at the man's chest, bellows towards the woman's side
-    const ax = cx + 0.22, ay = top + 0.05, az = cz + 0.3;
-    box(ax - 0.16, ay, az, 0.1, 0.5, 0.2, BRONZE); box(ax + 0.16, ay, az, 0.1, 0.5, 0.2, BRONZE);
-    for (let i = 0; i < 5; i++) box(ax - 0.1 + i * 0.05, ay + 0.02 + (i % 2) * 0.01, az, 0.035, 0.46 - (i % 2) * 0.03, 0.18 - (i % 2) * 0.02, BRONZE);
-    // forearms from the man's shoulders to the accordion
-    limb([cx - 0.18 + 0.32, top + 0.62, cz + 0.08], [ax - 0.15, ay + 0.3, az - 0.04], 0.07, 0.05, BRONZE, 7);
-    limb([cx - 0.18 - 0.32, top + 0.6, cz + 0.08], [ax + 0.12, ay + 0.2, az + 0.08], 0.07, 0.05, BRONZE, 7);
+    const P = (x: number, y: number, z: number) => new T.Vector3(x, y, z);
+    // the man: half-length, a heavy pullover, broad sloping shoulders, head turned a little towards the woman
+    const mx = cx - 0.2, mz = cz + 0.1;
+    lump(frame, P(mx, top, mz), P(mx, top + 0.62, mz), 0.3, 0.27, BRONZE, {zs: 0.66, seg: 12});
+    frame.ball(mx, top + 0.6, mz, 0.34, 0.075, 0.18, BRONZE, 12);
+    lump(frame, P(mx, top + 0.62, mz), P(mx, top + 0.74, mz + 0.01), 0.09, 0.08, BRONZE, {seg: 8});
+    portraitHead(frame, {x: mx, y: top + 0.88, z: mz + 0.02, turn: -0.25, scale: 1.3, sex: 'm', hair: 'bald', glasses: true, colour: BRONZE});
+    // the accordion stands upright on his left (viewer's right), keyboard up, held by both hands
+    const ac = P(cx + 0.22, top + 0.4, cz + 0.32);
+    accordion(frame, ac, {width: 0.56, height: 0.34, depth: 0.22, roll: Math.PI / 2, folds: 7, colour: BRONZE});
+    // arms: deltoids, sleeves bent at the elbows, hands on the accordion (right hand at its middle, left behind its end)
+    for (const [sx, hand] of [[-1, P(cx + 0.08, top + 0.36, cz + 0.4)], [1, P(cx + 0.42, top + 0.5, cz + 0.36)]] as [number, T.Vector3][]) {
+      const sh = P(mx + sx * 0.3, top + 0.56, mz), el = P(mx + sx * 0.36, top + 0.25, mz + 0.13);
+      frame.ball(sh.x, sh.y, sh.z, 0.095, 0.1, 0.09, BRONZE, 8);
+      lump(frame, sh, el, 0.085, 0.07, BRONZE, {seg: 8, cap: true});
+      lump(frame, el, hand, 0.07, 0.045, BRONZE, {seg: 8});
+      frame.ball(hand.x, hand.y, hand.z, 0.05, 0.045, 0.06, BRONZE, 7);
+    }
+    // the woman behind and above him: padded jacket, long neck, curled hair, a microphone raised to her chin
+    const wx = cx + 0.32, wz = cz - 0.3;
+    lump(frame, P(wx, top, wz), P(wx, top + 1.0, wz), 0.26, 0.23, BRONZE, {zs: 0.62, seg: 12});
+    frame.ball(wx, top + 0.97, wz, 0.32, 0.06, 0.15, BRONZE, 12);                                 // squared shoulders of the jacket
+    lump(frame, P(wx, top + 0.99, wz), P(wx, top + 1.1, wz + 0.01), 0.07, 0.065, BRONZE, {seg: 8});
+    portraitHead(frame, {x: wx, y: top + 1.25, z: wz + 0.02, turn: -0.3, scale: 1.18, sex: 'f', hair: 'wave', colour: BRONZE});
+    {
+      const sh = P(wx + 0.28, top + 0.9, wz), el = P(wx + 0.34, top + 0.6, wz + 0.1), mic = P(wx + 0.06, top + 1.05, wz + 0.2);
+      frame.ball(sh.x, sh.y, sh.z, 0.08, 0.085, 0.075, BRONZE, 8);
+      lump(frame, sh, el, 0.07, 0.06, BRONZE, {seg: 8, cap: true});
+      lump(frame, el, mic, 0.058, 0.04, BRONZE, {seg: 8});
+      frame.ball(mic.x, mic.y, mic.z, 0.045, 0.045, 0.05, BRONZE, 7);
+      lump(frame, P(mic.x, mic.y - 0.02, mic.z + 0.02), P(mic.x - 0.01, mic.y + 0.13, mic.z + 0.04), 0.017, 0.022, BRONZE, {seg: 6, cap: true});   // the microphone
+      const sh2 = P(wx - 0.28, top + 0.9, wz), el2 = P(wx - 0.3, top + 0.55, wz + 0.04);
+      frame.ball(sh2.x, sh2.y, sh2.z, 0.08, 0.085, 0.075, BRONZE, 8);
+      lump(frame, sh2, el2, 0.07, 0.06, BRONZE, {seg: 8, cap: true});
+    }
   }
 }
