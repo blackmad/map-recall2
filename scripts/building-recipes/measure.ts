@@ -16,6 +16,15 @@
  *   `measured: {date, groups}` and the crops as sources. Groups measured before whose `hand` keeps a palette colour
  *   (hand-sampled from the crops) stay in `measured.groups` when this run has no evidence for them.
  * Storey counts are reported, never written (the fit's storey lines come from 3DBAG eaves; the hand count stays).
+ *
+ * Known limits, the next measurement lane's targets (reconcile review of the five large pilots, 2026-10-14):
+ *   - glazing undercount: white-framed and barred panes are classed as trim, so photo glazing reads 0.12-0.34 where the
+ *     overlay shows the windows lining up (Houthavenkade 26 walls[1], [3], [4]; Waagdragerhof walls[2], [3]); the
+ *     refinement loop below then shrinks windows to slits, so those groups keep their measured shape by hand.
+ *   - dark brick reads as paint: under overcast or winter light the wall cluster lands on mortar, shadow, frames or window
+ *     surrounds (#262120, #34373a, #464746 on Waagdragerhof), family "paint"; and a mixed front (Wibautstraat 78 walls[0]:
+ *     light spandrels between dark column faces, gain 1 with no light trim) averages darker than its spandrels.
+ *     Those groups carry a hand colour with a note saying why.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
