@@ -1720,5 +1720,23 @@
     "buildVersion": 2,
     "bytes": 104240,
     "triangles": 6514
+  },
+  "johnny-jordaan-groep": {
+    "sourceHash": "46ed1052706b578e",
+    "buildVersion": 2,
+    "bytes": 38284,
+    "triangles": 1820
+  },
+  "theo-thijssen-standbeeld": {
+    "sourceHash": "6faf541ad5ec9cef",
+    "buildVersion": 2,
+    "bytes": 27932,
+    "triangles": 1314
+  },
+  "winkler-prins-monument": {
+    "sourceHash": "dc04963f913b3880",
+    "buildVersion": 2,
+    "bytes": 16316,
+    "triangles": 720
   }
 }

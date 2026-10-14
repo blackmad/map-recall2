@@ -1,0 +1,112 @@
+{
+ "schemaVersion": 1,
+ "id": "theo-thijssen-standbeeld",
+ "signature": [
+  "tt-master",
+  "tt-boy",
+  "tt-desk",
+  "tt-block"
+ ],
+ "walls": [
+  {
+   "tag": "n-000",
+   "bearing": 0,
+   "lengthM": 1.6,
+   "evidence": "photo",
+   "panoId": "commons:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
+   "capturedAt": null,
+   "note": "Front: Commons photos show the block with its lettering, the desk and both figures; panoramas of 2022-2023 see the plain back (the statue is blurred in the public publisher).",
+   "items": [
+    {
+     "id": "tt-master",
+     "kind": "sculpture",
+     "where": "Theo Thijssen in a rough jacket and tie, perched on the desk end, left foot on the block, right leg stretched forward, leaning to the boy",
+     "approxSizeM": [
+      0.7,
+      1.7
+     ],
+     "plan": "simplified",
+     "how": "builder: figure kit seated-standing pose with a stout chest, a hair lump on the head; jacket folds and face simplified",
+     "seenIn": "commons:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg"
+    },
+    {
+     "id": "tt-boy",
+     "kind": "sculpture",
+     "where": "schoolboy seated at the desk, bowed over his writing, legs crossed under it",
+     "approxSizeM": [
+      0.5,
+      1
+     ],
+     "plan": "simplified",
+     "how": "builder: child-scale figure kit seated pose, leaning forward over the desk, legs under it",
+     "seenIn": "commons:2023_Theo_Thijssen_door_Bayens_Asd_1_.jpg"
+    },
+    {
+     "id": "tt-desk",
+     "kind": "other",
+     "where": "bronze school desk: slab top on four iron legs with a base frame",
+     "approxSizeM": [
+      1.15,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "builder: slab, apron, four rods and a base sheet",
+     "seenIn": "commons:2023_Theo_Thijssen_door_Bayens_Asd_1_.jpg"
+    },
+    {
+     "id": "tt-block",
+     "kind": "lettering",
+     "where": "dark basalt block cut THEO THIJSSEN 1879 - 1943 SCHRIJVER EN SCHOOLMEESTER",
+     "approxSizeM": [
+      1.6,
+      1.1
+     ],
+     "plan": "modelled",
+     "how": "builder: box with four lines of raised stroke letters in lighter grey",
+     "seenIn": "commons:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg"
+    }
+   ],
+   "centre": [
+    4.8874628,
+    52.3806423
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-180",
+   "bearing": 180,
+   "lengthM": 1.6,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back: plain block, rear of the figures from the 2022 panorama; simplified.",
+   "items": [],
+   "centre": [
+    4.8874628,
+    52.3806423
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Lindengracht, Theo Thijssen beeld foto 1/2",
+   "url": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
+   "licence": "Public domain (Alf van Beem)"
+  },
+  {
+   "name": "Wikimedia Commons: 2023 Theo Thijssen door Bayens, Asd (1-5)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(1).jpg",
+   "licence": "CC0 (Ceescamel)"
+  },
+  {
+   "name": "OpenStreetMap node 250624675",
+   "url": "https://www.openstreetmap.org/node/250624675",
+   "licence": "ODbL"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

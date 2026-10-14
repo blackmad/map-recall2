@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "id": "winkler-prins-monument",
+ "signature": [
+  "wp-discs"
+ ],
+ "walls": [
+  {
+   "tag": "all-000",
+   "bearing": 0,
+   "lengthM": 0.8,
+   "evidence": "photo",
+   "panoId": "commons:Monument_Anthony_Winkler_Prins_Andr_Volten_Frederiksplein.JPG",
+   "capturedAt": null,
+   "note": "The column is the same from every side: thick discs at the foot, thinner discs above, a cap disc.",
+   "items": [
+    {
+     "id": "wp-discs",
+     "kind": "sculpture",
+     "where": "stack of stainless-steel discs on a thinner core, thick at the foot, thin above, with glass-like gaps in the upper part",
+     "approxSizeM": [
+      0.72,
+      11
+     ],
+     "plan": "simplified",
+     "how": "builder: 62 cylinders on a continuous dark core; the glass inserts are drawn as dark core gaps",
+     "seenIn": "commons:Detail_Monument_Anthony_Winkler_Prins_Andr_Volten_Frederiksplein.JPG"
+    }
+   ],
+   "centre": [
+    4.9001164,
+    52.3606387
+   ],
+   "checked": true
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Monument Anthony Winkler Prins Andre Volten Frederiksplein",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG",
+   "licence": "CC BY-SA 3.0 (Brbbl)"
+  },
+  {
+   "name": "Wikimedia Commons: Detail Monument Anthony Winkler Prins",
+   "url": "https://commons.wikimedia.org/wiki/File:Detail_Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG",
+   "licence": "CC BY-SA 4.0 (Brbbl)"
+  },
+  {
+   "name": "OpenStreetMap node 1310554563",
+   "url": "https://www.openstreetmap.org/node/1310554563",
+   "licence": "ODbL"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## Landmark queue, batch 9: the blurred statues from Commons (2026-10-14, night)
+
+Lane `landmarks/queue-9-20261014`. Six models from licensed Wikimedia
+Commons photos (CC0, CC BY 4.0, CC BY-SA 3.0/4.0, public domain; each
+recorded in the catalogue entry, spec and `artifacts/landmark-refs/*/
+licences.json`) because the panoramas blur these statues: the Johnny
+Jordaan group (11.5k tris: Tante Leen and Johnny Jordaan busts on granite
+pillars with names and years, the bass player, Johnny Meijer seated at
+his accordion, the couple with an accordion, the semicircular bench with
+raised JOHNNY JORDAAN PLEIN letters), Theo Thijssen on the Lindengracht
+(4.9k: master perched on the bronze school desk, the bowed schoolboy, the
+basalt block lettered THEO / THIJSSEN / 1879 - 1943 / SCHRIJVER EN
+SCHOOLMEESTER), the Carmiggelt bust (1.2k; in the Weteringplantsoen per
+OSM and the 1988 Anefo photos, not the Kloveniersburgwal as the brief
+said), André Volten's Winkler Prins monument on the Frederiksplein (4.8k:
+a column of 62 stainless discs, not a figure) and Hildo Krop's Kinderbrug
+children (girl with dove and squirrels 2.0k, boy with rabbits 1.3k) as
+two models because the piers stand 24 m apart and one model failed
+`far-outside`. New `bust-kit.ts` (`bust`, `portraitHead`,
+`headOnFigure`): every bust and head has neck, shoulders, brow, nose,
+ears and hair; the lane's own gallery review fixed Meijer's pointed head
+and the Kinderbrug torsos. All pass `audit:glb` at slots 100 %. Facings:
+Jordaan 160 ± 20 from a panorama, Thijssen 0 ± 40 (weakest), Carmiggelt
+150 ± 45 (estimate), Kinderbrug 180 from the boy's back in a panorama.
+Left: the couple and bass player are blocky, Tante Leen has no face
+features, the squirrels read as a pile of spheres, the two north-end
+Kinderbrug groups have no usable open photo.
+
+
 ## layeredKit is the default; parts follow leaning and bent walls (2026-10-14, night)
 
 Lane `domain/layered-default-20261014`. `largeCompile`, `fitLarge` and
