@@ -29,7 +29,7 @@ const {facts, shell} = largeShellFacts({shellRepair: repair, footprint} as Large
 if (shell) console.log(`shell repair: open ${shell.openBeforeM} -> ${shell.openAfterM} m (caps ${shell.patches.cap}, strips ${shell.patches.strip}, seams ${shell.patches.seam}); IoU ${shell.iouBefore} -> ${shell.iouAfter}`);
 const {set} = largeSurfaceSet(facts);
 // shellRepair: panels as the fit builds them (only truly coplanar walls merge), ignoring wall groups
-const strict = repair ? strictMergeClasses(set.walls) : null;
+const strict = repair || footprint === 'bag' ? strictMergeClasses(set.walls) : null;
 const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true, ...(strict ? {mergeKey: (wi: number) => strict[wi]} : {})});
 const compass = (b: number) => ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(b / 45) % 8];
 const ranges = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b), out: string[] = []; for (let i = 0; i < s.length;) { let j = i; while (j + 1 < s.length && s[j + 1] === s[j] + 1) j++; out.push(j > i ? `${s[i]}-${s[j]}` : `${s[i]}`); i = j + 1; } return out.join(','); };

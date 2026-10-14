@@ -204,7 +204,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   }));
   // Group per surface-set wall; coplanar walls of different groups stay separate panels.
   // shellRepair: panels merge only truly coplanar walls (strictMergeClasses), so a dissolved face cannot stray off a roof edge
-  const strict = intent.shellRepair ? strictMergeClasses(set.walls) : null;
+  const strict = intent.shellRepair || intent.footprint === 'bag' ? strictMergeClasses(set.walls) : null;
   const wallGroup = set.walls.map((w, wi) => strict ? ((groupOfSurface.get(w.surface!) ?? -1) + 1) * 100000 + strict[wi] : groupOfSurface.get(w.surface!) ?? -1);
   const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true, mergeKey: wi => wallGroup[wi]});
   // Panel -> group: the group holding most of its surfaces (by area), ties to the lower group.
