@@ -24307,10 +24307,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012253728",
       "name": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
-      "hash": "5d373f9b64a3da532139a1608dc0a4b56dec318f93f13ba1230284f5a80643bd",
-      "sha256": "5d373f9b64a3da532139a1608dc0a4b56dec318f93f13ba1230284f5a80643bd",
-      "bytes": 135816,
-      "triangles": 1746,
+      "hash": "ba0abac75e797f0b8db7959e7d34f724905a8da5d3f3ef76ba309f889d54c28d",
+      "sha256": "ba0abac75e797f0b8db7959e7d34f724905a8da5d3f3ef76ba309f889d54c28d",
+      "bytes": 152112,
+      "triangles": 1986,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -24487,7 +24487,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253728",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T12:55:29.980Z",
+      "updatedAt": "2026-10-14T03:12:24.745Z",
       "bagYear": 2022
     },
     {
