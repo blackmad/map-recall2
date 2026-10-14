@@ -35741,10 +35741,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012202277",
       "name": "Centrale Groothandelsmarkt 190, Amsterdam (Food Center, Jan van Galenstraat): 1935 wholesale market hall with loading docks (Miedema AGF, Gebr. de Mooij)",
-      "hash": "67e6266b1607f2921326e4d516fdbf2b0883546819e2bcdd7b38c4df4ec37daa",
-      "sha256": "67e6266b1607f2921326e4d516fdbf2b0883546819e2bcdd7b38c4df4ec37daa",
-      "bytes": 231240,
-      "triangles": 2916,
+      "hash": "2aff366b4715ec2dd51ba5f6f947045d2373d7c990df63a4afc9b4960f511560",
+      "sha256": "2aff366b4715ec2dd51ba5f6f947045d2373d7c990df63a4afc9b4960f511560",
+      "bytes": 300824,
+      "triangles": 3808,
       "materials": 14,
       "textures": 0,
       "scale": 1,
@@ -35961,7 +35961,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202277",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:40:57.424Z"
+      "updatedAt": "2026-10-14T03:05:24.280Z"
     },
     {
       "id": "ordinary-0363100012236788",
