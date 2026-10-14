@@ -1,197 +1,200 @@
 {
- "schemaVersion": 1,
- "kind": "large",
- "id": "singel-457-165086",
- "pandId": "0363100012165086",
- "address": "Singel 457 / Kalverstraat (Kalverpassage), Amsterdam-Centrum: red-brick Singel range with white stone bands and a stepped centre gable, a pale stone curved corner block, and the grey-brick Kalverpassage entrance block on Kalverstraat",
- "sources": [
-  {
-   "id": "pano-2017-07-06-w01",
-   "kind": "street-panorama",
-   "capturedAt": "2017-07-06",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000214/",
-   "image": "staging/pand-reference-walls/0363100012165086/w01-192.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "singel-457-165086",
+  "pandId": "0363100012165086",
+  "address": "Singel 457 / Kalverstraat (Kalverpassage), Amsterdam-Centrum: red-brick Singel range with white stone bands and a stepped centre gable, a pale stone curved corner block, and the grey-brick Kalverpassage entrance block on Kalverstraat",
+  "sources": [
+    {
+      "id": "pano-2017-07-06-w01",
+      "kind": "street-panorama",
+      "capturedAt": "2017-07-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000214/",
+      "image": "staging/pand-reference-walls/0363100012165086/w01-192.jpg",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2021-03-11-w02",
+      "kind": "street-panorama",
+      "capturedAt": "2021-03-11",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002037_pano_0000_000568/",
+      "image": "staging/pand-reference-walls/0363100012165086/w02-46.jpg",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2017-07-06-w03",
+      "kind": "street-panorama",
+      "capturedAt": "2017-07-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000217/",
+      "image": "staging/pand-reference-walls/0363100012165086/w03-190.jpg",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2017-07-06-w04",
+      "kind": "street-panorama",
+      "capturedAt": "2017-07-06",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000212/",
+      "image": "staging/pand-reference-walls/0363100012165086/w04-192.jpg",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2019-01-15-w05",
+      "kind": "street-panorama",
+      "capturedAt": "2019-01-15",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001054_pano_0000_000719/",
+      "image": "staging/pand-reference-walls/0363100012165086/w05-45.jpg",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        340,
+        238
+      ],
+      "street": "Singel",
+      "system": "brick-bay-grid",
+      "ground": "system",
+      "windows": "cross",
+      "deepBars": true,
+      "stringCourses": true,
+      "arches": {
+        "windows": "segmental",
+        "band": "brick"
+      },
+      "palette": {
+        "brick": "#8a3e2e",
+        "frame": "#efece4",
+        "stone": "#e4dccb"
+      },
+      "storeys": 5,
+      "blankStoreys": [
+        4
+      ],
+      "baysPerStorey": 10,
+      "entrance": {
+        "bay": 5,
+        "portal": true
+      }
+    },
+    {
+      "wallSurfaces": [
+        19
+      ],
+      "street": "Singel",
+      "system": "brick-bay-grid",
+      "ground": "system",
+      "windows": "cross",
+      "deepBars": true,
+      "stringCourses": true,
+      "alignWith": 0,
+      "baysPerStorey": 2,
+      "blankStoreys": [
+        4
+      ],
+      "arches": {
+        "windows": "segmental",
+        "band": "brick"
+      },
+      "palette": {
+        "brick": "#8a3e2e",
+        "frame": "#efece4",
+        "stone": "#e4dccb"
+      }
+    },
+    {
+      "wallSurfaces": [
+        331,
+        379,
+        51,
+        542,
+        44,
+        52,
+        298,
+        213,
+        30,
+        25,
+        32
+      ],
+      "street": "Singel",
+      "system": "brick-bay-grid",
+      "storeys": 5,
+      "baysPerStorey": 4,
+      "ground": "plinth-shopfronts",
+      "windows": "plain",
+      "wallMaterial": "stone",
+      "deepBars": true,
+      "stringCourses": true,
+      "balconies": {
+        "storeys": [
+          3,
+          4
+        ],
+        "rail": "glass"
+      },
+      "palette": {
+        "brick": "#cfc7b6",
+        "frame": "#3a3a3a",
+        "stone": "#cfc7b6"
+      },
+      "curve": true,
+      "sills": false
+    },
+    {
+      "wallSurfaces": [
+        46,
+        208,
+        328
+      ],
+      "street": "Kalverstraat",
+      "system": "brick-bay-grid",
+      "storeys": 6,
+      "baysPerStorey": 6,
+      "ground": "glazed",
+      "blankStoreys": [
+        1
+      ],
+      "windows": "two-light",
+      "deepBars": true,
+      "balconies": {
+        "storeys": [
+          3
+        ],
+        "rail": "glass"
+      },
+      "signage": {
+        "text": "KALVERPASSAGE",
+        "colour": "#d8c8a0",
+        "mount": "wall"
+      },
+      "palette": {
+        "brick": "#6e645a",
+        "frame": "#3a3a3a",
+        "stone": "#c8c0b4"
+      },
+      "sills": false
+    }
+  ],
+  "otherWalls": "blank",
+  "roof": {
+    "material": "zinc"
   },
-  {
-   "id": "pano-2021-03-11-w02",
-   "kind": "street-panorama",
-   "capturedAt": "2021-03-11",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002037_pano_0000_000568/",
-   "image": "staging/pand-reference-walls/0363100012165086/w02-46.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2017-07-06-w03",
-   "kind": "street-panorama",
-   "capturedAt": "2017-07-06",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000217/",
-   "image": "staging/pand-reference-walls/0363100012165086/w03-190.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2017-07-06-w04",
-   "kind": "street-panorama",
-   "capturedAt": "2017-07-06",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000212/",
-   "image": "staging/pand-reference-walls/0363100012165086/w04-192.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2019-01-15-w05",
-   "kind": "street-panorama",
-   "capturedAt": "2019-01-15",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001054_pano_0000_000719/",
-   "image": "staging/pand-reference-walls/0363100012165086/w05-45.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  }
- ],
- "walls": [
-  {
-   "wallSurfaces": [
-    340,
-    238
-   ],
-   "street": "Singel",
-   "system": "brick-bay-grid",
-   "ground": "system",
-   "windows": "cross",
-   "deepBars": true,
-   "stringCourses": true,
-   "arches": {
-    "windows": "segmental",
-    "band": "brick"
-   },
-   "palette": {
+  "palette": {
     "brick": "#8a3e2e",
     "frame": "#efece4",
+    "door": "#2a2a2a",
     "stone": "#e4dccb"
-   },
-   "storeys": 5,
-   "blankStoreys": [
-    4
-   ],
-   "baysPerStorey": 10,
-   "entrance": {
-    "bay": 5,
-    "portal": true
-   }
   },
-  {
-   "wallSurfaces": [
-    19
-   ],
-   "street": "Singel",
-   "system": "brick-bay-grid",
-   "ground": "system",
-   "windows": "cross",
-   "deepBars": true,
-   "stringCourses": true,
-   "alignWith": 0,
-   "baysPerStorey": 2,
-   "blankStoreys": [
-    4
-   ],
-   "arches": {
-    "windows": "segmental",
-    "band": "brick"
-   },
-   "palette": {
-    "brick": "#8a3e2e",
-    "frame": "#efece4",
-    "stone": "#e4dccb"
-   }
-  },
-  {
-   "wallSurfaces": [
-    331,
-    379,
-    51,
-    542,
-    44,
-    52,
-    298,
-    213,
-    30,
-    25,
-    32
-   ],
-   "street": "Singel",
-   "system": "brick-bay-grid",
-   "storeys": 5,
-   "baysPerStorey": 4,
-   "ground": "plinth-shopfronts",
-   "windows": "plain",
-   "wallMaterial": "stone",
-   "deepBars": true,
-   "stringCourses": true,
-   "balconies": {
-    "storeys": [
-     3,
-     4
-    ],
-    "rail": "glass"
-   },
-   "palette": {
-    "brick": "#cfc7b6",
-    "frame": "#3a3a3a",
-    "stone": "#cfc7b6"
-   },
-   "curve": true
-  },
-  {
-   "wallSurfaces": [
-    46,
-    208,
-    328
-   ],
-   "street": "Kalverstraat",
-   "system": "brick-bay-grid",
-   "storeys": 6,
-   "baysPerStorey": 6,
-   "ground": "glazed",
-   "blankStoreys": [
-    1
-   ],
-   "windows": "two-light",
-   "deepBars": true,
-   "balconies": {
-    "storeys": [
-     3
-    ],
-    "rail": "glass"
-   },
-   "signage": {
-    "text": "KALVERPASSAGE",
-    "colour": "#d8c8a0",
-    "mount": "wall"
-   },
-   "palette": {
-    "brick": "#6e645a",
-    "frame": "#3a3a3a",
-    "stone": "#c8c0b4"
-   }
-  }
- ],
- "otherWalls": "blank",
- "roof": {
-  "material": "zinc"
- },
- "palette": {
-  "brick": "#8a3e2e",
-  "frame": "#efece4",
-  "door": "#2a2a2a",
-  "stone": "#e4dccb"
- },
- "closedBands": true,
- "layeredKit": true,
- "shellRepair": true,
- "notes": [
-  "Singel 457 (BAG, built 1997) is the Kalverpassage block between Singel and Kalverstraat: a restored red-brick range on the Singel with two stepped gables and a rooftop colonnade, a pale stone curved corner block, and a grey-brick entrance block on Kalverstraat over the glazed passage. 546 3DBAG wall surfaces. The LoD2.2 shell has 40.7 m of open edge: a 7-8 m wall spike at the Singel corner, a missing step wall under the rooftop pavilion and two short gaps. shellRepair closes it (2 spikes clamped, 3 strips, 0.1 m left).",
-  "walls[0] = surfaces 340 + 238 (w01-192): the colonnade run and the east stepped gable of the red-brick Singel range. 3DBAG models the rooftop colonnade as solid wall to 17.4 m, so the range is drawn as 5 storeys with the top one blank (the colonnade zone). That gives 4 rows of white-framed cross windows under brick segmental arches with white stone bands, and the arched passage portal (KO) in bay 5. The gable takes the storey lines above (one window). Surfaces 532 and 123 at the east end stay blank: with them the 3DBAG eaves gate reads the roof behind them (14.7 m) and fails.",
-  "walls[1] = surface 19 (w04-192): the colonnade run west of the west gable, on walls[0]'s storey lines. The west stepped gable (296) and surface 115 are blank. With them in a group, the eaves gate reads the gable's mono-pitch roof from 14.4 m against a 16.4-17.2 m wall top and fails.",
-  "walls[2] = panels 277, 308, 50, 43 and the curve facets 186/29/24/31 (w03-190): the curved pale stone corner block. It has shop windows on the ground, a tall first storey and glass-railed balconies on the upper storeys, with one bay rhythm round the curve.",
-  "walls[3] = panel 45 (w02-46): the Kalverpassage entrance block on Kalverstraat in grey-brown brick. It has a glazed passage ground with a blank band over it, a glass-railed balcony run, and the vertical KALVERPASSAGE sign as wall lettering. 6 bays for the photographed 7 (triangle budget).",
-  "Simplified or not drawn: the Amsterdam arms over the west door, the cartouches and gable finials, the pergola and the glass pavilion roofs (the 3DBAG roof carries their mass), and the lattice ceiling and round piers of the passage. The dark glass corner on Kalverstraat (w05-45, 10 m) and the court walls are blank (otherWalls)."
- ]
+  "closedBands": true,
+  "layeredKit": true,
+  "shellRepair": true,
+  "notes": [
+    "Singel 457 (BAG, built 1997) is the Kalverpassage block between Singel and Kalverstraat: a restored red-brick range on the Singel with two stepped gables and a rooftop colonnade, a pale stone curved corner block, and a grey-brick entrance block on Kalverstraat over the glazed passage. 546 3DBAG wall surfaces. The LoD2.2 shell has 40.7 m of open edge: a 7-8 m wall spike at the Singel corner, a missing step wall under the rooftop pavilion and two short gaps. shellRepair closes it (2 spikes clamped, 3 strips, 0.1 m left).",
+    "walls[0] = surfaces 340 + 238 (w01-192): the colonnade run and the east stepped gable of the red-brick Singel range. 3DBAG models the rooftop colonnade as solid wall to 17.4 m, so the range is drawn as 5 storeys with the top one blank (the colonnade zone). That gives 4 rows of white-framed cross windows under brick segmental arches with white stone bands, and the arched passage portal (KO) in bay 5. The gable takes the storey lines above (one window). Surfaces 532 and 123 at the east end stay blank: with them the 3DBAG eaves gate reads the roof behind them (14.7 m) and fails.",
+    "walls[1] = surface 19 (w04-192): the colonnade run west of the west gable, on walls[0]'s storey lines. The west stepped gable (296) and surface 115 are blank. With them in a group, the eaves gate reads the gable's mono-pitch roof from 14.4 m against a 16.4-17.2 m wall top and fails.",
+    "walls[2] = panels 277, 308, 50, 43 and the curve facets 186/29/24/31 (w03-190): the curved pale stone corner block. It has shop windows on the ground, a tall first storey and glass-railed balconies on the upper storeys, with one bay rhythm round the curve.",
+    "walls[3] = panel 45 (w02-46): the Kalverpassage entrance block on Kalverstraat in grey-brown brick. It has a glazed passage ground with a blank band over it, a glass-railed balcony run, and the vertical KALVERPASSAGE sign as wall lettering. 6 bays for the photographed 7 (triangle budget).",
+    "Simplified or not drawn: the Amsterdam arms over the west door, the cartouches and gable finials, the pergola and the glass pavilion roofs (the 3DBAG roof carries their mass), and the lattice ceiling and round piers of the passage. The dark glass corner on Kalverstraat (w05-45, 10 m) and the court walls are blank (otherWalls).",
+    "walls[2]/[3] sills off: the wall-profile fix (layered default) put the house at 12,257 tris; the curved stone corner and the Kalverstraat block lose least."
+  ]
 }

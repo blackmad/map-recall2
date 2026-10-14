@@ -48951,10 +48951,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165086",
       "name": "Singel 457 / Kalverstraat (Kalverpassage), Amsterdam-Centrum: red-brick Singel range with white stone bands and a stepped centre gable, a pale stone curved corner block, and the grey-brick Kalverpassage entrance block on Kalverstraat",
-      "hash": "701229788c30066f6863567a068ce8b0b13eca47bd0393a489312582cbd42457",
-      "sha256": "701229788c30066f6863567a068ce8b0b13eca47bd0393a489312582cbd42457",
-      "bytes": 949656,
-      "triangles": 11809,
+      "hash": "dfcb1af1e6365c205c875f648b3ec35e711006de343141ffc22785e54606a3a2",
+      "sha256": "dfcb1af1e6365c205c875f648b3ec35e711006de343141ffc22785e54606a3a2",
+      "bytes": 950236,
+      "triangles": 11765,
       "materials": 15,
       "textures": 0,
       "scale": 1,
@@ -49273,7 +49273,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165086",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:37:34.319Z"
+      "updatedAt": "2026-10-14T04:46:43.613Z",
+      "meshHash": "a7492cb3eeaa79c7"
     },
     {
       "id": "ordinary-0363100012165488",
