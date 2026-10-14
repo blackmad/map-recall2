@@ -17,7 +17,8 @@ import {canalhouseGroupToGlb} from '../canalhouse-recipes/export-glb.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
 import {evaluateLargeGates} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
-import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {trustFactsGround, type BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 import {bearingOfNormal} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
 import {decodeTriangles} from './compile.ts';
@@ -31,7 +32,8 @@ const readJson = async (file: string) => JSON.parse(await fs.readFile(file, 'utf
 export async function compileLargeHouse(id: string) {
   const t0 = performance.now();
   const intent = validateLargeIntent(await readJson(path.join(HOUSES, id, 'intent.json')));
-  const facts: BuildingFacts = await readJson(path.join(HOUSES, id, 'facts.json'));
+  // On the trusted ground (bag3dCityJson.ts `pandGroundNap`): a facts.json built before the terrain rule is re-measured here.
+  const facts: BuildingFacts = trustFactsGround(await readJson(path.join(HOUSES, id, 'facts.json')), sharedTerrain());
   const built = compileBuilding(intent, facts);
   const t1 = performance.now();
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: m => m.userData.materialSlot as string, maxBytes: 2_000_000});

@@ -8,6 +8,7 @@
  * canalhouse `*-survey.json` files so `surveyRecipe` consumes it unchanged.
  */
 import {discoverCompleteFrontage} from '../../../scripts/canalhouse-recipes/complete-frontage.ts';
+import {pandGroundNap, type TerrainAt} from '../bag3dCityJson.ts';
 
 export type RD = [number, number];
 export interface CityJsonItem {
@@ -40,7 +41,12 @@ export interface BuildingFacts {
   bagFootprintRD: RD[][];
   surveyFootprintPolygonsRD: RD[][][];
   roofsRD: {surfaceId: string; vertices: number[][]; ringsRD: number[][][]; slopeDeg: number; areaM2: number}[];
-  heights: {groundNAP: number; roofMinM: number; roofMaxM: number; ridgeM: number; dak50pM: number; dak70pM: number; storeys: number | null; builtYear: number | null};
+  /**
+   * Heights in metres above `groundNAP`, the pand's trusted ground (`pandGroundNap`): 3DBAG's `b3_h_maaiveld` unless
+   * that is a failed estimate under the AHN terrain, then `groundSource: 'terrain'` and the terrain (attributes stay as
+   * 3DBAG publishes them).
+   */
+  heights: {groundNAP: number; roofMinM: number; roofMaxM: number; ridgeM: number; dak50pM: number; dak70pM: number; storeys: number | null; builtYear: number | null; groundSource?: 'terrain'};
   fronts: FrontFacts[];
   /**
    * Eaves (cornice top / gable foot) per intent front id, in metres above this pand's ground, measured on a rectified
@@ -251,18 +257,57 @@ export function findFrontage(ground: RD[][][], roofs: BuildingFacts['roofsRD'], 
     topProfile, eavesM: hs[Math.floor(hs.length * 0.1)] ?? NaN, topM: hs.at(-1) ?? NaN, uncertainty};
 }
 
-export function buildFacts(pandId: string, item: CityJsonItem, streets: StreetPath[], frontStreets: string[], toRD: (lngLat: [number, number]) => RD, meta: BuildingFacts['source'], options: {walls?: boolean} = {}): BuildingFacts {
+/**
+ * `terrainAt` (scripts/lib/terrainField.ts) puts every height on the trusted ground (`pandGroundNap`), not on a failed
+ * 3DBAG ground estimate; without it the ground is 3DBAG's own.
+ */
+export function buildFacts(pandId: string, item: CityJsonItem, streets: StreetPath[], frontStreets: string[], toRD: (lngLat: [number, number]) => RD, meta: BuildingFacts['source'], options: {walls?: boolean; terrainAt?: TerrainAt | null} = {}): BuildingFacts {
   const {attributes, bag, ground, roofs} = decodeThreeDBag(item);
-  const g = Number(attributes.b3_h_maaiveld);
-  if (!Number.isFinite(g)) throw Error('Missing b3_h_maaiveld');
+  if (!Number.isFinite(Number(attributes.b3_h_maaiveld))) throw Error('Missing b3_h_maaiveld');
+  const trusted = pandGroundNap(attributes, options.terrainAt, bag[0]);
+  const g = trusted.groundNapM ?? Number(attributes.b3_h_maaiveld);
   const rel = (v: unknown) => Number(v) - g;
   const roofZ = roofs.flatMap(r => r.vertices.map(v => v[2] - g));
   const unique = [...new Set(frontStreets)];
   return {
     schemaVersion: 1, pandId, source: meta, attributes, bagFootprintRD: bag, surveyFootprintPolygonsRD: ground, roofsRD: roofs,
     heights: {groundNAP: g, roofMinM: Math.min(...roofZ), roofMaxM: Math.max(...roofZ), ridgeM: Number.isFinite(Number(attributes.b3_h_nok)) && attributes.b3_h_nok !== null ? Math.max(rel(attributes.b3_h_nok), rel(attributes.b3_h_dak_max)) : rel(attributes.b3_h_dak_max), dak50pM: rel(attributes.b3_h_dak_50p), dak70pM: rel(attributes.b3_h_dak_70p),
-      storeys: Number.isFinite(Number(attributes.b3_bouwlagen)) ? Number(attributes.b3_bouwlagen) : null, builtYear: Number.isFinite(Number(attributes.oorspronkelijkbouwjaar)) ? Number(attributes.oorspronkelijkbouwjaar) : null},
+      storeys: Number.isFinite(Number(attributes.b3_bouwlagen)) ? Number(attributes.b3_bouwlagen) : null, builtYear: Number.isFinite(Number(attributes.oorspronkelijkbouwjaar)) ? Number(attributes.oorspronkelijkbouwjaar) : null,
+      ...(trusted.source === 'terrain' ? {groundSource: 'terrain' as const} : {})},
     fronts: unique.map(s => findFrontage(ground, roofs, g, streets, s, toRD)),
     ...(options.walls ? {wallsRD: decodeWalls(item, g)} : {}),
   };
+}
+
+/**
+ * Re-measure every ground-relative height of `facts` from `groundNAP` (absolute NAP geometry stays put): heights,
+ * fronts, LoD2.2 walls, photo eaves, canopies and the recipe-roof bounds. Neighbour heights are their own.
+ */
+export function regroundFacts(facts: BuildingFacts, groundNAP: number, groundSource?: 'terrain'): BuildingFacts {
+  const d = facts.heights.groundNAP - groundNAP;
+  const h = facts.heights as unknown as Record<string, unknown>, heights: Record<string, unknown> = {...h, groundNAP};
+  for (const key of ['roofMinM', 'roofMaxM', 'ridgeM', 'dak50pM', 'dak70pM', 'surveyRoofMaxM']) if (typeof h[key] === 'number') heights[key] = (h[key] as number) + d;
+  if (groundSource) heights.groundSource = groundSource; else delete heights.groundSource;
+  const shiftMap = (m: Record<string, number> | undefined) => m && Object.fromEntries(Object.entries(m).map(([k, v]) => [k, v + d]));
+  return {
+    ...facts,
+    heights: heights as unknown as BuildingFacts['heights'],
+    fronts: facts.fronts.map(f => ({...f, eavesM: f.eavesM + d, topM: f.topM + d, topProfile: f.topProfile.map(p => ({...p, heightM: p.heightM + d}))})),
+    ...(facts.wallsRD ? {wallsRD: facts.wallsRD.map(w => ({...w, bottomM: w.bottomM + d, topM: w.topM + d}))} : {}),
+    ...(facts.measuredEavesM ? {measuredEavesM: shiftMap(facts.measuredEavesM)} : {}),
+    ...(facts.canopyM ? {canopyM: Object.fromEntries(Object.entries(facts.canopyM).map(([k, v]) => [k, {...v, bottomM: v.bottomM + d}]))} : {}),
+    ...(facts.roofSource ? {roofSource: {...facts.roofSource, surveyRoofMaxM: facts.roofSource.surveyRoofMaxM + d, capM: facts.roofSource.capM + d}} : {}),
+  };
+}
+
+/**
+ * Facts read from a committed facts.json, on the trusted ground: `pandGroundNap` on the 3DBAG attributes and the BAG
+ * footprint, re-measured by `regroundFacts` when it differs from the ground the facts were built on. Without a
+ * terrain field, or when the ground already agrees, the same object comes back.
+ */
+export function trustFactsGround(facts: BuildingFacts, terrainAt?: TerrainAt | null): BuildingFacts {
+  if (!terrainAt) return facts;
+  const trusted = pandGroundNap(facts.attributes, terrainAt, facts.bagFootprintRD[0]);
+  if (trusted.groundNapM === null || trusted.groundNapM === facts.heights.groundNAP) return facts;
+  return regroundFacts(facts, trusted.groundNapM, trusted.source === 'terrain' ? 'terrain' : undefined);
 }

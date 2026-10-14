@@ -13,6 +13,7 @@ import path from 'node:path';
 import {buildFacts, decodeThreeDBag, type CityJsonItem, type RD, type StreetPath} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {lngLatToRd} from '../../src/canalRecall/facade/rdNew.ts';
 import {nearestOnStreet, sharedEdgeLength} from '../../src/canalRecall/blockFace/discover.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import {cachedJson} from '../pand-reference/core.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -34,7 +35,7 @@ for (const p of doc.pands) {
   p.side = p.numbers[0] % 2 ? 'odd' : 'even';
   p.styleGroup = styleGroup(p.buildYear);
   try {
-    const facts = buildFacts(p.pandId, ci, streets, [street], toRD, {threeDBag: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${p.pandId}`, fetchedAt: new Date().toISOString().slice(0, 10), streets: 'public/data/extracts/amsterdam/streets-routing.json'});
+    const facts = buildFacts(p.pandId, ci, streets, [street], toRD, {threeDBag: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${p.pandId}`, fetchedAt: new Date().toISOString().slice(0, 10), streets: 'public/data/extracts/amsterdam/streets-routing.json'}, {terrainAt: sharedTerrain()});
     const f = facts.fronts[0], mid: RD = [(f.endpointsRD[0][0] + f.endpointsRD[1][0]) / 2, (f.endpointsRD[0][1] + f.endpointsRD[1][1]) / 2];
     const near = nearestOnStreet(streets, street, toRD, mid);
     if (!near || near.distance > 30) { noFront.push({pandId: p.pandId, label: p.label, reason: `frontage ${near?.distance.toFixed(0)} m from ${street}`}); p.survey = {frontage: false, reason: 'frontage far from street'}; continue; }

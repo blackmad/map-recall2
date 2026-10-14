@@ -63,7 +63,7 @@ export async function compileChunk(inputs: ChunkHouseInput[], options: ChunkOpti
   adjacent.forEach((ok, i) => { if (!ok) warnings.push(`${houses[i].id} and ${houses[i + 1].id} share no party wall (a gap or a cross street between them)`); });
 
   // Ground + eaves.
-  const plan = planGround(houses.map(h => h.facts), adjacent, options.maxRegroundM ?? 1, options.eavesSnapStepM ?? 0.25, options.eavesSnapSpanM ?? 0.45);
+  const plan = planGround(houses.map(h => h.facts), adjacent, options.maxRegroundM ?? 1, options.eavesSnapStepM ?? 0.25, options.eavesSnapSpanM ?? 0.45, options.terrainAt);
 
   // Compile, bake into the frame.
   const compiled = houses.map((h, i) => compileBuilding(h.intent, plan.facts[i]));

@@ -17,7 +17,8 @@ import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {canalhouseGroupToGlb} from '../canalhouse-recipes/export-glb.ts';
 import {compileBuilding, resolveIntent, canonicalIntentKey} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {evaluateGates, type Tri} from '../../src/canalRecall/buildingRecipe/gates.ts';
-import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {trustFactsGround, type BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import type {CanalHouseIntent} from '../../src/canalRecall/buildingRecipe/intent.ts';
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {frontFrame, localToFrameMatrix, matchDesign, placementFor, ringToFrame, frameFootprintIoU, SHARE_DIMENSION_TOLERANCE_M, SHARE_MIN_FOOTPRINT_IOU, SHARE_MIN_FRONT_IOU, SHARE_FRONT_ZONE_M} from '../../src/canalRecall/buildingRecipe/instances.ts';
@@ -59,7 +60,8 @@ export async function loadIntent(id: string): Promise<{raw: any; intent: CanalHo
 export async function compileHouse(id: string) {
   const t0 = performance.now();
   const {raw, intent} = await loadIntent(id);
-  const facts: BuildingFacts = await readJson(path.join(HOUSES, id, 'facts.json'));
+  // On the trusted ground (bag3dCityJson.ts `pandGroundNap`): a facts.json built before the terrain rule is re-measured here.
+  const facts: BuildingFacts = trustFactsGround(await readJson(path.join(HOUSES, id, 'facts.json')), sharedTerrain());
   const built = compileBuilding(intent, facts);
   const t1 = performance.now();
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: slotFor(intent)});
