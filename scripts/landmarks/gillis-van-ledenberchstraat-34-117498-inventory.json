@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "id": "gillis-van-ledenberchstraat-34-117498",
+ "pand": "0363100012117498",
+ "signature": [
+  "cream-canal-front",
+  "brick-street-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-298",
+   "bearing": 298,
+   "lengthM": 60.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0001_000086",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "cream-canal-front",
+     "kind": "window-shape",
+     "where": "cream-rendered canal front, two rows of grouped windows in grey frames over a blank base",
+     "approxSizeM": [60, 11],
+     "plan": "simplified",
+     "how": "walls[0] render, 3 storeys with a blank base, 14 wide windows per row",
+     "seenIn": "TMX7316010203-000198_pano_0001_000086"
+    },
+    {
+     "id": "glazed-top-storey",
+     "kind": "window-shape",
+     "where": "continuous glazed top storey with a glass railing",
+     "approxSizeM": [60, 3],
+     "plan": "simplified",
+     "how": "the 3DBAG set-back mass in the roof material, not glazed",
+     "seenIn": "TMX7316010203-000198_pano_0001_000086"
+    }
+   ]
+  },
+  {
+   "tag": "w03-112",
+   "bearing": 112,
+   "lengthM": 18.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002055_pano_0000_000640",
+   "capturedAt": "2021-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-street-front",
+     "kind": "window-shape",
+     "where": "brown-brick front, three storeys of wide windows over glazed double doors, slightly curved",
+     "approxSizeM": [18, 13.5],
+     "plan": "simplified",
+     "how": "walls[1] 4 storeys x 7 bays, wide windows, string courses; the curve is the 3DBAG facets",
+     "seenIn": "TMX7316010203-002055_pano_0000_000640"
+    }
+   ]
+  },
+  {
+   "tag": "w02-112",
+   "bearing": 112,
+   "lengthM": 21.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002369_pano_0007_000050",
+   "capturedAt": "2021-12-30",
+   "checked": true,
+   "note": "close crop of the northern street front: the same brick, wide windows and glazed doors; its kit panels touch taller neighbours and stay blank",
+   "items": []
+  },
+  {
+   "tag": "w04-22",
+   "bearing": 22,
+   "lengthM": 11.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000280_pano_0000_002163",
+   "capturedAt": "2017-04-26",
+   "checked": true,
+   "note": "short north end wall; nothing notable beyond plain brick",
+   "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"}
+ ]
+}

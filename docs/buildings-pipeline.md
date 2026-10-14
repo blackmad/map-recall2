@@ -465,6 +465,71 @@ the catalogue (`signature-placement`, `game-landmarks`, `route-selection`,
 fallback for a missing `covers.json`, run `npm run check:canal`. Do not flip
 before the bundles are rebuilt. iPhone measurement is still pending.
 
+### Shell repair and footprint (`shellRepair.ts`, 2026-10-14)
+
+Some pands were dropped from the large batches because their 3DBAG LoD2.2 shell is defective. Two
+fitted pre-steps, both opt-in per house (the default is off), make them authorable. Recipes without
+either flag are byte-identical (fit-golden, large-mesh-golden).
+
+- `shellRepair: true` finds the open boundary loops of the bare host. It uses the same rule as the
+  `open-edges` gate: edges used once, above 5 cm, and not lying within 2 cm of another triangle. It
+  closes them with the smallest patch, in this order:
+  - a fan cap on a planar loop, skipped when more than half of it is already covered (a sheet edge,
+    not a hole);
+  - a vertical strip under an open roof edge, down to the next roof below or the ground, minus the
+    walls already in that plane;
+  - a strip up from an open wall top to the roof above it;
+  - a seam between vertical slits up to 0.6 m apart.
+
+  Before that, it clamps wall spikes. A wall vertex more than 0.3 m above its own roof edge moves down
+  to that edge, but only for triangles that have an open edge, so sound shells never move. Patches are
+  wall surfaces from 90000 up: `walls.ts --repair` lists them, and wall groups can claim them.
+  Under the flag, the kit merges only truly coplanar walls into a panel (`strictMergeClasses`: every
+  vertex within 2 cm of the other's plane). Westerdoksdijk 9's step wall is 0.7° off the outline wall
+  under it; dissolved into one face, it strayed 7 cm off a 14 m roof edge and read as 14 m of open
+  edge. The gate line `shell-repair` reports the open edge before and after, plus the patches.
+- `footprint: "bag"` rebuilds the shell from the BAG LoD0 outline. It partitions the outline by the
+  LoD2.2 roof planes (highest first; steeper than 60° skipped; uncovered parts take the nearest plane
+  within 1.5 m, else min(roof max, dak70p)), and builds walls by plan adjacency (to the ground, or step
+  walls to a lower piece). It reports IoU before and after. On the dropped list it reaches IoU 1, but
+  it leaks 76–1250 m of open edge where pieces are not recognised as adjacent. It is not usable yet,
+  and on these pands it is the wrong fix anyway (see below).
+
+Tools:
+- `shell-survey.ts --house=a,b [--modes=bare,repair,bag]` compiles a blank intent through the kit, the
+  GLB and the gates.
+- `shell-debug.ts --house --at=x,z` lists surfaces, open pieces and strips near a point.
+- `shell-footprint.ts --house` writes a BAG vs LoD2.2 plan PNG.
+
+Unit tests on synthetic shells are in `shellRepair.test.ts`.
+
+The dropped list, bare shell vs `shellRepair` (GLB gates, blank walls):
+
+| pand | defect | repair applied | gate result |
+| --- | --- | --- | --- |
+| Singel 457 (165086) | 40.7 m open: 7-8 m wall spike at the corner, missing step wall under the rooftop pavilion | 2 spikes clamped, 3 strips | 0.1 m: pass; installed |
+| Hirschpassage 2 (165488) | 31.6 m open: slanted fin over the corner tower, missing step walls | 1 spike, 5 strips | 0 m: pass; installed |
+| Gillis van Ledenberchstraat 34 (117498) | 33.9 m open: step walls between the 4.7 m wings and the block | 8 strips | 0 m: pass. Authored but not installed: BAG overlap of 1300 m² (pands 238383 and 243844 lie inside it; check:osm-under-models fails) |
+| WG-plein 600 (233657) | 12.8 m open: short step walls | 7 strips | 0 m: pass; installed |
+| Da Costakade 146 (236799) | 5.7 m open | 4 strips | 0 m: pass; installed |
+| Westerdoksdijk 9 (184746) | 14.2 m open: a dissolved panel strays off a roof edge (kit, not data) | strict merge classes | 0 m: pass |
+| Buiksloterweg 5C (119827) | 6.4 m open (kit, the same merge) | strict merge classes | 0 m: pass |
+| Revaleiland 58 (250187) | 5.4 m open: warped roof facets standing on end | 7 strips | 2.2 m: fails by 0.2 m (one 1.4 m edge of a warped facet left) |
+| Volewijkshof 6 (243823) | IoU 0.37 | none: the BAG outline includes a parking deck over an underground garage; LoD2.2 is the real building | IoU gate is the wrong test |
+| Van Hallstraat 703 (069991) | IoU 0.89 | none: the uncovered triangle is a courtyard deck | IoU gate is the wrong test |
+| Looiersgracht 83 (167466) | IoU 0.55 | none: val3dity error 302, the middle of the outline uncovered | unverified |
+| Wichersstraat 70 (240959) | IoU 0.59 | none: LoD2.2 is the neighbouring towers (bag_bag_overlap 2235 m²) | podium pand, not authorable |
+| Libau-eiland 106 (254563) | IoU 0.70 | none: built 2023, after the lidar | wait for 3DBAG |
+| Piri Reisplein 39 (238346) | IoU 0.64 | none: the uncovered parts are open courtyards | IoU gate is the wrong test |
+| Papaverhof 60 (253630) | IoU 0.47 | none: LoD2.2 is the neighbouring towers (overlap 2615 m²) | podium pand, not authorable |
+| Grasweg 698 (254687) | IoU 0.009 | `footprint: "bag"` gives IoU 1 and 0 m open, but with no height (built 2025, LoD2.2 78 m²) | wait for 3DBAG |
+| Hobbemastraat 18 (242075) | IoU 0.15 | none: an underground garage under Museumplein; LoD2.2 is a 496 m² pavilion | not a building above ground |
+
+What the authoring showed: the large eaves gate reads the roof 8 cm inside a group's widest panel. A
+wall that stands above its roof (a colonnade modelled solid, a gable over a mono-pitch roof) fails it,
+so such surfaces stay blank or go into a group whose widest panel is a plain wall (Singel 457's west
+gable).
+
 ### Known gaps
 
 - Large-tier kit overlaps (2026-10-14, batch 3; fixed behind `layeredKit: true`): without the flag
