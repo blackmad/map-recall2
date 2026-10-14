@@ -8,8 +8,8 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import {createHash} from 'node:crypto';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
+import {meshHashOf} from './mesh-hash.ts';
 import {compileLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 
 const HOUSES = 'scripts/building-recipes/houses', GOLDEN = 'scripts/building-recipes/large-mesh-golden.json';
@@ -23,12 +23,7 @@ for (const id of ids) {
   const intent = validateLargeIntent(JSON.parse(fs.readFileSync(path.join(HOUSES, id, 'intent.json'), 'utf8')));
   const facts = JSON.parse(fs.readFileSync(path.join(HOUSES, id, 'facts.json'), 'utf8'));
   const built = compileLargeBuilding(intent, facts, {budget: 1e9});
-  const h = createHash('sha256');
-  for (const m of [...built.group.children].sort((a, b) => (a.name < b.name ? -1 : 1))) {
-    const pos = (m as unknown as {geometry: {getAttribute(n: string): {array: ArrayLike<number>}}}).geometry.getAttribute('position').array;
-    h.update(m.name); h.update(Buffer.from(new Float32Array(Array.from(pos)).buffer));
-  }
-  hashes[id] = h.digest('hex').slice(0, 16);
+  hashes[id] = meshHashOf(built.group);
 }
 const golden: Record<string, string> = fs.existsSync(GOLDEN) ? JSON.parse(fs.readFileSync(GOLDEN, 'utf8')) : {};
 if (process.argv.includes('--write')) {

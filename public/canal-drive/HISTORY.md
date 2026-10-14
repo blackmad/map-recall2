@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## Stale-install check made exact (2026-10-14, night)
+
+`install-large.ts` now records `meshHash` (the golden's compiled-mesh hash,
+shared through `scripts/building-recipes/mesh-hash.ts`) on each catalogue
+entry, and `stale-installs.ts` compares that with the golden; the git
+heuristic (newest golden commit reachable from the GLB's commit, ancestry
+rather than global log order) stays as the fallback for entries without
+it. The old global-order heuristic reported 37 false stales right after
+the re-install merge because batch 5 branched before the layered default
+and its goldens sorted as "newer". All 77 current installs were backfilled
+with their golden hash; the seven the ancestry check still flagged were
+re-installed (five whose golden was recorded after the install, and the
+two byte-identical ones). `npm run check:stale-installs` (`--strict`) is in
+`check:canal`.
+
+
 ## Layered re-installs, part two: the 58 stale houses (2026-10-14, night)
 
 Lane `large/reinstall-58-20261014`. `scripts/building-recipes/
