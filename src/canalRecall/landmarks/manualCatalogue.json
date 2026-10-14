@@ -39038,5 +39038,45 @@
       "modifications": "Original texture-free low-poly mosque: massing from BAG/3DBAG (CC0 / CC BY 4.0), arcade, cupolas, minaret and dome measured from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
     },
     "bagYear": 2015
+  },
+  {
+    "id": "figure-decoupee",
+    "name": "Figure decoupee (Picasso, Vondelpark)",
+    "landmarkId": "osm_artwork_538934266",
+    "modelUrl": "./models/figure-decoupee.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.86802,
+        52.35747
+      ],
+      "headingDegrees": 50,
+      "lengthMetres": 3.3,
+      "widthMetres": 0.3
+    },
+    "surveyed": {
+      "anchor": [
+        4.86802,
+        52.35747
+      ],
+      "northOffsetDegrees": 0,
+      "source": "OSM node 538934266 \"Figure decoupee\" (Pablo Picasso, 1965); position and orientation from Gemeente Amsterdam panoramas (2020-2025); the facing (about 140 degrees, +-20), the 4.4 m height and the 0.25 m thickness are visual estimates; outline traced from the Wikimedia Commons photo Figure decoupee in 2019 (1) by Cees (CC BY-SA 4.0)"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "assetKind": "memorial",
+    "materialOverrides": {
+      "concrete": "#c9c6bb",
+      "greyBrick": "#34332f"
+    },
+    "attribution": {
+      "title": "Figure decoupee - original low-poly reconstruction",
+      "author": "Map Recall; after the 1965 sculpture by Pablo Picasso and Carl Nesjar",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Figure_d%C3%A9coup%C3%A9e_in_2019_(1).jpg",
+      "licence": "Original project asset (outline traced from a CC BY-SA 4.0 photograph by Cees)",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free extruded outline with engraved line strips, hand-traced from a CC BY-SA 4.0 Commons photo and Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+    }
   }
 ]
