@@ -1227,6 +1227,17 @@ file invalidates every tile whose face places it. De Clercqstraat's three types 
 moving them out of `clercq-236681/intent.json` changed no compiled output (chunk GLB, manifest entry and report
 byte-identical, every face's resolved house intents identical).
 
+#### Kinkerstraat types (`oud-west`, 2026-10-14)
+
+Seven library types for Kinkerstraat's 217 pands: `kinker-1890-plain-brick` (53), `kinker-1890-brick-arched` (51),
+`kinker-1985-infill` (38), `kinker-1902-balcony-axis` (36), `kinker-1895-painted-band` (15), `kinker-1886-neo-renaissance`
+(11) and `kinker-1900-stucco-front` (3); 10 have no photo. They were clustered across the street with
+`scripts/research/cluster-street-types.ts`. Palettes are strip medians from `scripts/block-face/palette-from-strip.ts`,
+which also reports painted-band heights from pier columns. Two optional kit keys were added, both byte-identical when
+absent: `windowHead.tympanum` (a white arch-segment fill, with the glass square at the springing line) and
+`dormerStyle: "box"` (a flat brick roof box). Proof faces `kinker-109-161` and `kinker-2-30` are compiled but not installed.
+Report, sheets and what the kit still cannot say: [kinkerstraat-types-20261014.md](kinkerstraat-types-20261014.md).
+
 ### Amsterdam School components (plan "Commercial streets", step 6, 2026-10-14)
 
 Five components for interwar shop streets (Jan Evertsenstraat, De Clercqstraat, Admiraal de Ruijterweg). Each one is

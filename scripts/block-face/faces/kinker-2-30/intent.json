@@ -1,0 +1,971 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-2-30",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-2-30/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat-types lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 30-2 (even side, Bilderdijkkade end), 1886-1889. Proof face for the Oud-West Kinkerstraat type library: 9 pands of kinker-1890-brick-arched (18-4 row, 2 modules on 18-20 and 4-6), 3 of kinker-1890-plain-brick (30, 24, 22), 2 of kinker-1895-painted-band (28, 26), corner 2 and the corner block. Shops read on zoom crops of the 2024-12-11 strip; names only where legible, else OSM with agreement osm-only."
+ },
+ "types": [
+  "kinker-1890-brick-arched",
+  "kinker-1890-plain-brick",
+  "kinker-1895-painted-band"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012157476",
+   "slug": "kinker-157476",
+   "address": "Kinkerstraat 30",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "kinker-2-30",
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "cream",
+      "fascia": false,
+      "name": "The Genius Worstenbrood",
+      "entrance": "none",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-12-11 pand 1: cream pui, shop glass left with 'THE GENIUS' on the glass, black house door right; OSM node 2809222376 shop=bakery"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "The Genius Worstenbrood",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 2809222376,
+     "name": "The Genius Worstenbrood"
+    },
+    "bag": [
+     "industriefunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: 2 axes, plain brick, flat heads, cream cornice, no dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012236471",
+   "slug": "kinker-236471",
+   "address": "Kinkerstraat 28",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "pediment-dormer",
+    "palette": "black-painted",
+    "overrides": {
+     "bays": 3,
+     "windowHead": {
+      "kind": "flat",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "name": "Casa Brasil Portugal",
+      "entrance": "centre",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "black"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 2: white pui, shop glass in the middle under a yellow board (lettering illegible), black house door left, white door right; OSM node 2809219278 shop=grocery"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Casa Brasil Portugal",
+    "category": "shop=grocery",
+    "osm": {
+     "type": "node",
+     "id": 2809219278,
+     "name": "Casa Brasil Portugal"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): black-painted brick, 3 axes, flat heads with tall white keystones, white frames, pedimented dormer",
+    "schemaLimits": [
+     "tall carved keystones (0.45 m) are drawn as plain keystone blocks"
+    ],
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012158140",
+   "slug": "kinker-158140",
+   "address": "Kinkerstraat 26",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "pediment-dormer",
+    "palette": "dark-brown",
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     }
+    },
+    "ground": {
+     "groundFront": {
+      "kind": "pui",
+      "bays": [
+       "window",
+       "window",
+       "door"
+      ],
+      "colour": "white",
+      "evidence": "strip.jpg 2024-12-11 pand 3: white-painted ground storey, a wide multi-pane window and a house door right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): brown brick, 2 axes, segmental heads with white keystones and console sills, pedimented dormer",
+    "schemaLimits": [
+     "dark rubbed-brick decorative arch band under the keystones",
+     "console sills"
+    ],
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012235988",
+   "slug": "kinker-235988",
+   "address": "Kinkerstraat 24",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "cornice": "frieze",
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "storeyHeights": [
+      3.2,
+      2.9,
+      2.9,
+      2.9,
+      2.8
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "name": "The Greasy Spoon",
+      "entrance": "none",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#3a2a22"
+      },
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-12-11 pand 4: dark shop glass, a pointed (Gothic) brick-arched house door right; OSM node 4508436591 amenity=restaurant"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "The Greasy Spoon",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 4508436591,
+     "name": "The Greasy Spoon"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): 3 axes x 4 upper storeys, plain brick, segmental heads, iron anchors, carved cream frieze cornice, round-topped dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012160746",
+   "slug": "kinker-160746",
+   "address": "Kinkerstraat 22",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "cornice": "frieze",
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "storeyHeights": [
+      3.2,
+      2.9,
+      2.9,
+      2.9,
+      2.8
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "dark-blue",
+      "fascia": false,
+      "entrance": "none",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#3a2a22"
+      },
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-12-11 pand 5: dark shop glass, a pointed (Gothic) brick-arched house door right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "dark shop glass, no lettering; BAG bijeenkomstfunctie"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): 3 axes x 4 upper storeys, plain brick, segmental heads, iron anchors, carved cream frieze cornice, round-topped dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012236814",
+   "slug": "kinker-236814",
+   "address": "Kinkerstraat 18-20",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "dark-green",
+        "fascia": false,
+        "entrance": "left",
+        "glazing": "split",
+        "awning": {
+         "style": "fabric-straight",
+         "colour": "#b3473a"
+        },
+        "evidence": "strip.jpg 2024-12-11 pand 6 left module (18): red/white striped straight awning, a bench; no lettering"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "dark-green",
+        "fascia": false,
+        "name": "Beyrouth",
+        "entrance": "left",
+        "glazing": "split",
+        "awning": {
+         "style": "fabric-straight",
+         "colour": "#b3473a"
+        },
+        "evidence": "strip.jpg 2024-12-11 pand 6 right module (20): striped awning, 'BEYROUTH' painted on the glass; OSM node 8950380560 amenity=restaurant"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Beyrouth",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 8950380560,
+     "name": "Beyrouth"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "18 (left module) is a second shop with the same awning, unnamed"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6: two 2-axis modules of the 18-4 row (7.8 m)",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012236360",
+   "slug": "kinker-236360",
+   "address": "Kinkerstraat 16",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 7: black shop, lettering on the fascia illegible"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "black shop, lettering on the fascia illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012236379",
+   "slug": "kinker-236379",
+   "address": "Kinkerstraat 14",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 8: black shop, door left, display window right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "black shop, door left, display window right"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012163174",
+   "slug": "kinker-163174",
+   "address": "Kinkerstraat 12C",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "natural-wood",
+      "fascia": false,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 9: varnished timber pui with pilasters, continuous over 12C-12A"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "varnished timber pui with pilasters, continuous over 12C-12A"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012155541",
+   "slug": "kinker-155541",
+   "address": "Kinkerstraat 12B",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "natural-wood",
+      "fascia": false,
+      "name": "Mozzico",
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 10: varnished timber pui with pilasters (12C-12A); no legible sign"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Mozzico",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 4825417024,
+     "name": "Mozzico"
+    },
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012236383",
+   "slug": "kinker-236383",
+   "address": "Kinkerstraat 12A",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "natural-wood",
+      "fascia": false,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 11: varnished timber pui with pilasters (12C-12A)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "varnished timber pui with pilasters (12C-12A)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 11: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012164188",
+   "slug": "kinker-164188",
+   "address": "Kinkerstraat 10",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 12: black shop, roller shutter down on the left"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "black shop, roller shutter down on the left"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 12: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012162482",
+   "slug": "kinker-162482",
+   "address": "Kinkerstraat 8",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "name": "TeleWorld",
+      "sign": {
+       "text": "TeleWorld",
+       "textColour": "#d42a2a",
+       "mount": "wall",
+       "align": "right"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 13: black shop, red 'TeleWorld' letters on the band over the glass (running on into 4-6); OSM node 2606068014 shop=mobile_phone (mapped inside 4-6)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "TeleWorld",
+    "category": "shop=mobile_phone",
+    "osm": {
+     "type": "node",
+     "id": 2606068014,
+     "name": "TeleWorld"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "the OSM node sits in 4-6; the lettering is over 8"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 13: 2-axis module of the 18-4 row",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012237357",
+   "slug": "kinker-237357",
+   "address": "Kinkerstraat 4-6",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "kinker-2-30",
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "right",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 14 left module (6): black shop, posters in the glass (TeleWorld's second window)"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "dark-red",
+        "fascia": false,
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 14 right module (4): dark red shopfront, no lettering"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "two shops; the left continues TeleWorld (8)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 14: two 2-axis modules (7.9 m)",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012163325",
+   "slug": "kinker-163325",
+   "address": "Kinkerstraat 2",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "step-gable",
+    "palette": "dark-brown",
+    "overrides": {
+     "bays": 3,
+     "windowShare": 0.6,
+     "cornice": "simple",
+     "windowHead": {
+      "kind": "flat"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "entrance": "none",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "black"
+      },
+      "glazing": "single",
+      "stallriser": "high",
+      "evidence": "strip.jpg 2024-12-11 pand 15: white timber pui with one large pane, black house door left"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 15: 3 axes, white courses and blocked arches, dark brick stepped gable with one attic light",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012161331",
+   "slug": "kinker-161331",
+   "address": "Kinkerstraat 2 (corner)",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "none",
+    "palette": "kinker-2-30",
+    "overrides": {
+     "bays": 4,
+     "cornice": "heavy",
+     "windowHead": {
+      "kind": "flat"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "name": "Cafecito",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "medium",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "white"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 16: white-painted ground storey, gold sign board, white awning; OSM node 2809226867 amenity=cafe"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-11",
+    "name": "Cafecito",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 2809226867,
+     "name": "Cafecito"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 16: corner block, 4 axes of the 18-4 design; two axes are bricked up and painted white",
+    "schemaLimits": [
+     "two of four axes are bricked up and painted white (blind windows): drawn as windows",
+     "white-painted ground storey wall"
+    ],
+    "photoRows": [
+     2,
+     4,
+     4,
+     4
+    ],
+    "photoGables": 0
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012236814",
+    "front": "m0",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236814",
+    "front": "m1",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236360",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236379",
+    "stripRow": 235,
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
+   },
+   {
+    "pand": "0363100012163174",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012155541",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012236383",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012164188",
+    "stripRow": 235,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m); 3DBAG eaves 16.6-17.2 m carry the mansard out to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012162482",
+    "stripRow": 235,
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
+   },
+   {
+    "pand": "0363100012237357",
+    "front": "m0",
+    "stripRow": 235,
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
+   },
+   {
+    "pand": "0363100012237357",
+    "front": "m1",
+    "stripRow": 235,
+    "evidence": "strip.jpg: top of the cream frieze cornice of the 18-4 row at row 235 (15.2 m)"
+   },
+   {
+    "pand": "0363100012157476",
+    "stripRow": 240,
+    "evidence": "strip.jpg pand 1: cornice top at row 240 (15.1 m); 3DBAG 13.6 m"
+   },
+   {
+    "pand": "0363100012235988",
+    "stripRow": 185,
+    "evidence": "strip.jpg pand 4: top of the carved frieze cornice at row 185 (16.4 m); 3DBAG 15.1 m"
+   },
+   {
+    "pand": "0363100012160746",
+    "stripRow": 185,
+    "evidence": "strip.jpg pand 5: same cornice as 24 (row 185)"
+   }
+  ],
+  "notes": [
+   "The 18-4 row reads as one cornice line at row 235 on the strip; each pand carries it as a measured eaves (3DBAG eaves spread 14.4-17.2 m over the mansards)."
+  ]
+ }
+}

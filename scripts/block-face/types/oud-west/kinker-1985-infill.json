@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "kinker-1985-infill",
+  "district": "oud-west",
+  "description": "Urban-renewal infill (1976-1992: 109-161, 173-225, 160-178, 244-246, 265-313, 89-105): dark brown brick, flat wall top with dark roof boxes, plain two-light windows in white frames, no cornice moulding, a tall ground of dark granite piers (recessed shops under a first-floor gallery on 109-161); bitumen roof",
+  "fit": {
+    "widthM": [
+      4.5,
+      7.5
+    ],
+    "storeys": [
+      5
+    ]
+  },
+  "body": {
+    "storeys": 5,
+    "bays": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "cornice": "simple",
+    "windows": "two-light"
+  },
+  "crowns": {
+    "roof-boxes": {
+      "gable": "flat",
+      "dormers": 2,
+      "dormerStyle": "box",
+      "note": "109-161: two dark brick roof boxes per module standing on the wall top (dormerStyle box: brick cheeks, flat top); the first sheet pass with the white pointed plain dormer read worse than none"
+    },
+    "flat": {
+      "gable": "flat",
+      "note": "flat wall top (173-225 behind the set-back top storey)"
+    }
+  },
+  "palettes": {
+    "dark-brown-brick": {
+      "brick": "#4e4336",
+      "frame": "#a5aea1",
+      "door": "#2f3433",
+      "stone": "#3a3f3f",
+      "cornice": "#4e4436"
+    }
+  },
+  "roof": {
+    "material": "bitumen"
+  },
+  "rhythm": {
+    "bays": "2 window axes per ~6 m module; storey 3 one wide window",
+    "identicalBays": "storeys 2 and 4: two windows; storey 3: one wide window",
+    "windowsPerStorey": "ground + 1: arcade (2 bays per module) | 2: 2 | 3: 1 | 4: 2",
+    "symmetry": "modules alternate mirrored",
+    "groundFloor": "recessed shops behind dark piers under a first-floor gallery: a double-height shopfront per module (shopfront.storeys 2) in the pier colour",
+    "signage": "per shop",
+    "roofline": "flat wall top, roof boxes",
+    "photoRows": [
+      2,
+      2,
+      1,
+      2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "the recessed two-storey arcade with a first-floor gallery (piers, gallery rail, shops set back ~3 m) is drawn as a flush double-height shopfront with a mezzanine band",
+      "the roof boxes' fronts are glazed with white frames in the kit; on the photo they are dark",
+      "the wide three-light window on storey 3 is drawn about 1.5 m wide (photo ~2.2 m)",
+      "recessed glazed stair slots between modules",
+      "the curved drum corner and cream set-back top storey of 125 and 173-225 are not in the kit"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "kinker-109-161",
+      "pands": [
+        "149986",
+        "119702",
+        "144295",
+        "141903",
+        "095974",
+        "141675",
+        "072076",
+        "107234",
+        "067928",
+        "132092",
+        "084581",
+        "067449"
+      ],
+      "citation": "strip.jpg 2024-12-11: one 1989 block; detect-house-types kinker-109-161 types A (9 modules), B (7), C (2); cluster-street-types C04"
+    },
+    {
+      "face": "kinker-173-225",
+      "pands": [
+        "148565",
+        "085030",
+        "087255",
+        "119385",
+        "111903",
+        "151677"
+      ],
+      "citation": "strip.jpg 2024-12-11: 1982 block, same brick and windows, cream set-back top storey"
+    }
+  ],
+  "schemaLimits": [
+    "arcade with gallery",
+    "set-back top storey",
+    "drum corner",
+    "stair slots"
+  ],
+  "notes": [
+    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (median of 18 exemplar pands)."
+  ]
+}

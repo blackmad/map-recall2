@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "kinker-1895-painted-band",
+  "district": "oud-west",
+  "description": "Kinkerstraat 1895-1897 narrow houses on dark brick (black-painted 28, 236-242; dark brown 26, 69-71): 2 axes, segmental windows under white blocked heads (springers + keystone) or tall white keystones, white sills and frames on a dark wall, cream cornice; crowns: a pediment dormer, a neck gable with an attic light; shop or house ground",
+  "fit": {
+    "widthM": [
+      4.0,
+      6.3
+    ],
+    "storeys": [
+      4
+    ]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 2,
+    "cornice": "bracketed",
+    "windows": "t-window",
+    "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true
+      }
+    },
+    "windowSurround": "sill",
+    "windowHeights": [
+      0.7,
+      0.7,
+      0.7,
+      0.68
+    ]
+  },
+  "crowns": {
+    "pediment-dormer": {
+      "gable": "cornice",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "note": "206-242 pands 1, 3, 4; 2-30 pands 2-3: white pedimented dormer"
+    },
+    "neck-gable": {
+      "gable": "neck",
+      "crownRise": 0.9,
+      "atticWindows": 1,
+      "note": "206-242 pand 2 (237297, black-painted) and 5 (152992): a neck gable with one attic light, top ~2.5 m over the cornice"
+    }
+  },
+  "palettes": {
+    "black-painted": {
+      "brick": "#565b56",
+      "frame": "#b5bcad",
+      "door": "black",
+      "stone": "#c5c8b1",
+      "cornice": "#b4b69e",
+      "wallMaterial": "stucco"
+    },
+    "dark-brown": {
+      "brick": "#5d5042",
+      "frame": "#b7beac",
+      "door": "black",
+      "stone": "#c5c8b1",
+      "cornice": "#b4b69e"
+    }
+  },
+  "roof": {
+    "material": "slate"
+  },
+  "rhythm": {
+    "bays": "2 window axes",
+    "identicalBays": "upper storeys: 2 axes",
+    "windowsPerStorey": "ground: shop or house | 1: 2 | 2: 2 | 3: 2",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "shop or residential, per house",
+    "signage": "per house",
+    "roofline": "cream cornice; pediment dormer or neck gable",
+    "photoRows": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "white sills are plain slabs (the 26 consoles are windowSills: consoles, which needs a surround storey)",
+      "the decorative dark rubbed-brick arch band of 26 is not drawn"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "kinker-2-30",
+      "pands": [
+        "236471",
+        "158140"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 2-3 (zoom): 28 black-painted brick with tall white keystones over flat heads, 26 brown brick, white keystones and console sills"
+    },
+    {
+      "face": "kinker-206-242",
+      "pands": [
+        "236953",
+        "237297",
+        "160838",
+        "165141",
+        "152992"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 1-5 (zoom): white blocked heads (two springers + keystone) over every window, white frames, dark wall; detect-house-types kinker-206-242 type A"
+    },
+    {
+      "face": "kinker-65-87",
+      "pands": [
+        "236453"
+      ],
+      "citation": "strip.jpg 2024-11-29 pand 3 (zoom): blocked heads on brown brick, 7 axes over three modules"
+    }
+  ],
+  "schemaLimits": [
+    "the eared window surrounds the plan expected were not found on any Kinkerstraat strip; the white dressing here is blocked heads and keystones"
+  ],
+  "notes": [
+    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (236471 black-painted, 158140 dark brown); stone = band-row median of the group (n=3)."
+  ]
+}
