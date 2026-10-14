@@ -28590,10 +28590,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012126319",
       "name": "Nieuwpoortstraat 80-98 / Den Brielstraat 2-6, Amsterdam: housing block over shops (BAG 1991; 150 dwellings, shops and offices on the ground floor)",
-      "hash": "cc82185e608874500b0426cf70282f79c79d5b799f373a374ee2aa2ac299417b",
-      "sha256": "cc82185e608874500b0426cf70282f79c79d5b799f373a374ee2aa2ac299417b",
-      "bytes": 554048,
-      "triangles": 7198,
+      "hash": "85dabb15b911fcf15224e7dba990e04e1156fd8e1bb5e5e33417455bfd0c45b4",
+      "sha256": "85dabb15b911fcf15224e7dba990e04e1156fd8e1bb5e5e33417455bfd0c45b4",
+      "bytes": 632456,
+      "triangles": 8286,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -28828,7 +28828,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012126319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:26.385Z",
+      "updatedAt": "2026-10-14T03:09:52.998Z",
       "bagYear": 1991
     },
     {
