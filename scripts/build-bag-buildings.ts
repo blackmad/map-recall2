@@ -36,6 +36,7 @@ import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.js';
 import { readBagBuildings, type BagBuilding, type BagHeightSource, type CityJson } from '../src/canalRecall/bag3dCityJson.js';
 import type { PandFacts } from '../src/canalRecall/bagTiles.js';
 import { readOsmBuildings, writeBagTiles } from './lib/bagTileBuild.js';
+import { loadTerrain } from './lib/terrainField.js';
 
 const flag = (name: string): string | undefined =>
   process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -54,6 +55,8 @@ const reportFile = path.join(stagingDir, 'bag-buildings.report.json');
 const round6 = (value: number): number => Math.round(value * 1e6) / 1e6;
 const round2 = (value: number | null): number | null => (value === null ? null : Math.round(value * 100) / 100);
 
+// AHN terrain under each footprint, so a failed 3DBAG ground (`trustedGroundNap`) does not inflate a height.
+const terrainAt = loadTerrain(path.join('public', 'data', 'extracts', city, 'ground-height-v1')) ?? undefined;
 const tiles = (await readdir(cacheDir).catch(() => [] as string[])).filter(name => name.endsWith('.city.json.gz')).sort();
 if (tiles.length === 0) {
   process.stderr.write(`no cached tiles in ${cacheDir} — run \`npm run fetch:3dbag\` first\n`);
@@ -117,7 +120,7 @@ for (const name of tiles.slice(0, Number.isFinite(limit) ? limit : undefined)) {
   const file = path.join(cacheDir, name);
   compressedBytes += (await stat(file)).size;
   const tile = JSON.parse(gunzipSync(await readFile(file)).toString('utf8')) as CityJson;
-  for (const building of readBagBuildings(tile)) {
+  for (const building of readBagBuildings(tile, terrainAt)) {
     if (building.rings.length === 0) { noFootprint++; continue; }
     // 3DBAG assigns a pand to one tile, but a run over a re-tiled vintage
     // should not silently emit a building twice.
