@@ -121,7 +121,7 @@ export const SLOT_LAYERS: readonly SlotLayer[] = [
   // canal brick's gain, so it renders lighter by that ratio; the white render is gained to its mean like stucco.
   { cell: 'brick20', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
   { cell: 'whiteStucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: WHITE_STUCCO_GAIN * CITY_LIT_LEVEL, skyTint: false },
-  // 2026-10-14: measured glass (`tintSource: 'measured'`): the pane in grey, so the authored glass colour shows (palette.ts `glassTintCellValue`).
+  // 2026-10-14: measured glass (`tintSource: 'measured'`): the stock pane in grey at full strength, tinted to the measured hue with L >= 0.40 (palette.ts `glassTintCellValue`, `cityMeasuredGlassTint`: glass keeps the sky).
   { cell: 'glassTint', tileM: SLOT_TILE_M.glass, clampUv: true, litGain: 1, skyTint: true },
 ];
 export const SLOT_LAYER_COUNT = SLOT_LAYERS.length;
@@ -137,7 +137,7 @@ export type SlotVariantHints = {
   /**
    * `measured`: the tint is a surveyed colour. Brick/accent skip the city clamp (palette.ts `cityMeasuredWallTint`) and
    * always sample the canal brick, whose mean that tint divides by (the lighter 20th-century cell drew a measured wall
-   * 0.02-0.03 L light); glass samples the grey measured-glass pane (`cityMeasuredGlassTint`).
+   * 0.02-0.03 L light); glass samples the grey measured-glass pane in the measured hue, lifted to the stock pane's lightness (`cityMeasuredGlassTint`).
    */
   source?: TintSource;
 };

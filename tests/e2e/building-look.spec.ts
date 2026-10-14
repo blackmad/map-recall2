@@ -225,21 +225,30 @@ test('a measured brick material renders at its authored colour, an unmeasured on
   });
 });
 
-// A re-fitted large recipe with measured walls and glass (intent `measured`): Waagdragerhof's tower (dark purple-brown
-// #4a302b, dark glass #3a4650) and Houthavenkade 26's two fronts (orange #b4835c, plum-brown #5e4a44, reflective glass
-// #8e9ea4), compiled to GLB and drawn through the game's city look (BAG year brick) and its default recipe look. Every
-// measured material's rendered mean, with the facing's baked shade divided out, lands within 0.05 L of its authored hex,
-// and the two looks agree (scripts/look/measured-walls.ts; before 2026-10-14 every glass drew one blue-grey pane).
-test('a re-fitted recipe GLB draws its measured walls and glass at their authored colours in both game looks', async ({ page }, info) => {
+// Re-fitted large recipes with measured walls and glass (intent `measured`): Apollohal's glazed hall (tan base #a2937e,
+// dark glass #46545c from an overcast crop) and Houthavenkade 26's two fronts (yellow-brown #917b5c, #494341, reflective
+// column glass #8e9ea4), compiled to GLB and drawn through the game's city look (BAG year brick) and its default recipe
+// look. Measured walls land within 0.05 L of their authored hex (÷ the facing's baked shade). Measured glass keeps the
+// sky (2026-10-14, user): the measured hue at the stock pane's lightness or lighter, so the dark hall glass draws about
+// as light as the kit pane on the same front, never at its overcast hex. The two looks agree.
+test('a re-fitted recipe GLB draws its measured walls at their colours and its measured glass sky-lit in both game looks', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'one renderer is enough');
   test.setTimeout(240_000);
   await loadWallPage(page);
-  for (const pilot of [PILOTS[2], PILOTS[1]]) {
+  const hsl = (rgb: number[]) => { const [r, g, b] = rgb.map(v => Math.max(0, Math.min(255, v)) / 255), mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2; const d = mx - mn; const h = d === 0 ? 0 : mx === r ? 60 * (((g - b) / d) % 6) : mx === g ? 60 * ((b - r) / d + 2) : 60 * ((r - g) / d + 4); return [(h + 360) % 360, l]; };
+  const hexRgb = (hex: string) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+  for (const pilot of [PILOTS[0], PILOTS[1]]) {
     const { rows } = await measurePilot(page, pilot, ['city', 'legacy']);
-    expect(rows.map(r => r.role).sort()).toEqual(pilot === PILOTS[2] ? ['glass', 'glass', 'wall', 'wall'] : ['glass', 'glass', 'wall', 'wall', 'wall', 'wall']);
+    expect(rows.map(r => r.role).sort()).toEqual(pilot === PILOTS[0] ? ['glass', 'glass', 'wall', 'wall'] : ['glass', 'glass', 'kit glass', 'kit glass', 'wall', 'wall', 'wall', 'wall']);
     for (const r of rows) {
       expect(r.pixels, `${r.material} visible`).toBeGreaterThan(500);
-      expect(Math.abs(r.dL), `${r.pilot} ${r.material} ${r.path}: ${r.unshaded} vs ${r.authored}`).toBeLessThan(0.05);
+      if (r.role === 'wall' || r.role === 'arch') expect(Math.abs(r.dL), `${r.pilot} ${r.material} ${r.path}: ${r.unshaded} vs ${r.authored}`).toBeLessThan(0.05);
+      if (r.role === 'glass') {
+        const [h, l] = hsl(r.unshaded), [ah, al] = hsl(hexRgb(r.authored)), dh = Math.abs(h - ah);
+        expect(l, `${r.material} ${r.path}: ${r.unshaded} at least the stock pane's 0.40 or its own ${al.toFixed(2)}`).toBeGreaterThan(Math.max(al, 0.40) - 0.03);
+        expect(l, `${r.material} ${r.path}: not washed out`).toBeLessThan(Math.max(al, 0.40) + 0.09);
+        expect(Math.min(dh, 360 - dh), `${r.material} ${r.path}: measured hue ${ah.toFixed(0)}`).toBeLessThan(10);
+      }
     }
     for (const r of rows.filter(x => x.path === 'city')) {
       const legacy = rows.find(x => x.path === 'legacy' && x.material === r.material)!;

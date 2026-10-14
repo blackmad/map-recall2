@@ -82,23 +82,35 @@ test('measured walls bypass the brick clamp: cell mean x tint lands on the autho
   assert.ok(afterCell(cityTint('brick', '#0a0808', 'measured')) >= 0.17);
 });
 
-test('measured glass: the grey pane cell x tint lands on the authored glass colour; unmeasured glass stays white-tinted', () => {
-  // The pane cell: grey, head 255 to sill 188, so a tint can reach a pale reflective pane.
+test('measured glass keeps the sky: the stock pane in grey x tint draws the measured hue at L >= 0.40; unmeasured glass stays white-tinted', () => {
+  // The pane cell: the stock pane's gradient and streak at full strength (head 255 with the streak, sill ~103).
   let lo = 255, hi = 0;
   for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) { const v = glassTintCellValue(x, y); lo = Math.min(lo, v); hi = Math.max(hi, v); }
-  assert.deepEqual([lo, hi], [188, 255]);
-  assert.ok(GLASS_TINT_CELL_MEAN > 205 && GLASS_TINT_CELL_MEAN < 225, String(GLASS_TINT_CELL_MEAN));
+  assert.equal(hi, 255);
+  assert.ok(lo > 95 && lo < 110, String(lo));
+  assert.ok(GLASS_TINT_CELL_MEAN > 150 && GLASS_TINT_CELL_MEAN < 165, String(GLASS_TINT_CELL_MEAN));
   assert.ok(glassTintCellValue(8, 4) > glassTintCellValue(28, 4), 'the sky streak crosses the upper pane');
-  const onCell = (hex: string) => hexToRgb(hex).map(v => v * GLASS_TINT_CELL_MEAN / 255);
+  // The stock pane's contrast: head over sill luma of #8aa1b0 / #3c474e.
+  assert.ok(Math.abs(glassTintCellValue(28, 0) / glassTintCellValue(28, GLASS_TINT_CELL_H - 1) - 157.19 / 69.17) < 0.03);
+  const onCell = (hex: string) => hexToRgb(hex).map(v => Math.round(v * GLASS_TINT_CELL_MEAN / 255)) as [number, number, number];
   // Dark (Waagdragerhof, Apollohal) and grey-blue reflective (Houthavenkade 26) glass, the hexes lane C sampled.
   for (const hex of ['#1e262c', '#2a3a42', '#3a4650', '#46545c', '#6c7f8a', '#8e9ea4']) {
     assert.equal(cityTint('glass', hex), '#ffffff', 'unmeasured glass: unchanged');
     assert.equal(cityTint('glass', hex, null), '#ffffff');
-    const tint = cityMeasuredGlassTint(hex);
+    const tint = cityMeasuredGlassTint(hex), [h, s, l] = rgbToHsl(hexToRgb(hex)), [dh, ds, dl] = rgbToHsl(onCell(tint));
     assert.equal(cityTint('glass', hex, 'measured'), tint);
-    onCell(tint).forEach((v, i) => assert.ok(Math.abs(v - hexToRgb(hex)[i]) <= 1.5, `${hex} channel ${i}: ${v}`));
+    // Lightness floored at the stock pane's (0.40); above it the glass keeps its own (the palest, #8e9ea4 at 0.60,
+    // is scaled down to the cell's reach, within 0.025).
+    assert.ok(Math.abs(dl - Math.max(l, 0.40)) <= 0.025, `${hex} L ${dl} vs ${Math.max(l, 0.40)}`);
+    // The measured hue and saturation hold.
+    assert.ok(Math.min(Math.abs(dh - h), 360 - Math.abs(dh - h)) <= 4, `${hex} hue ${dh} vs ${h}`);
+    assert.ok(Math.abs(ds - s) <= 0.04, `${hex} sat ${ds} vs ${s}`);
   }
-  // Dark and reflective glass no longer draw the same pane.
+  // Above the floor and inside the cell's reach, cell x tint lands on the authored hex.
+  onCell(cityMeasuredGlassTint('#6c7f8a')).forEach((v, i) => assert.ok(Math.abs(v - hexToRgb('#6c7f8a')[i]) <= 1.5, `channel ${i}: ${v}`));
+  // Overcast-dark measured glass (the user's Waagdragerhof #3a4650) draws as light as the stock pane, in its own hue.
+  assert.ok(Math.abs(rgbToHsl(onCell(cityMeasuredGlassTint('#3a4650')))[2] - 0.40) < 0.01);
+  // Dark and reflective glass still draw different panes.
   assert.notEqual(cityTint('glass', '#1e262c', 'measured'), cityTint('glass', '#8e9ea4', 'measured'));
 });
 
