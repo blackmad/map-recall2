@@ -77,9 +77,10 @@ export async function pickWall(fp: Footprint, others: Footprint[]): Promise<{ wa
   return { wall: fallback, note: `fallback: no wall faces a road within 45 m (best facing ${fallback.facing.toFixed(2)})`, others: walls };
 }
 
-const listUrl = (c: Rd, radius: number) => { const [lng, lat] = rdToLngLat(c); return `https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng.toFixed(6)},${lat.toFixed(6)}&radius=${radius}&srid=4326&page_size=500`; };
-export async function listPanos(c: Rd, radius = 35): Promise<any[]> {
-  let url: string | null = listUrl(c, radius); const all: any[] = [];
+const listUrl = (c: Rd, radius: number, tags?: string) => { const [lng, lat] = rdToLngLat(c); return `https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng.toFixed(6)},${lat.toFixed(6)}&radius=${radius}&srid=4326&page_size=500${tags ? `&tags=${tags}` : ''}`; };
+/** Panoramas within `radius` m; `tags` filters the API's tags (`surface-water`: the boat missions, aimed along the canals). */
+export async function listPanos(c: Rd, radius = 35, tags?: string): Promise<any[]> {
+  let url: string | null = listUrl(c, radius, tags); const all: any[] = [];
   for (let page = 0; url && page < 10; page++) {
     const json: any = await cachedJson(url);
     all.push(...(json._embedded?.panoramas ?? []));
@@ -88,15 +89,18 @@ export async function listPanos(c: Rd, radius = 35): Promise<any[]> {
   return all;
 }
 
-export function rankPanos(wall: Wall, panos: any[]): PanoPick[] {
+/** Distance window (camera to wall centre) and obliquity cap. Facades: 5-35 m (8-25 strict), 55 deg; a bridge face seen from the water (bridge-reference/select.ts) stands further off. */
+export type RankWindow = { minD: number; maxD: number; strict: [number, number]; maxObliquityDeg: number };
+export const FACADE_WINDOW: RankWindow = { minD: 5, maxD: 35, strict: [8, 25], maxObliquityDeg: 55 };
+export function rankPanos(wall: Wall, panos: any[], win: RankWindow = FACADE_WINDOW): PanoPick[] {
   return panos.flatMap(p => {
     const rd = lngLatToRd([p.geometry.coordinates[0], p.geometry.coordinates[1]]);
     const vx = rd.x - wall.mid.x, vy = rd.y - wall.mid.y, d = Math.hypot(vx, vy), standoff = vx * wall.nx + vy * wall.ny;
-    if (standoff <= 2 || d > 35 || d < 5) return [];
+    if (standoff <= 2 || d > win.maxD || d < win.minD) return [];
     const obl = Math.acos(Math.min(1, standoff / d)) * 180 / Math.PI;
     const year = Number(p.mission_year ?? String(p.timestamp).slice(0, 4));
-    return [{ panoId: p.pano_id, timestamp: p.timestamp, missionYear: year, missionType: p.mission_type, surface: p.surface_type, distM: d, obliquityDeg: obl, relaxed: d < 8 || d > 25, record: p } as PanoPick];
-  }).filter(c => c.obliquityDeg <= 55)
+    return [{ panoId: p.pano_id, timestamp: p.timestamp, missionYear: year, missionType: p.mission_type, surface: p.surface_type, distM: d, obliquityDeg: obl, relaxed: d < win.strict[0] || d > win.strict[1], record: p } as PanoPick];
+  }).filter(c => c.obliquityDeg <= win.maxObliquityDeg)
     // Strict-range candidates first; within a class, the straightest view wins, newer breaks near-ties.
     .sort((a, b) => Number(a.relaxed) - Number(b.relaxed) || (a.obliquityDeg - b.obliquityDeg) + (b.missionYear - a.missionYear) * 0.3);
 }
