@@ -32,9 +32,6 @@ export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
 export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
 export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone'] as const;
-/** Arch rings: `blocked` = a brick ring (band brick when the palette has one, else none) dressed with stone blocks: a springer block at each foot of the arch reaching 0.1 m out past the jamb, two mid voussoirs and a keystone (Kinkerstraat 1888-1897 rows). */
-export const ARCH_RINGS = ['stone', 'band', 'none', 'blocked'] as const;
-export const IMPOST_COURSES = ['continuous', 'blocks'] as const;
 export const QUOINS = ['none', 'stone'] as const;
 /**
  * Shop canopy. `fabric-straight`/`fabric-dutch`: a sloped fabric awning. `rigid` (Amsterdam School luifel): a horizontal
@@ -160,17 +157,8 @@ export interface FrontIntent {
   windows: typeof WINDOWS[number];
   /** 0-based storeys whose windows have round-arched heads (often the top storey under a parapet). */
   archedStoreys?: number[];
-  /** Relieving arches over arched/segmental windows: stone dressing, the palette's band brick, none, or `blocked` (see ARCH_RINGS). Default: band brick when the palette has one, else stone. */
-  archRings?: typeof ARCH_RINGS[number];
-  /**
-   * Painted (white/sandstone, the palette's `stone`) courses tied to the window rows, drawn between the openings of each
-   * storey (Kinkerstraat 18-4, 1888): `sill` = a course 0.11 m high and 4.5 cm proud whose top is the storey's sill line
-   * (median window bottom), running across the front and stopping at openings that reach below it (French windows);
-   * `impost` = a course 0.12 m high at the springing line of the arched heads (window top minus the arch rise; the head
-   * line on square windows), `continuous` across the piers or `blocks` (0.3 m blocks at both window edges and on a 0.55 m
-   * pitch between them). `storeys`: 0-based storeys (default every window storey above a shop/ground front).
-   */
-  stoneCourses?: {sill?: boolean; impost?: typeof IMPOST_COURSES[number]; storeys?: number[]};
+  /** Relieving arches over arched/segmental windows: stone dressing, the palette's band brick, or none. Default: band brick when the palette has one, else stone. */
+  archRings?: 'stone' | 'band' | 'none';
   hoist: boolean;
   shutters?: 'none' | 'ground' | 'all';
   shopfront?: ShopfrontIntent;
@@ -659,16 +647,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (!c || !Number.isInteger(c.from) || !Number.isInteger(c.to) || c.from < 0 || c.to >= grid || c.from > c.to) problems.push(`${at}.crownBays: {from, to} bay axes with 0 <= from <= to < ${grid}`);
     }
     if (f.archedStoreys !== undefined) { if (!Array.isArray(f.archedStoreys)) problems.push(`${at}.archedStoreys must be a list`); else f.archedStoreys.forEach(v => count(v, `${at}.archedStoreys`, 0, f.storeys - 1)); }
-    if (f.archRings !== undefined) oneOf(f.archRings, ARCH_RINGS, `${at}.archRings`);
-    if (f.stoneCourses !== undefined) {
-      const c = f.stoneCourses as Record<string, unknown>;
-      if (typeof c !== 'object' || c === null || Object.keys(c).some(k => !['sill', 'impost', 'storeys'].includes(k)) || (c.sill === undefined && c.impost === undefined)) problems.push(`${at}.stoneCourses: {sill?: true, impost?: "continuous"|"blocks", storeys?}`);
-      else {
-        if (c.sill !== undefined && c.sill !== true && c.sill !== false) problems.push(`${at}.stoneCourses.sill: boolean`);
-        if (c.impost !== undefined) oneOf(c.impost as string, IMPOST_COURSES, `${at}.stoneCourses.impost`);
-        if (c.storeys !== undefined) { if (!Array.isArray(c.storeys)) problems.push(`${at}.stoneCourses.storeys must be a list`); else (c.storeys as number[]).forEach(v => count(v, `${at}.stoneCourses.storeys`, 0, f.storeys - 1)); }
-      }
-    }
+    if (f.archRings !== undefined) oneOf(f.archRings, ['stone', 'band', 'none'], `${at}.archRings`);
     if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
     if (f.shopfront) {
