@@ -1738,5 +1738,29 @@
     "buildVersion": 2,
     "bytes": 16316,
     "triangles": 720
-  }
+  },
+ "gandhi-churchill-laan": {
+  "sourceHash": "42c051d7754d99f5",
+  "buildVersion": 2,
+  "bytes": 38504,
+  "triangles": 1830
+ },
+ "waterdraagster-bellamyplein": {
+  "sourceHash": "9686e52663e2b64e",
+  "buildVersion": 2,
+  "bytes": 14776,
+  "triangles": 542
+ },
+ "mama-baranka": {
+  "sourceHash": "e2f64d7ee6cbffa6",
+  "buildVersion": 2,
+  "bytes": 19792,
+  "triangles": 892
+ },
+ "spanjemonument": {
+  "sourceHash": "5dce32739bc8cd46",
+  "buildVersion": 2,
+  "bytes": 35636,
+  "triangles": 1531
+ }
 }

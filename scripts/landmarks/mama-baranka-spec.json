@@ -1,0 +1,40 @@
+{
+  "id": "mama-baranka",
+  "name": "Mama Baranka (Moeder Rots, Vondelpark)",
+  "landmarkId": "extract_landmarks_1989090735",
+  "modelUrl": "./models/mama-baranka.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8744933,
+      52.3593173
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 2.8,
+    "widthMetres": 2.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.8744933,
+      52.3593173
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM node 6052790489 (statue) and backlog destination extract_landmarks_1989090735; the rough-cast woman with child and the inscribed bronze disc read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0); every panorama blurs the statue with a grey box, so the facing (200 degrees, +-60) comes from the photos alone and is a weak estimate; the disc text is not legible and is modelled as incised arcs"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#5b5348",
+    "dark": "#26292b"
+  },
+  "attribution": {
+    "title": "Mama Baranka - original low-poly reconstruction",
+    "author": "Map Recall; after Mama Baranka by Nelson Carrilho in the Vondelpark",
+    "sourceUrl": "https://www.openstreetmap.org/node/6052790489",
+    "modifications": "Original texture-free low-poly figure and disc built from Commons photographs: Mama Baranka in 2019 (1)(2)(4)(6) (Ceescamel, CC BY-SA 4.0). No pixels or third-party meshes imported.",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE"
+  }
+}
