@@ -38136,6 +38136,9 @@
       assetKind: "memorial",
       materialOverrides: {
         bronze: "#2e312d",
+        dark: "#141715",
+        ochre: "#5c6556",
+        slate: "#4b554a",
         concrete: "#8e8f8c",
         sandstone: "#8a3a36",
         white: "#e2dccb"
@@ -40910,6 +40913,1084 @@
         ]
       },
       bagYear: 1990
+    },
+    {
+      id: "johnny-jordaan-groep",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      landmarkId: "osm_artwork_1704741755",
+      modelUrl: "./models/johnny-jordaan-groep.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8822208,
+          52.3701124
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.6,
+        widthMetres: 4.6
+      },
+      surveyed: {
+        anchor: [
+          4.8822208,
+          52.3701124
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#34423d",
+        concrete: "#bfbdb6",
+        ochre: "#7b6b55",
+        gold: "#8b5a35",
+        greyBrick: "#4f504f"
+      },
+      attribution: {
+        title: "Johnny Jordaanplein group - original low-poly reconstruction",
+        author: "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        sourceUrl: "https://www.openstreetmap.org/node/1704741755",
+        modifications: "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "johnny-jordaan-groep",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      landmarkId: "osm_artwork_1704741755",
+      modelUrl: "./models/johnny-jordaan-groep.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8822208,
+          52.3701124
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.6,
+        widthMetres: 4.6
+      },
+      surveyed: {
+        anchor: [
+          4.8822208,
+          52.3701124
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#34423d",
+        concrete: "#bfbdb6",
+        ochre: "#7b6b55",
+        gold: "#8b5a35",
+        greyBrick: "#4f504f"
+      },
+      attribution: {
+        title: "Johnny Jordaanplein group - original low-poly reconstruction",
+        author: "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        sourceUrl: "https://www.openstreetmap.org/node/1704741755",
+        modifications: "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "theo-thijssen-standbeeld",
+      name: "Theo Thijssen monument (Lindengracht)",
+      landmarkId: "osm_artwork_250624675",
+      modelUrl: "./models/theo-thijssen-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8874628,
+          52.3806423
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.7,
+        widthMetres: 1.3
+      },
+      surveyed: {
+        anchor: [
+          4.8874628,
+          52.3806423
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a3f3c",
+        greyBrick: "#46494b",
+        concrete: "#7f8283"
+      },
+      attribution: {
+        title: "Theo Thijssen monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1960 monument by Hans Bayens",
+        sourceUrl: "https://www.openstreetmap.org/node/250624675",
+        modifications: "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "johnny-jordaan-groep",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      landmarkId: "osm_artwork_1704741755",
+      modelUrl: "./models/johnny-jordaan-groep.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8822208,
+          52.3701124
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.6,
+        widthMetres: 4.6
+      },
+      surveyed: {
+        anchor: [
+          4.8822208,
+          52.3701124
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#34423d",
+        concrete: "#bfbdb6",
+        ochre: "#7b6b55",
+        gold: "#8b5a35",
+        greyBrick: "#4f504f"
+      },
+      attribution: {
+        title: "Johnny Jordaanplein group - original low-poly reconstruction",
+        author: "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        sourceUrl: "https://www.openstreetmap.org/node/1704741755",
+        modifications: "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "theo-thijssen-standbeeld",
+      name: "Theo Thijssen monument (Lindengracht)",
+      landmarkId: "osm_artwork_250624675",
+      modelUrl: "./models/theo-thijssen-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8874628,
+          52.3806423
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.7,
+        widthMetres: 1.3
+      },
+      surveyed: {
+        anchor: [
+          4.8874628,
+          52.3806423
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a3f3c",
+        greyBrick: "#46494b",
+        concrete: "#7f8283"
+      },
+      attribution: {
+        title: "Theo Thijssen monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1960 monument by Hans Bayens",
+        sourceUrl: "https://www.openstreetmap.org/node/250624675",
+        modifications: "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "carmiggelt-borstbeeld",
+      name: "Simon Carmiggelt bust (Weteringplantsoen)",
+      landmarkId: "osm_artwork_440673918",
+      modelUrl: "./models/carmiggelt-borstbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8887091,
+          52.3598612
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.6,
+        widthMetres: 0.6
+      },
+      surveyed: {
+        anchor: [
+          4.8887091,
+          52.3598612
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 440673918 (Simon Carmiggelt, bust by Kees Verkade, 1988); bust read from Anefo photographs 934-3460..3464 (Rob Croes, CC0, 1988-10-25); the 2020 panoramas show only a blurred pillar; facing (150 degrees, +-45) and the pillar and bust sizes are estimates. The brief placed it on the Kloveniersburgwal; OSM and the 1988 photographs put it in the Weteringplantsoen"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a4440",
+        concrete: "#c1bcb2",
+        greyBrick: "#4b4c4c"
+      },
+      attribution: {
+        title: "Simon Carmiggelt bust - original low-poly reconstruction",
+        author: "Map Recall; after the 1988 bust by Kees Verkade",
+        sourceUrl: "https://www.openstreetmap.org/node/440673918",
+        modifications: "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "johnny-jordaan-groep",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      landmarkId: "osm_artwork_1704741755",
+      modelUrl: "./models/johnny-jordaan-groep.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8822208,
+          52.3701124
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.6,
+        widthMetres: 4.6
+      },
+      surveyed: {
+        anchor: [
+          4.8822208,
+          52.3701124
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#34423d",
+        concrete: "#bfbdb6",
+        ochre: "#7b6b55",
+        gold: "#8b5a35",
+        greyBrick: "#4f504f"
+      },
+      attribution: {
+        title: "Johnny Jordaanplein group - original low-poly reconstruction",
+        author: "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        sourceUrl: "https://www.openstreetmap.org/node/1704741755",
+        modifications: "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "theo-thijssen-standbeeld",
+      name: "Theo Thijssen monument (Lindengracht)",
+      landmarkId: "osm_artwork_250624675",
+      modelUrl: "./models/theo-thijssen-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8874628,
+          52.3806423
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.7,
+        widthMetres: 1.3
+      },
+      surveyed: {
+        anchor: [
+          4.8874628,
+          52.3806423
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a3f3c",
+        greyBrick: "#46494b",
+        concrete: "#7f8283"
+      },
+      attribution: {
+        title: "Theo Thijssen monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1960 monument by Hans Bayens",
+        sourceUrl: "https://www.openstreetmap.org/node/250624675",
+        modifications: "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "carmiggelt-borstbeeld",
+      name: "Simon Carmiggelt bust (Weteringplantsoen)",
+      landmarkId: "osm_artwork_440673918",
+      modelUrl: "./models/carmiggelt-borstbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8887091,
+          52.3598612
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.6,
+        widthMetres: 0.6
+      },
+      surveyed: {
+        anchor: [
+          4.8887091,
+          52.3598612
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 440673918 (Simon Carmiggelt, bust by Kees Verkade, 1988); bust read from Anefo photographs 934-3460..3464 (Rob Croes, CC0, 1988-10-25); the 2020 panoramas show only a blurred pillar; facing (150 degrees, +-45) and the pillar and bust sizes are estimates. The brief placed it on the Kloveniersburgwal; OSM and the 1988 photographs put it in the Weteringplantsoen"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a4440",
+        concrete: "#c1bcb2",
+        greyBrick: "#4b4c4c"
+      },
+      attribution: {
+        title: "Simon Carmiggelt bust - original low-poly reconstruction",
+        author: "Map Recall; after the 1988 bust by Kees Verkade",
+        sourceUrl: "https://www.openstreetmap.org/node/440673918",
+        modifications: "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "winkler-prins-monument",
+      name: "Winkler Prins monument (Frederiksplein)",
+      landmarkId: "osm_artwork_1310554563",
+      modelUrl: "./models/winkler-prins-monument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9001164,
+          52.3606387
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.8,
+        widthMetres: 0.8
+      },
+      surveyed: {
+        anchor: [
+          4.9001164,
+          52.3606387
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 1310554563 (Anthony Winkler Prins, memorial=sculpture); column read from Wikimedia Commons photographs (Brbbl CC BY-SA 3.0 and 4.0; Anefo 923-8960/8961/9119 CC0); height (11 m) and disc diameter (0.72 m) are estimates; rotationally symmetric so no facing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#b9bcba",
+        greyBrick: "#4a4c4d"
+      },
+      attribution: {
+        title: "Winkler Prins monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1970 monument by Andre Volten",
+        sourceUrl: "https://www.openstreetmap.org/node/1310554563",
+        modifications: "Original texture-free low-poly stacked-disc column built from Commons photographs: Monument Anthony Winkler Prins Andre Volten Frederiksplein (Brbbl, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG) and its Detail (CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "johnny-jordaan-groep",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      landmarkId: "osm_artwork_1704741755",
+      modelUrl: "./models/johnny-jordaan-groep.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8822208,
+          52.3701124
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.6,
+        widthMetres: 4.6
+      },
+      surveyed: {
+        anchor: [
+          4.8822208,
+          52.3701124
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#34423d",
+        concrete: "#bfbdb6",
+        ochre: "#7b6b55",
+        gold: "#8b5a35",
+        greyBrick: "#4f504f"
+      },
+      attribution: {
+        title: "Johnny Jordaanplein group - original low-poly reconstruction",
+        author: "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        sourceUrl: "https://www.openstreetmap.org/node/1704741755",
+        modifications: "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "theo-thijssen-standbeeld",
+      name: "Theo Thijssen monument (Lindengracht)",
+      landmarkId: "osm_artwork_250624675",
+      modelUrl: "./models/theo-thijssen-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8874628,
+          52.3806423
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.7,
+        widthMetres: 1.3
+      },
+      surveyed: {
+        anchor: [
+          4.8874628,
+          52.3806423
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a3f3c",
+        greyBrick: "#46494b",
+        concrete: "#7f8283"
+      },
+      attribution: {
+        title: "Theo Thijssen monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1960 monument by Hans Bayens",
+        sourceUrl: "https://www.openstreetmap.org/node/250624675",
+        modifications: "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "carmiggelt-borstbeeld",
+      name: "Simon Carmiggelt bust (Weteringplantsoen)",
+      landmarkId: "osm_artwork_440673918",
+      modelUrl: "./models/carmiggelt-borstbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8887091,
+          52.3598612
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.6,
+        widthMetres: 0.6
+      },
+      surveyed: {
+        anchor: [
+          4.8887091,
+          52.3598612
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 440673918 (Simon Carmiggelt, bust by Kees Verkade, 1988); bust read from Anefo photographs 934-3460..3464 (Rob Croes, CC0, 1988-10-25); the 2020 panoramas show only a blurred pillar; facing (150 degrees, +-45) and the pillar and bust sizes are estimates. The brief placed it on the Kloveniersburgwal; OSM and the 1988 photographs put it in the Weteringplantsoen"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a4440",
+        concrete: "#c1bcb2",
+        greyBrick: "#4b4c4c"
+      },
+      attribution: {
+        title: "Simon Carmiggelt bust - original low-poly reconstruction",
+        author: "Map Recall; after the 1988 bust by Kees Verkade",
+        sourceUrl: "https://www.openstreetmap.org/node/440673918",
+        modifications: "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "winkler-prins-monument",
+      name: "Winkler Prins monument (Frederiksplein)",
+      landmarkId: "osm_artwork_1310554563",
+      modelUrl: "./models/winkler-prins-monument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9001164,
+          52.3606387
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.8,
+        widthMetres: 0.8
+      },
+      surveyed: {
+        anchor: [
+          4.9001164,
+          52.3606387
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 1310554563 (Anthony Winkler Prins, memorial=sculpture); column read from Wikimedia Commons photographs (Brbbl CC BY-SA 3.0 and 4.0; Anefo 923-8960/8961/9119 CC0); height (11 m) and disc diameter (0.72 m) are estimates; rotationally symmetric so no facing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#b9bcba",
+        greyBrick: "#4a4c4d"
+      },
+      attribution: {
+        title: "Winkler Prins monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1970 monument by Andre Volten",
+        sourceUrl: "https://www.openstreetmap.org/node/1310554563",
+        modifications: "Original texture-free low-poly stacked-disc column built from Commons photographs: Monument Anthony Winkler Prins Andre Volten Frederiksplein (Brbbl, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG) and its Detail (CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "kinderbrug-meisje-eekhoorns",
+      name: "Kinderbrug: Girl with squirrels (Hildo Krop)",
+      landmarkId: "osm_artwork_4370460330",
+      modelUrl: "./models/kinderbrug-meisje-eekhoorns.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.88629,
+          52.34726
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.4,
+        widthMetres: 1.2
+      },
+      surveyed: {
+        anchor: [
+          4.88629,
+          52.34726
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 4370460330 (Hildo Krop 1931, bridge 420); group read from Wikimedia Commons photographs (Alf van Beem public domain; Marcelmulder68 CC BY-SA 3.0 nl); the facing 180 stands on panorama TMX7316010203-001170_pano_0000_000080 (back of the boy against the Amstel hotel buildings; the girl is assumed to match); pier height (2.3 m) and group size are estimates scaled off the girl head"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        stone: "#c9c3b2",
+        brick: "#8f4c3b"
+      },
+      attribution: {
+        title: "Kinderbrug: Girl with squirrels (Hildo Krop) - original low-poly reconstruction",
+        author: "Map Recall; after the group by Hildo Krop on bridge 420",
+        sourceUrl: "https://www.openstreetmap.org/node/4370460330",
+        modifications: "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "johnny-jordaan-groep",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      landmarkId: "osm_artwork_1704741755",
+      modelUrl: "./models/johnny-jordaan-groep.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8822208,
+          52.3701124
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.6,
+        widthMetres: 4.6
+      },
+      surveyed: {
+        anchor: [
+          4.8822208,
+          52.3701124
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 1704741755 (Johnny Jordaan), 11913325449 (Tante Leen), 11913325451 (Johnny Meijer); five bronzes, plinths and the bench with its raised letters read from Wikimedia Commons photographs (HJ Mitchell CC BY 4.0, Ceescamel CC0) and the 2016-2020 panoramas (faces blurred); the facing (160 degrees, +-20), plinth sizes and bronze heights are visual estimates; the plaques on the blocks are not legible and are plain plates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#34423d",
+        concrete: "#bfbdb6",
+        ochre: "#7b6b55",
+        gold: "#8b5a35",
+        greyBrick: "#4f504f"
+      },
+      attribution: {
+        title: "Johnny Jordaanplein group - original low-poly reconstruction",
+        author: "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
+        sourceUrl: "https://www.openstreetmap.org/node/1704741755",
+        modifications: "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "theo-thijssen-standbeeld",
+      name: "Theo Thijssen monument (Lindengracht)",
+      landmarkId: "osm_artwork_250624675",
+      modelUrl: "./models/theo-thijssen-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8874628,
+          52.3806423
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.7,
+        widthMetres: 1.3
+      },
+      surveyed: {
+        anchor: [
+          4.8874628,
+          52.3806423
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a3f3c",
+        greyBrick: "#46494b",
+        concrete: "#7f8283"
+      },
+      attribution: {
+        title: "Theo Thijssen monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1960 monument by Hans Bayens",
+        sourceUrl: "https://www.openstreetmap.org/node/250624675",
+        modifications: "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "carmiggelt-borstbeeld",
+      name: "Simon Carmiggelt bust (Weteringplantsoen)",
+      landmarkId: "osm_artwork_440673918",
+      modelUrl: "./models/carmiggelt-borstbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8887091,
+          52.3598612
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.6,
+        widthMetres: 0.6
+      },
+      surveyed: {
+        anchor: [
+          4.8887091,
+          52.3598612
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 440673918 (Simon Carmiggelt, bust by Kees Verkade, 1988); bust read from Anefo photographs 934-3460..3464 (Rob Croes, CC0, 1988-10-25); the 2020 panoramas show only a blurred pillar; facing (150 degrees, +-45) and the pillar and bust sizes are estimates. The brief placed it on the Kloveniersburgwal; OSM and the 1988 photographs put it in the Weteringplantsoen"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a4440",
+        concrete: "#c1bcb2",
+        greyBrick: "#4b4c4c"
+      },
+      attribution: {
+        title: "Simon Carmiggelt bust - original low-poly reconstruction",
+        author: "Map Recall; after the 1988 bust by Kees Verkade",
+        sourceUrl: "https://www.openstreetmap.org/node/440673918",
+        modifications: "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "winkler-prins-monument",
+      name: "Winkler Prins monument (Frederiksplein)",
+      landmarkId: "osm_artwork_1310554563",
+      modelUrl: "./models/winkler-prins-monument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9001164,
+          52.3606387
+        ],
+        headingDegrees: 0,
+        lengthMetres: 0.8,
+        widthMetres: 0.8
+      },
+      surveyed: {
+        anchor: [
+          4.9001164,
+          52.3606387
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 1310554563 (Anthony Winkler Prins, memorial=sculpture); column read from Wikimedia Commons photographs (Brbbl CC BY-SA 3.0 and 4.0; Anefo 923-8960/8961/9119 CC0); height (11 m) and disc diameter (0.72 m) are estimates; rotationally symmetric so no facing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#b9bcba",
+        greyBrick: "#4a4c4d"
+      },
+      attribution: {
+        title: "Winkler Prins monument - original low-poly reconstruction",
+        author: "Map Recall; after the 1970 monument by Andre Volten",
+        sourceUrl: "https://www.openstreetmap.org/node/1310554563",
+        modifications: "Original texture-free low-poly stacked-disc column built from Commons photographs: Monument Anthony Winkler Prins Andre Volten Frederiksplein (Brbbl, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG) and its Detail (CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "kinderbrug-meisje-eekhoorns",
+      name: "Kinderbrug: Girl with squirrels (Hildo Krop)",
+      landmarkId: "osm_artwork_4370460330",
+      modelUrl: "./models/kinderbrug-meisje-eekhoorns.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.88629,
+          52.34726
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.4,
+        widthMetres: 1.2
+      },
+      surveyed: {
+        anchor: [
+          4.88629,
+          52.34726
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 4370460330 (Hildo Krop 1931, bridge 420); group read from Wikimedia Commons photographs (Alf van Beem public domain; Marcelmulder68 CC BY-SA 3.0 nl); the facing 180 stands on panorama TMX7316010203-001170_pano_0000_000080 (back of the boy against the Amstel hotel buildings; the girl is assumed to match); pier height (2.3 m) and group size are estimates scaled off the girl head"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        stone: "#c9c3b2",
+        brick: "#8f4c3b"
+      },
+      attribution: {
+        title: "Kinderbrug: Girl with squirrels (Hildo Krop) - original low-poly reconstruction",
+        author: "Map Recall; after the group by Hildo Krop on bridge 420",
+        sourceUrl: "https://www.openstreetmap.org/node/4370460330",
+        modifications: "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "kinderbrug-jongen-konijnen",
+      name: "Kinderbrug: Boy with rabbits (Hildo Krop)",
+      landmarkId: "osm_artwork_4370459609",
+      modelUrl: "./models/kinderbrug-jongen-konijnen.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.88594,
+          52.34728
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.4,
+        widthMetres: 1.2
+      },
+      surveyed: {
+        anchor: [
+          4.88594,
+          52.34728
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 4370459609 (Hildo Krop 1931, bridge 420); group read from Wikimedia Commons photographs (Alf van Beem public domain; Marcelmulder68 CC BY-SA 3.0 nl); the facing 180 stands on panorama TMX7316010203-001170_pano_0000_000080 (back of the boy against the Amstel hotel buildings; the girl is assumed to match); pier height (2.3 m) and group size are estimates scaled off the girl head"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        stone: "#c9c3b2",
+        brick: "#8f4c3b"
+      },
+      attribution: {
+        title: "Kinderbrug: Boy with rabbits (Hildo Krop) - original low-poly reconstruction",
+        author: "Map Recall; after the group by Hildo Krop on bridge 420",
+        sourceUrl: "https://www.openstreetmap.org/node/4370459609",
+        modifications: "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "gandhi-churchill-laan",
+      name: "Mahatma Gandhi statue (Churchill-laan)",
+      landmarkId: "extract_landmarks_37868198",
+      modelUrl: "./models/gandhi-churchill-laan.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8932492,
+          52.3470354
+        ],
+        headingDegrees: 0,
+        lengthMetres: 8.8,
+        widthMetres: 8.8
+      },
+      surveyed: {
+        anchor: [
+          4.8932492,
+          52.3470354
+        ],
+        northOffsetDegrees: 0,
+        source: 'Backlog destination "Mahatma Gandhi" (extract_landmarks_37868198) on the median of the Churchill-laan; the walking bronze, the limestone block with its MAHATMA GANDHI plate, the cobble circles, benches and hedge read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Antony Antony CC BY 2.0; Evanherk CC BY-SA 3.0) and 2018-2022 panoramas that show the statue small from both carriageways; the facing (90 degrees, +-30, along the carriageways) and all sizes are estimates'
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#4a4038",
+        stone: "#c9c2ae",
+        greyBrick: "#8a857c",
+        green: "#4f6b3c",
+        ochre: "#8a6a45",
+        dark: "#2d3033",
+        frame: "#8f8a7f"
+      },
+      attribution: {
+        title: "Gandhi statue (Churchill-laan) - original low-poly reconstruction",
+        author: "Map Recall; after the Gandhi statue on the Churchill-laan median",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(5).jpg",
+        modifications: "Original texture-free low-poly figure, plinth, paving, benches and hedge built from Commons photographs: Gandhi (Amsterdam) 1-5 (Ceescamel, CC BY-SA 4.0), Statue of Gandhi, Amsterdam (Antony Antony, CC BY 2.0), Gandhi churchilllaan (Evanherk, CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "de-schreeuw-oosterpark",
+      name: "De Schreeuw (Oosterpark)",
+      landmarkId: "extract_landmarks_889547307",
+      modelUrl: "./models/de-schreeuw-oosterpark.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9222558,
+          52.3595317
+        ],
+        headingDegrees: 0,
+        lengthMetres: 3.4,
+        widthMetres: 2.4
+      },
+      surveyed: {
+        anchor: [
+          4.9222558,
+          52.3595317
+        ],
+        northOffsetDegrees: 0,
+        source: 'Backlog destination "De Schreeuw" (extract_landmarks_889547307, 52.35959 N 4.92236 E); the statue itself stands 10 m SW of that point at 52.35953 N 4.92226 E (three panoramas of 2016 and 2020, ray intersection, +-4 m, so the anchor is the intersection); the seven stainless blades and the plate read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; De schreeuw - oosterpark CC BY-SA 3.0); the facing (110 degrees, +-30) and the 3.7 m height are estimates'
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#a9aeb0",
+        concrete: "#8a8d8e"
+      },
+      attribution: {
+        title: "De Schreeuw (Oosterpark) - original low-poly reconstruction",
+        author: "Map Recall; after De Schreeuw by Jeroen Henneman (2007)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:2020_De_Schreeuw_(08).jpg",
+        modifications: "Original texture-free low-poly blades and plate built from Commons photographs: 2020 De Schreeuw 01, 03, 06, 08 (Ceescamel, CC BY-SA 4.0) and De schreeuw - oosterpark (CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "waterdraagster-bellamyplein",
+      name: "De Waterdraagster met vissen (Bellamyplein)",
+      landmarkId: "extract_landmarks_1336248768",
+      modelUrl: "./models/waterdraagster-bellamyplein.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8676653,
+          52.3680209
+        ],
+        headingDegrees: 0,
+        lengthMetres: 13,
+        widthMetres: 13
+      },
+      surveyed: {
+        anchor: [
+          4.8676653,
+          52.3680209
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM nodes 9465999990 (waterdraagster), 2303927479 and 2303927486 (the two fish, Leo Braat) and backlog destination extract_landmarks_1336248768; the Waterdraagster, Vis I and Vis II read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Marion Golsteijn CC BY-SA 3.0); the basin rim is the circle through the three nodes (centre 6 m north, radius 5.9 m); the panoramas show only the gate piers and the water 22 m away; the facing (0, the figure looks to the pond centre) and the sizes are estimates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#5b4a33",
+        concrete: "#e6e4dc",
+        dark: "#3f4245",
+        blue: "#5c7c8a"
+      },
+      attribution: {
+        title: "De Waterdraagster met vissen - original low-poly reconstruction",
+        author: "Map Recall; after the fountain by Leo Braat on the Bellamyplein",
+        sourceUrl: "https://www.openstreetmap.org/node/9465999990",
+        modifications: "Original texture-free low-poly woman, two fish and basin rim built from Commons photographs: 2021 Waterdraagster met vissen (Ceescamel, CC BY-SA 4.0) and Waterdraagster 4 (Marion Golsteijn, CC BY-SA 3.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "mama-baranka",
+      name: "Mama Baranka (Moeder Rots, Vondelpark)",
+      landmarkId: "extract_landmarks_1989090735",
+      modelUrl: "./models/mama-baranka.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8744933,
+          52.3593173
+        ],
+        headingDegrees: 0,
+        lengthMetres: 2.8,
+        widthMetres: 2.8
+      },
+      surveyed: {
+        anchor: [
+          4.8744933,
+          52.3593173
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM node 6052790489 (statue) and backlog destination extract_landmarks_1989090735; the rough-cast woman with child and the inscribed bronze disc read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0); every panorama blurs the statue with a grey box, so the facing (200 degrees, +-60) comes from the photos alone and is a weak estimate; the disc text is not legible and is modelled as incised arcs"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#5b5348",
+        dark: "#26292b"
+      },
+      attribution: {
+        title: "Mama Baranka - original low-poly reconstruction",
+        author: "Map Recall; after Mama Baranka by Nelson Carrilho in the Vondelpark",
+        sourceUrl: "https://www.openstreetmap.org/node/6052790489",
+        modifications: "Original texture-free low-poly figure and disc built from Commons photographs: Mama Baranka in 2019 (1)(2)(4)(6) (Ceescamel, CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "spanjemonument",
+      name: "Spanjemonument (Amsterdam-Noord)",
+      landmarkId: "extract_landmarks_1299755268",
+      modelUrl: "./models/spanjemonument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9138603,
+          52.3874585
+        ],
+        headingDegrees: 0,
+        lengthMetres: 9,
+        widthMetres: 14
+      },
+      surveyed: {
+        anchor: [
+          4.9138603,
+          52.3874585
+        ],
+        northOffsetDegrees: 0,
+        source: 'Backlog destination "Spanjemonument" (extract_landmarks_1299755268); the steel ribbon, the two flying bronzes, the paving circle and the brick wall with its pink plaque read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Eddy Roos CC BY-SA 4.0) and Gemeente Amsterdam panorama TMX7316010203-001303_pano_0002_000532 (2019, CC BY 4.0, 5 m away); the facing (235 degrees, +-30, the flight direction) comes from that panorama; the wall position (3.7 m ahead of the flight) and the 5.4 m height are estimates'
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        frame: "#b5babc",
+        bronze: "#4a3b2e",
+        greyBrick: "#8b6a58",
+        brick: "#9a5240",
+        pink: "#b06f6a",
+        white: "#efe9db"
+      },
+      attribution: {
+        title: "Spanjemonument - original low-poly reconstruction",
+        author: "Map Recall; after the Spanjemonument in Amsterdam-Noord",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Spanje_monument_groot.jpg",
+        modifications: "Original texture-free low-poly steel ribbon, flying figures, paving and wall built from Commons photographs: 2021 Spanjemonument beeld 1-3 and plaquette 1 (Ceescamel, CC BY-SA 4.0) and Spanje monument groot (Eddy Roos, CC BY-SA 4.0). No pixels or third-party meshes imported.",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE"
+      }
     }
   ];
 

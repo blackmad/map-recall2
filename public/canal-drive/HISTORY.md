@@ -1,5 +1,101 @@
 # Canal Recall — what is built
 
+## User review: the large-tier batches and the kit statues are rejected; the plan (2026-10-14, night)
+
+The user looked at the demo page and rejected two product lines. The
+large-recipe "dominant buildings" batches: "these both totally miss the
+tone of these windows" (Apollohal: a glazed hall drawn as 22 small punched
+windows in tan brick; Waagdragerhof: dark purple-brown brick with tall
+French windows drawn as bright orange brick with small squares), "horrible"
+(Houthavenkade 26: full-height glass balcony columns drawn as white slabs
+on orange brick), "awful reconstruction" (Singel 457: an ornamented
+Dutch-Renaissance front with the Kalverpassage glass roof drawn as a flat
+bay grid), "The dominant buildings kit work is doing an awful job, please
+revisit". And the statues: "these sculptures are bizarre - I thought we
+were trying to do 3d reconstructions?". Both are right, and the
+integrator had passed all of them in gallery review. Causes found in
+code: palettes hand-guessed, glass hard-coded, systems defaulting to
+`brick-bay-grid` with punched windows whatever the photo shows,
+`cityWallTint` clamping brick lightness to 0.3–0.6 so dark or pale walls
+render tan anyway, the contact sheet pairing photos to wall groups
+positionally (`large.ts:70`) and showing a grey tile when the gitignored
+crops are missing, geometry-only gates; statues through the figure kit
+although the plan put sculptures on a reconstruction track. Actions:
+Singel 457 uninstalled (bespoke queue); batches 7 and public-buildings 4
+held unmerged (`large/dominant-7-20261014`,
+`large/public-buildings-4-20261014`; their tooling commits `garageBays`
+and the installer's OSM-outline aliases cherry-picked); no new dominant
+batches; the plan "Large tier to photo likeness; commercial streets with
+a district style" approved 2026-10-14
+(`docs/plans/large-tier-likeness-and-streets-20261014.md`): lane A
+measurement and likeness tooling (crops archived to the source-data repo,
+crop-to-panel mapping, measured palette and window grid, likeness score
+and verdict on the sheet, install gate), lane B measured tint bypass in
+the look, lane C kit vocabulary (glazed hall, glazed columns,
+French-window ledge), a texture prototype on the three complaint houses
+run alongside the kit (the user: "keep making the kit better, try both"),
+lane D triage of the ~100 installed houses with ride-visibility ranking;
+Kinkerstraat first on block faces with a shared type library per
+district, then Jan Evertsenstraat with an Amsterdam School component set
+(the Street-View-based pilot retired); bridges to per-bridge fidelity;
+sculptures by reconstruction (PDOK 8 cm cloud, TripoSR; the city's
+mobile-mapping cloud host is dead). The acceptance rule is in
+`docs/buildings-pipeline.md` "Scope and acceptance".
+
+## Tropenmuseum, third pass (2026-10-14, night)
+
+Lane `landmarks/tropenmuseum-3-20261014`. Budget first: the `TROP_*` env
+toggles became typed `TropenmuseumOptions`/`PavilionOptions`; a two-pass
+compile (`tropenmuseum-hidden.ts`) leaves window cells plain brick where a
+horizontal ray meets a back-facing wall within 40 m (courts and wings,
+about 1k tris); cross windows single-light on wings under 7 storeys;
+lighter anchors, figures, globes, dentils, fanlight, stair; party-wall
+bearings narrowed to [61, 151, 331]; `tropenmuseum-groups.ts` repointed at
+the current facts (it read stale rhombus facts). Rebuilt HEAD was 33,673
+tris / 502,484 B (over the 500 KB gate); after the pass 33,332 / 496,552,
+lod1 7.4k. Modelled from 32 m rectified panorama crops
+(`tropenmuseum-tall-crops.ts`, CC BY 4.0): the north pavilions' stages
+above 22 m (quoins, hood-ringed windows, paired two-tier centre windows
+with piers and head cornice, relief panel, blind-arch groups, console
+cornice at 27.7–29.5 m, clock panel with dial; w10's cornice corrected to
+21.8–22.35 m), the connecting block (`tropenmuseum-block.ts`: a brick slab
+from 12 m buries 3DBAG's slate roof, arched triple head, hooded side
+windows, cornice at 16.45–16.95 m, stage at 0.7 scale, windows applied
+proud since the host has nothing to cut), the south gable wing
+(`tropenmuseum-gablewing.ts`: hooded first-floor windows, three
+round-arched windows over relief fields, string courses, gable grid, oval
+cartouche, pediment, ball finials) and the east risalit from Alf van
+Beem's public-domain Commons photo (`tropenmuseum-risalit.ts`: five-step
+stair, arched door with pilasters and entablature, oval window with two
+reclining figures, flank windows, triangular-hooded windows, gable grid;
+heights ±0.3 m from one frontal photo). Eight 36-tri lion masks on the
+cornice consoles. zfight-near rose to 72 m² (applied windows 4 cm proud).
+Left: the swung gables keep 3DBAG's plain outline, the south-pavilion
+clock dormer, relief iconography, arcade tracery, risalit souterrain
+arches, the wing's ground floor; 3.4 KB of byte headroom; the inventory
+still says "two-light" where wings are single-light.
+
+## Landmark queue, batch 10 (2026-10-14, night)
+
+Lane `landmarks/queue-10-20261014`, five statues from licensed Commons
+photos (mostly Ceescamel, CC BY-SA 4.0; recorded in the inventory
+`sources` and spec attribution) and the panoramas, still through the
+figure, clothing, instrument and animal kits (the last batch on that
+path; see the review entry above): Gandhi on the Churchill-laan (5.4k
+tris: striding bronze with glasses, shawl, dhoti, staff and book, the
+lettered limestone block, two cobble circles, benches, hedge arc), De
+Schreeuw in the Oosterpark (1.4k: seven stainless blades cut from one
+profile; anchored 10 m from the backlog point by ray-intersecting three
+panoramas), Waterdraagster met vissen on the Bellamyplein (3.2k: carrier,
+two fish, basin rim through its three OSM nodes), Mama Baranka in the
+Vondelpark (3.4k; the panoramas blur her, facing from photos 200 ± 60) and
+the Spanjemonument in Noord (4.9k: two bronzes off a steel ribbon, the
+NO PASARAN plaque wall). All pass `audit:glb`. The backlog still lists
+Carmiggelt, Winkler Prins, Anne Frank, Walraven van Hall and Multatuli as
+pending though they exist; `build-manual-landmarks.ts` carries duplicated
+Thijssen/Jordaan import and dispatch lines.
+
+
 ## Desktop perf, third pass (2026-10-14, night)
 
 Lane `perf/desktop-3-20261014`, `docs/performance/desktop-20261014.md`
