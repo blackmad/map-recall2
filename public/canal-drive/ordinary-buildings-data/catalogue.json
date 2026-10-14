@@ -28835,9 +28835,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164930",
       "name": "Kattenburgerstraat 206-266, Amsterdam (Kattenburg): 1976 brown concrete-and-brick gallery-access housing slab",
-      "hash": "6e77e17aa5cc0b84d6004eaec1bdc5e5a0d3ba2fe4743c7c26a8d1546cedef69",
-      "sha256": "6e77e17aa5cc0b84d6004eaec1bdc5e5a0d3ba2fe4743c7c26a8d1546cedef69",
-      "bytes": 913804,
+      "hash": "4874f86b50023ab10adeb4a35a2263e0727806ce4d09f880bbb373247d09b1a2",
+      "sha256": "4874f86b50023ab10adeb4a35a2263e0727806ce4d09f880bbb373247d09b1a2",
+      "bytes": 913612,
       "triangles": 11683,
       "materials": 6,
       "textures": 0,
@@ -29798,7 +29798,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164930",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:41:48.991Z"
+      "updatedAt": "2026-10-14T03:08:45.868Z"
     },
     {
       "id": "ordinary-0363100012165051",
