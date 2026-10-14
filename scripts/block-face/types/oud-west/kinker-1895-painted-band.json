@@ -22,8 +22,12 @@
       "kind": "segmental",
       "archRing": {
         "colour": "stone",
-        "style": "blocks",
-        "keystone": true
+        "style": "springers",
+        "keystone": true,
+        "springerSize": [
+          0.12,
+          0.15
+        ]
       }
     },
     "windowSurround": "sill",
@@ -53,16 +57,18 @@
       "brick": "#565b56",
       "frame": "#b5bcad",
       "door": "black",
-      "stone": "#c5c8b1",
+      "stone": "#e2e1d5",
       "cornice": "#b4b69e",
-      "wallMaterial": "painted-brick"
+      "wallMaterial": "painted-brick",
+      "stoneMaterial": "painted"
     },
     "dark-brown": {
       "brick": "#5d5042",
       "frame": "#b7beac",
       "door": "black",
-      "stone": "#c5c8b1",
-      "cornice": "#b4b69e"
+      "stone": "#e3e1d5",
+      "cornice": "#b4b69e",
+      "stoneMaterial": "painted"
     }
   },
   "roof": {
@@ -122,6 +128,7 @@
   ],
   "notes": [
     "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (236471 black-painted, 158140 dark brown); stone = band-row median of the group (n=3).",
-    "black-painted: wallMaterial painted-brick (Oud-West 1900 lane's key, merged 2026-10-14) instead of the stucco slot, so the measured near-black paint is exported unclamped over brick joints."
+    "black-painted: wallMaterial painted-brick (Oud-West 1900 lane's key, merged 2026-10-14) instead of the stucco slot, so the measured near-black paint is exported unclamped over brick joints.",
+    "White heads (kit lane 2026-10-14): the blocked heads are archRing style springers + keystone (two small white springers, about 0.12 x 0.15 m at the jamb, measured on kinker-206-242 pands 1-5 at 64 px/m); stone = paint from palette-from-strip.ts: 236471 #e2e1d5, 158140 #e3e1d5 (no band rows on either: accent = frame paint, ratio 1), stoneMaterial painted."
   ]
 }

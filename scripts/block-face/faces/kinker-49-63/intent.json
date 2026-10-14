@@ -1,0 +1,661 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-49-63",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/kinker-49-63/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 49A-63 (odd side, Da Costakade to Bellamystraat), 1886-1892 neo-renaissance group (49A-53A: white speklagen, sunburst and blocked arches, stepped and pointed gables) and the 1891 row 55-63 (keystoned flat heads; 57, 59 and 63 with blocked segmental arches on the two lower upper storeys). Strip 2024-11-29 (low sun); shops read on zoom crops."
+ },
+ "types": [
+  "kinker-1886-neo-renaissance",
+  "kinker-1890-plain-brick",
+  "kinker-1890-brick-arched"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160810",
+   "slug": "kinker-160810",
+   "address": "Kinkerstraat 49A",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "palette": "brown-speklaag",
+    "modules": [
+     {
+      "crown": "step-gable",
+      "share": 0.36,
+      "overrides": {
+       "bays": 1
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#26302e",
+        "fascia": true,
+        "entrance": "none",
+        "glazing": "single",
+        "stallriser": "none",
+        "awning": {
+         "style": "fabric-straight",
+         "colour": "#2a2f30"
+        },
+        "evidence": "dark awning over the fruit display"
+       }
+      }
+     },
+     {
+      "crown": "none",
+      "share": 0.64,
+      "overrides": {
+       "bays": 2
+      }
+     }
+    ],
+    "ground": {
+     "shopfront": {
+      "colour": "#26302e",
+      "fascia": true,
+      "name": "Sener Groente Fruit",
+      "sign": {
+       "text": "GROENTE FRUIT SENER DELICATESSEN",
+       "textColour": "#e8e8e0",
+       "mount": "fascia"
+      },
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "none",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#2a2f30"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 1: dark fascia lettered GROENTE FRUIT SENER DELICATESSEN, dark awning over a fruit display; OSM node 2809443947 shop=greengrocer"
+     }
+    },
+    "overrides": {
+     "palette": {
+      "brick": "#5d5349"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Sener Groente Fruit",
+    "category": "shop=greengrocer",
+    "osm": {
+     "type": "node",
+     "id": 2809443947,
+     "name": "Sener Groente Fruit"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): corner, a blind brick pier with speklagen on the left third rising into a tall stepped gable; 2 axes on the right with round and segmental heads, a dormer",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the left third is blind (no windows), drawn with one window axis",
+     "the dormer over the right two axes is not drawn (no dormer crown on the type)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236773",
+   "slug": "kinker-236773",
+   "address": "Kinkerstraat 51",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "palette": "brown-speklaag",
+    "modules": [
+     {
+      "crown": "none",
+      "share": 0.13,
+      "overrides": {
+       "bays": 1
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#a8402e",
+        "fascia": true,
+        "fasciaColour": "#a8402e",
+        "entrance": "none",
+        "glazing": "single",
+        "stallriser": "medium",
+        "evidence": "red pui, left window"
+       }
+      }
+     },
+     {
+      "crown": "point-gable",
+      "share": 0.37,
+      "overrides": {
+       "bays": 2
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#a8402e",
+        "fascia": true,
+        "fasciaColour": "#a8402e",
+        "entrance": "none",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "medium",
+        "evidence": "red pui, three-light window"
+       }
+      }
+     },
+     {
+      "crown": "none",
+      "share": 0.19,
+      "overrides": {
+       "bays": 1
+      }
+     },
+     {
+      "crown": "step-gable",
+      "share": 0.31,
+      "overrides": {
+       "bays": 2
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#a8402e",
+        "fascia": true,
+        "fasciaColour": "#a8402e",
+        "entrance": "none",
+        "glazing": "split",
+        "displayWindows": 3,
+        "stallriser": "medium",
+        "evidence": "red pui, three-light window"
+       }
+      }
+     }
+    ],
+    "ground": {
+     "shopfront": {
+      "colour": "#a8402e",
+      "fascia": true,
+      "name": "Chez Rome",
+      "sign": {
+       "text": "CHEZ ROME",
+       "textColour": "#f0ece0",
+       "mount": "fascia"
+      },
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-11-29 pand 2: one red-painted pui over the whole 13 m front, white script CHEZ ROME (read on the zoom crop) over the recessed centre door; OSM node 2809444844 is Mano Bakery shop=bakery"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Chez Rome",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 2809444844,
+     "name": "Mano Bakery"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "OSM says Mano Bakery; the 2024-11-29 sign reads Chez Rome (script, read on the zoom crop); BAG bijeenkomstfunctie"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 13.3 m, 6 axes, white speklagen, sunburst voussoirs over the storey-1 windows, blocked arches, a pointed gable over axes 1-2 and a stepped gable over axes 4-5",
+    "photoRows": [
+     3,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "sunburst voussoirs",
+     "tall narrow pointed gable with scrolls drawn as a plain point gable"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164246",
+   "slug": "kinker-164246",
+   "address": "Kinkerstraat 53",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "palette": "brown-speklaag",
+    "crown": "none",
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "groundFront": {
+      "kind": "wall",
+      "bays": [
+       "door",
+       "glazed-door"
+      ],
+      "colour": "#1f2322",
+      "evidence": "strip.jpg 2024-11-29 pand 3: dark-painted plinth, a stoop up to the house door left, a glazed restaurant door under a small dark awning right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-11-29",
+    "name": "Cafe Amoi",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 7235507196,
+     "name": "Cafe Amoi"
+    },
+    "bag": [],
+    "agreement": "osm-only",
+    "note": "awning lettering illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): 2 axes, speklagen, sunburst and blocked arches, corbelled cornice, a pedimented dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the pedimented dormer is not drawn (no dormer crown on the type)",
+     "corbel-table cornice"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161889",
+   "slug": "kinker-161889",
+   "address": "Kinkerstraat 53A",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "palette": "brown-speklaag",
+    "crown": "point-gable",
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "groundFront": {
+      "kind": "wall",
+      "bays": [
+       "glazed-door",
+       "door"
+      ],
+      "colour": "#1f2322",
+      "evidence": "strip.jpg 2024-11-29 pand 4: dark plinth, a glazed shop door under a small awning left, a stoop up to the house door right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-11-29",
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "BAG bijeenkomst + winkel; awning lettering illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): 2 axes, speklagen, sunburst and blocked arches, pointed gable with one light",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "sunburst voussoirs"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012162119",
+   "slug": "kinker-162119",
+   "address": "Kinkerstraat 55",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-11-29 pand 5: white fascia with a red logo, shutters down"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "shutters down; no legible name"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5: 3 axes, flat heads under white keystones, pediment dormer (cluster table: brick-arched auto; the photo has no blocked arches)",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012153083",
+   "slug": "kinker-153083",
+   "address": "Kinkerstraat 57",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "red-brown-sunlit",
+    "overrides": {
+     "bays": 3,
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      3
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": true,
+      "name": "De Kinker",
+      "sign": {
+       "text": "DE KINKER",
+       "textColour": "#f0ece0",
+       "mount": "fascia"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "evidence": "strip.jpg 2024-11-29 pand 6: black fascia lettered DE KINKER kledingreparatie & stomerij"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-11-29",
+    "name": "De Kinker",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "clothing repair and dry cleaner; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6: 3 axes; storeys 1-2 segmental heads under white blocked arches with white sill and impost courses, top storey flat heads under keystones; frieze cornice with consoles; pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012163977",
+   "slug": "kinker-163977",
+   "address": "Kinkerstraat 59",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "red-brown-sunlit",
+    "overrides": {
+     "bays": 3,
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      3
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1e2a33",
+      "fascia": true,
+      "name": "Hulp GSM",
+      "sign": {
+       "text": "HULP GSM",
+       "textColour": "#ffffff",
+       "mount": "fascia"
+      },
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-11-29 pand 7: dark fascia lettered HULP GSM (phone repair)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Hulp GSM",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "phone repair; no OSM node (cluster table: plain-brick auto; the photo has the blocked arches of 57)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7: as pand 6",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012159845",
+   "slug": "kinker-159845",
+   "address": "Kinkerstraat 61",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "palette": {
+      "brick": "#816b54"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#b0611f",
+      "fascia": true,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-11-29 pand 8: orange-brown timber shopfront, gold lettering illegible"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "lettering illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8: 3 axes, flat heads under keystones on every storey, pediment dormer (cluster table: painted-band auto; the photo is plain brick)",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012133467",
+   "slug": "kinker-133467",
+   "address": "Kinkerstraat 63",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "palette": "red-brown-sunlit",
+    "overrides": {
+     "bays": 3,
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1,
+       2
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     },
+     "windowSurround": "keystone",
+     "surroundStoreys": [
+      3
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": true,
+      "name": "Bakery Cafe Mensink",
+      "sign": {
+       "text": "BAKERY CAFE MENSINK",
+       "textColour": "#ffffff",
+       "mount": "fascia"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-11-29 pand 9: black fascia lettered BAKERY CAFE MENSINK; OSM node 11411936971 shop=bakery"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-11-29",
+    "name": "Bakery Cafe Mensink",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 11411936971,
+     "name": "Mensink"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9: as pand 6, red tile roof behind the dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012236773",
+    "stripRow": 292,
+    "evidence": "strip.jpg pand 2: top of the cornice at row 292 (13.8 m); 3DBAG eaves 9.7 m read a low rear roof"
+   }
+  ],
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30
+  }
+ },
+ "limitations": [
+  "Sunburst voussoirs (radiating white blocks) over the storey-1 windows of 51-53A: drawn as blocked arches.",
+  "49A: blind brick pier with its own stepped gable over the left third; drawn as a one-axis module.",
+  "51: gable scrollwork and finials on the pointed and stepped gables.",
+  "53: pedimented dormer and 49A dormer on the neo-renaissance type (no dormer crown variant).",
+  "53/53A: corbel-table cornice; stoops up to the house doors (groundFront has no stoop on a wall ground)."
+ ]
+}

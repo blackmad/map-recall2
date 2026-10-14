@@ -1,5 +1,198 @@
 # Canal Recall — what is built
 
+## Kinkerstraat odd side authored: eight faces, 76 pands, 184,519 tris (2026-10-14)
+
+Lane `lane/kinkerstraat-odd-20261014` (plan Part 2 step 4). Faces
+`kinker-1-29` (11 pands, 24,700 tris), `31-49` (10, 15,698), `49-63` (9,
+23,312), `65-87` (10, 20,311), `173-225` (10, 29,517), `315-359` (19,
+42,735), `363-371` (4, 13,706), `265-313` (3, 14,540), compiled without
+`--install` on the accents kit (merged origin/main at 48752138 and
+re-reviewed all eight; Kinkerstraat 59 then drew 3,036 tris on its front
+from the measured-brick facing and keeps the type palette instead). The
+sheet headers say GATES FAIL from the GLB audit's z-fight check, which
+fails on every Kinkerstraat face including the proof faces 2-30 and
+109-161 on main: the overlap is in the inferred rear facades (1-29 drops
+from 187 m² to 1.5 m² with `--no-rears`); no intent fixes it, the
+rear-facade lane does. Verdicts at gallery size
+(`docs/images/kinkerstraat/<face>-sheet.jpg`, doc
+`docs/kinkerstraat-faces-odd-20261014.md`): 1-29 right on 8 of 11 (19-23
+on an inline centre wall-dormer type; wrong: no. 1's windows too wide,
+21-23's white-painted first storey drawn as brick, 7-17's irregular lights
+made regular); 31-49 storeys, axes, dormers right, wall check fails on 31
+(black paint renders olive #494b3b vs #282b24) and 47 (sunlit brick too
+dark); 49-63 the neo-renaissance and brick-arched rows read with white
+springers, 51 a four-module front, the shop at 51 conflicts (OSM Mano
+Bakery vs sign Chez Rome), 63 too saturated; 65-87 65 and 67 on an inline
+plain step-gable type, cornices read, missing brick-relief tympana, frieze
+panels and the shops' mezzanine, 87 too saturated; 173-225 the 1985
+infill reads, arcade piers, cream set-back top storey and penthouse bays
+cannot be drawn; 315-359 the balcony-axis row reads with the corner block
+in two modules, pointed gables drawn as bell gables, shared gables become
+one per front, the drum corner bay and gallery missing; 363-371 (1914–16,
+no library type) balcony-axis with flat heads, gable shape and 371's
+chimney wrong or missing; 265-313 (1992 loggia block) infill with a
+16.4 m bay unit as overrides, the glazed grid bays as ~1.5 m windows,
+loggias and arcade flush. Brick-arched window width does not show on this
+side: the three 3-axis fronts measure 0.55, 0.56, 0.59 of the front
+against the type's 0.55. Kit gaps counted in pands: iron wall anchors 21,
+arcade piers 13, frieze panels and consoles 13, straight-sided pointed
+gables 10 fronts, set-back top storey 10, brick-relief tympana 7, shop
+mezzanine 7, penthouse bays 5, centre wall dormer (inline type) 5,
+measured brick dropped for the triangle budget 5, brick render clamping
+dark and light colours 4, shared gable over two pands 4, sunburst
+voussoirs 3, dormers on neo-renaissance 3, curtain-wall bays and loggias
+3, one-storey paint 3, footprint step over 0.5 m 3, gable scrollwork 2,
+plain step-gable (inline type) 2, stoops on a wall ground 2, and one each
+of painted-brick per placement, one type per pand, blind front part,
+gable over part of a module, drum bay with gallery, Gothic mezzanine
+lights, plain flat dormer, corbel-table cornice, chimney beside a gable.
+Library candidates: `kinker-1885-wall-dormer`, `kinker-1893-plain-step-gable`.
+Checks: lint, block-face 84, fit-golden 153 identical; no kit or src
+change, so every other face's chunk is unchanged.
+
+
+## De Hallen measured and staged behind its landmark; the two Kinkerstraat halls installed (2026-10-14)
+
+Lane `lane/de-hallen-20261014` (plan Part 2 step 8). The brief's pand ids
+were wrong: the 1902 tram depot is `0363100012236693` (already drawn by
+the bespoke signature landmark `de-hallen` with a POI card); 092013 is
+the 1987 infill at Kinkerstraat 89–105 and 137280 is Kinkerstraat 32–54
+(1999). Crops archived for all three (source-data cdffbca02) with new
+`all-walls.ts` options `--date`, `--exclude-date`, `--exclude-pano`,
+`--segment`, `--walls`, `--suffix`, `--min-dist` (logic in a typed, tested
+`panoPick.ts`), `closeCameraSpan`, and `panelCoverageStraight` (drops
+pieces more than 45° oblique when the straight pieces cover the panel).
+Kit added, validated, tested, byte-identical when unused: `hallDoors`
+(glazed hall portals on chosen ground bays; the photos show no arched
+hall: the round arches are only the two glazed gateways, the long side
+is a pale concrete front, the gables have flat-headed portals, so no
+`arched-hall` system), `glazedStoreys` (upper storeys glazed like a shop
+front), `groundClamp` (clamps 3DBAG faces that sink below ground).
+**De Hallen** (10,662 tris; g0 Tollensstraat concrete hall WARN with the
+photo counting mullions 86 vs 15 columns, g1 corner house FAIL inferred
+with stone surrounds read as trim, g2 gateway WARN, g3 stone ground under
+brick FAIL inferred, g4 corner bay FAIL inferred, g5 Bellamyplein corner
+block WARN IoU 0.28, g6 tram-hall gable PASS, g7 gables FAIL inferred,
+north shade and fence) is compiled and staged at
+`artifacts/building-recipes/de-hallen-236693/catalogue-entry.json`, not
+installed: from the Bellamyplein at street level the recipe is closer
+than the landmark (dark brick gables with wide glazed portals, the corner
+block, the gateway arches) but from above the landmark's striped roofs
+read better than the recipe's plain slate saw-tooth without its glass
+ridge lights, and the concrete hall front is right in colour and rhythm
+but flat; keep the landmark until the kit does ridge lights and stepped
+stone-coped gables, then retire it and install the recipe in one change
+(`docs/images/de-hallen/ride-{kinkerstraat,bellamyplein}.jpg` pair main
+with a local trial). **Kinkerstraat 32–54** (8,708 tris, g0–g3 FAIL
+inferred on the red awnings, the glazed mezzanine, the orange/dark split
+and the stair slot, g4 WARN): installed, clearly better than the city box.
+**Kinkerstraat 89–105** (3,205 tris, g0 FAIL inferred: cantilevered
+balconies, g1 FAIL inferred: yellow tiled stair towers): installed as a
+fair block in the right colour family; the balconies and towers that
+define it are new systems for a later pass. Index rows in
+`docs/images/de-hallen/index-{de-hallen,kinkerstraat}.jpg` (new
+`scripts/building-recipes/index-row-sheet.ts`); doc
+`docs/de-hallen-20261014.md`. Kit gaps: brick attic band over the
+concrete hall, scalloped lintel band and deep concrete fins, stepped
+gables with stone copings and the oculus, wide rusticated arch rings,
+round-arched upper windows in stone surrounds, GEMEENTETRAM lettering,
+glass ridge lights, eared/stone-dressed surrounds in the measurement,
+per-storey wall colour in the measurement; red shop awnings, a dormered
+set-back attic, mezzanine glazing on one side of a split, a recessed
+glazed stair slot; cantilevered balconies on chosen bays, yellow-tiled
+stair towers, a blue tiled shop ground. Checks: building-recipes 171,
+geometry-audit 47, fit-golden 156 identical, 115 meshes identical,
+covers, stale-installs strict 0, osm-under-models 0, audit:glb PASS.
+Near-miss: two Kinkerstraat `walls.json` were reverted by accident and
+rebuilt byte-identical (74 crops, same row counts).
+
+
+## The bridge e2e reads deck crowns in metres, not pixels (2026-10-14)
+
+Lane `lane/bridge-crowns-20261014`. The pixel hump reading in
+`own-ground-bridge-fidelity.spec.ts` had given two false alarms in a day
+(a railing post, then the brighter ground look moving BRU0038 from +11 to
+−9 px). The spec now reads each placed deck from
+`canalRecallGame.vectorMap._ownGround.store.surface.decks` in the page
+(`deckCrowns(page, ids)`: the deck by `profile.id`, `surface.height()` at
+every profile station, max minus `max(deck.ends)`, the crown over the
+higher approach end in metres, the same function the streamed-cell unit
+tests use). Shared module `ownGround/bridgeCrowns.ts` exports
+`PINNED_CROWNS` (tolerance 0.05 m) and `crownOverHigherEnd()`: Seven
+Bridges BRU0031 2.14, 0032 2.02, 0039 1.70, 0074 1.79, 0073 1.30, 0072
+1.50; side views BRU0009 1.66 (Torensluis), 0038 1.61; the Blauwbrug
+stays unpinned (level deck). `ownGround.test.ts` asserts the module for
+BRU0009 and, in a new test, every pinned bridge against a fresh
+`GroundStore` (80/80). The pixel `humpPx` stays in the report JSON as
+information; arch counts, bascules and screenshots unchanged. Three
+consecutive desktop runs green (Seven Bridges read 2.136, 2.018, 1.703,
+1.786, 1.301, 1.498; BRU0009 1.658); pinning BRU0009 at 1.20 fails with
+"crown 1.658 m vs pinned 1.2 m". No game source changed, no bundles.
+
+
+## White accents read white: painted stone tint, springer rows, round arches with dark tympana, measured head lines (2026-10-14, user)
+
+Lane `lane/oud-west-accents-20261014`, from the user's priority on white
+accents and the gallery-size review of the Kinkerstraat 18-4 and
+Nassaukade sheets. New keys, typed in `intent.ts`, laid out in `fit.ts`,
+marked in `oudWest.ts`, byte-identical when absent (fit-golden 153, 112
+meshes, 22 of 24 face chunks identical; only the two re-authored faces
+changed): `palette.stoneMaterial: "painted"` exports every stone-surface
+mesh (bands, springers, keystones, rings, eared heads, consoles, quoins)
+as a measured tint, and `cityMeasuredStoneTint` in `look/palette.ts`
+divides by the stone cell mean instead of the floor-and-mix that greyed
+it; `archRing.style: "springers"` with `springerSize: [length, height]`
+(no ring: a slab at each foot of the arch on the springing line, 6 cm
+proud, two over a narrow pier cut back to leave 0.09 m, the keystone cut
+at the eaves); `archRing.shape: "round"` (relieving arches, rise = half
+the span) and `archRing.springGap` (default 0.04 m above the head);
+`windowHead.tympanum: "dark"` (the arch field in `palette.band`, else the
+wall × 0.72, measured 0.67–0.80 on Nassaukade 150 and 147); `headLines`
+(one share per storey, needs a `windowHeights` list; the head sits there
+instead of the common 0.86); `bandTransomAt` (the transom band as a share
+of the window height, default 0.78). `palette-from-strip.ts` prints
+`paint`: the drawn frame colour × the photo's band-to-frame brightness
+ratio, because the overcast strips read white paint as light grey
+(#b2b3a8) and a raw median rendered grey next to the white frames.
+Measured painted-stone colours: `kinker-1890-brick-arched` #eae7dc
+(median of 7 pands; dark-brown palette #dddad0), `kinker-1895-painted-band`
+#e2e1d5 / #e3e1d5, `nassau-1900-three-axis` #eeeae0,
+`nassau-1900-two-axis-balcony` #f5f1e7 (measured on 149), 151-152
+#eeeae0; 150's stone is also its granite base, so its springers and
+keystone take the frame paint. Rendered vs photo on the same pier
+pixels: Kinkerstraat 8-10 sill course #a6a496 → #e0e0d9 (photo raw
+#ada99b, lit peak #c2c9c1, target #eae7dc); Nassaukade 148 storey-2 band
+~#c1bcb1 → #e1e1dd (photo #fefdce at golden hour); the brick did not
+move (8-10 #6b5744 vs #6d5543). Nassaukade 147's eaves re-measured at
+15.5 m (14.6 m hid the round arches under the cornice). Re-authored:
+kinker-2-30 (32,043 → 29,595 tris) and nassau-145-152 (19,441 → 19,159,
+heaviest front 2,887), all gates. Verdict at gallery size
+(`docs/images/kinkerstraat/kinker-2-30-row-18-4-zoom.jpg`,
+`docs/images/nassaukade-506/{photo-over-model,arches-147-150}.jpg`):
+the white reads as white as the frames; the 18-4 row has the dotted row
+at the springing, one springer pair per pier and a keystone per window
+within 0.12 m of the photo's rows (7.15, 9.97, 12.75 m), the thin course
+at the measured 0.63 of the window, the 5-block ring gone; 147 and 150
+show semicircular dark tympana with two white springers and a keystone,
+147 springing on its head band and 150 0.55 m above its heads; heads
+within ~0.1 m on 148, 149, 147, 150 and the 18-4 row (147 and 150 needed
+measured storey heights). Still wrong: 147's crown draws a cream cornice
+band where the photo has brick; the Kinkerstraat windows are ~0.8 m wide
+against the photo's 0.95 m (`windowShare` 0.55 in the type). Kit gaps:
+wedge-shaped springers and keystones (slabs are square), the dark
+rubbed-brick ring between springers on the 18-4 row, band lines per
+storey (147's storey-1 band sits mid-window, its upper bands at the
+heads; the kit has one set per front), 150's dark recessed course between
+head and springing, painted dressings and a granite base on one house
+(one stone colour per house), a per-house T-window transom (fixed 0.76),
+wall anchors between springers; the 1890 type's `red-brown-sunlit`
+palette keeps unmeasured stone (no white course on its strips). Tests:
+building-recipes 168, block-face 82, look 41, with named regressions on
+162482's impost rows, the heads of 148/149/147/150, the round arches, the
+painted-stone tints, `paintFromFrames`. Bundles rebuilt here for the
+look change.
+
+
 ## Bridge regressions on main were two readings, not the bridges (2026-10-14)
 
 Lane `lane/bridge-regressions-20261014`. After the bridges merge met the

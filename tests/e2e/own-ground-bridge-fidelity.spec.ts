@@ -3,13 +3,16 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { bridgesFromExtract, type Bridge } from './ownGroundBridges';
+import { PINNED_CROWNS, crownOverHigherEnd } from '../../src/canalRecall/ownGround/bridgeCrowns';
 
 // Named bridge-fidelity regressions on the own ground (`?ownGround=1`), lane bridge-fidelity 2026-10-14.
 // Opt-in, needs the GPU and the network basemap:
 //   OWN_GROUND=1 PW_PORT=4510 npx playwright test own-ground-bridge-fidelity --project=desktop
 // Pixel checks: each view is shot twice, with and without the deckBody meshes; the difference is the bridge kit's own
-// mask. Arches are drawn when a row through the lower half of the mask has an opening between body runs; the deck is
-// humped when the mask's top edge at the middle of the span stands over its top edge at the ends.
+// mask. Arches are drawn when a row through the lower half of the mask has an opening between body runs. The deck
+// humps are read as geometry: the own-ground store's deck for each bridge id (ground.store.surface.decks), its crown
+// over the higher approach end in metres against PINNED_CROWNS (src/canalRecall/ownGround/bridgeCrowns.ts, the values
+// test:own-ground pins). The pixel hump reading gave false alarms and is gone; screenshots stay as evidence.
 //   - the Seven Bridges down the Reguliersgracht from the Herengracht corner (BRU0031 … BRU0072)
 //   - the Torensluis (BRU0009) from the Singel
 //   - the bascules: the Magere Brug (portals), the Haarlemmerpoort pair Willemsbrug / Bullebak and the Zoutkeetsgracht
@@ -60,6 +63,28 @@ async function settle(page: Page): Promise<void> {
     return s.ready && !s.queued && !Object.keys(s.pending ?? {}).length && Object.values(s.cells ?? {}).includes(0);
   }, { timeout: 120_000, intervals: [1000] }).toBe(true);
   await page.waitForTimeout(4000);
+}
+
+/** Crown over the higher approach end, in metres, of each bridge's deck as the running game's own-ground store holds it (null: deck not placed). */
+async function deckCrowns(page: Page, ids: string[]): Promise<Record<string, number | null>> {
+  const heights = await page.evaluate(ids => {
+    const surface = (window as any).canalRecallGame.vectorMap._ownGround.store.surface;
+    const out: Record<string, { h: number[]; ends: [number, number] } | null> = {};
+    for (const id of ids) {
+      const d = surface.decks.find((k: any) => k.profile.id === id);
+      out[id] = d ? { h: Array.from(d.profile.x as ArrayLike<number>, (_: number, i: number) => surface.height(d.profile.x[i], d.profile.y[i])), ends: [d.ends[0], d.ends[1]] } : null;
+    }
+    return out;
+  }, ids);
+  return Object.fromEntries(ids.map(id => [id, heights[id] ? crownOverHigherEnd(heights[id]!.h, heights[id]!.ends) : null]));
+}
+
+function expectCrowns(crowns: Record<string, number | null>, ids: string[]): void {
+  for (const id of ids) {
+    const pin = PINNED_CROWNS[id];
+    expect(crowns[id], `${id} deck present in the own-ground store`).not.toBeNull();
+    expect(Math.abs(crowns[id]! - pin.crownM), `${id} crown ${crowns[id]?.toFixed(3)} m over the higher end vs pinned ${pin.crownM} m`).toBeLessThanOrEqual(pin.tolM);
+  }
 }
 
 /** Freeze the camera at `from` (`up` m over the water there, or over the ground) looking at `to` (`toUp` m over the ground). */
@@ -171,7 +196,9 @@ test('bridge fidelity: arches, humps, bascules and landed ends', async ({ page }
   report.sevenBridges = { pixels: sm.count, ...sr }; save();
   expect(sm.count, 'Seven Bridges drawn').toBeGreaterThan(5000);
   expect(sr.openings, 'an arch opening down the Reguliersgracht').toBeGreaterThanOrEqual(1);
-  expect(sr.humpPx, 'the first bridge humped').toBeGreaterThan(3);
+  const sevenCrowns = await deckCrowns(page, SEVEN);
+  report.sevenCrowns = sevenCrowns; save();
+  expectCrowns(sevenCrowns, SEVEN);
 
   // 2. Side views from the water: the Torensluis from the Singel; BRU0073, BRU0038 and the Blauwbrug for reference.
   const side: { id: string; arches: number; across: number; bearing?: number; flat?: boolean }[] = [
@@ -187,11 +214,12 @@ test('bridge fidelity: arches, humps, bascules and landed ends', async ({ page }
     const m = await kitMask(page, `${OUT}/${P}-${s.id}-side.png`), r = readMask(m, cols);
     report[s.id] = { pixels: m.count, ...r }; save();
     expect(r.openings, `${s.id} arches drawn`).toBeGreaterThanOrEqual(s.arches);
-    // The Blauwbrug's deck is nearly level (a 0.3 m rise over 40 m): no hump check there.
-    // The pixel hump reading gave two false alarms on 2026-10-14 (a railing post, then the brighter ground look
-    // moving BRU0038 from +11 to -9 px); the deck crowns are pinned in metres in test:own-ground, so this is a
-    // warning until the reading comes from the own-ground store's deck geometry (board, P1 bridges).
-    if (!s.flat && !(r.humpPx > 2)) console.warn(`${s.id} deck hump reads ${r.humpPx} px from pixels (geometry pinned in test:own-ground)`);
+    // The Blauwbrug's deck is nearly level (a 0.3 m rise over 40 m): no crown pinned there.
+    if (!s.flat) {
+      const crowns = await deckCrowns(page, [s.id]);
+      report[`${s.id}Crown`] = crowns[s.id]; save();
+      expectCrowns(crowns, [s.id]);
+    }
   }
 
   // 3. Bascules: the kit stands over the deck (portals or signal masts), seen from the approach at 1.7 m.

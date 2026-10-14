@@ -73,8 +73,9 @@
      "brick": "#6b5947",
      "frame": "white-painted",
      "door": "#1f2324",
-     "stone": "white-painted",
-     "cornice": "white-painted"
+     "stone": "#eeeae0",
+     "cornice": "white-painted",
+     "stoneMaterial": "painted"
     },
     "notes": [
      "the De Clercqstraat corner block: on this face only its 12.8 m Nassaukade front (two 3-axis halves either side of a downpipe); the chamfer and the De Clercqstraat front are on clercq-236681"
@@ -136,6 +137,25 @@
       "windows": "t-window",
       "windowSurround": "keystone",
       "windowSills": "consoles",
+      "storeyHeights": [
+       2.6,
+       2.9,
+       3.0,
+       3.0,
+       3.3
+      ],
+      "windowHeights": [
+       0.728,
+       0.623,
+       0.623,
+       0.527
+      ],
+      "headLines": [
+       0.828,
+       0.733,
+       0.733,
+       0.627
+      ],
       "balconies": {
        "storeys": [
         1,
@@ -155,10 +175,13 @@
         3
        ],
        "archRing": {
-        "colour": "stone",
-        "style": "blocks",
-        "keystone": true
-       }
+        "colour": "frame",
+        "style": "springers",
+        "keystone": true,
+        "shape": "round",
+        "springGap": 0.55
+       },
+       "tympanum": "dark"
       },
       "surroundStoreys": [
        0,
@@ -178,7 +201,9 @@
      "wallMaterial": "painted-brick"
     },
     "notes": [
-     "near-black painted brick (white-balanced wall median #524b3d on the 2024-11-21 crop); granite souterrain front and the arched door portal read as the stone plinth/stoop"
+     "near-black painted brick (white-balanced wall median #524b3d on the 2024-11-21 crop); granite souterrain front and the arched door portal read as the stone plinth/stoop",
+     "Storey-3 arches (kit lane 2026-10-14): round relieving arches (rise half the span), springers 0.14 x 0.18 m at the arch feet, dark tympanum = wall x 0.72 (measured tympanum/wall luma 0.67-0.68 on this front), exported with the painted wall as a measured tint.",
+     "Heads (kit lane 2026-10-14): the sills climb in a 3.0 m pitch (2.89, 5.83, 8.83, 11.83 m) with heads at 5.0, 7.7, 10.7 and 13.57 m on the 80 px/m crop; storeyHeights (souterrain first) put the floors 0.3 m under the sills and headLines/windowHeights land the heads; the storey-3 arches spring 0.55 m over the heads (a dark lintel course between, springGap) at 14.12 m, crown 14.64 m."
     ]
    },
    "groundFloor": {
@@ -209,7 +234,7 @@
     "photoGroundRows": 2,
     "photoGables": 1,
     "schemaLimits": [
-     "the storey-3 windows sit under dark round tympana with white keystones (blind relieving arches): drawn since the Nassaukade merge as windowHead \"relieving\" with a white block ring and keystone on storey 3; the kit arch is segmental (rise 0.25 x span) where the photo's is round, with five blocks where the photo has two springers and a keystone",
+     "the storey-3 windows sit under blind round relieving arches with a dark recessed tympanum, two white springer blocks and a white keystone: windowHead relieving with archRing {style springers, shape round, keystone} and tympanum dark (kit lane 2026-10-14). The springers and keystone take the white frame paint (archRing colour frame), because the house's stone colour is also its granite souterrain",
      "the rusticated granite souterrain front is the stone plinth colour only",
      "no painted bands on this front (it is the odd one of the row)"
     ]
@@ -321,10 +346,43 @@
       ],
       "archRing": {
        "colour": "stone",
-       "style": "blocks",
-       "keystone": true
-      }
-     }
+       "style": "springers",
+       "keystone": true,
+       "shape": "round",
+       "springGap": 0.2
+      },
+      "tympanum": "dark"
+     },
+     "windowHeights": [
+      0.6,
+      0.635,
+      0.615,
+      0.58
+     ],
+     "headLines": [
+      0.86,
+      0.75,
+      0.712,
+      0.639
+     ],
+     "bandLines": [
+      "sill",
+      "head"
+     ],
+     "bandHeights": {
+      "sill": 0.15,
+      "head": 0.2
+     },
+     "bandStoreys": [
+      2,
+      3
+     ],
+     "storeyHeights": [
+      4.45,
+      3.35,
+      3.3,
+      3.4
+     ]
     }
    },
    "groundFloor": {
@@ -337,10 +395,10 @@
     "note": "door left, two windows"
    },
    "rhythm": {
-    "citation": "strip.jpg 2024-11-21 pand 5 (painted near-black, #615a47): full-width iron balcony on a white bracketed slab on storey 1, centre ones on storeys 2 and 3",
+    "citation": "strip.jpg 2024-11-21 pand 5 (painted near-black, #615a47): full-width iron balcony on a white bracketed slab on storey 1, centre ones on storeys 2 and 3; storey-3 arches measured on the 140 px/m crop: span about 1.45 m, springers about 0.14 x 0.18 m, tympanum/wall luma 0.73-0.80",
     "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | mansard dormer: 3 lights",
     "schemaLimits": [
-     "the storey-3 windows have dark round tympana with keystones (relieving arches) instead of eared heads: drawn since the Nassaukade merge as windowHead \"relieving\" with a white block ring and keystone (segmental where the photo is round; five blocks where the photo has springers and a keystone)",
+     "the storey-3 windows have blind round relieving arches with dark tympana, two white springers and a keystone: windowHead relieving with archRing {style springers, shape round, keystone} and tympanum dark (kit lane 2026-10-14). Own storey heights (sills 5.0, 8.4, 11.69 m, wall to the 15.5 m mansard foot) and head lines (windows 5.0-7.2, 8.4-10.5, 11.69-13.73 m on the kit's storeys [4.60, 3.47, 3.41, 3.52]); its bands run at the sill and head lines (bandLines sill + head, head band 0.20 m: 13.74-13.95 m on storey 3), not the type's transom line; on storeys 2-3 only (bandStoreys): storey 1's sill band lies behind the full-width balcony platform and its one band is at 0.69 of the window, a line per storey the kit cannot set; the arches spring on the 0.20 m head band (springGap 0.2)",
      "the mansard's swept bell sides are a straight 72-degree face"
     ]
    }
@@ -456,8 +514,8 @@
    },
    {
     "pand": "0363100012160273",
-    "stripRow": 234,
-    "evidence": "foot of the mansard over the top band (14.6 m)"
+    "stripRow": 198,
+    "evidence": "foot of the mansard over the storey-3 arches (15.5 m: the column profile through the arches reads the head band at 13.72-13.82, the dark tympanum to 14.55, the keystone at 14.72-14.90 and brick to the gutter shadow at 15.5-15.6 m; kit lane 2026-10-14, was row 234 = 14.6 m, which put the round arches behind the cornice)"
    },
    {
     "pand": "0363100012160704",
