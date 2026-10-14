@@ -1,0 +1,169 @@
+{
+ "schemaVersion": 1,
+ "id": "van-beuningenstraat-48-093853",
+ "pand": "0363100012093853",
+ "signature": [
+  "grey-banded-balcony-front",
+  "tan-brick-curved-block"
+ ],
+ "walls": [
+  {
+   "tag": "w02-135",
+   "bearing": 135,
+   "lengthM": 54.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000198_pano_0000_000575",
+   "capturedAt": "2017-03-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "grey-banded-balcony-front",
+     "kind": "balcony-ironwork",
+     "where": "four storeys of tan brick with grey concrete bands and balcony runs in alternating bays",
+     "approxSizeM": [
+      55,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 4 storeys x 13 bays, string courses, solid balconies every fourth bay on storeys 1-3",
+     "seenIn": "TMX7316010203-000198_pano_0000_000575"
+    }
+   ]
+  },
+  {
+   "tag": "w01-315",
+   "bearing": 315,
+   "lengthM": 54.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_08-56-14_00230",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-banded-front",
+     "kind": "balcony-ironwork",
+     "where": "three-storey north-west front with the same bands and balconies",
+     "approxSizeM": [
+      55,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 3 storeys x 13 bays, string courses, balconies every fourth bay on storeys 1-2",
+     "seenIn": "recording_2025-06-18_08-56-14_00230"
+    }
+   ]
+  },
+  {
+   "tag": "w03-45",
+   "bearing": 45,
+   "lengthM": 40.1,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_08-56-14_00220",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "rounded-ne-end",
+     "kind": "window-shape",
+     "where": "rounded north-east end with window groups and balcony bays on the right edge",
+     "approxSizeM": [
+      40,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 3 storeys x 9 bays; the curve is straight facets in 3DBAG",
+     "seenIn": "recording_2025-06-18_08-56-14_00220"
+    }
+   ]
+  },
+  {
+   "tag": "w04-135",
+   "bearing": 135,
+   "lengthM": 27,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002054_pano_0000_002484",
+   "capturedAt": "2021-03-22",
+   "checked": true,
+   "note": "courtyard side of the SE wing in trees; same bands, not drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-315",
+   "bearing": 315,
+   "lengthM": 26.6,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_08-56-14_00238",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "note": "courtyard garden in trees; nothing readable on the wall",
+   "items": []
+  },
+  {
+   "tag": "w06-225",
+   "bearing": 225,
+   "lengthM": 13.6,
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000473_pano_0004_000049",
+   "capturedAt": "2019-11-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "huis-van-de-buurt-sign",
+     "kind": "sign",
+     "where": "Huis van de Buurt lettering on the south-west corner ground floor",
+     "approxSizeM": [
+      4,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a community-centre sign on a corner wall no wall group covers"
+     },
+     "seenIn": "TMX7316060226-000473_pano_0004_000049"
+    }
+   ]
+  },
+  {
+   "tag": "w07-45",
+   "bearing": 45,
+   "lengthM": 13.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001876_pano_0000_000245",
+   "capturedAt": "2020-08-14",
+   "checked": true,
+   "note": "tree-covered view of the east wing; nothing beyond walls[0]",
+   "items": []
+  },
+  {
+   "tag": "w08-315",
+   "bearing": 315,
+   "lengthM": 13.5,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-11_11-32-11_01126",
+   "capturedAt": "2024-09-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "cylindrical-end-wall",
+     "kind": "window-shape",
+     "where": "tan brick curved end wall with grey bands and a few corner windows",
+     "approxSizeM": [
+      13,
+      12
+     ],
+     "plan": "simplified",
+     "how": "left as plain brick on the 3DBAG shell (blank wall)",
+     "seenIn": "recording_2024-09-11_11-32-11_01126"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
