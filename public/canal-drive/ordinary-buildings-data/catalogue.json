@@ -46203,10 +46203,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012233471",
       "name": "Stadhouderskade 25 (Park Centraal Amsterdam hotel and the MOMO corner), Amsterdam-Zuid: 1930 block with a stone-and-brick arched corner range on Stadhouderskade, a dark stone balcony range and a bowed hotel front with continuous glazed balconies",
-      "hash": "d712b37a2f25b6a0d4fe1475c7aa807992f6ff76d5eed601c9eea0c6a0f62134",
-      "sha256": "d712b37a2f25b6a0d4fe1475c7aa807992f6ff76d5eed601c9eea0c6a0f62134",
-      "bytes": 543888,
-      "triangles": 6998,
+      "hash": "1e1fd45253e0b429dfd7a6402e9c6c1f61fc7cb98c9a052695fcd58fb86c66e0",
+      "sha256": "1e1fd45253e0b429dfd7a6402e9c6c1f61fc7cb98c9a052695fcd58fb86c66e0",
+      "bytes": 543956,
+      "triangles": 6988,
       "materials": 14,
       "textures": 0,
       "scale": 1,
@@ -46420,7 +46420,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233471",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:47:23.080Z"
+      "updatedAt": "2026-10-14T03:13:42.209Z"
     }
   ]
 }
