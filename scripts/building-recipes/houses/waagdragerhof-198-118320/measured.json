@@ -9,7 +9,7 @@
    "panel": 14,
    "verdict": "FAIL",
    "reasons": [
-    "glazing storey band off by 0.16"
+    "wall family brick vs photo paint"
    ],
    "crop": {
     "ref": "source-data://pand-reference-walls/0363100012118320/w09-196L.jpg",
@@ -47,8 +47,8 @@
      22.27
     ],
     "shift": {
-     "uM": -0.5,
-     "vM": 0.3
+     "uM": 0.5,
+     "vM": 0.4
     },
     "box": {
      "u0": -5.752,
@@ -59,22 +59,22 @@
    },
    "likeness": {
     "shift": {
-     "uM": -0.5,
-     "vM": 0.3
+     "uM": 0.5,
+     "vM": 0.4
     },
-    "iou": 0.319,
+    "iou": 0.305,
     "wall": {
      "photo": "#262120",
      "photoRaw": "#262120",
-     "model": "#262120",
-     "modelToday": "#534846",
+     "model": "#4a302b",
+     "modelToday": "#4a302b",
      "photoFamily": "paint",
-     "modelFamily": "paint",
+     "modelFamily": "brick",
      "photoMaterial": "painted-black",
-     "modelMaterial": "painted-black",
-     "dL": 0,
-     "dHue": 0,
-     "pass": true
+     "modelMaterial": "brick-purple-brown",
+     "dL": 0.092,
+     "dHue": -0.3,
+     "pass": false
     },
     "glass": {
      "photo": "#322521",
@@ -83,41 +83,41 @@
     "glazing": {
      "photo": [
       null,
-      0.558,
-      0.512,
+      0.546,
+      0.516,
       0.453,
-      0.435,
-      0.531,
-      0.372,
-      0.317,
-      0.297,
-      0.258,
+      0.429,
+      0.53,
+      0.377,
+      0.32,
+      0.298,
+      0.265,
       null,
       null
      ],
      "model": [
       null,
-      0.401,
       0.432,
-      0.415,
-      0.401,
+      0.43,
+      0.447,
+      0.399,
       0.412,
-      0.415,
-      0.418,
-      0.415,
-      0.401,
-      0.501,
+      0.447,
+      0.399,
+      0.447,
+      0.399,
+      0.464,
       null
      ],
-     "photoMean": 0.422,
-     "modelMean": 0.421,
-     "maxDiff": 0.157,
-     "meanDiff": 0.001,
-     "pass": false
+     "photoMean": 0.423,
+     "modelMean": 0.427,
+     "maxDiff": 0.149,
+     "meanDiff": 0.004,
+     "pass": true
     },
     "columns": {
      "photo": 12,
-     "model": 12,
+     "model": 13,
      "pass": true
     },
     "shape": {
@@ -130,11 +130,11 @@
      "model": "punched"
     },
     "ground": {
-     "photo": 0.53,
+     "photo": 0.549,
      "model": 0.863
     },
     "evidence": {
-     "usable": 0.884,
+     "usable": 0.881,
      "foliage": 0.003,
      "washedOut": 0.002,
      "obliquityDeg": 2.6,
@@ -195,7 +195,7 @@
    "verdict": "FAIL",
    "reasons": [
     "wall family brick vs photo paint",
-    "glazing storey band off by 0.59 mean 0.34 vs photo 0.66"
+    "glazing storey band off by 0.51 mean 0.42 vs photo 0.66"
    ],
    "crop": {
     "ref": "source-data://pand-reference-walls/0363100012118320/w03-286.jpg",
@@ -240,17 +240,17 @@
      "uM": -0.3,
      "vM": 0.1
     },
-    "iou": 0.372,
+    "iou": 0.444,
     "wall": {
      "photo": "#34373a",
      "photoRaw": "#34373a",
-     "model": "#6e342c",
-     "modelToday": "#8f4339",
+     "model": "#4a302b",
+     "modelToday": "#4a302b",
      "photoFamily": "paint",
      "modelFamily": "brick",
      "photoMaterial": "painted-black",
-     "modelMaterial": "brick-red-brown",
-     "dL": 0.086,
+     "modelMaterial": "brick-purple-brown",
+     "dL": 0.014,
      "dHue": null,
      "pass": false
     },
@@ -275,22 +275,22 @@
      ],
      "model": [
       null,
-      0.331,
-      0.327,
-      0.342,
-      0.314,
-      0.327,
-      0.331,
-      0.325,
-      0.327,
-      0.331,
-      0.386,
+      0.407,
+      0.405,
+      0.44,
+      0.407,
+      0.405,
+      0.425,
+      0.421,
+      0.405,
+      0.44,
+      0.436,
       null
      ],
      "photoMean": 0.657,
-     "modelMean": 0.337,
-     "maxDiff": 0.587,
-     "meanDiff": 0.32,
+     "modelMean": 0.424,
+     "maxDiff": 0.509,
+     "meanDiff": 0.233,
      "pass": false
     },
     "columns": {
@@ -378,10 +378,8 @@
    "panel": 22,
    "verdict": "FAIL",
    "reasons": [
-    "wall not drawn",
-    "glazing  mean 0.00 vs photo 0.33",
-    "columns none vs photo 5",
-    "window shape none vs photo tall"
+    "wall family brick vs photo paint",
+    "glazing  mean 0.59 vs photo 0.34"
    ],
    "crop": {
     "ref": "source-data://pand-reference-walls/0363100012118320/w05-196.jpg",
@@ -411,8 +409,8 @@
      24.735
     ],
     "shift": {
-     "uM": 0,
-     "vM": 0
+     "uM": 0.2,
+     "vM": 0.5
     },
     "box": {
      "u0": -5.834,
@@ -423,64 +421,62 @@
    },
    "likeness": {
     "shift": {
-     "uM": 0,
-     "vM": 0
+     "uM": 0.2,
+     "vM": 0.5
     },
-    "iou": null,
+    "iou": 0.441,
     "wall": {
      "photo": "#464746",
      "photoRaw": "#464746",
-     "model": null,
-     "modelToday": null,
+     "model": "#735c59",
+     "modelToday": "#735c59",
      "photoFamily": "paint",
-     "modelFamily": null,
+     "modelFamily": "brick",
      "photoMaterial": "painted-black",
-     "modelMaterial": null,
-     "dL": null,
+     "modelMaterial": "brick-purple-brown",
+     "dL": 0.124,
      "dHue": null,
      "pass": false
     },
     "glass": {
      "photo": "#3d5061",
-     "model": null
+     "model": "#586a75"
     },
     "glazing": {
      "photo": [
       null,
-      0.342,
       null
      ],
      "model": [
       null,
-      null,
       null
      ],
-     "photoMean": 0.329,
-     "modelMean": 0,
+     "photoMean": 0.341,
+     "modelMean": 0.59,
      "maxDiff": null,
-     "meanDiff": 0.329,
+     "meanDiff": 0.249,
      "pass": false
     },
     "columns": {
      "photo": 5,
-     "model": null,
-     "pass": false
+     "model": 5,
+     "pass": true
     },
     "shape": {
-     "photo": "tall",
+     "photo": null,
      "model": null,
-     "pass": false
+     "pass": null
     },
     "classes": {
-     "photo": "columns",
-     "model": "blank"
+     "photo": "punched",
+     "model": "punched"
     },
     "ground": {
-     "photo": 0.102,
-     "model": null
+     "photo": 0.117,
+     "model": 0.47
     },
     "evidence": {
-     "usable": 0.967,
+     "usable": 0.919,
      "foliage": 0.01,
      "washedOut": 0.013,
      "obliquityDeg": 0,
@@ -497,21 +493,14 @@
     "glazing": 0.328,
     "storeyGlazing": [
      null,
-     0.341,
      null
     ],
     "ground": 0.098,
     "bays": 5,
     "pitchM": 4.986,
     "storeyM": 3.28,
-    "window": {
-     "w": 0.6,
-     "h": 1,
-     "sill": 0,
-     "aspect": 2.05,
-     "shape": "tall"
-    },
-    "frontClass": "columns",
+    "window": null,
+    "frontClass": "punched",
     "normalisation": {
      "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
      "ref": null,
@@ -528,10 +517,7 @@
     "split": null
    },
    "gaps": {
-    "kit": [
-     "glazed-columns: full-height glazing in bays across storey lines; no kit system",
-     "window-shape-range: measured 0.6x1 outside the windowShape range"
-    ],
+    "kit": [],
     "evidence": []
    }
   },
@@ -540,9 +526,7 @@
    "panel": 28,
    "verdict": "FAIL",
    "reasons": [
-    "wall family brick vs photo paint",
-    "glazing storey band off by 0.33 mean 0.39 vs photo 0.65",
-    "window shape square vs photo tall"
+    "glazing  mean 0.56 vs photo 0.31"
    ],
    "crop": {
     "ref": "source-data://pand-reference-walls/0363100012118320/w01-16.jpg",
@@ -572,8 +556,8 @@
      100.132
     ],
     "shift": {
-     "uM": 0.5,
-     "vM": 0.5
+     "uM": -0.5,
+     "vM": 0
     },
     "box": {
      "u0": -29.91,
@@ -584,44 +568,40 @@
    },
    "likeness": {
     "shift": {
-     "uM": 0.5,
-     "vM": 0.5
+     "uM": -0.5,
+     "vM": 0
     },
-    "iou": 0.39,
+    "iou": 0.427,
     "wall": {
-     "photo": "#a3a09e",
-     "photoRaw": "#838d90",
-     "model": "#8a4a38",
-     "modelToday": "#a85a44",
-     "photoFamily": "paint",
+     "photo": "#735c59",
+     "photoRaw": "#5d5152",
+     "model": "#735c59",
+     "modelToday": "#735c59",
+     "photoFamily": "brick",
      "modelFamily": "brick",
-     "photoMaterial": "painted-grey",
-     "modelMaterial": "brick-red-brown",
-     "dL": -0.249,
-     "dHue": null,
-     "pass": false
+     "photoMaterial": "brick-purple-brown",
+     "modelMaterial": "brick-purple-brown",
+     "dL": 0,
+     "dHue": 0,
+     "pass": true
     },
     "glass": {
-     "photo": "#715d5b",
-     "model": "#715d5b"
+     "photo": "#64635d",
+     "model": "#586a75"
     },
     "glazing": {
      "photo": [
       null,
-      0.626,
-      0.755,
       null
      ],
      "model": [
       null,
-      0.422,
-      0.428,
       null
      ],
-     "photoMean": 0.649,
-     "modelMean": 0.39,
-     "maxDiff": 0.327,
-     "meanDiff": 0.259,
+     "photoMean": 0.311,
+     "modelMean": 0.557,
+     "maxDiff": null,
+     "meanDiff": 0.246,
      "pass": false
     },
     "columns": {
@@ -630,20 +610,20 @@
      "pass": true
     },
     "shape": {
-     "photo": "tall",
-     "model": "square",
-     "pass": false
+     "photo": null,
+     "model": null,
+     "pass": null
     },
     "classes": {
-     "photo": "columns",
+     "photo": "punched",
      "model": "punched"
     },
     "ground": {
-     "photo": 0.41,
-     "model": 0.536
+     "photo": 0.208,
+     "model": 0.505
     },
     "evidence": {
-     "usable": 0.919,
+     "usable": 0.964,
      "foliage": 0.027,
      "washedOut": 0.045,
      "obliquityDeg": 1.4,
@@ -653,28 +633,20 @@
     }
    },
    "measured": {
-    "wall": "#a3a09e",
-    "wallRaw": "#838d90",
-    "glass": "#715d5b",
-    "trim": "#afbac6",
-    "glazing": 0.636,
+    "wall": "#735c59",
+    "wallRaw": "#5d5152",
+    "glass": "#64635d",
+    "trim": "#999a9b",
+    "glazing": 0.305,
     "storeyGlazing": [
      null,
-     0.6,
-     0.778,
      null
     ],
-    "ground": 0.452,
+    "ground": 0.212,
     "bays": 6,
-    "pitchM": 4.774,
-    "storeyM": null,
-    "window": {
-     "w": 0.3,
-     "h": 0.9,
-     "sill": 0,
-     "aspect": 2.65,
-     "shape": "tall"
-    },
+    "pitchM": 4.809,
+    "storeyM": 2.9,
+    "window": null,
     "frontClass": "punched",
     "normalisation": {
      "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
