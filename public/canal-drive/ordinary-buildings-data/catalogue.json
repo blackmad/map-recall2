@@ -49931,6 +49931,182 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:14:47.658Z"
+    },
+    {
+      "id": "ordinary-0363100012129127",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012129127",
+      "name": "Wibautstraat 78, Amsterdam-Oost (Wibautstraat / Weesperzijde): 1966 eight-storey office-and-flat block, pale brick-and-concrete bands with continuous dark ribbon windows, a crown of square-lattice windows and a glazed supermarket ground storey on cone-shaped piers",
+      "hash": "baafcc14f69a6675a2e04373dd5a065bfd6e850e9787726c9a535b53640438c2",
+      "sha256": "baafcc14f69a6675a2e04373dd5a065bfd6e850e9787726c9a535b53640438c2",
+      "bytes": 779916,
+      "triangles": 10617,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -40.552,
+          0.001,
+          -47.818
+        ],
+        "max": [
+          24.159,
+          31.447,
+          40.783
+        ]
+      },
+      "anchor": [
+        4.9106598,
+        52.355656
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9110018,
+              52.3554355
+            ],
+            [
+              4.9110031,
+              52.3554334
+            ],
+            [
+              4.9110168,
+              52.3554364
+            ],
+            [
+              4.9109936,
+              52.3554749
+            ],
+            [
+              4.9110044,
+              52.3554773
+            ],
+            [
+              4.9109475,
+              52.3555723
+            ],
+            [
+              4.9109379,
+              52.3555702
+            ],
+            [
+              4.9107929,
+              52.3558122
+            ],
+            [
+              4.910804,
+              52.3558148
+            ],
+            [
+              4.910745,
+              52.3559099
+            ],
+            [
+              4.9107354,
+              52.3559076
+            ],
+            [
+              4.910629,
+              52.356086
+            ],
+            [
+              4.9100613,
+              52.355957
+            ],
+            [
+              4.9100823,
+              52.3559224
+            ],
+            [
+              4.9100849,
+              52.355923
+            ],
+            [
+              4.9100851,
+              52.3559226
+            ],
+            [
+              4.9101486,
+              52.3558184
+            ],
+            [
+              4.9101463,
+              52.3558179
+            ],
+            [
+              4.9104637,
+              52.3552887
+            ],
+            [
+              4.9107695,
+              52.3553579
+            ],
+            [
+              4.9107808,
+              52.3553399
+            ],
+            [
+              4.9109824,
+              52.3553856
+            ],
+            [
+              4.910958,
+              52.3554256
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 31.45,
+      "height": 31.45,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-wibautstraat-78-129127.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012129127"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "wibautstraat-78-129127",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012129127/w03-70.jpg",
+          "staging/pand-reference-walls/0363100012129127/w02-340.jpg",
+          "staging/pand-reference-walls/0363100012129127/w02-340.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows+entrance 9st 8b",
+          "ribbon-windows 9st 8b",
+          "ribbon-windows 8st 2b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 47, 89, 7 and 6 (E, 29 m, 21 m and 11 m, eaves 30.3; surfaces 53, 104, 8, 7): 9 storeys of ribbon windows over a glazed ground with an entrance and canopy and ALBERT HEIJN letters on the canopy. walls[1] = panel 41 main part (N end, 26 m at 30.3 m; surface 106): 9 storeys x 8 bays of ribbon windows over a glazed ground. walls[2] = panel 41 east return (surfaces 86 and 45, 9 m, eaves 27.1): 8 storeys, split off because the eaves gate samples the lowest roof along a panel (surfaces 59 and 117 at 21.7 and 15.4 m stay blank). 8 bays per storey on the east front (the photographed rhythm has about 20 window groups; 9-storey ribbon bays at 2.7 m pitch were 13.7k triangles). Simplified: the crown's lattice windows are ordinary ribbon windows, the cone-shaped piers are not modelled, the photographed corners are rounded and the 3DBAG walls are straight facets. Not drawn: the west front (a 4.7 m podium wall in the data under a tower set back behind it; no tidy ribbon read), the south end and the courtyard walls, which stay blank pale render."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012129127",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:16:24.946Z"
     }
   ]
 }
