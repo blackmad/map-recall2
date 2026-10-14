@@ -21,6 +21,7 @@ import {
   type BridgeKind, type KitRow, type RGB,
 } from './bridgeKit.js';
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
+import { sideWidths } from '../elevation/bridgeDeck.js';
 
 export { FRAME, RAILING, PIER_SPAN_M } from './bridgeKit.js';
 const hex = (h: string): RGB => { const v = parseInt(h.slice(1), 16); return [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255]; };
@@ -107,10 +108,12 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
   if (idx.length < 2) return emptyMesh(true);
   const rows: KitRow[] = idx.map(i => {
     const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1;
-    const n: Vec2 = [-dy / l, dx / l], hw = p.halfWidth[i];
-    const L: Vec2 = [p.x[i] + n[0] * hw, p.y[i] + n[1] * hw], R: Vec2 = [p.x[i] - n[0] * hw, p.y[i] - n[1] * hw];
+    const n: Vec2 = [-dy / l, dx / l], hw = p.halfWidth[i], [hl, hr] = sideWidths(p, i);
+    const L: Vec2 = [p.x[i] + n[0] * hl, p.y[i] + n[1] * hl], R: Vec2 = [p.x[i] - n[0] * hr, p.y[i] - n[1] * hr];
     const z = deck.z[i];
-    return { s: p.s[i], c: [p.x[i], p.y[i]], n, L, R, z, zL: height ? height(L[0], L[1]) : z, zR: height ? height(R[0], R[1]) : z,
+    // Past the road's half-width (an outline wider than the road, DeckProfile.sides) the surface there is the canal: the deck's own level.
+    const zAt = (q: Vec2, w: number) => (!height ? z : w > hw + 0.01 ? Math.max(z, height(q[0], q[1])) : height(q[0], q[1]));
+    return { s: p.s[i], c: [p.x[i], p.y[i]], n, L, R, z, zL: zAt(L, hl), zR: zAt(R, hr),
       water: overWater(p.x[i], p.y[i]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: ground(L[0], L[1]), gR: ground(R[0], R[1]) };
   });
   // Water spans: the profile's measured water (the pipeline's AHN water) where it has one, else the mask's runs along the centre.
@@ -151,15 +154,22 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
   const k0 = Math.max(0, all.findIndex(i => p.s[i] >= p.deck[0] - 0.5)), k0m = ((k0 % stride) + stride) % stride;
   const idx = all.filter((_, k) => k % stride === k0m || k === 0 || k === all.length - 1);
   if (idx.length < 2) return m;
-  const J = Math.max(2, across), base = m.positions.length / 3;
+  // Columns across, left to right: the road's half-width in `across` steps, then every ≤ 4 m out to a wider outline
+  // (DeckProfile.sides; the same count on every row, so the grid stays regular).
+  const sideMax = p.sides ? [Math.max(0, p.sides[0] - Math.max(...idx.map(i => p.halfWidth[i]))), Math.max(0, p.sides[1] - Math.max(...idx.map(i => p.halfWidth[i])))] : [0, 0];
+  const extra = sideMax.map(w => (w > 0.01 ? Math.ceil(w / 4) : 0));
+  const J = Math.max(2, across) + extra[0] + extra[1], base = m.positions.length / 3;
   for (const i of idx) {
     const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1;
-    const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
+    const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i], [hl, hr] = sideWidths(p, i), A = Math.max(2, across);
     for (let j = 0; j <= J; j++) {
-      const t = hw * (1 - 2 * j / J), x = p.x[i] + nx * t, y = p.y[i] + ny * t;
+      const t = j < extra[0] ? hl - (hl - hw) * j / extra[0] : j > J - extra[1] ? -hw - (hr - hw) * (j - (J - extra[1])) / extra[1] : hw * (1 - 2 * (j - extra[0]) / A);
+      const x = p.x[i] + nx * t, y = p.y[i] + ny * t;
       // Past the measured span (a reach to the bank) the top stays on the riding surface too: the street bands drawn on it
       // must stay on top (BRU0077 in the belt audit, a top on the profile's z rose 2 cm over the klinker band).
-      vertex(m, x, y, height(x, y) + DECK_TOP_LIFT, DECK_TOP);
+      // Past the road's half-width on a wider outline: the deck's own level (the surface there is the canal).
+      const z = Math.abs(t) > hw + 0.01 ? Math.max(deck.z[i], height(x, y)) : height(x, y);
+      vertex(m, x, y, z + DECK_TOP_LIFT, DECK_TOP);
     }
   }
   // Left (+n) to right per row; the next row is +s. (+s) × (−n) is up, so a row's j → j+1 then the next row is counter-clockwise from above.
@@ -351,3 +361,29 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
 
 /** An unmeasured footprint carries no water level: its kit body reaches this far under its lowest top (the belt quays stand ~1.8 m over the boezem). */
 const FLAT_FREEBOARD_M = 1.8;
+
+/**
+ * Inside a measured deck's corridor over its water: within the water extent (the deck span where the profile has none)
+ * shrunk by `inset` at both ends, and within the deck's half-width plus `pad`. The water polygons of the extract stop
+ * at a wide bridge's faces (the BGT waterdeel leaves the overbruggingsdeel out), so their shores ran across the canal
+ * under the Torensluis and the quay wall drawn there, topped at the deck's height, filled its arches (bridge-fidelity
+ * e2e 2026-10-14). The quay walls skip shores in here.
+ */
+export function underDeck(decks: readonly DeckSurface[], inset = 1.5, pad = 2): (x: number, y: number) => boolean {
+  const boxes = decks.map(d => d.profile.bbox);
+  return (x, y) => {
+    for (let k = 0; k < decks.length; k++) {
+      const b = boxes[k];
+      if (x < b[0] - 30 || x > b[2] + 30 || y < b[1] - 30 || y > b[3] + 30) continue;
+      const p = decks[k].profile, ext = p.water ?? p.deck;
+      let best = -1, bd = Infinity;
+      for (let i = 0; i < p.s.length; i++) { const d = (p.x[i] - x) ** 2 + (p.y[i] - y) ** 2; if (d < bd) { bd = d; best = i; } }
+      if (best < 0 || p.s[best] < ext[0] + inset || p.s[best] > ext[1] - inset) continue;
+      // Which side of the road line, and that side's half-width (DeckProfile.sides).
+      const [dx, dy] = axisAt(p, best), l = Math.hypot(dx, dy) || 1, c = (-(x - p.x[best]) * dy + (y - p.y[best]) * dx) / l, [hl, hr] = sideWidths(p, best);
+      if ((c >= 0 ? c < hl + pad : -c < hr + pad)) return true;
+    }
+    return false;
+  };
+}
+

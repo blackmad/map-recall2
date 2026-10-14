@@ -3,7 +3,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { basculeStyle, basementEnd, MAST, bridgeFacts, buildKit, buildKitAtLevel, decodeFacts, encodeFacts, FAMILY_PALETTE, flatHintAt, flatKind, measuredKind, registerHint, KIT_BUDGET, COPE_M, FRAME, type BridgeFacts, type BridgeKind, type KitRow } from './bridgeKit';
 import { FLAT_HINTS } from './bridgeHints';
-import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, movableFrame } from './decks';
+import { ABUTMENT_DEPTH_M, deckReach, flatDeckBody, floatingEnds, measuredDeckTop, movableFrame, underDeck } from './decks';
+import { decodeProfile, sideWidths } from '../elevation/bridgeDeck';
 import type { DeckSurface } from './surface';
 
 /** A 24 m humped deck along +x, 8 m wide, over `water` metres of canal centred at x = 20. */
@@ -154,4 +155,28 @@ test('deck ends: a deck whose measured span stops over water reaches on to both 
   assert.deepEqual(floatingEnds(deck, px => water(px), () => 1, () => 1), []);
   // A canal wider than the reach: still floating, and the check says so.
   assert.equal(floatingEnds(deck, px => px > 0 && px < 39, () => 1, () => 1).length, 2);
+});
+
+// Bridge-fidelity e2e 2026-10-14: the Torensluis is a 22 m road over a 44 m wide, off-centre bridge; the deck took the
+// road's width and the quay walls at the water polygon's edge across the canal filled two of its three arches.
+test('deck sides from the outline cross-section; no quay under a deck', () => {
+  const p: number[] = [];
+  for (let s = 0; s <= 30; s += 1) p.push(s * 10, 0, s * 100, s >= 8 && s <= 22 ? 150 : 0);
+  // Outline 30 m to the left of the road line, 4 m to its right; the road is 8 m wide.
+  const bridge = { id: 'T2', name: 'Test', roadIds: [], family: 'masonry-arch', width: 8, approachHalfWidth: 3, deck: [8, 22] as [number, number], water: [9, 21] as [number, number], outline: [80, -40, 220, -40, 220, 300, 80, 300], endpointNAP: [1, 1] as [number, number], p };
+  const prof = decodeProfile(bridge, 0.1);
+  assert.deepEqual(prof.sides, [29, 4], 'left capped at the half-width plus 25 m, right at the half-width');
+  const mid = prof.s.findIndex(s => s >= 15);
+  assert.deepEqual(sideWidths(prof, mid), [29, 4]);
+  assert.deepEqual(sideWidths(prof, 0), [prof.halfWidth[0], prof.halfWidth[0]], 'the approaches keep their own width');
+  const deck = { profile: prof, z: new Float64Array(prof.s.length).fill(1.5), ends: [0, 0] as [number, number], span: prof.deck, ease: [1, 1] as [number, number] };
+  const under = underDeck([deck]);
+  assert.ok(under(15, 20), 'a shore across the canal under the wide side is under the deck');
+  assert.ok(!under(15, -8), 'past the narrow side it is not');
+  assert.ok(!under(9.5, 20), 'the banks (the water extent ends) keep their quays');
+  const top = measuredDeckTop(deck, () => 1.5);
+  const ys = top.positions.filter((_, i) => i % 3 === 1);
+  assert.ok(Math.max(...ys) > 28 && Math.min(...ys) < -3.9, 'the top spans the outline');
+  // No outline wider than the road: unchanged.
+  assert.equal(decodeProfile({ ...bridge, outline: [80, -40, 220, -40, 220, 40, 80, 40] }, 0.1).sides, undefined);
 });
