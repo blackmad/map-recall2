@@ -60,7 +60,7 @@ export async function renderFace(face: BridgeFace, view: { flipped: boolean; ppm
       // Only what stands between the far face and the camera: drop water behind the bridge's far half.
       if (layer === 'water' && cc * side < -face.halfWidth) continue;
       // Quay walls along the canal under the span stand in front of the arches in an oblique view: only the abutments' quays.
-      if (layer === 'quay' && ca > face.deck[0] + 1 && ca < face.deck[1] - 1) continue;
+      if (layer === 'quay' && !process.env.SHEET_QUAY && ca > face.deck[0] + 1 && ca < face.deck[1] - 1) continue;
       const P3 = v.map(i => [p[i * 3], p[i * 3 + 1], p[i * 3 + 2]]);
       const e1 = [P3[1][0] - P3[0][0], P3[1][1] - P3[0][1], P3[1][2] - P3[0][2]], e2 = [P3[2][0] - P3[0][0], P3[2][1] - P3[0][1], P3[2][2] - P3[0][2]];
       const n = norm([e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]]);
