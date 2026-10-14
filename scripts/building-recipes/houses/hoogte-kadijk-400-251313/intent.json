@@ -1,0 +1,98 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "hoogte-kadijk-400-251313",
+ "pandId": "0363100012251313",
+ "address": "Hoogte Kadijk 400, Amsterdam-Centrum: 1903 brick industrial hall with giant arched windows and a small arched clerestory row, and a five-storey brick office wing with a stepped entrance",
+ "sources": [
+  {
+   "id": "pano-2022-04-25-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_001030/",
+   "image": "staging/pand-reference-walls/0363100012251313/w01-31.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-10-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track03_Sphere_00004/",
+   "image": "staging/pand-reference-walls/0363100012251313/w02-121.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    12,
+    3,
+    30
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 6,
+   "ground": "blank",
+   "windows": "narrow",
+   "blankStoreys": [
+    0
+   ],
+   "deepBars": true,
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     1,
+     2
+    ],
+    "band": "stone"
+   },
+   "palette": {
+    "brick": "#6a4a3e",
+    "frame": "#3a3a3a",
+    "stone": "#c8b898"
+   }
+  },
+  {
+   "wallSurfaces": [
+    65,
+    66,
+    92,
+    93
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "cross",
+   "deepBars": true,
+   "stringCourses": true,
+   "entrance": {
+    "bay": 2,
+    "portal": true
+   },
+   "palette": {
+    "brick": "#5a4038",
+    "frame": "#efe8d8",
+    "stone": "#c8b898"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#5a4038",
+  "frame": "#3a3a3a",
+  "door": "#1e2e24",
+  "stone": "#c8b898"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Hoogte Kadijk 400 (BAG, built 1903; Kadijken, Amsterdam-Centrum): a brick industrial hall with giant round-arched windows and a small arched clerestory row, beside a five-storey brick office wing with a stepped stoop and a double door; 97 3DBAG wall surfaces. Photographed: w01-31 and w03-31, w04-31 (the long north-east hall wall), w02-121 (the south-east office front, 8.6 m away). Everything else stays blank (otherWalls); the 120 m south-west wall and the courtyard are not photographed.",
+  "walls[0] = panels 11 and 2 (NE hall wall, eaves 15.2 m): a brick base with basement grilles, a storey of tall round-arched windows with stone dressings and a second storey of small arched windows under a corbelled cornice, pilaster strips between the bays. Drawn as 3 storeys x 6 bays, blank base, round-arched narrow windows on storeys 1 and 2 with stone arch bands. Simplified: the giant windows and the small arches share one bay rhythm (the real wall has 6 giant windows and about 12 small arches), the multi-light glazing bars, the pilaster strips and corbel course, the basement grilles.",
+  "walls[1] = panel 54 (SE office wing, eaves 17.3 m): five storeys of paired white-framed windows with stone string courses over a stone-stepped entrance with a dark double door in bay 2; drawn as 5 storeys x 5 bays, cross windows, portal entrance. The stoop steps, the iron canopy over the left ground window and the arched ground windows are not drawn.",
+  "Not drawn: the north-west and south-west walls and the roof clerestory (3DBAG roof)."
+ ]
+}

@@ -1,0 +1,144 @@
+{
+ "schemaVersion": 1,
+ "id": "grasweg-41-201637",
+ "pand": "0363100012201637",
+ "signature": [
+  "grey-clad-tower-block"
+ ],
+ "walls": [
+  {
+   "tag": "w01-349",
+   "bearing": 349,
+   "lengthM": 56.5,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000105_pano_0001_007106",
+   "capturedAt": "2016-07-08",
+   "checked": true,
+   "note": "wall is hidden behind dense tree cover in the only panorama; left blank",
+   "items": []
+  },
+  {
+   "tag": "w02-170",
+   "bearing": 170,
+   "lengthM": 52.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w03-169",
+   "bearing": 169,
+   "lengthM": 35.2,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-258",
+   "bearing": 258,
+   "lengthM": 33.3,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w05-80",
+   "bearing": 80,
+   "lengthM": 23.8,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000105_pano_0001_007089",
+   "capturedAt": "2016-07-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "grey-clad-tower-block",
+     "kind": "window-shape",
+     "where": "36 m grey metal-clad block with a curved eaves cap and a few small windows in rows",
+     "approxSizeM": [
+      24,
+      30
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 9 storeys x 4 bays of low windows on three of the nine storeys, grey wall material; the curved cap is straight",
+     "seenIn": "TMX7315120208-000105_pano_0001_007089"
+    },
+    {
+     "id": "cladding-ribs",
+     "kind": "other",
+     "where": "horizontal ribbed metal cladding",
+     "approxSizeM": [
+      24,
+      30
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "ribs a few centimetres deep, below the component grain"
+     },
+     "seenIn": "TMX7315120208-000105_pano_0001_007089"
+    }
+   ]
+  },
+  {
+   "tag": "w06-170",
+   "bearing": 170,
+   "lengthM": 18.9,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w07-168",
+   "bearing": 168,
+   "lengthM": 17.7,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w08-349",
+   "bearing": 349,
+   "lengthM": 17.7,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000105_pano_0001_007089",
+   "capturedAt": "2016-07-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "blue-fence-annex",
+     "kind": "other",
+     "where": "low blue-banded annex behind the site fence",
+     "approxSizeM": [
+      20,
+      5
+     ],
+     "plan": "simplified",
+     "how": "the annex walls are blank grey 3DBAG walls; fence not drawn (outside the footprint)",
+     "seenIn": "TMX7315120208-000105_pano_0001_007089"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

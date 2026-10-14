@@ -1221,7 +1221,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
-
+- **Large tier after batch 4** (2026-10-14, HISTORY "Dominant buildings,
+  batch 4"): kit limits to fix: wall-mounted letters leave open edges on
+  some shells; the lantern floats off split panels (Pijlsteeg 31); a
+  balcony run on an arched storey hides the arch heads; the eaves gate
+  should sample per surface; `baysPerStorey` on surface-listed groups;
+  Tilanusstraat's louvred tower and the Krasnapolsky/Binnengasthuis
+  courts are blank; the 3DBAG open-edge pands (Singel 457, Hirschpassage
+  2, WG-plein 600…) need a shell-repair step before any recipe.
 - **Own ground after the belt lane** (2026-10-14, HISTORY "belt audit
   clean, pockets…"): a BGT-driven sidewalk/road fill for land over BGT
   road away from junctions (Oud-West 11.6k m² per 300 m window); pocket

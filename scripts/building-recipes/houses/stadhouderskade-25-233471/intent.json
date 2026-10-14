@@ -1,0 +1,130 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadhouderskade-25-233471",
+ "pandId": "0363100012233471",
+ "address": "Stadhouderskade 25 (Park Centraal Amsterdam hotel and the MOMO corner), Amsterdam-Zuid: 1930 block with a stone-and-brick arched corner range on Stadhouderskade, a dark stone balcony range and a bowed hotel front with continuous glazed balconies",
+ "sources": [
+  {
+   "id": "pano-2020-04-24-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001675_pano_0000_002449/",
+   "image": "staging/pand-reference-walls/0363100012233471/w02-1.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-26-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002548_pano_0000_000344/",
+   "image": "staging/pand-reference-walls/0363100012233471/w04-1.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-10-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002920_pano_0000_000143/",
+   "image": "staging/pand-reference-walls/0363100012233471/w01-246.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    109
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "rail": "glass"
+   },
+   "palette": {
+    "brick": "#5a5c62",
+    "frame": "#9aa8b0",
+    "stone": "#6a6c72"
+   }
+  },
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "plinth-shopfronts",
+   "windows": "cross",
+   "deepBars": true,
+   "cornice": true,
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     1
+    ],
+    "band": "stone"
+   },
+   "palette": {
+    "brick": "#4a4e58",
+    "frame": "#efe8d6",
+    "stone": "#e8e0cc"
+   }
+  },
+  {
+   "wallSurfaces": [
+    91
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "plinth-shopfronts",
+   "windows": "cross",
+   "deepBars": true,
+   "cornice": true,
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "rail": "bars",
+    "every": 3,
+    "first": 1
+   },
+   "palette": {
+    "brick": "#54555a",
+    "frame": "#efece4",
+    "stone": "#8a8a8c"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#55565c",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "stone": "#e8e0cc"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Stadhouderskade 25 (BAG, built 1930; Park Centraal Amsterdam hotel sign on the north front, MOMO restaurant on the corner range) is a block on the Stadhouderskade with a bowed seven-storey hotel front with continuous glazed balcony runs, an older dark-stone corner range with white dressings and arched first-floor windows, and a dark stone balcony range on the south-west. 240 3DBAG wall surfaces; three fronts are drawn (w02-1, w04-1, w01-246), w03-157, w05-68 and w06-246 are close views of the same ranges and of the cream corner house; everything else stays blank.",
+  "walls[0] = surface 109 of panel 4 (N, 26.9 m, eaves 22.3; the 7.5 and 16.2 m end surfaces are left out because the eaves gate samples the lower roof): dark brick-grey skin, a glazed lobby ground storey (Park Centraal), six storeys of wide glazed windows with a glass-railed balcony run on each; drawn as 7 storeys x 8 bays. Simplified: the bowed plan (straight in 3DBAG), the rooftop crown and the oval roof sign, the lobby canopy lettering.",
+  "walls[1] = panel 5 (N, 20.3 m, eaves 17.8): the corner range: a brick ground with MOMO shopfronts, an arched first floor with white dressings and balcony rail, three upper storeys with white-surround windows and a cornice under dormers; drawn as 5 storeys x 5 bays, plinth-shopfront ground, round arched windows on storey 1, cornice. Simplified: the balcony rail on the arched storey (a balcony run would hide the arched heads in this kit), the stone dressings and dormers (3DBAG roof). walls[2] = surface 91 of panel 13 (SW, 31 m, eaves 17.3): dark stone block with shopfronts (PC BAGS, POV GALLERY) and balconies in every third bay on storeys 2-3; 5 storeys x 8 bays.",
+  "Not drawn: the cream corner house (w05-68, NE), the courtyard and the south front."
+ ]
+}
