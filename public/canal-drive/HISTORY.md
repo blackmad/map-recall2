@@ -1,5 +1,61 @@
 # Canal Recall — what is built
 
+## De Hallen measured and staged behind its landmark; the two Kinkerstraat halls installed (2026-10-14)
+
+Lane `lane/de-hallen-20261014` (plan Part 2 step 8). The brief's pand ids
+were wrong: the 1902 tram depot is `0363100012236693` (already drawn by
+the bespoke signature landmark `de-hallen` with a POI card); 092013 is
+the 1987 infill at Kinkerstraat 89–105 and 137280 is Kinkerstraat 32–54
+(1999). Crops archived for all three (source-data cdffbca02) with new
+`all-walls.ts` options `--date`, `--exclude-date`, `--exclude-pano`,
+`--segment`, `--walls`, `--suffix`, `--min-dist` (logic in a typed, tested
+`panoPick.ts`), `closeCameraSpan`, and `panelCoverageStraight` (drops
+pieces more than 45° oblique when the straight pieces cover the panel).
+Kit added, validated, tested, byte-identical when unused: `hallDoors`
+(glazed hall portals on chosen ground bays; the photos show no arched
+hall: the round arches are only the two glazed gateways, the long side
+is a pale concrete front, the gables have flat-headed portals, so no
+`arched-hall` system), `glazedStoreys` (upper storeys glazed like a shop
+front), `groundClamp` (clamps 3DBAG faces that sink below ground).
+**De Hallen** (10,662 tris; g0 Tollensstraat concrete hall WARN with the
+photo counting mullions 86 vs 15 columns, g1 corner house FAIL inferred
+with stone surrounds read as trim, g2 gateway WARN, g3 stone ground under
+brick FAIL inferred, g4 corner bay FAIL inferred, g5 Bellamyplein corner
+block WARN IoU 0.28, g6 tram-hall gable PASS, g7 gables FAIL inferred,
+north shade and fence) is compiled and staged at
+`artifacts/building-recipes/de-hallen-236693/catalogue-entry.json`, not
+installed: from the Bellamyplein at street level the recipe is closer
+than the landmark (dark brick gables with wide glazed portals, the corner
+block, the gateway arches) but from above the landmark's striped roofs
+read better than the recipe's plain slate saw-tooth without its glass
+ridge lights, and the concrete hall front is right in colour and rhythm
+but flat; keep the landmark until the kit does ridge lights and stepped
+stone-coped gables, then retire it and install the recipe in one change
+(`docs/images/de-hallen/ride-{kinkerstraat,bellamyplein}.jpg` pair main
+with a local trial). **Kinkerstraat 32–54** (8,708 tris, g0–g3 FAIL
+inferred on the red awnings, the glazed mezzanine, the orange/dark split
+and the stair slot, g4 WARN): installed, clearly better than the city box.
+**Kinkerstraat 89–105** (3,205 tris, g0 FAIL inferred: cantilevered
+balconies, g1 FAIL inferred: yellow tiled stair towers): installed as a
+fair block in the right colour family; the balconies and towers that
+define it are new systems for a later pass. Index rows in
+`docs/images/de-hallen/index-{de-hallen,kinkerstraat}.jpg` (new
+`scripts/building-recipes/index-row-sheet.ts`); doc
+`docs/de-hallen-20261014.md`. Kit gaps: brick attic band over the
+concrete hall, scalloped lintel band and deep concrete fins, stepped
+gables with stone copings and the oculus, wide rusticated arch rings,
+round-arched upper windows in stone surrounds, GEMEENTETRAM lettering,
+glass ridge lights, eared/stone-dressed surrounds in the measurement,
+per-storey wall colour in the measurement; red shop awnings, a dormered
+set-back attic, mezzanine glazing on one side of a split, a recessed
+glazed stair slot; cantilevered balconies on chosen bays, yellow-tiled
+stair towers, a blue tiled shop ground. Checks: building-recipes 171,
+geometry-audit 47, fit-golden 156 identical, 115 meshes identical,
+covers, stale-installs strict 0, osm-under-models 0, audit:glb PASS.
+Near-miss: two Kinkerstraat `walls.json` were reverted by accident and
+rebuilt byte-identical (74 crops, same row counts).
+
+
 ## The bridge e2e reads deck crowns in metres, not pixels (2026-10-14)
 
 Lane `lane/bridge-crowns-20261014`. The pixel hump reading in

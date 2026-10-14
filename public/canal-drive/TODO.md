@@ -1400,7 +1400,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   "3DBAG ground outliers": stale survey paths re-recorded, a VM harness
   fixed); Jan Evertsenstraat survey lane running; then Jan Evertsenstraat
   (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
-  and arcades bespoke, De Hallen as a large recipe; district style packs in
+  and arcades bespoke (lane running), De Hallen DONE as a staged recipe
+  behind its landmark (HISTORY "De Hallen measured and staged"; retire
+  the landmark and install when the kit does glass ridge lights and
+  stepped stone-coped gables), Kinkerstraat 32–54 and 89–105 installed
+  (89–105 needs cantilevered balconies and tiled stair towers); district style packs in
   `look/palette.ts` keyed by CBS buurt with a per-pand district index in
   the facts sidecar and the streamed rigid canopy; a destination on each
   street for the seeded ride.
