@@ -102,8 +102,21 @@ async function kitMask(page: Page, file: string): Promise<{ mask: Uint8Array; wi
   return { mask, width, height, count, rg };
 }
 
-/** Openings: most body-gap-body patterns in one row of the lower part of the mask (the arches), and the hump. */
-function readMask(m: { mask: Uint8Array; width: number; height: number; rg: Int16Array }): { openings: number; humpPx: number; bbox: number[] } {
+/** Screen columns of a bridge's deck-span ends (the side view's own bridge, not a neighbour further down the canal). */
+async function spanColumns(page: Page, b: Bridge): Promise<[number, number]> {
+  return page.evaluate(({ b }) => {
+    const map = (window as any).canalRecallGame.vectorMap.map, left = map.getContainer().getBoundingClientRect().left;
+    const rad = b.bearing * Math.PI / 180, mLng = 111320 * Math.cos(b.lat * Math.PI / 180), h = b.lengthM / 2;
+    const xs = [-1, 1].map(s => map.project([b.lng + Math.sin(rad) * s * h / mLng, b.lat + Math.cos(rad) * s * h / 111320]).x + left);
+    return [Math.round(Math.min(...xs)), Math.round(Math.max(...xs))] as [number, number];
+  }, { b });
+}
+
+/**
+ * Openings: most body-gap-body patterns in one row of the lower part of the mask (the arches), and the hump.
+ * `cols`: the deck span's screen columns (spanColumns); the hump is read between them.
+ */
+function readMask(m: { mask: Uint8Array; width: number; height: number; rg: Int16Array }, cols?: [number, number]): { openings: number; humpPx: number; bbox: number[]; span?: number[] } {
   let x0 = m.width, x1 = -1, y0 = m.height, y1 = -1;
   const colCount = new Array(m.width).fill(0);
   for (let y = 0; y < m.height; y++) for (let x = 0; x < m.width; x++) if (m.mask[y * m.width + x]) colCount[x]++;
@@ -129,10 +142,16 @@ function readMask(m: { mask: Uint8Array; width: number; height: number; rg: Int1
     for (let i = 1; i < runs.length; i++) if (runs[i][0] - runs[i - 1][1] > 8) gaps++;
     openings = Math.max(openings, gaps);
   }
-  // Top edge of the solid body (≥ 4 px tall) per column; hump = the ends' mean minus the middle's.
-  const top = (x: number) => { for (let y = 0; y < m.height - 4; y++) if (m.mask[y * m.width + x] && m.mask[(y + 3) * m.width + x]) return y; return m.height; };
-  const span = x1 - x0, ends = [top(x0 + Math.round(span * 0.08)), top(x1 - Math.round(span * 0.08))], mid = Math.min(...[0.45, 0.5, 0.55].map(f => top(x0 + Math.round(span * f))));
-  return { openings, humpPx: (ends[0] + ends[1]) / 2 - mid, bbox: [x0, y0, x1, y1] };
+  // Top edge of the solid body (6 px of mask below it, so a rail is not body) per column; the hump is the ends' mean
+  // minus the middle, each the median of a band of columns, between the deck span's columns when given. Single columns
+  // let a railing post top set the middle and the next bridge down the Singel set the right end: the Torensluis read
+  // 28 px on its lane and -12 px on main (2026-10-14) from byte-identical deck meshes, once main's shots carried an
+  // orange-outlined figure on the crown and orange streaks at the deck ends that differ between the paired shots.
+  const top = (x: number) => { for (let y = 0; y < m.height - 6; y++) { let k = 0; while (k < 6 && m.mask[(y + k) * m.width + x]) k++; if (k === 6) return y; } return m.height; };
+  const [h0, h1] = cols ? [Math.max(x0, cols[0]), Math.min(x1, cols[1])] : [x0, x1], span = h1 - h0;
+  const band = (a: number, b: number) => { const v: number[] = []; for (let x = Math.round(h0 + span * a); x <= Math.round(h0 + span * b); x++) v.push(top(x)); v.sort((p, q) => p - q); return v[v.length >> 1]; };
+  const ends = [band(0.04, 0.14), band(0.86, 0.96)], mid = band(0.4, 0.6);
+  return { openings, humpPx: (ends[0] + ends[1]) / 2 - mid, bbox: [x0, y0, x1, y1], ...(cols ? { span: [h0, h1, ends[0], mid, ends[1]] } : {}) };
 }
 
 test('bridge fidelity: arches, humps, bascules and landed ends', async ({ page }, info) => {
@@ -164,7 +183,8 @@ test('bridge fidelity: arches, humps, bascules and landed ends', async ({ page }
     const rad = b.bearing * Math.PI / 180, ux = Math.sin(rad), uy = Math.cos(rad);
     // Across the axis: the right-hand normal in the east-north frame is (uy, -ux).
     await lookFrom(page, offset(b, uy * s.across, -ux * s.across), 1.2, [b.lng, b.lat], -1.0);
-    const m = await kitMask(page, `${OUT}/${P}-${s.id}-side.png`), r = readMask(m);
+    const cols = await spanColumns(page, b);
+    const m = await kitMask(page, `${OUT}/${P}-${s.id}-side.png`), r = readMask(m, cols);
     report[s.id] = { pixels: m.count, ...r }; save();
     expect(r.openings, `${s.id} arches drawn`).toBeGreaterThanOrEqual(s.arches);
     // The Blauwbrug's deck is nearly level (a 0.3 m rise over 40 m): no hump check there.
