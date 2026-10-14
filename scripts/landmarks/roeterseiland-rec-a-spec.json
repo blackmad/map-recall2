@@ -1,0 +1,11 @@
+{
+  "id": "roeterseiland-rec-a",
+  "note": "Audit declarations only (scripts/audit-glb-quality.ts reads throughPassages from <id>-spec.json); the catalogue entry is src/canalRecall/landmarks/manualCatalogue.json.",
+  "throughPassages": [
+    {
+      "axisBearing": 72.6,
+      "corridor": [[17.8, 11.6], [29.1, 47.7], [47.7, 42.5], [36.3, 5.9]],
+      "evidence": "The Nieuwe Achtergracht runs through the bridge block (De Brug): a 38.3 m wide, 19.4 m deep, 15.2 m high opening, open at its west and east fronts and closed by glazed channel walls north and south (panoramas w02-253 from the west and w06-73 from the east; passage corners from the 3DBAG wall rings 521, 399, 397; scripts/landmarks/roeterseiland-void.ts)."
+    }
+  ]
+}
