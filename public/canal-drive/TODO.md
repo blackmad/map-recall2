@@ -1384,8 +1384,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   no sightline; the two halls need another capture date); Oud-West type
   library DONE (HISTORY "Kinkerstraat type library": seven types over 207
   pands, measured palettes, two proof faces compiled; the brick-arched
-  type gets its white courses when the Nassaukade 506 lane's `bands:
-  "painted"` lands); face lanes for the remaining 26 faces at ~10 pands
+  type has its white courses since the Nassaukade merge, grey where the
+  photo is white and continuous where it is dotted, see the accents item); face lanes for the remaining 26 faces at ~10 pands
   each, never `compile.ts --install`; the kinker-109-161 arcade ground
   and the 2-30 shell dormers / frieze consoles are kit gaps to add in those
   lanes;
@@ -1410,10 +1410,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   installed). Open: the sixteen things the kit still cannot say listed
   there, first the four the photos show most (loading-door axes, shutters
   whose field the fit ignores, fanlights, carved keystones); the Nassaukade
-  506 benchmark block (user photo 2026-10-14: painted bands at sill and
-  lintel, eared surrounds with keystones, timber bracketed balconies, a bay
-  window, pediment dormers, painted-black brick; lane running) and the
-  Oud-West type lane build on these keys; then a pass over the installed
+  506 benchmark block is DONE as a compiled face (HISTORY "Nassaukade 506:
+  the user's benchmark block in the kit": six components, the face reads
+  as the photo on 149/145, kit gaps listed); next on it: round-arch heads
+  with dark tympana and two springers, bright-white band colour (the
+  strips' white is near #e8e4dc, the kit draws grey stone), the dotted
+  impost-block course, a per-storey head line instead of the common 0.86,
+  bell mansard, medallions, cast-iron grilles, canted erker; then install
+  the face and the two Kinkerstraat proof faces through the tile compiler; then a pass over the installed
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
 - **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14): the
