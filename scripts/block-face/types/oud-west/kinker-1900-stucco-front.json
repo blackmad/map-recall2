@@ -17,7 +17,7 @@
     "storeys": 4,
     "bays": 3,
     "cornice": "simple",
-    "windows": "sash",
+    "windows": "t-window",
     "windowSurround": "stone-lintel"
   },
   "crowns": {

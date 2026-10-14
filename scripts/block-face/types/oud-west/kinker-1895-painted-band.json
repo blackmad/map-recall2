@@ -17,8 +17,22 @@
     "storeys": 4,
     "bays": 2,
     "cornice": "bracketed",
-    "windows": "arched",
-    "archRings": "blocked"
+    "windows": "t-window",
+    "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true
+      }
+    },
+    "windowSurround": "sill",
+    "windowHeights": [
+      0.7,
+      0.7,
+      0.7,
+      0.68
+    ]
   },
   "crowns": {
     "pediment-dormer": {
@@ -41,7 +55,7 @@
       "door": "black",
       "stone": "#c5c8b1",
       "cornice": "#b4b69e",
-      "wallMaterial": "stucco"
+      "wallMaterial": "painted-brick"
     },
     "dark-brown": {
       "brick": "#5d5042",
@@ -71,8 +85,7 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "black paint is drawn as a grey stucco wall (the stucco slot keeps the measured grey; no brick texture under the paint)",
-      "white sills with small consoles are not drawn (no per-window sill without a lintel in the kit)",
+      "white sills are plain slabs (the 26 consoles are windowSills: consoles, which needs a surround storey)",
       "the decorative dark rubbed-brick arch band of 26 is not drawn"
     ]
   },
@@ -105,8 +118,6 @@
     }
   ],
   "schemaLimits": [
-    "painted brick (texture under paint)",
-    "console sills",
     "the eared window surrounds the plan expected were not found on any Kinkerstraat strip; the white dressing here is blocked heads and keystones"
   ],
   "notes": [

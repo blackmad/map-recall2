@@ -1,0 +1,789 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-109-161",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-109-161/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat-types lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 109-161 (odd side), one 1989 urban-renewal block: dark brown brick over a two-storey arcade of dark piers with a first-floor gallery, three storeys of two-light windows (one wide light on the middle storey), dark roof boxes. Every pand places kinker-1985-infill; wide pands are split into ~6 m modules that alternate mirrored as on the strip."
+ },
+ "types": [
+  "kinker-1985-infill"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012149986",
+   "slug": "kinker-149986",
+   "address": "Kinkerstraat 109",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "name": "Simon Lévelt",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 1 module 1: white two-storey shop insert behind the piers, no legible lettering"
+       }
+      },
+      "mirror": false
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 1 module 2: white two-storey shop insert behind the piers, no legible lettering"
+       }
+      },
+      "mirror": true
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Simon Lévelt",
+    "category": "shop=coffee",
+    "osm": {
+     "type": "node",
+     "id": 2452238291,
+     "name": "Simon Lévelt"
+    },
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: 1989 block, 2 module(s) of the infill type",
+    "photoRows": [
+     4,
+     4,
+     2,
+     4
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012119702",
+   "slug": "kinker-119702",
+   "address": "Kinkerstraat 113",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "name": "S.S.E. telecom",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 2 module 1: recessed shop behind the arcade piers"
+       }
+      },
+      "mirror": false
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 2 module 2: recessed shop behind the arcade piers"
+       }
+      },
+      "mirror": true
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "S.S.E. telecom",
+    "category": "shop=mobile_phone",
+    "osm": {
+     "type": "node",
+     "id": 4943034923,
+     "name": "S.S.E. telecom"
+    },
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2: 1989 block, 2 module(s) of the infill type",
+    "photoRows": [
+     4,
+     4,
+     2,
+     4
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012144295",
+   "slug": "kinker-144295",
+   "address": "Kinkerstraat 115",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": false,
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 3: recessed shop, lettering on the gallery fascia illegible"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "recessed shop, lettering on the gallery fascia illegible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ],
+    "schemaLimits": [
+     "the recessed glazed stair slot beside this pand is drawn as wall with windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012141903",
+   "slug": "kinker-141903",
+   "address": "Kinkerstraat 117",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": false,
+      "name": "Hoogstins",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 4: blue shop board with seasonal lettering"
+     }
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Hoogstins",
+    "category": "shop=books",
+    "osm": {
+     "type": "node",
+     "id": 2452238270,
+     "name": "Hoogstins"
+    },
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012095974",
+   "slug": "kinker-095974",
+   "address": "Kinkerstraat 121",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": false,
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 5: recessed shop with a light sign board"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "recessed shop with a light sign board"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012141675",
+   "slug": "kinker-141675",
+   "address": "Kinkerstraat 123",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "name": "vanHaren",
+      "sign": {
+       "text": "vanHaren",
+       "textColour": "#f08a24",
+       "mount": "fascia",
+       "background": "#2f3433"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 6: orange 'vanHaren' letters on the gallery fascia"
+     }
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "vanHaren",
+    "category": "shop=shoes",
+    "osm": {
+     "type": "node",
+     "id": 2809770318,
+     "name": "vanHaren"
+    },
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ],
+    "schemaLimits": [
+     "the recessed glazed stair slot beside this pand is drawn as wall with windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012072076",
+   "slug": "kinker-072076",
+   "address": "Kinkerstraat 125-149",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "name": "vanHaren",
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 7 module 1: vanHaren continues (orange letters over the first module), then shops behind the piers"
+       }
+      },
+      "mirror": false
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 7 module 2: vanHaren continues (orange letters over the first module), then shops behind the piers"
+       }
+      },
+      "mirror": true
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 7 module 3: vanHaren continues (orange letters over the first module), then shops behind the piers"
+       }
+      },
+      "mirror": false
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2f3433",
+        "fascia": false,
+        "entrance": "centre",
+        "glazing": "split",
+        "displayWindows": 2,
+        "stallriser": "low",
+        "storeys": 2,
+        "evidence": "strip.jpg 2024-12-11: pand 7 module 4: vanHaren continues (orange letters over the first module), then shops behind the piers"
+       }
+      },
+      "mirror": true
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "vanHaren",
+    "category": "shop=shoes",
+    "osm": {
+     "type": "node",
+     "id": 2809770318,
+     "name": "vanHaren"
+    },
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7: 1989 block, 4 module(s) of the infill type",
+    "photoRows": [
+     8,
+     8,
+     4,
+     8
+    ],
+    "schemaLimits": [
+     "the curved drum corner on the roof (two storeys of bow windows over a cantilevered slab) is not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012107234",
+   "slug": "kinker-107234",
+   "address": "Kinkerstraat 141-151",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": false,
+      "name": "Odido",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 8: Odido logo (coloured rings) on the fascia"
+     }
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Odido",
+    "category": "shop=telecommunication",
+    "osm": {
+     "type": "node",
+     "id": 2809771380,
+     "name": "Odido"
+    },
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012067928",
+   "slug": "kinker-067928",
+   "address": "Kinkerstraat 153",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "name": "KPN",
+      "sign": {
+       "text": "kpn",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#4e8f3a"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 9: green 'kpn' board"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "KPN",
+    "category": "shop=telecommunication",
+    "osm": {
+     "type": "node",
+     "id": 2809771392,
+     "name": "KPN"
+    },
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ],
+    "schemaLimits": [
+     "the recessed glazed stair slot beside this pand is drawn as wall with windows"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012132092",
+   "slug": "kinker-132092",
+   "address": "Kinkerstraat 155",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "name": "Entertainment Exchange",
+      "sign": {
+       "text": "ENTERTAINMENT EXCHANGE",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#9b2423",
+       "span": 0.95
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 10: red board 'ENTERTAINMENT EXCHANGE'"
+     }
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Entertainment Exchange",
+    "category": "shop=mobile_phone",
+    "osm": {
+     "type": "node",
+     "id": 2809771405,
+     "name": "Entertainment Exchange"
+    },
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012084581",
+   "slug": "kinker-084581",
+   "address": "Kinkerstraat 157",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": true,
+      "name": "Dorita's hair products",
+      "sign": {
+       "text": "DORITA'S HAIR PRODUCTS",
+       "textColour": "#d8d0b8",
+       "mount": "fascia",
+       "background": "#2f3433",
+       "span": 0.95
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 11: faint 'DORITA'S HAIR PRODUCTS' lettering on the fascia"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Dorita's hair products",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 4723341859,
+     "name": "Dorita's hair products"
+    },
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 11: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012067449",
+   "slug": "kinker-067449",
+   "address": "Kinkerstraat 159",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": false,
+      "name": "Tele2",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 12: lit shop, no legible sign"
+     }
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Tele2",
+    "category": "shop=mobile_phone",
+    "osm": {
+     "type": "node",
+     "id": 4723341860,
+     "name": "Tele2"
+    },
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 12: 1989 block, 1 module(s) of the infill type",
+    "photoRows": [
+     2,
+     2,
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012079593",
+   "slug": "kinker-079593",
+   "address": "Kinkerstraat 161",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "palette": "dark-brown-brick",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f3433",
+      "fascia": false,
+      "name": "Vera Mode",
+      "entrance": "centre",
+      "glazing": "split",
+      "displayWindows": 2,
+      "stallriser": "low",
+      "storeys": 2,
+      "evidence": "strip.jpg 2024-12-11: pand 13: only the right edge is on the strip (the 2024-12-11 span is grey)"
+     }
+    },
+    "overrides": {
+     "bays": [
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "name": "Vera Mode",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 5750117778,
+     "name": "Vera Mode"
+    },
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "inferred: the 2024-12-11 strip span is mostly grey; a 1.9 m end of the same block",
+    "photoRows": [
+     1,
+     1,
+     1,
+     1
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012149986",
+     "0363100012119702",
+     "0363100012144295",
+     "0363100012141903",
+     "0363100012095974",
+     "0363100012141675",
+     "0363100012072076",
+     "0363100012107234",
+     "0363100012067928",
+     "0363100012132092",
+     "0363100012084581",
+     "0363100012067449",
+     "0363100012079593"
+    ],
+    "evidence": "strip.jpg 2024-12-11: one flat wall top along the whole block (row ~219, 14.95 m); 3DBAG eaves 14.8-15.0"
+   }
+  ],
+  "identical": []
+ }
+}

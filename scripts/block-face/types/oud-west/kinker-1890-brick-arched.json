@@ -16,13 +16,28 @@
   "body": {
     "storeys": 4,
     "bays": 2,
-    "cornice": "heavy",
-    "windows": "arched",
-    "archRings": "blocked",
-    "stoneCourses": {
-      "sill": true,
-      "impost": "blocks"
-    }
+    "cornice": "frieze",
+    "windows": "t-window",
+    "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true
+      }
+    },
+    "bands": "painted",
+    "bandHeights": {
+      "sill": 0.04,
+      "head": 0.05
+    },
+    "windowHeights": [
+      0.7,
+      0.7,
+      0.7,
+      0.68
+    ],
+    "windowShare": 0.55
   },
   "crowns": {
     "pediment-dormer": {
@@ -92,10 +107,9 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "T-windows (a fixed top light over two side-hung casements) are drawn as sash windows with a vertical bar through both lights",
       "the dark rubbed-brick ring under the white blocks is not drawn (no band brick measured)",
-      "the impost blocks join the springer blocks on the photo into one dotted line; the kit lays them as separate 0.3 m blocks",
-      "pediment dormer cheeks are plain (no scrolls); cornice consoles and frieze panels are one heavy cornice slab",
+      "the impost course on the photo is a dotted line of white blocks at the springing line; the kit's painted head band is continuous (bands: painted)",
+      "pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze",
       "iron wall anchors between the windows are not drawn"
     ]
   },
@@ -146,7 +160,7 @@
     }
   ],
   "schemaLimits": [
-    "T-window pane layout",
+    "dotted impost course (blocks) vs the continuous painted head band",
     "white tympanum lunettes over the top-storey arches (244-332 236631, 156795) are not in the kit",
     "rubbed-brick arch ring colour",
     "dormer scroll cheeks"
