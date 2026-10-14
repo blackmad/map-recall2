@@ -698,13 +698,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   cinecenter rank high on inward area but may be hidden interpenetrating
   solids; other `hip()` users change on rebuild; rename the `royal-palace`
   `OVER_BUDGET` key to `palace-on-the-dam` or drop it.
-- **Desktop perf, third pass** (2026-10-14, HISTORY "Desktop perf, second
-  pass"): MapLibre's own render is the largest owner (1.0–1.9 ms); the
-  legacy signature-landmarks layer does one `renderer.render` per model
-  (0.30 ms chase, 0.73 aerial), fold into one scene; the shared frame's
-  overlay pass still draws the bike x-ray twice; city prism picks
-  0.07–0.10 ms; the one long frame left is a MapLibre tile batch; iPhone
-  profile pending.
+- **Desktop perf, fourth pass** (2026-10-14, HISTORY "Desktop perf, third
+  pass"): MapLibre `hasTransitions` walks every layer's paint values each
+  frame (0.3–0.4 ms; upstream patch or a cached override); tile culling
+  and clip masks ~0.6 ms; the highlight casing still draws on every tile
+  while a destination is lit (a filter on the accent ids re-tiles the 10k
+  GeoJSON buildings on each card change); `landmarks._requestModels`
+  filters every model spec on every `moveend` (0.3–0.4 ms); legacy
+  landmark draw calls 0.2–0.4 chase / 0.7–1.1 aerial (merge per material
+  across models, or the shared frame by default); retighten
+  `DESKTOP_BUDGET` on a quiet machine; iPhone profile still pending.
 - **Models in the game that fail the hard gates** (lane reports 2026-10-13):
   `jodenbreestraat-11` (holes 116 loops, largest 53.7 m; z-fight 118 m²;
   28 buried openings; 0 % material slots), `academie-theater-dans` (607
