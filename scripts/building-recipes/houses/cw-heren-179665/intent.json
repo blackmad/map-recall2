@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "cw-heren-179665",
+ "pandId": "0363100012179665",
+ "address": "Herengracht (step gable, date stone 1620s; cross-transom windows)",
+ "sources": [
+  {
+   "id": "pano-2021-01-25",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25",
+   "image": "staging/pand-reference-walls/0363100012179665/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Herengracht",
+   "gable": "step",
+   "crownSteps": 3,
+   "atticWindows": 2,
+   "storeys": 2,
+   "bays": 3,
+   "doorBay": null,
+   "tallGround": true,
+   "basement": "windows",
+   "souterrain": true,
+   "cornice": "none",
+   "hoist": true,
+   "windows": "cross-transom",
+   "storeyWindows": {
+    "1": "six-pane"
+   },
+   "windowShare": 0.61,
+   "windowHeights": [
+    0.72,
+    0.67
+   ],
+   "storeyHeights": [
+    0.9,
+    1.9,
+    1.0
+   ],
+   "plinth": "low",
+   "windowHead": {
+    "kind": "relieving",
+    "storeys": [
+     0
+    ],
+    "archRing": {
+     "colour": "stone",
+     "style": "blocks",
+     "widthCourses": 3
+    }
+   },
+   "windowSurround": "sill"
+  }
+ ],
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#503a3b",
+  "frame": "white",
+  "door": "#3a2a24",
+  "stone": "#e8e6dc"
+ },
+ "notes": [
+  "2026-10-14 canal-window survey: crop front.jpg 2021-01-25. Ground cross-transom windows 1.35 x 3.1 m, transom at 0.6, small panes; first floor two-light small-pane windows 1.35 x 1.6 m; relieving arches with white springer/keystone blocks over the ground windows; the centre axis is a white-framed loading bay with a date stone (drawn as windows: the kit has no loading-door axis for canal houses)."
+ ]
+}

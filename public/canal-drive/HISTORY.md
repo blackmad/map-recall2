@@ -1,5 +1,55 @@
 # Canal Recall — what is built
 
+## Canal-house windows and white accents measured into the kit (2026-10-14, user)
+
+Lane `lane/canal-windows-20261014`, from the user's priority ("window shape
+on canal houses is important to me, as are white-brick accents in
+facades"). A survey of 35 canal-belt pands (1610s–1905; 29 measured, the
+rest had bad crops; `docs/canal-house-windows-and-accents-20261014.md`
+carries every measurement and hex) gives era medians the kit had wrong:
+window height is 0.73 / 0.76 / 0.72 of the storey on ground / first /
+second (the old default was 0.58–0.62), windows take 0.66 of the front
+width (old 0.51), absolute heights shrink upward (3.0 / 2.2 / 1.75 /
+1.45 m on 179169), frames are white or cream on 27 of 29 fronts, a third
+of the fronts are near-black painted brick (#2d2826, #303639, #3f3a33),
+speklagen are 0.10–0.16 m tall every 0.45–1.1 m, arch rings 3–4 courses
+or 5 blocks, quoins 0.33 m blocks at a 0.56 m pitch; window kind by era:
+cross windows (17th c.), 6/8/9-over sashes (18th), six-pane, 2-over-2 and
+T-windows (19th), small-pane upper sash over one pane (c.1900). New
+optional keys in `intent.ts` + `fit.ts`, tested in
+`streetComponents.test.ts` (10/10), byte-identical when absent
+(fit-golden 140 unchanged, 107 large meshes identical): window layouts
+`sash-6-over-6`, `sash-8-over-8`, `sash-9-over-9`, `six-pane`, `t-window`,
+`small-over-one`, `cross-transom` (whole front or per storey via
+`storeyWindows`; bars clamped 1.5 cm inside the pane); `windowHead {kind:
+segmental (rise 0.08 of the width, the survey median) | round |
+relieving (square window under an arch spanning width + 0.12 m), storeys,
+archRing {colour stone|band|frame, style solid|blocks|none}, keystone}`;
+`windowShare`; `windowHeights` per storey or `'diminishing'` (heads on a
+common line at 0.86 of the storey); `storeyHeights`; `bands: 'speklagen'`
+with `{spacing, courses}` (white courses 2 cm proud); `windowSurround:
+'sill'`; `plinth: 'low'` (0.45 m stone); `basementBars`; `cornice:
+'frieze'`. Eight surveyed houses re-fitted as `cw-*` recipes (929–2,467
+tris, every gate), each with a photo | model | overlay sheet
+(`docs/images/canal-windows/<id>.jpg`): Herengracht 175702 and 179665
+(block arches and speklagen land on the photo's courses), Keizersgracht
+176393 (bell gable, near-black) and 171052, Prinsengracht 179169
+(diminishing heights) and 167765 (segmental frame heads), Herengracht
+179684 (T-windows) and 176601. Fixes after looking at 640 px: segmental
+rise 0.14 → 0.08 (heads had read as round arches), `storeyHeights` and
+`plinth` so storeys line up, 176393 made a bell gable. Not installed;
+they are the regression set for the canal-belt vocabulary. What the kit
+still cannot say (its list, items 1–16): loading-door axes with date
+stones, shutters (the field exists, the fit ignores it), door transoms
+and fanlights, carved keystones, blokband, speklagen at opening lines, a
+single string course, quoins with set block size, lugged architraves and
+hoods and stone door surrounds, oculi and cartouches, gable claw pieces
+and scrolls, wall anchors, basement doors and double stoops, frame width
+(fixed 0.07 m), stucco fronts with pilasters, some dormers against the
+open-edges gate. The Nassaukade 506 and Oud-West type lanes build on
+these keys.
+
+
 ## Own ground on by default; the start faces the first leg, not the snapped node (2026-10-14, user)
 
 Lane `lane/own-ground-default-20261014`. **Own ground default** (user:
