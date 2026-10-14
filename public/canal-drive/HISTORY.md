@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Dominant buildings, batch 5 (2026-10-14, night)
+
+Lane `large/dominant-5-20261014`, eleven layered recipes (the twelfth,
+Nieuwe Achtergracht 127, is pand 0363100012185420 = the Roeterseiland
+REC-A landmark merged after the lane branched, and was removed at merge):
+the Apollohal (1934, Apollolaan 4, APOLLOHAL name band), Pakhuis
+Wilhelmina on the Waagdragerhof with its eleven-storey 2004 tower,
+Houthavenkade 26 (2018 eight-storey canal front with glass balcony
+columns), Oostelijke Handelskade 749 (2012 arcaded warehouse-style
+blocks; only the western 36 m of each south front within budget), Nieuwe
+Achtergracht 100 (1923 Amsterdam School office block), Valckenierstraat
+65 (1963 laboratory block), Polderweg 3 (1999 campus bar and timber
+sports hall), Gedempt Hamerkanaal 175 (1911 workshops), Balboaplein 48,
+Van Beuningenstraat 48 and Spinozastraat 51 (2017 yellow-brick hotel).
+All pass the gates and `audit:glb` (Waagdragerhof 0.3 m² where the name
+band touches a stone band). Dropped: Hoogte Kadijk 245 (IoU 0.632),
+Albatrospad 110, Ferdinand Bolstraat 104 (IoU 0.124), Entrepotdok 94 (70
+open edges), Groenhoedenveem 29, Von Zesenstraat 316 (16.7 m open edge),
+Revaleiland 264 and Grasweg 183 (construction sites in the panoramas),
+Pieter de Hoochstraat 23 (billboard); pand 170299 duplicates 253824.
+Findings: a 3DBAG wall surface can sit in two panels and pulling it into
+a group doubles the triangle count; a ground-storey stone arch band with
+`stringCourses`/`cornice` on the same group overlapped 1.2 m² (use
+`brick`); `signage.mount: "wall"` places nothing on a group without an
+entrance, `cornice` does. Oostelijke Handelskade 749 aliases pands
+239386/239387. The lane branched before the layered default, so nine of
+its compiled meshes changed with the wall-profile fix; the integrator
+re-recorded and re-installed them at merge. Not modelled: the Oostelijke
+Handelskade oriel stacks (a reusable oriel-stack component would help),
+the Waagdragerhof double-height arches with per-arch lettering,
+Spinozastraat's green ceramic roofs.
+
+
 ## Landmark queue, batch 9: the blurred statues from Commons (2026-10-14, night)
 
 Lane `landmarks/queue-9-20261014`. Six models from licensed Wikimedia

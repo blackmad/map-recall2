@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "id": "valckenierstraat-65-170734",
+ "pand": "0363100012170734",
+ "signature": [
+  "cream-banded-lab-front",
+  "steel-window-lab-wing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-163",
+   "bearing": 163,
+   "lengthM": 69.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_000127",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "cream-banded-lab-front",
+     "kind": "window-shape",
+     "where": "four storeys of brick with cream bands between floors and grouped windows over a dark brick plinth",
+     "approxSizeM": [
+      69,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[0] brick-bay-grid 4 storeys x 14 bays with string courses; walls[1] set-back ribbon floor",
+     "seenIn": "TMX7316010203-000711_pano_0000_000127"
+    }
+   ]
+  },
+  {
+   "tag": "w03-253",
+   "bearing": 253,
+   "lengthM": 54.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001644_pano_0002_000082",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-banded-front",
+     "kind": "window-shape",
+     "where": "west front: same banded storeys over a stone plinth with small barred windows",
+     "approxSizeM": [
+      54,
+      16
+     ],
+     "plan": "simplified",
+     "how": "walls[2] brick-bay-grid 4 storeys x 11 bays with string courses",
+     "seenIn": "TMX7316010203-001644_pano_0002_000082"
+    }
+   ]
+  },
+  {
+   "tag": "w04-343",
+   "bearing": 343,
+   "lengthM": 37.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0002_000084",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "steel-window-lab-wing",
+     "kind": "window-shape",
+     "where": "two storeys of grey steel-framed windows between brick bands under a concrete cornice",
+     "approxSizeM": [
+      37,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[3] two ribbon-window storeys in a dark frame colour",
+     "seenIn": "TMX7316010203-000354_pano_0002_000084"
+    },
+    {
+     "id": "chimney-stack",
+     "kind": "tower",
+     "where": "brick chimney stack and stair tower rising behind the wing",
+     "approxSizeM": [
+      4,
+      25
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG tower mass in brick colour; the ladder and cap are not drawn",
+     "seenIn": "TMX7316010203-000354_pano_0002_000084"
+    }
+   ]
+  },
+  {
+   "tag": "w05-343",
+   "bearing": 343,
+   "lengthM": 16,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000876",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "underside of the bridge over the canal; no wall visible",
+   "items": []
+  },
+  {
+   "tag": "w06-343",
+   "bearing": 343,
+   "lengthM": 10.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000870",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-glazed-annex",
+     "kind": "window-shape",
+     "where": "brick tower with a glazed ground annex and a blue door",
+     "approxSizeM": [
+      10,
+      16
+     ],
+     "plan": "simplified",
+     "how": "left to the 3DBAG shell in brick colour (blank wall)",
+     "seenIn": "TMX7316010203-001975_pano_0000_000870"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

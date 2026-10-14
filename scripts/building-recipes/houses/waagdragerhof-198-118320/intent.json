@@ -1,0 +1,144 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "waagdragerhof-198-118320",
+ "pandId": "0363100012118320",
+ "address": "Waagdragerhof 198 (Pakhuis Wilhelmina), Amsterdam-Centrum (Veemkade, KNSM-eiland): 2004 block with an eleven-storey dark red brick residential tower over the retained arched brick warehouse Pakhuis Wilhelmina, whose tall arched windows carry the lettering PAK HUIS WIL HEL MINA",
+ "sources": [
+  {
+   "id": "pano-2022-12-28-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002900_pano_0009_000017/",
+   "image": "staging/pand-reference-walls/0363100012118320/w04-196.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01389/",
+   "image": "staging/pand-reference-walls/0363100012118320/w03-286.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-16-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01388/",
+   "image": "staging/pand-reference-walls/0363100012118320/w05-196.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-09-06-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-09-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002801_pano_0003_000082/",
+   "image": "staging/pand-reference-walls/0363100012118320/w01-16.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    15,
+    16
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 11,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "plain",
+   "deepBars": true,
+   "palette": {
+    "brick": "#6e342c",
+    "frame": "#7a8a92",
+    "stone": "#9a9088"
+   }
+  },
+  {
+   "wallSurfaces": [
+    25
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 11,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "windows": "plain",
+   "deepBars": true,
+   "palette": {
+    "brick": "#6e342c",
+    "frame": "#7a8a92",
+    "stone": "#9a9088"
+   }
+  },
+  {
+   "wallSurfaces": [
+    26,
+    98
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "arches": {
+    "windows": "round",
+    "ground": "round",
+    "band": "brick"
+   },
+   "palette": {
+    "brick": "#8a4a38",
+    "frame": "#3a4448",
+    "stone": "#c87848"
+   },
+   "signage": {
+    "text": "PAKHUIS WILHELMINA",
+    "colour": "#e8e4d8",
+    "mount": "cornice"
+   }
+  },
+  {
+   "wallSurfaces": [
+    125,
+    34,
+    35,
+    104
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "arches": {
+    "windows": "round",
+    "ground": "round",
+    "band": "brick"
+   },
+   "palette": {
+    "brick": "#8a4a38",
+    "frame": "#3a4448",
+    "stone": "#c87848"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#7a3e32",
+  "frame": "#4a5660",
+  "door": "#2a2a2a",
+  "stone": "#c8b8a0"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Waagdragerhof 198 (BAG pand 0363100012118320, built 2004, 126 3DBAG wall surfaces, roof max 34.9 m): the Pakhuis Wilhelmina block, a long retained brick warehouse of two to three storeys with round-arched windows and orange brick arch bands, with a dark red brick tower block of eleven storeys with a glazed commercial ground standing behind and over it, with a grey-clad bridging volume at the top. Four walls are drawn from panoramas: the tower south front (w04-196, 2022-12-28), the tower west front (w03-286, 2025-06-16), the warehouse south front with five tall arched windows lettered PAK HUIS WIL HEL MINA (w05-196, 2025-06-16) and the warehouse north front (w01-16, 2022-09-06, a 100 m crop).",
+  "walls[0] = panel 14 (S, 28 m, eaves 33.6): eleven storeys of dark red brick with plain windows over a glazed ground, 8 bays. walls[1] = surface 25 of panel 7 (W, eaves 33.5): the same storeys, 6 bays. walls[2] = panel 21 (S, 24.9 m, eaves 12.8): the warehouse south wall, two storeys of round-arched windows with a brick arch band and arched ground, 5 bays, with PAKHUIS WILHELMINA as a name band over the arches. walls[3] = panel 27 (N, 30 m, eaves 12.8): the warehouse north front, three storeys of round-arched windows with arch bands, 6 bays.",
+  "Simplified: the five photographed arches are tall double-height windows glazed in two halves and the kit draws two storeys of arched windows; the lettering is one name band over the arches where the photograph shows one word per arch on the glass; the dark metal bridge-volume and balconies of the tower are not modelled; the tower bay counts are reduced (8 and 6 against about 14 photographed window columns) to stay inside 12k triangles. Not drawn: the tower east and north walls, the courtyard and the north warehouse wings (panels 48, 86 and 84, eaves 18), which stay blank brick."
+ ]
+}

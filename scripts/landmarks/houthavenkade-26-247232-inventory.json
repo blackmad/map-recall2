@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "id": "houthavenkade-26-247232",
+ "pand": "0363100012247232",
+ "signature": [
+  "orange-dark-brick-balcony-front",
+  "glass-balcony-columns"
+ ],
+ "walls": [
+  {
+   "tag": "w01-2",
+   "bearing": 2,
+   "lengthM": 61.1,
+   "evidence": "photo",
+   "panoId": "2025_09_29_07_54_42_00183",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "orange-dark-brick-balcony-front",
+     "kind": "balcony-ironwork",
+     "where": "eight-storey front, orange brick west half and dark brick east half, glazed ground",
+     "approxSizeM": [
+      61,
+      26
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 8 storeys x 10 bays, glazed ground, one blended brick colour",
+     "seenIn": "2025_09_29_07_54_42_00183"
+    },
+    {
+     "id": "glass-balcony-columns",
+     "kind": "balcony-ironwork",
+     "where": "vertical columns of glass-railed balconies stacked up the orange half",
+     "approxSizeM": [
+      3,
+      20
+     ],
+     "plan": "simplified",
+     "how": "walls[0] balconies in every third bay on storeys 2-7 with glass rails",
+     "seenIn": "2025_09_29_07_54_42_00183"
+    },
+    {
+     "id": "glazed-top-floor",
+     "kind": "window-shape",
+     "where": "set-back glazed top floor under a thin roof edge",
+     "approxSizeM": [
+      55,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[1] one ribbon-window storey on the set-back wall",
+     "seenIn": "2025_09_29_07_54_42_00183"
+    }
+   ]
+  },
+  {
+   "tag": "w02-182",
+   "bearing": 182,
+   "lengthM": 59.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001596_pano_0001_000109",
+   "capturedAt": "2020-01-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-range-big-windows",
+     "kind": "window-shape",
+     "where": "three storeys of large dark-framed windows over a glazed ground in dark brick, terraces above",
+     "approxSizeM": [
+      40,
+      11
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 3 storeys x 9 bays, glazed ground; terrace parapets are the 3DBAG roof",
+     "seenIn": "TMX7316010203-001596_pano_0001_000109"
+    }
+   ]
+  },
+  {
+   "tag": "w03-272",
+   "bearing": 272,
+   "lengthM": 44.9,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_07-40-29_00769",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-narrow-window-front",
+     "kind": "window-shape",
+     "where": "six storeys of narrow tall windows in dark brick over a glazed shop ground",
+     "approxSizeM": [
+      17,
+      17
+     ],
+     "plan": "simplified",
+     "how": "walls[3] 6 storeys x 7 bays narrow windows, glazed ground",
+     "seenIn": "recording_2024-10-22_07-40-29_00769"
+    },
+    {
+     "id": "shop-fascia",
+     "kind": "sign",
+     "where": "tenant fascia over the shopfront ground floor",
+     "approxSizeM": [
+      5,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a tenant fascia that changes between panorama captures"
+     },
+     "seenIn": "recording_2024-10-22_07-40-29_00769"
+    }
+   ]
+  },
+  {
+   "tag": "w04-140",
+   "bearing": 140,
+   "lengthM": 38.6,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000074_pano_0000_001158",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "note": "2016 capture of the site hoarding before construction; no wall visible",
+   "items": []
+  },
+  {
+   "tag": "w05-50",
+   "bearing": 50,
+   "lengthM": 28.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-09_07-48-40_00150",
+   "capturedAt": "2024-10-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-ne-end",
+     "kind": "window-shape",
+     "where": "curved brick north-east end with a few punched windows and a tall balcony tower behind",
+     "approxSizeM": [
+      28,
+      26
+     ],
+     "plan": "simplified",
+     "how": "left to the 3DBAG shell in brick colour (blank wall; no wall group drawn on it)",
+     "seenIn": "recording_2024-10-09_07-48-40_00150"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

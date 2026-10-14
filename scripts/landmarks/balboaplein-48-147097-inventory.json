@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "id": "balboaplein-48-147097",
+ "pand": "0363100012147097",
+ "signature": [
+  "slate-clad-east-wings",
+  "red-brick-loggia-front"
+ ],
+ "walls": [
+  {
+   "tag": "w02-170",
+   "bearing": 170,
+   "lengthM": 38.2,
+   "evidence": "photo",
+   "panoId": "b_20241206_0806_Track36_Sphere_00050",
+   "capturedAt": "2024-12-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "red-brick-loggia-front",
+     "kind": "balcony-ironwork",
+     "where": "red brick front with deep slab-edged loggia balconies in alternating bays over a glazed ground",
+     "approxSizeM": [
+      38,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 8 bays, solid balconies every second bay on storeys 2-4",
+     "seenIn": "b_20241206_0806_Track36_Sphere_00050"
+    }
+   ]
+  },
+  {
+   "tag": "w03-350",
+   "bearing": 350,
+   "lengthM": 38.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002024_pano_0000_000553",
+   "capturedAt": "2021-02-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-ribbon-front",
+     "kind": "window-shape",
+     "where": "north front of red brick with paired white-framed windows in bays",
+     "approxSizeM": [
+      38,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 5 storeys x 8 bays wide windows",
+     "seenIn": "TMX7316010203-002024_pano_0000_000553"
+    }
+   ]
+  },
+  {
+   "tag": "w05-80",
+   "bearing": 80,
+   "lengthM": 23.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001149_pano_0000_001087",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "slate-clad-east-wings",
+     "kind": "other",
+     "where": "upper four storeys clad in grey-blue slate scales with paired white-framed windows over a red brick ground storey with entrance doors",
+     "approxSizeM": [
+      23,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 5 storeys x 6 bays in a slate palette colour; the scale pattern is flat colour",
+     "seenIn": "TMX7316010203-001149_pano_0000_001087"
+    }
+   ]
+  },
+  {
+   "tag": "w01-260",
+   "bearing": 260,
+   "lengthM": 71.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000265_pano_0000_000869",
+   "capturedAt": "2017-04-20",
+   "checked": true,
+   "note": "72 m crop of the west side: a glazed community building in red brick and grey; not drawn (blank wall)",
+   "items": [
+    {
+     "id": "west-community-building",
+     "kind": "window-shape",
+     "where": "glazed red brick and grey community building along the west side",
+     "approxSizeM": [
+      72,
+      12
+     ],
+     "plan": "simplified",
+     "how": "left as plain brick on the 3DBAG shell (blank wall); no wall group drawn on it",
+     "seenIn": "TMX7316010203-000265_pano_0000_000869"
+    }
+   ]
+  },
+  {
+   "tag": "w04-80",
+   "bearing": 80,
+   "lengthM": 29.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001149_pano_0000_001094",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "note": "same slate-clad east wings as w05-80, 2019",
+   "items": []
+  },
+  {
+   "tag": "w06-80",
+   "bearing": 80,
+   "lengthM": 23.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002063_pano_0000_002266",
+   "capturedAt": "2021-03-26",
+   "checked": true,
+   "note": "same east front as w05-80, 2021",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

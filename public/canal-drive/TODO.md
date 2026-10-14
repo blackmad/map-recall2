@@ -1263,7 +1263,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   geometry); the Arena's brick relieving arches over flat heads are not a
   kit shape; Plantage Middenlaan 52 is 6 storeys (7 in the photo) and its
   slab mouldings are not modelled; the Utrechtsestraat 15 roof pavilion,
-  Weteringstraat cantilever bands and Funenpark loggias are not modelled.
+  Weteringstraat cantilever bands and Funenpark loggias are not modelled;
+  batch 5: an oriel-stack component (Oostelijke Handelskade 749), the
+  Waagdragerhof double-height arches, Spinozastraat's ceramic roofs; a
+  3DBAG surface in two panels doubles a group's triangles (dedupe).
 - **American Hotel leftovers** (2026-10-14): the tower drum (R 1.75 at
   [-7.6, 18.3]) stands inside the 3DBAG tower block below 28 m while the
   footprint's bulge fits a circle at (-7.66, 19.59); decide whether the
