@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "id": "louise-wentstraat-230-165821",
+ "pand": "0363100012165821",
+ "signature": [
+  "banded-brick-street-front",
+  "glazed-stair-columns"
+ ],
+ "walls": [
+  {
+   "tag": "w01-315",
+   "bearing": 315,
+   "lengthM": 88.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0001_000946",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "banded-brick-street-front",
+     "kind": "window-shape",
+     "where": "four storeys of grey-brown brick with dark floor bands and cream-framed window pairs over a darker plinth",
+     "approxSizeM": [
+      88,
+      13
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 4 storeys x 18 bays with string courses",
+     "seenIn": "TMX7316010203-002541_pano_0001_000946"
+    },
+    {
+     "id": "glazed-stair-columns",
+     "kind": "window-shape",
+     "where": "full-height dark-framed glazed stair columns at the tower bays",
+     "approxSizeM": [
+      3,
+      20
+     ],
+     "plan": "simplified",
+     "how": "folded into the wide-window bays; the full-height glazed columns are not drawn as such",
+     "seenIn": "TMX7316010203-002541_pano_0001_000946"
+    },
+    {
+     "id": "setback-top-floor",
+     "kind": "window-shape",
+     "where": "set-back fifth floor with a ribbon of windows",
+     "approxSizeM": [
+      60,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[1] one ribbon-window storey",
+     "seenIn": "TMX7316010203-002541_pano_0001_000946"
+    }
+   ]
+  },
+  {
+   "tag": "w02-45",
+   "bearing": 45,
+   "lengthM": 43.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_003474",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-end-front",
+     "kind": "window-shape",
+     "where": "north-east end: four storeys of window pairs in the same banded brick, curved corner",
+     "approxSizeM": [
+      42,
+      13
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys x 8 bays with string courses",
+     "seenIn": "TMX7316010203-002047_pano_0000_003474"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

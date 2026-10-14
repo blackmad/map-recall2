@@ -49586,6 +49586,351 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:12:55.225Z"
+    },
+    {
+      "id": "ordinary-0363100012165821",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012165821",
+      "name": "Louise Wentstraat 230, Amsterdam-Oost (Weesperzijde / Amstelkade side of the Oosterpark district): 1992 housing complex of grey-brown brick with dark horizontal bands, four-storey street fronts under a stepped upper floor, curved ends and glazed stair-tower columns",
+      "hash": "63f7848f1f89749e8f31c650dd7d896531075f1cae1caa1465762dc4996ffc06",
+      "sha256": "63f7848f1f89749e8f31c650dd7d896531075f1cae1caa1465762dc4996ffc06",
+      "bytes": 793308,
+      "triangles": 10696,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -50.762,
+          0.001,
+          -70.129
+        ],
+        "max": [
+          49.747,
+          26.983,
+          32.986
+        ]
+      },
+      "anchor": [
+        4.9238721,
+        52.3652383
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9241168,
+              52.3651918
+            ],
+            [
+              4.9241743,
+              52.3652279
+            ],
+            [
+              4.9241999,
+              52.3652437
+            ],
+            [
+              4.9241768,
+              52.3652577
+            ],
+            [
+              4.9242106,
+              52.3652786
+            ],
+            [
+              4.9242189,
+              52.3652736
+            ],
+            [
+              4.924385,
+              52.3653759
+            ],
+            [
+              4.9243669,
+              52.3653868
+            ],
+            [
+              4.9243896,
+              52.365401
+            ],
+            [
+              4.924426,
+              52.3653793
+            ],
+            [
+              4.9245999,
+              52.3654861
+            ],
+            [
+              4.9244867,
+              52.365555
+            ],
+            [
+              4.9245367,
+              52.3655868
+            ],
+            [
+              4.9245247,
+              52.3655939
+            ],
+            [
+              4.9245225,
+              52.3655955
+            ],
+            [
+              4.9240829,
+              52.3658632
+            ],
+            [
+              4.9240821,
+              52.3658627
+            ],
+            [
+              4.9240715,
+              52.3658694
+            ],
+            [
+              4.9240703,
+              52.3658686
+            ],
+            [
+              4.9240515,
+              52.3658686
+            ],
+            [
+              4.9240501,
+              52.3658693
+            ],
+            [
+              4.9240393,
+              52.3658628
+            ],
+            [
+              4.9240386,
+              52.3658633
+            ],
+            [
+              4.9231266,
+              52.3653021
+            ],
+            [
+              4.9232615,
+              52.3652169
+            ],
+            [
+              4.9232639,
+              52.3652184
+            ],
+            [
+              4.9232652,
+              52.3652176
+            ],
+            [
+              4.9232806,
+              52.3652271
+            ],
+            [
+              4.923303,
+              52.3652133
+            ],
+            [
+              4.9232836,
+              52.3652014
+            ],
+            [
+              4.9235151,
+              52.3650603
+            ],
+            [
+              4.923538,
+              52.3650745
+            ],
+            [
+              4.9235607,
+              52.3650608
+            ],
+            [
+              4.9235396,
+              52.3650478
+            ],
+            [
+              4.9235425,
+              52.3650457
+            ],
+            [
+              4.923528,
+              52.3650368
+            ],
+            [
+              4.9235426,
+              52.3650279
+            ],
+            [
+              4.9235395,
+              52.3650259
+            ],
+            [
+              4.9235839,
+              52.3649989
+            ],
+            [
+              4.9235893,
+              52.3650022
+            ],
+            [
+              4.9236394,
+              52.3649717
+            ],
+            [
+              4.9236339,
+              52.3649684
+            ],
+            [
+              4.9236786,
+              52.3649411
+            ],
+            [
+              4.9236829,
+              52.3649438
+            ],
+            [
+              4.9236823,
+              52.3649442
+            ],
+            [
+              4.9237039,
+              52.3649577
+            ],
+            [
+              4.9237224,
+              52.3649465
+            ],
+            [
+              4.9237583,
+              52.3649686
+            ],
+            [
+              4.9237493,
+              52.3649741
+            ],
+            [
+              4.9237993,
+              52.3650046
+            ],
+            [
+              4.923808,
+              52.3649991
+            ],
+            [
+              4.9238439,
+              52.3650213
+            ],
+            [
+              4.9238397,
+              52.3650238
+            ],
+            [
+              4.9238482,
+              52.3650292
+            ],
+            [
+              4.9238495,
+              52.3650284
+            ],
+            [
+              4.9238639,
+              52.3650373
+            ],
+            [
+              4.923849,
+              52.3650462
+            ],
+            [
+              4.9238521,
+              52.3650481
+            ],
+            [
+              4.9238343,
+              52.3650589
+            ],
+            [
+              4.9238575,
+              52.3650732
+            ],
+            [
+              4.9238755,
+              52.3650623
+            ],
+            [
+              4.9240416,
+              52.3651648
+            ],
+            [
+              4.9240333,
+              52.3651699
+            ],
+            [
+              4.9240669,
+              52.3651905
+            ],
+            [
+              4.9240901,
+              52.3651764
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 26.98,
+      "height": 26.98,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-louise-wentstraat-230-165821.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012165821"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "louise-wentstraat-230-165821",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
+          "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
+          "staging/pand-reference-walls/0363100012165821/w02-45.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 18b",
+          "ribbon-windows 1st 22b",
+          "brick-bay-grid 4st 8b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 31 (NW, 88 m, eaves 12.8; surface 36): 4 storeys x 18 bays with string courses. walls[1] = panels 8 and 293 (NW, 61 m and 34 m, eaves 15.5 over a 12.8 m base; surfaces 10, 386): the set-back top floor, one ribbon-window storey. walls[2] = panels 21 and 102 (NE end, 42 m and 31 m, eaves 12.8 and 15.5; surfaces 26, 116): 4 storeys x 8 bays with string courses. Simplified: the dark bands are string courses, window groups are evenly spaced wide windows; 18 bays instead of the photographed 20 to stay inside the triangle budget. Not drawn: the glazed stair-tower columns, the curved south end, the courtyard fronts and the 27 m corner towers (3DBAG massing in brick colour, left blank brick).",
+        "Everything not listed stays blank brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165821",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:14:47.658Z"
     }
   ]
 }
