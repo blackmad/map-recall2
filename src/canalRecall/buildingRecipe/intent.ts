@@ -39,9 +39,21 @@ export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
-/** `solid`: a continuous ring; `blocks`: five radiating stone blocks with brick between (the 17th-c. block arch); `none`: no ring, only the keystone (19th-c. carved keystones over plain brick heads). */
-export const ARCH_RING_STYLES = ['solid', 'blocks', 'none'] as const;
-export const TYMPANUM_FILLS = ['stone', 'band'] as const;
+/**
+ * `solid`: a continuous ring; `blocks`: five radiating stone blocks with brick between (the 17th-c. block arch); `none`: no
+ * ring, only the keystone (19th-c. carved keystones over plain brick heads). `springers` (Oud-West 1888-1900: Kinkerstraat
+ * 18-4, Nassaukade 150 and 147): no ring, a springer block at each foot of the arch, standing on the springing line and
+ * running `springerSize[0]` metres outward from the arch, `springerSize[1]` high (the dotted white impost row of Kinkerstraat, where the
+ * springers of neighbouring windows almost meet over the pier), with the keystone when `keystone` is set.
+ */
+export const ARCH_RING_STYLES = ['solid', 'blocks', 'none', 'springers'] as const;
+/** `dark` (Nassaukade 150, 147): the arch field in the wall brick in shadow (`palette.band`, else the wall colour x DARK_TYMPANUM_K), a blind relieving arch's recessed brick tympanum; also under a relieving arch. */
+export const TYMPANUM_FILLS = ['stone', 'band', 'dark'] as const;
+/**
+ * Darkening of the wall colour for a `dark` tympanum without `palette.band` (the recessed field in shadow): tympanum over
+ * wall luma on the 2024-11-21 Nassaukade strip, 0.67 and 0.68 on 150, 0.73 and 0.80 on 147; the mean.
+ */
+export const DARK_TYMPANUM_K = 0.72;
 /** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, or the `frame` paint. */
 export const ARCH_RING_COLOURS = ['stone', 'band', 'frame'] as const;
 /** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
@@ -199,12 +211,18 @@ export interface FrontIntent {
    * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
    * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
    */
-  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number};
+  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number;
+      /** `style: springers`: [length outward from the arch foot, height] in metres (default [0.14, 0.18]). */
+      springerSize?: [number, number];
+      /** Relieving arches only: `round` = a semicircle over the span (rise = half the span) instead of the segmental 0.25. */
+      shape?: 'segmental' | 'round';
+      /** Relieving arches only: the springing line's height over the window head in metres (default 0.04), a painted band or a plain lintel course between them (Nassaukade 147: 0.2, 150: 0.55). */
+      springGap?: number};
     /**
      * Tympanum (Kinkerstraat 1886-1897: 49-53, 288, 298): the arched part of a segmental or round head is a solid painted
      * fill (`stone`, or the palette's band brick) instead of glass. The glazing stops square at the springing line (the
      * head minus the arch rise); the fill is the arch segment over it, 2 cm proud, under the ring. A keystone stays at the
-     * arch crown.
+     * arch crown. Under a `relieving` arch the fill is the arch field over the square head (only `dark`).
      */
     tympanum?: typeof TYMPANUM_FILLS[number]};
   /** Window width as a share of the front (all windows of a full storey together, 0.3..0.8; survey median 0.66). Default: the legacy 58 % of an equal-pier bay. Only on the shared equal-pier grid (not with bayWidths). */
@@ -215,6 +233,12 @@ export interface FrontIntent {
    * The window head keeps a fixed share of wall above it; the sill moves. Default: the legacy 0.62 / 0.6 - 0.02 per storey.
    */
   windowHeights?: 'diminishing' | number[];
+  /**
+   * Window head line per storey (ground first, one per storey, 0.4..0.98): the top of the window head as a share of its
+   * storey height, measured on the strip, instead of the common 0.86 (`HEAD_LINE`). Needs a `windowHeights` list; the sill
+   * follows from the window height.
+   */
+  headLines?: number[];
   /** Speklagen: stone courses (`palette.band`, else `stone`) every `spacing` brick courses, each `courses` deep (default 2), from the plinth to the eaves. With `bands: "speklagen"`. */
   speklagen?: {spacing: number; courses?: number};
   /**
@@ -283,6 +307,8 @@ export interface FrontIntent {
    * 0.10, head 0.17), measured on the strip.
    */
   bandHeights?: {sill?: number; transom?: number; head?: number};
+  /** `bands: painted`: the centre of the transom band as a share of the window height from the sill (0.3..0.95, default 0.78), measured on the strip (Kinkerstraat 18-4: 0.65). */
+  bandTransomAt?: number;
   bandLines?: ('sill' | 'transom' | 'head')[];
   /** 0-based storeys carrying the painted bands (default every storey above the ground, and the ground when it has no shopfront). */
   bandStoreys?: number[];
@@ -455,6 +481,13 @@ export interface PaletteIntent {
    * (a front's palette cannot change the material).
    */
   wallMaterial?: typeof WALL_MATERIALS[number];
+  /**
+   * `painted` (Oud-West 1888-1900): the stone dressings (painted bands, arch rings and springers, keystones, eared heads,
+   * console sills, quoins) are painted white stucco: their measured `stone` colour is exported as a measured tint, so the
+   * look draws it as measured instead of mixing it into the city's pale sandstone (`cityStoneTint`, which greys a white
+   * paint to ~#a5a395 on the sheet). House palette only.
+   */
+  stoneMaterial?: 'painted';
   /** Large tier only: the glazing colour (default the kit's dark glass `#2a3a42`); measured from the photo by `measure.ts`. */
   glass?: string;
 }
@@ -834,6 +867,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
     for (const [k, v] of Object.entries(f.palette ?? {})) {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
+      else if (k === 'stoneMaterial') problems.push(`${at}.palette.stoneMaterial: set the stone material on the house palette (one material per house)`);
       else colour(v, `${at}.palette.${k}`);
     }
     problems.push(...historicProblems(f, at, colour, oneOf));
@@ -845,6 +879,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
+  if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
   if (problems.length) throw new Error(`Invalid intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return intent;
 }
@@ -897,6 +932,11 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
     if (f.bands !== 'painted') p.push(`${at}.bandStoreys: only with bands "painted"`);
     if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.bandStoreys: ascending storey indices within 0..${f.storeys - 1}`);
   }
+  if (f.bandTransomAt !== undefined) {
+    // A house may drop the transom line from its type's lines; the share is then unused.
+    if (f.bands !== 'painted') p.push(`${at}.bandTransomAt: only with bands "painted"`);
+    if (!frac(f.bandTransomAt, 0.3, 0.95)) p.push(`${at}.bandTransomAt: share of the window height, 0.3..0.95`);
+  }
   if (f.windowSills !== undefined) oneOf(f.windowSills, WINDOW_SILLS, `${at}.windowSills`);
   return p;
 }
@@ -922,14 +962,21 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   const h = f.windowHead;
   if (h !== undefined) {
     for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing, tympanum)`);
-    if (h?.tympanum !== undefined) { oneOf(h.tympanum, TYMPANUM_FILLS, `${at}.windowHead.tympanum`); if (h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head`); }
+    if (h?.tympanum !== undefined) {
+      oneOf(h.tympanum, TYMPANUM_FILLS, `${at}.windowHead.tympanum`);
+      if (h.kind === 'relieving' ? h.tympanum !== 'dark' : h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head, or "dark" under a relieving arch`);
+    }
     oneOf(h?.kind, WINDOW_HEADS, `${at}.windowHead.kind`);
     if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
     if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);
     if (f.windows === 'arched') p.push(`${at}.windowHead: windows "arched" already sets a head; pick a pane layout`);
     const r = h?.archRing;
     if (r !== undefined) {
-      for (const k of Object.keys(r ?? {})) if (!['colour', 'style', 'keystone', 'widthCourses'].includes(k)) p.push(`${at}.windowHead.archRing.${k}: unknown field (colour, style, keystone, widthCourses)`);
+      for (const k of Object.keys(r ?? {})) if (!['colour', 'style', 'keystone', 'widthCourses', 'springerSize', 'shape', 'springGap'].includes(k)) p.push(`${at}.windowHead.archRing.${k}: unknown field (colour, style, keystone, widthCourses, springerSize, shape, springGap)`);
+      const sz = r?.springerSize;
+      if (sz !== undefined && (r.style !== 'springers' || !Array.isArray(sz) || sz.length !== 2 || sz.some(v => !(typeof v === 'number' && v >= 0.06 && v <= 0.6)))) p.push(`${at}.windowHead.archRing.springerSize: [length, height] metres 0.06..0.6, with style "springers"`);
+      if (r?.springGap !== undefined && (h?.kind !== 'relieving' || !(typeof r.springGap === 'number' && r.springGap >= 0 && r.springGap <= 1.2))) p.push(`${at}.windowHead.archRing.springGap: metres 0..1.2, only on a relieving arch`);
+      if (r?.shape !== undefined) { oneOf(r.shape, ['segmental', 'round'], `${at}.windowHead.archRing.shape`); if (h?.kind !== 'relieving') p.push(`${at}.windowHead.archRing.shape: only on a relieving arch`); }
       if (r?.style !== undefined) oneOf(r.style, ARCH_RING_STYLES, `${at}.windowHead.archRing.style`);
       if (r?.style === 'none' && !r.keystone) p.push(`${at}.windowHead.archRing: style "none" draws only the keystone; set keystone: true`);
       oneOf(r?.colour, ARCH_RING_COLOURS, `${at}.windowHead.archRing.colour`);
@@ -940,6 +987,12 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   }
   const wh = f.windowHeights;
   if (wh !== undefined && wh !== 'diminishing' && (!Array.isArray(wh) || wh.length !== f.storeys || wh.some(v => !(typeof v === 'number' && v >= 0.3 && v <= 0.9)))) p.push(`${at}.windowHeights: "diminishing" or one share 0.3..0.9 per storey (${f.storeys})`);
+  const hl = f.headLines;
+  if (hl !== undefined) {
+    if (!Array.isArray(wh)) p.push(`${at}.headLines: needs a windowHeights list`);
+    if (!Array.isArray(hl) || hl.length !== f.storeys || hl.some(v => !(typeof v === 'number' && v >= 0.4 && v <= 0.98))) p.push(`${at}.headLines: one share 0.4..0.98 per storey (${f.storeys})`);
+    else if (Array.isArray(wh) && hl.some((v, s) => v - wh[s] < 0.04)) p.push(`${at}.headLines: each head line must stand at least 0.04 of the storey above the floor plus its window height`);
+  }
   if (f.windowShare !== undefined && (typeof f.windowShare !== 'number' || !(f.windowShare >= 0.3 && f.windowShare <= 0.8) || f.bayWidths !== undefined || f.piers === 'margin')) p.push(`${at}.windowShare: 0.3..0.8 of the front, on the equal-pier grid (not with bayWidths or piers "margin")`);
   if (f.speklagen !== undefined) {
     const s = f.speklagen;

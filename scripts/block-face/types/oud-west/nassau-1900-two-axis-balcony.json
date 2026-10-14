@@ -26,6 +26,7 @@
       "sill": 0.15,
       "transom": 0.13
     },
+    "bandTransomAt": 0.65,
     "cornice": "heavy",
     "storeys": 4,
     "bays": 2,
@@ -46,9 +47,15 @@
     },
     "windowHeights": [
       0.6,
-      0.57,
-      0.55,
-      0.59
+      0.64,
+      0.651,
+      0.65
+    ],
+    "headLines": [
+      0.86,
+      0.759,
+      0.718,
+      0.716
     ]
   },
   "crowns": {
@@ -78,16 +85,18 @@
       "brick": "#6a685d",
       "frame": "white-painted",
       "door": "#1f2324",
-      "stone": "white-painted",
+      "stone": "#f5f1e7",
       "cornice": "white-painted",
-      "wallMaterial": "painted-brick"
+      "wallMaterial": "painted-brick",
+      "stoneMaterial": "painted"
     },
     "red-brick": {
       "brick": "#b58c6f",
       "frame": "white-painted",
       "door": "#3a2a22",
-      "stone": "white-painted",
-      "cornice": "white-painted"
+      "stone": "#f5f1e7",
+      "cornice": "white-painted",
+      "stoneMaterial": "painted"
     }
   },
   "roof": {
@@ -113,7 +122,7 @@
   },
   "schemaLimits": [
     "the balcony platforms are 0.75 m deep and the brackets one carved profile; the real brackets are deeper scrolls",
-    "T-windows and window heights as nassau-1900-three-axis (measured shares on 148, not the canal survey medians)"
+    "window heights and head lines are measured on 149 (window 4.95-7.15, 8.2-10.35, 11.35-13.55 m, drawn 0.65 = 2.06 m so the sill clears the kit storey floor, on the kit's storeys [4.54, 3.44, 3.30, 3.17]); 149's storey-2 band runs at the head line where its storey-1 band is at 0.65 of the window"
   ],
   "evidence": [
     {
@@ -124,5 +133,8 @@
       ],
       "citation": "strip.jpg 2024-11-21 pands 3 and 7 (149 painted dark grey, 145 red brick): same axes, balcony stack, bands and cornice"
     }
+  ],
+  "notes": [
+    "White dressings (kit lane 2026-10-14): stone #f5f1e7 = the drawn white-painted frame x 149's band-to-frame ratio 1.031 (palette-from-strip.ts --frame=white-painted), stoneMaterial painted."
   ]
 }
