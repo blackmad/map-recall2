@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "van-der-palmkade-191-120309",
+ "pandId": "0363100012120309",
+ "address": "Van der Palmkade 191, Amsterdam-West: 2001 serpentine apartment block in dark brick with a cream first-floor band, round-arched loggias and terraced attic storeys facing the canal",
+ "sources": [
+  {
+   "id": "pano-2021-01-14-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001951_pano_0000_000564/",
+   "image": "staging/pand-reference-walls/0363100012120309/w02-97.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    550,
+    290,
+    224
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "stoneStoreys": [
+    1
+   ],
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     2
+    ],
+    "band": "brick"
+   },
+   "palette": {
+    "brick": "#5a3a30",
+    "frame": "#efece4",
+    "stone": "#d8d4c8"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#5a3a30",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "stone": "#d8d4c8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Van der Palmkade 191 (BAG, 2001): a serpentine apartment block along the Van der Palmkade, 654 3DBAG wall surfaces in a long S-curve; only the east canal front (panel 216, w02-97, 2021-01-14, 24 m) is drawn; every other wall stays blank (otherWalls).",
+  "walls[0] = surfaces 550, 290 and 224 of panel 216 (the 13 m surface 380 is a recess left blank): a dark-brick base with shop windows, a cream first-floor band with two windows per bay, round-arched loggias on the second storey, a storey of windows with blue infill panels and a stepped, terraced attic with a pergola. Drawn as 5 storeys x 5 bays, wide windows, stone storey 1 (cream) and round arch heads on storey 2. Simplified: the open loggia depth (the arches carry glazed windows), the blue infill panels, the pergola beams and the terraced attic (3DBAG roof); the white dot roundels in the brick are below the component grain.",
+  "Not drawn: the rest of the S-shaped block and the courtyard side."
+ ]
+}
