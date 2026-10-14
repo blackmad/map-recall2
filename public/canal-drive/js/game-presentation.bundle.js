@@ -680,6 +680,7 @@
     for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
     return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
   })();
+  var STONE_CELL_MEAN = 228 / 255;
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
