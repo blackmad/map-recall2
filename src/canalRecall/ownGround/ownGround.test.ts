@@ -7,19 +7,22 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
-import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
-import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
+import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
-import { benchesAlong, bgtParkSurface, buildParks, decodeLine, encodeLine, playgroundKit, playgroundPiece, PARK_LIFT, type ParksCell } from './parks';
-import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
+import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SurfaceIndex, type ParksCell } from './parks';
+import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
+import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
+import type { OsmGroundExtract } from './osmGround';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
+import { fillPockets, POCKET_LIFT } from './pockets';
 import type { DeckProfile } from '../elevation/bridgeDeck';
 import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
@@ -934,4 +937,102 @@ test('parks: surfaces drape between the OSM areas and the street bands; furnitur
   const far = buildParks(cell, ground, 1);
   assert.ok(far.layers.lawn && far.layers.hedge && !far.layers.furniture, 'far ring: surfaces and hedges, no furniture');
   assert.ok(far.layers.lawn!.indices.length < lawn.indices.length);
+});
+
+test('belt audit deck top: a tram rail lying on a street band is street, over the deck top it is not (BRU0030, 2026-10-14)', () => {
+  assert.equal(deckStreetTop([{ layer: 'tram', z: 1.134 }, { layer: 'asphalt', z: 1.114 }, { layer: 'deckTop', z: 1.084 }]), true);
+  assert.equal(deckStreetTop([{ layer: 'tram', z: 1.134 }, { layer: 'deckTop', z: 1.114 }]), false);
+  assert.equal(deckStreetTop([{ layer: 'tram', z: 1.2 }, { layer: 'asphalt', z: 1.2 - RAIL_ON_BAND_M - 0.01 }]), false);
+  assert.equal(deckStreetTop([{ layer: 'deckBody', z: 2.517 }, { layer: 'cycle', z: 2.422 }]), false);
+  assert.equal(deckStreetTop([]), false);
+});
+
+test('bridge bands carry vertices across: a 5 m band over a 4.2 m deck follows it instead of sagging under it (BRU0292)', () => {
+  // The Schottenburchsbrug: the deck rises 0.35 m over the relief beside it, the mapped carriageway is wider than the deck.
+  const height = (_x: number, y: number) => (Math.abs(y) <= 2.1 ? 1.06 : 0.71);
+  const ways = prepareWays([{ id: 1, tags: { highway: 'residential', bridge: 'yes', width: '5', sidewalk: 'no', surface: 'asphalt' }, g: [[0, 0], [12, 0]] }], p => p as [number, number]);
+  const centre = (acrossStep?: number) => faces(buildStreets(ways, height, { step: 0.75, acrossStep }).asphalt).filter(f => Math.abs(f.c[1]) < 1).map(f => f.c[2]);
+  const before = centre(), after = centre(2);
+  assert.ok(before.length && Math.min(...before) < 1.06 - 0.05, `edges-only band sags under the deck (${Math.min(...before).toFixed(3)})`);
+  assert.ok(after.length && Math.min(...after) >= 1.06 + LIFT.carriageway - 1e-6, `band on the deck (${Math.min(...after).toFixed(3)})`);
+});
+
+test('land pockets: a small gap enclosed by sidewalks near a junction is paved; open land, far gaps and park-bordered gaps are not', () => {
+  // A 40 m cell; four 2 m sidewalks enclose a 4 × 4 m gap at (10..14, 10..14); a park ring encloses another at (26..30, 10..14).
+  const quad = (m: MeshArrays, x0: number, y0: number, x1: number, y1: number) => { const b = m.positions.length / 3; m.positions.push(x0, y0, 0, x1, y0, 0, x1, y1, 0, x0, y1, 0); m.uvs.push(0, 0, 0, 0, 0, 0, 0, 0); m.indices.push(b, b + 1, b + 2, b, b + 2, b + 3); };
+  const paving = emptyMesh(), park = emptyMesh();
+  quad(paving, 8, 8, 16, 10); quad(paving, 8, 14, 16, 16); quad(paving, 8, 10, 10, 14); quad(paving, 14, 10, 16, 14);
+  quad(park, 24, 8, 32, 10); quad(park, 24, 14, 32, 16); quad(park, 24, 10, 26, 14); quad(park, 30, 10, 32, 14);
+  const cover = [{ meshes: [paving], as: 'paving' as const }, { meshes: [park], as: null }];
+  const r = fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT);
+  assert.equal(r.stats.pockets, 1, 'the sidewalk pocket only (the park one is skipped, the open land touches the cell edge)');
+  assert.equal(r.stats.skipped, 1);
+  assert.equal(r.stats.m2, 16);
+  const tris = faces(r.meshes.paving!);
+  assert.ok(tris.every(f => f.c[0] > 9.7 && f.c[0] < 14.3 && f.c[1] > 9.7 && f.c[1] < 14.3), 'inside the gap, grown by half a pixel');
+  assert.ok(tris.every(f => Math.abs(f.c[2] - POCKET_LIFT) < 1e-9), 'under every band');
+  assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 80]], () => 0, POCKET_LIFT).stats.pockets, 0, 'no junction within POCKET_NEAR_M');
+  assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT, { maxM2: 10 }).stats.pockets, 0, 'larger than the cap');
+});
+
+test('water opens under a footbridge whose water polygon stops at it (Melkmeisjesbrug), not under a wide deck', () => {
+  // A canal along x (y 0..10) cut by a 3 m land strip at x 19..21; a footbridge along y at x = 20, 2.4 m wide.
+  const west: Vec2[] = [[0, 0], [19, 0], [19, 10], [0, 10]], east: Vec2[] = [[21, 0], [40, 0], [40, 10], [21, 10]];
+  const geo = { polygons: [[west], [east]], shores: [[[19, 10], [19, 0]], [[21, 0], [21, 10]], [[0, 0], [19, 0]]] as Vec2[][] };
+  const n = 31, deck = (hw: number) => ({ id: 'B', x: Float64Array.from({ length: n }, () => 20), y: Float64Array.from({ length: n }, (_, i) => -2.5 + i * 0.5), s: Float64Array.from({ length: n }, (_, i) => i * 0.5), halfWidth: Float64Array.from({ length: n }, () => hw), deck: [2, 13] as [number, number] });
+  const r = openUnderFootbridges(geo, [deck(1.2)], [0, -5, 40, 15], -1.77);
+  assert.deepEqual(r.opened, ['B']);
+  assert.equal(r.geo.polygons.length, 3, 'one opening polygon added');
+  assert.equal(r.geo.shores.length, 1, 'the two walls across the canal dropped, the bank kept');
+  const mask = buildWaterMask(r.geo, 0, -5, 40, 15, 0.5, 4);
+  for (const y of [1, 5, 9]) assert.ok(maskDistance(mask, 20, y) < 0, `water under the deck at y ${y}`);
+  for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
+  assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
+  assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
+});
+
+test('park fill culling: a fill triangle inside one BGT surface goes; one over a hole or across two surfaces stays', () => {
+  // Lawn A covers 0..20 x 0..20 with a 3 x 3 m hole at (12..15, 12..15); lawn B covers 20..40 x 0..20.
+  const cell = { version: 2, key: 't', parks: [], hedges: [], lines: [], points: [], dropWays: [], surfaces: [
+    { k: 'lawn', r: [encodeLine([[0, 0], [20, 0], [20, 20], [0, 20]]), encodeLine([[12, 12], [12, 15], [15, 15], [15, 12]])] },
+    { k: 'lawn', r: [encodeLine([[20, 0], [40, 0], [40, 20], [20, 20]])] },
+  ] } as unknown as ParksCell;
+  const index = new SurfaceIndex([cell]), raster = index.raster([-1, -1, 41, 21], CULL_RES_M);
+  assert.equal(index.own, 2, 'both surfaces belong to the first cell');
+  const tri = (pts: [number, number][]) => { const m = emptyMesh(); for (const [x, y] of pts) { m.positions.push(x, y, 0); m.uvs.push(0, 0); } m.indices.push(0, 1, 2); return m; };
+  assert.equal(cullCovered(tri([[2, 2], [8, 2], [2, 8]]), raster).dropped, 1, 'inside lawn A, clear of its edges');
+  assert.equal(cullCovered(tri([[10, 10], [17, 10], [10, 17]]), raster).dropped, 0, 'over the hole');
+  assert.equal(cullCovered(tri([[17, 2], [24, 2], [17, 8]]), raster).dropped, 0, 'across the seam between A and B');
+  assert.equal(cullCovered(tri([[0.2, 2], [6, 2], [0.2, 8]]), raster).dropped, 0, 'within CULL_MARGIN_M of the edge');
+  const kept = cullCovered(merge([tri([[2, 2], [8, 2], [2, 8]]), tri([[10, 10], [17, 10], [10, 17]])]), raster);
+  assert.equal(kept.mesh.indices.length, 3);
+  assert.equal(kept.mesh.positions.length, 9, 'vertices compacted');
+});
+
+test('far ring: radius only past the resident ring, blocks nearest first, one part per covered cell, under budget', () => {
+  assert.equal(farRadiusM(1800, 2000), 0, 'the resident ring reaches the view');
+  assert.equal(farRadiusM(3200, 2000), 4000);
+  assert.equal(farRadiusM(40000, 2000), FAR_MAX_M);
+  assert.deepEqual(farBlockCells('-1_0'), ['-2_0', '-1_0', '-2_1', '-1_1']);
+  assert.equal(farBlockOf('-1_1'), '-1_0');
+  const cellRect = (k: string): [number, number, number, number] => { const [cx, cy] = k.split('_').map(Number); return [cx * 1000, cy * 1000, cx * 1000 + 1000, cy * 1000 + 1000]; };
+  const blocks = farBlocksWithin([500, 500], '0_0', 2500, 1000, cellRect);
+  assert.equal(blocks[0].key, '0_0');
+  assert.ok(blocks.every((b, i) => i === 0 || b.d >= blocks[i - 1].d), 'nearest first');
+  assert.ok(blocks.some(b => b.key === '1_0') && !blocks.some(b => b.key === '2_0'), 'block 2_0 starts 3.5 km away');
+  assert.deepEqual(simplify([[0, 0], [10, 0.5], [20, 0], [30, 10]], 1), [[0, 0], [20, 0], [30, 10]]);
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const osm = { version: 1, box: '', centre: [0, 0], fetched: '', attribution: '', areas: [{ id: 'a', kind: 'park', rings: [[[100, 100], [300, 100], [300, 300], [100, 300], [100, 100]]] }],
+    ways: [{ id: 1, tags: { highway: 'residential' }, g: [[0, 500], [1000, 500]] }, { id: 2, tags: { highway: 'primary' }, g: [[500, 0], [500, 1000]] }] } as unknown as OsmGroundExtract;
+  const water = { polygons: [[[[600, 600], [900, 600], [900, 900], [600, 900]]]], shores: [] } as WaterGeometry;
+  const b = buildFarBlock({ key: '0_0', rect: [0, 0, 1000, 1000], ground: () => 1, project: p => ll(p as Vec2), cells: [{ key: '0_0', rect: [0, 0, 1000, 1000], osm, water }] });
+  assert.deepEqual(b.parts.map(p => p.key), ['0_0']);
+  assert.equal(b.stats.byLayer.land, 2 * 20 * 20, 'a 50 m grid over 1 km');
+  assert.equal(b.stats.byLayer.green, 2);
+  assert.equal(b.stats.byLayer.water, 2);
+  assert.equal(b.stats.byLayer.street, 4, 'two straight bands, one quad each');
+  assert.ok(b.stats.triangles <= FAR_BLOCK_BUDGET && b.parts[0].mesh.colors, 'vertex coloured, under budget');
+  const zs = [...b.parts[0].mesh.positions].filter((_, i) => i % 3 === 2);
+  assert.equal(Math.min(...zs), 1, 'land on the relief');
+  assert.ok(Math.abs(Math.max(...zs) - 1 - FAR_LIFT.street) < 1e-6, 'streets lifted over the relief');
 });

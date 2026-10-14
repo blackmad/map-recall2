@@ -20,8 +20,9 @@ import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, 
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
-import { waterZAt, type WaterGeometry } from './water.js';
+import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import type { CellInput } from './groundCell.js';
+import { farBlockCells, type FarBlockInput } from './farRing.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
 export const GAME_ORIGIN = { lng: 4.9, lat: 52.37 } as const;
@@ -71,7 +72,7 @@ export class GroundStore {
   readonly loadedBytes = { relief: 0, water: 0, osm: 0, parks: 0 };
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean } = {}) {}
 
   private async json<T>(path: string): Promise<T> {
     return JSON.parse(new TextDecoder().decode(await this.fetchBytes(path))) as T;
@@ -305,12 +306,32 @@ export class GroundStore {
         const ring = (r: number[]) => { const out: Vec2[] = []; for (let i = 0; i < r.length; i += 2) out.push(this.toScene(ox + r[i] * quant, oy + r[i + 1] * quant)); return out; };
         const geo: WaterGeometry = { polygons: cell.water.map(poly => poly.map(ring)), shores: cell.shore.map(ring) };
         this.attachLevels(key, geo);
-        this.waterResident.set(key, geo);
-        return geo;
+        const out = this.options.openings === false ? geo : this.withOpenings(key, geo);
+        this.waterResident.set(key, out);
+        return out;
       }).catch(() => null);
       this.water.set(key, p);
     }
     return p;
+  }
+
+  /** Measured deck profiles decoded for the openings rule (not placed on the surface), by register id. */
+  private readonly openingProfiles = new Map<string, OpeningDeck & { bbox: [number, number, number, number] }>();
+  /** Water ids opened per cell (named regressions, the lane report). */
+  readonly openedDecks = new Map<string, string[]>();
+
+  /** Open the water under footbridges whose water polygon stops at the bridge (water.ts openUnderFootbridges). */
+  private withOpenings(key: string, geo: WaterGeometry): WaterGeometry {
+    const rect = this.cellRect(key), quant = this.elevation.quantization.xy, decks: OpeningDeck[] = [];
+    for (const k of GroundStore.neighbours(key)) for (const b of this.measuredByCell.get(k) ?? []) {
+      let p = this.openingProfiles.get(b.id);
+      if (!p) { p = decodeProfile(b, quant, this.toScene); this.openingProfiles.set(b.id, p); }
+      const [a0, b0, a1, b1] = p.bbox;
+      if (!(a1 < rect[0] || a0 > rect[2] || b1 < rect[1] || b0 > rect[3])) decks.push(p);
+    }
+    const r = openUnderFootbridges(geo, decks, rect, WATER_Z);
+    if (r.opened.length) this.openedDecks.set(key, r.opened);
+    return r.geo;
   }
 
   /** Scene z of a NAP level under this extract's datum. */
@@ -387,7 +408,26 @@ export class GroundStore {
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
       decks: this.decks(key), deckRingsAround, flatDecks: this.flatDecks(key), flatDeckMeta: this.flatDeckMeta(key),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
-      parks: parksAround[around.indexOf(key)] ?? null, dropWays,
+      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays,
+      project: p => toLocal(p[0], p[1]),
+    };
+  }
+
+  /**
+   * A far block's input (farRing.ts): its streamed cells that the OSM extract and the relief cover, their water and
+   * OSM ground, and the relief over the block (loaded here; the next eviction drops it again). Null: nothing to draw.
+   */
+  async farInput(blockKey: string): Promise<FarBlockInput | null> {
+    const keys = farBlockCells(blockKey).filter(k => this.osmCells.has(k) && this.covers(k));
+    if (!keys.length) return null;
+    const rects = keys.map(k => this.cellRect(k));
+    const rect: Rect = [Math.min(...rects.map(r => r[0])), Math.min(...rects.map(r => r[1])), Math.max(...rects.map(r => r[2])), Math.max(...rects.map(r => r[3]))];
+    await this.ensureRelief(rect);
+    const [water, osm] = await Promise.all([Promise.all(keys.map(k => this.waterCell(k))), Promise.all(keys.map(k => this.osmCell(k)))]);
+    return {
+      key: blockKey, rect,
+      cells: keys.map((k, i) => ({ key: k, rect: rects[i], water: water[i], osm: osm[i] })),
+      ground: (x, y) => { const z = this.surface.ground(x, y); return z === z ? z : 0; },
       project: p => toLocal(p[0], p[1]),
     };
   }

@@ -14,8 +14,9 @@ import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, fromLocal, toLocal, WATER_Z } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { deckStreetTop } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const flag = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -37,6 +38,7 @@ const failures: Failure[] = [], steep: string[] = [];
 const KNOWN: Record<string, string> = {
   'deck-continuity:BRU0077': 'Henrick de Keijserbrug: AHN hump of 1.7 m over a 6.7 m span (57% grade at s 31-34 m), implausible; a DSM artefact (canopy or vehicle) is likely, not verified. Re-measure from the raw AHN rasters.',
   'deck-seam:BRU0031': 'masonry arch: the band inside the span at its end sits 0.29 m above the deck surface (0.25 m tear, was 0.23 with centre-and-rim discs at 0.59 m before); the steepest ramp in the box',
+  'deck-top:BRU2275': 'De Ruijterkade cycle bridge (2026-10-14): the measured road deck BRU0147 beside it is 29.4 m wide (half-width 14.7 m), so its footprint reaches 0.75 m from the cycle deck axis and its parapet (z 2.517) stands 0.14 m over the cycle band on the higher cycle hump (1.2 m vs 0.8 m). Overlapping measured footprints need clipping at the midline (decks.ts), not the bands',
   'deck-top:BRU0313': 'quay coping at the bridge end sits 1 mm above the klinker band (z 2.136 vs 2.135): the water polygon ends at the bridge, its shore wall crosses the road',
   'quay-flooded:4.86232,52.37057': 'Westerpark: the -1.77 plane (default or boezem level; the join was not verified) stands 1.08 m above the ground',
   'quay-flooded:4.90719,52.38449': 'IJ-side docks: default -1.77 plane over ground 0.6 m lower',
@@ -89,10 +91,10 @@ for (const k of cells) for (const deck of store.decks(k)) {
       for (let o = -0.75; o <= 0.75; o += 0.75) {
         const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
         // Topmost uncut, non-water hit over every neighbouring cell (a band may live in the neighbour of the deck's own cell).
-        const hits = near.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && h.layer !== 'water').sort((a, b) => b.z - a.z);
-        const top = hits[0]?.layer ?? null;
+        // Ties within 2 cm go to the higher draw rank (the polygon offsets on screen), as layersAt does inside one cell.
+        const hits = near.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && h.layer !== 'water').sort(compareHits);
         probes++;
-        if (!top || !['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb'].includes(top)) bad.push(`${f}/${o}:${hits.slice(0, 3).map(h => `${h.layer}@${h.z}`).join(">")}`);
+        if (!deckStreetTop(hits)) bad.push(`${f}/${o}:${hits.slice(0, 3).map(h => `${h.layer}@${h.z}`).join(">")}`);
       }
     }
     if (bad.length) fail('deck-top', id, at(p.x[mid], p.y[mid]), `topmost layer not a street band at ${bad.length} probes (${bad.slice(0, 4).join(' ')})`);

@@ -10,11 +10,12 @@ import { readFileSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
 import { flatHintAt, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -26,6 +27,8 @@ const readExtract = async (path: string) => {
 const store = new GroundStore(readExtract);
 /** The same ground without parks-v1 (the parks regressions compare against it: streets must not change). */
 const noParks = new GroundStore(readExtract, { parks: false });
+/** The same ground without water opened under footbridges (the openings regressions show the pin is live). */
+const noOpenings = new GroundStore(readExtract, { openings: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -211,6 +214,11 @@ async function main(): Promise<void> {
     const hit = ring ? flatHintAt(ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length) : null;
     check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);
   }
+  await deckTopRegressions();
+  await pocketRegressions();
+  await openingRegressions();
+  await parkFillRegressions();
+  await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
@@ -257,6 +265,142 @@ async function main(): Promise<void> {
     check(shared > 20 && worst < 1e-4, `seam ${a}|${b}: ${shared} shared land vertices, worst mismatch ${worst.toExponential(1)} m`);
   }
   process.exitCode = failed ? 1 : 0;
+}
+
+/**
+ * Deck tops from the belt audit (lane own-ground belt audit 2026-10-14): at 30/50/70 % of the span and
+ * 0, ±0.75 m off the axis, the topmost layer is a street band (or a tram rail lying on one, `deckStreetTop`).
+ * Bands narrower than the mapped carriageway were draped with vertices on their two edges only, so where the
+ * deck is narrower than the band they spanned from the relief beside the deck and sagged under the deck top
+ * (BRU0292 Schottenburchsbrug 0.15 m, BRU0293 0.10 m, BRU0052 0.05 m); the tram bridges read rail-on-asphalt.
+ */
+const DECK_TOPS: [string, number, number, string][] = [
+  ['BRU0292', 4.90252, 52.37201, 'Schottenburchsbrug, Kromboomssloot'],
+  ['BRU0293', 4.90234, 52.37149, 'Kromboomssloot, Koningsstraat'],
+  ['BRU0052', 4.88571, 52.37547, 'Prinsengracht, Bloemgracht'],
+  ['BRU0030', 4.89282, 52.36517, 'tram bridge, Reguliersgracht / Utrechtsestraat'],
+  ['BRU0285', 4.90221, 52.37720, 'tram bridge, Prins Hendrikkade'],
+];
+async function deckTopRegressions(): Promise<void> {
+  const cache = new Map<string, BuiltCell>();
+  const cell = async (k: string) => { if (!cache.has(k)) cache.set(k, await build(k, 0)); return cache.get(k)!; };
+  for (const [id, lng, lat, label] of DECK_TOPS) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { if (!store.osmCells.has(k)) continue; await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    check(!!owner, `${id} (${label}): placed in a streamed cell (${owner || 'none'})`);
+    if (!owner) continue;
+    const near: BuiltCell[] = [];
+    for (const k of GroundStore.neighbours(owner)) if (store.covers(k)) near.push(await cell(k));
+    const p = store.surface.decks.find(d => d.profile.id === id)!.profile, last = p.x.length - 1;
+    const bad: string[] = [];
+    let probes = 0;
+    for (const f of [0.3, 0.5, 0.7]) {
+      const i = p.s.findIndex(s => s >= p.deck[0] + (p.deck[1] - p.deck[0]) * f), a = Math.max(0, i - 1), b = Math.min(last, i + 1);
+      const dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
+      for (const o of [-0.75, 0, 0.75]) {
+        const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
+        const hits = near.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && h.layer !== 'water').sort(compareHits);
+        probes++;
+        if (!deckStreetTop(hits)) bad.push(`${f}/${o}:${hits.slice(0, 2).map(h => `${h.layer}@${h.z}`).join('>')}`);
+      }
+    }
+    check(!bad.length, `${id} (${label}): deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 4).join(' ')})` : ''}`);
+  }
+}
+
+/**
+ * Land pockets (lane belt audit 2026-10-14, the Rozengracht corners): at Rozengracht × Marnixstraat the sidewalks of
+ * the dual carriageways and a separately mapped footway stop short of each other, so a 4 × 5 m patch of bare land
+ * showed on the north-east corner the BGT surveys as voetpad. With the pocket fill (pockets.ts) every probe is street;
+ * without it the same probes read land (the pin is live).
+ */
+const POCKETS: [string, number, number][] = [['rozengracht-marnixstraat-ne', 4.875994, 52.37239]];
+async function pocketRegressions(): Promise<void> {
+  for (const [id, lng, lat] of POCKETS) {
+    const [x, y] = toLocal(lng, lat), keys = GroundStore.neighbours(store.cellAt(x, y)).filter(k => store.covers(k));
+    const tops = async (pockets: boolean) => {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell({ ...(await store.cellInput(k, 0)), pockets }));
+      const out: string[] = [];
+      for (let dx = -1; dx <= 1; dx += 0.5) for (let dy = -1; dy <= 1; dy += 0.5) out.push(cells.map(c => layersAt(c, x + dx, y + dy)).find(r => r.top)?.top ?? 'none');
+      return out;
+    };
+    const on = await tops(true), off = await tops(false);
+    const street = on.filter(t => ['asphalt', 'klinker', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
+    check(street === on.length, `${id}: ${street}/${on.length} probes are street with the pocket fill (${[...new Set(on)].join(', ')})`);
+    check(off.includes('land'), `${id}: without it ${off.filter(t => t === 'land').length}/${off.length} probes read land (the pin is live)`);
+  }
+}
+
+/**
+ * Water under footbridges (lane belt audit 2026-10-14): the Melkmeisjesbrug's water polygon stops at both deck edges,
+ * so a land strip and two quay walls crossed the Brouwersgracht under it. Along the middle half of the span, on the
+ * axis and 0.5 m either side of it, nothing but the deck lies over the water: no uncut land, no quay wall.
+ */
+const OPENINGS: [string, number, number, string][] = [['BRU0016', 4.89226, 52.37917, 'Melkmeisjesbrug, Brouwersgracht']];
+async function openingRegressions(): Promise<void> {
+  await noOpenings.init();
+  for (const [id, lng, lat, label] of OPENINGS) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { if (!store.osmCells.has(k)) continue; await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    if (!owner) { check(false, `${id}: placed in a streamed cell`); continue; }
+    const p = store.surface.decks.find(d => d.profile.id === id)!.profile, last = p.x.length - 1;
+    const keys = GroundStore.neighbours(owner).filter(k => store.covers(k));
+    const under = async (s: GroundStore) => {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+      const bad: string[] = [];
+      let probes = 0;
+      for (const f of [0.3, 0.4, 0.5, 0.6, 0.7]) {
+        const i = p.s.findIndex(q => q >= p.deck[0] + (p.deck[1] - p.deck[0]) * f), a = Math.max(0, i - 1), b = Math.min(last, i + 1);
+        const dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
+        for (const o of [-0.5, 0, 0.5]) {
+          const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
+          const hits = cells.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && (h.layer === 'land' || h.layer === 'quay'));
+          probes++;
+          if (hits.length) bad.push(`${f}/${o}:${hits.map(h => `${h.layer}@${h.z}`).join(',')}`);
+        }
+      }
+      return { probes, bad };
+    };
+    const on = await under(store), off = await under(noOpenings);
+    check(!on.bad.length && (store.openedDecks.get(owner) ?? [...store.openedDecks.values()].flat()).includes(id), `${id} (${label}): water opened under it, ${on.probes - on.bad.length}/${on.probes} probes free of land and quay walls${on.bad.length ? ` (${on.bad.slice(0, 4).join(' ')})` : ''}`);
+    check(off.bad.length > 0, `${id}: without the opening ${off.bad.length}/${off.probes} probes hit land or a quay wall (the pin is live)`);
+  }
+}
+
+/**
+ * The far ring (lane belt audit 2026-10-14): the aerial views over Nieuw-West and Noord that ended in an edge. Each
+ * named block builds all four parts with land, water, green and streets, within FAR_BLOCK_BUDGET and without dropping
+ * a street tier (measured 6.6k-11.7k triangles, 0.4-0.75 MB, 4-14 ms).
+ */
+async function farRingRegressions(): Promise<void> {
+  for (const [label, lng, lat] of [['Nieuw-West (Osdorpplein)', 4.8020, 52.3590], ['Noord (Buikslotermeerplein)', 4.9380, 52.4000], ['Noord (NDSM)', 4.8960, 52.4010]] as const) {
+    const [x, y] = toLocal(lng, lat), key = farBlockOf(store.cellAt(x, y)), input = await store.farInput(key);
+    if (!input) { check(false, `far ring ${label}: block ${key} has no input`); continue; }
+    const b = buildFarBlock(input), L = b.stats.byLayer;
+    check(b.parts.length === 4 && L.land > 0 && L.water > 0 && L.green > 0 && L.street > 0 && b.stats.tiers === 4 && b.stats.triangles <= FAR_BLOCK_BUDGET,
+      `far ring ${label} (block ${key}): ${b.parts.length} parts, ${b.stats.triangles} triangles (land ${L.land}, water ${L.water}, green ${L.green}, street ${L.street}), ${(b.stats.bytes / 1048576).toFixed(2)} MB, ${b.stats.buildMs} ms, street tiers ${b.stats.tiers}/4 (want <= ${FAR_BLOCK_BUDGET}, all layers)`);
+  }
+}
+
+/**
+ * The OSM park fill under the BGT surfaces (lane belt audit 2026-10-14): fill triangles and land quads wholly inside
+ * one surface are not drawn. Pinned: the Cremerplein and Vondelpark cells lose at least 10k triangles each, and a
+ * Vondelpark hollow where the 8 m lawn drape sags 3.6 cm under the 5 m land grid shows lawn, not land (it showed
+ * land when only the fill was culled).
+ */
+async function parkFillRegressions(): Promise<void> {
+  for (const [label, key, minCulled] of [['Cremerplein', '-3_-2', 10000], ['Vondelpark', '-2_-2', 10000]] as const) {
+    const c = buildCell({ ...(await store.cellInput(key, 0)), pockets: false }), p = c.stats.parks;
+    const saved = (p?.fillCulled ?? 0) + 2 * (p?.landCulled ?? 0);
+    check(saved >= minCulled, `park fill ${label} (${key}): ${p?.fillCulled} fill triangles and ${p?.landCulled} land quads under the BGT surfaces not drawn (${saved} triangles, want >= ${minCulled})`);
+  }
+  const [x, y] = toLocal(4.86793, 52.35712), cell = buildCell({ ...(await store.cellInput(store.cellAt(x, y), 0)), pockets: false });
+  const top = layersAt(cell, x, y).top;
+  check(top === 'lawn', `park fill Vondelpark hollow (4.86793,52.35712): top ${top} (want lawn: no land over the sagging lawn)`);
 }
 
 /**
