@@ -26786,10 +26786,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012127406",
       "name": "Politiepost IJburg, IJburglaan 1397, Amsterdam (2004; ground-floor police post in a red-brick housing block, one pand)",
-      "hash": "fe7af05b6503eb1503922b05c747faaa4ffa024840c013e5b9136e99df0ea1b3",
-      "sha256": "fe7af05b6503eb1503922b05c747faaa4ffa024840c013e5b9136e99df0ea1b3",
-      "bytes": 245464,
-      "triangles": 3227,
+      "hash": "13f9c5fe17765c0feb0cf2ec428c4e8bcec85c536fbdb903a5de5ecde1a32e0c",
+      "sha256": "13f9c5fe17765c0feb0cf2ec428c4e8bcec85c536fbdb903a5de5ecde1a32e0c",
+      "bytes": 259020,
+      "triangles": 3427,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -26996,7 +26996,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127406",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:31.192Z",
+      "updatedAt": "2026-10-14T03:13:09.938Z",
       "bagYear": 2004
     },
     {
