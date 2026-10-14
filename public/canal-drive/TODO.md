@@ -1254,7 +1254,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Hugo de Grootgracht → IJ-toren with `?ownGround=1`)**, lanes running:
   (a) DONE own ground is the default (+2.5 ms main thread, +90 MB, frame
   time unchanged); (b) DONE the start faces the first leg (HISTORY "Own
-  ground on by default; the start faces the first leg"); (c) own-ground road paint is thinner than the
+  ground on by default; the start faces the first leg");
+  (c)–(g) DONE road paint at junctions, ground light, near facade detail,
+  the brick quay legend, houseboat berths (HISTORY "Live play at the
+  Singelgracht"; frames on the demo page). Still open from those: own
+  ground sits ~60 luma below the legacy basemap and the gap is palette
+  (near-white streets, pale water `#46707c`), a look decision; recipe
+  faces for the Singelgracht quays (Marnixkade 73 pands, Nassaukade 46)
+  and the Frederik Hendrikbuurt / Jordaan edge; the `recipeTiles` default
+  after a ride that crosses a pilot tile; a node-tag sidecar in the extract
+  (give_way, stop, traffic_signals, crossing nodes) and `cyclestreet` tags
+  so markings come from data, not priors; the tall grey box in the
+  Singelgracht water at ~4.8789, 52.3797 and the mid-canal land blob on
+  the Westerkanaal at ~4.8839, 52.3876, both uninvestigated; (c) own-ground road paint is thinner than the
   legacy ground's (centre/edge lines, zebras, stop lines, cycle symbols,
   painted names; Singelgracht/Nassaukade junction as the regression);
   (d) the scene reads too dark in own-ground mode (luminance table vs the
