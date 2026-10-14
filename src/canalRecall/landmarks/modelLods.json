@@ -1744,5 +1744,11 @@
   "buildVersion": 2,
   "bytes": 38504,
   "triangles": 1830
+ },
+ "waterdraagster-bellamyplein": {
+  "sourceHash": "9686e52663e2b64e",
+  "buildVersion": 2,
+  "bytes": 14776,
+  "triangles": 542
  }
 }
