@@ -40960,5 +40960,49 @@
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE"
     }
+  },
+  {
+    "id": "spanjemonument",
+    "name": "Spanjemonument (Amsterdam-Noord)",
+    "landmarkId": "extract_landmarks_1299755268",
+    "modelUrl": "./models/spanjemonument.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9138603,
+        52.3874585
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 9,
+      "widthMetres": 14
+    },
+    "surveyed": {
+      "anchor": [
+        4.9138603,
+        52.3874585
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Backlog destination \"Spanjemonument\" (extract_landmarks_1299755268); the steel ribbon, the two flying bronzes, the paving circle and the brick wall with its pink plaque read from Wikimedia Commons photographs (Ceescamel CC BY-SA 4.0; Eddy Roos CC BY-SA 4.0) and Gemeente Amsterdam panorama TMX7316010203-001303_pano_0002_000532 (2019, CC BY 4.0, 5 m away); the facing (235 degrees, +-30, the flight direction) comes from that panorama; the wall position (3.7 m ahead of the flight) and the 5.4 m height are estimates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "assetKind": "memorial",
+    "materialOverrides": {
+      "frame": "#b5babc",
+      "bronze": "#4a3b2e",
+      "greyBrick": "#8b6a58",
+      "brick": "#9a5240",
+      "pink": "#b06f6a",
+      "white": "#efe9db"
+    },
+    "attribution": {
+      "title": "Spanjemonument - original low-poly reconstruction",
+      "author": "Map Recall; after the Spanjemonument in Amsterdam-Noord",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spanje_monument_groot.jpg",
+      "modifications": "Original texture-free low-poly steel ribbon, flying figures, paving and wall built from Commons photographs: 2021 Spanjemonument beeld 1-3 and plaquette 1 (Ceescamel, CC BY-SA 4.0) and Spanje monument groot (Eddy Roos, CC BY-SA 4.0). No pixels or third-party meshes imported.",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE"
+    }
   }
 ]
