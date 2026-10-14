@@ -11,6 +11,7 @@
  *    tall as the panel);
  *  - an enclosed panel (courtyard, light court, gap between wings: a roof >= 6 m high within 12 m straight out) is blank too;
  *  - storeys under the eaves = round((eaves - 0.15) / 4.4), one group per (style, storey count);
+ *  - cross windows are two-light on wings of 5+ storeys and single lights below (GLB byte budget, see STACKED_TWO_LIGHT_ABOVE);
  *  - style `long`: the museum's two long wings (register: "negen traveeen breed, getoogde negenruits vensters") get round-arched
  *    windows; everything else the cross windows with stone mullions the register describes for the Instituut.
  */
@@ -20,10 +21,12 @@ import {buildHost} from '../../src/canalRecall/blockBuilding/panels';
 import {MeshBuilder} from '../../src/canalRecall/blockBuilding/mesh';
 import {roofHeightAt, type BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts';
 
-const facts: BuildingFacts = JSON.parse(fs.readFileSync('scripts/building-recipes/houses/tropenmuseum/facts.json', 'utf8'));
+const facts: BuildingFacts = JSON.parse(fs.readFileSync('scripts/landmarks/tropenmuseum-facts.json', 'utf8'));
 const {set, anchorRD} = largeSurfaceSet(facts);
 const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true});
 
+/** Cross windows keep their stone mullion (two-light) only on wings of 5 or more storeys; below that a single light reads the same at gallery size and saves ~1.6k triangles. */
+const STACKED_TWO_LIGHT_ABOVE = 4;
 export interface PanelRow {index: number; bearing: number; width: number; eaves: number; ground: number; top: number; partyH: number; surfaces: number[]; storeys: number; blank: boolean; style: 'long' | 'cross'; tier: 'street' | 'rear'; at: [number, number]}
 /** Enclosed: another roof stands at least 6 m high within 12 m straight out from the panel (courtyards, the light court, gaps between wings). */
 const enclosed = (p: ReturnType<typeof buildHost>['panels'][number]) => {
@@ -54,7 +57,7 @@ if (process.argv[1]?.endsWith('tropenmuseum-groups.ts')) {
   const walls = [...byKey].sort((a, b) => b[1][0].storeys - a[1][0].storeys || a[0].localeCompare(b[0])).map(([key, list]) => ({
     wallSurfaces: list.flatMap(r => r.surfaces).sort((a, b) => a - b), system: 'brick-bay-grid', storeys: list[0].storeys, windows: 'two-light', ground: 'system',
     ...(list[0].style === 'long' ? {arches: {windows: 'round', ground: 'round', band: 'none'}, windows: 'plain'} : {}),
-    frames: false, sills: false, ...(list[0].tier === 'rear' ? {windows: 'plain'} : {}),
+    frames: false, sills: false, ...(list[0].tier === 'rear' || list[0].storeys <= STACKED_TWO_LIGHT_ABOVE ? {windows: 'plain'} : {}),
   }));
   console.log(`panels ${rows.length}, windowed ${rows.filter(r => !r.blank).length}, blank ${rows.filter(r => r.blank).length}`);
   for (const [k, l] of byKey) console.log(k, l.length, 'panels');
