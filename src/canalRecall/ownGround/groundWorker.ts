@@ -4,17 +4,21 @@
 //
 // Messages in:  { type: 'init', root, parks }     extract root URL (absolute); parks: load parks-v1
 //               { type: 'build', key, lod, gen }  build one cell
+//               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
 // Messages out: { type: 'ready', cells: string[] }
 //               { type: 'cell', gen, cell: BuiltCell }   (arrays transferred)
+//               { type: 'far', gen, key, far: BuiltFar | null }   (arrays transferred; null: nothing there)
 //               { type: 'error', key?, gen?, message }
 
 import { GroundStore, httpFetchBytes } from './groundStore.js';
 import { buildCell, cellTransferables } from './groundCell.js';
+import { buildFarBlock, farTransferables } from './farRing.js';
 
 type In =
   | { type: 'init'; root: string; parks?: boolean }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number }
+  | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] };
 
 const ctx = self as unknown as { postMessage(message: unknown, transfer?: Transferable[]): void; onmessage: ((event: MessageEvent<In>) => void) | null };
@@ -41,6 +45,18 @@ ctx.onmessage = event => {
         ctx.postMessage({ type: 'cell', gen: msg.gen, cell }, cellTransferables(cell));
       } catch (error) {
         ctx.postMessage({ type: 'error', key: msg.key, gen: msg.gen, message: String((error as Error)?.stack ?? error) });
+      }
+    });
+    return;
+  }
+  if (msg.type === 'far') {
+    chain = chain.then(() => ready).then(async () => {
+      try {
+        const input = await s.farInput(msg.key);
+        const far = input ? buildFarBlock(input) : null;
+        ctx.postMessage({ type: 'far', gen: msg.gen, key: msg.key, far }, far ? farTransferables(far) : []);
+      } catch (error) {
+        ctx.postMessage({ type: 'error', far: msg.key, gen: msg.gen, message: String((error as Error)?.stack ?? error) });
       }
     });
     return;

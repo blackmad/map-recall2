@@ -13,16 +13,19 @@ import { dirname, join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { buildCell, maskChannelAt, GROUND_LAYERS, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, maskChannelAt, DRAW_RANK, GROUND_LAYERS, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
 
 const COLOURS: Record<GroundLayer, [number, number, number]> = {
   land: [150, 142, 130], park: [92, 122, 66], wood: [70, 96, 52], square: [176, 166, 150], parking: [92, 92, 96],
   asphalt: [72, 74, 78], klinker: [128, 82, 66], cycle: [160, 70, 62], paving: [190, 182, 170], gravel: [170, 156, 128],
   kerb: [235, 230, 220], paint: [255, 255, 255], water: [48, 75, 77], quay: [110, 100, 90], deckBody: [120, 110, 100], deckTop: [140, 130, 120],
   tram: [30, 30, 34], bollard: [120, 40, 30],
+  // Park surfaces (parks-v1), a shade apart from the OSM park fill so a review can tell survey from fill.
+  lawn: [110, 150, 80], bed: [130, 110, 80], shrub: [70, 110, 60], bark: [110, 80, 60], sand: [210, 195, 150], parkGravel: [180, 170, 140], parkPath: [120, 120, 120], pond: [60, 95, 100], hedge: [50, 90, 45], furniture: [80, 80, 80],
 } as Record<GroundLayer, [number, number, number]>;
-const RANK: Partial<Record<string, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
-const CUT: Partial<Record<string, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1 };
+// The game's polygon-offset ranks (groundCell DRAW_RANK, park surfaces included): a park surface 15 mm over the land wins as on screen.
+const RANK: Partial<Record<string, number>> = DRAW_RANK;
+const CUT: Partial<Record<string, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1 };
 
 function png(width: number, height: number, rgb: Uint8Array): Buffer {
   const crcTable = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });

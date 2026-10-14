@@ -23,7 +23,8 @@ import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArra
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
-import { buildParks, drapeBisect, type ParkBuildStats, type ParksCell } from './parks.js';
+import { buildParks, cullCovered, drapeBisect, CULL_MARGIN_M, CULL_RES_M, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
+import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
@@ -46,7 +47,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number }) | null };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -70,6 +71,10 @@ export interface CellInput {
   osmAround: OsmGroundExtract[];
   /** The cell's parks (parks-v1), null when it has none or parks are off. */
   parks?: ParksCell | null;
+  /** Parks of the 3×3 neighbourhood (a park's BGT surfaces lie in the cells of their own interior points). */
+  parksAround?: readonly (ParksCell | null)[];
+  /** Pave the land pockets near junctions (pockets.ts); default on at LOD 0. */
+  pockets?: boolean;
   /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
   dropWays?: readonly number[];
   project: (lngLat: [number, number]) => Vec2;
@@ -176,15 +181,36 @@ export function buildCell(input: CellInput): BuiltCell {
   // Grid on global multiples of the step, clipped to the cell by whole quads
   // whose centre is inside, so two cells never both draw a quad.
   const inCell = (x: number, y: number) => x >= x0 && x < x1 && y >= y0 && y < y1;
-  const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2));
+  const areaLayer: Record<string, GroundLayer> = { park: 'park', grass: 'park', wood: 'wood', square: 'square', paved: 'square', parking: 'parking' };
+  // The BGT park surfaces (parks-v1) hide what lies under them: the OSM park fill and the land grid, where a whole
+  // triangle / quad lies inside one surface (parks.ts cullCovered). The park surfaces drape at 8 m and sag a few
+  // centimetres under the 5 m land grid in hollows (the Vondelpark showed land through its lawn once the fill went),
+  // so the land goes too, but only under the cell's own surfaces (drawn by this build, never missing).
+  const surveyed = lod === 0 && input.parksAround?.some(p => p?.surfaces.length) ? new SurfaceIndex([input.parks, ...(input.parksAround ?? [])]) : null;
+  let cover: SurfaceRaster | null = null;
+  if (surveyed) {
+    const sb = surveyed.bounds()!, ab: [number, number, number, number] = [x0 - 10, y0 - 10, x1 + 10, y1 + 10];
+    for (const a of areas) if (areaLayer[a.kind] === 'park') for (const r of a.rings) for (const q of r) { const [px, py] = input.project(q); ab[0] = Math.min(ab[0], px); ab[1] = Math.min(ab[1], py); ab[2] = Math.max(ab[2], px); ab[3] = Math.max(ab[3], py); }
+    const box: [number, number, number, number] = [Math.max(sb[0], ab[0]) - 1, Math.max(sb[1], ab[1]) - 1, Math.min(sb[2], ab[2]) + 1, Math.min(sb[3], ab[3]) + 1];
+    if (box[2] > box[0] && box[3] > box[1]) cover = surveyed.raster(box, CULL_RES_M);
+  }
+  let landCulled = 0;
+  const underOwnSurface = (x: number, y: number) => {
+    if (!cover || !surveyed) return false;
+    const k = cover.find(x, y), h = step / 2 + CULL_MARGIN_M;
+    if (k < 0 || k >= surveyed.own || !cover.uniform(x - h, y - h, x + h, y + h, k)) return false;
+    landCulled++;
+    return true;
+  };
+  const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2)) && !underOwnSurface(x, y);
   add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand));
 
   // Areas.
-  const areaLayer: Record<string, GroundLayer> = { park: 'park', grass: 'park', wood: 'wood', square: 'square', paved: 'square', parking: 'parking' };
+  let parkFillCulled = 0;
   for (const a of areas) {
     const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
-    const m = emptyMesh();
+    let m = emptyMesh();
     for (const r of a.rings) {
       const pts = r.slice(0, -1).map(input.project);
       if (pts.length < 3) continue;
@@ -192,6 +218,7 @@ export function buildCell(input: CellInput): BuiltCell {
       // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
       drapeBisect(m, flat, earcut(flat), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
     }
+    if (cover && layer === 'park') { const r = cullCovered(m, cover); m = r.mesh; parkFillCulled += r.dropped; }
     add(layer, m);
   }
 
@@ -211,7 +238,9 @@ export function buildCell(input: CellInput): BuiltCell {
   const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false), canalSide });
   // Bridge ways follow the measured deck exactly (no land under a deck over water to poke through); 0.75 m at LOD 0:
   // on a hump a 1.5 m chord sags (~9 cm on a masonry arch, ~2 cm at 0.75 m), so the bands follow the profile closer.
-  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true) });
+  // Across, a vertex every 2 m (3 m far): a deck narrower than its mapped carriageway left the band's edges on the
+  // relief beside it and the band sagged under the deck top (BRU0292 by 0.15 m; +1.8 % triangles per belt cell).
+  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true), acrossStep: lod === 0 ? 2 : 3 });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint', 'tram', 'bollard'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
 
   // Water, quays, decks.
@@ -242,6 +271,15 @@ export function buildCell(input: CellInput): BuiltCell {
     bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
   });
 
+  // Land pockets near junctions (pockets.ts): bare land every layer around encloses, paved under the bands. Near ring only.
+  let pockets: PocketStats | null = null;
+  if (lod === 0 && input.pockets !== false) {
+    const cover: PocketCover<PocketSurface>[] = (Object.keys(parts) as GroundLayer[]).filter(l => !NOT_COVER.has(l)).map(l => ({ meshes: parts[l]!, as: POCKET_VOTE[l] ?? null }));
+    const r = fillPockets(cover, rect, [...streets.junctionPoints, ...onBridges.junctionPoints], onLand, POCKET_LIFT);
+    for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);
+    pockets = r.stats;
+  }
+
   const packed: Partial<Record<GroundLayer, PackedMesh>> = {};
   const byLayer: Record<string, number> = {};
   let triangles = 0, bytes = 0;
@@ -259,16 +297,28 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets },
   };
 }
+
+/** Layers that do not hide the land from above (vertical faces, thin marks on bands, the land itself). */
+const NOT_COVER: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['land', 'kerb', 'bollard', 'furniture', 'hedge', 'deckBody', 'paint', 'tram']);
+
+type PocketSurface = 'asphalt' | 'klinker' | 'paving';
+/** What a pocket bordered by a layer becomes (pockets.ts): street surfaces vote for themselves, cycle paths and squares for paving; water, parks and decks for nothing. */
+const POCKET_VOTE: Partial<Record<GroundLayer, PocketSurface>> = { asphalt: 'asphalt', klinker: 'klinker', paving: 'paving', cycle: 'paving', square: 'paving', gravel: 'paving' };
 
 /** Park surfaces rank between the OSM areas (1) and the street bands (2+), as their lifts do (parks.ts PARK_LIFT). */
 export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7 };
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
-const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+export const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
 const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
+
+/** Topmost first; within 2 cm the higher draw rank wins, as the polygon offsets make it on screen. */
+export function compareHits(p: { layer: GroundLayer; z: number }, q: { layer: GroundLayer; z: number }): number {
+  return Math.abs(p.z - q.z) > 0.02 ? q.z - p.z : (DRAW_RANK[q.layer] ?? 0) - (DRAW_RANK[p.layer] ?? 0);
+}
 
 /**
  * What a camera straight above sees at (x, y) in one built cell: every
@@ -295,7 +345,7 @@ export function layersAt(cell: BuiltCell, x: number, y: number): { top: GroundLa
       hits.push({ layer, z: u * pos[a + 2] + v * pos[b + 2] + (1 - u - v) * pos[c + 2], cut, rank: DRAW_RANK[layer] ?? 0 });
     }
   }
-  hits.sort((p, q) => (Math.abs(p.z - q.z) > 0.02 ? q.z - p.z : q.rank - p.rank));
+  hits.sort(compareHits);
   return { top: hits.find(h => !h.cut && h.layer !== 'water')?.layer ?? null, hits: hits.map(({ layer, z, cut }) => ({ layer, z: +z.toFixed(3), cut })) };
 }
 

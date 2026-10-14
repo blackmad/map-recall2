@@ -48,32 +48,37 @@ export interface WaterMask {
   range: number;
 }
 
-/** Scanline even-odd fill: 1 inside water. */
+/**
+ * Scanline fill: 1 inside water. Even-odd within each polygon (its holes), OR
+ * across polygons, so an opening laid over the water either side of a
+ * footbridge (openUnderFootbridges) does not cancel where they overlap.
+ */
 function rasterInside(geo: WaterGeometry, x0: number, y0: number, res: number, w: number, h: number): Uint8Array {
   const inside = new Uint8Array(w * h);
-  const edges: [number, number, number, number][] = [];
-  for (const poly of geo.polygons) for (const ring of poly) for (let i = 0; i < ring.length; i++) {
+  const edges: [number, number, number, number, number][] = [];
+  geo.polygons.forEach((poly, pi) => { for (const ring of poly) for (let i = 0; i < ring.length; i++) {
     const a = ring[i], b = ring[(i + 1) % ring.length];
-    if (a[1] !== b[1]) edges.push([a[0], a[1], b[0], b[1]]);
-  }
+    if (a[1] !== b[1]) edges.push([a[0], a[1], b[0], b[1], pi]);
+  } });
   // Bucket edges by row span for speed.
   const rows: number[][] = Array.from({ length: h }, () => []);
   edges.forEach((e, k) => {
     const lo = Math.max(0, Math.floor((Math.min(e[1], e[3]) - y0) / res - 0.5)), hi = Math.min(h - 1, Math.ceil((Math.max(e[1], e[3]) - y0) / res - 0.5));
     for (let j = lo; j <= hi; j++) rows[j].push(k);
   });
-  const xs: number[] = [];
+  const xs: [number, number][] = [];
   for (let j = 0; j < h; j++) {
     const y = y0 + (j + 0.5) * res;
     xs.length = 0;
     for (const k of rows[j]) {
-      const [ax, ay, bx, by] = edges[k];
-      if ((ay <= y) !== (by <= y)) xs.push(ax + (y - ay) * (bx - ax) / (by - ay));
+      const [ax, ay, bx, by, pi] = edges[k];
+      if ((ay <= y) !== (by <= y)) xs.push([pi, ax + (y - ay) * (bx - ax) / (by - ay)]);
     }
-    xs.sort((a, b) => a - b);
+    xs.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
     for (let k = 0; k + 1 < xs.length; k += 2) {
-      const i0 = Math.max(0, Math.ceil((xs[k] - x0) / res - 0.5)), i1 = Math.min(w - 1, Math.floor((xs[k + 1] - x0) / res - 0.5));
-      for (let i = i0; i <= i1; i++) inside[j * w + i] ^= 1;
+      if (xs[k][0] !== xs[k + 1][0]) { k--; continue; } // an odd crossing count (a ring clipped open): resync on the next polygon
+      const i0 = Math.max(0, Math.ceil((xs[k][1] - x0) / res - 0.5)), i1 = Math.min(w - 1, Math.floor((xs[k + 1][1] - x0) / res - 0.5));
+      for (let i = i0; i <= i1; i++) inside[j * w + i] = 1;
     }
   }
   return inside;
@@ -202,4 +207,108 @@ export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, defaultWaterZ
     }
   }
   return m;
+}
+
+/** The part of a measured deck the openings rule reads (elevation/bridgeDeck.ts DeckProfile). */
+export interface OpeningDeck { id: string; x: ArrayLike<number>; y: ArrayLike<number>; s: ArrayLike<number>; halfWidth: ArrayLike<number>; deck: readonly [number, number] }
+
+/** Footbridges only: a deck at most this wide (median over the span) may get water opened under it. */
+export const OPENING_MAX_WIDTH_M = 6;
+/** How far beside the deck edge the water must be found, metres. */
+export const OPENING_REACH_M = 6;
+/** The opening reaches this far into the water found beside the deck (overlap, so no land strip is left). */
+export const OPENING_OVERLAP_M = 0.5;
+
+const inPolygon = (poly: readonly (readonly Vec2[])[], x: number, y: number) => {
+  let c = false;
+  for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; }
+  return c;
+};
+
+/** Clip a ring to an axis-aligned rectangle (Sutherland–Hodgman). */
+export function clipRing(ring: readonly Vec2[], rect: readonly [number, number, number, number]): Vec2[] {
+  let out: Vec2[] = [...ring];
+  const edges: [(p: Vec2) => boolean, (a: Vec2, b: Vec2) => Vec2][] = [
+    [p => p[0] >= rect[0], (a, b) => { const t = (rect[0] - a[0]) / (b[0] - a[0]); return [rect[0], a[1] + t * (b[1] - a[1])]; }],
+    [p => p[0] <= rect[2], (a, b) => { const t = (rect[2] - a[0]) / (b[0] - a[0]); return [rect[2], a[1] + t * (b[1] - a[1])]; }],
+    [p => p[1] >= rect[1], (a, b) => { const t = (rect[1] - a[1]) / (b[1] - a[1]); return [a[0] + t * (b[0] - a[0]), rect[1]]; }],
+    [p => p[1] <= rect[3], (a, b) => { const t = (rect[3] - a[1]) / (b[1] - a[1]); return [a[0] + t * (b[0] - a[0]), rect[3]]; }],
+  ];
+  for (const [inside, cut] of edges) {
+    const src = out; out = [];
+    for (let i = 0; i < src.length; i++) {
+      const a = src[(i + src.length - 1) % src.length], b = src[i];
+      if (inside(b)) { if (!inside(a)) out.push(cut(a, b)); out.push(b); } else if (inside(a)) out.push(cut(a, b));
+    }
+    if (!out.length) break;
+  }
+  return out;
+}
+
+/**
+ * Water under footbridges whose water polygon stops at the bridge (lane belt
+ * audit 2026-10-14, the Melkmeisjesbrug BRU0016 over the Brouwersgracht: the
+ * OpenFreeMap water ends at both deck edges, so a land strip and two quay
+ * walls crossed the canal under the footbridge). Along a measured deck's
+ * span, where the centreline is land but water lies within OPENING_REACH_M
+ * beside both edges, the strip between that water is opened: a water polygon
+ * (overlapping the water either side by OPENING_OVERLAP_M, at its level,
+ * clipped to the cell) and the shore pieces inside it dropped (no quay walls
+ * across the canal). Decks wider than OPENING_MAX_WIDTH_M are left alone (a
+ * road on a dam is not a bridge with the water cut). Returns a new geometry
+ * and the decks it opened.
+ */
+export function openUnderFootbridges(geo: WaterGeometry, decks: readonly OpeningDeck[], rect: readonly [number, number, number, number], fallbackZ: number): { geo: WaterGeometry; opened: string[] } {
+  const inWater = (x: number, y: number) => geo.polygons.findIndex(p => inPolygon(p, x, y));
+  const added: Vec2[][] = [], addedLevels: number[] = [], opened: string[] = [];
+  for (const d of decks) {
+    const idx: number[] = [];
+    for (let i = 0; i < d.s.length; i++) if (d.s[i] >= d.deck[0] && d.s[i] <= d.deck[1]) idx.push(i);
+    if (idx.length < 3) continue;
+    const widths = idx.map(i => 2 * d.halfWidth[i]).sort((a, b) => a - b);
+    if (widths[widths.length >> 1] > OPENING_MAX_WIDTH_M) continue;
+    const rows: { i: number; l: number; r: number; poly: number }[] = [];
+    for (const i of idx) {
+      const a = Math.max(0, i - 2), b = Math.min(d.s.length - 1, i + 2), dx = d.x[b] - d.x[a], dy = d.y[b] - d.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+      const cx = d.x[i], cy = d.y[i];
+      if (inWater(cx, cy) >= 0) continue;
+      // First water beside each edge, searched outward in 0.25 m steps.
+      const find = (sg: number) => { for (let o = d.halfWidth[i] * 0.5; o <= d.halfWidth[i] + OPENING_REACH_M; o += 0.25) { const k = inWater(cx + nx * o * sg, cy + ny * o * sg); if (k >= 0) return { o, k }; } return null; };
+      const L = find(1), R = find(-1);
+      if (L && R) rows.push({ i, l: L.o + OPENING_OVERLAP_M, r: R.o + OPENING_OVERLAP_M, poly: L.k });
+    }
+    if (rows.length < 3) continue;
+    // The longest run of consecutive stations.
+    let best: typeof rows = [], run: typeof rows = [];
+    for (const r of rows) { if (run.length && r.i !== run[run.length - 1].i + 1) run = []; run.push(r); if (run.length > best.length) best = [...run]; }
+    if (best.length < 3) continue;
+    const left: Vec2[] = [], right: Vec2[] = [];
+    for (const r of best) {
+      const i = r.i, a = Math.max(0, i - 2), b = Math.min(d.s.length - 1, i + 2), dx = d.x[b] - d.x[a], dy = d.y[b] - d.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+      left.push([d.x[i] + nx * r.l, d.y[i] + ny * r.l]); right.push([d.x[i] - nx * r.r, d.y[i] - ny * r.r]);
+    }
+    const ring = clipRing([...left, ...right.reverse()], rect);
+    if (ring.length < 3) continue;
+    added.push(ring);
+    addedLevels.push(geo.levels?.[best[best.length >> 1].poly] ?? fallbackZ);
+    opened.push(d.id);
+  }
+  if (!added.length) return { geo, opened };
+  // Shores: drop the pieces whose midpoint lies in an opening (the walls that crossed the canal).
+  const shores: Vec2[][] = [], shoreLevels: number[] = [];
+  geo.shores.forEach((line, k) => {
+    let cur: Vec2[] = [];
+    const flush = () => { if (cur.length >= 2) { shores.push(cur); shoreLevels.push(geo.shoreLevels?.[k] ?? fallbackZ); } cur = []; };
+    for (let i = 0; i + 1 < line.length; i++) {
+      const a = line[i], b = line[i + 1], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+      if (added.some(r => inPolygon([r], mx, my))) { flush(); continue; }
+      if (!cur.length) cur.push(a);
+      cur.push(b);
+    }
+    flush();
+  });
+  return {
+    geo: { polygons: [...geo.polygons, ...added.map(r => [r])], shores, ...(geo.levels ? { levels: [...geo.levels, ...addedLevels] } : {}), ...(geo.shoreLevels ? { shoreLevels } : {}) },
+    opened,
+  };
 }
