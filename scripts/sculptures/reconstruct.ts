@@ -56,8 +56,8 @@ async function get(url: string): Promise<Response> {
   for (let i = 0; ; i++) {
     const res = await fetch(url, {headers: UA});
     if (res.ok) return res;
-    if (i > 6) throw new Error(`${res.status} ${url}`);
-    await sleep(4000 * (i + 1));
+    if (i > 8) throw new Error(`${res.status} ${url}`);
+    await sleep(Math.max(Number(res.headers.get("retry-after") ?? 0) * 1000, 15000 * (i + 1)));
   }
 }
 const strip = (s: unknown) => String(s ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
@@ -81,7 +81,7 @@ if (photo) {
     date: strip(meta.DateTimeOriginal?.value), originalSize: [info.width, info.height], sha1Original: info.sha1, downloadUrl: info.thumburl || info.url};
   const dl = path.resolve(out, 'download'); // its own directory; python reads it with -I
   fs.mkdirSync(dl, {recursive: true});
-  photo = path.join(dl, 'photo.jpg');
+  photo = path.join(dl, `photo-${String(photoMeta.sha1Original).slice(0, 10)}.jpg`);
   if (!fs.existsSync(photo)) fs.writeFileSync(photo, Buffer.from(await (await get(photoMeta.downloadUrl as string)).arrayBuffer()));
 }
 
