@@ -1190,3 +1190,33 @@ test('ground light: level sunlit ground draws its palette luminance; the road st
   assert.ok(drawnGrey(asphalt, FLAT_GROUND_GAIN, true) >= 75, `asphalt in cast shadow draws ${drawnGrey(asphalt, FLAT_GROUND_GAIN, true)}`);
   assert.ok(asphalt < klinker, 'asphalt stays darker than the klinker carriageway');
 });
+
+// ------------------------------------------------------------- Westerkanaal lock island (live play 2026-10-14)
+// The "mid-canal land blob" on the Westerkanaal off the Houtmankade is the middle head of the
+// Westerkanaalschutsluis (OSM w797542031 / w1308281538, Q85308137): an inner ring of the water
+// multipolygon r1142453, ~75 m² of concrete with the lock's lamps and posts, flanked by the two
+// lock passages and the bank heads (PDOK aerial 2025; docs/images/live-play-20261014/anomaly-blob-before-after.jpg).
+// It is real ground and must stay land; the berth rule (moorings.ts) must not open it.
+const WESTERKANAAL_LOCK_ISLAND = { at: [4.884192, 52.387752] as const, areaM2: [50, 120] as const };
+test('regression: the Westerkanaalschutsluis middle head stays an island, with and without houseboat berths', { skip: !haveCells }, async () => {
+  for (const moorings of [true, false]) {
+    const store = new GroundStore(async path => {
+      const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+      return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
+    }, { moorings });
+    await store.init();
+    const [x, y] = storeToLocal(...WESTERKANAAL_LOCK_ISLAND.at);
+    const geo = (await store.waterCell(store.cellAt(x, y)))!;
+    const holes = geo.polygons.flatMap(poly => poly.slice(1)).filter(ring => {
+      const cx = ring.reduce((s, p) => s + p[0], 0) / ring.length, cy = ring.reduce((s, p) => s + p[1], 0) / ring.length;
+      return Math.hypot(cx - x, cy - y) < 30;
+    });
+    assert.equal(holes.length, 1, `moorings=${moorings}: one island at the lock`);
+    let a = 0; const ring = holes[0];
+    for (let i = 0; i < ring.length; i++) { const p = ring[i], q = ring[(i + 1) % ring.length]; a += p[0] * q[1] - q[0] * p[1]; }
+    assert.ok(Math.abs(a / 2) > WESTERKANAAL_LOCK_ISLAND.areaM2[0] && Math.abs(a / 2) < WESTERKANAAL_LOCK_ISLAND.areaM2[1], `island ${Math.abs(a / 2).toFixed(1)} m²`);
+    const mask = buildWaterMask(geo, x - 40, y - 40, x + 40, y + 40, 0.5);
+    assert.ok(maskDistance(mask, x, y) > 0, 'land on the island');
+    assert.ok(maskDistance(mask, x - 12, y) < 0 && maskDistance(mask, x + 12, y) < 0, 'both lock passages are water');
+  }
+});
