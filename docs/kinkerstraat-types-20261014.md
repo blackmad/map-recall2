@@ -75,11 +75,16 @@ Keys from other lanes used here, so that nothing is duplicated: `windows: "t-win
 {colour, style: "blocks", keystone}}`, `windowHeights`, `windowShare`, `storeyHeights`, `cornice: "frieze"`,
 `windowSurround: "sill"` and `bands: "speklagen"` come from the canal-windows lane (on main). The sill and head
 courses of `kinker-1890-brick-arched` belong to the Oud-West 1900 lane's `bands: "painted"` + `bandHeights`, and the
-black paint of `kinker-1895-painted-band` belongs to its `wallMaterial: "painted-brick"`. That lane is not on main yet
-(WIP commit d3f4ba0e, based before canal-windows). Until it lands, the committed types leave the painted courses out and
-draw black paint as the `stucco` slot. When it lands: add `"bands": "painted", "bandHeights": {"sill": 0.04, "head": 0.05}`
-to the `kinker-1890-brick-arched` body and switch `black-painted` to `wallMaterial: "painted-brick"`. The measured band
-heights above are the evidence for both.
+black paint of `kinker-1895-painted-band` belongs to its `wallMaterial: "painted-brick"`. Both are wired since the
+Nassaukade 506 merge (2026-10-14):
+
+- `kinker-1890-brick-arched` carries `"bands": "painted", "bandLines": ["sill", "transom"], "bandHeights": {"sill": 0.10,
+  "transom": 0.12}`. The hand-off planned `{"sill": 0.04, "head": 0.05}` with the default sill + head lines. On the sheet
+  that drew 1.6-2 px lines (40 px/m), invisible at gallery size, and put the upper line on the arch springing, about
+  0.75 m above the photo's course, which crosses the upper light. The type's own band rows (5.1-5.2, 7.15-7.28 m on
+  162482 and 236814) are 0.10-0.13 m tall, so the heights are those, and the upper line is the transom band (0.78 of the
+  window height), which lands within about 0.3 m of the photo's course.
+- `kinker-1895-painted-band`'s `black-painted` palette is `wallMaterial: "painted-brick"` instead of the `stucco` slot.
 
 ## Proof faces
 
@@ -124,8 +129,10 @@ colours are within tolerance.
 
 Verdict against the photo: storey lines, window axes, T-windows, blocked arch rings with keystones, the cornice line and
 the dormer rhythm read right at gallery size, and so do the pui colours (timber 12A-12C, black, red, white). The 18-4
-row's white sill and impost courses are missing until `bands: painted` lands, and that is the most visible difference
-on the sheet. Also still wrong: the frieze is a plain cream slab (the photo has consoles and panels); the dormers are
+row's white sill and impost courses are now drawn (`bands: painted`, sheet re-rendered after the Nassaukade merge): the
+sill course sits on the photo's sill line; the upper course sits on the T-window transom, about 0.3 m above the photo's
+course; both are a grey stone colour where the photo's are bright white, and continuous where the photo's upper course
+is a dotted line of blocks. Also still wrong: the frieze is a plain cream slab (the photo has consoles and panels); the dormers are
 plain pediment boxes (the photo's have scrolled cheeks); 22-24's round-topped shell dormers are drawn as pediments; the
 corner block's two blind white-painted axes are glazed; Kinkerstraat 2's dashed white head band is missing. The
 orthographic view also shows 3DBAG roof masses above the cornice (the mansards, and a tall rear block over 4-6).
@@ -138,7 +145,8 @@ above the ground once per-house photo rows counted modules and dormers.
 
 ## What the kit still cannot say (Kinkerstraat)
 
-- **Painted courses at sill and impost height** (Oud-West lane's `bands: painted`, not on main). Also the dotted
+- **A painted course at an arbitrary height in the window** (`bands: painted` puts the transom line at a fixed 0.78
+  of the window; the 18-4 row's course is at about 0.63). Also the dotted
   variant: on 18-4 and 296-300 the impost course is a line of white blocks joined to the arch springers, not a
   continuous band.
 - **Recessed arcade with a first-floor gallery** (109-161, 173-225): piers in front, shops set back ~3 m, a gallery
