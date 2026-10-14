@@ -1,0 +1,868 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T14:00:51.197Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012070651",
+   "addresses": [
+    "Jan Evertsenstraat 89A",
+    "Jan Evertsenstraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 89A",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000684338"
+    },
+    {
+     "address": "Jan Evertsenstraat 91-H",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000684343"
+    },
+    {
+     "address": "Jan Evertsenstraat 91-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 155,
+     "bagId": "0363010003767209"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1338089288,
+     "lngLat": [
+      4.8535558,
+      52.370437
+     ],
+     "tags": {
+      "addr:housenumber": "91",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "pub",
+      "indoor_seating": "yes",
+      "name": "Bar Baarsch",
+      "opening_hours": "Mo-Su 11:00-00:00; Mo-Th 00:00-01:00; Fr, Sa 00:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 618 1970",
+      "website": "https://barbaarsch.nl/"
+     },
+     "fetchedAt": "2026-10-14T14:00:51.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012114417",
+   "addresses": [
+    "Jan Evertsenstraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 93-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000684351"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062057",
+   "addresses": [
+    "Jan Evertsenstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000684359"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094286",
+   "addresses": [
+    "Jan Evertsenstraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 97-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000684367"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089507",
+   "addresses": [
+    "Jan Evertsenstraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 99-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000684375"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147193",
+   "addresses": [
+    "Jan Evertsenstraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 101-H",
+     "use": "winkelfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000684383"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113053",
+   "addresses": [
+    "Jan Evertsenstraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 103-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000684391"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155048",
+   "addresses": [
+    "Jan Evertsenstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000684399"
+    },
+    {
+     "address": "Jan Evertsenstraat 105-H",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010012090017"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078348",
+   "addresses": [
+    "Jan Evertsenstraat 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 107-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005421"
+    },
+    {
+     "address": "Jan Evertsenstraat 107-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012090018"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065988",
+   "addresses": [
+    "Jan Evertsenstraat 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 109-H",
+     "use": "winkelfunctie",
+     "areaM2": 522,
+     "bagId": "0363010001005422"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13005033886,
+     "lngLat": [
+      4.8527308,
+      52.3702921
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109-H",
+      "addr:postcode": "1057BT",
+      "addr:street": "Jan Evertsenstraat",
+      "brand": "Zeeman",
+      "brand:website": "https://www.zeeman.com",
+      "brand:wikidata": "Q184399",
+      "brand:wikipedia": "nl:Zeeman (winkel)",
+      "name": "Zeeman",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-14T14:00:51.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012062999",
+   "addresses": [
+    "Jan Evertsenstraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 111-H",
+     "use": "winkelfunctie",
+     "areaM2": 189,
+     "bagId": "0363010001005423"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099114",
+   "addresses": [
+    "Jan Evertsenstraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 113-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000684428"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151042",
+   "addresses": [
+    "Jan Evertsenstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 115-H",
+     "use": "winkelfunctie",
+     "areaM2": 172,
+     "bagId": "0363010001005425"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142949",
+   "addresses": [
+    "Jan Evertsenstraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 117-H",
+     "use": "winkelfunctie",
+     "areaM2": 175,
+     "bagId": "0363010001005427"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096804",
+   "addresses": [
+    "Jan Evertsenstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 119-H",
+     "use": "winkelfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000684450"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085815",
+   "addresses": [
+    "Jan Evertsenstraat 121",
+    "Jan Evertsenstraat 123",
+    "Jan Evertsenstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hudsonhof 4",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000577985"
+    },
+    {
+     "address": "Mercatorplein 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 1168,
+     "bagId": "0363010001000838"
+    },
+    {
+     "address": "Hudsonhof 1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 390,
+     "bagId": "0363010001016650"
+    },
+    {
+     "address": "Hudsonhof 3",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001016651"
+    },
+    {
+     "address": "Hudsonhof 5",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001016652"
+    },
+    {
+     "address": "Hudsonhof 7",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001016654"
+    },
+    {
+     "address": "Hudsonhof 8",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001016655"
+    },
+    {
+     "address": "Hudsonhof 9",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001016656"
+    },
+    {
+     "address": "Hudsonhof 10",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001016657"
+    },
+    {
+     "address": "Hudsonhof 11",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001016658"
+    },
+    {
+     "address": "Hudsonhof 13",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001016659"
+    },
+    {
+     "address": "Hudsonhof 14",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001016660"
+    },
+    {
+     "address": "Hudsonhof 15",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016661"
+    },
+    {
+     "address": "Hudsonhof 16",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001016663"
+    },
+    {
+     "address": "Hudsonhof 17",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016664"
+    },
+    {
+     "address": "Hudsonhof 18",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001016665"
+    },
+    {
+     "address": "Hudsonhof 19",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016666"
+    },
+    {
+     "address": "Hudsonhof 21",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001016667"
+    },
+    {
+     "address": "Hudsonhof 22",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001016668"
+    },
+    {
+     "address": "Hudsonhof 25",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001016671"
+    },
+    {
+     "address": "Hudsonhof 26",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001016672"
+    },
+    {
+     "address": "Hudsonhof 27",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001016673"
+    },
+    {
+     "address": "Hudsonhof 29",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016674"
+    },
+    {
+     "address": "Hudsonhof 30",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001016675"
+    },
+    {
+     "address": "Hudsonhof 31",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016677"
+    },
+    {
+     "address": "Hudsonhof 33",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016683"
+    },
+    {
+     "address": "Hudsonhof 35",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001016686"
+    },
+    {
+     "address": "Hudsonhof 37",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001016688"
+    },
+    {
+     "address": "Hudsonhof 39",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001016691"
+    },
+    {
+     "address": "Hudsonhof 42",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001016705"
+    },
+    {
+     "address": "Hudsonhof 43",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016706"
+    },
+    {
+     "address": "Hudsonhof 45",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001016707"
+    },
+    {
+     "address": "Hudsonhof 49",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001016711"
+    },
+    {
+     "address": "Hudsonhof 44",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010001016722"
+    },
+    {
+     "address": "Jan Evertsenstraat 121",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001016639"
+    },
+    {
+     "address": "Jan Evertsenstraat 123",
+     "use": "winkelfunctie",
+     "areaM2": 28,
+     "bagId": "0363010001016640"
+    },
+    {
+     "address": "Jan Evertsenstraat 125",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010001016641"
+    },
+    {
+     "address": "Jan Evertsenstraat 121",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012127575"
+    },
+    {
+     "address": "Mercatorplein 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 1539,
+     "bagId": "0363010012569043"
+    },
+    {
+     "address": "Hudsonhof 51",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001016713"
+    },
+    {
+     "address": "Hudsonhof 36",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001016687"
+    },
+    {
+     "address": "Hudsonhof 32",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001016681"
+    },
+    {
+     "address": "Hudsonhof 41",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001016703"
+    },
+    {
+     "address": "Bartholomeus Diazstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000577984"
+    },
+    {
+     "address": "Hudsonhof 20",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000577987"
+    },
+    {
+     "address": "Hudsonhof 23",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001016669"
+    },
+    {
+     "address": "Hudsonhof 57",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001016720"
+    },
+    {
+     "address": "Hudsonhof 55",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001016719"
+    },
+    {
+     "address": "Hudsonhof 38",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001016690"
+    },
+    {
+     "address": "Hudsonhof 24",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001016670"
+    },
+    {
+     "address": "Hudsonhof 53",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001016717"
+    },
+    {
+     "address": "Hudsonhof 34",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001016685"
+    },
+    {
+     "address": "Hudsonhof 28",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000956834"
+    },
+    {
+     "address": "Hudsonhof 6",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000957103"
+    },
+    {
+     "address": "Hudsonhof 40",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001016700"
+    },
+    {
+     "address": "Hudsonhof 2",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001021021"
+    },
+    {
+     "address": "Hudsonhof 12",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000577986"
+    },
+    {
+     "address": "Hudsonhof 47",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001016709"
+    }
+   ],
+   "units": 94,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4455699189,
+     "lngLat": [
+      4.8517767,
+      52.3694578
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-12",
+      "addr:postcode": "1057CB",
+      "addr:street": "Mercatorplein",
+      "brand": "Dirk",
+      "brand:wikidata": "Q17502722",
+      "brand:wikipedia": "nl:Dirk (supermarkt)",
+      "check_date": "2025-01-07",
+      "name": "Dirk",
+      "old_name": "Dirk van den Broek",
+      "opening_hours": "Mo-Sa 08:00-22:00; Su 09:00-22:00",
+      "shop": "supermarket",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T14:00:51.197Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13005033891,
+     "lngLat": [
+      4.8521788,
+      52.3702951
+     ],
+     "tags": {
+      "amenity": "waste_disposal",
+      "location": "underground",
+      "operator": "Gemeente Amsterdam",
+      "panoramax": "d7fb6ef3-a6b3-4d52-a546-4a0d476bc898",
+      "ref": "REE01316"
+     },
+     "fetchedAt": "2026-10-14T14:00:51.197Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012118443",
+   "addresses": [
+    "Jan Evertsenstraat 127A",
+    "Jan Evertsenstraat 127C",
+    "Jan Evertsenstraat 127D",
+    "Jan Evertsenstraat 127B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 127A",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001016642"
+    },
+    {
+     "address": "Jan Evertsenstraat 127C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001016644"
+    },
+    {
+     "address": "Jan Evertsenstraat 127D",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001016645"
+    },
+    {
+     "address": "Jan Evertsenstraat 127B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001016643"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102496",
+   "addresses": [
+    "Jan Evertsenstraat 129A",
+    "Jan Evertsenstraat 129B",
+    "Jan Evertsenstraat 129C",
+    "Jan Evertsenstraat 129D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 129A",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001016646"
+    },
+    {
+     "address": "Jan Evertsenstraat 129B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001016647"
+    },
+    {
+     "address": "Jan Evertsenstraat 129C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001016648"
+    },
+    {
+     "address": "Jan Evertsenstraat 129D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001016649"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096363",
+   "addresses": [
+    "Jan Evertsenstraat 133",
+    "Jan Evertsenstraat 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 133-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000684501"
+    },
+    {
+     "address": "Jan Evertsenstraat 135",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000684509"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 595260077,
+     "lngLat": [
+      4.8514457,
+      52.3700812
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "135",
+      "addr:postcode": "1057BV",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "pub",
+      "cuisine": "burger",
+      "indoor_seating": "yes",
+      "name": "De Biertuin West",
+      "outdoor_seating": "yes",
+      "website": "https://www.frits-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-14T14:00:51.197Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2814025431,
+     "lngLat": [
+      4.8515664,
+      52.3700983
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "133-H",
+      "addr:postcode": "1057BV",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "fast_food",
+      "name": "Evert Snack",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T14:00:51.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
