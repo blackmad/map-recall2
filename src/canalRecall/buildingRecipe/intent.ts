@@ -423,10 +423,12 @@ export interface LargeBuildingIntent {
   /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
   closedBands?: boolean;
   /**
-   * Layered kit (opt-in, 2026-10-14): garage doors, portals, arched heads, curtain walls and balconies built on distinct
-   * sheet layers as closed boxes (door leaf, ribs and frame; arch bars off the glass and the flush arch band as a closed
-   * ring; a glass skin with a mullion grid; one slab and rail per balcony storey), so none leaves coplanar overlap.
-   * Earlier recipes stay byte-identical.
+   * Layered kit (2026-10-14; the default since the second pass, `false` keeps the legacy kit): garage doors, portals,
+   * arched heads, curtain walls and balconies built on distinct sheet layers as closed boxes (door leaf, ribs and frame;
+   * glazing and arch bars off the glass and thin arch bands as closed rings; a glass skin with a mullion grid, or a dark
+   * plinth panel under it with ground `mesh-plinth`; one slab and rail per balcony storey; lettering as closed strokes),
+   * and every part laid off the 3DBAG wall's own plan profile where it leans or bends more than 1.5 cm off the panel
+   * plane (compose `wallProfileOf`), so none leaves coplanar overlap.
    */
   layeredKit?: boolean;
   notes?: string[];

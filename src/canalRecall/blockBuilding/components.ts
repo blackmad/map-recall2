@@ -111,9 +111,33 @@ export function drawGarageDoor(c: PanelCtx, cell: Cell, slots: { door: Slot; fra
 }
 
 /** Stroke-font lettering centred at (uc, vc) on the plane `d` in front of the wall; returns triangles added. */
-export function drawLettering(c: PanelCtx, text: string, uc: number, vc: number, d: number, heightM: number, maxWidthM: number, slot: Slot, Q?: (u: number, v: number, d: number) => V3): number {
+export function drawLettering(c: PanelCtx, text: string, uc: number, vc: number, d: number, heightM: number, maxWidthM: number, slot: Slot, Q?: (u: number, v: number, d: number) => V3, back?: number): number {
   const L = letteringGeometry({ text, heightM, maxWidthM });
   const P = Q ?? ((u: number, v: number, dd: number) => c.P(u, v, dd)), part = c.part(), pos = L.positions;
+  if (c.layered) {
+    // Layered kit: each stroke is a closed bar from the surface it is mounted on (`back`, default `d` less the standoff)
+    // out to a full sheet layer, not a sheet 1.2 cm off it (coplanar to the audit: Amsterdams Lyceum's wall lettering,
+    // 0.8 m2; lifted alone, the sheet's edges float). Strokes are two triangles each; their outline edges get side walls.
+    const d0 = back ?? d - LETTER_STANDOFF, d1 = d + LETTER_LIFT, n = c.p.n;
+    for (let i = 0; i < pos.length; i += 18) {
+      const uv: [number, number][] = [];
+      for (let k = 0; k < 6; k++) uv.push([uc + pos[i + 3 * k], vc + pos[i + 3 * k + 1]]);
+      for (let t = 0; t < 2; t++) c.mesh.tri(slot, P(...uv[3 * t], d1), P(...uv[3 * t + 1], d1), P(...uv[3 * t + 2], d1), part, n);
+      // the quad's outline: the five distinct edges of its two triangles less the shared diagonal
+      const key = (q: [number, number]) => `${q[0].toFixed(5)},${q[1].toFixed(5)}`, count = new Map<string, number>(), edges: [[number, number], [number, number]][] = [];
+      for (let t = 0; t < 2; t++) for (let k = 0; k < 3; k++) {
+        const a = uv[3 * t + k], b = uv[3 * t + (k + 1) % 3], kk = [key(a), key(b)].sort().join('|');
+        count.set(kk, (count.get(kk) ?? 0) + 1); edges.push([a, b]);
+      }
+      const ctr: [number, number] = [uv.reduce((s, q) => s + q[0], 0) / 6, uv.reduce((s, q) => s + q[1], 0) / 6];
+      for (const [a, b] of edges) {
+        if (count.get([key(a), key(b)].sort().join('|'))! > 1) continue;
+        const out = sub(P((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, d0), P(...ctr, d0));
+        c.mesh.quad(slot, P(...a, d0), P(...b, d0), P(...b, d1), P(...a, d1), part, out);
+      }
+    }
+    return pos.length / 9 * 5;
+  }
   for (let i = 0; i < pos.length; i += 9) c.mesh.tri(slot, P(uc + pos[i], vc + pos[i + 1], d), P(uc + pos[i + 3], vc + pos[i + 4], d), P(uc + pos[i + 6], vc + pos[i + 7], d), part, c.p.n);
   return L.triangles;
 }
@@ -253,6 +277,8 @@ export function drawPortal(c: PanelCtx, e: { u0: number; u1: number; v0: number;
 
 /** Lettering stands this far in front of the board it is on: within the open-edge gate's 2 cm, as every lettered plate in the kit. */
 export const LETTER_STANDOFF = 0.012;
+/** Layered kit: extra lift so lettering stands SHEET_PITCH off its surface. */
+const LETTER_LIFT = SHEET_PITCH - LETTER_STANDOFF;
 
 /**
  * Facing boards and cladding stand on the 9 cm sheet layer, not 4.5 cm: 3DBAG faces merged into one panel sit up to a

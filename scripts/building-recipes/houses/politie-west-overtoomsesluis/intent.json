@@ -17,6 +17,7 @@
   "otherWalls": "blank",
   "roof": {"material": "bitumen"},
   "palette": {"brick": "#8a6a52", "frame": "#e4e0d2", "door": "#3a3a3a", "stone": "#d8cfb8"},
+  "layeredKit": false,
   "notes": [
     "2009 block on the Hoofdweg / Overtoomse Sluis, 83 m long, 22.6 m eaves with 29.8 m wings and 33.5 m end towers, 561 LoD2.2 wall surfaces (the police bureau is a ground-floor tenant; the pand is the whole block). East front (panel 14, 2022-04-29 w01-72): brown brick, five rows of white-framed windows in groups, light stone ground floor with shops (signs of an eye therapist, a foot clinic, a bike shop), stepped brick towers with a crenellated parapet. North wall (panel 34, 2024-09-18 w03-342): eight rows of paired windows over an open pilotis ground floor with white square columns.",
     "Ornaments: no POLITIE lettering, blue lamp, striped band, canopy or crest is visible on the east or north walls in these panoramas, so none is modelled (not present, not skipped: the bureau entrance is not on a photographed wall). Modelled: shop plinth on the east front. Simplified: the crenellated parapet with its row of tiny windows (a 0.5 m notch pattern, the parapet is the LoD2.2 roof edge), the white balcony-like projecting window boxes on the north wall (flat paired windows), the pilotis colonnade on the north wall (ground left blank; the columns stand 1 m clear of the wall and would be 14 separate boxes, left to the 3DBAG shell, which already carries the soffit).",
