@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## Layered kit re-installs (2026-10-14, night)
+
+Lane `large/layered-reinstall-20261014`. `install-large.ts` now has
+`mergeReplacedEntry`: when the entry it replaces is itself a large-recipe
+install, every field the installer does not own (`bagYear`, `aliases`, …)
+is kept (unit test `installLarge.test.ts`; Marnixstraat 248 keeps its
+duplicate-pand alias). Sixteen houses re-installed with `layeredKit`:
+Entrepotdok 55.8 → 0 m² (11.2k → 11.6k tris after cutting the arch bands
+on the 5-bay return and the segmental wing and halving the hoist doors
+on the 33-bay front to every 6th bay, the one real fidelity loss; the
+flag alone gave 16.0k), Barlaeus 1.4 → 0, Vossius 29.1 → 0, Berlage
+34.6 → 2.6, Montessori 9.0 → 1.3, Amsterdams Lyceum 11.2 → 0.8,
+Rijksakademie 51.9 → 0 (11,959 tris, just under budget), Cygnus 8.0 → 0,
+Reade 2.1 → 0, OBA Mercatorplein 10.3 → 0, Stadsloket West 10.7 → 4.0
+(its two curtain-wall groups now glaze the ground storey because the
+layered kit rejects a blank ground under a curtain wall; the photo shows
+a dark mesh plinth), Politie IJ-tunnel 9.4 → 0, Postjesweg 6.9 → 0.3,
+Oost-Watergraafsmeer 2.8 → 0, Nieuwezijds Voorburgwal 8.5 → 0, Zuidoost
+Gaasperdam 1.3 → 0. Distelweg 88 is `render` + `stucco`. The residue on
+Berlage, Montessori, Amsterdams Lyceum and Stadsloket West is stone/brick
+band overlap that `closedBands` does not close.
+
+
 ## Own ground: belt audit clean, pockets, water under footbridges, park cull, far ring (2026-10-14, night)
 
 Lane `ground/belt-far-20261014`, five items. (1) `check:own-ground-belt`
