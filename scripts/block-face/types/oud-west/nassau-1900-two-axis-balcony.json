@@ -14,7 +14,7 @@
     ]
   },
   "body": {
-    "windows": "two-light",
+    "windows": "t-window",
     "windowSurround": "eared-keystone",
     "windowSills": "consoles",
     "bands": "painted",
@@ -43,7 +43,13 @@
       ],
       "style": "timber-bracketed",
       "rail": "turned"
-    }
+    },
+    "windowHeights": [
+      0.6,
+      0.57,
+      0.55,
+      0.59
+    ]
   },
   "crowns": {
     "pointed-dormer": {
@@ -107,7 +113,7 @@
   },
   "schemaLimits": [
     "the balcony platforms are 0.75 m deep and the brackets one carved profile; the real brackets are deeper scrolls",
-    "T-windows drawn as two-light (see nassau-1900-three-axis)"
+    "T-windows and window heights as nassau-1900-three-axis (measured shares on 148, not the canal survey medians)"
   ],
   "evidence": [
     {
