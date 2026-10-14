@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Texture prototype: the kit wins on all three complaint houses (2026-10-14, night)
+
+The user said to keep improving the kit and try the photo texture too, so
+a lane built the texture route on the three complaint houses
+(`docs/texture-prototype-20261014.md`, `docs/images/texture-prototype/`;
+`scripts/building-recipes/export-textured.ts` lands with lane A's
+tooling it depends on): every street-facing panel matched to its
+rectified panorama crop, exposure-normalised, masked pixels (foliage,
+missing, the bottom 2.5 m for vehicles) inpainted from the nearest wall
+rows, posterised to 12 colours from the brick cell tones at 8 px/m, one
+atlas per house, mapped through the crop-to-panel offsets, rendered beside
+the installed kit and the photo at 640 px and 200 px. Verdict, the lane's
+and the integrator's: kit on all three. Houthavenkade 26's texture does
+show the orange/plum split the kit misses, but windows become blotches,
+the bay columns smears, the ground floor repeats the storey above, and at
+3/4 the wall is a billboard; Apollohal's only panorama (2017-04) is behind
+trees in leaf so 62 % was inpainted; Waagdragerhof's arches, the one thing
+that identifies it, become ragged blobs and the hazy panorama turns the
+brick pink-grey. Textured walls skip the look's baked sun shading and read
+darker and colder than kit walls on the same model. Cost: 3–6× the kit's
+GPU memory uncompressed (about level with UASTC, which `toktx` was not
+installed to measure), 4–9× smaller to download, 5–6 draws vs 11–14. So the
+texture is not a shipping route; what it proved is which facts the kit
+lacks (the colour split, the glazing fraction, the arch shape), which lane
+C's vocabulary and lane A's measurement supply. Two bugs found in lane A's
+tooling and sent back: `walls.json` records the requested 50 px/m even when
+the rectifier lowers the scale on long walls, and the foliage test misses
+spring leaves. Also: the `tileBuildings` golden was re-recorded for three
+large recipes installed since (Da Costakade 146, Hirschpassage 2,
+Leidsekade 106) and one changed row, De Balie (uninstalled recipe compiled
+by the tile compiler, 1,307 → 1,733 tris from kit changes in the batches).
+
+
 ## Measured tint, the shared house-type library, the sculpture prototype, motorkade-1 restored (2026-10-14, night)
 
 Three plan lanes merged. **Measured tint** (`lane/measured-tint-20261014`,
