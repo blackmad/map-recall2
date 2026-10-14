@@ -24,3 +24,10 @@ export function loadTerrain(dir = path.join('public', 'data', 'extracts', 'amste
   }
   return (x, y) => field.heightRd(x, y);
 }
+
+let shared: TerrainAt | null | undefined;
+/** The Amsterdam terrain field, loaded on first use and shared by every caller in the process (~1.5 s to load). */
+export function sharedTerrain(): TerrainAt | null {
+  if (shared === undefined) shared = loadTerrain();
+  return shared;
+}

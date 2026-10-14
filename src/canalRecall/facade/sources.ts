@@ -121,7 +121,8 @@ export interface MassingSource {
   readonly license: string;
   /** Native collection/vintage string, so two vintages never silently merge. */
   readonly vintage: string;
-  fetchMassing(bbox: BboxLngLat, crs: ProjectedCrs): Promise<MassingRecord[]>;
+  /** `terrainAt` (metres in the source datum at a projected point) lets a source reject a failed ground estimate. */
+  fetchMassing(bbox: BboxLngLat, crs: ProjectedCrs, options?: { terrainAt?: ((x: number, y: number) => number) | null }): Promise<MassingRecord[]>;
 }
 
 /**
