@@ -38490,10 +38490,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012202381",
       "name": "Centrale Groothandelsmarkt 114, Amsterdam (Food Center, Jan van Galenstraat): 1935 single-storey wholesale market hall of 13 trading units under a deep sign canopy",
-      "hash": "caa364e6857776ca526b20348d9b96be337aa6ded7b54635c738bb20e8dae883",
-      "sha256": "caa364e6857776ca526b20348d9b96be337aa6ded7b54635c738bb20e8dae883",
-      "bytes": 139944,
-      "triangles": 1791,
+      "hash": "ad4e2e8d9394d03ae445f42521f806c2a78a9c9fc653fdbc356aa332cf3fdde7",
+      "sha256": "ad4e2e8d9394d03ae445f42521f806c2a78a9c9fc653fdbc356aa332cf3fdde7",
+      "bytes": 229544,
+      "triangles": 2943,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -38625,7 +38625,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202381",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:40:57.191Z"
+      "updatedAt": "2026-10-14T03:05:16.678Z"
     },
     {
       "id": "ordinary-0363100012100112",
