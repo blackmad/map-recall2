@@ -1,5 +1,41 @@
 # Canal Recall — what is built
 
+## Bridge regressions on main were two readings, not the bridges (2026-10-14)
+
+Lane `lane/bridge-regressions-20261014`. After the bridges merge met the
+houseboat berths on main, `check:own-ground-belt` reported a NEW finding
+at the Westerdok and the bridge-fidelity e2e failed on the Torensluis
+hump; both branches had passed alone. **Belt audit:** `moorings.ts`
+re-cuts shores near a boat into collinear 0.5 m pieces and the audit
+took at least one sample per segment, so the reviewed Westerdok spot
+went from 16 to 106 samples and its worst sample moved 1.4 m off its
+KNOWN key; with berths off the old audit reproduced the lane's "7
+findings, all KNOWN" exactly. Fix in `ownGround/roadRegressions.ts`:
+`shoreSamples` joins collinear pieces back into one segment before
+sampling every 5 m (identical output without berths), and reviewed quay
+spots match a finding within 15 m (`KNOWN_SPOT_M`, `spotDistanceM`) in
+`scripts/own-ground/audit-belt.ts`; one real new KNOWN entry,
+`quay-flooded:4.90768,52.38468` (ground −2.05 under the default −1.77
+plane on the IJ-side dock quay; a berth cut moved a sample onto it).
+**Torensluis hump:** deck body, deck top and quay walls are byte-identical
+between the lane tip and main (cell build hashed); the e2e took the hump
+from single columns, so on the lane the 28 px came from a railing post
+against the next bridge down the Singel, and on main an orange-outlined
+figure on the crown and streaks at the deck ends tipped the reading to
+−12 px. Fix in `own-ground-bridge-fidelity.spec.ts`: `spanColumns`
+projects the deck-span ends to screen columns and `readMask` takes the
+median top edge over column bands between them, ignoring mask runs under
+6 px, so posts, rails, figures and neighbouring bridges no longer decide
+it (Seven Bridges 138 px, BRU0073 94, BRU0038 11; the lane's 296 was
+also an artefact; the Torensluis reads 4.5–5.5 px against a threshold of
+2, a weak margin); BRU0009 joins the streamed-cell deck regressions in
+`test:own-ground` (crown 1.66 m over the higher end). Checks: belt "8
+findings, all reviewed (KNOWN)", cells, own-ground 78, canal-elevation
+11, census 0 new, both e2e on desktop. Also noted: the bundles committed
+at the bridges lane tip did not match that commit's own source; main's
+bundles match main's source, so the integrator's rebuild was right.
+
+
 ## Ground from the terrain everywhere, with a reach test: 312 pands corrected, 98 split-level pands restored (2026-10-14)
 
 Lane `lane/ground-rule-everywhere-20261014`, the follow-up to "3DBAG
