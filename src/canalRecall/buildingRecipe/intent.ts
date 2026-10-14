@@ -453,6 +453,12 @@ export interface LargeWallIntent {
   /** Fields of this group set by hand that `measure.ts --write` must keep (e.g. `["palette.brick", "baysPerStorey"]`). */
   hand?: string[];
   /**
+   * Two wall materials side by side on the group's main panel (measured, `measureFacade` `split`): the wall right of `at`
+   * (fraction of the main panel width from the viewer's left; snapped to a bay boundary) is `brick`; the left keeps the
+   * group's `palette.brick`. Houthavenkade 26: yellow-brown and dark brick on one 3DBAG plane.
+   */
+  wallSplit?: {at: number; brick: string};
+  /**
    * Arched heads: on the upper-storey windows, on the ground openings (with `ground: "portals"` or a windowed ground),
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
    * `voussoir` (stone with imposts and a keystone) or `none`.

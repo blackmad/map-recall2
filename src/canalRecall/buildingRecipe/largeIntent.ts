@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'windowShape', 'hand', 'hall', 'columns'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -224,6 +224,13 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       }
     } else if (w.columns !== undefined) problems.push(`${at}.columns: only system glazed-columns`);
     if (['glazed-hall', 'glazed-columns', 'french-window-ledge'].includes(w.system) && (w.balconies || w.hoist || w.tiltedBays || w.screen || w.gateways || w.blankStoreys)) problems.push(`${at}: ${w.system} takes no balconies, hoist, tiltedBays, screen, gateways or blankStoreys`);
+    if (w.wallSplit !== undefined) {
+      const s = w.wallSplit;
+      for (const k of Object.keys(s ?? {})) if (!['at', 'brick'].includes(k)) problems.push(`${at}.wallSplit.${k}: unknown field (at, brick)`);
+      if (typeof s?.at !== 'number' || !(s.at >= 0.1 && s.at <= 0.9)) problems.push(`${at}.wallSplit.at: fraction 0.1..0.9 of the main panel`);
+      colour(s?.brick, `${at}.wallSplit.brick`);
+      if (w.system === 'curtain-wall' || w.screen) problems.push(`${at}.wallSplit: only on a wall with a brick face (not curtain-wall or screen)`);
+    }
     if (w.hand !== undefined) { if (!Array.isArray(w.hand)) problems.push(`${at}.hand: list of field paths`); else for (const k of w.hand) if (typeof k !== 'string' || !WALL_KEYS.includes(k.split('.')[0])) problems.push(`${at}.hand: ${JSON.stringify(k)} is not a wall-group field`); }
   });
   if (problems.length) throw new Error(`Invalid large intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);

@@ -22,6 +22,8 @@ export type MaterialSoup = {
   materials: {name: string; rgb: [number, number, number];
     /** glTF extras: the shared-look slot (look/palette.ts MaterialSlot) under both names, its tint, and `inferred` when not authored. */
     slot?: string; materialSlot?: string; tint?: string; materialSlotSource?: string;
+    /** glTF extras `tintSource: "measured"`: the tint was measured from a photo and the city look draws it as is */
+    tintSource?: 'measured';
     /** KHR_materials_unlit (decals, printed signs): exempt from slot coverage. */
     unlit?: boolean;
     /** glTF doubleSided: both sides are drawn, so a face can z-fight from behind (geometryAudit auditZFight). */
