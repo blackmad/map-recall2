@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "id": "figure-decoupee",
+ "signature": [
+  "fd-outline",
+  "fd-lines"
+ ],
+ "walls": [
+  {
+   "tag": "se-140",
+   "bearing": 140,
+   "lengthM": 3.3,
+   "centre": [
+    4.86802,
+    52.35747
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001687_pano_0000_001782",
+   "capturedAt": "2020-05-06",
+   "checked": true,
+   "note": "Broad engraved face seen from the south-east and east (TMX 001687 0001782/1784, 002062 0001260 of 2021-03-26) and in the Commons photo; edge-on from the south-west (001857).",
+   "items": [
+    {
+     "id": "fd-outline",
+     "kind": "sculpture",
+     "where": "flat cut-out slab: two curved horns, tail fin on the left, fish fin and beak on the right, rounded foot",
+     "approxSizeM": [
+      3.3,
+      4.4
+     ],
+     "plan": "modelled",
+     "how": "builder: hand-traced outline extruded 0.25 m, sunk 5 cm into the lawn",
+     "seenIn": "TMX7316010203-001687_pano_0000_001782"
+    },
+    {
+     "id": "fd-lines",
+     "kind": "relief",
+     "where": "engraved dark lines: horn contours, spine and body curves, fin ribs, two ringed eyes",
+     "approxSizeM": [
+      3,
+      4
+     ],
+     "plan": "simplified",
+     "how": "builder: thin dark strips and two torus rings 3 cm proud on the near face; the far face was not seen and is left plain",
+     "seenIn": "TMX7316010203-001687_pano_0000_001782"
+    }
+   ]
+  },
+  {
+   "tag": "nw-320",
+   "bearing": 320,
+   "lengthM": 3.3,
+   "centre": [
+    4.86802,
+    52.35747
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back face: not seen clearly in any panorama; plain.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Figure decoupee in 2019 (1), Cees",
+   "url": "https://commons.wikimedia.org/wiki/File:Figure_d%C3%A9coup%C3%A9e_in_2019_(1).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "OpenStreetMap node 538934266",
+   "url": "https://www.openstreetmap.org/node/538934266",
+   "licence": "ODbL"
+  }
+ ]
+}

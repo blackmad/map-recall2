@@ -1702,5 +1702,17 @@
     "buildVersion": 2,
     "bytes": 134392,
     "triangles": 7713
+  },
+  "spinoza-standbeeld": {
+    "sourceHash": "82f4b88017100004",
+    "buildVersion": 2,
+    "bytes": 25964,
+    "triangles": 1218
+  },
+  "westermoskee": {
+    "sourceHash": "443a9ca11112e4fa",
+    "buildVersion": 2,
+    "bytes": 71164,
+    "triangles": 3348
   }
 }

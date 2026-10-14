@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Landmark queue, batch 8 (2026-10-14, night)
+
+Lane `landmarks/queue-8-20261014`. The Spinoza statue on the
+Zwanenburgwal (4.8k tris: standing figure in a long cloak with collar,
+curls, shoes and 14 perched birds, the icosahedron, the HET DOEL VAN DE
+STAAT IS DE VRIJHEID slab; the first export was a cone with a head and
+went back once from the gallery review), the Joods Verzetsmonument stele
+on the Amstel (0.7k; wording illegible so line plates plus a real
+"1940 - 1945" line), the Westermoskee (22.3k, from BAG/3DBAG massing:
+two-run arcade, cupolas, minaret, dome; NW/SW walls inferred, no
+panorama; a 3DBAG porch box on the SE front left out for the same
+reason), Picasso's Figure découpée in the Vondelpark (0.9k; outline
+hand-traced from a CC BY-SA 4.0 Commons photo, licence recorded; near
+face engraved only; engraved strips use `greyBrick` because `dark` read
+as buried openings to the audit) and Jan Bronner's Teun de Jager in the
+rose garden (0.7k, from the 2017–2020 panoramas; the newer ones blur the
+statue). All pass `audit:glb` at slots 100 %. Facings are estimates
+(Spinoza 180, Joods 85, Figure 140 ± 20, Teun 250 ± 25). Not taken: the
+Rembrandtplein Nachtwacht bronzes were removed in 2020; Johnny Jordaan
+and the Jordaan singers, Theo Thijssen, Carmiggelt and Winkler Prins are
+face-blurred in every panorama (Commons photos are the route); the
+Dokwerker, Homomonument, Schreierstoren, De Munt and Mozes en Aäronkerk
+are already bespoke. Debug helpers `audit-parts.ts` and `audit-geo.ts`
+committed. The Spinoza inventory `how` text still describes the cone.
+
+
 ## Dominant buildings, batch 4 (2026-10-14, night)
 
 Lane `large/dominant-4-20261014`, the first batch authored on the
