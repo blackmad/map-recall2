@@ -39257,10 +39257,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169564",
       "name": "Barlaeus Gymnasium, Weteringschans 31, Amsterdam (1866 Neo-Renaissance school, Singelgracht side behind)",
-      "hash": "ca1c81345ecc106763434b009a91584569434c5996af5ea8f4a53a889b16f36c",
-      "sha256": "ca1c81345ecc106763434b009a91584569434c5996af5ea8f4a53a889b16f36c",
-      "bytes": 453876,
-      "triangles": 5673,
+      "hash": "b6800824faa0330cc3a0ea1df331658b5c87741ec6a68c6b4f4d67f2e46fc5f7",
+      "sha256": "b6800824faa0330cc3a0ea1df331658b5c87741ec6a68c6b4f4d67f2e46fc5f7",
+      "bytes": 506604,
+      "triangles": 6343,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -39462,7 +39462,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169564",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:04:57.091Z"
+      "updatedAt": "2026-10-14T03:04:50.026Z"
     },
     {
       "id": "ordinary-0363100012096365",
