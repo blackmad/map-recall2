@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -24494,10 +24494,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012064423",
       "name": "Politiebureau Zuidoost Gaasperdam, Remmerdenplein 102, Amsterdam (Gaasperdam)",
-      "hash": "c2fdf68cb34e58be93b4835bb37c17b210c3746f463899e9e68b86e5fd96edb7",
-      "sha256": "c2fdf68cb34e58be93b4835bb37c17b210c3746f463899e9e68b86e5fd96edb7",
-      "bytes": 31288,
-      "triangles": 321,
+      "hash": "bb6501345f3dc55f3a82ff335e5dbd10ea52ba596794143f7142614eaf4afc90",
+      "sha256": "bb6501345f3dc55f3a82ff335e5dbd10ea52ba596794143f7142614eaf4afc90",
+      "bytes": 27984,
+      "triangles": 287,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -24625,7 +24625,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064423",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T12:55:30.511Z",
+      "updatedAt": "2026-10-14T01:09:21.942Z",
       "bagYear": 1996
     },
     {
@@ -25314,10 +25314,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171032",
       "name": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35, Amsterdam (Spui-Nieuwezijds corner, 1996)",
-      "hash": "0742c50304a7bc5311030a60e7e36a50570266a56858b15da778cc6f850e2331",
-      "sha256": "0742c50304a7bc5311030a60e7e36a50570266a56858b15da778cc6f850e2331",
-      "bytes": 191636,
-      "triangles": 2425,
+      "hash": "b902d72f4f8c14f0f5a609f07a879d4d48c80402719a6cda56037e2487759d7d",
+      "sha256": "b902d72f4f8c14f0f5a609f07a879d4d48c80402719a6cda56037e2487759d7d",
+      "bytes": 212488,
+      "triangles": 2757,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -25325,7 +25325,7 @@
         "min": [
           -21.297,
           0,
-          -14.713
+          -14.803
         ],
         "max": [
           11.498,
@@ -25504,7 +25504,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171032",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:26.036Z",
+      "updatedAt": "2026-10-14T01:09:06.168Z",
       "bagYear": 1996
     },
     {
@@ -25650,10 +25650,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165618",
       "name": "Politiebureau IJ-tunnel / Brandweerkazerne Amsterdam-Amstelland, IJ-tunnel 2, Amsterdam (1972; one pand shared by fire station and police bureau)",
-      "hash": "301a3f198d0379a6986f6847c62a90c4951afbb7f9105e59e58f1d18e30aa3bb",
-      "sha256": "301a3f198d0379a6986f6847c62a90c4951afbb7f9105e59e58f1d18e30aa3bb",
-      "bytes": 191976,
-      "triangles": 2442,
+      "hash": "a9577eb1ddc61f7222b8087a743218906f0af1ca054e7ce5651532f62d194de0",
+      "sha256": "a9577eb1ddc61f7222b8087a743218906f0af1ca054e7ce5651532f62d194de0",
+      "bytes": 272728,
+      "triangles": 3610,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -25835,7 +25835,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165618",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:27.083Z",
+      "updatedAt": "2026-10-14T01:08:22.966Z",
       "bagYear": 1972
     },
     {
@@ -26092,10 +26092,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012131469",
       "name": "Politiebureau Oost Watergraafsmeer, Linnaeusstraat 111, Amsterdam (2003)",
-      "hash": "7ae6f6f0d279080b89e2b8a4578b98c0845863d7f50d26280343b3bf11e7e7c7",
-      "sha256": "7ae6f6f0d279080b89e2b8a4578b98c0845863d7f50d26280343b3bf11e7e7c7",
-      "bytes": 427092,
-      "triangles": 5800,
+      "hash": "5c23bc2acb90b2b2c2e5535df4bbcd390cc2625e69e2d15d900272f7f4f4534e",
+      "sha256": "5c23bc2acb90b2b2c2e5535df4bbcd390cc2625e69e2d15d900272f7f4f4534e",
+      "bytes": 445052,
+      "triangles": 6062,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -26193,7 +26193,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012131469",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:28.321Z",
+      "updatedAt": "2026-10-14T01:08:51.640Z",
       "bagYear": 2003
     },
     {
@@ -26201,10 +26201,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012092810",
       "name": "Politiebureau Postjesweg, Postjesweg 179B, Amsterdam (2004)",
-      "hash": "af13dd1319f01e0dd989821858797ffb0ffdc70daaf28b658ded44cb3f35aeb4",
-      "sha256": "af13dd1319f01e0dd989821858797ffb0ffdc70daaf28b658ded44cb3f35aeb4",
-      "bytes": 164308,
-      "triangles": 2113,
+      "hash": "822d9d64cc9789336cd40ae6b49676a18101caf5f1a09703727ff7ade8768ef3",
+      "sha256": "822d9d64cc9789336cd40ae6b49676a18101caf5f1a09703727ff7ade8768ef3",
+      "bytes": 215472,
+      "triangles": 2851,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -26298,7 +26298,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092810",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:28.895Z",
+      "updatedAt": "2026-10-14T01:08:37.676Z",
       "bagYear": 2004
     },
     {
@@ -27262,10 +27262,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164981",
       "name": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam: the Entrepotdok warehouses, converted to housing in the 1980s",
-      "hash": "5412e810225df2059fca46be58796c07ac2e062dbab15f17ce11452cde5fdd02",
-      "sha256": "5412e810225df2059fca46be58796c07ac2e062dbab15f17ce11452cde5fdd02",
-      "bytes": 920876,
-      "triangles": 11156,
+      "hash": "005cf6ae285ddfa5cb889544fa1755dc87a0068500242d3e43f6496cbe9ae9fd",
+      "sha256": "005cf6ae285ddfa5cb889544fa1755dc87a0068500242d3e43f6496cbe9ae9fd",
+      "bytes": 943328,
+      "triangles": 11622,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -27637,7 +27637,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164981",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:20.208Z",
+      "updatedAt": "2026-10-14T01:03:22.312Z",
       "bagYear": 1750
     },
     {
@@ -34067,10 +34067,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012151434",
       "name": "OBA Mercatorplein, Mercatorplein 103, Amsterdam (1927 Amsterdam School block; library under the glazed canopy at the ground floor)",
-      "hash": "9282667efd3fb1db3c6ba5c3290b8a824439dd0a87940d9033fb4157a521741c",
-      "sha256": "9282667efd3fb1db3c6ba5c3290b8a824439dd0a87940d9033fb4157a521741c",
-      "bytes": 397812,
-      "triangles": 5670,
+      "hash": "48e3195fc5a523216510609c4d42d29d5b612b793eacefa112b82632ffa0c29c",
+      "sha256": "48e3195fc5a523216510609c4d42d29d5b612b793eacefa112b82632ffa0c29c",
+      "bytes": 329620,
+      "triangles": 4448,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -34178,7 +34178,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012151434",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:33:56.938Z"
+      "updatedAt": "2026-10-14T01:07:25.814Z"
     },
     {
       "id": "ordinary-0363100012233553",
@@ -35114,10 +35114,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118358",
       "name": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
-      "hash": "2aea2605d00c3173e91714ebb5e8f48ed1ddd36e6b3ff9f78e325d031f5b6606",
-      "sha256": "2aea2605d00c3173e91714ebb5e8f48ed1ddd36e6b3ff9f78e325d031f5b6606",
-      "bytes": 805340,
-      "triangles": 11250,
+      "hash": "585586ce656ea75bf648722bf5456706e5698a47284aaff0abfd44cc83a564cd",
+      "sha256": "585586ce656ea75bf648722bf5456706e5698a47284aaff0abfd44cc83a564cd",
+      "bytes": 488980,
+      "triangles": 6749,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -35356,14 +35356,15 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab."
+        "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab.",
+        "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups now glaze the ground storey too (SIMPLIFIED: the photo shows a dark mesh plinth there; the dark glass reads close to it)."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118358",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:48:22.853Z"
+      "updatedAt": "2026-10-14T01:07:53.556Z"
     },
     {
       "id": "ordinary-0363100012243116",
@@ -35578,11 +35579,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012114605",
       "name": "Distelweg 88, Amsterdam-Noord: 1948 distribution warehouse clad in grey sandwich panels on the Buiksloterkanaal side (BAG: one industrial unit)",
-      "hash": "dad180926af825765daf47e80dc6a4750b72cfd686b3ab981895fad333106667",
-      "sha256": "dad180926af825765daf47e80dc6a4750b72cfd686b3ab981895fad333106667",
-      "bytes": 51940,
+      "hash": "4c1141b544729a711b72c0a1104bc037b67cb572f91b1360e8f428f942d91fe7",
+      "sha256": "4c1141b544729a711b72c0a1104bc037b67cb572f91b1360e8f428f942d91fe7",
+      "bytes": 52796,
       "triangles": 522,
-      "materials": 5,
+      "materials": 6,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -35733,7 +35734,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012114605",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T22:51:24.727Z"
+      "updatedAt": "2026-10-14T01:10:08.215Z"
     },
     {
       "id": "ordinary-0363100012202277",
@@ -39256,9 +39257,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169564",
       "name": "Barlaeus Gymnasium, Weteringschans 31, Amsterdam (1866 Neo-Renaissance school, Singelgracht side behind)",
-      "hash": "6858e0d567bcfda31a0aa85798d5d31ae38f39706f9d4f7770bc294ddfe7982d",
-      "sha256": "6858e0d567bcfda31a0aa85798d5d31ae38f39706f9d4f7770bc294ddfe7982d",
-      "bytes": 453812,
+      "hash": "ca1c81345ecc106763434b009a91584569434c5996af5ea8f4a53a889b16f36c",
+      "sha256": "ca1c81345ecc106763434b009a91584569434c5996af5ea8f4a53a889b16f36c",
+      "bytes": 453876,
       "triangles": 5673,
       "materials": 10,
       "textures": 0,
@@ -39461,17 +39462,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169564",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:06:20.615Z"
+      "updatedAt": "2026-10-14T01:04:57.091Z"
     },
     {
       "id": "ordinary-0363100012096365",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012096365",
       "name": "Vossius Gymnasium, Messchaertstraat 1, Amsterdam (1930 brick school, three wings, tiled roofs with dormer bands)",
-      "hash": "61c93a0902d3deaf95113ac320f61b943da33a4a8d4df2396d1cc03b02b7d95c",
-      "sha256": "61c93a0902d3deaf95113ac320f61b943da33a4a8d4df2396d1cc03b02b7d95c",
-      "bytes": 409152,
-      "triangles": 5445,
+      "hash": "eb529fa7f21dce8084e36c4fcc0f05f3aa35a159409996881214e952b23a53a3",
+      "sha256": "eb529fa7f21dce8084e36c4fcc0f05f3aa35a159409996881214e952b23a53a3",
+      "bytes": 565952,
+      "triangles": 7685,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -39763,17 +39764,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012096365",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:12:42.550Z"
+      "updatedAt": "2026-10-14T01:05:12.263Z"
     },
     {
       "id": "ordinary-0363100012127997",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012127997",
       "name": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
-      "hash": "7fd20944d96477684258014c18a73d3ec7ff6e913afdb5d95fb32d1782f6f6ac",
-      "sha256": "7fd20944d96477684258014c18a73d3ec7ff6e913afdb5d95fb32d1782f6f6ac",
-      "bytes": 211832,
-      "triangles": 2776,
+      "hash": "9f36f4a9269bd5fa056adfadc39adda990473f31b8de6c9c1ceca29ac9262467",
+      "sha256": "9f36f4a9269bd5fa056adfadc39adda990473f31b8de6c9c1ceca29ac9262467",
+      "bytes": 317000,
+      "triangles": 4280,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -40023,17 +40024,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127997",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:12:42.390Z"
+      "updatedAt": "2026-10-14T01:05:29.204Z"
     },
     {
       "id": "ordinary-0363100012236840",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236840",
       "name": "Montessori Lyceum Amsterdam, Van Ostadestraat 103, Amsterdam (1900 school: three tall storeys of window groups between slender piers)",
-      "hash": "69a4c02beba333ab23541a1c1107c1975f194959f60e6772120f41ef84194a18",
-      "sha256": "69a4c02beba333ab23541a1c1107c1975f194959f60e6772120f41ef84194a18",
-      "bytes": 112468,
-      "triangles": 1349,
+      "hash": "d5d1385240a22c5423cc37aff029f16112fcb566cd381b2bfb10369786bbfeed",
+      "sha256": "d5d1385240a22c5423cc37aff029f16112fcb566cd381b2bfb10369786bbfeed",
+      "bytes": 139352,
+      "triangles": 1733,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -40204,17 +40205,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236840",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:14:05.126Z"
+      "updatedAt": "2026-10-14T01:05:45.212Z"
     },
     {
       "id": "ordinary-0363100012149878",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012149878",
       "name": "Het Amsterdams Lyceum, Valeriusplein 15, Amsterdam (1920s Amsterdam School school, two carriage arches through the street fronts)",
-      "hash": "9d038de4b010bedc34a0d05cf0fe2d0948837ea14ea114bf8b3a8d17fc0d6289",
-      "sha256": "9d038de4b010bedc34a0d05cf0fe2d0948837ea14ea114bf8b3a8d17fc0d6289",
-      "bytes": 223344,
-      "triangles": 2633,
+      "hash": "5107f126b44371dc9b9169e50f1538e517f8a12b007d460a0d20994cdb1fc26a",
+      "sha256": "5107f126b44371dc9b9169e50f1538e517f8a12b007d460a0d20994cdb1fc26a",
+      "bytes": 259192,
+      "triangles": 3145,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -40568,17 +40569,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012149878",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:17:30.248Z"
+      "updatedAt": "2026-10-14T01:06:03.601Z"
     },
     {
       "id": "ordinary-0363100012165748",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165748",
       "name": "Rijksakademie van beeldende kunsten, Sarphatistraat 470, Amsterdam (1865 former barracks, courtyard complex of round-arched brick ranges)",
-      "hash": "3fdd927f1908358d3f9d9ff27c3c9ac82832b11782c3fdb000788d88750ae56f",
-      "sha256": "3fdd927f1908358d3f9d9ff27c3c9ac82832b11782c3fdb000788d88750ae56f",
-      "bytes": 765088,
-      "triangles": 8471,
+      "hash": "8f7655a06573499b52e37bd278fa4717b9309d9149e16eb8f421b94f78c3f8f8",
+      "sha256": "8f7655a06573499b52e37bd278fa4717b9309d9149e16eb8f421b94f78c3f8f8",
+      "bytes": 1050344,
+      "triangles": 11959,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -41203,17 +41204,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165748",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:19:17.682Z"
+      "updatedAt": "2026-10-14T01:06:19.695Z"
     },
     {
       "id": "ordinary-0363100012109375",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012109375",
       "name": "Cygnus Gymnasium block, Vrolikstraat 8, Amsterdam (1956 concrete frame office slab on pilotis, a grid of square cells)",
-      "hash": "ce86cece0107aa56d1c956f95b99d7d065648cfdf9aa1e269e26eea80699f019",
-      "sha256": "ce86cece0107aa56d1c956f95b99d7d065648cfdf9aa1e269e26eea80699f019",
-      "bytes": 634484,
-      "triangles": 8527,
+      "hash": "d4b4c49d8a3a6c0395ae5e6f458e49db751b03eeb9eaeb75d28ec1641aac8699",
+      "sha256": "d4b4c49d8a3a6c0395ae5e6f458e49db751b03eeb9eaeb75d28ec1641aac8699",
+      "bytes": 674804,
+      "triangles": 9103,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -41456,17 +41457,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012109375",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:26:33.712Z"
+      "updatedAt": "2026-10-14T01:06:41.439Z"
     },
     {
       "id": "ordinary-0363100012137257",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137257",
       "name": "Reade (Jan van Breemen Instituut), Dr. Jan van Breemenstraat 3, Amsterdam (1967 rehabilitation centre, long low ribbon-window wings)",
-      "hash": "357c9593db6890b9b3eed9f57d31a95d1b9b89df9678bb617efd82eb047914f3",
-      "sha256": "357c9593db6890b9b3eed9f57d31a95d1b9b89df9678bb617efd82eb047914f3",
-      "bytes": 95348,
-      "triangles": 1097,
+      "hash": "3b0876125c0d5179547d18b5750564f6653715c0dd54b6e095c230ebc43369ec",
+      "sha256": "3b0876125c0d5179547d18b5750564f6653715c0dd54b6e095c230ebc43369ec",
+      "bytes": 108788,
+      "triangles": 1289,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -41685,7 +41686,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137257",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:26:36.733Z"
+      "updatedAt": "2026-10-14T01:06:55.764Z"
     }
   ]
 }
