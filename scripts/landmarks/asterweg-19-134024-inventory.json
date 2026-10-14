@@ -1,0 +1,101 @@
+{
+ "schemaVersion": 1,
+ "id": "asterweg-19-134024",
+ "pand": "0363100012134024",
+ "signature": [
+  "brick-slab-over-truss-arcade",
+  "ribbon-window-strip"
+ ],
+ "walls": [
+  {
+   "tag": "w01-344",
+   "bearing": 344,
+   "lengthM": 84.3,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w02-74",
+   "bearing": 74,
+   "lengthM": 60.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002181_pano_0000_004663",
+   "capturedAt": "2021-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-slab-over-truss-arcade",
+     "kind": "other",
+     "where": "raised brick storey carried over an open ground floor on diagonal galvanised steel trusses, closing in a brick ramp wall",
+     "approxSizeM": [
+      40,
+      6
+     ],
+     "plan": "simplified",
+     "how": "walls[0] brick ground storey with a glazed entrance in bay 1; the open arcade and the truss legs are drawn as a solid wall",
+     "seenIn": "TMX7316010203-002181_pano_0000_004663"
+    },
+    {
+     "id": "ribbon-window-strip",
+     "kind": "window-shape",
+     "where": "continuous ribbon of low windows under the eaves of the brick storey",
+     "approxSizeM": [
+      55,
+      1.5
+     ],
+     "plan": "modelled",
+     "how": "walls[0] ribbon-windows, 20 bays",
+     "seenIn": "TMX7316010203-002181_pano_0000_004663"
+    },
+    {
+     "id": "asterweg-lettering",
+     "kind": "lettering",
+     "where": "ASTERWEG 17 - 19 and tenant logo on the brick wall",
+     "approxSizeM": [
+      6,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant logo and house-number lettering; the wall-mounted letter component leaves open edges on this shell"
+     },
+     "seenIn": "TMX7316010203-002181_pano_0000_004663"
+    }
+   ]
+  },
+  {
+   "tag": "w03-254",
+   "bearing": 254,
+   "lengthM": 22.8,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-254",
+   "bearing": 254,
+   "lengthM": 18.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
