@@ -50,6 +50,7 @@
  "layeredKit": true,
  "notes": [
   "Metis Montessori Lyceum (BAG pand 0363100012080098, built 1991, 20 3DBAG wall surfaces, roof max 7.2 m), Derde Oosterparkstraat 360: the 36 m north-west front (w01-337, 2025): two storeys of grey-brown brick, nine bays of blue-framed double windows over a deep brick course and a recessed entrance under a dark canopy band (surface 9). The tagline lettered on the canopy is illegible and the school is not named on the wall.",
-  "w02-247 (sun-flared) and w03-67 (a neighbouring red-and-white banded building, not this pand) are not used; the other walls stay blank."
+  "w02-247 (sun-flared) and w03-67 (a neighbouring red-and-white banded building, not this pand) are not used; the other walls stay blank.",
+  "Uninstalled 2026-10-14 (photo review, reconcile lane): walls[0] FAIL against w01-337 (2025-06-20): the photo's brick is dark grey-brown (#3d4341, family paint) and the model's tan brick #917e69 reads wrong at gallery size; columns 9 vs 27 counted. Not a kit gap: re-fit the palette from the crop (measure.ts) before re-installing."
  ]
 }
