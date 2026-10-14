@@ -26642,10 +26642,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012115571",
       "name": "Politiebureau Boven-IJ, Rode Kruisstraat 79, Amsterdam (Amsterdam-Noord, 1978)",
-      "hash": "d8aa4206b529b812f1aebe05de88d0ae88ca2c5fa7498835f5425e1eacefcf9f",
-      "sha256": "d8aa4206b529b812f1aebe05de88d0ae88ca2c5fa7498835f5425e1eacefcf9f",
-      "bytes": 123236,
-      "triangles": 1525,
+      "hash": "90ef1e8d51597db85546f5b4d8c34436246a17fde32bf5ba5d04adf062c3e914",
+      "sha256": "90ef1e8d51597db85546f5b4d8c34436246a17fde32bf5ba5d04adf062c3e914",
+      "bytes": 169792,
+      "triangles": 2189,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -26783,7 +26783,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012115571",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:30.583Z",
+      "updatedAt": "2026-10-14T03:11:14.260Z",
       "bagYear": 1978
     },
     {
