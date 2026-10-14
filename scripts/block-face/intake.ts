@@ -22,6 +22,7 @@ import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {AMSTERDAM_WORLD_ALIGNED, rectifyFacade} from '../../src/canalRecall/facade/rectify.ts';
 import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
 import {discoverBlockFace} from '../../src/canalRecall/blockFace/discover.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import {medianFuse, planStrip, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
 import {assignUses, type OsmBusiness, type BagUnit} from '../../src/canalRecall/blockFace/uses.ts';
 import {cachedJson} from '../pand-reference/core.ts';
@@ -92,7 +93,7 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   let r = 90, found: ReturnType<typeof discoverBlockFace>, items: CityJsonItem[];
   for (;;) {
     items = await threeDBagBbox([c[0] - r, c[1] - r], [c[0] + r, c[1] + r]);
-    found = discoverBlockFace(items, streets, {street: o.street, seed: o.seed, from: o.from, to: o.to, toRD, meta: id => ({threeDBag: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${id}`, fetchedAt: new Date().toISOString().slice(0, 10), streets: 'public/data/extracts/amsterdam/streets-routing.json'})});
+    found = discoverBlockFace(items, streets, {street: o.street, seed: o.seed, from: o.from, to: o.to, toRD, terrainAt: sharedTerrain(), meta: id => ({threeDBag: `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${id}`, fetchedAt: new Date().toISOString().slice(0, 10), streets: 'public/data/extracts/amsterdam/streets-routing.json'})});
     const ext = found.pands.flatMap(p => p.facts.bagFootprintRD.flat()), reach = Math.max(...ext.map(p => Math.max(Math.abs(p[0] - c[0]), Math.abs(p[1] - c[1]))));
     if (reach < r - 15 || r >= 360) break;
     r *= 2;

@@ -13,7 +13,8 @@ import {NodeIO} from '@gltf-transform/core';
 import * as T from 'three';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
-import {pointInRing} from '../buildingRecipe/facts.ts';
+import {pointInRing, trustFactsGround} from '../buildingRecipe/facts.ts';
+import type {TerrainAt} from '../bag3dCityJson.ts';
 import {fitIntent, splitChain} from '../buildingRecipe/fit.ts';
 import type {CompiledBuilding} from '../buildingRecipe/compile.ts';
 import {BUDGET_TRIANGLES} from '../buildingRecipe/gates.ts';
@@ -107,10 +108,10 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
       // The survey roof must stand clear above the measured eaves at the facade (a mansard top, a dormer, or a ridge run out
       // to the front: Bilderdijkstraat 199, ridge end 18.8 m over a 15.9 m cornice), else there is nothing to re-pitch.
       const ff0 = f.fronts[0], [q0] = ff0.endpointsRD, nq = ff0.outwardNormalRD, onFront = (v: number[]) => Math.abs((v[0] - q0[0]) * nq[0] + (v[1] - q0[1]) * nq[1]) <= 0.05;
-      const facadeTop = Math.max(...f.roofsRD.flatMap(r => r.vertices).filter(onFront).map(v => v[2] - f.attributes.b3_h_maaiveld));
+      const facadeTop = Math.max(...f.roofsRD.flatMap(r => r.vertices).filter(onFront).map(v => v[2] - f.heights.groundNAP));
       if (!(facadeTop > value + 0.5)) throw Error(`${m6(face.houses[i].pandId)}: frontRoof needs survey roof above the measured eaves at the facade; roof ${cm(facadeTop)} m vs eaves ${value} m`);
-      // The eaves in this pand's own height datum (the fit reads roof heights above b3_h_maaiveld), rounded as the fit rounds it.
-      f = repitchFrontRoof(f, value + f.attributes.b3_h_maaiveld, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg, along});
+      // The eaves in this pand's own height datum (the fit reads roof heights above heights.groundNAP), rounded as the fit rounds it.
+      f = repitchFrontRoof(f, value + f.heights.groundNAP, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg, along});
     }
     // The first front's line drives the party-line eaves verdicts.
     eavesAfter[i] = mine[intents[i].fronts[0].id] ?? eavesAfter[i];
@@ -183,7 +184,7 @@ export function repitchFrontRoof(f: BuildingFacts, eavesNap: number, opts: {topN
     });
   }
   out.roofsRD = roofs;
-  const z = roofs.flatMap(r => r.vertices.map(v => v[2] - out.attributes.b3_h_maaiveld));
+  const z = roofs.flatMap(r => r.vertices.map(v => v[2] - out.heights.groundNAP));
   out.heights = {...out.heights, roofMinM: Math.min(...z)};
   return out;
 }
@@ -339,13 +340,20 @@ export function snapFrontSteps(facts: BuildingFacts[], steps: {i: number; stepM:
   return out;
 }
 
+/** The face's facts in house order, each on its trusted ground (`trustFactsGround`; unchanged without a terrain field). */
+export function faceFactsOnTrustedGround(face: Pick<BlockFaceIntent, 'houses'>, factsByPand: Map<string, BuildingFacts>, terrainAt?: TerrainAt | null): BuildingFacts[] {
+  return face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return trustFactsGround(f, terrainAt); });
+}
+
 export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale;
   /** Photo gable readings keyed `<pandId>/<frontId>` (scripts/block-face/gable-from-photo.ts), used for `continuity.crownFromPhoto`. */
   photoGables?: Map<string, PhotoGable>;
   /** Override the intent's `continuity.roof.source` (before/after comparisons). */
-  roofSource?: 'recipe' | 'survey'} = {}): Promise<BlockFaceResult> {
+  roofSource?: 'recipe' | 'survey';
+  /** AHN terrain (scripts/lib/terrainField.ts): every pand's heights stand on its trusted ground (`trustFactsGround`). */
+  terrainAt?: TerrainAt | null} = {}): Promise<BlockFaceResult> {
   let intents = houseIntents(face);
-  const facts = face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return f; });
+  const facts = faceFactsOnTrustedGround(face, factsByPand, options.terrainAt);
   const slits = closeFrontSlits(facts);
   // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
   const rears = new Map<string, RearReport>();

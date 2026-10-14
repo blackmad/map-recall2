@@ -6,6 +6,7 @@
 import {minimumRotatedRectangle, type Pt, type Rect} from './geometry.ts';
 import type {GenerateParams} from './generate.ts';
 import type {TypeSpec} from './spec.ts';
+import {pandGroundNap, type TerrainAt} from '../bag3dCityJson.ts';
 
 export interface CityJsonItem {
   feature: {CityObjects: Record<string, {type: string; attributes?: Record<string, unknown>; geometry?: {lod: string | number; type: string; boundaries: any; semantics?: {surfaces: {type: string}[]; values: any}}[]}>; vertices: number[][]};
@@ -20,7 +21,13 @@ export interface Bag3dAttributes {
   b3_h_dak_min?: number | null;
   b3_h_maaiveld?: number | null;
   b3_h_nok?: number | null;
+  /** Read by the terrain rule (`trustedGroundNap`): roof clearance and the AHN vintage. */
+  b3_h_dak_70p?: number | null;
+  oorspronkelijkbouwjaar?: number | null;
 }
+
+/** Where the trusted ground is read: the AHN terrain field and the pand's footprint ring in RD New. */
+export interface GroundEvidence { terrainAt?: TerrainAt | null; ringRd?: readonly (readonly number[])[] | null }
 
 export interface RoofFacts {
   form: 'flat' | 'gable' | 'hip';
@@ -95,15 +102,20 @@ export function storeysFromHeight(eavesM: number, nominal: number, typical = 2.9
 export interface ParamsResult {
   params: GenerateParams;
   warnings: string[];
+  /** The ground eaves and ridge stand on, metres NAP (`pandGroundNap`); place the generated house at this height. */
+  groundNapM: number;
 }
 
 /**
- * Generator parameters from facts. `eavesM` and `ridgeM` are heights above the pand's own ground (b3_h_maaiveld).
+ * Generator parameters from facts. `eavesM` and `ridgeM` are heights above the pand's trusted ground (`pandGroundNap`:
+ * 3DBAG's b3_h_maaiveld unless that is a failed estimate under the AHN terrain given in `evidence`).
  * Storeys come from the type (all members share them by construction) and are cross-checked against 3DBAG.
  */
-export function paramsFromFacts(spec: TypeSpec, rect: Rect, attrs: Bag3dAttributes, roof: RoofFacts | null, overrides: Partial<GenerateParams> = {}): ParamsResult {
+export function paramsFromFacts(spec: TypeSpec, rect: Rect, attrs: Bag3dAttributes, roof: RoofFacts | null, overrides: Partial<GenerateParams> = {}, evidence: GroundEvidence = {}): ParamsResult {
   const warnings: string[] = [];
-  const ground = attrs.b3_h_maaiveld ?? 0;
+  const trusted = pandGroundNap(attrs as Record<string, unknown>, evidence.terrainAt, evidence.ringRd);
+  const ground = trusted.groundNapM ?? 0;
+  if (trusted.source === 'terrain') warnings.push(`3DBAG ground ${attrs.b3_h_maaiveld?.toFixed(2)} NAP is a failed estimate under the terrain: heights from the terrain at ${ground.toFixed(2)} NAP`);
   const pitchedType = spec.roof.form !== 'flat';
   const form: 'flat' | 'gable' | 'hip' = roof ? roof.form : spec.roof.form;
   if (roof && (form === 'flat') !== !pitchedType) warnings.push(`3DBAG roof is ${form} but the type is ${spec.roof.form}: using the type's roof class with 3DBAG heights`);
@@ -131,7 +143,7 @@ export function paramsFromFacts(spec: TypeSpec, rect: Rect, attrs: Bag3dAttribut
   else if (attrs.b3_bouwlagen != null && attrs.b3_bouwlagen !== storeys) warnings.push(`3DBAG bouwlagen ${attrs.b3_bouwlagen} != type storeys ${storeys}`);
   if (sh < 2.6 || sh > 3.4) warnings.push(`storey height ${sh.toFixed(2)} m outside 2.6-3.4 m`);
   const ridge = roof?.ridgeDirRD ? ridgeAlongOf(rect, roof.ridgeDirRD) : spec.roof.ridge;
-  return {params: {lengthM: rect.length, widthM: rect.width, eavesM, ridgeM, storeys, roofForm, ridge, ...overrides}, warnings};
+  return {params: {lengthM: rect.length, widthM: rect.width, eavesM, ridgeM, storeys, roofForm, ridge, ...overrides}, warnings, groundNapM: ground};
 }
 
 /** Footprint ring (local metres) to its rectangle: re-exported so callers need one import. */
