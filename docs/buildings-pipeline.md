@@ -1170,6 +1170,31 @@ dormers with a gap at the party wall (a dormer reaching the party wall fails the
 stucco top storeys and tympana are not modelled, the tower-dormers have no light, De Clercqstraat corbel tables are a
 bracketed cornice, D dormers are centred on the BAG front rather than the visual module.
 
+#### Shared house-type library (`scripts/block-face/types/<district>/<id>.json`)
+
+A type that more than one face (or street) will place lives in the library instead of in one face's intent. One type per
+file, the same `HouseTypeIntent` shape as an inline type plus `district` (must equal the folder name) and, optionally,
+`schemaLimits: string[]` (what the schema cannot express about the type, shown with its evidence). `evidence` is
+required as for inline types. The file name is the type id (`clercq-e-corbel-brick.json`), and an id exists in exactly
+one district.
+
+A face references a library type by putting its id string in `types`, alone or mixed with inline objects:
+
+```json
+"types": ["clercq-e-corbel-brick", "clercq-f-stucco-mansard", {"schemaVersion": 1, "kind": "house-type", "id": "my-local-type", "...": "..."}]
+```
+
+Placements (`"type": {"type": "clercq-e-corbel-brick", ...}`) are unchanged: they name the id, whichever way it was
+declared. Code: `src/canalRecall/blockFace/typeLibrary.ts` (`TypeLoader`, `fileTypeLoader(dir)`, `resolveTypeList`;
+test beside it). `validateBlockFace(input, order, load)`, `houseIntents(face, load)` and `resolveFaceTypes(face, load)`
+take a loader that defaults to the filesystem library; an unknown id, a duplicate id (inline vs library or twice) and a
+file whose id or district disagrees with its path are validation errors. `scripts/block-face/compile.ts` and
+`scripts/building-tiles/compile-recipes.ts` pass the loader explicitly. The tile compiler hashes the resolved types
+(not the id strings) into `sources.faces`, and the library types' content into `sources.types`, so editing a library
+file invalidates every tile whose face places it. De Clercqstraat's three types (`oud-west`) are the first entries;
+moving them out of `clercq-236681/intent.json` changed no compiled output (chunk GLB, manifest entry and report
+byte-identical, every face's resolved house intents identical).
+
 ## Recipe tiles (migration step 3, `?recipeTiles=1`, 2026-10-13)
 
 Plan: `docs/plans/digital-twin-direction-20261013.md` §2; handoff `docs/handoffs/lane-recipe-tiles-20261013.md`.

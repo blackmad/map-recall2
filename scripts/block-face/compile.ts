@@ -18,6 +18,7 @@ import {ringToFrame} from '../../src/canalRecall/buildingRecipe/instances.ts';
 import {compileBlockFace, decodePands} from '../../src/canalRecall/blockFace/compile.ts';
 import {classifyPartyLoops, openEdges} from '../../src/canalRecall/blockFace/partyLoops.ts';
 import {validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
+import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {FACES, STAGING} from './intake.ts';
 import {photoReadings} from './gable-from-photo.ts';
@@ -30,7 +31,7 @@ const MODELS = 'public/canal-drive/models/ordinary-buildings/chunks', MANIFEST =
 export async function compileFace(faceId: string) {
   const t0 = performance.now();
   const dir = path.join(FACES, faceId), discovery = JSON.parse(await fs.readFile(path.join(dir, 'discovery.json'), 'utf8'));
-  const face = validateBlockFace(JSON.parse(await fs.readFile(path.join(dir, 'intent.json'), 'utf8')), discovery.members);
+  const face = validateBlockFace(JSON.parse(await fs.readFile(path.join(dir, 'intent.json'), 'utf8')), discovery.members, fileTypeLoader());
   const facts = new Map<string, BuildingFacts>();
   for (const h of face.houses) facts.set(h.pandId, JSON.parse(await fs.readFile(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')));
   const name = `face-${faceId}`;
