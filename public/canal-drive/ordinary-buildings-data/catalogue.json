@@ -45983,10 +45983,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012251313",
       "name": "Hoogte Kadijk 400, Amsterdam-Centrum: 1903 brick industrial hall with giant arched windows and a small arched clerestory row, and a five-storey brick office wing with a stepped entrance",
-      "hash": "9d19d32fb36fbe3c4a0f74406d206760a0ab6c273f4a74c0cd5b0bc8f0bf0b88",
-      "sha256": "9d19d32fb36fbe3c4a0f74406d206760a0ab6c273f4a74c0cd5b0bc8f0bf0b88",
-      "bytes": 432864,
-      "triangles": 4940,
+      "hash": "b4d0151b90fd9d4a6dcc599f6400c5c562c59f130d0d6dc76ca8fd20a12ac311",
+      "sha256": "b4d0151b90fd9d4a6dcc599f6400c5c562c59f130d0d6dc76ca8fd20a12ac311",
+      "bytes": 428980,
+      "triangles": 4900,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -46201,7 +46201,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012251313",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:45:44.709Z"
+      "updatedAt": "2026-10-14T03:08:18.708Z"
     },
     {
       "id": "ordinary-0363100012233471",
