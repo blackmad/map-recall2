@@ -60,7 +60,14 @@ test('wallSplit: validated; the main panel wall right of a bay boundary gets the
   const names = (c: typeof plain) => c.group.children.map(m => m.name);
   assert.ok(names(split).includes(`wall/${slot}`), names(split).join(','));
   assert.ok(!names(plain).some(n => n.endsWith('/r')));
-  // the same triangles in total: only their slot changed
-  const tris = (c: typeof plain) => c.group.children.reduce((n, m) => n + (m as any).geometry.attributes.position.count / 3, 0);
-  assert.equal(tris(split), tris(plain));
+  // the same surface (straddling triangles are clipped, not dropped), and the right slot lies right of the split
+  const area = (c: typeof plain) => c.group.children.reduce((n, m) => {
+    const q = (m as any).geometry.attributes.position.array as Float32Array; let s = 0;
+    for (let i = 0; i < q.length; i += 9) { const e1 = [q[i + 3] - q[i], q[i + 4] - q[i + 1], q[i + 5] - q[i + 2]], e2 = [q[i + 6] - q[i], q[i + 7] - q[i + 1], q[i + 8] - q[i + 2]]; s += Math.hypot(e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]) / 2; }
+    return n + s;
+  }, 0);
+  assert.ok(Math.abs(area(split) - area(plain)) < 0.05, `${area(split)} vs ${area(plain)}`);
+  const p = split.panels.find(q => q.index === g.split!.panel)!, right = split.group.children.find(m => m.name === `wall/${slot}`) as any;
+  const q = right.geometry.attributes.position.array as Float32Array;
+  for (let i = 0; i < q.length; i += 3) assert.ok((q[i] - p.o[0]) * p.r[0] + (q[i + 1] - p.o[1]) * p.r[1] + (q[i + 2] - p.o[2]) * p.r[2] >= g.split!.uM - 0.01);
 });
