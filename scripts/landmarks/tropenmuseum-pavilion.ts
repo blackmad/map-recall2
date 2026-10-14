@@ -1,6 +1,6 @@
 import * as T from 'three';
 import type {PanelCtx} from '../../src/canalRecall/blockBuilding/compose';
-import {anchorIron, archHead, archRing, extrude, FRAME, geom, proudWindow, shapeOf, IRON, GLASS, KitStats, opening, solid, STONE} from './tropenmuseum-kit';
+import {anchorIron, archHead, archRing, extrude, FRAME, geom, lionMask, proudWindow, shapeOf, IRON, GLASS, KitStats, opening, solid, STONE} from './tropenmuseum-kit';
 import facades from './tropenmuseum-facades.json';
 
 /**
@@ -109,7 +109,7 @@ export function pavilionFace(c: PanelCtx, stats: KitStats, w: PavilionWall, opt:
     slab(s0, s1, y0, y0 + (y1 - y0) * 0.35, 0.2);
     dentils(s0 + 0.1, s1 - 0.1, y0 + (y1 - y0) * 0.35, y0 + (y1 - y0) * 0.65, 0.28);
     slab(s0 - 0.05, s1 + 0.05, y0 + (y1 - y0) * 0.65, y1, 0.34);
-    for (const [a, b] of [[cs0, cs0 + 0.8], [cs1 - 0.8, cs1]] as Pair[]) slab(a, b, y0, y1 + 0.1, 0.4);   // console blocks (the lion masks are not modelled)
+    for (const [a, b] of [[cs0, cs0 + 0.8], [cs1 - 0.8, cs1]] as Pair[]) { slab(a, b, y0, y1 + 0.1, 0.4); lionMask(c, U((a + b) / 2), y0 + (y1 - y0) * 0.5, 0.4, 0.4, part); }   // console blocks with their lion masks
   }
   if (w.stage && w.cornice) pavilionStage(c, stats, w, w.cornice.y[1]);
   stats.drawn.push(`${what}: souterrain, string course, ${w.floors.length} floors, reliefs, anchors${w.cornice ? ', dentil cornice' : ''}`);
@@ -197,6 +197,8 @@ export function pavilionStage(c: PanelCtx, stats: KitStats, w: PavilionWall, yc:
   const B = STAGE.bigCornice;
   slab(f0, f1, B.slabLow[0], B.slabLow[1], 0.28);
   for (let s = f0 + 0.2; s + B.blockW < f1; s += B.pitch) slab(s, s + B.blockW, B.blocks[0], B.blocks[1], 0.42);
+  // lion masks on the console blocks nearest the quarter points of the face (the stage cornice has one per bay axis in the crops)
+  if (!o.proud) for (const q of [0.25, 0.75]) { const s = Math.round((f0 + (f1 - f0) * q - f0 - 0.2) / B.pitch) * B.pitch + f0 + 0.2; lionMask(c, U(s + B.blockW / 2), yc + (B.blocks[0] + B.blocks[1]) / 2, 0.42, 0.4, part); }
   slab(f0 - 0.05, f1 + 0.05, B.slabHigh[0], B.slabHigh[1], 0.6);
   if (!clock) { mark('cornice', t); stats.drawn.push(`${what}: ${marks.join(', ')} (total ${c.mesh.triangles - t0})`); return; }
   const P = STAGE.clockPanel;
