@@ -963,7 +963,7 @@
         ],
         "max": [
           1.723803162574768,
-          2.745000123977661,
+          2.7699999809265137,
           2.819666624069214
         ]
       },
@@ -979,18 +979,18 @@
       },
       "extent": {
         "widthMetres": 6.0489561557769775,
-        "heightMetres": 2.745000123977661,
+        "heightMetres": 2.7699999809265137,
         "depthMetres": 3.246485710144043,
         "depthCoverage": 0.9548487382776597
       },
-      "triangles": 4836,
-      "bytes": 53800,
+      "triangles": 5852,
+      "bytes": 60344,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "82f4b88017100004",
+        "sourceHash": "705002e5ff4d04dd",
         "buildVersion": 2,
-        "bytes": 25964,
-        "triangles": 1218
+        "bytes": 25040,
+        "triangles": 1154
       }
     },
     "stadhuis": {
@@ -1141,7 +1141,7 @@
         ],
         "max": [
           0.4357823431491852,
-          2.930000066757202,
+          2.990000009536743,
           0.4357823431491852
         ]
       },
@@ -1157,12 +1157,12 @@
       },
       "extent": {
         "widthMetres": 0.8715646862983704,
-        "heightMetres": 2.9300000786781313,
+        "heightMetres": 2.9900000214576723,
         "depthMetres": 0.8715646862983704,
         "depthCoverage": 1.245092408997672
       },
-      "triangles": 680,
-      "bytes": 9036,
+      "triangles": 582,
+      "bytes": 9204,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "westerkerk": {
@@ -49188,6 +49188,9 @@
       "assetKind": "memorial",
       "materialOverrides": {
         "bronze": "#2e312d",
+        "dark": "#141715",
+        "ochre": "#5c6556",
+        "slate": "#4b554a",
         "concrete": "#8e8f8c",
         "sandstone": "#8a3a36",
         "white": "#e2dccb"
@@ -49209,7 +49212,7 @@
         ],
         "max": [
           0.6408563852310181,
-          2.9884774684906006,
+          2.9784774780273438,
           0.6408563852310181
         ]
       },
@@ -49225,12 +49228,12 @@
       },
       "extent": {
         "widthMetres": 1.2817127704620361,
-        "heightMetres": 2.988477467820048,
+        "heightMetres": 2.9784774773567912,
         "depthMetres": 1.2817127704620361,
         "depthCoverage": 0.9155091217585973
       },
-      "triangles": 1604,
-      "bytes": 26796,
+      "triangles": 2396,
+      "bytes": 35696,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "walraven-van-hall": {
@@ -51704,7 +51707,7 @@
         ],
         "max": [
           4.181951999664307,
-          2.994999885559082,
+          2.9475505352020264,
           4.112924098968506
         ]
       },
@@ -51720,18 +51723,18 @@
       },
       "extent": {
         "widthMetres": 7.849419593811035,
-        "heightMetres": 2.994999897480011,
+        "heightMetres": 2.9475505471229555,
         "depthMetres": 5.156344294548035,
         "depthCoverage": 1.1209444118582685
       },
-      "triangles": 11524,
-      "bytes": 114068,
+      "triangles": 14306,
+      "bytes": 134044,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "46ed1052706b578e",
+        "sourceHash": "d1d0e32949f7736b",
         "buildVersion": 2,
-        "bytes": 38284,
-        "triangles": 1820
+        "bytes": 46468,
+        "triangles": 2231
       }
     },
     "theo-thijssen-standbeeld": {
@@ -52006,7 +52009,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.675000011920929,
+          -0.7181138396263123,
           4.7683716530855236e-08,
           -0.574999988079071
         ],
@@ -52027,13 +52030,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.350000023841858,
+        "widthMetres": 1.3931138515472412,
         "heightMetres": 3.459999990463256,
         "depthMetres": 1.149999976158142,
         "depthCoverage": 0.9583333134651184
       },
-      "triangles": 1968,
-      "bytes": 19164,
+      "triangles": 2766,
+      "bytes": 26628,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "kinderbrug-jongen-konijnen": {
@@ -52104,8 +52107,8 @@
         "depthMetres": 1.149999976158142,
         "depthCoverage": 0.9583333134651184
       },
-      "triangles": 1272,
-      "bytes": 13724,
+      "triangles": 1472,
+      "bytes": 15812,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

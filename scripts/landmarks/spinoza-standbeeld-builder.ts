@@ -83,14 +83,17 @@ export function buildSpinozaStandbeeld(_w: number, _d: number, b: BuildingTools)
     box(FX, hy - 0.015, hz + 0.125, 0.03, 0.08, 0.04, 'bronze');                                                         // nose
     box(FX, hy - 0.075, hz + 0.115, 0.07, 0.02, 0.03, 'bronze');                                                         // mouth line
     ball(FX, hy - 0.115, hz + 0.08, 0.04, 0.035, 0.04, 'bronze', 6);                                                     // chin
-    // shoulder-length curls: three heavy overlapping curls down each side, a mass across the nape (none over the face)
-    for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) {
-      const y = hy - 0.02 - k * 0.1, r = 0.12 + k * 0.025;
-      ball(FX + sx * r, y, hz - 0.02 - k * 0.015, 0.075, 0.075, 0.08, 'bronze', 7);
+    // shoulder-length curly hair as one smooth, overlapping mass (no gaps, no free-standing lobes): a cap swept back from the forehead,
+    // a wide fall behind to the collar, a long fall over each ear, sideburn curls framing the face, a ruffled hem of small curls on the nape
+    ball(FX, hy + 0.03, hz - 0.045, 0.145, 0.16, 0.15, 'bronze', 14);                                                    // cap over the skull
+    ball(FX, hy - 0.11, hz - 0.095, 0.158, 0.23, 0.085, 'bronze', 14);                                                   // fall behind the head
+    ball(FX, hy - 0.27, hz - 0.085, 0.165, 0.11, 0.08, 'bronze', 12);                                                    // lower fall resting on the collar
+    for (const sx of [-1, 1]) {
+      ball(FX + sx * 0.128, hy - 0.1, hz - 0.03, 0.058, 0.18, 0.1, 'bronze', 12);                                        // fall over the ear
+      ball(FX + sx * 0.108, hy - 0.04, hz + 0.05, 0.03, 0.085, 0.04, 'bronze', 8);                                       // sideburn curl
+      ball(FX + sx * 0.12, hy - 0.26, hz - 0.045, 0.062, 0.07, 0.07, 'bronze', 8);                                       // curled end on the shoulder
     }
-    for (let k = 0; k < 3; k++) ball(FX, hy - 0.02 - k * 0.1, hz - 0.115 - k * 0.02, 0.15, 0.07, 0.07, 'bronze', 8);
-    ball(FX, hy + 0.07, hz - 0.03, 0.13, 0.06, 0.13, 'bronze', 8);                                                      // crown curls
-    ball(FX, hy - 0.06, hz - 0.075, 0.15, 0.17, 0.1, 'bronze', 8);                                                      // hair mass behind the head
+    for (let k = -2; k <= 2; k++) ball(FX + k * 0.058, hy - 0.335, hz - 0.1 + Math.abs(k) * 0.01, 0.036, 0.04, 0.04, 'bronze', 7);   // nape curls
   }
   // ---- about a dozen small birds (parakeets and sparrows) perched on the cloak, mostly on the lower half: body, head, tail hanging down
   const birds: [number, number, number][] = [[-0.4, 0.2, 1], [0.5, 0.28, 0.9], [-1.1, 0.4, 1], [1.3, 0.5, 1.1], [0.1, 0.62, 0.9], [-0.7, 0.75, 1], [2.1, 0.35, 1], [-2.0, 0.6, 0.9], [0.9, 0.95, 1], [-1.6, 1.05, 1.1], [1.7, 1.2, 0.9], [-0.1, 1.28, 1], [2.6, 0.7, 1], [-2.6, 0.25, 1]];

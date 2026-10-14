@@ -16,6 +16,8 @@ export interface BustOptions {
   bow?: boolean; glasses?: boolean; collar?: boolean;
   /** Hair: 'short', 'wave' (curled to the nape and ears), 'bald'. */
   hair?: 'short' | 'wave' | 'bald';
+  /** Modelled face: eyes under the brow, cheeks, nose tip and wings, upper and lower lip, fringe, and (women) a pearl necklace. */
+  detail?: boolean;
   colour: Colour;
 }
 
@@ -62,6 +64,21 @@ export function bust(f: Frame, o: BustOptions) {
       sph(0.09, 0.09, 0.06, 0, hy - 0.01, -0.08, 8);
     } else sph(0.094, 0.085, 0.07, 0, hy - 0.005, -0.07, 8);
   }
+  if (o.detail) {
+    for (const sx of [-1, 1]) {
+      sph(0.014, 0.011, 0.012, sx * 0.04, hy + 0.012, 0.098, 6);                       // eyes under the brow
+      sph(0.03, 0.026, 0.024, sx * 0.058, hy - 0.04, 0.078, 7);                         // cheeks
+      sph(0.012, 0.012, 0.014, sx * 0.02, hy - 0.04, 0.118, 5);                        // nose wings
+      sph(0.007, 0.007, 0.01, sx * 0.03, hy - 0.066, 0.1, 4);                          // mouth corners, lifted
+    }
+    sph(0.02, 0.018, 0.022, 0, hy - 0.04, 0.128, 6);                                    // nose tip
+    bx(0.052, 0.009, 0.016, 0, hy - 0.063, 0.108); bx(0.044, 0.011, 0.016, 0, hy - 0.077, 0.106);   // upper and lower lip
+    if (hair !== 'bald') for (const sx of [-1, 1]) sph(0.05, 0.026, 0.04, sx * 0.045, hy + 0.078, 0.075, 6);   // fringe swept to both sides
+    if (woman) for (let k = 0; k < 11; k++) {                                          // pearls
+      const a = (k / 10 - 0.5) * 2.5;
+      sph(0.0095, 0.0095, 0.0095, Math.sin(a) * 0.078, 0.409 - 0.014 * Math.cos(a), Math.cos(a) * 0.078 + 0.008, 4);
+    }
+  }
   if (!woman) {
     for (const sx of [-1, 1]) rod([sx * 0.04, 0.34, 0.138], [sx * 0.12, 0.1, 0.14], 0.016);
     if (o.bow) {
@@ -78,14 +95,16 @@ export interface HeadOptions {
   /** Heading of the face in the local frame (radians, 0 faces +z, positive towards +x). */
   turn?: number; scale?: number;
   sex?: 'm' | 'f'; glasses?: boolean; hair?: 'short' | 'wave' | 'bald' | 'wild'; moustache?: boolean;
+  /** Tone of the hair and (with `neck`) a separate neck, so hair, face and collar read apart within one bronze. */
+  hairColour?: Colour; neck?: Colour; neckR?: number;
   colour: Colour;
 }
 
 /** A modelled head with brow, nose, ears, chin and hair, to put on a figure-kit body in place of the kit's pointed 6 x 3 sphere. */
 export function portraitHead(f: Frame, o: HeadOptions) {
   const s = o.scale ?? 1, turn = o.turn ?? 0, woman = o.sex === 'f';
-  const add = (g: T.BufferGeometry, x: number, y: number, z: number) => { g.scale(s, s, s); g.translate(x * s, y * s, z * s); g.rotateY(turn); f.put(g, o.x, o.y, o.z, o.colour); };
-  const sph = (rx: number, ry: number, rz: number, x: number, y: number, z: number, seg = 10) => { const g = new T.SphereGeometry(1, seg, Math.max(5, seg - 3)); g.scale(rx, ry, rz); add(g, x, y, z); };
+  const add = (g: T.BufferGeometry, x: number, y: number, z: number, col: Colour = o.colour) => { g.scale(s, s, s); g.translate(x * s, y * s, z * s); g.rotateY(turn); f.put(g, o.x, o.y, o.z, col); };
+  const sph = (rx: number, ry: number, rz: number, x: number, y: number, z: number, seg = 10, col?: Colour) => { const g = new T.SphereGeometry(1, seg, Math.max(5, seg - 3)); g.scale(rx, ry, rz); add(g, x, y, z, col); };
   const bx = (w: number, h: number, d: number, x: number, y: number, z: number) => add(new T.BoxGeometry(w, h, d), x, y, z);
   sph(0.092, 0.118, 0.105, 0, 0, 0.012, 12);
   sph(0.05, 0.04, 0.045, 0, -0.095, 0.05, 8);
@@ -94,12 +113,13 @@ export function portraitHead(f: Frame, o: HeadOptions) {
   for (const sx of [-1, 1]) sph(0.012, 0.03, 0.02, sx * 0.094, -0.01, 0, 6);
   if (o.glasses) { for (const sx of [-1, 1]) bx(0.058, 0.045, 0.014, sx * 0.04, 0.012, 0.108); bx(0.03, 0.01, 0.014, 0, 0.025, 0.108); }
   if (o.moustache) bx(0.07, 0.014, 0.02, 0, -0.058, 0.108);
+  const hc = o.hairColour;
   const hair = o.hair ?? (woman ? 'wave' : 'short');
   if (hair !== 'bald') {
-    sph(0.098, 0.082, 0.112, 0, 0.05, -0.005, 10);
-    if (hair === 'wave') { for (const sx of [-1, 1]) for (let k = 0; k < 2; k++) sph(0.03, 0.04, 0.05, sx * (0.098 - k * 0.006), -0.01 - k * 0.055, -0.01 - k * 0.012, 6); sph(0.09, 0.09, 0.06, 0, -0.01, -0.08, 8); }
-    else if (hair === 'wild') { for (let k = 0; k < 5; k++) sph(0.04, 0.035, 0.04, (k - 2) * 0.045, 0.1 - Math.abs(k - 2) * 0.012, 0.02, 6); sph(0.094, 0.085, 0.07, 0, -0.005, -0.07, 8); }
-    else sph(0.094, 0.085, 0.07, 0, -0.005, -0.07, 8);
+    sph(0.098, 0.082, 0.112, 0, 0.05, -0.005, 10, hc);
+    if (hair === 'wave') { for (const sx of [-1, 1]) for (let k = 0; k < 2; k++) sph(0.03, 0.04, 0.05, sx * (0.098 - k * 0.006), -0.01 - k * 0.055, -0.01 - k * 0.012, 6, hc); sph(0.09, 0.09, 0.06, 0, -0.01, -0.08, 8, hc); }
+    else if (hair === 'wild') { for (let k = 0; k < 5; k++) sph(0.04, 0.035, 0.04, (k - 2) * 0.045, 0.1 - Math.abs(k - 2) * 0.012, 0.02, 6, hc); sph(0.094, 0.085, 0.07, 0, -0.005, -0.07, 8, hc); }
+    else sph(0.094, 0.085, 0.07, 0, -0.005, -0.07, 8, hc);
   }
 }
 
@@ -110,6 +130,6 @@ export function headOnFigure(f: Frame, fig: ReturnType<Frame['figure']>, o: Omit
   const c = Math.cos(-f.yaw), s = Math.sin(-f.yaw);
   const lx = dir.x * c + dir.z * s, lz = -dir.x * s + dir.z * c;
   const n = fig.joints.neck;
-  f.limb([n.x, n.y - 0.03, n.z], [h.x, h.y - 0.05, h.z], 0.068, 0.058, o.colour, 8);                 // neck
+  f.limb([n.x, n.y - 0.03, n.z], [h.x, h.y - 0.05, h.z], (o.neckR ?? 0.068), (o.neckR ?? 0.068) * 0.85, o.neck ?? o.colour, 8);                 // neck
   portraitHead(f, {...o, x: h.x, y: h.y, z: h.z, turn: Math.atan2(lx, lz)});
 }
