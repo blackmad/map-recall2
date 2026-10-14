@@ -68,6 +68,7 @@ if (profiling) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.set
 await page.waitForTimeout(6000);
 const start = await page.evaluate(() => ({x: canalRecallGame.player.x, y: canalRecallGame.player.y}));
 await cdp.send('Emulation.setCPUThrottlingRate', {rate: device === 'touch' ? 4 : 1});
+if (process.env.LAYER_TIMES) await page.evaluate(mode => { window.__layerTimes = mode === 'gpu' ? 'gpu' : true; }, process.env.LAYER_TIMES);
 const tStart = await page.evaluate((noWrap) => {
   const w = window, game = canalRecallGame, vm = game.vectorMap, map = vm.map;
   const P = w.__own = {frames: [], methods: {}, loaf: [], heap: []};
@@ -119,6 +120,38 @@ const tStart = await page.evaluate((noWrap) => {
     }
   }
   map._render = timed('maplibre._render', 'maplibre', map._render, map);
+  // LAYER_TIMES=1: MapLibre's own render by style layer (painter.renderLayer: CPU ms and draw calls per layer per
+  // frame, all render passes; custom layers included but already timed above). GPU time is not in it.
+  // With LAYER_TIMES=gpu each call is also wrapped in an EXT_disjoint_timer_query_webgl2 query (GPU ms per layer,
+  // collected as the queries resolve; disjoint results are dropped).
+  if (w.__layerTimes) {
+    const painter = map.painter, renderLayer = painter.renderLayer, glc = painter.context.gl;
+    const ext = w.__layerTimes === 'gpu' ? glc.getExtension('EXT_disjoint_timer_query_webgl2') : null;
+    const queries = [], free = [];
+    P.gpu = {};
+    P.gpuPoll = () => {
+      if (!ext) return;
+      const disjoint = glc.getParameter(ext.GPU_DISJOINT_EXT);
+      while (queries.length) {
+        const [q, id] = queries[0];
+        if (!glc.getQueryParameter(q, glc.QUERY_RESULT_AVAILABLE)) break;
+        queries.shift();
+        const ns = glc.getQueryParameter(q, glc.QUERY_RESULT);
+        if (!disjoint) { const e = P.gpu[id] || (P.gpu[id] = [0, 0]); e[0] += ns / 1e6; e[1]++; }
+        free.push(q);
+      }
+    };
+    painter.renderLayer = function (...a) {
+      const s = performance.now(), d0 = cur.gl.draws, id = a[2]?.id ?? '?';
+      const q = ext ? (free.pop() || glc.createQuery()) : null;
+      if (q) glc.beginQuery(ext.TIME_ELAPSED_EXT, q);
+      try { return renderLayer.apply(this, a); } finally {
+        if (q) { glc.endQuery(ext.TIME_ELAPSED_EXT); queries.push([q, id]); }
+        const lt = cur.layers || (cur.layers = {});
+        const e = lt[id] || (lt[id] = [0, 0]); e[0] += performance.now() - s; e[1] += cur.gl.draws - d0;
+      }
+    };
+  }
   // GL work, counted on the one context MapLibre and every three.js renderer share.
   const gl = map.painter.context.gl;
   const tri = (mode, count) => mode === 4 ? count / 3 : (mode === 5 || mode === 6) ? Math.max(0, count - 2) : 0;
@@ -144,9 +177,10 @@ const tStart = await page.evaluate((noWrap) => {
   const tick = () => {
     const now = performance.now();
     const tbs = tb();
-    P.frames.push({t: now, dt: now - last, ab: w.__abMode ?? null, owners: cur.owners, calls: cur.calls, gl: cur.gl, chunks: tbs?.chunks?.size ?? 0, pending: tbs?.pending?.length ?? 0, redraws: vm._sharedFrame?.shadowRedraws ?? null});
+    P.frames.push({t: now, dt: now - last, ab: w.__abMode ?? null, layers: cur.layers, owners: cur.owners, calls: cur.calls, gl: cur.gl, chunks: tbs?.chunks?.size ?? 0, pending: tbs?.pending?.length ?? 0, redraws: vm._sharedFrame?.shadowRedraws ?? null});
     cur = {owners: {}, calls: {}, gl: {draws: 0, tris: 0, tex: 0, texMB: 0, bufMB: 0, compile: 0, link: 0}};
     last = now;
+    P.gpuPoll?.();
     if (P.frames.length % 60 === 0 && performance.memory) P.heap.push(+(performance.memory.usedJSHeapSize / 1048576).toFixed(1));
     if (!w.__stop) requestAnimationFrame(tick);
   };
@@ -234,7 +268,17 @@ const ab = !(process.env.AB_ON && process.env.AB_OFF) ? null : Object.fromEntrie
   return [name, {n: fs_.length, median: r2(pick(d, .5)), p95: r2(pick(d, .95)), ownedMsPerFrame: r2(sum(fs_.map(f => sum(Object.values(f.owners)))) / fs_.length),
     drawCallsMedian: pick(fs_.map(f => f.gl.draws), .5), owners: own}];
 }));
-const result = {label, view, device, qs, at: new Date().toISOString(), noWrap: !!process.env.NO_WRAP, ab,
+let layerTimes = null;
+if (process.env.LAYER_TIMES) {
+  const style = await page.evaluate(() => Object.fromEntries(canalRecallGame.vectorMap.map.getStyle().layers.map(l => [l.id, {type: l.type, source: l.source, sourceLayer: l['source-layer'], minzoom: l.minzoom}])));
+  const acc = {};
+  for (const f of frames) for (const [id, [ms, draws]] of Object.entries(f.layers || {})) { const e = acc[id] || (acc[id] = {ms: 0, draws: 0, frames: 0}); e.ms += ms; e.draws += draws; e.frames++; }
+  const gpu = raw.P.gpu || {};
+  layerTimes = Object.entries(acc).map(([id, e]) => ({id, ...style[id], msPerFrame: +(e.ms / frames.length).toFixed(3), drawsPerFrame: +(e.draws / frames.length).toFixed(1), framesDrawn: e.frames,
+    ...(gpu[id] ? {gpuMsPerCall: +(gpu[id][0] / gpu[id][1]).toFixed(4), gpuCalls: gpu[id][1], gpuMsPerFrame: +(gpu[id][0] / frames.length).toFixed(3)} : {})}))
+    .sort((a, b) => b.msPerFrame - a.msPerFrame);
+}
+const result = {label, view, device, qs, at: new Date().toISOString(), noWrap: !!process.env.NO_WRAP, ab, layerTimes,
   frames: {n: dts.length, median: r2(pick(dts, .5)), p95: r2(pick(dts, .95)), p99: r2(pick(dts, .99)), mean: r2(sum(dts) / dts.length), over33: dts.filter(d => d > 33).length, over50: dts.filter(d => d > 50).length, over100: dts.filter(d => d > 100).length},
   ownedMsPerFrame: r2(sum(frames.map(f => sum(Object.values(f.owners)))) / frames.length),
   ownedP99Ms: r2(pick(frames.map(f => sum(Object.values(f.owners))), .99)), ownedMaxMs: r2(Math.max(...frames.map(f => sum(Object.values(f.owners))))),
