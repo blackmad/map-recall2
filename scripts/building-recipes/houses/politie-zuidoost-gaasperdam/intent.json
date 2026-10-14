@@ -18,5 +18,6 @@
     "Not modelled: the red columns and the full-width red roof overhang (no component for either; entrance.canopy is a single-entrance canopy and would not match), the grey spandrel panels (modelled as one curtain wall).",
     "No striped band, blue lamp, POLITIE lettering or garage doors are visible on this front, so police components and signage are not used.",
     "Other walls (north, east, south and the small wings) have no panorama in the cache and are left to otherWalls (blank)."
-  ]
+  ],
+ "layeredKit": true
 }

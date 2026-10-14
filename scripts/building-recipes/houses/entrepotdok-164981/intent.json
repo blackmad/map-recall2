@@ -88,7 +88,7 @@
    "frames": false,
    "arches": {
     "ground": "round",
-    "band": "brick"
+    "band": "none"
    },
    "hoist": {
     "bays": [
@@ -137,7 +137,7 @@
    "sills": false,
    "frames": false,
    "hoist": {
-    "every": 3,
+    "every": 6,
     "first": 1
    }
   },
@@ -155,7 +155,7 @@
    "frames": false,
    "arches": {
     "windows": "segmental",
-    "band": "brick"
+    "band": "none"
    }
   }
  ],
@@ -174,5 +174,6 @@
   "The rest of the canal front (0-47.7 m and 84.8-156.5 m, walls[2]) was converted with rectangular glazed loading stacks and white slab sills; modelled as a 33-bay grid with a rectangular loading door on a stone sill every third bay (the real stacks are irregular, two per warehouse in places). Its ground floor is drawn as windows; the photos show garden doors, a few small arched doors, and the board ELBURG over a rectangular door near 87 m (not modelled: that door is in the rectangular-hoist group, whose ground has no portals).",
   "Rear (Laagte Kadijk side, the panel of surfaces 134/135/151) from the 2017-03-23 panorama: windows with segmental brick heads, modelled as narrow segmental-arched windows on 13 bays. The other rear and courtyard walls, the SE modern rendered block (light render in the 2021 photo w04-120) and the NW end are blank: the 12k triangle budget is spent on the canal front (11,156 triangles).",
   "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping)."
- ]
+ ],
+ "layeredKit": true
 }
