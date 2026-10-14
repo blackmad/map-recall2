@@ -50779,7 +50779,7 @@
         "min": [
           -75.11699676513672,
           0,
-          -50.94512176513672
+          -51.17261505126953
         ],
         "max": [
           114.73087310791016,
@@ -50800,17 +50800,17 @@
       "extent": {
         "widthMetres": 189.84786987304688,
         "heightMetres": 45.29999923706055,
-        "depthMetres": 93.25512313842773,
-        "depthCoverage": 0.7331377605222306
+        "depthMetres": 93.48261642456055,
+        "depthCoverage": 0.7349262297528345
       },
-      "triangles": 31692,
-      "bytes": 473688,
+      "triangles": 31684,
+      "bytes": 474472,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "beafea5dd1e2d6df",
+        "sourceHash": "ef66336caa5bcafb",
         "buildVersion": 2,
-        "bytes": 128676,
-        "triangles": 7350
+        "bytes": 128600,
+        "triangles": 7416
       }
     },
     "roeterseiland-rec-a": {

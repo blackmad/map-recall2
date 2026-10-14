@@ -57,7 +57,7 @@ const has = (p: Panel, ...ids: number[]) => surfacesOf(p).some(x => ids.includes
 
 
 /** Museum corner pavilions (panels 322, 330, 152): relief friezes, anchors, clock dials. */
-const PAVILIONS: {surfaces: number[]; dial: boolean}[] = [{surfaces: [379], dial: true}, {surfaces: [388], dial: false}, {surfaces: [168], dial: true}];
+const PAVILIONS: {surfaces: number[]; dial: boolean}[] = [{surfaces: [379], dial: false}, {surfaces: [388], dial: false}, {surfaces: [168], dial: false}];
 /** Single-peak gable walls the street sees (gables.ts survey): crowned with piers, balls and an apex finial; `statue` for the broad ones. */
 const GABLES: {surfaces: number[]; statue: boolean}[] = [
   {surfaces: [210, 283], statue: true}, {surfaces: [151, 154], statue: true}, {surfaces: [148, 233], statue: true}, {surfaces: [119, 776], statue: false},
