@@ -74,7 +74,7 @@ export interface LargeBuildingRecipe {
   panelSystem?: Record<number, string>;
   /** roof lanterns (`walls[].lantern`), local metres; only present when a group asks for one */
   lanterns?: Lantern[];
-  /** wall and arch-ring slots of the groups in `intent.measured.groups`: exported with `tintSource: 'measured'` so the look keeps their measured colour (only present when the intent has a measured record) */
+  /** wall, arch-ring and own glass slots of the groups in `intent.measured.groups`: exported with `tintSource: 'measured'` so the look keeps their measured colour (only present when the intent has a measured record) */
   measuredSlots?: string[];
   /** recipe material slot per block-kit wall slot of a group with its own `wallMaterial` (only present when a group sets one) */
   slotMaterial?: Record<string, string>;
@@ -319,8 +319,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
   const otherLines = storeyLines(otherTop, true, undefined, civicM, year !== null && year < 1945 ? 1.15 : 1, otherTop);
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
-  // Measured groups (intent `measured`): their own wall and arch-ring slots carry the measured colour into the look.
-  const measuredSlots = [...new Set((intent.measured?.groups ?? []).flatMap(gi => { const g = groups[gi]; return !g ? [] : [g.slots.wall, `arch@g${gi}`].filter(sl => sl !== 'wall' && palette[sl] !== undefined); }))];
+  // Measured groups (intent `measured`): their own wall, arch-ring and glass slots carry the measured colour into the look.
+  const measuredSlots = [...new Set((intent.measured?.groups ?? []).flatMap(gi => { const g = groups[gi]; return !g ? [] : [g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined); }))];
   const unlistedSurfaces = set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
   const spec: BlockSpec = {id: intent.id, pandId: intent.pandId, name: intent.address, palette, levels: {groundM: civicM, storeyM: civicM}, systems, default: 'other', roofSlot: 'roof', wallSlot: 'wall'};
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
