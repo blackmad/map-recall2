@@ -45126,9 +45126,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012201637",
       "name": "Grasweg 41S, Amsterdam-Noord (Buiksloterham): 2010 grey-clad industrial block 36 m high with a curved eaves line and sparse small windows, mostly hidden by trees",
-      "hash": "bb6bb51f35bead8cf205f9757b075e165b148dc33707f78ed0b8f38cbf78aa31",
-      "sha256": "bb6bb51f35bead8cf205f9757b075e165b148dc33707f78ed0b8f38cbf78aa31",
-      "bytes": 60900,
+      "hash": "7127cc9afdbfae63b4f55ac3d7462d17f65553232893a0bafe893f2ca369973c",
+      "sha256": "7127cc9afdbfae63b4f55ac3d7462d17f65553232893a0bafe893f2ca369973c",
+      "bytes": 60836,
       "triangles": 680,
       "materials": 7,
       "textures": 0,
@@ -45299,7 +45299,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012201637",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:43:36.335Z"
+      "updatedAt": "2026-10-14T03:07:44.830Z"
     },
     {
       "id": "ordinary-0363100012173447",
