@@ -1,0 +1,115 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "spinozastraat-51-243487",
+ "pandId": "0363100012243487",
+ "address": "Spinozastraat 51 / Sarphatistraat 104, Amsterdam-Centrum (Weesperbuurt): 2017 hotel and apartment block in sand-yellow ceramic brick with deep square window frames and green glazed roof slopes, wrapped round a retained 1890s brick-and-cream corner house and warehouse on the Sarphatistraat",
+ "sources": [
+  {
+   "id": "pano-2023-01-13-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002933_pano_0007_000023/",
+   "image": "staging/pand-reference-walls/0363100012243487/w01-162.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-25-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002542_pano_0000_001497/",
+   "image": "staging/pand-reference-walls/0363100012243487/w02-342.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-24-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001675_pano_0000_006085/",
+   "image": "staging/pand-reference-walls/0363100012243487/w05-341.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    55,
+    9,
+    66,
+    40
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#b89a4a",
+    "frame": "#4a3e32",
+    "stone": "#c8b890"
+   }
+  },
+  {
+   "wallSurfaces": [
+    95
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#b89a4a",
+    "frame": "#4a3e32",
+    "stone": "#c8b890"
+   }
+  },
+  {
+   "wallSurfaces": [
+    50,
+    62
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "cornice": true,
+   "arches": {
+    "windows": "round",
+    "storeys": [
+     0
+    ],
+    "band": "brick"
+   },
+   "palette": {
+    "brick": "#7a5a48",
+    "frame": "#2a2e32",
+    "stone": "#e0d8c0"
+   },
+   "entrance": {
+    "bay": 2
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#b89a4a",
+  "frame": "#4a3e32",
+  "door": "#2a2a2a",
+  "stone": "#c8b890"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Spinozastraat 51 (BAG pand 0363100012243487, built 2017, 250 3DBAG wall surfaces, roof max 21.8 m): a 2017 hotel and apartment block of five to six storeys in sand-yellow glazed brick, with a grid of deep-set square window frames three storeys high on the street fronts and sloping roofs covered in dark green ceramic scales, built round retained 19th-century buildings on the Sarphatistraat (a cream-banded brick corner house with a pedimented dormer attic and a dark brick warehouse with box windows). Photographed: the south front (w01-162, 2023-01-13), the north front (w02-342, 2022-04-25), the east end (w03-122, 2019-05-14), the old corner house (w05-341, 2020-04-24), the north-east round corner (w06-72, 2021-03-19) and the dark brick warehouse (w07-341, 2022-06-10); w04-252 has no panorama within 35 m.",
+  "walls[0] = panel 7 (S, 58.6 m, surfaces 55, 9, 66, 40 at eaves 16.7-16.8; the low wings 56, 41, 46 and 239 are left out because their eaves are 8-11 m): five storeys of sand-yellow brick with a glazed ground and wide deep windows, 8 bays. walls[1] = surface 95 of panel 1 (N, 46 m, eaves 16.7): the same five storeys x 8 bays with a glazed ground. walls[2] = panel 36 (N, surfaces 50 and 62, 17 m, eaves 14.0): the retained corner house, four storeys of brown brick with cream bands drawn as a cornice and arched ground windows with brick arch bands, 4 bays with a recessed entrance in bay 2.",
+  "Simplified: the photographed 3-storey frame grid (double-height window frames with a deep brick reveal) is one wide window per storey and bay, the green ceramic roof slopes are the 3DBAG roof in slate, the pedimented dormers of the old house, its cream stone bands and the warehouse box windows (w07-341) are not modelled. Not drawn: the east wing (panel 17), the round north-east corner, the courtyard walls and the low wings, which stay blank yellow brick; the east front would take 5 more storeys of windows and pushed the model past 12k triangles."
+ ]
+}

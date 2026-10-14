@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "id": "spinozastraat-51-243487",
+ "pand": "0363100012243487",
+ "signature": [
+  "yellow-ceramic-frame-grid",
+  "retained-corner-house"
+ ],
+ "walls": [
+  {
+   "tag": "w01-162",
+   "bearing": 162,
+   "lengthM": 65,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0007_000023",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "yellow-ceramic-frame-grid",
+     "kind": "window-shape",
+     "where": "grid of deep-set square window frames in sand-yellow ceramic brick, glazed ground, green ceramic roof slopes stepping between gables",
+     "approxSizeM": [
+      58,
+      17
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 8 bays wide windows over a glazed ground; the green roofs are 3DBAG roofs in slate",
+     "seenIn": "TMX7316010203-002933_pano_0007_000023"
+    }
+   ]
+  },
+  {
+   "tag": "w02-342",
+   "bearing": 342,
+   "lengthM": 45.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0000_001497",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-yellow-front",
+     "kind": "window-shape",
+     "where": "north front in the same yellow brick frame grid with a glazed ground",
+     "approxSizeM": [
+      46,
+      17
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 5 storeys x 8 bays",
+     "seenIn": "TMX7316010203-002542_pano_0000_001497"
+    }
+   ]
+  },
+  {
+   "tag": "w03-122",
+   "bearing": 122,
+   "lengthM": 24,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001181_pano_0000_004824",
+   "capturedAt": "2019-05-14",
+   "checked": true,
+   "note": "east end of the block: curved yellow brick bay window grid; not drawn (blank wall)",
+   "items": [
+    {
+     "id": "curved-east-end",
+     "kind": "window-shape",
+     "where": "curved east end with tall window frames and roof skylights",
+     "approxSizeM": [
+      24,
+      17
+     ],
+     "plan": "simplified",
+     "how": "left as plain yellow brick on the 3DBAG shell (blank wall); the fifth wall group would exceed 12k triangles",
+     "seenIn": "TMX7316010203-001181_pano_0000_004824"
+    }
+   ]
+  },
+  {
+   "tag": "w05-341",
+   "bearing": 341,
+   "lengthM": 19.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_006085",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "retained-corner-house",
+     "kind": "window-shape",
+     "where": "1890s brick house with cream stone bands, arched entrance and pedimented dormers",
+     "approxSizeM": [
+      19,
+      14
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys x 4 bays, cornice and arched ground windows; the cream stone bands and dormers are not drawn",
+     "seenIn": "TMX7316010203-001675_pano_0000_006085"
+    },
+    {
+     "id": "corner-house-doorway",
+     "kind": "other",
+     "where": "arched entrance doorway of the old house in the central bay",
+     "approxSizeM": [
+      2,
+      4
+     ],
+     "plan": "modelled",
+     "how": "walls[2] entrance in bay 2 of 4 (a recessed glazed door)",
+     "seenIn": "TMX7316010203-001675_pano_0000_006085"
+    }
+   ]
+  },
+  {
+   "tag": "w06-72",
+   "bearing": 72,
+   "lengthM": 14.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0000_000672",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "note": "north-east round corner of the block in the same yellow ceramic brick; not drawn (blank wall)",
+   "items": []
+  },
+  {
+   "tag": "w07-341",
+   "bearing": 341,
+   "lengthM": 12.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002590_pano_0003_000541",
+   "capturedAt": "2022-06-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "warehouse-box-windows",
+     "kind": "window-shape",
+     "where": "dark brick warehouse with small projecting glass box windows set in the wall",
+     "approxSizeM": [
+      12,
+      17
+     ],
+     "plan": "simplified",
+     "how": "left as plain wall on the 3DBAG shell (blank)",
+     "seenIn": "TMX7316010203-002590_pano_0003_000541"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
