@@ -50890,6 +50890,85 @@
         "bytes": 38284,
         "triangles": 1820
       }
+    },
+    "theo-thijssen-standbeeld": {
+      "id": "theo-thijssen-standbeeld",
+      "name": "Theo Thijssen monument (Lindengracht)",
+      "landmarkId": "osm_artwork_250624675",
+      "modelUrl": "./models/theo-thijssen-standbeeld.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8874628,
+          52.3806423
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 1.7,
+        "widthMetres": 1.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.8874628,
+          52.3806423
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM node 250624675 (memorial=statue); figures, desk and block read from Wikimedia Commons photographs (Alf van Beem public domain; Ceescamel CC0); the facing (0 degrees, +-40, from the Commons photo sight line and the plain back in the 2022 panorama) and the dimensions are estimates; the OSM node may be up to 3 m off the block"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#3a3f3c",
+        "greyBrick": "#46494b",
+        "concrete": "#7f8283"
+      },
+      "attribution": {
+        "title": "Theo Thijssen monument - original low-poly reconstruction",
+        "author": "Map Recall; after the 1960 monument by Hans Bayens",
+        "sourceUrl": "https://www.openstreetmap.org/node/250624675",
+        "modifications": "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE"
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.800000011920929,
+          -1.1920929132713809e-08,
+          -0.8453311920166016
+        ],
+        "max": [
+          0.800000011920929,
+          2.6798200607299805,
+          0.6000000238418579
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8874628,
+          52.3806423
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 1.600000023841858,
+        "heightMetres": 2.6798200726509096,
+        "depthMetres": 1.4453312158584595,
+        "depthCoverage": 1.1117932429680457
+      },
+      "triangles": 4936,
+      "bytes": 57684,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6faf541ad5ec9cef",
+        "buildVersion": 2,
+        "bytes": 27932,
+        "triangles": 1314
+      }
     }
   }
 }
