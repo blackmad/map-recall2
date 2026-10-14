@@ -34,6 +34,15 @@ async function bounds(bytes: Uint8Array) {
   }
   return {min: min.map(x => +x.toFixed(3)), max: max.map(x => +x.toFixed(3))};
 }
+/**
+ * A re-install replaces an entry in place. When the old entry is itself a large-recipe install, every field this
+ * script does not own (`bagYear`, `aliases`, ...) is kept; an entry owned here overwrites by key. A hand-built
+ * entry being replaced only hands over the CARRY gallery fields (done by the caller), nothing else.
+ */
+export function mergeReplacedEntry<T extends Record<string, any>>(replaced: Record<string, any> | null, fresh: T): T & Record<string, any> {
+  if (replaced?.source !== 'building-recipes-large') return fresh;
+  return {...replaced, ...fresh};
+}
 const ll = (x: number, y: number) => { const p = rdToLngLat({x, y}); return [+p[0].toFixed(7), +p[1].toFixed(7)] as [number, number]; };
 
 export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}, now = new Date().toISOString()) {
@@ -59,7 +68,7 @@ export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}
     limitations: ['Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.', ...(intent.notes ?? []).filter(n => /not modelled|below the component|not evidenced|not used|blank/i.test(n))],
     reviewState: 'large-recipe-gates-pass', sourceUrls: [`https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${pand}`, 'https://api.data.amsterdam.nl/panorama/'], updatedAt: now,
   };
-  return {entry, replaced: replaced ? {id: replaced.id, modelUrl: replaced.modelUrl, triangles: replaced.triangles} : null, glbPath: path.join(ARTIFACTS, id, 'model.glb')};
+  return {entry: mergeReplacedEntry(replaced, entry), replaced: replaced ? {id: replaced.id, modelUrl: replaced.modelUrl, triangles: replaced.triangles} : null, glbPath: path.join(ARTIFACTS, id, 'model.glb')};
 }
 
 if (process.argv[1]?.endsWith('install-large.ts')) {
