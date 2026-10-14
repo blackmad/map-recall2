@@ -1252,8 +1252,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   tint bypass (`tintSource: 'measured'`), lane C kit vocabulary
   (glazed-hall, glazed-columns, french-window-ledge, measured ribbon
   piers, windowShape, palette.glass; cut openings across coplanar merged
-  surfaces), the texture prototype on Apollohal / Waagdragerhof /
-  Houthavenkade 26 run alongside the kit ("try both"), lane D triage of
+  surfaces), the texture prototype DONE and lost to the kit on all three (HISTORY
+  "Texture prototype"; a fairer second try only if lane C's kit fails
+  likeness: 16 px/m, no posterisation, lit by the look), lane D triage of
   the ~100 installed houses (re-fit / uninstall / bespoke) and
   `ride-visibility.ts` replacing footprint ÷ distance. Held unmerged until
   the likeness pass: `large/dominant-7-20261014` (12 houses) and
