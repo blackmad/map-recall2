@@ -1,0 +1,40 @@
+{
+  "id": "winkler-prins-monument",
+  "name": "Winkler Prins monument (Frederiksplein)",
+  "landmarkId": "osm_artwork_1310554563",
+  "modelUrl": "./models/winkler-prins-monument.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9001164,
+      52.3606387
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 0.8,
+    "widthMetres": 0.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.9001164,
+      52.3606387
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM node 1310554563 (Anthony Winkler Prins, memorial=sculpture); column read from Wikimedia Commons photographs (Brbbl CC BY-SA 3.0 and 4.0; Anefo 923-8960/8961/9119 CC0); height (11 m) and disc diameter (0.72 m) are estimates; rotationally symmetric so no facing"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "frame": "#b9bcba",
+    "greyBrick": "#4a4c4d"
+  },
+  "attribution": {
+    "title": "Winkler Prins monument - original low-poly reconstruction",
+    "author": "Map Recall; after the 1970 monument by Andre Volten",
+    "sourceUrl": "https://www.openstreetmap.org/node/1310554563",
+    "modifications": "Original texture-free low-poly stacked-disc column built from Commons photographs: Monument Anthony Winkler Prins Andre Volten Frederiksplein (Brbbl, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Monument_Anthony_Winkler_Prins_Andr%C3%A9_Volten_Frederiksplein.JPG) and its Detail (CC BY-SA 4.0). No pixels or third-party meshes imported.",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE"
+  }
+}
