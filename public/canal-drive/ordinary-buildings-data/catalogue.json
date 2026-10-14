@@ -28159,10 +28159,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186290",
       "name": "Amstel 142-144 / Amstelstraat 17, Amsterdam: Eden Hotel (OSM nodes 1310911723, 1984268556), BAG 1899",
-      "hash": "63b7e3d84b68e299eddce26134d7fdd4760ebad7bc59108a1ff6cdc75af4bc35",
-      "sha256": "63b7e3d84b68e299eddce26134d7fdd4760ebad7bc59108a1ff6cdc75af4bc35",
-      "bytes": 334804,
-      "triangles": 4049,
+      "hash": "c9c5537e4530880680d795d52a4a6384f04996c4c0056ec842ead74dda183939",
+      "sha256": "c9c5537e4530880680d795d52a4a6384f04996c4c0056ec842ead74dda183939",
+      "bytes": 400824,
+      "triangles": 5013,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -28170,7 +28170,7 @@
         "min": [
           -29.784,
           0,
-          -35.603
+          -35.642
         ],
         "max": [
           44.016,
@@ -28584,7 +28584,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186290",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:25.196Z",
+      "updatedAt": "2026-10-14T03:04:40.152Z",
       "bagYear": 1899
     },
     {
