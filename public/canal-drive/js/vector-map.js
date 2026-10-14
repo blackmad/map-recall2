@@ -612,7 +612,7 @@ class VectorBasemap {
         'fill-extrusion-opacity': BUILDING_FADE_IN
       }
     });
-    this.map.addLayer({ id: 'osm-building-highlight-casing', type: 'line', source: 'osm-building-appearance', minzoom: 14, paint: { 'line-color': window.CanalRecallThree?.highlightAccent?.() || '#ff8033', 'line-width': 3, 'line-opacity': ['case', ['boolean', ['feature-state', 'accent'], false], 1, 0] } }, 'osm-colored-building-ground-floors'); // the highlight's footprint casing (look/highlight.ts)
+    this.map.addLayer({ id: 'osm-building-highlight-casing', type: 'line', source: 'osm-building-appearance', minzoom: 14, layout: { visibility: 'none' }, paint: { 'line-color': window.CanalRecallThree?.highlightAccent?.() || '#ff8033', 'line-width': 3, 'line-opacity': ['case', ['boolean', ['feature-state', 'accent'], false], 1, 0] } }, 'osm-colored-building-ground-floors'); // the highlight's footprint casing (look/highlight.ts)
     // Prefer streamed LoD1 tiles when published; only then fall back to the
     // 5.6 MB static extract (and its basemap de-dupe work). Running both used
     // to hitch the first turn: parse + setData the extract, install a 10k-id
@@ -2545,6 +2545,8 @@ class VectorBasemap {
       threeHighlight = boatId ? [boatId] : this._highlightedBuildings.map(target => target.id);
       kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
     }
+    // The casing outlines accent buildings only: hidden with none, it costs no draw per tile (perf, 2026-10-14).
+    if (this.map.getLayer('osm-building-highlight-casing')) this.map.setLayoutProperty('osm-building-highlight-casing', 'visibility', this._highlightMarker && this._highlightedBuildings.length ? 'visible' : 'none');
     const focus = landmark && landmark.lngLat ? { lngLat: landmark.lngLat, ids: threeHighlight.map(String) } : null;
     if (this._threeBuildings) this._threeBuildings.setHighlighted(threeHighlight, focus);
     this._tileBuildings?.setHighlighted(threeHighlight, focus);
@@ -2797,6 +2799,9 @@ class VectorBasemap {
       this._ownGround.update(subject, introFlat > 0 ? 0 : mapZoom, appliedPitch);
       this._syncOwnGroundConsumers();
     }
+    // Zoom jitter (~1e-8 a frame: cos(lat), float noise) fired MapLibre's `zoom` event, and a full style
+    // re-evaluation, every frame; hold the zoom under 1e-6 (0.0005 px at the screen edge; perf, 2026-10-14).
+    if (Math.abs(cameraOptions.zoom - this.map.getZoom()) < 1e-6) cameraOptions.zoom = this.map.getZoom();
     this.map.jumpTo(cameraOptions);
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
