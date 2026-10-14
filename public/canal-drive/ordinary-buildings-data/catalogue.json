@@ -44957,10 +44957,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012240319",
       "name": "Tilanusstraat 23K, Amsterdam-Oost: 2013 block of red-brick gridded wings and a curved louvred glass tower, round a retained 1900s brick school range",
-      "hash": "fabc95838743ae9af09bf89587d065e8263f681f582412ee1d9599955be5ab78",
-      "sha256": "fabc95838743ae9af09bf89587d065e8263f681f582412ee1d9599955be5ab78",
-      "bytes": 621352,
-      "triangles": 8425,
+      "hash": "4dc2beb551e902ad29b3cca15cb8476920f142d3d7c3b8a43e041141c9fa5e26",
+      "sha256": "4dc2beb551e902ad29b3cca15cb8476920f142d3d7c3b8a43e041141c9fa5e26",
+      "bytes": 600636,
+      "triangles": 8135,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -45111,7 +45111,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012240319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:42:48.619Z"
+      "updatedAt": "2026-10-14T03:14:24.708Z"
     },
     {
       "id": "ordinary-0363100012201637",
