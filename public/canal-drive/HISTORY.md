@@ -1,5 +1,101 @@
 # Canal Recall — what is built
 
+## Bridge regressions on main were two readings, not the bridges (2026-10-14)
+
+Lane `lane/bridge-regressions-20261014`. After the bridges merge met the
+houseboat berths on main, `check:own-ground-belt` reported a NEW finding
+at the Westerdok and the bridge-fidelity e2e failed on the Torensluis
+hump; both branches had passed alone. **Belt audit:** `moorings.ts`
+re-cuts shores near a boat into collinear 0.5 m pieces and the audit
+took at least one sample per segment, so the reviewed Westerdok spot
+went from 16 to 106 samples and its worst sample moved 1.4 m off its
+KNOWN key; with berths off the old audit reproduced the lane's "7
+findings, all KNOWN" exactly. Fix in `ownGround/roadRegressions.ts`:
+`shoreSamples` joins collinear pieces back into one segment before
+sampling every 5 m (identical output without berths), and reviewed quay
+spots match a finding within 15 m (`KNOWN_SPOT_M`, `spotDistanceM`) in
+`scripts/own-ground/audit-belt.ts`; one real new KNOWN entry,
+`quay-flooded:4.90768,52.38468` (ground −2.05 under the default −1.77
+plane on the IJ-side dock quay; a berth cut moved a sample onto it).
+**Torensluis hump:** deck body, deck top and quay walls are byte-identical
+between the lane tip and main (cell build hashed); the e2e took the hump
+from single columns, so on the lane the 28 px came from a railing post
+against the next bridge down the Singel, and on main an orange-outlined
+figure on the crown and streaks at the deck ends tipped the reading to
+−12 px. Fix in `own-ground-bridge-fidelity.spec.ts`: `spanColumns`
+projects the deck-span ends to screen columns and `readMask` takes the
+median top edge over column bands between them, ignoring mask runs under
+6 px, so posts, rails, figures and neighbouring bridges no longer decide
+it (Seven Bridges 138 px, BRU0073 94, BRU0038 11; the lane's 296 was
+also an artefact; the Torensluis reads 4.5–5.5 px against a threshold of
+2, a weak margin); BRU0009 joins the streamed-cell deck regressions in
+`test:own-ground` (crown 1.66 m over the higher end). Checks: belt "8
+findings, all reviewed (KNOWN)", cells, own-ground 78, canal-elevation
+11, census 0 new, both e2e on desktop. Also noted: the bundles committed
+at the bridges lane tip did not match that commit's own source; main's
+bundles match main's source, so the integrator's rebuild was right.
+
+
+## Ground from the terrain everywhere, with a reach test: 312 pands corrected, 98 split-level pands restored (2026-10-14)
+
+Lane `lane/ground-rule-everywhere-20261014`, the follow-up to "3DBAG
+ground outliers". One helper, `pandGroundNap(attributes, terrainAt,
+ringRd)` in `bag3dCityJson.ts`, samples the terrain under and around a
+footprint and applies `trustedGroundNap`; every reader goes through it:
+`readBagBuildings`, `buildingRecipe/facts.ts` (`buildFacts` with
+`terrainAt`, `heights.groundSource: 'terrain'` only when used, so
+ordinary facts are byte-identical; `regroundFacts` / `trustFactsGround`
+for committed facts, used by the recipe compile and large-tier CLIs),
+`blockFace/compile.ts` (`faceFactsOnTrustedGround`; the front-roof
+re-pitch and shell-top lines read `heights.groundNAP`),
+`streetChunks/ground.ts` (`planGround` trusts each house before the
+median), `buildingTypes/facts.ts` (`paramsFromFacts` returns
+`groundNapM`, `build.ts` places houses on it), and
+`facade/sources/netherlands.ts` (pure `bag3dPands` +
+`bag3dMassingRecords`, `fetchMassing({terrainAt})`); CLIs inject
+`sharedTerrain()` from `scripts/lib/terrainField.ts`. **The rule change:**
+the first rule had false positives, among them the main pand of four
+recipes (Stadsloket West, Politie West Overtoomsesluis, Volewijkshof 6,
+Westerdoksdijk 9): the AHN terrain under a footprint is interpolated
+across the building's gap, so a pand on split-level ground (a raised
+deck, a dike, a quay) reads the high side (Stadsloket West: 3DBAG ground
++0.82 NAP on the A10 side street, terrain under it +4.70 from the Bos en
+Lommerplein deck, +0.71 four metres outside the walls). Measured across
+the 410 replaced pands (lowest terrain 4 m outside the walls minus
+3DBAG's ground): 98 within 1.5 m (median ground −0.26 NAP, one on a
+fallback value), 4 between 1.5 and 2 m, the rest 2–12 m with 111 on the
+shared fallback values. `GROUND_REACH_M = 1.5`: 3DBAG's ground is kept
+when the terrain just outside the walls comes within 1.5 m of it; 312
+pands stay on the terrain (Nassaukade 63X 15.57 → 5.42 m, nearest
+outside terrain +0.29 against −9.67), 98 are restored. Unit tests per
+reader on Nassaukade 63X and its ordinary neighbour 0363100012207164
+(fixture `fixtures/bag3d-nassaukade-63x.json` from 3DBAG v20250903),
+Stadsloket West pinned as the split-level case; `streetChunks.test.ts`
+is now in `test:street-rendering-core`. No golden changed: 560 committed
+`facts.json` unchanged, fit-golden 153, 112 meshes, 24 face chunks all
+identical. **Published data** (own commit): `fix-bag-ground-outliers.ts`
+rewritten to sync tiles to the rule with staging, and
+`build-bag-buildings.ts --base=` ran a true `--tiles` rebuild on the
+staged building-tiles that agreed with the patch on every ground change
+(building-tiles come from the OSM merge whose `buildings-osm.geojson` is
+in no checkout, hence patch not full rebuild): building-tiles 66 heights
+in 39 files (64 raised back +3.02..+8.27 m, median +3.35, the split-level
+pands; 2 true outliers lowered −3.26 and −3.68 m that the first patch
+missed because tiles 8412/5383 and 8413/5383 are one compact JSON value),
+bag-tiles 73 features in 38 files, bag-facts 73 descriptors; the two
+frontage-survey tiles pinned by hash rebaked, frontages and
+`profiles.json` unchanged. Not published: the rebuild also fills eaves,
+ridge, roof and year for five pands in 8412/5384 missing since the Jan
+Evertsen re-key (earlier staleness, on the board). Frame:
+`docs/images/live-play-20261014/ground-outlier-canal-before-after.jpg`,
+a 5.4 m courtyard pand behind the Entrepotdok warehouses that poked above
+the roofline before (no Herengracht or Keizersgracht pand among the 312
+has a 5–8 m inflation; the closest were 4.1 and 3.2 m). Checks:
+bag-tiles 22, tile-buildings 18, street-appearance 98, building-recipes
+166, block-face 71, building-types 39, street-rendering-core 69,
+osm-under-models 0.
+
+
 ## Nassaukade 506: the user's benchmark block in the kit; white courses on Kinkerstraat (2026-10-14, user)
 
 Lanes `lane/nassaukade-506-20261014` and the merge lane

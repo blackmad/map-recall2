@@ -7,8 +7,13 @@
  * (NAP) eaves are far tighter (Bilderdijkstraat 156286/156287/155418: 0.08 m),
  * so the chunk re-grounds every house on the median ground height before the
  * fit, then snaps neighbouring eaves that are within a small step to one line.
+ *
+ * The per-pand ground is the trusted one (`trustFactsGround`, the terrain rule
+ * of bag3dCityJson.ts): a failed 3DBAG ground ten metres under the street must
+ * neither stand a house 10 m tall nor drag the street level.
  */
-import type {BuildingFacts} from '../buildingRecipe/facts.ts';
+import {trustFactsGround, type BuildingFacts} from '../buildingRecipe/facts.ts';
+import type {TerrainAt} from '../bag3dCityJson.ts';
 
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 const cm = (v: number) => Math.round(v * 100) / 100;
@@ -49,9 +54,11 @@ export interface GroundPlan {
  * `facts` in street order. `adjacent[i]` = house i and i+1 share a party wall.
  * Re-ground when a house's shift is within `maxRegroundM`; snap runs of
  * adjacent houses whose consecutive eaves differ by at most `snapStepM` and
- * whose overall spread stays within `snapSpanM`.
+ * whose overall spread stays within `snapSpanM`. `terrainAt` (scripts/lib/terrainField.ts) first puts every house on
+ * its trusted ground.
  */
-export function planGround(facts: BuildingFacts[], adjacent: boolean[], maxRegroundM = 1, snapStepM = 0.25, snapSpanM = 0.45): GroundPlan {
+export function planGround(input: BuildingFacts[], adjacent: boolean[], maxRegroundM = 1, snapStepM = 0.25, snapSpanM = 0.45, terrainAt?: TerrainAt | null): GroundPlan {
+  const facts = input.map(f => trustFactsGround(f, terrainAt));
   const sharedNapM = cm(median(facts.map(f => f.heights.groundNAP)));
   const shiftsM = facts.map(f => { const d = f.heights.groundNAP - sharedNapM; return maxRegroundM > 0 && Math.abs(d) <= maxRegroundM ? cm(d) : 0; });
   const grounded = facts.map((f, i) => shiftsM[i] ? shiftFactsHeights(f, shiftsM[i], sharedNapM) : f);

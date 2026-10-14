@@ -14,6 +14,7 @@ import {buildFacts, decodeThreeDBag, type BuildingFacts, type CityJsonItem, type
 import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {perspectiveCrop} from '../street-appearance/perspective.ts';
 import {loadIntent} from './compile.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 
 const arg = (name: string) => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 export const HOUSES = 'scripts/building-recipes/houses';
@@ -99,7 +100,7 @@ export async function prepareFacts(id: string, options: {pand?: string; streets?
     raw = {...JSON.parse((await fetchBytes(url)).toString()), fetchedAt: new Date().toISOString().slice(0, 10)};
     await fs.writeFile(rawFile, JSON.stringify(raw) + '\n');
   }
-  const facts = buildFacts(pandId, raw!, await streets(), frontStreets, toRD, {threeDBag: url, fetchedAt: (raw as any).fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'}, {walls: large});
+  const facts = buildFacts(pandId, raw!, await streets(), frontStreets, toRD, {threeDBag: url, fetchedAt: (raw as any).fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'}, {walls: large, terrainAt: sharedTerrain()});
   if (large) facts.neighboursRD = await neighboursRD(pandId, raw!);
   await fs.writeFile(path.join(dir, 'facts.json'), JSON.stringify(facts, null, 1) + '\n');
   const photos: PanoramaReference[] = [];

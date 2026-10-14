@@ -9,6 +9,7 @@
  * second pipeline.
  */
 import { lngLatToRd, rdToLngLat } from '../rdNew.ts';
+import { pandGroundNap, type TerrainAt } from '../../bag3dCityJson.ts';
 import { amsterdamPanoramas } from './amsterdamPanorama.ts';
 import { openStreetMapSemantics } from './openStreetMap.ts';
 import type {
@@ -119,62 +120,85 @@ export const bag3dMassing: MassingSource = {
   license: 'CC BY 4.0 — 3DBAG, TU Delft',
   vintage: 'api.3dbag.nl collection pand (v2023.10.08 at time of writing)',
 
-  async fetchMassing(bbox: BboxLngLat, crs: ProjectedCrs): Promise<MassingRecord[]> {
+  async fetchMassing(bbox: BboxLngLat, crs: ProjectedCrs, options: { terrainAt?: TerrainAt | null } = {}): Promise<MassingRecord[]> {
     const min = crs.fromLngLat([bbox[0], bbox[1]]);
     const max = crs.fromLngLat([bbox[2], bbox[3]]);
-    const attributes: Record<string, any> = {};
+    const pands = new Map<string, Bag3dPand>();
 
     for (let x = Math.floor(min.x / TILE_M) * TILE_M; x <= max.x; x += TILE_M) {
       for (let y = Math.floor(min.y / TILE_M) * TILE_M; y <= max.y; y += TILE_M) {
         let url: string | null = `https://api.3dbag.nl/collections/pand/items?bbox=${x},${y},${x + TILE_M},${y + TILE_M}&limit=100`;
         while (url) {
           const payload = await fetchJson(url);
-          for (const feature of payload.features ?? []) {
-            for (const [key, object] of Object.entries(feature.CityObjects ?? {}) as Array<[string, any]>) {
-              if (object.type !== 'Building') continue;
-              attributes[key] = object.attributes;
-            }
-          }
+          // A pand on two tiles keeps its first key position and its last copy, as the attribute map did.
+          for (const pand of bag3dPands(payload.features ?? [], payload.metadata?.transform)) pands.set(pand.key, pand);
           url = (payload.links ?? []).find((link: any) => link.rel === 'next')?.href ?? null;
         }
       }
     }
-
-    const number = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null);
-    const roofForm = (raw: unknown): MassingRecord['roofForm'] => {
-      if (raw === 'slanted') return 'pitched';
-      if (raw === 'horizontal') return 'flat';
-      if (raw === 'multiple horizontal') return 'mixed';
-      return 'unknown';
-    };
-
-    const seen = new Set<string>();
-    const records: MassingRecord[] = [];
-    for (const [key, a] of Object.entries(attributes)) {
-      const buildingId = key.replace(/^NL\.IMBAG\.Pand\./, '').split('-')[0];
-      if (seen.has(buildingId)) continue;
-      seen.add(buildingId);
-      records.push({
-        buildingId,
-        storeys: number(a.b3_bouwlagen),
-        roofForm: roofForm(a.b3_dak_type),
-        roofFormRaw: typeof a.b3_dak_type === 'string' ? a.b3_dak_type : null,
-        groundLevel: number(a.b3_h_maaiveld),
-        ...threeBagSurfaceHeights(a),
-        reconstructionError: number(a.b3_rmse_lod22),
-        geometryValid: typeof a.b3_val3dity_lod22 === 'string' ? a.b3_val3dity_lod22 === '[]' : null,
-        sourceQualityFlag: typeof a.b3_kwaliteitsindicator === 'boolean' ? a.b3_kwaliteitsindicator : null,
-        surveyCampaign: typeof a.b3_pw_bron === 'string' ? a.b3_pw_bron : null,
-        surveyYear: number(a.b3_pw_datum),
-        insufficientInput: typeof a.b3_pw_onvoldoende === 'boolean' ? a.b3_pw_onvoldoende : null,
-        groundArea: number(a.b3_opp_grond),
-        exteriorWallArea: number(a.b3_opp_buitenmuur),
-        partyWallArea: number(a.b3_opp_scheidingsmuur),
-      });
-    }
-    return records;
+    return bag3dMassingRecords([...pands.values()], options.terrainAt);
   },
 };
+
+/** One 3DBAG `Building` from the API: its attributes and its LoD0 outer ring in RD New (null when unreadable). */
+export interface Bag3dPand { key: string; attributes: Record<string, any>; ringRd: [number, number][] | null }
+
+/** The `Building` objects of 3DBAG API features (`CityJSONFeature`s sharing the page's `metadata.transform`). */
+export function bag3dPands(features: any[], transform?: { scale: number[]; translate: number[] }): Bag3dPand[] {
+  const out: Bag3dPand[] = [];
+  for (const feature of features) {
+    for (const [key, object] of Object.entries(feature.CityObjects ?? {}) as Array<[string, any]>) {
+      if (object.type !== 'Building') continue;
+      const lod0 = (object.geometry ?? []).find((g: any) => String(g.lod) === '0');
+      const ring: number[] | undefined = lod0?.boundaries?.[0]?.[0];
+      const ringRd = transform && ring?.length && feature.vertices
+        ? ring.map(i => feature.vertices[i]).filter(Boolean).map((v: number[]) => [v[0] * transform.scale[0] + transform.translate[0], v[1] * transform.scale[1] + transform.translate[1]] as [number, number])
+        : null;
+      out.push({ key, attributes: object.attributes, ringRd });
+    }
+  }
+  return out;
+}
+
+/**
+ * Massing records from 3DBAG pands. `groundLevel` is the trusted ground (`pandGroundNap`, bag3dCityJson.ts): 3DBAG's
+ * `b3_h_maaiveld` unless that is a failed estimate under the AHN terrain `terrainAt` reads around the footprint.
+ */
+export function bag3dMassingRecords(pands: Bag3dPand[], terrainAt?: TerrainAt | null): MassingRecord[] {
+  const number = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null);
+  const roofForm = (raw: unknown): MassingRecord['roofForm'] => {
+    if (raw === 'slanted') return 'pitched';
+    if (raw === 'horizontal') return 'flat';
+    if (raw === 'multiple horizontal') return 'mixed';
+    return 'unknown';
+  };
+
+  const seen = new Set<string>();
+  const records: MassingRecord[] = [];
+  for (const { key, attributes: a, ringRd } of pands) {
+    const buildingId = key.replace(/^NL\.IMBAG\.Pand\./, '').split('-')[0];
+    if (seen.has(buildingId)) continue;
+    seen.add(buildingId);
+    records.push({
+      buildingId,
+      storeys: number(a.b3_bouwlagen),
+      roofForm: roofForm(a.b3_dak_type),
+      roofFormRaw: typeof a.b3_dak_type === 'string' ? a.b3_dak_type : null,
+      groundLevel: pandGroundNap(a, terrainAt, ringRd).groundNapM,
+      ...threeBagSurfaceHeights(a),
+      reconstructionError: number(a.b3_rmse_lod22),
+      geometryValid: typeof a.b3_val3dity_lod22 === 'string' ? a.b3_val3dity_lod22 === '[]' : null,
+      sourceQualityFlag: typeof a.b3_kwaliteitsindicator === 'boolean' ? a.b3_kwaliteitsindicator : null,
+      surveyCampaign: typeof a.b3_pw_bron === 'string' ? a.b3_pw_bron : null,
+      surveyYear: number(a.b3_pw_datum),
+      insufficientInput: typeof a.b3_pw_onvoldoende === 'boolean' ? a.b3_pw_onvoldoende : null,
+      groundArea: number(a.b3_opp_grond),
+      exteriorWallArea: number(a.b3_opp_buitenmuur),
+      partyWallArea: number(a.b3_opp_scheidingsmuur),
+    });
+  }
+  return records;
+}
 
 /**
  * The Rijksmonumenten register.

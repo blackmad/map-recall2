@@ -16,10 +16,14 @@ import {paramsFromFacts, roofFactsFromItem, type CityJsonItem, type RoofFacts} f
 import {validateSpec, type TypeSpec} from '../../src/canalRecall/buildingTypes/spec.ts';
 import {writeBakedGlb, writeInstancedGlb, writeMergedGlb, writeTypeGlb, type InstancedGroup, type PlacedInstance} from '../../src/canalRecall/buildingTypes/glb.ts';
 import type {MeshBuilder} from '../../src/canalRecall/buildingTypes/mesh.ts';
+import {lngLatToRd} from '../../src/canalRecall/rdCoordinates.ts';
+import {loadTerrain} from '../lib/terrainField.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const area = arg('area', 'slotermeer-geuzenveld'), dir = path.join('staging/building-types', area);
 const TYPES_DIR = 'src/canalRecall/buildingTypes/types';
+// AHN terrain: eaves, ridge and placement stand on the trusted ground, not a failed 3DBAG ground (bag3dCityJson.ts).
+const terrainAt = loadTerrain();
 const specs = new Map<string, TypeSpec>();
 for (const f of fs.readdirSync(TYPES_DIR).filter(f => f.endsWith('.json'))) { const s = JSON.parse(fs.readFileSync(path.join(TYPES_DIR, f), 'utf8')) as TypeSpec; const e = validateSpec(s); if (e.length) throw new Error(`${f}: ${e.join('; ')}`); specs.set(s.id, s); }
 
@@ -86,7 +90,7 @@ for (const instIn of input.instances) {
   const front0 = frontSide(rect, input.streets), front = o.frontBearingDeg != null ? frontTowardBearing(rect, front0, o.frontBearingDeg) : front0;
   let roof: RoofFacts | null = null;
   try { roof = roofFactsFromItem(await item3d(inst.pandId)); } catch (e) { console.warn('roof facts failed', inst.pandId, (e as Error).message); }
-  const {params, warnings} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode, ...(o.storeys ? {storeys: o.storeys} : {})});
+  const {params, warnings, groundNapM} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode, ...(o.storeys ? {storeys: o.storeys} : {})}, {terrainAt, ringRd: (inst.ringLngLat as number[][]).map(([lng, lat]) => lngLatToRd(lng, lat))});
   // variants.json may pin the wall-top height read from the photo (a flat roof whose 3DBAG median roof height includes a plant box or parapet): storeys then follow the type.
   if (o.eavesM) { params.eavesM = o.eavesM; params.storeys = spec.storeys; warnings.push(`eaves pinned to ${o.eavesM} m from the photo (3DBAG roof height ignored)`); }
   if (front.ambiguous) warnings.push(`front ambiguous (scores ${front.score.toFixed(1)} / ${front.otherScore.toFixed(1)})`);
@@ -96,7 +100,7 @@ for (const instIn of input.instances) {
   const {mesh, report} = generate(spec, params);
   const outOfRange = spec.eavesRangeM && (params.eavesM < spec.eavesRangeM[0] || params.eavesM > spec.eavesRangeM[1]) ? `eaves ${params.eavesM.toFixed(2)} m outside the ${spec.eavesRangeM.join('-')} m of ${spec.id}: not this two-storey design` : undefined;
   const fr = spec.footprintRangeM, outOfFootprint = fr && (params.lengthM < fr.frontage[0] || params.lengthM > fr.frontage[1] || params.widthM < fr.depth[0] || params.widthM > fr.depth[1]) ? `footprint ${params.lengthM.toFixed(2)} x ${params.widthM.toFixed(2)} m outside ${fr.frontage.join('-')} x ${fr.depth.join('-')} m of ${spec.id}: extended or notched house` : undefined;
-  built.push({held: o.hold ?? outOfRange ?? outOfFootprint, pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], inst.attrs.b3_h_maaiveld ?? 0, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
+  built.push({held: o.hold ?? outOfRange ?? outOfFootprint, pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], groundNapM, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
 }
 
 // One street level per chunk, as the street-chunks lane does: every instance stands on y = 0 and the median 3DBAG ground (NAP) is in the asset extras;

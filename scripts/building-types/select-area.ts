@@ -64,7 +64,7 @@ for (const [type, list] of Object.entries(members)) {
       pandId: m.id, type, bouwjaar: m.bj, distFromCentreM: Math.round(d), centreLngLat: [m.lon, m.lat],
       ringLngLat: ringOf(f).map(([lng, lat]) => [Math.round(lng * 1e7) / 1e7, Math.round(lat * 1e7) / 1e7]),
       rectIoU: Math.round(rectIoU(ring, rect) * 1000) / 1000, nVertices: ring.length - 1,
-      attrs: {b3_bouwlagen: a.b3_bouwlagen, b3_dak_type: a.b3_dak_type, b3_h_dak_max: a.b3_h_dak_max, b3_h_dak_50p: a.b3_h_dak_50p, b3_h_dak_min: a.b3_h_dak_min, b3_h_maaiveld: a.b3_h_maaiveld, b3_h_nok: a.b3_h_nok},
+      attrs: {b3_bouwlagen: a.b3_bouwlagen, b3_dak_type: a.b3_dak_type, b3_h_dak_max: a.b3_h_dak_max, b3_h_dak_50p: a.b3_h_dak_50p, b3_h_dak_min: a.b3_h_dak_min, b3_h_maaiveld: a.b3_h_maaiveld, b3_h_nok: a.b3_h_nok, b3_h_dak_70p: a.b3_h_dak_70p, oorspronkelijkbouwjaar: a.oorspronkelijkbouwjaar},
     });
   }
 }
