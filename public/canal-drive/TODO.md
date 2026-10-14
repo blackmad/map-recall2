@@ -1277,12 +1277,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   so markings come from data, not priors; the grey box in the Singelgracht
   and the Westerkanaal land blob are DONE (HISTORY "3DBAG ground
   outliers": a real pand with a bad 3DBAG ground, 540 such pands citywide,
-  410 patched; the blob is the lock's middle head, pinned); open from
-  that: the five readers of `b3_h_maaiveld` that bypass `trustedGroundNap`
-  (`buildingRecipe/facts.ts`, `blockFace/compile.ts`,
-  `buildingTypes/facts.ts`, `streetChunks/ground.ts`,
-  `facade/sources/netherlands.ts`) and a full `build-bag-buildings.ts`
-  rebuild so the rule, not the patch, is the source;
+  410 patched; the blob is the lock's middle head, pinned); the
+  readers all go through the rule now with a 1.5 m reach test (HISTORY
+  "Ground from the terrain everywhere": 312 corrected, 98 split-level
+  restored); open: the 2–3 m Houthavens/Revaleiland cases (2018–2020)
+  unchecked against photos; a true building-tile rebuild needs
+  `buildings-osm.geojson`, which no checkout has (re-derive or archive
+  it); bag-tile 8412/5384 lacks eaves/ridge/roof/year for five pands
+  since the Jan Evertsen re-key;
   (c)–(g) are DONE above as (c)–(g); still open: (h) the Singelgracht
   bascule at the Haarlemmerpoort draws as thin green outlines on a bare
   deck, no abutments, railings or lamps; (i) a Spaarndammerbuurt footbridge
