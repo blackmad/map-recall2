@@ -40,3 +40,27 @@ test('measured schema: palette.glass gets its own slot, windowShape sizes the wi
   assert.equal(r.groups[1].slots.glass, 'glass');
   assert.deepEqual(r.spec.systems[r.groups[1].specSystem], plain.spec.systems[plain.groups[1].specSystem]);
 });
+
+// Houthavenkade 26 g0: yellow-brown and dark brick on one 3DBAG plane, split at ~42 % of the main panel (measure.ts).
+test('wallSplit: validated; the main panel wall right of a bay boundary gets the second colour; absent leaves the mesh unchanged', async () => {
+  const {compileLargeBuilding} = await import('./largeCompile.ts');
+  const {splitAtBay} = await import('./fitLarge.ts');
+  const base = validateLargeIntent(raw()), f = facts(), w0 = base.walls[0];
+  const bad = (patch: object, re: RegExp) => assert.throws(() => validateLargeIntent({...base, walls: [{...w0, ...patch}, ...base.walls.slice(1)]}), re);
+  bad({wallSplit: {at: 0.95, brick: '#514a49'}}, /wallSplit.at/);
+  bad({wallSplit: {at: 0.5, brick: 'mauve-ish'}}, /wallSplit.brick/);
+  bad({wallSplit: {at: 0.5, brick: '#514a49', u: 3}}, /wallSplit.u/);
+  assert.equal(splitAtBay(0, 30, 3, 0.42), 12);
+  assert.equal(splitAtBay(0, 30, 3, 0.02), 3, 'never the panel end');
+  const plain = compileLargeBuilding(base, f);
+  const split = compileLargeBuilding(validateLargeIntent({...base, walls: [{...w0, palette: {...w0.palette, brick: '#796a55'}, wallSplit: {at: 0.5, brick: '#514a49'}}, ...base.walls.slice(1)]}), f);
+  const g = split.recipe.groups[0], slot = `${g.slots.wall}/r`;
+  assert.equal(g.split?.slot, slot);
+  assert.equal(split.recipe.spec.palette[slot], '#514a49');
+  const names = (c: typeof plain) => c.group.children.map(m => m.name);
+  assert.ok(names(split).includes(`wall/${slot}`), names(split).join(','));
+  assert.ok(!names(plain).some(n => n.endsWith('/r')));
+  // the same triangles in total: only their slot changed
+  const tris = (c: typeof plain) => c.group.children.reduce((n, m) => n + (m as any).geometry.attributes.position.count / 3, 0);
+  assert.equal(tris(split), tris(plain));
+});
