@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import {NodeIO} from '@gltf-transform/core';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {resolveIntent} from '../buildingRecipe/compile.ts';
-import type {BuildingFacts} from '../buildingRecipe/facts.ts';
+import {buildFacts, type BuildingFacts, type CityJsonItem} from '../buildingRecipe/facts.ts';
+import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
 import {applyStreetChunks, chunkSpecFor, streetChunksEnabled, streetSurveyMode, withoutStreetSurveys} from '../landmarks/ordinaryChunks.ts';
 import {compileChunk, groupBlockFaces, findContacts, trimPartyWalls, remainder, planGround, pandIndexForFace, readChunkExtras, buildChunkManifest} from './index.ts';
 import type {Bucket, BucketMap, ChunkHouseInput, P2} from './types.ts';
@@ -174,4 +175,29 @@ test('chunk: a face with a missing neighbour warns instead of pretending to be c
   const result = await compileChunk(['bilder-153622', 'bilder-152363'].map(loadHouse), {name: 'gap'});
   assert(result.report.warnings.some(w => /share no party wall/.test(w)));
   assert.equal(result.report.partyWalls.length, 0);
+});
+
+// Named regression Nassaukade 63X (0363100012124441): its failed 3DBAG ground (−9.67 NAP) must neither stand it 15.6 m
+// tall nor drag the street level; with the terrain field it is re-measured first (`trustFactsGround`).
+test('planGround: a failed 3DBAG ground is re-measured from the terrain before the street level (Nassaukade 63X)', () => {
+  const fixture = JSON.parse(fs.readFileSync(new URL('../fixtures/bag3d-nassaukade-63x.json', import.meta.url), 'utf8')) as {outlier: CityJsonItem; ordinary: CityJsonItem};
+  const meta = {threeDBag: 'fixture', fetchedAt: '2026-10-14', streets: 'none'};
+  const withFront = (item: CityJsonItem) => {
+    const f = buildFacts(Object.keys(item.feature.CityObjects)[0].slice(-16), item, [], [], () => [0, 0], meta);
+    // One synthetic front at the roof height (planGround reads the top profile only).
+    return {...f, fronts: [{eavesM: f.heights.dak70pM, topM: f.heights.roofMaxM, topProfile: Array.from({length: 20}, (_, i) => ({alongM: i, heightM: f.heights.dak70pM}))}]} as unknown as BuildingFacts;
+  };
+  const houses = [withFront(fixture.outlier), withFront(fixture.ordinary)];
+  const raw = planGround(houses, [true]), trusted = planGround(houses, [true], 1, 0.25, 0.45, sharedTerrain());
+  assert.ok(raw.eavesBefore[0] > 15, `raw 63X eaves ${raw.eavesBefore[0]}`);
+  // Re-measured from the terrain (+0.47 NAP, 5.42 m) and then shifted onto the shared street level like any house:
+  // the cornice stays at its absolute +5.9 NAP.
+  assert.ok(trusted.eavesBefore[0] < 6 && Math.abs(trusted.eavesBefore[0] + trusted.facts[0].heights.groundNAP - 5.895) < 0.01, `trusted 63X eaves ${trusted.eavesBefore[0]}`);
+  assert.ok(trusted.shiftsM[0] !== 0 && raw.shiftsM[0] === 0, 'within a metre of the street once trusted; 10 m off before');
+  assert.equal(trusted.facts[0].heights.groundSource, 'terrain');
+  // Raw, the failed ground drags the median street level to −4.9 NAP; trusted, it is the quay's.
+  assert.ok(raw.sharedNapM < -4 && trusted.sharedNapM > -0.2, `street level ${raw.sharedNapM} -> ${trusted.sharedNapM}`);
+  // The ordinary neighbour's cornice keeps its absolute height either way.
+  const nap = (p: typeof raw, i: number) => p.eavesBefore[i] + p.facts[i].heights.groundNAP;
+  assert.ok(Math.abs(nap(trusted, 1) - nap(raw, 1)) < 0.01);
 });

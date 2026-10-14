@@ -21,6 +21,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {loadIntent, HOUSES} from '../building-recipes/compile.ts';
 import {buildChunkManifest, compileChunk, groupBlockFaces, type ChunkHouseInput, type ChunkResult} from '../../src/canalRecall/streetChunks/index.ts';
+import {sharedTerrain} from '../lib/terrainField.ts';
 import type {ChunkManifest} from '../../src/canalRecall/streetChunks/manifest.ts';
 
 const FACES = 'scripts/block-face/faces', MANIFEST = 'public/canal-drive/ordinary-buildings-data/chunks.json';
@@ -54,9 +55,10 @@ const results: ChunkResult[] = [], skipped: string[][] = [];
 for (const face of faces) {
   if (face.length < min) { skipped.push(face.map(h => h.id)); continue; }
   const name = `${prefix.replace(/-$/, '')}-${face.map(h => h.intent.pandId.slice(-6)).sort()[0]}-x${face.length}`;
-  const result = await compileChunk(face, {name});
-  const control = await compileChunk(face, {name: `${name}-control`, maxRegroundM: 0, eavesSnapStepM: 0, trimPartyWalls: false});
-  const grounded = await compileChunk(face, {name: `${name}-grounded`, trimPartyWalls: false});
+  const terrainAt = sharedTerrain();
+  const result = await compileChunk(face, {name, terrainAt});
+  const control = await compileChunk(face, {name: `${name}-control`, maxRegroundM: 0, eavesSnapStepM: 0, trimPartyWalls: false, terrainAt});
+  const grounded = await compileChunk(face, {name: `${name}-grounded`, trimPartyWalls: false, terrainAt});
   await fs.writeFile(path.join(out, 'grounded', `${name}.glb`), grounded.glb);
   await fs.writeFile(path.join(out, `${name}.glb`), result.glb);
   await fs.writeFile(path.join(out, 'control', `${name}.glb`), control.glb);

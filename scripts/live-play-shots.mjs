@@ -20,6 +20,11 @@ if (process.env.BUNDLES_DIR) await context.route(/\/js\/[^/?]+\.bundle\.js/, rou
   const name = new URL(route.request().url()).pathname.split('/').pop(), file = `${process.env.BUNDLES_DIR}/${name}`;
   return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: 'text/javascript' }) : route.continue();
 });
+// DATA_DIR=<dir>: serve /data/extracts/<path> from <dir>/<path> when that file exists (before/after on older data).
+if (process.env.DATA_DIR) await context.route(/\/data\/extracts\//, route => {
+  const rel = decodeURIComponent(new URL(route.request().url()).pathname).split('/data/extracts/')[1], file = `${process.env.DATA_DIR}/${rel}`;
+  return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file) }) : route.continue();
+});
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
 await page.goto(`http://127.0.0.1:${process.env.PORT || 4515}/canal-drive/` + qs);
 await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, { timeout: 90000 });
