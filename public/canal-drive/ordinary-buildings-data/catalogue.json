@@ -40568,10 +40568,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165748",
       "name": "Rijksakademie van beeldende kunsten, Sarphatistraat 470, Amsterdam (1865 former barracks, courtyard complex of round-arched brick ranges)",
-      "hash": "8f7655a06573499b52e37bd278fa4717b9309d9149e16eb8f421b94f78c3f8f8",
-      "sha256": "8f7655a06573499b52e37bd278fa4717b9309d9149e16eb8f421b94f78c3f8f8",
-      "bytes": 1050344,
-      "triangles": 11959,
+      "hash": "cca2ffd489d5b4698e5d098c76d5e77f53fd2660d369595ec74755940c5186e9",
+      "sha256": "cca2ffd489d5b4698e5d098c76d5e77f53fd2660d369595ec74755940c5186e9",
+      "bytes": 1038520,
+      "triangles": 11791,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -41196,7 +41196,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165748",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:06:19.695Z"
+      "updatedAt": "2026-10-14T03:13:20.601Z"
     },
     {
       "id": "ordinary-0363100012109375",
