@@ -1,0 +1,1147 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-315-359",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-315-359/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 315-359 (odd side, Jan Pieter Heijestraat to the end), the 1903 row of kinker-1902-balcony-axis (3 axes, centre French windows with balconettes, band-brick segmental arches, a square brick dormer), with straight-sided gables over the 2-axis fronts 323 and 353 and over the pairs 331|333 and 343|345, and the 1987 corner block 315-319. Shops read on zoom crops of the 2024-12-11 strip; the strip has no photo between 315-319 and 321 (grey)."
+ },
+ "types": [
+  "kinker-1985-infill",
+  "kinker-1902-balcony-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012080487",
+   "slug": "kinker-080487",
+   "address": "Kinkerstraat 315-319",
+   "type": {
+    "type": "kinker-1985-infill",
+    "crown": "flat",
+    "modules": [
+     {
+      "share": 0.4,
+      "overrides": {
+       "bays": [
+        1,
+        2,
+        2,
+        2,
+        2
+       ]
+      }
+     },
+     {
+      "share": 0.6,
+      "overrides": {
+       "bays": [
+        2,
+        3,
+        3,
+        3,
+        3
+       ],
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3,
+         4
+        ],
+        "bays": [
+         2
+        ],
+        "projecting": true
+       }
+      }
+     }
+    ],
+    "ground": {
+     "shopfront": {
+      "colour": "#3a3a36",
+      "fascia": true,
+      "fasciaColour": "#6a6a60",
+      "name": "Bestseller",
+      "sign": {
+       "text": "BESTSELLER",
+       "textColour": "#e8e8f0",
+       "mount": "fascia"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "displayWindows": 3,
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 1: BESTSELLER on the grey band over a newsagent left, a restaurant with grey lettering right, under a brown balustrade gallery; OSM node 4711284145 shop=newsagent"
+     }
+    },
+    "overrides": {
+     "palette": {
+      "brick": "#4a4831"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Bestseller",
+    "category": "shop=newsagent",
+    "osm": {
+     "type": "node",
+     "id": 4711284145,
+     "name": "Bestseller"
+    },
+    "bag": [
+     "woonfunctie",
+     "industriefunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "OSM also lists waar (gift), Beijing massage, Universal nails in the pand"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: 1987 grey-beige brick, a glazed drum corner bay on the left, 3 windows per storey, round projecting balconies on the right axis, a balustraded gallery over the shops, flat top",
+    "photoRows": [
+     3,
+     5,
+     5,
+     5,
+     5
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "glazed drum corner bay (rounded)",
+     "balustraded gallery over the shop band",
+     "round balconies drawn as the kit projecting balconies"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160018",
+   "slug": "kinker-160018",
+   "address": "Kinkerstraat 321",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": true,
+      "fasciaColour": "#1e1e1e",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 2: black fascia with white neon LE PANAM.., brick piers",
+      "name": "Le Paname"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Le Paname",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 4899464726,
+     "name": "Le Paname"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "white neon lettering LE PANAM.. on the black fascia"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 2: 3 axes, band-brick segmental arches, centre French windows with balconettes, brick dormer"
+   }
+  },
+  {
+   "pandId": "0363100012156907",
+   "slug": "kinker-156907",
+   "address": "Kinkerstraat 323",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "overrides": {
+     "bays": 2,
+     "balconies": {
+      "storeys": [],
+      "bays": []
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": true,
+      "fasciaColour": "#1e1e1e",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 3: black fascia lettered GÖNÜL coiffure",
+      "name": "Gőnűl"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Gőnűl",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 4899464724,
+     "name": "Gőnűl"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "GÖNÜL coiffure lettered on the black fascia"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "citation": "strip.jpg pand 3: 4.0 m, 2 axes, a straight-sided pointed gable with one arched light",
+    "schemaLimits": [
+     "straight-sided gable with an arched light drawn as the type bell gable"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165777",
+   "slug": "kinker-165777",
+   "address": "Kinkerstraat 325",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 4: brown timber shopfront with a transom row, no sign",
+      "name": "Pior"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Pior",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4899464725,
+     "name": "Pior"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "timber shopfront, no legible sign"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 4: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012237373",
+   "slug": "kinker-237373",
+   "address": "Kinkerstraat 327-331",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "modules": [
+     {
+      "crown": "dormer",
+      "share": 0.34,
+      "ground": {
+       "shopfront": {
+        "colour": "#5a2e1c",
+        "fascia": true,
+        "fasciaColour": "#4a2a1c",
+        "entrance": "left",
+        "glazing": "transom",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 5 left (327): timber shop, a poster in the window"
+       }
+      }
+     },
+     {
+      "crown": "dormer",
+      "share": 0.37,
+      "ground": {
+       "shopfront": {
+        "colour": "#5a2e1c",
+        "fascia": true,
+        "fasciaColour": "#4a2a1c",
+        "entrance": "left",
+        "glazing": "transom",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 5 centre (329): DA drogist logo and a pharmacy sign; OSM node 4899464722 shop=chemist",
+        "name": "DA drogist"
+       }
+      }
+     },
+     {
+      "crown": "neck-gable",
+      "share": 0.29,
+      "overrides": {
+       "bays": 2,
+       "balconies": {
+        "storeys": [],
+        "bays": []
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#5a2e1c",
+        "fascia": true,
+        "fasciaColour": "#4a2a1c",
+        "entrance": "left",
+        "glazing": "transom",
+        "stallriser": "low",
+        "evidence": "strip.jpg 2024-12-11 pand 5 right (331): Kinker Apotheek (OSM 4899464723)",
+        "name": "Kinker Apotheek"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "DA drogist",
+    "category": "shop=chemist",
+    "osm": {
+     "type": "node",
+     "id": 4899464722,
+     "name": "DA drogist"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "DA logo legible; Kinker Apotheek (OSM 4899464723) in 331"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5: 14 m, two 3-axis modules with dormers and a 2-axis module under the gable it shares with 333",
+    "photoRows": [
+     6,
+     8,
+     8,
+     8,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the wide gable over 331 and 333 (one arched light each) is drawn as one gable per front"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012153818",
+   "slug": "kinker-153818",
+   "address": "Kinkerstraat 333",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "overrides": {
+     "bays": 2,
+     "balconies": {
+      "storeys": [],
+      "bays": []
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#e8e2cc",
+      "fascia": true,
+      "fasciaColour": "#f0eee6",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 6: white board with a script 't Saoto huisje under a yellow band",
+      "name": "'t Saotohuisje"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "'t Saotohuisje",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 4893934121,
+     "name": "'t Saotohuisje"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "script 't Saoto huisje on a white board"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "citation": "strip.jpg pand 6: 4.2 m, 2 axes, right half of the shared gable with 331",
+    "schemaLimits": [
+     "straight-sided gable with an arched light drawn as the type bell gable",
+     "shared gable with 331"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236064",
+   "slug": "kinker-236064",
+   "address": "Kinkerstraat 335",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 7: blue board KINKER STOMERIJ & WASSERIJ",
+      "name": "Kinker Stomerij & Wasserij",
+      "sign": {
+       "text": "KINKER STOMERIJ & WASSERIJ",
+       "textColour": "#ffffff",
+       "mount": "fascia",
+       "background": "#2a5aa0"
+      }
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Kinker Stomerij & Wasserij",
+    "category": "shop=laundry",
+    "osm": {
+     "type": "node",
+     "id": 2809821715,
+     "name": "Kinker"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "OSM name Kinker; sign KINKER STOMERIJ & WASSERIJ"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 7: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012160024",
+   "slug": "kinker-160024",
+   "address": "Kinkerstraat 337",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 8: brown fascia lettered STOFFEERDER with an AYS badge",
+      "name": "Ays"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Ays",
+    "category": "craft=upholsterer",
+    "osm": {
+     "type": "node",
+     "id": 2809821732,
+     "name": "Ays"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "STOFFEERDER AYS on the fascia"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 8: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012235967",
+   "slug": "kinker-235967",
+   "address": "Kinkerstraat 339",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": true,
+      "fasciaColour": "#1e1e1e",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 9: black board with script lettering",
+      "name": "Aleppo Top"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Aleppo Top",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 12006460312,
+     "name": "Aleppo Top"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "black board with script lettering (Aleppo .. Top partly legible)"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 9: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012152535",
+   "slug": "kinker-152535",
+   "address": "Kinkerstraat 341",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 10: BYLIMA in white letters on the brown fascia",
+      "name": "ByLima",
+      "sign": {
+       "text": "BYLIMA",
+       "textColour": "#f0eee6",
+       "mount": "fascia"
+      }
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "ByLima",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 12006429284,
+     "name": "ByLima"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 10: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012153447",
+   "slug": "kinker-153447",
+   "address": "Kinkerstraat 343",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "overrides": {
+     "bays": 2,
+     "balconies": {
+      "storeys": [],
+      "bays": []
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": true,
+      "fasciaColour": "#1e1e1e",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 11: neon lettering over a phone-repair display",
+      "name": "Lenexo"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Lenexo",
+    "category": "craft=electronics_repair",
+    "osm": {
+     "type": "node",
+     "id": 12006430508,
+     "name": "Lenexo"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "red and blue neon lettering illegible"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "citation": "strip.jpg pand 11: 4.2 m, 2 axes, left half of the gable shared with 345",
+    "schemaLimits": [
+     "straight-sided gable with an arched light drawn as the type bell gable",
+     "shared gable with 345"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159990",
+   "slug": "kinker-159990",
+   "address": "Kinkerstraat 345",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "overrides": {
+     "bays": 2,
+     "balconies": {
+      "storeys": [],
+      "bays": []
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 12: hidden by a truck",
+      "name": "Snel Repair"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Snel Repair",
+    "category": "shop=repair",
+    "osm": {
+     "type": "node",
+     "id": 12006435673,
+     "name": "Snel Repair"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "a truck hides the ground floor"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "citation": "strip.jpg pand 12: 4.2 m, 2 axes, right half of the gable shared with 343",
+    "schemaLimits": [
+     "straight-sided gable with an arched light drawn as the type bell gable",
+     "shared gable with 343"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236156",
+   "slug": "kinker-236156",
+   "address": "Kinkerstraat 347",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 13: hidden by a truck",
+      "name": "De Kinker"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "De Kinker",
+    "category": "shop=bag",
+    "osm": {
+     "type": "node",
+     "id": 6208129286,
+     "name": "De Kinker"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "a truck hides the ground floor"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 13: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012158118",
+   "slug": "kinker-158118",
+   "address": "Kinkerstraat 349",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 14: BOBOS CHICKEN in white letters on the brown fascia",
+      "name": "Bobos Chicken",
+      "sign": {
+       "text": "BOBOS CHICKEN",
+       "textColour": "#f0eee6",
+       "mount": "fascia"
+      }
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Bobos Chicken",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 12006441390,
+     "name": "Bobos Chicken"
+    },
+    "bag": [],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 14: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012164070",
+   "slug": "kinker-164070",
+   "address": "Kinkerstraat 351",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 15: PAKKETDIENST DE KINKER lettered on the fascia",
+      "name": "Pakketdienst de Kinker"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Pakketdienst de Kinker",
+    "category": "amenity=post_office",
+    "osm": {
+     "type": "node",
+     "id": 12010229722,
+     "name": "Pakketdienst de Kinker"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 15: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012167386",
+   "slug": "kinker-167386",
+   "address": "Kinkerstraat 353",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "overrides": {
+     "bays": 2,
+     "balconies": {
+      "storeys": [],
+      "bays": []
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 16: a yellow and green painted display window"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "yellow/green painted display window as at 355 and 357 (Finalemente Brasil); no OSM node"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "citation": "strip.jpg pand 16: 4.2 m, 2 axes, a straight-sided pointed gable with one arched light",
+    "schemaLimits": [
+     "straight-sided gable with an arched light drawn as the type bell gable"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158666",
+   "slug": "kinker-158666",
+   "address": "Kinkerstraat 355",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 17: yellow and green painted display window",
+      "name": "Finalemente Brasil"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Finalemente Brasil",
+    "category": "shop=supermarket",
+    "osm": {
+     "type": "node",
+     "id": 12006442404,
+     "name": "Finalemente Brasil"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "painted display windows, no lettering"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 17: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012236481",
+   "slug": "kinker-236481",
+   "address": "Kinkerstraat 357",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 18: yellow and green painted display window"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [],
+    "agreement": "photo-only",
+    "note": "third yellow and green painted window of the 353-357 shop; BAG gives no ground unit"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 18: 3 axes, dormer"
+   }
+  },
+  {
+   "pandId": "0363100012155496",
+   "slug": "kinker-155496",
+   "address": "Kinkerstraat 359",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2e1c",
+      "fascia": true,
+      "fasciaColour": "#4a2a1c",
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 19: house listings in the window",
+      "name": "Fred Koot"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "office",
+    "photoDate": "2024-12-11",
+    "name": "Fred Koot",
+    "category": "office=estate_agent",
+    "osm": {
+     "type": "node",
+     "id": 12006430439,
+     "name": "Fred Koot"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "listings in the window"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 19: 3 axes, dormer"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012156907",
+    "stripRow": 298,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 16.1 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012165777",
+    "stripRow": 298,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 16.0 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012153818",
+    "stripRow": 298,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 15.9 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012153447",
+    "stripRow": 298,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 16.0 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012159990",
+    "stripRow": 298,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 14.5 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012236156",
+    "stripRow": 298,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 15.9 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012167386",
+    "stripRow": 300,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 300 (13.4 m); 3DBAG eaves 15.8 m read the mansard or gable roof"
+   },
+   {
+    "pand": "0363100012236481",
+    "stripRow": 316,
+    "frontRoof": {},
+    "evidence": "strip.jpg: top of the row's cornice at row 316 (13.1 m); 3DBAG eaves 15.5 m read the mansard or gable roof"
+   }
+  ]
+ },
+ "limitations": [
+  "Straight-sided gables (323, 353; pairs 331|333 and 343|345 with one wide gable over two fronts) drawn as the type bell gable, one per front: the type has no pointed or pair gable variant.",
+  "315-319: glazed drum corner bay, balustraded gallery over the shops, round balconies.",
+  "Strip gap (no photo) between 319 and 321."
+ ]
+}
