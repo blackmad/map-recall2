@@ -1,5 +1,89 @@
 # Canal Recall — what is built
 
+## Nassaukade 506: the user's benchmark block in the kit; white courses on Kinkerstraat (2026-10-14, user)
+
+Lanes `lane/nassaukade-506-20261014` and the merge lane
+`lane/nassau-merge-20261014`. The user sent a Street View frame of the
+terrace at Nassaukade 506 (Oud-West, the Singelgracht's west bank between
+the Kinkerstraat and Bilderdijkstraat bridges) and said "this is an
+example of a block I'd like to be well modeled by kit". Intake from the
+city panoramas across the water and from the quay (source-data
+`pand-reference-walls/`, `block-face-strips/nassau-145-152/`, the quay
+photo); catalogue in `docs/nassaukade-506-20261014.md`: a shared grid
+(tall ground 0–4.45 m, three storeys, heavy cornice at 14.0–15.4 m),
+T-windows shrinking up the front (2.0 / 1.8 / 1.65 m), white bands at
+sill and transom, eared heads with three keys, console sills, pointed
+dormers; per pand 151-152 corner (6 axes, brick #6b5947, wreath
+medallions), 150 painted near-black #524b3d with a timber turned balcony
+stack and a stepped gable, 149 grey paint #6a685d, 148 brick #806e5e
+with an iron grille, 147 black paint #615a47 with a bell mansard, 146 tan
+brick #a98f76 with a white timber erker, 145 red brick #b58c6f. Six kit
+components, typed in `intent.ts`, laid out in `fit.ts`, built in the
+library or the new `oudWest.ts`, each tested and byte-identical when
+absent (fit-golden 153 identical, all 24 face chunks sha256-identical to
+main): `bands: 'painted'` with `bandHeights {sill, transom, head}` in
+metres (defaults 0.14 / 0.10 / 0.17), `bandLines`, `bandStoreys` (white
+stone bands cut around openings and at an erker; the sill band's top on
+the lowest sill, the transom band centred at 0.78 of the window, the
+head band on the heads); `windowSurround: 'eared-keystone'` (a 0.10 m
+head slab running 0.12 m past each jamb, 0.13 × 0.25 m ear blocks,
+`round(w/0.4)-1` keystone blocks); `windowSills: 'consoles'` (sill slab
+on two 0.10 × 0.16 m consoles, skipped at balcony bays);
+`balconies.style: 'timber-bracketed'` (0.14 m platform 0.75 m deep on
+profile brackets every 1.1 m, 1.0 m guard; `rail: 'turned'` balusters
+every 0.16 m at 12 triangles each, `rail: 'iron'` bars every 0.14 m;
+`styleStoreys`, `storeyBays`; a 2 m balcony under 330 triangles);
+`bayWindows.finish: 'painted'`; `wallMaterial: 'painted-brick'` (walls
+carry `tintSource: 'measured'`, chunk buckets keyed `_measured`, so paint
+skips the 0.3–0.6 lightness clamp); plus the BAG erker chord
+(`blockFace/bayOutline.ts`, `intake --bay-outline=`: BAG draws 146 with
+its erker in the footprint, a 1.61 m front; the chord rebuilds it to
+6.17 m) and `mirrorFront` mirroring `storeyBays`. Face
+`nassau-145-152` (two library types `nassau-1900-three-axis` and
+`nassau-1900-two-axis-balcony`, 151-152 and 150 inline), 19,441
+triangles, every gate, interference OK on all six party lines, the
+corner on a recipe roof at 30° (its 3DBAG shell had a 33.5 m hole);
+compiled, not installed. After the merge with the canal-windows and
+Kinkerstraat keys (conflicts in `intent.ts`, `fit.ts`, `fitLarge.ts`
+resolved as the union: `WINDOW_SURROUNDS` with `sill` and
+`eared-keystone`, `bands` with `courses`, `speklagen` and `painted`, the
+eared early-out before the sill/keystone/lintel chain, console sills
+after the keystone block, `measuredSlots` dedupe with the painted-brick
+material map) the face got `windows: 't-window'`, window heights as
+shares of the catalogue storey grid `[0.6, 0.57, 0.55, 0.59]` (the canal
+survey's `'diminishing'` medians 0.72–0.76 drew every window ~0.5 m too
+tall on this row, which measures ~0.57), and `windowHead {kind:
+'relieving', storeys: [3], archRing {stone, blocks, keystone}}` on 150 and
+147. Verdict at gallery size (`docs/images/nassaukade-506/
+photo-over-model.jpg`, `quay-perspective-640.jpg` at 44 m,
+`four-sides.jpg`): 149 and 145 strongest, bands, eared heads, consoles
+and turned balconies all match; 148 layout right, plainer grille; 147
+colour and both balconies, mansard straight not bell-shaped; 146 erker
+position and colour, box sides not canted; 150 gable, colour, balcony
+stack, the storey-3 arches now the most visible gain; 151-152 massing,
+grid, dormers. Still wrong: the photo's arches are round with dark
+tympana, two springers and a keystone where the kit draws a segmental
+arch with five blocks; heads sit slightly high on the common 0.86 head
+line; the medallions, bracketed cornice with modillions, carved pediment
+and fretwork dormers, cast-iron grilles, the bell mansard, the souterrain
+with side stoop, canted erker sides, shop awnings and signs. **Kinkerstraat
+wiring:** `kinker-1895-painted-band`'s black-painted palette switched from
+the stucco slot to `wallMaterial: 'painted-brick'` (Kinkerstraat 28 now
+#535955 against the photo's #5e645d); `kinker-1890-brick-arched` got
+`bands: 'painted', bandLines: ['sill','transom'], bandHeights {sill:
+0.1, transom: 0.12}` (the 0.04 / 0.05 m first proposed drew lines under
+2 px at 40 px/m, and the default head line sat on the arch springing
+~0.75 m above the photo's course; the type's evidence measures the rows
+at 0.10–0.13 m); kinker-2-30 recompiled 28,695 → 32,043 triangles, the
+sill course on the photo's sill line, the upper course ~0.3 m above the
+photo's (the photo's sits at ~0.63 of the window height, the kit fixes
+the transom at 0.78), both courses grey stone where the photo's are
+bright white and the upper one continuous where the photo's is dotted
+blocks; named regressions in `kinkerstraat.test.ts` and `oudWest.test.ts`.
+The user's benchmark block is now the named regression for the Oud-West
+kit (memory `nassaukade-506-benchmark`).
+
+
 ## Ground tones measured from the orthophoto; `bright` is the ground look; measured glass keeps the sky (2026-10-14, user)
 
 **Ground look** (lane `lane/ground-look-20261014`, user "city too
