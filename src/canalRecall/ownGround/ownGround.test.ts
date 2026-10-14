@@ -479,7 +479,7 @@ test('basemap ground layers take the own ground palette; buildings and labels ar
     { id: 'park', type: 'fill', 'source-layer': 'park' }, { id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'road_path_pedestrian', type: 'line', 'source-layer': 'transportation' },
     { id: 'building', type: 'fill', 'source-layer': 'building' }, { id: 'label_road', type: 'symbol', 'source-layer': 'transportation_name' },
   ];
-  const by = Object.fromEntries(basemapGroundPatches(layers).map(p => [`${p.id}:${p.property}`, p.value]));
+  const by = Object.fromEntries(basemapGroundPatches(layers, groundPalette('default')).map(p => [`${p.id}:${p.property}`, p.value]));
   assert.equal(by['water:fill-color'], GROUND_TONES.water);
   assert.equal(by['waterway_river:line-color'], GROUND_TONES.water);
   assert.equal(by['road_minor:line-color'], `rgb(${STREET_GROUND.asphalt.base.join(',')})`);
@@ -1228,7 +1228,7 @@ test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish 
   const rgbOf = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   const d = groundPalette('default');
   assert.equal(d.street, STREET_GROUND); assert.equal(d.tones, GROUND_TONES);
-  const def = basemapGroundPatches([{ id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'water', type: 'fill', 'source-layer': 'water' }]);
+  const def = basemapGroundPatches([{ id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('default'));
   assert.deepEqual(def.map(p => p.value), ['rgb(86,88,93)', '#46707c', '#46707c'], 'default basemap patches unchanged');
   // Targets: measured = the dehazed sunlit orthophoto medians (docs/ground-tones-20261014.md); bright road ~130 / pavement ~175; legacy-ish road ~200 / pavement ~215 / water ~170.
   const target: Record<string, { asphalt: number; pavement: number; water: number }> = { measured: { asphalt: 166, pavement: 165, water: 54 }, bright: { asphalt: 130, pavement: 175, water: 118 }, 'legacy-ish': { asphalt: 200, pavement: 215, water: 170 } };
