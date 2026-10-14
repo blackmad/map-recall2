@@ -96,8 +96,49 @@ export const TOWER_PODIUM_GAP_M = 10;
  * by definition, and standing a flat top at the ridge of a steep canal house
  * overstates the whole row.
  */
-export function bagHeightM(attributes: Record<string, unknown>): { heightM: number | null; source: BagHeightSource } {
+/**
+ * How far 3DBAG's ground (`b3_h_maaiveld`) may sit below the AHN terrain under
+ * the footprint before it is treated as a failed ground estimate.
+ *
+ * Where a pand has no ground points around it (in or over the water, between
+ * canal houses with no open yard) 3DBAG falls back to a ground level that can
+ * be ten metres below NAP: Nassaukade 63X, a box standing in the Singelgracht
+ * (NL.IMBAG.Pand.0363100012124441), has its roof at +5.9 NAP and its ground at
+ * −9.67 NAP, so it extruded to 15.6 m. Across the cached 3DBAG (273,599 pands
+ * with a terrain sample) the ground sits a median 0.14 m below the terrain and
+ * 1 % sit more than 1.6 m below it; past 3 m (540 pands) the values cluster on
+ * a few shared fallbacks (−6.36, −6.46, −6.73, −8.38, −9.67 NAP) rather than
+ * real sunken ground.
+ */
+export const GROUND_OUTLIER_M = 3;
+/** The terrain reference is AHN4 (PDOK dtm_05m, flown 2020–2022): a pand built later may stand on ground it never saw. */
+export const TERRAIN_VINTAGE_YEAR = 2021;
+/** The roof must stand at least this far above the terrain for the terrain to be a usable base. */
+export const MIN_ROOF_ABOVE_TERRAIN_M = 2;
+
+export type GroundSource = '3dbag' | 'terrain';
+
+/**
+ * The ground to measure a pand's height from: 3DBAG's own, unless it sits
+ * more than `GROUND_OUTLIER_M` below `terrainNapM` (the AHN terrain under the
+ * footprint), in which case the terrain. Kept when there is no terrain sample,
+ * when the pand postdates the terrain survey, or when the roof would not clear
+ * the terrain by `MIN_ROOF_ABOVE_TERRAIN_M` (an underground or sunken pand).
+ */
+export function trustedGroundNap(attributes: Record<string, unknown>, terrainNapM?: number | null): { groundNapM: number | null; source: GroundSource } {
   const ground = number(attributes.b3_h_maaiveld);
+  const terrain = typeof terrainNapM === 'number' && Number.isFinite(terrainNapM) ? terrainNapM : null;
+  if (ground === null || terrain === null || ground >= terrain - GROUND_OUTLIER_M) return { groundNapM: ground, source: '3dbag' };
+  const year = number(attributes.oorspronkelijkbouwjaar);
+  if (year !== null && year > TERRAIN_VINTAGE_YEAR) return { groundNapM: ground, source: '3dbag' };
+  const roof = number(attributes.b3_h_dak_70p) ?? number(attributes.b3_h_dak_max);
+  if (roof === null || roof - terrain < MIN_ROOF_ABOVE_TERRAIN_M) return { groundNapM: ground, source: '3dbag' };
+  return { groundNapM: terrain, source: 'terrain' };
+}
+
+export function bagHeightM(attributes: Record<string, unknown>, terrainNapM?: number | null): { heightM: number | null; source: BagHeightSource } {
+  const ground = trustedGroundNap(attributes, terrainNapM).groundNapM;
+  const replaced = ground !== number(attributes.b3_h_maaiveld);
   const roof70 = number(attributes.b3_h_dak_70p);
   const ridge = number(attributes.b3_h_nok);
   const roof70h = roof70 !== null && ground !== null ? roof70 - ground : null;
@@ -115,7 +156,8 @@ export function bagHeightM(attributes: Record<string, unknown>): { heightM: numb
 
   const volume = number(attributes.b3_volume_lod12);
   const area = number(attributes.b3_opp_grond);
-  if (volume !== null && area !== null && area > 0 && volume / area > 0) return { heightM: volume / area, source: 'lod12-volume' };
+  // The LoD1.2 volume was extruded from 3DBAG's own ground, so it is no fallback once that ground is replaced.
+  if (!replaced && volume !== null && area !== null && area > 0 && volume / area > 0) return { heightM: volume / area, source: 'lod12-volume' };
 
   if (ridgeH !== null && ridgeH > 0) return { heightM: ridgeH, source: 'ridge' };
 
@@ -142,8 +184,19 @@ function footprintRings(geometry: Geometry[] | undefined, vertices: [number, num
   return rings;
 }
 
-/** Every `Building` in one CityJSON tile, with its footprint already in WGS84. */
-export function readBagBuildings(city: CityJson): BagBuilding[] {
+/** Mean of the LoD0 outer ring's vertices in RD New metres, or null without a footprint. */
+function footprintCentreRd(geometry: Geometry[] | undefined, rd: (index: number) => [number, number] | undefined): [number, number] | null {
+  const lod0 = geometry?.find(part => part.lod === '0' && part.type === 'MultiSurface');
+  const ring = ((lod0?.boundaries as number[][][] | undefined)?.[0]?.[0] ?? []).map(rd).filter((p): p is [number, number] => !!p);
+  if (!ring.length) return null;
+  return [ring.reduce((s, p) => s + p[0], 0) / ring.length, ring.reduce((s, p) => s + p[1], 0) / ring.length];
+}
+
+/** AHN terrain in metres NAP at an RD New point (NaN where unknown); see `trustedGroundNap`. */
+export type TerrainAt = (rdX: number, rdY: number) => number;
+
+/** Every `Building` in one CityJSON tile, with its footprint already in WGS84. `terrainAt` lets heights reject a failed 3DBAG ground. */
+export function readBagBuildings(city: CityJson, terrainAt?: TerrainAt): BagBuilding[] {
   const { scale, translate } = city.transform;
   // Project once per vertex rather than once per ring reference: vertices are
   // shared between a footprint and its solids, and the polynomial is the
@@ -161,9 +214,14 @@ export function readBagBuildings(city: CityJson): BagBuilding[] {
     const rings = footprintRings(object.geometry, vertices);
     if (rings.length === 0) continue;
 
-    const ground = number(attributes.b3_h_maaiveld);
+    const centre = terrainAt ? footprintCentreRd(object.geometry, index => {
+      const v = city.vertices[index];
+      return v ? [v[0] * scale[0] + translate[0], v[1] * scale[1] + translate[1]] : undefined;
+    }) : null;
+    const terrain = centre && terrainAt ? terrainAt(centre[0], centre[1]) : null;
+    const ground = trustedGroundNap(attributes, terrain).groundNapM;
     const ridge = number(attributes.b3_h_nok);
-    const { heightM, source } = bagHeightM(attributes);
+    const { heightM, source } = bagHeightM(attributes, terrain);
     const roofMin = number(attributes.b3_h_dak_min);
     buildings.push({
       bagId,

@@ -9,6 +9,9 @@ import { addFeatures, emptyIndex, nearbyPands, resolveSuppressed } from './bagPa
 import { tileUrl } from './buildingTileSource.js';
 import { BuildingTileStreamer, loadBagCovers } from './buildingTilesBrowser.js';
 import type { Ring } from './buildingLadder.js';
+import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import { GROUND_OUTLIER_M, bagHeightM, trustedGroundNap } from './bag3dCityJson.js';
 
 /** A square of `size` degrees with its south-west corner at (x, y), closed. */
 const square = (x: number, y: number, size = 0.0001): Ring => [[x, y], [x + size, y], [x + size, y + size], [x, y + size], [x, y]];
@@ -198,4 +201,38 @@ test('loadBagCovers rejects an app page and anything that is not covers.json', a
   assert.deepEqual(await loadBagCovers('models/covers.json', stubFetch({ 'covers.json': covers })), covers);
   assert.equal(await loadBagCovers('models/covers.json', stubFetch({})), null);
   assert.equal(await loadBagCovers('models/covers.json', stubFetch({ 'covers.json': { version: 2 } })), null);
+});
+
+// Nassaukade 63X (NL.IMBAG.Pand.0363100012124441), a box standing in the Singelgracht by the Frederik
+// Hendrikplantsoen: 3DBAG measured its roof at +5.9 NAP but fell back to a ground of -9.67 NAP, so it
+// stood 15.6 m tall in the water (live play, 2026-10-14). Attributes as 3DBAG v2025.09 publishes them.
+const nassaukade63x = { b3_h_maaiveld: -9.673999786376953, b3_h_dak_70p: 5.894999980926514, b3_h_dak_min: 5.7170000076293945, b3_h_nok: null, b3_volume_lod12: 997.97, b3_opp_grond: 64.1, oorspronkelijkbouwjaar: 1990 };
+const NASSAUKADE_63X_TERRAIN_NAP = 0.47; // ground-height-v1 at the footprint centre (the quay beside it)
+
+test('a 3DBAG ground far below the AHN terrain is replaced by the terrain (Nassaukade 63X in the Singelgracht)', () => {
+  assert.deepEqual(trustedGroundNap(nassaukade63x, NASSAUKADE_63X_TERRAIN_NAP), { groundNapM: NASSAUKADE_63X_TERRAIN_NAP, source: 'terrain' });
+  const { heightM, source } = bagHeightM(nassaukade63x, NASSAUKADE_63X_TERRAIN_NAP);
+  assert.equal(source, 'roof-70p');
+  assert.ok(Math.abs(heightM! - 5.42) < 0.01, `height ${heightM}`);
+  // Without a terrain sample the old height stands.
+  assert.ok(Math.abs(bagHeightM(nassaukade63x).heightM! - 15.57) < 0.01);
+});
+
+test('the terrain does not replace a 3DBAG ground that is plausible, newer than the survey, or above the roof', () => {
+  const near = { ...nassaukade63x, b3_h_maaiveld: NASSAUKADE_63X_TERRAIN_NAP - GROUND_OUTLIER_M + 0.1 };
+  assert.equal(trustedGroundNap(near, NASSAUKADE_63X_TERRAIN_NAP).source, '3dbag');
+  assert.equal(trustedGroundNap({ ...nassaukade63x, oorspronkelijkbouwjaar: 2024 }, NASSAUKADE_63X_TERRAIN_NAP).source, '3dbag');
+  // A sunken or underground pand whose roof barely clears the terrain keeps its own ground.
+  assert.equal(trustedGroundNap({ ...nassaukade63x, b3_h_dak_70p: NASSAUKADE_63X_TERRAIN_NAP + 1 }, NASSAUKADE_63X_TERRAIN_NAP).source, '3dbag');
+  assert.equal(trustedGroundNap(nassaukade63x, Number.NaN).source, '3dbag');
+  assert.equal(trustedGroundNap(nassaukade63x, null).source, '3dbag');
+});
+
+test('published tiles carry Nassaukade 63X at its re-measured height, not 15.6 m', () => {
+  const feature = (dir: string) => {
+    const text = gunzipSync(readFileSync(new URL(`../../public/data/extracts/amsterdam/${dir}/14/8414/5383.geojson.gz`, import.meta.url))).toString('utf8');
+    return JSON.parse(text).features.find((f: { properties: { id: string } }) => f.properties.id === 'NL.IMBAG.Pand.0363100012124441');
+  };
+  for (const dir of ['building-tiles', 'bag-tiles']) assert.ok(feature(dir)?.properties.height < 7, `${dir}: ${feature(dir)?.properties.height}`);
+  assert.ok(feature('bag-tiles').properties.eaves < 7);
 });
