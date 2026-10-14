@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "id": "gandhi-churchill-laan",
+ "signature": [
+  "gd-figure",
+  "gd-block-plate"
+ ],
+ "walls": [
+  {
+   "tag": "n-090",
+   "bearing": 90,
+   "lengthM": 8.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002408_pano_0010_000041",
+   "capturedAt": null,
+   "note": "Front (the way he walks): Commons photos show the striding bronze, shawl, book and staff, the block with its plate and the paving; panoramas see the figure small from the side.",
+   "items": [
+    {
+     "id": "gd-figure",
+     "kind": "sculpture",
+     "where": "Gandhi striding, bald with round glasses, shawl over the left shoulder, dhoti, bare thin legs, bent a little forward",
+     "approxSizeM": [
+      0.9,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "builder: figure kit striding pose, clothing-kit dhoti legs and shawl lumps, bald glasses head; the shawl drape folds and the toes are simplified",
+     "seenIn": "commons:Gandhi_(Amsterdam)_(5).jpg"
+    },
+    {
+     "id": "gd-staff-book",
+     "kind": "sculpture",
+     "where": "long staff in the right hand (viewer left), book under the left arm",
+     "approxSizeM": [
+      0.1,
+      2
+     ],
+     "plan": "modelled",
+     "how": "builder: rod from the slab to above the hand; dark box book at the left hand",
+     "seenIn": "commons:Gandhi_(Amsterdam)_(1).jpg"
+    },
+    {
+     "id": "gd-block-plate",
+     "kind": "lettering",
+     "where": "limestone block 1.1 m square with a dark plate MAHATMA GANDHI / 1869 - 1948 on the front",
+     "approxSizeM": [
+      1.1,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "builder: stone box, dark plate, two raised stroke lines",
+     "seenIn": "commons:Gandhi_(Amsterdam)_(5).jpg"
+    },
+    {
+     "id": "gd-paving",
+     "kind": "other",
+     "where": "two circles of cobbles with stone kerbs, three wooden benches on stone legs and a hedge behind",
+     "approxSizeM": [
+      6.8,
+      1
+     ],
+     "plan": "modelled",
+     "how": "builder: stone/cobble rings, three benches, 17 hedge boxes",
+     "seenIn": "commons:Gandhi_(Amsterdam)_(3).jpg"
+    }
+   ],
+   "centre": [
+    4.8932492,
+    52.3470354
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-270",
+   "bearing": 270,
+   "lengthM": 8.8,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Rear: inferred from the front and side photos; simplified.",
+   "items": [],
+   "centre": [
+    4.8932492,
+    52.3470354
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Gandhi (Amsterdam) (1)-(5)",
+   "url": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(1)-(5)",
+   "licence": "CC BY-SA 4.0 (Ceescamel)"
+  },
+  {
+   "name": "Wikimedia Commons: Statue of Gandhi, Amsterdam",
+   "url": "https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi%2C_Amsterdam",
+   "licence": "CC BY 2.0 (Antony Antony)"
+  },
+  {
+   "name": "Wikimedia Commons: Gandhi churchilllaan",
+   "url": "https://commons.wikimedia.org/wiki/File:Gandhi_churchilllaan",
+   "licence": "CC BY-SA 3.0 (Evanherk)"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
