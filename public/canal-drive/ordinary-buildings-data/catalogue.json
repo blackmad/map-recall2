@@ -27643,10 +27643,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012084999",
       "name": "Overtoom 283, Amsterdam: Reade, rehabilitation and rheumatology centre (OSM way 152508198), BAG 1992",
-      "hash": "6a84fb5b9c49c796d59ded0d33f89ca2e0a5bb4fc18f86ee60187aef83032655",
-      "sha256": "6a84fb5b9c49c796d59ded0d33f89ca2e0a5bb4fc18f86ee60187aef83032655",
-      "bytes": 417548,
-      "triangles": 5404,
+      "hash": "7d8f0c0ebd570b59b34a80edb2585c342e198c9a4cfa27c7e8cb179d11ac6fb6",
+      "sha256": "7d8f0c0ebd570b59b34a80edb2585c342e198c9a4cfa27c7e8cb179d11ac6fb6",
+      "bytes": 572512,
+      "triangles": 7604,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -28101,8 +28101,7 @@
       "height": 21.83,
       "modelUrl": "./models/ordinary-buildings/recipe-large-overtoom-283-084999.glb",
       "suppress": [
-        "NL.IMBAG.Pand.0363100012084999",
-        "w152508198"
+        "NL.IMBAG.Pand.0363100012084999"
       ],
       "source": "building-recipes-large",
       "recipe": {
@@ -28146,7 +28145,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012084999",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:23.236Z",
+      "updatedAt": "2026-10-14T03:10:38.280Z",
       "aliases": [
         "w152508198"
       ],
