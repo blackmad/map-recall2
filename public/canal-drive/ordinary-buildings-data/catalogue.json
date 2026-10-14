@@ -24494,10 +24494,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012064423",
       "name": "Politiebureau Zuidoost Gaasperdam, Remmerdenplein 102, Amsterdam (Gaasperdam)",
-      "hash": "c2fdf68cb34e58be93b4835bb37c17b210c3746f463899e9e68b86e5fd96edb7",
-      "sha256": "c2fdf68cb34e58be93b4835bb37c17b210c3746f463899e9e68b86e5fd96edb7",
-      "bytes": 31288,
-      "triangles": 321,
+      "hash": "bb6501345f3dc55f3a82ff335e5dbd10ea52ba596794143f7142614eaf4afc90",
+      "sha256": "bb6501345f3dc55f3a82ff335e5dbd10ea52ba596794143f7142614eaf4afc90",
+      "bytes": 27984,
+      "triangles": 287,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -24625,7 +24625,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064423",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T12:55:30.511Z",
+      "updatedAt": "2026-10-14T01:09:21.942Z",
       "bagYear": 1996
     },
     {
