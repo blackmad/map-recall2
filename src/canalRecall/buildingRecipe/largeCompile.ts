@@ -88,7 +88,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.hall && info.cells.length && drawGlazedHall(c, info.cells, g.hall.baseM, panelEaves(p) - 0.05, g.hall.lights, g.hall.rows, {wall: s.wall, frame: s.frame, stone: s.stone})) counts.glazedHalls = (counts.glazedHalls ?? 0) + 1;
   if (g.columns && info.cells.length) {
     const col = g.columns, every = Math.max(1, g.bays, ...col.bays.map(b => b + 1));
-    const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: s.glass, frame: s.frame, stone: s.stone});
+    const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: col.glass ?? s.glass, frame: s.frame, stone: s.stone});
     if (k) counts.glassColumns = (counts.glassColumns ?? 0) + k;
   }
   if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }

@@ -66,7 +66,7 @@ export interface LargeGroupFit {
   /** glazed-hall: brick base top (m) and the mullion grid (lights per bay, rows) */
   hall?: {baseM: number; lights: number; rows: number};
   /** glazed-columns: glass stripes over these bays (cycling per `bays`) from storey `from` */
-  columns?: {bays: number[]; share: number; from: number; slabs: boolean};
+  columns?: {bays: number[]; share: number; from: number; slabs: boolean; glass?: string};
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -271,6 +271,9 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       if (slotMaterial[slots.wall]) slotMaterial[splitSlot] = slotMaterial[slots.wall];
     }
     if (measuredGroups.has(gi)) { if (w.palette?.brick) measuredSlots.push(slots.wall); if (w.palette?.glass) measuredSlots.push(slots.glass); if (splitSlot) measuredSlots.push(splitSlot); }
+    // The glass columns' own glazing (columns.glass): a glass slot of its own beside the punched windows' glass.
+    const colGlass = w.columns?.glass ? `glass@g${gi}c` : undefined;
+    if (colGlass) { palette[colGlass] = swatch(w.columns!.glass!); if (measuredGroups.has(gi)) measuredSlots.push(colGlass); }
     palette[slots.curtain] = palette[slots.frame];
     // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
@@ -332,7 +335,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
       ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
-      ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs}} : {}),
+      ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
       ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}), slots});
   });

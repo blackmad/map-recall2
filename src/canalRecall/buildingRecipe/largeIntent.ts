@@ -214,7 +214,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       const c = w.columns;
       if (!c) problems.push(`${at}.columns: glazed-columns needs columns {bays, share?, from?, slabs?}`);
       else {
-        for (const k of Object.keys(c)) if (!['bays', 'share', 'from', 'slabs'].includes(k)) problems.push(`${at}.columns.${k}: unknown field (bays, share, from, slabs)`);
+        for (const k of Object.keys(c)) if (!['bays', 'share', 'from', 'slabs', 'glass'].includes(k)) problems.push(`${at}.columns.${k}: unknown field (bays, share, from, slabs, glass)`);
+        if (c.glass !== undefined) colour(c.glass, `${at}.columns.glass`);
         if (!Array.isArray(c.bays) || !c.bays.length) problems.push(`${at}.columns.bays: list of bay indices`);
         else c.bays.forEach(b => count(b, `${at}.columns.bays`, 0, (w.baysPerStorey ?? 80) - 1));
         if (w.baysPerStorey === undefined) problems.push(`${at}.columns.bays needs baysPerStorey`);

@@ -63,7 +63,10 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
   const nx = Math.sin(bearing * Math.PI / 180), nz = -Math.cos(bearing * Math.PI / 180), tx = nz, tz = -nx;
   const tOf = (u: number) => (panel.o[0] + panel.r[0] * u) * tx + (panel.o[2] + panel.r[2] * u) * tz;
   const t0 = Math.min(tOf(box.u0), tOf(box.u1)), t1 = Math.max(tOf(box.u0), tOf(box.u1));
-  const el = renderElevation(soup, {name: 'panel', bearing, span: [t0 - 0.05, t1 + 0.05], depthBand: 2.5}, cell);
+  // the band is pinned to the panel's own plane (+1 m for canopies, balconies, column bays standing proud), not to the
+  // front-most geometry in the span: Waagdragerhof's warehouse front (walls[2]) sits 10+ m behind a nearer volume
+  const frontDepth = panel.o[0] * nx + panel.o[2] * nz + 1;
+  const el = renderElevation(soup, {name: 'panel', bearing, span: [t0 - 0.05, t1 + 0.05], depthBand: 2.5, frontDepth}, cell);
   const cols = Math.max(1, Math.floor((box.u1 - box.u0) / cell)), rows = Math.max(1, Math.floor((box.v1 - box.v0) / cell)), N = cols * rows;
   const matAt = new Int32Array(N).fill(-1), shade = new Float32Array(N);
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
@@ -97,6 +100,11 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
 }
 
 export type Verdict = 'PASS' | 'WARN' | 'FAIL' | 'NO EVIDENCE';
+
+/** NO EVIDENCE when the photo abstains; FAIL on a colour, glazing or shape miss; WARN on a column-count miss or a mask IoU under 0.45. */
+export function likenessVerdict(a: {abstain: string[]; fails: string[]; warns: string[]; iou: number | null}): Verdict {
+  return a.abstain.length ? 'NO EVIDENCE' : a.fails.length ? 'FAIL' : a.warns.length || (a.iou !== null && a.iou < LIKENESS.iouWarn) ? 'WARN' : 'PASS';
+}
 export interface LikenessResult {
   verdict: Verdict; reasons: string[];
   shift: {uM: number; vM: number}; iou: number | null;
@@ -174,11 +182,15 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const reasons: string[] = [];
   if (!wallPass) reasons.push(`wall ${!mw ? 'not drawn' : pFam !== mFam ? `family ${mFam} vs photo ${pFam}` : Math.abs(dL!) > LIKENESS.dL ? `dL ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)}` : `hue ${dHue!.toFixed(0)} deg`}`);
   if (!glazingPass) reasons.push(`glazing ${maxDiff !== null && maxDiff > LIKENESS.storeyGlazing ? `storey band off by ${maxDiff.toFixed(2)}` : ''}${meanDiff > LIKENESS.meanGlazing ? ` mean ${mg.glazing.toFixed(2)} vs photo ${pg.glazing.toFixed(2)}` : ''}`.trim());
-  if (colPass === false) reasons.push(`columns ${mg.columns ?? 'none'} vs photo ${pg.columns}`);
+  // column count: WARN only until bay-pitch detection is reliable (it counts mullion halves and ribbon panes as columns:
+  // Spinoza Lyceum 30 vs 16 bays, Wibautstraat 78 28 vs 8 ribbons, both reading right on the sheet)
+  const warns: string[] = [];
+  if (colPass === false) warns.push(`columns ${mg.columns ?? 'none'} vs photo ${pg.columns}`);
   if (shapePass === false) reasons.push(`window shape ${mg.window?.shape ?? 'none'} vs photo ${pg.window!.shape}`);
   const iou = best.iou >= 0 ? +best.iou.toFixed(3) : null;
-  const verdict: Verdict = abstain.length ? 'NO EVIDENCE' : reasons.length ? 'FAIL' : iou !== null && iou < LIKENESS.iouWarn ? 'WARN' : 'PASS';
-  if (verdict === 'WARN') reasons.push(`mask IoU ${iou} < 0.45`);
+  const verdict = likenessVerdict({abstain, fails: reasons, warns, iou});
+  if (verdict === 'WARN' || verdict === 'FAIL') reasons.push(...warns);
+  if (verdict === 'WARN' && iou !== null && iou < LIKENESS.iouWarn) reasons.push(`mask IoU ${iou} < 0.45`);
   const pm = nearestMaterial(pw, pFam === 'paint' ? 'paint' : pFam), mm = mw && mFam ? nearestMaterial(mw, mFam === 'paint' ? 'paint' : mFam) : null;
   return {verdict, reasons: abstain.length ? abstain : reasons, shift: {uM: +(best.du * cell).toFixed(2), vM: +(best.dv * cell).toFixed(2)}, iou,
     wall: {photo: photo.wall.hex, photoRaw: photo.wall.rawHex, model: mw ? hex(mw) : null, modelToday: model.wallToday ? hex(model.wallToday) : null, photoFamily: pFam, modelFamily: mFam, photoMaterial: pm.material.id, modelMaterial: mm?.material.id ?? null, dL: dL === null ? null : +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass},
