@@ -143,12 +143,31 @@ heavy cornice instead of the 1.6 m frieze, which had swallowed their top windows
 its own dark brick (#4b4639; the review had flagged it 0.11 too light). Facade-compare rows went from 16 FAIL to 0 FAIL
 above the ground once per-house photo rows counted modules and dormers.
 
+## White courses, springers and head lines (kit lane, 2026-10-14)
+
+The two Kinkerstraat types now use the keys below. The keys themselves, the measured values per type, the rendered and
+photo colours, and the tests are written up in [nassaukade-506-20261014.md](nassaukade-506-20261014.md#white-courses-springers-round-arches-and-head-lines-kit-lane-2026-10-14).
+
+- **`kinker-1890-brick-arched`:**
+  - the white sill and transom courses (transom at 0.63, 0.08 m);
+  - the white impost row as `archRing.style: springers` (0.32 × 0.28 m, two springers per pier 0.09 m apart);
+  - `headLines` 0.94 / 0.856 / 0.793, which put the crowns on the impost rows of 162482;
+  - painted stone `#eae7dc`.
+- **`kinker-1895-painted-band`:**
+  - its blocked heads as springers (0.12 × 0.15 m) plus a keystone;
+  - painted stone `#e2e1d5` / `#e3e1d5`.
+
+The re-rendered sheets are `images/kinkerstraat/kinker-2-30-sheet.jpg` and
+`images/kinkerstraat/kinker-2-30-row-18-4-zoom.jpg`.
+
 ## What the kit still cannot say (Kinkerstraat)
 
-- **A painted course at an arbitrary height in the window** (`bands: painted` puts the transom line at a fixed 0.78
-  of the window; the 18-4 row's course is at about 0.63). Also the dotted
-  variant: on 18-4 and 296-300 the impost course is a line of white blocks joined to the arch springers, not a
-  continuous band.
+- **Wedge springers and the rubbed-brick ring:**
+  - on the 18-4 row, each springer rises toward the arch, forming a V over each pier with an iron anchor in the gap;
+    the kit's springers are square slabs (`archRing.style: springers`, measured 0.32 × 0.28 m);
+  - the dark rubbed-brick ring between them is not drawn.
+- **Window width:** the 18-4 row's windows are about 0.95 m wide, while the type's `windowShare` 0.55 draws about
+  0.8 m (not re-measured in this lane).
 - **Recessed arcade with a first-floor gallery** (109-161, 173-225): piers in front, shops set back ~3 m, a gallery
   rail at 3.5-5 m.
 - **Set-back top storey** in a lighter material (173-225: cream top storey behind a balustrade) and the **curved drum
