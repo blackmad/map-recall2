@@ -1,0 +1,108 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "tilanusstraat-23-240319",
+ "pandId": "0363100012240319",
+ "address": "Tilanusstraat 23K, Amsterdam-Oost: 2013 block of red-brick gridded wings and a curved louvred glass tower, round a retained 1900s brick school range",
+ "sources": [
+  {
+   "id": "pano-2019-05-15-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-15",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001184_pano_0002_000090/",
+   "image": "staging/pand-reference-walls/0363100012240319/w01-160.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-15-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-15",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000723_pano_0003_000196/",
+   "image": "staging/pand-reference-walls/0363100012240319/w02-250.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-06-01-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2016-06-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000062_pano_0000_000120/",
+   "image": "staging/pand-reference-walls/0363100012240319/w03-340.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    35,
+    57,
+    105
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 18,
+   "ground": "system",
+   "windows": "narrow",
+   "deepBars": true,
+   "palette": {
+    "brick": "#a0502e",
+    "frame": "#3a4448",
+    "stone": "#c8b8a0"
+   }
+  },
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "system": "ribbon-windows",
+   "storeys": 8,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "windows": "wide",
+   "deepBars": true,
+   "wallMaterial": "stone",
+   "palette": {
+    "brick": "#8e9296",
+    "frame": "#5a6a74",
+    "stone": "#8e9296"
+   }
+  },
+  {
+   "wallSurfaces": [
+    7,
+    39,
+    40,
+    94,
+    95,
+    96
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "narrow",
+   "deepBars": true,
+   "palette": {
+    "brick": "#6a3228",
+    "frame": "#d8d4c8",
+    "stone": "#9a9890"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#a0502e",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "stone": "#c8c0b0"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Tilanusstraat 23K (BAG, 2013; Amsterdam-Oost, Eerste Boerhaavestraat side): a block of red-brick gridded wings, a curved glass tower with stacked louvre bands on the Tilanusstraat corner and, along the east side, a retained 1900s brick school range with a stone oriel. 117 3DBAG wall surfaces; three street fronts are drawn (w01-160 south, w02-250 west tower, w03-340 north), the rest stays blank.",
+  "walls[0] = panel 32 (S, 77 m, eaves 18.5): red clinker brick with deep-set paired windows in gridded bays, drawn as 5 storeys x 18 bays of narrow windows; the stepped upper floors (31.9 m surfaces) and the curved corner are straight/blank. walls[1] = panel 33 (W, 46 m, eaves 31.9): the louvred tower front, a glazed ground storey (shop/lobby) under eight bands of grey louvres and glass; drawn as ribbon-windows, 8 storeys x 6 bays of wide windows in a grey stone-material skin. The real front is a curved glass skin with continuous aluminium louvre blades: the curve and the louvres are not modelled (a curtain-wall grid was tried and read as a square grid). walls[2] = panel 6 (N, 37 m, eaves 15.5): dark brown brick with tall paired windows, 4 storeys x 9 bays.",
+  "Not drawn: the retained brick school range with its stone oriel and blue-brick plinth band (w04-70, east side; it matches no unambiguous 3DBAG panel: panels 2 and 13 share one party-wall footprint with the new wing) and the lobby entrance on the tower front; the east, courtyard and scaffolded fronts (w07-70 is under scaffolding)."
+ ]
+}
