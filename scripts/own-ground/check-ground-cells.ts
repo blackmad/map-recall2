@@ -31,6 +31,8 @@ const store = new GroundStore(readExtract);
 const noParks = new GroundStore(readExtract, { parks: false });
 /** The same ground without water opened under footbridges (the openings regressions show the pin is live). */
 const noOpenings = new GroundStore(readExtract, { openings: false });
+/** The same ground without the fixed spans beside movable leaves (the approaches regression shows the pin is live). */
+const noApproaches = new GroundStore(readExtract, { approaches: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -226,6 +228,8 @@ async function main(): Promise<void> {
   await deckTopRegressions();
   await pocketRegressions();
   await openingRegressions();
+  await approachRegressions();
+  await zooRegressions();
   await parkFillRegressions();
   await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
@@ -377,6 +381,77 @@ async function openingRegressions(): Promise<void> {
     const on = await under(store), off = await under(noOpenings);
     check(!on.bad.length && (store.openedDecks.get(owner) ?? [...store.openedDecks.values()].flat()).includes(id), `${id} (${label}): water opened under it, ${on.probes - on.bad.length}/${on.probes} probes free of land and quay walls${on.bad.length ? ` (${on.bad.slice(0, 4).join(' ')})` : ''}`);
     check(off.bad.length > 0, `${id}: without the opening ${off.bad.length}/${off.probes} probes hit land or a quay wall (the pin is live)`);
+  }
+}
+
+/**
+ * Fixed spans beside movable leaves (ride review 2026-10-14): the Nijlpaardenbrug's register footprint is its ~10 m
+ * leaf, its OSM way (31485502) runs 36 m quay to quay over the Entrepotdok, and the leaf floated mid-canal. On the
+ * way's axis between the leaf and each quay (0.2/0.3 and 0.7/0.8 of the way), a deck top is drawn and the cycleway's
+ * band is not cut away by the water; without the approaches neither holds.
+ */
+const APPROACHES: [string, number, number, number, number, string][] = [['BRU1907', 4.913675, 52.368474, 4.913939, 52.368754, 'Nijlpaardenbrug, Entrepotdok']];
+async function approachRegressions(): Promise<void> {
+  await noApproaches.init();
+  for (const [id, lng0, lat0, lng1, lat1, label] of APPROACHES) {
+    const [x0, y0] = toLocal(lng0, lat0), [x1, y1] = toLocal(lng1, lat1);
+    const probe = async (s: GroundStore) => {
+      const keys = GroundStore.neighbours(s.cellAt((x0 + x1) / 2, (y0 + y1) / 2)).filter(k => s.covers(k));
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+      const out: string[] = [];
+      for (const f of [0.2, 0.3, 0.7, 0.8]) {
+        const x = x0 + (x1 - x0) * f, y = y0 + (y1 - y0) * f, hits = cells.flatMap(c => layersAt(c, x, y).hits);
+        const deck = hits.some(h => h.layer === 'deckTop'), band = hits.some(h => h.layer === 'cycle' && !h.cut);
+        out.push(`${f}:${deck ? 'deck' : '-'}${band ? '+band' : ''}`);
+      }
+      return out;
+    };
+    const on = await probe(store), off = await probe(noApproaches);
+    check(on.every(p => p.endsWith('deck+band')), `${id} (${label}): deck top and cycle band from the leaf to both quays (${on.join(' ')})`);
+    check(off.filter(p => p.endsWith('deck+band')).length === 0, `${id}: without the approaches the leaf floats (${off.join(' ')}) (the pin is live)`);
+  }
+}
+
+/**
+ * Zoos are green ground (ride review 2026-10-14): Artis (tourism=zoo, OSM a8733446) was missing from the extract, so
+ * its grounds drew as bare land, a sand plaza from the Entrepotdok and the Plantage Middenlaan. A 12 × 12 grid of
+ * probes inside its outline: at most 5 % may read bare land (10 % in its own cell or in the neighbour holding its west third)
+ * (the land grid poked through the 8 m fill in hollows: 14 % before groundCell's underGreen cull, 54 % in the
+ * neighbour); with the area dropped from the cell's input the land share is back over half (the pin is live).
+ */
+const ZOOS: [string, string][] = [['a8733446', 'Artis']];
+async function zooRegressions(): Promise<void> {
+  for (const [id, label] of ZOOS) {
+    let found: { key: string; ring: [number, number][] } | null = null;
+    for (const k of store.osmCells) {
+      const cell = await store.osmCell(k);
+      const a = cell?.areas.find(x => x.id === id);
+      if (a) { found = { key: k, ring: a.rings[0].map(([lng, lat]) => toLocal(lng, lat)) }; break; }
+    }
+    if (!found) { check(false, `${id} (${label}): in the OSM cells`); continue; }
+    const { key, ring } = found;
+    const inside = (x: number, y: number) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+    const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]), probes: [number, number][] = [];
+    for (let i = 0; i < 12; i++) for (let j = 0; j < 12; j++) {
+      const x = Math.min(...xs) + (Math.max(...xs) - Math.min(...xs)) * (i + 0.5) / 12, y = Math.min(...ys) + (Math.max(...ys) - Math.min(...ys)) * (j + 0.5) / 12;
+      if (inside(x, y)) probes.push([x, y]);
+    }
+    const share = async (drop: boolean) => {
+      const cells: BuiltCell[] = [];
+      for (const k of GroundStore.neighbours(key).filter(n => store.covers(n))) {
+        const input = await store.cellInput(k, 0);
+        cells.push(buildCell(drop && input.osm ? { ...input, osm: { ...input.osm, areas: input.osm.areas.filter(a => a.id !== id) } } : input));
+      }
+      // The land is culled under the fill in the owner cell and its neighbours (groundCell underGreen): report both.
+      const [r0, r1, r2, r3] = store.cellRect(key), own = (x: number, y: number) => x >= r0 && x < r2 && y >= r1 && y < r3;
+      const tops = probes.map(([x, y]) => cells.map(c => layersAt(c, x, y)).find(r => r.top)?.top ?? 'none');
+      const land = (sel: boolean) => { const i = probes.map((q, k) => k).filter(k => own(probes[k][0], probes[k][1]) === sel); return i.filter(k => tops[k] === 'land').length / Math.max(1, i.length); };
+      return { own: land(true), neighbour: land(false), all: tops.filter(t => t === 'land').length / Math.max(1, tops.length) };
+    };
+    const on = await share(false), off = await share(true);
+    check(on.all <= 0.05 && on.own <= 0.1 && on.neighbour <= 0.1, `${id} (${label}): ${(on.all * 100).toFixed(0)} % of ${probes.length} probes inside it read bare land (${(on.own * 100).toFixed(0)} % in its own cell, ${(on.neighbour * 100).toFixed(0)} % in the neighbour's)`);
+    check(off.all > 0.5, `${id}: without the zoo area ${(off.all * 100).toFixed(0)} % read bare land (the pin is live)`);
   }
 }
 

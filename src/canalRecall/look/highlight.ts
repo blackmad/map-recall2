@@ -466,6 +466,16 @@ export function detachHighlightPasses(mesh: any): void {
 }
 
 /**
+ * World up for the landmark GLBs' passes (`PassOptions.up`), by how signature-landmarks draws them. The shared frame
+ * puts each Mercator holder under a root its frame maps to east/north/up metres: up is +z. Both legacy layers draw a
+ * y-up world (a per-model scene in glTF space, the transform baked into the camera; the batched scene's
+ * `anchorWorldFromMercator` sends altitude to +y): up is +y. Ride review 2026-10-14: the landmark layer passed +y in
+ * the shared frame too, so the roof wash read north as up and painted the Westerkerk's walls orange while its card was
+ * open (hlUp [-0.06, 0, -1] in glTF space; the roofs stayed slate).
+ */
+export const LANDMARK_WORLD_UP = { shared: [0, 0, 1], legacy: [0, 1, 0] } as const satisfies Record<string, readonly [number, number, number]>;
+
+/**
  * Add the style's passes as children of `mesh` (sharing geometry; instanced meshes share instance matrices).
  * Idempotent; no passes for styles without outline/rim. Returns the pass meshes.
  */

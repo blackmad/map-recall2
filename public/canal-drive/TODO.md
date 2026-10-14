@@ -1435,6 +1435,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the face and the two Kinkerstraat proof faces through the tile compiler; then a pass over the installed
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
+- **P1 Ride-review rows, Jordaan and Plantage** (HISTORY "Ride review,
+  Jordaan and Plantage"; three fixed there): the Westerkerk roof wash when
+  the church is large in frame (J2); chase pitch hides the Westertoren
+  until ~100 m (J3); inner-block gardens as bare sand (J4, needs a garden
+  class from BGT or BAG courtyards); Bloemgracht streamed boxes (J5, the
+  recipe-tiles migration); Nieuwe-Wercksbrug deck slabs over land (J6);
+  Noordermarkt playground slabs (J7); Pansemertbrug flush deck (J8);
+  Entrepotdok warehouse boxes and gable stubs (P3); Walter Süskindbrug as
+  a wire cube (P4, movable without deck data); Artis main gate and the
+  Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from
+  Artis (P7); the rippling curved facade (P8, check a photo); the
+  Gandhiplantsoen hedge box (P9). `scripts/ride-review-shots.mjs` with
+  specs in `scripts/ride-review/` is the method for the next
+  neighbourhoods.
 - **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14): the
   lane is DONE (HISTORY "Bridges per bridge": 255 bridges with facts, 43
   of 48 named sheets pass, two bascule styles, decks reach the banks, 190
