@@ -25841,10 +25841,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012083091",
       "name": "Politiebureau Houtmankade, Houtmankade 34, Amsterdam (1993; police bureau on the ground floor of a curved housing block, one pand)",
-      "hash": "b66ae82baefb4abe8918088bc4f987fd513205a13e9735ed0bccff7b21047cd3",
-      "sha256": "b66ae82baefb4abe8918088bc4f987fd513205a13e9735ed0bccff7b21047cd3",
-      "bytes": 242920,
-      "triangles": 2999,
+      "hash": "71217f0a0ade1c30afbd9f4c514f1126f7ef9eb7c8b5fd35a66a213e9c3c1d87",
+      "sha256": "71217f0a0ade1c30afbd9f4c514f1126f7ef9eb7c8b5fd35a66a213e9c3c1d87",
+      "bytes": 269460,
+      "triangles": 3379,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -26082,7 +26082,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012083091",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:27.752Z",
+      "updatedAt": "2026-10-14T03:11:36.178Z",
       "bagYear": 1993
     },
     {
