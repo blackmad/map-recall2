@@ -96,5 +96,6 @@
  "notes": [
   "Het Amsterdams Lyceum, Valeriusplein 15 (pand 0363100012149878, 1920s Amsterdam School, 216 LoD2.2 surfaces, roof max 19.9 m). The south-east front (2024-11-06 w01-157, surfaces 49/174, 20.6 m) and the north-west front (2017-04-13 w02-337, surface 118) are twins: dark hand-made brick, a ground storey pierced by two round carriage arches on a stout central pier with stepped brick buttresses, the legend HET AMSTERDAMS LYCEUM in light capitals above the arches, two storeys of six white-framed window columns between brick piers with a lower brick panel under each window, and a deep stepped brick cornice with the end blocks rising above it.",
   "MODELLED: both fronts' two round carriage arches (new `gateways` component: dark round-arched openings 92 % of a bay wide in bays 1 and 2 of 4, plain brick between), the lettering HET AMSTERDAMS LYCEUM on the wall above the arches, two window storeys between brick piers, the stepped end blocks from the 3DBAG massing. SIMPLIFIED: four wide multi-light windows per storey instead of six single columns (the arches need a 5 m bay to be as wide as the real ones); the openings are dark recesses, not a passage you see through (the 3DBAG massing is solid at ground); the stepped cornice and buttress corbelling are the plain massing; the lettering is the kit's capitals, not the Amsterdam School letterforms. SKIPPED: traffic signs and bicycle racks (temporary), the lamp posts and pavement (not building), the courtyard and side walls (no photo of their own: blank)."
- ]
+ ],
+ "layeredKit": true
 }
