@@ -30,6 +30,8 @@ export interface Bucket {
   positions: number[];
   normals: number[];
   uvs: number[];
+  /** `measured`: the tint is a measured wall colour (painted brick); exported as `tintSource` so the look keeps it. */
+  tintSource?: 'measured';
 }
 
 export type BucketMap = Map<string, Bucket>;

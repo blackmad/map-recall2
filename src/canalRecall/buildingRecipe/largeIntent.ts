@@ -58,7 +58,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.roof !== undefined) oneOf(intent.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glass'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
-  if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
+  if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS.filter(m => m !== 'painted-brick'), 'palette.wallMaterial');
   const seen = new Map<number, number>();
   if (!Array.isArray(intent?.walls) || !intent.walls.length) problems.push('at least one wall group is required');
   else intent.walls.forEach((w, i) => {

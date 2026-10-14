@@ -32,7 +32,16 @@
       0.7,
       0.68
     ],
-    "windowShare": 0.55
+    "windowShare": 0.55,
+    "bands": "painted",
+    "bandLines": [
+      "sill",
+      "transom"
+    ],
+    "bandHeights": {
+      "sill": 0.1,
+      "transom": 0.12
+    }
   },
   "crowns": {
     "pediment-dormer": {
@@ -168,6 +177,7 @@
     "dormer scroll cheeks"
   ],
   "notes": [
-    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json); kinker-2-30 = median of pands 6-14 on the overcast 2024-12-11 strip, cornice from 236814 (the only cornice whose light pixels pass 35 %)."
+    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json); kinker-2-30 = median of pands 6-14 on the overcast 2024-12-11 strip, cornice from 236814 (the only cornice whose light pixels pass 35 %).",
+    "Bands: bands painted (Oud-West 1900 lane, merged 2026-10-14) on the sill and transom lines, 0.10 and 0.12 m: the white sill course and the upper course measured as band rows 0.10-0.13 m tall on 162482 and 236814 (evidence above). The planned 0.04 / 0.05 m sill + head bands were 2 px at 40 px/m and put the upper line on the arch springing, ~0.75 m above the photo course."
   ]
 }

@@ -26,8 +26,8 @@ const SLOT_ORDER = ['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glas
 export async function writeChunkGlb(input: ChunkGlbInput): Promise<{bytes: Uint8Array; triangles: number; primitives: number; quantized: boolean}> {
   const doc = new Document(), buffer = doc.createBuffer(), scene = doc.createScene(input.name), mesh = doc.createMesh(input.name);
   doc.getRoot().setDefaultScene(scene);
-  const keys = new Map<string, {slot: string; tint: string; surface: string}>();
-  for (const h of input.houses) for (const b of h.buckets.values()) if (!keys.has(b.key)) keys.set(b.key, {slot: b.slot, tint: b.tint, surface: b.surface});
+  const keys = new Map<string, {slot: string; tint: string; surface: string; tintSource?: 'measured'}>();
+  for (const h of input.houses) for (const b of h.buckets.values()) if (!keys.has(b.key)) keys.set(b.key, {slot: b.slot, tint: b.tint, surface: b.surface, ...(b.tintSource ? {tintSource: b.tintSource} : {})});
   const ordered = [...keys.entries()].sort(([ka, a], [kb, b]) => (SLOT_ORDER.indexOf(a.slot) - SLOT_ORDER.indexOf(b.slot)) || ka.localeCompare(kb));
   for (const p of input.pands) p.ranges = [];
   let triangles = 0;
@@ -50,7 +50,7 @@ export async function writeChunkGlb(input: ChunkGlbInput): Promise<{bytes: Uint8
       triangles += count;
     });
     const c = key.split('_')[0], rgb = [0, 2, 4].map(i => parseInt(c.slice(i, i + 2), 16) / 255);
-    const material = doc.createMaterial(key).setExtras({canalhouseSurface: info.surface, materialSlot: info.slot, tint: info.tint}).setBaseColorFactor([rgb[0], rgb[1], rgb[2], 1]).setMetallicFactor(0).setRoughnessFactor(0.9);
+    const material = doc.createMaterial(key).setExtras({canalhouseSurface: info.surface, materialSlot: info.slot, tint: info.tint, ...(info.tintSource ? {tintSource: info.tintSource} : {})}).setBaseColorFactor([rgb[0], rgb[1], rgb[2], 1]).setMetallicFactor(0).setRoughnessFactor(0.9);
     const primitive = doc.createPrimitive().setMaterial(material).setExtras({pandRanges: ranges})
       .setIndices(doc.createAccessor().setType('SCALAR').setArray(positions.length / 3 < 65536 ? Uint16Array.from(indices) : Uint32Array.from(indices)).setBuffer(buffer))
       .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(Float32Array.from(positions)).setBuffer(buffer))

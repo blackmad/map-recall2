@@ -5,6 +5,8 @@
  *
  *   node --import tsx scripts/block-face/intake.ts --face=bilder-124-136 --street=Bilderdijkstraat --seed=0363100012156287 \
  *        [--from=<pand> --to=<pand>] [--date=YYYY-MM-DD] [--span-date=<pand6>:YYYY-MM-DD,...] [--ppm=40] [--no-strip]
+ *        [--bay-outline=<pand6>,...]   pands whose BAG outline carries an overhanging erker: front rebuilt on the facade
+ *                                      chord, footprint and roofs clipped behind it (blockFace/bayOutline.ts)
  *
  * Writes (committed, small, derived):
  *   scripts/block-face/faces/<face>/discovery.json         members in street order, why the face ends, rejected pands
@@ -22,6 +24,7 @@ import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {AMSTERDAM_WORLD_ALIGNED, rectifyFacade} from '../../src/canalRecall/facade/rectify.ts';
 import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
 import {discoverBlockFace} from '../../src/canalRecall/blockFace/discover.ts';
+import {chordOverBay} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {medianFuse, planStrip, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
 import {assignUses, type OsmBusiness, type BagUnit} from '../../src/canalRecall/blockFace/uses.ts';
 import {cachedJson} from '../pand-reference/core.ts';
@@ -81,7 +84,7 @@ async function bagUnits(min: RD, max: RD): Promise<BagUnit[]> {
   return out;
 }
 
-export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; spanDates?: Record<string, string>; ppm?: number; strip?: boolean}) {
+export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; spanDates?: Record<string, string>; ppm?: number; strip?: boolean; bayOutline?: string[]}) {
   const t0 = performance.now(), timings: Record<string, number> = {};
   const lap = (k: string, t: number) => { timings[k] = round((performance.now() - t) / 1000, 1); return performance.now(); };
   const streets: StreetPath[] = (JSON.parse(await fs.readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]).map(s => ({name: s.name, paths: s.paths ?? [s.path]}));
@@ -98,6 +101,14 @@ export async function intake(o: {face: string; street: string; seed: string; fro
     r *= 2;
   }
   let t = lap('discoverS', t0);
+  // Pands whose BAG outline carries an overhanging erker: rebuild the front on the facade chord (bayOutline.ts).
+  const uncorrected = new Map<string, unknown>();
+  for (const p of found.pands) if (o.bayOutline?.some(id => p.pandId.endsWith(id))) {
+    const before = p.facts.fronts[0].widthM;
+    uncorrected.set(p.pandId, p.facts);
+    p.facts = chordOverBay(p.facts);
+    console.log(`  ${p.pandId.slice(-6)}: bay outline -> facade chord ${round(before)} m -> ${round(p.facts.fronts[0].widthM)} m`);
+  }
   const dir = path.join(FACES, o.face);
   await fs.mkdir(dir, {recursive: true});
   for (const p of found.pands) {
@@ -105,6 +116,8 @@ export async function intake(o: {face: string; street: string; seed: string; fro
     await fs.mkdir(pd, {recursive: true});
     await fs.writeFile(path.join(pd, '3dbag.json'), JSON.stringify({...p.item, fetchedAt: p.facts.source.fetchedAt}) + '\n');
     await fs.writeFile(path.join(pd, 'facts.json'), JSON.stringify(p.facts, null, 1) + '\n');
+    // Provenance of a bay-outline correction: the facts as discovered, before the chord rebuild.
+    if (uncorrected.has(p.pandId)) await fs.writeFile(path.join(pd, 'facts-bay-outline.json'), JSON.stringify(uncorrected.get(p.pandId), null, 1) + '\n');
   }
   await fs.writeFile(path.join(dir, 'discovery.json'), JSON.stringify({...found.report, areaHalfSizeM: r, pands: found.pands.map(p => ({pandId: p.pandId, alongM: p.alongM, widthM: round(p.facts.fronts[0].widthM), eavesM: round(p.facts.fronts[0].eavesM), roofMaxM: round(p.facts.heights.roofMaxM), storeys3dbag: p.facts.heights.storeys, builtYear: p.facts.heights.builtYear, uncertainty: p.facts.fronts[0].uncertainty}))}, null, 1) + '\n');
   console.log(`${o.face}: ${found.pands.length} pands ${found.pands.map(p => p.pandId.slice(-6)).join(' ')}; ends: ${found.report.ends.map(e => `${e.side}: ${e.reason}`).join(' | ')}`);
@@ -193,5 +206,5 @@ export async function labelledStrip(strip: any, out: string, uses: {pandId: stri
 if (process.argv[1]?.endsWith('block-face/intake.ts')) {
   const face = arg('face'), street = arg('street'), seed = arg('seed');
   if (!face || !street || !seed) throw Error('Use --face --street --seed [--from --to --date --ppm --no-strip]');
-  await intake({face, street, seed: seed.length === 6 ? `0363100012${seed}` : seed, from: arg('from') && (arg('from')!.length === 6 ? `0363100012${arg('from')}` : arg('from')), to: arg('to') && (arg('to')!.length === 6 ? `0363100012${arg('to')}` : arg('to')), date: arg('date'), spanDates: arg('span-date') ? Object.fromEntries(arg('span-date')!.split(',').map(x => x.split(':'))) : undefined, ppm: Number(arg('ppm')) || undefined, strip: !process.argv.includes('--no-strip')});
+  await intake({face, street, seed: seed.length === 6 ? `0363100012${seed}` : seed, from: arg('from') && (arg('from')!.length === 6 ? `0363100012${arg('from')}` : arg('from')), to: arg('to') && (arg('to')!.length === 6 ? `0363100012${arg('to')}` : arg('to')), date: arg('date'), spanDates: arg('span-date') ? Object.fromEntries(arg('span-date')!.split(',').map(x => x.split(':'))) : undefined, ppm: Number(arg('ppm')) || undefined, strip: !process.argv.includes('--no-strip'), bayOutline: arg('bay-outline')?.split(',')});
 }

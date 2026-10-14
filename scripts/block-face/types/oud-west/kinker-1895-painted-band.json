@@ -55,7 +55,7 @@
       "door": "black",
       "stone": "#c5c8b1",
       "cornice": "#b4b69e",
-      "wallMaterial": "stucco"
+      "wallMaterial": "painted-brick"
     },
     "dark-brown": {
       "brick": "#5d5042",
@@ -121,6 +121,7 @@
     "the eared window surrounds the plan expected were not found on any Kinkerstraat strip; the white dressing here is blocked heads and keystones"
   ],
   "notes": [
-    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (236471 black-painted, 158140 dark brown); stone = band-row median of the group (n=3)."
+    "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (236471 black-painted, 158140 dark brown); stone = band-row median of the group (n=3).",
+    "black-painted: wallMaterial painted-brick (Oud-West 1900 lane's key, merged 2026-10-14) instead of the stucco slot, so the measured near-black paint is exported unclamped over brick joints."
   ]
 }
