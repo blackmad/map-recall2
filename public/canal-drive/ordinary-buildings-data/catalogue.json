@@ -43509,6 +43509,199 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T01:37:01.884Z"
+    },
+    {
+      "id": "ordinary-0363100012134024",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012134024",
+      "name": "Asterweg 17-19, Amsterdam-Noord (Buiksloterham): 2006 brick office-and-workshop block with a raised brick storey carried over an open steel-truss ground floor",
+      "hash": "b4154caa0699c66c0f1b9ad21c6934c30e3cd70529ce5f1c9e5e50e6f7c6a277",
+      "sha256": "b4154caa0699c66c0f1b9ad21c6934c30e3cd70529ce5f1c9e5e50e6f7c6a277",
+      "bytes": 93668,
+      "triangles": 1125,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -45.473,
+          -1.09,
+          -50.427
+        ],
+        "max": [
+          70.166,
+          33.106,
+          37.497
+        ]
+      },
+      "anchor": [
+        4.9032986,
+        52.3897704
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.903877,
+              52.3899118
+            ],
+            [
+              4.9039536,
+              52.3897563
+            ],
+            [
+              4.9027672,
+              52.3895383
+            ],
+            [
+              4.9027751,
+              52.3895225
+            ],
+            [
+              4.9027431,
+              52.3895169
+            ],
+            [
+              4.9027777,
+              52.3894494
+            ],
+            [
+              4.9028087,
+              52.3894555
+            ],
+            [
+              4.9028207,
+              52.3894315
+            ],
+            [
+              4.90433,
+              52.3897092
+            ],
+            [
+              4.9042768,
+              52.3898157
+            ],
+            [
+              4.9042378,
+              52.3898964
+            ],
+            [
+              4.904076,
+              52.3902268
+            ],
+            [
+              4.9033253,
+              52.3900884
+            ],
+            [
+              4.9026285,
+              52.3899594
+            ],
+            [
+              4.9027247,
+              52.3897632
+            ],
+            [
+              4.9027478,
+              52.3897673
+            ],
+            [
+              4.9027758,
+              52.3897101
+            ],
+            [
+              4.9028714,
+              52.3897276
+            ],
+            [
+              4.9028658,
+              52.3897379
+            ],
+            [
+              4.9030532,
+              52.3897737
+            ],
+            [
+              4.9030599,
+              52.389761
+            ],
+            [
+              4.903245,
+              52.3897947
+            ],
+            [
+              4.903239,
+              52.389808
+            ],
+            [
+              4.9034252,
+              52.3898422
+            ],
+            [
+              4.9034317,
+              52.3898303
+            ],
+            [
+              4.9036145,
+              52.3898633
+            ],
+            [
+              4.9036089,
+              52.3898758
+            ],
+            [
+              4.9037969,
+              52.3899104
+            ],
+            [
+              4.9038025,
+              52.3898978
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 33.11,
+      "height": 33.11,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-asterweg-19-134024.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012134024"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "asterweg-19-134024",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012134024/w02-74.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows+entrance 2st 20b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Asterweg 17-19 (BAG, 2006; Buiksloterham): a brick workshop-and-office block whose raised upper storey is carried over an open ground floor on diagonal steel trusses. 116 3DBAG wall surfaces; the east front (panel 0, w02-74, 2021-06-16, 60 m) is the only street front with a panorama within 35 m, the rest stays blank (otherWalls).",
+        "walls[0] = panel 0: a brick storey with a continuous ribbon of low windows under the eaves (the ASTERWEG 17 - 19 sign sits on the wall below it), over a ground floor that is glazed at the left end and an open dark arcade with galvanised diagonal trusses to the right, closing in a brick ramp wall. Drawn as ribbon-windows, 2 storeys, 20 bays, ground storey blank brick with a glazed entrance in bay 1. Simplified: the open arcade and the truss legs (the wall is solid; steel bars under 3 cm and an open void cannot be cut into a 3DBAG wall), the glazed lobby beyond bay 1. Skipped: the ASTERWEG 17-19 wall lettering (the wall-mounted letters leave 32 m of open edge in the export)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012134024",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T01:37:57.301Z"
     }
   ]
 }
