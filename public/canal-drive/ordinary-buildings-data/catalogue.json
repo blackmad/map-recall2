@@ -35114,10 +35114,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118358",
       "name": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
-      "hash": "2aea2605d00c3173e91714ebb5e8f48ed1ddd36e6b3ff9f78e325d031f5b6606",
-      "sha256": "2aea2605d00c3173e91714ebb5e8f48ed1ddd36e6b3ff9f78e325d031f5b6606",
-      "bytes": 805340,
-      "triangles": 11250,
+      "hash": "585586ce656ea75bf648722bf5456706e5698a47284aaff0abfd44cc83a564cd",
+      "sha256": "585586ce656ea75bf648722bf5456706e5698a47284aaff0abfd44cc83a564cd",
+      "bytes": 488980,
+      "triangles": 6749,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -35356,14 +35356,15 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab."
+        "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab.",
+        "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups now glaze the ground storey too (SIMPLIFIED: the photo shows a dark mesh plinth there; the dark glass reads close to it)."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118358",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:48:22.853Z"
+      "updatedAt": "2026-10-14T01:07:53.556Z"
     },
     {
       "id": "ordinary-0363100012243116",
