@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadhouderskade-111-137448",
+ "pandId": "0363100012137448",
+ "address": "Stadhouderskade 111 / Tweede Jan van der Heijdenstraat, Amsterdam-Zuid (De Pijp): 1872 block of dark painted brick shopfront rows, a red-brick factory-style wing with cream window bands and a 1950s balcony block round a supermarket yard",
+ "sources": [
+  {
+   "id": "pano-2021-04-26-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2021-04-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002117_pano_0000_000320/",
+   "image": "staging/pand-reference-walls/0363100012137448/w01-6.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-04-26-w01-2",
+   "kind": "street-panorama",
+   "capturedAt": "2021-04-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002117_pano_0000_000320/",
+   "image": "staging/pand-reference-walls/0363100012137448/w01-6.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-03-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002913_pano_0004_000232/",
+   "image": "staging/pand-reference-walls/0363100012137448/w02-155.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-04-23-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2021-04-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002115_pano_0000_003743/",
+   "image": "staging/pand-reference-walls/0363100012137448/w03-186.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    95,
+    183,
+    166,
+    165,
+    83
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "deepBars": true,
+   "cornice": true,
+   "stringCourses": true,
+   "palette": {
+    "brick": "#3a3a40",
+    "frame": "#f0ece0",
+    "stone": "#e4dcc8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    130,
+    352,
+    353,
+    185,
+    202
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "deepBars": true,
+   "cornice": true,
+   "stringCourses": true,
+   "palette": {
+    "brick": "#3a3a40",
+    "frame": "#f0ece0",
+    "stone": "#e4dcc8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    104
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "cross",
+   "deepBars": true,
+   "stringCourses": true,
+   "palette": {
+    "brick": "#8a4a38",
+    "frame": "#efe9d8",
+    "stone": "#e0d4b8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    55
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "deepBars": true,
+   "balconies": {
+    "storeys": [
+     2,
+     3,
+     4
+    ],
+    "rail": "bars",
+    "bays": [
+     2
+    ]
+   },
+   "palette": {
+    "brick": "#a8654a",
+    "frame": "#efe9d8",
+    "stone": "#8a8a90"
+   },
+   "stoneStoreys": [
+    0
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#8a4a38",
+  "frame": "#efe9d8",
+  "door": "#2a2a2a",
+  "stone": "#d8d0b8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Stadhouderskade 111 (BAG, built 1872) is the De Pijp block round the Albert Heijn/Blokker yard between Stadhouderskade and Tweede Jan van der Heijdenstraat; 359 3DBAG wall surfaces, many party walls. Photographed fronts: w01-6 (north street run, 2021-04-26), w02-155 (the SE brick wing, 2021-04-23), w03-186 (the supermarket gate with the 1950s brick block, 2021-04-23). w04-6 and w05-186 are close-ups of the same fronts. Everything else stays blank (otherWalls).",
+  "walls[0] and walls[1] = the north run on the street, two sets of 3DBAG surfaces of the 14.5-15 m row-house fronts (surfaces 83, 95, 165, 166, 183 and 130, 185, 202, 352, 353): dark painted brick, cream window surrounds and cornice, glazed shopfronts. Drawn as 4 storeys, 5 and 4 bays, plain windows, a plinth-shopfront ground, cornice and string courses. The other row-house surfaces (12.2-13.7 m) and the differing rooflines are left blank/3DBAG roof; the individual gables and house-by-house colour changes are not modelled.",
+  "walls[2] = surface 104 of panel 8: the red-brick wing, 4 storeys x 9 bays of cross windows with cream string courses. walls[3] = surface 55 of panel 47: the 1950s block beside the Albert Heijn gate, a grey tiled base, 4 storeys of paired windows and a stack of balconies at the right-hand bay; drawn as 5 storeys x 3 bays with a bar balcony on storeys 2-4 of bay 2. Simplified: the tenant fascias (Albert Heijn, Blokker), the red doors, the tiled base colour; the Albert Heijn entrance gate itself is outside this pand.",
+  "Not drawn: the courts, the south-east low supermarket wall (panel 47 surfaces 121 and 225, 4.6 m) and the party walls."
+ ]
+}
