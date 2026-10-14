@@ -49179,6 +49179,222 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T03:10:07.638Z"
+    },
+    {
+      "id": "ordinary-0363100012243487",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012243487",
+      "name": "Spinozastraat 51 / Sarphatistraat 104, Amsterdam-Centrum (Weesperbuurt): 2017 hotel and apartment block in sand-yellow ceramic brick with deep square window frames and green glazed roof slopes, wrapped round a retained 1890s brick-and-cream corner house and warehouse on the Sarphatistraat",
+      "hash": "6d655bfcb77ff2e9e9d0cecea136ea6b6be29cc781f4b5d7ae76ceeda92d3974",
+      "sha256": "6d655bfcb77ff2e9e9d0cecea136ea6b6be29cc781f4b5d7ae76ceeda92d3974",
+      "bytes": 876084,
+      "triangles": 11789,
+      "materials": 12,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -39.703,
+          0,
+          -28.971
+        ],
+        "max": [
+          52.364,
+          21.753,
+          26.789
+        ]
+      },
+      "anchor": [
+        4.9115314,
+        52.3616427
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9122294,
+              52.3619059
+            ],
+            [
+              4.9121962,
+              52.3618989
+            ],
+            [
+              4.9121539,
+              52.3618903
+            ],
+            [
+              4.911518,
+              52.3617589
+            ],
+            [
+              4.9115141,
+              52.3617594
+            ],
+            [
+              4.9115131,
+              52.3617593
+            ],
+            [
+              4.9115126,
+              52.3617605
+            ],
+            [
+              4.9113502,
+              52.3617265
+            ],
+            [
+              4.9112464,
+              52.361705
+            ],
+            [
+              4.9112474,
+              52.3617034
+            ],
+            [
+              4.9112459,
+              52.361703
+            ],
+            [
+              4.9112464,
+              52.3617022
+            ],
+            [
+              4.9110735,
+              52.3616651
+            ],
+            [
+              4.911073,
+              52.361666
+            ],
+            [
+              4.9110715,
+              52.3616657
+            ],
+            [
+              4.911071,
+              52.3616665
+            ],
+            [
+              4.9109485,
+              52.3616411
+            ],
+            [
+              4.9110212,
+              52.3615101
+            ],
+            [
+              4.9110244,
+              52.3615107
+            ],
+            [
+              4.911066,
+              52.3614349
+            ],
+            [
+              4.9110763,
+              52.3614111
+            ],
+            [
+              4.9111123,
+              52.3613458
+            ],
+            [
+              4.9111242,
+              52.3613483
+            ],
+            [
+              4.9112078,
+              52.3614117
+            ],
+            [
+              4.9117726,
+              52.3615279
+            ],
+            [
+              4.9119188,
+              52.3615583
+            ],
+            [
+              4.9120231,
+              52.3615796
+            ],
+            [
+              4.9120328,
+              52.3615818
+            ],
+            [
+              4.9120751,
+              52.3615904
+            ],
+            [
+              4.912112,
+              52.3615981
+            ],
+            [
+              4.9121658,
+              52.3616506
+            ],
+            [
+              4.9122986,
+              52.3617809
+            ],
+            [
+              4.9122926,
+              52.361791
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.75,
+      "height": 21.75,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-spinozastraat-51-243487.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012243487"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "spinozastraat-51-243487",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012243487/w01-162.jpg",
+          "staging/pand-reference-walls/0363100012243487/w02-342.jpg",
+          "staging/pand-reference-walls/0363100012243487/w05-341.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 8b",
+          "brick-bay-grid 5st 8b",
+          "brick-bay-grid+entrance 4st 4b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the photographed 3-storey frame grid (double-height window frames with a deep brick reveal) is one wide window per storey and bay, the green ceramic roof slopes are the 3DBAG roof in slate, the pedimented dormers of the old house, its cream stone bands and the warehouse box windows (w07-341) are not modelled. Not drawn: the east wing (panel 17), the round north-east corner, the courtyard walls and the low wings, which stay blank yellow brick; the east front would take 5 more storeys of windows and pushed the model past 12k triangles."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243487",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:13:12.086Z"
     }
   ]
 }
