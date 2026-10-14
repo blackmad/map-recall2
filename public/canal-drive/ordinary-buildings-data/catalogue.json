@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-8,
+          -5.2452087118126656e-08,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-8,
+          9.536743306171047e-08,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-7,
+          -3.814697322468419e-07,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-8,
+          -4.7683716530855236e-08,
           -8.861071586608887
         ],
         "max": [
@@ -48867,6 +48867,122 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T03:25:42.751Z"
+    },
+    {
+      "id": "ordinary-0363100012209785",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012209785",
+      "name": "Asterweg 19B, Amsterdam-Noord (Tuindorp Buiksloot business park): 2005 three-storey block of grey exposed-aggregate concrete panels with curved corners, ribbon windows and a projecting corner box window, over a low concrete plinth with a car-park undercroft",
+      "hash": "dab1ca83131ac3312465f187ef796e6d2d67e9d3f8e621683f8e074d8da1e61a",
+      "sha256": "dab1ca83131ac3312465f187ef796e6d2d67e9d3f8e621683f8e074d8da1e61a",
+      "bytes": 72096,
+      "triangles": 867,
+      "materials": 6,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -69.852,
+          0.001,
+          -22.968
+        ],
+        "max": [
+          43.36,
+          13.927,
+          34.99
+        ]
+      },
+      "anchor": [
+        4.9034387,
+        52.3902598
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.904076,
+              52.3902268
+            ],
+            [
+              4.9039906,
+              52.3904009
+            ],
+            [
+              4.9039063,
+              52.3903854
+            ],
+            [
+              4.9038662,
+              52.390468
+            ],
+            [
+              4.9038244,
+              52.3904601
+            ],
+            [
+              4.9038226,
+              52.3904639
+            ],
+            [
+              4.9024084,
+              52.3902041
+            ],
+            [
+              4.902539,
+              52.3899417
+            ],
+            [
+              4.9026285,
+              52.3899594
+            ],
+            [
+              4.9033253,
+              52.3900884
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 13.93,
+      "height": 13.93,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-asterweg-19b-209785.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012209785"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "asterweg-19b-209785",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012209785/w03-74.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 3st 7b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 4 and 5 (E end, 20 m and 10 m, eaves 13.2): grey exposed-aggregate concrete panels with two ribbon-window bands, a projecting box window at the north corner and a blank concrete ground storey with one small window and a door; drawn as 3 storeys of ribbon windows over a blank ground, in render. Simplified: the curved corner is the 3DBAG wall (the shell is straight-faceted), the box window is part of the ribbon, the car-park undercroft on the south side is not drawn. Everything else (the 100 m north and south walls, the courtyard, the lower west block) stays blank concrete."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012209785",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:46:56.416Z"
     }
   ]
 }

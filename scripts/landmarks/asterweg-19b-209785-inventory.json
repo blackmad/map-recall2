@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "id": "asterweg-19b-209785",
+ "pand": "0363100012209785",
+ "signature": [
+  "concrete-ribbon-end"
+ ],
+ "walls": [
+  {
+   "tag": "w03-74",
+   "bearing": 74,
+   "lengthM": 20.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002181_pano_0000_004655",
+   "capturedAt": "2021-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "concrete-ribbon-end",
+     "kind": "window-shape",
+     "where": "east end: grey aggregate concrete, two ribbon-window bands curving round the corner, over a blank concrete ground",
+     "approxSizeM": [
+      20,
+      13
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 3 storeys of ribbon windows over a blank ground, render",
+     "seenIn": "TMX7316010203-002181_pano_0000_004655"
+    },
+    {
+     "id": "corner-box-window",
+     "kind": "window-shape",
+     "where": "projecting white-framed box window at the upper north-east corner",
+     "approxSizeM": [
+      3,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "folded into the ribbon band; the projection is not modelled",
+     "seenIn": "TMX7316010203-002181_pano_0000_004655"
+    },
+    {
+     "id": "ground-door-window",
+     "kind": "other",
+     "where": "small door and a grated window in the concrete ground storey",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1 m door and a 2 m window on a blank concrete plinth"
+     },
+     "seenIn": "TMX7316010203-002181_pano_0000_004655"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
