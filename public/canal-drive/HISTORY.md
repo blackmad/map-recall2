@@ -1,5 +1,50 @@
 # Canal Recall — what is built
 
+## Statue batch 1: one command, 13 statues, five beat the kit, none shipped (2026-10-14)
+
+Lane `lane/sculpture-batch-20261014` (plan Part 4, route B). `node
+--import tsx scripts/sculptures/reconstruct.ts --id=<statue>` does photo
+pick → cut-out (IS-Net fallback) → TripoSR → decimate → strip in one go:
+defaults per statue in `scripts/sculptures/batch1.json` (kit model,
+Commons title, height, facing); `--title="File:..."` fetches author and
+licence from the Commons API and refuses anything but CC0, PD, CC BY and
+CC BY-SA (`--photo` + `--page-url`/`--author`/`--licence` for other
+sources); `--rembg`, `--box`, `--kit-plinth` + `--plinth-top`,
+`--height`, `--facing`, `--material=bronze|stone`. Output under
+`artifacts/sculpture-reconstruction/<id>/` (routeB.glb with the kit's
+own bronze/stone material slots and no baked photo colour, compare.png,
+source.json with URL, author, licence, date, cut-out model, timings);
+`scripts/sculptures/setup-env.sh` recreates the venvs and the TripoSR
+checkout; the photo cache is now keyed by the photo's sha1 (it was keyed
+by id and silently reused an old photo). Results (strips in
+`docs/images/sculptures/<id>.jpg`, 15–64 s each, 6k tris): better than
+the kit as they stand: De Dokwerker, Mama Baranka, Waterdraagster
+(Bellamyplein), Spinoza, Theo Thijssen's man; Gandhi has the better
+figure but a half-height plinth with flowers baked in; need a second
+photo: Anne Frank (Merwedeplein; tiny photo behind flowers), Multatuli
+(night shot), Wilhelmina (side view reads, front merges), Rembrandt
+(only a 19th-century print; the kit id is the Night Watch group);
+worse, keep the kit: Winkler Prins (a stack of discs comes out as a
+twisted stick), Walraven van Hall (a 10 m fallen tree, wrong class),
+Theo Thijssen's boy (boy, desk and legs fuse); skipped: Carmiggelt (the
+licensed Anefo photos show the sculptor and the widow, not the bust).
+Multi-photo (the TRELLIS.2 route from the tools survey,
+`scripts/sculptures/multiview/run-multi-statue.sh`): only Mama Baranka
+had three licensed side views (Ceescamel (1), (3), (5)); 7 min on the MLX
+port, one coherent body with real sides and back, base disc lost, strip
+unshaded (no material tag in the trial); Waterdraagster, Wilhelmina
+(three RCE photos) and Spinoza are the next candidates at ~7 min and
+27 GB each. Nothing is installed: no catalogue entry, no
+`signature-landmarks.json`, nothing under `public/`; the rule since the
+user's review is that no statue ships without the user's look, so the
+strips are on the demo page for a pick. Caveats: Commons rate-limits
+`upload.wikimedia.org` after ~10 downloads (the fetch backs off up to
+10 min); `--kit-plinth` also pulls in any kit triangle under `plinthTop`
+within 1.8 m; the Theo man and boy are separate GLBs on the kit block and
+need hand placement. Doc section "Batch 1" in
+`docs/sculpture-reconstruction-20261014.md`.
+
+
 ## Kinkerstraat type library: seven Oud-West types, two proof faces (2026-10-14)
 
 Lane `lane/kinkerstraat-types-20261014` (plan Part 2 step 3). Every

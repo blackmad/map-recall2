@@ -1236,9 +1236,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   plinth for the ~6 groups, kit primitives for slab and lettered
   memorials; before any install decide bronze tint vs vertex colour and
   the freedom-of-panorama question (user); automate photo pick → cut-out
-  (IS-Net fallback) → TripoSR → decimate → strip as one command (batch
-  lane running, now with TRELLIS.2 four-photo multidiffusion on the MLX
-  port for figures with side photos, HISTORY "Multi-view tools"); user
+  (IS-Net fallback) → TripoSR → decimate → strip as one command DONE
+  (HISTORY "Statue batch 1": 13 run, five beat the kit, Mama Baranka also
+  via TRELLIS.2 three-photo; nothing installed, the user picks from the
+  demo page; next multi-photo candidates Waterdraagster, Wilhelmina,
+  Spinoza; second photos needed for Anne Frank, Multatuli, Rembrandt;
+  Gandhi re-run with `--kit-plinth`); user
   decisions open: install the Xcode Metal Toolchain for the ports' Metal
   backends, and request official DINOv3 access on Hugging Face before any
   TRELLIS.2 statue ships (the trial used timm's ungated copy); Object
