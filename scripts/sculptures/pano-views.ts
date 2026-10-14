@@ -3,7 +3,10 @@
  * for multi-view reconstruction (Object Capture, COLMAP).
  *
  *   node --import tsx scripts/sculptures/pano-views.ts --id=<id> --lnglat=<lng,lat> --height=<m> --out=<empty dir>
- *        [--radius=25] [--fov=40] [--list]
+ *        [--radius=25] [--fov=40] [--upscale=1] [--list]
+ *
+ * --upscale=k renders k times the native pixel count per side (bilinear, no new detail): a narrow --fov crop that
+ * fills the frame with the statue, at a size Object Capture accepts.
  *
  * The panoramas are world-aligned equirectangulars (north at the image centre, AMSTERDAM_WORLD_ALIGNED in
  * src/canalRecall/facade/rectify.ts), so a view is a plain pinhole resampling: yaw = bearing camera -> statue,
@@ -28,6 +31,7 @@ const arg = (k: string, d = '') => process.argv.find(a => a.startsWith(`--${k}=`
 const id = arg('id'), out = arg('out');
 const [lng, lat] = arg('lnglat').split(',').map(Number);
 const heightM = Number(arg('height', '3')), radius = Number(arg('radius', '25')), fovDeg = Number(arg('fov', '40'));
+const upscale = Number(arg('upscale', '1'));
 const listOnly = process.argv.includes('--list');
 if (!id || !out || !Number.isFinite(lng)) throw new Error('usage: pano-views.ts --id= --lnglat=lng,lat --height= --out=<dir>');
 
@@ -57,7 +61,7 @@ for (const [i, r] of panos.entries()) {
   if (ground < -2.5 || ground > 3) { ground = 0.4; camZ = ground + 2.44; groundSource = 'published height implausible; assumed ground 0.4 m NAP'; }
   const target = ground + heightM / 2;
   const pitch = Math.atan2(target - camZ, r.distM), yaw = r.bearingDeg * Math.PI / 180;
-  const W = Math.round(2 * tanH * img.width / (2 * Math.PI)), H = Math.round(W * 4 / 3);
+  const W = Math.round(upscale * 2 * tanH * img.width / (2 * Math.PI)), H = Math.round(W * 4 / 3);
   const f = W / 2 / tanH;
   // Camera basis in world (x east, y north, z up): forward, right, up (roll 0).
   const fw = [Math.sin(yaw) * Math.cos(pitch), Math.cos(yaw) * Math.cos(pitch), Math.sin(pitch)];
@@ -90,7 +94,7 @@ for (const [i, r] of panos.entries()) {
     equirectangular: loaded.resolution, equirectangularSize: [img.width, img.height],
     cameraRd: [+r.rd.x.toFixed(3), +r.rd.y.toFixed(3), +camZ.toFixed(3)], groundNap: +ground.toFixed(2), groundSource,
     distM: +r.distM.toFixed(2), bearingDeg: +r.bearingDeg.toFixed(1), pitchDeg: +(pitch * 180 / Math.PI).toFixed(2),
-    fovDeg, size: [W, H], focalPx: +f.toFixed(1), statueHeightPx: statuePx,
+    fovDeg, upscale, size: [W, H], focalPx: +f.toFixed(1), statueHeightPx: statuePx,
     licence: 'CC BY 4.0', author: 'Gemeente Amsterdam', sourceUrl: r.p._links?.equirectangular_full?.href ?? r.p._links?.self?.href,
   });
   console.log(name, r.p.timestamp, `${r.distM.toFixed(1)} m`, `bearing ${r.bearingDeg.toFixed(0)}`, `statue ${statuePx}px`);

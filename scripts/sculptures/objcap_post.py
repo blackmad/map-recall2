@@ -3,7 +3,7 @@
     blender -b --factory-startup --python-exit-code 1 -P scripts/sculptures/objcap_post.py -- \
         --obj=<objcap out>/obj --poses=<objcap out>/poses.json --out=<prefix> --height=<m> --plinth=<m> --facing=<deg> \
         [--world=<pano-views source.json>] [--front=<photo file name>] [--radius=0.9] [--tris=6000] \
-        [--bronze=#4a4038] [--stone=#c9c2ae] [--raw]
+        [--bronze=#4a4038] [--stone=#c9c2ae] [--raw] [--keep-scale]
 
 Object Capture writes the model in its own frame (arbitrary origin, scale and yaw). Alignment to the statue:
 
@@ -18,7 +18,7 @@ Then: crop to a vertical cylinder of --radius metres about the statue between gr
 scale to --height (the measured height is reported first), decimate to --tris, and write, in the landmark GLB frame
 (x east, y up, z south, base on y = 0, front turned to --facing):
 
-* <prefix>-textured.glb: Object Capture's baked texture kept (review sheets);
+* <prefix>-textured.glb: Object Capture's baked texture kept, no material slot (review sheets only);
 * <prefix>.glb: shipped variant, no texture, no UVs, no vertex colour; faces below --plinth are material
   `stone` (materialSlot stone), the rest `bronze` (materialSlot paint), each with a `tint`, like the kit statues;
 * <prefix>.json: the alignment summary.
@@ -127,16 +127,16 @@ else:
 bpy.ops.wm.read_factory_settings(use_empty=True)
 import glob  # noqa: E402
 obj_file = glob.glob(args["obj"].rstrip("/") + "/*.obj")[0]
-bpy.ops.wm.obj_import(filepath=obj_file, forward_axis="NEGATIVE_Z", up_axis="Y")
+bpy.ops.wm.obj_import(filepath=obj_file, forward_axis="Y", up_axis="Z")
 ob = bpy.context.selected_objects[0]
 bpy.context.view_layer.objects.active = ob
-# The importer turned OBJ (x, y, z) into Blender (x, -z, y); undo that so vertices are Object Capture coordinates.
+# forward Y / up Z imports the OBJ coordinates unchanged, so vertices are Object Capture coordinates.
 me = ob.data
 ob.matrix_world.identity()
 co = np.empty(len(me.vertices) * 3)
 me.vertices.foreach_get("co", co)
 co = co.reshape(-1, 3)
-co = np.c_[co[:, 0], co[:, 2], -co[:, 1]]
+summary["modelMeanCheck"] = [round(float(v), 4) for v in co.mean(0)]
 summary["rawTriangles"] = sum(len(p.vertices) - 2 for p in me.polygons)
 if "native" in args:
     # Object Capture's frame is y-up; recentre it on the bounding box, base on 0, and turn it z-up for the export.
@@ -144,6 +144,9 @@ if "native" in args:
     wco -= [(wco[:, 0].min() + wco[:, 0].max()) / 2, (wco[:, 1].min() + wco[:, 1].max()) / 2, wco[:, 2].min()]
 else:
     wco = to_world(co)
+hr = np.hypot(wco[:, 0] - anchor[0], wco[:, 1] - anchor[1])
+summary["nearAnchor"] = {f"r{r}": [int((hr < r).sum())] + ([round(float(q), 2) for q in np.percentile(wco[hr < r, 2], [1, 50, 99])] if (hr < r).any() else [])
+                         for r in (1, 2, 4, 8)}
 me.vertices.foreach_set("co", wco.ravel())
 me.update()
 
@@ -206,7 +209,7 @@ measured = float(zmax - zmin)
 summary["croppedTriangles"] = sum(len(p.vertices) - 2 for p in me.polygons)
 summary["measuredHeightM" if world and len(pano_pairs) >= 3 else "measuredHeightProvisional"] = round(measured, 2)
 summary["components"] = [len(c) for c in comps[:5]]
-k = height / measured
+k = 1.0 if "keep-scale" in args else height / measured  # --keep-scale: metric frame as aligned (diagnosis)
 co[:, 0] = (co[:, 0] - anchor[0]) * k
 co[:, 1] = (co[:, 1] - anchor[1]) * k
 co[:, 2] = (co[:, 2] - zmin) * k
@@ -226,11 +229,7 @@ bpy.ops.mesh.select_all(action="SELECT")
 bpy.ops.mesh.quads_convert_to_tris()
 bpy.ops.object.mode_set(mode="OBJECT")
 summary["triangles"] = len(me.polygons)
-for m in me.materials:
-    if m:
-        m["materialSlot"] = "paint"
-        m["tint"] = args.get("bronze", "#4a4038")
-        m["materialSlotSource"] = "objcap-textured"
+# The textured variant carries no materialSlot: the review renderer's city look would replace the baked texture.
 export(args["out"] + "-textured.glb")
 
 # Shipped variant: two flat materials split by height, no UVs, no vertex colour.

@@ -251,3 +251,195 @@ downloads in their own directories. The inline `# /// script` headers carry
 the pins, so `uv run --script` works too. To reproduce, check out TripoSR
 (`VAST-AI-Research/TripoSR` main, MIT) anywhere outside the repo and pass it
 as `--src`.
+
+## Multi-view: Object Capture
+
+TripoSR takes one photo, so its hidden sides are always invented. The
+multi-view route that runs on this Mac is Apple Object Capture (RealityKit
+`PhotogrammetrySession`): local, free, macOS 14+, Apple silicon. It was tested
+on De Dokwerker and Gandhi with three photo sets each. Nothing was installed.
+
+### Method
+
+- **Tool:** `scripts/sculptures/objcap/`, a Swift package
+  (`swift build -c release --package-path scripts/sculptures/objcap`). It runs
+  `objcap <photo folder> <out> --detail=reduced|medium|full|raw` and writes
+  `model.usdz`, `obj/` (baked-texture OBJ with MTL and PNG maps), `poses.json`
+  (camera-to-model transform per registered photo) and `report.json` (status,
+  seconds, registered count, exact error). Defaults: object masking on,
+  feature sensitivity high, unordered samples.
+- **Panorama views:** `scripts/sculptures/pano-views.ts` takes every Gemeente
+  Amsterdam panorama (CC BY 4.0) within a radius, all years, through the
+  `pand-reference` lookup and cache. It renders a 40° pinhole view aimed at the
+  statue's mid-height from the world-aligned equirectangular, at native
+  resolution (about 930 × 1240 px), with an EXIF 35 mm focal length. Each
+  view's camera position (RD/NAP) and aim go in `source.json`.
+  - De Dokwerker has **no panorama within 25 m**; the nearest is 28.1 m away.
+    The set therefore uses a 40 m radius: 124 views from 2016 to 2025, with the
+    statue about 135 px tall.
+  - Gandhi: 158 views within 25 m, from 2016 to 2025, with the statue about
+    180–200 px tall behind the hedge.
+- **Commons photos:** fetched with `fetch_commons_files.py` at 1920 px, with
+  author, licence and sha256 per file.
+  - Gandhi: all six photos of the figure in `Category:Mahatma Gandhi
+    (Amsterdam)`. They are by Ceescamel (CC BY-SA 4.0), Evanherk (CC BY-SA 3.0),
+    Michal Huniewicz (CC BY 3.0) and Antony Antony (CC BY 2.0). The two
+    plaque close-ups were left out.
+  - De Dokwerker: the 16 colour photos of the bronze in `Category:De
+    Dokwerker`. Seven are Rietman's 2013 series (CC BY-SA 4.0). The others are
+    two 1970 Anefo shots (CC0) and single photos under CC BY-SA 3.0,
+    CC BY-SA 3.0 nl, CC BY 4.0, CC BY 2.5 nl and public domain.
+  - The pinned list with every licence is in
+    `scripts/sculptures/multiview-20261014.json`, which
+    `objcap_summary.py` regenerates.
+- **Post-process:** `scripts/sculptures/objcap_post.py` runs in Blender 5.2
+  (`blender -b -P … -- …`). It writes the GLBs directly with Blender's glTF
+  exporter; `usdcat` was not needed.
+  - **Alignment for sets with panoramas.** The rotation comes from the
+    panorama views' known orientations: yaw is the bearing to the statue,
+    pitch is recorded, roll is 0. Scale and offset come from the camera
+    centres. The rotation agrees to within 0.2–0.5° (median), and the centres
+    to within 0.6–0.8 m RMS. The optical axes then meet 2 cm (Gandhi) and
+    22 cm (Dokwerker) from the OSM anchor.
+  - **Why not a centres-only fit.** An Umeyama fit on the centres alone failed.
+    The capture cars drive along one line, so the roll about that line is free,
+    and the fit put the cameras looking at the sky.
+  - **Alignment for Commons-only sets.** Up is perpendicular to the camera
+    x-axes. The centre is where the optical axes meet. Yaw comes from the
+    front photo (Dokwerker 07). Scale comes from the known height.
+  - **Output.** The model is cropped to a cylinder about the statue, scaled
+    to the real height and decimated to 6,000 triangles. Two GLBs are written:
+    - `objcap-best-textured.glb`, with Object Capture's baked texture and no
+      material slot (for the sheets);
+    - `objcap-best.glb`, the shipped variant: no UVs, no vertex colour, and
+      faces below the plinth height in material `stone` (`materialSlot`
+      stone), the rest `bronze` (`materialSlot` paint, as the kit statues
+      have it). Each material has a `tint`: De Dokwerker uses the kit's
+      `#3d5148` bronze and `#303b43` granite, Gandhi `#4a4038` and `#c9c2ae`.
+
+### Sets
+
+Wall clock on the M4 Pro; triangles are the whole Object Capture mesh, then the
+part inside the crop around the statue.
+
+| Statue | Set | Photos | Registered | Detail | Result | Time | Mesh → on the statue | What it is |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Gandhi | Commons only | 6 | 4 | reduced | converges | 13 s | 6,020 | A crumpled 2.5-D sheet of the front of the figure; no statue shape |
+| Gandhi | panoramas only | 158 | 75 | reduced | converges | 93 s | 25,000 → 158 | The square, hedges and trees; nothing above the block at the anchor |
+| Gandhi | panoramas only | 158 | 76 | full | converges | 185 s | 26,427 → 278 | Same; the triangle budget is spread over the whole 60 m scene |
+| Gandhi | panoramas only | 158 | – | raw | **processError** | 69 s | – | `.raw` fails with or without a USDZ request |
+| Gandhi | panoramas, 14° crops ×3 | 158 | – | full | **processError** | 39 s | – | Too few features in tight, upscaled crops |
+| Gandhi | both | 164 | – | full | **processError** | 49 s | – | |
+| Gandhi | both | 164 | 82 (1 Commons) | reduced | converges | 210 s | 24,999 → 263 | A 3 m spike on a ground apron where the figure is (best Gandhi run) |
+| De Dokwerker | panoramas only (≤ 40 m) | 124 | 114 | reduced | converges | 88 s | 24,999 → 395 | A 4.2–4.3 m column at the anchor: block plus a smooth figure hull, no limbs |
+| De Dokwerker | panoramas only (≤ 40 m) | 124 | 114 | full | converges | 80 s | 29,640 → 394 | Same |
+| De Dokwerker | Commons only (colour) | 16 | 13 | reduced | converges | 28 s | 25,000 → 6,000 | **Best Object Capture model**: real front surface and texture, open back |
+| De Dokwerker | both | 140 | – | reduced | **processError** | 36 s | – | Same with sensitivity normal and with masking off |
+| De Dokwerker | Commons, all archive photos | 274 | – | reduced | **processError** | 115 s | – | The 1950s–2020s Anefo set COLMAP registered in October |
+
+**The exact failure.** Every request ends with
+`PhotogrammetrySession.Error.processError` for the model and for `.poses`,
+after 25–115 s. Object Capture never refused to start: `isSupported` is true
+on this Mac. The failure is in reconstruction. In every failing set, the
+photos split into groups that do not overlap: the 2013 Commons series and the
+car-height panoramas 28–40 m away, or decades of archive photos. The one
+successful mixed run registered a single Commons photo.
+
+### What the strips show
+
+Rows: kit | TripoSR | Object Capture (best set) | source photos.
+
+- `artifacts/sculpture-reconstruction/de-dokwerker/compare-multiview.png`
+  (`docs/images/sculptures/de-dokwerker-multiview.jpg`). It has an extra row
+  with the shipped material-slot variant.
+- `artifacts/sculpture-reconstruction/gandhi-churchill-laan/compare-multiview.png`
+  (`docs/images/sculptures/gandhi-churchill-laan-multiview.jpg`).
+
+The TripoSR rows were re-run with the prototype's script and pins. The routeB
+GLBs were not on disk, and the raw triangle counts (39,072 and 55,334) match
+the first run.
+
+![De Dokwerker: kit, TripoSR, Object Capture, photos](images/sculptures/de-dokwerker-multiview.jpg)
+
+![Gandhi: kit, TripoSR, Object Capture, photos](images/sculptures/gandhi-churchill-laan-multiview.jpg)
+
+#### De Dokwerker
+
+From the south-west and north-west, the Commons-only model is the real statue.
+It has:
+
+- the granite block with its texture;
+- the right lean, and the hands held out from the body;
+- the real bronze texture from the photos.
+
+Seen from the front, it is the most faithful of the three rows. The failures:
+
+- **Missing back.** The 13 registered photos cover the front arc and the
+  north-west side. The back and north-east are an open shell, a draped
+  curtain where the surface is closed over unseen space.
+- **Foliage.** Tree leaves behind the head are baked into the top. They raise the
+  top of the mesh, so after scaling to 4.13 m the figure is somewhat too
+  small. The amount was not measured.
+- **Shipped variant.** Without the texture, the flat-material version reads
+  as a blob. The shape is only good where the photos saw it.
+- **Panoramas.** They gave a correctly placed and measured but featureless
+  hull: the statue is about 135 px tall at 28–40 m.
+
+#### Gandhi
+
+No set produced a usable figure. Four reasons:
+
+- the six Commons photos are too few and too far apart in angle;
+- the panoramas see the statue at about 190 px, dark against brick, behind a
+  hedge, with poles and trunks in front;
+- mixed dates (2016–2025, winter and summer) change the hedge and the trees,
+  which are the only texture the matcher can use;
+- the best run is a spike at the right place and height.
+
+**Mixed-date ghosting.** It did not appear as double figures. It appears as
+smooth, averaged surfaces.
+
+### Verdict against the single-photo route
+
+| Statue | Verdict |
+| --- | --- |
+| De Dokwerker | **Object Capture is better on the front and worse everywhere else.** Its front surface and texture are measured, not invented, and on the two front views it beats TripoSR. Its back is missing, while TripoSR gives a closed, plausible back. As a game model, neither the shell nor the untextured slot variant is shippable. TripoSR stays the route. Object Capture is a good *reference* for checking TripoSR's front (pose, proportions, block size) on statues with a dense Commons set. |
+| Gandhi | **Object Capture fails; TripoSR stays.** No set reconstructs the figure. |
+
+**What the panoramas are good for.** The panorama sets do give something
+TripoSR cannot: a metric, georeferenced hull. They confirm a statue's
+position (to 2–22 cm here) and its height, from the side. For example, the
+Dokwerker column top is at 4.2–4.3 m against the 4.13 m kit height. The
+aerial DSM gave 3.40 m. That makes them a cheap check of the position, height
+and facing inputs to TripoSR for statues in the open.
+
+### Realistic throughput for the ~18 single figures
+
+- **Compute is not the limit.** Object Capture takes 0.5–3.5 min per set,
+  and post-processing and strips about 1 min.
+- **Photos are the limit.** A usable model needed one photographer's
+  same-day series of about 10 or more overlapping colour photos around the
+  statue. Among the two statues here, only De Dokwerker has one (Rietman's
+  2013 walk-around), and even it covers only the front half.
+- **Expected result.** For the other ~16 single figures, expect a crumpled
+  sheet like Gandhi's from Commons, and a hull from the panoramas.
+  - Estimate: about 15 min per statue to collect and run; 2–4 of the 18
+    give a front-half reference model; none gives a complete closed figure.
+- **What it would take.** A full multi-view model of these statues needs a
+  dedicated walk-around capture (about 40 photos in a circle, one session),
+  for example by a volunteer under CC BY-SA. Object Capture would then
+  probably close the figure in minutes.
+- **Point cloud.** The municipal point cloud (route A, still NXDOMAIN) would
+  give the same hull as the panoramas, denser.
+
+### Scripts added
+
+| Script | Role |
+| --- | --- |
+| `objcap/` (Swift package) | Object Capture CLI: photos → USDZ, OBJ, poses, report |
+| `pano-views.ts` | Aimed pinhole views of a statue from every panorama within a radius, with camera RD/NAP and licence per view |
+| `objcap_post.py` (Blender) | Align (panorama orientations, or camera axes for Commons), crop, scale, decimate; textured and material-slot GLBs |
+| `objcap_summary.py` | Collect every run's report and the photo provenance into `multiview-20261014.json` |
+| `stack_strips.py` | Now also takes a `photo:` row of source photos |
+| `fetch_commons_files.py` | Now backs off on Commons 429s and resumes |
+| `glb-stats.ts --materials` | Material names, extras (`materialSlot`, `tint`) and attributes |
