@@ -72,6 +72,21 @@ test('Nassaukade 148: painted bands on the sill and transom lines, eared heads w
   }
 });
 
+test('Nassaukade 150 and 147: T-windows, white block relieving arches with keystones on storey 3 only; measured window heights', () => {
+  for (const pand of ['164843', '160273']) {
+    const {intent, b} = house(pand), f = intent.fronts[0], e = b.recipe.elevations[0];
+    assert.equal(f.windows, 't-window');
+    assert.equal(f.windowHead?.kind, 'relieving');
+    assert.deepEqual(f.windowHead?.storeys, [3]);
+    const arches = (e.ornaments?.value ?? []).filter(o => o.id.startsWith('arch-'));
+    assert.ok(arches.length === 3 * 5 && arches.every(o => /(?:^|-)s3-b\d+(?:-m\d+)?-\d$/.test(o.id)), `${pand}: five blocks over each storey-3 window, none lower`);
+    const keys = (e.dressings?.value ?? []).filter(d => d.id.startsWith('keystone-'));
+    assert.equal(keys.length, 3, `${pand}: one keystone per storey-3 window`);
+    assert.ok(!(e.dressings?.value ?? []).some(d => /^(head|ear-[lr])-.*s3-b/.test(d.id)), `${pand}: no eared heads under the arches`);
+  }
+  assert.deepEqual(house('157426').intent.fronts[0].windowHeights, [0.6, 0.57, 0.55, 0.59], '148: shares of the catalogue storey grid, not the canal survey medians');
+});
+
 test('Nassaukade 149 and 145: timber balconies with turned balusters on storeys 1-2 of the wide axis', () => {
   for (const pand of ['161422', '159694']) {
     const {b} = house(pand), f = b.fit.fronts[0], tb = f.timberBalconies!;

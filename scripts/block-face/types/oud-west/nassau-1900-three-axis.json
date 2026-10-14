@@ -14,7 +14,7 @@
     ]
   },
   "body": {
-    "windows": "two-light",
+    "windows": "t-window",
     "windowSurround": "eared-keystone",
     "windowSills": "consoles",
     "bands": "painted",
@@ -36,7 +36,13 @@
       "bays": [
         1
       ]
-    }
+    },
+    "windowHeights": [
+      0.6,
+      0.57,
+      0.55,
+      0.59
+    ]
   },
   "crowns": {
     "pointed-dormer": {
@@ -113,8 +119,8 @@
     "photoGables": 0
   },
   "schemaLimits": [
-    "T-windows (an undivided top light over two casements) are drawn as two-light (the mullion runs through the top light): the canal-windows lane's `windows: \"t-window\"` says it once merged",
-    "measured window heights per storey (0.57 / 0.56 / 0.64 of the storey on 148) are the fitted proportions; the canal-windows lane's `windowHeights` says them once merged",
+    "T-windows drawn as t-window since the Nassaukade merge (transom at 0.76 of the window; the photo top light is about 0.22 of it)",
+    "window heights are shares of the catalogue storey grid (window 2.0 / 1.8 / 1.65 m on storeys of 3.45 / 3.3 / 2.8 m: 0.57 / 0.55 / 0.59, ground 0.6 assumed) rather than the canal survey diminishing medians (0.72-0.76), which drew windows ~0.5 m too tall on this row. 148 alone measures 0.57 / 0.56 / 0.64, but that pushes 147 over the 3,000-triangle front budget (3,018). The kit keeps the head on a common 0.86 line, a little above the photo heads",
     "the band at the transom line is a flat stucco strip; the real ones are moulded",
     "iron balconettes on storey 3 are the library guard, not the wrought scroll grille"
   ],

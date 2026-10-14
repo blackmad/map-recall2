@@ -50,7 +50,7 @@
       "basement": "none",
       "tallGround": true,
       "cornice": "bracketed",
-      "windows": "two-light",
+      "windows": "t-window",
       "windowSurround": "keystone",
       "shopfront": {
        "colour": "#1c1d1f",
@@ -87,7 +87,7 @@
     ],
     "photoDate": "2024-11-21",
     "agreement": "bag-only",
-    "note": "black-framed bar/caf\u00e9 front over the left half, no legible name, no OSM node; residential door with a round fanlight on the right axis"
+    "note": "black-framed bar/café front over the left half, no legible name, no OSM node; residential door with a round fanlight on the right axis"
    },
    "rhythm": {
     "bays": "6 axes in two halves of 3 either side of a downpipe",
@@ -133,7 +133,7 @@
       "souterrain": true,
       "tallGround": false,
       "cornice": "none",
-      "windows": "two-light",
+      "windows": "t-window",
       "windowSurround": "keystone",
       "windowSills": "consoles",
       "balconies": {
@@ -148,7 +148,23 @@
        "style": "timber-bracketed",
        "rail": "turned"
       },
-      "hoist": false
+      "hoist": false,
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        3
+       ],
+       "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true
+       }
+      },
+      "surroundStoreys": [
+       0,
+       1,
+       2
+      ]
      }
     ],
     "roof": {
@@ -193,7 +209,7 @@
     "photoGroundRows": 2,
     "photoGables": 1,
     "schemaLimits": [
-     "the storey-3 windows sit under dark round tympana with white keystones (blind relieving arches): the canal-windows lane's windowHead \"relieving\" says it once merged",
+     "the storey-3 windows sit under dark round tympana with white keystones (blind relieving arches): drawn since the Nassaukade merge as windowHead \"relieving\" with a white block ring and keystone on storey 3; the kit arch is segmental (rise 0.25 x span) where the photo's is round, with five blocks where the photo has two springers and a keystone",
      "the rusticated granite souterrain front is the stone plinth colour only",
      "no painted bands on this front (it is the odd one of the row)"
     ]
@@ -297,7 +313,18 @@
      "surroundStoreys": [
       1,
       2
-     ]
+     ],
+     "windowHead": {
+      "kind": "relieving",
+      "storeys": [
+       3
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     }
     }
    },
    "groundFloor": {
@@ -313,7 +340,7 @@
     "citation": "strip.jpg 2024-11-21 pand 5 (painted near-black, #615a47): full-width iron balcony on a white bracketed slab on storey 1, centre ones on storeys 2 and 3",
     "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | mansard dormer: 3 lights",
     "schemaLimits": [
-     "the storey-3 windows have dark round tympana with keystones (relieving arches) instead of eared heads: windowHead \"relieving\" once the canal-windows lane is merged",
+     "the storey-3 windows have dark round tympana with keystones (relieving arches) instead of eared heads: drawn since the Nassaukade merge as windowHead \"relieving\" with a white block ring and keystone (segmental where the photo is round; five blocks where the photo has springers and a keystone)",
      "the mansard's swept bell sides are a straight 72-degree face"
     ]
    }
