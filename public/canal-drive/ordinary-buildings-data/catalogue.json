@@ -33546,10 +33546,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012073586",
       "name": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
-      "hash": "8f5ca488568374e12fade9499d60edbd23b35e9e7581a074bd73c77885cafd2c",
-      "sha256": "8f5ca488568374e12fade9499d60edbd23b35e9e7581a074bd73c77885cafd2c",
-      "bytes": 821444,
-      "triangles": 10939,
+      "hash": "dcb2bcbf2b1a48b494e486d5444e583bc2f3b2c3c46bb35b533e9935703da417",
+      "sha256": "dcb2bcbf2b1a48b494e486d5444e583bc2f3b2c3c46bb35b533e9935703da417",
+      "bytes": 791048,
+      "triangles": 10511,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -33894,7 +33894,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073586",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:24:53.067Z"
+      "updatedAt": "2026-10-14T03:16:19.692Z"
     },
     {
       "id": "ordinary-0363100012122086",
