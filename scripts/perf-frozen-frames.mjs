@@ -16,7 +16,8 @@ const SPOTS = [
   { name: 'munt', lng: 4.8945, lat: 52.3668, bearing: 200 },
   { name: 'rijksmuseum', lng: 4.8850, lat: 52.3616, bearing: 180 },
   // The rider inside the Royal Palace's block: the bike's x-ray shows through the building.
-  { name: 'in-block', lng: 4.8912, lat: 52.3731, bearing: 90 },
+  { name: 'in-block', lng: 4.8906, lat: 52.3729, bearing: 0 },
+  { name: 'in-block-2', lng: 4.8909, lat: 52.3733, bearing: 0 },
   { name: 'dam-aerial', lng: 4.8925, lat: 52.3727, bearing: 300, aerial: true },
 ];
 
