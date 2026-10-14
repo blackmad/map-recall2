@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+## layeredKit is the default; parts follow leaning and bent walls (2026-10-14, night)
+
+Lane `domain/layered-default-20261014`. `largeCompile`, `fitLarge` and
+the validator treat a missing `layeredKit` as on; `false` keeps the
+legacy kit, set on four houses the layered kit pushes over 12k tris
+(OBA Javaplein 12.7k, OBA Olympisch Kwartier 12.5k, Politie West
+Overtoomsesluis 12.3k, Stadsdeel Nieuw-West 13.4k). The band residue
+the re-installs left was not component against component: on Berlage,
+Montessori and Stadsloket West the parts fought the 3DBAG wall itself,
+which leans (0–9.5 cm over 8.6 m; 5.3 cm) or bends (26 cm over the 65 m
+front) off the panel's reference plane; only the Amsterdams Lyceum's 3 cm
+gateway rings and 1.2 cm wall lettering were in the tight band. Fixes in
+layered mode: `wallProfileOf` in `compose.ts` lays every part off the
+wall's actual plan profile when member vertices agree per column within
+5 mm and reach ≥ 1.5 cm off the plane; boxes and bands split at bends
+over 1 cm (`kinksIn`, Douglas-Peucker); a box laid on that profile drops
+its back face; a bent member is emitted per facet (`emitFacets`: earcut
+per slab between bends, trapezoids where an opening straddles a bend);
+arch rings thinner than 4.5 cm are lifted to 4.5 cm; `drawLettering`
+draws closed strokes 4.5 cm off the surface (five times the triangles:
+Amsterdams Lyceum +1,424). New ground `mesh-plinth` for a layered curtain
+wall (closed dark panel 9 cm off the glass skin over the ground storey;
+at 4.5 cm it showed 259 m² of near band, at 9 cm 10.5 m²); Stadsloket
+West uses it. Entrepotdok's hoist doors are back on every third bay (11
+axes) with a cheaper two-leaf door and 4-segment arched heads: 11,767
+tris at 0 m². The default flip plus the profile fix change 52 compiled
+meshes (golden re-recorded; e.g. Politie Van Leijenberghlaan 21.2 → 0 m²,
+Overtoom 283 18.8 → 0, Nieuwpoortstraat 13.8 → 0, Amstel 142 10.7 → 0),
+15 stay byte-identical; only Berlage, Montessori, Amsterdams Lyceum,
+Stadsloket West and Entrepotdok were re-installed, so 47 installed GLBs
+still carry the old geometry until re-installed. Seven new
+`largeTier.test.ts` cases (leaning wall, sill vs reveal, curtain grid on
+a bent member, mesh plinth, 3 cm arch ring, lettering, the default).
+
+
 ## UvA Roeterseiland REC-A surveyed and built (2026-10-14, night)
 
 Lane `landmarks/roeterseiland-20261014`. BAG records REC A/B/C/D and De

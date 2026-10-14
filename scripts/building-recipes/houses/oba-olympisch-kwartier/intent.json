@@ -24,6 +24,7 @@
   "closedBands": true,
   "roof": {"material": "bitumen"},
   "palette": {"brick": "#8f3a2c", "frame": "#cfd2d0", "door": "#7a2a22", "stone": "#c9bfa4", "wallMaterial": "stucco"},
+  "layeredKit": false,
   "notes": [
     "2005 perimeter housing block around a courtyard (pand 0363100012073586, 320 LoD2.2 wall surfaces) with the OBA Olympisch Kwartier library at street level; the whole pand is modelled. Street fronts only: south front (2020-05-13 panorama, w01-168; surfaces 262/149/150/147/301/124/261/205 as one six-storey group, 41/68/189 as the lower stepped part), east front (2019-04-30, w02-78) and north front (w03-344). Photographed: dark red brick storeys with horizontal string courses and wide paired windows, a cream stone plinth with shopfronts and tall glazed bays at the ground, a few recessed upper storeys.",
     "Ornaments: shopfront plinth MODELLED (plinth-shopfronts); string courses MODELLED; entrance door SIMPLIFIED (one recessed glazed entrance at bay 3 of the south front; the real library entrance is not identifiable from the panoramas); OBA lettering SIMPLIFIED (cream lettering OBA on the wall over that entrance: no OBA sign is legible in the panoramas, so this carries the library identity); cream stone plinth colour MODELLED only as the stone palette; stair/lift towers and balconies SKIPPED (inside the 3DBAG roof volume); the arched gate portal at the right of the east front SKIPPED (surfaces 5/127 are not planar: 6-10 cm off any plane, so they are a blank group); shop signs and parked vans SKIPPED (temporary).",

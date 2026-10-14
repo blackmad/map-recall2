@@ -5,7 +5,7 @@
  * and surface, so the GLB exporter writes `materialSlot` + `tint` on every material.
  */
 import * as T from 'three';
-import {compose, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
+import {compose, intervals, SHEET_PITCH, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
 import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawCurtainGrid, drawEntrance, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
@@ -15,7 +15,7 @@ import type {LargeBuildingIntent} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { curtainGrids?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -77,8 +77,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   }
   // Screen lattice after the openings (rails skip them), before the cornice.
   if (g.screen && info.cells.length) { const top = panelEaves(p) - 0.1; if (top - p.vMin > 3 && drawScreen(c, info.cells, levels, s.stone, top)) counts.screens = (counts.screens ?? 0) + 1; }
-  // Layered curtain wall: the mullion/transom grid on the glass skin, round the entrance.
-  if (c.layered && g.system === 'curtain-wall' && info.cells.length) { const top = panelEaves(p) - 0.05; if (top - p.vMin > 2 && drawCurtainGrid(c, info.cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1; }
+  // Layered curtain wall: the mullion/transom grid on the glass skin, round the entrance; over a mesh plinth the grid
+  // starts above the ground storey and a closed dark panel covers it.
+  if (c.layered && g.system === 'curtain-wall' && info.cells.length) {
+    const plinth = g.ground === 'mesh-plinth', cells = plinth ? info.cells.filter(x => x.floor > 0) : info.cells, top = panelEaves(p) - 0.05;
+    if (plinth && drawPlinthPanel(c, Math.max(0, p.vMin), groundTop, s.door)) counts.plinths = (counts.plinths ?? 0) + 1;
+    if (cells.length && top - p.vMin > 2 && drawCurtainGrid(c, cells, levels, s.curtain, top)) counts.curtainGrids = (counts.curtainGrids ?? 0) + 1;
+  }
   if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
   if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
     counts.fascias++;
@@ -87,7 +92,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   }
   if (entrance && g.signage) {
     const {text, mount} = g.signage, uc = (entrance.u0 + entrance.u1) / 2, w = entrance.u1 - entrance.u0;
-    if (mount === 'glazing') counts.letters += drawLettering(c, text, uc, (Math.max(entrance.doorTop, levels[1] ?? entrance.doorTop) + entrance.top) / 2, entrance.glassDepth + 0.015, 0.7, w * 0.85, s.sign);
+    if (mount === 'glazing') counts.letters += drawLettering(c, text, uc, (Math.max(entrance.doorTop, levels[1] ?? entrance.doorTop) + entrance.top) / 2, entrance.glassDepth + 0.015 + (c.layered ? SHEET_PITCH : 0), 0.7, w * 0.85, s.sign, undefined, entrance.glassDepth);
     else if (mount === 'canopy' && canopy) counts.letters += drawLettering(c, text, uc, (canopy.v0 + canopy.v1) / 2, canopy.d + 0.012, (canopy.v1 - canopy.v0) * 0.62, w + 1.0, s.sign);
     else if (mount === 'wall') counts.letters += drawLettering(c, text, uc, groundTop + 0.45, 0.012, 0.6, Math.max(w * 1.6, 3), s.sign);
     else if (mount === 'cornice') { /* name band: drawn on the widest panel below */ }
@@ -128,6 +133,24 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   }
   if (g.hoist && g.nameBoards?.length && g.mainPanel === p.index) counts.nameBoards += drawNameBoards(c, info.cells, g);
   if (g.police?.lamp && entrance && drawBlueLamp(c, Math.min(p.uMax - 0.4, entrance.u1 + 0.55), Math.min(entrance.doorTop + 0.9, groundTop - 0.2), {bracket: s.frame, lamp: 'police-blue', cap: 'police-white'})) counts.lamps++;
+}
+
+/**
+ * Mesh plinth under a layered curtain wall (Stadsloket West's west fronts): a closed dark panel over the ground storey,
+ * standing two sheet layers (9 cm) off the glass skin, beyond the audit's 8 cm near band (at 4.5 cm the whole plinth
+ * read as 259 m2 of near-coplanar face), and clear of the grid, which starts above it; it breaks round openings cut
+ * into the ground storey (an entrance). Returns the number of panel pieces drawn.
+ */
+function drawPlinthPanel(c: PanelCtx, v0: number, v1: number, slot: string): number {
+  if (v1 - v0 < 0.5) return 0;
+  let n = 0;
+  const holes = [...c.holes.values()].flat().filter(h => h[2] < v1 && h[3] > v0).map(h => [h[0] - 0.02, h[1] + 0.02] as [number, number]), part = c.part();
+  for (const [a0, b0] of intervals(c.p, v0, v1, 0.25)) {
+    let pieces: [number, number][] = [[a0, b0]];
+    for (const [s0, s1] of holes) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.2)) as [number, number][]);
+    for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, 0, 2 * SHEET_PITCH, part); n++; }
+  }
+  return n;
 }
 
 /**
@@ -213,13 +236,13 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     sealSlivers: true,
     closedBoxes: true,
     closedBands: !!intent.closedBands,
-    ...(intent.layeredKit ? {layered: true} : {}),
+    ...(intent.layeredKit !== false ? {layered: true} : {}),
     ...(hooks.barOffsetM !== undefined ? {barOffsetM: hooks.barOffsetM} : {}),
     ...(hooks.glassBackM !== undefined ? {glassBackM: hooks.glassBackM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => recipe.panelSystem?.[p.index] ?? groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     // layered kit: a curtain wall's 3DBAG wall is its glass skin (the grid is drawn on it)
-    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit ? g.slots.glass : g.slots.curtain) : g.slots.wall; },
+    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
       const g = groupOf(p.index);
       if (hooks.skipCell?.(p, floor, bay, bays, g)) return true;

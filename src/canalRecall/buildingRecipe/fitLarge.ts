@@ -269,7 +269,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     }
     const specSystem = SYSTEM_SLOT(gi);
     systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, slots: {...slots, ...(arch ? {arch} : {})},
-      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit ? {layered: true} : {})});
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {

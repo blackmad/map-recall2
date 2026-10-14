@@ -467,6 +467,22 @@ before the bundles are rebuilt. iPhone measurement is still pending.
 
 ### Known gaps
 
+- Layered kit by default (2026-10-14, second pass): `kind: large` recipes use the layered kit unless they say
+  `layeredKit: false`. Four houses say so because the closed bars put them over 12k (OBA Javaplein 12.7k, OBA
+  Olympisch Kwartier 12.5k, Politie West Overtoomsesluis 12.3k, Stadsdeel Nieuw-West 13.4k); they stay
+  byte-identical. The rest of the re-install residue was parts laid off a panel's reference plane where the 3DBAG
+  wall leans or bends off it: in the layered kit `compose` lays every part off the wall's plan profile
+  (`wallProfileOf`: per-column offsets of the member vertices, used when they agree within 5 mm and reach 1.5 cm off
+  the plane; Berlage Lyceum's south wall leans 9.5 cm over 8.6 m, Montessori's 5.3 cm, Stadsloket West's 65 m front
+  bends 26 cm), splits boxes and bands at bends of more than 1 cm (`kinksIn`, Douglas-Peucker), drops the back face of
+  a box laid on that profile (its back edges are seams on the wall), and emits a bent member per facet (`emitFacets`:
+  earcut per slab between bends, trapezoids in a slab an opening straddles) instead of one earcut that spans the bend.
+  A stone or voussoir arch ring under 4.5 cm is lifted to 4.5 cm (Amsterdams Lyceum's 3 cm gateway rings sat in the
+  tight band), lettering is closed strokes a sheet layer off its surface (1.2 cm sheets were coplanar; lifted alone
+  their edges float), and a layered curtain wall may stand on `ground: "mesh-plinth"`: the glass skin with a closed
+  dark panel (door slot) 9 cm off it over the ground storey and the grid above it (Stadsloket West). A layered
+  loading door is two leaves with one meeting stile and a 4-segment head (Entrepotdok's hoists every third bay at
+  11.8k). One synthetic `largeTier.test.ts` case per pair.
 - Large-tier kit overlaps (2026-10-14, batch 3; fixed behind `layeredKit: true`): without the flag
   `garageDoors` and `ground: "portals"` leave 2.4-7 m2 of coplanar frame/door overlap, `arches` with
   frames up to 18 m2 (flush brick band 1.2 cm on the wall, bars 1.5 cm on the glass), `curtain-wall`

@@ -238,9 +238,10 @@ export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1
   const ring: UV[] = [...head, ...[...outer].reverse()];
   const xs = ring.map(q => q[0]), ys = ring.map(q => q[1]);
   if (!fits(c, Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys))) return false;
-  // Layered kit: a flush band (1.2 cm, coplanar with the wall to the audit) becomes a ring 4.5 cm proud, its blocks 4.5 cm
-  // prouder again; on a cut wall their back edges are seams on that wall, elsewhere they are closed at the back too.
-  const out = c.layered && band0 <= 0 ? SHEET_PITCH : band0;
+  // Layered kit: a flush band (1.2 cm, coplanar with the wall to the audit) or a thin stone/voussoir ring (3-4 cm, the
+  // audit's tight band: Amsterdams Lyceum's gateway arches, 2.7 m2) becomes a ring 4.5 cm proud, its blocks 4.5 cm prouder
+  // again; on a cut wall their back edges are seams on that wall, elsewhere they are closed at the back too.
+  const out = c.layered && band0 < SHEET_PITCH ? SHEET_PITCH : band0;
   const M = onWall ?? ((u: number, v: number, d: number) => c.P(u, v, d)), back = !onWall && (c.layered || c.closedBoxes);
   const part = c.part(), P = (q: UV, d: number) => M(q[0], q[1], d);
   if (out <= 0) return drawFlushBand(c, u0, u1, v0, v1, head, outer, band, M, part);

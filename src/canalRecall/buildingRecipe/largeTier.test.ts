@@ -113,7 +113,8 @@ test('large-tier compile seals tiny 3DBAG wall slivers and closes wall-mounted b
 test('barOffsetM (opt-in hook): glazing bars stand clear of the glass as closed boxes, skipCell leaves cells to the builder', async () => {
   const {compileLargeBuilding} = await import('./largeCompile.ts');
   const {topology} = await import('./gates.ts');
-  const intent = validateLargeIntent(raw('politie-van-leijenberghlaan')), f = facts('politie-van-leijenberghlaan');
+  // the legacy kit (the layered kit's bars are closed boxes on the 4.5 cm layer whatever barOffsetM says)
+  const intent = validateLargeIntent({...raw('politie-van-leijenberghlaan'), layeredKit: false}), f = facts('politie-van-leijenberghlaan');
   const trisOf = (b: ReturnType<typeof compileLargeBuilding>) => {
     const out: {a: number[]; b: number[]; c: number[]; surface: string; metallic: number}[] = [];
     b.group.traverse(o => {
@@ -321,12 +322,16 @@ test('lantern: a closed glazed lantern seated on the highest roof point behind t
 test('closed bands: Beursplein cornices and Damrak string-course ends leave no open edge of their own', async () => {
   const {topology} = await import('./gates.ts');
   const stoneOnly = (tris: Awaited<ReturnType<typeof topoOf>>['tris']) => tris.filter(t => /stone/.test(t.surface));
-  const bp = raw('beursplein-5-165051'), bf = facts('beursplein-5-165051');
+  // the legacy kit: the layered kit leaves the back face off a box laid on a followed wall profile (its back edges are
+  // seams on the wall), so its stone is not watertight on its own; the whole model's open-edge gate still passes (below)
+  const bp = {...raw('beursplein-5-165051'), layeredKit: false}, bf = facts('beursplein-5-165051');
   const open = await topoOf(validateLargeIntent({...bp, closedBands: undefined}), bf), closed = await topoOf(validateLargeIntent({...bp, closedBands: true}), bf);
   assert.ok(topology(stoneOnly(open.tris)).openEdges > 0, 'open cornices have open back edges');
   assert.equal(topology(stoneOnly(closed.tris)).openEdges, 0, 'closed cornices are watertight on their own');
+  const layered = await topoOf(validateLargeIntent({...raw('beursplein-5-165051'), closedBands: true}), bf);
+  assert.deepEqual(layered.gates.filter(x => !x.pass).map(x => x.id), []);
   // Damrak 77: string courses stop at the Beurspassage arch; without closed ends they left 2 m of open edge.
-  const dm = raw('damrak-77-165746'), df = facts('damrak-77-165746');
+  const dm = {...raw('damrak-77-165746'), layeredKit: false}, df = facts('damrak-77-165746');
   const sc = {...dm, walls: [{...dm.walls[0], stringCourses: true}, ...dm.walls.slice(1)]};
   const before = await topoOf(validateLargeIntent({...sc, closedBands: undefined}), df), after = await topoOf(validateLargeIntent({...sc, closedBands: true}), df);
   assert.ok(before.topology.openEdges > 0);
@@ -381,19 +386,22 @@ test('gateways: arched carriage openings (92 % of a bay) in the listed ground ba
 // Layered kit (intent `layeredKit`): garage doors, portals/arches with frames, curtain walls and stacked balconies on a
 // synthetic 12 x 9 m wall (two 3DBAG strips), measured with the geometry audit's coplanar metric (zfight + tight m2).
 
-async function layeredWall() {
+async function layeredWall(bend = 0) {
   const {compose} = await import('../blockBuilding/compose.ts');
   const {auditZFight} = await import('../landmarks/geometryAudit.ts');
   type P3 = [number, number, number];
   const W = (rings: P3[][], surface: number) => ({rings, onFootprintEdge: true, surface});
+  // `bend`: the south wall's east strip leans out to z = 4 + bend at its far end (a 3DBAG front bent within the merge
+  // tolerance, so both strips still make one panel whose reference plane the east strip leaves)
+  const e = 4 + bend;
   const set = {
     pandId: '0000000000000000', anchor: [0, 0] as [number, number], groundNap: 0, heightMax: 9, constructionYear: 1900,
     walls: [
-      W([[[-6, 0, 4], [0, 0, 4], [0, 9, 4], [-6, 9, 4]]], 0), W([[[0, 0, 4], [6, 0, 4], [6, 9, 4], [0, 9, 4]]], 1),
-      W([[[6, 0, -4], [-6, 0, -4], [-6, 9, -4], [6, 9, -4]]], 2), W([[[6, 0, 4], [6, 0, -4], [6, 9, -4], [6, 9, 4]]], 3), W([[[-6, 0, -4], [-6, 0, 4], [-6, 9, 4], [-6, 9, -4]]], 4),
+      W([[[-6, 0, 4], [0, 0, 4], [0, 9, 4], [-6, 9, 4]]], 0), W([[[0, 0, 4], [6, 0, e], [6, 9, e], [0, 9, 4]]], 1),
+      W([[[6, 0, -4], [-6, 0, -4], [-6, 9, -4], [6, 9, -4]]], 2), W([[[6, 0, e], [6, 0, -4], [6, 9, -4], [6, 9, e]]], 3), W([[[-6, 0, -4], [-6, 0, 4], [-6, 9, 4], [-6, 9, -4]]], 4),
     ],
-    roofs: [{rings: [[[-6, 9, 4], [0, 9, 4], [6, 9, 4], [6, 9, -4], [-6, 9, -4]]] as P3[][], slopeDeg: 0}],
-    ground: [{rings: [[[-6, 0, 4], [6, 0, 4], [6, 0, -4], [-6, 0, -4]]] as P3[][]}],
+    roofs: [{rings: [[[-6, 9, 4], [0, 9, 4], [6, 9, e], [6, 9, -4], [-6, 9, -4]]] as P3[][], slopeDeg: 0}],
+    ground: [{rings: [[[-6, 0, 4], [6, 0, e], [6, 0, -4], [-6, 0, -4]]] as P3[][]}],
     neighbours: [],
   };
   const palette = {wall: '#7a4a3a', arch: '#6a3a2a', roof: '#555555', frame: '#eeeeee', glass: '#223344', door: '#222222', stone: '#dddddd', rail: '#333333'};
@@ -405,7 +413,7 @@ async function layeredWall() {
     names.forEach((slot, k) => { const v = mesh.slots.get(slot)!.positions; for (let i = 0; i < v.length; i += 9) { positions.push(...v.slice(i, i + 9)); triMaterial.push(k); } });
     const soup = {positions, indices: Array.from({length: positions.length / 3}, (_, i) => i), triMaterial, materials: names.map(name => ({name, rgb: [0.5, 0.5, 0.5] as [number, number, number]}))};
     const z = auditZFight(soup);
-    return {m2: +(z.area + z.tightArea).toFixed(2), tris: mesh.triangles};
+    return {m2: +(z.area + z.tightArea).toFixed(2), tris: mesh.triangles, mesh};
   };
 }
 
@@ -457,4 +465,111 @@ test('layered kit: balconies on three storeys share one slab and rail per storey
     assert.ok(layered.tris < legacy.tris * 0.75, `${kind}: ${layered.tris} vs ${legacy.tris} triangles`);
   }
   assert.ok(MAX_RAIL_RODS <= 48);
+});
+
+// ---------------------------------------------------------------------------------------------------------------
+// The residue after the layered re-installs (2026-10-14): parts laid off a panel's reference plane where the 3DBAG wall
+// leans or bends off it (Berlage Lyceum, Montessori Van Ostade, Stadsloket West), a 3 cm stone arch ring and 1.2 cm
+// wall lettering (Amsterdams Lyceum). One synthetic case per pair.
+
+test('layered kit: piers and string courses follow a wall that leans off its panel plane (pier/brick, course/brick)', async () => {
+  const flat = await layeredWall(), bent = await layeredWall(0.09);
+  const sys = (piers: boolean, bands: boolean) => ({pitch: 2, lines: [0, 3.4, 6.2, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const},
+    piers: piers ? {w: 0.36, out: 0.1, slot: 'stone', segments: 3} : null, ...(bands ? {bands: [{slot: 'stone', h: 0.16, out: 0.05, skipGround: false}]} : {})});
+  for (const [piers, bands] of [[true, false], [false, true]] as const) {
+    assert.equal(flat(sys(piers, bands), false).m2, 0, 'on a flat wall the legacy kit is clean');
+    const legacy = bent(sys(piers, bands), false), layered = bent(sys(piers, bands), true);
+    assert.ok(legacy.m2 > 0.2, `${piers ? 'piers' : 'string course'} on the panel plane meet the leaning brick: ${legacy.m2} m2`);
+    assert.equal(layered.m2, 0, piers ? 'piers' : 'string course');
+  }
+});
+
+test('layered kit: sills follow a leaning wall (sill top/reveal floor)', async () => {
+  const bent = await layeredWall(0.09);
+  const win = {w: 0.5, h: 0.6, sill: 0.85, frame: 'frame', glass: 'glass', frameW: 0.07, sillSlot: 'stone', sillH: 0.08, sillOut: 0.1};
+  const sys = {pitch: 2, lines: [0, 3.4, 6.2, 9], ground: {kind: 'punched' as const, win}, typical: {kind: 'punched' as const, win}};
+  assert.ok(bent(sys, false).m2 > 0.02, 'the sill top on the panel plane shares the reveal floor behind the leaning face');
+  assert.equal(bent(sys, true).m2, 0);
+});
+
+test('layered kit: a curtain grid over a bent glass skin, emitted per facet, and a mesh plinth panel (grid/glass, plinth/glass)', async () => {
+  const bent = await layeredWall(0.1), {drawCurtainGrid} = await import('../blockBuilding/components.ts');
+  const {profileAt, kinksIn} = await import('../blockBuilding/compose.ts');
+  type Profile = NonNullable<Parameters<typeof drawCurtainGrid>[0]['profile']>;
+  const sys = {pitch: 1.5, lines: [0, 3.4, 6.2, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
+  let profile: Profile | null = null, plinth = 0, members = 0;
+  const hook = (withPlinth: boolean) => (c: Parameters<typeof drawCurtainGrid>[0], info: {levels: number[]; cells: Parameters<typeof drawCurtainGrid>[1]}) => {
+    if (c.p.n[2] < 0.9) return;
+    profile = c.profile; members = c.p.members?.length ?? 0;
+    const cells = withPlinth ? info.cells.filter(x => x.floor > 0) : info.cells;
+    if (withPlinth) { c.box('door', c.p.uMin, c.p.uMax, 0, info.levels[1], 0, 0.09, c.part()); plinth++; }
+    drawCurtainGrid(c, cells, info.levels, 'frame', 8.95);
+  };
+  const skin = {wallSlotFor: () => 'glass'};
+  const r = bent(sys, true, {...skin, panelHook: hook(false)});
+  const prof = profile as Profile | null;
+  assert.ok(prof && kinksIn(prof, -100, 100).length === 1, 'the south panel bends once');
+  assert.equal(members, 1, 'both strips dissolve into one bent member (earcut would span the bend)');
+  assert.equal(r.m2, 0, 'mullions on the 13.5 cm layer never meet the bent skin');
+  // every south glass triangle lies on one facet of the bent skin (no earcut triangle spans the bend)
+  const g = r.mesh.slots.get('glass')!.positions, u0 = Math.min(...prof!.u);
+  let worst = 0, n = 0;
+  for (let i = 0; i < g.length; i += 9) {
+    const cx = (g[i] + g[i + 3] + g[i + 6]) / 3, cz = (g[i + 2] + g[i + 5] + g[i + 8]) / 3;
+    if (cz < 3.9) continue;
+    n++; worst = Math.max(worst, Math.abs((cz - 4) - profileAt(prof!, u0 + cx + 6)));
+  }
+  assert.ok(n > 0 && worst < 0.01, `glass skin off the bent profile by ${worst} m`);
+  const withPlinth = bent(sys, true, {...skin, panelHook: hook(true)});
+  assert.ok(plinth > 0);
+  assert.equal(withPlinth.m2, 0, 'the plinth panel (9 cm) shares no plane with the skin or the grid above it');
+});
+
+test('layered kit: a thin stone arch ring (3 cm) stands a full sheet layer off the wall (ring/brick)', async () => {
+  const wall = await layeredWall();
+  // Amsterdams Lyceum's gateway rings (archFor 'stone', 3 cm) measured 3.0 cm off a brick face a few mm proud of the panel
+  const gate = {w: 0.92, h: 0.86, sill: 0.06, mull: 0, frameW: 0, frame: 'frame', glass: 'door', arch: {kind: 'round' as const, band: {slot: 'stone', t: 0.2, out: 0.025}}};
+  const sys = {pitch: 3, lines: [0, 3.4, 6.2, 9], ground: {kind: 'punched' as const, win: gate}, typical: {kind: 'wall' as const}};
+  assert.ok(wall(sys, false).m2 > 0.1, "a 3 cm ring is in the audit's tight band");
+  assert.equal(wall(sys, true).m2, 0);
+});
+
+test('layered kit: wall lettering is closed strokes a sheet layer off the brick, not a 1.2 cm sheet (letters/brick)', async () => {
+  const wall = await layeredWall(), {drawLettering} = await import('../blockBuilding/components.ts');
+  const sys = {pitch: 3, lines: [0, 3.4, 6.2, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
+  let n = 0;
+  const panelHook = (c: Parameters<typeof drawLettering>[0]) => { if (c.p.n[2] > 0.9) n += drawLettering(c, 'HET AMSTERDAMS LYCEUM', 0, 5, 0.012, 0.6, 9, 'stone', (u, v, d) => c.onWallAt(u, v, d)); };
+  const legacy = wall(sys, false, {panelHook}), layered = wall(sys, true, {panelHook});
+  assert.ok(legacy.m2 > 0.03, `legacy letters 1.2 cm off the brick: ${legacy.m2} m2`);
+  assert.equal(layered.m2, 0);
+  // closed: every stroke edge is shared, except the back edges standing on the wall (z = 4)
+  const pos = layered.mesh.slots.get('stone')!.positions, count = new Map<string, number>(), key = (i: number) => [pos[i], pos[i + 1], pos[i + 2]].map(x => x.toFixed(4)).join(',');
+  for (let i = 0; i < pos.length; i += 9) for (const [a, b] of [[0, 3], [3, 6], [6, 0]]) { const k = [key(i + a), key(i + b)].sort().join('|'); count.set(k, (count.get(k) ?? 0) + 1); }
+  const open = [...count.entries()].filter(([, c]) => c === 1).map(([k]) => k.split('|').map(q => q.split(',').map(Number)));
+  assert.ok(n > 0 && open.every(([a, b]) => Math.abs(a[2] - 4) < 0.001 && Math.abs(b[2] - 4) < 0.001), 'only back edges (on the wall plane) are single');
+});
+
+test('layeredKit is the default for kind: large (false keeps the legacy kit); mesh-plinth only under a layered curtain wall', async () => {
+  const {compileLargeBuilding} = await import('./largeCompile.ts');
+  const {createHash} = await import('node:crypto');
+  const meshHash = (intent: LargeBuildingIntent, f: BuildingFacts) => {
+    const h = createHash('sha256');
+    for (const m of [...compileLargeBuilding(intent, f, {budget: 1e9}).group.children].sort((a, b) => (a.name < b.name ? -1 : 1))) {
+      h.update(m.name); h.update(Buffer.from(new Float32Array(Array.from((m as unknown as {geometry: {getAttribute(n: string): {array: ArrayLike<number>}}}).geometry.getAttribute('position').array)).buffer));
+    }
+    return h.digest('hex');
+  };
+  const base = raw('politie-zuid-de-pijp'), f = facts('politie-zuid-de-pijp');
+  assert.equal(base.layeredKit, undefined);
+  const dflt = meshHash(validateLargeIntent(base), f);
+  assert.equal(dflt, meshHash(validateLargeIntent({...base, layeredKit: true}), f));
+  assert.notEqual(dflt, meshHash(validateLargeIntent({...base, layeredKit: false}), f));
+  const sw = raw('stadsloket-west');
+  assert.deepEqual(sw.walls.map((w: {ground?: string}) => w.ground).filter((g: string | undefined) => g === 'mesh-plinth').length, 2);
+  assert.throws(() => validateLargeIntent({...sw, layeredKit: false}), /mesh-plinth/);
+  assert.throws(() => validateLargeIntent({...sw, walls: [{...sw.walls[0], ground: 'mesh-plinth'}, ...sw.walls.slice(1)]}), /mesh-plinth/);
+  assert.throws(() => validateLargeIntent({...sw, walls: [sw.walls[0], sw.walls[1], {...sw.walls[2], ground: 'blank'}, ...sw.walls.slice(3)]}), /glass skin/);
+  const built = compileLargeBuilding(validateLargeIntent(sw), facts('stadsloket-west'));
+  assert.equal(built.components.plinths, 2);
+  assert.equal(built.components.curtainGrids, 2);
 });

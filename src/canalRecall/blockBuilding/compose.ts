@@ -67,6 +67,68 @@ function liftSheet(d: number): number {
   if (!(d > 0 && d < 0.08)) return d;
   return SHEET_PITCH * (d <= 0.025 ? 1 : d <= 0.04 ? 2 : d <= 0.065 ? 3 : 4);
 }
+/** A wall's plan profile: its offset `d` (m, along the panel normal) at increasing `u` columns, linear between them. */
+export interface WallProfile { u: number[]; d: number[] }
+export function profileAt(w: WallProfile, u: number): number {
+  const n = w.u.length;
+  if (u <= w.u[0]) return w.d[0];
+  if (u >= w.u[n - 1]) return w.d[n - 1];
+  let i = 1; while (w.u[i] < u) i++;
+  const t = (u - w.u[i - 1]) / (w.u[i] - w.u[i - 1]);
+  return w.d[i - 1] + (w.d[i] - w.d[i - 1]) * t;
+}
+/** A part spanning a bend may cut its chord this far (m) inside or outside the wall before it is split there. */
+const BEND_TOL = 0.01;
+/**
+ * Columns strictly inside (u0, u1) where a part must break to follow the wall's bends: Douglas-Peucker over the profile
+ * columns, so every straight piece stays within BEND_TOL of the wall (a 2 mm wiggle in the 3DBAG ring splits nothing).
+ */
+export function kinksIn(w: WallProfile, u0: number, u1: number): number[] {
+  u0 = Math.max(u0, w.u[0]); u1 = Math.min(u1, w.u[w.u.length - 1]);
+  const inner = w.u.filter(u => u > u0 + 1e-3 && u < u1 - 1e-3);
+  if (!inner.length) return [];
+  const out: number[] = [];
+  const split = (a: number, b: number) => {
+    const da = profileAt(w, a), db = profileAt(w, b);
+    let worst = -1, dev = BEND_TOL;
+    for (const u of inner) if (u > a && u < b) { const e = Math.abs(profileAt(w, u) - (da + (db - da) * (u - a) / (b - a))); if (e > dev) { dev = e; worst = u; } }
+    if (worst < 0) return;
+    split(a, worst); out.push(worst); split(worst, b);
+  };
+  split(u0, u1);
+  return out;
+}
+
+/**
+ * Layered kit: where the panel's 3DBAG member walls actually stand, when that is not its reference plane. A wall merged
+ * into a panel can lean off it (Berlage Lyceum: 0 to 9.5 cm over 8.6 m; Montessori Van Ostade 5.3 cm over 7.2 m) or
+ * bend (Stadsloket West: a 65 m front kinked 26 cm out 8 m from one end), so a pier, string course, sill or curtain-wall
+ * mullion laid off the reference plane met the real brick or glass somewhere along its length (the stone/brick and
+ * glass/grid residue after the layered re-installs). Walls are vertical, so their offset depends on `u` alone: every
+ * member vertex gives a (u, d) sample, and when the samples at each column agree within 5 mm the panel's parts are laid
+ * off that piecewise-linear profile. Null when a column disagrees (a warped or overlapping member) or the wall stays
+ * within PROFILE_MIN of the reference plane (output unchanged there).
+ */
+/**
+ * A wall closer than this to the panel's reference plane is left alone: layered parts stand at least 4.5 cm off it
+ * (string courses 5 cm), so 1.5 cm keeps them 3 cm clear of the brick, outside the audit's tight band.
+ */
+const PROFILE_MIN = 0.015;
+export function wallProfileOf(p: Panel): WallProfile | null {
+  if (!p.members?.length) return null;
+  const pts: [number, number][] = [];
+  for (const m of p.members) for (const r of m.rings) for (const q of r) { const e = sub(q, p.o); pts.push([dot(p.r, e), dot(p.n, [e[0], 0, e[2]])]); }
+  pts.sort((a, b) => a[0] - b[0]);
+  const u: number[] = [], d: number[] = [];
+  let off = 0;
+  for (const [pu, pd] of pts) {
+    off = Math.max(off, Math.abs(pd));
+    const k = u.length - 1;
+    if (k >= 0 && pu - u[k] < 0.01) { if (Math.abs(pd - d[k]) > 0.005) return null; continue; }
+    u.push(pu); d.push(pd);
+  }
+  return off < PROFILE_MIN || u.length < 2 ? null : { u, d };
+}
 class Ctx {
   /** recess depth (large tier); 0 = openings drawn proud as in the original block kit */
   recess = 0;
@@ -117,6 +179,9 @@ class Ctx {
   }
   /** (u, v) onto member wall k's own plane, along the panel normal. */
   private onMember(k: number): (u: number, v: number) => V3 {
+    // layered kit, a member bent across facets: onto the wall's plan profile, where emitWalls lays its faces (`emitFacets`)
+    const w = this.profile;
+    if (w && this.bent && bentMember(this.p.members![k].rings)) return (u, v) => pt(this.p, u, v, profileAt(w, u));
     const ring = this.p.members![k].rings[0], nm = norm(newell(ring)), q0 = ring[0], n = this.p.n, den = dot(nm, n);
     return (u, v) => { const P = pt(this.p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(n, t)); };
   }
@@ -144,7 +209,11 @@ class Ctx {
     }
     return -1;
   }
-  P(u: number, v: number, d = 0) { return pt(this.p, u, v, d); }
+  /** Layered kit: the plan profile of the 3DBAG wall parts are laid off (`wallProfileOf`); null = the panel's reference plane. */
+  profile: WallProfile | null = null;
+  /** the profile bends by more than BEND_TOL somewhere (bent members are cut and emitted on it: `emitFacets`) */
+  bent = false;
+  P(u: number, v: number, d = 0) { return pt(this.p, u, v, this.profile ? d + profileAt(this.profile, u) : d); }
   part() { return this.mesh.newPart(); }
   /** A flat sheet at an exact depth (a rail hanging off a slab): not lifted onto the wall layers. */
   quadRaw(slot: Slot, u0: number, v0: number, u1: number, v1: number, d: number, part: number) {
@@ -162,12 +231,30 @@ class Ctx {
   /** Box on the wall: faces front, top, bottom, left, right (back omitted: it sits on the wall). */
   box(slot: Slot, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part: number, shift?: V3) {
     const { mesh, p } = this, P = shift ? (u: number, v: number, d: number) => add(this.P(u, v, d), shift) : (u: number, v: number, d: number) => this.P(u, v, d);
+    const bends = this.profile ? kinksIn(this.profile, u0, u1) : [];
+    // layered kit: a box laid on the followed wall profile, or shifted onto the cut wall (a hoist door's threshold), needs
+    // no back face: its back edges lie on the wall (within BEND_TOL)
+    const onWall = this.layered && d0 === 0 && (!!shift || (!!this.profile && !shift));
+    if (bends.length) {
+      // across a bend in the wall: front, top, bottom (and back) per facet, end caps at u0 and u1 only
+      const us = [u0, ...bends, u1];
+      for (let i = 0; i + 1 < us.length; i++) {
+        const a = us[i], b = us[i + 1];
+        mesh.quad(slot, P(a, v0, d1), P(b, v0, d1), P(b, v1, d1), P(a, v1, d1), part, p.n);
+        mesh.quad(slot, P(a, v1, d0), P(b, v1, d0), P(b, v1, d1), P(a, v1, d1), part, UP);
+        mesh.quad(slot, P(a, v0, d0), P(b, v0, d0), P(b, v0, d1), P(a, v0, d1), part, DOWN);
+        if (this.closedBoxes && !onWall) mesh.quad(slot, P(a, v0, d0), P(b, v0, d0), P(b, v1, d0), P(a, v1, d0), part, scale(p.n, -1));
+      }
+      mesh.quad(slot, P(u0, v0, d0), P(u0, v1, d0), P(u0, v1, d1), P(u0, v0, d1), part, scale(p.r, -1));
+      mesh.quad(slot, P(u1, v0, d0), P(u1, v1, d0), P(u1, v1, d1), P(u1, v0, d1), part, p.r);
+      return;
+    }
     mesh.quad(slot, P(u0, v0, d1), P(u1, v0, d1), P(u1, v1, d1), P(u0, v1, d1), part, p.n);
     mesh.quad(slot, P(u0, v1, d0), P(u1, v1, d0), P(u1, v1, d1), P(u0, v1, d1), part, UP);
     mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v0, d1), P(u0, v0, d1), part, DOWN);
     mesh.quad(slot, P(u0, v0, d0), P(u0, v1, d0), P(u0, v1, d1), P(u0, v0, d1), part, scale(p.r, -1));
     mesh.quad(slot, P(u1, v0, d0), P(u1, v1, d0), P(u1, v1, d1), P(u1, v0, d1), part, p.r);
-    if (this.closedBoxes) mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v1, d0), P(u0, v1, d0), part, scale(p.n, -1));
+    if (this.closedBoxes && !onWall) mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v1, d0), P(u0, v1, d0), part, scale(p.n, -1));
   }
 }
 
@@ -615,6 +702,8 @@ function intervals(p: Panel, v0: number, v1: number, step = 0.5): [number, numbe
 }
 
 function stripBox(c: Ctx, slot: Slot, a: number, b: number, v0: number, v1: number, out: number) {
+  const bends = c.profile ? kinksIn(c.profile, a, b) : [];
+  if (bends.length) { const us = [a, ...bends, b]; for (let i = 0; i + 1 < us.length; i++) stripBox(c, slot, us[i], us[i + 1], v0, v1, out); return; }
   const p = c.p, mesh = c.mesh, part = c.part();
   const mitre = (other: Panel | undefined): V3 => {
     if (!other) return scale(p.n, out);
@@ -680,11 +769,13 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     c.closedBands = recess > 0 && !!opts.closedBands;
     c.glassBack = opts.glassBackM ?? 0;
     c.layered = recess > 0 && !!opts.layered;
+    c.profile = c.layered ? wallProfileOf(p) : null;
+    c.bent = !!c.profile && kinksIn(c.profile, p.uMin, p.uMax).length > 0;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {
       opts.panelHook?.(c, { system: sysName, levels, cells });
-      if (recess > 0) emitWalls(mesh, p, c.holes, c.wallSlot);
+      if (recess > 0) emitWalls(mesh, p, c.holes, c.wallSlot, c.bent ? c.profile : null);
       openingStats.recessed += c.stats.recessed; openingStats.proud += c.stats.proud;
     };
     if (!sysName) { finish([]); continue; }
@@ -733,10 +824,108 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
   return { mesh, panels, assignment, stats: { ...hostStats, panels: panels.length, hostTris, triangles: mesh.triangles, parts: mesh.partCount, ...(recess > 0 ? openingStats : {}) } };
 }
 
+/** A member wall whose vertices leave its own (Newell) plane by more than 5 mm: 3DBAG facets dissolved across a bend. */
+function bentMember(rings: V3[][]): boolean {
+  const nm = norm(newell(rings[0])), q0 = rings[0][0];
+  return rings.some(r => r.some(q => Math.abs(dot(nm, sub(q, q0))) > 0.005));
+}
+
+/**
+ * Layered kit: a bent member wall (Stadsloket West's 65 m front kinks 26 cm out 8 m from one end; Plantage Middenlaan
+ * 52's 50 m front by 56 cm) triangulated by earcut gets triangles spanning the bend, whose faces lean off both facets
+ * and off the profile the parts follow. Emitted instead per facet: the rings are clipped to the slabs between the
+ * profile's bends (`kinksIn`, so each slab is within BEND_TOL of flat) and each slab is earcut with the holes and cut
+ * openings inside it. A slab an opening straddles is cut into trapezoids between consecutive vertex columns (every ring
+ * edge crosses a column whole, so pairing edges by height gives quads on the 3D edges). False = use plain earcut.
+ */
+function emitFacets(mesh: MeshBuilder, p: Panel, profile: WallProfile, rings: V3[][], slot: Slot): boolean {
+  const uOf = (q: V3) => (q[0] - p.o[0]) * p.r[0] + (q[2] - p.o[2]) * p.r[2];
+  const us = rings.flat().map(uOf), lo = Math.min(...us), hi = Math.max(...us), bends = kinksIn(profile, lo, hi);
+  if (!bends.length) return false;
+  // a ring that visits a vertex twice (a degenerate 3DBAG face: Funenpark's blank west wall) keeps plain earcut
+  const seen = new Set<string>();
+  for (const r of rings) for (const q of r) { const k = q.map(x => Math.round(x * 1000)).join(','); if (seen.has(k)) return false; seen.add(k); }
+  const lerp = (a: V3, b: V3, t: number): V3 => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  /** Sutherland-Hodgman against u >= a and u <= b; the cut points lie on the 3D edges. */
+  const clip = (ring: V3[], a: number, b: number): V3[] => {
+    let out = ring;
+    for (const [lim, keep] of [[a, (u: number) => u >= a], [b, (u: number) => u <= b]] as [number, (u: number) => boolean][]) {
+      if (!Number.isFinite(lim)) continue;
+      const src = out; out = [];
+      src.forEach((q, i) => {
+        const r = src[(i + 1) % src.length], uq = uOf(q), ur = uOf(r);
+        if (keep(uq)) out.push(q);
+        if (keep(uq) !== keep(ur)) out.push(lerp(q, r, (lim - uq) / (ur - uq)));
+      });
+    }
+    // drop repeated points (a vertex on the slab line comes out twice); earcut fails on them
+    return out.filter((q, i) => { const nx = out[(i + 1) % out.length]; return Math.hypot(q[0] - nx[0], q[1] - nx[1], q[2] - nx[2]) > 1e-4; });
+  };
+  const spans = rings.slice(1).map(h => { const hu = h.map(uOf); return [Math.min(...hu), Math.max(...hu)]; });
+  // A bend under an opening moves to the pier beside it (a gently curved front: Entrepotdok), as long as every slab
+  // stays within BEND_TOL of flat; otherwise slabs keep the true bends and a slab an opening straddles is trapezoided.
+  const free = (u: number) => {
+    for (let k = 0; k < 12; k++) {
+      const h = spans.find(([h0, h1]) => u > h0 - 0.01 && u < h1 + 0.01);
+      if (!h) return u;
+      u = u - h[0] < h[1] - u ? h[0] - 0.02 : h[1] + 0.02;
+    }
+    return NaN;
+  };
+  const flatSlabs = (cuts: number[]) => cuts.every((c, k) => k + 1 >= cuts.length || !kinksIn(profile, Math.max(c, lo), Math.min(cuts[k + 1], hi)).length);
+  const moved = [...new Set(bends.map(free))].filter(u => u > lo + 0.05 && u < hi - 0.05).sort((a, b) => a - b);
+  const cuts = bends.every(u => Number.isFinite(free(u))) && moved.length && flatSlabs([lo, ...moved, hi]) ? moved : bends;
+  const bounds = [-Infinity, ...cuts, Infinity], tris: V3[][] = [], quads: V3[][] = [];
+  const to2 = (q: V3) => new T.Vector2(uOf(q), q[1]);
+  for (let s = 0; s + 1 < bounds.length; s++) {
+    const a = bounds[s], b = bounds[s + 1], outer = clip(rings[0], a, b);
+    if (outer.length < 3) continue;
+    const holes: V3[][] = [];
+    let straddled = false;
+    rings.slice(1).forEach((h, k) => {
+      const [h0, h1] = spans[k];
+      if (h1 <= a + 1e-4 || h0 >= b - 1e-4) return;
+      if (h0 < a - 1e-4 || h1 > b + 1e-4) { straddled = true; const c = clip(h, a, b); if (c.length >= 3) holes.push(c); return; }
+      holes.push(h);
+    });
+    const faces = straddled ? [] : T.ShapeUtils.triangulateShape(outer.map(to2), holes.map(h => h.map(to2)));
+    if (!faces.length) { const q = trapezoids(p, [outer, ...holes]); if (!q) return false; quads.push(...q); continue; }
+    const all = [...outer, ...holes.flat()];
+    for (const f of faces) tris.push([all[f[0]], all[f[1]], all[f[2]]]);
+  }
+  if (!tris.length && !quads.length) return false;
+  for (const t of tris) mesh.tri(slot, t[0], t[1], t[2], 0, p.n);
+  for (const q of quads) mesh.quad(slot, q[0], q[1], q[2], q[3], 0, p.n);
+  return true;
+}
+
+/** Quads between consecutive vertex columns of `rings` (outer and holes, even-odd by height), or null when a column pairs oddly. */
+function trapezoids(p: Panel, rings: V3[][]): V3[][] | null {
+  const uOf = (q: V3) => (q[0] - p.o[0]) * p.r[0] + (q[2] - p.o[2]) * p.r[2];
+  const edges: [V3, V3][] = [];
+  for (const r of rings) r.forEach((q, i) => { const b = r[(i + 1) % r.length]; if (Math.abs(uOf(q) - uOf(b)) > 1e-6) edges.push(uOf(q) < uOf(b) ? [q, b] : [b, q]); });
+  const cols = [...new Set(rings.flat().map(q => Math.round(uOf(q) * 1e4) / 1e4))].sort((a, b) => a - b);
+  const at = ([a, b]: [V3, V3], u: number): V3 => { const t = Math.min(1, Math.max(0, (u - uOf(a)) / (uOf(b) - uOf(a)))); return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; };
+  const quads: V3[][] = [];
+  for (let i = 0; i + 1 < cols.length; i++) {
+    const ua = cols[i], ub = cols[i + 1], um = (ua + ub) / 2;
+    if (ub - ua < 1e-4) continue;
+    const span = edges.filter(([a, b]) => uOf(a) < um && uOf(b) > um).sort((e, f) => at(e, um)[1] - at(f, um)[1]);
+    if (span.length % 2) return null;
+    for (let j = 0; j < span.length; j += 2) quads.push([at(span[j], ua), at(span[j], ub), at(span[j + 1], ub), at(span[j + 1], ua)]);
+  }
+  return quads;
+}
+
 /** Deferred host walls: members with holes are triangulated in the panel's (u, v) frame, keeping their exact 3D ring vertices. */
-function emitWalls(mesh: MeshBuilder, p: Panel, holes: Map<number, HoleRect[]>, wallSlot: Slot) {
+function emitWalls(mesh: MeshBuilder, p: Panel, holes: Map<number, HoleRect[]>, wallSlot: Slot, profile: WallProfile | null = null) {
   (p.members ?? []).forEach((m, k) => {
     const rects = holes.get(k);
+    if (profile && bentMember(m.rings)) {
+      const on = (u: number, v: number): V3 => pt(p, u, v, profileAt(profile, u));
+      const rectRings = (rects ?? []).map(([u0, u1, v0, v1, outline]) => outline ? outline.map(([u, v]) => on(u, v)) : [on(u0, v0), on(u1, v0), on(u1, v1), on(u0, v1)]);
+      if (emitFacets(mesh, p, profile, [...m.rings, ...rectRings], wallSlot)) return;
+    }
     if (!rects?.length) { triangulate3(mesh, wallSlot, m.rings, p.n, 0); return; }
     const clean = (r: V3[]) => r.filter((q, i) => { const nx = r[(i + 1) % r.length]; return Math.hypot(q[0] - nx[0], q[1] - nx[1], q[2] - nx[2]) > 1e-4; });
     const rings3 = m.rings.map(clean), to2 = (q: V3) => new T.Vector2((q[0] - p.o[0]) * p.r[0] + (q[2] - p.o[2]) * p.r[2], q[1]);

@@ -27262,10 +27262,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164981",
       "name": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam: the Entrepotdok warehouses, converted to housing in the 1980s",
-      "hash": "005cf6ae285ddfa5cb889544fa1755dc87a0068500242d3e43f6496cbe9ae9fd",
-      "sha256": "005cf6ae285ddfa5cb889544fa1755dc87a0068500242d3e43f6496cbe9ae9fd",
-      "bytes": 943328,
-      "triangles": 11622,
+      "hash": "9c9a53294587ab8d181b5337eeaa47a08d7273a3d0ee3eb9647d86a049b5c34d",
+      "sha256": "9c9a53294587ab8d181b5337eeaa47a08d7273a3d0ee3eb9647d86a049b5c34d",
+      "bytes": 947144,
+      "triangles": 11767,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -27637,7 +27637,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164981",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:03:22.312Z",
+      "updatedAt": "2026-10-14T02:29:54.738Z",
       "bagYear": 1750
     },
     {
@@ -35114,11 +35114,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012118358",
       "name": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
-      "hash": "585586ce656ea75bf648722bf5456706e5698a47284aaff0abfd44cc83a564cd",
-      "sha256": "585586ce656ea75bf648722bf5456706e5698a47284aaff0abfd44cc83a564cd",
-      "bytes": 488980,
-      "triangles": 6749,
-      "materials": 9,
+      "hash": "71eab3a58ba886b99bd5ff9d66df6d303e972b62dc7e029d47f7d42a89774b56",
+      "sha256": "71eab3a58ba886b99bd5ff9d66df6d303e972b62dc7e029d47f7d42a89774b56",
+      "bytes": 484688,
+      "triangles": 6659,
+      "materials": 10,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -35357,14 +35357,14 @@
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab.",
-        "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups now glaze the ground storey too (SIMPLIFIED: the photo shows a dark mesh plinth there; the dark glass reads close to it)."
+        "layeredKit (2026-10-14): a layered curtain wall is one glass skin and cannot carry a blank ground, so the two west curtain-wall groups glazed the ground storey for one install; they now carry ground \"mesh-plinth\": the glass skin with a closed dark panel over the ground storey, as the photo's dark mesh plinth (SIMPLIFIED: the mesh is a flat dark panel, no perforation)."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118358",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:07:53.556Z"
+      "updatedAt": "2026-10-14T02:30:20.638Z"
     },
     {
       "id": "ordinary-0363100012243116",
@@ -39771,10 +39771,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012127997",
       "name": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
-      "hash": "9f36f4a9269bd5fa056adfadc39adda990473f31b8de6c9c1ceca29ac9262467",
-      "sha256": "9f36f4a9269bd5fa056adfadc39adda990473f31b8de6c9c1ceca29ac9262467",
-      "bytes": 317000,
-      "triangles": 4280,
+      "hash": "334918342f09b97327e73a6925fa62f1f15f7206adf48fc603c4ddc1681abacf",
+      "sha256": "334918342f09b97327e73a6925fa62f1f15f7206adf48fc603c4ddc1681abacf",
+      "bytes": 314444,
+      "triangles": 4238,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -40024,17 +40024,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127997",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:05:29.204Z"
+      "updatedAt": "2026-10-14T02:29:53.201Z"
     },
     {
       "id": "ordinary-0363100012236840",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236840",
       "name": "Montessori Lyceum Amsterdam, Van Ostadestraat 103, Amsterdam (1900 school: three tall storeys of window groups between slender piers)",
-      "hash": "d5d1385240a22c5423cc37aff029f16112fcb566cd381b2bfb10369786bbfeed",
-      "sha256": "d5d1385240a22c5423cc37aff029f16112fcb566cd381b2bfb10369786bbfeed",
-      "bytes": 139352,
-      "triangles": 1733,
+      "hash": "b667144a2b14728969cc29f5961c62db54fd9e8278c597b42ac14e5aa42cfcf1",
+      "sha256": "b667144a2b14728969cc29f5961c62db54fd9e8278c597b42ac14e5aa42cfcf1",
+      "bytes": 138512,
+      "triangles": 1721,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -40205,17 +40205,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236840",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:05:45.212Z"
+      "updatedAt": "2026-10-14T02:29:53.478Z"
     },
     {
       "id": "ordinary-0363100012149878",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012149878",
       "name": "Het Amsterdams Lyceum, Valeriusplein 15, Amsterdam (1920s Amsterdam School school, two carriage arches through the street fronts)",
-      "hash": "5107f126b44371dc9b9169e50f1538e517f8a12b007d460a0d20994cdb1fc26a",
-      "sha256": "5107f126b44371dc9b9169e50f1538e517f8a12b007d460a0d20994cdb1fc26a",
-      "bytes": 259192,
-      "triangles": 3145,
+      "hash": "421da2d2880ac24ef42fba18df4f18fc16d8af9f4b022bb5067c4c4b96eb4111",
+      "sha256": "421da2d2880ac24ef42fba18df4f18fc16d8af9f4b022bb5067c4c4b96eb4111",
+      "bytes": 364508,
+      "triangles": 4569,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -40569,7 +40569,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012149878",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:06:03.601Z"
+      "updatedAt": "2026-10-14T02:29:53.551Z"
     },
     {
       "id": "ordinary-0363100012165748",

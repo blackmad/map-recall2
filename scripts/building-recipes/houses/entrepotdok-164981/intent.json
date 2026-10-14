@@ -137,7 +137,7 @@
    "sills": false,
    "frames": false,
    "hoist": {
-    "every": 6,
+    "every": 3,
     "first": 1
    }
   },
@@ -173,7 +173,8 @@
   "Canal front (bearing 210, 156.5 m along Entrepotdok) from the 2022-04-25 panorama (w01-210 rectified, and aimed 25-degree thumbnails from the same panorama). Bay rhythm about 2 m. Between 47.7 and 84.8 m from the north-west end (surfaces 3, 2..97) the warehouses keep their original fronts: round-arched ground portals in every bay (wide ones under the loading axes) with brick rowlock arches and white stone springer blocks, a stack of round-arched loading doors with French-balcony railings on each loading axis, tall single-light windows with flat brick heads and no stone sills. Loading axes measured on the rectified crop at 52.5, 65.4, 74.8 and 81.3 m: surface 3 bay 2, then bays 4, 9, 12 of the 14-bay panel. The name board EINDHOVEN (black on white, read on the 2022 panorama, heading 27) hangs over the wide portal of Entrepotdok 26, the third loading axis (the ray from the camera meets the wall at about 82 m).",
   "The rest of the canal front (0-47.7 m and 84.8-156.5 m, walls[2]) was converted with rectangular glazed loading stacks and white slab sills; modelled as a 33-bay grid with a rectangular loading door on a stone sill every third bay (the real stacks are irregular, two per warehouse in places). Its ground floor is drawn as windows; the photos show garden doors, a few small arched doors, and the board ELBURG over a rectangular door near 87 m (not modelled: that door is in the rectangular-hoist group, whose ground has no portals).",
   "Rear (Laagte Kadijk side, the panel of surfaces 134/135/151) from the 2017-03-23 panorama: windows with segmental brick heads, modelled as narrow segmental-arched windows on 13 bays. The other rear and courtyard walls, the SE modern rendered block (light render in the 2021 photo w04-120) and the NW end are blank: the 12k triangle budget is spent on the canal front (11,156 triangles).",
-  "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping)."
+  "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping).",
+  "Layered kit (2026-10-14, second pass): the converted front's loading doors are back to every third bay (11 axes on 33 bays); a layered loading door is two leaves with one meeting stile (SIMPLIFIED: no hatch rail) and the arched loading doors take 4-segment heads, which with closed bars and stone thresholds laid on the wall keeps the model at 11,767 triangles."
  ],
  "layeredKit": true
 }
