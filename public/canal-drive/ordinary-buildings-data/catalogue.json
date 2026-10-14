@@ -40211,10 +40211,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012149878",
       "name": "Het Amsterdams Lyceum, Valeriusplein 15, Amsterdam (1920s Amsterdam School school, two carriage arches through the street fronts)",
-      "hash": "9d038de4b010bedc34a0d05cf0fe2d0948837ea14ea114bf8b3a8d17fc0d6289",
-      "sha256": "9d038de4b010bedc34a0d05cf0fe2d0948837ea14ea114bf8b3a8d17fc0d6289",
-      "bytes": 223344,
-      "triangles": 2633,
+      "hash": "5107f126b44371dc9b9169e50f1538e517f8a12b007d460a0d20994cdb1fc26a",
+      "sha256": "5107f126b44371dc9b9169e50f1538e517f8a12b007d460a0d20994cdb1fc26a",
+      "bytes": 259192,
+      "triangles": 3145,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -40568,7 +40568,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012149878",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:17:30.248Z"
+      "updatedAt": "2026-10-14T01:06:03.601Z"
     },
     {
       "id": "ordinary-0363100012165748",
