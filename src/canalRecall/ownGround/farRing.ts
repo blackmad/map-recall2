@@ -173,7 +173,7 @@ export function buildFarBlock(input: FarBlockInput): BuiltFar {
       const i = subOf(midpoint(w.points));
       if (i < 0) continue;
       const m = meshes[i], n = m.indices.length;
-      const colour = cycle ? FAR_COLOURS.cycle : w.section.bands[0]?.surface === 'klinker' ? FAR_COLOURS.klinker : FAR_COLOURS.asphalt;
+      const own = w.section.bands[0]?.surface, colour = cycle || own === 'cycle' ? FAR_COLOURS.cycle : own === 'klinker' ? FAR_COLOURS.klinker : FAR_COLOURS.asphalt;
       ribbon(m, simplify(w.points, FAR_SIMPLIFY_M), cycle ? 0 : (ext.left - ext.right) / 2, width, height, cycle ? FAR_LIFT.cycle : FAR_LIFT.street, { step: 1e9, colour });
       count('street', m, n);
     }

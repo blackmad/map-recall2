@@ -9,7 +9,9 @@ import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extend
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
-import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
+import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
+import { herringboneBricks, KLINKER_TONES } from './streetTextures';
+import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
@@ -18,11 +20,13 @@ import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowed
 import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SurfaceIndex, type ParksCell } from './parks';
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
-import type { OsmGroundExtract } from './osmGround';
+import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { fillPockets, POCKET_LIFT } from './pockets';
+import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
+import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
 import type { DeckProfile } from '../elevation/bridgeDeck';
 import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
@@ -989,6 +993,143 @@ test('water opens under a footbridge whose water polygon stops at it (Melkmeisje
   for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
   assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
   assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
+});
+
+test('a houseboat half over the generalised shore gets its berth opened: water under the hull, the wall behind it', () => {
+  // A canal y 0..10 along x with its north bank at y = 10; a 4 x 12 m boat at y 7..11 (1 m over the bank), one wholly in the water, one on land.
+  const geo = { polygons: [[[[0, 0], [40, 0], [40, 10], [0, 10]] as Vec2[]]], shores: [[[0, 10], [40, 10]]] as Vec2[][] };
+  const box = (x: number, y0: number, y1: number): Vec2[] => [[x, y0], [x + 12, y0], [x + 12, y1], [x, y1], [x, y0]];
+  const boats = [{ id: 'over', ring: box(2, 7, 11) }, { id: 'afloat', ring: box(20, 2, 6) }, { id: 'yard', ring: box(26, 14, 18) }];
+  const r = openUnderHouseboats(geo, boats, [0, -5, 40, 25], -1.77);
+  assert.deepEqual(r.opened, ['over']);
+  const berth = berthRect(boats[0].ring, MOORING_MARGIN_M)!;
+  assert.ok(Math.abs(berth.area - 48) < 1e-6, 'min-area rectangle of the hull');
+  const mask = buildWaterMask(r.geo, -2, -5, 42, 25, 0.25, 4);
+  for (const [x, y] of [[3, 10.8], [8, 10.5], [13.5, 10.9]] as Vec2[]) assert.ok(maskDistance(mask, x, y) < 0, `water under the hull at ${x},${y}`);
+  assert.ok(maskDistance(mask, 8, 12) > 0, 'land past the berth');
+  // The old wall no longer runs through the hull; a new one stands behind it (water on its left).
+  const crosses = (line: Vec2[]) => line.some((a, i) => i > 0 && (a[0] + line[i - 1][0]) / 2 > 2 && (a[0] + line[i - 1][0]) / 2 < 14 && Math.abs((a[1] + line[i - 1][1]) / 2 - 10) < 0.01);
+  assert.ok(!r.geo.shores.some(crosses), 'no wall through the boat');
+  const behind = r.geo.shores.filter(l => l.some(p => Math.abs(p[1] - 11.4) < 1e-6));
+  assert.equal(behind.length, 1, 'one wall around the berth on the land side');
+  const top = behind[0].filter(p => Math.abs(p[1] - 11.4) < 1e-6);
+  assert.ok(top[0][0] > top[top.length - 1][0], 'its back runs west (water on its left, to the south)');
+  assert.ok(behind[0].every(p => p[1] > 9.9), 'only where the berth is on land');
+});
+
+const haveBoats = existsSync('public/data/extracts/amsterdam/houseboats.json') && existsSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json');
+test('regression (houseboats, user 2026-10-14): no houseboat in the Frederik Hendrikbuurt / Westerkanaal / Spaarndammerbuurt cells lies under land', { skip: !haveBoats }, async () => {
+  const store = fsStore();
+  await store.init();
+  const boats = (JSON.parse(readFileSync('public/data/extracts/amsterdam/houseboats.json', 'utf8')).boats as { id: string; ring: [number, number][] }[]).map(b => ({ id: b.id, ring: b.ring.map(([lng, lat]) => storeToLocal(lng, lat)) }));
+  let total = 0;
+  const covered: unknown[] = [];
+  for (const key of HOUSEBOAT_LAND_CELLS) {
+    if (!store.covers(key)) continue;
+    const r = houseboatsOnLand(buildCell(await store.cellInput(key, 0)), boats);
+    total += r.boats; covered.push(...r.covered.map(c => ({ key, ...c })));
+  }
+  assert.ok(total > 300, `boats checked: ${total}`);
+  assert.deepEqual(covered, [], 'houseboat footprints under land');
+});
+
+// ------------------------------------------------------------- surface classes (user 2026-10-14, Houtmankade)
+/** CIE76 ΔE between two sRGB colours. */
+function deltaE(a: readonly number[], b: readonly number[]): number {
+  const lab = (c: readonly number[]) => {
+    const lin = c.map(v => { const u = v / 255; return u <= 0.04045 ? u / 12.92 : ((u + 0.055) / 1.055) ** 2.4; });
+    const X = (0.4124 * lin[0] + 0.3576 * lin[1] + 0.1805 * lin[2]) / 0.95047, Y = 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2], Z = (0.0193 * lin[0] + 0.1192 * lin[1] + 0.9505 * lin[2]) / 1.08883;
+    const f = (t: number) => (t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116);
+    return [116 * f(Y) - 16, 500 * (f(X) - f(Y)), 200 * (f(Y) - f(Z))];
+  };
+  const p = lab(a), q = lab(b);
+  return Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+}
+
+test('surface legend: six classes on five meshes; a fietsstraat is a red road, a brick fietsstraat stays brick', () => {
+  assert.deepEqual(Object.keys(SURFACE_LEGEND).sort(), ['asphalt', 'brick', 'concrete', 'cycle', 'fietsstraat', 'gravel']);
+  const fiets = crossSection({ highway: 'residential', cyclestreet: 'yes', surface: 'asphalt' })!;
+  assert.equal(carriagewayClass({ highway: 'residential', cyclestreet: 'yes' }, 'klinker'), 'fietsstraat');
+  assert.equal(fiets.bands[0].kind, 'carriageway');
+  assert.equal(fiets.bands[0].surface, 'cycle', 'red asphalt');
+  assert.ok(!fiets.paint.some(p => p.offset === 0), 'no centre line');
+  assert.equal(fiets.paint.filter(p => p.dash === null && Math.abs(p.offset) > 1).length, 2, 'edge lines: drawn as a road');
+  assert.equal(crossSection({ highway: 'residential', bicycle_road: 'yes', surface: 'paving_stones' })!.bands[0].surface, 'klinker', 'brick fietsstraat stays brick');
+  assert.equal(crossSection({ highway: 'tertiary', 'surface:colour': 'red', surface: 'asphalt' })!.bands[0].surface, 'cycle');
+  assert.equal(carriagewayClass({ highway: 'residential' }, 'klinker'), 'brick');
+});
+
+test('klinker reads as brick, not cycle red: base colours ΔE ≥ 22 (was 18), herringbone covers its tile once, the tone mix keeps the base', () => {
+  assert.ok(deltaE(STREET_GROUND.klinker.base, STREET_GROUND.cycle.base) >= 22, `ΔE ${deltaE(STREET_GROUND.klinker.base, STREET_GROUND.cycle.base).toFixed(1)}`);
+  const units = 20, grid = new Uint8Array(units * units * 16);
+  for (const b of herringboneBricks(units, KLINKER_TONES.length)) {
+    for (let y = Math.max(0, b.y * 4); y < Math.min(units * 4, (b.y + b.h) * 4); y++) for (let x = Math.max(0, b.x * 4); x < Math.min(units * 4, (b.x + b.w) * 4); x++) grid[y * units * 4 + x]++;
+  }
+  assert.ok(grid.every(v => v === 1), 'every quarter-unit covered exactly once (seamless, no overlaps)');
+  for (let c = 0; c < 3; c++) assert.ok(Math.abs(KLINKER_TONES.reduce((s, t) => s + t[c], 0) / KLINKER_TONES.length - 1) < 0.02);
+});
+
+test('regression (Houtmankade pair, user 2026-10-14): the west quay is asphalt with a centre line, the east quay klinker with tram rails', { skip: !haveCells }, () => {
+  const ways = new Map<number, { tags: Record<string, string> }>();
+  for (const k of ['-2_1', '-2_2']) for (const w of (JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/own-ground-osm-v1/cells/${k}.json.gz`)).toString()) as OsmGroundExtract).ways) ways.set(w.id, w);
+  // 118447399: Houtmankade, primary, surface=asphalt (BGT rijbaan regionale weg, gesloten verharding), separate red cycleway beside it.
+  const west = crossSection(ways.get(118447399)!.tags)!;
+  assert.equal(west.bands[0].surface, 'asphalt');
+  assert.ok(west.paint.some(p => p.offset === 0 && p.dash), 'centre dashes');
+  // 743746050: Houtmankade, residential, embedded_rails=tram, no surface tag (BGT rijbaan lokale weg, open verharding = klinkers).
+  const east = crossSection(ways.get(743746050)!.tags)!;
+  assert.equal(carriagewayClass(ways.get(743746050)!.tags, 'klinker'), 'brick');
+  assert.equal(east.bands[0].surface, 'klinker');
+  assert.ok(east.rails.length > 0, 'the two dark lines are tram rails');
+  assert.ok(!east.bands.some(b => b.surface === 'cycle'), 'nothing on the east quay is cycle red');
+});
+
+// ------------------------------------------------------------- junction road markings (user 2026-10-14)
+test('junction markings: a side street gives way with shark teeth, a signalised junction gets stop lines, a painted cycle lane runs through', () => {
+  assert.equal(mouthMarking('residential', 5, false), 'giveWay');
+  assert.equal(mouthMarking('primary', 5, false), null, 'the main road keeps priority, unmarked');
+  assert.equal(mouthMarking('residential', 1, false), null, 'equal classes: rechts voorrang, unmarked');
+  assert.equal(mouthMarking('residential', 5, true), 'stop');
+  assert.equal(mouthMarking('service', 5, false), null, 'an exit is not a junction arm to mark');
+  const m = emptyMesh();
+  assert.equal(sharkTeeth(m, { o: [0, 0], u: [1, 0] }, 0.15, 2.9, () => 0, 0.05), 4, '2.75 m inbound half: four teeth at a 0.75 m pitch');
+  assert.ok(m.positions.length > 0);
+  // A T: primary along x (two-way, painted cycle lanes both sides), a residential side street north from x = 0.
+  const main: OsmWay = { id: 1, tags: { highway: 'primary', cycleway: 'lane', lanes: '2', sidewalk: 'no' }, g: [[-60, 0], [0, 0], [60, 0]] };
+  const side: OsmWay = { id: 2, tags: { highway: 'residential', sidewalk: 'no' }, g: [[0, 0], [0, 50]] };
+  const local = (ways: OsmWay[]) => prepareWays(ways, p => [p[0], p[1]]);
+  const plain = buildStreets(local([main, side]), () => 0);
+  assert.equal(plain.stats.markings.giveWays, 1, 'the side street gives way');
+  assert.ok(plain.stats.markings.teeth >= 2);
+  assert.equal(plain.stats.markings.stopLines, 0);
+  assert.equal(plain.stats.markings.laneLinks, 2, 'both cycle lanes carried through the junction');
+  assert.equal(plain.stats.markings.cycleCrossings, 1, 'the north lane crosses the side street mouth: block markings');
+  const teeth = faces(plain.paint).filter(f => f.c[1] > 3 && f.c[1] < 12 && f.c[0] < 0 && f.c[0] > -3);
+  assert.ok(teeth.length >= 2, 'teeth on the side street, on its inbound (west) half');
+  const crossing: OsmWay = { id: 3, tags: { highway: 'footway', footway: 'crossing', crossing: 'traffic_signals' }, g: [[-4, 8], [4, 8]] };
+  const lit = buildStreets(local([main, side, crossing]), () => 0);
+  assert.equal(lit.stats.markings.stopLines, 3, 'signalised: every arm gets a stop line across its inbound half');
+  assert.equal(lit.stats.markings.giveWays, 0, 'and no teeth');
+});
+
+test('regression (Nassaukade / Frederik Hendrikplantsoen, OSM n2306196651, user 2026-10-14): the junction carries its road paint', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.8776303, 52.3785795);
+  const cell = buildCell(await store.cellInput(store.cellAt(x, y), 0));
+  const area = (layer: 'paint' | 'cycle') => {
+    const mesh = cell.layers[layer]!, p = mesh.positions, idx = mesh.indices;
+    let a = 0;
+    for (let t = 0; t < idx.length; t += 3) {
+      const i = idx[t] * 3, j = idx[t + 1] * 3, k = idx[t + 2] * 3;
+      if (Math.hypot((p[i] + p[j] + p[k]) / 3 - x, (p[i + 1] + p[j + 1] + p[k + 1]) / 3 - y) > 30) continue;
+      a += Math.abs((p[j] - p[i]) * (p[k + 1] - p[i + 1]) - (p[k] - p[i]) * (p[j + 1] - p[i + 1])) / 2;
+    }
+    return a;
+  };
+  // Within 30 m: paint 43 m² and red 224 m² before the junction markings, 70 m² and 296 m² after.
+  assert.ok(area('paint') >= 60, `paint ${area('paint').toFixed(1)} m²`);
+  assert.ok(area('cycle') >= 270, `cycle red ${area('cycle').toFixed(1)} m² (lanes carried through)`);
 });
 
 test('park fill culling: a fill triangle inside one BGT surface goes; one over a hole or across two surfaces stays', () => {

@@ -64,6 +64,50 @@ export function pavedAreaSurface(a: Pick<OsmArea, 'hw' | 'surface'>): 'asphalt' 
 }
 
 export type Surface = 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel';
+
+/**
+ * The surface classes the own ground draws, and what puts a band in each
+ * (user 2026-10-14, Houtmankade: "why road on one side and red on the other
+ * side?"). Five meshes (`Surface`), six classes: a fietsstraat is a
+ * carriageway in the red asphalt mesh, drawn as a road (edge lines, no
+ * centre line), never as a cycle path beside one.
+ *
+ *   asphalt     grey asphalt carriageway: `surface=asphalt` or the class prior
+ *               of tertiary and up (BGT rijbaan, gesloten verharding)
+ *   cycle       red asphalt cycle path, lane or track: `highway=cycleway`,
+ *               `cycleway*=lane|track`, `path` + `bicycle=designated`
+ *   fietsstraat red asphalt carriageway: `cyclestreet=yes`, `bicycle_road=yes`
+ *               or `surface:colour=red` on a road whose surface is asphalt or
+ *               untagged; mesh `cycle`, band kind carriageway
+ *   brick       klinker carriageway (gebakken klinkers, herringbone, mixed
+ *               tones): `surface=paving_stones|sett|bricks|cobblestone`, or the
+ *               prior of residential / unclassified / living_street / service
+ *               (BGT rijbaan lokale weg, open verharding); mesh `klinker`
+ *   concrete    paving tiles: sidewalks, footways, concrete; mesh `paving`
+ *   gravel      unpaved: `gravel|compacted|dirt|ground|...`; mesh `gravel`
+ */
+export type SurfaceClass = 'asphalt' | 'cycle' | 'fietsstraat' | 'brick' | 'concrete' | 'gravel';
+export const SURFACE_LEGEND: Record<SurfaceClass, { mesh: Surface; road: boolean; what: string }> = {
+  asphalt: { mesh: 'asphalt', road: true, what: 'grey asphalt carriageway' },
+  cycle: { mesh: 'cycle', road: false, what: 'red asphalt cycle path, lane or track' },
+  fietsstraat: { mesh: 'cycle', road: true, what: 'red asphalt carriageway (fietsstraat): edge lines, no centre line' },
+  brick: { mesh: 'klinker', road: true, what: 'klinker (brick) carriageway, herringbone' },
+  concrete: { mesh: 'paving', road: false, what: 'paving tiles: sidewalks, footways, concrete' },
+  gravel: { mesh: 'gravel', road: false, what: 'unpaved: gravel, compacted, dirt' },
+};
+
+/** Is this carriageway a fietsstraat (red asphalt road)? A brick one stays brick. */
+export function isFietsstraat(tags: Record<string, string>): boolean {
+  const flagged = tags.cyclestreet === 'yes' || tags.bicycle_road === 'yes' || tags['surface:colour'] === 'red';
+  return flagged && (!tags.surface || tags.surface === 'asphalt');
+}
+
+/** The legend class of a carriageway's own surface. */
+export function carriagewayClass(tags: Record<string, string>, prior: Surface): SurfaceClass {
+  if (isFietsstraat(tags)) return 'fietsstraat';
+  const s = surfaceOf(tags.surface, prior, false);
+  return s === 'klinker' ? 'brick' : s === 'paving' ? 'concrete' : s === 'gravel' ? 'gravel' : s === 'cycle' ? 'cycle' : 'asphalt';
+}
 export type BandKind = 'carriageway' | 'cycle_lane' | 'cycle_track' | 'sidewalk' | 'footway' | 'cycleway' | 'path';
 
 export interface Band {
@@ -93,6 +137,12 @@ export interface CrossSection {
 }
 
 const KERB_M = 0.11;
+/**
+ * Longitudinal road lines (centre dashes, edge lines, cycle-lane edges), metres. Painted 0.10–0.15 m;
+ * drawn at the top of that range: from the chase camera (~150 m) a pixel is ~0.2 m, and 0.10–0.12 m
+ * lines aliased into broken specks (user 2026-10-14, "road painting in ownground still not there").
+ */
+export const PAINT_LINE_M = 0.15;
 const SIDEWALK_M = 1.8;
 const TRACK_M = 2.1;
 const LANE_M = 1.6;
@@ -230,7 +280,8 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
   let carriage = bgtWidth ? bgtWidth - laneSides * LANE_M : tagWidth ?? (lanes > 0 ? lanes * style.laneM : oneway ? style.oneway : style.width);
   if (!bgtWidth && (tags.service === 'alley' || tags.service === 'driveway')) carriage = Math.min(carriage, 3);
   carriage = Math.max(2.4, Math.min(30, carriage));
-  const bands: Band[] = [{ kind: 'carriageway', surface: surfaceOf(tags.surface, style.surface, false), offset: 0, width: carriage, raised: 0, kerb: 'none' }];
+  const cls = carriagewayClass(tags, style.surface);
+  const bands: Band[] = [{ kind: 'carriageway', surface: SURFACE_LEGEND[cls].mesh, offset: 0, width: carriage, raised: 0, kerb: 'none' }];
   const paint: PaintLine[] = [];
   const half = carriage / 2;
   const edge = { left: half, right: half };
@@ -238,7 +289,7 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     const s = side === 'left' ? 1 : -1, kind = cyc[side];
     if (kind === 'lane') {
       bands.push({ kind: 'cycle_lane', surface: 'cycle', offset: s * (edge[side] + LANE_M / 2), width: LANE_M, raised: 0, kerb: 'none' });
-      paint.push({ offset: s * edge[side], width: 0.1, dash: [1, 1] });
+      paint.push({ offset: s * edge[side], width: PAINT_LINE_M, dash: [1, 1] });
       edge[side] += LANE_M;
     } else if (kind === 'track') {
       const track = bgtCycle ?? TRACK_M;
@@ -256,11 +307,11 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     edge[side] += w;
   }
   // No centre line on a one-way street or a fietsstraat (cyclestreet / bicycle_road): it is one lane.
-  const cycleStreet = tags.cyclestreet === 'yes' || tags.bicycle_road === 'yes';
+  const cycleStreet = tags.cyclestreet === 'yes' || tags.bicycle_road === 'yes' || cls === 'fietsstraat';
   const centre = !cycleStreet && ((lanes >= 2 && !oneway) || (style.centre && !oneway && !lanes));
-  if (centre) paint.push({ offset: 0, width: 0.12, dash: [3, 5] });
-  if (hw.startsWith('primary') || hw.startsWith('secondary') || hw.startsWith('trunk')) {
-    paint.push({ offset: half - 0.3, width: 0.12, dash: null }, { offset: -(half - 0.3), width: 0.12, dash: null });
+  if (centre) paint.push({ offset: 0, width: PAINT_LINE_M, dash: [3, 5] });
+  if (hw.startsWith('primary') || hw.startsWith('secondary') || hw.startsWith('trunk') || cls === 'fietsstraat') {
+    paint.push({ offset: half - 0.3, width: PAINT_LINE_M, dash: null }, { offset: -(half - 0.3), width: PAINT_LINE_M, dash: null });
   }
   // Tram tracks in the street: two-way (or two-way for buses and trams) streets carry a track each way, 3 m apart.
   const rails: number[] = [];
