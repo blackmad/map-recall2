@@ -26201,10 +26201,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012092810",
       "name": "Politiebureau Postjesweg, Postjesweg 179B, Amsterdam (2004)",
-      "hash": "af13dd1319f01e0dd989821858797ffb0ffdc70daaf28b658ded44cb3f35aeb4",
-      "sha256": "af13dd1319f01e0dd989821858797ffb0ffdc70daaf28b658ded44cb3f35aeb4",
-      "bytes": 164308,
-      "triangles": 2113,
+      "hash": "822d9d64cc9789336cd40ae6b49676a18101caf5f1a09703727ff7ade8768ef3",
+      "sha256": "822d9d64cc9789336cd40ae6b49676a18101caf5f1a09703727ff7ade8768ef3",
+      "bytes": 215472,
+      "triangles": 2851,
       "materials": 10,
       "textures": 0,
       "scale": 1,
@@ -26298,7 +26298,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092810",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:28.895Z",
+      "updatedAt": "2026-10-14T01:08:37.676Z",
       "bagYear": 2004
     },
     {
