@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## Figures, second pass: clothing, instrument and animal kits (2026-10-14, night)
+
+Lane `landmarks/figures-2-20261014`, from each model's recorded Commons
+photos. Johnny Jordaan group (11.5k → 14.3k tris): the bass player has a
+jacket, shoulder yoke, sleeves and trouser legs following the bends, his
+left hand solved to the neck at face height; the bass is a figure-eight
+body with fingerboard, pegbox, scroll and bridge; the couple are a
+pullover with sloping shoulders and a bald glasses head at an upright
+accordion, and a padded jacket with curled hair and a microphone hand;
+the two busts get `bust-kit.ts`'s new `detail` option (eyes, cheeks, nose
+tip and wings, lips, swept fringe, Leen's pearl necklace). Kinderbrug
+girl (2.0k → 2.8k): four upright squirrels with plume tails, three
+rabbits, the dove in her hands; boy (1.3k → 1.5k): rabbits with ears,
+muzzle and forepaws. Spinoza (4.8k → 5.9k): one overlapping hair mass
+(cap, back fall, ear falls, sideburn and nape curls), no sky gap. Anne
+Frank (1.6k → 2.4k): hair, face and neck, collar and coat in separate
+bronze tones via `dark`/`ochre`/`slate` overrides, and the coat cylinder
+shortened so the neck shows. Teun de Jager (680 → 582) re-posed from the
+2019 Commons photos (Ceescamel, CC BY-SA 4.0): straight narrow coat,
+raised bundle, hanging fist, crate at the foot; facing 250° still
+unverified. New kits `clothing-kit.ts` (`lump`, `dressFigure`),
+`instrument-kit.ts` (`doubleBass`, `accordion`), `animal-kit.ts`
+(`squirrel`, `rabbit`, `dove`). Stadhouderskade 111's last coplanar
+z-fight (2.6 m²): surfaces 185 and 202 are a 5.7 m front with a gable
+above its eaves at 12.06 m, and a 4-storey grid ran a window into the
+gable's brick; they are now their own 3-storey, 2-bay group (6.0k → 5.9k,
+0 m²). Left: Anne Frank's coat is a cylinder, Spinoza's ear falls read
+like a helmet from the side, the dove is small at gallery size, Johnny
+Meijer and Walraven van Hall untouched.
+
+
 ## 3DBAG shell repair (2026-10-14, night)
 
 Lane `domain/shell-repair-20261014`. `shellRepair: true` on a large

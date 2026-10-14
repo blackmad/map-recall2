@@ -1,5 +1,6 @@
 import type {BuildingTools} from './cultural-builders';
 import {memorialFrame} from './memorial-frame';
+import {dove, rabbit as carveRabbit, squirrel} from './animal-kit';
 
 /**
  * The Kinderbrug (bridge 420 over the Boerenwetering at the Muzenplein, Hildo Krop 1931): at each end of the bridge a brick pier carries a pale granite group.
@@ -25,12 +26,7 @@ function kinderbrug(b: BuildingTools, which: 'girl' | 'boy') {
     box(x, 2.1, z, 1.35, 0.2, 1.15, 'stone');                 // granite cap
     return 2.3;
   };
-  const rabbit = (x: number, y: number, z: number, k = 1, turn = 0) => {
-    const c = Math.cos(turn), s = Math.sin(turn);
-    ball(x, y + 0.1 * k, z, 0.1 * k, 0.1 * k, 0.15 * k, 'stone', 7);                       // body
-    ball(x + 0.05 * k * s, y + 0.2 * k, z + 0.1 * k * c, 0.06 * k, 0.065 * k, 0.07 * k, 'stone', 6);   // head
-    limb([x + 0.05 * k * s, y + 0.23 * k, z + 0.08 * k * c], [x + 0.05 * k * s - 0.01, y + 0.4 * k, z + 0.03 * k * c], 0.02 * k, 0.012 * k, 'stone', 4);   // ear
-  };
+  const rabbit = (x: number, y: number, z: number, k = 1, turn = 0) => carveRabbit(f, x, y, z, {k, turn, colour: 'stone'});
   // ---- the girl with squirrels
   if (which === 'girl') {
     const [gx, gz] = [0, 0];
@@ -52,9 +48,11 @@ function kinderbrug(b: BuildingTools, which: 'girl' | 'boy') {
     limb([gx - 0.27, y0 + 0.6, gz], [gx - 0.12, y0 + 0.3, gz + 0.14], 0.07, 0.055, 'stone', 6);
     limb([gx + 0.27, y0 + 0.6, gz], [gx + 0.12, y0 + 0.3, gz + 0.14], 0.07, 0.055, 'stone', 6);
     ball(gx, y0 + 0.32, gz + 0.14, 0.08, 0.05, 0.06, 'stone', 7);              // hands
-    ball(gx - 0.03, y0 + 0.4, gz + 0.16, 0.05, 0.05, 0.06, 'stone', 6);       // the dove
+    dove(f, gx - 0.02, y0 + 0.33, gz + 0.15, {k: 1.7, turn: 0.2, colour: 'stone'});   // the dove cupped in her hands
     // animals crowding the slab front and sides
-    for (const [dx, dz, k, t] of [[-0.42, 0.28, 1, 0.5], [-0.22, 0.34, 0.9, 0.2], [0.0, 0.36, 1.05, 0], [0.22, 0.34, 0.9, -0.2], [0.42, 0.28, 1, -0.5], [-0.48, 0.0, 0.9, 1.2], [0.48, 0.0, 0.9, -1.2]] as [number, number, number, number][]) rabbit(gx + dx, y0, gz + dz, k, t);
+    // squirrels sit upright in front of her; rabbits crouch between them and at the sides
+    for (const [dx, dz, k, t] of [[-0.3, 0.33, 1.3, 0.5], [0.0, 0.37, 1.35, 0], [0.3, 0.33, 1.3, -0.5], [-0.46, 0.05, 1.2, 1.1]] as [number, number, number, number][]) squirrel(f, gx + dx, y0, gz + dz, {k, turn: t, colour: 'stone'});
+    for (const [dx, dz, k, t] of [[-0.16, 0.3, 0.85, 0.2], [0.17, 0.3, 0.85, -0.2], [0.47, 0.03, 0.9, -1.2]] as [number, number, number, number][]) rabbit(gx + dx, y0, gz + dz, k, t);
   }
   // ---- the boy with rabbits
   if (which === 'boy') {

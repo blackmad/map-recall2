@@ -44848,10 +44848,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012137448",
       "name": "Stadhouderskade 111 / Tweede Jan van der Heijdenstraat, Amsterdam-Zuid (De Pijp): 1872 block of dark painted brick shopfront rows, a red-brick factory-style wing with cream window bands and a 1950s balcony block round a supermarket yard",
-      "hash": "b3e490cb9a5ef040ca9f9dc6b0aa1974819387e448522b1d3bc91031ac34da93",
-      "sha256": "b3e490cb9a5ef040ca9f9dc6b0aa1974819387e448522b1d3bc91031ac34da93",
-      "bytes": 471496,
-      "triangles": 6008,
+      "hash": "fea2c7b2978e6763fc15c0f6310f8f8d02807e2087e78c50696d07c3b0f2edd2",
+      "sha256": "fea2c7b2978e6763fc15c0f6310f8f8d02807e2087e78c50696d07c3b0f2edd2",
+      "bytes": 461904,
+      "triangles": 5876,
       "materials": 12,
       "textures": 0,
       "scale": 1,
@@ -44994,6 +44994,8 @@
           "storey-height/walls[2]:pass",
           "eaves-vs-3dbag/walls[3]:pass",
           "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
           "no-floating-parts:pass",
           "open-edges:pass",
           "parts-attached:pass"
@@ -45001,6 +45003,7 @@
         "wallGroups": [
           "brick-bay-grid 4st 5b",
           "brick-bay-grid 4st 4b",
+          "brick-bay-grid 3st 2b",
           "brick-bay-grid 4st 9b",
           "brick-bay-grid 5st 3b"
         ]
@@ -45016,8 +45019,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137448",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T03:13:33.946Z",
-      "meshHash": "410e672fe1738135"
+      "updatedAt": "2026-10-14T03:47:17.322Z"
     },
     {
       "id": "ordinary-0363100012240319",

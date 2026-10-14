@@ -2,6 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {memorialFrame} from './memorial-frame';
 import {POSES, type Pose} from './figure-kit';
+import {headOnFigure} from './bust-kit';
 
 /**
  * Standbeeld Anne Frank, Merwedeplein (Mari Andriessen, unveiled 1977 on the Amsterdam-Zuid square where the Franks lived): a slender girl of about
@@ -13,7 +14,8 @@ import {POSES, type Pose} from './figure-kit';
 const FACING = 200;
 
 export function buildAnneFrankMerwedeplein(_w: number, _d: number, b: BuildingTools) {
-  const {box, ball, limb, lettering, put, figure} = memorialFrame(b, FACING);
+  const fr = memorialFrame(b, FACING);
+  const {box, ball, limb, lettering, put, figure} = fr;
   // ---- granite block, 0.7 square, 1.3 m, on a low footing
   box(0, 0, 0, 1.0, 0.06, 1.0, 'concrete');
   box(0, 0.06, 0, 0.74, 1.3, 0.74, 'sandstone');
@@ -28,14 +30,19 @@ export function buildAnneFrankMerwedeplein(_w: number, _d: number, b: BuildingTo
     legs: {l: {pitch: 0.02, roll: 0.03}, r: {pitch: -0.02, roll: 0.04}},
     arms: {l: {pitch: 0.55, roll: 0.1, bend: 1.5}, r: {pitch: 0.0, roll: 0.14, bend: 0.12}},
   };
-  const {joints: j} = figure(pose, 0, base + 0.05, 0, 'bronze', 'bronze');
+  const {joints: j, raw} = figure(pose, 0, base + 0.05, 0, 'bronze', 'bronze');
   // coat body to the knee over the trunk, collar and lapel seam, the bobbed hair
-  { const g = new T.CylinderGeometry(0.19, 0.25, 0.62, 8); g.scale(1, 1, 0.68); put(g, 0, j.pelvis.y + 0.3, 0.0, 'bronze'); }
-  box(0, j.neck.y - 0.3, 0.1, 0.06, 0.2, 0.03, 'bronze');
-  ball(j.neck.x, j.neck.y, j.neck.z, 0.14, 0.04, 0.1, 'bronze', 8);
+  { const g = new T.CylinderGeometry(0.155, 0.215, 0.5, 10); g.scale(1, 1, 0.66); put(g, 0, j.pelvis.y + 0.135, 0.0, 'bronze'); }
+  box(0, j.neck.y - 0.22, 0.12, 0.05, 0.2, 0.02, 'bronze');
+  // three tones within the bronze: coat (bronze), face and neck (ochre, a worn lighter patina), collar (slate), hair (dark)
+  const fig = {joints: j, raw: raw} as unknown as Parameters<typeof headOnFigure>[1];
+  ball(j.neck.x, j.neck.y - 0.005, j.neck.z, 0.15, 0.04, 0.105, 'slate', 10);                       // flat collar over the coat
+  headOnFigure(fr, fig, {sex: 'f', hair: 'short', colour: 'ochre', hairColour: 'dark', neck: 'ochre', neckR: 0.042, scale: 0.88});
   const h = j.head;
-  ball(h.x, h.y + 0.02, h.z - 0.02, 0.135, 0.15, 0.14, 'bronze', 8);
-  ball(h.x + 0.1, h.y - 0.07, h.z, 0.055, 0.1, 0.1, 'bronze', 6); ball(h.x - 0.1, h.y - 0.07, h.z, 0.055, 0.1, 0.1, 'bronze', 6);
+  // the bob: a full dark mass behind the head and curling under at ear height, leaving the face and the neck open at the front
+  ball(h.x, h.y + 0.02, h.z - 0.045, 0.125, 0.14, 0.12, 'dark', 10);
+  for (const sx of [-1, 1]) ball(h.x + sx * 0.095, h.y - 0.075, h.z - 0.02, 0.05, 0.075, 0.095, 'dark', 7);
+  ball(h.x, h.y - 0.07, h.z - 0.085, 0.115, 0.08, 0.06, 'dark', 8);
   // bag in the lowered right hand (viewer's left in front view): a soft case hanging by the knee
   const r = j.handR;
   limb([r.x, r.y, r.z], [r.x, r.y - 0.08, r.z], 0.012, 0.012, 'bronze', 4);
