@@ -1,0 +1,229 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "kinkerstraat-32-137280",
+ "pandId": "0363100012137280",
+ "address": "Kinkerstraat 32-54, Amsterdam-West (Oud-West): 1999 block of 37 units at the De Hallen end of the Kinkerstraat, six storeys of red-brown brick with a grid of punched windows over a glazed shop ground and mezzanine, a set-back top floor",
+ "sources": [
+  {
+   "id": "pano-2018-11-19-w01-157s1L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-11-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000992_pano_0001_000065/",
+   "image": "source-data://pand-reference-walls/0363100012137280/w01-157s1L.jpg",
+   "sha256": "4c4edf078419c0bff437609481925173280ff446b6b13ccd9036858dca83dcf1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-08-17-w01-157s3",
+   "kind": "street-panorama",
+   "capturedAt": "2020-08-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001878_pano_0004_000052/",
+   "image": "source-data://pand-reference-walls/0363100012137280/w01-157s3.jpg",
+   "sha256": "efd4b343695912fa9258b07a173223bfa3fc4b3adae64f1c13807390e18827f1",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-09-w01-157s2",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-09",
+   "image": "source-data://pand-reference-walls/0363100012137280/w01-157s2.jpg",
+   "sha256": "113f006f35a0c11854c287ddb0b28d8d6eae7c2c0e36c8aa9a17ad4271ab0196",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-12-w01-157s4L",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002928_pano_0021_000001/",
+   "image": "source-data://pand-reference-walls/0363100012137280/w01-157s4L.jpg",
+   "sha256": "58809363cb753ca59b40120fe64835798410e9cc7bbf17e3a123c7e13b6ef23c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-24-w03-67L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002059_pano_0000_001751/",
+   "image": "source-data://pand-reference-walls/0363100012137280/w03-67L.jpg",
+   "sha256": "e85ec5fcd2a42e427296d201fb89df33403eea914a7f665181b316ebab2eb230",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "street": "Kinkerstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "deepBars": true,
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.45,
+    "sill": 0.35
+   },
+   "palette": {
+    "brick": "#675d55",
+    "frame": "#d8d6d0",
+    "stone": "#c8c4bc",
+    "glass": "#413e3b"
+   },
+   "hand": [
+    "system",
+    "windowShape"
+   ],
+   "wallSurfaces": [
+    39,
+    40,
+    41,
+    100,
+    53
+   ],
+   "ground": "system",
+   "baysPerStorey": 9
+  },
+  {
+   "street": "Kinkerstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "deepBars": true,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.4,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#825746",
+    "frame": "#d8d6d0",
+    "stone": "#c8c4bc"
+   },
+   "hand": [
+    "system",
+    "windowShape",
+    "glazedStoreys"
+   ],
+   "wallSurfaces": [
+    51,
+    110
+   ],
+   "ground": "glazed",
+   "baysPerStorey": 11,
+   "glazedStoreys": [
+    1
+   ]
+  },
+  {
+   "street": "Kinkerstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "deepBars": true,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.4,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#825746",
+    "frame": "#d8d6d0",
+    "stone": "#c8c4bc"
+   },
+   "hand": [
+    "system",
+    "windowShape",
+    "palette.brick",
+    "wallSplit"
+   ],
+   "wallSurfaces": [
+    26
+   ],
+   "ground": "glazed",
+   "baysPerStorey": 8,
+   "wallSplit": {
+    "at": 0.45,
+    "brick": "#4b4440"
+   }
+  },
+  {
+   "street": "Kinkerstraat",
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "deepBars": true,
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.4,
+    "sill": 0.32
+   },
+   "palette": {
+    "brick": "#825746",
+    "frame": "#d8d6d0",
+    "stone": "#c8c4bc"
+   },
+   "hand": [
+    "system",
+    "windowShape",
+    "glazedStoreys",
+    "palette.brick",
+    "wallSplit",
+    "palette.glass"
+   ],
+   "wallSurfaces": [
+    84,
+    93
+   ],
+   "ground": "glazed",
+   "baysPerStorey": 2,
+   "glazedStoreys": [
+    1
+   ]
+  },
+  {
+   "wallSurfaces": [
+    4,
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "ground": "glazed",
+   "deepBars": true,
+   "palette": {
+    "brick": "#706868",
+    "frame": "#e8e6dc",
+    "stone": "#c8c4bc"
+   },
+   "hand": [
+    "system",
+    "windowShape"
+   ],
+   "baysPerStorey": 5,
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.35,
+    "sill": 0.35
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#8a4a3a",
+  "frame": "#e8e6dc",
+  "door": "#2a2a2a",
+  "stone": "#c8c4bc"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #545959 not used (not darker than the wall #825746 by 10 L*, or tinted): kit glass kept; walls[2] glass #494a4c not used (not darker than the wall #4b4440 by 10 L*, or tinted): kit glass kept; walls[3] wall split #a66554 | #542f26 at 47 % (dE 28.5); walls[4] glass #646c6e not used (not darker than the wall #706868 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ }
+}
