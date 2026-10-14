@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## The bridge e2e reads deck crowns in metres, not pixels (2026-10-14)
+
+Lane `lane/bridge-crowns-20261014`. The pixel hump reading in
+`own-ground-bridge-fidelity.spec.ts` had given two false alarms in a day
+(a railing post, then the brighter ground look moving BRU0038 from +11 to
+−9 px). The spec now reads each placed deck from
+`canalRecallGame.vectorMap._ownGround.store.surface.decks` in the page
+(`deckCrowns(page, ids)`: the deck by `profile.id`, `surface.height()` at
+every profile station, max minus `max(deck.ends)`, the crown over the
+higher approach end in metres, the same function the streamed-cell unit
+tests use). Shared module `ownGround/bridgeCrowns.ts` exports
+`PINNED_CROWNS` (tolerance 0.05 m) and `crownOverHigherEnd()`: Seven
+Bridges BRU0031 2.14, 0032 2.02, 0039 1.70, 0074 1.79, 0073 1.30, 0072
+1.50; side views BRU0009 1.66 (Torensluis), 0038 1.61; the Blauwbrug
+stays unpinned (level deck). `ownGround.test.ts` asserts the module for
+BRU0009 and, in a new test, every pinned bridge against a fresh
+`GroundStore` (80/80). The pixel `humpPx` stays in the report JSON as
+information; arch counts, bascules and screenshots unchanged. Three
+consecutive desktop runs green (Seven Bridges read 2.136, 2.018, 1.703,
+1.786, 1.301, 1.498; BRU0009 1.658); pinning BRU0009 at 1.20 fails with
+"crown 1.658 m vs pinned 1.2 m". No game source changed, no bundles.
+
+
 ## White accents read white: painted stone tint, springer rows, round arches with dark tympana, measured head lines (2026-10-14, user)
 
 Lane `lane/oud-west-accents-20261014`, from the user's priority on white
