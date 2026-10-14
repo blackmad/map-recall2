@@ -9,7 +9,8 @@ import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extend
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
-import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
+import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
+import { herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
@@ -1029,6 +1030,57 @@ test('regression (houseboats, user 2026-10-14): no houseboat in the Frederik Hen
   }
   assert.ok(total > 300, `boats checked: ${total}`);
   assert.deepEqual(covered, [], 'houseboat footprints under land');
+});
+
+// ------------------------------------------------------------- surface classes (user 2026-10-14, Houtmankade)
+/** CIE76 ΔE between two sRGB colours. */
+function deltaE(a: readonly number[], b: readonly number[]): number {
+  const lab = (c: readonly number[]) => {
+    const lin = c.map(v => { const u = v / 255; return u <= 0.04045 ? u / 12.92 : ((u + 0.055) / 1.055) ** 2.4; });
+    const X = (0.4124 * lin[0] + 0.3576 * lin[1] + 0.1805 * lin[2]) / 0.95047, Y = 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2], Z = (0.0193 * lin[0] + 0.1192 * lin[1] + 0.9505 * lin[2]) / 1.08883;
+    const f = (t: number) => (t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116);
+    return [116 * f(Y) - 16, 500 * (f(X) - f(Y)), 200 * (f(Y) - f(Z))];
+  };
+  const p = lab(a), q = lab(b);
+  return Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+}
+
+test('surface legend: six classes on five meshes; a fietsstraat is a red road, a brick fietsstraat stays brick', () => {
+  assert.deepEqual(Object.keys(SURFACE_LEGEND).sort(), ['asphalt', 'brick', 'concrete', 'cycle', 'fietsstraat', 'gravel']);
+  const fiets = crossSection({ highway: 'residential', cyclestreet: 'yes', surface: 'asphalt' })!;
+  assert.equal(carriagewayClass({ highway: 'residential', cyclestreet: 'yes' }, 'klinker'), 'fietsstraat');
+  assert.equal(fiets.bands[0].kind, 'carriageway');
+  assert.equal(fiets.bands[0].surface, 'cycle', 'red asphalt');
+  assert.ok(!fiets.paint.some(p => p.offset === 0), 'no centre line');
+  assert.equal(fiets.paint.filter(p => p.dash === null && Math.abs(p.offset) > 1).length, 2, 'edge lines: drawn as a road');
+  assert.equal(crossSection({ highway: 'residential', bicycle_road: 'yes', surface: 'paving_stones' })!.bands[0].surface, 'klinker', 'brick fietsstraat stays brick');
+  assert.equal(crossSection({ highway: 'tertiary', 'surface:colour': 'red', surface: 'asphalt' })!.bands[0].surface, 'cycle');
+  assert.equal(carriagewayClass({ highway: 'residential' }, 'klinker'), 'brick');
+});
+
+test('klinker reads as brick, not cycle red: base colours ΔE ≥ 22 (was 18), herringbone covers its tile once, the tone mix keeps the base', () => {
+  assert.ok(deltaE(STREET_GROUND.klinker.base, STREET_GROUND.cycle.base) >= 22, `ΔE ${deltaE(STREET_GROUND.klinker.base, STREET_GROUND.cycle.base).toFixed(1)}`);
+  const units = 20, grid = new Uint8Array(units * units * 16);
+  for (const b of herringboneBricks(units, KLINKER_TONES.length)) {
+    for (let y = Math.max(0, b.y * 4); y < Math.min(units * 4, (b.y + b.h) * 4); y++) for (let x = Math.max(0, b.x * 4); x < Math.min(units * 4, (b.x + b.w) * 4); x++) grid[y * units * 4 + x]++;
+  }
+  assert.ok(grid.every(v => v === 1), 'every quarter-unit covered exactly once (seamless, no overlaps)');
+  for (let c = 0; c < 3; c++) assert.ok(Math.abs(KLINKER_TONES.reduce((s, t) => s + t[c], 0) / KLINKER_TONES.length - 1) < 0.02);
+});
+
+test('regression (Houtmankade pair, user 2026-10-14): the west quay is asphalt with a centre line, the east quay klinker with tram rails', { skip: !haveCells }, () => {
+  const ways = new Map<number, { tags: Record<string, string> }>();
+  for (const k of ['-2_1', '-2_2']) for (const w of (JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/own-ground-osm-v1/cells/${k}.json.gz`)).toString()) as OsmGroundExtract).ways) ways.set(w.id, w);
+  // 118447399: Houtmankade, primary, surface=asphalt (BGT rijbaan regionale weg, gesloten verharding), separate red cycleway beside it.
+  const west = crossSection(ways.get(118447399)!.tags)!;
+  assert.equal(west.bands[0].surface, 'asphalt');
+  assert.ok(west.paint.some(p => p.offset === 0 && p.dash), 'centre dashes');
+  // 743746050: Houtmankade, residential, embedded_rails=tram, no surface tag (BGT rijbaan lokale weg, open verharding = klinkers).
+  const east = crossSection(ways.get(743746050)!.tags)!;
+  assert.equal(carriagewayClass(ways.get(743746050)!.tags, 'klinker'), 'brick');
+  assert.equal(east.bands[0].surface, 'klinker');
+  assert.ok(east.rails.length > 0, 'the two dark lines are tram rails');
+  assert.ok(!east.bands.some(b => b.surface === 'cycle'), 'nothing on the east quay is cycle red');
 });
 
 test('park fill culling: a fill triangle inside one BGT surface goes; one over a hole or across two surfaces stays', () => {
