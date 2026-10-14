@@ -38077,10 +38077,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186093",
       "name": "Plantage Middenlaan 52, Amsterdam (Plantage, former Artis-side block): 2022 courtyard housing block of 294 homes, brick piers with stone balcony slabs and a zinc mansard",
-      "hash": "598c0e67434e31af46e8d1be847bf1a0b87a9cf1e8bdfc865e6b5f411413d228",
-      "sha256": "598c0e67434e31af46e8d1be847bf1a0b87a9cf1e8bdfc865e6b5f411413d228",
-      "bytes": 872116,
-      "triangles": 11997,
+      "hash": "eece678d4f2fbeaf7185d5c3b26e2648e983a41d0bd20bcb45f42c392a8e36e4",
+      "sha256": "eece678d4f2fbeaf7185d5c3b26e2648e983a41d0bd20bcb45f42c392a8e36e4",
+      "bytes": 869356,
+      "triangles": 11948,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -38088,7 +38088,7 @@
         "min": [
           -64.61,
           -9.032,
-          -55.819
+          -55.339
         ],
         "max": [
           75.266,
@@ -38210,7 +38210,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186093",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:40:57.765Z"
+      "updatedAt": "2026-10-14T03:10:58.623Z"
     },
     {
       "id": "ordinary-0363100012186003",
