@@ -1227,6 +1227,53 @@ file invalidates every tile whose face places it. De Clercqstraat's three types 
 moving them out of `clercq-236681/intent.json` changed no compiled output (chunk GLB, manifest entry and report
 byte-identical, every face's resolved house intents identical).
 
+### Amsterdam School components (plan "Commercial streets", step 6, 2026-10-14)
+
+Five components for interwar shop streets (Jan Evertsenstraat, De Clercqstraat, Admiraal de Ruijterweg). Each one is
+optional. When it is absent, nothing changes: `test:fit-golden` reports 140/140 recipes identical, and every face chunk
+GLB hashes the same as on main (21 faces). Fit: `buildingRecipe/fit.ts`. Meshes the library cannot build are added after
+it in `buildingRecipe/amsterdamSchool.ts` (`applyAmsterdamSchool`, which returns null and touches nothing unless a front
+has a canopy, an erker or a corner tower). Tests: `blockFace/amsterdamSchool.test.ts`, on the synthetic face
+`_demo-school`.
+
+| Component | Intent keys | Geometry |
+|---|---|---|
+| Rigid continuous canopy | `shopfront.awning.style: "rigid"`, optional `fasciaColour`; face `continuity.canopy: [{pands, evidence}]` | Slab 1.2 m deep and 0.16 m thick, its underside 2 cm over the shop-glass head (or over the fascia board). A 0.3 × 0.06 m fascia on the nose, flush with the slab top and hanging 0.14 m below it. Free ends stop 5 cm short of the front ends. In a `continuity.canopy` group, every member's natural height is fitted and the group takes the median. Joined ends run to the party plane, cut per pand, so `pandRanges` keep working (gap 0, z-fight 0 in the interference check). Members must be street-order neighbours with a rigid canopy on the face street. A warning is raised when the canopy clashes with a first-floor sill, or when the fascia is below 2.2 m. |
+| Ladder window | `windows: "ladder"` | A tall narrow light 0.55–0.75 m wide, 0.68 × storey high, sill at 0.17 × storey. The number of horizontal bars is clamp(round(height / 0.5), 4, 6). Two lights per bay with a 0.16 m pier when min(0.82 × pitch, 1.66 m) ≥ 1.26 m; otherwise one light. Ids `s{s}-b{b}a` and `s{s}-b{b}b`. `bayWidths` sets the pairing rhythm. |
+| Multi-bay erker | `bayWindows: {bays: {from, to}, storeys, cap?: "hip"|"flat"|"none"}` (an alternative to `bay`) | One bay projecting 0.55 m over the bay-axis span: 0.25 m returns and the front 0.5 m narrower than the span. One glazed module per storey, full storey height, with a solid 0.85 m stallriser panel and a 0.2 m head panel. The front has two lights per axis; each return has one light. Bars are ladder bars on a ladder front, else [0.75]. Foot and top closures are 8 cm. Cap on the top storey: `hip` is a lean-to rising 0.45 m to the wall in roof colour; `flat` is a 0.12 m trim-colour slab. Both overhang 6 cm. Windows inside the span are dropped on the erker storeys. Storeys must be consecutive; not allowed on a repeated front. |
+| Brick course banding | `bands: "courses"`, `courseStoreys: number[]`, needs `palette.band` | The listed storeys are faced whole (4 cm) in the band brick (accent slot). Every storey above the ground gets 2 raised courses (3 when the storey is 2.8 m or taller): 5 cm high, 11 cm apart, 7 cm proud, starting 5 cm over the window heads. An erker interrupts both on its storeys. The ground storey is not allowed under a shop. |
+| Corner tower | `tower: {corner: true, rise, cap: "pyramid"|"flat"|"stepped"}` on one front of a pand with ≥2 fronts | The partner front's end must lie within 3 m (another street preferred). The tower plan is built from the two front planes with side clamp(0.3 × shorter front, 2.4, 4.2) m. A shared corner vertex gives a 4-point rhombus, which is a square when the corner is square. A chamfer of up to 3 m gives a 5-point plan with the chamfer cut. The body rises from the lower eaves to max(eaves) + `rise`, over both fronts' ends, and both fronts report the same top. Caps: `pyramid` (apex 0.75 × side), `flat` (0.12 m slab, grown 8 cm), `stepped` (two 0.35 m tiers, +4 cm then −30 cm, and a −22 cm slab). One corner tower per pand. A corner tower is not mirrored (`mirrorIntent` / `mirrorFront`). |
+
+`stepped` is also a cap for ordinary bay towers (`tower.bays`).
+
+**Added from the Jan Evertsenstraat strip** (`scripts/block-face/faces/_jan-evertsen-94/`, intake only: 26 pands,
+nos. 94–142, data.amsterdam.nl panoramas 2024-12-06; strip `staging/block-face/_jan-evertsen-94/strip-labelled.png`):
+
+| Component | Intent keys | Geometry |
+|---|---|---|
+| Glass-block band | `shopfront.awning.glassBlocks: true` (rigid canopy only) | Seen in every shop pand on this stretch. A glazed panel in the wall over the canopy, from 2 cm over the slab to 8 cm under the first-storey sills (at most 1.1 m; skipped with a warning under 0.4 m or 0.6 m wide). It sits 1.5 cm proud with 1.5 cm reveals, and has a 0.2 m mortar grid of 3 cm joints 1 cm in front of it. Brick piers stay at the ends: 0.25 m at a joined (party) end, 0.05 m at a free end. Colours: glass `#aebbb8` (glass slot), mortar `#d4d2ca` (frame slot). About 80 triangles for a 6 m band. |
+| Lisenes (brick pilasters) | `lisenes: {leftEnd?, rightEnd?}`, each `"half"` or `"full"` | These rise between house groups. Each is a 0.1 m proud brick pier in the wall material, running from the canopy top (or the ground-storey top) to 0.3 m under the body eaves. The top 0.15 m is a corbel cap 0.16 m proud. `half` (0.25 m) is one pand's half of a lisene shared across the party wall: its outer face follows the party plane, like a joined canopy, and the neighbour supplies the other half. `full` is 0.45 m. Mirrored in house types (`leftEnd` and `rightEnd` swap). Not on repeated fronts. |
+| Window hoods | `windowHoods: true` | These are the dark cantilevered ledges over every window pair on nos. 96–140. Each is a 0.12 m high ledge in the wall material, 0.22 m proud and 2 cm over the head. It covers every upper-storey window, or a ladder pair `…a`/`…b` as one hood, and is 0.1 m wider than the window on each side. 12 triangles per hood. |
+
+**What the kit still cannot say** (from the same strip):
+- Outward-opening side-hung casements with a fixed top light, which are the dominant window here. `two-light` and `cross` are the nearest; ladder is wrong for this street.
+- The tall plain brick parapet zone above the top windows (about 2 m, with a flat roof and hooks). This is only approximated by storey heights plus a flat cornice.
+- The stepped corner mass of no. 94 (107849): several brick set-backs rising to a corner block. This is more than the single `stepped` tower cap.
+- No. 107349 (Mercatorplein side): a clock tower with clock faces, a gateway passage under the building with a stepped stone portal, and a canted bay on a corbel. This is large-tier or bespoke work, not kit work.
+- Shop signboards mounted in front of the glass-block band (an existing sign `mount` does not target the band).
+- Not on this stretch, and not in the kit: curved (rounded) corners, recessed loggias, decorative brick panels and sculpted entrances.
+
+**Demo** `scripts/block-face/faces/_demo-school/` (underscore: not installed, and skipped by the street-survey and
+gable-from-photo sweeps). It is nine De Clercqstraat pands (geometry of `clercq-236681`) with invented intents. Two
+corners are re-derived with second streets: 153066 at Bilderdijkkade (shared vertex) and 116526 at Nassaukade (~2 m
+chamfer). Its strip is a grey placeholder, `staging/block-face/_demo-school/strip.jpg`. Result: 27.5k tris, interference
+and GLB audit pass. The only failed gates are `height-vs-3dbag` on the two invented towers (18.3 vs 16.4 m and 20.1 vs
+18.4 m): the towers do not exist in 3DBAG. On a real face the tower is in the survey.
+
+The streamed street-appearance canopy (`shopCanopies.ts`) remains. Its proportions were the source of the rigid canopy,
+and it will be generalised onto this component later. The Jan Evertsenstraat interwar pilot that used it has been
+retired (`docs/references/jan-evertsen-pilot/README.md`).
+
 ## Recipe tiles (migration step 3, `?recipeTiles=1`, 2026-10-13)
 
 Plan: `docs/plans/digital-twin-direction-20261013.md` §2; handoff `docs/handoffs/lane-recipe-tiles-20261013.md`.

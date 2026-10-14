@@ -185,6 +185,17 @@ export interface FrontIntent {
   bands?: 'none' | 'storey' | 'lintel' | 'both' | 'courses';
   /** `bands: courses`: 0-based storeys laid whole in the band brick (ground = 0 only without a shopfront/ground front). */
   courseStoreys?: number[];
+  /**
+   * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
+   * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
+   * of a lisene shared across the party wall (its outer face follows the party plane); `full` is a whole 0.45 m lisene.
+   */
+  lisenes?: { leftEnd?: 'half' | 'full'; rightEnd?: 'half' | 'full' };
+  /**
+   * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
+   * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
+   */
+  windowHoods?: boolean;
   /** The same house module repeated along this front (rows built together, double fronts). */
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
@@ -320,8 +331,13 @@ const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance'
 const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align'];
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
-/** `rigid`: a slab canopy (see AWNING_STYLES); `fasciaColour` paints its nose fascia (default the canopy colour). */
-export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number }; fasciaColour?: string }
+/**
+ * `rigid`: a slab canopy (see AWNING_STYLES); `fasciaColour` paints its nose fascia (default the canopy colour).
+ * `glassBlocks` (rigid only; Jan Evertsenstraat): a glass-block band in the wall over the canopy, from 2 cm over the slab
+ * to 8 cm under the first-storey sills (at most 1.1 m, at least 0.4 m), 1.5 cm proud, with a 0.2 m mortar grid 3 cm
+ * wide; brick piers 0.25 m wide stay at party-wall ends, 0.05 m at free ends.
+ */
+export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number }; fasciaColour?: string; glassBlocks?: boolean }
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent {
@@ -549,6 +565,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both', 'courses'], `${at}.bands`);
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
+    if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
+    if (f.lisenes !== undefined) {
+      const l = f.lisenes as Record<string, unknown>;
+      if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd'].includes(k)) || Object.values(l).some(v => v !== 'half' && v !== 'full') || !Object.keys(l).length) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full"`);
+      if (f.repeat) problems.push(`${at}.lisenes: not on a repeated front`);
+    }
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
@@ -645,6 +667,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       colour(aw.colour, `${at}.shopfront.awning.colour`);
       if (aw.extent && !(aw.extent.from >= 0 && aw.extent.to <= 1 && aw.extent.to - aw.extent.from >= 0.15)) problems.push(`${at}.shopfront.awning.extent: need 0 <= from < to <= 1 covering at least 0.15`);
       if (aw.fasciaColour !== undefined) { colour(aw.fasciaColour, `${at}.shopfront.awning.fasciaColour`); if (aw.style !== 'rigid') problems.push(`${at}.shopfront.awning.fasciaColour: only a rigid canopy has a fascia`); }
+      if (aw.glassBlocks !== undefined && (aw.glassBlocks !== true || aw.style !== 'rigid')) problems.push(`${at}.shopfront.awning.glassBlocks: true, and only over a rigid canopy`);
     } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
     for (const [k, v] of Object.entries(f.palette ?? {})) {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);

@@ -141,7 +141,9 @@
       "hoist": false,
       "bands": "courses",
       "courseStoreys": [2],
-      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "left-recessed", "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
+      "lisenes": {"leftEnd": "half", "rightEnd": "half"},
+      "windowHoods": true,
+      "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "left-recessed", "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green", "glassBlocks": true}}
      }
     ],
     "roof": {"material": "red-tile"},
@@ -180,6 +182,7 @@
       "hoist": false,
       "bands": "courses",
       "bayWindows": {"bays": {"from": 1, "to": 2}, "storeys": [1, 2], "cap": "flat"},
+      "lisenes": {"leftEnd": "half"},
       "shopfront": {"colour": "dark-green", "fascia": false, "entrance": "centre-recessed", "displayWindows": 2, "stallriser": "low", "awning": {"style": "rigid", "colour": "#d9d2c0", "fasciaColour": "dark-green"}}
      }
     ],

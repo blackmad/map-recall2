@@ -178,5 +178,57 @@ test('absent components touch nothing: a face house without them builds no Amste
   const plain = structuredClone(intentOf('157618')) as CanalHouseIntent;
   plain.fronts[0].bands = 'storey'; delete plain.fronts[0].courseStoreys;
   const b = compileBuilding(validateIntent(plain), facts.get(intentOf('157618').pandId)!);
-  assert.equal(meshes(b.group, /^(canopy|erker-cap|tower\/.*-corner)/).length, 0);
+  assert.equal(meshes(b.group, /^(canopy|erker-cap|tower\/.*-corner|lisenes)/).length, 0);
+});
+
+/**
+ * Additions from the Jan Evertsenstraat strip (`_jan-evertsen-94`, panoramas 2024-12-06, nos. 94-142): every shop pand has
+ * a glass-block band in the wall over the canopy, and brick lisenes rise between the house groups.
+ */
+test('glass-block band (158603 family): between canopy and first sills, piers kept at party ends, ~100 tris', async () => {
+  const sf = intentOf('236681').fronts[0].shopfront!;
+  assert.throws(() => validateIntent(patched('236681', 0, {shopfront: {...sf, awning: {style: 'fabric-straight', colour: 'dark-green', glassBlocks: true}}})), /glassBlocks: true, and only over a rigid canopy/);
+  for (const pand of ['158603', '159182']) {
+    const b = await house(pand), c = b.fit.fronts[0].canopy!, g = c.glassBlocks!;
+    assert.ok(g, `${pand}: band reported`);
+    assert.ok(Math.abs(g.bottomM - (c.bottomM + c.thicknessM + 0.02)) < 1e-3, 'starts 2 cm over the slab');
+    const sill = Math.min(...b.recipe.elevations[0].openings.value.filter(o => /^s1-/.test(o.id)).map(o => o.bottomM));
+    assert.ok(g.topM <= sill - 0.08 + 1e-3 && g.topM - g.bottomM >= 0.4, `${pand}: under the sills, at least 0.4 m`);
+    assert.ok(Math.abs(g.leftM - 0.25) < 1e-3 && Math.abs(g.leftM + g.widthM - (c.leftM + c.widthM - 0.25)) < 1e-3, 'brick piers at both joined ends');
+    const [glass] = meshes(b.group, /^canopy\/front0\/glass-blocks$/), [grid] = meshes(b.group, /^canopy\/front0\/glass-block-grid$/);
+    assert.equal(glass.userData.surface, 'glass');
+    assert.ok(bbox(glass).min.z >= -1e-6 && bbox(glass).max.z <= 0.016 && bbox(grid).max.z <= 0.026, 'in the wall, a few cm proud');
+    const tris = (m: T.Mesh) => m.geometry.attributes.position.count / 3;
+    assert.ok(tris(glass) + tris(grid) < 120, `${tris(glass) + tris(grid)} tris`);
+  }
+  assert.equal((await house('236681')).fit.fronts[0].canopy!.glassBlocks, undefined, 'absent unless asked');
+});
+
+test('lisenes: halves of a shared lisene meet on the party plane, from the canopy to under the eaves, corbel cap', async () => {
+  assert.throws(() => validateIntent(patched('158603', 0, {lisenes: {leftEnd: 'wide'}})), /lisenes: \{leftEnd\?, rightEnd\?\}/);
+  const a = await house('159182'), b = await house('236681');
+  const la = a.fit.fronts[0].lisenes!, lb = b.fit.fronts[0].lisenes!;
+  assert.equal(la.length, 2); assert.equal(lb.length, 1);
+  assert.ok(la.every(l => l.widthM === 0.25 && l.party !== null), 'two halves, both on party planes');
+  const top = a.fit.fronts[0].canopy!.bottomM + a.fit.fronts[0].canopy!.thicknessM;
+  for (const l of [...la, ...lb]) {
+    assert.ok(Math.abs(l.bottomM - top) < 1e-3, 'from the canopy top');
+    assert.ok(l.topM - l.bottomM > 6, 'up the upper storeys');
+  }
+  const r = await result();
+  assert.deepEqual(r.interference.filter(x => !x.pass), [], 'the halves neither gap nor overhang at the party wall');
+  const [m] = meshes(a.group, /^lisenes\/front0$/);
+  assert.equal(m.userData.surface, 'wall');
+  assert.ok(Math.abs(bbox(m).max.z - 0.16) < 1e-6, 'the 0.16 m corbel cap is the most proud part');
+});
+
+test('window hoods (158603): one 0.22 m ledge over each ladder pair, 2 cm over its head', async () => {
+  assert.throws(() => validateIntent(patched('158603', 0, {windowHoods: 'yes'})), /windowHoods: true/);
+  const b = await house('158603'), [m] = meshes(b.group, /^window-hoods\/front0$/);
+  const windows = b.recipe.elevations[0].openings.value.filter(o => /^s[1-9]\d*-b\d+[ab]$/.test(o.id));
+  const pairs = new Set(windows.map(o => o.id.slice(0, -1)));
+  assert.equal(m.geometry.attributes.position.count / 3, pairs.size * 12, 'one box per pair (12 tris)');
+  const box = bbox(m), heads = windows.map(o => o.bottomM + o.heightM);
+  assert.ok(Math.abs(box.max.z - 0.22) < 1e-6 && box.min.y >= Math.min(...heads) + 0.02 - 1e-6 && box.max.y <= Math.max(...heads) + 0.14 + 1e-6);
+  assert.equal(meshes((await house('236681')).group, /^window-hoods/).length, 0, 'absent unless asked');
 });

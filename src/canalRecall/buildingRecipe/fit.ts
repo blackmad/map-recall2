@@ -68,7 +68,11 @@ export interface FitReport {
      * and `partner` on the other front, whose wall only rises. */
     towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
     /** Rigid shop canopy (facade x): slab underside `bottomM`; an end on a party wall (`partyStart`/`partyEnd`, facade-x order) runs to the party plane. */
-    canopy?: {leftM: number; widthM: number; bottomM: number; projectM: number; thicknessM: number; fasciaM: number; fasciaDepthM: number; partyStart: boolean; partyEnd: boolean; colour: string; fasciaColour: string};
+    canopy?: {leftM: number; widthM: number; bottomM: number; projectM: number; thicknessM: number; fasciaM: number; fasciaDepthM: number; partyStart: boolean; partyEnd: boolean; colour: string; fasciaColour: string;
+      /** Glass-block band over the canopy (`awning.glassBlocks`), facade x (leftM, widthM) and heights. */
+      glassBlocks?: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number}};
+    /** Brick lisenes (`lisenes`), facade x; `party` marks the end whose outer face follows the party plane. */
+    lisenes?: {leftM: number; widthM: number; bottomM: number; topM: number; party: 'start' | 'end' | null}[];
     /** Multi-bay erker (facade x): its stack's top, plan and cap. */
     erker?: {leftM: number; widthM: number; frontWidthM: number; depthM: number; topM: number; cap: 'hip' | 'flat' | 'none'};
     /** Eaves from a photo measurement (block-face strip) instead of the 3DBAG profile. */ measuredEaves?: boolean}[];
@@ -805,10 +809,22 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     elevations.push(elevation);
     if (cornerEnd) corner!.bottomM = Math.min(corner!.bottomM, round(bodyEaves));
     const erker = layout.school?.erker;
+    // Lisenes: from the top of the ground storey (or the canopy) to 0.3 m under the body eaves, at the chosen ends.
+    const lisenes = front.lisenes ? (['leftEnd', 'rightEnd'] as const).flatMap(side => {
+      const kind = front.lisenes![side];
+      if (!kind) return [];
+      const w = kind === 'half' ? 0.25 : 0.45, viewerLeft = side === 'leftEnd' ? 0 : width - w;
+      const groundTop = layout.storeyHeights.slice(0, layout.groundBase > 0 ? 2 : 1).reduce((a, b) => a + b, 0);
+      const bottomM = round(canopy ? canopy.bottomM + canopy.thicknessM : groundTop), topM = round(bodyEaves - 0.3);
+      if (topM - bottomM < 2) { warnings.push(`${front.id}: lisene ${side} has no height (${bottomM}..${topM} m)`); return []; }
+      const atStart = (side === 'leftEnd') !== mirrored;
+      return [{leftM: round(flipX(viewerLeft, w)), widthM: w, bottomM, topM, party: kind === 'half' ? (atStart ? 'start' as const : 'end' as const) : null}];
+    }) : undefined;
     reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(groupCrowns ? Math.max(...groupCrowns.map(g => g.top)) : crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex, ...(fasciaRect ? {fascia: fasciaRect} : {}), ...(signBand ? {signBand} : {}),
       ...(mansard ? {mansard} : {}), ...(towerSpan ? {towers: Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, towerSpan![0], towerSpan![1] - towerSpan![0]), towerSpan![1] - towerSpan![0])), widthM: round(towerSpan![1] - towerSpan![0]), bottomM: round(bodyEaves), topM: towerTop, cap: cornerEnd ? corner!.cap : front.tower!.cap,
         ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
       ...(canopy ? {canopy} : {}),
+      ...(lisenes ? {lisenes} : {}),
       ...(erker ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none'}} : {})});
   }
   // The corner tower's body stands on the lower of the two fronts' eaves, to the shared top.
@@ -853,8 +869,16 @@ function rigidCanopy(front: FrontIntent, layout: Layout, width: number, mirrored
   const sill = Math.min(Infinity, ...layout.openings.filter(o => /^s1-/.test(o.id)).map(o => o.bottomM));
   if (bottom + c.thicknessM > sill - 0.03) warnings.push(`${front.id}: rigid canopy top ${round(bottom + c.thicknessM, 2)} m reaches the first-storey sills (${round(sill, 2)} m)`);
   if (bottom + c.thicknessM - c.fasciaM < 2.2) warnings.push(`${front.id}: rigid canopy fascia ${round(bottom + c.thicknessM - c.fasciaM, 2)} m above the street (< 2.2 m)`);
+  // Glass-block band: in the wall between the canopy and the first-storey sills, brick piers kept at the ends.
+  let glassBlocks: NonNullable<FitReport['fronts'][number]['canopy']>['glassBlocks'];
+  if (aw.glassBlocks) {
+    const b0 = bottom + c.thicknessM + 0.02, b1 = Math.min(b0 + 1.1, (Number.isFinite(sill) ? sill : b0 + 1.1) - 0.08);
+    const gl = left + (group?.joinLeft ? 0.25 : 0.05), gr = right - (group?.joinRight ? 0.25 : 0.05);
+    if (b1 - b0 < 0.4 || gr - gl < 0.6) warnings.push(`${front.id}: no room for the glass-block band (${round(b1 - b0, 2)} m high, ${round(gr - gl, 2)} m wide)`);
+    else glassBlocks = {leftM: round(mirrored ? width - gr : gl), widthM: round(gr - gl), bottomM: round(b0), topM: round(b1), cellM: 0.2};
+  }
   return {leftM: round(mirrored ? width - right : left), widthM: round(right - left), bottomM: round(bottom), projectM: c.projectM, thicknessM: c.thicknessM, fasciaM: c.fasciaM, fasciaDepthM: c.fasciaDepthM,
-    partyStart: !!(mirrored ? group?.joinRight : group?.joinLeft), partyEnd: !!(mirrored ? group?.joinLeft : group?.joinRight), colour: swatch(aw.colour), fasciaColour: swatch(aw.fasciaColour ?? aw.colour)};
+    partyStart: !!(mirrored ? group?.joinRight : group?.joinLeft), partyEnd: !!(mirrored ? group?.joinLeft : group?.joinRight), colour: swatch(aw.colour), fasciaColour: swatch(aw.fasciaColour ?? aw.colour), ...(glassBlocks ? {glassBlocks} : {})};
 }
 /** Underside of a rigid canopy: 2 cm over the shop-glass head, or over the fascia board when the shop has one. */
 const canopyHead = (layout: Layout, fascia: FasciaRect | undefined) => round((fascia ? fascia.bottomM + fascia.heightM : layout.shopGlass![1]) + RIGID_CANOPY.clearM);
