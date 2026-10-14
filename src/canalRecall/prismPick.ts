@@ -153,3 +153,134 @@ export function pickPrism(
   }
   return best;
 }
+
+// ---------------------------------------------------------------------------
+// Grid index (2026-10-14, desktop perf third pass)
+//
+// The label overlay picks every few frames to test whether a label is hidden,
+// and a pitched or aerial ray crosses many chunks' bounding spheres, so
+// `pickPrism` ran the slab test of every building in each of those chunks
+// (0.07–0.10 ms per frame in the 300 m aerial hold). The grid buckets each
+// prism's plan box (plus a margin) into square cells; a pick walks only the
+// cells the ray crosses while it is within the chunk's height range, then
+// runs the same tests as `pickPrism` on those candidates in index order, so
+// the hit (entry and t, ties to the earlier entry) is exactly `pickPrism`'s.
+// ---------------------------------------------------------------------------
+
+export interface PrismGrid {
+  readonly entries: readonly PrismEntry[];
+  readonly cell: number;
+  readonly x0: number; readonly y0: number;
+  readonly nx: number; readonly ny: number;
+  /** Cell c holds `items[start[c] .. start[c + 1])` (entry indices, ascending). */
+  readonly start: Uint32Array;
+  readonly items: Uint32Array;
+  /** Height range of every prism before any lift. */
+  readonly zLo: number; readonly zHi: number;
+  /** Plan margin each prism is bucketed with (metres): covers rounding in the walk. */
+  readonly margin: number;
+  stamp: Uint32Array;
+  mark: number;
+  scratch: number[];
+}
+
+/** Bucket `entries` into square cells of `cellM` metres (cells overlapping each plan box grown by `marginM`). */
+export function buildPrismGrid(entries: readonly PrismEntry[], cellM = 32, marginM = 0.5): PrismGrid {
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity, zLo = Infinity, zHi = -Infinity;
+  for (const e of entries) {
+    if (e.minX < minX) minX = e.minX;
+    if (e.minY < minY) minY = e.minY;
+    if (e.maxX > maxX) maxX = e.maxX;
+    if (e.maxY > maxY) maxY = e.maxY;
+    if (e.zMin < zLo) zLo = e.zMin;
+    if (e.zMax > zHi) zHi = e.zMax;
+  }
+  if (!entries.length) minX = minY = maxX = maxY = zLo = zHi = 0;
+  const x0 = minX - marginM, y0 = minY - marginM;
+  const nx = Math.max(1, Math.ceil((maxX + marginM - x0) / cellM)), ny = Math.max(1, Math.ceil((maxY + marginM - y0) / cellM));
+  const cellRange = (e: PrismEntry) => [
+    Math.max(0, Math.floor((e.minX - marginM - x0) / cellM)), Math.min(nx - 1, Math.floor((e.maxX + marginM - x0) / cellM)),
+    Math.max(0, Math.floor((e.minY - marginM - y0) / cellM)), Math.min(ny - 1, Math.floor((e.maxY + marginM - y0) / cellM)),
+  ];
+  const start = new Uint32Array(nx * ny + 1);
+  for (const e of entries) {
+    const [ax, bx, ay, by] = cellRange(e);
+    for (let cy = ay; cy <= by; cy++) for (let cx = ax; cx <= bx; cx++) start[cy * nx + cx + 1]++;
+  }
+  for (let c = 1; c <= nx * ny; c++) start[c] += start[c - 1];
+  const fill = start.slice(0, nx * ny);
+  const items = new Uint32Array(start[nx * ny]);
+  entries.forEach((e, i) => {
+    const [ax, bx, ay, by] = cellRange(e);
+    for (let cy = ay; cy <= by; cy++) for (let cx = ax; cx <= bx; cx++) items[fill[cy * nx + cx]++] = i;
+  });
+  return { entries, cell: cellM, x0, y0, nx, ny, start, items, zLo, zHi, margin: marginM, stamp: new Uint32Array(entries.length), mark: 0, scratch: [] };
+}
+
+/** Indices of the prisms in the cells the ray crosses (t > 0, within the lifted height range), ascending. */
+export function prismCandidates(grid: PrismGrid, o: readonly [number, number, number], d: readonly [number, number, number], liftMin = 0, liftMax = 0): number[] {
+  const out = grid.scratch;
+  out.length = 0;
+  if (!grid.entries.length) return out;
+  // The span of t where the ray is inside the grid's box (heights lifted by liftMin..liftMax).
+  let t0 = 0, t1 = Infinity;
+  const lo0 = grid.x0, lo1 = grid.y0, lo2 = grid.zLo + Math.min(0, liftMin);
+  const hi0 = grid.x0 + grid.nx * grid.cell, hi1 = grid.y0 + grid.ny * grid.cell, hi2 = grid.zHi + Math.max(0, liftMax);
+  for (let axis = 0; axis < 3; axis++) {
+    const lo = axis === 0 ? lo0 : axis === 1 ? lo1 : lo2, hi = axis === 0 ? hi0 : axis === 1 ? hi1 : hi2;
+    if (Math.abs(d[axis]) < 1e-12) {
+      if (o[axis] < lo || o[axis] > hi) return out;
+      continue;
+    }
+    let a = (lo - o[axis]) / d[axis], b = (hi - o[axis]) / d[axis];
+    if (a > b) { const s = a; a = b; b = s; }
+    if (a > t0) t0 = a;
+    if (b < t1) t1 = b;
+  }
+  if (t0 > t1) return out;
+  // Grow the span by the margin along the plan (rounding at its ends).
+  const plan = Math.hypot(d[0], d[1]);
+  if (plan > 1e-12) { const pad = grid.margin / plan; t0 = Math.max(0, t0 - pad); t1 += pad; }
+  // Walk the cells (Amanatides–Woo) from t0 to t1.
+  const { cell, nx, ny, x0, y0, start, items, stamp } = grid;
+  grid.mark = (grid.mark + 1) >>> 0;
+  if (grid.mark === 0) { stamp.fill(0); grid.mark = 1; }
+  const mark = grid.mark;
+  let cx = Math.min(nx - 1, Math.max(0, Math.floor((o[0] + d[0] * t0 - x0) / cell)));
+  let cy = Math.min(ny - 1, Math.max(0, Math.floor((o[1] + d[1] * t0 - y0) / cell)));
+  const flatX = Math.abs(d[0]) < 1e-12, flatY = Math.abs(d[1]) < 1e-12;
+  const stepX = d[0] > 0 ? 1 : -1, stepY = d[1] > 0 ? 1 : -1;
+  let tMaxX = flatX ? Infinity : ((cx + (d[0] > 0 ? 1 : 0)) * cell + x0 - o[0]) / d[0];
+  let tMaxY = flatY ? Infinity : ((cy + (d[1] > 0 ? 1 : 0)) * cell + y0 - o[1]) / d[1];
+  const dX = flatX ? Infinity : cell / Math.abs(d[0]), dY = flatY ? Infinity : cell / Math.abs(d[1]);
+  for (let guard = nx + ny + 2; guard > 0; guard--) {
+    const c = cy * nx + cx;
+    for (let k = start[c], end = start[c + 1]; k < end; k++) {
+      const i = items[k];
+      if (stamp[i] !== mark) { stamp[i] = mark; out.push(i); }
+    }
+    if (Math.min(tMaxX, tMaxY) > t1) break;
+    if (tMaxX < tMaxY) { cx += stepX; tMaxX += dX; if (cx < 0 || cx >= nx) break; }
+    else { cy += stepY; tMaxY += dY; if (cy < 0 || cy >= ny) break; }
+  }
+  if (out.length > 1) out.sort((a, b) => a - b);
+  return out;
+}
+
+/**
+ * `pickPrism` through the grid: the same hit (entry and t; ties to the earlier entry). `liftMin`/`liftMax`
+ * bound every lift `liftOf` returns (own ground); a prism lifted outside them could be missed.
+ */
+export function pickPrismGrid(
+  grid: PrismGrid, o: readonly [number, number, number], d: readonly [number, number, number],
+  liftOf: (id: string) => number = () => 0, skip: (id: string) => boolean = () => false, liftMin = 0, liftMax = 0,
+): { entry: PrismEntry; t: number } | null {
+  let best: { entry: PrismEntry; t: number } | null = null;
+  for (const i of prismCandidates(grid, o, d, liftMin, liftMax)) {
+    const entry = grid.entries[i];
+    const t = rayPrism(o, d, entry, liftOf(entry.id));
+    if (t == null || (best && t >= best.t) || skip(entry.id)) continue;
+    best = { entry, t };
+  }
+  return best;
+}
