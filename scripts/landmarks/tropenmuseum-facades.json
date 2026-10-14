@@ -527,7 +527,57 @@
       "inferred": [
         "the panel stops at 12.01 m: the third floor (11.66-14 m, round-arched head to 15.6 m), the cornice at 16.4 m and the arcade stage above stand on other 3DBAG planes and are not drawn",
         "the right-hand souterrain arch at 7.15 sits behind a lamp post and fence in the crop"
-      ]
+      ],
+      "block": {
+        "what": "the third floor, cornice and arcade stage of the connecting block above its 12 m 3DBAG panel; 3DBAG has a 4 m slate roof there and the stage 3 m behind the face on panel 283 (v 16.45-26.94)",
+        "slab": {
+          "y": [
+            12.0,
+            22.55
+          ],
+          "depth": 3.0,
+          "inset": 0.12
+        },
+        "third": {
+          "sideLower": [
+            11.75,
+            13.1
+          ],
+          "sideUpper": [
+            13.4,
+            14.3
+          ],
+          "cLower": [
+            11.7,
+            13.05
+          ],
+          "cUpper": [
+            13.4,
+            14.15
+          ],
+          "arch": {
+            "spring": 14.3,
+            "top": 15.35
+          },
+          "hoodRise": 0.3
+        },
+        "cornice": {
+          "y": [
+            16.45,
+            16.95
+          ],
+          "out": 0.4
+        },
+        "stage": {
+          "yc": 16.95,
+          "k": 0.7
+        },
+        "measuredBy": "tall-w16-61-0.jpg (TMX7316010203-001674_pano_0000_003626, 2020-04-24, Gemeente Amsterdam CC BY 4.0, 50.2 px/m): arched triple head py 840-1015, cornice py 745-775, stage py 465-745",
+        "inferred": [
+          "the slab is flush with the lower face: the crop shows the stage at the same horizontal scale as the lower floors, although 3DBAG puts panel 283 3 m back",
+          "the stage is the pavilion's pattern at 0.7"
+        ]
+      }
     }
   },
   "stagePattern": {
@@ -624,5 +674,328 @@
       "w10's dentil cornice is 21.8-22.35 m in the tall crop (the second pass inferred 21.45-22.0 above its crop top)",
       "the arcade arches' carved brick tracery, the console profiles and the clock panel's frame"
     ]
+  },
+  "gableWings": {
+    "w11-61": {
+      "what": "south gable wing, Linnaeusstraat (east) face: three arched windows over reliefs, a swung gable with a window grid, an oval cartouche and a pediment",
+      "panel": 152,
+      "surfaces": [
+        168,
+        606
+      ],
+      "sToU": 0,
+      "skipFrom": 1,
+      "crop": "tall-w11-61-0.jpg",
+      "pano": "TMX7316010203-001674_pano_0000_003626",
+      "captured": "2020-04-24",
+      "ppm": 50.0,
+      "obliquity": "37 deg",
+      "floor1": {
+        "windows": [
+          [
+            1.5,
+            3.3
+          ],
+          [
+            4.2,
+            6.8
+          ],
+          [
+            7.7,
+            9.4
+          ]
+        ],
+        "lower": [
+          4.0,
+          5.7
+        ],
+        "upper": [
+          6.0,
+          6.9
+        ],
+        "hoodTop": 7.5,
+        "lights": [
+          1,
+          3,
+          1
+        ]
+      },
+      "string": [
+        {
+          "y": [
+            8.5,
+            9.0
+          ],
+          "out": 0.18
+        },
+        {
+          "y": [
+            13.7,
+            13.9
+          ],
+          "out": 0.1
+        },
+        {
+          "y": [
+            17.8,
+            18.0
+          ],
+          "out": 0.12
+        }
+      ],
+      "reliefs": {
+        "s": [
+          [
+            1.3,
+            3.7
+          ],
+          [
+            4.3,
+            6.8
+          ],
+          [
+            7.5,
+            10.0
+          ]
+        ],
+        "y": [
+          12.55,
+          13.45
+        ]
+      },
+      "arched": {
+        "s": [
+          [
+            1.3,
+            3.7
+          ],
+          [
+            4.3,
+            6.8
+          ],
+          [
+            7.5,
+            10.0
+          ]
+        ],
+        "y": [
+          14.0,
+          16.9
+        ]
+      },
+      "gable": {
+        "grid": {
+          "cols": [
+            [
+              4.4,
+              5.0
+            ],
+            [
+              5.2,
+              5.8
+            ],
+            [
+              6.1,
+              6.65
+            ]
+          ],
+          "rows": [
+            [
+              19.0,
+              20.1
+            ],
+            [
+              20.5,
+              21.2
+            ],
+            [
+              21.6,
+              22.3
+            ]
+          ]
+        },
+        "singles": [
+          [
+            3.0,
+            3.55
+          ],
+          [
+            7.5,
+            8.05
+          ]
+        ],
+        "singleRows": [
+          [
+            19.0,
+            20.1
+          ],
+          [
+            20.5,
+            21.2
+          ]
+        ],
+        "cartouche": {
+          "s": 5.4,
+          "y": 24.2,
+          "rx": 0.5,
+          "ry": 0.6
+        },
+        "pediment": {
+          "s": [
+            4.4,
+            6.6
+          ],
+          "y": [
+            26.2,
+            27.0
+          ]
+        },
+        "balls": [
+          [
+            2.7,
+            24.2
+          ],
+          [
+            8.1,
+            24.2
+          ],
+          [
+            1.0,
+            22.0
+          ],
+          [
+            9.8,
+            22.0
+          ]
+        ]
+      },
+      "inferred": [
+        "the ground floor and the first-floor banner field (y 9-12.2) are behind signs and a banner: not drawn",
+        "the swung gable outline stays 3DBAG's: only the pieces on it are drawn",
+        "ball and statue positions on the shoulders from the oblique crop"
+      ]
+    }
+  },
+  "risalits": {
+    "w13-61": {
+      "what": "east risalit with the side entrance (Linnaeusstraat 2a): portal with oval window and reclining figures over a stair, tall ground-floor windows, three hooded first-floor windows, a gable window grid",
+      "panel": 138,
+      "surfaces": [
+        151,
+        154
+      ],
+      "sToU": 0,
+      "photo": "Commons File:Tropenmuseum, Linnaeusstraat foto 2.jpg (Alf van Beem, public domain)",
+      "scale": "about 44 px/m: the risalit is 440 px wide in the photo and 10.3 m in 3DBAG; heights read from the stair top (door sill 1.65 m)",
+      "stair": {
+        "s": [
+          3.4,
+          6.5
+        ],
+        "steps": 5,
+        "rise": 0.33,
+        "tread": 0.4
+      },
+      "door": {
+        "s": [
+          4.15,
+          5.8
+        ],
+        "y": [
+          1.65,
+          4.6
+        ]
+      },
+      "surround": {
+        "half": 1.25,
+        "top": 5.4,
+        "pilaster": 0.4
+      },
+      "oval": {
+        "s": 4.98,
+        "y": 6.4,
+        "rx": 0.55,
+        "ry": 0.38
+      },
+      "figures": {
+        "y": 6.0,
+        "dx": 0.95
+      },
+      "string": [
+        {
+          "y": [
+            3.0,
+            3.2
+          ],
+          "out": 0.14
+        },
+        {
+          "y": [
+            7.7,
+            7.9
+          ],
+          "out": 0.1
+        }
+      ],
+      "flank": {
+        "s": [
+          [
+            1.35,
+            2.5
+          ],
+          [
+            7.5,
+            8.75
+          ]
+        ],
+        "y": [
+          3.5,
+          6.9
+        ]
+      },
+      "floor1": {
+        "s": [
+          [
+            1.7,
+            3.0
+          ],
+          [
+            4.2,
+            5.9
+          ],
+          [
+            7.2,
+            8.8
+          ]
+        ],
+        "y": [
+          8.5,
+          11.4
+        ],
+        "hoodTop": 12.1
+      },
+      "grid": {
+        "s": [
+          3.4,
+          6.8
+        ],
+        "rows": [
+          [
+            14.6,
+            15.7
+          ],
+          [
+            16.0,
+            17.1
+          ]
+        ],
+        "mulls": 2
+      },
+      "inferred": [
+        "heights above the door sill from a single frontal photograph with a few degrees of obliquity (+-0.3 m)",
+        "the swung gable profile and its volutes stay 3DBAG's triangle; the existing crown (piers, statue) is kept",
+        "the souterrain arches under the stair"
+      ]
+    }
   }
 }

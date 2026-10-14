@@ -7,7 +7,7 @@ import type {Cell} from '../../src/canalRecall/blockBuilding/compose';
  * court no wider than that. Roofs are ignored (a lower roof does not hide a high window), so the test only ever drops cells that face a wall.
  * The kit then leaves those cells as plain brick; the audit's blank-wall test already ignores walls a horizontal ray cannot leave through.
  */
-export const HIDDEN_REACH_M = 24;
+export const HIDDEN_REACH_M = 40;
 
 export type CellsByPanel = Map<number, Cell[]>;
 

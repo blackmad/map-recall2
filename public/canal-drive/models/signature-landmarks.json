@@ -50803,14 +50803,14 @@
         "depthMetres": 93.48261642456055,
         "depthCoverage": 0.7349262297528345
       },
-      "triangles": 31684,
-      "bytes": 474472,
+      "triangles": 33044,
+      "bytes": 492920,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ef66336caa5bcafb",
+        "sourceHash": "5da52388ec82a5dc",
         "buildVersion": 2,
-        "bytes": 128600,
-        "triangles": 7416
+        "bytes": 127568,
+        "triangles": 7328
       }
     },
     "roeterseiland-rec-a": {

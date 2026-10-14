@@ -69,9 +69,9 @@ export function oculus(c: PanelCtx, u: number, v: number, outer: number, glass: 
   const ringS = new T.Shape(); ringS.absarc(0, 0, outer, 0, Math.PI * 2, false);
   const hole = new T.Path(); hole.absarc(0, 0, glass + 0.08, 0, Math.PI * 2, true); ringS.holes.push(hole);
   const part = c.part();
-  geom(c, STONE, extrude(ringS, 0.14, 14), u, v, 0.02, part);
+  geom(c, STONE, extrude(ringS, 0.14, 10), u, v, 0.02, part);
   const disc = new T.Shape(); disc.absarc(0, 0, glass + 0.08, 0, Math.PI * 2, false);
-  geom(c, GLASS, extrude(disc, 0.04, 12), u, v, 0.02, part);
+  geom(c, GLASS, extrude(disc, 0.04, 8), u, v, 0.02, part);
   for (let i = 0; i < bosses; i++) { const a = i * Math.PI * 2 / bosses + 0.2; geom(c, STONE, new T.BoxGeometry(0.16, 0.16, 0.1).rotateZ(a), u + Math.cos(a) * (outer - 0.1), v + Math.sin(a) * (outer - 0.1), 0.16, part); }
   for (const a of [0, Math.PI / 2]) geom(c, FRAME, new T.BoxGeometry(2 * glass, 0.04, 0.05).rotateZ(a), u, v, 0.1, part);
 }
@@ -90,5 +90,20 @@ export function reclining(c: PanelCtx, slot: string, u: number, v: number, d: nu
   geom(c, slot, new T.CylinderGeometry(0.13 * k, 0.15 * k, len * 0.8, 6).rotateZ(Math.PI / 2), u, v + 0.15 * k, d, part);
   geom(c, slot, new T.SphereGeometry(0.13 * k, 6, 4), u - flip * len * 0.42, v + 0.4 * k, d, part);
   geom(c, slot, new T.CylinderGeometry(0.08 * k, 0.09 * k, 0.55 * k, 6).rotateZ(Math.PI / 3 * flip), u + flip * len * 0.3, v + 0.38 * k, d, part);
+  return part;
+}
+
+/**
+ * A window applied to a wall face the host does not carry (a bespoke slab, see tropenmuseum-block.ts): a glass box, head and sill bars,
+ * and a mullion and transom standing 5 cm clear of the glass face (no two same-facing faces within 3 cm: the audit's z-fight gate). A glass face more than 8 cm proud reads as an overhanging assembly, so it stays at 4 cm.
+ * About 60 triangles; not cut into the wall, so it cannot fail to fit.
+ */
+export function proudWindow(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, mulls: number | boolean = 1, rows = true, part = c.part(), d0 = 0) {
+  solid(c, GLASS, u0, u1, v0, v1, d0, d0 + 0.04, part);
+  solid(c, FRAME, u0 - 0.05, u1 + 0.05, v0 - 0.06, v0, d0, d0 + 0.09, part);
+  solid(c, FRAME, u0 - 0.05, u1 + 0.05, v1, v1 + 0.06, d0, d0 + 0.09, part);
+  const nm = mulls === true ? 1 : mulls === false ? 0 : mulls;
+  for (let i = 1; i <= nm; i++) { const u = u0 + (u1 - u0) * i / (nm + 1); solid(c, FRAME, u - 0.025, u + 0.025, v0, v1, d0 + 0.04, d0 + 0.09, part); }
+  if (rows) solid(c, FRAME, u0, u1, (v0 + v1) / 2 - 0.025, (v0 + v1) / 2 + 0.025, d0 + 0.04, d0 + 0.09, part);
   return part;
 }
