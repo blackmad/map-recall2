@@ -1222,9 +1222,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 - **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
-  8"): the remaining gaps are mostly statues and memorials; the
-  face-blurred ones (Johnny Jordaan group, Theo Thijssen, Carmiggelt,
-  Winkler Prins, Hildo Krop figures) need licensed Commons photos;
+  9"): the remaining gaps are statues and memorials; batch 9 showed the
+  Commons route works for the blurred ones; second pass on the Jordaan
+  couple and bass player, Tante Leen's face, the Kinderbrug squirrels;
+  the two north-end Kinderbrug groups have no open photo;
   Spinoza's inventory `how` text still describes the old cone and its
   curls are low-poly; Teun de Jager unverified against a close photo;
   Westermoskee NW/SW walls and SE porch unphotographed.

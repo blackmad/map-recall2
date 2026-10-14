@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "id": "johnny-jordaan-groep",
+ "signature": [
+  "jj-bass",
+  "jj-leen",
+  "jj-johnny",
+  "jj-meijer",
+  "jj-couple",
+  "jj-bench"
+ ],
+ "walls": [
+  {
+   "tag": "se-160",
+   "bearing": 160,
+   "lengthM": 8.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000076_pano_0000_003410",
+   "capturedAt": "2016-08-17",
+   "note": "Front of the group from the bench side: the Commons photos (Statues in Johnny Jordaanplein 01-03, 2024 Johnny Jordaanplein ...) show every bronze, plinth and the lettered bench; the panorama shows the same arrangement with the faces blurred.",
+   "items": [
+    {
+     "id": "jj-bass",
+     "kind": "sculpture",
+     "where": "standing double-bass player with the bass in front of him on a granite block with a bronze slab",
+     "approxSizeM": [
+      1.1,
+      2.9
+     ],
+     "plan": "simplified",
+     "how": "builder: figure kit (stout standing man, arms raised to the neck and low), bass from two ellipsoids, neck and scroll",
+     "seenIn": "commons:Statues_in_Johnny_Jordaanplein_03.jpg"
+    },
+    {
+     "id": "jj-leen",
+     "kind": "sculpture",
+     "where": "bust of Tante Leen on a granite pillar inscribed TANTE LEEN 1912 1992",
+     "approxSizeM": [
+      0.5,
+      1.75
+     ],
+     "plan": "modelled",
+     "how": "builder: bust kit (torso, shoulders, neck, head with curled hair) and raised name and years",
+     "seenIn": "commons:Statues_in_Johnny_Jordaanplein_03.jpg"
+    },
+    {
+     "id": "jj-johnny",
+     "kind": "sculpture",
+     "where": "bust of Johnny Jordaan with thick glasses and a bow tie on a pillar inscribed JOHNNY JORDAAN 1924 1989",
+     "approxSizeM": [
+      0.55,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "builder: bust kit with glasses, lapels and bow tie, raised name and years",
+     "seenIn": "commons:2024_Johnny_Jordaanplein_Asd-Johnny_Jordaan_A_.jpg"
+    },
+    {
+     "id": "jj-meijer",
+     "kind": "sculpture",
+     "where": "accordionist Johnny Meijer seated on a bentwood chair on a bronze slab, accordion with bellows",
+     "approxSizeM": [
+      1,
+      1.9
+     ],
+     "plan": "simplified",
+     "how": "builder: seated figure from the figure kit, chair of a seat disc, four legs and a ring, accordion from two end boxes and nine bellows folds",
+     "seenIn": "commons:2024_Johnny_Jordaanplein_Asd-Johnny_Meijer_A_.jpg"
+    },
+    {
+     "id": "jj-couple",
+     "kind": "sculpture",
+     "where": "half-length man with an accordion and a woman standing behind and above him on the biggest block, plaque with the Amsterdam crosses",
+     "approxSizeM": [
+      1.15,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "builder: two busts on torso masses, accordion box and bellows, forearms; the plaque is a plain plate",
+     "seenIn": "commons:Statues_in_Johnny_Jordaanplein_03.jpg"
+    },
+    {
+     "id": "jj-bench",
+     "kind": "other",
+     "where": "semicircular concrete bench with wooden seats and raised bronze letters JOHNNY JORDAAN PLEIN",
+     "approxSizeM": [
+      8.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "builder: extruded ring sector, wooden seat sectors, letterBoxes tangent to the arc",
+     "seenIn": "commons:2024_Johnny_Jordaanplein-Asd-algemeen_A_.jpg"
+    }
+   ],
+   "centre": [
+    4.8822208,
+    52.3701124
+   ],
+   "checked": true
+  },
+  {
+   "tag": "nw-340",
+   "bearing": 340,
+   "lengthM": 8.6,
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Backs of the bronzes and plinths: not photographed in the open set; plain.",
+   "items": [],
+   "centre": [
+    4.8822208,
+    52.3701124
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Wikimedia Commons: Statues in Johnny Jordaanplein 01-03",
+   "url": "https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg",
+   "licence": "CC BY 4.0 (HJ Mitchell)"
+  },
+  {
+   "name": "Wikimedia Commons: 2024 Johnny Jordaanplein photographs",
+   "url": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein-Asd-algemeen_(A).jpg",
+   "licence": "CC0 (Ceescamel)"
+  },
+  {
+   "name": "OpenStreetMap node 1704741755",
+   "url": "https://www.openstreetmap.org/node/1704741755",
+   "licence": "ODbL"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
