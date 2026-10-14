@@ -13,7 +13,15 @@ export function mergeCanopyFrames(frames: readonly WallFrame[]): WallFrame[] {
   return merged;
 }
 
-/** A rigid slab with a rounded dark nose above a pale fascia, across the full frontage. */
+/**
+ * A rigid slab with a rounded dark nose above a pale fascia, across the full frontage.
+ *
+ * Streamed (street-appearance) version. The recipe kit's typed successor is the block-face rigid canopy
+ * (`shopfront.awning.style: "rigid"` + `continuity.canopy`, buildingRecipe/amsterdamSchool.ts), whose proportions were
+ * ported from this one (slab 1.2 m deep, 0.16 m thick, 0.3 m nose fascia; this one: 0.85 m, 0.12 m, 0.24 m). This
+ * streamed version will be generalised onto that component later; it is kept until then (its only profile, the
+ * retired Jan Evertsenstraat pilot, is gone).
+ */
 export function continuousShopCanopy(c: ExtraContext, sink: ExtraSink): void {
   const canopy=c.recipe?.shopCanopy;
   if(!canopy || c.streetSide!==true || !c.groundLevel || c.canopyOwner===false)return;
@@ -26,8 +34,8 @@ export function continuousShopCanopy(c: ExtraContext, sink: ExtraSink): void {
     const openings=c.openings??proceduralOpenings(c.style);
     // A full source assembly must fit between shop doors and residential windows.
     // Never shorten the glass band or paint it over an existing opening to make it fit.
-    const doorHead=c.groundFrontageActive&&c.recipe?.interwarGround?c.base+c.recipe.interwarGround.openingHeadM:c.base+c.layout.groundM*openings.door.top;
-    const firstSill=c.recipe?.interwarFrontage?c.base+c.layout.groundM+c.recipe.interwarFrontage.firstSillM:c.base+c.layout.groundM+c.layout.storeyM*openings.upper.sill;
+    const doorHead=c.base+c.layout.groundM*openings.door.top;
+    const firstSill=c.base+c.layout.groundM+c.layout.storeyM*openings.upper.sill;
     if(z-canopy.fasciaHeightM<doorHead+.03
       ||bandBottom+band.heightM>Math.min(c.top,firstSill)-.03)return;
   }

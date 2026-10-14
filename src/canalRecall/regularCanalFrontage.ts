@@ -1,4 +1,4 @@
-import type {InterwarLocalPoint} from './interwarFrontageLayout.js';
+import type {FrontageLocalPoint} from './frontageQuads.js';
 
 /** A source-selected regular front, independent of surveyed identity/year and
  * of the envelope's crown owner. All vertical dimensions are metres above base;
@@ -26,8 +26,8 @@ export type RegularCanalRole='wall'|'glass'|'frame'|'door'|'door-panel'|'door-ha
 export type RegularCanalPart='upper-window'|'ground-window'|'entrance-transom'|'entrance-door'|'lower-door'|'basement-window'|'opening-reveal'|'basement'|'stair'|'landing'|'rail'|'cornice'|'cornice-block'|'hoist';
 export interface RegularCanalQuad {
   role:RegularCanalRole;part:RegularCanalPart;
-  points:[InterwarLocalPoint,InterwarLocalPoint,InterwarLocalPoint,InterwarLocalPoint];
-  normal:InterwarLocalPoint;uv:[[number,number],[number,number],[number,number],[number,number]];
+  points:[FrontageLocalPoint,FrontageLocalPoint,FrontageLocalPoint,FrontageLocalPoint];
+  normal:FrontageLocalPoint;uv:[[number,number],[number,number],[number,number],[number,number]];
   rowIndex?:number;axisIndex?:number;
 }
 export interface RegularCanalWindow extends RegularCanalRect {out:number;part:RegularCanalPart;rowIndex:number;axisIndex:number}
@@ -93,7 +93,7 @@ export function planRegularCanalFrontage(input:{lengthM:number;baseM:number;topM
     ||r.basement.access.bottomM+r.basement.access.heightM>r.basement.heightM-.04
     ||r.basement.window&&r.basement.window.bottomM+r.basement.window.heightM>r.basement.heightM-.04)return;
   const rise=r.ground.bottomM/r.entrance.stepCount;if(!between(rise,.12,.30))return;
-  const quad=(role:RegularCanalRole,part:RegularCanalPart,points:RegularCanalQuad['points'],normal:InterwarLocalPoint,rowIndex?:number,axisIndex?:number)=>{
+  const quad=(role:RegularCanalRole,part:RegularCanalPart,points:RegularCanalQuad['points'],normal:FrontageLocalPoint,rowIndex?:number,axisIndex?:number)=>{
     const uv:RegularCanalQuad['uv']=[[0,0],[1,0],[1,1],[0,1]],a=points[0],b=points[1],c=points[2],u=b.map((v,i)=>v-a[i]),v=c.map((w,i)=>w-a[i]);
     const cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
     if(cross.reduce((sum,n,i)=>sum+n*normal[i],0)<0){[points[1],points[3]]=[points[3],points[1]];[uv[1],uv[3]]=[uv[3],uv[1]];}

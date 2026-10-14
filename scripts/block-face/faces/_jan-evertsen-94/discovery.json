@@ -1,0 +1,2538 @@
+{
+ "street": "Jan Evertsenstraat",
+ "seed": "0363100012118917",
+ "members": [
+  "0363100012107349",
+  "0363100012070081",
+  "0363100012140699",
+  "0363100012080990",
+  "0363100012092775",
+  "0363100012133377",
+  "0363100012151570",
+  "0363100012095376",
+  "0363100012088014",
+  "0363100012118917",
+  "0363100012096187",
+  "0363100012072380",
+  "0363100012065738",
+  "0363100012081416",
+  "0363100012127196",
+  "0363100012139046",
+  "0363100012072351",
+  "0363100012084878",
+  "0363100012075011",
+  "0363100012095353",
+  "0363100012120991",
+  "0363100012063890",
+  "0363100012088293",
+  "0363100012135935",
+  "0363100012110500",
+  "0363100012107849"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012106884 98.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012134746 29.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061940",
+   "reason": "frontage 61.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062402",
+   "reason": "frontage 138.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062571",
+   "reason": "frontage 52.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062622",
+   "reason": "frontage 201.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062630",
+   "reason": "frontage 40.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062830",
+   "reason": "frontage 105.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064112",
+   "reason": "frontage 39.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064362",
+   "reason": "frontage 72.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064659",
+   "reason": "frontage 67.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065148",
+   "reason": "frontage 48.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065381",
+   "reason": "frontage 107.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065402",
+   "reason": "frontage 123.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065411",
+   "reason": "frontage 84.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065412",
+   "reason": "frontage 66.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065429",
+   "reason": "frontage 89.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066003",
+   "reason": "frontage 162.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066220",
+   "reason": "frontage 48.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066282",
+   "reason": "frontage 41.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012067457",
+   "reason": "frontage 55.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012067657",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012096363"
+  },
+  {
+   "pandId": "0363100012067935",
+   "reason": "frontage 66.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012067936",
+   "reason": "frontage 101.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012068481",
+   "reason": "frontage 65.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012068500",
+   "reason": "frontage 215.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012061253",
+   "reason": "frontage 103.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062259",
+   "reason": "frontage 79.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062411",
+   "reason": "frontage 64.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012063139",
+   "reason": "frontage 107.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064136",
+   "reason": "frontage 40.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064172",
+   "reason": "frontage 144.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064202",
+   "reason": "frontage 119.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064661",
+   "reason": "frontage 180.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064784",
+   "reason": "frontage 137.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065062",
+   "reason": "frontage 155.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065238",
+   "reason": "frontage 155.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012065419",
+   "reason": "frontage 153.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066044",
+   "reason": "frontage 133.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066142",
+   "reason": "frontage 154.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066865",
+   "reason": "frontage 151.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012066866",
+   "reason": "frontage 143.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012067469",
+   "reason": "frontage 64.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012067839",
+   "reason": "frontage 124.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012068123",
+   "reason": "frontage 40.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012068520",
+   "reason": "frontage 128.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012068555",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012087226"
+  },
+  {
+   "pandId": "0363100012068706",
+   "reason": "frontage 142.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012070231",
+   "reason": "frontage 46.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012070315",
+   "reason": "frontage 148.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012070990",
+   "reason": "frontage 154.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012071717",
+   "reason": "frontage 78.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012072641",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012070081"
+  },
+  {
+   "pandId": "0363100012073289",
+   "reason": "frontage 125.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012073746",
+   "reason": "frontage 130.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012073903",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012073923",
+   "reason": "frontage 142.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012074670",
+   "reason": "frontage 124.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012075448",
+   "reason": "frontage 30.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012075879",
+   "reason": "frontage 130.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012076151",
+   "reason": "frontage 214.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012076262",
+   "reason": "frontage 166.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012076983",
+   "reason": "frontage 228.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012076992",
+   "reason": "frontage 72.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012077369",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012101699"
+  },
+  {
+   "pandId": "0363100012077606",
+   "reason": "frontage 94.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012078424",
+   "reason": "frontage 40.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012078648",
+   "reason": "frontage 78.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079446",
+   "reason": "frontage 96.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079543",
+   "reason": "frontage 60.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079738",
+   "reason": "frontage 48.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012080103",
+   "reason": "frontage 123.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012068832",
+   "reason": "frontage 125.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012069262",
+   "reason": "frontage 190.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012069574",
+   "reason": "frontage 106.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012070421",
+   "reason": "frontage 173.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012071506",
+   "reason": "frontage 124.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012071745",
+   "reason": "frontage 40.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012073763",
+   "reason": "frontage 152.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012073771",
+   "reason": "frontage 43.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012074860",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012076546",
+   "reason": "frontage 94.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012077993",
+   "reason": "frontage 124.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012078090",
+   "reason": "frontage 40.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079023",
+   "reason": "frontage 38.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079439",
+   "reason": "frontage 85.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079551",
+   "reason": "frontage 94.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012079999",
+   "reason": "frontage 180.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012080704",
+   "reason": "frontage 76.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012080817",
+   "reason": "frontage 156.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012081124",
+   "reason": "frontage 126.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012082734",
+   "reason": "frontage 183.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012083252",
+   "reason": "frontage 46.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012083334",
+   "reason": "frontage 168.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012083348",
+   "reason": "frontage 108.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012083610",
+   "reason": "frontage 70.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012083675",
+   "reason": "frontage 38.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012084778",
+   "reason": "frontage 160.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012085216",
+   "reason": "frontage 184.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012085627",
+   "reason": "frontage 195.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012085704",
+   "reason": "frontage 154.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012086346",
+   "reason": "frontage 178.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012086591",
+   "reason": "frontage 47.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012087008",
+   "reason": "frontage 180.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012087117",
+   "reason": "frontage 132.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012087226",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012115917"
+  },
+  {
+   "pandId": "0363100012087256",
+   "reason": "frontage 150.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012087919",
+   "reason": "frontage 166.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012089430",
+   "reason": "frontage 142.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012080137",
+   "reason": "frontage 125.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012080193",
+   "reason": "frontage 47.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012080829",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012125417"
+  },
+  {
+   "pandId": "0363100012081251",
+   "reason": "frontage 104.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012082062",
+   "reason": "frontage 47.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012082701",
+   "reason": "frontage 40.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012082813",
+   "reason": "frontage 143.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012083205",
+   "reason": "frontage 94.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012084471",
+   "reason": "frontage 180.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012084794",
+   "reason": "frontage 124.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012086123",
+   "reason": "frontage 64.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012086424",
+   "reason": "frontage 39.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012086840",
+   "reason": "frontage 87.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012087704",
+   "reason": "frontage 97.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012088045",
+   "reason": "frontage 64.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012088403",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012134746"
+  },
+  {
+   "pandId": "0363100012089107",
+   "reason": "frontage 137.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012089218",
+   "reason": "frontage 83.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012089870",
+   "reason": "frontage 40.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012090108",
+   "reason": "frontage 155.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012090763",
+   "reason": "frontage 94.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091103",
+   "reason": "frontage 172.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091695",
+   "reason": "frontage 95.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091713",
+   "reason": "frontage 90.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091778",
+   "reason": "frontage 58.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091891",
+   "reason": "frontage 54.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012093062",
+   "reason": "frontage 130.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012093325",
+   "reason": "frontage 160.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012093509",
+   "reason": "frontage 102.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012095403",
+   "reason": "frontage 94.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012095746",
+   "reason": "frontage 72.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012095847",
+   "reason": "frontage 84.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012096229",
+   "reason": "frontage 154.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012097346",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012096363"
+  },
+  {
+   "pandId": "0363100012098062",
+   "reason": "frontage 102.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012098757",
+   "reason": "frontage 178.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012098906",
+   "reason": "frontage 60.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012099219",
+   "reason": "frontage 84.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012099448",
+   "reason": "frontage 142.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012099699",
+   "reason": "frontage 136.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091026",
+   "reason": "frontage 89.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012091528",
+   "reason": "frontage 180.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012092044",
+   "reason": "frontage 140.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012092556",
+   "reason": "frontage 72.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012093102",
+   "reason": "frontage 53.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012094610",
+   "reason": "frontage 91.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012094717",
+   "reason": "frontage 145.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012094960",
+   "reason": "frontage 35.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012095065",
+   "reason": "frontage 77.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012095435",
+   "reason": "frontage 154.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012095530",
+   "reason": "frontage 40.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012096089",
+   "reason": "frontage 91.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012096476",
+   "reason": "frontage 40.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012096629",
+   "reason": "frontage 81.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012097029",
+   "reason": "frontage 66.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012097274",
+   "reason": "frontage 35.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012098148",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012101228"
+  },
+  {
+   "pandId": "0363100012098435",
+   "reason": "frontage 153.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012098500",
+   "reason": "frontage 65.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012098910",
+   "reason": "frontage 39.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012099347",
+   "reason": "frontage 124.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012099774",
+   "reason": "frontage 41.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012100128",
+   "reason": "frontage 82.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012101024",
+   "reason": "frontage 120.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012101699",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012106884"
+  },
+  {
+   "pandId": "0363100012101929",
+   "reason": "frontage 36.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012102800",
+   "reason": "frontage 124.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012103543",
+   "reason": "frontage 136.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012103907",
+   "reason": "frontage 202.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104347",
+   "reason": "frontage 192.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104533",
+   "reason": "frontage 59.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104728",
+   "reason": "frontage 112.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104780",
+   "reason": "frontage 47.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104930",
+   "reason": "frontage 72.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106157",
+   "reason": "frontage 106.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106355",
+   "reason": "frontage 130.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106702",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012148979"
+  },
+  {
+   "pandId": "0363100012106731",
+   "reason": "frontage 72.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106797",
+   "reason": "frontage 55.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106876",
+   "reason": "frontage 106.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012108070",
+   "reason": "frontage 178.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012109309",
+   "reason": "frontage 189.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012109504",
+   "reason": "frontage 198.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012099731",
+   "reason": "frontage 40.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012100558",
+   "reason": "frontage 93.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012101336",
+   "reason": "frontage 71.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012102998",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012098148"
+  },
+  {
+   "pandId": "0363100012103113",
+   "reason": "frontage 41.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012103507",
+   "reason": "frontage 125.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104024",
+   "reason": "frontage 154.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104546",
+   "reason": "frontage 167.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104822",
+   "reason": "frontage 101.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012105640",
+   "reason": "frontage 124.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106316",
+   "reason": "frontage 155.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106609",
+   "reason": "frontage 124.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012106659",
+   "reason": "frontage 39.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012107000",
+   "reason": "frontage 180.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012107448",
+   "reason": "frontage 156.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012107821",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012108415",
+   "reason": "frontage 94.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012108587",
+   "reason": "frontage 137.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012109163",
+   "reason": "frontage 47.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012109635",
+   "reason": "frontage 57.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012110515",
+   "reason": "frontage 148.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012110741",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012106884"
+  },
+  {
+   "pandId": "0363100012110825",
+   "reason": "frontage 35.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012111861",
+   "reason": "frontage 100.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012111937",
+   "reason": "frontage 142.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012112216",
+   "reason": "frontage 171.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012112244",
+   "reason": "frontage 160.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012112306",
+   "reason": "frontage 123.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012112576",
+   "reason": "frontage 36.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012112689",
+   "reason": "frontage 172.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012113718",
+   "reason": "frontage 78.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012114109",
+   "reason": "frontage 61.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115131",
+   "reason": "frontage 49.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115487",
+   "reason": "frontage 91.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115558",
+   "reason": "frontage 53.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115641",
+   "reason": "frontage 114.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115735",
+   "reason": "frontage 148.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012116003",
+   "reason": "frontage 41.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012116790",
+   "reason": "frontage 88.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012117112",
+   "reason": "frontage 45.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012117389",
+   "reason": "frontage 139.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012118042",
+   "reason": "frontage 42.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012119147",
+   "reason": "frontage 54.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012109724",
+   "reason": "frontage 167.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012111451",
+   "reason": "frontage 44.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012111751",
+   "reason": "frontage 149.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012112481",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012088403"
+  },
+  {
+   "pandId": "0363100012112996",
+   "reason": "frontage 41.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012113409",
+   "reason": "frontage 69.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012113438",
+   "reason": "frontage 88.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012114144",
+   "reason": "frontage 106.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012114395",
+   "reason": "frontage 94.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012114708",
+   "reason": "frontage 155.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115308",
+   "reason": "frontage 131.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012115671",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012070651"
+  },
+  {
+   "pandId": "0363100012115682",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012098148"
+  },
+  {
+   "pandId": "0363100012115728",
+   "reason": "frontage 149.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012116008",
+   "reason": "frontage 124.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012116174",
+   "reason": "frontage 64.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012116514",
+   "reason": "frontage 64.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012117138",
+   "reason": "frontage 43.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012117420",
+   "reason": "frontage 94.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012117900",
+   "reason": "frontage 75.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012119368",
+   "reason": "frontage 160.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012119446",
+   "reason": "frontage 124.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012119589",
+   "reason": "frontage 118.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012120206",
+   "reason": "frontage 236.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012120412",
+   "reason": "frontage 100.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012120874",
+   "reason": "frontage 64.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012120965",
+   "reason": "frontage 92.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012121418",
+   "reason": "frontage 112.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012121777",
+   "reason": "frontage 224.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012122587",
+   "reason": "frontage 123.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012123196",
+   "reason": "frontage 64.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012123728",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012067657"
+  },
+  {
+   "pandId": "0363100012124205",
+   "reason": "frontage 66.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012124895",
+   "reason": "frontage 48.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012126606",
+   "reason": "frontage 130.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012126983",
+   "reason": "frontage 42.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012127299",
+   "reason": "frontage 174.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128464",
+   "reason": "frontage 78.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012119552",
+   "reason": "frontage 64.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012120571",
+   "reason": "frontage 30.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012120890",
+   "reason": "frontage 36.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012121587",
+   "reason": "frontage 146.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012121622",
+   "reason": "frontage 180.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012121666",
+   "reason": "frontage 63.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012121672",
+   "reason": "frontage 78.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012122091",
+   "reason": "frontage 179.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012122189",
+   "reason": "frontage 64.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012123376",
+   "reason": "frontage 50.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012123394",
+   "reason": "frontage 149.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012123577",
+   "reason": "frontage 155.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012123770",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012107849"
+  },
+  {
+   "pandId": "0363100012124120",
+   "reason": "frontage 64.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012124392",
+   "reason": "frontage 47.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012124715",
+   "reason": "frontage 115.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012125024",
+   "reason": "frontage 112.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012125064",
+   "reason": "frontage 125.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012125417",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012101228"
+  },
+  {
+   "pandId": "0363100012125640",
+   "reason": "frontage 150.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012125657",
+   "reason": "frontage 135.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012126623",
+   "reason": "frontage 89.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012126967",
+   "reason": "frontage 41.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012127306",
+   "reason": "frontage 131.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012127802",
+   "reason": "frontage 154.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128089",
+   "reason": "frontage 95.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128296",
+   "reason": "frontage 36.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128347",
+   "reason": "frontage 30.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012129207",
+   "reason": "frontage 124.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012130206",
+   "reason": "frontage 242.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012131108",
+   "reason": "frontage 123.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012131442",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012106702"
+  },
+  {
+   "pandId": "0363100012131762",
+   "reason": "frontage 78.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012132152",
+   "reason": "frontage 100.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012132614",
+   "reason": "frontage 34.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012132918",
+   "reason": "frontage 48.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012132975",
+   "reason": "frontage 127.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012133275",
+   "reason": "frontage 144.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012133330",
+   "reason": "frontage 121.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012133412",
+   "reason": "frontage 204.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012133882",
+   "reason": "frontage 50.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012134247",
+   "reason": "frontage 84.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012135095",
+   "reason": "frontage 118.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012135742",
+   "reason": "frontage 230.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012135938",
+   "reason": "frontage 198.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012136393",
+   "reason": "frontage 126.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137013",
+   "reason": "frontage 190.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137370",
+   "reason": "frontage 154.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137978",
+   "reason": "frontage 140.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012139073",
+   "reason": "frontage 100.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012139123",
+   "reason": "frontage 136.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012139902",
+   "reason": "frontage 93.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012140141",
+   "reason": "frontage 96.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128711",
+   "reason": "frontage 59.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128848",
+   "reason": "frontage 64.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012128886",
+   "reason": "frontage 38.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012130691",
+   "reason": "frontage 128.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012130775",
+   "reason": "frontage 40.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012131357",
+   "reason": "frontage 124.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012132669",
+   "reason": "frontage 100.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012133375",
+   "reason": "frontage 109.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012134248",
+   "reason": "frontage 94.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012135199",
+   "reason": "frontage 154.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012135588",
+   "reason": "frontage 35.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137692",
+   "reason": "frontage 60.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137735",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137828",
+   "reason": "frontage 134.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012137979",
+   "reason": "frontage 125.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012138169",
+   "reason": "frontage 155.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012138497",
+   "reason": "frontage 38.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012138997",
+   "reason": "frontage 65.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012140019",
+   "reason": "frontage 65.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012140192",
+   "reason": "frontage 196.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012140406",
+   "reason": "frontage 218.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012140594",
+   "reason": "frontage 212.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012141070",
+   "reason": "frontage 134.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012141949",
+   "reason": "frontage 100.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142041",
+   "reason": "frontage 47.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142172",
+   "reason": "frontage 111.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142323",
+   "reason": "frontage 112.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142554",
+   "reason": "frontage 124.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012143409",
+   "reason": "frontage 166.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012143553",
+   "reason": "frontage 146.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144006",
+   "reason": "frontage 94.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144088",
+   "reason": "frontage 90.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144768",
+   "reason": "frontage 184.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144796",
+   "reason": "frontage 90.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144824",
+   "reason": "frontage 121.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144877",
+   "reason": "frontage 112.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145154",
+   "reason": "frontage 42.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145262",
+   "reason": "frontage 128.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145303",
+   "reason": "frontage 94.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145474",
+   "reason": "frontage 34.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145498",
+   "reason": "frontage 77.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145908",
+   "reason": "frontage 64.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012141686",
+   "reason": "frontage 125.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142005",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142083",
+   "reason": "frontage 125.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142442",
+   "reason": "frontage 154.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142520",
+   "reason": "frontage 125.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012142978",
+   "reason": "frontage 124.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012143559",
+   "reason": "frontage 162.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012143588",
+   "reason": "frontage 53.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012143695",
+   "reason": "frontage 107.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144087",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012101228"
+  },
+  {
+   "pandId": "0363100012144127",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144148",
+   "reason": "frontage 65.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144282",
+   "reason": "frontage 84.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144752",
+   "reason": "frontage 122.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144856",
+   "reason": "frontage 161.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144946",
+   "reason": "frontage 155.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012144980",
+   "reason": "frontage 93.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145015",
+   "reason": "frontage 95.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145906",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012134746"
+  },
+  {
+   "pandId": "0363100012145919",
+   "reason": "frontage 119.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146031",
+   "reason": "frontage 47.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146069",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012085532"
+  },
+  {
+   "pandId": "0363100012146210",
+   "reason": "frontage 113.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146497",
+   "reason": "frontage 78.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146747",
+   "reason": "frontage 121.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146794",
+   "reason": "frontage 78.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146982",
+   "reason": "frontage 190.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012147839",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012068555"
+  },
+  {
+   "pandId": "0363100012148487",
+   "reason": "frontage 136.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012148509",
+   "reason": "frontage 207.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012149479",
+   "reason": "frontage 83.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012149795",
+   "reason": "frontage 142.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150178",
+   "reason": "frontage 221.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150289",
+   "reason": "frontage 35.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150782",
+   "reason": "frontage 186.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012151030",
+   "reason": "frontage 178.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012151434",
+   "reason": "frontage 44.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012151788",
+   "reason": "frontage 118.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012153915",
+   "reason": "frontage 177.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012153922",
+   "reason": "frontage 209.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012154557",
+   "reason": "frontage 148.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012183582",
+   "reason": "frontage 119.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012183606",
+   "reason": "frontage 177.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012183700",
+   "reason": "frontage 60.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012184018",
+   "reason": "frontage 152.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012184254",
+   "reason": "frontage 85.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012184707",
+   "reason": "frontage 178.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012185097",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012099114"
+  },
+  {
+   "pandId": "0363100012187084",
+   "reason": "frontage 73.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146408",
+   "reason": "frontage 39.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012146513",
+   "reason": "frontage 78.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012147017",
+   "reason": "frontage 94.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012147366",
+   "reason": "frontage 71.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012148833",
+   "reason": "frontage 131.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012149006",
+   "reason": "frontage 97.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012149007",
+   "reason": "frontage 119.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012149875",
+   "reason": "frontage 161.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150257",
+   "reason": "frontage 113.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150449",
+   "reason": "frontage 144.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150815",
+   "reason": "frontage 125.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012150986",
+   "reason": "frontage 47.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012152011",
+   "reason": "frontage 101.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012152078",
+   "reason": "frontage 125.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012153987",
+   "reason": "frontage 137.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012154436",
+   "reason": "frontage 94.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012154565",
+   "reason": "frontage 40.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012187853",
+   "reason": "frontage 150.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012188239",
+   "reason": "frontage 112.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012189590",
+   "reason": "frontage 220.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012189591",
+   "reason": "frontage 222.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012189592",
+   "reason": "frontage 192.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012190592",
+   "reason": "no frontage on Jan Evertsenstraat: No footprint edge faces Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012191731",
+   "reason": "frontage 98.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012192366",
+   "reason": "frontage 140.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012192642",
+   "reason": "frontage 121.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012192994",
+   "reason": "frontage 232.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012193048",
+   "reason": "frontage 168.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012194632",
+   "reason": "frontage 92.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012195078",
+   "reason": "frontage 46.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012195364",
+   "reason": "frontage 140.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012195365",
+   "reason": "frontage 142.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012195523",
+   "reason": "frontage 170.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012197547",
+   "reason": "frontage 144.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012197975",
+   "reason": "frontage 205.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012198579",
+   "reason": "frontage 166.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012199957",
+   "reason": "frontage 76.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012200135",
+   "reason": "frontage 189.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012201603",
+   "reason": "frontage 205.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012201860",
+   "reason": "frontage 67.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012202096",
+   "reason": "frontage 229.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012203656",
+   "reason": "frontage 67.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012204478",
+   "reason": "frontage 107.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012204543",
+   "reason": "frontage 105.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012205065",
+   "reason": "frontage 47.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012208842",
+   "reason": "frontage 65.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012209065",
+   "reason": "frontage 85.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012210033",
+   "reason": "frontage 35.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012210412",
+   "reason": "frontage 223.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012211178",
+   "reason": "frontage 44.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012211188",
+   "reason": "frontage 94.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012212785",
+   "reason": "frontage 54.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012187662",
+   "reason": "frontage 84.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012192014",
+   "reason": "frontage 92.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012197375",
+   "reason": "frontage 105.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012197623",
+   "reason": "frontage 84.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012199451",
+   "reason": "frontage 84.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012201879",
+   "reason": "frontage 141.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012201880",
+   "reason": "frontage 134.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012205258",
+   "reason": "frontage 85.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012206206",
+   "reason": "frontage 109.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012206940",
+   "reason": "frontage 84.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012211134",
+   "reason": "frontage 84.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012212220",
+   "reason": "frontage 30.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012212723",
+   "reason": "frontage 98.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012212735",
+   "reason": "frontage 122.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012212736",
+   "reason": "frontage 124.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012212999",
+   "reason": "frontage 179.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012213635",
+   "reason": "frontage 142.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012214382",
+   "reason": "frontage 187.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012214719",
+   "reason": "frontage 180.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012214882",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012081416"
+  },
+  {
+   "pandId": "0363100012215609",
+   "reason": "frontage 32.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012217641",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012142949"
+  },
+  {
+   "pandId": "0363100012217642",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012142949"
+  },
+  {
+   "pandId": "0363100012219553",
+   "reason": "frontage 70.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012219649",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012133377"
+  },
+  {
+   "pandId": "0363100012220349",
+   "reason": "frontage 109.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012221233",
+   "reason": "frontage 35.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012221846",
+   "reason": "frontage 234.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012222011",
+   "reason": "frontage 181.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012222034",
+   "reason": "frontage 58.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012222035",
+   "reason": "frontage 56.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012222929",
+   "reason": "frontage 59.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012224167",
+   "reason": "frontage 173.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012225903",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012092775"
+  },
+  {
+   "pandId": "0363100012227009",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012081416"
+  },
+  {
+   "pandId": "0363100012227528",
+   "reason": "frontage 160.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012230355",
+   "reason": "frontage 167.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012230399",
+   "reason": "frontage 146.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012230967",
+   "reason": "frontage 164.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012231446",
+   "reason": "frontage 156.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012232357",
+   "reason": "frontage 34.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012232546",
+   "reason": "frontage 75.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012232634",
+   "reason": "no frontage on Jan Evertsenstraat: No footprint edge faces Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012232898",
+   "reason": "frontage 118.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012233144",
+   "reason": "frontage 56.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012234070",
+   "reason": "frontage 84.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012234392",
+   "reason": "frontage 171.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100100092455",
+   "reason": "frontage 80.4 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012213418",
+   "reason": "frontage 84.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012215615",
+   "reason": "frontage 84.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012221796",
+   "reason": "frontage 30.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012222622",
+   "reason": "frontage 84.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012223441",
+   "reason": "frontage 142.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012228360",
+   "reason": "frontage 107.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012231998",
+   "reason": "frontage 30.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012234143",
+   "reason": "frontage 119.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012241076",
+   "reason": "frontage 144.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012253074",
+   "reason": "frontage 35.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012062223",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012062057",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012062999",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012064061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065988",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077667",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078348",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085815",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085532",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089507",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096363",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094286",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099114",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100052",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102496",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107343",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115917",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110182",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113053",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114417",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119877",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138503",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142949",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144026",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151042",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151275",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147193",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155048",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012107349",
+   "alongM": -58.01,
+   "widthM": 25.55,
+   "eavesM": 11.8,
+   "roofMaxM": 37.45,
+   "storeys3dbag": 0,
+   "builtYear": 1996,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012070081",
+   "alongM": -50.07,
+   "widthM": 5.44,
+   "eavesM": 13.78,
+   "roofMaxM": 16.66,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012140699",
+   "alongM": -42.11,
+   "widthM": 6.23,
+   "eavesM": 16.56,
+   "roofMaxM": 16.59,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012080990",
+   "alongM": -36,
+   "widthM": 6,
+   "eavesM": 16.92,
+   "roofMaxM": 16.93,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012092775",
+   "alongM": -30,
+   "widthM": 6,
+   "eavesM": 16.78,
+   "roofMaxM": 16.88,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012133377",
+   "alongM": -24,
+   "widthM": 6,
+   "eavesM": 16.64,
+   "roofMaxM": 16.74,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012151570",
+   "alongM": -18,
+   "widthM": 6,
+   "eavesM": 13.18,
+   "roofMaxM": 16.72,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012095376",
+   "alongM": -12,
+   "widthM": 6,
+   "eavesM": 16.68,
+   "roofMaxM": 16.74,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012088014",
+   "alongM": -6,
+   "widthM": 6,
+   "eavesM": 4.58,
+   "roofMaxM": 16.69,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012118917",
+   "alongM": 0,
+   "widthM": 6,
+   "eavesM": 16.64,
+   "roofMaxM": 16.64,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012096187",
+   "alongM": 6,
+   "widthM": 6,
+   "eavesM": 16.61,
+   "roofMaxM": 16.62,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012072380",
+   "alongM": 12,
+   "widthM": 6,
+   "eavesM": 4.52,
+   "roofMaxM": 16.66,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065738",
+   "alongM": 18,
+   "widthM": 6,
+   "eavesM": 11.4,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012081416",
+   "alongM": 24,
+   "widthM": 6,
+   "eavesM": 16.63,
+   "roofMaxM": 16.64,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012127196",
+   "alongM": 30,
+   "widthM": 6,
+   "eavesM": 16.63,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012139046",
+   "alongM": 36,
+   "widthM": 6,
+   "eavesM": 16.65,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012072351",
+   "alongM": 42,
+   "widthM": 6,
+   "eavesM": 4.49,
+   "roofMaxM": 16.73,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084878",
+   "alongM": 48,
+   "widthM": 6,
+   "eavesM": 16.61,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012075011",
+   "alongM": 54,
+   "widthM": 6,
+   "eavesM": 16.62,
+   "roofMaxM": 16.64,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012095353",
+   "alongM": 60,
+   "widthM": 6,
+   "eavesM": 16.62,
+   "roofMaxM": 16.69,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012120991",
+   "alongM": 65.96,
+   "widthM": 5.92,
+   "eavesM": 16.57,
+   "roofMaxM": 16.61,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063890",
+   "alongM": 71.92,
+   "widthM": 6,
+   "eavesM": 12.99,
+   "roofMaxM": 16.62,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012088293",
+   "alongM": 77.92,
+   "widthM": 6,
+   "eavesM": 16.59,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012135935",
+   "alongM": 83.92,
+   "widthM": 6,
+   "eavesM": 4.48,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012110500",
+   "alongM": 90.92,
+   "widthM": 8.04,
+   "eavesM": 16.59,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012107849",
+   "alongM": 97.17,
+   "widthM": 7.51,
+   "eavesM": 3.09,
+   "roofMaxM": 17.37,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  }
+ ]
+}

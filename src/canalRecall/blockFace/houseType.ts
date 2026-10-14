@@ -122,12 +122,14 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.crownAt) out.crownAt = flipFrac(f.crownAt);
   if (f.crownBays) out.crownBays = flipAxes(f.crownBays);
   if (f.crownGroups) out.crownGroups = f.crownGroups.map(flipAxes).reverse();
-  if (f.tower) out.tower = {...f.tower, bays: flipAxes(f.tower.bays)};
+  if (f.tower?.corner) throw Error(`${f.id}: a corner tower stands on the pand's own corner; it is not part of a mirrored type`);
+  if (f.tower) out.tower = {...f.tower, bays: flipAxes(f.tower.bays!)};
+  if (f.lisenes) out.lisenes = {...(f.lisenes.rightEnd ? {leftEnd: f.lisenes.rightEnd} : {}), ...(f.lisenes.leftEnd ? {rightEnd: f.lisenes.leftEnd} : {})};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
   if (f.gridAt) out.gridAt = flipFrac(f.gridAt);
   if (f.balconies) { const n = sameCount(f.balconies.storeys, 'balconies'); out.balconies = {...f.balconies, bays: f.balconies.bays.map(b => n - 1 - b).sort((p, q) => p - q)}; }
-  if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay}; }
-  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse()};
+  if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays)};
+  else if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay!}; }  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse()};
   if (f.shopfront) {
     const sf = f.shopfront;
     if (sf.sign || sf.residentialDoor || sf.bays || sf.awning?.extent || (sf.entrance && /left|right/.test(sf.entrance))) throw Error(`${f.id}: a type ground with lettering or a side-specific shop cannot be mirrored; give the shop per house`);

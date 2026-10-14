@@ -1,0 +1,923 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:39:58.741Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012107349",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Mercatorplein 52",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000613777"
+    },
+    {
+     "address": "Mercatorplein 66",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000615016"
+    },
+    {
+     "address": "Mercatorplein 80",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000615017"
+    },
+    {
+     "address": "Mercatorplein 82",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000619821"
+    },
+    {
+     "address": "Mercatorplein 84",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000631195"
+    },
+    {
+     "address": "Mercatorplein 86",
+     "use": "kantoorfunctie",
+     "areaM2": 15,
+     "bagId": "0363010000631196"
+    },
+    {
+     "address": "Mercatorplein 88",
+     "use": "winkelfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000634914"
+    },
+    {
+     "address": "Mercatorplein 90",
+     "use": "winkelfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000648892"
+    },
+    {
+     "address": "Mercatorplein 92",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000655897"
+    },
+    {
+     "address": "Mercatorplein 94",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000675393"
+    },
+    {
+     "address": "Mercatorplein 62",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000608288"
+    },
+    {
+     "address": "Mercatorplein 76",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000608289"
+    },
+    {
+     "address": "Mercatorplein 38",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000612383"
+    },
+    {
+     "address": "Mercatorplein 64",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000610988"
+    },
+    {
+     "address": "Mercatorplein 50",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000609097"
+    },
+    {
+     "address": "Mercatorplein 78",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000611639"
+    },
+    {
+     "address": "Mercatorplein 48",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000607981"
+    },
+    {
+     "address": "Mercatorplein 96",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000679792"
+    },
+    {
+     "address": "Hoofdweg 306",
+     "use": "kantoorfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000689853"
+    },
+    {
+     "address": "Mercatorstraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000689854"
+    },
+    {
+     "address": "Mercatorplein 40",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000912402"
+    },
+    {
+     "address": "Mercatorplein 42",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000915596"
+    },
+    {
+     "address": "Mercatorplein 44",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000915597"
+    },
+    {
+     "address": "Mercatorplein 60",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000918536"
+    },
+    {
+     "address": "Mercatorplein 58",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000918537"
+    },
+    {
+     "address": "Mercatorplein 56",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000918538"
+    },
+    {
+     "address": "Mercatorplein 54",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000918539"
+    },
+    {
+     "address": "Mercatorplein 68",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000918540"
+    },
+    {
+     "address": "Mercatorplein 70",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000918541"
+    },
+    {
+     "address": "Mercatorplein 72",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000918542"
+    },
+    {
+     "address": "Mercatorplein 46",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000917488"
+    },
+    {
+     "address": "Mercatorplein 74",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000918569"
+    },
+    {
+     "address": "Mercatorplein 36A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000959057"
+    },
+    {
+     "address": "Mercatorplein 36B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001025057"
+    },
+    {
+     "address": "Mercatorplein 36C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001025058"
+    },
+    {
+     "address": "Mercatorplein 36D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001025059"
+    },
+    {
+     "address": "Mercatorplein 36E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001025060"
+    },
+    {
+     "address": "Mercatorplein 36F",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001025061"
+    },
+    {
+     "address": "Mercatorplein 36G",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001025062"
+    },
+    {
+     "address": "Mercatorplein 36H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001025063"
+    },
+    {
+     "address": "Mercatorplein 36K",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001025064"
+    }
+   ],
+   "units": 41,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2812002673,
+     "lngLat": [
+      4.8508757,
+      52.3703509
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "86",
+      "addr:postcode": "1056CL",
+      "addr:street": "Mercatorplein",
+      "hairdresser": "barber",
+      "name": "Barbershop Mercator",
+      "phone": "+31 20 785 4042",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012070081",
+   "addresses": [
+    "Jan Evertsenstraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 142",
+     "use": "winkelfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012583085"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1742803155,
+     "lngLat": [
+      4.851345,
+      52.3703842
+     ],
+     "tags": {
+      "name": "Aladdin's notenhoek",
+      "shop": "confectionery",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012140699",
+   "addresses": [
+    "Jan Evertsenstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 140-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000684530"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080990",
+   "addresses": [
+    "Jan Evertsenstraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 138-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000684522"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092775",
+   "addresses": [
+    "Jan Evertsenstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 136-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000684510"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2811984970,
+     "lngLat": [
+      4.851612,
+      52.3704157
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "136-H",
+      "addr:postcode": "1056EK",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "cafe",
+      "changing_table": "no",
+      "cost:coffee": "2.50 EUR",
+      "cuisine": "coffee_shop",
+      "dog": "yes",
+      "email": "west@whitelabelcoffee.nl",
+      "handwashing:soap": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "yes",
+      "name": "White Label Coffee",
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa-Su 09:00-18:00",
+      "outdoor_seating": "yes",
+      "payment:cards": "yes",
+      "payment:cash": "no",
+      "payment:qr_code": "no",
+      "service:electricity": "no",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets": "yes",
+      "toilets:access": "customers",
+      "toilets:disposal": "flush",
+      "toilets:fee": "no",
+      "toilets:gender_segregated": "no",
+      "toilets:handwashing": "yes",
+      "toilets:paper_supplied": "yes",
+      "toilets:position": "seated",
+      "website": "https://whitelabelcoffee.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012133377",
+   "addresses": [
+    "Jan Evertsenstraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 134-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000684505"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2811984964,
+     "lngLat": [
+      4.8517024,
+      52.3704327
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "134-H",
+      "addr:postcode": "1056EK",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Sil's Natuurvlees",
+      "phone": "+31 6 11187293",
+      "shop": "butcher",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://silsnatuurvlees.nl"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012151570",
+   "addresses": [
+    "Jan Evertsenstraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 132-H",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000684497"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095376",
+   "addresses": [
+    "Jan Evertsenstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 130-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000684489"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088014",
+   "addresses": [
+    "Jan Evertsenstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 128-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000684482"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118917",
+   "addresses": [
+    "Jan Evertsenstraat 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 126-H",
+     "use": "winkelfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000684474"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4801189846,
+     "lngLat": [
+      4.8520624,
+      52.3705002
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "126-130",
+      "addr:postcode": "1056EJ",
+      "addr:street": "Jan Evertsenstraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-We,Fr-Sa 09:00-18:00; Th 09:00-20:00; Su 12:00-18:00; PH off",
+      "operator": "Kruidvat",
+      "ref": "7036",
+      "shop": "chemist",
+      "source": "AS Watson BNL",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-7036",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012096187",
+   "addresses": [
+    "Jan Evertsenstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 124-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000684467"
+    },
+    {
+     "address": "Jan Evertsenstraat 124-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010012077477"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072380",
+   "addresses": [
+    "Jan Evertsenstraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 122-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 241,
+     "bagId": "0363010000684462"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4948855057,
+     "lngLat": [
+      4.8521761,
+      52.3705329
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122-124",
+      "addr:postcode": "1056EJ",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Mercator Apotheek",
+      "website": "https://mercatorapotheek.nl/"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012065738",
+   "addresses": [
+    "Jan Evertsenstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 120-H",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000684454"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081416",
+   "addresses": [
+    "Jan Evertsenstraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 118-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000684446"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2811984341,
+     "lngLat": [
+      4.8523787,
+      52.3705603
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118-H",
+      "addr:postcode": "1056EJ",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "De Prijshamer",
+      "phone": "+31 20 412 5277",
+      "shop": "doityourself",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012127196",
+   "addresses": [
+    "Jan Evertsenstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000684439"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9439560548,
+     "lngLat": [
+      4.8524607,
+      52.3705692
+     ],
+     "tags": {
+      "name": "Vishandel Mop",
+      "shop": "seafood"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012139046",
+   "addresses": [
+    "Jan Evertsenstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 114-H",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000684432"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072351",
+   "addresses": [
+    "Jan Evertsenstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000684424"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 467095819,
+     "lngLat": [
+      4.8526426,
+      52.3706035
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "112",
+      "addr:postcode": "1056EH",
+      "addr:street": "Jan Evertsenstraat",
+      "brand": "Etos",
+      "brand:website": "https://www.etos.nl/",
+      "brand:wikidata": "Q2609459",
+      "brand:wikipedia": "nl:Etos",
+      "name": "Etos",
+      "ref": "7242",
+      "shop": "chemist",
+      "website": "https://www.etos.nl/winkels/amsterdam/jan-evertsenstraat-112-7242/"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012084878",
+   "addresses": [
+    "Jan Evertsenstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000684417"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075011",
+   "addresses": [
+    "Jan Evertsenstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 108-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000684410"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095353",
+   "addresses": [
+    "Jan Evertsenstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 106-H",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000684403"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120991",
+   "addresses": [
+    "Jan Evertsenstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 104-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000684395"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063890",
+   "addresses": [
+    "Jan Evertsenstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 102-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000684387"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088293",
+   "addresses": [
+    "Jan Evertsenstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 100-H",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000684379"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135935",
+   "addresses": [
+    "Jan Evertsenstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 98-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000684371"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110500",
+   "addresses": [
+    "Jan Evertsenstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 96-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000684363"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1338117113,
+     "lngLat": [
+      4.8533216,
+      52.3707176
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96",
+      "addr:postcode": "1056EG",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Marco's Groentespeciaalzaak",
+      "opening_hours": "Tu-Sa 07:00-18:00",
+      "organic": "only",
+      "phone": "+31 20 6165849",
+      "shop": "greengrocer",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T09:39:58.741Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107849",
+   "addresses": [
+    "Jan Evertsenstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 94-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000684355"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}
