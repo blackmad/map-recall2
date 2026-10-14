@@ -23,7 +23,7 @@ import type { OsmGroundExtract } from './osmGround.js';
 import type { WaterGeometry } from './water.js';
 import type { HeightFn, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
-import { GROUND_TONES as G, STREET_GROUND } from '../look/palette.js';
+import { groundPalette, type GroundPalette } from './groundLook.js';
 
 /** Far blocks are this many streamed cells on a side. */
 export const FAR_BLOCK_CELLS = 2;
@@ -39,11 +39,16 @@ export const FAR_SIMPLIFY_M = 3;
 type RGB = [number, number, number];
 const rgb = (c: readonly number[]): RGB => [c[0] / 255, c[1] / 255, c[2] / 255];
 const hex = (h: string): RGB => { const v = parseInt(h.slice(1), 16); return [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255]; };
-/** The near ring's flat tones (its textures' base colours). */
-export const FAR_COLOURS = {
-  land: rgb(G.land.base), water: hex(G.water), park: rgb(G.park), wood: rgb(G.wood),
-  asphalt: rgb(STREET_GROUND.asphalt.base), klinker: rgb(STREET_GROUND.klinker.base), cycle: rgb(STREET_GROUND.cycle.base),
-} as const;
+/** The near ring's flat tones (its textures' base colours) for a ground palette (groundLook.ts). */
+export function farColours({ street, tones: G }: GroundPalette) {
+  return {
+    land: rgb(G.land.base), water: hex(G.water), park: rgb(G.park), wood: rgb(G.wood),
+    asphalt: rgb(street.asphalt.base), klinker: rgb(street.klinker.base), cycle: rgb(street.cycle.base),
+  } as const;
+}
+export type FarColours = ReturnType<typeof farColours>;
+/** Today's palette. */
+export const FAR_COLOURS: FarColours = farColours(groundPalette('default'));
 
 /** Street classes in the order they are dropped when a block is over budget (last dropped first). */
 const STREET_TIERS: readonly (readonly string[])[] = [
@@ -126,7 +131,7 @@ function polygon(m: MeshArrays, rings: readonly (readonly Vec2[])[], height: Hei
 }
 
 /** Build one far block (all four sub-cells), within FAR_BLOCK_BUDGET. */
-export function buildFarBlock(input: FarBlockInput): BuiltFar {
+export function buildFarBlock(input: FarBlockInput, FAR: FarColours = FAR_COLOURS): BuiltFar {
   const t0 = Date.now();
   const height: HeightFn = input.ground ?? (() => 0);
   // Ways of the whole block once (a way lives in the cell of its midpoint), drawn by the sub-cell holding it.
@@ -150,17 +155,17 @@ export function buildFarBlock(input: FarBlockInput): BuiltFar {
       let n = m.indices.length;
       // Land: the relief grid over the sub-cell.
       const nx = Math.ceil((x1 - x0) / FAR_GRID_M), ny = Math.ceil((y1 - y0) / FAR_GRID_M), base = m.positions.length / 3;
-      for (let j = 0; j <= ny; j++) for (let k = 0; k <= nx; k++) { const x = Math.min(x1, x0 + k * FAR_GRID_M), y = Math.min(y1, y0 + j * FAR_GRID_M); vertex(m, x, y, height(x, y) + FAR_LIFT.land, FAR_COLOURS.land); }
+      for (let j = 0; j <= ny; j++) for (let k = 0; k <= nx; k++) { const x = Math.min(x1, x0 + k * FAR_GRID_M), y = Math.min(y1, y0 + j * FAR_GRID_M); vertex(m, x, y, height(x, y) + FAR_LIFT.land, FAR.land); }
       for (let j = 0; j < ny; j++) for (let k = 0; k < nx; k++) { const a = base + j * (nx + 1) + k, b = a + 1, d = a + nx + 1, e = d + 1; m.indices.push(a, b, e, a, e, d); }
       count('land', m, n); n = m.indices.length;
       // Green.
       for (const a of c.osm?.areas ?? []) {
         if (a.kind !== 'park' && a.kind !== 'grass' && a.kind !== 'wood') continue;
-        for (const r of a.rings) polygon(m, [r.slice(0, -1).map(input.project)], height, FAR_LIFT.green, a.kind === 'wood' ? FAR_COLOURS.wood : FAR_COLOURS.park);
+        for (const r of a.rings) polygon(m, [r.slice(0, -1).map(input.project)], height, FAR_LIFT.green, a.kind === 'wood' ? FAR.wood : FAR.park);
       }
       count('green', m, n); n = m.indices.length;
       // Water (elevation-v1 clips its polygons per cell already).
-      for (const poly of c.water?.polygons ?? []) polygon(m, poly, height, FAR_LIFT.water, FAR_COLOURS.water);
+      for (const poly of c.water?.polygons ?? []) polygon(m, poly, height, FAR_LIFT.water, FAR.water);
       count('water', m, n);
     });
     // Streets, by the sub-cell of their midpoint.
@@ -173,7 +178,7 @@ export function buildFarBlock(input: FarBlockInput): BuiltFar {
       const i = subOf(midpoint(w.points));
       if (i < 0) continue;
       const m = meshes[i], n = m.indices.length;
-      const own = w.section.bands[0]?.surface, colour = cycle || own === 'cycle' ? FAR_COLOURS.cycle : own === 'klinker' ? FAR_COLOURS.klinker : FAR_COLOURS.asphalt;
+      const own = w.section.bands[0]?.surface, colour = cycle || own === 'cycle' ? FAR.cycle : own === 'klinker' ? FAR.klinker : FAR.asphalt;
       ribbon(m, simplify(w.points, FAR_SIMPLIFY_M), cycle ? 0 : (ext.left - ext.right) / 2, width, height, cycle ? FAR_LIFT.cycle : FAR_LIFT.street, { step: 1e9, colour });
       count('street', m, n);
     }
