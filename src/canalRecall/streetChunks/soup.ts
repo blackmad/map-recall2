@@ -29,9 +29,11 @@ export function groupToBuckets(group: T.Object3D, toFrame: T.Matrix4, slotFor: (
     if (Array.isArray(object.material)) throw Error('Chunk export requires one material per mesh');
     const material = object.material as T.MeshStandardMaterial;
     const surface = object.userData.surface as string, slot = slotFor(object);
-    const key = `${material.color.getHexString()}_${slot}`;
+    // A measured tint (painted brick, oudWest.ts) is its own material: the look keeps its colour instead of the brick range.
+    const measured = material.userData?.tintSource === 'measured';
+    const key = `${material.color.getHexString()}_${slot}${measured ? '_measured' : ''}`;
     let bucket = buckets.get(key);
-    if (!bucket) { bucket = {key, slot, tint: '#' + material.color.getHexString(), surface, positions: [], normals: [], uvs: []}; buckets.set(key, bucket); }
+    if (!bucket) { bucket = {key, slot, tint: '#' + material.color.getHexString(), surface, positions: [], normals: [], uvs: [], ...(measured ? {tintSource: 'measured' as const} : {})}; buckets.set(key, bucket); }
     const geometry: T.BufferGeometry = (object.geometry.index ? object.geometry.toNonIndexed() : object.geometry.clone())
       .applyMatrix4(new T.Matrix4().multiplyMatrices(toFrame, object.matrixWorld));
     if (!geometry.getAttribute('normal')) geometry.computeVertexNormals();

@@ -1,0 +1,139 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T12:13:37.620Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159278",
+   "addresses": [
+    "Nassaukade 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 144-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000748299"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159538",
+   "addresses": [
+    "Nassaukade 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 143-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000748294"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162782",
+   "addresses": [
+    "Nassaukade 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 142-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000748291"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157005",
+   "addresses": [
+    "Nassaukade 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 141-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000748288"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158752",
+   "addresses": [
+    "Nassaukade 140",
+    "Nassaukade 140A",
+    "Nassaukade 140B",
+    "Nassaukade 140C",
+    "Nassaukade 140D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 140-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000748285"
+    },
+    {
+     "address": "Nassaukade 140-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001964139"
+    },
+    {
+     "address": "Nassaukade 140A",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012108441"
+    },
+    {
+     "address": "Nassaukade 140B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012108442"
+    },
+    {
+     "address": "Nassaukade 140C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012108443"
+    },
+    {
+     "address": "Nassaukade 140D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012108444"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156901",
+   "addresses": [
+    "Nassaukade 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 139-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000748282"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

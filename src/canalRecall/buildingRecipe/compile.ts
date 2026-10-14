@@ -16,6 +16,7 @@ import {swatch, validateIntent, type BuildingIntent, type CanalHouseIntent, type
 import {compileLargeBuilding, type CompiledLargeBuilding} from './largeCompile.ts';
 import {applyHistoricPasses} from './historicPasses.ts';
 import {applyAmsterdamSchool} from './amsterdamSchool.ts';
+import {applyOudWest} from './oudWest.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
 export function resolveIntent(raw: any, load: (id: string) => any, depth = 0): CanalHouseIntent {
@@ -199,6 +200,8 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   dressShopfronts(built.group, intent, report);
   // Amsterdam School set (opt-in): rigid canopies, erker caps, corner tower bodies. Before the historic passes so a lean shears them too.
   applyAmsterdamSchool(built.group, intent, recipe, report);
+  // 1900 Oud-West set (opt-in): timber balconies on brackets, painted erkers, painted brick as a measured tint.
+  applyOudWest(built.group, intent, recipe, report);
   // Historic fronts (opt-in): cornice/shutter paint, mansards, towers, party-wall clipping, lean.
   applyHistoricPasses(built.group, intent, recipe, report);
   return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles, facts: fitted};
