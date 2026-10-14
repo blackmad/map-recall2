@@ -1,0 +1,397 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-363-371",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-363-371/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 363-371 (odd side, at the Ten Katestraat end), 1914-1916: plain brown brick, flat heads, projecting iron balconies, straight-sided pointed gables and a stepped gable over part of each front with dormers beside them. The library has no 1910s type; kinker-1902-balcony-axis (its 1903 neighbour row) is the nearest body with flat heads as an override, each front split into modules where its gable covers only part of it. Strip 2024-12-11."
+ },
+ "types": [
+  "kinker-1902-balcony-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012089984",
+   "slug": "kinker-089984",
+   "address": "Kinkerstraat 363-365",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "overrides": {
+     "windowHead": {
+      "kind": "flat"
+     },
+     "palette": {
+      "brick": "#2e251a"
+     }
+    },
+    "modules": [
+     {
+      "crown": "neck-gable",
+      "share": 0.45,
+      "overrides": {
+       "bays": 2,
+       "balconies": {
+        "storeys": [],
+        "bays": []
+       }
+      }
+     },
+     {
+      "crown": "dormer",
+      "share": 0.55,
+      "overrides": {
+       "bays": 2,
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         0
+        ],
+        "projecting": true
+       }
+      }
+     }
+    ],
+    "ground": {
+     "groundFront": {
+      "kind": "pui",
+      "bays": [
+       "door",
+       "window",
+       "door",
+       "window",
+       "door"
+      ],
+      "colour": "white",
+      "evidence": "strip.jpg 2024-12-11 pand 1: white-painted ground storey, a green door, a display window, a white door, a window and a black door"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "display window with goods, no sign; BAG 363 winkelfunctie"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1: 10.1 m, a pair of windows under a pointed gable with an attic triple light (left), a projecting-balcony axis and a single window under dormers (right); flat heads",
+    "photoRows": [
+     5,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "straight-sided pointed gable with an attic triple light drawn as the type bell gable (one light)",
+     "white-painted ground storey wall"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012089983",
+   "slug": "kinker-089983",
+   "address": "Kinkerstraat 367",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "overrides": {
+     "windowHead": {
+      "kind": "flat"
+     },
+     "bays": 4,
+     "balconies": {
+      "storeys": [
+       1,
+       2,
+       3
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     },
+     "palette": {
+      "brick": "#372e21"
+     }
+    },
+    "ground": {
+     "groundFront": {
+      "kind": "wall",
+      "bays": [
+       "window",
+       "door",
+       "door",
+       "window"
+      ],
+      "colour": "#2a2a2a",
+      "evidence": "strip.jpg 2024-12-11 pand 2: brick ground storey with two dark doors between windows"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2: 5 m, 4 narrow axes (projecting balconies on axis 2), a pointed gable with an attic triple over the left three axes, a roof terrace right",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "straight-sided pointed gable with an attic triple light drawn as the type bell gable (one light)",
+     "the gable covers only the left three axes"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012237269",
+   "slug": "kinker-237269",
+   "address": "Kinkerstraat 369",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "overrides": {
+     "windowHead": {
+      "kind": "flat"
+     },
+     "palette": {
+      "brick": "#3b3022"
+     }
+    },
+    "modules": [
+     {
+      "crown": "dormer",
+      "share": 0.53,
+      "overrides": {
+       "bays": 2,
+       "balconies": {
+        "storeys": [],
+        "bays": []
+       }
+      }
+     },
+     {
+      "crown": "neck-gable",
+      "share": 0.47,
+      "overrides": {
+       "bays": 2,
+       "balconies": {
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "bays": [
+         0,
+         1
+        ],
+        "projecting": true
+       }
+      }
+     }
+    ],
+    "ground": {
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": true,
+      "name": "Flamingo's",
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#1e1e1e"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 3: black front, script Flamingo's and BISTRO & COCKTAILBAR on the fascia; OSM node 12006434566 amenity=bar"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "photoDate": "2024-12-11",
+    "name": "Flamingo's",
+    "category": "amenity=bar",
+    "osm": {
+     "type": "node",
+     "id": 12006434566,
+     "name": "Flamingo's"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3: 8.3 m, two windows under a dormer (left), a pair with projecting iron balconies on three storeys under a pointed gable (right); flat heads",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "straight-sided pointed gable with an attic triple light drawn as the type bell gable (one light)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012101517",
+   "slug": "kinker-101517",
+   "address": "Kinkerstraat 371",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "overrides": {
+     "windowHead": {
+      "kind": "flat"
+     },
+     "balconies": {
+      "storeys": [],
+      "bays": []
+     },
+     "palette": {
+      "brick": "#483a2b"
+     }
+    },
+    "modules": [
+     {
+      "crown": "dormer",
+      "share": 0.5,
+      "overrides": {
+       "bays": 2
+      }
+     },
+     {
+      "crown": "step-gable",
+      "share": 0.5,
+      "overrides": {
+       "bays": 2
+      }
+     }
+    ],
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2a2a",
+      "fascia": true,
+      "fasciaColour": "#3a3a3a",
+      "name": "Citynet",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "white"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 4: dark board (lettering illegible) over a phone/internet shop window; a white-framed house window and door left; OSM node 4909653622 amenity=internet_cafe"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Citynet",
+    "category": "amenity=internet_cafe",
+    "osm": {
+     "type": "node",
+     "id": 4909653622,
+     "name": "Citynet"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4: 8.4 m, 4 axes, flat heads, a dormer (left) and a stepped gable with a chimney stack (right)",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "chimney stack beside the stepped gable"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012089983",
+    "stripRow": 285,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 2: cornice line at row 285 (13.3 m), continuous with 363-365; 3DBAG eaves 17.1 m read the gable roof"
+   },
+   {
+    "pand": "0363100012237269",
+    "front": "m0",
+    "stripRow": 239,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 3: cornice top at row 239 (14.5 m); 3DBAG eaves 15.9 m read the roof behind the gable"
+   },
+   {
+    "pand": "0363100012237269",
+    "front": "m1",
+    "stripRow": 239,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 3: cornice top at row 239 (14.5 m); 3DBAG eaves 15.9 m read the roof behind the gable"
+   },
+   {
+    "pand": "0363100012101517",
+    "front": "m0",
+    "stripRow": 232,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 4: cornice top at row 232 (14.6 m); 3DBAG eaves 15.1 m"
+   },
+   {
+    "pand": "0363100012101517",
+    "front": "m1",
+    "stripRow": 232,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 4: cornice top at row 232 (14.6 m); 3DBAG eaves 15.1 m"
+   }
+  ]
+ },
+ "limitations": [
+  "No 1910s type in the library: these four fronts place kinker-1902-balcony-axis with flat heads (the body is close; the 1902 band-brick arches are dropped).",
+  "Straight-sided pointed gables with an attic triple light drawn as the type bell gable with one light.",
+  "367: the gable covers only three of four axes (a crown spans its whole module, and the fourth axis is 1 m wide).",
+  "363-365: white-painted ground storey wall (groundFront colours its frame, not the wall)."
+ ]
+}

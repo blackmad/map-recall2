@@ -1386,11 +1386,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   no sightline; the two halls need another capture date); Oud-West type
   library DONE (HISTORY "Kinkerstraat type library": seven types over 207
   pands, measured palettes, two proof faces compiled; the brick-arched
-  type has its white courses since the Nassaukade merge, grey where the
-  photo is white and continuous where it is dotted, see the accents item); face lanes for the remaining 26 faces at ~10 pands
-  each, never `compile.ts --install`; the kinker-109-161 arcade ground
-  and the 2-30 shell dormers / frieze consoles are kit gaps to add in those
-  lanes;
+  type has its white courses and springer rows since the accents pass); the odd side is DONE as eight
+  faces, 76 pands (HISTORY "Kinkerstraat odd side authored"; the even
+  side lane is running); never `compile.ts --install`; next on the street:
+  the rear-facade lane (the GLB z-fight on every face is the inferred
+  rears), `compile-recipes.ts --faces=kinker-` into recipe tiles and the
+  changed-pand page, ride shots at five points, the wall-colour misses (31
+  black paint renders olive, 47 sunlit brick too dark, 63 and 87 too
+  saturated, 21-23's painted first storey), the library candidates
+  `kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable`, and the kit
+  gaps by count (wall anchors 21, arcade piers 13, frieze panels and
+  consoles 13, pointed gables 10, set-back top storey 10, brick-relief
+  tympana 7, shop mezzanine 7, 109-161 arcade ground, 2-30 shell dormers);
   review lane with the camera-matched row, likeness and a verdict per pand,
   ride shots at five points; Amsterdam School components DONE (HISTORY
   "Amsterdam School components"; plus glass-block band, lisenes, window
@@ -1401,7 +1408,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   "3DBAG ground outliers": stale survey paths re-recorded, a VM harness
   fixed); Jan Evertsenstraat survey lane running; then Jan Evertsenstraat
   (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
-  and arcades bespoke, De Hallen as a large recipe; district style packs in
+  and arcades bespoke (lane running), De Hallen DONE as a staged recipe
+  behind its landmark (HISTORY "De Hallen measured and staged"; retire
+  the landmark and install when the kit does glass ridge lights and
+  stepped stone-coped gables), Kinkerstraat 32–54 and 89–105 installed
+  (89–105 needs cantilevered balconies and tiled stair towers); district style packs in
   `look/palette.ts` keyed by CBS buurt with a per-pand district index in
   the facts sidecar and the streamed rigid canopy; a destination on each
   street for the seeded ride.
@@ -1414,11 +1425,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   whose field the fit ignores, fanlights, carved keystones); the Nassaukade
   506 benchmark block is DONE as a compiled face (HISTORY "Nassaukade 506:
   the user's benchmark block in the kit": six components, the face reads
-  as the photo on 149/145, kit gaps listed); next on it: round-arch heads
-  with dark tympana and two springers, bright-white band colour (the
-  strips' white is near #e8e4dc, the kit draws grey stone), the dotted
-  impost-block course, a per-storey head line instead of the common 0.86,
-  bell mansard, medallions, cast-iron grilles, canted erker; then install
+  as the photo on 149/145, kit gaps listed); the accents pass is DONE
+  (HISTORY "White accents read white": painted stone tint, springer rows,
+  round arches with dark tympana, measured head lines); next on it: 147's
+  cream cornice band where the photo has brick, Kinkerstraat `windowShare`
+  0.55 → ~0.65 (0.8 vs 0.95 m), wedge springers, band lines per storey,
+  150's recessed course, two stone colours per house, bell mansard,
+  medallions, cast-iron grilles, canted erker; then install
   the face and the two Kinkerstraat proof faces through the tile compiler; then a pass over the installed
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
@@ -1427,10 +1440,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   of 48 named sheets pass, two bascule styles, decks reach the banks, 190
   more decks measured, 499 still flat). Open: BRU0036 (belt audit sends it
   flat) and BRU0040 (no boat view); the Torensluis arches read taller and
-  narrower than the photo and its e2e hump reading from pixels is a
-  warning, not an assertion, since 2026-10-14 (two false alarms; read the
-  hump from the own-ground store's deck geometry instead; HISTORY "Bridge
-  regressions on main were two readings");
+  narrower than the photo and its e2e hump check reads deck crowns in
+  metres from the store since 2026-10-14 (HISTORY "The bridge e2e reads
+  deck crowns in metres");
   Blauwbrug balusters thin; bascule deck surface
   matched to the approach, portal lamps, railings continuous with the
   approaches; the 15 known floating ends; the 499 flat decks (128 AHN

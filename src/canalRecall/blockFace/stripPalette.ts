@@ -115,3 +115,20 @@ export function measureStripPalette(input: StripPaletteInput): StripPalette {
   return {wall: hex(wallC), accent: hex(accentAll), frame: hex(medRgb(accentOther)), band: hex(medRgb(accentBand)), cornice: hex(cornice), fascia: hex(medRgb(fascia)),
     shares, stucco, bandRunsM, wallHsl: wallC ? rgbToHsl(wallC).map((v, i) => +(i ? v.toFixed(3) : v.toFixed(1))) as Rgb : null, pixels: n};
 }
+
+/** Rec. 601 luma. */
+const luma = ([r, g, b]: Rgb) => 0.299 * r + 0.587 * g + 0.114 * b;
+const hexRgb = (h: string): Rgb => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as Rgb;
+
+/**
+ * The colour to give painted stone dressings (`palette.stone` with `palette.stoneMaterial: painted`) so that they read
+ * against the model's own white frames as the photo's bands read against the photo's frames (Oud-West white courses,
+ * 2026-10-14). An overcast strip measures white paint as a light grey (#b0b0a2 on Kinkerstraat 8-10) with the strip's
+ * colour cast, while the look draws the frames near white (`frameDrawn`: the frame colour after the city frame tint), so
+ * a raw band median renders grey beside them. The band is the frames' paint: its colour is the drawn frame colour scaled
+ * by the photo's band-to-frame luma ratio, capped at white.
+ */
+export function paintFromFrames(band: string, frame: string, frameDrawn: string): {paint: string; ratio: number} {
+  const ratio = luma(hexRgb(band)) / Math.max(1, luma(hexRgb(frame)));
+  return {paint: toHex(hexRgb(frameDrawn).map(v => Math.min(255, v * ratio)) as Rgb), ratio: +ratio.toFixed(3)};
+}
