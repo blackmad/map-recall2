@@ -204,8 +204,9 @@ export interface LargeCompileHooks {
   skipCell?: (p: Panel, floor: number, bay: number, bays: number, group: LargeGroupFit | undefined) => boolean;
 }
 
-export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
-  const {recipe, report} = fitLarge(intent, facts);
+export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
+  // `facts` are the shell-repaired facts when the intent opts in (shellRepair.ts), so the gates see the shell that was built
+  const {recipe, report, facts} = fitLarge(intent, inputFacts);
   const groupOf = (index: number) => recipe.groups[recipe.panelGroup[index]];
   const counts: LargeComponentCounts = {nameBoards: 0, entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
   const res = compose(recipe.set, recipe.spec, {

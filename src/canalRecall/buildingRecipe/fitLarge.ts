@@ -22,6 +22,7 @@ import {DEFAULT_PITCH_M, largeSystem, type LargeGround, type LargeSystemName} fr
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
+import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
@@ -57,7 +58,7 @@ export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
   /** group index per panel (`-1` = otherWalls) */
   panelGroup: number[];
-  /** group index per `set.walls` entry: the compose `mergeKey`, so panels never span two groups */
+  /** group index per `set.walls` entry: the compose `mergeKey`, so panels never span two groups (with `shellRepair`, (group + 1) * 100000 + strict coplanar class) */
   wallGroup: number[];
   groups: LargeGroupFit[]; other: {system: LargeSystemName; specSystem: string};
   roofPlant: PlantBox[]; recessM: number;
@@ -75,6 +76,8 @@ export interface LargeFitReport {
   panels: {index: number; group: number; system: string; widthM: number; heightM: number; bearingDeg: number; surfaces: number[]}[];
   unlistedSurfaces: number[];
   warnings: string[];
+  /** only with `shellRepair` / `footprint: "bag"` (shellRepair.ts) */
+  shellRepair?: ShellRepairReport;
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
@@ -182,7 +185,15 @@ export function placeLantern(facts: BuildingFacts, anchorRD: [number, number], p
   return {centre: [r3(c[0]), r3(c[1])], baseY: r3(Math.min(...hs) - 0.1), topY: r3(Math.max(best.h, ...hs) + LANTERN.riseM), size: LANTERN.sizeM, angleRad: +Math.atan2(p.r[2], p.r[0]).toFixed(6)};
 }
 
-export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport} {
+/** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
+export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport} {
+  if (!intent.shellRepair && intent.footprint !== 'bag') return {facts};
+  const r = prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'});
+  return {facts: r.facts, shell: r.report};
+}
+
+export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport; facts: BuildingFacts} {
+  const {facts, shell} = largeShellFacts(intent, inputFacts);
   const warnings: string[] = [];
   const {set, anchorRD} = largeSurfaceSet(facts);
   const known = new Set(set.walls.map(w => w.surface!));
@@ -192,7 +203,9 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     groupOfSurface.set(s, gi);
   }));
   // Group per surface-set wall; coplanar walls of different groups stay separate panels.
-  const wallGroup = set.walls.map(w => groupOfSurface.get(w.surface!) ?? -1);
+  // shellRepair: panels merge only truly coplanar walls (strictMergeClasses), so a dissolved face cannot stray off a roof edge
+  const strict = intent.shellRepair ? strictMergeClasses(set.walls) : null;
+  const wallGroup = set.walls.map((w, wi) => strict ? ((groupOfSurface.get(w.surface!) ?? -1) + 1) * 100000 + strict[wi] : groupOfSurface.get(w.surface!) ?? -1);
   const {panels} = buildHost(set, new MeshBuilder(), 'roof', 'wall', {deferWalls: true, mergeKey: wi => wallGroup[wi]});
   // Panel -> group: the group holding most of its surfaces (by area), ties to the lower group.
   const panelGroup = panels.map(p => {
@@ -301,7 +314,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),
-    unlistedSurfaces, warnings,
+    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}),
   };
-  return {recipe, report};
+  return {recipe, report, facts};
 }
