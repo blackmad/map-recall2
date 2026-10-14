@@ -24633,8 +24633,8 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012164938",
       "name": "Kattenburg (Marineterrein), Amsterdam: 1782 brick wings on Kattenburgerstraat and the canal",
-      "hash": "0098100d5e0f48d7f0b57489cbcceb9a963b421d34be657d57c8695b9f5ab94a",
-      "sha256": "0098100d5e0f48d7f0b57489cbcceb9a963b421d34be657d57c8695b9f5ab94a",
+      "hash": "ac0dc96489e9b753a9e46a3872c1200e9aa9b15f068f465df06c30029e233e02",
+      "sha256": "ac0dc96489e9b753a9e46a3872c1200e9aa9b15f068f465df06c30029e233e02",
       "bytes": 750512,
       "triangles": 10161,
       "materials": 9,
@@ -24934,7 +24934,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164938",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T14:22:44.798Z",
+      "updatedAt": "2026-10-14T03:08:36.252Z",
       "bagYear": 1782
     },
     {
