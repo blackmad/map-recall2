@@ -10,10 +10,10 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
 import {panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
-import {CROP_MIN_OVERLAP, cropsOfWallsJson, panelCoverage, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
+import {CROP_MIN_OVERLAP, cropsOfWallsJson, panelCoverageStraight, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
 import {insidePanel} from '../../src/canalRecall/blockBuilding/panels.ts';
 import {measureFacade, MASK, type FacadeBox, type FacadeMeasurement} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
-import {compareLikeness, modelElevation, PAD_M, type LikenessResult, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
+import {closeCameraSpan, compareLikeness, LIKENESS, modelElevation, PAD_M, type LikenessResult, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {pandWallsDir, sha256Of, sourceDataRoot, sourceRef} from './sourceData.ts';
 
@@ -55,7 +55,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
   for (const g of built.recipe.groups) {
     if (g.mainPanel === null || g.system === 'blank') continue;
     const p = built.panels[g.mainPanel];
-    const {pieces, coverage} = panelCoverage(crops, p, built.anchorRD);
+    const {pieces, coverage} = panelCoverageStraight(crops, p, built.anchorRD, LIKENESS.maxObliquityDeg);
     if (coverage < CROP_MIN_OVERLAP || !pieces.length) { out.push({group: g.index, panel: p.index, status: 'no-photo', coverage}); continue; }
     // Mosaic in panel metres (u from uMin - pad, v from the ground), each column from its piece's crop.
     const box: FacadeBox = {u0: p.uMin, u1: p.uMax, v0: Math.max(0, p.vMin), v1: panelEaves(p)};
@@ -82,7 +82,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const photo = measureFacade({image, box: photoBox, lines: g.lines, inside});
     const model = modelElevation(soup, p, box, g.lines, 0.1, measuredTints);
     const main = [...pieces].sort((a, b) => (b.u1 - b.u0) - (a.u1 - a.u0))[0];
-    const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: g.lines, obliquityDeg: Math.max(...pieces.map(q => q.crop.obliquityDeg ?? 0)), cameraDistM: Math.min(...pieces.map(q => q.crop.cameraDistM ?? 99))});
+    const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: g.lines, obliquityDeg: Math.max(...pieces.map(q => q.crop.obliquityDeg ?? 0)), cameraDistM: Math.min(...pieces.map(q => q.crop.cameraDistM ?? 99)),
+      ...(pieces.length > 1 ? {cameraSpanM: closeCameraSpan(pieces)} : {})});
     // the mosaic on the model box after the shift, for the sheet
     const x0 = Math.max(0, Math.round((PAD_M + likeness.shift.uM) * PPM)), wpx = Math.min(width - x0, Math.round((box.u1 - box.u0) * PPM));
     const y0 = Math.max(0, Math.round((PAD_M - likeness.shift.vM) * PPM)), hpx = Math.min(height - y0, Math.round((box.v1 - box.v0) * PPM));

@@ -88,11 +88,12 @@ export async function listPanos(c: Rd, radius = 35): Promise<any[]> {
   return all;
 }
 
-export function rankPanos(wall: Wall, panos: any[]): PanoPick[] {
+/** `minDistM` (default 5): the nearest a camera may stand; a narrow street's panoramas stand 3.5-5 m off the wall. */
+export function rankPanos(wall: Wall, panos: any[], minDistM = 5): PanoPick[] {
   return panos.flatMap(p => {
     const rd = lngLatToRd([p.geometry.coordinates[0], p.geometry.coordinates[1]]);
     const vx = rd.x - wall.mid.x, vy = rd.y - wall.mid.y, d = Math.hypot(vx, vy), standoff = vx * wall.nx + vy * wall.ny;
-    if (standoff <= 2 || d > 35 || d < 5) return [];
+    if (standoff <= 2 || d > 35 || d < minDistM) return [];
     const obl = Math.acos(Math.min(1, standoff / d)) * 180 / Math.PI;
     const year = Number(p.mission_year ?? String(p.timestamp).slice(0, 4));
     return [{ panoId: p.pano_id, timestamp: p.timestamp, missionYear: year, missionType: p.mission_type, surface: p.surface_type, distM: d, obliquityDeg: obl, relaxed: d < 8 || d > 25, record: p } as PanoPick];
