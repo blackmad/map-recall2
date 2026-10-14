@@ -17,7 +17,7 @@
 import earcut from 'earcut';
 import { drapeTriangles, emptyMesh, vertex, type MeshArrays } from './drape.js';
 import {
-  basculeColour, basculeLeaves, basculeUnit, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
+  basculeColour, basculeLeaves, basculeStyle, basculeUnit, basementEnd, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
   type BridgeKind, type KitRow, type RGB,
 } from './bridgeKit.js';
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
@@ -231,22 +231,31 @@ export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: read
   const half = Math.max(1.5, (ax.across[1] - ax.across[0]) / 2), vc = (ax.across[0] + ax.across[1]) / 2;
   const P = (a: number, b: number): Vec2 => [ax.centre[0] + u[0] * a + v[0] * b, ax.centre[1] + u[1] * a + v[1] * b];
   const { double, leaf, mid } = basculeLeaves(ax.along);
-  const colour = basculeColour(flatHintAt(ax.centre[0], ax.centre[1])?.hint ?? null);
+  const found = flatHintAt(ax.centre[0], ax.centre[1]), colour = basculeColour(found?.hint ?? null, found?.id);
+  const deckZ = (q: Vec2) => height(q[0], q[1]) + topLift;
+  const side = [vc + half + 0.45, vc - half - 0.45] as const;
+  if (basculeStyle(found?.id, found?.hint ?? null) === 'basement') {
+    // No portal: signal masts and barrier boxes just off each end of the footprint, on the approach.
+    const masts = [ax.along[0] - 1.2, ax.along[1] + 1.2], mastSide = [vc + half - 0.3, vc - half + 0.3] as const;
+    for (const at of masts) basementEnd(m, P, u, at, mastSide, deckZ, !detail);
+    return { mesh: m, units: 0 };
+  }
   const units: { at: number; dir: 1 | -1; reach: number }[] = double
     ? [{ at: mid - leaf, dir: 1, reach: Math.max(1.5, leaf - FRAME.tipGap / 2) }, { at: mid + leaf, dir: -1, reach: Math.max(1.5, leaf - FRAME.tipGap / 2) }]
     : [{ at: mid - leaf / 2, dir: 1, reach: leaf * 0.85 }];
-  const side = [vc + half + 0.45, vc - half - 0.45] as const;
-  const deckZ = (q: Vec2) => height(q[0], q[1]) + topLift;
   for (const { at, dir, reach } of units) {
-    const base = Math.min(...side.map(b => deckZ(P(at, b))));
+    // The posts stand on the deck: its level at the heel (beside the footprint the surface is the canal's relief, and a
+    // base taken there left the portal floating or sunk: the Haarlemmerpoort report, 2026-10-14).
+    const base = deckZ(P(at, vc));
     basculeUnit(m, P, u, at, dir, reach, side, base, deckZ, colour, !detail);
   }
   return { mesh: m, units: units.length };
 }
 
 /** Triangles of movableFrame's portals for a footprint this long along its axis. */
-function frameTriangles(along: readonly [number, number], detail: boolean): number {
+function frameTriangles(along: readonly [number, number], detail: boolean, style: 'portal' | 'basement' = 'portal'): number {
   const L = along[1] - along[0];
+  if (style === 'basement') { const m = emptyMesh(true); for (const at of [0, L]) basementEnd(m, (a, b) => [a, b], [1, 0], at, [3, -3], () => 0, !detail); return m.indices.length / 3; }
   return movableFrame([[0, -3], [L, -3], [L, 3], [0, 3]], () => 0, [], 0.02, detail).mesh.indices.length / 3;
 }
 
@@ -331,12 +340,12 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
   const { mesh, info } = buildKit({
     id: found?.id ?? '', kind, material: kind === 'arch' ? 'masonry' : hint?.material ?? 'concrete', rows,
     parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness,
-    leaves, colour: kind === 'bascule' ? basculeColour(hint) : undefined, lateralTol: 0.5, facts,
+    leaves, colour: kind === 'bascule' ? basculeColour(hint, found?.id) : undefined, lateralTol: 0.5, facts,
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
-    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0) : undefined,
+    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint)) : undefined,
   });
   // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
-  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
+  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint))) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
   return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level, floating };
 }
 
