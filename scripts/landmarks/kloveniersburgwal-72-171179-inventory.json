@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "id": "kloveniersburgwal-72-171179",
+ "pand": "0363100012171179",
+ "signature": [
+  "gasthuis-portal",
+  "curved-brick-wing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-16",
+   "bearing": 16,
+   "lengthM": 89.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002862_pano_0004_000074",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "rowhouse-shopfronts",
+     "kind": "window-shape",
+     "where": "white-framed row-house fronts over timber shopfronts and a COFFEESHOP fascia",
+     "approxSizeM": [
+      90,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[0] three storeys x 6 bays on a plinth-shopfront ground; tenant signage skipped",
+     "seenIn": "TMX7316010203-002862_pano_0004_000074"
+    }
+   ]
+  },
+  {
+   "tag": "w02-122",
+   "bearing": 122,
+   "lengthM": 21.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001194",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "cited by the recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w03-300",
+   "bearing": 300,
+   "lengthM": 20.4,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01393",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "grey-curved-front",
+     "kind": "window-shape",
+     "where": "curved grey-blue brick front with large four-pane windows and a green copper roof edge",
+     "approxSizeM": [
+      20,
+      15
+     ],
+     "plan": "simplified",
+     "how": "walls[5] 4 storeys x 5 bays cross windows; straight, not curved",
+     "seenIn": "recording_2025-06-30_05-16-46_01393"
+    }
+   ]
+  },
+  {
+   "tag": "w04-121",
+   "bearing": 121,
+   "lengthM": 18.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001192",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-brick-wing",
+     "kind": "window-shape",
+     "where": "1930s brick wing with a wrap-round white window band and curved corner",
+     "approxSizeM": [
+      18,
+      12
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 4 storeys of wide windows with white string courses; the curve is straight",
+     "seenIn": "TMX7316010203-001975_pano_0000_001192"
+    }
+   ]
+  },
+  {
+   "tag": "w05-121",
+   "bearing": 121,
+   "lengthM": 16.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001483",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "note": "cited by the recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w06-192",
+   "bearing": 192,
+   "lengthM": 16.2,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_03-29-47_03261",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "gasthuis-portal",
+     "kind": "lettering",
+     "where": "arched stone portal with GASTHUIS APOTHEEK on the entablature, carved scrolls and cartouche above",
+     "approxSizeM": [
+      4,
+      6
+     ],
+     "plan": "simplified",
+     "how": "walls[1] portal entrance bay 2 plus GASTHUIS APOTHEEK fascia letters; scrolls and cartouche are not drawn",
+     "seenIn": "recording_2025-07-03_03-29-47_03261"
+    },
+    {
+     "id": "pier-sculpture",
+     "kind": "sculpture",
+     "where": "seated stone figure on the right pier of the neighbouring gate",
+     "approxSizeM": [
+      1,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a single figure under 1.5 m at 12 m height, on a gate outside the main wall run"
+     },
+     "seenIn": "recording_2025-07-03_03-29-47_03261"
+    },
+    {
+     "id": "window-grilles",
+     "kind": "balcony-ironwork",
+     "where": "iron grilles in front of the tall first-floor windows and barred basement windows",
+     "approxSizeM": [
+      15,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "bars under 3 cm, below the component grain"
+     },
+     "seenIn": "recording_2025-07-03_03-29-47_03261"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
