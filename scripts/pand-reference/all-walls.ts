@@ -40,26 +40,35 @@ for (const w of walls) {
   const bearing = Math.round((Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360);
   const tag = `w${String(++i).padStart(2, '0')}-${bearing}`;
   const ranked = rankPanos(w, await listPanos(w.mid));
-  const pick = ranked[0];
   const [lng, lat] = rdToLngLat(w.mid);
-  const row: any = { tag, bearing, lengthM: Math.round(w.len * 10) / 10, centre: [lng, lat], height: fp.height, candidates: ranked.length,
+  const base: any = { bearing, lengthM: Math.round(w.len * 10) / 10, centre: [lng, lat], height: fp.height, candidates: ranked.length,
     wallRD: { a: [r2(w.a.x), r2(w.a.y)], b: [r2(w.b.x), r2(w.b.y)], normal: [r4(w.nx), r4(w.ny)] } };
-  if (pick) {
+  // --archive also keeps the best leaf-off panorama (November-March) when the best one is from the leaf season and
+  // a leaf-off view is at most 15 degrees more oblique (tag suffix L): summer trees hide the lower storeys.
+  const leafOff = (pk: any) => { const m = Number(pk.timestamp.slice(5, 7)); return m <= 3 || m >= 11; };
+  const picks: [string, any][] = ranked[0] ? [[tag, ranked[0]]] : [];
+  if (archive && ranked[0] && !leafOff(ranked[0])) {
+    const alt = ranked.find(c => leafOff(c) && c.obliquityDeg <= ranked[0].obliquityDeg + 15 && !c.relaxed) ?? ranked.find(c => leafOff(c) && c.obliquityDeg <= ranked[0].obliquityDeg + 15);
+    if (alt) picks.push([`${tag}L`, alt]);
+  }
+  if (!picks.length) rows.push({ tag, ...base });
+  for (const [t, pick] of picks) {
+    const row: any = { tag: t, ...base };
     const pano = await loadPano(pick);
     const crop = pano ? rectifyWall(pano.img, pick, w, fp.height, 50) : null;
     if (crop) {
-      await fs.writeFile(path.join(out, `${tag}.jpg`), crop.jpeg);
-      if (archive) await fs.writeFile(path.join(out, `${tag}.mask.png`), await sharp(Buffer.from(crop.alpha), { raw: { width: crop.width, height: crop.height, channels: 1 } }).png({ compressionLevel: 9 }).toBuffer());
+      await fs.writeFile(path.join(out, `${t}.jpg`), crop.jpeg);
+      if (archive) await fs.writeFile(path.join(out, `${t}.mask.png`), await sharp(Buffer.from(crop.alpha), { raw: { width: crop.width, height: crop.height, channels: 1 } }).png({ compressionLevel: 9 }).toBuffer());
     }
     const thumb = await aimedThumbnail(pick, w, fp.height);
-    if (thumb) await fs.writeFile(path.join(out, `${tag}.thumb.jpg`), thumb.jpeg);
+    if (thumb) await fs.writeFile(path.join(out, `${t}.thumb.jpg`), thumb.jpeg);
     Object.assign(row, { panoId: pick.panoId, capturedAt: pick.timestamp.slice(0, 10), cameraDistM: Math.round(pick.distM * 10) / 10, obliquityDeg: Math.round(pick.obliquityDeg * 10) / 10, crop: !!crop, thumb: thumb?.url, washedOut: crop?.washedOut });
     if (crop) Object.assign(row, { ppm: crop.ppm, widthPx: crop.width, heightPx: crop.height, wallWidthM: r2(crop.wallWidthM), wallHeightM: r2(crop.wallHeightM), baseZ: r2(crop.baseZ), groundSource: crop.groundSource,
       foliage: r4(crop.foliage), missingFraction: r4(crop.missingFraction), washedOut: r4(crop.washedOut),
       cameraRD: [r2(crop.camera.x), r2(crop.camera.y), r2(crop.camera.z)], headingDeg: r2(crop.camera.headingDeg),
       sha256: crypto.createHash('sha256').update(crop.jpeg).digest('hex') });
+    rows.push(row);
+    console.log(JSON.stringify(row));
   }
-  rows.push(row);
-  console.log(JSON.stringify(row));
 }
 await fs.writeFile(path.join(out, 'walls.json'), JSON.stringify({ pand, licence: 'Gemeente Amsterdam panorama, CC BY 4.0', ...(archive ? { schema: 'pand-reference-walls/v2', minLenM: minLen, max } : {}), walls: rows }, null, 1));
