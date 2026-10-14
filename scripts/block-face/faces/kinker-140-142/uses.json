@@ -1,0 +1,144 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:40:03.662Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237340",
+   "addresses": [
+    "Kinkerstraat 140",
+    "Kinkerstraat 140A",
+    "Kinkerstraat 140B",
+    "Kinkerstraat 140C",
+    "Kinkerstraat 140D",
+    "Kinkerstraat 140E",
+    "Kinkerstraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 140-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705701"
+    },
+    {
+     "address": "Kinkerstraat 142-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012085264"
+    },
+    {
+     "address": "Kinkerstraat 140A",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012110679"
+    },
+    {
+     "address": "Kinkerstraat 140B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012110680"
+    },
+    {
+     "address": "Kinkerstraat 140C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012110681"
+    },
+    {
+     "address": "Kinkerstraat 140D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012110682"
+    },
+    {
+     "address": "Kinkerstraat 140E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012110683"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1815032695,
+     "lngLat": [
+      4.8692063,
+      52.3665692
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "140",
+      "addr:postcode": "1053EG",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "branch": "De Hallen",
+      "check_date": "2026-09-07",
+      "contact:facebook": "takumiamsterdam",
+      "contact:instagram": "takumiramenamsterdam",
+      "cuisine": "asian;japanese;ramen",
+      "diet:vegetarian": "yes",
+      "email": "kinkerstraat@takumiramen.nl",
+      "indoor_seating": "yes",
+      "name": "Takumi Ramen",
+      "name:en": "Takumi Ramen",
+      "opening_hours": "Mo-Sa 12:00-21:30; Su 12:00-21:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 3032868",
+      "website": "https://takumiramennoodles.com/nl/amsterdam-dehallen/"
+     },
+     "fetchedAt": "2026-10-14T09:40:03.662Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1815032698,
+     "lngLat": [
+      4.8690775,
+      52.3664958
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "142",
+      "addr:postcode": "1053EG",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2024-01-15",
+      "name": "de Volkskruidentuin",
+      "note": "Dit is een winkel met allerhande kruiden, thee, noten, etc. Niet echt een \"greengrocer\" maar ik weet er geen betere tag voor. - Ik denk denk deli is meer gepast.",
+      "shop": "spices",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T09:40:03.662Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    },
+    {
+     "type": "node",
+     "id": 12006329289,
+     "lngLat": [
+      4.8691343,
+      52.3665182
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "indoor_seating": "yes",
+      "name": "Meat the Balls",
+      "outdoor_seating": "no"
+     },
+     "fetchedAt": "2026-10-14T09:40:03.662Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    }
+   ]
+  }
+ ]
+}

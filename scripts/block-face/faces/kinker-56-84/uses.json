@@ -1,0 +1,663 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:02:41.784Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152566",
+   "addresses": [
+    "Kinkerstraat 76A",
+    "Kinkerstraat 76B",
+    "Kinkerstraat 76C",
+    "Kinkerstraat 76D",
+    "Kinkerstraat 76E",
+    "Kinkerstraat 76F",
+    "Kinkerstraat 76G",
+    "Kinkerstraat 76H",
+    "Kinkerstraat 78A",
+    "Kinkerstraat 78B",
+    "Kinkerstraat 78C",
+    "Kinkerstraat 78D",
+    "Kinkerstraat 78E",
+    "Kinkerstraat 78F",
+    "Kinkerstraat 78G",
+    "Kinkerstraat 78H",
+    "Kinkerstraat 80A",
+    "Kinkerstraat 80B",
+    "Kinkerstraat 80C",
+    "Kinkerstraat 80D",
+    "Kinkerstraat 80E",
+    "Kinkerstraat 80F",
+    "Kinkerstraat 80G",
+    "Kinkerstraat 80H",
+    "Kinkerstraat 82A",
+    "Kinkerstraat 82B",
+    "Kinkerstraat 82C",
+    "Kinkerstraat 82D",
+    "Kinkerstraat 82E",
+    "Kinkerstraat 82F",
+    "Kinkerstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 169",
+     "use": "winkelfunctie",
+     "areaM2": 541,
+     "bagId": "0363010000586272"
+    },
+    {
+     "address": "Kinkerstraat 76A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705505"
+    },
+    {
+     "address": "Kinkerstraat 76B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705506"
+    },
+    {
+     "address": "Kinkerstraat 76C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705507"
+    },
+    {
+     "address": "Kinkerstraat 76D",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705508"
+    },
+    {
+     "address": "Kinkerstraat 76E",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705509"
+    },
+    {
+     "address": "Kinkerstraat 76F",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705510"
+    },
+    {
+     "address": "Kinkerstraat 76G",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705511"
+    },
+    {
+     "address": "Kinkerstraat 76H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705512"
+    },
+    {
+     "address": "Kinkerstraat 78A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705517"
+    },
+    {
+     "address": "Kinkerstraat 78B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705518"
+    },
+    {
+     "address": "Kinkerstraat 78C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705519"
+    },
+    {
+     "address": "Kinkerstraat 78D",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705520"
+    },
+    {
+     "address": "Kinkerstraat 78E",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705521"
+    },
+    {
+     "address": "Kinkerstraat 78F",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705522"
+    },
+    {
+     "address": "Kinkerstraat 78G",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705523"
+    },
+    {
+     "address": "Kinkerstraat 78H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705524"
+    },
+    {
+     "address": "Kinkerstraat 80A",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705530"
+    },
+    {
+     "address": "Kinkerstraat 80B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705531"
+    },
+    {
+     "address": "Kinkerstraat 80C",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705532"
+    },
+    {
+     "address": "Kinkerstraat 80D",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705533"
+    },
+    {
+     "address": "Kinkerstraat 80E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705534"
+    },
+    {
+     "address": "Kinkerstraat 80F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705535"
+    },
+    {
+     "address": "Kinkerstraat 80G",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705536"
+    },
+    {
+     "address": "Kinkerstraat 80H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000705537"
+    },
+    {
+     "address": "Kinkerstraat 82A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000705543"
+    },
+    {
+     "address": "Kinkerstraat 82B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000705544"
+    },
+    {
+     "address": "Kinkerstraat 82C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000705545"
+    },
+    {
+     "address": "Kinkerstraat 82D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000705546"
+    },
+    {
+     "address": "Kinkerstraat 82E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000705547"
+    },
+    {
+     "address": "Kinkerstraat 82F",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000705548"
+    },
+    {
+     "address": "Kinkerstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000705553"
+    }
+   ],
+   "units": 32,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381128459,
+     "lngLat": [
+      4.8722954,
+      52.3674743
+     ],
+     "tags": {
+      "brand": "Xenos",
+      "brand:wikidata": "Q16547960",
+      "name": "Xenos",
+      "shop": "houseware",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:02:41.784Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158903",
+   "addresses": [
+    "Kinkerstraat 72A",
+    "Kinkerstraat 72B",
+    "Kinkerstraat 72C",
+    "Kinkerstraat 74A",
+    "Kinkerstraat 74B",
+    "Kinkerstraat 74C",
+    "Kinkerstraat 74D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 74A",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000705487"
+    },
+    {
+     "address": "Kinkerstraat 72A",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705488"
+    },
+    {
+     "address": "Kinkerstraat 72B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705489"
+    },
+    {
+     "address": "Kinkerstraat 72C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705490"
+    },
+    {
+     "address": "Kinkerstraat 74B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705491"
+    },
+    {
+     "address": "Kinkerstraat 74C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705492"
+    },
+    {
+     "address": "Kinkerstraat 74D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705493"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161359",
+   "addresses": [
+    "Kinkerstraat 68A",
+    "Kinkerstraat 68B",
+    "Kinkerstraat 68C",
+    "Kinkerstraat 70A",
+    "Kinkerstraat 70B",
+    "Kinkerstraat 70C",
+    "Kinkerstraat 70D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 70A",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000705464"
+    },
+    {
+     "address": "Kinkerstraat 68A",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705465"
+    },
+    {
+     "address": "Kinkerstraat 68B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705466"
+    },
+    {
+     "address": "Kinkerstraat 68C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705467"
+    },
+    {
+     "address": "Kinkerstraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705477"
+    },
+    {
+     "address": "Kinkerstraat 70C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705478"
+    },
+    {
+     "address": "Kinkerstraat 70D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705479"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236325",
+   "addresses": [
+    "Kinkerstraat 64",
+    "Kinkerstraat 64B",
+    "Kinkerstraat 64C",
+    "Kinkerstraat 64D",
+    "Kinkerstraat 64A",
+    "Kinkerstraat 66B",
+    "Kinkerstraat 66C",
+    "Kinkerstraat 66D",
+    "Kinkerstraat 66A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 64-H",
+     "use": "industriefunctie",
+     "areaM2": 29,
+     "bagId": "0363010000705446"
+    },
+    {
+     "address": "Kinkerstraat 64B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705447"
+    },
+    {
+     "address": "Kinkerstraat 64C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705448"
+    },
+    {
+     "address": "Kinkerstraat 64D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705449"
+    },
+    {
+     "address": "Kinkerstraat 66B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705453"
+    },
+    {
+     "address": "Kinkerstraat 66C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705454"
+    },
+    {
+     "address": "Kinkerstraat 66D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000705455"
+    },
+    {
+     "address": "Kinkerstraat 66A",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012064598"
+    },
+    {
+     "address": "Kinkerstraat 64A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012064599"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236441",
+   "addresses": [
+    "Kinkerstraat 56B",
+    "Kinkerstraat 56C",
+    "Kinkerstraat 56D",
+    "Kinkerstraat 56A",
+    "Kinkerstraat 58B",
+    "Kinkerstraat 58C",
+    "Kinkerstraat 58D",
+    "Kinkerstraat 58A",
+    "Kinkerstraat 60A",
+    "Kinkerstraat 60B",
+    "Kinkerstraat 60C",
+    "Kinkerstraat 62B",
+    "Kinkerstraat 62C",
+    "Kinkerstraat 62D",
+    "Kinkerstraat 62A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Da Costakade 170-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000613597"
+    },
+    {
+     "address": "Da Costakade 170A",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000613598"
+    },
+    {
+     "address": "Da Costakade 170B",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000613599"
+    },
+    {
+     "address": "Da Costakade 170C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000613600"
+    },
+    {
+     "address": "Kinkerstraat 56B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000705413"
+    },
+    {
+     "address": "Kinkerstraat 56C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000705414"
+    },
+    {
+     "address": "Kinkerstraat 56D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000705415"
+    },
+    {
+     "address": "Kinkerstraat 58B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000705423"
+    },
+    {
+     "address": "Kinkerstraat 58C",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000705424"
+    },
+    {
+     "address": "Kinkerstraat 58D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000705425"
+    },
+    {
+     "address": "Kinkerstraat 60A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705433"
+    },
+    {
+     "address": "Kinkerstraat 60B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000705434"
+    },
+    {
+     "address": "Kinkerstraat 60C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000705435"
+    },
+    {
+     "address": "Kinkerstraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705440"
+    },
+    {
+     "address": "Kinkerstraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000705441"
+    },
+    {
+     "address": "Kinkerstraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000705442"
+    },
+    {
+     "address": "Kinkerstraat 56A",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012064591"
+    },
+    {
+     "address": "Kinkerstraat 58A",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012064596"
+    },
+    {
+     "address": "Kinkerstraat 62A",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012064597"
+    }
+   ],
+   "units": 19,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4149464500,
+     "lngLat": [
+      4.8730433,
+      52.3676046
+     ],
+     "tags": {
+      "addr:housenumber": "56A",
+      "addr:postcode": "1053DZ",
+      "addr:street": "Kinkerstraat",
+      "amenity": "restaurant",
+      "check_date": "2023-12-03",
+      "cuisine": "ramen",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "OTEMBA - ramen",
+      "opening_hours": "Mo-Fr 17:30-23:00; Sa-Su 12:00-23:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "no",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 233 9386",
+      "reservation": "no",
+      "toilets": "yes",
+      "website": "https://www.otemba-ramen.com/"
+     },
+     "fetchedAt": "2026-10-14T09:02:41.784Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11030461568,
+     "lngLat": [
+      4.8729715,
+      52.3676051
+     ],
+     "tags": {
+      "addr:housenumber": "58A",
+      "addr:street": "Kinkerstraat",
+      "name": "Teahouse",
+      "opening_hours": "We-Sa 10:30-17:30",
+      "shop": "tea"
+     },
+     "fetchedAt": "2026-10-14T09:02:41.784Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13200728924,
+     "lngLat": [
+      4.8728904,
+      52.3675579
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62A",
+      "addr:postcode": "1053DZ",
+      "addr:street": "Kinkerstraat",
+      "email": "booking@gonkd.nl",
+      "image": "https://gonkd.nl/wp-content/uploads/2024/11/Voorkant.jpg",
+      "name": "GO NKD",
+      "opening_hours": "Mo,Tu,Fr 10:00 - 18:00; We 10:00 - 20:00; Th 11:00 - 20:00; Sa,Su 10:00 - 17:00",
+      "shop": "beauty",
+      "website": "https://gonkd.nl/"
+     },
+     "fetchedAt": "2026-10-14T09:02:41.784Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1008 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:31:25.083Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149986",
+   "addresses": [
+    "Kinkerstraat 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 109",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000705614"
+    },
+    {
+     "address": "Tollensstraat 84A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000828779"
+    },
+    {
+     "address": "Tollensstraat 84B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000828780"
+    },
+    {
+     "address": "Tollensstraat 86A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000828783"
+    },
+    {
+     "address": "Tollensstraat 86B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000828784"
+    },
+    {
+     "address": "Tollensstraat 86E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000828787"
+    },
+    {
+     "address": "Tollensstraat 86F",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000983063"
+    },
+    {
+     "address": "Tollensstraat 86D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000828786"
+    },
+    {
+     "address": "Tollensstraat 84C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000828781"
+    },
+    {
+     "address": "Tollensstraat 86C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000828785"
+    },
+    {
+     "address": "Tollensstraat 84D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000828782"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452238291,
+     "lngLat": [
+      4.8693359,
+      52.3663193
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109",
+      "addr:street": "Kinkerstraat",
+      "brand": "Simon Lévelt",
+      "brand:website": "https://www.simonlevelt.nl/",
+      "brand:wikidata": "Q2220070",
+      "brand:wikipedia": "nl:Simon Lévelt",
+      "check_date": "2025-10-02",
+      "name": "Simon Lévelt",
+      "note": "delicatessen, tea, coffee",
+      "shop": "coffee",
+      "website": "https://www.simonlevelt.nl/winkels/amsterdam-kinkerstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012119702",
+   "addresses": [
+    "Kinkerstraat 113",
+    "Kinkerstraat 137F",
+    "Kinkerstraat 137E",
+    "Kinkerstraat 139A",
+    "Kinkerstraat 139C",
+    "Kinkerstraat 139E",
+    "Kinkerstraat 139B",
+    "Kinkerstraat 139D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 113",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000705625"
+    },
+    {
+     "address": "Kinkerstraat 139A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705693"
+    },
+    {
+     "address": "Kinkerstraat 139C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000705695"
+    },
+    {
+     "address": "Kinkerstraat 139E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000705697"
+    },
+    {
+     "address": "Kinkerstraat 137F",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000705689"
+    },
+    {
+     "address": "Kinkerstraat 139B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705694"
+    },
+    {
+     "address": "Kinkerstraat 139D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705696"
+    },
+    {
+     "address": "Kinkerstraat 137E",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000705688"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4943034923,
+     "lngLat": [
+      4.8692025,
+      52.3662623
+     ],
+     "tags": {
+      "check_date": "2025-10-02",
+      "name": "S.S.E. telecom",
+      "opening_hours": "Tu,We,Fr,Sa 10:00-19:00; Mo 13:00-19:00; Th 10:00-21:00",
+      "shop": "mobile_phone",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144295",
+   "addresses": [
+    "Kinkerstraat 115",
+    "Kinkerstraat 135F",
+    "Kinkerstraat 137A",
+    "Kinkerstraat 137B",
+    "Kinkerstraat 137C",
+    "Kinkerstraat 137D",
+    "Kinkerstraat 139F",
+    "Kinkerstraat 139G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 115",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000705629"
+    },
+    {
+     "address": "Kinkerstraat 135F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705680"
+    },
+    {
+     "address": "Kinkerstraat 137A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000705684"
+    },
+    {
+     "address": "Kinkerstraat 137B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000705685"
+    },
+    {
+     "address": "Kinkerstraat 137C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000705686"
+    },
+    {
+     "address": "Kinkerstraat 137D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000705687"
+    },
+    {
+     "address": "Kinkerstraat 139F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705698"
+    },
+    {
+     "address": "Kinkerstraat 139G",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705699"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141903",
+   "addresses": [
+    "Kinkerstraat 117",
+    "Kinkerstraat 131F",
+    "Kinkerstraat 131C",
+    "Kinkerstraat 135C",
+    "Kinkerstraat 135E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 117",
+     "use": "winkelfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000705633"
+    },
+    {
+     "address": "Kinkerstraat 135C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705677"
+    },
+    {
+     "address": "Kinkerstraat 135E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705679"
+    },
+    {
+     "address": "Kinkerstraat 131F",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000705660"
+    },
+    {
+     "address": "Kinkerstraat 131C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000705657"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2452238270,
+     "lngLat": [
+      4.8689855,
+      52.3662122
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "115-117",
+      "addr:street": "Kinkerstraat",
+      "alt_name": "Boekhandel Hoogstins",
+      "brand:website": "https://libris.nl",
+      "check_date": "2025-01-17",
+      "name": "Hoogstins",
+      "network": "Libris",
+      "shop": "books",
+      "website": "https://www.hoogstins.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012095974",
+   "addresses": [
+    "Kinkerstraat 121",
+    "Kinkerstraat 131E",
+    "Kinkerstraat 131D",
+    "Kinkerstraat 133E",
+    "Kinkerstraat 135D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 121",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000705641"
+    },
+    {
+     "address": "Kinkerstraat 131E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000705659"
+    },
+    {
+     "address": "Kinkerstraat 133E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705670"
+    },
+    {
+     "address": "Kinkerstraat 131D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705658"
+    },
+    {
+     "address": "Kinkerstraat 135D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705678"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141675",
+   "addresses": [
+    "Kinkerstraat 123",
+    "Kinkerstraat 131H",
+    "Kinkerstraat 131G",
+    "Kinkerstraat 131K",
+    "Kinkerstraat 131B",
+    "Kinkerstraat 133F",
+    "Kinkerstraat 133B",
+    "Kinkerstraat 133A",
+    "Kinkerstraat 135A",
+    "Kinkerstraat 135B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 123",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000705646"
+    },
+    {
+     "address": "Kinkerstraat 131H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000705662"
+    },
+    {
+     "address": "Kinkerstraat 133F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705671"
+    },
+    {
+     "address": "Kinkerstraat 135A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705675"
+    },
+    {
+     "address": "Kinkerstraat 135B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000705676"
+    },
+    {
+     "address": "Kinkerstraat 133B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000705667"
+    },
+    {
+     "address": "Kinkerstraat 131G",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705661"
+    },
+    {
+     "address": "Kinkerstraat 131K",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000705663"
+    },
+    {
+     "address": "Kinkerstraat 133A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000705666"
+    },
+    {
+     "address": "Kinkerstraat 131B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000705656"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072076",
+   "addresses": [
+    "Kinkerstraat 125",
+    "Kinkerstraat 131A",
+    "Kinkerstraat 133C",
+    "Kinkerstraat 133D",
+    "Kinkerstraat 139H",
+    "Kinkerstraat 141A",
+    "Kinkerstraat 141F",
+    "Kinkerstraat 141D",
+    "Kinkerstraat 141E",
+    "Kinkerstraat 141B",
+    "Kinkerstraat 141C",
+    "Kinkerstraat 143D",
+    "Kinkerstraat 143F",
+    "Kinkerstraat 143E",
+    "Kinkerstraat 145A",
+    "Kinkerstraat 145D",
+    "Kinkerstraat 145F",
+    "Kinkerstraat 145E",
+    "Kinkerstraat 145C",
+    "Kinkerstraat 145B",
+    "Kinkerstraat 147A",
+    "Kinkerstraat 147G",
+    "Kinkerstraat 147F",
+    "Kinkerstraat 147C",
+    "Kinkerstraat 147E",
+    "Kinkerstraat 147B",
+    "Kinkerstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 147A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000705746"
+    },
+    {
+     "address": "Kinkerstraat 149",
+     "use": "winkelfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000705758"
+    },
+    {
+     "address": "Kinkerstraat 125",
+     "use": "winkelfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000705647"
+    },
+    {
+     "address": "Kinkerstraat 133C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705668"
+    },
+    {
+     "address": "Kinkerstraat 139H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000705700"
+    },
+    {
+     "address": "Kinkerstraat 141A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000705705"
+    },
+    {
+     "address": "Kinkerstraat 141F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000705710"
+    },
+    {
+     "address": "Kinkerstraat 143D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705730"
+    },
+    {
+     "address": "Kinkerstraat 143F",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705732"
+    },
+    {
+     "address": "Kinkerstraat 145A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705737"
+    },
+    {
+     "address": "Kinkerstraat 145D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705740"
+    },
+    {
+     "address": "Kinkerstraat 145F",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000705742"
+    },
+    {
+     "address": "Kinkerstraat 125",
+     "use": "winkelfunctie",
+     "areaM2": 283,
+     "bagId": "0363010012080328"
+    },
+    {
+     "address": "Kinkerstraat 141D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705708"
+    },
+    {
+     "address": "Kinkerstraat 143E",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705731"
+    },
+    {
+     "address": "Kinkerstraat 145E",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705741"
+    },
+    {
+     "address": "Kinkerstraat 141E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705709"
+    },
+    {
+     "address": "Kinkerstraat 141B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705706"
+    },
+    {
+     "address": "Kinkerstraat 145C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705739"
+    },
+    {
+     "address": "Kinkerstraat 147G",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000705752"
+    },
+    {
+     "address": "Kinkerstraat 133D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705669"
+    },
+    {
+     "address": "Kinkerstraat 147F",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000705751"
+    },
+    {
+     "address": "Kinkerstraat 141C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000705707"
+    },
+    {
+     "address": "Kinkerstraat 147C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705748"
+    },
+    {
+     "address": "Kinkerstraat 147E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000705750"
+    },
+    {
+     "address": "Kinkerstraat 131A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705655"
+    },
+    {
+     "address": "Kinkerstraat 147B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000705747"
+    },
+    {
+     "address": "Kinkerstraat 145B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000705738"
+    }
+   ],
+   "units": 28,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809770318,
+     "lngLat": [
+      4.8686817,
+      52.3661326
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "125",
+      "addr:postcode": "1053DL",
+      "addr:street": "Kinkerstraat",
+      "brand": "vanHaren",
+      "brand:wikidata": "Q62390668",
+      "check_date": "2025-01-17",
+      "name": "vanHaren",
+      "opening_hours": "Mo 13:00-18:00; Tu-Sa 09:30-18:00; Su 12:00-17:00",
+      "payment:cash": "yes",
+      "phone": "+31 20 612 8841",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vanharen.nl/NL/nl/shop/welcome.html",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4943034823,
+     "lngLat": [
+      4.8685713,
+      52.366087
+     ],
+     "tags": {
+      "name": "Thrift shop",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107234",
+   "addresses": [
+    "Kinkerstraat 141G",
+    "Kinkerstraat 141H",
+    "Kinkerstraat 143C",
+    "Kinkerstraat 147H",
+    "Kinkerstraat 147K",
+    "Kinkerstraat 147D",
+    "Kinkerstraat 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 147H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000705753"
+    },
+    {
+     "address": "Kinkerstraat 147K",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000705754"
+    },
+    {
+     "address": "Kinkerstraat 151",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000705762"
+    },
+    {
+     "address": "Kinkerstraat 141G",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000705711"
+    },
+    {
+     "address": "Kinkerstraat 147D",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000705749"
+    },
+    {
+     "address": "Kinkerstraat 143C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705729"
+    },
+    {
+     "address": "Kinkerstraat 141H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000705712"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809771380,
+     "lngLat": [
+      4.868365,
+      52.3660589
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "151",
+      "addr:postcode": "1053DN",
+      "addr:street": "Kinkerstraat",
+      "brand": "Odido",
+      "brand:wikidata": "Q28406140",
+      "check_date": "2025-01-17",
+      "name": "Odido",
+      "opening_hours": "Mo 12:00-17:00; Tu-Fr 09:00-17:00",
+      "phone": "+31 6 18638805",
+      "shop": "telecommunication",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.odido.nl/winkels/amsterdam/kinkerstraat",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012067928",
+   "addresses": [
+    "Kinkerstraat 143A",
+    "Kinkerstraat 143B",
+    "Kinkerstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 143A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705727"
+    },
+    {
+     "address": "Kinkerstraat 143B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000705728"
+    },
+    {
+     "address": "Kinkerstraat 153",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012080381"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809771392,
+     "lngLat": [
+      4.8683027,
+      52.3660473
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "153",
+      "addr:postcode": "1053DN",
+      "addr:street": "Kinkerstraat",
+      "brand": "KPN",
+      "brand:wikidata": "Q338633",
+      "check_date": "2025-01-17",
+      "name": "KPN",
+      "opening_hours": "Su-Mo 12:00-17:00; Tu-Sa 10:00-17:00",
+      "phone:NL": "0800 0402",
+      "shop": "telecommunication",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.kpn.com/winkel/amsterdam/kinkerstraat-153",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012132092",
+   "addresses": [
+    "Kinkerstraat 155"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 155",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010003695449"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809771405,
+     "lngLat": [
+      4.8682224,
+      52.3660275
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "155",
+      "addr:postcode": "1053DN",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2025-01-17",
+      "name": "Entertainment Exchange",
+      "name:nl": "Entertainment Exchange",
+      "shop": "mobile_phone",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012084581",
+   "addresses": [
+    "Kinkerstraat 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 157",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000705775"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4723341859,
+     "lngLat": [
+      4.8681433,
+      52.3660183
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "157",
+      "addr:postcode": "1053DN",
+      "addr:street": "Kinkerstraat",
+      "check_date": "2023-04-30",
+      "name": "Dorita's hair products",
+      "phone": "+31 20 616 4058",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012067449",
+   "addresses": [
+    "Kinkerstraat 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 159",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000705777"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4723341860,
+     "lngLat": [
+      4.8680729,
+      52.365997
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "159",
+      "addr:postcode": "1053DN",
+      "addr:street": "Kinkerstraat",
+      "brand": "Tele2",
+      "brand:wikidata": "Q309865",
+      "fixme": "Deze winkel wordt niet vermeld op de website van Odido, de opvolger van Tele2. Bestaat de winkel nog?",
+      "name": "Tele2",
+      "opening_hours": "Mo 13:00-18:00; Tu,We,Fr 10:00-18:00; Th 10:00-21:00; Sa 10:00-17:30",
+      "operator": "Tele2",
+      "shop": "mobile_phone",
+      "website": "https://www.tele2.nl/winkels/amsterdam-kinkerstraat/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012079593",
+   "addresses": [
+    "Kinkerstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 161",
+     "use": "winkelfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000705782"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5750117778,
+     "lngLat": [
+      4.8678072,
+      52.3658729
+     ],
+     "tags": {
+      "clothes": "women",
+      "name": "Vera Mode",
+      "opening_hours": "Mo 12:00-17:30; Tu,We,Fr 09:30-17:30; Th 09:30-21:00; Sa 09:30-17:00",
+      "phone": "+31 20 412 0569",
+      "shop": "clothes",
+      "website": "https://www.veromoda.com/nl/nl/home",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:31:25.083Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,509 @@
+{
+ "street": "Kinkerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T09:00:18.810Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012137280",
+   "addresses": [
+    "Kinkerstraat 32",
+    "Kinkerstraat 34",
+    "Kinkerstraat 36",
+    "Kinkerstraat 38",
+    "Kinkerstraat 40",
+    "Kinkerstraat 42",
+    "Kinkerstraat 44A",
+    "Kinkerstraat 44B",
+    "Kinkerstraat 44C",
+    "Kinkerstraat 44D",
+    "Kinkerstraat 44E",
+    "Kinkerstraat 46A",
+    "Kinkerstraat 46B",
+    "Kinkerstraat 46C",
+    "Kinkerstraat 46D",
+    "Kinkerstraat 46E",
+    "Kinkerstraat 48A",
+    "Kinkerstraat 48B",
+    "Kinkerstraat 48C",
+    "Kinkerstraat 48D",
+    "Kinkerstraat 48E",
+    "Kinkerstraat 50B",
+    "Kinkerstraat 50C",
+    "Kinkerstraat 50D",
+    "Kinkerstraat 50E",
+    "Kinkerstraat 50A",
+    "Kinkerstraat 52B",
+    "Kinkerstraat 52C",
+    "Kinkerstraat 52D",
+    "Kinkerstraat 52E",
+    "Kinkerstraat 52A",
+    "Kinkerstraat 54A",
+    "Kinkerstraat 54B",
+    "Kinkerstraat 54C",
+    "Kinkerstraat 54D",
+    "Kinkerstraat 54E",
+    "Kinkerstraat 54F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993998"
+    },
+    {
+     "address": "Kinkerstraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993999"
+    },
+    {
+     "address": "Kinkerstraat 50D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000994000"
+    },
+    {
+     "address": "Kinkerstraat 50E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000994001"
+    },
+    {
+     "address": "Kinkerstraat 52B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000994003"
+    },
+    {
+     "address": "Kinkerstraat 52C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000994010"
+    },
+    {
+     "address": "Kinkerstraat 52D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000994011"
+    },
+    {
+     "address": "Kinkerstraat 52E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000994012"
+    },
+    {
+     "address": "Da Costastraat 70A",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000994022"
+    },
+    {
+     "address": "Da Costastraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000994023"
+    },
+    {
+     "address": "Da Costastraat 70C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000994024"
+    },
+    {
+     "address": "Da Costastraat 70D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000994025"
+    },
+    {
+     "address": "Da Costastraat 70E",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000994026"
+    },
+    {
+     "address": "Da Costastraat 68A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000994027"
+    },
+    {
+     "address": "Da Costastraat 68B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000994028"
+    },
+    {
+     "address": "Da Costastraat 68C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000994029"
+    },
+    {
+     "address": "Da Costastraat 68D",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000994030"
+    },
+    {
+     "address": "Da Costastraat 68E",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000994031"
+    },
+    {
+     "address": "Da Costakade 159A",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000993645"
+    },
+    {
+     "address": "Da Costakade 159B",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000993646"
+    },
+    {
+     "address": "Da Costakade 159C",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000993647"
+    },
+    {
+     "address": "Da Costakade 159D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000993648"
+    },
+    {
+     "address": "Da Costakade 159E",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000993649"
+    },
+    {
+     "address": "Da Costakade 161A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000993650"
+    },
+    {
+     "address": "Da Costakade 161B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000993651"
+    },
+    {
+     "address": "Da Costakade 161C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000993654"
+    },
+    {
+     "address": "Da Costakade 161D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000993655"
+    },
+    {
+     "address": "Da Costakade 161E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000993656"
+    },
+    {
+     "address": "Da Costakade 163A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000993657"
+    },
+    {
+     "address": "Da Costakade 163B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000993658"
+    },
+    {
+     "address": "Da Costakade 163C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000993659"
+    },
+    {
+     "address": "Da Costakade 163D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000993660"
+    },
+    {
+     "address": "Da Costakade 163E",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000993661"
+    },
+    {
+     "address": "Da Costakade 163F",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000993662"
+    },
+    {
+     "address": "Kinkerstraat 32",
+     "use": "winkelfunctie",
+     "areaM2": 1020,
+     "bagId": "0363010000993664"
+    },
+    {
+     "address": "Kinkerstraat 34",
+     "use": "winkelfunctie",
+     "areaM2": 1015,
+     "bagId": "0363010000993668"
+    },
+    {
+     "address": "Kinkerstraat 36",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000993669"
+    },
+    {
+     "address": "Kinkerstraat 38",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000993670"
+    },
+    {
+     "address": "Kinkerstraat 40",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000993671"
+    },
+    {
+     "address": "Kinkerstraat 42",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 360,
+     "bagId": "0363010000993672"
+    },
+    {
+     "address": "Kinkerstraat 54A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993673"
+    },
+    {
+     "address": "Kinkerstraat 54B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993675"
+    },
+    {
+     "address": "Kinkerstraat 54C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993676"
+    },
+    {
+     "address": "Kinkerstraat 54D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993677"
+    },
+    {
+     "address": "Kinkerstraat 54E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993678"
+    },
+    {
+     "address": "Kinkerstraat 54F",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000993679"
+    },
+    {
+     "address": "Da Costastraat 66",
+     "use": "industriefunctie",
+     "areaM2": 750,
+     "bagId": "0363010000993680"
+    },
+    {
+     "address": "Da Costakade 157",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000993214"
+    },
+    {
+     "address": "Da Costakade 165",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000993924"
+    },
+    {
+     "address": "Kinkerstraat 44A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993925"
+    },
+    {
+     "address": "Kinkerstraat 46A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993926"
+    },
+    {
+     "address": "Kinkerstraat 48A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993927"
+    },
+    {
+     "address": "Kinkerstraat 50A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993928"
+    },
+    {
+     "address": "Kinkerstraat 52A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000993929"
+    },
+    {
+     "address": "Kinkerstraat 44B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993949"
+    },
+    {
+     "address": "Kinkerstraat 44C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993950"
+    },
+    {
+     "address": "Kinkerstraat 44D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993951"
+    },
+    {
+     "address": "Kinkerstraat 44E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000993952"
+    },
+    {
+     "address": "Kinkerstraat 46B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993953"
+    },
+    {
+     "address": "Kinkerstraat 46C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993955"
+    },
+    {
+     "address": "Kinkerstraat 46D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993956"
+    },
+    {
+     "address": "Kinkerstraat 46E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000993957"
+    },
+    {
+     "address": "Kinkerstraat 48B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993958"
+    },
+    {
+     "address": "Kinkerstraat 48C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993959"
+    },
+    {
+     "address": "Kinkerstraat 48D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000993960"
+    },
+    {
+     "address": "Kinkerstraat 48E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000993962"
+    }
+   ],
+   "units": 66,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1259643963,
+     "lngLat": [
+      4.8744682,
+      52.3680159
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1053DW",
+      "addr:street": "Kinkerstraat",
+      "brand": "Vomar",
+      "brand:website": "https://www.vomar.nl",
+      "brand:wikidata": "Q3202837",
+      "brand:wikipedia": "nl:Vomar",
+      "check_date": "2025-10-02",
+      "check_date:opening_hours": "2025-10-02",
+      "name": "Vomar",
+      "opening_hours": "Mo-Sa 07:30-22:00; Su 08:00-22:00",
+      "payment:cash": "yes",
+      "phone": "+31 20 4123417",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vomar.nl/winkels/vomar-kinkerstraat-34-amsterdam.htm",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-14T09:00:18.810Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2809232651,
+     "lngLat": [
+      4.8738809,
+      52.3678598
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "42",
+      "addr:postcode": "1053DX",
+      "addr:street": "Kinkerstraat",
+      "alt_name": "Ontmoetingsplek Da Costa",
+      "amenity": "community_centre",
+      "name": "Da Costa",
+      "operator": "Philadelphia",
+      "operator:website": "https://www.philadelphia.nl",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.philadelphia.nl/locaties/da-costa"
+     },
+     "fetchedAt": "2026-10-14T09:00:18.810Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
