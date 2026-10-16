@@ -12,7 +12,7 @@ import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/l
 import {panelEaves} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
 import {CROP_MIN_OVERLAP, cropsOfWallsJson, panelCoverage, type CropMatch, type CropWall} from '../../src/canalRecall/buildingRecipe/cropToPanel.ts';
 import {insidePanel} from '../../src/canalRecall/blockBuilding/panels.ts';
-import {measureFacade, MASK, type FacadeBox, type FacadeMeasurement} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {measureFacade, MASK, type FacadeBox, type FacadeImage, type FacadeMeasurement} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, modelElevation, PAD_M, type LikenessResult, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {pandWallsDir, sha256Of, sourceDataRoot, sourceRef} from './sourceData.ts';
@@ -24,6 +24,8 @@ export interface GroupLikeness {
   box?: FacadeBox; photo?: FacadeMeasurement; model?: ModelElevation; likeness?: LikenessResult;
   /** the photo mosaic (RGB) on the model's box after the best shift, for the sheet */
   photoRgb?: {data: Buffer; width: number; height: number};
+  /** the padded photo mosaic as measured (metric image, its box and the fit lines), for sheets and probes */
+  photoImage?: {image: FacadeImage; box: FacadeBox; lines: number[]; inside?: (u: number, v: number) => boolean};
   /** measured values for the intent: on the panel's own width (bays) */
   measured?: {wall: string; wallRaw: string; glass: string | null; trim: string | null; glazing: number; storeyGlazing: (number | null)[]; ground: number | null; bays: number | null; pitchM: number | null; storeyM: number | null;
     window: FacadeMeasurement['window']; frontClass: FacadeMeasurement['frontClass']; normalisation: FacadeMeasurement['normalisation']; usable: number; foliage: number; washedOut: number;
@@ -90,7 +92,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const bays = photo.pitchM ? Math.max(1, Math.round((box.u1 - box.u0) / photo.pitchM)) : null;
     out.push({group: g.index, panel: p.index, status: 'measured', crop: {...main.crop, ref: sourceRef(pand, main.crop.file)}, match: main.match, coverage,
       pieces: pieces.map(q => ({tag: q.crop.tag, ref: sourceRef(pand, q.crop.file), sha256: q.crop.sha256, capturedAt: q.crop.capturedAt, u0: r3(q.u0 - p.uMin), u1: r3(q.u1 - p.uMin)})),
-      box, photo, model, likeness, photoRgb,
+      box, photo, model, likeness, photoRgb, photoImage: {image, box: photoBox, lines: g.lines, inside},
       measured: {wall: photo.wall.hex, wallRaw: photo.wall.rawHex, glass: photo.glass?.hex ?? null, trim: photo.trim?.hex ?? null, glazing: photo.glazing, storeyGlazing: photo.storeyGlazing, ground: photo.ground.glazing, bays,
         pitchM: photo.pitchM, storeyM: photo.storeyM, window: photo.window, frontClass: photo.frontClass, normalisation: photo.normalisation, usable: photo.usableFraction, foliage: photo.foliageFraction, washedOut: photo.washedOutFraction,
         // the colour split as a fraction of the panel width from uMin (the photo box is padded by PAD_M)

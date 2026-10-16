@@ -24,7 +24,7 @@ import type {MaterialSlot} from '../look/palette.ts';
 import {nearestMaterial, wallFamily} from '../facade/materials.ts';
 import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
-import {analyseMask, hex, MASK, rgbToLab, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
+import {analyseMask, hex, isOpeningCell, MASK, rgbToLab, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
 
 export const PAD_M = 0.5;
 export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.08, storeyGlazing: 0.15, meanGlazing: 0.1, columns: 0.2, iouWarn: 0.45,
@@ -32,7 +32,8 @@ export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.0
 /** Mean of the game's glass texture (look/slotCells.ts `paintGlassCanvas` gradient #8aa1b0 / #4d606c / #3c474e), drawn under a white tint. */
 export const GAME_GLASS: Rgb = [88, 106, 117];
 const WALL_SLOTS = new Set(['brick', 'stucco', 'stone']);
-const OPENING_SLOTS = new Set(['glass', 'frame', 'door', 'accent']);
+const OPENING_SLOTS = new Set(['glass', 'frame', 'door']);
+const TRIM_SLOTS = new Set(['accent']);
 
 export interface PanelFrame { o: number[]; r: number[]; n: number[]; uMin: number; uMax: number }
 
@@ -88,11 +89,13 @@ export function modelElevation(soup: MaterialSoup, panel: PanelFrame, box: Facad
     const m = matAt[k]; if (m < 0) continue;
     const slot = slotOf[m], c = colourOf[m];
     colours.set(c.map(v => Math.round(v * Math.min(1, shade[k]))) as Rgb, k * 3);
-    if (!WALL_SLOTS.has(slot) && !OPENING_SLOTS.has(slot)) continue; // roofs, plant: not facade
+    if (!WALL_SLOTS.has(slot) && !OPENING_SLOTS.has(slot) && !TRIM_SLOTS.has(slot)) continue; // roofs, plant: not facade
     const lab = rgbToLab(c);
     const differs = !wallLab || Math.hypot((lab[0] - wallLab[0]) * 0.5, lab[1] - wallLab[1], lab[2] - wallLab[2]) > 15;
     if (WALL_SLOTS.has(slot) && !differs) { mask[k] = MASK.wall; continue; }
-    mask[k] = !wallLab || lab[0] < wallLab[0] + 5 ? MASK.dark : MASK.trim;
+    // openings (glass, frames, railings, doors, curtain mullions) as the photo's opening pass reads them; a wall-slot
+    // material of another colour (stone bands, sills, a rendered block) and accents are trim, not glazing
+    mask[k] = OPENING_SLOTS.has(slot) ? (!wallLab || lab[0] < wallLab[0] + 5 ? MASK.dark : MASK.frame) : MASK.trim;
     if (slot === 'glass') glassCells.push(c);
   }
   const grid = analyseMask({mask, cols, rows, cell, box, lines});
@@ -129,14 +132,14 @@ export function photoWindow(photo: FacadeMeasurement, padCells: number, du: numb
   return out;
 }
 
-/** Not-wall IoU over the cells both sides can see (facade cells only, above the ground band). */
+/** Opening IoU over the cells both sides can see (facade cells only, above the ground band). */
 export function notWallIoU(a: Uint8Array, b: Uint8Array, cols: number, rows: number, box: FacadeBox, cell: number, groundBandM = 2.5): number | null {
   let inter = 0, uni = 0, seen = 0;
   for (let j = 0; j < rows; j++) {
     if (box.v1 - (j + 0.5) * cell < groundBandM) continue;
     for (let i = 0; i < cols; i++) {
       const k = j * cols + i; if (a[k] === MASK.unusable || b[k] === MASK.unusable) continue;
-      seen++; const x = a[k] !== MASK.wall, y = b[k] !== MASK.wall;
+      seen++; const x = isOpeningCell(a[k]), y = isOpeningCell(b[k]);
       if (x && y) inter++; if (x || y) uni++;
     }
   }
@@ -167,24 +170,34 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const ph = rgbToHsl(pw), mh = mw ? rgbToHsl(mw) : null;
   let dHue: number | null = null;
   if (mh && Math.min(ph[1], mh[1]) > LIKENESS.satForHue) { dHue = mh[0] - ph[0]; if (dHue > 180) dHue -= 360; if (dHue < -180) dHue += 360; }
-  const pFam = wallFamily(pw), mFam = mw ? wallFamily(mw) : null;
+  // Families: the photo's from its texture and colour (measureFacade `material`; null = unresolved: a dark neutral that is
+  // not smooth, which overcast brick and black paint both give); the model's from its colour, and where the colour alone
+  // is unresolved, from the slot the kit draws (a brick slot is drawn as brick).
+  const pFamResolved = photo.material ? photo.material.family : wallFamily(pw);
+  const pFam = pFamResolved ?? wallFamily(pw);
+  const mFam = mw ? (wallMaterialOf(mw, null).family ?? (model.wallSlot === 'brick' ? 'brick' : wallFamily(mw))) : null;
   const dL = mh ? mh[2] - ph[2] : null;
-  const wallPass = !!mw && pFam === mFam && Math.abs(dL!) <= LIKENESS.dL && (dHue === null || Math.abs(dHue) <= LIKENESS.hueDeg);
+  const famPass = pFamResolved === null || pFamResolved === mFam;
+  const wallPass = !!mw && famPass && Math.abs(dL!) <= LIKENESS.dL && (dHue === null || Math.abs(dHue) <= LIKENESS.hueDeg);
   // glazing per upper storey band
   const bands = pg.storeyGlazing.map((p, s) => (p !== null && mg.storeyGlazing[s] !== null && mg.storeyGlazing[s] !== undefined ? Math.abs(p - mg.storeyGlazing[s]!) : null)).filter((d): d is number => d !== null);
   const maxDiff = bands.length ? Math.max(...bands) : null;
   const meanDiff = Math.abs(pg.glazing - mg.glazing);
-  const glazingPass = (maxDiff === null || maxDiff <= LIKENESS.storeyGlazing) && meanDiff <= LIKENESS.meanGlazing;
+  // the photo's opening pass abstains where it cannot tell frames from bands: no glazing verdict there (a warning)
+  const glazingAbstain = photo.openings?.abstain ?? null;
+  const glazingPass = glazingAbstain !== null || ((maxDiff === null || maxDiff <= LIKENESS.storeyGlazing) && meanDiff <= LIKENESS.meanGlazing);
   // columns and window shape (not where the photo shows no rhythm: curtain walls, blank fronts)
   const rhythmic = pg.frontClass !== 'curtain' && pg.frontClass !== 'blank';
   const colPass = !rhythmic || pg.columns === null ? null : mg.columns !== null && Math.abs(mg.columns - pg.columns) <= LIKENESS.columns * pg.columns;
   const shapePass = !rhythmic || !pg.window ? null : !!mg.window && mg.window.shape === pg.window.shape;
   const reasons: string[] = [];
-  if (!wallPass) reasons.push(`wall ${!mw ? 'not drawn' : pFam !== mFam ? `family ${mFam} vs photo ${pFam}` : Math.abs(dL!) > LIKENESS.dL ? `dL ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)}` : `hue ${dHue!.toFixed(0)} deg`}`);
+  if (!wallPass) reasons.push(`wall ${!mw ? 'not drawn' : !famPass ? `family ${mFam} vs photo ${pFam}` : Math.abs(dL!) > LIKENESS.dL ? `dL ${dL! > 0 ? '+' : ''}${dL!.toFixed(2)}` : `hue ${dHue!.toFixed(0)} deg`}`);
   if (!glazingPass) reasons.push(`glazing ${maxDiff !== null && maxDiff > LIKENESS.storeyGlazing ? `storey band off by ${maxDiff.toFixed(2)}` : ''}${meanDiff > LIKENESS.meanGlazing ? ` mean ${mg.glazing.toFixed(2)} vs photo ${pg.glazing.toFixed(2)}` : ''}`.trim());
   // column count: WARN only until bay-pitch detection is reliable (it counts mullion halves and ribbon panes as columns:
   // Spinoza Lyceum 30 vs 16 bays, Wibautstraat 78 28 vs 8 ribbons, both reading right on the sheet)
   const warns: string[] = [];
+  if (glazingAbstain) warns.push(`glazing not judged (${glazingAbstain})`);
+  if (pFamResolved === null) warns.push(`wall family unresolved (${hex(pw)} is dark and neutral, brick courses not resolved): lightness and hue judged only`);
   if (colPass === false) warns.push(`columns ${mg.columns ?? 'none'} vs photo ${pg.columns}`);
   if (shapePass === false) reasons.push(`window shape ${mg.window?.shape ?? 'none'} vs photo ${pg.window!.shape}`);
   const iou = best.iou >= 0 ? +best.iou.toFixed(3) : null;
@@ -193,7 +206,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   if (verdict === 'WARN' && iou !== null && iou < LIKENESS.iouWarn) reasons.push(`mask IoU ${iou} < 0.45`);
   const pm = nearestMaterial(pw, pFam === 'paint' ? 'paint' : pFam), mm = mw && mFam ? nearestMaterial(mw, mFam === 'paint' ? 'paint' : mFam) : null;
   return {verdict, reasons: abstain.length ? abstain : reasons, shift: {uM: +(best.du * cell).toFixed(2), vM: +(best.dv * cell).toFixed(2)}, iou,
-    wall: {photo: photo.wall.hex, photoRaw: photo.wall.rawHex, model: mw ? hex(mw) : null, modelToday: model.wallToday ? hex(model.wallToday) : null, photoFamily: pFam, modelFamily: mFam, photoMaterial: pm.material.id, modelMaterial: mm?.material.id ?? null, dL: dL === null ? null : +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass},
+    wall: {photo: photo.wall.hex, photoRaw: photo.wall.rawHex, model: mw ? hex(mw) : null, modelToday: model.wallToday ? hex(model.wallToday) : null, photoFamily: pFamResolved ?? 'unresolved', modelFamily: mFam, photoMaterial: pm.material.id, modelMaterial: mm?.material.id ?? null, dL: dL === null ? null : +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass},
     glass: {photo: photo.glass?.hex ?? null, model: model.glass ? hex(model.glass) : null},
     glazing: {photo: pg.storeyGlazing, model: mg.storeyGlazing, photoMean: pg.glazing, modelMean: mg.glazing, maxDiff: maxDiff === null ? null : +maxDiff.toFixed(3), meanDiff: +meanDiff.toFixed(3), pass: glazingPass},
     columns: {photo: pg.columns, model: mg.columns, pass: colPass}, shape: {photo: pg.window?.shape ?? null, model: mg.window?.shape ?? null, pass: shapePass},
