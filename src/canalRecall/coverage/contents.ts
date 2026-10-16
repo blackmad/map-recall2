@@ -31,6 +31,14 @@ export type DesignItem = { family: string; label: string; variant: string; store
 export type ModelItem = { name: string; tier: string; links: Link[]; thumb?: Thumb };
 export type KitItem = { hand: boolean; links: Link[] };
 export type SurveyItem = { links: Link[] };
+/** A thumbnail for the own-look examples, with the photo's licence when it is a photo. */
+export type LookThumb = Thumb & { credit?: string };
+/** Own-look example catalogue (scripts/coverage/build-look-thumbs.ts): keyed by house type id, `family__variant`, family. */
+export type LookItems = {
+  types: Record<string, { render?: LookThumb; photo?: LookThumb; chunk?: string; links: Link[] }>;
+  designs: Record<string, { render?: LookThumb; unit: string }>;
+  families: Record<string, { photo?: LookThumb }>;
+};
 export type ContentItems = {
   types: Record<string, TypeItem>;
   faces: Record<string, FaceItem>;
@@ -38,6 +46,8 @@ export type ContentItems = {
   models: Record<string, ModelItem>;
   kits: Record<string, KitItem>;
   surveys: Record<string, SurveyItem>;
+  /** Absent in extracts built before the own-look tier (2026-10-17). */
+  look?: LookItems;
 };
 
 /** Body keys that are measurements, not kit components. */
