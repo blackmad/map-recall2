@@ -867,7 +867,13 @@ export interface LargeBuildingIntent {
   otherWalls?: LargeSystemName;
   /** Lift overrun and plant boxes on the largest flat roof. */
   roofPlant?: boolean;
-  roof?: {material: typeof ROOF_MATERIALS[number]};
+  /**
+   * `flat`: the flat roofs' colour as the PDOK orthophoto reads this pand (roof-facts sidecar, `roofs/roofSlots.ts`
+   * `roofSlotHex(slot, rgb)`: the colour the city draws the same pand's roof in). Exported with `tintSource: "measured"`,
+   * so the look keeps it instead of mapping the material's flat grey to the buff gravel prior (Kinkerstraat 89-105,
+   * 2026-10-16: a buff roof over buff render read as one slab from the street). Absent: the material's flat colour.
+   */
+  roof?: {material: typeof ROOF_MATERIALS[number]; flat?: string};
   palette: PaletteIntent;
   /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
   closedBands?: boolean;

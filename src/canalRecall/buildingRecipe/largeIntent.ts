@@ -56,7 +56,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
-  if (intent?.roof !== undefined) oneOf(intent.roof?.material, ROOF_MATERIALS, 'roof.material');
+  if (intent?.roof !== undefined) {
+    oneOf(intent.roof?.material, ROOF_MATERIALS, 'roof.material');
+    if (intent.roof?.flat !== undefined && !/^#[0-9a-f]{6}$/i.test(intent.roof.flat)) problems.push(`roof.flat: a measured #rrggbb, got ${JSON.stringify(intent.roof.flat)}`);
+    for (const k of Object.keys(intent.roof ?? {})) if (!['material', 'flat'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat)`);
+  }
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glass'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS.filter(m => m !== 'painted-brick'), 'palette.wallMaterial');

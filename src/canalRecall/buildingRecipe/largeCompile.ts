@@ -233,20 +233,22 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
   const group = new T.Group(); group.name = recipe.id;
   const roofColours = ROOF_COLOURS[recipe.roof.material], roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(recipe.roof.material) ? 'slate' : 'roofTile';
   const measured = new Set(recipe.measuredSlots ?? []);
-  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string) => {
+  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string, measuredTint = false) => {
     if (!positions.length) return;
     const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
     const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
     m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
     // measured wall colour (export-glb writes `tintSource: 'measured'`; the look then keeps it instead of clamping it)
-    if (slot && measured.has(slot)) m.material.userData = {tintSource: 'measured'};
+    if (measuredTint || (slot && measured.has(slot))) m.material.userData = {tintSource: 'measured'};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     if (slot === 'roof') {
       const by = {steep: [] as number[], low: [] as number[], flat: [] as number[]}, v = s.positions;
       for (let i = 0; i < v.length; i += 9) by[slopeClass(v.slice(i, i + 3), v.slice(i + 3, i + 6), v.slice(i + 6, i + 9))].push(...v.slice(i, i + 9));
-      for (const k of ['steep', 'low', 'flat'] as const) add(`roof/${k}`, by[k], roofColours[k], k === 'flat' ? 'bitumen' : roofSlot, 'roof');
+      // A measured flat roof (intent `roof.flat`, the orthophoto's colour for this pand) is drawn as measured.
+      const flat = recipe.roof.flat;
+      for (const k of ['steep', 'low', 'flat'] as const) add(`roof/${k}`, by[k], k === 'flat' && flat ? flat : roofColours[k], k === 'flat' ? 'bitumen' : roofSlot, 'roof', undefined, k === 'flat' && !!flat);
       continue;
     }
     const colour = recipe.spec.palette[slot];
