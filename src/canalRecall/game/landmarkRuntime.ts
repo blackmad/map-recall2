@@ -357,7 +357,7 @@ export class GameLandmarkRuntime {
         typeof localStorage === 'undefined' ? null : localStorage);
 
       const normalise = (name: string) => this._normaliseCanalName(name);
-      const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
+      const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise, [], {}, bridgeFeatures);
       this.streetKnowledge = knowledge;
       // Why each street is called what it is (municipal register, English).
       // 1.2 MB (364 KB gzipped) for 5,333 names, and no card needs it before
@@ -386,7 +386,8 @@ export class GameLandmarkRuntime {
         if (factsFile) this._facts = buildFactIndex(factsFile);
         if (originsFile?.origins?.length || bridgeRegister?.bridges || encyclopedia?.length) {
           this.streetKnowledge = buildRouteKnowledgeIndex(
-            encyclopedia ?? [], streetFeatures, waterFeatures, normalise, originsFile?.origins ?? [], bridgeRegister?.bridges ?? {});
+            encyclopedia ?? [], streetFeatures, waterFeatures, normalise, originsFile?.origins ?? [], bridgeRegister?.bridges ?? {},
+            bridgeFeatures);
         }
         if (brandedPois) this.vectorMap.setBrandedPois(brandedPois);
         // With the resolved file, a landmark it does not list has no building
