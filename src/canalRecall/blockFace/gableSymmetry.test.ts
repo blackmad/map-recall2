@@ -113,13 +113,13 @@ test('Kinkerstraat 56-84: step and point gables carry saddles, the roof is symme
     }
     assert.ok(roofAboveCrown(intent, fit, f) <= 0.03, `${intent.pandId.slice(-6)}: roof under the crown outline`);
   });
-  // Kinkerstraat 76-84 (152566, the flat infill) keeps its LoD2.2 roof: the survey planes, untouched by any rule.
-  const i0 = face.houses.findIndex(h => h.pandId.endsWith('152566')), before = facts.get(face.houses[i0].pandId)!, after = prepared.ground.facts[i0];
-  assert.equal(prepared.roofClasses[i0], 'survey');
-  assert.equal(after.roofSource, undefined);
-  assert.equal(after.rowClamp, undefined);
-  assert.equal(after.measuredEavesM, undefined);
-  assert.equal(after.roofsRD.length, before.roofsRD.length);
+  // Kinkerstraat 76-84 (152566, the 1985 infill): the strip shows a flat parapet with sky behind, and the placement says
+  // so (`roof: {source: 'front', form: 'flat'}`); LoD2.2 drew a slate hip and an 18.9 m box there. Flat at the eaves.
+  const i0 = face.houses.findIndex(h => h.pandId.endsWith('152566')), flat = report.get('152566');
+  assert.equal(prepared.roofClasses[i0], 'front');
+  assert.equal(prepared.ground.facts[i0].rowClamp, undefined);
+  assert.deepEqual(flat?.bands?.map(b => b.form), ['flat']);
+  assert.equal(flat!.ridgeM, flat!.eavesM);
   // Compiled: gates pass and no roof z-fight at the party lines.
   const r = await compileBlockFace(face, facts, 'face-gable-symmetry-test', {...options, inferRears: false});
   assert.deepEqual(r.gates.filter(g => !g.pass).map(g => `${g.pand.slice(-6)}/${g.id}`), []);
