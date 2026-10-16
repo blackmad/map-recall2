@@ -242,18 +242,23 @@ export function buildCell(input: CellInput): BuiltCell {
   if (roadIndex) roadCover = roadIndex.prepareFast([x0 - ROAD_FAST_PAD_M, y0 - ROAD_FAST_PAD_M, x1 + ROAD_FAST_PAD_M, y1 + ROAD_FAST_PAD_M]);
   phase('roadRaster');
   let roadLandCulled = 0;
+  // Own polygons that were drawn, and a neighbour cell's ground polygons reaching over the cell edge (the neighbour
+  // draws them; its deck polygons may have been skipped there, so only h = 0 counts).
+  const roadDrawn = roadIndex ? (() => {
+    const ok = new Uint8Array(roadIndex.records.length);
+    for (let k = 0; k < ok.length; k++) ok[k] = (k < roadIndex.own ? !roadSkipped.has(k) : roadIndex.records[k].h === 0) ? 1 : 0;
+    return (k: number) => ok[k] === 1;
+  })() : null;
   const underOwnSurface = (x: number, y: number) => {
     const h = step / 2 + CULL_MARGIN_M;
     if (cover && surveyed) {
       const k = cover.find(x, y);
       if (k >= 0 && k < surveyed.own && cover.uniform(x - h, y - h, x + h, y + h, k)) { landCulled++; return true; }
     }
-    if (roadCover && roadIndex) {
-      const k = roadCover.find(x, y);
-      // Own polygons that were drawn, and a neighbour cell's ground polygons reaching over the cell edge (the
-      // neighbour draws them; its deck polygons may have been skipped there, so only h = 0 counts).
-      if (k >= 0 && (k < roadIndex.own ? !roadSkipped.has(k) : roadIndex.records[k].h === 0) && roadCover.uniform(x - h, y - h, x + h, y + h, k)) { roadLandCulled++; return true; }
-    }
+    // Under the road partition: every texel of the quad (with the margin) on a drawn polygon, one or several (the
+    // survey tiles the street, so a quad across a kerb is hidden by the two polygons either side; one polygon alone
+    // left 99 % of the land under the streets, the 5 m quads rarely fit inside one pavement).
+    if (roadCover && roadDrawn && roadCover.every(x - h, y - h, x + h, y + h, roadDrawn)) { roadLandCulled++; return true; }
     return false;
   };
   // The OSM green fills (park and grass areas, allotments, zoos) hide the land quads wholly inside them (ride review
@@ -402,7 +407,9 @@ export function buildCell(input: CellInput): BuiltCell {
   let pockets: PocketStats | null = null;
   if (lod === 0 && input.pockets !== false) {
     const cover: PocketCover<PocketSurface>[] = (Object.keys(parts) as GroundLayer[]).filter(l => !NOT_COVER.has(l)).map(l => ({ meshes: parts[l]!, as: POCKET_VOTE[l] ?? null }));
-    const r = fillPockets(cover, rect, [...streets.junctionPoints, ...onBridges.junctionPoints], onLand, POCKET_LIFT);
+    // roads-v1: a junction on the survey has no pocket (the polygons tile it; a pocket fill there was a pavement wedge).
+    const seeds = [...streets.junctionPoints, ...onBridges.junctionPoints].filter(p => !roadIndex || roadIndex.findFast(p[0], p[1]) < 0);
+    const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT);
     for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);
     pockets = r.stats;
   }

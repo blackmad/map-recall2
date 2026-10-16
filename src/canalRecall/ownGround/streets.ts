@@ -27,10 +27,10 @@ import type { RoadIndex } from './roadSurfaces.js';
 /** Height above the relief per layer (metres): later layers win the depth test. */
 /**
  * roads-v1: the carriageway markings sit this far over the surveyed carriageway plane (roadSurfaces ROAD_LIFT.carriage
- * 0.03 plus a float of DRAPE_TOL.carriage.float 0.012 at most): the painted lane ribbons, the paint, the rails. The
+ * 0.03 plus a float of DRAPE_TOL.carriage.float 0.02 at most): the painted lane ribbons, the paint, the rails. The
  * band model's own lifts (LIFT.cycleLane 0.036, LIFT.paint 0.046, LIFT.rail 0.05) stay for the cells without a survey.
  */
-export const ROAD_MARK_LIFT = { lane: 0.05, paint: 0.056, rail: 0.06 } as const;
+export const ROAD_MARK_LIFT = { lane: 0.056, paint: 0.062, rail: 0.066 } as const;
 export const LIFT = {
   area: 0.015,
   crossing: 0.025,
@@ -486,6 +486,8 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
         for (const p of [w.points[0], w.points[w.points.length - 1], ...w.points]) {
           const n = nodes.get(key(p));
           if (!n || n.ways.size < 2 || n.arms.length) continue;
+          // roads-v1: on the survey the polygons are the join (a disc there was a blob of another surface).
+          if (bgt && bgt.index.coversBand(p[0], p[1], band.surface)) continue;
           const k = `${key(p)}:${band.surface}:${band.width.toFixed(1)}`;
           if (discDone.has(k)) continue;
           discDone.add(k);
