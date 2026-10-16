@@ -63,7 +63,8 @@ test('published instances.json: every unit has a GLB, ids unique, scales sane, s
     assert.ok(i.scale.every(s => s > 0.85 && s < 1.2), `${i.pand} ${i.scale}`);
     assert.equal(i.groundAltitudeMetres, 0);
   }
-  assert.equal(suppressionIds(list).length, list.length);
+  const absorbed = list.reduce((n, i) => n + (i.alsoSuppress?.length ?? 0), 0);
+  assert.equal(suppressionIds(list).length, list.length + absorbed);
 });
 
 test('far massing: outward winding, roof only when pitched', () => {
