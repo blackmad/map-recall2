@@ -232,3 +232,12 @@ test('balconyRun geometry: an iron guard on the nose and both returns, or a soli
   (bad.fronts[0] as FrontIntent).bandFloors = {storeys: [9], courses: 0};
   assert.throws(() => validateIntent(bad), (e: Error) => ['balconyRun.storey', 'balconyRun.projection', 'balconyRun.guard', 'balconyRun.evidence', 'bandFloors.storeys', 'bandFloors.courses'].every(k => e.message.includes(k)));
 });
+
+test('151: the 1939 dormer house: one wide and one narrow axis, a flat-roofed 1.8 m dormer over the wide window', () => {
+  const {fit} = planned('evertsen-145-155');
+  const f = fit('138602'), d = f.recipe.elevations[0].dormers!.value[0];
+  assert.equal(d.roofRiseM, 0); assert.equal(d.heightM, 1.8);
+  const s1 = f.recipe.elevations[0].openings.value.filter(o => /^s1-/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
+  assert.equal(s1.length, 2);
+  assert.ok(s1[0].widthM > 2.6 && s1[1].widthM < 1.4, s1.map(o => o.widthM).join('/'));
+});
