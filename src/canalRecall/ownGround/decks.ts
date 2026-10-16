@@ -99,8 +99,10 @@ export function floatingEnds(deck: DeckSurface, overWater: WaterTest, height: He
  * 0.3–0.6 m over the Prinsengracht quay street. The outline now widens a station's side only as far as the water
  * reaches across it (probes every WIDTH_PROBE_M out to the outline), plus WIDEN_PAST_WATER_M, and a station takes the
  * widest of its neighbours within WIDEN_PAST_WATER_M along the deck, so the deck still lands on the quay wall. Never
- * narrower than the road's half-width (the street bands' own deck). With `onBand` (the deck top only), the road's
- * half-width itself is clipped to the street bands drawn there or the water: on land the top stays under the bands.
+ * narrower than the road's half-width (the street bands' own deck). With `onBand` (the deck top only), past the deck
+ * span's footprint (a reach to the bank, where the land is not culled under the deck) the road's half-width itself is
+ * clipped to the street bands drawn there or the water: on land the top stays under the bands. Inside the footprint
+ * the land is culled (groundCell underOwnSurface), so the top keeps the road's half-width there (no hole).
  */
 export const WIDEN_PAST_WATER_M = 1.0, WIDTH_PROBE_M = 0.5, BAND_MARGIN_M = 0.3, DECK_CORE_M = 1.0;
 export type BandTest = (x: number, y: number) => boolean;
@@ -110,11 +112,12 @@ export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: Ban
     const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l, hw = p.halfWidth[i], sw = sideWidths(p, i);
     for (const side of [0, 1] as const) {
       const sg = side === 0 ? 1 : -1, w = sw[side];
-      let road = onBand ? Math.min(hw, DECK_CORE_M) : hw, water = 0;
+      const banded = !!onBand && (p.s[i] < deck.span[0] - 0.5 || p.s[i] > deck.span[1] + 0.5);
+      let road = banded ? Math.min(hw, DECK_CORE_M) : hw, water = 0;
       for (let t = WIDTH_PROBE_M; t <= w + 1e-6; t += WIDTH_PROBE_M) {
         const x = p.x[i] + nx * sg * t, y = p.y[i] + ny * sg * t;
         if (overWater(x, y)) water = t + WIDEN_PAST_WATER_M;
-        else if (onBand && t <= hw && onBand(x, y)) road = Math.max(road, t + BAND_MARGIN_M);
+        else if (banded && t <= hw && onBand!(x, y)) road = Math.max(road, t + BAND_MARGIN_M);
       }
       core[side][i] = Math.min(hw, road);
       wet[side][i] = water;
@@ -339,6 +342,36 @@ export function movableApproaches(ring: readonly Vec2[], ways: readonly (readonl
   return out;
 }
 
+/** Leaves of a movable footprint along its axis (basculeLeaves' shape: stations from the ring's vertex centroid). */
+export type LeafPlan = ReturnType<typeof basculeLeaves>;
+/** A movable leaf shorter than this along the OSM way is noise (a node on the heel), not a leaf. */
+const LEAF_MIN_M = 2;
+/** A leaf placed from its OSM way is drawn this deep (the steel leaf girders under a timber or steel deck, ~0.8 m): its white fascia reads from the chase camera. */
+export const LEAF_DEPTH_M = 0.8;
+
+/**
+ * The leaves where the OSM way says the bridge moves (ride review 2026-10-14, P4: the Walter Süskindbrug BRU0237 over
+ * the Nieuwe Herengracht mouth). Its register footprint runs 21.5 m with the quays' abutments, so basculeLeaves guessed
+ * one 9 m leaf in the middle and one portal unit; OSM way 38322370 (bridge=movable, bridge:movable=bascule) is the
+ * 12.7 m between the heels, a double bascule. The `bridge=movable` ways' points within the footprint's width are
+ * projected on the crossing axis `u`; a stretch longer than FRAME.maxLeaf is two leaves meeting over its middle, each
+ * with its portal at its heel. Null without a movable way through the footprint (basculeLeaves stays the guess).
+ */
+export function movableLeaves(ring: readonly Vec2[], u: Vec2, movableWays: readonly (readonly Vec2[])[]): LeafPlan | null {
+  if (!movableWays.length) return null;
+  const f = ringFrame(ring, u), half = (f.across[1] - f.across[0]) / 2, mid = (f.across[0] + f.across[1]) / 2;
+  let a0 = Infinity, a1 = -Infinity;
+  for (const w of movableWays) for (const [x, y] of w) {
+    const a = (x - f.centre[0]) * u[0] + (y - f.centre[1]) * u[1], b = (x - f.centre[0]) * f.v[0] + (y - f.centre[1]) * f.v[1];
+    if (Math.abs(b - mid) > half + APPROACH_AXIS_TOL_M || a < f.along[0] - APPROACH_AXIS_TOL_M || a > f.along[1] + APPROACH_AXIS_TOL_M) continue;
+    a0 = Math.min(a0, a); a1 = Math.max(a1, a);
+  }
+  a0 = Math.max(a0, f.along[0]); a1 = Math.min(a1, f.along[1]);
+  if (!(a1 - a0 >= LEAF_MIN_M)) return null;
+  const length = a1 - a0, centre = (a0 + a1) / 2, double = length > FRAME.maxLeaf, leaf = double ? length / 2 : length;
+  return { double, leaf, mid: centre, leaves: double ? [[a0, centre], [centre, a1]] : [[a0, a1]] };
+}
+
 /**
  * A movable bridge's portals (the Amsterdam ophaalbrug "galg" with its
  * "hameien"): one unit at the heel of each leaf, its balance beams sloping
@@ -348,11 +381,11 @@ export function movableApproaches(ring: readonly Vec2[], ways: readonly (readonl
  * bridges white, steel and concrete green). `detail` false: the far ring's
  * posts and beams only.
  */
-export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: readonly (readonly Vec2[])[] = [], topLift = 0.02, detail = true): { mesh: MeshArrays; units: number } {
+export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: readonly (readonly Vec2[])[] = [], topLift = 0.02, detail = true, plan?: LeafPlan | null): { mesh: MeshArrays; units: number } {
   const m = emptyMesh(true), ax = footprintAxis(ring, ways), { u } = ax, v: Vec2 = [-u[1], u[0]];
   const half = Math.max(1.5, (ax.across[1] - ax.across[0]) / 2), vc = (ax.across[0] + ax.across[1]) / 2;
   const P = (a: number, b: number): Vec2 => [ax.centre[0] + u[0] * a + v[0] * b, ax.centre[1] + u[1] * a + v[1] * b];
-  const { double, leaf, mid } = basculeLeaves(ax.along);
+  const { double, leaf, mid } = plan ?? basculeLeaves(ax.along);
   const found = flatHintAt(ax.centre[0], ax.centre[1]), colour = basculeColour(found?.hint ?? null, found?.id);
   const deckZ = (q: Vec2) => height(q[0], q[1]) + topLift;
   const side = [vc + half + 0.45, vc - half - 0.45] as const;
@@ -375,8 +408,8 @@ export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: read
 }
 
 /** Triangles of movableFrame's portals for a footprint this long along its axis. */
-function frameTriangles(along: readonly [number, number], detail: boolean, style: 'portal' | 'basement' = 'portal'): number {
-  const L = along[1] - along[0];
+function frameTriangles(along: readonly [number, number], detail: boolean, style: 'portal' | 'basement' = 'portal', plan?: LeafPlan | null): number {
+  const L = plan ? (plan.double ? FRAME.doubleOver + 6 : Math.min(along[1] - along[0], FRAME.doubleOver)) : along[1] - along[0];
   if (style === 'basement') { const m = emptyMesh(true); for (const at of [0, L]) basementEnd(m, (a, b) => [a, b], [1, 0], at, [3, -3], () => 0, !detail); return m.indices.length / 3; }
   return movableFrame([[0, -3], [L, -3], [L, 3], [0, 3]], () => 0, [], 0.02, detail).mesh.indices.length / 3;
 }
@@ -411,7 +444,7 @@ function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: W
  * axis). Masonry footprints (the Torensluis) get arches, movable ones the
  * bascule leaf, narrow ones the footbridge, the rest a girder.
  */
-export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2 } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
+export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2; movableWays?: readonly (readonly Vec2[])[] } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
   const top = emptyMesh(true);
   const flat = ring.flatMap(p => [p[0], p[1]]);
   drapeTriangles(top, flat, earcut(flat), height, topLift, 3, DECK_TOP);
@@ -458,16 +491,17 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
   const widths = rows.map(r => Math.hypot(r.L[0] - r.R[0], r.L[1] - r.R[1])).sort((a, b) => a - b);
   const facts = found ? bridgeFacts(found.id) : null;
   const kind = flatKind(false, widths[widths.length >> 1], hint, facts);
-  const leaves = kind === 'bascule' ? basculeLeaves(ringFrame(ring, u).along).leaves : undefined;
+  const plan = kind === 'bascule' ? movableLeaves(ring, u, opts.movableWays ?? []) : null;
+  const leaves = kind === 'bascule' ? (plan ?? basculeLeaves(ringFrame(ring, u).along)).leaves : undefined;
   const { mesh, info } = buildKit({
     id: found?.id ?? '', kind, material: kind === 'arch' ? 'masonry' : hint?.material ?? 'concrete', rows,
-    parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness,
+    parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness: plan ? Math.max(thickness, LEAF_DEPTH_M) : thickness,
     leaves, colour: kind === 'bascule' ? basculeColour(hint, found?.id) : undefined, lateralTol: 0.5, facts,
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
-    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint)) : undefined,
+    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint), plan) : undefined,
   });
   // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
-  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint))) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
+  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint), plan)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
   return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level, floating };
 }
 
