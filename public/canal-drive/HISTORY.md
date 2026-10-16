@@ -1,5 +1,79 @@
 # Canal Recall — what is built
 
+## Cards for the new bridges (2026-10-16)
+
+User: "new bridges? are you going to find facts?". Lane
+`content/new-bridge-facts-20261016`: `bridgeWikidata.ts` matches the 116
+untagged decks against one Wikidata SPARQL box query (1,700 bridge, lock and
+culvert items) only when within 60 m and named alike or numbered as the
+register ("Brug N"), spelling-folded, ambiguous matches left out; the existing
+enrich and trn passes ran on the result. Name-origin publishing finds bridges
+under OSM spelling variants. 109 of 116 have a card: 87 BAG name origins in
+English, 92 English ledes, 91 Wikipedia links and images; 9 of the old 300
+gain an origin (Hoge Sluis, Odebrug, Bullebaksluis …). Register errors fixed:
+iep is elm, the Zaandijkspoorbrug text was the former street's, the Vier
+Windstrekenbrug text said "west" twice. Bridge cards now carry the English
+lede after the origin (`buildRouteKnowledgeIndex`, all bridges; same sentence
+and length caps as street cards; a Dutch lede makes no card). At integration
+the spelling key folds a trailing -sluis into -brug (within 150 m only):
+Vier Heemskinderensluis, 7 m from the Vier Heemskinderenbrug and the same
+bridge on nl.wikipedia, was asked twice; 416 → 415.
+
+## A folded drive-by card keeps its fact (2026-10-16)
+
+User (2026-10-16), on the Multatuli card that folded to its title after 8 s:
+"needs a fact". A drive-by or street card still folds (no photo, so the
+corridor stays clear), but keeps the fact it was telling in up to two lines
+(`teachingPacer.foldedCardLine`: the rotated fact without its opening sentence,
+else the card text's first sentence, abbreviations like "St." kept whole), its
+fact-kind and language chips, and "more ›" while the full text is longer.
+Two lines rather than one: one line cut most facts mid-sentence. Named
+regression on the Multatuli card in `teachingPacer.test.ts`; Storybook states
+`LandmarkCardFolded` and `LandmarkCardFoldedMobile`. `check:canal` 159/159.
+## HUD: a riding radar instead of the city minimap; pill centring, labels under cards, corner buttons tucked (2026-10-16)
+
+User (2026-10-16): "destination not vertically centered, zimmerterrein label
+on top of 're-center'", "hide these buttons unless the mouse is moved",
+"this map isn't super useful, we should probably zoom it in GTA style?".
+Lane `lane/hud-minimap-20261016` (3d7c3ab15, 656458474, b2f2c797f). The
+always-on minimap is a round riding radar (`game/radar.ts`): centred on the
+rider and turning with the main camera (heading-up in chase view), 220–320 m
+on desktop and 170–240 m on phones opening with speed, drawn from our own
+`own-map-v1/overview.json.gz` in a worker in the bright ground palette;
+the route bold only when the difficulty's route line is on; the destination
+clamps to the rim; no names. M/Tab cycles radar → whole-city sheet → off.
+DESTINATION pill: the caps inherited a stale text baseline; now centred by
+measured ink. POI labels were mounted after `#gameCanvas` at the same
+z-index and painted over every HUD card; they mount under it now and the
+label plan avoids every card, the destination pin and pill, and the radar.
+Corner utilities tuck whenever the map is the content (ride, overview
+flight); the reveal left over from clicking "Go" no longer shows them over
+the flight; visible while paused and on menus; phones tuck Feedback too
+(it covered a quiz answer). Attribution: CARTO dropped (nothing draws it);
+"© OSM · OpenFreeMap · © OpenMapTiles". Desktop ride-perf: map render 2.3 ms
+before and after; radar +0.02 ms per frame, worst 2.7 ms on new tiles.
+
+## Houseboats: arks, barges and hullboxes from the orthophoto (2026-10-16)
+
+User: "I think we are drawing too many canalhouses as canalboats". Lane
+`lane/houseboat-kinds-20261016` (da2b8ca9a). 284 boats labelled blind from
+the PDOK 8 cm orthophoto showed most ship hulls on the canals (101 of 164;
+64 of 88 on the ring canals) carry one box cabin over the hull, not an open
+foredeck and wheelhouse. The old ±0.46-length end rule also missed
+rounded-end hulls and took chamfered pontoon corners for bows.
+`classifyHouseboatHull` now tests the end shape in metres from the tip
+(≤ 0.72 at 0.3 m, < 0.97 at 1 m, symmetric narrowing; aspect ≥ 3.2, beam
+≤ 7 m unless ≥ 40 m long): ark-vs-ship accuracy 0.833 → 0.936, blind
+ring-canal set 0.948 → 0.969. The outline can't separate barge from
+hullbox, so a per-boat hash picks at measured shares (63/42/22 % barge for
+long/pointed/rounded), overridden by 178 labelled corridor boats
+(`houseboatKindOverrides.ts`, generated from
+`scripts/houseboat-kinds/labels.json`). New kit form `hullbox`: a low-sheer
+hull with an inset full-length cabin, skylights, no wheelhouse or flag (193
+triangles per boat). City: 415 barges, 604 hullboxes, 2,064 arks (was 960
+barges, 2,123 arks). Named regressions: Prinsengracht at Noordermarkt and
+Westermarkt (`npm run test:houseboat-kinds`, in `check:canal`).
+
 ## GroundStore.init loads once; the -1_-1 deck-polygon pin green again (2026-10-16)
 
 `check:own-ground-cells` failed on main from 49c7bd019 on ("-1_-1: 58 deck
@@ -9,6 +83,36 @@ in that store: `init()` replaced `surface`, dropping the decks those cells had
 registered while the per-cell caches stayed. The game inits each store once, so
 riders never saw it. `init()` now memoises its load; unit test in
 `ownGround.test.ts`; the pin reads 13.
+
+## Centraal Station: the Cuypers front, the east wing and AMSTERDAM on the IJ canopy (2026-10-16)
+
+User (2026-10-16): "centraal could probably use some help" (flat red brick, plain
+dark arched holes, flat clock disc) and "also something here" (the east wing, a
+windowless flat 20 m box). Lane `worktree-agent-af7fbb1991849ccbd`, inventory
+first (57 items: 41 modelled, 14 simplified, 2 skipped): framed windows with
+mullions, transoms and bars per section from `centraal-station-elevations.json`,
+stone banding, dormers on the slopes, the gilded clock and the wind dial, the
+gilt panels, shield frieze and crowned cartouches, the red canopy. The east wing
+is part of the same pand (0363100012185598); the box was the city layer drawing
+OSM parts w752286896/7/8, w1239767701/2, w752328422-426, w752653574/5,
+w752738610, now suppressed, and the wing is modelled (stone ground storey with
+red doors, white-barred sashes, pilasters, gables at 24.5 and 21.4 m, slate
+hipped roof). The user corrected me: the AMSTERDAM roof lettering is real; it is
+re-laid from the PDOK 2023 orthophoto (glyphs x -127.5..123.9, band 18.4 m,
+maroon #7a4850, the hue reconstructed), pinned in `check-centraal-complex.ts`.
+The CC BY Sketchfab model (Jungle Jim, uid 582a09c2…) was a reference only: no
+geometry or textures ship (AI-assisted, unverified, brick/stone only in its
+textures; 46.5 m against the measured 41.8 m finial). New typed kit
+`ornateFrontKit.ts` (8 tests). 42,807 tris / 406,912 B (OVER_BUDGET allows
+Centraal 60k / 650 KB); `audit:glb` PASS. Integrator review of the ride found
+two blockers, both fixed in the lane: the lod1 east wing was see-through (the
+simplifier's error is relative to the mesh, 0.01 of a 430 m site let vertices
+move 4.3 m and the brick bands collapsed; `LOD1_MAX_ERROR_BY_ID` centraal 0.001,
+lod1 14,278 tris / 185 KB, pinned in `check-centraal-complex.ts`), and the game
+drew terracotta city-layer roofs through the wing because
+`signature-placement.bundle.js` was stale (49 of 62 suppress ids, no measured
+colours) and nothing rebuilt it; `check:signature-bundle` (in `check:canal`)
+rebuilds it and fails when a manual spec's suppress ids or colours are missing.
 ## Every named bridge is a bridge question (2026-10-16)
 
 After "A bridge deck is never the answer", bridge names outside the 300

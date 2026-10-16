@@ -110,5 +110,23 @@
       "https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"
     ],
     "reason": "The register's whole text is the fragment \"met name op het gebied van het verkeer.\""
+  },
+  {
+    "name": "Vierwindstrekenbrug",
+    "kind": "bridge",
+    "en": "Takes its name from the four points of the compass: north, east, south and west.",
+    "sources": [
+      "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950131/"
+    ],
+    "reason": "The register lists the winds as \"Noord, West, Zuid en West\"; vier windstreken are the four points of the compass, so the second west is east."
+  },
+  {
+    "name": "Hoge Sluis",
+    "kind": "bridge",
+    "en": "The first version of this double bascule bridge dated from 1662; it was designed by the city architect Daniël Stalpaert and was then called the Amstelbrug. The name Hoge Sluis (high lock) only arose towards the end of the eighteenth century, mainly because its height was by then causing traffic problems. For the Dam–Linnaeusstraat tram line the high bridge was partly demolished in 1883 and rebuilt 1.74 metres lower. In 1884 a considerably lower bridge was ready, which was nevertheless still called the Hoge Sluis.",
+    "sources": [
+      "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950669/"
+    ],
+    "reason": "The register's text (filed as Hogesluis) has no full stops between its sentences, and the machine English translated the name itself (\"High Lock\") and ran two sentences together."
   }
 ]
