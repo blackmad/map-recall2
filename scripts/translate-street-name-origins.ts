@@ -33,7 +33,8 @@ import {
   CLI_TRANSLATORS, type CliTranslator, cleanTranslatorOutput, protectNames, sentenceChunks,
   TRANSLATOR_CHUNK_CHARS, translatorInvocation, trimToSentence,
 } from './lib/translation.ts';
-import { indexOrigins, originFor, type NameOrigin } from './lib/streetNameOrigins.ts';
+import { bridgeOriginBySpelling, indexOrigins, originFor, type NameOrigin } from './lib/streetNameOrigins.ts';
+import { bridgeMatchKey } from '../src/canalRecall/bridgeWikidata.ts';
 
 const argument = (name: string) => process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const directory = path.resolve('public/data/extracts/amsterdam');
@@ -75,7 +76,8 @@ if (!process.argv.includes('--all')) {
   for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json', 'street'], ['water.json', 'water'], ['bridges.json', 'bridge']] as const) {
     const data = JSON.parse(await readFile(path.join(directory, file), 'utf8'));
     for (const feature of (Array.isArray(data) ? data : data.features) as Array<{ name?: string }>) {
-      const origin = feature.name ? originFor(index, feature.name, kind) : null;
+      const origin = !feature.name ? null
+        : kind === 'bridge' ? bridgeOriginBySpelling(index, feature.name, bridgeMatchKey) : originFor(index, feature.name, kind);
       if (origin) used.add(origin);
     }
   }
