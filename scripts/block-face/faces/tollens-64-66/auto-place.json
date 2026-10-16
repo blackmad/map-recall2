@@ -3,7 +3,7 @@
  "street": "Tollensstraat",
  "library": "bellamy",
  "stripDate": "2016-08-09",
- "seconds": 0.17,
+ "seconds": 0.21,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,17 +42,43 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.62 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.62,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.92,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.05,
+       "widthM": 2.4,
+       "centre": 0.33
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; strip shows balconies (dark open axis 1.07 m at 0.62 (light 0.4): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
-     "built 1895, type 1928-1935"
+     "built 1895, type 1928-1935",
+     "strip shows balconies (dark open axis 1.07 m at 0.62 (light 0.4): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -117,6 +143,20 @@
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.7,
+       "widthM": 1,
+       "centre": 0.26
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0.01
    },

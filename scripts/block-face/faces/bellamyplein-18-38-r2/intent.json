@@ -31,8 +31,7 @@
     "measuredPalette": {
      "brick": "#8d6139",
      "evidence": "strip 2024-12-11 span 1323-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "box-dormer"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -53,8 +52,7 @@
    "address": "Bellamyplein 24",
    "type": {
     "type": "bellamy-1904-balcony-axis",
-    "ground": "door-left",
-    "crown": "box-dormer"
+    "ground": "door-left"
    },
    "groundFloor": {
     "use": "residential",
@@ -114,8 +112,7 @@
     "measuredPalette": {
      "brick": "#73513c",
      "evidence": "strip 2024-12-11 span 1983-2203: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "box-dormer"
+    }
    },
    "groundFloor": {
     "use": "shop",

@@ -3,7 +3,7 @@
  "street": "Ten Katestraat",
  "library": "bellamy",
  "stripDate": "2018-07-29",
- "seconds": 0.29,
+ "seconds": 0.39,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.281,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.16,
     "foliageShare": 0.09
    },
@@ -112,6 +120,20 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.313,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.63,
+       "widthM": 0.82,
+       "centre": 0.5
+      }
+     ]
+    },
     "voidShare": 0.16,
     "foliageShare": 0.1
    },
@@ -188,18 +210,44 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.181,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.16 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.16,
+       "light": 0.07
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.38,
+       "widthM": 0.9,
+       "centre": 0.59
+      },
+      {
+       "atM": 4.95,
+       "widthM": 1.4,
+       "centre": 0.83
+      }
+     ]
+    },
     "voidShare": 0.04,
     "foliageShare": 0.08
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1904, type 1928-1935; frontage 8.78 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1904, type 1928-1935; frontage 8.78 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.13 m at 0.16 (light 0.07): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1904, type 1928-1935",
-     "frontage 8.78 m, type 4.8-5.8 m"
+     "frontage 8.78 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.13 m at 0.16 (light 0.07): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {

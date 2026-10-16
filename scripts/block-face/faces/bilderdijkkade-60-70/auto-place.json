@@ -3,7 +3,7 @@
  "street": "Bilderdijkkade",
  "library": "bellamy",
  "stripDate": "2024-11-29",
- "seconds": 0.36,
+ "seconds": 1.25,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,17 +42,38 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.79 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.79,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.25,
+       "widthM": 0.9,
+       "centre": 0.9
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.25
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; strip shows balconies (dark open axis 0.72 m at 0.79 (light 0.22): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
-     "built 1895, type 1928-1935"
+     "built 1895, type 1928-1935",
+     "strip shows balconies (dark open axis 0.72 m at 0.79 (light 0.22): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -117,18 +138,39 @@
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.55 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.55,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.3,
+       "widthM": 0.9,
+       "centre": 0.86
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.25
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.88 m at 0.55 (light 0.19): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1895, type 1928-1935",
-     "frontage 4 m, type 4.8-5.8 m"
+     "frontage 4 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.88 m at 0.55 (light 0.19): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -187,18 +229,43 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.24 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.24,
+       "light": 0.17
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.61,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.9,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.15
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 3.93 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 3.93 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.13 m at 0.24 (light 0.17): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1895, type 1928-1935",
-     "frontage 3.93 m, type 4.8-5.8 m"
+     "frontage 3.93 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.13 m at 0.24 (light 0.17): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -263,18 +330,49 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.22 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.22,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.88,
+       "centre": 0.69,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 0.97,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.63,
+       "widthM": 0.95,
+       "centre": 0.25
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.14
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4.1 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4.1 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.82 m at 0.22 (light 0.16): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1895, type 1928-1935",
-     "frontage 4.1 m, type 4.8-5.8 m"
+     "frontage 4.1 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.82 m at 0.22 (light 0.16): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -333,6 +431,35 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.8,
+       "widthM": 1.1,
+       "centre": 0.64
+      },
+      {
+       "atM": 10.5,
+       "widthM": 1,
+       "centre": 0.5
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.1,
+       "centre": 0.2
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.15
    },

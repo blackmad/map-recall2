@@ -3,7 +3,7 @@
  "street": "Bellamystraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.19,
+ "seconds": 0.41,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -37,6 +37,25 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.76,
+     "balconies": true,
+     "why": "dark open axis 1.95 m at 0.18 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.95,
+       "centre": 0.18,
+       "light": 0.34
+      },
+      {
+       "widthM": 3.25,
+       "centre": 0.69,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.6
    },
@@ -106,6 +125,20 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3 m at 0.5 (light 0.06): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3,
+       "centre": 0.5,
+       "light": 0.06
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.8
    },
@@ -176,18 +209,54 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.132,
+    "structure": {
+     "bayWidthM": 1.9,
+     "bayCentre": 0.83,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.57 m (1.5 m wide), 7.95 m (3.45 m wide), 7.2 m (1.6 m wide)",
+     "openAxes": [
+      {
+       "widthM": 1.88,
+       "centre": 0.83,
+       "light": 0.76
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.57,
+       "widthM": 1.5,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.95,
+       "widthM": 3.45,
+       "centre": 0.26
+      },
+      {
+       "atM": 7.2,
+       "widthM": 1.6,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.17,
+       "widthM": 0.95,
+       "centre": 0.19
+      }
+     ]
+    },
     "voidShare": 0.04,
     "foliageShare": 0.1
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1992, type 1928-1935; frontage 10.05 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1992, type 1928-1935; frontage 10.05 m, type 4.8-5.8 m; strip shows balconies (balcony slabs stacked at 10.57 m (1.5 m wide), 7.95 m (3.45 m wide), 7.2 m (1.6 m wide)))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1992, type 1928-1935",
-     "frontage 10.05 m, type 4.8-5.8 m"
+     "frontage 10.05 m, type 4.8-5.8 m",
+     "strip shows balconies (balcony slabs stacked at 10.57 m (1.5 m wide), 7.95 m (3.45 m wide), 7.2 m (1.6 m wide))"
     ],
     "criteria": [
      {
