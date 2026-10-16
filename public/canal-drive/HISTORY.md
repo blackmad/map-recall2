@@ -30,6 +30,46 @@ Satellietbaan 24343390 + 1252138995 (`CHAINED_BRIDGE_SURFACES`), OSM7382983 and
 OSM7041280 (parapet within 0.5 m of the carriageway's outer edge: 81 % / 94 %
 against 10 % / 0 % at the old half-width).
 
+## Houseboats placed from the orthophoto, boat by boat (2026-10-16)
+
+User: "is there any way to actually get these right in placement?" and "see
+if there's municipal data, try hard for that one first". Lane
+`lane/houseboat-kinds-20261016` (eae623d2e). No open municipal per-berth
+source tells arks from ships: BAG ligplaatsen (geometry and status), WOZ
+(2,850 deelobjecten, "Ligplaats"/"Woonboot" only), varen (commercial
+vessels), the vergunningen endpoints, BGT, open_geodata, data.overheid.nl,
+the monument register and the Port of Amsterdam data were all checked; the
+permit register is not published. Instead 1,505 ship-hull, empty-looking
+and near-ship outlines were labelled blind on PDOK 8 cm sheets (blind repeat
+of the ring set: 79 % exact, 97 % ark vs ship). `scripts/houseboat-kinds/
+enrich.ts` writes `form`, `stale`, `cabinShare` and `roofHex` (10 measured
+roof classes after haze removal) into `houseboats.json` (staging, then
+`--publish`; `--check` runs in `test:houseboat-kinds`). The city draws 1,962
+arks, 334 barges and 576 hullboxes; 211 outlines over empty water or a
+dinghy are hidden; the hash decides only 56 ship hulls under trees or in
+shadow. The corridor overrides table is retired. Re-run `enrich.ts
+--publish` after any `build:houseboats` refetch, which drops these fields.
+
+## Entrepotdok roofs: materials from the orthophoto, one brick (2026-10-16)
+
+User (2026-10-16), riding north over the Nijlpaardenbrug: "are these roofs
+broken in the game? they look disconnected". Lane
+`lane/entrepotdok-roofs-20261016` (4d9d21faf, 6fca13b0d; sheet
+`docs/images/look/entrepotdok-roofs-20261016.jpg`). The large-tier recipe
+entrepotdok-164981's 3DBAG shell was closed (0 open edges, normals right);
+the disconnection was colour. Its flat roofs drew as pale gravel (the slate
+default's flat tone, luma 139), its courtyard and rear walls in an orange
+default brick beside the dark measured fronts, and the steep roofs behind
+the gables in navy slate (luma 76, the "black triangles"). The 2025
+orthophoto shows orange tiles on those roofs and dark flat roofs with solar
+panels; the Laagte Kadijk panorama shows the fronts' brick at the rear.
+Kit: large intent `roof.flat`, `roof.surfaces` (3DBAG roof planes by
+number, with evidence), `measured.otherWalls`, source kind `orthophoto`;
+unchanged output when absent (114 large meshes identical). Regression
+`largeRoofMaterials.test.ts`. Still open: the alternating blue-green glazed
+faces, solar panels, 3DBAG courtyard sliver roofs (286/287/316/285). OZV
+115-125 stays held for a different cause (its dark measured wall colours).
+
 ## The Berensluis and its Prinsengracht neighbours: one deck, landed ends, a level girder (2026-10-16)
 
 User (2026-10-16): "what's going on with this bridge?" Lane

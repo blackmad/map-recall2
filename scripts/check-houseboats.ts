@@ -7,9 +7,11 @@ import { houseboatGeometry, houseboatsByTile } from '../src/canalRecall/houseboa
 const { boats } = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/houseboats.json', 'utf8'));
 assert.ok(boats.length > 2500, `extract carries the city's houseboats (${boats.length})`);
 const origin = { lng: 4.9, lat: 52.37 };
-let tris = 0, failed = 0;
+let tris = 0, failed = 0, stale = 0;
 for (const boat of boats) {
   const g = houseboatGeometry(boat, origin);
+  // An outline the orthophoto shows as an empty berth is deliberately not drawn.
+  if (boat.stale) { assert.equal(g, null, `${boat.id}: stale outline draws nothing`); stale++; continue; }
   if (!g) { failed++; continue; }
   tris += g.tris.length;
   for (const t of g.tris) {
@@ -21,10 +23,10 @@ for (const boat of boats) {
   assert.ok(g.tris.filter(t => t.p.every(p => p[2] === t.p[0][2]) && t.p[0][2] > 0.2 && t.p[0][2] < 1.2).every(t => t.n[2] > 0), `${boat.id}: decks face up`);
 }
 assert.ok(failed / boats.length < 0.01, `almost every footprint builds (${failed} failed)`);
-const perBoat = tris / (boats.length - failed);
+const perBoat = tris / (boats.length - failed - stale);
 assert.ok(perBoat < 200, `triangle budget per boat (${perBoat.toFixed(0)})`);
 assert.equal([...houseboatsByTile(boats).values()].reduce((n, list) => n + list.length, 0), boats.length, 'every boat lands in one tile');
-console.log(`houseboats: ok (${boats.length} boats, ${failed} without geometry, ${perBoat.toFixed(0)} triangles each)`);
+console.log(`houseboats: ok (${boats.length} boats, ${failed} without geometry, ${stale} empty berths hidden, ${perBoat.toFixed(0)} triangles each)`);
 
 // A landmark aboard a boat lights that boat (user report 2026-10-03,
 // "houseboat museum doesn't light up yellow when the trivia comes up"); one
