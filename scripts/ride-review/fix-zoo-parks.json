@@ -1,0 +1,7 @@
+{ "mode": "car", "dest": "Artis", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "wertheimpark", "at": [4.9093, 52.36742, 120] },
+    { "name": "hortus", "at": [4.9085, 52.36725, 190] },
+    { "name": "noordermarkt", "at": [4.8862, 52.37945, 0] }
+  ] }
