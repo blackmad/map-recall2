@@ -855,6 +855,18 @@ export function dashed(m: MeshArrays, pts: readonly Vec2[], offset: number, widt
       const st = stations(piece), half = st[st.length - 1] / 2, mid = pointAt(piece, st, half), q = pointAt(piece, st, Math.min(st[st.length - 1], half + 0.3)), r = pointAt(piece, st, Math.max(0, half - 0.3));
       const nl = leftOf(dirOf(r, q));
       if (!keep(mid[0] + nl[0] * offset, mid[1] + nl[1] * offset)) { dropped++; continue; }
+      // Trim the ends back onto the kept surface in 0.1 m steps: a zebra bar whose middle is on the rijbaan stops at
+      // its edge instead of running 0.3 m onto the fietspad beside it (the Bilderdijkgracht crossings).
+      // Both long edges are tested (a bar's corner reaches over a diagonal kerb line before its centre line does).
+      const len = st[st.length - 1], on = (s: number) => { const p = pointAt(piece, st, s); return keep(p[0] + nl[0] * (offset - width / 2), p[1] + nl[1] * (offset - width / 2)) && keep(p[0] + nl[0] * (offset + width / 2), p[1] + nl[1] * (offset + width / 2)); };
+      let s0 = 0, s1 = len;
+      while (s0 < half && !on(s0)) s0 += 0.1;
+      while (s1 > half && !on(s1)) s1 -= 0.1;
+      if (s0 > 0 || s1 < len) {
+        const sub = cutIntervals(piece, [[-1, s0], [s1, len + 1]])[0];
+        if (sub && sub.length >= 2) ribbon(m, sub, offset, width, height, lift, { step: 3 });
+        continue;
+      }
     }
     ribbon(m, piece, offset, width, height, lift, { step: 3 });
   }

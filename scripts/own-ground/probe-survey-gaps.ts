@@ -1,6 +1,6 @@
 // roads-v1: land in the survey's gaps around junctions, where the band model (roads off) paved.
 //
-//   npx tsx scripts/own-ground/probe-survey-gaps.ts [cell,cell,…] [--radius 12] [--list 40]   # default: every roads-v1 cell
+//   [NO_GAPS=1] npx tsx scripts/own-ground/probe-survey-gaps.ts [cell,cell,…] [--radius 12] [--list 40]   # default: every roads-v1 cell
 //
 // For every junction node of the cell, a 1 m grid within the radius: points under no wegdeel polygon whose top is
 // land with the survey on but a street surface with it off (a band, a node fill or a pocket paved it). Counted
@@ -24,7 +24,8 @@ export interface GapResult { key: string; junctions: number; gapNodes: number; g
 
 export async function surveyGaps(on: GroundStore, off: GroundStore, key: string, radius = RADIUS): Promise<GapResult> {
   const input = await on.cellInput(key, 0);
-  const cellOn = buildCell(input), cellOff = buildCell(await off.cellInput(key, 0));
+  // NO_GAPS=1: the build without the survey-gap pass (pockets.ts SurveyGap), for the before numbers.
+  const cellOn = buildCell(process.env.NO_GAPS === '1' ? { ...input, surveyGaps: false } : input), cellOff = buildCell(await off.cellInput(key, 0));
   const [x0, y0, x1, y1] = on.cellRect(key);
   const seen = new Set<number>();
   const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id)));

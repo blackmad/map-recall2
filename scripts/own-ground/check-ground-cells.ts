@@ -4,6 +4,7 @@
 //
 //   npx tsx scripts/own-ground/check-ground-cells.ts            # cells around BRU0166 + BRU0044, both LODs
 //   npx tsx scripts/own-ground/check-ground-cells.ts --all      # every cell of the OSM cell manifest (LOD 0)
+//   npx tsx scripts/own-ground/check-ground-cells.ts --road-regressions  # only the roads-v1 named regressions
 //   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
 //
 // Exit code 1 on a failed check.
@@ -76,6 +77,7 @@ async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
+  if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -654,7 +656,7 @@ async function roadRegressions(): Promise<void> {
     let found = false;
     for (const key of [...roadsStore.roadCells].sort()) {
       const n = await neighbourhood(roadsStore, ...cellCentre(roadsStore, key)), way = n.ways.find(w => w.id === reg.way);
-      if (!way) continue;
+      if (!way || roadsStore.cellAt(way.points[0][0], way.points[0][1]) !== key) continue;
       found = true;
       const total = reg.fractions.length * reg.offsets.length, hits = wayStrayHits(n.cells, way, reg);
       check(hits.length === 0, `${reg.id} roads-v1: ${total - hits.length}/${total} probes clean${hits.length ? ` ${JSON.stringify(hits)}` : ''}`);
@@ -666,7 +668,9 @@ async function roadRegressions(): Promise<void> {
     let found = false;
     for (const key of [...roadsStore.roadCells].sort()) {
       const c = cellCentre(roadsStore, key), n = await neighbourhood(roadsStore, ...c), ways = n.ways.filter(w => reg.ways.includes(w.id));
-      if (ways.length < reg.ways.length || !n.index) continue;
+      // The cell the crossings lie in (with every cell published, an earlier cell's 3×3 also holds the ways but not
+      // all the polygons around them).
+      if (ways.length < reg.ways.length || !n.index || roadsStore.cellAt(ways[0].points[0][0], ways[0].points[0][1]) !== key) continue;
       found = true;
       const index = n.index, onRoad = (x: number, y: number) => index.onRoad(x, y) || index.classAt(x, y) === null;
       const r = zebraOffRoad(n.cells, ways, reg, onRoad);
@@ -678,13 +682,15 @@ async function roadRegressions(): Promise<void> {
     check(found, `${reg.id}: ways ${reg.ways.join(', ')} found in a roads-v1 cell`);
   }
   for (const reg of SURVEY_GAPS) {
-    const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y);
-    if (!roadsStore.roadCells.has(n.key) || !n.index) { console.log(`skip ${reg.id} (cell ${n.key} not in roads-v1)`); continue; }
-    const keys = GroundStore.neighbours(n.key).filter(k => roadsStore.covers(k));
-    const off: BuiltCell[] = [], noGaps: BuiltCell[] = [];
-    for (const k of keys) { off.push(buildCell(await store.cellInput(k, 0))); noGaps.push(buildCell({ ...(await roadsStore.cellInput(k, 0)), surveyGaps: false })); }
-    const r = gapLand(n.cells, off, [x, y], reg.radiusM, n.index), pin = gapLand(noGaps, off, [x, y], reg.radiusM, n.index);
-    check(r.land <= reg.maxLandM2, `${reg.id} roads-v1 survey gap: ${r.land} m² land of ${r.probes} m² the bands paved (≤ ${reg.maxLandM2}; without the gap pass ${pin.land})`);
+    // The cell alone, its neighbours' roads withheld: the extract's edge (where the pilot ended at the Nieuwmarkt).
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), key = roadsStore.cellAt(x, y);
+    if (!roadsStore.roadCells.has(key)) { console.log(`skip ${reg.id} (cell ${key} not in roads-v1)`); continue; }
+    const full = await roadsStore.cellInput(key, 0), roads = full.roads ?? null;
+    const edge = { ...full, roadsAround: (full.roadsAround ?? []).map(r => (r === roads ? r : null)), coverWays: roads?.coverWays ?? [] };
+    const index = new RoadIndex([roads]);
+    const off = [buildCell(await store.cellInput(key, 0))];
+    const r = gapLand([buildCell(edge)], off, [x, y], reg.radiusM, index), pin = gapLand([buildCell({ ...edge, surveyGaps: false })], off, [x, y], reg.radiusM, index);
+    check(r.land <= reg.maxLandM2, `${reg.id} roads-v1 survey gap (extract edge): ${r.land} m² land of ${r.probes} m² the bands paved (≤ ${reg.maxLandM2}; without the gap pass ${pin.land})`);
     check(pin.land > reg.maxLandM2, `${reg.id}: without the survey-gap pass ${pin.land} m² land (the pin is live)`);
   }
   // The pin is live: a pilot cell with roads draws polygons and culls land under them; without, no roads stats.

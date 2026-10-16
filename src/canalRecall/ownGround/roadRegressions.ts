@@ -33,7 +33,9 @@ export const STREET_TOPS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asph
  * roads-v1 survey gaps (roads lane phase 2, 2026-10-16): a junction node under no wegdeel polygon (a plein the BGT
  * files as terrain) where the covered ways draw no bands, so the land showed where the band model paved. The
  * pocket pass paves a disc around such a node again (pockets.ts SurveyGap). `maxLandM2`: land points (1 m grid,
- * within `radiusM`, under no polygon) where the build without the survey shows a street surface.
+ * within `radiusM`, under no polygon) where the build without the survey shows a street surface. With every cell
+ * published the Nieuwmarkt nodes lie in polygons the neighbour cell 0_0 owns; the gap shows at the extract's edge
+ * (where the pilot ended), so check-ground-cells builds the cell with its neighbours' roads withheld.
  */
 export interface SurveyGapRegression { id: string; label: string; at: [number, number]; radiusM: number; maxLandM2: number }
 export const SURVEY_GAPS: SurveyGapRegression[] = [
