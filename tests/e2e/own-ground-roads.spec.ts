@@ -9,7 +9,7 @@ import { openRoute } from './helpers';
 //   OWN_GROUND=1 PW_PORT=4448 npx playwright test own-ground-roads --project=desktop
 test.skip(!process.env.OWN_GROUND, 'set OWN_GROUND=1');
 
-const OUT = process.env.ROADS_SHOTS_OUT || (process.env.ROADS === 'bgt' ? 'artifacts/own-ground-roads/bgt' : 'artifacts/own-ground-roads/after');
+const OUT = process.env.ROADS_SHOTS_OUT || (process.env.ROADS !== '0' ? 'artifacts/own-ground-roads/bgt' : 'artifacts/own-ground-roads/after');
 type Place = { lng: number; lat: number; bearing: number };
 
 export const ROAD_SPOTS: [string, Place][] = [
@@ -32,8 +32,8 @@ async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
-  // ROADS=bgt: the roads-v1 BGT road partition (phase 1 opt-in, `?roads=bgt`); shots land in a separate directory for before/after.
-  if (process.env.ROADS === 'bgt') await page.addInitScript(() => { (window as any).__canalRecallRoads = true; });
+  // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
+  if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
   await openRoute(page, { travelMode: 'car', viewMode, abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;
