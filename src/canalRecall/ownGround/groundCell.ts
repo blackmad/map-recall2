@@ -21,7 +21,7 @@ import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
-import { DECK_REACH_MAX_M, deckReach, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
+import { bandCorridor, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, drapeBisect, CULL_MARGIN_M, CULL_RES_M, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
@@ -75,6 +75,8 @@ export interface CellInput {
   parksAround?: readonly (ParksCell | null)[];
   /** Pave the land pockets near junctions (pockets.ts); default on at LOD 0. */
   pockets?: boolean;
+  /** Clip measured deck tops and faces to the water and the street bands (decks.ts deckWidths); default on. */
+  clipDecks?: boolean;
   /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
   dropWays?: readonly number[];
   project: (lngLat: [number, number]) => Vec2;
@@ -271,12 +273,14 @@ export function buildCell(input: CellInput): BuiltCell {
     add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M, input.decks.length ? underDeck(input.decks) : undefined));
   }
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
+  // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).
+  const clip = input.clipDecks !== false, onBridgeBand = bandCorridor(ways.filter(isBridgeWay).map(w => ({ points: w.points, half: w.section.halfWidth })));
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach));
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach);
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined));
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, clip ? deckWidths(deck, overWater, onBridgeBand) : undefined);
     if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }

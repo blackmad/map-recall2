@@ -17,7 +17,7 @@ import { bridgeFacts, flatHintAt, KIT_BUDGET, registerHint } from '../../src/can
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -229,6 +229,7 @@ async function main(): Promise<void> {
   await pocketRegressions();
   await openingRegressions();
   await approachRegressions();
+  await deckSlabRegressions();
   await zooRegressions();
   await parkFillRegressions();
   await farRingRegressions();
@@ -562,6 +563,30 @@ async function parkRegressions(): Promise<void> {
       }
       check(n === 0, `${reg.id}: BAG pand ${reg.building.pand} keeps its footprint (${n} park vertices inside)`);
     }
+  }
+}
+
+/**
+ * Deck tops stay off the quays (ride review 2026-10-14, J6): the Nieuwe-Wercksbrug BRU0063 by the Westerkerk is
+ * 17.2 m wide with an 18 m outline side, and its deck span [20.2, 53.9] runs 4–10 m past its water [24.3, 44.3]; the
+ * widened deck top lay as grey slabs over the four corners, across the quay pavements and the cycle-lane ends.
+ * decks.ts deckWidths clips the top to the water (+1 m onto the quay) and the bridge ways' street bands. The square
+ * metres where the deck top is the topmost surface over land (roadRegressions deckSlabOnLand), with and without.
+ */
+const SLABS: [string, number, number, number, string][] = [['BRU0063', 4.88292, 52.37433, 40, 'Nieuwe-Wercksbrug, Raadhuisstraat']];
+async function deckSlabRegressions(): Promise<void> {
+  const noClip = new GroundStore(readExtract, { clipDecks: false });
+  await noClip.init();
+  for (const [id, lng, lat, max, label] of SLABS) {
+    const [x, y] = toLocal(lng, lat);
+    const slab = async (s: GroundStore) => {
+      const cells: BuiltCell[] = [];
+      for (const k of GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k))) cells.push(buildCell(await s.cellInput(k, 0)));
+      return deckSlabOnLand(cells, s.surface.decks.find(d => d.profile.id === id)!);
+    };
+    const on = await slab(store), off = await slab(noClip);
+    check(on.slabM2 <= max, `${id} (${label}): deck top over land ${on.slabM2} m² of ${on.deckM2} m² seen (at most ${max})`);
+    check(off.slabM2 > 2 * max, `${id}: without the clip ${off.slabM2} m² (the pin is live)`);
   }
 }
 
