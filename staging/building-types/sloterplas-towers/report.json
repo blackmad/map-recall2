@@ -1,0 +1,180 @@
+{
+ "area": "sloterplas-towers",
+ "chunkGroundNapM": -0.545,
+ "generatedAt": "2026-10-16",
+ "instances": 3,
+ "perType": {
+  "nw-gallery-slab-15st-hogguer": {
+   "instances": 3,
+   "trisPerInstance": {
+    "min": 23402,
+    "median": 23402,
+    "max": 23416
+   },
+   "trianglesTotal": 70220,
+   "warnings": 4
+  }
+ },
+ "glb": {
+  "baked": {
+   "parts": [
+    {
+     "file": "sloterplas-towers-baked-1.glb",
+     "instances": 2,
+     "triangles": 46818,
+     "bytes": 771200
+    },
+    {
+     "file": "sloterplas-towers-baked-2.glb",
+     "instances": 1,
+     "triangles": 23402,
+     "bytes": 411612
+    }
+   ],
+   "bytes": 1182812,
+   "bytesUncompressed": 4572208,
+   "triangles": 70220,
+   "vertices": 128947
+  },
+  "merged": {
+   "bytes": 1205088,
+   "bytesUncompressed": 4558160,
+   "triangles": 70220,
+   "primitives": 11,
+   "vertices": 128947
+  },
+  "instanced": {
+   "bytes": 776924,
+   "bytesUncompressed": 3049740,
+   "triangles": 70220,
+   "primitives": 22,
+   "vertices": 85974,
+   "designGroups": 2,
+   "maxScaleDeviation": 0.008
+  },
+  "bucketed": {
+   "note": "one unit mesh per (design group, +-0.25 m length/width, +-0.2 m eaves bucket) instead of per-instance scale",
+   "meshes": 2,
+   "bytesEstimate": 821944
+  },
+  "saving": {
+   "bytesVsMerged": 0.355,
+   "bytesVsBaked": 0.343,
+   "bytesUncompressedVsMerged": 0.331
+  }
+ },
+ "groups": [
+  {
+   "key": "nw-gallery-slab-15st-hogguer|concrete-buff|15|flat|long|solid",
+   "members": 2,
+   "dimensionBuckets": 1,
+   "bucketedBytesEstimate": 410828,
+   "maxScaleDeviation": 0.008,
+   "nominal": {
+    "L": 109.5,
+    "W": 12.6,
+    "eaves": 44.04
+   },
+   "unitTriangles": 23402,
+   "unitBytes": 410828
+  },
+  {
+   "key": "nw-gallery-slab-15st-hogguer|long-entrance|15|flat|long|solid",
+   "members": 1,
+   "dimensionBuckets": 1,
+   "bucketedBytesEstimate": 410996,
+   "maxScaleDeviation": 0,
+   "nominal": {
+    "L": 109.5,
+    "W": 12.3,
+    "eaves": 43.8
+   },
+   "unitTriangles": 23416,
+   "unitBytes": 410996
+  }
+ ],
+ "instancesDetail": [
+  {
+   "pandId": "0363100012151987",
+   "held": null,
+   "type": "nw-gallery-slab-15st-hogguer",
+   "variant": "concrete-buff",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 15,
+   "tris": 23402,
+   "lengthM": 109.5,
+   "widthM": 12.6,
+   "eavesM": 44.04,
+   "roof3dbag": "gable",
+   "roofUsed": "flat",
+   "ridge": "long",
+   "rectIoU": 0.738,
+   "frontBearingDeg": 90,
+   "frontStreet": "Burgemeester Hogguerstraat",
+   "frontStreetDistM": 13.2,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG roof is gable but the type is flat: using the type's roof class with 3DBAG heights",
+    "body 109.50 x 12.60 m from the 3DBAG roof (BAG ring rectangle 109.55 x 24.99 m)"
+   ]
+  },
+  {
+   "pandId": "0363100012063809",
+   "held": null,
+   "absorbed": [
+    "0363100012201815"
+   ],
+   "type": "nw-gallery-slab-15st-hogguer",
+   "variant": "long-entrance",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 15,
+   "tris": 23416,
+   "lengthM": 109.5,
+   "widthM": 12.3,
+   "eavesM": 43.8,
+   "roof3dbag": "flat",
+   "roofUsed": "flat",
+   "ridge": "long",
+   "rectIoU": 0.73,
+   "frontBearingDeg": 90,
+   "frontStreet": "Burgemeester Hogguerstraat",
+   "frontStreetDistM": 13.1,
+   "ambiguous": false,
+   "warnings": [
+    "body 109.50 x 12.30 m from the 3DBAG roof incl. 0363100012201815 (BAG ring rectangle 109.55 x 24.99 m)"
+   ]
+  },
+  {
+   "pandId": "0363100012095578",
+   "held": null,
+   "absorbed": [
+    "0363100012196327"
+   ],
+   "type": "nw-gallery-slab-15st-hogguer",
+   "variant": "concrete-buff",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 15,
+   "tris": 23402,
+   "lengthM": 109.5,
+   "widthM": 12.5,
+   "eavesM": 43.81,
+   "roof3dbag": "flat",
+   "roofUsed": "flat",
+   "ridge": "long",
+   "rectIoU": 0.749,
+   "frontBearingDeg": 90,
+   "frontStreet": "Burgemeester Hogguerstraat",
+   "frontStreetDistM": 12.4,
+   "ambiguous": false,
+   "warnings": [
+    "body 109.50 x 12.50 m from the 3DBAG roof incl. 0363100012196327 (BAG ring rectangle 105.73 x 24.97 m)"
+   ]
+  }
+ ]
+}
