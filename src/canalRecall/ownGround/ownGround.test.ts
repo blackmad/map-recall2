@@ -30,7 +30,7 @@ import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
 import { FLUSH_PARAPET } from './bridgeKit';
-import { fillPockets, POCKET_LIFT } from './pockets';
+import { fillPockets, POCKET_LIFT, SURVEY_GAP_MAX_R } from './pockets';
 import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
 import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
 import type { DeckProfile } from '../elevation/bridgeDeck';
@@ -1093,6 +1093,29 @@ test('land pockets: a small gap enclosed by sidewalks near a junction is paved; 
   assert.ok(tris.every(f => Math.abs(f.c[2] - POCKET_LIFT) < 1e-9), 'under every band');
   assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 80]], () => 0, POCKET_LIFT).stats.pockets, 0, 'no junction within POCKET_NEAR_M');
   assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT, { maxM2: 10 }).stats.pockets, 0, 'larger than the cap');
+});
+
+test('survey gaps (roads-v1): a junction node in a gap of the survey paves the open land within its disc; a park-ringed disc stays land', () => {
+  // A plein the survey does not cover (Nieuwmarkt): klinker polygons along two sides of a 60 m cell, open land
+  // between them that touches the cell edge, so the pocket flood alone never paves it.
+  const quad = (m: MeshArrays, x0: number, y0: number, x1: number, y1: number) => { const b = m.positions.length / 3; m.positions.push(x0, y0, 0, x1, y0, 0, x1, y1, 0, x0, y1, 0); m.uvs.push(0, 0, 0, 0, 0, 0, 0, 0); m.indices.push(b, b + 1, b + 2, b, b + 2, b + 3); };
+  const klinker = emptyMesh(), park = emptyMesh();
+  quad(klinker, 0, 20, 60, 24); quad(klinker, 28, 0, 32, 60);
+  quad(park, 50, 0, 60, 10);
+  const cover = [{ meshes: [klinker], as: 'klinker' as const }, { meshes: [park], as: null }];
+  const plain = fillPockets(cover, [0, 0, 60, 60], [[30, 22]], () => 0, POCKET_LIFT);
+  assert.equal(plain.stats.pockets, 0, 'the open land touches the cell edge: no pocket');
+  const r = fillPockets(cover, [0, 0, 60, 60], [[30, 22]], () => 0, POCKET_LIFT, { gaps: [{ p: [30, 22], r: 10 }] });
+  assert.equal(r.stats.gaps, 1);
+  const disc = Math.PI * 100, covered = 4 * 20 + 4 * 20 - 16;
+  assert.ok(Math.abs(r.stats.gapM2! - (disc - covered)) < 12, `the bare part of the disc is paved (${r.stats.gapM2} m²)`);
+  const tris = faces(r.meshes.klinker!);
+  assert.ok(tris.every(f => Math.hypot(f.c[0] - 30, f.c[1] - 22) < 10.5), 'inside the disc');
+  // The radius is capped; a disc mostly over a park stays land.
+  const big = fillPockets(cover, [0, 0, 60, 60], [], () => 0, POCKET_LIFT, { gaps: [{ p: [30, 22], r: 40 }] });
+  assert.ok(big.stats.gapM2! <= Math.PI * SURVEY_GAP_MAX_R ** 2);
+  const parkDisc = fillPockets(cover, [0, 0, 60, 60], [], () => 0, POCKET_LIFT, { gaps: [{ p: [55, 5], r: 4 }] });
+  assert.equal(parkDisc.stats.gaps ?? 0, 0);
 });
 
 test('water opens under a footbridge whose water polygon stops at it (Melkmeisjesbrug), not under a wide deck', () => {

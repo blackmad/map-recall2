@@ -7,7 +7,7 @@ import { gunzipSync } from 'node:zlib';
 import { encodeLine } from './parks';
 import {
   KERB_HIGH_CLASSES, KERB_LOW_CLASSES, ROAD_CELL_BUDGET_GZ, ROAD_CLASSES, ROAD_MESHES, ROADS_ATTRIBUTION,
-  decodeRoadCell, decodeRoadLine, isRoadCell, kerbBetween, roadCellProblems, roadMesh, roadsManifestProblems, type RoadCell,
+  FIETSSTRAAT_RAIL_MAX_M, decodeRoadCell, decodeRoadLine, fietsstraatSection, isRoadCell, kerbBetween, roadCellProblems, roadMesh, roadsManifestProblems, type RoadCell,
 } from './roadCells';
 
 const sample = (): RoadCell => ({
@@ -19,6 +19,22 @@ const sample = (): RoadCell => ({
   ],
   kerbs: [encodeLine([[0, 6], [20, 6]])],
   coverWays: [7372572, 1239242881],
+});
+
+test('fietsstraatSection: red per section; a junction polygon at its end and a rijbaan with tram track stay grey', () => {
+  // A plain fietsstraat section: only the fietsstraat runs along it.
+  assert.equal(fietsstraatSection({ fiets: 60, other: 0, rails: 0 }), true);
+  // Through a junction the cross street measures less than the fietsstraat: still red.
+  assert.equal(fietsstraatSection({ fiets: 14, other: 10, rails: 0 }), true);
+  // The junction polygon at a fietsstraat's end: 6 m of it against the cross street's 20 m: grey.
+  assert.equal(fietsstraatSection({ fiets: 6, other: 20, rails: 0 }), false);
+  // The Marnixstraat busway by the Tweede Marnixplantsoen: the fietsstraat on the polygon, and tram track along it.
+  assert.equal(fietsstraatSection({ fiets: 40, other: 40, rails: 40 }), false);
+  // A tram line only crossing a fietsstraat leaves it red.
+  assert.equal(fietsstraatSection({ fiets: 60, other: 8, rails: 8 }), true);
+  assert.equal(fietsstraatSection({ fiets: 60, other: 0, rails: FIETSSTRAAT_RAIL_MAX_M }), false);
+  // A sliver touched by the fietsstraat's end is not painted.
+  assert.equal(fietsstraatSection({ fiets: 2, other: 0, rails: 0 }), false);
 });
 
 test('roadMesh: surface by class and fysiek_voorkomen; a fietsstraat turns only a carriageway red', () => {

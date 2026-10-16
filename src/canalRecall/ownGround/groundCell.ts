@@ -26,7 +26,7 @@ import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
-import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
+import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import type { RoadCell } from './roadCells.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -51,7 +51,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Red rijbaan polygons drawn grey under tram track. */ railGrey?: number }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -81,6 +81,8 @@ export interface CellInput {
   parksAround?: readonly (ParksCell | null)[];
   /** Pave the land pockets near junctions (pockets.ts); default on at LOD 0. */
   pockets?: boolean;
+  /** roads-v1: pave the survey-gap discs at junction nodes (default on; off only for the regression's pin). */
+  surveyGaps?: boolean;
   /** Clip measured deck tops and faces to the water and the street bands (decks.ts deckWidths); default on. */
   clipDecks?: boolean;
   /** The cell's surveyed road partition (roads-v1, roadSurfaces.ts), null when it has none or roads are off. */
@@ -231,8 +233,6 @@ export function buildCell(input: CellInput): BuiltCell {
   let rb: [number, number, number, number] = [x0 - ROAD_FAST_PAD_M, y0 - ROAD_FAST_PAD_M, x1 + ROAD_FAST_PAD_M, y1 + ROAD_FAST_PAD_M];
   for (const w of ways) if (own.has(w.id)) for (const p of w.points) rb = [Math.min(rb[0], p[0] - 10), Math.min(rb[1], p[1] - 10), Math.max(rb[2], p[0] + 10), Math.max(rb[3], p[1] + 10)];
   const roadIndex = lod === 0 && (input.roads?.surfaces.length || input.roadsAround?.some(r => r?.surfaces.length)) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])], rb) : null;
-  // Red rijbanen carrying tram track are grey (RoadIndex.railCarriages), for the polygons and for every lookup after.
-  const railGrey = roadIndex ? roadIndex.railCarriages(all.filter(w => w.section.rails?.length).map(w => w.points)) : 0;
   phase('roadIndex');
   let roads: BuiltCell['stats']['roads'] = null;
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
@@ -241,7 +241,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
     roadSkipped = built.skipped;
-    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, railGrey };
+    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0 };
   }
   // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
   phase('roads');
@@ -416,7 +416,16 @@ export function buildCell(input: CellInput): BuiltCell {
     // roads-v1: a junction on the survey seeds no pocket (the polygons tile it; a pocket fill there was a pavement
     // wedge). A gap in the survey near the node shows the land the survey leaves there (a berm, a tree pit).
     const seeds = [...streets.junctionPoints, ...onBridges.junctionPoints].filter(p => !roadIndex || roadIndex.findFast(p[0], p[1]) < 0);
-    const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT);
+    // A junction node in a gap of the survey (a plein such as the Nieuwmarkt, filed as terrain, not wegdeel): its
+    // covered ways draw no bands there, so the pocket pass paves the bare land within the junction's reach again
+    // (pockets.ts SurveyGap; probe-survey-gaps.ts). Only where the survey is around: a node off it keeps its bands.
+    const gaps: SurveyGap[] = [];
+    if (roadIndex && input.surveyGaps !== false) streets.junctionPoints.forEach((p, i) => {
+      if (roadIndex.find(p[0], p[1]) >= 0 || p[0] < rect[0] || p[0] >= rect[2] || p[1] < rect[1] || p[1] >= rect[3]) return;
+      const r = Math.max(SURVEY_GAP_MIN_R, streets.junctionReach[i] ?? 0);
+      if (r > 0 && [[r, 0], [-r, 0], [0, r], [0, -r]].some(([dx, dy]) => roadIndex.find(p[0] + dx, p[1] + dy) >= 0)) gaps.push({ p, r });
+    });
+    const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT, { gaps });
     for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);
     pockets = r.stats;
   }
