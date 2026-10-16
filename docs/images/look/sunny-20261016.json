@@ -1,0 +1,1582 @@
+{
+ "after": {
+  "apollolaan": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 121,
+    "chroma": 29,
+    "median": [
+     118,
+     126,
+     103
+    ]
+   },
+   "paved": {
+    "n": 326542,
+    "share": 0.319,
+    "luma": 161,
+    "chroma": 29,
+    "median": [
+     174,
+     160,
+     147
+    ]
+   },
+   "wall": {
+    "n": 108575,
+    "share": 0.106,
+    "luma": 91,
+    "chroma": 30,
+    "median": [
+     110,
+     85,
+     80
+    ]
+   },
+   "roof": {
+    "n": 234067,
+    "share": 0.229,
+    "luma": 105,
+    "chroma": 3,
+    "median": [
+     105,
+     105,
+     106
+    ]
+   },
+   "road": {
+    "n": 15166,
+    "share": 0.015,
+    "luma": 148,
+    "chroma": 7,
+    "median": [
+     149,
+     148,
+     143
+    ]
+   },
+   "cycle": {
+    "n": 18036,
+    "share": 0.018,
+    "luma": 113,
+    "chroma": 78,
+    "median": [
+     174,
+     98,
+     99
+    ]
+   },
+   "pavement": {
+    "n": 293340,
+    "share": 0.286,
+    "luma": 166,
+    "chroma": 29,
+    "median": [
+     175,
+     165,
+     149
+    ]
+   },
+   "water": {
+    "n": 25709,
+    "share": 0.025,
+    "luma": 119,
+    "chroma": 17,
+    "median": [
+     106,
+     123,
+     115
+    ]
+   },
+   "park": {
+    "n": 67652,
+    "share": 0.066,
+    "luma": 126,
+    "chroma": 68,
+    "median": [
+     98,
+     140,
+     72
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 1020,
+    "share": 0.001,
+    "luma": 92,
+    "chroma": 12,
+    "median": [
+     89,
+     93,
+     90
+    ]
+   }
+  },
+  "entrepotdok": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 120,
+    "chroma": 20,
+    "median": [
+     125,
+     124,
+     115
+    ]
+   },
+   "paved": {
+    "n": 255623,
+    "share": 0.25,
+    "luma": 149,
+    "chroma": 24,
+    "median": [
+     152,
+     149,
+     140
+    ]
+   },
+   "wall": {
+    "n": 144663,
+    "share": 0.141,
+    "luma": 100,
+    "chroma": 26,
+    "median": [
+     123,
+     98,
+     93
+    ]
+   },
+   "roof": {
+    "n": 280542,
+    "share": 0.274,
+    "luma": 116,
+    "chroma": 15,
+    "median": [
+     129,
+     115,
+     114
+    ]
+   },
+   "road": {
+    "n": 62850,
+    "share": 0.061,
+    "luma": 132,
+    "chroma": 7,
+    "median": [
+     134,
+     132,
+     125
+    ]
+   },
+   "cycle": {
+    "n": 9203,
+    "share": 0.009,
+    "luma": 109,
+    "chroma": 71,
+    "median": [
+     145,
+     98,
+     78
+    ]
+   },
+   "pavement": {
+    "n": 183570,
+    "share": 0.179,
+    "luma": 157,
+    "chroma": 29,
+    "median": [
+     160,
+     157,
+     145
+    ]
+   },
+   "water": {
+    "n": 172075,
+    "share": 0.168,
+    "luma": 114,
+    "chroma": 17,
+    "median": [
+     104,
+     116,
+     112
+    ]
+   },
+   "park": {
+    "n": 24597,
+    "share": 0.024,
+    "luma": 127,
+    "chroma": 67,
+    "median": [
+     100,
+     141,
+     73
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 802,
+    "share": 0.001,
+    "luma": 132,
+    "chroma": 24,
+    "median": [
+     130,
+     133,
+     120
+    ]
+   }
+  },
+  "horizon": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 133,
+    "chroma": 45,
+    "median": [
+     124,
+     140,
+     115
+    ]
+   },
+   "paved": {
+    "n": 165947,
+    "share": 0.162,
+    "luma": 160,
+    "chroma": 23,
+    "median": [
+     171,
+     159,
+     145
+    ]
+   },
+   "wall": {
+    "n": 115585,
+    "share": 0.113,
+    "luma": 126,
+    "chroma": 48,
+    "median": [
+     130,
+     127,
+     95
+    ]
+   },
+   "roof": {
+    "n": 16920,
+    "share": 0.017,
+    "luma": 118,
+    "chroma": 9,
+    "median": [
+     113,
+     118,
+     116
+    ]
+   },
+   "road": {
+    "n": 25939,
+    "share": 0.025,
+    "luma": 133,
+    "chroma": 9,
+    "median": [
+     136,
+     133,
+     126
+    ]
+   },
+   "cycle": {
+    "n": 12703,
+    "share": 0.012,
+    "luma": 131,
+    "chroma": 97,
+    "median": [
+     206,
+     112,
+     106
+    ]
+   },
+   "pavement": {
+    "n": 127305,
+    "share": 0.124,
+    "luma": 164,
+    "chroma": 26,
+    "median": [
+     173,
+     164,
+     149
+    ]
+   },
+   "water": {
+    "n": 201178,
+    "share": 0.196,
+    "luma": 119,
+    "chroma": 17,
+    "median": [
+     106,
+     123,
+     115
+    ]
+   },
+   "park": {
+    "n": 19832,
+    "share": 0.019,
+    "luma": 123,
+    "chroma": 60,
+    "median": [
+     101,
+     134,
+     71
+    ]
+   },
+   "sky": {
+    "n": 193583,
+    "share": 0.189,
+    "luma": 190,
+    "chroma": 79,
+    "median": [
+     158,
+     195,
+     237
+    ]
+   },
+   "tree": null,
+   "other": {
+    "n": 3122,
+    "share": 0.003,
+    "luma": 120,
+    "chroma": 20,
+    "median": [
+     118,
+     124,
+     115
+    ]
+   }
+  },
+  "janevertsen": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 116,
+    "chroma": 20,
+    "median": [
+     115,
+     121,
+     111
+    ]
+   },
+   "paved": {
+    "n": 351948,
+    "share": 0.344,
+    "luma": 149,
+    "chroma": 23,
+    "median": [
+     155,
+     149,
+     141
+    ]
+   },
+   "wall": {
+    "n": 198838,
+    "share": 0.194,
+    "luma": 74,
+    "chroma": 26,
+    "median": [
+     95,
+     71,
+     66
+    ]
+   },
+   "roof": {
+    "n": 191934,
+    "share": 0.187,
+    "luma": 107,
+    "chroma": 11,
+    "median": [
+     111,
+     107,
+     104
+    ]
+   },
+   "road": {
+    "n": 80033,
+    "share": 0.078,
+    "luma": 133,
+    "chroma": 9,
+    "median": [
+     136,
+     133,
+     126
+    ]
+   },
+   "cycle": {
+    "n": 16967,
+    "share": 0.017,
+    "luma": 132,
+    "chroma": 81,
+    "median": [
+     204,
+     112,
+     109
+    ]
+   },
+   "pavement": {
+    "n": 254948,
+    "share": 0.249,
+    "luma": 167,
+    "chroma": 27,
+    "median": [
+     176,
+     166,
+     149
+    ]
+   },
+   "water": {
+    "n": 79750,
+    "share": 0.078,
+    "luma": 121,
+    "chroma": 16,
+    "median": [
+     109,
+     125,
+     116
+    ]
+   },
+   "park": {
+    "n": 23916,
+    "share": 0.023,
+    "luma": 113,
+    "chroma": 59,
+    "median": [
+     84,
+     126,
+     67
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 1048,
+    "share": 0.001,
+    "luma": 81,
+    "chroma": 17,
+    "median": [
+     58,
+     88,
+     79
+    ]
+   }
+  },
+  "kinkerstraat": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 129,
+    "chroma": 19,
+    "median": [
+     136,
+     129,
+     116
+    ]
+   },
+   "paved": {
+    "n": 167168,
+    "share": 0.163,
+    "luma": 149,
+    "chroma": 22,
+    "median": [
+     154,
+     149,
+     140
+    ]
+   },
+   "wall": {
+    "n": 169148,
+    "share": 0.165,
+    "luma": 115,
+    "chroma": 27,
+    "median": [
+     143,
+     114,
+     109
+    ]
+   },
+   "roof": {
+    "n": 541554,
+    "share": 0.529,
+    "luma": 128,
+    "chroma": 12,
+    "median": [
+     132,
+     129,
+     117
+    ]
+   },
+   "road": {
+    "n": 38186,
+    "share": 0.037,
+    "luma": 132,
+    "chroma": 6,
+    "median": [
+     135,
+     132,
+     126
+    ]
+   },
+   "cycle": {
+    "n": 15398,
+    "share": 0.015,
+    "luma": 129,
+    "chroma": 78,
+    "median": [
+     188,
+     109,
+     107
+    ]
+   },
+   "pavement": {
+    "n": 113584,
+    "share": 0.111,
+    "luma": 156,
+    "chroma": 23,
+    "median": [
+     160,
+     156,
+     145
+    ]
+   },
+   "water": {
+    "n": 12301,
+    "share": 0.012,
+    "luma": 119,
+    "chroma": 17,
+    "median": [
+     106,
+     123,
+     115
+    ]
+   },
+   "park": null,
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 1066,
+    "share": 0.001,
+    "luma": 95,
+    "chroma": 12,
+    "median": [
+     91,
+     94,
+     92
+    ]
+   }
+  },
+  "prinsengracht": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 111,
+    "chroma": 17,
+    "median": [
+     112,
+     109,
+     103
+    ]
+   },
+   "paved": {
+    "n": 138934,
+    "share": 0.136,
+    "luma": 152,
+    "chroma": 28,
+    "median": [
+     154,
+     152,
+     143
+    ]
+   },
+   "wall": {
+    "n": 176065,
+    "share": 0.172,
+    "luma": 106,
+    "chroma": 23,
+    "median": [
+     125,
+     103,
+     93
+    ]
+   },
+   "roof": {
+    "n": 409816,
+    "share": 0.4,
+    "luma": 105,
+    "chroma": 9,
+    "median": [
+     109,
+     101,
+     97
+    ]
+   },
+   "road": {
+    "n": 16061,
+    "share": 0.016,
+    "luma": 147,
+    "chroma": 7,
+    "median": [
+     147,
+     147,
+     141
+    ]
+   },
+   "cycle": {
+    "n": 3680,
+    "share": 0.004,
+    "luma": 104,
+    "chroma": 67,
+    "median": [
+     140,
+     97,
+     74
+    ]
+   },
+   "pavement": {
+    "n": 119193,
+    "share": 0.116,
+    "luma": 155,
+    "chroma": 29,
+    "median": [
+     158,
+     155,
+     144
+    ]
+   },
+   "water": {
+    "n": 106545,
+    "share": 0.104,
+    "luma": 120,
+    "chroma": 17,
+    "median": [
+     106,
+     124,
+     115
+    ]
+   },
+   "park": null,
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 8721,
+    "share": 0.009,
+    "luma": 151,
+    "chroma": 80,
+    "median": [
+     193,
+     144,
+     106
+    ]
+   }
+  },
+  "singelgracht": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 132,
+    "chroma": 29,
+    "median": [
+     133,
+     136,
+     115
+    ]
+   },
+   "paved": {
+    "n": 297665,
+    "share": 0.291,
+    "luma": 143,
+    "chroma": 22,
+    "median": [
+     173,
+     142,
+     132
+    ]
+   },
+   "wall": {
+    "n": 124148,
+    "share": 0.121,
+    "luma": 130,
+    "chroma": 29,
+    "median": [
+     142,
+     131,
+     115
+    ]
+   },
+   "roof": {
+    "n": 137105,
+    "share": 0.134,
+    "luma": 125,
+    "chroma": 17,
+    "median": [
+     137,
+     123,
+     115
+    ]
+   },
+   "road": {
+    "n": 103625,
+    "share": 0.101,
+    "luma": 132,
+    "chroma": 9,
+    "median": [
+     134,
+     132,
+     125
+    ]
+   },
+   "cycle": {
+    "n": 46623,
+    "share": 0.046,
+    "luma": 129,
+    "chroma": 97,
+    "median": [
+     204,
+     109,
+     107
+    ]
+   },
+   "pavement": {
+    "n": 147417,
+    "share": 0.144,
+    "luma": 169,
+    "chroma": 28,
+    "median": [
+     178,
+     168,
+     152
+    ]
+   },
+   "water": {
+    "n": 100569,
+    "share": 0.098,
+    "luma": 119,
+    "chroma": 17,
+    "median": [
+     106,
+     123,
+     115
+    ]
+   },
+   "park": {
+    "n": 172787,
+    "share": 0.169,
+    "luma": 141,
+    "chroma": 71,
+    "median": [
+     114,
+     155,
+     78
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 798,
+    "share": 0.001,
+    "luma": 104,
+    "chroma": 22,
+    "median": [
+     90,
+     108,
+     105
+    ]
+   }
+  }
+ },
+ "before": {
+  "apollolaan": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 115,
+    "chroma": 36,
+    "median": [
+     110,
+     122,
+     92
+    ]
+   },
+   "paved": {
+    "n": 326854,
+    "share": 0.319,
+    "luma": 163,
+    "chroma": 36,
+    "median": [
+     178,
+     161,
+     143
+    ]
+   },
+   "wall": {
+    "n": 108253,
+    "share": 0.106,
+    "luma": 79,
+    "chroma": 32,
+    "median": [
+     100,
+     74,
+     69
+    ]
+   },
+   "roof": {
+    "n": 234314,
+    "share": 0.229,
+    "luma": 96,
+    "chroma": 3,
+    "median": [
+     97,
+     96,
+     94
+    ]
+   },
+   "road": null,
+   "cycle": {
+    "n": 27111,
+    "share": 0.026,
+    "luma": 109,
+    "chroma": 70,
+    "median": [
+     147,
+     97,
+     77
+    ]
+   },
+   "pavement": {
+    "n": 299715,
+    "share": 0.293,
+    "luma": 166,
+    "chroma": 35,
+    "median": [
+     178,
+     164,
+     145
+    ]
+   },
+   "water": {
+    "n": 25519,
+    "share": 0.025,
+    "luma": 119,
+    "chroma": 15,
+    "median": [
+     108,
+     123,
+     112
+    ]
+   },
+   "park": {
+    "n": 67516,
+    "share": 0.066,
+    "luma": 125,
+    "chroma": 70,
+    "median": [
+     99,
+     139,
+     69
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 1007,
+    "share": 0.001,
+    "luma": 81,
+    "chroma": 10,
+    "median": [
+     78,
+     81,
+     79
+    ]
+   }
+  },
+  "entrepotdok": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 117,
+    "chroma": 25,
+    "median": [
+     116,
+     117,
+     102
+    ]
+   },
+   "paved": {
+    "n": 261727,
+    "share": 0.256,
+    "luma": 150,
+    "chroma": 30,
+    "median": [
+     160,
+     149,
+     135
+    ]
+   },
+   "wall": {
+    "n": 144748,
+    "share": 0.141,
+    "luma": 89,
+    "chroma": 29,
+    "median": [
+     111,
+     87,
+     78
+    ]
+   },
+   "roof": {
+    "n": 280488,
+    "share": 0.274,
+    "luma": 106,
+    "chroma": 17,
+    "median": [
+     119,
+     104,
+     102
+    ]
+   },
+   "road": {
+    "n": 19749,
+    "share": 0.019,
+    "luma": 116,
+    "chroma": 7,
+    "median": [
+     118,
+     116,
+     110
+    ]
+   },
+   "cycle": {
+    "n": 16441,
+    "share": 0.016,
+    "luma": 106,
+    "chroma": 68,
+    "median": [
+     141,
+     98,
+     74
+    ]
+   },
+   "pavement": {
+    "n": 225537,
+    "share": 0.22,
+    "luma": 153,
+    "chroma": 30,
+    "median": [
+     162,
+     152,
+     138
+    ]
+   },
+   "water": {
+    "n": 166391,
+    "share": 0.162,
+    "luma": 108,
+    "chroma": 15,
+    "median": [
+     97,
+     112,
+     104
+    ]
+   },
+   "park": {
+    "n": 24160,
+    "share": 0.024,
+    "luma": 126,
+    "chroma": 67,
+    "median": [
+     101,
+     140,
+     70
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 802,
+    "share": 0.001,
+    "luma": 119,
+    "chroma": 27,
+    "median": [
+     123,
+     119,
+     106
+    ]
+   }
+  },
+  "horizon": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 120,
+    "chroma": 26,
+    "median": [
+     112,
+     127,
+     112
+    ]
+   },
+   "paved": {
+    "n": 174777,
+    "share": 0.171,
+    "luma": 155,
+    "chroma": 32,
+    "median": [
+     170,
+     154,
+     139
+    ]
+   },
+   "wall": {
+    "n": 114417,
+    "share": 0.112,
+    "luma": 116,
+    "chroma": 44,
+    "median": [
+     117,
+     118,
+     82
+    ]
+   },
+   "roof": {
+    "n": 15873,
+    "share": 0.016,
+    "luma": 108,
+    "chroma": 14,
+    "median": [
+     107,
+     107,
+     105
+    ]
+   },
+   "road": {
+    "n": 5139,
+    "share": 0.005,
+    "luma": 117,
+    "chroma": 3,
+    "median": [
+     116,
+     118,
+     116
+    ]
+   },
+   "cycle": {
+    "n": 13423,
+    "share": 0.013,
+    "luma": 131,
+    "chroma": 104,
+    "median": [
+     205,
+     111,
+     92
+    ]
+   },
+   "pavement": {
+    "n": 156215,
+    "share": 0.153,
+    "luma": 159,
+    "chroma": 31,
+    "median": [
+     170,
+     158,
+     141
+    ]
+   },
+   "water": {
+    "n": 200004,
+    "share": 0.195,
+    "luma": 119,
+    "chroma": 15,
+    "median": [
+     108,
+     123,
+     112
+    ]
+   },
+   "park": {
+    "n": 12803,
+    "share": 0.013,
+    "luma": 124,
+    "chroma": 58,
+    "median": [
+     101,
+     135,
+     69
+    ]
+   },
+   "sky": {
+    "n": 188333,
+    "share": 0.184,
+    "luma": 239,
+    "chroma": 15,
+    "median": [
+     244,
+     239,
+     229
+    ]
+   },
+   "tree": null,
+   "other": {
+    "n": 3098,
+    "share": 0.003,
+    "luma": 135,
+    "chroma": 31,
+    "median": [
+     147,
+     135,
+     113
+    ]
+   }
+  },
+  "janevertsen": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 113,
+    "chroma": 26,
+    "median": [
+     111,
+     114,
+     101
+    ]
+   },
+   "paved": {
+    "n": 366875,
+    "share": 0.358,
+    "luma": 150,
+    "chroma": 29,
+    "median": [
+     161,
+     148,
+     135
+    ]
+   },
+   "wall": {
+    "n": 198766,
+    "share": 0.194,
+    "luma": 65,
+    "chroma": 29,
+    "median": [
+     88,
+     61,
+     53
+    ]
+   },
+   "roof": {
+    "n": 191935,
+    "share": 0.187,
+    "luma": 96,
+    "chroma": 9,
+    "median": [
+     104,
+     96,
+     92
+    ]
+   },
+   "road": {
+    "n": 13889,
+    "share": 0.014,
+    "luma": 117,
+    "chroma": 8,
+    "median": [
+     120,
+     117,
+     112
+    ]
+   },
+   "cycle": {
+    "n": 20477,
+    "share": 0.02,
+    "luma": 130,
+    "chroma": 88,
+    "median": [
+     203,
+     109,
+     105
+    ]
+   },
+   "pavement": {
+    "n": 332509,
+    "share": 0.325,
+    "luma": 152,
+    "chroma": 28,
+    "median": [
+     161,
+     151,
+     138
+    ]
+   },
+   "water": {
+    "n": 64823,
+    "share": 0.063,
+    "luma": 120,
+    "chroma": 14,
+    "median": [
+     109,
+     124,
+     113
+    ]
+   },
+   "park": {
+    "n": 23917,
+    "share": 0.023,
+    "luma": 114,
+    "chroma": 62,
+    "median": [
+     88,
+     126,
+     65
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 1049,
+    "share": 0.001,
+    "luma": 70,
+    "chroma": 10,
+    "median": [
+     58,
+     73,
+     68
+    ]
+   }
+  },
+  "kinkerstraat": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 117,
+    "chroma": 17,
+    "median": [
+     127,
+     117,
+     104
+    ]
+   },
+   "paved": {
+    "n": 170917,
+    "share": 0.167,
+    "luma": 150,
+    "chroma": 29,
+    "median": [
+     162,
+     149,
+     135
+    ]
+   },
+   "wall": {
+    "n": 169180,
+    "share": 0.165,
+    "luma": 100,
+    "chroma": 30,
+    "median": [
+     126,
+     99,
+     91
+    ]
+   },
+   "roof": {
+    "n": 541540,
+    "share": 0.529,
+    "luma": 116,
+    "chroma": 13,
+    "median": [
+     123,
+     117,
+     104
+    ]
+   },
+   "road": {
+    "n": 16827,
+    "share": 0.016,
+    "luma": 117,
+    "chroma": 8,
+    "median": [
+     119,
+     117,
+     111
+    ]
+   },
+   "cycle": {
+    "n": 17977,
+    "share": 0.018,
+    "luma": 116,
+    "chroma": 89,
+    "median": [
+     184,
+     100,
+     96
+    ]
+   },
+   "pavement": {
+    "n": 136113,
+    "share": 0.133,
+    "luma": 154,
+    "chroma": 29,
+    "median": [
+     163,
+     153,
+     139
+    ]
+   },
+   "water": {
+    "n": 8553,
+    "share": 0.008,
+    "luma": 119,
+    "chroma": 15,
+    "median": [
+     108,
+     123,
+     112
+    ]
+   },
+   "park": null,
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 1067,
+    "share": 0.001,
+    "luma": 84,
+    "chroma": 9,
+    "median": [
+     83,
+     84,
+     81
+    ]
+   }
+  },
+  "prinsengracht": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 102,
+    "chroma": 15,
+    "median": [
+     108,
+     98,
+     90
+    ]
+   },
+   "paved": {
+    "n": 138526,
+    "share": 0.135,
+    "luma": 153,
+    "chroma": 35,
+    "median": [
+     163,
+     152,
+     138
+    ]
+   },
+   "wall": {
+    "n": 175354,
+    "share": 0.171,
+    "luma": 94,
+    "chroma": 24,
+    "median": [
+     114,
+     92,
+     82
+    ]
+   },
+   "roof": {
+    "n": 410534,
+    "share": 0.401,
+    "luma": 95,
+    "chroma": 8,
+    "median": [
+     100,
+     91,
+     85
+    ]
+   },
+   "road": {
+    "n": 1601,
+    "share": 0.002,
+    "luma": 98,
+    "chroma": 8,
+    "median": [
+     98,
+     98,
+     94
+    ]
+   },
+   "cycle": {
+    "n": 7102,
+    "share": 0.007,
+    "luma": 103,
+    "chroma": 67,
+    "median": [
+     139,
+     95,
+     71
+    ]
+   },
+   "pavement": {
+    "n": 129823,
+    "share": 0.127,
+    "luma": 154,
+    "chroma": 35,
+    "median": [
+     164,
+     153,
+     139
+    ]
+   },
+   "water": {
+    "n": 105932,
+    "share": 0.103,
+    "luma": 119,
+    "chroma": 15,
+    "median": [
+     108,
+     123,
+     112
+    ]
+   },
+   "park": {
+    "n": 1096,
+    "share": 0.001,
+    "luma": 82,
+    "chroma": 40,
+    "median": [
+     65,
+     90,
+     51
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 8662,
+    "share": 0.008,
+    "luma": 152,
+    "chroma": 74,
+    "median": [
+     191,
+     144,
+     105
+    ]
+   }
+  },
+  "singelgracht": {
+   "frame": {
+    "n": 1024000,
+    "share": 1,
+    "luma": 129,
+    "chroma": 36,
+    "median": [
+     124,
+     131,
+     110
+    ]
+   },
+   "paved": {
+    "n": 301964,
+    "share": 0.295,
+    "luma": 133,
+    "chroma": 30,
+    "median": [
+     169,
+     132,
+     123
+    ]
+   },
+   "wall": {
+    "n": 124364,
+    "share": 0.121,
+    "luma": 118,
+    "chroma": 35,
+    "median": [
+     134,
+     120,
+     103
+    ]
+   },
+   "roof": {
+    "n": 136827,
+    "share": 0.134,
+    "luma": 118,
+    "chroma": 20,
+    "median": [
+     127,
+     118,
+     106
+    ]
+   },
+   "road": {
+    "n": 22744,
+    "share": 0.022,
+    "luma": 116,
+    "chroma": 7,
+    "median": [
+     117,
+     116,
+     111
+    ]
+   },
+   "cycle": {
+    "n": 47521,
+    "share": 0.046,
+    "luma": 129,
+    "chroma": 104,
+    "median": [
+     208,
+     108,
+     104
+    ]
+   },
+   "pavement": {
+    "n": 231699,
+    "share": 0.226,
+    "luma": 159,
+    "chroma": 29,
+    "median": [
+     169,
+     158,
+     140
+    ]
+   },
+   "water": {
+    "n": 98045,
+    "share": 0.096,
+    "luma": 118,
+    "chroma": 15,
+    "median": [
+     108,
+     122,
+     112
+    ]
+   },
+   "park": {
+    "n": 170966,
+    "share": 0.167,
+    "luma": 137,
+    "chroma": 71,
+    "median": [
+     114,
+     148,
+     75
+    ]
+   },
+   "sky": null,
+   "tree": null,
+   "other": {
+    "n": 804,
+    "share": 0.001,
+    "luma": 111,
+    "chroma": 28,
+    "median": [
+     108,
+     114,
+     103
+    ]
+   }
+  }
+ }
+}
