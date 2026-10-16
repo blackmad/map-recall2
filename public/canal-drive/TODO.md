@@ -753,6 +753,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   article, Onze Lieve Vrouwe Kapel has two chapels, Frascati and Scheltema
   have no Wikipedia link). The audit misses thin cards that name a person
   (Anne Frank House).
+  After the hollow-card pass (HISTORY "Hollow landmark cards"): 25 allowlisted
+  stub cards still open (19 OBA branches; CEDLA, DeLaMar West, Lancaster
+  Memorial, Drie Boertjes, AMOS) and the override format accepts only Wikipedia
+  sources (kunstwacht.nl and venue sites have material); 78 empty cards don't
+  open; `'t Brinkie`'s wikipediaUrl points at a missing nl article; kit model
+  `winkler-prins-monument` duplicates `extract_landmarks_1897367071`'s pin.
+  Product question for the user: a folded drive-by card shows only its title
+  (by design, to keep the corridor clear); keep, or keep one line.
 - **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
   auto-placed runs installed"): 69 of 335 pands installed. Next: types for
   Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
@@ -1558,17 +1566,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   upper tower moves ~1.3 m south against the pitched views; inventory
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
-- **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
-  pass"; user report 2026-10-16, HISTORY "One model per ground"): the long
-  walls either side of the Mauritskade portal (bearings 331/151/241) are
-  still the kit's plain cells on dark brown brick (no frames, no white stone
-  bands, brick far darker than the photo's red), so the measured portal reads
-  as a panel pasted on; in-game frames from `review:sheet` show it. Then the swung gables (wing, risalit) keep 3DBAG's plain outline; the
-  south-pavilion clock dormer, relief iconography, arcade brick tracery,
-  risalit souterrain arches, the wing's ground floor and banner field;
-  only 3.4 KB of byte headroom (cut elsewhere first); inventory text says
-  "two-light" on now single-light wings; one 99 m² blank wall at bearing
-  61 unexplained.
+- **Tropenmuseum, after the fourth pass** (2026-10-16, HISTORY "Tropenmuseum,
+  fourth pass"): the measured brick #a2856c reads tan-brown against the card
+  photo's rosier red and the scene lighting keeps it duller than the sunlit
+  photo (check the tint method against a sunlit crop); lights grouped in twos
+  and threes per bay, paired souterrain lights, iron bars, haunch blocks,
+  dentil and console cornices, brick dormers with copings and the swung gables
+  are not expressed (no byte budget left: 3.7 KB headroom); `audit:glb`
+  opening-outside 21 parts / 33.1 m² on twisted 3DBAG faces wants a plane-
+  clustering fix or a baseline entry; the 151 side has no panorama (inferred).
+  The rebuild also showed committed GLBs for hoofdbureau-elandsgracht,
+  maagdenhuis and roeterseiland-rec-a out of date with their source.
+
 - **Large tier after the components lane** (2026-10-14): OZ Achterburgwal
   233 needs a per-group party-wall override to place its baroque gateway
   (panel 266 hits a neighbour on one of three probes); Engelsesteeg's

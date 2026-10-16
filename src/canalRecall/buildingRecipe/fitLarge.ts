@@ -18,7 +18,7 @@ import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {BlockSpec, System} from '../blockBuilding/spec.ts';
-import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
+import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, SOUTERRAIN, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
@@ -296,7 +296,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const main = [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
-    const gw = ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
+    const gw = w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
     const maxTop = Math.max(eaves, ...own.map(p => p.vMax));
     // alignWith: share another group's storey lines (wings whose windows line up with the centre block), extended to this group's top.
     const ref = w.alignWith !== undefined ? aligned.get(w.alignWith) : undefined;
@@ -330,7 +330,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, ...(w.glazedStoreys ? {glazedStoreys: w.glazedStoreys} : {}), slots: {...slots, ...(arch ? {arch} : {})},
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
-      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {})});
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {}),
+      ...(w.glazing === 'panes' ? {paneSplit: true} : {}), ...(w.courses ? {courses: [...w.courses]} : {}), ...(w.souterrain ? {souterrain: w.souterrain} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
