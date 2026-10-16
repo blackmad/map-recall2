@@ -1,0 +1,64 @@
+{
+ "mode": "car",
+ "dest": "Westerkerk",
+ "step": 60,
+ "legs": [],
+ "extra": [
+  {
+   "name": "krijtberg-front-55",
+   "at": [
+    4.888622,
+    52.368069,
+    230
+   ]
+  },
+  {
+   "name": "krijtberg-front-85",
+   "at": [
+    4.88896,
+    52.368242,
+    230
+   ]
+  },
+  {
+   "name": "krijtberg-oblique-nw",
+   "at": [
+    4.888131,
+    52.368286,
+    188
+   ]
+  },
+  {
+   "name": "krijtberg-oblique-se",
+   "at": [
+    4.888887,
+    52.367736,
+    272
+   ]
+  },
+  {
+   "name": "homomonument-user",
+   "at": [
+    4.8847,
+    52.3744,
+    140
+   ]
+  },
+  {
+   "name": "homomonument-user-wide",
+   "at": [
+    4.88445,
+    52.37465,
+    135
+   ]
+  },
+  {
+   "name": "homomonument-quay",
+   "at": [
+    4.88505,
+    52.37395,
+    320
+   ]
+  }
+ ]
+}

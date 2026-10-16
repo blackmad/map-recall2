@@ -22,6 +22,7 @@ import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMes
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { bandCorridor, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
+import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
@@ -68,6 +69,8 @@ export interface CellInput {
   flatDecks: readonly Vec2[][];
   /** Per flat deck (same order): register id and whether it is movable ('Beweegbare brug'). */
   flatDeckMeta?: readonly { id: string; movable: boolean }[];
+  /** Landed platforms (landedPlatforms.ts, game frame): the quay wall leaves out shore segments inside them. */
+  landedPlatforms?: readonly (readonly Vec2[])[];
   osm: OsmGroundExtract | null;
   osmAround: OsmGroundExtract[];
   /** The cell's parks (parks-v1), null when it has none or parks are off. */
@@ -293,7 +296,9 @@ export function buildCell(input: CellInput): BuiltCell {
   // Water, quays, decks.
   if (input.water) {
     add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z));
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M, input.decks.length ? underDeck(input.decks) : undefined));
+    // No municipal quay wall under a bridge deck (its arches) or across a landed platform (the Homomonument's steps bring their own walls).
+    const underDecks = input.decks.length ? underDeck(input.decks) : undefined, onPlatform = inLandedPlatform(input.landedPlatforms ?? []);
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M, (x, y) => onPlatform(x, y) || !!underDecks?.(x, y)));
   }
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).

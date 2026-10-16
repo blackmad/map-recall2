@@ -26,6 +26,7 @@ import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { movableApproaches } from './decks.js';
+import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
 export const GAME_ORIGIN = { lng: 4.9, lat: 52.37 } as const;
@@ -456,6 +457,8 @@ export class GroundStore {
       decks: this.decks(key), deckRingsAround,
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],
+      // Landed platforms near the cell (landedPlatforms.ts): the quay wall leaves them out, their own stone walls meet it.
+      landedPlatforms: landedPlatformRings(toLocal).filter(r => near(r.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity] as [number, number, number, number]))),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,

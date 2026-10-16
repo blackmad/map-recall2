@@ -17,6 +17,7 @@ import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {canalhouseGroupToGlb} from '../canalhouse-recipes/export-glb.ts';
 import {compileBuilding, resolveIntent, canonicalIntentKey} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {evaluateGates, type Tri} from '../../src/canalRecall/buildingRecipe/gates.ts';
+import {openingsWithinWallsGate} from '../../src/canalRecall/buildingRecipe/roofChecks.ts';
 import {trustFactsGround, type BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
 import type {CanalHouseIntent} from '../../src/canalRecall/buildingRecipe/intent.ts';
@@ -67,6 +68,8 @@ export async function compileHouse(id: string) {
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: slotFor(intent)});
   const tris = await decodeTriangles(glb.bytes);
   const {gates, topology} = evaluateGates(tris, built.facts, built.fit, built.recipe.footprint.value.map(p => p.outer), built.anchorRD);
+  // Openings inside their walls and clear of the roof planes (roofChecks.ts, with the landmark pipeline's hard gate).
+  gates.push(openingsWithinWallsGate(built.group, slotFor(intent)).gate);
   const out = path.join(ARTIFACTS, id);
   await fs.mkdir(out, {recursive: true});
   await fs.writeFile(path.join(out, 'model.glb'), glb.bytes);
@@ -75,7 +78,7 @@ export async function compileHouse(id: string) {
     anchorRD: built.anchorRD, fit: built.fit, roofClasses: built.roofClasses, vergeTriangles: built.vergeTriangles,
     triangles: glb.triangles, bytes: glb.bytes.length, materials: glb.materials, sha256: createHash('sha256').update(glb.bytes).digest('hex'),
     gates, topology: {components: topology.components, floating: topology.floating, openEdges: topology.openEdges, openEdgeLengthM: +topology.openEdgeLengthM.toFixed(2)},
-    passed: gates.every(g => g.pass), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
+    passed: gates.every(g => g.pass || g.advisory), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 1) + '\n');
   return {report, built, glb, facts: built.facts, intent};
 }
@@ -140,7 +143,8 @@ if (process.argv[1]?.endsWith('building-recipes/compile.ts')) {
   for (const id of ids) {
     const r = await compileHouse(id);
     results.push(r);
-    const failed = r.report.gates.filter(g => !g.pass);
+    const failed = r.report.gates.filter(g => !g.pass && !g.advisory), advisory = r.report.gates.filter(g => !g.pass && g.advisory);
+    if (advisory.length) console.log(`${id}: advisory ${advisory.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ')}`);
     console.log(`${id}: ${r.report.triangles} tris, ${r.report.bytes} B, ${r.report.timings.fitCompileMs + r.report.timings.exportGateMs} ms, gates ${failed.length ? 'FAIL ' + failed.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ') : 'pass'}`);
   }
   if (ids.length > 1) { const s = await shareMeshes(results, {toleranceM: Number(process.argv.find(a => a.startsWith('--tolerance='))?.slice(12)) || undefined}); console.log(`shared meshes: ${s.uniqueMeshes} unique for ${s.houses} houses ${JSON.stringify(s.sharedGroups)}`); }
