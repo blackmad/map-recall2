@@ -1377,6 +1377,7 @@ class VectorBasemap {
       // A streamed tile becomes the render owner. Keep this state so later
       // settings synchronisation cannot revive the overlapping basemap copy.
       this._completeCityHasBuildings = true;
+      if (this._completeCityFirstAt == null) this._completeCityFirstAt = performance.now();
       this._syncDetailedBuildingLayers();
       // A camera check made before the newly requested z14 tile arrived only
       // saw the previous district's footprints. Re-run the same request after
@@ -1894,6 +1895,37 @@ class VectorBasemap {
     this._syncDetailedBuildingLayers();
   }
 
+  /**
+   * Whether the streamed city is on screen yet. MapLibre's own copy of it is ghosted under the three.js look, so
+   * hiding the basemap's extrusion at the first streamed tile left the start of a ride with no buildings at all
+   * until the first shells had built and installed (1-3 s; then the whole district popped in at once). The
+   * basemap's extrusion now stays until the three.js layer draws every resident shell (or 8 s have passed).
+   * Latched: once the streamed city draws, the basemap copy never returns (docs/perf-pop-in-20261016.md).
+   */
+  _streamedCityDraws() {
+    if (this._streamedCityDrawn) return true;
+    // `window.__canalRecallHoldBasemap = false`: hand over at the first streamed tile, as before (A/B, scripts/pop-in.mjs).
+    if (typeof window !== 'undefined' && window.__canalRecallHoldBasemap === false) { this._streamedCityDrawn = true; return true; }
+    const three = this._threeBuildings;
+    const waiting = this._threeOwnsTops() && three && typeof three.drawsResidentCity === 'function'
+      && !three.drawsResidentCity(this._nearViewTiles14()) && !(this._completeCityFirstAt != null && performance.now() - this._completeCityFirstAt > 8000);
+    if (waiting) return false;
+    this._streamedCityDrawn = true;
+    return true;
+  }
+
+  /** z14 tiles (`x/y`) around the rider: under the screen's bottom corners and its centre line. */
+  _nearViewTiles14() {
+    const canvas = this.map.getCanvas(), w = canvas.clientWidth, h = canvas.clientHeight, n = 2 ** 14, out = new Set();
+    for (const [fx, fy] of [[0, 1], [0.5, 1], [1, 1], [0.5, 0.75], [0.5, 0.5]]) {
+      const p = this.map.unproject([fx * w, fy * h]);
+      if (!p || !Number.isFinite(p.lat)) continue;
+      const rad = p.lat * Math.PI / 180;
+      out.add(`${Math.floor((p.lng + 180) / 360 * n)}/${Math.floor((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2 * n)}`);
+    }
+    return out;
+  }
+
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
     const google = this._googleTilesActive;
@@ -1904,7 +1936,9 @@ class VectorBasemap {
     // The streamed complete city owns every building once its first real tile
     // lands. Never resurrect the basemap copy during a later settings/readiness
     // sync; before that first tile, keep it as the no-empty-city fallback.
-    const hideBasemap = this._measuredColoursOnly || detailed || google || !!this._completeCityHasBuildings;
+    const hideBasemap = this._measuredColoursOnly || detailed || google || (!!this._completeCityHasBuildings && this._streamedCityDraws());
+    // A hard swap: fading the extrusion's opacity does not dissolve it, since its depth still hides the streamed
+    // shells (measured: 400 ms of a near-empty city, docs/perf-pop-in-20261016.md).
     if (this.map.getLayer('building-3d')) {
       this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
     }
@@ -2834,6 +2868,8 @@ class VectorBasemap {
     this.map.jumpTo(cameraOptions);
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
+    // The basemap's extrusion holds until the streamed city draws (_streamedCityDraws); hand over once it does.
+    if (this._completeCityHasBuildings && !this._streamedCityDrawn && this._streamedCityDraws()) this._syncDetailedBuildingLayers();
     this._syncFacadeZoom(mapZoom);
     this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
