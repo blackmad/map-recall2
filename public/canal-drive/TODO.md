@@ -727,6 +727,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Buurt generator, next** (2026-10-16, HISTORY "Buurt coverage in the
+  app"): the photo gate passes five wrong types in Bellamybuurt-Zuid; add
+  balcony detection from the strip and a green-tile vs tile-bay test that
+  survives exposure, then install the placed runs after a gallery-size
+  review; kit components for painted timber oriels and hoist-cap dormers;
+  types for the 31 faces that place nothing; then the next buurt from the
+  coverage page's pre-1945 list (Postjeskade e.o., Cremerbuurt-West).
+- **Coverage page gaps:** ship exemplar photo crops and building-type
+  thumbnails; refresh the street-surveys data (10-10).
 - **Motion stutter, next pass** (2026-10-16, HISTORY "Motion stutter";
   desktop budget now in `ride-perf.spec.ts`): label passes run 3× as often
   since today's merges (72 → 250 ms per minute at 1×), find why; regroup
