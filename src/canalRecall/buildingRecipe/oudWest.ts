@@ -10,6 +10,9 @@
  *  - `markPaintedBrick` (`palette.wallMaterial: painted-brick`): the wall materials carry `tintSource: measured`, so the
  *    look keeps the measured paint colour on the brick texture instead of lifting it into the city brick range; a dark
  *    tympanum (`windowHead.tympanum: dark`) on such a wall is the same paint in shadow and is marked with it.
+ *    `palette.wallTint: measured` does the same for unpainted brick whose measured colour the brick range would clamp
+ *    (a sunlit light brick, a grey-brown brick).
+ *  - `paintStoreys` (`paintedStoreys`): the painted-storey facings (fit.ts) take the paint colour as a measured tint.
  *  - `markPaintedStone` (`palette.stoneMaterial: painted`): the stone dressings (painted bands, springers, keystones, arch
  *    rings, eared heads, console sills) carry `tintSource: measured`, so the look draws the measured white paint instead
  *    of mixing it into the city's pale sandstone.
@@ -136,26 +139,26 @@ export function paintErkers(group: T.Group, recipe: CanalHouseRecipe, fit: FitRe
 }
 
 /** Every mesh `pick` selects exports its material colour as a measured tint (materials are cloned, never edited in place). */
-function markMeasured(group: T.Group, pick: (o: T.Mesh) => boolean): number {
+function markMeasured(group: T.Group, pick: (o: T.Mesh) => boolean, whitePoint?: string): number {
   let marked = 0;
   const clones = new Map<T.Material, T.Material>();
   group.traverse(o => {
     if (!(o instanceof T.Mesh) || !pick(o) || Array.isArray(o.material) || o.material.userData.tintSource) return;
     let m = clones.get(o.material);
-    if (!m) { const c = o.material.clone(); c.userData = {...o.material.userData, tintSource: 'measured'}; clones.set(o.material, c); m = c; }
+    if (!m) { const c = o.material.clone(); c.userData = {...o.material.userData, tintSource: 'measured', ...(whitePoint ? {tintWhitePoint: whitePoint} : {})}; clones.set(o.material, c); m = c; }
     o.material = m; marked++;
   });
   return marked;
 }
 
 /** Painted brick: every wall-surface material of the house exports its colour as a measured tint. */
-export function markPaintedBrick(group: T.Group): number {
-  return markMeasured(group, o => o.userData.surface === 'wall');
+export function markPaintedBrick(group: T.Group, whitePoint?: string): number {
+  return markMeasured(group, o => o.userData.surface === 'wall', whitePoint);
 }
 
 /** Dark tympana (`windowHead.tympanum: dark`) on a painted-brick house: the same paint in shadow, a measured tint too. */
-export function markDarkTympana(group: T.Group): number {
-  return markMeasured(group, o => o.userData.surface === 'accent' && /(?:^|\/)ornament\/[^/]*tympanum-/.test(o.name));
+export function markDarkTympana(group: T.Group, whitePoint?: string): number {
+  return markMeasured(group, o => o.userData.surface === 'accent' && /(?:^|\/)ornament\/[^/]*tympanum-/.test(o.name), whitePoint);
 }
 
 /** Painted stone: every stone-surface material (the white stucco dressings) exports its colour as a measured tint. */
@@ -163,12 +166,34 @@ export function markPaintedStone(group: T.Group): number {
   return markMeasured(group, o => o.userData.surface === 'stone');
 }
 
+/**
+ * Painted storeys (`paintedStoreys`): on each front that lists them, the painted-storey facings (fit.ts, band ids
+ * `painted-storey-s<n>`) take the front's paint colour as a measured tint (one material clone per front).
+ */
+export function paintStoreys(group: T.Group, intent: CanalHouseIntent): number {
+  let painted = 0;
+  for (const f of intent.fronts) {
+    const facade = group.getObjectByName(`elevation/${f.id}`);
+    if (!f.paintedStoreys || !facade) continue;
+    let paint: T.Material | null = null;
+    facade.traverse(o => {
+      if (!(o instanceof T.Mesh) || Array.isArray(o.material) || !/(?:^|\/)facadeDetail\/bands\/painted-storey-s\d+\//.test(o.name)) return;
+      if (!paint) { const c = (o.material as T.MeshStandardMaterial).clone(); c.color.set(f.paintedStoreys!.colour); c.userData = {...o.material.userData, tintSource: 'measured'}; paint = c; }
+      o.material = paint; painted++;
+    });
+  }
+  return painted;
+}
+
 /** Every Oud-West pass, or null when the house uses none of the set (nothing is touched). */
 export function applyOudWest(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport) {
-  const painted = intent.palette.wallMaterial === 'painted-brick', paintedStone = intent.palette.stoneMaterial === 'painted';
-  if (!painted && !paintedStone && !fit.fronts.some(f => f.timberBalconies?.length || f.erker?.finish)) return null;
+  const painted = intent.palette.wallMaterial === 'painted-brick' || intent.palette.wallTint === 'measured', paintedStone = intent.palette.stoneMaterial === 'painted';
+  const storeys = intent.fronts.some(f => f.paintedStoreys);
+  if (!painted && !paintedStone && !storeys && !fit.fronts.some(f => f.timberBalconies?.length || f.erker?.finish)) return null;
   const dark = painted && intent.fronts.some(f => f.windowHead?.tympanum === 'dark');
-  return {timberBalconies: addTimberBalconies(group, intent, recipe, fit), erkers: paintErkers(group, recipe, fit), paintedWalls: painted ? markPaintedBrick(group) : 0,
-    ...(dark ? {darkTympana: markDarkTympana(group)} : {}), ...(paintedStone ? {paintedStone: markPaintedStone(group)} : {})};
+  // Painted storeys first: their own measured paint, which the whole-wall mark below then leaves alone.
+  const paintedStoreys = storeys ? paintStoreys(group, intent) : 0;
+  return {timberBalconies: addTimberBalconies(group, intent, recipe, fit), erkers: paintErkers(group, recipe, fit), paintedWalls: painted ? markPaintedBrick(group, intent.palette.whitePoint) : 0,
+    ...(dark ? {darkTympana: markDarkTympana(group, intent.palette.whitePoint)} : {}), ...(paintedStone ? {paintedStone: markPaintedStone(group)} : {}), ...(storeys ? {paintedStoreys} : {})};
 }
 

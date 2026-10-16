@@ -30,10 +30,10 @@ export function groupToBuckets(group: T.Object3D, toFrame: T.Matrix4, slotFor: (
     const material = object.material as T.MeshStandardMaterial;
     const surface = object.userData.surface as string, slot = slotFor(object);
     // A measured tint (painted brick, oudWest.ts) is its own material: the look keeps its colour instead of the brick range.
-    const measured = material.userData?.tintSource === 'measured';
-    const key = `${material.color.getHexString()}_${slot}${measured ? '_measured' : ''}`;
+    const measured = material.userData?.tintSource === 'measured', white: string | undefined = measured ? material.userData?.tintWhitePoint : undefined;
+    const key = `${material.color.getHexString()}_${slot}${measured ? '_measured' : ''}${white ? `_wp${white.replace('#', '')}` : ''}`;
     let bucket = buckets.get(key);
-    if (!bucket) { bucket = {key, slot, tint: '#' + material.color.getHexString(), surface, positions: [], normals: [], uvs: [], ...(measured ? {tintSource: 'measured' as const} : {})}; buckets.set(key, bucket); }
+    if (!bucket) { bucket = {key, slot, tint: '#' + material.color.getHexString(), surface, positions: [], normals: [], uvs: [], ...(measured ? {tintSource: 'measured' as const} : {}), ...(white ? {tintWhitePoint: white} : {})}; buckets.set(key, bucket); }
     const geometry: T.BufferGeometry = (object.geometry.index ? object.geometry.toNonIndexed() : object.geometry.clone())
       .applyMatrix4(new T.Matrix4().multiplyMatrices(toFrame, object.matrixWorld));
     if (!geometry.getAttribute('normal')) geometry.computeVertexNormals();
