@@ -14,8 +14,12 @@ import { fitsPanel, insidePoly, rectPoly } from './panels.ts';
 import { add, scale, type V3 } from './mesh.ts';
 import type { Slot } from './spec.ts';
 
-export type ArchKind = 'round' | 'segmental' | 'pointed';
-export const ARCH_KINDS: readonly ArchKind[] = ['round', 'segmental', 'pointed'];
+/**
+ * `chamfered`: a flat head with straight 45-ish degree shoulders cut off both upper corners (Berlage's Mercatorplein
+ * arcades and gateways, "afgeschuinde bovenzijde"): the shoulders rise `rise` x width and run in `chamfer` x width.
+ */
+export type ArchKind = 'round' | 'segmental' | 'pointed' | 'chamfered';
+export const ARCH_KINDS: readonly ArchKind[] = ['round', 'segmental', 'pointed', 'chamfered'];
 export type UV = [number, number];
 
 /** Arch band on the wall face around the head: `t` wide (m), projecting `out` (m); `out: 0` = a flush band (one face 1.2 cm off the wall, as cladding). */
@@ -35,12 +39,19 @@ export interface ArchParams {
   /** glazing bar across the springing line (a fanlight over the leaves) */
   springBar?: boolean;
   band?: ArchBand;
+  /** chamfered head: horizontal run of each shoulder as a fraction of the opening width (default 0.18) */
+  chamfer?: number;
+  /** reveal depth (m) when cut, instead of the wall's recess: an arcade walk or a gateway with the glazing set far back (opt-in) */
+  depth?: number;
+  /** slot of the reveal faces (soffit and jambs) instead of the host wall's: a rendered arcade ceiling (opt-in) */
+  revealSlot?: Slot;
 }
 
 const segs = (a: ArchParams, w: number) => { const n = Math.max(4, Math.min(16, Math.round(a.segments ?? 2 * Math.max(2, Math.min(5, Math.round(w * 2)))))); return a.kind === 'pointed' && n % 2 ? n + 1 : n; };
 
 /** Natural rise of the head for an opening `w` wide. */
 export function naturalRise(w: number, a: ArchParams): number {
+  if (a.kind === 'chamfered') return w * (a.rise ?? 0.18);
   return a.kind === 'round' ? w / 2 : a.kind === 'pointed' ? w * Math.sqrt(3) / 2 : w * (a.rise ?? 0.18);
 }
 
@@ -51,6 +62,11 @@ export function archRise(w: number, h: number, a: ArchParams): number {
 
 /** Head points from the right springing point to the left one (both included), apex v = v1. */
 export function archHead(u0: number, u1: number, v0: number, v1: number, a: ArchParams): UV[] {
+  if (a.kind === 'chamfered') {
+    // right springing point, the two shoulder tops on the flat head, left springing point (no apex vertex)
+    const w = u1 - u0, c = Math.min(0.45, a.chamfer ?? 0.18) * w, s = v1 - archRise(w, v1 - v0, a);
+    return [[u1, s], [u1 - c, v1], [u0 + c, v1], [u0, s]];
+  }
   const w = u1 - u0, uc = (u0 + u1) / 2, nat = naturalRise(w, a), rise = archRise(w, v1 - v0, a), s = v1 - rise, sy = rise / nat, n = segs(a, w);
   const pts: UV[] = [];
   if (a.kind === 'round') {
@@ -177,10 +193,10 @@ export function drawArchedOpening(c: PanelCtx, u0: number, u1: number, v0: numbe
   let Q: (u: number, v: number, d: number) => V3, back: number;
   if (onWall) {
     c.stats.recessed++;
-    const R = c.recess, front = outline.map(q => onWall(q[0], q[1])), rear = front.map(q => add(q, scale(n, -R)));
+    const R = w.arch.depth ?? c.recess, front = outline.map(q => onWall(q[0], q[1])), rear = front.map(q => add(q, scale(n, -R)));
     for (let i = 0; i < outline.length; i++) {
       const j = (i + 1) % outline.length;
-      c.mesh.quad(c.wallSlot, front[i], front[j], rear[j], rear[i], part, inward(c, outline[i], outline[j]));
+      c.mesh.quad(w.arch.revealSlot ?? c.wallSlot, front[i], front[j], rear[j], rear[i], part, inward(c, outline[i], outline[j]));
     }
     Q = (u, v, d) => add(onWall(u, v), scale(n, -R + d));
     back = -R;
