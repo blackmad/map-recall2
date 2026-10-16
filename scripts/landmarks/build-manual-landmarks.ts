@@ -254,6 +254,8 @@ import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
 import {buildHoofdbureauElandsgracht} from './hoofdbureau-elandsgracht-builder';
+import {buildMercatorpleinNoordtoren} from './mercatorplein-noordtoren-builder';
+import {buildMercatorpleinZuidtoren} from './mercatorplein-zuidtoren-builder';
 import {buildOpstandingskerk} from './opstandingskerk-builder';
 import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
@@ -740,6 +742,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else if(id==='hoofdbureau-elandsgracht')buildHoofdbureauElandsgracht(w,d,helpers);
+    else if(id==='mercatorplein-noordtoren')buildMercatorpleinNoordtoren(w,d,helpers);
+    else if(id==='mercatorplein-zuidtoren')buildMercatorpleinZuidtoren(w,d,helpers);
     else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
     else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
     else if(id==='de-duif')buildDeDuif(w,d,helpers);

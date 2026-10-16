@@ -1,0 +1,1389 @@
+{
+ "method": "ride-visibility/v1: teachable destinations ≤ 6 km of the Dam, seeded pairs 1–6 km, bike graph shortest paths, 5 m samples, walls ≥ 2 m within 60 m on their outer side with a 2D footprint sightline; score = Σ sample m × passes × visible facing-wall m",
+ "seed": 7,
+ "routes": 2000,
+ "routeKm": 9350,
+ "destinations": 410,
+ "candidates": 1828,
+ "topNew": [
+  {
+   "id": "NL.IMBAG.Pand.0363100012185418",
+   "name": null,
+   "footprint": 5173,
+   "height": 22.9,
+   "distM": 837,
+   "modelled": false,
+   "score": 2951564,
+   "routeMetres": 50805,
+   "wallM": 270,
+   "routes": 283
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012098925",
+   "name": null,
+   "footprint": 4701,
+   "height": 36.3,
+   "distM": 3743,
+   "modelled": false,
+   "score": 2418030,
+   "routeMetres": 39510,
+   "wallM": 248,
+   "routes": 230
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012186093",
+   "name": null,
+   "footprint": 6543,
+   "height": 22.4,
+   "distM": 1719,
+   "modelled": false,
+   "score": 2382907,
+   "routeMetres": 40280,
+   "wallM": 398,
+   "routes": 217
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012243823",
+   "name": null,
+   "footprint": 6370,
+   "height": 13.9,
+   "distM": 2452,
+   "modelled": false,
+   "score": 2379678,
+   "routeMetres": 27485,
+   "wallM": 540,
+   "routes": 109
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012185844",
+   "name": "Amsterdamse Hogeschool voor de Kunsten",
+   "footprint": 3063,
+   "height": 27.3,
+   "distM": 728,
+   "modelled": false,
+   "score": 2200456,
+   "routeMetres": 38745,
+   "wallM": 198,
+   "routes": 258
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165293",
+   "name": null,
+   "footprint": 7988,
+   "height": 20.8,
+   "distM": 147,
+   "modelled": false,
+   "score": 2178009,
+   "routeMetres": 49090,
+   "wallM": 301,
+   "routes": 277
+  },
+  {
+   "id": "w1489746218",
+   "name": null,
+   "footprint": 3633,
+   "height": 9,
+   "distM": 1125,
+   "modelled": false,
+   "score": 2167633,
+   "routeMetres": 31310,
+   "wallM": 277,
+   "routes": 156
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012087570",
+   "name": null,
+   "footprint": 3314,
+   "height": 26.1,
+   "distM": 3661,
+   "modelled": false,
+   "score": 2153482,
+   "routeMetres": 35505,
+   "wallM": 242,
+   "routes": 227
+  },
+  {
+   "id": "w1489746219",
+   "name": null,
+   "footprint": 3581,
+   "height": 12,
+   "distM": 1125,
+   "modelled": false,
+   "score": 2137054,
+   "routeMetres": 31060,
+   "wallM": 258,
+   "routes": 156
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165077",
+   "name": null,
+   "footprint": 2883,
+   "height": 34.7,
+   "distM": 950,
+   "modelled": false,
+   "score": 2097830,
+   "routeMetres": 36620,
+   "wallM": 162,
+   "routes": 213
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012111954",
+   "name": null,
+   "footprint": 5369,
+   "height": 6,
+   "distM": 1920,
+   "modelled": false,
+   "score": 2049149,
+   "routeMetres": 30220,
+   "wallM": 213,
+   "routes": 162
+  },
+  {
+   "id": "w1489746221",
+   "name": null,
+   "footprint": 3343,
+   "height": 15,
+   "distM": 1128,
+   "modelled": false,
+   "score": 2012540,
+   "routeMetres": 30560,
+   "wallM": 216,
+   "routes": 156
+  },
+  {
+   "id": "w1489746222",
+   "name": null,
+   "footprint": 2822,
+   "height": 18,
+   "distM": 1128,
+   "modelled": false,
+   "score": 1475815,
+   "routeMetres": 26950,
+   "wallM": 153,
+   "routes": 141
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012164930",
+   "name": null,
+   "footprint": 15175,
+   "height": 13.8,
+   "distM": 1797,
+   "modelled": true,
+   "score": 1315581,
+   "routeMetres": 16015,
+   "wallM": 419,
+   "routes": 44
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169550",
+   "name": null,
+   "footprint": 4077,
+   "height": 19.1,
+   "distM": 1201,
+   "modelled": false,
+   "score": 1226773,
+   "routeMetres": 20195,
+   "wallM": 483,
+   "routes": 112
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165086",
+   "name": "Rasphuispoort",
+   "footprint": 5475,
+   "height": 29.4,
+   "distM": 636,
+   "modelled": false,
+   "score": 1121536,
+   "routeMetres": 34855,
+   "wallM": 119,
+   "routes": 226
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165488",
+   "name": null,
+   "footprint": 2738,
+   "height": 27.5,
+   "distM": 1312,
+   "modelled": false,
+   "score": 1075478,
+   "routeMetres": 35175,
+   "wallM": 113,
+   "routes": 236
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168172",
+   "name": "Allard Pierson Museum",
+   "footprint": 4475,
+   "height": 17.2,
+   "distM": 528,
+   "modelled": true,
+   "score": 1003186,
+   "routeMetres": 22690,
+   "wallM": 211,
+   "routes": 268
+  },
+  {
+   "id": "w268998785",
+   "name": null,
+   "footprint": 4122,
+   "height": 9,
+   "distM": 1664,
+   "modelled": false,
+   "score": 987076,
+   "routeMetres": 21050,
+   "wallM": 446,
+   "routes": 146
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165748",
+   "name": "Rijksakademie van beeldende kunsten",
+   "footprint": 4795,
+   "height": 12.4,
+   "distM": 2048,
+   "modelled": true,
+   "score": 979903,
+   "routeMetres": 17300,
+   "wallM": 432,
+   "routes": 148
+  }
+ ],
+ "topOld": [
+  {
+   "id": "NL.IMBAG.Pand.0363100012165293",
+   "name": null,
+   "footprint": 7988,
+   "height": 20.8,
+   "distM": 147,
+   "modelled": false,
+   "score": 2178009,
+   "routeMetres": 49090,
+   "wallM": 301,
+   "routes": 277,
+   "newRank": 6
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165687",
+   "name": null,
+   "footprint": 3677,
+   "height": 32.4,
+   "distM": 124,
+   "modelled": true,
+   "score": 314881,
+   "routeMetres": 7250,
+   "wallM": 180,
+   "routes": 80,
+   "newRank": 93
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165746",
+   "name": null,
+   "footprint": 2868,
+   "height": 32.2,
+   "distM": 181,
+   "modelled": false,
+   "score": 231267,
+   "routeMetres": 7775,
+   "wallM": 95,
+   "routes": 58,
+   "newRank": 121
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165051",
+   "name": null,
+   "footprint": 3424,
+   "height": 25.3,
+   "distM": 222,
+   "modelled": false,
+   "score": 206441,
+   "routeMetres": 6125,
+   "wallM": 178,
+   "routes": 61,
+   "newRank": 138
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165747",
+   "name": null,
+   "footprint": 4152,
+   "height": 20.8,
+   "distM": 306,
+   "modelled": false,
+   "score": 41938,
+   "routeMetres": 1765,
+   "wallM": 113,
+   "routes": 15,
+   "newRank": 329
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012202175",
+   "name": null,
+   "footprint": 22408,
+   "height": 25.4,
+   "distM": 1837,
+   "modelled": false,
+   "score": 200028,
+   "routeMetres": 2615,
+   "wallM": 264,
+   "routes": 8,
+   "newRank": 145
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012202176",
+   "name": null,
+   "footprint": 28005,
+   "height": 9.4,
+   "distM": 2426,
+   "modelled": true,
+   "score": 0,
+   "routeMetres": 0,
+   "wallM": 0,
+   "routes": 0,
+   "newRank": 609
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171179",
+   "name": null,
+   "footprint": 4197,
+   "height": 15.4,
+   "distM": 443,
+   "modelled": true,
+   "score": 872329,
+   "routeMetres": 20335,
+   "wallM": 214,
+   "routes": 135,
+   "newRank": 24
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012185420",
+   "name": null,
+   "footprint": 14908,
+   "height": 39.1,
+   "distM": 1680,
+   "modelled": false,
+   "score": 412568,
+   "routeMetres": 5395,
+   "wallM": 666,
+   "routes": 37,
+   "newRank": 69
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012253754",
+   "name": null,
+   "footprint": 14908,
+   "height": 19,
+   "distM": 1680,
+   "modelled": true,
+   "score": 412568,
+   "routeMetres": 5395,
+   "wallM": 666,
+   "routes": 37,
+   "newRank": 70
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165086",
+   "name": "Rasphuispoort",
+   "footprint": 5475,
+   "height": 29.4,
+   "distM": 636,
+   "modelled": false,
+   "score": 1121536,
+   "routeMetres": 34855,
+   "wallM": 119,
+   "routes": 226,
+   "newRank": 16
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168172",
+   "name": "Allard Pierson Museum",
+   "footprint": 4475,
+   "height": 17.2,
+   "distM": 528,
+   "modelled": true,
+   "score": 1003186,
+   "routeMetres": 22690,
+   "wallM": 211,
+   "routes": 268,
+   "newRank": 18
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012164930",
+   "name": null,
+   "footprint": 15175,
+   "height": 13.8,
+   "distM": 1797,
+   "modelled": true,
+   "score": 1315581,
+   "routeMetres": 16015,
+   "wallM": 419,
+   "routes": 44,
+   "newRank": 14
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012186086",
+   "name": null,
+   "footprint": 9989,
+   "height": 34.3,
+   "distM": 1318,
+   "modelled": true,
+   "score": 213355,
+   "routeMetres": 3020,
+   "wallM": 259,
+   "routes": 14,
+   "newRank": 133
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165098",
+   "name": null,
+   "footprint": 3996,
+   "height": 18.4,
+   "distM": 562,
+   "modelled": true,
+   "score": 299984,
+   "routeMetres": 12655,
+   "wallM": 247,
+   "routes": 130,
+   "newRank": 98
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165819",
+   "name": null,
+   "footprint": 15547,
+   "height": 19.9,
+   "distM": 2411,
+   "modelled": false,
+   "score": 12312,
+   "routeMetres": 300,
+   "wallM": 59,
+   "routes": 6,
+   "newRank": 449
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012236693",
+   "name": null,
+   "footprint": 11700,
+   "height": 9.6,
+   "distM": 1833,
+   "modelled": false,
+   "score": 827007,
+   "routeMetres": 10285,
+   "wallM": 298,
+   "routes": 79,
+   "newRank": 26
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012185418",
+   "name": null,
+   "footprint": 5173,
+   "height": 22.9,
+   "distM": 837,
+   "modelled": false,
+   "score": 2951564,
+   "routeMetres": 50805,
+   "wallM": 270,
+   "routes": 283,
+   "newRank": 1
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169224",
+   "name": "Van Gendt Hallen",
+   "footprint": 12951,
+   "height": 16.3,
+   "distM": 2216,
+   "modelled": false,
+   "score": 172111,
+   "routeMetres": 1560,
+   "wallM": 289,
+   "routes": 6,
+   "newRank": 166
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180196",
+   "name": null,
+   "footprint": 2674,
+   "height": 17.3,
+   "distM": 477,
+   "modelled": true,
+   "score": 38467,
+   "routeMetres": 1260,
+   "wallM": 65,
+   "routes": 34,
+   "newRank": 340
+  }
+ ],
+ "installed": [
+  {
+   "id": "kattenburgerstraat-164930",
+   "pand": "NL.IMBAG.Pand.0363100012164930",
+   "ride": {
+    "score": 1315581,
+    "routeMetres": 16015,
+    "wallM": 419,
+    "routes": 44
+   }
+  },
+  {
+   "id": "oude-turfmarkt-168172",
+   "pand": "NL.IMBAG.Pand.0363100012168172",
+   "ride": {
+    "score": 1003186,
+    "routeMetres": 22690,
+    "wallM": 211,
+    "routes": 268
+   }
+  },
+  {
+   "id": "rijksakademie",
+   "pand": "NL.IMBAG.Pand.0363100012165748",
+   "ride": {
+    "score": 979903,
+    "routeMetres": 17300,
+    "wallM": 432,
+    "routes": 148
+   }
+  },
+  {
+   "id": "kloveniersburgwal-72-171179",
+   "pand": "NL.IMBAG.Pand.0363100012171179",
+   "ride": {
+    "score": 872329,
+    "routeMetres": 20335,
+    "wallM": 214,
+    "routes": 135
+   }
+  },
+  {
+   "id": "spinozastraat-51-243487",
+   "pand": "NL.IMBAG.Pand.0363100012243487",
+   "ride": {
+    "score": 844860,
+    "routeMetres": 14515,
+    "wallM": 203,
+    "routes": 85
+   }
+  },
+  {
+   "id": "utrechtsestraat-15-169214",
+   "pand": "NL.IMBAG.Pand.0363100012169214",
+   "ride": {
+    "score": 823989,
+    "routeMetres": 18015,
+    "wallM": 171,
+    "routes": 121
+   }
+  },
+  {
+   "id": "weteringstraat-16-184747",
+   "pand": "NL.IMBAG.Pand.0363100012184747",
+   "ride": {
+    "score": 796928,
+    "routeMetres": 16385,
+    "wallM": 221,
+    "routes": 159
+   }
+  },
+  {
+   "id": "apollolaan-4-134507",
+   "pand": "NL.IMBAG.Pand.0363100012134507",
+   "ride": {
+    "score": 529796,
+    "routeMetres": 10860,
+    "wallM": 168,
+    "routes": 72
+   }
+  },
+  {
+   "id": "politie-ij-tunnel",
+   "pand": "NL.IMBAG.Pand.0363100012165618",
+   "ride": {
+    "score": 529032,
+    "routeMetres": 8000,
+    "wallM": 224,
+    "routes": 60
+   }
+  },
+  {
+   "id": "nieuwe-achtergracht-100-253824",
+   "pand": "NL.IMBAG.Pand.0363100012253824",
+   "ride": {
+    "score": 497205,
+    "routeMetres": 10565,
+    "wallM": 141,
+    "routes": 82
+   }
+  },
+  {
+   "id": "overtoom-283-084999",
+   "pand": "NL.IMBAG.Pand.0363100012084999",
+   "ride": {
+    "score": 472937,
+    "routeMetres": 8560,
+    "wallM": 124,
+    "routes": 60
+   }
+  },
+  {
+   "id": "marnixstraat-248-185422",
+   "pand": "NL.IMBAG.Pand.0363100012185422",
+   "ride": {
+    "score": 447127,
+    "routeMetres": 7575,
+    "wallM": 148,
+    "routes": 70
+   }
+  },
+  {
+   "id": "hotel-arena-236788",
+   "pand": "NL.IMBAG.Pand.0363100012236788",
+   "ride": {
+    "score": 426895,
+    "routeMetres": 8495,
+    "wallM": 360,
+    "routes": 43
+   }
+  },
+  {
+   "id": "heinekenplein-130580",
+   "pand": "NL.IMBAG.Pand.0363100012130580",
+   "ride": {
+    "score": 426287,
+    "routeMetres": 10085,
+    "wallM": 131,
+    "routes": 76
+   }
+  },
+  {
+   "id": "kattenburg-wings-164938",
+   "pand": "NL.IMBAG.Pand.0363100012164938",
+   "ride": {
+    "score": 419266,
+    "routeMetres": 5930,
+    "wallM": 214,
+    "routes": 37
+   }
+  },
+  {
+   "id": "nieuwe-achtergracht-253754",
+   "pand": "NL.IMBAG.Pand.0363100012253754",
+   "ride": {
+    "score": 412568,
+    "routeMetres": 5395,
+    "wallM": 666,
+    "routes": 37
+   }
+  },
+  {
+   "id": "waagdragerhof-198-118320",
+   "pand": "NL.IMBAG.Pand.0363100012118320",
+   "ride": {
+    "score": 381535,
+    "routeMetres": 4940,
+    "wallM": 203,
+    "routes": 35
+   }
+  },
+  {
+   "id": "haarlemmerweg-325-110408",
+   "pand": "NL.IMBAG.Pand.0363100012110408",
+   "ride": {
+    "score": 373351,
+    "routeMetres": 6505,
+    "wallM": 108,
+    "routes": 47
+   }
+  },
+  {
+   "id": "wg-plein-600-233657",
+   "pand": "NL.IMBAG.Pand.0363100012233657",
+   "ride": {
+    "score": 362612,
+    "routeMetres": 8275,
+    "wallM": 298,
+    "routes": 48
+   }
+  },
+  {
+   "id": "van-beuningenstraat-48-093853",
+   "pand": "NL.IMBAG.Pand.0363100012093853",
+   "ride": {
+    "score": 360250,
+    "routeMetres": 7610,
+    "wallM": 271,
+    "routes": 62
+   }
+  },
+  {
+   "id": "warmoesstraat-garage-165687",
+   "pand": "NL.IMBAG.Pand.0363100012165687",
+   "ride": {
+    "score": 314881,
+    "routeMetres": 7250,
+    "wallM": 180,
+    "routes": 80
+   }
+  },
+  {
+   "id": "engelsesteeg-165098",
+   "pand": "NL.IMBAG.Pand.0363100012165098",
+   "ride": {
+    "score": 299984,
+    "routeMetres": 12655,
+    "wallM": 247,
+    "routes": 130
+   }
+  },
+  {
+   "id": "cgm-190-202277",
+   "pand": "NL.IMBAG.Pand.0363100012202277",
+   "ride": {
+    "score": 294002,
+    "routeMetres": 4660,
+    "wallM": 326,
+    "routes": 32
+   }
+  },
+  {
+   "id": "tilanusstraat-23-240319",
+   "pand": "NL.IMBAG.Pand.0363100012240319",
+   "ride": {
+    "score": 259738,
+    "routeMetres": 4935,
+    "wallM": 213,
+    "routes": 38
+   }
+  },
+  {
+   "id": "meeuwenlaan-132-101771",
+   "pand": "NL.IMBAG.Pand.0363100012101771",
+   "ride": {
+    "score": 233290,
+    "routeMetres": 3875,
+    "wallM": 182,
+    "routes": 19
+   }
+  },
+  {
+   "id": "oostelijke-handelskade-749-239388",
+   "pand": "NL.IMBAG.Pand.0363100012239388",
+   "ride": {
+    "score": 231036,
+    "routeMetres": 1720,
+    "wallM": 209,
+    "routes": 15
+   }
+  },
+  {
+   "id": "houthavenkade-26-247232",
+   "pand": "NL.IMBAG.Pand.0363100012247232",
+   "ride": {
+    "score": 230357,
+    "routeMetres": 3910,
+    "wallM": 294,
+    "routes": 30
+   }
+  },
+  {
+   "id": "wibautstraat-78-129127",
+   "pand": "NL.IMBAG.Pand.0363100012129127",
+   "ride": {
+    "score": 228468,
+    "routeMetres": 3530,
+    "wallM": 163,
+    "routes": 33
+   }
+  },
+  {
+   "id": "stadsloket-west",
+   "pand": "NL.IMBAG.Pand.0363100012118358",
+   "ride": {
+    "score": 214341,
+    "routeMetres": 5785,
+    "wallM": 78,
+    "routes": 42
+   }
+  },
+  {
+   "id": "westerdok-186086",
+   "pand": "NL.IMBAG.Pand.0363100012186086",
+   "ride": {
+    "score": 213355,
+    "routeMetres": 3020,
+    "wallM": 259,
+    "routes": 14
+   }
+  },
+  {
+   "id": "da-costakade-146-236799",
+   "pand": "NL.IMBAG.Pand.0363100012236799",
+   "ride": {
+    "score": 200668,
+    "routeMetres": 3315,
+    "wallM": 146,
+    "routes": 29
+   }
+  },
+  {
+   "id": "westerdok-748-186003",
+   "pand": "NL.IMBAG.Pand.0363100012186003",
+   "ride": {
+    "score": 200294,
+    "routeMetres": 2955,
+    "wallM": 280,
+    "routes": 14
+   }
+  },
+  {
+   "id": "oba-javaplein",
+   "pand": "NL.IMBAG.Pand.0363100012238726",
+   "ride": {
+    "score": 187064,
+    "routeMetres": 3255,
+    "wallM": 252,
+    "routes": 23
+   }
+  },
+  {
+   "id": "nieuwpoortstraat-126319",
+   "pand": "NL.IMBAG.Pand.0363100012126319",
+   "ride": {
+    "score": 145489,
+    "routeMetres": 2740,
+    "wallM": 169,
+    "routes": 16
+   }
+  },
+  {
+   "id": "distelweg-88-114605",
+   "pand": "NL.IMBAG.Pand.0363100012114605",
+   "ride": {
+    "score": 139930,
+    "routeMetres": 2155,
+    "wallM": 238,
+    "routes": 9
+   }
+  },
+  {
+   "id": "spinoza-lyceum-129398",
+   "pand": "NL.IMBAG.Pand.0363100012129398",
+   "ride": {
+    "score": 115114,
+    "routeMetres": 1550,
+    "wallM": 132,
+    "routes": 10
+   }
+  },
+  {
+   "id": "cygnus",
+   "pand": "NL.IMBAG.Pand.0363100012109375",
+   "ride": {
+    "score": 111264,
+    "routeMetres": 2135,
+    "wallM": 162,
+    "routes": 22
+   }
+  },
+  {
+   "id": "funenpark-427-184743",
+   "pand": "NL.IMBAG.Pand.0363100012184743",
+   "ride": {
+    "score": 100959,
+    "routeMetres": 1050,
+    "wallM": 328,
+    "routes": 3
+   }
+  },
+  {
+   "id": "barlaeus",
+   "pand": "NL.IMBAG.Pand.0363100012169564",
+   "ride": {
+    "score": 87730,
+    "routeMetres": 4475,
+    "wallM": 53,
+    "routes": 51
+   }
+  },
+  {
+   "id": "cgm-114-202381",
+   "pand": "NL.IMBAG.Pand.0363100012202381",
+   "ride": {
+    "score": 83584,
+    "routeMetres": 1260,
+    "wallM": 97,
+    "routes": 12
+   }
+  },
+  {
+   "id": "oba-olympisch-kwartier",
+   "pand": "NL.IMBAG.Pand.0363100012073586",
+   "ride": {
+    "score": 81988,
+    "routeMetres": 2375,
+    "wallM": 120,
+    "routes": 39
+   }
+  },
+  {
+   "id": "entrepotdok-164981",
+   "pand": "NL.IMBAG.Pand.0363100012164981",
+   "ride": {
+    "score": 79302,
+    "routeMetres": 1040,
+    "wallM": 320,
+    "routes": 7
+   }
+  },
+  {
+   "id": "politie-houtmankade",
+   "pand": "NL.IMBAG.Pand.0363100012083091",
+   "ride": {
+    "score": 76417,
+    "routeMetres": 1440,
+    "wallM": 101,
+    "routes": 9
+   }
+  },
+  {
+   "id": "louise-wentstraat-230-165821",
+   "pand": "NL.IMBAG.Pand.0363100012165821",
+   "ride": {
+    "score": 53974,
+    "routeMetres": 4785,
+    "wallM": 121,
+    "routes": 172
+   }
+  },
+  {
+   "id": "politie-oost-watergraafsmeer",
+   "pand": "NL.IMBAG.Pand.0363100012131469",
+   "ride": {
+    "score": 39989,
+    "routeMetres": 1095,
+    "wallM": 82,
+    "routes": 9
+   }
+  },
+  {
+   "id": "oz-achterburgwal-233-180196",
+   "pand": "NL.IMBAG.Pand.0363100012180196",
+   "ride": {
+    "score": 38467,
+    "routeMetres": 1260,
+    "wallM": 65,
+    "routes": 34
+   }
+  },
+  {
+   "id": "oba-linnaeus",
+   "pand": "NL.IMBAG.Pand.0363100012122086",
+   "ride": {
+    "score": 38072,
+    "routeMetres": 915,
+    "wallM": 84,
+    "routes": 11
+   }
+  },
+  {
+   "id": "hoogte-kadijk-400-251313",
+   "pand": "NL.IMBAG.Pand.0363100012251313",
+   "ride": {
+    "score": 38069,
+    "routeMetres": 750,
+    "wallM": 182,
+    "routes": 4
+   }
+  },
+  {
+   "id": "politie-lijnbaansgracht",
+   "pand": "NL.IMBAG.Pand.0363100012169471",
+   "ride": {
+    "score": 36017,
+    "routeMetres": 1615,
+    "wallM": 53,
+    "routes": 27
+   }
+  },
+  {
+   "id": "stadsdeel-nieuw-west",
+   "pand": "NL.IMBAG.Pand.0363100012076903",
+   "ride": {
+    "score": 32727,
+    "routeMetres": 785,
+    "wallM": 154,
+    "routes": 13
+   }
+  },
+  {
+   "id": "van-oldenbarneveldtstraat-48-137990",
+   "pand": "NL.IMBAG.Pand.0363100012137990",
+   "ride": {
+    "score": 19228,
+    "routeMetres": 2760,
+    "wallM": 9,
+    "routes": 161
+   }
+  },
+  {
+   "id": "valckenierstraat-65-170734",
+   "pand": "NL.IMBAG.Pand.0363100012170734",
+   "ride": {
+    "score": 18192,
+    "routeMetres": 235,
+    "wallM": 244,
+    "routes": 1
+   }
+  },
+  {
+   "id": "quellijnstraat-36-098847",
+   "pand": "NL.IMBAG.Pand.0363100012098847",
+   "ride": {
+    "score": 16281,
+    "routeMetres": 315,
+    "wallM": 52,
+    "routes": 9
+   }
+  },
+  {
+   "id": "reade",
+   "pand": "NL.IMBAG.Pand.0363100012137257",
+   "ride": {
+    "score": 14035,
+    "routeMetres": 380,
+    "wallM": 120,
+    "routes": 4
+   }
+  },
+  {
+   "id": "asterweg-19-134024",
+   "pand": "NL.IMBAG.Pand.0363100012134024",
+   "ride": {
+    "score": 13528,
+    "routeMetres": 300,
+    "wallM": 60,
+    "routes": 2
+   }
+  },
+  {
+   "id": "archangelkade-3-099348",
+   "pand": "NL.IMBAG.Pand.0363100012099348",
+   "ride": {
+    "score": 12766,
+    "routeMetres": 145,
+    "wallM": 135,
+    "routes": 1
+   }
+  },
+  {
+   "id": "asterweg-37-240270",
+   "pand": "NL.IMBAG.Pand.0363100012240270",
+   "ride": {
+    "score": 8363,
+    "routeMetres": 180,
+    "wallM": 46,
+    "routes": 2
+   }
+  },
+  {
+   "id": "asterweg-19b-209785",
+   "pand": "NL.IMBAG.Pand.0363100012209785",
+   "ride": {
+    "score": 7011,
+    "routeMetres": 250,
+    "wallM": 39,
+    "routes": 2
+   }
+  },
+  {
+   "id": "politie-nieuwezijds-voorburgwal",
+   "pand": "NL.IMBAG.Pand.0363100012171032",
+   "ride": {
+    "score": 7005,
+    "routeMetres": 220,
+    "wallM": 64,
+    "routes": 2
+   }
+  },
+  {
+   "id": "rigakade-8-078289",
+   "pand": "NL.IMBAG.Pand.0363100012078289",
+   "ride": {
+    "score": 3521,
+    "routeMetres": 275,
+    "wallM": 46,
+    "routes": 19
+   }
+  },
+  {
+   "id": "polderweg-3-134667",
+   "pand": "NL.IMBAG.Pand.0363100012134667",
+   "ride": {
+    "score": 1134,
+    "routeMetres": 160,
+    "wallM": 17,
+    "routes": 8
+   }
+  },
+  {
+   "id": "vossius",
+   "pand": "NL.IMBAG.Pand.0363100012096365",
+   "ride": {
+    "score": 251,
+    "routeMetres": 25,
+    "wallM": 13,
+    "routes": 1
+   }
+  },
+  {
+   "id": "politie-van-leijenberghlaan",
+   "pand": "NL.IMBAG.Pand.0363100012102565",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-oost-zeeburg",
+   "pand": "NL.IMBAG.Pand.0363100012253728",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-zuidoost-gaasperdam",
+   "pand": "NL.IMBAG.Pand.0363100012064423",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-zuid-de-pijp",
+   "pand": "NL.IMBAG.Pand.0363100012142138",
+   "ride": null
+  },
+  {
+   "id": "politie-postjesweg",
+   "pand": "NL.IMBAG.Pand.0363100012092810",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-meer-en-vaart",
+   "pand": "NL.IMBAG.Pand.0363100012089344",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-flierbosdreef",
+   "pand": "NL.IMBAG.Pand.0363100012143903",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-boven-ij",
+   "pand": "NL.IMBAG.Pand.0363100012115571",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politiepost-ijburg",
+   "pand": "NL.IMBAG.Pand.0363100012127406",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "politie-amsterdam-johan-huizingalaan",
+   "pand": "NL.IMBAG.Pand.0363100012116154",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "aambeeldstraat-202176",
+   "pand": "NL.IMBAG.Pand.0363100012202176",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "stadsloket-oost",
+   "pand": "NL.IMBAG.Pand.0363100012233553",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "stadsloket-noord",
+   "pand": "NL.IMBAG.Pand.0363100012104378",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "stadsloket-zuidoost",
+   "pand": "NL.IMBAG.Pand.0363100012078772",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "hamerkanaal-209-243116",
+   "pand": "NL.IMBAG.Pand.0363100012243116",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "buitenzagerij-45-100112",
+   "pand": "NL.IMBAG.Pand.0363100012100112",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "berlage-lyceum",
+   "pand": "NL.IMBAG.Pand.0363100012127997",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "montessori-van-ostade",
+   "pand": "NL.IMBAG.Pand.0363100012236840",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "schaafstraat-17-091631",
+   "pand": "NL.IMBAG.Pand.0363100012091631",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "van-der-palmkade-191-120309",
+   "pand": "NL.IMBAG.Pand.0363100012120309",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "grasweg-41-201637",
+   "pand": "NL.IMBAG.Pand.0363100012201637",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "hamerkanaal-175-112128",
+   "pand": "NL.IMBAG.Pand.0363100012112128",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "balboaplein-48-147097",
+   "pand": "NL.IMBAG.Pand.0363100012147097",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "cgm-183-202276",
+   "pand": "NL.IMBAG.Pand.0363100012202276",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "revaleiland-437-250186",
+   "pand": "NL.IMBAG.Pand.0363100012250186",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  },
+  {
+   "id": "cgm-168-201629",
+   "pand": "NL.IMBAG.Pand.0363100012201629",
+   "ride": {
+    "score": 0,
+    "routeMetres": 0,
+    "wallM": 0,
+    "routes": 0
+   }
+  }
+ ]
+}

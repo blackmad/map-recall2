@@ -2593,5 +2593,29 @@
         "preferDescription": true
       }
     ]
+  },
+  {
+    "modelId": "mercatorplein-noordtoren",
+    "name": "Mercatorplein north tower",
+    "description": "Berlage designed the walls of the Mercatorplein in 1925-27 as one closed square, with two brick towers standing on gatehouses over the streets that enter it. This is the north tower, over the underpass to the Mercatorstraat: a tall square shaft with clock faces on three sides, curved balconies tucked into its corners and an arcade of shops running along the square in front of it.",
+    "funFact": "The original north tower was pulled down in 1961; the one standing now was rebuilt to Berlage's design in the 1990s, when the square was restored.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/527136",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "mercatorplein-zuidtoren",
+    "name": "Mercatorplein south tower",
+    "description": "The south tower of the Mercatorplein stands on the gatehouse over the Van Spilbergenstraat, part of H.P. Berlage's 1925-27 design for the square. Eight storeys of brick under a flat roof, it has small windows low down, four large square windows stacked above them, and a narrower shaft at the back that rises higher still, with small balconies in its corners.",
+    "funFact": "Unlike its northern twin, this tower is original: the register of national monuments describes it as a 'poortgebouw met hoge toren', a gatehouse with a high tower.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527135",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289"
+    ],
+    "preferDescription": true
   }
 ]

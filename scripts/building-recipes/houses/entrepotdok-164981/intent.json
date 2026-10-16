@@ -6,35 +6,12 @@
  "address": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam: the Entrepotdok warehouses, converted to housing in the 1980s",
  "sources": [
   {
-   "id": "pano-2022-04-25-canal",
+   "id": "pano-2022-04-25-w01-210",
    "kind": "street-panorama",
    "capturedAt": "2022-04-25",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000675/",
-   "image": "staging/pand-reference-walls/0363100012164981/w01-210.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2022-04-25-canal-nw",
-   "kind": "street-panorama",
-   "capturedAt": "2022-04-25",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000675/",
-   "image": "staging/pand-reference-walls/0363100012164981/w01-210.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2022-04-25-canal-converted",
-   "kind": "street-panorama",
-   "capturedAt": "2022-04-25",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000675/",
-   "image": "staging/pand-reference-walls/0363100012164981/w01-210.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2017-03-23-rear",
-   "kind": "street-panorama",
-   "capturedAt": "2017-03-23",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000220_pano_0001_000566/",
-   "image": "staging/pand-reference-walls/0363100012164981/w02-30.jpg",
+   "image": "source-data://pand-reference-walls/0363100012164981/w01-210.jpg",
+   "sha256": "0b0735a5f79d9b00f4927e1f1966a2ee33ac546ea90658ea35dbee672fd0d40e",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -73,7 +50,20 @@
     "",
     "",
     "Eindhoven"
-   ]
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#544943",
+    "glass": "#2d2827"
+   },
+   "windowShape": {
+    "w": 0.386,
+    "h": 0.601,
+    "sill": 0.05
+   }
   },
   {
    "wallSurfaces": [
@@ -95,6 +85,13 @@
      2
     ],
     "arch": "round"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#574c45"
    }
   },
   {
@@ -139,6 +136,13 @@
    "hoist": {
     "every": 3,
     "first": 1
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#564f4a"
    }
   },
   {
@@ -156,6 +160,14 @@
    "arches": {
     "windows": "segmental",
     "band": "none"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick"
+   ],
+   "palette": {
+    "brick": "#5f544c"
    }
   }
  ],
@@ -174,7 +186,17 @@
   "The rest of the canal front (0-47.7 m and 84.8-156.5 m, walls[2]) was converted with rectangular glazed loading stacks and white slab sills; modelled as a 33-bay grid with a rectangular loading door on a stone sill every third bay (the real stacks are irregular, two per warehouse in places). Its ground floor is drawn as windows; the photos show garden doors, a few small arched doors, and the board ELBURG over a rectangular door near 87 m (not modelled: that door is in the rectangular-hoist group, whose ground has no portals).",
   "Rear (Laagte Kadijk side, the panel of surfaces 134/135/151) from the 2017-03-23 panorama: windows with segmental brick heads, modelled as narrow segmental-arched windows on 13 bays. The other rear and courtyard walls, the SE modern rendered block (light render in the 2021 photo w04-120) and the NW end are blank: the 12k triangle budget is spent on the canal front (11,156 triangles).",
   "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping).",
-  "Layered kit (2026-10-14, second pass): the converted front's loading doors are back to every third bay (11 axes on 33 bays); a layered loading door is two leaves with one meeting stile (SIMPLIFIED: no hatch rail) and the arched loading doors take 4-segment heads, which with closed bars and stone thresholds laid on the wall keeps the model at 11,767 triangles."
+  "Layered kit (2026-10-14, second pass): the converted front's loading doors are back to every third bay (11 axes on 33 bays); a layered loading door is two leaves with one meeting stile (SIMPLIFIED: no hatch rail) and the arched loading doors take 4-segment heads, which with closed bars and stone thresholds laid on the wall keeps the model at 11,767 triangles.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #483f3b not used (not darker than the wall #574c45 by 10 L*, or tinted): kit glass kept; walls[2] glass #485952 not used (not darker than the wall #564f4a by 10 L*, or tinted): kit glass kept."
  ],
- "layeredKit": true
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
+ }
 }

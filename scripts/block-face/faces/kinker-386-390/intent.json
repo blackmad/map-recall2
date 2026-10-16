@@ -1,0 +1,180 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-386-390",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-386-390/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 390-386 (even side, 1914), 2024-12-11 overcast strip. 386-388: two mirrored 3-axis halves, flat heads under brick lintels, a balcony stack on each centre axis, a dormer each, two round-arched shop windows (kinker-1902-balcony-axis, two modules; the cluster gave kinker-1890-brick-arched, but there are no white blocks). 390 is under scaffold sheeting on the strip; its front is read from the 2020-02-07 zoom crop (pand-reference-kinkerstraat/0363100012071767): 3 axes, a pointed street gable with a hexagonal light, a white-painted cafe ground storey."
+ },
+ "types": [
+  "kinker-1890-plain-brick",
+  "kinker-1902-balcony-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012071767",
+   "slug": "kinker-071767",
+   "address": "Kinkerstraat 390",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#665552",
+     "evidence": "strip 2024-12-11: 2020-02-07 zoom crop brick sampled at x 520-640, rows 300-360 (#635452-#6a5a58); the 2024 strip is scaffolded"
+    },
+    "storeys": 4,
+    "overrides": {
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#c8302a",
+      "evidence": "2020 crop: white-painted ground, two shuttered windows sprayed \"CAFE BAR\", a red fascia strip, door left; 2024 strip: scaffolded"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "BAG bijeenkomstfunctie; no OSM node; the 2020 crop shows a closed cafe"
+   },
+   "rhythm": {
+    "citation": "2020-02-07 zoom crop (right part): 3 axes, flat heads, a pointed street gable with a hexagonal light; 2024 strip silhouette: raised scaffold over the gable",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the 2024-12-11 strip shows scaffold sheeting: the review wall and row checks read the sheeting",
+     "pointed street gable with a hexagonal light (no plain-brick crown for a point gable; left off)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012130085",
+   "slug": "kinker-130085",
+   "address": "Kinkerstraat 386-388",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#443b30",
+     "evidence": "palette-from-strip.ts --face=kinker-386-390: wall median #443b30 on the 2024-12-11 strip"
+    },
+    "storeys": 4,
+    "overrides": {
+     "windowHead": {
+      "kind": "flat"
+     }
+    },
+    "modules": [
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "flat"
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2a2826",
+        "fascia": true,
+        "name": "Retro Witgoed",
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#2a2826",
+        "evidence": "strip.jpg pand 2 left module: dark pui with a round-arched shop window, washing machines on the pavement; OSM shop=appliance Retro Witgoed"
+       }
+      }
+     },
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "flat"
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2a2826",
+        "fascia": true,
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#2a2826",
+        "evidence": "right module: the same round-arched shop window"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Retro Witgoed",
+    "category": "shop=appliance",
+    "osm": {
+     "type": "node",
+     "id": 12006428730,
+     "name": "Retro Witgoed"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "appliances on the pavement; the 2019 crop fascia reads \"ONDERDELEN & STOFZUIGERZAKKEN\""
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 6 axes as two 3-axis halves, centre balcony stacks on storeys 1-3, flat heads, two dormers, round-arched shop windows between dark piers",
+    "photoRows": [
+     2,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched shop windows between dark piers drawn as square shop bays",
+     "projecting balconies on dark slabs drawn as balconettes"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "071767: the 2024-12-11 strip shows scaffold sheeting: the review wall and row checks read the sheeting",
+  "071767: pointed street gable with a hexagonal light (no plain-brick crown for a point gable; left off)",
+  "130085: round-arched shop windows between dark piers drawn as square shop bays",
+  "130085: projecting balconies on dark slabs drawn as balconettes"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ }
+}

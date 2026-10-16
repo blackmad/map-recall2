@@ -1,5 +1,240 @@
 # Canal Recall — what is built
 
+## Kinkerstraat even side authored: twelve faces, 103 pands; three single-pand faces blocked (2026-10-16)
+
+Lane `lane/kinkerstraat-even-20261014` (plan Part 2 step 4), on the
+accents kit (origin/main 1c8005b8 merged, all faces recompiled). Faces
+(pands, tris): kinker-56-84 (5, 22,817: neo-renaissance gables and
+speklagen good; 76-84 gets a hipped 3DBAG roof instead of its flat
+parapet; 56-62 fails the wall check on glare), 86-110 (10, 16,444: the
+white head course drawn continuous where the photo dots it; 86-88 fails
+the wall check on low sun), 112-116 (2, 3,908: relieving arches with
+measured cornice and storey pitch; the moulded brick ornament bay left
+off), 120-138 (3, 10,136: 126-138 as 7 plain-brick modules; the two
+pointed gables of 126-128 left off), 142-178 (11, 23,988: rows and rhythm
+good; infill walls read olive; the 142 lettering dropped for the
+budget), 182-184 (2, 2,286: 1989 infill, loggia and glazed balustrade
+left off), 186-202 (6, 16,696: brick-arched with springers good; the 186
+bell gable, the 192-198 roof box and towers, the corner gable left off),
+206-242 (15, 25,795: black-painted fronts take walls from the review
+sampler; 212-216 needs a recipe roof because 3DBAG's partition fails),
+244-332 (26, 62,479: one intent, chunk 3.2 MB, about twice the others;
+bracketed cornices on the brick-arched pands; seven cluster assignments
+overruled), 334-374 (18, 45,076: plain-brick 374-364, the balcony-axis
+row with curved and stepped gables, the 1915 brick-arched pands; yellow
+courses and scrolled gable ornament missing), 376-380 (3, 6,484: keystone
+heads and pediment dormers good), 386-390 (2, 4,128: 390 under scaffold on
+the 2024 strip, read from the 2020 crop, gable left off). Kit:
+`measuredPalette` (per-pand measured colours over the named palette,
+requires evidence and `#rrggbb`), `limitations?: string[]` on the face
+intent, and the interference check takes the overhang side from the
+frontage (a false 8.6 m overhang where 68-70 wraps behind 64-66;
+regression test with 56-84); 25 other faces hashed identically with the
+kit change. **Blocked:** `kinker-140-142`, `kinker-382-382`, `kinker-392-392`
+hold one pand each and `validateBlockFace` rejects a face under two
+houses; the 382-384 draft is parked at
+`staging/look/kinker-382-382.intent.json` (not committed); the 140-142
+strip span is ~3 m off (its left part is 142, already in 142-178); 392 is
+a one-storey building behind a wall. Brick-arched window width: no
+consistent under-width on this side either (298-302 photo 1.19 m vs
+model 1.12; 202 both ~1.0 m). Kit gaps (pands): iron wall anchors 27,
+tympanum ornament 13, dormer shapes the crowns cannot draw 13, yellow
+courses on the 1902 balcony row 10, narrow centre French windows 10,
+gables the crown set cannot draw 9, round-arched windows mixed into a
+segmental storey 9, dotted white block courses 7, flat brick arches 5,
+loggias and glazed balustrades 5, yellow/red alternating arch blocks 4,
+basket-arched first-floor shop windows 4, 3DBAG roof mass wrong 3, very
+dark brick below the 0.30 floor 2, pediment hoods 2, two styles in one
+pand 1. Pipeline gaps: `palette-from-strip` reads black paint as glass
+(238–248); sign lettering can push a front past the 3,000-tri budget;
+no Ö glyph and the sign validator strips accents (Dönerland unlettered);
+infill walls read olive. Sheets `docs/images/kinkerstraat/<face>-sheet.jpg`,
+doc `docs/kinkerstraat-faces-even-20261014.md`. Checks: lint, block-face
+86, fit-golden 156 identical. The GATES FAIL header is the inferred-rear
+z-fight (rear-facade lane running).
+
+
+## Mercatorplein: both towers built bespoke from a photo-first inventory (2026-10-14)
+
+Lane `lane/mercatorplein-20261014` (plan Part 2 step 8). Photo-first
+inventories (`scripts/landmarks/mercatorplein-{noordtoren,zuidtoren}-inventory.json`,
+briefs, tall crops, aimed grids, 10 Commons originals and the register
+text archived in source-data 6c97fe90 under `models/mercatorplein-*/`),
+shared hand-built parts in `scripts/landmarks/mercatorplein-kit.ts`, two
+builders dispatched from `build-manual-landmarks.ts`; the kit `arcade`
+component (chamfered head, `arcade` ground, byte-identical when absent)
+came in f3fb1958. **North tower** (`mercatorplein-noordtoren`, 16,994 tris,
+251 KB, lod1 3,373): the arcade of 7 chamfered openings with a rendered
+lintel band; the square front with 7 erkers (three-sided with a stone cap
+where the photos show pitched caps), flank windows, 8 hoist beams with
+scroll ironwork plus 1 on the east parapet, a dark brick course over the
+lintel band and the coping; the gatehouse with a real 5.9 m
+through-passage, chamfered head in a stepped render frame, side doors,
+an erker on both faces, a steep tiled roof with white eaves board and
+glazed strip; the tower from 3DBAG massing with clock dials on the
+south, west and east faces, the slit under the south one, paired shaft
+windows and 4 big square windows on the north face; the curved corner
+balconies simplified; shop signs and the neighbour's glass-block band on
+the Hoofdweg not modelled. **South tower** (`mercatorplein-zuidtoren`,
+4,913 tris, 85 KB, lod1 1,430): 6 m passage on both faces, erker, roof
+with dormer, doors with a transom; flat top at 29.2 m with a rear shaft
+to 35.4 m; the east bay with erker, hoist beam and shopfronts; stepped
+corbel, grooved corners, diamond-pattern frieze and box balconies
+simplified. Verdicts at gallery size on rectified-crop sheets
+(`docs/images/mercatorplein/`, doc `docs/mercatorplein-20261014.md`):
+north arcade front, gate and tower from the square and the rear, south
+gate and tower, rear and east bay all read as the photo (bays and erkers
+within ~0.5 m); the north west and rear walls acceptable with kit
+windows; shared walls blank by design (the neighbour carries those
+windows). Known: 3DBAG's roof has a raised block at the west end of the
+north arcade front that is not in the photo; the south kit's own report
+flags one downward-facing roof triangle (audit passes, no hole in the
+strips). In the ride frame (`ride-jan-evertsen.jpg`, pitch 78°) the clock
+shaft reads above the corner ahead in the street's red brick; at the
+default cockpit pitch the tower top is out of frame (the chase-pitch row
+J3 covers it). Promotable to the kit: erkers with caps, hoist beams with
+scrolls, clock dials, gatehouses with a through-passage and cross roof,
+corner balconies, brick relief (grooved corners, diamond friezes, stepped
+corbels), per-bay arcade content, open shared walls, and a "trust the
+photo over 3DBAG" override for roof blocks. Checks: manual-landmarks 354,
+landmark-lods 296, covers, osm-under 0, fit-golden 153 identical, GLB
+audits PASS. OBA Mercatorplein was uninstalled by the large-tier triage
+(ornamented Amsterdam School front, no matching photo); its inventory is
+in `scripts/landmarks/oba-mercatorplein-inventory.json` for a bespoke
+builder.
+
+
+## Large tier triaged: 95 houses measured, 54 re-fitted to the photo, 12 uninstalled (2026-10-14)
+
+Lane `lane/large-triage-20261014` (plan Part 1 lane D). Crops archived for
+94 pands (source-data b348d50f8, 2,791 files; Politie Zuid has no crops,
+its pand is missing from the BAG tiles), measured with `measure.ts`,
+ranked worst-first on the installed state in
+`artifacts/building-recipes/likeness/report.md` (force-added with the
+`before/` snapshots and `houses.tsv`); verdicts in
+`scripts/building-recipes/likeness-triage.json`; index of the worst 20 as
+installed | re-fitted or uninstalled | photo in
+`docs/images/large-tier/triage-20261014.jpg`. Outcomes: re-fit cheap 65,
+keep 11, uninstall 12, re-fit after a new system 1, inferred 6.
+**Re-fitted and re-installed (54):** the police stations (Oost-Zeeburg,
+Lijnbaansgracht, IJ-tunnel, Houtmankade, Postjesweg, Meer en Vaart), the
+Kattenburg wings and Kattenburgerstraat, Quellijnstraat 36, Entrepotdok,
+Overtoom 283, OZ Achterburgwal 233, Engelsesteeg, Westerdok 186086 and
+748, Aambeeldstraat, OBA Javaplein, Olympisch Kwartier and Linnaeus, the
+stadsloketten Oost, Noord, Zuidoost and West, Stadsdeel Nieuw-West,
+Hamerkanaal 209 and 175, CGM 190, Hotel Arena, Utrechtsestraat 15,
+Funenpark 427, Buitenzagerij 45, Barlaeus, Vossius, Weteringstraat 16,
+Montessori Van Ostade, Rijksakademie, Cygnus, Kloveniersburgwal 72, Van
+Oldenbarneveldtstraat 48, Schaafstraat 17, Asterweg 19 and 19b, Van der
+Palmkade 191, Tilanusstraat 23, Hoogte Kadijk 400, Valckenierstraat 65,
+Nieuwe Achtergracht 100, Oostelijke Handelskade 749, Balboaplein 48,
+Spinozastraat 51, WG-plein 600, Da Costakade 146, Revaleiland 437, Louise
+Wentstraat 230. The common fixes: measured wall colours (the authored
+brick was usually 0.1–0.3 L lighter and redder than the photo) and hand
+window shapes where the refine loop made slits; shaded, leafy or low-sun
+crops kept a hand colour with an `--allow-inferred` note.
+**Uninstalled (12)**, recipe and intent kept with a note, GLB, catalogue
+entry and cover gone: ornamented historic fronts for bespoke if they
+return (Leidsestraat 67, Amstel 142, Beursplein 5, Damrak 77, Pijlsteeg 31
+Krasnapolsky, Stadhouderskade 25, Hirschpassage 2); no matching photo on
+ride-visible fronts (OBA Mercatorplein, also an ornamented Amsterdam
+School front; Plantage Middenlaan 52 with curved balcony bands; the
+Amsterdams Lyceum gate arches; Leidsekade 106 Holland Casino); an
+irregular row of separate fronts (Stadhouderskade 111). **Keep (11)**,
+the measured FAIL from shade or backlight in the crop: Heinekenplein,
+Politie Johan Huizingalaan, Marnixstraat 248, CGM 114, 183 and 168, Berlage
+Lyceum, Reade, Polderweg 3, Van Beuningenstraat 48, Archangelkade 3.
+**Inferred (6):** Politie Flierbosdreef, Boven-IJ, Zuid-De Pijp, Distelweg
+88 (blank), Grasweg 41, Asterweg 37. **Unverified:** 11 "re-fit cheap"
+verdicts have no re-install the lane could account for (Oude Turfmarkt
+168172, Nieuwe Achtergracht 253754, Politie Van Leijenberghlaan,
+Zuidoost-Gaasperdam, Nieuwezijds Voorburgwal, Oost-Watergraafsmeer,
+Politiepost IJburg, Meeuwenlaan 132, Rigakade 8, Nieuwpoortstraat 126319,
+Warmoesstraat garage); on the board. Kit needs by count: ornamented
+historic fronts 8 (bespoke, not the kit), a louvre screen 2 (Haarlemmerweg
+325, the one waiting re-fit, and Tilanusstraat 23), and one each of a
+second `wallSplit` per group, coloured posts on framed fronts, glazed
+infill, mixed ribbon and punched storeys in one group, warehouse shutters
+and hoist beams, a bay window with a rounded corner, a full-height hall
+arch with a stepped gable, striped brick banding, stone string courses,
+curved balcony bands, through-passage gate arches, a carved stone portal,
+awnings, saw-tooth roof glazing, a curtain-wall glazing share. OBA
+Olympisch Kwartier walls[0] keeps its preset window (every measured shape
+opened 4–15 m of open edges across merged 3DBAG surfaces). **Ride
+visibility** replaces footprint ÷ distance:
+`scripts/building-recipes/ride-visibility.ts` samples 2,000 seeded bike
+routes, counts route metres within 60 m with an unblocked line of sight,
+weighted by visible wall length, written as `rideVisibility` into
+`dominant-building-backlog.json` (new top 10: 0012185418, 0012098925,
+0012186093, 0012243823, the Amsterdamse Hogeschool voor de Kunsten,
+0012165293, 1489746218, 0012087570, 1489746219, 0012165077; the old top 10
+now rank 6, 93, 121, 138, 329, 145, 609, 24, 69, 70; Rasphuispoort 16,
+Allard Pierson 18, Van Gendt Hallen 166); `build-dominant-building-backlog.ts`
+does not carry the field yet, so a regenerated backlog loses it until
+`ride-visibility.ts --write` is re-run. Two test fixtures moved to Politie
+West Overtoomsesluis because the old fixture house is now measured.
+Checks: building-recipes 162, geometry-audit, block-kit-installed,
+fit-golden and 112 meshes identical after the golden update (each batch's
+diff touched only that batch), stale-installs strict 0, covers, osm-under
+0, audit:glb per re-installed house.
+
+
+## Jan Evertsenstraat surveyed: 148 pands, 19 faces, the De Baarsjes type sketch (2026-10-14)
+
+Lane `lane/jan-evertsen-survey-20261014` (plan Part 2 step 7, survey
+half). BAG has 148 pands with a current Jan Evertsenstraat address, not
+the ~168 the plan counted (a 120 m buffer finds the same 148); 1910s is 6
+not 18. Style groups: 1920s Amsterdam School (1925–27) 123 (odd 65, even
+58), 1910s (1912–13) 6, 1939 6, post-war 13. Faces: even 4-44 (17), 52-66
+(6), 68-92 (10), 94-142 (26, re-seeded at no. 126 because the corner seed
+stopped after 96), 144-150 (4), 152-160 (5); odd 1-1 (5), 7-41 (18), 43-57
+(8), 59-89 (15), 91-135 (19), 137-143 (4), 145-155 (6), 171-175 (1),
+201-267, 269-335, 337-403, 405-471, 473-781 (2 each). Strips fused from
+one capture day each (2024-12-06; 4-44 and 7-41 from 2021-03-26 leaf-off;
+1-1 from 2022-12-12), coverage 1.0. No frontage: 162, 164; no sightline:
+none; strip only: 57 (side wall only), 473–715 (not in the tiles); washed
+out: 32, 34, 42, 44, 58, 60, 86, 94, 102, 122, 132, 134; trees on the upper
+storeys with Beeldbank cover 74–78, 84, 98, 114, 121–125, without 145,
+151, 152, 153, 155, 158; scaffold 87; 63 pands carry Beeldbank references
+(the 1960 Dijkstra aerial excluded as copyrighted). Tooling:
+`street-style.ts` (hyphenated index names, `commercial-faces.ts
+--style=de-baarsjes`, Oud-West default), `commercial-merge.ts --beeldbank`
+(by reference, nothing fetched) and `--notes`
+(`scripts/street-surveys/notes/jan-evertsenstraat.json`), each pand's
+strip span, `run.ts --street` falling back to `streets-routing.json`,
+`intake.ts` backing off 30 s then 90 s between Overpass rounds (the first
+pass lost 7 of 19 faces). **Bug found:** `commercial-merge.ts` never
+merged ground-floor uses, so `kinkerstraat.json` has uses on 0 of 217
+pands; fixed (146 of 148 here), Kinkerstraat to be re-merged from a
+checkout that has its staged crops. Large/bespoke candidates: the
+Mercatorplein clock tower 107349 (bespoke, 37.5 m), a possible twin tower
+073289 (29.8 m, confirm from a photo), 144 (106884: 20.9 m tower, pointed
+oriels, two-arch arcade), 121–125 (085815, 37.3 m, large recipe), 52–56
+corner mass, 40 (089629: corner tower and half-round oriels), raised or
+stepped corner masses at 20–24, 35/31–37/39/41, 66, 91, 94, the
+Hotelschool 171–175 (148630, 100.7 m), 473–715 (134306, 60 m tower),
+717–781 (113136), the Knijtijzer slabs 203–471 (ordinary kit); 3DBAG reads
+eaves at 3–6 m on corners 52–56, 89, 91, 92, 94 and 64 (`measuredEaves`
+on the face pass). Type sketch over the 148: bodies lintel-band 18 (13,
+23, 32), hood-lisene 40 (101, 118, 126), balcony-slot 14 (61, 69, 81),
+ladder/small-pane plain 19 (49, 60, 70), 1926–27 white attic under a tile
+roof 12 (141, 148, 154), 1939 with dormers 5, corner and end masses 16;
+crowns tall plain parapet 91, raised corner tower flat top 7 (no pyramid
+cap on any street front), raised stair-tower ends 7 (the plan's
+"raised-centre", at row ends), tile roof over the white attic 13;
+components rigid canopy ~95, glass-block band 73, two-bay erker only 4,
+no separate dark plinth course. Kit gaps: side-hung casements with a
+fixed top light, the tall parapet zone, the single-bay box bay with hood,
+stacked balconettes, white bands with two-tone brick piers, the
+small-pane top-light grid, the white attic and brick balcony bands, signs
+on the glass-block band, corner oriels and friezes. Archive: source-data
+c399ed38 (crops and reference.json for 207 pands, all-walls for 21, 19
+strips), merged to source-data main 8e36d460. Files:
+`docs/jan-evertsenstraat-survey-20261014.md`,
+`scripts/street-surveys/streets/jan-evertsenstraat.json`,
+`scripts/block-face/faces/evertsen-*/`. Nothing authored or installed.
+
+
 ## Ride review, Jordaan and Plantage: three fixes, seventeen rows (2026-10-14)
 
 Lane `lane/ride-review-jordaan-plantage-20261014`. New
