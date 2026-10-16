@@ -1434,6 +1434,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Centraal Station after the 2026-10-16 rebuild (HISTORY "Centraal Station:
+  the Cuypers front…")**: reliefs, tympanum figures and statues are flat
+  silhouettes; tile/mosaic fields and heraldic charges are flat tinctures;
+  leaded tracery is bars; no NS logo; the roof lettering is a 5x7 block font
+  without the tan border; east-wing kneelers and step profiles are straight
+  copings.
+
 - **BAG holes after the 1,601 fills (2026-10-16, HISTORY "BAG pands the tiles
   never drew")**: 1,325 post-2019 pands wait for AHN5 or a newer 3DBAG; the 12
   complexes over 5,000 m² (e.g. 0363100012241555, 3.2 ha at the Zuidas) and the
