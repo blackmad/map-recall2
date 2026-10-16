@@ -47,7 +47,8 @@ mode, three.js layers 0.74 → 0.89 ms, +5.5 MB textures, flag-off
 pixel-identical. Not flipped yet: the user called the shared-frame default a
 look decision for them, and the user's 2026-10-13 notes ("the sun moves
 with me", "the whole city is a little dark/dour") go to the lighting lane
-first, so the flip lands on a frame whose sun is fixed. Still open from the
+first, so the flip lands on a frame whose sun is fixed (the sunny look
+landed 2026-10-16, HISTORY "Sunny look is the default"). Still open from the
 review: three builder re-tags (Uilenburger synagoge and Podium Mozaïek
 roofs → `roofTile`, American Hotel sandstone), 57 covered models without a
 BAG year, Hemp Gallery (1993) and Theo Thijssen Museum (1994) carry rebuild
@@ -714,6 +715,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Sunny look follow-ups** (2026-10-16, HISTORY "Sunny look is the
+  default"; `?look=legacy` opts out): re-tune the opt-in yellow highlight
+  (clips at 206.6 under the rig); undo the city look's extra 0.9 cell
+  level so `?cityLook=1` also draws sun-facing walls at their own colour;
+  regenerate gallery covers, goldens and `docs/LOOK.md` under the rig;
+  per-house white points for hand-edited intents and the Oud-West strip
+  faces (median 1.106 today); decide the road grey (~98–117 vs the user's
+  ~150) and the cycle red (190,96,92 proposed); ride-level before/after
+  frames from the bike, the sheet is mostly aerial.
 - **Kit roof rules (user, 2026-10-16; plan Part 2, lane in flight):** roofs
   follow the measured front, not 3DBAG ("don't give so much credence to
   3DBAG roofs"): saddle under the crown profile, flat under a parapet, attic
