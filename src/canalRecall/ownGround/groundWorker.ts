@@ -2,7 +2,7 @@
 // thread (all ground modules are DOM-free). Bundled as
 // public/canal-drive/js/own-ground-worker.bundle.js (scripts/build-3d-bundles.mjs).
 //
-// Messages in:  { type: 'init', root, parks, groundLook }  extract root URL (absolute); parks: load parks-v1; far-ring palette
+// Messages in:  { type: 'init', root, parks, roads, groundLook }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette
 //               { type: 'build', key, lod, gen }  build one cell
 //               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
@@ -17,7 +17,7 @@ import { buildFarBlock, farColours, farTransferables, type FarColours } from './
 import { groundPalette, type GroundLook } from './groundLook.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; groundLook?: GroundLook }
+  | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] };
@@ -32,7 +32,7 @@ let chain: Promise<void> = Promise.resolve();
 ctx.onmessage = event => {
   const msg = event.data;
   if (msg.type === 'init') {
-    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false });
+    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true });
     colours = msg.groundLook && msg.groundLook !== 'default' ? farColours(groundPalette(msg.groundLook)) : undefined;
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
