@@ -727,6 +727,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Kit work is not drawn by default** (2026-10-16, HISTORY "Coverage by
+  buurt"): block-face chunks (131 pands, every face re-installed today)
+  are retired behind `?streetChunks=1` since 2026-10-14 because they drew
+  near-black under the old light; building types (3,075) are behind
+  `?buildingTypes=1`. The sunny look and shadow fill landed since: measure
+  the chunks' luma under today's default frame and put the decision to
+  bring them back to the user with frames. Coverage page
+  `docs/coverage/index.html` ranks buurten for generator lanes.
 - **Sunny look follow-ups** (2026-10-16, HISTORY "Sunny look is the
   default"; `?look=legacy` opts out): re-tune the opt-in yellow highlight
   (clips at 206.6 under the rig); undo the city look's extra 0.9 cell
