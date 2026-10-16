@@ -21,7 +21,7 @@ import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGr
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, surveyPaint, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, SURVEY_PAINT, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
@@ -152,7 +152,7 @@ async function main(): Promise<void> {
           const tops = built.map(c => layersAt(c, qx, qy)).filter(r => r.hits.length);
           const top = tops.map(t => t.top).find(Boolean) ?? null;
           probes++;
-          if (!top || !['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb'].includes(top)) bad.push(`${f}/${o}:${top}`);
+          if (!top || !['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'paint', 'kerb'].includes(top)) bad.push(`${f}/${o}:${top}`);
         }
       }
       check(!bad.length, `${id}: deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
@@ -406,7 +406,7 @@ async function pocketRegressions(): Promise<void> {
       return out;
     };
     const on = await tops(true), off = await tops(false);
-    const street = on.filter(t => ['asphalt', 'klinker', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
+    const street = on.filter(t => ['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
     check(street === on.length, `${id}: ${street}/${on.length} probes are street with the pocket fill (${[...new Set(on)].join(', ')})`);
     check(off.includes('land'), `${id}: without it ${off.filter(t => t === 'land').length}/${off.length} probes read land (the pin is live)`);
   }
@@ -599,7 +599,7 @@ const PARKS: { id: string; at: [number, number]; half: number; minPark: number; 
   { id: 'Bellamyplein', at: [4.8677, 52.36795], half: 40, minPark: 0.6, minSurfaces: ['lawn'] },
   { id: 'Sarphatipark', at: [4.8963, 52.3544], half: 110, minPark: 0.7, minSurfaces: ['lawn', 'shrub', 'furniture', 'hedge'] },
 ];
-const STREET_TOPS = new Set(['asphalt', 'klinker', 'cycle', 'paving', 'kerb', 'paint', 'tram', 'bollard', 'gravel']);
+const STREET_TOPS = new Set(['asphalt', 'klinker', 'brick', 'cycle', 'paving', 'kerb', 'paint', 'tram', 'bollard', 'gravel']);
 const PARK_TOPS = new Set(['lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'paving', 'cycle']);
 async function parkRegressions(): Promise<void> {
   await noParks.init();
@@ -730,6 +730,13 @@ async function roadRegressions(): Promise<void> {
       break;
     }
     check(found, `${reg.id}: ways ${reg.ways.join(', ')} found in a roads-v1 cell`);
+  }
+  for (const reg of SURVEY_PAINT) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y);
+    if (!roadsStore.roadCells.has(n.key) || !n.index) { console.log(`skip ${reg.id} (cell ${n.key} not in roads-v1)`); continue; }
+    const index = n.index, onCarriage = (px: number, py: number) => { const k = index.findAtLevel(px, py, false); return k >= 0 && index.records[k].h === 0 && index.drawClass(k) === 'carriage'; };
+    const r = surveyPaint(n.cells, [x, y], reg.radiusM, onCarriage);
+    check(r.off.length === 0 && r.paint >= reg.minPaint, `${reg.id} roads-v1: ${r.paint} paint triangles within ${reg.radiusM} m (≥ ${reg.minPaint}), ${r.off.length} off the carriageway polygons${r.off.length ? ` ${JSON.stringify(r.off.slice(0, 6))}` : ''}`);
   }
   for (const reg of SURVEY_GAPS) {
     // The cell alone, its neighbours' roads withheld: the extract's edge (where the pilot ended at the Nieuwmarkt).

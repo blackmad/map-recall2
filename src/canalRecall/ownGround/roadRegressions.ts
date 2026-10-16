@@ -9,7 +9,7 @@
 import { layersAt, type BuiltCell, type GroundLayer } from './groundCell.js';
 import { pointAt, stations } from './drape.js';
 import type { LocalWay } from './streets.js';
-import type { RoadIndex } from './roadSurfaces.js';
+import { surfaceLayer, type RoadIndex } from './roadSurfaces.js';
 import type { RoadMesh } from './roadCells.js';
 
 /**
@@ -27,7 +27,7 @@ export function topAcross(cells: readonly BuiltCell[], x: number, y: number): st
   return best ?? 'none';
 }
 
-export const STREET_TOPS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram']);
+export const STREET_TOPS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram']);
 
 /**
  * roads-v1 survey gaps (roads lane phase 2, 2026-10-16): a junction node under no wegdeel polygon (a plein the BGT
@@ -57,7 +57,7 @@ export function gapLand(on: readonly BuiltCell[], off: readonly BuiltCell[], cen
 }
 
 /** Street bands a rider should see on a deck (belt audit's deck-top probe). */
-const DECK_STREET: ReadonlySet<string> = new Set(['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb']);
+const DECK_STREET: ReadonlySet<string> = new Set(['asphalt', 'klinker', 'brick', 'paving', 'cycle', 'paint', 'kerb']);
 /** Embedded tram rails (LIFT.rail) sit 2 cm over the carriageway (LIFT.carriageway); over a band within this they are street vocabulary. */
 export const RAIL_ON_BAND_M = 0.035;
 
@@ -168,10 +168,10 @@ export function surveyedCoverage(cells: readonly BuiltCell[], centre: [number, n
   let probes = 0, ok = 0;
   for (let r = 0; r <= radiusM; r += 1) for (let k = 0; k < (r ? 12 : 1); k++) {
     const a = (k / 12) * Math.PI * 2, x = centre[0] + Math.cos(a) * r, y = centre[1] + Math.sin(a) * r;
-    const top = topAcross(cells, x, y), mesh = index.meshAt(x, y);
+    const top = topAcross(cells, x, y), mesh = index.meshAt(x, y), cls = index.classAt(x, y);
     tops[top] = (tops[top] ?? 0) + 1;
     probes++;
-    const good = mesh === null ? top !== 'land' && top !== 'none' : top === MESH_LAYER[mesh] || ON_ANY.has(top);
+    const good = mesh === null ? top !== 'land' && top !== 'none' : top === (cls ? surfaceLayer(cls, mesh) : MESH_LAYER[mesh]) || ON_ANY.has(top);
     if (good) ok++; else misses.push({ at: [+(x - centre[0]).toFixed(1), +(y - centre[1]).toFixed(1)], top, survey: mesh ?? 'off-survey' });
   }
   return { probes, ok, share: ok / probes, tops, misses };
@@ -241,6 +241,37 @@ export function zebraOffRoad(cells: readonly BuiltCell[], ways: readonly LocalWa
     }
   }
   return { dashes, off };
+}
+
+/**
+ * Road look v2 (2026-10-16, user: "our roads still don't look great"): the survey-aware markings (surveyMarkings.ts)
+ * lie on ground carriageway polygons only, and the named junctions carry them. Within `radiusM` of `at` every paint
+ * triangle's centroid must lie on a carriageway polygon (class carriage; a parking bay, inrit, cycle path or pavement
+ * fails), and at least `minPaint` paint triangles must be there (the Nassaukade / Frederik Hendrikplantsoen zebras,
+ * OSM crossing nodes with crossing:markings=zebra and crossing:signals=yes). The Bilderdijkgracht crossings and the
+ * Marnixstraat busway were where the prior-based band paint shredded across pavements and the island.
+ */
+export interface SurveyPaintRegression { id: string; label: string; at: [number, number]; radiusM: number; minPaint: number }
+export const SURVEY_PAINT: SurveyPaintRegression[] = [
+  { id: 'bilderdijkgracht-survey-paint', label: 'Kinkerstraat × Bilderdijkgracht: survey paint on the carriageway only', at: [4.87081, 52.36684], radiusM: 45, minPaint: 20 },
+  { id: 'marnixstraat-busway-survey-paint', label: 'Marnixstraat busway by the Tweede Marnixplantsoen: survey paint on the carriageway only', at: [4.87673, 52.374747], radiusM: 45, minPaint: 0 },
+  { id: 'nassaukade-fhplantsoen-zebras', label: 'Nassaukade × Frederik Hendrikplantsoen: zebras at the signalised crossings, on the carriageway', at: [4.8776303, 52.3785795], radiusM: 30, minPaint: 60 },
+];
+export function surveyPaint(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, onCarriage: (x: number, y: number) => boolean): { paint: number; off: [number, number][] } {
+  const off: [number, number][] = [];
+  let paint = 0;
+  for (const c of cells) {
+    const m = c.layers.paint;
+    if (!m) continue;
+    const p = m.positions, idx = m.indices;
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, k = idx[t + 2] * 3, x = (p[a] + p[b] + p[k]) / 3, y = (p[a + 1] + p[b + 1] + p[k + 1]) / 3;
+      if (Math.hypot(x - centre[0], y - centre[1]) > radiusM) continue;
+      paint++;
+      if (!onCarriage(x, y)) off.push([+(x - centre[0]).toFixed(1), +(y - centre[1]).toFixed(1)]);
+    }
+  }
+  return { paint, off };
 }
 
 /**
