@@ -737,13 +737,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Buurt generator, next** (2026-10-16, HISTORY "Buurt coverage in the
-  app"): the photo gate passes five wrong types in Bellamybuurt-Zuid; add
-  balcony detection from the strip and a green-tile vs tile-bay test that
-  survives exposure, then install the placed runs after a gallery-size
-  review; kit components for painted timber oriels and hoist-cap dormers;
-  types for the 31 faces that place nothing; then the next buurt from the
-  coverage page's pre-1945 list (Postjeskade e.o., Cremerbuurt-West).
+- **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
+  auto-placed runs installed"): 69 of 335 pands installed. Next: types for
+  Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
+  Wenslauerstraat rows; green-tile gable over the window pair and its
+  mirror; per-front dormer heights; the 21 review holds; then the next buurt
+  from the coverage page (Postjeskade e.o., Cremerbuurt-West), driven by a
+  Haiku lane for survey/intake/placement and Opus for types and review.
 - **Coverage page gaps:** ship exemplar photo crops and building-type
   thumbnails; refresh the street-surveys data (10-10).
 - **Motion stutter, next pass** (2026-10-16, HISTORY "Motion stutter";

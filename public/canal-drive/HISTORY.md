@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Bellamybuurt-Zuid: 12 auto-placed runs installed (69 pands) (2026-10-16)
+
+Lane `lane/buurt-generator-2-20261016` (0ec8a8cfb). The pilot's photo gate
+passed five wrong types; `blockFace/stripStructure.ts` now measures each
+strip relative to the pand's own wall colour (green-tile vs tile-bay no
+longer depends on exposure) and reads balconies from open window axes and
+stacked dark slabs, vetoing types without them. Jan Hanzenstraat 49–51,
+Ten Katestraat 29–31, Bellamystraat 18–20 and Van Effenstraat 7D are held;
+Hasebroekstraat 69 places as green-tile with a point gable (right). Kit:
+`buildingRecipe/orielHoist.ts` adds white painted timber oriels and dormers
+under hoist caps (tile-bay likeness 0.19–0.24 → 0.31–0.43); box dormers
+stop at a 2.0 m rise; green-tile limited to 1911–1918. A reviewer's holds
+file (`scripts/block-face/buurten/bellamybuurt-zuid-review-holds.json`, 21
+pands with reasons) holds pands at a `review` stage. Placed 102 (pilot) →
+93 → 69 on 10 faces; 12 runs installed after each sheet was reviewed at
+full size: hasebroek-52-88-r1, -43-101-r1, -90-98-r1, -2-46-r1, -1-41-r1
+and -r2, bellamydwars-4-12, bellamyplein-18-38-r1 and -r2, effen-2-12-r1,
+heije-41-53-r1, kate-5-21-r1. A full buurt placement runs in 213–366 s.
+The kit still cannot say a segmental oriel, more than one dormer height
+per front, a green-tile gable over the window pair or its mirror, window
+kinds per axis, double doors, chequered courses, the Bellamyplein towers
+and pediment-hooded neck dormers, Hasebroekstraat 21–37's wide-arch
+full-balcony design, or the flat 1930s Wenslauerstraat type.
+
 ## One model per ground: the Wereldmuseum drew twice (2026-10-16)
 
 User (2026-10-16), with two ride screenshots of the Mauritskade portal:
