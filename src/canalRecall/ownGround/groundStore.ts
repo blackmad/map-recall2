@@ -75,7 +75,12 @@ export class GroundStore {
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
   /** `moorings`: open the water under houseboats the generalised water cuts (moorings.ts); off for the regression's before. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean } = {}) {}
+  /**
+   * `reliefTile`: fetch and decode one relief tile elsewhere (the game passes a worker, so the gunzip and
+   * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
+   * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
+   */
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; reliefTile?: ReliefTileLoader } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -216,10 +221,14 @@ export class GroundStore {
       if (this.reliefTiles.has(k)) return undefined;
       let p = this.reliefLoading.get(k);
       if (!p) {
-        p = this.fetchBytes(`${EXTRACTS.relief}/tiles/${k}.bin`).then(bytes => {
-          this.loadedBytes.relief += bytes.byteLength;
+        const path = `${EXTRACTS.relief}/tiles/${k}.bin`, entry = this.tileEntry(k)!;
+        const load = this.options.reliefTile
+          ? this.options.reliefTile(path, this.relief, entry)
+          : this.fetchBytes(path).then(bytes => ({ heights: readGroundTile(this.relief, entry, bytes), bytes: bytes.byteLength }));
+        p = load.then(({ heights, bytes }) => {
+          this.loadedBytes.relief += bytes;
           const [tx, ty] = k.split('_').map(Number);
-          this.field.addTile(tx, ty, readGroundTile(this.relief, this.tileEntry(k)!, bytes));
+          this.field.addTile(tx, ty, heights);
           this.reliefTiles.add(k);
         }).finally(() => this.reliefLoading.delete(k));
         this.reliefLoading.set(k, p);
@@ -468,6 +477,9 @@ export class GroundStore {
     return out;
   }
 }
+
+/** Fetches and decodes one relief tile (extract-relative path, the relief index, the tile's index entry). */
+export type ReliefTileLoader = (path: string, index: GroundIndex, entry: readonly number[]) => Promise<{ heights: Float32Array; bytes: number }>;
 
 /** Gunzip if the bytes are gzip (the dev server may or may not decode .gz for us). */
 export async function maybeGunzip(bytes: Uint8Array): Promise<Uint8Array> {
