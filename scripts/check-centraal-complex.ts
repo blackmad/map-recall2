@@ -32,4 +32,19 @@ const spec=MANUAL_LANDMARKS.find(p=>p.id==='centraal-station')!;
 assert.equal(spec.spatialSuppression,false);
 for(const roof of source.parts)assert.ok(spec.suppressOsmIds.includes(roof.osmId));
 for(const neighbor of ['w26726075','w139016081','NL.IMBAG.Pand.0363100012178504','NL.IMBAG.Pand.0363100012185599','NL.IMBAG.Pand.0363100012240311'])assert.ok(!spec.suppressOsmIds.includes(neighbor),'ferry/metro/hotel/postal neighbors remain');
+// The AMSTERDAM lettering on the IJ canopy is real (user, 2026-10-16): dark maroon glass panels, measured on the PDOK 2023
+// orthophoto at x -127.5..123.9 and z -164.9..-146.5 of the model frame. Keep it, in its own measured colour, on the canopy.
+{
+ const letters:number[][]=[];
+ const colourOf=new Map<T.BufferGeometry,string>();
+ const probe:BuildingTools={...tools,add(g,c,x=0,y=0,z=0,a=0){g.rotateY(a);g.translate(x,y,z);colourOf.set(g,c);}};
+ buildCentraalComplex(probe);
+ for(const [g,c] of colourOf)if(c==='pink'){g.computeBoundingBox();const b=g.boundingBox!;letters.push([b.min.x,b.max.x,b.min.z,b.max.z,b.max.y]);}
+ assert.ok(letters.length>=40,`AMSTERDAM letter panels on the IJ canopy (${letters.length})`);
+ const x0=Math.min(...letters.map(l=>l[0])),x1=Math.max(...letters.map(l=>l[1])),z0=Math.min(...letters.map(l=>l[2])),z1=Math.max(...letters.map(l=>l[3]));
+ assert.ok(Math.abs(x0+127.5)<0.5&&Math.abs(x1-123.9)<0.5,`lettering spans the measured x -127.5..123.9 (${x0.toFixed(1)}..${x1.toFixed(1)})`);
+ assert.ok(Math.abs(z0+164.9)<0.5&&Math.abs(z1+146.5)<0.5,`lettering spans the measured band z -164.9..-146.5 (${z0.toFixed(1)}..${z1.toFixed(1)})`);
+ assert.ok(letters.every(l=>l[4]>12),'letters lie on the curved canopy roof (14.8 m at the north edge of the band), not the 6.5 m bus deck');
+ assert.equal(spec.materialOverrides?.pink,'#7a4850','lettering keeps its measured maroon, not the bright orange of other sources');
+}
 console.log({triangles,bounds,roofCount:source.parts.length,groundClearance:hits[0].point.y});

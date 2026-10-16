@@ -40,6 +40,18 @@
      "plan": "modelled",
      "how": "centraal-complex-builder.ts (IJ canopy, unchanged)",
      "seenIn": "TMX7316010203-002532_pano_0000_000549"
+    },
+    {
+     "id": "ij-roof-amsterdam",
+     "kind": "lettering",
+     "where": "AMSTERDAM in dark maroon glass panels on the IJ canopy roof over the bus station, read from the IJ",
+     "approxSizeM": [
+      251,
+      18.4
+     ],
+     "plan": "modelled",
+     "how": "centraal-complex-builder.ts: nine glyphs on the canopy glass at measured boxes (x -127.5..123.9, z -164.9..-146.5) from the PDOK 2023 orthophoto (open data), 5x7 block font in 1.5-3 m panel cells, own colour #7a4850 (pinned in check-centraal-complex.ts)",
+     "seenIn": "PDOK luchtfoto 2023_orthoHR"
     }
    ]
   },

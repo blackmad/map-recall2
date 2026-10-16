@@ -102,7 +102,8 @@ export interface OpeningOptions {
 
 /**
  * Reveals (the hole's sides, facing in), the recessed glass and the stone cross: mullions and transoms as front faces
- * 4 cm proud of the glass, so a 2-3 light cross window reads at gallery size for 2 triangles a bar.
+ * 13 cm proud of the glass (glazing bars 6.5 cm), so a 2-3 light cross window reads at gallery size for 2 triangles a bar;
+ * a GLB quantises a 400 m model to about 2.6 cm steps, so closer offsets read as z-fighting.
  */
 export function opening(s: TriSink, f: WallFrame, o: Opening, opt: OpeningOptions = {}) {
   const depth = opt.depth ?? 0.22, outline = openingOutline(o), glass = opt.glass ?? 'glass', reveal = opt.reveal ?? 'stone';
@@ -113,7 +114,7 @@ export function opening(s: TriSink, f: WallFrame, o: Opening, opt: OpeningOption
   }
   panel(s, glass, f, outline, [], -depth);
   const bar = opt.mullion ?? reveal, mw = opt.mullionW ?? 0.14, top = o.y + o.h, spring = o.head && o.head !== 'flat' ? top - (o.head === 'round' ? o.w / 2 : (o.rise ?? o.w * (o.head === 'pointed' ? 0.75 : 0.18))) : top;
-  const dBar = -depth + 0.04;
+  const dBar = -depth + 0.13;
   const n = opt.mullions ?? 0;
   for (let k = 1; k <= n; k++) {
     const t = o.t - o.w / 2 + o.w * k / (n + 1);
@@ -124,9 +125,11 @@ export function opening(s: TriSink, f: WallFrame, o: Opening, opt: OpeningOption
     s.quad(bar, at(f, o.t - o.w / 2, y - mw / 2, dBar), at(f, o.t + o.w / 2, y - mw / 2, dBar), at(f, o.t + o.w / 2, y + mw / 2, dBar), at(f, o.t - o.w / 2, y + mw / 2, dBar));
   }
   if (opt.panes) {
-    const [nx, ny] = opt.panes, bw = 0.035, dPane = -depth + 0.025, c = opt.bar ?? 'frame';
-    for (let k = 1; k < ny; k++) { const y = o.y + (spring - o.y) * k / ny; s.quad(c, at(f, o.t - o.w / 2, y - bw, dPane), at(f, o.t + o.w / 2, y - bw, dPane), at(f, o.t + o.w / 2, y + bw, dPane), at(f, o.t - o.w / 2, y + bw, dPane)); }
-    for (let k = 1; k < nx; k++) { const t = o.t - o.w / 2 + o.w * k / nx; s.quad(c, at(f, t - bw, o.y, dPane), at(f, t + bw, o.y, dPane), at(f, t + bw, spring, dPane), at(f, t - bw, spring, dPane)); }
+    const [nx, ny] = opt.panes, bw = 0.035, dPane = -depth + 0.065, c = opt.bar ?? 'frame';
+    // a glazing bar that a mullion or transom already covers is not drawn (it would be buried behind the stone bar)
+    const barT = Array.from({length: n}, (_, k) => o.t - o.w / 2 + o.w * (k + 1) / (n + 1)), barY = (opt.transoms ?? []).map(fr => o.y + (spring - o.y) * fr);
+    for (let k = 1; k < ny; k++) { const y = o.y + (spring - o.y) * k / ny; if (barY.some(v => Math.abs(v - y) < mw / 2 + bw)) continue; s.quad(c, at(f, o.t - o.w / 2, y - bw, dPane), at(f, o.t + o.w / 2, y - bw, dPane), at(f, o.t + o.w / 2, y + bw, dPane), at(f, o.t - o.w / 2, y + bw, dPane)); }
+    for (let k = 1; k < nx; k++) { const t = o.t - o.w / 2 + o.w * k / nx; if (barT.some(v => Math.abs(v - t) < mw / 2 + bw)) continue; s.quad(c, at(f, t - bw, o.y, dPane), at(f, t + bw, o.y, dPane), at(f, t + bw, spring, dPane), at(f, t - bw, spring, dPane)); }
   }
 }
 
@@ -193,13 +196,36 @@ export function strip(s: TriSink, c: string, f: WallFrame, a: P2, b: P2, w: numb
   s.quad(c, at(f, a[0] - nx, a[1] - ny, d), at(f, b[0] - nx, b[1] - ny, d), at(f, b[0] + nx, b[1] + ny, d), at(f, a[0] + nx, a[1] + ny, d));
 }
 
-/** Coping along a gable edge a -> b: a slanted slab `w` wide and d0..d1 deep (front, top and underside). */
-export function coping(s: TriSink, c: string, f: WallFrame, a: P2, b: P2, w: number, d0: number, d1: number) {
+/**
+ * A solid bar from a to b: the strip's front at d1 plus its four sides back to d0, so an iron anchor, a clock hand or a
+ * shield's fess stands on the surface behind it instead of floating a plate in front of it (10 triangles).
+ */
+export function rib(s: TriSink, c: string, f: WallFrame, a: P2, b: P2, w: number, d0: number, d1: number) {
+  const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l * w / 2, ny = dx / l * w / 2;
+  plaque(s, c, f, [[a[0] - nx, a[1] - ny], [b[0] - nx, b[1] - ny], [b[0] + nx, b[1] + ny], [a[0] + nx, a[1] + ny]], d0, d1);
+}
+
+/** A raised plaque: the outline's front at d1 with its sides back to d0 (shields, cartouches, oculus lights). */
+export function plaque(s: TriSink, c: string, f: WallFrame, outline: P2[], d0: number, d1: number) {
+  panel(s, c, f, outline, [], d1);
+  const ccw = outline.reduce((v, p, i) => v + p[0] * outline[(i + 1) % outline.length][1] - outline[(i + 1) % outline.length][0] * p[1], 0) > 0;
+  for (let i = 0; i < outline.length; i++) {
+    const p = outline[i], q = outline[(i + 1) % outline.length], [a, b] = ccw ? [p, q] : [q, p];
+    s.quad(c, at(f, a[0], a[1], d0), at(f, b[0], b[1], d0), at(f, b[0], b[1], d1), at(f, a[0], a[1], d1));
+  }
+}
+
+/**
+ * Coping along a gable edge a -> b: a slanted slab `w` wide and d0..d1 deep (front, top and underside), on the side of
+ * the line to the left of a -> b. `back` adds the face at d0 for a coping that stands clear of the wall behind it.
+ */
+export function coping(s: TriSink, c: string, f: WallFrame, a: P2, b: P2, w: number, d0: number, d1: number, back = false) {
   const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l * w, ny = dx / l * w;
   const A = (p: P2, k: number, d: number) => at(f, p[0] + nx * k, p[1] + ny * k, d);
   s.quad(c, A(a, 0, d1), A(b, 0, d1), A(b, 1, d1), A(a, 1, d1));
   s.quad(c, A(a, 1, d1), A(b, 1, d1), A(b, 1, d0), A(a, 1, d0));
   s.quad(c, A(a, 0, d0), A(b, 0, d0), A(b, 0, d1), A(a, 0, d1));
+  if (back) s.quad(c, A(a, 1, d0), A(b, 1, d0), A(b, 0, d0), A(a, 0, d0));
 }
 
 /** Ironwork cresting on a line: a strip of spikes (t from t0 to t1 at height y), drawn double-sided by the GLB material. */
