@@ -30,6 +30,8 @@ async function boot(page: Page): Promise<string[]> {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
+  // ROADS=bgt: the roads-v1 BGT road partition (phase 1 opt-in, `?roads=bgt`); shots land in a separate directory for before/after.
+  if (process.env.ROADS === 'bgt') await page.addInitScript(() => { (window as any).__canalRecallRoads = true; });
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   // Only the map scene: the HUD cards come and go between the paired shots; the rider is hidden too.

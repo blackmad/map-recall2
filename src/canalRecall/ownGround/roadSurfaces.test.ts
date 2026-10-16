@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { emptyMesh, type MeshArrays } from './drape';
 import { buildRoadSurfaces, coveredShare, kerbEdges, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
-import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, type LocalWay } from './streets';
+import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
 import type { Vec2 } from './surface';
@@ -82,7 +82,7 @@ test('road surfaces: the partition drapes without coplanar overlaps, at the clas
   assert.equal(index.classAt(0, 20), 'carriage'); assert.equal(index.classAt(5, 20), 'cycle'); assert.equal(index.classAt(-20, 20), 'foot'); assert.equal(index.classAt(80, 80), null);
   assert.equal(index.meshAt(20, 0), 'klinker'); assert.equal(index.heightAt(0, 0), 0);
   assert.ok(index.onRoad(0, 0) && index.onRoad(80, 80) && !index.onRoad(5, 20) && !index.onRoad(-20, 20));
-  assert.ok(index.coversBand(5, 20, 'cycle') && !index.coversBand(0, 20, 'cycle') && index.coversBand(-20, 20, 'paving') && index.coversBand(0, 20, 'asphalt'));
+  assert.ok(index.coversBand(5, 20, 'cycle') && !index.coversBand(0, 20, 'cycle') && index.coversBand(-20, 20, 'paving') && index.coversBand(0, 20, 'paving') && index.coversBand(0, 20, 'asphalt') && index.coversBand(5, 20, 'asphalt') && !index.coversBand(80, 80, 'asphalt'));
 });
 
 test('road surfaces: a deck polygon over no deck and no water is skipped and counted; over water it is drawn on the deck surface', () => {
@@ -130,11 +130,13 @@ test('streets with roads: covered ways emit no bands but keep their junction mar
   assert.ok(red.some(q => q[0] < -3 && q[1] > 6), 'west lane ribbon drawn');
   assert.equal(red.filter(q => q[0] > 3 && q[1] > 6).length, 0, 'east lane ribbon dropped beside the fietspad');
   assert.ok(red.some(q => q[0] > 3 && q[1] < -6), 'east lane ribbon drawn south of the junction (pavement beyond)');
-  for (const q of red) assert.ok(Math.abs(q[2] - LIFT.cycleLane) < 1e-6);
-  // The footway along y = 30: its paving band survives only over the carriageway polygon (|x| < 4) and the fietspad, not over the pavements.
+  for (const q of red) assert.ok(Math.abs(q[2] - ROAD_MARK_LIFT.lane) < 1e-6, 'lane ribbons at the roads-mode lift');
+  assert.ok(ROAD_MARK_LIFT.lane > LIFT.cycleLane);
+  // The footway along y = 30 lies on surveyed polygons for its whole length (pavements, carriageway, fietspad): no band at all.
   const foot = centroids(s.paving).filter(q => Math.abs(q[1] - 30) < 1.2);
-  assert.ok(foot.length > 0 && foot.every(q => q[0] > -4.6 && q[0] < 6.6), `footway band pieces left over the pavement: ${JSON.stringify(foot.filter(q => q[0] <= -4.6 || q[0] >= 6.6).slice(0, 3))}`);
-  assert.ok(c.bandStations > 0);
+  assert.equal(foot.length, 0, `footway band pieces left on the survey: ${JSON.stringify(foot.slice(0, 3))}`);
+  assert.ok(centroids(plain.paving).some(q => Math.abs(q[1] - 30) < 1.2), 'the band model drew it');
+  assert.ok(c.bandStations >= 80, `${c.bandStations} band stations dropped`);
 });
 
 test('streets with roads: crossCuts cut carriageway paint where another carriageway crosses without a shared node', () => {

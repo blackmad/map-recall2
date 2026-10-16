@@ -9,6 +9,23 @@
 import { layersAt, type BuiltCell, type GroundLayer } from './groundCell.js';
 import { pointAt, stations } from './drape.js';
 import type { LocalWay } from './streets.js';
+import type { RoadIndex } from './roadSurfaces.js';
+import type { RoadMesh } from './roadCells.js';
+
+/**
+ * The top surface at (x, y) across the cells: the highest cell top (a neighbour cell's road polygon reaches over the
+ * cell edge where this cell's land is; the first cell with any hit used to answer 'land' there).
+ */
+export function topAcross(cells: readonly BuiltCell[], x: number, y: number): string {
+  let best: string | null = null, bz = -Infinity;
+  for (const c of cells) {
+    const h = layersAt(c, x, y);
+    if (!h.top) continue;
+    const z = h.hits.find(q => q.layer === h.top)?.z ?? -Infinity;
+    if (z > bz) { bz = z; best = h.top; }
+  }
+  return best ?? 'none';
+}
 
 export const STREET_TOPS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram']);
 
@@ -88,8 +105,8 @@ export function bandCoverage(cells: readonly BuiltCell[], ways: readonly LocalWa
   return out;
 }
 
-/** A junction whose interior must read as one road surface (no red or pale blobs, no land). */
-export interface JunctionRegression { id: string; label: string; at: [number, number]; radiusM: number; surface: GroundLayer; minShare: number }
+/** A junction whose interior must read as one road surface (no red or pale blobs, no land). `also`: further tops accepted (a fietsstraat junction the survey paints red reads cycle or asphalt). */
+export interface JunctionRegression { id: string; label: string; at: [number, number]; radiusM: number; surface: GroundLayer; minShare: number; also?: GroundLayer[] }
 
 /** De Clercqstraat × Bilderdijkstraat (and the tram junction): user shots of red smears and grey patches. */
 export const JUNCTIONS: JunctionRegression[] = [
@@ -97,18 +114,106 @@ export const JUNCTIONS: JunctionRegression[] = [
   { id: 'nassaukade-de-clercqstraat', label: 'Nassaukade × De Clercqstraat / Rozengracht (Rijckerbrug)', at: [4.874103, 52.371797], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
 ];
 
-/** Share of probes on a disc around a junction node whose top layer is the road surface (plus paint on it). */
-export function junctionCoverage(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, surface: GroundLayer): { probes: number; ok: number; share: number; tops: Record<string, number> } {
+/** Share of probes on a disc around a junction node whose top layer is the road surface (plus paint on it, and `also`). */
+export function junctionCoverage(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, surface: GroundLayer, also: readonly GroundLayer[] = []): { probes: number; ok: number; share: number; tops: Record<string, number> } {
   const tops: Record<string, number> = {};
   let probes = 0, ok = 0;
   for (let r = 0; r <= radiusM; r += 1) for (let k = 0; k < (r ? 12 : 1); k++) {
     const a = (k / 12) * Math.PI * 2, x = centre[0] + Math.cos(a) * r, y = centre[1] + Math.sin(a) * r;
-    const top = cells.map(c => layersAt(c, x, y)).filter(h => h.hits.length).map(h => h.top).find(Boolean) ?? 'none';
+    const top = topAcross(cells, x, y);
     tops[top] = (tops[top] ?? 0) + 1;
     probes++;
-    if (top === surface || top === 'paint' || top === 'tram') ok++;
+    if (top === surface || top === 'paint' || top === 'tram' || (also as string[]).includes(top)) ok++;
   }
   return { probes, ok, share: ok / probes, tops };
+}
+
+/** The layer a surveyed polygon's mesh draws as; paint, rails, kerb lines and posts may lie on any of them. */
+const MESH_LAYER: Record<RoadMesh, GroundLayer> = { asphalt: 'asphalt', klinker: 'klinker', cycle: 'cycle', paving: 'paving', gravel: 'gravel' };
+const ON_ANY: ReadonlySet<string> = new Set(['paint', 'tram', 'kerb', 'bollard']);
+/**
+ * roads-v1: share of probes on the disc whose top is what the survey says lies there (the polygon's mesh, or paint
+ * and rails on it); off the survey, anything but bare land or nothing. A red fietspad 3 m from the node reads cycle
+ * by right; the band model's red smear on a rijbaan does not.
+ */
+export function surveyedCoverage(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, index: RoadIndex): { probes: number; ok: number; share: number; tops: Record<string, number>; misses: { at: [number, number]; top: string; survey: string }[] } {
+  const tops: Record<string, number> = {}, misses: { at: [number, number]; top: string; survey: string }[] = [];
+  let probes = 0, ok = 0;
+  for (let r = 0; r <= radiusM; r += 1) for (let k = 0; k < (r ? 12 : 1); k++) {
+    const a = (k / 12) * Math.PI * 2, x = centre[0] + Math.cos(a) * r, y = centre[1] + Math.sin(a) * r;
+    const top = topAcross(cells, x, y), mesh = index.meshAt(x, y);
+    tops[top] = (tops[top] ?? 0) + 1;
+    probes++;
+    const good = mesh === null ? top !== 'land' && top !== 'none' : top === MESH_LAYER[mesh] || ON_ANY.has(top);
+    if (good) ok++; else misses.push({ at: [+(x - centre[0]).toFixed(1), +(y - centre[1]).toFixed(1)], top, survey: mesh ?? 'off-survey' });
+  }
+  return { probes, ok, share: ok / probes, tops, misses };
+}
+
+/**
+ * roads-v1 junctions (the BGT partition on, `?roads=bgt`): the user's Kinkerstraat × Da Costakade shots (red smears
+ * and pale wedges where the band model met the bridge mouths) read as the surveyed asphalt; the Marnixstraat busway
+ * crossing of the red fietsstraat is one rijbaan polygon the survey paints red (an OSM fietsstraat lies on it), so it
+ * reads cycle or asphalt, never paving or land. check-ground-cells judges them with `surveyedCoverage` (the top must
+ * be the polygon's mesh); `surface`/`also` document what that is at the node.
+ */
+export const ROAD_JUNCTIONS: JunctionRegression[] = [
+  { id: 'kinkerstraat-da-costakade-west', label: 'Kinkerstraat × Da Costakade (west quay)', at: [4.87323, 52.367545], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
+  { id: 'kinkerstraat-da-costakade-east', label: 'Kinkerstraat × Da Costakade (east quay)', at: [4.87383, 52.367724], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
+  { id: 'marnixstraat-busway-fietsstraat', label: 'Marnixstraat busway × the red fietsstraat (Frederik Hendrikplantsoen)', at: [4.87673, 52.374747], radiusM: 4, surface: 'cycle', also: ['asphalt'], minShare: 0.9 },
+];
+
+/**
+ * roads-v1 strays along a way: at `fractions` of the way's length and `offsets` metres left (+) / right (−) of its
+ * axis, the top must not be one of `forbid`. The Da Costagracht bridge deck (Kinkerstraat, way 753774987): the pale
+ * pavement tiles and the grey deck slab must not show on the carriageway (Kinkerstraat has cycleway:both=lane, so
+ * red lane ribbons there are the map's, not strays).
+ */
+export interface WayStrayRegression { id: string; label: string; way: number; fractions: number[]; offsets: number[]; forbid: GroundLayer[] }
+export const ROAD_WAY_STRAYS: WayStrayRegression[] = [
+  { id: 'da-costagracht-bridge-deck', label: 'Kinkerstraat over the Da Costagracht (way 753774987): deck reads as road', way: 753774987, fractions: [0.15, 0.3, 0.5, 0.7, 0.85], offsets: [-2, 0, 2], forbid: ['paving', 'deckTop', 'land', 'square', 'none' as GroundLayer] },
+];
+export function wayStrayHits(cells: readonly BuiltCell[], way: LocalWay, reg: WayStrayRegression): { fraction: number; offset: number; top: string }[] {
+  const st = stations(way.points), total = st[st.length - 1], out: { fraction: number; offset: number; top: string }[] = [];
+  for (const f of reg.fractions) {
+    const t = f * total, p = pointAt(way.points, st, t), q = pointAt(way.points, st, Math.min(total, t + 1)), r = pointAt(way.points, st, Math.max(0, t - 1));
+    const dx = q[0] - r[0], dy = q[1] - r[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    for (const o of reg.offsets) {
+      const x = p[0] + nx * o, y = p[1] + ny * o;
+      const top = topAcross(cells, x, y);
+      if ((reg.forbid as string[]).includes(top)) out.push({ fraction: f, offset: o, top });
+    }
+  }
+  return out;
+}
+
+/**
+ * roads-v1 crossing paint: the Bilderdijkgracht crossings of the Kinkerstraat (footway=crossing ways 1239242881 and
+ * 1239242873, unmarked in OSM, with a refuge island between the carriageways). Every paint triangle within reach of
+ * the crossing way (the Kinkerstraat's lane paint at the quay mouths) must lie on a carriageway polygon (`onRoad`) or
+ * off the survey: the band model ran 14 of 14 across the pavements and the island. Returns the paint triangles
+ * counted and those off the carriageway.
+ */
+export interface ZebraRegression { id: string; label: string; ways: number[]; reachM: number }
+export const ZEBRAS: ZebraRegression[] = [
+  { id: 'bilderdijkgracht-zebras', label: 'Kinkerstraat × Bilderdijkgracht zebras stop at the carriageway polygons', ways: [1239242881, 1239242873], reachM: 1.6 },
+];
+export function zebraOffRoad(cells: readonly BuiltCell[], ways: readonly LocalWay[], reg: ZebraRegression, onRoad: (x: number, y: number) => boolean): { dashes: number; off: [number, number][] } {
+  const off: [number, number][] = [];
+  let dashes = 0;
+  const near = (x: number, y: number) => ways.some(w => { for (let i = 0; i + 1 < w.points.length; i++) { const a = w.points[i], b = w.points[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy || 1; const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / l2)); if (Math.hypot(a[0] + dx * t - x, a[1] + dy * t - y) <= reg.reachM) return true; } return false; });
+  for (const c of cells) {
+    const m = c.layers.paint;
+    if (!m) continue;
+    const p = m.positions, idx = m.indices;
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, k = idx[t + 2] * 3, x = (p[a] + p[b] + p[k]) / 3, y = (p[a + 1] + p[b + 1] + p[k + 1]) / 3;
+      if (!near(x, y)) continue;
+      dashes++;
+      if (!onRoad(x, y)) off.push([+x.toFixed(1), +y.toFixed(1)]);
+    }
+  }
+  return { dashes, off };
 }
 
 /**
@@ -153,7 +258,7 @@ export function strayHits(cells: readonly BuiltCell[], centre: [number, number],
   const out: { offset: [number, number]; top: string }[] = [];
   for (const p of reg.probes) {
     const x = centre[0] + p.offset[0], y = centre[1] + p.offset[1];
-    const top = cells.map(c => layersAt(c, x, y)).filter(h => h.hits.length).map(h => h.top).find(Boolean) ?? 'none';
+    const top = topAcross(cells, x, y);
     if ((p.forbid as string[]).includes(top)) out.push({ offset: p.offset, top });
   }
   return out;
