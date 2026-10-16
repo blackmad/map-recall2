@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "bellamy-1915-tile-bay",
+ "district": "bellamy",
+ "description": "Hasebroekstraat 56-70 (1915): orange-red brick fronts of a narrow and a wide axis, mirrored in pairs; a white painted bay window stack on the top two storeys of the wide axis over a white-framed triple window, glazed tile diamonds between patterned brick courses beside the bays, red house doors at the outer party walls, a thin white eaves over a red-tile roof front with dormers",
+ "fit": {
+  "widthM": [
+   6.3,
+   6.9
+  ],
+  "storeys": [
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1912,
+   1918
+  ],
+  "eavesM": [
+   11.5,
+   15.2
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 2
+   }
+  ],
+  "stucco": false,
+  "note": "the 1915 Hasebroekstraat rows; the white bay stack on one side is the tell (match.mirrorForAccent); 52-54 (5.4-5.6 m, the older balcony type with a 1915 BAG year) fall outside the width fit",
+  "mirrorForAccent": "right"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "bayWidths": [1, 2.1],
+  "windowHeights": [0.55, 0.6, 0.62, 0.62],
+  "tilePanels": {"storeys": [1, 3], "colour": "#e0bf80", "courses": "#5e4034"},
+  "cornice": "simple",
+  "windows": "cross-transom",
+  "storeyWindows": {"1": "casement-triple", "2": "casement-triple", "3": "casement-triple"},
+  "bayWindows": {"bays": {"from": 1, "to": 1}, "storeys": [2, 3], "hood": true}
+ },
+ "crowns": {
+  "eaves": {"gable": "cornice", "note": "thin white eaves; the low red-tile roof face and the set-back dormers stay out of the model (a 70 degree mansard face drew a 2.7 m red wall the photo does not show)"}
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "red door at the left party wall (68, 64, 60, 56 seen from the street)"
+  }
+ },
+ "palettes": {
+  "orange-red": {
+   "brick": "#b8705a",
+   "frame": "#f2f0ea",
+   "door": "#8f1f1c",
+   "stone": "#efece4",
+   "band": "#5a3a30",
+   "cornice": "#efede6"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "a narrow and a wide axis (the wide one the bay stack)",
+  "identicalBays": "no: narrow + wide",
+  "windowsPerStorey": "ground: door + 1 | 1: 2 | 2: 2 | 3: 2",
+  "symmetry": "mirrored in pairs: the bays meet at one party wall, the doors at the next",
+  "groundFloor": "red house door at the outer party wall, a wide window under the bay",
+  "signage": "none",
+  "roofline": "thin white eaves, red tiles, dormers",
+  "photoRows": [
+   2,
+   2,
+   2,
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "hasebroek-52-88",
+   "pands": [
+    "132372",
+    "086016",
+    "148175",
+    "144253",
+    "088024",
+    "080701",
+    "110654",
+    "099290"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 1-8: mirrored pairs of narrow + bay axes, yellow tile diamonds between dark checkered courses on storeys 1 and 3"
+  }
+ ],
+ "schemaLimits": [
+  "the bay windows are drawn as square-cornered boxes; the photo's are segmental in plan",
+  "the dark checkered brick courses"
+ ],
+ "notes": []
+}
