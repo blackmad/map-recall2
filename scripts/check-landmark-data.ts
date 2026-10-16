@@ -98,6 +98,30 @@ check('street-name origins from the municipal register fill and lead street card
   assert.equal(streetCardText({ wikipediaExtract: 'Only a lede. Second.' }).detail, 'Only a lede.', 'without an origin the card is as before');
 });
 
+check('a bridge card carries its English Wikipedia lede after its origin, never a Dutch one', () => {
+  const normalise = (name: string) => name.toLowerCase();
+  const index = buildRouteKnowledgeIndex([], [], [], normalise,
+    [{ name: 'Kattenbrug', kind: 'bridge', en: 'Named after the cats.' }],
+    { Kattenbrug: { movable: false, nr: 99 } },
+    [
+      { id: 'extract_bridges_1', name: 'Kattenbrug', wikipediaExtract: 'The Kattenbrug is a fixed bridge. It dates from 1890.', wikipediaUrl: 'https://nl.wikipedia.org/wiki/Kattenbrug' },
+      { id: 'extract_bridges_2', name: 'Ballenbrug', wikipediaExtract: 'The Ballenbrug crosses the Brouwersgracht.' },
+      { id: 'extract_bridges_3', name: 'Zandbrug', wikipediaExtract: 'De Zandbrug is een brug.', wikipediaExtractLang: 'nl' },
+    ]);
+  const katten = routeKnowledgeFor(index, 'Kattenbrug', 'bridge', normalise)!;
+  assert.equal(katten.id, 'extract_bridges_1');
+  assert.equal(katten.nameOrigin, 'Named after the cats.');
+  assert.ok(katten.structureFact?.startsWith('Bridge 99'));
+  const card = streetCardText(katten);
+  assert.equal(card.detail, 'Named after the cats.', 'the origin leads');
+  assert.ok(card.longDetail.includes('The Kattenbrug is a fixed bridge.'), 'the lede follows in the long text');
+  assert.ok(card.longDetail.endsWith('Bridge 99: a bridge.'), 'the register sentence is kept');
+  assert.equal(streetCardText(routeKnowledgeFor(index, 'Ballenbrug', 'bridge', normalise)!).detail,
+    'The Ballenbrug crosses the Brouwersgracht.', 'without an origin the lede is the card');
+  assert.equal(routeKnowledgeFor(index, 'Zandbrug', 'bridge', normalise), undefined, 'a Dutch lede makes no card');
+  assert.equal(routeKnowledgeFor(index, 'Ballenbrug', 'street', normalise), undefined, 'a bridge lede is not a street card');
+});
+
 check('street encyclopedia stays off a novel unasked name and an open quiz', () => {
   assert.equal(shouldOfferStreetKnowledge({
     hasExtract: true, alreadyShownThisDrive: false, quizOpen: true, landmarkCardOpen: false,
@@ -407,7 +431,9 @@ check('one malformed bridge cannot blank the whole extract', () => {
 // Treating OSM data as imperfect means asserting on the real file, not only on
 // fixtures: a refresh that silently halves the landmark count should fail here.
 
-const extractDir = path.resolve('public/data/extracts/amsterdam');
+// `--directory=` checks a staged extract before it is published.
+const extractDir = path.resolve(process.argv.find(argument => argument.startsWith('--directory='))?.slice('--directory='.length)
+  || 'public/data/extracts/amsterdam');
 function readExtract<T>(name: string, fallback: T): T {
   const file = path.join(extractDir, name);
   if (!fs.existsSync(file)) return fallback;

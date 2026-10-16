@@ -7,6 +7,16 @@ export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
 
 const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
 
+/** What a `bridges.json` feature contributes to its card. */
+export interface BridgeKnowledgeSource {
+  id?: string;
+  name?: string;
+  wikipediaUrl?: string;
+  wikipediaExtract?: string;
+  wikipediaExtractLang?: string;
+  wikipediaImageUrl?: string;
+}
+
 /** One published street-name origin (`street-name-origins.json`). */
 export interface StreetNameOrigin {
   name: string;
@@ -22,6 +32,7 @@ export function buildRouteKnowledgeIndex(
   normalise: (name: string) => string,
   origins: readonly StreetNameOrigin[] = [],
   bridgeRegister: Readonly<Record<string, BridgeRegisterFact>> = {},
+  bridges: readonly BridgeKnowledgeSource[] = [],
 ): RouteKnowledgeIndex {
   const index: RouteKnowledgeIndex = new Map();
   const add = (entry: StreetKnowledgeEntry, type: RouteKnowledgeType) => {
@@ -32,6 +43,20 @@ export function buildRouteKnowledgeIndex(
   // are what join to the reviewed fact catalog.
   for (const entry of streets) if (eligible(entry)) add(entry, 'street');
   for (const entry of waters) if (eligible(entry)) add(entry, 'water');
+  // A bridge's English Wikipedia lede follows its origin on the card. The 116
+  // routed decks added in October have no origin in the register for about a
+  // third of them, and the lede is then the card. A Dutch lede is left out:
+  // this is the English game.
+  for (const bridge of bridges) {
+    if (!bridge.name || !bridge.wikipediaExtract) continue;
+    if (bridge.wikipediaExtractLang && bridge.wikipediaExtractLang !== 'en') continue;
+    index.set(`bridge:${normalise(bridge.name)}`, {
+      id: bridge.id, name: bridge.name, type: 'bridge',
+      wikipediaExtract: bridge.wikipediaExtract,
+      ...(bridge.wikipediaUrl ? { wikipediaUrl: bridge.wikipediaUrl } : {}),
+      ...(bridge.wikipediaImageUrl ? { wikipediaImageUrl: bridge.wikipediaImageUrl } : {}),
+    });
+  }
   // Name origins cover ~4,900 streets against a few hundred with Wikipedia:
   // attach to an existing entry, or stand alone as the whole card. Bridges
   // get their own entries, for the card after a bridge is named.
