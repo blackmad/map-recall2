@@ -29,7 +29,7 @@
 import earcut from 'earcut';
 import { densify, edgeWall, emptyMesh, ribbon, stations, vertex, type MeshArrays } from './drape.js';
 import { flatten, interiorPoint, SurfaceIndex, type SurfaceRaster } from './parks.js';
-import { bollards, LIFT } from './streets.js';
+import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 
@@ -50,11 +50,25 @@ const isLow = (c: RoadClass | null) => c !== null && (KERB_LOW_CLASSES as readon
 /** The fast lookup raster's texel (metres): paint and rails end within a quarter metre of the kerb. */
 export const FAST_RES_M = 0.5;
 /**
- * Polygons: a chord is split where the surface at its midpoint rises more than the class's lift minus this over
- * the chord (the land would show through); a chord floating over a hollow is left (the bands float the same way).
- * DRAPE_MAX_EDGE caps the chord, DRAPE_MIN_EDGE is the finest split.
+ * Ground polygons (h = 0): a triangle is split while the land at an edge midpoint or the centroid lies more than
+ * `sag` under its plane (the land would show through: the lift minus a margin) or more than `float` over it (a plane
+ * over a hollow would swallow the markings the band model lays on the land surface). Pavements carry only the kerb
+ * lines, so theirs are loose; the road classes carry paint, lane ribbons and rails, which in roads mode take
+ * ROAD_MARK_LIFT above the carriageway plane's float. DRAPE_MAX_EDGE caps the chord, DRAPE_MIN_EDGE is the finest
+ * split. Measured on -2_-1 / -3_-1 against the cell without roads: sag-only 1.11–1.17×; two-sided 0.015 for every
+ * class 1.50–1.56×; cutting the polygons along the land grid's facets (exact) 2.2–2.7×, earcut's slivers crossing
+ * many facets each.
  */
-export const DRAPE_SAG_MARGIN_M = 0.008, DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
+export const DRAPE_TOL: Record<RoadClass, { sag: number; float: number }> = {
+  carriage: { sag: ROAD_LIFT.carriage - 0.008, float: 0.012 }, parking: { sag: ROAD_LIFT.parking - 0.008, float: 0.012 }, cycle: { sag: ROAD_LIFT.cycle - 0.008, float: 0.012 },
+  foot: { sag: 0.1, float: 0.03 }, pedestrian: { sag: 0.1, float: 0.03 }, driveway: { sag: 0.1, float: 0.03 },
+};
+export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
+/**
+ * The kerb wall's top and the granite line over SIDEWALK_TOP: the pavement plane may float DRAPE_TOL.foot.float over
+ * the land, so the wall reaches above it (a kerb stone's lip where it does not) and the line lies over both.
+ */
+export const KERB_TOP = SIDEWALK_TOP + DRAPE_TOL.foot.float, KERB_LINE_Z = KERB_TOP + 0.004;
 /** Deck polygons (h ≥ 1) follow the hump both ways: a 1 m hump over 20 m sags 25 cm under an 8 m chord. */
 export const DECK_DRAPE_TOL_M = 0.01, DECK_DRAPE_MAX_EDGE_M = 6;
 /** Kerb runs are simplified to this before drawing (the survey's 0.1 m vertices are 4 triangles each), then densified to KERB_STEP_M. */
@@ -62,16 +76,22 @@ export const KERB_SIMPLIFY_M = 0.2, KERB_STEP_M = 4;
 
 /**
  * Earcut triangles draped where the relief needs it: a triangle is split at its longest edge while that edge is
- * longer than `maxEdge`, or longer than `minEdge` with the surface at the edge's midpoint more than `tol` off the
- * chord (`sagOnly`: only a surface rising over the chord counts, the land showing through; a chord floating over a
- * hollow is left). parks.ts drapeBisect splits by length alone (8 m), which on the survey's slivers cost 3.4× the
- * earcut triangles of a cell (203k against 60k on -2_-1); streets are graded flat, so most chords pass the test
- * unsplit, and the ramps, humps and quay edges get the splits. Winding CCW from above, as drapeBisect.
+ * longer than `maxEdge`, or longer than `minEdge` with the surface at any edge's midpoint or the centroid more than
+ * `tol` off the triangle's plane (`sagOnly`: only a surface rising over the plane counts, the land showing through;
+ * a plane floating over a hollow is left). parks.ts drapeBisect splits by length alone (8 m), which on the survey's
+ * slivers cost 3.4× the earcut triangles of a cell (203k against 60k on -2_-1); streets are graded flat, so most
+ * triangles pass the test unsplit, and the ramps, humps and quay edges get the splits. Testing the longest edge alone
+ * left the Kinkerstraat asphalt 2.3 cm under the land at a quay mouth. Winding CCW from above, as drapeBisect.
  */
-export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, sagOnly = false): void {
+export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol): void {
   const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge;
   const stack: number[] = [];
-  const off = (x1: number, y1: number, x2: number, y2: number) => { const d = height((x1 + x2) / 2, (y1 + y2) / 2) - (height(x1, y1) + height(x2, y2)) / 2; return sagOnly ? d : Math.abs(d); };
+  const over = (x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): boolean => {
+    const z1 = height(x1, y1), z2 = height(x2, y2), z3 = height(x3, y3);
+    // d > 0: the land rises over the plane (sag); d < 0: the plane floats over a hollow.
+    const test = (d: number) => d > tol || -d > floatTol;
+    return test(height((x1 + x2) / 2, (y1 + y2) / 2) - (z1 + z2) / 2) || test(height((x2 + x3) / 2, (y2 + y3) / 2) - (z2 + z3) / 2) || test(height((x3 + x1) / 2, (y3 + y1) / 2) - (z3 + z1) / 2) || test(height((x1 + x2 + x3) / 3, (y1 + y2 + y3) / 3) - (z1 + z2 + z3) / 3);
+  };
   for (let t = 0; t < tris.length; t += 3) {
     const ax = coords[tris[t] * 2], ay = coords[tris[t] * 2 + 1], bx = coords[tris[t + 1] * 2], by = coords[tris[t + 1] * 2 + 1], cx = coords[tris[t + 2] * 2], cy = coords[tris[t + 2] * 2 + 1];
     if ((bx - ax) * (cy - ay) - (by - ay) * (cx - ax) > 0) stack.push(ax, ay, bx, by, cx, cy); else stack.push(ax, ay, cx, cy, bx, by);
@@ -80,10 +100,7 @@ export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: Ar
       const e1 = (x2 - x1) ** 2 + (y2 - y1) ** 2, e2 = (x3 - x2) ** 2 + (y3 - y2) ** 2, e3 = (x1 - x3) ** 2 + (y1 - y3) ** 2;
       const longest = Math.max(e1, e2, e3);
       let split = longest > max2;
-      if (!split && longest > min2) {
-        const d = longest === e1 ? off(x1, y1, x2, y2) : longest === e2 ? off(x2, y2, x3, y3) : off(x3, y3, x1, y1);
-        split = d > tol;
-      }
+      if (!split && longest > min2) split = over(x1, y1, x2, y2, x3, y3);
       if (!split || stack.length > 6e5) {
         const i = vertex(m, x1, y1, height(x1, y1) + lift), j = vertex(m, x2, y2, height(x2, y2) + lift), k = vertex(m, x3, y3, height(x3, y3) + lift);
         m.indices.push(i, j, k);
@@ -94,6 +111,17 @@ export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: Ar
       else { const mx = (x3 + x1) / 2, my = (y3 + y1) / 2; stack.push(x1, y1, x2, y2, mx, my, mx, my, x2, y2, x3, y3); }
     }
   }
+}
+
+/** A height function memoised on a 1 cm grid of its arguments (the drape asks the same points many times). */
+export function memoHeight(height: HeightFn): HeightFn {
+  const cache = new Map<number, number>();
+  return (x, y) => {
+    const k = (Math.round(x * 100) + 8_388_608) * 16_777_216 + (Math.round(y * 100) + 8_388_608);
+    let z = cache.get(k);
+    if (z === undefined) { z = height(x, y); cache.set(k, z); }
+    return z;
+  };
 }
 
 /** Douglas–Peucker on an open polyline, `tol` metres. */
@@ -167,16 +195,16 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
   /** Is any deck polygon (h ≥ 1) under the point? */
   onDeck(x: number, y: number): boolean { return this.findAll(x, y).some(k => this.records[k].h >= 1); }
   /**
-   * Does a polygon of the band's own kind lie under the point: a cycle band over a fietspad, a paving band over a
-   * footway / pedestrian area / inrit, a carriageway band over a rijbaan or parkeervlak? Then the polygon is the
-   * surface and the band's station is covered (streets.ts: the uncovered rest of a part-covered way keeps its band).
+   * Is a band's station covered by the survey: any polygon under the point is the surface there (a footway band over
+   * a rijbaan, a carriageway band over a voetpad: the survey wins), except a cycle band over a rijbaan or parkeervlak,
+   * which stays as the painted lane on the road (the data lane: cycleway ways are fietspad for ~60 % of their length
+   * and cross rijbaan for the rest). Off the survey nothing is covered (streets.ts coverCuts).
    */
   coversBand(x: number, y: number, surface: RoadMesh, bridge = false): boolean {
     const c = this.classAt(x, y, bridge);
     if (c === null) return false;
-    if (surface === 'cycle') return c === 'cycle';
-    if (surface === 'paving') return c === 'foot' || c === 'pedestrian' || c === 'driveway';
-    return c === 'carriage' || c === 'parking';
+    if (surface === 'cycle') return c !== 'carriage' && c !== 'parking';
+    return true;
   }
   /** Does the index hold any deck polygon at all (the deck-top rule asks before probing)? */
   get hasDecks(): boolean { return this.records.some(r => r.h >= 1); }
@@ -210,6 +238,9 @@ export interface RoadBuildInput {
   deckWeight: (x: number, y: number) => number;
   overWater: (x: number, y: number) => boolean;
   lod: 0 | 1;
+  /** Ground drape sag / float tolerance overrides for the road classes (measurement scripts); the defaults are DRAPE_TOL. */
+  drapeTol?: number;
+  drapeFloatTol?: number;
   /** Canal-side test for the Amsterdammertjes (streets.ts bollards); near ring only. */
   canalSide?: (x: number, y: number) => boolean;
 }
@@ -246,15 +277,18 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const stats: RoadBuildStats = { drawn: { carriage: 0, foot: 0, cycle: 0, pedestrian: 0, parking: 0, driveway: 0 }, onDeck: 0, skippedHigh: 0, degenerate: 0, kerbs: 0, kerbM: 0, kerbUnsided: 0, bollards: 0, ms: 0 };
   const skipped = new Set<number>();
   const far = input.lod === 1;
+  // The height functions memoised at 1 cm: the drape asks for every shared vertex, midpoint and centroid several
+  // times over (the roads phase was 200 ms of a 800 ms cell build, 22 ms with flat heights).
+  const landHeight = memoHeight(input.height), deckHeight = memoHeight(input.deckHeight);
   /** The surface a deck polygon (or a kerb on one) drapes on, or null when nothing carries it. */
-  const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1])) ? input.deckHeight : null);
+  const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1])) ? deckHeight : null);
   for (let k = 0; k < index.own; k++) {
     const rec = index.records[k], rings = index.ringsOf(k);
     const { flat, holes } = flatten(rings);
     if (flat.length < 6) { stats.degenerate++; skipped.add(k); continue; }
     const tris = earcut(flat, holes);
     if (!tris.length) { stats.degenerate++; skipped.add(k); continue; }
-    let height = input.height;
+    let height = landHeight;
     if (rec.h >= 1) {
       const on = deckSurface(interiorPoint(rings));
       if (!on) { stats.skippedHigh++; skipped.add(k); continue; }
@@ -262,7 +296,10 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       stats.onDeck++;
     }
     if (rec.h >= 1) drapeAdaptive(get(rec.k), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
-    else drapeAdaptive(get(rec.k), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, Math.max(0.01, ROAD_LIFT[rec.c] - DRAPE_SAG_MARGIN_M), DRAPE_MIN_EDGE_M, true);
+    else {
+      const tol = DRAPE_TOL[rec.c], low = isLow(rec.c);
+      drapeAdaptive(get(rec.k), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
+    }
     stats.drawn[rec.c]++;
   }
   // Kerbs: the face toward the lower side, the granite line on the upper edge, posts along canal-side pavements.
@@ -277,21 +314,21 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     const h = index.heightAt(cx, cy) ?? 0, bridge = h >= 1;
     const left = index.classAt(cx + nx * KERB_PROBE_M, cy + ny * KERB_PROBE_M, bridge), right = index.classAt(cx - nx * KERB_PROBE_M, cy - ny * KERB_PROBE_M, bridge);
     const lowLeft = isLow(left) && !isLow(right), lowRight = isLow(right) && !isLow(left);
-    let height = input.height;
+    let height = landHeight;
     if (bridge) { const on = deckSurface([cx, cy]); if (!on) continue; height = on; }
     stats.kerbs++; stats.kerbM += total;
     if (!lowLeft && !lowRight) {
       // No face: the line alone (a kerb between two pavements of different heights the survey does not say).
       stats.kerbUnsided++;
-      ribbon(kerb, line, 0, KERB_LINE_M, height, SIDEWALK_TOP + 0.002, { step: KERB_STEP_M });
+      ribbon(kerb, line, 0, KERB_LINE_M, height, KERB_LINE_Z, { step: KERB_STEP_M });
       continue;
     }
     const facing: 1 | -1 = lowLeft ? 1 : -1, into = lowLeft ? -1 : 1; // `into`: toward the upper side (way-left is +)
-    edgeWall(kerb, line, 0, height, SIDEWALK_TOP, KERB_FACE_BOTTOM, facing, { step: KERB_STEP_M });
-    ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, SIDEWALK_TOP + 0.002, { step: KERB_STEP_M });
+    edgeWall(kerb, line, 0, height, KERB_TOP, KERB_FACE_BOTTOM, facing, { step: KERB_STEP_M });
+    ribbon(kerb, line, into * KERB_LINE_M / 2, KERB_LINE_M, height, KERB_LINE_Z, { step: KERB_STEP_M });
     if (input.canalSide && input.lod === 0) {
       const before = get('bollard').positions.length;
-      bollards(get('bollard'), line, into * 0.3, height, SIDEWALK_TOP, input.canalSide);
+      bollards(get('bollard'), line, into * 0.3, height, KERB_TOP, input.canalSide);
       stats.bollards += (get('bollard').positions.length - before) / 27;
     }
   }

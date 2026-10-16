@@ -25,6 +25,12 @@ import { bar, blocks, crossingStation, isSignalCrossing, mouthMarking, rankOf, s
 import type { RoadIndex } from './roadSurfaces.js';
 
 /** Height above the relief per layer (metres): later layers win the depth test. */
+/**
+ * roads-v1: the carriageway markings sit this far over the surveyed carriageway plane (roadSurfaces ROAD_LIFT.carriage
+ * 0.03 plus a float of DRAPE_TOL.carriage.float 0.012 at most): the painted lane ribbons, the paint, the rails. The
+ * band model's own lifts (LIFT.cycleLane 0.036, LIFT.paint 0.046, LIFT.rail 0.05) stay for the cells without a survey.
+ */
+export const ROAD_MARK_LIFT = { lane: 0.05, paint: 0.056, rail: 0.06 } as const;
 export const LIFT = {
   area: 0.015,
   crossing: 0.025,
@@ -401,6 +407,8 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   const step = opts.step ?? 3;
   const bgt = opts.roads ?? null;
   const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0 };
+  // roads-v1: the markings sit over the surveyed carriageway plane's float (roadSurfaces ROAD_MARK_LIFT).
+  const paintLift = bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, railLift = bgt ? ROAD_MARK_LIFT.rail : LIFT.rail;
   /** Where a way's paint may lie: a carriageway polygon, or no survey (the fallback). */
   const onRoadFor = (w: LocalWay): Keep | undefined => (bgt ? (x, y) => bgt.index.onRoad(x, y, isBridgeWay(w)) : undefined);
   const inPolygon = (p: Vec2) => !!bgt && bgt.index.find(p[0], p[1]) >= 0;
@@ -493,7 +501,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
       // roads-v1: carriageway paint also stops where another carriageway crosses without a shared node (bridge ends,
       // the quay streets at a canal crossing): crossCuts.
       if (crossGrid && carriage && onRoad && !crossing) { const cc = crossCuts(w, nodes, st, crossGrid); if (cc.length) { clipped.crossCuts += cc.length; cuts = [...cuts, ...cc]; } }
-      const lift = onRoad || crossing ? LIFT.paint : (host.raised > 0 ? LIFT.raisedBase + host.raised : LIFT.path) + 0.006;
+      const lift = onRoad || crossing ? paintLift : (host.raised > 0 ? LIFT.raisedBase + host.raised : LIFT.path) + 0.006;
       const keep = onRoadFor(w);
       for (const piece of cuts.length ? cutIntervals(w.points, cuts).filter(pc => carriage || keepPathPiece(w, pc)) : [w.points]) if (piece.length >= 2) clipped.paint += dashed(out.paint, piece, line.offset, line.width, line.dash, height, lift, keep);
     }
@@ -501,7 +509,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     // is dropped where the survey has no carriageway under it (1 m stations off the rijbaan).
     const railPieces = bgt && w.section.rails?.length ? railIntervals(w, bgt.index, isBridgeWay(w)) : null;
     if (railPieces) clipped.rails += railPieces.dropped;
-    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, 0.07, height, LIFT.rail, { step });
+    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) for (const piece of railPieces ? railPieces.pieces : [w.points]) if (piece.length >= 2) ribbon(out.tram, piece, o + r, 0.07, height, railLift, { step });
     // A separate cycle path crossing a carriageway untagged leaves a gap there (pathCuts): mark it as a cycle crossing.
     if (opts.markings !== false && !carriage && w.section.bands[0]?.kind === 'cycleway' && !isCrossing(w)) out.stats.markings.blocks += cyclePathCrossings(out, w, nodes, st, height, bgt);
   }
@@ -563,8 +571,9 @@ function junctionMarkings(out: StreetMeshes, n: Node, signals: readonly Vec2[], 
     }
     if (t + 1 > total) continue;
     const o = pointAt(line, ls, t), q = pointAt(line, ls, Math.min(total, t + 1)), d = dirOf(o, q);
-    if (mark === 'stop') { if (bar(out.paint, { o, u: d }, l0, l1, STOP_LINE_M, height, LIFT.paint, keep)) st.stopLines++; }
-    else { const teeth = sharkTeeth(out.paint, { o, u: d }, l0, l1, height, LIFT.paint, keep); st.teeth += teeth; if (teeth) st.giveWays++; }
+    const lift = bgt ? ROAD_MARK_LIFT.paint : LIFT.paint;
+    if (mark === 'stop') { if (bar(out.paint, { o, u: d }, l0, l1, STOP_LINE_M, height, lift, keep)) st.stopLines++; }
+    else { const teeth = sharkTeeth(out.paint, { o, u: d }, l0, l1, height, lift, keep); st.teeth += teeth; if (teeth) st.giveWays++; }
   }
   if (bgt) return;
   // Painted cycle lanes through the junction: a's left side runs on into b's right side (b roughly opposite a).
@@ -619,7 +628,7 @@ function cyclePathCrossings(out: StreetMeshes, w: LocalWay, nodes: Map<string, N
     if (surveyed && !bgt!.index.onRoad((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)) return;
     if (!surveyed && Math.max(...n.arms.map(x => rankOf(x.way.tags.highway))) <= 2) strip(out.cycle, a, b, width, height, LIFT.cycleLane);
     const keep: Keep | undefined = bgt ? (x, y) => bgt.index.onRoad(x, y) : undefined;
-    for (const s of [k, -k]) count += blocks(out.paint, [a[0] + m[0] * s, a[1] + m[1] * s], [b[0] + m[0] * s, b[1] + m[1] * s], height, LIFT.paint, undefined, undefined, keep);
+    for (const s of [k, -k]) count += blocks(out.paint, [a[0] + m[0] * s, a[1] + m[1] * s], [b[0] + m[0] * s, b[1] + m[1] * s], height, bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, undefined, undefined, keep);
     out.stats.markings.cycleCrossings++;
   });
   return count;
@@ -640,7 +649,7 @@ function laneRibbon(m: MeshArrays, w: LocalWay, band: Band, road: [number, numbe
       const st = stations(part), half = st[st.length - 1] / 2, mid = pointAt(part, st, half), q = pointAt(part, st, Math.min(st[st.length - 1], half + 0.5)), r = pointAt(part, st, Math.max(0, half - 0.5));
       const nl = leftOf(dirOf(r, q)), lane: Vec2 = [mid[0] + nl[0] * band.offset, mid[1] + nl[1] * band.offset], out: Vec2 = [mid[0] + nl[0] * outer, mid[1] + nl[1] * outer];
       if (!index.onRoad(lane[0], lane[1], bridge) || index.classAt(out[0], out[1], bridge) === 'cycle') { dropped++; continue; }
-      ribbon(m, part, band.offset, band.width, height, LIFT.cycleLane, { step });
+      ribbon(m, part, band.offset, band.width, height, ROAD_MARK_LIFT.lane, { step });
     }
   }
   return dropped;
