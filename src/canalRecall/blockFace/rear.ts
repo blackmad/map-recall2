@@ -84,8 +84,8 @@ export function rearEdges(facts: BuildingFacts, opts: RearOptions = {}): {a: num
 }
 
 /**
- * Height of the masonry wall standing at a rear edge point (m): the highest shell/roof-closure wall triangle facing `n`
- * (recipe-local x,z) whose plane lies within 6 cm of the point and whose span along the edge covers it. A low rear wing
+ * Height of the masonry wall standing at a rear edge point (m): the highest crossing, at the point, of a shell/roof-closure
+ * wall triangle facing `n` (recipe-local x,z) whose plane lies within 6 cm of the point and whose span along the edge covers it. A low rear wing
  * has a lower wall than the main body, and a window above it would hover in the air.
  */
 export function wallTopAt(group: T.Group, c: [number, number], n: [number, number]): number {
@@ -112,7 +112,16 @@ export function wallAt(group: T.Group, c: [number, number], n: [number, number])
       if (off.some(q => Math.abs(q) > 0.06)) continue;
       const along = v.map(q => (q.x - c[0]) * t[0] + (q.z - c[1]) * t[1]);
       if (Math.min(...along) > 0.05 || Math.max(...along) < -0.05) continue;
-      const high = Math.max(...v.map(q => q.y));
+      // The wall's height AT this point (a gable or a roof-cut wall top slopes): the triangle's highest crossing of the
+      // vertical line through the point, not its highest corner, or a frame reaches over the sloped top onto the roof.
+      const sAt = Math.max(Math.min(...along), Math.min(Math.max(...along), 0));
+      let high = -Infinity;
+      for (let j = 0; j < 3; j++) {
+        const s0 = along[j], s1 = along[(j + 1) % 3], y0 = v[j].y, y1 = v[(j + 1) % 3].y;
+        if (Math.abs(s1 - s0) < 1e-9) { if (Math.abs(s0 - sAt) < 1e-6) high = Math.max(high, y0, y1); continue; }
+        const u = (sAt - s0) / (s1 - s0);
+        if (u >= -1e-9 && u <= 1 + 1e-9) high = Math.max(high, y0 + (y1 - y0) * u);
+      }
       if (high > top) { top = high; plane = (off[0] + off[1] + off[2]) / 3; }
     }
   });
