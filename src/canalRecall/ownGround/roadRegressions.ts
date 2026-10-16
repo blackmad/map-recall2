@@ -198,3 +198,40 @@ export function spotDistanceM(a: string, b: string): number {
   const [alng, alat] = a.split(',').map(Number), [blng, blat] = b.split(',').map(Number);
   return Math.hypot((alng - blng) * 111320 * Math.cos(alat * Math.PI / 180), (alat - blat) * 111320);
 }
+
+/**
+ * Deck top lying on land with no street band over it (ride review 2026-10-14, J6: grey slabs over the four corners of
+ * the Nieuwe-Wercksbrug BRU0063, across the quay pavements and the cycle-lane ends). A 1 m grid over the deck's
+ * profile (its stations ±`pad` m, out to its widest side plus `pad`): where the topmost surface seen from above is the
+ * deck top and no water lies under it, a square metre of slab. Returns the area and the probes counted.
+ */
+export function deckSlabOnLand(cells: readonly BuiltCell[], deck: { profile: { x: Float64Array; y: Float64Array } }, pad = 4): { slabM2: number; deckM2: number } {
+  const p = deck.profile;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (let i = 0; i < p.x.length; i++) { x0 = Math.min(x0, p.x[i]); x1 = Math.max(x1, p.x[i]); y0 = Math.min(y0, p.y[i]); y1 = Math.max(y1, p.y[i]); }
+  x0 -= 20 + pad; y0 -= 20 + pad; x1 += 20 + pad; y1 += 20 + pad;
+  const covers = (m: { positions: ArrayLike<number>; indices: ArrayLike<number> } | undefined, x: number, y: number) => {
+    if (!m) return false;
+    const pos = m.positions, idx = m.indices;
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
+      if (Math.max(pos[a], pos[b], pos[c]) < x || Math.min(pos[a], pos[b], pos[c]) > x || Math.max(pos[a + 1], pos[b + 1], pos[c + 1]) < y || Math.min(pos[a + 1], pos[b + 1], pos[c + 1]) > y) continue;
+      const d = (pos[b + 1] - pos[c + 1]) * (pos[a] - pos[c]) + (pos[c] - pos[b]) * (pos[a + 1] - pos[c + 1]);
+      if (Math.abs(d) < 1e-12) continue;
+      const u = ((pos[b + 1] - pos[c + 1]) * (x - pos[c]) + (pos[c] - pos[b]) * (y - pos[c + 1])) / d;
+      const v = ((pos[c + 1] - pos[a + 1]) * (x - pos[c]) + (pos[a] - pos[c]) * (y - pos[c + 1])) / d;
+      if (u >= 0 && v >= 0 && u + v <= 1) return true;
+    }
+    return false;
+  };
+  let slab = 0, deckM2 = 0;
+  for (let x = Math.floor(x0) + 0.5; x < x1; x += 1) for (let y = Math.floor(y0) + 0.5; y < y1; y += 1) {
+    const cell = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
+    if (!cell || !covers(cell.layers.deckTop, x, y)) continue;
+    const { hits } = layersAt(cell, x, y);
+    if (hits[0]?.layer !== 'deckTop') continue;
+    deckM2++;
+    if (!hits.some(h => h.layer === 'water')) slab++;
+  }
+  return { slabM2: slab, deckM2 };
+}

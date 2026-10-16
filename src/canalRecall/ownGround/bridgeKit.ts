@@ -248,7 +248,16 @@ export interface KitInput {
   facts?: BridgeFacts | null;
   /** Stations of the lamp columns (set by the builder: over the piers between measured openings). */
   lampsAt?: number[];
+  /** A flush deck (decks.ts isFlushDeck): the parapet gets FLUSH_PARAPET's kerb and top rail, so the edge reads from above. */
+  flush?: boolean;
 }
+
+/**
+ * The kerb and parapet line of a flush deck (ride review J8, the Pansemertbrug BRU0124): a deck level with its quays
+ * read as quay from the chase camera, its iron rail on a 5 cm coping under a pixel wide. A stone kerb at least
+ * `kerb` m high and `width` m wide (its top a light line along each edge) and a top rail `rail` m thick (a dark line).
+ */
+export const FLUSH_PARAPET = { kerb: 0.22, width: 0.4, rail: 0.07 };
 
 export interface KitInfo { kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number }
 
@@ -576,7 +585,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
   // A measured parapet class: the stone balustrade (the arch style, balusters on the named tier), an iron rail on a
   // low coping, a solid brick parapet, or the coping alone.
   // Iron rail: the canal-belt arches' stone coping is the parapet's outer face (COPE_M); over it only a thin cap.
-  const style = cls === 'iron-rail'
+  const base = cls === 'iron-rail'
     ? { plinth: kind === 'arch' ? 0.05 : 0.14, width: 0.3, plinthCol: pal.coping, post: RAILING.post / 2, postCol: C.iron, postTop: RAILING.height, railCol: C.iron, rail: RAILING.rail / 2 }
     : cls === 'brick-parapet'
       ? { plinth: 0.95, width: 0.32, plinthCol: pal.pier, post: 0, postCol: C.iron, postTop: 0, railCol: C.iron, rail: 0 }
@@ -587,6 +596,10 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     : kind === 'footbridge'
       ? { plinth: 0, width: 0.1, plinthCol: C.steel, post: RAILING.post / 2, postCol: wood ? C.woodRail : C.iron, postTop: RAILING.height, railCol: wood ? C.woodRail : C.iron, rail: RAILING.rail / 2 }
       : { plinth: 0.14, width: RAILING.plinthWidth, plinthCol: fascia, post: RAILING.post / 2, postCol: railColour, postTop: RAILING.height, railCol: railColour, rail: RAILING.rail / 2 };
+  // A flush deck: a stone kerb and a heavy top rail (FLUSH_PARAPET); a solid brick parapet already reads.
+  const style = input.flush && base.plinth < FLUSH_PARAPET.kerb + 0.5
+    ? { ...base, plinth: Math.max(base.plinth, FLUSH_PARAPET.kerb), width: Math.max(base.width, FLUSH_PARAPET.width), plinthCol: base.plinth < FLUSH_PARAPET.kerb ? C.stone : base.plinthCol, rail: base.rail > 0 ? Math.max(base.rail, FLUSH_PARAPET.rail / 1.4) : 0 }
+    : base;
   for (const side of [1, -1] as const) {
     const edge = (r: KitRow) => (side > 0 ? r.L : r.R), zt = (r: KitRow) => (side > 0 ? r.zL : r.zR), out = (r: KitRow): Vec2 => [r.n[0] * side, r.n[1] * side];
     const inward = (r: KitRow, d: number): Vec2 => { const e = edge(r), o = out(r); return [e[0] - o[0] * d, e[1] - o[1] * d]; };
