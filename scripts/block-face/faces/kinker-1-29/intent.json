@@ -454,6 +454,12 @@
        1,
        1
       ]
+     },
+     "paintedStoreys": {
+      "storeys": [
+       1
+      ],
+      "colour": "#e3e2d7"
      }
     },
     "ground": {
@@ -488,7 +494,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the first storey is white-painted (a later shop insert); drawn as brick with its 4 lights"
+     "the painted storey sits about 0.5 m higher than the photo (3.8-6.7 m vs 3.3-5.9 m): the photo puts a tall frieze zone in the top storey, but a measured storeyHeights with a 4.1 m top storey lifts the wall dormer (its rise is one top storey) 1 m over the photo and the 3DBAG cap"
     ]
    }
   },
@@ -515,6 +521,12 @@
        1,
        1
       ]
+     },
+     "paintedStoreys": {
+      "storeys": [
+       1
+      ],
+      "colour": "#e3e2d7"
      }
     },
     "ground": {
@@ -555,7 +567,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the first storey is white-painted (a later shop insert); drawn as brick with its 4 lights"
+     "the painted storey sits about 0.5 m higher than the photo (3.8-6.7 m vs 3.3-5.9 m): the photo puts a tall frieze zone in the top storey, but a measured storeyHeights with a 4.1 m top storey lifts the wall dormer (its rise is one top storey) 1 m over the photo and the 3DBAG cap"
     ]
    }
   },
@@ -743,7 +755,6 @@
   "Iron wall anchors on every 1883-1885 front (no kit key).",
   "7-17 (103619): irregular grouping of single and wide lights per module; drawn as 3 equal lights per module.",
   "19-23: carved end consoles of the cornice and the iron finial on the wall dormer.",
-  "21-23: the first storey is white-painted over the whole width (one storey of paint over brick): the kit paints whole fronts (wallMaterial) or bands, not one storey; drawn as brick with its 4 lights.",
   "25-29: frieze panels (the kit frieze is a plain slab)."
  ]
 }
