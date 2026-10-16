@@ -325,6 +325,10 @@ for (const building of osmById.values()) {
     // coverage are digitisation disagreements with a pand we already drew —
     // emitting them doubles the city and reintroduces z-fighting. Keep only
     // parts, stacked members, and named leftovers (true gaps in the register).
+    // This also drops the OSM outline over a pand 3DBAG never reconstructed
+    // (Prinsengracht 221-227, 2026-10-16: an empty lot). Those are filled from
+    // the BAG footprint + AHN height by scripts/survey-bag-gaps.ts and
+    // publish-bag-gaps.ts; re-run the publish after a rebuild from here.
     const named = typeof building.properties.name === 'string' && building.properties.name.length > 0;
     if (!building.isPart && building.minHeightM <= 0 && !named && !park) {
       suppressedUnmatched++;
