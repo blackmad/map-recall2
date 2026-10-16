@@ -5,32 +5,31 @@
 // the dark relief streets and teal canals of the own ground (user shot from
 // ~300 m above Nieuw-West, 2026-10-13). While the own ground is on, the
 // basemap ground layers take its palette (look/palette.ts STREET_GROUND and
-// GROUND_TONES), so the edge disappears in colour. Buildings, labels, POIs,
+// GROUND_TONES, as the tokens of look/sunny.ts `groundTokens`), so the edge disappears in colour. Buildings, labels, POIs,
 // boundaries and the game's own overlays are left alone.
 
 import { groundLookFrom, groundPalette, type GroundPalette } from './groundLook.js';
+import { groundTokens } from '../look/sunny.js';
 
 export interface StyleLayerLike { id: string; type: string; 'source-layer'?: string }
 export interface PaintPatch { id: string; property: string; value: string }
 
-type RGB = readonly [number, number, number];
-const css = (c: RGB) => `rgb(${c[0]},${c[1]},${c[2]})`;
-
 /** The own-ground colour for a basemap layer, or null to leave it (in the page's `?groundLook` palette by default). */
 export function basemapGroundColour(layer: StyleLayerLike, palette: GroundPalette = groundPalette(groundLookFrom())): string | null {
-  const id = layer.id, src = layer['source-layer'] ?? '', { street: STREET_GROUND, tones: G } = palette;
-  if (layer.type === 'background') return css(G.land.base);
+  // The same tokens the transition and the 3D ground read (look/sunny.ts `groundTokens` / `sceneTokens`).
+  const id = layer.id, src = layer['source-layer'] ?? '', t = groundTokens(palette);
+  if (layer.type === 'background') return t.land;
   if (layer.type !== 'fill' && layer.type !== 'line') return null;
-  if (src === 'water' || src === 'waterway' || /^water(way)?(_|$)/.test(id)) return G.water;
-  if (src === 'park' || /^park/.test(id) || id === 'landcover_grass' || id === 'landuse_pitch' || id === 'landuse_track' || id === 'landuse_cemetery') return css(G.park);
-  if (id === 'landcover_wood') return css(G.wood);
-  if (id === 'landcover_sand') return css(G.gravel);
-  if (id === 'landuse_residential' || id === 'landuse_school' || id === 'landuse_hospital' || id === 'aeroway_fill') return css(G.land.base);
+  if (src === 'water' || src === 'waterway' || /^water(way)?(_|$)/.test(id)) return t.water;
+  if (src === 'park' || /^park/.test(id) || id === 'landcover_grass' || id === 'landuse_pitch' || id === 'landuse_track' || id === 'landuse_cemetery') return t.park;
+  if (id === 'landcover_wood') return t.wood;
+  if (id === 'landcover_sand') return t.gravel;
+  if (id === 'landuse_residential' || id === 'landuse_school' || id === 'landuse_hospital' || id === 'aeroway_fill') return t.land;
   if (src === 'transportation' || /^(road|bridge|tunnel)_/.test(id)) {
-    if (/rail/.test(id)) return STREET_GROUND.rail;
-    if (/path_pedestrian/.test(id)) return css(STREET_GROUND.pavement.base);
-    if (layer.type === 'fill') return css(STREET_GROUND.pavement.base);
-    return css(STREET_GROUND.asphalt.base);
+    if (/rail/.test(id)) return t.rail;
+    if (/path_pedestrian/.test(id)) return t.pavement;
+    if (layer.type === 'fill') return t.pavement;
+    return t.road;
   }
   return null;
 }
