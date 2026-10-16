@@ -24,7 +24,7 @@ export type LargeSystemName = typeof LARGE_SYSTEMS[number];
  */
 export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth', 'arcade'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
-export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide', 'stacked'] as const;
+export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide', 'stacked', 'three-light'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
 
 /** Default bay pitch (m) per system when the intent gives no bay count. */
@@ -56,7 +56,7 @@ export interface SystemFit {
   /** slot names for this wall group (per-group palette overrides get their own slots) */
   slots: { frame: string; stone: string; glass: string; door: string; curtain: string; wall?: string; /** flush brick arch bands (a shade darker than the wall) */ arch?: string };
   /** arched heads (upper windows / ground openings) and the band around them */
-  arches?: { windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** only these storeys (0 = ground) get arched heads; the rest are square-headed */ storeys?: number[] };
+  arches?: { windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'blocks' | 'none'; /** only these storeys (0 = ground) get arched heads; the rest are square-headed */ storeys?: number[] };
   /** loading-door axis: every `every`-th bay from `first`, or the listed bays (of `bays` per storey) */
   hoist?: { every?: number; first?: number; bays?: number[]; arch?: ArchKind };
   /** a carriage gateway through the ground storey in the listed bays: a dark arched opening one bay wide, the other ground bays plain wall */
@@ -83,7 +83,23 @@ export interface SystemFit {
   columnBays?: number[];
   /** ground `arcade`: the opening geometry (fitLarge fills the defaults, ARCADE_DEFAULTS) */
   arcade?: ArcadeFit;
+  /** pane-split glazing on every window of the group (intent `glazing: "panes"`, compose `WinParams.paneSplit`) */
+  paneSplit?: boolean;
+  /** stone courses at the windows' sill line and/or head line on every upper storey (intent `courses`) */
+  courses?: ('sill' | 'head')[];
+  /** the ground storey is a souterrain: SOUTERRAIN.factor of an upper storey (fitLarge), two small windows per bay (`single`: one) (intent `souterrain`) */
+  souterrain?: boolean | 'single';
 }
+
+/**
+ * A souterrain (raised basement) under the piano nobile: the storey is `factor` of an upper storey, and each bay has a pair of
+ * small windows, each `w` of the bay, `gap` apart, `h` of the storey tall from `sill` (fractions), arched when `arches.ground`
+ * is given. Measured on the Tropenmuseum's Mauritskade and Linnaeusstraat crops (w01-331, w04-331, w16-61; 2.8-3.5 m storeys
+ * under 4.5-5.5 m floors, 0.6-0.8 m lights in pairs 0.5 m apart, 1.25-1.65 m tall).
+ */
+export const SOUTERRAIN = { factor: 0.58, w: 0.22, gap: 0.15, h: 0.46, sill: 0.18 };
+/** Stone course under the sill / over the head (`courses`): height and projection (m); runs shorter than `minRun` (returns, slivers) are left out. */
+export const COURSE = { h: 0.14, out: 0.06, minRun: 1.5 };
 
 /** Recessed shop arcade (ground `arcade`): pier width and walk depth in metres, the rest as fractions. */
 export interface ArcadeFit {
@@ -130,6 +146,8 @@ export function archFor(kind: ArchKind | undefined, f: SystemFit, extra: Partial
   const band = b === 'none' ? undefined
     : b === 'brick' ? { slot: s.arch ?? s.wall ?? 'wall', t: 0.22, out: 0, imposts: s.stone }
     : b === 'stone' ? { slot: s.stone, t: 0.2, out: 0.03 }
+    // stone blocks on a brick head without a drawn ring (speklagen arches): springers and a keystone
+    : b === 'blocks' ? { slot: s.stone, t: 0.22, out: 0.03, ring: false, imposts: s.stone, keystone: s.stone }
     : { slot: s.stone, t: 0.24, out: 0.04, imposts: s.stone, keystone: s.stone };
   return { arch: { kind, ...(kind === 'segmental' ? { segments: 4 } : {}), ...(band ? { band } : {}), ...extra } };
 }
@@ -147,6 +165,8 @@ const glazing = (w: LargeWindow | undefined): Partial<WinParams> => {
     case 'wide': return { w: 0.68, h: 0.58, sill: 0.8, mull: 3, transom: 0.72 };
     // Tall warehouse window spanning several storeys: two lights and five horizontal bars (Pakhuis Wilhelmina's north front).
     case 'stacked': return { mull: 1, rows: 5 };
+    // Three lights in two tiers (the Tropenmuseum's round-arched museum windows: two mullions and a mid rail under the fanlight).
+    case 'three-light': return { mull: 2, rows: 1 };
     default: return {};
   }
 };
@@ -278,6 +298,28 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   if (name === 'french-window-ledge') {
     const F = FRENCH_WINDOW, sill = (typical.cycle ? undefined : typical.win?.sill) ?? F.sillM;
     bands = [...(bands ?? []), { slot: s.stone, h: F.ledgeH, out: F.ledgeOut, skipGround: false, lift: sill - 0.02 - F.ledgeH / 2 }];
+  }
+  // Souterrain: a pair of small windows per bay in the low ground storey (arched with `arches.ground`), no sills.
+  if (f.souterrain && name !== 'blank' && typical.win && !typical.cycle && f.lines.length > 1) {
+    const S = SOUTERRAIN, gh = f.lines[1] - f.lines[0], lw = S.w * f.pitchM, gap = S.gap * f.pitchM, mid = f.pitchM / 2, v: [number, number] = [+(S.sill * gh).toFixed(3), +((S.sill + S.h) * gh).toFixed(3)];
+    const { mull: _m, mullAt: _ma, rows: _r, rowsAt: _ra, transom: _t, arch: _a, ...plain } = typical.win;
+    // the lights are too small for the group's arch band: plain heads
+    const win: WinParams = { ...plain, sillSlot: null, ...(f.arches?.ground ? { arch: { kind: f.arches.ground } } : {}) };
+    ground = { kind: 'items', items: [f.souterrain === 'single' ? [{ kind: 'win', u: [mid - lw / 2, mid + lw / 2], v, win }]
+      : [{ kind: 'win', u: [mid - gap / 2 - lw, mid - gap / 2], v, win }, { kind: 'win', u: [mid + gap / 2, mid + gap / 2 + lw], v, win }]] };
+  }
+  // Stone courses at the typical window's sill and head on every upper storey (the windows' own sills give way to the course).
+  if (f.courses?.length && typical.win && !typical.cycle) {
+    const sill = typical.win.sill ?? 0.9, h = typical.win.h ?? 0.6, C = COURSE;
+    if (f.courses.includes('sill')) { typical = { ...typical, win: { ...typical.win, sillSlot: null } }; bands = [...(bands ?? []), { slot: s.stone, h: C.h, out: C.out, minRun: C.minRun, lift: +(sill - C.h / 2).toFixed(3) }]; }
+    if (f.courses.includes('head')) bands = [...(bands ?? []), { slot: s.stone, h: C.h, out: C.out, minRun: C.minRun, ...(h > 1 ? { lift: +(sill + h + C.h / 2).toFixed(3) } : { lift: +(sill + C.h / 2).toFixed(3), liftFrac: h }) }];
+    for (const k of Object.keys(rowOverrides)) { const r = rowOverrides[k]; if (r.win && !r.cycle && f.courses.includes('sill')) rowOverrides[k] = { ...r, win: { ...r.win, sillSlot: null } }; }
+  }
+  if (f.paneSplit) {
+    const split = (r: Row): Row => ({ ...r, ...(r.win ? { win: { ...r.win, paneSplit: true } } : {}), ...(r.cycle ? { cycle: r.cycle.map(split) } : {}),
+      ...(r.items ? { items: r.items.map(fl => fl.map(it => (it.win ? { ...it, win: { ...it.win, paneSplit: true } } : it))) } : {}), ...(r.stack ? { stack: r.stack.map(x => ({ ...x, row: split(x.row) })) } : {}) });
+    typical = split(typical); ground = split(ground);
+    for (const k of Object.keys(rowOverrides)) rowOverrides[k] = split(rowOverrides[k]);
   }
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}) };
 }
