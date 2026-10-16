@@ -33,6 +33,9 @@ async function sweep(page: Page, query: string, info0: TestInfo) {
     const hold = () => {
       Object.assign(g.player, pose, { speed: 0, vx: 0, vy: 0 });
       if (w.__tz) { g.camera.zoom = w.__tz.zoom; g.camera.introOverview = 1; }
+      // The "Entering quarter" postcard is canvas-drawn (no CSS hides it) and fades out on a timer: when the teleport
+      // into the Jordaan raised it, its fade landed in the sweep's first steps (7.5 % of the view at 13.8 → 13.9).
+      g._neighborhoodNoticeTimer = 0;
       requestAnimationFrame(hold);
     };
     hold();

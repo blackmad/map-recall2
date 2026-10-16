@@ -109,6 +109,7 @@ for (const variant of variants) {
     if (process.env.SHADOWS) await page.addInitScript((on: boolean) => { (window as any).__canalRecallShadows = on; }, process.env.SHADOWS === '1');
     // OWN_GROUND=1|0 and RECIPE_TILES=1|0 force the own ground and the recipe-tile near tier (both imply the shared frame).
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
+    if (process.env.OVERVIEW_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOverviewTiles = on; }, process.env.OVERVIEW_TILES === '1');
     if (process.env.RECIPE_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallRecipeTiles = on; }, process.env.RECIPE_TILES === '1');
     const bundles = process.env.BUNDLES_DIR;
     if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
