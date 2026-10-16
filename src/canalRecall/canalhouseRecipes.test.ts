@@ -331,7 +331,7 @@ test('step, neck, bell and plain crowns use explicit bounded parameters',()=>{
 });
 
 test('shared clock and neck cap controls preserve bounds, symmetry and independently selected crest width',()=>{
- for(const family of ['klok','hals'] as const)for(const cap of ['flat','rounded','pediment'] as const){
+ for(const family of ['klok','hals'] as const)for(const cap of ['flat','rounded','pediment','segmental'] as const){
   const points=canalhouseCrownProfile(family,6,8,11,3.4,9,3,{crestWidthM:3,cap,capRiseM:cap==='flat'?0:.4,shoulderCurve:2.4});
   assert.deepEqual(points[0],[0,8]);assert.deepEqual(points.at(-1),[6,8]);
   assert.equal(Math.max(...points.map(p=>p[1])),11);
@@ -799,4 +799,24 @@ test('source-painted window joinery stays independent of red or blue entry paint
   delete r.palette.value.joinery;const fallback=compileCanalHouseRecipe(r);assert.equal(fallback.stats.triangles,stats.triangles);
   fallback.group.traverse(v=>{if(v instanceof T.Mesh&&v.userData.surface==='joinery')assert.equal((v.material as T.MeshStandardMaterial).color.getHexString(),r.palette.value.trim.slice(1));});
  }
+});
+
+test('neck entablature: a cornice ledge projects past the neck under a segmental cap; absent leaves the crown unchanged',()=>{
+ const seg=canalhouseCrownProfile('hals',6,8,11,2,9,1,{cap:'segmental',capRiseM:.3});
+ const round=canalhouseCrownProfile('hals',6,8,11,2,9,1,{cap:'rounded',capRiseM:.3});
+ assert.notDeepEqual(seg,round);
+ // A segmental cap is a shallow arc springing from the shoulders: every cap point within the neck, none above the top.
+ assert(seg.filter(([,y])=>y>10.7).every(([x,y])=>x>=2-1e-9&&x<=4+1e-9&&y<=11+1e-9));
+ const r=fixture(),e=r.elevations[0];r.house.gable=m('hals');
+ e.crown=m({profile:seg,depthM:.15,trimWidthM:.06,capFacing:{bottomM:10.1,depthM:.03,surface:'stone'}});
+ const plain=compileCanalHouseRecipe(structuredClone(r)).group;plain.updateMatrixWorld(true);
+ assert.equal(plain.getObjectByName('crown/cap-cornice'),undefined);
+ e.crown.value.capCornice={leftM:1.8,widthM:2.4,bottomM:10.45,heightM:.25,depthM:.18,surface:'stone'};
+ const {group}=compileCanalHouseRecipe(r);group.updateMatrixWorld(true);
+ const ledge=group.getObjectByName('crown/cap-cornice')!;assert(ledge);
+ const b=new T.Box3().setFromObject(ledge);
+ assert(b.min.x<2-0.1&&b.max.x>4+0.1,'ledge projects past both sides of the neck');
+ assert(Math.abs(b.min.y-10.45)<1e-6&&Math.abs(b.max.y-10.7)<1e-6);
+ e.crown.value.capCornice!.heightM=.8;assert.throws(()=>compileCanalHouseRecipe(r),/Invalid crown cap cornice/);
+ e.crown.value.capCornice!.heightM=.25;e.crown.value.capCornice!.bottomM=10.9;assert.throws(()=>compileCanalHouseRecipe(r),/Invalid crown cap cornice/);
 });
