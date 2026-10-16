@@ -15,7 +15,8 @@ import {
   RECALL_CHUNK_METERS, RECALL_LOCAL_RADIUS_METERS,
 } from '../src/canalRecall/recallChunks';
 
-const extractDir = resolve(dirname(fileURLToPath(import.meta.url)), '../public/data/extracts/amsterdam');
+// `--directory=` checks a staged extract (build-askable-bridges.ts) before it is published.
+const extractDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', process.argv.find((argument) => argument.startsWith('--directory='))?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const bridges = JSON.parse(readFileSync(resolve(extractDir, 'bridges.json'), 'utf8')) as BridgeSource[];
 const waters = JSON.parse(readFileSync(resolve(extractDir, 'water.json'), 'utf8')) as WaterSource[];
 const published = JSON.parse(readFileSync(resolve(extractDir, 'bridge-crossings.json'), 'utf8')) as BridgeCrossingIndex;

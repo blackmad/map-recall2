@@ -103,7 +103,17 @@ export class GroundStore {
     return JSON.parse(new TextDecoder().decode(await this.fetchBytes(path))) as T;
   }
 
-  async init(): Promise<void> {
+  /**
+   * Load the manifests once. A second load replaced `surface` and dropped the decks earlier cell builds had registered
+   * on it while the per-cell caches stayed, so a later cell's deck road polygons stood over no deck
+   * (check:own-ground-cells -1_-1: 13 -> 58 once a regression re-inited the shared roads store, 2026-10-16).
+   */
+  init(): Promise<void> {
+    return (this.loading ??= this.load());
+  }
+  private loading?: Promise<void>;
+
+  private async load(): Promise<void> {
     const [relief, elevation, bridges, manifest, levels] = await Promise.all([
       this.json<GroundIndex>(`${EXTRACTS.relief}/index.json`),
       this.json<unknown>(`${EXTRACTS.water}/index.json`).then(validateIndex),

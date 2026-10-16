@@ -742,14 +742,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   road bridge ways still without a surface (`audit-bridge-surfaces.ts
   --all`; 137 before way decks); cap that count in a check.
 
-- **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
-  bridge deck is never the answer")**: the street plaque
-  (`presentationRuntime.ts` ~709) still reads the raw way name, so it stays
-  blank on a deck that carries a street; pass the carried name through. 85
-  transparent bridge names outside `bridges.json` (Noordsche Compagniebrug
-  among them) are now taught by no question; decide whether some join the
-  crossing quiz. Culvert names without a bridge suffix (Bullebak, Kanaalpost)
-  are not treated as decks.
+- **Bridge names after the askable-bridges pass (2026-10-16, HISTORY "Every
+  named bridge is a bridge question")**: OSM spellings stay as answer text
+  ("Katten brug", "Hilletjes Brug"; the register says Kattenbrug,
+  Hilletjesbrug) because the game matches the raw way name; fix in OSM or add
+  an alias match. The 116 new bridges have no BAG facts or name origins yet
+  (re-run `build-local-facts` and the street-name-origin publish). Railway
+  flags were not rebuilt (needs Overpass; all added decks are highway ways).
+  The 8 m cutoff covers the distance settle only; a slow rider can still be
+  asked on a shorter deck through the time settle.
 
 - **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
   cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
@@ -782,16 +783,41 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
   load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
   the rider); then measure iPhone.
-- **Flags: decide the rest** (2026-10-16, user: "figure out for all of these
-  which you actually want to use, and if there are dead ends, delete the code
-  and the flag"). Street chunks and BGT roads are default now (HISTORY
-  "Street chunks and BGT roads drawn by default"). Still to decide, with
-  measurements: building types (3,075 Nieuw-West instances,
-  `?buildingTypes=1`), recipe tiles (`?recipeTiles=1`), sculpture impostors
-  (`?sculptures=1`), canal elevation (`?elevation=1`), the city look
-  (`?cityLook=1`), the shared frame (forced on by own ground), the ground
-  look variants, `?look=legacy`, `?transition=0`. Default what wins;
-  delete the code and flag of dead ends.
+- **Overview → city zoom sweep fails on main** (2026-10-16):
+  `overview-transition.spec.ts` "no step of the zoom sweep jumps" measures
+  ΔE>20 on 7.7 % of pixels at z13.9→14 before the flags merge, 6.6 % after
+  (limit 5 %; ground 7.0 % → 2.2 %). The user saw the same jump ("the change
+  in colors as it zooms in is jarring"); lane `lane/overview-tiles-20261016`
+  (own flat overview tiles in the groundLook palette) owns it, with this
+  spec as its gate.
+- **Roads, after city-wide** (2026-10-16, HISTORY "Surveyed road surface
+  city-wide"): a coarser drape for large flat carriage polygons (rural and
+  dike cells -8_4 1.43×, 10_4, 9_3, 8_1, 4_0, 7_5 exceed the 1.15× triangle
+  gate; 4_-1 builds 2.1× slower); the LOD 1 far ring still draws OSM bands;
+  400+ `h ≥ 1` polygons (75.9 ha, A10 and harbour viaducts) over no
+  registered deck are skipped; squares, yards and planted islands (the
+  Mosplein roundabout centre) are not wegdeel and draw as land/paving;
+  ~12,000 m² of berms and tree pits the bands used to pave, in seven dense
+  cells.
+- **Pop-in, next** (2026-10-16, HISTORY "Pop-in: streaming look-ahead"):
+  the intro descent (overview → city ground blend and landmark LOD swaps,
+  ~28k px/s, the largest source); MapLibre basemap tiles are not steered by
+  the look-ahead; landmark models have no look-ahead padding; the basemap
+  handover is a one-frame swap; a lingering detail tile drops to coarse in
+  one frame; a route-following look-ahead would load fewer tiles than the
+  heading; the metric can't judge long frames or sharp turns, and 4× CPU
+  throttle makes every frame a hitch.
+- **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
+  `?bagTiles=1` default flip is the user's call (covers consistent now;
+  `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
+  ≤ 0.3 % of pixels change; tiles cost 1.19× the bytes against the
+  loading-performance priority). `?recipeTiles=1`: recompile the pilots
+  (they list the retired `chunk-bilder-079721-x2` and predate the roof
+  rules) before re-evaluating. `?cityLook=1`: blocked on the 0.9 cell
+  level (frames −5–6 luma). Sculpture impostor (`?sculptures=1`): keep as
+  the route-B fallback or delete, user's call. Regenerate `coverage-v1`
+  (`npm run build:coverage -- --publish`); its tiers still say chunks and
+  types are off by default.
 - **Held chunk and the two Bilderdijkstraat pilot houses:** Oudezijds
   Voorburgwal 115-125 stays out of the default (black on its shade side,
   `DEFAULT_HELD_CHUNKS`); Bilderdijkstraat pands 152669 and 079721 (the
