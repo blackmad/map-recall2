@@ -1,5 +1,43 @@
 # Canal Recall — what is built
 
+## Kinkerstraat wall colours read from the photo; two types promoted; odd-side window widths (2026-10-16)
+
+Lane `worktree-agent-a8fc6a969506a4249` (final 0b915cada). Kit keys,
+each byte-identical when absent: `paletteOverrides` on a placement
+(recolours the house's own wall, no 3 cm facing), `palette.wallTint:
+"measured"` (keeps a brick wall's measured colour instead of clamping it
+into the city brick range), `palette.whitePoint` (the white-frame colour
+of the crop, exported with the tint as `tintWhitePoint` in the GLB
+material extras; no look reads it yet, so walls still draw the overcast
+reading), and `paintedStoreys: {storeys, colour}` (a painted facing per
+storey cut around the windows). Medians on the same pixels, summed RGB
+distance to the photo before → after: 31 (158968, painted brick) 87 → 17
+(cannot go below #2d312a because the look floors measured walls at
+lightness 0.18; the photo is 0.15), 47 (161457) 90 → 8, 63 (133467) 36 →
+4, 87 (156991) 44 → 6; 21/23 storey 1 painted frame-white (#e3e2d7)
+because the photo's white reads as bright as their frames; the white
+storey sits ~0.5 m higher than the photo because a 4.1 m top storey
+lifted the wall dormer 1 m and failed the 3DBAG height gate (recorded as
+a limitation). Triangles: 31-49 15,698 → 15,110, 1-29 24,700 → 25,591.
+`kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable` are in
+`scripts/block-face/types/oud-west/` with per-pand evidence and measured
+palettes; the faces refer to them by id and their chunk sha256 is
+unchanged. Window widths measured frame-included from the strip (the
+method reads the kit's own renders within 0.01 m): the even 18-4 row
+draws 0.97–1.15 m against 0.97–1.10 m in the photo, so the earlier "0.8
+vs 0.95 m" figure measured glass only and the even side needs no
+override; Kinkerstraat 2 (163325/161331) is the only even house drawn
+narrow (0.99 vs 1.20 m, another lane's face); odd 57, 59, 63 get
+`windowShare` 0.59/0.61/0.64 (1.13/1.08/1.04 → 1.21/1.20/1.25 m). Tests:
+`wallFidelity.test.ts` (7), `test:block-face` 91, `test:look` 60,
+`fit-golden` 156 identical, `block-kit-installed` identical, 115 large
+meshes identical. Sheet `docs/images/kinkerstraat/colour-fidelity-20261014.jpg`;
+doc `docs/kinkerstraat-faces-odd-20261014.md` "Colour fidelity, library
+promotion and window widths". Still cannot say: a painted storey that
+follows the photo's storey heights when the top storey holds a frieze;
+black paint below lightness 0.18; a white point per storey; a painted
+ground storey behind a shop (363-365).
+
 ## Facade measurement limits: white-framed panes and dark brick classified; 43 triage verdicts move (2026-10-16)
 
 Lane `lane/measurement-limits-20261014` (final a6b148ea7; 9436b81fa
