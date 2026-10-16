@@ -15,7 +15,8 @@ import { dirname, join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { buildCell, maskChannelAt, DRAW_RANK, GROUND_LAYERS, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { layerOfId, rasterLayerIds } from '../../src/canalRecall/overviewTiles/raster.ts';
 
 const COLOURS: Record<GroundLayer, [number, number, number]> = {
   land: [150, 142, 130], park: [92, 122, 66], wood: [70, 96, 52], square: [176, 166, 150], parking: [92, 92, 96],
@@ -25,10 +26,6 @@ const COLOURS: Record<GroundLayer, [number, number, number]> = {
   // Park surfaces (parks-v1), a shade apart from the OSM park fill so a review can tell survey from fill.
   lawn: [110, 150, 80], bed: [130, 110, 80], shrub: [70, 110, 60], bark: [110, 80, 60], sand: [210, 195, 150], parkGravel: [180, 170, 140], parkPath: [120, 120, 120], pond: [60, 95, 100], hedge: [50, 90, 45], furniture: [80, 80, 80],
 } as Record<GroundLayer, [number, number, number]>;
-// The game's polygon-offset ranks (groundCell DRAW_RANK, park surfaces included): a park surface 15 mm over the land wins as on screen.
-const RANK: Partial<Record<string, number>> = DRAW_RANK;
-const CUT: Partial<Record<string, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1 };
-
 function png(width: number, height: number, rgb: Uint8Array): Buffer {
   const crcTable = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
   const crc = (b: Buffer) => { let c = 0xffffffff; for (const x of b) c = crcTable[(c ^ x) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
@@ -39,34 +36,14 @@ function png(width: number, height: number, rgb: Uint8Array): Buffer {
   return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]);
 }
 
-/** Rasterise built cells over [x0, y0]–[x0 + w·res, y0 + h·res] (north up). */
+/** Rasterise built cells over [x0, y0]–[x0 + w·res, y0 + h·res] (north up), in the review colours. */
 export function rasterTopDown(cells: readonly BuiltCell[], x0: number, y0: number, w: number, h: number, res: number): Uint8Array {
-  const zbuf = new Float32Array(w * h).fill(-Infinity), rank = new Int8Array(w * h).fill(-1), out = new Uint8Array(w * h * 3).fill(250);
-  const layers = [...GROUND_LAYERS, ...(['tram', 'bollard'] as GroundLayer[])];
-  for (const cell of cells) for (const layer of layers) {
-    const m = cell.layers[layer];
-    if (!m) continue;
-    const p = m.positions, idx = m.indices, col = COLOURS[layer] ?? [255, 0, 255], rk = RANK[layer] ?? 0, ch = CUT[layer];
-    for (let t = 0; t < idx.length; t += 3) {
-      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
-      const ax = (p[a] - x0) / res, ay = (y0 + h * res - p[a + 1]) / res, bx = (p[b] - x0) / res, by = (y0 + h * res - p[b + 1]) / res, cx = (p[c] - x0) / res, cy = (y0 + h * res - p[c + 1]) / res;
-      const minX = Math.max(0, Math.floor(Math.min(ax, bx, cx))), maxX = Math.min(w - 1, Math.ceil(Math.max(ax, bx, cx)));
-      const minY = Math.max(0, Math.floor(Math.min(ay, by, cy))), maxY = Math.min(h - 1, Math.ceil(Math.max(ay, by, cy)));
-      if (minX > maxX || minY > maxY) continue;
-      const d = (by - cy) * (ax - cx) + (cx - bx) * (ay - cy);
-      if (Math.abs(d) < 1e-9) continue;
-      for (let py = minY; py <= maxY; py++) for (let px = minX; px <= maxX; px++) {
-        const sx = px + 0.5, sy = py + 0.5;
-        const u = ((by - cy) * (sx - cx) + (cx - bx) * (sy - cy)) / d, v = ((cy - ay) * (sx - cx) + (ax - cx) * (sy - cy)) / d;
-        if (u < 0 || v < 0 || u + v > 1) continue;
-        const z = u * p[a + 2] + v * p[b + 2] + (1 - u - v) * p[c + 2];
-        const i = py * w + px, zi = zbuf[i];
-        if (!(z > zi + 0.02 || (Math.abs(z - zi) <= 0.02 && rk > rank[i]))) continue;
-        if (ch !== undefined && cell.mask && maskChannelAt(cell.mask, x0 + sx * res, y0 + h * res - sy * res, ch) < 0.5) continue;
-        zbuf[i] = z; rank[i] = rk;
-        out[i * 3] = col[0]; out[i * 3 + 1] = col[1]; out[i * 3 + 2] = col[2];
-      }
-    }
+  const ids = rasterLayerIds(cells, x0, y0, w, h, res), out = new Uint8Array(w * h * 3).fill(250);
+  for (let i = 0; i < ids.length; i++) {
+    const layer = layerOfId(ids[i]);
+    if (!layer) continue;
+    const col = COLOURS[layer] ?? [255, 0, 255];
+    out[i * 3] = col[0]; out[i * 3 + 1] = col[1]; out[i * 3 + 2] = col[2];
   }
   return out;
 }

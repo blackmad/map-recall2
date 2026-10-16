@@ -36,7 +36,7 @@ import { groundLookFrom, groundPalette, type GroundLook } from './groundLook.js'
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
-import { groundTokens } from '../look/sunny.js';
+import { flatLayerTones } from '../overviewTiles/layerColours.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -555,13 +555,8 @@ export class OwnGround {
     // The overview → city blend: every ground material (not the draped overlays below) is present early and takes its
     // colour from the flat palette tone the basemap draws (`flat`), so the shaded ground crossfades over the flat one.
     // The basemap's tones are look/sunny.ts `groundTokens` (basemapPalette.ts); the ground fades from the same strings.
-    const T = groundTokens(groundPalette(this.opts.groundLook));
-    const flat: Record<string, readonly number[] | string | 'vertex'> = {
-      land: T.land, klinker: T.klinker, asphalt: T.road, cycle: T.cycle,
-      paving: T.pavement, gravel: T.gravel, kerb: STREET_GROUND.kerb, paint: T.road, tram: T.road,
-      bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
-      lawn: G.lawn, bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,
-    };
+    // One table with the overview tiles (overviewTiles/layerColours.ts), so the flat map and the fading ground agree.
+    const flat = flatLayerTones(groundPalette(this.opts.groundLook)) as Record<string, readonly number[] | string | 'vertex'>;
     for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex');
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
     const overlay = (color: string, k: number, o: Record<string, unknown> = {}) => new THREE.MeshBasicMaterial({ color, polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k, ...o });
