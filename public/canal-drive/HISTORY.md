@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Jan Evertsenstraat: nine De Baarsjes faces installed (2026-10-16)
+
+Lane `lane/de-baarsjes-faces-20261016` (7a58568b1): ten faces on the four
+measured De Baarsjes types (hood-lisene, balcony-slot, ladder-plain,
+white-attic) plus a new `evertsen-1939-dormer` type; 91-135, 94-142,
+59-89, 43-57, 68-92, 139-143, 145-155, 146-150 and 152-160 installed (95
+pands); 52-66 held (66's BAG rear edge sits 4.5 cm inside 64, ~121 m² of
+interference). Kit keys, all byte-identical when absent: `bayFill`,
+`axisWindows`, `GROUND_BAYS 'blank'`, four casement window kinds, a
+glass-block band (`glassBlock` palette, `awning.glassBlocks.panel`),
+`continuity.streetLevelPands`, `FrontIntent.stepBody` (a raised front keeps
+its own roof), `balconyRun`, `bandFloors`, flat dormers, `low-parapet`
+crowns; `mergeCoplanar` faster (hash-pinned). Sheets reviewed at gallery
+size (white-attic storey heights measured on 141, six band lights, ledges,
+the storey-1 balcony, 155's shopfront, the cafe bay on 143). The kit still
+cannot say projecting lisene relief, signs on glass-block bands, the
+Hudsonhof gateway, stair windows off the storey lines, rooftop structures,
+six-light windows, French doors to the front-wide balcony, balcony depth
+(0.5 m assumed), arched door heads and 155's arched top window, a
+three-light dormer with boarded cheeks, a slab-hood balcony on a 1 m axis,
+146's set-back front, or the corner oriels.
+
 ## No procedural paint on surveyed roads (2026-10-16)
 
 User (2026-10-16), on Kinkerstraat × Bilderdijkstraat with the BGT surface:
