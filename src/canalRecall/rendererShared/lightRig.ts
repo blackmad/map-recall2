@@ -7,6 +7,7 @@
 
 import type { Vec3 } from './frameMath.js';
 import { fitShadowCamera, shadowHalfSizeForZoom, type ShadowFit } from './shadowFit.js';
+import { SUNNY_LIGHT, sceneLookFrom, type SceneLook } from '../look/sunny.js';
 
 export type LightRigOptions = {
   /** Compass bearing toward the sun, degrees (0 = north, 90 = east). */
@@ -51,6 +52,22 @@ export const DEFAULT_LIGHT_RIG: Required<LightRigOptions> = {
   shadowMapSize: 2048,
   shadowIntensity: 1 - SHADOW_FILL,
 };
+
+/** The 2026-10-14 rig by its look's name (`?look=legacy`). */
+export const LEGACY_LIGHT_RIG = DEFAULT_LIGHT_RIG;
+
+/**
+ * The sunny look's rig (look/sunny.ts, the default since 2026-10-16): a warmer key, a fill the colour of the measured
+ * clear sky, and the exposure solved so a measured wall facing the sun draws its measured colour. Direction, shadows
+ * and shadow fill are the legacy rig's.
+ */
+export const SUNNY_LIGHT_RIG: Required<LightRigOptions> = { ...DEFAULT_LIGHT_RIG, ...SUNNY_LIGHT };
+
+/** The rig of a scene look. */
+export const lightRigFor = (look: SceneLook): Required<LightRigOptions> => (look === 'sunny' ? SUNNY_LIGHT_RIG : LEGACY_LIGHT_RIG);
+
+/** The rig the page draws with (`?look=`, default sunny). */
+export const activeLightRig = (search?: string): Required<LightRigOptions> => lightRigFor(sceneLookFrom(search));
 
 /** Unit vector toward the sun in ENU. */
 export function sunDirection(azimuthDeg: number, elevationDeg: number): Vec3 {
@@ -165,8 +182,8 @@ export type LightRig = {
   setSun(azimuthDeg: number, elevationDeg: number): void;
 };
 
-export function createLightRig(THREE: any, overrides: LightRigOptions = {}): LightRig {
-  const options = { ...DEFAULT_LIGHT_RIG, ...overrides };
+export function createLightRig(THREE: any, overrides: LightRigOptions = {}, base: Required<LightRigOptions> = activeLightRig()): LightRig {
+  const options = { ...base, ...overrides };
   const toSun = sunDirection(options.sunAzimuthDeg, options.sunElevationDeg);
   const sky = new THREE.HemisphereLight(options.skyColour, options.groundColour, options.skyIntensity);
   // HemisphereLight's "up" is its position; the shared world is z-up.
