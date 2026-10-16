@@ -293,6 +293,10 @@ export interface RecallHost extends GameCoreHost {
   _learnedBridges: Map<string, { name: string; labelPoint?: WorldPoint }>;
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
+  /** Per track: the street each bridge-named way carries ('' = none), so a
+   *  street question never answers with a bridge's name (bridgeStreetName.ts).
+   *  Optional: built lazily, `game.js` need not initialise it. */
+  _bridgeCarriedStreets?: { track: Track; bySegment: Map<number, string> };
   _lastTransitStopQuizAt: number;
   _lastTransitLineQuizAt: number;
   _lastTransitStreetQuizAt: number;
