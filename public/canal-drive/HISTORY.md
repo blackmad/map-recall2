@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Towers on podiums: the tall part over its own footprint (2026-10-16)
+
+User (2026-10-16), at the Hotelschool The Hague, Jan Evertsenstraat 171-175
+(pand 0363100012148630): "I don't think this building is really this tall". The
+whole footprint stood at 72.62 m: `bagHeightM`'s ridge-tower rule (ridge ≥ 10 m
+over the 70th-percentile roof, tuned on 201 Zuidas pands) extruded everything to
+the ridge, with no notion of how much of the footprint the tower covers. Lane
+`worktree-agent-a51a0b08edf95acd4`: `towerPodium.ts` finds the tower in 3DBAG's
+LoD1.3 roof faces (faces past the midpoint between 70p and ridge) and emits the
+podium at 70p plus a `tower:<pand>` feature from the podium roof to the ridge
+(`pand` carried for styling). Of the 201 ridge-tower pands the tall share runs
+p10 0.03 / median 0.15 / max 0.41, so the whole-footprint ridge stays only at a
+share ≥ 0.7 (none today) and for tall areas under 5 m² (9 masts and spires).
+27 model-owned pands are not split (every hide path keys on the exact id). 122
+pands split in the published building/bag tiles (244 podium heights lowered,
+244 tower features; nothing else in those tiles changed), +44 KB gzip
+like-for-like. The Hotelschool now draws a 13.65 m front with the 72.62 m tower
+over 1,243 m²; named regression in `towerPodium.test.ts` (now in
+`test:bag-tiles`) and `check-building-composition.ts`; in-game shot reviewed.
+The hosted-3D-Tiles path cannot see parts and keeps the old rule.
+
 ## Follow-ups: covers green, the first-launch test, arrival trivia, the stranded Dutch article (2026-10-16)
 
 `covers.json` rebuilt from the published BAG tiles (Noorderkerk's OSM-only ways
