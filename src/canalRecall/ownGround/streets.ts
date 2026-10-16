@@ -51,7 +51,7 @@ export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
 };
 
 /** Junction road markings drawn (roadMarkings.ts). */
-export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number; /** roads-v1: paint pieces, rail stations and lane-ribbon pieces dropped off the carriageway polygons; node fills skipped inside a polygon; cross-cut stations; covered ways. */ clipped?: { paint: number; rails: number; lanes: number; fills: number; crossCuts: number; coveredWays: number; /** 1 m band stations of part-covered ways dropped over a polygon of the band's kind. */ bandStations: number } }
+export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number; /** roads-v1: paint pieces, rail stations and lane-ribbon pieces dropped off the carriageway polygons; node fills skipped inside a polygon; cross-cut stations; covered ways. */ clipped?: { paint: number; rails: number; lanes: number; fills: number; crossCuts: number; coveredWays: number; /** 1 m band stations of part-covered ways dropped over a polygon of the band's kind. */ bandStations: number; /** Red band pieces on a rijbaan drawn as painted lanes, and those dropped as a path's crossing (CYCLE_PAINT_MIN_M). */ cyclePaint: number; cyclePaintDropped: number } }
 
 /**
  * roads-v1 (roadSurfaces.ts) in the street pass: `covered` ways emit no bands (the surveyed polygons are their
@@ -406,7 +406,7 @@ export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
 export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean; /** The surveyed road partition (roads-v1): see RoadsOption. */ roads?: RoadsOption } = {}): StreetMeshes {
   const step = opts.step ?? 3;
   const bgt = opts.roads ?? null;
-  const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0 };
+  const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0, cyclePaint: 0, cyclePaintDropped: 0 };
   // roads-v1: the markings sit over the surveyed carriageway plane's float (roadSurfaces ROAD_MARK_LIFT).
   const paintLift = bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, railLift = bgt ? ROAD_MARK_LIFT.rail : LIFT.rail;
   /** Where a way's paint may lie: a carriageway polygon, or no survey (the fallback). */
@@ -480,7 +480,24 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
         continue;
       }
       const lift = band.kind === 'carriageway' ? LIFT.carriageway : band.kind === 'cycle_lane' ? LIFT.cycleLane : LIFT.path;
-      for (const piece of pieces) if (piece.length >= 2) ribbon(m, piece, band.offset, band.width, height, lift, { step, across: acrossOf(band.width) });
+      for (const piece of pieces) {
+        if (piece.length < 2) continue;
+        // roads-v1: what is left of a red band on the survey lies on a rijbaan or parkeervlak (coversBand cut the
+        // rest): a painted lane there, over the carriageway plane, not a band under it; a cycle path's few metres
+        // across a road (a cycleway that is part fietspad, part rijbaan) are the crossing's blocks, not red paint.
+        if (bgt && band.surface === 'cycle') {
+          const { road: onRoadPieces, off } = splitBySurvey(piece, band.offset, bgt.index, isBridgeWay(w));
+          for (const r of onRoadPieces) {
+            const st = stations(r);
+            if (!carriage && st[st.length - 1] < CYCLE_PAINT_MIN_M) { clipped.cyclePaintDropped++; continue; }
+            ribbon(m, r, band.offset, band.width, height, ROAD_MARK_LIFT.lane, { step, across: acrossOf(band.width) });
+            clipped.cyclePaint++;
+          }
+          for (const o of off) ribbon(m, o, band.offset, band.width, height, lift, { step, across: acrossOf(band.width) });
+          continue;
+        }
+        ribbon(m, piece, band.offset, band.width, height, lift, { step, across: acrossOf(band.width) });
+      }
       // Paths meeting only paths join with a small round fill (no junction polygon is built for them).
       if (!carriage && band.offset === 0) {
         for (const p of [w.points[0], w.points[w.points.length - 1], ...w.points]) {
@@ -678,6 +695,23 @@ function coverCuts(w: LocalWay, band: Band, index: RoadIndex): [number, number][
     if (index.coversBand(x, y, band.surface, bridge)) cuts.push([s - 0.5, s + 0.5]);
   }
   return cuts;
+}
+
+/** roads-v1: a cycle path's red band over a rijbaan shorter than this is its crossing, drawn as blocks, not paint. */
+export const CYCLE_PAINT_MIN_M = 6;
+/**
+ * roads-v1: a band piece split where the band's axis (at `offset`) goes on and off the survey: `road` on a polygon
+ * (coverCuts left only rijbaan and parkeervlak there), `off` past the survey's edge. 1 m stations.
+ */
+function splitBySurvey(piece: readonly Vec2[], offset: number, index: RoadIndex, bridge: boolean): { road: Vec2[][]; off: Vec2[][] } {
+  const st = stations(piece), total = st[st.length - 1], onCuts: [number, number][] = [], offCuts: [number, number][] = [];
+  for (let s = 0; s <= total; s += 1) {
+    const t = Math.min(s, total), p = pointAt(piece, st, t), q = pointAt(piece, st, Math.min(total, t + 0.5)), r = pointAt(piece, st, Math.max(0, t - 0.5));
+    const nl = leftOf(dirOf(r, q)), on = index.classAt(p[0] + nl[0] * offset, p[1] + nl[1] * offset, bridge) !== null;
+    (on ? offCuts : onCuts).push([s - 0.5, s + 0.5]);
+  }
+  const keep = (cuts: [number, number][]) => (cuts.length ? cutIntervals(piece as Vec2[], cuts) : [piece as Vec2[]]).filter(p => p.length >= 2);
+  return { road: offCuts.length ? keep(onCuts) : [], off: onCuts.length ? keep(offCuts) : [] };
 }
 
 /**

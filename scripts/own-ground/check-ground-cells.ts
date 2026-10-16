@@ -626,6 +626,8 @@ async function neighbourhood(s: GroundStore, x: number, y: number): Promise<{ ke
   const input = await s.cellInput(key, 0), seen = new Set<number>();
   const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id)));
   const index = input.roads || input.roadsAround?.some(Boolean) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])]) : null;
+  // As buildCell: red rijbanen under tram track draw grey, so the survey the regressions read is what was drawn.
+  index?.railCarriages(ways.filter(w => w.section.rails?.length).map(w => w.points));
   return { key, cells, ways, index };
 }
 const cellCentre = (s: GroundStore, key: string): [number, number] => { const r = s.cellRect(key); return [(r[0] + r[2]) / 2, (r[1] + r[3]) / 2]; };

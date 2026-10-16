@@ -51,7 +51,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Red rijbaan polygons drawn grey under tram track. */ railGrey?: number }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -226,7 +226,13 @@ export function buildCell(input: CellInput): BuiltCell {
   // Roads (roads-v1): the surveyed partition drawn before the land, so the land can be culled under the cell's own
   // polygons as under the park surfaces (never under a deck polygon that was not drawn: roadSurfaces skipped).
   phase('prepare');
-  const roadIndex = lod === 0 && (input.roads?.surfaces.length || input.roadsAround?.some(r => r?.surfaces.length)) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])]) : null;
+  // The neighbours' polygons within ROAD_FAST_PAD_M of the cell and wherever the cell's own ways reach (the street pass
+  // asks along all of them), uncapped.
+  let rb: [number, number, number, number] = [x0 - ROAD_FAST_PAD_M, y0 - ROAD_FAST_PAD_M, x1 + ROAD_FAST_PAD_M, y1 + ROAD_FAST_PAD_M];
+  for (const w of ways) if (own.has(w.id)) for (const p of w.points) rb = [Math.min(rb[0], p[0] - 10), Math.min(rb[1], p[1] - 10), Math.max(rb[2], p[0] + 10), Math.max(rb[3], p[1] + 10)];
+  const roadIndex = lod === 0 && (input.roads?.surfaces.length || input.roadsAround?.some(r => r?.surfaces.length)) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])], rb) : null;
+  // Red rijbanen carrying tram track are grey (RoadIndex.railCarriages), for the polygons and for every lookup after.
+  const railGrey = roadIndex ? roadIndex.railCarriages(all.filter(w => w.section.rails?.length).map(w => w.points)) : 0;
   phase('roadIndex');
   let roads: BuiltCell['stats']['roads'] = null;
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
@@ -235,7 +241,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
     roadSkipped = built.skipped;
-    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0 };
+    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, railGrey };
   }
   // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
   phase('roads');
@@ -407,7 +413,8 @@ export function buildCell(input: CellInput): BuiltCell {
   let pockets: PocketStats | null = null;
   if (lod === 0 && input.pockets !== false) {
     const cover: PocketCover<PocketSurface>[] = (Object.keys(parts) as GroundLayer[]).filter(l => !NOT_COVER.has(l)).map(l => ({ meshes: parts[l]!, as: POCKET_VOTE[l] ?? null }));
-    // roads-v1: a junction on the survey has no pocket (the polygons tile it; a pocket fill there was a pavement wedge).
+    // roads-v1: a junction on the survey seeds no pocket (the polygons tile it; a pocket fill there was a pavement
+    // wedge). A gap in the survey near the node shows the land the survey leaves there (a berm, a tree pit).
     const seeds = [...streets.junctionPoints, ...onBridges.junctionPoints].filter(p => !roadIndex || roadIndex.findFast(p[0], p[1]) < 0);
     const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT);
     for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);

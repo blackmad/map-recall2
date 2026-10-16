@@ -535,7 +535,8 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
   /** Surfaces [0, own) belong to the first cell passed (drawn by the same build as the land under them). */
   readonly own: number = 0;
   /** `keep`: which records are cover (parks: not ponds, which buildParks may skip and whose edge is a bank). */
-  constructor(cells: readonly ({ surfaces: readonly S[] } | null | undefined)[], keep: (s: S) => boolean = s => (s as { k?: string }).k !== 'pond') {
+  /** `within`: a box past which the other cells' polygons are left out (the first cell's are all kept). */
+  constructor(cells: readonly ({ surfaces: readonly S[] } | null | undefined)[], keep: (s: S) => boolean = s => (s as { k?: string }).k !== 'pond', within?: readonly [number, number, number, number]) {
     const seen = new Set<{ surfaces: readonly S[] }>();
     for (const c of cells) {
       if (!c || seen.has(c)) continue;
@@ -546,6 +547,7 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
         if (!rings.length || rings[0].length < 3) continue;
         const xs = rings[0].map(p => p[0]), ys = rings[0].map(p => p[1]);
         const box: [number, number, number, number] = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)], k = this.polys.length;
+        if (within && c !== cells[0] && (box[2] < within[0] || box[0] > within[2] || box[3] < within[1] || box[1] > within[3])) continue;
         // The cover is what buildParks draws: the same earcut triangles (a self-intersecting BGT ring loses areas there,
         // and the Vondelpark had a 5 x 4 m one that the even-odd ring test called lawn).
         const { flat, holes } = flatten(rings);

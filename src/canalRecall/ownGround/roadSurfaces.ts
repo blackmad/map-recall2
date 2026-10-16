@@ -166,8 +166,36 @@ export function simplifyLine(pts: readonly Vec2[], tol: number): Vec2[] {
  * Point lookup over the roads-v1 polygons of a cell neighbourhood (parks.ts SurfaceIndex over RoadSurface
  * records). Polygons [0, own) are the first cell's: the ones its build draws.
  */
+/** Metres of tram track along a red rijbaan polygon that turn it grey (RoadIndex.railCarriages). */
+export const RAIL_CARRIAGE_MIN_M = 12;
 export class RoadIndex extends SurfaceIndex<RoadSurface> {
-  constructor(cells: readonly (RoadCell | null | undefined)[]) { super(cells, () => true); }
+  /** `within`: the neighbours' polygons only where the build can ask (the cell, its own ways' reach): earcut of the full 3×3 was a fifth of the roads cost. */
+  constructor(cells: readonly (RoadCell | null | undefined)[], within?: readonly [number, number, number, number]) { super(cells, () => true, within); }
+
+  /** Meshes the runtime overrides (railCarriages): polygon id → mesh. */
+  private readonly meshOver = new Map<number, RoadMesh>();
+  /** The mesh polygon `k` is drawn with (the extract's, unless overridden). */
+  mesh(k: number): RoadMesh { return this.meshOver.get(k) ?? this.records[k].k; }
+  /**
+   * A rijbaan the extract paints red because an OSM fietsstraat lies on it (roadCells roadMesh) is grey where tram
+   * rails run on it: the Marnixstraat busway and tram tracks by the Tweede Marnixplantsoen were one red polygon with
+   * four rails on it (lane roads-runtime 2026-10-16, the user's "rails on the same grey"). `rails`: the tram track
+   * centre lines, probed every 2 m; a polygon turns grey with RAIL_CARRIAGE_MIN_M of track along it (a tram line
+   * crossing a red fietsstraat leaves it red). Returns the polygons turned to asphalt.
+   */
+  railCarriages(rails: readonly (readonly Vec2[])[], minM = RAIL_CARRIAGE_MIN_M): number {
+    const metres = new Map<number, number>();
+    for (const line of rails) for (let i = 0; i + 1 < line.length; i++) {
+      const a = line[i], b = line[i + 1], len = Math.hypot(b[0] - a[0], b[1] - a[1]), steps = Math.max(1, Math.ceil(len / 2));
+      for (let s = 0; s < steps; s++) {
+        const x = a[0] + (b[0] - a[0]) * (s + 0.5) / steps, y = a[1] + (b[1] - a[1]) * (s + 0.5) / steps;
+        for (const k of this.findAll(x, y)) { const r = this.records[k]; if (r.c === 'carriage' && r.k === 'cycle') metres.set(k, (metres.get(k) ?? 0) + len / steps); }
+      }
+    }
+    let n = 0;
+    for (const [k, m] of metres) if (m >= minM && !this.meshOver.has(k)) { this.meshOver.set(k, 'asphalt'); n++; }
+    return n;
+  }
 
   private fast: { raster: SurfaceRaster; box: readonly [number, number, number, number] } | null = null;
   /**
@@ -207,7 +235,7 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
   }
   classAt(x: number, y: number, bridge = false): RoadClass | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.records[k].c; }
   heightAt(x: number, y: number, bridge = false): number | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.records[k].h; }
-  meshAt(x: number, y: number, bridge = false): RoadMesh | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.records[k].k; }
+  meshAt(x: number, y: number, bridge = false): RoadMesh | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.mesh(k); }
   /** May road paint, a rail or a lane ribbon lie here: a carriageway or parking polygon, or no survey at all (the bands' fallback). */
   onRoad(x: number, y: number, bridge = false): boolean { const c = this.classAt(x, y, bridge); return c === null || c === 'carriage' || c === 'parking'; }
   /** Is any deck polygon (h ≥ 1) under the point? */
@@ -313,10 +341,10 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       height = on;
       stats.onDeck++;
     }
-    if (rec.h >= 1) drapeAdaptive(get(rec.k), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
+    if (rec.h >= 1) drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else {
       const tol = DRAPE_TOL[rec.c], low = isLow(rec.c);
-      drapeAdaptive(get(rec.k), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
+      drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
     }
     stats.drawn[rec.c]++;
   }

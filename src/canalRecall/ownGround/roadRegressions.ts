@@ -153,14 +153,14 @@ export function surveyedCoverage(cells: readonly BuiltCell[], centre: [number, n
 /**
  * roads-v1 junctions (the BGT partition on, `?roads=bgt`): the user's Kinkerstraat × Da Costakade shots (red smears
  * and pale wedges where the band model met the bridge mouths) read as the surveyed asphalt; the Marnixstraat busway
- * crossing of the red fietsstraat is one rijbaan polygon the survey paints red (an OSM fietsstraat lies on it), so it
- * reads cycle or asphalt, never paving or land. check-ground-cells judges them with `surveyedCoverage` (the top must
+ * crossing of the red fietsstraat is one rijbaan polygon the extract paints red (an OSM fietsstraat lies on it) with
+ * tram track along it, which the runtime draws grey (RoadIndex.railCarriages): asphalt, never paving or land. check-ground-cells judges them with `surveyedCoverage` (the top must
  * be the polygon's mesh); `surface`/`also` document what that is at the node.
  */
 export const ROAD_JUNCTIONS: JunctionRegression[] = [
   { id: 'kinkerstraat-da-costakade-west', label: 'Kinkerstraat × Da Costakade (west quay)', at: [4.87323, 52.367545], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
   { id: 'kinkerstraat-da-costakade-east', label: 'Kinkerstraat × Da Costakade (east quay)', at: [4.87383, 52.367724], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
-  { id: 'marnixstraat-busway-fietsstraat', label: 'Marnixstraat busway × the red fietsstraat (Frederik Hendrikplantsoen)', at: [4.87673, 52.374747], radiusM: 4, surface: 'cycle', also: ['asphalt'], minShare: 0.9 },
+  { id: 'marnixstraat-busway-fietsstraat', label: 'Marnixstraat busway × the red fietsstraat (Frederik Hendrikplantsoen)', at: [4.87673, 52.374747], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
 ];
 
 /**
