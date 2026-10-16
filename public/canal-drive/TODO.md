@@ -746,6 +746,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   article, Onze Lieve Vrouwe Kapel has two chapels, Frascati and Scheltema
   have no Wikipedia link). The audit misses thin cards that name a person
   (Anne Frank House).
+  After the hollow-card pass (HISTORY "Hollow landmark cards"): 25 allowlisted
+  stub cards still open (19 OBA branches; CEDLA, DeLaMar West, Lancaster
+  Memorial, Drie Boertjes, AMOS) and the override format accepts only Wikipedia
+  sources (kunstwacht.nl and venue sites have material); 78 empty cards don't
+  open; `'t Brinkie`'s wikipediaUrl points at a missing nl article; kit model
+  `winkler-prins-monument` duplicates `extract_landmarks_1897367071`'s pin.
+  Product question for the user: a folded drive-by card shows only its title
+  (by design, to keep the corridor clear); keep, or keep one line.
 - **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
   auto-placed runs installed"): 69 of 335 pands installed. Next: types for
   Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
