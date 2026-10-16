@@ -24,17 +24,20 @@
         52.37443243333333
       ],
       "northOffsetDegrees": 0,
-      "source": "Three extreme vertices of the current mapped whole-monument perimeter; local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Waterside stair-platform tip intentionally extends into Keizersgracht."
+      "source": "Three extreme vertices of the current mapped whole-monument perimeter (OSM w37737807; the 36 m triangle of en.wikipedia.org/wiki/Homomonument); local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Stones assigned from the sources: north tip flush (towards the Anne Frank Huis), south-west tip the 0.60 m podium (towards Rozenstraat), east tip the steps into the Keizersgracht (towards the Dam). Quay line on the stepped stone's axis 12.56 m east of the centroid from BGT waterdeel (api.pdok.nl/lv/bgt, 2026-10-16)."
     },
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "pink": "#cdcbb0"
+    },
     "attribution": {
       "title": "Homomonument",
       "author": "Map Recall",
       "sourceUrl": "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
+      "modifications": "Original geometric interpretation of the mapped whole-monument outline and the RCE overhead photograph: three 10 m granite stones, flush / 0.60 m podium / four risers from the quay to a platform 0.30 m above the canal with granite side walls to the water, thin granite lines between them. Granite tint #cdcbb0 measured on the podium riser in municipal panorama recording_2025-06-16_04-42-37_02924 (sunlit #ede7c5 and shaded #adae9b averaged; the Rosa Porrino reads grey-beige with a faint pink). The eastern tip's projection into the Keizersgracht is the mapped one (8 m past the BGT quay line). Step treads 0.5 m and the 36 cm risers are the game's canal depth, not measured. No surrounding ground or host buildings replaced."
     }
   }
 ]

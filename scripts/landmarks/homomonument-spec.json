@@ -1,0 +1,13 @@
+{
+  "id": "homomonument",
+  "note": "audit:glb thresholds for a ground-level memorial (scripts/landmarks/memorial-builders.ts): three separate granite stones joined by thin lines that stop short of them, one stepping down into the Keizersgracht. Model-local metres, x east, z south of the anchor.",
+  "belowGroundMetres": -2.2,
+  "belowGroundEvidence": "The stepped stone's treads and platform descend from the quay to 0.30 m above the game's canal (ownGround WATER_Z = -1.77) and its solid prisms reach -2.1 so the side walls meet the water; en.wikipedia.org/wiki/Homomonument: 'four gradually tapering steps ... lead down from the pavement to a platform resting on the water'.",
+  "detachedStructures": [
+    {"box": [-8.2, -20.5, 2.3, -10.1], "evidence": "The flush stone (north tip, towards the Anne Frank Huis), 10 m sides; RCE overhead photograph."},
+    {"box": [-15.1, 5.5, -4.8, 15.9], "evidence": "The podium stone (south-west tip, towards Rozenstraat), 0.60 m high; RCE overhead photograph and panorama recording_2025-06-16_04-42-37_02924."},
+    {"box": [1.5, -13.5, 13.2, -2.0], "evidence": "Granite line between the flush stone and the stepped stone along the 36 m triangle's edge."},
+    {"box": [-5.6, 7.2, 10.9, 12.9], "evidence": "Granite line between the stepped stone and the podium."},
+    {"box": [-12.6, -10.8, -7.4, 6.3], "evidence": "Granite line between the podium and the flush stone."}
+  ]
+}
