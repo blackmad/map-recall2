@@ -26,9 +26,8 @@
 // OSM stays for routing, paint and the fallback: covered ways (roadCells
 // coverWays) emit no bands; cells without the extract and the far ring keep bands.
 
-import earcut from 'earcut';
 import { densify, edgeWall, emptyMesh, ribbon, stations, vertex, type MeshArrays } from './drape.js';
-import { flatten, interiorPoint, SurfaceIndex, type SurfaceRaster } from './parks.js';
+import { interiorPoint, SurfaceIndex, type SurfaceRaster } from './parks.js';
 import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
@@ -52,15 +51,16 @@ export const FAST_RES_M = 0.5;
 /**
  * Ground polygons (h = 0): a triangle is split while the land at an edge midpoint or the centroid lies more than
  * `sag` under its plane (the land would show through: the lift minus a margin) or more than `float` over it (a plane
- * over a hollow would swallow the markings the band model lays on the land surface). Pavements carry only the kerb
- * lines, so theirs are loose; the road classes carry paint, lane ribbons and rails, which in roads mode take
- * ROAD_MARK_LIFT above the carriageway plane's float. DRAPE_MAX_EDGE caps the chord, DRAPE_MIN_EDGE is the finest
- * split. Measured on -2_-1 / -3_-1 against the cell without roads: sag-only 1.11–1.17×; two-sided 0.015 for every
- * class 1.50–1.56×; cutting the polygons along the land grid's facets (exact) 2.2–2.7×, earcut's slivers crossing
- * many facets each.
+ * over a hollow would swallow the markings the band model lays on the land surface). Only the carriageway carries
+ * paint, lane ribbons and rails, which in roads mode take ROAD_MARK_LIFT above its plane's float; the fietspad and the
+ * parkeervlak carry none and float freely; the pavements carry the kerb lines (KERB_TOP), so theirs is bounded.
+ * DRAPE_MAX_EDGE caps the chord, DRAPE_MIN_EDGE is the finest split. Measured on -3_-1 against the cell without
+ * roads (lane roads-runtime 2026-10-16): every class two-sided at 0.012 1.30×; carriageway 0.02, fietspad and
+ * parkeervlak free 1.15× (1.10× with the land culled under several polygons and no pockets on the survey); earlier,
+ * cutting the polygons along the land grid's facets (exact) 2.2–2.7×, earcut's slivers crossing many facets each.
  */
 export const DRAPE_TOL: Record<RoadClass, { sag: number; float: number }> = {
-  carriage: { sag: ROAD_LIFT.carriage - 0.008, float: 0.012 }, parking: { sag: ROAD_LIFT.parking - 0.008, float: 0.012 }, cycle: { sag: ROAD_LIFT.cycle - 0.008, float: 0.012 },
+  carriage: { sag: ROAD_LIFT.carriage - 0.008, float: 0.02 }, parking: { sag: ROAD_LIFT.parking - 0.008, float: Infinity }, cycle: { sag: ROAD_LIFT.cycle - 0.008, float: Infinity },
   foot: { sag: 0.1, float: 0.03 }, pedestrian: { sag: 0.1, float: 0.03 }, driveway: { sag: 0.1, float: 0.03 },
 };
 export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
@@ -85,30 +85,48 @@ export const KERB_SIMPLIFY_M = 0.2, KERB_STEP_M = 4;
  */
 export function drapeAdaptive(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, tol: number, minEdge: number, floatTol = tol): void {
   const max2 = maxEdge * maxEdge, min2 = minEdge * minEdge;
+  // Each corner carries its height and its emitted vertex (-1: not yet): the earcut corners are drawn once and shared
+  // by every triangle on them, and every height is asked once per corner (the tested midpoint becomes the split's).
+  const nv = coords.length >> 1, zs = new Float64Array(nv), ids = new Int32Array(nv).fill(-1);
+  for (let v = 0; v < nv; v++) zs[v] = height(coords[v * 2], coords[v * 2 + 1]);
   const stack: number[] = [];
-  const over = (x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): boolean => {
-    const z1 = height(x1, y1), z2 = height(x2, y2), z3 = height(x3, y3);
-    // d > 0: the land rises over the plane (sag); d < 0: the plane floats over a hollow.
-    const test = (d: number) => d > tol || -d > floatTol;
-    return test(height((x1 + x2) / 2, (y1 + y2) / 2) - (z1 + z2) / 2) || test(height((x2 + x3) / 2, (y2 + y3) / 2) - (z2 + z3) / 2) || test(height((x3 + x1) / 2, (y3 + y1) / 2) - (z3 + z1) / 2) || test(height((x1 + x2 + x3) / 3, (y1 + y2 + y3) / 3) - (z1 + z2 + z3) / 3);
-  };
+  const bad = (d: number) => d > tol || -d > floatTol;
   for (let t = 0; t < tris.length; t += 3) {
-    const ax = coords[tris[t] * 2], ay = coords[tris[t] * 2 + 1], bx = coords[tris[t + 1] * 2], by = coords[tris[t + 1] * 2 + 1], cx = coords[tris[t + 2] * 2], cy = coords[tris[t + 2] * 2 + 1];
-    if ((bx - ax) * (cy - ay) - (by - ay) * (cx - ax) > 0) stack.push(ax, ay, bx, by, cx, cy); else stack.push(ax, ay, cx, cy, bx, by);
+    const a = tris[t], b0 = tris[t + 1], c0 = tris[t + 2];
+    const cross = (coords[b0 * 2] - coords[a * 2]) * (coords[c0 * 2 + 1] - coords[a * 2 + 1]) - (coords[b0 * 2 + 1] - coords[a * 2 + 1]) * (coords[c0 * 2] - coords[a * 2]);
+    // earcut's zero-area triangles on a ring's repeated or collinear vertices: nothing to draw (a sliver of one surface
+    // lying on its neighbour's edge, under the pavement, in the junction-overlap probe).
+    if (Math.abs(cross) < 1e-6) continue;
+    const ccw = cross > 0;
+    const b = ccw ? b0 : c0, c = ccw ? c0 : b0;
+    // Corner records (x, y, z, earcut index or -1) × 3.
+    stack.push(coords[a * 2], coords[a * 2 + 1], zs[a], a, coords[b * 2], coords[b * 2 + 1], zs[b], b, coords[c * 2], coords[c * 2 + 1], zs[c], c);
     while (stack.length) {
-      const y3 = stack.pop()!, x3 = stack.pop()!, y2 = stack.pop()!, x2 = stack.pop()!, y1 = stack.pop()!, x1 = stack.pop()!;
+      const k3 = stack.pop()!, z3 = stack.pop()!, y3 = stack.pop()!, x3 = stack.pop()!, k2 = stack.pop()!, z2 = stack.pop()!, y2 = stack.pop()!, x2 = stack.pop()!, k1 = stack.pop()!, z1 = stack.pop()!, y1 = stack.pop()!, x1 = stack.pop()!;
       const e1 = (x2 - x1) ** 2 + (y2 - y1) ** 2, e2 = (x3 - x2) ** 2 + (y3 - y2) ** 2, e3 = (x1 - x3) ** 2 + (y1 - y3) ** 2;
-      const longest = Math.max(e1, e2, e3);
-      let split = longest > max2;
-      if (!split && longest > min2) split = over(x1, y1, x2, y2, x3, y3);
-      if (!split || stack.length > 6e5) {
-        const i = vertex(m, x1, y1, height(x1, y1) + lift), j = vertex(m, x2, y2, height(x2, y2) + lift), k = vertex(m, x3, y3, height(x3, y3) + lift);
+      const longest = Math.max(e1, e2, e3), edge = longest === e1 ? 1 : longest === e2 ? 2 : 3;
+      // The longest edge's midpoint first: its height is the split vertex's if the triangle splits.
+      const mx = edge === 1 ? (x1 + x2) / 2 : edge === 2 ? (x2 + x3) / 2 : (x3 + x1) / 2, my = edge === 1 ? (y1 + y2) / 2 : edge === 2 ? (y2 + y3) / 2 : (y3 + y1) / 2;
+      let mz = NaN, split = longest > max2;
+      if (!split && longest > min2) {
+        mz = height(mx, my);
+        split = bad(mz - (edge === 1 ? (z1 + z2) : edge === 2 ? (z2 + z3) : (z3 + z1)) / 2)
+          || (edge !== 1 && bad(height((x1 + x2) / 2, (y1 + y2) / 2) - (z1 + z2) / 2))
+          || (edge !== 2 && bad(height((x2 + x3) / 2, (y2 + y3) / 2) - (z2 + z3) / 2))
+          || (edge !== 3 && bad(height((x3 + x1) / 2, (y3 + y1) / 2) - (z3 + z1) / 2))
+          || bad(height((x1 + x2 + x3) / 3, (y1 + y2 + y3) / 3) - (z1 + z2 + z3) / 3);
+      }
+      if (!split || stack.length > 1.2e6) {
+        const i = k1 >= 0 ? (ids[k1] >= 0 ? ids[k1] : (ids[k1] = vertex(m, x1, y1, z1 + lift))) : vertex(m, x1, y1, z1 + lift);
+        const j = k2 >= 0 ? (ids[k2] >= 0 ? ids[k2] : (ids[k2] = vertex(m, x2, y2, z2 + lift))) : vertex(m, x2, y2, z2 + lift);
+        const k = k3 >= 0 ? (ids[k3] >= 0 ? ids[k3] : (ids[k3] = vertex(m, x3, y3, z3 + lift))) : vertex(m, x3, y3, z3 + lift);
         m.indices.push(i, j, k);
         continue;
       }
-      if (longest === e1) { const mx = (x1 + x2) / 2, my = (y1 + y2) / 2; stack.push(x1, y1, mx, my, x3, y3, mx, my, x2, y2, x3, y3); }
-      else if (longest === e2) { const mx = (x2 + x3) / 2, my = (y2 + y3) / 2; stack.push(x1, y1, x2, y2, mx, my, x1, y1, mx, my, x3, y3); }
-      else { const mx = (x3 + x1) / 2, my = (y3 + y1) / 2; stack.push(x1, y1, x2, y2, mx, my, mx, my, x2, y2, x3, y3); }
+      if (Number.isNaN(mz)) mz = height(mx, my);
+      if (edge === 1) stack.push(x1, y1, z1, k1, mx, my, mz, -1, x3, y3, z3, k3, mx, my, mz, -1, x2, y2, z2, k2, x3, y3, z3, k3);
+      else if (edge === 2) stack.push(x1, y1, z1, k1, x2, y2, z2, k2, mx, my, mz, -1, x1, y1, z1, k1, mx, my, mz, -1, x3, y3, z3, k3);
+      else stack.push(x1, y1, z1, k1, x2, y2, z2, k2, mx, my, mz, -1, mx, my, mz, -1, x2, y2, z2, k2, x3, y3, z3, k3);
     }
   }
 }
@@ -277,20 +295,20 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const stats: RoadBuildStats = { drawn: { carriage: 0, foot: 0, cycle: 0, pedestrian: 0, parking: 0, driveway: 0 }, onDeck: 0, skippedHigh: 0, degenerate: 0, kerbs: 0, kerbM: 0, kerbUnsided: 0, bollards: 0, ms: 0 };
   const skipped = new Set<number>();
   const far = input.lod === 1;
-  // The height functions memoised at 1 cm: the drape asks for every shared vertex, midpoint and centroid several
-  // times over (the roads phase was 200 ms of a 800 ms cell build, 22 ms with flat heights).
-  const landHeight = memoHeight(input.height), deckHeight = memoHeight(input.deckHeight);
+  // The drape carries each corner's height and asks once per corner and tested point (drapeAdaptive); a 1 cm memo
+  // of the heights on top cost more in Map lookups than the land grid's own lookup (the deck surface keeps it).
+  const landHeight = input.height, deckHeight = memoHeight(input.deckHeight);
   /** The surface a deck polygon (or a kerb on one) drapes on, or null when nothing carries it. */
   const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1])) ? deckHeight : null);
   for (let k = 0; k < index.own; k++) {
-    const rec = index.records[k], rings = index.ringsOf(k);
-    const { flat, holes } = flatten(rings);
+    const rec = index.records[k];
+    // The index's own earcut of the polygon (SurfaceIndex flatOf): the raster and the drawn mesh are the same triangles.
+    const { flat, tris } = index.flatOf(k);
     if (flat.length < 6) { stats.degenerate++; skipped.add(k); continue; }
-    const tris = earcut(flat, holes);
     if (!tris.length) { stats.degenerate++; skipped.add(k); continue; }
     let height = landHeight;
     if (rec.h >= 1) {
-      const on = deckSurface(interiorPoint(rings));
+      const on = deckSurface(interiorPoint(index.ringsOf(k)));
       if (!on) { stats.skippedHigh++; skipped.add(k); continue; }
       height = on;
       stats.onDeck++;

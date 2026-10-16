@@ -515,8 +515,11 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
 
 // ------------------------------------------------------------------ the OSM park fill under the survey
 
-/** The surfaces as a raster: `find` the surface id at a point (-1: none); `uniform`: every texel of a box is surface k. */
-export interface SurfaceRaster { find(x: number, y: number): number; uniform(ax: number, ay: number, bx: number, by: number, k: number): boolean }
+/**
+ * The surfaces as a raster: `find` the surface id at a point (-1: none); `uniform`: every texel of a box is surface k;
+ * `every`: every texel of a box holds a surface (id ≥ 0) that `ok` accepts (a box over several surfaces that tile it).
+ */
+export interface SurfaceRaster { find(x: number, y: number): number; uniform(ax: number, ay: number, bx: number, by: number, k: number): boolean; every(ax: number, ay: number, bx: number, by: number, ok: (k: number) => boolean): boolean }
 
 /**
  * Point lookup over the BGT surfaces of a cell neighbourhood (a 25 m bucket grid of their bboxes).
@@ -619,6 +622,18 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
         const i0 = Math.floor((ax - x0) / res), i1 = Math.floor((bx - x0) / res), j0 = Math.floor((ay - y0) / res), j1 = Math.floor((by - y0) / res);
         if (i0 < 0 || j0 < 0 || i1 >= W || j1 >= H) return false;
         for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) if (ids[j * W + i] !== k + 1) return false;
+        return true;
+      },
+      every: (ax, ay, bx, by, ok) => {
+        const i0 = Math.floor((ax - x0) / res), i1 = Math.floor((bx - x0) / res), j0 = Math.floor((ay - y0) / res), j1 = Math.floor((by - y0) / res);
+        if (i0 < 0 || j0 < 0 || i1 >= W || j1 >= H) return false;
+        let last = -1;
+        for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
+          const id = ids[j * W + i];
+          if (id === last) continue;
+          if (id === 0 || !ok(id - 1)) return false;
+          last = id;
+        }
         return true;
       },
     };
