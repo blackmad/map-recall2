@@ -305,8 +305,9 @@ export class GroundStore {
     const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M - 50;
     const around = GroundStore.neighbours(key);
     const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
-    const polys = waters.flatMap(w => w?.polygons ?? []);
-    const wet = (x: number, y: number) => polys.some(poly => { let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+    // Each polygon with its box: a station tests only the polygons around it.
+    const polys = waters.flatMap(w => w?.polygons ?? []).map(poly => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); } return { poly, box: [a, b, c, d] }; });
+    const wet = (x: number, y: number) => polys.some(({ poly, box }) => { if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false; let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
     const flats = around.flatMap(k => this.flatDecks(k));
     // Every measured bridge around, placed or not (a deck is placed only near the cell being prepared).
     const quant = this.elevation.quantization.xy;
@@ -322,7 +323,8 @@ export class GroundStore {
     })
       || flats.some(r => nearRing(r, x, y));
     const ways: WayDeckInput[] = [];
-    for (const osm of osms) for (const w of osm ? prepareWays(osm.ways, p => toLocal(p[0], p[1])) : []) {
+    // Only the bridge ways go through prepareWays (the cell's whole street graph is the costly part).
+    for (const osm of osms) for (const w of osm ? prepareWays(osm.ways.filter(q => q.tags.bridge && q.tags.bridge !== 'no' && wayDeckHighway(q.tags.highway) && !this.wayDeckIds.has(q.id)), p => toLocal(p[0], p[1])) : []) {
       if (this.wayDeckIds.has(w.id) || ways.some(q => q.id === w.id) || !isBridgeWay(w) || !wayDeckHighway(w.tags.highway)) continue;
       const xs = w.points.map(p => p[0]), ys = w.points.map(p => p[1]);
       if (Math.min(...xs) < x0 - pad || Math.max(...xs) > x1 + pad || Math.min(...ys) < y0 - pad || Math.max(...ys) > y1 + pad) continue;
