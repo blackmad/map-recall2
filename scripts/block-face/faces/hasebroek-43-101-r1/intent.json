@@ -1,0 +1,255 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hasebroek-43-101-r1",
+ "street": "Hasebroekstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/hasebroek-43-101-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/hasebroek-43-101/auto-place.json"
+ },
+ "types": [
+  "bellamy-1915-green-tile",
+  "bellamy-1915-tile-bay"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012100499",
+   "slug": "hasebroek-100499",
+   "address": "Hasebroekstraat 53",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#d4b6a8",
+     "evidence": "strip 2024-12-11 span 1133-1383: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1, columns 0; strip 2024-12-11 span 1133-1383"
+   }
+  },
+  {
+   "pandId": "0363100012085498",
+   "slug": "hasebroek-085498",
+   "address": "Hasebroekstraat 55",
+   "type": {
+    "type": "bellamy-1915-tile-bay"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.82 on eaves 1, storeys 1, roof 1, stucco 0, bay 1, accent-side 1; strip 2024-12-11 span 1383-1653"
+   }
+  },
+  {
+   "pandId": "0363100012123310",
+   "slug": "hasebroek-123310",
+   "address": "Hasebroekstraat 57",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#d2b7a8",
+     "evidence": "strip 2024-12-11 span 1653-1923: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1; strip 2024-12-11 span 1653-1923"
+   }
+  },
+  {
+   "pandId": "0363100012065691",
+   "slug": "hasebroek-065691",
+   "address": "Hasebroekstraat 59",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#cfb2a2",
+     "evidence": "strip 2024-12-11 span 1924-2174: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1; strip 2024-12-11 span 1924-2174"
+   }
+  },
+  {
+   "pandId": "0363100012069845",
+   "slug": "hasebroek-069845",
+   "address": "Hasebroekstraat 61",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#d3b5a2",
+     "evidence": "strip 2024-12-11 span 2174-2424: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1; strip 2024-12-11 span 2174-2424"
+   }
+  },
+  {
+   "pandId": "0363100012233466",
+   "slug": "hasebroek-233466",
+   "address": "Hasebroekstraat 63",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#d9bbaa",
+     "evidence": "strip 2024-12-11 span 2425-2695: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1, columns 1; strip 2024-12-11 span 2425-2695"
+   }
+  },
+  {
+   "pandId": "0363100012127527",
+   "slug": "hasebroek-127527",
+   "address": "Hasebroekstraat 65",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#e2c2af",
+     "evidence": "strip 2024-12-11 span 2695-2965: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.72 on eaves 0.5, storeys 1, roof 0, stucco 1, bay 1, accent-side 1, columns 0; strip 2024-12-11 span 2695-2965"
+   }
+  },
+  {
+   "pandId": "0363100012113587",
+   "slug": "hasebroek-113587",
+   "address": "Hasebroekstraat 67",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#d2b7a6",
+     "evidence": "strip 2024-12-11 span 2965-3215: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1, columns 0; strip 2024-12-11 span 2965-3215"
+   }
+  },
+  {
+   "pandId": "0363100012086970",
+   "slug": "hasebroek-086970",
+   "address": "Hasebroekstraat 69",
+   "type": {
+    "type": "bellamy-1915-green-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#a28e86",
+     "evidence": "strip 2024-12-11 span 3216-3455: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, columns 1; strip 2024-12-11 span 3216-3455"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

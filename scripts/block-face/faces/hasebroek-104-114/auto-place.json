@@ -1,0 +1,420 @@
+{
+ "face": "hasebroek-104-114",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2018-06-13",
+ "seconds": 4.83,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012080765",
+   "address": "Hasebroekstraat 114",
+   "builtYear": 1915,
+   "widthM": 5.78,
+   "eavesM": 12.93,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#3e3330",
+    "wallRaw": "#3f3732",
+    "skyline": {
+     "eavesM": 17.18,
+     "eavesRow": 69,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.35,
+      "topWidthM": 0.53,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.68,
+       "widthM": 1.25,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236316",
+   "address": "Hasebroekstraat 112A",
+   "builtYear": 1915,
+   "widthM": 10.67,
+   "eavesM": 12.96,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#856f66",
+    "wallRaw": "#78675d",
+    "skyline": {
+     "eavesM": 16.25,
+     "eavesRow": 106,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 2.65,
+      "topWidthM": 0.13,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.95,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.22,
+       "widthM": 1.07,
+       "centre": 0.5
+      },
+      {
+       "atM": 8.25,
+       "widthM": 1.23,
+       "centre": 0.06
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.15,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.1,
+       "widthM": 1.27,
+       "centre": 0.26
+      },
+      {
+       "atM": 4.8,
+       "widthM": 0.95,
+       "centre": 0.07
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 10.67 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 10.67 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.96 m = 4 storeys of 3.24 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.94 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.054 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 11 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233446",
+   "address": "Hasebroekstraat 108",
+   "builtYear": 1915,
+   "widthM": 7.57,
+   "eavesM": 12.93,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b7268",
+    "wallRaw": "#79685f",
+    "skyline": {
+     "eavesM": 16.82,
+     "eavesRow": 83,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.53,
+      "topWidthM": 0.97,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.15,
+       "centre": 0.91
+      },
+      {
+       "atM": 8.35,
+       "widthM": 1.18,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.23,
+       "centre": 0.91
+      },
+      {
+       "atM": 5.13,
+       "widthM": 1.2,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 7.57 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 7.57 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.93 m = 4 storeys of 3.23 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.69 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.073 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012130888",
+   "address": "Hasebroekstraat 106",
+   "builtYear": 1915,
+   "widthM": 6.16,
+   "eavesM": 12.93,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#4f453d",
+    "wallRaw": "#4e453e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 756,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.138 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17; window shape tall vs photo square)",
+   "likeness": {
+    "pandId": "0363100012130888",
+    "ncc": 0.138,
+    "nccRaw": 0.138,
+    "shiftM": [
+     0.05,
+     0.4
+    ],
+    "usable": 0.82,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#4d423b",
+     "model": "#6a5c52",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.208
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088526",
+   "address": "Hasebroekstraat 104",
+   "builtYear": 1915,
+   "widthM": 5.79,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#57473f",
+    "wallRaw": "#433a33",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 756,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.098 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.31 mean 0.34 vs photo 0.61; window shape square vs photo tall)",
+   "likeness": {
+    "pandId": "0363100012088526",
+    "ncc": 0.098,
+    "nccRaw": 0.098,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.34 vs photo 0.61",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#584840",
+     "model": "#725d52",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.299
+   },
+   "challengers": {}
+  }
+ ]
+}

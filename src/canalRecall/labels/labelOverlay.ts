@@ -175,6 +175,22 @@ export class LabelOverlay {
     if (gameCanvas?.parentElement) gameCanvas.after(this.root); else container.appendChild(this.root);
     this.fit(container);
     map.on('render', () => this.frame());
+    // A state change (finish card → setup, setup → loading) need not repaint
+    // the map, so the cover check also runs on its own slow clock.
+    window.setInterval(() => this.syncCovered(), COVER_POLL_MS);
+  }
+
+  /**
+   * Menu, route setup and the loading screen paint opaque paper over the map
+   * on the game canvas; labels above it would float on paper and leak the
+   * start area's venues (user 2026-10-16: "don't show destinations through
+   * scrim"). Returns true while covered.
+   */
+  private syncCovered(): boolean {
+    const covered = isCoveredState(this.game()?.state);
+    const want = covered ? 'hidden' : '';
+    if (this.root.style.visibility !== want) this.root.style.visibility = want;
+    return covered;
   }
 
   /** The layer covers the map canvas exactly, so map pixels are layer pixels. */
@@ -202,6 +218,7 @@ export class LabelOverlay {
     const map: AnyMap = this.vm.map;
     if (!map || !styleReady(map)) return;
     this.hideReplacedLayers(map);
+    if (this.syncCovered()) return;
     const now = performance.now();
     if (!this.job && now - this.lastPlan >= PLAN_INTERVAL_MS) {
       this.lastPlan = now;
@@ -503,6 +520,15 @@ export class LabelOverlay {
       el.style.opacity = opacity.toFixed(2);
     }
   }
+}
+
+const COVER_POLL_MS = 150;
+
+/** Game states whose canvas covers the map with paper (game.js GameState: MENU 0, MAP_SELECT 1, LOADING 2). */
+export function isCoveredState(state: unknown): boolean {
+  const gs = (0, eval)('typeof GameState === "object" ? GameState : null') as Record<string, number> | null;
+  const covered = gs ? [gs.MENU, gs.MAP_SELECT, gs.LOADING] : [0, 1, 2];
+  return typeof state === 'number' && covered.includes(state);
 }
 
 /** vector-map.js mount: one overlay per map, or null when `?labels=maplibre`. */

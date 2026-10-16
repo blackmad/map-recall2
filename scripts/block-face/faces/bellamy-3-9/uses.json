@@ -1,0 +1,148 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:27:58.873Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159378",
+   "addresses": [
+    "Bellamystraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 3-H",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000579978"
+    },
+    {
+     "address": "Bellamystraat 3",
+     "use": "logiesfunctie",
+     "areaM2": 594,
+     "bagId": "0363010012094988"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9654282553,
+     "lngLat": [
+      4.8670782,
+      52.3672377
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3",
+      "addr:postcode": "1053BE",
+      "addr:street": "Bellamystraat",
+      "bar": "yes",
+      "brand": "CityHub",
+      "check_date": "2026-09-09",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "CityHub Amsterdam",
+      "payment:cards": "only",
+      "source": "BAG",
+      "source:date": "2022-04-09",
+      "tourism": "hotel",
+      "website": "https://cityhub.com/",
+      "wikidata": "Q111114735"
+     },
+     "fetchedAt": "2026-10-16T11:27:58.873Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158150",
+   "addresses": [
+    "Bellamystraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000579984"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157043",
+   "addresses": [
+    "Bellamystraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000579991"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161934",
+   "addresses": [
+    "Bellamystraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000579998"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4828408621,
+     "lngLat": [
+      4.8668289,
+      52.3672083
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9",
+      "addr:street": "Ten Katestraat",
+      "check_date": "2025-05-06",
+      "name": "Harchane",
+      "name:ar": "حرشان",
+      "name:de": "Harchane",
+      "shop": "seafood"
+     },
+     "fetchedAt": "2026-10-16T11:27:58.873Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13125335952,
+     "lngLat": [
+      4.8667359,
+      52.3672367
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes",
+      "material": "wood",
+      "seats": "5"
+     },
+     "fetchedAt": "2026-10-16T11:27:58.873Z",
+     "match": "frontage",
+     "distanceM": 3.8
+    }
+   ]
+  }
+ ]
+}

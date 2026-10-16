@@ -1,0 +1,199 @@
+{
+ "street": "Wenslauerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:46:00.405Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237264",
+   "addresses": [
+    "Wenslauerstraat 66",
+    "Wenslauerstraat 68",
+    "Wenslauerstraat 70",
+    "Wenslauerstraat 72",
+    "Wenslauerstraat 74",
+    "Wenslauerstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 66-H",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010000865052"
+    },
+    {
+     "address": "Wenslauerstraat 68-H",
+     "use": "industriefunctie",
+     "areaM2": 47,
+     "bagId": "0363010000865056"
+    },
+    {
+     "address": "Wenslauerstraat 70-H",
+     "use": "industriefunctie",
+     "areaM2": 82,
+     "bagId": "0363010000865064"
+    },
+    {
+     "address": "Wenslauerstraat 72-H",
+     "use": "industriefunctie",
+     "areaM2": 89,
+     "bagId": "0363010000865071"
+    },
+    {
+     "address": "Wenslauerstraat 74-H",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000865077"
+    },
+    {
+     "address": "Wenslauerstraat 76-H",
+     "use": "industriefunctie",
+     "areaM2": 34,
+     "bagId": "0363010000865083"
+    },
+    {
+     "address": "Wenslauerstraat 66-H",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010012076884"
+    },
+    {
+     "address": "Wenslauerstraat 70-H",
+     "use": "industriefunctie",
+     "areaM2": 176,
+     "bagId": "0363010012140073"
+    },
+    {
+     "address": "Wenslauerstraat 70-H1",
+     "use": "industriefunctie",
+     "areaM2": 79,
+     "bagId": "0363010012173512"
+    },
+    {
+     "address": "Wenslauerstraat 70-H2",
+     "use": "industriefunctie",
+     "areaM2": 40,
+     "bagId": "0363010012173513"
+    },
+    {
+     "address": "Wenslauerstraat 72-H1",
+     "use": "industriefunctie",
+     "areaM2": 79,
+     "bagId": "0363010012173514"
+    },
+    {
+     "address": "Wenslauerstraat 72-H2",
+     "use": "industriefunctie",
+     "areaM2": 41,
+     "bagId": "0363010012173515"
+    }
+   ],
+   "units": 28,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166378",
+   "addresses": [
+    "Wenslauerstraat 64",
+    "Wenslauerstraat 64A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000865050"
+    },
+    {
+     "address": "Wenslauerstraat 64A",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010001993722"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160684",
+   "addresses": [
+    "Wenslauerstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000865042"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165612",
+   "addresses": [
+    "Wenslauerstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000865038"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159466",
+   "addresses": [
+    "Wenslauerstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000865035"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153358",
+   "addresses": [
+    "Wenslauerstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000865032"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153104",
+   "addresses": [
+    "Wenslauerstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000865029"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

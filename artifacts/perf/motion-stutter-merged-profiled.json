@@ -1,0 +1,4228 @@
+{
+ "when": "2026-10-16T11:21:20.972Z",
+ "seconds": 90,
+ "device": "desktop",
+ "results": [
+  {
+   "kind": "cold",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 3155px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "sync0": 1.13,
+    "menuReady": 1.37,
+    "submitted": 1.64,
+    "player": 20.09,
+    "racing": 22.65,
+    "motionStart": 32.24,
+    "motionEnd": 92.25,
+    "sync1": 92.31
+   },
+   "frames": {
+    "n": 3267,
+    "p50": 16.7,
+    "p95": 50,
+    "p99": 150,
+    "over50": 141,
+    "over100": 49,
+    "longestMs": 1033.3,
+    "stalledS": 18.9,
+    "hist": {
+     "<=17": 2006,
+     "17-33": 1008,
+     "33-50": 112,
+     "50-100": 92,
+     "100-250": 37,
+     "250-500": 7,
+     ">500": 5
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 790,
+     "p50": 16.7,
+     "p95": 66.6,
+     "p99": 233.3,
+     "over50": 43,
+     "over100": 22,
+     "longestMs": 750,
+     "stalledS": 7.78,
+     "hist": {
+      "<=17": 689,
+      "17-33": 37,
+      "33-50": 21,
+      "50-100": 21,
+      "100-250": 16,
+      "250-500": 2,
+      ">500": 4
+     }
+    },
+    "ride": {
+     "n": 2465,
+     "p50": 16.7,
+     "p95": 50,
+     "p99": 116.6,
+     "over50": 96,
+     "over100": 26,
+     "longestMs": 1033.3,
+     "stalledS": 10.87,
+     "hist": {
+      "<=17": 1310,
+      "17-33": 968,
+      "33-50": 91,
+      "50-100": 70,
+      "100-250": 20,
+      "250-500": 5,
+      ">500": 1
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 2274,
+     "p50": 16.7,
+     "p95": 50,
+     "p99": 83.4,
+     "over50": 63,
+     "over100": 12,
+     "longestMs": 350,
+     "stalledS": 5.68,
+     "hist": {
+      "<=17": 1235,
+      "17-33": 903,
+      "33-50": 73,
+      "50-100": 51,
+      "100-250": 10,
+      "250-500": 2,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 63,
+     "over100": 12
+    },
+    "cadence": {
+     "rafFrames": 2274,
+     "renders": 2274,
+     "gameTicks": 2274,
+     "renderPerFrame": 1,
+     "movingRenders": 2274,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 6,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3355,
+      -7668,
+      120
+     ],
+     [
+      -3183,
+      -7167,
+      120
+     ],
+     [
+      -3245,
+      -6908,
+      120
+     ],
+     [
+      -3526,
+      -6810,
+      120
+     ],
+     [
+      -3845,
+      -6698,
+      120
+     ],
+     [
+      -3739,
+      -6319,
+      120
+     ],
+     [
+      -3592,
+      -5957,
+      120
+     ],
+     [
+      -3292,
+      -6099,
+      120
+     ],
+     [
+      -3414,
+      -5911,
+      120
+     ],
+     [
+      -3431,
+      -5576,
+      120
+     ],
+     [
+      -3452,
+      -5170,
+      120
+     ],
+     [
+      -3471,
+      -4823,
+      120
+     ],
+     [
+      -3733,
+      -4618,
+      120
+     ],
+     [
+      -3932,
+      -4795,
+      120
+     ],
+     [
+      -4064,
+      -5106,
+      120
+     ],
+     [
+      -4192,
+      -5414,
+      120
+     ],
+     [
+      -4355,
+      -5645,
+      120
+     ],
+     [
+      -4663,
+      -5521,
+      120
+     ],
+     [
+      -4989,
+      -5394,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 63,
+     "alignedWithStreaming": 52,
+     "byKind": {
+      "landmarkRequest": {
+       "hitches": 10,
+       "ms": 17
+      },
+      "chunkInstall": {
+       "hitches": 14,
+       "ms": 170
+      },
+      "labels": {
+       "hitches": 28,
+       "ms": 187
+      },
+      "treesRebuild": {
+       "hitches": 5,
+       "ms": 84
+      },
+      "setFeatures": {
+       "hitches": 12,
+       "ms": 1055
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 124
+      },
+      "groundInstall": {
+       "hitches": 3,
+       "ms": 57
+      }
+     },
+     "gapsS": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.2,
+      0.1,
+      0.4,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.9,
+      0.1,
+      0.8,
+      0.6,
+      0.6,
+      0.5,
+      0.1,
+      0.5,
+      1.1,
+      6,
+      0.1,
+      1.9,
+      0.1,
+      1.2,
+      0.3,
+      0.3,
+      0.9,
+      0.5,
+      0.7,
+      0.6,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.3,
+      0.6,
+      0.6,
+      1.8,
+      0.2,
+      2.9,
+      3.7,
+      1.4,
+      0.6,
+      0.1,
+      0.1,
+      0.7,
+      0.1,
+      0.1,
+      0.6,
+      2.3,
+      1.9,
+      0.1,
+      1.1,
+      1.7,
+      0.5,
+      2.8,
+      12.8,
+      0.1,
+      2.1
+     ]
+    },
+    "events": {
+     "chunkInstall": {
+      "n": 75,
+      "ms": 528,
+      "maxMs": 21.3
+     },
+     "landmarkRequest": {
+      "n": 46,
+      "ms": 85,
+      "maxMs": 3.6
+     },
+     "labels": {
+      "n": 226,
+      "ms": 1243,
+      "maxMs": 10.6
+     },
+     "treesRebuild": {
+      "n": 25,
+      "ms": 352,
+      "maxMs": 19.1
+     },
+     "groundDecks": {
+      "n": 5,
+      "ms": 10,
+      "maxMs": 3.3
+     },
+     "groundOverlays": {
+      "n": 5,
+      "ms": 8,
+      "maxMs": 2.1
+     },
+     "groundInstall": {
+      "n": 15,
+      "ms": 198,
+      "maxMs": 25.1
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 805,
+      "maxMs": 200.9
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 124,
+      "maxMs": 123.5
+     }
+    },
+    "longTasks": {
+     "n": 39,
+     "totalMs": 3332,
+     "over100": 7,
+     "longestMs": 346
+    }
+   },
+   "longTasks": {
+    "n": 100,
+    "totalMs": 12599,
+    "over100": 34,
+    "longestMs": 666
+   },
+   "loaf": {
+    "over50": 169,
+    "renderMsInStalls": 10937,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 5575
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 3354
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1614
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 1253
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 1088
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 598
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 518
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 396
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 384
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 305
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ three-buildings.bundle.js t",
+      "ms": 213
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 193
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 192
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 189
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 172
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 152
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 150
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 140
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 108
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 70
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 64
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 63
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 60
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 49
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ own-ground-game.bundle.js",
+      "ms": 33
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 48.5,
+     "ms": 350,
+     "scripts": [
+      "326ms FrameRequestCallback e @building-tiles.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.8,
+     "ms": 250,
+     "scripts": [
+      "326ms FrameRequestCallback e @building-tiles.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 45.2,
+     "ms": 183,
+     "scripts": [
+      "134ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 49.1,
+     "ms": 183,
+     "scripts": [
+      "219ms FrameRequestCallback r @building-tiles.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 33.9,
+     "ms": 167,
+     "scripts": [
+      "112ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "18ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 45.1,
+     "ms": 150,
+     "scripts": [
+      "88ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "14ms Response.arrayBuffer.then @building-style.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 32.3,
+     "ms": 133,
+     "scripts": [
+      "53ms FrameRequestCallback @maplibre-gl.js",
+      "44ms FrameRequestCallback @game.js",
+      "28ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 73.4,
+     "ms": 133,
+     "scripts": [
+      "86ms Response.arrayBuffer.then @three.bundle.js",
+      "28ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 33.5,
+     "ms": 117,
+     "scripts": [
+      "46ms FrameRequestCallback @maplibre-gl.js",
+      "32ms Promise.resolve @three.bundle.js",
+      "22ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 34.9,
+     "ms": 117,
+     "scripts": [
+      "36ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js",
+      "7ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 73,
+     "ms": 117,
+     "scripts": [
+      "79ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 32.7,
+     "ms": 100,
+     "scripts": [
+      "34ms FrameRequestCallback @maplibre-gl.js",
+      "17ms FrameRequestCallback t @three-buildings.bundle.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 32.5,
+     "ms": 100,
+     "scripts": [
+      "53ms FrameRequestCallback @maplibre-gl.js",
+      "44ms FrameRequestCallback @game.js",
+      "28ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 33.6,
+     "ms": 100,
+     "scripts": [
+      "46ms FrameRequestCallback @maplibre-gl.js",
+      "32ms Promise.resolve @three.bundle.js",
+      "22ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 58.5,
+     "ms": 100,
+     "scripts": [
+      "75ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 68.1,
+     "ms": 100,
+     "scripts": [
+      "74ms FrameRequestCallback @game.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 89,
+     "ms": 100,
+     "scripts": [
+      "84ms FrameRequestCallback @game.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 76.2,
+     "ms": 100,
+     "scripts": [
+      "72ms FrameRequestCallback @game.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 34.8,
+     "ms": 83,
+     "scripts": [
+      "38ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 47.3,
+     "ms": 83,
+     "scripts": [
+      "14ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "14ms FrameRequestCallback @maplibre-gl.js",
+      "14ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c"
+     ]
+    },
+    {
+     "atS": 51.2,
+     "ms": 83,
+     "scripts": [
+      "48ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "14ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 63.6,
+     "ms": 83,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 64.3,
+     "ms": 83,
+     "scripts": [
+      "53ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @"
+     ]
+    },
+    {
+     "atS": 47.1,
+     "ms": 83,
+     "scripts": [
+      "59ms FrameRequestCallback @game.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 50.5,
+     "ms": 83,
+     "scripts": [
+      "59ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 52,
+     "ms": 83,
+     "scripts": [
+      "25ms FrameRequestCallback t @three-buildings.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 52.9,
+     "ms": 83,
+     "scripts": [
+      "64ms FrameRequestCallback @game.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 65.8,
+     "ms": 83,
+     "scripts": [
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "26ms Response.arrayBuffer.then @three.bundle.js",
+      "23ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 32.6,
+     "ms": 83,
+     "scripts": [
+      "28ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "14ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 33.4,
+     "ms": 83,
+     "scripts": [
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "24ms FrameRequestCallback t @three-buildings.bundle.js",
+      "12ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 55.4,
+     "ms": 83,
+     "scripts": [
+      "72ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 64.2,
+     "ms": 83,
+     "scripts": [
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 32.3,
+     "ms": 83,
+     "scripts": [
+      "26ms FrameRequestCallback @game.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 33.8,
+     "ms": 67,
+     "scripts": [
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "14ms FrameRequestCallback @game.js",
+      "12ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 38,
+     "ms": 67,
+     "scripts": [
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "21ms Response.arrayBuffer.then @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 64.4,
+     "ms": 67,
+     "scripts": [
+      "50ms FrameRequestCallback @game.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 33.8,
+     "ms": 67,
+     "scripts": [
+      "39ms FrameRequestCallback @maplibre-gl.js",
+      "23ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 37.5,
+     "ms": 67,
+     "scripts": [
+      "60ms FrameRequestCallback @game.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 51.8,
+     "ms": 67,
+     "scripts": [
+      "15ms FrameRequestCallback @maplibre-gl.js",
+      "6ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 52.1,
+     "ms": 67,
+     "scripts": [
+      "25ms FrameRequestCallback t @three-buildings.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.6,
+     "ms": 67,
+     "scripts": [
+      "22ms Response.arrayBuffer.then @three.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 65.3,
+     "ms": 67,
+     "scripts": [
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "22ms Response.arrayBuffer.then @three.bundle.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 71.3,
+     "ms": 67,
+     "scripts": [
+      "20ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "19ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 91.3,
+     "ms": 67,
+     "scripts": [
+      "26ms Response.arrayBuffer.then @three.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 33,
+     "ms": 67,
+     "scripts": [
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "17ms FrameRequestCallback t @three-buildings.bundle.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 36.8,
+     "ms": 67,
+     "scripts": [
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 70,
+     "ms": 67,
+     "scripts": []
+    },
+    {
+     "atS": 32.8,
+     "ms": 67,
+     "scripts": [
+      "34ms FrameRequestCallback @maplibre-gl.js",
+      "17ms FrameRequestCallback t @three-buildings.bundle.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 35.7,
+     "ms": 67,
+     "scripts": [
+      "23ms Response.arrayBuffer.then @three.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 50,
+     "ms": 67,
+     "scripts": [
+      "33ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "30ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 52.4,
+     "ms": 67,
+     "scripts": [
+      "18ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 65.2,
+     "ms": 67,
+     "scripts": [
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 89.1,
+     "ms": 67,
+     "scripts": [
+      "84ms FrameRequestCallback @game.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 39,
+     "ms": 50,
+     "scripts": [
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 51.8,
+     "ms": 50,
+     "scripts": [
+      "15ms FrameRequestCallback @maplibre-gl.js",
+      "6ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 33,
+     "ms": 50,
+     "scripts": [
+      "30ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 36.3,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 37.4,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 51.9,
+     "ms": 50,
+     "scripts": [
+      "22ms Response.arrayBuffer.then @three.bundle.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 55.6,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 62.3,
+     "ms": 50,
+     "scripts": [
+      "24ms Response.arrayBuffer.then @three.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 65.1,
+     "ms": 50,
+     "scripts": [
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 70.1,
+     "ms": 50,
+     "scripts": [
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    }
+   ],
+   "attribution": {
+    "stalls": {
+     "sampledMs": 5688,
+     "categories": [
+      {
+       "k": "lib maplibre-gl.js",
+       "ms": 1779
+      },
+      {
+       "k": "js three-buildings.bundle.js",
+       "ms": 1289
+      },
+      {
+       "k": "lib three.bundle.js",
+       "ms": 924
+      },
+      {
+       "k": "js building-tiles.bundle.js",
+       "ms": 300
+      },
+      {
+       "k": "(program) native",
+       "ms": 277
+      },
+      {
+       "k": "js own-ground-game.bundle.js",
+       "ms": 166
+      },
+      {
+       "k": "js signature-landmarks.bundle.js",
+       "ms": 151
+      },
+      {
+       "k": "js vector-map.js",
+       "ms": 145
+      },
+      {
+       "k": "gc",
+       "ms": 121
+      },
+      {
+       "k": "js orientation-pois.bundle.js",
+       "ms": 103
+      },
+      {
+       "k": "js building-style.bundle.js",
+       "ms": 75
+      },
+      {
+       "k": "other native",
+       "ms": 69
+      },
+      {
+       "k": "js game-landmarks.bundle.js",
+       "ms": 58
+      },
+      {
+       "k": "js inventory-trees.bundle.js",
+       "ms": 46
+      },
+      {
+       "k": "js road-surface.bundle.js",
+       "ms": 42
+      },
+      {
+       "k": "js hud.js",
+       "ms": 25
+      },
+      {
+       "k": "js game-presentation.bundle.js",
+       "ms": 21
+      },
+      {
+       "k": "js e5dcf6aa",
+       "ms": 16
+      },
+      {
+       "k": "js renderer.js",
+       "ms": 13
+      },
+      {
+       "k": "js road-network.js",
+       "ms": 11
+      },
+      {
+       "k": "js park-landscape.js",
+       "ms": 11
+      },
+      {
+       "k": "js pyramidal-roofs.bundle.js",
+       "ms": 10
+      },
+      {
+       "k": "js game.js",
+       "ms": 9
+      },
+      {
+       "k": "idle",
+       "ms": 8
+      },
+      {
+       "k": "js player-vehicles.bundle.js",
+       "ms": 6
+      }
+     ],
+     "owners": [
+      {
+       "k": "setFeatures three-buildings.bundle.js:351",
+       "ms": 483
+      },
+      {
+       "k": "(program)",
+       "ms": 277
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351",
+       "ms": 262
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274",
+       "ms": 219
+      },
+      {
+       "k": "(anon) maplibre-gl.js",
+       "ms": 209
+      },
+      {
+       "k": "receive maplibre-gl.js",
+       "ms": 174
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js",
+       "ms": 142
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 121
+      },
+      {
+       "k": "sendToSource building-tiles.bundle.js:0",
+       "ms": 114
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880",
+       "ms": 101
+      },
+      {
+       "k": "xs maplibre-gl.js",
+       "ms": 100
+      },
+      {
+       "k": "neighbors three-buildings.bundle.js:0",
+       "ms": 92
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0",
+       "ms": 89
+      },
+      {
+       "k": "q5 three-buildings.bundle.js:291",
+       "ms": 79
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js",
+       "ms": 76
+      },
+      {
+       "k": "_raisePoiLayers vector-map.js:1528",
+       "ms": 73
+      },
+      {
+       "k": "vs maplibre-gl.js",
+       "ms": 73
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 70
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 66
+      },
+      {
+       "k": "set maplibre-gl.js",
+       "ms": 53
+      },
+      {
+       "k": "(anon) three-buildings.bundle.js:351",
+       "ms": 52
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js",
+       "ms": 50
+      },
+      {
+       "k": "t three.bundle.js",
+       "ms": 46
+      },
+      {
+       "k": "sync vector-map.js:2717",
+       "ms": 45
+      },
+      {
+       "k": "near three-buildings.bundle.js:4",
+       "ms": 44
+      },
+      {
+       "k": "applyGroundLift three-buildings.bundle.js:351",
+       "ms": 39
+      },
+      {
+       "k": "l three.bundle.js",
+       "ms": 38
+      },
+      {
+       "k": "fetchTile game-landmarks.bundle.js:790",
+       "ms": 38
+      },
+      {
+       "k": "sampleAt own-ground-game.bundle.js:4",
+       "ms": 37
+      },
+      {
+       "k": "_render maplibre-gl.js",
+       "ms": 36
+      }
+     ],
+     "stacks": [
+      {
+       "k": "setFeatures three-buildings.bundle.js:351 < setDetailCentre three-buildings.bundle.js:351 < sync vector-map.js:2717",
+       "ms": 439
+      },
+      {
+       "k": "(program)",
+       "ms": 277
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351 < (anon) three-buildings.bundle.js:351 < (anon) three-buildings.bundle.js:351",
+       "ms": 262
+      },
+      {
+       "k": "(anon)",
+       "ms": 232
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274 < _refreshBuildingSuppression vector-map.js:776 < onSuppressionChanged vector-map.js:225",
+       "ms": 219
+      },
+      {
+       "k": "receive",
+       "ms": 174
+      },
+      {
+       "k": "updateMatrixWorld",
+       "ms": 142
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 121
+      },
+      {
+       "k": "sendToSource building-tiles.bundle.js:0 < flush building-tiles.bundle.js:0 < e building-tiles.bundle.js:0",
+       "ms": 114
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880 < sync vector-map.js:2717 < _render game-presentation.bundle.js:48328",
+       "ms": 101
+      },
+      {
+       "k": "xs",
+       "ms": 100
+      },
+      {
+       "k": "neighbors three-buildings.bundle.js:0 < contextFor three-buildings.bundle.js:351 < cachedContextFor three-buildings.bundle.js:351",
+       "ms": 92
+      },
+      {
+       "k": "q5 three-buildings.bundle.js:291 < install three-buildings.bundle.js:351 < drainStaged three-buildings.bundle.js:351",
+       "ms": 79
+      },
+      {
+       "k": "multiplyMatrices",
+       "ms": 76
+      },
+      {
+       "k": "_raisePoiLayers vector-map.js:1528 < onModelShown vector-map.js:228 < _add signature-landmarks.bundle.js:266",
+       "ms": 73
+      },
+      {
+       "k": "vs",
+       "ms": 73
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993 < _clearCameraFromBuildingFootprints vector-map.js:3040 < sync vector-map.js:2717",
+       "ms": 69
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1 < ie orientation-pois.bundle.js:0 < B orientation-pois.bundle.js:0",
+       "ms": 66
+      },
+      {
+       "k": "set",
+       "ms": 56
+      },
+      {
+       "k": "renderBufferDirect",
+       "ms": 50
+      },
+      {
+       "k": "t",
+       "ms": 47
+      },
+      {
+       "k": "sync vector-map.js:2717 < _render game-presentation.bundle.js:48328 < _loop game.js:320",
+       "ms": 45
+      },
+      {
+       "k": "setFeatures three-buildings.bundle.js:351 < _syncThreeBuildings vector-map.js:1182 < (anon) vector-map.js:1388",
+       "ms": 44
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0 < W building-tiles.bundle.js:0 < fetchTile building-tiles.bundle.js:0",
+       "ms": 44
+      },
+      {
+       "k": "near three-buildings.bundle.js:4 < streetsFor three-buildings.bundle.js:351 < rebuild three-buildings.bundle.js:351",
+       "ms": 44
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0 < fetchTile building-tiles.bundle.js:0",
+       "ms": 42
+      },
+      {
+       "k": "applyGroundLift three-buildings.bundle.js:351 < drainStaged three-buildings.bundle.js:351 < t three-buildings.bundle.js:351",
+       "ms": 39
+      },
+      {
+       "k": "l",
+       "ms": 38
+      },
+      {
+       "k": "fetchTile game-landmarks.bundle.js:790",
+       "ms": 37
+      },
+      {
+       "k": "_render",
+       "ms": 36
+      }
+     ],
+     "self": [
+      {
+       "k": "setFeatures three-buildings.bundle.js:351",
+       "ms": 483
+      },
+      {
+       "k": "(program)",
+       "ms": 277
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351",
+       "ms": 262
+      },
+      {
+       "k": "j maplibre-gl.js:41",
+       "ms": 247
+      },
+      {
+       "k": "receive maplibre-gl.js:41",
+       "ms": 174
+      },
+      {
+       "k": "(anon) maplibre-gl.js:41",
+       "ms": 154
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js:0",
+       "ms": 142
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 121
+      },
+      {
+       "k": "sendToSource building-tiles.bundle.js:0",
+       "ms": 113
+      },
+      {
+       "k": "xs maplibre-gl.js:41",
+       "ms": 100
+      },
+      {
+       "k": "neighbors three-buildings.bundle.js:0",
+       "ms": 92
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0",
+       "ms": 89
+      },
+      {
+       "k": "q5 three-buildings.bundle.js:291",
+       "ms": 79
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js:0",
+       "ms": 77
+      },
+      {
+       "k": "vs maplibre-gl.js:41",
+       "ms": 73
+      },
+      {
+       "k": "(anon) maplibre-gl.js:45",
+       "ms": 72
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 70
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 58
+      },
+      {
+       "k": "(anon) three-buildings.bundle.js:351",
+       "ms": 52
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js:4107",
+       "ms": 50
+      },
+      {
+       "k": "near three-buildings.bundle.js:4",
+       "ms": 44
+      },
+      {
+       "k": "t three.bundle.js:4",
+       "ms": 42
+      },
+      {
+       "k": "applyGroundLift three-buildings.bundle.js:351",
+       "ms": 39
+      },
+      {
+       "k": "fetchTile game-landmarks.bundle.js:790",
+       "ms": 38
+      },
+      {
+       "k": "sampleAt own-ground-game.bundle.js:4",
+       "ms": 37
+      },
+      {
+       "k": "l three.bundle.js:3670",
+       "ms": 37
+      },
+      {
+       "k": "_render maplibre-gl.js:45",
+       "ms": 36
+      },
+      {
+       "k": "n.render three.bundle.js:4111",
+       "ms": 35
+      },
+      {
+       "k": "je building-tiles.bundle.js:0",
+       "ms": 34
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266",
+       "ms": 34
+      }
+     ]
+    },
+    "whole": {
+     "sampledMs": 92303,
+     "categories": [
+      {
+       "k": "lib maplibre-gl.js",
+       "ms": 25073
+      },
+      {
+       "k": "lib three.bundle.js",
+       "ms": 21947
+      },
+      {
+       "k": "(program) native",
+       "ms": 8799
+      },
+      {
+       "k": "js road-graph.bundle.js",
+       "ms": 5928
+      },
+      {
+       "k": "js three-buildings.bundle.js",
+       "ms": 5523
+      },
+      {
+       "k": "idle",
+       "ms": 2922
+      },
+      {
+       "k": "js own-ground-game.bundle.js",
+       "ms": 2394
+      },
+      {
+       "k": "js road-surface.bundle.js",
+       "ms": 2193
+      },
+      {
+       "k": "js signature-landmarks.bundle.js",
+       "ms": 2145
+      },
+      {
+       "k": "js orientation-pois.bundle.js",
+       "ms": 2084
+      },
+      {
+       "k": "js vector-map.js",
+       "ms": 1621
+      },
+      {
+       "k": "gc",
+       "ms": 1282
+      },
+      {
+       "k": "js hud.js",
+       "ms": 1088
+      },
+      {
+       "k": "js building-tiles.bundle.js",
+       "ms": 1043
+      },
+      {
+       "k": "other native",
+       "ms": 1041
+      },
+      {
+       "k": "js game-presentation.bundle.js",
+       "ms": 1021
+      },
+      {
+       "k": "js game-landmarks.bundle.js",
+       "ms": 919
+      },
+      {
+       "k": "js road-projection.bundle.js",
+       "ms": 812
+      },
+      {
+       "k": "js inventory-trees.bundle.js",
+       "ms": 624
+      },
+      {
+       "k": "js ferry-network.bundle.js",
+       "ms": 621
+      },
+      {
+       "k": "js road-network.js",
+       "ms": 483
+      },
+      {
+       "k": "js renderer.js",
+       "ms": 428
+      },
+      {
+       "k": "js building-style.bundle.js",
+       "ms": 315
+      },
+      {
+       "k": "js game.js",
+       "ms": 297
+      },
+      {
+       "k": "shader compile/link",
+       "ms": 265
+      }
+     ],
+     "owners": [
+      {
+       "k": "(program)",
+       "ms": 8799
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js",
+       "ms": 4573
+      },
+      {
+       "k": "(idle)",
+       "ms": 2922
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js",
+       "ms": 2465
+      },
+      {
+       "k": "v road-graph.bundle.js:0",
+       "ms": 1972
+      },
+      {
+       "k": "set maplibre-gl.js",
+       "ms": 1720
+      },
+      {
+       "k": "sync vector-map.js:2717",
+       "ms": 1647
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js",
+       "ms": 1508
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 1282
+      },
+      {
+       "k": "(anon) maplibre-gl.js",
+       "ms": 1273
+      },
+      {
+       "k": "_ road-graph.bundle.js:0",
+       "ms": 1203
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880",
+       "ms": 1114
+      },
+      {
+       "k": "ii three-buildings.bundle.js:351",
+       "ms": 910
+      },
+      {
+       "k": "_render maplibre-gl.js",
+       "ms": 902
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 861
+      },
+      {
+       "k": "l three.bundle.js",
+       "ms": 848
+      },
+      {
+       "k": "ve building-style.bundle.js:4",
+       "ms": 791
+      },
+      {
+       "k": "add road-surface.bundle.js:79",
+       "ms": 786
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274",
+       "ms": 779
+      },
+      {
+       "k": "Ou three.bundle.js",
+       "ms": 748
+      },
+      {
+       "k": "draw maplibre-gl.js",
+       "ms": 733
+      },
+      {
+       "k": "R road-graph.bundle.js:0",
+       "ms": 730
+      },
+      {
+       "k": "receive maplibre-gl.js",
+       "ms": 705
+      },
+      {
+       "k": "contactsAt road-surface.bundle.js:138",
+       "ms": 681
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 654
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266",
+       "ms": 634
+      },
+      {
+       "k": "render maplibre-gl.js",
+       "ms": 604
+      },
+      {
+       "k": "Xb three.bundle.js",
+       "ms": 585
+      },
+      {
+       "k": "_render game-presentation.bundle.js:48328",
+       "ms": 577
+      },
+      {
+       "k": "possiblyEvaluate maplibre-gl.js",
+       "ms": 561
+      }
+     ],
+     "stacks": [
+      {
+       "k": "(program)",
+       "ms": 8799
+      },
+      {
+       "k": "updateMatrixWorld",
+       "ms": 4573
+      },
+      {
+       "k": "(idle)",
+       "ms": 2922
+      },
+      {
+       "k": "multiplyMatrices",
+       "ms": 2465
+      },
+      {
+       "k": "v road-graph.bundle.js:0 < _ road-graph.bundle.js:0 < O road-graph.bundle.js:0",
+       "ms": 1972
+      },
+      {
+       "k": "set",
+       "ms": 1785
+      },
+      {
+       "k": "sync vector-map.js:2717 < _render game-presentation.bundle.js:48328 < _loop game.js:320",
+       "ms": 1646
+      },
+      {
+       "k": "renderBufferDirect",
+       "ms": 1508
+      },
+      {
+       "k": "(anon)",
+       "ms": 1434
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 1282
+      },
+      {
+       "k": "_ road-graph.bundle.js:0 < O road-graph.bundle.js:0",
+       "ms": 1203
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880 < sync vector-map.js:2717 < _render game-presentation.bundle.js:48328",
+       "ms": 1114
+      },
+      {
+       "k": "ii three-buildings.bundle.js:351",
+       "ms": 910
+      },
+      {
+       "k": "_render",
+       "ms": 902
+      },
+      {
+       "k": "l",
+       "ms": 853
+      },
+      {
+       "k": "ve building-style.bundle.js:4 < _updateRiderCover vector-map.js:2880 < sync vector-map.js:2717",
+       "ms": 791
+      },
+      {
+       "k": "add road-surface.bundle.js:79 < roadSurfaceStages road-surface.bundle.js:77 < finishBatchedBuild road-surface.bundle.js:48",
+       "ms": 785
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274 < _refreshBuildingSuppression vector-map.js:776 < onSuppressionChanged vector-map.js:225",
+       "ms": 774
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1 < ie orientation-pois.bundle.js:0 < B orientation-pois.bundle.js:0",
+       "ms": 752
+      },
+      {
+       "k": "Ou",
+       "ms": 748
+      },
+      {
+       "k": "draw",
+       "ms": 733
+      },
+      {
+       "k": "R road-graph.bundle.js:0 < _ road-graph.bundle.js:0 < O road-graph.bundle.js:0",
+       "ms": 726
+      },
+      {
+       "k": "render",
+       "ms": 721
+      },
+      {
+       "k": "receive",
+       "ms": 705
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993 < _clearCameraFromBuildingFootprints vector-map.js:3040 < sync vector-map.js:2717",
+       "ms": 651
+      },
+      {
+       "k": "Xb",
+       "ms": 585
+      },
+      {
+       "k": "_render game-presentation.bundle.js:48328 < _loop game.js:320 < (anon) game.js:335",
+       "ms": 571
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266 < _requestModels signature-landmarks.bundle.js:266 < Nt._onMove signature-landmarks.bundle.js:266",
+       "ms": 568
+      },
+      {
+       "k": "possiblyEvaluate",
+       "ms": 561
+      },
+      {
+       "k": "upload",
+       "ms": 519
+      }
+     ],
+     "self": [
+      {
+       "k": "(program)",
+       "ms": 8799
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js:0",
+       "ms": 4566
+      },
+      {
+       "k": "(idle)",
+       "ms": 2922
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js:0",
+       "ms": 2474
+      },
+      {
+       "k": "v road-graph.bundle.js:0",
+       "ms": 1972
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js:4107",
+       "ms": 1508
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 1282
+      },
+      {
+       "k": "_ road-graph.bundle.js:0",
+       "ms": 1203
+      },
+      {
+       "k": "set maplibre-gl.js:45",
+       "ms": 1070
+      },
+      {
+       "k": "j maplibre-gl.js:41",
+       "ms": 970
+      },
+      {
+       "k": "(anon) maplibre-gl.js:41",
+       "ms": 966
+      },
+      {
+       "k": "ii three-buildings.bundle.js:351",
+       "ms": 910
+      },
+      {
+       "k": "_render maplibre-gl.js:45",
+       "ms": 902
+      },
+      {
+       "k": "l three.bundle.js:3670",
+       "ms": 815
+      },
+      {
+       "k": "add road-surface.bundle.js:79",
+       "ms": 786
+      },
+      {
+       "k": "Ou three.bundle.js:4107",
+       "ms": 748
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 735
+      },
+      {
+       "k": "draw maplibre-gl.js:45",
+       "ms": 733
+      },
+      {
+       "k": "R road-graph.bundle.js:0",
+       "ms": 730
+      },
+      {
+       "k": "receive maplibre-gl.js:41",
+       "ms": 705
+      },
+      {
+       "k": "contactsAt road-surface.bundle.js:138",
+       "ms": 681
+      },
+      {
+       "k": "t.S maplibre-gl.js:41",
+       "ms": 658
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 654
+      },
+      {
+       "k": "set maplibre-gl.js:41",
+       "ms": 652
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266",
+       "ms": 634
+      },
+      {
+       "k": "_calcMatrices maplibre-gl.js:45",
+       "ms": 613
+      },
+      {
+       "k": "render maplibre-gl.js:45",
+       "ms": 604
+      },
+      {
+       "k": "Xb three.bundle.js:4107",
+       "ms": 585
+      },
+      {
+       "k": "_render game-presentation.bundle.js:48328",
+       "ms": 566
+      },
+      {
+       "k": "possiblyEvaluate maplibre-gl.js:41",
+       "ms": 560
+      }
+     ]
+    }
+   },
+   "alignErrMs": -0.7,
+   "heapMB": 968,
+   "distanceM": 2536,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 13,
+    "built": 29,
+    "buildMsMedian": 250,
+    "installMsMedian": 10.8
+   }
+  },
+  {
+   "kind": "warm",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 3032px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "sync0": 0.78,
+    "menuReady": 1.09,
+    "submitted": 3.48,
+    "player": 20.44,
+    "racing": 22.61,
+    "motionStart": 33.27,
+    "motionEnd": 93.29,
+    "sync1": 93.36
+   },
+   "frames": {
+    "n": 2974,
+    "p50": 33.2,
+    "p95": 50.1,
+    "p99": 166.7,
+    "over50": 182,
+    "over100": 53,
+    "longestMs": 766.6,
+    "stalledS": 21.25,
+    "hist": {
+     "<=17": 1458,
+     "17-33": 1164,
+     "33-50": 170,
+     "50-100": 129,
+     "100-250": 39,
+     "250-500": 11,
+     ">500": 3
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 804,
+     "p50": 16.7,
+     "p95": 50.1,
+     "p99": 266.7,
+     "over50": 41,
+     "over100": 25,
+     "longestMs": 766.6,
+     "stalledS": 7.87,
+     "hist": {
+      "<=17": 712,
+      "17-33": 38,
+      "33-50": 13,
+      "50-100": 16,
+      "100-250": 16,
+      "250-500": 7,
+      ">500": 2
+     }
+    },
+    "ride": {
+     "n": 2157,
+     "p50": 33.3,
+     "p95": 50.1,
+     "p99": 116.6,
+     "over50": 139,
+     "over100": 27,
+     "longestMs": 566.6,
+     "stalledS": 13.09,
+     "hist": {
+      "<=17": 738,
+      "17-33": 1123,
+      "33-50": 157,
+      "50-100": 112,
+      "100-250": 22,
+      "250-500": 4,
+      ">500": 1
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 1923,
+     "p50": 33.3,
+     "p95": 50.1,
+     "p99": 100,
+     "over50": 100,
+     "over100": 16,
+     "longestMs": 500,
+     "stalledS": 8.69,
+     "hist": {
+      "<=17": 688,
+      "17-33": 1012,
+      "33-50": 123,
+      "50-100": 84,
+      "100-250": 14,
+      "250-500": 2,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 100,
+     "over100": 16
+    },
+    "cadence": {
+     "rafFrames": 1923,
+     "renders": 1923,
+     "gameTicks": 1923,
+     "renderPerFrame": 1,
+     "movingRenders": 1923,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 4,
+      "p95": 6,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3272,
+      -7418,
+      120
+     ],
+     [
+      -3136,
+      -7031,
+      120
+     ],
+     [
+      -3396,
+      -6856,
+      120
+     ],
+     [
+      -3819,
+      -6707,
+      120
+     ],
+     [
+      -3728,
+      -6289,
+      120
+     ],
+     [
+      -3437,
+      -6020,
+      120
+     ],
+     [
+      -3414,
+      -5916,
+      120
+     ],
+     [
+      -3434,
+      -5512,
+      120
+     ],
+     [
+      -3457,
+      -5067,
+      120
+     ],
+     [
+      -3580,
+      -4698,
+      120
+     ],
+     [
+      -3885,
+      -4680,
+      120
+     ],
+     [
+      -4044,
+      -5060,
+      120
+     ],
+     [
+      -4182,
+      -5388,
+      120
+     ],
+     [
+      -4295,
+      -5664,
+      120
+     ],
+     [
+      -4635,
+      -5532,
+      120
+     ],
+     [
+      -4942,
+      -5412,
+      120
+     ],
+     [
+      -5407,
+      -5221,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 100,
+     "alignedWithStreaming": 67,
+     "byKind": {
+      "landmarkRequest": {
+       "hitches": 9,
+       "ms": 15
+      },
+      "labels": {
+       "hitches": 39,
+       "ms": 294
+      },
+      "treesRebuild": {
+       "hitches": 13,
+       "ms": 227
+      },
+      "setFeatures": {
+       "hitches": 12,
+       "ms": 1295
+      },
+      "chunkInstall": {
+       "hitches": 12,
+       "ms": 112
+      },
+      "groundInstall": {
+       "hitches": 9,
+       "ms": 203
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 185
+      },
+      "groundDecks": {
+       "hitches": 2,
+       "ms": 4
+      },
+      "groundOverlays": {
+       "hitches": 2,
+       "ms": 9
+      }
+     },
+     "gapsS": [
+      0.1,
+      1.9,
+      0.5,
+      0.4,
+      0.6,
+      0.4,
+      1.5,
+      0.1,
+      0.1,
+      2.6,
+      0.1,
+      0.1,
+      0.6,
+      0.2,
+      0.5,
+      0.1,
+      0.3,
+      0.1,
+      0.4,
+      0.9,
+      0.3,
+      0.2,
+      0.3,
+      0.2,
+      1.6,
+      0.7,
+      0.5,
+      0.4,
+      0.2,
+      0.9,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.3,
+      0.1,
+      0.2,
+      0.5,
+      0.5,
+      0.2,
+      0.1,
+      0.1,
+      0.4,
+      0.1,
+      0.3,
+      0.1,
+      0.2,
+      0.1,
+      0.1,
+      0.1,
+      0.5,
+      0.2,
+      0.3,
+      0.3,
+      0.4,
+      0.7,
+      0.1,
+      0.1,
+      0.2,
+      0.4,
+      0.8,
+      0.7,
+      1.4,
+      0.9,
+      0.8,
+      0.1,
+      1.1,
+      0.2,
+      0.1,
+      0.3,
+      0.2,
+      0.1,
+      0.3,
+      0.6,
+      0.1,
+      0.1,
+      0.1,
+      0.5,
+      0.1,
+      1.1,
+      1.2,
+      2,
+      0.1,
+      1.1,
+      1.7,
+      0.5,
+      0.1,
+      2.7,
+      12.8,
+      0.1,
+      0.2,
+      0.3,
+      1.3,
+      0.2,
+      0.3,
+      0.1,
+      0.2,
+      0.5
+     ]
+    },
+    "events": {
+     "labels": {
+      "n": 224,
+      "ms": 1608,
+      "maxMs": 12.5
+     },
+     "landmarkRequest": {
+      "n": 53,
+      "ms": 92,
+      "maxMs": 3.5
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 440,
+      "maxMs": 29.1
+     },
+     "chunkInstall": {
+      "n": 65,
+      "ms": 493,
+      "maxMs": 30.3
+     },
+     "groundDecks": {
+      "n": 7,
+      "ms": 11,
+      "maxMs": 2.3
+     },
+     "groundOverlays": {
+      "n": 5,
+      "ms": 13,
+      "maxMs": 6.6
+     },
+     "groundInstall": {
+      "n": 15,
+      "ms": 270,
+      "maxMs": 35.2
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 1000,
+      "maxMs": 295.1
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 185,
+      "maxMs": 184.8
+     }
+    },
+    "longTasks": {
+     "n": 49,
+     "totalMs": 4451,
+     "over100": 13,
+     "longestMs": 491
+    }
+   },
+   "longTasks": {
+    "n": 121,
+    "totalMs": 13582,
+    "over100": 37,
+    "longestMs": 594
+   },
+   "loaf": {
+    "over50": 192,
+    "renderMsInStalls": 11498,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 6083
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 3047
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1593
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 1435
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 1238
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 650
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 588
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 566
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 493
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 443
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 333
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 206
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ three-buildings.bundle.js t",
+      "ms": 200
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 195
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 194
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 178
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 140
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 128
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 127
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 96
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 93
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 67
+     },
+     {
+      "k": "user-callback IdleRequestCallback @ signature-landmarks.bundle.js n",
+      "ms": 57
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 54
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 51
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 48.4,
+     "ms": 500,
+     "scripts": [
+      "470ms FrameRequestCallback e @building-tiles.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.9,
+     "ms": 367,
+     "scripts": [
+      "470ms FrameRequestCallback e @building-tiles.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 43.5,
+     "ms": 250,
+     "scripts": [
+      "181ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "25ms Response.arrayBuffer.then @building-style.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 91.3,
+     "ms": 183,
+     "scripts": [
+      "88ms FrameRequestCallback @maplibre-gl.js",
+      "22ms FrameRequestCallback @game.js",
+      "10ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 49.2,
+     "ms": 167,
+     "scripts": [
+      "319ms FrameRequestCallback r @building-tiles.bundle.js",
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 51.3,
+     "ms": 167,
+     "scripts": [
+      "98ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "34ms FrameRequestCallback @maplibre-gl.js",
+      "12ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 43.3,
+     "ms": 150,
+     "scripts": [
+      "88ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "17ms Response.arrayBuffer.then @building-style.bundle.js"
+     ]
+    },
+    {
+     "atS": 54.6,
+     "ms": 150,
+     "scripts": [
+      "106ms FrameRequestCallback @game.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "6ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 51.8,
+     "ms": 133,
+     "scripts": [
+      "99ms FrameRequestCallback @game.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 53.2,
+     "ms": 133,
+     "scripts": [
+      "93ms FrameRequestCallback @maplibre-gl.js",
+      "15ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 73.2,
+     "ms": 133,
+     "scripts": [
+      "99ms Response.arrayBuffer.then @three.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 52.3,
+     "ms": 117,
+     "scripts": [
+      "82ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 88.8,
+     "ms": 117,
+     "scripts": [
+      "77ms FrameRequestCallback @game.js",
+      "25ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 57.9,
+     "ms": 117,
+     "scripts": [
+      "87ms FrameRequestCallback @game.js",
+      "26ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 67.8,
+     "ms": 100,
+     "scripts": [
+      "92ms FrameRequestCallback @game.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 55.8,
+     "ms": 100,
+     "scripts": [
+      "73ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 50.4,
+     "ms": 100,
+     "scripts": [
+      "45ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 51.1,
+     "ms": 100,
+     "scripts": [
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js",
+      "6ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 63.8,
+     "ms": 100,
+     "scripts": [
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 71,
+     "ms": 100,
+     "scripts": [
+      "29ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "25ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 76,
+     "ms": 100,
+     "scripts": [
+      "83ms FrameRequestCallback @game.js",
+      "18ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 91.2,
+     "ms": 100,
+     "scripts": [
+      "47ms FrameRequestCallback @maplibre-gl.js",
+      "42ms Response.arrayBuffer.then @three.bundle.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 72.7,
+     "ms": 100,
+     "scripts": [
+      "80ms FrameRequestCallback @game.js",
+      "22ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 53.1,
+     "ms": 84,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "18ms Worker.onmessage @three-buildings.bundle.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 65.5,
+     "ms": 83,
+     "scripts": [
+      "31ms Response.arrayBuffer.then @three.bundle.js",
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 52.5,
+     "ms": 83,
+     "scripts": [
+      "33ms Response.arrayBuffer.then @three.bundle.js",
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 54.1,
+     "ms": 83,
+     "scripts": [
+      "46ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 62.9,
+     "ms": 83,
+     "scripts": [
+      "78ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 63.2,
+     "ms": 83,
+     "scripts": [
+      "28ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 64.1,
+     "ms": 83,
+     "scripts": [
+      "69ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 73.3,
+     "ms": 83,
+     "scripts": [
+      "99ms Response.arrayBuffer.then @three.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 49.4,
+     "ms": 83,
+     "scripts": [
+      "121ms Worker.onmessage @maplibre-gl.js",
+      "41ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 51,
+     "ms": 83,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "31ms Promise.resolve @three.bundle.js",
+      "16ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 57.2,
+     "ms": 83,
+     "scripts": [
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "28ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 61.8,
+     "ms": 83,
+     "scripts": [
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 63.7,
+     "ms": 83,
+     "scripts": [
+      "40ms FrameRequestCallback @maplibre-gl.js",
+      "37ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 64.8,
+     "ms": 83,
+     "scripts": [
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 69.8,
+     "ms": 83,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "33ms Response.arrayBuffer.then @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 45.4,
+     "ms": 83,
+     "scripts": [
+      "63ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 50.3,
+     "ms": 83,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 50.6,
+     "ms": 83,
+     "scripts": [
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 65.5,
+     "ms": 83,
+     "scripts": [
+      "31ms Response.arrayBuffer.then @three.bundle.js",
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 50.6,
+     "ms": 67,
+     "scripts": [
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 50.7,
+     "ms": 67,
+     "scripts": [
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.1,
+     "ms": 67,
+     "scripts": [
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "19ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 89.5,
+     "ms": 67,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "12ms Response.arrayBuffer.then @three.bundle.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 36.2,
+     "ms": 67,
+     "scripts": [
+      "24ms Response.arrayBuffer.then @three.bundle.js",
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 41.9,
+     "ms": 67,
+     "scripts": [
+      "33ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 46.1,
+     "ms": 67,
+     "scripts": [
+      "43ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback e @building-tiles.bundle.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 50.3,
+     "ms": 67,
+     "scripts": [
+      "30ms Response.arrayBuffer.then @three.bundle.js",
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 53.4,
+     "ms": 67,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "24ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 56.4,
+     "ms": 67,
+     "scripts": [
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js",
+      "8ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 35.6,
+     "ms": 67,
+     "scripts": [
+      "51ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42,
+     "ms": 67,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "6ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42.6,
+     "ms": 67,
+     "scripts": [
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "23ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "21ms Response.arrayBuffer.then @inventory-trees.bundle.js"
+     ]
+    },
+    {
+     "atS": 43.8,
+     "ms": 67,
+     "scripts": [
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 44.3,
+     "ms": 67,
+     "scripts": [
+      "40ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 45.6,
+     "ms": 67,
+     "scripts": [
+      "15ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "14ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "14ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 47.7,
+     "ms": 67,
+     "scripts": [
+      "39ms FrameRequestCallback @maplibre-gl.js",
+      "19ms FrameRequestCallback @game.js",
+      "5ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 64.7,
+     "ms": 67,
+     "scripts": [
+      "31ms Response.arrayBuffer.then @three.bundle.js",
+      "24ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 64.9,
+     "ms": 67,
+     "scripts": [
+      "36ms Response.arrayBuffer.then @three.bundle.js",
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 69.9,
+     "ms": 67,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "33ms Response.arrayBuffer.then @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 39.3,
+     "ms": 67,
+     "scripts": [
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.9,
+     "ms": 67,
+     "scripts": [
+      "31ms FrameRequestCallback t @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 63.5,
+     "ms": 67,
+     "scripts": [
+      "32ms FrameRequestCallback @maplibre-gl.js",
+      "27ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 65,
+     "ms": 67,
+     "scripts": [
+      "36ms Response.arrayBuffer.then @three.bundle.js",
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 66.7,
+     "ms": 67,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "20ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 89,
+     "ms": 67,
+     "scripts": [
+      "57ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42,
+     "ms": 67,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "6ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42.8,
+     "ms": 67,
+     "scripts": [
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.9,
+     "ms": 67,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js",
+      "5ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 52.6,
+     "ms": 67,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.8,
+     "ms": 67,
+     "scripts": [
+      "29ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 56.5,
+     "ms": 67,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js",
+      "11ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 56.8,
+     "ms": 67,
+     "scripts": [
+      "24ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "9ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 60.9,
+     "ms": 67,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "15ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 61.7,
+     "ms": 67,
+     "scripts": [
+      "37ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 63.1,
+     "ms": 67,
+     "scripts": [
+      "39ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 90.9,
+     "ms": 67,
+     "scripts": []
+    },
+    {
+     "atS": 45.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 52.7,
+     "ms": 50,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 89.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 90.7,
+     "ms": 50,
+     "scripts": [
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 91.5,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 33.7,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 33.8,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 36.5,
+     "ms": 50,
+     "scripts": [
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "19ms Promise.resolve @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 37.2,
+     "ms": 50,
+     "scripts": [
+      "23ms Response.arrayBuffer.then @three.bundle.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 37.6,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 39.1,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 39.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 45.9,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 53.6,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 53.7,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 54.8,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 55.1,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 55.4,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 56.6,
+     "ms": 50,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js",
+      "11ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 58.7,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 92.1,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": {
+    "stalls": {
+     "sampledMs": 8684,
+     "categories": [
+      {
+       "k": "lib maplibre-gl.js",
+       "ms": 2751
+      },
+      {
+       "k": "js three-buildings.bundle.js",
+       "ms": 1692
+      },
+      {
+       "k": "lib three.bundle.js",
+       "ms": 1519
+      },
+      {
+       "k": "(program) native",
+       "ms": 484
+      },
+      {
+       "k": "js building-tiles.bundle.js",
+       "ms": 417
+      },
+      {
+       "k": "js own-ground-game.bundle.js",
+       "ms": 377
+      },
+      {
+       "k": "js signature-landmarks.bundle.js",
+       "ms": 213
+      },
+      {
+       "k": "gc",
+       "ms": 176
+      },
+      {
+       "k": "js orientation-pois.bundle.js",
+       "ms": 152
+      },
+      {
+       "k": "js vector-map.js",
+       "ms": 134
+      },
+      {
+       "k": "other native",
+       "ms": 130
+      },
+      {
+       "k": "js inventory-trees.bundle.js",
+       "ms": 130
+      },
+      {
+       "k": "js building-style.bundle.js",
+       "ms": 97
+      },
+      {
+       "k": "js road-surface.bundle.js",
+       "ms": 86
+      },
+      {
+       "k": "js game-landmarks.bundle.js",
+       "ms": 67
+      },
+      {
+       "k": "js hud.js",
+       "ms": 54
+      },
+      {
+       "k": "js game-presentation.bundle.js",
+       "ms": 34
+      },
+      {
+       "k": "idle",
+       "ms": 27
+      },
+      {
+       "k": "js renderer.js",
+       "ms": 21
+      },
+      {
+       "k": "shader compile/link",
+       "ms": 17
+      },
+      {
+       "k": "js e5dcf6aa",
+       "ms": 17
+      },
+      {
+       "k": "js road-network.js",
+       "ms": 15
+      },
+      {
+       "k": "js game.js",
+       "ms": 13
+      },
+      {
+       "k": "js pyramidal-roofs.bundle.js",
+       "ms": 13
+      },
+      {
+       "k": "js park-landscape.js",
+       "ms": 10
+      }
+     ],
+     "owners": [
+      {
+       "k": "setFeatures three-buildings.bundle.js:351",
+       "ms": 581
+      },
+      {
+       "k": "(program)",
+       "ms": 484
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351",
+       "ms": 369
+      },
+      {
+       "k": "receive maplibre-gl.js",
+       "ms": 365
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274",
+       "ms": 285
+      },
+      {
+       "k": "(anon) maplibre-gl.js",
+       "ms": 266
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js",
+       "ms": 257
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 176
+      },
+      {
+       "k": "sendToSource building-tiles.bundle.js:0",
+       "ms": 176
+      },
+      {
+       "k": "vs maplibre-gl.js",
+       "ms": 156
+      },
+      {
+       "k": "xs maplibre-gl.js",
+       "ms": 135
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js",
+       "ms": 132
+      },
+      {
+       "k": "neighbors three-buildings.bundle.js:0",
+       "ms": 130
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0",
+       "ms": 125
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880",
+       "ms": 109
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js",
+       "ms": 103
+      },
+      {
+       "k": "geometry own-ground-game.bundle.js:18",
+       "ms": 102
+      },
+      {
+       "k": "_raisePoiLayers vector-map.js:1528",
+       "ms": 97
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 87
+      },
+      {
+       "k": "near three-buildings.bundle.js:4",
+       "ms": 82
+      },
+      {
+       "k": "(anon) three-buildings.bundle.js:351",
+       "ms": 81
+      },
+      {
+       "k": "set maplibre-gl.js",
+       "ms": 79
+      },
+      {
+       "k": "l three.bundle.js",
+       "ms": 71
+      },
+      {
+       "k": "sampleAt own-ground-game.bundle.js:4",
+       "ms": 69
+      },
+      {
+       "k": "sync vector-map.js:2717",
+       "ms": 64
+      },
+      {
+       "k": "rebuild inventory-trees.bundle.js:7",
+       "ms": 60
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 60
+      },
+      {
+       "k": "n.render three.bundle.js",
+       "ms": 55
+      },
+      {
+       "k": "Ou three.bundle.js",
+       "ms": 54
+      },
+      {
+       "k": "ln own-ground-game.bundle.js:4",
+       "ms": 53
+      }
+     ],
+     "stacks": [
+      {
+       "k": "setFeatures three-buildings.bundle.js:351 < setDetailCentre three-buildings.bundle.js:351 < sync vector-map.js:2717",
+       "ms": 524
+      },
+      {
+       "k": "(program)",
+       "ms": 484
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351 < (anon) three-buildings.bundle.js:351 < (anon) three-buildings.bundle.js:351",
+       "ms": 369
+      },
+      {
+       "k": "receive",
+       "ms": 365
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274 < _refreshBuildingSuppression vector-map.js:776 < onSuppressionChanged vector-map.js:225",
+       "ms": 285
+      },
+      {
+       "k": "(anon)",
+       "ms": 282
+      },
+      {
+       "k": "updateMatrixWorld",
+       "ms": 257
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 176
+      },
+      {
+       "k": "sendToSource building-tiles.bundle.js:0 < flush building-tiles.bundle.js:0 < e building-tiles.bundle.js:0",
+       "ms": 176
+      },
+      {
+       "k": "vs",
+       "ms": 156
+      },
+      {
+       "k": "xs",
+       "ms": 135
+      },
+      {
+       "k": "multiplyMatrices",
+       "ms": 132
+      },
+      {
+       "k": "neighbors three-buildings.bundle.js:0 < contextFor three-buildings.bundle.js:351 < cachedContextFor three-buildings.bundle.js:351",
+       "ms": 130
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880 < sync vector-map.js:2717 < _render game-presentation.bundle.js:48328",
+       "ms": 109
+      },
+      {
+       "k": "renderBufferDirect",
+       "ms": 103
+      },
+      {
+       "k": "geometry own-ground-game.bundle.js:18 < install own-ground-game.bundle.js:18 < beforeRender own-ground-game.bundle.js:4",
+       "ms": 102
+      },
+      {
+       "k": "_raisePoiLayers vector-map.js:1528 < onModelShown vector-map.js:228 < _add signature-landmarks.bundle.js:266",
+       "ms": 97
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1 < ie orientation-pois.bundle.js:0 < B orientation-pois.bundle.js:0",
+       "ms": 87
+      },
+      {
+       "k": "set",
+       "ms": 84
+      },
+      {
+       "k": "near three-buildings.bundle.js:4 < streetsFor three-buildings.bundle.js:351 < rebuild three-buildings.bundle.js:351",
+       "ms": 82
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0 < W building-tiles.bundle.js:0 < fetchTile building-tiles.bundle.js:0",
+       "ms": 72
+      },
+      {
+       "k": "l",
+       "ms": 71
+      },
+      {
+       "k": "sync vector-map.js:2717 < _render game-presentation.bundle.js:48328 < _loop game.js:320",
+       "ms": 64
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993 < _clearCameraFromBuildingFootprints vector-map.js:3040 < sync vector-map.js:2717",
+       "ms": 60
+      },
+      {
+       "k": "setFeatures three-buildings.bundle.js:351 < _syncThreeBuildings vector-map.js:1182 < (anon) vector-map.js:1388",
+       "ms": 57
+      },
+      {
+       "k": "n.render",
+       "ms": 55
+      },
+      {
+       "k": "Ou",
+       "ms": 54
+      },
+      {
+       "k": "ln own-ground-game.bundle.js:4 < geometry own-ground-game.bundle.js:18 < install own-ground-game.bundle.js:18",
+       "ms": 53
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0 < fetchTile building-tiles.bundle.js:0",
+       "ms": 52
+      },
+      {
+       "k": "tS",
+       "ms": 51
+      }
+     ],
+     "self": [
+      {
+       "k": "setFeatures three-buildings.bundle.js:351",
+       "ms": 581
+      },
+      {
+       "k": "(program)",
+       "ms": 484
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351",
+       "ms": 369
+      },
+      {
+       "k": "receive maplibre-gl.js:41",
+       "ms": 365
+      },
+      {
+       "k": "j maplibre-gl.js:41",
+       "ms": 295
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js:0",
+       "ms": 257
+      },
+      {
+       "k": "(anon) maplibre-gl.js:41",
+       "ms": 198
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 176
+      },
+      {
+       "k": "sendToSource building-tiles.bundle.js:0",
+       "ms": 175
+      },
+      {
+       "k": "vs maplibre-gl.js:41",
+       "ms": 156
+      },
+      {
+       "k": "xs maplibre-gl.js:41",
+       "ms": 135
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js:0",
+       "ms": 132
+      },
+      {
+       "k": "neighbors three-buildings.bundle.js:0",
+       "ms": 130
+      },
+      {
+       "k": "(anon) building-tiles.bundle.js:0",
+       "ms": 125
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js:4107",
+       "ms": 103
+      },
+      {
+       "k": "geometry own-ground-game.bundle.js:18",
+       "ms": 99
+      },
+      {
+       "k": "(anon) maplibre-gl.js:45",
+       "ms": 84
+      },
+      {
+       "k": "near three-buildings.bundle.js:4",
+       "ms": 82
+      },
+      {
+       "k": "(anon) three-buildings.bundle.js:351",
+       "ms": 81
+      },
+      {
+       "k": "l three.bundle.js:3670",
+       "ms": 70
+      },
+      {
+       "k": "sampleAt own-ground-game.bundle.js:4",
+       "ms": 69
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 68
+      },
+      {
+       "k": "serialize maplibre-gl.js:45",
+       "ms": 60
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 60
+      },
+      {
+       "k": "obj.<computed>",
+       "ms": 57
+      },
+      {
+       "k": "n.render three.bundle.js:4111",
+       "ms": 55
+      },
+      {
+       "k": "Ou three.bundle.js:4107",
+       "ms": 54
+      },
+      {
+       "k": "ln own-ground-game.bundle.js:4",
+       "ms": 53
+      },
+      {
+       "k": "set maplibre-gl.js:45",
+       "ms": 52
+      },
+      {
+       "k": "contactsAt road-surface.bundle.js:138",
+       "ms": 52
+      }
+     ]
+    },
+    "whole": {
+     "sampledMs": 93358,
+     "categories": [
+      {
+       "k": "lib maplibre-gl.js",
+       "ms": 25667
+      },
+      {
+       "k": "lib three.bundle.js",
+       "ms": 21652
+      },
+      {
+       "k": "(program) native",
+       "ms": 8409
+      },
+      {
+       "k": "js three-buildings.bundle.js",
+       "ms": 6280
+      },
+      {
+       "k": "js road-graph.bundle.js",
+       "ms": 6099
+      },
+      {
+       "k": "js own-ground-game.bundle.js",
+       "ms": 2714
+      },
+      {
+       "k": "idle",
+       "ms": 2294
+      },
+      {
+       "k": "js orientation-pois.bundle.js",
+       "ms": 2240
+      },
+      {
+       "k": "js road-surface.bundle.js",
+       "ms": 2181
+      },
+      {
+       "k": "js signature-landmarks.bundle.js",
+       "ms": 2156
+      },
+      {
+       "k": "js vector-map.js",
+       "ms": 1754
+      },
+      {
+       "k": "gc",
+       "ms": 1244
+      },
+      {
+       "k": "other native",
+       "ms": 1227
+      },
+      {
+       "k": "js hud.js",
+       "ms": 1130
+      },
+      {
+       "k": "js building-tiles.bundle.js",
+       "ms": 1056
+      },
+      {
+       "k": "js game-presentation.bundle.js",
+       "ms": 963
+      },
+      {
+       "k": "js game-landmarks.bundle.js",
+       "ms": 929
+      },
+      {
+       "k": "js road-projection.bundle.js",
+       "ms": 774
+      },
+      {
+       "k": "js ferry-network.bundle.js",
+       "ms": 720
+      },
+      {
+       "k": "js inventory-trees.bundle.js",
+       "ms": 591
+      },
+      {
+       "k": "js road-network.js",
+       "ms": 453
+      },
+      {
+       "k": "js renderer.js",
+       "ms": 409
+      },
+      {
+       "k": "js building-style.bundle.js",
+       "ms": 341
+      },
+      {
+       "k": "shader compile/link",
+       "ms": 306
+      },
+      {
+       "k": "js game.js",
+       "ms": 298
+      }
+     ],
+     "owners": [
+      {
+       "k": "(program)",
+       "ms": 8409
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js",
+       "ms": 4383
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js",
+       "ms": 2302
+      },
+      {
+       "k": "(idle)",
+       "ms": 2294
+      },
+      {
+       "k": "v road-graph.bundle.js:0",
+       "ms": 2174
+      },
+      {
+       "k": "sync vector-map.js:2717",
+       "ms": 1682
+      },
+      {
+       "k": "set maplibre-gl.js",
+       "ms": 1661
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js",
+       "ms": 1412
+      },
+      {
+       "k": "(anon) maplibre-gl.js",
+       "ms": 1290
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 1244
+      },
+      {
+       "k": "_ road-graph.bundle.js:0",
+       "ms": 1233
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880",
+       "ms": 1087
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 992
+      },
+      {
+       "k": "ii three-buildings.bundle.js:351",
+       "ms": 921
+      },
+      {
+       "k": "_render maplibre-gl.js",
+       "ms": 903
+      },
+      {
+       "k": "l three.bundle.js",
+       "ms": 881
+      },
+      {
+       "k": "draw maplibre-gl.js",
+       "ms": 847
+      },
+      {
+       "k": "receive maplibre-gl.js",
+       "ms": 832
+      },
+      {
+       "k": "Ou three.bundle.js",
+       "ms": 801
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274",
+       "ms": 766
+      },
+      {
+       "k": "R road-graph.bundle.js:0",
+       "ms": 745
+      },
+      {
+       "k": "add road-surface.bundle.js:79",
+       "ms": 734
+      },
+      {
+       "k": "contactsAt road-surface.bundle.js:138",
+       "ms": 700
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351",
+       "ms": 692
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 688
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266",
+       "ms": 657
+      },
+      {
+       "k": "setFeatures three-buildings.bundle.js:351",
+       "ms": 605
+      },
+      {
+       "k": "ve building-style.bundle.js:4",
+       "ms": 595
+      },
+      {
+       "k": "Xb three.bundle.js",
+       "ms": 594
+      },
+      {
+       "k": "possiblyEvaluate maplibre-gl.js",
+       "ms": 556
+      }
+     ],
+     "stacks": [
+      {
+       "k": "(program)",
+       "ms": 8409
+      },
+      {
+       "k": "updateMatrixWorld",
+       "ms": 4383
+      },
+      {
+       "k": "multiplyMatrices",
+       "ms": 2302
+      },
+      {
+       "k": "(idle)",
+       "ms": 2294
+      },
+      {
+       "k": "v road-graph.bundle.js:0 < _ road-graph.bundle.js:0 < O road-graph.bundle.js:0",
+       "ms": 2174
+      },
+      {
+       "k": "set",
+       "ms": 1737
+      },
+      {
+       "k": "sync vector-map.js:2717 < _render game-presentation.bundle.js:48328 < _loop game.js:320",
+       "ms": 1677
+      },
+      {
+       "k": "(anon)",
+       "ms": 1449
+      },
+      {
+       "k": "renderBufferDirect",
+       "ms": 1412
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 1244
+      },
+      {
+       "k": "_ road-graph.bundle.js:0 < O road-graph.bundle.js:0",
+       "ms": 1232
+      },
+      {
+       "k": "_updateRiderCover vector-map.js:2880 < sync vector-map.js:2717 < _render game-presentation.bundle.js:48328",
+       "ms": 1086
+      },
+      {
+       "k": "ii three-buildings.bundle.js:351",
+       "ms": 917
+      },
+      {
+       "k": "_render",
+       "ms": 903
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1 < ie orientation-pois.bundle.js:0 < B orientation-pois.bundle.js:0",
+       "ms": 897
+      },
+      {
+       "k": "l",
+       "ms": 894
+      },
+      {
+       "k": "draw",
+       "ms": 847
+      },
+      {
+       "k": "receive",
+       "ms": 832
+      },
+      {
+       "k": "Ou",
+       "ms": 801
+      },
+      {
+       "k": "_refreshColoredBuildingFilter vector-map.js:1274 < _refreshBuildingSuppression vector-map.js:776 < onSuppressionChanged vector-map.js:225",
+       "ms": 759
+      },
+      {
+       "k": "R road-graph.bundle.js:0 < _ road-graph.bundle.js:0 < O road-graph.bundle.js:0",
+       "ms": 745
+      },
+      {
+       "k": "add road-surface.bundle.js:79 < roadSurfaceStages road-surface.bundle.js:77 < finishBatchedBuild road-surface.bundle.js:48",
+       "ms": 732
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351 < (anon) three-buildings.bundle.js:351 < (anon) three-buildings.bundle.js:351",
+       "ms": 691
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993 < _clearCameraFromBuildingFootprints vector-map.js:3040 < sync vector-map.js:2717",
+       "ms": 685
+      },
+      {
+       "k": "render",
+       "ms": 638
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266 < _requestModels signature-landmarks.bundle.js:266 < Nt._onMove signature-landmarks.bundle.js:266",
+       "ms": 595
+      },
+      {
+       "k": "ve building-style.bundle.js:4 < _updateRiderCover vector-map.js:2880 < sync vector-map.js:2717",
+       "ms": 595
+      },
+      {
+       "k": "Xb",
+       "ms": 594
+      },
+      {
+       "k": "possiblyEvaluate",
+       "ms": 556
+      },
+      {
+       "k": "update",
+       "ms": 551
+      }
+     ],
+     "self": [
+      {
+       "k": "(program)",
+       "ms": 8409
+      },
+      {
+       "k": "updateMatrixWorld three.bundle.js:0",
+       "ms": 4378
+      },
+      {
+       "k": "multiplyMatrices three.bundle.js:0",
+       "ms": 2306
+      },
+      {
+       "k": "(idle)",
+       "ms": 2294
+      },
+      {
+       "k": "v road-graph.bundle.js:0",
+       "ms": 2174
+      },
+      {
+       "k": "renderBufferDirect three.bundle.js:4107",
+       "ms": 1412
+      },
+      {
+       "k": "(garbage collector)",
+       "ms": 1244
+      },
+      {
+       "k": "_ road-graph.bundle.js:0",
+       "ms": 1233
+      },
+      {
+       "k": "j maplibre-gl.js:41",
+       "ms": 1025
+      },
+      {
+       "k": "set maplibre-gl.js:45",
+       "ms": 986
+      },
+      {
+       "k": "ii three-buildings.bundle.js:351",
+       "ms": 921
+      },
+      {
+       "k": "(anon) maplibre-gl.js:41",
+       "ms": 916
+      },
+      {
+       "k": "_render maplibre-gl.js:45",
+       "ms": 903
+      },
+      {
+       "k": "l three.bundle.js:3670",
+       "ms": 862
+      },
+      {
+       "k": "draw maplibre-gl.js:45",
+       "ms": 847
+      },
+      {
+       "k": "receive maplibre-gl.js:41",
+       "ms": 832
+      },
+      {
+       "k": "x orientation-pois.bundle.js:1",
+       "ms": 814
+      },
+      {
+       "k": "Ou three.bundle.js:4107",
+       "ms": 801
+      },
+      {
+       "k": "t.S maplibre-gl.js:41",
+       "ms": 798
+      },
+      {
+       "k": "R road-graph.bundle.js:0",
+       "ms": 745
+      },
+      {
+       "k": "add road-surface.bundle.js:79",
+       "ms": 734
+      },
+      {
+       "k": "contactsAt road-surface.bundle.js:138",
+       "ms": 700
+      },
+      {
+       "k": "rebuild three-buildings.bundle.js:351",
+       "ms": 692
+      },
+      {
+       "k": "_cameraSightlineBlocker vector-map.js:2993",
+       "ms": 688
+      },
+      {
+       "k": "set maplibre-gl.js:41",
+       "ms": 675
+      },
+      {
+       "k": "(anon) signature-landmarks.bundle.js:266",
+       "ms": 657
+      },
+      {
+       "k": "_calcMatrices maplibre-gl.js:45",
+       "ms": 656
+      },
+      {
+       "k": "setFeatures three-buildings.bundle.js:351",
+       "ms": 605
+      },
+      {
+       "k": "Xb three.bundle.js:4107",
+       "ms": 594
+      },
+      {
+       "k": "(anon) maplibre-gl.js:45",
+       "ms": 557
+      }
+     ]
+    }
+   },
+   "alignErrMs": 0.9,
+   "heapMB": 1225,
+   "distanceM": 2579,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 13,
+    "built": 29,
+    "buildMsMedian": 275,
+    "installMsMedian": 11.7
+   }
+  }
+ ]
+}

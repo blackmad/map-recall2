@@ -679,6 +679,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+
+- **`check:covers` red on main (found 2026-10-16)**: 10 inconsistencies,
+  all `noorderkerk` suppressing OSM-only ways w749871260–275 that
+  `covers.json` does not keep. It fails `check:canal` at its `&&` chain, so
+  the later chained checks (building-types, osm-under-models, abutters,
+  inventory, signature-fallback, manual-landmarks) are skipped unless run by
+  hand; rebuild covers (`build-covers`, staged then copied to models/) or
+  drop the stale ids.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**
@@ -693,11 +701,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `datasets/bgt-roads-20261016/`, publish it with phase 2; cycleway cover
   47 % because mixed fietspad/rijbaan ways fail the 80 % rule, lower the
   threshold or treat them as painted lanes; 400 h ≥ 1 polygons over no
-  deck on the A10/harbour viaducts). In flight: a runtime lane (`roadSurfaces.ts` behind
-  `?roads=bgt`, bands suppressed under covered ways, paint/zebras/rails
-  clipped to carriage polygons, deck top within the parapet; named
-  regressions Kinkerstraat × Da Costakade both heads, Bilderdijkgracht
-  zebras, Tweede Marnixplantsoen). Phase 2: default on with `?roads=0`.
+  deck on the A10/harbour viaducts). Runtime DONE behind `?roads=bgt` (HISTORY "Roads from the
+  surveyed BGT surface"). Phase 2, in flight: topology-preserving
+  simplification in `build-bgt-roads.ts` (shared edges identical, probe
+  `--pairs` to 0), Fietsstraat red decided per section in the extractor,
+  city-wide extract within 350 KB gz per cell, re-aim `roads-v1-spots.json`,
+  survey gaps at junctions (land where pockets used to pave), the LOD 1 far
+  ring, then default on with `?roads=0` and a desktop ride-perf check.
 - **Hosting quota will hit again within a day of pushes.** Deploys failed
   with HTTP 429 from 14:27 to ~19:45 on 2026-10-13 and recovered without
   the integrator pruning; the dry run afterwards still listed 374 deletable
@@ -727,6 +737,36 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
+  auto-placed runs installed"): 69 of 335 pands installed. Next: types for
+  Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
+  Wenslauerstraat rows; green-tile gable over the window pair and its
+  mirror; per-front dormer heights; the 21 review holds; then the next buurt
+  from the coverage page (Postjeskade e.o., Cremerbuurt-West), driven by a
+  Haiku lane for survey/intake/placement and Opus for types and review.
+- **Coverage page gaps:** ship exemplar photo crops and building-type
+  thumbnails; refresh the street-surveys data (10-10).
+- **Motion stutter, next pass** (2026-10-16, HISTORY "Motion stutter";
+  desktop budget now in `ride-perf.spec.ts`): label passes run 3× as often
+  since today's merges (72 → 250 ms per minute at 1×), find why; regroup
+  `setFeatures` and the chunk `rebuild` structured clone; MapLibre
+  `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
+  load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
+  the rider); then measure iPhone.
+- **Flags: decide the rest** (2026-10-16, user: "figure out for all of these
+  which you actually want to use, and if there are dead ends, delete the code
+  and the flag"). Street chunks and BGT roads are default now (HISTORY
+  "Street chunks and BGT roads drawn by default"). Still to decide, with
+  measurements: building types (3,075 Nieuw-West instances,
+  `?buildingTypes=1`), recipe tiles (`?recipeTiles=1`), sculpture impostors
+  (`?sculptures=1`), canal elevation (`?elevation=1`), the city look
+  (`?cityLook=1`), the shared frame (forced on by own ground), the ground
+  look variants, `?look=legacy`, `?transition=0`. Default what wins;
+  delete the code and flag of dead ends.
+- **Held chunk and the two Bilderdijkstraat pilot houses:** Oudezijds
+  Voorburgwal 115-125 stays out of the default (black on its shade side,
+  `DEFAULT_HELD_CHUNKS`); Bilderdijkstraat pands 152669 and 079721 (the
+  retired 10-10 pilot chunk) need a block face under the front-roof rules.
 - **Sunny look follow-ups** (2026-10-16, HISTORY "Sunny look is the
   default"; `?look=legacy` opts out): re-tune the opt-in yellow highlight
   (clips at 206.6 under the rig); undo the city look's extra 0.9 cell
@@ -747,13 +787,12 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 - **Kit roof rules follow-ups** (2026-10-16, HISTORY "Roofs follow the
   front": the step-gable library leaned by one tread and is fixed; saddles
   under crowns, row coherence and `roof-under-crown` landed; 232 of 371
-  pands change class): (1) re-install every face whose class changed
-  (`compile.ts --face=<id> --install`, 46 faces) after a sheet pass, then
-  `test:block-kit-installed` and `check:stale-installs`; (2) 76-84
-  (152566) and the other flat-parapet fronts need `roof.form: flat` on the
-  placement, the hipped 3DBAG mass is still drawn; (3) re-record
-  `test:tile-buildings` pilot-golden (`UPDATE_GOLDEN=1`) after reviewing
-  the new large pand 137280 and the step-gable changes; (4) cross-gable /
+  pands change class): (1)–(3) DONE 2026-10-16 (HISTORY "Fourteen
+  installed faces re-installed": 14 in, flat placements, tile golden);
+  the three held faces DONE (HISTORY "The three held faces fixed"); the
+  Kinkerstraat faces and evertsen-7-41 are not
+  installed at all yet (decide after a ride review); a setback top storey
+  for 76-84's two raised blocks; (4) cross-gable /
   hip-and-gablet when a gable sits over one bay of a wide front; (5)
   attic faces behind plain cornices still 3DBAG-p95-bounded (236441
   m0/m1); (6) gable crown height from the photo, not `crownRise`; (7)
@@ -1495,7 +1534,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
 - **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
-  pass"): the swung gables (wing, risalit) keep 3DBAG's plain outline; the
+  pass"; user report 2026-10-16, HISTORY "One model per ground"): the long
+  walls either side of the Mauritskade portal (bearings 331/151/241) are
+  still the kit's plain cells on dark brown brick (no frames, no white stone
+  bands, brick far darker than the photo's red), so the measured portal reads
+  as a panel pasted on; in-game frames from `review:sheet` show it. Then the swung gables (wing, risalit) keep 3DBAG's plain outline; the
   south-pavilion clock dormer, relief iconography, arcade brick tracery,
   risalit souterrain arches, the wing's ground floor and banner field;
   only 3.4 KB of byte headroom (cut elsewhere first); inventory text says

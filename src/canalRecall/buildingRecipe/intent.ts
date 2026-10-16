@@ -104,6 +104,39 @@ export const QUOINS = ['none', 'stone'] as const;
  */
 export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch', 'rigid'] as const;
 export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
+/**
+ * A timber oriel stack (`bayWindows.oriel`, Bellamybuurt 1915: Hasebroekstraat 53-67 and 56-70, measured on the
+ * 2024-12-11 strip at 40 px/m): a three-face projecting bay `span` metres wide centred on the spanned axes (not the whole
+ * bay span: the 2.2 m oriel stands in a 4.4 m bay), `projection` deep with `returns` angled sides, one module per listed
+ * storey. Each module: a lower panel `stallriser` (the brick between the storeys), a front light of `frontLights` lights
+ * with a transom bar at `transom` of the light height (from the sill), one light per side, a head panel `head`.
+ * `panels` overrides stallriser/head per storey (the top storey of Hasebroekstraat: a tall solid panel under a 0.7 m band of
+ * lights). `paintedStoreys`: those modules' panels and closures in the trim colour (painted timber); the others keep
+ * the wall brick. `console`: a white slab (trim colour, 0.15 m, 6 cm past the plan) under the stack's foot.
+ */
+export interface OrielIntent {
+  /** Metres (measured; intents name no `...M` keys): span across the front, projection from the wall, angled side run. */
+  span: number; projection?: number; returns?: number;
+  /** Metres: the lower (stallriser) and head panels of every module, `panels` per storey. */
+  stallriser?: number; head?: number; frontLights?: number; transom?: number;
+  panels?: Record<string, {stallriser?: number; head?: number}>;
+  paintedStoreys?: number[];
+  /** Metres over a painted module's foot where the paint starts: the stallriser under it stays brick (Hasebroekstraat 56-70: 0.75). */
+  paintFrom?: number;
+  console?: boolean;
+}
+export const ORIEL = {projection: 0.5, returns: 0.3, stallriser: 0.4, head: 0.35, frontLights: 3, consoleM: 0.15, consoleOverM: 0.06} as const;
+
+/**
+ * A hoist cap over dormers (`dormerCap`, Hasebroekstraat 53-67 and 56-70: the flared hood over the dormer of the oriel
+ * axis that shelters the hoist beam). On the listed dormers (index into the front's dormers, left to right as drawn): a
+ * trapezoid hood standing on the dormer, `rise` metres high (measured 1.2 m), as wide as the dormer at its foot and
+ * `flare` metres wider on each side at its top (measured 0.25 m), 0.9 m deep from the dormer front, in `colour` (a measured tint;
+ * default the weathered zinc grey of the 2024-12-11 strip, #adad9d).
+ */
+export interface DormerCapIntent { kind: 'hoist'; dormers: number[]; rise?: number; flare?: number; colour?: string }
+export const DORMER_CAP = {rise: 1.2, flare: 0.25, depthM: 0.9, colour: '#adad9d'} as const;
+
 /** Historic (17th/18th-c.) canal-house vocabulary, see `HistoricFrontIntent`. */
 export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
 export const GABLE_FINIALS = ['crab', 'vase', 'ball'] as const;
@@ -336,7 +369,12 @@ export interface FrontIntent {
      * white timber: the trim colour) with a hood slab over every box (0.12 m, 0.1 m past the box front and sides, in
      * `palette.band`, else the wall). The box takes the window's sill and head; `cap` does not apply.
      */
-    hood?: boolean };
+    hood?: boolean;
+    /**
+     * A painted timber oriel (Hasebroekstraat 53-67 and 56-70, 1915) instead of the storey-high erker: see `OrielIntent`.
+     * With `bays` only; not together with `hood` or `finish`.
+     */
+    oriel?: OrielIntent };
   /**
    * Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick).
    * `courses` (Amsterdam School brick banding, needs `palette.band`): the storeys in `courseStoreys` are laid whole in the
@@ -395,6 +433,17 @@ export interface FrontIntent {
    * rows of slab and guard.
    */
   balconyRun?: {storey: number; projection: number; slab?: number; guard: typeof BALCONY_RUN_GUARDS[number]; guardRise?: number; slabColour?: string; evidence: string};
+  /**
+   * Glazed tile panels (Bellamybuurt 1915 rows, Hasebroekstraat 56-70; buildingRecipe/tileAccents.ts): on every pier of
+   * the listed storeys (0-based, >= 1), at the windows' mid-height, a row of tile diamonds in `colour` (a measured tint)
+   * between two patterned brick courses in `courses` (default the palette's band brick, else the wall). Absent =
+   * byte-identical.
+   */
+  tilePanels?: {storeys: number[]; colour: string; courses?: string | false;
+    /** `piers` (default): diamonds between two courses on every pier at the windows' mid-height (Hasebroekstraat 56-70).
+     * `sills`: a row of `count` (default 3) small square tiles 0.25 m under the sill of the windows on the listed `axes`
+     * (default every axis), no courses (Hasebroekstraat 90-114, green tiles under the narrow window). */
+    place?: 'piers' | 'sills'; axes?: number[]; count?: number};
   /**
    * Tall plain parapet (Jan Evertsenstraat): the full storeys end `courses` brick courses (0.055 m each) under the eaves
    * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
@@ -457,6 +506,8 @@ export interface FrontIntent {
   gridAt?: {from: number; to: number};
   /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
   dormerAt?: {from: number; to: number}[];
+  /** A hoist cap on some dormers (`DormerCapIntent`). */
+  dormerCap?: DormerCapIntent;
 }
 
 /**
@@ -906,6 +957,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     problems.push(...paintedProblems(f, at, oneOf));
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
     if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
+    if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.lisenes !== undefined) {
       const l = f.lisenes as Record<string, unknown>;
       if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd'].includes(k)) || Object.values(l).some(v => v !== 'half' && v !== 'full') || !Object.keys(l).length) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full"`);
@@ -1071,6 +1123,41 @@ function erkerProblems(f: FrontIntent, at: string): string[] {
   if (!st.length || st.some((s, i) => i > 0 && s !== st[i - 1] + 1)) p.push(`${at}.bayWindows.storeys: one or more consecutive storeys, ascending (the erker is one stack)`);
   if (bw.cap !== undefined && !ERKER_CAPS.includes(bw.cap)) p.push(`${at}.bayWindows.cap: ${JSON.stringify(bw.cap)} not in ${ERKER_CAPS.join('|')}`);
   if (f.repeat) p.push(`${at}.bayWindows.bays: not on a repeated front`);
+  if (bw.oriel !== undefined) p.push(...orielProblems(f, at));
+  return p;
+}
+
+/** Problems with a timber oriel (`bayWindows.oriel`). */
+export function orielProblems(f: FrontIntent, at: string): string[] {
+  const p: string[] = [], o = f.bayWindows!.oriel as OrielIntent, bw = f.bayWindows!;
+  const num = (v: unknown, lo: number, hi: number) => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
+  if (!o || typeof o !== 'object') return [`${at}.bayWindows.oriel: an object`];
+  if (bw.hood || bw.finish) p.push(`${at}.bayWindows.oriel: not together with hood or finish`);
+  if (!num(o.span, 0.8, 6)) p.push(`${at}.bayWindows.oriel.span: 0.8..6 m`);
+  if (o.projection !== undefined && !num(o.projection, 0.15, 1.2)) p.push(`${at}.bayWindows.oriel.projection: 0.15..1.2 m`);
+  if (o.returns !== undefined && !num(o.returns, 0, (o.span ?? 0) / 3)) p.push(`${at}.bayWindows.oriel.returns: 0..span/3 m`);
+  for (const k of ['stallriser', 'head'] as const) if (o[k] !== undefined && !num(o[k], 0.08, 2.5)) p.push(`${at}.bayWindows.oriel.${k}: 0.08..2.5 m`);
+  if (o.frontLights !== undefined && !(Number.isInteger(o.frontLights) && o.frontLights >= 1 && o.frontLights <= 6)) p.push(`${at}.bayWindows.oriel.frontLights: 1..6`);
+  if (o.transom !== undefined && !num(o.transom, 0.3, 0.95)) p.push(`${at}.bayWindows.oriel.transom: 0.3..0.95 of the light height`);
+  for (const [k, v] of Object.entries(o.panels ?? {})) {
+    if (!bw.storeys.includes(Number(k))) p.push(`${at}.bayWindows.oriel.panels.${k}: not one of bayWindows.storeys`);
+    if (!v || typeof v !== 'object' || Object.keys(v).some(x => !['stallriser', 'head'].includes(x)) || Object.values(v).some(x => !num(x, 0.08, 2.5))) p.push(`${at}.bayWindows.oriel.panels.${k}: {stallriser?, head?} 0.08..2.5 m`);
+  }
+  if (o.paintedStoreys !== undefined && (!Array.isArray(o.paintedStoreys) || o.paintedStoreys.some(s => !bw.storeys.includes(s)))) p.push(`${at}.bayWindows.oriel.paintedStoreys: storeys of bayWindows.storeys`);
+  if (o.paintFrom !== undefined && (!num(o.paintFrom, 0.05, 2.4) || !o.paintedStoreys?.length)) p.push(`${at}.bayWindows.oriel.paintFrom: 0.05..2.4 m, with paintedStoreys`);
+  if (o.console !== undefined && typeof o.console !== 'boolean') p.push(`${at}.bayWindows.oriel.console: boolean`);
+  if (bw.cap !== undefined && bw.cap !== 'none') p.push(`${at}.bayWindows.oriel: cap is not drawn on an oriel (it stops under the cornice)`);
+  return p;
+}
+
+/** Problems with a dormer cap (`dormerCap`). */
+export function dormerCapProblems(f: FrontIntent, at: string): string[] {
+  const p: string[] = [], c = f.dormerCap as DormerCapIntent, n = f.dormers ?? 0;
+  if (!c || c.kind !== 'hoist') return [`${at}.dormerCap.kind: "hoist"`];
+  if (!Array.isArray(c.dormers) || !c.dormers.length || c.dormers.some(i => !Number.isInteger(i) || i < 0 || i >= n)) p.push(`${at}.dormerCap.dormers: dormer indices 0..${n - 1}`);
+  if (c.rise !== undefined && !(c.rise >= 0.4 && c.rise <= 2.5)) p.push(`${at}.dormerCap.rise: 0.4..2.5 m`);
+  if (c.flare !== undefined && !(c.flare >= 0 && c.flare <= 0.6)) p.push(`${at}.dormerCap.flare: 0..0.6 m`);
+  if (c.colour !== undefined && !/^#[0-9a-f]{6}$/i.test(c.colour)) p.push(`${at}.dormerCap.colour: #rrggbb`);
   return p;
 }
 
@@ -1100,6 +1187,19 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
   }
   if (f.windowSills !== undefined) oneOf(f.windowSills, WINDOW_SILLS, `${at}.windowSills`);
   if (f.paintedStoreys !== undefined) p.push(...paintedStoreyProblems(f, at));
+  return p;
+}
+
+/** Problems with `tilePanels` (glazed tile diamonds on the piers of upper storeys). */
+export function tilePanelProblems(f: FrontIntent, at: string): string[] {
+  const t = f.tilePanels as {storeys?: unknown; colour?: unknown; courses?: unknown; place?: unknown; axes?: unknown; count?: unknown} | undefined, p: string[] = [];
+  if (!t || typeof t !== 'object' || Object.keys(t).some(k => !['storeys', 'colour', 'courses', 'place', 'axes', 'count'].includes(k))) return [`${at}.tilePanels: {storeys, colour, courses?, place?, axes?, count?}`];
+  if (t.place !== undefined && t.place !== 'piers' && t.place !== 'sills') p.push(`${at}.tilePanels.place: "piers" or "sills"`);
+  if (t.axes !== undefined && (!Array.isArray(t.axes) || !t.axes.length || t.axes.some(a => !Number.isInteger(a) || a < 0 || a > 15))) p.push(`${at}.tilePanels.axes: window axis indices`);
+  if (t.count !== undefined && !(Number.isInteger(t.count) && (t.count as number) >= 1 && (t.count as number) <= 6)) p.push(`${at}.tilePanels.count: 1..6`);
+  const l = t.storeys as number[];
+  if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 1 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.tilePanels.storeys: ascending storey indices within 1..${f.storeys - 1}`);
+  for (const k of ['colour', 'courses'] as const) if ((k === 'colour' || (t[k] !== undefined && t[k] !== false)) && (typeof t[k] !== 'string' || !/^#[0-9a-f]{6}$/i.test(t[k] as string))) p.push(`${at}.tilePanels.${k}: a #rrggbb colour`);
   return p;
 }
 
@@ -1215,6 +1315,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   }
   if (f.roofFront !== undefined && f.roofFront !== 'mansard') problems.push(`${at}.roofFront: "mansard"`);
   if (f.roofFront === 'mansard' && f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.roofFront: a mansard rises behind a cornice/flat front (gable ${f.gable})`);
+  if (f.dormerCap !== undefined) problems.push(...dormerCapProblems(f, at));
   if (f.dormerStyle !== undefined) { oneOf(f.dormerStyle, DORMER_STYLES, `${at}.dormerStyle`); if (!f.dormers) problems.push(`${at}.dormerStyle: needs dormers >= 1`); }
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);

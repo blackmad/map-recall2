@@ -1,0 +1,1186 @@
+{
+ "buurt": "bellamybuurt-zuid",
+ "library": "bellamy",
+ "generatedAt": "2026-10-16T13:03:21.030Z",
+ "seconds": 8.42,
+ "totals": {
+  "faces": 49,
+  "pands": 335,
+  "placed": 69
+ },
+ "faces": [
+  {
+   "face": "beets-15-31",
+   "status": "no intake"
+  },
+  {
+   "face": "beets-40-40",
+   "status": "no intake"
+  },
+  {
+   "face": "beets-42-48",
+   "street": "Nicolaas Beetsstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.67,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "beets-47-57",
+   "street": "Nicolaas Beetsstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 0.54,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "beets-50-76",
+   "street": "Nicolaas Beetsstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-103-111",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamy-11-17",
+   "street": "Bellamystraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.29,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-113-121",
+   "street": "Bellamystraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.37,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-127-141",
+   "street": "Bellamystraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 5.45,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-18-50",
+   "street": "Bellamystraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 1.98,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 10,
+    "likeness": 0,
+    "run": 1,
+    "review": 3
+   }
+  },
+  {
+   "face": "bellamy-19-29",
+   "street": "Bellamystraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 1.06,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-2-14",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamy-3-9",
+   "street": "Bellamystraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.43,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-320-384",
+   "street": "Bellamystraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.27,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-33-63",
+   "street": "Bellamystraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 2.04,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 11,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-51-51",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamy-51-51-250624",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamy-52-62",
+   "street": "Bellamystraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.32,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-64-102",
+   "street": "Bellamystraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 1.27,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 15,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-73-87",
+   "street": "Bellamystraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 0.6,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-89-93",
+   "street": "Bellamystraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.41,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamy-95-99",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamydwars-1-3",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamydwars-13-15",
+   "street": "Bellamydwarsstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.35,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamydwars-16-36",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamydwars-4-12",
+   "street": "Bellamydwarsstraat",
+   "pands": 5,
+   "placed": 5,
+   "held": 0,
+   "runs": [
+    {
+     "face": "bellamydwars-4-12",
+     "pands": [
+      "0363100012090634",
+      "0363100012146138",
+      "0363100012061723",
+      "0363100012115852",
+      "0363100012086668"
+     ],
+     "passed": false,
+     "triangles": 6366
+    }
+   ],
+   "seconds": 5.23,
+   "byType": {
+    "bellamy-1895-plain-three-axis": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamyplein-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "bellamyplein-18-38",
+   "street": "Bellamyplein",
+   "pands": 11,
+   "placed": 9,
+   "held": 2,
+   "runs": [
+    {
+     "face": "bellamyplein-18-38-r1",
+     "pands": [
+      "0363100012164224",
+      "0363100012163466",
+      "0363100012153217",
+      "0363100012159793",
+      "0363100012166965"
+     ],
+     "passed": false,
+     "triangles": 11822
+    },
+    {
+     "face": "bellamyplein-18-38-r2",
+     "pands": [
+      "0363100012159962",
+      "0363100012158557",
+      "0363100012163720",
+      "0363100012164492"
+     ],
+     "passed": false,
+     "triangles": 9224
+    }
+   ],
+   "seconds": 17.45,
+   "byType": {
+    "bellamy-1904-balcony-axis": 9
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 1,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bellamyplein-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "bilderdijkkade-50-50",
+   "street": "Bilderdijkkade",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 13.01,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bilderdijkkade-52-58",
+   "street": "Bilderdijkkade",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 5.14,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bilderdijkkade-60-70",
+   "street": "Bilderdijkkade",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.25,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "dankbaarpassage-1-21",
+   "status": "no intake"
+  },
+  {
+   "face": "dichtershofje-1-47",
+   "status": "no intake"
+  },
+  {
+   "face": "dichtershofje-2-12",
+   "status": "no intake"
+  },
+  {
+   "face": "effen-1-9",
+   "street": "Van Effenstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.74,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "effen-2-12",
+   "street": "Van Effenstraat",
+   "pands": 6,
+   "placed": 2,
+   "held": 4,
+   "runs": [
+    {
+     "face": "effen-2-12-r1",
+     "pands": [
+      "0363100012073026",
+      "0363100012084995"
+     ],
+     "passed": false,
+     "triangles": 3549
+    }
+   ],
+   "seconds": 5.02,
+   "byType": {
+    "bellamy-1915-green-tile": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hanzen-1-19",
+   "street": "Jan Hanzenstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.2,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "hanzen-105-111",
+   "street": "Jan Hanzenstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 1,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "hanzen-115-171",
+   "street": "Jan Hanzenstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 0.69,
+   "byType": {},
+   "holds": {
+    "evidence": 5,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hanzen-21-73",
+   "street": "Jan Hanzenstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 2.14,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hasebroek-1-41",
+   "street": "Hasebroekstraat",
+   "pands": 19,
+   "placed": 9,
+   "held": 10,
+   "runs": [
+    {
+     "face": "hasebroek-1-41-r1",
+     "pands": [
+      "0363100012165485",
+      "0363100012152706",
+      "0363100012153109",
+      "0363100012160213"
+     ],
+     "passed": false,
+     "triangles": 10999
+    },
+    {
+     "face": "hasebroek-1-41-r2",
+     "pands": [
+      "0363100012164250",
+      "0363100012153107",
+      "0363100012166233",
+      "0363100012165183",
+      "0363100012157271"
+     ],
+     "passed": false,
+     "triangles": 14075
+    }
+   ],
+   "seconds": 27.81,
+   "byType": {
+    "bellamy-1904-balcony-axis": 9
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 1,
+    "run": 2,
+    "review": 7
+   }
+  },
+  {
+   "face": "hasebroek-103-103",
+   "status": "no intake"
+  },
+  {
+   "face": "hasebroek-104-114",
+   "street": "Hasebroekstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 4.83,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "hasebroek-105-115",
+   "street": "Hasebroekstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.97,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "hasebroek-113-113",
+   "status": "no intake"
+  },
+  {
+   "face": "hasebroek-116-118",
+   "street": "Hasebroekstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.45,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "hasebroek-2-46",
+   "street": "Hasebroekstraat",
+   "pands": 18,
+   "placed": 17,
+   "held": 1,
+   "runs": [
+    {
+     "face": "hasebroek-2-46-r1",
+     "pands": [
+      "0363100012160178",
+      "0363100012167170",
+      "0363100012161486",
+      "0363100012163006",
+      "0363100012164522",
+      "0363100012159125",
+      "0363100012155789",
+      "0363100012236622",
+      "0363100012164477",
+      "0363100012156654",
+      "0363100012165214",
+      "0363100012164498",
+      "0363100012153488",
+      "0363100012154364",
+      "0363100012165475",
+      "0363100012160593",
+      "0363100012236958"
+     ],
+     "passed": false,
+     "triangles": 40969
+    }
+   ],
+   "seconds": 21.43,
+   "byType": {
+    "bellamy-1904-balcony-axis": 17
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hasebroek-43-101",
+   "street": "Hasebroekstraat",
+   "pands": 15,
+   "placed": 9,
+   "held": 6,
+   "runs": [
+    {
+     "face": "hasebroek-43-101-r1",
+     "pands": [
+      "0363100012100499",
+      "0363100012085498",
+      "0363100012123310",
+      "0363100012065691",
+      "0363100012069845",
+      "0363100012233466",
+      "0363100012127527",
+      "0363100012113587",
+      "0363100012086970"
+     ],
+     "passed": false,
+     "triangles": 19292
+    }
+   ],
+   "seconds": 17.62,
+   "byType": {
+    "bellamy-1915-tile-bay": 8,
+    "bellamy-1915-green-tile": 1
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 5,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hasebroek-52-88",
+   "street": "Hasebroekstraat",
+   "pands": 10,
+   "placed": 8,
+   "held": 2,
+   "runs": [
+    {
+     "face": "hasebroek-52-88-r1",
+     "pands": [
+      "0363100012132372",
+      "0363100012086016",
+      "0363100012148175",
+      "0363100012144253",
+      "0363100012088024",
+      "0363100012080701",
+      "0363100012110654",
+      "0363100012099290"
+     ],
+     "passed": false,
+     "triangles": 17234
+    }
+   ],
+   "seconds": 20.71,
+   "byType": {
+    "bellamy-1915-tile-bay": 8
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hasebroek-90-98",
+   "street": "Hasebroekstraat",
+   "pands": 5,
+   "placed": 3,
+   "held": 2,
+   "runs": [
+    {
+     "face": "hasebroek-90-98-r1",
+     "pands": [
+      "0363100012091668",
+      "0363100012121449",
+      "0363100012069093"
+     ],
+     "passed": true,
+     "triangles": 5179
+    }
+   ],
+   "seconds": 4.22,
+   "byType": {
+    "bellamy-1915-green-tile": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "heije-40-56",
+   "street": "Jan Pieter Heijestraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 3.01,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 1,
+    "review": 5
+   }
+  },
+  {
+   "face": "heije-41-53",
+   "street": "Jan Pieter Heijestraat",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "heije-41-53-r1",
+     "pands": [
+      "0363100012109543",
+      "0363100012128983"
+     ],
+     "passed": false,
+     "triangles": 3433
+    }
+   ],
+   "seconds": 3.22,
+   "byType": {
+    "bellamy-1915-green-tile": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "heije-45-45",
+   "status": "no intake"
+  },
+  {
+   "face": "heije-61-61",
+   "status": "no intake"
+  },
+  {
+   "face": "kate-18-30",
+   "status": "no intake"
+  },
+  {
+   "face": "kate-25-31",
+   "street": "Ten Katestraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.45,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "kate-34-38",
+   "street": "Ten Katestraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.39,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "kate-37-101",
+   "street": "Ten Katestraat",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 3.14,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "kate-5-21",
+   "street": "Ten Katestraat",
+   "pands": 7,
+   "placed": 5,
+   "held": 2,
+   "runs": [
+    {
+     "face": "kate-5-21-r1",
+     "pands": [
+      "0363100012144382",
+      "0363100012083242",
+      "0363100012146613",
+      "0363100012129411",
+      "0363100012101150"
+     ],
+     "passed": true,
+     "triangles": 5964
+    }
+   ],
+   "seconds": 3.76,
+   "byType": {
+    "bellamy-1937-flat-row": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "kate-8-16",
+   "street": "Ten Katestraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 3.72,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "kinker-140-142",
+   "status": "no intake"
+  },
+  {
+   "face": "kinker-392-392",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-111-111",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-112-112",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-113-113",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-114-114",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-115-115",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-116-116",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-117-117",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-118-118",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-119-119",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-120-121",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-122-122",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-123-123",
+   "status": "no intake"
+  },
+  {
+   "face": "kostverlorenkade-50-62",
+   "status": "no intake"
+  },
+  {
+   "face": "tollens-1-51",
+   "status": "no intake"
+  },
+  {
+   "face": "tollens-53-57",
+   "status": "no intake"
+  },
+  {
+   "face": "tollens-53-59",
+   "status": "no intake"
+  },
+  {
+   "face": "tollens-61-61",
+   "status": "no intake"
+  },
+  {
+   "face": "tollens-64-66",
+   "street": "Tollensstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.21,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wenslauer-1-35",
+   "street": "Wenslauerstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.17,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "wenslauer-37-45",
+   "status": "no intake"
+  },
+  {
+   "face": "wenslauer-40-50",
+   "street": "Wenslauerstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 0.38,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wenslauer-47-67",
+   "street": "Wenslauerstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 0.43,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wenslauer-54-76",
+   "street": "Wenslauerstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.29,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wenslauer-69-85",
+   "street": "Wenslauerstraat",
+   "pands": 10,
+   "placed": 0,
+   "held": 10,
+   "runs": [],
+   "seconds": 1.27,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 7,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "wenslauer-98-120",
+   "street": "Wenslauerstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.39,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

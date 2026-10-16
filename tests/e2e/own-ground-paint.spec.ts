@@ -35,6 +35,8 @@ async function boot(page: Page): Promise<string[]> {
     return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'text/javascript' }) : route.continue();
   });
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
+  // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
+  if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
   await openRoute(page, { travelMode: 'car', viewMode: 'cockpit', abortHeavyTiles: false, enterRacing: false, query: '?ownGround=1' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;

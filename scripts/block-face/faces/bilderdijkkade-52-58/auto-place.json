@@ -1,0 +1,624 @@
+{
+ "face": "bilderdijkkade-52-58",
+ "street": "Bilderdijkkade",
+ "library": "bellamy",
+ "stripDate": "2024-11-29",
+ "seconds": 5.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012242761",
+   "address": "Bilderdijkkade 58D",
+   "builtYear": 2015,
+   "widthM": 15.98,
+   "eavesM": 22.34,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": "#7a694e",
+    "wallRaw": "#6d6049",
+    "skyline": {
+     "eavesM": 23.93,
+     "eavesRow": 134,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 3.35,
+      "topWidthM": 0.78,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.13,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.41 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.41,
+       "light": 0.22
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.63,
+       "light": 0.07
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.77,
+       "light": 0.06
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.92,
+       "light": 0.12
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 18.67,
+       "widthM": 2,
+       "centre": 0.52
+      },
+      {
+       "atM": 12.52,
+       "widthM": 1.98,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2015, type 1928-1935; frontage 15.98 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.15 m at 0.41 (light 0.22): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2015, type 1928-1935",
+     "frontage 15.98 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.15 m at 0.41 (light 0.22): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 22.34 m = 5 storeys of 4.47 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.93 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.025 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012241869",
+   "address": "Bilderdijkkade 58A",
+   "builtYear": 2015,
+   "widthM": 7.8,
+   "eavesM": 9.46,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#1e231b",
+    "wallRaw": "#5b5340",
+    "skyline": {
+     "eavesM": 10.25,
+     "eavesRow": 681,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 8.4,
+      "topWidthM": 0.05,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.07 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.07,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.48,
+       "light": 0.05
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.95,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.15,
+       "widthM": 1.75,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2015, type 1928-1935; frontage 7.8 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.07 m at 0.07 (light 0.17): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2015, type 1928-1935",
+     "frontage 7.8 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.07 m at 0.07 (light 0.17): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.46 m = 4 storeys of 2.37 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 12.95 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012241867",
+   "address": "Bilderdijkkade 56A",
+   "builtYear": 2015,
+   "widthM": 15.6,
+   "eavesM": 19.06,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": "#a55c40",
+    "wallRaw": "#583f2f",
+    "skyline": {
+     "eavesM": 20.43,
+     "eavesRow": 274,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 1.3,
+      "topWidthM": 1.23,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.98 m at 0.17 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.98,
+       "centre": 0.17,
+       "light": 0.41
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.33,
+       "light": 0
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.41,
+       "light": 0.06
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.61,
+       "light": 0.25
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.7,
+       "light": 0
+      },
+      {
+       "widthM": 2.92,
+       "centre": 0.85,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 1,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2015, type 1928-1935; frontage 15.6 m, type 4.8-5.8 m; strip shows balconies (dark open axis 2.98 m at 0.17 (light 0.41): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2015, type 1928-1935",
+     "frontage 15.6 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 2.98 m at 0.17 (light 0.41): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 19.06 m = 5 storeys of 3.81 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012241866",
+   "address": "Bilderdijkkade 54B",
+   "builtYear": 2015,
+   "widthM": 15.6,
+   "eavesM": 19.08,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": "#844d35",
+    "wallRaw": "#4f3b2d",
+    "skyline": {
+     "eavesM": 20.23,
+     "eavesRow": 282,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 1.45,
+      "topWidthM": 1.2,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.03 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.03,
+       "light": 0
+      },
+      {
+       "widthM": 2.42,
+       "centre": 0.16,
+       "light": 0.63
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.7,
+       "light": 0
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.98,
+       "light": 0.03
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 17.95,
+       "widthM": 1.82,
+       "centre": 0.85
+      },
+      {
+       "atM": 12.18,
+       "widthM": 4.65,
+       "centre": 0.6
+      },
+      {
+       "atM": 6.32,
+       "widthM": 1.35,
+       "centre": 0.7
+      },
+      {
+       "atM": 5.72,
+       "widthM": 0.9,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2015, type 1928-1935; frontage 15.6 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.85 m at 0.03 (light 0): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2015, type 1928-1935",
+     "frontage 15.6 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.85 m at 0.03 (light 0): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 19.08 m = 5 storeys of 3.82 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012241865",
+   "address": "Bilderdijkkade 52B",
+   "builtYear": 2015,
+   "widthM": 15.96,
+   "eavesM": 16.05,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6a4633",
+    "wallRaw": "#664a39",
+    "skyline": {
+     "eavesM": 17.18,
+     "eavesRow": 404,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 10.1,
+      "topWidthM": 0.5,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 3.5,
+     "bayCentre": 0.12,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.03 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.03,
+       "light": 0.41
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.15,
+       "light": 0.75
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.21,
+       "light": 0.72
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.5,
+       "light": 0
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.68,
+       "light": 0
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.97,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.85,
+       "widthM": 3.08,
+       "centre": 0.83
+      },
+      {
+       "atM": 12.15,
+       "widthM": 9.53,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.38,
+       "widthM": 5.28,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2015, type 1928-1935; frontage 15.96 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.9 m at 0.03 (light 0.41): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2015, type 1928-1935",
+     "frontage 15.96 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.9 m at 0.03 (light 0.41): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.05 m = 5 storeys of 3.21 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.82 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.042 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

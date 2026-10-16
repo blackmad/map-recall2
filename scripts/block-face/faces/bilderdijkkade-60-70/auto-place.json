@@ -1,0 +1,513 @@
+{
+ "face": "bilderdijkkade-60-70",
+ "street": "Bilderdijkkade",
+ "library": "bellamy",
+ "stripDate": "2024-11-29",
+ "seconds": 1.25,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012167037",
+   "address": "Bilderdijkkade 70",
+   "builtYear": 1895,
+   "widthM": 6.08,
+   "eavesM": 16.48,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#805b42",
+    "wallRaw": "#7f674b",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 143,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 3.57,
+      "topWidthM": 0.35,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.79 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.79,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.25,
+       "widthM": 0.9,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; strip shows balconies (dark open axis 0.72 m at 0.79 (light 0.22): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "strip shows balconies (dark open axis 0.72 m at 0.79 (light 0.22): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.48 m = 5 storeys of 3.3 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.38 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161375",
+   "address": "Bilderdijkkade 68",
+   "builtYear": 1895,
+   "widthM": 4,
+   "eavesM": 15.33,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6d4831",
+    "wallRaw": "#726246",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 161,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 2.88,
+      "topWidthM": 0.38,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.55 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.55,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.3,
+       "widthM": 0.9,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.88 m at 0.55 (light 0.19): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "frontage 4 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.88 m at 0.55 (light 0.19): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.33 m = 5 storeys of 3.07 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.08 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.058 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158550",
+   "address": "Bilderdijkkade 66",
+   "builtYear": 1895,
+   "widthM": 3.93,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b6853",
+    "wallRaw": "#6d5747",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.3,
+      "topWidthM": 0.6,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.24 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.24,
+       "light": 0.17
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.61,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.9,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 3.93 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.13 m at 0.24 (light 0.17): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "frontage 3.93 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.13 m at 0.24 (light 0.17): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.23 m = 5 storeys of 3.05 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.05 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166144",
+   "address": "Bilderdijkkade 64",
+   "builtYear": 1895,
+   "widthM": 4.1,
+   "eavesM": 15.19,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7d5d4c",
+    "wallRaw": "#6c5442",
+    "skyline": {
+     "eavesM": 14.35,
+     "eavesRow": 181,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 3.03,
+      "topWidthM": 0.28,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.22 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.22,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.88,
+       "centre": 0.69,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 0.97,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.63,
+       "widthM": 0.95,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4.1 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.82 m at 0.22 (light 0.16): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "frontage 4.1 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.82 m at 0.22 (light 0.16): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.19 m = 5 storeys of 3.04 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159806",
+   "address": "Bilderdijkkade 60",
+   "builtYear": 1904,
+   "widthM": 7.81,
+   "eavesM": 13.44,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#86624b",
+    "wallRaw": "#60523f",
+    "skyline": {
+     "eavesM": 12.75,
+     "eavesRow": 245,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.05,
+      "riseM": 5.18,
+      "topWidthM": 0.07,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.8,
+       "widthM": 1.1,
+       "centre": 0.64
+      },
+      {
+       "atM": 10.5,
+       "widthM": 1,
+       "centre": 0.5
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.1,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1904, type 1928-1935; frontage 7.81 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1928-1935",
+     "frontage 7.81 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.44 m = 4 storeys of 3.36 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.12 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

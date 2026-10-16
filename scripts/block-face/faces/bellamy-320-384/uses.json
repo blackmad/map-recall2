@@ -1,0 +1,504 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:24:49.062Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012075898",
+   "addresses": [
+    "Bellamystraat 370A",
+    "Bellamystraat 370B",
+    "Bellamystraat 370C",
+    "Bellamystraat 370D",
+    "Bellamystraat 370E",
+    "Bellamystraat 370F",
+    "Bellamystraat 370G",
+    "Bellamystraat 372A",
+    "Bellamystraat 372B",
+    "Bellamystraat 372C",
+    "Bellamystraat 372D",
+    "Bellamystraat 372E",
+    "Bellamystraat 372F",
+    "Bellamystraat 372G",
+    "Bellamystraat 374A",
+    "Bellamystraat 374B",
+    "Bellamystraat 374C",
+    "Bellamystraat 374D",
+    "Bellamystraat 374E",
+    "Bellamystraat 374F",
+    "Bellamystraat 374G",
+    "Bellamystraat 374H",
+    "Bellamystraat 374K",
+    "Bellamystraat 374L",
+    "Bellamystraat 374M",
+    "Bellamystraat 376",
+    "Bellamystraat 378",
+    "Bellamystraat 380",
+    "Bellamystraat 382",
+    "Bellamystraat 384"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Kostverlorenkade 63",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010003702375"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 64",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010003702379"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 65",
+     "use": "industriefunctie",
+     "areaM2": 168,
+     "bagId": "0363010003702380"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 66",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 948,
+     "bagId": "0363010003702381"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 67",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 179,
+     "bagId": "0363010003702382"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 68",
+     "use": "industriefunctie",
+     "areaM2": 299,
+     "bagId": "0363010003702383"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 69",
+     "use": "industriefunctie",
+     "areaM2": 194,
+     "bagId": "0363010003702384"
+    },
+    {
+     "address": "Tweede Kostverlorenkade 70",
+     "use": "industriefunctie",
+     "areaM2": 174,
+     "bagId": "0363010003702385"
+    },
+    {
+     "address": "Bellamystraat 376",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010003702391"
+    },
+    {
+     "address": "Bellamystraat 378",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010003702392"
+    },
+    {
+     "address": "Bellamystraat 380",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010003702393"
+    },
+    {
+     "address": "Bellamystraat 382",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010003702394"
+    },
+    {
+     "address": "Bellamystraat 384",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010003702395"
+    },
+    {
+     "address": "Bellamystraat 370A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702399"
+    },
+    {
+     "address": "Bellamystraat 370B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702400"
+    },
+    {
+     "address": "Bellamystraat 370C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702401"
+    },
+    {
+     "address": "Bellamystraat 370D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010003702402"
+    },
+    {
+     "address": "Bellamystraat 370E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010003702403"
+    },
+    {
+     "address": "Bellamystraat 370F",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010003702404"
+    },
+    {
+     "address": "Bellamystraat 370G",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010003702405"
+    },
+    {
+     "address": "Bellamystraat 372A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702406"
+    },
+    {
+     "address": "Bellamystraat 372B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702407"
+    },
+    {
+     "address": "Bellamystraat 372C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702408"
+    },
+    {
+     "address": "Bellamystraat 372D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702409"
+    },
+    {
+     "address": "Bellamystraat 372E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010003702410"
+    },
+    {
+     "address": "Bellamystraat 372F",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010003702411"
+    },
+    {
+     "address": "Bellamystraat 372G",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010003702412"
+    },
+    {
+     "address": "Bellamystraat 374A",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010003702413"
+    },
+    {
+     "address": "Bellamystraat 374B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010003702414"
+    },
+    {
+     "address": "Bellamystraat 374C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702415"
+    },
+    {
+     "address": "Bellamystraat 374D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003702416"
+    },
+    {
+     "address": "Bellamystraat 374E",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010003702417"
+    },
+    {
+     "address": "Bellamystraat 374F",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010003702418"
+    },
+    {
+     "address": "Bellamystraat 374G",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010003702419"
+    },
+    {
+     "address": "Bellamystraat 374H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010003702420"
+    },
+    {
+     "address": "Bellamystraat 374K",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010003702421"
+    },
+    {
+     "address": "Bellamystraat 374L",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010003702422"
+    },
+    {
+     "address": "Bellamystraat 374M",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010003702423"
+    }
+   ],
+   "units": 38,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5866259185,
+     "lngLat": [
+      4.8620242,
+      52.3661667
+     ],
+     "tags": {
+      "addr:housenumber": "70",
+      "addr:postcode": "1053BS",
+      "addr:street": "Tweede Kostverlorenkade",
+      "amenity": "bar",
+      "check_date": "2026-10-04",
+      "check_date:opening_hours": "2026-10-04",
+      "cuisine": "tapas",
+      "indoor_seating": "yes",
+      "name": "Barricade",
+      "opening_hours": "Tu-Th 17:00-00:00; Fr 16:00-01:00; Sa 14:00-01:00; Su 14:00-00:00",
+      "outdoor_seating": "yes",
+      "website": "https://barricade.amsterdam"
+     },
+     "fetchedAt": "2026-10-16T11:24:49.062Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012125020",
+   "addresses": [
+    "Bellamystraat 354",
+    "Bellamystraat 356",
+    "Bellamystraat 358",
+    "Bellamystraat 360",
+    "Bellamystraat 362",
+    "Bellamystraat 364",
+    "Bellamystraat 366",
+    "Bellamystraat 368"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 354",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000580271"
+    },
+    {
+     "address": "Bellamystraat 356",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580272"
+    },
+    {
+     "address": "Bellamystraat 358",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580273"
+    },
+    {
+     "address": "Bellamystraat 360",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580274"
+    },
+    {
+     "address": "Bellamystraat 362",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580275"
+    },
+    {
+     "address": "Bellamystraat 364",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580276"
+    },
+    {
+     "address": "Bellamystraat 366",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580277"
+    },
+    {
+     "address": "Bellamystraat 368",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580278"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090206",
+   "addresses": [
+    "Bellamystraat 336",
+    "Bellamystraat 338",
+    "Bellamystraat 340",
+    "Bellamystraat 342",
+    "Bellamystraat 344",
+    "Bellamystraat 346",
+    "Bellamystraat 348",
+    "Bellamystraat 350",
+    "Bellamystraat 352"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 336",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580262"
+    },
+    {
+     "address": "Bellamystraat 338",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580263"
+    },
+    {
+     "address": "Bellamystraat 340",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580264"
+    },
+    {
+     "address": "Bellamystraat 342",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000580265"
+    },
+    {
+     "address": "Bellamystraat 344",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000580266"
+    },
+    {
+     "address": "Bellamystraat 346",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000580267"
+    },
+    {
+     "address": "Bellamystraat 348",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580268"
+    },
+    {
+     "address": "Bellamystraat 350",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580269"
+    },
+    {
+     "address": "Bellamystraat 352",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580270"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092853",
+   "addresses": [
+    "Bellamystraat 320",
+    "Bellamystraat 322",
+    "Bellamystraat 324",
+    "Bellamystraat 326",
+    "Bellamystraat 328",
+    "Bellamystraat 330",
+    "Bellamystraat 332",
+    "Bellamystraat 334"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 320",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000580254"
+    },
+    {
+     "address": "Bellamystraat 322",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000580255"
+    },
+    {
+     "address": "Bellamystraat 324",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000580256"
+    },
+    {
+     "address": "Bellamystraat 326",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000580257"
+    },
+    {
+     "address": "Bellamystraat 328",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000580258"
+    },
+    {
+     "address": "Bellamystraat 330",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580259"
+    },
+    {
+     "address": "Bellamystraat 332",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000580260"
+    },
+    {
+     "address": "Bellamystraat 334",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000580261"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

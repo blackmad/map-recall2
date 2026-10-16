@@ -103,7 +103,10 @@ export class GamePresentationRuntime {
     const prepared = this._introPrepared;
     this._introPrepared = null;
     this._intro = null;
-    const planned = prepared || this._planIntro();
+    // A ride on from the finish card skips the overview (user 2026-10-16).
+    const skip = this._skipNextIntro;
+    this._skipNextIntro = false;
+    const planned = skip ? null : prepared || this._planIntro();
     if (!planned) {
       this.camera.introOverview = 0;
       return;
@@ -159,7 +162,7 @@ export class GamePresentationRuntime {
    *  (a ~2 s hitch at 4× CPU throttle). True when the caller should wait for
    *  the map to settle before racing. */
   _prepareIntro(): boolean {
-    const planned = this._planIntro();
+    const planned = this._skipNextIntro ? null : this._planIntro();
     this._introPrepared = planned;
     if (!planned) return false;
     this.camera.resetPan();

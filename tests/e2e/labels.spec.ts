@@ -127,3 +127,32 @@ test('labels: shots and counts at the review viewpoints', async ({ page }, info)
   expect(report['damrak-250m'].count, JSON.stringify(report['damrak-250m'].labels.map(l => l.name))).toBeLessThanOrEqual(12);
   for (const [name, v] of Object.entries(report)) expect(v.overHud, `${name}: labels over the plaque/destination card`).toEqual([]);
 });
+
+// User 2026-10-16 ("don't show destinations through scrim"): the DOM label
+// layer sits above the game canvas, so it floated venue names over the paper
+// loading screen. Every covered state hides it, without waiting for a map repaint.
+test('labels: hidden while the loading screen covers the map', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'state rule, one viewport');
+  test.setTimeout(180_000);
+  const seenDuringLoad: string[] = [];
+  await page.exposeFunction('__labelLeak', (names: string) => seenDuringLoad.push(names));
+  await page.addInitScript(() => {
+    const tick = () => {
+      const g = (window as any).canalRecallGame, root = document.querySelector('.cr-map-labels') as HTMLElement | null;
+      if (g && root && g.state <= 2 && getComputedStyle(root).visibility !== 'hidden') {
+        const shown = [...root.children].filter(el => Number((el as HTMLElement).style.opacity || 0) > 0.05).map(el => el.textContent);
+        if (shown.length) (window as any).__labelLeak(`state ${g.state}: ${shown.join(', ')}`);
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false });
+  await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
+  expect(seenDuringLoad, 'labels visible over menu/setup/loading paper').toEqual([]);
+  const visibility = () => page.evaluate(() => getComputedStyle(document.querySelector('.cr-map-labels')!).visibility);
+  await page.evaluate(() => { (window as any).canalRecallGame.state = 2; });
+  await expect.poll(visibility, { timeout: 2000 }).toBe('hidden');
+  await page.evaluate(() => { (window as any).canalRecallGame.state = 4; });
+  await expect.poll(visibility, { timeout: 2000 }).toBe('visible');
+});

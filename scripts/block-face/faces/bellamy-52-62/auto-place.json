@@ -1,0 +1,369 @@
+{
+ "face": "bellamy-52-62",
+ "street": "Bellamystraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 0.32,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157702",
+   "address": "Bellamystraat 62",
+   "builtYear": 1908,
+   "widthM": 7.2,
+   "eavesM": 6.73,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#6f6357",
+    "wallRaw": "#7c7562",
+    "skyline": {
+     "eavesM": 11.72,
+     "eavesRow": 44,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.1,
+      "topWidthM": 0.23,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.13 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.13,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.27,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.8,
+       "centre": 0.48,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.91,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1908, type 1928-1935; frontage 7.2 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1908, type 1928-1935",
+     "frontage 7.2 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.73 m = 4 storeys of 1.68 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.1 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099177",
+   "address": "Bellamystraat 58",
+   "builtYear": 1896,
+   "widthM": 9.59,
+   "eavesM": 6.63,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#675c49",
+    "wallRaw": "#61694c",
+    "skyline": {
+     "eavesM": 10.22,
+     "eavesRow": 104,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 2.6,
+      "topWidthM": 0.53,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.67,
+     "balconies": true,
+     "why": "dark open axis 6.2 m at 0.35 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 6.2,
+       "centre": 0.35,
+       "light": 0.12
+      },
+      {
+       "widthM": 2.52,
+       "centre": 0.86,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.63
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1896, type 1928-1935; frontage 9.59 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1928-1935",
+     "frontage 9.59 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.63 m = 4 storeys of 1.66 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.04 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236014",
+   "address": "Bellamystraat 56",
+   "builtYear": 1896,
+   "widthM": 4.04,
+   "eavesM": 7.51,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#b88a7b",
+    "wallRaw": "#877f68",
+    "skyline": {
+     "eavesM": 8.63,
+     "eavesRow": 168,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 4.2,
+      "topWidthM": 0.2,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.491,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1896, type 1928-1935; frontage 4.04 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1928-1935",
+     "frontage 4.04 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.51 m = 4 storeys of 1.88 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.91 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162527",
+   "address": "Bellamystraat 52",
+   "builtYear": 1896,
+   "widthM": 10.22,
+   "eavesM": 6.66,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#976e5b",
+    "wallRaw": "#97826c",
+    "skyline": {
+     "eavesM": 8,
+     "eavesRow": 193,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 1.25,
+      "topWidthM": 0.95,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 9.43 m at 0.5 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 9.43,
+       "centre": 0.5,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1896, type 1928-1935; frontage 10.22 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1928-1935",
+     "frontage 10.22 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.66 m = 4 storeys of 1.67 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.85 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

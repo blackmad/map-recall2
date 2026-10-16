@@ -1,0 +1,702 @@
+{
+ "street": "Van Effenstraat",
+ "seed": "0363100012118314",
+ "members": [
+  "0363100012118314",
+  "0363100012146250",
+  "0363100012086318",
+  "0363100012061382",
+  "0363100012064327"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012064327 (face continues: 133868)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061290",
+   "reason": "sightline to Van Effenstraat crosses 0363100012070936"
+  },
+  {
+   "pandId": "0363100012061473",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012061656",
+   "reason": "frontage 44.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012064006",
+   "reason": "frontage 66.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012064390",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012066665",
+   "reason": "frontage 50.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012067190",
+   "reason": "frontage 97.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012067939",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012069093",
+   "reason": "sightline to Van Effenstraat crosses 0363100012148395"
+  },
+  {
+   "pandId": "0363100012069215",
+   "reason": "sightline to Van Effenstraat crosses 0363100012118314"
+  },
+  {
+   "pandId": "0363100012069965",
+   "reason": "frontage 105.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012070740",
+   "reason": "frontage 48.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012072336",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012073389",
+   "reason": "frontage 75.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012073911",
+   "reason": "frontage 36.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012075066",
+   "reason": "sightline to Van Effenstraat crosses 0363100012081532"
+  },
+  {
+   "pandId": "0363100012075898",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012078926",
+   "reason": "frontage 42.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012080765",
+   "reason": "frontage 91.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012081134",
+   "reason": "frontage 67.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012081281",
+   "reason": "sightline to Van Effenstraat crosses 0363100012061290"
+  },
+  {
+   "pandId": "0363100012081452",
+   "reason": "frontage 54.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012082902",
+   "reason": "frontage 50.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012084429",
+   "reason": "sightline to Van Effenstraat crosses 0363100012119510"
+  },
+  {
+   "pandId": "0363100012085428",
+   "reason": "frontage 42.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012086016",
+   "reason": "frontage 71.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012086952",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012086970",
+   "reason": "frontage 68.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012087040",
+   "reason": "frontage 50.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012088278",
+   "reason": "frontage 100.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012088526",
+   "reason": "frontage 60.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012090206",
+   "reason": "sightline to Van Effenstraat crosses 0363100012125020"
+  },
+  {
+   "pandId": "0363100012091668",
+   "reason": "sightline to Van Effenstraat crosses 0363100012069093"
+  },
+  {
+   "pandId": "0363100012092148",
+   "reason": "frontage 46.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012092853",
+   "reason": "frontage 41.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012094981",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012095335",
+   "reason": "frontage 42.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012099202",
+   "reason": "sightline to Van Effenstraat crosses 0363100012081532"
+  },
+  {
+   "pandId": "0363100012099334",
+   "reason": "frontage 58.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012101453",
+   "reason": "frontage 64.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012106866",
+   "reason": "frontage 33.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012108097",
+   "reason": "frontage 40.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012111465",
+   "reason": "frontage 59.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012113490",
+   "reason": "frontage 31.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012113587",
+   "reason": "frontage 73.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012115607",
+   "reason": "sightline to Van Effenstraat crosses 0363100012069215"
+  },
+  {
+   "pandId": "0363100012117742",
+   "reason": "frontage 40.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012117879",
+   "reason": "frontage 34.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012119510",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012121332",
+   "reason": "sightline to Van Effenstraat crosses 0363100012133868"
+  },
+  {
+   "pandId": "0363100012121417",
+   "reason": "frontage 53.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012121449",
+   "reason": "sightline to Van Effenstraat crosses 0363100012069093"
+  },
+  {
+   "pandId": "0363100012125020",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012126139",
+   "reason": "frontage 72.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012127527",
+   "reason": "frontage 77.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012127794",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012130403",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012130888",
+   "reason": "frontage 66.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012132372",
+   "reason": "frontage 64.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012132592",
+   "reason": "frontage 52.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012133522",
+   "reason": "sightline to Van Effenstraat crosses 0363100012084429"
+  },
+  {
+   "pandId": "0363100012134227",
+   "reason": "sightline to Van Effenstraat crosses 0363100012075066"
+  },
+  {
+   "pandId": "0363100012136251",
+   "reason": "frontage 56.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012136309",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012138549",
+   "reason": "frontage 68.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012140217",
+   "reason": "frontage 62.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012143064",
+   "reason": "frontage 39.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012143257",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012144253",
+   "reason": "frontage 83.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012144553",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012145336",
+   "reason": "frontage 37.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012146466",
+   "reason": "sightline to Van Effenstraat crosses 0363100012069215"
+  },
+  {
+   "pandId": "0363100012147051",
+   "reason": "sightline to Van Effenstraat crosses 0363100012121332"
+  },
+  {
+   "pandId": "0363100012147065",
+   "reason": "frontage 80.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012147546",
+   "reason": "frontage 42.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012148175",
+   "reason": "frontage 77.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012149796",
+   "reason": "frontage 47.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012149826",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012150434",
+   "reason": "frontage 74.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012152375",
+   "reason": "frontage 64.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012154793",
+   "reason": "frontage 79.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012157996",
+   "reason": "frontage 91.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012158514",
+   "reason": "frontage 59.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012158680",
+   "reason": "frontage 89.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012158750",
+   "reason": "frontage 110.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012160798",
+   "reason": "frontage 108.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012160876",
+   "reason": "frontage 104.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012161712",
+   "reason": "frontage 32.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012163531",
+   "reason": "frontage 54.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012163580",
+   "reason": "frontage 98.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012163629",
+   "reason": "frontage 69.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012164198",
+   "reason": "frontage 94.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012164438",
+   "reason": "frontage 75.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012166916",
+   "reason": "frontage 99.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012166989",
+   "reason": "frontage 103.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012167053",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012186111",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012192589",
+   "reason": "frontage 34.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012199889",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012207405",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012213746",
+   "reason": "sightline to Van Effenstraat crosses 0363100012061382"
+  },
+  {
+   "pandId": "0363100012214311",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012218126",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012220668",
+   "reason": "frontage 104.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012221924",
+   "reason": "frontage 95.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012231090",
+   "reason": "frontage 35.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012232910",
+   "reason": "frontage 63.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012232911",
+   "reason": "frontage 64.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012232912",
+   "reason": "frontage 66.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233003",
+   "reason": "frontage 68.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233004",
+   "reason": "frontage 38.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233005",
+   "reason": "frontage 60.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233006",
+   "reason": "frontage 61.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233007",
+   "reason": "frontage 46.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233008",
+   "reason": "frontage 48.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233009",
+   "reason": "frontage 50.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233010",
+   "reason": "frontage 38.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233011",
+   "reason": "frontage 45.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233012",
+   "reason": "frontage 38.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233013",
+   "reason": "frontage 38.1 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012233446",
+   "reason": "frontage 72.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012235634",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012236138",
+   "reason": "frontage 101.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012236233",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012236316",
+   "reason": "frontage 80.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012236631",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012236798",
+   "reason": "frontage 46.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012236922",
+   "reason": "sightline to Van Effenstraat crosses 0363100012121332"
+  },
+  {
+   "pandId": "0363100012236936",
+   "reason": "frontage 127.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237015",
+   "reason": "frontage 123.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237047",
+   "reason": "frontage 45.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237264",
+   "reason": "no frontage on Van Effenstraat: No footprint edge faces Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237331",
+   "reason": "frontage 119.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237382",
+   "reason": "frontage 114.3 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237882",
+   "reason": "frontage 94.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012237883",
+   "reason": "frontage 91.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012241283",
+   "reason": "frontage 83.5 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242956",
+   "reason": "frontage 91.2 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242957",
+   "reason": "frontage 88.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242958",
+   "reason": "frontage 90.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242959",
+   "reason": "frontage 90.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242960",
+   "reason": "frontage 91.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242961",
+   "reason": "frontage 90.9 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012242962",
+   "reason": "frontage 90.8 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012243137",
+   "reason": "frontage 105.7 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012246252",
+   "reason": "frontage 98.0 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012252233",
+   "reason": "frontage 111.6 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012570734",
+   "reason": "frontage 88.4 m from Van Effenstraat"
+  },
+  {
+   "pandId": "0363100012069039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070936",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073026",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081532",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084995",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131145",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148395",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012118314",
+   "alongM": 0,
+   "widthM": 7.37,
+   "eavesM": 13.43,
+   "roofMaxM": 16.12,
+   "storeys3dbag": 5,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012146250",
+   "alongM": 7.03,
+   "widthM": 6.7,
+   "eavesM": 13.16,
+   "roofMaxM": 15.39,
+   "storeys3dbag": 5,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012086318",
+   "alongM": 14.62,
+   "widthM": 8.46,
+   "eavesM": 12.98,
+   "roofMaxM": 15.5,
+   "storeys3dbag": 5,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012061382",
+   "alongM": 22.5,
+   "widthM": 7.3,
+   "eavesM": 13.09,
+   "roofMaxM": 15.67,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012064327",
+   "alongM": 29.35,
+   "widthM": 6.4,
+   "eavesM": 13.04,
+   "roofMaxM": 15.67,
+   "storeys3dbag": 4,
+   "builtYear": 1915,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

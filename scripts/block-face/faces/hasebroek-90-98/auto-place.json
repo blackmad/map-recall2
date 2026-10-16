@@ -1,0 +1,394 @@
+{
+ "face": "hasebroek-90-98",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 4.22,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hasebroek-90-98-r1",
+   "pands": [
+    "0363100012091668",
+    "0363100012121449",
+    "0363100012069093"
+   ],
+   "passed": true,
+   "triangles": 5179
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012117742",
+   "address": "Hasebroekstraat 98",
+   "builtYear": 1915,
+   "widthM": 5.78,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#715941",
+    "wallRaw": "#6b563d",
+    "skyline": {
+     "eavesM": 14.3,
+     "eavesRow": 140,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 1.5,
+      "topWidthM": 0.3,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.131,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012117879",
+   "address": "Hasebroekstraat 96",
+   "builtYear": 1915,
+   "widthM": 5.97,
+   "eavesM": 12.92,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#604d37",
+    "wallRaw": "#594730",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 712,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: green-tile front with a point gable over the pair drawn with two dormers: the skyline is unread under the tree branches (confidence 0.27)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012091668",
+   "address": "Hasebroekstraat 94",
+   "builtYear": 1915,
+   "widthM": 5.85,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#604d38",
+    "wallRaw": "#624e36",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 130,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 3.25,
+      "topWidthM": 0.1,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#604d38",
+     "evidence": "strip 2024-12-11 span 469-703: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "notes": [
+    "door left",
+    "crown point-gable: skyline rise 3.25 m, width 1.7 m, top 0.1 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012091668",
+    "ncc": 0.499,
+    "nccRaw": 0.499,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.72,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.36 vs photo 0.13",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#584632",
+     "model": "#7d6449",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012121449",
+   "address": "Hasebroekstraat 92",
+   "builtYear": 1915,
+   "widthM": 5.85,
+   "eavesM": 12.94,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#93785d",
+    "wallRaw": "#a88a67",
+    "skyline": {
+     "eavesM": 14.35,
+     "eavesRow": 138,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 3.45,
+      "topWidthM": 0.23,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.246,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.19,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.47,
+       "widthM": 1.1,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.1,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#93785d",
+     "evidence": "strip 2024-12-11 span 703-937: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable",
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 091668",
+    "crown point-gable: skyline rise 3.45 m, width 1.98 m, top 0.23 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012121449",
+    "ncc": 0.407,
+    "nccRaw": 0.407,
+    "shiftM": [
+     0.2,
+     0.3
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#907458",
+     "model": "#a58b70",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.451
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069093",
+   "address": "Hasebroekstraat 90",
+   "builtYear": 1915,
+   "widthM": 6.59,
+   "eavesM": 12.94,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#a08267",
+    "wallRaw": "#b3916c",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 115,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 2.88,
+      "topWidthM": 0.28,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.199,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.32,
+       "widthM": 1.07,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.1
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.64
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#a08267",
+     "evidence": "strip 2024-12-11 span 937-1201: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 121449",
+    "crown point-gable: skyline rise 2.88 m, width 2.67 m, top 0.28 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012069093",
+    "ncc": 0.291,
+    "nccRaw": 0.291,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.36 vs photo 0.05"
+    ],
+    "wall": {
+     "photo": "#9a7d62",
+     "model": "#ad947c",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.05,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.131
+   },
+   "challengers": {}
+  }
+ ]
+}

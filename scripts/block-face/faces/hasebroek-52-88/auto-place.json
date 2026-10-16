@@ -1,0 +1,1016 @@
+{
+ "face": "hasebroek-52-88",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 20.71,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hasebroek-52-88-r1",
+   "pands": [
+    "0363100012132372",
+    "0363100012086016",
+    "0363100012148175",
+    "0363100012144253",
+    "0363100012088024",
+    "0363100012080701",
+    "0363100012110654",
+    "0363100012099290"
+   ],
+   "passed": false,
+   "triangles": 17234
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012132372",
+   "address": "Hasebroekstraat 70",
+   "builtYear": 1915,
+   "widthM": 6.58,
+   "eavesM": 14.69,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b7917f",
+    "wallRaw": "#d2ae96",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.4,
+      "topWidthM": 1.52,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.562,
+    "structure": {
+     "bayWidthM": 2.17,
+     "bayCentre": 0.33,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.6 m @ 0.6), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.6,
+       "centre": 0.32,
+       "light": 0.6
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.45,
+       "widthM": 0.8,
+       "centre": 0.62
+      },
+      {
+       "atM": 5.45,
+       "widthM": 1.68,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.27,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.72,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.38
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b7917f",
+     "evidence": "strip 2024-12-11 span 0-263: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012132372",
+    "ncc": 0.352,
+    "nccRaw": 0.352,
+    "shiftM": [
+     0.15,
+     -0.1
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 31 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#caab94",
+     "model": "#b68f7c",
+     "dL": -0.086
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 6,
+     "model": null
+    },
+    "iou": 0.445
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086016",
+   "address": "Hasebroekstraat 68",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.29,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#ba907c",
+    "wallRaw": "#d1ad95",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.43,
+      "topWidthM": 0.93,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.422,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.66,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.52 m @ 0.58), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.52,
+       "centre": 0.62,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.52,
+       "widthM": 1.63,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#ba907c",
+     "evidence": "strip 2024-12-11 span 263-521: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012086016",
+    "ncc": 0.311,
+    "nccRaw": 0.311,
+    "shiftM": [
+     -0.1,
+     0.1
+    ],
+    "usable": 0.62,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.40 vs photo 0.16"
+    ],
+    "wall": {
+     "photo": "#cbab94",
+     "model": "#b98e79",
+     "dL": -0.088
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.459
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148175",
+   "address": "Hasebroekstraat 66",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.21,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b78d79",
+    "wallRaw": "#cfaa91",
+    "skyline": {
+     "eavesM": 13.05,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.42,
+      "topWidthM": 0.9,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.518,
+    "structure": {
+     "bayWidthM": 2.17,
+     "bayCentre": 0.33,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.98 m @ 0.59), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.98,
+       "centre": 0.31,
+       "light": 0.59
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.45,
+       "widthM": 1.65,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b78d79",
+     "evidence": "strip 2024-12-11 span 522-780: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012148175",
+    "ncc": 0.345,
+    "nccRaw": 0.345,
+    "shiftM": [
+     0.1,
+     -0.1
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.371 < 0.45"
+    ],
+    "wall": {
+     "photo": "#c1937e",
+     "model": "#b88e7a",
+     "dL": -0.025
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.371
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144253",
+   "address": "Hasebroekstraat 64",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.16,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#9a7b6d",
+    "wallRaw": "#d0ab93",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.4,
+      "topWidthM": 0.25,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.388,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.95 m @ 0.58), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.65,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.43,
+       "widthM": 1.05,
+       "centre": 0.36
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.68,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#9a7b6d",
+     "evidence": "strip 2024-12-11 span 780-1038: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012144253",
+    "ncc": 0.338,
+    "nccRaw": 0.338,
+    "shiftM": [
+     0,
+     0.15
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.58 mean 0.40 vs photo 0.91"
+    ],
+    "wall": {
+     "photo": "#8f7467",
+     "model": "#a88e82",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.91,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.33
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088024",
+   "address": "Hasebroekstraat 62",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.25,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#ba8d78",
+    "wallRaw": "#cea68c",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.8,
+      "topWidthM": 0.38,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.372,
+    "structure": {
+     "bayWidthM": 2.15,
+     "bayCentre": 0.32,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.1 m @ 0.58), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.1,
+       "centre": 0.32,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 1.65,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#ba8d78",
+     "evidence": "strip 2024-12-11 span 1038-1296: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012088024",
+    "ncc": 0.409,
+    "nccRaw": 0.409,
+    "shiftM": [
+     0.05,
+     -0.1
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32",
+     "window shape none vs photo tall",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#bd907b",
+     "model": "#ba8d78",
+     "dL": -0.012
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.325
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080701",
+   "address": "Hasebroekstraat 60",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.22,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b18974",
+    "wallRaw": "#c49e86",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.4,
+      "topWidthM": 1.2,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.451,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.67,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.98 m @ 0.58), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.98,
+       "centre": 0.67,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.7,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.92,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.63
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#b18974",
+     "evidence": "strip 2024-12-11 span 1297-1555: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012080701",
+    "ncc": 0.368,
+    "nccRaw": 0.368,
+    "shiftM": [
+     0.05,
+     0.15
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23",
+     "window shape none vs photo tall",
+     "columns none vs photo 6"
+    ],
+    "wall": {
+     "photo": "#b68c79",
+     "model": "#b6907c",
+     "dL": 0.006
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 6,
+     "model": null
+    },
+    "iou": 0.382
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110654",
+   "address": "Hasebroekstraat 58",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.24,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b48a76",
+    "wallRaw": "#cfa78d",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.43,
+      "topWidthM": 0.72,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.457,
+    "structure": {
+     "bayWidthM": 2.2,
+     "bayCentre": 0.32,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.15 m @ 0.58), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.15,
+       "centre": 0.32,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.7,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.92,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.63
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b48a76",
+     "evidence": "strip 2024-12-11 span 1555-1813: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012110654",
+    "ncc": 0.394,
+    "nccRaw": 0.394,
+    "shiftM": [
+     0.1,
+     -0.1
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo tall",
+     "columns none vs photo 8"
+    ],
+    "wall": {
+     "photo": "#c6947e",
+     "model": "#b78e7b",
+     "dL": -0.035
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 8,
+     "model": null
+    },
+    "iou": 0.317
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099290",
+   "address": "Hasebroekstraat 56",
+   "builtYear": 1915,
+   "widthM": 6.58,
+   "eavesM": 12.37,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#c69380",
+    "wallRaw": "#d0a990",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.4,
+      "topWidthM": 1.23,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.403,
+    "structure": {
+     "bayWidthM": 2.17,
+     "bayCentre": 0.66,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.13 m @ 0.6), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.13,
+       "centre": 0.66,
+       "light": 0.6
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.65,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.57
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#c69380",
+     "evidence": "strip 2024-12-11 span 1814-2077: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012099290",
+    "ncc": 0.332,
+    "nccRaw": 0.332,
+    "shiftM": [
+     0,
+     0.1
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29",
+     "window shape none vs photo square",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#c4907d",
+     "model": "#c08772",
+     "dL": -0.029
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.371
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161640",
+   "address": "Hasebroekstraat 54",
+   "builtYear": 1915,
+   "widthM": 5.57,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#d0b5a6",
+    "wallRaw": "#9f9388",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.8,
+      "topWidthM": 0.5,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 13,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.571,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.53,
+     "balconies": true,
+     "why": "bay-less open axis 0.85 m at 0.54 (light 0.5): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.54,
+       "light": 0.5
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; strip shows balconies (bay-less open axis 0.85 m at 0.54 (light 0.5): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "strip shows balconies (bay-less open axis 0.85 m at 0.54 (light 0.5): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.35 m = 4 storeys of 3.34 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.417 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157313",
+   "address": "Hasebroekstraat 52",
+   "builtYear": 1915,
+   "widthM": 5.41,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#e2c4b7",
+    "wallRaw": "#a19387",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.65,
+      "topWidthM": 1.02,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.599,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "bay-less open axis 0.93 m at 0.49 (light 0.55): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.49,
+       "light": 0.55
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.26,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; strip shows balconies (bay-less open axis 0.93 m at 0.49 (light 0.55): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "strip shows balconies (bay-less open axis 0.93 m at 0.49 (light 0.55): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.87 m = 4 storeys of 3.22 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.08 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.371 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,525 @@
+{
+ "face": "heije-40-56",
+ "street": "Jan Pieter Heijestraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 3.01,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012571479",
+   "address": "Jan Pieter Heijestraat 56",
+   "builtYear": 1915,
+   "widthM": 4.97,
+   "eavesM": 14.99,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#948260",
+    "wallRaw": "#67523a",
+    "skyline": {
+     "eavesM": 17.5,
+     "eavesRow": 111,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.38,
+      "topWidthM": 0.68,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1916-two-axis scores 0.69 < 0.7 (3DBAG eaves 14.99 m = 4 storeys of 3.75 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5)",
+   "best": {
+    "type": "bellamy-1916-two-axis",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.99 m = 4 storeys of 3.75 m vs the type's 3.45 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.017 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162489",
+   "address": "Jan Pieter Heijestraat 54",
+   "builtYear": 1915,
+   "widthM": 4.03,
+   "eavesM": 15.48,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6f5237",
+    "wallRaw": "#69563e",
+    "skyline": {
+     "eavesM": 19.27,
+     "eavesRow": 40,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127322",
+   "address": "Jan Pieter Heijestraat 52A",
+   "builtYear": 1915,
+   "widthM": 6.82,
+   "eavesM": 13.42,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7f5e43",
+    "wallRaw": "#6a4f33",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.35,
+      "topWidthM": 0.85,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: green-tile front with a point gable over the pair drawn with two dormers: the skyline reads the dormer beside the gable (rise 1.3 m, top 0.8 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147904",
+   "address": "Jan Pieter Heijestraat 50A",
+   "builtYear": 1915,
+   "widthM": 6.03,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b684d",
+    "wallRaw": "#775b3e",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.28,
+      "topWidthM": 0.78,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 52A: the gable drawn as two dormers",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109054",
+   "address": "Jan Pieter Heijestraat 48A",
+   "builtYear": 1915,
+   "widthM": 6.09,
+   "eavesM": 13.39,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b6849",
+    "wallRaw": "#795d3e",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 176,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 4.02,
+      "topWidthM": 0.25,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.57,
+       "widthM": 0.93,
+       "centre": 0.08
+      },
+      {
+       "atM": 9.65,
+       "widthM": 1.07,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.116 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.12)",
+   "likeness": {
+    "pandId": "0363100012109054",
+    "ncc": 0.116,
+    "nccRaw": 0.116,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.72,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12"
+    ],
+    "wall": {
+     "photo": "#7c5d42",
+     "model": "#a57c57",
+     "dL": 0.122
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.45
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147847",
+   "address": "Jan Pieter Heijestraat 46A",
+   "builtYear": 1915,
+   "widthM": 5.61,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#82664d",
+    "wallRaw": "#896c4d",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.35,
+      "topWidthM": 0.9,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.137,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.075 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.272 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012147847",
+    "ncc": 0.075,
+    "nccRaw": 0.075,
+    "shiftM": [
+     -0.05,
+     0.2
+    ],
+    "usable": 0.69,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.272 < 0.45"
+    ],
+    "wall": {
+     "photo": "#7a6049",
+     "model": "#9b7a5c",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.272
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065334",
+   "address": "Jan Pieter Heijestraat 44A",
+   "builtYear": 1915,
+   "widthM": 5.35,
+   "eavesM": 13.29,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#85644b",
+    "wallRaw": "#9a7653",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 231,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 1.3,
+      "topWidthM": 0.82,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.193,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.44,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a gabled two-axis front drawn as the flat Bellamystraat two-axis type under a black roof",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073446",
+   "address": "Jan Pieter Heijestraat 42A",
+   "builtYear": 1915,
+   "widthM": 6.35,
+   "eavesM": 13.27,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#997659",
+    "wallRaw": "#a4805b",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.4,
+      "topWidthM": 0.75,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.165,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 0.93,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.5,
+       "widthM": 0.8,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: green-tile front with a gable drawn with two dormers",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064006",
+   "address": "Jan Pieter Heijestraat 40A",
+   "builtYear": 1915,
+   "widthM": 3.72,
+   "eavesM": 13.05,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#a17b5c",
+    "wallRaw": "#a78360",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.25,
+      "topWidthM": 1.27,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.193,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.52,
+       "widthM": 1.02,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a 3.7 m sliver of a wider front drawn as a two-axis house",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

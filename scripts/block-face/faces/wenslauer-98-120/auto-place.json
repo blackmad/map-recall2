@@ -1,0 +1,194 @@
+{
+ "face": "wenslauer-98-120",
+ "street": "Wenslauerstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 0.39,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012141125",
+   "address": "Wenslauerstraat 110",
+   "builtYear": 1986,
+   "widthM": 15.37,
+   "eavesM": 11.23,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#7e694a",
+    "wallRaw": "#786a4c",
+    "skyline": {
+     "eavesM": 8.57,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6.15,
+      "riseM": 2.9,
+      "topWidthM": 5.2,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.496,
+    "structure": {
+     "bayWidthM": 2.13,
+     "bayCentre": 0.92,
+     "balconies": true,
+     "why": "dark open axis 1.25 m at 0.7 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.25,
+       "centre": 0.7,
+       "light": 0.32
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1986, type 1928-1935; frontage 15.37 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.25 m at 0.7 (light 0.32): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1986, type 1928-1935",
+     "frontage 15.37 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.25 m at 0.7 (light 0.32): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.23 m = 4 storeys of 2.81 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.62 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.113 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 11 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012096163",
+   "address": "Wenslauerstraat 98",
+   "builtYear": 1986,
+   "widthM": 15.38,
+   "eavesM": 8.74,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#716343",
+    "wallRaw": "#676047",
+    "skyline": {
+     "eavesM": 8.5,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 3.78,
+      "topWidthM": 0.75,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.427,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.88,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.86 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.86,
+       "light": 0.41
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1986, type 1928-1935; frontage 15.38 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1986, type 1928-1935",
+     "frontage 15.38 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.74 m = 4 storeys of 2.19 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.74 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

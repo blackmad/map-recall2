@@ -1,0 +1,685 @@
+{
+ "street": "Jan Hanzenstraat",
+ "seed": "0363100012066083",
+ "members": [
+  "0363100012066083",
+  "0363100012106541",
+  "0363100012162574",
+  "0363100012155647",
+  "0363100012164440",
+  "0363100012166846",
+  "0363100012157466",
+  "0363100012162743",
+  "0363100012114483",
+  "0363100012133356",
+  "0363100012081189",
+  "0363100012237201"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012119239 7.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012237201 (face continues: 147065)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061723",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012086668"
+  },
+  {
+   "pandId": "0363100012064390",
+   "reason": "frontage 49.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012064752",
+   "reason": "frontage 38.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012065779",
+   "reason": "frontage 77.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012066665",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012067622",
+   "reason": "frontage 60.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012068149",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012069844",
+   "reason": "frontage 54.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012070740",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012073104",
+   "reason": "frontage 31.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012074230",
+   "reason": "frontage 77.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012077636",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012081134",
+   "reason": "frontage 47.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012086461",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012086476",
+   "reason": "frontage 36.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012086668",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012111819"
+  },
+  {
+   "pandId": "0363100012086952",
+   "reason": "frontage 51.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012090634",
+   "reason": "frontage 31.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012091181",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012069921"
+  },
+  {
+   "pandId": "0363100012092148",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012092484",
+   "reason": "frontage 55.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012096163",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012236532"
+  },
+  {
+   "pandId": "0363100012099177",
+   "reason": "frontage 77.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012099917",
+   "reason": "frontage 37.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012099972",
+   "reason": "frontage 55.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012103549",
+   "reason": "frontage 53.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012107941",
+   "reason": "frontage 43.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012108264",
+   "reason": "frontage 53.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012112111",
+   "reason": "frontage 70.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012112287",
+   "reason": "frontage 46.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012115435",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012115852",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012086668"
+  },
+  {
+   "pandId": "0363100012116594",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012117685",
+   "reason": "frontage 53.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012119330",
+   "reason": "frontage 47.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012125497",
+   "reason": "frontage 49.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012126139",
+   "reason": "frontage 81.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012129073",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012132592",
+   "reason": "frontage 60.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012136309",
+   "reason": "frontage 57.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012140769",
+   "reason": "frontage 53.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012141125",
+   "reason": "frontage 32.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012142375",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012145755",
+   "reason": "no frontage on Jan Hanzenstraat: No footprint edge faces Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012146138",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012061723"
+  },
+  {
+   "pandId": "0363100012149826",
+   "reason": "frontage 54.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012149979",
+   "reason": "frontage 97.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012150434",
+   "reason": "frontage 45.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012152375",
+   "reason": "frontage 81.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012152444",
+   "reason": "frontage 57.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012152825",
+   "reason": "frontage 106.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012152980",
+   "reason": "frontage 79.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012153104",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012155647"
+  },
+  {
+   "pandId": "0363100012153358",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012155647"
+  },
+  {
+   "pandId": "0363100012156322",
+   "reason": "frontage 108.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012156584",
+   "reason": "frontage 36.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012156988",
+   "reason": "frontage 106.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012157007",
+   "reason": "frontage 106.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012157119",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012066083"
+  },
+  {
+   "pandId": "0363100012157702",
+   "reason": "frontage 80.1 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012158097",
+   "reason": "frontage 108.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012158514",
+   "reason": "frontage 82.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012158680",
+   "reason": "frontage 77.1 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012158750",
+   "reason": "frontage 46.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012159466",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012166846"
+  },
+  {
+   "pandId": "0363100012159774",
+   "reason": "frontage 106.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012160044",
+   "reason": "frontage 108.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012160152",
+   "reason": "frontage 106.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012160684",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012162743"
+  },
+  {
+   "pandId": "0363100012162169",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012119239"
+  },
+  {
+   "pandId": "0363100012162527",
+   "reason": "frontage 78.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012162552",
+   "reason": "frontage 106.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012163151",
+   "reason": "frontage 83.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012163468",
+   "reason": "frontage 77.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012163580",
+   "reason": "frontage 79.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012163629",
+   "reason": "frontage 77.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012164198",
+   "reason": "frontage 79.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012164752",
+   "reason": "frontage 56.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012165612",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012166846"
+  },
+  {
+   "pandId": "0363100012166378",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012162743"
+  },
+  {
+   "pandId": "0363100012166668",
+   "reason": "frontage 56.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012166763",
+   "reason": "frontage 106.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012166945",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012066083"
+  },
+  {
+   "pandId": "0363100012166989",
+   "reason": "frontage 78.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012186111",
+   "reason": "frontage 80.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012199889",
+   "reason": "frontage 70.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012205534",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012162574"
+  },
+  {
+   "pandId": "0363100012206748",
+   "reason": "frontage 128.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012206751",
+   "reason": "frontage 124.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012207405",
+   "reason": "frontage 79.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012214311",
+   "reason": "frontage 73.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012218126",
+   "reason": "frontage 75.1 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012220668",
+   "reason": "frontage 67.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012221924",
+   "reason": "frontage 66.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012235634",
+   "reason": "frontage 70.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012236014",
+   "reason": "frontage 80.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012236138",
+   "reason": "frontage 45.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012236759",
+   "reason": "frontage 46.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012236899",
+   "reason": "frontage 106.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012236936",
+   "reason": "frontage 46.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012237015",
+   "reason": "frontage 46.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012237138",
+   "reason": "frontage 53.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012237264",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012237201"
+  },
+  {
+   "pandId": "0363100012237331",
+   "reason": "frontage 46.1 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012237382",
+   "reason": "frontage 45.9 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012237882",
+   "reason": "frontage 45.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012237883",
+   "reason": "frontage 45.7 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012240536",
+   "reason": "sightline to Jan Hanzenstraat crosses 0363100012106541"
+  },
+  {
+   "pandId": "0363100012241283",
+   "reason": "frontage 45.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012243137",
+   "reason": "frontage 46.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012246252",
+   "reason": "frontage 45.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012250623",
+   "reason": "frontage 106.6 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252233",
+   "reason": "frontage 78.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252234",
+   "reason": "frontage 68.8 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252235",
+   "reason": "frontage 69.0 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252236",
+   "reason": "frontage 69.1 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252237",
+   "reason": "frontage 69.2 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252238",
+   "reason": "frontage 69.3 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012252239",
+   "reason": "frontage 69.4 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012570570",
+   "reason": "frontage 49.5 m from Jan Hanzenstraat"
+  },
+  {
+   "pandId": "0363100012064751",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087338",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091334",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111836",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115529",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118514",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137097",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155942",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161752",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164087",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012066083",
+   "alongM": 0,
+   "widthM": 3.53,
+   "eavesM": 6.29,
+   "roofMaxM": 9.62,
+   "storeys3dbag": 3,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012106541",
+   "alongM": 3.53,
+   "widthM": 3.53,
+   "eavesM": 6.26,
+   "roofMaxM": 9.56,
+   "storeys3dbag": 3,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162574",
+   "alongM": 8.84,
+   "widthM": 7.1,
+   "eavesM": 4.49,
+   "roofMaxM": 7.67,
+   "storeys3dbag": 2,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155647",
+   "alongM": 14.21,
+   "widthM": 3.62,
+   "eavesM": 4.42,
+   "roofMaxM": 7.32,
+   "storeys3dbag": 2,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164440",
+   "alongM": 17.8,
+   "widthM": 3.57,
+   "eavesM": 4.67,
+   "roofMaxM": 5.82,
+   "storeys3dbag": 2,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166846",
+   "alongM": 22.55,
+   "widthM": 5.93,
+   "eavesM": 3.18,
+   "roofMaxM": 5.39,
+   "storeys3dbag": 2,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157466",
+   "alongM": 27.4,
+   "widthM": 3.77,
+   "eavesM": 5.38,
+   "roofMaxM": 5.39,
+   "storeys3dbag": 2,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162743",
+   "alongM": 31.79,
+   "widthM": 5,
+   "eavesM": 5,
+   "roofMaxM": 5.28,
+   "storeys3dbag": 2,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114483",
+   "alongM": 36.82,
+   "widthM": 5.07,
+   "eavesM": 9.32,
+   "roofMaxM": 14.95,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012133356",
+   "alongM": 41.84,
+   "widthM": 4.97,
+   "eavesM": 9.25,
+   "roofMaxM": 14.65,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012081189",
+   "alongM": 46.81,
+   "widthM": 4.97,
+   "eavesM": 9.25,
+   "roofMaxM": 14.7,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237201",
+   "alongM": 54.32,
+   "widthM": 10.05,
+   "eavesM": 9.25,
+   "roofMaxM": 14.87,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  }
+ ]
+}

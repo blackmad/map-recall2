@@ -1,0 +1,620 @@
+{
+ "street": "Jan Pieter Heijestraat",
+ "seed": "0363100012145336",
+ "members": [
+  "0363100012109543",
+  "0363100012128983"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of heije-41-53: 237047 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of heije-41-53: 117355 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061290",
+   "reason": "frontage 70.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012061382",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012061473",
+   "reason": "frontage 89.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012061656",
+   "reason": "frontage 89.9 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012064327",
+   "reason": "frontage 70.4 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012067939",
+   "reason": "frontage 59.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012069039",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012069093",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012069215",
+   "reason": "frontage 94.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012070936",
+   "reason": "frontage 56.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012072336",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012064006"
+  },
+  {
+   "pandId": "0363100012073026",
+   "reason": "frontage 51.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012073389",
+   "reason": "frontage 61.4 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012073911",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012075066",
+   "reason": "frontage 66.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012075898",
+   "reason": "frontage 91.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012078926",
+   "reason": "frontage 103.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012080404",
+   "reason": "frontage 74.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012080765",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012081281",
+   "reason": "frontage 74.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012081452",
+   "reason": "frontage 56.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012081532",
+   "reason": "frontage 75.4 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012082619",
+   "reason": "frontage 40.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012082902",
+   "reason": "frontage 108.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012083686",
+   "reason": "frontage 81.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012084429",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012113490"
+  },
+  {
+   "pandId": "0363100012084995",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012085428",
+   "reason": "frontage 109.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012086318",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012087040",
+   "reason": "frontage 95.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012091668",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012094981",
+   "reason": "frontage 60.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012095335",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012095723",
+   "reason": "frontage 68.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012099202",
+   "reason": "frontage 70.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012099334",
+   "reason": "frontage 116.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012100409",
+   "reason": "frontage 35.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012101453",
+   "reason": "frontage 122.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012102862",
+   "reason": "frontage 49.4 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012105909",
+   "reason": "frontage 55.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012106866",
+   "reason": "frontage 79.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012108097",
+   "reason": "frontage 56.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012111465",
+   "reason": "frontage 110.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012113075",
+   "reason": "frontage 62.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012113490",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012145336"
+  },
+  {
+   "pandId": "0363100012115607",
+   "reason": "frontage 99.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012117879",
+   "reason": "frontage 30.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012118314",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012119510",
+   "reason": "frontage 42.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012121332",
+   "reason": "frontage 73.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012121417",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012121449",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012126730",
+   "reason": "frontage 40.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012127794",
+   "reason": "frontage 36.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012130403",
+   "reason": "frontage 62.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012130888",
+   "reason": "frontage 31.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012131145",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012133522",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012113490"
+  },
+  {
+   "pandId": "0363100012133637",
+   "reason": "frontage 33.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012133868",
+   "reason": "frontage 66.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012134227",
+   "reason": "frontage 63.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012136251",
+   "reason": "frontage 99.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012138549",
+   "reason": "frontage 60.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012140217",
+   "reason": "frontage 100.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012143064",
+   "reason": "frontage 84.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012143257",
+   "reason": "frontage 59.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012144553",
+   "reason": "frontage 55.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012146250",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012146466",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012147051",
+   "reason": "frontage 80.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012147546",
+   "reason": "frontage 106.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012148395",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012149447",
+   "reason": "frontage 60.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012149796",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012153405",
+   "reason": "frontage 32.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012154793",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012064006"
+  },
+  {
+   "pandId": "0363100012155971",
+   "reason": "frontage 38.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012156317",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012072741"
+  },
+  {
+   "pandId": "0363100012156795",
+   "reason": "frontage 85.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012157584",
+   "reason": "frontage 44.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012157710",
+   "reason": "frontage 34.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012158310",
+   "reason": "frontage 88.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012159164",
+   "reason": "frontage 63.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012160054",
+   "reason": "frontage 48.9 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012160344",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012072741"
+  },
+  {
+   "pandId": "0363100012160347",
+   "reason": "frontage 43.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012161284",
+   "reason": "frontage 93.4 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012161712",
+   "reason": "frontage 37.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012163986",
+   "reason": "frontage 83.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012164085",
+   "reason": "frontage 73.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012164263",
+   "reason": "frontage 58.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012166628",
+   "reason": "frontage 53.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012167064",
+   "reason": "frontage 68.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012167305",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012072741"
+  },
+  {
+   "pandId": "0363100012188721",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012162489"
+  },
+  {
+   "pandId": "0363100012193362",
+   "reason": "frontage 74.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012193363",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012162489"
+  },
+  {
+   "pandId": "0363100012200900",
+   "reason": "frontage 54.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012201593",
+   "reason": "frontage 87.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012203520",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012073446"
+  },
+  {
+   "pandId": "0363100012206870",
+   "reason": "frontage 58.9 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012213746",
+   "reason": "frontage 94.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012215185",
+   "reason": "frontage 48.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012232910",
+   "reason": "frontage 118.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012232911",
+   "reason": "frontage 119.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012232912",
+   "reason": "frontage 121.2 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233004",
+   "reason": "frontage 95.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233005",
+   "reason": "frontage 115.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233006",
+   "reason": "frontage 116.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233007",
+   "reason": "frontage 101.9 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233008",
+   "reason": "frontage 103.5 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233009",
+   "reason": "frontage 105.1 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233010",
+   "reason": "frontage 93.9 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233011",
+   "reason": "frontage 100.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233012",
+   "reason": "frontage 94.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233013",
+   "reason": "frontage 94.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233446",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012233665",
+   "reason": "frontage 46.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012235880",
+   "reason": "frontage 81.3 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012235902",
+   "reason": "frontage 48.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012235916",
+   "reason": "frontage 69.0 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236250",
+   "reason": "frontage 60.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236258",
+   "reason": "frontage 64.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236316",
+   "reason": "no frontage on Jan Pieter Heijestraat: No footprint edge faces Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236512",
+   "reason": "frontage 36.6 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236531",
+   "reason": "frontage 52.7 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236565",
+   "reason": "frontage 78.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012236616",
+   "reason": "sightline to Jan Pieter Heijestraat crosses 0363100012159927"
+  },
+  {
+   "pandId": "0363100012236922",
+   "reason": "frontage 87.8 m from Jan Pieter Heijestraat"
+  },
+  {
+   "pandId": "0363100012064006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065334",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072741",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080487",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109054",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117742",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127322",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147904",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012230638",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236798",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571479",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012109543",
+   "alongM": 21.61,
+   "widthM": 6.71,
+   "eavesM": 12.97,
+   "roofMaxM": 15.81,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012128983",
+   "alongM": 27.88,
+   "widthM": 5.83,
+   "eavesM": 13.04,
+   "roofMaxM": 15.52,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "heije-41-53"
+}

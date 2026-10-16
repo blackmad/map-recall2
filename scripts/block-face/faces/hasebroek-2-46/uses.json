@@ -1,0 +1,365 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:18:05.869Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160178",
+   "addresses": [
+    "Hasebroekstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000659403"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167170",
+   "addresses": [
+    "Hasebroekstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000659395"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161486",
+   "addresses": [
+    "Hasebroekstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000659388"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163006",
+   "addresses": [
+    "Hasebroekstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000659381"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164522",
+   "addresses": [
+    "Hasebroekstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 28-H",
+     "use": "industriefunctie",
+     "areaM2": 52,
+     "bagId": "0363010000659374"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10598756425,
+     "lngLat": [
+      4.8658662,
+      52.3662459
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "check_date": "2025-06-14",
+      "indoor": "no"
+     },
+     "fetchedAt": "2026-10-16T11:18:05.869Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159125",
+   "addresses": [
+    "Hasebroekstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000659367"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155789",
+   "addresses": [
+    "Hasebroekstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000659359"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236622",
+   "addresses": [
+    "Hasebroekstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010001021313"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164477",
+   "addresses": [
+    "Hasebroekstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000659344"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156654",
+   "addresses": [
+    "Hasebroekstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010002001906"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165214",
+   "addresses": [
+    "Hasebroekstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000659328"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8730863079,
+     "lngLat": [
+      4.8662987,
+      52.3663582
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1053CT",
+      "addr:street": "Hasebroekstraat",
+      "name": "El Imaan Wa Nour",
+      "shop": "butcher",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:18:05.869Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164498",
+   "addresses": [
+    "Hasebroekstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000659320"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153488",
+   "addresses": [
+    "Hasebroekstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000659312"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154364",
+   "addresses": [
+    "Hasebroekstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 10-H",
+     "use": "industriefunctie",
+     "areaM2": 70,
+     "bagId": "0363010000659304"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165475",
+   "addresses": [
+    "Hasebroekstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000659296"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160593",
+   "addresses": [
+    "Hasebroekstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 6-H",
+     "use": "industriefunctie",
+     "areaM2": 118,
+     "bagId": "0363010001006488"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236958",
+   "addresses": [
+    "Hasebroekstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 4-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000659281"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158343",
+   "addresses": [
+    "Hasebroekstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000659274"
+    },
+    {
+     "address": "Ten Katestraat 32-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001005902"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834784,
+     "lngLat": [
+      4.8669847,
+      52.3665481
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32",
+      "addr:postcode": "1053CT",
+      "addr:street": "Ten Katestraat",
+      "amenity": "cafe",
+      "check_date": "2026-09-18",
+      "check_date:opening_hours": "2026-09-18",
+      "name": "Café Het Wapen van Ten Kate",
+      "opening_hours": "Tu-Sa 09:30-19:00; Mo 13:00-19:00",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-16T11:18:05.869Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

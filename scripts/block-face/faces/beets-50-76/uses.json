@@ -1,0 +1,90 @@
+{
+ "street": "Nicolaas Beetsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:48:17.545Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233487",
+   "addresses": [
+    "Nicolaas Beetsstraat 62",
+    "Nicolaas Beetsstraat 64",
+    "Nicolaas Beetsstraat 66",
+    "Nicolaas Beetsstraat 68",
+    "Nicolaas Beetsstraat 70",
+    "Nicolaas Beetsstraat 72",
+    "Nicolaas Beetsstraat 74",
+    "Nicolaas Beetsstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000750359"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000750360"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000750361"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000750362"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000750363"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000750364"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000750365"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000750366"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161954",
+   "addresses": [
+    "Nicolaas Beetsstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012067118"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

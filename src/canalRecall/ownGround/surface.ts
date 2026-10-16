@@ -42,6 +42,7 @@ const DECK_EASE_MAX_M = 6;
  */
 export const DECK_MAX_GRADE = 0.12;
 const BUCKET_M = 25;
+const bucketKey = (bx: number, by: number) => (bx + 1_048_576) * 2_097_152 + (by + 1_048_576);
 
 export interface DeckSurface {
   profile: DeckProfile;
@@ -68,7 +69,8 @@ const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t)
 
 export class GroundSurface {
   readonly decks: DeckSurface[] = [];
-  private readonly buckets = new Map<string, DeckSurface[]>();
+  /** Decks by BUCKET_M square, keyed bucketKey(bx, by) (a number: the template-string key allocated on every lookup). */
+  private readonly buckets = new Map<number, DeckSurface[]>();
   /** Height used where the field has no tile (keeps a missing tile flat, not a hole). */
   fallbackZ = 0;
 
@@ -121,7 +123,7 @@ export class GroundSurface {
     const [x0, y0, x1, y1] = profile.bbox, pad = DECK_BLEND_M;
     for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
       for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
-        const k = `${bx}:${by}`;
+        const k = bucketKey(bx, by);
         (this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!).push(deck);
       }
     return deck;
@@ -164,7 +166,7 @@ export class GroundSurface {
   /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M). */
   height = (x: number, y: number): number => {
     const g = this.ground(x, y);
-    const list = this.buckets.get(`${Math.floor(x / BUCKET_M)}:${Math.floor(y / BUCKET_M)}`);
+    const list = this.buckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
     if (!list) return g;
     let z = g;
     for (const deck of list) {
@@ -187,7 +189,7 @@ export class GroundSurface {
 
   /** 1 within a measured deck span's footprint (+1 m past each span end), fading to 0 over DECK_BLEND_M beside it (0 off every deck). */
   deckWeight = (x: number, y: number): number => {
-    const list = this.buckets.get(`${Math.floor(x / BUCKET_M)}:${Math.floor(y / BUCKET_M)}`);
+    const list = this.buckets.get(bucketKey(Math.floor(x / BUCKET_M), Math.floor(y / BUCKET_M)));
     if (!list) return 0;
     let best = 0;
     for (const deck of list) {

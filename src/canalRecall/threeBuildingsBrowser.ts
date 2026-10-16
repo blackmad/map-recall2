@@ -45,6 +45,7 @@ import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
+import { boundingSphereOf } from './geometryBounds.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -179,7 +180,20 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
 }
 
 
+// Per-ring memo of tile keys by zoom: setFeatures regroups the whole resident city (up to ~20k buildings) on every
+// tile flush and every detail-centre move, and the tile maths plus key string per building per call were most of
+// its own cost while riding (docs/perf-motion-stutter-20261016.md). Keyed by the first ring, which fixes the answer.
+const tileKeyMemo = new WeakMap<object, Map<number, string>>();
 const tileKeyOf = (polygons: number[][][][], zoom = TILE_ZOOM): string => {
+  const ring = polygons[0]?.[0];
+  if (!ring) return tileKeyAt(polygons, zoom);
+  let byZoom = tileKeyMemo.get(ring);
+  if (!byZoom) tileKeyMemo.set(ring, byZoom = new Map());
+  let key = byZoom.get(zoom);
+  if (key === undefined) byZoom.set(zoom, key = tileKeyAt(polygons, zoom));
+  return key;
+};
+const tileKeyAt = (polygons: number[][][][], zoom: number): string => {
   const [lng, lat] = polygons[0]?.[0]?.[0] ?? [0, 0];
   const n = 2 ** zoom, rad = lat * Math.PI / 180;
   const x = Math.floor(((lng + 180) / 360) * n);
@@ -295,6 +309,16 @@ export type GroundBaseFn = (feature: Feature) => number | null | undefined;
 /** Per chunk: what each building was lifted by, and which still wait for their relief. */
 type GroundLift = { applied: Map<string, number>; pending: Set<string>; features: Map<string, Feature> };
 
+/**
+ * Main-thread work per display frame for staging worker-built chunks (ground lift) before they
+ * install. A z14 coarse chunk carries ~1–3k buildings, and lifting them all at once (each footprint
+ * sampled on the relief) plus the bounding sphere was 90–140 ms in one message handler while riding
+ * (docs/perf-motion-stutter-20261016.md). Staged, the old chunk keeps drawing until the new one swaps in.
+ */
+export const INSTALL_BUDGET_MS = 4;
+type StagedInstall = { key: string; source: Feature[]; chunk: Chunk; ms: number; options: BuildOptions; boundParentIds: string[]; lift?: GroundLift; ranges?: Map<string, { start: number; count: number }> };
+
+
 export class ThreeBuildings {
   readonly layer: any;
   private visible = true;
@@ -342,6 +366,8 @@ export class ThreeBuildings {
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
   private readonly inflightOptions = new Map<string, BuildOptions>();
+  private readonly staged: StagedInstall[] = [];
+  private stageScheduled = false;
   private hostWallOpenings: readonly ChunkHostOpeningConfig[] = [];
   private hostWallOpeningsRevision = '[]';
   private boatTiles = new Map<string, Houseboat[]>();
@@ -566,7 +592,12 @@ export class ThreeBuildings {
 
   /** The resident building set from the tile streamer; rebuilds only chunks whose features changed. */
   setFeatures(features: readonly Feature[]): void {
-    if (features !== this.lastFeatures) this.contextIndex = new BuildingContextIndex(features, f => this.boundsFor(f));
+    if (features !== this.lastFeatures) {
+      // The index is built only if some group's context must be recomputed (contextFor).
+      this.contextIndex = undefined;
+      this.contextFeatures = features;
+      this.contextChanges = this.changedBoxes(this.lastFeatures, features);
+    } else this.contextChanges = [];
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
     for (const feature of features) {
@@ -605,13 +636,14 @@ export class ThreeBuildings {
     for (const [key, list] of groups) {
       const contextKey = key.startsWith(EXTRAS_PREFIX) ? `near:${key.slice(EXTRAS_PREFIX.length)}` : key;
       let context = contexts.get(contextKey);
-      if (!context) { context = key === KIT_KEY || key.startsWith(BOAT_PREFIX) ? [] : this.contextFor(list); contexts.set(contextKey, context); }
+      if (!context) { context = key === KIT_KEY || key.startsWith(BOAT_PREFIX) ? [] : this.cachedContextFor(contextKey, list); contexts.set(contextKey, context); }
       const previousContext=this.contextGroups.get(key);
       this.contextGroups.set(key,context);
       const flying = this.inflight.get(key);
       if (same(previousContext,context) && (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list))) continue;
       this.pending.push(key, () => this.rebuild(key, list));
     }
+    for (const k of [...this.contextCache.keys()]) if (!contexts.has(k)) this.contextCache.delete(k);
     this.pump();
   }
 
@@ -903,8 +935,37 @@ export class ThreeBuildings {
   }
   // Include overlapping footprints in adjacent detail/tile batches as context,
   // without drawing them twice. Picking retains the same installed context.
+  /**
+   * Context of a group, reused when its own buildings are the same objects and no building that arrived,
+   * left or was restyled since lies within the group's padded bounds (only those can join or leave its
+   * neighbours; the relative order of the rest is unchanged). Recomputing every group's neighbours on every
+   * tile flush and detail-centre move was 50–280 ms per call while riding (docs/perf-motion-stutter-20261016.md).
+   */
+  private contextCache = new Map<string, { source: readonly Feature[]; box: [number, number, number, number]; context: Feature[]; boats: ReadonlySet<string> }>();
+  private contextFeatures: readonly Feature[] = [];
+  private contextChanges: [number, number, number, number][] = [];
+  private changedBoxes(previous: readonly Feature[], next: readonly Feature[]): [number, number, number, number][] {
+    const before = new Set(previous), after = new Set(next), out: [number, number, number, number][] = [];
+    for (const f of next) if (!before.has(f)) out.push(this.boundsFor(f));
+    for (const f of previous) if (!after.has(f)) out.push(this.boundsFor(f));
+    return out;
+  }
+  private cachedContextFor(cacheKey: string, source: readonly Feature[]): Feature[] {
+    const held = this.contextCache.get(cacheKey);
+    const PAD = 1e-6;
+    if (held && held.boats === this.boatIds && held.source.length === source.length && held.source.every((f, i) => f === source[i])) {
+      const [x0, y0, x1, y1] = held.box;
+      if (!this.contextChanges.some(b => b[2] >= x0 - PAD && b[0] <= x1 + PAD && b[3] >= y0 - PAD && b[1] <= y1 + PAD)) return held.context;
+    }
+    const context = this.contextFor(source);
+    const box: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity];
+    for (const f of source) { const b = this.boundsFor(f); if (b[0] < box[0]) box[0] = b[0]; if (b[1] < box[1]) box[1] = b[1]; if (b[2] > box[2]) box[2] = b[2]; if (b[3] > box[3]) box[3] = b[3]; }
+    this.contextCache.set(cacheKey, { source, box, context, boats: this.boatIds });
+    return context;
+  }
   private contextFor(source:readonly Feature[]):Feature[]{
     const ids=new Set(source.map(f=>String(f.properties.id)));
+    this.contextIndex ??= new BuildingContextIndex(this.contextFeatures, f => this.boundsFor(f));
     return this.contextIndex?.neighbors(source, f => {
       const id=String(f.properties.id);return ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id);
     }) ?? [];
@@ -949,7 +1010,7 @@ export class ThreeBuildings {
         if (!options || event.data.appearanceRevision !== options.appearanceRevision || options.appearanceRevision !== this.appearanceRevision || event.data.surveyedEnvelopeRevision !== options.surveyedEnvelopeRevision || options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || event.data.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
         this.inflight.delete(key);
         this.inflightOptions.delete(key);
-        this.install(key, source, chunk, ms, options, event.data.boundParentIds);
+        this.stage({ key, source, chunk, ms, options, boundParentIds: event.data.boundParentIds });
         this.pump();
       };
       worker.onerror = (error) => {
@@ -1012,9 +1073,14 @@ export class ThreeBuildings {
     return { chunks, lifted, pending, minBase: Number.isFinite(minBase) ? +minBase.toFixed(2) : null, maxBase: Number.isFinite(maxBase) ? +maxBase.toFixed(2) : null, keptMB: +(keptBytes / 1048576).toFixed(1) };
   }
 
-  private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift): number {
+  private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift & { todo?: string[] }, deadline = Infinity): number {
     let n = 0;
-    for (const id of [...lift.pending]) {
+    // A staged lift walks its own list in slices; buildings whose relief is not resident stay pending.
+    const ids = lift.todo ?? [...lift.pending];
+    let k = 0;
+    for (; k < ids.length; k++) {
+      if ((k & 31) === 31 && performance.now() > deadline) break;
+      const id = ids[k];
       const feature = lift.features.get(id);
       const base = feature ? this.groundBase!(feature) : null;
       if (base === undefined) continue;
@@ -1025,10 +1091,54 @@ export class ThreeBuildings {
       lift.applied.set(id, z);
       n++;
     }
+    if (lift.todo) { lift.todo.splice(0, k); if (!lift.todo.length) delete lift.todo; }
     return n;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = []): void {
+  /** Queue a worker-built chunk; its ground lift runs in budgeted slices, then it installs (one per frame). */
+  private stage(job: StagedInstall): void {
+    const i = this.staged.findIndex(s => s.key === job.key);
+    if (i >= 0) this.staged.splice(i, 1);
+    this.staged.push(job);
+    this.scheduleStage();
+  }
+
+  private scheduleStage(): void {
+    if (this.stageScheduled || !this.staged.length) return;
+    this.stageScheduled = true;
+    const run = () => { this.stageScheduled = false; this.drainStaged(); };
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else setTimeout(run, 0);
+  }
+
+  private drainStaged(): void {
+    const deadline = performance.now() + INSTALL_BUDGET_MS;
+    let installed = false;
+    while (this.staged.length) {
+      const job = this.staged[0];
+      if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(job.key, job.source)) { this.staged.shift(); continue; }
+      if (this.groundBase && !job.key.startsWith(BOAT_PREFIX) && !job.lift) {
+        const features = new Map<string, Feature>();
+        for (const f of job.source) { const id = String((f.properties as any)?.id ?? (f as any).id ?? ''); if (id) features.set(id, f); }
+        job.lift = { applied: new Map(), pending: new Set(job.chunk.ranges.map(r => r.id)), features };
+        job.ranges = new Map(job.chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
+        (job.lift as GroundLift & { todo?: string[] }).todo = [...job.lift.pending];
+      }
+      const lift = job.lift as (GroundLift & { todo?: string[] }) | undefined;
+      if (lift?.todo?.length) {
+        this.applyGroundLift(job.chunk.positions, job.ranges!, lift, deadline);
+        if (lift.todo?.length) break; // out of budget: carry on next frame
+      }
+      // One install per frame: the geometry upload follows at the next render.
+      if (installed) break;
+      this.staged.shift();
+      this.install(job.key, job.source, job.chunk, job.ms, job.options, job.boundParentIds, lift);
+      installed = true;
+      if (performance.now() > deadline) break;
+    }
+    this.scheduleStage();
+  }
+
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = [], staged?: GroundLift): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (options && (options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
     const context=this.contextGroups.get(key);
@@ -1044,8 +1154,8 @@ export class ThreeBuildings {
     const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
     // Own ground: lift each building onto its relief before upload. Houseboats
     // follow the water level instead (mesh.position.z below).
-    let lift: GroundLift | undefined;
-    if (this.groundBase && !key.startsWith(BOAT_PREFIX)) {
+    let lift: GroundLift | undefined = staged;
+    if (!lift && this.groundBase && !key.startsWith(BOAT_PREFIX)) {
       const features = new Map<string, Feature>();
       for (const f of source) { const id = String((f.properties as any)?.id ?? (f as any).id ?? ''); if (id) features.set(id, f); }
       lift = { applied: new Map(), pending: new Set(chunk.ranges.map(r => r.id)), features };
@@ -1063,7 +1173,8 @@ export class ThreeBuildings {
     // three.js uploads a new mesh, then computes its bounding sphere to sort it.
     // With `position` already freed that throws inside MapLibre's frame and the
     // whole map flashes once per new chunk, so measure while the array exists.
-    geometry.computeBoundingSphere();
+    const sphere = boundingSphereOf(chunk.positions);
+    geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     const mesh = new THREE.Mesh(geometry, this.material);
     mesh.userData ??= {};
     mesh.userData.installedSurveyedEnvelopeData = options?.surveyedEnvelopeData;

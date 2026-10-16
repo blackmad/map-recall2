@@ -1,0 +1,93 @@
+{
+ "street": "Jan Hanzenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:34:47.458Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012111819",
+   "addresses": [
+    "Jan Hanzenstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000579833"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085436",
+   "addresses": [
+    "Jan Hanzenstraat 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 107-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000684996"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069921",
+   "addresses": [
+    "Jan Hanzenstraat 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 109-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000685003"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8712066315,
+     "lngLat": [
+      4.8639469,
+      52.3674871
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109",
+      "addr:postcode": "1053SN",
+      "addr:street": "Jan Hanzenstraat",
+      "name": "Millenium Coffeeshop",
+      "shop": "cannabis"
+     },
+     "fetchedAt": "2026-10-16T11:34:47.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012119239",
+   "addresses": [
+    "Jan Hanzenstraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 111-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000685011"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

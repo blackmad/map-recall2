@@ -1,0 +1,101 @@
+{
+ "street": "Bellamydwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:17:05.636Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012090634",
+   "addresses": [
+    "Bellamydwarsstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000579856"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146138",
+   "addresses": [
+    "Bellamydwarsstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001008247"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061723",
+   "addresses": [
+    "Bellamydwarsstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001171756"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115852",
+   "addresses": [
+    "Bellamydwarsstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000579841"
+    },
+    {
+     "address": "Bellamydwarsstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012067517"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086668",
+   "addresses": [
+    "Bellamydwarsstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 4-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000579837"
+    },
+    {
+     "address": "Bellamydwarsstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012067520"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

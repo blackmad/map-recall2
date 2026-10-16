@@ -1,0 +1,87 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157702",
+   "addresses": [
+    "Bellamystraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 62",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000580143"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099177",
+   "addresses": [
+    "Bellamystraat 58",
+    "Bellamystraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 60",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000580139"
+    },
+    {
+     "address": "Bellamystraat 58",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000681743"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236014",
+   "addresses": [
+    "Bellamystraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 56",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010001170271"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162527",
+   "addresses": [
+    "Bellamystraat 52",
+    "Bellamystraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 52-H",
+     "use": "industriefunctie",
+     "areaM2": 56,
+     "bagId": "0363010000580121"
+    },
+    {
+     "address": "Bellamystraat 54",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001024007"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

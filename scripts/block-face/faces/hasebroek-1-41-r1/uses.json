@@ -1,0 +1,100 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:25:53.378Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165485",
+   "addresses": [
+    "Hasebroekstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 1-H",
+     "use": "industriefunctie",
+     "areaM2": 140,
+     "bagId": "0363010000659270"
+    },
+    {
+     "address": "Hasebroekstraat 1-H",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012143101"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679403,
+     "lngLat": [
+      4.8671057,
+      52.3663724
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1053CL",
+      "addr:street": "Hasebroekstraat",
+      "cuisine": "turkish",
+      "name": "Dunya Firini",
+      "shop": "bakery"
+     },
+     "fetchedAt": "2026-10-16T11:25:53.378Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152706",
+   "addresses": [
+    "Hasebroekstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012143102"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153109",
+   "addresses": [
+    "Hasebroekstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000659285"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160213",
+   "addresses": [
+    "Hasebroekstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 7-H",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000659292"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
