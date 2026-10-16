@@ -33,6 +33,12 @@ export interface Bucket {
   uvs: number[];
   /** `measured`: the tint is a measured wall colour (painted brick); exported as `tintSource` so the look keeps it. */
   tintSource?: 'measured';
+  /**
+   * Exposure of the crop a measured tint was read on: the light-trim (white frame) colour of that crop. The measured
+   * panoramas are mostly overcast, so a look can scale a measured wall to a sunlit white point (tint x white / this)
+   * instead of drawing the overcast reading. Exported as `tintWhitePoint`; only with `tintSource: measured`.
+   */
+  tintWhitePoint?: string;
 }
 
 export type BucketMap = Map<string, Bucket>;
