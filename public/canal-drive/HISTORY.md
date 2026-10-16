@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## Bridge railings stop at the water (2026-10-16)
+
+User (2026-10-16): "why do the gates dip into the road?". `bridgeKit.ts`
+`parapet()` drew each side over the whole measured deck span, which runs metres
+past the water onto the quays, where `deckWidths` pulls the edge in to the road
+half-width: the railing turned 90° across footway and cycle lane and ran along
+the carriageway (BRU0166 Nassaukade/Bilderdijkgracht; BRU0063 down into the
+road). Lane `worktree-agent-ace959b5342296a67`: `railingRuns.ts` keeps each
+side where its edge meets the water (+1.5 m onto the abutment), breaks at gates
+(>45° over >0.75 m), folds and long dry stretches, and never stands on a bridge
+way crossing the parapet line. Citywide (`check:bridge-railings`): bridges with
+a gate 559 → 12, lateral gate run 6,473 → 76 m, parapet inside a carriageway or
+cycle polygon 50 bridges / 568 m → 6 / 75 m (roads-v1 pilot cells). Regressions
+BRU0166, BRU0063, BRU0257 in `check:own-ground-cells`, unit tests, e2e
+`BRIDGES=RAILINGS`; checked against PDOK orthophoto crops.
+
 ## Tropenmuseum, fourth pass: the walls around the portal dressed (2026-10-16)
 
 User (2026-10-16): the measured Mauritskade portal read as a panel pasted onto
