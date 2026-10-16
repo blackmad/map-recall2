@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## Entrepotdok roofs: materials from the orthophoto, one brick (2026-10-16)
+
+User (2026-10-16), riding north over the Nijlpaardenbrug: "are these roofs
+broken in the game? they look disconnected". Lane
+`lane/entrepotdok-roofs-20261016` (4d9d21faf, 6fca13b0d; sheet
+`docs/images/look/entrepotdok-roofs-20261016.jpg`). The large-tier recipe
+entrepotdok-164981's 3DBAG shell was closed (0 open edges, normals right);
+the disconnection was colour. Its flat roofs drew as pale gravel (the slate
+default's flat tone, luma 139), its courtyard and rear walls in an orange
+default brick beside the dark measured fronts, and the steep roofs behind
+the gables in navy slate (luma 76, the "black triangles"). The 2025
+orthophoto shows orange tiles on those roofs and dark flat roofs with solar
+panels; the Laagte Kadijk panorama shows the fronts' brick at the rear.
+Kit: large intent `roof.flat`, `roof.surfaces` (3DBAG roof planes by
+number, with evidence), `measured.otherWalls`, source kind `orthophoto`;
+unchanged output when absent (114 large meshes identical). Regression
+`largeRoofMaterials.test.ts`. Still open: the alternating blue-green glazed
+faces, solar panels, 3DBAG courtyard sliver roofs (286/287/316/285). OZV
+115-125 stays held for a different cause (its dark measured wall colours).
+
 ## The Berensluis and its Prinsengracht neighbours: one deck, landed ends, a level girder (2026-10-16)
 
 User (2026-10-16): "what's going on with this bridge?" Lane
