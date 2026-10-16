@@ -402,8 +402,8 @@
       "dateSource": "asset-update"
     },
     "centraal-station": {
-      "updatedAt": "2026-10-13T19:04:44.391Z",
-      "version": "fcf68215e627041a",
+      "updatedAt": "2026-10-16T18:59:18.132Z",
+      "version": "a6b4d3e189f14d24",
       "dateSource": "asset-update"
     },
     "centraal-station.lod1": {
@@ -689,6 +689,11 @@
     "delamar": {
       "updatedAt": "2026-10-16T07:27:46.513Z",
       "version": "5d32162e58b46fa2",
+      "dateSource": "asset-update"
+    },
+    "delamar.lod1": {
+      "updatedAt": "2026-10-16T15:17:59.493Z",
+      "version": "d251251347e70166",
       "dateSource": "asset-update"
     },
     "dominicuskerk": {
@@ -2042,8 +2047,8 @@
       "dateSource": "asset-update"
     },
     "nieuwe-kerk.lod1": {
-      "updatedAt": "2026-10-13T14:30:59.834Z",
-      "version": "5e4c5a8fc174591f",
+      "updatedAt": "2026-10-16T15:18:00.808Z",
+      "version": "c0a3e7175c634d0b",
       "dateSource": "asset-update"
     },
     "nieuwendammerkerk": {
@@ -2082,8 +2087,8 @@
       "dateSource": "asset-update"
     },
     "noorderkerk.lod1": {
-      "updatedAt": "2026-10-13T22:05:50.032Z",
-      "version": "11fb085d8b766695",
+      "updatedAt": "2026-10-16T15:18:00.829Z",
+      "version": "bb8570b839465e7c",
       "dateSource": "asset-update"
     },
     "oba-oosterdok": {
@@ -2882,8 +2887,8 @@
       "dateSource": "asset-update"
     },
     "tropenmuseum.lod1": {
-      "updatedAt": "2026-10-14T08:21:04.078Z",
-      "version": "aa9b2f260f97c174",
+      "updatedAt": "2026-10-16T18:35:07.417Z",
+      "version": "955c77725d0c9b43",
       "dateSource": "asset-update"
     },
     "tuschinski": {
@@ -3122,8 +3127,8 @@
       "dateSource": "asset-update"
     },
     "westerkerk.lod1": {
-      "updatedAt": "2026-10-13T12:50:18.217Z",
-      "version": "5a40b248a72c4245",
+      "updatedAt": "2026-10-16T15:18:02.436Z",
+      "version": "6534c1f2d5ddee4d",
       "dateSource": "asset-update"
     },
     "westermoskee": {

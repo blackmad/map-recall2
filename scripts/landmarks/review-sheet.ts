@@ -26,7 +26,7 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 import sharp from 'sharp';
 import {chromium, type Page} from '@playwright/test';
-import {findPands, lngLatToRd, neighbourhood, normId, rdToLngLat, type Footprint} from '../pand-reference/core.ts';
+import {cachedJson, findPands, lngLatToRd, neighbourhood, normId, rdToLngLat, type Footprint} from '../pand-reference/core.ts';
 import {exposedWalls, listPanos, rankPanos, type PanoPick, type Wall} from '../pand-reference/select.ts';
 import {loadPano, wallHeight} from '../pand-reference/rectify.ts';
 import {directionToPixel, sampleEquirectangular, type EquirectangularImage} from '../../src/canalRecall/facade/rectify.ts';
@@ -40,8 +40,12 @@ if (!id) { console.error('--id=<model id> required'); process.exit(2); }
 
 interface CatalogueEntry {id: string; modelUrl: string; suppressOsmIds?: string[]; surveyed?: {anchor: [number, number]; northOffsetDegrees: number}; footprint?: {centre: [number, number]}; buildingFootprint?: {type: string; coordinates: number[][][] | number[][][][]}}
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/canalRecall/landmarks/manualCatalogue.json'), 'utf8')) as CatalogueEntry[];
-const entry = catalogue.find(c => c.id === id);
-if (!entry) { console.error(`${id} not in manualCatalogue.json`); process.exit(2); }
+// Entries written inline in manualModels.ts (Centraal, Muziekgebouw, the OLVG sites) are not in the JSON catalogue.
+const entry = catalogue.find(c => c.id === id) ?? (await import('../../src/canalRecall/landmarks/manualModels.ts')).ALL_MANUAL_LANDMARKS.find(c => c.id === id) as unknown as CatalogueEntry | undefined;
+if (!entry) { console.error(`${id} not in manualCatalogue.json or manualModels.ts`); process.exit(2); }
+// The runtime turns the mesh so its +X axis lands on bearing 90 + northOffsetDegrees (signaturePlacement.ts); the sheet
+// renders north-up, so it turns the loaded scene by the same offset (clockwise from above = negative three.js y rotation).
+const northOffsetRad = (entry.surveyed?.northOffsetDegrees ?? 0) * Math.PI / 180;
 const glb = arg('glb') ?? path.join(ROOT, 'public/canal-drive/models', entry.modelUrl.replace(/^\.\/models\//, ''));
 const bag = normId(arg('bag') ?? entry.suppressOsmIds?.find(s => s.includes('IMBAG.Pand')) ?? '');
 if (!bag) { console.error('--bag=<BAG pand id> required (no suppressOsmIds pand id in the catalogue)'); process.exit(2); }
@@ -86,6 +90,12 @@ async function inventoryTile(wall: InventoryWall | undefined, photo: Buffer | nu
 /** Local metres east/north of the anchor (the same equirectangular approximation the thumbnail aiming uses). */
 const local = (lng: number, lat: number) => [(lng - anchor[0]) * 111320 * Math.cos(anchor[1] * Math.PI / 180), (lat - anchor[1]) * 110540] as const;
 const bearingOf = (w: Wall) => Math.round((Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360);
+/** File tag `<bearing>-<length>m`, with the wall's index appended when another reviewed wall has the same tag (Centraal has
+ *  three 11.9 m Stationsplein walls; they overwrote each other's row and in-game frame). */
+const wallTag = (w: Wall, all: Wall[]) => {
+  const tag = (v: Wall) => `${bearingOf(v)}-${Math.round(v.len)}m`, t = tag(w);
+  return all.filter(v => tag(v) === t).length > 1 ? `${t}-${all.indexOf(w)}` : t;
+};
 
 type Cam = {pos: [number, number, number]; headingDeg: number; pitchDeg: number; fovDeg: number};
 
@@ -106,7 +116,7 @@ const cam=new T.PerspectiveCamera(60,1,.1,2000);const s=new T.Scene();s.backgrou
 s.add(new T.HemisphereLight(0xdfe8f0,0x6b6458,1.7));const sun=new T.DirectionalLight(0xfff1dd,2.2);sun.position.set(-30,40,25);s.add(sun);
 const ground=new T.Mesh(new T.PlaneGeometry(900,900),new T.MeshLambertMaterial({color:0x8f8478}));ground.rotation.x=-Math.PI/2;ground.position.y=-.03;s.add(ground);
 window.load=b64=>new Promise((res,rej)=>{const bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
-  new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parse(bytes.buffer,'',g=>{g.scene.traverse(o=>{if(o.isMesh){o.material=o.material.clone();o.material.side=T.DoubleSide;}});s.add(g.scene);res(true);},rej);});
+  new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parse(bytes.buffer,'',g=>{g.scene.traverse(o=>{if(o.isMesh){o.material=o.material.clone();o.material.side=T.DoubleSide;}});g.scene.rotation.y=-${northOffsetRad};s.add(g.scene);res(true);},rej);});
 window.shot=(c)=>{r.setSize(${TILE},${TILE});cam.fov=c.fovDeg;cam.aspect=1;cam.updateProjectionMatrix();cam.position.set(...c.pos);
   const h=c.headingDeg*Math.PI/180,p=c.pitchDeg*Math.PI/180;
   // heading clockwise from north; north = -z, east = +x
@@ -165,7 +175,7 @@ async function gameShots(walls: Wall[], dir: string): Promise<Map<Wall, string>>
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4 && (window as any).canalRecallGame.camera?.introOverview === 0, null, {timeout: 90000});
     await page.evaluate(() => { (window as any).canalRecallGame.vectorMap.sync = () => {}; });
     for (const w of walls) {
-      const bearing = bearingOf(w), file = path.join(dir, `game-${bearing}-${Math.round(w.len)}m.png`);
+      const bearing = bearingOf(w), file = path.join(dir, `game-${wallTag(w, walls)}.png`);
       try {
         await page.evaluate(({c, b}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: 19.2, pitch: 70, bearing: b}), {c: rdToLngLat(w.mid), b: (bearing + 180) % 360});
         await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
@@ -194,7 +204,17 @@ async function main() {
     fp = {id: bag, ring: outer.map(p => lngLatToRd([p[0], p[1]])), height};
     console.log(`${bag} not in the building tiles: catalogue buildingFootprint, height ${height.toFixed(1)} m from the manifest`);
   }
-  if (!fp) throw new Error(`BAG pand ${bag} not in the building tiles and no catalogue buildingFootprint`);
+  if (!fp) {
+    // Same fallback as landmark-brief.ts: the BAG outline from PDOK WFS (CC0). Centraal's 287-vertex station pand is not in the tiles.
+    const wfs = await cachedJson(`https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand&outputFormat=application/json&srsName=urn:ogc:def:crs:EPSG::28992&count=1&filter=${encodeURIComponent(`<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${bag.replace('NL.IMBAG.Pand.', '')}</Literal></PropertyIsEqualTo></Filter>`)}`).catch(() => null);
+    const g = wfs?.features?.[0]?.geometry;
+    if (g) {
+      const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/canal-drive/models/signature-landmarks.json'), 'utf8')).models?.[id];
+      fp = {id: bag, ring: (g.type === 'Polygon' ? g.coordinates[0] : g.coordinates[0][0]).map((p: number[]) => ({x: p[0], y: p[1]})), height: manifest?.bounds ? manifest.bounds.max[1] - manifest.bounds.min[1] : 20};
+      console.log(`${bag} not in the building tiles: PDOK WFS outline (${fp.ring.length - 1} vertices)`);
+    }
+  }
+  if (!fp) throw new Error(`BAG pand ${bag} not in the building tiles, PDOK or the catalogue buildingFootprint`);
   const centre = {x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length};
   const exposed = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len);
   let walls = exposed.slice(0, Number(arg('walls') ?? 6));
@@ -248,7 +268,7 @@ async function main() {
       }
       if (GAME) { const shot = game.get(w); tiles.push(shot ? await label(fs.readFileSync(shot), 'IN GAME (every drawn model)') : await label(await sharp({create: {width: TILE, height: TILE, channels: 3, background: '#e8e4dc'}}).png().toBuffer(), 'in-game shot failed', '#b00')); }
       const row = await sharp({create: {width: TILE * COLS, height: TILE + 24, channels: 3, background: '#fff'}}).composite(tiles.map((input, i) => ({input, left: i * TILE, top: 0}))).png().toBuffer();
-      await sharp(row).toFile(path.join(out, `wall-${bearing}-${Math.round(w.len)}m.png`));
+      await sharp(row).toFile(path.join(out, `wall-${wallTag(w, walls)}.png`));
       rows.push(row);
       console.log(`  ${head}: ${pick ? 'photo ' + pick.missionYear : 'inferred'}`);
     }

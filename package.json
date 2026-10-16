@@ -503,6 +503,7 @@
     "test:bridge-street-name": "node --import tsx --test src/canalRecall/game/bridgeStreetName.test.ts",
     "test:finish-blurb": "node --import tsx --test src/canalRecall/game/finishBlurb.test.ts",
     "check:bridge-railings": "node --import tsx scripts/own-ground/audit-bridge-railings.ts",
+    "check:signature-bundle": "npm run -s build:canal-signature-landmarks && node --import tsx scripts/landmarks/check-signature-bundle.ts",
     "check:bag-gaps": "node --import tsx scripts/check-bag-gaps.ts",
     "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts"
