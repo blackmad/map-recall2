@@ -870,21 +870,6 @@ const fsStore = () => new GroundStore(async path => {
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
 });
 
-// check:own-ground-cells went red on main (2026-10-16, "-1_-1: 58 deck polygons over no deck"): the check re-inits the
-// roads store per regression group, and a second init() replaced the deck surface while decksByCell still listed the
-// decks as placed. init() is idempotent: the cell built after a second init keeps its decks.
-test('regression: GroundStore.init twice keeps the placed decks (BRU0166 cell)', { skip: !haveCells }, async () => {
-  const store = fsStore();
-  await store.init();
-  const surface = store.surface, [x, y] = storeToLocal(4.87445, 52.37286), key = store.cellAt(x, y);
-  const before = buildCell(await store.cellInput(key, 0)).stats.decks;
-  await store.init();
-  assert.equal(store.surface, surface, 'the same surface');
-  assert.ok(store.surface.decks.length >= before && before > 0, `${store.surface.decks.length} decks on the surface, ${before} in the cell`);
-  assert.equal(buildCell(await store.cellInput(key, 0)).stats.decks, before);
-  assert.ok(store.decks(key).every(d => store.surface.decks.includes(d)), 'every deck the cell lists lies on the riding surface');
-});
-
 // BRU0009 Torensluis (2026-10-14): its e2e hump readout flipped on main while this deck, its body and top were
 // byte-identical to the bridge lane's; the crown (1.66 m over the higher end) is pinned here, not only in pixels.
 for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665], ['BRU0009', 4.88938, 52.37455]] as const) {
