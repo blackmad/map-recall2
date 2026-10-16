@@ -6,6 +6,8 @@
 //               { type: 'build', key, lod, gen }  build one cell
 //               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
+//               { type: 'order', keys: string[] }  wanted cells, best first: queued cells build in this order and
+//                                                  cells not in it are dropped unbuilt (buildQueue.ts)
 //               { type: 'relief', id, url, index, entry }  fetch + decode one relief tile (no init needed; the
 //                                                          game's main-thread store uses a second instance for this)
 // Messages out: { type: 'ready', cells: string[] }
@@ -19,20 +21,56 @@ import { readGroundTile, type GroundIndex } from './heightField.js';
 import { buildCell, cellTransferables } from './groundCell.js';
 import { buildFarBlock, farColours, farTransferables, type FarColours } from './farRing.js';
 import { groundPalette, type GroundLook } from './groundLook.js';
+import { GroundBuildQueue } from './buildQueue.js';
 
 type In =
   | { type: 'init'; root: string; parks?: boolean; roads?: boolean; groundLook?: GroundLook }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
+  | { type: 'order'; keys: string[] }
   | { type: 'relief'; id: number; url: string; index: Pick<GroundIndex, 'stepM' | 'tileSizeM' | 'samples' | 'predictor'>; entry: number[] };
 
 const ctx = self as unknown as { postMessage(message: unknown, transfer?: Transferable[]): void; onmessage: ((event: MessageEvent<In>) => void) | null };
 let store: GroundStore | null = null;
 let ready: Promise<void> | null = null;
 let colours: FarColours | undefined;
-// One build at a time: cells are big and the queue order (nearest first) matters.
-let chain: Promise<void> = Promise.resolve();
+// One build at a time: cells are big and the order matters (nearest ahead first, buildQueue.ts).
+const queue = new GroundBuildQueue();
+const evictions: Array<() => void> = [];
+let running = false;
+
+async function pump(s: GroundStore): Promise<void> {
+  if (running) return;
+  running = true;
+  try {
+    await ready;
+    for (;;) {
+      for (const evict of evictions.splice(0)) evict();
+      const job = queue.next();
+      if (!job) break;
+      if (job.kind === 'cell') {
+        try {
+          const input = await s.cellInput(job.key, job.lod);
+          const cell = buildCell(input);
+          ctx.postMessage({ type: 'cell', gen: job.gen, cell }, cellTransferables(cell));
+        } catch (error) {
+          ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
+        }
+      } else {
+        try {
+          const input = await s.farInput(job.key);
+          const far = input ? buildFarBlock(input, colours) : null;
+          ctx.postMessage({ type: 'far', gen: job.gen, key: job.key, far }, far ? farTransferables(far) : []);
+        } catch (error) {
+          ctx.postMessage({ type: 'error', far: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
+        }
+      }
+    }
+  } finally {
+    running = false;
+  }
+}
 
 ctx.onmessage = event => {
   const msg = event.data;
@@ -44,7 +82,7 @@ ctx.onmessage = event => {
     return;
   }
   if (msg.type === 'relief') {
-    // Independent of the build chain: a relief tile must not wait behind a 400 ms cell build.
+    // Independent of the build queue: a relief tile must not wait behind a 400 ms cell build.
     fetch(msg.url).then(async r => {
       if (!r.ok) throw new Error(`${msg.url}: ${r.status}`);
       const bytes = await maybeGunzip(new Uint8Array(await r.arrayBuffer()));
@@ -55,31 +93,12 @@ ctx.onmessage = event => {
   }
   if (!store || !ready) return;
   const s = store;
-  if (msg.type === 'build') {
-    chain = chain.then(() => ready).then(async () => {
-      try {
-        const input = await s.cellInput(msg.key, msg.lod);
-        const cell = buildCell(input);
-        ctx.postMessage({ type: 'cell', gen: msg.gen, cell }, cellTransferables(cell));
-      } catch (error) {
-        ctx.postMessage({ type: 'error', key: msg.key, gen: msg.gen, message: String((error as Error)?.stack ?? error) });
-      }
-    });
-    return;
-  }
-  if (msg.type === 'far') {
-    chain = chain.then(() => ready).then(async () => {
-      try {
-        const input = await s.farInput(msg.key);
-        const far = input ? buildFarBlock(input, colours) : null;
-        ctx.postMessage({ type: 'far', gen: msg.gen, key: msg.key, far }, far ? farTransferables(far) : []);
-      } catch (error) {
-        ctx.postMessage({ type: 'error', far: msg.key, gen: msg.gen, message: String((error as Error)?.stack ?? error) });
-      }
-    });
-    return;
-  }
+  if (msg.type === 'build') { queue.build(msg.key, msg.lod, msg.gen); void pump(s); return; }
+  if (msg.type === 'far') { queue.requestFar(msg.key, msg.gen); void pump(s); return; }
+  if (msg.type === 'order') { queue.order(msg.keys); return; }
   if (msg.type === 'evict') {
-    chain = chain.then(() => { s.evictRelief(msg.x, msg.y, msg.keepM); s.forgetCells(new Set(msg.keep)); });
+    // Between builds, never under one (a build reads the relief it is evicting).
+    evictions.push(() => { s.evictRelief(msg.x, msg.y, msg.keepM); s.forgetCells(new Set(msg.keep)); });
+    void pump(s);
   }
 };

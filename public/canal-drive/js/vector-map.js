@@ -2850,6 +2850,8 @@ class VectorBasemap {
       }
     }
     if (introFlat === 0 && this._completeCity && typeof this._completeCity.followCamera === 'function') {
+      // The rider's motion puts the next building tile on the plan before the view reaches it (look-ahead).
+      if (!detached && typeof this._completeCity.setRider === 'function') this._completeCity.setRider(subject[0], subject[1]);
       this._completeCity.followCamera();
     }
     this._updateGoogleTiles();

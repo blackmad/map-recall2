@@ -46,6 +46,8 @@ import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererSh
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
+import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
+import { detailBlock, type DetailBlock } from './detailRing.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -207,6 +209,8 @@ const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 
 export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable };
 
 const KIT_KEY = '__kit';
+/** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
+const COARSE_HOLE_BONUS_M = 400;
 const BOAT_PREFIX = 'boats:';
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
@@ -383,6 +387,8 @@ export class ThreeBuildings {
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
     this.look = this.requestedLook = look;
     this.layer = this.makeLayer();
+    // Nearest-ahead chunk first (chunkRank); `?lookAhead=0` keeps request order.
+    this.pending.setRank(key => this.lookAheadOn === false ? NaN : this.chunkRank(key));
   }
 
   /** Resolve the building under a screen point to an exact building ID.
@@ -841,13 +847,47 @@ export class ThreeBuildings {
    * Cheap to call every frame; regroups only when that block changes.
    */
   setDetailCentre(lng: number, lat: number): void {
-    const n = 2 ** this.detailZoom, rad = lat * Math.PI / 180;
-    const fx = ((lng + 180) / 360) * n, fy = ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n;
-    const x = Math.floor(fx), y = Math.floor(fy), dx = fx - x < 0.5 ? -1 : 1, dy = fy - y < 0.5 ? -1 : 1;
-    const next = [`${x}/${y}`, `${x + dx}/${y}`, `${x}/${y + dy}`, `${x + dx}/${y + dy}`];
+    const on = this.lookAheadOn ??= lookAheadEnabled();
+    this.rider = [lng, lat];
+    if (on) this.motion.update(lng, lat, performance.now());
+    // Look-ahead (default): the block leads the rider, flips sides with hysteresis and lets tiles it leaves linger
+    // (detailRing.ts); `?lookAhead=0` is the old rider-centred block with a hard midline.
+    const block = detailBlock([lng, lat], on ? this.motion.direction : null, this.detailZoom, this.detailBlockState, { legacy: !on });
+    this.detailBlockState = block;
+    const next = block.keys;
     if (next.length === this.detailTiles.size && next.every(k => this.detailTiles.has(k))) return;
     this.detailTiles = new Set(next);
     this.setFeatures(this.lastFeatures);
+  }
+  private rider: [number, number] | null = null;
+  private readonly motion = new MotionEstimate();
+  private lookAheadOn: boolean | undefined;
+  private detailBlockState: DetailBlock | null = null;
+
+  /**
+   * Build order: the chunk nearest the rider, ahead first (streamingLookAhead.ts aheadRank on the nearest point
+   * of the chunk's tile); detailed extras after their facades, missing coarse shells before detail. Kits first
+   * (small, and every landmark kit waits on them).
+   */
+  private chunkRank(key: string): number {
+    const at = this.rider;
+    if (key === KIT_KEY) return -Infinity;
+    if (!at) return 0;
+    let zoom = TILE_ZOOM, tile = key, extra = 0;
+    if (key.startsWith(COARSE_PREFIX)) tile = key.slice(COARSE_PREFIX.length);
+    else if (key.startsWith('near:')) { zoom = this.detailZoom; tile = key.slice(5); }
+    else if (key.startsWith(EXTRAS_PREFIX)) { zoom = this.detailZoom; tile = key.slice(EXTRAS_PREFIX.length); extra = 60; }
+    else if (key.startsWith(BOAT_PREFIX)) { tile = key.slice(BOAT_PREFIX.length); extra = 30; }
+    else return 0;
+    const [x, y] = tile.split('/').map(Number);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return 0;
+    const n = 2 ** zoom, latOf = (t: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * t) / n))) * 180) / Math.PI;
+    const west = (x / n) * 360 - 180, east = ((x + 1) / n) * 360 - 180, north = latOf(y), south = latOf(y + 1);
+    const nearest: [number, number] = [Math.max(west, Math.min(east, at[0])), Math.max(south, Math.min(north, at[1]))];
+    // A tile with no shell drawn yet is a hole in the city, detail only refines one: its coarse shell goes before
+    // detail up to ~400 m nearer.
+    const hole = key.startsWith(COARSE_PREFIX) && !this.chunks.has(key) ? COARSE_HOLE_BONUS_M : 0;
+    return aheadRank(at, nearest, this.motion.direction) + extra - hole;
   }
 
   /**
