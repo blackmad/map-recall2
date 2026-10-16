@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   TriSink, at, band, box, coping, cresting, disc, drum, frame, frustum, grown, hipRoofX, normalOf, opening, openingOutline, panel,
-  prismX, prismZ, quoins, rect, reveal, slab, spire, strip, type V3,
+  plaque, prismX, prismZ, quoins, rect, reveal, rib, slab, spire, strip, type V3,
 } from './ornateFrontKit.ts';
 
 const normal = (a: number[], i: number): V3 => {
@@ -98,7 +98,38 @@ test('wall details: slabs, bands broken by openings, quoins, discs, strips, cres
   drum(s, 'dr', f, 0, 0, 1, 0, 0.1, 10); assert.equal(s.tris.get('dr')!.length / 9, 30);
   strip(s, 's', f, [0, 0], [1, 1], 0.1, 0.05); coping(s, 'c', f, [0, 0], [2, 1], 0.3, 0, 0.2);
   for (const n of allNormals(s, 's')) assert.ok(n[2] > 0);
+  assert.equal(s.tris.get('c')!.length / 9, 6, 'coping: front, top, underside');
+  coping(s, 'cb', f, [0, 0], [2, 1], 0.3, 0, 0.2, true);
+  const cb = allNormals(s, 'cb');
+  assert.equal(cb.length, 8); assert.ok(cb.slice(6).every(n => n[2] < 0), 'the back faces the wall');
   cresting(s, 'cr', f, 0, 4, 10, 0.5, 0.5); assert.equal(s.tris.get('cr')!.length / 9, 2 + 8);
   reveal(s, 'rv', f, rect(0, 1, 0, 1), 0.2); assert.equal(s.tris.get('rv')!.length / 9, 8);
   for (const v of s.tris.values()) assert.ok(v.every(Number.isFinite));
+});
+
+test('glazing bars under a mullion or transom are not drawn', () => {
+  const s = new TriSink(), f = frame([0, 0], [1, 0]);
+  opening(s, f, {t: 0, y: 0, w: 3, h: 4}, {mullions: 2, transoms: [0.5], panes: [3, 4], bar: 'pane', mullion: 'bar'});
+  // panes [3, 4]: the vertical bars at 1/3 and 2/3 sit under the two mullions, the middle horizontal one under the transom
+  assert.equal(s.tris.get('pane')!.length / 9, 2 * 2);
+  assert.equal(s.tris.get('bar')!.length / 9, 3 * 2);
+});
+
+test('plaques and ribs stand on the surface behind them: front at d1, sides outward, either winding', () => {
+  for (const outline of [rect(0, 1, 0, 2), rect(0, 1, 0, 2).reverse()]) {
+    const s = new TriSink(), f = frame([0, 0], [1, 0]);
+    plaque(s, 'p', f, outline, 0.1, 0.2);
+    const a = s.tris.get('p')!;
+    // the plaque's centre is t 0.5, y 1, d 0.15: every face points away from it
+    for (let i = 0; i < a.length; i += 9) {
+      const n = normal(a, i), c = [(a[i] + a[i + 3] + a[i + 6]) / 3 - 0.5, (a[i + 1] + a[i + 4] + a[i + 7]) / 3 - 1, (a[i + 2] + a[i + 5] + a[i + 8]) / 3 - 0.15];
+      assert.ok(n[0] * c[0] + n[1] * c[1] + n[2] * c[2] > 0, 'outward');
+    }
+    assert.equal(a.length / 9, 2 + 8);
+    const zs = a.filter((_, k) => k % 3 === 2);
+    assert.ok(Math.abs(Math.min(...zs) - 0.1) < 1e-9 && Math.abs(Math.max(...zs) - 0.2) < 1e-9);
+  }
+  const r = new TriSink();
+  rib(r, 'r', frame([0, 0], [1, 0]), [0, 0], [1, 1], 0.1, 0, 0.05);
+  assert.equal(r.tris.get('r')!.length / 9, 10);
 });
