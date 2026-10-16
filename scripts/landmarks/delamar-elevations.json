@@ -1,11 +1,13 @@
 {
-  "id": "delamar",
-  "countedBy": "pending blind count",
-  "facades": [
-    {
-      "name": "east (front)",
-      "bearing": 92.5,
-      "photo": "artifacts/landmark-lanes/delamar/ref-e.jpg"
-    }
-  ]
+ "id": "delamar",
+ "source": "Opening counts on the rectified panorama crops of the delamar-all-sides lane (2026-10-16): Bellevue drum TMX7316010203-001967_pano_0000_000717 (artifacts/landmark-briefs/delamar/w01-203.jpg), Marnixstraat palazzo TMX7316010203-002306_pano_0000_000353 (walls/0363100012571556/w02-47.jpg). alongM is measured from the model silhouette's viewer-left edge (the Bellevue's south-east corner from the Marnixstraat, the drum's west curve from the canal). Replaces the 2026-10 stub that described the old box model's east front.",
+ "countedBy": "lane/delamar-all-sides-20261016, from the crops listed per facade",
+ "facades": [
+  {"name": "Bellevue drum ribbon window (SW)", "bearing": 202, "alongM": [7.0, 23.5], "heightM": [3.0, 4.4], "rows": [1], "openings": ["glass"],
+   "note": "one continuous ribbon of glazing round the west curve and along the front, mullions <= 0.1 m"},
+  {"name": "Marnixstraat palazzo first storey (NE)", "bearing": 47, "alongM": [30.6, 42.0], "heightM": [7.3, 8.6], "rows": [6], "columns": 6, "openings": ["glass"],
+   "note": "four windows with balconettes between the two corner oriels, one window on each oriel front"},
+  {"name": "Marnixstraat palazzo loggia storey (NE)", "bearing": 47, "alongM": [32.0, 40.3], "heightM": [11.5, 12.9], "rows": [4], "columns": 4, "openings": ["glass"],
+   "note": "four round-arched windows behind the loggia railing"}
+ ]
 }
