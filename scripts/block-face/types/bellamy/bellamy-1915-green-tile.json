@@ -45,7 +45,21 @@
     "topWidthM": [
      0,
      1.0
-    ]
+    ],
+    "alt": {
+     "widthM": [
+      2.2,
+      4.0
+     ],
+     "topWidthM": [
+      0,
+      1.05
+     ],
+     "riseM": [
+      1.5,
+      5.0
+     ]
+    }
    },
    "dormers": {
     "riseM": [
@@ -58,11 +72,12 @@
     ]
    }
   },
-  "note": "shares year and width with the tile-bay rows (Hasebroekstraat 56-70); the tile-bay type needs its one-sided white bay stack, this one does not, and the challengers settle the rest",
-  "accentShare": [
+  "note": "shares year and width with the tile-bay rows (Hasebroekstraat 56-70); the tile-bay type needs its one-sided white bay stack, this one does not, and the challengers settle the rest; 2026-10-16 (2): the white bay test is the exposure-normalised bay width (blockFace/stripStructure.ts, plain window columns <= 1.3 m), not the accent share; balcony fronts (Jan Hanzenstraat 49-51, Ten Katestraat 29, Bellamystraat 18-20) veto it; a gable over the pair reads 2.4-2.7 m wide with its shoulder taken for the eaves (Hasebroekstraat 69, Van Effenstraat 9: rise 1.6-1.8 m), hence the point-gable alternative",
+  "bayWidthM": [
    0,
-   0.3
-  ]
+   1.4
+  ],
+  "balconies": false
  },
  "body": {
   "storeys": 4,

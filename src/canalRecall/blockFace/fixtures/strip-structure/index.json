@@ -1,0 +1,565 @@
+{
+ "note": "Body bands (4.0 m .. read eaves + 0.3 m) of strip spans cut from staging/block-face/<face>/strip.jpg (Gemeente Amsterdam panoramas, CC BY 4.0), with the facts auto-place read for them on 2026-10-16. Regression fixtures for blockFace/stripStructure.ts and autoPlace.ts.",
+ "pands": [
+  {
+   "pandId": "0363100012143043",
+   "address": "Jan Hanzenstraat 49",
+   "truth": "balcony",
+   "face": "hanzen-21-73",
+   "stripDate": "2024-12-11",
+   "file": "0363100012143043.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.17,
+   "facts": {
+    "builtYear": 1914,
+    "widthM": 5.41,
+    "eavesM": 12.17,
+    "roofMaxM": 15.33,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#825c3f",
+    "skyline": {
+     "eavesM": 12.57,
+     "eavesRow": 283,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.3,
+      "topWidthM": 0.47,
+      "centre": 0.37
+     }
+    },
+    "columns": 5,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.159,
+    "stucco": false,
+    "bands": 0
+   }
+  },
+  {
+   "pandId": "0363100012080571",
+   "address": "Jan Hanzenstraat 51",
+   "truth": "balcony",
+   "face": "hanzen-21-73",
+   "stripDate": "2024-12-11",
+   "file": "0363100012080571.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.13,
+   "facts": {
+    "builtYear": 1914,
+    "widthM": 5.91,
+    "eavesM": 12.13,
+    "roofMaxM": 15.28,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#825e43",
+    "skyline": {
+     "eavesM": 12.65,
+     "eavesRow": 280,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 2.45,
+      "topWidthM": 0.42,
+      "centre": 0.41
+     }
+    },
+    "columns": 7,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.162,
+    "stucco": false,
+    "bands": 0
+   }
+  },
+  {
+   "pandId": "0363100012139746",
+   "address": "Ten Katestraat 29",
+   "truth": "balcony",
+   "face": "kate-25-31",
+   "stripDate": "2023-01-12",
+   "file": "0363100012139746.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.8,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 5.69,
+    "eavesM": 12.8,
+    "roofMaxM": 16.69,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#3c322f",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 157,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 3.92,
+      "topWidthM": 0.2,
+      "centre": 0.33
+     }
+    },
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "stucco": false,
+    "bands": 0
+   }
+  },
+  {
+   "pandId": "0363100012093654",
+   "address": "Ten Katestraat 31",
+   "truth": "balcony",
+   "face": "kate-25-31",
+   "stripDate": "2023-01-12",
+   "file": "0363100012093654.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.72,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 4.51,
+    "eavesM": 12.72,
+    "roofMaxM": 15.44,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#3b302c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 748,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "stucco": false,
+    "bands": 0
+   }
+  },
+  {
+   "pandId": "0363100012091626",
+   "address": "Bellamystraat 18",
+   "truth": "balcony",
+   "face": "bellamy-18-50",
+   "stripDate": "2024-12-11",
+   "file": "0363100012091626.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.92,
+   "facts": {
+    "builtYear": 1916,
+    "widthM": 6.03,
+    "eavesM": 12.92,
+    "roofMaxM": 15.52,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#8c7368",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.1,
+      "topWidthM": 0.8,
+      "centre": 0.49
+     }
+    },
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.384,
+    "stucco": false,
+    "bands": 4
+   }
+  },
+  {
+   "pandId": "0363100012127784",
+   "address": "Bellamystraat 20",
+   "truth": "balcony",
+   "face": "bellamy-18-50",
+   "stripDate": "2024-12-11",
+   "file": "0363100012127784.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 13.48,
+   "facts": {
+    "builtYear": 1916,
+    "widthM": 6.03,
+    "eavesM": 13.48,
+    "roofMaxM": 15.84,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#bd9d8e",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.2,
+      "topWidthM": 0.72,
+      "centre": 0.57
+     }
+    },
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.52,
+    "stucco": false,
+    "bands": 7
+   }
+  },
+  {
+   "pandId": "0363100012086970",
+   "address": "Hasebroekstraat 69",
+   "truth": "green-tile",
+   "face": "hasebroek-43-101",
+   "stripDate": "2024-12-11",
+   "file": "0363100012086970.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 13.44,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 5.97,
+    "eavesM": 13.44,
+    "roofMaxM": 15.75,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#a28e86",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 169,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 1.63,
+      "topWidthM": 1,
+      "centre": 0.27
+     }
+    },
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.555,
+    "stucco": false,
+    "bands": 4
+   }
+  },
+  {
+   "pandId": "0363100012061382",
+   "address": "Van Effenstraat 7D",
+   "truth": "green-tile-like, 7.3 m",
+   "face": "effen-1-9",
+   "stripDate": "2024-12-11",
+   "file": "0363100012061382.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 13.09,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 7.3,
+    "eavesM": 13.09,
+    "roofMaxM": 15.67,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#d1bead",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 1.93,
+      "topWidthM": 0.7,
+      "centre": 0.36
+     }
+    },
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.489,
+    "stucco": false,
+    "bands": 6
+   }
+  },
+  {
+   "pandId": "0363100012064327",
+   "address": "Van Effenstraat 9",
+   "truth": "green-tile",
+   "face": "effen-1-9",
+   "stripDate": "2024-12-11",
+   "file": "0363100012064327.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 13.04,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 6.4,
+    "eavesM": 13.04,
+    "roofMaxM": 15.67,
+    "storeys3dbag": 4
+   },
+   "strip": {
+    "wall": "#ccae9c",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 165,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 1.75,
+      "topWidthM": 0.95,
+      "centre": 0.3
+     }
+    },
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.481,
+    "stucco": false,
+    "bands": 6
+   }
+  },
+  {
+   "pandId": "0363100012091668",
+   "address": "Hasebroekstraat 94",
+   "truth": "green-tile",
+   "face": "hasebroek-90-98",
+   "stripDate": "2024-12-11",
+   "file": "0363100012091668.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.91,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 5.85,
+    "eavesM": 12.91,
+    "roofMaxM": 15.57,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#604d38",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 130,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 3.25,
+      "topWidthM": 0.1,
+      "centre": 0.75
+     }
+    },
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.139,
+    "stucco": false,
+    "bands": 0
+   }
+  },
+  {
+   "pandId": "0363100012069093",
+   "address": "Hasebroekstraat 90",
+   "truth": "green-tile",
+   "face": "hasebroek-90-98",
+   "stripDate": "2024-12-11",
+   "file": "0363100012069093.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.94,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 6.59,
+    "eavesM": 12.94,
+    "roofMaxM": 15.78,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#a08267",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 115,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 2.88,
+      "topWidthM": 0.28,
+      "centre": 0.22
+     }
+    },
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.199,
+    "stucco": false,
+    "bands": 0
+   }
+  },
+  {
+   "pandId": "0363100012080701",
+   "address": "Hasebroekstraat 60",
+   "truth": "tile-bay",
+   "face": "hasebroek-52-88",
+   "stripDate": "2024-12-11",
+   "file": "0363100012080701.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 12.22,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 6.46,
+    "eavesM": 12.22,
+    "roofMaxM": 14.94,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#b18974",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.4,
+      "topWidthM": 1.2,
+      "centre": 0.67
+     }
+    },
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.451,
+    "stucco": false,
+    "bands": 2
+   }
+  },
+  {
+   "pandId": "0363100012127527",
+   "address": "Hasebroekstraat 65",
+   "truth": "tile-bay",
+   "face": "hasebroek-43-101",
+   "stripDate": "2024-12-11",
+   "file": "0363100012127527.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 13.2,
+   "facts": {
+    "builtYear": 1915,
+    "widthM": 6.76,
+    "eavesM": 14.74,
+    "roofMaxM": 15.11,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#e2c2af",
+    "skyline": {
+     "eavesM": 13.2,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 3.3,
+      "topWidthM": 0.7,
+      "centre": 0.28
+     }
+    },
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.556,
+    "stucco": false,
+    "bands": 8
+   }
+  },
+  {
+   "pandId": "0363100012153671",
+   "address": "Bellamystraat 24",
+   "truth": "two-axis",
+   "face": "bellamy-18-50",
+   "stripDate": "2024-12-11",
+   "file": "0363100012153671.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 13.78,
+   "facts": {
+    "builtYear": 1916,
+    "widthM": 4.1,
+    "eavesM": 14.89,
+    "roofMaxM": 14.91,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#ebbfaa",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.35,
+      "topWidthM": 1.4,
+      "centre": 0.44
+     }
+    },
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.485,
+    "stucco": false,
+    "bands": 5
+   }
+  },
+  {
+   "pandId": "0363100012146613",
+   "address": "Ten Katestraat 17",
+   "truth": "flat-row",
+   "face": "kate-5-21",
+   "stripDate": "2018-07-29",
+   "file": "0363100012146613.jpg",
+   "pixelsPerMetre": 40,
+   "bottomM": 4,
+   "eavesRead": 15.19,
+   "facts": {
+    "builtYear": 1937,
+    "widthM": 6.12,
+    "eavesM": 15.19,
+    "roofMaxM": 15.28,
+    "storeys3dbag": 5
+   },
+   "strip": {
+    "wall": "#865b4e",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 48,
+     "confidence": 0.37,
+     "crown": null
+    },
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.022,
+    "stucco": false,
+    "bands": 2
+   }
+  }
+ ]
+}
