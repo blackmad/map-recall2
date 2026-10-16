@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## No procedural paint on surveyed roads (2026-10-16)
+
+User (2026-10-16), on Kinkerstraat × Bilderdijkstraat with the BGT surface:
+"these roads still look like shit even after BGT", then "maybe we just stop
+showing dashes for now? the most important part for this afternoon is that
+the roads don't look broken". The prior-based markings (centre and edge
+dashes, stop lines, teeth, cycle-crossing blocks, zebras), clipped to the
+BGT carriageway polygons, shredded into stray fragments at odd angles.
+`streets.ts PAINT_ON_SURVEY = false`: surveyed ground draws no procedural
+paint; red cycle surfaces, painted cycle lanes and tram rails stay; cells
+without the survey keep their paint (`own-ground-paint.spec.ts` now pins
+that fallback with roads off). Frame: `docs/images/roads/no-paint-marnix-20261016.jpg`.
+The road-look lane (lane/road-look-20261016) brings paint back only where
+the 8 cm orthophoto or OSM nodes show it, judged side by side with the photo.
+
 ## A bridge deck is never the answer to "which street?" (2026-10-16)
 
 User (2026-10-16), riding the Raadhuisstraat over the Keizersgracht: "the game
