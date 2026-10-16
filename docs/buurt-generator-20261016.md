@@ -68,7 +68,7 @@ mismatches. It does not certify a match (see the false positives below).
 
 ## Results (final pass)
 
-94 of the 335 pands on the 49 intaked faces are placed. On the exemplar rows:
+102 of the 335 pands on the 49 intaked faces are placed. On the exemplar rows:
 
 | Face | Placed | Type | Edge NCC | Held |
 |---|---|---|---|---|
