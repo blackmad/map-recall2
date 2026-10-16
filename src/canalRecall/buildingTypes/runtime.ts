@@ -1,7 +1,7 @@
 import {HIGHLIGHT_RECIPES, attachHighlightPasses, highlightMaterialFor, highlightStyle, withinDesaturation, type HighlightFocus} from '../look/highlight.ts';
 import {getCityLook} from '../look/cityLook.ts';
 /**
- * Building types at runtime (`?buildingTypes=1`, default off): one shared unit mesh per design, drawn with
+ * Building types at runtime (default on since 2026-10-16; `?buildingTypes=0` turns it off): one shared unit mesh per design, drawn with
  * THREE.InstancedMesh, placed from `public/canal-drive/building-types/instances.json`.
  *
  * Placement follows the landmark loader (`signature-landmarks-source.js` `_add`, surveyed placement): ONE area

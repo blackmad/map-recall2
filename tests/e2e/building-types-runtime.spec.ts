@@ -1,6 +1,6 @@
-// Building types runtime (`?buildingTypes=1`): in-game shots and perf, flag on vs off.
-//   BT_RUN=1 BT=1 PW_PORT=4458 npx playwright test building-types-runtime --project=iphone
-//   BT_RUN=1 BT=0 ...   (flag off: the default game)
+// Building types runtime (default on since 2026-10-16; `?buildingTypes=0` turns them off): in-game shots and perf, on vs off.
+//   BT_RUN=1 BT=1 PW_PORT=4458 npx playwright test building-types-runtime --project=iphone   (the default game)
+//   BT_RUN=1 BT=0 ...   (`?buildingTypes=0`: generic extrusions)
 // Writes artifacts/building-types/<label>-<view>-<project>.png and perf-<label>-<project>.json.
 import { test } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -77,7 +77,7 @@ test(`building types ${label}`, async ({ page }, info) => {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error' || /Building types|unavailable/.test(m.text())) errors.push(m.text()); });
-  await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false, query: on ? '?buildingTypes=1' : '' });
+  await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false, query: on ? '' : '?buildingTypes=0' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   await page.evaluate((cam) => {
     const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;

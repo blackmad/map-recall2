@@ -296,7 +296,7 @@ function render(p: Props, items: ContentItems): HTMLElement[] {
     })));
 
   if (c.designs.length) out.push(section('designs', 'Building-type designs', c.designs.length,
-    h('p', { class: 'note' }, 'Parametric post-war types instanced on BAG pands (behind ?buildingTypes=1).'),
+    h('p', { class: 'note' }, 'Parametric post-war types instanced on BAG pands (drawn by default since 2026-10-16).'),
     h('div', { class: 'rows' }, ...c.designs.map(([unit, n]) => {
       const d = items.designs[unit];
       if (!d) return null;

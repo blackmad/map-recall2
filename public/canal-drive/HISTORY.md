@@ -1,5 +1,48 @@
 # Canal Recall — what is built
 
+## Surveyed road surface city-wide: 291 cells, 10.2 MB (2026-10-16)
+
+Lane `lane/roads-citywide-20261016` (1f707e183, dc5b2d4cc, publish 17e62fba3,
+7dc036f63, c49ac7711). roads-v1 now covers 291 of 294 cells (three open-water
+cells hold no wegdeel and keep the bands): 223,591 BGT polygons, 10.2 MB gz,
+max 119 KB, median 21 KB per cell. Topology-preserving simplification
+(`topoSimplify.ts`) keeps shared edges identical on both polygons and kerbs,
+so `probe-junction-overlap --pairs` reads 0 at Kinkerstraat × Da Costakade
+and the Marnixstraat busway. Fietsstraat red is decided per section in the
+extractor (58 red sections; tram-track and junction sections stay grey;
+the runtime `railCarriages` override removed). Survey-gap pockets around
+junction nodes are paved (Nieuwmarkt regression at the extract edge, 155 →
+25 m²). 62.4 % of OSM ways are covered (primary 98.7 %, residential 92.5 %).
+Orthophoto sheet `docs/images/roads/roads-citywide-ortho-20261016.jpg` at
+Oost (Linnaeusstraat, which OSM tags `construction` and the bands left
+blank), Zuid (Ferdinand Bol × Ceintuurbaan) and Noord (Mosplein): the
+survey matches the photo; the bands did not. Triangles city-wide 79.8 M →
+78.1 M; build time 1.20× summed; six rural/dike cells exceed the 1.15×
+per-cell triangle gate (worst -8_4 1.43×, all ≤ 242k, under dense cells),
+accepted by the integrator with a coarser-drape follow-up. Desktop
+ride-perf 5/5 (p95 16.8 ms).
+
+## Flags decided: building types by default; elevation stencil, ground-look variants, label tones and six A/B toggles deleted (2026-10-16)
+
+User (2026-10-16): "what things are behind flags that we should make default?
+… if there are dead ends, delete the code and the flag". Lane
+`lane/flags-20261016` (ee92f9351, 8e56b5ba3, 68e9c7a2b, 44a147beb,
+3dbf017cd). Building types are on by default (`?buildingTypes=0` opts out):
+frames at 11 Nieuw-West views, 0 of 3,075 instance pands overlap a landmark
+or chunk `suppressOsmIds`, static frames 16.7 ms median either way, desktop
+ride-perf 5/5 (load 14–20). Recipe tiles turn the runtime types off (they
+carry them). Deleted: the `?elevation=1` stencil layer
+(`elevationBrowser.ts`, its bundle, spec and ride-perf case; superseded by
+the own ground), `?groundLook=measured|legacy-ish`, `?farGround=0`,
+`?labelTone=paper`, `?labels=maplibre`, HideBasemapFills (a no-op),
+litFacades, PrismGrid, LandmarkLod, landmarkBatch and RoofBatch with the
+unbatched roof path; −879/+146 lines of source. Kept: the opt-outs the specs
+use (`ownGround`, `roads`, `parks`, `shadows`, `transition`, `look=legacy`,
+`sharedFrame`, `facades`, `trees3d`, `highlight*`, `streetChunks`,
+`roofFacts`). Not flipped: `?cityLook=1` (frames 5–6 luma darker, the 0.9
+cell level), `?recipeTiles=1` (stale pilots), `?bagTiles=1` (user's call),
+`?sculptures=1` (waits for the user's look).
+
 ## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
 
 User (2026-10-16): "I feel like there should probably be a building here?", an

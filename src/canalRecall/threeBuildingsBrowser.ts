@@ -35,7 +35,7 @@ import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
-import { buildPrismGrid, buildPrismIndex, pickPrism, pickPrismGrid, type PrismEntry, type PrismGrid } from './prismPick.js';
+import { buildPrismGrid, buildPrismIndex, pickPrismGrid, type PrismEntry, type PrismGrid } from './prismPick.js';
 import { ORIGIN, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -424,10 +424,7 @@ export class ThreeBuildings {
         return hidden > 0.5 && hidden < 1.5;
       };
       const liftOf = (id: string) => lift?.get(id) ?? 0;
-      // `window.__canalRecallPrismGrid = false`: every prism of the chunk (the same hit; in-page A/B).
-      const hit = (globalThis as any).__canalRecallPrismGrid === false
-        ? pickPrism(index, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip)
-        : pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
+      const hit = pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
       if (!hit) continue;
       const point = o.clone().addScaledVector(d, hit.t).applyMatrix4(chunk.mesh.matrixWorld);
       const depth = point.applyMatrix4(projection).z;
@@ -897,9 +894,8 @@ export class ThreeBuildings {
   }
 
   /**
-   * Canal water height relative to the street (metres, ≤ 0). The opt-in
-   * elevation layer (`?elevation=1`) sinks canal water below the quays; boats
-   * follow it. Buildings, kits and trees stay at street level.
+   * Canal water height relative to the street (metres, ≤ 0). The own ground
+   * sinks canal water below the quays; boats follow it. Buildings, kits and trees stay at street level.
    */
   setWaterLevel(metres: number): void {
     this.waterLevel = Number.isFinite(metres) ? Math.min(0, metres) : 0;
@@ -1255,7 +1251,7 @@ export class ThreeBuildings {
 
   /** Set when the facades draw in the shared frame (`?sharedFrame=1`) instead of their own layer. */
   private sharedFrame: any = null;
-  /** Lit material + sun shadows; only inside the shared frame (`?litFacades=0` keeps the unlit shader there). */
+  /** Lit material + sun shadows; only inside the shared frame. */
   private lit = false;
   private depthMaterial: any = null;
   /** Bumped whenever suppressed/answer walls change (they cast differently). */
@@ -1344,16 +1340,16 @@ export class ThreeBuildings {
   /**
    * Draw in the page's shared three.js frame instead of an own custom layer:
    * one renderer, scene and light rig with the landmarks, trees and vehicles,
-   * plus (unless `lit: false`) the lit facade material and sun shadows. Call
+   * plus the lit facade material and sun shadows. Call
    * this instead of adding `layer` to the map.
    */
-  attachToSharedFrame(frame: any, options: { lit?: boolean; order?: number } = {}): void {
+  attachToSharedFrame(frame: any, options: { order?: number } = {}): void {
     if (this.sharedFrame) return;
     const THREE = (window as any).CanalRecallThree?.THREE;
     if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
     this.THREE = THREE;
     this.sharedFrame = frame;
-    this.lit = options.lit !== false;
+    this.lit = true;
     const root = new THREE.Group();
     root.name = 'three-building-facades';
     const camera = new THREE.Camera();

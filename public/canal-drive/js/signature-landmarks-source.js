@@ -92,6 +92,7 @@ export class SignatureLandmarks {
     this.loadVisibleOnly = options.loadVisibleOnly === true;
     this.depthBiasEnabled = options.depthBiasEnabled !== false;
     this.streetChunks = options.streetChunks === true;
+    this.buildingTypes = options.buildingTypes !== false;
     this._pending = new Map();
     this._failed = new Set();
     /** One decoded GLB per shared-mesh URL (recipe-pipeline houses); instances clone it and share geometry and materials. */
@@ -111,10 +112,8 @@ export class SignatureLandmarks {
     this.sharedFrame = options.sharedFrame || null;
     // Legacy layer: every model in one scene, one render per frame (landmarks/batchedLegacyFrame.ts).
     // Not under `?cityLook=1`, whose tier distance is measured from the model origin the per-model camera
-    // put the eye at; `?landmarkBatch=0` or `window.__canalRecallLandmarkBatch = false` keeps one render per model.
-    let batch = window.__canalRecallLandmarkBatch !== false;
-    try { batch &&= new URLSearchParams(window.location.search).get('landmarkBatch') !== '0'; } catch { /* no location */ }
-    this._batchLegacy = !this.sharedFrame && batch && !cityLookEnabled();
+    // put the eye at.
+    this._batchLegacy = !this.sharedFrame && !cityLookEnabled();
     this._batchSequence = 0;
     this._batchAnchor = null;
     this.layer = this._makeLayer();
@@ -154,15 +153,17 @@ export class SignatureLandmarks {
   }
 
   /**
-   * `?buildingTypes=1` (default OFF; game host only): shared unit meshes drawn with THREE.InstancedMesh for the
-   * Nieuw-West pilot areas (src/canalRecall/buildingTypes/runtime.ts, bundled as js/building-types.bundle.js).
+   * Building types (default ON since 2026-10-16; game host only): shared unit meshes drawn with THREE.InstancedMesh
+   * for the Nieuw-West areas (src/canalRecall/buildingTypes/runtime.ts, bundled as js/building-types.bundle.js).
    * One spec per area; its scene is built by `spec.sceneFactory`, and its `suppressOsmIds` are the BAG panden it
-   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. No flag, no data: no change.
+   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. `?buildingTypes=0` keeps the
+   * generic extrusions (building-types-runtime.spec BT=0); the host passes `buildingTypes: false` under
+   * `?recipeTiles=1`, whose tiles carry the types.
    */
   _loadBuildingTypes() {
-    let on = false;
-    try { on = new URLSearchParams(window.location.search).get('buildingTypes') === '1'; } catch { /* no location */ }
-    if (!on || this.streetChunks !== true) return;
+    let on = true;
+    try { on = new URLSearchParams(window.location.search).get('buildingTypes') !== '0'; } catch { /* no location */ }
+    if (!on || this.streetChunks !== true || !this.buildingTypes) return;
     const script = document.createElement('script');
     script.src = new URL('./js/building-types.bundle.js', window.location.href).href;
     const loaded = new Promise((resolve, reject) => { script.onload = resolve; script.onerror = () => reject(new Error('building-types.bundle.js')); });
@@ -1026,7 +1027,7 @@ export class SignatureLandmarks {
 
   /**
    * Diagnostics (A/B in one page, the same frame): switch the legacy layer between one scene for every model
-   * (default) and one scene and render per model (`?landmarkBatch=0`). Returns the mode now in force.
+   * (default) and one scene and render per model. Returns the mode now in force.
    */
   setLegacyBatch(on) {
     const scene = this._batchScene;
@@ -1099,7 +1100,7 @@ export class SignatureLandmarks {
 
   /** Level to load first: lod1 for models that are small on screen. Unknown size or no lod1 means full. */
   _startLevel(spec) {
-    if (!this._hasLod(spec) || window.__canalRecallLandmarkLod === false) return 'full';
+    if (!this._hasLod(spec)) return 'full';
     const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
     if (!anchor || !radius) return 'full';
@@ -1112,7 +1113,7 @@ export class SignatureLandmarks {
    * only then swapped in, in one step, so a model is never missing or doubled.
    */
   _updateLevels() {
-    if (this._removed || !this.enabled || !this._loader || window.__canalRecallLandmarkLod === false) return;
+    if (this._removed || !this.enabled || !this._loader) return;
     for (const entry of this._entries) {
       if (!this._hasLod(entry.spec) || entry.levelLoading || entry.lodFailed) continue;
       if (!this._nearby(entry.spec, entry.placement.anchor)) continue;
