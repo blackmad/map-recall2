@@ -17,6 +17,8 @@ import type { Vec2 } from './surface.js';
 export const WAY_DECK_STEP_M = 0.5, WAY_DECK_MIN_WATER_M = 2, ABUTMENT_M = 1, APPROACH_M = 6;
 /** A wet station this close to a measured deck or a flat footprint belongs to that bridge (no second deck beside it). */
 export const WAY_DECK_CLEAR_M = 4;
+/** The water run's chord over its length at least this (a crossing, not a path along or round the water). */
+export const WAY_DECK_STRAIGHT = 0.85;
 
 /** Highway kinds that get a deck (not steps, not a platform or proposed way). */
 export const wayDeckHighway = (h: string | undefined): boolean => !!h && !/^(steps|platform|proposed|construction|corridor|elevator)$/.test(h);
@@ -55,6 +57,8 @@ export function wayDeckProfile(id: string, name: string, points: readonly Vec2[]
   if ((last - first) * WAY_DECK_STEP_M < WAY_DECK_MIN_WATER_M) return null;
   // Both ends must reach land within the approaches (a way along a quay or a pontoon is not a crossing).
   if (wetAt[0] || wetAt[all.length - 1]) return null;
+  // A crossing runs straight over the water: a boardwalk curving round a pond (the Westerpark ring, OSM 47460645) is not one.
+  if (Math.hypot(all[last][0] - all[first][0], all[last][1] - all[first][1]) < WAY_DECK_STRAIGHT * (last - first) * WAY_DECK_STEP_M) return null;
   for (let k = first; k <= last; k++) if (claimed(all[k][0], all[k][1])) return null;
   // Approaches: APPROACH_M past the abutments on each side.
   const reach = Math.round((ABUTMENT_M + APPROACH_M) / WAY_DECK_STEP_M);
