@@ -5,7 +5,8 @@ The user said "city too dark" about own ground. After the light lane's
 against 234, 246 and 187 on the legacy basemap. This note measures real
 ground tones from open data and compares three palette variants behind
 `?groundLook=measured|bright|legacy-ish`. The default stays as it is until
-the user picks one.
+the user picks one. (Outcome: the user picked `bright`, the default since
+2026-10-14; the other variants and the flag were deleted 2026-10-16.)
 
 ## Method
 

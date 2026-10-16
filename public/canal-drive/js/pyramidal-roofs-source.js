@@ -68,10 +68,9 @@ export class PyramidalRoofs {
     // three.js frame (one draw pass for all of them, lit by its rig).
     this.sharedFrame = options.sharedFrame || null;
     // Legacy layer: every cap in one scene and one render per frame, as the landmarks
-    // (landmarks/batchedLegacyFrame.ts); `setBatch(false)` keeps one render per cap (in-page A/B).
+    // (landmarks/batchedLegacyFrame.ts).
     this._batchScene = this.sharedFrame ? null : new THREE.Scene();
     if (this._batchScene) this._batchScene.matrixWorldAutoUpdate = false;
-    this._batch = !!this._batchScene && window.__canalRecallRoofBatch !== false;
     this._batchAnchor = null;
     this.enabled = true;
     this._entries = [];
@@ -169,7 +168,7 @@ export class PyramidalRoofs {
       mesh.visible = !ids.some(id => this._hiddenIds.has(id));
       mesh.frustumCulled = false;
       const transform = mercatorTransform(this.maplibregl, meshData.originLng, meshData.originLat);
-      let scene = null, holder = null;
+      let holder = null;
       if (this.sharedFrame) {
         holder = new THREE.Group();
         holder.matrixAutoUpdate = false;
@@ -178,17 +177,15 @@ export class PyramidalRoofs {
         this.sharedFrame.constructor.setShadows(mesh, true, true);
         this._sharedRoot.add(holder);
       } else {
-        scene = new THREE.Scene();
         // One scene: the holder maps Mercator to the anchor world (set at the next render), its sequence the draw order.
         holder = new THREE.Group();
         holder.matrixAutoUpdate = false;
         holder[LANDMARK_SEQUENCE] = entries.length + 1;
-        (this._batch ? holder : scene).add(mesh);
-        if (this._batch) this._batchScene.add(holder);
+        holder.add(mesh);
+        this._batchScene.add(holder);
       }
       entries.push({
         mesh,
-        scene,
         holder,
         transform,
         id: props.osmId || props.id || null,
@@ -210,18 +207,6 @@ export class PyramidalRoofs {
       entry.mesh.material.dispose();
     }
     this._entries = [];
-  }
-
-  /** Diagnostics (A/B in one page): legacy caps in one scene (default) or one scene and render per cap. */
-  setBatch(on) {
-    if (!this._batchScene) return false;
-    this._batch = !!on;
-    for (const entry of this._entries) {
-      if (this._batch) { entry.holder.add(entry.mesh); this._batchScene.add(entry.holder); } else { entry.scene.add(entry.mesh); this._batchScene.remove(entry.holder); }
-    }
-    this._batchAnchor = null;
-    this.map.triggerRepaint();
-    return this._batch;
   }
 
   /** Anchor the one scene's world near the view centre (float32 on the GPU); holders follow. */
@@ -249,7 +234,7 @@ export class PyramidalRoofs {
         camera = new THREE.Camera();
         renderer = new THREE.WebGLRenderer({ canvas: owner.map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
-        // Caps in their old order (one render each), three's own order inside one.
+        // Caps in their install order, three's own order inside one.
         renderer.setOpaqueSort(bySequence(painterSortStable));
         renderer.setTransparentSort(bySequence(reversePainterSortStable));
       },
@@ -257,19 +242,10 @@ export class PyramidalRoofs {
         if (!owner.enabled || !camera || !renderer) return;
         const main = args.defaultProjectionData.mainMatrix;
         renderer.resetState();
-        if (owner._batch) {
-          if (!owner._entries.some(entry => entry.mesh.visible)) return;
-          owner._rebaseIfFar();
-          camera.projectionMatrix.fromArray(multiplyMat4(main, owner._mercatorFromWorld, mvp.elements));
-          renderer.render(owner._batchScene, camera);
-          return;
-        }
-        for (const entry of owner._entries) {
-          if (!entry.mesh.visible) continue;
-          mvp.fromArray(main).multiply(entry.transform);
-          camera.projectionMatrix.copy(mvp);
-          renderer.render(entry.scene, camera);
-        }
+        if (!owner._entries.some(entry => entry.mesh.visible)) return;
+        owner._rebaseIfFar();
+        camera.projectionMatrix.fromArray(multiplyMat4(main, owner._mercatorFromWorld, mvp.elements));
+        renderer.render(owner._batchScene, camera);
       },
     };
   }
