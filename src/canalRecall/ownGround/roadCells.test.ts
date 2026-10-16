@@ -137,6 +137,9 @@ test('roads-v1 extract: every listed cell file is a valid cell within budget, on
   assert.deepEqual(roadsManifestProblems(manifest), []);
   const files = readdirSync(`${EXTRACT}/cells`).filter(f => f.endsWith('.json.gz')).map(f => f.slice(0, -8));
   assert.deepEqual([...manifest.cells].sort(), files.sort(), 'manifest lists exactly the cell files');
+  const listed = new Set<string>(manifest.cells);
+  const decoded = new Map<string, ReturnType<typeof decodeRoadCell>>();
+  const decodedOf = (k: string) => decoded.get(k) ?? decoded.set(k, decodeRoadCell(JSON.parse(gunzipSync(readFileSync(`${EXTRACT}/cells/${k}.json.gz`)).toString()))).get(k)!;
   for (const key of manifest.cells) {
     const gz = readFileSync(`${EXTRACT}/cells/${key}.json.gz`);
     assert.ok(gz.length <= ROAD_CELL_BUDGET_GZ, `${key}: ${gz.length} bytes over the ${ROAD_CELL_BUDGET_GZ} budget`);
@@ -151,11 +154,17 @@ test('roads-v1 extract: every listed cell file is a valid cell within budget, on
       if (s.c === 'cycle') assert.equal(s.k, 'cycle');
       if (s.c === 'parking') assert.notEqual(s.k, 'cycle');
     }
-    // Every kerb vertex lies on some polygon boundary: runs and rings are simplified independently, so they
-    // share vertices only sometimes, but both stay within the 0.15 m lever tolerance plus decimetre rounding.
+    // Every kerb vertex lies on some polygon boundary (the cell's or a neighbour's: a kerb at the cell edge follows
+    // a polygon the neighbour owns): kerbs keep the vertices their polygons kept (topoSimplify, 2026-10-16), so
+    // they sit on the rings up to decimetre rounding (a run cut at the cell edge keeps its raw end vertex, within the
+    // tolerance of the simplified ring).
     const segs = new Map<string, [number, number, number, number][]>();
     const G = 10;
-    for (const s of d.surfaces) for (const r of s.rings) for (let i = 0; i < r.length; i++) {
+    const [cx, cy] = key.split('_').map(Number);
+    const around = [d];
+    let unlisted = 0;
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) { const k = `${cx + dx}_${cy + dy}`; if (!dx && !dy) continue; if (listed.has(k)) around.push(decodedOf(k)); else unlisted++; }
+    for (const c of around) for (const s of c.surfaces) for (const r of s.rings) for (let i = 0; i < r.length; i++) {
       const a = r[i], b = r[(i + 1) % r.length];
       for (let gx = Math.floor(Math.min(a[0], b[0]) / G); gx <= Math.floor(Math.max(a[0], b[0]) / G); gx++) for (let gy = Math.floor(Math.min(a[1], b[1]) / G); gy <= Math.floor(Math.max(a[1], b[1]) / G); gy++) {
         const k = `${gx},${gy}`; (segs.get(k) ?? segs.set(k, []).get(k)!).push([a[0], a[1], b[0], b[1]]);
@@ -171,8 +180,8 @@ test('roads-v1 extract: every listed cell file is a valid cell within budget, on
       return false;
     };
     let near = 0, total = 0;
-    for (const k of d.kerbs) for (const [x, y] of k) { total++; if (nearBoundary(x, y, 0.3)) near++; }
-    // Kerbs at the cell edge follow polygons the neighbour cell owns, so a few vertices have no boundary here.
-    assert.ok(total === 0 || near / total > 0.97, `${key}: only ${near}/${total} kerb vertices lie on a polygon boundary`);
+    for (const k of d.kerbs) for (const [x, y] of k) { total++; if (nearBoundary(x, y, 0.2)) near++; }
+    // On the extract's border a kerb may follow a polygon owned by a cell outside the game (not published).
+    assert.ok(total - near <= Math.max(unlisted ? 3 : 1, (unlisted ? 0.05 : 0.005) * total), `${key}: only ${near}/${total} kerb vertices lie on a polygon boundary`);
   }
 });

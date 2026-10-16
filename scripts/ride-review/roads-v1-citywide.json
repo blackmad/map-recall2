@@ -1,0 +1,8 @@
+{ "mode": "car", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "oost-linnaeusstraat-wijttenbachstraat-from-south", "at": [4.92564, 52.35964, 337] },
+    { "name": "zuid-ferdinand-bolstraat-ceintuurbaan-from-south", "at": [4.89124, 52.35239, 350] },
+    { "name": "noord-van-der-pekstraat-mosplein-from-south", "at": [4.91083, 52.39068, 20] },
+    { "name": "nieuwmarkt-survey-gap-from-south", "at": [4.89955, 52.37190, 10] }
+  ] }
