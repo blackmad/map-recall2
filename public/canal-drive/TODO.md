@@ -1556,7 +1556,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   chase camera, the deck needs its own surface from the quay's bands
   (the BGT roads lane); J6's e2e has one probe of headroom; the
   `landmarkSightline` test needs an npm script; inner-block gardens as
-  bare sand (J4, the courtyards lane); Bloemgracht streamed boxes (J5,
+  bare sand DONE 2026-10-16 (J4, HISTORY "Inner-block gardens from
+  BGT"; open: shadowed yards, canopy over paving reads as lawn, sheds as
+  holes, the far ring); Bloemgracht streamed boxes (J5,
   the recipe-tiles migration); Noordermarkt playground slabs (J7);
   Entrepotdok warehouse boxes and gable stubs (P3); Artis main gate and
   the Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from

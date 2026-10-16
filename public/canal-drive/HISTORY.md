@@ -1,5 +1,48 @@
 # Canal Recall — what is built
 
+## Inner-block gardens from BGT and the infrared aerial: courtyards-v1, 679 ha, 54 % vegetated (2026-10-16)
+
+Lane `worktree-agent-a5221606d8ba4872b` (final 9158ee529; cd497a00 typed
+source, bundles, tests, script and probes; 1bbcbde4 the published data;
+9158ee52 doc, frame and a retry for interrupted image downloads), closing
+ride-review row J4 (inner-block gardens as bare sand). BGT alone could
+not: it types back gardens as `erf` with nothing about cover (in the
+Jordaan test box 23,040 of 23,345 m² unvegetated terrain, 258 m²
+vegetated), so each yard's cover is the share of green pixels in the
+PDOK colour-infrared aerial `2025_ortho25IR` at 0.5 m (CC BY 4.0, the
+same source the roof colours use), shadowed pixels unknown. Candidates
+are the three BGT terrain classes with buildings and water for the
+interior test: "inside a block" = at least 13 of 16 rays (120 m) hit a
+building before a street or water; polygons under an OSM area stay with
+OSM. Mapping: groenvoorziening/grass → lawn; heesters, bosplantsoen,
+struiken, houtwal, bos → shrub; planten, rozen, bodembedekkers, heide,
+riet → bed; schors → bark; zand → sand; half/onverhard → gravel; open or
+gesloten verharding → paving; `erf` by vegetated share ≥ 0.5 lawn, ≥ 0.25
+bed, else paving, unknown (shadow) not drawn. City: 438,508 candidates,
+75,522 inside a block, 28,621 left to OSM, 1,711 yards in shadow, 73,810
+areas drawn (paving 300.0 ha, lawn 258.7, bed 104.2, gravel 7.3, shrub
+6.5, sand 2.3). Extract `public/data/extracts/amsterdam/courtyards-v1/`
+(`cells.json` with provenance, 226 of 294 cells, 3.5 MB gz total, median
+8 KB, max 86 KB; -2_0 73 KB, -1_0 54 KB), separate from the OSM cells;
+the store loads it with a `courtyards` option on by default; courtyards
+draw into the park surface layers with the land under them hidden and
+take the active look's ground palette. Regression: 2,497 probes on open
+ground inside blocks from the Bloemgracht to the Tuinstraat and the
+Lijnbaansgracht to the Keizersgracht read 64 % vegetated, 28 % paving, 6
+% bare with courtyards against 2 % vegetated, 95 % bare without (test
+bounds > 40 % and < 5 %); four unit tests (mapping, pixel test, interior
+test, a drawn lawn hiding the land); `check:own-ground-cells` no FAIL,
+belt KNOWN. Download: 2,045 requests, 2.6 GB cached in the lane's
+scratchpad, not committed; rebuild with `add-bgt-courtyards.ts --raw
+<dir>`, review the report, then `--publish`. Frame
+`docs/images/ride-review-20261014/fix-J4-courtyards.jpg`; doc
+`docs/bgt-courtyards-20261014.md`. Not covered: tree canopy over a paved
+yard reads as lawn (one 2025 flight from above); the 1,711 shadowed
+yards stay bare; sheds show as holes; fences and BGT vegetation objects
+are not drawn; roof gardens excluded; blocks open on more than ~3 of 16
+rays keep the land colour; the far ring draws no courtyards; yards under
+~2 m are below the pixel's reach.
+
 ## Ride-review rows fixed: deck widths from the water, flush decks, OSM bascule leaves, highlight by model extent, the tower sightline (2026-10-16)
 
 Lane `worktree-agent-a9367e73629fa0bba` (final e3181d052; 4e7e6fea3 deck
