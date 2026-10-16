@@ -11,6 +11,49 @@ fact-kind and language chips, and "more ›" while the full text is longer.
 Two lines rather than one: one line cut most facts mid-sentence. Named
 regression on the Multatuli card in `teachingPacer.test.ts`; Storybook states
 `LandmarkCardFolded` and `LandmarkCardFoldedMobile`. `check:canal` 159/159.
+## HUD: a riding radar instead of the city minimap; pill centring, labels under cards, corner buttons tucked (2026-10-16)
+
+User (2026-10-16): "destination not vertically centered, zimmerterrein label
+on top of 're-center'", "hide these buttons unless the mouse is moved",
+"this map isn't super useful, we should probably zoom it in GTA style?".
+Lane `lane/hud-minimap-20261016` (3d7c3ab15, 656458474, b2f2c797f). The
+always-on minimap is a round riding radar (`game/radar.ts`): centred on the
+rider and turning with the main camera (heading-up in chase view), 220–320 m
+on desktop and 170–240 m on phones opening with speed, drawn from our own
+`own-map-v1/overview.json.gz` in a worker in the bright ground palette;
+the route bold only when the difficulty's route line is on; the destination
+clamps to the rim; no names. M/Tab cycles radar → whole-city sheet → off.
+DESTINATION pill: the caps inherited a stale text baseline; now centred by
+measured ink. POI labels were mounted after `#gameCanvas` at the same
+z-index and painted over every HUD card; they mount under it now and the
+label plan avoids every card, the destination pin and pill, and the radar.
+Corner utilities tuck whenever the map is the content (ride, overview
+flight); the reveal left over from clicking "Go" no longer shows them over
+the flight; visible while paused and on menus; phones tuck Feedback too
+(it covered a quiz answer). Attribution: CARTO dropped (nothing draws it);
+"© OSM · OpenFreeMap · © OpenMapTiles". Desktop ride-perf: map render 2.3 ms
+before and after; radar +0.02 ms per frame, worst 2.7 ms on new tiles.
+
+## Houseboats: arks, barges and hullboxes from the orthophoto (2026-10-16)
+
+User: "I think we are drawing too many canalhouses as canalboats". Lane
+`lane/houseboat-kinds-20261016` (da2b8ca9a). 284 boats labelled blind from
+the PDOK 8 cm orthophoto showed most ship hulls on the canals (101 of 164;
+64 of 88 on the ring canals) carry one box cabin over the hull, not an open
+foredeck and wheelhouse. The old ±0.46-length end rule also missed
+rounded-end hulls and took chamfered pontoon corners for bows.
+`classifyHouseboatHull` now tests the end shape in metres from the tip
+(≤ 0.72 at 0.3 m, < 0.97 at 1 m, symmetric narrowing; aspect ≥ 3.2, beam
+≤ 7 m unless ≥ 40 m long): ark-vs-ship accuracy 0.833 → 0.936, blind
+ring-canal set 0.948 → 0.969. The outline can't separate barge from
+hullbox, so a per-boat hash picks at measured shares (63/42/22 % barge for
+long/pointed/rounded), overridden by 178 labelled corridor boats
+(`houseboatKindOverrides.ts`, generated from
+`scripts/houseboat-kinds/labels.json`). New kit form `hullbox`: a low-sheer
+hull with an inset full-length cabin, skylights, no wheelhouse or flag (193
+triangles per boat). City: 415 barges, 604 hullboxes, 2,064 arks (was 960
+barges, 2,123 arks). Named regressions: Prinsengracht at Noordermarkt and
+Westermarkt (`npm run test:houseboat-kinds`, in `check:canal`).
 
 ## GroundStore.init loads once; the -1_-1 deck-polygon pin green again (2026-10-16)
 

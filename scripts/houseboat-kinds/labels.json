@@ -1,0 +1,1844 @@
+{
+ "source": "PDOK Actueel_orthoHR 8 cm, labelled 2026-10-16 blind to classifier output (sheet order shuffled by id hash); see scripts/houseboat-kinds/crops.ts",
+ "labels": {
+  "ark": "rectangular pontoon, box cabin",
+  "barge": "ship hull with open foredeck/hold, wheelhouse or distinct deck sections",
+  "hullbox": "ship hull (pointed or rounded ends) under one cabin over most of its length",
+  "none": "no boat at the outline, small open boat, or hidden by trees"
+ },
+ "boats": {
+  "w267116687": {
+   "label": "barge",
+   "sheet": 1,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268998418": {
+   "label": "barge",
+   "sheet": 2,
+   "set": "sample",
+   "water": "Nieuwe Achtergracht"
+  },
+  "w277293286": {
+   "label": "none",
+   "sheet": 3,
+   "note": "small open boat",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w645172822": {
+   "label": "ark",
+   "sheet": 4,
+   "set": "sample",
+   "water": "Johan van Hasseltkanaal (West)"
+  },
+  "w266907899": {
+   "label": "ark",
+   "sheet": 5,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w645172847": {
+   "label": "ark",
+   "sheet": 6,
+   "set": "sample",
+   "water": "Johan van Hasseltkanaal (West)"
+  },
+  "w277293288": {
+   "label": "barge",
+   "sheet": 7,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w276997854": {
+   "label": "ark",
+   "sheet": 8,
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w266907894": {
+   "label": "ark",
+   "sheet": 9,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266907896": {
+   "label": "ark",
+   "sheet": 10,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266907891": {
+   "label": "ark",
+   "sheet": 11,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266907893": {
+   "label": "ark",
+   "sheet": 12,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266907892": {
+   "label": "ark",
+   "sheet": 13,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w1384085923": {
+   "label": "barge",
+   "sheet": 14,
+   "note": "white ship; outline is a rectangle",
+   "set": "sample",
+   "water": "other"
+  },
+  "w274024163": {
+   "label": "barge",
+   "sheet": 15,
+   "note": "freight barge; outline offset",
+   "set": "sample",
+   "water": "Oude Houthaven"
+  },
+  "w276209465": {
+   "label": "ark",
+   "sheet": 16,
+   "note": "gabled cabin",
+   "set": "sample",
+   "water": "Ringvaart van de Haarlemmermeerpolder"
+  },
+  "w266550801": {
+   "label": "ark",
+   "sheet": 17,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w266597468": {
+   "label": "barge",
+   "sheet": 18,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w267107735": {
+   "label": "barge",
+   "sheet": 19,
+   "set": "sample",
+   "water": "Waalseilandgracht"
+  },
+  "w266550805": {
+   "label": "hullbox",
+   "sheet": 20,
+   "note": "box cabin over whole hull; pointed end",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w280852251": {
+   "label": "none",
+   "sheet": 21,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "IJmeer"
+  },
+  "w266597439": {
+   "label": "hullbox",
+   "sheet": 22,
+   "note": "green-roof cabin over whole hull; rounded ends",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w266597476": {
+   "label": "hullbox",
+   "sheet": 23,
+   "note": "full-length cabin on rounded hull",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w280852238": {
+   "label": "ark",
+   "sheet": 24,
+   "set": "sample",
+   "water": "IJmeer"
+  },
+  "w266597437": {
+   "label": "none",
+   "sheet": 25,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Korte Prinsengracht"
+  },
+  "w266597435": {
+   "label": "ark",
+   "sheet": 26,
+   "note": "outline offset",
+   "set": "sample",
+   "water": "Korte Prinsengracht"
+  },
+  "w268452922": {
+   "label": "none",
+   "sheet": 27,
+   "note": "outline offset; small boat",
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w282071880": {
+   "label": "ark",
+   "sheet": 28,
+   "set": "sample",
+   "water": "Vecht"
+  },
+  "w266597460": {
+   "label": "hullbox",
+   "sheet": 29,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w268452923": {
+   "label": "none",
+   "sheet": 30,
+   "note": "small boat",
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w268452897": {
+   "label": "hullbox",
+   "sheet": 31,
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w269084975": {
+   "label": "none",
+   "sheet": 32,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Lijnbaansgracht"
+  },
+  "w268452894": {
+   "label": "ark",
+   "sheet": 33,
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w276279409": {
+   "label": "barge",
+   "sheet": 34,
+   "set": "sample",
+   "water": "Kostverlorenvaart"
+  },
+  "w266604398": {
+   "label": "none",
+   "sheet": 35,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w266604399": {
+   "label": "barge",
+   "sheet": 36,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w279859380": {
+   "label": "ark",
+   "sheet": 37,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268452931": {
+   "label": "none",
+   "sheet": 38,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w901407816": {
+   "label": "none",
+   "sheet": 39,
+   "note": "unclear under trees",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w268452928": {
+   "label": "hullbox",
+   "sheet": 40,
+   "note": "dark full-length cabin with skylights",
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w901407818": {
+   "label": "none",
+   "sheet": 41,
+   "note": "unclear",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w901407819": {
+   "label": "ark",
+   "sheet": 42,
+   "note": "two gables",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w276328195": {
+   "label": "ark",
+   "sheet": 43,
+   "set": "sample",
+   "water": "Jacob van Lennepkanaal"
+  },
+  "w268446548": {
+   "label": "hullbox",
+   "sheet": 44,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w266620714": {
+   "label": "barge",
+   "sheet": 45,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w268458978": {
+   "label": "barge",
+   "sheet": 46,
+   "note": "covered hold",
+   "set": "sample",
+   "water": "Lijnbaansgracht"
+  },
+  "w266620715": {
+   "label": "barge",
+   "sheet": 47,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w268998741": {
+   "label": "hullbox",
+   "sheet": 48,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w266620716": {
+   "label": "hullbox",
+   "sheet": 49,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w268446569": {
+   "label": "barge",
+   "sheet": 50,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w277259774": {
+   "label": "ark",
+   "sheet": 51,
+   "note": "outline narrower than the pontoon",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268998774": {
+   "label": "barge",
+   "sheet": 52,
+   "set": "sample",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w268446537": {
+   "label": "hullbox",
+   "sheet": 53,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w280843670": {
+   "label": "barge",
+   "sheet": 54,
+   "set": "sample",
+   "water": "Buiten-IJ"
+  },
+  "w277259776": {
+   "label": "ark",
+   "sheet": 55,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w276279415": {
+   "label": "hullbox",
+   "sheet": 56,
+   "set": "sample",
+   "water": "Kostverlorenvaart"
+  },
+  "w268446555": {
+   "label": "ark",
+   "sheet": 57,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w277259764": {
+   "label": "barge",
+   "sheet": 58,
+   "note": "49 m ship",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268446542": {
+   "label": "barge",
+   "sheet": 59,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w268998748": {
+   "label": "none",
+   "sheet": 60,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266620719": {
+   "label": "ark",
+   "sheet": 61,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266561187": {
+   "label": "none",
+   "sheet": 62,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Bloemgracht"
+  },
+  "w266620728": {
+   "label": "barge",
+   "sheet": 63,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w281402014": {
+   "label": "barge",
+   "sheet": 64,
+   "note": "76 m ship",
+   "set": "sample",
+   "water": "IJ"
+  },
+  "w280614836": {
+   "label": "ark",
+   "sheet": 65,
+   "set": "sample",
+   "water": "Zijkanaal I"
+  },
+  "w266620724": {
+   "label": "hullbox",
+   "sheet": 66,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w268998764": {
+   "label": "barge",
+   "sheet": 67,
+   "note": "sailing barge",
+   "set": "sample",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266620727": {
+   "label": "hullbox",
+   "sheet": 68,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266620726": {
+   "label": "hullbox",
+   "sheet": 69,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w269296371": {
+   "label": "ark",
+   "sheet": 70,
+   "note": "outline narrower than the pontoon",
+   "set": "sample",
+   "water": "Westerdoksluis"
+  },
+  "w266620720": {
+   "label": "hullbox",
+   "sheet": 71,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266620723": {
+   "label": "hullbox",
+   "sheet": 72,
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w268782289": {
+   "label": "barge",
+   "sheet": 73,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Oudeschans"
+  },
+  "w266620722": {
+   "label": "hullbox",
+   "sheet": 74,
+   "set": "sample",
+   "water": "Herengracht"
+  },
+  "w277950637": {
+   "label": "none",
+   "sheet": 75,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Entrepothaven"
+  },
+  "w279859494": {
+   "label": "none",
+   "sheet": 76,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w280614891": {
+   "label": "ark",
+   "sheet": 77,
+   "note": "hipped red roof",
+   "set": "sample",
+   "water": "Zijkanaal I"
+  },
+  "w268998601": {
+   "label": "ark",
+   "sheet": 78,
+   "set": "sample",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w278085450": {
+   "label": "hullbox",
+   "sheet": 79,
+   "note": "red bow",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w276372345": {
+   "label": "barge",
+   "sheet": 80,
+   "note": "small",
+   "set": "sample",
+   "water": "Jacob van Lennepkanaal"
+  },
+  "w279863363": {
+   "label": "ark",
+   "sheet": 81,
+   "note": "square box; outline has rounded ends",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268998669": {
+   "label": "hullbox",
+   "sheet": 82,
+   "set": "sample",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998581": {
+   "label": "ark",
+   "sheet": 83,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998573": {
+   "label": "ark",
+   "sheet": 84,
+   "note": "green roof",
+   "set": "sample",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w277293310": {
+   "label": "barge",
+   "sheet": 85,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w276901932": {
+   "label": "ark",
+   "sheet": 86,
+   "note": "long gabled shed roof",
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w276901940": {
+   "label": "ark",
+   "sheet": 87,
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w266604416": {
+   "label": "hullbox",
+   "sheet": 88,
+   "note": "green roof, red hull",
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w267107812": {
+   "label": "barge",
+   "sheet": 89,
+   "note": "old ship, rigging",
+   "set": "sample",
+   "water": "Oosterdok"
+  },
+  "w277290743": {
+   "label": "none",
+   "sheet": 90,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w266907901": {
+   "label": "ark",
+   "sheet": 91,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w266907900": {
+   "label": "ark",
+   "sheet": 92,
+   "note": "glasshouse box",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w901380597": {
+   "label": "barge",
+   "sheet": 93,
+   "note": "white ship; outline is a small rectangle",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w901380599": {
+   "label": "ark",
+   "sheet": 94,
+   "note": "white box, square ends",
+   "set": "sample",
+   "water": "Singel"
+  },
+  "w277290753": {
+   "label": "hullbox",
+   "sheet": 95,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w276997932": {
+   "label": "hullbox",
+   "sheet": 96,
+   "note": "box with a pointed bow",
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w277290739": {
+   "label": "ark",
+   "sheet": 97,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w266625858": {
+   "label": "hullbox",
+   "sheet": 98,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w278353767": {
+   "label": "ark",
+   "sheet": 99,
+   "note": "square box",
+   "set": "sample",
+   "water": "other"
+  },
+  "w269084866": {
+   "label": "hullbox",
+   "sheet": 100,
+   "set": "sample",
+   "water": "Lijnbaansgracht"
+  },
+  "w269084863": {
+   "label": "hullbox",
+   "sheet": 101,
+   "set": "sample",
+   "water": "Lijnbaansgracht"
+  },
+  "w274024180": {
+   "label": "hullbox",
+   "sheet": 102,
+   "note": "outline offset",
+   "set": "sample",
+   "water": "Oude Houthaven"
+  },
+  "w266625829": {
+   "label": "hullbox",
+   "sheet": 103,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w266625832": {
+   "label": "ark",
+   "sheet": 104,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w268783241": {
+   "label": "hullbox",
+   "sheet": 105,
+   "set": "sample",
+   "water": "Nieuwe Herengracht"
+  },
+  "w1384085901": {
+   "label": "none",
+   "sheet": 106,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "other"
+  },
+  "w267107707": {
+   "label": "hullbox",
+   "sheet": 107,
+   "set": "sample",
+   "water": "Waalseilandgracht"
+  },
+  "w274005177": {
+   "label": "barge",
+   "sheet": 108,
+   "note": "covered hold",
+   "set": "sample",
+   "water": "Houthaven"
+  },
+  "w273112458": {
+   "label": "ark",
+   "sheet": 109,
+   "set": "sample",
+   "water": "other"
+  },
+  "w276686467": {
+   "label": "barge",
+   "sheet": 110,
+   "set": "sample",
+   "water": "IJ"
+  },
+  "w276686498": {
+   "label": "barge",
+   "sheet": 111,
+   "set": "sample",
+   "water": "IJhaven"
+  },
+  "w269084980": {
+   "label": "hullbox",
+   "sheet": 112,
+   "set": "sample",
+   "water": "Singelgracht"
+  },
+  "w274005172": {
+   "label": "barge",
+   "sheet": 113,
+   "set": "sample",
+   "water": "Houthaven"
+  },
+  "w276686460": {
+   "label": "hullbox",
+   "sheet": 114,
+   "set": "sample",
+   "water": "IJ"
+  },
+  "w267107772": {
+   "label": "hullbox",
+   "sheet": 115,
+   "set": "sample",
+   "water": "Waalseilandgracht"
+  },
+  "w266597444": {
+   "label": "ark",
+   "sheet": 116,
+   "note": "square end, under trees",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w645172807": {
+   "label": "ark",
+   "sheet": 117,
+   "set": "sample",
+   "water": "Johan van Hasseltkanaal (West)"
+  },
+  "w266597442": {
+   "label": "ark",
+   "sheet": 118,
+   "note": "green roof",
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w269084922": {
+   "label": "barge",
+   "sheet": 119,
+   "set": "sample",
+   "water": "Lijnbaansgracht"
+  },
+  "w266597441": {
+   "label": "barge",
+   "sheet": 120,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w268459020": {
+   "label": "none",
+   "sheet": 121,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Singelgracht"
+  },
+  "w269084932": {
+   "label": "none",
+   "sheet": 122,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Singelgracht"
+  },
+  "w276686491": {
+   "label": "barge",
+   "sheet": 123,
+   "set": "sample",
+   "water": "IJhaven"
+  },
+  "w268459026": {
+   "label": "none",
+   "sheet": 124,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Singelgracht"
+  },
+  "w269084906": {
+   "label": "hullbox",
+   "sheet": 125,
+   "note": "garden boxes on hull",
+   "set": "sample",
+   "water": "Lijnbaansgracht"
+  },
+  "w276997799": {
+   "label": "ark",
+   "sheet": 126,
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w268458999": {
+   "label": "ark",
+   "sheet": 127,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268446509": {
+   "label": "hullbox",
+   "sheet": 128,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w276279459": {
+   "label": "ark",
+   "sheet": 129,
+   "note": "square end, under trees",
+   "set": "sample",
+   "water": "Kostverlorenvaart"
+  },
+  "w269074612": {
+   "label": "ark",
+   "sheet": 130,
+   "note": "square box; outline traced pointed and offset",
+   "set": "sample",
+   "water": "Kattenburgervaart"
+  },
+  "w276279469": {
+   "label": "ark",
+   "sheet": 131,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Kostverlorenvaart"
+  },
+  "w268458934": {
+   "label": "barge",
+   "sheet": 132,
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w269296392": {
+   "label": "barge",
+   "sheet": 133,
+   "set": "sample",
+   "water": "IJ"
+  },
+  "w268452906": {
+   "label": "ark",
+   "sheet": 134,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268452900": {
+   "label": "hullbox",
+   "sheet": 135,
+   "note": "green roof inside gunwale",
+   "set": "sample",
+   "water": "Achtergracht"
+  },
+  "w276903917": {
+   "label": "ark",
+   "sheet": 136,
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w268446511": {
+   "label": "hullbox",
+   "sheet": 137,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w268452903": {
+   "label": "barge",
+   "sheet": 138,
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w269296394": {
+   "label": "barge",
+   "sheet": 139,
+   "set": "sample",
+   "water": "IJ"
+  },
+  "w268452912": {
+   "label": "hullbox",
+   "sheet": 140,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w268998620": {
+   "label": "barge",
+   "sheet": 141,
+   "set": "sample",
+   "water": "Nieuwe Herengracht"
+  },
+  "w280834056": {
+   "label": "ark",
+   "sheet": 142,
+   "note": "wide box with solar panels",
+   "set": "sample",
+   "water": "IJ"
+  },
+  "w268998536": {
+   "label": "none",
+   "sheet": 143,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266604426": {
+   "label": "hullbox",
+   "sheet": 144,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w277950575": {
+   "label": "barge",
+   "sheet": 145,
+   "note": "outline offset",
+   "set": "sample",
+   "water": "Spoorwegbassin"
+  },
+  "w266604456": {
+   "label": "hullbox",
+   "sheet": 146,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w266604423": {
+   "label": "barge",
+   "sheet": 147,
+   "set": "sample",
+   "water": "Keizersgracht"
+  },
+  "w276302518": {
+   "label": "none",
+   "sheet": 148,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Hugo de Grootgracht"
+  },
+  "w645172789": {
+   "label": "ark",
+   "sheet": 149,
+   "set": "sample",
+   "water": "Johan van Hasseltkanaal (West)"
+  },
+  "w276302537": {
+   "label": "none",
+   "sheet": 150,
+   "note": "under trees",
+   "set": "sample",
+   "water": "Hugo de Grootgracht"
+  },
+  "w266550793": {
+   "label": "barge",
+   "sheet": 151,
+   "set": "sample",
+   "water": "Brouwersgracht"
+  },
+  "w266659814": {
+   "label": "hullbox",
+   "sheet": 152,
+   "note": "under a tree",
+   "set": "sample",
+   "water": "Prinsengracht"
+  },
+  "w268998529": {
+   "label": "barge",
+   "sheet": 153,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w277416016": {
+   "label": "ark",
+   "sheet": 154,
+   "set": "sample",
+   "water": "IJssloot"
+  },
+  "w277293303": {
+   "label": "ark",
+   "sheet": 155,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w896647054": {
+   "label": "none",
+   "sheet": 156,
+   "note": "berth empty",
+   "set": "sample",
+   "water": "Herengracht"
+  },
+  "w276997903": {
+   "label": "ark",
+   "sheet": 157,
+   "set": "sample",
+   "water": "Schinkel"
+  },
+  "w277293305": {
+   "label": "ark",
+   "sheet": 158,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w273112399": {
+   "label": "ark",
+   "sheet": 159,
+   "set": "sample",
+   "water": "Zijkanaal F"
+  },
+  "w277293304": {
+   "label": "ark",
+   "sheet": 160,
+   "set": "sample",
+   "water": "Amstel"
+  },
+  "w266907898": {
+   "label": "ark",
+   "sheet": 1,
+   "set": "ring",
+   "note": "glasshouse box",
+   "water": "Singel"
+  },
+  "w266907895": {
+   "label": "ark",
+   "sheet": 2,
+   "set": "ring",
+   "note": "glasshouse box",
+   "water": "Singel"
+  },
+  "w266907890": {
+   "label": "ark",
+   "sheet": 3,
+   "set": "ring",
+   "note": "shed",
+   "water": "Singel"
+  },
+  "w268459058": {
+   "label": "barge",
+   "sheet": 4,
+   "set": "ring",
+   "note": "red hold cover, bow right",
+   "water": "Prinsengracht"
+  },
+  "w266597484": {
+   "label": "none",
+   "sheet": 5,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Korte Prinsengracht"
+  },
+  "w901591638": {
+   "label": "hullbox",
+   "sheet": 6,
+   "set": "ring",
+   "note": "green roof full length",
+   "water": "Singel"
+  },
+  "w266550803": {
+   "label": "none",
+   "sheet": 7,
+   "set": "ring",
+   "note": "berth empty at the outline",
+   "water": "Brouwersgracht"
+  },
+  "w266597479": {
+   "label": "hullbox",
+   "sheet": 8,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266550806": {
+   "label": "hullbox",
+   "sheet": 9,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266550804": {
+   "label": "hullbox",
+   "sheet": 10,
+   "set": "ring",
+   "note": "outline offset",
+   "water": "Brouwersgracht"
+  },
+  "w268459055": {
+   "label": "hullbox",
+   "sheet": 11,
+   "set": "ring",
+   "note": "green roof",
+   "water": "Prinsengracht"
+  },
+  "w266597473": {
+   "label": "none",
+   "sheet": 12,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Brouwersgracht"
+  },
+  "w266597471": {
+   "label": "hullbox",
+   "sheet": 13,
+   "set": "ring",
+   "note": "roof garden",
+   "water": "Brouwersgracht"
+  },
+  "w266597436": {
+   "label": "barge",
+   "sheet": 14,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266597464": {
+   "label": "hullbox",
+   "sheet": 15,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266597433": {
+   "label": "hullbox",
+   "sheet": 16,
+   "set": "ring",
+   "water": "Korte Prinsengracht"
+  },
+  "w268452920": {
+   "label": "hullbox",
+   "sheet": 17,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268452927": {
+   "label": "none",
+   "sheet": 18,
+   "set": "ring",
+   "note": "unclear in shadow",
+   "water": "Prinsengracht"
+  },
+  "w268452924": {
+   "label": "none",
+   "sheet": 19,
+   "set": "ring",
+   "note": "outline offset",
+   "water": "Prinsengracht"
+  },
+  "w268452936": {
+   "label": "none",
+   "sheet": 20,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Prinsengracht"
+  },
+  "w268446563": {
+   "label": "hullbox",
+   "sheet": 21,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w901407814": {
+   "label": "ark",
+   "sheet": 22,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w268452933": {
+   "label": "none",
+   "sheet": 23,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Prinsengracht"
+  },
+  "w268446560": {
+   "label": "hullbox",
+   "sheet": 24,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w268452932": {
+   "label": "none",
+   "sheet": 25,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Prinsengracht"
+  },
+  "w268446532": {
+   "label": "barge",
+   "sheet": 26,
+   "set": "ring",
+   "note": "solar panels over the hold, wheelhouse",
+   "water": "Keizersgracht"
+  },
+  "w268446552": {
+   "label": "hullbox",
+   "sheet": 27,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604396": {
+   "label": "hullbox",
+   "sheet": 28,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604394": {
+   "label": "hullbox",
+   "sheet": 29,
+   "set": "ring",
+   "water": "Herengracht"
+  },
+  "w266620717": {
+   "label": "none",
+   "sheet": 30,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Singel"
+  },
+  "w266555540": {
+   "label": "hullbox",
+   "sheet": 31,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268446557": {
+   "label": "hullbox",
+   "sheet": 32,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266555542": {
+   "label": "barge",
+   "sheet": 33,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555544": {
+   "label": "hullbox",
+   "sheet": 34,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555545": {
+   "label": "barge",
+   "sheet": 35,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555535": {
+   "label": "hullbox",
+   "sheet": 36,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555548": {
+   "label": "barge",
+   "sheet": 37,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555531": {
+   "label": "barge",
+   "sheet": 38,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266561186": {
+   "label": "barge",
+   "sheet": 39,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555533": {
+   "label": "barge",
+   "sheet": 40,
+   "set": "ring",
+   "note": "outline offset",
+   "water": "Prinsengracht"
+  },
+  "w266561184": {
+   "label": "none",
+   "sheet": 41,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Prinsengracht"
+  },
+  "w266555532": {
+   "label": "barge",
+   "sheet": 42,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266620725": {
+   "label": "hullbox",
+   "sheet": 43,
+   "set": "ring",
+   "water": "Herengracht"
+  },
+  "w266561183": {
+   "label": "hullbox",
+   "sheet": 44,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268998716": {
+   "label": "none",
+   "sheet": 45,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266561181": {
+   "label": "hullbox",
+   "sheet": 46,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w269303385": {
+   "label": "ark",
+   "sheet": 47,
+   "set": "ring",
+   "note": "square box; outline offset",
+   "water": "Korte Prinsengracht"
+  },
+  "w266561180": {
+   "label": "hullbox",
+   "sheet": 48,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266620721": {
+   "label": "hullbox",
+   "sheet": 49,
+   "set": "ring",
+   "note": "green roof, red bow",
+   "water": "Singel"
+  },
+  "w266555539": {
+   "label": "hullbox",
+   "sheet": 50,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266555538": {
+   "label": "hullbox",
+   "sheet": 51,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268998697": {
+   "label": "hullbox",
+   "sheet": 52,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w266561179": {
+   "label": "hullbox",
+   "sheet": 53,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268998665": {
+   "label": "hullbox",
+   "sheet": 54,
+   "set": "ring",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998689": {
+   "label": "hullbox",
+   "sheet": 55,
+   "set": "ring",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w268998678": {
+   "label": "barge",
+   "sheet": 56,
+   "set": "ring",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998686": {
+   "label": "hullbox",
+   "sheet": 57,
+   "set": "ring",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998682": {
+   "label": "hullbox",
+   "sheet": 58,
+   "set": "ring",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w174999382": {
+   "label": "barge",
+   "sheet": 59,
+   "set": "ring",
+   "note": "Hendrika Maria, Houseboat Museum",
+   "water": "Prinsengracht"
+  },
+  "w266604469": {
+   "label": "hullbox",
+   "sheet": 60,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266604419": {
+   "label": "hullbox",
+   "sheet": 61,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604402": {
+   "label": "none",
+   "sheet": 62,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Prinsengracht"
+  },
+  "w266604403": {
+   "label": "hullbox",
+   "sheet": 63,
+   "set": "ring",
+   "note": "timber-coloured roof full length",
+   "water": "Prinsengracht"
+  },
+  "w266604464": {
+   "label": "barge",
+   "sheet": 64,
+   "set": "ring",
+   "note": "old freighter, open hold",
+   "water": "Keizersgracht"
+  },
+  "w266604401": {
+   "label": "none",
+   "sheet": 65,
+   "set": "ring",
+   "note": "outline offset",
+   "water": "Herengracht"
+  },
+  "w266604415": {
+   "label": "barge",
+   "sheet": 66,
+   "set": "ring",
+   "note": "red hull, covered hold",
+   "water": "Prinsengracht"
+  },
+  "w268998557": {
+   "label": "none",
+   "sheet": 67,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266604414": {
+   "label": "barge",
+   "sheet": 68,
+   "set": "ring",
+   "note": "outline offset",
+   "water": "Prinsengracht"
+  },
+  "w266604444": {
+   "label": "hullbox",
+   "sheet": 69,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604405": {
+   "label": "none",
+   "sheet": 70,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Prinsengracht"
+  },
+  "w266604411": {
+   "label": "hullbox",
+   "sheet": 71,
+   "set": "ring",
+   "note": "red roof full length",
+   "water": "Keizersgracht"
+  },
+  "w266604413": {
+   "label": "barge",
+   "sheet": 72,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266604440": {
+   "label": "none",
+   "sheet": 73,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Keizersgracht"
+  },
+  "w266604412": {
+   "label": "none",
+   "sheet": 74,
+   "set": "ring",
+   "note": "berth empty",
+   "water": "Prinsengracht"
+  },
+  "w266907903": {
+   "label": "ark",
+   "sheet": 75,
+   "set": "ring",
+   "note": "glasshouse box",
+   "water": "Singel"
+  },
+  "w266907902": {
+   "label": "ark",
+   "sheet": 76,
+   "set": "ring",
+   "note": "glasshouse box",
+   "water": "Singel"
+  },
+  "w268998458": {
+   "label": "none",
+   "sheet": 77,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w268998446": {
+   "label": "none",
+   "sheet": 78,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266625849": {
+   "label": "hullbox",
+   "sheet": 79,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266625853": {
+   "label": "hullbox",
+   "sheet": 80,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266597457": {
+   "label": "hullbox",
+   "sheet": 81,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266597445": {
+   "label": "barge",
+   "sheet": 82,
+   "set": "ring",
+   "note": "covered freight hold",
+   "water": "Brouwersgracht"
+  },
+  "w266597440": {
+   "label": "hullbox",
+   "sheet": 83,
+   "set": "ring",
+   "note": "green roof",
+   "water": "Brouwersgracht"
+  },
+  "w266597448": {
+   "label": "hullbox",
+   "sheet": 84,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w268452887": {
+   "label": "ark",
+   "sheet": 85,
+   "set": "ring",
+   "note": "square end",
+   "water": "Prinsengracht"
+  },
+  "w268446572": {
+   "label": "hullbox",
+   "sheet": 86,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w268446578": {
+   "label": "hullbox",
+   "sheet": 87,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w268458937": {
+   "label": "hullbox",
+   "sheet": 88,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268452909": {
+   "label": "none",
+   "sheet": 89,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268446518": {
+   "label": "hullbox",
+   "sheet": 90,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w268458936": {
+   "label": "hullbox",
+   "sheet": 91,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268458935": {
+   "label": "hullbox",
+   "sheet": 92,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268446514": {
+   "label": "hullbox",
+   "sheet": 93,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w268452907": {
+   "label": "barge",
+   "sheet": 94,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268452917": {
+   "label": "hullbox",
+   "sheet": 95,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268452914": {
+   "label": "hullbox",
+   "sheet": 96,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w268998709": {
+   "label": "hullbox",
+   "sheet": 97,
+   "set": "ring",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998657": {
+   "label": "hullbox",
+   "sheet": 98,
+   "set": "ring",
+   "note": "garden roof over the hold",
+   "water": "Nieuwe Keizersgracht"
+  },
+  "w268998703": {
+   "label": "hullbox",
+   "sheet": 99,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Nieuwe Prinsengracht"
+  },
+  "w266670059": {
+   "label": "none",
+   "sheet": 100,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Prinsengracht"
+  },
+  "w266670064": {
+   "label": "hullbox",
+   "sheet": 101,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266604450": {
+   "label": "hullbox",
+   "sheet": 102,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266604453": {
+   "label": "hullbox",
+   "sheet": 103,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604424": {
+   "label": "hullbox",
+   "sheet": 104,
+   "set": "ring",
+   "water": "Herengracht"
+  },
+  "w266604420": {
+   "label": "hullbox",
+   "sheet": 105,
+   "set": "ring",
+   "water": "Herengracht"
+  },
+  "w266604436": {
+   "label": "ark",
+   "sheet": 106,
+   "set": "ring",
+   "note": "wide garden pontoon; OSM outline narrow (Prinsengracht at Noordermarkt)",
+   "water": "Prinsengracht"
+  },
+  "w266604435": {
+   "label": "barge",
+   "sheet": 107,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604433": {
+   "label": "none",
+   "sheet": 108,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Brouwersgracht"
+  },
+  "w266604432": {
+   "label": "hullbox",
+   "sheet": 109,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266604431": {
+   "label": "barge",
+   "sheet": 110,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266604430": {
+   "label": "none",
+   "sheet": 111,
+   "set": "ring",
+   "note": "under trees",
+   "water": "Keizersgracht"
+  },
+  "w266659807": {
+   "label": "barge",
+   "sheet": 112,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266604429": {
+   "label": "hullbox",
+   "sheet": 113,
+   "set": "ring",
+   "water": "Keizersgracht"
+  },
+  "w266659813": {
+   "label": "barge",
+   "sheet": 114,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266550796": {
+   "label": "none",
+   "sheet": 115,
+   "set": "ring",
+   "note": "tiny",
+   "water": "Brouwersgracht"
+  },
+  "w266659811": {
+   "label": "barge",
+   "sheet": 116,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266659810": {
+   "label": "hullbox",
+   "sheet": 117,
+   "set": "ring",
+   "note": "outline offset",
+   "water": "Prinsengracht"
+  },
+  "w266550794": {
+   "label": "hullbox",
+   "sheet": 118,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w896647056": {
+   "label": "none",
+   "sheet": 119,
+   "set": "ring",
+   "note": "berth empty",
+   "water": "Herengracht"
+  },
+  "w266659808": {
+   "label": "hullbox",
+   "sheet": 120,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w896647055": {
+   "label": "none",
+   "sheet": 121,
+   "set": "ring",
+   "note": "berth empty",
+   "water": "Herengracht"
+  },
+  "w266659809": {
+   "label": "hullbox",
+   "sheet": 122,
+   "set": "ring",
+   "water": "Prinsengracht"
+  },
+  "w266550798": {
+   "label": "barge",
+   "sheet": 123,
+   "set": "ring",
+   "water": "Brouwersgracht"
+  },
+  "w266550799": {
+   "label": "none",
+   "sheet": 124,
+   "set": "ring",
+   "note": "in shadow",
+   "water": "Brouwersgracht"
+  }
+ },
+ "sets": {
+  "sample": "stratified 160 (36 four-corner, 50 traced classified ark, 74 traced classified barge by the old rule) across regions; sheets artifacts/houseboat-kinds/sheets/",
+  "ring": "every unlabelled traced outline on Prinsengracht, Herengracht, Keizersgracht, Singel and Brouwersgracht (124), labelled after the new classifier was fixed: a blind held-out set; sheets artifacts/houseboat-kinds/ring/"
+ }
+}
