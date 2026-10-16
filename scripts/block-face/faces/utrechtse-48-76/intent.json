@@ -23,7 +23,7 @@
    "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "cornice", "crownCap": "rounded", "crownCapSpan": "wide", "storeys": 3, "bays": [1, 1, 2], "doorBay": 0, "basement": "none", "cornice": "simple", "windows": "plain", "hoist": false,
       "bayWindows": {"bay": 0, "storeys": [1]},
       "shopfront": {"colour": "black", "fascia": true, "displayWindows": 1, "stallriser": "low"}}],
-    "roof": {"material": "slate"}, "palette": {"brick": "#8a3e2e", "frame": "cream-painted", "door": "black", "stone": "cream"}},
+    "roof": {"material": "slate", "source": "front", "form": "flat", "evidence": "2025-01-20 strip: rounded parapet with sky directly behind; both neighbours stand storeys higher, no coplanar roof"}, "palette": {"brick": "#8a3e2e", "frame": "cream-painted", "door": "black", "stone": "cream"}},
    "groundFloor": {"use": "shop", "category": "fashion boutique (mannequins in the window)", "bag": ["winkelfunctie", "woonfunctie"], "photoDate": "2025-01-20", "agreement": "photo-only",
     "note": "Black fascia with dark lettering that is not legible at strip resolution; no OSM business on no. 74. Sign not modelled."},
    "rhythm": {"bays": "1 wide bay below, 2 windows on the top storey", "windowsPerStorey": "ground: shop | 1: glazed bay window with an iron balcony rail | 2: 2 | parapet", "symmetry": "symmetric", "groundFloor": "black shopfront, door left", "signage": "black fascia, lettering illegible", "roofline": "curved (segmental) brick parapet", "citation": "strip.jpg pand 2 (x 256-425 px)", "photoRows": [1, 1, 2]}
