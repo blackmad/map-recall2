@@ -27,11 +27,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { allSpecs } from '../lib/placedFootprints';
+import { buildContents } from './contents';
 import { addFeatures, emptyIndex, resolveSuppressed } from '../../src/canalRecall/bagPandIndex';
 import { fullPandId } from '../../src/canalRecall/bagTiles';
 import { KITS, kitIds } from '../../src/canalRecall/landmarkKits';
 import {
-  TIERS, TIER_IDS, aggregate, bboxOf, buurtLocator, claim, polygonsOf, rankForGenerators, simplifyRing,
+  TIERS, TIER_IDS, aggregate, emptyContent, hasContent, CONTENT_KINDS, bboxOf, buurtLocator, claim, polygonsOf, rankForGenerators, simplifyRing,
   type Buurt, type BuurtMeta, type PandRecord, type Ring, type TierId,
 } from '../../src/canalRecall/coverage/coverage';
 
@@ -122,7 +123,7 @@ function specTier(spec: Spec): TierId {
   }
   return 'bespoke';
 }
-const covers = readJson(path.join(ROOT, 'public/canal-drive/models/covers.json')) as { models: Record<string, { p: string[] }>; buildingTypes: string[] };
+const covers = readJson(path.join(ROOT, 'public/canal-drive/models/covers.json')) as { models: Record<string, { p: string[]; o?: string[] }>; buildingTypes: string[] };
 const specs = allSpecs();
 const specIds = new Set(specs.map(s => s.id));
 const perTierModels: Record<string, number> = {};
@@ -143,6 +144,9 @@ function synthesiseUnit(id: string, osmIds: readonly string[], tier: TierId): bo
   return true;
 }
 let synthetic = 0;
+/** Per placed model and landmark kit, the units (pands or synthetic model units) it draws: the buurt panel's lists. */
+const modelUnits = new Map<string, { tier: TierId; name: string; units: string[] }>();
+const kitUnits = new Map<string, string[]>();
 const take = (pand: string, tier: TierId) => { if (pands.has(pand)) claim(tierOf, pand, tier); else missingPand.add(pand); };
 for (const spec of specs) {
   const tier = specTier(spec);
@@ -151,12 +155,14 @@ for (const spec of specs) {
   const covered = entry?.p.map(fullPandId) ?? [];
   const resolved = resolveSuppressed(index, spec.suppressOsmIds.map(String));
   for (const pand of new Set([...covered, ...resolved.pands])) take(pand, tier);
+  modelUnits.set(spec.id, { tier, name: spec.name, units: [...new Set([...covered, ...resolved.pands])] });
   if (covered.length || resolved.pands.length) continue;
   // No pand: at landmarks the base tiles draw OSM building:parts instead of the BAG pand, so the model stands on OSM-only outlines.
-  if (!synthesiseUnit(`model:${spec.id}`, [...(entry?.o ?? []), ...resolved.osmOnly], tier)) unattributed.push(`${tier}:${spec.id}`);
+  if (synthesiseUnit(`model:${spec.id}`, [...(entry?.o ?? []), ...resolved.osmOnly], tier)) modelUnits.get(spec.id)!.units.push(`model:${spec.id}`);
+  else unattributed.push(`${tier}:${spec.id}`);
 }
 const staleCovers = Object.keys(covers.models).filter(id => !specIds.has(id));
-const instances = readJson(path.join(ROOT, 'public/canal-drive/building-types/instances.json')) as { pand: string }[];
+const instances = readJson(path.join(ROOT, 'public/canal-drive/building-types/instances.json')) as { pand: string; unit: string }[];
 for (const i of instances) take(fullPandId(i.pand), 'buildingType');
 perTierModels.buildingType = instances.length;
 let kitParts = 0;
@@ -166,7 +172,8 @@ for (const kit of KITS) {
   const resolved = resolveSuppressed(index, ids);
   for (const pand of resolved.pands) take(pand, 'landmarkKit');
   // A kit on a landmark a model already draws adds no unit; the model wins (bespoke precedes landmarkKit).
-  if (!resolved.pands.length) synthesiseUnit(`kit:${kit.name}`, resolved.osmOnly.filter(o => !claimedOsm.has(o)), 'landmarkKit');
+  kitUnits.set(kit.name, [...resolved.pands]);
+  if (!resolved.pands.length) { if (synthesiseUnit(`kit:${kit.name}`, resolved.osmOnly.filter(o => !claimedOsm.has(o)), 'landmarkKit')) kitUnits.get(kit.name)!.push(`kit:${kit.name}`); }
   else resolved.osmOnly.forEach(o => claimedOsm.add(o));
 }
 perTierModels.landmarkKit = KITS.length;
@@ -231,13 +238,16 @@ for (const p of pands.values()) {
   const l = byBuurt.get(code); if (l) l.push(p); else byBuurt.set(code, [p]);
 }
 const rows = aggregate(meta, byBuurt, tierOf, { survey, types, faces });
+const unitBuurt = new Map<string, string>();
+for (const [code, list] of byBuurt) for (const p of list) unitBuurt.set(p.id, code);
+const contents = buildContents({ ROOT, pands, unitBuurt, modelUnits, kitUnits, instances, survey });
 
 // --- output ----------------------------------------------------------------------
 const geometryOf = new Map(buurten.map(b => [b.code, b.polygons]));
 const TOL = 0.00004; // ~3–4 m
 const features = rows.map(r => {
   const polys = geometryOf.get(r.code)!.map(poly => poly.map(ring => simplifyRing(ring as Ring, TOL)));
-  return { type: 'Feature', properties: r, geometry: polys.length === 1 ? { type: 'Polygon', coordinates: polys[0] } : { type: 'MultiPolygon', coordinates: polys } };
+  return { type: 'Feature', properties: { ...r, content: contents.byBuurt.get(r.code) ?? emptyContent() }, geometry: polys.length === 1 ? { type: 'Polygon', coordinates: polys[0] } : { type: 'MultiPolygon', coordinates: polys } };
 });
 const totals = Object.fromEntries(TIER_IDS.map(t => [t, 0])) as Record<TierId, number>;
 for (const r of rows) for (const t of TIER_IDS) totals[t] += r.tiers[t];
@@ -261,10 +271,13 @@ const file = {
   features,
 };
 const json = JSON.stringify(file);
+const contentsJson = JSON.stringify({ version: 1, generatedAt: file.generatedAt, note: contents.note, items: contents.items });
 const write = (dir: string) => {
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'buurten.json'), json);
   fs.writeFileSync(path.join(dir, 'buurten.json.gz'), zlib.gzipSync(json, { level: 9 }));
+  fs.writeFileSync(path.join(dir, 'contents.json'), contentsJson);
+  fs.writeFileSync(path.join(dir, 'contents.json.gz'), zlib.gzipSync(contentsJson, { level: 9 }));
 };
 write(STAGING);
 if (arg('publish')) write(PUBLISH);
@@ -280,7 +293,10 @@ const parts2 = [...osmOnly].filter(([, v]) => v.tier === 2), unclaimed2 = loose;
 console.log(`model/kit units on OSM-only outlines (no pand in the base tiles): ${synthetic}; tier-2 OSM parts ${parts2.length}, unclaimed by any model or kit ${unclaimed2.length}, counted as ${groups.size} generic units (parts within ${GROUP_M} m grouped)`);
 console.log(`claimed pands missing from the base tiles: ${missingPand.size}; kit part ids: ${kitParts}`);
 console.log(`flags: survey pands ${survey.size}, type-evidence pands ${types.size}, face pands ${faces.size}`);
-console.log(`buurten with pands: ${rows.filter(r => r.pands).length}; json ${(json.length / 1024).toFixed(0)} KB raw, ${(zlib.gzipSync(json).length / 1024).toFixed(0)} KB gz`);
+console.log(`buurten with pands: ${rows.filter(r => r.pands).length}; json ${(json.length / 1024).toFixed(0)} KB raw, ${(zlib.gzipSync(json).length / 1024).toFixed(0)} KB gz; contents ${(contentsJson.length / 1024).toFixed(0)} KB raw`);
+const withContent = features.filter(f => hasContent(f.properties.content));
+console.log(`buurten with any kit content: ${withContent.length} (${CONTENT_KINDS.map(k => `${k} ${features.filter(f => f.properties.content[k].length).length}`).join(', ')})`);
+console.log(`contents catalogue: ${CONTENT_KINDS.map(k => `${k} ${Object.keys(contents.items[k]).length}`).join(', ')}; links dropped as unverifiable: ${contents.dropped.length}${contents.dropped.length ? ` (${contents.dropped.slice(0, 6).join(', ')})` : ''}`);
 console.log('\ntop 25 generator to-do (≥80 pands): code name | pands | rep | modelled | priority | uncovered repetitive | decade | survey/types');
 for (const [i, r] of rankForGenerators(rows).slice(0, 25).entries()) {
   console.log(`${String(i + 1).padStart(2)}. ${r.code} ${r.name} (${r.wijk}) | ${r.pands} | ${r.repetition} | ${r.share} | ${r.priority} | ${r.repetitiveGeneric} | ${r.decade}s ${Math.round(r.decadeShare * 100)}% | ${r.survey.streets.join('+') || '-'} / ${r.types.districts.join('+') || '-'}`);
