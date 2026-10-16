@@ -1,5 +1,48 @@
 # Canal Recall — what is built
 
+## roads-v1: the surveyed BGT road partition fetched city-wide, seven pilot cells published (2026-10-16)
+
+Lane `lane/roads-data-20261016` (d8f734147 scripts and schema, 1670a1b9b
+pilot publish; plan `docs/plans/road-surfaces-roof-rules-20261016.md`
+Part 1). `scripts/own-ground/fetch-bgt-roads.ts` pulls PDOK BGT
+`wegdeel` per cell with a 30 m pad and `datetime=<today>` (without it
+the API returns history), keeping lokaal_id, functie, fysiek_voorkomen,
+plus_fysiek_voorkomen, relatieve_hoogteligging, status, eind_registratie
+and bronhouder: 294 cells, 267,614 features, pilot 104 s, city 522 s at
+concurrency 6. `build-bgt-roads.ts` dedupes by lokaal_id, drops
+spoorbaan (1,812), ruiterpad, airfield and h < 0 (200), classes by
+`classOf`, meshes carriage/parking/driveway by fysiek_voorkomen (open →
+klinker, gesloten → asphalt, half → gravel), foot/pedestrian → paving,
+cycle → cycle, with the `isFietsstraat` override limited to carriageway
+highways and stations 6 m from way ends (it first turned 150 junction
+polygons red under Overtoom/Rokin from red-asphalt cycleways); kerbs are
+shared edges between carriage/parking/cycle and foot/pedestrian at equal
+h (exact 1e-7° hash; all pilot cells are bronhouder G0363); `coverWays`
+are OSM ways with ≥ 80 % of their 2 m stations inside compatible
+polygons. Cell schema `{version, key, surfaces: [{k, c, h, r}], kerbs,
+coverWays}` typed and validated in `ownGround/roadCells.ts`
+(`roadCellProblems`, `ROAD_CELL_BUDGET_GZ`, `ROADS_TOTAL_BUDGET_GZ`;
+`test:roads-cells` 7/7 validates every published cell, kerb vertices
+within 0.3 m of a boundary for ≥ 97 %). Pilot (-3_-1, -2_-1, -3_0, -2_0,
+-1_-1, -1_0, -2_1): 16,223 polygons (foot 6,107, parking 5,213, carriage
+3,287, cycle 864, driveway 669, pedestrian 83; h=1 653), 4.08 M → 209 k
+vertices at 0.1 m, 43 B/polygon, 696 KB gz total (max 111 KB, median 99
+KB against the 350 KB budget), 2,531 kerb runs, 20 carriage polygons red
+from 14 fietsstraat ways, 61 h ≥ 1 polygons over no deck. Cover share:
+residential 91 %, tertiary 97 %, secondary/primary 99 %, busway 94 %,
+living_street 64 %, footway 56 %, cycleway 47 % (fietspad for ~60 % of
+the way and crossing rijbaan for the rest, so they fail the 80 % rule),
+path 36 %; overall 72 %. City-wide, staged only in source-data
+(`datasets/bgt-roads-20261016/`, 257 MB raw, 10 MB staged): 223,590
+polygons, 9.7 MB gz (max 115 KB, median 21 KB), 62 % of ways covered
+(track, bridleway, path and service drag it down: yards and park paths
+are not wegdeel), 400 h ≥ 1 polygons over no deck (75.9 ha, A10 and
+western-harbour viaducts). BGT cannot say: squares, yards and park paths
+(`onbegroeidterreindeel`/erf), overpasses without a registered deck,
+tram beds in their own right-of-way, and klinker vs tegels (89 % of
+plus_fysiek_voorkomen is null). Attribution `BGT © Kadaster (CC0 1.0)`
+in cells.json.
+
 ## Landmark abutter survey: buildings in a landmark's angles and walls (2026-10-16)
 
 Lane `lane/landmark-abutters-survey-20261016` (dd7ca183c). The user saw a

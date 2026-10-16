@@ -675,10 +675,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   zebra and centre dashes running through the junction, a deck slab wider
   than the road, rails on a different grey. Cause: one fill per OSM node,
   no band-vs-band clipping, crossings and rails never cut, 18 m trim cap.
-  In flight: a data lane (`roads-v1` extract from PDOK BGT `wegdeel`, seven
-  pilot cells `-3_-1, -2_-1, -3_0, -2_0, -1_-1, -1_0, -2_1`, city-wide staged
-  only; budget ≤ 350 KB/cell, ≤ 30 MB total, hosting quota decides the
-  city-wide publish) and a runtime lane (`roadSurfaces.ts` behind
+  Data lane DONE 2026-10-16 (HISTORY "roads-v1": seven pilot cells
+  published, 696 KB; city-wide 9.7 MB gz staged in source-data
+  `datasets/bgt-roads-20261016/`, publish it with phase 2; cycleway cover
+  47 % because mixed fietspad/rijbaan ways fail the 80 % rule, lower the
+  threshold or treat them as painted lanes; 400 h ≥ 1 polygons over no
+  deck on the A10/harbour viaducts). In flight: a runtime lane (`roadSurfaces.ts` behind
   `?roads=bgt`, bands suppressed under covered ways, paint/zebras/rails
   clipped to carriage polygons, deck top within the parapet; named
   regressions Kinkerstraat × Da Costakade both heads, Bilderdijkgracht
