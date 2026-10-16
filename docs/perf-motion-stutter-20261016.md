@@ -194,3 +194,41 @@ These are from the after profile at 4×, 1.3 s in stalled frames per 60 s agains
   remaining long frame.
 - **The phone is not measured on a real device.** These numbers are emulated (Chromium, iPhone 13
   viewport, 4× CPU).
+
+## After merging main (2026-10-16 afternoon)
+
+Main brought the sunny look, courtyards, the overview transition, roads-v1 and the landmark gate. The
+merge (`c6170410b`) keeps the own-ground precompile beside the overview blend, and the relief-tile worker
+option beside `courtyards`/`clipDecks`. The machine load was 10–17 during these runs, against about 6 for
+the tables above, so the pre-merge branch (`684f939c5`) was re-run alongside, under the same load.
+
+`tests/e2e/ride-perf.spec.ts` on the merged tree, desktop: all 5 pass. The motion budget run measured
+longest 83.3 ms, 0 frames over 100 ms and 2 over 50 ms.
+
+Desktop, no throttle, 3 runs each (cold, warm, warm):
+
+| metric | before (`7ca9feb8e`) | after (the lane) | pre-merge, re-run under load | merged |
+|---|---|---|---|---|
+| p50 / p95 / p99 ms | 16.7 / 16.8 / 16.8 | 16.7 / 16.8 / 16.8 | 16.7 / 16.7–16.8 / 16.8 | 16.7 / 16.7–16.8 / 16.8 |
+| frames >50 ms per minute | 5 (4–6) | 1 (1–3) | 3 (2–3) | 2 (2–4) |
+| frames >100 ms per minute | 2 (1–3) | 0 | 1 (0–1) | 0 (0–1) |
+| longest frame ms | 383 (333–600) | 67 | 117 (83–150) | 83 (83–117) |
+| long tasks per minute | 13 (7–16) | 2 (1–2) | 2 (2–3) | 2 |
+
+Desktop, 4× CPU throttle, warm runs only (each cold run here also pays for Vite re-serving changed files):
+
+| metric | after (the lane, load ~6) | pre-merge, re-run under load | merged |
+|---|---|---|---|
+| frames >50 ms per minute | 16 (7–18) | 36–112 | 52–108 |
+| frames >100 ms per minute | 5 (4–5) | 8–23 | 8–20 |
+| longest frame ms | 317 (283–333) | 350–750 | 317–550 |
+
+At 4× the spread under load is wider than any difference between the pre-merge and merged trees. The
+sampled CPU per run was 94 s pre-merge and 91 s merged. The stalled-frame total was 7.7 s pre-merge and
+7.2 s merged. By bundle, three.js grew by 1.2 s per 90 s (+6 %, the sunny look's render), and `game.js` and
+`game-presentation` grew by about 0.2 s each. No main-side cost shows up in the stalls. The merged stall
+owners at 4× are the ones listed above: `setFeatures` (regroup), the chunk `rebuild` post, MapLibre's
+`receive`/diff, `_refreshColoredBuildingFilter`, `sendToSource` and the neighbour walk.
+
+Raw files: `artifacts/perf/motion-stutter-merged.json` (1× and 4×), `motion-stutter-merged-profiled.json`
+(4× profiled), `motion-stutter-merged-4x-rerun.json` and `motion-stutter-premerge-rerun.json`.
