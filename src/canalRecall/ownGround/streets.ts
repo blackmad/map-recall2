@@ -30,6 +30,11 @@ import type { RoadIndex } from './roadSurfaces.js';
  * 0.03 plus a float of DRAPE_TOL.carriage.float 0.02 at most): the painted lane ribbons, the paint, the rails. The
  * band model's own lifts (LIFT.cycleLane 0.036, LIFT.paint 0.046, LIFT.rail 0.05) stay for the cells without a survey.
  */
+/** roads-v1: no procedural paint (dashes, edge lines, stop lines, teeth, crossing blocks, zebras) on surveyed ground.
+ *  User 2026-10-16: "maybe we just stop showing dashes for now? the most important part for this afternoon is that
+ *  the roads don't look broken" — prior-based paint clipped to the BGT carriageway shredded into stray fragments.
+ *  Paint comes back from data (orthophoto/OSM nodes) in the road-look lane. Cells without the survey keep their paint. */
+export const PAINT_ON_SURVEY = false;
 export const ROAD_MARK_LIFT = { lane: 0.056, paint: 0.062, rail: 0.066 } as const;
 export const LIFT = {
   area: 0.015,
@@ -412,7 +417,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   // roads-v1: the markings sit over the surveyed carriageway plane's float (roadSurfaces ROAD_MARK_LIFT).
   const paintLift = bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, railLift = bgt ? ROAD_MARK_LIFT.rail : LIFT.rail;
   /** Where a way's paint may lie: a carriageway polygon, or no survey (the fallback). */
-  const onRoadFor = (w: LocalWay): Keep | undefined => (bgt ? (x, y) => bgt.index.onRoad(x, y, isBridgeWay(w)) : undefined);
+  const onRoadFor = (w: LocalWay): Keep | undefined => (bgt ? (x, y) => PAINT_ON_SURVEY && bgt.index.onRoad(x, y, isBridgeWay(w)) : undefined);
   const inPolygon = (p: Vec2) => !!bgt && bgt.index.find(p[0], p[1]) >= 0;
   const crossGrid = bgt ? carriageGrid(ways) : null;
   // Vertices across a band (bridge bands: the deck is often narrower than the mapped carriageway, so a band with
@@ -572,7 +577,7 @@ function junctionMarkings(out: StreetMeshes, n: Node, signals: readonly Vec2[], 
   // roads-v1 (the node lies in a surveyed polygon): stop lines and teeth stay, clipped to the carriageway polygons;
   // the lane links and their blocks are off (the polygons carry the junction surface; a strip of red through a
   // surveyed junction is the smear the user saw).
-  const keep: Keep | undefined = bgt ? (x, y) => bgt.index.onRoad(x, y) : undefined;
+  const keep: Keep | undefined = bgt ? (x, y) => PAINT_ON_SURVEY && bgt.index.onRoad(x, y) : undefined;
   const signalised = signals.some(p => Math.hypot(p[0] - n.p[0], p[1] - n.p[1]) <= SIGNAL_REACH_M);
   for (const a of n.arms) {
     const hw = a.way.tags.highway ?? '';
@@ -648,7 +653,7 @@ function cyclePathCrossings(out: StreetMeshes, w: LocalWay, nodes: Map<string, N
     const surveyed = !!bgt && bgt.index.find(p[0], p[1]) >= 0;
     if (surveyed && !bgt!.index.onRoad((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)) return;
     if (!surveyed && Math.max(...n.arms.map(x => rankOf(x.way.tags.highway))) <= 2) strip(out.cycle, a, b, width, height, LIFT.cycleLane);
-    const keep: Keep | undefined = bgt ? (x, y) => bgt.index.onRoad(x, y) : undefined;
+    const keep: Keep | undefined = bgt ? (x, y) => PAINT_ON_SURVEY && bgt.index.onRoad(x, y) : undefined;
     for (const s of [k, -k]) count += blocks(out.paint, [a[0] + m[0] * s, a[1] + m[1] * s], [b[0] + m[0] * s, b[1] + m[1] * s], height, bgt ? ROAD_MARK_LIFT.paint : LIFT.paint, undefined, undefined, keep);
     out.stats.markings.cycleCrossings++;
   });

@@ -166,12 +166,58 @@ export function simplifyLine(pts: readonly Vec2[], tol: number): Vec2[] {
  * Point lookup over the roads-v1 polygons of a cell neighbourhood (parks.ts SurfaceIndex over RoadSurface
  * records). Polygons [0, own) are the first cell's: the ones its build draws.
  */
+/** Largest footway polygon between parking bays that draws as street (RoadIndex.parkingIslands). */
+export const PARKING_ISLAND_MAX_M2 = 40;
 export class RoadIndex extends SurfaceIndex<RoadSurface> {
   /** `within`: the neighbours' polygons only where the build can ask (the cell, its own ways' reach): earcut of the full 3×3 was a fifth of the roads cost. */
   constructor(cells: readonly (RoadCell | null | undefined)[], within?: readonly [number, number, number, number]) { super(cells, () => true, within); }
 
-  /** The mesh polygon `k` is drawn with (the extract decides a fietsstraat's red per section: roadCells fietsstraatSection). */
-  mesh(k: number): RoadMesh { return this.records[k].k; }
+  /** Meshes the runtime overrides (parkingIslands): polygon id → mesh. */
+  private readonly meshOver = new Map<number, RoadMesh>();
+  /**
+   * The mesh polygon `k` is drawn with: the extract's (which decides a fietsstraat's red per section, roadCells
+   * fietsstraatSection), unless parkingIslands overrode it.
+   */
+  mesh(k: number): RoadMesh { return this.meshOver.get(k) ?? this.records[k].k; }
+
+  /** Classes the runtime overrides (parkingIslands): polygon id → class drawn. */
+  private readonly classOver = new Map<number, RoadClass>();
+  /** The class polygon `k` is drawn and probed as (the extract's, unless overridden). */
+  drawClass(k: number): RoadClass { return this.classOver.get(k) ?? this.records[k].c; }
+  /**
+   * Small footway polygons between parking bays (the pale islands and tree pits between the bays of a quay street)
+   * draw as part of the street: the parking bays' mesh, at road height, without kerbs. User 2026-10-16 on the
+   * Prinsengracht by the Pulitzer: "I don't think we need to draw parking spots" — every bay read as a stripe
+   * because the islands between them were raised pale paving with granite kerb lines. A foot polygon of at most
+   * `maxArea` m² whose perimeter borders parking for at least `minShare` of its length. Returns the count.
+   */
+  parkingIslands(maxArea = PARKING_ISLAND_MAX_M2, minShare = 0.5): number {
+    let n = 0;
+    for (let k = 0; k < this.records.length; k++) {
+      const r = this.records[k];
+      if (r.c !== 'foot' || this.classOver.has(k)) continue;
+      const ring = this.ringsOf(k)[0];
+      if (!ring || ring.length < 3) continue;
+      let a2 = 0;
+      for (let i = 0; i < ring.length; i++) { const p = ring[i], q = ring[(i + 1) % ring.length]; a2 += p[0] * q[1] - q[0] * p[1]; }
+      if (Math.abs(a2) / 2 > maxArea) continue;
+      let total = 0, park = 0; const parkMesh = new Map<RoadMesh, number>();
+      for (let i = 0; i < ring.length; i++) {
+        const p = ring[i], q = ring[(i + 1) % ring.length], len = Math.hypot(q[0] - p[0], q[1] - p[1]);
+        if (len < 1e-6) continue;
+        total += len;
+        const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2, nx = -(q[1] - p[1]) / len, ny = (q[0] - p[0]) / len;
+        for (const s of [1, -1]) {
+          const hit = this.findAll(mx + s * nx * 0.3, my + s * ny * 0.3).find(j => j !== k);
+          if (hit !== undefined && this.records[hit].c === 'parking') { park += len; parkMesh.set(this.mesh(hit), (parkMesh.get(this.mesh(hit)) ?? 0) + len); break; }
+        }
+      }
+      if (!total || park / total < minShare) continue;
+      const mesh = [...parkMesh.entries()].sort((x, y) => y[1] - x[1])[0][0];
+      this.classOver.set(k, 'parking'); this.meshOver.set(k, mesh); n++;
+    }
+    return n;
+  }
 
   private fast: { raster: SurfaceRaster; box: readonly [number, number, number, number] } | null = null;
   /**
@@ -209,7 +255,7 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
     if (f && x >= f.box[0] && x < f.box[2] && y >= f.box[1] && y < f.box[3]) return f.raster.find(x, y);
     return this.find(x, y);
   }
-  classAt(x: number, y: number, bridge = false): RoadClass | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.records[k].c; }
+  classAt(x: number, y: number, bridge = false): RoadClass | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.drawClass(k); }
   heightAt(x: number, y: number, bridge = false): number | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.records[k].h; }
   meshAt(x: number, y: number, bridge = false): RoadMesh | null { const k = this.findAtLevel(x, y, bridge); return k < 0 ? null : this.mesh(k); }
   /** May road paint, a rail or a lane ribbon lie here: a carriageway or parking polygon, or no survey at all (the bands' fallback). */
@@ -317,12 +363,13 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       height = on;
       stats.onDeck++;
     }
-    if (rec.h >= 1) drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
+    const cls = index.drawClass(k);
+    if (rec.h >= 1) drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[cls], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else {
-      const tol = DRAPE_TOL[rec.c], low = isLow(rec.c);
-      drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[rec.c], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
+      const tol = DRAPE_TOL[cls], low = isLow(cls);
+      drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
     }
-    stats.drawn[rec.c]++;
+    stats.drawn[cls]++;
   }
   // Kerbs: the face toward the lower side, the granite line on the upper edge, posts along canal-side pavements.
   const kerb = get('kerb');
@@ -335,6 +382,8 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
     const h = index.heightAt(cx, cy) ?? 0, bridge = h >= 1;
     const left = index.classAt(cx + nx * KERB_PROBE_M, cy + ny * KERB_PROBE_M, bridge), right = index.classAt(cx - nx * KERB_PROBE_M, cy - ny * KERB_PROBE_M, bridge);
+    // Both sides low: a kerb of a footway island drawn as street (parkingIslands); the street has none there.
+    if (isLow(left) && isLow(right)) continue;
     const lowLeft = isLow(left) && !isLow(right), lowRight = isLow(right) && !isLow(left);
     let height = landHeight;
     if (bridge) { const on = deckSurface([cx, cy]); if (!on) continue; height = on; }

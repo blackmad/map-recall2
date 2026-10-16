@@ -18,6 +18,7 @@ import {applyHistoricPasses} from './historicPasses.ts';
 import {applyAmsterdamSchool} from './amsterdamSchool.ts';
 import {addTilePanels} from './tileAccents.ts';
 import {applyOudWest} from './oudWest.ts';
+import {applyOrielHoist} from './orielHoist.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
 export function resolveIntent(raw: any, load: (id: string) => any, depth = 0): CanalHouseIntent {
@@ -205,6 +206,8 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   if (intent.fronts.some(f => f.tilePanels)) addTilePanels(built.group, intent, recipe, report);
   // 1900 Oud-West set (opt-in): timber balconies on brackets, painted erkers, painted brick as a measured tint.
   applyOudWest(built.group, intent, recipe, report);
+  // Bellamybuurt 1915 set (opt-in): painted timber oriels, their consoles, hoist caps over dormers.
+  applyOrielHoist(built.group, intent, recipe, report);
   // Historic fronts (opt-in): cornice/shutter paint, mansards, towers, party-wall clipping, lean.
   applyHistoricPasses(built.group, intent, recipe, report);
   return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles, facts: fitted};

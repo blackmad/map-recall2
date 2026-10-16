@@ -1,4 +1,4 @@
-// The game's facade chunks on a lit three.js material, for the shared frame.
+// The game's facade chunks on a lit three.js material (diffuse only, MeshLambertMaterial), for the shared frame.
 //
 // Same attributes and texture arrays as the unlit RawShaderMaterial in
 // threeBuildingsBrowser.ts (and the renderer spike's facadeMaterial.ts), plus
@@ -79,7 +79,12 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     roofTier: uniforms?.roofTier ?? { value: roofTierUniform() },
     cellTier: uniforms?.cellTier ?? { value: FACADE_TIER_OFF },
   };
-  const material = new THREE.MeshStandardMaterial({ roughness: 0.9, metalness: 0, side: THREE.FrontSide, flatShading: true });
+  // Diffuse only, the one wall material model (docs/one-material-20261016.md): street chunks, recipe houses, building
+  // types and landmarks draw MeshLambertMaterial under the same rig, so a generic wall and a chunk wall of the same
+  // colour facing the same way draw the same pixel. Was MeshStandardMaterial (roughness 0.9, 0.32 on dark texels):
+  // its F0 0.04 sun specular and multiscatter-reduced sky fill drew a sun side ~3 luma over and a shade side ~1 luma
+  // under the Lambert walls beside it, plus view-dependent glints on dark glass no other building had.
+  const material = new THREE.MeshLambertMaterial({ side: THREE.FrontSide, flatShading: true });
   material.onBeforeCompile = (shader: any) => {
     shader.uniforms.cells = shared.cells;
     shader.uniforms.masks = shared.masks;
@@ -115,7 +120,7 @@ varying vec3 vAccent;
 flat varying float vHighlight;
 ${HIGHLIGHT_GLSL}
 varying float vFacDist;
-float facadeLuma;`)
+`)
       .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`)
       .replace('#include <map_fragment>', `
@@ -126,17 +131,14 @@ fc = roofTierColour(fc, vFacUv, vLayer, vFacDist);
 fc *= mix(vec3(1.0), vTint, fm.r) * mix(vec3(1.0), vAccent, fm.g);
 fc *= mix(1.0, wallGain, fm.r);
 if (flatColour > 0.5) fc = vTint;
-facadeLuma = dot(fc, vec3(0.299, 0.587, 0.114));
 diffuseColor.rgb *= HL_PAINT(vHighlight) ? vec3(${HIGHLIGHT_LINEAR.join(', ')}) : pow(hlDesat(fc, vHighlight), vec3(2.2));`)
-      .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
-roughnessFactor = mix(0.32, 0.92, smoothstep(0.06, 0.2, facadeLuma));`)
       .replace('#include <dithering_fragment>', `#include <dithering_fragment>
 if (cityTone < 1.0) gl_FragColor.rgb = mix(cityFlat, gl_FragColor.rgb, cityTone);`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
   material.defines = { ...(material.defines ?? {}), ...highlightDefines() };
-  material.customProgramCacheKey = () => 'shared-frame-facade-v6';
+  material.customProgramCacheKey = () => 'shared-frame-facade-v7';
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
   material.uniforms = shared;
   material.userData.litFacade = true;

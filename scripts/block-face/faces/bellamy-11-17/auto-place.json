@@ -3,7 +3,7 @@
  "street": "Bellamystraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.15,
+ "seconds": 0.29,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,20 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.44,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 1.4,
+       "centre": 0.72
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.09
    },
@@ -118,18 +132,48 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.794,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.73,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.04 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.04,
+       "light": 0.32
+      },
+      {
+       "widthM": 6.22,
+       "centre": 0.38,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.73,
+       "light": 0.42
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.94,
+       "light": 0.36
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.27,
     "foliageShare": 0.16
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1905, type 1928-1935; frontage 11.2 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1905, type 1928-1935; frontage 11.2 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.78 m at 0.04 (light 0.32): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1905, type 1928-1935",
-     "frontage 11.2 m, type 4.8-5.8 m"
+     "frontage 11.2 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.78 m at 0.04 (light 0.32): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {

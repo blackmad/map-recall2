@@ -62,7 +62,7 @@ const started = Date.now();
 const save = () => writeFile(stagingFile, `${JSON.stringify(staged, null, 1)}\n`);
 for (const origin of todo) {
   const shield = protectNames(origin.nl, [origin.name]);
-  const en = shield.restore(await translate(shield.text)).replace(/\s+/g, ' ').trim();
+  const en = shield.restoreEnglish(await translate(shield.text)).replace(/\s+/g, ' ').trim();
   const reason = refusalReason(origin.nl, en, origin.name);
   if (reason) { origin.refused = reason; refused++; }
   else { origin.en = en; origin.enSource = `ollama:${model}`; }

@@ -1,5 +1,358 @@
 # Canal Recall — what is built
 
+## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
+
+User (2026-10-16): "I feel like there should probably be a building here?", an
+empty paved lot on the Prinsengracht east quay between the 1690 twin warehouses
+at 211-217 and the Leliegracht. It is Prinsengracht 221-227
+(NL.IMBAG.Pand.0363100012169308, 1939, 53 dwellings, 1,813 m²): missing from
+3DBAG v20250903 (no CityJSON tile, WFS 0 features, API 502), and
+`build-lod1-city.ts` drops an unmatched OSM outline inside BAG coverage unless
+it is a part, stacked or named, so neither tile set drew anything. No check
+compared the tiles with the BAG register. Lane `worktree-agent-a9c343c0d64a0f0ae`
+surveyed 413,025 standing pands (PDOK WFS + AHN WCS, both CC0): 8,188 holes
+(975,538 m²). Filled 1,601 (110,346 m²) as flat AHN p70 boxes (`bagGaps.ts`,
+`publish-bag-gaps.ts`); left, each with a reason in
+`scripts/data/bag-gaps/bag-gaps.json`: 4,647 under 10 m², 1,325 built after
+2019 (no AHN4 height), 468 with nothing ≥ 2 m in AHN, 130 already 20-50 %
+drawn, 12 over 5,000 m², 3 under a model, 2 without AHN. The tiles gained only
+the 3,202 features (1,601 each set); `check:bag-gaps` (in `check:canal`) pins
+Prinsengracht 221-227 at 12-20 m (15.46 m) and fails on any missing fill. Re-run
+`publish-bag-gaps.ts --write` after any full `build-lod1-city.ts` rebuild.
+
+## Bridge railings stop at the water (2026-10-16)
+
+User (2026-10-16): "why do the gates dip into the road?". `bridgeKit.ts`
+`parapet()` drew each side over the whole measured deck span, which runs metres
+past the water onto the quays, where `deckWidths` pulls the edge in to the road
+half-width: the railing turned 90° across footway and cycle lane and ran along
+the carriageway (BRU0166 Nassaukade/Bilderdijkgracht; BRU0063 down into the
+road). Lane `worktree-agent-ace959b5342296a67`: `railingRuns.ts` keeps each
+side where its edge meets the water (+1.5 m onto the abutment), breaks at gates
+(>45° over >0.75 m), folds and long dry stretches, and never stands on a bridge
+way crossing the parapet line. Citywide (`check:bridge-railings`): bridges with
+a gate 559 → 12, lateral gate run 6,473 → 76 m, parapet inside a carriageway or
+cycle polygon 50 bridges / 568 m → 6 / 75 m (roads-v1 pilot cells). Regressions
+BRU0166, BRU0063, BRU0257 in `check:own-ground-cells`, unit tests, e2e
+`BRIDGES=RAILINGS`; checked against PDOK orthophoto crops.
+## One wall material for every building, shade ratio 0.55, measured slate (2026-10-16)
+
+User (2026-10-16): "can't you just match the materials between them?" (block
+faces reading darker than the generic boxes beside them). Lane
+`lane/one-material-20261016` (794babb4b, a5f5a13fa); doc
+`docs/one-material-20261016.md`, sheet `docs/images/look/one-material-20261016.jpg`.
+A same-hex/same-normal probe (`lookParity` `chunk` and `recipe-measured`
+paths) and an in-game white-Lambert pass showed chunk and same-facing
+generic walls already got identical light. Two real differences removed:
+generic walls drew `MeshStandardMaterial` (≈ +3 luma on sun sides, glints),
+now `MeshLambertMaterial` like every other building
+(`rendererShared/litFacadeMaterial.ts`, cache `-v7`); and they lacked the
+1.106 sunlit fallback gain (`look/sunny.ts litFacadeWallGain`). Generic,
+chunk and measured-recipe walls of one colour now agree within 2 luma (new
+"one material" test in `look-parity.spec.ts`). `SUNNY_SHADE_RATIO` 0.55
+(was 0.41) for every building, exposure 1.081, ground gain 0.896 so the
+ground draws unchanged. Slate from the orthophoto's 174,801 slate roofs
+(`MEASURED_SLATE` #76808f / #606b79 / #8c939c), so chunk roofs draw 88–122
+instead of 54–75. Frames: walls +5–8 luma, roofs +15–22, chroma held. The
+remaining chunk-vs-neighbour gap is colour, not light: the generic
+period-prior palette runs about twice a measured chunk's albedo (Nassaukade
+0.43 vs 0.22). Shade sides reach 0.65–0.82 of the sunlit photo (the rig
+caps them at 0.77 at 0.55). Oudezijds Voorburgwal 115-125 stays held (65 %
+of wall pixels under luma 60 against its photo's 29 %). Desktop ride-perf
+5/5 under the browser lock at load 6 (map render 2.3 ms default, 3.9 ms all
+landmarks resident; motion longest 66.7 ms).
+
+## Neck and bell gables curve the right way: concave shoulders, measured from the photo (2026-10-16)
+
+User (2026-10-16), on a Wallen review sheet: "weird that the kit inverts the
+curve of the roof from concave to convex or vice versa". Lane
+`lane/gable-curves-20261016` (1599228cb). Cause in `fit.ts crownProfile`:
+neck flanks used `shoulderCurve 0.6` (f^0.6) and bell flanks fell back to
+`sin(f·π/2)`, both bulging outward; real claw pieces and bell flares stay
+low at the foot and rise steeply into the neck (Oudezijds Achterburgwal
+177920: the claw 0.05–0.4 m over the eaves until 0.2 m from the neck).
+New `crownShoulder: 'concave' | 'ogee' | 'straight' | 'convex'` on the
+front intent (neck/bell), default concave (quarter ellipse tangent to the
+neck); landmark builders without the option stay byte-identical.
+`gableFromStrip.flankCurvature` measures each flank against its chord: 19
+of 25 measured bell/neck fronts read concave (Utrechtsestraat 66-68 set
+`straight`). Roofs over the crowns: `roof-under-crown` sampled only 5 mm
+inside the facade, so an attic standing 1.5–2.8 m over the shoulders
+passed; `roofAboveCrownFrontView` now checks the whole plot square to the
+frontage and a new `roof-behind-crown` gate checks the chunk; saddles
+behind full-front neck/bell crowns may drop to 3 m below the cornice at the
+party walls; every own roof sits under its crown. Reinstalled
+wallen-oza-41-57, wallen-ozv-115-125, utrechtse-48-76, nassau-162289,
+bilder-164451-156126, bilder-233580-162444. Still open: a neighbour's roof
+behind an oblique party wall showing beside a crown (177915 by 177916,
+2.9 m), step/spout/point gables not yet under the front-view check
+(bilder-081118-155417), and the kit cannot yet say neck width (fixed 0.5 of
+the front; photos 0.38–0.45), claw height, a cornice band and pediment
+wider than the neck, an inset foot ledge, or a mansard with hipped sides.
+
+## Parking bays read as street, not stripes (2026-10-16)
+
+User (2026-10-16), Prinsengracht by the Pulitzer: "are these bits from BGT?
+I don't think we need to draw parking spots". The bays (BGT parkeervlak)
+already drew in the quay's brick; the stripes were the small footway
+polygons between them (islands and tree pits), drawn as raised pale paving
+with granite kerb lines. `RoadIndex.parkingIslands`: a foot polygon of at
+most 40 m² bordered by parking for at least half its perimeter draws as
+parking (the bays' mesh, road height) and its kerbs are dropped (a kerb
+with the street on both sides). 198 islands (2,475 m²) in the seven pilot
+cells. Unit test in `roadSurfaces.test.ts`, which also now follows
+`PAINT_ON_SURVEY` (two paint tests there had failed since the no-paint
+switch; the file is outside the npm suites).
+
+## Bridges: canal-mouth parapets at the Bullebakssluis, decks for unmeasured bridge ways (2026-10-16)
+
+User (2026-10-16): "no idea what this bridge is trying to be" (Marnixstraat
+over the Lijnbaansgracht mouth, BRU0160 Bullebakssluis) and "bridge missing
+entirely here" (Jan Evertsenstraat over the Erasmusgracht, OSM 323258135).
+Lane `lane/marnix-bloemgracht-bridge-20261016` (49d439acc).
+- **Railing stubs:** `decks.ts deckWidths` follows the skewed quay, so the
+  last stations narrow (16.3 → 9.5 → 3.5 m) and the parapet, interpolated
+  toward them, turned in across pavement and cycle path. `parapetRuns`
+  drops turned-in end stations; dips ≤ 3 m between full-width stations are
+  filled. Parapets shortened on 347 of 1,092 measured decks (nearly all by
+  ≤ 0.5 m, max 1.8 m).
+- **Canal-mouth bridges:** flush decks ≥ 12 m wide, ≥ 1.5× their span,
+  pre-1940 or masonry (31 decks) get a `brick-rail` parapet (brick wall,
+  stone coping, iron rails, brick end piers, no lamps) and flat openings
+  under steel/concrete decks; measured facts still win. BRU0160 was a
+  segmental arch with balustrade and lamps; the panorama shows a flat steel
+  girder with brick abutments.
+- **Missing bridges:** not caused by BGT roads (pilot cells: 11 bridge ways
+  without a surface with roads, 19 with bands; none a road bridge). Bridge
+  ways with no measured deck or flat footprint draped on the relief (−0.9 m
+  in the canal) under the water. `ownGround/wayDecks.ts` gives a straight
+  bridge way crossing ≥ 2 m of water, with land within 6 m at both ends and
+  no deck within 4 m, its own flush deck (parallel ways share one).
+  City-wide audit (`audit-bridge-surfaces.ts --all`): road bridge ways
+  with no surface 137 → 31 of 1,294 (some of the 31 lie outside the
+  elevation data, in Zaanstad and Haarlemmermeer).
+  ~+50 ms `cellInput` per cell.
+- Regressions in `check-ground-cells --parapets` (BRU0160 in both road
+  modes; way 323258135 has a surface, pin live) and unit tests. Frames:
+  the lane's `artifacts/marnix/sheet-janevertsen.png`, `sheet-chase-south.png`.
+Still open: on the Jan Evertsenstraat way deck one railing end runs
+diagonally across the cycle path; the parapet jogs outward mid-span on
+widened sides (BRU0063, BRU0108); the art-installation footbridges (De
+Oase, De Octopus, Grachtenvlinder) draw in neither mode.
+
+## Tropenmuseum, fourth pass: the walls around the portal dressed (2026-10-16)
+
+User (2026-10-16): the measured Mauritskade portal read as a panel pasted onto
+plain dark-brown walls with bare blue cells. Lane `worktree-agent-a2ff32df9c82e9393`,
+from the `review:sheet` IN GAME column: the 331 street wings and museum wing and
+the 241 low wing get white-framed windows split into panes (round-arched
+three-light with springer and key blocks on the museum wing, cross windows on
+the street wings, framed transoms at the rear), continuous sill and head
+courses, a souterrain and a cornice; brick measured from three panorama crops
+#a2856c (was #8a5a47), stone #e2d6bc, frames #efece3. New kit options, unchanged
+output when absent (156 fit goldens identical): `glazing: "panes"`,
+`courses`, `souterrain`, `arches.band: "blocks"`, `windows: "three-light"`.
+Fully dressed it was 44.0k tris / 637 KB; the shipped cut is 33.9k / 496 KB
+(single souterrain lights, no tower cornice, no courses on rear and court
+walls, back faces within 25 cm culled), lod1 7.3k. `audit:glb` still reports
+opening-outside 21 parts / 33.1 m², mostly pane sheets on twisted 3DBAG faces
+(the audit's plane clustering; probes show brick around them). `check:canal`
+157/157.
+
+## Hollow landmark cards: Multatuli and 28 more sourced (2026-10-16)
+
+User (2026-10-16), on the Multatuli bust's card ("LANDMARK · W SOURCE · MULTATULI"
+and nothing else): "why no info". Its only text was the Wikidata one-liner
+"Public sculpture in Amsterdam, the Netherlands." (no lede, no funFact); the card
+opens because a photo passes `isWorthACard`, and a drive-by card folds to its
+title after 8 s (`teachingPacer.cardCollapsed`), which is the blank card the
+user saw. "W SOURCE" pointed at a Commons photo category. Lane
+`worktree-agent-ac89003c665aaa03e`: the audit gains a `stub` issue and
+`hollowCardsThatOpen`; `test:landmark-cards` now fails on any card that opens
+empty or stub-only unless allowlisted with a reason (25 today: 19 OBA branches
+with no own article, five places with no article). 29 new sourced overrides
+(Multatuli: Hans Bayens's bust, 1987; Douwes Dekker, Max Havelaar 1860), 17 into
+the extract and 12 kit POIs into `manual-poi-data.json`; overrides can cite
+`extraSources`, and a card with no link gets the override's article as its
+source. Counts: 42 hollow cards that open → 25 (all allowlisted). Bundles
+rebuilt (game-landmarks, -presentation, -recall, route-selection).
+
+## Towers on podiums: the tall part over its own footprint (2026-10-16)
+
+User (2026-10-16), at the Hotelschool The Hague, Jan Evertsenstraat 171-175
+(pand 0363100012148630): "I don't think this building is really this tall". The
+whole footprint stood at 72.62 m: `bagHeightM`'s ridge-tower rule (ridge ≥ 10 m
+over the 70th-percentile roof, tuned on 201 Zuidas pands) extruded everything to
+the ridge, with no notion of how much of the footprint the tower covers. Lane
+`worktree-agent-a51a0b08edf95acd4`: `towerPodium.ts` finds the tower in 3DBAG's
+LoD1.3 roof faces (faces past the midpoint between 70p and ridge) and emits the
+podium at 70p plus a `tower:<pand>` feature from the podium roof to the ridge
+(`pand` carried for styling). Of the 201 ridge-tower pands the tall share runs
+p10 0.03 / median 0.15 / max 0.41, so the whole-footprint ridge stays only at a
+share ≥ 0.7 (none today) and for tall areas under 5 m² (9 masts and spires).
+27 model-owned pands are not split (every hide path keys on the exact id). 122
+pands split in the published building/bag tiles (244 podium heights lowered,
+244 tower features; nothing else in those tiles changed), +44 KB gzip
+like-for-like. The Hotelschool now draws a 13.65 m front with the 72.62 m tower
+over 1,243 m²; named regression in `towerPodium.test.ts` (now in
+`test:bag-tiles`) and `check-building-composition.ts`; in-game shot reviewed.
+The hosted-3D-Tiles path cannot see parts and keeps the old rule.
+
+## Follow-ups: covers green, the first-launch test, arrival trivia, the stranded Dutch article (2026-10-16)
+
+`covers.json` rebuilt from the published BAG tiles (Noorderkerk's OSM-only ways
+w749871260–275 kept, today's chunk faces and DeLaMar added, the held
+Wereldmuseum and shadowed IJ-tunnel install gone): `check:covers` is green, so
+the nine checks chained after it in `check:canal` run again. `quiz.spec.ts`
+"first launch is playable without an account" was stale, not broken: the
+enamel restyle (2026-09-04) dropped the "Learn Amsterdam" tagline; it now
+asserts the fresh-profile line "0 known yet — start with canals". The ARRIVED
+card took the landmark's raw lede and never the published trivia, so Huis
+Bartolotti's three facts were never told on arrival; `finishBlurb.ts` picks the
+next fact from the same rotation as drive-by cards, once per arrival, and
+commits it (`test:finish-blurb`, Bartolotti as the named regression).
+`protectNames` gains `restoreEnglish`: a Dutch article the translator left in
+front of a restored name ("Het Huis Bartolotti") becomes "The"/"the", names that
+carry their own article (Het Schip) keep it, and `restore` stays a pure inverse;
+all six translation callers use it (`test:translation`). The stale, ungated
+`check-manual-poi-contract.{ts,cjs}` are deleted.
+
+## Jan Evertsenstraat: nine De Baarsjes faces installed (2026-10-16)
+
+Lane `lane/de-baarsjes-faces-20261016` (7a58568b1): ten faces on the four
+measured De Baarsjes types (hood-lisene, balcony-slot, ladder-plain,
+white-attic) plus a new `evertsen-1939-dormer` type; 91-135, 94-142,
+59-89, 43-57, 68-92, 139-143, 145-155, 146-150 and 152-160 installed (95
+pands); 52-66 held (66's BAG rear edge sits 4.5 cm inside 64, ~121 m² of
+interference). Kit keys, all byte-identical when absent: `bayFill`,
+`axisWindows`, `GROUND_BAYS 'blank'`, four casement window kinds, a
+glass-block band (`glassBlock` palette, `awning.glassBlocks.panel`),
+`continuity.streetLevelPands`, `FrontIntent.stepBody` (a raised front keeps
+its own roof), `balconyRun`, `bandFloors`, flat dormers, `low-parapet`
+crowns; `mergeCoplanar` faster (hash-pinned). Sheets reviewed at gallery
+size (white-attic storey heights measured on 141, six band lights, ledges,
+the storey-1 balcony, 155's shopfront, the cafe bay on 143). The kit still
+cannot say projecting lisene relief, signs on glass-block bands, the
+Hudsonhof gateway, stair windows off the storey lines, rooftop structures,
+six-light windows, French doors to the front-wide balcony, balcony depth
+(0.5 m assumed), arched door heads and 155's arched top window, a
+three-light dormer with boarded cheeks, a slab-hood balcony on a 1 m axis,
+146's set-back front, or the corner oriels.
+
+## No procedural paint on surveyed roads (2026-10-16)
+
+User (2026-10-16), on Kinkerstraat × Bilderdijkstraat with the BGT surface:
+"these roads still look like shit even after BGT", then "maybe we just stop
+showing dashes for now? the most important part for this afternoon is that
+the roads don't look broken". The prior-based markings (centre and edge
+dashes, stop lines, teeth, cycle-crossing blocks, zebras), clipped to the
+BGT carriageway polygons, shredded into stray fragments at odd angles.
+`streets.ts PAINT_ON_SURVEY = false`: surveyed ground draws no procedural
+paint; red cycle surfaces, painted cycle lanes and tram rails stay; cells
+without the survey keep their paint (`own-ground-paint.spec.ts` now pins
+that fallback with roads off). Frame: `docs/images/roads/no-paint-marnix-20261016.jpg`.
+The road-look lane (lane/road-look-20261016) brings paint back only where
+the 8 cm orthophoto or OSM nodes show it, judged side by side with the photo.
+
+## A bridge deck is never the answer to "which street?" (2026-10-16)
+
+User (2026-10-16), riding the Raadhuisstraat over the Keizersgracht: "the game
+asks me what street am I on when I'm on this bridge, and the correct answer is a
+brug". `_updateCanalQuiz` (`recallRuntime.ts`) settled the route question on the
+way's own OSM name, and OSM names that deck "Niek Engelschmanbrug". The
+deliberate bridge question only knows the 300 curated `bridges.json` bridges, so
+123 other bridge names were asked as streets (the 2026-10-09 spec even pinned
+"asks the Noordsche Compagniebrug as a street"). `bridgeStreetName.ts`: a way named
+…brug/…sluis/…duiker/Brug N (not Brugstraat, Oudebrugsteeg) answers with the one
+street that continues in line (45°) at both ends, following decks split mid-span
+and ignoring quays that meet at ~90° (Grote Brouwerssluis → Prinsengracht,
+Vingboomsbrug → Huidenstraat). With no single carried street the deck is
+transparent and the street beyond is asked ~8 m after it (Westermarkt → Niek
+Engelschmanbrug → Raadhuisstraat). Askable `bridges.json` bridges keep "Which
+bridge are you on?". Citywide: 436 bridge-named ways under 194 names, 126 ways
+now carry a street and 310 are transparent; the Raadhuisstraat, Leidsestraat and
+Utrechtsestraat radial decks are already mapped under the street's name.
+Regressions: `check-canal-car.ts` (both reported bridges, the two carried
+cases, no bridge-named way ever a street answer citywide),
+`turn-question-timing.spec.ts` rides both decks, `test:bridge-street-name`
+(in `check:canal`).
+
+## Landmark cards: sourced English facts, and an audit for bare definitions and leftover Dutch (2026-10-16)
+
+User (2026-10-16), on the Huis Bartolotti arrival card: "this is a really
+uninspiring fact for this house that has a whole wikipedia page". The card
+read "Het Huis Bartolotti (also Het Bonte Huis) is a canal house at
+Herengracht 170-172". Three causes. `splitDetail` (`landmarkData.ts`) keeps
+whole sentences up to 280 characters, so a long second sentence leaves the
+bare first one. The arrival card reads the raw landmark (`presentationRuntime.ts`
+`_finishLandmark`), not the rotated trivia notice, so the three published
+Bartolotti facts never reach it. And `protectNames` (`scripts/lib/translation.ts`)
+keeps the Dutch article in front of a protected name ("Het [Huis Bartolotti]").
+Lane `lane/landmark-card-text-20261016`: `landmark-card-overrides.json` holds 43
+curated English cards (Bartolotti first: built c. 1617 for Willem van den Heuvel,
+who took the name Bartolotti to inherit, attributed to Hendrick de Keyser, bending
+twice with the Herengracht), each with source URL, article, language, the
+verbatim original passages (Dutch kept), licence and the text it replaces.
+`audit:landmark-cards --publish` writes them into `funFact` and the drive-by
+`opening`; the published diff is exactly 43 `funFact`/`funFactSourceUrl` and 43
+`opening` fields, `wikipediaExtract` untouched. `landmarkCardAudit.ts` and
+`test:landmark-cards` (now in `check:canal`) flag definitional-only and
+Dutch-leaking cards; Bartolotti is the named regression. Over 537 cards: 139
+flagged before (45 definitional, 3 Dutch, 92 empty), 96 after (4, 0, 92).
+Re-run `--publish` after any extract regeneration or `facts:attach-openings
+--force`.
+
+## Bellamybuurt-Zuid: 12 auto-placed runs installed (69 pands) (2026-10-16)
+
+Lane `lane/buurt-generator-2-20261016` (0ec8a8cfb). The pilot's photo gate
+passed five wrong types; `blockFace/stripStructure.ts` now measures each
+strip relative to the pand's own wall colour (green-tile vs tile-bay no
+longer depends on exposure) and reads balconies from open window axes and
+stacked dark slabs, vetoing types without them. Jan Hanzenstraat 49–51,
+Ten Katestraat 29–31, Bellamystraat 18–20 and Van Effenstraat 7D are held;
+Hasebroekstraat 69 places as green-tile with a point gable (right). Kit:
+`buildingRecipe/orielHoist.ts` adds white painted timber oriels and dormers
+under hoist caps (tile-bay likeness 0.19–0.24 → 0.31–0.43); box dormers
+stop at a 2.0 m rise; green-tile limited to 1911–1918. A reviewer's holds
+file (`scripts/block-face/buurten/bellamybuurt-zuid-review-holds.json`, 21
+pands with reasons) holds pands at a `review` stage. Placed 102 (pilot) →
+93 → 69 on 10 faces; 12 runs installed after each sheet was reviewed at
+full size: hasebroek-52-88-r1, -43-101-r1, -90-98-r1, -2-46-r1, -1-41-r1
+and -r2, bellamydwars-4-12, bellamyplein-18-38-r1 and -r2, effen-2-12-r1,
+heije-41-53-r1, kate-5-21-r1. A full buurt placement runs in 213–366 s.
+The kit still cannot say a segmental oriel, more than one dormer height
+per front, a green-tile gable over the window pair or its mirror, window
+kinds per axis, double doors, chequered courses, the Bellamyplein towers
+and pediment-hooded neck dormers, Hasebroekstraat 21–37's wide-arch
+full-balcony design, or the flat 1930s Wenslauerstraat type.
+
+## One model per ground: the Wereldmuseum drew twice (2026-10-16)
+
+User (2026-10-16), with two ride screenshots of the Mauritskade portal:
+"wereld frontage issues - why not caught?". Two models stood on the KIT
+complex: `wereldmuseum-amsterdam` (2026-10-04 massing) and `tropenmuseum`
+(the measured 2026-10-14 model), same landmark, 38 shared suppressed ids,
+both in `GAME_BUILDING_MODELS`. Not caught because the Tropenmuseum lane
+added a new id instead of holding the old one, every review rendered one
+GLB alone (`landmark-strip`, `review:sheet`), and the suppression checks
+only compare models against OSM/BAG, which both passed. The old entry is now
+`status: "held"` with a `heldReason`. `modelOverlap.ts` and its test
+(`test:building-taxonomy`, in `check:canal`) fail when two drawn models share
+a landmark id or a suppressed OSM way / BAG pand. Across 485 drawn models it
+found one more pair: Brandweerkazerne Nico (`fire-station-nico`, every side
+modelled) and the 2026-10-13 Politiebureau IJ-tunnel large recipe on the same
+1972 pand (three sides blank). The landmark wins: `SHADOWED_BY_LANDMARK` in
+`ordinaryModels.ts` keeps the install catalogued but undrawn, and the test
+fails if a pair goes stale. (`royal-palace` in `signature-landmarks.json` is
+a stale manifest record, not drawn.) `review:sheet` now puts an IN GAME
+tile on every wall row (one browser, a 70° frame of that wall), not one
+overhead shot of the main wall; `docs/buildings-pipeline.md` (bespoke lane,
+items 7-8) requires both. Correction to the first diagnosis: with the old
+model gone, the in-game frames of the Mauritskade face still show what the
+user saw. The plain brown walls with bare blue cells either side of the portal
+are the Tropenmuseum's own kit walls, so that face goes to the fourth pass
+(TODO).
+
 ## Street chunks and BGT roads drawn by default; blue water; the pilot chunk retired (2026-10-16)
 
 User (2026-10-16): "what things are behind flags that we should make

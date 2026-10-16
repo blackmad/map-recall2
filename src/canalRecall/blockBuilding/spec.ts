@@ -31,6 +31,13 @@ export interface WinParams {
   /** recess mode: glazing bars stand this far (m) in front of the glass (default 0.015; 0.035 clears the audit's z-fight band; opt-in) */
   barD?: number;
   /**
+   * recess mode, pane-split glazing (opt-in): one frame-coloured sheet fills the opening at the back of the recess and the glass
+   * is laid over it as separate panes `PANE_OUT_M` in front, so the frame ring, mullions, transom and glazing bars are the
+   * sheet showing between the panes: 2 triangles per pane and 2 for the sheet, where a ring costs 8 and each closed bar box 10.
+   * `frameW` is the ring and bar width (default 0.07). White-framed cross windows on a byte budget (Tropenmuseum, 2026-10-16).
+   */
+  paneSplit?: boolean;
+  /**
    * tilted bay (box) window: a frame ring of closed solids round the opening, `t` wide, standing `outBottom` off the wall at
    * the sill and `outTop` at the head, so its face leans (hotel box windows); the glass stays in the opening (opt-in)
    */
@@ -128,7 +135,11 @@ export interface Row {
   cycle?: Row[]; shift?: number;
 }
 
-export interface Band { slot: Slot; h: number; out: number; skipGround?: boolean; /** raise the band above the floor line */ lift?: number; fromFloor?: number }
+export interface Band { slot: Slot; h: number; out: number; skipGround?: boolean; /** raise the band above the floor line */ lift?: number; fromFloor?: number;
+  /** also raise it by this fraction of the storey above the line (a course at the windows' head: sill + h x storey); storeys only, not the wall top (opt-in) */
+  liftFrac?: number;
+  /** leave out runs shorter than this (m; default 0.2) */
+  minRun?: number }
 
 export interface System {
   pitch: number; minWidth?: number;

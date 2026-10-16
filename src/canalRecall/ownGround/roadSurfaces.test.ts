@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { emptyMesh, type MeshArrays } from './drape';
 import { buildRoadSurfaces, coveredShare, kerbEdges, RoadIndex, ROAD_LIFT, SIDEWALK_TOP, simplifyLine, simplifyRing } from './roadSurfaces';
-import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, ROAD_MARK_LIFT, type LocalWay } from './streets';
+import { buildStreets, carriageGrid, crossCuts, junctionGeometry, prepareWays, LIFT, PAINT_ON_SURVEY, ROAD_MARK_LIFT, type LocalWay } from './streets';
 import { stations } from './drape';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
 import type { Vec2 } from './surface';
@@ -115,12 +115,15 @@ test('streets with roads: covered ways emit no bands but keep their junction mar
   assert.equal(s.asphalt.indices.length, 0, 'no asphalt bands or junction fill');
   assert.equal(s.klinker.indices.length, 0, 'no klinker bands');
   assert.ok(plain.asphalt.indices.length > 0 && plain.stats.markings.teeth > 0);
-  assert.ok(s.stats.markings.teeth > 0 && s.stats.markings.giveWays === 2, `teeth ${s.stats.markings.teeth} on ${s.stats.markings.giveWays} arms`);
+  // Since 2026-10-16 surveyed ground draws no procedural paint (PAINT_ON_SURVEY; user: "maybe we just stop showing
+  // dashes for now"): no paint at all on the survey; with it back on, the teeth and the zebra stay on the carriageway.
+  if (!PAINT_ON_SURVEY) assert.equal(s.paint.indices.length, 0, 'no procedural paint on surveyed ground');
+  else assert.ok(s.stats.markings.teeth > 0 && s.stats.markings.giveWays === 2, `teeth ${s.stats.markings.teeth} on ${s.stats.markings.giveWays} arms`);
   assert.equal(c.fills, 1, 'the junction fill is skipped: the node lies in a polygon');
   assert.equal(s.stats.corners, 0, 'no corner patches inside the polygons');
   // The zebra (way 4, dashes at y = 20): every dash on the carriageway polygon, none on the pavements.
   const zebra = centroids(s.paint).filter(q => Math.abs(q[1] - 20) < 1.6);
-  assert.ok(zebra.length >= 6, `zebra dashes ${zebra.length}`);
+  if (PAINT_ON_SURVEY) assert.ok(zebra.length >= 6, `zebra dashes ${zebra.length}`);
   for (const q of zebra) assert.ok(Math.abs(q[0]) <= 4.3, `zebra dash on the pavement at x=${q[0].toFixed(2)}`);
   assert.ok(centroids(plain.paint).some(q => Math.abs(q[1] - 20) < 1.6 && Math.abs(q[0]) > 5), 'the band model ran the zebra onto the pavement');
   // Rails: on the N–S carriageway only (the polygon runs the whole way), none dropped there.
@@ -156,7 +159,7 @@ test('streets with roads: crossCuts cut carriageway paint where another carriage
   const s = buildStreets(ways, flat, { roads: { index, covered: new Set() } });
   // Way 1's centre dashes (x = 0); way 2's own run along y = 20 and are left out by the y test.
   const dashes = centroids(s.paint).filter(q => Math.abs(q[0]) < 0.3 && Math.abs(q[1] - 20) > 0.3);
-  assert.ok(dashes.length > 0 && dashes.every(q => Math.abs(q[1] - 20) > 4.4), 'no centre dash of way 1 within the crossing');
+  assert.ok((!PAINT_ON_SURVEY || dashes.length > 0) && dashes.every(q => Math.abs(q[1] - 20) > 4.4), 'no centre dash of way 1 within the crossing');
   assert.ok(s.stats.markings.clipped!.crossCuts > 0);
 });
 
@@ -167,4 +170,22 @@ test('road surfaces: cover share, ring simplification and the line simplifier', 
   const ring = simplifyRing([[0, 0], [5, 0.02], [10, 0], [10, 5], [10.03, 10], [10, 10], [0, 10], [0, 0]], 0.1);
   assert.deepEqual(ring, [[0, 0], [10, 0], [10.03, 10], [0, 10]], 'the collinear-within-tolerance vertices go, the corners stay');
   assert.deepEqual(simplifyLine([[0, 0], [1, 0.01], [2, 0], [3, 1]], 0.05), [[0, 0], [2, 0], [3, 1]]);
+});
+
+// User 2026-10-16, Prinsengracht by the Pulitzer: "I don't think we need to draw parking spots". The small footway
+// islands between parking bays draw as part of the street (the bays' mesh, road height, no kerbs).
+test('parkingIslands: a small footway between two parking bays draws as street; a long pavement does not', () => {
+  const sq = (x0: number, y0: number, x1: number, y1: number): [number, number][] => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+  const enc = (r: [number, number][]) => encodeLine([...r, r[0]]);
+  const cell = { version: 1, key: '0_0', surfaces: [
+    { k: 'klinker', c: 'parking', h: 0, r: [enc(sq(0, 0, 5, 2))] },
+    { k: 'paving', c: 'foot', h: 0, r: [enc(sq(5, 0, 6.5, 2))] },
+    { k: 'klinker', c: 'parking', h: 0, r: [enc(sq(6.5, 0, 11.5, 2))] },
+    { k: 'paving', c: 'foot', h: 0, r: [enc(sq(0, 2, 60, 5))] },
+  ], kerbs: [], coverWays: [] } as any;
+  const index = new RoadIndex([cell]);
+  assert.equal(index.parkingIslands(), 1);
+  assert.equal(index.classAt(5.75, 1), 'parking');
+  assert.equal(index.meshAt(5.75, 1), 'klinker');
+  assert.equal(index.classAt(30, 3.5), 'foot');
 });

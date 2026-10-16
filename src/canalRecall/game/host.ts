@@ -293,6 +293,10 @@ export interface RecallHost extends GameCoreHost {
   _learnedBridges: Map<string, { name: string; labelPoint?: WorldPoint }>;
   _pendingCrossing: PendingCrossing | null;
   _lastBridgeQuizAt: number;
+  /** Per track: the street each bridge-named way carries ('' = none), so a
+   *  street question never answers with a bridge's name (bridgeStreetName.ts).
+   *  Optional: built lazily, `game.js` need not initialise it. */
+  _bridgeCarriedStreets?: { track: Track; bySegment: Map<number, string> };
   _lastTransitStopQuizAt: number;
   _lastTransitLineQuizAt: number;
   _lastTransitStreetQuizAt: number;
@@ -335,6 +339,11 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** Published trivia and what has been told (LandmarkHost owns them); the ARRIVED card draws from the same rotation. */
+  _facts: FactIndex;
+  _factRotation: RotationState;
+  /** The ARRIVED card's text, chosen once per arrival (finishBlurb.ts). */
+  _finishBlurb?: { route: unknown; id: string; text: string } | null;
   /** Orbit chase/cockpit by `delta` degrees and persist it (game-route.js). */
   _nudgeCameraBearing?(delta: number): void;
   _recenterCamera(): void;

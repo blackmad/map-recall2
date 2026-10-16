@@ -66,7 +66,8 @@ export async function compileChunk(inputs: ChunkHouseInput[], options: ChunkOpti
   const plan = planGround(houses.map(h => h.facts), adjacent, options.maxRegroundM ?? 1, options.eavesSnapStepM ?? 0.25, options.eavesSnapSpanM ?? 0.45, options.terrainAt);
 
   // Compile, bake into the frame.
-  const compiled = houses.map((h, i) => compileBuilding(h.intent, plan.facts[i]));
+  // A failing house names its pand (a face of 25 houses otherwise reports only the recipe error).
+  const compiled = houses.map((h, i) => { try { return compileBuilding(h.intent, plan.facts[i]); } catch (e) { throw Error(`${h.intent.pandId}: ${(e as Error).message}`); } });
   if (options.decorate) compiled.forEach((built, i) => options.decorate!(built, houses[i], i));
   const buckets: BucketMap[] = compiled.map((built, i) => groupToBuckets(built.group, matrixFor(frame, built.anchorRD), recipeSlotFor(houses[i].intent)));
   const merged = buckets.reduce((s, b) => s + triangleCount(b), 0);

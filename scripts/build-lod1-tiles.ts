@@ -65,7 +65,8 @@ type Feature = { properties: Record<string, unknown>; geometry: Geometry };
  */
 const renderProperties = (properties: Record<string, unknown>): Record<string, unknown> => {
   const rendered: Record<string, unknown> = {
-    id: properties.bagId ?? properties.osmId,
+    // A tower-podium tower has its own id (never the pand prefix) and names its pand.
+    id: properties.bagId ?? properties.towerId ?? properties.osmId,
     tier: properties.tier,
     minHeight: properties.minHeight ?? 0
   };
@@ -76,6 +77,7 @@ const renderProperties = (properties: Record<string, unknown>): Record<string, u
   // are measured, and a zero-height extrusion draws nothing anyway. Leaving the
   // key out lets the layer's documented `coalesce(height, 5)` fallback take
   // them, which is a guess that is visible as a guess.
+  if (typeof properties.pand === 'string') rendered.pand = properties.pand;
   const height = properties.height;
   if (typeof height === 'number' && height > 0) rendered.height = height;
   for (const key of ['colour', 'roofColour', 'roofShape'] as const) {
