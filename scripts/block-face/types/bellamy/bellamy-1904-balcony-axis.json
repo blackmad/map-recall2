@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "bellamy-1904-balcony-axis",
+ "district": "bellamy",
+ "description": "Bellamybuurt 1904-1905 speculative rows (Hasebroekstraat 4-36, Bellamyplein 22-38): dark brown brick, three axes on 5.3-5.7 m, segmental heads under brick relieving arches, the centre axis a stack of French windows with iron balconettes, a thin cornice band; over the centre axis a raised neck with a hoist beam, a flat-topped box dormer, or nothing",
+ "fit": {"widthM": [4.8, 6.0], "storeys": [4, 5]},
+ "match": {
+  "years": [1900, 1908],
+  "eavesM": [12.0, 14.8],
+  "storeys3dbag": [4, 5],
+  "baysByWidth": [{"maxWidthM": 99, "bays": 3}],
+  "stucco": false,
+  "crowns": {
+   "box-dormer": {"topWidthM": [1.1, 3.0], "riseM": [1.0, 3.5]},
+   "neck-hoist": {"topWidthM": [0.2, 1.1], "riseM": [1.0, 3.8]},
+   "none": {"none": true}
+  },
+  "note": "year and width carry it: every 1904-1905 pand of these rows is 5.3-5.7 m; Bellamyplein 18-20 (6.5 m, 1905) is out of the width fit"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "t-window",
+  "windowHead": {"kind": "segmental", "archRing": {"colour": "band", "style": "solid"}},
+  "balconies": {"storeys": [1, 2, 3], "bays": [1]}
+ },
+ "crowns": {
+  "neck-hoist": {"gable": "neck", "crownBays": {"from": 1, "to": 1}, "crownRise": 0.8, "atticWindows": 1, "hoist": true, "note": "Hasebroekstraat 26-36 (159125 160178 161486 163006 164522 167170): a raised neck over the centre axis, one attic light, the hoist beam's iron hooks on top"},
+  "box-dormer": {"gable": "cornice", "dormers": 1, "dormerStyle": "box", "note": "Hasebroekstraat 6, 10, 14 (160593, 154364, 164498): a wide flat-topped dormer over the centre axis"},
+  "none": {"gable": "cornice", "note": "cornice only"}
+ },
+ "grounds": {
+  "door-left": {"doorBay": 0, "note": "house door in the left axis (Hasebroekstraat 36)"},
+  "door-right": {"doorBay": 2, "note": "house door in the right axis"}
+ },
+ "palettes": {
+  "dark-brown": {"brick": "#5a4a40", "frame": "#e4e6e2", "door": "black", "stone": "#d8d6cc", "band": "#4a3a30", "cornice": "#dcdcd4"}
+ },
+ "roof": {"material": "black-tile"},
+ "rhythm": {
+  "bays": "3 window axes, the centre one a French-window stack",
+  "identicalBays": "equal axes",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "house door in an outer axis, two windows",
+  "signage": "none",
+  "roofline": "thin cornice band; a neck or a box dormer over the centre axis",
+  "photoRows": [2, 3, 3, 3],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {"face": "hasebroek-2-46", "pands": ["160178", "167170", "161486", "163006", "164522", "159125", "155789"], "citation": "strip.jpg 2022-01-04 pands 1-7: identical 3-axis fronts, centre balconette stack, neck crowns with hoist hooks"},
+  {"face": "hasebroek-2-46", "pands": ["164498", "154364", "160593"], "citation": "strip.jpg 2022-01-04 pands 12, 14, 16: the same front under a flat-topped box dormer"},
+  {"face": "bellamyplein-18-38", "pands": ["164224", "163466", "153217", "159793", "158557", "163720"], "citation": "strip.jpg 2024-12-11 pands 1-4, 8-9: the same body; yellow-brick 166965 and 159962 take their measured wall"}
+ ],
+ "schemaLimits": [
+  "the brick diamond and lozenge frieze under the cornice (Hasebroekstraat 6-16) is not drawn",
+  "the flared overhanging cap of the box dormers",
+  "Bellamyplein's square brick towers over an outer axis are drawn as the neck or box crown"
+ ],
+ "notes": ["Palette: dark brown from the trim-normalised walls of hasebroek-2-46 (2022-01-04, overcast); every placed pand carries its own measured brick."]
+}

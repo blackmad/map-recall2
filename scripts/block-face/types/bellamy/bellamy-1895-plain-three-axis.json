@@ -1,0 +1,49 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "bellamy-1895-plain-three-axis",
+ "district": "bellamy",
+ "description": "Bellamydwarsstraat 4-10 (BAG 1933 after renewal; a late-19th-century front): dark brown brick, three equal axes of white T-windows under flat brick heads, no balconies, a thin cornice band; a dormer with a hoist beam over the centre",
+ "fit": {"widthM": [4.8, 5.8], "storeys": [4, 5]},
+ "match": {
+  "years": [1880, 1935],
+  "eavesM": [11.5, 13.5],
+  "storeys3dbag": [4, 5],
+  "baysByWidth": [{"maxWidthM": 99, "bays": 3}],
+  "stucco": false,
+  "note": "renewal years (1933) stand in BAG for many 1890s fronts here, so the year range is wide; on 1904 rows the balcony-axis type competes and the photo (challenger NCC) decides"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "t-window"
+ },
+ "crowns": {
+  "hoist-dormer": {"gable": "cornice", "dormers": 1, "dormerStyle": "plain", "hoist": true, "note": "a white-framed dormer over the centre axis with the hoist beam's hooks (Bellamydwarsstraat 10, 8)"}
+ },
+ "grounds": {
+  "door-left": {"doorBay": 0, "note": "house door left"},
+  "door-right": {"doorBay": 2, "note": "house door right"}
+ },
+ "palettes": {
+  "dark-brown": {"brick": "#4e3a30", "frame": "#eeeee8", "door": "black", "stone": "#d8d6cc", "cornice": "#d8d6cc"}
+ },
+ "roof": {"material": "black-tile"},
+ "rhythm": {
+  "bays": "3 equal axes",
+  "identicalBays": "equal axes",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "house door in an outer axis",
+  "signage": "none",
+  "roofline": "thin cornice band, a dormer with a hoist beam",
+  "photoRows": [2, 3, 3, 3],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {"face": "bellamydwars-4-12", "pands": ["146138", "061723", "115852", "086668"], "citation": "strip.jpg 2024-12-11 pands 2-5: identical 3-axis fronts, white dormers with hoist hooks"}
+ ],
+ "schemaLimits": ["the light brick lintel course over the second-storey windows"],
+ "notes": []
+}
