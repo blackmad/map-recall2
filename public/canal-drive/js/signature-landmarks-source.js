@@ -111,10 +111,8 @@ export class SignatureLandmarks {
     this.sharedFrame = options.sharedFrame || null;
     // Legacy layer: every model in one scene, one render per frame (landmarks/batchedLegacyFrame.ts).
     // Not under `?cityLook=1`, whose tier distance is measured from the model origin the per-model camera
-    // put the eye at; `?landmarkBatch=0` or `window.__canalRecallLandmarkBatch = false` keeps one render per model.
-    let batch = window.__canalRecallLandmarkBatch !== false;
-    try { batch &&= new URLSearchParams(window.location.search).get('landmarkBatch') !== '0'; } catch { /* no location */ }
-    this._batchLegacy = !this.sharedFrame && batch && !cityLookEnabled();
+    // put the eye at.
+    this._batchLegacy = !this.sharedFrame && !cityLookEnabled();
     this._batchSequence = 0;
     this._batchAnchor = null;
     this.layer = this._makeLayer();
@@ -1099,7 +1097,7 @@ export class SignatureLandmarks {
 
   /** Level to load first: lod1 for models that are small on screen. Unknown size or no lod1 means full. */
   _startLevel(spec) {
-    if (!this._hasLod(spec) || window.__canalRecallLandmarkLod === false) return 'full';
+    if (!this._hasLod(spec)) return 'full';
     const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
     if (!anchor || !radius) return 'full';
@@ -1112,7 +1110,7 @@ export class SignatureLandmarks {
    * only then swapped in, in one step, so a model is never missing or doubled.
    */
   _updateLevels() {
-    if (this._removed || !this.enabled || !this._loader || window.__canalRecallLandmarkLod === false) return;
+    if (this._removed || !this.enabled || !this._loader) return;
     for (const entry of this._entries) {
       if (!this._hasLod(entry.spec) || entry.levelLoading || entry.lodFailed) continue;
       if (!this._nearby(entry.spec, entry.placement.anchor)) continue;
