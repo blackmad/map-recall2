@@ -10,6 +10,7 @@
  */
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
+import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -34,8 +35,12 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * `ladder` (Amsterdam School, 1915-1935): a tall narrow light 0.55-0.75 m wide and about 0.7 of the storey high, with
  * 4-6 horizontal glazing bars and no vertical bar; a bay wide enough for two lights and a 0.16 m pier holds a PAIR
  * (the pairing follows `bayWidths`).
+ * De Baarsjes (Jan Evertsenstraat 1925-1927, docs/de-baarsjes-types-20261014.md): `casement-toplight` two side-hung
+ * casements under a fixed top light (a thin transom at 0.8 of the height, the mullion running through both);
+ * `casement-gridded-toplight` the same with the top light in small panes (three bars across it); `casement-triple` a
+ * fixed centre light between two narrow side-hung casements (mullions at 0.27 and 0.73, no transom).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -73,8 +78,12 @@ export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone
  * `windowSurround: "sill"`.
  */
 export const WINDOW_SILLS = ['consoles'] as const;
-/** Balcony construction: the default iron/stone guard of the library, or a timber platform on carved brackets (`timber-bracketed`). */
-export const BALCONY_STYLES = ['guard', 'timber-bracketed'] as const;
+/**
+ * Balcony construction: the default iron/stone guard of the library, a timber platform on carved brackets
+ * (`timber-bracketed`), or `slab-hood` (Jan Evertsenstraat 59-87): a stacked balconette per storey (a thin concrete slab
+ * with an iron rail, the library's projecting balcony at the measured depth) and a hood slab over the top storey's door.
+ */
+export const BALCONY_STYLES = ['guard', 'timber-bracketed', 'slab-hood'] as const;
 /** Guard of a timber balcony: white turned balusters under a handrail, or a wrought-iron grille. */
 export const BALCONY_RAILS = ['turned', 'iron'] as const;
 export const QUOINS = ['none', 'stone'] as const;
@@ -290,7 +299,14 @@ export interface FrontIntent {
    */
   bayWindows?: { bay?: number; bays?: {from: number; to: number}; storeys: number[]; cap?: typeof ERKER_CAPS[number];
     /** `painted` (a timber erker, Nassaukade 146): its panels, closures and cap in the trim colour instead of wall brick and roof. Multi-bay erkers only. */
-    finish?: 'painted' };
+    finish?: 'painted';
+    /**
+     * `hood: true` with `bays` (Jan Evertsenstraat hood-lisene rows): instead of the storey-high erker, a shallow box
+     * frame round the window of the spanned axes on each listed storey (0.25 m deep, square returns, no stallriser,
+     * white timber: the trim colour) with a hood slab over every box (0.12 m, 0.1 m past the box front and sides, in
+     * `palette.band`, else the wall). The box takes the window's sill and head; `cap` does not apply.
+     */
+    hood?: boolean };
   /**
    * Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick).
    * `courses` (Amsterdam School brick banding, needs `palette.band`): the storeys in `courseStoreys` are laid whole in the
@@ -327,6 +343,18 @@ export interface FrontIntent {
    * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
    */
   windowHoods?: boolean;
+  /**
+   * Tall plain parapet (Jan Evertsenstraat): the full storeys end `courses` brick courses (0.055 m each) under the eaves
+   * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
+   * top. A crown field; needs `cornice: "none"` and a `flat` or `cornice` gable.
+   */
+  parapet?: {courses: number; coping?: boolean};
+  /**
+   * `bands: painted` (Jan Evertsenstraat 9-33): the window zone of every band storey, from the top of its sill band to
+   * the foot of its head band, is faced in `palette.band` (a second brick: the yellow piers between the windows under
+   * red spandrels), 2 cm proud, cut round the openings; the painted bands stay 2 cm in front of it.
+   */
+  bandPiers?: boolean;
   /** The same house module repeated along this front (rows built together, double fronts). */
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
@@ -468,7 +496,19 @@ const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align']
  * to 8 cm under the first-storey sills (at most 1.1 m, at least 0.4 m), 1.5 cm proud, with a 0.2 m mortar grid 3 cm
  * wide; brick piers 0.25 m wide stay at party-wall ends, 0.05 m at free ends.
  */
-export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number }; fasciaColour?: string; glassBlocks?: boolean }
+export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number }; fasciaColour?: string;
+  /**
+   * `{rows}` (Jan Evertsenstraat 43-135): the band is `rows` glass blocks tall (0.2 m each) instead of filling up to the
+   * sills, and the canopy and the shop-glass head drop to sit under it (with `wallCourses` of brick between the band and
+   * the first-storey sills). With `palette.glassBlock` the band is its own measured material.
+   */
+  glassBlocks?: boolean | {rows: number};
+  /**
+   * Rigid canopy only: brick courses (0.055 m) of wall between the canopy (or its glass-block band) and the first-storey
+   * window sills, measured on the strip; the canopy and the shop-glass head drop to keep it (Jan Evertsenstraat 9-33: the
+   * sign band over the canopy). Default: the canopy sits 2 cm over the glass head the ground storey gives.
+   */
+  wallCourses?: number }
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent {
@@ -490,6 +530,8 @@ export interface PaletteIntent {
   stoneMaterial?: 'painted';
   /** Large tier only: the glazing colour (default the kit's dark glass `#2a3a42`); measured from the photo by `measure.ts`. */
   glass?: string;
+  /** Glass-block band colour measured on the strip (`awning.glassBlocks`): the band is exported as its own measured glass material. */
+  glassBlock?: string;
 }
 /**
  * `painted-brick` (Nassaukade 147, 149, 150): brick painted over; the brick texture keeps its joints, but the wall colour
@@ -777,6 +819,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.repeat) problems.push(`${at}.lisenes: not on a repeated front`);
     }
     problems.push(...windowProblems(f, at, oneOf));
+    problems.push(...deBaarsjesProblems(f, intent?.palette, at));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
@@ -873,7 +916,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       colour(aw.colour, `${at}.shopfront.awning.colour`);
       if (aw.extent && !(aw.extent.from >= 0 && aw.extent.to <= 1 && aw.extent.to - aw.extent.from >= 0.15)) problems.push(`${at}.shopfront.awning.extent: need 0 <= from < to <= 1 covering at least 0.15`);
       if (aw.fasciaColour !== undefined) { colour(aw.fasciaColour, `${at}.shopfront.awning.fasciaColour`); if (aw.style !== 'rigid') problems.push(`${at}.shopfront.awning.fasciaColour: only a rigid canopy has a fascia`); }
-      if (aw.glassBlocks !== undefined && (aw.glassBlocks !== true || aw.style !== 'rigid')) problems.push(`${at}.shopfront.awning.glassBlocks: true, and only over a rigid canopy`);
+      problems.push(...awningProblems(aw, at));
     } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
     for (const [k, v] of Object.entries(f.palette ?? {})) {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
@@ -887,7 +930,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   if (corners.length && intent.fronts.length < 2) problems.push(`front ${corners[0].id}.tower.corner: a corner tower needs a pand with two fronts`);
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
-  for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
   if (problems.length) throw new Error(`Invalid intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
