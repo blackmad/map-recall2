@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## Landmark abutter survey: buildings in a landmark's angles and walls (2026-10-16)
+
+Lane `lane/landmark-abutters-survey-20261016` (dd7ca183c). The user saw a
+4-storey stucco kit block in an angle of the Noorderkerk's Greek cross;
+BAG/3DBAG and the register say the angles hold the 1623 corner houses
+("dienstwoningen diagonaal tussen de armen", rijksmonument 3923) with
+slanted roofs. `check:osm-under-models` could not see it: it flags only
+city buildings at least 50 % inside a model footprint, and the corner
+houses are outside it. New typed module `landmarkAbutters.ts` (8 tests)
+lists unsuppressed city buildings that share a wall with a placed model
+(measured edge length, corner touches excluded), sit mostly inside its
+convex hull (angle/notch/courtyard), or overlap it below 50 %, and scores
+them on bouwjaar, shared monument record, shared address, 3DBAG roof vs
+the drawn roof, hull position and wall length; terrace damping (-1.5)
+for one-sided walls outside the hull, and a "wraps" bonus only with walls
+on two sides. 337 landmarks, 560 candidates (526 wall, 133 notch, 166
+partial); 95 photo-reviewed (all 43 notch candidates at score >= 8, top
+25 overall, up to 3 per church): 25 fold-in, 4 separate-but-wrong, 53
+fine, 13 unclear. Clearest true signal: OSM building parts on the
+church's own pand (Oude Kerk, Sint Nicolaas, Noorderkerk); next, a
+slanted 3DBAG roof under an OSM flat box. False positives: terraced
+fronts of a block the landmark wraps, complex-wide monument records,
+same-era streets, convex hulls of large irregular models (RAI, Centraal,
+Rijksmuseum, Heineken). Gate `check:landmark-abutters` (in `check:canal`)
+fails on any unreviewed notch candidate at score >= 8; reviews and
+PENDING fold-ins live in `landmark-abutters-allowlist.json` with pano ids
+and crop paths. Contact sheets were kept outside the repo in
+`map-recall2-worktrees/landmark-abutters-sheets-20261016/`. Queue in TODO P2.
+
 ## Facade measurement limits: white-framed panes and dark brick classified; 43 triage verdicts move (2026-10-16)
 
 Lane `lane/measurement-limits-20261014` (final a6b148ea7; 9436b81fa
