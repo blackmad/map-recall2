@@ -126,14 +126,14 @@ export class SignatureLandmarks {
 
   /**
    * Street surveys (hosts opt in with `options.streetChunks`, so review pages that pass a single candidate model are
-   * untouched; ordinaryChunks.ts `streetSurveyMode`). Retired by default (2026-10-13): the block-face chunks and the
+   * untouched; ordinaryChunks.ts `streetSurveyMode`). Chunks by default since 2026-10-16 (`?streetChunks=retired`: the block-face chunks and the
    * per-house recipe models leave the model list, so their pands draw as generic extrusions (or recipe tiles) like
    * their neighbours. `?streetChunks=0` keeps the per-house models. `?streetChunks=1` draws each block face as ONE
    * chunk model (one mesh, per-pand ranges in glTF extras; see streetChunks/manifest.ts) instead of its houses: the
    * houses a chunk replaces leave the model list, and any already drawn are dropped, so nothing is drawn twice.
    */
   _loadStreetChunks() {
-    const { streetChunksEnabled, streetSurveyMode, withoutStreetSurveys, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
+    const { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
     if (this.streetChunks !== true) return;
     if (streetSurveyMode?.(window.location.search) === 'retired') {
       this.models = withoutStreetSurveys(this.models);
@@ -145,7 +145,7 @@ export class SignatureLandmarks {
       .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`)))
       .then(manifest => {
         if (this._removed) return;
-        const { models, replaced } = applyStreetChunks(this.models, manifest);
+        const { models, replaced } = applyStreetChunks(this.models, manifest, heldStreetChunks?.(window.location.search));
         this.models = models;
         this._dropEntries(replaced);
         this._requestModels();
@@ -667,12 +667,14 @@ export class SignatureLandmarks {
     }
     // `bagYear` (BAG construction year, published into the placement catalogue from scripts/landmarks/landmark-bag-years.ts)
     // picks the city look's era brick; without it the model keeps the canal brick.
-    return this._recipeLookReady.then(look => { look.apply(gltf.scene, { year: spec?.bagYear ?? null }); gltf.scene.userData.recipeLook = true; return gltf; });
+    // `wallExposure` (street chunks, look/chunkWallExposure.ts): the walls were matched to a photo strip; the sunny look
+    // draws them at that colour normalised to sunlight.
+    return this._recipeLookReady.then(look => { look.apply(gltf.scene, { year: spec?.bagYear ?? null, wallExposure: spec?.wallExposure ?? null }); gltf.scene.userData.recipeLook = true; return gltf; });
   }
 
   /** LOD levels load synchronously into place: dress them too once the city look exists (`?cityLook=1` only). */
   _dressLevel(gltf, spec = null) {
-    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene, { year: spec?.bagYear ?? null }); gltf.scene.userData.recipeLook = true; }
+    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene, { year: spec?.bagYear ?? null, wallExposure: spec?.wallExposure ?? null }); gltf.scene.userData.recipeLook = true; }
     return gltf;
   }
 
