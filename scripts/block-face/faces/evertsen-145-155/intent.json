@@ -1,0 +1,510 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "evertsen-145-155",
+ "street": "Jan Evertsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-06",
+   "image": "staging/block-face/evertsen-145-155/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (de-baarsjes-faces lane)",
+  "passes": 1,
+  "note": "Jan Evertsenstraat 145-155 (odd side, west of the Mercatorplein): the raised stair-tower end 145, the white-attic houses 147-149 (evertsen-1927-white-attic-tile-roof) on one eaves line, the 1939 dormer houses 151-153 (evertsen-1939-dormer) and the tall corner block 155."
+ },
+ "types": [
+  "evertsen-1927-white-attic-tile-roof",
+  "evertsen-1939-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012082977",
+   "slug": "evertsen-082977",
+   "address": "Jan Evertsenstraat 145",
+   "type": {
+    "type": "evertsen-1927-white-attic-tile-roof",
+    "crown": "tile-roof",
+    "palette": "brown-white",
+    "paletteOverrides": {
+     "brick": "#554732",
+     "wallTint": "measured",
+     "whitePoint": "#bdc1b6"
+    },
+    "modules": [
+     {
+      "share": 0.832,
+      "crown": "raised-end",
+      "overrides": {
+       "storeys": 5,
+       "axisGrid": 4,
+       "storeyBayWidths": null,
+       "bands": null,
+       "bandLines": null,
+       "bandStoreys": null,
+       "bandHeights": null,
+       "bandPiers": null,
+       "bandFloors": null,
+       "balconyRun": null,
+       "windowShare": null,
+       "stepBody": true,
+       "bays": [
+        1,
+        2,
+        2,
+        2,
+        1
+       ],
+       "bayWidths": [
+        2,
+        2,
+        2.45,
+        0.65
+       ],
+       "bayFill": [
+        0.5,
+        0.6,
+        0.47,
+        0.5
+       ],
+       "storeyAxes": {
+        "1": [
+         1,
+         2
+        ],
+        "2": [
+         1,
+         2
+        ],
+        "3": [
+         1,
+         2
+        ],
+        "4": [
+         1
+        ]
+       },
+       "storeyHeights": [
+        3.45,
+        3.05,
+        3.05,
+        3,
+        2.35
+       ],
+       "windowHeights": [
+        0.5,
+        0.56,
+        0.54,
+        0.57,
+        0.43
+       ],
+       "headLines": [
+        0.8,
+        0.9,
+        0.9,
+        0.95,
+        0.96
+       ]
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": true,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "evidence": "strip.jpg 2024-12-06 pand 145: the shop glass 1.6-5.6 m under a black fascia with a row of top lights"
+       }
+      }
+     },
+     {
+      "share": 0.168,
+      "overrides": {
+       "bays": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "axisGrid": null,
+       "storeyBayWidths": {
+        "3": [
+         1
+        ]
+       }
+      },
+      "ground": {
+       "groundFront": {
+        "kind": "wall",
+        "bays": [
+         "door"
+        ],
+        "evidence": "strip.jpg 2024-12-06 pand 145: the house door 7.8-8.5 m"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "the raised end (2 axes), then one axis of the row",
+    "windowsPerStorey": "ground: shop + door | 1-3: 2 + 1 | 4: 1 small",
+    "symmetry": "none",
+    "groundFloor": "shop, house door",
+    "signage": "none legible",
+    "roofline": "the raised end flat at 17.1 m, the row eaves at 12.9 m",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "citation": "strip.jpg 2024-12-06 pand 145 (ruler crop 64 px/m): the raised end 1.0-7.1 m to 17.1 m, windows 2.4-3.6 and 4.65-5.8 m at 4.5-6.2 / 7.6-9.25 / 10.7-12.4 m, a small window 2.6-3.35 m at 13.8-14.8 m; the row part 7.1-8.53 m with windows 7.4-8.5 m",
+    "schemaLimits": [
+     "the white oriel at the far left (0-1.0 m, 4.6-6.6 m) belongs to the corner and is not drawn",
+     "the small top window is drawn at the axis width"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012138669",
+   "slug": "evertsen-138669",
+   "address": "Jan Evertsenstraat 147",
+   "type": {
+    "type": "evertsen-1927-white-attic-tile-roof",
+    "crown": "tile-roof",
+    "palette": "brown-white",
+    "paletteOverrides": {
+     "brick": "#635440",
+     "wallTint": "measured",
+     "whitePoint": "#acaf9f"
+    },
+    "ground": "paired-doors",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 147 (ruler crop 64 px/m): three windows per storey, six lights in the white band 10.8-12.9 m, the brick balcony front 3.4-4.45 m, the paired doors at the left"
+   }
+  },
+  {
+   "pandId": "0363100012092062",
+   "slug": "evertsen-092062",
+   "address": "Jan Evertsenstraat 149",
+   "type": {
+    "type": "evertsen-1927-white-attic-tile-roof",
+    "crown": "tile-roof",
+    "palette": "brown-white",
+    "paletteOverrides": {
+     "brick": "#564939",
+     "wallTint": "measured",
+     "whitePoint": "#a9a996"
+    },
+    "ground": "paired-doors"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 149 (ruler crop 64 px/m): three windows per storey, six lights in the white band 10.8-12.9 m, the brick balcony front 3.4-4.45 m, the paired doors at the right"
+   }
+  },
+  {
+   "pandId": "0363100012138602",
+   "slug": "evertsen-138602",
+   "address": "Jan Evertsenstraat 151",
+   "type": {
+    "type": "evertsen-1939-dormer",
+    "crown": "dormer",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#584c37",
+     "wallTint": "measured",
+     "whitePoint": "#b2b7ac"
+    },
+    "ground": "door-right"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 151 (ruler crop 32 px/m): wide windows 0.5-3.6 m and narrow 4.15-5.35 m at 3.9-5.8 / 6.9-8.75 / 9.85-11.7 m, the arched door pair 4.1-6.1 m, eaves 12.5 m, dormer 1.9-4.9 m"
+   }
+  },
+  {
+   "pandId": "0363100012105558",
+   "slug": "evertsen-105558",
+   "address": "Jan Evertsenstraat 153",
+   "type": {
+    "type": "evertsen-1939-dormer",
+    "crown": "dormer",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#4f4938",
+     "wallTint": "measured",
+     "whitePoint": "#a6ab9b"
+    },
+    "ground": "door-right",
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "style": "slab-hood"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 153 (ruler crop 32 px/m): wide windows 0.85-3.9 m, French doors 4.4-6.1 m on balconies at storeys 1-2, a window over them, dormer 2.3-5.15 m"
+   }
+  },
+  {
+   "pandId": "0363100012131504",
+   "slug": "evertsen-131504",
+   "address": "Jan Evertsenstraat 155",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Jan Evertsenstraat",
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {
+       "courses": 36,
+       "coping": true
+      },
+      "storeys": 5,
+      "bays": [
+       2,
+       2,
+       2,
+       2,
+       2
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "casement-toplight-double",
+      "hoist": false,
+      "axisGrid": 4,
+      "bayWidths": [
+       3.35,
+       2.5,
+       0.7,
+       1.77
+      ],
+      "bayFill": [
+       0.67,
+       0.92,
+       0.9,
+       0.5
+      ],
+      "storeyAxes": {
+       "1": [
+        0,
+        1
+       ],
+       "2": [
+        0,
+        1
+       ],
+       "3": [
+        0,
+        1
+       ],
+       "4": [
+        0,
+        2
+       ]
+      },
+      "storeyWindows": {
+       "4": "casement-toplight"
+      },
+      "storeyHeights": [
+       4,
+       3.1,
+       3,
+       3.1,
+       3.1
+      ],
+      "windowHeights": [
+       0.5,
+       0.61,
+       0.65,
+       0.65,
+       0.47
+      ],
+      "headLines": [
+       0.85,
+       0.85,
+       0.83,
+       0.81,
+       0.74
+      ],
+      "shopfront": {
+       "colour": "#a7a896",
+       "fascia": false,
+       "entrance": "none",
+       "stallriser": "low",
+       "displayWindows": 2,
+       "residentialDoor": {
+        "side": "right",
+        "colour": "black"
+       },
+       "shopShare": 0.72,
+       "evidence": "strip.jpg 2024-12-06 pand 155: two shop windows 0.5-2.85 and 3.4-5.8 m in cream frames, the arched house door 6.25-7.2 m, the Lunch Hoek sign over them"
+      }
+     }
+    ],
+    "roof": {
+     "material": "bitumen",
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky over the coping at 18.3 m"
+    },
+    "palette": {
+     "brick": "#483b27",
+     "wallTint": "measured",
+     "whitePoint": "#a7a896",
+     "frame": "#a7a896",
+     "door": "black"
+    },
+    "notes": [
+     "the tall corner block at the Hoofdweg end: two wide windows per storey"
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 6469465685,
+     "name": "Lunch Hoek"
+    },
+    "name": "Lunch Hoek",
+    "category": "amenity=fast_food",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "bays": "two wide windows per storey; an arched and a small window on the top storey",
+    "windowsPerStorey": "ground: 2 shop windows + door | 1-3: 2 | 4: 2",
+    "symmetry": "none",
+    "groundFloor": "Lunch Hoek: two shop windows, an arched door",
+    "signage": "Lunch Hoek (not drawn)",
+    "roofline": "flat at 18.3 m",
+    "citation": "strip.jpg 2024-12-06 pand 155 (ruler crop 64 px/m): windows 0.55-2.8 and 3.45-5.75 m at 4.75-6.65 / 7.65-9.6 / 10.6-12.6 m; top storey an arched window 2.35-3.9 m and a small one 5.8-6.55 m at 14.05-15.8 m",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     2
+    ],
+    "schemaLimits": [
+     "the top storey's arched window is drawn square on the left axis (1.4 m left of the photo's)",
+     "the arched house door is drawn square"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "the balcony depth is assumed (0.5 m)",
+  "the arched door heads",
+  "the Lunch Hoek sign",
+  "trees over 151-155"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "streetLevelPands": {
+   "pands": [
+    "0363100012105558",
+    "0363100012131504"
+   ],
+   "evidence": "strip.jpg: the door sills and shop sills of 153 and 155 stand on the pavement level of 147-151 (3DBAG maaiveld 1.20 and 1.32 m NAP against 0.05-0.09 m for 147-151)"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012138669",
+    "stripRow": 304,
+    "evidence": "strip.jpg: one eaves line for the white-attic row, the top of the white band on 147 at 12.88 m (row 304; ledge.mjs)"
+   },
+   {
+    "pand": "0363100012092062",
+    "stripRow": 304,
+    "evidence": "strip.jpg: one eaves line for the white-attic row, the top of the white band on 147 at 12.88 m (row 304; ledge.mjs)"
+   },
+   {
+    "pand": "0363100012082977",
+    "front": "m0",
+    "stripRow": 138,
+    "evidence": "strip.jpg: the raised end's coping (skyline over 1.5-6.5 m)"
+   },
+   {
+    "pand": "0363100012082977",
+    "front": "m1",
+    "stripRow": 304,
+    "evidence": "strip.jpg: the row's eaves line (12.88 m) over 145's row axis"
+   },
+   {
+    "pand": "0363100012138602",
+    "stripRow": 319,
+    "evidence": "strip.jpg: the 1939 houses' eaves at 12.5 m (ruler crop 32 px/m: the tiles start at 12.5 m on 151 and 153)"
+   },
+   {
+    "pand": "0363100012105558",
+    "stripRow": 319,
+    "evidence": "strip.jpg: the 1939 houses' eaves at 12.5 m (ruler crop 32 px/m: the tiles start at 12.5 m on 151 and 153)"
+   },
+   {
+    "pand": "0363100012131504",
+    "stripRow": 87,
+    "evidence": "strip.jpg: the corner block's coping at 18.3 m (ruler crop 64 px/m; the skyline reads the tree over it)"
+   }
+  ]
+ }
+}
