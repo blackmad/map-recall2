@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## Every named bridge is a bridge question (2026-10-16)
+
+After "A bridge deck is never the answer", bridge names outside the 300
+`bridges.json` entries (a top-300-by-prominence cut of OSM bridges, not the
+municipal register) were taught by no question. `askableBridges.ts`: every
+bridge-named routed way joins `bridges.json` except register numbers, decks
+shorter than the 8 m route-question settle distance, and a second OSM spelling
+within 150 m. 300 → 416 bridges, 0 existing ids lost (the generator's own hash
+reproduces all 300; only `distractors` changed, on 128), 116 new crossings all
+over mapped water (85 named), 98 new register descriptions; 363 reach the quiz
+at load. Excluded: nine short decks (Spiegelbrug 6.5 m … Kanaalpost 4.3 m) and
+Heiligewegssluis (variant of Heiligewegsluis, 6 m apart). New bridges are not
+notable, so they are asked at hard/expert/custom only. `build-askable-bridges.ts`
+stages and `--publish`es the four extract files together; the generator applies
+the same rule on refresh. Culverts without a suffix (Bullebak, Kanaalpost,
+Postje van Gerrit Vreling) are decks via `UNSUFFIXED_DECK_NAMES`. The street
+plaque reads the carried street (`routePlaqueName`, same withholding rule as
+any street), so it is no longer blank on a carrying deck. Riding the
+Noordsche Compagniebrug and Niek Engelschmanbrug now also asks the canal
+crossed; `turn-question-timing.spec.ts` accepts that ask. Regressions:
+`test:bridge-street-name` (13), `check-canal-car.ts` named cases,
+`askable-bridges.spec.ts`. Lane `fix/bridge-names-quiz-20261016`.
+
 ## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
 
 User (2026-10-16): "I feel like there should probably be a building here?", an
