@@ -25,7 +25,7 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { wayDeckGroups, wayDeckProfile } from './wayDecks';
+import { joinChains, wayDeckGroups, wayDeckProfile } from './wayDecks';
 import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -400,6 +400,25 @@ test('way decks (user 2026-10-16, Jan Evertsenstraat): a bridge way over water w
   assert.equal(g.profiles.length, 1, 'one deck for the three ways');
   assert.deepEqual(g.covered.sort(), [1, 2, 3]);
   assert.ok(Math.abs(g.profiles[0].halfWidth[0] - 10.5) < 1e-9 && Math.abs(g.profiles[0].y[0]) < 1e-9, `half ${g.profiles[0].halfWidth[0]}`);
+});
+
+test('way decks over consecutive ways (Satellietbaan OSM 24343390 + 1252138995): bridge ways meeting end to end join before profiling; a turn or a gap keeps them apart', () => {
+  // A 40 m water (x 20..60); the bridge mapped as two ways meeting mid-span at x 40, the second drawn backwards.
+  const wet = (x: number) => x > 20 && x < 60;
+  const a = { id: 1, name: 'Satellietbaan', points: [[12, 0], [40, 0]] as [number, number][], halfWidth: 4 };
+  const b = { id: 2, name: '', points: [[68, 0], [40.4, 0.1]] as [number, number][], halfWidth: 5 };
+  assert.equal(wayDeckProfile('OSM1', '', a.points, 4, wet, () => false), null, 'alone each ends over the water');
+  assert.equal(wayDeckGroups([a, b], wet, () => false).profiles.length, 0, 'unjoined: no deck');
+  const j = joinChains([a, b]);
+  assert.equal(j.ways.length, 1);
+  assert.deepEqual(j.members.get(1), [1, 2]);
+  assert.equal(j.ways[0].halfWidth, 5, 'the wider half width');
+  assert.deepEqual(j.ways[0].points.at(-1), [68, 0], 'the reversed second way continues the first');
+  assert.ok(wayDeckGroups(j.ways, wet, () => false).profiles.length === 1, 'the joined way gets a deck');
+  const turn = { ...b, points: [[40, 0.5], [40, 14]] as [number, number][] };
+  assert.equal(joinChains([a, turn]).ways.length, 2, 'a 90° turn (a side street) is not the same bridge');
+  const gap = { ...b, points: [[42, 0], [68, 0]] as [number, number][] };
+  assert.equal(joinChains([a, gap]).ways.length, 2, 'a 2 m gap is not a joint');
 });
 
 test('way decks over a hole (Jan Evertsenstraat, OSM 323258135): the deck runs on over an underpass past the water to the bank, level; a slope that never climbs back keeps the deck', () => {

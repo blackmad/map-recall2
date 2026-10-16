@@ -839,6 +839,15 @@ async function parapetRegressions(): Promise<void> {
  * does not (the pin is live).
  */
 const BRIDGE_SURFACES: [number, number, number, string][] = [[323258135, 4.84795, 52.36965, 'Jan Evertsenstraat over the Erasmusgracht']];
+/**
+ * Bridges mapped as consecutive OSM ways (lane bridge-decks-followups 2026-10-16, audit-bridge-surfaces --streets: 31 of
+ * 1,294 street bridge ways had no surface). Each way alone ends over the water, so wayDeckProfile refused both halves;
+ * joined end to end (wayDecks.ts joinChains) they carry one way deck. Without the join they do not (the pin is live).
+ */
+const CHAINED_BRIDGE_SURFACES: [number, number, number, string][] = [
+  [24343390, 4.93743, 52.33298, 'Satellietbaan, first of two ways'],
+  [1252138995, 4.93755, 52.33298, 'Satellietbaan, second of two ways'],
+];
 async function bridgeSurfaceRegressions(): Promise<void> {
   const off = new GroundStore(readExtract, { wayDecks: false });
   await off.init();
@@ -848,6 +857,15 @@ async function bridgeSurfaceRegressions(): Promise<void> {
     const miss = (r: typeof on) => r.missing.find(m => m.id === id);
     check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}; ${on.missing.length} of ${on.ways} bridge ways in ${key} missing`);
     check(!!miss(was), `bridge way ${id}: without the way decks ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
+  }
+  const unjoined = new GroundStore(readExtract, { wayDeckChains: false });
+  await unjoined.init();
+  for (const [id, lng, lat, label] of CHAINED_BRIDGE_SURFACES) {
+    const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
+    const on = await auditBridgeSurfaces(store, [key]), was = await auditBridgeSurfaces(unjoined, [key]);
+    const miss = (r: typeof on) => r.missing.find(m => m.id === id);
+    check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}`);
+    check(!!miss(was), `bridge way ${id}: without joining consecutive ways ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
   }
 }
 
@@ -869,9 +887,11 @@ async function wayDeckHoleRegressions(): Promise<void> {
     await s.init();
     const [x, y] = toLocal(lng, lat), [ux, uy] = toLocal(underpass[0], underpass[1]);
     let input: KitInput | null = null;
+    const drawn: [number, number][][] = [[], []];
     kitTrace.input = k => { if (k.id === id && k.lod === 0) input = k; };
+    parapetTrace.fn = (pid, side, line, at) => { if (pid === id && at.level === 0) drawn[side > 0 ? 0 : 1].push([line[0].s, line[line.length - 1].s]); };
     for (const k of GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k))) buildCell(await s.cellInput(k, 0));
-    kitTrace.input = null;
+    kitTrace.input = null; parapetTrace.fn = null;
     const got = input as KitInput | null;
     check(!!got, `${id} (${label}, ${mode}): kit built`);
     if (!got) continue;
@@ -884,8 +904,10 @@ async function wayDeckHoleRegressions(): Promise<void> {
       const run = got.parapetSides?.[side] ?? got.parapet, on = got.rows.filter(r => r.s >= run[0] - 1e-6 && r.s <= run[1] + 1e-6);
       const drop = Math.max(...on.map(r => Math.abs((side ? r.zR : r.zL) - r.z)));
       // Past the underpass: the run's end station beyond the station nearest the path, plus its half-width (2.35 m).
-      const atPath = got.rows.reduce((m, r) => (Math.hypot(r.c[0] - ux, r.c[1] - uy) < Math.hypot(m.c[0] - ux, m.c[1] - uy) ? r : m)), reach = run[1] > atPath.s + 2.35;
-      check(drop <= 0.6 && reach, `${id} ${mode} ${side ? 'right' : 'left'} parapet: within ${drop.toFixed(2)} m of the deck level over ${(run[1] - run[0]).toFixed(1)} m, ${reach ? 'past' : 'short of'} the underpass`);
+      // The drawn parapet (railingRuns railRuns pieces) reaches past it too.
+      const atPath = got.rows.reduce((m, r) => (Math.hypot(r.c[0] - ux, r.c[1] - uy) < Math.hypot(m.c[0] - ux, m.c[1] - uy) ? r : m));
+      const end = Math.max(-Infinity, ...drawn[side].map(p => p[1])), reach = run[1] > atPath.s + 2.35 && end > atPath.s + 2.35;
+      check(drop <= 0.6 && reach, `${id} ${mode} ${side ? 'right' : 'left'} parapet: within ${drop.toFixed(2)} m of the deck level over ${(run[1] - run[0]).toFixed(1)} m, drawn to s ${end.toFixed(1)}, ${reach ? 'past' : 'short of'} the underpass (s ${atPath.s.toFixed(1)})`);
     }
   }
 }
