@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+## Fourteen installed faces re-installed under the roof rules; three held (2026-10-16)
+
+Lane `lane/roof-reinstall-20261016` (703ce590b, e23d73927, fd3a92664,
+d45f7c8cf). Of the 21 installed faces, the 17 whose roof class changed
+were recompiled; 14 went in (triangles before → after): marnix-c 16,192
+→ 17,470, bilder-081118-155417 16,568 → 16,964, bilder-133467-159649
+4,977 → 5,145, bilder-153622-156732 4,626 → 4,896, bilder-157757-164549
+3,136 → 3,271, bilder-161259-236206 11,159 → 11,538, bilder-161281-157756
+2,540 → 2,732, bilder-164451-156126 12,346 → 12,650, bilder-233580-162444
+9,002 → 9,256, bilder-236022-167243 17,549 → 17,973, bilder-236189-166159
+11,045 → 11,250, marnix-124-138 13,626 → 14,574, utrechtse-48-76 18,653 →
+18,942, wallen-ozv-115-125 8,627 → 8,807. Every step and neck gable on
+them is symmetric and the 3DBAG roof wedges behind gables are gone
+(clearest on the Oudezijds Voorburgwal and the Utrechtsestraat); none
+reads worse than the installed version. Kit gates, party-wall
+interference and the party-hole test pass on all 14; the separate GLB
+audit fails on these as it did on the installed chunks (opening-outside,
+geometry-regression, holes without the party-wall exemption) with
+coplanar overlap down from ~40–360 m² to 0–10 m² per face. Held:
+clercq-236681 (`roof-under-crown` fails on 153066 by 1.39 m, a 70°
+attic 14.91 → 16.30 above the crown outline), nassau-162289
+(`roof-under-crown` fails by 0.05–0.21 m on 7 pands), wallen-oza-41-57
+(5 open loops off the party walls, the largest 54 m, and a 24.1 m² roof
+part hovering 0.14 m, new since the installed chunk). Flat placements:
+utrechtse-48-76 178704 (74A-74B) flat at 10.03 m instead of a 3DBAG
+spike to 16.9 m (installed); kinker-56-84 152566 (Kinkerstraat 76-84)
+flat at 13.60 m instead of a slate hip and an 18.9 m box (compiled; the
+two raised blocks are lost, the kit has no setback top storey;
+Kinkerstraat faces are not installed); bilder-233645-236975 was already
+flat. Tile pilot golden re-recorded: the new large pand 137280 (8,708
+tris), +24..+144 drift on 10 canal-house pands, 236799, and two rows from
+earlier merges today (politie-lijnbaansgracht 169471 3,250 → 3,114 from
+the large-tier re-fit, the Westerkerk 164998 20,627 → 19,883 from the
+openings fix).
+
 ## Map labels hide under the loading screen (2026-10-16)
 
 User report, with a screenshot of "Finding your way..." over Boom Chicago,
