@@ -65,16 +65,18 @@ function spanImage(raw: Raw, px: [number, number], ppm: number, heightM: number,
 }
 
 /** The half of the upper storeys (6.5 m .. eaves - 0.5) with clearly more light accent pixels (white bays, frames). */
-function accentSide(raw: Raw, px: [number, number], ppm: number, eavesM: number): 'left' | 'right' | null {
+function accentSide(raw: Raw, px: [number, number], ppm: number, eavesM: number): {side: 'left' | 'right' | null; share: number} {
   const inset = Math.round((px[1] - px[0]) * 0.06), mid = (px[0] + px[1]) / 2, y0 = Math.max(0, Math.round(raw.height - (eavesM - 0.5) * ppm)), y1 = Math.round(raw.height - 6.5 * ppm);
-  let l = 1, r = 1;
+  let l = 1, r = 1, n = 0;
   for (let y = y0; y < y1; y++) for (let x = px[0] + inset; x < px[1] - inset; x++) {
     const i = (y * raw.width + x) * 3;
     // Light accent; a washed-out white reads as `void` (l > 0.97) but is not the grey placeholder.
     const p: [number, number, number] = [raw.rgb[i], raw.rgb[i + 1], raw.rgb[i + 2]], c = classifyPixel(p), grey = Math.abs(p[0] - 128) <= 2 && Math.abs(p[1] - 128) <= 2 && Math.abs(p[2] - 128) <= 2;
+    if (!grey) n++;
     if (c === 'accent' || (c === 'void' && !grey)) { if (x < mid) l++; else r++; }
   }
-  return l / r >= 1.6 ? 'left' : r / l >= 1.6 ? 'right' : null;
+  const share = Math.round(1000 * (l + r - 2) / Math.max(1, n)) / 1000;
+  return {side: l / r >= 1.6 ? 'left' : r / l >= 1.6 ? 'right' : null, share};
 }
 
 /** Door side on the ground band (0.1-2.3 m): the darkest 0.9 m window of columns, if it is dark and in an outer third. */
@@ -118,7 +120,7 @@ async function faceEvidence(faceId: string) {
       let columns: number | null = null, wall: string | null = null;
       try { const m = measureFacade({image: spanImage(raw, px, strip.pixelsPerMetre, strip.heightM, 0), box: {u0: 0, u1: (px[1] - px[0]) / strip.pixelsPerMetre, v0: 0, v1: eavesM}, lines}); columns = m.columns; wall = m.wall.cells ? m.wall.hex : null; } catch { columns = null; }
       const skyline = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
-      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, doorSide: doorSide(raw, px, strip.pixelsPerMetre), accentSide: accentSide(raw, px, strip.pixelsPerMetre, eavesM)};
+      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM))};
     }
     evs.push(ev);
   }
@@ -238,12 +240,34 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       }
       if (process.argv.includes('--no-compile')) break;
       let changed = false;
-      for (const rf of runFaces) {
-        try {
-          const {report} = await compileFace(rf.id);
-          compiled.set(rf.id, {passed: report.passed, triangles: report.triangles.chunk});
-          for (const l of await runLikeness(rf.id)) likeness.set(l.pandId, l);
-        } catch (e) { console.log(`${rf.id}: COMPILE FAILED ${(e as Error).message.slice(0, 300)}`); compiled.set(rf.id, {passed: false, triangles: 0}); for (const id of rf.ids) likeness.delete(id); }
+      for (const [k, rf] of runFaces.entries()) {
+        for (let attempt = 0; attempt < 2; attempt++) {
+          try {
+            const {report} = await compileFace(rf.id);
+            compiled.set(rf.id, {passed: report.passed, triangles: report.triangles.chunk});
+            for (const l of await runLikeness(rf.id)) likeness.set(l.pandId, l);
+            break;
+          } catch (e) {
+            const msg = (e as Error).message.slice(0, 300);
+            // A skyline-picked crown that the kit cannot fit on this pand (Hasebroekstraat 52-54: "Dormer escapes surveyed
+            // footprint") falls back to the type's default crown once; a second failure holds the run.
+            // The fallback crown: the type's first crown without dormers (a dormer that will not fit the pand's footprint is
+            // the common failure), else the type default.
+            const fallback = (p: Placed) => { const t = types.find(x => x.id === p.typeId)!; return Object.entries(t.crowns).find(([, c]) => !(c as {dormers?: number}).dormers)?.[0]; };
+            const crownOf = (p: Placed) => p.house.type?.crown ?? Object.keys(types.find(x => x.id === p.typeId)!.crowns)[0];
+            const picked = runs[k].filter(p => fallback(p) !== undefined && crownOf(p) !== fallback(p));
+            if (attempt === 0 && picked.length) {
+              console.log(`${rf.id}: COMPILE FAILED ${msg}; retrying with dormer-free crowns on ${picked.length} pand(s)`);
+              for (const p of picked) { p.notes.push(`crown ${crownOf(p)} -> ${fallback(p)}: the run did not compile with it (${msg.slice(0, 80)})`); p.house.type!.crown = fallback(p); }
+              const intent = runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
+                note: `auto-placed from the ${district} library (buurt ${doc.buurt}); scores and holds in scripts/block-face/faces/${f.id}/auto-place.json`});
+              await fs.writeFile(path.join(FACES, rf.id, 'intent.json'), JSON.stringify(intent, null, 1) + '\n');
+              continue;
+            }
+            console.log(`${rf.id}: COMPILE FAILED ${msg}`); compiled.set(rf.id, {passed: false, triangles: 0}); for (const id of rf.ids) likeness.delete(id);
+            break;
+          }
+        }
       }
       if (process.argv.includes('--no-gate')) break;
       // Challengers (first pass): every other library type placed on the same runs, without vetoes. The photo must not
@@ -297,7 +321,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       runs: runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})),
       pands: decisions.map((d, k) => {
         const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag,
-          strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
+          strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
         return d.kind === 'placed' ? {...base, status: 'placed', type: d.typeId, score: d.score, runnerUp: d.runnerUp, placement: d.house.type, notes: d.notes, likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}}
           : {...base, status: 'held', stage: d.stage, reason: d.reason, ...(d.best ? {best: {type: d.best.typeId, score: d.best.score, veto: d.best.veto, criteria: d.best.criteria}} : {}), likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}};
       })};

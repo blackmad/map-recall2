@@ -4,39 +4,128 @@
  "id": "bellamy-1915-green-tile",
  "district": "bellamy",
  "description": "Hasebroekstraat 90-114 (1915): four-storey brown-brick fronts of a single and a paired window axis, white small-paned sashes, three green glazed tiles under the single window on every upper storey, a shallow cornice under a red-tile roof face; over the pair a pointed gable with an attic light or a dormer; the house doors in pairs (green double doors at every other party wall, mirrored neighbours)",
- "fit": {"widthM": [5.5, 6.7], "storeys": [4, 5]},
+ "fit": {
+  "widthM": [
+   5.5,
+   6.7
+  ],
+  "storeys": [
+   4,
+   5
+  ]
+ },
  "match": {
-  "years": [1912, 1918],
-  "eavesM": [11.8, 14.2],
-  "storeys3dbag": [4, 5],
-  "baysByWidth": [{"maxWidthM": 99, "bays": 3}],
+  "years": [
+   1912,
+   1918
+  ],
+  "eavesM": [
+   11.8,
+   14.2
+  ],
+  "roof": "pitched",
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
   "stucco": false,
   "mirrorForDoor": "left",
   "crowns": {
-   "point-gable": {"riseM": [2.0, 5.0], "topWidthM": [0, 1.0]},
-   "dormers": {"riseM": [0.8, 2.5], "topWidthM": [0.8, 4.0]}
+   "point-gable": {
+    "riseM": [
+     2.0,
+     5.0
+    ],
+    "topWidthM": [
+     0,
+     1.0
+    ]
+   },
+   "dormers": {
+    "riseM": [
+     0.8,
+     2.5
+    ],
+    "topWidthM": [
+     0.8,
+     4.0
+    ]
+   }
   },
-  "note": "shares year and width with the tile-bay rows (Hasebroekstraat 56-70); the tile-bay type needs its one-sided white bay stack, this one does not, and the challengers settle the rest"
+  "note": "shares year and width with the tile-bay rows (Hasebroekstraat 56-70); the tile-bay type needs its one-sided white bay stack, this one does not, and the challengers settle the rest",
+  "accentShare": [
+   0,
+   0.3
+  ]
  },
  "body": {
   "storeys": 4,
   "bays": 3,
-  "bayWidths": [1.25, 1, 1],
+  "bayWidths": [
+   1.25,
+   1,
+   1
+  ],
   "cornice": "simple",
   "windows": "small-over-one",
-  "tilePanels": {"storeys": [1, 2, 3], "colour": "#4f8a70", "place": "sills", "axes": [0], "count": 3, "courses": false}
+  "tilePanels": {
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "colour": "#4f8a70",
+   "place": "sills",
+   "axes": [
+    0
+   ],
+   "count": 3,
+   "courses": false
+  }
  },
  "crowns": {
-  "dormers": {"gable": "cornice", "dormers": 2, "dormerStyle": "plain", "roofFront": "mansard", "note": "Hasebroekstraat 98, 92: a small dormer over the single axis and a larger one over the pair, on the red-tile roof face"},
-  "point-gable": {"gable": "point", "crownBays": {"from": 1, "to": 2}, "crownRise": 0.9, "atticWindows": 1, "note": "Hasebroekstraat 96, 94, 90: a pointed brick gable over the pair with one attic light"}
+  "dormers": {
+   "gable": "cornice",
+   "dormers": 2,
+   "dormerStyle": "plain",
+   "roofFront": "mansard",
+   "note": "Hasebroekstraat 98, 92: a small dormer over the single axis and a larger one over the pair, on the red-tile roof face"
+  },
+  "point-gable": {
+   "gable": "point",
+   "crownBays": {
+    "from": 1,
+    "to": 2
+   },
+   "crownRise": 0.9,
+   "atticWindows": 1,
+   "note": "Hasebroekstraat 96, 94, 90: a pointed brick gable over the pair with one attic light"
+  }
  },
  "grounds": {
-  "door-left": {"doorBay": 0, "note": "the house doors under a gridded transom in the single axis, at the left party wall"}
+  "door-left": {
+   "doorBay": 0,
+   "note": "the house doors under a gridded transom in the single axis, at the left party wall"
+  }
  },
  "palettes": {
-  "brown": {"brick": "#6a4a3a", "frame": "#f0eee6", "door": "#1f3a2e", "stone": "#e8e6dc", "cornice": "#e6e4dc"}
+  "brown": {
+   "brick": "#6a4a3a",
+   "frame": "#f0eee6",
+   "door": "#1f3a2e",
+   "stone": "#e8e6dc",
+   "cornice": "#e6e4dc"
+  }
  },
- "roof": {"material": "red-tile"},
+ "roof": {
+  "material": "red-tile"
+ },
  "rhythm": {
   "bays": "a single axis and a pair",
   "identicalBays": "no: the single window is low and wide",
@@ -45,13 +134,43 @@
   "groundFloor": "green double doors in the single axis, two windows",
   "signage": "none",
   "roofline": "shallow cornice, red tiles, a pointed gable or dormers over the pair",
-  "photoRows": [2, 3, 3, 3],
+  "photoRows": [
+   2,
+   3,
+   3,
+   3
+  ],
   "photoGroundRows": 1
  },
  "evidence": [
-  {"face": "hasebroek-90-98", "pands": ["117742", "117879", "091668", "121449", "069093"], "citation": "strip.jpg 2024-12-11 pands 1-5: mirrored pairs, green tiles under the single window, pointed gables over the pairs of 96, 94, 90 and dormers on 98, 92"},
-  {"face": "hasebroek-104-114", "pands": ["236316", "233446", "130888", "088526"], "citation": "strip.jpg 2018-06-13: the same fronts (dark, scaffolding on 114)"}
+  {
+   "face": "hasebroek-90-98",
+   "pands": [
+    "117742",
+    "117879",
+    "091668",
+    "121449",
+    "069093"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 1-5: mirrored pairs, green tiles under the single window, pointed gables over the pairs of 96, 94, 90 and dormers on 98, 92"
+  },
+  {
+   "face": "hasebroek-104-114",
+   "pands": [
+    "236316",
+    "233446",
+    "130888",
+    "088526"
+   ],
+   "citation": "strip.jpg 2018-06-13: the same fronts (dark, scaffolding on 114)"
+  }
  ],
- "schemaLimits": ["one window kind per storey: the single axis's low wide multi-pane window is drawn as a small-over-one sash like the pair", "the double house doors are drawn as one door", "the cornice brackets"],
- "notes": ["Kit added: tilePanels place \"sills\" (square tiles under a window) beside the tile-bay type's \"piers\" diamonds."]
+ "schemaLimits": [
+  "one window kind per storey: the single axis's low wide multi-pane window is drawn as a small-over-one sash like the pair",
+  "the double house doors are drawn as one door",
+  "the cornice brackets"
+ ],
+ "notes": [
+  "Kit added: tilePanels place \"sills\" (square tiles under a window) beside the tile-bay type's \"piers\" diamonds."
+ ]
 }

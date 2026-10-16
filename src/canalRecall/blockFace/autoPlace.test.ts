@@ -146,6 +146,19 @@ test('buurt faces: parity sides joined by party walls, prefixes', () => {
   assert.deepEqual(faces.map(f => f.members.length).sort(), [1, 3]);
 });
 
+test('regression: green-tile vs tile-bay by the upper accent share (Hasebroekstraat 90-98 vs 56-70; Bellamystraat 20 is neither)', () => {
+  const all = ['bellamy-1915-green-tile', 'bellamy-1915-tile-bay'].map(id => defaultTypeLoader(id) as MatchableType);
+  const ev = (accentShare: number, accentSide: 'left' | 'right' | null) => pand({builtYear: 1915, widthM: 6.0, eavesM: 12.9, strip: strip({columns: 3, accentShare, accentSide})});
+  const green = decidePand(all, ev(0.13, null), 'x', '2024-12-11');
+  assert.equal(green.kind === 'placed' && green.typeId, 'bellamy-1915-green-tile');
+  const bay = decidePand(all, ev(0.45, 'right'), 'x', '2024-12-11');
+  assert.equal(bay.kind === 'placed' && bay.typeId, 'bellamy-1915-tile-bay');
+  // Not a veto: the share is exposure-dependent both ways (Van Effenstraat 1-12, green-tile fronts, read 0.48 on an
+  // overexposed strip), so an out-of-range share only costs its weight.
+  assert.deepEqual(scoreType(all[0], ev(0.52, null)).veto, []);
+  assert.ok(scoreType(all[0], ev(0.52, null)).score < scoreType(all[0], ev(0.13, null)).score);
+});
+
 test('regression: Hasebroekstraat 1-37 (16.5 m eaves) is the 1904 row type drawn with 5 storeys; 4-36 (13.2 m) with 4', () => {
   const odd = decidePand(types, pand({pandId: '0363100012165485', address: 'Hasebroekstraat 1', eavesM: 16.64}), 'x', '2022-01-04');
   assert.equal(odd.kind === 'placed' && odd.house.type!.storeys, 5);
