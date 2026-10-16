@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Map labels hide under the loading screen (2026-10-16)
+
+User report, with a screenshot of "Finding your way..." over Boom Chicago,
+Electric Ladyland and the Kazerne Hendrik labels: "don't show destinations
+through scrim". The DOM label overlay (`src/canalRecall/labels/labelOverlay.ts`)
+sits above the game canvas so it can share the HUD's collision rules, which
+also put it above the opaque paper the canvas paints for the menu, route setup
+and loading screen; it kept placing the start area's venues there.
+`isCoveredState` (MENU, MAP_SELECT, LOADING) now hides the overlay root. The
+check runs in the map's render frame and on its own 150 ms clock, since a state
+change need not repaint the map. `tests/e2e/labels.spec.ts` "hidden while the
+loading screen covers the map" watches every frame of a route load: the old
+bundle showed labels in 289 loading frames, the fix shows none.
+
 ## Roofs follow the front: the step-gable library bug, saddles under crowns, row coherence; 232 of 371 pands change class (2026-10-16)
 
 Lane `lane/kit-roof-rules-20261016` (1dd7652e9 planner export and
