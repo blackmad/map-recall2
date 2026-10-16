@@ -1,5 +1,45 @@
 # Canal Recall — what is built
 
+## Sloterplas galerijflats as one instanced type; building-type far boxes restored under the shared frame (2026-10-16)
+
+User asked where the "big buildings" by the Sloterplas stood in the
+modelling queue (they were #1,101-1,113 of 1,828 in the dominant-building
+backlog by footprint / distance) and agreed the repetition made them
+worth a type. Lane `lane/sloterplas-towers-20261016` (ed25a546c kit,
+4498af481 staged area; installed in 3734cf7b1): BAG panden
+0363100012095578 / 063809 / 151987, Burgemeester Hogguerstraat 1-1223,
+built 1965, 190 dwellings + 25 garages each (BAG via api.data.amsterdam.nl;
+architect not found in an open source, not claimed). One design
+(`nw-gallery-slab-15st-hogguer`), two units: 063809's west entrance wing is
+22 m instead of 13 m (`long-entrance`). The small panden 0363100012196327
+(north end bay) and 0363100012201815 (entrance wing) are absorbed and
+suppressed through a new `alsoSuppress` on the instance. Generator
+extensions, byte-identical for all 32 earlier types: `insetM` walls inside
+the gallery/balcony footprint, a `gallery` element, `span`/`repeat`,
+`frameStyle: 'strips'`, `annexes` (garage row on a 3.48 m pitch, lift
+tower, open stairs, entrances), `bodyFromRoof` (the BAG ring includes the
+garages; the slab body comes from the 3DBAG roof), flat types ignore 3DBAG
+ridges, sheets lit with the sun at each panorama's own time. Measured:
+body 109.5 x 12.3-12.6 m, 15 storeys at 2.92 m, 5.5 m module; parapets
+#e9e8d9, panels #d8d5ca, lift brick #b6a38a, garage doors #67262a.
+23.4k tris and ~410 KB per unit; 777 KB for all three.
+
+Integration found that **every building-type far instance was a hole in
+the default game**. Own ground (default since 2026-10-14) implies the
+shared frame, whose recipe look is `MeshLambertMaterial`; the runtime's
+`isRecipe` only accepted the unlit `ShaderMaterial`, so no unit merged and
+the far box (built only from mergeable materials) was never made, while
+the far pands' extrusions stayed suppressed: past 140 m all 3,072
+Nieuw-West instances drew nothing. Fix in `runtime.ts`: a unit that cannot
+merge gets its far box as two instanced meshes in its own lit wall/roof
+materials (unit test fails without it). The near limit now scales with
+the unit (`nearMetresFor`: max(140, 3 x max(length, eaves)) - only these
+slabs change, to 329 m), so the three towers stay detailed across the
+lake instead of turning into grey boxes. In-game (`building-types-runtime`
+views `sloterplas-galleries|lake|close`): all three near, 22 draws, 70k
+tris, frame median 16.7 ms desktop and iPhone at 4x. The shared-frame near
+path is still unmerged (one draw per material per unit), see TODO.
+
 ## Inner-block gardens from BGT and the infrared aerial: courtyards-v1, 679 ha, 54 % vegetated (2026-10-16)
 
 Lane `worktree-agent-a5221606d8ba4872b` (final 9158ee529; cd497a00 typed
