@@ -289,7 +289,7 @@ for (const query of QUERIES) {
     await settle(page);
     report.landmarkSuns = await page.evaluate(() => {
       const l = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
-      // One scene per model (`?landmarkBatch=0`), or the one scene for all of them, lit in its anchor world.
+      // One scene per model (legacy frame under `?cityLook=1`), or the one scene for all of them, lit in its anchor world.
       const scenes = (l?._entries ?? []).filter((e: any) => e.scene).map((e: any) => ({ id: e.spec.id, scene: e.scene, m: e.transform.elements }));
       if (l?._batchLegacy && l._batchScene && l._mercatorFromWorld) scenes.push({ id: 'one-scene', scene: l._batchScene, m: l._mercatorFromWorld });
       return scenes.map((e: any) => {
