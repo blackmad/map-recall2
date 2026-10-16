@@ -26,9 +26,10 @@ const STYLISED_TREES_DEFAULT = true;
 // Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
 // draws through one renderer / scene / light rig (src/canalRecall/
-// rendererShared/), with lit facades and sun shadows. Off by default while it
-// is measured; `?sharedFrame=1` or window.__canalRecallSharedFrame = true.
-// Inside it, `?shadows=0` and `?litFacades=0` turn those two parts off.
+// rendererShared/), with lit facades and sun shadows. On in practice: the own
+// ground (default since 2026-10-14) implies it. `?sharedFrame=0` (with the own
+// ground off) keeps the legacy per-layer frame for A/B specs. Inside it,
+// `?shadows=0` turns the sun shadows off (ride-perf SHADOWS=0).
 const SHARED_FRAME_DEFAULT = false;
 // Phase 2 (2026-10-10): three.js draws the riding-view ground itself — AHN
 // relief, streets by OSM cross-section, quays, sunken water and measured
@@ -41,12 +42,11 @@ const SHARED_FRAME_DEFAULT = false;
 const OWN_GROUND_DEFAULT = true;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
-// Basemap ground the own ground hides while it covers the rider: none. The
-// basemap's fills and lines sit below the first 3D layer, so MapLibre draws
-// them at the back of the depth range and the own ground covers them wherever
-// it is resident (the near field is pixel-identical either way, measured);
-// beyond the resident cells they are the far field (hidden, it was bare white).
-const OWN_GROUND_HIDDEN_SOURCE_LAYERS = [];
+// The basemap's own ground fills and lines stay visible under the own ground:
+// they sit below the first 3D layer, so MapLibre draws them at the back of the
+// depth range and the own ground covers them wherever it is resident (the near
+// field is pixel-identical either way, measured); beyond the resident cells
+// they are the far field (hidden, it was bare white).
 // The game's own flat overlays that the draped ribbons replace.
 const OWN_GROUND_HIDDEN_OVERLAYS = ['navigation-route-casing', 'navigation-route-line', 'active-street-line', 'cycle-tracks'];
 function canalRecallLookFlag(param, global, fallback) {
@@ -1026,7 +1026,7 @@ class VectorBasemap {
     this._ensureSharedFrame();
     if (this._sharedFrame && this._threeBuildings.attachToSharedFrame) {
       if (!this._threeBuildings.inSharedFrame) {
-        this._threeBuildings.attachToSharedFrame(this._sharedFrame, { lit: canalRecallLookFlag('litFacades', '__canalRecallLitFacades', true) });
+        this._threeBuildings.attachToSharedFrame(this._sharedFrame);
         if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
       }
     } else if (!this.map.getLayer(this._threeBuildings.layer.id)) {
@@ -2090,10 +2090,8 @@ class VectorBasemap {
     const targets = [];
     for (const layer of layers) {
       // The basemap's fills stay visible (2026-10-13): the own ground draws over them where its cells are resident, and beyond the
-      // resident ring (or until the next cells load) they are the ground instead of bare white. `__canalRecallHideBasemapFills = true`
-      // restores the old behaviour for A/B (measured on the fixed route, 2 runs each: map render 3.5/2.2 ms hidden vs 3.9/2.4 ms visible, about +30 draw calls, no long frames).
-      if ((layer.type === 'fill' || layer.type === 'line') && OWN_GROUND_HIDDEN_SOURCE_LAYERS.includes(layer['source-layer'])) { if (typeof window !== 'undefined' && window.__canalRecallHideBasemapFills) targets.push(layer); }
-      else if (OWN_GROUND_HIDDEN_OVERLAYS.includes(layer.id)) targets.push(layer);
+      // resident ring (or until the next cells load) they are the ground instead of bare white.
+      if (OWN_GROUND_HIDDEN_OVERLAYS.includes(layer.id)) targets.push(layer);
     }
     this._ownGroundSaved = this._ownGroundSaved || new Map();
     for (const layer of targets) {
