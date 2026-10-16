@@ -75,35 +75,47 @@ function flatQuad(m: MeshArrays, q: readonly Vec2[], height: HeightFn, lift: num
  * u = 0, apex at u = +TEETH.height (toward the driver who must give way).
  * Returns the number of teeth.
  */
-export function sharkTeeth(m: MeshArrays, f: MarkFrame, l0: number, l1: number, height: HeightFn, lift: number): number {
+export function sharkTeeth(m: MeshArrays, f: MarkFrame, l0: number, l1: number, height: HeightFn, lift: number, keep?: Keep): number {
   const span = l1 - l0, pitch = TEETH.base + TEETH.gap;
   const n = Math.floor((span + TEETH.gap) / pitch);
   if (n < 1) return 0;
   const start = l0 + (span - (n * pitch - TEETH.gap)) / 2;
+  let drawn = 0;
   for (let i = 0; i < n; i++) {
-    const b0 = start + i * pitch, b1 = b0 + TEETH.base;
+    const b0 = start + i * pitch, b1 = b0 + TEETH.base, c = at(f, TEETH.height / 3, (b0 + b1) / 2);
+    if (keep && !keep(c[0], c[1])) continue;
     flatQuad(m, [at(f, 0, b0), at(f, 0, b1), at(f, TEETH.height, (b0 + b1) / 2)], height, lift);
+    drawn++;
   }
-  return n;
+  return drawn;
 }
 
+/** A clip for a mark: drawn only where its centre passes (roads-v1: on a carriageway polygon, so a zebra or a stop line stops at the kerb). */
+export type Keep = (x: number, y: number) => boolean;
+
 /** A solid bar u ∈ [0, width] across [l0, l1]. */
-export function bar(m: MeshArrays, f: MarkFrame, l0: number, l1: number, width: number, height: HeightFn, lift: number): void {
-  if (l1 - l0 < 0.2) return;
+export function bar(m: MeshArrays, f: MarkFrame, l0: number, l1: number, width: number, height: HeightFn, lift: number, keep?: Keep): boolean {
+  if (l1 - l0 < 0.2) return false;
+  const c = at(f, width / 2, (l0 + l1) / 2);
+  if (keep && !keep(c[0], c[1])) return false;
   flatQuad(m, [at(f, 0, l0), at(f, 0, l1), at(f, width, l1), at(f, width, l0)], height, lift);
+  return true;
 }
 
 /** Square blocks along the segment a → b (BLOCK.size, BLOCK.gap), centred across it. Returns the count. */
-export function blocks(m: MeshArrays, a: Vec2, b: Vec2, height: HeightFn, lift: number, size: number = BLOCK.size, gap: number = BLOCK.gap): number {
+export function blocks(m: MeshArrays, a: Vec2, b: Vec2, height: HeightFn, lift: number, size: number = BLOCK.size, gap: number = BLOCK.gap, keep?: Keep): number {
   const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
   if (len < size) return 0;
   const u: Vec2 = [(b[0] - a[0]) / len, (b[1] - a[1]) / len], pitch = size + gap;
   const n = Math.floor((len + gap) / pitch), start = (len - (n * pitch - gap)) / 2;
+  let drawn = 0;
   for (let i = 0; i < n; i++) {
-    const f: MarkFrame = { o: [a[0] + u[0] * (start + i * pitch), a[1] + u[1] * (start + i * pitch)], u };
+    const f: MarkFrame = { o: [a[0] + u[0] * (start + i * pitch), a[1] + u[1] * (start + i * pitch)], u }, c = at(f, size / 2, 0);
+    if (keep && !keep(c[0], c[1])) continue;
     flatQuad(m, [at(f, 0, -size / 2), at(f, size, -size / 2), at(f, size, size / 2), at(f, 0, size / 2)], height, lift);
+    drawn++;
   }
-  return n;
+  return drawn;
 }
 
 /** A flat strip of `width` from a to b (a cycle lane carried through a junction). */

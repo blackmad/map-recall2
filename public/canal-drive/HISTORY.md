@@ -27,6 +27,34 @@ user saw. The plain brown walls with bare blue cells either side of the portal
 are the Tropenmuseum's own kit walls, so that face goes to the fourth pass
 (TODO).
 
+## Roads from the surveyed BGT surface, behind ?roads=bgt (2026-10-16)
+
+User (2026-10-16): "road rendering needs to get fixed" (Marnixstraat busway
+by the Tweede Marnixplantsoen: red bands over grey, pavement wedges in the
+junction, zebras through the junction, rails on another grey); chose the
+surveyed BGT polygons. Lane `lane/roads-runtime-20261016` (fb2f7fcaf; plan
+`docs/plans/road-surfaces-roof-rules-20261016.md`; data roads-v1 merged
+earlier, seven pilot cells). `ownGround/roadSurfaces.ts`: `RoadIndex` over
+the cell and its neighbours and `buildRoadSurfaces` drape the BGT road
+partition (adaptive sag-only drape, shared corners, kerbs from shared
+carriage/foot edges); covered OSM ways emit no bands but stay in the
+junction graph; node fills, corner patches, pockets and path discs are
+skipped inside the survey; paint, rails and lane ribbons are clipped to
+carriageway polygons and `crossCuts` stop carriageway paint at unshared
+crossings; a red rijbaan with ≥ 12 m of tram track draws grey (the
+busway); cycle stretches the survey lays on rijbaan or parking draw as
+painted lanes above the carriageway. Regressions (`check-ground-cells`):
+171 ok; Kinkerstraat × Da Costakade west 48/49 and east 49/49 read as the
+survey, the Marnixstraat busway 49/49, Bilderdijkgracht crossings 0 paint
+triangles off the carriageway (14 before). Budget over the seven cells:
+triangles 1.10× max, 1.04× median (≤ 1.15×); build 1.20× (≤ 1.3×, loaded
+machine); 81–109 KB gz per cell. e2e paint/roads/bridge-fidelity pass with
+roads off and on. Not yet 0: `probe-junction-overlap --pairs` finds 2–3
+hidden sliver triangles at two junctions because `build-bgt-roads.ts`
+simplifies each ring alone, so shared edges differ by up to 30 cm. Sheet
+`docs/images/roads/roads-v1-before-after.jpg` (the spot names in
+`roads-v1-spots.json` need re-aiming).
+
 ## Canal water is blue again, one tone for the map and the 3D water (2026-10-16)
 
 User (2026-10-16), on the finish card over the map: "why is the water this

@@ -27,6 +27,8 @@ import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
+import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
+import type { RoadCell } from './roadCells.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
@@ -49,7 +51,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Red rijbaan polygons drawn grey under tram track. */ railGrey?: number }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -81,6 +83,14 @@ export interface CellInput {
   pockets?: boolean;
   /** Clip measured deck tops and faces to the water and the street bands (decks.ts deckWidths); default on. */
   clipDecks?: boolean;
+  /** The cell's surveyed road partition (roads-v1, roadSurfaces.ts), null when it has none or roads are off. */
+  roads?: RoadCell | null;
+  /** roads-v1 cells of the 3×3 neighbourhood (polygons live in the cell of their interior point). */
+  roadsAround?: readonly (RoadCell | null)[];
+  /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
+  coverWays?: readonly number[];
+  /** roads-v1 ground drape overrides for the measurement scripts (roadSurfaces RoadBuildInput). */
+  drape?: { drapeTol?: number; drapeFloatTol?: number };
   /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
   dropWays?: readonly number[];
   /** The cell's BGT courtyards (courtyards-v1), null when it has none or they are off. */
@@ -92,6 +102,8 @@ export interface CellInput {
 
 /** How far the mask may extend past the cell, metres. */
 const MASK_REACH_M = 150;
+/** The roads-v1 lookup raster reaches this far past the cell (the cell's own ways and their paint seldom reach further). */
+const ROAD_FAST_PAD_M = 60;
 /** Canal-belt water surface, scene z (−0.40 m NAP under the +1.37 m NAP datum): the default where no polder level is known. */
 export const CANAL_WATER_Z = -1.77;
 /** Signed-distance range of the water mask (texels saturate at ±this), metres. */
@@ -151,6 +163,9 @@ export function buildCell(input: CellInput): BuiltCell {
   const [x0, y0, x1, y1] = rect;
   const parts: Partial<Record<GroundLayer, MeshArrays[]>> = {};
   const add = (layer: GroundLayer, m: MeshArrays) => { if (m.indices.length) (parts[layer] ??= []).push(m); };
+  const phases: Record<string, number> = {};
+  let tPhase = t0;
+  const phase = (name: string) => { const now = Date.now(); phases[name] = (phases[name] ?? 0) + now - tPhase; tPhase = now; };
 
   // Streets: the cell's own ways, with the neighbourhood in the junction graph.
   const dropped = new Set<number>(input.dropWays ?? []);
@@ -182,7 +197,10 @@ export function buildCell(input: CellInput): BuiltCell {
   const landZ = gridHeight(surface.ground, step);
   // On a deck the measured surface wins (blended over the deck's lateral blend).
   const onLand = (x: number, y: number) => {
-    const h = surface.height(x, y), w = surface.deckWeight(x, y);
+    const w = surface.deckWeight(x, y);
+    // Off every deck (nearly every vertex) the riding surface is the relief: the land grid's own surface, one lookup.
+    if (w <= 0) return landZ(x, y);
+    const h = surface.height(x, y);
     return w >= 1 ? h : h * w + (landZ(x, y) + h - surface.ground(x, y)) * (1 - w);
   };
 
@@ -205,12 +223,49 @@ export function buildCell(input: CellInput): BuiltCell {
     if (box[2] > box[0] && box[3] > box[1]) cover = surveyed.raster(box, CULL_RES_M);
   }
   let landCulled = 0;
+  // Roads (roads-v1): the surveyed partition drawn before the land, so the land can be culled under the cell's own
+  // polygons as under the park surfaces (never under a deck polygon that was not drawn: roadSurfaces skipped).
+  phase('prepare');
+  // The neighbours' polygons within ROAD_FAST_PAD_M of the cell and wherever the cell's own ways reach (the street pass
+  // asks along all of them), uncapped.
+  let rb: [number, number, number, number] = [x0 - ROAD_FAST_PAD_M, y0 - ROAD_FAST_PAD_M, x1 + ROAD_FAST_PAD_M, y1 + ROAD_FAST_PAD_M];
+  for (const w of ways) if (own.has(w.id)) for (const p of w.points) rb = [Math.min(rb[0], p[0] - 10), Math.min(rb[1], p[1] - 10), Math.max(rb[2], p[0] + 10), Math.max(rb[3], p[1] + 10)];
+  const roadIndex = lod === 0 && (input.roads?.surfaces.length || input.roadsAround?.some(r => r?.surfaces.length)) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])], rb) : null;
+  // Red rijbanen carrying tram track are grey (RoadIndex.railCarriages), for the polygons and for every lookup after.
+  const railGrey = roadIndex ? roadIndex.railCarriages(all.filter(w => w.section.rails?.length).map(w => w.points)) : 0;
+  phase('roadIndex');
+  let roads: BuiltCell['stats']['roads'] = null;
+  let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
+  const canalSide = lod === 0 && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
+  if (roadIndex && input.roads) {
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
+    for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
+    roadSkipped = built.skipped;
+    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, railGrey };
+  }
+  // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
+  phase('roads');
+  if (roadIndex) roadCover = roadIndex.prepareFast([x0 - ROAD_FAST_PAD_M, y0 - ROAD_FAST_PAD_M, x1 + ROAD_FAST_PAD_M, y1 + ROAD_FAST_PAD_M]);
+  phase('roadRaster');
+  let roadLandCulled = 0;
+  // Own polygons that were drawn, and a neighbour cell's ground polygons reaching over the cell edge (the neighbour
+  // draws them; its deck polygons may have been skipped there, so only h = 0 counts).
+  const roadDrawn = roadIndex ? (() => {
+    const ok = new Uint8Array(roadIndex.records.length);
+    for (let k = 0; k < ok.length; k++) ok[k] = (k < roadIndex.own ? !roadSkipped.has(k) : roadIndex.records[k].h === 0) ? 1 : 0;
+    return (k: number) => ok[k] === 1;
+  })() : null;
   const underOwnSurface = (x: number, y: number) => {
-    if (!cover || !surveyed) return false;
-    const k = cover.find(x, y), h = step / 2 + CULL_MARGIN_M;
-    if (k < 0 || k >= surveyed.own || !cover.uniform(x - h, y - h, x + h, y + h, k)) return false;
-    landCulled++;
-    return true;
+    const h = step / 2 + CULL_MARGIN_M;
+    if (cover && surveyed) {
+      const k = cover.find(x, y);
+      if (k >= 0 && k < surveyed.own && cover.uniform(x - h, y - h, x + h, y + h, k)) { landCulled++; return true; }
+    }
+    // Under the road partition: every texel of the quad (with the margin) on a drawn polygon, one or several (the
+    // survey tiles the street, so a quad across a kerb is hidden by the two polygons either side; one polygon alone
+    // left 99 % of the land under the streets, the 5 m quads rarely fit inside one pavement).
+    if (roadCover && roadDrawn && roadCover.every(x - h, y - h, x + h, y + h, roadDrawn)) { roadLandCulled++; return true; }
+    return false;
   };
   // The OSM green fills (park and grass areas, allotments, zoos) hide the land quads wholly inside them (ride review
   // 2026-10-14, Artis): a fill drapes at 8 m between vertices on the land grid's surface, so in a hollow of the 5 m grid
@@ -241,6 +296,7 @@ export function buildCell(input: CellInput): BuiltCell {
   };
   const keepLand = (x: number, y: number) => inCell(x, y) && (!mask || maskDistance(mask, x, y) > -(step * 0.71 + 0.2)) && !underOwnSurface(x, y) && !underGreen(x, y);
   add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand));
+  phase('land');
 
   // Areas.
   let parkFillCulled = 0;
@@ -259,6 +315,7 @@ export function buildCell(input: CellInput): BuiltCell {
     add(layer, m);
   }
 
+  phase('areas');
   // Parks (parks-v1): BGT surfaces between the areas and the street bands, hedges, fences and furniture (parks.ts).
   let parkStats: BuiltCell['stats']['parks'] = null;
   if (input.parks) {
@@ -284,14 +341,23 @@ export function buildCell(input: CellInput): BuiltCell {
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
   // Canal-side pavements (kerb within 3.8 m of water; the mask saturates at MASK_RANGE_M) get Amsterdammertjes, near ring only.
-  const canalSide = lod === 0 && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
-  const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false), canalSide, markings: lod === 0 });
+  // roads-v1: covered ways emit no bands; paint, rails and fills are clipped by the polygons (streets.ts RoadsOption).
+  const roadsOpt = roadIndex ? { index: roadIndex, covered: new Set(input.coverWays ?? []) } : undefined;
+  phase('parks');
+  const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false), canalSide, markings: lod === 0, roads: roadsOpt });
+  phase('streets');
   // Bridge ways follow the measured deck exactly (no land under a deck over water to poke through); 0.75 m at LOD 0:
   // on a hump a 1.5 m chord sags (~9 cm on a masonry arch, ~2 cm at 0.75 m), so the bands follow the profile closer.
   // Across, a vertex every 2 m (3 m far): a deck narrower than its mapped carriageway left the band's edges on the
   // relief beside it and the band sagged under the deck top (BRU0292 by 0.15 m; +1.8 % triangles per belt cell).
-  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true), acrossStep: lod === 0 ? 2 : 3, markings: lod === 0 });
+  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true), acrossStep: lod === 0 ? 2 : 3, markings: lod === 0, roads: roadsOpt });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint', 'tram', 'bollard'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
+  phase('bridgeStreets');
+  if (roads) {
+    roads.landCulled = roadLandCulled;
+    const a = streets.stats.markings.clipped, b = onBridges.stats.markings.clipped;
+    if (a && b) roads.clipped = Object.fromEntries(Object.keys(a).map(k => [k, a[k as keyof typeof a] + b[k as keyof typeof b]]));
+  }
 
   // Water, quays, decks.
   if (input.water) {
@@ -303,12 +369,23 @@ export function buildCell(input: CellInput): BuiltCell {
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).
   const clip = input.clipDecks !== false, onBridgeBand = bandCorridor(ways.filter(isBridgeWay).map(w => ({ points: w.points, half: w.section.halfWidth })));
+  // roads-v1: where the survey's deck polygons (h ≥ 1) cover a measured deck, they are the visible deck out to the
+  // parapet; the deck top keeps to the road's half-width under them (no sides), so no grey slab shows beside the road.
+  const roadsOnDeck = (deck: DeckSurface): boolean => {
+    if (!roadIndex?.hasDecks) return false;
+    const p = deck.profile;
+    let hit = 0;
+    for (const f of [0.3, 0.5, 0.7]) { const i = p.s.findIndex(s => s >= p.deck[0] + (p.deck[1] - p.deck[0]) * f); if (i >= 0 && roadIndex.onDeck(p.x[i], p.y[i])) hit++; }
+    return hit >= 2;
+  };
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
     add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined));
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, clip ? deckWidths(deck, overWater, onBridgeBand) : undefined);
+    const covered = roadsOnDeck(deck);
+    if (covered && roads) roads.decksCovered++;
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined);
     if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
@@ -331,15 +408,20 @@ export function buildCell(input: CellInput): BuiltCell {
     bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
   });
 
+  phase('waterDecks');
   // Land pockets near junctions (pockets.ts): bare land every layer around encloses, paved under the bands. Near ring only.
   let pockets: PocketStats | null = null;
   if (lod === 0 && input.pockets !== false) {
     const cover: PocketCover<PocketSurface>[] = (Object.keys(parts) as GroundLayer[]).filter(l => !NOT_COVER.has(l)).map(l => ({ meshes: parts[l]!, as: POCKET_VOTE[l] ?? null }));
-    const r = fillPockets(cover, rect, [...streets.junctionPoints, ...onBridges.junctionPoints], onLand, POCKET_LIFT);
+    // roads-v1: a junction on the survey seeds no pocket (the polygons tile it; a pocket fill there was a pavement
+    // wedge). A gap in the survey near the node shows the land the survey leaves there (a berm, a tree pit).
+    const seeds = [...streets.junctionPoints, ...onBridges.junctionPoints].filter(p => !roadIndex || roadIndex.findFast(p[0], p[1]) < 0);
+    const r = fillPockets(cover, rect, seeds, onLand, POCKET_LIFT);
     for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);
     pockets = r.stats;
   }
 
+  phase('pockets');
   const packed: Partial<Record<GroundLayer, PackedMesh>> = {};
   const byLayer: Record<string, number> = {};
   let triangles = 0, bytes = 0;
@@ -355,9 +437,10 @@ export function buildCell(input: CellInput): BuiltCell {
   }
   const maskOut: GroundMask | null = mask ? { x0: mask.x0, y0: mask.y0, res: mask.res, width: mask.width, height: mask.height, texels: maskTexels(mask) } : null;
   if (maskOut) bytes += maskOut.texels.byteLength;
+  phase('pack');
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, courtyards },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, roads, phases, courtyards },
   };
 }
 

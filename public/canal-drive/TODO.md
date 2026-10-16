@@ -693,11 +693,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `datasets/bgt-roads-20261016/`, publish it with phase 2; cycleway cover
   47 % because mixed fietspad/rijbaan ways fail the 80 % rule, lower the
   threshold or treat them as painted lanes; 400 h ≥ 1 polygons over no
-  deck on the A10/harbour viaducts). In flight: a runtime lane (`roadSurfaces.ts` behind
-  `?roads=bgt`, bands suppressed under covered ways, paint/zebras/rails
-  clipped to carriage polygons, deck top within the parapet; named
-  regressions Kinkerstraat × Da Costakade both heads, Bilderdijkgracht
-  zebras, Tweede Marnixplantsoen). Phase 2: default on with `?roads=0`.
+  deck on the A10/harbour viaducts). Runtime DONE behind `?roads=bgt` (HISTORY "Roads from the
+  surveyed BGT surface"). Phase 2, in flight: topology-preserving
+  simplification in `build-bgt-roads.ts` (shared edges identical, probe
+  `--pairs` to 0), Fietsstraat red decided per section in the extractor,
+  city-wide extract within 350 KB gz per cell, re-aim `roads-v1-spots.json`,
+  survey gaps at junctions (land where pockets used to pave), the LOD 1 far
+  ring, then default on with `?roads=0` and a desktop ride-perf check.
 - **Hosting quota will hit again within a day of pushes.** Deploys failed
   with HTTP 429 from 14:27 to ~19:45 on 2026-10-13 and recovered without
   the integrator pruning; the dry run afterwards still listed 374 deletable

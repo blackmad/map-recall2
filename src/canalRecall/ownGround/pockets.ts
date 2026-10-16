@@ -50,12 +50,13 @@ export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], 
   const W = Math.ceil((x1 - x0) / res), H = Math.ceil((y1 - y0) / res);
   // 0 bare land, 1..253 the cover entry (1-based, the last drawn wins), 255 visited land.
   if (cover.length > 253) throw new Error('pockets: too many cover meshes');
+  const meshes: Partial<Record<S, MeshArrays>> = {};
+  const stats: PocketStats = { pockets: 0, m2: 0, pixels: 0, ms: 0, skipped: 0 };
+  // No junction, no seed: nothing to rasterise (roads-v1 cells drop the junctions on the survey).
+  if (!junctions.length) { stats.ms = Date.now() - t0; return { meshes, stats }; }
   const raster = new Uint8Array(W * H);
   const votes = cover.map(c => c.as);
   cover.forEach((c, k) => { for (const m of c.meshes) rasterise(m, raster, k + 1, x0, y0, W, H, res); });
-  const meshes: Partial<Record<S, MeshArrays>> = {};
-  const stats: PocketStats = { pockets: 0, m2: 0, pixels: 0, ms: 0, skipped: 0 };
-  if (!junctions.length) { stats.ms = Date.now() - t0; return { meshes, stats }; }
   const G = nearM, hash = new Map<string, Vec2[]>();
   for (const j of junctions) { const k = `${Math.floor(j[0] / G)}:${Math.floor(j[1] / G)}`; (hash.get(k) ?? hash.set(k, []).get(k)!).push(j); }
   const nearJunction = (x: number, y: number) => {

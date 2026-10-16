@@ -4,6 +4,7 @@
 //
 //   npx tsx scripts/own-ground/check-ground-cells.ts            # cells around BRU0166 + BRU0044, both LODs
 //   npx tsx scripts/own-ground/check-ground-cells.ts --all      # every cell of the OSM cell manifest (LOD 0)
+//   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
 //
 // Exit code 1 on a failed check.
 import { readFileSync, existsSync } from 'node:fs';
@@ -17,7 +18,10 @@ import { bridgeFacts, flatHintAt, KIT_BUDGET, registerHint } from '../../src/can
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
+import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
+import { statSync } from 'node:fs';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -33,6 +37,10 @@ const noParks = new GroundStore(readExtract, { parks: false });
 const noOpenings = new GroundStore(readExtract, { openings: false });
 /** The same ground without the fixed spans beside movable leaves (the approaches regression shows the pin is live). */
 const noApproaches = new GroundStore(readExtract, { approaches: false });
+/** The ground with the roads-v1 partition (`?roads=bgt`, phase 1 opt-in); `store` is its before. */
+const roadsStore = new GroundStore(readExtract, { roads: true });
+/** roads-v1 budgets against the same cell without roads: triangles and build time (the extract's gz budget is ROAD_CELL_BUDGET_GZ). */
+const ROADS_TRIANGLE_RATIO_MAX = 1.15, ROADS_BUILD_MS_RATIO_MAX = 1.3;
 /** The same ground without courtyards-v1 (the J4 courtyard regression's before). */
 const noCourtyards = new GroundStore(readExtract, { courtyards: false });
 
@@ -67,6 +75,7 @@ function bandOnDeck(cell: BuiltCell, deckId: string, layers: string[]): { n: num
 async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
+  if (process.argv.includes('--roads')) { await roadsTable(); return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -271,6 +280,7 @@ async function main(): Promise<void> {
     }
   }
   await parkRegressions();
+  await roadRegressions();
   // Seams: two neighbouring cells' land grids meet at the same heights (one height function, shared grid lines).
   const [ax, ay] = toLocal(4.8875, 52.3665), a = store.cellAt(ax, ay), [cx, cy] = a.split('_').map(Number), b = `${cx + 1}_${cy}`;
   if (store.covers(a) && store.covers(b)) {
@@ -608,6 +618,98 @@ async function parkRegressions(): Promise<void> {
  * metres where the deck top is the topmost surface over land (roadRegressions deckSlabOnLand), with and without.
  */
 const SLABS: [string, number, number, number, string][] = [['BRU0063', 4.88292, 52.37433, 40, 'Nieuwe-Wercksbrug, Raadhuisstraat']];
+/** The 3×3 neighbourhood of the cell under (x, y) built from `s` at LOD 0, with the ways and the road index as the cell sees them. */
+async function neighbourhood(s: GroundStore, x: number, y: number): Promise<{ key: string; cells: BuiltCell[]; ways: ReturnType<typeof resolvePriorSidewalks>; index: RoadIndex | null }> {
+  const key = s.cellAt(x, y), keys = GroundStore.neighbours(key).filter(k => s.covers(k));
+  const cells: BuiltCell[] = [];
+  for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+  const input = await s.cellInput(key, 0), seen = new Set<number>();
+  const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id)));
+  const index = input.roads || input.roadsAround?.some(Boolean) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])]) : null;
+  // As buildCell: red rijbanen under tram track draw grey, so the survey the regressions read is what was drawn.
+  index?.railCarriages(ways.filter(w => w.section.rails?.length).map(w => w.points));
+  return { key, cells, ways, index };
+}
+const cellCentre = (s: GroundStore, key: string): [number, number] => { const r = s.cellRect(key); return [(r[0] + r[2]) / 2, (r[1] + r[3]) / 2]; };
+
+/**
+ * roads-v1 (lane roads-runtime 2026-10-16): with the partition on, the named junctions read as the surveyed surface,
+ * the Da Costagracht deck as road, the Bilderdijkgracht zebras stop at the carriageway polygons; the earlier junction
+ * and stray regressions still hold; and the pin is live (the same cell without roads draws no polygons).
+ */
+async function roadRegressions(): Promise<void> {
+  await roadsStore.init();
+  if (!roadsStore.roadCells.size) { console.log('skip roads-v1 regressions (no roads-v1 extract)'); return; }
+  for (const j of [...ROAD_JUNCTIONS, ...JUNCTIONS]) {
+    const [x, y] = toLocal(j.at[0], j.at[1]), n = await neighbourhood(roadsStore, x, y);
+    if (!roadsStore.roadCells.has(n.key) || !n.index) { console.log(`skip ${j.id} roads (cell ${n.key} not in the roads-v1 pilot)`); continue; }
+    const r = surveyedCoverage(n.cells, [x, y], j.radiusM, n.index);
+    check(r.share >= j.minShare, `${j.id} roads-v1: junction interior ${r.ok}/${r.probes} read as the surveyed surface (${JSON.stringify(r.tops)})${r.misses.length ? ` misses ${JSON.stringify(r.misses.slice(0, 5))}` : ''}`);
+  }
+  for (const reg of STRAYS) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y);
+    if (!roadsStore.roadCells.has(n.key)) continue;
+    const hits = strayHits(n.cells, [x, y], reg);
+    check(hits.length === 0, `${reg.id} roads-v1: ${reg.probes.length - hits.length}/${reg.probes.length} fragment probes clean${hits.length ? ` ${JSON.stringify(hits)}` : ''}`);
+  }
+  for (const reg of ROAD_WAY_STRAYS) {
+    let found = false;
+    for (const key of [...roadsStore.roadCells].sort()) {
+      const n = await neighbourhood(roadsStore, ...cellCentre(roadsStore, key)), way = n.ways.find(w => w.id === reg.way);
+      if (!way) continue;
+      found = true;
+      const total = reg.fractions.length * reg.offsets.length, hits = wayStrayHits(n.cells, way, reg);
+      check(hits.length === 0, `${reg.id} roads-v1: ${total - hits.length}/${total} probes clean${hits.length ? ` ${JSON.stringify(hits)}` : ''}`);
+      break;
+    }
+    check(found, `${reg.id}: way ${reg.way} found in a roads-v1 cell`);
+  }
+  for (const reg of ZEBRAS) {
+    let found = false;
+    for (const key of [...roadsStore.roadCells].sort()) {
+      const c = cellCentre(roadsStore, key), n = await neighbourhood(roadsStore, ...c), ways = n.ways.filter(w => reg.ways.includes(w.id));
+      if (ways.length < reg.ways.length || !n.index) continue;
+      found = true;
+      const index = n.index, onRoad = (x: number, y: number) => index.onRoad(x, y) || index.classAt(x, y) === null;
+      const r = zebraOffRoad(n.cells, ways, reg, onRoad);
+      check(r.off.length === 0, `${reg.id} roads-v1: ${r.dashes} paint triangles at the crossings, ${r.off.length} off the carriageway polygons${r.off.length ? ` ${JSON.stringify(r.off.slice(0, 6))}` : ''}`);
+      const before = await neighbourhood(store, ...c), b = zebraOffRoad(before.cells, before.ways.filter(w => reg.ways.includes(w.id)), reg, onRoad);
+      console.log(`      ${reg.id}: without roads-v1 ${b.off.length}/${b.dashes} dashes lie off the carriageway polygons`);
+      break;
+    }
+    check(found, `${reg.id}: ways ${reg.ways.join(', ')} found in a roads-v1 cell`);
+  }
+  // The pin is live: a pilot cell with roads draws polygons and culls land under them; without, no roads stats.
+  const key = [...roadsStore.roadCells].sort()[0];
+  const on = buildCell(await roadsStore.cellInput(key, 0)), off = buildCell(await store.cellInput(key, 0));
+  check(!!on.stats.roads && on.stats.roads.drawn.carriage > 0 && on.stats.roads.landCulled > 0 && !off.stats.roads, `${key}: roads-v1 draws ${on.stats.roads?.drawn.carriage ?? 0} carriageway polygons, ${on.stats.roads?.kerbs ?? 0} kerb runs, culls ${on.stats.roads?.landCulled ?? 0} land squares; the plain store none`);
+  check((on.stats.roads?.skippedHigh ?? 0) < 40, `${key}: ${on.stats.roads?.skippedHigh} deck polygons (h ≥ 1) over no deck skipped and counted`);
+}
+
+/** roads-v1 before/after per pilot cell: triangles, build time (median of 3), gz bytes; against the lane's budgets. */
+async function roadsTable(): Promise<void> {
+  await roadsStore.init();
+  const rows: { key: string; offTri: number; onTri: number; ratio: number; offMs: number; onMs: number; msRatio: number; gzKB: number; polys: number; skippedHigh: number; coveredWays: number; bandStations: number }[] = [];
+  const med = (xs: number[]) => [...xs].sort((a, b) => a - b)[xs.length >> 1];
+  for (const key of [...roadsStore.roadCells].sort()) {
+    if (!roadsStore.covers(key)) continue;
+    const offIn = await store.cellInput(key, 0), onIn = await roadsStore.cellInput(key, 0);
+    const offMs: number[] = [], onMs: number[] = [];
+    let off!: BuiltCell, on!: BuiltCell;
+    for (let i = 0; i < 3; i++) { off = buildCell(offIn); offMs.push(off.stats.buildMs); on = buildCell(onIn); onMs.push(on.stats.buildMs); }
+    const r = on.stats.roads!, gz = statSync(join(ROOT, `roads-v1/cells/${key}.json.gz`)).size;
+    const row = { key, offTri: off.stats.triangles, onTri: on.stats.triangles, ratio: +(on.stats.triangles / off.stats.triangles).toFixed(3), offMs: med(offMs), onMs: med(onMs), msRatio: +(med(onMs) / med(offMs)).toFixed(2), gzKB: +(gz / 1024).toFixed(0), polys: Object.values(r.drawn).reduce((a, b) => a + b, 0), skippedHigh: r.skippedHigh, coveredWays: r.coveredWays, bandStations: r.clipped?.bandStations ?? 0 };
+    rows.push(row);
+    console.log(JSON.stringify(row));
+    check(gz <= ROAD_CELL_BUDGET_GZ, `${key}: roads-v1 gz ${row.gzKB} KB ≤ ${(ROAD_CELL_BUDGET_GZ / 1024).toFixed(0)} KB`);
+  }
+  const ratios = rows.map(r => r.ratio), msR = rows.reduce((a, r) => a + r.onMs, 0) / rows.reduce((a, r) => a + r.offMs, 0);
+  console.log(JSON.stringify({ cells: rows.length, triangleRatioMax: Math.max(...ratios), triangleRatioMedian: med(ratios), buildMsRatio: +msR.toFixed(2), offMsMedian: med(rows.map(r => r.offMs)), onMsMedian: med(rows.map(r => r.onMs)) }));
+  check(Math.max(...ratios) <= ROADS_TRIANGLE_RATIO_MAX, `roads-v1 triangles ≤ ${ROADS_TRIANGLE_RATIO_MAX}× in every pilot cell`);
+  check(msR <= ROADS_BUILD_MS_RATIO_MAX, `roads-v1 build time ≤ ${ROADS_BUILD_MS_RATIO_MAX}× (summed medians)`);
+  if (failed) process.exit(1);
+}
+
 async function deckSlabRegressions(): Promise<void> {
   const noClip = new GroundStore(readExtract, { clipDecks: false });
   await noClip.init();
