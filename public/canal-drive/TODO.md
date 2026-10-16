@@ -807,6 +807,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   one frame; a route-following look-ahead would load fewer tiles than the
   heading; the metric can't judge long frames or sharp turns, and 4× CPU
   throttle makes every frame a hitch.
+- **Houseboat follow-ups** (2026-10-16, HISTORY "Houseboats: arks, barges
+  and hullboxes"): hullbox roofs are often white/cream on the orthophoto
+  (give hullbox a measured roof palette); barrel-roof and terrace variants;
+  ~5 % of OSM outlines are stale (empty berth, or an ark where a ship was
+  traced): a BGT/orthophoto berth check could hide or replace them; label
+  the Amstel and outer-canal traced outlines to extend the overrides.
+  Pre-existing: `scripts/check-signature-houseboat-suppression.ts` fails
+  (`sea-palace-footprints.json` has no `houseboatRepresentation`).
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;

@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Houseboats: arks, barges and hullboxes from the orthophoto (2026-10-16)
+
+User: "I think we are drawing too many canalhouses as canalboats". Lane
+`lane/houseboat-kinds-20261016` (da2b8ca9a). 284 boats labelled blind from
+the PDOK 8 cm orthophoto showed most ship hulls on the canals (101 of 164;
+64 of 88 on the ring canals) carry one box cabin over the hull, not an open
+foredeck and wheelhouse. The old ±0.46-length end rule also missed
+rounded-end hulls and took chamfered pontoon corners for bows.
+`classifyHouseboatHull` now tests the end shape in metres from the tip
+(≤ 0.72 at 0.3 m, < 0.97 at 1 m, symmetric narrowing; aspect ≥ 3.2, beam
+≤ 7 m unless ≥ 40 m long): ark-vs-ship accuracy 0.833 → 0.936, blind
+ring-canal set 0.948 → 0.969. The outline can't separate barge from
+hullbox, so a per-boat hash picks at measured shares (63/42/22 % barge for
+long/pointed/rounded), overridden by 178 labelled corridor boats
+(`houseboatKindOverrides.ts`, generated from
+`scripts/houseboat-kinds/labels.json`). New kit form `hullbox`: a low-sheer
+hull with an inset full-length cabin, skylights, no wheelhouse or flag (193
+triangles per boat). City: 415 barges, 604 hullboxes, 2,064 arks (was 960
+barges, 2,123 arks). Named regressions: Prinsengracht at Noordermarkt and
+Westermarkt (`npm run test:houseboat-kinds`, in `check:canal`).
+
 ## GroundStore.init loads once; the -1_-1 deck-polygon pin green again (2026-10-16)
 
 `check:own-ground-cells` failed on main from 49c7bd019 on ("-1_-1: 58 deck
