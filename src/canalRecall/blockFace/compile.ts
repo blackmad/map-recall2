@@ -24,6 +24,7 @@ import {findContacts} from '../streetChunks/party.ts';
 import {fitEaves, shiftFactsHeights} from '../streetChunks/ground.ts';
 import type {ChunkResult} from '../streetChunks/types.ts';
 import {houseIntents, rigidCanopyFront, type BlockFaceIntent} from './intent.ts';
+import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
@@ -345,24 +346,37 @@ export function faceFactsOnTrustedGround(face: Pick<BlockFaceIntent, 'houses'>, 
   return face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return trustFactsGround(f, terrainAt); });
 }
 
-export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale;
+export interface FacePlanOptions {
+  strip?: StripScale;
   /** Photo gable readings keyed `<pandId>/<frontId>` (scripts/block-face/gable-from-photo.ts), used for `continuity.crownFromPhoto`. */
   photoGables?: Map<string, PhotoGable>;
   /** Override the intent's `continuity.roof.source` (before/after comparisons). */
   roofSource?: 'recipe' | 'survey';
   /** AHN terrain (scripts/lib/terrainField.ts): every pand's heights stand on its trusted ground (`trustFactsGround`). */
-  terrainAt?: TerrainAt | null} = {}): Promise<BlockFaceResult> {
+  terrainAt?: TerrainAt | null;
+}
+
+/** What the face compile decides before any GLB exists: the facts every pand is compiled from, and how its roof was chosen. */
+export interface PreparedFace {
+  /** Resolved house intents (photo crowns applied), street order. */
+  intents: CanalHouseIntent[];
+  /** The ground plan the chunk compiles from (shared street level, cornice lines, measured eaves, roofs, canopies). */
+  ground: FaceGroundPlan;
+  /** Per pand (street order): where its roof came from. `survey` = 3DBAG LoD2.2 as fitted; `recipe` = blockFace/recipeRoof.ts. */
+  roofClasses: string[];
+  photoCrowns?: BlockFaceResult['photoCrowns'];
+  recipeRoofs?: RecipeRoofReport[];
+}
+
+/**
+ * The planning half of `compileBlockFace`, shared with it: facts on trusted ground, front slits closed, the ground plan
+ * with roofs and canopies, the resolved intents. `plan(current)` re-plans from other facts (the compile snaps front
+ * corners and re-plans). Pure and GLB-free, so identity tests can hash what every pand is compiled from.
+ */
+function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, options: FacePlanOptions) {
   let intents = houseIntents(face);
   const facts = faceFactsOnTrustedGround(face, factsByPand, options.terrainAt);
   const slits = closeFrontSlits(facts);
-  // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
-  const rears = new Map<string, RearReport>();
-  // Faces model the street side only; without this the backs of a straight row are one blank plane (GLB audit blank-wall).
-  const decorate = options.inferRears === false ? undefined : (built: CompiledBuilding, input: {id: string}) => {
-    const f = built.facts, i = intents.findIndex(x => x.id === input.id), report = built.fit.fronts[0];
-    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
-  };
-  const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
   const roofSource = options.roofSource ?? face.continuity.roof?.source ?? 'survey', keepSurvey = new Set(face.continuity.roof?.keepSurvey ?? []);
   let recipeRoofs: RecipeRoofReport[] | undefined;
   /** Recipe roofs: fit once on the 3DBAG facts for the front eaves and storeys, then replace the roof (blockFace/recipeRoof.ts). */
@@ -418,7 +432,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     }
     return {...plan, facts: out};
   };
-  let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip);
+  let ground = planFaceGround(face, slits.facts, undefined, options.strip);
   let photoCrowns: BlockFaceResult['photoCrowns'];
   if (face.continuity.crownFromPhoto?.length) {
     if (!options.photoGables || !options.strip) throw Error('continuity.crownFromPhoto needs photo gable readings and the strip scale');
@@ -427,6 +441,28 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     photoCrowns = {patches, kept};
   }
   ground = withCanopies(withRoofs(ground));
+  const classOf = (f: BuildingFacts) => f.roofSource?.kind ?? 'survey';
+  return {intents, facts, slits, ground, photoCrowns, recipeRoofs: () => recipeRoofs, classes: () => ground.facts.map(classOf),
+    plan: (current: BuildingFacts[]) => withCanopies(withRoofs(planFaceGround(face, current, undefined, options.strip)))};
+}
+
+/** The facts and roof classes every pand of a face is compiled from, before the chunk compile (no GLB; see `facePlanner`). */
+export function prepareFaceFacts(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, options: FacePlanOptions = {}): PreparedFace {
+  const p = facePlanner(face, factsByPand, options);
+  return {intents: p.intents, ground: p.ground, roofClasses: p.classes(), ...(p.photoCrowns ? {photoCrowns: p.photoCrowns} : {}), ...(p.recipeRoofs() ? {recipeRoofs: p.recipeRoofs()} : {})};
+}
+
+export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: FacePlanOptions & {inferRears?: boolean} = {}): Promise<BlockFaceResult> {
+  const planner = facePlanner(face, factsByPand, options), {intents, facts, slits, photoCrowns} = planner;
+  let ground = planner.ground, current = slits.facts;
+  // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
+  const rears = new Map<string, RearReport>();
+  // Faces model the street side only; without this the backs of a straight row are one blank plane (GLB audit blank-wall).
+  const decorate = options.inferRears === false ? undefined : (built: CompiledBuilding, input: {id: string}) => {
+    const f = built.facts, i = intents.findIndex(x => x.id === input.id), report = built.fit.fronts[0];
+    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
+  };
+  const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
   let chunk = await compile();
   const frontSnaps: FrontSnap[] = [];
   for (let pass = 0; pass < 2; pass++) {
@@ -435,9 +471,10 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     if (!todo.length) break;
     current = snapFrontSteps(current, todo.map(x => ({i: x.i, stepM: x.stepM!})), chunk.frame.nRD);
     for (const x of todo) frontSnaps.push({left: face.houses[x.i].pandId, right: face.houses[x.i + 1].pandId, stepBeforeM: cm(x.stepM!), pass: pass + 1});
-    ground = withCanopies(withRoofs(planFaceGround(face, current, undefined, options.strip)));
+    ground = planner.plan(current);
     chunk = await compile();
   }
+  const recipeRoofs = planner.recipeRoofs();
   const stepsAfter = groundCornerSteps(await decodePands(chunk.glb, intents.length));
   for (const sn of frontSnaps) sn.stepAfterM = cm(stepsAfter[face.houses.findIndex(h => h.pandId === sn.left)] ?? NaN);
   if (chunk.order.join() !== intents.map(i => i.id).join()) throw Error(`chunk order ${chunk.order.join()} differs from the intent's street order`);
