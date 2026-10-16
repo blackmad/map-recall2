@@ -1468,10 +1468,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Ö glyph); never `compile.ts --install`; next on the street:
   the rear-facade lane (the GLB z-fight on every face is the inferred
   rears), `compile-recipes.ts --faces=kinker-` into recipe tiles and the
-  changed-pand page, ride shots at five points, the wall-colour misses (31
-  black paint renders olive, 47 sunlit brick too dark, 63 and 87 too
-  saturated, 21-23's painted first storey), the library candidates
-  `kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable`, and the kit
+  changed-pand page, ride shots at five points, the wall-colour misses
+  DONE 2026-10-16 (HISTORY "Kinkerstraat wall colours read from the
+  photo": 31/47/63/87 within 4–17 RGB of the photo, 21-23 painted storey,
+  `kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable` promoted,
+  odd 57/59/63 window widths; open: a look that reads `tintWhitePoint`,
+  the lightness-0.18 floor on black paint, Kinkerstraat 2 drawn 0.2 m
+  narrow, re-install the recompiled faces), and the kit
   gaps by count (wall anchors 21, arcade piers 13, frieze panels and
   consoles 13, pointed gables 10, set-back top storey 10, brick-relief
   tympana 7, shop mezzanine 7, 109-161 arcade ground, 2-30 shell dormers);

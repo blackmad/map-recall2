@@ -840,6 +840,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // roof closures behind it are shared by the whole owner and keep the main colour.
     elevation.bands.value.push(...lintelBands);
     if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinthBand), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinthBand - 0.02), depthM: 0.03, surface: 'wall'});
+    // Storeys painted in a second colour (`paintedStoreys`): a wall facing per storey, recoloured and marked measured in oudWest.ts.
+    if (front.paintedStoreys) elevation.bands.value.push(...paintedStoreyBands(front, layout, width, eaves));
     if (layout.groundBlocks?.length) elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...Array.from({length: count}, (_, k) => layout.groundBlocks!.map(b => ({...b, id: idFor(k, b.id), leftM: round(flipX(place(k, b.leftM, b.widthM), b.widthM))}))).flat()]);
     if (front.shopfront && layout.shopGlass && layout.shopZone) {
       const g0 = layout.groundBase > 0 ? 1 : 0, floor = layout.groundBase + layout.storeyHeights[g0];
@@ -1009,6 +1011,25 @@ function brickCourses(front: FrontIntent, layout: Layout, width: number, flipX: 
     for (let k = 0; k < n; k++) { const bottom = head + 0.05 + k * 0.11; if (bottom + 0.05 > limit) break; push(`course-s${s}-${k}`, s, bottom, 0.05, 0.07); }
   }
   return out;
+}
+
+/** Depth of a painted-storey facing: 1 cm proud of the 3 cm per-front facing, so the two never share a face. */
+export const PAINTED_STOREY_DEPTH_M = 0.04;
+/** Band id of a painted storey (oudWest.ts `paintStoreys` finds its meshes by it). */
+export const paintedStoreyId = (s: number) => `painted-storey-s${s}`;
+
+/**
+ * Painted storeys (`paintedStoreys`): each listed storey whole, floor to next floor (the top storey to 2 cm under the
+ * eaves), as a wall facing the library cuts around the openings. Facade x; the whole front width.
+ */
+function paintedStoreyBands(front: FrontIntent, layout: Layout, width: number, eaves: number): CanalhouseFacadeBlock[] {
+  const heights = layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0), full = Math.floor(width * 1000) / 1000;
+  let acc = layout.groundBase;
+  const bottoms = heights.map(h => { const b = acc; acc += h; return b; });
+  return front.paintedStoreys!.storeys.filter(s => s < heights.length).map(s => {
+    const bottom = s === 0 ? Math.max(bottoms[0], 0.3) : bottoms[s], top = Math.min(bottoms[s] + heights[s], eaves - 0.02);
+    return {id: paintedStoreyId(s), leftM: 0, bottomM: round(bottom), widthM: full, heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M, surface: 'wall' as const};
+  }).filter(b => b.heightM > 0.1);
 }
 
 /**
