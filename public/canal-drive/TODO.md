@@ -1388,6 +1388,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Bridge railings after the water-side fix (2026-10-16, HISTORY "Bridge
+  railings stop at the water")**: gates remain on 12 bridges (worst BRU0981, a
+  culvert with a diagonal channel; BRU0691, BRU1904, BRU2131, BRU0307); parapets
+  inside a road polygon on BRU1935, BRU0001 Muntsluis, BRU0223, BRU0007 (deck
+  edge narrower than the surveyed road); BRU0165 and BRU0173 are measured along
+  the canal and need re-orienting; BRU0257's west outline runs ~10 m over open
+  water; shorter parapets gave some arch bridges lamp posts (`lampAt`); iPhone
+  perf unmeasured.
+
 - **Tower-podium leftovers (2026-10-16, HISTORY "Towers on podiums")**: the 27
   model-owned ridge-tower pands stay whole until the hide sinks resolve `pand`
   (`coloredBuildingLayerFilter`, the three.js ranges id in
