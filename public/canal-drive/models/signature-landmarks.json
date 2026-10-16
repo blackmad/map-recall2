@@ -1171,7 +1171,6 @@
       "landmarkId": "extract_landmarks_1692085215",
       "modelUrl": "./models/westerkerk.glb",
       "suppressOsmIds": [
-        "w99203577",
         "w99205257",
         "w749268115",
         "w749268116",
@@ -1183,8 +1182,11 @@
         "w751083597",
         "w751083598",
         "w751083599",
-        "NL.IMBAG.Pand.0363100012174221",
-        "NL.IMBAG.Pand.0363100012164998"
+        "NL.IMBAG.Pand.0363100012164998",
+        "NL.IMBAG.Pand.0363100012168591",
+        "NL.IMBAG.Pand.0363100012174220",
+        "NL.IMBAG.Pand.0363100012174222",
+        "NL.IMBAG.Pand.0363100012174224"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -1214,6 +1216,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
       },
+      "bagYear": 1631,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -1243,14 +1246,14 @@
         "depthMetres": 33.65139579772949,
         "depthCoverage": 0.7762337337772733
       },
-      "triangles": 20627,
-      "bytes": 241992,
+      "triangles": 19883,
+      "bytes": 234440,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "140201e4cd470a98",
+        "sourceHash": "c0fc848649680324",
         "buildVersion": 2,
-        "bytes": 72032,
-        "triangles": 3567
+        "bytes": 70244,
+        "triangles": 3457
       }
     },
     "bimhuis-in-amsterdam-the-netherlands": {
@@ -4138,7 +4141,6 @@
       "landmarkId": "extract_landmarks_239964759",
       "modelUrl": "./models/nieuwe-kerk.glb",
       "suppressOsmIds": [
-        "w220749328",
         "w174987150",
         "w747911435",
         "w747911436",
@@ -4158,7 +4160,6 @@
         "w747924626",
         "w748997143",
         "w748997144",
-        "NL.IMBAG.Pand.0363100012169079",
         "w748997142"
       ],
       "spatialSuppression": false,
@@ -4218,14 +4219,14 @@
         "depthMetres": 66.11294555664062,
         "depthCoverage": 0.9999999630453931
       },
-      "triangles": 29268,
-      "bytes": 344604,
+      "triangles": 28392,
+      "bytes": 334340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "823a1b6d51951d91",
+        "sourceHash": "5ee4be33beed348c",
         "buildVersion": 2,
-        "bytes": 86288,
-        "triangles": 4981
+        "bytes": 84128,
+        "triangles": 4849
       }
     },
     "buiksloterkerk": {
