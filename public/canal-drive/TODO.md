@@ -727,6 +727,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Motion stutter, next pass** (2026-10-16, HISTORY "Motion stutter";
+  desktop budget now in `ride-perf.spec.ts`): label passes run 3× as often
+  since today's merges (72 → 250 ms per minute at 1×), find why; regroup
+  `setFeatures` and the chunk `rebuild` structured clone; MapLibre
+  `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
+  load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
+  the rider); then measure iPhone.
 - **Kit work is not drawn by default** (2026-10-16, HISTORY "Coverage by
   buurt"): block-face chunks (131 pands, every face re-installed today)
   are retired behind `?streetChunks=1` since 2026-10-14 because they drew
