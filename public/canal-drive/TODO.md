@@ -745,14 +745,20 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
   load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
   the rider); then measure iPhone.
-- **Kit work is not drawn by default** (2026-10-16, HISTORY "Coverage by
-  buurt"): block-face chunks (131 pands, every face re-installed today)
-  are retired behind `?streetChunks=1` since 2026-10-14 because they drew
-  near-black under the old light; building types (3,075) are behind
-  `?buildingTypes=1`. The sunny look and shadow fill landed since: measure
-  the chunks' luma under today's default frame and put the decision to
-  bring them back to the user with frames. Coverage page
-  `docs/coverage/index.html` ranks buurten for generator lanes.
+- **Flags: decide the rest** (2026-10-16, user: "figure out for all of these
+  which you actually want to use, and if there are dead ends, delete the code
+  and the flag"). Street chunks and BGT roads are default now (HISTORY
+  "Street chunks and BGT roads drawn by default"). Still to decide, with
+  measurements: building types (3,075 Nieuw-West instances,
+  `?buildingTypes=1`), recipe tiles (`?recipeTiles=1`), sculpture impostors
+  (`?sculptures=1`), canal elevation (`?elevation=1`), the city look
+  (`?cityLook=1`), the shared frame (forced on by own ground), the ground
+  look variants, `?look=legacy`, `?transition=0`. Default what wins;
+  delete the code and flag of dead ends.
+- **Held chunk and the two Bilderdijkstraat pilot houses:** Oudezijds
+  Voorburgwal 115-125 stays out of the default (black on its shade side,
+  `DEFAULT_HELD_CHUNKS`); Bilderdijkstraat pands 152669 and 079721 (the
+  retired 10-10 pilot chunk) need a block face under the front-roof rules.
 - **Sunny look follow-ups** (2026-10-16, HISTORY "Sunny look is the
   default"; `?look=legacy` opts out): re-tune the opt-in yellow highlight
   (clips at 206.6 under the rig); undo the city look's extra 0.9 cell

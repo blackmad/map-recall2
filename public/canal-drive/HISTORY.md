@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+## Street chunks and BGT roads drawn by default; blue water; the pilot chunk retired (2026-10-16)
+
+User (2026-10-16): "what things are behind flags that we should make
+default? if BGT is the fix, then make it the default, same with ownGround,
+whatever else". Own ground was already the default.
+- **BGT roads:** `gameGround.ts roadsFlag` is on unless `?roads=0` (or
+  `window.__canalRecallRoads = false`); cells without the roads-v1 extract
+  (all but the seven pilot cells until the city-wide publish) keep the OSM
+  bands. The own-ground e2e specs take `ROADS=0` for the before shots.
+- **Street chunks:** `streetSurveyMode` defaults to `chunks`;
+  `?streetChunks=retired` hides them, `=0` draws the per-house models,
+  `=1` draws every installed chunk. The default holds
+  `DEFAULT_HELD_CHUNKS` = Oudezijds Voorburgwal 115-125 (and the per-house
+  models it replaced), which still draws black on its shade side. The
+  chunk-brightness lane (lane/chunk-brightness-20261016, 869302223,
+  `look/chunkWallExposure.ts`; doc `docs/chunk-brightness-20261016.md`)
+  is what made them presentable: walls at their photo colour normalised to
+  sunlight, 0.91–1.08 of the sunlit photo on the five measured faces (raw
+  photo ratio on shade sides 0.70–0.86, capped by the rig's 0.41 shade
+  ratio); before it they sat at 0.62–0.73.
+- **Retired `chunk-bilder-079721-x2`** after the user asked "why did this
+  get built as a custom build AND why is the roof still broken from
+  3dbag?": it was the 2026-10-10 two-house pilot chunk (per-house recipes
+  bilder-152669 and bilder-079721 with 3DBAG roofs), never replaced by a
+  block face and never under the front-roof rules; its sibling
+  chunk-bilder-152363-x2 was retired on 10-10. It showed as "Today 01:37
+  PM" because `model-first-added.json` had no chunk entries and What's new
+  fell back to the manifest's `generatedAt`, which today's re-install
+  rewrote; the index is regenerated, and every chunk now dates from 10-10.
+- **Desktop ride-perf with both defaults on:** 5/5 within budget run alone
+  (motion p95 16.8 ms, 0 frames over 100 ms, longest 83 ms; map render
+  median 2.7 ms default, 5.6 ms all landmarks resident); a run beside two
+  other Playwright suites failed the motion budget, so measure alone.
+
 ## Roads from the surveyed BGT surface, behind ?roads=bgt (2026-10-16)
 
 User (2026-10-16): "road rendering needs to get fixed" (Marnixstraat busway
