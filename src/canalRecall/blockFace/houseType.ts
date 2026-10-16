@@ -19,7 +19,7 @@ import {frontGrid} from '../buildingRecipe/intent.ts';
 import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
-export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
+export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
   'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
