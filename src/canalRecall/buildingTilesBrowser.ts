@@ -271,6 +271,7 @@ export class BuildingTileStreamer {
   private restyleResident(): void {
     const previous = this.decorated;
     this.decorated = new WeakMap();
+    this.styleVersion++;
     if (!this.cache.size) { this.published = null; return; }
     const changed: BuildingFeature[] = [];
     for (const raw of this.cache.collection().features) {
@@ -320,6 +321,7 @@ export class BuildingTileStreamer {
       out = decorateBuildingFeature(feature, this.appearancePriors);
       if (this.featureDecorator) out = this.featureDecorator(out);
       this.decorated.set(feature, out);
+      this.styleVersion++;
     }
     return out;
   }
@@ -531,6 +533,8 @@ export class BuildingTileStreamer {
       // Ordinary camera-driven arrivals wait during a flight. A fixed landing
       // preload may publish now so geometry is ready before the player arrives.
       if (!this.flushDirty || this.disposed || this.suspended && !this.preloadBounds) return;
+      // Style (facade + roof planning) the arrivals a few ms per frame first; publish once all are styled.
+      if (!this.styleWithin(STYLE_BUDGET_MS)) { this.scheduleFlush(); return; }
       this.flushDirty = false;
       this.flush();
     };
@@ -538,11 +542,41 @@ export class BuildingTileStreamer {
     else queueMicrotask(run);
   }
 
+  private featuresPending: BuildingFeature[] | null = null;
+  private deferFeatures(features: BuildingFeature[]): void {
+    const first = !this.featuresPending;
+    this.featuresPending = features;
+    if (!first) return;
+    const run = () => { const latest = this.featuresPending; this.featuresPending = null; if (latest && !this.disposed) this.onFeatures?.(latest); };
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else queueMicrotask(run);
+  }
+
+  /**
+   * Style unstyled resident buildings until `budgetMs` is spent; true when none is left. A z14 tile
+   * carries hundreds to thousands of buildings and roof planning ran for all of them inside one flush:
+   * 300–970 ms frames as tiles crossed the ring while riding (docs/perf-motion-stutter-20261016.md).
+   */
+  private styleWithin(budgetMs: number): boolean {
+    const deadline = performance.now() + budgetMs;
+    const features = this.cache.collection().features;
+    for (let i = this.styleCursor < features.length ? this.styleCursor : 0, seen = 0; seen < features.length; seen++, i = i + 1 === features.length ? 0 : i + 1) {
+      const raw = features[i];
+      if (this.decorated.has(raw)) continue;
+      this.styled(raw);
+      if ((seen & 15) === 15 && performance.now() > deadline) { this.styleCursor = i + 1; return false; }
+    }
+    this.styleCursor = 0;
+    return true;
+  }
+  private styleCursor = 0;
+
   private flush(): void {
     const collection = this.cache.collection();
     const features = collection.features.map(feature => this.styled(feature));
     this.countsDirty = true;
-    this.onFeatures?.(features);
+    // The three.js regroup (onFeatures) runs a frame after MapLibre's diff, so a tile's two main-thread
+    // costs land in different frames instead of one (docs/perf-motion-stutter-20261016.md).
+    this.deferFeatures(features);
     const source = this.map.getSource(this.sourceId);
     if (source) this.sendToSource(source, features);
     if (features.length > 0 && this.onFirstBuildings) {
@@ -618,7 +652,21 @@ export class BuildingTileStreamer {
   }
 
   /** For diagnostics: how much of the city is resident right now. */
-  sampleFeatures(limit=400):BuildingFeature[]{return this.cache.collection().features.slice(0,Math.max(0,limit)).map(feature=>this.styled(feature));}
+  /**
+   * Styled resident buildings for the camera clearance (read-only; asked every 8 m of travel). Only buildings
+   * already styled count: an arrival still being styled is not drawn yet, and styling it here, synchronously,
+   * undid the flush's time slicing (a 300–800 ms frame at 4× as a tile arrived). Cached until the set changes.
+   */
+  sampleFeatures(limit=400):BuildingFeature[]{
+    const list=this.cache.collection().features, held=this.sampleCache;
+    if(held&&held.list===list&&held.version===this.styleVersion&&held.limit===limit)return held.out;
+    const out:BuildingFeature[]=[];
+    for(let i=0;i<Math.min(list.length,Math.max(0,limit));i++){const styled=this.decorated.get(list[i]);if(styled)out.push(styled);}
+    this.sampleCache={list,version:this.styleVersion,limit,out};
+    return out;
+  }
+  private sampleCache:{list:BuildingFeature[];version:number;limit:number;out:BuildingFeature[]}|null=null;
+  private styleVersion=0;
 
   status(): { tiles: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
     this.refreshCounts();

@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { decorateRoof, roofPlanForFeature } from './roofMesh.js';
 import { sameStyledFeature } from './buildingTilesBrowser.js';
 import { boundingSphereOf } from './geometryBounds.js';
+import { uncoveredShare } from './roofFootprint.js';
 
 const LAT = 52.372, KX = 111_320 * Math.cos(LAT * Math.PI / 180), KY = 110_540;
 const ring = (pts: [number, number][]) => [...pts, pts[0]].map(([x, y]) => [4.88 + x / KX, LAT + y / KY]);
@@ -64,3 +65,36 @@ test('boundingSphereOf matches three.js computeBoundingSphere exactly', async ()
   }
 });
 
+/** The pre-scanline uncoveredShare, kept here as the reference. */
+function uncoveredShareReference(ring: [number, number][], rects: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }[], grid = 28): number {
+  const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring, n = pts.length;
+  if (n < 3) return 0;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const [x, y] of pts) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+  let total = 0, bare = 0;
+  for (let i = 0; i < grid; i++) for (let j = 0; j < grid; j++) {
+    const x = x0 + ((i + 0.5) / grid) * (x1 - x0), y = y0 + ((j + 0.5) / grid) * (y1 - y0);
+    let c = false;
+    for (let a = 0, b = n - 1; a < n; b = a++) {
+      const [xa, ya] = pts[a], [xb, yb] = pts[b];
+      if ((ya > y) !== (yb > y) && x < ((xb - xa) * (y - ya)) / (yb - ya) + xa) c = !c;
+    }
+    if (!c) continue;
+    total++;
+    if (!rects.some(r => Math.abs((x - r.cx) * r.ux + (y - r.cy) * r.uy) <= r.len / 2 && Math.abs(-(x - r.cx) * r.uy + (y - r.cy) * r.ux) <= r.wid / 2)) bare++;
+  }
+  return total ? bare / total : 0;
+}
+
+test('scanline uncoveredShare equals the per-sample test', () => {
+  let seed = 11;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 2 ** 32; };
+  for (let t = 0; t < 400; t++) {
+    const k = 3 + Math.floor(rnd() * 12), ring: [number, number][] = [];
+    for (let i = 0; i < k; i++) { const a = (i / k) * Math.PI * 2, r = 5 + rnd() * 25; ring.push([Math.cos(a) * r + rnd(), Math.sin(a) * r]); }
+    if (t % 3 === 0) ring.push([ring[0][0], ring[0][1]]);
+    const rects = Array.from({ length: 1 + Math.floor(rnd() * 2) }, () => { const a = rnd() * Math.PI; return { cx: (rnd() - 0.5) * 20, cy: (rnd() - 0.5) * 20, ux: Math.cos(a), uy: Math.sin(a), len: 5 + rnd() * 30, wid: 4 + rnd() * 15 }; });
+    for (const grid of [28, 9]) assert.equal(uncoveredShare(ring, rects, grid), uncoveredShareReference(ring, rects, grid), `case ${t} grid ${grid}`);
+  }
+  for (const pts of Object.values(shapes)) assert.equal(uncoveredShare(pts, []), uncoveredShareReference(pts, []));
+});
