@@ -1388,6 +1388,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **BAG holes after the 1,601 fills (2026-10-16, HISTORY "BAG pands the tiles
+  never drew")**: 1,325 post-2019 pands wait for AHN5 or a newer 3DBAG; the 12
+  complexes over 5,000 m² (e.g. 0363100012241555, 3.2 ha at the Zuidas) and the
+  130 half-drawn pands need a look; fills are flat boxes with no roof shape;
+  Prinsengracht 221-227 deserves a kit/recipe front. Models that suppress pands
+  their GLB barely covers need a per-model photo review: felix-meritis 174322
+  (0 %), westerkerk 174220/174222 (10 %) and w749287964 (25 %), sint-agneskerk
+  197426, vriesseveem-9 w755510629, dominicuskerk w749599657, vinoly w754894011.
+
 - **Bridge railings after the water-side fix (2026-10-16, HISTORY "Bridge
   railings stop at the water")**: gates remain on 12 bridges (worst BRU0981, a
   culvert with a diagonal channel; BRU0691, BRU1904, BRU2131, BRU0307); parapets

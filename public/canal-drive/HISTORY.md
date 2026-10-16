@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
+
+User (2026-10-16): "I feel like there should probably be a building here?", an
+empty paved lot on the Prinsengracht east quay between the 1690 twin warehouses
+at 211-217 and the Leliegracht. It is Prinsengracht 221-227
+(NL.IMBAG.Pand.0363100012169308, 1939, 53 dwellings, 1,813 m²): missing from
+3DBAG v20250903 (no CityJSON tile, WFS 0 features, API 502), and
+`build-lod1-city.ts` drops an unmatched OSM outline inside BAG coverage unless
+it is a part, stacked or named, so neither tile set drew anything. No check
+compared the tiles with the BAG register. Lane `worktree-agent-a9c343c0d64a0f0ae`
+surveyed 413,025 standing pands (PDOK WFS + AHN WCS, both CC0): 8,188 holes
+(975,538 m²). Filled 1,601 (110,346 m²) as flat AHN p70 boxes (`bagGaps.ts`,
+`publish-bag-gaps.ts`); left, each with a reason in
+`scripts/data/bag-gaps/bag-gaps.json`: 4,647 under 10 m², 1,325 built after
+2019 (no AHN4 height), 468 with nothing ≥ 2 m in AHN, 130 already 20-50 %
+drawn, 12 over 5,000 m², 3 under a model, 2 without AHN. The tiles gained only
+the 3,202 features (1,601 each set); `check:bag-gaps` (in `check:canal`) pins
+Prinsengracht 221-227 at 12-20 m (15.46 m) and fails on any missing fill. Re-run
+`publish-bag-gaps.ts --write` after any full `build-lod1-city.ts` rebuild.
+
 ## Bridge railings stop at the water (2026-10-16)
 
 User (2026-10-16): "why do the gates dip into the road?". `bridgeKit.ts`
