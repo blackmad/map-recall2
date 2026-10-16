@@ -556,6 +556,8 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/helmkruidfamilie/i, /\bthe mint family\b/g, 'the figwort family'],
   // An iep is an elm, not an oak (De Hollandse Iepbrug, "de vele iepen").
   [/\biep(?:en)?\b/i, /\boaks\b/g, 'elms'],
+  // A bridge's name is kept, not translated (Amsterdamse Brug's text).
+  [/Schellingwouderbrug/, /\bSchellingwouder Bridge\b/g, 'Schellingwouderbrug'],
   [/kruisbloemigen/i, /\bfamily of the cruciferous vegetables\b/g, 'of the cabbage family (crucifers)'],
   [/vossenbes/i, /\bred currant\b/g, 'lingonberry (cowberry)'],
   [/vossenbes/i, /\bThe foxberry\b/g, 'The lingonberry'],
