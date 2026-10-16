@@ -1,17 +1,19 @@
-# Canal elevation (opt-in)
+# Canal elevation
 
-Amsterdam is flat, so a flat map made bridges read as painted strips. The
-elevation layer sinks canal water below street level and gives bridges decks
-that ramp up and over it. It is **visual only**: routing, the road guard and
-bike/boat physics stay 2D and never read it.
+Amsterdam is flat, so a flat map made bridges read as painted strips. Canal
+water sits below street level and bridges get decks that ramp up and over it.
+It is **visual only**: routing, the road guard and bike/boat physics stay 2D
+and never read it.
 
-## Flag
+## Where it is drawn
 
-Off by default. `?elevation=1` (or `window.__canalRecallElevation = true`
-before load). Since 2026-10-14 the own ground (below) is on by default and
-retires this stencil layer, so it needs `?ownGround=0&elevation=1`. `vector-map.js` then loads `js/canal-elevation.bundle.js` on
-demand, so the flag-off path costs nothing. Built by `npm run build:canal-3d`
-(`scripts/build-3d-bundles.mjs`, target `canal-elevation`).
+The own ground (below; on by default since 2026-10-14) draws the sunken water,
+quay walls and measured decks from the `elevation-v1` extract and the shared
+modules in `src/canalRecall/elevation/` (`elevationData.ts`, `bridgeDeck.ts`,
+`canalGeometry.ts`, `meshBuilder.ts`). The 2026-10-09 MapLibre stencil layer
+behind `?elevation=1` (`elevationBrowser.ts`, `js/canal-elevation.bundle.js`)
+was superseded by it and deleted on 2026-10-16; "Rendering" below describes it
+as history.
 
 ## Model
 
@@ -56,7 +58,7 @@ demand, so the flag-off path costs nothing. Built by `npm run build:canal-3d`
 - **Houseboats** (three-buildings layer) are lowered to the water via
   `ThreeBuildings.setWaterLevel`.
 
-## Rendering
+## Rendering (the deleted 2026-10-09 stencil layer, history)
 
 One MapLibre custom layer (`canal-elevation`), after the basemap's bridge roads
 and before the flat building fill and the game's overlays:
@@ -80,8 +82,6 @@ Cost (ride-perf, iphone project, 4× CPU throttle, 12 s chase ride, 2 runs
 each): frame median 16.7 ms / p95 33.4 ms with the flag on and off; map render
 median 11.6–13.5 ms on vs 12.3–13.5 ms off. A first version with one mesh per
 bridge and 24 cells doubled map render time (20–22 ms) — keep the merging.
-`CANAL_ELEVATION=1|0 PERF_RIDE=1 PW_PORT=4400 npx playwright test ride-perf
---project=iphone -g default` reproduces it.
 
 ## Data
 
@@ -106,8 +106,7 @@ exact Web Mercator per vertex.
 
 Checks: `node --import tsx --test src/canalRecall/elevation/elevation.test.ts`
 (geometry, winding, deck index, named bridges: Papiermolensluis, Oetgensbrug,
-Hoofdbrug, Magere Brug). Visual: `PW_PORT=4400 npx playwright test
-canal-elevation` writes before/after images to `artifacts/elevation/<project>/`.
+Hoofdbrug, Magere Brug).
 
 ## Salvaged vs rewritten
 
@@ -289,8 +288,8 @@ under "named locations"; `BUNDLES_DIR` serves bundles built with
    **Bare white beyond the resident cells**: the ground hid the basemap's fills
    and lines for the whole view once the rider's 3x3 cells were resident; the
    chase camera sees past that. `_setBasemapGroundHidden` in `vector-map.js` now
-   keeps the fills and lines visible (`__canalRecallHideBasemapFills = true`
-   restores the old behaviour); only the route and street overlays are still
+   keeps the fills and lines visible (the `__canalRecallHideBasemapFills`
+   A/B was deleted 2026-10-16); only the route and street overlays are still
    hidden. Cost on the fixed route, 2 runs each: map render 3.5 and 2.2 ms hidden
    vs 3.9 and 2.4 ms visible, about +30 draw calls, no long frames. Cell-load
    latency (`ground-places-shots.mjs`, jumps of 0.2-3 km, time until the 3x3

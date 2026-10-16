@@ -16,12 +16,6 @@ const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 // `?trees3d=0` (or window.__canalRecallFacades / __canalRecallTrees3d = false
 // before load) bring back the old flat look for A/B comparison.
 const GENERIC_FACADES_DEFAULT = true;
-// Experiment (2026-10-09): canal water below quay level and measured bridge
-// decks (docs/elevation.md). Visual only — routing and physics stay 2D. Off by
-// default; `?elevation=1` or window.__canalRecallElevation = true. The bundle
-// is fetched only when the flag is on.
-const CANAL_ELEVATION_DEFAULT = false;
-const CANAL_ELEVATION_BUNDLE = 'js/canal-elevation.bundle.js';
 const STYLISED_TREES_DEFAULT = true;
 // Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
@@ -38,7 +32,8 @@ const SHARED_FRAME_DEFAULT = false;
 // docs/research/own-ground-20261009.md). On by default since 2026-10-14 (user);
 // `?ownGround=0` or window.__canalRecallOwnGround = false opts out, and an
 // explicit `?sharedFrame=0` does too unless `?ownGround=1` is also given.
-// Implies the shared frame, and replaces the `?elevation=1` stencil layer.
+// Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
+// stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
@@ -90,7 +85,6 @@ class VectorBasemap {
     this._treesVisible = false;
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
-    this._elevationEnabled = canalRecallLookFlag('elevation', '__canalRecallElevation', CANAL_ELEVATION_DEFAULT);
     this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
     this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround',
       OWN_GROUND_DEFAULT && canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', null) !== false);
@@ -102,7 +96,6 @@ class VectorBasemap {
     if (this._sculpturesEnabled) this._sharedFrameEnabled = true;
     this._ownGround = null;
     this._sharedFrame = null;
-    this._elevation = null;
     this._riderSurfaceM = 0;
     this._rawTrees = null;
     this._treeRoute = null;
@@ -244,9 +237,7 @@ class VectorBasemap {
       }
       this.ready = true;
       if (this._recipeTilesEnabled) void this._ensureRecipeTiles();
-      // Own ground retires the stencil elevation layer: one ground, one water.
       if (this._ownGroundEnabled) void this._ensureOwnGround();
-      else if (this._elevationEnabled) void this._ensureElevation();
       if (this._sculpturesEnabled) void this._ensureSculptures();
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
         this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility(), this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
@@ -307,7 +298,6 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
-    if (this._elevation) void this._elevation.load(path).then(() => this._syncElevationConsumers());
     if (this._ownGround) void this._ownGround.load(this._absoluteExtractRoot()).then(() => this._syncElevationConsumers());
     if (this._artisAnimals) this._artisAnimals.setExtractRoot(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
@@ -1041,7 +1031,6 @@ class VectorBasemap {
     this._syncMaplibreBuildingVisibility();
     this._loadHouseboats();
     this._loadShopfronts();
-    if (this._elevation) this._syncElevationConsumers();
   }
 
   /** Where the city's shops, cafés and bars really are (shopfronts extract); re-decorates the resident tiles. */
@@ -1988,32 +1977,6 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
-  /** Load the elevation bundle on demand (flag on only) and add its layer. */
-  async _ensureElevation() {
-    if (this._elevation || this._elevationLoading || !this.map) return;
-    this._elevationLoading = true;
-    try {
-      if (!window.CanalRecallElevation) {
-        await new Promise((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = CANAL_ELEVATION_BUNDLE;
-          script.onload = resolve;
-          script.onerror = () => reject(new Error(`${CANAL_ELEVATION_BUNDLE} failed to load`));
-          document.head.appendChild(script);
-        });
-      }
-      const api = window.CanalRecallElevation;
-      if (!api || !api.CanalElevation) throw new Error('CanalRecallElevation missing');
-      this._elevation = new api.CanalElevation(this.map, maplibregl, { beforeId: 'building' });
-      await this._elevation.load(this._extractPath);
-      this._syncElevationConsumers();
-    } catch (error) {
-      console.warn('Canal elevation unavailable; the flat map stays.', error);
-    } finally {
-      this._elevationLoading = false;
-    }
-  }
-
   _absoluteExtractRoot() {
     return new URL(this._extractPath || '../data/extracts/amsterdam', window.location.href).href.replace(/\/$/, '');
   }
@@ -2171,10 +2134,9 @@ class VectorBasemap {
     return ring && ring.length >= 3 ? ring : null;
   }
 
-  /** The surface the rider stands on: the own ground when present, else the opt-in elevation layer. */
+  /** The surface the rider stands on: the own ground once ready, else none (flat). */
   _riderSurface() {
-    if (this._ownGround && this._ownGround.ready) return this._ownGround;
-    return this._elevation;
+    return this._ownGround && this._ownGround.ready ? this._ownGround : null;
   }
 
   /** Houseboats float on the sunken water; everything else on land stays at z = 0 (or stands on the own ground's relief). */
@@ -2186,7 +2148,7 @@ class VectorBasemap {
 
   elevationStatus() {
     if (this._ownGround) return this._ownGround.status();
-    return this._elevation ? this._elevation.stats() : { enabled: false, ready: false };
+    return { enabled: false, ready: false };
   }
 
   /** True while the own ground drapes the route and highlight, so the canvas must not draw its flat copies. */
@@ -3264,7 +3226,6 @@ class VectorBasemap {
     } catch (_) {}
     if (this._parkLandscape) this._parkLandscape.setTheme(this.theme);
     if (this._inventoryTrees) this._inventoryTrees.setTheme(this.theme);
-    if (this._elevation) this._elevation.applyTheme();
     // A theme restores the basemap's paint; keep its ground hidden under the own ground.
     if (this._basemapGroundHidden) {
       if (this._ownGroundSaved) this._ownGroundSaved.clear();
