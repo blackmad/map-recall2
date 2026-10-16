@@ -45,7 +45,7 @@ export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
 };
 
 /** Junction road markings drawn (roadMarkings.ts). */
-export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number; /** roads-v1: paint pieces, rail stations and lane-ribbon pieces dropped off the carriageway polygons; node fills skipped inside a polygon; cross-cut stations; covered ways. */ clipped?: { paint: number; rails: number; lanes: number; fills: number; crossCuts: number; coveredWays: number } }
+export interface MarkingStats { stopLines: number; giveWays: number; teeth: number; laneLinks: number; cycleCrossings: number; blocks: number; /** roads-v1: paint pieces, rail stations and lane-ribbon pieces dropped off the carriageway polygons; node fills skipped inside a polygon; cross-cut stations; covered ways. */ clipped?: { paint: number; rails: number; lanes: number; fills: number; crossCuts: number; coveredWays: number; /** 1 m band stations of part-covered ways dropped over a polygon of the band's kind. */ bandStations: number } }
 
 /**
  * roads-v1 (roadSurfaces.ts) in the street pass: `covered` ways emit no bands (the surveyed polygons are their
@@ -400,7 +400,7 @@ export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
 export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number; /** Junction road markings (roadMarkings.ts); off for the far ring. */ markings?: boolean; /** The surveyed road partition (roads-v1): see RoadsOption. */ roads?: RoadsOption } = {}): StreetMeshes {
   const step = opts.step ?? 3;
   const bgt = opts.roads ?? null;
-  const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0 };
+  const clipped = { paint: 0, rails: 0, lanes: 0, fills: 0, crossCuts: 0, coveredWays: 0, bandStations: 0 };
   /** Where a way's paint may lie: a carriageway polygon, or no survey (the fallback). */
   const onRoadFor = (w: LocalWay): Keep | undefined => (bgt ? (x, y) => bgt.index.onRoad(x, y, isBridgeWay(w)) : undefined);
   const inPolygon = (p: Vec2) => !!bgt && bgt.index.find(p[0], p[1]) >= 0;
@@ -442,7 +442,10 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
       out.stats.bands++;
       const m = out[band.surface];
       const onRoad = band.kind === 'carriageway' || band.kind === 'cycle_lane';
-      const cuts = !carriage ? path : onRoad ? road : sides[band.offset > 0 ? 1 : -1];
+      let cuts = !carriage ? path : onRoad ? road : sides[band.offset > 0 ? 1 : -1];
+      // roads-v1: a way the polygons cover for part of its length (a cycleway that is fietspad for 60 % and crosses
+      // rijbaan for the rest fails the 80 % coverWays rule) keeps its band only off the polygons of its own kind.
+      if (bgt) { const cc = coverCuts(w, band, bgt.index); if (cc.length) { clipped.bandStations += cc.length; cuts = [...cuts, ...cc]; } }
       out.stats.trims += cuts.length;
       const pieces = cuts.length ? cutIntervals(w.points, cuts).filter(pc => carriage || keepPathPiece(w, pc)) : [w.points];
       if (band.raised > 0) {
@@ -653,6 +656,20 @@ function chop(pts: readonly Vec2[], len: number): Vec2[][] {
 }
 
 /**
+ * roads-v1: station intervals (1 m) of a band of a way the polygons cover only in part, where a polygon of the
+ * band's own kind lies under the band's centre (RoadIndex.coversBand): the polygon is the surface there.
+ */
+function coverCuts(w: LocalWay, band: Band, index: RoadIndex): [number, number][] {
+  const st = stations(w.points), total = st[st.length - 1], bridge = isBridgeWay(w), cuts: [number, number][] = [];
+  for (let s = 0; s <= total; s += 1) {
+    const t = Math.min(s, total), p = pointAt(w.points, st, t), q = pointAt(w.points, st, Math.min(total, t + 0.5)), r = pointAt(w.points, st, Math.max(0, t - 0.5));
+    const nl = leftOf(dirOf(r, q)), x = p[0] + nl[0] * band.offset, y = p[1] + nl[1] * band.offset;
+    if (index.coversBand(x, y, band.surface, bridge)) cuts.push([s - 0.5, s + 0.5]);
+  }
+  return cuts;
+}
+
+/**
  * roads-v1: the parts of a way's rails over a carriageway polygon (or off the survey). Stations every metre; a
  * station whose class is not carriage is dropped with half a metre either side. Returns the pieces and the stations dropped.
  */
@@ -699,14 +716,16 @@ export function crossCuts(w: LocalWay, nodes: Map<string, Node>, st: readonly nu
   for (let s = 0; s <= total; s += 1) {
     const p = pointAt(w.points, st, Math.min(s, total)), q = pointAt(w.points, st, Math.min(total, s + 0.5)), r = pointAt(w.points, st, Math.max(0, s - 0.5)), d = dirOf(r, q);
     let hit = false;
-    for (const seg of cg.grid.get(`${Math.floor(p[0] / cg.G)}:${Math.floor(p[1] / cg.G)}`) ?? []) {
+    // The 3 × 3 grid cells around the station: a crossing within reach may lie just over a 20 m cell edge.
+    const gx = Math.floor(p[0] / cg.G), gy = Math.floor(p[1] / cg.G);
+    search: for (let ix = gx - 1; ix <= gx + 1; ix++) for (let iy = gy - 1; iy <= gy + 1; iy++) for (const seg of cg.grid.get(`${ix}:${iy}`) ?? []) {
       if (linked.has(seg.way.id)) continue;
       const dx = seg.b[0] - seg.a[0], dy = seg.b[1] - seg.a[1], l2 = dx * dx + dy * dy;
       if (l2 < 1e-6) continue;
       const l = Math.sqrt(l2);
       if (Math.abs(cross2(d, [dx / l, dy / l])) < minSin) continue;
       const t = Math.max(0, Math.min(1, ((p[0] - seg.a[0]) * dx + (p[1] - seg.a[1]) * dy) / l2));
-      if (Math.hypot(seg.a[0] + dx * t - p[0], seg.a[1] + dy * t - p[1]) <= seg.way.section.coreHalfWidth + 1) { hit = true; break; }
+      if (Math.hypot(seg.a[0] + dx * t - p[0], seg.a[1] + dy * t - p[1]) <= seg.way.section.coreHalfWidth + 1) { hit = true; break search; }
     }
     if (hit) cuts.push([s - 0.5, s + 0.5]);
   }
