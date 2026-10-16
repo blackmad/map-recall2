@@ -122,6 +122,87 @@ export function currentBoostWeight(): number {
   return Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : 0;
 }
 
+/**
+ * The boost with hysteresis (ride review 2026-10-14, J2). Coming from a small target the weight fades over
+ * [`SMALL_TARGET_SHARE`, `SMALL_TARGET_FADE_SHARE`] as before; once the share has reached the fade end the target is
+ * latched large, and the weight then fades back in only over [`SMALL_TARGET_UNLATCH_SHARE`, `SMALL_TARGET_SHARE`],
+ * unlatching at the lower end. Both bands give 0 at the latch and 1 at the unlatch, so the weight never jumps, and a
+ * share wobbling around 2–4 % (a model half off the frame edge, a camera easing) cannot flicker the wash on.
+ */
+export const SMALL_TARGET_UNLATCH_SHARE = 0.01;
+export function smallTargetBoostLatched(share: number, latched: boolean): { boost: { share: number; weight: number; shortfall: number }; latched: boolean } {
+  const boost = smallTargetBoost(share);
+  if (!(share > 0) || !Number.isFinite(share)) return { boost, latched: false };
+  const next = latched ? share > SMALL_TARGET_UNLATCH_SHARE : share >= SMALL_TARGET_FADE_SHARE;
+  if (!next) return { boost, latched: false };
+  const t = Math.min(1, Math.max(0, (share - SMALL_TARGET_UNLATCH_SHARE) / (SMALL_TARGET_SHARE - SMALL_TARGET_UNLATCH_SHARE)));
+  return { boost: { ...boost, weight: 1 - t * t * (3 - 2 * t) }, latched: true };
+}
+
+/**
+ * The highlighted model's own extent on screen (J2: the Westerkerk took the small-target roof wash at 0.42–0.66 while
+ * the church filled ~15 % of the frame, because the boost was measured on the focus footprint, the 9.6 m Westertoren
+ * polygon). The outline pass of every whole highlighted mesh (landmark GLBs, recipe houses, the marker's hull; not the
+ * merged chunks or batched features, whose geometry is the whole tile) leaves its bounding box's eight corners, in CSS
+ * pixels, on this global each frame; the marker takes the convex hull of the fresh ones, clipped to the frame.
+ */
+export const HIGHLIGHT_EXTENT_GLOBAL = '__canalRecallHighlightExtent';
+/** Corners older than this (ms) are a model no longer drawn. */
+export const EXTENT_FRESH_MS = 250;
+export interface ScreenExtent { t: number; points: number[]; behind: boolean; width: number; height: number }
+export function extentRegistry(): Map<unknown, ScreenExtent> {
+  const g = globalThis as any;
+  return g[HIGHLIGHT_EXTENT_GLOBAL] instanceof Map ? g[HIGHLIGHT_EXTENT_GLOBAL] : (g[HIGHLIGHT_EXTENT_GLOBAL] = new Map());
+}
+
+/** Convex hull (monotone chain) of [x, y, x, y, …], counter-clockwise in a y-up frame. */
+export function convexHull(flat: readonly number[]): [number, number][] {
+  const p: [number, number][] = [];
+  for (let i = 0; i + 1 < flat.length; i += 2) p.push([flat[i], flat[i + 1]]);
+  p.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  if (p.length < 3) return p;
+  const cross = (o: [number, number], a: [number, number], b: [number, number]) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lower: [number, number][] = [], upper: [number, number][] = [];
+  for (const q of p) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], q) <= 0) lower.pop(); lower.push(q); }
+  for (const q of [...p].reverse()) { while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], q) <= 0) upper.pop(); upper.push(q); }
+  return [...lower.slice(0, -1), ...upper.slice(0, -1)];
+}
+
+/** Area of a polygon clipped to [0, w] × [0, h] (Sutherland–Hodgman). */
+export function clippedArea(poly: readonly [number, number][], w: number, h: number): number {
+  let out = poly.slice();
+  const clip = (inside: (q: [number, number]) => boolean, cut: (a: [number, number], b: [number, number]) => [number, number]) => {
+    const res: [number, number][] = [];
+    for (let i = 0; i < out.length; i++) {
+      const a = out[i], b = out[(i + 1) % out.length], ia = inside(a), ib = inside(b);
+      if (ia) res.push(a);
+      if (ia !== ib) res.push(cut(a, b));
+    }
+    out = res;
+  };
+  const at = (a: [number, number], b: [number, number], k: 0 | 1, v: number): [number, number] => { const t = (v - a[k]) / (b[k] - a[k]); return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; };
+  clip(q => q[0] >= 0, (a, b) => at(a, b, 0, 0)); clip(q => q[0] <= w, (a, b) => at(a, b, 0, w));
+  clip(q => q[1] >= 0, (a, b) => at(a, b, 1, 0)); clip(q => q[1] <= h, (a, b) => at(a, b, 1, h));
+  let area = 0;
+  for (let i = 0; i < out.length; i++) { const [x0, y0] = out[i], [x1, y1] = out[(i + 1) % out.length]; area += x0 * y1 - x1 * y0; }
+  return Math.abs(area) / 2;
+}
+
+/**
+ * Share of the frame the highlighted models cover (their boxes' hull, clipped to the frame), from the extents fresh
+ * at `now`; 1 when a box reaches behind the camera (the camera is at or in the model); 0 with none.
+ */
+export function modelScreenShare(extents: Iterable<ScreenExtent>, now: number): number {
+  const pts: number[] = [];
+  let w = 0, h = 0;
+  for (const e of extents) {
+    if (now - e.t > EXTENT_FRESH_MS) continue;
+    if (e.behind) return 1;
+    pts.push(...e.points); w = e.width; h = e.height;
+  }
+  return pts.length >= 6 && w > 0 && h > 0 ? Math.min(1, clippedArea(convexHull(pts), w, h) / (w * h)) : 0;
+}
+
 /** The outline hull sits this far behind the surface along the view ray (mesh units: metres). */
 export const OUTLINE_PUSH_M = 0.3;
 /** Rim pulse period, seconds; the rim swings between 55 % and 100 % of `RIM_STRENGTH`. */
@@ -459,9 +540,24 @@ export function createHighlightPassMaterial(THREE: any, kind: PassKind, options:
   return material;
 }
 
+/** Leave a whole mesh's box corners on screen (CSS px) in the extent registry (`modelScreenShare`). `mvp`: mesh → clip. */
+function recordExtent(pass: any, mvp: any, renderer: any, size: any): void {
+  const box = pass.geometry?.boundingBox, e = mvp.elements;
+  if (!box) return;
+  const css = renderer.domElement, width = css?.clientWidth || size.x, height = css?.clientHeight || size.y, points: number[] = [];
+  let behind = false;
+  for (let k = 0; k < 8; k++) {
+    const x = k & 1 ? box.max.x : box.min.x, y = k & 2 ? box.max.y : box.min.y, z = k & 4 ? box.max.z : box.min.z;
+    const cx = e[0] * x + e[4] * y + e[8] * z + e[12], cy = e[1] * x + e[5] * y + e[9] * z + e[13], w = e[3] * x + e[7] * y + e[11] * z + e[15];
+    if (!(w > 1e-9)) { behind = true; break; }
+    points.push((cx / w + 1) / 2 * width, (1 - cy / w) / 2 * height);
+  }
+  extentRegistry().set(pass, { t: performance.now(), points, behind, width, height });
+}
+
 /** Remove the passes `attachHighlightPasses` added under `mesh`. */
 export function detachHighlightPasses(mesh: any): void {
-  for (const pass of mesh?.userData?.[PASS_TAG] ?? []) { mesh.remove(pass); pass.material.dispose(); }
+  for (const pass of mesh?.userData?.[PASS_TAG] ?? []) { mesh.remove(pass); pass.material.dispose(); extentRegistry().delete(pass); }
   if (mesh?.userData) delete mesh.userData[PASS_TAG];
 }
 
@@ -497,6 +593,9 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
   const passes: any[] = [];
   const mvp = new THREE.Matrix4(), eye = new THREE.Vector4(), size = new THREE.Vector2(), toMesh = new THREE.Matrix3(), scale = new THREE.Vector3();
   const metreUp = options.up ?? [0, 0, 1];
+  // Whole meshes only: a merged chunk's or a batched tile's box is the whole tile, not the building (J2).
+  const measureExtent = !options.merged && !options.feature && !mesh.isInstancedMesh;
+  if (measureExtent && !geometry.boundingBox) geometry.computeBoundingBox?.();
   for (const kind of kinds) {
     const material = createHighlightPassMaterial(THREE, kind, { merged: options.merged, feature: options.feature, accent: options.accent ?? highlightAccent(options.style) });
     material.uniforms.hlCentre.value.set(centre[0], centre[1], centre[2]);
@@ -531,7 +630,9 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
       u.hlWidthPx.value = (forced ?? OUTLINE_PX) * (size.x / css);
       u.hlFarScale.value = forced == null ? OUTLINE_FAR_PX / OUTLINE_PX : 1;
       // The eye in the mesh's space: the point clip space sends to w = 0 (works for MapLibre's baked projection too).
-      mvp.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(pass.matrixWorld).invert();
+      mvp.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(pass.matrixWorld);
+      if (kind === 'outline' && measureExtent) recordExtent(pass, mvp, renderer, size);
+      mvp.invert();
       eye.set(0, 0, 1, 0).applyMatrix4(mvp);
       if (Math.abs(eye.w) > 1e-12) u.hlEye.value.set(eye.x / eye.w, eye.y / eye.w, eye.z / eye.w);
       u.hlTime.value = performance.now() / 1000;
