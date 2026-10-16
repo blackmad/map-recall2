@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Centraal Station: the Cuypers front, the east wing and AMSTERDAM on the IJ canopy (2026-10-16)
+
+User (2026-10-16): "centraal could probably use some help" (flat red brick, plain
+dark arched holes, flat clock disc) and "also something here" (the east wing, a
+windowless flat 20 m box). Lane `worktree-agent-af7fbb1991849ccbd`, inventory
+first (57 items: 41 modelled, 14 simplified, 2 skipped): framed windows with
+mullions, transoms and bars per section from `centraal-station-elevations.json`,
+stone banding, dormers on the slopes, the gilded clock and the wind dial, the
+gilt panels, shield frieze and crowned cartouches, the red canopy. The east wing
+is part of the same pand (0363100012185598); the box was the city layer drawing
+OSM parts w752286896/7/8, w1239767701/2, w752328422-426, w752653574/5,
+w752738610, now suppressed, and the wing is modelled (stone ground storey with
+red doors, white-barred sashes, pilasters, gables at 24.5 and 21.4 m, slate
+hipped roof). The user corrected me: the AMSTERDAM roof lettering is real; it is
+re-laid from the PDOK 2023 orthophoto (glyphs x -127.5..123.9, band 18.4 m,
+maroon #7a4850, the hue reconstructed), pinned in `check-centraal-complex.ts`.
+The CC BY Sketchfab model (Jungle Jim, uid 582a09c2…) was a reference only: no
+geometry or textures ship (AI-assisted, unverified, brick/stone only in its
+textures; 46.5 m against the measured 41.8 m finial). New typed kit
+`ornateFrontKit.ts` (8 tests). 42,807 tris / 406,912 B (OVER_BUDGET allows
+Centraal 60k / 650 KB), lod1 7,387; `audit:glb` PASS; `check:canal` 158/158.
+
 ## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
 
 User (2026-10-16): "I feel like there should probably be a building here?", an
