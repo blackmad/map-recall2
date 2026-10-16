@@ -304,6 +304,8 @@ assert.equal(repairOriginTranslation('De Hollandse Iepbrug verwijst naar de vele
   assert.ok(!published.origins.some(origin => origin.name === 'Scharwouderstraat'));
   // Regression: the Zaandijkspoorbrug record carries the Zaandijkstraat's former-street text.
   assert.ok(!published.origins.some(origin => origin.name === 'Zaandijksspoorbrug'));
+  // Regression: the Hoge Sluis is not translated into "High Lock".
+  assert.ok(!published.origins.some(origin => origin.name === 'Hoge Sluis' && /High Lock/.test(origin.en)));
   // Regression: the register's Vier Windstrekenbrug text names west twice.
   assert.ok(!published.origins.some(origin => origin.name === 'Vierwindstrekenbrug' && /West, South and West/.test(origin.en)));
   // Regression: the Smallepadsgracht record repeats the Smalschipstraat's boat text.

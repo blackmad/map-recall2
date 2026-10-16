@@ -83,7 +83,10 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     explained++;
     if (!englishOf(origin)) continue;
     english++;
-    const card = englishFor(name, origin, kind);
+    const text = englishFor(name, origin, kind);
+    // A few register texts stop without a full stop ("… deze fietsbrug"); on a
+    // bridge card the Wikipedia lede follows, and would run on from it.
+    const card = kind === 'bridge' && /[\p{L}\d]$/u.test(text) ? `${text}.` : text;
     if (!card) continue;
     published.set(`${kind}\u0000${name}`, { name, kind, en: card, bagId: origin.bagId });
   }
