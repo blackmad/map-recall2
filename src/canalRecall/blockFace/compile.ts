@@ -77,7 +77,8 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
   /** Photo skyline eaves per pand (m above the pand's ground), a row member's confirmation that it really stands off the row line. */
   skylineEavesM?: Map<string, number>} = {}): FaceGroundPlan {
   const sharedNapM = cm(median(facts.map(f => f.heights.groundNAP)));
-  const shiftsM = facts.map(f => { const d = f.heights.groundNAP - sharedNapM; return face.continuity.streetLevel === 'shared' && Math.abs(d) <= 1 ? cm(d) : 0; });
+  const forced = new Set(face.continuity.streetLevelPands?.pands ?? []);
+  const shiftsM = facts.map(f => { const d = f.heights.groundNAP - sharedNapM; return face.continuity.streetLevel === 'shared' && (Math.abs(d) <= 1 || forced.has(f.pandId)) ? cm(d) : 0; });
   const grounded = facts.map((f, i) => shiftsM[i] ? shiftFactsHeights(f, shiftsM[i], sharedNapM) : f);
   const eavesBefore = grounded.map(fitEaves), eavesAfter = [...eavesBefore];
   const index = new Map(face.houses.map((h, i) => [h.pandId, i]));
@@ -532,7 +533,7 @@ function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFac
       // Several fronts on the street (two houses in one pand, tower bays): each keeps its eaves (fit's own split).
       const same = intents[i].fronts.filter(fr => fr.street === street), ff = fit.facts.fronts.find(x => x.street === street);
       const ends = same.length > 1 && ff ? splitChain(ff, (() => { const sh = same.map(fr => fr.share ?? 1 / same.length), t = sh.reduce((a, b) => a + b, 0); return sh.map(x => x / t); })()).pairs : null;
-      const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k]})) : undefined;
+      const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k], ...(fr.stepBody ? {body: true} : {})})) : undefined;
       return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}),
         // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them.
         faceSetbackM: intents[i].fronts.some(fr => fr.street === intents[i].fronts[0].street && fr.dormers && fr.roofFront !== 'mansard') ? 0.4 : 0}, pitch ? {frontPitchDeg: pitch} : {});

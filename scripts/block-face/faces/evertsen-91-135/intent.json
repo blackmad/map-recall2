@@ -97,6 +97,7 @@
       "share": 0.34,
       "crown": "parapet",
       "overrides": {
+       "stepBody": true,
        "bays": [
         1,
         1,

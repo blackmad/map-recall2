@@ -158,3 +158,43 @@ test('94-142: box frames flank the shared lisenes; 96 ends the row with a wide w
   assert.deepEqual(wide?.verticalBars, [0.25, 0.5, 0.75]);
   assert.equal(end.recipe.elevations[1].openings.value.filter(o => /s[123]-/.test(o.id)).length, 0, 'no windows on the unseen tail');
 });
+
+/** A face's houses through the face planner (measured coping, shared ground, canopies), as the chunk compile builds them. */
+function planned(faceId: string) {
+  const dir = `scripts/block-face/faces/${faceId}`;
+  const f = validateBlockFace(JSON.parse(fs.readFileSync(`${dir}/intent.json`, 'utf8')), JSON.parse(fs.readFileSync(`${dir}/discovery.json`, 'utf8')).members);
+  const st = JSON.parse(fs.readFileSync(`${dir}/strip.json`, 'utf8'));
+  const prep = prepareFaceFacts(f, new Map(f.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(`${dir}/pands/${h.pandId}/facts.json`, 'utf8'))])), {strip: {heightPx: st.height, pixelsPerMetre: st.pixelsPerMetre, groundNAP: st.groundNAP}});
+  const k = (p: string) => prep.intents.findIndex(i => i.pandId.endsWith(p));
+  return {face: f, prep, fit: (p: string) => fitIntent(prep.intents[k(p)], prep.ground.facts[k(p)])};
+}
+
+test('45-53: small panes all over; 43 and 45 stand on the shared street level despite a 1.1-1.4 m 3DBAG maaiveld', () => {
+  const {face, fit} = planned('evertsen-43-57');
+  const w = fit('127935').recipe.elevations[0].openings.value.find(o => o.id === 's2-b1')!;
+  assert.deepEqual(w.verticalBars, [0.25, 0.5, 0.75]);
+  assert.deepEqual(w.horizontalBars, [0.36, 0.8]);
+  // One coping line: 45 (maaiveld 1.43 m NAP) gets the row's eaves, not 1.4 m less.
+  assert.ok(Math.abs(fit('061604').report.fronts[0].eavesM - fit('094327').report.fronts[0].eavesM) < 0.1);
+  const bad = structuredClone(face) as any;
+  bad.continuity.streetLevel = 'stepped';
+  assert.throws(() => validateBlockFace(bad, bad.houses.map((h: {pandId: string}) => h.pandId)), /streetLevelPands: only with streetLevel "shared"/);
+});
+
+test('68-92: the 2.6 m windows straddle the party walls (halves flush with the shared line), four lights with small-pane top lights', () => {
+  const {fit} = planned('evertsen-68-92');
+  const a = fit('144630'), b = fit('092098');
+  const s2 = (x: typeof a) => x.recipe.elevations[0].openings.value.filter(o => /^s2-/.test(o.id)).sort((p, q) => p.leftM - q.leftM);
+  const last = s2(a).at(-1)!, first = s2(b)[0];
+  assert.ok(a.report.fronts[0].widthM - (last.leftM + last.widthM) < 0.05 && first.leftM < 0.05, `${last.leftM}+${last.widthM} | ${first.leftM}`);
+  assert.ok(Math.abs(last.widthM + first.widthM - 2.62) < 0.15, 'the halves make one 2.6 m window');
+  const full = s2(a).find(o => o.widthM > 2.4)!;
+  assert.equal(full.diagonalBars?.length, 4);
+});
+
+test('52-56: the row house beside the low end keeps its own roof band (stepBody), not the tower-bay rule', () => {
+  const {prep} = planned('evertsen-52-66');
+  const r = prep.recipeRoofs!.find(x => x.pandId.endsWith('147483'))!;
+  assert.ok(!r.notes.some(n => /tower bay/.test(n)), r.notes.join('; '));
+  assert.ok(r.notes.some(n => /^per-front eaves 17\.\d+\/13\.\d+ m$/.test(n)), r.notes.join('; '));
+});

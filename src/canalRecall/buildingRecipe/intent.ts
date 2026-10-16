@@ -40,9 +40,12 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * `casement-gridded-toplight` the same with the top light in small panes (three bars across it); `casement-triple` a
  * fixed centre light between two narrow side-hung casements (mullions at 0.27 and 0.73, no transom);
  * `casement-toplight-double` two casement pairs side by side under one top light (a 3 m window of four lights, the
- * end house of a hood-lisene row); `casement-pair` two side-hung casements with no top light (a mullion only).
+ * end house of a hood-lisene row); `casement-gridded-toplight-double` the same with a small-pane top light (two bars over
+ * each light: J.F. Staal's 2.6 m windows on 68-92); `casement-pair` two side-hung casements with no top light (a mullion only);
+ * `casement-small-panes` two casements glazed in small panes all over (bars at thirds across, a transom row under a top
+ * light: Jan Evertsenstraat 45-53).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-pair'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -186,6 +189,13 @@ export interface FrontIntent {
    * frame (`bayWindows.hood`) takes the kind of its first axis. Wins over `storeyWindows`. Absent = byte-identical.
    */
   axisWindows?: Record<string, WindowKind>;
+  /**
+   * One front of a pand with several fronts on the street, raised over its lower neighbour with a full-depth body behind
+   * it: its flat roof band keeps its own eaves (a stepped flat roof) instead of being read as a tower bay that takes the
+   * neighbour's roof (a front-plane wall with nothing behind it). Jan Evertsenstraat 52-56 (the row house beside the low
+   * end) and 89A-91 (the 15.9 m step). Absent = the tower-bay rule, byte-identical.
+   */
+  stepBody?: boolean;
   /** A storey whose windows do not sit on the shared bays gives its own weights (one per window of that storey; key = storey index from the ground, or "last"), e.g. `{"4": [1, 0.6, 0.6]}` for one far-left and a close pair. */
   storeyBayWidths?: Record<string, number[]>;
   /**
