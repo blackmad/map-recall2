@@ -4,7 +4,8 @@
  * (blockFace/bayOutline.ts `frontBump`), the discovered facts move to `pands/<id>/facts-bay-outline.json` (provenance,
  * and the evidence auto-place reads the bay from) and `facts.json` becomes `chordOverFrontBump`'s rebuild. Idempotent:
  * a pand that already has `facts-bay-outline.json` is left alone, unless `--redo` rebuilds it from that file. The strip is
- * unchanged (the endpoints do not move).
+ * unchanged: the endpoints do not move, except where one stood on the bay (`FrontBump.lineRD`, Eemsstraat 30), which
+ * moves to the party corner on the facade line a few centimetres along.
  *
  *   node --import tsx scripts/block-face/bay-outline.ts --face=boterdiep-36-66[,eems-6-78,...] [--redo]
  */

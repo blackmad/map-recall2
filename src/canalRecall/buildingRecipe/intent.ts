@@ -251,9 +251,11 @@ export interface FrontIntent {
    * A window ribbon (Rivierenbuurt 1934, Boterdiepstraat 3-59: the top storey's band of three or four lights over the
    * two-axis body): the storey's windows stand side by side between `from` and `to` (shares of the front, left to
    * right as seen), equal, their frames meeting in one post; key = storey index or last. Off the body's axes, so not
-   * together with `storeyAxes`/`storeyBayWidths` for that storey. Absent = byte-identical.
+   * together with `storeyAxes`/`storeyBayWidths` for that storey. Absent = byte-identical. `pier` (m, 0.02-1): brick
+   * between neighbouring windows instead of the touching frames (Boterdiepstraat 17: three two-light windows, 0.38 m
+   * apart), the first and last window then standing on `from` and `to`.
    */
-  storeyRibbons?: Record<string, {from: number; to: number}>;
+  storeyRibbons?: Record<string, {from: number; to: number; pier?: number}>;
   /**
    * Gable/crown that covers only part of the front: `{from, to}` as fractions of the front width from the viewer's
    * left (`{from: 0.4, to: 1}` = the right 60 %). Gable windows, the hoist and the crown cap follow it. Default: the whole front.
@@ -1030,7 +1032,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     for (const [k, v] of Object.entries(f.storeyRibbons ?? {})) {
       const s = Number(k), r = v as unknown as Record<string, unknown>;
       if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyRibbons.${k}: key must be a storey index or "last"`);
-      else if (!r || typeof r !== 'object' || Object.keys(r).some(x => x !== 'from' && x !== 'to') || !(typeof r.from === 'number' && typeof r.to === 'number' && r.from >= 0 && r.to <= 1 && r.to - r.from >= 0.2)) problems.push(`${at}.storeyRibbons.${k}: {from, to} shares of the front, 0 <= from, to <= 1, at least 0.2 apart`);
+      else if (!r || typeof r !== 'object' || Object.keys(r).some(x => x !== 'from' && x !== 'to' && x !== 'pier') || !(typeof r.from === 'number' && typeof r.to === 'number' && r.from >= 0 && r.to <= 1 && r.to - r.from >= 0.2)) problems.push(`${at}.storeyRibbons.${k}: {from, to} shares of the front, 0 <= from, to <= 1, at least 0.2 apart`);
+      else if (r.pier !== undefined && !(typeof r.pier === 'number' && r.pier >= 0.02 && r.pier <= 1)) problems.push(`${at}.storeyRibbons.${k}.pier: metres between windows, 0.02-1`);
       else if (f.storeyAxes?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyRibbons.${k}: not together with storeyAxes or storeyBayWidths for the same storey`);
     }
     for (const [k, v] of Object.entries(f.storeyBayWidths ?? {})) {

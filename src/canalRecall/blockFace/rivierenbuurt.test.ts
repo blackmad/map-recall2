@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {chordOverFrontBump, frontBump, BUMP_MIN_DEPTH_M} from './bayOutline.ts';
-import {decidePand, fillPairs, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {decidePand, fillPairs, rowCoherence, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {defaultTypeLoader} from './typeLibrary.ts';
 import type {StripPalette} from './stripPalette.ts';
 
@@ -19,6 +19,30 @@ const discovered = (id: string): BuildingFacts => {
   return JSON.parse(fs.readFileSync(fs.existsSync(kept) ? kept : `${FACE}/0363100012${id}/facts.json`, 'utf8'));
 };
 const flat = defaultTypeLoader('rijn-1934-flat-three') as MatchableType, erker = defaultTypeLoader('rijn-1934-erker-pair') as MatchableType;
+
+test('frontBump: an erker that runs into the party wall (Eemsstraat 30, 111889) is measured on the rear facade line', () => {
+  const f30: BuildingFacts = JSON.parse(fs.readFileSync('scripts/block-face/faces/eems-6-78/pands/0363100012111889/facts-bay-outline.json', 'utf8'));
+  const b = frontBump(f30.fronts[0])!;
+  assert.ok(b?.lineRD, 'the discovered front ends on the bay side, so the facade line comes from the chain');
+  assert.ok(b.centre > 0.8 && b.centre < 0.9, `centre ${b.centre}`);
+  assert.ok(b.depthM > 0.6 && b.depthM < 0.7, `depth ${b.depthM}`);
+  const next = chordOverFrontBump(f30)!;
+  const [a, z] = next.fronts[0].endpointsRD;
+  // The chord ends on the party corner the neighbour's front (121394, Eemsstraat 28) starts from.
+  assert.ok(Math.hypot(z[0] - 122389.0195, z[1] - 483920.5932) < 0.01, `end ${z}`);
+  assert.ok(Math.hypot(a[0] - 122390.3445, a[1] - 483914.6423) < 0.01, `start ${a}`);
+  assert.ok(Math.abs(next.fronts[0].widthM - 6.1) < 0.05, `width ${next.fronts[0].widthM}`);
+  // No spike along the facade line: no vertex where the ring turns straight back.
+  for (const ring of [next.bagFootprintRD[0], ...next.surveyFootprintPolygonsRD.map(p => p[0]), ...next.roofsRD.map(r => r.ringsRD[0])]) {
+    for (let i = 0; i < ring.length; i++) {
+      const p = ring[(i + ring.length - 1) % ring.length], v = ring[i], q = ring[(i + 1) % ring.length];
+      const e1 = [v[0] - p[0], v[1] - p[1]], e2 = [q[0] - v[0], q[1] - v[1]];
+      assert.ok(!(Math.abs(e1[0] * e2[1] - e1[1] * e2[0]) < 1e-3 && e1[0] * e2[0] + e1[1] * e2[1] < 0), `spike at ${v}`);
+    }
+  }
+  // A front with its ends on the facade line keeps the old measure (no lineRD).
+  assert.equal(frontBump(discovered('142115').fronts[0])!.lineRD, undefined);
+});
 
 test('frontBump: Boterdiepstraat erkers in the BAG outline, flat fronts straight', () => {
   // 142115 (Boterdiepstraat 40): the erker on the left of the 6.1 m front, 0.67 m deep.
@@ -82,4 +106,20 @@ test('doorsPairAcross: a flat front with an unread door meets the door of the er
   const plain = {...flat, match: {...flat.match!, doorsPairAcross: undefined}} as MatchableType;
   const ds2: Decision[] = [ds[0], ds[1], decidePand([plain], pand({pandId: '0363100012096263', bagBay: null}), 'b-096263', 'd'), decidePand([plain], pand({pandId: '0363100012149435', bagBay: null}), 'b-149435', 'd')];
   assert.equal(fillPairs(ds2, [erker, plain]), 0);
+});
+
+test('rowCoherence: a lone pand between two houses of one type takes theirs (Boterdiepstraat 23A-27)', () => {
+  const ribbon = defaultTypeLoader('rijn-1934-erker-ribbon') as MatchableType, attic = defaultTypeLoader('rijn-1934-erker-white-attic') as MatchableType;
+  const types = [flat, erker, ribbon, attic];
+  // BAG puts 25's erker at 0.75 of the front, its neighbours' at 0.65: 25 lands on the white-attic type.
+  const at = (id: string, address: string, centre: number) => pand({pandId: `0363100012${id}`, address, builtYear: 1933, bagBay: {fromM: 3.4, toM: 4.9, depthM: 0.7, centre}});
+  const evs = [at('147270', 'Boterdiepstraat 23A', 0.65), at('117854', 'Boterdiepstraat 25', 0.75), at('071875', 'Boterdiepstraat 27', 0.65)];
+  const ds: Decision[] = evs.map(ev => decidePand(types, ev, `boterdiep-${ev.pandId.slice(-6)}`, '2020-01-07'));
+  assert.deepEqual(ds.map(d => d.kind === 'placed' ? d.typeId : null), ['rijn-1934-erker-ribbon', 'rijn-1934-erker-white-attic', 'rijn-1934-erker-ribbon']);
+  assert.deepEqual(rowCoherence(ds, types, evs, '2020-01-07'), ['0363100012117854']);
+  const mid = ds[1];
+  assert.ok(mid.kind === 'placed' && mid.typeId === 'rijn-1934-erker-ribbon' && !mid.house.type!.mirror);
+  assert.ok(mid.kind === 'placed' && mid.notes.some(n => /^row coherence: between two rijn-1934-erker-ribbon houses, was rijn-1934-erker-white-attic \(BAG bay centre 0.75\)/.test(n)));
+  // A pand already of its neighbours' type: nothing changes.
+  assert.deepEqual(rowCoherence(ds, types, evs, '2020-01-07'), []);
 });

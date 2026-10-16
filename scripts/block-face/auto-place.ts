@@ -16,7 +16,7 @@ import fs from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, decidePand, fillPairs, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, decidePand, fillPairs, rowCoherence, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
@@ -244,6 +244,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
     fillPairs(decisions, types);
+    const rowSet = rowCoherence(decisions, types, evs, strip.date);
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
     let runFaces: {id: string; ids: string[]}[] = [];
@@ -323,7 +324,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       // --photo-decides: a placement whose candidate (another plausible type, or the same type mirrored) the photo's edges
       // prefer by more than the challenge margin is switched to it, once per pand; the next pass compiles and gates it.
       if (photoDecides && pass === 0) for (const [k, d] of decisions.entries()) {
-        if (d.kind !== 'placed' || switched.has(d.pandId)) continue;
+        if (d.kind !== 'placed' || switched.has(d.pandId) || rowSet.includes(d.pandId)) continue; // row coherence decided these
         const l = likeness.get(d.pandId), own = variantKey(d);
         if (!l || l.ncc === null) continue;
         // A side the evidence set (door or accent read, BAG bay, a paired neighbour's door) is not reopened by a same-type flip.

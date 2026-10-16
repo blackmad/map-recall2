@@ -75,22 +75,28 @@ test('without the keys no overhang and no canopy mesh (the kit stays as it was)'
   assert.equal(meshes(onlyOverhang.group, /^eaves-overhang\//).length, 2);
 });
 
-test('storeyRibbons: Boterdiepstraat 17 (134610) top storey, four lights side by side over 0.18-0.91 of the front', async () => {
+test('storeyRibbons: Boterdiepstraat 17 (134610) top storey, three two-light windows 0.38 m apart over 0.174-0.911 of the front', async () => {
   const pand = '0363100012134610', f17: BuildingFacts = JSON.parse(fs.readFileSync(`scripts/block-face/faces/boterdiep-3-59/pands/${pand}/facts.json`, 'utf8'));
   const t = defaultTypeLoader('rijn-1934-erker-ribbon')!;
   const design = resolvePlacement(t, {type: t.id}, 'Boterdiepstraat').design;
   const intent = validateIntent({schemaVersion: 1, kind: 'canal-house', id: 'boterdiep-134610', pandId: pand, address: 'Boterdiepstraat 17', sources: [{id: 'strip', kind: 'street-panorama', capturedAt: '2020-01-07'}], ...design} as CanalHouseIntent);
-  const built = await compileBuilding(intent, f17);
-  const width = built.fit.fronts[0].widthM;
-  const lights = built.recipe.elevations[0].openings.value.filter(o => /^s3-b\d$/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
-  assert.equal(lights.length, 4);
-  assert.ok(Math.abs(lights[0].leftM - (0.18 * width + 0.01)) < 0.02, `ribbon starts ${lights[0].leftM}`);
-  assert.ok(Math.abs(lights[3].leftM + lights[3].widthM - (0.91 * width - 0.01)) < 0.02, `ribbon ends ${lights[3].leftM + lights[3].widthM}`);
-  for (let k = 1; k < 4; k++) assert.ok(Math.abs(lights[k].leftM - (lights[k - 1].leftM + lights[k - 1].widthM) - RIBBON_POST_M) < 1e-3, 'lights 2 cm apart');
-  // The body keeps its narrow axis under the ribbon.
-  assert.equal(built.recipe.elevations[0].openings.value.filter(o => /^s1-b\d$/.test(o.id)).length, 1);
+  const width = (await compileBuilding(intent, f17)).fit.fronts[0].widthM;
+  const tops = async (it: CanalHouseIntent) => (await compileBuilding(it, f17)).recipe.elevations[0].openings.value.filter(o => /^s3-b\d$/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
+  // Measured on the 2020 strip at 80 px/m: 1.06-2.31, 2.69-3.94, 4.31-5.56 m.
+  const piers = await tops(intent);
+  assert.equal(piers.length, 3);
+  assert.ok(Math.abs(piers[0].leftM - 0.174 * width) < 0.01, `band starts ${piers[0].leftM}`);
+  assert.ok(Math.abs(piers[2].leftM + piers[2].widthM - 0.911 * width) < 0.01, `band ends ${piers[2].leftM + piers[2].widthM}`);
+  for (let k = 1; k < 3; k++) assert.ok(Math.abs(piers[k].leftM - (piers[k - 1].leftM + piers[k - 1].widthM) - 0.38) < 0.01, 'brick piers 0.38 m');
+  // Without a pier the windows touch: one post of RIBBON_POST_M between frames.
+  const touching = await tops({...intent, fronts: intent.fronts.map(f => ({...f, storeyRibbons: {'3': {from: 0.18, to: 0.91}}}))});
+  for (let k = 1; k < 3; k++) assert.ok(Math.abs(touching[k].leftM - (touching[k - 1].leftM + touching[k - 1].widthM) - RIBBON_POST_M) < 1e-3, 'lights 2 cm apart');
+  assert.ok(Math.abs(touching[0].leftM - (0.18 * width + RIBBON_POST_M / 2)) < 0.01);
+  // The body keeps its narrow axis under the band.
+  assert.equal((await compileBuilding(intent, f17)).recipe.elevations[0].openings.value.filter(o => /^s1-b\d$/.test(o.id)).length, 1);
   const bad = (r: unknown) => () => validateIntent({...intent, fronts: intent.fronts.map(f => ({...f, storeyRibbons: r}))} as CanalHouseIntent);
   assert.throws(bad({'3': {from: 0.5, to: 0.6}}), /storeyRibbons.3/);
   assert.throws(bad({'7': {from: 0.1, to: 0.9}}), /storeyRibbons.7/);
+  assert.throws(bad({'3': {from: 0.1, to: 0.9, pier: 3}}), /storeyRibbons.3.pier/);
   assert.throws(bad({'3': {from: 0.1, to: 0.9, leftM: 1}}), /storeyRibbons|coordinate/);
 });

@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "rijn-1934-erker-ribbon",
  "district": "rivierenbuurt",
- "description": "Rijnbuurt-Oost (Plan Zuid, BAG 1934), Boterdiepstraat 9-33 (odd side): a 6.1 m brick front, every house alike (not mirrored): the house door with a side light at the left party wall under a white slab canopy, a narrow window axis over it, a two-storey canted brick erker on the right axis (white-framed three-light glazing over brick stallrisers on storeys 1-2) standing on a white console over a wide ground window, and the top storey a ribbon of four lights over both axes, under a shallow flat-roof overhang with a white fascia",
+ "description": "Rijnbuurt-Oost (Plan Zuid, BAG 1934), Boterdiepstraat 9-33 (odd side): a 6.1 m brick front, every house alike (not mirrored): the house door with a side light at the left party wall under a white slab canopy, a narrow window axis over it, a two-storey canted brick erker on the right axis (white-framed three-light glazing over brick stallrisers on storeys 1-2) standing on a white console over a wide ground window, and the top storey three two-light windows 0.38 m apart over both axes, their white frames reading as one band, under a shallow flat-roof overhang with a white fascia",
  "fit": {
   "widthM": [
    5.7,
@@ -19,7 +19,7 @@
    2,
    2,
    2,
-   4
+   3
   ],
   "axisGrid": 2,
   "bayWidths": [
@@ -56,8 +56,9 @@
   ],
   "storeyRibbons": {
    "3": {
-    "from": 0.18,
-    "to": 0.91
+    "from": 0.174,
+    "to": 0.911,
+    "pier": 0.38
    }
   },
   "bayWindows": {
@@ -148,7 +149,7 @@
  "rhythm": {
   "bays": "a narrow window axis and a wide erker axis; the top storey one ribbon",
   "identicalBays": "no: narrow + erker",
-  "windowsPerStorey": "ground: door + 1 wide | 1-2: 1 + erker | 3: a ribbon of 4",
+  "windowsPerStorey": "ground: door + 1 wide | 1-2: 1 + erker | 3: three two-light windows in a band",
   "symmetry": "repeated, not mirrored: every erker on the right",
   "groundFloor": "the house door at the left party wall, a wide window under the erker console",
   "signage": "none",
@@ -173,7 +174,7 @@
  ],
  "schemaLimits": [
   "the ground storey's canted bay under the erker is drawn as a flat window under the erker console (bayWindows.storeys start at 1)",
-  "the ribbon's light count varies 3-5 along the row; the type draws 4",
+  "the top band varies along the row (Boterdiepstraat 19: four lights frame to frame; 21: six narrow lights); the type draws the common three two-light windows with brick piers (storeyRibbons pier 0.38), not the white posts between them",
   "the door's side light is part of the door opening"
  ],
  "notes": [

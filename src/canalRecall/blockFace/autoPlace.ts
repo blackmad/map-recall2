@@ -310,6 +310,32 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
 }
 
 /**
+ * Row coherence for the BAG erker (Rivierenbuurt 1934 rows): the types of a street side tell their erker apart by its
+ * place in the BAG outline (`match.bagBayOffset`), and BAG digitises the same erker 0.05-0.15 of the front apart from
+ * house to house (Boterdiepstraat 25: 0.75 among 0.65s), so a lone pand lands on a neighbour row's type. A placed pand
+ * between two placed neighbours of one other type, drawn the same way round, that this type fits without a veto once
+ * the BAG bay is set aside, takes their type and side. Returns the pands changed.
+ */
+export function rowCoherence(decisions: Decision[], types: MatchableType[], evs: PandEvidence[], photoDate: string): string[] {
+  const changed: string[] = [];
+  for (let k = 1; k + 1 < decisions.length; k++) {
+    const d = decisions[k], a = decisions[k - 1], b = decisions[k + 1];
+    if (d.kind !== 'placed' || a.kind !== 'placed' || b.kind !== 'placed' || a.typeId !== b.typeId || a.typeId === d.typeId) continue;
+    if (!!a.house.type?.mirror !== !!b.house.type?.mirror) continue;
+    const t = types.find(x => x.id === a.typeId);
+    if (!t?.match || t.match.bagBay === undefined) continue;
+    const {bagBay: _bay, bagBayOffset: _offset, ...rest} = t.match;
+    const nd = decidePand([{...t, match: rest} as MatchableType], evs[k], d.house.slug, photoDate);
+    if (nd.kind !== 'placed') continue;
+    if (a.house.type?.mirror) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
+    const bay = evs[k].bagBay;
+    nd.notes = [...nd.notes.filter(x => !/^(accent|door) /.test(x)), `row coherence: between two ${t.id}${a.house.type?.mirror ? ' (mirrored)' : ''} houses, was ${d.typeId}${bay ? ` (BAG bay centre ${bay.centre})` : ' (no BAG bay)'}`];
+    decisions[k] = nd; changed.push(d.pandId);
+  }
+  return changed;
+}
+
+/**
  * Mirrored pairs (`match.mirrorForDoor`): a pand whose door was not read takes the opposite of a same-type neighbour
  * whose door was (the doors of a pair meet at one party wall, so neighbours alternate).
  */

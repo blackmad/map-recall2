@@ -1,0 +1,177 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "rijn-1934-erker-end",
+ "district": "rivierenbuurt",
+ "description": "Rijnbuurt-Oost (Plan Zuid, BAG 1934), Eemsstraat 6-36 (even side): the house beside the centre-erker house carries its own three-storey canted brick erker against the shared party wall (white-framed three-light glazing over brick stallrisers on storeys 1-3, the two erkers 1.1-1.4 m apart across the wall) on a white slab over a wide ground window, a narrow window axis at the far side over the portiek doors; under the row's flat-roof overhang",
+ "fit": {
+  "widthM": [
+   5.7,
+   6.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "axisGrid": 2,
+  "bayWidths": [
+   3.5,
+   2.6
+  ],
+  "bayFill": [
+   0.41,
+   0.95
+  ],
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-triple"
+  },
+  "storeyHeights": [
+   3.1,
+   3.0,
+   3.0,
+   3.0
+  ],
+  "windowHeights": [
+   0.63,
+   0.67,
+   0.67,
+   0.45
+  ],
+  "headLines": [
+   0.95,
+   0.97,
+   0.97,
+   0.88
+  ],
+  "bayWindows": {
+   "bays": {
+    "from": 1,
+    "to": 1
+   },
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "oriel": {
+    "span": 2.3,
+    "projection": 0.65,
+    "returns": 0.45,
+    "stallriser": 0.9,
+    "head": 0.3,
+    "frontLights": 3,
+    "transom": 0.7,
+    "panels": {
+     "3": {
+      "head": 0.6
+     }
+    },
+    "console": true
+   }
+  }
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.75,
+    "fascia": 0.45,
+    "colour": "#e4e1d8",
+    "soffit": "#d6cfc0"
+   },
+   "note": "the row's flat-roof overhang runs over the erker top"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "groundCanopy": {
+    "projection": 0.45,
+    "thickness": 0.12,
+    "overhang": 0.08,
+    "doorOverhang": 0.25,
+    "gap": 0.08,
+    "colour": "#e4e1d8",
+    "over": [
+     "door"
+    ]
+   },
+   "note": "the portiek doors under the narrow axis at the far party wall"
+  }
+ },
+ "palettes": {
+  "brown-red": {
+   "brick": "#7a6a5f",
+   "frame": "#efeee8",
+   "door": "#86482a",
+   "stone": "#d6d3cc",
+   "cornice": "#e4e1d8"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1932,
+   1936
+  ],
+  "eavesM": [
+   11.6,
+   13.0
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "flat",
+  "stucco": false,
+  "mirrorForAccent": "right",
+  "bagBay": true,
+  "bagBayOffset": [
+   0.28,
+   0.4
+  ],
+  "note": "the BAG outline's erker at the end of the front (centre 0.84-0.85: Eemsstraat 30 and 6; Eemsstraat 22 and 14 have the erker in the photo but not in BAG, so the photo decides there)"
+ },
+ "rhythm": {
+  "bays": "a narrow window axis and a wide erker axis at the party wall",
+  "identicalBays": "no: narrow + erker",
+  "windowsPerStorey": "ground: door + 1 wide | 1-3: 1 + erker",
+  "symmetry": "the erker faces the centre-erker house's across the party wall",
+  "groundFloor": "the portiek doors at the far party wall, a wide window under the erker slab",
+  "signage": "none",
+  "roofline": "flat roof with a white-fascia overhang over the erker",
+  "photoRows": [
+   2,
+   2,
+   2,
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "eems-6-78",
+   "pands": [
+    "111889",
+    "069912",
+    "084686",
+    "148727"
+   ],
+   "citation": "strip.jpg 2023-01-03 re-rectified with the camera 2.1 m over the ground (intake --camera-height=2.1), ruler crops of Eemsstraat 30 (60 px/m) and 22 (56 px/m): narrow window 1.05-2.5 m, sills 4.05 / 7.05 m; erker 3.7-6.2 m from the far party wall, glazing from 4.1 m on storeys 1-3 and 11.3-12.5 m on the top storey; ground window 3.8-6.2 m x 1.0-2.85 m under a light slab at 2.95 m; portiek doors 0.2-2.4 m; BAG outlines of 111889 and 148727 carry the erker at 0.84-0.85 of the front, 0.65-0.74 m deep, the discovered front ending on its side (frontBump lineRD)"
+  }
+ ],
+ "schemaLimits": [
+  "the erker meets the party wall: the oriel is drawn whole inside the house, a few centimetres short of the wall",
+  "the portiek (two doors and side lights) is drawn as one door"
+ ],
+ "notes": [
+  "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}
