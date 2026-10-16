@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 /** Original silhouettes and facade details; no imported mesh or image textures. */
 export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
- const shortFront=id==='embassy-free-mind'||id==='the-movies'||id==='delamar';
+ const shortFront=id==='embassy-free-mind'||id==='the-movies';
  const angle=shortFront?Math.PI/2:0, width=shortFront?d:w, depth=shortFront?w:d;
  type Colour=Parameters<BuildingTools['add']>[1];
  let turn=0; // extra yaw for the end elevations
@@ -43,16 +43,6 @@ export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
   for(let y=3.85;y<4.9;y+=.25)box(0,y,front+1.13,fw*.8,.04,.05,'dark');
   for(let x=-fw/2;x<=fw/2;x+=.5)for(const y of [3.56,5.14])sphere(x,y,front+1.13,.07,'gold');
   sign('THE MOVIES',0,5.2,front+.47,.12,'red');
- }else if(id==='delamar'){
-  // Large glazed foyer next to the reconstructed historic school facade.
-  box(0,0,0,width*.96,19.5,depth*.96,'brick');box(0,19.5,0,width*.97,.4,depth*.97,'slate');
-  const z=front+.08,gw=width*.66;box(width*.13,0,z,gw,18.4,.3,'glass');
-  for(let x=width*.13-gw/2;x<width*.13+gw/2;x+=3.3)box(x,0,z+.22,.16,18.5,.17,'frame');for(const y of [4.4,8.8,13.2,17.6])box(width*.13,y,z+.24,gw,.18,.18,'frame');
-  let hx=-width*.36,hw=width*.23;box(hx,0,z,hw,16.7,.6,'brick');for(const y of [1,5.5,10.8,16.4])box(hx,y,z+.4,hw+.2,.35,.25,'stone');
-  for(const y of [1.7,6.3,11.5])for(const x of [hx-hw*.28,hx,hx+hw*.28])win(x,y,z+.35,hw*.19,3.5,true);
-  box(width*.13,4.3,z+.5,gw+.8,.5,2,'dark');sign('DELAMAR',width*.13,5.1,z+.68,.29,'white');box(width*.12,0,z+.38,gw*.52,3.6,.3,'dark');for(let x=-gw*.15;x<=gw*.35;x+=3.3)box(x,.2,z+.61,2.6,3,.15,'glass');
-  // Theatre fly tower is deliberately set back from the street entrance.
-  box(-width*.06,19.9,-depth*.2,width*.5,3.3,depth*.38,'dark');
  }else if(id==='magna-plaza'){
   // Neo-Gothic post office: striped brick, tall arches, pear-shaped corner turrets.
   box(0,0,0,width*.98,18.5,depth*.95,'brick');gable(0,18.5,0,width*.98,6,depth*.96,'slate');
