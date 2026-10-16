@@ -139,6 +139,19 @@ test('whole-mesh variants: candidates keep the material, yellow swaps, dim desat
   assert.deepEqual(attachHighlightPasses(THREE, inst, { style: 'c' }), [], 'c has no passes');
 });
 
+test('passes on a chunk whose positions were released after upload: centre from the bounding sphere, no throw', () => {
+  // Boat ride 2026-10-16: a houseboat chunk (no source footprints) took the highlight and computeBoundingBox read a freed array.
+  const geometry = new THREE.BoxGeometry(2, 2, 2);
+  geometry.computeBoundingSphere();
+  geometry.boundingSphere!.center.set(5, 6, 7);
+  (geometry.getAttribute('position') as any).array = null;
+  const mesh = new THREE.Mesh(geometry);
+  const passes = attachHighlightPasses(THREE, mesh, { style: 'a', merged: true });
+  assert.ok(passes.length > 0);
+  assert.deepEqual([...passes[0].material.uniforms.hlCentre.value.toArray()], [5, 6, 7]);
+  assert.doesNotThrow(() => attachHighlightPasses(THREE, mesh, { style: 'a' }));
+});
+
 test('city look: a dim variant, and the shader reads the shared state', () => {
   const uniforms = createCityUniforms(THREE);
   const m = createCityLookMaterial(THREE, { lit: false, kind: 'slot', dim: true }, uniforms);

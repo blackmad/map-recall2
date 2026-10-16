@@ -572,6 +572,16 @@ export function detachHighlightPasses(mesh: any): void {
 export const LANDMARK_WORLD_UP = { shared: [0, 0, 1], legacy: [0, 1, 0] } as const satisfies Record<string, readonly [number, number, number]>;
 
 /**
+ * Whether three can measure this geometry's box: facade chunks release their `position` array once uploaded
+ * (threeBuildingsBrowser.ts), and computeBoundingBox on one threw inside the game loop when a houseboat's chunk
+ * (no source footprints, so no centre from the prism index) took the highlight; the ride froze (boat, 2026-10-16).
+ */
+function boundsReadable(geometry: any): boolean {
+  const position = geometry?.getAttribute?.('position') ?? geometry?.attributes?.position;
+  return !position || !!position.array;
+}
+
+/**
  * Add the style's passes as children of `mesh` (sharing geometry; instanced meshes share instance matrices).
  * Idempotent; no passes for styles without outline/rim. Returns the pass meshes.
  */
@@ -585,8 +595,9 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
   const geometry = mesh.geometry;
   let centre = options.centre;
   if (!centre) {
-    if (!geometry.boundingBox) geometry.computeBoundingBox?.();
-    const c = geometry.boundingBox?.getCenter(new THREE.Vector3());
+    if (!geometry.boundingBox && boundsReadable(geometry)) geometry.computeBoundingBox?.();
+    // A facade chunk frees its CPU positions after upload; its bounding sphere was measured at install.
+    const c = geometry.boundingBox?.getCenter(new THREE.Vector3()) ?? geometry.boundingSphere?.center;
     centre = c ? [c.x, c.y, c.z] : [0, 0, 0];
   }
   const hasNormal = geometry.getAttribute?.('normal') ? 1 : 0;
@@ -595,7 +606,7 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
   const metreUp = options.up ?? [0, 0, 1];
   // Whole meshes only: a merged chunk's or a batched tile's box is the whole tile, not the building (J2).
   const measureExtent = !options.merged && !options.feature && !mesh.isInstancedMesh;
-  if (measureExtent && !geometry.boundingBox) geometry.computeBoundingBox?.();
+  if (measureExtent && !geometry.boundingBox && boundsReadable(geometry)) geometry.computeBoundingBox?.();
   for (const kind of kinds) {
     const material = createHighlightPassMaterial(THREE, kind, { merged: options.merged, feature: options.feature, accent: options.accent ?? highlightAccent(options.style) });
     material.uniforms.hlCentre.value.set(centre[0], centre[1], centre[2]);
