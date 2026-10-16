@@ -87,15 +87,25 @@ export function steppedTowerCap(parent: T.Object3D, plan: [number, number][], y1
 }
 
 /** Glass-block band: pale grey-green blocks, a light mortar grid. */
-export const GLASS_BLOCK = {glass: '#aebbb8', mortar: '#d4d2ca', proudM: 0.015, gridProudM: 0.025, jointM: 0.03};
+export const GLASS_BLOCK = {glass: '#aebbb8', mortar: '#d4d2ca', proudM: 0.015, gridProudM: 0.025, jointM: 0.03, measuredMortarK: 1.3, measuredProudM: 0.04, measuredGridProudM: 0.07};
+
+/** Joint colour of a measured glass-block band: the measured glass lifted `measuredMortarK` (the strip median holds both). */
+export function measuredMortar(glass: string): string {
+  const v = parseInt(glass.slice(1), 16), k = GLASS_BLOCK.measuredMortarK;
+  return '#' + [16, 8, 0].map(s => Math.min(255, Math.round(((v >> s) & 255) * k)).toString(16).padStart(2, '0')).join('');
+}
 
 /**
  * Glass-block band over a rigid canopy (facade frame): one glass panel `proudM` in front of the wall (front face and its
  * four 1.5 cm reveals) and the mortar joints of a `cellM` grid as flat strips just in front of it. About 2 triangles per
- * joint: a 6 x 1 m band is ~90 triangles.
+ * joint: a 6 x 1 m band is ~90 triangles. A measured band (`colour`, counted rows) stands `measuredProudM` (4 cm) proud
+ * with its joints 3 cm over it: the default 1.5 cm and 1 cm steps lie under the GLB audit's 3 cm z-fight tolerance (178 m2
+ * of coplanar overlap on Jan Evertsenstraat 91-135, the first face that placed measured bands). Without a colour the band
+ * is byte-identical to before.
  */
-export function glassBlockBand(b: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number}) {
-  const glass: number[] = [], grid: number[] = [], g = GLASS_BLOCK, x0 = b.leftM, x1 = b.leftM + b.widthM, y0 = b.bottomM, y1 = b.topM;
+export function glassBlockBand(b: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number; colour?: string}) {
+  const g = b.colour ? {...GLASS_BLOCK, proudM: GLASS_BLOCK.measuredProudM, gridProudM: GLASS_BLOCK.measuredGridProudM} : GLASS_BLOCK;
+  const glass: number[] = [], grid: number[] = [], x0 = b.leftM, x1 = b.leftM + b.widthM, y0 = b.bottomM, y1 = b.topM;
   face(glass, [[x0, y0, g.proudM], [x1, y0, g.proudM], [x1, y1, g.proudM], [x0, y1, g.proudM]], [0, 0, 1]);
   face(glass, [[x0, y1, 0], [x1, y1, 0], [x1, y1, g.proudM], [x0, y1, g.proudM]], [0, 1, 0]);
   face(glass, [[x0, y0, 0], [x1, y0, 0], [x1, y0, g.proudM], [x0, y0, g.proudM]], [0, -1, 0]);
@@ -140,7 +150,12 @@ export function addCanopies(group: T.Group, intent: CanalHouseIntent, recipe: Ca
       const glassMaterial = material(c.glassBlocks.colour ?? GLASS_BLOCK.glass);
       if (c.glassBlocks.colour) glassMaterial.userData = {tintSource: 'measured'};
       facade.add(meshOf(glass, glassMaterial, `canopy/${f.id}/glass-blocks`, 'canopy', 'glass', intent.pandId));
-      facade.add(meshOf(grid, material(GLASS_BLOCK.mortar), `canopy/${f.id}/glass-block-grid`, 'canopy', 'trim', intent.pandId));
+      // With a measured band the joints are read with it: the strip median already holds them, so the bright default
+      // mortar (a quarter of the band's area) lifted the 91-135 bands 1.6x over the photo; draw them 1.3x the glass.
+      const mortar = c.glassBlocks.colour ? measuredMortar(c.glassBlocks.colour) : GLASS_BLOCK.mortar;
+      const mortarMaterial = material(mortar);
+      if (c.glassBlocks.colour) mortarMaterial.userData = {tintSource: 'measured'};
+      facade.add(meshOf(grid, mortarMaterial, `canopy/${f.id}/glass-block-grid`, 'canopy', 'trim', intent.pandId));
     }
     added++;
   }

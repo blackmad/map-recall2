@@ -10,14 +10,17 @@
   },
   "body": {
     "storeys": 4,
-    "bays": 3,
+    "bays": [1, 3, 3, 3],
+    "axisGrid": 5,
+    "storeyAxes": {"1": [1, 2, 4], "2": [1, 2, 4], "3": [1, 2, 4]},
     "cornice": "none",
     "windows": "casement-toplight",
-    "bayWidths": [1.45, 1.85, 2.7],
+    "bayWidths": [1.1, 0.83, 1.05, 1.58, 1.44],
+    "bayFill": [0.5, 0.98, 0.98, 0.5, 0.97],
     "storeyHeights": [1.64, 1, 1, 1],
     "windowHeights": [0.6, 0.62, 0.62, 0.62],
     "headLines": [0.86, 0.72, 0.72, 0.72],
-    "bayWindows": {"bays": {"from": 0, "to": 0}, "storeys": [1, 2, 3], "hood": true},
+    "bayWindows": {"bays": {"from": 1, "to": 1}, "storeys": [1, 2, 3], "hood": true},
     "lisenes": {"leftEnd": "half"}
   },
   "crowns": {
@@ -26,6 +29,12 @@
       "cornice": "none",
       "parapet": {"courses": 55, "coping": true},
       "note": "the row's crown: 3.0 m of plain brick over the storeys (13.6-16.6 m on 101 and 118); lisenes stop 0.3 m into it"
+    },
+    "low-parapet": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 14, "coping": true},
+      "note": "the lower steps of a stepped corner (89A-91: 13.4 m over the corner, 0.8 m of wall over the top windows)"
     },
     "corner-tower": {
       "gable": "flat",
@@ -38,7 +47,7 @@
       "gable": "flat",
       "cornice": "none",
       "parapet": {"courses": 55, "coping": true},
-      "tower": {"bays": {"from": 0, "to": 2}, "rise": 0.85, "cap": "flat"},
+      "tower": {"bays": {"from": 0, "to": 4}, "rise": 0.85, "cap": "flat"},
       "note": "raised stair-tower ends (55, 57, 143, 145, 150, 152, 155): a narrow brick mass 2.5 m over the parapet across the front, one small light per storey of rise"
     }
   },
@@ -54,20 +63,19 @@
   },
   "roof": {"material": "bitumen"},
   "rhythm": {
-    "bays": "3 axes per house: the boxed light by the lisene, a flat two-light window, a wide window at the far party wall",
+    "bays": "per house, lisene side first: plain wall 1.1 m, the box frame (0.83 m, by the lisene) touching its flat two-light neighbour (1.05 m), plain wall 1.58 m, and half (1.44 m) of the wide window that straddles the far party wall (the neighbour's mirrored half completes it)",
     "identicalBays": "every upper storey the same; houses mirror in pairs about the lisene",
-    "windowsPerStorey": "ground: shop | 1-3: box + 2 flat windows",
+    "windowsPerStorey": "ground: shop | 1-3: box + flat window touching, half a party-wall window",
     "symmetry": "mirrored pairs about a lisene",
     "groundFloor": "shop under the continuous rigid canopy, a glass-block band over it",
     "signage": "letters on the glass-block band (not drawn)",
     "roofline": "tall plain parapet with a thin coping",
-    "photoRows": [1, 3, 3, 3],
+    "photoRows": [1, 2, 2, 2],
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the box and its flat neighbour touch on the photo; the kit keeps a pier between axes",
       "signs on the glass-block band are not drawn",
-      "the wide window that straddles a party wall on some pairs is drawn inside one house"
+      "the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)"
     ]
   },
   "evidence": [
@@ -85,15 +93,20 @@
       "face": "evertsen-91-135",
       "pands": ["147193", "113053", "118443"],
       "citation": "palette over the 40 pands of the type (de-baarsjes-palettes.ts): wall #54432e, frames #acab93, coping/cornice band #554b38 (n=40); glass-block rows 3.3-4.5 m on 101 and 103 #4c4d3c-#5a5946 (the 3.3-4.5 m rows over 101 #4f503f; the type-wide median #46432f picks up canopy rows where the band sits lower); hood slabs sampled on 101 (sample.mjs on the strip): #3d3827 on the top hood, #2c2718 and #292412 on the lower two (in their own shadow); the top one is the palette"
+    },
+    {
+      "face": "evertsen-91-135",
+      "pands": ["155048", "147193", "114417", "062057"],
+      "citation": "strip.jpg 2024-12-06, ruler crop (120 px/m) of 105 (lisene on its left): box frame 1.10-1.93 m, its flat two-light neighbour 1.93-2.98 m touching it, plain wall to 4.56 m, then 4.56-6.00 m of a 2.9 m window centred on the party wall with 107; 101 and 109 the same; 95 (no box, lisene on its right) mirrors it: half window 0-1.4 m, window 3.0-5.0 m. The lisenes stand on every other party wall (95|97, 99|101, 103|105 ... 119|121), the boxes flank them; 93-99 have the same windows without box frames"
     }
   ],
   "schemaLimits": [
-    "box and flat window touching",
     "signs on the glass-block band",
-    "121-125 (085815) is one 37 m mass: a large recipe in this body"
+    "121-125 (085815) is one 37 m mass: placed in modules of this body on evertsen-91-135"
   ],
   "notes": [
     "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 8}, wallCourses: 8} so the canopy and the band land on the measured lines; palette.glassBlock exports the band as its own measured material.",
-    "Place with mirror: true on every other house so the boxes flank the shared lisene (lisenes leftEnd half on both, mirrored)."
+    "Place with mirror: true on the house left of a lisene so the boxes flank the shared lisene (lisenes leftEnd half, mirrored to rightEnd); the party-wall windows then meet across the other party wall.",
+    "bayFill (each window's share of its bay): 0.98 lets the box and its flat neighbour touch across a 2 cm pier; 0.97 on the end bay brings the half window 2 cm from the party wall."
   ]
 }

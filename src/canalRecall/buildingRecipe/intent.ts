@@ -38,9 +38,11 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * De Baarsjes (Jan Evertsenstraat 1925-1927, docs/de-baarsjes-types-20261014.md): `casement-toplight` two side-hung
  * casements under a fixed top light (a thin transom at 0.8 of the height, the mullion running through both);
  * `casement-gridded-toplight` the same with the top light in small panes (three bars across it); `casement-triple` a
- * fixed centre light between two narrow side-hung casements (mullions at 0.27 and 0.73, no transom).
+ * fixed centre light between two narrow side-hung casements (mullions at 0.27 and 0.73, no transom);
+ * `casement-toplight-double` two casement pairs side by side under one top light (a 3 m window of four lights, the
+ * end house of a hood-lisene row); `casement-pair` two side-hung casements with no top light (a mullion only).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-pair'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -170,6 +172,20 @@ export interface FrontIntent {
    * Default: the shared equal-pier grid. Needs one entry per axis (`axisGrid`, else the widest upper storey).
    */
   bayWidths?: number[];
+  /**
+   * With `bayWidths` (Jan Evertsenstraat 1925-27 rows): the window of each axis as a share of its bay (one per axis,
+   * 0.3..1), centred in the bay, instead of the default 58 %. A share near 1 lets two windows touch across a thin pier
+   * (a box frame beside its flat neighbour) or brings a window against the party wall, where the neighbour's mirrored
+   * half completes it (a window straddling the party wall). A box frame (`bayWindows.hood`) then wraps the windows of its
+   * axes exactly. Absent = the default widths, byte-identical.
+   */
+  bayFill?: number[];
+  /**
+   * Window kind per axis where it differs from `windows` (key = axis index on the front's grid, left to right as seen;
+   * every window storey above the ground): the wide four-light window of a row's end house beside its box frame. A box
+   * frame (`bayWindows.hood`) takes the kind of its first axis. Wins over `storeyWindows`. Absent = byte-identical.
+   */
+  axisWindows?: Record<string, WindowKind>;
   /** A storey whose windows do not sit on the shared bays gives its own weights (one per window of that storey; key = storey index from the ground, or "last"), e.g. `{"4": [1, 0.6, 0.6]}` for one far-left and a close pair. */
   storeyBayWidths?: Record<string, number[]>;
   /**
