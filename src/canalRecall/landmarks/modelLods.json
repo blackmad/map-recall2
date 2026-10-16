@@ -54,10 +54,10 @@
   "triangles": 4631
  },
  "westerkerk": {
-  "sourceHash": "140201e4cd470a98",
+  "sourceHash": "c0fc848649680324",
   "buildVersion": 2,
-  "bytes": 72032,
-  "triangles": 3567
+  "bytes": 70244,
+  "triangles": 3457
  },
  "concertgebouw": {
   "sourceHash": "4d80783fac5a2e71",
@@ -246,10 +246,10 @@
   "triangles": 932
  },
  "nieuwe-kerk": {
-  "sourceHash": "823a1b6d51951d91",
+  "sourceHash": "5ee4be33beed348c",
   "buildVersion": 2,
-  "bytes": 86288,
-  "triangles": 4981
+  "bytes": 84128,
+  "triangles": 4849
  },
  "buiksloterkerk": {
   "sourceHash": "5f33780635f73091",
