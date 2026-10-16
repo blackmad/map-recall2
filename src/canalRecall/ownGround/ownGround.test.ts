@@ -19,7 +19,8 @@ import { drawnGrey, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight'
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
-import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SurfaceIndex, type ParksCell } from './parks';
+import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParksCell } from './parks';
+import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segmentsOf, vegetatedShare, BED_SHARE, COURTYARD_SURFACES, LAWN_SHARE, RAYS, SegmentIndex, type CourtyardsCell, type Segment as CourtyardSegment } from './courtyards';
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
@@ -672,7 +673,7 @@ test('regression: relief is present (Postjeskade polder side lower than the Here
 
 // ------------------------------------------------------------- streaming in the game (groundStore / groundCell)
 import { GroundStore, toLocal as storeToLocal, fromLocal as storeFromLocal, GAME_ORIGIN } from './groundStore';
-import { buildCell, vertexNormals } from './groundCell';
+import { buildCell, layersAt, vertexNormals } from './groundCell';
 import { ORIGIN } from '../threeBuildingFeatures';
 
 test('ground frame is the facades\' frame (duplicated to keep the worker bundle small)', () => {
@@ -1304,4 +1305,69 @@ test('a movable leaf gets fixed spans to the quays its bridge way reaches (Nijlp
   assert.equal(movableApproaches(leaf, [[[0, 30], [40, 30]]]).length, 0, 'a way that misses the leaf adds nothing');
   const long = movableApproaches(leaf, [[[-100, 0], [40, 0]]]).flatMap(r => r.map(p => p[0]));
   assert.ok(Math.abs(Math.min(...long) - (15 - APPROACH_MAX_M)) < 1e-6, 'capped at APPROACH_MAX_M');
+});
+
+// ------------------------------------------------------------------ courtyards (ride review J4, BGT block interiors)
+
+test('courtyards: BGT class → courtyard surface (erf by the aerial vegetated share)', () => {
+  const b = (fysiek_voorkomen: string, plus_fysiek_voorkomen: string | null = null) => ({ fysiek_voorkomen, plus_fysiek_voorkomen });
+  assert.equal(courtyardSurface('begroeidterreindeel', b('groenvoorziening')), 'lawn');
+  assert.equal(courtyardSurface('begroeidterreindeel', b('groenvoorziening', 'heesters')), 'shrub');
+  assert.equal(courtyardSurface('begroeidterreindeel', b('groenvoorziening', 'planten')), 'bed');
+  assert.equal(courtyardSurface('begroeidterreindeel', b('groenvoorziening', 'boomschors')), 'bark');
+  assert.equal(courtyardSurface('begroeidterreindeel', b('struiken')), 'shrub');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('zand')), 'sand');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('half verhard')), 'gravel');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('onverhard')), 'gravel');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('open verharding')), 'paving');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('gesloten verharding')), 'paving');
+  assert.equal(courtyardSurface('ondersteunendwegdeel', { ...b('groenvoorziening'), functie: 'berm' }), 'lawn');
+  assert.equal(courtyardSurface('ondersteunendwegdeel', { ...b('open verharding'), functie: 'verkeerseiland' }), 'paving');
+  // An erf (yard): BGT says nothing of its cover; the aerial decides, and an unknown share draws nothing.
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('erf'), null), null);
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('erf'), LAWN_SHARE), 'lawn');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('erf'), BED_SHARE), 'bed');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('erf'), BED_SHARE - 0.01), 'paving');
+  assert.equal(courtyardSurface('onbegroeidterreindeel', b('transitie')), null);
+  assert.equal(courtyardSurface('pand', b('erf'), 1), null);
+  for (const s of COURTYARD_SURFACES) assert.ok(SURFACE_LAYER[s], `${s} has a park layer`);
+});
+
+test('courtyards: CIR pixels (NIR, red, green) and the vegetated share', () => {
+  assert.equal(pixelVegetated(200, 90, 100), true);
+  assert.equal(pixelVegetated(110, 120, 110), false);
+  assert.equal(pixelVegetated(40, 30, 30), null, 'shadow is unknown');
+  assert.equal(vegetatedShare({ veg: 30, bare: 10, shadow: 10 }), 0.75);
+  assert.equal(vegetatedShare({ veg: 3, bare: 2, shadow: 0 }), null, 'too few lit pixels');
+  assert.equal(vegetatedShare({ veg: 10, bare: 0, shadow: 100 }), null, 'mostly shadow');
+});
+
+test('courtyards: a yard enclosed by buildings is a block interior, a front garden facing a street is not', () => {
+  const box = (x0: number, y0: number, x1: number, y1: number): CourtyardSegment[] => segmentsOf([[x0, y0], [x1, y0], [x1, y1], [x0, y1], [x0, y0]], true);
+  // A closed block: four 10 m deep building rows round a 40 × 40 m yard (centre 0, 0), streets outside them.
+  const north = box(-30, 20, 30, 30), south = box(-30, -30, 30, -20), west = box(-30, -20, -20, 20), east = box(20, -20, 30, 20);
+  const streets = [...segmentsOf([[-200, 40], [200, 40]], false), ...segmentsOf([[-200, -40], [200, -40]], false)];
+  const closed = new SegmentIndex([...north, ...south, ...west, ...east, ...streets]);
+  assert.equal(closedRays(closed, 0, 0), RAYS);
+  assert.ok(inBlockInterior(closed, 5, -5));
+  // A 4 m gate in the east row: one gap is allowed.
+  const gate = new SegmentIndex([...north, ...south, ...west, ...box(20, -20, 30, -2), ...box(20, 2, 30, 20), ...streets]);
+  assert.ok(inBlockInterior(gate, 0, 0));
+  // A front garden between the north row and the street: half its rays meet the street first.
+  assert.ok(!inBlockInterior(closed, 0, 35));
+  // An open square (no buildings within RAY_M): nothing closes.
+  assert.equal(closedRays(new SegmentIndex(streets), 0, 0), 0);
+});
+
+test('regression (streamed cell): a courtyards-v1 lawn draws in the lawn layer over the land', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(4.88513, 52.37724), key = store.cellAt(x, y);
+  const input = await store.cellInput(key, 0);
+  const ring = encodeLine([[x - 40, y - 40], [x - 10, y - 40], [x - 10, y - 10], [x - 40, y - 10], [x - 40, y - 40]]);
+  const yard: CourtyardsCell = { version: 1, key, areas: [{ id: 'test', k: 'lawn', r: [ring] }] };
+  const cell = buildCell({ ...input, courtyards: yard, courtyardsAround: [yard], pockets: false });
+  assert.equal(cell.stats.courtyards, 1);
+  assert.equal(layersAt(cell, x - 25, y - 25).top, 'lawn');
+  assert.ok(!layersAt(cell, x - 25, y - 25).hits.some(h => h.layer === 'land'), 'the land under a 30 m yard is culled');
 });

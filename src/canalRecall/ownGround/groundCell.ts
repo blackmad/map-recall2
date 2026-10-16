@@ -23,8 +23,8 @@ import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArra
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { DECK_REACH_MAX_M, deckReach, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
-import { buildParks, cullCovered, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
-import { COURTYARD_SURFACES, type CourtyardSurface } from './courtyards.js';
+import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
+import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
@@ -78,6 +78,10 @@ export interface CellInput {
   pockets?: boolean;
   /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
   dropWays?: readonly number[];
+  /** The cell's BGT courtyards (courtyards-v1), null when it has none or they are off. */
+  courtyards?: CourtyardsCell | null;
+  /** Courtyards of the 3×3 neighbourhood (their outer rings hide this cell's land quads too). */
+  courtyardsAround?: readonly (CourtyardsCell | null)[];
   project: (lngLat: [number, number]) => Vec2;
 }
 
@@ -210,13 +214,12 @@ export function buildCell(input: CellInput): BuiltCell {
   // neighbour's area counts too (an area is drawn whole by the cell of its bbox centre: Artis's west third lies in the
   // next cell, 54 % bare land there); at the resident ring's edge that cell may be the far ring's, or the basemap's.
   const greenAreas = [...areas, ...(input.osmAround ?? []).flatMap(o => o.areas)];
-  // BGT courtyards are drawn with their holes (a hole may be a yard left undrawn), so their probes must miss the holes. A
-  // ring narrower than a quad and its probes cannot hold one, so it is not tested (same result, fewer tests: a Jordaan
-  // cell holds over a thousand courtyard rings).
-  const ringsOf = (a: OsmGroundExtract['areas'][number]) => a.kind === 'courtyard'
-    ? [{ pts: a.rings[0].slice(0, -1).map(input.project), holes: a.rings.slice(1).map(r => r.slice(0, -1).map(input.project)) }]
-    : a.rings.map(r => ({ pts: r.slice(0, -1).map(input.project), holes: [] as Vec2[][] }));
-  const greenRings = greenAreas.filter(a => areaLayer[a.kind] === 'park' || a.kind === 'courtyard').flatMap(ringsOf)
+  // BGT courtyards (courtyards-v1, the cell's and its neighbours') are drawn with their holes (a hole may be a yard left
+  // undrawn), so their probes must miss the holes. A ring narrower than a quad and its probes cannot hold one, so it is
+  // not tested (same result, fewer tests: a Jordaan cell holds over a thousand courtyard rings).
+  const courtyardRings = [input.courtyards, ...(input.courtyardsAround ?? [])].filter((c, i, all): c is CourtyardsCell => !!c && all.indexOf(c) === i)
+    .flatMap(c => c.areas.map(a => { const r = a.r.map(decodeLine); return { pts: r[0], holes: r.slice(1) }; }));
+  const greenRings = [...greenAreas.filter(a => areaLayer[a.kind] === 'park').flatMap(a => a.rings.map(r => ({ pts: r.slice(0, -1).map(input.project), holes: [] as Vec2[][] }))), ...courtyardRings]
     .filter(r => r.pts.length >= 3).map(({ pts, holes }) => ({ pts, holes, bb: [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] }))
     .filter(g => g.bb[2] > x0 && g.bb[0] < x1 && g.bb[3] > y0 && g.bb[1] < y1 && g.bb[2] - g.bb[0] >= step + 0.5 && g.bb[3] - g.bb[1] >= step + 0.5);
   let greenCulled = 0;
@@ -235,20 +238,8 @@ export function buildCell(input: CellInput): BuiltCell {
   add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand));
 
   // Areas.
-  let parkFillCulled = 0, courtyards = 0;
+  let parkFillCulled = 0;
   for (const a of areas) {
-    // BGT courtyards (courtyards.ts): the park surface layer of their class, at its lift, holes kept (a hole is a shed
-    // or a neighbour's yard of another class); the land under them is culled with the green fills (underGreen).
-    if (a.kind === 'courtyard') {
-      const k = a.surface as CourtyardSurface;
-      if (!COURTYARD_SURFACES.includes(k)) continue;
-      const m = emptyMesh(), { flat, holes } = flatten(a.rings.map(r => r.map(input.project)));
-      if (flat.length < 6) continue;
-      drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[k], lod === 0 ? 8 : 16);
-      add(SURFACE_LAYER[k], m);
-      courtyards++;
-      continue;
-    }
     const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
     let m = emptyMesh();
@@ -270,6 +261,19 @@ export function buildCell(input: CellInput): BuiltCell {
     const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater) : { layers: {}, stats: null };
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
     if (built.stats) parkStats = { ...built.stats, ms: Date.now() - tp };
+  }
+
+  // Courtyards (courtyards-v1, courtyards.ts): BGT terrain of block interiors in the park surface layers, at their lifts,
+  // holes kept (a hole is a shed or a neighbour's yard of another class); the land under them went with underGreen.
+  let courtyards = 0;
+  for (const a of input.courtyards?.areas ?? []) {
+    if (!COURTYARD_SURFACES.includes(a.k)) continue;
+    const { flat, holes } = flatten(a.r.map(decodeLine));
+    if (flat.length < 6) continue;
+    const m = emptyMesh();
+    drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[a.k], lod === 0 ? 8 : 16);
+    add(SURFACE_LAYER[a.k], m);
+    courtyards++;
   }
 
   // Streets: bridge ways sampled finer (decks hump over metres).

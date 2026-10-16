@@ -3,9 +3,9 @@
 //
 // The inner gardens of a closed block drew as bare land (the sand `land`
 // colour), so from a street corner a Jordaan block read as a public square.
-// scripts/own-ground/add-bgt-courtyards.ts adds the BGT terrain polygons that
-// lie inside a block interior to the published OSM cells as `courtyard`
-// areas, each with the park surface it draws as:
+// scripts/own-ground/add-bgt-courtyards.ts writes the BGT terrain polygons
+// that lie inside a block interior to the courtyards-v1 extract (its own
+// cells, beside the OSM cells), each with the park surface it draws as:
 //
 //   begroeidterreindeel     lawn / shrub / bed / bark by its (plus) type
 //   onbegroeidterreindeel   zand → sand, (half)verhard → gravel, verharding → paving,
@@ -20,7 +20,7 @@
 // allowed but a front garden, a verge or a park is not.
 
 import type { Vec2 } from './surface.js';
-import { bgtParkSurface } from './parks.js';
+import { bgtParkSurface, type EncodedLine } from './parks.js';
 
 /** What a courtyard area draws as: the park surface layers (parks.ts SURFACE_LAYER) minus paths, cycle paths and ponds. */
 export type CourtyardSurface = 'lawn' | 'shrub' | 'bed' | 'bark' | 'gravel' | 'sand' | 'paving';
@@ -57,6 +57,14 @@ export function courtyardSurface(collection: string, p: BgtProps, vegShare: numb
   }
   return null;
 }
+
+/**
+ * One cell of the courtyards-v1 extract (`courtyards-v1/cells/<key>.json.gz`, kept apart from the OSM cells): the areas
+ * whose interior point lies in the cell, rings (outer first, then holes) in the game's local frame as delta-encoded
+ * decimetres (parks.ts encodeLine).
+ */
+export interface CourtyardsCell { version: 1; key: string; areas: { id: string; k: CourtyardSurface; r: EncodedLine[] }[] }
+export interface CourtyardsManifest { version: 1; cells: string[]; provenance?: Record<string, unknown> }
 
 // ------------------------------------------------------------------ the aerial
 
