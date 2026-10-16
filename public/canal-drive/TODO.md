@@ -789,6 +789,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   in colors as it zooms in is jarring"); lane `lane/overview-tiles-20261016`
   (own flat overview tiles in the groundLook palette) owns it, with this
   spec as its gate.
+- **Roads, after city-wide** (2026-10-16, HISTORY "Surveyed road surface
+  city-wide"): a coarser drape for large flat carriage polygons (rural and
+  dike cells -8_4 1.43×, 10_4, 9_3, 8_1, 4_0, 7_5 exceed the 1.15× triangle
+  gate; 4_-1 builds 2.1× slower); the LOD 1 far ring still draws OSM bands;
+  400+ `h ≥ 1` polygons (75.9 ha, A10 and harbour viaducts) over no
+  registered deck are skipped; squares, yards and planted islands (the
+  Mosplein roundabout centre) are not wegdeel and draw as land/paving;
+  ~12,000 m² of berms and tree pits the bands used to pave, in seven dense
+  cells.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
