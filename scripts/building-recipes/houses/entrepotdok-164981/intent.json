@@ -13,6 +13,20 @@
    "image": "source-data://pand-reference-walls/0363100012164981/w01-210.jpg",
    "sha256": "0b0735a5f79d9b00f4927e1f1966a2ee33ac546ea90658ea35dbee672fd0d40e",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-25-laagte-kadijk",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_001371/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "ortho-2025-orthohr",
+   "kind": "orthophoto",
+   "capturedAt": "2025-01-01",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=2025_orthoHR&STYLES=&CRS=EPSG:28992&BBOX=122655,486860,122810,486980&WIDTH=1550&HEIGHT=1200&FORMAT=image/jpeg",
+   "license": "PDOK luchtfoto RGB (Beeldmateriaal Nederland), CC BY 4.0; 2025 flight, year-level date"
   }
  ],
  "walls": [
@@ -173,10 +187,18 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flat": "bitumen",
+  "surfaces": [
+   {
+    "roofSurfaces": [320, 311, 291, 310, 292, 290, 319, 303, 305, 304, 296, 306, 312, 318, 314, 331, 297, 325, 326, 328, 288, 299, 315, 301, 293, 294],
+    "material": "red-tile",
+    "evidence": "ortho-2025-orthohr: the short saddles behind the canal gables (26-31 degrees west of 47.7 m, 48-51 degrees on the original fronts, two at the SE end) read as orange pantiles, faces alternately sunlit orange and sky-lit blue-green; the large saddle over the NW end (300, 330) reads grey (slate) and every flat roof dark grey with solar panels"
+   }
+  ]
  },
  "palette": {
-  "brick": "#6e4636",
+  "brick": "#50463f",
   "frame": "#2b2b2b",
   "door": "#1b1b1b",
   "stone": "#d9d4c6"
@@ -187,7 +209,9 @@
   "Rear (Laagte Kadijk side, the panel of surfaces 134/135/151) from the 2017-03-23 panorama: windows with segmental brick heads, modelled as narrow segmental-arched windows on 13 bays. The other rear and courtyard walls, the SE modern rendered block (light render in the 2021 photo w04-120) and the NW end are blank: the 12k triangle budget is spent on the canal front (11,156 triangles).",
   "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping).",
   "Layered kit (2026-10-14, second pass): the converted front's loading doors are back to every third bay (11 axes on 33 bays); a layered loading door is two leaves with one meeting stile (SIMPLIFIED: no hatch rail) and the arched loading doors take 4-segment heads, which with closed bars and stone thresholds laid on the wall keeps the model at 11,767 triangles.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #483f3b not used (not darker than the wall #574c45 by 10 L*, or tinted): kit glass kept; walls[2] glass #485952 not used (not darker than the wall #564f4a by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #483f3b not used (not darker than the wall #574c45 by 10 L*, or tinted): kit glass kept; walls[2] glass #485952 not used (not darker than the wall #564f4a by 10 L*, or tinted): kit glass kept.",
+  "Roofs and rear brick 2026-10-16 (user: the roofs looked disconnected, with a row of black triangles): the steep slate faces behind the front gables drew near-black on their shade side and the flat roofs drew as pale gravel (the slate default's flat tone), against the 2025 orthophoto's orange pantile saddles and dark flat roofs; the rear and courtyard walls drew in an orange prior brick beside the measured fronts. Roof materials now follow the orthophoto (roof.surfaces, roof.flat) and palette.brick is the rear brick read on the Laagte Kadijk panorama (pano-2022-04-25-laagte-kadijk, four patches mean #50463f, same brick as the measured fronts), drawn as measured (measured.otherWalls).",
+  "Not said by the kit: the blue-green glazed faces alternating with the orange ones on the original fronts' saddles (one material per plane would need the ortho per face), the solar panels on the flat roofs, and the 3DBAG courtyard slivers (286, 287, 316, 285: planes 0.4-1.4 m wide that cut wedge notches into the courtyard walls)."
  ],
  "layeredKit": true,
  "measured": {
@@ -197,6 +221,7 @@
    1,
    2,
    3
-  ]
+  ],
+  "otherWalls": true
  }
 }

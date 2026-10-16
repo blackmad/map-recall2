@@ -9,11 +9,11 @@ import {compose, intervals, SHEET_PITCH, type Cell, type PanelCtx} from '../bloc
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
 import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
-import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
+import {fitsPanel, pointInRing, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
-import type {LargeBuildingIntent} from './intent.ts';
+import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
-import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
+import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 
 export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
@@ -185,6 +185,21 @@ function drawNameBoards(c: PanelCtx, cells: Cell[], g: LargeGroupFit): number {
   return n;
 }
 
+/**
+ * Material of one roof triangle: the `roof.surfaces` region it was cut from (centroid inside the plane's plan rings and
+ * within its height range, 5 cm slack), else `roof.flat` for the flat class, else the default material.
+ */
+export function roofMaterialOf(roof: LargeRoofFit, a: number[], b: number[], c: number[], cls: 'steep' | 'low' | 'flat'): RoofMaterial {
+  if (roof.regions) {
+    const x = (a[0] + b[0] + c[0]) / 3, y = (a[1] + b[1] + c[1]) / 3, z = (a[2] + b[2] + c[2]) / 3;
+    for (const r of roof.regions) {
+      if (y < r.yMin - 0.05 || y > r.yMax + 0.05) continue;
+      if (pointInRing([x, z], r.rings[0]) && !r.rings.slice(1).some(h => pointInRing([x, z], h))) return r.material;
+    }
+  }
+  return cls === 'flat' && roof.flat ? roof.flat : roof.material;
+}
+
 function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'flat' {
   const e1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], e2 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
   const n = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]], l = Math.hypot(n[0], n[1], n[2]) || 1;
@@ -231,7 +246,6 @@ export function applyWallSplits(mesh: MeshBuilder, groups: LargeGroupFit[], pane
 /** MeshBuilder slots → Three meshes (one per slot; roofs one per slope class) tagged for the GLB exporter. */
 export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe): T.Group {
   const group = new T.Group(); group.name = recipe.id;
-  const roofColours = ROOF_COLOURS[recipe.roof.material], roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(recipe.roof.material) ? 'slate' : 'roofTile';
   const measured = new Set(recipe.measuredSlots ?? []);
   const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string, slot?: string) => {
     if (!positions.length) return;
@@ -244,9 +258,18 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     if (slot === 'roof') {
-      const by = {steep: [] as number[], low: [] as number[], flat: [] as number[]}, v = s.positions;
-      for (let i = 0; i < v.length; i += 9) by[slopeClass(v.slice(i, i + 3), v.slice(i + 3, i + 6), v.slice(i + 6, i + 9))].push(...v.slice(i, i + 9));
-      for (const k of ['steep', 'low', 'flat'] as const) add(`roof/${k}`, by[k], roofColours[k], k === 'flat' ? 'bitumen' : roofSlot, 'roof');
+      // one mesh per (material, slope class); the default material first and named as before, so a roof without
+      // `flat`/`regions` exports exactly as it always did
+      const by = new Map<RoofMaterial, Record<'steep' | 'low' | 'flat', number[]>>([[recipe.roof.material, {steep: [], low: [], flat: []}]]), v = s.positions;
+      for (let i = 0; i < v.length; i += 9) {
+        const a = v.slice(i, i + 3), b = v.slice(i + 3, i + 6), c = v.slice(i + 6, i + 9), k = slopeClass(a, b, c), m = roofMaterialOf(recipe.roof, a, b, c, k);
+        if (!by.has(m)) by.set(m, {steep: [], low: [], flat: []});
+        by.get(m)![k].push(...a, ...b, ...c);
+      }
+      for (const [m, cls] of by) for (const k of ['steep', 'low', 'flat'] as const) {
+        const roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(m) ? 'slate' : 'roofTile';
+        add(m === recipe.roof.material ? `roof/${k}` : `roof/${k}/${m}`, cls[k], ROOF_COLOURS[m][k], k === 'flat' ? 'bitumen' : roofSlot, 'roof');
+      }
       continue;
     }
     const colour = recipe.spec.palette[slot];
