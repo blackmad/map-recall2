@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { FALLBACK_WALL_GAIN, SUNLIT_WHITE_LUMA, WALL_WHITE_POINTS } from './measuredWhitePoints.ts';
-import { SCENE_LOOK_DEFAULT, SKY, SUNNY_EXPOSURE, SUNNY_LIGHT, WALL_GAIN_RANGE, groundTokens, mapLibreSky, measuredWallGain, rigIrradiance, sceneLookFrom, sunnyBase, sceneSlotHex, sceneTokens, srgbToLinear, sunlitMeasuredWall } from './sunny.ts';
+import { SCENE_LOOK_DEFAULT, SKY, SUNNY_EXPOSURE, SUNNY_SHADE_RATIO, litFacadeWallGain, SUNNY_LIGHT, WALL_GAIN_RANGE, groundTokens, mapLibreSky, measuredWallGain, rigIrradiance, sceneLookFrom, sunnyBase, sceneSlotHex, sceneTokens, srgbToLinear, sunlitMeasuredWall } from './sunny.ts';
 import { LEGACY_LIGHT_RIG, SUNNY_LIGHT_RIG, activeLightRig, lightRigFor } from '../rendererShared/lightRig.ts';
 import { hexToRgb, rgbToHsl } from './palette.ts';
 import { groundPalette } from '../ownGround/groundLook.ts';
@@ -29,10 +29,11 @@ test('sunny rig: warmer key, sky-blue fill, exposure solved so a sun-facing wall
   const sun = hsl(SUNNY_LIGHT.sunColour), legacySun = hsl(LEGACY_LIGHT_RIG.sunColour);
   assert.ok(sun[0] < legacySun[0] + 1e-9 && sun[1] >= legacySun[1], `warmer key ${SUNNY_LIGHT.sunColour}`);
   const [r, g, b] = hexToRgb(SUNNY_LIGHT.skyColour);
-  assert.ok(b > g && g > r && b - r >= 50, `fill is sky blue ${SUNNY_LIGHT.skyColour}`);
+  // A stronger fill (SUNNY_SHADE_RATIO 0.55) needs more white to keep level ground neutral: still sky blue, paler.
+  assert.ok(b > g && g > r && b - r >= 25, `fill is sky blue ${SUNNY_LIGHT.skyColour}`);
   // The fill is the measured clear sky mixed toward white until level ground receives neutral light (white balance).
   const base = sunnyBase(), [hr, hg, hb] = hexToRgb(SKY.horizon);
-  assert.ok(base.whiteMix > 0 && base.whiteMix < 0.5, `white mix ${base.whiteMix}`);
+  assert.ok(base.whiteMix > 0 && base.whiteMix < 0.6, `white mix ${base.whiteMix}`);
   hexToRgb(SUNNY_LIGHT.skyColour).forEach((v, i) => assert.ok(Math.abs(v - ([hr, hg, hb][i] + (255 - [hr, hg, hb][i]) * base.whiteMix)) <= 1, `fill channel ${i}`));
   const lin = (h: string) => hexToRgb(h).map(v => srgbToLinear(v)), el = (40 * Math.PI) / 180;
   const flat = [0, 2].map(i => lin(SUNNY_LIGHT.sunColour)[i] * SUNNY_LIGHT.sunIntensity * Math.sin(el) + lin(SUNNY_LIGHT.skyColour)[i] * SUNNY_LIGHT.skyIntensity);
@@ -42,10 +43,21 @@ test('sunny rig: warmer key, sky-blue fill, exposure solved so a sun-facing wall
   const sunny = rigIrradiance(SUNNY_LIGHT_RIG), legacy = rigIrradiance(LEGACY_LIGHT_RIG);
   assert.ok(Math.abs(sunny.sunWall - 1) < 1e-3, `sun wall ${sunny.sunWall}`);
   assert.ok(Math.abs(legacy.sunWall - 0.742) < 0.005 && Math.abs(legacy.shadeWall - 0.302) < 0.005, 'legacy: 0.74 / 0.30');
-  // Shade sides keep the legacy shade-to-sun balance (docs/LOOK.md: shade reads as daylight).
-  assert.ok(Math.abs(sunny.shadeWall / sunny.sunWall - legacy.shadeWall / legacy.sunWall) < 1e-3);
-  assert.ok(Math.abs(SUNNY_EXPOSURE - 1.4234) < 0.001, `exposure ${SUNNY_EXPOSURE}`);
-  assert.ok(Math.abs(sunny.flat - 1) < 0.02, `level ground and flat roofs draw about their albedo: ${sunny.flat}`);
+  // Shade sides at SUNNY_SHADE_RATIO of a sun side (was the legacy 0.41; docs/one-material-20261016.md).
+  assert.ok(Math.abs(legacy.shadeWall / legacy.sunWall - 0.407) < 0.005, 'legacy ratio 0.41');
+  assert.ok(Math.abs(sunny.shadeWall / sunny.sunWall - SUNNY_SHADE_RATIO) < 1e-3, `shade ratio ${sunny.shadeWall / sunny.sunWall}`);
+  // Exposure 1.081 since the 0.55 shade ratio (1.423 at 0.41: the stronger sky fill carries more of the sun wall).
+  assert.ok(Math.abs(SUNNY_EXPOSURE - 1.0809) < 0.001, `exposure ${SUNNY_EXPOSURE}`);
+  // Level surfaces get the stronger sky too: flat roofs draw ~12 % over their albedo in linear light (~5 % sRGB); the
+  // ground divides it out (ownGround/groundLight.ts FLAT_GROUND_GAIN).
+  assert.ok(sunny.flat > 1 && sunny.flat < 1.15, `level ground and flat roofs draw about their albedo: ${sunny.flat}`);
+});
+
+test('one wall pipeline: lit facades take the measured walls\' fallback exposure in the sunny look only', () => {
+  // The shader linearises the sRGB gain with pow 2.2, so the facade wall moves by FALLBACK_WALL_GAIN in linear light.
+  assert.ok(Math.abs(litFacadeWallGain(1, 'sunny') ** 2.2 - 1.106) < 1e-9);
+  assert.equal(litFacadeWallGain(255 / 225, 'legacy'), 255 / 225);
+  assert.ok(Math.abs(litFacadeWallGain(255 / 225, 'sunny') / (255 / 225) - 1.106 ** (1 / 2.2)) < 1e-12);
 });
 
 test('measured sky: blue, the horizon no darker than the upper sky, and it reaches MapLibre only in the sunny look', () => {
