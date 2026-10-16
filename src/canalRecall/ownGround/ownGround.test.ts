@@ -23,7 +23,7 @@ import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, enco
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
+import { BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
@@ -295,6 +295,36 @@ test('measured deck: the top fills the footprint, railings on both edges, abutme
   const info2: DeckBuildInfo[] = [];
   measuredDeckBody(s.addDeck(long), s.ground, x => wide(x), -1.77, s.height, info2);
   assert.ok(info2[0].piers === 2 && info2[0].arches === 3, JSON.stringify(info2[0]));
+});
+
+test('deck widths (ride review J6, BRU0063): the outline widens the deck over the water only, the top stays under the bands on land', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  // A 4 m road on an outline 12 m to its left over a deck span 8–32 m, the water only 14–26 m (BRU0063's span runs 4–10 m past its water).
+  const p = syntheticDeck(); p.sides = [12, 4]; p.water = [14, 26];
+  const deck = s.addDeck(p);
+  const water = (x: number) => x > 14 && x < 26;
+  const at = (x: number) => p.s.findIndex(v => v >= x);
+  const w = deckWidths(deck, (x) => water(x));
+  assert.equal(w.left[at(20)], 12, 'over the water: the outline');
+  assert.equal(w.left[at(10)], 4, 'over land in the deck span: the road half-width, not the outline');
+  assert.ok(w.left[at(13.5)] === 12, 'within WIDEN_PAST_WATER_M of the water: the outline (the deck lands on the quay)');
+  assert.equal(w.right[at(20)], 4);
+  // The top: no vertex past the road on land, the outline over the water.
+  const top = measuredDeckTop(deck, s.height, 4, 2, undefined, w);
+  let landMax = 0, waterMax = 0;
+  for (let i = 0; i < top.positions.length; i += 3) {
+    const x = top.positions[i], y = top.positions[i + 1];
+    if (x < 13 - WIDEN_PAST_WATER_M || x > 27 + WIDEN_PAST_WATER_M) landMax = Math.max(landMax, y); else waterMax = Math.max(waterMax, y);
+  }
+  assert.ok(landMax <= 4 + 1e-9 && waterMax > 11.9, `top reaches ${landMax.toFixed(2)} m on land, ${waterMax.toFixed(2)} m over water`);
+  // With the street bands: on land the road part itself is clipped to the band (here 2 m either side of the axis).
+  const band = bandCorridor([{ points: [[0, 0], [40, 0]], half: 2 }]);
+  const wb = deckWidths(deck, (x) => water(x), band);
+  assert.ok(Math.abs(wb.left[at(9)] - (2 + BAND_MARGIN_M + BAND_MARGIN_M)) < WIDTH_PROBE_M + 1e-9 && wb.left[at(20)] === 12, `banded: ${wb.left[at(9)]} on land, ${wb.left[at(20)]} over water`);
+  // Without an outline (no sides) and no bands the widths are the road's: the top is byte-identical to the unclipped one.
+  const plain = s.addDeck(syntheticDeck());
+  assert.deepEqual(measuredDeckTop(plain, s.height, 4, 2, undefined, deckWidths(plain, (x) => water(x))), measuredDeckTop(plain, s.height));
 });
 
 test('deck grade clamp: spikes over 1:8 come out, the crown stays', () => {

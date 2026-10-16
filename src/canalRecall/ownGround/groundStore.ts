@@ -75,7 +75,7 @@ export class GroundStore {
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
   /** `moorings`: open the water under houseboats the generalised water cuts (moorings.ts); off for the regression's before. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -437,7 +437,7 @@ export class GroundStore {
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
-      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays,
+      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}),
       project: p => toLocal(p[0], p[1]),
     };
   }
