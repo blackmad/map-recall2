@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Pop-in: streaming look-ahead, a basemap hold, chunk dissolve; a houseboat freeze fixed (2026-10-16)
+
+User (2026-10-16): "there's a lot of pop-in in the game, is that something
+we can improve without harming perf?". Lane `lane/pop-in-20261016`
+(2c15ac288 metric, bef643cdb, f7484e12f, 35e77cf11, b2e717abd, afe9f2636,
+02acc7256, 63f23d0a5); doc `docs/perf-pop-in-20261016.md`. A pop-in metric
+(camera-compensated per-frame residual blobs on a scripted ride, attributed
+to their source) found a freeze first: a houseboat chunk's highlight pass
+read vertex arrays three.js had freed (`TypeError` every frame on the boat
+route; regression test). Fixes, each with an off switch: look-ahead steered
+by the rider's heading (`streamingLookAhead.ts`: building tiles 5–12 s
+ahead, facade chunks nearest-ahead first, the own-ground worker queue drops
+left cells and builds ahead-first; `?lookAhead=0`); the basemap's buildings
+hold until a coarse shell under the rider is installed, 400 ms after the
+first shell, or 8 s (`__canalRecallHoldBasemap=false`); a first version
+waited on off-screen shells and showed the city ~1 s late at light load,
+caught at integration and fixed); arriving facade chunks dissolve in over
+350 ms (`?chunkFade=0`). Loaded machine, start of ride: building pop-in
+14,429 → 593 px/s, ground-cell latency 8.6 → 3.3 s. Light load: first real
+city 0.3 s either way, attributed pop-in 250 → 124 px/s (CPU ×2: 912 →
+182). Desktop motion: longest frame 33 ms, p95 16.8 ms; facade geometry
+140 → 200 MB resident. Gate: `tests/e2e/pop-in.spec.ts` (`PERF_POPIN=1`,
+≤ 1000 px/s, ground-cell latency median ≤ 1500 ms).
+
 ## Surveyed road surface city-wide: 291 cells, 10.2 MB (2026-10-16)
 
 Lane `lane/roads-citywide-20261016` (1f707e183, dc5b2d4cc, publish 17e62fba3,
