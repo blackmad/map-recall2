@@ -827,6 +827,11 @@
    "type": {
     "type": "kinker-1890-plain-brick",
     "crown": "pediment-dormer",
+    "paletteOverrides": {
+     "brick": "#74705e",
+     "wallTint": "measured",
+     "whitePoint": "#a8ad9a"
+    },
     "storeys": 5,
     "overrides": {
      "windowHead": {
@@ -864,8 +869,7 @@
      "windowShare": 0.6,
      "bays": 2,
      "palette": {
-      "band": "#7a4a30",
-      "brick": "#6f5a40"
+      "band": "#7a4a30"
      }
     },
     "ground": {
