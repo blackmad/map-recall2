@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## Canal water is blue again, one tone for the map and the 3D water (2026-10-16)
+
+User (2026-10-16), on the finish card over the map: "why is the water this
+color now?", then "just pick a good blue". The overview transition (merged
+the same morning) made the flat map take the 3D ground's tokens at every
+zoom, so the map's light-blue canals turned the default ("bright") ground
+look's grey-green `[104, 122, 114]`. That look's water is now `#4f86a3`
+(`[79, 134, 163]`, luma ~124) in `ownGround/groundLook.ts`, read by the
+3D water and pond materials and, through `look/sunny.ts groundTokens`, by
+the basemap: one blue at every zoom, so the blend stays seamless. The test
+that pinned the grey-green now pins the default canal as blue (b > g > r,
+b − r ≥ 60); legacy-ish keeps its grey-green. Frames:
+`docs/images/look/water-blue-20261016.jpg` (Singelgracht by boat and the
+zoom-13 overview).
+
 ## Buurt coverage in the app, and the first buurt generator pilot (Bellamybuurt-Zuid) (2026-10-16)
 
 User (2026-10-16), on the coverage map: "would be nice if this was bundled

@@ -1350,7 +1350,7 @@ test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish 
   const def = basemapGroundPatches([{ id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('default'));
   assert.deepEqual(def.map(p => p.value), ['rgb(86,88,93)', '#46707c', '#46707c'], 'default basemap patches unchanged');
   // Targets: measured = the dehazed sunlit orthophoto medians (docs/ground-tones-20261014.md); bright road ~130 / pavement ~175; legacy-ish road ~200 / pavement ~215 / water ~170.
-  const target: Record<string, { asphalt: number; pavement: number; water: number }> = { measured: { asphalt: 166, pavement: 165, water: 54 }, bright: { asphalt: 130, pavement: 175, water: 118 }, 'legacy-ish': { asphalt: 200, pavement: 215, water: 170 } };
+  const target: Record<string, { asphalt: number; pavement: number; water: number }> = { measured: { asphalt: 166, pavement: 165, water: 54 }, bright: { asphalt: 130, pavement: 175, water: 124 }, 'legacy-ish': { asphalt: 200, pavement: 215, water: 170 } };
   for (const look of ['measured', 'bright', 'legacy-ish'] as const) {
     const { street, tones } = groundPalette(look);
     assert.ok(Math.abs(luma(street.asphalt.base) - target[look].asphalt) <= 4, `${look} road luma ${luma(street.asphalt.base).toFixed(0)}`);
@@ -1364,7 +1364,9 @@ test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish 
     for (const k of ['paint', 'rail', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
     for (const k of ['park', 'wood', 'lawn', 'shrub', 'bed', 'bark', 'sand', 'gravel', 'parkGravel'] as const) assert.equal(tones[k], GROUND_TONES[k]);
     assert.equal(tones.pond, tones.water);
-    if (look !== 'measured') { const [r, g, b] = rgbOf(tones.water); assert.ok(g > b && g > r, `${look} canal grey-green, not teal: ${tones.water}`); }
+    // The default (bright) canal is blue, not grey-green (user 2026-10-16: "why is the water this color now?", "just pick a good blue").
+    if (look === 'bright') { const [r, g, b] = rgbOf(tones.water); assert.ok(b > g && g > r && b - r >= 60, `bright canal blue: ${tones.water}`); }
+    if (look === 'legacy-ish') { const [r, g, b] = rgbOf(tones.water); assert.ok(g > b && g > r, `${look} canal grey-green, not teal: ${tones.water}`); }
   }
   assert.equal(groundLookFrom('?ownGround=1&groundLook=bright'), 'bright');
   assert.equal(groundLookFrom('?groundLook=legacy-ish'), 'legacy-ish');
