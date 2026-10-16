@@ -106,8 +106,7 @@
     "measuredPalette": {
      "brick": "#674935",
      "evidence": "strip 2024-12-11 span 661-882: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "box-dormer"
+    }
    },
    "groundFloor": {
     "use": "residential",

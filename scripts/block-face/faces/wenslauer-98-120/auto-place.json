@@ -3,7 +3,7 @@
  "street": "Wenslauerstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.31,
+ "seconds": 0.39,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,18 +42,33 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.496,
+    "structure": {
+     "bayWidthM": 2.13,
+     "bayCentre": 0.92,
+     "balconies": true,
+     "why": "dark open axis 1.25 m at 0.7 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.25,
+       "centre": 0.7,
+       "light": 0.32
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.23,
     "foliageShare": 0.15
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1986, type 1928-1935; frontage 15.37 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1986, type 1928-1935; frontage 15.37 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.25 m at 0.7 (light 0.32): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1986, type 1928-1935",
-     "frontage 15.37 m, type 4.8-5.8 m"
+     "frontage 15.37 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.25 m at 0.7 (light 0.32): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -118,6 +133,20 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.427,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.88,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.86 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.86,
+       "light": 0.41
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.06,
     "foliageShare": 0.35
    },

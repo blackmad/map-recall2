@@ -3,7 +3,7 @@
  "street": "Hasebroekstraat",
  "library": "bellamy",
  "stripDate": "2022-01-04",
- "seconds": 10.75,
+ "seconds": 21.43,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -36,7 +36,7 @@
     "0363100012236958"
    ],
    "passed": false,
-   "triangles": 41233
+   "triangles": 40969
   }
  ],
  "pands": [
@@ -67,6 +67,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.4,
+       "widthM": 0.85,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.17,
+       "widthM": 1.1,
+       "centre": 0.52
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -143,6 +162,35 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.44,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.75 m (1.32 m wide), 9.45 m (1.73 m wide), 6.15 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 1.32,
+       "centre": 0.51
+      },
+      {
+       "atM": 9.45,
+       "widthM": 1.73,
+       "centre": 0.46
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.2,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.27,
+       "centre": 0.47
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
@@ -223,6 +271,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.52,
+       "widthM": 1.02,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.7,
+       "widthM": 0.82,
+       "centre": 0.5
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -303,6 +370,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.25,
+       "widthM": 1.1,
+       "centre": 0.13
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.1,
+       "centre": 0.44
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -382,6 +468,35 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.63,
+       "widthM": 1.25,
+       "centre": 0.83
+      },
+      {
+       "atM": 9.25,
+       "widthM": 1.05,
+       "centre": 0.45
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.05,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.4,
+       "widthM": 1.13,
+       "centre": 0.84
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
@@ -474,6 +589,20 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6,
+       "widthM": 1,
+       "centre": 0.46
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
@@ -549,6 +678,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.22,
+       "widthM": 0.88,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.18,
+       "centre": 0.85
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
@@ -624,6 +772,30 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.67,
+       "widthM": 1.3,
+       "centre": 0.51
+      },
+      {
+       "atM": 9.63,
+       "widthM": 1.5,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1,
+       "centre": 0.85
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -701,6 +873,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.4,
+       "widthM": 1.5,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.17,
+       "widthM": 1.07,
+       "centre": 0.45
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -773,6 +964,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.55 m (1.57 m wide), 6.47 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.55,
+       "widthM": 1.57,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.27,
+       "centre": 0.52
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -847,6 +1057,30 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13,
+       "widthM": 0.93,
+       "centre": 0.85
+      },
+      {
+       "atM": 9.55,
+       "widthM": 1.38,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.55,
+       "widthM": 0.95,
+       "centre": 0.85
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -935,6 +1169,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.22,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.55,
+       "widthM": 0.8,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.18,
+       "centre": 0.84
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -1007,6 +1260,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.65,
+       "widthM": 1,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.38,
+       "centre": 0.86
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
@@ -1095,6 +1367,20 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.42,
+       "widthM": 1.05,
+       "centre": 0.32
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -1171,6 +1457,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.52,
+       "widthM": 0.85,
+       "centre": 0.48
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.63,
+       "centre": 0.8
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -1245,6 +1550,30 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.15,
+       "widthM": 1.05,
+       "centre": 0.52
+      },
+      {
+       "atM": 10,
+       "widthM": 1.15,
+       "centre": 0.88
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.35,
+       "centre": 0.53
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0
    },
@@ -1319,6 +1648,35 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.05,
+       "widthM": 1.68,
+       "centre": 0.68
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.2,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.22,
+       "widthM": 0.97,
+       "centre": 0.53
+      },
+      {
+       "atM": 4.95,
+       "widthM": 0.97,
+       "centre": 0.86
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -1406,18 +1764,39 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.99,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.44 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.44,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 1.02,
+       "centre": 0.44
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1904, type 1928-1935; frontage 16.71 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1904, type 1928-1935; frontage 16.71 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.1 m at 0.44 (light 0.23): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1904, type 1928-1935",
-     "frontage 16.71 m, type 4.8-5.8 m"
+     "frontage 16.71 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.1 m at 0.44 (light 0.23): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {

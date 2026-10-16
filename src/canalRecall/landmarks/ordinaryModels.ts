@@ -28,8 +28,15 @@ export const ordinarySpecFor = (m: Entry): SignatureModelSpec => ({
   surveyed: { anchor: m.instance?.anchor ?? m.anchor, northOffsetDegrees: m.instance?.northOffsetDegrees ?? 0, source: 'Installed native footprint; source-specific facade and roof recipe. Heights/details retain documented approximations.' },
   attribution: { title: m.name, author: 'Map Recall', sourceUrl: m.sourceUrls?.[0] ?? 'https://data.amsterdam.nl/', licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Original procedural facade patterns and shallow geometry on native surveyed footprints. No reference-photo pixels or imported model geometry. See ordinary building recipe for source/height uncertainties.' },
 });
-/** Every catalogue model (both categories): what the game draws. */
-export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.map(ordinarySpecFor);
+/** Catalogue installs whose pand a bespoke landmark model already draws: the landmark wins and the install is not drawn
+ * (both drew on the same ground). Keyed by ordinary id, valued by the landmark id; modelOverlap.test.ts pins each pair. */
+export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
+  // Politiebureau IJ-tunnel 2 (2026-10-13 large recipe) is the same 1972 pand as Brandweerkazerne Nico (2026-10-09),
+  // which models every side; the install left three sides blank. Found 2026-10-16 by the overlap check.
+  'ordinary-0363100012165618': 'fire-station-nico',
+};
+/** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
+export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);
 /** One-off large non-landmark buildings (the ordinary-buildings gallery). */
 export const ORDINARY_CATEGORY_BUILDINGS: readonly SignatureModelSpec[] = ORDINARY_BUILDINGS.filter(m => m.buildingCategory === 'ordinary');
 /** Per-house recipe models (street surveys); a block-face chunk may supersede them in game. */

@@ -3,7 +3,7 @@
  "street": "Bellamystraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.48,
+ "seconds": 1.06,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,45 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.759,
+    "structure": {
+     "bayWidthM": 2.13,
+     "bayCentre": 0.09,
+     "balconies": false,
+     "why": "no dark open axis, 5 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.75,
+       "widthM": 1.35,
+       "centre": 0.26
+      },
+      {
+       "atM": 11.45,
+       "widthM": 1.35,
+       "centre": 0.26
+      },
+      {
+       "atM": 6.72,
+       "widthM": 2.7,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.42,
+       "widthM": 2.27,
+       "centre": 0.08
+      },
+      {
+       "atM": 5.22,
+       "widthM": 2.15,
+       "centre": 0.89
+      },
+      {
+       "atM": 4.85,
+       "widthM": 1.05,
+       "centre": 0.87
+      }
+     ]
+    },
     "voidShare": 0.21,
     "foliageShare": 0.13
    },
@@ -118,6 +157,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.873,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.17,
     "foliageShare": 0.1
    },
@@ -189,6 +236,20 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.682,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.7,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.05,
+       "widthM": 0.97,
+       "centre": 0.21
+      }
+     ]
+    },
     "voidShare": 0.31,
     "foliageShare": 0.02
    },

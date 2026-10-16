@@ -82,6 +82,8 @@ export interface SignatureModelSpec {
   readonly mirror?: boolean;
   /** Street chunk (one mesh for a block face, see streetChunks/manifest.ts): the pands it draws, so hover resolves the building under the cursor. */
   readonly chunkPands?: readonly { readonly buildingId: string; readonly address: string; readonly footprint: unknown }[];
+  /** Street chunk: the exposure its photo-matched walls were matched under (look/chunkWallExposure.ts), for the sunny look. */
+  readonly wallExposure?: import('../look/chunkWallExposure.js').WallExposure;
   readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape';
   /** Taxonomy (buildingCategory.ts). Absent = landmark; only landmarks become POIs, cards or route candidates. */
   readonly buildingCategory?: import('../buildingCategory.js').BuildingCategory;

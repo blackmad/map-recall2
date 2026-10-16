@@ -36,22 +36,6 @@
    ],
    "units": 4,
    "osm": []
-  },
-  {
-   "pandId": "0363100012117355",
-   "addresses": [
-    "Jan Pieter Heijestraat 53"
-   ],
-   "groundUnits": [
-    {
-     "address": "Jan Pieter Heijestraat 53-H",
-     "use": "woonfunctie",
-     "areaM2": 50,
-     "bagId": "0363010000685985"
-    }
-   ],
-   "units": 4,
-   "osm": []
   }
  ]
 }
