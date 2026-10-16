@@ -13,6 +13,7 @@ import { CITY_ROOF, hexToRgb, type RGB } from '../look/palette.js';
 import { groundLookFrom, groundPalette, type GroundPalette } from '../ownGround/groundLook.js';
 import type { StyleLayerLike } from '../ownGround/basemapPalette.js';
 import { BLEND_END_ZOOM } from './blend.js';
+import { groundTokens } from '../look/sunny.js';
 
 export interface OverviewPatch { id: string; property: string; value: unknown }
 export interface ZoomRangePatch { id: string; minzoom: number; maxzoom: number }
@@ -40,7 +41,8 @@ export const FOOTPRINT_FADE_ZOOM = 0.6;
 /** Paint and zoom-range patches for the overview (transition on), on top of basemapGroundPatches. */
 export function overviewBasemapPatches(layers: readonly StyleLayerLike[], palette: GroundPalette = groundPalette(groundLookFrom())): { paint: OverviewPatch[]; zoomRanges: ZoomRangePatch[] } {
   const paint: OverviewPatch[] = [], zoomRanges: ZoomRangePatch[] = [];
-  const land = css(palette.tones.land.base), park = css(palette.tones.park);
+  // The same tokens the basemap ground patches and the 3D ground read (look/sunny.ts).
+  const { land, park } = groundTokens(palette);
   for (const layer of layers) {
     const src = layer['source-layer'] ?? '';
     if (src === 'park' && layer.type === 'fill') {

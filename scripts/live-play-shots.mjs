@@ -70,9 +70,22 @@ for (const spec of places) {
   const info = await page.evaluate(() => {
     const g = canalRecallGame, vm = g.vectorMap, og = vm._ownGround;
     const tb = vm._tileBuildings || vm._recipeTiles || null;
-    return { travelMode: g.travelMode, ownGround: og ? og.status() : null, tileBuildings: tb && tb.stats ? tb.stats() : null };
+    return { probe: window.__probe ?? null, travelMode: g.travelMode, pitch: vm.map?.getPitch?.(), zoom: vm.map?.getZoom?.(), ownGround: og ? og.status() : null, tileBuildings: tb && tb.stats ? tb.stats() : null };
   });
   await page.screenshot({ path: `${out}/${name}.png` });
+  // MASK=1: also a HUD-free frame (<name>.clean.png) and a region mask (<name>.mask.png, scripts/look/region-mask.js)
+  // for scripts/look/sunny-frames.ts.
+  if (process.env.MASK) {
+    const hide = await page.addStyleTag({ content: 'body * { visibility: hidden !important; } canvas.maplibregl-canvas { visibility: visible !important; }' });
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: `${out}/${name}.clean.png` });
+    await page.evaluate(src => (0, eval)(src), fs.readFileSync('scripts/look/region-mask.js', 'utf8'));
+    await page.waitForTimeout(800);
+    await page.screenshot({ path: `${out}/${name}.mask.png` });
+    await page.evaluate(() => window.__regionMaskRestore());
+    await hide.evaluate(e => e.remove());
+    await page.waitForTimeout(400);
+  }
   shots.push({ name, lng, lat, bearing, info });
 }
 fs.writeFileSync(`${out}/shots.json`, JSON.stringify({ qs, mode, dest: picked, errors, shots }, null, 1));

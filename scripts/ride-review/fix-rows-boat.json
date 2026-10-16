@@ -1,0 +1,6 @@
+{ "mode": "boat", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "J8-pansemertbrug-boat", "at": [4.88520, 52.37668, 264] },
+    { "name": "J6-nieuwe-wercksbrug-boat", "at": [4.88300, 52.37480, 191] }
+  ] }

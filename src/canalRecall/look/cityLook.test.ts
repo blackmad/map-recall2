@@ -1,6 +1,7 @@
 // node --import tsx --test src/canalRecall/look/*.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { sunlitMeasuredWall } from './sunny.ts';
 import * as THREE from 'three';
 import { MATERIAL_SLOTS, cityMeasuredGlassTint, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN, BRICK_CELL_MEAN, rgbToHex } from './palette.ts';
 import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotForMaterial, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
@@ -148,7 +149,10 @@ test('measured brick/accent: cell x tint lands on the authored hex; every unmeas
   const cell = (hex: string) => { const [r, g, b] = hexToRgb(hex).map(v => Math.round(v * BRICK_CELL_MEAN)); return rgbToHex([r, g, b]); };
   for (const slot of ['brick', 'accent'] as const) for (const hex of ['#3a2a28', '#8a3e2e', '#d8d2c4']) {
     assert.equal(cityLookTint(slot, hex), cityLookTint(slot, hex, null), 'no source = unchanged');
-    assert.ok(Math.abs(L(cell(cityLookTint(slot, hex, 'measured'))) - L(hex)) <= 0.02, `${slot} ${hex}`);
+    assert.ok(Math.abs(L(cell(cityLookTint(slot, hex, 'measured', 'legacy'))) - L(hex)) <= 0.02, `${slot} ${hex}`);
+    // Sunny look (default): it lands on the wall at sunlit exposure (look/sunny.ts), at least as light as the hex.
+    assert.ok(Math.abs(L(cell(cityLookTint(slot, hex, 'measured', 'sunny'))) - L(sunlitMeasuredWall(hex))) <= 0.02, `${slot} ${hex} sunny`);
+    assert.ok(L(sunlitMeasuredWall(hex)) >= L(hex) - 1e-9);
     assert.deepEqual(slotTintBytes(slot, hex, 'measured'), [...hexToRgb(cityLookTint(slot, hex, 'measured')), 255]);
   }
   assert.ok(L(cityLookTint('brick', '#3a2a28')) >= 0.3 - 1e-9, 'unmeasured dark wall is still clamped');

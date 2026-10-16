@@ -143,6 +143,12 @@
   "bytes": 23484,
   "triangles": 908
  },
+ "delamar": {
+  "sourceHash": "5d32162e58b46fa2",
+  "buildVersion": 2,
+  "bytes": 76704,
+  "triangles": 3263
+ },
  "magna-plaza": {
   "sourceHash": "ddd4641379f24f7d",
   "buildVersion": 2,
@@ -1668,10 +1674,10 @@
   "triangles": 644
  },
  "noorderkerk": {
-  "sourceHash": "93f7f58651032213",
+  "sourceHash": "a4227eb4d1476caf",
   "buildVersion": 2,
-  "bytes": 51948,
-  "triangles": 2204
+  "bytes": 64464,
+  "triangles": 2856
  },
  "krijtberg": {
   "sourceHash": "0c77e3b173b19e93",
@@ -1762,5 +1768,17 @@
   "buildVersion": 2,
   "bytes": 91388,
   "triangles": 4431
+ },
+ "mercatorplein-noordtoren": {
+  "sourceHash": "3a3caa031f218cde",
+  "buildVersion": 2,
+  "bytes": 65920,
+  "triangles": 3373
+ },
+ "mercatorplein-zuidtoren": {
+  "sourceHash": "edbf5280bf75e26d",
+  "buildVersion": 2,
+  "bytes": 37028,
+  "triangles": 1430
  }
 }

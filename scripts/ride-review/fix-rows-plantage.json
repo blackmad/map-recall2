@@ -1,0 +1,5 @@
+{ "mode": "boat", "dest": "Artis", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "P4-walter-suskindbrug", "at": [4.90206, 52.36593, 73] }
+  ] }

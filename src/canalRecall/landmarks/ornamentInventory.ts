@@ -183,7 +183,7 @@ export const INVENTORY_REQUIRED_AFTER = '2026-10-14T00:00:00+02:00';
  * 2026-10-13 15:31, before the cutoff) belongs here as soon as its builder lane resolves the `open` items of
  * scripts/landmarks/hoofdbureau-elandsgracht-inventory.json; adding it earlier would block that lane's own rebuild.
  */
-export const INVENTORY_REQUIRED_IDS: readonly string[] = [];
+export const INVENTORY_REQUIRED_IDS: readonly string[] = ['delamar'];   // delamar: all-sides rebuild 2026-10-16, inventory resolved
 
 /** Whether a landmark's export needs a resolved inventory. `firstExported` = first commit of its GLB, undefined = never committed. */
 export function inventoryRequired(id: string, firstExported: string | undefined): boolean {

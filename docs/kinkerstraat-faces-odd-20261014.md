@@ -249,3 +249,63 @@ Limitations (in the intent): No 1910s type in the library: these four fronts pla
 
 Limitations (in the intent): The 1992 block matches no library type: glazed curtain-wall bays (mullion-and-transom grids with dark spandrel panels over three storeys) are drawn as wide six-pane windows; the kit has no curtain-wall bay; Recessed loggias behind the round projecting balconies are drawn flush (the kit balconies are rectangular); Arcade: piers in front of set-back shops under a canopy, drawn as a flush shopfront with a grey fascia.
 
+
+## Colour fidelity, library promotion and window widths (2026-10-14, second pass)
+
+Sheet: `docs/images/kinkerstraat/colour-fidelity-20261014.jpg` (photo strip | before | after per pand, with hexes).
+
+New kit keys, each byte-identical when absent (fit-golden 156 identical, large-mesh 115 identical, block-kit-installed
+identical; per-pand chunk hashes change only on the pands listed below):
+
+- `type.paletteOverrides` on a placement (`blockFace/houseType.ts`): house-palette fields over the named palette, so a
+  pand sets its own measured wall without the 3 cm per-front facing (`overrides.palette.brick`, double the wall
+  triangles and still clamped). Reported as a type deviation.
+- `palette.wallTint: "measured"` (`buildingRecipe/intent.ts`, `oudWest.ts`): an unpainted brick wall drawn as its
+  measured colour (`tintSource: measured`) instead of being clamped to L 0.3-0.6 / S >= 0.12 by `cityWallTint`.
+- `palette.whitePoint`: the light-trim (white frame) colour of the strip crop the wall was measured on. The panoramas
+  are mostly overcast, so the measured tints are an overcast reading; the white point is exported with the tint as
+  `tintWhitePoint` (chunk and single-house GLB material extras) so a look can normalise measured walls to a sunlit
+  white point. Required pairing: only with `wallTint: measured` or `painted-brick`.
+- `paintedStoreys: {storeys, colour}` (front): each listed storey laid as a 4 cm wall facing cut around its openings,
+  drawn in the paint colour as a measured tint. The paint is authored like the painted stone: as white as the drawn
+  frames when the photo's paint reads as bright as its own frames.
+
+Rendered wall vs photo, medians on the same pixels (the before render's wall pixels; for 21-23 the after render's
+painted storey), `|d|` = sum of RGB differences to the photo:
+
+| pand | key | photo | before | after | \|d\| before -> after | white point |
+|---|---|---|---|---|---|---|
+| 158968 Kinkerstraat 31 | painted-brick #282b24 | #282b24 | #4a4a3a (olive) | #2d312a | 87 -> 17 | #a1a698 |
+| 161457 Kinkerstraat 47 | wallTint measured #c09d84 | #c09d84 | #ae7e5b (too dark) | #bd9a82 | 90 -> 8 | #beb4a2 |
+| 133467 Kinkerstraat 63 | wallTint measured #78675b | #78675b | #765b45 (S 0.26) | #76665a (S 0.13) | 36 -> 4 | #b1b3a8 |
+| 156991 Kinkerstraat 87 | wallTint measured #74705e | #74705e | #786145 (S 0.27) | #716e5d (S 0.10) | 44 -> 6 | #a8ad9a |
+| 165338 / 159971 Kinkerstraat 21 / 23 | paintedStoreys [1] #e3e2d7 | white #a2a393 / #bbc1b4 raw vs frames #a2a69b / #b5bcb0 | brick #745c46 | paint #dcdad0 / #dcdbd1 | - | - |
+
+31 cannot go darker than #2d312a: the look floors measured walls at L 0.18 (`MEASURED_WALL_MIN_L`), the photo is L
+0.15. 31 and 47 lost their facing (31-49: 15,698 -> 15,110 tris); 21-23 add the painted facings (1-29: 24,700 ->
+25,591). On 21-23 the painted storey sits ~0.5 m above the photo's (model 3.8-6.7 m, photo 3.3-5.9 m): measured
+storey heights need a 4.1 m top storey for the frieze, and the wall dormer rises one top storey, so it went 1 m over
+the photo and failed the 3DBAG height gate; reverted, kept as a limitation.
+
+**Library**: `kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable` moved to `scripts/block-face/types/oud-west/`
+with per-pand evidence and per-pand palettes after the original default palette; the faces reference them by id. Whole
+chunk sha256 identical before and after the promotion: kinker-1-29 `73fb46c7aaec1e82…`, kinker-65-87
+`9f254fa85d982381…`.
+
+**Window widths** of the brick-arched pands, measured as a column profile over the window rows of the strip (frames
+included; the same method on the model renders reads within ~0.01 m of the kit's windows):
+
+| pands | photo window | kit draws | action |
+|---|---|---|---|
+| 2-30: 236814, 236360, 236379, 163174, 155541, 236383, 164188, 162482, 237357 (18-4 row) | 0.97-1.10 m (share 0.53-0.64) | 0.97-1.15 m | none: the row matches; the "0.8 vs 0.95 m" reading was glass only |
+| 2-30: 163325 (2), 161331 (2 corner) | 1.20 / 1.18 m | 0.99 / 1.15 m | another lane's face; 163325 narrow |
+| 49-63: 153083 (57) | 1.21 m | 1.13 m | `windowShare` 0.59 per placement |
+| 49-63: 163977 (59) | 1.20 m | 1.08 m | `windowShare` 0.61 |
+| 49-63: 133467 (63) | 1.22-1.25 m (a banner inflates the profile to 1.32) | 1.04 m | `windowShare` 0.64 -> 1.25 m |
+
+The 38 other pands the type library assigns to brick-arched (no intent yet) read 0.95-1.27 m; most 1.05-1.25 m.
+
+**Still cannot say**: a painted storey whose height follows the photo when the type's top storey holds a frieze (wall
+dormer rise is tied to the top storey); black paint under L 0.18; a white point per storey; the look does not yet use
+`whitePoint` (walls still draw the overcast reading); a painted ground wall behind a shop (storey 0 with a
+shopfront, 363-365).

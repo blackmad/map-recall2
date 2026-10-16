@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page, type TestInfo } from '@playwright/test';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { jump, zoomWarp, VIEW_REGION, GROUND_REGION, type Frame, type JumpStats } from '../../src/canalRecall/overviewTransition/frameMetrics';
@@ -16,7 +17,7 @@ const PLACE = { lng: 4.88262, lat: 52.37713, bearing: 95 };
 const FROM = 13.8, TO = 16.0, STEP = 0.1;
 const MAX_OVER_DE = 0.05, MAX_DL = 10;
 
-async function sweep(page: Page, query: string) {
+async function sweep(page: Page, query: string, info0: TestInfo) {
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query });
   await page.waitForFunction(() => (window as any).canalRecallGame.camera.introOverview === 0, null, { timeout: 120_000 });
   await page.addStyleTag({ content: 'body > *:not(#vector-map):not(#gameCanvas), body > *:not(#vector-map):not(#gameCanvas) * { visibility: hidden !important; }' });
@@ -49,6 +50,8 @@ async function sweep(page: Page, query: string) {
   // Start the sweep from a settled view at its first zoom (its tiles loaded), not from the jump to it.
   await page.evaluate(t => { const g = (window as any).canalRecallGame, m = g.vectorMap.map; (window as any).__tz = { zoom: g.camera.zoom * 2 ** (t - m.getZoom()) }; }, FROM);
   await page.waitForTimeout(2500);
+  await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded(), null, { timeout: 15_000 }).catch(() => {});
+  await page.waitForTimeout(500);
   const frames: { z: number; frame: Frame; cx: number; cy: number }[] = [];
   for (let target = FROM; target <= TO + 1e-9; target += STEP) {
     await page.evaluate(t => {
@@ -59,7 +62,10 @@ async function sweep(page: Page, query: string) {
     await page.waitForTimeout(250);
     await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded(), null, { timeout: 5000 }).catch(() => {});
     const st = await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.map, c = m.project(m.getCenter()); return { z: m.getZoom() as number, cx: c.x as number, cy: c.y as number, cssW: window.innerWidth }; });
-    const { data, info } = await sharp(await page.screenshot()).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const shot = await page.screenshot();
+    // TRANSITION_SHOTS=<dir>: keep the sweep's frames for inspection.
+    if (process.env.TRANSITION_SHOTS) writeFileSync(`${process.env.TRANSITION_SHOTS}/${info0.project.name}${query ? '-ab' : ''}-${st.z.toFixed(1)}.png`, shot);
+    const { data, info } = await sharp(shot).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     // The screenshot is in device pixels (a phone's DPR 3); the map centre is in CSS pixels.
     const dpr = info.width / st.cssW;
     frames.push({ z: st.z, cx: st.cx * dpr, cy: st.cy * dpr, frame: { data, width: info.width, height: info.height, channels: 3 } });
@@ -81,7 +87,8 @@ const summary = (r: Awaited<ReturnType<typeof sweep>>) =>
 test('overview → city: no step of the zoom sweep jumps', async ({ page }, info) => {
   test.setTimeout(300_000);
   if (info.project.name === 'desktop') await page.setViewportSize({ width: 1280, height: 800 });
-  const r = await sweep(page, '');
+  if (process.env.TRANSITION_SHOTS) mkdirSync(process.env.TRANSITION_SHOTS, { recursive: true });
+  const r = await sweep(page, '', info);
   info.annotations.push({ type: 'transition', description: summary(r) });
   for (const st of r.steps) if (st.view.overDE > MAX_OVER_DE / 2) console.log(`  [${info.project.name}] ${st.from}→${st.to}: ΔE>20 ${(100 * st.view.overDE).toFixed(1)} %, Δ mean luma ${st.view.dMeanLuma.toFixed(1)}`);
   console.log(`[${info.project.name}] transition: ${summary(r)}`);
@@ -94,7 +101,7 @@ test('A/B: the old hard switch (?transition=0) breaks the bound', async ({ page 
   test.skip(!process.env.TRANSITION_AB, 'set TRANSITION_AB=1');
   test.setTimeout(300_000);
   if (info.project.name === 'desktop') await page.setViewportSize({ width: 1280, height: 800 });
-  const r = await sweep(page, '?transition=0');
+  const r = await sweep(page, '?transition=0', info);
   console.log(`[${info.project.name}] transition=0: ${summary(r)}`);
   expect(r.worstDE.view.overDE).toBeGreaterThan(MAX_OVER_DE);
 });

@@ -1,0 +1,511 @@
+{
+ "schemaVersion": 1,
+ "id": "mercatorplein-noordtoren",
+ "pand": "0363100012107349",
+ "brief": "scripts/landmarks/mercatorplein-noordtoren-brief.md",
+ "signature": [
+  "n-tower",
+  "n-clock",
+  "n-arcade",
+  "n-gate-portal",
+  "n-erkers",
+  "n-hoist-beams",
+  "n-gate-roof"
+ ],
+ "walls": [
+  {
+   "tag": "w01-165",
+   "bearing": 165,
+   "lengthM": 43.7,
+   "centre": [
+    4.8507175,
+    52.3703055
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000994_pano_0000_002634",
+   "capturedAt": "2018-11-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-arcade",
+     "kind": "colonnade",
+     "where": "ground storey, the whole front: seven chamfered-head openings (flat head, straight shoulders) between dark brick piers, a rough-rendered concrete lintel band over them, the shops set back behind a walk",
+     "approxSizeM": [
+      43.7,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "kit: ground \"arcade\" (chamfered openings cut ~2.4 m deep, four-light shopfronts with a transom at the back, rendered soffit, lintel band following the shoulders, pier facings) on the large-tier wall group"
+    },
+    {
+     "id": "n-erkers",
+     "kind": "window-shape",
+     "where": "one two-sided (prismatic) erker per bay on storeys 1-3, three lights each with a small pitched cap over the top one",
+     "approxSizeM": [
+      2.6,
+      8.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder hook: a prism erker (front and two angled cheeks, frames and glass, slab caps) per bay axis over storeys 1-3"
+    },
+    {
+     "id": "n-flank-windows",
+     "kind": "window-shape",
+     "where": "a single two-light sash window either side of each erker on storeys 1-3, cream frames",
+     "approxSizeM": [
+      1.0,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder: framed windows laid on the kit wall (cream 10 cm frame ring, glass, bars, stone sill as closed boxes), two per bay beside the erker; the kit leaves the arcade front's upper storeys to the builder"
+    },
+    {
+     "id": "n-hoist-beams",
+     "kind": "balcony-ironwork",
+     "where": "eight hoist beams at the parapet with a vertical iron post ending in two curled (ram's horn) scrolls, one over every pier axis (\"hijsbalken met dubbele en gekrulde metalen elementen\", register 527135)",
+     "approxSizeM": [
+      0.6,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: beam stub through the parapet, iron post, two scrolls as closed polygonal spirals in the dark slot"
+    },
+    {
+     "id": "n-soldier-course",
+     "kind": "other",
+     "where": "dark brick course along the top of the rendered lintel band at ~5 m",
+     "approxSizeM": [
+      43.7,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder: dark band strip over the arcade band"
+    },
+    {
+     "id": "n-coping",
+     "kind": "other",
+     "where": "thin dark coping along the flat-roof parapet",
+     "approxSizeM": [
+      43.7,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder coping strip"
+    },
+    {
+     "id": "n-shop-signs",
+     "kind": "sign",
+     "where": "tenant signs and flags (Blokker, Pearle, Hizi Hair) in and under the arcade",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "skip": {
+      "reason": "temporary",
+      "note": "shop tenants change; the 2018 and 2022 crops already differ"
+     }
+    }
+   ],
+   "note": "The north arcade front on the square, 43.7 m: four storeys, seven arcade bays on a 6.1 m pitch, a two-sided erker per bay over three storeys; the clock tower stands behind its east end. Crops 2018-11 (overcast) and 2022-05 (sun). 1990s reconstruction of Berlage's 1925-27 front (nl.wikipedia Mercatorplein (Amsterdam))."
+  },
+  {
+   "tag": "w02-165",
+   "bearing": 165,
+   "lengthM": 25.6,
+   "centre": [
+    4.851192,
+    52.37042
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_26_08_31_34_00870",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-gate-portal",
+     "kind": "other",
+     "where": "ground storey: a 5.9 m wide underpass with a chamfered head (jambs to ~3.6 m, flat head ~4.8 m) in a rough-rendered frame that steps up in two shoulders to ~6.1 m, a dark soldier course on top; the render band runs across the whole front at 3.0-4.95 m over a dark brick plinth",
+     "approxSizeM": [
+      7.4,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: real through-passage (jambs, chamfered shoulders and rendered soffit through the gate), stepped render frame as a closed plate, plinth and render band plates"
+    },
+    {
+     "id": "n-side-doors",
+     "kind": "other",
+     "where": "pedestrian doors beside the underpass in the dark brick plinth",
+     "approxSizeM": [
+      1.8,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: dark recessed door panels"
+    },
+    {
+     "id": "n-gate-erker",
+     "kind": "window-shape",
+     "where": "first and second storey over the underpass: a three-sided erker (3.7 m wide, 3 lights in front, 2 rows) with a stone cap bent up at the ends, flanked by a tall two-row window either side",
+     "approxSizeM": [
+      5.8,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: prism erker with frames, glazing bars and a slab cap; flank windows as framed openings"
+    },
+    {
+     "id": "n-gate-roof",
+     "kind": "other",
+     "where": "steep transverse saddle roof in blue-grey tiles with a flat top, a white eaves board at ~12.2 m, a glazed roof-light strip along the eaves (1990s) and two skylights",
+     "approxSizeM": [
+      12.6,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: two tiled slopes and the flat top from 3DBAG LoD2.2 heights, white eaves board, dark glass strip"
+    },
+    {
+     "id": "n-tower",
+     "kind": "tower",
+     "where": "the north tower: a brick shaft 6 m wide rising to 37.4 m on the square side of a 32.4 m main block, flat roofs with thin copings (rebuilt 1995-98 after its 1961 demolition)",
+     "approxSizeM": [
+      7,
+      37.4
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: hand massing from 3DBAG LoD2.2 roof heights, not the 3DBAG shell"
+    },
+    {
+     "id": "n-clock",
+     "kind": "clock",
+     "where": "white clock dials with dark hour bars and hands near the top of the shaft, seen on its south, west and east faces",
+     "approxSizeM": [
+      1.9,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder: dial disc proud of the shaft, 12 hour bars, hour and minute hands; one per seen face",
+     "note": "east face seen from Hoofdweg (pano TMX7316010203-001878_pano_0005_002651, 2020-08); the north face was not seen and has no dial"
+    },
+    {
+     "id": "n-clock-slit",
+     "kind": "other",
+     "where": "a long narrow vertical recess under the dial on the shaft's south face",
+     "approxSizeM": [
+      0.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder: dark recessed strip"
+    },
+    {
+     "id": "n-tower-pairs",
+     "kind": "window-shape",
+     "where": "paired narrow windows stacked up the shaft",
+     "approxSizeM": [
+      1.2,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: paired framed openings per stage"
+    },
+    {
+     "id": "n-tower-balconies",
+     "kind": "balcony-ironwork",
+     "where": "small balconies with white slab undersides in the angles between the shaft and the main block, curved in plan, stacked on both sides",
+     "approxSizeM": [
+      1.2,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000994_pano_0000_002634",
+     "how": "builder: quarter-round slab and solid parapet as closed polygonal prisms, three per side"
+    },
+    {
+     "id": "n-tower-lower-windows",
+     "kind": "window-shape",
+     "where": "small single windows in a column on the tower base beside the gate",
+     "approxSizeM": [
+      0.7,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_08_31_34_00870",
+     "how": "builder: framed openings"
+    }
+   ],
+   "note": "The gate front (Mercatorstraat underpass) and the tower's square-facing shaft, 25.6 m. Crops 2025-09, 2024-12, 2022-05; grid read in artifacts/mercatorplein/grids/n-gate.jpg."
+  },
+  {
+   "tag": "w03-345",
+   "bearing": 345,
+   "lengthM": 17.5,
+   "centre": [
+    4.8510885,
+    52.370486
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_26_09_12_44_00725",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-gate-portal-rear",
+     "kind": "other",
+     "where": "the same chamfered underpass in its stepped render frame on the rear front",
+     "approxSizeM": [
+      7.4,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_001651",
+     "how": "builder: the through-passage's north mouth, same frame"
+    },
+    {
+     "id": "n-gate-erker-rear",
+     "kind": "window-shape",
+     "where": "three-sided erker with stone cap and flank windows over the rear mouth",
+     "approxSizeM": [
+      5.8,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_001651",
+     "how": "builder: same erker as the front"
+    },
+    {
+     "id": "n-tower-big-windows",
+     "kind": "window-shape",
+     "where": "four large square windows (four lights by three rows plus a low row) stacked on the tower's upper north face; two columns of small single windows on the four storeys below",
+     "approxSizeM": [
+      2.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002064_pano_0000_001651",
+     "how": "builder: framed openings with mullion grid"
+    }
+   ],
+   "note": "The gate's Mercatorstraat front and the tower's north face (2021-03 leaf-off crop tall-w03-345-2; the 2025 crop is behind trees)."
+  },
+  {
+   "tag": "w04-345",
+   "bearing": 345,
+   "lengthM": 11.8,
+   "centre": [
+    4.8505055,
+    52.3704685
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001502_pano_0001_001850",
+   "capturedAt": "2019-12-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-rear-windows",
+     "kind": "window-shape",
+     "where": "four storeys of single sash windows",
+     "approxSizeM": [
+      11.8,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001502_pano_0001_001850",
+     "how": "kit brick-bay-grid"
+    }
+   ],
+   "note": "Rear of the arcade block on Mercatorstraat: plain brick housing front, sash windows, a glazed rooftop addition at the east end."
+  },
+  {
+   "tag": "w05-75",
+   "bearing": 75,
+   "lengthM": 11.6,
+   "centre": [
+    4.8513505,
+    52.3705015
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_26_08_31_34_00863",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-glassblock-band",
+     "kind": "window-shape",
+     "where": "glass-block clerestory band over the shop windows (\"bouwglas\")",
+     "approxSizeM": [
+      11.6,
+      1.3
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_09_26_08_31_34_00863",
+     "skip": {
+      "reason": "not-visible",
+      "note": "belongs to the neighbouring corner pand 0363100012140699 in front of this wall, not to the landmark"
+     }
+    },
+    {
+     "id": "n-shop-canopy",
+     "kind": "canopy",
+     "where": "continuous flat shop canopy along Hoofdweg",
+     "approxSizeM": [
+      11.6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_09_26_08_31_34_00863",
+     "skip": {
+      "reason": "not-visible",
+      "note": "belongs to the neighbouring corner pand 0363100012140699 in front of this wall, not to the landmark"
+     }
+    }
+   ],
+   "note": "The brief's Hoofdweg-facing wall of this pand: BAG pand 0363100012140699 (16.4 m) stands against its southern 4.6 m and the panorama crop (45 deg oblique, 34 m) shows that neighbour's front, with the glass-block band and canopy, not this pand's wall."
+  },
+  {
+   "tag": "w06-252",
+   "bearing": 252,
+   "lengthM": 10.6,
+   "centre": [
+    4.850377,
+    52.370333
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_25_07_44_15_00773",
+   "capturedAt": "2025-09-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-west-windows",
+     "kind": "window-shape",
+     "where": "four columns of two-row windows on three storeys; small square clerestory windows over the shop windows",
+     "approxSizeM": [
+      10.6,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_25_07_44_15_00773",
+     "how": "kit brick-bay-grid, plinth-shopfronts ground"
+    }
+   ],
+   "note": "West end on the square's north-west corner: four storeys of paired windows over a shop row with a band of small square clerestory windows."
+  },
+  {
+   "tag": "w07-74",
+   "bearing": 74,
+   "lengthM": 8.9,
+   "centre": [
+    4.850947,
+    52.3705035
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002554_pano_0000_002915",
+   "capturedAt": "2022-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-hoist-beam-rear",
+     "kind": "balcony-ironwork",
+     "where": "hoist beam with a double curled scroll on the parapet",
+     "approxSizeM": [
+      0.6,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_002915",
+     "how": "builder: same hoist-beam part as the square front"
+    }
+   ],
+   "note": "East face of the rear wing: windows, one hoist beam with double scroll over the parapet."
+  },
+  {
+   "tag": "w08-253",
+   "bearing": 253,
+   "lengthM": 8.9,
+   "centre": [
+    4.8503255,
+    52.370414
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_25_07_44_15_00775",
+   "capturedAt": "2025-09-25",
+   "checked": true,
+   "items": [],
+   "note": "West face at the corner: windows over a shop front; hoist beam ornaments at the roof line (counted with n-hoist-beams)."
+  },
+  {
+   "tag": "w09-344",
+   "bearing": 344,
+   "lengthM": 4,
+   "centre": [
+    4.8506025,
+    52.370521
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "4 m rear return, no panorama; inferred as plain brick."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 527136 register text (noordwestzijde Mercatorplein, galerij, hijsbalken)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527136",
+   "licence": "CC0"
+  },
+  {
+   "name": "Rijksmonument 527135 register text (poortgebouw met hoge toren, galerij)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527135",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikipedia: Mercatorplein (Amsterdam)",
+   "url": "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: Amsterdam Mercatorplein 20090516.jpg (Pbech; the north tower with its clock from the square)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Mercatorplein_20090516.jpg",
+   "licence": "Public domain"
+  },
+  {
+   "name": "Commons: Mercatorplein 34 (2).jpg (Ceescamel; the north gate underpass and erker)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercatorplein_34_(2).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: Mercatorplein, overzicht.jpg (Ceescamel; the north tower over the square)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercatorplein,_overzicht.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012107349",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

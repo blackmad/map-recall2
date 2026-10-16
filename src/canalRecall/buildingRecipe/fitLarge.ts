@@ -18,7 +18,7 @@ import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {BlockSpec, System} from '../blockBuilding/spec.ts';
-import {DEFAULT_PITCH_M, largeSystem, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
+import {ARCADE_PROPORTIONS, DEFAULT_PITCH_M, largeSystem, type ArcadeFit, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 import type {Lantern} from '../blockBuilding/components.ts';
 import {roofHeightAt} from './facts.ts';
@@ -67,6 +67,8 @@ export interface LargeGroupFit {
   hall?: {baseM: number; lights: number; rows: number};
   /** glazed-columns: glass stripes over these bays (cycling per `bays`) from storey `from` */
   columns?: {bays: number[]; share: number; from: number; slabs: boolean; glass?: string};
+  /** ground `arcade`: the fitted opening measures and whether the lintel band and pier facings are drawn */
+  arcade?: ArcadeFit & {facing: boolean};
 }
 export interface LargeBuildingRecipe {
   id: string; pandId: string; anchorRD: [number, number]; set: SurfaceSet; spec: BlockSpec;
@@ -294,7 +296,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const main = [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
-    const gw = ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
+    const gw = ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
     const maxTop = Math.max(eaves, ...own.map(p => p.vMax));
     // alignWith: share another group's storey lines (wings whose windows line up with the centre block), extended to this group's top.
     const ref = w.alignWith !== undefined ? aligned.get(w.alignWith) : undefined;
@@ -322,10 +324,13 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       garage = {panel: main.index, bays: list.sort((a, b) => a - b)};
     }
     const specSystem = SYSTEM_SLOT(gi);
+    // Recessed arcade: the intent's measures over the kit defaults (Mercatorplein); the facing flag rides on the group fit.
+    const ap = ground === 'arcade' ? {...ARCADE_PROPORTIONS, ...Object.fromEntries(Object.entries(w.arcade ?? {}).filter(([k, v]) => k in ARCADE_PROPORTIONS && v !== undefined))} as typeof ARCADE_PROPORTIONS : undefined;
+    const arcade: ArcadeFit | undefined = ap ? {pierM: r3(ap.pier * pitchM), depthM: r3(ap.walk * st.heights[0]), head: ap.head, rise: ap.rise, chamfer: ap.chamfer} : undefined;
     systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, ...(w.glazedStoreys ? {glazedStoreys: w.glazedStoreys} : {}), slots: {...slots, ...(arch ? {arch} : {})},
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
-      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {})});
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {}), ...(arcade ? {arcade} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
@@ -345,7 +350,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),
-      ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}), slots});
+      ...(w.wallSplit && main && splitSlot ? {split: {panel: main.index, uM: splitAtBay(main.uMin, main.uMax, pitchM, w.wallSplit.at), slot: splitSlot}} : {}),
+      ...(arcade ? {arcade: {...arcade, facing: w.arcade?.facing !== false}} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));

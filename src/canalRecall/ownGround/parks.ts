@@ -175,7 +175,7 @@ export function polygonArea(rings: readonly (readonly Vec2[])[]): number {
 }
 
 /** Rings (closed or not; the first is the outer) as earcut input. */
-function flatten(rings: readonly (readonly Vec2[])[]): { flat: number[]; holes: number[] } {
+export function flatten(rings: readonly (readonly Vec2[])[]): { flat: number[]; holes: number[] } {
   const flat: number[] = [], holes: number[] = [];
   rings.forEach((r, i) => {
     const pts = r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1] ? r.slice(0, -1) : r;
@@ -282,7 +282,7 @@ export type SharedLayer = 'paving' | 'cycle';
 export const PARK_LIFT: Record<ParkSurface, number> = {
   lawn: 0.018, bed: 0.021, shrub: 0.021, bark: 0.021, sand: 0.022, gravel: 0.024, path: 0.024, paving: 0.024, cycle: 0.025, pond: 0.023,
 };
-const SURFACE_LAYER: Record<ParkSurface, ParkLayer | SharedLayer> = {
+export const SURFACE_LAYER: Record<ParkSurface, ParkLayer | SharedLayer> = {
   lawn: 'lawn', bed: 'bed', shrub: 'shrub', bark: 'bark', sand: 'sand', gravel: 'parkGravel', path: 'parkPath', paving: 'paving', cycle: 'cycle', pond: 'pond',
 };
 
