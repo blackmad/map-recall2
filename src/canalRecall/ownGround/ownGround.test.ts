@@ -850,6 +850,18 @@ const fsStore = () => new GroundStore(async path => {
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
 });
 
+// GroundStore.init loads once (2026-10-16): a second load replaced the surface and dropped the decks earlier cells had
+// registered, so check:own-ground-cells' -1_-1 pin read 58 deck road polygons over no deck instead of 13.
+test('GroundStore.init: a second call reuses the first load (the surface and its decks stay)', { skip: !haveCells }, async () => {
+  let reads = 0;
+  const store = new GroundStore(async path => { reads++; const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes); });
+  await store.init();
+  const surface = store.surface, first = reads;
+  await store.init();
+  assert.equal(store.surface, surface);
+  assert.equal(reads, first);
+});
+
 // BRU0009 Torensluis (2026-10-14): its e2e hump readout flipped on main while this deck, its body and top were
 // byte-identical to the bridge lane's; the crown (1.66 m over the higher end) is pinned here, not only in pixels.
 for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665], ['BRU0009', 4.88938, 52.37455]] as const) {
