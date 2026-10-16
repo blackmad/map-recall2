@@ -25,6 +25,7 @@ import {geometryAudit} from '../landmarks/geometryAudit.ts';
 import {compileBlockFace, decodePands} from './compile.ts';
 import {validateBlockFace} from './intent.ts';
 import {recipeRoofFacts} from './recipeRoof.ts';
+import {loadGoldenFace} from '../../../scripts/block-face/roof-golden.ts';
 
 const FACES = 'scripts/block-face/faces';
 const load = (id: string) => {
@@ -105,4 +106,19 @@ test('dormer gable caps clear steep dormer roofs: no roof z-fight in the geometr
   const g = geometryAudit(await loadMaterialSoup(tmp), {skipRhythm: true});
   const roof = g.zfight.patches.filter(p => p.orientation === 'roof' && !p.near);
   assert.deepEqual(roof.map(p => p.materials), []);
+});
+
+test('front roofs (saddle / flat / attic bands, row clamps) partition every pand footprint exactly on the six rule faces', () => {
+  let n = 0;
+  for (const id of ['kinker-56-84', 'kinker-315-359', 'kinker-65-87', 'kinker-206-242', 'bilder-081118-155417', 'bilder-236022-167243']) {
+    const {prepared} = loadGoldenFace(id);
+    for (const f of prepared.ground.facts) {
+      const s = surveyRecipe({attributes: f.attributes, roofsRD: f.roofsRD}, f.surveyFootprintPolygonsRD, f.fronts[0].endpointsRD);
+      const roof = s.roof.reduce((a: number, r: {polygon: {outer: number[][]}}) => a + area(r.polygon.outer), 0);
+      const foot = s.polygons.reduce((a: number, q: {outer: number[][]; holes: number[][][]}) => a + area(q.outer) - q.holes.reduce((t, h) => t + area(h), 0), 0);
+      assert.ok(Math.abs(roof - foot) <= Math.max(2e-4, foot * 1e-6), `${id} ${f.pandId.slice(-6)} (${f.roofSource?.kind ?? 'survey'}${f.rowClamp ? '+row' : ''}): roof ${roof} vs footprint ${foot}`);
+      if (f.roofSource?.kind === 'front') n++;
+    }
+  }
+  assert.ok(n >= 30, `${n} front-roof pands`);
 });

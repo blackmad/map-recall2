@@ -12,7 +12,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {prepareFaceFacts} from '../../src/canalRecall/blockFace/compile.ts';
-import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
+import {houseIntents, validateBlockFace, type BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
 /** scripts/block-face/intake.ts FACES (not imported: intake.ts is a CLI outside the typed program). */
@@ -29,17 +29,25 @@ export function goldenFaces(): string[] {
   return fs.readdirSync(FACES).filter(f => fs.existsSync(path.join(FACES, f, 'intent.json')) && fs.existsSync(path.join(FACES, f, 'pands'))).sort();
 }
 
-/** Hash the compiled-from facts of one face's pands (keyed by the last 6 digits) and its resolved intents. */
-export function roofHashesOf(faceId: string): {pands: Record<string, RoofGoldenEntry>; intents: string} {
+/** A committed face as the golden plans it: validated intent, pand facts, strip scale, and the planned face. */
+export function loadGoldenFace(faceId: string, edit?: (face: BlockFaceIntent) => void) {
   const dir = path.join(FACES, faceId);
   const members = fs.existsSync(path.join(dir, 'discovery.json')) ? JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members : undefined;
-  const face = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), members, fileTypeLoader());
+  const raw = JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8'));
+  edit?.(raw);
+  const face = validateBlockFace(raw, members, fileTypeLoader());
   const facts = new Map<string, BuildingFacts>(face.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8'))]));
   let strip: {heightPx: number; pixelsPerMetre: number; groundNAP: number} | undefined;
-  if (face.continuity.measuredEaves?.length || face.continuity.crownFromPhoto?.length) { const s = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8')); strip = {heightPx: s.height, pixelsPerMetre: s.pixelsPerMetre, groundNAP: s.groundNAP}; }
+  if (fs.existsSync(path.join(dir, 'strip.json'))) { const s = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8')); strip = {heightPx: s.height, pixelsPerMetre: s.pixelsPerMetre, groundNAP: s.groundNAP}; }
   // Photo crowns need the strip image; the golden covers the authored crowns (gables.json readings are a separate lane).
   const photoGables = face.continuity.crownFromPhoto?.length ? new Map() : undefined;
-  const p = prepareFaceFacts(face, facts, {strip, photoGables, terrainAt: sharedTerrain()});
+  const options = {strip, photoGables, terrainAt: sharedTerrain()};
+  return {face, facts, options, prepared: prepareFaceFacts(face, facts, options)};
+}
+
+/** Hash the compiled-from facts of one face's pands (keyed by the last 6 digits) and its resolved intents. */
+export function roofHashesOf(faceId: string): {pands: Record<string, RoofGoldenEntry>; intents: string} {
+  const {face, prepared: p} = loadGoldenFace(faceId);
   const pands: Record<string, RoofGoldenEntry> = {};
   p.ground.facts.forEach((f, i) => { pands[f.pandId.slice(-6)] = {hash: sha({roofsRD: f.roofsRD, heights: f.heights, measuredEavesM: f.measuredEavesM ?? null}), class: p.roofClasses[i]}; });
   return {pands, intents: sha(houseIntents(face, fileTypeLoader()))};
