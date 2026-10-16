@@ -2607,58 +2607,96 @@
       "landmarkId": "extract_landmarks_984169544",
       "modelUrl": "./models/delamar.glb",
       "suppressOsmIds": [
-        "w267565782"
+        "w267565782",
+        "NL.IMBAG.Pand.0363100012169852",
+        "NL.IMBAG.Pand.0363100012571556",
+        "NL.IMBAG.Pand.0363100012169853"
       ],
       "footprint": {
         "centre": [
-          4.880400054157671,
-          52.36434979965863
+          4.88029887,
+          52.36436498
         ],
-        "headingDegrees": 37.39619010728296,
-        "lengthMetres": 64.0719941600419,
-        "widthMetres": 57.92999384246876
+        "headingDegrees": 0,
+        "lengthMetres": 62.2,
+        "widthMetres": 75.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.88029887,
+          52.36436498
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG footprints of 0363100012169852 (Theater Bellevue), 0363100012571556 (Theater DeLaMar) and 0363100012169853; 3DBAG LoD2.2 shells in native east/south metres from the anchor (scripts/landmarks/delamar-prepare.ts). Facades measured on rectified Gemeente Amsterdam panorama crops (scripts/landmarks/delamar-inventory.json)."
       },
       "groundAltitudeMetres": 0,
-      "facingOffsetDegrees": 90,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 23,
+      "materialOverrides": {
+        "ochre": "#ddd09c",
+        "brick": "#a4533f",
+        "greyBrick": "#6b5345",
+        "sandstone": "#c3b08f",
+        "stone": "#c9c6ba",
+        "white": "#eee8d8",
+        "concrete": "#b9b8ad",
+        "dark": "#35302b",
+        "frame": "#7d8283",
+        "glass": "#4d606c",
+        "bronze": "#5b4637",
+        "red": "#cf5b3c",
+        "gold": "#a08046",
+        "slate": "#575653",
+        "copper": "#8d928d",
+        "green": "#9fa794"
+      },
       "attribution": {
-        "title": "DeLaMar",
+        "title": "DeLaMar and Theater Bellevue",
         "author": "Map Recall",
-        "sourceUrl": "https://delamar.nl/en/business/about-us/history/",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/DeLaMar",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+        "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) of the three DeLaMar/Bellevue pands, with every street front (the Bellevue drum, cream block and house on the Leidsekade; the glass foyer, tower bays, palazzo and houses on the Marnixstraat), the fly tower, set-back storeys and zinc roofs measured from Gemeente Amsterdam panoramas (CC BY 4.0) read on a metre grid. No pixels or meshes imported."
       },
+      "bagYear": 2010,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -31.07491683959961,
-          -3.814697322468419e-7,
-          -28.096046447753906
+          -18.638164520263672,
+          -0.0010000000474974513,
+          -36.81258010864258
         ],
         "max": [
-          33.615997314453125,
-          23.200000762939453,
-          28.096046447753906
+          45.49958038330078,
+          22.948999404907227,
+          39.27971649169922
         ]
       },
       "placement": {
         "anchor": [
-          4.880413351381752,
-          52.364343592465474
+          4.88029887,
+          52.36436498
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 37.39619010728296,
-        "facadeBearingDegrees": 127.39619010728296,
-        "scale": 0.9904326596384623
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 64.69091415405273,
-        "heightMetres": 23.200001144409185,
-        "depthMetres": 56.19209289550781,
-        "depthCoverage": 0.9699999804645778
+        "widthMetres": 76.0922966003418,
+        "heightMetres": 22.949999404954724,
+        "depthMetres": 64.13774490356445,
+        "depthCoverage": 0.850633221532685
       },
-      "triangles": 2568,
-      "bytes": 35104,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 18364,
+      "bytes": 275180,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "5d32162e58b46fa2",
+        "buildVersion": 2,
+        "bytes": 76704,
+        "triangles": 3263
+      }
     },
     "magna-plaza": {
       "id": "magna-plaza",

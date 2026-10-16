@@ -175,6 +175,7 @@ import {buildDageraad} from './dageraad-builder';
 import {buildOurLordAttic} from './our-lord-attic-builder';
 import {buildSilodam} from './silodam-builder';
 import {buildVenueLandmark} from './venue-builders';
+import {buildDelamar} from './delamar-builder';
 import {buildTheaterLandmark} from './theater-builders';
 import {buildHouseMuseumLandmark} from './house-museum-builders';
 import {buildCivicLandmark} from './civic-builders';
@@ -474,7 +475,7 @@ async function save(id:string){
 }
 const manifest=JSON.parse(fs.readFileSync(path.join(out,'signature-landmarks.json'),'utf8'));
 const helpers={add,box,prism,gableRoof,hip,window,clock,sign};
-const venueIds=new Set(['embassy-free-mind','the-movies','delamar','magna-plaza']);
+const venueIds=new Set(['embassy-free-mind','the-movies','magna-plaza']);
 const theaterIds=new Set(['felix-meritis','kleine-komedie','de-balie']);
 const houseMuseumIds=new Set(['anne-frank-house','rembrandt-house','moco-museum','museum-van-loon']);
 const civicIds=new Set(['amstelkerk','he-hua-temple','haarlemmerpoort']);
@@ -614,6 +615,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='dageraad')buildDageraad(id,w,d,helpers);
     else if(id==='ons-lieve-heer-op-solder')buildOurLordAttic(w,d,helpers);
     else if(id==='silodam')buildSilodam(w,d,helpers);
+    else if(id==='delamar')buildDelamar(w,d,helpers);
     else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
     else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);
     else if(houseMuseumIds.has(id))buildHouseMuseumLandmark(id,w,d,helpers);
