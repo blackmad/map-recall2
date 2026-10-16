@@ -51,10 +51,15 @@ export const KIT_BUDGET = { near: 600, far: 60, named: 1500, namedFar: 100 } as 
 
 export type ArchShape = 'segmental' | 'round' | 'flat';
 export type BridgeFamily = 'brick-red' | 'brick-dark' | 'stone' | 'render-white' | 'concrete' | 'steel';
-export type ParapetClass = 'stone-balustrade' | 'iron-rail' | 'brick-parapet' | 'none';
+/**
+ * 'brick-rail': a low brick parapet wall with a stone coping, an iron railing (top and mid rail on flat bars) on it and
+ * brick end piers with stone caps (the canal-mouth street bridges: Marnixstraat over the Bullebakssluis BRU0160, user
+ * 2026-10-16; decks.ts canalMouth). Appended last: the encoded facts' parapet indices stay as they were.
+ */
+export type ParapetClass = 'stone-balustrade' | 'iron-rail' | 'brick-parapet' | 'none' | 'brick-rail';
 export const ARCH_SHAPES: readonly ArchShape[] = ['segmental', 'round', 'flat'];
 export const BRIDGE_FAMILIES: readonly BridgeFamily[] = ['brick-red', 'brick-dark', 'stone', 'render-white', 'concrete', 'steel'];
-export const PARAPET_CLASSES: readonly ParapetClass[] = ['stone-balustrade', 'iron-rail', 'brick-parapet', 'none'];
+export const PARAPET_CLASSES: readonly ParapetClass[] = ['stone-balustrade', 'iron-rail', 'brick-parapet', 'none', 'brick-rail'];
 
 /** What the panoramas (or a hand reading of them) say about one bridge (scripts/own-ground/build-bridge-hints.ts). */
 export interface BridgeFacts {
@@ -250,6 +255,12 @@ export interface KitInput {
   lampsAt?: number[];
   /** A flush deck (decks.ts isFlushDeck): the parapet gets FLUSH_PARAPET's kerb and top rail, so the edge reads from above. */
   flush?: boolean;
+  /**
+   * Station range of the parapet per side, [left, right], inside `parapet` (decks.ts parapetRuns): where the drawn edge
+   * pulls in toward the road (a widened outline clipped to the water past a skewed quay), the parapet ends there instead
+   * of following the edge diagonally across the deck. Absent: both sides take `parapet`.
+   */
+  parapetSides?: [[number, number], [number, number]];
 }
 
 /**
@@ -272,6 +283,8 @@ const BAY_M = 8;
 export const PIER_SPAN_M = 12;
 /** Railing geometry, metres. */
 export const RAILING = { height: 1.05, post: 0.07, rail: 0.05, plinthWidth: 0.28 };
+/** The brick-rail parapet (ParapetClass 'brick-rail'): wall height and width over the deck edge, end piers (half size, height, stone cap), metres. */
+export const BRICK_RAIL = { wall: 0.35, width: 0.4, pier: 0.24, pierTop: 1.12, cap: 0.08, postStep: 1.8 };
 
 function lerpRow(a: KitRow, b: KitRow, s: number): KitRow {
   const t = b.s > a.s ? Math.max(0, Math.min(1, (s - a.s) / (b.s - a.s))) : 0, l = (x: number, y: number) => x + (y - x) * t;
@@ -360,6 +373,7 @@ const POST_STEP: Record<BridgeKind, number> = { arch: 5, girder: 2.6, footbridge
 /** Build one bridge's body, coarsening until it fits the budget. */
 export function buildKit(raw: KitInput): { mesh: MeshArrays; info: KitInfo } {
   const input = { ...raw, rows: cleanWater(raw.rows, raw.spans) };
+  kitTrace.input?.(input);
   const named = !!raw.facts?.named;
   const levels = input.lod === 0 ? NEAR_LEVELS : FAR_LEVELS, budget = input.budget ?? (input.lod === 0 ? (named ? KIT_BUDGET.named : KIT_BUDGET.near) : (named ? KIT_BUDGET.namedFar : KIT_BUDGET.far));
   let last: { mesh: MeshArrays; info: KitInfo } | null = null;
@@ -393,7 +407,7 @@ function paletteOf(facts: BridgeFacts | null | undefined): FamilyPalette {
 }
 
 /** Optional trace of each attempt (the census's --trace): stations and triangles per part. */
-export const kitTrace: { fn: ((id: string, level: number, parts: Record<string, number>) => void) | null } = { fn: null };
+export const kitTrace: { fn: ((id: string, level: number, parts: Record<string, number>) => void) | null; input?: ((input: KitInput) => void) | null } = { fn: null };
 
 function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays; info: KitInfo } {
   const m = emptyMesh(true), { rows, kind, waterZ } = input;
@@ -506,11 +520,14 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
         const ba = bottom(a.s, wa, ga, za), bb = bottom(b.s, wb, gb, zb);
         if (lv.ring) {
           // Under the parapet the stone coping (the parapet's proud outer face, parapet()) covers the top COPE_M.
-          const cope = mid > input.parapet[0] && mid < input.parapet[1] ? COPE_M : 0;
-          wall(ba, bb, za - cope, zb - cope, arch ? pal.spandrel : pal.pier);
+          // A brick-rail parapet stands on the deck edge (its own face reaches 6 cm down): the face below runs up to the deck.
+          const cope = mid > input.parapet[0] && mid < input.parapet[1] && input.facts?.parapet !== 'brick-rail' ? COPE_M : 0;
+          // A flat opening under a steel deck is the deck's girder: its whole face steel between the brick abutments.
+          const girder = arch?.shape === 'flat' && input.material === 'steel';
+          wall(ba, bb, za - cope, zb - cope, girder ? C.steel : arch ? pal.spandrel : pal.pier);
           if (arch) {
             const key = arch.shape !== 'flat' && Math.abs(mid - arch.mid) < (arch.s1 - arch.s0) / (2 * segs) + 1e-6;
-            wall(intrados(arch, a.s), intrados(arch, b.s), ba, bb, key ? pal.key : pal.ring);
+            wall(intrados(arch, a.s), intrados(arch, b.s), ba, bb, key ? pal.key : girder ? C.steel : pal.ring);
           }
         } else wall(arch ? intrados(arch, a.s) : ba, arch ? intrados(arch, b.s) : bb, za, zb, arch ? pal.spandrel : pal.pier);
       } else {
@@ -573,11 +590,10 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
 /** Parapet (plinth, coping or edge upstand), posts, rails and lamps on both edges of the deck span. */
 function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[], info: KitInfo, fascia: RGB): void {
   const { rows, kind } = input, C = KIT_COLOURS;
-  const [p0, p1] = [Math.max(rows[0].s, input.parapet[0]), Math.min(rows[rows.length - 1].s, input.parapet[1])];
-  if (p1 - p0 < 1) return;
+  const [g0, g1] = [Math.max(rows[0].s, input.parapet[0]), Math.min(rows[rows.length - 1].s, input.parapet[1])];
+  if (g1 - g0 < 1) return;
   // The parapet follows the deck edge's height alone (within the 3-4 cm its outer face reaches down over the face below); rails a little coarser.
-  const ps = [p0, ...spineStations(rows, lv.tol >= 0.5 ? lv.tol : Math.min(lv.tol, 0.05), [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3), p1], P = ps.map(s => rowAt(rows, s));
-  const railSpine = spineStations(rows, 0.06, [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3);
+  const edgeSpine = spineStations(rows, lv.tol >= 0.5 ? lv.tol : Math.min(lv.tol, 0.05), [], false, input.lateralTol), railStations = spineStations(rows, 0.06, [], false, input.lateralTol);
   const wood = input.material === 'wood';
   // A bascule's railing takes the bridge's colour (the Magere Brug's is white like its portals).
   const railColour = kind === 'bascule' && input.colour ? input.colour : wood ? C.woodRail : C.iron;
@@ -596,36 +612,53 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     : kind === 'footbridge'
       ? { plinth: 0, width: 0.1, plinthCol: C.steel, post: RAILING.post / 2, postCol: wood ? C.woodRail : C.iron, postTop: RAILING.height, railCol: wood ? C.woodRail : C.iron, rail: RAILING.rail / 2 }
       : { plinth: 0.14, width: RAILING.plinthWidth, plinthCol: fascia, post: RAILING.post / 2, postCol: railColour, postTop: RAILING.height, railCol: railColour, rail: RAILING.rail / 2 };
+  // A brick parapet wall with a stone coping, an iron railing on it (flat bars, top and mid rail), brick end piers.
+  const brickRail = cls === 'brick-rail';
+  const baseStyle = brickRail ? { plinth: BRICK_RAIL.wall, width: BRICK_RAIL.width, plinthCol: pal.pier, post: RAILING.post / 2, postCol: C.iron, postTop: RAILING.height, railCol: C.iron, rail: RAILING.rail / 2 } : base;
   // A flush deck: a stone kerb and a heavy top rail (FLUSH_PARAPET); a solid brick parapet already reads.
-  const style = input.flush && base.plinth < FLUSH_PARAPET.kerb + 0.5
+  const style = input.flush && !brickRail && base.plinth < FLUSH_PARAPET.kerb + 0.5
     ? { ...base, plinth: Math.max(base.plinth, FLUSH_PARAPET.kerb), width: Math.max(base.width, FLUSH_PARAPET.width), plinthCol: base.plinth < FLUSH_PARAPET.kerb ? FLUSH_PARAPET.colour : base.plinthCol, rail: base.rail > 0 ? Math.max(base.rail, FLUSH_PARAPET.rail / 1.4) : 0 }
-    : base;
+    : baseStyle;
+  // The coping on a brick wall is stone; every other parapet's top is its own colour.
+  const capCol = brickRail ? pal.coping : style.plinthCol;
   for (const side of [1, -1] as const) {
+    // This side's run (KitInput.parapetSides): the edge pulled in toward the road past it carries no parapet.
+    const run = input.parapetSides?.[side > 0 ? 0 : 1], p0 = run ? Math.max(g0, run[0]) : g0, p1 = run ? Math.min(g1, run[1]) : g1;
+    if (p1 - p0 < 1) continue;
+    const P = [p0, ...edgeSpine.filter(s => s > p0 + 0.3 && s < p1 - 0.3), p1].map(s => rowAt(rows, s));
+    const railSpine = railStations.filter(s => s > p0 + 0.3 && s < p1 - 0.3);
     const edge = (r: KitRow) => (side > 0 ? r.L : r.R), zt = (r: KitRow) => (side > 0 ? r.zL : r.zR), out = (r: KitRow): Vec2 => [r.n[0] * side, r.n[1] * side];
     const inward = (r: KitRow, d: number): Vec2 => { const e = edge(r), o = out(r); return [e[0] - o[0] * d, e[1] - o[1] * d]; };
     // Plinth: outer face from the deck edge up, its top, its inner face toward the road (near ring); the far ring keeps the outer face.
     if (style.plinth > 0) for (let k = 0; k + 1 < P.length; k++) {
       const a = P[k], b = P[k + 1], o = [out(a)[0] + out(b)[0], out(a)[1] + out(b)[1], 0], h = style.plinth;
       // Arch bridges: the outer face is the stone coping, 3 cm proud of the brick face and COPE_M down it.
-      const proud = kind === 'arch' ? 0.03 : 0, drop = (kind === 'arch' ? COPE_M : 0) + 0.06;
+      const proud = kind === 'arch' && !brickRail ? 0.03 : 0, drop = (kind === 'arch' && !brickRail ? COPE_M : 0) + 0.06;
       const a0 = inward(a, -proud), b0 = inward(b, -proud), a1 = inward(a, style.width), b1 = inward(b, style.width), za = zt(a), zb = zt(b);
       face(m, [[a0[0], a0[1], za - drop], [b0[0], b0[1], zb - drop], [b0[0], b0[1], zb + h], [a0[0], a0[1], za + h]], style.plinthCol, o);
       if (!lv.inner) continue;
-      face(m, [[a0[0], a0[1], za + h], [b0[0], b0[1], zb + h], [b1[0], b1[1], zb + h], [a1[0], a1[1], za + h]], style.plinthCol, [0, 0, 1]);
+      face(m, [[a0[0], a0[1], za + h], [b0[0], b0[1], zb + h], [b1[0], b1[1], zb + h], [a1[0], a1[1], za + h]], capCol, [0, 0, 1]);
       face(m, [[a1[0], a1[1], za], [b1[0], b1[1], zb], [b1[0], b1[1], zb + h], [a1[0], a1[1], za + h]], style.plinthCol, [-o[0], -o[1], 0]);
     }
     const len = p1 - p0;
+    // Brick end piers with a stone cap where the parapet meets the quay (near ring).
+    if (brickRail && lv.railings) for (const s of [p0, p1]) {
+      const r = rowAt(rows, s), o = out(r), u: Vec2 = [o[1], -o[0]], c = inward(r, style.width / 2), z = zt(r);
+      box(m, c, u, BRICK_RAIL.pier, BRICK_RAIL.pier, z - 0.06, z + BRICK_RAIL.pierTop, style.plinthCol, false);
+      box(m, c, u, BRICK_RAIL.pier + 0.04, BRICK_RAIL.pier + 0.04, z + BRICK_RAIL.pierTop, z + BRICK_RAIL.pierTop + BRICK_RAIL.cap, capCol);
+    }
     if (lv.railings && style.post > 0) {
     // Posts at even spacing, rails straight from post to post.
-    const count = Math.max(1, Math.round(len / Math.min(len, POST_STEP[kind] * lv.postStep)));
+    const count = Math.max(1, Math.round(len / Math.min(len, (brickRail ? BRICK_RAIL.postStep : POST_STEP[kind]) * lv.postStep)));
     const posts: { c: Vec2; z: number; u: Vec2 }[] = [];
     for (let i = 0; i <= count; i++) {
       const r = rowAt(rows, p0 + len * i / count), o = out(r);
       const c = kind === 'footbridge' ? inward(r, -style.post) : inward(r, style.width / 2);
       posts.push({ c, z: zt(r), u: [o[1], -o[0]] });
+      if (brickRail && (i === 0 || i === count)) continue; // the end piers stand there
       // Footbridge posts hang down the edge beam's face: deck and railing are one piece.
       const z0 = kind === 'footbridge' ? zt(r) - 0.25 : zt(r) + style.plinth - 0.02;
-      if (kind === 'arch' && cls !== 'iron-rail') box(m, c, [o[1], -o[0]], style.post, style.post, z0, zt(r) + style.postTop, style.postCol);
+      if (kind === 'arch' && cls !== 'iron-rail' && !brickRail) box(m, c, [o[1], -o[0]], style.post, style.post, z0, zt(r) + style.postTop, style.postCol);
       else {
         // An iron or timber post is a flat bar facing the water and the road (4 triangles; its 7 cm edge and top are never seen).
         const u: Vec2 = [o[1], -o[0]], h = style.post, z1 = zt(r) + style.postTop;
@@ -635,7 +668,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       }
       info.railingPosts++;
     }
-    const levels = kind === 'arch' && cls !== 'iron-rail' ? [RAILING.height - 0.08] : [RAILING.height, ...(lv.midRail || kind === 'footbridge' || cls === 'iron-rail' ? [0.55] : [])];
+    const levels = brickRail ? [RAILING.height, (RAILING.height + style.plinth) / 2] : kind === 'arch' && cls !== 'iron-rail' ? [RAILING.height - 0.08] : [RAILING.height, ...(lv.midRail || kind === 'footbridge' || cls === 'iron-rail' ? [0.55] : [])];
     // Rails follow the hump (knots where the edge leaves the chord by > 6 cm), passing the posts.
     const knots = [p0, ...railSpine, p1]
       .filter((s, k, all) => k === 0 || s - all[k - 1] > 0.3 || s === p1)
