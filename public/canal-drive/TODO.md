@@ -1303,10 +1303,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   measured values on the kit systems with inferred notes. Open: (1) the
   measurement lane for the two named limits in `measure.ts` (white-framed
   panes classed as trim → glazing undercount; dark brick reading as
-  paint); (2) lane D, the triage of the other ~65 installed large houses
-  (archive crops, measure, likeness report worst-first, re-fit / uninstall
-  per the rule in the plan; ride-visibility ranking replaces footprint ÷
-  distance); (3) the held `large/dominant-7-20261014` branch gets the same
+  paint); (2) lane D DONE (HISTORY "Large tier triaged": 54 re-fitted, 12
+  uninstalled, 11 kept, ride visibility written); open from it: verify the
+  11 "re-fit cheap" verdicts without a re-install (Oude Turfmarkt, Nieuwe
+  Achtergracht 253754, Politie Van Leijenberghlaan, Zuidoost-Gaasperdam,
+  Nieuwezijds Voorburgwal, Oost-Watergraafsmeer, Politiepost IJburg,
+  Meeuwenlaan 132, Rigakade 8, Nieuwpoortstraat, Warmoesstraat garage),
+  Haarlemmerweg 325 after a louvre-screen system, the 7 ornamented fronts
+  as bespoke builders, `build-dominant-building-backlog.ts` to carry
+  `rideVisibility`; (3) the held `large/dominant-7-20261014` branch gets the same
   pass and merges only passers; (4) kit gaps per pilot listed in the
   HISTORY entry (Waagdragerhof's light band storeys and paired windows,
   Houthavenkade's column transoms, Spinoza's mullioned doubles,
@@ -1387,8 +1392,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   library DONE (HISTORY "Kinkerstraat type library": seven types over 207
   pands, measured palettes, two proof faces compiled; the brick-arched
   type has its white courses and springer rows since the accents pass); the odd side is DONE as eight
-  faces, 76 pands (HISTORY "Kinkerstraat odd side authored"; the even
-  side lane is running); never `compile.ts --install`; next on the street:
+  faces, 76 pands (HISTORY "Kinkerstraat odd side authored") and the
+  even side as twelve faces, 103 pands (HISTORY "Kinkerstraat even side
+  authored"; open: single-pand faces 140-142, 382-382, 392-392 need the
+  validator to accept one house, or a house recipe; the 244-332 chunk is
+  3.2 MB, split it; `palette-from-strip` reads black paint as glass; the
+  Ö glyph); never `compile.ts --install`; next on the street:
   the rear-facade lane (the GLB z-fight on every face is the inferred
   rears), `compile-recipes.ts --faces=kinker-` into recipe tiles and the
   changed-pand page, ride shots at five points, the wall-colour misses (31
@@ -1406,9 +1415,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   has the 26-pand strip, facts and uses, no intent yet) and the
   Street-View pilot retired; the two long-red tests are green (HISTORY
   "3DBAG ground outliers": stale survey paths re-recorded, a VM harness
-  fixed); Jan Evertsenstraat survey lane running; then Jan Evertsenstraat
-  (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
-  and arcades bespoke (lane running), De Hallen DONE as a staged recipe
+  fixed); Jan Evertsenstraat survey DONE (HISTORY "Jan Evertsenstraat
+  surveyed": 148 pands, 19 faces, type sketch; the plan's "erker" type is
+  rare there, 4 of 148, hood-lisene 40 and lintel-band 18 are the bodies);
+  next: the De Baarsjes type library (`scripts/block-face/types/de-baarsjes/`
+  from the sketch's exemplars, with the kit gaps it lists: box bay with
+  hood, stacked balconettes, tall parapet zone, two-tone piers, glass-block
+  band signs), then face lanes; re-run `commercial-merge.ts` for
+  Kinkerstraat from a checkout with its staged crops (uses on 0 of 217
+  pands, bug fixed in the survey lane); Mercatorplein towers
+  and arcades DONE bespoke (HISTORY "Mercatorplein: both towers"; next
+  there: OBA Mercatorplein as a bespoke builder from its inventory, the
+  kit promotions listed, the 3DBAG roof block override), De Hallen DONE as a staged recipe
   behind its landmark (HISTORY "De Hallen measured and staged"; retire
   the landmark and install when the kit does glass ridge lights and
   stepped stone-coped gables), Kinkerstraat 32–54 and 89–105 installed

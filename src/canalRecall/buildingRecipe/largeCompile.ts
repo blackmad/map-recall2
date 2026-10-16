@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, intervals, SHEET_PITCH, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawCurtainGrid, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawArcadeFacing, drawCurtainGrid, drawEntrance, drawGlazedColumns, drawGlazedHall, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStAndrewsCross, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -15,7 +15,7 @@ import type {LargeBuildingIntent} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { glazedHalls?: number; glassColumns?: number; curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { arcades?: number; glazedHalls?: number; glassColumns?: number; curtainGrids?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -70,6 +70,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
     if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, s.stone)) counts.stoneStoreys = (counts.stoneStoreys ?? 0) + 1;
   }
+  // Recessed arcade: rendered lintel band over the chamfered openings and pier facings below it (the door slot: dark brick).
+  if (g.ground === 'arcade' && g.arcade?.facing && levels.length > 1) { const k = drawArcadeFacing(c, Math.max(0, p.vMin), Math.min(groundTop, underCornice), {band: s.stone, pier: s.door}); if (k) counts.arcades = (counts.arcades ?? 0) + 1; }
   if (g.pilasters && underCornice - Math.max(0, p.vMin) > 3) counts.pilasters = (counts.pilasters ?? 0) + drawPilasters(c, Math.max(0, p.vMin), underCornice, s.stone, g.pilasters);
   if (g.signage?.mount === 'cornice' && g.mainPanel === p.index) {
     const n = drawNameBand(c, g.signage.text, underCornice, s.stone, s.sign, g.cornice && eaves - p.vMin > 3 ? {v0: eaves - 0.45, v1: eaves - 0.02, out: CORNICE_OUT} : undefined);

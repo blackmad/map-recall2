@@ -1,0 +1,105 @@
+{
+ "street": "Jan Evertsenstraat",
+ "seed": "0363100012146173",
+ "members": [
+  "0363100012146173",
+  "0363100012116286"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012124383 17.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012108479 17.8 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063735",
+   "reason": "frontage 43.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064053",
+   "reason": "frontage 42.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012074540",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012072394"
+  },
+  {
+   "pandId": "0363100012078416",
+   "reason": "frontage 59.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012078569",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012108479"
+  },
+  {
+   "pandId": "0363100012088923",
+   "reason": "frontage 42.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012101314",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012146173"
+  },
+  {
+   "pandId": "0363100012112736",
+   "reason": "frontage 75.8 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012145237",
+   "reason": "frontage 58.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064043",
+   "reason": "frontage 91.3 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104066",
+   "reason": "frontage 58.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012110448",
+   "reason": "frontage 75.0 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012127405",
+   "reason": "frontage 91.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012130994",
+   "reason": "frontage 92.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012136068",
+   "reason": "frontage 74.9 m from Jan Evertsenstraat"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012146173",
+   "alongM": 0,
+   "widthM": 6.73,
+   "eavesM": 3.03,
+   "roofMaxM": 4.17,
+   "storeys3dbag": 0,
+   "builtYear": 1960,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012116286",
+   "alongM": 50.55,
+   "widthM": 7.37,
+   "eavesM": 23.34,
+   "roofMaxM": 26.29,
+   "storeys3dbag": 0,
+   "builtYear": 1960,
+   "uncertainty": []
+  }
+ ]
+}

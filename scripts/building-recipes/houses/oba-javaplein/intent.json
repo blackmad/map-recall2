@@ -1,25 +1,187 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "oba-javaplein",
-  "pandId": "0363100012238726",
-  "address": "OBA Javaplein, Javaplein 2, Amsterdam (2011; library in the ground floor of a perimeter housing block, one pand)",
-  "sources": [
-    {"id": "pano-2017-04-04-s", "kind": "street-panorama", "capturedAt": "2017-04-04", "image": "staging/pand-reference-walls/0363100012238726/w03-179.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000242_pano_0000_005276/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2020-09-08-n", "kind": "street-panorama", "capturedAt": "2020-09-08", "image": "staging/pand-reference-walls/0363100012238726/w01-359.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001910_pano_0001_000444/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [130, 343], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 14, "ground": "plinth-shopfronts", "windows": "two-light", "signage": {"text": "OBA", "colour": "#e2231a", "mount": "canopy"}, "entrance": {"bay": 7, "storeys": 2, "canopy": true}, "piers": true, "stringCourses": true},
-    {"wallSurfaces": [21, 175, 205], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 26, "ground": "plinth-shopfronts", "windows": "plain", "frames": false, "sills": false},
-    {"wallSurfaces": [1, 118, 160, 295, 296], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 20, "ground": "system", "windows": "plain", "frames": false, "sills": false},
-    {"wallSurfaces": [11, 176], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 10, "ground": "system", "windows": "plain", "frames": false, "sills": false}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "zinc"},
-  "palette": {"brick": "#c19a86", "frame": "#3a3d3f", "door": "#c9701f", "stone": "#9a9a98", "wallMaterial": "stucco"},
-  "notes": [
-    "2011 perimeter housing block (pand 0363100012238726, 343 LoD2.2 wall surfaces, 98 m long) with the OBA Javaplein library on its ground floor; the whole pand is modelled. South front (surfaces 130/343, 2017-04-04 panorama, 18 m away): pale pink brick with grey-brick piers, paired windows with stone lintels and rail balustrades, a two-storey arcade ground with shopfronts and a double-height glazed bay with an orange wooden door (the library entrance); north long front (2020-09-08 panorama) five brick storeys over a shopfront plinth with a dormer storey; SW and E fronts the same brick grid.",
-    "Ornaments: OBA lettering SIMPLIFIED (kit canopy lettering 'OBA' in OBA red over the entrance hall; the 2017 panorama shows no OBA sign on this front, so this is the library identity, not a photographed sign); orange entrance door MODELLED as the door colour; grey-brick piers MODELLED as piers; arcade canopy slabs over the shopfronts SIMPLIFIED (entrance canopy and shopfront plinth only); stone lintels and balcony rails SKIPPED (too-small); dormer row on the north front SKIPPED (3DBAG roof carries the volume); shop signs and awnings SKIPPED (temporary); the 3DBAG tower/stair volume (roof max 36 m) is kept as surveyed.",
-    "Only 359 openings fit the 12k budget on a 98 m block: the north front uses 26 bays per storey (real pitch is finer) and frames:false (dark frames read as glass) on the long fronts. Courtyard and party walls have no panorama and stay blank (otherWalls)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oba-javaplein",
+ "pandId": "0363100012238726",
+ "address": "OBA Javaplein, Javaplein 2, Amsterdam (2011; library in the ground floor of a perimeter housing block, one pand)",
+ "sources": [
+  {
+   "id": "pano-2018-12-11-w03-179L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-12-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001008_pano_0010_000068/",
+   "image": "source-data://pand-reference-walls/0363100012238726/w03-179L.jpg",
+   "sha256": "914ffca4b224abf69158eaf2cd8107dd6873a730c9b4d6fd11ca4092208e2951",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-09-08-w01-359",
+   "kind": "street-panorama",
+   "capturedAt": "2020-09-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001910_pano_0001_000444/",
+   "image": "source-data://pand-reference-walls/0363100012238726/w01-359.jpg",
+   "sha256": "b783b7b89d93464a3076125954bc587528a139db5e6aced2dcf18bee911bdadc",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-12-11-w02-206L",
+   "kind": "street-panorama",
+   "capturedAt": "2018-12-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001008_pano_0008_000006/",
+   "image": "source-data://pand-reference-walls/0363100012238726/w02-206L.jpg",
+   "sha256": "9928a3d6b7d3e32cf19a4f4faf0e6d621f90d3703cdc91be5ec2ce60e20f318f",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-18-w04-89L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001524_pano_0000_000669/",
+   "image": "source-data://pand-reference-walls/0363100012238726/w04-89L.jpg",
+   "sha256": "ee35d54e704043dd7fc52bc125730beb268aa28209ab84e900fbeacf27a19025",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    130,
+    343
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 14,
+   "ground": "plinth-shopfronts",
+   "windows": "two-light",
+   "signage": {
+    "text": "OBA",
+    "colour": "#e2231a",
+    "mount": "canopy"
+   },
+   "entrance": {
+    "bay": 7,
+    "storeys": 2,
+    "canopy": true
+   },
+   "piers": true,
+   "stringCourses": true,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#8c7a6f",
+    "glass": "#2f2b29"
+   },
+   "windowShape": {
+    "w": 0.613,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    21,
+    175,
+    205
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 26,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#4a3832"
+   }
+  },
+  {
+   "wallSurfaces": [
+    1,
+    118,
+    160,
+    295,
+    296
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 20,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#64544b",
+    "glass": "#3c3731"
+   },
+   "windowShape": {
+    "w": 0.554,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    11,
+    176
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "sills": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#81614f",
+    "glass": "#473b33"
+   },
+   "windowShape": {
+    "w": 0.652,
+    "h": 0.6,
+    "sill": 0.38
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "zinc"
+ },
+ "palette": {
+  "brick": "#c19a86",
+  "frame": "#3a3d3f",
+  "door": "#c9701f",
+  "stone": "#9a9a98",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "2011 perimeter housing block (pand 0363100012238726, 343 LoD2.2 wall surfaces, 98 m long) with the OBA Javaplein library on its ground floor; the whole pand is modelled. South front (surfaces 130/343, 2017-04-04 panorama, 18 m away): pale pink brick with grey-brick piers, paired windows with stone lintels and rail balustrades, a two-storey arcade ground with shopfronts and a double-height glazed bay with an orange wooden door (the library entrance); north long front (2020-09-08 panorama) five brick storeys over a shopfront plinth with a dormer storey; SW and E fronts the same brick grid.",
+  "Ornaments: OBA lettering SIMPLIFIED (kit canopy lettering 'OBA' in OBA red over the entrance hall; the 2017 panorama shows no OBA sign on this front, so this is the library identity, not a photographed sign); orange entrance door MODELLED as the door colour; grey-brick piers MODELLED as piers; arcade canopy slabs over the shopfronts SIMPLIFIED (entrance canopy and shopfront plinth only); stone lintels and balcony rails SKIPPED (too-small); dormer row on the north front SKIPPED (3DBAG roof carries the volume); shop signs and awnings SKIPPED (temporary); the 3DBAG tower/stair volume (roof max 36 m) is kept as surveyed.",
+  "Only 359 openings fit the 12k budget on a 98 m block: the north front uses 26 bays per storey (real pitch is finer) and frames:false (dark frames read as glass) on the long fronts. Courtyard and party walls have no panorama and stay blank (otherWalls).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #423d3a not used (not darker than the wall #4a3832 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3
   ]
+ }
 }

@@ -22,6 +22,7 @@ import sharp from 'sharp';
 import {renderModels, closeRenderer, type RenderView} from '../building-recipes/render.ts';
 import {addressRange, pandRows, recipeStatus, type ChunkRef, type FaceRef, type RecipeRef} from '../../src/canalRecall/streetSurveys/classify.ts';
 import type {FaceStatus, StreetSurvey, StreetSurveyData, SurveyFace, SurveyHouse, SurveyRecipeHouse, Thumb} from '../../src/canalRecall/streetSurveys/types.ts';
+import {streetSlug} from './street-style.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const RENDER = true; // thumbnails are part of the output; there is no data-only mode
@@ -159,7 +160,7 @@ for (const m of recipeEntries) {
 if (RENDER) await closeRenderer();
 
 for (const survey of streets.values()) {
-  const slug = survey.street.toLowerCase();
+  const slug = streetSlug(survey.street);
   const review = await maybeJson<{faces?: Record<string, string[]>; pands?: Record<string, string[]>}>(`scripts/street-surveys/reviews/${slug}.json`);
   for (const f of survey.faces) {
     if (review?.faces?.[f.id]) f.review = review.faces[f.id];

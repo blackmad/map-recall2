@@ -649,6 +649,14 @@ export interface LargeWallIntent {
    * of the widest panel: `count` crosses of `size` (small 1.4 m, medium 2.2 m default, large 3.2 m), in `colour`, at the `left` (default) or `right` end.
    */
   crosses?: {count: number; size?: 'small' | 'medium' | 'large'; colour?: string; side?: 'left' | 'right'};
+  /**
+   * Ground `arcade` (needs `ground: "arcade"`): the recessed shop arcade's proportions, each optional (blockBuilding
+   * ARCADE_DEFAULTS, Mercatorplein): `pier` width as a fraction of the bay, `walk` depth (shopfronts behind the wall face)
+   * as a fraction of the ground storey's height, opening `head` as a fraction of the ground storey, the chamfered
+   * shoulders' `rise` and `chamfer` as fractions of the opening width, `storeyFactor` the ground storey's height over an
+   * upper storey (default 1.6), `facing` false = no rendered lintel band and pier facings.
+   */
+  arcade?: {pier?: number; walk?: number; head?: number; rise?: number; chamfer?: number; storeyFactor?: number; facing?: boolean};
 }
 
 export interface LargeBuildingIntent {

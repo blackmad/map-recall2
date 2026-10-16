@@ -1,28 +1,136 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-ij-tunnel",
-  "pandId": "0363100012165618",
-  "address": "Politiebureau IJ-tunnel / Brandweerkazerne Amsterdam-Amstelland, IJ-tunnel 2, Amsterdam (1972; one pand shared by fire station and police bureau)",
-  "sources": [
-    {"id": "pano-2024-12-10-nw-left", "kind": "street-panorama", "capturedAt": "2024-12-10", "image": "staging/pand-reference-walls/0363100012165618/w01-313.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track16_Sphere_00070/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2024-12-10-nw-doors", "kind": "street-panorama", "capturedAt": "2024-12-10", "image": "staging/pand-reference-walls/0363100012165618/w01-313.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track16_Sphere_00070/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2024-12-10-nw-wing", "kind": "street-panorama", "capturedAt": "2024-12-10", "image": "staging/pand-reference-walls/0363100012165618/w01-313.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track16_Sphere_00070/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2020-04-22-sw", "kind": "street-panorama", "capturedAt": "2020-04-22", "image": "staging/pand-reference-walls/0363100012165618/w03-238.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001665_pano_0000_001958/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [29], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 4, "ground": "blank", "windows": "plain"},
-    {"wallSurfaces": [78], "system": "ribbon-windows", "storeys": 5, "baysPerStorey": 9, "ground": "plinth-shopfronts", "windows": "plain", "garageDoors": 8, "signage": {"text": "BRANDWEER", "colour": "#b01820", "mount": "fascia"}},
-    {"wallSurfaces": [35], "system": "ribbon-windows", "storeys": 4, "baysPerStorey": 5, "ground": "blank", "windows": "plain"},
-    {"wallSurfaces": [63], "system": "ribbon-windows", "storeys": 4, "baysPerStorey": 5, "ground": "blank", "windows": "plain"}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#3b312c", "frame": "#e6e4dc", "door": "#e8e8e4", "stone": "#d8d6cf", "wallMaterial": "stucco"},
-  "notes": [
-    "1972 combined fire station (Brandweer Amsterdam-Amstelland) and police bureau at the IJ-tunnel, one pand: dark brown brick, white-framed ribbon windows, a row of nine white sectional garage doors on the NW front, red BRANDWEER lettering on a fascia over the doors, the fire-brigade flame crest on the upper brick wall, flagpoles and a roof railing. NW front from 2024-12-10 (w01-313, 55 m, rectified); the SW curved wing from 2020-04-22 (w03-238, ribbons on a three-quarter curve, built straight in 3DBAG). The police bureau is not separately visible: no POLITIE sign, lamp or stripe appears on any photographed wall (the police use the rear/ tunnel side, no panorama: candidates 0).",
-    "Ornaments from the panoramas: BRANDWEER lettering (MODELLED as red letters on a stone fascia band above the doors, via ground plinth-shopfronts, which is how the kit letters a group without an entrance; the letters are about 3 m shorter than the photo sign); eight sectional garage doors (MODELLED, garageDoors 8; the photo has nine, the ninth is an open vehicle bay at the east end, SIMPLIFIED to a bay of the grid); fire-brigade flame crest on the brick above the doors (SKIPPED: a 1.2 m round emblem of two colours is a texture-scale decal, the kit has no wall-relief primitive and the 5 cm attachment grain admits only the letter plates; the red lettering carries the same colour cue); 'Amsterdam - Amstelland' small sub-line (SKIPPED: 0.25 m letters, unreadable at gallery size); flagpoles and roof railing (SKIPPED: slender, not part of the 3DBAG volume and not stable between captures); white concrete columns and balcony rail on the right of the first floor (SIMPLIFIED to ribbon windows); no POLITIE lettering, blue lamp, striped band or police canopy visible.",
-    "Other walls (SE, NE, tunnel side) have no panorama (candidates 0) or are party walls and stay blank."
-  ],
- "layeredKit": true
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-ij-tunnel",
+ "pandId": "0363100012165618",
+ "address": "Politiebureau IJ-tunnel / Brandweerkazerne Amsterdam-Amstelland, IJ-tunnel 2, Amsterdam (1972; one pand shared by fire station and police bureau)",
+ "sources": [
+  {
+   "id": "pano-2023-01-13-w01-313",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002932_pano_0013_000022/",
+   "image": "source-data://pand-reference-walls/0363100012165618/w01-313.jpg",
+   "sha256": "b36eb5e9ed42da3c2b3dac708cb8f3793964aba9bb9fc67bb851e8dd2a5859be",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-09-15-w03-238",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-15",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002310_pano_0001_001583/",
+   "image": "source-data://pand-reference-walls/0363100012165618/w03-238.jpg",
+   "sha256": "1c16b6d192ecb374de3ca9e2bf11b7d6e61d84ba71cfac023f37a27cdf973306",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    29
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "ground": "blank",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#3f3634"
+   },
+   "windowShape": {
+    "w": 0.4,
+    "h": 0.5,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    78
+   ],
+   "system": "ribbon-windows",
+   "storeys": 5,
+   "baysPerStorey": 9,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "garageDoors": 8,
+   "signage": {
+    "text": "BRANDWEER",
+    "colour": "#b01820",
+    "mount": "fascia"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#463e3c"
+   }
+  },
+  {
+   "wallSurfaces": [
+    35
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "ground": "blank",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#453d3a"
+   }
+  },
+  {
+   "wallSurfaces": [
+    63
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 5,
+   "ground": "blank",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#1f1a1b"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#3b312c",
+  "frame": "#e6e4dc",
+  "door": "#e8e8e4",
+  "stone": "#d8d6cf",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "1972 combined fire station (Brandweer Amsterdam-Amstelland) and police bureau at the IJ-tunnel, one pand: dark brown brick, white-framed ribbon windows, a row of nine white sectional garage doors on the NW front, red BRANDWEER lettering on a fascia over the doors, the fire-brigade flame crest on the upper brick wall, flagpoles and a roof railing. NW front from 2024-12-10 (w01-313, 55 m, rectified); the SW curved wing from 2020-04-22 (w03-238, ribbons on a three-quarter curve, built straight in 3DBAG). The police bureau is not separately visible: no POLITIE sign, lamp or stripe appears on any photographed wall (the police use the rear/ tunnel side, no panorama: candidates 0).",
+  "Ornaments from the panoramas: BRANDWEER lettering (MODELLED as red letters on a stone fascia band above the doors, via ground plinth-shopfronts, which is how the kit letters a group without an entrance; the letters are about 3 m shorter than the photo sign); eight sectional garage doors (MODELLED, garageDoors 8; the photo has nine, the ninth is an open vehicle bay at the east end, SIMPLIFIED to a bay of the grid); fire-brigade flame crest on the brick above the doors (SKIPPED: a 1.2 m round emblem of two colours is a texture-scale decal, the kit has no wall-relief primitive and the 5 cm attachment grain admits only the letter plates; the red lettering carries the same colour cue); 'Amsterdam - Amstelland' small sub-line (SKIPPED: 0.25 m letters, unreadable at gallery size); flagpoles and roof railing (SKIPPED: slender, not part of the 3DBAG volume and not stable between captures); white concrete columns and balcony rail on the right of the first floor (SIMPLIFIED to ribbon windows); no POLITIE lettering, blue lamp, striped band or police canopy visible.",
+  "Other walls (SE, NE, tunnel side) have no panorama (candidates 0) or are party walls and stay blank.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #502324 not used (not darker than the wall #463e3c by 10 L*, or tinted): kit glass kept; walls[3] glass #22231e not used (not darker than the wall #1f1a1b by 10 L*, or tinted): kit glass kept."
+ ],
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
+ }
 }

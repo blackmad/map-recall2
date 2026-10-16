@@ -16,8 +16,13 @@ import type { ArchKind, ArchParams } from './arch.ts';
  */
 export const LARGE_SYSTEMS = ['brick-bay-grid', 'ribbon-windows', 'curtain-wall', 'plinth-shopfronts', 'blank', 'glazed-hall', 'glazed-columns', 'french-window-ledge'] as const;
 export type LargeSystemName = typeof LARGE_SYSTEMS[number];
-/** `mesh-plinth` (layered curtain wall only): the glass skin runs down to the ground and a closed dark panel covers the ground storey (largeCompile `drawPlinthPanel`). */
-export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth'] as const;
+/**
+ * `mesh-plinth` (layered curtain wall only): the glass skin runs down to the ground and a closed dark panel covers the ground storey (largeCompile `drawPlinthPanel`).
+ * `arcade`: a recessed shop arcade (Berlage's Mercatorplein galleries): one chamfered-head opening per bay between piers,
+ * cut `arcade.depth` deep with the shopfronts (four transom lights) at the back, a rendered lintel band over the openings
+ * and pier facings below it (largeCompile `drawArcadeFacing`).
+ */
+export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals', 'mesh-plinth', 'arcade'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
 export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide', 'stacked'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
@@ -76,7 +81,29 @@ export interface SystemFit {
   shape?: { w: number; h: number; sillM: number };
   /** glazed-columns: bays (of `bays` per storey, cycling) that carry a glass stripe instead of windows */
   columnBays?: number[];
+  /** ground `arcade`: the opening geometry (fitLarge fills the defaults, ARCADE_DEFAULTS) */
+  arcade?: ArcadeFit;
 }
+
+/** Recessed shop arcade (ground `arcade`): pier width and walk depth in metres, the rest as fractions. */
+export interface ArcadeFit {
+  /** pier width between openings (m) */
+  pierM: number;
+  /** depth of the walk: the shopfront glazing stands this far behind the wall face (m) */
+  depthM: number;
+  /** opening head over the ground storey line, as a fraction of the ground storey */
+  head: number;
+  /** chamfered shoulders: vertical rise and horizontal run, fractions of the opening width */
+  rise: number; chamfer: number;
+}
+/**
+ * Arcade proportions of the Mercatorplein north front (all-walls crop w01-165, 2018/2022): 1.1 m piers on a 6.1 m
+ * pitch (0.18 of the bay), the walk about 2.4 m deep in a 5 m storey (0.48), 4.2 m heads (0.84), shoulders 0.16 x 0.2
+ * of the opening width. fitLarge turns the fractions into metres for the group's pitch and ground storey.
+ */
+export const ARCADE_PROPORTIONS = { pier: 0.18, walk: 0.48, head: 0.84, rise: 0.16, chamfer: 0.2 };
+/** The proportions in metres for a 6.1 m bay and a 5 m ground storey (the fallback when no fit is given). */
+export const ARCADE_DEFAULTS: ArcadeFit = { pierM: 1.1, depthM: 2.4, head: 0.84, rise: 0.16, chamfer: 0.2 };
 
 /** Glass-block perforation in a screen cell: a small square opening with a cross of 3.5 cm closed bars, no frame ring or sill. */
 const glassBlock = (f: SystemFit): WinParams => ({ w: 0.62, h: 0.34, sill: 0.95, mull: 1, rows: 1, frameW: 0, sillSlot: null, barD: 0.035, frame: f.slots.stone, glass: f.slots.glass });
@@ -130,6 +157,12 @@ function groundRow(f: SystemFit, upper: Row): Row {
     case 'blank': case 'mesh-plinth': return { kind: 'wall' };
     // Tall arched (or square-headed) doors in every bay: warehouse ground floors.
     case 'portals': return { kind: 'punched', win: { w: 0.5, h: 0.78, sill: 0.06, mull: 1, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.arches?.ground ?? 'round', f) } };
+    // Recessed arcade: chamfered openings between piers, the reveal is the walk (rendered soffit), shopfronts at the back.
+    case 'arcade': {
+      const a = f.arcade ?? ARCADE_DEFAULTS, w = Math.max(0.3, Math.min(0.92, 1 - a.pierM / f.pitchM));
+      return { kind: 'punched', win: { w, h: a.head, sill: 0.05, mullAt: [0.25, 0.5, 0.75], rowsAt: [0.72], frameW: 0.06, frame: s.frame, glass: s.glass, sillSlot: null, ...(f.deepBars ? { barD: 0.035 } : {}),
+        arch: { kind: 'chamfered', rise: a.rise, chamfer: a.chamfer, depth: a.depthM, revealSlot: s.stone } } };
+    }
     case 'glazed': return { kind: 'glazed', win: { w: 0.9, h: 0.86, sill: 0.1, mull: 1, transom: 0.82, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
     // Shop windows down to a low stall riser, a transom light under the fascia (the fascia band is a component).
     case 'plinth-shopfronts': return { kind: 'glazed', win: { w: 0.86, h: 0.74, sill: 0.35, mull: 1, transom: 0.8, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };

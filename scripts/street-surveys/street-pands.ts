@@ -13,11 +13,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {cachedJson} from '../pand-reference/core.ts';
 import {lngLatToRd} from '../../src/canalRecall/facade/rdNew.ts';
+import {streetFile} from './street-style.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const street = arg('street') ?? 'Bilderdijkstraat';
 const CRS = 'http://www.opengis.net/def/crs/EPSG/0/28992';
-const BUFFER = 45;
+const BUFFER = Number(arg('buffer') ?? 45);
 
 type Unit = {address: string; number: number; letter: string | null; suffix: string | null; use: string; pandHref: string};
 
@@ -42,6 +43,7 @@ for (let page = 0; url && page < 30; page++) {
     units.push({address, number: p.huisnummer, letter: p.huisletter ?? null, suffix: p.toevoeging ?? null, use: String(p.gebruiksdoel ?? ''), pandHref: href});
   }
   url = json.links?.find((l: any) => l.rel === 'next')?.href ?? null;
+  if (url && page === 29) console.warn('WARNING: BAG verblijfsobject paging stopped at 30 pages; the street bbox is too large');
 }
 
 const byHref = new Map<string, Unit[]>();
@@ -57,7 +59,7 @@ for (const [href, list] of byHref) {
   });
 }
 pands.sort((a, b) => a.numbers[0] - b.numbers[0]);
-const out = path.join('scripts/street-surveys/streets', `${street.toLowerCase()}.json`);
+const out = streetFile(street);
 await fs.mkdir(path.dirname(out), {recursive: true});
 await fs.writeFile(out, JSON.stringify({street, source: 'PDOK BAG OGC API v2 (verblijfsobject + pand), CC0', fetchedAt: new Date().toISOString().slice(0, 10), pands}, null, 1) + '\n');
 console.log(`${pands.length} pands with a current ${street} address -> ${out}`);

@@ -1,0 +1,503 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-186-202",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-186-202/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 202-186 and the Ten Katestraat corner (even side, 1897-1917), 2024-12-11 overcast strip. A white-banded kinker-1890-brick-arched row: 202-200 with white pediment dormers, 192-198 as four modules (3+3 axes under one brick roof box, 2+2 axes under brick dormer towers), 188 (1917) with two dormers, 186 with a curved gable the type cannot say; the corner pand 073962 (olive brick, steep street gable) on kinker-1890-plain-brick."
+ },
+ "types": [
+  "kinker-1890-brick-arched",
+  "kinker-1890-plain-brick"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012157310",
+   "slug": "kinker-157310",
+   "address": "Kinkerstraat 202",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#504234",
+     "evidence": "palette-from-strip.ts --face=kinker-186-202: wall median #504234 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "cornice": "bracketed"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1f1f1f",
+      "fascia": true,
+      "name": "Imperial barbershop",
+      "sign": {
+       "text": "Imperial Barbershop",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#1f1f1f"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 1: black fascia \"IMPERIAL BARBERSHOP\"; OSM node 7329930371 shop=hairdresser"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Imperial barbershop",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 7329930371,
+     "name": "Imperial barbershop"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "OSM also maps Tex Leder here; its lettered shop is 206 (kinker-206-242)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 2 axes, white courses, blocked segmental heads, white pediment dormer with a round-arched light. The type note says a dormer tower here; the photo shows a pediment dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched light in the white dormer"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161134",
+   "slug": "kinker-161134",
+   "address": "Kinkerstraat 200",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#534436",
+     "evidence": "palette-from-strip.ts --face=kinker-186-202: wall median #534436 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "cornice": "bracketed"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#9ccc8a",
+      "fascia": true,
+      "name": "Nails by Bianca",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#9ccc8a",
+      "evidence": "strip.jpg pand 2: light green pui with a round pink \"AF\" logo, small lettering not legible; OSM node 7330001519 shop=beauty Nails by Bianca"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Nails by Bianca",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 7330001519,
+     "name": "Nails by Bianca"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): as 202",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched light in the white dormer"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159351",
+   "slug": "kinker-159351",
+   "address": "Kinkerstraat 192-198",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "none",
+    "measuredPalette": {
+     "brick": "#554539",
+     "evidence": "palette-from-strip.ts --face=kinker-186-202: wall median #554539 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "cornice": "bracketed"
+    },
+    "modules": [
+     {
+      "share": 0.26,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2c2a26",
+        "fascia": true,
+        "name": "McDonald's",
+        "entrance": "right",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#e8c13a",
+        "evidence": "strip.jpg pand 3 module 1: McDonald's front, yellow sign board, Christmas garland; OSM node 2809211166"
+       }
+      }
+     },
+     {
+      "share": 0.26,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2c2a26",
+        "fascia": true,
+        "name": "McDonald's",
+        "sign": {
+         "text": "McDonald's",
+         "textColour": "white",
+         "mount": "fascia",
+         "background": "#2c2a26"
+        },
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 2: \"McDonald's\" lettered, golden M"
+       }
+      }
+     },
+     {
+      "share": 0.24,
+      "ground": {
+       "shopfront": {
+        "colour": "#2c2a26",
+        "fascia": false,
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 3: McDonald's entrance"
+       }
+      }
+     },
+     {
+      "share": 0.24,
+      "ground": {
+       "shopfront": {
+        "colour": "#2a3a32",
+        "fascia": true,
+        "name": "Holland & Barrett",
+        "sign": {
+         "text": "Holland & Barrett",
+         "textColour": "white",
+         "mount": "fascia",
+         "background": "#2a3a32"
+        },
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 4: dark green fascia \"Holland & Barrett\"; OSM node 4724996015 shop=health_food"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "McDonald's",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2809211166,
+     "name": "McDonald's"
+    },
+    "bag": [
+     "winkelfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Holland & Barrett (OSM 4724996015, lettered) in the right module and on 188"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): two 3-axis modules (white courses, small white pediment hoods on storey 2) under one wide brick roof box with two lights, then two 2-axis modules each under a brick dormer tower",
+    "photoRows": [
+     5,
+     10,
+     10,
+     10,
+     6
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "one wide brick roof box with two lights straddles the two left modules (left off: a crown is per module)",
+     "two brick dormer towers, one axis wide, over the right modules: the type tower crown spans both axes and drew a module-wide box that shifted the storey lines on pass 1; left off",
+     "small white pediment hoods over the storey-2 windows of the left modules"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012129253",
+   "slug": "kinker-129253",
+   "address": "Kinkerstraat 188",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#322c21",
+     "evidence": "strip 2024-12-11: brick piers sampled on the strip at x 1100-1257, rows 375-400 (#302b20-#332c21); the palette-from-strip median #525448 mixed in the white courses"
+    },
+    "overrides": {
+     "cornice": "bracketed",
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      },
+      "tympanum": "stone",
+      "storeys": [
+       1
+      ]
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2a3a32",
+        "fascia": true,
+        "name": "Holland & Barrett",
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#2a3a32",
+        "evidence": "strip.jpg pand 4: the Holland & Barrett front continues"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2a3a32",
+        "fascia": true,
+        "entrance": "none",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "#2a2826"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#2a3a32",
+        "evidence": "strip.jpg pand 4 right module: green front, a dark house door"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Holland & Barrett",
+    "category": "shop=health_food",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "the Holland & Barrett fascia runs over 188; OSM maps Asian-caribbean Market (node 8724679407) here"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): 1917, darker brick, 4 axes, white courses, lattice tympana on storey 1, two white pediment dormers",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "lattice ornament in the storey-1 tympana",
+     "very dark brown brick (#322c21) below the brick slot lightness floor (0.30): renders lighter"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160226",
+   "slug": "kinker-160226",
+   "address": "Kinkerstraat 186",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "none",
+    "measuredPalette": {
+     "brick": "#534c3e",
+     "evidence": "palette-from-strip.ts --face=kinker-186-202: wall median #534c3e on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "cornice": "bracketed",
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2826",
+      "fascia": true,
+      "name": "Best doner & snacks",
+      "sign": {
+       "text": "Best Doner",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#2a2826"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#2a3a32"
+      },
+      "evidence": "strip.jpg pand 5: dark fascia \"BEST DONER\", green awning; OSM node 2452226912 amenity=fast_food"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Best doner & snacks",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2452226912,
+     "name": "Best doner & snacks"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): 3 axes, white courses, lattice tympana on the top storey, a curved (bell) gable with two oculi and an arched light",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "curved bell gable with two oculi and an arched attic light (the brick-arched type has no bell crown; left off, cornice only)",
+     "lattice tympana on the top storey"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012073962",
+   "slug": "kinker-073962",
+   "address": "Ten Katestraat 42 (corner)",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4b432d",
+     "evidence": "palette-from-strip.ts --face=kinker-186-202: wall median #4b432d on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": 2,
+     "cornice": "simple"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#3a3a32",
+      "fascia": false,
+      "name": "Five Ways Coffee",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 6: a tall glazed cafe front; OSM node 9874435908 amenity=cafe Five Ways Coffee"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-11",
+    "name": "Five Ways Coffee",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 9874435908,
+     "name": "Five Ways Coffee"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6 (zoom): corner pand, olive-brown brick, 2 axes, flat heads, a steep pitched street gable with an oculus and a chimney",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "steep pitched street gable with an oculus (no plain-brick crown for it; cornice only)",
+     "olive-brown hard brick of a later (1920s?) rebuild; no BAG year on the face"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "157310: round-arched light in the white dormer",
+  "161134: round-arched light in the white dormer",
+  "159351: one wide brick roof box with two lights straddles the two left modules (left off: a crown is per module)",
+  "159351: two brick dormer towers, one axis wide, over the right modules: the type tower crown spans both axes and drew a module-wide box that shifted the storey lines on pass 1; left off",
+  "159351: small white pediment hoods over the storey-2 windows of the left modules",
+  "129253: lattice ornament in the storey-1 tympana",
+  "129253: very dark brown brick (#322c21) below the brick slot lightness floor (0.30): renders lighter",
+  "160226: curved bell gable with two oculi and an arched attic light (the brick-arched type has no bell crown; left off, cornice only)",
+  "160226: lattice tympana on the top storey",
+  "073962: steep pitched street gable with an oculus (no plain-brick crown for it; cornice only)",
+  "073962: olive-brown hard brick of a later (1920s?) rebuild; no BAG year on the face"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ }
+}
