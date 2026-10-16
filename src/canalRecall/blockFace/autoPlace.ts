@@ -53,6 +53,12 @@ export interface TypeMatchRule {
    * asymmetry is then a criterion (an even front scores 0) and a pand whose accent reads on the other side is mirrored.
    */
   mirrorForAccent?: 'left' | 'right';
+  /**
+   * Range of the upper storeys' light-accent share (StripEvidence.accentShare): the white bay stacks of Hasebroekstraat
+   * 56-70 read 0.37-0.56 on the 2024-12-11 strip, the green-tile fronts of 90-98 on the same strip 0.07-0.25. Exposure
+   * dependent (a dark 2022 strip reads 0 everywhere), so it is a weighted criterion, never a veto.
+   */
+  accentShare?: [number, number];
   crowns?: Record<string, {none?: boolean; riseM?: [number, number]; topWidthM?: [number, number]; widthM?: [number, number]}>;
   note?: string;
 }
@@ -76,6 +82,8 @@ export interface StripEvidence {
   doorSide: 'left' | 'right' | null;
   /** The half of the upper storeys holding clearly more light accent pixels (ratio >= 1.6), null when even. */
   accentSide?: 'left' | 'right' | null;
+  /** Share of the upper storeys' (6.5 m .. eaves - 0.5 m) non-placeholder pixels that are light accent (white bays, frames). */
+  accentShare?: number;
 }
 
 export interface PandEvidence {
@@ -158,6 +166,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
     const runs = usable ? s!.palette.bandRunsM.length : null;
     criteria.push({key: 'bands', weight: W.bands, score: runs === null ? null : (runs >= 2) === m.bands ? 1 : 0, note: runs === null ? 'no strip' : `${runs} painted band runs`});
   }
+  if (m.accentShare) criteria.push({key: 'accent-share', weight: 2, score: usable && s!.accentShare !== undefined ? (s!.accentShare >= m.accentShare[0] && s!.accentShare <= m.accentShare[1] ? 1 : 0) : null, note: usable ? `upper accent share ${s!.accentShare ?? '-'} vs ${m.accentShare.join('-')}` : 'no strip'});
   if (m.mirrorForAccent) criteria.push({key: 'accent-side', weight: 2, score: usable ? (s!.accentSide ? 1 : 0) : null, note: usable ? `upper accent ${s!.accentSide ?? 'even'} (type: one-sided)` : 'no strip'});
   const want = baysFor(t, ev.widthM);
   if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
