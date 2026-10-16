@@ -14,7 +14,8 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
-import { bridgeFacts, flatHintAt, KIT_BUDGET, registerHint } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { bridgeFacts, flatHintAt, KIT_BUDGET, parapetTrace, registerHint } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
@@ -237,6 +238,7 @@ async function main(): Promise<void> {
     check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);
   }
   await deckTopRegressions();
+  await railingRegressions();
   await pocketRegressions();
   await openingRegressions();
   await approachRegressions();
@@ -333,6 +335,49 @@ async function deckTopRegressions(): Promise<void> {
       }
     }
     check(!bad.length, `${id} (${label}): deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 4).join(' ')})` : ''}`);
+  }
+}
+
+/**
+ * Railings across the road (user 2026-10-16, "why do the gates dip into the road?"; railingRuns.ts railRuns,
+ * scripts/own-ground/audit-bridge-railings.ts): each side's parapet runs along the deck's water-side edge and stops on
+ * the abutment. BRU0166 (Nassaukade over the Bilderdijkgracht mouth, cycle lanes both sides: the parapet turned in
+ * over both cycle lanes and ran on along them), the Nieuwe-Wercksbrug BRU0063 (Rozengracht, the south parapet turned
+ * across the cycle lane and footway at the east abutment), BRU0257 (the deck span's end between a road-width and a
+ * 19 m outline station: a 19 m return along the bank at each corner). Built with the roads-v1 partition as the game
+ * draws it: no stretch steeper than 45 deg over TURN_M (a gate), under 0.5 m of parapet inside a carriageway or
+ * cycle-lane polygon, both sides drawn.
+ */
+const RAILINGS: readonly (readonly [string, number, number, string])[] = [
+  ['BRU0166', 4.874789, 52.373236, 'Nassaukade, Bilderdijkgracht mouth'],
+  ['BRU0063', 4.883208, 52.3739, 'Nieuwe-Wercksbrug, Rozengracht / Prinsengracht'],
+  ['BRU0257', 4.907198, 52.362504, 'a span end between road and outline widths'],
+];
+async function railingRegressions(): Promise<void> {
+  // Its own store: preparing cells evicts others' state, and the roads-v1 pin below counts the decks the roads store holds.
+  const railStore = new GroundStore(readExtract, { roads: true });
+  await railStore.init();
+  for (const [id, lng, lat, label] of RAILINGS) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(railStore.cellAt(x, y))) { if (!railStore.osmCells.has(k)) continue; await railStore.prepareCell(k); if (railStore.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    check(!!owner, `${id} (${label}): placed in a streamed cell (${owner || 'none'})`);
+    if (!owner) continue;
+    // The pieces of the level buildKit drew (its last, highest attempt).
+    const input = await railStore.cellInput(owner, 0), lines = new Map<number, { level: number; pieces: ParapetPoint[][] }>();
+    parapetTrace.fn = (bid, side, line, at) => {
+      if (bid !== id) return;
+      const t = lines.get(side);
+      if (!t || at.level > t.level || (at.level === t.level && at.piece === 0)) lines.set(side, { level: at.level, pieces: [line] });
+      else if (at.level === t.level) t.pieces.push(line);
+    };
+    try { buildCell(input); } finally { parapetTrace.fn = null; }
+    const index = input.roads || input.roadsAround?.some(Boolean) ? new RoadIndex([input.roads ?? null, ...(input.roadsAround ?? [])]) : null;
+    const traffic = (qx: number, qy: number) => { const c = index?.classAt(qx, qy, true); return c === 'carriage' || c === 'cycle'; };
+    const m = [...lines.values()].flatMap(l => l.pieces).map(l => parapetCrossings(l, traffic));
+    check(lines.size === 2, `${id} (${label}): parapet on both sides (${lines.size})`);
+    check(m.every(r => r.turns === 0), `${id}: no parapet turns across the deck (${m.map(r => `${r.turns} turns ${r.turnM.toFixed(1)} m`).join(', ')})`);
+    check(m.every(r => r.insideM < 0.5), `${id}: parapet off the carriageway and cycle lanes (${m.map(r => r.insideM.toFixed(1)).join(', ')} m inside)`);
   }
 }
 

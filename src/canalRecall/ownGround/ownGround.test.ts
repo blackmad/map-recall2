@@ -977,6 +977,7 @@ test('crossSection prefers the BGT width, takes painted lanes off it, and says w
 
 // The bridge kit's own tests (lane bridge-kit 2026-10-13), run with this file.
 import './bridgeKit.test';
+import './railingRuns.test';
 // ------------------------------------------------------------- parks (lane parks 2026-10-13)
 
 test('parks: BGT terrain classes map to park surfaces; streets and yards are not parks', () => {
