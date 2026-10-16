@@ -1762,5 +1762,17 @@
   "buildVersion": 2,
   "bytes": 91388,
   "triangles": 4431
+ },
+ "mercatorplein-noordtoren": {
+  "sourceHash": "3a3caa031f218cde",
+  "buildVersion": 2,
+  "bytes": 65920,
+  "triangles": 3373
+ },
+ "mercatorplein-zuidtoren": {
+  "sourceHash": "edbf5280bf75e26d",
+  "buildVersion": 2,
+  "bytes": 37028,
+  "triangles": 1430
  }
 }

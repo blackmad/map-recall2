@@ -1,5 +1,55 @@
 # Canal Recall — what is built
 
+## Mercatorplein: both towers built bespoke from a photo-first inventory (2026-10-14)
+
+Lane `lane/mercatorplein-20261014` (plan Part 2 step 8). Photo-first
+inventories (`scripts/landmarks/mercatorplein-{noordtoren,zuidtoren}-inventory.json`,
+briefs, tall crops, aimed grids, 10 Commons originals and the register
+text archived in source-data 6c97fe90 under `models/mercatorplein-*/`),
+shared hand-built parts in `scripts/landmarks/mercatorplein-kit.ts`, two
+builders dispatched from `build-manual-landmarks.ts`; the kit `arcade`
+component (chamfered head, `arcade` ground, byte-identical when absent)
+came in f3fb1958. **North tower** (`mercatorplein-noordtoren`, 16,994 tris,
+251 KB, lod1 3,373): the arcade of 7 chamfered openings with a rendered
+lintel band; the square front with 7 erkers (three-sided with a stone cap
+where the photos show pitched caps), flank windows, 8 hoist beams with
+scroll ironwork plus 1 on the east parapet, a dark brick course over the
+lintel band and the coping; the gatehouse with a real 5.9 m
+through-passage, chamfered head in a stepped render frame, side doors,
+an erker on both faces, a steep tiled roof with white eaves board and
+glazed strip; the tower from 3DBAG massing with clock dials on the
+south, west and east faces, the slit under the south one, paired shaft
+windows and 4 big square windows on the north face; the curved corner
+balconies simplified; shop signs and the neighbour's glass-block band on
+the Hoofdweg not modelled. **South tower** (`mercatorplein-zuidtoren`,
+4,913 tris, 85 KB, lod1 1,430): 6 m passage on both faces, erker, roof
+with dormer, doors with a transom; flat top at 29.2 m with a rear shaft
+to 35.4 m; the east bay with erker, hoist beam and shopfronts; stepped
+corbel, grooved corners, diamond-pattern frieze and box balconies
+simplified. Verdicts at gallery size on rectified-crop sheets
+(`docs/images/mercatorplein/`, doc `docs/mercatorplein-20261014.md`):
+north arcade front, gate and tower from the square and the rear, south
+gate and tower, rear and east bay all read as the photo (bays and erkers
+within ~0.5 m); the north west and rear walls acceptable with kit
+windows; shared walls blank by design (the neighbour carries those
+windows). Known: 3DBAG's roof has a raised block at the west end of the
+north arcade front that is not in the photo; the south kit's own report
+flags one downward-facing roof triangle (audit passes, no hole in the
+strips). In the ride frame (`ride-jan-evertsen.jpg`, pitch 78°) the clock
+shaft reads above the corner ahead in the street's red brick; at the
+default cockpit pitch the tower top is out of frame (the chase-pitch row
+J3 covers it). Promotable to the kit: erkers with caps, hoist beams with
+scrolls, clock dials, gatehouses with a through-passage and cross roof,
+corner balconies, brick relief (grooved corners, diamond friezes, stepped
+corbels), per-bay arcade content, open shared walls, and a "trust the
+photo over 3DBAG" override for roof blocks. Checks: manual-landmarks 354,
+landmark-lods 296, covers, osm-under 0, fit-golden 153 identical, GLB
+audits PASS. OBA Mercatorplein was uninstalled by the large-tier triage
+(ornamented Amsterdam School front, no matching photo); its inventory is
+in `scripts/landmarks/oba-mercatorplein-inventory.json` for a bespoke
+builder.
+
+
 ## Large tier triaged: 95 houses measured, 54 re-fitted to the photo, 12 uninstalled (2026-10-14)
 
 Lane `lane/large-triage-20261014` (plan Part 1 lane D). Crops archived for

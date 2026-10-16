@@ -1420,7 +1420,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   band signs), then face lanes; re-run `commercial-merge.ts` for
   Kinkerstraat from a checkout with its staged crops (uses on 0 of 217
   pands, bug fixed in the survey lane); Mercatorplein towers
-  and arcades bespoke (lane running), De Hallen DONE as a staged recipe
+  and arcades DONE bespoke (HISTORY "Mercatorplein: both towers"; next
+  there: OBA Mercatorplein as a bespoke builder from its inventory, the
+  kit promotions listed, the 3DBAG roof block override), De Hallen DONE as a staged recipe
   behind its landmark (HISTORY "De Hallen measured and staged"; retire
   the landmark and install when the kit does glass ridge lights and
   stepped stone-coped gables), Kinkerstraat 32–54 and 89–105 installed
