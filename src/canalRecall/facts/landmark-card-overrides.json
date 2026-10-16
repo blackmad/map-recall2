@@ -1,0 +1,1132 @@
+{
+  "about": "Curated English landmark card text for cards the audit (scripts/audit-landmark-cards.ts) flags as a bare definition or as leftover Dutch. Each text rests only on sourceQuote, exact sentences from the cited Wikipedia article (| separates quotes); replaces is the card text before. Applied into landmarks.json funFact and facts.json opening by audit-landmark-cards.ts --stage. allowHollow lists cards that still open with no text or only the Wikidata one-liner, each with the reason no sourced text exists yet; test:landmark-cards fails on any other such card.",
+  "overrides": [
+    {
+      "id": "extract_landmarks_1450151185",
+      "name": "Huis Bartolotti",
+      "text": "Built around 1617 for Willem van den Heuvel, who inherited a fortune from a childless uncle on condition that he call himself Bartolotti. Its design is attributed to Hendrick de Keyser, and the house bends twice to follow the curve of the Herengracht.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Huis_Bartolotti",
+      "articleTitle": "Huis Bartolotti",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het is circa 1617 gebouwd voor Willem van den Heuvel tot Beichlingen, een van de rijkste Amsterdammers in die tijd, die veel geld had geërfd van een kinderloze aangetrouwde oom, Giovanni Battista Bartolotti, koopman uit Bologna. | In het testament van deze oom stond als voorwaarde vermeld dat hij zich \"Bartolotti\" moest noemen. | in de trant van Hendrick de Keyser aan wie het ontwerp wordt toegeschreven | Het Huis Bartolotti heeft twee knikken om deze bocht te volgen",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Het Huis Bartolotti (also Het Bonte Huis) is a canal house at Herengracht 170-172 in Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_1272308587",
+      "name": "Co-kathedrale Basiliek van Sint Nicolaas",
+      "text": "Adrianus Bleijs designed this Neo-Baroque and Neo-Renaissance church, completed in 1887. In 2021 it received a relic said to be a rib of Saint Nicholas, Amsterdam's patron saint, kept at Egmond Abbey since 1087.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Basilica_of_Saint_Nicholas,_Amsterdam",
+      "articleTitle": "Basilica of Saint Nicholas, Amsterdam",
+      "sourceLanguage": "en",
+      "sourceQuote": "The architect Adrianus Bleijs (1842-1912) designed the church based on a combination of several revival styles: the most prominent being the Neo-Baroque and neo-Renaissance. Construction was completed in 1887. | In December 2021, the basilica received a relic of St. Nicholas from Egmond Abbey. Said to be a fragment of the saint's rib, the bone had been in the custody of the abbey since 1087. | Saint Nicholas is the patron saint of both the church and the city of Amsterdam.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Co-cathedral Basilica of Saint Nicholas (Dutch: Co-kathedrale Basiliek van de Heilige Nicolaas) is located in the Old Centre district of Amsterdam, Netherlands, very close to Amsterdam's main railway station."
+    },
+    {
+      "id": "extract_landmarks_681957397",
+      "name": "Eye Filmmuseum",
+      "text": "Queen Beatrix opened this building on Amsterdam's north bank in 2012. Its architects, Delugan Meissl, also designed the Porsche Museum, and its archive holds 210,000 cans of acetate film.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/EYE_Film_Institute_Netherlands",
+      "articleTitle": "EYE Film Institute Netherlands",
+      "sourceLanguage": "en",
+      "sourceQuote": "The Filmmuseum was renamed the Eye Film Institute Netherlands and was officially opened on 4 April 2012, by Queen Beatrix. | plans were announced for a new home on the north bank of Amsterdam's waterfront | The Eye Filmmuseum building is designed by Delugan Meissl Associated Architects, whose other projects include the Porsche Museum in Stuttgart. | The collection includes 210,000 cans of acetate film",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Eye Filmmuseum is a film archive, museum, and cinema in Amsterdam that preserves and presents both Dutch and foreign films screened in the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1523176628",
+      "name": "Moco Museum",
+      "text": "Opened in 2016 in Villa Alsberg, a 1904 townhouse by Eduard Cuypers, nephew of the Rijksmuseum's architect Pierre Cuypers. Its shows have included Banksy and Andy Warhol.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Moco_Museum",
+      "articleTitle": "Moco Museum",
+      "sourceLanguage": "en",
+      "sourceQuote": "Moco Museum in Amsterdam opened in 2016 on Museumplein, in the historic Villa Alsberg, a townhouse designed in 1904 by Eduard Cuypers the nephew of Pierre Cuypers, designer of Amsterdam Central Station and the Rijksmuseum. | included works by artists such as Banksy and Andy Warhol",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Moco Museum (Modern Contemporary Museum) is an independent art museum with locations in Amsterdam, Barcelona, and London, dedicated to exhibiting modern and contemporary art."
+    },
+    {
+      "id": "extract_landmarks_914627337",
+      "name": "Heineken Experience",
+      "text": "Built in 1867 as the first Heineken brewery, it was the company's main brewery until 1988. It opened to visitors in 1991 and became one of Amsterdam's most popular attractions.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Heineken_Experience",
+      "articleTitle": "Heineken Experience",
+      "sourceLanguage": "en",
+      "sourceQuote": "The industrial facility was built as the first Heineken brewery in 1867, serving as the company's primary brewing facility until 1988 when a more modern, larger facility was constructed on the outskirts of the city. | In 1991, the brewery opened its doors to the public through a visitor centre | It grew to become one of Amsterdam's most popular tourist attractions",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Heineken Experience, located in Amsterdam, is a historic brewery and corporate visitor centre for the internationally distributed Dutch pilsner, Heineken beer."
+    },
+    {
+      "id": "extract_landmarks_1375175685",
+      "name": "Mint Tower",
+      "text": "Part of the medieval Regulierspoort gate, the tower was rebuilt after a 1618 fire with a spire by Hendrick de Keyser. Its name comes from the guard house beside it, where coins were minted in the crisis year 1672.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Munttoren",
+      "articleTitle": "Munttoren",
+      "sourceLanguage": "en",
+      "sourceQuote": "The tower was originally part of the Regulierspoort, one of the main gates in Amsterdam's medieval city wall. | After the gate went up in flames in a 1618 fire, only the guard house and part of the western tower remained standing. The tower was then rebuilt in Amsterdam Renaissance style in 1620, with an eight-sided top half and elegant open spire designed by Hendrick de Keyser | The name of the tower refers to the fact that the guard house on the side of it was used to mint coins in the 17th century. | so the guard house of the Munttoren was temporarily used to mint coin",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Munttoren (Dutch pronunciation: [ˈmʏnˌtoːrə(n)]; \"Mint Tower\") or Munt ([mʏnt]) is a tower in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_740511540",
+      "name": "Embassy of the Free Mind",
+      "text": "Dan Brown opened the museum in 2017 in the House with the Heads, a 1622 canal house with six heads of Roman gods on its facade. Its library holds over 25,000 books on Hermeticism and alchemy.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Embassy_of_the_Free_Mind",
+      "articleTitle": "Embassy of the Free Mind",
+      "sourceLanguage": "en",
+      "sourceQuote": "The Embassy of the Free Mind was opened in October 2017 by author Dan Brown. | The canal house was built in 1622 by Hendrick de Keyser | Six heads adorn the façade. They depict the Roman gods Apollo, Ceres, Mercury, Minerva, Bacchus and Diana. | The museum has a collection of more than 25,000 books on Hermeticism, Rosicrucianism, alchemy",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Embassy of the Free Mind is a museum, library and platform for free thinking inspired by the philosophy of the Bibliotheca Philosophica Hermetica collection."
+    },
+    {
+      "id": "extract_landmarks_1227471359",
+      "name": "Madame Tussauds Amsterdam",
+      "text": "Founded in 1970, it was the first Madame Tussauds in mainland Europe. Since 1991 it has filled the upper floors of a Peek & Cloppenburg clothing store on Dam Square that opened in 1917.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Madame_Tussauds_Amsterdam",
+      "articleTitle": "Madame Tussauds Amsterdam",
+      "sourceLanguage": "en",
+      "sourceQuote": "Founded in 1970, it was the first Madame Tussauds that was opened in mainland Europe | Madame Tussauds Amsterdam moved into the upper floors of the building of the international chain of clothing stores Peek & Cloppenburg at the Dam Square. | On April 11, 1917, it opened its doors as the second Peek & Cloppenburg store in the Netherlands.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Madame Tussauds Amsterdam is a wax museum situated in Amsterdam, the capital city of the Netherlands. It is located in the centre of the city on Dam Square, near the Royal Palace of Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_1675243450",
+      "name": "De Balie",
+      "text": "In the late 1970s this 19th-century courthouse was to be demolished for an eight-storey hotel. A public campaign saved it, and in 1982 it became the arts centre De Balie.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/De_Balie",
+      "articleTitle": "De Balie",
+      "sourceLanguage": "en",
+      "sourceQuote": "When the 19th-century building of the Amsterdam Cantonal Court was threatened to be demolished in order to build an eight-storey Bouweshotel in the late 1970s | The city council was persuaded, and a good destination for the building was found in art center De Balie in 1982.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "De Balie is a Dutch organization that produces independent journalistic programs about art, culture and politics. De Balie is located at Kleine-Gartmanplantsoen 10, near Leidseplein in Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_2127899711",
+      "name": "Amsterdam University College",
+      "text": "Founded in 2008 by the University of Amsterdam and the Vrije Universiteit, the honours college took in its first class in 2009. Its students live and study together on the Science Park campus.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam_University_College",
+      "articleTitle": "Amsterdam University College",
+      "sourceLanguage": "en",
+      "sourceQuote": "AUC was officially founded in 2008, and took up operation with its founding class in 2009. | is a joint initiative of the University of Amsterdam and Vrije Universiteit Amsterdam | Students live and study together on an international campus located in Amsterdam Science Park.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Amsterdam University College is a Liberal Arts and Sciences Bachelor's programme that is a joint initiative of the University of Amsterdam and Vrije Universiteit Amsterdam. AUC is a Honours programme at the Bachelor's level."
+    },
+    {
+      "id": "extract_landmarks_2044416411",
+      "name": "Felix Meritis",
+      "text": "Built for an Enlightenment society founded in 1776, the building opened in 1788. Beethoven's Ninth had its Dutch premiere in its oval concert hall, of which the Concertgebouw's small hall is a replica.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Felix_Meritis",
+      "articleTitle": "Felix Meritis",
+      "sourceLanguage": "en",
+      "sourceQuote": "for the new society called Felix Meritis established in 1776 | The building itself was meant to exemplify the Enlightenment ideals the society stood for. | On 31 October 1788 the building of the same name opened its doors. | Thus, Beethoven’s Ninth Symphony and Berlioz’s Symphonie fantastique had their Dutch premiere in the concert hall of Felix Meritis. The small hall of the Concertgebouw is a replica of this concert hall.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Felix Meritis ('Happy through Merit') is the name of an intellectual society in Amsterdam, but subsequently used for their building on the Keizersgracht."
+    },
+    {
+      "id": "extract_landmarks_1988238017",
+      "name": "OT301",
+      "text": "Artists squatted this former Dutch film academy in 1999 and bought it from the city in 2006. It is now a cultural centre with a club, cinema and gallery.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/OT301",
+      "articleTitle": "OT301",
+      "sourceLanguage": "en",
+      "sourceQuote": "In 1999, a group of artists squatted the former Dutch film academy. | the building was bought by the user association Eerste Hulp Bij Kunst (EHBK) from the council in 2006 | It has four public spaces (club, cinema, gallery, and kitchen)",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "OT301 is a self-managed social centre in a legalized squat in the Dutch city of Amsterdam, located on Overtoom 301."
+    },
+    {
+      "id": "extract_landmarks_1117288073",
+      "name": "Westergasfabriek",
+      "text": "When it opened in 1885 it was the largest gasworks in the Netherlands, making coal gas for street lighting until 1967. Most buildings are by Isaac Gosschalk.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Westergasfabriek",
+      "articleTitle": "Westergasfabriek",
+      "sourceLanguage": "en",
+      "sourceQuote": "Westergasfabriek  was ready in 1885 | In 1885 it was the largest gas extraction plant in the Netherlands. The gas was extracted from coal and was used for street lighting. | This is why in 1967 the production of gas from the factory stopped permanently. | Most of the thirteen buildings on site were designed by architect Isaac Gosschalk",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Westergasfabriek is a former gasworks in Amsterdam, the Netherlands, now used as a cultural venue."
+    },
+    {
+      "id": "extract_landmarks_1697896624",
+      "name": "Pathé Tuschinski Cinema",
+      "text": "Abraham Tuschinski opened this Art Deco and Amsterdam School cinema in 1921. Under the occupation he was deported to Auschwitz and murdered by the Nazis in 1942.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tuschinski_Theatre",
+      "articleTitle": "Tuschinski Theatre",
+      "sourceLanguage": "en",
+      "sourceQuote": "The theatre was founded by Abraham Icek Tuschinski | the theatre was built in Art Deco, Jugendstil and the Amsterdams School style | On October 28, 1921, the theatre opened its doors | Tuschinski and Gerschtanowitz were deported to Auschwitz and Ehrlich to Sobibor; all three were murdered by the Nazis in 1942.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Koninklijk Theater Tuschinski (English: Royal Theatre Tuschinski) also called Pathé Tuchinski, is a movie theatre in Amsterdam, Netherlands, near Rembrandtplein and belonging to the historic French group Pathé."
+    },
+    {
+      "id": "extract_landmarks_1588171596",
+      "name": "Hollandsche Schouwburg",
+      "text": "The Nazi occupiers made this theatre a Jewish theatre in 1941 and then used it as a deportation centre. A wall now carries some 6,700 surnames of the more than 100,000 Jews deported from the Netherlands.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hollandsche_Schouwburg",
+      "articleTitle": "Hollandsche Schouwburg",
+      "sourceLanguage": "en",
+      "sourceQuote": "it was deemed a Jewish theatre in 1941 by Nazi occupiers, and it was later used as a deportation center during the Holocaust in the Netherlands. | a wall engraved with some 6,700 surnames of the more than 100,000 Jewish deportees from the Netherlands",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Hollandsche Schouwburg (Dutch pronunciation: [ˈɦɔlɑntsə ˈsxʌubʏr(ə)x]; English: Hollandic Theatre) is a museum in Amsterdam in the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1038852583",
+      "name": "ASC SDW",
+      "text": "Founded on 10 May 1907, the club's initials stand for Sterk Door Wilskracht, Strong Through Willpower. From 1967 to 1976 it played at the highest Dutch amateur level.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/ASC_SDW",
+      "articleTitle": "ASC SDW",
+      "sourceLanguage": "nl",
+      "sourceQuote": "ASC SDW (Amsterdamse Sportclub Sterk Door Wilskracht) | De club werd opgericht op 10 mei 1907. | Van het seizoen 1967/68 tot en met het seizoen 1975/76 kwam het negen seizoenen uit op het hoogste amateurniveau",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "ASC SDW (Amsterdam Sports Club Strong Through Willpower) is an amateur football club from Amsterdam, North Holland, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_643362629",
+      "name": "Begijnhofkapel",
+      "text": "After the Beguines lost their church to the Protestants, they built this hidden chapel by joining two of their houses. The city approved it, in 1671, only if it did not look like a church from outside.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Begijnhof_Chapel,_Amsterdam",
+      "articleTitle": "Begijnhof Chapel, Amsterdam",
+      "sourceLanguage": "en",
+      "sourceQuote": "The Beguines, too, had to hand over the church in their courtyard. | after joining two of the hofje houses bought for that purpose | his nephew laid the foundation stone on 2 July 1671. The Protestant council members of the city of Amsterdam approved the building plans on condition that the building did not look like a church from the outside.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Begijnhof Chapel, dedicated to Saint John and Saint Ursula, is a Roman Catholic chapel run by the Congregation of the Blessed Sacrament, in the St Nicholas Parish of Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_1692085215",
+      "name": "Westerkerk",
+      "text": "Designed by Hendrick de Keyser and inaugurated in 1631, it was one of the first churches purpose-built for Protestants. It is still the largest such church in the Netherlands.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Westerkerk",
+      "articleTitle": "Westerkerk",
+      "sourceLanguage": "en",
+      "sourceQuote": "The Westerkerk was built between 1620 and 1631 in Renaissance style according to designs by architect Hendrick de Keyser. | inaugurated on June 8, 1631 | The Westerkerk was one of the first purpose-built Protestant churches. It remains the largest church in the Netherlands that was built for Protestants",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Westerkerk (Dutch pronunciation: [ˈʋɛstərˌkɛr(ə)k]; English: Western Church) is a Reformed church within Dutch Protestant Calvinism in central Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_273619808",
+      "name": "Jewish Museum",
+      "text": "Opened in 1932 in the Waag on Nieuwmarkt, the museum was forced to close under the Nazi occupation and lost much of its collection. Since 1987 it has occupied four former synagogues.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joods_Historisch_Museum",
+      "articleTitle": "Joods Historisch Museum",
+      "sourceLanguage": "en",
+      "sourceQuote": "The Joods Museum opened its doors on 24 February 1932 and was initially housed at the Waag (Weighing House) on Nieuwmarkt square. Following the Nazi occupation of the Netherlands in World War II, the museum was forced to close and much of the collection was lost. | In 1987, it moved to a new location, occupying four former synagogues",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Joods Museum (Dutch pronunciation: [ˌjoːts ɦɪsˈtoːris myˈzeːjʏm]; English: Jewish Museum), part of the Jewish Cultural Quarter, is a museum in Amsterdam dedicated to Jewish history, culture and religion, in the Netherlands and worldwide."
+    },
+    {
+      "id": "extract_landmarks_25101431",
+      "name": "Rembrandt House",
+      "text": "Rembrandt bought this house in 1639 for thirteen thousand guilders and lived and worked here until it was auctioned in 1658. Its rooms were refurnished from the inventory of his bankruptcy.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rembrandt_House_Museum",
+      "articleTitle": "Rembrandt House Museum",
+      "sourceLanguage": "en",
+      "sourceQuote": "Rembrandt bought it on 5 January 1639 for thirteen thousand guilders. After his bankruptcy it was auctioned in 1658 | Between 1639 and 1658, the house was occupied by the Dutch painter Rembrandt van Rijn, who also had his studio and art dealership there. | The building was redesigned in the 20th century on the basis of the inventory that was drawn up during Rembrandt's bankruptcy in 1656.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Rembrandt House Museum (Dutch: Museum Het Rembrandthuis) is a museum located in a former house in the Jodenbreestraat, in the center of Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_1701367153",
+      "name": "Plein Theater",
+      "text": "Amsterdammers started it in 1982 as a neighbourhood theatre and café in the empty canteen of the former Amstel brewery. Renamed Oostblok in 2015, it took back its old name in 2019.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Pleintheater",
+      "articleTitle": "Pleintheater",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Een groep Amsterdammers startte in 1982 een buurttheater op met een eetcafé, dit in een leegstaande bedrijfskantine van de voormalige Amstelbrouwerij. | In 2015 werd Pleintheater omgedoopt tot Oostblok, maar kreeg in maart 2019 weer de originele naam terug.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The PleinTheater in Amsterdam-Oost is a stage for small-scale theatre, dance, contemporary classical music, youth theatre and neighbourhood activities."
+    },
+    {
+      "id": "extract_landmarks_1774408670",
+      "name": "Amsterdam Memorial to the Canadian Liberators",
+      "text": "In May 1945 a thousand Canadians entered Amsterdam along the Apollolaan, cheered by about half a million people. Jan de Baat's steel pennant here was unveiled in 1980, when Canadians rode the same route again.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Amsterdam_dankt_zijn_Canadezen",
+      "articleTitle": "Amsterdam dankt zijn Canadezen",
+      "sourceLanguage": "nl",
+      "sourceQuote": "8 mei 1945 | Via de Berlagebrug, de Apollolaan, de Van Baerlestraat, het Leidseplein en het Singel trokken in 1945 duizend Canadezen Amsterdam binnen en gingen naar de Dam. Ongeveer een half miljoen Amsterdammers juichten hen toe. | Op 5 mei 1980 trokken Canadezen over dezelfde route als in 1945 opnieuw Amsterdam binnen. | Het monument is gemaakt door Jan de Baat (1921-2010) en omvat een stalen wimpel die uit de grond rijst in een grasveld.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Amsterdam dankt zijn Canadezen is a monument in the Canadezenplantsoen, called the Apollolaan before 2020, in Amsterdam, opposite the Apollohal between the Stadionweg and the Bernard Zweerskade."
+    },
+    {
+      "id": "extract_landmarks_1164156962",
+      "name": "Cat Cabinet",
+      "text": "Bob Meijer founded the museum in 1990 in memory of his red tomcat, John Pierpont Morgan. Its 1667 house on the Golden Bend was a filming location for Ocean's Twelve.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/KattenKabinet",
+      "articleTitle": "KattenKabinet",
+      "sourceLanguage": "en",
+      "sourceQuote": "in 1990 the museum was founded by Bob Meijer in memory of his red tomcat John Pierpont Morgan | were built in 1667 | in the grand Gouden Bocht (\"Golden Bend\") of this canal | The museum served as filming location for Ocean's Twelve in 2004.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The KattenKabinet (\"Cat Cabinet\") is an art museum in Amsterdam devoted to works depicting cats."
+    },
+    {
+      "id": "extract_landmarks_1226660136",
+      "name": "Martin Luther King",
+      "text": "Tired of waiting for permission, artist Airco Caravan installed this bronze of King herself on his birthday, 15 January 2020. The city approved it a few months later.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Beeld_van_Martin_Luther_King",
+      "articleTitle": "Beeld van Martin Luther King",
+      "sourceLanguage": "nl",
+      "sourceQuote": "De kunstenaar was het wachten beu en plaatste op eigen initiatief op 15 januari 2020 (de geboortedag van King) een groter, bronzen beeld van King. | De plaatsing van het beeld is enkele maanden later alsnog goedgekeurd door de gemeente",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Image of Martin Luther King is an artistic work of art in Amsterdam-Zuid."
+    },
+    {
+      "id": "extract_landmarks_826462719",
+      "name": "Molen van Sloten",
+      "text": "The mill was built in 1991 around an 1847 mill body brought from the Watergraafsmeer. It helps drain the western garden cities and is open to visitors almost every day.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Molen_van_Sloten",
+      "articleTitle": "Molen van Sloten",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Deze molen is gebouwd in 1991 met gebruikmaking van een uit 1847 daterende molenromp afkomstig uit de Watergraafsmeer | zorgt samen met het Akergemaal voor de bemaling van de Westelijke Tuinsteden | De Molen van Sloten is een van de weinige in Holland die (bijna) iedere dag voor publiek geopend is.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Molen van Sloten is a polder mill in the village of Sloten near Amsterdam. It is an oak-wooden, thatched octagonal tower mill on a stone base."
+    },
+    {
+      "id": "extract_landmarks_1327725947",
+      "name": "Amstel Academie",
+      "text": "Founded in 1961 as the nursing school of the VU hospital, it took the name Amstel Academie in 2004. It trains staff for nearly all the region's care institutions.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Amstel_Academie",
+      "articleTitle": "Amstel Academie",
+      "sourceLanguage": "nl",
+      "sourceQuote": "De Amstel Academie is in 1961 opgericht als zogenaamde verpleegstersschool | dat het toenmalig Ziekenhuis der Vrije Universiteit haar eigen verpleegkundigen zou opleiden | In 2004 kreeg het instituut zijn uiteindelijke naam: Amstel Academie. | De Amstel Academie leidt op voor bijna alle zorginstellingen in de regio",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Amstel Academie is a Dutch academy that specializes in training in the medical sector. The Amstel Academie is located on the campus of the Vrije Universiteit in Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_829880055",
+      "name": "Torenfort aan de Ossenmarkt",
+      "text": "Completed in 1861 for the New Dutch Water Line, this round brick tower fort has walls about 1.8 metres thick. Fully manned, it housed 232 men.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Torenfort_aan_de_Ossenmarkt",
+      "articleTitle": "Torenfort aan de Ossenmarkt",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het fort aan de oostkant van de vestingstad Weesp werd in 1861 voltooid en maakte met Weesp deel uit van de Nieuwe Hollandse Waterlinie. | De muren zijn ongeveer 1,8 meter dik. | Bij volledige bezetting bood het fort onderdak aan 232 man",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Torenfort aan de Ossenmarkt is a tower fort in Weesp in the province of North Holland."
+    },
+    {
+      "id": "extract_landmarks_34585838",
+      "name": "Sloterkerk",
+      "text": "Rembrandt drew and etched the earlier church on this site, and his granddaughter Titia van Rijn married in it in 1686. The present church dates from 1861.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Sloterkerk",
+      "articleTitle": "Sloterkerk",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Rembrandt heeft deze derde kerk in etsen en tekeningen vastgelegd | De kleindochter van Rembrandt, Titia van Rijn, is op 27 juni 1686 in deze kerk getrouwd | In 1861 werd de zaalkerk, een Waterstaatskerk naar ontwerp van P.J. Hamer, in gebruik genomen.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Sloterkerk is a Protestant church in Sloten, North Holland."
+    },
+    {
+      "id": "extract_landmarks_2037503288",
+      "name": "Ketelhuis",
+      "text": "Started in 1999 as a temporary cinema at the Westergasfabriek, Het Ketelhuis nearly went bankrupt several times before it could stay. It reopened with three screens in 2006.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Ketelhuis",
+      "articleTitle": "Het Ketelhuis",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het Ketelhuis is een Nederlands filmtheater dat sinds 1999 gevestigd is in cultuurpark Westergasfabriek in Amsterdam. | er voor drie jaar een tijdelijke bioscoop in te richten | Na enkele roerige jaren waarin Het Ketelhuis meerdere keren bijna failliet ging, kreeg het na drie jaar toestemming om zich definitief te vestigen in cultuurpark Westergasfabriek. | Op 13 september 2006 ging het vernieuwde Ketelhuis met drie zalen open.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Het Ketelhuis is a Dutch film theater that has been located in the Westergasfabriek cultural park in Amsterdam since 1999. Dutch films, European arthouse films, documentaries and family films are screened."
+    },
+    {
+      "id": "extract_landmarks_1122909064",
+      "name": "Oudemanhuispoort",
+      "text": "Built around 1601 as an almshouse for old men and women, it now houses the University of Amsterdam's humanities faculty. Eighteen stalls selling gold, silver and books opened in its passage in 1757.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+      "articleTitle": "Oudemanhuispoort",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Omstreeks 1601 verrees dit complex als Oudemannen- en vrouwengasthuis | de faculteit der geesteswetenschappen is er gevestigd | In 1757 werden 18 nieuw gebouwde 'kassen' in de doorgang geopend, te koop waren 'goud, zilver, boeken, galanteryen en Neurenburgsche waaren'.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Oudemanhuispoort (often abbreviated as: OMHP) is a complex of buildings in Amsterdam, between the Spui and the Waterlooplein. It is one of the main locations of the University of Amsterdam, the faculty of humanities is located there."
+    },
+    {
+      "id": "extract_landmarks_1917401076",
+      "name": "Obrechtkerk",
+      "text": "Joseph Cuypers and Jan Stuyt designed this Romanesque Revival basilica, built between 1908 and 1911. On its tower clock the Roman numerals 9 and 11 are swapped.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Obrechtkerk",
+      "articleTitle": "Obrechtkerk",
+      "sourceLanguage": "en",
+      "sourceQuote": "This Romanesque Revival cruciform basilica was built between 1908 and 1911. It was designed by Joseph Cuypers and Jan Stuyt. | On the tower clock the Roman numerals 9 and 11 are reversed.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Obrechtkerk (Dutch: Kerk van Onze Lieve Vrouw van de Allerheiligste Rozenkrans) (Church of Our Lady of the Most Holy Rosary) is the common name for the Roman Catholic church located on the Jacob Obrechtstraat, nearby the Vondelpark in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_155371643",
+      "name": "P.W. Janssen",
+      "text": "Bart van Hove's bronze bust of Peter Wilhelm Janssen, entrepreneur, philanthropist and co-founder of the Deli Company, was unveiled in 1908. It stands four metres tall on a Norwegian granite plinth.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Monument_Peter_Wilhelm_Janssen",
+      "articleTitle": "Monument Peter Wilhelm Janssen",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het beeld gemaakt door Bart van Hove werd 29 mei 1908 onthuld | Peter Wilhelm Janssen, ondernemer, filantroop en medeoprichter van de Deli Maatschappij | Het gedenkteken bestaat uit een taps toelopende sokkel van Noors graniet, met daarop het bronzen borstbeeld van Janssen. Het heeft een totale hoogte van vier meter.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Monument Peter Wilhelm Janssen is a monument on Bellamyplein in Amsterdam-West."
+    },
+    {
+      "id": "extract_landmarks_443712268",
+      "name": "Anton de Kom",
+      "text": "Jikke van Loon's bronze of the resistance hero and writer Anton de Kom was unveiled in 2006, chosen by local residents and a jury. Its plinth quotes his poem: I go to fight; only after victory will I return.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Monument_voor_Anton_de_Kom",
+      "articleTitle": "Monument voor Anton de Kom",
+      "sourceLanguage": "nl",
+      "sourceQuote": "vrijheidsstrijder en verzetsman Anton de Kom | In 2005 kozen de bewoners en een jury voor het ontwerp van Van Loon | Het bronzen beeld werd op 24 april 2006 onthuld. | Strijden ga ik! Eerst na d’overwinning kom ik terug. | De laatste regel is afkomstig uit het gedicht Vaarwel, Akoeba vaarwel! van De Kom.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Monument voor Anton de Kom is an artwork in Amsterdam-Zuidoost."
+    },
+    {
+      "id": "extract_landmarks_374802612",
+      "name": "Bellevue",
+      "text": "The last game of the 1935 World Chess Championship was played here; by accepting a draw, Max Euwe became world champion. The building dates from about 1840.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Theater_Bellevue",
+      "articleTitle": "Theater Bellevue",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Op 15 december 1935 vond de laatste partij van het Wereldkampioenschap schaken 1935 plaats in Theater Bellevue. | Euwe accepteerde het aanbod en kroonde zich daarmee tot de nieuwe wereldkampioen schaken. | Het oorspronkelijke gebouw aan de Leidsekade dateert uit circa 1840",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Theater Bellevue is a theater with three rooms on Leidsekade in Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_1306682228",
+      "name": "Meervaart Theater",
+      "text": "Open since 1977 and named after its street, Meer en Vaart, the centre is where the Cinekid children's film festival began in 1986.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Meervaart",
+      "articleTitle": "Meervaart",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het centrum bestaat sinds 1977 en is vernoemd naar de straat Meer en Vaart, waaraan het is gelegen. | In 1986 begon hier het kinderfilmfestival Cinekid.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Meervaart is a theater and a convention center in Amsterdam Nieuw-West. Meervaart is a contemporary metropolitan theater where audiences and creators with diverse backgrounds, taste preferences and ambitions come into contact with each other."
+    },
+    {
+      "id": "extract_landmarks_634569928",
+      "name": "Elthetokerk",
+      "text": "Cornelis Kruyswijk's Amsterdam School church opened here in 1929 in the presence of Queen Wilhelmina. It was closed and demolished in 1992.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Elthetokerk",
+      "articleTitle": "Elthetokerk",
+      "sourceLanguage": "nl",
+      "sourceQuote": "De kerk is gebouwd in 1929 naar ontwerp van Cornelis Kruyswijk. De kerk is dat jaar in het bijzijn van koningin Wilhelmina in gebruik genomen. Het gebouw werd in 1992 gesloten en gesloopt. | in de trant van de Amsterdamse School",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The former Elthetokerk was a Reformed church building at the corner of Insulindeweg and Kramatweg in the Indische Buurt in Amsterdam-Oost."
+    },
+    {
+      "id": "extract_landmarks_2001162595",
+      "name": "Artis",
+      "text": "Founded in 1838 by three zoology enthusiasts, it is the oldest zoo in the Netherlands. The last quagga in captivity died here in 1883; nobody realised it was the last one until years later.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Artis_(zoo)",
+      "articleTitle": "Artis (zoo)",
+      "sourceLanguage": "en",
+      "sourceQuote": "It is the oldest zoo in the Netherlands | The zoo was founded in 1838 by three zoology enthusiasts | The last quagga in captivity died at Artis on 12 August 1883, because all zebras were referred to as quagga, nobody realized this was the last quagga alive until years later.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Natura Artis Magistra (Latin for \"Nature is the teacher of art\"), commonly known just as Artis (Dutch pronunciation: [ˈɑrtɪs]), is a zoo and botanical garden in the centre of Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_1225009678",
+      "name": "Academie van Bouwkunst",
+      "text": "Set up in 1908, it ended 40 years in which Amsterdam had no architecture school. Its teachers are practising designers, and students must work in the field while they study.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Academy_of_Architecture_(Amsterdam)",
+      "articleTitle": "Academy of Architecture (Amsterdam)",
+      "sourceLanguage": "en",
+      "sourceQuote": "In 1908 the Academy of Architecture Amsterdam was set up | At that time Amsterdam had been lacking an architecture school for 40 years already | The teachers at the Academy are practising designers | the requirement that students work in the field during their studies",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "The Academy of Architecture of Amsterdam (Dutch: Academie van Bouwkunst Amsterdam) is a Dutch postgraduate school in architecture located in Amsterdam. This school is the architecture division of the Amsterdam University of the Arts, the city's vocational university of arts."
+    },
+    {
+      "id": "extract_landmarks_1713342225",
+      "name": "Zuiderkerk Tower",
+      "text": "Completed in 1614, the 68-metre tower belongs to the Zuiderkerk, designed by Hendrick de Keyser. Its largest bell, cast in 1511, is the oldest bell in Amsterdam.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderkerkstoren_(Amsterdam)",
+      "articleTitle": "Zuiderkerkstoren (Amsterdam)",
+      "sourceLanguage": "nl",
+      "sourceQuote": "De Zuidertoren kwam pas in 1614 gereed en is 68 meter hoog. | Het ontwerp in renaissancestijl is van de Amsterdamse architect Hendrick Cornelisz de Keyser | werd al in 1511 gegoten door Willem en Jasper Moer | Deze oudste luidklok van Amsterdam",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Zuidertoren is the tower of the Zuiderkerk in Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_564717297",
+      "name": "De Hallen",
+      "text": "Built in 1902-1905 as a tram depot, it served the city transport company until 1996 and is now a cultural centre. One of its cinemas has the interior of the old Cinema Parisien.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/De_Hallen_(Amsterdam)",
+      "articleTitle": "De Hallen (Amsterdam)",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het centrum is gevestigd in de voormalige Remise Tollensstraat van de Gemeentetram Amsterdam, gebouwd in 1902-'05 en is tot 1996 in gebruik geweest bij het Gemeentevervoerbedrijf Amsterdam | In de Filmhallen is een zaal is ingericht met het interieur van de vroegere Cinema Parisien",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Hallen is a cultural center in the Kinkerbuurt in Amsterdam-West, with more than two million visitors per year."
+    },
+    {
+      "id": "extract_landmarks_1428677427",
+      "name": "Rialto",
+      "text": "Jan van Schaik designed the building in 1920 for film enthusiast Anton Pieter du Mée. It hosts the biennial CinemAsia film festival.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rialto_(theater)",
+      "articleTitle": "Rialto (theater)",
+      "sourceLanguage": "en",
+      "sourceQuote": "The building that Rialto occupies was built in 1920 and was designed by the architect Jan van Schaik commissioned by film enthusiast Anton Pieter du Mée. | The biennial CinemAsia film festival is also held there.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Rialto is a cinema at Ceintuurbaan in the De Pijp neighborhood in Amsterdam."
+    },
+    {
+      "id": "extract_landmarks_402613958",
+      "name": "Groote Museum",
+      "text": "It fills the first floor of Artis's main building of 1850-1855, home of the Zoological Museum until 1947. Queen Máxima reopened it in 2022 after a ten-year restoration.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Groote_Museum_(Artis)",
+      "articleTitle": "Groote Museum (Artis)",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het is gevestigd op de eerste verdieping van het voormalig hoofdgebouw van Artis | dat tussen 1850 en 1855 werd gebouwd. Oorspronkelijk fungeerde deze ruimte als het Zoölogisch Museum Amsterdam | In 1947 werd het museum gesloten | tussen 2012 en 2022 een grondige restauratie | Op 10 mei 2022 werd het museum officieel heropend door Koningin Máxima.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Groote Museum is a museum on the Plantage Middenlaan in Amsterdam exploring the connections between people, animals, plants, microbes and the earth."
+    },
+    {
+      "id": "extract_landmarks_329419304",
+      "name": "Het Nieuwe Verbond",
+      "text": "M.J. Granpré Molière designed this church, consecrated in 1957, with a tower that was never built because the parish could not afford it.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Onze-Lieve-Vrouw-van-Lourdeskerk_(Amsterdam)",
+      "articleTitle": "Onze-Lieve-Vrouw-van-Lourdeskerk (Amsterdam)",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Hij werd in 1954/1955 ontworpen door de architect M.J. Granpré Molière. | Op 19 december 1957 wijdde Mgr. J.P. Huibers de kerk in. | Granpré Molière had aanvankelijk ook een kerktoren ingetekend; echter, de financiële situatie van de parochie was onvoldoende om nog extra circa 100.000 gulden vrij te maken. | maar de toren zou er nooit komen",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-09-01",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "The Onze-Lieve-Vrouw-van-Lourdes church, today the Church of Het Nieuwe Verbond, is a Roman Catholic church in the garden city Slotermeer in Amsterdam Nieuw-West."
+    },
+    {
+      "id": "extract_landmarks_1627709377",
+      "name": "Multatuli",
+      "text": "Hans Bayens's bronze bust of Multatuli has stood on this bridge since 1987. Multatuli, Latin for \"I have suffered much\", was the pen name of Eduard Douwes Dekker, whose novel Max Havelaar (1860) denounced colonial abuses in the Dutch East Indies.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Torensluis",
+      "articleTitle": "Torensluis",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Op de brug bevindt zich sinds 1987 een bronzen borstbeeld van Multatuli (Eduard Douwes Dekker), gemaakt door Hans Bayens",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Public sculpture in Amsterdam, the Netherlands.",
+      "extraSources": [
+        {
+          "sourceUrl": "https://en.wikipedia.org/wiki/Multatuli",
+          "articleTitle": "Multatuli",
+          "sourceLanguage": "en",
+          "sourceQuote": "Eduard Douwes Dekker (2 March 1820 – 19 February 1887), better known by his pen name Multatuli (from Latin multa tulī, \"I have suffered much\"), was a Dutch writer best known for his satirical novel Max Havelaar (1860), which denounced the abuses of colonialism in the Dutch East Indies (today's Indonesia)."
+        }
+      ]
+    },
+    {
+      "id": "extract_landmarks_1683945502",
+      "name": "De Knoop",
+      "text": "André Volten's two interlocking steel links stand on two plinths, one on land and one in the IJ. No Dutch firm would take on the stainless-steel construction, so Volten had to turn to Germany.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/De_knoop",
+      "articleTitle": "De knoop",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Twee in elkaar verstrengelde schakels staan op twee sokkels waarvan er een op land staat (Amsterdam-Noord) en één in het water (IJ). | Daarbij bleek dat geen Nederlandse firma zich aan die roestvaste stalen constructie wilde wagen; Volten moest uitwijken naar Duitsland.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Sculpture by André Volten in Amsterdam, the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1230133891",
+      "name": "Samen Spelen Samen Leven",
+      "text": "In November 1941 the German occupiers turned this playground into a market for Jews, the only place they could still buy and sell. Truus Menger-Oversteegen's 1986 group shows two children playing and, behind a wall, two Jewish children looking on.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Kindermonument_Markt_voor_Joden",
+      "articleTitle": "Kindermonument Markt voor Joden",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Op 3 november 1941 vorderde de Duitse bezetter de speeltuin. Zij werd ingericht voor een Markt voor Joden; zij mochten alleen hier nog kopen en verkopen. | Het betreft een driedelige beeldengroep van Truus Menger-Oversteegen dat sinds 1986 staat opgesteld aan de ingang van de speeltuin aan de Gaaspstraat. | Het eerste deel laat twee spelende kinderen van diverse komaf in brons zien; vervolgens staat er een schuin aflopende marmeren muur, waarachter twee niet spelende joodse kinderen, beteuterd en elkaar troostend, staan toe te kijken, ook in brons.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "War memorial in Amsterdam, the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1865435867",
+      "name": "Kunstenaarsverzet",
+      "text": "Carel Kneulman's bronze, unveiled on 4 May 1973, honours the artist and resistance fighter Gerrit van der Veen and the artists' resistance. Kneulman called it a barricade lying down, an exploded grenade, a fallen angel.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Monument_voor_het_kunstenaarsverzet_1940-1945",
+      "articleTitle": "Monument voor het kunstenaarsverzet 1940-1945",
+      "sourceLanguage": "nl",
+      "sourceQuote": "over het oprichten van een gedenkteken voor kunstenaar en verzetsman Gerrit van der Veen in het bijzonder en het kunstenaarsverzet tijdens de Tweede Wereldoorlog in het algemeen. | Aan kunstenaar Carel Kneulman werd de opdracht verstrekt | Op 4 mei 1973 was het dan zover. | Kneulman omschreef het bronzen beeld in 1973 volgens Braat als een liggende barricade, een ontplofte granaat, een gevallen engel of Icarus",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Monument and work of art in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1655376729",
+      "name": "Zigeunermonument - Hel en Vuur",
+      "text": "Heleen Levano's bronze family fleeing a blazing fire was, after a boulder in Vledder, the world's first monument to the Roma and Sinti. They gather here every 1 August: on that night in 1944, 5,000 were gassed at Auschwitz.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Zigeunermonument_Hel_en_vuur",
+      "articleTitle": "Zigeunermonument Hel en vuur",
+      "sourceLanguage": "nl",
+      "sourceQuote": "van een man, vrouw en twee kinderen die vluchten voor een oplaaiend vuur. | De maker is beeldhouwer Heleen Levano. | Het was na de zwerfkei in Vledder het eerste monument ter wereld voor Roma en Sinti. | Sinti en Roma houden jaarlijks op 1 augustus een herdenkingsbijeenkomst bij het monument. In de nacht van 31 juli op 1 augustus 1944 zijn vijfduizend Roma en Sinti (mannen, vrouwen en kinderen) in Auschwitz vergast.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "War memorial in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1336248768",
+      "name": "Waterdraagster",
+      "text": "Leo Braat's bronze water carrier, flanked by two spouting fish, was made for the rim of a paddling pool opened here in 1954. Stolen in 1977, she was recast from an identical statue in Arnhem and returned in 1981.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Waterdraagster_met_vissen",
+      "articleTitle": "Waterdraagster met vissen",
+      "sourceLanguage": "nl",
+      "sourceQuote": "In de nazomer van 1954 konden de buurtkinderen spartelen in een rond pierenbad. Voor op de rand van dat pierenbad ontwierp Leo Braat een drieluik. | bestaat uit een bronzen vrouw in lang gewaad die een waterkruik draagt. Zij wordt geflankeerd door twee visfiguren (34 cm hoog); vrouw en vissen zijn uitgevoerd met spuwers. | Het centrale beeld werd in 1977 ontvreemd. Aan de hand van een gelijk beeld in Arnhem werd onder initiatief van medekunstenaar Harry Visser (Beroepsvereniging van Beeldende Kunstenaars) een nieuw afgietsel gemaakt en in 1981 geplaatst.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Sculpture in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_746892406",
+      "name": "Huize Frankendael",
+      "text": "Of the forty-odd farms and country houses laid out in the Watergraafsmeer, only Frankendael survives, named after Frankenthal in Germany. City architect Ben Merkelbach moved into the dilapidated house in 1957 and restored it.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Frankendael",
+      "articleTitle": "Frankendael",
+      "sourceLanguage": "nl",
+      "sourceQuote": "In de loop van de zeventiende en achttiende eeuw werden er ruim veertig hofsteden en buitenplaatsen aangelegd, waarvan alleen Frankendael nog bestaat. | De bouwer noemde het landgoed naar de Duitse plaats Frankenthal. | vernoemd naar de voormalig stadsarchitect van Amsterdam Ben Merkelbach. Hij kwam op uitnodiging van de gemeente in 1957 in het vervallen huis wonen, restaureerde en knapte het op.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "House in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1021577957",
+      "name": "Pathé Arena",
+      "text": "Once the largest cinema in the Netherlands by screens and seats, it has 14 screens on two floors. The largest, with 480 seats, shows IMAX on a 200 m² screen, and lit stairs flank the escalator.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Pathé_Arena",
+      "articleTitle": "Pathé Arena",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Deze vestiging was ooit qua aantal zalen en stoelen de grootste bioscoop in Nederland | De bioscoop bevat 14 zalen verdeeld over 2 etages met een totale capaciteit van 3246 stoelen. De grootste zaal (14) heeft 480 stoelen en wordt gebruikt voor IMAX-voorstellingen; het scherm in deze zaal heeft een grootte van 200 m². | Kenmerkend aan de bioscoop zijn de lichtgevende trappen aan weerszijden van de roltrap.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Cinema in Amsterdam, Netherlands."
+    },
+    {
+      "id": "extract_landmarks_718756081",
+      "name": "Koningin Emma",
+      "text": "Lambertus Zijl's statue of Queen Emma won a competition in The Hague, which put up another design instead; it was unveiled here in 1938. Vandals knocked off its head and shoulders in 1987; the head turned up in the bushes.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Monument_voor_koningin_Emma_(Amsterdam)",
+      "articleTitle": "Monument voor koningin Emma (Amsterdam)",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Lambertus Zijl ontwierp het beeld aanvankelijk als inzending voor een prijsvraag van de gemeente Den Haag. Hoewel Zijl de wedstrijd won, werd het beeld niet in Den Haag gerealiseerd. Daar werd namelijk het monument ontworpen door Toon Dupuis geplaatst. | en werd onthuld in 1938. | In september 1987 werd het beeld door vandalen ontdaan van hoofd en schouders. Spoedig nadat het vorstelijk hoofd in de bosjes werd aangetroffen, werd het beeld hersteld.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Statue and memorial in Amsterdam, the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_1897367071",
+      "name": "Anthony Winkler Prins",
+      "text": "André Volten's column of 108 stainless-steel discs was Elsevier's gift to the city in 1970, for a hundred years of the Winkler Prins encyclopedia. Locals soon called it the knakenpilaar; Volten called it \"the thing\".",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Ter_herinnering_aan_Anthony_Winkler_Prins",
+      "articleTitle": "Ter herinnering aan Anthony Winkler Prins",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het kunstwerk is ontworpen door André Volten, die het in opdracht van de Uitgeverij N.V. Elsevier heeft gemaakt. Die schonk het in 1970 aan de stad Amsterdam ter gelegenheid van honderd jaar Winkler Prins Encyclopedie. | werd in de volksmond al snel de naam knakenpilaar. | Volten noemde het zelf \"het ding\" | Het monument bestaat uit 54 grote en 54 kleine roestvrijstalen schijven",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "extract_landmarks_1835678575",
+      "name": "'t Brinkie",
+      "text": "A path and, through it, a bridge nearby are named after this children's farm. No other name in Amsterdam comes from a children's farm.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Brinkiebrug",
+      "articleTitle": "Brinkiebrug",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Dat pad is vernoemd naar kinderboerderij 't Brinkie, al een unieke vernoeming in Amsterdam. De brug is indirect ook vernoemd naar die kinderboerderij; in Amsterdam is verder geen vernoeming naar een kinderboerderij.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "extract_landmarks_1294795881",
+      "name": "Three-climate Greenhouse",
+      "text": "The Hortus Botanicus opened this greenhouse in 1993, six years after supporters saved the garden from bankruptcy. The city founded the garden in 1638 as a herb garden for doctors and apothecaries.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Hortus_Botanicus_Amsterdam",
+      "articleTitle": "Hortus Botanicus Amsterdam",
+      "sourceLanguage": "nl",
+      "sourceQuote": "In 1993 is de Drieklimatenkas geopend.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Building in Amsterdam, the Netherlands.",
+      "extraSources": [
+        {
+          "sourceUrl": "https://en.wikipedia.org/wiki/Hortus_Botanicus_(Amsterdam)",
+          "articleTitle": "Hortus Botanicus (Amsterdam)",
+          "sourceLanguage": "en",
+          "sourceQuote": "Amsterdam City Council founded the Hortus Botanicus (initially named the Hortus Medicus) in 1638 to serve as a herbal garden for doctors and apothecaries | In 1987, the garden almost went bankrupt when the University of Amsterdam suddenly stopped paying its expenses, but a community of individual supporters prevented its closure."
+        }
+      ]
+    },
+    {
+      "id": "extract_landmarks_1741145753",
+      "name": "Westerman Monument",
+      "text": "Bart van Hove made this monument to Gerardus Frederik Westerman, one of the three founders of Artis and the zoo's first director. Westerman also co-founded the Arti et Amicitiae society and the Amsterdam omnibus company.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bart_van_Hove",
+      "articleTitle": "Bart van Hove",
+      "sourceLanguage": "en",
+      "sourceQuote": "he made the monument to G.F. Westerman, the first director of Artis.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Memorial by Bart van Hove, Artis, Amsterdam, the Netherlands",
+      "extraSources": [
+        {
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Gerardus_Frederik_Westerman",
+          "articleTitle": "Gerardus Frederik Westerman",
+          "sourceLanguage": "nl",
+          "sourceQuote": "Gerardus Frederik Westerman (Rotterdam, 8 december 1807 - Amsterdam, 9 mei 1890) was een van de drie oprichters van het Koninklijk Zoölogisch Genootschap Natura Artis Magistra. | Hij was medeoprichter van de sociëteit Arti et Amicitiae (1839), de Amsterdamsche Omnibus Maatschappij (1875) en de Panorama Maatschappij."
+        }
+      ]
+    },
+    {
+      "id": "extract_landmarks_476699494",
+      "name": "Bevrijde vogel",
+      "text": "Siep van den Berg made this freed-bird monument in 1980. A smith's son who began as a house painter, he married Fie, daughter of Hendrik Werkman, who had urged him to keep painting.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Siep_van_den_Berg",
+      "articleTitle": "Siep van den Berg",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Monument 'beeld van de bevrijde vogel' (1980) | Van den Berg bezocht als zoon van een smid de ambachtsschool. Hij werd huisschilder, maar maakte ook schilderijen. | In 1937 ontdekte Hendrik Werkman zijn schilderwerk en stimuleerde hem daarmee verder te gaan. | In 1943 trouwde hij met Fie, de dochter van Hendrik Werkman.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "War memorial in Amsterdam, the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_907505606",
+      "name": "Reina Prinsen Geerligs",
+      "text": "Kees Otten designed this plaque for Reina Prinsen Geerligs, a young writer in the resistance group CS-6. Arrested in July 1943, she was shot at Sachsenhausen that November, aged 21.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Kees_Otten_(beeldhouwer)",
+      "articleTitle": "Kees Otten (beeldhouwer)",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Otten ontwierp ook een plaquette ter nagedachtenis van Reina Prinsen Geerligs",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "War memorial in Amsterdam, the Netherlands.",
+      "extraSources": [
+        {
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Reina_Prinsen_Geerligs",
+          "articleTitle": "Reina Prinsen Geerligs",
+          "sourceLanguage": "nl",
+          "sourceQuote": "Reina Prinsen Geerligs (Semarang, 7 oktober 1922 – Sachsenhausen, 24 november 1943) was een Nederlands schrijfster en verzetsstrijdster tijdens de Tweede Wereldoorlog. | Als beginnend schrijfster maakte ze tijdens de Tweede Wereldoorlog deel uit van de links-radicale verzetsgroep CS-6 | werd Reina Prinsen Geerligs op 23 juli 1943 gearresteerd | Prinsen Geerligs is in het concentratiekamp Sachsenhausen in Oranienburg gefusilleerd."
+        }
+      ]
+    },
+    {
+      "id": "extract_landmarks_728505227",
+      "name": "Wind phone Hoftuin",
+      "text": "Like the first one in Ōtsuchi, Japan, this wind phone is an unconnected telephone for one-way conversations with loved ones who have died. The Japanese original has had over 30,000 visitors.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Wind_phone",
+      "articleTitle": "Wind phone",
+      "sourceLanguage": "en",
+      "sourceQuote": "is an unconnected telephone booth in Ōtsuchi, Iwate Prefecture, Japan, where visitors can hold one-way conversations with deceased loved ones. | The wind phone has since received over 30,000 visitors. | Several replicas of the Ōtsuchi wind phone have been built around the world.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences)",
+      "replaces": "Wind phone in Amsterdam, the Netherlands."
+    },
+    {
+      "id": "extract_landmarks_82936853",
+      "name": "Levend Paardenmuseum",
+      "text": "This living horse museum is housed in the Hollandsche Manege, the oldest riding school in the Netherlands. Its 1882 building, by the Concertgebouw's architect Van Gendt, was inspired by the Spanish Riding School in Vienna.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hollandsche_Manege",
+      "articleTitle": "Hollandsche Manege",
+      "sourceLanguage": "en",
+      "sourceQuote": "Part of the building is utilised by charitable foundation ‘Het Levend Paardenmuseum’ | The current building, inspired by the Spanish Riding School in Vienna, was constructed in 1882. | The new building was designed by the then-popular architect A.L. van Gendt, who also designed the Concertgebouw concert hall",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "Museum in Netherlands.",
+      "extraSources": [
+        {
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Hollandsche_Manege",
+          "articleTitle": "Hollandsche Manege",
+          "sourceLanguage": "nl",
+          "sourceQuote": "De Hollandsche Manege in Amsterdam is de oudste rijschool van Nederland."
+        }
+      ]
+    },
+    {
+      "id": "osm_node_3975877474",
+      "name": "Het Lieverdje (Spui)",
+      "text": "Carel Kneulman's little street urchin was unveiled in 1960, paid for by a cigarette maker. Robert Jasper Grootveld's anti-smoking happenings here in the 1960s gave rise to the Provo movement.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Lieverdje",
+      "articleTitle": "Het Lieverdje",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het beeld is gemaakt door de Amsterdamse beeldhouwer Carel Kneulman. | de beeldhouwer Carel Kneulman opdracht te geven voor een beeldje van een straatschoffie. | De sigarettenfabriek bleek bereid het project te financieren. Op 10 september 1960 werd het Lieverdje onthuld | In de jaren zestig werd het door de sigarettenfabriek gesponsorde beeldje het mikpunt en trefpunt van de \"anti-rookmagiër\" Robert Jasper Grootveld en zijn aanhang. | en zo ontstond rond het Lieverdje de beweging Provo. | In 1964 begon hij met theatrale redevoeringen tegen de tabaksindustrie. Die betitelde hij als happenings.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_way_175846077",
+      "name": "Spinoza statue (Zwanenburgwal)",
+      "text": "Nicolas Dings's Spinoza (2008) stands near where the philosopher was born. Parakeets and sparrows on his cloak stand for newcomers and locals; the granite icosahedron recalls his trade as a lens grinder.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Spinozamonument",
+      "articleTitle": "Spinozamonument",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het Spinozamonument (2008) is een kunstwerk in Amsterdam-Centrum. | Het beeld van Nicolas Dings kwam er dankzij de Stichting Spinoza Monument | Dat zijn halsbandparkieten en mussen, die symbool voor allochtonen en autochtonen staan, en rozen. | Er ligt naast het standbeeld een ruimtelijke figuur van graniet, een icosaëder of regelmatig twintigvlak, een verwijzing naar het originele beroep van Spinoza, lenzenslijper | dichtbij Vlooienburg, waar Spinoza is geboren.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_memorial_jewish_ww2_resistance",
+      "name": "Joods Verzetsmonument (Amstel 1)",
+      "text": "Unveiled in 1988, this black granite column carved with the stone tablets honours the Jewish resistance fighters killed in the Second World War. Since 1992 it has been the centre of the yearly Kristallnacht commemoration.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Joods_Verzetsmonument",
+      "articleTitle": "Joods Verzetsmonument",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het Monument Joods Verzet 1940-1945 is een monument in Amsterdam dat sinds 1988 | Het is opgericht ter herinnering aan alle joodse verzetsmensen die in de Tweede Wereldoorlog zijn omgekomen. | Het bestaat uit een metershoge zwarte granieten zuil met daarop afgebeeld de stenen tafelen. | Sinds 1992 is de locatie van het monument (bij het Amsterdamse stadhuis) de centrale plek voor de jaarlijkse Kristallnachtherdenking.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_artwork_538934266",
+      "name": "Figure decoupee (Picasso, Vondelpark)",
+      "text": "Picasso asked no fee for this seven-metre concrete bird, made by Carl Nesjar from his sketch for the park's centenary in 1965. His one condition: it must always stay on public display.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Figure_découpée",
+      "articleTitle": "Figure découpée",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het betonnen plastiek van circa 7 meter hoogte is uitgevoerd door de Noorse beeldhouwer Carl Nesjar, naar een schets van Picasso. | Het bijna tweedimensionale beeld werd geplaatst ter gelegenheid van het 100-jarig bestaan van het Vondelpark. | Picasso vroeg voor zijn inzending voor de tentoonstelling geen honorarium | Als extra eis stelde hij dat het beeld altijd openbaar tentoongesteld zou blijven.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)",
+      "extraSources": [
+        {
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Pablo_Picasso",
+          "articleTitle": "Pablo Picasso",
+          "sourceLanguage": "nl",
+          "sourceQuote": "In 1965 schonk hij zijn beeld Figure découpée aan de gemeente Amsterdam"
+        }
+      ]
+    },
+    {
+      "id": "osm_artwork_5653694042",
+      "name": "Teun de Jager (Vondelpark)",
+      "text": "Jan Bronner's almost abstract hunter, placed here around 1958, is Teun de Jager from Hildebrand's Camera Obscura. It was cast from plasters of his Haarlem Hildebrand monument, commissioned in 1914 and finished only in 1947.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Teun_de_Jager",
+      "articleTitle": "Teun de Jager",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het verzoek kwam al in 1914, maar Bronner had de beeldengroep pas in 1947 af | Het beeld refereert aan Hildebrands (Nicolaas Beets) bekendste boek Camera Obscura; een van de personages heet Teun De Jager. | Een bronzen exemplaar, gemaakt aan de hand van de genoemde afgietsels werd omstreeks 1958 in het Vondelpark geplaatst. Het betreft een haast abstract beeld. | Jan Bronner maakte in opdracht van de Haarlem het Hildebrandmonument. | Aan de hand van in 1950 gemaakte gipsen afgietsels",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_artwork_1704741755",
+      "name": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      "text": "Kees Verkade's Johnny Jordaan came first, in 1991, two years after the singer died; Tante Leen followed in 1994. By 2010 five statues of Jordaan musicians stood here, and the square was named after him.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Johnny_Jordaanplein",
+      "articleTitle": "Johnny Jordaanplein",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Na de dood van Johnny Jordaan in 1989 werd geld ingezameld voor een standbeeld. Bij de onthulling van het beeld van beeldhouwer Kees Verkade in 1991 | Tante Leen (onthuld in 1994, Verkade)) | Er staan vanaf 2010 dus vijf beelden van bekende Jordanese muzikanten: | omgedoopt tot het Johnny Jordaanplein",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_artwork_250624675",
+      "name": "Theo Thijssen monument (Lindengracht)",
+      "text": "Theo Thijssen (1879–1943) taught in Amsterdam schools for over twenty years. His best-known book, Kees de jongen (1923), about an imaginative boy called Kees, is set in the Jordaan.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen",
+      "articleTitle": "Theo Thijssen",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Theodorus Johannes (Do) Thijssen (Amsterdam, 16 juni 1879 - aldaar, 23 december 1943) was een Nederlands schrijver, onderwijzer, socialistisch politicus en esperantist. | Zijn bekendste boek is Kees de jongen (1923), dat in de Amsterdamse Jordaan speelt. | Na voltooiing van zijn opleiding was Thijssen van 1898 tot 1921 onderwijzer op diverse openbare lagere scholen in Amsterdam-Oost. | de fantasierijke jongen Kees",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_artwork_440673918",
+      "name": "Simon Carmiggelt bust (Weteringplantsoen)",
+      "text": "Kees Verkade's bust of the writer Simon Carmiggelt was unveiled in 1988, a year after his death. Its hollow plinth holds the 4,000 transfer slips sent in by the people who paid for it.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Buste_Simon_Carmiggelt",
+      "articleTitle": "Buste Simon Carmiggelt",
+      "sourceLanguage": "nl",
+      "sourceQuote": "In november 1987 overleed schrijver Simon Carmiggelt | Van Duinhoven schakelde de met hem bevriende kunstenaar Kees Verkade in. | Die sokkel is hol van binnen. Ze bevat in een zinken kistje de 4000 overschrijvingskaarten die na de oproep van Van Duinhoven binnenkwamen. | Het beeld werd in haar aanwezigheid op 25 oktober 1988 door burgemeester Ed van Thijn onthuld",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "osm_artwork_4370460330",
+      "name": "Kinderbrug: Girl with squirrels (Hildo Krop)",
+      "text": "Hildo Krop carved this girl with squirrels into a capstone of Piet Kramer's bridge. Her twin is a boy with rabbits; on a ten-metre pylon above, a child stands under a rearing horse.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Kindertjesbrug",
+      "articleTitle": "Kindertjesbrug",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het ontwerp van de brug was van Piet Kramer, die destijds veelvuldig samenwerkte met beeldhouwer Hildo Krop. | \"De onbevangenheid der mensen tegenover het leven\", \"Meisje met eekhoorns\" en \"Jongen met konijnen\" van Krop zijn te zien respectievelijk op een tien meter hoge pyloon en als twee dekstenen.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)",
+      "extraSources": [
+        {
+          "sourceUrl": "https://nl.wikipedia.org/wiki/De_onbevangenheid_der_mensen_tegenover_het_leven",
+          "articleTitle": "De onbevangenheid der mensen tegenover het leven",
+          "sourceLanguage": "nl",
+          "sourceQuote": "Het voetstuk draagt een steigerend paard met tussen de van de grond gelichte voorpoten een staand kind."
+        }
+      ]
+    },
+    {
+      "id": "osm_artwork_4370459609",
+      "name": "Kinderbrug: Boy with rabbits (Hildo Krop)",
+      "text": "Hildo Krop carved this boy with rabbits into a capstone of Piet Kramer's bridge. The child under the rearing horse on its ten-metre pylon was Hedda van Gennep, later a documentary maker.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Kindertjesbrug",
+      "articleTitle": "Kindertjesbrug",
+      "sourceLanguage": "nl",
+      "sourceQuote": "Het ontwerp van de brug was van Piet Kramer, die destijds veelvuldig samenwerkte met beeldhouwer Hildo Krop. | \"De onbevangenheid der mensen tegenover het leven\", \"Meisje met eekhoorns\" en \"Jongen met konijnen\" van Krop zijn te zien respectievelijk op een tien meter hoge pyloon en als twee dekstenen.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)",
+      "extraSources": [
+        {
+          "sourceUrl": "https://nl.wikipedia.org/wiki/De_onbevangenheid_der_mensen_tegenover_het_leven",
+          "articleTitle": "De onbevangenheid der mensen tegenover het leven",
+          "sourceLanguage": "nl",
+          "sourceQuote": "Het voetstuk draagt een steigerend paard met tussen de van de grond gelichte voorpoten een staand kind. Dat kind was Hedda van Gennep (1929-2017), later documentairemaakster"
+        }
+      ]
+    },
+    {
+      "id": "krijtberg",
+      "name": "De Krijtberg",
+      "text": "The Jesuits have served this spot since 1654, first in a hidden church in a house called Crijtberg. Alfred Tepe's neo-Gothic church of 1881-83 squeezes between canal houses, with a 31-metre vault and two stair towers.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/De_Krijtberg",
+      "articleTitle": "De Krijtberg",
+      "sourceLanguage": "nl",
+      "sourceQuote": "De Krijtberg is de opvolger van een schuilkerk die sinds 1654 was gevestigd in een huis met de naam Crijtberg en werd bediend door jezuïeten. | Met de bouw van de huidige kerk werd in 1881 begonnen. De neogotische kerk werd ontworpen door architect Alfred Tepe. | dit keer tussen de bestaande grachtenpanden in. | De inwendige hoogte van het gewelf bedraagt 31 meter. Omdat de kerk verder aan alle kanten was ingebouwd gaf Tepe de kerk een monumentale voorgevel met twee traptorens. In 1883 werd de kerk gewijd.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    },
+    {
+      "id": "lm-extract_landmarks_1632187034",
+      "name": "Westermoskee",
+      "text": "Milli Görüş bought the derelict site in 1994; years of fierce dispute followed before a 2000 deal set a 43-metre minaret. Building began in 2013 and the mosque opened on 1 April 2016.",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Westermoskee",
+      "articleTitle": "Westermoskee",
+      "sourceLanguage": "nl",
+      "sourceQuote": "In 1994 kocht de Turkse vereniging Milli Görüş het in onbruik geraakt Riva-terrein, met als doel om op deze locatie een moskee te bouwen. | Er volgde een jarenlange heftige strijd | In 2000 volgde er ten slotte een akkoord dat bevredigend was voor alle partijen. | Het akkoord voorziet in een kleinere, maar gezichtsbepalende moskee met een minaret van 43 meter. | Na een woelige ontwikkelingsperiode is de bouw van de moskee in april 2013 gestart. Op 1 april 2016 werd de Westermoskee geopend.",
+      "license": "CC BY-SA 4.0",
+      "retrievedAt": "2026-10-16",
+      "translator": "claude-opus-5-5 (hand-written from the quoted sentences; Dutch translated faithfully)",
+      "replaces": "(empty: the card showed only its chips)"
+    }
+  ],
+  "allowHollow": [
+    {
+      "id": "extract_landmarks_1726437395",
+      "name": "OBA Olympisch Kwartier",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1709488528",
+      "name": "OBA Roelof Hartplein",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1829768183",
+      "name": "OBA Buitenveldert",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_801855734",
+      "name": "OBA Javaplein",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1836925327",
+      "name": "OBA Osdorp",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_845955",
+      "name": "OBA Staatsliedenbuurt",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_149588563",
+      "name": "OBA Mercatorplein",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1660060322",
+      "name": "CEDLA Library",
+      "reason": "No article on the library; nl Wikipedia mentions CEDLA only in passing (Universiteit van Amsterdam). The Wikidata line is all there is."
+    },
+    {
+      "id": "extract_landmarks_2090706815",
+      "name": "OBA Spaarndammerbuurt",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_795276946",
+      "name": "OBA Slotermeer",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1519307509",
+      "name": "OBA Geuzenveld",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_780437483",
+      "name": "OBA Bos en Lommer",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_880030623",
+      "name": "OBA Linnaeus",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1656784907",
+      "name": "OBA IJburg",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_823155300",
+      "name": "OBA Molenwijk",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1016554532",
+      "name": "OBA Banne",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_239672595",
+      "name": "OBA Reigersbos",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_520780257",
+      "name": "OBA Bijlmerplein",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_1039709742",
+      "name": "OBA Waterlandplein",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_132707368",
+      "name": "OBA Van der Pek",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_862375982",
+      "name": "OBA CC Amstel",
+      "reason": "No article on this branch: Wikipedia has only the OBA as a whole (nl:Openbare Bibliotheek Amsterdam), and the Wikidata line (what and where) is all the register says. Fill from oba.nl or close the drive-by for wikidata-description stubs."
+    },
+    {
+      "id": "extract_landmarks_994708838",
+      "name": "DeLaMar (West)",
+      "reason": "No article: nl:DeLaMar covers the Marnixstraat theatre only, and DeLaMar West (2021) appears only in performer biographies."
+    },
+    {
+      "id": "extract_landmarks_736566271",
+      "name": "Lancaster Memorial Houtrakpolder",
+      "reason": "No article: neither nl:Houtrakpolder nor any list describes the memorial (Wikidata Q138864561 has no sitelinks)."
+    },
+    {
+      "id": "extract_landmarks_1419802780",
+      "name": "Drie Boertjes",
+      "reason": "No article: the war memorial (Wikidata Q116682983) has no sitelinks; kunstwacht.nl describes it but the override format accepts only Wikipedia."
+    },
+    {
+      "id": "extract_landmarks_1875104064",
+      "name": "AMOS",
+      "reason": "No article: the synagogue (Wikidata Q125143413) has no sitelinks; only its own website (amossjoel.nl)."
+    }
+  ]
+}

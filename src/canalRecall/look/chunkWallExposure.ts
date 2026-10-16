@@ -15,7 +15,7 @@
 // The fix brings every chunk wall to its photo colour normalised to sunlight: the drawn colour times
 //   measuredWallGain(strip white) x stripOverDrawn
 // in linear light, both measured per chunk on its strip by scripts/look/build-chunk-wall-exposure.ts. The shade side
-// then draws 0.41 of that (the rig, as for every other wall).
+// then draws SUNNY_SHADE_RATIO of that (0.55 since 2026-10-16; the rig, as for every other wall).
 
 import { FALLBACK_WALL_GAIN } from './measuredWhitePoints.js';
 import { measuredWallGain, scaleLinear, sceneLookFrom, type SceneLook, type WhitePoint } from './sunny.js';

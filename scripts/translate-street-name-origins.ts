@@ -94,7 +94,7 @@ async function translate(origin: NameOrigin): Promise<string> {
   const held = protectNames(origin.nl, [origin.name]);
   const parts: string[] = [];
   for (const chunk of sentenceChunks(held.text)) parts.push(await translateText(chunk));
-  const english = trimToSentence(held.restore(parts.join(' ')), MAX_ORIGIN_CHARS);
+  const english = trimToSentence(held.restoreEnglish(parts.join(' ')), MAX_ORIGIN_CHARS);
   if (!english) throw new Error('empty output');
   // Unlike a lede, an explanation may and should translate the words the
   // name is built from ("Burgemeester Stramanweg: Burgemeester van …" is

@@ -679,14 +679,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-
-- **`check:covers` red on main (found 2026-10-16)**: 10 inconsistencies,
-  all `noorderkerk` suppressing OSM-only ways w749871260–275 that
-  `covers.json` does not keep. It fails `check:canal` at its `&&` chain, so
-  the later chained checks (building-types, osm-under-models, abutters,
-  inventory, signature-fallback, manual-landmarks) are skipped unless run by
-  hand; rebuild covers (`build-covers`, staged then copied to models/) or
-  drop the stale ids.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**
@@ -737,6 +729,43 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Chunks vs generic boxes, the colour gap** (2026-10-16, HISTORY "One
+  wall material"): light and material now match; the generic period-prior
+  palette is about twice as light as measured walls. Next: measured colours
+  for generic facades next to chunks (facade-colour pipeline). Whether shade
+  sides go past 0.55 toward flat overcast light is the user's call.
+- **Bridge follow-ups** (2026-10-16, HISTORY "Bridges: canal-mouth
+  parapets"): the way-deck railing that runs diagonally across the cycle
+  path at the Jan Evertsenstraat/Erasmusgracht end (apply `parapetRuns`'
+  turn-in rule to way decks, end the parapet at the quay line); the
+  mid-span parapet jog on widened sides (BRU0063, BRU0108); the 31 of 1,294
+  road bridge ways still without a surface (`audit-bridge-surfaces.ts
+  --all`; 137 before way decks); cap that count in a check.
+
+- **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
+  bridge deck is never the answer")**: the street plaque
+  (`presentationRuntime.ts` ~709) still reads the raw way name, so it stays
+  blank on a deck that carries a street; pass the carried name through. 85
+  transparent bridge names outside `bridges.json` (Noordsche Compagniebrug
+  among them) are now taught by no question; decide whether some join the
+  crossing quiz. Culvert names without a bridge suffix (Bullebak, Kanaalpost)
+  are not treated as decks.
+
+- **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
+  cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
+  buildings, libraries, Vue, Pathé Noord, LAB111) and need a sourced pass; 4
+  definitional cards wait on an entity check (HvA links the former HES
+  article, Onze Lieve Vrouwe Kapel has two chapels, Frascati and Scheltema
+  have no Wikipedia link). The audit misses thin cards that name a person
+  (Anne Frank House).
+  After the hollow-card pass (HISTORY "Hollow landmark cards"): 25 allowlisted
+  stub cards still open (19 OBA branches; CEDLA, DeLaMar West, Lancaster
+  Memorial, Drie Boertjes, AMOS) and the override format accepts only Wikipedia
+  sources (kunstwacht.nl and venue sites have material); 78 empty cards don't
+  open; `'t Brinkie`'s wikipediaUrl points at a missing nl article; kit model
+  `winkler-prins-monument` duplicates `extract_landmarks_1897367071`'s pin.
+  Product question for the user: a folded drive-by card shows only its title
+  (by design, to keep the corridor clear); keep, or keep one line.
 - **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
   auto-placed runs installed"): 69 of 335 pands installed. Next: types for
   Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
@@ -1370,6 +1399,33 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **BAG holes after the 1,601 fills (2026-10-16, HISTORY "BAG pands the tiles
+  never drew")**: 1,325 post-2019 pands wait for AHN5 or a newer 3DBAG; the 12
+  complexes over 5,000 m² (e.g. 0363100012241555, 3.2 ha at the Zuidas) and the
+  130 half-drawn pands need a look; fills are flat boxes with no roof shape;
+  Prinsengracht 221-227 deserves a kit/recipe front. Models that suppress pands
+  their GLB barely covers need a per-model photo review: felix-meritis 174322
+  (0 %), westerkerk 174220/174222 (10 %) and w749287964 (25 %), sint-agneskerk
+  197426, vriesseveem-9 w755510629, dominicuskerk w749599657, vinoly w754894011.
+
+- **Bridge railings after the water-side fix (2026-10-16, HISTORY "Bridge
+  railings stop at the water")**: gates remain on 12 bridges (worst BRU0981, a
+  culvert with a diagonal channel; BRU0691, BRU1904, BRU2131, BRU0307); parapets
+  inside a road polygon on BRU1935, BRU0001 Muntsluis, BRU0223, BRU0007 (deck
+  edge narrower than the surveyed road); BRU0165 and BRU0173 are measured along
+  the canal and need re-orienting; BRU0257's west outline runs ~10 m over open
+  water; shorter parapets gave some arch bridges lamp posts (`lampAt`); iPhone
+  perf unmeasured.
+
+- **Tower-podium leftovers (2026-10-16, HISTORY "Towers on podiums")**: the 27
+  model-owned ridge-tower pands stay whole until the hide sinks resolve `pand`
+  (`coloredBuildingLayerFilter`, the three.js ranges id in
+  `threeBuildingMesh.ts`, `buildingTypes/runtime.ts` suppression, recipe-tile
+  covers); clicking a tower misses its pand's card and answer highlight lights
+  only the podium; middle tiers draw at podium height (no face banding); the
+  tower top is the ridge, which differs from the LoD1.3 face by -9.5 to +39.8 m;
+  most 100 m Zuidas towers come from OSM parts, not BAG.
 - **Landmark abutter fold-ins** (2026-10-16, HISTORY "Landmark abutter
   survey"; queue and evidence in `docs/landmark-abutters-survey-20261016.md`,
   verdicts in `scripts/landmarks/landmark-abutters-allowlist.json`): 25
@@ -1533,17 +1589,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   upper tower moves ~1.3 m south against the pitched views; inventory
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
-- **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
-  pass"; user report 2026-10-16, HISTORY "One model per ground"): the long
-  walls either side of the Mauritskade portal (bearings 331/151/241) are
-  still the kit's plain cells on dark brown brick (no frames, no white stone
-  bands, brick far darker than the photo's red), so the measured portal reads
-  as a panel pasted on; in-game frames from `review:sheet` show it. Then the swung gables (wing, risalit) keep 3DBAG's plain outline; the
-  south-pavilion clock dormer, relief iconography, arcade brick tracery,
-  risalit souterrain arches, the wing's ground floor and banner field;
-  only 3.4 KB of byte headroom (cut elsewhere first); inventory text says
-  "two-light" on now single-light wings; one 99 m² blank wall at bearing
-  61 unexplained.
+- **Tropenmuseum, after the fourth pass** (2026-10-16, HISTORY "Tropenmuseum,
+  fourth pass"): the measured brick #a2856c reads tan-brown against the card
+  photo's rosier red and the scene lighting keeps it duller than the sunlit
+  photo (check the tint method against a sunlit crop); lights grouped in twos
+  and threes per bay, paired souterrain lights, iron bars, haunch blocks,
+  dentil and console cornices, brick dormers with copings and the swung gables
+  are not expressed (no byte budget left: 3.7 KB headroom); `audit:glb`
+  opening-outside 21 parts / 33.1 m² on twisted 3DBAG faces wants a plane-
+  clustering fix or a baseline entry; the 151 side has no panorama (inferred).
+  The rebuild also showed committed GLBs for hoofdbureau-elandsgracht,
+  maagdenhuis and roeterseiland-rec-a out of date with their source.
+
 - **Large tier after the components lane** (2026-10-14): OZ Achterburgwal
   233 needs a per-group party-wall override to place its baroque gateway
   (panel 266 hits a neighbour on one of three probes); Engelsesteeg's
@@ -2456,6 +2513,14 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
+- **PARKED (user 2026-10-16: "way too much effort/tokens for now"): road
+  paint and look from the orthophoto.** Surveyed roads draw no procedural
+  paint (`streets.ts PAINT_ON_SURVEY = false`, HISTORY "No procedural
+  paint on surveyed roads"). Parked: data-backed markings (orthophoto paint
+  segmentation or OSM crossing/give_way/stop nodes) drawn whole, red cycle
+  crossings through junctions, one asphalt tone across carriageway/parking
+  seams, red only on cycle polygons, and a top-down comparison harness
+  against the PDOK 8 cm orthophoto at six junctions. Only on the user's ask.
 
 **17. Public transit mode.** Tram / metro / ferry as its own routing and
 recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:

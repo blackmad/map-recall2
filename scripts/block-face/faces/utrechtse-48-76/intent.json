@@ -40,7 +40,7 @@
   },
   {
    "pandId": "0363100012178707", "slug": "uface-178707", "address": "Utrechtsestraat 68",
-   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "bell", "crownCap": "rounded", "storeys": 3, "bays": 2, "atticWindows": 1, "doorBay": 1, "basement": "none", "cornice": "none", "windows": "sash", "hoist": true,
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "bell", "crownCap": "rounded", "crownShoulder": "straight", "storeys": 3, "bays": 2, "atticWindows": 1, "doorBay": 1, "basement": "none", "cornice": "none", "windows": "sash", "hoist": true,
       "shopfront": {"colour": "black-painted", "fascia": false, "displayWindows": 1, "stallriser": "medium"}}],
     "roof": {"material": "black-tile"}, "palette": {"brick": "black-painted", "frame": "white", "door": "black", "stone": "white-painted"}},
    "groundFloor": {"use": "shop", "name": "We Are Labels", "category": "shop=clothes", "osm": {"type": "node", "id": 2737809038, "name": "We Are Labels", "tags": "shop=clothes"}, "bag": ["winkelfunctie"], "photoDate": "2025-06-19", "agreement": "osm-and-photo",

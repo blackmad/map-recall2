@@ -4,6 +4,7 @@
 //
 //   npx tsx scripts/own-ground/check-ground-cells.ts            # cells around BRU0166 + BRU0044, both LODs
 //   npx tsx scripts/own-ground/check-ground-cells.ts --all      # every cell of the OSM cell manifest (LOD 0)
+//   npx tsx scripts/own-ground/check-ground-cells.ts --parapets # the canal-mouth parapet regressions alone
 //   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
 //
 // Exit code 1 on a failed check.
@@ -14,12 +15,14 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
-import { bridgeFacts, flatHintAt, KIT_BUDGET, registerHint } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { bridgeFacts, flatHintAt, kitTrace, KIT_BUDGET, parapetTrace, registerHint, type KitInput, type KitRow } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
+import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { statSync } from 'node:fs';
 
@@ -76,6 +79,7 @@ async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
+  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -237,10 +241,13 @@ async function main(): Promise<void> {
     check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);
   }
   await deckTopRegressions();
+  await railingRegressions();
   await pocketRegressions();
   await openingRegressions();
   await approachRegressions();
   await deckSlabRegressions();
+  await parapetRegressions();
+  await bridgeSurfaceRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -333,6 +340,49 @@ async function deckTopRegressions(): Promise<void> {
       }
     }
     check(!bad.length, `${id} (${label}): deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 4).join(' ')})` : ''}`);
+  }
+}
+
+/**
+ * Railings across the road (user 2026-10-16, "why do the gates dip into the road?"; railingRuns.ts railRuns,
+ * scripts/own-ground/audit-bridge-railings.ts): each side's parapet runs along the deck's water-side edge and stops on
+ * the abutment. BRU0166 (Nassaukade over the Bilderdijkgracht mouth, cycle lanes both sides: the parapet turned in
+ * over both cycle lanes and ran on along them), the Nieuwe-Wercksbrug BRU0063 (Rozengracht, the south parapet turned
+ * across the cycle lane and footway at the east abutment), BRU0257 (the deck span's end between a road-width and a
+ * 19 m outline station: a 19 m return along the bank at each corner). Built with the roads-v1 partition as the game
+ * draws it: no stretch steeper than 45 deg over TURN_M (a gate), under 0.5 m of parapet inside a carriageway or
+ * cycle-lane polygon, both sides drawn.
+ */
+const RAILINGS: readonly (readonly [string, number, number, string])[] = [
+  ['BRU0166', 4.874789, 52.373236, 'Nassaukade, Bilderdijkgracht mouth'],
+  ['BRU0063', 4.883208, 52.3739, 'Nieuwe-Wercksbrug, Rozengracht / Prinsengracht'],
+  ['BRU0257', 4.907198, 52.362504, 'a span end between road and outline widths'],
+];
+async function railingRegressions(): Promise<void> {
+  // Its own store: preparing cells evicts others' state, and the roads-v1 pin below counts the decks the roads store holds.
+  const railStore = new GroundStore(readExtract, { roads: true });
+  await railStore.init();
+  for (const [id, lng, lat, label] of RAILINGS) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(railStore.cellAt(x, y))) { if (!railStore.osmCells.has(k)) continue; await railStore.prepareCell(k); if (railStore.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    check(!!owner, `${id} (${label}): placed in a streamed cell (${owner || 'none'})`);
+    if (!owner) continue;
+    // The pieces of the level buildKit drew (its last, highest attempt).
+    const input = await railStore.cellInput(owner, 0), lines = new Map<number, { level: number; pieces: ParapetPoint[][] }>();
+    parapetTrace.fn = (bid, side, line, at) => {
+      if (bid !== id) return;
+      const t = lines.get(side);
+      if (!t || at.level > t.level || (at.level === t.level && at.piece === 0)) lines.set(side, { level: at.level, pieces: [line] });
+      else if (at.level === t.level) t.pieces.push(line);
+    };
+    try { buildCell(input); } finally { parapetTrace.fn = null; }
+    const index = input.roads || input.roadsAround?.some(Boolean) ? new RoadIndex([input.roads ?? null, ...(input.roadsAround ?? [])]) : null;
+    const traffic = (qx: number, qy: number) => { const c = index?.classAt(qx, qy, true); return c === 'carriage' || c === 'cycle'; };
+    const m = [...lines.values()].flatMap(l => l.pieces).map(l => parapetCrossings(l, traffic));
+    check(lines.size === 2, `${id} (${label}): parapet on both sides (${lines.size})`);
+    check(m.every(r => r.turns === 0), `${id}: no parapet turns across the deck (${m.map(r => `${r.turns} turns ${r.turnM.toFixed(1)} m`).join(', ')})`);
+    check(m.every(r => r.insideM < 0.5), `${id}: parapet off the carriageway and cycle lanes (${m.map(r => r.insideM.toFixed(1)).join(', ')} m inside)`);
   }
 }
 
@@ -723,6 +773,66 @@ async function deckSlabRegressions(): Promise<void> {
     const on = await slab(store), off = await slab(noClip);
     check(on.slabM2 <= max, `${id} (${label}): deck top over land ${on.slabM2} m² of ${on.deckM2} m² seen (at most ${max})`);
     check(off.slabM2 > 2 * max, `${id}: without the clip ${off.slabM2} m² (the pin is live)`);
+  }
+}
+
+/**
+ * Canal-mouth parapets (user 2026-10-16, Marnixstraat over the Bullebakssluis BRU0160, "no idea what this bridge is
+ * trying to be"): two railing stubs turned in across the pavement and the cycle path at the slab's corners. Each side's
+ * parapet now runs straight along the deck edge over the water from quay to quay (decks.ts parapetRuns): over its run the
+ * edge never falls more than 1 m inside that side's widest and never reaches the carriageway (≥ 1 m past the road's
+ * half-width), the run covers the water span, the deck under the parapets is not water, and the bridge is the
+ * canal-mouth kind (decks.ts canalMouth: brick-rail parapet, a flat girder opening, no lamps). Both road modes.
+ */
+const PARAPETS: [string, number, number, string][] = [['BRU0160', 4.87615, 52.37375, 'Marnixstraat over the Bullebakssluis']];
+async function parapetRegressions(): Promise<void> {
+  for (const [id, lng, lat, label] of PARAPETS) for (const [mode, s] of [['osm', store], ['roads', roadsStore]] as const) {
+    if (s === roadsStore) await roadsStore.init();
+    const [x, y] = toLocal(lng, lat);
+    let input: KitInput | null = null;
+    kitTrace.input = k => { if (k.id === id && k.lod === 0) input = k; };
+    const cells: BuiltCell[] = [];
+    for (const k of GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k))) cells.push(buildCell(await s.cellInput(k, 0)));
+    kitTrace.input = null;
+    const got = input as KitInput | null;
+    check(!!got, `${id} (${label}, ${mode}): kit built`);
+    if (!got) continue;
+    const info = cells.flatMap(c => c.stats.bridges.decks).find(d => d.id === id);
+    check(got.facts?.parapet === 'brick-rail' && !!info?.mouth && info.lamps === 0 && info.arches === 1, `${id} ${mode}: canal-mouth kind (parapet ${got.facts?.parapet}, mouth ${info?.mouth}, lamps ${info?.lamps}, openings ${info?.arches})`);
+    const p = s.surface.decks.find(d => d.profile.id === id)!.profile, hw = [...p.halfWidth].sort((a, b) => a - b)[p.halfWidth.length >> 1], span = p.water ?? p.deck;
+    const width = (r: KitRow, side: number) => Math.hypot((side ? r.R : r.L)[0] - r.c[0], (side ? r.R : r.L)[1] - r.c[1]);
+    for (const side of [0, 1]) {
+      const run = got.parapetSides?.[side] ?? got.parapet, on = got.rows.filter(r => r.s >= run[0] - 1e-6 && r.s <= run[1] + 1e-6), all = got.rows.filter(r => r.s >= got.parapet[0] && r.s <= got.parapet[1]);
+      const w = on.map(r => width(r, side)), max = Math.max(...w), min = Math.min(...w), oldMin = Math.min(...all.map(r => width(r, side)));
+      const name = side ? 'right' : 'left';
+      check(min >= max - 1 && min >= hw + 1, `${id} ${mode} ${name} parapet: edge ${min.toFixed(1)}-${max.toFixed(1)} m off the axis over its run (carriageway half-width ${hw.toFixed(1)}; no stub turns in)`);
+      check(run[1] - run[0] >= span[1] - span[0] - 0.6, `${id} ${mode} ${name} parapet runs ${(run[1] - run[0]).toFixed(1)} m over ${(span[1] - span[0]).toFixed(1)} m of water`);
+      if (side === 0) check(oldMin < max - 2, `${id} ${mode}: over the whole deck span the left edge turns in to ${oldMin.toFixed(1)} m (the pin is live)`);
+      // The deck within the parapet: 1 m inside it at mid-run, the top is no water.
+      const mid = on[on.length >> 1], e = side ? mid.R : mid.L, n = side ? -1 : 1, qx = e[0] - mid.n[0] * n * 1, qy = e[1] - mid.n[1] * n * 1;
+      const top = cells.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut).sort(compareHits)[0];
+      check(!!top && top.layer !== 'water', `${id} ${mode} ${name}: inside the parapet the top is ${top?.layer ?? 'nothing'}`);
+    }
+  }
+}
+
+/**
+ * Bridges drawn (user 2026-10-16, "bridge missing entirely here": the Jan Evertsenstraat over the Erasmusgracht beside
+ * the Erasmuspark ended at the quay wall, open water across the street, the far bank resuming). No measured deck or flat
+ * footprint carried its bridge ways, so their bands draped on the canal bed under the water. The way decks (wayDecks.ts)
+ * give them one: every named bridge way carries a drawn surface (audit-bridge-surfaces.ts), and without the way decks it
+ * does not (the pin is live).
+ */
+const BRIDGE_SURFACES: [number, number, number, string][] = [[323258135, 4.84795, 52.36965, 'Jan Evertsenstraat over the Erasmusgracht']];
+async function bridgeSurfaceRegressions(): Promise<void> {
+  const off = new GroundStore(readExtract, { wayDecks: false });
+  await off.init();
+  for (const [id, lng, lat, label] of BRIDGE_SURFACES) {
+    const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
+    const on = await auditBridgeSurfaces(store, [key]), was = await auditBridgeSurfaces(off, [key]);
+    const miss = (r: typeof on) => r.missing.find(m => m.id === id);
+    check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}; ${on.missing.length} of ${on.ways} bridge ways in ${key} missing`);
+    check(!!miss(was), `bridge way ${id}: without the way decks ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
   }
 }
 

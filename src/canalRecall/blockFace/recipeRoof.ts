@@ -110,7 +110,9 @@ export interface RecipeRoofInput {
    * dormers stand on its own roof (Oudezijds Achterburgwal 55, wallen-oza-41-57 177943 b, 4.2 m over the bell gable
    * beside it: as a tower bay its dormer hovered over the neighbour's attic).
    */
-  fronts?: {id: string; eavesM: number; endpointsRD: number[][]; dormers?: boolean}[];
+  fronts?: {id: string; eavesM: number; endpointsRD: number[][];
+    /** `stepBody`: a raised front with a full-depth body: never a tower bay, its band keeps its own eaves. */
+    body?: boolean; dormers?: boolean}[];
   /**
    * Front forms per front id (see `FrontRoofSpec`); absent = the 3DBAG-bounded attic/flat rule for every band,
    * byte-identical. A single-front pand keys its form by `frontId` (or the one entry).
@@ -200,6 +202,22 @@ function simple(ring: number[][]): boolean {
   }
   return true;
 }
+/**
+ * `simple(ring)` for a ring joined from two simple rings along a shared edge: `ring[0..na-1]` is the first ring's chain
+ * (q ... p), the rest the second ring's inner vertices (p ... q without the ends). Pairs inside one chain were pairs of
+ * a simple ring (or are adjacent here too), so only pairs across the two chains can fail: the same answer as `simple`
+ * in O(na * nb) instead of O((na + nb)^2).
+ */
+function simpleUnion(ring: number[][], na: number): boolean {
+  const n = ring.length;
+  for (let i = 0; i < na; i++) for (let j = na; j < n; j++) if (Math.hypot(ring[i][0] - ring[j][0], ring[i][1] - ring[j][1]) < 1e-9) return false;
+  // Edges i -> i + 1: 0 .. na - 2 lie in the first chain, na - 1 .. n - 1 (closing edge included) in the second.
+  for (let i = 0; i <= na - 2; i++) for (let j = na - 1; j < n; j++) {
+    if (j === i + 1 || (i === 0 && j === n - 1)) continue;
+    if (crosses(ring[i], ring[i + 1], ring[j], ring[(j + 1) % n])) return false;
+  }
+  return true;
+}
 
 /**
  * Union coplanar pieces across shared edges into simple polygons (each merge keeps the union simple), then drop
@@ -210,25 +228,46 @@ function simple(ring: number[][]): boolean {
  */
 export function mergeCoplanar(pieces: number[][][], corner: (p: number[]) => boolean, tol = 1e-7): {ring: number[][]; parts: number[][][]}[] {
   const same = (a: number[], b: number[]) => Math.abs(a[0] - b[0]) < tol && Math.abs(a[1] - b[1]) < tol;
-  let out = pieces.filter(r => r.length >= 3 && Math.abs(planArea(r)) > 1e-12).map(r => { const ring = planArea(r) < 0 ? [...r].reverse() : r; return {ring, parts: [ring]}; });
-  for (let merged = true; merged;) {
-    merged = false;
-    outer: for (let i = 0; i < out.length; i++) for (let j = i + 1; j < out.length; j++) {
-      const A = out[i].ring, B = out[j].ring;
-      for (let a = 0; a < A.length; a++) {
-        const p = A[a], q = A[(a + 1) % A.length];
-        const b = B.findIndex((v, k) => same(v, q) && same(B[(k + 1) % B.length], p));
-        if (b < 0) continue;
-        const ra = [...A.slice((a + 1) % A.length), ...A.slice(0, (a + 1) % A.length)]; // q ... p
-        const rb = [...B.slice((b + 1) % B.length), ...B.slice(0, (b + 1) % B.length)]; // p ... q
-        const ring = [...ra, ...rb.slice(1, -1)];
-        if (!simple(ring)) continue;
-        out[i] = {ring, parts: [...out[i].parts, ...out[j].parts]};
-        out.splice(j, 1);
-        merged = true;
-        break outer;
-      }
+  type Entry = {ring: number[][]; parts: number[][][]};
+  const out: Entry[] = pieces.filter(r => r.length >= 3 && Math.abs(planArea(r)) > 1e-12).map(r => { const ring = planArea(r) < 0 ? [...r].reverse() : r; return {ring, parts: [ring]}; });
+  // The merge order is "the first mergeable pair (i, j) in lexicographic order, then start over" (the order fixes the
+  // result). Starting over literally is O(n^3) and ran for hours on a 2,600 m2 block footprint (Jan Evertsenstraat
+  // 121-125); the same pairs are found in the same order without it:
+  //  - a pair that failed cannot merge until one of its two polygons changes (a merge makes a new entry object), so
+  //    failures are remembered per object pair;
+  //  - after a merge at (i, j) every pair before it except (i', i) for i' < i is a known failure, so the next merge is
+  //    the first (i', i) that merges (and so on back), else the scan resumes at (i, i + 1);
+  //  - the union of two simple polygons along a shared edge can only fail where the two parts meet (`simpleUnion`).
+  const failed = new WeakMap<Entry, WeakSet<Entry>>(), isSimple = new WeakMap<Entry, boolean>();
+  const known = (e: Entry) => { let s = isSimple.get(e); if (s === undefined) isSimple.set(e, s = simple(e.ring)); return s; };
+  const tryPair = (i: number, j: number): boolean => {
+    const E = out[i], F = out[j];
+    if (failed.get(E)?.has(F)) return false;
+    const A = E.ring, B = F.ring, both = known(E) && known(F);
+    for (let a = 0; a < A.length; a++) {
+      const p = A[a], q = A[(a + 1) % A.length];
+      const b = B.findIndex((v, k) => same(v, q) && same(B[(k + 1) % B.length], p));
+      if (b < 0) continue;
+      const ra = [...A.slice((a + 1) % A.length), ...A.slice(0, (a + 1) % A.length)]; // q ... p
+      const rb = [...B.slice((b + 1) % B.length), ...B.slice(0, (b + 1) % B.length)]; // p ... q
+      const ring = [...ra, ...rb.slice(1, -1)];
+      if (!(both ? simpleUnion(ring, ra.length) : simple(ring))) continue;
+      const merged: Entry = {ring, parts: [...E.parts, ...F.parts]};
+      isSimple.set(merged, true);
+      out[i] = merged;
+      out.splice(j, 1);
+      return true;
     }
+    let f = failed.get(E);
+    if (!f) failed.set(E, f = new WeakSet());
+    f.add(F);
+    return false;
+  };
+  for (let i = 0, j = 1; i < out.length;) {
+    if (j >= out.length) { i++; j = i + 1; continue; }
+    if (!tryPair(i, j)) { j++; continue; }
+    for (let back = true; back;) { back = false; for (let k = 0; k < i; k++) if (tryPair(k, i)) { i = k; back = true; break; } }
+    j = i + 1;
   }
   return out.map(({ring, parts}) => {
     let r = ring;
@@ -413,7 +452,7 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   if (fronts.length >= 2) {
     // A dormered front whose eaves the neighbour's roof never reaches is a house front, not a tower bay (see `fronts`).
     const ownRoof = (i: number) => !!fronts[i].dormers && ridge < bands[i].eaves;
-    const plain = bands.map((b, i) => tower(b.eaves) && !ownRoof(i) ? -1 : i);
+    const plain = bands.map((b, i) => tower(b.eaves) && !fronts[i].body && !ownRoof(i) ? -1 : i);
     // Its attic is bounded by its own share of 3DBAG: the pand's p95 pools the low front's roof and would turn the band
     // flat under its dormer.
     for (const [i, b] of bands.entries()) if (tower(b.eaves) && ownRoof(i)) {

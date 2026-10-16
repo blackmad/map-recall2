@@ -2,7 +2,6 @@
  "street": "Jan Evertsenstraat",
  "seed": "0363100012118917",
  "members": [
-  "0363100012107349",
   "0363100012070081",
   "0363100012140699",
   "0363100012080990",
@@ -32,7 +31,7 @@
  "ends": [
   {
    "side": "left",
-   "reason": "next fronting pand 0363100012106884 98.8 m on shares no party wall (cross street or gap)"
+   "reason": "trimmed at 0363100012070081 (face continues: 107349)"
   },
   {
    "side": "right",
@@ -2271,16 +2270,6 @@
  ],
  "areaHalfSizeM": 180,
  "pands": [
-  {
-   "pandId": "0363100012107349",
-   "alongM": -58.01,
-   "widthM": 25.55,
-   "eavesM": 11.8,
-   "roofMaxM": 37.45,
-   "storeys3dbag": 0,
-   "builtYear": 1996,
-   "uncertainty": []
-  },
   {
    "pandId": "0363100012070081",
    "alongM": -50.07,

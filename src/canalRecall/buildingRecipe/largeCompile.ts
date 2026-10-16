@@ -45,7 +45,7 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
 /** Cornice projection (m) over the wall top: a stone band 0.43 m tall. */
 const CORNICE_OUT = 0.28;
 
-function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: LargeGroupFit | undefined, counts: LargeComponentCounts) {
+function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: LargeGroupFit | undefined, counts: LargeComponentCounts, noBands = false) {
   if (!g || !info.levels.length) return;
   const p = c.p, levels = info.levels, groundTop = levels[1] ?? p.vMax, s = g.slots;
   const skip: [number, number][] = [];
@@ -93,7 +93,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const k = drawGlazedColumns(c, info.cells, levels, bay => col.bays.includes(bay % every), col.from, col.share, col.slabs, panelEaves(p) - 0.2, {glass: col.glass ?? s.glass, frame: s.frame, stone: s.stone});
     if (k) counts.glassColumns = (counts.glassColumns ?? 0) + k;
   }
-  if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
+  if (g.cornice && !noBands) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
   if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
     counts.fascias++;
     // A group without an entrance letters its shop fascia, centred on the widest panel.
@@ -273,6 +273,8 @@ export interface LargeCompileHooks {
   glassBackM?: number;
   /** leave a fitted cell empty (after the entrance/garage rule) so the bespoke builder can draw that part of the wall itself */
   skipCell?: (p: Panel, floor: number, bay: number, bays: number, group: LargeGroupFit | undefined) => boolean;
+  /** leave this panel's string courses and cornice out (a court face no camera sees; the Tropenmuseum's hidden panels) */
+  skipBands?: (p: Panel) => boolean;
 }
 
 export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
@@ -299,7 +301,8 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
       if (g.entrance?.panel === p.index && bay === g.entrance.bay && floor < g.entrance.storeys) return true;
       return !!(g.garage?.panel === p.index && floor === 0 && g.garage.bays.includes(bay));
     },
-    panelHook: (c, info) => { decorate(c, info, groupOf(c.p.index), counts); hooks.panelHook?.(c, info, groupOf(c.p.index)); },
+    ...(hooks.skipBands ? {skipBands: hooks.skipBands} : {}),
+    panelHook: (c, info) => { decorate(c, info, groupOf(c.p.index), counts, !!hooks.skipBands?.(c.p)); hooks.panelHook?.(c, info, groupOf(c.p.index)); },
   });
   drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
   for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
