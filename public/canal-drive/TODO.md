@@ -1550,15 +1550,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
 - **P1 Ride-review rows, Jordaan and Plantage** (HISTORY "Ride review,
-  Jordaan and Plantage"; three fixed there): the Westerkerk roof wash when
-  the church is large in frame (J2); chase pitch hides the Westertoren
-  until ~100 m (J3); inner-block gardens as bare sand (J4, needs a garden
-  class from BGT or BAG courtyards); Bloemgracht streamed boxes (J5, the
-  recipe-tiles migration); Nieuwe-Wercksbrug deck slabs over land (J6);
-  Noordermarkt playground slabs (J7); Pansemertbrug flush deck (J8);
-  Entrepotdok warehouse boxes and gable stubs (P3); Walter Süskindbrug as
-  a wire cube (P4, movable without deck data); Artis main gate and the
-  Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from
+  Jordaan and Plantage"; three fixed there; J2, J3, J6, J8 and P4 fixed
+  2026-10-16, HISTORY "Ride-review rows fixed"): still open: J3's tower
+  top (MapLibre caps pitch at 60°); J8's flush cue is ~1 px from the
+  chase camera, the deck needs its own surface from the quay's bands
+  (the BGT roads lane); J6's e2e has one probe of headroom; the
+  `landmarkSightline` test needs an npm script; inner-block gardens as
+  bare sand (J4, the courtyards lane); Bloemgracht streamed boxes (J5,
+  the recipe-tiles migration); Noordermarkt playground slabs (J7);
+  Entrepotdok warehouse boxes and gable stubs (P3); Artis main gate and
+  the Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from
   Artis (P7); the rippling curved facade (P8, check a photo); the
   Gandhiplantsoen hedge box (P9). `scripts/ride-review-shots.mjs` with
   specs in `scripts/ride-review/` is the method for the next

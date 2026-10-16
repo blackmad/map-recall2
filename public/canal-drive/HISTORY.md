@@ -1,5 +1,54 @@
 # Canal Recall — what is built
 
+## Ride-review rows fixed: deck widths from the water, flush decks, OSM bascule leaves, highlight by model extent, the tower sightline (2026-10-16)
+
+Lane `worktree-agent-a9367e73629fa0bba` (final e3181d052; 4e7e6fea3 deck
+widths, c2d93cc15 own ground, 21495ce54 highlight, 07c7d4db2 sightline).
+J6 Nieuwe-Wercksbrug BRU0063 (`decks.ts deckWidths`): the bridge outline
+widens a side only as far as water lies across that station plus 1 m,
+carried 1 m along the deck so it still lands on the quay wall, never
+narrower than the road's half-width; the band clip of the deck top
+applies only past the deck span (inside it the land is removed and the
+clip opened holes, failing the BRU0166/BRU0063 edge-to-edge checks); deck
+top over land 85 → 24 m² (`deckSlabOnLand`, pinned ≤ 40 m² with a
+without-clip check that proves the pin is live); e2e on the widened side
+17 of 172 probes against a limit of 18; `GroundStore` `clipDecks: false`
+restores the old behaviour. The grey corners left in the frame are the
+quay streets' own asphalt. J8 Pansemertbrug BRU0124 (`isFlushDeck`,
+`FLUSH_PARAPET` in `bridgeKit.ts`): a deck whose crown rises < 0.5 m over
+the higher end of its span (0.31 m here) gets a dark 0.22 m kerb 0.5 m
+wide and a 0.07 m top rail instead of the coping; water under the whole
+span pinned by a unit test; from the chase camera the kerb is ~1 px so
+the mouth still reads nearly closed (the deck carries the quay's own
+bands); the rule also applies to the Blauwbrug and the Amstel bridges.
+P4 Walter Süskindbrug BRU0237 (`movableLeaves`): leaves come from the
+OSM `bridge=movable` way 38322370 (12.7 m) projected on the footprint
+axis, anything over 9 m becomes two leaves with a portal at each heel,
+0.8 m deep; before one guessed 9 m leaf and one portal, after a double
+bascule over 12.72 m with two portals (e2e reads it from the store);
+bridges without a movable way keep the old guess byte-identically. J2
+Westerkerk roof wash (`look/highlight.ts`, `highlightMarker.ts`): each
+highlighted whole model records its on-screen box corners per frame and
+the boost is measured on the larger of footprint share and model share,
+latching off at 4 % and fading back only between 2 % and 1 %; at p19
+footprint 2.4 %, model 22 %, boost 0.88 → 0, the roofs are slate again
+and the outline stays. J3 Westertoren (`game/landmarkSightline.ts` from
+`presentationRuntime.ts`, `vector-map.js` 488–493 `setLandmarkView` /
+`highlightTarget`, 2720–2722 pitch lift in `sync`, 2804–2805 forward
+lead): a highlighted landmark ≥ 40 m tall within 300 m and 45° of the
+heading (60° to stay engaged) lifts the chase pitch up to 8° and leads
+the view up to 50 m, fading between 300–250 m and 120–80 m, off on
+phones, when panned and during the start flight; at the Leliegracht
+pitch 48 → 56°, tower base −55 → +99 px; the top stays out because
+MapLibre caps pitch at 60°. Checks: `test:own-ground` 84, `test:look`
+63, `test:canal-elevation` 11, `landmarkSightline.test.ts` 2 (no npm
+script covers it yet), `check:own-ground-cells` 0 FAIL, belt 7 KNOWN,
+bridge-fidelity e2e with the new BRU0063 and BRU0237 spots. Frames
+`docs/images/ride-review-20261014/fix-{J2,J3,J6,J8,P4}.jpg`; ride specs
+`scripts/ride-review/fix-rows-{jordaan,plantage,boat}.json`. The other
+bundles that include `highlight.ts` (three-buildings, building types,
+detailed) were rebuilt at the merge.
+
 ## DeLaMar on every side; Noorderkerk corner houses folded in (2026-10-16)
 
 User reports from the game: DeLaMar "is visible on many sides, so needs
