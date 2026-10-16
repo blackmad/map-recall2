@@ -28,6 +28,7 @@ import { RoofSink, type V2, type V3 } from './roofSink.js';
 import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, rectHangM, ringAreaM2, signedArea, uncoveredShare } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
+import { streetGableEnds, type StreetFacing } from './streetGableEnds.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
 export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
@@ -40,6 +41,9 @@ export type RoofPlan = {
   gable: GableShape;
   /** Inscribed roofs may decorate only ends supported by the exterior outline: negative u, positive u. */
   gableEnds?: [boolean, boolean];
+  /** Ends that face a street (streetGableEnds.ts): an ornamental crown stands only there, the other end is a plain
+   *  gable under the saddle. Absent = unknown, both ends crowned as before. */
+  streetEnds?: [boolean, boolean];
   /** Roof rise above the eaves, metres (for a gable plate, the roof's own rise; the plate stands higher). */
   riseM: number;
   /** Source-admitted crown geometry must fit the native total-height envelope. */
@@ -660,13 +664,13 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
     halfHipSlopes(s, L, W, R, zc, ov);
     for (const e of [-1, 1]) {
       const f = e * L / 2;
-      if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) {
+      if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) {
         const prof = gableProfile('cornice', W, R);
         gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim);
         if (accents) gableAccents(s, { shape: 'cornice', prof, f, e, W, R, trimHex: trim, shutterHex: '', shutters: false });
       } else {
         s.quad([f, -W / 2, 0], [f, W / 2, 0], [f, vc, zc], [f, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), 'plate', [e, 0, 0]);
-        if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
+        if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
       }
     }
     const d = vc;
@@ -683,9 +687,11 @@ function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDi
   for (const e of [-1, 1]) {
     const f = e * L / 2;
     const exterior = plan.gableEnds?.[e < 0 ? 0 : 1] !== false;
-    if (plan.kind === 'pitched' || !exterior) {
+    // A gable roof's rear end (not on a street) is a plain brick triangle under the saddle: no crown, no trim.
+    const rear = plan.kind === 'gable' && plan.streetEnds?.[e < 0 ? 0 : 1] === false;
+    if (plan.kind === 'pitched' || !exterior || rear) {
       s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), 'plate', [e, 0, 0]);
-      if (accents && exterior) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
+      if (accents && exterior && !rear) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
       continue;
     }
     const prof = gableProfile(plan.gable, W, R);
@@ -710,7 +716,7 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
   return triangles.map(t => {
     const nz = t.n[2] / scale, length = Math.hypot(t.n[0], t.n[1], nz);
     const endDot = t.n[0]*rect.ux+t.n[1]*rect.uy;
-    const sourceCrownShape = plan.kind === 'gable' && t.part === 'plate' && Math.abs(endDot) > .9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : undefined;
+    const sourceCrownShape = plan.kind === 'gable' && t.part === 'plate' && Math.abs(endDot) > .9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false && plan.streetEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : undefined;
     return {...t, sourceCrownShape, p: t.p.map(([x,y,z]) => [x,y,h0+(z-h0)*scale]) as RoofTri['p'],
       n: [t.n[0]/length,t.n[1]/length,nz/length] as RoofTri['n']};
   });
@@ -863,7 +869,7 @@ function gablePieceOnNativeWalls(triangles:RoofTri[],rect:Rect,outline:Vec2[],pl
  * frame. A plan's pieces and turret live in the footprint frame of
  * `localOuterRing` (metres about the ring's first vertex) and are carried over.
  */
-export function roofTrianglesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number): RoofTri[] {
+export function roofTrianglesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number, facing?: StreetFacing): RoofTri[] {
   if (outer.length < 4) return [];
   if(plan.repeatedTerrace)return repeatedTerraceRoofTriangles(outer,origin,plan.repeatedTerrace,h0,plan.riseM,dims,kx);
   const toMesh = ([lng, lat]: readonly number[]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT];
@@ -880,20 +886,15 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
     return s.out;
   }
   if (plan.kind === 'parapet') return parapetTriangles(mesh, h0, plan.parapetM ?? plan.riseM, dims, plan.trimHex ?? TRIM_WHITE);
-  if (!plan.pieces) { const rect = fitRect(mesh); return rect ? roofTriangles(rect, plan, h0, dims) : []; }
-  const [lng0, lat0] = outer[0], sx = kx / (111_320 * Math.cos(lat0 * Math.PI / 180)), [x0, y0] = mesh[0];
-  const at = (x: number, y: number): Vec2 => [x0 + x * sx, y0 + y];
-  void lng0;
-  const mapRect = (r: Rect): Rect => {
-    const [cx, cy] = at(r.cx, r.cy), ax = r.ux * sx, ay = r.uy, al = Math.hypot(ax, ay), bl = Math.hypot(r.uy * sx, r.ux);
-    return { ...r, cx, cy, ux: ax / al, uy: ay / al, len: r.len * al, wid: r.wid * bl };
-  };
+  if (!plan.pieces) { const rect = fitRect(mesh); return rect ? roofTriangles(rect, withStreetEnds(plan, rect, facing), h0, dims) : []; }
+  const { at, mapRect, sx } = footprintToMesh(outer, mesh, kx);
   const out: RoofTri[] = [];
   // The admitted exact frontage owns its street crown. Inscribed roof ends
   // behind it are plain closures, never a second shaped crown in the sky.
   for (const piece of plan.pieces) {
-    const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : piece.plan;
-    const rect=mapRect(piece.rect),triangles=roofTriangles(rect,innerPlan,h0,dims);
+    const rect=mapRect(piece.rect);
+    const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : withStreetEnds(piece.plan, rect, facing);
+    const triangles=roofTriangles(rect,innerPlan,h0,dims);
     out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
   }
   if(plan.sourceCrownFront) {
@@ -939,6 +940,37 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
   return out;
 }
 void outlineBand;
+
+/** The footprint frame (`localOuterRing`, metres about the ring's first vertex) carried into the mesh frame. */
+function footprintToMesh(outer: readonly number[][], mesh: readonly Vec2[], kx: number): { at: (x: number, y: number) => Vec2; mapRect: (r: Rect) => Rect; sx: number } {
+  const lat0 = outer[0][1], sx = kx / (111_320 * Math.cos(lat0 * Math.PI / 180)), [x0, y0] = mesh[0];
+  const at = (x: number, y: number): Vec2 => [x0 + x * sx, y0 + y];
+  const mapRect = (r: Rect): Rect => {
+    const [cx, cy] = at(r.cx, r.cy), ax = r.ux * sx, ay = r.uy, al = Math.hypot(ax, ay), bl = Math.hypot(r.uy * sx, r.ux);
+    return { ...r, cx, cy, ux: ax / al, uy: ay / al, len: r.len * al, wid: r.wid * bl };
+  };
+  return { at, mapRect, sx };
+}
+
+/**
+ * The generated gable pieces of a roof in the mesh frame, with the street ends `roofTrianglesForOutline` gives them
+ * (audits and tests read which ends carry a crown). Empty for plans with no generated gable piece: an admitted source
+ * frontage (its crown is its own front), a repeated terrace, a perimeter deck or a parapet.
+ */
+export function gablePiecesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, kx: number, facing?: StreetFacing): Array<{ rect: Rect; plan: RoofPlan }> {
+  if (outer.length < 4 || plan.repeatedTerrace || plan.perimeterInsetM !== undefined || plan.kind === 'parapet' || plan.sourceCrownFront) return [];
+  const mesh = outer.map(([lng, lat]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT]);
+  if (!plan.pieces) { const rect = fitRect(mesh); return rect && plan.kind === 'gable' ? [{ rect, plan: withStreetEnds(plan, rect, facing) }] : []; }
+  const { mapRect } = footprintToMesh(outer, mesh, kx);
+  return plan.pieces.filter(piece => piece.plan.kind === 'gable').map(piece => { const rect = mapRect(piece.rect); return { rect, plan: withStreetEnds(piece.plan, rect, facing) }; });
+}
+
+/** A crowned gable piece learns which of its ends face a street; every other plan is returned as is (same object). */
+function withStreetEnds(plan: RoofPlan, rect: Rect, facing: StreetFacing | undefined): RoofPlan {
+  if (!facing || plan.kind !== 'gable' || plan.streetEnds) return plan;
+  const streetEnds = streetGableEnds(rect, facing);
+  return streetEnds ? { ...plan, streetEnds } : plan;
+}
 
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 const M_PER_DEG_LAT = 110_540;

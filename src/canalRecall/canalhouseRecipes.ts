@@ -118,7 +118,11 @@ export interface CanalhouseElevation {
   /** Measured top outline, left-to-right in facade metres and height above ground. */
   crown?: Measured<{ profile: CanalhousePoint[]; depthM: number; trimWidthM: number; surface?: 'wall' | 'trim' | 'stone';
     /** A localized facing follows the shared head profile above this height. */
-    capFacing?:{bottomM:number;depthM:number;surface:'wall'|'trim'|'stone'};wings?:CanalhouseCrownWings }>;
+    capFacing?:{bottomM:number;depthM:number;surface:'wall'|'trim'|'stone'};wings?:CanalhouseCrownWings;
+    /** A projecting cornice ledge across a neck or bell head under its cap (the entablature of Oudezijds Voorburgwal
+     *  115/119): a box `leftM..leftM+widthM` (wider than the neck by its projection on each side), `bottomM..+heightM`,
+     *  standing `depthM` proud of the crown face. */
+    capCornice?:{leftM:number;widthM:number;bottomM:number;heightM:number;depthM:number;surface:'wall'|'trim'|'stone'} }>;
   entrance?: Measured<{ leftM: number; widthM: number; riseM: number; runM: number; steps?: number;
     /** Coarse visualization spacing, explicitly not an observed tread count. */
     approximateRiserM?:number; attachToLanding?:boolean; surface?:'trim'|'stone';
@@ -204,7 +208,8 @@ function canonical(value: unknown): string {
 export interface CanalhouseCrownOptions {
   /** Independent cap width, bounded by neck width for a single-valued outline. */
   crestWidthM?: number;
-  cap?: 'flat' | 'rounded' | 'pediment';
+  /** `segmental`: a low circular arc over the crest (meets its base at an angle, unlike `rounded`'s vertical-tangent half ellipse). */
+  cap?: 'flat' | 'rounded' | 'pediment' | 'segmental';
   capRiseM?: number;
   /** Clock shoulder power: 1 straight, >1 concave, <1 convex. Omit for legacy sine. */
   shoulderCurve?: number;
@@ -234,7 +239,7 @@ export function canalhouseCrownProfile(type: GableType, widthM: number, eavesM: 
   const crest=options.crestWidthM??neckWidthM, cap=options.cap??'flat', rise=options.capRiseM??0;
   finite(crest,rise,options.shoulderCurve??1);
   if(crest<0||crest>neckWidthM||rise<0||rise>topM-shoulderM+EPS||
-    !['flat','rounded','pediment'].includes(cap)||(cap==='flat'&&rise!==0)||
+    !['flat','rounded','pediment','segmental'].includes(cap)||(cap==='flat'&&rise!==0)||
     (cap!=='flat'&&(crest===0||rise===0))||
     (options.shoulderCurve!==undefined&&(options.shoulderCurve<.25||options.shoulderCurve>8))||
     (options.shoulder!==undefined&&!['concave','ogee','straight','convex'].includes(options.shoulder)))throw new Error('Invalid crown cap or shoulder dimensions');
@@ -257,6 +262,12 @@ export function canalhouseCrownProfile(type: GableType, widthM: number, eavesM: 
   const capPoints:CanalhousePoint[]=[[left,capBase],[capLeft,capBase]];
   if(cap==='rounded')for(let i=1;i<=12;i++){const angle=Math.PI*(1-i/12);capPoints.push([mid+crest/2*Math.cos(angle),capBase+rise*Math.sin(angle)]);}
   else if(cap==='pediment')capPoints.push([mid,topM],[capRight,capBase]);
+  else if(cap==='segmental'){
+    // Circle through both crest ends and the apex: radius from chord and rise.
+    const half=crest/2,radius=(half*half+rise*rise)/(2*rise),centreY=topM-radius,sweep=Math.asin(Math.min(1,half/radius));
+    for(let i=1;i<12;i++){const a=-sweep+2*sweep*i/12;capPoints.push([mid+radius*Math.sin(a),centreY+radius*Math.cos(a)]);}
+    capPoints.push([capRight,capBase]);
+  }
   else capPoints.push([capRight,topM]);
   capPoints.push([right,capBase]);
   const compact=(points:CanalhousePoint[])=>points.filter((p,i)=>i===0||Math.hypot(p[0]-points[i-1][0],p[1]-points[i-1][1])>EPS);
@@ -731,6 +742,12 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         if(openings.some(o=>Math.min(right,o.leftM+o.widthM)-Math.max(left,o.leftM)>EPS&&Math.min(top,o.bottomM+o.heightM)-Math.max(bottom,o.bottomM)>EPS))throw Error('Crown wing overlaps an opening');
         const s=new T.Shape(wing.profile.map(v=>new T.Vector2(...v))),g=new T.ExtrudeGeometry(s,{depth:c.wings.depthM,bevelEnabled:false});
         g.translate(0,0,.02);add(g,c.wings.surface,`crown/wing-${wing.id}`,facade);
+      }
+      if(c.capCornice){
+        const k=c.capCornice,top=Math.max(...p.map(v=>v[1]));
+        if(![k.leftM,k.widthM,k.bottomM,k.heightM,k.depthM].every(Number.isFinite)||k.widthM<=0||k.heightM<=0||k.heightM>.6||k.depthM<=0||k.depthM>.3||k.bottomM<eaves||k.bottomM+k.heightM>top+EPS||k.leftM<-EPS||k.leftM+k.widthM>length+EPS||!['wall','trim','stone'].includes(k.surface))throw Error('Invalid crown cap cornice');
+        if(openings.some(o=>Math.min(k.leftM+k.widthM,o.leftM+o.widthM)-Math.max(k.leftM,o.leftM)>EPS&&Math.min(k.bottomM+k.heightM,o.bottomM+o.heightM)-Math.max(k.bottomM,o.bottomM)>EPS))throw Error('Crown cap cornice overlaps an opening');
+        box(k.leftM,k.bottomM,k.widthM,k.heightM,k.depthM,k.depthM/2+.02,k.surface,'crown/cap-cornice');
       }
       if(c.trimWidthM>0)for(let i=1;i<p.length;i++){
         const [x,y]=p[i-1],[xx,yy]=p[i],distance=Math.hypot(xx-x,yy-y);if(distance<EPS)continue;
