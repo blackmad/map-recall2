@@ -124,6 +124,13 @@ for (const { bridge: BRIDGE, street: STREET_BEYOND, from: FROM, to: TO } of CASE
   // Both rides run straight over the bridge: no turn was made.
   expect(result.streetAsk!.context).not.toBe('You made a turn');
   for (const ask of result.asks) {
+    // Since the askable-bridges extract (2026-10-16) both decks are in
+    // bridge-crossings.json, so the ride also asks the canal it crosses; that
+    // ask is about the water, not a street, and has no metres-into-street.
+    if (ask.context === 'Crossing a bridge') {
+      expect(ask.name, JSON.stringify(ask)).toMatch(/gracht$/);
+      continue;
+    }
     expect(ask.metresIn, JSON.stringify(ask)).toBeLessThanOrEqual(MAX_METRES_INTO_STREET);
     expect(ask.nameUnder, JSON.stringify(ask)).toBe(ask.name);
   }
