@@ -92,7 +92,9 @@ export async function listPanos(c: Rd, radius = 35, tags?: string): Promise<any[
 /** Distance window (camera to wall centre) and obliquity cap. Facades: 5-35 m (8-25 strict), 55 deg; a bridge face seen from the water (bridge-reference/select.ts) stands further off. */
 export type RankWindow = { minD: number; maxD: number; strict: [number, number]; maxObliquityDeg: number };
 export const FACADE_WINDOW: RankWindow = { minD: 5, maxD: 35, strict: [8, 25], maxObliquityDeg: 55 };
-export function rankPanos(wall: Wall, panos: any[], win: RankWindow = FACADE_WINDOW): PanoPick[] {
+/** The third argument may also be a bare `minDistM` (a narrow street's panoramas stand 3.5-5 m off the wall), which keeps the facade window otherwise. */
+export function rankPanos(wall: Wall, panos: any[], winOrMinDist: RankWindow | number = FACADE_WINDOW): PanoPick[] {
+  const win: RankWindow = typeof winOrMinDist === 'number' ? { ...FACADE_WINDOW, minD: winOrMinDist } : winOrMinDist;
   return panos.flatMap(p => {
     const rd = lngLatToRd([p.geometry.coordinates[0], p.geometry.coordinates[1]]);
     const vx = rd.x - wall.mid.x, vy = rd.y - wall.mid.y, d = Math.hypot(vx, vy), standoff = vx * wall.nx + vy * wall.ny;

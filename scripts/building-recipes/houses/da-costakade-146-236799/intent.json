@@ -6,19 +6,21 @@
  "address": "Da Costakade 146, Amsterdam-West: 1903 factory block, a yellow-brick front of large workshop windows on Da Costakade, a red-brick range with balconies beside it, and a red-brick back range with a lettered band on the street behind",
  "sources": [
   {
-   "id": "pano-2025-07-31-w01",
+   "id": "pano-2019-12-09-w01-248L",
    "kind": "street-panorama",
-   "capturedAt": "2025-07-31",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-31_08-46-40_01995/",
-   "image": "staging/pand-reference-walls/0363100012236799/w01-248.jpg",
+   "capturedAt": "2019-12-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001500_pano_0000_000604/",
+   "image": "source-data://pand-reference-walls/0363100012236799/w01-248L.jpg",
+   "sha256": "dc27266716967113eeadf331d09daa4af0fa050446307ef97a6f83744c480abc",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2020-05-11-w02",
+   "id": "pano-2021-03-24-w02-67L",
    "kind": "street-panorama",
-   "capturedAt": "2020-05-11",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001702_pano_0000_005491/",
-   "image": "staging/pand-reference-walls/0363100012236799/w02-67.jpg",
+   "capturedAt": "2021-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002059_pano_0000_002160/",
+   "image": "source-data://pand-reference-walls/0363100012236799/w02-67L.jpg",
+   "sha256": "d2967d06011fc974e755c10543a115fc3feb64163befb99653c909b0032336c2",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -49,6 +51,17 @@
     "brick": "#b08a5a",
     "frame": "#efece4",
     "stone": "#d8ccb0"
+   },
+   "hand": [
+    "palette",
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.482,
+    "sill": 0.28
    }
   },
   {
@@ -71,9 +84,19 @@
    "stringCourses": true,
    "cornice": true,
    "palette": {
-    "brick": "#7a4232",
+    "brick": "#7b6d6a",
     "frame": "#efece4",
     "stone": "#c8bca4"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.447,
+    "h": 0.58,
+    "sill": 0.28
    }
   },
   {
@@ -86,9 +109,18 @@
    "wallMaterial": "stone",
    "deepBars": true,
    "palette": {
-    "brick": "#9a9c98",
+    "brick": "#6c6862",
     "frame": "#d8dad6",
     "stone": "#9a9c98"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.425,
+    "h": 0.45,
+    "sill": 0.05
    }
   },
   {
@@ -119,10 +151,14 @@
     "first": 1
    },
    "palette": {
-    "brick": "#7a4232",
+    "brick": "#4a3e39",
     "frame": "#efece4",
     "stone": "#c8bca4"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -142,6 +178,16 @@
   "Da Costakade 146 (BAG, built 1903) is a factory block that runs through from Da Costakade to the street behind it. On Da Costakade there is a yellow-brick workshop front with large segmental-arched windows between piers, and beside it a red-brick range with balconies and a gable. On the back street there is a red-brick range with a lettered stone band, and a later grey-tiled glass block. 430 wall surfaces. The LoD2.2 shell has 5.7 m of open edge (four short step walls); shellRepair closes all of it with 4 strips.",
   "walls[0] = surface 11 of panel 8 (w01-248): the yellow-brick workshop front. 4 storeys x 11 bays of transom windows, segmental arches on the lower two storeys, piers and string courses. walls[3] = the rest of panel 8 (w01-248): the red-brick range on Da Costakade, 5 storeys x 7 bays with bar balconies on every third bay of storeys 1-3. Its gable is the 3DBAG roof mass.",
   "walls[1] = the brick part of panel 41 (w02-67): the red-brick back range, 6 storeys x 7 bays of cross windows with string courses and a cornice. walls[2] = surface 104 (w02-67): the grey-tiled glass block, drawn as ribbon windows over a glazed ground.",
-  "Simplified: the lettered band on the back range (a string course at that height, no letters), the stepped gable and the dormers (3DBAG roof masses), and the curved glass bay of the glass block (straight)."
- ]
+  "Simplified: the lettered band on the back range (a string course at that height, no letters), the stepped gable and the dormers (3DBAG roof masses), and the curved glass bay of the glass block (straight).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #615c59 not used (not darker than the wall #7b6d6a by 10 L*, or tinted): kit glass kept; walls[2] glass #6b7375 not used (not darker than the wall #6c6862 by 10 L*, or tinted): kit glass kept; walls[3] glass #393e42 not used (not darker than the wall #4a3e39 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3
+  ]
+ }
 }

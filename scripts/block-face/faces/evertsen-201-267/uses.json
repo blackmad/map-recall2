@@ -1,0 +1,229 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:23:30.836Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012089205",
+   "addresses": [
+    "Jan Evertsenstraat 201"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 201",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000684599"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128966",
+   "addresses": [
+    "Jan Evertsenstraat 203",
+    "Jan Evertsenstraat 205",
+    "Jan Evertsenstraat 207",
+    "Jan Evertsenstraat 209",
+    "Jan Evertsenstraat 211",
+    "Jan Evertsenstraat 213",
+    "Jan Evertsenstraat 215",
+    "Jan Evertsenstraat 217",
+    "Jan Evertsenstraat 219",
+    "Jan Evertsenstraat 221",
+    "Jan Evertsenstraat 223",
+    "Jan Evertsenstraat 225",
+    "Jan Evertsenstraat 227",
+    "Jan Evertsenstraat 229",
+    "Jan Evertsenstraat 231",
+    "Jan Evertsenstraat 233",
+    "Jan Evertsenstraat 235",
+    "Jan Evertsenstraat 237",
+    "Jan Evertsenstraat 239",
+    "Jan Evertsenstraat 241",
+    "Jan Evertsenstraat 243",
+    "Jan Evertsenstraat 245",
+    "Jan Evertsenstraat 247",
+    "Jan Evertsenstraat 249",
+    "Jan Evertsenstraat 251",
+    "Jan Evertsenstraat 253",
+    "Jan Evertsenstraat 255",
+    "Jan Evertsenstraat 257",
+    "Jan Evertsenstraat 259",
+    "Jan Evertsenstraat 261",
+    "Jan Evertsenstraat 263",
+    "Jan Evertsenstraat 265",
+    "Jan Evertsenstraat 267"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 203",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684600"
+    },
+    {
+     "address": "Jan Evertsenstraat 205",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684601"
+    },
+    {
+     "address": "Jan Evertsenstraat 207",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684602"
+    },
+    {
+     "address": "Jan Evertsenstraat 209",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684603"
+    },
+    {
+     "address": "Jan Evertsenstraat 213",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684605"
+    },
+    {
+     "address": "Jan Evertsenstraat 215",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684606"
+    },
+    {
+     "address": "Jan Evertsenstraat 219",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684608"
+    },
+    {
+     "address": "Jan Evertsenstraat 221",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684609"
+    },
+    {
+     "address": "Jan Evertsenstraat 225",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684611"
+    },
+    {
+     "address": "Jan Evertsenstraat 227",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684612"
+    },
+    {
+     "address": "Jan Evertsenstraat 231",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684614"
+    },
+    {
+     "address": "Jan Evertsenstraat 233",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684615"
+    },
+    {
+     "address": "Jan Evertsenstraat 237",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684617"
+    },
+    {
+     "address": "Jan Evertsenstraat 239",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684618"
+    },
+    {
+     "address": "Jan Evertsenstraat 243",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684620"
+    },
+    {
+     "address": "Jan Evertsenstraat 245",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684621"
+    },
+    {
+     "address": "Jan Evertsenstraat 251",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684624"
+    },
+    {
+     "address": "Jan Evertsenstraat 255",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684626"
+    },
+    {
+     "address": "Jan Evertsenstraat 229",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684613"
+    },
+    {
+     "address": "Jan Evertsenstraat 249",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000684623"
+    },
+    {
+     "address": "Jan Evertsenstraat 247",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684622"
+    },
+    {
+     "address": "Jan Evertsenstraat 235",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684616"
+    },
+    {
+     "address": "Jan Evertsenstraat 253",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684625"
+    },
+    {
+     "address": "Jan Evertsenstraat 241",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684619"
+    },
+    {
+     "address": "Jan Evertsenstraat 211",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684604"
+    },
+    {
+     "address": "Jan Evertsenstraat 217",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684607"
+    },
+    {
+     "address": "Jan Evertsenstraat 223",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684610"
+    }
+   ],
+   "units": 51,
+   "osm": []
+  }
+ ]
+}

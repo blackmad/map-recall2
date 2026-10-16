@@ -6,43 +6,30 @@
  "address": "Nieuwe Weteringstraat 16 / Weteringschans, Amsterdam (Prinsengracht-Weteringschans corner): 1981 dark-brick office block on a glazed undercroft, stepped to 27 m with copper details",
  "sources": [
   {
-   "id": "pano-2017-07-07-w05",
+   "id": "pano-2017-07-07-w05-191",
    "kind": "street-panorama",
    "capturedAt": "2017-07-07",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000297/",
-   "image": "staging/pand-reference-walls/0363100012184747/w05-191.jpg",
+   "image": "source-data://pand-reference-walls/0363100012184747/w05-191.jpg",
+   "sha256": "f33c7d5c01eefa4f71250a90ea5df81fdc02aeaa335a42249e7201aeb2a49f75",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2017-07-07-w03",
+   "id": "pano-2017-07-07-w03-217",
    "kind": "street-panorama",
    "capturedAt": "2017-07-07",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000308/",
-   "image": "staging/pand-reference-walls/0363100012184747/w03-217.jpg",
+   "image": "source-data://pand-reference-walls/0363100012184747/w03-217.jpg",
+   "sha256": "bee13e15298194c8071790e3f82d97a1e220a22dc362959a8ffa4d67bb62e87b",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2017-07-07-w03",
+   "id": "pano-2019-01-11-w04-102L",
    "kind": "street-panorama",
-   "capturedAt": "2017-07-07",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000308/",
-   "image": "staging/pand-reference-walls/0363100012184747/w03-217.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-04-29-w04",
-   "kind": "street-panorama",
-   "capturedAt": "2020-04-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001681_pano_0000_004518/",
-   "image": "staging/pand-reference-walls/0363100012184747/w04-102.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-04-29-w04",
-   "kind": "street-panorama",
-   "capturedAt": "2020-04-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001681_pano_0000_004518/",
-   "image": "staging/pand-reference-walls/0363100012184747/w04-102.jpg",
+   "capturedAt": "2019-01-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001048_pano_0000_000338/",
+   "image": "source-data://pand-reference-walls/0363100012184747/w04-102L.jpg",
+   "sha256": "4d3e9fc34ed3b0056d824f82813cdec2f8d5d97b49abb939a6ae4e48ba540004",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -58,7 +45,19 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#675d5a"
+   },
+   "windowShape": {
+    "w": 0.364,
+    "h": 0.4,
+    "sill": 0.25
+   }
   },
   {
    "wallSurfaces": [
@@ -70,7 +69,20 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#574e48",
+    "glass": "#373430"
+   },
+   "windowShape": {
+    "w": 0.481,
+    "h": 0.699,
+    "sill": 0.2
+   }
   },
   {
    "wallSurfaces": [
@@ -82,7 +94,15 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#686360",
+    "glass": "#32302a"
+   }
   },
   {
    "wallSurfaces": [
@@ -94,7 +114,19 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#4a413f"
+   },
+   "windowShape": {
+    "w": 0.351,
+    "h": 0.85,
+    "sill": 0.13
+   }
   },
   {
    "wallSurfaces": [
@@ -106,7 +138,14 @@
    "ground": "glazed",
    "deepBars": true,
    "sills": false,
-   "windows": "plain"
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#423735"
+   }
   }
  ],
  "otherWalls": "blank",
@@ -122,7 +161,18 @@
  "notes": [
   "Nieuwe Weteringstraat 16 (BAG: built 1981; three office units and one other unit; 4,526 m2 footprint, 27.6 m): a dark-brick office block of the early 1980s on the Weteringschans (the former Universiteit Financiele Markten building). Three fronts are photographed: the canal-side south-west front (w02-217/w03-217, panorama 2017-07-07: a glazed undercroft on columns under a heavy concrete cantilever band, above it dark brown brick floors of deep-set windows with pale stone surrounds, stepped back in tiers with copper-clad roofs), the east front (w04-102, 2020-04-29: five floors of stone-surrounded windows over a colonnaded glass ground floor with a green copper stair tower) and the south front (w05-191, 2017-07-07).",
   "Modelled: the south front (panel 261: 6 storeys), the canal front as two height groups (surface 77: 6 storeys; surface 75: 3 storeys) and the east front as two groups (surface 130: 6 storeys; surface 6: 4 storeys); dark brown brick with stone-grey window surrounds and a glazed ground storey under each. Copper roof as surveyed by 3DBAG LoD2.2.",
-  "Simplified: the heavy concrete cantilever bands, the colonnade of the undercroft and the green copper stair tower are not drawn (the ground is a glazed row; the tower is the 3DBAG wall and roof geometry in brick colour), the window hoods are plain deep reveals. Not modelled: the north street front (panel 10, 90 m; no panorama within 35 m) and the courtyard walls."
+  "Simplified: the heavy concrete cantilever bands, the colonnade of the undercroft and the green copper stair tower are not drawn (the ground is a glazed row; the tower is the 3DBAG wall and roof geometry in brick colour), the window hoods are plain deep reveals. Not modelled: the north street front (panel 10, 90 m; no panorama within 35 m) and the courtyard walls.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #586564 not used (not darker than the wall #675d5a by 10 L*, or tinted): kit glass kept; walls[3] glass #44423c not used (not darker than the wall #4a413f by 10 L*, or tinted): kit glass kept; walls[4] glass #302526 not used (not darker than the wall #423735 by 10 L*, or tinted): kit glass kept."
  ],
- "closedBands": true
+ "closedBands": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ }
 }

@@ -15,7 +15,7 @@ import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {pointInRing} from './facts.ts';
-import {swatch, DIMINISHING_WINDOW_HEIGHTS, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
+import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
@@ -68,6 +68,8 @@ export const ladderBars = (heightM: number): number[] => { const n = clamp(Math.
 export const ERKER = {depthM: 0.55, returnM: 0.25, insetM: 0.08, stallriserM: 0.85, headM: 0.2, closureM: 0.08};
 /** Timber balcony on brackets (`balconies.style: timber-bracketed`): platform, guard and bracket proportions. */
 export const TIMBER_BALCONY = {projectM: 0.75, slabM: 0.14, sideM: 0.25, guardM: 1.0, bracketPitchM: 1.1, balusterPitchM: 0.16, endInsetM: 0.05};
+/** Springer blocks of `archRing.style: springers` (defaults: Nassaukade 147's small blocks at the feet of the round arches; the least gap between two springers over a pier: Kinkerstraat 8-10's 0.09 m). */
+export const SPRINGER = {lengthM: 0.14, heightM: 0.18, gapM: 0.09};
 /** Painted stucco dressings of the 1900 Oud-West set (`bands: painted`, `windowSurround: eared-keystone`, `windowSills: consoles`). */
 export const PAINTED = {bandSillM: 0.14, bandTransomM: 0.1, bandHeadM: 0.17, transomK: 0.78, bandDepthM: 0.04, headM: 0.1, headDepthM: 0.08, headRunM: 0.12, blockM: 0.13, blockHM: 0.25, blockDepthM: 0.11, keyPitchM: 0.4,
   sillM: 0.08, sillDepthM: 0.1, sillRunM: 0.12, consoleWM: 0.1, consoleHM: 0.16, consoleDepthM: 0.08};
@@ -260,8 +262,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     const plan = storeyPlan(s, count);
     const tall = f.windowProportion === 'tall';
     let winH = tall ? h * (0.72 - 0.015 * s) : s === 0 ? h * 0.62 : h * (0.6 - 0.02 * s), sill = tall ? h * 0.16 : s === 0 ? h * 0.2 : h * 0.22;
-    // Measured window heights: the head line stays at HEAD_LINE of the storey, the sill moves.
-    if (heightShares) { winH = h * heightShares[s]; sill = Math.max(h * 0.06, h * HEAD_LINE - winH); }
+    // Measured window heights: the head line stays at HEAD_LINE of the storey (or the storey's measured `headLines`), the sill moves.
+    if (heightShares) { winH = h * heightShares[s]; sill = Math.max(h * 0.06, h * (f.headLines?.[s] ?? HEAD_LINE) - winH); }
     for (let b = 0; b < count; b++) {
       const centre = plan.centre(b), winW = plan.w(b), pitch = plan.pitch(b);
       if (s === 0 && f.groundFront) continue; // groundFrontLayout builds the ground storey
@@ -637,11 +639,15 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       : front.archRings === 'none' ? null : front.archRings === 'stone' ? 'stone' as const : front.archRings === 'band' || (front.palette?.band ?? intent.palette.band) ? 'accent' as const : 'stone' as const;
     const ringM = front.windowHead ? round((headRing?.widthCourses ?? 3) * COURSE_M + 0.005) : 0.13;
     const onHeadStorey = (id: string) => { const m = /(?:^|-)s(\d+)-b\d+(?:-m\d+)?$/.exec(id), s = m ? Number(m[1]) : -1; return !!m && (front.windowHead?.storeys ? front.windowHead.storeys.includes(s) : s > 0); };
-    // Relieving arch over a square head: springs 4 cm above the frame, 6 cm out past each jamb, rise 0.25 x its span.
-    const relieving = (o: CanalhouseOpening) => { const span = o.widthM + 0.12; return {left: o.leftM - 0.06, top: o.bottomM + o.heightM + 0.04 + round(span * 0.25), w: span, rise: round(span * 0.25)}; };
+    // Relieving arch over a square head: springs 4 cm above the frame (`archRing.springGap`), 6 cm out past each jamb, rise
+    // 0.25 x its span (`archRing.shape: round`: a semicircle, rise half the span).
+    const relievingRise = (span: number) => headRing?.shape === 'round' ? Math.floor(span / 2 * 1000) / 1000 : round(span * 0.25);
+    const relieving = (o: CanalhouseOpening) => { const span = o.widthM + 0.12, rise = relievingRise(span); return {left: o.leftM - 0.06, top: o.bottomM + o.heightM + (headRing?.springGap ?? 0.04) + rise, w: span, rise}; };
     const archOf = (o: CanalhouseOpening) => front.windowHead?.kind === 'relieving' ? relieving(o) : {left: o.leftM, top: o.bottomM + o.heightM, w: o.widthM, rise: o.headRiseM!};
-    if (ringSurface && headRing?.style !== 'none') {
-      const ringed = elevation.openings.value.filter(o => !o.id.includes('shop') && (front.windowHead?.kind === 'relieving' ? o.kind === 'window' && onHeadStorey(o.id) : o.head === 'segmental' && !!o.headRiseM));
+    const ringedOpenings = () => elevation.openings.value.filter(o => !o.id.includes('shop') && (front.windowHead?.kind === 'relieving' ? o.kind === 'window' && onHeadStorey(o.id) : o.head === 'segmental' && !!o.headRiseM));
+    // `style: springers` draws no ring (the springer blocks are dressings, below).
+    if (ringSurface && headRing?.style !== 'none' && headRing?.style !== 'springers') {
+      const ringed = ringedOpenings();
       const rings = ringed.flatMap(o => {
         const a = archOf(o);
         // Blocks: nine equal voussoir spans, the even ones in stone (five blocks, the middle one at the crown).
@@ -653,7 +659,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // Tympanum (`windowHead.tympanum`): the glass stops square at the springing line and the arch segment over it is a fill.
     const headTop = new Map<string, number>();
     if (front.windowHead?.tympanum && (front.windowHead.kind === 'segmental' || front.windowHead.kind === 'round')) {
-      const fill = front.windowHead.tympanum === 'band' ? 'accent' as const : 'stone' as const, tymp: CanalhouseOrnament[] = [];
+      const fill = front.windowHead.tympanum === 'band' || front.windowHead.tympanum === 'dark' ? 'accent' as const : 'stone' as const, tymp: CanalhouseOrnament[] = [];
       elevation.openings.value = elevation.openings.value.map(o => {
         if (o.kind !== 'window' || o.head !== 'segmental' || !o.headRiseM || o.id.includes('shop') || !onHeadStorey(o.id)) return o;
         const top = o.bottomM + o.heightM, rise = o.headRiseM;
@@ -662,6 +668,11 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         const {head: _h, headRiseM: _r, headSegments: _s, ...square} = o;
         return {...square, heightM: round(o.heightM - rise)};
       });
+      if (tymp.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...tymp]);
+    }
+    // Dark tympanum under a relieving arch (`tympanum: dark`): the arch field over the square head, in the shadowed wall brick.
+    if (front.windowHead?.tympanum === 'dark' && front.windowHead.kind === 'relieving') {
+      const tymp: CanalhouseOrnament[] = ringedOpenings().map(o => { const a = relieving(o); return {id: `tympanum-${o.id}`, profile: archSegment(a.left, a.top, a.w, a.rise), depthM: 0.02, fill: 'accent' as const}; });
       if (tymp.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...tymp]);
     }
     // Bay windows, balcony guards and masonry courses (street-house features).
@@ -887,13 +898,30 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         }
       }
     }
+    if (headRing?.style === 'springers' && ringSurface) {
+      // Springer blocks: one at each foot of the arch, on the springing line, running outward from the arch (clipped to the front).
+      // Two springers that would meet over a narrow pier are cut back to leave SPRINGER.gapM between them (the iron anchor's place).
+      const [len, hm] = headRing.springerSize ?? [SPRINGER.lengthM, SPRINGER.heightM];
+      const blocks = ringedOpenings().flatMap(o => {
+        const a = archOf(o), y = round(a.top - a.rise);
+        return ([['l', a.left - len, a.left], ['r', a.left + a.w, a.left + a.w + len]] as const).map(([side, x0, x1]) => ({id: `springer-${side}-${o.id}`, y, l: Math.max(0.01, x0), r: Math.min(full - 0.01, x1), side}));
+      }).sort((p, q) => p.y - q.y || p.l - q.l);
+      for (let k = 1; k < blocks.length; k++) {
+        const p = blocks[k - 1], q = blocks[k];
+        if (Math.abs(p.y - q.y) < 0.01 && p.side === 'r' && q.side === 'l' && q.l - p.r < SPRINGER.gapM) { const mid = (p.r + q.l) / 2; p.r = Math.min(p.r, mid - SPRINGER.gapM / 2); q.l = Math.max(q.l, mid + SPRINGER.gapM / 2); }
+      }
+      for (const x of blocks) if (x.r - x.l >= 0.04) dressings.push({id: x.id, kind: 'slab', leftM: round(x.l), bottomM: x.y, widthM: round(x.r - x.l), heightM: round(hm), depthM: 0.06, surface: ringSurface});
+    }
     if (headRing?.keystone) {
       // A keystone block at the crown of every ringed (or flat) head on the head storeys, standing proud of the ring.
       for (const o of elevation.openings.value) {
         const m = /(?:^|-)s(\d+)-b\d+(?:-m\d+)?$/.exec(o.id), s = m ? Number(m[1]) : -1;
         if (!m || o.kind !== 'window' || !(front.windowHead!.storeys ? front.windowHead!.storeys.includes(s) : s > 0)) continue;
         const kw = round(clamp(o.widthM * 0.18, 0.16, 0.26)), top = front.windowHead!.kind === 'relieving' ? relieving(o).top : headTop.get(o.id) ?? o.bottomM + o.heightM;
-        dressings.push({id: `keystone-${o.id}`, kind: 'slab', leftM: round(o.leftM + o.widthM / 2 - kw / 2), bottomM: round(top - 0.02), widthM: kw, heightM: round(ringM + 0.08), depthM: 0.06, surface: ringSurface ?? 'stone'});
+        // Springer heads (a round relieving arch can reach the eaves): the keystone is cut at the wall top, and dropped when under 8 cm.
+        const kh = headRing.style === 'springers' ? Math.min(ringM + 0.08, eaves - 0.01 - (top - 0.02)) : ringM + 0.08;
+        if (kh < 0.08) continue;
+        dressings.push({id: `keystone-${o.id}`, kind: 'slab', leftM: round(o.leftM + o.widthM / 2 - kw / 2), bottomM: round(top - 0.02), widthM: kw, heightM: round(kh), depthM: 0.06, surface: ringSurface ?? 'stone'});
       }
     }
     if (front.windowSills === 'consoles') {
@@ -1024,7 +1052,7 @@ function paintedBands(front: FrontIntent, layout: Layout, openings: CanalhouseOp
   for (const s of storeys) {
     const h = heights[s], b0 = bottoms[s], mine = openings.filter(o => o.kind === 'window' && storeyOf(o.id) === s && o.bottomM > b0 + 0.15);
     const sill = mine.length ? Math.min(...mine.map(o => o.bottomM)) : b0 + h * 0.22, head = mine.length ? Math.max(...mine.map(o => o.bottomM + o.heightM)) : b0 + h * 0.8;
-    const transom = sill + (head - sill) * PAINTED.transomK;
+    const transom = sill + (head - sill) * (front.bandTransomAt ?? PAINTED.transomK);
     const runs: [number, number][] = gap && erker!.storeys.includes(s) ? ([[0, gap[0]], [gap[1], full]] as [number, number][]).filter(([a, c]) => c - a > 0.1) : [[0, full]];
     const push = (id: string, y: number, bh: number) => runs.forEach(([a, c], k) => out.push({id: runs.length > 1 ? `${id}-${k}` : id, leftM: round(Math.max(0, a)), bottomM: round(y), widthM: Math.floor((Math.min(full, c) - Math.max(0, a)) * 1000) / 1000, heightM: round(bh), depthM: PAINTED.bandDepthM, surface: 'stone'}));
     if (lines.includes('sill')) push(`painted-sill-s${s}`, Math.max(b0 + 0.02, sill - hs), Math.min(hs, sill - b0 - 0.02));
@@ -1127,14 +1155,18 @@ function cornerTowerPlan(pieces: {front: FrontIntent; endpoints: [number[], numb
     fronts: new Map([[owner.front.id, {end: i ? 'right' : 'left', role: 'owner', spanM: round(spanO)}], [partner.front.id, {end: j ? 'right' : 'left', role: 'partner', spanM: round(spanP)}]])};
 }
 
+/** A hex colour with every channel scaled by `k`. */
+const shadeHex = (hex: string, k: number) => '#' + [1, 3, 5].map(i => Math.round(parseInt(hex.slice(i, i + 2), 16) * k).toString(16).padStart(2, '0')).join('');
 export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
   const p = {...intent.palette, ...(front?.palette ?? {})}, roof = ROOF_COLOURS[intent.roof.material];
   const shopFront = (front ?? intent.fronts.find(f => f.shopfront))?.shopfront, groundFront = (front ?? intent.fronts.find(f => f.groundFront))?.groundFront;
   // A historic ground front paints its piers/posts/beam in `shop` (default: the frame colour).
   const shop = shopFront?.colour ?? (groundFront ? groundFront.colour ?? p.frame : undefined);
   const awningFront = (front ?? intent.fronts.find(f => f.shopfront?.awning && f.shopfront.awning.style !== 'none'))?.shopfront?.awning, awning = awningFront && awningFront.style !== 'none' ? awningFront.colour : undefined;
+  // A dark tympanum without a band brick: the wall colour in shadow.
+  const dark = !p.band && (front ? [front] : intent.fronts).some(f => f.windowHead?.tympanum === 'dark');
   return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.frame),
-    ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
+    ...(p.band ? {accent: swatch(p.band)} : {}), ...(dark ? {accent: shadeHex(swatch(p.brick), DARK_TYMPANUM_K)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
 }
 
 /** `kind: large` fit (3DBAG walls → facade systems per wall group); lives in fitLarge.ts. */

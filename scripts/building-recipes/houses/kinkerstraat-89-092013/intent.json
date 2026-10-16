@@ -1,0 +1,146 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "kinkerstraat-89-092013",
+ "pandId": "0363100012092013",
+ "address": "Kinkerstraat 89-105, Amsterdam-West (Oud-West): 1987 urban-renewal block opposite De Hallen, five storeys of grey-beige rendered panels with white window bands, cantilevered balconies and yellow-tiled stair towers over a shop ground",
+ "sources": [
+  {
+   "id": "pano-2021-12-31-w01-337s3b",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002374_pano_0001_000036/",
+   "image": "source-data://pand-reference-walls/0363100012092013/w01-337s3b.jpg",
+   "sha256": "08cf41cd09247b2e38e167afc731bfe2b4289d64f9c2d7ae14a5bbc38d68a263",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-31-w01-337s1",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-31",
+   "image": "source-data://pand-reference-walls/0363100012092013/w01-337s1.jpg",
+   "sha256": "90873a070737b66c94d61e7a70c32fbf2161ced4299c13f9b4d9ad40a6b2467f",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-11-19-w01-337s2bL",
+   "kind": "street-panorama",
+   "capturedAt": "2018-11-19",
+   "image": "source-data://pand-reference-walls/0363100012092013/w01-337s2bL.jpg",
+   "sha256": "919cadcdb7986fd1baa082d86e9a03f48c3d6aa8dc34bd3a8b25ef739b7e3430",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-25-w01-337s4",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-25",
+   "image": "source-data://pand-reference-walls/0363100012092013/w01-337s4.jpg",
+   "sha256": "258fa0b07cfec670ff9c2a8e7e993e1a3834be722c1ff49ec8de85181ad6b3ce",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-09-w01-337s5bL",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-09",
+   "image": "source-data://pand-reference-walls/0363100012092013/w01-337s5bL.jpg",
+   "sha256": "a091d005f68159f0b5f011f3132fc6e08b9a2ddaa68037badebef20b68848609",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-09-w02-67",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001500_pano_0000_003490/",
+   "image": "source-data://pand-reference-walls/0363100012092013/w02-67.jpg",
+   "sha256": "1fc594340b5d9bfd0d4193da1402eed5f0c9463b91f5967c6eb4934eba8a12dd",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-02-w01-337s2",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-02",
+   "image": "source-data://pand-reference-walls/0363100012092013/w01-337s2.jpg",
+   "sha256": "e693db6cf669545e9262d288211361d6a0d0665d140983ebfefd0b375ff1d797",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    13
+   ],
+   "street": "Kinkerstraat",
+   "system": "ribbon-windows",
+   "storeys": 5,
+   "ground": "glazed",
+   "deepBars": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#786b61",
+    "frame": "#e8e6dc",
+    "stone": "#c8c4bc"
+   },
+   "hand": [
+    "system",
+    "wallSplit",
+    "palette.brick"
+   ],
+   "windowShape": {
+    "w": 0.493,
+    "h": 0.55,
+    "sill": 0.2
+   },
+   "baysPerStorey": 9
+  },
+  {
+   "wallSurfaces": [
+    81,
+    83
+   ],
+   "system": "ribbon-windows",
+   "storeys": 5,
+   "ground": "glazed",
+   "deepBars": true,
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#8c8272",
+    "frame": "#e8e6dc",
+    "stone": "#c8c4bc",
+    "glass": "#4d4a47"
+   },
+   "hand": [
+    "system",
+    "wallSplit",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.6,
+    "sill": 0.2
+   },
+   "baysPerStorey": 7
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#9a948a",
+  "frame": "#e8e6dc",
+  "door": "#2a2a2a",
+  "stone": "#c8c4bc"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
+  ]
+ },
+ "notes": [
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #6a6d6c not used (not darker than the wall #786b61 by 10 L*, or tinted): kit glass kept; walls[0] wall split #675c4f | #857c6a at 62 % (dE 15.8)."
+ ]
+}

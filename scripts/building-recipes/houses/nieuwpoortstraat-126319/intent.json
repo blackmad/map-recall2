@@ -6,27 +6,45 @@
  "address": "Nieuwpoortstraat 80-98 / Den Brielstraat 2-6, Amsterdam: housing block over shops (BAG 1991; 150 dwellings, shops and offices on the ground floor)",
  "sources": [
   {
-   "id": "pano-2025-09-26-nieuwpoortstraat",
+   "id": "pano-2025-09-26-w03-179",
    "kind": "street-panorama",
    "capturedAt": "2025-09-26",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00283/",
-   "image": "staging/pand-reference-walls/0363100012126319/w03-179.jpg",
+   "image": "source-data://pand-reference-walls/0363100012126319/w03-179.jpg",
+   "sha256": "a59e7cf47430ed177e4daa9155a4b3e5a82caeef29f4285a8d99ad199e804364",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-09-26-top",
+   "id": "pano-2024-11-21-w08-179L",
    "kind": "street-panorama",
-   "capturedAt": "2025-09-26",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00283/",
-   "image": "staging/pand-reference-walls/0363100012126319/w03-179.jpg",
+   "capturedAt": "2024-11-21",
+   "image": "source-data://pand-reference-walls/0363100012126319/w08-179L.jpg",
+   "sha256": "ffdde588c378d29fad862aeaf01197d2250559ad49bedb0e209488fdbf1f8f28",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-09-26-nieuwpoortstraat-east",
+   "id": "pano-2025-09-26-w04-179",
    "kind": "street-panorama",
    "capturedAt": "2025-09-26",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00283/",
-   "image": "staging/pand-reference-walls/0363100012126319/w03-179.jpg",
+   "image": "source-data://pand-reference-walls/0363100012126319/w04-179.jpg",
+   "sha256": "0e0a88bb42a41b90837446a1a8e9862485fcbd8e6d5a2bbd1e5bbbeb60433a1b",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-w02-179",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00298/",
+   "image": "source-data://pand-reference-walls/0363100012126319/w02-179.jpg",
+   "sha256": "b6587f0b8f88126d450eb64bc968c3feff6e4951177b7dbe6b54d5bbe2c2d897",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-05-14-w05-179",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-14",
+   "image": "source-data://pand-reference-walls/0363100012126319/w05-179.jpg",
+   "sha256": "3c98ee8d6d2ce205f5be5c5796461912d768dc562b19bf479dbdcd58f33d2596",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -56,8 +74,13 @@
    },
    "palette": {
     "frame": "#4b4b4d",
-    "stone": "#8f8a84"
-   }
+    "stone": "#8f8a84",
+    "brick": "#6d665e"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -68,7 +91,11 @@
    "palette": {
     "brick": "#4a4a4c",
     "frame": "#3a3a3c"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -79,9 +106,15 @@
    "sills": false,
    "palette": {
     "frame": "#4b4b4d",
-    "stone": "#8f8a84"
+    "stone": "#8f8a84",
+    "brick": "#605d5c",
+    "glass": "#47414d"
    },
-   "alignWith": 0
+   "alignWith": 0,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -97,7 +130,15 @@
  "notes": [
   "South front on Nieuwpoortstraat (panels 115, 38, 75, 103, 268 at bearing 179) from the rectified 2025-09-26 panorama, the curved south-east corner (panels 100, 218) and the east end on Den Brielstraat (panel 252) from the 2025-09-26 and 2021-02-24 panoramas: grey-beige brick, a glazed shop plinth between concrete piers under a brick band, three upper storeys of punched windows on a 3.4 m axis, each window set in a dark grey panel stack, and a set-back top storey clad dark grey with a band of windows (walls[1], 3DBAG panel 285 at 16.4-19.0 m).",
   "Signs: ACTION (blue on white over the shop entrance of the discount store) is lettered on the plinth fascia, centred on the long front (the shop is off-centre in the photo). Also on the plinth: DE MAKELAARS with an orange location-pin logo (estate agent, south-east corner) and GOD IS LIEFDE posters in the east-end windows: not modelled.",
-  "Not modelled: the dark grey panels above and below each window (the kit has no spandrel panel per opening), the brick bands at each floor, the concrete piers of the plinth, the steel railings of the roof terrace and the roof-edge posts, two sectional glazed garage doors in the corner plinth. The north side (Den Brielstraat courtyard, 120 m) and the west end have no panorama within 35 m and are blank."
+  "Not modelled: the dark grey panels above and below each window (the kit has no spandrel panel per opening), the brick bands at each floor, the concrete piers of the plinth, the steel railings of the roof terrace and the roof-edge posts, two sectional glazed garage doors in the corner plinth. The north side (Den Brielstraat courtyard, 120 m) and the west end have no panorama within 35 m and are blank.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #594f22 not used (not darker than the wall #6d665e by 10 L*, or tinted): kit glass kept."
  ],
- "closedBands": true
+ "closedBands": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   2
+  ]
+ }
 }

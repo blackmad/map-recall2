@@ -1,0 +1,566 @@
+{
+ "politie-van-leijenberghlaan": {
+  "outcome": "refit",
+  "look": "Red-brown brick ribbon block against a two-tone front: grey concrete for the north 40 %, dark brown-grey brick for the rest, three storeys of ribbon windows (the model's ground was blank).",
+  "note": "walls[0] grey #7c7a74 | brown #5b4b44 split at 0.40 by hand (the measured wall is the brown part; no split detected), ground windowed, ribbon height by hand 0.58; walls[2], [4] measured colour, glazing refined. Columns and window shape are mullion counts (64 at 0.8 m): allowed as inferred."
+ },
+ "leidsestraat-67-large": {
+  "outcome": "uninstall",
+  "look": "Ornamented corner block (domed corner turret, dark painted Kerkstraat front with tall arched windows and a shop arcade) drawn as red brick with white cross windows; no kit fit reads as this building.",
+  "note": "Ornament: bespoke builder (ride-visible, 54 sampled routes).",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "politie-oost-zeeburg": {
+  "outcome": "refit",
+  "look": "Pale painted box against a brown-grey brick front with narrow vertical windows.",
+  "note": "walls[0] measured brick #665f58, windowShape tall slits (refined), system kept."
+ },
+ "politie-zuidoost-gaasperdam": {
+  "outcome": "refit",
+  "look": "A full glass curtain wall against a grey framed front of two fully glazed storeys between red posts.",
+  "note": "curtain-wall -> brick-bay-grid (measured punched), grey #726f6f, 10 bays, glazed ground, windowShape 0.90 x 0.86 by hand; PASS. The red posts are not in the kit (coloured pilasters on a framed front).",
+  "kit": [
+   "coloured pilasters/posts on framed fronts"
+  ]
+ },
+ "kattenburg-wings-164938": {
+  "outcome": "refit",
+  "look": "Purple-brown brick with grey windows on the Kattenburgerstraat wing against a near-black painted brick front with white-framed sash windows; the yellow canal wing reads right.",
+  "note": "walls[0] measured #645f5f, windowShape by hand 0.42 x 0.55 (the refinement turned white-framed panes into full-height slits); walls[1] washed out (NO EVIDENCE) but the yellow brick and window rhythm read the same on the sheet: allowed as inferred."
+ },
+ "heinekenplein-130580": {
+  "outcome": "keep",
+  "look": "Red-orange brick block with small punched windows reads right against the Heinekenplein front (w01-96 thumbnail, overcast).",
+  "note": "The measured wall #4e443f is the shadow side of a low-sun crop (w02-96, 2022-01-11): a measurement miss, not a model error. walls[1], [2] have no matched crop (curved fronts); same brick all round."
+ },
+ "politie-lijnbaansgracht": {
+  "outcome": "refit",
+  "look": "Purple-brown brick with grey windows reads close; the photo's brown-grey brick has white-framed windows, smaller on walls[0] and larger on walls[1].",
+  "note": "measured brick both groups, white frames, windowShape walls[1] by hand 0.60 x 0.62 (refinement made slits); remaining FAIL is a storey-band count on walls[0]."
+ },
+ "politie-nieuwezijds-voorburgwal": {
+  "outcome": "refit",
+  "look": "Beige ribbon block against a teal glass-grid front (walls[0]) and a dark glazed corner (walls[2]).",
+  "note": "walls[0], [2] ribbon -> layered curtain-wall with hand glass (teal #2c5257, dark #3a3f3a); walls[1] measured. The curtain glass is the wall in the layered kit, so the likeness reads 'wall not drawn': allowed as inferred."
+ },
+ "quellijnstraat-36-098847": {
+  "outcome": "refit",
+  "look": "Red-brown brick with big white-framed windows against dark grey-brown Amsterdam School brick with small windows and garage gates.",
+  "note": "measured brick per group, windowShape by hand (0.42-0.45 x 0.36-0.42; the measurement read 0.98 x 0.08 and slits). The bay window and the rounded corner stay unmodelled.",
+  "kit": [
+   "bay window",
+   "rounded corner"
+  ]
+ },
+ "haarlemmerweg-325-110408": {
+  "outcome": "refit-system",
+  "system": "louvre-screen",
+  "look": "Red brick ribbon block against a car park whose decks are screened by pale and dark vertical louvres over a brick shop plinth; the glass deck front (walls[3]) is drawn pale and blank.",
+  "note": "Needs a louvre/lamella screen system (full-height vertical fins at ~0.3 m pitch in their own colour over a plinth). Left installed.",
+  "kit": [
+   "louvre-screen"
+  ]
+ },
+ "meeuwenlaan-132-101771": {
+  "outcome": "refit",
+  "look": "Yellow brick school wings read right (washed and leafy crops); the three-storey wing (walls[2]) is dark brown brick with large white-framed windows, drawn tan with slits; the glass wings grey, not white.",
+  "note": "walls[2] measured #544b46 with large windows (PASS), walls[3] measured grey; walls[0], [1], [4] NO EVIDENCE (washed out, foliage) but read the same: inferred."
+ },
+ "rigakade-8-078289": {
+  "outcome": "refit",
+  "look": "Pale steel sheds read right but too white against overcast grey-white ribbed cladding.",
+  "note": "cladding #b4bbc0 by hand from w03-27 (the measured #a2acb3 is the overcast crop raw); the saw-tooth roof glazing is the 3DBAG roof.",
+  "kit": [
+   "saw-tooth roof glazing"
+  ]
+ },
+ "politie-ij-tunnel": {
+  "outcome": "refit",
+  "look": "Mid-brown brick with wide ribbon windows against near-black-brown brick with mixed ribbon bands and small vertical windows.",
+  "note": "measured dark brick per group; walls[0] small windows by hand 0.40 x 0.50 (measured as full-height slots). The mixed ribbon/punched storeys on one face stay one system per group (listed).",
+  "kit": [
+   "mixed ribbon and punched storeys in one group"
+  ]
+ },
+ "politie-houtmankade": {
+  "outcome": "refit",
+  "look": "Cream block against a dark brown brick slab with a dense window grid.",
+  "note": "walls[2] measured #615449, window height fixed (0.95 slot -> 0.58); walls[0] NO EVIDENCE (foliage and washed out, 2016 crop) kept as authored: inferred."
+ },
+ "politie-oost-watergraafsmeer": {
+  "outcome": "refit",
+  "look": "Red brick tower against dark grey-brown brick fronts with tall narrow windows.",
+  "note": "measured per face (#4e4f53, #574c4a, #413333); walls[3] too oblique to judge (47.5 deg): hand #574c4a from walls[1]."
+ },
+ "politie-postjesweg": {
+  "outcome": "refit",
+  "look": "Saturated orange-red brick with large windows against a deep red brick front with small windows and a grey-brown brick east wing.",
+  "note": "red by hand #8e3b2c (the light-trim normalisation reads the saturated red as #5f342b; the crop and overlay read redder), measured grey #5b5650 on walls[3] with small windows by hand; walls[2]'s crop shows the neighbouring AVONDVERKOOP shop: inferred."
+ },
+ "politie-meer-en-vaart": {
+  "outcome": "refit",
+  "look": "Pale cream ribbon block against a grey-beige concrete front with ribbon windows.",
+  "note": "walls[1] measured #5d5a55, walls[0] hand #776f62 (foliage 41 %), ribbon height by hand 0.42 (WARN)."
+ },
+ "politie-flierbosdreef": {
+  "outcome": "inferred",
+  "look": "Small pale pavilion; the only crop is a car park view with parked vans (usable 36 %), the other street wall has none.",
+  "note": "NO EVIDENCE / NO PHOTO on both street walls, and no sampled route sees it (ride visibility 0): recorded as inferred, left installed."
+ },
+ "politie-boven-ij": {
+  "outcome": "inferred",
+  "look": "Pale grey concrete office with ribbon windows reads right behind the trees.",
+  "note": "NO EVIDENCE on both photographed fronts (foliage 37 %, washed 33 %), no sampled route sees it: inferred, left installed."
+ },
+ "politiepost-ijburg": {
+  "outcome": "refit",
+  "look": "Bright red brick against dark brown brick IJburg blocks.",
+  "note": "measured per face (#41322a, #3d2d25, #5e3f35), walls[2] window height fixed (0.95 slot -> 0.58)."
+ },
+ "politie-amsterdam-johan-huizingalaan": {
+  "outcome": "keep",
+  "look": "Grey-framed glazed office with white spandrel bands reads right against the photographed fronts (glass and pale grey panels).",
+  "note": "walls[2] FAIL is family 'paint vs brick' on a panel front whose frames the photo reads as wall; walls[0], [4] behind foliage. Not re-fitted."
+ },
+ "entrepotdok-164981": {
+  "outcome": "refit",
+  "look": "Warm red-brown warehouse row against dark grey-brown warehouse brick with arched loading doors and shutters.",
+  "note": "measured per face; walls[3] hand #5f544c (49.5 deg oblique). The warehouse shutters, hoist beams and the varied gables are not in the kit (listed).",
+  "kit": [
+   "warehouse shutters, hoist beams and per-bay gables"
+  ]
+ },
+ "overtoom-283-084999": {
+  "outcome": "refit",
+  "look": "White block with dense tall windows against tan brick with wide white-framed windows (Reade).",
+  "note": "measured tan per face; bays 16 -> 6 and 8 -> 3 with wide windows by hand (0.72 x 0.50), WARN/FAIL only on a storey band."
+ },
+ "amstel-142-186290": {
+  "outcome": "uninstall",
+  "look": "Plain brown brick grid against an ornamented historic front (stone bands and dressings, tall decorated windows, a shop front).",
+  "note": "Ornament, not a kit gap: bespoke builder if it returns (ride-visible, 161 sampled routes).",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "nieuwpoortstraat-126319": {
+  "outcome": "refit",
+  "look": "Pale grey block against grey-brown brick fronts with punched windows.",
+  "note": "measured per face (#6d665e, #605d5c); system and bays kept."
+ },
+ "kattenburgerstraat-164930": {
+  "outcome": "refit",
+  "look": "Red-brown gallery slab with ribbons against a dark brown slab seen through trees.",
+  "note": "hand #4e3e32 between the leafy crop's #342a18 and the authored red (foliage 41 %): inferred."
+ },
+ "beursplein-5-165051": {
+  "outcome": "uninstall",
+  "look": "Red and cream banded kit against the 1913 bank block: dark brick with stone dressings, carved bays, balconies and a richly ornamented corner.",
+  "note": "Ornament: bespoke builder (ride-visible, 61 sampled routes); every street wall is also NO EVIDENCE (obliquity 48-49 deg, foliage).",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "damrak-77-165746": {
+  "outcome": "uninstall",
+  "look": "Red brick grid against the 1893 Damrak front: dark brick with stone-banded gothic-revival bays, tall mullioned windows and a gabled crown.",
+  "note": "Ornament: bespoke builder (ride-visible, 58 sampled routes).",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "oz-achterburgwal-233-180196": {
+  "outcome": "refit",
+  "look": "Orange brick with square windows against dark purple-brown brick with segmental-arched, white-framed windows.",
+  "note": "measured/hand #5a4a42 on both faces, segmental window arches and white frames (vocabulary present); walls[0] camera 6.8 m (NO EVIDENCE) but reads the same."
+ },
+ "warmoesstraat-garage-165687": {
+  "outcome": "refit",
+  "look": "Tan car-park grid against a grey-brown brick grid of square panels; the Warmoesstraat face is grey stone.",
+  "note": "walls[2] hand #8a837c (47 deg oblique), walls[3] measured #5e584e; walls[0], [1] have no crop."
+ },
+ "engelsesteeg-165098": {
+  "outcome": "refit",
+  "look": "Orange hotel brick reads right on the Engelsesteeg front; the south face is brown brick with tall white-framed windows, drawn tan.",
+  "note": "walls[1] measured #6e6256 with windows by hand 0.45 x 0.55; walls[2]'s crop shows a neighbouring canal house: inferred."
+ },
+ "westerdok-186086": {
+  "outcome": "refit",
+  "look": "One tan brick and punched grid around a courtyard block whose fronts are several architects' work: dark grey and pale stone on the south, dark brown and yellow on the east, loggias and balconies.",
+  "note": "measure.ts found the south split (dark grey #474d56 | pale) and the dark brown east front; the east front's yellow third and the loggias are not expressed (a second split per group). walls[1], [2] NO EVIDENCE (foliage, washed): inferred.",
+  "kit": [
+   "second wallSplit per group"
+  ]
+ },
+ "nieuwe-achtergracht-253754": {
+  "outcome": "refit",
+  "look": "Red brick UvA wing against dark brown brick with large square windows.",
+  "note": "measured per face (#5e4e41, #6e605a)."
+ },
+ "aambeeldstraat-202176": {
+  "outcome": "refit",
+  "look": "Blue-grey clad hall against a dark grey hall with a high glazed band.",
+  "note": "walls[0] measured #585955, walls[1] hand from walls[0] (foliage 26 %)."
+ },
+ "oude-turfmarkt-168172": {
+  "outcome": "refit",
+  "look": "Red brick with narrow windows against dark grey-brown brick with large windows (Oude Turfmarkt front); the east face (2016 crop) is a modern infill with wood-framed glazing, drawn white.",
+  "note": "walls[0] measured #5d5550, window height fixed; walls[1] kept white (the crop's dark wall cluster is the window frames and shade): inferred; a glazed infill system would say it better.",
+  "kit": [
+   "glazed infill between historic fronts"
+  ]
+ },
+ "oba-javaplein": {
+  "outcome": "refit",
+  "look": "Pink stucco-like grid against a grey-tan concrete grid on the square and brown brick neo-traditional fronts with gables on the side streets.",
+  "note": "measured per face (#8c7a6f, #4a3832, #64544b, #81614f); window heights fixed (0.10 and 0.98 slots). The gables and dormers of walls[3] are roof form (3DBAG), not facade.",
+  "kit": [
+   "gables and dormers from the 3DBAG roof"
+  ]
+ },
+ "oba-olympisch-kwartier": {
+  "outcome": "refit",
+  "look": "One bright red brick on eight faces against several darker red-brown and purple-brown bricks.",
+  "note": "measured per face; walls[0] keeps the preset window (every measured windowShape there opened 4-15 m of open edge: an opening that straddles merged coplanar 3DBAG surfaces), walls[4] width by hand 0.72."
+ },
+ "oba-linnaeus": {
+  "outcome": "refit",
+  "look": "Red brick ribbons against dark brown brick with long ribbon windows over a shop plinth.",
+  "note": "measured (#3d3533, #6d5351), walls[1] window height fixed."
+ },
+ "oba-mercatorplein": {
+  "outcome": "uninstall",
+  "look": "Plain brick grid for the 1927 Amsterdam School block on Mercatorplein; the only crop is the glazed ground-floor canopy wing.",
+  "note": "NO PHOTO on both ride-visible block fronts (walls[0], [2]) and an ornamented Amsterdam School front: uninstall until crops exist; bespoke if it returns.",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "stadsloket-oost": {
+  "outcome": "refit",
+  "look": "Tan brick reads right on the main front; the east face is a brighter yellow brick with a large arched entrance.",
+  "note": "walls[0] window height fixed (WARN), walls[2] measured yellow #f4c190; walls[1] kept tan (the crop's #4a463f is the shaded ribbon band): inferred. The big entrance arch is not modelled.",
+  "kit": [
+   "large entrance arch"
+  ]
+ },
+ "stadsloket-noord": {
+  "outcome": "refit",
+  "look": "Mid-grey office against a near-black clad block with small window bands.",
+  "note": "measured near-black per face (#24282e, #2f2e3b, #37333d); walls[2] window width fixed."
+ },
+ "stadsloket-zuidoost": {
+  "outcome": "refit",
+  "look": "Red brick against dark brown brick with long window bands.",
+  "note": "measured per face (#6f4a3b, #6f625d, #716460)."
+ },
+ "stadsdeel-nieuw-west": {
+  "outcome": "refit",
+  "look": "White office with punched windows against a dark grey, heavily glazed office tower.",
+  "note": "measured grey per face; windows by hand 0.85 x 0.72 (glazing 0.61 vs photo 0.8: a curtain front over a brick-bay-grid budget). walls[0], [1], [4], [5] have no crop: kept as fitted.",
+  "kit": [
+   "curtain-wall glazing share over a punched grid"
+  ]
+ },
+ "stadsloket-west": {
+  "outcome": "refit",
+  "look": "Brown housing over shops reads close; the Bos en Lommerplein curtain wall's red mullion grid stands in for a housing front with red-framed windows and balconies, and the low west face is mostly a blank grey wall.",
+  "note": "walls[1] measured #574d4d, window width fixed (measured 0.08); walls[2], [3] kept (layered curtain glass cannot be scored; walls[3]'s crop is a blank neighbour wall): inferred."
+ },
+ "hamerkanaal-209-243116": {
+  "outcome": "refit",
+  "look": "Red brick arched workshop and hall front against near-black-brown 1908 brick; the KROMHOUTHAL front is one huge glazed arch under a stepped gable.",
+  "note": "measured #3d3432 / #3d353c. Still missing: the hall's single full-height arched window and stepped gable (kit: a hall-front arch system).",
+  "kit": [
+   "full-height hall arch window and stepped gable"
+  ]
+ },
+ "cgm-190-202277": {
+  "outcome": "refit",
+  "look": "Tan market hall against dark brown brick behind loading docks, a canopy band and trucks.",
+  "note": "walls[0], [2] measured; walls[1] (the canopy band) kept: the crop is trucks and signage."
+ },
+ "distelweg-88-114605": {
+  "outcome": "inferred",
+  "look": "Grey clad warehouse drawn blank, as the 1948 sandwich-panel shed is.",
+  "note": "Its only group is blank, so the likeness has nothing to score; kept as fitted."
+ },
+ "hotel-arena-236788": {
+  "outcome": "refit",
+  "look": "Orange brick against the 1890 orphanage's dark brown brick with stone bands and arched windows; the pavilion wing's yellow brick reads right.",
+  "note": "walls[0] measured #70574d (WARN), walls[1] measured, window height fixed; walls[2] kept (the crop is in deep shade). The stone bands and the glazed roof pavilion are listed gaps.",
+  "kit": [
+   "stone string courses / bands",
+   "glazed roof pavilion"
+  ]
+ },
+ "utrechtsestraat-15-169214": {
+  "outcome": "refit",
+  "look": "Brown brick office with stone piers reads close; the photo's multi-pane windows are wider than the kit's tall slots.",
+  "note": "measured colour (within 0.03 L) and window shapes per face; walls[0] behind foliage."
+ },
+ "marnixstraat-248-185422": {
+  "outcome": "keep",
+  "look": "White ribbon decks of the car park read right against the photos (white deck edges over dark openings).",
+  "note": "walls[0] FAIL is the dark deck interiors read as wall; walls[1], [2] washed out. Not re-fitted."
+ },
+ "funenpark-427-184743": {
+  "outcome": "refit",
+  "look": "Orange-red brick arcs against near-black-brown brick (2002 curved apartment arcs), mostly seen through trees.",
+  "note": "near-black brown by hand #3e3832 on all eight groups from the measured faces (#252c24-#413f39; the crops are leafy: NO EVIDENCE on seven): inferred."
+ },
+ "plantage-middenlaan-52-186093": {
+  "outcome": "uninstall",
+  "look": "A mostly blank brown box (one windowed front) against a 2022 brick courtyard block with stacked cream curved balcony bands on every street front.",
+  "note": "NO PHOTO on all three street fronts (crop coverage 0.54 / 0 / 0.59 under the 0.60 match; thumbnails w01-210L, w03-30L, w07-120 show the fronts) and ride-visible (217 sampled routes): uninstall. Needs curved balcony bands (kit) when it returns.",
+  "kit": [
+   "stacked curved balcony bands"
+  ]
+ },
+ "westerdok-748-186003": {
+  "outcome": "refit",
+  "look": "Bright red brick against darker red-brown and brown brick blocks.",
+  "note": "measured per face; window heights fixed (0.90 slots)."
+ },
+ "cgm-114-202381": {
+  "outcome": "keep",
+  "look": "Pale market hall with green shutters and a sign fascia reads right against the photo (pale walls under a deep canopy, green roller shutters, signage).",
+  "note": "The measured #241d1c is the canopy's shade over the front: a measurement miss."
+ },
+ "buitenzagerij-45-100112": {
+  "outcome": "refit",
+  "look": "Tan brick comb of rows against grey-brown brick (2016 crop, a thin strip).",
+  "note": "walls[0] measured #736352; walls[1] has no crop."
+ },
+ "barlaeus": {
+  "outcome": "refit",
+  "look": "The striped school front reads close (red brick, white-ringed arched windows, a pale ground storey); the photo adds white horizontal bands and carved dressings. The rear wing is dark brown brick, drawn red.",
+  "note": "walls[0], [1] kept (colour and arches right; the measurement is washed out / reads the white bands); walls[2] measured #5d534b, window height fixed. Missing: horizontal white brick banding (a striped-brick wall pattern).",
+  "kit": [
+   "striped brick banding"
+  ]
+ },
+ "vossius": {
+  "outcome": "refit",
+  "look": "Red brick school against dark brown brick with multi-pane windows, mostly behind trees.",
+  "note": "measured per face where the crop allows; walls[0], [2] behind foliage: inferred."
+ },
+ "weteringstraat-16-184747": {
+  "outcome": "refit",
+  "look": "Brown brick office reads close; the measured fronts are a cooler grey-brown.",
+  "note": "measured per face (#675d5a, #574e48, #686360, #4a413f, #423735); system and bays kept."
+ },
+ "berlage-lyceum": {
+  "outcome": "keep",
+  "look": "Yellow brick school with framed multi-pane window groups reads right on all three fronts.",
+  "note": "walls[0]'s measured #7d6e52 is the shaded front (the photo is in shade); walls[1] washed out; walls[2] within 0.05 L. Not re-fitted."
+ },
+ "montessori-van-ostade": {
+  "outcome": "refit",
+  "look": "Light red brick against dark red-brown brick with tall framed windows.",
+  "note": "measured #68584f (WARN after re-fit)."
+ },
+ "rijksakademie": {
+  "outcome": "refit",
+  "look": "Light red brick with white-ringed arched windows against a mid-to-dark red-brown barracks brick, seen through trees.",
+  "note": "one brick by hand #6e4f42 on both fronts between the two crops (#8f7b65 leafy, #473f36 shaded): inferred."
+ },
+ "amsterdams-lyceum": {
+  "outcome": "uninstall",
+  "look": "A plain brick grid against a 1920 brick school whose Valeriusplein front is a pair of gate arches under a lettered band (HET AMSTERDAMS LYCEUM).",
+  "note": "NO PHOTO on both street fronts (ride-visible: 44 sampled routes) and the gate-arch passage is ornament the kit cannot say: uninstall; needs a through-passage arch system.",
+  "kit": [
+   "through-passage gate arches",
+   "lettered band"
+  ]
+ },
+ "cygnus": {
+  "outcome": "refit",
+  "look": "Pale grey office grid against a dark brown brick grid with deep windows.",
+  "note": "measured #43372e; windows by hand 0.72 x 0.74 (refine had them 0.98 tall)."
+ },
+ "reade": {
+  "outcome": "keep",
+  "look": "White ribbon-window rehab block reads close to the pale grey curved front with yellow awnings.",
+  "note": "the measured #545555 is the shaded ribbon band; low ride visibility (4 routes). The yellow awnings are not modelled.",
+  "kit": [
+   "awnings"
+  ]
+ },
+ "pijlsteeg-31-165293": {
+  "outcome": "uninstall",
+  "look": "Red brick grid and cream boxes against the Krasnapolsky block's grey stone hotel front with carved bays, a cast-iron glazed winter-garden range and an ornamented red-and-gold cafe front.",
+  "note": "ornamented historic front on a high-ride wall (277 sampled routes); every group FAILs on colour (dL up to 0.78): uninstall; bespoke if it returns.",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "kloveniersburgwal-72-171179": {
+  "outcome": "refit",
+  "look": "Mixed Binnengasthuis ranges: brown brick, a tan and brown split range and a dark red-brown 1930s range read close after the re-fit; walls[5] was drawn blue-grey against brown brick.",
+  "note": "measured per face; walls[0] and [4] palettes by hand (#6e5448 kept, #b8996e buff from the leafy crop); walls[0] window width fixed. Missing: the carved stone portal and dressings of walls[1].",
+  "kit": [
+   "carved stone portal and dressings"
+  ]
+ },
+ "van-oldenbarneveldtstraat-48-137990": {
+  "outcome": "refit",
+  "look": "Buff brick curved block; the only crop is backlit and reads it grey.",
+  "note": "buff kept by hand #c9a46e (thumbnail w01-111 in sun shows buff brick); windows by hand 0.5 x 0.6 (refine had 0.11 wide slits): inferred."
+ },
+ "schaafstraat-17-091631": {
+  "outcome": "refit",
+  "look": "Bright white bands against greige and grey painted bands with long clerestory glazing.",
+  "note": "measured per face (#988e7d, #726d60, #47474a); ride visibility 0."
+ },
+ "asterweg-19-134024": {
+  "outcome": "refit",
+  "look": "Red brick against dark brown brick under a long glazed raised storey.",
+  "note": "measured #57423e; window shape fixed (0.98 square)."
+ },
+ "van-der-palmkade-191-120309": {
+  "outcome": "refit",
+  "look": "Red brick with arched first-floor windows against dark brown brick (2001 serpentine block).",
+  "note": "measured #504140."
+ },
+ "stadhouderskade-111-137448": {
+  "outcome": "uninstall",
+  "look": "One dark painted grid and a red grid against an 1872 row of individually different brown-brick and buff houses with balconies and ornamented heads.",
+  "note": "irregular row of separate house fronts (each crop shows several distinct fronts), ride-visible (50 routes): uninstall; belongs to the per-house block-face tier.",
+  "kit": [
+   "irregular row of distinct house fronts (block-face tier)"
+  ]
+ },
+ "tilanusstraat-23-240319": {
+  "outcome": "refit",
+  "look": "Orange gridded wing reads right in low sun; the louvred glass tower reads grey; the back wing is dark brown brick, drawn red.",
+  "note": "walls[2] measured #3f2e26; walls[0], [1] palettes kept by hand (#ffa169 is a low-sun crop). The curved louvre tower is a listed gap (louvre-screen).",
+  "kit": [
+   "louvre-screen",
+   "curved glass tower"
+  ]
+ },
+ "grasweg-41-201637": {
+  "outcome": "inferred",
+  "look": "Grey-clad industrial block; no crop matches its one street group.",
+  "note": "NO PHOTO on a wall with ride visibility 0 (no sampled route passes it): kept as fitted, inferred."
+ },
+ "leidsekade-106-173447": {
+  "outcome": "uninstall",
+  "look": "A red brick six-storey grid against Holland Casino's white-tiled curved upper storey over red steel; the only matching crop is a dark arcade at night.",
+  "note": "NO PHOTO on three street groups and no usable evidence on the fourth, on a high-ride wall (159 sampled routes); the authored front does not match the label either: uninstall."
+ },
+ "hoogte-kadijk-400-251313": {
+  "outcome": "refit",
+  "look": "Light red brick against dark brown 1903 brick with giant arched windows and a five-storey brick range.",
+  "note": "measured #4f4644 / #544c3a; walls[1] window shape fixed. The arched clerestory row is drawn; glazing is under the photo's giant windows."
+ },
+ "stadhouderskade-25-233471": {
+  "outcome": "uninstall",
+  "look": "Grey grids against a 1930 stone-and-brick block with an arched, richly dressed corner range (MOMO) and a balconied hotel front.",
+  "note": "ornamented arched stone-and-brick front, every group FAIL, ride-visible (73 routes): uninstall; bespoke if it returns.",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "polderweg-3-134667": {
+  "outcome": "keep",
+  "look": "White ribbon decks with continuous glazing read right against the thumbnails (w02-161 in sun); the timber-clad sports hall reads brown.",
+  "note": "the measured #282826 is the overcast, backlit crop w02-161L; NO PHOTO on walls[1], obliquity on walls[2]. Not re-fitted."
+ },
+ "valckenierstraat-65-170734": {
+  "outcome": "refit",
+  "look": "Bright red brick ribbons against dark brown 1963 brick with cream bands.",
+  "note": "measured per face (#5b463e, #765e52, #4e4740); walls[1] has no crop."
+ },
+ "hamerkanaal-175-112128": {
+  "outcome": "refit",
+  "look": "Pale ribbon block reads right; the 1911 workshop's dark brown brick front was drawn a lighter brown.",
+  "note": "walls[1] measured #554e4a (WARN); walls[0] washed out, kept; walls[2] no crop; ride visibility 0."
+ },
+ "nieuwe-achtergracht-100-253824": {
+  "outcome": "refit",
+  "look": "Mid brown against the 1923 office's darker brown brick with cream multi-pane frames.",
+  "note": "measured #574d47; window shape fixed (0.98 tall slots). WARN after re-fit."
+ },
+ "oostelijke-handelskade-749-239388": {
+  "outcome": "refit",
+  "look": "Red brick warehouse-style arches against a darker brown brick.",
+  "note": "measured #544743."
+ },
+ "van-beuningenstraat-48-093853": {
+  "outcome": "keep",
+  "look": "Tan brick with grey concrete bands and balcony runs reads right on all three sheets.",
+  "note": "the measured walls are shade (#211f1b), blue sky reflections and a 5 m camera on walls[2]; not re-fitted."
+ },
+ "balboaplein-48-147097": {
+  "outcome": "refit",
+  "look": "Red brick loggia fronts read right (walls[1] PASS); the east front is a dark grey slate-like brick, drawn blue-grey.",
+  "note": "walls[2] measured #7f8283; walls[0], [1] palettes kept."
+ },
+ "spinozastraat-51-243487": {
+  "outcome": "refit",
+  "look": "Sand-yellow ceramic brick reads close on the hotel; the Sarphatistraat range is dark brown brick, drawn mid brown.",
+  "note": "walls[2] measured #352e2a; walls[0], [1] sand-yellow kept by hand (walls[0]'s crop is in shade); walls[0] window shape fixed (0.98 x 0.2)."
+ },
+ "hirschpassage-2-165488": {
+  "outcome": "uninstall",
+  "look": "Cream bands over a plain arcade against the 1912 Hirsch building's carved sandstone front with giant pilasters and a round-arched arcade on Leidseplein.",
+  "note": "ornamented sandstone front, NO PHOTO on two of three street groups, high ride visibility (236 routes): uninstall; bespoke if it returns.",
+  "kit": [
+   "carved/ornamented historic front (bespoke builder)"
+  ]
+ },
+ "wg-plein-600-233657": {
+  "outcome": "refit",
+  "look": "Red brick against the 1931 pavilion's dark grey-brown brick with grouped white windows.",
+  "note": "measured #756860 / #5e5144; walls[0] window height fixed."
+ },
+ "da-costakade-146-236799": {
+  "outcome": "refit",
+  "look": "Yellow-brick workshop front reads close (the crop is a December shade); the red range behind is dark brown brick with balconies, drawn red.",
+  "note": "walls[3] and the hidden walls[1], [2] measured; walls[0] yellow kept by hand (#b08a5a); two window shapes fixed."
+ },
+ "asterweg-19b-209785": {
+  "outcome": "refit",
+  "look": "Mid grey panels against dark grey-brown exposed-aggregate panels.",
+  "note": "measured #473c3b; ride visibility 2 routes."
+ },
+ "cgm-183-202276": {
+  "outcome": "keep",
+  "look": "Pale grey concrete-block warehouse wall with the ONTVANGST GOEDEREN dock reads right.",
+  "note": "the measured #69727d is the blue-cast shade over the dock; ride visibility 0."
+ },
+ "revaleiland-437-250186": {
+  "outcome": "refit",
+  "look": "Bright red brick against darker red-brown brick with cream-framed windows and balconies.",
+  "note": "measured #6b3e33 / #5f3c30; ride visibility 0."
+ },
+ "archangelkade-3-099348": {
+  "outcome": "keep",
+  "look": "Pale ribbed warehouse cladding reads right; the crop is mostly fence, parked vans and sky.",
+  "note": "the measured #7f807b is the fence and shade at the base; ride visibility 1 route."
+ },
+ "asterweg-37-240270": {
+  "outcome": "inferred",
+  "look": "Grey ribbed steel hall reads right against the oblique crop.",
+  "note": "NO EVIDENCE (obliquity 54.5 deg) on a wall with ride visibility 2 routes: kept as fitted."
+ },
+ "louise-wentstraat-230-165821": {
+  "outcome": "refit",
+  "look": "Light grey-brown brick against the 1992 complex's darker brown brick.",
+  "note": "measured #534a3f / #6f5f53; walls[1] has no crop."
+ },
+ "cgm-168-201629": {
+  "outcome": "keep",
+  "look": "White hall with nine blue sectional doors reads right.",
+  "note": "washed out 38 %; ride visibility 0."
+ },
+ "politie-zuid-de-pijp": {
+  "outcome": "inferred",
+  "look": "No crop can be cut: the pand is missing from the BAG building tiles, so neither the panorama archive nor ride visibility can be computed.",
+  "note": "kept as fitted, inferred; re-run when the tiles carry pand 0363100012142138."
+ }
+}

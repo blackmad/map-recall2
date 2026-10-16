@@ -26,6 +26,7 @@
       "sill": 0.15,
       "transom": 0.13
     },
+    "bandTransomAt": 0.65,
     "cornice": "heavy",
     "storeys": 4,
     "bays": 3,
@@ -39,9 +40,15 @@
     },
     "windowHeights": [
       0.6,
-      0.57,
-      0.55,
-      0.59
+      0.611,
+      0.636,
+      0.647
+    ],
+    "headLines": [
+      0.86,
+      0.744,
+      0.733,
+      0.716
     ]
   },
   "crowns": {
@@ -78,23 +85,26 @@
       "brick": "#806e5e",
       "frame": "white-painted",
       "door": "#1f2324",
-      "stone": "white-painted",
-      "cornice": "white-painted"
+      "stone": "#eeeae0",
+      "cornice": "white-painted",
+      "stoneMaterial": "painted"
     },
     "tan-brick": {
       "brick": "#a98f76",
       "frame": "white-painted",
       "door": "#1f2324",
-      "stone": "white-painted",
-      "cornice": "white-painted"
+      "stone": "#eeeae0",
+      "cornice": "white-painted",
+      "stoneMaterial": "painted"
     },
     "black-paint": {
       "brick": "#615a47",
       "frame": "white-painted",
       "door": "#1f2324",
-      "stone": "white-painted",
+      "stone": "#eeeae0",
       "cornice": "white-painted",
-      "wallMaterial": "painted-brick"
+      "wallMaterial": "painted-brick",
+      "stoneMaterial": "painted"
     }
   },
   "roof": {
@@ -120,9 +130,9 @@
   },
   "schemaLimits": [
     "T-windows drawn as t-window since the Nassaukade merge (transom at 0.76 of the window; the photo top light is about 0.22 of it)",
-    "window heights are shares of the catalogue storey grid (window 2.0 / 1.8 / 1.65 m on storeys of 3.45 / 3.3 / 2.8 m: 0.57 / 0.55 / 0.59, ground 0.6 assumed) rather than the canal survey diminishing medians (0.72-0.76), which drew windows ~0.5 m too tall on this row. 148 alone measures 0.57 / 0.56 / 0.64, but that pushes 147 over the 3,000-triangle front budget (3,018). The kit keeps the head on a common 0.86 line, a little above the photo heads",
     "the band at the transom line is a flat stucco strip; the real ones are moulded",
-    "iron balconettes on storey 3 are the library guard, not the wrought scroll grille"
+    "iron balconettes on storey 3 are the library guard, not the wrought scroll grille",
+    "window heights and head lines are measured on 148 (window 5.0-7.1, 8.3-10.4, 11.5-13.55 m on the kit's 15.4 m storeys [4.54, 3.44, 3.30, 3.17]); the transom band at 0.65 of the window is 148's storey-2 band (9.67 m); its storey-1 band runs at the head line and storey 3 has none, which one band line per front cannot say"
   ],
   "evidence": [
     {
@@ -134,5 +144,8 @@
       ],
       "citation": "strip.jpg 2024-11-21 pands 4-6 (148, 147, 146): same axes, bands, eared heads and cornice line; 147 has the mansard"
     }
+  ],
+  "notes": [
+    "White dressings (kit lane 2026-10-14): stone #eeeae0 = the drawn white-painted frame x the photo's band-to-frame ratio (palette-from-strip.ts --frame=white-painted; no band rows on 148/147/146 in the golden-hour strip, so ratio 1), stoneMaterial painted."
   ]
 }

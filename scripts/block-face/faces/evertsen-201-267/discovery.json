@@ -1,0 +1,85 @@
+{
+ "street": "Jan Evertsenstraat",
+ "seed": "0363100012089205",
+ "members": [
+  "0363100012089205",
+  "0363100012128966"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012072394 17.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064053",
+   "reason": "frontage 42.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012064430",
+   "reason": "frontage 42.9 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012074540",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012072394"
+  },
+  {
+   "pandId": "0363100012145185",
+   "reason": "sightline to Jan Evertsenstraat crosses 0363100012089205"
+  },
+  {
+   "pandId": "0363100012091683",
+   "reason": "frontage 75.5 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104066",
+   "reason": "frontage 58.6 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012104187",
+   "reason": "frontage 59.2 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012109100",
+   "reason": "frontage 91.7 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012127405",
+   "reason": "frontage 91.1 m from Jan Evertsenstraat"
+  },
+  {
+   "pandId": "0363100012136068",
+   "reason": "frontage 74.9 m from Jan Evertsenstraat"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012089205",
+   "alongM": 0,
+   "widthM": 6.6,
+   "eavesM": 3.08,
+   "roofMaxM": 4.22,
+   "storeys3dbag": 0,
+   "builtYear": 1961,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012128966",
+   "alongM": 50.41,
+   "widthM": 7.37,
+   "eavesM": 23.25,
+   "roofMaxM": 26.32,
+   "storeys3dbag": 0,
+   "builtYear": 1961,
+   "uncertainty": []
+  }
+ ]
+}

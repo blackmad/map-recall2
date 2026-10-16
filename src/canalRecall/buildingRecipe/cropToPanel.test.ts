@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {exposedWalls} from '../../../scripts/pand-reference/select.ts';
 import {pointInRing} from '../../../scripts/pand-reference/core.ts';
-import {bestCropForPanel, cropFrame, matchCropToPanel, panelCoverage, type CropWall, type PanelPlan, type Xy} from './cropToPanel.ts';
+import {bestCropForPanel, cropFrame, matchCropToPanel, panelCoverage, panelCoverageStraight, type CropWall, type PanelPlan, type Xy} from './cropToPanel.ts';
 
 // An L footprint (RD metres), given clockwise on purpose: exposedWalls makes it counter-clockwise first.
 const L = [[0, 0], [0, 20], [10, 20], [10, 8], [30, 8], [30, 0], [0, 0]].map(([x, y]) => ({x: 1000 + x, y: 2000 + y}));
@@ -63,4 +63,17 @@ test('panelCoverage: a panel over two footprint edges is covered in two pieces; 
   const summer = {...crop(a, b, 'summer'), foliage: 0.3, capturedAt: '2025-06-01'}, winter = {...crop(a, b, 'winter'), foliage: 0.01, capturedAt: '2020-01-01'};
   assert.deepEqual(panelCoverage([summer, winter], panelOn(a, b), anchor).pieces.map(p => p.crop.tag), ['winter']);
   assert.equal(panelCoverage([crop(a, [1010, 2000], 'short')], panelOn(a, b), anchor).coverage, 0.333);
+});
+
+test('panelCoverageStraight: an oblique last piece is dropped when the straight pieces still cover the panel', () => {
+  const a: Xy = [1000, 2000], b: Xy = [1030, 2000];
+  const seg = (x0: number, x1: number, tag: string, obliquityDeg: number) => ({...crop([1000 + x0, 2000], [1000 + x1, 2000], tag), foliage: 0, obliquityDeg});
+  const straight = [seg(0, 10, 's1', 5), seg(10, 20, 's2', 12), seg(20, 25, 's3', 20)], oblique = seg(25, 30, 's4', 47);
+  const cov = panelCoverageStraight([...straight, oblique], panelOn(a, b), anchor);
+  assert.deepEqual(cov.pieces.map(p => p.crop.tag), ['s1', 's2', 's3']);
+  assert.equal(cov.coverage, 0.833);
+  // too little straight cover left: the full mosaic (and the likeness abstains on it)
+  assert.deepEqual(panelCoverageStraight([straight[0], seg(10, 30, 'wide', 50)], panelOn(a, b), anchor).pieces.map(p => p.crop.tag), ['s1', 'wide']);
+  // nothing oblique: identical to panelCoverage
+  assert.deepEqual(panelCoverageStraight(straight, panelOn(a, b), anchor), panelCoverage(straight, panelOn(a, b), anchor));
 });

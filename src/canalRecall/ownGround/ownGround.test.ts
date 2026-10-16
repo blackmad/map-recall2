@@ -8,7 +8,7 @@ import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, type MeshArrays } from './drape';
-import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
+import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass, SURFACE_LEGEND } from './osmGround';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
@@ -23,9 +23,10 @@ import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, enco
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
+import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
+import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
 import { fillPockets, POCKET_LIFT } from './pockets';
 import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
 import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
@@ -722,7 +723,9 @@ const fsStore = () => new GroundStore(async path => {
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
 });
 
-for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665]] as const) {
+// BRU0009 Torensluis (2026-10-14): its e2e hump readout flipped on main while this deck, its body and top were
+// byte-identical to the bridge lane's; the crown (1.66 m over the higher end) is pinned here, not only in pixels.
+for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665], ['BRU0009', 4.88938, 52.37455]] as const) {
   test(`regression (streamed cell): ${id} deck is placed and street bands ride over it`, { skip: !haveCells }, async () => {
     const store = fsStore();
     await store.init();
@@ -756,6 +759,21 @@ test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverl
     for (const k of keys) cells.push(buildCell(await store.cellInput(k, lod)));
     const r = bandCoverage(cells, ways);
     assert.ok(r.share >= DE_CLERCQSTRAAT.minShare, `LOD ${lod}: ${(100 * r.share).toFixed(1)} % street, misses ${JSON.stringify(r.misses.slice(0, 5))}`);
+  }
+});
+
+// Every bridge the bridge-fidelity e2e names: its crown over the higher end is the pinned value (the e2e reads the same in the page).
+test('pinned deck crowns (bridge-fidelity e2e set)', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const { bridgesFromExtract } = await import('../../../tests/e2e/ownGroundBridges');
+  for (const b of bridgesFromExtract(Object.keys(PINNED_CROWNS))) {
+    const [x, y] = storeToLocal(b.lng, b.lat);
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === b.id)) break; }
+    const deck = store.surface.decks.find(d => d.profile.id === b.id)!;
+    assert.ok(deck, `${b.id} placed`);
+    const crown = crownOverHigherEnd(Array.from(deck.profile.x, (_, i) => store.surface.height(deck.profile.x[i], deck.profile.y[i])), deck.ends), pin = PINNED_CROWNS[b.id];
+    assert.ok(Math.abs(crown - pin.crownM) <= pin.tolM, `${b.id} crown ${crown.toFixed(3)} vs pinned ${pin.crownM}`);
   }
 });
 
@@ -951,6 +969,23 @@ test('belt audit deck top: a tram rail lying on a street band is street, over th
   assert.equal(deckStreetTop([{ layer: 'tram', z: 1.2 }, { layer: 'asphalt', z: 1.2 - RAIL_ON_BAND_M - 0.01 }]), false);
   assert.equal(deckStreetTop([{ layer: 'deckBody', z: 2.517 }, { layer: 'cycle', z: 2.422 }]), false);
   assert.equal(deckStreetTop([]), false);
+});
+
+test('belt audit quay samples: a shore split into 0.5 m pieces near a berth samples as the uncut shore (Westerdok, 2026-10-14)', () => {
+  // The berth rule (moorings.ts) re-cuts shores near a houseboat into collinear 0.5 m pieces; the audit sampled
+  // each piece, so the reviewed Westerdok spot went from 16 to 106 samples and its key moved off KNOWN.
+  const shore: [number, number][] = [[0, 0], [40, 0], [40, 23]];
+  const split: [number, number][] = [[0, 0]];
+  for (let i = 1; i <= 80; i++) split.push([i * 0.5, 0]);
+  for (let i = 1; i <= 46; i++) split.push([40, i * 0.5]);
+  assert.deepEqual(shoreSamples(split), shoreSamples(shore));
+  assert.equal(shoreSamples(shore).length, 8 + 4);
+  // A real corner is kept, a doubled vertex is dropped, a hairpin is not merged into one segment.
+  assert.equal(shoreSamples([[0, 0], [10, 0], [10, 0], [10, 10]]).length, 4);
+  assert.equal(shoreSamples([[0, 0], [10, 0], [5, 0]]).length, 3);
+  // Reviewed spots match a finding a metre or two off, not the next spot along the dock.
+  assert.ok(spotDistanceM('4.90719,52.38449', '4.90721,52.38449') < KNOWN_SPOT_M);
+  assert.ok(spotDistanceM('4.90719,52.38449', '4.90768,52.38468') > KNOWN_SPOT_M);
 });
 
 test('bridge bands carry vertices across: a 5 m band over a 4.2 m deck follows it instead of sagging under it (BRU0292)', () => {
@@ -1254,4 +1289,19 @@ test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish 
   assert.equal(groundLookFrom('?groundLook=default'), 'default');
   const bright = basemapGroundPatches([{ id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('bright'));
   assert.equal(bright[0].value, groundPalette('bright').tones.water);
+});
+
+test('a movable leaf gets fixed spans to the quays its bridge way reaches (Nijlpaardenbrug BRU1907)', () => {
+  // A 10 x 4 m leaf along x at x 15..25; the OSM bridge way runs quay to quay, x 0..40.
+  const leaf: Vec2[] = [[15, -2], [25, -2], [25, 2], [15, 2]];
+  const spans = movableApproaches(leaf, [[[0, 0.3], [40, 0.3]]]);
+  assert.equal(spans.length, 2, 'one span either side');
+  const xs = spans.map(r => r.map(p => p[0])).map(x => [Math.min(...x), Math.max(...x)]).sort((a, b) => a[0] - b[0]);
+  assert.ok(Math.abs(xs[0][0] - 0) < 1e-6 && Math.abs(xs[0][1] - 15.05) < 1e-6, `west span to the way's end, overlapping the leaf (${xs[0]})`);
+  assert.ok(Math.abs(xs[1][0] - 24.95) < 1e-6 && Math.abs(xs[1][1] - 40) < 1e-6, `east span (${xs[1]})`);
+  for (const r of spans) { const ys = r.map(p => p[1]); assert.ok(Math.abs(Math.min(...ys) + 2) < 1e-6 && Math.abs(Math.max(...ys) - 2) < 1e-6, 'as wide as the leaf'); }
+  assert.equal(movableApproaches(leaf, [[[16, 0], [24, 0]]]).length, 0, 'a way that ends on the leaf adds nothing');
+  assert.equal(movableApproaches(leaf, [[[0, 30], [40, 30]]]).length, 0, 'a way that misses the leaf adds nothing');
+  const long = movableApproaches(leaf, [[[-100, 0], [40, 0]]]).flatMap(r => r.map(p => p[0]));
+  assert.ok(Math.abs(Math.min(...long) - (15 - APPROACH_MAX_M)) < 1e-6, 'capped at APPROACH_MAX_M');
 });

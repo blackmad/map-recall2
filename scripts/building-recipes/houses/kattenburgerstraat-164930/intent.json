@@ -42,10 +42,15 @@
    "ground": "blank",
    "windows": "low",
    "palette": {
-    "brick": "dark-brown",
+    "brick": "#4e3e32",
     "frame": "#2f3236",
     "stone": "#6d6258"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -63,10 +68,15 @@
    "ground": "blank",
    "windows": "low",
    "palette": {
-    "brick": "dark-brown",
+    "brick": "#4e3e32",
     "frame": "#2f3236",
     "stone": "#6d6258"
-   }
+   },
+   "hand": [
+    "palette.brick",
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -83,5 +93,12 @@
   "Kattenburgerstraat 206-266 (BAG), built 1976: a four-level brown concrete-and-brick gallery-access housing slab, two parallel ranges with a stepped 19 m top storey. Both long fronts read the same in the 2025-01-30 (NW, w02-315) and 2019-05-21 (SE, w05-135) panoramas: a brown brick base with green doors, then three levels of deep access galleries (concrete slab edge, dark railing, recessed continuous glazing) under a ribbon-glazed top storey.",
   "Modelled as ribbon-windows (windows: low, 12 bays per storey, 3.5 cm proud bars) on both long fronts; the ground storey is blank brick. Simplified: the galleries are drawn as the recessed ribbon bands, not as slabs with railings. Not modelled: the green ground-floor doors, the gallery stair cores, the wavy underside of the SE gallery slabs, shop signs on the corner units. Courtyard and gable walls have no usable photograph and stay blank.",
   "Gate note: ribbon mullions at the default 1.5 cm sit in the audit's z-fight band; this recipe uses the new `deepBars` group option (3.5 cm closed bars)."
- ]
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
+  ]
+ }
 }

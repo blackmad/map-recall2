@@ -17,7 +17,8 @@
  * - report only: not-wall mask IoU (WARN under 0.45), glass colour, the ground band (0..2.5 m, never pooled).
  *
  * NO EVIDENCE (abstain) when under 40 % of the upper cells are usable, foliage covers over 25 %, over 30 % is
- * washed out, the view is more than 45 degrees oblique, or the camera stood under 8 m from a wall over 15 m wide.
+ * washed out, the view is more than 45 degrees oblique, or the camera stood under 8 m from a wall over 15 m wide (for a
+ * mosaic: one crop from under 8 m covering over 15 m of it).
  */
 import {cityLookTint} from '../look/cityLook.ts';
 import type {MaterialSlot} from '../look/palette.ts';
@@ -146,7 +147,18 @@ export function notWallIoU(a: Uint8Array, b: Uint8Array, cols: number, rows: num
   return seen >= 50 && uni > 0 ? inter / uni : null;
 }
 
-export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; model: ModelElevation; lines: number[]; obliquityDeg?: number; cameraDistM?: number}): LikenessResult {
+/** Widest stretch (m) of a mosaic that one crop from a camera under 8 m covers: per crop tag the summed width of its pieces. */
+export function closeCameraSpan(pieces: readonly {u0: number; u1: number; crop: {tag: string; cameraDistM?: number}}[]): number {
+  const span = new Map<string, number>();
+  for (const q of pieces) if ((q.crop.cameraDistM ?? 99) < LIKENESS.minCameraM) span.set(q.crop.tag, (span.get(q.crop.tag) ?? 0) + q.u1 - q.u0);
+  return Math.max(0, ...span.values());
+}
+
+/**
+ * `cameraSpanM`: the widest stretch of the wall that a camera under 8 m away covers (a mosaic of segment crops, each
+ * from its own nearby panorama, `all-walls.ts --segment`); default the whole box width (one crop for the wall).
+ */
+export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; model: ModelElevation; lines: number[]; obliquityDeg?: number; cameraDistM?: number; cameraSpanM?: number}): LikenessResult {
   const {photo, model, padCells} = a, {cols, rows, cell, box} = model;
   // best shift within +-PAD_M
   let best = {du: 0, dv: 0, iou: -1};
@@ -163,7 +175,8 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   if (photo.foliageFraction > LIKENESS.maxFoliage) abstain.push(`foliage ${(photo.foliageFraction * 100).toFixed(0)} % > 25 %`);
   if (photo.washedOutFraction > LIKENESS.maxWashedOut) abstain.push(`washed out ${(photo.washedOutFraction * 100).toFixed(0)} % > 30 %`);
   if ((a.obliquityDeg ?? 0) > LIKENESS.maxObliquityDeg) abstain.push(`obliquity ${a.obliquityDeg} deg > 45`);
-  if ((a.cameraDistM ?? 99) < LIKENESS.minCameraM && widthM > LIKENESS.wideWallM) abstain.push(`camera ${a.cameraDistM} m < 8 m from a ${widthM.toFixed(0)} m wall`);
+  const closeSpanM = a.cameraSpanM ?? widthM;
+  if ((a.cameraDistM ?? 99) < LIKENESS.minCameraM && closeSpanM > LIKENESS.wideWallM) abstain.push(`camera ${a.cameraDistM} m < 8 m from a ${closeSpanM.toFixed(0)} m wall`);
 
   // wall colour
   const pw = photo.wall.normalised, mw = model.wall;

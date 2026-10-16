@@ -1,32 +1,232 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-van-leijenberghlaan",
-  "pandId": "0363100012102565",
-  "address": "Politiebureau Van Leijenberghlaan, Van Leijenberghlaan 1, Amsterdam (Buitenveldert)",
-  "sources": [
-    {"id": "pano-2019-01-03-front", "kind": "street-panorama", "capturedAt": "2019-01-03", "image": "artifacts/building-recipes/politie-van-leijenberghlaan/photo-wall-van-leijenberghlaan.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2016-06-21-front", "kind": "street-panorama", "capturedAt": "2016-06-21", "image": "staging/pand-reference/0363100012102565/thumb.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315080123-000307_pano_0000_000029/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-07-29-east", "kind": "street-panorama", "capturedAt": "2025-07-29", "image": "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-10.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_06-31-07_00139/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-07-29-north", "kind": "street-panorama", "capturedAt": "2025-07-29", "image": "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-9.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_08-47-49_01104/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-07-29-south", "kind": "street-panorama", "capturedAt": "2025-07-29", "image": "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-44.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_06-31-07_00436/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [57, 27, 40, 33], "street": "Van Leijenberghlaan", "system": "ribbon-windows", "storeys": 3, "ground": "blank", "windows": "two-light"},
-    {"wallSurfaces": [7], "system": "blank", "storeys": 2, "baysPerStorey": 1, "entrance": {"bay": 0, "storeys": 2}, "signage": {"text": "POLITIE", "mount": "glazing", "colour": "#4a4d52"}, "palette": {"brick": "grey-painted"}},
-    {"wallSurfaces": [11, 36, 38, 19], "system": "ribbon-windows", "storeys": 3, "windows": "two-light"},
-    {"wallSurfaces": [10, 47, 54], "system": "ribbon-windows", "storeys": 3, "windows": "two-light", "palette": {"brick": "#8f8b84"}},
-    {"wallSurfaces": [50], "system": "ribbon-windows", "storeys": 3, "windows": "two-light"},
-    {"wallSurfaces": [2, 4, 6, 12], "system": "ribbon-windows", "storeys": 3, "windows": "two-light"}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#5b3b30", "frame": "#d6d6d0", "door": "#3a3a3a", "stone": "grey-painted", "wallMaterial": "stucco"},
-  "notes": [
-    "1976 police station: brown cladding panels with two-light ribbon windows on the first and second floors; the street front (west, Van Leijenberghlaan) has a solid ground floor; east, south and courtyard walls have a third ribbon at ground level.",
-    "Entrance: a projecting glass box (its own 3DBAG volume, surface 7) two storeys tall, POLITIE lettered on the frosted glass of the upper half (2016 and 2019 panoramas); modelled as a two-storey glazed entrance hall with glazing-mounted lettering.",
-    "The north wing is grey exposed concrete (2025 north panorama) with the same ribbons; the 3DBAG west plane spans both the grey and the brown part, so the west wall stays brown.",
-    "Police components not used: no striped band, blue lamp, canopy or garage doors are visible in the 2016/2019/2025 panoramas; rooftop stair/lift cores are 3DBAG volumes already (roofPlant off).",
-    "Sides of the entrance box (surfaces 46, 52) and rooftop volumes stay blank (otherWalls)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-van-leijenberghlaan",
+ "pandId": "0363100012102565",
+ "address": "Politiebureau Van Leijenberghlaan, Van Leijenberghlaan 1, Amsterdam (Buitenveldert)",
+ "sources": [
+  {
+   "id": "pano-2021-05-03-w01-270",
+   "kind": "street-panorama",
+   "capturedAt": "2021-05-03",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002126_pano_0000_004276/",
+   "image": "source-data://pand-reference-walls/0363100012102565/w01-270.jpg",
+   "sha256": "321319df9211711d52fb3def6f389dc573ffc8b3d4dc7a59175bf275fc9ffee8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-03-29-w02-90L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002487_pano_0000_000378/",
+   "image": "source-data://pand-reference-walls/0363100012102565/w02-90L.jpg",
+   "sha256": "21535afbbc62463941e799435ad099df5a62dfdeda6d5e4be8bc8e5b32408fa8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-29-w03-180",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_06-31-07_00434/",
+   "image": "source-data://pand-reference-walls/0363100012102565/w03-180.jpg",
+   "sha256": "4a874cc749a7c25abb56eeaf55c6b28386dbccc1e218595c7e1c768b4d7a738f",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-03-front",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-03",
+   "image": "artifacts/building-recipes/politie-van-leijenberghlaan/photo-wall-van-leijenberghlaan.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-06-21-front",
+   "kind": "street-panorama",
+   "capturedAt": "2016-06-21",
+   "image": "staging/pand-reference/0363100012102565/thumb.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315080123-000307_pano_0000_000029/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-29-east",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "image": "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-10.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_06-31-07_00139/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-29-north",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "image": "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-9.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_08-47-49_01104/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-29-south",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-29",
+   "image": "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-44.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_06-31-07_00436/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    57,
+    27,
+    40,
+    33
+   ],
+   "street": "Van Leijenberghlaan",
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "ground": "system",
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick",
+    "wallSplit",
+    "ground",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#7c7a74"
+   },
+   "windowShape": {
+    "w": 0.98,
+    "h": 0.58,
+    "sill": 0.2
+   },
+   "wallSplit": {
+    "at": 0.4,
+    "brick": "#5b4b44"
+   }
+  },
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "blank",
+   "storeys": 2,
+   "baysPerStorey": 1,
+   "entrance": {
+    "bay": 0,
+    "storeys": 2
+   },
+   "signage": {
+    "text": "POLITIE",
+    "mount": "glazing",
+    "colour": "#4a4d52"
+   },
+   "palette": {
+    "brick": "grey-painted"
+   }
+  },
+  {
+   "wallSurfaces": [
+    11,
+    36,
+    38,
+    19
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#493d32"
+   },
+   "windowShape": {
+    "w": 0.808,
+    "h": 0.56,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    10,
+    47,
+    54
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "windows": "two-light",
+   "palette": {
+    "brick": "#8f8b84"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    50
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#5e5855"
+   },
+   "windowShape": {
+    "w": 0.98,
+    "h": 0.748,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    2,
+    4,
+    6,
+    12
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#5b3b30",
+  "frame": "#d6d6d0",
+  "door": "#3a3a3a",
+  "stone": "grey-painted",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "1976 police station: brown cladding panels with two-light ribbon windows on the first and second floors; the street front (west, Van Leijenberghlaan) has a solid ground floor; east, south and courtyard walls have a third ribbon at ground level.",
+  "Entrance: a projecting glass box (its own 3DBAG volume, surface 7) two storeys tall, POLITIE lettered on the frosted glass of the upper half (2016 and 2019 panoramas); modelled as a two-storey glazed entrance hall with glazing-mounted lettering.",
+  "The north wing is grey exposed concrete (2025 north panorama) with the same ribbons; the 3DBAG west plane spans both the grey and the brown part, so the west wall stays brown.",
+  "Police components not used: no striped band, blue lamp, canopy or garage doors are visible in the 2016/2019/2025 panoramas; rooftop stair/lift cores are 3DBAG volumes already (roofPlant off).",
+  "Sides of the entrance box (surfaces 46, 52) and rooftop volumes stay blank (otherWalls).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #403535 not used (not darker than the wall #5b4b44 by 10 L*, or tinted): kit glass kept; walls[2] glass #3b3732 not used (not darker than the wall #493d32 by 10 L*, or tinted): kit glass kept; walls[4] glass #395455 not used (not darker than the wall #5e5855 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   2,
+   4
   ]
+ }
 }

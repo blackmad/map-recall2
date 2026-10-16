@@ -1,0 +1,9 @@
+{ "mode": "car", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "noordermarkt-first", "at": [4.8862, 52.37945, 0] },
+    { "name": "bloemgracht-west", "at": [4.87706, 52.37397, 255] },
+    { "name": "egelantiers-west", "at": [4.877848, 52.375342, 250] },
+    { "name": "westermarkt", "at": [4.88480, 52.37420, 270] },
+    { "name": "noordermarkt-again", "at": [4.8862, 52.37945, 0] }
+  ] }
