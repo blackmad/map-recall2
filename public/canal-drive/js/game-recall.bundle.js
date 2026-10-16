@@ -562,6 +562,156 @@
     return hardTier || isNotableBridge(name);
   }
 
+  // src/canalRecall/routing/roadSurface.ts
+  var cellKey = (gx, gy) => `${gx},${gy}`;
+  function closestPointOnSpan(px, py, a, b) {
+    const abx = b.x - a.x;
+    const aby = b.y - a.y;
+    const lengthSquared = abx * abx + aby * aby;
+    if (lengthSquared === 0) return { x: a.x, y: a.y, dist: Math.hypot(px - a.x, py - a.y) };
+    const t = Math.max(0, Math.min(1, ((px - a.x) * abx + (py - a.y) * aby) / lengthSquared));
+    const cx = a.x + abx * t;
+    const cy = a.y + aby * t;
+    return { x: cx, y: cy, dist: Math.hypot(px - cx, py - cy) };
+  }
+  function roadsNear(index, x, y, ring = 1) {
+    const gx = Math.floor(x / index.cellSize);
+    const gy = Math.floor(y / index.cellSize);
+    const found = [];
+    for (let dx = -ring; dx <= ring; dx++) {
+      for (let dy = -ring; dy <= ring; dy++) {
+        const bucket = index.cells.get(cellKey(gx + dx, gy + dy));
+        if (bucket) found.push(...bucket);
+      }
+    }
+    return found;
+  }
+  function contactsAt(spans, x, y) {
+    const contacts = [];
+    for (const span of spans) {
+      const hit = closestPointOnSpan(x, y, span.a, span.b);
+      const rdx = span.b.x - span.a.x;
+      const rdy = span.b.y - span.a.y;
+      const length = Math.hypot(rdx, rdy) || 1;
+      contacts.push({
+        x: hit.x,
+        y: hit.y,
+        dist: hit.dist,
+        angle: Math.atan2(rdy, rdx),
+        width: span.width,
+        segIdx: span.segIdx,
+        ptIdx: span.ptIdx,
+        nx: -rdy / length,
+        ny: rdx / length
+      });
+    }
+    return contacts;
+  }
+  var GUARD_CROSS_ANGLE = Math.PI / 6;
+
+  // src/canalRecall/game/bridgeStreetName.ts
+  var BRIDGE_SUFFIX = /(?:brug|brugje|bruggetje|sluis|sluisje|duiker|viaduct|aquaduct|bridge)$/i;
+  var NUMBERED_BRIDGE = /^brug\s+\d+/i;
+  function isBridgeWayName(name) {
+    const trimmed = (name || "").trim();
+    if (!trimmed) return false;
+    return BRIDGE_SUFFIX.test(trimmed) || NUMBERED_BRIDGE.test(trimmed);
+  }
+  var DEFAULT_MAX_TURN = Math.PI / 4;
+  var DEFAULT_MAX_PIECES = 4;
+  function near(a, b, radius) {
+    return Math.hypot(a.x - b.x, a.y - b.y) <= radius;
+  }
+  function inLine(angle, outward, maxTurn) {
+    return Math.abs(Math.cos(angle - outward)) >= Math.cos(maxTurn);
+  }
+  function streetsBeyond(network, bridgeName, end, outward, visited, options, depth) {
+    const names = /* @__PURE__ */ new Set();
+    for (const way of network.touching(end, options.touchRadius)) {
+      if (visited.has(way.segIdx)) continue;
+      const name = network.nameOf(way.segIdx);
+      if (!name) continue;
+      if (name === bridgeName) {
+        if (depth >= options.maxPieces) continue;
+        const points = network.pointsOf(way.segIdx);
+        if (points.length < 2) continue;
+        const first = points[0], last = points[points.length - 1];
+        let far, before;
+        if (near(first, end, options.touchRadius)) {
+          far = last;
+          before = points[points.length - 2];
+        } else if (near(last, end, options.touchRadius)) {
+          far = first;
+          before = points[1];
+        } else continue;
+        visited.add(way.segIdx);
+        const onward = Math.atan2(far.y - before.y, far.x - before.x);
+        for (const beyond of streetsBeyond(network, bridgeName, far, onward, visited, options, depth + 1)) {
+          names.add(beyond);
+        }
+        continue;
+      }
+      if (isBridgeWayName(name)) continue;
+      if (inLine(way.angle, outward, options.maxTurn)) names.add(name);
+    }
+    return names;
+  }
+  function carriedStreetName(network, segIdx, options) {
+    const bridgeName = network.nameOf(segIdx);
+    if (!isBridgeWayName(bridgeName)) return "";
+    const points = network.pointsOf(segIdx);
+    if (points.length < 2) return "";
+    const resolved = {
+      touchRadius: options.touchRadius,
+      maxTurn: options.maxTurn ?? DEFAULT_MAX_TURN,
+      maxPieces: options.maxPieces ?? DEFAULT_MAX_PIECES
+    };
+    const first = points[0], second = points[1];
+    const last = points[points.length - 1], penultimate = points[points.length - 2];
+    const startSide = streetsBeyond(
+      network,
+      bridgeName,
+      first,
+      Math.atan2(first.y - second.y, first.x - second.x),
+      /* @__PURE__ */ new Set([segIdx]),
+      resolved,
+      0
+    );
+    if (startSide.size === 0) return "";
+    const endSide = streetsBeyond(
+      network,
+      bridgeName,
+      last,
+      Math.atan2(last.y - penultimate.y, last.x - penultimate.x),
+      /* @__PURE__ */ new Set([segIdx]),
+      resolved,
+      0
+    );
+    const common = [...startSide].filter((name) => endSide.has(name));
+    return common.length === 1 ? common[0] : "";
+  }
+  function routeQuestionRoadName(input) {
+    if (!isBridgeWayName(input.rawName)) return input.rawName;
+    if (input.deliberateBridge) return input.rawName;
+    return input.carriedStreet();
+  }
+  function bridgeWayNetwork(segments, index) {
+    return {
+      nameOf: (segIdx) => segments[segIdx]?.name || "",
+      pointsOf: (segIdx) => segments[segIdx]?.points || [],
+      touching(point, radius) {
+        const ring = Math.max(1, Math.ceil(radius / index.cellSize));
+        const best = /* @__PURE__ */ new Map();
+        for (const contact of contactsAt(roadsNear(index, point.x, point.y, ring), point.x, point.y)) {
+          if (contact.dist > radius || contact.ptIdx < 0) continue;
+          const seen = best.get(contact.segIdx);
+          if (!seen || contact.dist < seen.dist) best.set(contact.segIdx, { dist: contact.dist, angle: contact.angle });
+        }
+        return [...best].map(([segIdx, { angle }]) => ({ segIdx, angle }));
+      }
+    };
+  }
+
   // src/canalRecall/landmarks/surveyedLandmarks.json
   var surveyedLandmarks_default = [
     {
@@ -47647,6 +47797,7 @@
   var START_HEADING_SNAP_RAD = Math.PI / 6;
 
   // src/canalRecall/game/recallRuntime.ts
+  var BRIDGE_END_TOUCH_METRES = 3;
   var DISTRACTOR_COUNT = 3;
   var BUDGET_ON_ROUTE_PX = 90;
   var CHOICE_POOL_RADIUS = 1500;
@@ -47929,7 +48080,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this._updateTransitStreetQuiz();
       }
       const heading = this.player.angle;
-      const name = this.track.getRoadName(this.player.x, this.player.y, heading);
+      const name = this._routeQuestionRoadName(heading);
       if (name && name === this.quizCurrentName) this._quizCorridorHeading = heading;
       const interesting = !!name && name !== this.quizCurrentName;
       const nearestRoad = interesting ? this.track.getNearestRoad(this.player.x, this.player.y, heading) : null;
@@ -48032,6 +48183,46 @@ Learned names, exploration collection, personal bests, route settings and the ho
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
       });
+    }
+    /**
+     * The name the route question settles on at the rider's position.
+     * `getRoadName` is the OSM way's own name, and OSM names many decks after
+     * the bridge (the Raadhuisstraat over the Keizersgracht is "Niek
+     * Engelschmanbrug"). The deliberate bridge question ("Which bridge are you
+     * on?") keeps the bridge's name; otherwise the deck answers with the street
+     * it carries, or with no name so the street beyond is asked once the rider
+     * is off it (bridgeStreetName.ts; user report 2026-10-16).
+     */
+    _routeQuestionRoadName(heading) {
+      if (!this.player) return "";
+      const raw = this.track.getRoadName(this.player.x, this.player.y, heading) || "";
+      if (!isCar(this.travelMode) || !isBridgeWayName(raw)) return raw;
+      const player = this.player;
+      return routeQuestionRoadName({
+        rawName: raw,
+        deliberateBridge: !!findBridgeRouteAt(this.bridges, raw, player, BRIDGE_GATE_HALF_WIDTH) && bridgeNameAskable(this.routeDifficulty, raw, this.routeOptions.answerMode),
+        carriedStreet: () => this._carriedStreetAt(player.x, player.y, heading)
+      });
+    }
+    /** The street the bridge-named way under a point carries, cached per way. */
+    _carriedStreetAt(x, y, heading) {
+      const contact = this.track.getNearestRoad(x, y, heading);
+      const index = this.track.roadIndex;
+      if (!contact || !index) return "";
+      if (!this._bridgeCarriedStreets || this._bridgeCarriedStreets.track !== this.track) {
+        this._bridgeCarriedStreets = { track: this.track, bySegment: /* @__PURE__ */ new Map() };
+      }
+      const cache = this._bridgeCarriedStreets.bySegment;
+      let carried = cache.get(contact.segIdx);
+      if (carried === void 0) {
+        carried = carriedStreetName(
+          bridgeWayNetwork(this.track.segments, index),
+          contact.segIdx,
+          { touchRadius: BRIDGE_END_TOUCH_METRES * PIXELS_PER_METER }
+        );
+        cache.set(contact.segIdx, carried);
+      }
+      return carried;
     }
     /**
      * One overdue SRS name in the first minute — gated until the due place is
@@ -48409,7 +48600,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
     _updateSilentPass(dt) {
       const state = this._silentPass;
       if (!state || !this.player) return;
-      const roadName = this.track.getRoadName(this.player.x, this.player.y, this.player.angle) || "";
+      const roadName = this._routeQuestionRoadName(this.player.angle);
       const step = advanceSilentPass(state, { dt, roadName });
       this._silentPass = step.state;
       if (step.left) this._finishSilentPass();

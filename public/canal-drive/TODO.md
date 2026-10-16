@@ -738,6 +738,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 
 ## P1 — The learning model itself
 
+- **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
+  bridge deck is never the answer")**: the street plaque
+  (`presentationRuntime.ts` ~709) still reads the raw way name, so it stays
+  blank on a deck that carries a street; pass the carried name through. 85
+  transparent bridge names outside `bridges.json` (Noordsche Compagniebrug
+  among them) are now taught by no question; decide whether some join the
+  crossing quiz. Culvert names without a bridge suffix (Bullebak, Kanaalpost)
+  are not treated as decks. `quiz.spec.ts` "first launch is playable without
+  an account" fails on main independent of this change.
+
 - **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
   cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
   buildings, libraries, Vue, Pathé Noord, LAB111) and need a sourced pass; 4
