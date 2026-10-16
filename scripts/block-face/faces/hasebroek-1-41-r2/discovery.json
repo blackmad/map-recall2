@@ -6,10 +6,7 @@
   "0363100012153107",
   "0363100012166233",
   "0363100012165183",
-  "0363100012157271",
-  "0363100012163274",
-  "0363100012157261",
-  "0363100012158415"
+  "0363100012157271"
  ],
  "ends": [
   {
@@ -18,7 +15,7 @@
   },
   {
    "side": "right",
-   "reason": "run of hasebroek-1-41: 159474 held (auto-place.json)"
+   "reason": "run of hasebroek-1-41: 163274 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1381,36 +1378,6 @@
    "roofMaxM": 16.8,
    "storeys3dbag": 5,
    "builtYear": 1905,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012163274",
-   "alongM": 53.85,
-   "widthM": 5.28,
-   "eavesM": 15.77,
-   "roofMaxM": 16.42,
-   "storeys3dbag": 5,
-   "builtYear": 1904,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012157261",
-   "alongM": 59.19,
-   "widthM": 5.41,
-   "eavesM": 15.81,
-   "roofMaxM": 16.47,
-   "storeys3dbag": 5,
-   "builtYear": 1904,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012158415",
-   "alongM": 64.58,
-   "widthM": 5.36,
-   "eavesM": 15.88,
-   "roofMaxM": 16.21,
-   "storeys3dbag": 5,
-   "builtYear": 1904,
    "uncertainty": []
   }
  ],

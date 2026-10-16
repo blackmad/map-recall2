@@ -3,7 +3,7 @@
  "street": "Bellamystraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 2.71,
+ "seconds": 5.45,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.606,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.35,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.77,
+       "widthM": 1.05,
+       "centre": 0.73
+      },
+      {
+       "atM": 6.8,
+       "widthM": 0.88,
+       "centre": 0.37
+      }
+     ]
+    },
     "voidShare": 0.21,
     "foliageShare": 0.06
    },
@@ -50,11 +69,11 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012099202",
-    "ncc": 0.329,
-    "nccRaw": 0.329,
+    "ncc": 0.346,
+    "nccRaw": 0.346,
     "shiftM": [
      -0.4,
-     -0.25
+     0
     ],
     "usable": 0.55,
     "abstain": null,
@@ -63,19 +82,19 @@
      "washed out 31 % > 30 %"
     ],
     "wall": {
-     "photo": "#988981",
+     "photo": "#a69d99",
      "model": "#a29890",
-     "dL": 0.049
+     "dL": -0.025
     },
     "glazing": {
-     "photo": 0.1,
-     "model": 0.35
+     "photo": 0.56,
+     "model": 0.34
     },
     "columns": {
-     "photo": 3,
+     "photo": 2,
      "model": 3
     },
-    "iou": 0.38
+    "iou": 0.315
    },
    "challengers": {}
   },
@@ -106,6 +125,20 @@
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.77,
+       "widthM": 0.8,
+       "centre": 0.75
+      }
+     ]
+    },
     "voidShare": 0.04,
     "foliageShare": 0.12
    },
@@ -170,6 +203,20 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.8,
+       "widthM": 0.82,
+       "centre": 0.47
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.11
    },
@@ -246,6 +293,20 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.8,
+       "widthM": 0.95,
+       "centre": 0.29
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.08
    },
@@ -322,6 +383,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.09
    },

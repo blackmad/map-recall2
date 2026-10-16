@@ -3,7 +3,7 @@
  "street": "Bellamydwarsstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.14,
+ "seconds": 0.35,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -37,6 +37,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.882,
+    "structure": {
+     "bayWidthM": 1.43,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.48,
     "foliageShare": 0.02
    },
@@ -68,6 +76,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.787,
+    "structure": {
+     "bayWidthM": 1.7,
+     "bayCentre": 0.84,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.42,
     "foliageShare": 0.05
    },
