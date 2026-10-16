@@ -15,7 +15,8 @@ import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { groundLookFrom, groundPalette } from './groundLook';
-import { drawnGrey, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
+import { drawnGrey, flatGroundGain, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
+import { LEGACY_LIGHT_RIG } from '../rendererShared/lightRig';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
@@ -1217,7 +1218,12 @@ test('far ring: radius only past the resident ring, blocks nearest first, one pa
 
 test('ground light: level sunlit ground draws its palette luminance; the road stays above the shade floor in cast shadow (live play 2026-10-14)', () => {
   // Before the gain the rig drew level ground at 0.83 of its albedo (sRGB ≈ 0.92): the "city too dark".
-  assert.ok(Math.abs(flatGroundLuminance() - 0.828) < 0.01, `rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(flatGroundLuminance(LEGACY_LIGHT_RIG) - 0.828) < 0.01, `legacy rig lights level ground at ${flatGroundLuminance(LEGACY_LIGHT_RIG)}`);
+  // The sunny look (look/sunny.ts, default since 2026-10-16) folds its exposure into the rig and white-balances it:
+  // level ground receives neutral light at 1.004, so the gain nearly vanishes (0.996) and the bright ground still
+  // draws its palette, hue included.
+  assert.ok(Math.abs(flatGroundLuminance() - 1.004) < 0.01, `sunny rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(flatGroundGain(LEGACY_LIGHT_RIG) - 1.208) < 0.01 && Math.abs(FLAT_GROUND_GAIN - 0.996) < 0.01, `gains ${flatGroundGain(LEGACY_LIGHT_RIG)} / ${FLAT_GROUND_GAIN}`);
   assert.ok(Math.abs(FLAT_GROUND_GAIN * flatGroundLuminance() - 1) < 1e-9);
   for (const v of [60, 104, 164, 220]) assert.ok(Math.abs(drawnGrey(v, FLAT_GROUND_GAIN) - v) < 0.01, `palette ${v} draws ${drawnGrey(v, FLAT_GROUND_GAIN)}`);
   const asphalt = 0.2126 * STREET_GROUND.asphalt.base[0] + 0.7152 * STREET_GROUND.asphalt.base[1] + 0.0722 * STREET_GROUND.asphalt.base[2];
