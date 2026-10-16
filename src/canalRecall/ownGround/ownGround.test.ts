@@ -25,7 +25,7 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { joinChains, wayDeckGroups, wayDeckProfile } from './wayDecks';
+import { roadEdgeSides, joinChains, wayDeckGroups, wayDeckProfile } from './wayDecks';
 import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -419,6 +419,21 @@ test('way decks over consecutive ways (Satellietbaan OSM 24343390 + 1252138995):
   assert.equal(joinChains([a, turn]).ways.length, 2, 'a 90° turn (a side street) is not the same bridge');
   const gap = { ...b, points: [[42, 0], [68, 0]] as [number, number][] };
   assert.equal(joinChains([a, gap]).ways.length, 2, 'a 2 m gap is not a joint');
+});
+
+test('way decks at the road edge (motorway viaducts OSM 7382983, 7041280; Jan Evertsenstraat): the sides reach the roads-v1 surfaces\' outer edges; no surface keeps the way half-width', () => {
+  // A canal x 20..30; a carriageway way along x at y = 0 drawn 3 m half-wide, the carriageway polygon y −2..7.5.
+  const wet = (x: number) => x > 20 && x < 30;
+  const p = wayDeckProfile('OSM1', '', [[12, 0], [38, 0]], 3, wet, () => false)!;
+  const sides = roadEdgeSides(p, (_x, y) => y > -2 && y < 7.5);
+  assert.ok(sides && Math.abs(sides[0] - 7.5) < 0.3 && Math.abs(sides[1] - 3) < 1e-9, `sides ${sides}`);
+  assert.equal(roadEdgeSides(p, () => false), undefined, 'no carriageway: the way half-width');
+  assert.equal(roadEdgeSides(p, (_x, y) => Math.abs(y) < 3.1), undefined, 'the way already reaches its edge');
+  // The Jan Evertsenstraat: the group's half-width 12 m lands on the cycle path and footway, past a tram bed without a
+  // polygon (y 5..8); the walk starts there and reaches the footway's edge at 15 m on both sides.
+  const wide = wayDeckProfile('OSM1', '', [[12, 0], [38, 0]], 12, wet, () => false)!;
+  const both = roadEdgeSides(wide, (_x, y) => Math.abs(y) < 5 || (Math.abs(y) > 8 && Math.abs(y) < 15));
+  assert.ok(both && both.every(w => Math.abs(w - 15) < 0.3), `sides ${both}`);
 });
 
 test('way decks over a hole (Jan Evertsenstraat, OSM 323258135): the deck runs on over an underpass past the water to the bank, level; a slope that never climbs back keeps the deck', () => {

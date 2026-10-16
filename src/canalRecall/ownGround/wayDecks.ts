@@ -200,3 +200,35 @@ export function wayDeckGroups(ways: readonly WayDeckInput[], wet: (x: number, y:
   }
   return { profiles, covered };
 }
+
+
+/**
+ * A way deck's sides from the road surfaces it carries (coordinator 2026-10-16, the motorway viaducts OSM 7382983 and
+ * 7041280: the PDOK orthophoto puts the railings at the outer edges of each carriageway, ours ran down the middle lanes
+ * at the OSM way's drawn half-width, check:bridge-railings insideM; the Jan Evertsenstraat's ran along its cycle
+ * paths, the railing stands past the footways). Over the deck span, each side walks out in ROAD_EDGE_STEP_M steps
+ * through the roads-v1 polygons (`onRoad`) from the way's half-width when that lies on one, else from the road line
+ * when that does (a tram bed or verge between them, without a polygon, ends the walk there), until it leaves them; the
+ * side's width is the median of those edges over ROAD_EDGE_MIN_STATIONS stations at least, at most halfWidth +
+ * ROAD_EDGE_REACH_MAX_M. `undefined` when no side lies more than ROAD_EDGE_WIDER_M past the half-width (no road
+ * surfaces there, or the way's width already reaches their edge): the deck keeps its offset.
+ */
+export const ROAD_EDGE_STEP_M = 0.25, ROAD_EDGE_MIN_STATIONS = 3, ROAD_EDGE_REACH_MAX_M = 12, ROAD_EDGE_WIDER_M = 0.3;
+export function roadEdgeSides(p: DeckProfile, onRoad: (x: number, y: number) => boolean): [number, number] | undefined {
+  const edges: [number[], number[]] = [[], []];
+  for (let i = 0; i < p.s.length; i++) {
+    if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+    const a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    const hw = p.halfWidth[i], max = hw + ROAD_EDGE_REACH_MAX_M;
+    for (const side of [0, 1] as const) {
+      const sg = side === 0 ? 1 : -1, on = (t: number) => onRoad(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t);
+      let t = on(hw) ? hw : on(0) ? 0 : -1;
+      if (t < 0) continue;
+      while (t + ROAD_EDGE_STEP_M <= max && on(t + ROAD_EDGE_STEP_M)) t += ROAD_EDGE_STEP_M;
+      if (t + ROAD_EDGE_STEP_M <= max) edges[side].push(t + ROAD_EDGE_STEP_M / 2);
+    }
+  }
+  const hw = Math.max(...p.halfWidth), med = (v: number[]) => { const s = [...v].sort((x, y) => x - y); return s[s.length >> 1]; };
+  const sides = edges.map(v => (v.length >= ROAD_EDGE_MIN_STATIONS ? Math.max(hw, med(v)) : hw)) as [number, number];
+  return sides.some(w => w > hw + ROAD_EDGE_WIDER_M) ? sides : undefined;
+}

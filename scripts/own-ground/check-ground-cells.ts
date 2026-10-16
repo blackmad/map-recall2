@@ -81,7 +81,7 @@ async function main(): Promise<void> {
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
   if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
-  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); process.exitCode = failed ? 1 : 0; return; }
+  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); await wayDeckCarriageRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -251,6 +251,7 @@ async function main(): Promise<void> {
   await parapetRegressions();
   await bridgeSurfaceRegressions();
   await wayDeckHoleRegressions();
+  await wayDeckCarriageRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -909,6 +910,36 @@ async function wayDeckHoleRegressions(): Promise<void> {
       const end = Math.max(-Infinity, ...drawn[side].map(p => p[1])), reach = run[1] > atPath.s + 2.35 && end > atPath.s + 2.35;
       check(drop <= 0.6 && reach, `${id} ${mode} ${side ? 'right' : 'left'} parapet: within ${drop.toFixed(2)} m of the deck level over ${(run[1] - run[0]).toFixed(1)} m, drawn to s ${end.toFixed(1)}, ${reach ? 'past' : 'short of'} the underpass (s ${atPath.s.toFixed(1)})`);
     }
+  }
+}
+
+/**
+ * Way-deck parapets at the carriageway's edge (coordinator 2026-10-16, the motorway viaducts: the PDOK orthophoto puts
+ * the railings at the outer edges of each carriageway, ours ran down the middle lanes at the OSM way's half-width).
+ * roads-v1: the drawn parapet points (level 0) lie within CARRIAGE_EDGE_M of the carriageway polygon's outer edge
+ * (carriageway CARRIAGE_EDGE_M inside the point, none CARRIAGE_EDGE_M outside it) at CARRIAGE_EDGE_SHARE of them at
+ * least; with the way decks at the way's half-width (wayDeckCarriage: false) they do not (the pin is live).
+ */
+const CARRIAGE_EDGE_M = 0.5, CARRIAGE_EDGE_SHARE = 0.75;
+const WAY_DECK_CARRIAGE: [string, number, number, string][] = [
+  ['OSM7382983', 4.84286, 52.35607, 'motorway viaduct over the water and a cycle path, Nieuw-West'],
+  ['OSM7041280', 4.95495, 52.40128, 'motorway viaduct over the water and a cycle path, Noord'],
+];
+async function wayDeckCarriageRegressions(): Promise<void> {
+  const halfWidth = new GroundStore(readExtract, { roads: true, wayDeckCarriage: false });
+  await halfWidth.init();
+  await roadsStore.init();
+  for (const [id, lng, lat, label] of WAY_DECK_CARRIAGE) for (const [mode, s] of [['roads', roadsStore], ['half-width', halfWidth]] as const) {
+    const [x, y] = toLocal(lng, lat), around = GroundStore.neighbours(s.cellAt(x, y));
+    const index = new RoadIndex(await Promise.all(around.map(k => s.roadCell(k))));
+    const carriage = (px: number, py: number) => index.classAt(px, py, true) === 'carriage';
+    const pts: { p: [number, number]; out: [number, number] }[] = [];
+    parapetTrace.fn = (pid, _side, line, at) => { if (pid === id && at.level === 0) for (const q of line) pts.push({ p: [q.p[0], q.p[1]], out: [q.out[0], q.out[1]] }); };
+    for (const k of around.filter(k => s.covers(k))) buildCell(await s.cellInput(k, 0));
+    parapetTrace.fn = null;
+    const at = pts.filter(({ p, out }) => carriage(p[0] - out[0] * CARRIAGE_EDGE_M, p[1] - out[1] * CARRIAGE_EDGE_M) && !carriage(p[0] + out[0] * CARRIAGE_EDGE_M, p[1] + out[1] * CARRIAGE_EDGE_M)).length;
+    const share = pts.length ? at / pts.length : 0, ok = share >= CARRIAGE_EDGE_SHARE, live = mode === 'half-width';
+    check(pts.length > 0 && (live ? !ok : ok), `${id} (${label}, ${mode}): ${at} of ${pts.length} parapet points within ${CARRIAGE_EDGE_M} m of the carriageway's outer edge (${(share * 100).toFixed(0)}%)${live ? ' (at the way half-width: the pin is live)' : ''}`);
   }
 }
 

@@ -28,7 +28,8 @@ import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, roadEdgeSides, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
+import { RoadIndex } from './roadSurfaces.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -93,7 +94,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -343,6 +344,18 @@ export class GroundStore {
     // Consecutive pieces of one bridge join first (wayDecks.ts joinChains).
     const { profiles } = wayDeckGroups(this.options.wayDeckChains === false ? ways : joinChains(ways).ways, wet, claimed, this.options.wayDeckHoles === false ? undefined : this.surface.ground);
     for (const w of ways) this.wayDeckIds.add(w.id);
+    // roads-v1: the parapets stand at the road surfaces' outer edges (carriageway, cycle path, footway), not the way's drawn half-width (wayDecks.ts roadEdgeSides).
+    if (profiles.length && this.options.roads === true && this.options.wayDeckCarriage !== false) {
+      const index = new RoadIndex(await Promise.all(around.map(k => this.roadCell(k))));
+      const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
+      for (const profile of profiles) {
+        const sides = roadEdgeSides(profile, onRoad);
+        if (!sides) continue;
+        profile.sides = sides;
+        const r = Math.max(...sides) - Math.max(...profile.halfWidth);
+        profile.bbox = [profile.bbox[0] - r, profile.bbox[1] - r, profile.bbox[2] + r, profile.bbox[3] + r];
+      }
+    }
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);
       (this.decksByCell.get(owner) ?? this.decksByCell.set(owner, []).get(owner)!).push(this.surface.addDeck(profile));
