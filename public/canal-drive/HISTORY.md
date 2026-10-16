@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## Neck and bell gables curve the right way: concave shoulders, measured from the photo (2026-10-16)
+
+User (2026-10-16), on a Wallen review sheet: "weird that the kit inverts the
+curve of the roof from concave to convex or vice versa". Lane
+`lane/gable-curves-20261016` (1599228cb). Cause in `fit.ts crownProfile`:
+neck flanks used `shoulderCurve 0.6` (f^0.6) and bell flanks fell back to
+`sin(f·π/2)`, both bulging outward; real claw pieces and bell flares stay
+low at the foot and rise steeply into the neck (Oudezijds Achterburgwal
+177920: the claw 0.05–0.4 m over the eaves until 0.2 m from the neck).
+New `crownShoulder: 'concave' | 'ogee' | 'straight' | 'convex'` on the
+front intent (neck/bell), default concave (quarter ellipse tangent to the
+neck); landmark builders without the option stay byte-identical.
+`gableFromStrip.flankCurvature` measures each flank against its chord: 19
+of 25 measured bell/neck fronts read concave (Utrechtsestraat 66-68 set
+`straight`). Roofs over the crowns: `roof-under-crown` sampled only 5 mm
+inside the facade, so an attic standing 1.5–2.8 m over the shoulders
+passed; `roofAboveCrownFrontView` now checks the whole plot square to the
+frontage and a new `roof-behind-crown` gate checks the chunk; saddles
+behind full-front neck/bell crowns may drop to 3 m below the cornice at the
+party walls; every own roof sits under its crown. Reinstalled
+wallen-oza-41-57, wallen-ozv-115-125, utrechtse-48-76, nassau-162289,
+bilder-164451-156126, bilder-233580-162444. Still open: a neighbour's roof
+behind an oblique party wall showing beside a crown (177915 by 177916,
+2.9 m), step/spout/point gables not yet under the front-view check
+(bilder-081118-155417), and the kit cannot yet say neck width (fixed 0.5 of
+the front; photos 0.38–0.45), claw height, a cornice band and pediment
+wider than the neck, an inset foot ledge, or a mansard with hipped sides.
+
 ## Parking bays read as street, not stripes (2026-10-16)
 
 User (2026-10-16), Prinsengracht by the Pulitzer: "are these bits from BGT?
