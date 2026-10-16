@@ -1,26 +1,152 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "stadsloket-zuidoost",
-  "pandId": "0363100012078772",
-  "address": "Stadsloket Zuidoost, Anton de Komplein 150, Amsterdam (2006 red-brick civic office on a glazed arcade)",
-  "sources": [
-    {"id": "pano-2019-06-26-sw", "kind": "street-panorama", "capturedAt": "2019-06-26", "image": "staging/pand-reference-walls/0363100012078772/w03-241.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001253_pano_0000_000393/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-09-01-nw", "kind": "street-panorama", "capturedAt": "2025-09-01", "image": "staging/pand-reference-walls/0363100012078772/w01-331.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02661/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [15, 60], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 16, "ground": "glazed", "windows": "low", "frames": false, "entrance": {"bay": 8, "storeys": 2}, "signage": {"text": "STADSLOKET", "colour": "#f2f0ea", "mount": "glazing"}},
-    {"wallSurfaces": [54, 68], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 18, "ground": "system", "windows": "low", "frames": false, "entrance": {"bay": 5, "storeys": 1}},
-    {"wallSurfaces": [8, 69], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 10, "ground": "system", "windows": "low", "frames": false},
-    {"wallSurfaces": [74, 87], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 18, "ground": "system", "windows": "low", "frames": false}
-  ],
-  "otherWalls": "blank",
-  "closedBands": true,
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#8f4a3a", "frame": "#cfd2d4", "door": "#b9873f", "stone": "#e8e6e0", "wallMaterial": "stucco"},
-  "notes": [
-    "2006 civic office on Anton de Komplein (pand 0363100012078772, 121 LoD2.2 surfaces, roof max 32.8 m); the whole pand is modelled. South-west front (surfaces 15/60, 2019-06-26 panorama w03-241): dark red brick, four storeys of small and long-ribbon windows set in the brick, over a tall fully glazed ground storey carried on white square piers, a long ribbon window box (a projecting glass band) on the fourth storey, wooden double doors under the white lettering Stadsloket on the glazing. North-west front (2025-09-01, w01-331, surface 54/68 and 8/69): the same brick, three storeys of mixed narrow/ribbon windows, a glazed stair core between two brick blocks, a low glazed arcade at both ends.",
-    "Signature: 'Stadsloket' lettering MODELLED (kit glazing lettering STADSLOKET in white on the entrance-hall glass, capitals for the photographed lower case); two-storey glazed entrance hall with the timber door colour MODELLED (entrance storeys 2, door colour #b9873f); glazed ground storey MODELLED (ground glazed); the white square piers of the arcade SIMPLIFIED (the kit piers option runs the whole wall height, so it is off: the arcade reads as a continuous glazed storey); the long projecting ribbon window box on the fourth storey SKIPPED (too-small: 3 m by 1 m, 0.4 m proud, no component); the brick window pattern SIMPLIFIED to a regular low-window grid (16 bays); glazed stair core on the north-west front SKIPPED (inside 3DBAG volume); the stairs and flower planters in front SKIPPED (temporary).",
-    "South-east and north-east walls (surfaces 74/87 etc.) have no panorama in range (candidates 0): surface 74/87 carries an INFERRED regular window grid copied from the north-west front so the 79 m wall is not a blank slab; the stepped taller blocks (58/121, 19/71/73, 101, 14) stay blank."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadsloket-zuidoost",
+ "pandId": "0363100012078772",
+ "address": "Stadsloket Zuidoost, Anton de Komplein 150, Amsterdam (2006 red-brick civic office on a glazed arcade)",
+ "sources": [
+  {
+   "id": "pano-2019-06-26-w03-241",
+   "kind": "street-panorama",
+   "capturedAt": "2019-06-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001253_pano_0000_000393/",
+   "image": "source-data://pand-reference-walls/0363100012078772/w03-241.jpg",
+   "sha256": "0bad0aae4d00f2a108736ef53fb76b04cba606e1e09d8187b5d82e52985fd57d",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-01-w01-331",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-01",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02661/",
+   "image": "source-data://pand-reference-walls/0363100012078772/w01-331.jpg",
+   "sha256": "b80a08dd4ef181ba0ed2847bcf5540f169a2fc9806c51a749c8f8f8a217e5391",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    15,
+    60
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 16,
+   "ground": "glazed",
+   "windows": "low",
+   "frames": false,
+   "entrance": {
+    "bay": 8,
+    "storeys": 2
+   },
+   "signage": {
+    "text": "STADSLOKET",
+    "colour": "#f2f0ea",
+    "mount": "glazing"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#6f4a3b",
+    "glass": "#2e302e"
+   }
+  },
+  {
+   "wallSurfaces": [
+    54,
+    68
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 18,
+   "ground": "system",
+   "windows": "low",
+   "frames": false,
+   "entrance": {
+    "bay": 5,
+    "storeys": 1
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#6f625d"
+   },
+   "windowShape": {
+    "w": 0.698,
+    "h": 0.45,
+    "sill": 0.1
+   }
+  },
+  {
+   "wallSurfaces": [
+    8,
+    69
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "low",
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#716460"
+   },
+   "windowShape": {
+    "w": 0.752,
+    "h": 0.45,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    74,
+    87
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 18,
+   "ground": "system",
+   "windows": "low",
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#8f4a3a",
+  "frame": "#cfd2d4",
+  "door": "#b9873f",
+  "stone": "#e8e6e0",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "2006 civic office on Anton de Komplein (pand 0363100012078772, 121 LoD2.2 surfaces, roof max 32.8 m); the whole pand is modelled. South-west front (surfaces 15/60, 2019-06-26 panorama w03-241): dark red brick, four storeys of small and long-ribbon windows set in the brick, over a tall fully glazed ground storey carried on white square piers, a long ribbon window box (a projecting glass band) on the fourth storey, wooden double doors under the white lettering Stadsloket on the glazing. North-west front (2025-09-01, w01-331, surface 54/68 and 8/69): the same brick, three storeys of mixed narrow/ribbon windows, a glazed stair core between two brick blocks, a low glazed arcade at both ends.",
+  "Signature: 'Stadsloket' lettering MODELLED (kit glazing lettering STADSLOKET in white on the entrance-hall glass, capitals for the photographed lower case); two-storey glazed entrance hall with the timber door colour MODELLED (entrance storeys 2, door colour #b9873f); glazed ground storey MODELLED (ground glazed); the white square piers of the arcade SIMPLIFIED (the kit piers option runs the whole wall height, so it is off: the arcade reads as a continuous glazed storey); the long projecting ribbon window box on the fourth storey SKIPPED (too-small: 3 m by 1 m, 0.4 m proud, no component); the brick window pattern SIMPLIFIED to a regular low-window grid (16 bays); glazed stair core on the north-west front SKIPPED (inside 3DBAG volume); the stairs and flower planters in front SKIPPED (temporary).",
+  "South-east and north-east walls (surfaces 74/87 etc.) have no panorama in range (candidates 0): surface 74/87 carries an INFERRED regular window grid copied from the north-west front so the 79 m wall is not a blank slab; the stepped taller blocks (58/121, 19/71/73, 101, 14) stay blank.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #445559 not used (not darker than the wall #6f625d by 10 L*, or tinted): kit glass kept; walls[2] glass #445359 not used (not darker than the wall #716460 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
   ]
+ }
 }

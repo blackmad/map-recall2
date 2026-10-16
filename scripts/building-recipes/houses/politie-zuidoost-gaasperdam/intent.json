@@ -1,23 +1,81 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-zuidoost-gaasperdam",
-  "pandId": "0363100012064423",
-  "address": "Politiebureau Zuidoost Gaasperdam, Remmerdenplein 102, Amsterdam (Gaasperdam)",
-  "sources": [
-    {"id": "pano-2022-west", "kind": "street-panorama", "capturedAt": "2022-06-28", "image": "staging/pand-reference/0363100012064423/front.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002644_pano_0009_000209/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [7], "system": "curtain-wall", "storeys": 2, "baysPerStorey": 5, "ground": "system", "windows": "plain", "entrance": {"bay": 2, "storeys": 1}}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#6b4a40", "frame": "#7a7f84", "door": "#b8312a", "stone": "#c9c6c0", "wallMaterial": "stucco"},
-  "notes": [
-    "1996 two-storey police bureau. The west front (3DBAG panel 6, surface 7, 20.5 m) from the 2022 panorama (front.jpg, rectified; alternate 2021): a steel-framed grey panel and glass grid in five bays divided by red steel columns, a low dark brick plinth, a red entrance door in the third bay, and a flat red-edged roof overhang across the whole front.",
-    "Not modelled: the red columns and the full-width red roof overhang (no component for either; entrance.canopy is a single-entrance canopy and would not match), the grey spandrel panels (modelled as one curtain wall).",
-    "No striped band, blue lamp, POLITIE lettering or garage doors are visible on this front, so police components and signage are not used.",
-    "Other walls (north, east, south and the small wings) have no panorama in the cache and are left to otherWalls (blank)."
-  ],
- "layeredKit": true
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-zuidoost-gaasperdam",
+ "pandId": "0363100012064423",
+ "address": "Politiebureau Zuidoost Gaasperdam, Remmerdenplein 102, Amsterdam (Gaasperdam)",
+ "sources": [
+  {
+   "id": "pano-2022-06-28-w01-255",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002644_pano_0009_000209/",
+   "image": "source-data://pand-reference-walls/0363100012064423/w01-255.jpg",
+   "sha256": "c6261672e8b5f894aabf85d64ff72f12842f37a090d89e53b1fc575b167e5d9c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-west",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-28",
+   "image": "staging/pand-reference/0363100012064423/front.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002644_pano_0009_000209/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 10,
+   "ground": "glazed",
+   "windows": "plain",
+   "entrance": {
+    "bay": 2,
+    "storeys": 1
+   },
+   "hand": [
+    "baysPerStorey",
+    "ground",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#726f6f",
+    "glass": "#55545c"
+   },
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.86,
+    "sill": 0.04
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#6b4a40",
+  "frame": "#7a7f84",
+  "door": "#b8312a",
+  "stone": "#c9c6c0",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "1996 two-storey police bureau. The west front (3DBAG panel 6, surface 7, 20.5 m) from the 2022 panorama (front.jpg, rectified; alternate 2021): a steel-framed grey panel and glass grid in five bays divided by red steel columns, a low dark brick plinth, a red entrance door in the third bay, and a flat red-edged roof overhang across the whole front.",
+  "Not modelled: the red columns and the full-width red roof overhang (no component for either; entrance.canopy is a single-entrance canopy and would not match), the grey spandrel panels (modelled as one curtain wall).",
+  "No striped band, blue lamp, POLITIE lettering or garage doors are visible on this front, so police components and signage are not used.",
+  "Other walls (north, east, south and the small wings) have no panorama in the cache and are left to otherWalls (blank).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] system curtain-wall -> brick-bay-grid (measured punched)."
+ ],
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0
+  ]
+ }
 }

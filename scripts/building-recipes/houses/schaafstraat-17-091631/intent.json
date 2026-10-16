@@ -6,27 +6,30 @@
  "address": "Schaafstraat 17, Amsterdam-Noord (Overhoeks industrial estate): 1960 workshop hall with painted cream and grey banded walls and a clerestory glazing strip",
  "sources": [
   {
-   "id": "pano-2021-12-24-w01",
+   "id": "pano-2021-12-24-w01-169",
    "kind": "street-panorama",
    "capturedAt": "2021-12-24",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002343_pano_0000_000394/",
-   "image": "staging/pand-reference-walls/0363100012091631/w01-169.jpg",
+   "image": "source-data://pand-reference-walls/0363100012091631/w01-169.jpg",
+   "sha256": "ae19f693f55ff9b7a7dc860c639478197dcfd6ee71672bf511f0dff379bbba60",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2025-09-04-w02",
+   "id": "pano-2022-12-27-w02-259L",
    "kind": "street-panorama",
-   "capturedAt": "2025-09-04",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-04_07-46-10_00420/",
-   "image": "staging/pand-reference-walls/0363100012091631/w02-259.jpg",
+   "capturedAt": "2022-12-27",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002894_pano_0001_000027/",
+   "image": "source-data://pand-reference-walls/0363100012091631/w02-259L.jpg",
+   "sha256": "15a875cb6551f4d864d3030d1626c4ad8f1f0774307baeeafc6aa2d09b3479b9",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2020-05-29-w03",
+   "id": "pano-2021-12-24-w03-79L",
    "kind": "street-panorama",
-   "capturedAt": "2020-05-29",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001729_pano_0000_002175/",
-   "image": "staging/pand-reference-walls/0363100012091631/w03-79.jpg",
+   "capturedAt": "2021-12-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002343_pano_0000_000253/",
+   "image": "source-data://pand-reference-walls/0363100012091631/w03-79L.jpg",
+   "sha256": "92c7ffd09576a4faa50496451c1dce2b373b54be431a3409c84aabce9d7d314b",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -46,10 +49,15 @@
    "deepBars": true,
    "wallMaterial": "render",
    "palette": {
-    "brick": "#e4dfd0",
+    "brick": "#988e7d",
     "frame": "#4a5a68",
-    "stone": "#9aa0a8"
-   }
+    "stone": "#9aa0a8",
+    "glass": "#535455"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -66,10 +74,15 @@
    "deepBars": true,
    "wallMaterial": "render",
    "palette": {
-    "brick": "#e4dfd0",
+    "brick": "#726d60",
     "frame": "#4a5a68",
-    "stone": "#9aa0a8"
-   }
+    "stone": "#9aa0a8",
+    "glass": "#3d3b3b"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -87,10 +100,14 @@
    "deepBars": true,
    "wallMaterial": "render",
    "palette": {
-    "brick": "#f0eee8",
+    "brick": "#47474a",
     "frame": "#3aa0b8",
     "stone": "#3aa0b8"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -108,6 +125,15 @@
  "notes": [
   "Schaafstraat 17 (BAG, 1960; Overhoeks/Noord workshop estate): one long hall 7 m to the eaves with lower annexes (4.8 m) on the north side; 90 3DBAG wall surfaces. Photographed in the 2021-12-24 panorama (w01-169, 70 m south wall), w02-259 (west, 2025-09-04) and w03-79 (east, 2020-05-29, showing the white wall with a turquoise upper band and workshop doors).",
   "walls[0..2] = panels 46 (S), 41 (W) and 55 (E): a painted wall (white/cream over a grey plinth band) topped by a continuous clerestory glazing strip between slim posts about 5 m apart. Drawn as ribbon-windows, 2 storeys, ground storey blank (render) and low windows in the upper storey; the east wall carries the turquoise frame colour. Simplified: the grey plinth band (one wall colour), the workshop roller doors and the west wall bay doors; the north annexes and the roof lights are blank/3DBAG roof; the flat roof is bitumen.",
-  "Not drawn: the north and rear fronts and the courts (no panorama within 35 m or only over parked vans and fencing)."
- ]
+  "Not drawn: the north and rear fronts and the courts (no panorama within 35 m or only over parked vans and fencing).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #38302f not used (not darker than the wall #47474a by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
+  ]
+ }
 }

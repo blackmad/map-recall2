@@ -6,11 +6,12 @@
  "address": "Montessori Lyceum Amsterdam, Van Ostadestraat 103, Amsterdam (1900 school: three tall storeys of window groups between slender piers)",
  "sources": [
   {
-   "id": "pano-2019-01-18-south",
+   "id": "pano-2019-01-18-w02-168",
    "kind": "street-panorama",
    "capturedAt": "2019-01-18",
-   "image": "staging/pand-reference-walls/0363100012236840/w02-168.jpg",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001063_pano_0001_000014/",
+   "image": "source-data://pand-reference-walls/0363100012236840/w02-168.jpg",
+   "sha256": "1016a9aa3ba6a5f10caca296a0628b9482709a7a7e8181860326e871e57b9897",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -35,7 +36,17 @@
    "frames": true,
    "sills": true,
    "palette": {
-    "stone": "#cfc8b8"
+    "stone": "#cfc8b8",
+    "brick": "#68584f"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.582,
+    "h": 0.549,
+    "sill": 0
    }
   }
  ],
@@ -53,7 +64,14 @@
  },
  "notes": [
   "Montessori Lyceum Amsterdam, Van Ostadestraat 103 (pand 0363100012236840, 1900, 158 LoD2.2 surfaces, roof max 20.0 m). Only the south street front has a panorama (2019-01-18 w02-168, 8.7 m away): a dark brick front of three tall storeys, each a row of window groups (two or three lights, slender white piers between) under thin stone string courses, a ground floor with a slightly lower sill, a cornice and two roof dormers. The north, east and west walls have no panorama in range and stay blank.",
-  "MODELLED: three storeys on the south panels (surfaces 13/111/112/153 and the two side panels 57/136, 97), two bays of multi-light windows per storey (windows wide), light piers and string courses, brick colour. SIMPLIFIED: the real windows are taller than the preset (about 80 % of the storey, ours 58 %); the side panels have no photo of their own and repeat the centre rhythm; the mullion detail is the plain mullion/transom grid. SKIPPED: the two roof dormers (not in the LoD2.2 roof), the MIA MAVO/HAVO sign plate and bicycle racks (temporary), the rear, side and courtyard walls (no panorama: blank)."
+  "MODELLED: three storeys on the south panels (surfaces 13/111/112/153 and the two side panels 57/136, 97), two bays of multi-light windows per storey (windows wide), light piers and string courses, brick colour. SIMPLIFIED: the real windows are taller than the preset (about 80 % of the storey, ours 58 %); the side panels have no photo of their own and repeat the centre rhythm; the mullion detail is the plain mullion/transom grid. SKIPPED: the two roof dormers (not in the LoD2.2 roof), the MIA MAVO/HAVO sign plate and bicycle racks (temporary), the rear, side and courtyard walls (no panorama: blank).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #555759 not used (not darker than the wall #68584f by 10 L*, or tinted): kit glass kept."
  ],
- "layeredKit": true
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0
+  ]
+ }
 }

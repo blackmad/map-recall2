@@ -5,7 +5,7 @@ import {
   DESATURATE_RADIUS_M, HIDDEN, HIGHLIGHT_GLSL, HIGHLIGHT_RECIPES, accentSeparation, applyMeshHighlight, attachHighlightPasses, baseMaterialOf,
   detachHighlightPasses, featureCentre, highlightAccent, highlightDefines, highlightFeature, highlightMaterialFor, highlightStyle, metresBetween,
   OUTLINE_FAR_PX, OUTLINE_PX, outlineWidthPx, withinDesaturation,
-  HIGHLIGHT_BOOST_GLOBAL, ROOF_WASH_ALPHA, SMALL_TARGET_FADE_SHARE, SMALL_TARGET_SHARE, footprintShare, smallTargetBoost,
+  HIGHLIGHT_BOOST_GLOBAL, LANDMARK_WORLD_UP, ROOF_WASH_ALPHA, SMALL_TARGET_FADE_SHARE, SMALL_TARGET_SHARE, footprintShare, smallTargetBoost,
 } from './highlight.ts';
 import { landmarkHighlightStates } from './highlightLandmarks.ts';
 import { beaconAlpha, beaconRaise, footprintRadiusPx, markerSlot, mercatorFromLocal, mercatorOf, ringBand, ringOutlines, ringsArea } from './highlightMarker.ts';
@@ -281,4 +281,29 @@ test('roof wash: a third pass under a, drawn only while boosted, upward faces on
   assert.equal(attachHighlightPasses(THREE, mesh, { style: 'a', feature: { attribute: '_feature_id_0', id: 1 } }).length, 1);
   assert.equal(attachHighlightPasses(THREE, mesh, { style: 'b' }).length, 1);
   assert.equal(HIGHLIGHT_RECIPES.a.wash && !HIGHLIGHT_RECIPES.b.wash && !HIGHLIGHT_RECIPES.c.wash && !HIGHLIGHT_RECIPES.yellow.wash, true);
+});
+
+test('landmark roof wash in the shared frame: east/north/up world, so glTF +y is up (Westerkerk, ride review 2026-10-14)', () => {
+  // The shared frame's chain: a root mapping Mercator to east/north/up metres, the landmark holder
+  // (translate · scale(u, -u, u) · rotZ · rotX(π/2), as signature-landmarks places it), the glTF mesh.
+  const u = 2.5e-8, mx = 0.5136, my = 0.3291, renderer = { getDrawingBufferSize: (v: any) => v.set(1280, 800), domElement: { clientWidth: 1280 } };
+  const scene = new THREE.Scene(), root = new THREE.Group(), holder = new THREE.Group();
+  root.matrixAutoUpdate = holder.matrixAutoUpdate = false;
+  root.matrix.makeScale(1 / u, -1 / u, 1 / u).multiply(new THREE.Matrix4().makeTranslation(-mx, -my, 0));
+  holder.matrix.makeTranslation(mx, my, 0).multiply(new THREE.Matrix4().makeScale(u, -u, u))
+    .multiply(new THREE.Matrix4().makeRotationZ(0.7)).multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+  const church = new THREE.Mesh(new THREE.BoxGeometry(20, 30, 50), new THREE.MeshLambertMaterial());
+  church.scale.setScalar(43.5); // the Westerkerk GLB's own scale, so the Mercator-unit fallback cannot apply
+  scene.add(root); root.add(holder); holder.add(church);
+  const upFor = (up: readonly [number, number, number]) => {
+    const roof = attachHighlightPasses(THREE, church, { style: 'a', up }).find((p: any) => p.name.endsWith('roof'));
+    scene.updateMatrixWorld(true);
+    roof.onBeforeRender(renderer, scene, new THREE.PerspectiveCamera());
+    return roof.material.uniforms.hlUp.value.clone();
+  };
+  const shared = upFor(LANDMARK_WORLD_UP.shared);
+  assert.ok(Math.abs(shared.y - 1) < 1e-6, `glTF +y is up: ${shared.toArray()}`);
+  const wrong = upFor(LANDMARK_WORLD_UP.legacy);
+  assert.ok(Math.abs(wrong.y) < 1e-6, `+y in this world is horizontal in glTF space (${wrong.toArray()}): walls would be washed`);
+  detachHighlightPasses(church);
 });

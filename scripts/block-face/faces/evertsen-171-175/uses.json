@@ -1,0 +1,137 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:53:28.798Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148630",
+   "addresses": [
+    "Jan Evertsenstraat 171",
+    "Jan Evertsenstraat 173",
+    "Jan Evertsenstraat 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Staalmeesterslaan 410",
+     "use": "kantoorfunctie",
+     "areaM2": 23720,
+     "bagId": "0363010000818529"
+    },
+    {
+     "address": "Jan Evertsenstraat 171",
+     "use": "kantoorfunctie",
+     "areaM2": 22624,
+     "bagId": "0363010012071271"
+    },
+    {
+     "address": "Staalmeesterslaan 410",
+     "use": "logiesfunctie",
+     "areaM2": 14283,
+     "bagId": "0363010012071272"
+    },
+    {
+     "address": "Staalmeesterslaan 412",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 12641,
+     "bagId": "0363010012071741"
+    },
+    {
+     "address": "Staalmeesterslaan 414",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012071742"
+    },
+    {
+     "address": "Staalmeesterslaan 416",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 809,
+     "bagId": "0363010012071743"
+    },
+    {
+     "address": "Jan Evertsenstraat 171",
+     "use": "onderwijsfunctie",
+     "areaM2": 5812,
+     "bagId": "0363010012071744"
+    },
+    {
+     "address": "Jan Evertsenstraat 173",
+     "use": "logiesfunctie",
+     "areaM2": 5515,
+     "bagId": "0363010012071745"
+    },
+    {
+     "address": "Jan Evertsenstraat 175",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 469,
+     "bagId": "0363010012071746"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2600983668,
+     "lngLat": [
+      4.8441167,
+      52.368119
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Floor 17",
+      "opening_hours": "Su-Th 10:00-24:00, Fr,Sa 10:00-01:00",
+      "website": "http://www.floorseventeen.nl/"
+     },
+     "fetchedAt": "2026-10-14T13:53:28.798Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "way",
+     "id": 254311456,
+     "lngLat": [
+      4.8438345,
+      52.3684271
+     ],
+     "tags": {
+      "access": "customers",
+      "amenity": "parking",
+      "layer": "-1",
+      "parking": "underground"
+     },
+     "fetchedAt": "2026-10-14T13:53:28.798Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "relation",
+     "id": 5442482,
+     "lngLat": [
+      4.8437898,
+      52.3687302
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "171",
+      "addr:postcode": "1057BW",
+      "addr:street": "Jan Evertsenstraat",
+      "alt_name": "Hotelschool The Hague locatie Amsterdam",
+      "amenity": "school",
+      "designation": "hogeschool",
+      "name": "Hotelschool",
+      "old_name": "Hoge Hotelschool Amsterdam",
+      "type": "multipolygon",
+      "website": "https://hotelschool.nl/",
+      "wikidata": "Q20775334",
+      "wikimedia_commons": "File:Amsterdam Campus Hotelschool The Hague.jpg",
+      "wikipedia": "nl:Hotelschool The Hague"
+     },
+     "fetchedAt": "2026-10-14T13:53:28.798Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

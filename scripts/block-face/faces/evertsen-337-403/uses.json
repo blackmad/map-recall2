@@ -1,0 +1,229 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:24:12.493Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012146173",
+   "addresses": [
+    "Jan Evertsenstraat 337"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 337",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000684703"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116286",
+   "addresses": [
+    "Jan Evertsenstraat 339",
+    "Jan Evertsenstraat 341",
+    "Jan Evertsenstraat 343",
+    "Jan Evertsenstraat 345",
+    "Jan Evertsenstraat 347",
+    "Jan Evertsenstraat 349",
+    "Jan Evertsenstraat 351",
+    "Jan Evertsenstraat 353",
+    "Jan Evertsenstraat 355",
+    "Jan Evertsenstraat 357",
+    "Jan Evertsenstraat 359",
+    "Jan Evertsenstraat 361",
+    "Jan Evertsenstraat 363",
+    "Jan Evertsenstraat 365",
+    "Jan Evertsenstraat 367",
+    "Jan Evertsenstraat 369",
+    "Jan Evertsenstraat 371",
+    "Jan Evertsenstraat 373",
+    "Jan Evertsenstraat 375",
+    "Jan Evertsenstraat 377",
+    "Jan Evertsenstraat 379",
+    "Jan Evertsenstraat 381",
+    "Jan Evertsenstraat 383",
+    "Jan Evertsenstraat 385",
+    "Jan Evertsenstraat 387",
+    "Jan Evertsenstraat 389",
+    "Jan Evertsenstraat 391",
+    "Jan Evertsenstraat 393",
+    "Jan Evertsenstraat 395",
+    "Jan Evertsenstraat 397",
+    "Jan Evertsenstraat 399",
+    "Jan Evertsenstraat 401",
+    "Jan Evertsenstraat 403"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 339",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684704"
+    },
+    {
+     "address": "Jan Evertsenstraat 341",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684705"
+    },
+    {
+     "address": "Jan Evertsenstraat 343",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684706"
+    },
+    {
+     "address": "Jan Evertsenstraat 345",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684707"
+    },
+    {
+     "address": "Jan Evertsenstraat 347",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684708"
+    },
+    {
+     "address": "Jan Evertsenstraat 349",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684709"
+    },
+    {
+     "address": "Jan Evertsenstraat 351",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684710"
+    },
+    {
+     "address": "Jan Evertsenstraat 353",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684711"
+    },
+    {
+     "address": "Jan Evertsenstraat 355",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684712"
+    },
+    {
+     "address": "Jan Evertsenstraat 357",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684713"
+    },
+    {
+     "address": "Jan Evertsenstraat 359",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684714"
+    },
+    {
+     "address": "Jan Evertsenstraat 361",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684715"
+    },
+    {
+     "address": "Jan Evertsenstraat 363",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684716"
+    },
+    {
+     "address": "Jan Evertsenstraat 365",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684717"
+    },
+    {
+     "address": "Jan Evertsenstraat 367",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684718"
+    },
+    {
+     "address": "Jan Evertsenstraat 369",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684719"
+    },
+    {
+     "address": "Jan Evertsenstraat 371",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684720"
+    },
+    {
+     "address": "Jan Evertsenstraat 373",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684721"
+    },
+    {
+     "address": "Jan Evertsenstraat 375",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684722"
+    },
+    {
+     "address": "Jan Evertsenstraat 377",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684723"
+    },
+    {
+     "address": "Jan Evertsenstraat 379",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684724"
+    },
+    {
+     "address": "Jan Evertsenstraat 381",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684725"
+    },
+    {
+     "address": "Jan Evertsenstraat 383",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684726"
+    },
+    {
+     "address": "Jan Evertsenstraat 385",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684727"
+    },
+    {
+     "address": "Jan Evertsenstraat 387",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000684728"
+    },
+    {
+     "address": "Jan Evertsenstraat 389",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684729"
+    },
+    {
+     "address": "Jan Evertsenstraat 391",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000684730"
+    }
+   ],
+   "units": 51,
+   "osm": []
+  }
+ ]
+}
