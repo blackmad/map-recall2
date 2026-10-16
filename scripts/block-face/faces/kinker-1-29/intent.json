@@ -20,93 +20,7 @@
  "types": [
   "kinker-1890-plain-brick",
   "kinker-1985-infill",
-  {
-   "schemaVersion": 1,
-   "kind": "house-type",
-   "id": "kinker-1885-wall-dormer",
-   "district": "oud-west",
-   "description": "Face-local (kinker-1-29 pands 6-8, Kinkerstraat 19-23, 1885): plain red-brown brick, 3 axes, segmental heads without dressing, iron anchors, bracketed cornice with carved end consoles, broken in the middle by a brick wall dormer (one light, flat cap with an iron finial) over the centre axis. Inline because no library type has a centre-axis wall dormer: plain-brick has only pediment dormers, brick-arched's tower crown spans axes 0-1 of a 2-axis module.",
-   "fit": {
-    "widthM": [
-     5,
-     6.3
-    ],
-    "storeys": [
-     5
-    ]
-   },
-   "body": {
-    "storeys": 5,
-    "bays": 3,
-    "cornice": "bracketed",
-    "windows": "t-window",
-    "windowHead": {
-     "kind": "segmental"
-    },
-    "windowHeights": [
-     0.7,
-     0.72,
-     0.72,
-     0.72,
-     0.7
-    ]
-   },
-   "crowns": {
-    "wall-dormer": {
-     "gable": "cornice",
-     "tower": {
-      "bays": {
-       "from": 1,
-       "to": 1
-      },
-      "rise": 1,
-      "cap": "flat"
-     },
-     "note": "a brick wall dormer over the centre axis rising one storey through the cornice, one light, flat cap (19, 21, 23)"
-    }
-   },
-   "palettes": {
-    "red-brown-19-23": {
-     "brick": "#69533f",
-     "frame": "#a8ada0",
-     "door": "black",
-     "stone": "#bec2b3",
-     "cornice": "#c2c7b9"
-    }
-   },
-   "roof": {
-    "material": "slate"
-   },
-   "rhythm": {
-    "bays": "3 window axes",
-    "identicalBays": "upper storeys: equal axes",
-    "windowsPerStorey": "ground: shop | 1-4: 3",
-    "symmetry": "symmetric above the ground",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "bracketed cornice broken by a centre brick wall dormer",
-    "photoGables": 0,
-    "schemaLimits": [
-     "iron wall anchors",
-     "carved end consoles of the cornice",
-     "iron finial on the dormer cap"
-    ]
-   },
-   "evidence": [
-    {
-     "face": "kinker-1-29",
-     "pands": [
-      "158983",
-      "165338",
-      "159971"
-     ],
-     "citation": "strip.jpg 2024-12-11 pands 6-8 (zoom): three 3-axis fronts with a centre brick wall dormer through the cornice"
-    }
-   ],
-   "notes": [
-    "Palette: median of the three pands on palette-from-strip (#67523f, #69533f, #6f5d49). Candidate for the Oud-West library (types lane)."
-   ]
-  }
+  "kinker-1885-wall-dormer"
  ],
  "houses": [
   {
@@ -540,6 +454,12 @@
        1,
        1
       ]
+     },
+     "paintedStoreys": {
+      "storeys": [
+       1
+      ],
+      "colour": "#e3e2d7"
      }
     },
     "ground": {
@@ -574,7 +494,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the first storey is white-painted (a later shop insert); drawn as brick with its 4 lights"
+     "the painted storey sits about 0.5 m higher than the photo (3.8-6.7 m vs 3.3-5.9 m): the photo puts a tall frieze zone in the top storey, but a measured storeyHeights with a 4.1 m top storey lifts the wall dormer (its rise is one top storey) 1 m over the photo and the 3DBAG cap"
     ]
    }
   },
@@ -601,6 +521,12 @@
        1,
        1
       ]
+     },
+     "paintedStoreys": {
+      "storeys": [
+       1
+      ],
+      "colour": "#e3e2d7"
      }
     },
     "ground": {
@@ -641,7 +567,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "the first storey is white-painted (a later shop insert); drawn as brick with its 4 lights"
+     "the painted storey sits about 0.5 m higher than the photo (3.8-6.7 m vs 3.3-5.9 m): the photo puts a tall frieze zone in the top storey, but a measured storeyHeights with a 4.1 m top storey lifts the wall dormer (its rise is one top storey) 1 m over the photo and the 3DBAG cap"
     ]
    }
   },
@@ -829,7 +755,6 @@
   "Iron wall anchors on every 1883-1885 front (no kit key).",
   "7-17 (103619): irregular grouping of single and wide lights per module; drawn as 3 equal lights per module.",
   "19-23: carved end consoles of the cornice and the iron finial on the wall dormer.",
-  "21-23: the first storey is white-painted over the whole width (one storey of paint over brick): the kit paints whole fronts (wallMaterial) or bands, not one storey; drawn as brick with its 4 lights.",
   "25-29: frieze panels (the kit frieze is a plain slab)."
  ]
 }
