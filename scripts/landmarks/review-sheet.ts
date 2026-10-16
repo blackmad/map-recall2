@@ -1,5 +1,6 @@
 /**
- * Per-wall review sheet: photo of each side next to a camera-matched render of the GLB, a 50 % overlay, and an in-game shot.
+ * Per-wall review sheet: photo of each side next to a camera-matched render of the GLB, a 50 % overlay, and an in-game
+ * frame of the same wall (the game draws every model, so one standing on the same ground shows there).
  *
  *   PORT=4401 npm run dev                      # only for the in-game shot (skip with --no-game)
  *   node --import tsx scripts/landmarks/review-sheet.ts --id=nassaukerk [--bag=0363100012237328] [--glb=...]
@@ -52,7 +53,10 @@ const TILE = 520;
 const inventoryFile = path.join(ROOT, 'scripts/landmarks', `${id}-inventory.json`);
 const inventory: LandmarkInventory | null = flag('inventory') ? (fs.existsSync(inventoryFile) ? JSON.parse(fs.readFileSync(inventoryFile, 'utf8')) : null) : null;
 if (flag('inventory') && !inventory) { console.error(`--inventory: no ${path.relative(ROOT, inventoryFile)} (run scripts/landmarks/landmark-brief.ts)`); process.exit(2); }
-const COLS = inventory ? 4 : 3;
+const GAME = !flag('no-game');
+// The in-game column: the game draws every model and the city around this one, so a second model on the same ground
+// (Wereldmuseum under the Tropenmuseum, 2026-10-16) or a neighbour through the wall shows here and nowhere else.
+const COLS = (inventory ? 4 : 3) + (GAME ? 1 : 0);
 
 /** Inventory column: per modelled/simplified item, photo crop | render crop (same camera, so the same box), labelled. */
 async function inventoryTile(wall: InventoryWall | undefined, photo: Buffer | null, render: Buffer): Promise<Buffer> {
@@ -146,8 +150,10 @@ async function label(buf: Buffer, text: string, colour = '#111'): Promise<Buffer
   return sharp(buf).resize(TILE, TILE, {fit: 'cover'}).extend({top: 24, background: '#fff'}).composite([{input: Buffer.from(svg), top: 0, left: 0}]).png().toBuffer();
 }
 
-async function gameShot(centre: [number, number], bearing: number, file: string): Promise<boolean> {
+/** One in-game frame per wall, looking at the wall from the street side (one browser for all of them). */
+async function gameShots(walls: Wall[], dir: string): Promise<Map<Wall, string>> {
   const port = arg('port') ?? process.env.PW_PORT ?? '4401';
+  const shots = new Map<Wall, string>();
   const br = await chromium.launch({headless: true});
   try {
     const page: Page = await br.newPage({viewport: {width: 1100, height: 800}});
@@ -158,15 +164,20 @@ async function gameShot(centre: [number, number], bearing: number, file: string)
     await page.locator('#route-card').evaluate((f: HTMLFormElement) => f.requestSubmit());
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4 && (window as any).canalRecallGame.camera?.introOverview === 0, null, {timeout: 90000});
     await page.evaluate(() => { (window as any).canalRecallGame.vectorMap.sync = () => {}; });
-    await page.evaluate(({c, b}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: 18.6, pitch: 62, bearing: b}), {c: centre, b: bearing});
-    await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
-    await page.waitForTimeout(6000);
-    await page.screenshot({path: file});
-    return true;
+    for (const w of walls) {
+      const bearing = bearingOf(w), file = path.join(dir, `game-${bearing}-${Math.round(w.len)}m.png`);
+      try {
+        await page.evaluate(({c, b}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: 19.2, pitch: 70, bearing: b}), {c: rdToLngLat(w.mid), b: (bearing + 180) % 360});
+        await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
+        await page.waitForTimeout(5000);
+        await page.screenshot({path: file});
+        shots.set(w, file);
+      } catch (e) { console.log(`in-game shot of wall ${bearing} failed:`, String(e).split('\n')[0]); }
+    }
   } catch (e) {
-    console.log('in-game shot failed:', String(e).split('\n')[0]);
-    return false;
+    console.log('in-game shots failed:', String(e).split('\n')[0]);
   } finally { await br.close(); }
+  return shots;
 }
 
 async function main() {
@@ -192,6 +203,7 @@ async function main() {
     if (hit && !walls.includes(hit)) walls.push(hit);
   }
   const gh = wallHeight(fp.height);
+  const game = GAME && walls.length ? await gameShots(walls, out) : new Map<Wall, string>();
   console.log(`${id}: ${walls.length} exposed walls, tile height ${fp.height} m`);
   const r = await renderer();
   const rows: Buffer[] = [];
@@ -234,6 +246,7 @@ async function main() {
         if (inventory) tiles.push(await inventoryTile(matchWall(inventory.walls, bearing, rdToLngLat(w.mid) as [number, number]), null, render));
         meta.push({bearing, lengthM: w.len, photo: false, camera: cam});
       }
+      if (GAME) { const shot = game.get(w); tiles.push(shot ? await label(fs.readFileSync(shot), 'IN GAME (every drawn model)') : await label(await sharp({create: {width: TILE, height: TILE, channels: 3, background: '#e8e4dc'}}).png().toBuffer(), 'in-game shot failed', '#b00')); }
       const row = await sharp({create: {width: TILE * COLS, height: TILE + 24, channels: 3, background: '#fff'}}).composite(tiles.map((input, i) => ({input, left: i * TILE, top: 0}))).png().toBuffer();
       await sharp(row).toFile(path.join(out, `wall-${bearing}-${Math.round(w.len)}m.png`));
       rows.push(row);
@@ -241,13 +254,6 @@ async function main() {
     }
   } finally { await r.close(); }
 
-  if (!flag('no-game') && walls.length) {
-    const main = walls[0];
-    const file = path.join(out, 'game.png');
-    if (await gameShot(anchor as [number, number], (bearingOf(main) + 180) % 360, file)) {
-      rows.push(await sharp(file).resize({width: TILE * COLS}).png().toBuffer());
-    }
-  }
   const heights = await Promise.all(rows.map(async b => (await sharp(b).metadata()).height!));
   let y = 0;
   const comp = rows.map((input, i) => { const c = {input, left: 0, top: y}; y += heights[i]; return c; });

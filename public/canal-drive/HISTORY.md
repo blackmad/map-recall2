@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## One model per ground: the Wereldmuseum drew twice (2026-10-16)
+
+User (2026-10-16), with two ride screenshots of the Mauritskade portal:
+"wereld frontage issues - why not caught?". Two models stood on the KIT
+complex: `wereldmuseum-amsterdam` (2026-10-04 massing) and `tropenmuseum`
+(the measured 2026-10-14 model), same landmark, 38 shared suppressed ids,
+both in `GAME_BUILDING_MODELS`. Not caught because the Tropenmuseum lane
+added a new id instead of holding the old one, every review rendered one
+GLB alone (`landmark-strip`, `review:sheet`), and the suppression checks
+only compare models against OSM/BAG, which both passed. The old entry is now
+`status: "held"` with a `heldReason`. `modelOverlap.ts` and its test
+(`test:building-taxonomy`, in `check:canal`) fail when two drawn models share
+a landmark id or a suppressed OSM way / BAG pand. Across 485 drawn models it
+found one more pair: Brandweerkazerne Nico (`fire-station-nico`, every side
+modelled) and the 2026-10-13 Politiebureau IJ-tunnel large recipe on the same
+1972 pand (three sides blank). The landmark wins: `SHADOWED_BY_LANDMARK` in
+`ordinaryModels.ts` keeps the install catalogued but undrawn, and the test
+fails if a pair goes stale. (`royal-palace` in `signature-landmarks.json` is
+a stale manifest record, not drawn.) `review:sheet` now puts an IN GAME
+tile on every wall row (one browser, a 70° frame of that wall), not one
+overhead shot of the main wall; `docs/buildings-pipeline.md` (bespoke lane,
+items 7-8) requires both. Correction to the first diagnosis: with the old
+model gone, the in-game frames of the Mauritskade face still show what the
+user saw. The plain brown walls with bare blue cells either side of the portal
+are the Tropenmuseum's own kit walls, so that face goes to the fourth pass
+(TODO).
+
 ## Canal water is blue again, one tone for the map and the 3D water (2026-10-16)
 
 User (2026-10-16), on the finish card over the map: "why is the water this

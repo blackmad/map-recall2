@@ -1518,7 +1518,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
 - **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
-  pass"): the swung gables (wing, risalit) keep 3DBAG's plain outline; the
+  pass"; user report 2026-10-16, HISTORY "One model per ground"): the long
+  walls either side of the Mauritskade portal (bearings 331/151/241) are
+  still the kit's plain cells on dark brown brick (no frames, no white stone
+  bands, brick far darker than the photo's red), so the measured portal reads
+  as a panel pasted on; in-game frames from `review:sheet` show it. Then the swung gables (wing, risalit) keep 3DBAG's plain outline; the
   south-pavilion clock dormer, relief iconography, arcade brick tracery,
   risalit souterrain arches, the wing's ground floor and banner field;
   only 3.4 KB of byte headroom (cut elsewhere first); inventory text says
