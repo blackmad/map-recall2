@@ -99,7 +99,15 @@ export function chordOverBay(facts: BuildingFacts, chord = bayChord(facts)): Bui
 }
 
 /** A bay standing in front of a discovered front whose ends already sit on the facade line. */
-export interface FrontBump { fromM: number; toM: number; depthM: number; centre: number }
+export interface FrontBump {
+  fromM: number; toM: number; depthM: number; centre: number;
+  /**
+   * Only when one endpoint stands on the bay (Eemsstraat 30, pand 111889: the erker runs into the party wall, so discovery
+   * ends the front on the bay's side): two chain vertices on the facade line, the rear supporting line of the chain.
+   * `fromM`/`toM`/`centre` are then measured along that line, between the endpoints' projections onto it.
+   */
+  lineRD?: [RD, RD];
+}
 /** Least outward depth (m) of a chain vertex that makes it a bay, not a jog of the brickwork. */
 export const BUMP_MIN_DEPTH_M = 0.25;
 
@@ -112,13 +120,34 @@ export const BUMP_MIN_DEPTH_M = 0.25;
  * `chordOverBay` with `bayChord`).
  */
 export function frontBump(front: Pick<FrontFacts, 'endpointsRD' | 'chainRD' | 'outwardNormalRD'>): FrontBump | null {
-  const [a, b] = front.endpointsRD, w = dist(a, b), u = [(b[0] - a[0]) / w, (b[1] - a[1]) / w];
-  let n = [u[1], -u[0]];
-  if (n[0] * front.outwardNormalRD[0] + n[1] * front.outwardNormalRD[1] < 0) n = [-n[0], -n[1]];
-  const out = front.chainRD.map(q => ({t: (q[0] - a[0]) * u[0] + (q[1] - a[1]) * u[1], d: (q[0] - a[0]) * n[0] + (q[1] - a[1]) * n[1]})).filter(x => x.d > BUMP_MIN_DEPTH_M);
-  if (!out.length) return null;
-  const fromM = Math.min(...out.map(x => x.t)), toM = Math.max(...out.map(x => x.t));
-  return {fromM: round(fromM, 2), toM: round(toM, 2), depthM: round(Math.max(...out.map(x => x.d)), 2), centre: round((fromM + toM) / 2 / w, 3)};
+  const along = (a: RD, b: RD) => {
+    const w = dist(a, b), u = [(b[0] - a[0]) / w, (b[1] - a[1]) / w];
+    let n = [u[1], -u[0]];
+    if (n[0] * front.outwardNormalRD[0] + n[1] * front.outwardNormalRD[1] < 0) n = [-n[0], -n[1]];
+    return (q: number[]) => ({t: (q[0] - a[0]) * u[0] + (q[1] - a[1]) * u[1], d: (q[0] - a[0]) * n[0] + (q[1] - a[1]) * n[1]});
+  };
+  const [a, b] = front.endpointsRD;
+  let at = along(a, b), lineRD: [RD, RD] | undefined;
+  // An endpoint on the bay puts facade vertices behind the endpoint line: take the chain's rear supporting line instead
+  // (through two chain vertices at least 1.5 m apart with no vertex more than 3 cm behind it), the longest such.
+  if (front.chainRD.some(q => at(q).d < -0.05)) {
+    let best: {i: number; j: number; span: number} | null = null;
+    const c = front.chainRD;
+    for (let i = 0; i < c.length; i++) for (let j = i + 1; j < c.length; j++) {
+      const span = dist(c[i], c[j]);
+      if (span < 1.5 || (best && span <= best.span)) continue;
+      const f = along(c[i], c[j]);
+      if (c.every(q => f(q).d > -0.03)) best = {i, j, span};
+    }
+    if (!best) return null;
+    lineRD = [c[best.i], c[best.j]];
+    at = along(...lineRD);
+  }
+  const t0 = at(a).t, t1 = at(b).t, w = t1 - t0;
+  const out = front.chainRD.map(at).filter(x => x.d > BUMP_MIN_DEPTH_M);
+  if (!out.length || w <= 0) return null;
+  const fromM = Math.min(...out.map(x => x.t)) - t0, toM = Math.max(...out.map(x => x.t)) - t0;
+  return {fromM: round(fromM, 2), toM: round(toM, 2), depthM: round(Math.max(...out.map(x => x.d)), 2), centre: round((fromM + toM) / 2 / w, 3), ...(lineRD ? {lineRD} : {})};
 }
 
 /**
@@ -127,9 +156,20 @@ export function frontBump(front: Pick<FrontFacts, 'endpointsRD' | 'chainRD' | 'o
  * surveyed wall. Null when there is no bump.
  */
 export function chordOverFrontBump(facts: BuildingFacts): BuildingFacts | null {
-  const f = facts.fronts[0];
-  if (!frontBump(f)) return null;
-  const next = chordOverBay(facts, {a: f.endpointsRD[0], b: f.endpointsRD[1]});
+  const f = facts.fronts[0], bump = frontBump(f);
+  if (!bump) return null;
+  let chord = {a: f.endpointsRD[0], b: f.endpointsRD[1]};
+  if (bump.lineRD) {
+    // The chord ends: the footprint vertices on the facade line nearest the discovered endpoints (Eemsstraat 30: the
+    // party corner the neighbour's front starts from, beside the bay's side).
+    const [p, q] = bump.lineRD, w = dist(p, q), n = [(q[1] - p[1]) / w, -(q[0] - p[0]) / w];
+    const ring = facts.bagFootprintRD[0], onLine = ring.filter(v => Math.abs((v[0] - p[0]) * n[0] + (v[1] - p[1]) * n[1]) < 0.03);
+    const nearest = (e: RD) => onLine.reduce((m, v) => dist(v, e) < dist(m, e) ? v : m, onLine[0]);
+    if (onLine.length < 2) return null;
+    chord = {a: [nearest(chord.a)[0], nearest(chord.a)[1]], b: [nearest(chord.b)[0], nearest(chord.b)[1]]};
+    if (dist(chord.a, chord.b) < 1) return null;
+  }
+  const next = chordOverBay(facts, chord);
   // Where the facade line runs through an outline vertex (BAG draws the erker's foot on it), clipping adds the cut point
   // beside that vertex; the near-duplicate (Boterdiepstraat 40: 0.2 mm) folds the roof prism. Every vertex within 1 cm
   // of one already seen (survey footprint first, then BAG, then the roofs) takes that one's plan position, so all rings
@@ -142,7 +182,17 @@ export function chordOverFrontBump(facts: BuildingFacts): BuildingFacts | null {
   };
   const ring = <T extends number[]>(r: T[]): T[] => {
     const c = r.map(canon);
-    const out = c.filter((v, i) => { const q = c[(i + c.length - 1) % c.length]; return q[0] !== v[0] || q[1] !== v[1]; });
+    let out = c.filter((v, i) => { const q = c[(i + c.length - 1) % c.length]; return q[0] !== v[0] || q[1] !== v[1]; });
+    // A spike along the facade line (Eemsstraat 30: the bay side ends 0.2 m past the party corner, so the clipped ring
+    // runs out along the line and back): drop a vertex whose two edges turn back on each other with no area between.
+    for (let again = true; again && out.length > 3;) {
+      again = false;
+      for (let i = 0; i < out.length; i++) {
+        const p = out[(i + out.length - 1) % out.length], v = out[i], q = out[(i + 1) % out.length];
+        const e1 = [v[0] - p[0], v[1] - p[1]], e2 = [q[0] - v[0], q[1] - v[1]];
+        if (Math.abs(e1[0] * e2[1] - e1[1] * e2[0]) < 1e-3 && e1[0] * e2[0] + e1[1] * e2[1] < 0) { out = out.filter((_, k) => k !== i); again = true; break; }
+      }
+    }
     return out.length >= 3 ? out : c;
   };
   const surveyFootprintPolygonsRD = next.surveyFootprintPolygonsRD.map(p => p.map(ring)), bagFootprintRD = next.bagFootprintRD.map(ring);

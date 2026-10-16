@@ -282,6 +282,10 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const storeyPlan = (s: number, count: number) => {
     // `storeyRibbons`: the storey's windows side by side between two shares of the front, frames touching (one white post).
     const ribbon = f.storeyRibbons?.[String(s)] ?? (s === n - 1 ? f.storeyRibbons?.last : undefined);
+    if (ribbon && count > 0 && ribbon.pier !== undefined) {
+      const pier = ribbon.pier, w = (gw * (ribbon.to - ribbon.from) - pier * (count - 1)) / count, x0 = gx0 + gw * ribbon.from;
+      return {centre: (b: number) => x0 + (w + pier) * b + w / 2, w: () => round(w), pitch: () => w + pier, axis: (): number | null => null};
+    }
     if (ribbon && count > 0) {
       const cell = gw * (ribbon.to - ribbon.from) / count, x0 = gx0 + gw * ribbon.from;
       return {centre: (b: number) => x0 + cell * (b + 0.5), w: () => round(cell - RIBBON_POST_M), pitch: () => cell, axis: (): number | null => null};
