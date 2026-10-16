@@ -757,9 +757,8 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   under crowns, row coherence and `roof-under-crown` landed; 232 of 371
   pands change class): (1)–(3) DONE 2026-10-16 (HISTORY "Fourteen
   installed faces re-installed": 14 in, flat placements, tile golden);
-  held: clercq-236681 and nassau-162289 fail `roof-under-crown` (attic
-  above the crown outline), wallen-oza-41-57 has new open loops and a
-  hovering roof part; the Kinkerstraat faces and evertsen-7-41 are not
+  the three held faces DONE (HISTORY "The three held faces fixed"); the
+  Kinkerstraat faces and evertsen-7-41 are not
   installed at all yet (decide after a ride review); a setback top storey
   for 76-84's two raised blocks; (4) cross-gable /
   hip-and-gablet when a gable sits over one bay of a wide front; (5)

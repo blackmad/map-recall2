@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## The three held faces fixed in the roof generator and installed (2026-10-16)
+
+Lane `lane/held-faces-20261016` (3cca5b1fb generator, test and golden;
+908954ac9 chunks). clercq-236681 and nassau-162289 had one cause:
+`recipeRoofFacts` measured attic depth along the BAG facade edge's
+normal, which leans off the frontage line the crown outline stands on
+(153066 by 4°, 0.61 m over 8.7 m; the Nassaukade pands 0.013–0.072 m), so
+the 70° attic face climbed the facade; a front roof is now built square
+to the frontage line (noted in the report) only when the far end sits
+> 1 cm deeper than the setback and an attic band rises, else
+byte-identical. wallen-oza-41-57: the tower-bay rule took 177943 b
+(Oudezijds Achterburgwal 55, a dormered cornice 4.2 m above the bell
+gable beside it) for a tower and gave it the neighbour's 13.09 m attic,
+leaving its dormer hovering (the 24.1 m² part); a dormered front whose
+neighbour's roof never reaches its eaves now keeps its own attic, capped
+by its own 3DBAG p95 (15.85 m). On 177915 three collinear footprint
+points left a zero-area triangle dropped and a 1.45 m T-junction that
+turned the 54 m party outline into an open loop; `splitAtDroppedSlivers`
+splits the covering triangle (front-roof eaves lines, spans ≥ 0.5 m).
+Golden: only those pands change, plus `_demo-school`'s copy of 153066
+and the same T-junction split on kinker-56-84 236325 (not installed);
+`fit-golden` 156 identical; `heldFaces.test.ts` pins all three
+(the T-junction test fails with the split off). Installed with
+`--force-install` on the re-install bar (kit gates, interference and
+party holes pass; the shared GLB audit still fails as on every chunk,
+each lower than the chunk it replaces): clercq zfight 161 → 0 m²,
+tight 93 → 5.6; nassau zfight 336 → 9.5, tight 279 → 11.2,
+opening-outside 46.3 → 48.0 m²; wallen zfight 67.7 → 4.0, largest
+off-party loop 54 → 1.9 m, nothing hovering. Still cannot say: an
+undormered front a storey above its neighbour is still taken for a tower
+bay; 153066's crenellated parapet is not modelled.
+
 ## Coverage by buurt: 97.8 % of pands draw as generic boxes by default; a ranked generator to-do (2026-10-16)
 
 Lane `lane/coverage-map-20261016` (8175de1e2 data, 3c3d0211b page), from
