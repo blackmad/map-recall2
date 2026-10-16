@@ -7,6 +7,7 @@
  *
  * Phase 1 (resumable): every covered cell's region raster of layer ids at 0.5 m (its 3×3 neighbourhood built, so
  * ways that reach in from a neighbour draw, z-buffered as on screen) → <stage>/regions/<key>.bin.gz.
+ * Phase 1b: the city's building footprints (building-tiles z14) over each region in the roof tone.
  * Phase 2: tiles at maxzoom from the region rasters (k×k sub-samples per pixel), the pyramid down to minzoom by
  * 2×2 means, PNGs quantised to a palette → <stage>/tiles/{z}/{x}/{y}.png, <stage>/manifest.json, <stage>/report.json.
  * `--publish` copies the staged tiles and manifest to public/data/extracts/amsterdam/overview-tiles-v1/ (review first).
@@ -18,7 +19,8 @@ import sharp from 'sharp';
 import { GroundStore, toLocal, fromLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, GROUND_LAYERS, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { groundPalette, GROUND_LOOK_DEFAULT, type GroundLook } from '../../src/canalRecall/ownGround/groundLook.ts';
-import { rasterLayerIds, layerOfId } from '../../src/canalRecall/overviewTiles/raster.ts';
+import { rasterLayerIds, fillPolygons, ROOF_ID } from '../../src/canalRecall/overviewTiles/raster.ts';
+import { footprintTone } from '../../src/canalRecall/overviewTransition/basemapOverview.ts';
 import { overviewLayerColours, OVERVIEW_SKIPPED } from '../../src/canalRecall/overviewTiles/layerColours.ts';
 import { renderTile, parentTile, isEmptyTile, tileOf, lngLatOfTile, TILE_PX } from '../../src/canalRecall/overviewTiles/tiles.ts';
 import { OVERVIEW_TILES_DIR, type OverviewTilesManifest } from '../../src/canalRecall/overviewTiles/tileset.ts';
@@ -48,7 +50,7 @@ async function cellBuilt(key: string): Promise<BuiltCell | null> {
   while (built.size > BUILD_CACHE) built.delete(built.keys().next().value!);
   return c;
 }
-interface RegionMeta { key: string; x0: number; y0: number; w: number; h: number; res: number }
+interface RegionMeta { key: string; x0: number; y0: number; w: number; h: number; res: number; roofs?: boolean }
 const regionFile = (key: string) => path.join(stage, 'regions', `${key}.bin.gz`);
 const t0 = Date.now();
 let done = 0;
@@ -66,6 +68,48 @@ for (const key of keys) {
 }
 built.clear();
 
+// ---------------------------------------------------------------- phase 1b: building footprints over the ground
+// The city's own footprints (building-tiles z14, the default 3D city's source) in the roof tone, at every zoom the
+// same geometry (the basemap's footprints are generalised blocks below its z14 tiles).
+const FOOT = path.join(ROOT, 'building-tiles');
+const footIndex = JSON.parse(fs.readFileSync(path.join(FOOT, 'index-z14.json'), 'utf8')) as { tileList: string[] };
+const footTiles = new Set(footIndex.tileList);
+const footCache = new Map<string, [number, number][][][]>();
+function footprints(tile: string): [number, number][][][] {
+  let hit = footCache.get(tile);
+  if (!hit) {
+    hit = [];
+    if (footTiles.has(tile)) {
+      const fc = JSON.parse(gunzipSync(fs.readFileSync(path.join(FOOT, `${tile}.geojson.gz`))).toString()) as { features: { geometry: { type: string; coordinates: any } }[] };
+      for (const f of fc.features) {
+        const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [];
+        for (const p of polys as [number, number][][][]) hit.push(p.map(r => r.map(([lng, lat]) => toLocal(lng, lat))));
+      }
+    }
+    footCache.set(tile, hit);
+    while (footCache.size > 30) footCache.delete(footCache.keys().next().value!);
+  }
+  return hit;
+}
+let roofed = 0;
+for (const key of keys) {
+  const file = regionFile(key);
+  const raw = gunzipSync(fs.readFileSync(file));
+  const meta = JSON.parse(raw.subarray(0, 256).toString().trim()) as RegionMeta;
+  if (meta.roofs) continue;
+  const ids = new Uint8Array(raw.buffer, raw.byteOffset + 256, meta.w * meta.h);
+  const [w, s] = fromLocal(meta.x0, meta.y0), [e, n] = fromLocal(meta.x0 + meta.w * meta.res, meta.y0 + meta.h * meta.res);
+  const [tx0, ty0] = tileOf(w, n, 14), [tx1, ty1] = tileOf(e, s, 14);
+  const polys: [number, number][][][] = [];
+  for (let ty = ty0; ty <= ty1; ty++) for (let tx = tx0; tx <= tx1; tx++) polys.push(...footprints(`14/${tx}/${ty}`));
+  fillPolygons(ids, polys, meta.x0, meta.y0, meta.w, meta.h, meta.res, ROOF_ID);
+  meta.roofs = true;
+  const head = Buffer.from(JSON.stringify(meta).padEnd(256));
+  fs.writeFileSync(file, gzipSync(Buffer.concat([head, Buffer.from(ids.buffer, ids.byteOffset, ids.byteLength)]), { level: 6 }));
+  roofed++;
+}
+console.log(`footprints drawn into ${roofed} regions`);
+
 // ---------------------------------------------------------------- phase 2: tiles
 const regions = new Map<string, { meta: RegionMeta; ids: Uint8Array }>();
 function region(key: string): { meta: RegionMeta; ids: Uint8Array } | null {
@@ -80,7 +124,9 @@ function region(key: string): { meta: RegionMeta; ids: Uint8Array } | null {
   return r;
 }
 const colours = overviewLayerColours(groundPalette(look), GROUND_LAYERS);
+const roof = footprintTone();
 const byId: (RGB | null)[] = [null, ...GROUND_LAYERS.map(l => colours[l] ?? null)];
+byId[ROOF_ID] = roof;
 const keySet = new Set(keys);
 const sample = (lng: number, lat: number): RGB | null => {
   const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
@@ -147,7 +193,7 @@ for (const [z, m] of [...levels.entries()].sort((a, b) => a[0] - b[0])) {
   console.log(`z${z}: ${m.size} tiles, ${(zb / 1e6).toFixed(2)} MB, max ${(zmax / 1e3).toFixed(1)} KB`);
 }
 const manifest: OverviewTilesManifest = {
-  version: 1, look, colours: Object.fromEntries(Object.entries(colours)) as OverviewTilesManifest['colours'],
+  version: 1, look, colours: Object.fromEntries(Object.entries(colours)) as OverviewTilesManifest['colours'], roof,
   minzoom, maxzoom, bounds: bounds.map(v => +v.toFixed(6)) as OverviewTilesManifest['bounds'], tiles, bytes,
   built: new Date().toISOString(),
   attribution: '© OpenStreetMap contributors (ODbL); BGT © Kadaster (CC0); AHN',

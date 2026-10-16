@@ -44,3 +44,30 @@ export function rasterLayerIds(cells: readonly BuiltCell[], x0: number, y0: numb
   }
   return out;
 }
+
+/** Id of a building footprint in an overview raster (drawn over the ground, in the city's roof tone). */
+export const ROOF_ID = 250;
+
+/**
+ * Fill polygons (rings in game-frame metres; even-odd over each polygon's rings) into a raster laid out as
+ * rasterLayerIds lays it out, writing `id` at every pixel whose centre lies inside.
+ */
+export function fillPolygons(out: Uint8Array, polygons: readonly (readonly (readonly [number, number])[])[][], x0: number, y0: number, w: number, h: number, res: number, id: number): void {
+  const top = y0 + h * res;
+  for (const rings of polygons) {
+    const px = rings.map(r => r.map(([x, y]) => [(x - x0) / res, (top - y) / res] as const));
+    let minY = Infinity, maxY = -Infinity;
+    for (const r of px) for (const p of r) { minY = Math.min(minY, p[1]); maxY = Math.max(maxY, p[1]); }
+    for (let py = Math.max(0, Math.floor(minY)); py <= Math.min(h - 1, Math.ceil(maxY)); py++) {
+      const sy = py + 0.5, xs: number[] = [];
+      for (const r of px) for (let i = 0; i < r.length; i++) {
+        const a = r[i], b = r[(i + 1) % r.length];
+        if ((a[1] > sy) !== (b[1] > sy)) xs.push(a[0] + (sy - a[1]) * (b[0] - a[0]) / (b[1] - a[1]));
+      }
+      xs.sort((p, q) => p - q);
+      for (let k = 0; k + 1 < xs.length; k += 2) {
+        for (let x = Math.max(0, Math.ceil(xs[k] - 0.5)); x <= Math.min(w - 1, Math.floor(xs[k + 1] - 0.5)); x++) out[py * w + x] = id;
+      }
+    }
+  }
+}

@@ -24,17 +24,18 @@ fs.mkdirSync(out, { recursive: true });
 interface Sample { name: string; cls: 'water' | 'park' | 'road' | 'land' | 'pavement'; lng: number; lat: number }
 interface Spot { lng: number; lat: number; bearing: number; label: string; samples: Sample[] }
 export const SPOTS: Record<string, Spot> = {
+  // Sample points sit on a homogeneous stretch of their class in the own ground (picked from the overview rasters).
   canal: {
-    lng: 4.88262, lat: 52.37713, bearing: 95, label: 'Westerstraat / Lijnbaansgracht, Jordaan',
-    samples: [{ name: 'Lijnbaansgracht', cls: 'water', lng: 4.878721, lat: 52.379421 }, { name: 'Westerstraat', cls: 'road', lng: 4.88262, lat: 52.37713 }],
+    lng: 4.88262, lat: 52.37713, bearing: 95, label: 'Westerstraat / Prinsengracht, Jordaan',
+    samples: [{ name: 'Prinsengracht', cls: 'water', lng: 4.884709, lat: 52.376488 }, { name: 'Westerstraat klinker', cls: 'road', lng: 4.882576, lat: 52.377103 }],
   },
   park: {
-    lng: 4.86890, lat: 52.35830, bearing: 250, label: 'Vondelpark',
-    samples: [{ name: 'Vondelpark lawn', cls: 'park', lng: 4.86700, lat: 52.35790 }],
+    lng: 4.86890, lat: 52.35790, bearing: 250, label: 'Vondelpark',
+    samples: [{ name: 'Vondelpark lawn', cls: 'park', lng: 4.868106, lat: 52.357296 }],
   },
   road: {
     lng: 4.875035, lat: 52.362616, bearing: 70, label: 'Overtoom',
-    samples: [{ name: 'Overtoom carriageway', cls: 'road', lng: 4.875035, lat: 52.362616 }],
+    samples: [{ name: 'Overtoom asphalt', cls: 'road', lng: 4.87527, lat: 52.362734 }, { name: 'Overtoom pavement', cls: 'pavement', lng: 4.875006, lat: 52.362652 }],
   },
 };
 const spots = arg('spots', Object.keys(SPOTS).join(','))!.split(',');

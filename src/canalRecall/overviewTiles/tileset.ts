@@ -13,6 +13,7 @@ import type { RGB } from '../look/palette.js';
 import { groundLookFrom, groundPalette, type GroundLook } from '../ownGround/groundLook.js';
 import type { GroundLayer } from '../ownGround/groundCell.js';
 import { overviewLayerColours } from './layerColours.js';
+import { footprintTone } from '../overviewTransition/basemapOverview.js';
 
 export interface OverviewTilesManifest {
   version: 1;
@@ -20,6 +21,8 @@ export interface OverviewTilesManifest {
   look: GroundLook;
   /** Every layer's tone in the tiles (sRGB 0..255). */
   colours: Partial<Record<GroundLayer, RGB>>;
+  /** The building footprints' tone (basemapOverview.ts footprintTone, the city's roofs from above). */
+  roof: RGB;
   minzoom: number;
   maxzoom: number;
   /** lng/lat [w, s, e, n] of the tiles that exist. */
@@ -33,23 +36,27 @@ export interface OverviewTilesManifest {
 export const OVERVIEW_TILES_DIR = 'overview-tiles-v1';
 export const OVERVIEW_TILES_SOURCE = 'canal-overview-ground';
 export const OVERVIEW_TILES_LAYER = 'canal-overview-ground';
-/** Basemap source layers that are ground (the tiles go above the topmost of them). */
-export const BASEMAP_GROUND_SOURCE_LAYERS = ['water', 'waterway', 'landcover', 'landuse', 'park', 'transportation', 'aeroway'];
+/**
+ * Basemap source layers the tiles replace (they go above the topmost of them): the ground, and the flat building
+ * footprints, which the tiles carry from the city's own footprints at every zoom. The basemap's footprints change
+ * geometry at its zoom-14 tiles (generalised blocks below, single buildings from 14): a jump of ~5 % of the view
+ * at 13.9 → 14 in the overview-transition sweep that no palette can remove.
+ */
+export const BASEMAP_GROUND_SOURCE_LAYERS = ['water', 'waterway', 'landcover', 'landuse', 'park', 'transportation', 'aeroway', 'building'];
 
 /** The layers whose colour differs between the tiles and the page's palette (empty: the tiles fit). */
-export function tilesetMismatch(manifest: Pick<OverviewTilesManifest, 'colours'>, look: GroundLook): GroundLayer[] {
+export function tilesetMismatch(manifest: Pick<OverviewTilesManifest, 'colours' | 'roof'>, look: GroundLook): (GroundLayer | 'roof')[] {
   const layers = Object.keys(manifest.colours) as GroundLayer[];
-  const want = overviewLayerColours(groundPalette(look), layers), bad: GroundLayer[] = [];
-  for (const layer of layers) {
-    const a = manifest.colours[layer], b = want[layer];
-    if (!a || !b || a[0] !== b[0] || a[1] !== b[1] || a[2] !== b[2]) bad.push(layer);
-  }
+  const want = overviewLayerColours(groundPalette(look), layers), bad: (GroundLayer | 'roof')[] = [];
+  const differ = (a?: readonly number[], b?: readonly number[]) => !a || !b || a[0] !== b[0] || a[1] !== b[1] || a[2] !== b[2];
+  for (const layer of layers) if (differ(manifest.colours[layer], want[layer])) bad.push(layer);
+  if (differ(manifest.roof, footprintTone())) bad.push('roof');
   return bad;
 }
 
 interface LayerLike { id: string; type: string; source?: string; 'source-layer'?: string }
 
-/** The id the tiles' layer goes before: the layer right above the basemap's topmost ground layer (undefined: on top). */
+/** The id the tiles' layer goes before: the layer right above the basemap's topmost flat ground or footprint layer (undefined: on top). */
 export function overviewTilesBeforeId(layers: readonly LayerLike[]): string | undefined {
   let last = -1;
   layers.forEach((l, i) => {
