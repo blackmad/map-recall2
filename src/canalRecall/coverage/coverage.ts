@@ -300,3 +300,51 @@ export function aggregate(meta: readonly BuurtMeta[], byBuurt: ReadonlyMap<strin
 export function rankForGenerators(rows: readonly BuurtCoverage[], minPands = 80): BuurtCoverage[] {
   return rows.filter(r => r.pands >= minPands).sort((a, b) => b.priority - a.priority || b.repetitiveGeneric - a.repetitiveGeneric || a.code.localeCompare(b.code));
 }
+
+// ---------------------------------------------------------------------------
+// Per-buurt content lists (coverage.html's buurt panel)
+// ---------------------------------------------------------------------------
+
+/** `[item id, units of that item in the buurt]`. */
+export type Tally = [id: string, n: number];
+/** What a buurt holds, by id; details live in the contents catalogue (coverage-v1/contents.json). */
+export type BuurtContent = {
+  /** Block-face type libraries whose evidence pands lie in the buurt. */
+  types: Tally[];
+  /** Authored or staged block faces (scripts/block-face/faces) with a pand in the buurt. */
+  faces: Tally[];
+  /** Building-type designs (instances.json `unit`) instanced in the buurt. */
+  designs: Tally[];
+  /** Placed models: bespoke landmarks, block-face chunks, large/per-house recipes, hand-built ordinary GLBs. */
+  models: Tally[];
+  /** Landmark kits drawn on the buurt's extrusions. */
+  kits: Tally[];
+};
+export const CONTENT_KINDS = ['types', 'faces', 'designs', 'models', 'kits'] as const satisfies readonly (keyof BuurtContent)[];
+
+/**
+ * Group items into buurten by where their units (pands, synthetic model units) lie. An item spanning two buurten
+ * appears in both, each with its own count; units no buurt holds are dropped. Lists run by count, then id.
+ */
+export function tallyByBuurt(items: Iterable<{ id: string; units: Iterable<string> }>, buurtOf: (unit: string) => string | null | undefined): Map<string, Tally[]> {
+  const counts = new Map<string, Map<string, number>>();
+  for (const item of items) {
+    for (const unit of new Set(item.units)) {
+      const code = buurtOf(unit);
+      if (!code) continue;
+      let m = counts.get(code);
+      if (!m) counts.set(code, m = new Map());
+      m.set(item.id, (m.get(item.id) ?? 0) + 1);
+    }
+  }
+  return new Map([...counts].map(([code, m]) => [code, [...m].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))]));
+}
+
+export const emptyContent = (): BuurtContent => ({ types: [], faces: [], designs: [], models: [], kits: [] });
+export const hasContent = (c: BuurtContent): boolean => CONTENT_KINDS.some(k => c[k].length > 0);
+
+/** A repetition cluster key (`6m×15m×1900`) as numbers: footprint width bin (m), height bin (m), five-year bin start. */
+export function parseClusterKey(key: string): { widthM: number; heightM: number; year: number } | null {
+  const m = /^(\d+(?:\.\d+)?)m×(\d+(?:\.\d+)?)m×(\d{4})$/.exec(key);
+  return m ? { widthM: Number(m[1]), heightM: Number(m[2]), year: Number(m[3]) } : null;
+}
