@@ -661,6 +661,23 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+- **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
+  plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
+  2026-10-16, user chose BGT polygons over patching the band model).**
+  Screenshot at the Marnixstraat busway × red cycle street by the Tweede
+  Marnixplantsoen: red cycle bands over the grey and onto the pavement,
+  pavement wedges inside the junction, bands of different widths overlapping,
+  zebra and centre dashes running through the junction, a deck slab wider
+  than the road, rails on a different grey. Cause: one fill per OSM node,
+  no band-vs-band clipping, crossings and rails never cut, 18 m trim cap.
+  In flight: a data lane (`roads-v1` extract from PDOK BGT `wegdeel`, seven
+  pilot cells `-3_-1, -2_-1, -3_0, -2_0, -1_-1, -1_0, -2_1`, city-wide staged
+  only; budget ≤ 350 KB/cell, ≤ 30 MB total, hosting quota decides the
+  city-wide publish) and a runtime lane (`roadSurfaces.ts` behind
+  `?roads=bgt`, bands suppressed under covered ways, paint/zebras/rails
+  clipped to carriage polygons, deck top within the parapet; named
+  regressions Kinkerstraat × Da Costakade both heads, Bilderdijkgracht
+  zebras, Tweede Marnixplantsoen). Phase 2: default on with `?roads=0`.
 - **Hosting quota will hit again within a day of pushes.** Deploys failed
   with HTTP 429 from 14:27 to ~19:45 on 2026-10-13 and recovered without
   the integrator pruning; the dry run afterwards still listed 374 deletable
@@ -690,6 +707,26 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Kit roof rules (user, 2026-10-16; plan Part 2, lane in flight):** roofs
+  follow the measured front, not 3DBAG ("don't give so much credence to
+  3DBAG roofs"): saddle under the crown profile, flat under a parapet, attic
+  from the top row, rear wings clamped under the crown line; step gables
+  symmetric with a guard test ("stepped gables are almost universally
+  symmetric, you keep making this mistake"; the lopsided crowns on
+  kinker-56-84 are 3DBAG planes above the symmetric crown); row coherence
+  ("one house here isn't higher than the rest": kinker-315-359, 18 pands of
+  1903, clamp a lone 3DBAG eaves/ridge outlier > 0.8 m to the row line, the
+  8 hand `measuredEaves` must be reproduced by the rule). Identity by
+  `roof-golden`; the six faces re-installed after sheet review. Follow-up:
+  Mercatorplein's raised roof block is large-tier `roofPlant`.
+- **Homomonument and Krijtberg windows + pipeline gate (user, 2026-10-16;
+  plan Part 3, lane in flight):** Homomonument "still looks wrong (missing a
+  triangle, sticks into the canal)": rebuild as three 10 m granite
+  triangles (podium, flush, water steps meeting the quay wall), quay not cut
+  through the steps, pinned in `check:manual-landmarks`. Krijtberg windows
+  overshoot the walls and roof: fix the builder and add the hard check
+  `openingsWithinWalls` to `geometryAudit.ts` (audit:glb) and
+  `roofChecks.ts`; list the offenders over all landmarks and kit houses.
 - **Shared-frame look leftovers** (2026-10-14, HISTORY "black blocks",
   "Inward-facing normals"): recipe-tile default under the shared frame
   still to decide; iPhone shots of the shadow spots unmeasured; normals
