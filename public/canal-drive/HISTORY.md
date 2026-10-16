@@ -1,5 +1,48 @@
 # Canal Recall — what is built
 
+## De Baarsjes type library: five 1926-27 types measured, ten kit keys, evertsen-7-41 proved (2026-10-16)
+
+Lane `worktree-agent-a11677e1cecaef496` (final 5afb00778; kit and tests
+99f5b058b). `scripts/block-face/types/de-baarsjes/`, each type's default
+crown the tall plain parapet, heights counted in brick courses or
+glass-block rows because the intent contract refuses metric keys:
+`evertsen-1926-lintel-band` (18–20 pands; pitch 2.88 m, three 1.30 m
+windows per 6 m, 0.15 m sill and 0.15–0.20 m head bands, parapet 22
+courses, spandrel #6e4b44, pier #6f6356, bands #a5a59e), `-hood-lisene`
+(40; glass block 8 rows + 8 courses, parapet 55 courses, wall #54432e,
+hood #3d3827), `-balcony-slot` (14; parapet 60 courses, wall #54402a),
+`-ladder-plain` (19; window share 0.68, parapet 56 courses), and
+`evertsen-1927-white-attic-tile-roof` (12; white band storey 9.6–12.6 m
+with 5 lights, tiles to 15.0 m). Kit keys, all byte-identical when
+absent (32 other faces' chunk sha256 unchanged, `fit-golden` 156 and 115
+large meshes identical): `windows: casement-toplight |
+casement-gridded-toplight | casement-triple`, crown `parapet: {courses,
+coping}`, `bandPiers` (the zone between sill and head bands faced in
+`palette.band`), `bayWindows.hood`, `balconies.style: slab-hood`,
+`awning.glassBlocks: {rows}`, `awning.wallCourses`, `palette.glassBlock`;
+validation in `buildingRecipe/deBaarsjesIntent.ts`, 8 tests in
+`blockFace/deBaarsjes.test.ts`; corner and end crowns reuse `tower` with
+`cap: flat`. Proof face `evertsen-7-41` (18 pands, 27,314 tris, gates
+pass, compiled without `--install`): on 9–33 the storey lines, three
+windows per house, white bands, yellow piers under red spandrels and the
+14.0 m coping line land and every upper row count matches; the canopy
+reads as a thin line where the photo has a deep white slab, the shop
+glass head sits high (photo ≈ 2.6 m), wall-band signs, dentils and the
+curved corner at 9–11 are not drawn; 35's raised corner mass lands (its
+oriel stack does not); 37/39 fail the ground-bay count; 41's strip is
+ghosted; 7 and 158391 (1912 Oud-West pands) keep their own designs. Only
+lintel-band is proved on a face; the other four build in tests on a 6 m
+pand. Today's roof rule, recorded not fitted: 3DBAG roofs at 16.6–17.4
+m show above the measured 15.3 m parapet on 35–41 and above the cornice
+on 7 and 158391 where the photo shows sky. Sheets
+`docs/images/jan-evertsenstraat/evertsen-7-41-sheet.jpg` and
+`evertsen-7-41-19-23-zoom.jpg`; doc `docs/de-baarsjes-types-20261014.md`.
+Still cannot say: signs on the glass-block or wall band, a box frame
+touching a flat neighbour, a window straddling a party wall, the diamond
+frieze, cast-iron balustrade and stacked oriels of the corner groups,
+curved corners, dentils under painted bands, the white attic band as
+timber, all-over small panes on 43–53, a measured canopy depth.
+
 ## Kinkerstraat wall colours read from the photo; two types promoted; odd-side window widths (2026-10-16)
 
 Lane `worktree-agent-a8fc6a969506a4249` (final 0b915cada). Kit keys,
