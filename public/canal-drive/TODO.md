@@ -1392,8 +1392,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   library DONE (HISTORY "Kinkerstraat type library": seven types over 207
   pands, measured palettes, two proof faces compiled; the brick-arched
   type has its white courses and springer rows since the accents pass); the odd side is DONE as eight
-  faces, 76 pands (HISTORY "Kinkerstraat odd side authored"; the even
-  side lane is running); never `compile.ts --install`; next on the street:
+  faces, 76 pands (HISTORY "Kinkerstraat odd side authored") and the
+  even side as twelve faces, 103 pands (HISTORY "Kinkerstraat even side
+  authored"; open: single-pand faces 140-142, 382-382, 392-392 need the
+  validator to accept one house, or a house recipe; the 244-332 chunk is
+  3.2 MB, split it; `palette-from-strip` reads black paint as glass; the
+  Ö glyph); never `compile.ts --install`; next on the street:
   the rear-facade lane (the GLB z-fight on every face is the inferred
   rears), `compile-recipes.ts --faces=kinker-` into recipe tiles and the
   changed-pand page, ride shots at five points, the wall-colour misses (31
