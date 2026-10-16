@@ -1,0 +1,314 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-112-116",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-112-116/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 116-112 (even side, 1895), 2024-12-11 strip; a bus hides the ground of 116. Plain red brick, flat-headed windows under brick relieving arches on storeys 1-3, flat top storey (kinker-1890-plain-brick with a relieving head by eye; the cluster gave kinker-1890-brick-arched, NCC 0.42/0.37, but there are no white blocks). 112-114 ends in a narrow bay of moulded brick ornament the kit cannot say."
+ },
+ "types": [
+  "kinker-1890-plain-brick"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012164444",
+   "slug": "kinker-164444",
+   "address": "Kinkerstraat 116",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#5b4a3c",
+     "band": "#453524",
+     "evidence": "palette-from-strip.ts --face=kinker-112-116: wall median #5b4a3c on the 2024-12-11 strip; relieving-arch brick sampled on the strip at x 318-410, rows 318-323 (#453524-#463627)"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "relieving",
+      "archRing": {
+       "colour": "band"
+      },
+      "storeys": [
+       1,
+       2,
+       3
+      ]
+     },
+     "windowHeights": [
+      0.7,
+      0.68,
+      0.68,
+      0.68,
+      0.66
+     ],
+     "storeyHeights": [
+      3.0,
+      2.75,
+      2.75,
+      2.75,
+      2.75
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1f1f1f",
+      "fascia": true,
+      "name": "Knip je Knap",
+      "sign": {
+       "text": "Knip je Knap",
+       "textColour": "#c9a85a",
+       "mount": "fascia",
+       "background": "#1f1f1f"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 1 ground hidden by a bus; zoom crop: black fascia, gold \"KAPSALON KNIP je KNAP\"; OSM node 4942879221 shop=hairdresser"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Knip je Knap",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 4942879221,
+     "name": "Knip je Knap"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "lettering read on the zoom crop (the strip ground is behind a bus); OSM also maps Glam by Mooi here"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 3 axes, relieving arches on storeys 1-3, flat top storey, a roof light, half a brick dormer on the party line",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "brick dormer straddling the 116|114 party line"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012166997",
+   "slug": "kinker-166997",
+   "address": "Kinkerstraat 112-114",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#543f2f",
+     "band": "#453524",
+     "evidence": "palette-from-strip.ts --face=kinker-112-116: wall median #543f2f on the 2024-12-11 strip; relieving-arch brick sampled on the strip at x 318-410, rows 318-323 (#453524-#463627)"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "relieving",
+      "archRing": {
+       "colour": "band"
+      },
+      "storeys": [
+       1,
+       2,
+       3
+      ]
+     },
+     "windowHeights": [
+      0.7,
+      0.68,
+      0.68,
+      0.68,
+      0.66
+     ],
+     "storeyHeights": [
+      3.0,
+      2.75,
+      2.75,
+      2.75,
+      2.75
+     ]
+    },
+    "modules": [
+     {
+      "share": 0.75,
+      "overrides": {
+       "bays": 4,
+       "windowHead": {
+        "kind": "relieving",
+        "archRing": {
+         "colour": "band"
+        },
+        "storeys": [
+         1,
+         2,
+         3
+        ]
+       },
+       "windowHeights": [
+        0.7,
+        0.68,
+        0.68,
+        0.68,
+        0.66
+       ],
+       "storeyHeights": [
+        3.0,
+        2.75,
+        2.75,
+        2.75,
+        2.75
+       ]
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2a2826",
+        "fascia": true,
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "#2f5a3a"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#2a2826",
+        "evidence": "strip.jpg pand 2 module 1: dark front with graffiti, a green-and-timber carved house door left"
+       }
+      }
+     },
+     {
+      "share": 0.25,
+      "overrides": {
+       "bays": 1,
+       "windowHead": {
+        "kind": "relieving",
+        "archRing": {
+         "colour": "band"
+        },
+        "storeys": [
+         1,
+         2,
+         3
+        ]
+       },
+       "windowHeights": [
+        0.7,
+        0.68,
+        0.68,
+        0.68,
+        0.66
+       ],
+       "storeyHeights": [
+        3.0,
+        2.75,
+        2.75,
+        2.75,
+        2.75
+       ]
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#1f1f1f",
+        "fascia": false,
+        "name": "LOT61 Coffee Roasters",
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 2: dark cafe front with a gold round logo; OSM node 494157331 amenity=cafe"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-11",
+    "name": "LOT61 Coffee Roasters",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 494157331,
+     "name": "LOT61 Coffee Roasters"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 4 axes as 116, then a narrow bay of moulded brick ornament with a chimney stack and a corbelled frieze; a brick dormer tower over one axis",
+    "photoRows": [
+     3,
+     5,
+     5,
+     5,
+     4
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "narrow bay of moulded brick ornament (niches, corbels, pendant) with a chimney stack (drawn as a plain one-axis module)",
+     "brick dormer tower over one axis",
+     "carved green-and-timber house door surround"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "164444: brick dormer straddling the 116|114 party line",
+  "166997: narrow bay of moulded brick ornament (niches, corbels, pendant) with a chimney stack (drawn as a plain one-axis module)",
+  "166997: brick dormer tower over one axis",
+  "166997: carved green-and-timber house door surround"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012164444",
+    "stripRow": 173,
+    "frontRoof": {},
+    "evidence": "strip.jpg: cornice of 116-112 at row 173; 3DBAG eaves 16.2 m reads the roof, the model cornice sat 1.5 m high on pass 1"
+   },
+   {
+    "pand": "0363100012166997",
+    "front": "m0",
+    "stripRow": 173,
+    "frontRoof": {},
+    "evidence": "strip.jpg: cornice of 116-112 at row 173 (as 116)"
+   },
+   {
+    "pand": "0363100012166997",
+    "front": "m1",
+    "stripRow": 173,
+    "frontRoof": {},
+    "evidence": "strip.jpg: cornice of 116-112 at row 173 (as 116)"
+   }
+  ]
+ }
+}

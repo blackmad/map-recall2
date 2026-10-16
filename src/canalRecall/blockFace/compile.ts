@@ -498,14 +498,21 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     // Street-side details (not the shell or roof, which end on the party wall by construction) that reach past the
     // party line. The line is the front-most shared footprint edge of the pair (frame plan), not the frame x: fronts
     // are rarely square to the averaged face axis.
-    const pairContacts = contacts.filter(c => (c.a === i && c.b === i + 1));
+    // Only edges that run back from the street are party lines across the frontage: a pand that wraps behind its
+    // neighbour (Kinkerstraat 64-66 behind 68-70) also shares a rear edge parallel to the street, which must not win
+    // the front-most pick (its far end can lie a few cm further out than the party line's street end).
+    const allPair = contacts.filter(c => (c.a === i && c.b === i + 1)), across0 = allPair.filter(c => Math.abs(c.dz) >= 0.5);
+    const pairContacts = across0.length ? across0 : allPair;
     const front = pairContacts.sort((p, q) => Math.max(q.oz, q.oz + q.dz * q.s1) - Math.max(p.oz, p.oz + p.dz * p.s1))[0];
     // "Street side" is relative to each house's own front plane (street-facing wall), not the chunk frame's z = 0: on a
     // face that bends a few degrees the middle houses stand more than 1 m behind the frame line (Nassaukade 312-307).
     const detail = (a: Tri[], k: number) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > frontZ[k] - 1));
     // Signed distance across the contact line, positive towards the right-hand house.
     const across = (v: number[]) => front ? ((v[0] - front.ox) * -front.dz + (v[2] - front.oz) * front.dx) * sideSign : v[0] - xLine;
-    const sideSign = front ? Math.sign((rings[i + 1][0].reduce((s, q) => s + q[0], 0) / rings[i + 1][0].length - front.ox) * -front.dz + (rings[i + 1][0].reduce((s, q) => s + q[1], 0) / rings[i + 1][0].length - front.oz) * front.dx) || 1 : 1;
+    // Which side of the line is the right-hand house: its street frontage midpoint (z = 0), not its footprint centroid,
+    // which lies on the LEFT of the line when the right pand wraps behind its neighbour (Kinkerstraat 64-66 behind 68-70).
+    const rMid = (chunk.pands[i + 1].frontage.x0 + chunk.pands[i + 1].frontage.x1) / 2;
+    const sideSign = front ? Math.sign((rMid - front.ox) * -front.dz + (0 - front.oz) * front.dx) || 1 : 1;
     const overL = Math.max(0, ...detail(L, i).flatMap(t => t.p.map(v => across(v)))), overR = Math.max(0, ...detail(R, i + 1).flatMap(t => t.p.map(v => -across(v))));
     const near = (a: Tri[]) => a.filter(t => t.p.some(v => Math.abs(v[0] - xLine) < 1.5));
     // Facade z-fighting fails at 1 dm2; roof planes (3DBAG partitions that overlap by centimetres at the party line) at 5 dm2.

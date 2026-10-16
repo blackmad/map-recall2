@@ -1,0 +1,1303 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-334-374",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-334-374/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 374-334 (even side, 1902 and 1915), 2024-12-11 overcast strip. 374-364: six 3-axis houses of 5 storeys, plain brick with segmental heads, round-arched first-floor windows, one pediment dormer each (kinker-1890-plain-brick by eye; the cluster put most on kinker-1902-balcony-axis with NCC 0.25-0.31, but there is no balcony stack). 362-344: kinker-1902-balcony-axis (centre balcony stack, yellow brick courses), square dormers on 360-354 and bell or stepped gables on 352-344. 342-334 (1915): white-banded 2-axis modules with blocked heads (kinker-1890-brick-arched by eye; the cluster gave no type)."
+ },
+ "types": [
+  "kinker-1890-plain-brick",
+  "kinker-1902-balcony-axis",
+  "kinker-1890-brick-arched"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012166359",
+   "slug": "kinker-166359",
+   "address": "Kinkerstraat 374",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#554131",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #554131 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Toko Restu",
+      "sign": {
+       "text": "Toko Restu",
+       "textColour": "#c8302a",
+       "mount": "fascia",
+       "background": "#f2efe6"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 1: white fascia, red \"... Restu\" lettering; OSM amenity=restaurant Toko Restu"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Toko Restu",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12006424145,
+     "name": "Toko Restu"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 3 axes, 4 upper storeys, segmental heads, round-arched storey 1, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched first-floor windows and paired small round stair lights (storey 1)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161284",
+   "slug": "kinker-161284",
+   "address": "Kinkerstraat 372",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#55402f",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #55402f on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Super Service",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 2: white fascia with blue and red lettering (not legible as Super Service); OSM shop=dry_cleaning Super Service"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Super Service",
+    "category": "shop=dry_cleaning",
+    "osm": {
+     "type": "node",
+     "id": 12006423109,
+     "name": "Super Service"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): as 374",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched first-floor windows and paired small round stair lights (storey 1)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158310",
+   "slug": "kinker-158310",
+   "address": "Kinkerstraat 370",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#554130",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #554130 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Royal Kapsalon",
+      "sign": {
+       "text": "Royal Kapsalon",
+       "textColour": "#1d3b78",
+       "mount": "fascia",
+       "background": "#f2efe6"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 3: white fascia \"ROYAL KAPSALON\"; OSM shop=hairdresser"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Royal Kapsalon",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 12006424210,
+     "name": "Royal Kapsalon"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): as 374",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched first-floor windows and paired small round stair lights (storey 1)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012163986",
+   "slug": "kinker-163986",
+   "address": "Kinkerstraat 368",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#523c2c",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #523c2c on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#6fb43a",
+      "fascia": true,
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#6fb43a",
+      "evidence": "strip.jpg pand 4: green fascia with a logo, green shop"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "green fascia with a logo, no legible name; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): as 374, paired small round stair lights on storey 1",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched first-floor windows and paired small round stair lights (storey 1)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236565",
+   "slug": "kinker-236565",
+   "address": "Kinkerstraat 366",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#543d2d",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #543d2d on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2826",
+      "fascia": false,
+      "name": "Chada",
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 5: dark front, gold Thai ornament in the window; OSM shop=massage Chada"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Chada",
+    "category": "shop=massage",
+    "osm": {
+     "type": "node",
+     "id": 12006439665,
+     "name": "Chada"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): as 374",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched first-floor windows and paired small round stair lights (storey 1)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164085",
+   "slug": "kinker-164085",
+   "address": "Kinkerstraat 364",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#553e2d",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #553e2d on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2826",
+      "fascia": true,
+      "name": "Yamie Pastabar",
+      "sign": {
+       "text": "Yamie Pastabar",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#1f1f1f"
+      },
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 6: black fascia \"YAMIE PASTABAR\", shutter half down; OSM amenity=restaurant"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Yamie Pastabar",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12006405214,
+     "name": "Yamie Pastabar"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6 (zoom): as 374",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "round-arched first-floor windows and paired small round stair lights (storey 1)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012167064",
+   "slug": "kinker-167064",
+   "address": "Kinkerstraat 362",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#514637",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #514637 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       2,
+       3,
+       4
+      ],
+      "bays": [
+       1
+      ]
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Shavenn",
+      "sign": {
+       "text": "Shavenn",
+       "textColour": "#1f1f1f",
+       "mount": "fascia",
+       "background": "#f2efe6"
+      },
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 7: white fascia \"SHAVENN salon\"; OSM shop=hairdresser"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Shavenn",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 12006420764,
+     "name": "Shavenn"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7 (zoom): grey stone ground and mezzanine with a wide three-light window, 3 axes above with a centre balcony stack (storeys 2-4), a tall brick dormer. The cluster type (kinker-1890-brick-arched) is overruled: balcony stack, no white blocks",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "grey stone-faced ground storey and mezzanine with a wide three-light window",
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159164",
+   "slug": "kinker-159164",
+   "address": "Kinkerstraat 360",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#544635",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #544635 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Happy Snack",
+      "sign": {
+       "text": "Happy Snack",
+       "textColour": "#d2232a",
+       "mount": "fascia",
+       "background": "#f2efe6"
+      },
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg: white fascia with red \"Happy Snack\"; OSM amenity=fast_food"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Happy Snack",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 12006432724,
+     "name": "Happy Snack"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg (zoom): 1902 row, 3 axes, centre balcony stack, yellow courses, white square dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164263",
+   "slug": "kinker-164263",
+   "address": "Kinkerstraat 358",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#504636",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #504636 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2a24",
+      "fascia": false,
+      "name": "Himalaya",
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg: dark red-brown pui, small lettering not legible; OSM shop=massage Himalaya"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Himalaya",
+    "category": "shop=massage",
+    "osm": {
+     "type": "node",
+     "id": 12006438200,
+     "name": "Himalaya"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg (zoom): 1902 row, 3 axes, centre balcony stack, yellow courses, white square dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012166628",
+   "slug": "kinker-166628",
+   "address": "Kinkerstraat 356",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#524435",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #524435 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2826",
+      "fascia": false,
+      "name": "All Skin Clinic",
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg: dark front, a parking sign in front; OSM shop=beauty All Skin Clinic"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "All Skin Clinic",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 12006438607,
+     "name": "All Skin Clinic"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg (zoom): 1902 row, 3 axes, centre balcony stack, yellow courses, white square dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160054",
+   "slug": "kinker-160054",
+   "address": "Kinkerstraat 354",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#514535",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #514535 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Droomgordijnen",
+      "sign": {
+       "text": "Droomgordijnen",
+       "textColour": "#c8302a",
+       "mount": "fascia",
+       "background": "#f2efe6"
+      },
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg: white fascia, red \"Droomgordijnen\"; OSM shop=curtain"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Droomgordijnen",
+    "category": "shop=curtain",
+    "osm": {
+     "type": "node",
+     "id": 12006426985,
+     "name": "Droomgordijnen"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg (zoom): 1902 row, 3 axes, centre balcony stack, yellow courses, white square dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160347",
+   "slug": "kinker-160347",
+   "address": "Kinkerstraat 352",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "measuredPalette": {
+     "brick": "#514435",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #514435 on the 2024-12-11 strip"
+    },
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 12: white pui, no legible name"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "no legible lettering; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 12 (zoom): 3 axes, centre balcony stack, a curved brick gable. Cluster kinker-1890-brick-arched overruled",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "scrolled brick gable with ornament (the kit curved gable is plain)",
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012155971",
+   "slug": "kinker-155971",
+   "address": "Kinkerstraat 350",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "measuredPalette": {
+     "brick": "#514435",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #514435 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Infinity Kitchen",
+      "sign": {
+       "text": "Infinity Kitchen",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#2a2826"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 13: dark fascia \"INFINITY KITCHEN\", white pui; OSM amenity=restaurant"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Infinity Kitchen",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12006438199,
+     "name": "Infinity Kitchen"
+    },
+    "bag": [
+     "winkelfunctie",
+     "kantoorfunctie",
+     "woonfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 13 (zoom): 3 axes, centre balconies, a scrolled curved gable with an arched light. Cluster kinker-1890-brick-arched overruled",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "scrolled brick gable with ornament (the kit curved gable is plain)",
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157710",
+   "slug": "kinker-157710",
+   "address": "Kinkerstraat 348",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "step-gable",
+    "measuredPalette": {
+     "brick": "#494237",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #494237 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       2,
+       3,
+       4
+      ],
+      "bays": [
+       1
+      ]
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#5a2a24",
+      "fascia": false,
+      "name": "Mountain Nepal",
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2826"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 14: a small shop left, a tall pointed (Gothic) brick-arched house entrance right; OSM amenity=restaurant Mountain Nepal"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Mountain Nepal",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12006385053,
+     "name": "Mountain Nepal"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 14 (zoom): 5 storeys, 3 axes, centre balconies, a tall step gable with an arched light. Cluster kinker-1890-brick-arched overruled",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "tall pointed brick-arched house entrance",
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156317",
+   "slug": "kinker-156317",
+   "address": "Kinkerstraat 346",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "measuredPalette": {
+     "brick": "#453d2f",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #453d2f on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Hookah Lounge",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 15: white pui and fascia, lettering not legible; OSM amenity=hookah_lounge"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "photoDate": "2024-12-11",
+    "name": "Hookah Lounge",
+    "category": "amenity=hookah_lounge",
+    "osm": {
+     "type": "node",
+     "id": 2809227778,
+     "name": "Hookah Lounge"
+    },
+    "bag": [
+     "winkelfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 15 (zoom): 3 axes, centre balconies, scrolled curved gable",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "scrolled brick gable with ornament",
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012167305",
+   "slug": "kinker-167305",
+   "address": "Kinkerstraat 344",
+   "type": {
+    "type": "kinker-1902-balcony-axis",
+    "crown": "neck-gable",
+    "measuredPalette": {
+     "brick": "#4b4132",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #4b4132 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Kinker",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 16: white pui and fascia with small red lettering (not legible); OSM shop=tobacco Kinker"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Kinker",
+    "category": "shop=tobacco",
+    "osm": {
+     "type": "node",
+     "id": 12006415452,
+     "name": "Kinker"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "OSM also has Sushi Shiwo here"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 16 (zoom): 3 axes, centre balconies, scrolled curved gable",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "scrolled brick gable with ornament",
+     "yellow brick courses of the 1902 balcony row",
+     "narrow centre French windows (the kit widens balcony windows)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160344",
+   "slug": "kinker-160344",
+   "address": "Kinkerstraat 338-342",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#4a3f31",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #4a3f31 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "cornice": "bracketed"
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#1f2a3f",
+        "fascia": true,
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 17 module 1: dark blue pui, small lettering not legible"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#1f1f1f",
+        "fascia": true,
+        "name": "Baroud",
+        "sign": {
+         "text": "Baroud",
+         "textColour": "#c9a85a",
+         "mount": "fascia",
+         "background": "#1f1f1f"
+        },
+        "entrance": "right",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 2: black fascia, gold \"BAROUD\"; OSM shop=hairdresser Baroud"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#1f1f1f",
+        "fascia": true,
+        "name": "Gold Center Amsterdam",
+        "sign": {
+         "text": "Juwelier",
+         "textColour": "white",
+         "mount": "fascia",
+         "background": "#1f1f1f"
+        },
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 3: black fascia \"GOLD CENTER ... JUWELIER\"; OSM shop=jewelry"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Gold Center Amsterdam",
+    "category": "shop=jewelry",
+    "osm": {
+     "type": "node",
+     "id": 4899442422,
+     "name": "Gold Center Amsterdam"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Baroud (OSM, lettered) in the middle module"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 17 (zoom): 1915, three 2-axis modules, white courses at sill and transom, white blocked segmental heads, three white dormers, bracketed cornice. The cluster gave no type (year outside every type); kinker-1890-brick-arched by eye",
+    "photoRows": [
+     5,
+     6,
+     6,
+     6,
+     3
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012072741",
+   "slug": "kinker-072741",
+   "address": "Kinkerstraat 334-336",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "pediment-dormer",
+    "measuredPalette": {
+     "brick": "#4f4032",
+     "evidence": "palette-from-strip.ts --face=kinker-334-374: wall median #4f4032 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "cornice": "bracketed"
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#ece4d0",
+        "fascia": true,
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "#5a5a5a"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 18 module 1: cream pui, dark fascia lettering not legible"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#ece4d0",
+        "fascia": true,
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 18 module 2: cream pui"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "cream pui, fascia lettering not legible; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 18 (zoom): as 338-342, 4 axes, one dormer",
+    "photoRows": [
+     3,
+     4,
+     4,
+     4,
+     1
+    ],
+    "photoGables": 0
+   }
+  }
+ ],
+ "limitations": [
+  "166359: round-arched first-floor windows and paired small round stair lights (storey 1)",
+  "166359: iron wall anchors",
+  "161284: round-arched first-floor windows and paired small round stair lights (storey 1)",
+  "161284: iron wall anchors",
+  "158310: round-arched first-floor windows and paired small round stair lights (storey 1)",
+  "158310: iron wall anchors",
+  "163986: round-arched first-floor windows and paired small round stair lights (storey 1)",
+  "163986: iron wall anchors",
+  "236565: round-arched first-floor windows and paired small round stair lights (storey 1)",
+  "236565: iron wall anchors",
+  "164085: round-arched first-floor windows and paired small round stair lights (storey 1)",
+  "164085: iron wall anchors",
+  "167064: grey stone-faced ground storey and mezzanine with a wide three-light window",
+  "167064: yellow brick courses of the 1902 balcony row",
+  "167064: narrow centre French windows (the kit widens balcony windows)",
+  "159164: yellow brick courses of the 1902 balcony row",
+  "159164: narrow centre French windows (the kit widens balcony windows)",
+  "164263: yellow brick courses of the 1902 balcony row",
+  "164263: narrow centre French windows (the kit widens balcony windows)",
+  "166628: yellow brick courses of the 1902 balcony row",
+  "166628: narrow centre French windows (the kit widens balcony windows)",
+  "160054: yellow brick courses of the 1902 balcony row",
+  "160054: narrow centre French windows (the kit widens balcony windows)",
+  "160347: scrolled brick gable with ornament (the kit curved gable is plain)",
+  "160347: yellow brick courses of the 1902 balcony row",
+  "160347: narrow centre French windows (the kit widens balcony windows)",
+  "155971: scrolled brick gable with ornament (the kit curved gable is plain)",
+  "155971: yellow brick courses of the 1902 balcony row",
+  "155971: narrow centre French windows (the kit widens balcony windows)",
+  "157710: tall pointed brick-arched house entrance",
+  "157710: yellow brick courses of the 1902 balcony row",
+  "157710: narrow centre French windows (the kit widens balcony windows)",
+  "156317: scrolled brick gable with ornament",
+  "156317: yellow brick courses of the 1902 balcony row",
+  "156317: narrow centre French windows (the kit widens balcony windows)",
+  "167305: scrolled brick gable with ornament",
+  "167305: yellow brick courses of the 1902 balcony row",
+  "167305: narrow centre French windows (the kit widens balcony windows)"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012161284",
+    "stripRow": 200,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 2: cornice of the 374-364 row at row 200 (15.7 m), level with 374; 3DBAG eaves 17.3 m reads the roof"
+   }
+  ]
+ }
+}
