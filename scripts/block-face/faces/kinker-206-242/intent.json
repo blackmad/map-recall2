@@ -422,7 +422,7 @@
      "shopfront": {
       "colour": "#ece6d6",
       "fascia": false,
-      "name": "ô mai café",
+      "name": "\u00f4 mai caf\u00e9",
       "entrance": "left",
       "residentialDoor": {
        "side": "right",
@@ -430,19 +430,19 @@
       },
       "glazing": "transom",
       "stallriser": "low",
-      "evidence": "strip.jpg pand 8: cream timber pui with a transom row; no legible name; OSM amenity=restaurant \"ô mai café\""
+      "evidence": "strip.jpg pand 8: cream timber pui with a transom row; no legible name; OSM amenity=restaurant \"\u00f4 mai caf\u00e9\""
      }
     }
    },
    "groundFloor": {
     "use": "restaurant",
     "photoDate": "2024-12-11",
-    "name": "ô mai café",
+    "name": "\u00f4 mai caf\u00e9",
     "category": "amenity=restaurant",
     "osm": {
      "type": "node",
      "id": 12006378074,
-     "name": "ô mai café"
+     "name": "\u00f4 mai caf\u00e9"
     },
     "bag": [
      "bijeenkomstfunctie",
@@ -1102,23 +1102,7 @@
   ],
   "roof": {
    "source": "recipe",
-   "keepSurvey": [
-    "0363100012236953",
-    "0363100012237297",
-    "0363100012160838",
-    "0363100012165141",
-    "0363100012152992",
-    "0363100012163768",
-    "0363100012162560",
-    "0363100012161056",
-    "0363100012166034",
-    "0363100012236982",
-    "0363100012237261",
-    "0363100012236886",
-    "0363100012160871",
-    "0363100012159816"
-   ],
-   "evidence": "212-216 (the Action store, 32 m deep with flat rear wings): its 3DBAG LoD2.2 roof partition does not preserve the surveyed footprint (library error \"Roof partition must preserve surveyed footprint and courtyard area\" with any design), so its roof is generated from the design; the strip shows a slate mansard with three dormers behind the cornice there. Every other pand keeps its 3DBAG roof."
+   "evidence": "212-216 (the Action store, 32 m deep with flat rear wings): its 3DBAG LoD2.2 roof partition does not preserve the surveyed footprint, so every roof on this face is generated: a saddle under each neck gable, an attic face behind the dormered cornices, 3DBAG as the upper bound only (kit roof rules 2026-10-16; keepSurvey dropped)."
   }
  }
 }
