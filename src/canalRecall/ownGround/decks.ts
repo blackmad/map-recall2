@@ -124,7 +124,8 @@ export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: Ban
         else if (banded && t <= hw && onBand!(x, y)) road = Math.max(road, t + BAND_MARGIN_M);
       }
       core[side][i] = Math.min(hw, road);
-      wet[side][i] = water;
+      // Over a way deck's hole (wayDecks.ts HOLE_M) the deck reaches its sides as over the water.
+      wet[side][i] = p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) ? w : water;
     }
   }
   // Along the deck the water's reach spreads to the neighbours within WIDEN_PAST_WATER_M (the deck overlaps the quay).
