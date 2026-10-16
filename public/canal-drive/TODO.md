@@ -679,6 +679,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+
+- **`check:covers` red on main (found 2026-10-16)**: 10 inconsistencies,
+  all `noorderkerk` suppressing OSM-only ways w749871260–275 that
+  `covers.json` does not keep. It fails `check:canal` at its `&&` chain, so
+  the later chained checks (building-types, osm-under-models, abutters,
+  inventory, signature-fallback, manual-landmarks) are skipped unless run by
+  hand; rebuild covers (`build-covers`, staged then copied to models/) or
+  drop the stale ids.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**
