@@ -500,6 +500,7 @@
     "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts",
     "audit:landmark-cards": "tsx scripts/audit-landmark-cards.ts",
     "test:bridge-street-name": "node --import tsx --test src/canalRecall/game/bridgeStreetName.test.ts",
+    "test:finish-blurb": "node --import tsx --test src/canalRecall/game/finishBlurb.test.ts",
     "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts"
   },
