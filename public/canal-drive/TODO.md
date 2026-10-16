@@ -729,6 +729,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Bridge follow-ups** (2026-10-16, HISTORY "Bridges: canal-mouth
+  parapets"): the way-deck railing that runs diagonally across the cycle
+  path at the Jan Evertsenstraat/Erasmusgracht end (apply `parapetRuns`'
+  turn-in rule to way decks, end the parapet at the quay line); the
+  mid-span parapet jog on widened sides (BRU0063, BRU0108); the 31 of 1,294
+  road bridge ways still without a surface (`audit-bridge-surfaces.ts
+  --all`; 137 before way decks); cap that count in a check.
 
 - **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
   bridge deck is never the answer")**: the street plaque
