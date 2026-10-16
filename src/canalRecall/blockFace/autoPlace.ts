@@ -22,6 +22,7 @@ import type {StripPalette} from './stripPalette.ts';
 import type {Skyline} from './stripSkyline.ts';
 import type {StripStructure} from './stripStructure.ts';
 import {rgbToLab, type Rgb} from '../buildingRecipe/measureFacade.ts';
+import type {FrontBump} from './bayOutline.ts';
 import type {ShopfrontIntent} from '../buildingRecipe/intent.ts';
 
 /** How a library type is recognised (`match` in scripts/block-face/types/<district>/<id>.json). */
@@ -50,6 +51,12 @@ export interface TypeMatchRule {
   /** The type is drawn with its house door on this side; a pand whose door reads on the other side is mirrored (pairs). */
   mirrorForDoor?: 'left' | 'right';
   /**
+   * Doors pair across the party wall whatever the neighbour's type (`fillPairs`): a pand whose door was not read takes
+   * the side that meets a placed neighbour of any type whose door side is known (read, or set by its accent/BAG bay).
+   * Rivierenbuurt 1934 portiek rows: a flat front's door meets the door of the erker house beside it.
+   */
+  doorsPairAcross?: boolean;
+  /**
    * The type is drawn with its light accent mass (a white bay stack) on this side; the strip's upper-storey accent
    * asymmetry is then a criterion (an even front scores 0) and a pand whose accent reads on the other side is mirrored.
    */
@@ -71,6 +78,14 @@ export interface TypeMatchRule {
    * dark and washed-out strips alike): the tile-bay oriels read 2.0-2.3 m, plain window columns at most 1.3 m.
    */
   bayWidthM?: [number, number];
+  /**
+   * The BAG outline carries a bay in front of the facade line (blockFace/bayOutline.ts `frontBump`, PandEvidence
+   * `bagBay`): true for an erker type, false for a flat front. A weighted criterion (3), not a veto: BAG can miss an erker.
+   * Rivierenbuurt 1934 rows: the brick-panelled erkers read no light bay on the strip, but BAG draws every one of them.
+   */
+  bagBay?: boolean;
+  /** Range of |bay centre - 0.5| (share of the front): Boterdiepstraat's side erkers 0.18-0.19, Eemsstraat's 0.06-0.10. */
+  bagBayOffset?: [number, number];
   crowns?: Record<string, CrownRule & {alt?: CrownRule}>;
   note?: string;
 }
@@ -115,6 +130,8 @@ export interface PandEvidence {
   groundUses: string[];
   osm: {type: string; id: number; name?: string; category?: string}[];
   strip?: StripEvidence;
+  /** The bay of the pand's BAG outline in front of its facade line (`frontBump` of the discovered front), null when straight; undefined = not read. */
+  bagBay?: FrontBump | null;
 }
 
 export interface Criterion { key: string; score: number | null; weight: number; note: string }
@@ -178,7 +195,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
     const s = storeysFor(t, ev.eavesM), p = storeyPitch(t), off = Math.abs(ev.eavesM / s - p) / p;
     criteria.push({key: 'eaves', weight: W.eaves, score: off <= 0.08 ? 1 : off <= 0.15 ? 0.5 : 0, note: `3DBAG eaves ${r2(ev.eavesM)} m = ${s} storeys of ${r2(ev.eavesM / s)} m vs the type's ${r2(p)} m`});
   }
-  if (m.storeys3dbag) criteria.push({key: 'storeys', weight: W.storeys, score: ev.storeys3dbag === null ? null : m.storeys3dbag.includes(ev.storeys3dbag) ? 1 : 0, note: `3DBAG bouwlagen ${ev.storeys3dbag ?? '-'} vs ${m.storeys3dbag.join('/')}`});
+  if (m.storeys3dbag) criteria.push({key: 'storeys', weight: W.storeys, score: !ev.storeys3dbag ? null : m.storeys3dbag.includes(ev.storeys3dbag) ? 1 : 0, note: `3DBAG bouwlagen ${ev.storeys3dbag ?? '-'} vs ${m.storeys3dbag.join('/')}`});
   if (m.roof) {
     const rise = ev.roofMaxM - ev.eavesM, form = rise < AUTO_PLACE.flatRoofRiseM ? 'flat' : 'pitched';
     criteria.push({key: 'roof', weight: W.roof, score: form === m.roof ? 1 : 0, note: `roof rise ${r2(rise)} m (${form}) vs ${m.roof}`});
@@ -195,6 +212,11 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   }
   const st = usable ? s!.structure ?? null : null;
   if (m.balconies === false && st?.balconies) veto.push(`strip shows balconies (${st.balconyWhy})`);
+  if (m.bagBay !== undefined && ev.bagBay !== undefined) {
+    const off = ev.bagBay ? Math.abs(ev.bagBay.centre - 0.5) : null, offOk = !m.bagBayOffset || (off !== null && off >= m.bagBayOffset[0] && off <= m.bagBayOffset[1]);
+    criteria.push({key: 'bag-bay', weight: 3, score: !!ev.bagBay === m.bagBay && (!m.bagBay || offOk) ? 1 : 0,
+      note: ev.bagBay ? `BAG outline bay ${ev.bagBay.fromM}-${ev.bagBay.toM} m, ${ev.bagBay.depthM} m deep, centre ${ev.bagBay.centre}` : 'BAG outline straight'});
+  }
   if (m.bayWidthM) criteria.push({key: 'bay', weight: 3, score: st ? (st.bayWidthM >= m.bayWidthM[0] && st.bayWidthM <= m.bayWidthM[1] ? 1 : 0) : null, note: st ? `widest light bay ${st.bayWidthM} m vs ${m.bayWidthM.join('-')} m` : 'no strip structure'});
   if (m.accentShare) criteria.push({key: 'accent-share', weight: 2, score: usable && s!.accentShare !== undefined ? (s!.accentShare >= m.accentShare[0] && s!.accentShare <= m.accentShare[1] ? 1 : 0) : null, note: usable ? `upper accent share ${s!.accentShare ?? '-'} vs ${m.accentShare.join('-')}` : 'no strip'});
   if (m.mirrorForAccent) { const side = usable ? accentSideOf(s!) : null; criteria.push({key: 'accent-side', weight: 2, score: usable ? (side ? 1 : 0) : null, note: usable ? `upper accent ${side ?? 'even'} (type: one-sided)` : 'no strip'}); }
@@ -256,7 +278,9 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});
   if (trading) placement.ground = {shopfront: autoShopfront(ev, use)};
-  const aSide = accentSideOf(s);
+  // A bay in the BAG outline gives the accent side outright (it does not depend on the strip's exposure).
+  const bagSide = ev.bagBay && Math.abs(ev.bagBay.centre - 0.5) >= 0.1 ? (ev.bagBay.centre < 0.5 ? 'left' : 'right') : null;
+  const aSide = bagSide ?? accentSideOf(s);
   if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
@@ -291,15 +315,34 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
  */
 export function fillPairs(decisions: Decision[], types: MatchableType[]): number {
   let filled = 0;
-  for (let k = 0; k < decisions.length; k++) {
+  for (let sweep = 0, before = -1; sweep < 4 && filled !== before; sweep++) { before = filled; for (let k = 0; k < decisions.length; k++) {
     const d = decisions[k];
     if (d.kind !== 'placed' || !d.notes.includes('door unread') || !types.find(t => t.id === d.typeId)?.match?.mirrorForDoor) continue;
+    const t = types.find(x => x.id === d.typeId)!;
+    if (sweep > 0 && !t.match?.doorsPairAcross) continue; // later sweeps chain cross-type pairs only (same-type pairing is one forward pass)
+    if (t.match?.doorsPairAcross) {
+      // The neighbour's door side: its authored door ground, flipped when mirrored; known unless its own door is unread.
+      const sideOf = (x: Decision | undefined): 'left' | 'right' | null => {
+        if (x?.kind !== 'placed' || x.notes.includes('door unread')) return null;
+        const g = typeof x.house.type?.ground === 'string' ? x.house.type.ground : Object.keys(types.find(y => y.id === x.typeId)?.grounds ?? {})[0];
+        const s = g === 'door-left' ? 'left' : g === 'door-right' ? 'right' : null;
+        return s && x.house.type?.mirror ? (s === 'left' ? 'right' : 'left') : s;
+      };
+      const left = sideOf(decisions[k - 1]), right = sideOf(decisions[k + 1]);
+      const want = left === 'right' ? 'left' : right === 'left' ? 'right' : left === 'left' ? 'right' : right === 'right' ? 'left' : null;
+      if (!want) continue;
+      if (want !== t.match.mirrorForDoor) d.house.type!.mirror = true; else delete d.house.type!.mirror;
+      const mate = left ? decisions[k - 1] as Placed : decisions[k + 1] as Placed;
+      d.notes[d.notes.indexOf('door unread')] = `door unread: ${d.house.type!.mirror ? 'mirrored' : 'as drawn'}, paired with ${mate.pandId.slice(-6)}'s door`;
+      filled++;
+      continue;
+    }
     const mate = [decisions[k - 1], decisions[k + 1]].find(x => x?.kind === 'placed' && x.typeId === d.typeId && !x.notes.includes('door unread')) as Placed | undefined;
     if (!mate) continue;
     if (!mate.house.type!.mirror) d.house.type!.mirror = true; else delete d.house.type!.mirror;
     d.notes[d.notes.indexOf('door unread')] = `door unread: ${d.house.type!.mirror ? 'mirrored' : 'as drawn'}, the opposite of ${mate.pandId.slice(-6)}`;
     filled++;
-  }
+  } }
   return filled;
 }
 

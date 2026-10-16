@@ -1,0 +1,182 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "rijn-1934-erker-ribbon",
+ "district": "rivierenbuurt",
+ "description": "Rijnbuurt-Oost (Plan Zuid, BAG 1934), Boterdiepstraat 9-33 (odd side): a 6.1 m brick front, every house alike (not mirrored): the house door with a side light at the left party wall under a white slab canopy, a narrow window axis over it, a two-storey canted brick erker on the right axis (white-framed three-light glazing over brick stallrisers on storeys 1-2) standing on a white console over a wide ground window, and the top storey a ribbon of four lights over both axes, under a shallow flat-roof overhang with a white fascia",
+ "fit": {
+  "widthM": [
+   5.7,
+   6.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   2,
+   2,
+   2,
+   4
+  ],
+  "axisGrid": 2,
+  "bayWidths": [
+   2.6,
+   3.5
+  ],
+  "bayFill": [
+   0.48,
+   0.83
+  ],
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-triple",
+   "3": "two-light"
+  },
+  "storeyHeights": [
+   3.1,
+   3.0,
+   3.0,
+   3.0
+  ],
+  "windowHeights": [
+   0.58,
+   0.62,
+   0.63,
+   0.47
+  ],
+  "headLines": [
+   0.9,
+   0.92,
+   0.93,
+   0.77
+  ],
+  "storeyRibbons": {
+   "3": {
+    "from": 0.18,
+    "to": 0.91
+   }
+  },
+  "bayWindows": {
+   "bays": {
+    "from": 1,
+    "to": 1
+   },
+   "storeys": [
+    1,
+    2
+   ],
+   "oriel": {
+    "span": 2.9,
+    "projection": 0.6,
+    "returns": 0.5,
+    "stallriser": 0.85,
+    "head": 0.3,
+    "frontLights": 3,
+    "transom": 0.7,
+    "console": true
+   }
+  }
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.45,
+    "fascia": 0.3,
+    "colour": "#e4e1d8",
+    "soffit": "#d6cfc0"
+   },
+   "note": "a shallower overhang than the even side's"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "groundCanopy": {
+    "projection": 0.45,
+    "thickness": 0.12,
+    "overhang": 0.08,
+    "doorOverhang": 0.25,
+    "gap": 0.08,
+    "colour": "#e4e1d8",
+    "over": [
+     "door"
+    ]
+   },
+   "note": "the house door and side light under a white slab at the left party wall"
+  }
+ },
+ "palettes": {
+  "brown-red": {
+   "brick": "#7a6a5f",
+   "frame": "#efeee8",
+   "door": "#86482a",
+   "stone": "#d6d3cc",
+   "cornice": "#e4e1d8"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1932,
+   1936
+  ],
+  "eavesM": [
+   11.6,
+   13.0
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "flat",
+  "stucco": false,
+  "mirrorForAccent": "right",
+  "bagBay": true,
+  "bagBayOffset": [
+   0.12,
+   0.165
+  ],
+  "note": "an erker on every house on the same side; the top-storey ribbon tells it from the erker-pair type, which the photo decides (auto-place --photo-decides)"
+ },
+ "rhythm": {
+  "bays": "a narrow window axis and a wide erker axis; the top storey one ribbon",
+  "identicalBays": "no: narrow + erker",
+  "windowsPerStorey": "ground: door + 1 wide | 1-2: 1 + erker | 3: a ribbon of 4",
+  "symmetry": "repeated, not mirrored: every erker on the right",
+  "groundFloor": "the house door at the left party wall, a wide window under the erker console",
+  "signage": "none",
+  "roofline": "flat roof with a shallow white-fascia overhang",
+  "photoRows": [
+   2,
+   2,
+   2,
+   4
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "boterdiep-3-59",
+   "pands": [
+    "134610",
+    "107814"
+   ],
+   "citation": "strip.jpg 2020-01-07 re-rectified with the camera 2.1 m over the ground (intake --camera-height=2.1), ruler crop of 17-19 at 64 px/m: door 0.4-1.9 m with a side light to 2.35 m, slab canopy at 2.85 m; narrow window 1.1-2.35 m, sills 4.0 / 7.0 m, heads 5.85 / 8.9 m; erker 2.9-5.8 m on storeys 1-2, its console over the ground window (1.0-2.8 m); ribbon 1.1-5.55 m x 10.2-11.6 m; fascia top rectified at 13.0 m over 3DBAG eaves 12.3 m (a ~0.45 m overhang at 6.5 m)"
+  }
+ ],
+ "schemaLimits": [
+  "the ground storey's canted bay under the erker is drawn as a flat window under the erker console (bayWindows.storeys start at 1)",
+  "the ribbon's light count varies 3-5 along the row; the type draws 4",
+  "the door's side light is part of the door opening"
+ ],
+ "notes": [
+  "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

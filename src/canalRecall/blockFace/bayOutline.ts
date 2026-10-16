@@ -97,3 +97,54 @@ export function chordOverBay(facts: BuildingFacts, chord = bayChord(facts)): Bui
   return {...facts, bagFootprintRD, surveyFootprintPolygonsRD, roofsRD, fronts: [front, ...facts.fronts.slice(1)],
     heights: {...facts.heights, roofMinM: round(Math.min(...roofZ), 2), roofMaxM: round(Math.max(...roofZ), 2)}};
 }
+
+/** A bay standing in front of a discovered front whose ends already sit on the facade line. */
+export interface FrontBump { fromM: number; toM: number; depthM: number; centre: number }
+/** Least outward depth (m) of a chain vertex that makes it a bay, not a jog of the brickwork. */
+export const BUMP_MIN_DEPTH_M = 0.25;
+
+/**
+ * The bay in a front's chain (Rivierenbuurt 1934 rows, Boterdiepstraat 36-66: BAG outlines carry the canted brick erker,
+ * 0.8 m deep and 2.7 m along a 6.1 m front, and discovery keeps the whole 6.1 m front "across a native jog"): the chain
+ * vertices standing more than `BUMP_MIN_DEPTH_M` in front of the line through the front's two endpoints, as metres along
+ * the front from its first endpoint (left seen from the street), their deepest offset and the centre as a share of the
+ * width. Null when the chain is straight, or when an endpoint itself is off the facade line (a bay-front discovery:
+ * `chordOverBay` with `bayChord`).
+ */
+export function frontBump(front: Pick<FrontFacts, 'endpointsRD' | 'chainRD' | 'outwardNormalRD'>): FrontBump | null {
+  const [a, b] = front.endpointsRD, w = dist(a, b), u = [(b[0] - a[0]) / w, (b[1] - a[1]) / w];
+  let n = [u[1], -u[0]];
+  if (n[0] * front.outwardNormalRD[0] + n[1] * front.outwardNormalRD[1] < 0) n = [-n[0], -n[1]];
+  const out = front.chainRD.map(q => ({t: (q[0] - a[0]) * u[0] + (q[1] - a[1]) * u[1], d: (q[0] - a[0]) * n[0] + (q[1] - a[1]) * n[1]})).filter(x => x.d > BUMP_MIN_DEPTH_M);
+  if (!out.length) return null;
+  const fromM = Math.min(...out.map(x => x.t)), toM = Math.max(...out.map(x => x.t));
+  return {fromM: round(fromM, 2), toM: round(toM, 2), depthM: round(Math.max(...out.map(x => x.d)), 2), centre: round((fromM + toM) / 2 / w, 3)};
+}
+
+/**
+ * `chordOverBay` on the front's own endpoints when its chain carries a bay (`frontBump`): the footprint, survey polygons
+ * and roofs are clipped to the facade line, so the kit draws the erker (`bayWindows`) and the chunk front is one straight
+ * surveyed wall. Null when there is no bump.
+ */
+export function chordOverFrontBump(facts: BuildingFacts): BuildingFacts | null {
+  const f = facts.fronts[0];
+  if (!frontBump(f)) return null;
+  const next = chordOverBay(facts, {a: f.endpointsRD[0], b: f.endpointsRD[1]});
+  // Where the facade line runs through an outline vertex (BAG draws the erker's foot on it), clipping adds the cut point
+  // beside that vertex; the near-duplicate (Boterdiepstraat 40: 0.2 mm) folds the roof prism. Every vertex within 1 cm
+  // of one already seen (survey footprint first, then BAG, then the roofs) takes that one's plan position, so all rings
+  // share it, and repeats in a ring are dropped (the explicit `--bay-outline=<pand6>` path stays as it was).
+  const seen: number[][] = [];
+  const canon = <T extends number[]>(v: T): T => {
+    const k = seen.find(q => Math.hypot(q[0] - v[0], q[1] - v[1]) < 0.01);
+    if (!k) { seen.push(v); return v; }
+    return (v.length > 2 ? [k[0], k[1], ...v.slice(2)] : [k[0], k[1]]) as T;
+  };
+  const ring = <T extends number[]>(r: T[]): T[] => {
+    const c = r.map(canon);
+    const out = c.filter((v, i) => { const q = c[(i + c.length - 1) % c.length]; return q[0] !== v[0] || q[1] !== v[1]; });
+    return out.length >= 3 ? out : c;
+  };
+  const surveyFootprintPolygonsRD = next.surveyFootprintPolygonsRD.map(p => p.map(ring)), bagFootprintRD = next.bagFootprintRD.map(ring);
+  return {...next, bagFootprintRD, surveyFootprintPolygonsRD, roofsRD: next.roofsRD.map(r => ({...r, vertices: ring(r.vertices), ringsRD: r.ringsRD.map(ring)}))};
+}

@@ -17,6 +17,8 @@ import {compileLargeBuilding, type CompiledLargeBuilding} from './largeCompile.t
 import {applyHistoricPasses} from './historicPasses.ts';
 import {applyAmsterdamSchool} from './amsterdamSchool.ts';
 import {addTilePanels} from './tileAccents.ts';
+import {addEavesOverhangs} from './eavesOverhang.ts';
+import {addGroundCanopies} from './groundCanopy.ts';
 import {applyOudWest} from './oudWest.ts';
 import {applyOrielHoist} from './orielHoist.ts';
 
@@ -204,6 +206,9 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   applyAmsterdamSchool(built.group, intent, recipe, report);
   // Glazed tile panels on the piers (opt-in, Bellamybuurt 1915 rows).
   if (intent.fronts.some(f => f.tilePanels)) addTilePanels(built.group, intent, recipe, report);
+  // Flat roof's deep eaves overhang (opt-in, Rivierenbuurt 1930s rows).
+  if (intent.fronts.some(f => f.eavesOverhang)) addEavesOverhangs(built.group, intent, recipe, report);
+  if (intent.fronts.some(f => f.groundCanopy)) addGroundCanopies(built.group, intent, recipe, report);
   // 1900 Oud-West set (opt-in): timber balconies on brackets, painted erkers, painted brick as a measured tint.
   applyOudWest(built.group, intent, recipe, report);
   // Bellamybuurt 1915 set (opt-in): painted timber oriels, their consoles, hoist caps over dormers.
