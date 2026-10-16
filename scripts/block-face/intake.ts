@@ -5,7 +5,8 @@
  *
  *   node --import tsx scripts/block-face/intake.ts --face=bilder-124-136 --street=Bilderdijkstraat --seed=0363100012156287 \
  *        [--from=<pand> --to=<pand>] [--date=YYYY-MM-DD] [--span-date=<pand6>:YYYY-MM-DD,...] [--ppm=40] [--no-strip]
- *        [--bay-outline=<pand6>,...]   pands whose BAG outline carries an overhanging erker: front rebuilt on the facade
+ *        [--camera-height=2.44]  camera z = the face's ground + this (m), not the published panorama height (which drifts by year)
+ *        [--bay-outline=<pand6>,...|auto]  pands whose BAG outline carries an overhanging erker (auto: every front chain with a bay, blockFace/bayOutline.ts frontBump): front rebuilt on the facade
  *                                      chord, footprint and roofs clipped behind it (blockFace/bayOutline.ts)
  *
  * Writes (committed, small, derived):
@@ -24,7 +25,7 @@ import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {AMSTERDAM_WORLD_ALIGNED, rectifyFacade} from '../../src/canalRecall/facade/rectify.ts';
 import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
 import {discoverBlockFace} from '../../src/canalRecall/blockFace/discover.ts';
-import {chordOverBay} from '../../src/canalRecall/blockFace/bayOutline.ts';
+import {chordOverBay, chordOverFrontBump, frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
 import {medianFuse, planStrip, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
 import {assignUses, type OsmBusiness, type BagUnit} from '../../src/canalRecall/blockFace/uses.ts';
@@ -89,7 +90,7 @@ async function bagUnits(min: RD, max: RD): Promise<BagUnit[]> {
   return out;
 }
 
-export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; spanDates?: Record<string, string>; ppm?: number; strip?: boolean; bayOutline?: string[]}) {
+export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; spanDates?: Record<string, string>; ppm?: number; strip?: boolean; bayOutline?: string[]; cameraHeight?: number}) {
   const t0 = performance.now(), timings: Record<string, number> = {};
   const lap = (k: string, t: number) => { timings[k] = round((performance.now() - t) / 1000, 1); return performance.now(); };
   const streets: StreetPath[] = (JSON.parse(await fs.readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]).map(s => ({name: s.name, paths: s.paths ?? [s.path]}));
@@ -108,7 +109,15 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   let t = lap('discoverS', t0);
   // Pands whose BAG outline carries an overhanging erker: rebuild the front on the facade chord (bayOutline.ts).
   const uncorrected = new Map<string, unknown>();
-  for (const p of found.pands) if (o.bayOutline?.some(id => p.pandId.endsWith(id))) {
+  // `--bay-outline=auto`: every pand whose front chain carries a bay in front of its own endpoints (frontBump).
+  if (o.bayOutline?.includes('auto')) for (const p of found.pands) {
+    const rebuilt = chordOverFrontBump(p.facts);
+    if (!rebuilt) continue;
+    uncorrected.set(p.pandId, p.facts);
+    console.log(`  ${p.pandId.slice(-6)}: bay in the outline ${JSON.stringify(frontBump(p.facts.fronts[0]))} -> front on the facade line`);
+    p.facts = rebuilt;
+  }
+  for (const p of found.pands) if (o.bayOutline?.some(id => id !== 'auto' && p.pandId.endsWith(id))) {
     const before = p.facts.fronts[0].widthM;
     uncorrected.set(p.pandId, p.facts);
     p.facts = chordOverBay(p.facts);
@@ -166,6 +175,10 @@ export async function intake(o: {face: string; street: string; seed: string; fro
       if (!pano) continue;
       const lens = lensFor(rec, groundNAP);
       if (!lens) continue;
+      // --camera-height: the published panorama heights drift by year (Boterdiepstraat: 2020-01-07 1.35 m over the
+      // ground, 2023-01-03 3.44 m, 2022-03-24 2.11 m against a ~2.4 m mast), which shifts the whole strip up or down by
+      // about the error; a fixed mast height over the face's ground keeps the strip on the 3DBAG eaves.
+      if (o.cameraHeight !== undefined) lens.pose.z = groundNAP + o.cameraHeight;
       const out = rectifyFacade(pano.img, {...lens.pose, headingDeg: 0, pitchDeg: 0, rollDeg: 0}, {start: {x: s.a[0], y: s.a[1]}, end: {x: s.b[0], y: s.b[1]}, baseZ: groundNAP, topZ: groundNAP + topM}, {pixelsPerMetre: ppm, camera: AMSTERDAM_WORLD_ALIGNED, maxPixels: 4_000_000});
       dims = {width: out.width, height: out.height}; crops.push(out.data); missing.push(round(out.missingFraction));
     }
@@ -187,7 +200,7 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   await fs.mkdir(stage, {recursive: true});
   await sharp(Buffer.from(canvas), {raw: {width: W, height: H, channels: 4}}).removeAlpha().jpeg({quality: 88}).toFile(path.join(stage, 'strip.jpg'));
   const strip = {face: o.face, image: path.join(stage, 'strip.jpg'), pixelsPerMetre: ppm, width: W, height: H, groundNAP: round(groundNAP, 3), heightM: round(topM), frame: {midRD: frame.midRD, uRD: frame.uRD, nRD: frame.nRD}, x0M: round(x0), x1M: round(x1),
-    date: plan.date, coverage: round(plan.coverage), spans: spanRecords, candidatesByDate: plan.candidatesByDate,
+    date: plan.date, ...(o.cameraHeight !== undefined ? {cameraHeightM: o.cameraHeight} : {}), coverage: round(plan.coverage), spans: spanRecords, candidatesByDate: plan.candidatesByDate,
     description: 'Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.',
     attribution: 'Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)'};
   await fs.writeFile(path.join(dir, 'strip.json'), JSON.stringify(strip, null, 1) + '\n');
@@ -211,5 +224,5 @@ export async function labelledStrip(strip: any, out: string, uses: {pandId: stri
 if (process.argv[1]?.endsWith('block-face/intake.ts')) {
   const face = arg('face'), street = arg('street'), seed = arg('seed');
   if (!face || !street || !seed) throw Error('Use --face --street --seed [--from --to --date --ppm --no-strip]');
-  await intake({face, street, seed: seed.length === 6 ? `0363100012${seed}` : seed, from: arg('from') && (arg('from')!.length === 6 ? `0363100012${arg('from')}` : arg('from')), to: arg('to') && (arg('to')!.length === 6 ? `0363100012${arg('to')}` : arg('to')), date: arg('date'), spanDates: arg('span-date') ? Object.fromEntries(arg('span-date')!.split(',').map(x => x.split(':'))) : undefined, ppm: Number(arg('ppm')) || undefined, strip: !process.argv.includes('--no-strip'), bayOutline: arg('bay-outline')?.split(',')});
+  await intake({face, street, seed: seed.length === 6 ? `0363100012${seed}` : seed, from: arg('from') && (arg('from')!.length === 6 ? `0363100012${arg('from')}` : arg('from')), to: arg('to') && (arg('to')!.length === 6 ? `0363100012${arg('to')}` : arg('to')), date: arg('date'), spanDates: arg('span-date') ? Object.fromEntries(arg('span-date')!.split(',').map(x => x.split(':'))) : undefined, ppm: Number(arg('ppm')) || undefined, strip: !process.argv.includes('--no-strip'), bayOutline: arg('bay-outline')?.split(','), cameraHeight: arg('camera-height') ? Number(arg('camera-height')) : undefined});
 }
