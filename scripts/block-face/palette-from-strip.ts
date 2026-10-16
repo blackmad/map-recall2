@@ -9,7 +9,7 @@
  *                       (stripPalette.ts `paintFromFrames`; for `palette.stone` with `stoneMaterial: painted`)
  *
  * Eaves per pand come from the street survey (`scripts/street-surveys/streets/<street>.json`, survey.eavesM) when given,
- * else from the face's `pands/<id>/facts.json` (heights.eavesM), else 14 m. Writes
+ * else (or when it is under 6 m) from the face's `pands/<id>/facts.json` (heights.eavesM, else dak70pM), else 14 m. Writes
  * staging/street-types/<street|face>/palette.json.
  */
 import fs from 'node:fs';
@@ -35,9 +35,10 @@ export async function faceStripPalettes(face: string, survey?: Map<string, any>)
   return strip.spans.map((s: any) => {
     const sv = survey?.get(s.pandId);
     let eavesM = sv?.survey?.eavesM as number | undefined;
-    if (eavesM === undefined) {
+    // A survey eaves under 6 m reads a low annex or the courtyard (Jan Evertsenstraat corner pands, 59-89): use the facts.
+    if (eavesM === undefined || eavesM < 6) {
       const f = path.join(FACES, face, 'pands', s.pandId, 'facts.json');
-      if (fs.existsSync(f)) eavesM = JSON.parse(fs.readFileSync(f, 'utf8')).heights?.eavesM;
+      if (fs.existsSync(f)) { const h = JSON.parse(fs.readFileSync(f, 'utf8')).heights; eavesM = h?.eavesM ?? h?.dak70pM; }
     }
     eavesM ??= 14;
     const p = measureStripPalette({rgb, width: info.width, height: info.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM});
