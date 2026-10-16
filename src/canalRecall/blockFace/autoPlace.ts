@@ -219,7 +219,8 @@ export interface Placed {
   pandId: string; typeId: string; score: number; runnerUp?: {typeId: string; score: number};
   house: BlockFaceHouse; notes: string[];
 }
-export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run'; reason: string; best?: TypeScore }
+/** `review`: held after a person reviewed the run's strip sheet (buurten/<buurt>-review-holds.json). */
+export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run' | 'review'; reason: string; best?: TypeScore }
 export type Decision = ({kind: 'placed'} & Placed) | ({kind: 'held'} & Held);
 
 /** The shop ground of an auto-placed trading pand: the measured fascia colour, a residential door on the door side. */

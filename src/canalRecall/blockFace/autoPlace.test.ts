@@ -91,7 +91,9 @@ test('evidence holds: no strip, a mostly grey strip', () => {
 test('crowns by skyline: narrow top = neck with hoist, wide top = box dormer, none, unread keeps the default', () => {
   const t = types[0];
   assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.9, crown: {widthM: 2, riseM: 2.2, topWidthM: 0.7, centre: 0.5}}).name, 'neck-hoist');
-  assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.9, crown: {widthM: 2.2, riseM: 2.3, topWidthM: 1.8, centre: 0.5}}).name, 'box-dormer');
+  // Bellamyplein 22: the white roof box (rise 1.68 m); Bellamyplein 20: a flat-topped brick neck (rise 2.1 m, top 1.95 m).
+  assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.9, crown: {widthM: 2.02, riseM: 1.68, topWidthM: 1.13, centre: 0.53}}).name, 'box-dormer');
+  assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.9, crown: {widthM: 2.08, riseM: 2.1, topWidthM: 1.95, centre: 0.79}}).name, 'neck-hoist');
   assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.9, crown: null}).name, 'none');
   assert.equal(crownFor(t, {eavesM: 13, eavesRow: 0, confidence: 0.2, crown: null}).name, 'neck-hoist');
 });
@@ -230,6 +232,8 @@ test('regression: the five false positives of the pilot are held or take the rig
   const h69 = await decide('Hasebroekstraat 69');
   assert.equal(h69.kind === 'placed' && h69.typeId, 'bellamy-1915-green-tile');
   assert.equal(h69.kind === 'placed' && h69.house.type!.crown, 'point-gable');
+  // Bellamystraat 117 (1919, Amsterdam School, green-tile in the 2026-10-16 run): out of the green-tile years.
+  assert.match(scoreType(bellamyAll[2], {...(await fixtureEvidence(byAddress('Hasebroekstraat 94'))), builtYear: 1919}).veto.join(), /built 1919/);
   const e9 = await decide('Van Effenstraat 9');
   assert.equal(e9.kind === 'placed' && e9.typeId, 'bellamy-1915-green-tile');
   // Controls keep their types.

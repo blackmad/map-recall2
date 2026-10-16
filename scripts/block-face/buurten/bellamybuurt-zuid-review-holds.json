@@ -1,0 +1,111 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-10-16",
+ "holds": [
+  {
+   "pandId": "0363100012161048",
+   "address": "Bellamystraat 26",
+   "reason": "two-axis rows drawn about 1 m over the photographed cornice: the 3DBAG eaves (14.8-15.3 m) include the white roof box, so the window rows sit up to a sill height off the photo's"
+  },
+  {
+   "pandId": "0363100012153671",
+   "address": "Bellamystraat 24",
+   "reason": "as Bellamystraat 26: model eaves over the photographed cornice, window rows off"
+  },
+  {
+   "pandId": "0363100012165951",
+   "address": "Bellamystraat 22",
+   "reason": "as Bellamystraat 26: model eaves over the photographed cornice, window rows off"
+  },
+  {
+   "pandId": "0363100012236856",
+   "address": "Jan Hanzenstraat 1",
+   "reason": "a two-axis front of paired windows without balconettes drawn as the three-axis 1904 balcony type, five storeys, its wall measured olive (#343320)"
+  },
+  {
+   "pandId": "0363100012236554",
+   "address": "Jan Hanzenstraat 3",
+   "reason": "a two-axis front of paired windows without balconettes drawn as the three-axis 1904 balcony type"
+  },
+  {
+   "pandId": "0363100012163274",
+   "address": "Hasebroekstraat 21",
+   "reason": "the second design of Hasebroekstraat 21-37: a wide centre window under a segmental arch with full balconies, drawn as the narrow balconette axis of the 1904 type"
+  },
+  {
+   "pandId": "0363100012157261",
+   "address": "Hasebroekstraat 23",
+   "reason": "as 21: wide arched centre bay with full balconies"
+  },
+  {
+   "pandId": "0363100012158415",
+   "address": "Hasebroekstraat 25",
+   "reason": "as 21: wide arched centre bay with full balconies"
+  },
+  {
+   "pandId": "0363100012063580",
+   "address": "Hasebroekstraat 29",
+   "reason": "as 21 (and alone between held neighbours once 31 is held)"
+  },
+  {
+   "pandId": "0363100012161035",
+   "address": "Hasebroekstraat 31",
+   "reason": "as 21: wide arched centre bay with full balconies"
+  },
+  {
+   "pandId": "0363100012157844",
+   "address": "Hasebroekstraat 35",
+   "reason": "as 21: wide arched centre bay with full balconies"
+  },
+  {
+   "pandId": "0363100012163671",
+   "address": "Hasebroekstraat 37",
+   "reason": "as 21 (and alone once 35 is held)"
+  },
+  {
+   "pandId": "0363100012127322",
+   "address": "Jan Pieter Heijestraat 52A",
+   "reason": "green-tile front with a point gable over the pair drawn with two dormers: the skyline reads the dormer beside the gable (rise 1.3 m, top 0.8 m)"
+  },
+  {
+   "pandId": "0363100012147904",
+   "address": "Jan Pieter Heijestraat 50A",
+   "reason": "as 52A: the gable drawn as two dormers"
+  },
+  {
+   "pandId": "0363100012065334",
+   "address": "Jan Pieter Heijestraat 44A",
+   "reason": "a gabled two-axis front drawn as the flat Bellamystraat two-axis type under a black roof"
+  },
+  {
+   "pandId": "0363100012073446",
+   "address": "Jan Pieter Heijestraat 42A",
+   "reason": "green-tile front with a gable drawn with two dormers"
+  },
+  {
+   "pandId": "0363100012064006",
+   "address": "Jan Pieter Heijestraat 40A",
+   "reason": "a 3.7 m sliver of a wider front drawn as a two-axis house"
+  },
+  {
+   "pandId": "0363100012117355",
+   "address": "Jan Pieter Heijestraat 53",
+   "reason": "green-tile front with its point gable over the right-hand pair drawn with two dormers: the skyline is unread under the tree (confidence 0.56)"
+  },
+  {
+   "pandId": "0363100012133637",
+   "address": "Hasebroekstraat 107A",
+   "reason": "green-tile front mirrored the wrong way: the photo's gable and pair stand left with the door right, the model puts the gable over the right-hand windows"
+  },
+  {
+   "pandId": "0363100012082619",
+   "address": "Hasebroekstraat 109A",
+   "reason": "as 107A: gable and pair drawn on the wrong side"
+  },
+  {
+   "pandId": "0363100012117879",
+   "address": "Hasebroekstraat 96",
+   "reason": "green-tile front with a point gable over the pair drawn with two dormers: the skyline is unread under the tree branches (confidence 0.27)"
+  }
+ ]
+}
