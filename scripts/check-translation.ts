@@ -10,6 +10,7 @@ import {
   droppedProperNames,
   MAX_EXTRACT_CHARS,
   protectNames,
+  englishArticleBefore,
   translatorInvocation,
   trimToSentence,
   sentenceChunks,
@@ -169,6 +170,21 @@ check('the feature name is substituted and comes back', () => {
   assert.equal(
     held.restore('The Zarvix (bridge 222) is a lift bridge in Amsterdam-Centrum.'),
     'The Aluminiumbrug (bridge 222) is a lift bridge in Amsterdam-Centrum.');
+});
+
+check('a Dutch article the translator left before a restored name becomes English (Huis Bartolotti, 2026-10-16)', () => {
+  const source = 'Het Huis Bartolotti (ook Het Bonte Huis) is een grachtenpand aan de Herengracht 170-172 in Amsterdam.';
+  const held = protectNames(source, ['Huis Bartolotti']);
+  // The translator read "Het <placeholder>" as one unknown name and kept the article.
+  const translated = held.text.replace('ook', 'also').replace('is een grachtenpand aan de', 'is a canal house at the').replace(' in Amsterdam', ' in Amsterdam');
+  assert.ok(held.restore(translated).startsWith('Het Huis Bartolotti'), 'restore stays a pure inverse');
+  const restored = held.restoreEnglish(translated);
+  assert.ok(restored.startsWith('The Huis Bartolotti (also Het Bonte Huis)'), restored);
+  // Mid-sentence it is lowercase; a name that carries its own article keeps it; other words are untouched.
+  assert.equal(englishArticleBefore('Built by de Huis Bartolotti family', 'Huis Bartolotti'), 'Built by the Huis Bartolotti family');
+  assert.equal(englishArticleBefore('Het Schip is a housing block', 'Het Schip'), 'Het Schip is a housing block');
+  assert.equal(englishArticleBefore("near 't Huis Bartolotti", 'Huis Bartolotti'), 'near the Huis Bartolotti');
+  assert.equal(englishArticleBefore('Hidden Huis Bartolotti', 'Huis Bartolotti'), 'Hidden Huis Bartolotti');
 });
 
 check('protection is what turns a refusal into a lede', () => {
