@@ -171,6 +171,7 @@ test('bridge spellings fold case, spaces and doubled letters', () => {
   assert.equal(bridgeSpellingKey('Heiligewegssluis'), bridgeSpellingKey('Heiligewegsluis'));
   assert.equal(bridgeSpellingKey('Katten brug'), bridgeSpellingKey('Kattenbrug'));
   assert.notEqual(bridgeSpellingKey('Blauwbrug'), bridgeSpellingKey('Blauwebrug'));
+  assert.equal(bridgeSpellingKey('Vier Heemskinderensluis'), bridgeSpellingKey('Vier Heemskinderenbrug'));
 });
 
 test('askable bridges keep the generator\'s ids', () => {

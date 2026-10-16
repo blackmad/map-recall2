@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Cards for the new bridges (2026-10-16)
+
+User: "new bridges? are you going to find facts?". Lane
+`content/new-bridge-facts-20261016`: `bridgeWikidata.ts` matches the 116
+untagged decks against one Wikidata SPARQL box query (1,700 bridge, lock and
+culvert items) only when within 60 m and named alike or numbered as the
+register ("Brug N"), spelling-folded, ambiguous matches left out; the existing
+enrich and trn passes ran on the result. Name-origin publishing finds bridges
+under OSM spelling variants. 109 of 116 have a card: 87 BAG name origins in
+English, 92 English ledes, 91 Wikipedia links and images; 9 of the old 300
+gain an origin (Hoge Sluis, Odebrug, Bullebaksluis …). Register errors fixed:
+iep is elm, the Zaandijkspoorbrug text was the former street's, the Vier
+Windstrekenbrug text said "west" twice. Bridge cards now carry the English
+lede after the origin (`buildRouteKnowledgeIndex`, all bridges; same sentence
+and length caps as street cards; a Dutch lede makes no card). At integration
+the spelling key folds a trailing -sluis into -brug (within 150 m only):
+Vier Heemskinderensluis, 7 m from the Vier Heemskinderenbrug and the same
+bridge on nl.wikipedia, was asked twice; 416 → 415.
+
 ## HUD: a riding radar instead of the city minimap; pill centring, labels under cards, corner buttons tucked (2026-10-16)
 
 User (2026-10-16): "destination not vertically centered, zimmerterrein label

@@ -742,15 +742,23 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   road bridge ways still without a surface (`audit-bridge-surfaces.ts
   --all`; 137 before way decks); cap that count in a check.
 
-- **Bridge names after the askable-bridges pass (2026-10-16, HISTORY "Every
-  named bridge is a bridge question")**: OSM spellings stay as answer text
-  ("Katten brug", "Hilletjes Brug"; the register says Kattenbrug,
-  Hilletjesbrug) because the game matches the raw way name; fix in OSM or add
-  an alias match. The 116 new bridges have no BAG facts or name origins yet
-  (re-run `build-local-facts` and the street-name-origin publish). Railway
-  flags were not rebuilt (needs Overpass; all added decks are highway ways).
-  The 8 m cutoff covers the distance settle only; a slow rider can still be
-  asked on a shorter deck through the time settle.
+- **Bridge names and cards after the askable-bridges pass (2026-10-16,
+  HISTORY "Every named bridge is a bridge question", "Cards for the new
+  bridges")**: OSM spellings stay as answer text ("Katten brug", "Hilletjes
+  Brug"); fix in OSM or add an alias match. Seven new bridges have no sourced
+  card (Godenbrug, Kaassluis, Kleine Brouwerssluis, Melkwegbrug,
+  Vingboomsbrug, Zandbrug, Zwanenburger fiets brug): most sit 1–12 m from a
+  register bridge with another official name and need a source tying the
+  names. Moddermolenbrug's card is the Theo Boschbrug article (Wikidata alias:
+  the OSM name is the old one); Uiverbrug's origin says aluminium, the
+  register reinforced concrete. IJburg Baltic-port bridge names (Kolbergbrug,
+  Pernaubrug, Rostockbrug …) may be shifted in OSM; compare with the
+  orthophoto. trn ledes keep slips ("structural work of art" for bouwkundig
+  kunstwerk, a garbled Zaandijkspoorbrug lede); an edit pass is due.
+  **Load time:** `bridges.json` is a ride-start file and grew 871 → ~1,050 KB
+  (+45 KB gzipped); `wikipediaSourceText` (~300 KB) is read by nothing at
+  runtime, so strip it from the shipped file. Railway flags were not rebuilt
+  (needs Overpass). The 8 m cutoff covers the distance settle only.
 
 - **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
   cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
