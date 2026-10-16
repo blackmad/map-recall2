@@ -1,0 +1,1374 @@
+{
+ "street": "Hasebroekstraat",
+ "seed": "0363100012165485",
+ "members": [
+  "0363100012165485",
+  "0363100012152706",
+  "0363100012153109",
+  "0363100012160213"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "run of hasebroek-1-41: 153022 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064751",
+   "reason": "frontage 205.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012065055",
+   "reason": "frontage 77.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012067143",
+   "reason": "frontage 173.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012067622",
+   "reason": "frontage 125.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012067749",
+   "reason": "frontage 105.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012071572",
+   "reason": "frontage 120.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012072041",
+   "reason": "frontage 89.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012073962",
+   "reason": "frontage 38.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012078005",
+   "reason": "frontage 67.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012078442",
+   "reason": "frontage 68.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012080571",
+   "reason": "frontage 171.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012083034",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012082699"
+  },
+  {
+   "pandId": "0363100012083242",
+   "reason": "frontage 149.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012084548",
+   "reason": "frontage 89.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012085030",
+   "reason": "frontage 68.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012087255",
+   "reason": "frontage 68.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012090063",
+   "reason": "frontage 90.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012091626",
+   "reason": "frontage 105.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012092172",
+   "reason": "frontage 105.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012093654",
+   "reason": "frontage 104.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012093786",
+   "reason": "frontage 176.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012094639",
+   "reason": "frontage 130.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012096163",
+   "reason": "frontage 154.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012096370",
+   "reason": "frontage 120.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012098305",
+   "reason": "frontage 202.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012099177",
+   "reason": "frontage 103.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012101150",
+   "reason": "frontage 132.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012062449",
+   "reason": "frontage 189.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012064324",
+   "reason": "frontage 204.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012067449",
+   "reason": "frontage 77.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012067928",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012069448",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012072076",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012073632",
+   "reason": "frontage 246.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012079593",
+   "reason": "frontage 72.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012081240",
+   "reason": "frontage 84.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012083407",
+   "reason": "frontage 183.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012083872",
+   "reason": "frontage 127.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012084581",
+   "reason": "frontage 79.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012085543",
+   "reason": "frontage 195.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012087175",
+   "reason": "frontage 180.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012087549",
+   "reason": "frontage 233.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012092013",
+   "reason": "frontage 171.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012094735",
+   "reason": "frontage 203.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012095974",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012098626",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012103549",
+   "reason": "frontage 124.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012104328",
+   "reason": "frontage 106.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012108264",
+   "reason": "frontage 130.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012110457",
+   "reason": "frontage 106.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012111903",
+   "reason": "frontage 68.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012112111",
+   "reason": "frontage 119.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012112967",
+   "reason": "frontage 155.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012115555",
+   "reason": "frontage 69.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012117439",
+   "reason": "frontage 113.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012117685",
+   "reason": "frontage 131.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012118514",
+   "reason": "frontage 203.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012119330",
+   "reason": "frontage 117.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012119385",
+   "reason": "frontage 68.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012119700",
+   "reason": "frontage 129.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012125803",
+   "reason": "frontage 69.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012127784",
+   "reason": "frontage 105.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012129253",
+   "reason": "frontage 31.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012129411",
+   "reason": "frontage 137.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012130890",
+   "reason": "frontage 68.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012131204",
+   "reason": "frontage 68.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012136389",
+   "reason": "frontage 163.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012139746",
+   "reason": "frontage 110.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012140769",
+   "reason": "frontage 131.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012141125",
+   "reason": "frontage 153.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012141212",
+   "reason": "frontage 36.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012143043",
+   "reason": "frontage 172.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012144382",
+   "reason": "frontage 155.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012145751",
+   "reason": "frontage 39.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012145798",
+   "reason": "frontage 107.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012146038",
+   "reason": "frontage 104.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012107234",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012112435",
+   "reason": "frontage 148.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012118787",
+   "reason": "frontage 191.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012119011",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012119012",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012119702",
+   "reason": "frontage 134.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012121762",
+   "reason": "frontage 195.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012122277",
+   "reason": "frontage 218.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012122931",
+   "reason": "frontage 169.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012128818",
+   "reason": "frontage 210.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012130663",
+   "reason": "frontage 156.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012132092",
+   "reason": "frontage 82.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012132364",
+   "reason": "frontage 236.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012139609",
+   "reason": "frontage 77.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012141247",
+   "reason": "frontage 141.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012141675",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012141903",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012144295",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012146613",
+   "reason": "frontage 143.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012147717",
+   "reason": "frontage 126.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012150893",
+   "reason": "frontage 38.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012151677",
+   "reason": "frontage 68.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012152726",
+   "reason": "frontage 35.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012152727",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012158343"
+  },
+  {
+   "pandId": "0363100012152825",
+   "reason": "frontage 79.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012152980",
+   "reason": "frontage 102.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012152992",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012159101"
+  },
+  {
+   "pandId": "0363100012153029",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012153206"
+  },
+  {
+   "pandId": "0363100012153189",
+   "reason": "frontage 104.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012153206",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012159209"
+  },
+  {
+   "pandId": "0363100012153217",
+   "reason": "frontage 148.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012153267",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012153270",
+   "reason": "frontage 65.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012153275",
+   "reason": "frontage 48.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012153671",
+   "reason": "frontage 105.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012153737",
+   "reason": "frontage 104.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012154173",
+   "reason": "frontage 69.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012154285",
+   "reason": "frontage 55.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012154341",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012165183"
+  },
+  {
+   "pandId": "0363100012154386",
+   "reason": "frontage 111.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012154389",
+   "reason": "frontage 50.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012155390",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012154178"
+  },
+  {
+   "pandId": "0363100012155451",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012158839"
+  },
+  {
+   "pandId": "0363100012155719",
+   "reason": "frontage 71.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012155752",
+   "reason": "frontage 69.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012155932",
+   "reason": "frontage 43.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012155942",
+   "reason": "frontage 203.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156272",
+   "reason": "frontage 61.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156322",
+   "reason": "frontage 73.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156336",
+   "reason": "frontage 64.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156469",
+   "reason": "frontage 51.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012146866",
+   "reason": "frontage 241.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012148220",
+   "reason": "frontage 150.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012148565",
+   "reason": "frontage 69.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012149986",
+   "reason": "frontage 145.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012152558",
+   "reason": "frontage 126.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012154178",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012155310",
+   "reason": "frontage 92.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156298",
+   "reason": "frontage 127.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156544",
+   "reason": "frontage 60.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156662",
+   "reason": "frontage 71.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012156816",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012164134"
+  },
+  {
+   "pandId": "0363100012156893",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012123310"
+  },
+  {
+   "pandId": "0363100012156988",
+   "reason": "frontage 73.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012157043",
+   "reason": "frontage 81.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012157145",
+   "reason": "frontage 104.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012157310",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012165183"
+  },
+  {
+   "pandId": "0363100012157702",
+   "reason": "frontage 104.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012158097",
+   "reason": "frontage 73.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012158150",
+   "reason": "frontage 80.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012158344",
+   "reason": "frontage 71.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012158488",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012158671",
+   "reason": "frontage 77.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012159236",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012153029"
+  },
+  {
+   "pandId": "0363100012159323",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012201902"
+  },
+  {
+   "pandId": "0363100012159351",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012164250"
+  },
+  {
+   "pandId": "0363100012159378",
+   "reason": "frontage 81.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012159774",
+   "reason": "frontage 78.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012159793",
+   "reason": "frontage 153.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012159816",
+   "reason": "frontage 36.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012159872",
+   "reason": "frontage 30.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012159950",
+   "reason": "frontage 104.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160044",
+   "reason": "frontage 71.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160094",
+   "reason": "frontage 155.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160152",
+   "reason": "frontage 78.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160192",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012201902"
+  },
+  {
+   "pandId": "0363100012156969",
+   "reason": "frontage 66.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012157726",
+   "reason": "frontage 86.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012158689",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160226",
+   "reason": "frontage 42.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160807",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012152706"
+  },
+  {
+   "pandId": "0363100012160838",
+   "reason": "frontage 35.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160871",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012163274"
+  },
+  {
+   "pandId": "0363100012160986",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012153029"
+  },
+  {
+   "pandId": "0363100012161048",
+   "reason": "frontage 105.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161056",
+   "reason": "frontage 33.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161111",
+   "reason": "frontage 56.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161123",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012152706"
+  },
+  {
+   "pandId": "0363100012161134",
+   "reason": "frontage 34.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161211",
+   "reason": "frontage 203.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161362",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012155451"
+  },
+  {
+   "pandId": "0363100012161372",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012154178"
+  },
+  {
+   "pandId": "0363100012161685",
+   "reason": "frontage 140.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161731",
+   "reason": "frontage 52.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161752",
+   "reason": "frontage 203.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161934",
+   "reason": "frontage 82.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012161954",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012162138"
+  },
+  {
+   "pandId": "0363100012162005",
+   "reason": "frontage 163.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012162527",
+   "reason": "frontage 103.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012162559",
+   "reason": "frontage 54.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012162560",
+   "reason": "frontage 33.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012162761",
+   "reason": "frontage 50.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012162871",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012158343"
+  },
+  {
+   "pandId": "0363100012162936",
+   "reason": "frontage 105.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012163096",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012165485"
+  },
+  {
+   "pandId": "0363100012163151",
+   "reason": "frontage 104.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012163357",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012158343"
+  },
+  {
+   "pandId": "0363100012163466",
+   "reason": "frontage 143.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012163468",
+   "reason": "frontage 102.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012163673",
+   "reason": "frontage 203.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012163768",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012159894"
+  },
+  {
+   "pandId": "0363100012163944",
+   "reason": "frontage 39.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012164224",
+   "reason": "frontage 138.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012164271",
+   "reason": "frontage 41.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012164276",
+   "reason": "frontage 154.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012164456",
+   "reason": "frontage 126.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160298",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012160768",
+   "reason": "frontage 73.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012164341",
+   "reason": "frontage 119.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012164568",
+   "reason": "frontage 45.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012165141",
+   "reason": "frontage 34.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012165408",
+   "reason": "frontage 70.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012165679",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012154178"
+  },
+  {
+   "pandId": "0363100012165951",
+   "reason": "frontage 105.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012166034",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012157844"
+  },
+  {
+   "pandId": "0363100012166638",
+   "reason": "frontage 104.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012166763",
+   "reason": "frontage 73.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012166965",
+   "reason": "frontage 158.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012167027",
+   "reason": "frontage 32.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012167454",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012159209"
+  },
+  {
+   "pandId": "0363100012183366",
+   "reason": "frontage 152.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012186273",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012157261"
+  },
+  {
+   "pandId": "0363100012186274",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012163274"
+  },
+  {
+   "pandId": "0363100012187019",
+   "reason": "frontage 161.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012189128",
+   "reason": "frontage 128.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012189421",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012157271"
+  },
+  {
+   "pandId": "0363100012190004",
+   "reason": "frontage 31.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012191631",
+   "reason": "frontage 38.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012191801",
+   "reason": "frontage 139.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012191958",
+   "reason": "frontage 163.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012203538",
+   "reason": "frontage 125.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012203539",
+   "reason": "frontage 125.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012206748",
+   "reason": "frontage 63.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012206749",
+   "reason": "frontage 37.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012206750",
+   "reason": "frontage 58.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012206751",
+   "reason": "frontage 67.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012206956",
+   "reason": "frontage 131.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012207111",
+   "reason": "frontage 142.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012210008",
+   "reason": "frontage 136.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012210608",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012163671"
+  },
+  {
+   "pandId": "0363100012212769",
+   "reason": "frontage 147.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012218837",
+   "reason": "frontage 116.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012221813",
+   "reason": "frontage 91.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012222272",
+   "reason": "frontage 149.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012222290",
+   "reason": "frontage 163.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012167006",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012186027",
+   "reason": "frontage 177.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012223864",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012236958"
+  },
+  {
+   "pandId": "0363100012227396",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012165214"
+  },
+  {
+   "pandId": "0363100012229220",
+   "reason": "frontage 131.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012230727",
+   "reason": "frontage 158.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012232351",
+   "reason": "frontage 38.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233028",
+   "reason": "frontage 151.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233487",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012161954"
+  },
+  {
+   "pandId": "0363100012233496",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012166541"
+  },
+  {
+   "pandId": "0363100012233527",
+   "reason": "frontage 115.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233589",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012063580"
+  },
+  {
+   "pandId": "0363100012236014",
+   "reason": "frontage 103.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236187",
+   "reason": "frontage 109.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236219",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012123310"
+  },
+  {
+   "pandId": "0363100012236297",
+   "reason": "frontage 161.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236307",
+   "reason": "frontage 154.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236532",
+   "reason": "frontage 175.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236801",
+   "reason": "frontage 125.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236886",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012063580"
+  },
+  {
+   "pandId": "0363100012236899",
+   "reason": "frontage 61.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236919",
+   "reason": "frontage 104.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236953",
+   "reason": "frontage 33.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236969",
+   "reason": "frontage 37.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236982",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012161035"
+  },
+  {
+   "pandId": "0363100012237017",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012085498"
+  },
+  {
+   "pandId": "0363100012237138",
+   "reason": "frontage 130.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012237189",
+   "reason": "frontage 124.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012237261",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012161035"
+  },
+  {
+   "pandId": "0363100012237297",
+   "reason": "frontage 33.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012239620",
+   "reason": "frontage 155.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012222573",
+   "reason": "frontage 191.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012232032",
+   "reason": "frontage 162.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233413",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233461",
+   "reason": "frontage 153.4 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233470",
+   "reason": "frontage 31.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012233545",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012235229",
+   "reason": "frontage 157.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236035",
+   "reason": "frontage 122.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236491",
+   "reason": "frontage 98.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236693",
+   "reason": "frontage 31.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012236981",
+   "reason": "sightline to Hasebroekstraat crosses 0363100012098626"
+  },
+  {
+   "pandId": "0363100012237004",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012237340",
+   "reason": "frontage 132.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012237396",
+   "reason": "no frontage on Hasebroekstraat: No footprint edge faces Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012241863",
+   "reason": "frontage 148.6 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012241864",
+   "reason": "frontage 169.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012241865",
+   "reason": "frontage 207.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012241866",
+   "reason": "frontage 203.8 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012250623",
+   "reason": "frontage 73.3 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012250624",
+   "reason": "frontage 37.1 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012241867",
+   "reason": "frontage 201.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012241870",
+   "reason": "frontage 148.9 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012242761",
+   "reason": "frontage 148.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012243774",
+   "reason": "frontage 180.5 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012243776",
+   "reason": "frontage 173.2 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012243777",
+   "reason": "frontage 190.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012247367",
+   "reason": "frontage 219.0 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012247947",
+   "reason": "frontage 212.7 m from Hasebroekstraat"
+  },
+  {
+   "pandId": "0363100012082699",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099290",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110654",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153488",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154364",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155789",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156654",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157313",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157395",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158343",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159125",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159657",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159892",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160178",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160593",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164477",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164522",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165214",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165475",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167170",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236958",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012165485",
+   "alongM": 0,
+   "widthM": 4.76,
+   "eavesM": 16.64,
+   "roofMaxM": 16.73,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152706",
+   "alongM": 5.08,
+   "widthM": 5.39,
+   "eavesM": 16.33,
+   "roofMaxM": 16.36,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153109",
+   "alongM": 10.48,
+   "widthM": 5.42,
+   "eavesM": 16.59,
+   "roofMaxM": 16.61,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160213",
+   "alongM": 15.9,
+   "widthM": 5.41,
+   "eavesM": 16.38,
+   "roofMaxM": 16.44,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "hasebroek-1-41"
+}

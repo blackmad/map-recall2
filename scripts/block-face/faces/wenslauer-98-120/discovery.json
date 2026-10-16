@@ -1,0 +1,555 @@
+{
+ "street": "Wenslauerstraat",
+ "seed": "0363100012096163",
+ "members": [
+  "0363100012141125",
+  "0363100012096163"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012073104 39.2 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012080571 11.8 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061723",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012073104"
+  },
+  {
+   "pandId": "0363100012064751",
+   "reason": "frontage 57.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012064752",
+   "reason": "frontage 86.0 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012065055",
+   "reason": "frontage 59.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012065779",
+   "reason": "frontage 33.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012066083",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012166945"
+  },
+  {
+   "pandId": "0363100012066222",
+   "reason": "frontage 61.5 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012067143",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012236297"
+  },
+  {
+   "pandId": "0363100012067622",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012237138"
+  },
+  {
+   "pandId": "0363100012067749",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012236801"
+  },
+  {
+   "pandId": "0363100012069844",
+   "reason": "frontage 103.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012069921",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012091181"
+  },
+  {
+   "pandId": "0363100012072007",
+   "reason": "frontage 53.9 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012074230",
+   "reason": "frontage 33.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012085436",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012091181"
+  },
+  {
+   "pandId": "0363100012086476",
+   "reason": "frontage 85.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012086668",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012061723"
+  },
+  {
+   "pandId": "0363100012087338",
+   "reason": "frontage 50.8 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012089000",
+   "reason": "frontage 54.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012090456",
+   "reason": "frontage 96.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012090634",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012073104"
+  },
+  {
+   "pandId": "0363100012091334",
+   "reason": "frontage 50.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012091626",
+   "reason": "frontage 34.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012091722",
+   "reason": "frontage 54.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012092484",
+   "reason": "frontage 101.9 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012093786",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012164276"
+  },
+  {
+   "pandId": "0363100012096370",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012164456"
+  },
+  {
+   "pandId": "0363100012098305",
+   "reason": "frontage 55.0 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012099177",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012067622"
+  },
+  {
+   "pandId": "0363100012099917",
+   "reason": "frontage 82.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012099972",
+   "reason": "frontage 100.8 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012106541",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012240536"
+  },
+  {
+   "pandId": "0363100012107941",
+   "reason": "frontage 91.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012110457",
+   "reason": "frontage 36.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012111819",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012073104"
+  },
+  {
+   "pandId": "0363100012111836",
+   "reason": "frontage 53.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012112111",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012067622"
+  },
+  {
+   "pandId": "0363100012115852",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012061723"
+  },
+  {
+   "pandId": "0363100012117439",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012096370"
+  },
+  {
+   "pandId": "0363100012118514",
+   "reason": "frontage 54.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012119239",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012162169"
+  },
+  {
+   "pandId": "0363100012125392",
+   "reason": "frontage 54.0 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012125497",
+   "reason": "frontage 94.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012125803",
+   "reason": "frontage 58.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012127784",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012164456"
+  },
+  {
+   "pandId": "0363100012136389",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012141125"
+  },
+  {
+   "pandId": "0363100012137097",
+   "reason": "frontage 50.9 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012146038",
+   "reason": "frontage 33.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012146138",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012073104"
+  },
+  {
+   "pandId": "0363100012150893",
+   "reason": "frontage 58.8 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012152444",
+   "reason": "frontage 102.5 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012152980",
+   "reason": "frontage 35.3 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012153189",
+   "reason": "frontage 31.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012153737",
+   "reason": "frontage 31.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012155719",
+   "reason": "frontage 60.5 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012155942",
+   "reason": "frontage 55.5 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012156322",
+   "reason": "frontage 61.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012156469",
+   "reason": "frontage 58.9 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012156584",
+   "reason": "frontage 85.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012156662",
+   "reason": "frontage 60.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012156988",
+   "reason": "frontage 57.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012157145",
+   "reason": "frontage 31.0 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012157702",
+   "reason": "frontage 31.0 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012158097",
+   "reason": "frontage 62.3 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012158344",
+   "reason": "frontage 60.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012158680",
+   "reason": "frontage 34.5 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012159950",
+   "reason": "frontage 31.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012160044",
+   "reason": "frontage 63.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012161211",
+   "reason": "frontage 55.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012161752",
+   "reason": "frontage 56.0 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012162527",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012103549"
+  },
+  {
+   "pandId": "0363100012162574",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012153104"
+  },
+  {
+   "pandId": "0363100012163151",
+   "reason": "frontage 38.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012163468",
+   "reason": "frontage 33.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012163580",
+   "reason": "frontage 36.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012163673",
+   "reason": "frontage 55.8 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012164087",
+   "reason": "frontage 52.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012164198",
+   "reason": "frontage 36.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012164752",
+   "reason": "frontage 105.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012165408",
+   "reason": "frontage 60.3 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012165951",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012161685"
+  },
+  {
+   "pandId": "0363100012166638",
+   "reason": "frontage 31.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012166668",
+   "reason": "frontage 105.3 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012166763",
+   "reason": "frontage 58.3 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012166989",
+   "reason": "frontage 35.6 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012208580",
+   "reason": "frontage 85.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012220668",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012158750"
+  },
+  {
+   "pandId": "0363100012232351",
+   "reason": "frontage 79.1 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012233538",
+   "reason": "frontage 31.9 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012233696",
+   "reason": "frontage 56.9 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012236014",
+   "reason": "frontage 31.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012236297",
+   "reason": "no frontage on Wenslauerstraat: No footprint edge faces Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012236532",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012096163"
+  },
+  {
+   "pandId": "0363100012236761",
+   "reason": "frontage 60.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012236899",
+   "reason": "frontage 57.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012236919",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012237189"
+  },
+  {
+   "pandId": "0363100012236969",
+   "reason": "frontage 60.7 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012237316",
+   "reason": "frontage 54.2 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012250623",
+   "reason": "frontage 57.5 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012252233",
+   "reason": "frontage 35.3 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012252234",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012112287"
+  },
+  {
+   "pandId": "0363100012252235",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012112287"
+  },
+  {
+   "pandId": "0363100012252236",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012112287"
+  },
+  {
+   "pandId": "0363100012252237",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012112287"
+  },
+  {
+   "pandId": "0363100012252238",
+   "reason": "sightline to Wenslauerstraat crosses 0363100012112287"
+  },
+  {
+   "pandId": "0363100012570570",
+   "reason": "frontage 94.4 m from Wenslauerstraat"
+  },
+  {
+   "pandId": "0363100012094639",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103549",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112287",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117685",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119330",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140769",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158750",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161048",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161685",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162936",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164456",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236759",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236801",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236936",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237015",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237138",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012252239",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012141125",
+   "alongM": -15.37,
+   "widthM": 15.37,
+   "eavesM": 5.66,
+   "roofMaxM": 11.85,
+   "storeys3dbag": 4,
+   "builtYear": 1986,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012096163",
+   "alongM": 0,
+   "widthM": 15.38,
+   "eavesM": 8.74,
+   "roofMaxM": 11.48,
+   "storeys3dbag": 4,
+   "builtYear": 1986,
+   "uncertainty": []
+  }
+ ]
+}

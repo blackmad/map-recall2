@@ -345,6 +345,8 @@ export interface PresentationHost extends GameCoreHost {
   _utilityPointer?: { x: number; y: number };
   _wasRiding?: boolean;
   /** An overview planned and pre-loaded behind the loading screen. */
+  /** Set by the finish card's ride-on action: the next ride starts on the bike, no overview. */
+  _skipNextIntro?: boolean;
   _introPrepared?: { plan: import('./introFlight.ts').IntroPlan; playZoom: number } | null;
   _intro?: { plan: import('./introFlight.ts').IntroPlan; elapsed: number; playZoom: number; overview: number } | null;
   state: number;

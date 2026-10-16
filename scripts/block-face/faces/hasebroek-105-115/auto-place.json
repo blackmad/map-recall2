@@ -1,0 +1,280 @@
+{
+ "face": "hasebroek-105-115",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2018-06-13",
+ "seconds": 0.97,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012154793",
+   "address": "Hasebroekstraat 105A",
+   "builtYear": 1915,
+   "widthM": 7.24,
+   "eavesM": 13.34,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#51413a",
+    "wallRaw": "#4d4038",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 801,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1915-tile-bay scores 0.64 < 0.7 (widest light bay 0.45 m vs 1.7-3 m; strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "bellamy-1915-tile-bay",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.34 m = 4 storeys of 3.33 m vs the type's 3.34 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.37 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "bay",
+      "weight": 3,
+      "score": 0,
+      "note": "widest light bay 0.45 m vs 1.7-3 m"
+     },
+     {
+      "key": "accent-side",
+      "weight": 2,
+      "score": 1,
+      "note": "upper accent right (type: one-sided)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133637",
+   "address": "Hasebroekstraat 107A",
+   "builtYear": 1915,
+   "widthM": 7,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#5a4a42",
+    "wallRaw": "#584941",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 200,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.22,
+      "topWidthM": 0.23,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: green-tile front mirrored the wrong way: the photo's gable and pair stand left with the door right, the model puts the gable over the right-hand windows",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082619",
+   "address": "Hasebroekstraat 109A",
+   "builtYear": 1915,
+   "widthM": 6.39,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#594840",
+    "wallRaw": "#594942",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 207,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.97,
+      "topWidthM": 0.35,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 107A: gable and pair drawn on the wrong side",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233665",
+   "address": "Hasebroekstraat 111A",
+   "builtYear": 1915,
+   "widthM": 15.97,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#57463e",
+    "wallRaw": "#55463e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 801,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.95,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.32,
+       "widthM": 1,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 15.97 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 15.97 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.51 m = 4 storeys of 3.38 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.52 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

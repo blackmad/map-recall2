@@ -1,0 +1,467 @@
+{
+ "street": "Bilderdijkkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:39:50.257Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012242761",
+   "addresses": [
+    "Bilderdijkkade 58D",
+    "Bilderdijkkade 58E",
+    "Bilderdijkkade 58F",
+    "Bilderdijkkade 58B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 58D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 13,
+     "bagId": "0363010012076736"
+    },
+    {
+     "address": "Bilderdijkkade 58E",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 7,
+     "bagId": "0363010012076737"
+    },
+    {
+     "address": "Bilderdijkkade 58F",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 10032,
+     "bagId": "0363010012076805"
+    },
+    {
+     "address": "Bilderdijkkade 58B-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 14,
+     "bagId": "0363010012080642"
+    },
+    {
+     "address": "Tollensstraat 59A",
+     "use": "kantoorfunctie",
+     "areaM2": 1533,
+     "bagId": "0363010012080672"
+    },
+    {
+     "address": "Tollensstraat 59C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012080673"
+    },
+    {
+     "address": "Tollensstraat 59D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080674"
+    },
+    {
+     "address": "Tollensstraat 59E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012080675"
+    },
+    {
+     "address": "Tollensstraat 59F",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012080676"
+    },
+    {
+     "address": "Tollensstraat 59G",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080677"
+    },
+    {
+     "address": "Tollensstraat 59H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012080678"
+    },
+    {
+     "address": "Tollensstraat 59K",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080679"
+    },
+    {
+     "address": "Tollensstraat 59L",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012080680"
+    },
+    {
+     "address": "Tollensstraat 59M",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012080681"
+    },
+    {
+     "address": "Tollensstraat 59N",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080682"
+    },
+    {
+     "address": "Tollensstraat 59P",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012080683"
+    },
+    {
+     "address": "Tollensstraat 59R",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080684"
+    },
+    {
+     "address": "Tollensstraat 59S",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012080685"
+    },
+    {
+     "address": "Tollensstraat 59T",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012080686"
+    },
+    {
+     "address": "Tollensstraat 59U",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080687"
+    },
+    {
+     "address": "Tollensstraat 59V",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012080688"
+    },
+    {
+     "address": "Tollensstraat 59W",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080689"
+    },
+    {
+     "address": "Tollensstraat 59X",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012080690"
+    },
+    {
+     "address": "Tollensstraat 59Y",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012080693"
+    },
+    {
+     "address": "Tollensstraat 59Z",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012080694"
+    },
+    {
+     "address": "Bilderdijkkade 58F",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 10032,
+     "bagId": "0363010012080695"
+    }
+   ],
+   "units": 54,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012241869",
+   "addresses": [
+    "Bilderdijkkade 58A",
+    "Bilderdijkkade 58B",
+    "Bilderdijkkade 58C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 58A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012076738"
+    },
+    {
+     "address": "Bilderdijkkade 58B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012076749"
+    },
+    {
+     "address": "Bilderdijkkade 58C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012076772"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012241867",
+   "addresses": [
+    "Bilderdijkkade 56A",
+    "Bilderdijkkade 56B",
+    "Bilderdijkkade 56D",
+    "Bilderdijkkade 56C",
+    "Bilderdijkkade 56F",
+    "Bilderdijkkade 56E",
+    "Bilderdijkkade 56H",
+    "Bilderdijkkade 56G",
+    "Bilderdijkkade 56L",
+    "Bilderdijkkade 56K",
+    "Bilderdijkkade 56N",
+    "Bilderdijkkade 56M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 56A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076734"
+    },
+    {
+     "address": "Bilderdijkkade 56B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012076735"
+    },
+    {
+     "address": "Bilderdijkkade 56D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076747"
+    },
+    {
+     "address": "Bilderdijkkade 56C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076748"
+    },
+    {
+     "address": "Bilderdijkkade 56F",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076770"
+    },
+    {
+     "address": "Bilderdijkkade 56E",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076771"
+    },
+    {
+     "address": "Bilderdijkkade 56H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076779"
+    },
+    {
+     "address": "Bilderdijkkade 56G",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076780"
+    },
+    {
+     "address": "Bilderdijkkade 56L",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076788"
+    },
+    {
+     "address": "Bilderdijkkade 56K",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076789"
+    },
+    {
+     "address": "Bilderdijkkade 56N",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076793"
+    },
+    {
+     "address": "Bilderdijkkade 56M",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076794"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012241866",
+   "addresses": [
+    "Bilderdijkkade 54B",
+    "Bilderdijkkade 54A",
+    "Bilderdijkkade 54C",
+    "Bilderdijkkade 54D",
+    "Bilderdijkkade 54E",
+    "Bilderdijkkade 54F",
+    "Bilderdijkkade 54G",
+    "Bilderdijkkade 54H",
+    "Bilderdijkkade 54K",
+    "Bilderdijkkade 54L",
+    "Bilderdijkkade 54M",
+    "Bilderdijkkade 54N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 54B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012076732"
+    },
+    {
+     "address": "Bilderdijkkade 54A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012076733"
+    },
+    {
+     "address": "Bilderdijkkade 54C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076745"
+    },
+    {
+     "address": "Bilderdijkkade 54D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076746"
+    },
+    {
+     "address": "Bilderdijkkade 54E",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076768"
+    },
+    {
+     "address": "Bilderdijkkade 54F",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076769"
+    },
+    {
+     "address": "Bilderdijkkade 54G",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076777"
+    },
+    {
+     "address": "Bilderdijkkade 54H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076778"
+    },
+    {
+     "address": "Bilderdijkkade 54K",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076786"
+    },
+    {
+     "address": "Bilderdijkkade 54L",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076787"
+    },
+    {
+     "address": "Bilderdijkkade 54M",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076795"
+    },
+    {
+     "address": "Bilderdijkkade 54N",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076796"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012241865",
+   "addresses": [
+    "Bilderdijkkade 52B",
+    "Bilderdijkkade 52A",
+    "Bilderdijkkade 52D",
+    "Bilderdijkkade 52C",
+    "Bilderdijkkade 52F",
+    "Bilderdijkkade 52E",
+    "Bilderdijkkade 52H",
+    "Bilderdijkkade 52G",
+    "Bilderdijkkade 52L",
+    "Bilderdijkkade 52K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 52B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012076730"
+    },
+    {
+     "address": "Bilderdijkkade 52A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076731"
+    },
+    {
+     "address": "Bilderdijkkade 52C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076744"
+    },
+    {
+     "address": "Bilderdijkkade 52F",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076766"
+    },
+    {
+     "address": "Bilderdijkkade 52E",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076767"
+    },
+    {
+     "address": "Bilderdijkkade 52H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076775"
+    },
+    {
+     "address": "Bilderdijkkade 52G",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076776"
+    },
+    {
+     "address": "Bilderdijkkade 52L",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076784"
+    },
+    {
+     "address": "Bilderdijkkade 52K",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012076785"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

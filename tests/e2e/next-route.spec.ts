@@ -40,3 +40,24 @@ test('Enter on the finish card rides on from the arrival', async ({ page }, test
   expect(Math.hypot(rideOn.player.x - rideOn.start.x, rideOn.player.y - rideOn.start.y)).toBeLessThan(1);
   console.log(`ride on took ${rideOn.ms.toFixed(0)} ms`);
 });
+
+// User 2026-10-16: "I thought we stopped doing a route overview after ending
+// one route and moving onto the next?" Riding on from the finish card starts
+// on the bike; the overview flight is only for the first ride.
+test('Enter on the finish card skips the overview flight', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'one project is enough');
+  test.setTimeout(200000);
+  await page.addInitScript(() => { (window as any).__canalRecallForceIntro = true; });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  const after = await page.evaluate(async () => {
+    const game = (window as any).canalRecallGame;
+    game._intro = null;
+    game.state = 5; // FINISHED
+    game._runFinishAction('again');
+    for (let i = 0; i < 100 && game.state !== 4; i++) await new Promise(r => setTimeout(r, 100));
+    return { state: game.state, intro: !!game._intro, overview: game.camera.introOverview };
+  });
+  expect(after.state).toBe(4);
+  expect(after.intro).toBe(false);
+  expect(after.overview).toBe(0);
+});

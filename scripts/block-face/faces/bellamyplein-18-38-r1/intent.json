@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bellamyplein-18-38-r1",
+ "street": "Bellamyplein",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/bellamyplein-18-38-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/bellamyplein-18-38/auto-place.json"
+ },
+ "types": [
+  "bellamy-1904-balcony-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012164224",
+   "slug": "bellamyplein-164224",
+   "address": "Bellamyplein 38",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#725440",
+     "evidence": "strip 2024-12-11 span 0-220: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 0-220"
+   }
+  },
+  {
+   "pandId": "0363100012163466",
+   "slug": "bellamyplein-163466",
+   "address": "Bellamyplein 36",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3d2f27",
+     "evidence": "strip 2024-12-11 span 220-441: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2024-12-11 span 220-441"
+   }
+  },
+  {
+   "pandId": "0363100012153217",
+   "slug": "bellamyplein-153217",
+   "address": "Bellamyplein 34",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#674d3b",
+     "evidence": "strip 2024-12-11 span 441-661: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2024-12-11 span 441-661"
+   }
+  },
+  {
+   "pandId": "0363100012159793",
+   "slug": "bellamyplein-159793",
+   "address": "Bellamyplein 32",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#674935",
+     "evidence": "strip 2024-12-11 span 661-882: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 661-882"
+   }
+  },
+  {
+   "pandId": "0363100012166965",
+   "slug": "bellamyplein-166965",
+   "address": "Bellamyplein 30",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#88603c",
+     "evidence": "strip 2024-12-11 span 882-1101: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.87 on eaves 1, storeys 0, roof 1, stucco 1, columns 1; strip 2024-12-11 span 882-1101"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

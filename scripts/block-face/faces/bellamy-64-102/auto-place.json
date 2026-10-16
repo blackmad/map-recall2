@@ -1,0 +1,1343 @@
+{
+ "face": "bellamy-64-102",
+ "street": "Bellamystraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 1.27,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012163531",
+   "address": "Bellamystraat 102",
+   "builtYear": 1974,
+   "widthM": 5.26,
+   "eavesM": 6.22,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#40361e",
+    "wallRaw": "#45412a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 586,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 4.85 m at 0.5 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.85,
+       "centre": 0.5,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1974, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1974, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.22 m = 4 storeys of 1.55 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.66 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158514",
+   "address": "Bellamystraat 100",
+   "builtYear": 1974,
+   "widthM": 5.05,
+   "eavesM": 6.23,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#40341e",
+    "wallRaw": "#44412b",
+    "skyline": {
+     "eavesM": 7.65,
+     "eavesRow": 280,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 1.03,
+      "topWidthM": 0.72,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.16,
+     "balconies": true,
+     "why": "dark open axis 4.65 m at 0.5 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.65,
+       "centre": 0.5,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1974, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1974, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.23 m = 4 storeys of 1.56 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.32 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152375",
+   "address": "Bellamystraat 98",
+   "builtYear": 1992,
+   "widthM": 5.05,
+   "eavesM": 6.18,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#75563f",
+    "wallRaw": "#554930",
+    "skyline": {
+     "eavesM": 7.58,
+     "eavesRow": 283,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 5.5,
+      "topWidthM": 0.35,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1992, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.18 m = 4 storeys of 1.54 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.26 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163629",
+   "address": "Bellamystraat 96",
+   "builtYear": 1992,
+   "widthM": 2.86,
+   "eavesM": 6.21,
+   "storeys3dbag": 2,
+   "strip": {
+    "wall": "#61492f",
+    "wallRaw": "#4e4936",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 586,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.63 m at 0.5 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.63,
+       "centre": 0.5,
+       "light": 0.15
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.53
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1992, type 1928-1935; frontage 2.86 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1928-1935",
+     "frontage 2.86 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.21 m = 4 storeys of 1.55 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 2 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.43 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126139",
+   "address": "Bellamystraat 88",
+   "builtYear": 1992,
+   "widthM": 17.94,
+   "eavesM": 8.59,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#b6b6b4",
+    "wallRaw": "#53574c",
+    "skyline": {
+     "eavesM": 7.88,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.83,
+      "riseM": 2.72,
+      "topWidthM": 0.23,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.351,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.03,
+     "balconies": true,
+     "why": "bay-less open axis 2.5 m at 0.08 (light 0.6): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.5,
+       "centre": 0.08,
+       "light": 0.6
+      },
+      {
+       "widthM": 2.1,
+       "centre": 0.28,
+       "light": 0.03
+      },
+      {
+       "widthM": 2.33,
+       "centre": 0.93,
+       "light": 0.61
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.07,
+       "widthM": 2.02,
+       "centre": 0.23
+      },
+      {
+       "atM": 4.8,
+       "widthM": 0.88,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1992, type 1928-1935; frontage 17.94 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1928-1935",
+     "frontage 17.94 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.59 m = 4 storeys of 2.15 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158680",
+   "address": "Bellamystraat 86",
+   "builtYear": 1876,
+   "widthM": 4.36,
+   "eavesM": 9.65,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#7f5e49",
+    "wallRaw": "#645240",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 53,
+     "confidence": 0.66,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1876, type 1928-1935; frontage 4.36 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1928-1935",
+     "frontage 4.36 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.65 m = 4 storeys of 2.41 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.83 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.108 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164198",
+   "address": "Bellamystraat 84",
+   "builtYear": 1876,
+   "widthM": 4.35,
+   "eavesM": 9.86,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#5e4d3e",
+    "wallRaw": "#5a4a3a",
+    "skyline": {
+     "eavesM": 11.43,
+     "eavesRow": 129,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 3.22,
+      "topWidthM": 0.17,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.107,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1876, type 1928-1935; frontage 4.35 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1928-1935",
+     "frontage 4.35 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.86 m = 4 storeys of 2.46 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.79 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163580",
+   "address": "Bellamystraat 82",
+   "builtYear": 1876,
+   "widthM": 4.37,
+   "eavesM": 9.77,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#7b6b5e",
+    "wallRaw": "#706050",
+    "skyline": {
+     "eavesM": 10.95,
+     "eavesRow": 148,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 3.7,
+      "topWidthM": 0.2,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.148,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1876, type 1928-1935; frontage 4.37 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1928-1935",
+     "frontage 4.37 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.77 m = 4 storeys of 2.44 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.66 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.074 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166989",
+   "address": "Bellamystraat 80",
+   "builtYear": 1723,
+   "widthM": 8.66,
+   "eavesM": 6.25,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#878476",
+    "wallRaw": "#787867",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 586,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 7.95 m at 0.5 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 7.95,
+       "centre": 0.5,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1723, type 1928-1935; frontage 8.66 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1723, type 1928-1935",
+     "frontage 8.66 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.25 m = 4 storeys of 1.56 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.4 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012252233",
+   "address": "Bellamystraat 74",
+   "builtYear": 2019,
+   "widthM": 15.96,
+   "eavesM": 6.6,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#8c928a",
+    "wallRaw": "#6b6d65",
+    "skyline": {
+     "eavesM": 9.05,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 0.82,
+      "topWidthM": 2.08,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.68,
+     "balconies": true,
+     "why": "dark open axis 1.48 m at 0.07 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.48,
+       "centre": 0.07,
+       "light": 0.31
+      },
+      {
+       "widthM": 4.4,
+       "centre": 0.27,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.45,
+       "light": 0.81
+      },
+      {
+       "widthM": 2,
+       "centre": 0.54,
+       "light": 0.26
+      },
+      {
+       "widthM": 2.92,
+       "centre": 0.73,
+       "light": 0.45
+      },
+      {
+       "widthM": 2.42,
+       "centre": 0.92,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.72,
+       "widthM": 1,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2019, type 1928-1935; frontage 15.96 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.48 m at 0.07 (light 0.31): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2019, type 1928-1935",
+     "frontage 15.96 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.48 m at 0.07 (light 0.31): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.6 m = 4 storeys of 1.65 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.76 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.118 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074230",
+   "address": "Bellamystraat 72",
+   "builtYear": 1905,
+   "widthM": 5.08,
+   "eavesM": 9.62,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#868277",
+    "wallRaw": "#454b45",
+    "skyline": {
+     "eavesM": 9.35,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.33,
+      "topWidthM": 0.72,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.109,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1904-balcony-axis scores 0.47 < 0.7 (3DBAG eaves 9.62 m = 4 storeys of 2.4 m vs the type's 3.35 m; 3DBAG bouwlagen 3 vs 4/5; roof rise 0.64 m (flat) vs pitched)",
+   "best": {
+    "type": "bellamy-1904-balcony-axis",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.62 m = 4 storeys of 2.4 m vs the type's 3.35 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.64 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065779",
+   "address": "Bellamystraat 70",
+   "builtYear": 1905,
+   "widthM": 5.12,
+   "eavesM": 7.61,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#55432f",
+    "wallRaw": "#564939",
+    "skyline": {
+     "eavesM": 9.35,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.3,
+      "topWidthM": 0.6,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.17 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.17,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.5,
+       "light": 0.22
+      },
+      {
+       "widthM": 1,
+       "centre": 0.83,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1904-balcony-axis scores 0.25 < 0.7 (3DBAG eaves 7.61 m = 4 storeys of 1.9 m vs the type's 3.35 m; 3DBAG bouwlagen 3 vs 4/5)",
+   "best": {
+    "type": "bellamy-1904-balcony-axis",
+    "score": 0.25,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.61 m = 4 storeys of 1.9 m vs the type's 3.35 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.81 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163468",
+   "address": "Bellamystraat 68",
+   "builtYear": 1892,
+   "widthM": 5.16,
+   "eavesM": 9.55,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#6f6b59",
+    "wallRaw": "#4c4839",
+    "skyline": {
+     "eavesM": 9.28,
+     "eavesRow": 215,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 1.28,
+      "topWidthM": 1.15,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1892, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.55 m = 4 storeys of 2.39 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.79 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.074 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152980",
+   "address": "Bellamystraat 66",
+   "builtYear": 1892,
+   "widthM": 5.16,
+   "eavesM": 6.85,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#59533a",
+    "wallRaw": "#525448",
+    "skyline": {
+     "eavesM": 8.22,
+     "eavesRow": 257,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.22,
+      "topWidthM": 0.65,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.88 m at 0.3 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.88,
+       "centre": 0.3,
+       "light": 0.29
+      },
+      {
+       "widthM": 1.4,
+       "centre": 0.85,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1892, type 1928-1935; strip shows balconies (dark open axis 2.88 m at 0.3 (light 0.29): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1928-1935",
+     "strip shows balconies (dark open axis 2.88 m at 0.3 (light 0.29): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.85 m = 4 storeys of 1.71 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.98 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163151",
+   "address": "Bellamystraat 64",
+   "builtYear": 1892,
+   "widthM": 9.24,
+   "eavesM": 6.48,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#372c19",
+    "wallRaw": "#3e3726",
+    "skyline": {
+     "eavesM": 8.85,
+     "eavesRow": 232,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 4.35,
+      "riseM": 5.8,
+      "topWidthM": 0.07,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "dark open axis 1.55 m at 0.09 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.55,
+       "centre": 0.09,
+       "light": 0.15
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.29,
+       "light": 0.03
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.5,
+       "light": 0.41
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.7,
+       "light": 0.04
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.9,
+       "light": 0.03
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1892, type 1928-1935; frontage 9.24 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.55 m at 0.09 (light 0.15): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1928-1935",
+     "frontage 9.24 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.55 m at 0.09 (light 0.15): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.48 m = 4 storeys of 1.62 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.09 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

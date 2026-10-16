@@ -1,0 +1,497 @@
+{
+ "face": "bellamydwars-4-12",
+ "street": "Bellamydwarsstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 5.23,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "bellamydwars-4-12",
+   "pands": [
+    "0363100012090634",
+    "0363100012146138",
+    "0363100012061723",
+    "0363100012115852",
+    "0363100012086668"
+   ],
+   "passed": false,
+   "triangles": 6366
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012090634",
+   "address": "Bellamydwarsstraat 12",
+   "builtYear": 1933,
+   "widthM": 5.09,
+   "eavesM": 12.24,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6e5841",
+    "wallRaw": "#554936",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 201,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "placed",
+   "type": "bellamy-1895-plain-three-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1916-two-axis",
+    "score": 0.71
+   },
+   "placement": {
+    "type": "bellamy-1895-plain-three-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6e5841",
+     "evidence": "strip 2024-12-11 span 0-203: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown hoist-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012090634",
+    "ncc": 0.423,
+    "nccRaw": 0.423,
+    "shiftM": [
+     0.15,
+     -0.15
+    ],
+    "usable": 0.56,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.31 vs photo 0.14"
+    ],
+    "wall": {
+     "photo": "#6d5740",
+     "model": "#896e51",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.31
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.399
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146138",
+   "address": "Bellamydwarsstraat 10",
+   "builtYear": 1933,
+   "widthM": 5.3,
+   "eavesM": 12.26,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#735a42",
+    "wallRaw": "#584937",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.97,
+      "topWidthM": 0.68,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "bellamy-1895-plain-three-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1916-two-axis",
+    "score": 0.71
+   },
+   "placement": {
+    "type": "bellamy-1895-plain-three-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#735a42",
+     "evidence": "strip 2024-12-11 span 203-415: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown hoist-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012146138",
+    "ncc": 0.386,
+    "nccRaw": 0.386,
+    "shiftM": [
+     -0.05,
+     -0.1
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.31 vs photo 0.17",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#6e5740",
+     "model": "#8e6f52",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.31
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.445
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012061723",
+   "address": "Bellamydwarsstraat 8",
+   "builtYear": 1933,
+   "widthM": 5.33,
+   "eavesM": 12.26,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": "#625242",
+    "wallRaw": "#524534",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.9,
+      "topWidthM": 1.2,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 1.45,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "placed",
+   "type": "bellamy-1895-plain-three-axis",
+   "score": 0.87,
+   "runnerUp": {
+    "typeId": "bellamy-1916-two-axis",
+    "score": 0.55
+   },
+   "placement": {
+    "type": "bellamy-1895-plain-three-axis",
+    "measuredPalette": {
+     "brick": "#625242",
+     "evidence": "strip 2024-12-11 span 415-628: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown hoist-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012061723",
+    "ncc": 0.486,
+    "nccRaw": 0.486,
+    "shiftM": [
+     0.05,
+     -0.2
+    ],
+    "usable": 0.54,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23"
+    ],
+    "wall": {
+     "photo": "#5e4e39",
+     "model": "#7d6854",
+     "dL": 0.114
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.31
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.313
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115852",
+   "address": "Bellamydwarsstraat 6",
+   "builtYear": 1933,
+   "widthM": 5.16,
+   "eavesM": 12.34,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#5a4b3a",
+    "wallRaw": "#483e30",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.2,
+      "topWidthM": 0.65,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.23,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.42,
+       "widthM": 0.97,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.82,
+       "widthM": 0.85,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "placed",
+   "type": "bellamy-1895-plain-three-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1916-two-axis",
+    "score": 0.71
+   },
+   "placement": {
+    "type": "bellamy-1895-plain-three-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#5a4b3a",
+     "evidence": "strip 2024-12-11 span 628-834: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown hoist-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012115852",
+    "ncc": 0.274,
+    "nccRaw": 0.274,
+    "shiftM": [
+     -0.15,
+     -0.1
+    ],
+    "usable": 0.73,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13"
+    ],
+    "wall": {
+     "photo": "#4f4231",
+     "model": "#76634c",
+     "dL": 0.129
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.31
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.523
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086668",
+   "address": "Bellamydwarsstraat 4",
+   "builtYear": 1933,
+   "widthM": 5.3,
+   "eavesM": 12.33,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#594936",
+    "wallRaw": "#494030",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 257,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 2.05,
+      "topWidthM": 0.8,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.044,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.23,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "placed",
+   "type": "bellamy-1895-plain-three-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1916-two-axis",
+    "score": 0.71
+   },
+   "placement": {
+    "type": "bellamy-1895-plain-three-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#31281c",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie,woonfunctie, woonfunctie); fascia colour measured on the strip 2024-12-11 span 835-1047"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#594936",
+     "evidence": "strip 2024-12-11 span 835-1047: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown hoist-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012086668",
+    "ncc": 0.244,
+    "nccRaw": 0.244,
+    "shiftM": [
+     0.25,
+     0.2
+    ],
+    "usable": 0.73,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.37 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#574835",
+     "model": "#766148",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.428
+   },
+   "challengers": {}
+  }
+ ]
+}

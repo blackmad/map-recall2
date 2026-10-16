@@ -1,0 +1,2978 @@
+{
+ "when": "2026-10-16T08:36:58.568Z",
+ "seconds": 90,
+ "device": "desktop",
+ "results": [
+  {
+   "kind": "cold",
+   "throttle": 1,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2536px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 0.63,
+    "submitted": 0.67,
+    "player": 4.44,
+    "racing": 6.18,
+    "motionStart": 16.28,
+    "motionEnd": 76.28
+   },
+   "frames": {
+    "n": 4465,
+    "p50": 16.7,
+    "p95": 16.8,
+    "p99": 16.8,
+    "over50": 11,
+    "over100": 4,
+    "longestMs": 133.4,
+    "stalledS": 1,
+    "hist": {
+     "<=17": 4430,
+     "17-33": 14,
+     "33-50": 10,
+     "50-100": 7,
+     "100-250": 4,
+     "250-500": 0,
+     ">500": 0
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 4191,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 16.8,
+     "over50": 2,
+     "over100": 1,
+     "longestMs": 116.6,
+     "stalledS": 0.18,
+     "hist": {
+      "<=17": 4185,
+      "17-33": 2,
+      "33-50": 2,
+      "50-100": 1,
+      "100-250": 1,
+      "250-500": 0,
+      ">500": 0
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 3591,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 16.8,
+     "over50": 1,
+     "over100": 0,
+     "longestMs": 66.6,
+     "stalledS": 0.07,
+     "hist": {
+      "<=17": 3587,
+      "17-33": 1,
+      "33-50": 2,
+      "50-100": 1,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 1,
+     "over100": 0
+    },
+    "cadence": {
+     "rafFrames": 3591,
+     "renders": 3593,
+     "gameTicks": 3593,
+     "renderPerFrame": 1.001,
+     "movingRenders": 3593,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 2,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3194,
+      -7197,
+      120
+     ],
+     [
+      -3114,
+      -6970,
+      120
+     ],
+     [
+      -3321,
+      -6882,
+      120
+     ],
+     [
+      -3547,
+      -6803,
+      120
+     ],
+     [
+      -3777,
+      -6722,
+      120
+     ],
+     [
+      -3822,
+      -6549,
+      120
+     ],
+     [
+      -3740,
+      -6323,
+      120
+     ],
+     [
+      -3655,
+      -6099,
+      120
+     ],
+     [
+      -3521,
+      -5986,
+      120
+     ],
+     [
+      -3307,
+      -6087,
+      120
+     ],
+     [
+      -3398,
+      -6041,
+      120
+     ],
+     [
+      -3419,
+      -5805,
+      120
+     ],
+     [
+      -3431,
+      -5566,
+      120
+     ],
+     [
+      -3443,
+      -5326,
+      120
+     ],
+     [
+      -3456,
+      -5086,
+      120
+     ],
+     [
+      -3470,
+      -4847,
+      120
+     ],
+     [
+      -3605,
+      -4685,
+      120
+     ],
+     [
+      -3818,
+      -4574,
+      120
+     ],
+     [
+      -3920,
+      -4766,
+      120
+     ],
+     [
+      -4013,
+      -4987,
+      120
+     ],
+     [
+      -4106,
+      -5208,
+      120
+     ],
+     [
+      -4199,
+      -5429,
+      120
+     ],
+     [
+      -4290,
+      -5651,
+      120
+     ],
+     [
+      -4502,
+      -5585,
+      120
+     ],
+     [
+      -4725,
+      -5497,
+      120
+     ],
+     [
+      -4948,
+      -5409,
+      120
+     ],
+     [
+      -5175,
+      -5335,
+      120
+     ],
+     [
+      -5385,
+      -5229,
+      120
+     ],
+     [
+      -5607,
+      -5137,
+      120
+     ],
+     [
+      -5684,
+      -4937,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 1,
+     "alignedWithStreaming": 1,
+     "byKind": {
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 26
+      }
+     },
+     "gapsS": []
+    },
+    "events": {
+     "groundInstall": {
+      "n": 16,
+      "ms": 39,
+      "maxMs": 4.3
+     },
+     "labels": {
+      "n": 63,
+      "ms": 72,
+      "maxMs": 2.7
+     },
+     "setFeatures": {
+      "n": 12,
+      "ms": 139,
+      "maxMs": 43
+     },
+     "chunkInstall": {
+      "n": 15,
+      "ms": 22,
+      "maxMs": 2.6
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 63,
+      "maxMs": 3.5
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 26,
+      "maxMs": 25.7
+     }
+    },
+    "longTasks": {
+     "n": 1,
+     "totalMs": 70,
+     "over100": 0,
+     "longestMs": 70
+    }
+   },
+   "longTasks": {
+    "n": 7,
+    "totalMs": 688,
+    "over100": 3,
+    "longestMs": 142
+   },
+   "loaf": {
+    "over50": 17,
+    "renderMsInStalls": 548,
+    "entries": [
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 326
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 241
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 164
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 119
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 101
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 77
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 42
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 16
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 8
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 6
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 24.6,
+     "ms": 67,
+     "scripts": [
+      "67ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 709,
+   "distanceM": 2801,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 14,
+    "built": 31,
+    "buildMsMedian": 162,
+    "installMsMedian": 1.9
+   }
+  },
+  {
+   "kind": "warm",
+   "throttle": 1,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2538px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 1.01,
+    "submitted": 1.53,
+    "player": 4.67,
+    "racing": 6.5,
+    "motionStart": 16.6,
+    "motionEnd": 76.6
+   },
+   "frames": {
+    "n": 4486,
+    "p50": 16.7,
+    "p95": 16.8,
+    "p99": 16.8,
+    "over50": 17,
+    "over100": 3,
+    "longestMs": 166.7,
+    "stalledS": 1.45,
+    "hist": {
+     "<=17": 4455,
+     "17-33": 9,
+     "33-50": 5,
+     "50-100": 14,
+     "100-250": 3,
+     "250-500": 0,
+     ">500": 0
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 4189,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 16.8,
+     "over50": 4,
+     "over100": 1,
+     "longestMs": 116.6,
+     "stalledS": 0.3,
+     "hist": {
+      "<=17": 4183,
+      "17-33": 1,
+      "33-50": 1,
+      "50-100": 3,
+      "100-250": 1,
+      "250-500": 0,
+      ">500": 0
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 3589,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 16.8,
+     "over50": 3,
+     "over100": 0,
+     "longestMs": 66.7,
+     "stalledS": 0.18,
+     "hist": {
+      "<=17": 3584,
+      "17-33": 1,
+      "33-50": 1,
+      "50-100": 3,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 3,
+     "over100": 0
+    },
+    "cadence": {
+     "rafFrames": 3589,
+     "renders": 3589,
+     "gameTicks": 3589,
+     "renderPerFrame": 1,
+     "movingRenders": 3589,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 2,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3193,
+      -7195,
+      120
+     ],
+     [
+      -3114,
+      -6968,
+      120
+     ],
+     [
+      -3322,
+      -6881,
+      120
+     ],
+     [
+      -3549,
+      -6802,
+      120
+     ],
+     [
+      -3779,
+      -6721,
+      120
+     ],
+     [
+      -3821,
+      -6547,
+      120
+     ],
+     [
+      -3739,
+      -6321,
+      120
+     ],
+     [
+      -3654,
+      -6097,
+      120
+     ],
+     [
+      -3520,
+      -5987,
+      120
+     ],
+     [
+      -3305,
+      -6088,
+      120
+     ],
+     [
+      -3399,
+      -6040,
+      120
+     ],
+     [
+      -3420,
+      -5803,
+      120
+     ],
+     [
+      -3431,
+      -5564,
+      120
+     ],
+     [
+      -3443,
+      -5324,
+      120
+     ],
+     [
+      -3456,
+      -5084,
+      120
+     ],
+     [
+      -3470,
+      -4845,
+      120
+     ],
+     [
+      -3607,
+      -4684,
+      120
+     ],
+     [
+      -3820,
+      -4573,
+      120
+     ],
+     [
+      -3922,
+      -4771,
+      120
+     ],
+     [
+      -4015,
+      -4992,
+      120
+     ],
+     [
+      -4108,
+      -5214,
+      120
+     ],
+     [
+      -4201,
+      -5435,
+      120
+     ],
+     [
+      -4292,
+      -5657,
+      120
+     ],
+     [
+      -4507,
+      -5583,
+      120
+     ],
+     [
+      -4730,
+      -5495,
+      120
+     ],
+     [
+      -4954,
+      -5407,
+      120
+     ],
+     [
+      -5180,
+      -5332,
+      120
+     ],
+     [
+      -5391,
+      -5227,
+      120
+     ],
+     [
+      -5612,
+      -5135,
+      120
+     ],
+     [
+      -5684,
+      -4931,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 3,
+     "alignedWithStreaming": 2,
+     "byKind": {
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 29
+      },
+      "setFeatures": {
+       "hitches": 1,
+       "ms": 46
+      }
+     },
+     "gapsS": [
+      0.1,
+      27.1
+     ]
+    },
+    "events": {
+     "groundInstall": {
+      "n": 15,
+      "ms": 37,
+      "maxMs": 4.1
+     },
+     "labels": {
+      "n": 79,
+      "ms": 89,
+      "maxMs": 1.3
+     },
+     "setFeatures": {
+      "n": 12,
+      "ms": 153,
+      "maxMs": 45.9
+     },
+     "chunkInstall": {
+      "n": 27,
+      "ms": 53,
+      "maxMs": 4.8
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 66,
+      "maxMs": 3.6
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 29,
+      "maxMs": 28.6
+     }
+    },
+    "longTasks": {
+     "n": 2,
+     "totalMs": 132,
+     "over100": 0,
+     "longestMs": 78
+    }
+   },
+   "longTasks": {
+    "n": 10,
+    "totalMs": 896,
+    "over100": 2,
+    "longestMs": 120
+   },
+   "loaf": {
+    "over50": 22,
+    "renderMsInStalls": 706,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 315
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 255
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 179
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 117
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 113
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 106
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 80
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 50
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 45
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 43
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 42
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 18
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 11
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 11
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 8
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 24.9,
+     "ms": 67,
+     "scripts": [
+      "75ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 25,
+     "ms": 67,
+     "scripts": [
+      "75ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 52.1,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 924,
+   "distanceM": 2800,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 14,
+    "built": 31,
+    "buildMsMedian": 162,
+    "installMsMedian": 2
+   }
+  },
+  {
+   "kind": "warm2",
+   "throttle": 1,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2537px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 0.39,
+    "submitted": 0.42,
+    "player": 4.16,
+    "racing": 5.92,
+    "motionStart": 16.01,
+    "motionEnd": 76.02
+   },
+   "frames": {
+    "n": 4458,
+    "p50": 16.7,
+    "p95": 16.8,
+    "p99": 16.8,
+    "over50": 14,
+    "over100": 5,
+    "longestMs": 150.1,
+    "stalledS": 1.25,
+    "hist": {
+     "<=17": 4422,
+     "17-33": 15,
+     "33-50": 7,
+     "50-100": 9,
+     "100-250": 5,
+     "250-500": 0,
+     ">500": 0
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 4191,
+     "p50": 16.7,
+     "p95": 16.7,
+     "p99": 16.8,
+     "over50": 2,
+     "over100": 1,
+     "longestMs": 116.7,
+     "stalledS": 0.18,
+     "hist": {
+      "<=17": 4186,
+      "17-33": 1,
+      "33-50": 2,
+      "50-100": 1,
+      "100-250": 1,
+      "250-500": 0,
+      ">500": 0
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 3591,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 16.8,
+     "over50": 1,
+     "over100": 0,
+     "longestMs": 66.7,
+     "stalledS": 0.07,
+     "hist": {
+      "<=17": 3587,
+      "17-33": 1,
+      "33-50": 2,
+      "50-100": 1,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 1,
+     "over100": 0
+    },
+    "cadence": {
+     "rafFrames": 3591,
+     "renders": 3592,
+     "gameTicks": 3592,
+     "renderPerFrame": 1,
+     "movingRenders": 3592,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 2,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3194,
+      -7197,
+      120
+     ],
+     [
+      -3114,
+      -6970,
+      120
+     ],
+     [
+      -3321,
+      -6882,
+      120
+     ],
+     [
+      -3547,
+      -6803,
+      120
+     ],
+     [
+      -3777,
+      -6722,
+      120
+     ],
+     [
+      -3822,
+      -6549,
+      120
+     ],
+     [
+      -3740,
+      -6323,
+      120
+     ],
+     [
+      -3655,
+      -6099,
+      120
+     ],
+     [
+      -3521,
+      -5986,
+      120
+     ],
+     [
+      -3307,
+      -6087,
+      120
+     ],
+     [
+      -3398,
+      -6041,
+      120
+     ],
+     [
+      -3419,
+      -5805,
+      120
+     ],
+     [
+      -3431,
+      -5566,
+      120
+     ],
+     [
+      -3443,
+      -5326,
+      120
+     ],
+     [
+      -3456,
+      -5086,
+      120
+     ],
+     [
+      -3470,
+      -4847,
+      120
+     ],
+     [
+      -3605,
+      -4685,
+      120
+     ],
+     [
+      -3818,
+      -4574,
+      120
+     ],
+     [
+      -3920,
+      -4766,
+      120
+     ],
+     [
+      -4013,
+      -4987,
+      120
+     ],
+     [
+      -4106,
+      -5208,
+      120
+     ],
+     [
+      -4199,
+      -5429,
+      120
+     ],
+     [
+      -4290,
+      -5651,
+      120
+     ],
+     [
+      -4502,
+      -5585,
+      120
+     ],
+     [
+      -4725,
+      -5497,
+      120
+     ],
+     [
+      -4948,
+      -5409,
+      120
+     ],
+     [
+      -5175,
+      -5335,
+      120
+     ],
+     [
+      -5385,
+      -5229,
+      120
+     ],
+     [
+      -5607,
+      -5137,
+      120
+     ],
+     [
+      -5684,
+      -4937,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 1,
+     "alignedWithStreaming": 1,
+     "byKind": {
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 29
+      }
+     },
+     "gapsS": []
+    },
+    "events": {
+     "groundInstall": {
+      "n": 16,
+      "ms": 38,
+      "maxMs": 4.4
+     },
+     "setFeatures": {
+      "n": 12,
+      "ms": 139,
+      "maxMs": 42.1
+     },
+     "chunkInstall": {
+      "n": 16,
+      "ms": 23,
+      "maxMs": 2.6
+     },
+     "labels": {
+      "n": 35,
+      "ms": 39,
+      "maxMs": 1.2
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 63,
+      "maxMs": 3.4
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 29,
+      "maxMs": 28.5
+     }
+    },
+    "longTasks": {
+     "n": 2,
+     "totalMs": 124,
+     "over100": 0,
+     "longestMs": 74
+    }
+   },
+   "longTasks": {
+    "n": 9,
+    "totalMs": 821,
+    "over100": 3,
+    "longestMs": 158
+   },
+   "loaf": {
+    "over50": 19,
+    "renderMsInStalls": 638,
+    "entries": [
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 351
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 273
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 168
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 112
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 107
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 85
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 45
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 43
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 39
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 9
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 6
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 6
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 24.3,
+     "ms": 67,
+     "scripts": [
+      "71ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 735,
+   "distanceM": 2800,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 14,
+    "built": 31,
+    "buildMsMedian": 155,
+    "installMsMedian": 2
+   }
+  },
+  {
+   "kind": "cold",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2672px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 1.5,
+    "submitted": 1.81,
+    "player": 17.97,
+    "racing": 19.83,
+    "motionStart": 30.36,
+    "motionEnd": 90.37
+   },
+   "frames": {
+    "n": 4305,
+    "p50": 16.7,
+    "p95": 33.4,
+    "p99": 66.7,
+    "over50": 75,
+    "over100": 30,
+    "longestMs": 716.6,
+    "stalledS": 10.88,
+    "hist": {
+     "<=17": 3831,
+     "17-33": 336,
+     "33-50": 63,
+     "50-100": 45,
+     "100-250": 21,
+     "250-500": 5,
+     ">500": 4
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 3599,
+     "p50": 16.7,
+     "p95": 33.3,
+     "p99": 50.1,
+     "over50": 39,
+     "over100": 12,
+     "longestMs": 583.4,
+     "stalledS": 4.57,
+     "hist": {
+      "<=17": 3232,
+      "17-33": 284,
+      "33-50": 44,
+      "50-100": 27,
+      "100-250": 9,
+      "250-500": 2,
+      ">500": 1
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 3237,
+     "p50": 16.7,
+     "p95": 33.3,
+     "p99": 50,
+     "over50": 18,
+     "over100": 5,
+     "longestMs": 333.3,
+     "stalledS": 1.87,
+     "hist": {
+      "<=17": 2998,
+      "17-33": 196,
+      "33-50": 25,
+      "50-100": 13,
+      "100-250": 4,
+      "250-500": 1,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 18,
+     "over100": 5
+    },
+    "cadence": {
+     "rafFrames": 3237,
+     "renders": 3261,
+     "gameTicks": 3261,
+     "renderPerFrame": 1.007,
+     "movingRenders": 3261,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 4,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3242,
+      -7333,
+      120
+     ],
+     [
+      -3143,
+      -7053,
+      120
+     ],
+     [
+      -3254,
+      -6905,
+      120
+     ],
+     [
+      -3489,
+      -6824,
+      120
+     ],
+     [
+      -3728,
+      -6739,
+      120
+     ],
+     [
+      -3794,
+      -6474,
+      120
+     ],
+     [
+      -3698,
+      -6211,
+      120
+     ],
+     [
+      -3573,
+      -5965,
+      120
+     ],
+     [
+      -3348,
+      -6072,
+      120
+     ],
+     [
+      -3364,
+      -6065,
+      120
+     ],
+     [
+      -3418,
+      -5835,
+      120
+     ],
+     [
+      -3430,
+      -5592,
+      120
+     ],
+     [
+      -3443,
+      -5328,
+      120
+     ],
+     [
+      -3457,
+      -5066,
+      120
+     ],
+     [
+      -3472,
+      -4815,
+      120
+     ],
+     [
+      -3639,
+      -4667,
+      120
+     ],
+     [
+      -3848,
+      -4590,
+      120
+     ],
+     [
+      -3946,
+      -4828,
+      120
+     ],
+     [
+      -4047,
+      -5066,
+      120
+     ],
+     [
+      -4140,
+      -5289,
+      120
+     ],
+     [
+      -4232,
+      -5511,
+      120
+     ],
+     [
+      -4368,
+      -5640,
+      120
+     ],
+     [
+      -4596,
+      -5548,
+      120
+     ],
+     [
+      -4832,
+      -5454,
+      120
+     ],
+     [
+      -5078,
+      -5363,
+      120
+     ],
+     [
+      -5299,
+      -5262,
+      120
+     ],
+     [
+      -5524,
+      -5174,
+      120
+     ],
+     [
+      -5679,
+      -5011,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 18,
+     "alignedWithStreaming": 14,
+     "byKind": {
+      "setFeatures": {
+       "hitches": 9,
+       "ms": 711
+      },
+      "labels": {
+       "hitches": 10,
+       "ms": 44
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 125
+      },
+      "groundInstall": {
+       "hitches": 1,
+       "ms": 11
+      }
+     },
+     "gapsS": [
+      6.2,
+      1.3,
+      0.1,
+      1.8,
+      0.9,
+      0.3,
+      0.2,
+      1.2,
+      2.9,
+      0.6,
+      9.9,
+      0.7,
+      3.7,
+      4.8,
+      0.4,
+      2.7,
+      12.8
+     ]
+    },
+    "events": {
+     "labels": {
+      "n": 231,
+      "ms": 993,
+      "maxMs": 7.5
+     },
+     "treesRebuild": {
+      "n": 27,
+      "ms": 291,
+      "maxMs": 16.7
+     },
+     "landmarkRequest": {
+      "n": 74,
+      "ms": 102,
+      "maxMs": 4.4
+     },
+     "groundDecks": {
+      "n": 5,
+      "ms": 8,
+      "maxMs": 2.6
+     },
+     "groundOverlays": {
+      "n": 4,
+      "ms": 5,
+      "maxMs": 1.3
+     },
+     "groundInstall": {
+      "n": 16,
+      "ms": 155,
+      "maxMs": 17.2
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 649,
+      "maxMs": 182.6
+     },
+     "chunkInstall": {
+      "n": 51,
+      "ms": 280,
+      "maxMs": 21.3
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 125,
+      "maxMs": 125.1
+     }
+    },
+    "longTasks": {
+     "n": 18,
+     "totalMs": 1693,
+     "over100": 3,
+     "longestMs": 328
+    }
+   },
+   "longTasks": {
+    "n": 55,
+    "totalMs": 7734,
+    "over100": 22,
+    "longestMs": 570
+   },
+   "loaf": {
+    "over50": 87,
+    "renderMsInStalls": 5473,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 2653
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 1480
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1393
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 859
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 558
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 504
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 481
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 338
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 259
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 181
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 175
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 173
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 166
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 136
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 125
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 87
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 66
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 61
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 59
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 59
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 57
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 46
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 35
+     },
+     {
+      "k": "user-callback IdleRequestCallback @ signature-landmarks.bundle.js n",
+      "ms": 32
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ own-ground-game.bundle.js",
+      "ms": 27
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 42.4,
+     "ms": 333,
+     "scripts": [
+      "309ms FrameRequestCallback e @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 42.7,
+     "ms": 217,
+     "scripts": [
+      "309ms FrameRequestCallback e @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43,
+     "ms": 167,
+     "scripts": [
+      "197ms FrameRequestCallback r @building-tiles.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 39.5,
+     "ms": 150,
+     "scripts": [
+      "85ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "13ms Response.arrayBuffer.then @building-style.bundle.js"
+     ]
+    },
+    {
+     "atS": 39.7,
+     "ms": 150,
+     "scripts": [
+      "85ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "13ms Response.arrayBuffer.then @building-style.bundle.js"
+     ]
+    },
+    {
+     "atS": 62,
+     "ms": 83,
+     "scripts": [
+      "65ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 67.2,
+     "ms": 83,
+     "scripts": [
+      "65ms Response.arrayBuffer.then @three.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 44.2,
+     "ms": 67,
+     "scripts": [
+      "53ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "8ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 69.9,
+     "ms": 67,
+     "scripts": [
+      "59ms FrameRequestCallback @game.js",
+      "13ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 32,
+     "ms": 67,
+     "scripts": [
+      "50ms FrameRequestCallback @game.js",
+      "18ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 66.8,
+     "ms": 67,
+     "scripts": [
+      "56ms FrameRequestCallback @game.js",
+      "11ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 41.5,
+     "ms": 67,
+     "scripts": [
+      "41ms FrameRequestCallback @game.js",
+      "13ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 47.1,
+     "ms": 67,
+     "scripts": [
+      "58ms FrameRequestCallback @game.js",
+      "11ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 58.3,
+     "ms": 67,
+     "scripts": [
+      "47ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 82.7,
+     "ms": 67,
+     "scripts": [
+      "52ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 38.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 47.7,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 57.6,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 988,
+   "distanceM": 2714,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 14,
+    "built": 31,
+    "buildMsMedian": 169,
+    "installMsMedian": 8.6
+   }
+  },
+  {
+   "kind": "warm",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2629px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 1.04,
+    "submitted": 1.27,
+    "player": 17.7,
+    "racing": 19.55,
+    "motionStart": 30.09,
+    "motionEnd": 90.1
+   },
+   "frames": {
+    "n": 4590,
+    "p50": 16.7,
+    "p95": 33.3,
+    "p99": 66.7,
+    "over50": 57,
+    "over100": 31,
+    "longestMs": 683.4,
+    "stalledS": 9.48,
+    "hist": {
+     "<=17": 4295,
+     "17-33": 199,
+     "33-50": 39,
+     "50-100": 26,
+     "100-250": 21,
+     "250-500": 8,
+     ">500": 2
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 3853,
+     "p50": 16.7,
+     "p95": 33.2,
+     "p99": 50,
+     "over50": 24,
+     "over100": 11,
+     "longestMs": 450,
+     "stalledS": 3.23,
+     "hist": {
+      "<=17": 3653,
+      "17-33": 152,
+      "33-50": 24,
+      "50-100": 13,
+      "100-250": 8,
+      "250-500": 3,
+      ">500": 0
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 3414,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 33.4,
+     "over50": 7,
+     "over100": 4,
+     "longestMs": 283.4,
+     "stalledS": 1,
+     "hist": {
+      "<=17": 3298,
+      "17-33": 91,
+      "33-50": 18,
+      "50-100": 3,
+      "100-250": 3,
+      "250-500": 1,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 7,
+     "over100": 4
+    },
+    "cadence": {
+     "rafFrames": 3414,
+     "renders": 3419,
+     "gameTicks": 3419,
+     "renderPerFrame": 1.001,
+     "movingRenders": 3419,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 2,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3232,
+      -7304,
+      120
+     ],
+     [
+      -3141,
+      -7046,
+      120
+     ],
+     [
+      -3256,
+      -6904,
+      120
+     ],
+     [
+      -3487,
+      -6824,
+      120
+     ],
+     [
+      -3715,
+      -6744,
+      120
+     ],
+     [
+      -3829,
+      -6567,
+      120
+     ],
+     [
+      -3735,
+      -6310,
+      120
+     ],
+     [
+      -3645,
+      -6072,
+      120
+     ],
+     [
+      -3472,
+      -6006,
+      120
+     ],
+     [
+      -3273,
+      -6139,
+      120
+     ],
+     [
+      -3412,
+      -5959,
+      120
+     ],
+     [
+      -3424,
+      -5719,
+      120
+     ],
+     [
+      -3436,
+      -5474,
+      120
+     ],
+     [
+      -3449,
+      -5224,
+      120
+     ],
+     [
+      -3462,
+      -4981,
+      120
+     ],
+     [
+      -3488,
+      -4746,
+      120
+     ],
+     [
+      -3705,
+      -4633,
+      120
+     ],
+     [
+      -3878,
+      -4664,
+      120
+     ],
+     [
+      -3970,
+      -4885,
+      120
+     ],
+     [
+      -4064,
+      -5108,
+      120
+     ],
+     [
+      -4157,
+      -5330,
+      120
+     ],
+     [
+      -4249,
+      -5551,
+      120
+     ],
+     [
+      -4401,
+      -5626,
+      120
+     ],
+     [
+      -4624,
+      -5536,
+      120
+     ],
+     [
+      -4849,
+      -5447,
+      120
+     ],
+     [
+      -5080,
+      -5363,
+      120
+     ],
+     [
+      -5297,
+      -5263,
+      120
+     ],
+     [
+      -5521,
+      -5175,
+      120
+     ],
+     [
+      -5677,
+      -5022,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 7,
+     "alignedWithStreaming": 6,
+     "byKind": {
+      "labels": {
+       "hitches": 3,
+       "ms": 12
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 105
+      },
+      "setFeatures": {
+       "hitches": 4,
+       "ms": 371
+      },
+      "chunkInstall": {
+       "hitches": 1,
+       "ms": 3
+      }
+     },
+     "gapsS": [
+      0.1,
+      1.8,
+      0.3,
+      0.2,
+      7.4,
+      17.6
+     ]
+    },
+    "events": {
+     "labels": {
+      "n": 231,
+      "ms": 921,
+      "maxMs": 7.2
+     },
+     "landmarkRequest": {
+      "n": 51,
+      "ms": 64,
+      "maxMs": 2
+     },
+     "treesRebuild": {
+      "n": 27,
+      "ms": 276,
+      "maxMs": 16.7
+     },
+     "groundDecks": {
+      "n": 3,
+      "ms": 5,
+      "maxMs": 2.3
+     },
+     "groundInstall": {
+      "n": 16,
+      "ms": 147,
+      "maxMs": 16.6
+     },
+     "setFeatures": {
+      "n": 12,
+      "ms": 529,
+      "maxMs": 147.8
+     },
+     "chunkInstall": {
+      "n": 49,
+      "ms": 205,
+      "maxMs": 10.9
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 105,
+      "maxMs": 105
+     },
+     "groundOverlays": {
+      "n": 1,
+      "ms": 1,
+      "maxMs": 1.3
+     }
+    },
+    "longTasks": {
+     "n": 13,
+     "totalMs": 1210,
+     "over100": 3,
+     "longestMs": 285
+    }
+   },
+   "longTasks": {
+    "n": 51,
+    "totalMs": 7052,
+    "over100": 22,
+    "longestMs": 538
+   },
+   "loaf": {
+    "over50": 75,
+    "renderMsInStalls": 4395,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 2038
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1406
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 1171
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 742
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 483
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 460
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 406
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 374
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 289
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 228
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 173
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 170
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 167
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 150
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 103
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 101
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 58
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 54
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 53
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 52
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 49
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 41
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 38
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 37
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ maplibre-gl.js",
+      "ms": 31
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 40.9,
+     "ms": 283,
+     "scripts": [
+      "265ms FrameRequestCallback e @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @game.js",
+      "9ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 41.2,
+     "ms": 217,
+     "scripts": [
+      "265ms FrameRequestCallback e @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @game.js",
+      "9ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 39.1,
+     "ms": 133,
+     "scripts": [
+      "113ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 41.4,
+     "ms": 117,
+     "scripts": [
+      "160ms FrameRequestCallback r @building-tiles.bundle.js",
+      "32ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 39,
+     "ms": 100,
+     "scripts": [
+      "70ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 66.4,
+     "ms": 83,
+     "scripts": [
+      "65ms Response.arrayBuffer.then @three.bundle.js",
+      "13ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.8,
+     "ms": 67,
+     "scripts": [
+      "56ms FrameRequestCallback @game.js",
+      "11ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 1553,
+   "distanceM": 2737,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 14,
+    "built": 31,
+    "buildMsMedian": 158,
+    "installMsMedian": 8.5
+   }
+  },
+  {
+   "kind": "warm2",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2642px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 0.76,
+    "submitted": 1.06,
+    "player": 16.18,
+    "racing": 19.45,
+    "motionStart": 29.88,
+    "motionEnd": 89.89
+   },
+   "frames": {
+    "n": 4531,
+    "p50": 16.7,
+    "p95": 33.3,
+    "p99": 66.7,
+    "over50": 70,
+    "over100": 30,
+    "longestMs": 550,
+    "stalledS": 9.77,
+    "hist": {
+     "<=17": 4158,
+     "17-33": 268,
+     "33-50": 35,
+     "50-100": 40,
+     "100-250": 22,
+     "250-500": 5,
+     ">500": 3
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 3788,
+     "p50": 16.7,
+     "p95": 33.3,
+     "p99": 50,
+     "over50": 29,
+     "over100": 10,
+     "longestMs": 533.2,
+     "stalledS": 3.58,
+     "hist": {
+      "<=17": 3529,
+      "17-33": 210,
+      "33-50": 20,
+      "50-100": 19,
+      "100-250": 7,
+      "250-500": 2,
+      ">500": 1
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 3339,
+     "p50": 16.7,
+     "p95": 33.3,
+     "p99": 33.4,
+     "over50": 16,
+     "over100": 5,
+     "longestMs": 316.7,
+     "stalledS": 1.6,
+     "hist": {
+      "<=17": 3154,
+      "17-33": 157,
+      "33-50": 12,
+      "50-100": 11,
+      "100-250": 4,
+      "250-500": 1,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 16,
+     "over100": 5
+    },
+    "cadence": {
+     "rafFrames": 3339,
+     "renders": 3340,
+     "gameTicks": 3340,
+     "renderPerFrame": 1,
+     "movingRenders": 3340,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 4,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3232,
+      -7306,
+      120
+     ],
+     [
+      -3143,
+      -7052,
+      120
+     ],
+     [
+      -3254,
+      -6905,
+      120
+     ],
+     [
+      -3487,
+      -6824,
+      120
+     ],
+     [
+      -3723,
+      -6741,
+      120
+     ],
+     [
+      -3808,
+      -6513,
+      120
+     ],
+     [
+      -3709,
+      -6239,
+      120
+     ],
+     [
+      -3614,
+      -5990,
+      120
+     ],
+     [
+      -3401,
+      -6038,
+      120
+     ],
+     [
+      -3316,
+      -6085,
+      120
+     ],
+     [
+      -3415,
+      -5887,
+      120
+     ],
+     [
+      -3427,
+      -5644,
+      120
+     ],
+     [
+      -3440,
+      -5386,
+      120
+     ],
+     [
+      -3454,
+      -5132,
+      120
+     ],
+     [
+      -3467,
+      -4889,
+      120
+     ],
+     [
+      -3579,
+      -4699,
+      120
+     ],
+     [
+      -3793,
+      -4587,
+      120
+     ],
+     [
+      -3920,
+      -4765,
+      120
+     ],
+     [
+      -4018,
+      -4998,
+      120
+     ],
+     [
+      -4111,
+      -5219,
+      120
+     ],
+     [
+      -4203,
+      -5440,
+      120
+     ],
+     [
+      -4295,
+      -5662,
+      120
+     ],
+     [
+      -4514,
+      -5580,
+      120
+     ],
+     [
+      -4743,
+      -5489,
+      120
+     ],
+     [
+      -4976,
+      -5399,
+      120
+     ],
+     [
+      -5203,
+      -5305,
+      120
+     ],
+     [
+      -5428,
+      -5213,
+      120
+     ],
+     [
+      -5652,
+      -5123,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 16,
+     "alignedWithStreaming": 13,
+     "byKind": {
+      "labels": {
+       "hitches": 7,
+       "ms": 28
+      },
+      "setFeatures": {
+       "hitches": 6,
+       "ms": 505
+      },
+      "groundInstall": {
+       "hitches": 2,
+       "ms": 20
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 115
+      },
+      "chunkInstall": {
+       "hitches": 3,
+       "ms": 14
+      }
+     },
+     "gapsS": [
+      0.1,
+      0.7,
+      1.7,
+      0.3,
+      0.2,
+      0.8,
+      0.4,
+      0.6,
+      2,
+      3.1,
+      7.1,
+      7.3,
+      3.2,
+      2.8,
+      12.8
+     ]
+    },
+    "events": {
+     "labels": {
+      "n": 231,
+      "ms": 919,
+      "maxMs": 6.7
+     },
+     "treesRebuild": {
+      "n": 27,
+      "ms": 299,
+      "maxMs": 15.5
+     },
+     "groundDecks": {
+      "n": 3,
+      "ms": 5,
+      "maxMs": 2.1
+     },
+     "groundOverlays": {
+      "n": 3,
+      "ms": 4,
+      "maxMs": 1.3
+     },
+     "groundInstall": {
+      "n": 16,
+      "ms": 158,
+      "maxMs": 17.4
+     },
+     "landmarkRequest": {
+      "n": 50,
+      "ms": 65,
+      "maxMs": 2.1
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 568,
+      "maxMs": 171.7
+     },
+     "chunkInstall": {
+      "n": 50,
+      "ms": 212,
+      "maxMs": 12.3
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 115,
+      "maxMs": 114.7
+     }
+    },
+    "longTasks": {
+     "n": 17,
+     "totalMs": 1523,
+     "over100": 3,
+     "longestMs": 321
+    }
+   },
+   "longTasks": {
+    "n": 53,
+    "totalMs": 6914,
+    "over100": 22,
+    "longestMs": 483
+   },
+   "loaf": {
+    "over50": 73,
+    "renderMsInStalls": 4355,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 1945
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1221
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 1188
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 776
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 463
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 442
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 411
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 353
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 320
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 265
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 164
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 159
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 153
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 153
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 98
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 93
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 52
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 51
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 47
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 45
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 44
+     },
+     {
+      "k": "resolve-promise Response.json.then @ vector-map.js?v=20261014-ownground",
+      "ms": 39
+     },
+     {
+      "k": "resolve-promise Response.json.then @ three-buildings.bundle.js",
+      "ms": 30
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 27
+     },
+     {
+      "k": "user-callback IdleRequestCallback @ signature-landmarks.bundle.js n",
+      "ms": 25
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 41.3,
+     "ms": 317,
+     "scripts": [
+      "283ms FrameRequestCallback e @building-tiles.bundle.js",
+      "28ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 41.6,
+     "ms": 217,
+     "scripts": [
+      "283ms FrameRequestCallback e @building-tiles.bundle.js",
+      "28ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 41.8,
+     "ms": 150,
+     "scripts": [
+      "184ms FrameRequestCallback r @building-tiles.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 38.9,
+     "ms": 150,
+     "scripts": [
+      "123ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 38.8,
+     "ms": 117,
+     "scripts": [
+      "76ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "13ms FrameRequestCallback @maplibre-gl.js",
+      "13ms Response.arrayBuffer.then @building-style.bundle.js"
+     ]
+    },
+    {
+     "atS": 66.3,
+     "ms": 83,
+     "scripts": [
+      "66ms Response.arrayBuffer.then @three.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 43.6,
+     "ms": 67,
+     "scripts": [
+      "42ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "9ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 43,
+     "ms": 67,
+     "scripts": [
+      "51ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "9ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 69.1,
+     "ms": 67,
+     "scripts": [
+      "49ms FrameRequestCallback @game.js",
+      "11ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 81.8,
+     "ms": 67,
+     "scripts": [
+      "51ms FrameRequestCallback @game.js",
+      "12ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 39.6,
+     "ms": 50,
+     "scripts": [
+      "34ms FrameRequestCallback @game.js",
+      "13ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 42.6,
+     "ms": 50,
+     "scripts": [
+      "28ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 45.6,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 48.7,
+     "ms": 50,
+     "scripts": [
+      "48ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 55.8,
+     "ms": 50,
+     "scripts": [
+      "40ms FrameRequestCallback @game.js",
+      "12ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 63.1,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 1007,
+   "distanceM": 2731,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 14,
+    "built": 31,
+    "buildMsMedian": 168,
+    "installMsMedian": 8.8
+   }
+  }
+ ]
+}

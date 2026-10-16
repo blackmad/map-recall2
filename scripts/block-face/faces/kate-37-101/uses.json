@@ -1,0 +1,603 @@
+{
+ "street": "Ten Katestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:43:06.116Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154173",
+   "addresses": [
+    "Ten Katestraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825380"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "way",
+     "id": 942520202,
+     "lngLat": [
+      4.8668736,
+      52.367135
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "building": "shed",
+      "building:levels": "1",
+      "name": "Inzamel Eiland",
+      "recycling_type": "centre",
+      "roof:shape": "flat"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156336",
+   "addresses": [
+    "Ten Katestraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 39-H",
+     "use": "industriefunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825389"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834776,
+     "lngLat": [
+      4.866941,
+      52.3670361
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "39",
+      "addr:postcode": "1053BX",
+      "addr:street": "Ten Katestraat",
+      "shop": "sewing"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156544",
+   "addresses": [
+    "Ten Katestraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825398"
+    },
+    {
+     "address": "Ten Katestraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010003764049"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154285",
+   "addresses": [
+    "Ten Katestraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825407"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834779,
+     "lngLat": [
+      4.866991,
+      52.3669564
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43",
+      "addr:postcode": "1053BX",
+      "addr:street": "Ten Katestraat",
+      "name": "Tropic 2000",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154389",
+   "addresses": [
+    "Ten Katestraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 45-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000825412"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834780,
+     "lngLat": [
+      4.8670309,
+      52.3669124
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:postcode": "1053BX",
+      "addr:street": "Ten Katestraat",
+      "amenity": "restaurant",
+      "check_date": "2026-09-09",
+      "cuisine": "indian;nepalese",
+      "name": "Himalayan Kitchen",
+      "website": "https://www.himalayankitchen.nl/"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012145751",
+   "addresses": [
+    "Ten Katestraat 47",
+    "Ten Katestraat 49",
+    "Ten Katestraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 1A-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000579971"
+    },
+    {
+     "address": "Ten Katestraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825416"
+    },
+    {
+     "address": "Ten Katestraat 47-O",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000825417"
+    },
+    {
+     "address": "Ten Katestraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825424"
+    },
+    {
+     "address": "Ten Katestraat 51-O",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000825425"
+    },
+    {
+     "address": "Ten Katestraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 600,
+     "bagId": "0363010001005904"
+    }
+   ],
+   "units": 20,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834781,
+     "lngLat": [
+      4.8670637,
+      52.366868
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1053BX",
+      "addr:street": "Ten Katestraat",
+      "name": "Ten Kate Bike + Supplies",
+      "repair": "yes",
+      "second_hand": "yes",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167027",
+   "addresses": [
+    "Ten Katestraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825429"
+    },
+    {
+     "address": "Ten Katestraat 53-O",
+     "use": "industriefunctie",
+     "areaM2": 44,
+     "bagId": "0363010000825430"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "way",
+     "id": 78090886,
+     "lngLat": [
+      4.8670305,
+      52.3667239
+     ],
+     "tags": {
+      "amenity": "marketplace",
+      "name": "Ten Katemarkt",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155390",
+   "addresses": [
+    "Ten Katestraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000825437"
+    },
+    {
+     "address": "Ten Katestraat 55-O",
+     "use": "industriefunctie",
+     "areaM2": 45,
+     "bagId": "0363010000825438"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165679",
+   "addresses": [
+    "Ten Katestraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000825445"
+    },
+    {
+     "address": "Ten Katestraat 57-O",
+     "use": "industriefunctie",
+     "areaM2": 46,
+     "bagId": "0363010000825446"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161372",
+   "addresses": [
+    "Ten Katestraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000825450"
+    },
+    {
+     "address": "Ten Katestraat 59-O",
+     "use": "industriefunctie",
+     "areaM2": 84,
+     "bagId": "0363010001167730"
+    },
+    {
+     "address": "Ten Katestraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010010953856"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154178",
+   "addresses": [
+    "Ten Katestraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825454"
+    },
+    {
+     "address": "Ten Katestraat 61-O",
+     "use": "industriefunctie",
+     "areaM2": 46,
+     "bagId": "0363010000825455"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158689",
+   "addresses": [
+    "Ten Katestraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000825459"
+    },
+    {
+     "address": "Ten Katestraat 63-O",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000825460"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167006",
+   "addresses": [
+    "Ten Katestraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000825464"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098626",
+   "addresses": [
+    "Ten Katestraat 67",
+    "Ten Katestraat 67A",
+    "Ten Katestraat 69",
+    "Ten Katestraat 71",
+    "Ten Katestraat 73",
+    "Ten Katestraat 75",
+    "Ten Katestraat 77",
+    "Ten Katestraat 79",
+    "Ten Katestraat 81",
+    "Ten Katestraat 83",
+    "Ten Katestraat 85",
+    "Ten Katestraat 87",
+    "Ten Katestraat 89",
+    "Ten Katestraat 91",
+    "Ten Katestraat 93",
+    "Ten Katestraat 95",
+    "Ten Katestraat 97",
+    "Ten Katestraat 99A",
+    "Ten Katestraat 99B",
+    "Ten Katestraat 99C",
+    "Ten Katestraat 99D",
+    "Ten Katestraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 67",
+     "use": "winkelfunctie",
+     "areaM2": 208,
+     "bagId": "0363010001041859"
+    },
+    {
+     "address": "Ten Katestraat 67A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001041860"
+    },
+    {
+     "address": "Ten Katestraat 69",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001041861"
+    },
+    {
+     "address": "Ten Katestraat 71",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001041862"
+    },
+    {
+     "address": "Ten Katestraat 73",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001041863"
+    },
+    {
+     "address": "Ten Katestraat 75",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001041864"
+    },
+    {
+     "address": "Ten Katestraat 77",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001041867"
+    },
+    {
+     "address": "Ten Katestraat 79",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001041869"
+    },
+    {
+     "address": "Ten Katestraat 81",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001041870"
+    },
+    {
+     "address": "Ten Katestraat 83",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001041872"
+    },
+    {
+     "address": "Ten Katestraat 85",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001041877"
+    },
+    {
+     "address": "Ten Katestraat 87",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001041878"
+    },
+    {
+     "address": "Ten Katestraat 89",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001041960"
+    },
+    {
+     "address": "Ten Katestraat 91",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001041961"
+    },
+    {
+     "address": "Ten Katestraat 93",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001041962"
+    },
+    {
+     "address": "Ten Katestraat 95",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001041963"
+    },
+    {
+     "address": "Ten Katestraat 97",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001041964"
+    },
+    {
+     "address": "Ten Katestraat 99A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001041965"
+    },
+    {
+     "address": "Ten Katestraat 99B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001041966"
+    },
+    {
+     "address": "Ten Katestraat 99C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001041967"
+    },
+    {
+     "address": "Ten Katestraat 99D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001041968"
+    },
+    {
+     "address": "Ten Katestraat 101",
+     "use": "winkelfunctie",
+     "areaM2": 123,
+     "bagId": "0363010012118212"
+    }
+   ],
+   "units": 22,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679402,
+     "lngLat": [
+      4.8674553,
+      52.36629
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "100",
+      "addr:postcode": "1053CK",
+      "addr:street": "Ten Katestraat",
+      "government": "administrative",
+      "name": "Marktmeester",
+      "office": "government",
+      "operator": "Gemeente Amsterdam"
+     },
+     "fetchedAt": "2026-10-16T11:43:06.116Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

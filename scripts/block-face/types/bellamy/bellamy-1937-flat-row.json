@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "bellamy-1937-flat-row",
+ "district": "bellamy",
+ "description": "Ten Katestraat 5-21 (BAG 1937; a later flat-roofed renewal row): red-brown brick, three plain white windows per storey on 6.1 m, a top storey of two small square lights under a plain parapet with a light coping, house doors paired under one transom",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.6
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1930,
+   1995
+  ],
+  "eavesM": [
+   14.0,
+   16.2
+  ],
+  "storeys3dbag": [
+   4,
+   5,
+   6
+  ],
+  "roof": "flat",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "stucco": false,
+  "note": "the flat roof and the 15 m parapet carry it; BAG's 1937 is kept as the year range's floor",
+  "balconies": false
+ },
+ "body": {
+  "storeys": 5,
+  "bays": [
+   2,
+   3,
+   3,
+   3,
+   2
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    2
+   ],
+   "4": [
+    0,
+    2
+   ]
+  },
+  "cornice": "none",
+  "windows": "casement-triple",
+  "windowHeights": [
+   0.58,
+   0.53,
+   0.53,
+   0.53,
+   0.3
+  ],
+  "storeyHeights": [
+   2.75,
+   2.85,
+   2.85,
+   2.85,
+   3.9
+  ],
+  "headLines": [
+   0.84,
+   0.74,
+   0.74,
+   0.74,
+   0.45
+  ],
+  "windowShare": 0.75
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "note": "plain parapet with a light coping, nothing over it"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "house door left"
+  },
+  "door-right": {
+   "doorBay": 1,
+   "note": "house door right"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7a4a3a",
+   "frame": "#f0f0ec",
+   "door": "#5a3a2a",
+   "stone": "#d8d6d0",
+   "cornice": "#d8d6d0"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "rhythm": {
+  "bays": "3 axes (2 on the top storey)",
+  "identicalBays": "equal axes",
+  "windowsPerStorey": "ground: door + 1 | 1: 3 | 2: 3 | 3: 3 | 4: 2",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "paired house doors or a shop",
+  "signage": "per shop",
+  "roofline": "plain parapet, flat roof",
+  "photoRows": [
+   2,
+   3,
+   3,
+   3,
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "kate-5-21",
+   "pands": [
+    "067143",
+    "144382",
+    "083242",
+    "146613",
+    "129411",
+    "101150"
+   ],
+   "citation": "strip.jpg 2018-07-29: identical flat fronts, 3 windows per storey, two small attic lights; measured at 40 px/m: windows 1.6 x 1.5 m, storey pitch 2.85 m, ground 2.75 m, attic lights 0.85 m centred 12.7 m"
+  }
+ ],
+ "schemaLimits": [
+  "the windows' horizontal glazing bars",
+  "the paired doors under one transom are drawn as one door"
+ ],
+ "notes": []
+}

@@ -1,0 +1,134 @@
+{
+ "street": "Bilderdijkkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:41:18.243Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167037",
+   "addresses": [
+    "Bilderdijkkade 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 70-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000585561"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161375",
+   "addresses": [
+    "Bilderdijkkade 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000585554"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158550",
+   "addresses": [
+    "Bilderdijkkade 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 66-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001008926"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166144",
+   "addresses": [
+    "Bilderdijkkade 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 64-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000585535"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159806",
+   "addresses": [
+    "Bilderdijkkade 60",
+    "Bilderdijkkade 62",
+    "Bilderdijkkade 62A",
+    "Bilderdijkkade 62C",
+    "Bilderdijkkade 62B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 60",
+     "use": "kantoorfunctie,logiesfunctie",
+     "areaM2": 1524,
+     "bagId": "0363010000579968"
+    },
+    {
+     "address": "Bilderdijkkade 60",
+     "use": "kantoorfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012097180"
+    },
+    {
+     "address": "Bilderdijkkade 62A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012097181"
+    },
+    {
+     "address": "Bilderdijkkade 62C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012097182"
+    },
+    {
+     "address": "Bilderdijkkade 62B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012097183"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006306953,
+     "lngLat": [
+      4.8702764,
+      52.3670574
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:41:18.243Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    }
+   ]
+  }
+ ]
+}

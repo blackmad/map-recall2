@@ -1,0 +1,209 @@
+{
+ "face": "tollens-64-66",
+ "street": "Tollensstraat",
+ "library": "bellamy",
+ "stripDate": "2016-08-09",
+ "seconds": 0.21,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012156298",
+   "address": "Tollensstraat 66",
+   "builtYear": 1895,
+   "widthM": 5.07,
+   "eavesM": 11.96,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#473d39",
+    "wallRaw": "#504945",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 163,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 4.08,
+      "topWidthM": 0.4,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.62 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.62,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.92,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.05,
+       "widthM": 2.4,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; strip shows balconies (dark open axis 1.07 m at 0.62 (light 0.4): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "strip shows balconies (dark open axis 1.07 m at 0.62 (light 0.4): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.96 m = 4 storeys of 2.99 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.76 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152558",
+   "address": "Tollensstraat 64",
+   "builtYear": 1895,
+   "widthM": 5.07,
+   "eavesM": 12.06,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#675d5b",
+    "wallRaw": "#6e6763",
+    "skyline": {
+     "eavesM": 12.38,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.95,
+      "topWidthM": 0.38,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.7,
+       "widthM": 1,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.06 m = 4 storeys of 3.02 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.03 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.039 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

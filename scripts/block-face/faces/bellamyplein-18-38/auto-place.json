@@ -1,0 +1,1228 @@
+{
+ "face": "bellamyplein-18-38",
+ "street": "Bellamyplein",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 17.45,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "bellamyplein-18-38-r1",
+   "pands": [
+    "0363100012164224",
+    "0363100012163466",
+    "0363100012153217",
+    "0363100012159793",
+    "0363100012166965"
+   ],
+   "passed": false,
+   "triangles": 11822
+  },
+  {
+   "face": "bellamyplein-18-38-r2",
+   "pands": [
+    "0363100012159962",
+    "0363100012158557",
+    "0363100012163720",
+    "0363100012164492"
+   ],
+   "passed": false,
+   "triangles": 9224
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012164224",
+   "address": "Bellamyplein 38",
+   "builtYear": 1905,
+   "widthM": 5.5,
+   "eavesM": 13.54,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#725440",
+    "wallRaw": "#473a2e",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 161,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.55,
+      "riseM": 2.45,
+      "topWidthM": 0.93,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.65,
+       "widthM": 1.5,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.23,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#725440",
+     "evidence": "strip 2024-12-11 span 0-220: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.45 m, width 2.55 m, top 0.93 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012164224",
+    "ncc": 0.329,
+    "nccRaw": 0.329,
+    "shiftM": [
+     0.15,
+     0
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.36 vs photo 0.46"
+    ],
+    "wall": {
+     "photo": "#6c4c39",
+     "model": "#8e6850",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.561
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163466",
+   "address": "Bellamyplein 36",
+   "builtYear": 1905,
+   "widthM": 5.52,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#3d2f27",
+    "wallRaw": "#4f473d",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 179,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.5,
+      "topWidthM": 0.4,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.21 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.21,
+       "light": 0.11
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.55,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.85,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 1.25,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.52,
+       "widthM": 0.9,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3d2f27",
+     "evidence": "strip 2024-12-11 span 220-441: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.5 m, width 2.8 m, top 0.4 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012163466",
+    "ncc": 0.256,
+    "nccRaw": 0.256,
+    "shiftM": [
+     0.25,
+     -0.4
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.51 mean 0.35 vs photo 0.81"
+    ],
+    "wall": {
+     "photo": "#6f503f",
+     "model": "#5d483c",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.81,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.422
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153217",
+   "address": "Bellamyplein 34",
+   "builtYear": 1905,
+   "widthM": 5.5,
+   "eavesM": 13.57,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#674d3b",
+    "wallRaw": "#433a30",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 2.3,
+      "topWidthM": 0.68,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.75 m (1.4 m wide), 9.45 m (1.35 m wide), 6.6 m (1.43 m wide), 6.3 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 1.4,
+       "centre": 0.86
+      },
+      {
+       "atM": 9.45,
+       "widthM": 1.35,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.43,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.3,
+       "widthM": 1.3,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#674d3b",
+     "evidence": "strip 2024-12-11 span 441-661: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.3 m, width 2.83 m, top 0.68 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012153217",
+    "ncc": 0.225,
+    "nccRaw": 0.225,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27"
+    ],
+    "wall": {
+     "photo": "#674c39",
+     "model": "#84624b",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.453
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159793",
+   "address": "Bellamyplein 32",
+   "builtYear": 1905,
+   "widthM": 5.54,
+   "eavesM": 13.54,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#674935",
+    "wallRaw": "#41362c",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 2.57,
+      "topWidthM": 1.63,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.19 (light 0.42): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.19,
+       "light": 0.42
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.54,
+       "light": 0.26
+      },
+      {
+       "widthM": 1,
+       "centre": 0.87,
+       "light": 0.43
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.72,
+       "widthM": 1.2,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.27,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#674935",
+     "evidence": "strip 2024-12-11 span 661-882: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.57 m, width 2.23 m, top 1.63 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012159793",
+    "ncc": 0.25,
+    "nccRaw": 0.25,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18"
+    ],
+    "wall": {
+     "photo": "#6e4d37",
+     "model": "#855e44",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.479
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166965",
+   "address": "Bellamyplein 30",
+   "builtYear": 1905,
+   "widthM": 5.47,
+   "eavesM": 13.46,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": "#88603c",
+    "wallRaw": "#55442e",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.4,
+      "topWidthM": 0.6,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.19 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.19,
+       "light": 0.33
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.52,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.72,
+       "widthM": 1.23,
+       "centre": 0.19
+      },
+      {
+       "atM": 9.43,
+       "widthM": 1.2,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.23,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 0.87,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#88603c",
+     "evidence": "strip 2024-12-11 span 882-1101: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.4 m, width 2.4 m, top 0.6 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012166965",
+    "ncc": 0.332,
+    "nccRaw": 0.332,
+    "shiftM": [
+     0.1,
+     -0.1
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20"
+    ],
+    "wall": {
+     "photo": "#865d3b",
+     "model": "#a57449",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.522
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162005",
+   "address": "Bellamyplein 28",
+   "builtYear": 1905,
+   "widthM": 5.56,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#52331e",
+    "wallRaw": "#4b4038",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.4,
+      "topWidthM": 1,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.36 (light 0.06): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.36,
+       "light": 0.06
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.67,
+       "widthM": 2.8,
+       "centre": 0.71
+      },
+      {
+       "atM": 9.45,
+       "widthM": 0.85,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.52,
+       "widthM": 1.6,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.6,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.082 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20 mean 0.36 vs photo 0.47)",
+   "likeness": {
+    "pandId": "0363100012162005",
+    "ncc": 0.082,
+    "nccRaw": 0.082,
+    "shiftM": [
+     0.2,
+     -0.2
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.36 vs photo 0.47"
+    ],
+    "wall": {
+     "photo": "#834f31",
+     "model": "#774a2b",
+     "dL": -0.035
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.549
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159962",
+   "address": "Bellamyplein 26",
+   "builtYear": 1905,
+   "widthM": 5.48,
+   "eavesM": 13.52,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8d6139",
+    "wallRaw": "#50422d",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.8,
+      "topWidthM": 1.13,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.19 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.19,
+       "light": 0.31
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.51,
+       "light": 0.21
+      },
+      {
+       "widthM": 1,
+       "centre": 0.87,
+       "light": 0.34
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.2,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.55,
+       "widthM": 0.95,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8d6139",
+     "evidence": "strip 2024-12-11 span 1323-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.8 m, width 2.4 m, top 1.13 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012159962",
+    "ncc": 0.277,
+    "nccRaw": 0.277,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.38 mean 0.36 vs photo 0.72"
+    ],
+    "wall": {
+     "photo": "#795436",
+     "model": "#aa7545",
+     "dL": 0.125
+    },
+    "glazing": {
+     "photo": 0.72,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.481
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158557",
+   "address": "Bellamyplein 24",
+   "builtYear": 1905,
+   "widthM": 5.5,
+   "eavesM": 13.48,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#463a2e",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 171,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.7,
+      "topWidthM": 1.93,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.54 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.54,
+       "light": 0.25
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.72,
+       "widthM": 1.32,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.3,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left"
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.7 m, width 2.4 m, top 1.93 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012158557",
+    "ncc": 0.261,
+    "nccRaw": 0.261,
+    "shiftM": [
+     0.2,
+     0.2
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#714f38",
+     "model": "#756053",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.534
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163720",
+   "address": "Bellamyplein 22",
+   "builtYear": 1905,
+   "widthM": 5.51,
+   "eavesM": 13.55,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#493c31",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 1.68,
+      "topWidthM": 1.13,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.52 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.52,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.72,
+       "widthM": 1.25,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.35,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "crown": "box-dormer"
+   },
+   "notes": [
+    "crown box-dormer: skyline rise 1.68 m, width 2.02 m, top 1.13 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012163720",
+    "ncc": 0.209,
+    "nccRaw": 0.209,
+    "shiftM": [
+     0.2,
+     -0.05
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.47 mean 0.34 vs photo 0.70"
+    ],
+    "wall": {
+     "photo": "#725039",
+     "model": "#756053",
+     "dL": 0.057
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.435
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164492",
+   "address": "Bellamyplein 20",
+   "builtYear": 1905,
+   "widthM": 5.5,
+   "eavesM": 14.09,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#73513c",
+    "wallRaw": "#453a2f",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 140,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.08,
+      "riseM": 2.1,
+      "topWidthM": 1.95,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.55 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.55,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.25,
+       "widthM": 1.23,
+       "centre": 0.21
+      },
+      {
+       "atM": 7.63,
+       "widthM": 0.95,
+       "centre": 0.64
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.18,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#26261a",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2024-12-11 span 1983-2203"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#73513c",
+     "evidence": "strip 2024-12-11 span 1983-2203: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.1 m, width 2.08 m, top 1.95 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012164492",
+    "ncc": 0.336,
+    "nccRaw": 0.336,
+    "shiftM": [
+     0.2,
+     0.25
+    ],
+    "usable": 0.77,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.42 vs photo 0.30"
+    ],
+    "wall": {
+     "photo": "#74513c",
+     "model": "#90654b",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.49
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164493",
+   "address": "Bellamyplein 18",
+   "builtYear": 1905,
+   "widthM": 6.52,
+   "eavesM": 14.05,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#292619",
+    "wallRaw": "#594a36",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 121,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.65,
+      "riseM": 1.92,
+      "topWidthM": 1.1,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.54 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.54,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.83,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.1,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1905, type 1928-1935; frontage 6.52 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.05 m at 0.54 (light 0.17): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1928-1935",
+     "frontage 6.52 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.05 m at 0.54 (light 0.17): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.05 m = 5 storeys of 2.81 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.36 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

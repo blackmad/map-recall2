@@ -1,0 +1,328 @@
+{
+ "face": "hanzen-105-111",
+ "street": "Jan Hanzenstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012111819",
+   "address": "Jan Hanzenstraat 105",
+   "builtYear": 1933,
+   "widthM": 14.04,
+   "eavesM": 12.34,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#4c4741",
+    "wallRaw": "#544f45",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 1.7,
+      "topWidthM": 1.35,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.222,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 14.04 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 14.04 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.34 m = 4 storeys of 3.08 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.86 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.173 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012085436",
+   "address": "Jan Hanzenstraat 107",
+   "builtYear": 1933,
+   "widthM": 5.2,
+   "eavesM": 12.49,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#585751",
+    "wallRaw": "#4d493e",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.07,
+      "topWidthM": 0.78,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.27,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012085436",
+    "ncc": 0.415,
+    "nccRaw": 0.415,
+    "shiftM": [
+     -0.35,
+     0
+    ],
+    "usable": 0.66,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.21",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#393832",
+     "model": "#6f6e66",
+     "dL": 0.208
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.437
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069921",
+   "address": "Jan Hanzenstraat 109",
+   "builtYear": 1931,
+   "widthM": 4.78,
+   "eavesM": 12.52,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7c624c",
+    "wallRaw": "#7c6347",
+    "skyline": {
+     "eavesM": 12.97,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1,
+      "riseM": 2.03,
+      "topWidthM": 0.4,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.315,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.119 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17; window shape tall vs photo square; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012069921",
+    "ncc": 0.119,
+    "nccRaw": 0.119,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17",
+     "window shape tall vs photo square",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#755d48",
+     "model": "#96765c",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.359
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119239",
+   "address": "Jan Hanzenstraat 111",
+   "builtYear": 1931,
+   "widthM": 4.78,
+   "eavesM": 12.94,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6e5843",
+    "wallRaw": "#735d44",
+    "skyline": {
+     "eavesM": 12.97,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.03,
+      "topWidthM": 0.8,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.373,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.65,
+       "widthM": 0.85,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012119239",
+    "ncc": 0.449,
+    "nccRaw": 0.449,
+    "shiftM": [
+     -0.4,
+     0.15
+    ],
+    "usable": 0.5,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#6c5644",
+     "model": "#896e53",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.488
+   },
+   "challengers": {}
+  }
+ ]
+}

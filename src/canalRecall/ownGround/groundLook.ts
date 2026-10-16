@@ -11,7 +11,7 @@
 //               and cycle chroma raised (cycle along the panoramas' red hue, 26–30°) until asphalt, klinker and
 //               cycle are ΔE76 ≥ 20 apart; luma kept. Water is the nadir median (dark, near-neutral).
 //   bright      measured hues, road at luma 130 and pavement 175; klinker and cycle keep their measured ratio to
-//               the road; a lighter grey-green canal (luma 118).
+//               the road; a sunny canal blue, 4f86a3 at luma ~123 (user 2026-10-16: "just pick a good blue").
 //   legacy-ish  toward the legacy basemap's near-white streets: road 200, pavement 215, pale grey-green water 170;
 //               land, squares and paving lifted with it so a pavement is not brighter than the square it meets.
 //
@@ -61,7 +61,7 @@ export const GROUND_LOOK_TONES: Readonly<Record<Exclude<GroundLook, 'default'>, 
   },
   bright: {
     asphalt: [132, 130, 124], pavement: [183, 174, 161], klinker: [138, 101, 78], cycle: [204, 107, 106],
-    water: [104, 122, 114], land: [185, 174, 156], paving: [194, 184, 167], square: [198, 187, 169], parking: [126, 125, 120], parkPath: [142, 140, 134],
+    water: [79, 134, 163], land: [185, 174, 156], paving: [194, 184, 167], square: [198, 187, 169], parking: [126, 125, 120], parkPath: [142, 140, 134],
   },
   'legacy-ish': {
     asphalt: [202, 200, 193], pavement: [222, 214, 202], klinker: [199, 159, 134], cycle: [255, 167, 163],

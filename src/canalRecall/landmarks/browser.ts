@@ -49,7 +49,7 @@ export { BUILDING_CATEGORIES, CATEGORY_LABEL, countsAsLandmark } from '../buildi
 export const GAME_BUILDING_MODELS = [...manualModels, ...ORDINARY_BUILDINGS];
 export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VERSIONS };
 export { SharedAssetCache } from './sharedAssetCache';
-export { streetChunksEnabled, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';
+export { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';
 export { createRecipeLook } from '../buildingRecipe/recipeLook';
 export { lod1IsCurrent, chooseLevel, initialLevel, footprintRadiusPixels, lod1Url } from './landmarkLod';
 import modelLods from './modelLods.json';

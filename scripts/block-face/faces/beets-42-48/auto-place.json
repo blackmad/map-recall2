@@ -1,0 +1,370 @@
+{
+ "face": "beets-42-48",
+ "street": "Nicolaas Beetsstraat",
+ "library": "bellamy",
+ "stripDate": "2019-04-30",
+ "seconds": 0.67,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158839",
+   "address": "Nicolaas Beetsstraat 48",
+   "builtYear": 1915,
+   "widthM": 6.49,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#473a32",
+    "wallRaw": "#4b4238",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 762,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.85,
+       "widthM": 1.15,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155451",
+   "address": "Nicolaas Beetsstraat 46",
+   "builtYear": 1915,
+   "widthM": 6,
+   "eavesM": 13.71,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#47362e",
+    "wallRaw": "#4e4139",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 762,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.38 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.38,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.35,
+       "widthM": 1.18,
+       "centre": 0.37
+      },
+      {
+       "atM": 9.13,
+       "widthM": 1.6,
+       "centre": 0.36
+      },
+      {
+       "atM": 5.9,
+       "widthM": 1.73,
+       "centre": 0.35
+      },
+      {
+       "atM": 5.22,
+       "widthM": 0.88,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; strip shows balconies (dark open axis 0.82 m at 0.38 (light 0.21): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "strip shows balconies (dark open axis 0.82 m at 0.38 (light 0.21): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.71 m = 4 storeys of 3.43 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.35 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161362",
+   "address": "Nicolaas Beetsstraat 44",
+   "builtYear": 1984,
+   "widthM": 5.53,
+   "eavesM": 13.64,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#4e3b32",
+    "wallRaw": "#564a40",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 762,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.32 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.32,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.22,
+       "widthM": 1.25,
+       "centre": 0.3
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.23,
+       "centre": 0.32
+      },
+      {
+       "atM": 5.85,
+       "widthM": 0.82,
+       "centre": 0.3
+      },
+      {
+       "atM": 5.25,
+       "widthM": 0.9,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1984, type 1928-1935; strip shows balconies (dark open axis 0.78 m at 0.32 (light 0.28): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1984, type 1928-1935",
+     "strip shows balconies (dark open axis 0.78 m at 0.32 (light 0.28): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.64 m = 4 storeys of 3.41 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.4 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159872",
+   "address": "Nicolaas Beetsstraat 42",
+   "builtYear": 1984,
+   "widthM": 5.46,
+   "eavesM": 13.55,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#5d4d45",
+    "skyline": {
+     "eavesM": 16.25,
+     "eavesRow": 112,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 2.8,
+      "topWidthM": 0.55,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.93,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.27 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.27,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.27,
+       "widthM": 1.35,
+       "centre": 0.24
+      },
+      {
+       "atM": 9.05,
+       "widthM": 1.32,
+       "centre": 0.25
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.55,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1984, type 1928-1935; strip shows balconies (dark open axis 0.85 m at 0.27 (light 0.23): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1984, type 1928-1935",
+     "strip shows balconies (dark open axis 0.85 m at 0.27 (light 0.23): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.55 m = 4 storeys of 3.39 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.56 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.017 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

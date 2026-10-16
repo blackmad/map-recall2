@@ -1,5 +1,324 @@
 # Canal Recall — what is built
 
+## Bellamybuurt-Zuid: 12 auto-placed runs installed (69 pands) (2026-10-16)
+
+Lane `lane/buurt-generator-2-20261016` (0ec8a8cfb). The pilot's photo gate
+passed five wrong types; `blockFace/stripStructure.ts` now measures each
+strip relative to the pand's own wall colour (green-tile vs tile-bay no
+longer depends on exposure) and reads balconies from open window axes and
+stacked dark slabs, vetoing types without them. Jan Hanzenstraat 49–51,
+Ten Katestraat 29–31, Bellamystraat 18–20 and Van Effenstraat 7D are held;
+Hasebroekstraat 69 places as green-tile with a point gable (right). Kit:
+`buildingRecipe/orielHoist.ts` adds white painted timber oriels and dormers
+under hoist caps (tile-bay likeness 0.19–0.24 → 0.31–0.43); box dormers
+stop at a 2.0 m rise; green-tile limited to 1911–1918. A reviewer's holds
+file (`scripts/block-face/buurten/bellamybuurt-zuid-review-holds.json`, 21
+pands with reasons) holds pands at a `review` stage. Placed 102 (pilot) →
+93 → 69 on 10 faces; 12 runs installed after each sheet was reviewed at
+full size: hasebroek-52-88-r1, -43-101-r1, -90-98-r1, -2-46-r1, -1-41-r1
+and -r2, bellamydwars-4-12, bellamyplein-18-38-r1 and -r2, effen-2-12-r1,
+heije-41-53-r1, kate-5-21-r1. A full buurt placement runs in 213–366 s.
+The kit still cannot say a segmental oriel, more than one dormer height
+per front, a green-tile gable over the window pair or its mirror, window
+kinds per axis, double doors, chequered courses, the Bellamyplein towers
+and pediment-hooded neck dormers, Hasebroekstraat 21–37's wide-arch
+full-balcony design, or the flat 1930s Wenslauerstraat type.
+
+## One model per ground: the Wereldmuseum drew twice (2026-10-16)
+
+User (2026-10-16), with two ride screenshots of the Mauritskade portal:
+"wereld frontage issues - why not caught?". Two models stood on the KIT
+complex: `wereldmuseum-amsterdam` (2026-10-04 massing) and `tropenmuseum`
+(the measured 2026-10-14 model), same landmark, 38 shared suppressed ids,
+both in `GAME_BUILDING_MODELS`. Not caught because the Tropenmuseum lane
+added a new id instead of holding the old one, every review rendered one
+GLB alone (`landmark-strip`, `review:sheet`), and the suppression checks
+only compare models against OSM/BAG, which both passed. The old entry is now
+`status: "held"` with a `heldReason`. `modelOverlap.ts` and its test
+(`test:building-taxonomy`, in `check:canal`) fail when two drawn models share
+a landmark id or a suppressed OSM way / BAG pand. Across 485 drawn models it
+found one more pair: Brandweerkazerne Nico (`fire-station-nico`, every side
+modelled) and the 2026-10-13 Politiebureau IJ-tunnel large recipe on the same
+1972 pand (three sides blank). The landmark wins: `SHADOWED_BY_LANDMARK` in
+`ordinaryModels.ts` keeps the install catalogued but undrawn, and the test
+fails if a pair goes stale. (`royal-palace` in `signature-landmarks.json` is
+a stale manifest record, not drawn.) `review:sheet` now puts an IN GAME
+tile on every wall row (one browser, a 70° frame of that wall), not one
+overhead shot of the main wall; `docs/buildings-pipeline.md` (bespoke lane,
+items 7-8) requires both. Correction to the first diagnosis: with the old
+model gone, the in-game frames of the Mauritskade face still show what the
+user saw. The plain brown walls with bare blue cells either side of the portal
+are the Tropenmuseum's own kit walls, so that face goes to the fourth pass
+(TODO).
+
+## Street chunks and BGT roads drawn by default; blue water; the pilot chunk retired (2026-10-16)
+
+User (2026-10-16): "what things are behind flags that we should make
+default? if BGT is the fix, then make it the default, same with ownGround,
+whatever else". Own ground was already the default.
+- **BGT roads:** `gameGround.ts roadsFlag` is on unless `?roads=0` (or
+  `window.__canalRecallRoads = false`); cells without the roads-v1 extract
+  (all but the seven pilot cells until the city-wide publish) keep the OSM
+  bands. The own-ground e2e specs take `ROADS=0` for the before shots.
+- **Street chunks:** `streetSurveyMode` defaults to `chunks`;
+  `?streetChunks=retired` hides them, `=0` draws the per-house models,
+  `=1` draws every installed chunk. The default holds
+  `DEFAULT_HELD_CHUNKS` = Oudezijds Voorburgwal 115-125 (and the per-house
+  models it replaced), which still draws black on its shade side. The
+  chunk-brightness lane (lane/chunk-brightness-20261016, 869302223,
+  `look/chunkWallExposure.ts`; doc `docs/chunk-brightness-20261016.md`)
+  is what made them presentable: walls at their photo colour normalised to
+  sunlight, 0.91–1.08 of the sunlit photo on the five measured faces (raw
+  photo ratio on shade sides 0.70–0.86, capped by the rig's 0.41 shade
+  ratio); before it they sat at 0.62–0.73.
+- **Retired `chunk-bilder-079721-x2`** after the user asked "why did this
+  get built as a custom build AND why is the roof still broken from
+  3dbag?": it was the 2026-10-10 two-house pilot chunk (per-house recipes
+  bilder-152669 and bilder-079721 with 3DBAG roofs), never replaced by a
+  block face and never under the front-roof rules; its sibling
+  chunk-bilder-152363-x2 was retired on 10-10. It showed as "Today 01:37
+  PM" because `model-first-added.json` had no chunk entries and What's new
+  fell back to the manifest's `generatedAt`, which today's re-install
+  rewrote; the index is regenerated, and every chunk now dates from 10-10.
+- **Desktop ride-perf with both defaults on:** 5/5 within budget run alone
+  (motion p95 16.8 ms, 0 frames over 100 ms, longest 83 ms; map render
+  median 2.7 ms default, 5.6 ms all landmarks resident); a run beside two
+  other Playwright suites failed the motion budget, so measure alone.
+
+## Roads from the surveyed BGT surface, behind ?roads=bgt (2026-10-16)
+
+User (2026-10-16): "road rendering needs to get fixed" (Marnixstraat busway
+by the Tweede Marnixplantsoen: red bands over grey, pavement wedges in the
+junction, zebras through the junction, rails on another grey); chose the
+surveyed BGT polygons. Lane `lane/roads-runtime-20261016` (fb2f7fcaf; plan
+`docs/plans/road-surfaces-roof-rules-20261016.md`; data roads-v1 merged
+earlier, seven pilot cells). `ownGround/roadSurfaces.ts`: `RoadIndex` over
+the cell and its neighbours and `buildRoadSurfaces` drape the BGT road
+partition (adaptive sag-only drape, shared corners, kerbs from shared
+carriage/foot edges); covered OSM ways emit no bands but stay in the
+junction graph; node fills, corner patches, pockets and path discs are
+skipped inside the survey; paint, rails and lane ribbons are clipped to
+carriageway polygons and `crossCuts` stop carriageway paint at unshared
+crossings; a red rijbaan with ≥ 12 m of tram track draws grey (the
+busway); cycle stretches the survey lays on rijbaan or parking draw as
+painted lanes above the carriageway. Regressions (`check-ground-cells`):
+171 ok; Kinkerstraat × Da Costakade west 48/49 and east 49/49 read as the
+survey, the Marnixstraat busway 49/49, Bilderdijkgracht crossings 0 paint
+triangles off the carriageway (14 before). Budget over the seven cells:
+triangles 1.10× max, 1.04× median (≤ 1.15×); build 1.20× (≤ 1.3×, loaded
+machine); 81–109 KB gz per cell. e2e paint/roads/bridge-fidelity pass with
+roads off and on. Not yet 0: `probe-junction-overlap --pairs` finds 2–3
+hidden sliver triangles at two junctions because `build-bgt-roads.ts`
+simplifies each ring alone, so shared edges differ by up to 30 cm. Sheet
+`docs/images/roads/roads-v1-before-after.jpg` (the spot names in
+`roads-v1-spots.json` need re-aiming).
+
+## Canal water is blue again, one tone for the map and the 3D water (2026-10-16)
+
+User (2026-10-16), on the finish card over the map: "why is the water this
+color now?", then "just pick a good blue". The overview transition (merged
+the same morning) made the flat map take the 3D ground's tokens at every
+zoom, so the map's light-blue canals turned the default ("bright") ground
+look's grey-green `[104, 122, 114]`. That look's water is now `#4f86a3`
+(`[79, 134, 163]`, luma ~124) in `ownGround/groundLook.ts`, read by the
+3D water and pond materials and, through `look/sunny.ts groundTokens`, by
+the basemap: one blue at every zoom, so the blend stays seamless. The test
+that pinned the grey-green now pins the default canal as blue (b > g > r,
+b − r ≥ 60); legacy-ish keeps its grey-green. Frames:
+`docs/images/look/water-blue-20261016.jpg` (Singelgracht by boat and the
+zoom-13 overview).
+
+## Buurt coverage in the app, and the first buurt generator pilot (Bellamybuurt-Zuid) (2026-10-16)
+
+User (2026-10-16), on the coverage map: "would be nice if this was bundled
+into our app … I'd love to be able to click on a neighborhood and explore
+its kits". `coverage.html` (lane/coverage-app-20261016, 0fc950d7c data,
+0b57e6fa4 page; linked from What's new, Street surveys and the chunks lab):
+the buurt map coloured by modelled share or "what we have"; click, search
+or `?buurt=<code>` opens a panel with the tier counts, top uncovered repeat
+clusters, the type libraries whose evidence pands stand there (swatches,
+kit keys, exemplar pands, source faces), block faces (installed ones link
+to `street-chunks.html?only=…`), recipe and ordinary models, landmark
+kits, building-type designs with an inline 3D preview, and the street
+surveys. `buurten.json` carries per-buurt id lists (603 KB); names, links
+and thumbnails sit in `contents.json` (254 KB) loaded on the first click;
+the build verifies every link and thumbnail on disk. A buurt with nothing
+says so and names its biggest uncovered cluster. 312 of 518 buurten have
+something, but 210 only through generic landmark kits: 122 have more than
+landmarks, 18 block-face work, 23 building-type designs, 206 nothing.
+Gaps: no exemplar photo crops ship under `public/`, building-type designs
+have no thumbnails, `street-surveys` data dates from 10-10.
+
+Buurt generator pilot (lane/buurt-generator-20261016, f6dcd8527; doc
+`docs/buurt-generator-20261016.md`), answering "how close are we to being
+able to cheaply install generators in places like this?":
+`block-face:buurt-survey` proposes 97 street-side faces from shared party
+walls and intakes the uncovered ones (49, ~85 s each);
+`block-face:auto-place` (`blockFace/autoPlace.ts`) scores every library
+type per pand (hard vetoes year ±2, frontage ±0.4 m; storeys from eaves,
+3DBAG storeys and roof form, measured wall colour and stucco, bands,
+window columns, white-bay side and share), mirrors from door/bay side,
+takes the crown from the photo skyline and a shopfront from BAG/OSM, then
+gates on an edge likeness (`stripLikeness.ts`, floor 0.15) with every
+rival type compiled on the same runs (held if a rival scores > 0.05
+higher). New kit component `tilePanels` (`buildingRecipe/tileAccents.ts`:
+yellow pier diamonds, green sill tiles) and six measured types in
+`scripts/block-face/types/bellamy/`. Result: 102 of 335 pands placed on 17
+faces, the rest held with reasons; 31 faces place nothing because their
+designs are not in the library. Five rows get a wrong type that still
+passes the gate (Jan Hanzenstraat 49–51, Ten Katestraat 29–31,
+Bellamystraat 18–20, Hasebroekstraat 69, Van Effenstraat 7D), so nothing
+is installed: the gate cannot yet certify a match. The kit still cannot
+say Hasebroekstraat 56–70's white painted timber oriels or its white
+cornice with hoist-cap dormers, a window kind per axis, double house
+doors, or balconies read from the strip. Cost: the survey, intake and
+placement are machine time (~150 s for a full placement run) a Haiku lane
+can drive; authoring types (10–20 min each, measuring is what pays: the
+flat row's score 0.05 → 0.55), kit components and gallery-size review
+need an Opus lane.
+
+## Motion stutter: longest desktop frame 383 → 83 ms, long tasks 13 → 2 per minute (2026-10-16)
+
+Lane `worktree-agent-a2001077bb7d13480` (final 23144a68e; doc
+`docs/perf-motion-stutter-20261016.md`), answering "the game isn't so much
+stuttering on loading so much as during motion/play". Fixes in commit
+order with their measured effect: restyle keeps unchanged buildings
+(66dc5dbb1; at 4× throttle frames over 50 ms 112 → 36 per minute,
+stalled time 14.8 → 5.1 s, the biggest single win); chunk installs staged
+across frames (32468dfe2; 2,120 → 224 ms at 4×, 556 → 25 ms at 1×);
+own-ground shaders precompiled (4dc3ec7a3; shader links after the start
+80 → 1); relief tiles decoded in a worker (5b98c4fc7; removes 50–100 ms
+gunzip/decode bursts); tile flush time-sliced at 5 ms a frame
+(34ba92b81; 262 → 27 ms, longest frame 333 → 67 ms at 1×); regroup
+reuses unchanged contexts (0d08e2570; 1,173 → 587 ms at 4×, frames over
+100 ms 12 → 5); and a desktop motion budget in `ride-perf.spec.ts`
+(30f545d9e: longest frame ≤ 200 ms, at most one over 100 ms). Desktop 1×,
+60 s Jordaan → Kinkerstraat, median of three, before → merged on today's
+main: frames over 50 ms 5 → 2 per minute, over 100 ms 2 → 0, longest
+frame 383 → 83 ms, long tasks 13 → 2 per minute, stalled 0.88 → 0.15 s
+per minute; p50/p95 unchanged at 16.7/16.8 ms. A same-load re-run of the
+pre-merge branch shows main added no stutter at 1×; at 4× machine load
+spreads wider than any difference (three.js +6 % CPU from the sunny
+look, not in the stalls). Still stalling, per 60 s at 4×: regroup
+`setFeatures` ~0.5 s plus ~0.1 s neighbour walk, the chunk `rebuild`
+structured clone ~0.3 s, MapLibre `receive`/diff and `sendToSource`'s
+deep clone ~0.4–0.5 s, legacy `_refreshColoredBuildingFilter` ~0.25 s
+when a landmark loads, `_updateRiderCover` and `_cameraSightlineBlocker`
+~0.1 s each; steady label passes ~1.4 s/min at 4× (72 → 250 ms at 1×
+after the merge, run 3× as often) and tree rebuilds ~0.4 s; the 50 ms
+`dt` clamp in `game.js` still slows the rider in any long frame left.
+
+## The three held faces fixed in the roof generator and installed (2026-10-16)
+
+Lane `lane/held-faces-20261016` (3cca5b1fb generator, test and golden;
+908954ac9 chunks). clercq-236681 and nassau-162289 had one cause:
+`recipeRoofFacts` measured attic depth along the BAG facade edge's
+normal, which leans off the frontage line the crown outline stands on
+(153066 by 4°, 0.61 m over 8.7 m; the Nassaukade pands 0.013–0.072 m), so
+the 70° attic face climbed the facade; a front roof is now built square
+to the frontage line (noted in the report) only when the far end sits
+> 1 cm deeper than the setback and an attic band rises, else
+byte-identical. wallen-oza-41-57: the tower-bay rule took 177943 b
+(Oudezijds Achterburgwal 55, a dormered cornice 4.2 m above the bell
+gable beside it) for a tower and gave it the neighbour's 13.09 m attic,
+leaving its dormer hovering (the 24.1 m² part); a dormered front whose
+neighbour's roof never reaches its eaves now keeps its own attic, capped
+by its own 3DBAG p95 (15.85 m). On 177915 three collinear footprint
+points left a zero-area triangle dropped and a 1.45 m T-junction that
+turned the 54 m party outline into an open loop; `splitAtDroppedSlivers`
+splits the covering triangle (front-roof eaves lines, spans ≥ 0.5 m).
+Golden: only those pands change, plus `_demo-school`'s copy of 153066
+and the same T-junction split on kinker-56-84 236325 (not installed);
+`fit-golden` 156 identical; `heldFaces.test.ts` pins all three
+(the T-junction test fails with the split off). Installed with
+`--force-install` on the re-install bar (kit gates, interference and
+party holes pass; the shared GLB audit still fails as on every chunk,
+each lower than the chunk it replaces): clercq zfight 161 → 0 m²,
+tight 93 → 5.6; nassau zfight 336 → 9.5, tight 279 → 11.2,
+opening-outside 46.3 → 48.0 m²; wallen zfight 67.7 → 4.0, largest
+off-party loop 54 → 1.9 m, nothing hovering. Still cannot say: an
+undormered front a storey above its neighbour is still taken for a tower
+bay; 153066's crenellated parapet is not modelled.
+
+## Coverage by buurt: 97.8 % of pands draw as generic boxes by default; a ranked generator to-do (2026-10-16)
+
+Lane `lane/coverage-map-20261016` (8175de1e2 data, 3c3d0211b page), from
+the user's "a progress map of postcodes? neighborhoods? that we've
+surveyed and made custom local generators for". Per municipal buurt (518,
+CC0, archived in source-data `datasets/gebieden-buurten-20261016/`), pands
+by footprint centroid and the tier the game draws them with, read from
+the loaders, one tier per pand in the order bespoke > chunk > large
+recipe > house recipe > hand-built ordinary > building type > landmark
+kit > generic. City: 192,081 pands; bespoke 461, block-face chunk 131,
+large recipe 97, per-house recipe 0 (all 19 superseded by chunks),
+hand-built ordinary 37, building type 3,075, landmark kit 345, generic
+187,935 (97.84 %). By default the game draws only bespoke, large recipe,
+hand-built and landmark kit: chunks need `?streetChunks=1` (retired by
+default 2026-10-14, HISTORY "Street-survey chunks retired") and building
+types `?buildingTypes=1`. Repetition = share of a buurt's pands in its
+top three width × height × year clusters (sheds under 3.5 m or 20 m²
+excluded); priority = repetition × (1 − modelled share). Top of the
+to-do: Kelbergen, Holendrecht-Oost, Gein 3, Blauwe Zand, Gein 4 (post-war
+low-rise); before 1945: Blauwe Zand, Tuindorp Amstelstation, Tuindorp
+Oostzaan-Oost, Tuindorp Nieuwendam-Oost, Postjeskade e.o. (712 pands,
+one 6 × 15 m × 1935 type covers 265). Bellamybuurt-Zuid ranks 282
+(repetition 0.20: the 1895–1915 rows split across 4–6 m widths and
+5-year bins), Bellamybuurt-Noord 204. Not attributed: 36 models without a
+pand (memorials, bridges, gates, houseboats), 116 landmark units on OSM
+parts, 1,714 generic OSM-part units. Extract
+`public/data/extracts/amsterdam/coverage-v1/buurten.json(.gz)` (545 / 77
+KB), `npm run build:coverage -- --publish`, `test:coverage` 6/6, page
+`docs/coverage/index.html`.
+
+## Fourteen installed faces re-installed under the roof rules; three held (2026-10-16)
+
+Lane `lane/roof-reinstall-20261016` (703ce590b, e23d73927, fd3a92664,
+d45f7c8cf). Of the 21 installed faces, the 17 whose roof class changed
+were recompiled; 14 went in (triangles before → after): marnix-c 16,192
+→ 17,470, bilder-081118-155417 16,568 → 16,964, bilder-133467-159649
+4,977 → 5,145, bilder-153622-156732 4,626 → 4,896, bilder-157757-164549
+3,136 → 3,271, bilder-161259-236206 11,159 → 11,538, bilder-161281-157756
+2,540 → 2,732, bilder-164451-156126 12,346 → 12,650, bilder-233580-162444
+9,002 → 9,256, bilder-236022-167243 17,549 → 17,973, bilder-236189-166159
+11,045 → 11,250, marnix-124-138 13,626 → 14,574, utrechtse-48-76 18,653 →
+18,942, wallen-ozv-115-125 8,627 → 8,807. Every step and neck gable on
+them is symmetric and the 3DBAG roof wedges behind gables are gone
+(clearest on the Oudezijds Voorburgwal and the Utrechtsestraat); none
+reads worse than the installed version. Kit gates, party-wall
+interference and the party-hole test pass on all 14; the separate GLB
+audit fails on these as it did on the installed chunks (opening-outside,
+geometry-regression, holes without the party-wall exemption) with
+coplanar overlap down from ~40–360 m² to 0–10 m² per face. Held:
+clercq-236681 (`roof-under-crown` fails on 153066 by 1.39 m, a 70°
+attic 14.91 → 16.30 above the crown outline), nassau-162289
+(`roof-under-crown` fails by 0.05–0.21 m on 7 pands), wallen-oza-41-57
+(5 open loops off the party walls, the largest 54 m, and a 24.1 m² roof
+part hovering 0.14 m, new since the installed chunk). Flat placements:
+utrechtse-48-76 178704 (74A-74B) flat at 10.03 m instead of a 3DBAG
+spike to 16.9 m (installed); kinker-56-84 152566 (Kinkerstraat 76-84)
+flat at 13.60 m instead of a slate hip and an 18.9 m box (compiled; the
+two raised blocks are lost, the kit has no setback top storey;
+Kinkerstraat faces are not installed); bilder-233645-236975 was already
+flat. Tile pilot golden re-recorded: the new large pand 137280 (8,708
+tris), +24..+144 drift on 10 canal-house pands, 236799, and two rows from
+earlier merges today (politie-lijnbaansgracht 169471 3,250 → 3,114 from
+the large-tier re-fit, the Westerkerk 164998 20,627 → 19,883 from the
+openings fix).
+
+## Map labels hide under the loading screen (2026-10-16)
+
+User report, with a screenshot of "Finding your way..." over Boom Chicago,
+Electric Ladyland and the Kazerne Hendrik labels: "don't show destinations
+through scrim". The DOM label overlay (`src/canalRecall/labels/labelOverlay.ts`)
+sits above the game canvas so it can share the HUD's collision rules, which
+also put it above the opaque paper the canvas paints for the menu, route setup
+and loading screen; it kept placing the start area's venues there.
+`isCoveredState` (MENU, MAP_SELECT, LOADING) now hides the overlay root. The
+check runs in the map's render frame and on its own 150 ms clock, since a state
+change need not repaint the map. `tests/e2e/labels.spec.ts` "hidden while the
+loading screen covers the map" watches every frame of a route load: the old
+bundle showed labels in 289 loading frames, the fix shows none.
+
 ## Roofs follow the front: the step-gable library bug, saddles under crowns, row coherence; 232 of 371 pands change class (2026-10-16)
 
 Lane `lane/kit-roof-rules-20261016` (1dd7652e9 planner export and

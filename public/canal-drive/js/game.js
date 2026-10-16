@@ -245,6 +245,9 @@ class Game {
   /** The finish card's tappable actions, for touch. Keyboard keeps ENTER/ESC/C. */
   _runFinishAction(id) {
     if (id === 'again') {
+      // Riding on from the finish card goes straight to the bike: the
+      // overview flight is for the first ride of a session (user 2026-10-16).
+      this._skipNextIntro = true;
       if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
       this._startNextRouteFromArrival();
     } else if (id === 'route') {

@@ -1,0 +1,111 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:29:33.009Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158671",
+   "addresses": [
+    "Bellamystraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 11-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000580006"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809199778,
+     "lngLat": [
+      4.8665683,
+      52.3671683
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1053BE",
+      "addr:street": "Bellamystraat",
+      "amenity": "cafe",
+      "branch": "Ten Katemarkt",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Fika Amsterdam",
+      "opening_hours": "Mo-Sa 07:00-19:00; Su 09:00-19:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.fikaamsterdam.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:29:33.009Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012065055",
+   "addresses": [
+    "Bellamystraat 13B",
+    "Bellamystraat 13A",
+    "Bellamystraat 13C",
+    "Bellamystraat 13D",
+    "Bellamystraat 13",
+    "Bellamystraat 15",
+    "Bellamystraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000783805"
+    },
+    {
+     "address": "Bellamystraat 15",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000785448"
+    },
+    {
+     "address": "Bellamystraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000989854"
+    },
+    {
+     "address": "Bellamystraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000989855"
+    },
+    {
+     "address": "Bellamystraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000989856"
+    },
+    {
+     "address": "Bellamystraat 13",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010003714239"
+    },
+    {
+     "address": "Bellamystraat 17",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010003714240"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

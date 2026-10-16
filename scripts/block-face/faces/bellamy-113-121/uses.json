@@ -1,0 +1,149 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:35:15.547Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073911",
+   "addresses": [
+    "Bellamystraat 113",
+    "Bellamystraat 115A",
+    "Bellamystraat 115B",
+    "Bellamystraat 115C",
+    "Bellamystraat 115D",
+    "Bellamystraat 115E",
+    "Bellamystraat 115F",
+    "Bellamystraat 115G",
+    "Bellamystraat 115K",
+    "Bellamystraat 115H",
+    "Bellamystraat 115L"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 113",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000941170"
+    },
+    {
+     "address": "Bellamystraat 115A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000941171"
+    },
+    {
+     "address": "Bellamystraat 115B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000941172"
+    },
+    {
+     "address": "Bellamystraat 115C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000941173"
+    },
+    {
+     "address": "Bellamystraat 115D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000941174"
+    },
+    {
+     "address": "Bellamystraat 115E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000941175"
+    },
+    {
+     "address": "Bellamystraat 115F",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000941176"
+    },
+    {
+     "address": "Bellamystraat 115G",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000941177"
+    },
+    {
+     "address": "Bellamystraat 115K",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000941178"
+    },
+    {
+     "address": "Bellamystraat 115H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000987148"
+    },
+    {
+     "address": "Bellamystraat 115L",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000987149"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146466",
+   "addresses": [
+    "Bellamystraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 117-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000580196"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115607",
+   "addresses": [
+    "Bellamystraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 119-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000580200"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069215",
+   "addresses": [
+    "Bellamystraat 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 121-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000580204"
+    },
+    {
+     "address": "Bellamystraat 121-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010011297078"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

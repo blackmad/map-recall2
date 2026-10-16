@@ -1,0 +1,368 @@
+{
+ "street": "Jan Hanzenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:36:26.559Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012066083",
+   "addresses": [
+    "Jan Hanzenstraat 115",
+    "Jan Hanzenstraat 115C",
+    "Jan Hanzenstraat 115D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000685023"
+    },
+    {
+     "address": "Jan Hanzenstraat 115C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012149896"
+    },
+    {
+     "address": "Jan Hanzenstraat 115D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012149897"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106541",
+   "addresses": [
+    "Jan Hanzenstraat 115B",
+    "Jan Hanzenstraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 117",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000685024"
+    },
+    {
+     "address": "Jan Hanzenstraat 115B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012149895"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162574",
+   "addresses": [
+    "Jan Hanzenstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 119",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000685025"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155647",
+   "addresses": [
+    "Jan Hanzenstraat 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 123",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000685026"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164440",
+   "addresses": [
+    "Jan Hanzenstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 125",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000685027"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166846",
+   "addresses": [
+    "Jan Hanzenstraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 127",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000685028"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157466",
+   "addresses": [
+    "Jan Hanzenstraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 129",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000685029"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162743",
+   "addresses": [
+    "Jan Hanzenstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000685030"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114483",
+   "addresses": [
+    "Jan Hanzenstraat 133",
+    "Jan Hanzenstraat 135",
+    "Jan Hanzenstraat 139",
+    "Jan Hanzenstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 133-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010000685031"
+    },
+    {
+     "address": "Jan Hanzenstraat 133",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012586653"
+    },
+    {
+     "address": "Jan Hanzenstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012586654"
+    },
+    {
+     "address": "Jan Hanzenstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012586655"
+    },
+    {
+     "address": "Jan Hanzenstraat 143",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012586656"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133356",
+   "addresses": [
+    "Jan Hanzenstraat 135",
+    "Jan Hanzenstraat 137",
+    "Jan Hanzenstraat 141",
+    "Jan Hanzenstraat 145",
+    "Jan Hanzenstraat 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 135-H",
+     "use": "industriefunctie",
+     "areaM2": 56,
+     "bagId": "0363010000685035"
+    },
+    {
+     "address": "Jan Hanzenstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012586658"
+    },
+    {
+     "address": "Jan Hanzenstraat 145",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012586659"
+    },
+    {
+     "address": "Jan Hanzenstraat 141",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012586660"
+    },
+    {
+     "address": "Jan Hanzenstraat 147",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012586661"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081189",
+   "addresses": [
+    "Jan Hanzenstraat 137",
+    "Jan Hanzenstraat 149",
+    "Jan Hanzenstraat 151",
+    "Jan Hanzenstraat 155",
+    "Jan Hanzenstraat 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 137-H",
+     "use": "industriefunctie",
+     "areaM2": 56,
+     "bagId": "0363010000685039"
+    },
+    {
+     "address": "Jan Hanzenstraat 151",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012586666"
+    },
+    {
+     "address": "Jan Hanzenstraat 159",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012586667"
+    },
+    {
+     "address": "Jan Hanzenstraat 155",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012586668"
+    },
+    {
+     "address": "Jan Hanzenstraat 149",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012586669"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237201",
+   "addresses": [
+    "Jan Hanzenstraat 139",
+    "Jan Hanzenstraat 141",
+    "Jan Hanzenstraat 153",
+    "Jan Hanzenstraat 157",
+    "Jan Hanzenstraat 161",
+    "Jan Hanzenstraat 163",
+    "Jan Hanzenstraat 165",
+    "Jan Hanzenstraat 167",
+    "Jan Hanzenstraat 169",
+    "Jan Hanzenstraat 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 139-H",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685043"
+    },
+    {
+     "address": "Jan Hanzenstraat 141-H",
+     "use": "industriefunctie",
+     "areaM2": 56,
+     "bagId": "0363010000685047"
+    },
+    {
+     "address": "Jan Hanzenstraat 153",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012586674"
+    },
+    {
+     "address": "Jan Hanzenstraat 157",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012586675"
+    },
+    {
+     "address": "Jan Hanzenstraat 161",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012586676"
+    },
+    {
+     "address": "Jan Hanzenstraat 163",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012586677"
+    },
+    {
+     "address": "Jan Hanzenstraat 165",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012586678"
+    },
+    {
+     "address": "Jan Hanzenstraat 167",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012586679"
+    },
+    {
+     "address": "Jan Hanzenstraat 169",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012586680"
+    },
+    {
+     "address": "Jan Hanzenstraat 171",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012586681"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

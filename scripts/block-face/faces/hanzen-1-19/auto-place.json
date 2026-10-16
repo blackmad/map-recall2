@@ -1,0 +1,280 @@
+{
+ "face": "hanzen-1-19",
+ "street": "Jan Hanzenstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 1.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236856",
+   "address": "Jan Hanzenstraat 1",
+   "builtYear": 1905,
+   "widthM": 4.42,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#343320",
+    "wallRaw": "#7f5f44",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.43,
+      "topWidthM": 0.4,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.345,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.22 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.22,
+       "light": 0.37
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1.4,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.5,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a two-axis front of paired windows without balconettes drawn as the three-axis 1904 balcony type, five storeys, its wall measured olive (#343320)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236554",
+   "address": "Jan Hanzenstraat 3",
+   "builtYear": 1905,
+   "widthM": 4.79,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7a5c46",
+    "wallRaw": "#7a5e43",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.25,
+      "topWidthM": 0.82,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.297,
+    "structure": {
+     "bayWidthM": 1.27,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a two-axis front of paired windows without balconettes drawn as the three-axis 1904 balcony type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236819",
+   "address": "Jan Hanzenstraat 13",
+   "builtYear": 1937,
+   "widthM": 12.44,
+   "eavesM": 15.11,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#624e3b",
+    "wallRaw": "#745a40",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 133,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 7,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.198,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 12.44 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 12.44 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.11 m = 5 storeys of 3.02 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.68 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.176 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233538",
+   "address": "Jan Hanzenstraat 17",
+   "builtYear": 1937,
+   "widthM": 15.19,
+   "eavesM": 15.2,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#9f7055",
+    "wallRaw": "#b8825f",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 162,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.134,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 15.19 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 15.19 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.2 m = 5 storeys of 3.04 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

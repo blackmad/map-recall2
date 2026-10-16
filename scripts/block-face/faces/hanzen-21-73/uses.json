@@ -1,0 +1,739 @@
+{
+ "street": "Jan Hanzenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:33:11.839Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012239620",
+   "addresses": [
+    "Jan Hanzenstraat 21",
+    "Jan Hanzenstraat 21A",
+    "Jan Hanzenstraat 21G",
+    "Jan Hanzenstraat 21F",
+    "Jan Hanzenstraat 21K",
+    "Jan Hanzenstraat 21H",
+    "Jan Hanzenstraat 21C",
+    "Jan Hanzenstraat 21B",
+    "Jan Hanzenstraat 21E",
+    "Jan Hanzenstraat 21D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 21",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000684863"
+    },
+    {
+     "address": "Ten Katestraat 2A",
+     "use": "kantoorfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000825252"
+    },
+    {
+     "address": "Ten Katestraat 4",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000825256"
+    },
+    {
+     "address": "Ten Katestraat 4A",
+     "use": "winkelfunctie",
+     "areaM2": 17,
+     "bagId": "0363010000825257"
+    },
+    {
+     "address": "Ten Katestraat 6",
+     "use": "winkelfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000825262"
+    },
+    {
+     "address": "Wenslauerstraat 2",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000864951"
+    },
+    {
+     "address": "Wenslauerstraat 2A",
+     "use": "winkelfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012064284"
+    },
+    {
+     "address": "Jan Hanzenstraat 21A",
+     "use": "winkelfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012064285"
+    },
+    {
+     "address": "Jan Hanzenstraat 21G",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012064286"
+    },
+    {
+     "address": "Jan Hanzenstraat 21F",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012064287"
+    },
+    {
+     "address": "Jan Hanzenstraat 21K",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012064288"
+    },
+    {
+     "address": "Jan Hanzenstraat 21H",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010012064289"
+    },
+    {
+     "address": "Jan Hanzenstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012064290"
+    },
+    {
+     "address": "Jan Hanzenstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012064291"
+    },
+    {
+     "address": "Jan Hanzenstraat 21E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012064292"
+    },
+    {
+     "address": "Jan Hanzenstraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012064293"
+    },
+    {
+     "address": "Ten Katestraat 6",
+     "use": "winkelfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012064294"
+    },
+    {
+     "address": "Ten Katestraat 4",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012064295"
+    },
+    {
+     "address": "Ten Katestraat 2",
+     "use": "winkelfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012064296"
+    },
+    {
+     "address": "Wenslauerstraat 2G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012064297"
+    },
+    {
+     "address": "Wenslauerstraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012064298"
+    },
+    {
+     "address": "Wenslauerstraat 2K",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012064299"
+    },
+    {
+     "address": "Wenslauerstraat 2H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012064300"
+    },
+    {
+     "address": "Wenslauerstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012064301"
+    },
+    {
+     "address": "Wenslauerstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012064302"
+    },
+    {
+     "address": "Wenslauerstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012064303"
+    },
+    {
+     "address": "Wenslauerstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012064304"
+    },
+    {
+     "address": "Wenslauerstraat 2A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012172413"
+    }
+   ],
+   "units": 28,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809231261,
+     "lngLat": [
+      4.8660984,
+      52.3678689
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1053CE",
+      "addr:street": "Ten Katestraat",
+      "name": "Blooming Interior",
+      "shop": "interior_decoration",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bloominginterior.nl/"
+     },
+     "fetchedAt": "2026-10-16T11:33:11.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2809241521,
+     "lngLat": [
+      4.8661012,
+      52.3678176
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6",
+      "addr:postcode": "1053CE",
+      "addr:street": "Ten Katestraat",
+      "name": "EFFECT(S)",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.effect-s.com/"
+     },
+     "fetchedAt": "2026-10-16T11:33:11.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 8710679539,
+     "lngLat": [
+      4.8661932,
+      52.36773
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "2",
+      "addr:street": "Wenslauerstraat",
+      "amenity": "cafe",
+      "check_date": "2024-08-24",
+      "contact:instagram": "https://www.instagram.com/samskoffielunch",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Sam's Coffee",
+      "opening_hours": "Mo-Sa 08:00-17:00; Su 10:00-17:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "takeaway": "only",
+      "website": "https://www.samskoffielunch.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:33:11.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 8710679542,
+     "lngLat": [
+      4.8660345,
+      52.3679591
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "2",
+      "addr:postcode": "1053CE",
+      "addr:street": "Ten Katestraat",
+      "beauty": "nails",
+      "name": "Kim's Nail Salon",
+      "shop": "beauty",
+      "website": "https://www.nagelstudio-kim.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-16T11:33:11.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9036188015,
+     "lngLat": [
+      4.8660021,
+      52.3680073
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21A",
+      "addr:postcode": "1053SK",
+      "addr:street": "Jan Hanzenstraat",
+      "amenity": "fast_food",
+      "check_date": "2025-05-10",
+      "contact:instagram": "flourshopamsterdam",
+      "cuisine": "mexican",
+      "name": "Flour Shop",
+      "opening_hours": "Tu-Fr 08:00-17:00; Sa-Su 10:00-16:00",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "takeaway": "only",
+      "website": "https://flourshopamsterdam.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:33:11.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160094",
+   "addresses": [
+    "Jan Hanzenstraat 23",
+    "Jan Hanzenstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000684867"
+    },
+    {
+     "address": "Wenslauerstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012151298"
+    },
+    {
+     "address": "Wenslauerstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012159987"
+    },
+    {
+     "address": "Wenslauerstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012159988"
+    },
+    {
+     "address": "Wenslauerstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012159989"
+    },
+    {
+     "address": "Wenslauerstraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012159990"
+    },
+    {
+     "address": "Wenslauerstraat 4F",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012159991"
+    },
+    {
+     "address": "Wenslauerstraat 4G",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012159992"
+    },
+    {
+     "address": "Wenslauerstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160061"
+    },
+    {
+     "address": "Wenslauerstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160062"
+    },
+    {
+     "address": "Wenslauerstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160063"
+    },
+    {
+     "address": "Wenslauerstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160064"
+    },
+    {
+     "address": "Wenslauerstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012160065"
+    },
+    {
+     "address": "Wenslauerstraat 8F",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012160066"
+    },
+    {
+     "address": "Wenslauerstraat 8G",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012160067"
+    }
+   ],
+   "units": 45,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112967",
+   "addresses": [
+    "Jan Hanzenstraat 27",
+    "Jan Hanzenstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 29-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000684881"
+    },
+    {
+     "address": "Wenslauerstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160018"
+    },
+    {
+     "address": "Wenslauerstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160019"
+    },
+    {
+     "address": "Wenslauerstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160020"
+    },
+    {
+     "address": "Wenslauerstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160021"
+    },
+    {
+     "address": "Wenslauerstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012160022"
+    },
+    {
+     "address": "Wenslauerstraat 14F",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012160023"
+    },
+    {
+     "address": "Wenslauerstraat 14G",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012160024"
+    },
+    {
+     "address": "Wenslauerstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160025"
+    },
+    {
+     "address": "Wenslauerstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160026"
+    },
+    {
+     "address": "Wenslauerstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160027"
+    },
+    {
+     "address": "Wenslauerstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012160028"
+    },
+    {
+     "address": "Wenslauerstraat 10E",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012160029"
+    },
+    {
+     "address": "Wenslauerstraat 10F",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012160030"
+    },
+    {
+     "address": "Wenslauerstraat 10G",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012160031"
+    }
+   ],
+   "units": 44,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093786",
+   "addresses": [
+    "Jan Hanzenstraat 33",
+    "Jan Hanzenstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 33",
+     "use": "industriefunctie",
+     "areaM2": 101,
+     "bagId": "0363010000684895"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164276",
+   "addresses": [
+    "Jan Hanzenstraat 37",
+    "Jan Hanzenstraat 37A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 16-H",
+     "use": "industriefunctie",
+     "areaM2": 271,
+     "bagId": "0363010001005750"
+    },
+    {
+     "address": "Jan Hanzenstraat 37-H",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010012085244"
+    },
+    {
+     "address": "Jan Hanzenstraat 37-1",
+     "use": "industriefunctie",
+     "areaM2": 82,
+     "bagId": "0363010012085245"
+    },
+    {
+     "address": "Jan Hanzenstraat 37-2",
+     "use": "industriefunctie",
+     "areaM2": 82,
+     "bagId": "0363010012085246"
+    },
+    {
+     "address": "Wenslauerstraat 16-H",
+     "use": "industriefunctie,kantoorfunctie",
+     "areaM2": 280,
+     "bagId": "0363010012088473"
+    },
+    {
+     "address": "Wenslauerstraat 16-1",
+     "use": "industriefunctie",
+     "areaM2": 168,
+     "bagId": "0363010012088474"
+    },
+    {
+     "address": "Wenslauerstraat 16-2",
+     "use": "industriefunctie",
+     "areaM2": 168,
+     "bagId": "0363010012088475"
+    },
+    {
+     "address": "Wenslauerstraat 16-H",
+     "use": "industriefunctie",
+     "areaM2": 165,
+     "bagId": "0363010012102843"
+    },
+    {
+     "address": "Jan Hanzenstraat 37A",
+     "use": "industriefunctie",
+     "areaM2": 106,
+     "bagId": "0363010012102844"
+    },
+    {
+     "address": "Jan Hanzenstraat 37-2",
+     "use": "industriefunctie",
+     "areaM2": 82,
+     "bagId": "0363010012102845"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236307",
+   "addresses": [
+    "Jan Hanzenstraat 39",
+    "Jan Hanzenstraat 41",
+    "Jan Hanzenstraat 45",
+    "Jan Hanzenstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 39-H",
+     "use": "industriefunctie",
+     "areaM2": 199,
+     "bagId": "0363010000684901"
+    },
+    {
+     "address": "Jan Hanzenstraat 45",
+     "use": "industriefunctie",
+     "areaM2": 530,
+     "bagId": "0363010000684908"
+    },
+    {
+     "address": "Jan Hanzenstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000684913"
+    },
+    {
+     "address": "Wenslauerstraat 18-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001005752"
+    },
+    {
+     "address": "Wenslauerstraat 18-1",
+     "use": "industriefunctie",
+     "areaM2": 112,
+     "bagId": "0363010001027695"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143043",
+   "addresses": [
+    "Jan Hanzenstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001008252"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080571",
+   "addresses": [
+    "Jan Hanzenstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010003702164"
+    },
+    {
+     "address": "Jan Hanzenstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 179,
+     "bagId": "0363010012568177"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236532",
+   "addresses": [
+    "Jan Hanzenstraat 65",
+    "Jan Hanzenstraat 67",
+    "Jan Hanzenstraat 69",
+    "Jan Hanzenstraat 71",
+    "Jan Hanzenstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 65-H",
+     "use": "industriefunctie",
+     "areaM2": 64,
+     "bagId": "0363010000684948"
+    },
+    {
+     "address": "Jan Hanzenstraat 67-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012085251"
+    },
+    {
+     "address": "Jan Hanzenstraat 69-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012085252"
+    },
+    {
+     "address": "Jan Hanzenstraat 71-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012085255"
+    },
+    {
+     "address": "Jan Hanzenstraat 73-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012085256"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "street": "Ten Katestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:39:51.708Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012067143",
+   "addresses": [
+    "Ten Katestraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000825258"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236297",
+   "addresses": [
+    "Ten Katestraat 7",
+    "Ten Katestraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000825263"
+    },
+    {
+     "address": "Ten Katestraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000825272"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8710679538,
+     "lngLat": [
+      4.8663661,
+      52.3679134
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "7",
+      "addr:street": "Ten Katestraat",
+      "check_date": "2025-05-10",
+      "male": "yes",
+      "name": "Kapsalon",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-16T11:39:51.708Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144382",
+   "addresses": [
+    "Ten Katestraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000825280"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083242",
+   "addresses": [
+    "Ten Katestraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000825288"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146613",
+   "addresses": [
+    "Ten Katestraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000825292"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129411",
+   "addresses": [
+    "Ten Katestraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000825304"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101150",
+   "addresses": [
+    "Ten Katestraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 360,
+     "bagId": "0363010000825315"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834770,
+     "lngLat": [
+      4.8665772,
+      52.3676036
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21",
+      "addr:postcode": "1053BW",
+      "addr:street": "Ten Katestraat",
+      "name": "Ad Straathof Marktbakkerij",
+      "shop": "bakery"
+     },
+     "fetchedAt": "2026-10-16T11:39:51.708Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

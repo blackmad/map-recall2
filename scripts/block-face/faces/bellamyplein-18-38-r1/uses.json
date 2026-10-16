@@ -1,0 +1,89 @@
+{
+ "street": "Bellamyplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:18:25.149Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164224",
+   "addresses": [
+    "Bellamyplein 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamyplein 38-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000579964"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163466",
+   "addresses": [
+    "Bellamyplein 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamyplein 36-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000579960"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153217",
+   "addresses": [
+    "Bellamyplein 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamyplein 34-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000579956"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159793",
+   "addresses": [
+    "Bellamyplein 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamyplein 32-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000579952"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166965",
+   "addresses": [
+    "Bellamyplein 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamyplein 30-H",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000579948"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

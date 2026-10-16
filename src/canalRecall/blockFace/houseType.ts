@@ -20,7 +20,7 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet'] as const;
+  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
@@ -152,6 +152,8 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.tower) out.tower = {...f.tower, bays: flipAxes(f.tower.bays!)};
   if (f.lisenes) out.lisenes = {...(f.lisenes.rightEnd ? {leftEnd: f.lisenes.rightEnd} : {}), ...(f.lisenes.leftEnd ? {rightEnd: f.lisenes.leftEnd} : {})};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
+  // Dormer indices count left to right as drawn: a mirrored front reverses them (with its dormerAt spans).
+  if (f.dormerCap && f.dormers) out.dormerCap = {...f.dormerCap, dormers: f.dormerCap.dormers.map(i => f.dormers! - 1 - i).sort((p, q) => p - q)};
   if (f.gridAt) out.gridAt = flipFrac(f.gridAt);
   if (f.balconies) {
     const n = sameCount(f.balconies.storeys, 'balconies'), flip = (l: number[]) => l.map(b => n - 1 - b).sort((p, q) => p - q);

@@ -9,7 +9,7 @@ import { openRoute } from './helpers';
 //   OWN_GROUND=1 PW_PORT=4448 npx playwright test own-ground-roads --project=desktop
 test.skip(!process.env.OWN_GROUND, 'set OWN_GROUND=1');
 
-const OUT = process.env.ROADS_SHOTS_OUT || 'artifacts/own-ground-roads/after';
+const OUT = process.env.ROADS_SHOTS_OUT || (process.env.ROADS !== '0' ? 'artifacts/own-ground-roads/bgt' : 'artifacts/own-ground-roads/after');
 type Place = { lng: number; lat: number; bearing: number };
 
 export const ROAD_SPOTS: [string, Place][] = [
@@ -22,12 +22,18 @@ export const ROAD_SPOTS: [string, Place][] = [
   ['BRU0166', { lng: 4.87445, lat: 52.37286, bearing: 40 }],
   ['BRU0044', { lng: 4.8875, lat: 52.3665, bearing: 300 }],
   ['BRU0067', { lng: 4.882711, lat: 52.366289, bearing: 0 }],
+  // roads-v1 (lane roads-runtime 2026-10-16): the Kinkerstraat over the Da Costagracht, looking east from the west quay;
+  // the Marnixstraat busway crossing the red fietsstraat at the Frederik Hendrikplantsoen, looking north.
+  ['kinkerstraat-dacostagracht', { lng: 4.87243, lat: 52.36731, bearing: 64 }],
+  ['marnixstraat-plantsoen', { lng: 4.87643, lat: 52.37421, bearing: 20 }],
 ];
 
 async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
+  // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
+  if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
   await openRoute(page, { travelMode: 'car', viewMode, abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;

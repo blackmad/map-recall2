@@ -1,0 +1,418 @@
+{
+ "face": "effen-1-9",
+ "street": "Van Effenstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 0.74,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012118314",
+   "address": "Van Effenstraat 1",
+   "builtYear": 1919,
+   "widthM": 7.37,
+   "eavesM": 13.43,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#887f7d",
+    "wallRaw": "#8a8880",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 128,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.67,
+      "riseM": 1.63,
+      "topWidthM": 0.8,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.3,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.9 m at 0.22 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.9,
+       "centre": 0.22,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1919, type 1928-1935; frontage 7.37 m, type 4.8-5.8 m; strip shows balconies (dark open axis 2.9 m at 0.22 (light 0.31): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1919, type 1928-1935",
+     "frontage 7.37 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 2.9 m at 0.22 (light 0.31): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.43 m = 4 storeys of 3.36 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.69 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.175 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146250",
+   "address": "Van Effenstraat 3",
+   "builtYear": 1919,
+   "widthM": 6.7,
+   "eavesM": 13.16,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#76756f",
+    "wallRaw": "#848177",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 136,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 3,
+      "riseM": 3.4,
+      "topWidthM": 0.38,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.539,
+    "structure": {
+     "bayWidthM": 2.05,
+     "bayCentre": 0.41,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 1.5,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086318",
+   "address": "Van Effenstraat 5",
+   "builtYear": 1919,
+   "widthM": 8.46,
+   "eavesM": 12.98,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#aeaeab",
+    "wallRaw": "#87867c",
+    "skyline": {
+     "eavesM": 14.3,
+     "eavesRow": 153,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 1.82,
+      "topWidthM": 2.1,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.67,
+    "structure": {
+     "bayWidthM": 2.13,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.27,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1919, type 1928-1935; frontage 8.46 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1919, type 1928-1935",
+     "frontage 8.46 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.98 m = 4 storeys of 3.25 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.52 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.377 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012061382",
+   "address": "Van Effenstraat 7D",
+   "builtYear": 1915,
+   "widthM": 7.3,
+   "eavesM": 13.09,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#d1bead",
+    "wallRaw": "#c7a28a",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 1.93,
+      "topWidthM": 0.7,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.489,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.22,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.6,
+       "widthM": 1.05,
+       "centre": 0.82
+      },
+      {
+       "atM": 7.38,
+       "widthM": 1.13,
+       "centre": 0.82
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.2,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1915-tile-bay scores 0.48 < 0.7 (widest light bay 1 m vs 1.7-3 m; upper accent even (type: one-sided); strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "bellamy-1915-tile-bay",
+    "score": 0.48,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.09 m = 4 storeys of 3.27 m vs the type's 3.34 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.58 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.323 (brick)"
+     },
+     {
+      "key": "bay",
+      "weight": 3,
+      "score": 0,
+      "note": "widest light bay 1 m vs 1.7-3 m"
+     },
+     {
+      "key": "accent-side",
+      "weight": 2,
+      "score": 0,
+      "note": "upper accent even (type: one-sided)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064327",
+   "address": "Van Effenstraat 9",
+   "builtYear": 1915,
+   "widthM": 6.4,
+   "eavesM": 13.04,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#ccae9c",
+    "wallRaw": "#c39e88",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 165,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.67,
+      "riseM": 1.75,
+      "topWidthM": 0.95,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.481,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.55,
+       "widthM": 0.97,
+       "centre": 0.78
+      },
+      {
+       "atM": 9.65,
+       "widthM": 0.97,
+       "centre": 0.41
+      },
+      {
+       "atM": 7.4,
+       "widthM": 1.07,
+       "centre": 0.78
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.2,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

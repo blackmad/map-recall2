@@ -1,0 +1,385 @@
+{
+ "street": "Ten Katestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:15:15.665Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162871",
+   "addresses": [
+    "Ten Katestraat 30A",
+    "Ten Katestraat 30B",
+    "Ten Katestraat 30",
+    "Ten Katestraat 30D",
+    "Ten Katestraat 30E",
+    "Ten Katestraat 30F",
+    "Ten Katestraat 30G",
+    "Ten Katestraat 30H",
+    "Ten Katestraat 30K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 30A",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000825362"
+    },
+    {
+     "address": "Ten Katestraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000825363"
+    },
+    {
+     "address": "Ten Katestraat 30D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012124649"
+    },
+    {
+     "address": "Ten Katestraat 30E",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012124650"
+    },
+    {
+     "address": "Ten Katestraat 30F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012124651"
+    },
+    {
+     "address": "Ten Katestraat 30G",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012124652"
+    },
+    {
+     "address": "Ten Katestraat 30H",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012124653"
+    },
+    {
+     "address": "Ten Katestraat 30K",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012124654"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834783,
+     "lngLat": [
+      4.866954,
+      52.3666069
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "30-A",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "amenity": "restaurant",
+      "check_date": "2026-09-20",
+      "check_date:opening_hours": "2026-09-20",
+      "cuisine": "italian",
+      "name": "PestoLab",
+      "opening_hours": "We-Mo 12:00-21:30",
+      "shop": "restaurant",
+      "takeaway": "yes",
+      "website": "http://pestolab.nl"
+     },
+     "fetchedAt": "2026-10-16T11:15:15.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163357",
+   "addresses": [
+    "Ten Katestraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 28-H",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000825354"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834782,
+     "lngLat": [
+      4.8669205,
+      52.3666572
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "name": "Wassalon Royal Clean",
+      "shop": "laundry",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-16T11:15:15.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152727",
+   "addresses": [
+    "Ten Katestraat 26A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 26A-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000825345"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7159162085,
+     "lngLat": [
+      4.8668464,
+      52.3666776
+     ],
+     "tags": {
+      "addr:housenumber": "26",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "amenity": "restaurant",
+      "check_date": "2026-09-19",
+      "check_date:opening_hours": "2026-09-19",
+      "cuisine": "japanese",
+      "name": "Narazaki",
+      "opening_hours": "Mo-Sa 17:30-22:30; Su 17:30-22:00",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-16T11:15:15.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152726",
+   "addresses": [
+    "Ten Katestraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 26-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001167733"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163944",
+   "addresses": [
+    "Ten Katestraat 24A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 24A-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000825334"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155932",
+   "addresses": [
+    "Ten Katestraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000825330"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153275",
+   "addresses": [
+    "Ten Katestraat 22A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 22A-H",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010001166918"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161731",
+   "addresses": [
+    "Ten Katestraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001167732"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161111",
+   "addresses": [
+    "Ten Katestraat 20A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 20A-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000825311"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834778,
+     "lngLat": [
+      4.8667513,
+      52.3669077
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20-A",
+      "addr:postcode": "1053CE",
+      "addr:street": "Ten Katestraat",
+      "name": "Chicken Paleis",
+      "shop": "butcher",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:15:15.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156272",
+   "addresses": [
+    "Ten Katestraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 20-H",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010001005899"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834777,
+     "lngLat": [
+      4.8667192,
+      52.3669525
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "20",
+      "addr:postcode": "1053CE",
+      "addr:street": "Ten Katestraat",
+      "name": "Zig Zag",
+      "shop": "sewing",
+      "website": "https://www.zigzagfournituren.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:15:15.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153270",
+   "addresses": [
+    "Ten Katestraat 18A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 18A-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000825300"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155752",
+   "addresses": [
+    "Ten Katestraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 18-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000825296"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834775,
+     "lngLat": [
+      4.8666586,
+      52.3670427
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "cuisine": "surinamese;javanese",
+      "name": "Eethuis Warung Switie",
+      "takeaway": "only"
+     },
+     "fetchedAt": "2026-10-16T11:15:15.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

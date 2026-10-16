@@ -971,6 +971,28 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
 }
 
 /**
+ * The plan `decorateRoof` reads (kind and rise), memoised per footprint geometry and planning inputs.
+ * The tile streamer restyles every resident building whenever a decorator input arrives (shopfronts,
+ * monument gables, landmark ids: up to four times at the start of a ride), and roof planning was the
+ * bulk of each restyle (hundreds of ms per flush, docs/perf-motion-stutter-20261016.md). The plan is a
+ * pure function of the ring and these properties, so a geometry seen with the same inputs reuses it.
+ */
+const decoratedPlans = new WeakMap<object, Map<string, Pick<RoofPlan, 'kind' | 'riseM'> | null>>();
+function decoratedRoofPlan(feature: GeoFeature): Pick<RoofPlan, 'kind' | 'riseM'> | null {
+  const geometry = feature.geometry;
+  if (!geometry || typeof geometry !== 'object') return roofPlanForFeature(feature);
+  const p = feature.properties;
+  const key = [p.id, p.facadeStyle, p.height, p.minHeight, p.roofShapeTag, p.roofShape, p.roofPlanned, p.constructionYear, p.monumentGable].map(v => typeof v === 'string' ? `s${v}` : String(v)).join('|');
+  let byKey = decoratedPlans.get(geometry);
+  if (!byKey) decoratedPlans.set(geometry, byKey = new Map());
+  if (byKey.has(key)) return byKey.get(key)!;
+  const plan = roofPlanForFeature(feature);
+  const kept = plan ? { kind: plan.kind, riseM: plan.riseM } : null;
+  byKey.set(key, kept);
+  return kept;
+}
+
+/**
  * Tile decorator for the three.js looks: buildings that get a real roof have
  * their plain wall lowered to the eaves (`roofEavesHeightM`, which the wall-top
  * expression already honours) and stop drawing the flat lid (a shaped
@@ -984,7 +1006,7 @@ export function decorateRoof<T extends GeoFeature>(feature: T): T {
   // A measured eaves height is never overridden; an OSM roof shape we can draw is honoured, others left alone.
   const tagged = p.roofShape !== undefined && p.roofShape !== null && p.roofShape !== '' && p.roofShape !== 'flat';
   if (Number(p.roofEavesHeightM) > 0 || (tagged && !honouredRoofTag(p.roofShape) && !p.monumentGable)) return feature;
-  const plan = roofPlanForFeature(feature);
+  const plan = decoratedRoofPlan(feature);
   if (!plan) return feature;
   const props: Record<string, unknown> = { ...p, roofPlanned: true, roofShape: plan.kind, roofEavesHeightM: Number(p.height) - plan.riseM };
   if (tagged) props.roofShapeTag = p.roofShape;

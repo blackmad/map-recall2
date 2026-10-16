@@ -1,0 +1,131 @@
+{
+ "face": "hasebroek-116-118",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2018-06-13",
+ "seconds": 0.45,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012149447",
+   "address": "Hasebroekstraat 118",
+   "builtYear": 1915,
+   "widthM": 8.34,
+   "eavesM": 12.94,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#2a2217",
+    "wallRaw": "#363728",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 726,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 8.34 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 8.34 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.94 m = 4 storeys of 3.23 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.53 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144553",
+   "address": "Hasebroekstraat 116",
+   "builtYear": 1915,
+   "widthM": 5.7,
+   "eavesM": 12.95,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#28241b",
+    "wallRaw": "#38332a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 726,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
