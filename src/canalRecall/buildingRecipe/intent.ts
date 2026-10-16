@@ -19,6 +19,14 @@ export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as co
 export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
 export const CROWN_CAP_RISES = ['low', 'normal'] as const;
 export const CROWN_CAP_SPANS = ['narrow', 'medium', 'wide'] as const;
+/**
+ * Flank curve of a neck/bell crown, from the foot at the eaves to the neck (both flanks, mirrored). `concave`: the hollow
+ * sweep of a neck gable's claw pieces and a bell's flared flanks, low at the foot and rising steeply into the neck (the
+ * default: every bell/neck flank measured on the 2026-10-16 faces was concave or ogee); `ogee`: concave at the foot,
+ * convex into the neck (an S); `straight`: a plain slant (Utrechtsestraat 62a, 169207); `convex`: the flank bulges out (a
+ * quarter dome, the legacy sine shoulder).
+ */
+export const CROWN_SHOULDERS = ['concave', 'ogee', 'straight', 'convex'] as const;
 export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'right', 'left-recessed', 'right-recessed'] as const;
 export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
 export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
@@ -194,6 +202,8 @@ export interface FrontIntent {
   crownCapSpan?: typeof CROWN_CAP_SPANS[number];
   /** Cap height: `low` = a shallow pointed pediment/segment (about 0.35 m), default `normal`. */
   crownCapRise?: typeof CROWN_CAP_RISES[number];
+  /** Neck/bell flank curve (CROWN_SHOULDERS); read from the strip skyline (`flankCurvature`), default `concave`. */
+  crownShoulder?: typeof CROWN_SHOULDERS[number];
   /**
    * Window axes. The front has `axisGrid` vertical axes (default: the largest per-storey bay count above the
    * ground storey). Every storey's windows sit on those axes, so they line up between storeys and the piers
@@ -758,6 +768,16 @@ export interface LargeWallIntent {
    */
   windowShape?: LargeWindowShape;
   /**
+   * `panes`: pane-split glazing (block kit `WinParams.paneSplit`): the frame is one sheet at the back of the recess and the
+   * glass separate panes in front of it, so frames, mullions and transoms cost no bar boxes (white-framed cross windows on
+   * a byte budget). Absent: the kit's frame ring and bar boxes, byte-identical.
+   */
+  glazing?: 'panes';
+  /** Stone courses at the windows' sill line (`sill`, replacing the per-window sills) and head line (`head`) on every upper storey. */
+  courses?: ('sill' | 'head')[];
+  /** The ground storey is a souterrain: a low raised basement (blockBuilding/systems.ts SOUTERRAIN) with two small windows per bay (`single`: one), arched with `arches.ground`. */
+  souterrain?: boolean | 'single';
+  /**
    * `glazed-hall` (Apollohal): the brick base rises to `base` (fraction of the eaves height); above it one glass skin to the
    * eaves, divided into `lights` columns per bay (`baysPerStorey` = the structural posts) and `rows` rows by a mullion grid.
    */
@@ -783,7 +803,7 @@ export interface LargeWallIntent {
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
    * `voussoir` (stone with imposts and a keystone) or `none`.
    */
-  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
+  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'blocks' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
   /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
@@ -967,6 +987,10 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     problems.push(...deBaarsjesProblems(f, intent?.palette, at));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
+    if (f.crownShoulder !== undefined) {
+      oneOf(f.crownShoulder, CROWN_SHOULDERS, `${at}.crownShoulder`);
+      if (!['neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownShoulder: only a neck or bell crown has curved flanks (gable ${f.gable})`);
+    }
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
     if (f.axisGrid !== undefined) count(f.axisGrid, `${at}.axisGrid`, 1, 16);
     for (const [k, v] of Object.entries(f.storeyAxes ?? {})) {

@@ -729,6 +729,18 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Chunks vs generic boxes, the colour gap** (2026-10-16, HISTORY "One
+  wall material"): light and material now match; the generic period-prior
+  palette is about twice as light as measured walls. Next: measured colours
+  for generic facades next to chunks (facade-colour pipeline). Whether shade
+  sides go past 0.55 toward flat overcast light is the user's call.
+- **Bridge follow-ups** (2026-10-16, HISTORY "Bridges: canal-mouth
+  parapets"): the way-deck railing that runs diagonally across the cycle
+  path at the Jan Evertsenstraat/Erasmusgracht end (apply `parapetRuns`'
+  turn-in rule to way decks, end the parapet at the quay line); the
+  mid-span parapet jog on widened sides (BRU0063, BRU0108); the 31 of 1,294
+  road bridge ways still without a surface (`audit-bridge-surfaces.ts
+  --all`; 137 before way decks); cap that count in a check.
 
 - **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
   bridge deck is never the answer")**: the street plaque
@@ -1388,6 +1400,24 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **BAG holes after the 1,601 fills (2026-10-16, HISTORY "BAG pands the tiles
+  never drew")**: 1,325 post-2019 pands wait for AHN5 or a newer 3DBAG; the 12
+  complexes over 5,000 m² (e.g. 0363100012241555, 3.2 ha at the Zuidas) and the
+  130 half-drawn pands need a look; fills are flat boxes with no roof shape;
+  Prinsengracht 221-227 deserves a kit/recipe front. Models that suppress pands
+  their GLB barely covers need a per-model photo review: felix-meritis 174322
+  (0 %), westerkerk 174220/174222 (10 %) and w749287964 (25 %), sint-agneskerk
+  197426, vriesseveem-9 w755510629, dominicuskerk w749599657, vinoly w754894011.
+
+- **Bridge railings after the water-side fix (2026-10-16, HISTORY "Bridge
+  railings stop at the water")**: gates remain on 12 bridges (worst BRU0981, a
+  culvert with a diagonal channel; BRU0691, BRU1904, BRU2131, BRU0307); parapets
+  inside a road polygon on BRU1935, BRU0001 Muntsluis, BRU0223, BRU0007 (deck
+  edge narrower than the surveyed road); BRU0165 and BRU0173 are measured along
+  the canal and need re-orienting; BRU0257's west outline runs ~10 m over open
+  water; shorter parapets gave some arch bridges lamp posts (`lampAt`); iPhone
+  perf unmeasured.
+
 - **Tower-podium leftovers (2026-10-16, HISTORY "Towers on podiums")**: the 27
   model-owned ridge-tower pands stay whole until the hide sinks resolve `pand`
   (`coloredBuildingLayerFilter`, the three.js ranges id in
@@ -1559,17 +1589,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   upper tower moves ~1.3 m south against the pitched views; inventory
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
-- **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
-  pass"; user report 2026-10-16, HISTORY "One model per ground"): the long
-  walls either side of the Mauritskade portal (bearings 331/151/241) are
-  still the kit's plain cells on dark brown brick (no frames, no white stone
-  bands, brick far darker than the photo's red), so the measured portal reads
-  as a panel pasted on; in-game frames from `review:sheet` show it. Then the swung gables (wing, risalit) keep 3DBAG's plain outline; the
-  south-pavilion clock dormer, relief iconography, arcade brick tracery,
-  risalit souterrain arches, the wing's ground floor and banner field;
-  only 3.4 KB of byte headroom (cut elsewhere first); inventory text says
-  "two-light" on now single-light wings; one 99 m² blank wall at bearing
-  61 unexplained.
+- **Tropenmuseum, after the fourth pass** (2026-10-16, HISTORY "Tropenmuseum,
+  fourth pass"): the measured brick #a2856c reads tan-brown against the card
+  photo's rosier red and the scene lighting keeps it duller than the sunlit
+  photo (check the tint method against a sunlit crop); lights grouped in twos
+  and threes per bay, paired souterrain lights, iron bars, haunch blocks,
+  dentil and console cornices, brick dormers with copings and the swung gables
+  are not expressed (no byte budget left: 3.7 KB headroom); `audit:glb`
+  opening-outside 21 parts / 33.1 m² on twisted 3DBAG faces wants a plane-
+  clustering fix or a baseline entry; the 151 side has no panorama (inferred).
+  The rebuild also showed committed GLBs for hoofdbureau-elandsgracht,
+  maagdenhuis and roeterseiland-rec-a out of date with their source.
+
 - **Large tier after the components lane** (2026-10-14): OZ Achterburgwal
   233 needs a per-group party-wall override to place its baroque gateway
   (panel 266 hits a neighbour on one of three probes); Engelsesteeg's

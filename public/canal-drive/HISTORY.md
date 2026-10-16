@@ -1,5 +1,164 @@
 # Canal Recall — what is built
 
+## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
+
+User (2026-10-16): "I feel like there should probably be a building here?", an
+empty paved lot on the Prinsengracht east quay between the 1690 twin warehouses
+at 211-217 and the Leliegracht. It is Prinsengracht 221-227
+(NL.IMBAG.Pand.0363100012169308, 1939, 53 dwellings, 1,813 m²): missing from
+3DBAG v20250903 (no CityJSON tile, WFS 0 features, API 502), and
+`build-lod1-city.ts` drops an unmatched OSM outline inside BAG coverage unless
+it is a part, stacked or named, so neither tile set drew anything. No check
+compared the tiles with the BAG register. Lane `worktree-agent-a9c343c0d64a0f0ae`
+surveyed 413,025 standing pands (PDOK WFS + AHN WCS, both CC0): 8,188 holes
+(975,538 m²). Filled 1,601 (110,346 m²) as flat AHN p70 boxes (`bagGaps.ts`,
+`publish-bag-gaps.ts`); left, each with a reason in
+`scripts/data/bag-gaps/bag-gaps.json`: 4,647 under 10 m², 1,325 built after
+2019 (no AHN4 height), 468 with nothing ≥ 2 m in AHN, 130 already 20-50 %
+drawn, 12 over 5,000 m², 3 under a model, 2 without AHN. The tiles gained only
+the 3,202 features (1,601 each set); `check:bag-gaps` (in `check:canal`) pins
+Prinsengracht 221-227 at 12-20 m (15.46 m) and fails on any missing fill. Re-run
+`publish-bag-gaps.ts --write` after any full `build-lod1-city.ts` rebuild.
+
+## Bridge railings stop at the water (2026-10-16)
+
+User (2026-10-16): "why do the gates dip into the road?". `bridgeKit.ts`
+`parapet()` drew each side over the whole measured deck span, which runs metres
+past the water onto the quays, where `deckWidths` pulls the edge in to the road
+half-width: the railing turned 90° across footway and cycle lane and ran along
+the carriageway (BRU0166 Nassaukade/Bilderdijkgracht; BRU0063 down into the
+road). Lane `worktree-agent-ace959b5342296a67`: `railingRuns.ts` keeps each
+side where its edge meets the water (+1.5 m onto the abutment), breaks at gates
+(>45° over >0.75 m), folds and long dry stretches, and never stands on a bridge
+way crossing the parapet line. Citywide (`check:bridge-railings`): bridges with
+a gate 559 → 12, lateral gate run 6,473 → 76 m, parapet inside a carriageway or
+cycle polygon 50 bridges / 568 m → 6 / 75 m (roads-v1 pilot cells). Regressions
+BRU0166, BRU0063, BRU0257 in `check:own-ground-cells`, unit tests, e2e
+`BRIDGES=RAILINGS`; checked against PDOK orthophoto crops.
+## One wall material for every building, shade ratio 0.55, measured slate (2026-10-16)
+
+User (2026-10-16): "can't you just match the materials between them?" (block
+faces reading darker than the generic boxes beside them). Lane
+`lane/one-material-20261016` (794babb4b, a5f5a13fa); doc
+`docs/one-material-20261016.md`, sheet `docs/images/look/one-material-20261016.jpg`.
+A same-hex/same-normal probe (`lookParity` `chunk` and `recipe-measured`
+paths) and an in-game white-Lambert pass showed chunk and same-facing
+generic walls already got identical light. Two real differences removed:
+generic walls drew `MeshStandardMaterial` (≈ +3 luma on sun sides, glints),
+now `MeshLambertMaterial` like every other building
+(`rendererShared/litFacadeMaterial.ts`, cache `-v7`); and they lacked the
+1.106 sunlit fallback gain (`look/sunny.ts litFacadeWallGain`). Generic,
+chunk and measured-recipe walls of one colour now agree within 2 luma (new
+"one material" test in `look-parity.spec.ts`). `SUNNY_SHADE_RATIO` 0.55
+(was 0.41) for every building, exposure 1.081, ground gain 0.896 so the
+ground draws unchanged. Slate from the orthophoto's 174,801 slate roofs
+(`MEASURED_SLATE` #76808f / #606b79 / #8c939c), so chunk roofs draw 88–122
+instead of 54–75. Frames: walls +5–8 luma, roofs +15–22, chroma held. The
+remaining chunk-vs-neighbour gap is colour, not light: the generic
+period-prior palette runs about twice a measured chunk's albedo (Nassaukade
+0.43 vs 0.22). Shade sides reach 0.65–0.82 of the sunlit photo (the rig
+caps them at 0.77 at 0.55). Oudezijds Voorburgwal 115-125 stays held (65 %
+of wall pixels under luma 60 against its photo's 29 %). Desktop ride-perf
+5/5 under the browser lock at load 6 (map render 2.3 ms default, 3.9 ms all
+landmarks resident; motion longest 66.7 ms).
+
+## Neck and bell gables curve the right way: concave shoulders, measured from the photo (2026-10-16)
+
+User (2026-10-16), on a Wallen review sheet: "weird that the kit inverts the
+curve of the roof from concave to convex or vice versa". Lane
+`lane/gable-curves-20261016` (1599228cb). Cause in `fit.ts crownProfile`:
+neck flanks used `shoulderCurve 0.6` (f^0.6) and bell flanks fell back to
+`sin(f·π/2)`, both bulging outward; real claw pieces and bell flares stay
+low at the foot and rise steeply into the neck (Oudezijds Achterburgwal
+177920: the claw 0.05–0.4 m over the eaves until 0.2 m from the neck).
+New `crownShoulder: 'concave' | 'ogee' | 'straight' | 'convex'` on the
+front intent (neck/bell), default concave (quarter ellipse tangent to the
+neck); landmark builders without the option stay byte-identical.
+`gableFromStrip.flankCurvature` measures each flank against its chord: 19
+of 25 measured bell/neck fronts read concave (Utrechtsestraat 66-68 set
+`straight`). Roofs over the crowns: `roof-under-crown` sampled only 5 mm
+inside the facade, so an attic standing 1.5–2.8 m over the shoulders
+passed; `roofAboveCrownFrontView` now checks the whole plot square to the
+frontage and a new `roof-behind-crown` gate checks the chunk; saddles
+behind full-front neck/bell crowns may drop to 3 m below the cornice at the
+party walls; every own roof sits under its crown. Reinstalled
+wallen-oza-41-57, wallen-ozv-115-125, utrechtse-48-76, nassau-162289,
+bilder-164451-156126, bilder-233580-162444. Still open: a neighbour's roof
+behind an oblique party wall showing beside a crown (177915 by 177916,
+2.9 m), step/spout/point gables not yet under the front-view check
+(bilder-081118-155417), and the kit cannot yet say neck width (fixed 0.5 of
+the front; photos 0.38–0.45), claw height, a cornice band and pediment
+wider than the neck, an inset foot ledge, or a mansard with hipped sides.
+
+## Parking bays read as street, not stripes (2026-10-16)
+
+User (2026-10-16), Prinsengracht by the Pulitzer: "are these bits from BGT?
+I don't think we need to draw parking spots". The bays (BGT parkeervlak)
+already drew in the quay's brick; the stripes were the small footway
+polygons between them (islands and tree pits), drawn as raised pale paving
+with granite kerb lines. `RoadIndex.parkingIslands`: a foot polygon of at
+most 40 m² bordered by parking for at least half its perimeter draws as
+parking (the bays' mesh, road height) and its kerbs are dropped (a kerb
+with the street on both sides). 198 islands (2,475 m²) in the seven pilot
+cells. Unit test in `roadSurfaces.test.ts`, which also now follows
+`PAINT_ON_SURVEY` (two paint tests there had failed since the no-paint
+switch; the file is outside the npm suites).
+
+## Bridges: canal-mouth parapets at the Bullebakssluis, decks for unmeasured bridge ways (2026-10-16)
+
+User (2026-10-16): "no idea what this bridge is trying to be" (Marnixstraat
+over the Lijnbaansgracht mouth, BRU0160 Bullebakssluis) and "bridge missing
+entirely here" (Jan Evertsenstraat over the Erasmusgracht, OSM 323258135).
+Lane `lane/marnix-bloemgracht-bridge-20261016` (49d439acc).
+- **Railing stubs:** `decks.ts deckWidths` follows the skewed quay, so the
+  last stations narrow (16.3 → 9.5 → 3.5 m) and the parapet, interpolated
+  toward them, turned in across pavement and cycle path. `parapetRuns`
+  drops turned-in end stations; dips ≤ 3 m between full-width stations are
+  filled. Parapets shortened on 347 of 1,092 measured decks (nearly all by
+  ≤ 0.5 m, max 1.8 m).
+- **Canal-mouth bridges:** flush decks ≥ 12 m wide, ≥ 1.5× their span,
+  pre-1940 or masonry (31 decks) get a `brick-rail` parapet (brick wall,
+  stone coping, iron rails, brick end piers, no lamps) and flat openings
+  under steel/concrete decks; measured facts still win. BRU0160 was a
+  segmental arch with balustrade and lamps; the panorama shows a flat steel
+  girder with brick abutments.
+- **Missing bridges:** not caused by BGT roads (pilot cells: 11 bridge ways
+  without a surface with roads, 19 with bands; none a road bridge). Bridge
+  ways with no measured deck or flat footprint draped on the relief (−0.9 m
+  in the canal) under the water. `ownGround/wayDecks.ts` gives a straight
+  bridge way crossing ≥ 2 m of water, with land within 6 m at both ends and
+  no deck within 4 m, its own flush deck (parallel ways share one).
+  City-wide audit (`audit-bridge-surfaces.ts --all`): road bridge ways
+  with no surface 137 → 31 of 1,294 (some of the 31 lie outside the
+  elevation data, in Zaanstad and Haarlemmermeer).
+  ~+50 ms `cellInput` per cell.
+- Regressions in `check-ground-cells --parapets` (BRU0160 in both road
+  modes; way 323258135 has a surface, pin live) and unit tests. Frames:
+  the lane's `artifacts/marnix/sheet-janevertsen.png`, `sheet-chase-south.png`.
+Still open: on the Jan Evertsenstraat way deck one railing end runs
+diagonally across the cycle path; the parapet jogs outward mid-span on
+widened sides (BRU0063, BRU0108); the art-installation footbridges (De
+Oase, De Octopus, Grachtenvlinder) draw in neither mode.
+
+## Tropenmuseum, fourth pass: the walls around the portal dressed (2026-10-16)
+
+User (2026-10-16): the measured Mauritskade portal read as a panel pasted onto
+plain dark-brown walls with bare blue cells. Lane `worktree-agent-a2ff32df9c82e9393`,
+from the `review:sheet` IN GAME column: the 331 street wings and museum wing and
+the 241 low wing get white-framed windows split into panes (round-arched
+three-light with springer and key blocks on the museum wing, cross windows on
+the street wings, framed transoms at the rear), continuous sill and head
+courses, a souterrain and a cornice; brick measured from three panorama crops
+#a2856c (was #8a5a47), stone #e2d6bc, frames #efece3. New kit options, unchanged
+output when absent (156 fit goldens identical): `glazing: "panes"`,
+`courses`, `souterrain`, `arches.band: "blocks"`, `windows: "three-light"`.
+Fully dressed it was 44.0k tris / 637 KB; the shipped cut is 33.9k / 496 KB
+(single souterrain lights, no tower cornice, no courses on rear and court
+walls, back faces within 25 cm culled), lod1 7.3k. `audit:glb` still reports
+opening-outside 21 parts / 33.1 m², mostly pane sheets on twisted 3DBAG faces
+(the audit's plane clustering; probes show brick around them). `check:canal`
+157/157.
+
 ## Hollow landmark cards: Multatuli and 28 more sourced (2026-10-16)
 
 User (2026-10-16), on the Multatuli bust's card ("LANDMARK · W SOURCE · MULTATULI"
