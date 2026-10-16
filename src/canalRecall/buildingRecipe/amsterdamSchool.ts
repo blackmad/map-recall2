@@ -149,7 +149,9 @@ export function addCanopies(group: T.Group, intent: CanalHouseIntent, recipe: Ca
       // A measured glass-block colour is its own material: a measured tint, so the look keeps the pale band instead of the dark pane.
       const glassMaterial = material(c.glassBlocks.colour ?? GLASS_BLOCK.glass);
       if (c.glassBlocks.colour) glassMaterial.userData = {tintSource: 'measured'};
-      facade.add(meshOf(glass, glassMaterial, `canopy/${f.id}/glass-blocks`, 'canopy', 'glass', intent.pandId));
+      // A measured band is matte (slot trim): as glass it took the pane shading and rendered 1.3-2x the strip's colour
+      // (Jan Evertsenstraat 91-135 #676852 for #4e4f3e; 94-142, north-facing, #737356 for #373729).
+      facade.add(meshOf(glass, glassMaterial, `canopy/${f.id}/glass-blocks`, 'canopy', c.glassBlocks.colour ? 'trim' : 'glass', intent.pandId));
       // With a measured band the joints are read with it: the strip median already holds them, so the bright default
       // mortar (a quarter of the band's area) lifted the 91-135 bands 1.6x over the photo; draw them 1.3x the glass.
       const mortar = c.glassBlocks.colour ? measuredMortar(c.glassBlocks.colour) : GLASS_BLOCK.mortar;
