@@ -3355,6 +3355,8 @@
     },
     {
       id: "wereldmuseum-amsterdam",
+      status: "held",
+      heldReason: "Superseded by `tropenmuseum` (the measured 2026-10-14 model of the same KIT complex, same landmark). Both were drawn on top of each other: the new entrance faces poked through this 2026-10-04 massing (user report 2026-10-16). modelOverlap.test.ts now fails on any two drawn models sharing a landmark or a suppressed pand.",
       name: "Wereldmuseum Amsterdam \u2014 KIT complex",
       landmarkId: "extract_landmarks_754896207",
       modelUrl: "./models/wereldmuseum-amsterdam.glb",

@@ -14,7 +14,7 @@
     "test:rose-gardens": "node --import tsx --test src/canalRecall/roseBeds.test.ts && node --import tsx scripts/check-rose-gardens.mjs",
     "test:landmark-shading": "node --import tsx --test src/canalRecall/landmarks/landmarkShading.test.ts",
     "build:street-surveys": "esbuild src/canalRecall/streetSurveys/page.ts --bundle --format=iife --outfile=public/canal-drive/js/street-surveys.bundle.js --minify",
-    "test:building-taxonomy": "node --import tsx --test src/canalRecall/buildingCategory.test.ts src/canalRecall/streetSurveys/classify.test.ts",
+    "test:building-taxonomy": "node --import tsx --test src/canalRecall/buildingCategory.test.ts src/canalRecall/streetSurveys/classify.test.ts src/canalRecall/landmarks/modelOverlap.test.ts",
     "street-surveys": "node --import tsx scripts/street-surveys/build.ts",
     "block-face:gables": "node --import tsx scripts/block-face/gable-from-photo.ts",
     "test:landmark-lod": "node --import tsx --test src/canalRecall/landmarks/landmarkLod.test.ts",
