@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## Landmark cards: sourced English facts, and an audit for bare definitions and leftover Dutch (2026-10-16)
+
+User (2026-10-16), on the Huis Bartolotti arrival card: "this is a really
+uninspiring fact for this house that has a whole wikipedia page". The card
+read "Het Huis Bartolotti (also Het Bonte Huis) is a canal house at
+Herengracht 170-172". Three causes. `splitDetail` (`landmarkData.ts`) keeps
+whole sentences up to 280 characters, so a long second sentence leaves the
+bare first one. The arrival card reads the raw landmark (`presentationRuntime.ts`
+`_finishLandmark`), not the rotated trivia notice, so the three published
+Bartolotti facts never reach it. And `protectNames` (`scripts/lib/translation.ts`)
+keeps the Dutch article in front of a protected name ("Het [Huis Bartolotti]").
+Lane `lane/landmark-card-text-20261016`: `landmark-card-overrides.json` holds 43
+curated English cards (Bartolotti first: built c. 1617 for Willem van den Heuvel,
+who took the name Bartolotti to inherit, attributed to Hendrick de Keyser, bending
+twice with the Herengracht), each with source URL, article, language, the
+verbatim original passages (Dutch kept), licence and the text it replaces.
+`audit:landmark-cards --publish` writes them into `funFact` and the drive-by
+`opening`; the published diff is exactly 43 `funFact`/`funFactSourceUrl` and 43
+`opening` fields, `wikipediaExtract` untouched. `landmarkCardAudit.ts` and
+`test:landmark-cards` (now in `check:canal`) flag definitional-only and
+Dutch-leaking cards; Bartolotti is the named regression. Over 537 cards: 139
+flagged before (45 definitional, 3 Dutch, 92 empty), 96 after (4, 0, 92).
+Re-run `--publish` after any extract regeneration or `facts:attach-openings
+--force`.
+
 ## Bellamybuurt-Zuid: 12 auto-placed runs installed (69 pands) (2026-10-16)
 
 Lane `lane/buurt-generator-2-20261016` (0ec8a8cfb). The pilot's photo gate
