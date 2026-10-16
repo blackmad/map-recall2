@@ -4,6 +4,7 @@ import {buildCentraalComplex,clipRoofPanel} from './landmarks/centraal-complex-b
 import source from './landmarks/centraal-complex-footprints.json';
 import type {BuildingTools} from './landmarks/cultural-builders';
 import {MANUAL_LANDMARKS} from '../src/canalRecall/landmarks/manualModels';
+import {loadMaterialSoup} from './landmarks/material-soup';
 
 const group=new T.Group(),geometries:T.BufferGeometry[]=[];
 const add:BuildingTools['add']=(g,_c,x=0,y=0,z=0,a=0)=>{g.rotateY(a);g.translate(x,y,z);geometries.push(g);group.add(new T.Mesh(g,new T.MeshBasicMaterial({side:T.DoubleSide})));};
@@ -46,5 +47,21 @@ for(const neighbor of ['w26726075','w139016081','NL.IMBAG.Pand.0363100012178504'
  assert.ok(Math.abs(z0+164.9)<0.5&&Math.abs(z1+146.5)<0.5,`lettering spans the measured band z -164.9..-146.5 (${z0.toFixed(1)}..${z1.toFixed(1)})`);
  assert.ok(letters.every(l=>l[4]>12),'letters lie on the curved canopy roof (14.8 m at the north edge of the band), not the 6.5 m bus deck');
  assert.equal(spec.materialOverrides?.pink,'#7a4850','lettering keeps its measured maroon, not the bright orange of other sources');
+}
+// The lod1 east wing stays a solid wall (integrator review 2026-10-16: at the default simplifier error its 1.4 m brick bands
+// between the window rows collapsed and the sky showed through, measured 96-211 of 233 samples open per storey).
+// Seen square-on, the front (walls, glass, frames within 0.5 m of z 0) must cover x 129..245 in all three storeys.
+for(const file of ['public/canal-drive/models/centraal-station.glb','public/canal-drive/models/centraal-station.lod1.glb']){
+ const soup=await loadMaterialSoup(file),P=soup.positions,I=soup.indices,front:number[][]=[];
+ for(let t=0;t<I.length/3;t++){
+  const v=[0,1,2].map(k=>[P[I[t*3+k]*3],P[I[t*3+k]*3+1],P[I[t*3+k]*3+2]]);
+  if(v.some(p=>p[2]<-0.5||p[2]>0.5||p[0]<127))continue;
+  const nz=(v[1][0]-v[0][0])*(v[2][1]-v[0][1])-(v[1][1]-v[0][1])*(v[2][0]-v[0][0]);
+  if(Math.abs(nz)>1e-6)front.push(v.flatMap(p=>[p[0],p[1]]));
+ }
+ const inside=(x:number,y:number)=>front.some(([ax,ay,bx,by,cx,cy])=>{const d1=(x-bx)*(ay-by)-(ax-bx)*(y-by),d2=(x-cx)*(by-cy)-(bx-cx)*(y-cy),d3=(x-ax)*(cy-ay)-(cx-ax)*(y-ay);return !((d1<0||d2<0||d3<0)&&(d1>0||d2>0||d3>0));});
+ const missing:number[]=[];
+ for(const y of [3.5,8,12.5])for(let x=129;x<=245;x+=0.5)if(!inside(x,y))missing.push(x);
+ assert.ok(missing.length<=4,`${file}: east-wing front is see-through at x ${missing.slice(0,8).join(", ")} (${missing.length} of 699 samples)`);
 }
 console.log({triangles,bounds,roofCount:source.parts.length,groundClearance:hits[0].point.y});
