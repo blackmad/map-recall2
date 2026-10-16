@@ -21,7 +21,7 @@ import { openRoute } from './helpers';
 // interval is the display cadence (16.7 or 33.3 ms depending on the machine
 // and whether its display is awake) whenever the frame fits. BUNDLES_DIR=<dir>
 // serves *.bundle.js from a local build (measure before the integrator rebuilds).
-test.skip(!process.env.PERF_RIDE, 'set PERF_RIDE=1 to measure');
+test.skip(!process.env.PERF_RIDE && !process.env.PERF_MOTION, 'set PERF_RIDE=1 (or PERF_MOTION=1 for the motion test only) to measure');
 
 /**
  * Pinned at the 2026-10-13 desktop numbers after the label and landmark
@@ -100,6 +100,7 @@ const results: Record<string, unknown>[] = [];
 
 for (const variant of variants) {
   test(`ride frame cost: ${variant.label}`, async ({ page }, info) => {
+    test.skip(!process.env.PERF_RIDE, 'set PERF_RIDE=1 to measure');
     test.setTimeout(300_000);
     // OWN_GROUND=1|0 forces the own ground (default on since 2026-10-14) on or off.
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
@@ -186,3 +187,76 @@ for (const variant of variants) {
     }
   });
 }
+
+// Motion stutter (2026-10-16, docs/perf-motion-stutter-20261016.md): the rider carried on rails at a
+// constant speed through the Jordaan to Kinkerstraat (Noorderkerk -> Westermoskee via Westerstraat, the
+// Leliegracht, the Westerkerk, the Prinsengracht, Rozengracht, De Hallen), questions shown but not
+// holding the ride; after a 10 s warm-up, 60 s of rAF intervals while tiles, chunks and ground cells
+// stream in. Same route and method as scripts/motion-stutter.mjs (which adds the attribution).
+// Desktop, no throttle. Before the fixes (3 runs): 4-6 frames over 50 ms a minute, 1-3 over 100 ms,
+// longest 333-600 ms. After: see the doc; none over 100 ms, longest under 100 ms.
+//   PERF_MOTION=1 PW_PORT=4544 npx playwright test ride-perf --project=desktop -g motion
+const MOTION_BUDGET = { longestMs: 200, over100: 1, over50: 4 };
+const MOTION_START = 'lm-extract_landmarks_433737872', MOTION_DEST = 'lm-extract_landmarks_1632187034';
+const MOTION_VIA = ['lm-extract_landmarks_660242980', 'lm-extract_landmarks_238467800', 'westerkerk', 'lm-extract_landmarks_941219842',
+  'lm-extract_landmarks_1997051448', 'lm-extract_landmarks_564717297', 'lm-extract_landmarks_155371643', MOTION_DEST, 'lm-requested-chassekerk'];
+
+test('motion stutter: steady ride through the Jordaan to Kinkerstraat', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'desktop budget; the phone is measured as information with scripts/motion-stutter.mjs');
+  test.setTimeout(300_000);
+  await page.setViewportSize({ width: 1280, height: 800 });
+  // BUNDLES_DIR=<dir>: serve *.bundle.js from there (e.g. the pre-fix bundles, to see the budget fail).
+  const bundles = process.env.BUNDLES_DIR;
+  if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
+  await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
+  await page.goto('/canal-drive/');
+  await page.waitForFunction(([a, b]) => (window as any).canalRecallGame?.routePois?.some((p: any) => p.id === a) && (window as any).canalRecallGame.routePois.some((p: any) => p.id === b), [MOTION_START, MOTION_DEST], { timeout: 90_000 });
+  await page.locator('#travel-mode').selectOption('car', { force: true });
+  await page.locator('#view-mode').selectOption('chase', { force: true });
+  await page.locator('#poi-destination').selectOption(MOTION_DEST);
+  await page.evaluate((a) => { const g = (window as any).canalRecallGame; g._pickDestinationNear = () => g.routePois.find((p: any) => p.id === a); }, MOTION_START);
+  await page.locator('#route-card').evaluate((f: HTMLFormElement) => f.requestSubmit());
+  await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g.state === 4 && g.camera.introOverview === 0; }, null, { timeout: 120_000 });
+  const railPx = await page.evaluate((via) => {
+    const g = (window as any).canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
+    g._quizFreezesRide = () => false;
+    p.handleInput = () => {};
+    const world = (lat: number, lng: number) => ({ x: l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y: l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm });
+    const stops = [{ x: p.x, y: p.y }, ...via.map((id: string) => g.routePois.find((q: any) => q.id === id)).filter(Boolean).map((q: any) => world(q.lat, q.lng))];
+    const path: { x: number; y: number }[] = [];
+    for (let k = 1; k < stops.length; k++) { const leg = g.track.findRoute(stops[k - 1], stops[k]); if (leg && leg.length > 1) path.push(...(path.length ? leg.slice(1) : leg)); }
+    const cum = [0]; for (let k = 1; k < path.length; k++) cum.push(cum[k - 1] + Math.hypot(path[k].x - path[k - 1].x, path[k].y - path[k - 1].y));
+    let at = 0, seg = 1; const v = 120;
+    p.update = function (this: any, dt: number) {
+      at = Math.min(cum[cum.length - 1], at + v * dt);
+      while (seg < path.length - 1 && cum[seg] < at) seg++;
+      const a = path[seg - 1], b = path[seg], f = (at - cum[seg - 1]) / Math.max(1e-6, cum[seg] - cum[seg - 1]);
+      let d = Math.atan2(b.y - a.y, b.x - a.x) - this.angle; d = Math.atan2(Math.sin(d), Math.cos(d));
+      this.x = a.x + (b.x - a.x) * f; this.y = a.y + (b.y - a.y) * f; this.angle += d * Math.min(1, dt * 6);
+      this.speed = at < cum[cum.length - 1] ? v : 0; this.vx = Math.cos(this.angle) * this.speed; this.vy = Math.sin(this.angle) * this.speed;
+    };
+    return cum[cum.length - 1] ?? 0;
+  }, MOTION_VIA);
+  expect(railPx, 'route on rails (px)').toBeGreaterThan(9000);
+  await page.waitForTimeout(10_000);
+  await page.evaluate(() => {
+    const w = window as any; w.__motion = [];
+    let last = performance.now();
+    const tick = (now: number) => { w.__motion.push(now - last); last = now; if (!w.__motionStop) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+  await page.waitForTimeout(60_000);
+  const frames: number[] = await page.evaluate(() => { const w = window as any; w.__motionStop = true; return w.__motion.slice(1); });
+  const over = (ms: number) => frames.filter(f => f > ms).length;
+  const sample = { project: info.project.name, frames: frames.length, p95: +pick(frames, 0.95).toFixed(1), p99: +pick(frames, 0.99).toFixed(1), over50: over(50), over100: over(100), longestMs: +Math.max(0, ...frames).toFixed(1) };
+  console.log(JSON.stringify({ motion: sample }));
+  mkdirSync('artifacts/perf', { recursive: true });
+  writeFileSync(`artifacts/perf/ride-perf-motion-${info.project.name}.json`, JSON.stringify(sample, null, 2));
+  expect(frames.length).toBeGreaterThan(1000);
+  expect(sample.longestMs, 'longest frame while riding (ms)').toBeLessThanOrEqual(MOTION_BUDGET.longestMs);
+  expect(sample.over100, 'frames over 100 ms in 60 s of riding').toBeLessThanOrEqual(MOTION_BUDGET.over100);
+  expect(sample.over50, 'frames over 50 ms in 60 s of riding').toBeLessThanOrEqual(MOTION_BUDGET.over50);
+});
