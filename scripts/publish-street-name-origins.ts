@@ -10,13 +10,18 @@
  * its provenance stay in the committed staging file rather than doubling what
  * every ride downloads.
  *
- * Usage: npm run publish:street-name-origins [-- --dry-run]
+ * Bridges are matched through their OSM spelling variants too
+ * (`bridgeOriginBySpelling`: "Katten brug" is the register's Kattenbrug).
+ *
+ * Usage: npm run publish:street-name-origins [-- --dry-run] [-- --out=<file>]
+ *   --out writes somewhere other than the extract, e.g. a staging copy for review.
  */
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { trimToSentence } from './lib/translation.ts';
-import { indexOrigins, nameGenericOrigin, originFor, repairOriginTranslation, WITHHELD_ORIGINS, withoutCrossReference, type NameOrigin } from './lib/streetNameOrigins.ts';
+import { bridgeMatchKey } from '../src/canalRecall/bridgeWikidata.ts';
+import { bridgeOriginBySpelling, indexOrigins, nameGenericOrigin, originFor, repairOriginTranslation, WITHHELD_ORIGINS, withoutCrossReference, type NameOrigin } from './lib/streetNameOrigins.ts';
 
 const directory = path.resolve('public/data/extracts/amsterdam');
 const staged = JSON.parse(await readFile(path.join(directory, 'staging/street-name-origins.json'), 'utf8')) as {
@@ -65,7 +70,7 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
   const names = [...new Set(((Array.isArray(data) ? data : data.features) as Array<{ name?: string }>).map(feature => feature.name).filter((name): name is string => !!name))];
   let explained = 0, english = 0;
   for (const name of names) {
-    const origin = originFor(index, name, kind);
+    const origin = kind === 'bridge' ? bridgeOriginBySpelling(index, name, bridgeMatchKey) : originFor(index, name, kind);
     // Keyed by the register record's own kind, not the extract's: a road
     // bridge such as the Na Druk Gelukbrug is looked up as a street.
     const supplement = origin && supplements.get(`${origin.kind}\u0000${name}`);
@@ -78,7 +83,10 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     explained++;
     if (!englishOf(origin)) continue;
     english++;
-    const card = englishFor(name, origin, kind);
+    const text = englishFor(name, origin, kind);
+    // A few register texts stop without a full stop ("… deze fietsbrug"); on a
+    // bridge card the Wikipedia lede follows, and would run on from it.
+    const card = kind === 'bridge' && /[\p{L}\d]$/u.test(text) ? `${text}.` : text;
     if (!card) continue;
     published.set(`${kind}\u0000${name}`, { name, kind, en: card, bagId: origin.bagId });
   }
@@ -99,10 +107,12 @@ function englishFor(name: string, origin: NameOrigin, kind: 'street' | 'water' |
 
 const origins = [...published.values()].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name, 'nl'));
 const output = { version: 1, source: staged.source, origins };
+const outArgument = process.argv.find(argument => argument.startsWith('--out='))?.slice('--out='.length);
+const outFile = outArgument ? path.resolve(outArgument) : path.join(directory, 'street-name-origins.json');
 if (!process.argv.includes('--dry-run')) {
-  await writeFile(path.join(directory, 'street-name-origins.json'), `${JSON.stringify(output)}\n`);
+  await writeFile(outFile, `${JSON.stringify(output)}\n`);
 }
 process.stdout.write(`${process.argv.includes('--dry-run') ? 'DRY RUN — would publish' : 'published'} ${origins.length} origins`
-  + ` → public/data/extracts/amsterdam/street-name-origins.json (${(JSON.stringify(output).length / 1024).toFixed(0)} KB)\n${report.join('\n')}\n`
+  + ` → ${path.relative(process.cwd(), outFile)} (${(JSON.stringify(output).length / 1024).toFixed(0)} KB)\n${report.join('\n')}\n`
   + `  English from the language-model pass for ${fromLlm} lookups; the rest from trn\n`
   + `  ${fromSupplements} names from sourced supplements\n`);

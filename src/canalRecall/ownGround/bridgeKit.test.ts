@@ -180,3 +180,40 @@ test('deck sides from the outline cross-section; no quay under a deck', () => {
   // No outline wider than the road: unchanged.
   assert.equal(decodeProfile({ ...bridge, outline: [80, -40, 220, -40, 220, 40, 80, 40] }, 0.1).sides, undefined);
 });
+
+// User 2026-10-16, the Berensluis BRU0065 over the Prinsengracht (screenshots: "a brick-red skirt hanging into the water
+// with a sawtooth lower edge", "small grey slivers at both ends", "two thin bridges with the road floating between").
+test('Berensluis: side faces end level at the abutments, the steel girder is one dark band, covered tops sink past the span', () => {
+  // Every side-face quad (4 own vertices on one deck edge) has a level bottom: a face half over the water used to
+  // drop from the land bottom (0.6 here) to the water bottom (-2.07) across one segment, a wedge into the canal.
+  for (const kind of ['arch', 'girder'] as const) {
+    // The measured water span (the openings) narrower than the mask's water, as at the Berensluis ends.
+    const { mesh } = buildKit({ ...input(kind, 0), spans: [[14, 26]], facts: { arches: 3, shapes: ['flat'], family: 'steel', parapet: 'iron-rail', named: true } }), p = mesh.positions;
+    let quads = 0;
+    for (let v = 0; v + 3 < p.length / 3; v += 4) {
+      const vs = [0, 1, 2, 3].map(k => [p[(v + k) * 3], p[(v + k) * 3 + 1], p[(v + k) * 3 + 2]]);
+      if (!vs.every(q => Math.abs(Math.abs(q[1]) - 4) < 1e-6)) continue;
+      const xs = [...new Set(vs.map(q => q[0].toFixed(3)))];
+      if (xs.length !== 2) continue;
+      const bottom = (x: string) => Math.min(...vs.filter(q => q[0].toFixed(3) === x).map(q => q[2]));
+      quads++;
+      assert.ok(Math.abs(bottom(xs[0]) - bottom(xs[1])) < 1.5, `${kind}: face at x ${xs.join('..')} slants from ${bottom(xs[0]).toFixed(2)} to ${bottom(xs[1]).toFixed(2)}`);
+    }
+    assert.ok(quads > 10, `${kind}: ${quads} side faces read`);
+  }
+  // The steel family's parapet face (the coping band over the girder) is the girder's steel, not a pale stone band.
+  assert.deepEqual(FAMILY_PALETTE.steel.coping, FAMILY_PALETTE.steel.spandrel);
+  // A deck top past its span sinks under the survey's ground polygons when they cover the deck; inside it, it stays.
+  const pts: number[] = [];
+  for (let s = 0; s <= 30; s += 1) pts.push(s * 10, 0, s * 100, 0);
+  const prof = decodeProfile({ id: 'T3', name: 'T', roadIds: [], family: 'steel-deck', width: 8, approachHalfWidth: 4, deck: [8, 22] as [number, number], water: [9, 21] as [number, number], endpointNAP: [1, 1] as [number, number], outline: [80, -40, 220, -40, 220, 40, 80, 40], p: pts }, 0.1);
+  const deck: DeckSurface = { profile: prof, z: new Float64Array(prof.s.length).fill(1), ends: [0, 0], span: prof.deck, ease: [1, 1] };
+  const zs = (m: { positions: ArrayLike<number> }, inside: boolean) => {
+    const out: number[] = [];
+    for (let i = 0; i < m.positions.length; i += 3) { const x = m.positions[i]; if ((x >= 8 && x <= 22) === inside) out.push(m.positions[i + 2]); }
+    return out;
+  };
+  const plain = measuredDeckTop(deck, () => 1, 4, 2, [5, 25]), sunk = measuredDeckTop(deck, () => 1, 4, 2, [5, 25], undefined, 0.06);
+  assert.ok(zs(sunk, false).length > 0 && zs(sunk, false).every(z => Math.abs(z - 0.94) < 1e-9), 'past the span: 6 cm under the riding surface');
+  assert.deepEqual(zs(sunk, true), zs(plain, true), 'over the span: unchanged');
+});

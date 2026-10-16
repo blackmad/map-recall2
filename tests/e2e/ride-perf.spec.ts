@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { loadavg } from 'node:os';
 import { openRoute } from './helpers';
 
 // Riding frame-cost baseline (2026-10-09 perf cycle).
@@ -54,6 +55,10 @@ const variants: Variant[] = [
   { label: 'default (repeat)', landmarks: 'default' },
 ];
 
+/** POPIN_FLAGS=LookAhead=false,HoldBasemap=false,ChunkFade=false: the pop-in fixes' off switches (docs/perf-pop-in-20261016.md), for an A/B of their frame cost. */
+const popInFlags = () => Object.fromEntries((process.env.POPIN_FLAGS ?? '').split(',').filter(Boolean)
+  .map(kv => { const [k, v] = kv.split('='); return [`__canalRecall${k}`, v === 'true' ? true : v === 'false' ? false : v]; }));
+
 const pick = (values: number[], q: number) => {
   const sorted = [...values].sort((a, b) => a - b);
   return sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] ?? 0;
@@ -66,13 +71,18 @@ async function instrument(page: Page) {
     const w = window as any;
     const vm = w.canalRecallGame.vectorMap;
     const map = vm.map;
-    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [], labelFrame: [] };
+    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [], labelFrame: [], minimap: [], gameRender: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => {
       const original = obj[key].bind(obj);
       obj[key] = (...args: unknown[]) => { const s = performance.now(); try { return original(...args); } finally { t[bucket].push(performance.now() - s); } };
     };
     wrap(map, '_render', 'mapRender');
+    // The HUD frame and, inside it, the minimap (the riding radar since 2026-10-16, the city sheet before).
+    const game = w.canalRecallGame;
+    wrap(game, '_render', 'gameRender');
+    if (typeof game._renderMinimap === 'function') wrap(game, '_renderMinimap', 'minimap');
+    else wrap(game.hud, 'drawCityOverview', 'minimap');
     // The POI label overlay's per-frame handler (plan, occlusion picks, placement).
     if (vm._labelOverlay?.frame) wrap(vm._labelOverlay, 'frame', 'labelFrame');
     const layer = vm._signatureLandmarks?.layer;
@@ -110,6 +120,7 @@ for (const variant of variants) {
     // OWN_GROUND=1|0 and RECIPE_TILES=1|0 force the own ground and the recipe-tile near tier (both imply the shared frame).
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
     if (process.env.OVERVIEW_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOverviewTiles = on; }, process.env.OVERVIEW_TILES === '1');
+    if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
     if (process.env.RECIPE_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallRecipeTiles = on; }, process.env.RECIPE_TILES === '1');
     const bundles = process.env.BUNDLES_DIR;
     if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
@@ -137,6 +148,7 @@ for (const variant of variants) {
     const profiling = !!process.env.PERF_PROFILE;
     if (profiling) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); await cdp.send('Profiler.start'); }
     await instrument(page);
+    const loadBefore = loadavg()[0];
     await page.keyboard.down('ArrowUp');
     await page.waitForTimeout(12_000);
     await page.keyboard.up('ArrowUp');
@@ -167,7 +179,11 @@ for (const variant of variants) {
       mapRender: summary(raw.t.mapRender), landmarkRender: summary(raw.t.landmarkRender), threeLayers: summary(raw.t.threeLayers),
       labelFrame: { ...summary(raw.t.labelFrame), maxMs: +Math.max(0, ...raw.t.labelFrame).toFixed(1) },
       moveend: summary(raw.t.moveend), move: summary(raw.t.move),
+      minimap: { ...summary(raw.t.minimap), p99: +pick(raw.t.minimap, 0.99).toFixed(2), maxMs: +Math.max(0, ...raw.t.minimap).toFixed(1) },
+      gameRender: summary(raw.t.gameRender),
       landmarksShown: raw.shown, heapMB: raw.heapMB, threeBuildings: raw.three, hot,
+      // Machine load (1-min average) around the measured ride; numbers taken above ~20 are not comparable.
+      load: { before: +loadBefore.toFixed(1), after: +loadavg()[0].toFixed(1) },
     };
     results.push(sample);
     console.log(JSON.stringify(sample));
@@ -211,6 +227,7 @@ test('motion stutter: steady ride through the Jordaan to Kinkerstraat', async ({
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
+  if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
   await page.goto(process.env.BUILDING_TYPES === '0' ? '/canal-drive/?buildingTypes=0' : '/canal-drive/');
   await page.waitForFunction(([a, b]) => (window as any).canalRecallGame?.routePois?.some((p: any) => p.id === a) && (window as any).canalRecallGame.routePois.some((p: any) => p.id === b), [MOTION_START, MOTION_DEST], { timeout: 90_000 });
   await page.locator('#travel-mode').selectOption('car', { force: true });

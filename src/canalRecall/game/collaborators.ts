@@ -194,6 +194,11 @@ export interface Hud {
   /** Always-on north rose that tracks camera rotation. */
   drawCompass(ctx: CanvasRenderingContext2D, camera: Camera): void;
   drawCityOverview(ctx: CanvasRenderingContext2D, game: unknown): void;
+  /** Every card drawn this frame and the last (canvas px), so map labels keep clear of them. */
+  frameCards?: Array<{ x: number; y: number; width: number; height: number }>;
+  cardRects?(): Array<{ x: number; y: number; width: number; height: number }>;
+  beginFrame?(): void;
+  noteCard?(rect: { x: number; y: number; width: number; height: number }): void;
   drawTouchHint(ctx: CanvasRenderingContext2D, controlMode: string): void;
   drawStick(ctx: CanvasRenderingContext2D, view: import('../touchControls.ts').StickView | null): void;
 }

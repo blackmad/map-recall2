@@ -200,20 +200,12 @@
       "landmarkId": "extract_landmarks_332626598",
       "modelUrl": "./models/centraal-station.glb",
       "suppressOsmIds": [
-        "w332626598",
-        "w57856845",
         "w1239767708",
         "w1239767706",
         "w451533145",
         "w451533147",
         "w451533149",
         "w506192827",
-        "NL.IMBAG.Pand.0363100012185598",
-        "NL.IMBAG.Pand.0363100012242112",
-        "NL.IMBAG.Pand.0363100012240304",
-        "NL.IMBAG.Pand.0363100012245758",
-        "NL.IMBAG.Pand.0363100012245759",
-        "NL.IMBAG.Pand.0363100012246251",
         "w269124500",
         "w424523117",
         "w752653562",
@@ -256,11 +248,41 @@
         "w1240314142",
         "w1239767723",
         "w1240155433",
-        "w1240155432"
+        "w1240155432",
+        "w752286896",
+        "w752286897",
+        "w752286898",
+        "w1239767701",
+        "w1239767702",
+        "w752328422",
+        "w752328423",
+        "w752328424",
+        "w752328425",
+        "w752328426",
+        "w752653574",
+        "w752653575",
+        "w752738610"
       ],
       "spatialSuppression": false,
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 210.6533,
+      "materialOverrides": {
+        "brick": "#7b5141",
+        "stone": "#b8ad92",
+        "sandstone": "#9a8f7a",
+        "slate": "#676863",
+        "glass": "#3f4a4f",
+        "gold": "#c09a45",
+        "red": "#8a3c31",
+        "frame": "#7d8384",
+        "white": "#e3dccb",
+        "ochre": "#9c7d4e",
+        "green": "#7d8a78",
+        "dark": "#2f2d2a",
+        "concrete": "#8e9396",
+        "bronze": "#4a4a4c",
+        "pink": "#7a4850"
+      },
       "footprint": {
         "centre": [
           4.899750668752946,
@@ -293,9 +315,9 @@
           -167.28273010253906
         ],
         "max": [
-          184.81980895996094,
-          36.5,
-          18.950000762939453
+          246.6999969482422,
+          41.79999923706055,
+          15.020000457763672
         ]
       },
       "placement": {
@@ -309,19 +331,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 369.9391174316406,
-        "heightMetres": 36.500000236101286,
-        "depthMetres": 186.23273086547852,
-        "depthCoverage": 6.023749797839424
+        "widthMetres": 431.8193054199219,
+        "heightMetres": 41.79999947316183,
+        "depthMetres": 182.30273056030273,
+        "depthCoverage": 5.896632838141768
       },
-      "triangles": 39532,
-      "bytes": 399604,
+      "triangles": 42807,
+      "bytes": 406912,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "fcf68215e627041a",
+        "sourceHash": "a6b4d3e189f14d24",
         "buildVersion": 2,
-        "bytes": 107788,
-        "triangles": 6246
+        "bytes": 185240,
+        "triangles": 14278
       }
     },
     "de-beurs-van-berlage": {
@@ -6323,7 +6345,8 @@
         "buildVersion": 2,
         "bytes": 81844,
         "triangles": 5223
-      }
+      },
+      "held": true
     },
     "dutch-resistance-museum": {
       "id": "dutch-resistance-museum",

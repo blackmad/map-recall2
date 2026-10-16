@@ -17,7 +17,8 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const extractDir = resolve(root, 'public/data/extracts/amsterdam');
+// `--directory=` checks a staged extract (build-askable-bridges.ts) before it is published.
+const extractDir = resolve(root, process.argv.find((argument) => argument.startsWith('--directory='))?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 
 interface BridgeFeature {
   id: string; name: string; distractors?: string[];
