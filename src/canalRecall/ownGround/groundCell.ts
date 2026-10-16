@@ -23,7 +23,8 @@ import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArra
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { DECK_REACH_MAX_M, deckReach, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
-import { buildParks, cullCovered, drapeBisect, CULL_MARGIN_M, CULL_RES_M, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
+import { buildParks, cullCovered, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
+import { COURTYARD_SURFACES, type CourtyardSurface } from './courtyards.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
@@ -47,7 +48,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -209,9 +210,15 @@ export function buildCell(input: CellInput): BuiltCell {
   // neighbour's area counts too (an area is drawn whole by the cell of its bbox centre: Artis's west third lies in the
   // next cell, 54 % bare land there); at the resident ring's edge that cell may be the far ring's, or the basemap's.
   const greenAreas = [...areas, ...(input.osmAround ?? []).flatMap(o => o.areas)];
-  const greenRings = greenAreas.filter(a => areaLayer[a.kind] === 'park').flatMap(a => a.rings.map(r => r.slice(0, -1).map(input.project)))
-    .filter(r => r.length >= 3).map(pts => ({ pts, bb: [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] }))
-    .filter(g => g.bb[2] > x0 && g.bb[0] < x1 && g.bb[3] > y0 && g.bb[1] < y1);
+  // BGT courtyards are drawn with their holes (a hole may be a yard left undrawn), so their probes must miss the holes. A
+  // ring narrower than a quad and its probes cannot hold one, so it is not tested (same result, fewer tests: a Jordaan
+  // cell holds over a thousand courtyard rings).
+  const ringsOf = (a: OsmGroundExtract['areas'][number]) => a.kind === 'courtyard'
+    ? [{ pts: a.rings[0].slice(0, -1).map(input.project), holes: a.rings.slice(1).map(r => r.slice(0, -1).map(input.project)) }]
+    : a.rings.map(r => ({ pts: r.slice(0, -1).map(input.project), holes: [] as Vec2[][] }));
+  const greenRings = greenAreas.filter(a => areaLayer[a.kind] === 'park' || a.kind === 'courtyard').flatMap(ringsOf)
+    .filter(r => r.pts.length >= 3).map(({ pts, holes }) => ({ pts, holes, bb: [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] }))
+    .filter(g => g.bb[2] > x0 && g.bb[0] < x1 && g.bb[3] > y0 && g.bb[1] < y1 && g.bb[2] - g.bb[0] >= step + 0.5 && g.bb[3] - g.bb[1] >= step + 0.5);
   let greenCulled = 0;
   const underGreen = (x: number, y: number) => {
     if (!greenRings.length) return false;
@@ -220,7 +227,7 @@ export function buildCell(input: CellInput): BuiltCell {
     if (cover && probes.some(q => cover!.find(q[0], q[1]) >= 0)) return false;
     for (const g of greenRings) {
       if (x - h < g.bb[0] || x + h > g.bb[2] || y - h < g.bb[1] || y + h > g.bb[3]) continue;
-      if (probes.every(q => pointInRing(g.pts, q[0], q[1]))) { greenCulled++; return true; }
+      if (probes.every(q => pointInRing(g.pts, q[0], q[1]) && !g.holes.some(h => pointInRing(h, q[0], q[1])))) { greenCulled++; return true; }
     }
     return false;
   };
@@ -228,8 +235,20 @@ export function buildCell(input: CellInput): BuiltCell {
   add('land', reliefGrid(gx0, gy0, Math.ceil(x1 / step) * step, Math.ceil(y1 / step) * step, step, surface.ground, keepLand));
 
   // Areas.
-  let parkFillCulled = 0;
+  let parkFillCulled = 0, courtyards = 0;
   for (const a of areas) {
+    // BGT courtyards (courtyards.ts): the park surface layer of their class, at its lift, holes kept (a hole is a shed
+    // or a neighbour's yard of another class); the land under them is culled with the green fills (underGreen).
+    if (a.kind === 'courtyard') {
+      const k = a.surface as CourtyardSurface;
+      if (!COURTYARD_SURFACES.includes(k)) continue;
+      const m = emptyMesh(), { flat, holes } = flatten(a.rings.map(r => r.map(input.project)));
+      if (flat.length < 6) continue;
+      drapeBisect(m, flat, earcut(flat, holes), onLand, PARK_LIFT[k], lod === 0 ? 8 : 16);
+      add(SURFACE_LAYER[k], m);
+      courtyards++;
+      continue;
+    }
     const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
     let m = emptyMesh();
@@ -322,7 +341,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, courtyards },
   };
 }
 
