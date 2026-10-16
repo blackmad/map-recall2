@@ -1,0 +1,528 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:15:43.482Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012093459",
+   "addresses": [
+    "Jan Evertsenstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 59-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000684222"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4292762227,
+     "lngLat": [
+      4.8552392,
+      52.3707339
+     ],
+     "tags": {
+      "name": "Smartmen",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107408",
+   "addresses": [
+    "Jan Evertsenstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 61-H",
+     "use": "winkelfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000684230"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4292762230,
+     "lngLat": [
+      4.8551506,
+      52.3707178
+     ],
+     "tags": {
+      "name": "Stoffenprins",
+      "shop": "fabric"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107315",
+   "addresses": [
+    "Jan Evertsenstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001005414"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4292762229,
+     "lngLat": [
+      4.8550727,
+      52.3707082
+     ],
+     "tags": {
+      "name": "Bosphorus",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012103732",
+   "addresses": [
+    "Jan Evertsenstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 65-H",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000684245"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4292762228,
+     "lngLat": [
+      4.8549791,
+      52.3706904
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "65-H",
+      "addr:postcode": "1057BP",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "PizzaPezzi",
+      "website": "https://www.pizzapezziamsterdam.nl/"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012147518",
+   "addresses": [
+    "Jan Evertsenstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 67-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000684250"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4292762231,
+     "lngLat": [
+      4.8548935,
+      52.37067
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "name": "Baraka"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012080856",
+   "addresses": [
+    "Jan Evertsenstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 69-H",
+     "use": "winkelfunctie",
+     "areaM2": 133,
+     "bagId": "0363010001005416"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12323180997,
+     "lngLat": [
+      4.8548093,
+      52.3706445
+     ],
+     "tags": {
+      "addr:housenumber": "69-H",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-11-08",
+      "cuisine": "arab",
+      "delivery": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "maza@restaurantsham.nl",
+      "name": "Sham Maza",
+      "opening_hours": "11:00-20:00",
+      "panoramax": "a543be85-028a-487a-a67d-be86dce0a745",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 354 3164",
+      "reservation": "recommended",
+      "source": "survey",
+      "takeaway": "yes",
+      "toilets": "yes",
+      "website": "https://restaurantsham.nl/sham-maza/",
+      "website:menu": "https://restaurantsham.nl/wp-content/uploads/2023/12/Binder-Maza.pdf",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012070389",
+   "addresses": [
+    "Jan Evertsenstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000684261"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814046172,
+     "lngLat": [
+      4.8547325,
+      52.3706335
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "71-H",
+      "addr:postcode": "1057BP",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Clear",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012064061",
+   "addresses": [
+    "Jan Evertsenstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 73-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000684269"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814046722,
+     "lngLat": [
+      4.8546445,
+      52.3706241
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "73-H",
+      "addr:postcode": "1057BP",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Léan",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107343",
+   "addresses": [
+    "Jan Evertsenstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 75-H",
+     "use": "winkelfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000684277"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814046772,
+     "lngLat": [
+      4.8545566,
+      52.3706058
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "75-H",
+      "addr:postcode": "1057BR",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "fast_food",
+      "name": "Thai King",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153862",
+   "addresses": [
+    "Jan Evertsenstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 77-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000684285"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814047414,
+     "lngLat": [
+      4.8544832,
+      52.3705964
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "77-H",
+      "addr:postcode": "1057BR",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Achie de Barber",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144026",
+   "addresses": [
+    "Jan Evertsenstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 79-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000684293"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8134054316,
+     "lngLat": [
+      4.854384,
+      52.3705785
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "79",
+      "addr:postcode": "1057BR",
+      "addr:street": "Jan Evertsenstraat",
+      "email": "amsterdam@fotolabkiekie.com",
+      "name": "Fotolab Kiekie",
+      "opening_hours": "Mo-Fr 09:00-17:00; PH closed",
+      "phone": "+31 20 683 0464",
+      "shop": "photo",
+      "website": "https://fotolabkiekie.com/"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012110182",
+   "addresses": [
+    "Jan Evertsenstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 81-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000684301"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119877",
+   "addresses": [
+    "Jan Evertsenstraat 83",
+    "Jan Evertsenstraat 85",
+    "Jan Evertsenstraat 85A",
+    "Jan Evertsenstraat 85B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 83-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000684309"
+    },
+    {
+     "address": "Jan Evertsenstraat 85-H",
+     "use": "winkelfunctie",
+     "areaM2": 234,
+     "bagId": "0363010000684317"
+    },
+    {
+     "address": "Jan Evertsenstraat 85A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 5,
+     "bagId": "0363010012080237"
+    },
+    {
+     "address": "Jan Evertsenstraat 85B",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012080238"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077667",
+   "addresses": [
+    "Jan Evertsenstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 87-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001005419"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085532",
+   "addresses": [
+    "Jan Evertsenstraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 89-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000684332"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814049214,
+     "lngLat": [
+      4.8539383,
+      52.3705136
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89-H",
+      "addr:postcode": "1057BS",
+      "addr:street": "Jan Evertsenstraat",
+      "cuisine": "tea;bubble_tea",
+      "name": "T's Tea Bar",
+      "shop": "tea",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:15:43.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

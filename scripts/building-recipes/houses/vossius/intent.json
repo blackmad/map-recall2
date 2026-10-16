@@ -6,27 +6,12 @@
  "address": "Vossius Gymnasium, Messchaertstraat 1, Amsterdam (1930 brick school, three wings, tiled roofs with dormer bands)",
  "sources": [
   {
-   "id": "pano-2019-05-06-south",
-   "kind": "street-panorama",
-   "capturedAt": "2019-05-06",
-   "image": "staging/pand-reference-walls/0363100012096365/w01-185.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001163_pano_0000_000554/",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2021-04-23-west",
+   "id": "pano-2021-04-23-w02-275",
    "kind": "street-panorama",
    "capturedAt": "2021-04-23",
-   "image": "staging/pand-reference-walls/0363100012096365/w02-275.jpg",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002116_pano_0000_001785/",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2022-09-05-east",
-   "kind": "street-panorama",
-   "capturedAt": "2022-09-05",
-   "image": "staging/pand-reference-walls/0363100012096365/w04-95.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002797_pano_0002_000334/",
+   "image": "source-data://pand-reference-walls/0363100012096365/w02-275.jpg",
+   "sha256": "9e1ab21c28276b11b957a4562f65841a870d3076d3431f89a24af9bba8725725",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -42,7 +27,11 @@
    "windows": "cross",
    "stringCourses": true,
    "frames": true,
-   "sills": true
+   "sills": true,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -56,10 +45,20 @@
    "windows": "wide",
    "piers": true,
    "palette": {
-    "stone": "#a9a49a"
+    "stone": "#a9a49a",
+    "brick": "#433935"
    },
    "frames": true,
-   "sills": true
+   "sills": true,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.75,
+    "h": 0.6,
+    "sill": 0.38
+   }
   },
   {
    "wallSurfaces": [
@@ -71,7 +70,11 @@
    "ground": "system",
    "windows": "cross",
    "frames": true,
-   "sills": true
+   "sills": true,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -84,7 +87,11 @@
    "windows": "cross",
    "stringCourses": true,
    "frames": true,
-   "sills": true
+   "sills": true,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -101,7 +108,14 @@
  },
  "notes": [
   "Vossius Gymnasium, Messchaertstraat 1 (pand 0363100012096365, 1930, 163 LoD2.2 surfaces, roof max 32.9 m for the chimney tower). Four exposed fronts photographed: the 53 m south front (2019-05-06, surface 163: three brick storeys of paired sash windows with hooded cream heads, a tiled roof with four dormer bands, awnings at the east end), the west wing (2021-04-23, surfaces 44/65: two storeys of wide four-light windows between grey stone piers over a raised ground with basement grilles, a bay window at the south end), the east wing (2022-09-05, surface 158: two storeys, a window band under the tile eaves) and the north courtyard front (surface 20, same brick and sashes, no photograph of its own so it follows the south front).",
-  "MODELLED: three brick storeys on 19 bays, string courses, cream-framed cross windows, the wing groups at their own eaves, black tile roof. SIMPLIFIED: the west wing windows use the new `wide` preset (four lights and a transom, 68 % of the bay) rather than the measured grouped bands; piers on the west wing are the kit's projecting piers in light stone, not the pilaster strips between lights; the hooded window heads are plain. SKIPPED: the four roof dormer bands (3DBAG's roof is verbatim, dormers are not in it), awnings (temporary), basement grilles (too small), the west bay window (a 3DBAG panel offset the kit cannot reproduce), the chimney tower detailing (no panorama in range)."
+  "MODELLED: three brick storeys on 19 bays, string courses, cream-framed cross windows, the wing groups at their own eaves, black tile roof. SIMPLIFIED: the west wing windows use the new `wide` preset (four lights and a transom, 68 % of the bay) rather than the measured grouped bands; piers on the west wing are the kit's projecting piers in light stone, not the pilaster strips between lights; the hooded window heads are plain. SKIPPED: the four roof dormer bands (3DBAG's roof is verbatim, dormers are not in it), awnings (temporary), basement grilles (too small), the west bay window (a 3DBAG panel offset the kit cannot reproduce), the chimney tower detailing (no panorama in range).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #3b3e3d not used (not darker than the wall #433935 by 10 L*, or tinted): kit glass kept."
  ],
- "layeredKit": true
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   1
+  ]
+ }
 }

@@ -6,35 +6,21 @@
  "address": "Engelsesteeg 9 / Smaksteeg 24, Amsterdam: Renaissance Amsterdam City Centre Hotel block (Kondor Wessels) with canal-house fronts on the street sides",
  "sources": [
   {
-   "id": "pano-2025-01-09-w02-272",
+   "id": "pano-2021-03-08-w01-154L",
    "kind": "street-panorama",
-   "capturedAt": "2025-01-09",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track03_Sphere_00072/",
-   "image": "staging/pand-reference-walls/0363100012165098/w02-272.jpg",
+   "capturedAt": "2021-03-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002033_pano_0000_000493/",
+   "image": "source-data://pand-reference-walls/0363100012165098/w01-154L.jpg",
+   "sha256": "58bcd33ae63567b0f5ee82dd25b94e2c3603aadc65330330ba342464edaa0824",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2022-04-22-w01-154",
+   "id": "pano-2019-01-15-w06-337L",
    "kind": "street-panorama",
-   "capturedAt": "2022-04-22",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002537_pano_0001_001106/",
-   "image": "staging/pand-reference-walls/0363100012165098/w01-154.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-08-31-w04-340",
-   "kind": "street-panorama",
-   "capturedAt": "2020-08-31",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001900_pano_0002_000218/",
-   "image": "staging/pand-reference-walls/0363100012165098/w04-340.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-08-31-w06-337",
-   "kind": "street-panorama",
-   "capturedAt": "2020-08-31",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001900_pano_0002_000212/",
-   "image": "staging/pand-reference-walls/0363100012165098/w06-337.jpg",
+   "capturedAt": "2019-01-15",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001055_pano_0000_000296/",
+   "image": "source-data://pand-reference-walls/0363100012165098/w06-337L.jpg",
+   "sha256": "0e4ff93633968a619c4c5807dfae7d77cd27f6cefe2d5de10b40385b844a9407",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -114,6 +100,10 @@
    "deepBars": true,
    "stoneStoreys": [
     0
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey"
    ]
   },
   {
@@ -129,9 +119,20 @@
    "ground": "system",
    "windows": "plain",
    "palette": {
-    "brick": "#a07858",
+    "brick": "#6e6256",
     "frame": "#e8e4da",
-    "stone": "#cfc8b8"
+    "stone": "#cfc8b8",
+    "glass": "#292830"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.55,
+    "sill": 0.25
    }
   },
   {
@@ -151,9 +152,18 @@
    "deepBars": true,
    "cornice": true,
    "palette": {
-    "brick": "#5a4034",
+    "brick": "#625650",
     "frame": "#e8e4da",
     "stone": "#cfc8b8"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.5,
+    "sill": 0.15
    }
   },
   {
@@ -174,7 +184,11 @@
     "brick": "#e6e2d6",
     "frame": "#222222",
     "stone": "#d0c8b6"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -191,6 +205,14 @@
   "Engelsesteeg block (BAG built 1974 for the shell; the hotel conversion shows on the panoramas, 2025 construction hoarding names Kondor Wessels / Renaissance Hotel): a curved red-brick hotel wing with projecting tilted bay windows and a zinc mansard with dormers (w02-272), a six-storey brown-brick block on Smaksteeg (w01-154) and canal-house fronts of three storeys with gables on Engelsesteeg and Spuistraat sides (w03-272, w04-340, w06-337).",
   "Modelled: the hotel wing as brick-bay-grid (4 storeys x 9 bays, cornice), the Smaksteeg block (6 x 8), and the canal-house fronts as 3-storey cross-window groups with cornices. Simplified: the tilted/projecting bay windows are flush recessed windows; gables are the 3DBAG roof outlines. Not modelled: the dormers, the green wall strip, the shopfronts and the street-level hotel entrance, the shop signs (painted AVEDA fascia, w04-340). The curved corner plan is straight in 3DBAG. Walls without photographs stay blank.",
   "Correction: the w03-272 gabled house row is NOT modelled (its 3DBAG roof samples sit 0.4 m below the wall eaves and fail eaves-vs-3dbag); the canal-house groups drawn are the two cross-window fronts listed in walls[]. The gabled fronts on w03-272, w04-340 and w06-337 are otherwise left to the LoD2.2 shell.",
-  "Components lane (2026-10-13): the hotel wing (walls[0], w02-272) re-counted to the photograph: ground plus four storeys (was 4 in all), nine bay axes (the middle one is the green wall strip between the two blocks, still drawn as windows), the projecting box windows as tilted bay frames placed per storey from the photo (storey 1 axes 0,3,5,6; storey 2 axes 1,2,5,6,7; storey 3 axes 0-3,6,7; storey 4 axis 2; the two-storey boxes are two stacked frames), a white stone plinth (stoneStoreys 0), glazing bars 3.5 cm proud. Supersedes the earlier note that the bay windows are flush. The curved corner is straight in 3DBAG LoD2.2 (runs.ts: no BAG arc on this pand), so curve does not apply."
- ]
+  "Components lane (2026-10-13): the hotel wing (walls[0], w02-272) re-counted to the photograph: ground plus four storeys (was 4 in all), nine bay axes (the middle one is the green wall strip between the two blocks, still drawn as windows), the projecting box windows as tilted bay frames placed per storey from the photo (storey 1 axes 0,3,5,6; storey 2 axes 1,2,5,6,7; storey 3 axes 0-3,6,7; storey 4 axis 2; the two-storey boxes are two stacked frames), a white stone plinth (stoneStoreys 0), glazing bars 3.5 cm proud. Supersedes the earlier note that the bay windows are flush. The curved corner is straight in 3DBAG LoD2.2 (runs.ts: no BAG arc on this pand), so curve does not apply.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #684428 not used (not darker than the wall #625650 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   1,
+   2
+  ]
+ }
 }

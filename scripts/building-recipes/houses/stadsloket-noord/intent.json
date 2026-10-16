@@ -1,26 +1,143 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "stadsloket-noord",
-  "pandId": "0363100012104378",
-  "address": "Stadsloket Noord, Buikslotermeerplein 2000, Amsterdam (1999 black-brick office tower with the three St Andrew's crosses)",
-  "sources": [
-    {"id": "pano-2019-06-27-nw", "kind": "street-panorama", "capturedAt": "2019-06-27", "image": "staging/pand-reference-walls/0363100012104378/w01-308.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001255_pano_0002_000016/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2021-06-17-se", "kind": "street-panorama", "capturedAt": "2021-06-17", "image": "staging/pand-reference-walls/0363100012104378/w03-123.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002184_pano_0000_005063/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [31, 64], "system": "brick-bay-grid", "storeys": 8, "baysPerStorey": 5, "ground": "system", "windows": "plain", "frames": false, "crosses": {"count": 3, "size": "large", "colour": "#e58a86", "side": "left"}},
-    {"wallSurfaces": [39], "system": "brick-bay-grid", "storeys": 8, "baysPerStorey": 4, "ground": "system", "windows": "low", "frames": false},
-    {"wallSurfaces": [25, 30, 61], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 6, "ground": "glazed", "windows": "low", "piers": true, "frames": false},
-    {"wallSurfaces": [73, 8, 10, 36, 60, 37, 6, 33, 72, 71, 52, 7], "system": "blank"}
-  ],
-  "otherWalls": "blank",
-  "closedBands": true,
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#2a2c31", "frame": "#8a8f93", "door": "#3a3d40", "stone": "#d4d2cc", "wallMaterial": "stucco"},
-  "notes": [
-    "1999 office tower at Buikslotermeerplein (pand 0363100012104378, 82 LoD2.2 surfaces, roof max 30.6 m). North-west wall (surfaces 31/64/39, 2019-06-27 panorama w01-308, 13 m away): a black-brick eight-storey wall with ten bays of small paired windows, a parking row at the foot, and the three red-pink St Andrew's crosses of the Amsterdam coat of arms stacked down its top-left corner. South-east front (2021-06-17 w03-123, 27 m away): the same black brick, six storeys of paired low windows over a glazed ground floor carried on round white piers.",
-    "Signature: the three St Andrew's crosses MODELLED with a new kit component (`crosses`, `drawStAndrewsCross`: two diagonal closed prisms per cross, three crosses 3.2 m, pink-red, on the top-left of the main north-west panel); black brick MODELLED as the brick palette; low paired windows MODELLED (windows: low); glazed ground on round white piers MODELLED as ground glazed + piers (square projecting piers, not round columns: SIMPLIFIED); parking signs and the foot-of-wall bike park SKIPPED (temporary); the stadsloket entrance and signage are on the Buikslotermeerplein side which has no panorama in range (SKIPPED: not-visible); the stepped south-west block, the stair tower on the roof and the rear walls (surfaces 73/8/10/36/60/37/6/33/72/71/52/7) are one blank group (no panorama or closed seams).",
-    "Panels 31 and 64 are one 24 m panel that must stay in one group (split groups fail storey-height); crosses are closed prisms because flat letter glyphs counted as 38.7 m of open edge."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadsloket-noord",
+ "pandId": "0363100012104378",
+ "address": "Stadsloket Noord, Buikslotermeerplein 2000, Amsterdam (1999 black-brick office tower with the three St Andrew's crosses)",
+ "sources": [
+  {
+   "id": "pano-2019-06-27-w01-308",
+   "kind": "street-panorama",
+   "capturedAt": "2019-06-27",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001255_pano_0002_000016/",
+   "image": "source-data://pand-reference-walls/0363100012104378/w01-308.jpg",
+   "sha256": "4fcaf5db7ce6b179714d154944706e994d3192165965652b239962f4df720233",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-06-17-w03-123",
+   "kind": "street-panorama",
+   "capturedAt": "2021-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002184_pano_0000_005063/",
+   "image": "source-data://pand-reference-walls/0363100012104378/w03-123.jpg",
+   "sha256": "57d69d33a7308790ac8ef36be461fbadeeabf1a47230b86101a8537f20022fbc",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    31,
+    64
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false,
+   "crosses": {
+    "count": 3,
+    "size": "large",
+    "colour": "#e58a86",
+    "side": "left"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#24282e"
+   }
+  },
+  {
+   "wallSurfaces": [
+    39
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 8,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "low",
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#2f2e3b"
+   }
+  },
+  {
+   "wallSurfaces": [
+    25,
+    30,
+    61
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "windows": "low",
+   "piers": true,
+   "frames": false,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#37333d",
+    "glass": "#211d1f"
+   },
+   "windowShape": {
+    "w": 0.7,
+    "h": 0.4,
+    "sill": 0.28
+   }
+  },
+  {
+   "wallSurfaces": [
+    73,
+    8,
+    10,
+    36,
+    60,
+    37,
+    6,
+    33,
+    72,
+    71,
+    52,
+    7
+   ],
+   "system": "blank"
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#2a2c31",
+  "frame": "#8a8f93",
+  "door": "#3a3d40",
+  "stone": "#d4d2cc",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "1999 office tower at Buikslotermeerplein (pand 0363100012104378, 82 LoD2.2 surfaces, roof max 30.6 m). North-west wall (surfaces 31/64/39, 2019-06-27 panorama w01-308, 13 m away): a black-brick eight-storey wall with ten bays of small paired windows, a parking row at the foot, and the three red-pink St Andrew's crosses of the Amsterdam coat of arms stacked down its top-left corner. South-east front (2021-06-17 w03-123, 27 m away): the same black brick, six storeys of paired low windows over a glazed ground floor carried on round white piers.",
+  "Signature: the three St Andrew's crosses MODELLED with a new kit component (`crosses`, `drawStAndrewsCross`: two diagonal closed prisms per cross, three crosses 3.2 m, pink-red, on the top-left of the main north-west panel); black brick MODELLED as the brick palette; low paired windows MODELLED (windows: low); glazed ground on round white piers MODELLED as ground glazed + piers (square projecting piers, not round columns: SIMPLIFIED); parking signs and the foot-of-wall bike park SKIPPED (temporary); the stadsloket entrance and signage are on the Buikslotermeerplein side which has no panorama in range (SKIPPED: not-visible); the stepped south-west block, the stair tower on the roof and the rear walls (surfaces 73/8/10/36/60/37/6/33/72/71/52/7) are one blank group (no panorama or closed seams).",
+  "Panels 31 and 64 are one 24 m panel that must stay in one group (split groups fail storey-height); crosses are closed prisms because flat letter glyphs counted as 38.7 m of open edge.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #11151c not used (not darker than the wall #24282e by 10 L*, or tinted): kit glass kept; walls[1] glass #1c1f24 not used (not darker than the wall #2f2e3b by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
   ]
+ }
 }

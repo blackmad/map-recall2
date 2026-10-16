@@ -1,22 +1,83 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-oost-zeeburg",
-  "pandId": "0363100012253728",
-  "address": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
-  "sources": [
-    {"id": "pano-2025-09-25-se", "kind": "street-panorama", "capturedAt": "2025-09-25", "image": "staging/pand-reference/0363100012253728/front-alt.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-25_10-46-37_00152/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [15, 17], "system": "brick-bay-grid", "storeys": 3, "baysPerStorey": 24, "ground": "blank", "windows": "plain", "entrance": {"bay": 1, "storeys": 1}, "signage": {"text": "POLITIE", "colour": "#1d3f9a", "mount": "wall"}}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#9a9288", "frame": "#2a2d30", "door": "#3a3a3a", "stone": "#d9d8d2", "wallMaterial": "stucco"},
-  "notes": [
-    "2022 police bureau, a 45 m long rounded block (3DBAG panels 14 and 27) with a recessed upper level. Only the south-east long front (panel 14, surfaces 15 and 17) is described, from the 2025-09-25 panorama (front-alt.jpg) and the 2022 panorama thumbnail: light grey-brown brick, three storeys, white string courses, an upper band of tall windows, a middle band of small windows, and POLITIE lettered in blue on the wall (gold flame emblem not modelled). The lettering sits at about 55-70 % of the front in the panorama; the kit centres wall lettering over the entrance, so in the model it is above the glazed left-hand entrance end instead (position deviation, kept so the kit is exercised on a real wall).",
-    "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
-    "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
-    "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-oost-zeeburg",
+ "pandId": "0363100012253728",
+ "address": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
+ "sources": [
+  {
+   "id": "pano-2022-05-17-w01-131",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002582_pano_0000_000009/",
+   "image": "source-data://pand-reference-walls/0363100012253728/w01-131.jpg",
+   "sha256": "d6826df1afeaa3f87b04f738d1f2547a5757b0ac5c250c43db9322142c33abb8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-25-se",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-25",
+   "image": "staging/pand-reference/0363100012253728/front-alt.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-25_10-46-37_00152/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    15,
+    17
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 25,
+   "ground": "blank",
+   "windows": "plain",
+   "entrance": {
+    "bay": 1,
+    "storeys": 1
+   },
+   "signage": {
+    "text": "POLITIE",
+    "colour": "#1d3f9a",
+    "mount": "wall"
+   },
+   "hand": [
+    "system"
+   ],
+   "palette": {
+    "brick": "#665f58"
+   },
+   "windowShape": {
+    "w": 0.209,
+    "h": 0.9,
+    "sill": 0.08
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#9a9288",
+  "frame": "#2a2d30",
+  "door": "#3a3a3a",
+  "stone": "#d9d8d2",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "2022 police bureau, a 45 m long rounded block (3DBAG panels 14 and 27) with a recessed upper level. Only the south-east long front (panel 14, surfaces 15 and 17) is described, from the 2025-09-25 panorama (front-alt.jpg) and the 2022 panorama thumbnail: light grey-brown brick, three storeys, white string courses, an upper band of tall windows, a middle band of small windows, and POLITIE lettered in blue on the wall (gold flame emblem not modelled). The lettering sits at about 55-70 % of the front in the panorama; the kit centres wall lettering over the entrance, so in the model it is above the glazed left-hand entrance end instead (position deviation, kept so the kit is exercised on a real wall).",
+  "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
+  "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
+  "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #575d65 not used (not darker than the wall #665f58 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0
   ]
+ }
 }
