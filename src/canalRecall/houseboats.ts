@@ -16,6 +16,7 @@
 
 import earcut from 'earcut';
 import { fitRect } from './roofMesh.js';
+import { LABELLED_HOUSEBOAT_KINDS } from './houseboatKindOverrides.js';
 import type { KitPartGeometry, KitTri } from './landmarkKits.js';
 
 export type Houseboat = { id: string; ring: [number, number][]; levels?: number; roof?: string; name?: string; kind?: string };
@@ -28,11 +29,16 @@ const BARGE_HULLS = ['#2c3a4a', '#25443a', '#3a4148', '#6a2f29', '#24456b'];
 const ARK_CABINS = ['#f3efe4', '#efe0b8', '#9fc4dc', '#a9c5a2', '#c4e1d2', '#f2cf73', '#dba24a', '#cf6f4f', '#b8473c', '#3f6f57', '#c99c6a', '#5f88b3', '#e9b7b0'];
 /** Varnished timber, or painted green, blue, white and red. */
 const BARGE_CABINS = ['#a8743f', '#c08a52', '#2f6b55', '#2f6696', '#f0ebde', '#9a3530', '#477a45'];
+/** Hullbox cabins seen from above on the orthophoto sample: white and cream, dark grey,
+ *  bottle green, varnished timber, slate blue, oxblood, and a few pale greens and blues. */
+const HULLBOX_CABINS = ['#f0ebde', '#e6dcc4', '#45494c', '#2f4a3c', '#9a7448', '#5f7484', '#7a3b30', '#a9c5a2', '#9fc4dc', '#f2cf73'];
+/** Their hulls: black-blue, slate, bottle green, and the red-brown many are painted. */
+const HULLBOX_HULLS = ['#2c3a4a', '#3a4148', '#25443a', '#6a2f29', '#8a3a2c'];
 /** Bitumen and zinc, and the sedum roofs many arks carry. */
 const ROOFS = ['#6a6e72', '#8a857c', '#9aa1a6', '#7c9a5e', '#8fae6a', '#a35d45', '#7d8a94'];
 const DOORS = ['#c0392b', '#2f6e4f', '#2d5d8c', '#efc24a', '#3d3d3d', '#7b4a8c'];
 const FLOWERS = ['#e0475a', '#f08a3c', '#e86fa8', '#f4d54a', '#ffffff'];
-const DECK = '#b08a5c', GLASS = '#4d687d', FRAME = '#f7f3ea', GUNWALE = '#f1ece0', LEAF = '#4f8a3c', POT = '#b8643c', PIPE = '#2f2f2f';
+const SKYLIGHT = '#b9c7cf', DECK = '#b08a5c', GLASS = '#4d687d', FRAME = '#f7f3ea', GUNWALE = '#f1ece0', LEAF = '#4f8a3c', POT = '#b8643c', PIPE = '#2f2f2f';
 const FLAG = ['#ae1c28', '#ffffff', '#21468b'];
 /** Water level is the map's ground plane; the hull's waterline sits just below it. */
 const WATERLINE = -0.1;
@@ -57,31 +63,122 @@ class Sink {
   quad(a: V3, b: V3, c: V3, d: V3, hex: string, hint: V3) { this.tri(a, b, c, hex, hint); this.tri(a, c, d, hex, hint); }
 }
 
-/** Footprint evidence, independent of tracing density. A detailed rectangular
- * pontoon is still an ark; a barge requires an elongated body and a tapered end.
- * Ambiguous outlines keep the simpler residential form instead of guessed rigging. */
-export function classifyHouseboatHull(points: readonly (readonly [number,number])[], length:number, width:number): 'ark'|'barge' {
- if(points.length<3||length<=0||width<=0)return 'ark';
- let area=0;for(let i=0;i<points.length;i++){const p=points[i],q=points[(i+1)%points.length];area+=p[0]*q[1]-q[0]*p[1];}
- const occupancy=Math.abs(area)/2/(length*width);
- const section=(a:number)=>{const hits:number[]=[];for(let i=0;i<points.length;i++){const p=points[i],q=points[(i+1)%points.length];if((p[0]<=a&&q[0]>a)||(q[0]<=a&&p[0]>a))hits.push(p[1]+(q[1]-p[1])*(a-p[0])/(q[0]-p[0]));}return hits.length>=2?Math.max(...hits)-Math.min(...hits):0;};
- const body=Math.max(section(-length*.15),section(0),section(length*.15));
- const endWidth=Math.min(section(-length*.46),section(length*.46));
- return length/width>=2.3&&occupancy<.96&&body>0&&endWidth/body<.86?'barge':'ark';
+type P2 = readonly (readonly [number, number])[];
+/** Width of the outline across the boat at `a` along it (max − min crossing), and the
+ *  crossing midpoint; 0/0 where the line misses the outline. */
+function crossSection(points: P2, a: number): { width: number; mid: number } {
+  const hits: number[] = [];
+  for (let i = 0; i < points.length; i++) {
+    const p = points[i], q = points[(i + 1) % points.length];
+    if ((p[0] <= a && q[0] > a) || (q[0] <= a && p[0] > a)) hits.push(p[1] + (q[1] - p[1]) * (a - p[0]) / (q[0] - p[0]));
+  }
+  if (hits.length < 2) return { width: 0, mid: 0 };
+  const lo = Math.min(...hits), hi = Math.max(...hits);
+  return { width: hi - lo, mid: (hi + lo) / 2 };
+}
+
+/** Distances (m) in from each tip at which an end's width is sampled. */
+export const HULL_END_SAMPLES = [0.3, 1, 2.5] as const;
+export type HullEnd = { /** width / body width at HULL_END_SAMPLES */ widths: number[]; /** |section midpoint − body midpoint| / body width, 0.3 m in */ offset: number };
+export type HullProfile = { body: number; aspect: number; ends: [HullEnd, HullEnd] };
+
+/** End shape of an outline in the boat frame (u along the length, centred). Body width
+ *  is the median of five sections over the middle 40 %, so a gangway or a notch amidships
+ *  does not set it. */
+export function houseboatHullProfile(points: P2, length: number, width: number): HullProfile {
+  const body = [-0.2, -0.1, 0, 0.1, 0.2].map(t => crossSection(points, t * length).width).sort((x, y) => x - y)[2];
+  const centre = crossSection(points, 0).mid;
+  const end = (s: 1 | -1): HullEnd => ({
+    widths: HULL_END_SAMPLES.map(d => body > 0 ? crossSection(points, s * (length / 2 - d)).width / body : 1),
+    offset: body > 0 ? Math.abs(crossSection(points, s * (length / 2 - 0.3)).mid - centre) / body : 0,
+  });
+  return { body, aspect: width > 0 ? length / width : 0, ends: [end(1), end(-1)] };
+}
+
+/** Ship ends measured on the orthophoto sample (scripts/houseboat-kinds/labels.json):
+ *  traced ship hulls are ≤ 0.70 of the body 0.3 m from the tip and still narrower at
+ *  1 m, with the narrowing centred: both sides curve in, so the section midpoint moves
+ *  ≤ 0.13 of the lost width (scripts/houseboat-kinds/offsets.ts). A pontoon keeps ≥ 0.79
+ *  at 0.3 m unless a corner is chamfered, which narrows one side only (0.4–0.5). */
+export const SHIP_END = { at03: 0.72, at1: 0.97, symmetry: 0.3 } as const;
+/** Canal ships measured 3.2–6.2 m in beam at 3.5–7.7 × as long; wider or squatter
+ *  footprints with a curved end are pontoons (glasshouses, a rounded-corner ark),
+ *  except the big ships (≥ 40 m), which reach 10 m. */
+export const SHIP_MIN_ASPECT = 3.2, SHIP_MAX_BEAM = 7, BIG_SHIP_LENGTH = 40;
+
+/** Ship hull or pontoon, from footprint evidence alone and independent of tracing
+ *  density. A ship hull needs an elongated body and one end that curves in on both
+ *  sides; chamfers, notches and four-corner mappings stay pontoons. Ambiguous outlines
+ *  keep the simpler residential form. */
+export function classifyHouseboatHull(points: P2, length: number, width: number): 'ark' | 'ship' {
+  if (points.length < 5 || length <= 0 || width <= 0) return 'ark';
+  const { body, aspect, ends } = houseboatHullProfile(points, length, width);
+  if (body <= 0) return 'ark';
+  if (length < BIG_SHIP_LENGTH && (aspect < SHIP_MIN_ASPECT || width > SHIP_MAX_BEAM)) return 'ark';
+  return ends.some(e => e.widths[0] <= SHIP_END.at03 && e.widths[1] <= SHIP_END.at1 && e.offset <= SHIP_END.symmetry * (1 - e.widths[0])) ? 'ship' : 'ark';
+}
+
+export type HouseboatKind = 'ark' | 'barge' | 'hullbox';
+/** Per-boat kinds the footprint cannot tell, read off the orthophoto (PDOK 8 cm) for the
+ *  boats on the ride corridors (generated, see houseboatKindOverrides.ts). */
+export const HOUSEBOAT_KIND_OVERRIDES: Readonly<Record<string, HouseboatKind>> = {
+  ...LABELLED_HOUSEBOAT_KINDS,
+  w174999382: 'barge', // Hendrika Maria, the Houseboat Museum (Prinsengracht)
+};
+/**
+ * What a boat is drawn as. A pontoon outline is an ark. A ship hull is either a
+ * converted barge with an open foredeck and a wheelhouse (`barge`) or a hull under
+ * one box cabin over most of its length (`hullbox`); the outline cannot tell them
+ * apart, so a hash of the id picks with the shares measured on the orthophoto
+ * (164 labelled ship hulls, scripts/houseboat-kinds/shares.ts): above 28 m, 63 %
+ * were open barges; up to 28 m, 42 % with a pointed end (≤ 0.75 of the body 1 m
+ * in) and 22 % with rounded ends. The ring canals run lower (27 %).
+ */
+export const BARGE_SHARE = { long: 0.63, pointed: 0.42, rounded: 0.22 } as const;
+export function houseboatKind(id: string, points: P2, length: number, width: number, overrides: Readonly<Record<string, HouseboatKind>> = HOUSEBOAT_KIND_OVERRIDES): HouseboatKind {
+  const override = overrides[id];
+  if (override) return override;
+  if (classifyHouseboatHull(points, length, width) === 'ark') return 'ark';
+  const { ends } = houseboatHullProfile(points, length, width);
+  const pointed = Math.min(ends[0].widths[1], ends[1].widths[1]) <= 0.75;
+  const share = length > 28 ? BARGE_SHARE.long : pointed ? BARGE_SHARE.pointed : BARGE_SHARE.rounded;
+  return hash(`${id}:kind`) < share ? 'barge' : 'hullbox';
+}
+
+/** A boat's outline in its own frame: u along the length, v across, centred on the
+ *  minimum-area rectangle, in metres. `pts` are metres east/north of `origin`
+ *  (default: the ring's first vertex). Null for a degenerate outline. */
+export function houseboatFrame(boat: Pick<Houseboat, 'ring'>, origin?: { lng: number; lat: number }) {
+  const o = origin ?? { lng: boat.ring[0][0], lat: boat.ring[0][1] };
+  const kx = 111_320 * Math.cos(o.lat * Math.PI / 180), ky = 110_540;
+  let pts = boat.ring.map(([lng, lat]) => [(lng - o.lng) * kx, (lat - o.lat) * ky] as [number, number]);
+  if (pts.length > 1 && pts[0][0] === pts[pts.length - 1][0] && pts[0][1] === pts[pts.length - 1][1]) pts = pts.slice(0, -1);
+  if (pts.length < 3) return null;
+  const rect = fitRect([...pts, pts[0]], 256);
+  if (!rect) return null;
+  let ux = rect.ux, uy = rect.uy, length = rect.len, width = rect.wid;
+  if (width > length) { [ux, uy] = [-uy, ux]; [length, width] = [width, length]; }
+  const vx = -uy, vy = ux, cx = rect.cx, cy = rect.cy;
+  const local = pts.map(([x, y]) => [(x - cx) * ux + (y - cy) * uy, (x - cx) * vx + (y - cy) * vy] as [number, number]);
+  return { pts, local, length, width, ux, uy, vx, vy, cx, cy };
+}
+
+/** Keep the part of a polygon on one side of an axis-aligned line (Sutherland–Hodgman). */
+function clipPlan(poly: [number, number][], axis: 0 | 1, value: number, above: boolean): [number, number][] {
+  const out: [number, number][] = [];
+  for (let i = 0; i < poly.length; i++) {
+    const p = poly[i], q = poly[(i + 1) % poly.length], inside = above ? p[axis] >= value : p[axis] <= value, next = above ? q[axis] >= value : q[axis] <= value;
+    if (inside) out.push(p);
+    if (inside !== next) { const t = (value - p[axis]) / (q[axis] - p[axis]); out.push([p[0] + t * (q[0] - p[0]), p[1] + t * (q[1] - p[1])]); }
+  }
+  return out;
 }
 
 /** One boat's triangles in local metres from `origin` (x east, y north, z up). */
 export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: number }): KitPartGeometry | null {
-  const kx = 111_320 * Math.cos(origin.lat * Math.PI / 180), ky = 110_540;
-  let pts = boat.ring.map(([lng, lat]) => [(lng - origin.lng) * kx, (lat - origin.lat) * ky] as [number, number]);
-  if (pts.length > 1 && pts[0][0] === pts[pts.length - 1][0] && pts[0][1] === pts[pts.length - 1][1]) pts = pts.slice(0, -1);
-  if (pts.length < 3) return null;
-  const rect = fitRect([...pts, pts[0]], 64);
-  if (!rect) return null;
-  // Boat frame: u along the length, v across, centred on the fitted rectangle.
-  let ux = rect.ux, uy = rect.uy, L = rect.len, W = rect.wid;
-  if (W > L) { [ux, uy] = [-uy, ux]; [L, W] = [W, L]; }
-  const vx = -uy, vy = ux, cx = rect.cx, cy = rect.cy;
+  const frame = houseboatFrame(boat, origin);
+  if (!frame) return null;
+  const { pts, ux, uy, vx, vy, cx, cy } = frame, L = frame.length, W = frame.width;
   const at = (a: number, b: number, z: number): V3 => [cx + ux * a + vx * b, cy + uy * a + vy * b, z];
   const dir = (a: number, b: number, z: number): V3 => [ux * a + vx * b, uy * a + vy * b, z];
   const sink = new Sink(), id = boat.id;
@@ -116,17 +213,16 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     box(a - 0.16, a + 0.16, b - 0.16, b + 0.16, z + 0.9, z + 1.0, PIPE);
   };
   /** Preserve the mapped pontoon perimeter, including notches. */
-  const pontoon=(ring: [number,number][],base:number,top:number,hex:string)=>{
-    const index=earcut(ring.flat());
-    for(let i=0;i<index.length;i+=3)sink.tri(...index.slice(i,i+3).map(k=>[ring[k][0],ring[k][1],top] as V3) as [V3,V3,V3],hex,[0,0,1]);
+  const pontoon=(ring: [number,number][],base:number,top:number,hex:string|null,side=hex??PIPE)=>{
+    const index=hex?earcut(ring.flat()):[];
+    for(let i=0;i<index.length;i+=3)sink.tri(...index.slice(i,i+3).map(k=>[ring[k][0],ring[k][1],top] as V3) as [V3,V3,V3],hex!,[0,0,1]);
     const area=ring.reduce((a,p,i)=>{const q=ring[(i+1)%ring.length];return a+p[0]*q[1]-q[0]*p[1];},0);
-    for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];sink.quad([p[0],p[1],base],[q[0],q[1],base],[q[0],q[1],top],[p[0],p[1],top],hex,area>0?[q[1]-p[1],p[0]-q[0],0]:[p[1]-q[1],q[0]-p[0],0]);}
+    for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];sink.quad([p[0],p[1],base],[q[0],q[1],base],[q[0],q[1],top],[p[0],p[1],top],side,area>0?[q[1]-p[1],p[0]-q[0],0]:[p[1]-q[1],q[0]-p[0],0]);}
   };
   const roofHex = pick(ROOFS, id, 'roof'), doorHex = pick(DOORS, id, 'door');
-  const form=classifyHouseboatHull(pts.map(([x,y])=>[(x-cx)*ux+(y-cy)*uy,(x-cx)*vx+(y-cy)*vy]),L,W);
-  const traced=form==='barge';
+  const form = houseboatKind(id, frame.local, L, W);
 
-  if (!traced) {
+  if (form === 'ark') {
     // An ark: pontoon, cabin over most of it, an open deck at one end.
     const cabinHex = pick(ARK_CABINS, id, 'cabin'), hullHex = pick(ARK_HULLS, id, 'hull');
     const hullTop = 0.5;
@@ -137,9 +233,8 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     const height = levels * 2.5 + hash(`${id}:height`) * 0.3, top = hullTop + height;
     // Clip the timber deck to the source outline as well; a rectangle would
     // refill the very pontoon notch retained by the hull below it.
-    const clip=(poly:[number,number][],axis:0|1,value:number,above:boolean)=>{const out:[number,number][]=[];for(let i=0;i<poly.length;i++){const p=poly[i],q=poly[(i+1)%poly.length],inside=above?p[axis]>=value:p[axis]<=value,next=above?q[axis]>=value:q[axis]<=value;if(inside)out.push(p);if(inside!==next){const t=(value-p[axis])/(q[axis]-p[axis]);out.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}return out;};
     let deck=pts.map(([x,y])=>[(x-cx)*ux+(y-cy)*uy,(x-cx)*vx+(y-cy)*vy] as [number,number]);
-    deck=clip(clip(clip(clip(deck,0,deckAtStart?-L/2:a1,true),0,deckAtStart?a0:L/2,false),1,-W/2+.05,true),1,W/2-.05,false);
+    deck=clipPlan(clipPlan(clipPlan(clipPlan(deck,0,deckAtStart?-L/2:a1,true),0,deckAtStart?a0:L/2,false),1,-W/2+.05,true),1,W/2-.05,false);
     if(deck.length>=3)pontoon(deck.map(([a,b])=>{const p=at(a,b,0);return [p[0],p[1]];}),hullTop,hullTop+.08,DECK);
     box(a0, a1, -half, half, hullTop, top, cabinHex);
     for (let level = 0; level < levels; level++) {
@@ -185,10 +280,13 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
       pipe(pipeA, pipeB, top + 0.2);
     }
   } else {
-    // A barge: the traced outline is the hull; a low cabin amidships and a wheelhouse at the
-    // squarer (stern) end, since the bow is the pointed one. The deck sweeps up towards the bow.
-    const cabinHex = pick(BARGE_CABINS, id, 'cabin'), hullHex = pick(BARGE_HULLS, id, 'hull');
-    const hullTop = 0.9, stripe = 0.16;
+    // A ship hull: the traced outline is the hull, with a dark side, a pale gunwale and a
+    // deck that sweeps up towards the bow (the pointed end); the stern is the squarer end.
+    // A barge keeps an open foredeck, a low cabin amidships and a wheelhouse aft; a
+    // hullbox carries one box cabin over most of its length (see `houseboatKind`).
+    const barge = form === 'barge';
+    const cabinHex = pick(barge ? BARGE_CABINS : HULLBOX_CABINS, id, 'cabin'), hullHex = pick(barge ? BARGE_HULLS : HULLBOX_HULLS, id, 'hull');
+    const hullTop = barge ? 0.9 : 0.7, stripe = 0.16, rise = barge ? 0.55 : 0.25;
     const widthAt = (a: number) => {
       let w = 0;
       for (const [x, y] of pts) { const pa = (x - cx) * ux + (y - cy) * uy; if (Math.abs(pa - a) < L * 0.08) w = Math.max(w, Math.abs((x - cx) * vx + (y - cy) * vy)); }
@@ -197,7 +295,7 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     const stern = widthAt(L * 0.42) >= widthAt(-L * 0.42) ? 1 : -1;
     const sheer = (x: number, y: number) => {
       const f = Math.max(0, Math.min(1, (-stern * ((x - cx) * ux + (y - cy) * uy) / (L / 2) - 0.55) / 0.45));
-      return hullTop + 0.55 * f * f;
+      return hullTop + rise * f * f;
     };
     const flat = pts.flat(), index = earcut(flat);
     for (let i = 0; i < index.length; i += 3) {
@@ -212,6 +310,42 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
       const nx = area2 > 0 ? y1 - y0 : y0 - y1, ny = area2 > 0 ? x0 - x1 : x1 - x0;
       sink.quad([x0, y0, WATERLINE], [x1, y1, WATERLINE], [x1, y1, t1 - stripe], [x0, y0, t0 - stripe], hullHex, [nx, ny, 0]);
       sink.quad([x0, y0, t0 - stripe], [x1, y1, t1 - stripe], [x1, y1, t1], [x0, y0, t0], GUNWALE, [nx, ny, 0]);
+    }
+    if (!barge) {
+      // A hullbox: one cabin from a short stern deck to a foredeck at the bow, inset from
+      // the gunwale and clipped to the hull, so a rounded end narrows the cabin with it.
+      const bowDeck = Math.min(2.4, Math.max(1.2, L * 0.08)), sternDeck = Math.min(1.2, Math.max(0.5, L * 0.03));
+      const c0 = stern > 0 ? -L / 2 + bowDeck : -L / 2 + sternDeck, c1 = stern > 0 ? L / 2 - sternDeck : L / 2 - bowDeck;
+      // Scale the hull across about its centreline, so the walls stand 0.3 m inside the
+      // gunwale amidships and follow a rounded end in, then cut at the two decks.
+      const half = Math.max(0.8, W / 2 - 0.3), k = half / (W / 2);
+      const plan = clipPlan(clipPlan(frame.local.map(([a, b]) => [a, b * k] as [number, number]), 0, c0, true), 0, c1, false);
+      if (plan.length >= 3) {
+        const height = 2.1 + hash(`${id}:height`) * 0.35, top = hullTop + height;
+        const world = plan.map(([a, b]) => { const p = at(a, b, 0); return [p[0], p[1]] as [number, number]; });
+        pontoon(world, hullTop, top, null, cabinHex); // walls only: the roof slab caps it
+        pontoon(world, top, top + 0.14, roofHex, FRAME);
+        // Windows only where the cabin side runs straight (full width).
+        let w0 = c0 + 0.6, w1 = c1 - 0.6;
+        while (w0 < w1 && crossSection(plan, w0).width < 2 * half * 0.97) w0 += 0.25;
+        while (w1 > w0 && crossSection(plan, w1).width < 2 * half * 0.97) w1 -= 0.25;
+        if (w1 - w0 > 1.6) {
+          sideWindows(w0 + 0.3, w1 - 0.3, -half, hullTop + 0.75, hullTop + 1.65, 1.9, 1.2);
+          sideWindows(w0 + 0.3, w1 - 0.3, half, hullTop + 0.75, hullTop + 1.65, 1.9, 1.2);
+        }
+        // A door onto the foredeck in the cabin's bow end, skylights and a stove pipe on the roof.
+        const bowEnd = stern > 0 ? c0 - 0.03 : c1 + 0.03, bowDir = dir(-stern, 0, 0);
+        sink.quad(at(bowEnd, -0.45, hullTop + 0.05), at(bowEnd, 0.45, hullTop + 0.05), at(bowEnd, 0.45, hullTop + 1.95), at(bowEnd, -0.45, hullTop + 1.95), doorHex, bowDir);
+        const roofZ = top + 0.14, lights = Math.min(4, Math.floor((c1 - c0) / 4));
+        for (let k = 0; k < lights; k++) {
+          const m = c0 + (c1 - c0) * (k + 0.5) / lights;
+          if (hash(`${id}:sky${k}`) < 0.6) sink.quad(at(m - 0.45, -0.4, roofZ + 0.03), at(m + 0.45, -0.4, roofZ + 0.03), at(m + 0.45, 0.4, roofZ + 0.03), at(m - 0.45, 0.4, roofZ + 0.03), SKYLIGHT, [0, 0, 1]);
+        }
+        pipe(stern > 0 ? c1 - 0.7 : c0 + 0.7, half * 0.5, roofZ);
+        const deckMid = stern > 0 ? -L / 2 + bowDeck * 0.55 : L / 2 - bowDeck * 0.55;
+        if (hash(`${id}:bowpot`) < 0.6 && widthAt(deckMid) > 0.9) plant(deckMid, 0, sheer(cx + ux * deckMid, cy + uy * deckMid), 'bowpot');
+      }
+      return { id, tris: sink.tris };
     }
     const half = Math.max(0.8, W / 2 - 0.6);
     const c0 = Math.min(-0.34 * L * stern, 0.28 * L * stern), c1 = Math.max(-0.34 * L * stern, 0.28 * L * stern), cabinTop = hullTop + 1.9;
