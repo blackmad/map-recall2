@@ -29,6 +29,33 @@ export function topAcross(cells: readonly BuiltCell[], x: number, y: number): st
 
 export const STREET_TOPS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram']);
 
+/**
+ * roads-v1 survey gaps (roads lane phase 2, 2026-10-16): a junction node under no wegdeel polygon (a plein the BGT
+ * files as terrain) where the covered ways draw no bands, so the land showed where the band model paved. The
+ * pocket pass paves a disc around such a node again (pockets.ts SurveyGap). `maxLandM2`: land points (1 m grid,
+ * within `radiusM`, under no polygon) where the build without the survey shows a street surface. With every cell
+ * published the Nieuwmarkt nodes lie in polygons the neighbour cell 0_0 owns; the gap shows at the extract's edge
+ * (where the pilot ended), so check-ground-cells builds the cell with its neighbours' roads withheld.
+ */
+export interface SurveyGapRegression { id: string; label: string; at: [number, number]; radiusM: number; maxLandM2: number }
+export const SURVEY_GAPS: SurveyGapRegression[] = [
+  { id: 'nieuwmarkt-west', label: 'Nieuwmarkt, west side (the plein is terrain, not wegdeel)', at: [4.899633, 52.372277], radiusM: 12, maxLandM2: 40 },
+  { id: 'nieuwmarkt-north', label: 'Nieuwmarkt, north side by the Waag', at: [4.899968, 52.372743], radiusM: 12, maxLandM2: 30 },
+];
+/** Land points (1 m grid within `radiusM`, under no survey polygon) on `on` that `off` (no survey) shows as street. */
+export function gapLand(on: readonly BuiltCell[], off: readonly BuiltCell[], centre: [number, number], radiusM: number, index: RoadIndex): { probes: number; land: number } {
+  let probes = 0, land = 0;
+  for (let dx = -radiusM; dx <= radiusM; dx++) for (let dy = -radiusM; dy <= radiusM; dy++) {
+    if (dx * dx + dy * dy > radiusM * radiusM) continue;
+    const x = centre[0] + dx, y = centre[1] + dy;
+    if (index.find(x, y) >= 0) continue;
+    if (!STREET_TOPS.has(topAcross(off, x, y) as GroundLayer)) continue;
+    probes++;
+    if (topAcross(on, x, y) === 'land') land++;
+  }
+  return { probes, land };
+}
+
 /** Street bands a rider should see on a deck (belt audit's deck-top probe). */
 const DECK_STREET: ReadonlySet<string> = new Set(['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb']);
 /** Embedded tram rails (LIFT.rail) sit 2 cm over the carriageway (LIFT.carriageway); over a band within this they are street vocabulary. */
@@ -154,7 +181,7 @@ export function surveyedCoverage(cells: readonly BuiltCell[], centre: [number, n
  * roads-v1 junctions (the BGT partition on, `?roads=bgt`): the user's Kinkerstraat × Da Costakade shots (red smears
  * and pale wedges where the band model met the bridge mouths) read as the surveyed asphalt; the Marnixstraat busway
  * crossing of the red fietsstraat is one rijbaan polygon the extract paints red (an OSM fietsstraat lies on it) with
- * tram track along it, which the runtime draws grey (RoadIndex.railCarriages): asphalt, never paving or land. check-ground-cells judges them with `surveyedCoverage` (the top must
+ * tram track along it, which the extract keeps grey (roadCells fietsstraatSection: the section is the busway's): asphalt, never paving or land. check-ground-cells judges them with `surveyedCoverage` (the top must
  * be the polygon's mesh); `surface`/`also` document what that is at the node.
  */
 export const ROAD_JUNCTIONS: JunctionRegression[] = [
