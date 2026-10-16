@@ -227,8 +227,12 @@ export function canalhouseCrownProfile(type: GableType, widthM: number, eavesM: 
     if (!Number.isInteger(steps) || steps < 1 || steps > 20) throw new Error('Invalid observed step count');
     const out: CanalhousePoint[] = [[0,eavesM]];
     for (let i=1;i<=steps;i++) { const x=left*i/steps, y=eavesM+(topM-eavesM)*i/steps; out.push([x,out.at(-1)![1]],[x,y]); }
+    // The right flank mirrors the left exactly (user, 2026-10-16: stepped gables are symmetric). The former loop ran
+    // one tread late: the crest gained a tread on the right and the eaves-level tread was lost, so every step gable
+    // leaned by one tread width.
     out.push([right,topM]);
-    for(let i=steps;i>=1;i--) { const x=widthM-left*(i-1)/steps,y=eavesM+(topM-eavesM)*(i-1)/steps; out.push([x,out.at(-1)![1]],[x,y]); } return out;
+    for(let i=steps;i>=1;i--) { const x=widthM-left*i/steps, yHigh=eavesM+(topM-eavesM)*i/steps, yLow=eavesM+(topM-eavesM)*(i-1)/steps; if (i<steps) out.push([x,yHigh]); out.push([x,yLow]); }
+    out.push([widthM,eavesM]); return out;
   }
   const capBase=topM-rise,capLeft=mid-crest/2,capRight=mid+crest/2;
   const capPoints:CanalhousePoint[]=[[left,capBase],[capLeft,capBase]];
