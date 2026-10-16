@@ -748,8 +748,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   8 hand `measuredEaves` must be reproduced by the rule). Identity by
   `roof-golden`; the six faces re-installed after sheet review. Follow-up:
   Mercatorplein's raised roof block is large-tier `roofPlant`.
+- **Openings-past-walls offenders** (2026-10-16, HISTORY "Openings must
+  stay inside their walls"; the Homomonument, Krijtberg, Westerkerk and
+  Nieuwe Kerk are DONE, the landmark gate is hard, baseline frozen at 316
+  models): 208 landmarks still carry parts past their walls (2,894 m²);
+  next pass by ride visibility: stadhuis, scheepvaarthuis,
+  royal-theater-carre, academie-theater-dans, then the roof-pierced dark
+  panels on sint-nicolaas, posthoornkerk and jewish-museum; check whether
+  stadhuis/valley/vinoly/hoofdbureau are curtain walls the glazed-skin
+  exemption misses before touching builders. Kit gate
+  `openingsWithinWallsGate` is advisory until the kit-rules lane lifts
+  attic panes out of the 3DBAG roof mass (19 of 22 installed chunks
+  fail; nassau-162289 28.9 m²), then set `OPENINGS_WITHIN_WALLS=strict`
+  and remove the advisory flag. Homomonument: measure the treads and the
+  pink of the Rosa Porrino granite (the panorama reads grey-beige).
 - **Homomonument and Krijtberg windows + pipeline gate (user, 2026-10-16;
-  plan Part 3, lane in flight):** Homomonument "still looks wrong (missing a
+  plan Part 3, DONE, see the item above):** Homomonument "still looks wrong (missing a
   triangle, sticks into the canal)": rebuild as three 10 m granite
   triangles (podium, flush, water steps meeting the quay wall), quay not cut
   through the steps, pinned in `check:manual-landmarks`. Krijtberg windows
