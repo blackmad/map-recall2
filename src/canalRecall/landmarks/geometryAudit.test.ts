@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, materialSlotCoverage, nonOpeningShape, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
+import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, isOpeningMaterial, isRoofMaterial, materialSlotCoverage, nonOpeningShape, openingsWithinWalls, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -565,4 +565,120 @@ test('auditNormals: vertex normals more than 90 degrees from the face are counte
   assert.equal(r.hasNormals, true);
   assert.ok(Math.abs(r.badNormalShare - 1) < 1e-9);
   assert.equal(r.inwardShare, 0, 'winding is still outward');
+});
+
+// ---------------------------------------------------------------------------------------------------------------
+// openingsWithinWalls (hard gate 2026-10-16): synthetic wall + window fixtures.
+
+/** One-sided faces (fans, winding as given) appended to a soup. */
+function withFaces(soup: MaterialSoup, ...faces: {mat: string; pts: V3[]}[]): MaterialSoup {
+  const positions = [...(soup.positions as number[])], indices = [...(soup.indices as number[])], triMaterial = [...(soup.triMaterial as number[])];
+  for (const f of faces) {
+    const base = positions.length / 3;
+    for (const p of f.pts) positions.push(...p);
+    for (let i = 1; i + 1 < f.pts.length; i++) { indices.push(base, base + i, base + i + 1); triMaterial.push(MATS.indexOf(f.mat)); }
+  }
+  return {...soup, positions, indices, triMaterial};
+}
+const glassBox = (x0: number, x1: number, y0: number, y1: number, z0 = 8, depth = 0.1) => ({min: [x0, y0, z0] as V3, max: [x1, y1, z0 + depth] as V3, mat: 'glass'});
+
+test('within-walls: a window on its wall has nothing outside', () => {
+  const r = openingsWithinWalls(boxes(block, pane(2, 8)));
+  assert.equal(r.judged, 1);
+  assert.equal(r.outsideM2, 0);
+  assert.deepEqual(r.failing, []);
+});
+
+test('within-walls: a head 4 cm past the wall top is within the 5 cm tolerance', () => {
+  const r = openingsWithinWalls(boxes(block, glassBox(2, 3.2, 7, 9.04)));
+  assert.equal(r.judged, 1);
+  assert.equal(r.outsideM2, 0, JSON.stringify(r.outside));
+});
+
+test('within-walls: a window rising 0.6 m past the wall top fails with the area outside in m2', () => {
+  const r = openingsWithinWalls(boxes(block, glassBox(2, 3.2, 8.4, 9.6)));
+  assert.equal(r.failing.length, 1);
+  const [w] = r.failing;
+  // 1.2 m wide x (0.6 - 0.05 tol) m above the top = 0.66 m2, sampled at 5 cm.
+  assert.ok(w.outsideM2 > 0.5 && w.outsideM2 < 0.75, `outside ${w.outsideM2} m2`);
+  assert.ok(w.faceM2 > 1.3 && w.faceM2 < 1.5, `face ${w.faceM2} m2`);
+  assert.equal(w.piercesRoof, false);
+  assert.equal(r.outsideM2, w.outsideM2);
+});
+
+test('within-walls: a window past the wall end is outside laterally', () => {
+  const r = openingsWithinWalls(boxes(block, pane(11.4, 8)));
+  assert.equal(r.failing.length, 1);
+  // 0.6 m of the 1.2 m width hangs past x = 12 (minus the 5 cm tolerance): 0.55 x 2 m.
+  assert.ok(r.failing[0].outsideM2 > 0.9 && r.failing[0].outsideM2 < 1.3, `outside ${r.failing[0].outsideM2} m2`);
+});
+
+/** The block with a brick gable plate on its south face (apex 13 m at x = 6) and two slate slopes meeting the gable plane. */
+function gabledBlock(window: {min: V3; max: V3; mat: string}): MaterialSoup {
+  const s = boxes(block, window);
+  return withFaces(s,
+    {mat: 'brick', pts: [[0, 9, 8], [12, 9, 8], [6, 13, 8]]},            // gable plate front, in the wall plane z = 8
+    {mat: 'brick', pts: [[6, 13, 7.5], [12, 9, 7.5], [0, 9, 7.5]]},      // its back
+    {mat: 'brick', pts: [[0, 9, 7.5], [6, 13, 7.5], [6, 13, 8], [0, 9, 8]]},   // rake faces
+    {mat: 'brick', pts: [[6, 13, 8], [12, 9, 8], [12, 9, 7.5], [6, 13, 7.5]]},
+    {mat: 'slate', pts: [[0, 9, 8], [6, 13, 8], [6, 13, 0], [0, 9, 0]]},       // west slope
+    {mat: 'slate', pts: [[6, 13, 8], [12, 9, 8], [12, 9, 0], [6, 13, 0]]});    // east slope
+}
+
+test('within-walls: a lancet inside the gable triangle passes', () => {
+  const r = openingsWithinWalls(gabledBlock(glassBox(5.4, 6.6, 9.5, 11.5)));
+  assert.equal(r.judged, 1);
+  assert.equal(r.outsideM2, 0, JSON.stringify(r.outside));
+  assert.deepEqual(r.failing, []);
+});
+
+test('within-walls: a lancet past the gable rake fails by the area beyond the rake', () => {
+  // Rake at x = 9 is y = 11, at x = 10.2 it is y = 10.2; the pane runs to 11.6: about 1.2 m2 above the rake.
+  const r = openingsWithinWalls(gabledBlock(glassBox(9, 10.2, 10, 11.6)));
+  assert.equal(r.failing.length, 1);
+  assert.ok(r.failing[0].outsideM2 > 0.8 && r.failing[0].outsideM2 < 1.4, `outside ${r.failing[0].outsideM2} m2`);
+});
+
+test('within-walls: a roof plane drawn across a window pierces it (roof over the parapet, De Baarsjes)', () => {
+  // The slope starts 30 cm in front of the wall at 8.5 m and rises inward through the pane (z 8..8.1, y 7.5..8.8).
+  const s = withFaces(boxes(block, glassBox(2, 3.2, 7.5, 8.8)), {mat: 'slate', pts: [[0, 8.5, 8.3], [12, 8.5, 8.3], [12, 12, 0], [0, 12, 0]]});
+  const r = openingsWithinWalls(s);
+  assert.equal(r.failing.length, 1);
+  const [w] = r.failing;
+  assert.equal(w.piercesRoof, true);
+  // Above the roof plane at the pane (y > 8.6): about 0.2 m x 1.2 m.
+  assert.ok(w.roofM2 > 0.1 && w.roofM2 < 0.35, `roof ${w.roofM2} m2`);
+  assert.ok(w.outsideM2 >= w.roofM2);
+});
+
+test('within-walls: a dormer window standing above the main roof is not a pierce', () => {
+  // Main roof from the eaves (z = 8, y = 9) inward to a ridge at z = 4; a brick dormer sits on it with a pane on its front (z = 7).
+  const dormer = {min: [4, 9, 5.5] as V3, max: [6, 11.5, 7] as V3, mat: 'brick'};
+  const s = withFaces(boxes(block, dormer, glassBox(4.4, 5.6, 10, 11, 7)), {mat: 'slate', pts: [[0, 9, 8], [12, 9, 8], [12, 12, 4], [0, 12, 4]]});
+  const r = openingsWithinWalls(s);
+  assert.equal(r.judged, 1);
+  assert.deepEqual(r.failing, [], JSON.stringify(r.outside));
+});
+
+test('within-walls: kit materials are classed by slot, not name', () => {
+  assert.equal(isRoofMaterial({name: '3b4047_slate', materialSlot: 'slate'}), true);
+  assert.equal(isRoofMaterial({name: '6a6c6c_bitumen', slot: 'bitumen'}), true);
+  assert.equal(isRoofMaterial({name: 'slate'}), true);
+  assert.equal(isRoofMaterial({name: '7a3a30_brick', materialSlot: 'brick'}), false);
+  assert.equal(isOpeningMaterial({name: 'ece9e0_frame', materialSlot: 'frame'}), true);
+  assert.equal(isOpeningMaterial({name: '46545c_glass', slot: 'glass'}), true);
+  assert.equal(isOpeningMaterial({name: 'white'}), true);
+  assert.equal(isOpeningMaterial({name: '9a9a94_stone', materialSlot: 'stone'}), false);
+});
+
+test('within-walls: the geometry audit reports the gate and a new export fails on one part outside', () => {
+  const g = geometryAudit(boxes(block, glassBox(2, 3.2, 8.4, 9.6)), {skipRhythm: true});
+  assert.equal(g.counts['opening-outside-parts'], 1);
+  assert.ok(g.counts['opening-outside-m2'] > 0.5);
+  assert.ok(g.findings.some(f => f.kind === 'opening-outside' && f.severity === 'fail'));
+  assert.ok(regressions(g.counts, undefined).some(r => r.startsWith('opening-outside-parts')));
+  // A recorded model without the key predates the gate: reported, not failed; one with the key may not grow.
+  assert.deepEqual(regressions({'opening-outside-parts': 1, 'opening-outside-m2': 0.66}, {'zfight-m2': 0}), []);
+  assert.deepEqual(regressions({'opening-outside-parts': 1, 'opening-outside-m2': 0.66}, {'opening-outside-parts': 1, 'opening-outside-m2': 0.66}), []);
+  assert.equal(regressions({'opening-outside-parts': 2, 'opening-outside-m2': 1.2}, {'opening-outside-parts': 1, 'opening-outside-m2': 0.66}).length, 2);
 });

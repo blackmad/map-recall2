@@ -17,6 +17,7 @@ export { THREE, GLTFLoader, MeshoptDecoder };
 // layer; `?sharedFrame=1`). Typed source in src/canalRecall/rendererShared/;
 // it takes THREE as an argument, so it adds no second copy of three here.
 export { SharedFrame } from '../../../src/canalRecall/rendererShared/sharedFrame.ts';
+export { blendAtZoom, transitionOn, OverviewBlend } from '../../../src/canalRecall/overviewTransition/blend.ts';
 // The one sun, for plain scripts with their own lights (artis-animals.js).
 export { SUN_DIRECTION, enuDirectionInLocal } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 export { createLitFacadeMaterial, createFacadeDepthMaterial } from '../../../src/canalRecall/rendererShared/litFacadeMaterial.ts';

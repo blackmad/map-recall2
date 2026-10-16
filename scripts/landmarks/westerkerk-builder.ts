@@ -16,7 +16,14 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
   const px=x+nx*.36,pz=z+nz*.36;box(px,y+.2,pz,.13,h-w*.42,.11,'white',a);
   if(!open){for(const u of [-w*.27,w*.27])box(px+Math.cos(a)*u,y+.2,pz-Math.sin(a)*u,.09,h-w*.53,.11,'white',a);for(let v=y+1.3;v<y+h-w*.55;v+=1.65)box(px,v,pz,w,.09,.12,'white',a);}
  }
- function facade(ring:number[][],base:number,eaves:number,kind:'aisle'|'nave'|'tower'|'upper'){
+ const inRing=(x:number,z:number,r:number[][])=>{let c=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[i],q=r[j];if((a[1]>z)!==(q[1]>z)&&x<(q[0]-a[0])*(z-a[1])/(q[1]-a[1])+a[0])c=!c;}return c;};
+ /** A wall point 0.6 m outward sits inside another mapped part that rises above it: the nave or an aisle hides that wall there (openingsWithinWalls, 2026-10-16: tower lights through the nave roof). */
+ function hidden(x:number,z:number,y:number,own:string){
+  for(const p of source.parts){if(p.osmId===own||p.osmId==='w749287964')continue;const t=p.properties as Record<string,string>;if(Number(t.height)<=y+1)continue;
+   for(const rings of p.localPolygons)if(inRing(x,z,rings[0]))return true;}
+  return false;
+ }
+ function facade(ring:number[][],base:number,eaves:number,kind:'aisle'|'nave'|'tower'|'upper',own=''){
   const winding=Math.sign(ring.slice(0,-1).reduce((s,a,i)=>{const q=ring[i+1];return s+a[0]*q[1]-q[0]*a[1];},0))||1;
   for(let i=0;i<ring.length-1;i++){
    const a=ring[i],q=ring[i+1],dx=q[0]-a[0],dz=q[1]-a[1],len=Math.hypot(dx,dz);if(len<2.5)continue;
@@ -24,8 +31,8 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
    for(const y of tower?[1.3,10,23,eaves-.55]:upper?[base+.25,eaves-.4]:[base+.3,eaves-.45])segment(a,q,y,.35,.45,'stone');
    const count=Math.max(1,Math.floor(len/(tower?4.1:upper?5:7.5))),step=len/count;
    for(let k=0;k<count;k++){
-    const t=(k+.5)/count,x=a[0]+dx*t+nx*.15,z=a[1]+dz*t+nz*.15;
-    if(tower){window(x,3,z,Math.min(2,step*.55),4.5,angle,true);window(x,13,z,Math.min(1.25,step*.4),7,angle,true);window(x,27,z,Math.min(1.35,step*.42),10.2,angle,true);}
+    const t=(k+.5)/count,x=a[0]+dx*t+nx*.15,z=a[1]+dz*t+nz*.15,hx=a[0]+dx*t+nx*.6,hz=a[1]+dz*t+nz*.6;
+    if(tower){for(const [y,w,h] of [[3,Math.min(2,step*.55),4.5],[13,Math.min(1.25,step*.4),7],[27,Math.min(1.35,step*.42),10.2]])if(!hidden(hx,hz,y,own)&&!hidden(hx,hz,y+h,own))window(x,y,z,w,h,angle,true);}
     else if(upper){if(eaves-base>=6)window(x,base+1.7,z,Math.min(2.15,step*.56),eaves-base-3.1,angle,true);}
     else window(x,kind==='aisle'?3.1:15.3,z,Math.min(kind==='aisle'?4.2:5.1,step*.63),kind==='aisle'?8.8:8.5,angle);
    }
@@ -40,7 +47,7 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
   const rise=Number(tags['roof:height']||0),aisle=part.osmId==='w749268115',eaves=aisle?12.5:top-rise;
   const colour:Colour=tower?(base===0?'brick':base===40?'stone':'white'):'brick';
   body(part.localPolygons,base,eaves-base,colour);
-  if(top>5)for(const rings of part.localPolygons)facade(rings[0],base,eaves,tower?(base===0?'tower':'upper'):aisle?'aisle':top>15?'nave':'aisle');
+  if(top>5)for(const rings of part.localPolygons)facade(rings[0],base,eaves,tower?(base===0?'tower':'upper'):aisle?'aisle':top>15?'nave':'aisle',part.osmId);
   const height=(x:number,z:number)=>{if(gable){const v=part.roofAxis==='x'?x:z,m=part.roofAxis==='x'?cx:cz,r=part.roofAxis==='x'?(x1-x0)/2:(z1-z0)/2;return eaves+rise*Math.max(0,1-Math.abs(v-m)/r);}if(aisle)return eaves+(top-eaves)*Math.max(0,1-Math.abs(z-cz)/((z1-z0)/2));return top;};
   if(pyramid){const v:number[]=[];for(const rings of part.localPolygons){const r=rings[0];for(let i=0;i<r.length-1;i++)v.push(r[i][0],eaves,r[i][1],r[i+1][0],eaves,r[i+1][1],cx,top,cz);}mesh(v,'slate');}
   else{

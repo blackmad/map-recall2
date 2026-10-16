@@ -8,7 +8,8 @@ import {pointInRing} from './facts.ts';
 import type {FitReport} from './fit.ts';
 
 export interface Tri { a: number[]; b: number[]; c: number[]; surface: string; metallic: number }
-export interface Gate { id: string; pass: boolean; value: unknown; limit: string }
+/** `advisory`: reported in the gate list but not counted against the house (openings-within-walls while the kit's roof-over-window cases are triaged). */
+export interface Gate { id: string; pass: boolean; value: unknown; limit: string; advisory?: boolean }
 
 export const BUDGET_TRIANGLES = 3000;
 

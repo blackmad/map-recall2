@@ -61,9 +61,17 @@ export interface BuildingFacts {
   canopyM?: Record<string, {bottomM: number; joinLeft: boolean; joinRight: boolean}>;
   /**
    * Where `roofsRD` came from when it is not 3DBAG: `recipe` = generated from the house design and plot depth
-   * (blockFace/recipeRoof.ts); 3DBAG is then an upper bound only (`surveyRoofMaxM`, main-body p95 `capM`).
+   * (blockFace/recipeRoof.ts); `front` = generated under the street front's crown (a saddle under a gable, flat behind
+   * a parapet or measured cornice, an attic face behind a dormered cornice; `forms` per front id). 3DBAG is then an
+   * upper bound only (`surveyRoofMaxM`, main-body p95 `capM`); a front roof is bounded by its crown line `crownTopM`
+   * (m above ground: the highest line any band of the roof may reach).
    */
-  roofSource?: {kind: 'recipe'; surveyRoofMaxM: number; capM: number};
+  roofSource?: {kind: 'recipe' | 'front'; surveyRoofMaxM: number; capM: number; crownTopM?: number; forms?: Record<string, 'saddle' | 'flat' | 'attic'>};
+  /**
+   * Row coherence (blockFace/rowCoherence.ts): this pand's 3DBAG eaves or ridge stood off the line of its typed row
+   * (same type, same build year) and was clamped to it; `eavesM`/`ridgeM` give the from -> to values (m above ground).
+   */
+  rowClamp?: {row: string; eavesM?: {from: number; to: number}; ridgeM?: {from: number; to: number}; note: string};
   /**
    * LoD2.2 wall surfaces (large tier only, `buildFacts(..., {walls: true})`): `surface` is the boundary index in the
    * BuildingPart's LoD2.2 shell, the same index as `extractFacadeWallPlanes`' `:wall:<i>` id and a `kind: large` intent's
@@ -296,7 +304,8 @@ export function regroundFacts(facts: BuildingFacts, groundNAP: number, groundSou
     ...(facts.wallsRD ? {wallsRD: facts.wallsRD.map(w => ({...w, bottomM: w.bottomM + d, topM: w.topM + d}))} : {}),
     ...(facts.measuredEavesM ? {measuredEavesM: shiftMap(facts.measuredEavesM)} : {}),
     ...(facts.canopyM ? {canopyM: Object.fromEntries(Object.entries(facts.canopyM).map(([k, v]) => [k, {...v, bottomM: v.bottomM + d}]))} : {}),
-    ...(facts.roofSource ? {roofSource: {...facts.roofSource, surveyRoofMaxM: facts.roofSource.surveyRoofMaxM + d, capM: facts.roofSource.capM + d}} : {}),
+    ...(facts.roofSource ? {roofSource: {...facts.roofSource, surveyRoofMaxM: facts.roofSource.surveyRoofMaxM + d, capM: facts.roofSource.capM + d, ...(facts.roofSource.crownTopM !== undefined ? {crownTopM: facts.roofSource.crownTopM + d} : {})}} : {}),
+    ...(facts.rowClamp ? {rowClamp: {...facts.rowClamp, ...(facts.rowClamp.eavesM ? {eavesM: {from: facts.rowClamp.eavesM.from + d, to: facts.rowClamp.eavesM.to + d}} : {}), ...(facts.rowClamp.ridgeM ? {ridgeM: {from: facts.rowClamp.ridgeM.from + d, to: facts.rowClamp.ridgeM.to + d}} : {})}} : {}),
   };
 }
 

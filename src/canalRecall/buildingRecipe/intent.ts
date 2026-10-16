@@ -579,9 +579,27 @@ export interface CanalHouseIntent {
   address: string;
   sources: IntentSource[];
   fronts: FrontIntent[];
-  roof: { material: typeof ROOF_MATERIALS[number] };
+  roof: RoofIntent;
   palette: PaletteIntent;
   notes?: string[];
+}
+
+export const ROOF_SOURCES = ['front', '3dbag'] as const;
+export const ROOF_FORMS = ['saddle', 'flat', 'attic'] as const;
+/**
+ * The roof mass. Only `material` is required. The rest is opt-in (absent = today's behaviour, byte-identical):
+ * `source: front` = the roof follows the street front read off the photo (a gable gets a saddle under its outline,
+ * a parapet or measured cornice a flat top, a dormered cornice an attic face) and 3DBAG LoD2.2 is an upper bound only;
+ * `3dbag` = keep the LoD2.2 roof whatever the front says (the escape when the survey IS right). A block face derives
+ * `front` for every pand whose street front carries a measured crown (blockFace/compile.ts `roofSourceFor`).
+ * `form` forces the front form; `pitchDeg` the saddle/attic pitch (15-80); `evidence` what on the photo shows it.
+ */
+export interface RoofIntent {
+  material: typeof ROOF_MATERIALS[number];
+  source?: typeof ROOF_SOURCES[number];
+  form?: typeof ROOF_FORMS[number];
+  pitchDeg?: number;
+  evidence?: string;
 }
 
 /**
@@ -961,6 +979,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   if (corners.length > 1) problems.push('tower.corner: one corner tower per pand (on one of the two fronts that meet at the corner)');
   if (corners.length && intent.fronts.length < 2) problems.push(`front ${corners[0].id}.tower.corner: a corner tower needs a pand with two fronts`);
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
+  if (intent?.roof?.source !== undefined) oneOf(intent.roof.source, ROOF_SOURCES, 'roof.source');
+  if (intent?.roof?.form !== undefined) oneOf(intent.roof.form, ROOF_FORMS, 'roof.form');
+  if (intent?.roof?.pitchDeg !== undefined && !(typeof intent.roof.pitchDeg === 'number' && intent.roof.pitchDeg >= 15 && intent.roof.pitchDeg <= 80)) problems.push('roof.pitchDeg: 15..80 degrees');
+  if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');

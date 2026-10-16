@@ -1,0 +1,9 @@
+{
+  "mode": "car", "dest": "Westerkerk", "step": 60, "legs": [],
+  "extra": [
+    {"name": "nieuwe-kerk-west-end", "at": [4.89065, 52.37425, 100]},
+    {"name": "nieuwe-kerk-dam", "at": [4.89270, 52.37330, 300]},
+    {"name": "westerkerk-prinsengracht", "at": [4.88340, 52.37520, 215]},
+    {"name": "westerkerk-keizersgracht", "at": [4.88520, 52.37385, 295]}
+  ]
+}

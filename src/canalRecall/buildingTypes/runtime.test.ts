@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import * as THREE from 'three';
-import {areaAnchor, createBuildingTypes, farMassing, mergedShaders, mergeParts, instanceMatrix, mercator, metreUnits, offsetMetres, pandOsmId, partitionByDistance, suppressionIds, yawOf, type RuntimeInstance} from './runtime.ts';
+import {areaAnchor, createBuildingTypes, farMassing, nearMetresFor, mergedShaders, mergeParts, instanceMatrix, mercator, metreUnits, offsetMetres, pandOsmId, partitionByDistance, suppressionIds, yawOf, type RuntimeInstance} from './runtime.ts';
 
 const inst = (over: Partial<RuntimeInstance> = {}): RuntimeInstance => ({pand: '0363100012061842', unit: 'u', anchor: [4.8, 52.364], northOffsetDegrees: 0, scale: [1, 1, 1], variant: 'v', groundAltitudeMetres: 0, ...over});
 const apply = (m: number[], p: number[]) => [m[0] * p[0] + m[4] * p[1] + m[8] * p[2] + m[12], m[1] * p[0] + m[5] * p[1] + m[9] * p[2] + m[13], m[2] * p[0] + m[6] * p[1] + m[10] * p[2] + m[14]];
@@ -48,6 +48,11 @@ test('suppression set: unique BAG pand ids in the OSM id form', () => {
   assert.deepEqual(suppressionIds([]), []);
 });
 
+test('suppression set: an instance also suppresses the panden its model absorbs (split-off end bay / entrance of the same slab)', () => {
+  const list = [inst({pand: '0363100012095578', alsoSuppress: ['0363100012196327']}), inst({pand: '0363100012063809', alsoSuppress: ['0363100012201815']})];
+  assert.deepEqual(suppressionIds(list), ['0363100012063809', '0363100012095578', '0363100012196327', '0363100012201815'].map(pandOsmId));
+});
+
 test('published instances.json: every unit has a GLB, ids unique, scales sane, suppression covers every instance', () => {
   const dir = path.join(import.meta.dirname, '../../../public/canal-drive/building-types');
   const list = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as RuntimeInstance[];
@@ -58,7 +63,8 @@ test('published instances.json: every unit has a GLB, ids unique, scales sane, s
     assert.ok(i.scale.every(s => s > 0.85 && s < 1.2), `${i.pand} ${i.scale}`);
     assert.equal(i.groundAltitudeMetres, 0);
   }
-  assert.equal(suppressionIds(list).length, list.length);
+  const absorbed = list.reduce((n, i) => n + (i.alsoSuppress?.length ?? 0), 0);
+  assert.equal(suppressionIds(list).length, list.length + absorbed);
 });
 
 test('far massing: outward winding, roof only when pitched', () => {
@@ -153,4 +159,29 @@ test('createBuildingTypes: a unit with several recipe materials is one draw near
   const mesh = area.group.children.find((o: any) => o.isInstancedMesh && o.name.startsWith('u1/near'));
   assert.deepEqual(area.pandForHit(mesh, 1), 'c');
   area.dispose();
+});
+
+test('createBuildingTypes: lit (shared-frame) Lambert units still draw the far box, so a far instance is never a hole', async () => {
+  // Own ground (default since 2026-10-14) implies the shared frame, whose recipe look is MeshLambertMaterial: not
+  // mergeable, so the merged far massing was never built and suppressed far pands vanished (Sloterplas, 2026-10-16).
+  const lambert = (slot: string) => { const m = new THREE.MeshLambertMaterial(); m.userData = {recipeLookShared: true, materialSlot: slot}; return m; };
+  const scene = new THREE.Group();
+  scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), lambert('brick')), new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), lambert('bitumen')));
+  scene.userData.nominal = {L0: 10, W0: 8, E0: 9};
+  const far: RuntimeInstance[] = [inst({pand: 'a', unit: 'lit', anchor: [4.803, 52.364]}), inst({pand: 'b', unit: 'lit', anchor: [4.8032, 52.364]})];
+  const area = await createBuildingTypes({THREE, loadUnit: async () => scene, getCentre: () => ({lng: 4.8, lat: 52.364})}, far);
+  const s = area.stats();
+  assert.equal(s.far, 2);
+  assert.equal(s.farTriangles, 2 * (8 + 2), 'two far boxes: four wall quads + a flat roof each');
+  const names = area.group.children.filter((o: any) => o.isInstancedMesh && o.visible).map((o: any) => o.name).sort();
+  assert.deepEqual(names, ['lit/far/roof', 'lit/far/walls']);
+  area.dispose();
+});
+
+test('near limit scales with the unit: a 110 m, 44 m slab stays detailed to ~330 m, terrace and portiek units keep 140 m', () => {
+  assert.equal(nearMetresFor({L0: 109.5, W0: 12.6, E0: 44}), 329);
+  assert.equal(nearMetresFor({L0: 16.1, W0: 9.8, E0: 15.3}), 140);
+  assert.equal(nearMetresFor(undefined), 140);
+  const p = partitionByDistance([{x: 200, z: 0}, {x: 200, z: 10}], {x: 0, z: 0}, [329, 140], 700);
+  assert.deepEqual([p.near, p.far], [[0], [1]]);
 });

@@ -53,6 +53,13 @@ export async function geometryShots(items: {id: string; file: string; geometry: 
         for (const sh of shots) await r.shoot(it.file, sh);
         cells.push({id: it.id, caption: `${opening.kind} ${opening.materials.join('+')} gap ${opening.gap.toFixed(2)} m, ${Math.round(opening.outside * 100)}% off wall, ${Math.round(opening.buried * 100)}% buried`, files: shots.map(x => x.out)});
       }
+      // Worst opening part past its wall (openingsWithinWalls): same square-on + grazing pair, box round the part.
+      const past = g.withinWalls?.failing[0];
+      if (past) {
+        const shots = openingShots({...past, kind: 'overhang', severity: 'fail', gap: 0, outside: past.faceM2 ? past.outsideM2 / past.faceM2 : 0, buried: 0} as OpeningIssue, path.join(outDir, `${it.id}-past-wall`));
+        for (const sh of shots) await r.shoot(it.file, sh);
+        cells.push({id: it.id, caption: `past wall ${past.outsideM2} m2 of ${past.faceM2} m2 ${past.materials.join('+')} at (${past.centre.map(v => v.toFixed(1)).join(', ')}) bearing ${Math.round(past.wallBearing)}${past.roofM2 ? `, ${past.roofM2} m2 through a roof` : ''}${past.piercesRoof ? ', pierces a roof' : ''} (${g.withinWalls.failing.length} parts)`, files: shots.map(x => x.out)});
+      }
       const patch = g.zfight.patches.find(p => !p.near);
       if (patch && patch.area >= 0.25) {
         const shots = zfightShots(patch, s, path.join(outDir, `${it.id}-zfight`));
