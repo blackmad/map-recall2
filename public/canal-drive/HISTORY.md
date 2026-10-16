@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## Motion stutter: longest desktop frame 383 → 83 ms, long tasks 13 → 2 per minute (2026-10-16)
+
+Lane `worktree-agent-a2001077bb7d13480` (final 23144a68e; doc
+`docs/perf-motion-stutter-20261016.md`), answering "the game isn't so much
+stuttering on loading so much as during motion/play". Fixes in commit
+order with their measured effect: restyle keeps unchanged buildings
+(66dc5dbb1; at 4× throttle frames over 50 ms 112 → 36 per minute,
+stalled time 14.8 → 5.1 s, the biggest single win); chunk installs staged
+across frames (32468dfe2; 2,120 → 224 ms at 4×, 556 → 25 ms at 1×);
+own-ground shaders precompiled (4dc3ec7a3; shader links after the start
+80 → 1); relief tiles decoded in a worker (5b98c4fc7; removes 50–100 ms
+gunzip/decode bursts); tile flush time-sliced at 5 ms a frame
+(34ba92b81; 262 → 27 ms, longest frame 333 → 67 ms at 1×); regroup
+reuses unchanged contexts (0d08e2570; 1,173 → 587 ms at 4×, frames over
+100 ms 12 → 5); and a desktop motion budget in `ride-perf.spec.ts`
+(30f545d9e: longest frame ≤ 200 ms, at most one over 100 ms). Desktop 1×,
+60 s Jordaan → Kinkerstraat, median of three, before → merged on today's
+main: frames over 50 ms 5 → 2 per minute, over 100 ms 2 → 0, longest
+frame 383 → 83 ms, long tasks 13 → 2 per minute, stalled 0.88 → 0.15 s
+per minute; p50/p95 unchanged at 16.7/16.8 ms. A same-load re-run of the
+pre-merge branch shows main added no stutter at 1×; at 4× machine load
+spreads wider than any difference (three.js +6 % CPU from the sunny
+look, not in the stalls). Still stalling, per 60 s at 4×: regroup
+`setFeatures` ~0.5 s plus ~0.1 s neighbour walk, the chunk `rebuild`
+structured clone ~0.3 s, MapLibre `receive`/diff and `sendToSource`'s
+deep clone ~0.4–0.5 s, legacy `_refreshColoredBuildingFilter` ~0.25 s
+when a landmark loads, `_updateRiderCover` and `_cameraSightlineBlocker`
+~0.1 s each; steady label passes ~1.4 s/min at 4× (72 → 250 ms at 1×
+after the merge, run 3× as often) and tree rebuilds ~0.4 s; the 50 ms
+`dt` clamp in `game.js` still slows the rider in any long frame left.
+
 ## The three held faces fixed in the roof generator and installed (2026-10-16)
 
 Lane `lane/held-faces-20261016` (3cca5b1fb generator, test and golden;
