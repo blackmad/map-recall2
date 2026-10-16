@@ -3,7 +3,7 @@
  "street": "Wenslauerstraat",
  "library": "bellamy",
  "stripDate": "2020-05-11",
- "seconds": 0.36,
+ "seconds": 0.43,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 0.01,
     "foliageShare": 0
    },
@@ -113,6 +114,7 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 0.92,
     "foliageShare": 0
    },
@@ -149,6 +151,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 0,
     "foliageShare": 0.01
    },
@@ -214,6 +217,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 0.11,
     "foliageShare": 0.05
    },
@@ -290,6 +294,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -359,6 +371,20 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.263,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.63,
+       "widthM": 3.6,
+       "centre": 0.43
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.02
    },
@@ -434,6 +460,14 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.069,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.01,
     "foliageShare": 0
    },
@@ -504,6 +538,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -571,6 +613,25 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.308,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.15,
+       "widthM": 0.8,
+       "centre": 0.76
+      },
+      {
+       "atM": 4.88,
+       "widthM": 0.85,
+       "centre": 0.36
+      }
+     ]
+    },
     "voidShare": 0.1,
     "foliageShare": 0
    },
@@ -646,28 +707,51 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 4.15 m at 0.5 (light 0.08): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.15,
+       "centre": 0.5,
+       "light": 0.08
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
    "status": "held",
    "stage": "match",
-   "reason": "best bellamy-1916-two-axis scores 0.4 < 0.7 (3DBAG eaves 6.27 m = 4 storeys of 1.57 m vs the type's 3.45 m; 3DBAG bouwlagen 2 vs 4/5)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1921, type 1928-1935; strip shows balconies (dark open axis 4.15 m at 0.5 (light 0.08): no brick spandrel between the storeys))",
    "best": {
-    "type": "bellamy-1916-two-axis",
-    "score": 0.4,
-    "veto": [],
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1928-1935",
+     "strip shows balconies (dark open axis 4.15 m at 0.5 (light 0.08): no brick spandrel between the storeys)"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 6.27 m = 4 storeys of 1.57 m vs the type's 3.45 m"
+      "note": "3DBAG eaves 6.27 m = 4 storeys of 1.57 m vs the type's 3.13 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
       "note": "3DBAG bouwlagen 2 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.63 m (pitched) vs pitched"
      },
      {
       "key": "stucco",
@@ -707,6 +791,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 0,
     "foliageShare": 0
    },

@@ -3,7 +3,7 @@
  "street": "Wenslauerstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 3.41,
+ "seconds": 1.27,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -37,6 +37,20 @@
     "doorSide": "right",
     "accentSide": "left",
     "accentShare": 0.482,
+    "structure": {
+     "bayWidthM": 1.68,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.85 m @ 0.58), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.29,
+       "light": 0.58
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.24,
     "foliageShare": 0.08
    },
@@ -107,6 +121,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.64,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.43,
     "foliageShare": 0.05
    },
@@ -138,6 +160,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.539,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.4,
     "foliageShare": 0.08
    },
@@ -174,6 +204,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.582,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.27,
     "foliageShare": 0.06
    },
@@ -247,6 +285,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.614,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.26,
     "foliageShare": 0.12
    },
@@ -315,6 +361,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.8,
+     "bayCentre": 0.58,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.13
    },
@@ -383,6 +437,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.12
    },
@@ -445,6 +507,25 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.97,
+       "widthM": 1.05,
+       "centre": 0.83
+      },
+      {
+       "atM": 8,
+       "widthM": 1.05,
+       "centre": 0.21
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.1
    },
@@ -507,42 +588,88 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.2 m at 0.57 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.2,
+       "centre": 0.57,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.57,
+       "widthM": 1.15,
+       "centre": 0.47
+      },
+      {
+       "atM": 8.97,
+       "widthM": 1.25,
+       "centre": 0.13
+      },
+      {
+       "atM": 6.13,
+       "widthM": 2.2,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.23,
+       "centre": 0.13
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.2
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.041 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19; window shape square vs photo tall)",
-   "likeness": {
-    "pandId": "0363100012066665",
-    "ncc": 0.041,
-    "nccRaw": 0.041,
-    "shiftM": [
-     -0.2,
-     0.4
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1938, type 1928-1935; strip shows balconies (dark open axis 2.2 m at 0.57 (light 0.3): no brick spandrel between the storeys))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1938, type 1928-1935",
+     "strip shows balconies (dark open axis 2.2 m at 0.57 (light 0.3): no brick spandrel between the storeys)"
     ],
-    "usable": 0.62,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.19",
-     "window shape square vs photo tall"
-    ],
-    "wall": {
-     "photo": "#56442e",
-     "model": "#775c40",
-     "dL": 0.1
-    },
-    "glazing": {
-     "photo": 0.27,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.249
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.21 m = 5 storeys of 3.04 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -572,41 +699,21 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.45,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.22
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.09 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.32 vs photo 0.18)",
-   "likeness": {
-    "pandId": "0363100012070740",
-    "ncc": 0.09,
-    "nccRaw": 0.09,
-    "shiftM": [
-     -0.15,
-     -0.4
-    ],
-    "usable": 0.63,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.24 mean 0.32 vs photo 0.18"
-    ],
-    "wall": {
-     "photo": "#5b4834",
-     "model": "#7c6046",
-     "dL": 0.1
-    },
-    "glazing": {
-     "photo": 0.18,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.239
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
    "challengers": {}
   }
  ]

@@ -3,7 +3,7 @@
  "street": "Hasebroekstraat",
  "library": "bellamy",
  "stripDate": "2018-06-13",
- "seconds": 0.16,
+ "seconds": 0.45,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -37,6 +37,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.42
    },
@@ -102,6 +110,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.2
    },

@@ -35,7 +35,8 @@
    }
   ],
   "stucco": false,
-  "note": "the flat roof and the 15 m parapet carry it; BAG's 1937 is kept as the year range's floor"
+  "note": "the flat roof and the 15 m parapet carry it; BAG's 1937 is kept as the year range's floor",
+  "balconies": false
  },
  "body": {
   "storeys": 5,

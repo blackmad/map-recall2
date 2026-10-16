@@ -19,6 +19,7 @@ import sharp from 'sharp';
 import {AUTO_PLACE, decidePand, fillPairs, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
+import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
 import {isLeaf, measureFacade, type FacadeImage} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, modelElevation, PAD_M, type LikenessResult} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
@@ -120,7 +121,10 @@ async function faceEvidence(faceId: string) {
       let columns: number | null = null, wall: string | null = null;
       try { const m = measureFacade({image: spanImage(raw, px, strip.pixelsPerMetre, strip.heightM, 0), box: {u0: 0, u1: (px[1] - px[0]) / strip.pixelsPerMetre, v0: 0, v1: eavesM}, lines}); columns = m.columns; wall = m.wall.cells ? m.wall.hex : null; } catch { columns = null; }
       const skyline = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
-      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM))};
+      // The structure reads the body up to the lower of the 3DBAG and the photographed eaves (a gable's shoulder is no wall).
+      const structure = measureStripStructure({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre,
+        eavesM: skyline && skyline.confidence >= 0.6 && skyline.eavesM > 6 ? Math.min(eavesM, skyline.eavesM) : eavesM});
+      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), columns, doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
   }
@@ -210,6 +214,9 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const forced = arg('force-type');
   if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: [0, 99], ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
   const typeIds = types.map(t => t.id);
+  // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
+  const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
+  const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
@@ -223,7 +230,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const tf = performance.now();
     const {discovery, strip, uses, evs} = await faceEvidence(f.id);
     // Pass 1: match. Pass 2+: compile the runs, hold the pands that fail the likeness gate, repeat until stable.
-    const decisions: Decision[] = evs.map(ev => decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date));
+    const decisions: Decision[] = evs.map(ev => {
+      const hold = reviewHolds.get(ev.pandId);
+      if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
+      return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
+    });
     fillPairs(decisions, types);
     const challengers = new Map<string, Record<string, number | null>>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
@@ -321,7 +332,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       runs: runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})),
       pands: decisions.map((d, k) => {
         const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag,
-          strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
+          strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare,
+            structure: ev.strip.structure ? {bayWidthM: ev.strip.structure.bayWidthM, bayCentre: ev.strip.structure.bayCentre, balconies: ev.strip.structure.balconies, why: ev.strip.structure.balconyWhy, openAxes: ev.strip.structure.openAxes, slabs: ev.strip.structure.slabs} : null, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
         return d.kind === 'placed' ? {...base, status: 'placed', type: d.typeId, score: d.score, runnerUp: d.runnerUp, placement: d.house.type, notes: d.notes, likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}}
           : {...base, status: 'held', stage: d.stage, reason: d.reason, ...(d.best ? {best: {type: d.best.typeId, score: d.best.score, veto: d.best.veto, criteria: d.best.criteria}} : {}), likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}};
       })};
@@ -332,7 +344,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     for (const p of out.pands as any[]) console.log(`  ${p.pandId.slice(-6)} ${String(p.address).padEnd(26)} ${p.status === 'placed' ? `${p.type} ${p.score} | NCC ${p.likeness?.ncc ?? '-'} (raw ${p.likeness?.nccRaw ?? '-'}) ${p.notes?.join('; ') ?? ''}` : `HELD ${p.stage}: ${p.reason}`}`.slice(0, 260));
     summary.push({face: f.id, street: f.street, pands: out.pands.length, placed, held: out.pands.length - placed, runs: out.runs, seconds: out.seconds,
       byType: Object.fromEntries([...new Set(out.pands.filter((p: any) => p.type).map((p: any) => p.type))].map(t => [t, out.pands.filter((p: any) => p.type === t).length])),
-      holds: Object.fromEntries(['evidence', 'match', 'likeness', 'run'].map(s => [s, out.pands.filter((p: any) => p.stage === s).length]))});
+      holds: Object.fromEntries(['evidence', 'match', 'likeness', 'run', 'review'].map(s => [s, out.pands.filter((p: any) => p.stage === s).length]))});
   }
   const file = path.join('scripts/block-face/buurten', `${buurt}-placement.json`);
   const prev = existsSync(file) ? await readJson(file) : {faces: []};

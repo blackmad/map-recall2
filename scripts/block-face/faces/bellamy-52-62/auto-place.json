@@ -3,7 +3,7 @@
  "street": "Bellamystraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.17,
+ "seconds": 0.32,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,35 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.13 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.13,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.27,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.8,
+       "centre": 0.48,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.91,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.04,
     "foliageShare": 0.35
    },
@@ -112,6 +141,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.67,
+     "balconies": true,
+     "why": "dark open axis 6.2 m at 0.35 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 6.2,
+       "centre": 0.35,
+       "light": 0.12
+      },
+      {
+       "widthM": 2.52,
+       "centre": 0.86,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.63
    },
@@ -182,6 +230,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.491,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.01,
     "foliageShare": 0.34
    },
@@ -252,6 +308,20 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 9.43 m at 0.5 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 9.43,
+       "centre": 0.5,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.01,
     "foliageShare": 0.38
    },
