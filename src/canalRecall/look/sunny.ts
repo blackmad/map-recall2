@@ -130,10 +130,20 @@ export const SUNNY_LIGHT = {
 /** Bounds of the wall gain (linear): a crop white far above or below the sunlit white is a bad reference, not a wall. */
 export const WALL_GAIN_RANGE: readonly [number, number] = [0.85, 1.6];
 
+/** A recorded white point: sRGB bytes, or a hex string (the `tintWhitePoint` glTF extra). */
+export type WhitePoint = readonly number[] | string;
+const whiteRgb = (white: WhitePoint): readonly number[] => (typeof white === 'string' ? hexRgb(white) : white);
+
 /** Linear gain that brings a measured wall recorded under `white` (or under no recorded white) to a sunlit white. */
-export function measuredWallGain(white: readonly number[] | null | undefined): number {
-  const g = white ? srgbToLinear(SUNLIT_WHITE_LUMA) / srgbToLinear(luma(white)) : FALLBACK_WALL_GAIN;
+export function measuredWallGain(white: WhitePoint | null | undefined): number {
+  const g = white ? srgbToLinear(SUNLIT_WHITE_LUMA) / srgbToLinear(luma(whiteRgb(white))) : FALLBACK_WALL_GAIN;
   return Math.max(WALL_GAIN_RANGE[0], Math.min(WALL_GAIN_RANGE[1], g));
+}
+
+/** A colour scaled by `k` in linear light; a channel past white scales the whole colour down so the hue holds. */
+export function scaleLinear(hex: string, k: number): string {
+  const lin = hexRgb(hex).map(v => srgbToLinear(v) * k), over = Math.max(1, ...lin);
+  return rgbHex(lin.map(c => linearToSrgb(c / over)));
 }
 
 /**
@@ -142,17 +152,20 @@ export function measuredWallGain(white: readonly number[] | null | undefined): n
  * WALL_WHITE_POINTS by hex; a wall with no recorded white takes FALLBACK_WALL_GAIN. A channel past white scales the
  * whole colour down so the hue holds. Painted stone and glass keep their own rules (look/palette.ts).
  */
-export function sunlitMeasuredWall(hex: string, white: readonly number[] | null | undefined = WALL_WHITE_POINTS[hex.toLowerCase()]): string {
-  const k = measuredWallGain(white), lin = hexRgb(hex).map(v => srgbToLinear(v) * k), over = Math.max(1, ...lin);
-  return rgbHex(lin.map(c => linearToSrgb(c / over)));
+export function sunlitMeasuredWall(hex: string, white: WhitePoint | null | undefined = WALL_WHITE_POINTS[hex.toLowerCase()]): string {
+  return scaleLinear(hex, measuredWallGain(white));
 }
 
 /**
  * The authored hex a slot is tinted from under a look: a measured wall (`brick`/`accent` with `tintSource: measured`)
- * goes to its sunlit exposure in the sunny look; every other slot, and the legacy look, keep the hex.
+ * goes to its sunlit exposure in the sunny look; every other slot, and the legacy look, keep the hex. `white` is the
+ * white the tint was recorded under when the material carries it (the `tintWhitePoint` glTF extra, written with
+ * `palette.whitePoint`); without it the white is looked up by hex in WALL_WHITE_POINTS (per-house crops), else
+ * FALLBACK_WALL_GAIN.
  */
-export function sceneSlotHex(slot: string, hex: string, source: string | null | undefined, look: SceneLook = sceneLookFrom()): string {
-  return look === 'sunny' && source === 'measured' && (slot === 'brick' || slot === 'accent') ? sunlitMeasuredWall(hex) : hex;
+export function sceneSlotHex(slot: string, hex: string, source: string | null | undefined, look: SceneLook = sceneLookFrom(), white?: WhitePoint | null): string {
+  if (look !== 'sunny' || source !== 'measured' || (slot !== 'brick' && slot !== 'accent')) return hex;
+  return white ? sunlitMeasuredWall(hex, white) : sunlitMeasuredWall(hex);
 }
 
 // ---------------------------------------------------------------------------

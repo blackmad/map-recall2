@@ -63,7 +63,7 @@ export interface OwnGroundOptions {
   far?: boolean;
   /** Ground palette variant (groundLook.ts; default from `?groundLook=`). Colour only. */
   groundLook?: GroundLook;
-  /** The surveyed road partition from roads-v1 (roadSurfaces.ts). Phase 1: on with `?roads=bgt` (or `window.__canalRecallRoads = true`), off by default. */
+  /** The surveyed road partition from roads-v1 (roadSurfaces.ts). On by default (2026-10-16); `?roads=0` draws the OSM bands. */
   roads?: boolean;
   /**
    * The overview → city blend (overviewTransition/blend.ts; default on, `?transition=0` off): the ground dissolves in
@@ -72,11 +72,13 @@ export interface OwnGroundOptions {
   transition?: boolean;
 }
 
-/** The roads flag from the page: `?roads=bgt` or `window.__canalRecallRoads = true` turns the BGT road surfaces on (phase 1 opt-in). */
+/** The roads flag from the page: the BGT road surfaces are on by default since 2026-10-16 (user: "if BGT is the fix,
+ *  then make it the default"); `?roads=0` or `window.__canalRecallRoads = false` draws the OSM bands. Cells without
+ *  the roads-v1 extract keep the bands either way. */
 function roadsFlag(): boolean {
   const g = globalThis as { __canalRecallRoads?: boolean; location?: { search?: string } };
-  if (g.__canalRecallRoads === true) return true;
-  return /[?&]roads=bgt\b/.test(g.location?.search ?? '');
+  if (typeof g.__canalRecallRoads === 'boolean') return g.__canalRecallRoads;
+  return !/[?&]roads=(0|false|off|bands)\b/.test(g.location?.search ?? '');
 }
 
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
