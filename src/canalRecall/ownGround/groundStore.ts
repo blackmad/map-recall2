@@ -28,7 +28,7 @@ import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, joinChains, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -93,7 +93,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -342,7 +342,8 @@ export class GroundStore {
       if (Math.min(...xs) < x0 - pad || Math.max(...xs) > x1 + pad || Math.min(...ys) < y0 - pad || Math.max(...ys) > y1 + pad) continue;
       ways.push({ id: w.id, name: w.tags.name ?? '', points: w.points, halfWidth: w.section.halfWidth });
     }
-    const { profiles } = wayDeckGroups(ways, wet, claimed);
+    // Consecutive pieces of one bridge join first (wayDecks.ts joinChains).
+    const { profiles } = wayDeckGroups(joinChains(ways).ways, wet, claimed, this.options.wayDeckHoles === false ? undefined : this.surface.ground);
     for (const w of ways) this.wayDeckIds.add(w.id);
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);
