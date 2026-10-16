@@ -121,12 +121,17 @@ export interface Partition { near: number[]; far: number[]; culled: number }
  * Near/far/culled split of instance centres by distance from the camera, with hysteresis so an instance sitting on a
  * threshold does not flip every update. `previous` is the last result (indices into `points`).
  */
-export function partitionByDistance(points: readonly {x: number; z: number}[], at: {x: number; z: number}, nearM: number, cullM: number, previous?: Partition, hysteresisM = 20): Partition {
+/** Near limit for a unit of nominal size: tall or long types (a 15-storey slab) keep their detail further out than a terrace house. */
+export function nearMetresFor(n: Nominal | undefined, base = NEAR_METRES): number {
+  return n ? Math.max(base, Math.round(3 * Math.max(n.L0, n.E0))) : base;
+}
+export function partitionByDistance(points: readonly {x: number; z: number}[], at: {x: number; z: number}, nearM: number | readonly number[], cullM: number, previous?: Partition, hysteresisM = 20): Partition {
   const wasNear = new Set(previous?.near), wasFar = new Set(previous?.far);
   const near: number[] = [], far: number[] = [];
   points.forEach((p, i) => {
     const d = Math.hypot(p.x - at.x, p.z - at.z);
-    const nearLimit = wasNear.has(i) ? nearM + hysteresisM : nearM - (wasFar.has(i) ? hysteresisM : 0);
+    const nearI = typeof nearM === 'number' ? nearM : nearM[i];
+    const nearLimit = wasNear.has(i) ? nearI + hysteresisM : nearI - (wasFar.has(i) ? hysteresisM : 0);
     const cullLimit = wasNear.has(i) || wasFar.has(i) ? cullM + hysteresisM : cullM;
     if (d <= nearLimit) near.push(i); else if (d <= cullLimit) far.push(i);
   });
@@ -309,6 +314,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
   // Pass 1: decode every unit and collect the recipe textures, so the merged shader declares exactly the samplers in use.
   interface Loaded { unit: string; indices: number[]; meshes: any[]; nominal?: Nominal }
   const loaded: Loaded[] = [];
+  const nearByPoint: number[] = instances.map(() => nearM);
   const textures: any[] = [];
   const isRecipe = (m: any) => !!(m?.isShaderMaterial && m.uniforms?.map?.value && m.uniforms.tint?.value && m.uniforms.uvScale && m.uniforms.enuFromWorld);
   // `?cityLook=1`: the recipe look dressed the units with the city look (look/cityLook.ts): slot and tint are vertex
@@ -324,6 +330,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     scene.traverse((o: any) => { if (o.isMesh) meshes.push(o); });
     for (const m of meshes) if (isRecipe(m.material) && !textures.includes(m.material.uniforms.map.value)) textures.push(m.material.uniforms.map.value);
     loaded.push({unit, indices, meshes, nominal});
+    if (deps.nearMetres === undefined) for (const i of indices) nearByPoint[i] = nearMetresFor(nominal, nearM);
   }
   // One shared material per side; every unit and the far massing draw through it (same textures, tint and fixed-light shade).
   const merged = new Map<number, any>();
@@ -388,6 +395,25 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
       const slotOf = (m: any) => (isCity(m.material) ? m.userData?.citySlot?.slot : m.material?.userData?.materialSlot);
       const pick = (slots: Set<string>) => meshes.filter(m => mergeable(m.material) && slots.has(slotOf(m))).sort((a, b) => b.geometry.attributes.position.count - a.geometry.attributes.position.count)[0];
       const wall = pick(WALL_SLOTS), roofMesh = pick(ROOF_SLOTS), raw = farMassing(nominal);
+      if (!wall) {
+        // Not mergeable (the shared frame's lit recipe look is MeshLambertMaterial): the far box still draws, one
+        // instanced mesh each for walls and roof in the unit's own wall/roof material, so a far instance is never a hole.
+        const own = (slots: Set<string>) => meshes.filter(m => slots.has(m.material?.userData?.materialSlot)).sort((a, b) => b.geometry.attributes.position.count - a.geometry.attributes.position.count)[0];
+        const ownWall = own(WALL_SLOTS), ownRoof = own(ROOF_SLOTS) ?? ownWall;
+        for (const [source, data, part] of [[ownWall, raw.walls, 'walls'], [ownRoof, raw.roof, 'roof']] as const) {
+          if (!source || !data.index.length) continue;
+          const g = new THREE.BufferGeometry();
+          g.setAttribute('position', new THREE.Float32BufferAttribute(data.positions, 3));
+          g.setAttribute('normal', new THREE.Float32BufferAttribute(data.normals, 3));
+          g.setAttribute('uv', new THREE.Float32BufferAttribute(data.uvs, 2));
+          g.setIndex(data.index);
+          geometries.push(g);
+          const mesh = new THREE.InstancedMesh(g, instancedMaterial(THREE, source.material, materialCache), indices.length);
+          mesh.name = `${unit}/far/${part}`; mesh.userData.layer = 'far';
+          layers.push({mesh, indices, local: new THREE.Matrix4(), far: true, triangles: data.index.length / 3});
+          group.add(mesh);
+        }
+      }
       for (const [source, data] of [[wall, raw.walls], [roofMesh, raw.roof]] as const) {
         if (!source || !data.index.length) continue;
         const side = source.material.side;
@@ -435,7 +461,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     const [east, south] = offsetMetres(origin, [c.lng, c.lat]), at = {x: east, z: south};
     if (!force && lastAt && Math.hypot(at.x - lastAt.x, at.z - lastAt.z) < 10) return;
     lastAt = at;
-    apply(partitionByDistance(points, at, nearM, cullM, partition));
+    apply(partitionByDistance(points, at, nearByPoint, cullM, partition));
   };
   // Start with everything far until the first camera position is known; then the first render refines it.
   apply({near: [], far: points.map((_, i) => i), culled: 0});

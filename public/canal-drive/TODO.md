@@ -238,6 +238,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tessellating shell faces (big-facade.ts addShellTess); fix the grid
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
+- **Building types under the shared frame** (2026-10-16, HISTORY
+  "Sloterplas galerijflats"): the lit recipe look (`MeshLambertMaterial`)
+  does not merge, so every unit draws one call per material near (the
+  86 -> 18 draw-call merge is lost in the default game); far boxes now draw
+  unmerged. Next: a lit merged material (Lambert + per-vertex slot/tint).
+  Sloterplas towers' weak points vs the photos: gallery/balcony soffits
+  render dark (no bounce light), west faces read more vertical than the
+  hazy photos, first-floor glass black, doors read strong red up close;
+  kit cannot yet say the diagonal gallery swing to the south stair, curved
+  gallery ends, railing bars or recessed glass. The landmark GLB baseline
+  gate fails the unit on ~930 window plates 4 cm proud (same as the
+  installed pilotis unit).
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
   draws 3,072 photo-confirmed instances (2026-10-11 latest: +85 post-war
   flats west of the A10 in three designs: loggia-stack 5st 30 (Osdorp),
