@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Hollow landmark cards: Multatuli and 28 more sourced (2026-10-16)
+
+User (2026-10-16), on the Multatuli bust's card ("LANDMARK · W SOURCE · MULTATULI"
+and nothing else): "why no info". Its only text was the Wikidata one-liner
+"Public sculpture in Amsterdam, the Netherlands." (no lede, no funFact); the card
+opens because a photo passes `isWorthACard`, and a drive-by card folds to its
+title after 8 s (`teachingPacer.cardCollapsed`), which is the blank card the
+user saw. "W SOURCE" pointed at a Commons photo category. Lane
+`worktree-agent-ac89003c665aaa03e`: the audit gains a `stub` issue and
+`hollowCardsThatOpen`; `test:landmark-cards` now fails on any card that opens
+empty or stub-only unless allowlisted with a reason (25 today: 19 OBA branches
+with no own article, five places with no article). 29 new sourced overrides
+(Multatuli: Hans Bayens's bust, 1987; Douwes Dekker, Max Havelaar 1860), 17 into
+the extract and 12 kit POIs into `manual-poi-data.json`; overrides can cite
+`extraSources`, and a card with no link gets the override's article as its
+source. Counts: 42 hollow cards that open → 25 (all allowlisted). Bundles
+rebuilt (game-landmarks, -presentation, -recall, route-selection).
+
 ## Towers on podiums: the tall part over its own footprint (2026-10-16)
 
 User (2026-10-16), at the Hotelschool The Hague, Jan Evertsenstraat 171-175

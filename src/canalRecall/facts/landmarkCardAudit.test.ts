@@ -95,7 +95,9 @@ test('regression: Huis Bartolotti in the published extract is clean once overrid
 });
 
 test('regression: the Multatuli bust (Torensluis) opened a card with nothing worth reading', () => {
-  const reported = published.find(feature => feature.id === MULTATULI_ID)!;
+  // The card as reported, before `--publish` wrote the override's funFact into the extract (the test holds either way).
+  const { funFact: _f, funFactSourceUrl: _u, ...reported } = published.find(feature => feature.id === MULTATULI_ID)! as PublishedFeature & { funFact?: string; funFactSourceUrl?: string };
+  void _f; void _u;
   assert.equal(reported.name, 'Multatuli');
   // A photo makes the card open; the text is only the Wikidata one-liner.
   assert.equal(cardBodyText(reported), MULTATULI_REPORTED);
