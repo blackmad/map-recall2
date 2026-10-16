@@ -744,7 +744,23 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   footprints far from the rider fade out where nothing 3D is streamed;
   tilted manual zoom-out shows a short footprint-tone dither; phone
   worst step 4.7 % at 13.9 → 14 is outside the window, bring it in.
-- **Kit roof rules (user, 2026-10-16; plan Part 2, lane in flight):** roofs
+- **Kit roof rules follow-ups** (2026-10-16, HISTORY "Roofs follow the
+  front": the step-gable library leaned by one tread and is fixed; saddles
+  under crowns, row coherence and `roof-under-crown` landed; 232 of 371
+  pands change class): (1) re-install every face whose class changed
+  (`compile.ts --face=<id> --install`, 46 faces) after a sheet pass, then
+  `test:block-kit-installed` and `check:stale-installs`; (2) 76-84
+  (152566) and the other flat-parapet fronts need `roof.form: flat` on the
+  placement, the hipped 3DBAG mass is still drawn; (3) re-record
+  `test:tile-buildings` pilot-golden (`UPDATE_GOLDEN=1`) after reviewing
+  the new large pand 137280 and the step-gable changes; (4) cross-gable /
+  hip-and-gablet when a gable sits over one bay of a wide front; (5)
+  attic faces behind plain cornices still 3DBAG-p95-bounded (236441
+  m0/m1); (6) gable crown height from the photo, not `crownRise`; (7)
+  Mercatorplein's raised roof block is large-tier `roofPlant`; (8) flip
+  `openingsWithinWallsGate` to strict once attic panes are out of the
+  roof mass.
+- **Kit roof rules (user, 2026-10-16; plan Part 2, DONE, see above):** roofs
   follow the measured front, not 3DBAG ("don't give so much credence to
   3DBAG roofs"): saddle under the crown profile, flat under a parapet, attic
   from the top row, rear wings clamped under the crown line; step gables

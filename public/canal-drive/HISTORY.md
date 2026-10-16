@@ -1,5 +1,84 @@
 # Canal Recall — what is built
 
+## Roofs follow the front: the step-gable library bug, saddles under crowns, row coherence; 232 of 371 pands change class (2026-10-16)
+
+Lane `lane/kit-roof-rules-20261016` (1dd7652e9 planner export and
+`roof-golden`, 83ea726a9 schema, 777cfb967/bdd6f374b merge and golden
+re-record, 53546a733 front forms, bd2483736 the library fix, 2fff8e30f
+the rules; doc `docs/front-roofs-20261016.md`), from the user's three
+corrections. **The lopsided step gables were a library bug**:
+`canalhouseCrownProfile('trap')`'s right-flank loop ran one tread late,
+so every step gable in the library leaned by one tread (0.38 m on
+Kinkerstraat 68); `fit-golden.json` re-recorded for exactly the five
+step-gable houses (bilder-155418/156286/156287, cw-heren-175702/179665),
+151 identical; `gableSymmetry.test.ts` now mirrors every type, step
+count and cap within 1e-6. Schema: `RoofIntent {source, form, pitchDeg,
+evidence}` on a type or placement, facts `roofSource.kind: 'front'` and
+`rowClamp`, `continuity.rowCoherence`. Roof source per pand:
+`roof.source` / `keepSurvey` / else `front` when a street front is gabled
+or has `measuredEavesM` (strip or row); cornice fronts keep the face
+rule (a first cut made wide-capped cornices flat but z-fought the De
+Clercqstraat Amsterdam School neighbours' coplanar roofs and 3DBAG shows
+1.5 m of roof behind those parapets, so it was dropped; `roof.form:
+flat` per placement is the explicit way). Front forms
+(`recipeRoof.ts saddleUnderProfile`, `FrontRoofSpec` per band): a saddle
+under the crown outline (ridge at the band centre, 3 cm under every
+outline vertex, 30–65°); an attic face behind dormers or a `frontRoof`
+hint; otherwise a 3DBAG-bounded attic that goes flat when p95 < eaves +
+1 m; when the crown spans only part of the front (side eaves would drop
+> 1 m) an attic with the reason reported. Gates: front `height-vs-3dbag`
+roofMax ≤ max(band lines, crown-outline tops) + 0.3 m (dormers + 1.9)
+and ≥ eaves; new `roof-under-crown` (facade line every 0.1 m, 5 mm
+inside, roof ≤ outline + 3 cm). Row coherence (`rowCoherence.ts`): rows
+= consecutive same `type.type`, builtYear ± 2 of the modal, ≥ 3 members;
+the line is the strip median when ≥ half the members are strip-measured,
+else the mode of the unmeasured members' 3DBAG eaves (densest 0.4 m
+window, and of windows ≥ 70 % as dense the lowest, since misreads are
+upward; single linkage had chained 315-359's cornice readings into the
+flat-top readings), mean-shift refined; sub-rows of ≥ 3 adjacent members
+within 0.15 m keep their own line (222-228 vs 212-220; a pair is not
+enough, 319/321 are two adjacent misreads); clamp > 0.8 m off unless
+strip-measured or skyline-confirmed → `measuredEavesM` per front and
+`facts.rowClamp`; roofMax > row ridge + 0.2 → capped at ridge + 0.1.
+`stepsFromFlanks`: round(mean(L, R)), max when exactly one flank's
+coverage < 0.7 (`PhotoGable.flankCoverage`). Golden (46 faces, 371
+pands): 139 unchanged, 0 same-class hash changes; 83 recipe → front, 77
+survey → front, 32 survey → front + row, 12 survey → survey + row, 8
+survey → recipe (206-242's `keepSurvey` dropped), 7 recipe → recipe +
+mate, 7 recipe → recipe + row, 3 recipe → front + row, 3 survey → recipe
++ row; 57 pands carry a row clamp across 14 faces, each with a
+`rowClamp.note` on the sheet. Six faces reviewed at full size, gates
+pass (tris 22,601 / 43,270 / 20,436 / 26,048 / 16,964 / 17,973):
+kinker-56-84 step gables 161359/236325/236441 symmetric with saddles at
+65°/59.5°/48° and no roof above any crown, 161359's eaves 12.69/12.58 →
+13.87 and 236441 m0 15.52 → 13.87 on one cornice line, roof maxes
+17.56–19.1 → 17.09; kinker-315-359 with the 8 hand `measuredEaves`
+removed, the rule clamps exactly {156907, 165777, 153818, 153447,
+159990, 236156, 167386, 236481} plus 237373/m2 (the neck-gable module,
+15.72 → 13.49, which the photo agrees with), row line 13.49 against the
+hand 13.5, 080487 excluded, no. 343 on the line with its crown within
+0.1 m of 345's, 359's roofMax 16.86 → 16.03; kinker-206-242 neck gables
+237297/152992 eaves 14.52/14.67 → 12.64 with shoulders on the cornice,
+165141 17.13 → 14.76, the 222-228 sub-row keeps 14.0; kinker-65-87 ten
+front roofs; the two Bilderdijkstraat faces symmetric with 70° attic
+faces under the crown lines. Tests: `test:block-face` 121,
+`test:building-recipes` 190, `test:canalhouse-recipes` 183, `fit-golden`
+156 identical after the reviewed re-record, roof golden 0 violations;
+`gableSymmetry.test.ts`, `rowCoherence.test.ts`, `roofSchema.test.ts`,
+`roofGolden.test.ts`. Not re-recorded: `test:tile-buildings`
+pilot-golden was already stale against the source pack (a new large pand
+137280, every canal house's triangle count) and the library fix moves
+its step-gable pands too; re-record with `UPDATE_GOLDEN=1` after review.
+City-tier code untouched. Still cannot say: a cross-gable or hip-and-
+gablet when a step/neck gable sits over one bay of a wide front (a 70°
+attic face instead: bilder-081118 157650, bilder-236022 162572/237294/
+236474/167243, kinker-65-87 106015/156997); attic faces behind plain
+cornices are still 3DBAG-p95-bounded (236441 m0/m1 rises 2.4 m where the
+photo shows less); members 0.5–0.8 m off their row line stay (236982 on
+206-242); gable crown heights come from `crownRise`, not the photo; the
+flat parapet with two raised blocks on 76-84 (152566) still takes the
+hipped 3DBAG mass until its placement says `roof.form: flat`.
+
 ## The overview-to-city switch is a blend: worst step 70 % → 2 % of pixels over ΔE 20 (2026-10-16)
 
 Lane `lane/overview-transition-20261016` (b91c77955), answering "the
