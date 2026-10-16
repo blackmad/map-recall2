@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## Way decks: level over underpasses, chained ways, parapets at the road edges (2026-10-17)
+
+Lane `fix/bridge-decks-followups-20261016`. Jan Evertsenstraat over the
+Erasmusgracht: the way deck stopped 1 m past the water and its west approach
+landed in the Rembrandtpark cycle underpass 1.8 m below the bank, so the street
+dipped and the south parapet followed it down across the cycle path (the
+"diagonal railing"). A way deck now runs on, level, over a hole in the relief
+(`HOLE_M` 0.6 m below the far bank, the bridge way continuing ≥ 3 m over it,
+ground climbing back within 30 m; 62 of ~1,220 way decks, mostly viaducts),
+with a parapet over the hole only where the ground 1.5 m outside drops past
+0.6 m. Bridge ways mapped as consecutive OSM ways are joined first
+(`joinChains`): Satellietbaan, Zuiderzeeweg, Nauernaseweg, Westzanerweg,
+Cornelis Lelylaan gain surfaces, 31 → 22 surfaceless street bridge ways. That
+lengthened an older error: way-deck parapets sat at the OSM way's half-width,
+down the middle lanes of dual-carriageway viaducts (PDOK ortho: the railings are
+on the outer crash barriers). With roads-v1, each side now walks outward
+through the road-surface polygons (carriageway, cycle path, footway; a tram
+bed ends it) and takes the median edge over the span, capped at half-width +
+12 m (`roadEdgeSides`). Parapet length inside traffic polygons 4,512 → 1,543 m,
+bridges with ≥ 1 m inside 239 → 157; `check:bridge-railings` caps it at
+1,650 m. BRU0063/BRU0108 mid-span jog: an edge-straightening pass was tried
+and dropped; frames were identical and the BRU0108 boat panorama shows a
+straight railing, as ours already is. The red `check:own-ground-cells` (58
+skipped deck polygons) was main's GroundStore re-init, fixed in 60c5c11f0.
+Regressions in `check-ground-cells.ts`: OSM323258135 (level over the underpass,
+parapets within 0.2 m of the deck; sinks to −0.91 m with `wayDeckHoles:false`),
+Satellietbaan 24343390 + 1252138995 (`CHAINED_BRIDGE_SURFACES`), OSM7382983 and
+OSM7041280 (parapet within 0.5 m of the carriageway's outer edge: 81 % / 94 %
+against 10 % / 0 % at the old half-width).
+
 ## The Berensluis and its Prinsengracht neighbours: one deck, landed ends, a level girder (2026-10-16)
 
 User (2026-10-16): "what's going on with this bridge?" Lane
