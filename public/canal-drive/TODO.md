@@ -1379,6 +1379,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **Tower-podium leftovers (2026-10-16, HISTORY "Towers on podiums")**: the 27
+  model-owned ridge-tower pands stay whole until the hide sinks resolve `pand`
+  (`coloredBuildingLayerFilter`, the three.js ranges id in
+  `threeBuildingMesh.ts`, `buildingTypes/runtime.ts` suppression, recipe-tile
+  covers); clicking a tower misses its pand's card and answer highlight lights
+  only the podium; middle tiers draw at podium height (no face banding); the
+  tower top is the ridge, which differs from the LoD1.3 face by -9.5 to +39.8 m;
+  most 100 m Zuidas towers come from OSM parts, not BAG.
 - **Landmark abutter fold-ins** (2026-10-16, HISTORY "Landmark abutter
   survey"; queue and evidence in `docs/landmark-abutters-survey-20261016.md`,
   verdicts in `scripts/landmarks/landmark-abutters-allowlist.json`): 25
