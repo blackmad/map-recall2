@@ -52,6 +52,8 @@ export type StreetLayer = Surface | 'paint' | 'kerb' | 'tram' | 'bollard';
 export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
   /** Every junction node of the graph (not only the owned ones): the pocket fill looks near them (pockets.ts). */
   junctionPoints: Vec2[];
+  /** Parallel to junctionPoints: the road extent around the node (the widest arm side, metres + 1). */
+  junctionReach: number[];
   stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number; junctions: number; corners: number; markings: MarkingStats };
 };
 
@@ -422,7 +424,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   // vertices only on its two edges spans from the relief beside the deck to the relief beside it and sags under the
   // deck top in the middle; BRU0292 Schottenburchsbrug sat 0.15 m under it).
   const acrossOf = (width: number) => (opts.acrossStep ? Math.max(width > 7 ? 2 : 1, Math.ceil(width / opts.acrossStep)) : undefined);
-  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0, markings: { stopLines: 0, giveWays: 0, teeth: 0, laneLinks: 0, cycleCrossings: 0, blocks: 0, ...(bgt ? { clipped } : {}) } }, junctionPoints: [] as Vec2[] } as StreetMeshes;
+  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0, markings: { stopLines: 0, giveWays: 0, teeth: 0, laneLinks: 0, cycleCrossings: 0, blocks: 0, ...(bgt ? { clipped } : {}) } }, junctionPoints: [] as Vec2[], junctionReach: [] as number[] } as StreetMeshes;
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
   const discDone = new Set<string>();
@@ -539,7 +541,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
-    if (n.kind === 'junction') out.junctionPoints.push(n.p);
+    if (n.kind === 'junction') { out.junctionPoints.push(n.p); out.junctionReach.push(1 + Math.max(0, ...n.arms.map(a => Math.max(a.left, a.right)))); }
     if (n.kind === 'none' || !n.polygon.length) continue;
     const owner = byId.get(n.owner);
     if (!owner || (opts.only && !opts.only(owner))) continue;
@@ -858,6 +860,18 @@ export function dashed(m: MeshArrays, pts: readonly Vec2[], offset: number, widt
       const st = stations(piece), half = st[st.length - 1] / 2, mid = pointAt(piece, st, half), q = pointAt(piece, st, Math.min(st[st.length - 1], half + 0.3)), r = pointAt(piece, st, Math.max(0, half - 0.3));
       const nl = leftOf(dirOf(r, q));
       if (!keep(mid[0] + nl[0] * offset, mid[1] + nl[1] * offset)) { dropped++; continue; }
+      // Trim the ends back onto the kept surface in 0.1 m steps: a zebra bar whose middle is on the rijbaan stops at
+      // its edge instead of running 0.3 m onto the fietspad beside it (the Bilderdijkgracht crossings).
+      // Both long edges are tested (a bar's corner reaches over a diagonal kerb line before its centre line does).
+      const len = st[st.length - 1], on = (s: number) => { const p = pointAt(piece, st, s); return keep(p[0] + nl[0] * (offset - width / 2), p[1] + nl[1] * (offset - width / 2)) && keep(p[0] + nl[0] * (offset + width / 2), p[1] + nl[1] * (offset + width / 2)); };
+      let s0 = 0, s1 = len;
+      while (s0 < half && !on(s0)) s0 += 0.1;
+      while (s1 > half && !on(s1)) s1 -= 0.1;
+      if (s0 > 0 || s1 < len) {
+        const sub = cutIntervals(piece, [[-1, s0], [s1, len + 1]])[0];
+        if (sub && sub.length >= 2) ribbon(m, sub, offset, width, height, lift, { step: 3 });
+        continue;
+      }
     }
     ribbon(m, piece, offset, width, height, lift, { step: 3 });
   }

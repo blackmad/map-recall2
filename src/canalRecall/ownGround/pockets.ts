@@ -28,7 +28,22 @@ export const POCKET_NEAR_M = 30;
  */
 export const POCKET_LIFT = 0.005;
 
-export interface PocketStats { pockets: number; m2: number; pixels: number; ms: number; skipped: number }
+export interface PocketStats { pockets: number; m2: number; pixels: number; ms: number; skipped: number; /** roads-v1 survey-gap discs paved, and their m². */ gaps?: number; gapM2?: number }
+
+/**
+ * roads-v1: a junction node in a gap of the BGT survey (no wegdeel under it: Nieuwmarkt, a plein the survey files as
+ * terrain) and the reach the band model paved around it. The covered ways there emit no bands, so the land the
+ * bands used to pave showed; the pocket pass paves the bare land inside the disc again, whatever its size, with
+ * the surface the covered pixels in the disc vote for.
+ */
+export interface SurveyGap { p: Vec2; r: number }
+/**
+ * Smallest survey-gap disc radius, metres: the arms' bands ran on into the gap past the junction's own reach (the
+ * Nieuwmarkt nodes: 4–5 m reach, land showing 6–10 m out along the arms where the bands paved).
+ */
+export const SURVEY_GAP_MIN_R = 10;
+/** Largest survey-gap disc radius, metres (a wide junction's reach; the band model's corner patches stop near it). */
+export const SURVEY_GAP_MAX_R = 12;
 
 /** A layer that hides the land, and the surface a pocket it borders would take (null: it does not vote for a fill). */
 export interface PocketCover<S extends string> { meshes: readonly MeshArrays[]; as: S | null }
@@ -43,7 +58,7 @@ export interface PocketCover<S extends string> { meshes: readonly MeshArrays[]; 
  * round so no sliver of land is left under the bands' edges (the fill lies
  * under them). Returns a mesh per surface and what it did.
  */
-export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], rect: readonly [number, number, number, number], junctions: readonly Vec2[], height: HeightFn, lift: number, opts: { res?: number; maxM2?: number; nearM?: number } = {}): { meshes: Partial<Record<S, MeshArrays>>; stats: PocketStats } {
+export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], rect: readonly [number, number, number, number], junctions: readonly Vec2[], height: HeightFn, lift: number, opts: { res?: number; maxM2?: number; nearM?: number; gaps?: readonly SurveyGap[] } = {}): { meshes: Partial<Record<S, MeshArrays>>; stats: PocketStats } {
   const t0 = Date.now();
   const res = opts.res ?? POCKET_RES_M, maxM2 = opts.maxM2 ?? POCKET_MAX_M2, nearM = opts.nearM ?? POCKET_NEAR_M;
   const [x0, y0, x1, y1] = rect;
@@ -53,10 +68,47 @@ export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], 
   const meshes: Partial<Record<S, MeshArrays>> = {};
   const stats: PocketStats = { pockets: 0, m2: 0, pixels: 0, ms: 0, skipped: 0 };
   // No junction, no seed: nothing to rasterise (roads-v1 cells drop the junctions on the survey).
-  if (!junctions.length) { stats.ms = Date.now() - t0; return { meshes, stats }; }
+  const gaps = opts.gaps ?? [];
+  if (!junctions.length && !gaps.length) { stats.ms = Date.now() - t0; return { meshes, stats }; }
   const raster = new Uint8Array(W * H);
   const votes = cover.map(c => c.as);
   cover.forEach((c, k) => { for (const m of c.meshes) rasterise(m, raster, k + 1, x0, y0, W, H, res); });
+  const grow = res / 2;
+  /** Pave sorted pixel indices as row runs, each grown by half a pixel all round. */
+  const pave = (as: S, members: number[]): void => {
+    const mesh = (meshes[as] ??= emptyMesh());
+    members.sort((a, b) => a - b);
+    for (let k = 0; k < members.length;) {
+      const p = members[k], j = Math.floor(p / W), i0 = p - j * W;
+      let i1 = i0;
+      while (k + 1 < members.length && members[k + 1] === members[k] + 1 && Math.floor(members[k + 1] / W) === j) { k++; i1++; }
+      k++;
+      const ax = x0 + i0 * res - grow, bx = x0 + (i1 + 1) * res + grow, ay = y0 + j * res - grow, by = y0 + (j + 1) * res + grow;
+      drapeTriangles(mesh, [ax, ay, bx, ay, bx, by, ax, by], [0, 1, 2, 0, 2, 3], height, lift, 4);
+    }
+  };
+  // Survey-gap discs first: their bare pixels are paved and taken out of the pocket flood (marked visited).
+  for (const g of gaps) {
+    const r = Math.min(g.r, SURVEY_GAP_MAX_R);
+    const i0 = Math.max(0, Math.floor((g.p[0] - r - x0) / res)), i1 = Math.min(W - 1, Math.floor((g.p[0] + r - x0) / res));
+    const j0 = Math.max(0, Math.floor((g.p[1] - r - y0) / res)), j1 = Math.min(H - 1, Math.floor((g.p[1] + r - y0) / res));
+    const tally = new Map<S | null, number>(), bare: number[] = [];
+    for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
+      const cx = x0 + (i + 0.5) * res, cy = y0 + (j + 0.5) * res;
+      if ((cx - g.p[0]) ** 2 + (cy - g.p[1]) ** 2 > r * r) continue;
+      const v = raster[j * W + i];
+      if (v === 0) bare.push(j * W + i);
+      else if (v <= cover.length) tally.set(votes[v - 1], (tally.get(votes[v - 1]) ?? 0) + 1);
+    }
+    if (!bare.length) continue;
+    let as: S | null = null, best = 0;
+    for (const [sv, c] of tally) if (sv !== null && c > best) { best = c; as = sv; }
+    // A disc mostly over water or a park (votes null) stays land.
+    if (as === null || best < (tally.get(null) ?? 0)) { stats.skipped++; continue; }
+    for (const p of bare) raster[p] = 255;
+    pave(as, bare);
+    stats.gaps = (stats.gaps ?? 0) + 1; stats.gapM2 = (stats.gapM2 ?? 0) + bare.length * res * res;
+  }
   const G = nearM, hash = new Map<string, Vec2[]>();
   for (const j of junctions) { const k = `${Math.floor(j[0] / G)}:${Math.floor(j[1] / G)}`; (hash.get(k) ?? hash.set(k, []).get(k)!).push(j); }
   const nearJunction = (x: number, y: number) => {
@@ -64,7 +116,7 @@ export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], 
     for (let a = gx - 1; a <= gx + 1; a++) for (let b = gy - 1; b <= gy + 1; b++) for (const j of hash.get(`${a}:${b}`) ?? []) if (Math.hypot(j[0] - x, j[1] - y) <= nearM) return true;
     return false;
   };
-  const maxPx = Math.floor(maxM2 / (res * res)), grow = res / 2;
+  const maxPx = Math.floor(maxM2 / (res * res));
   // Seeds only near a junction (8 m blocks within nearM + 8 m of one); a flood stops as soon as its component is
   // too big, touches the cell edge or meets a component already found too big (BIG), and marks what it saw BIG.
   const B = 8, bw = Math.ceil(W * res / B), bh = Math.ceil(H * res / B), seedBlock = new Uint8Array(bw * bh);
@@ -99,16 +151,7 @@ export function fillPockets<S extends string>(cover: readonly PocketCover<S>[], 
     let as: S | null = null, best = 0;
     for (const [s, c] of tally) if (c > best) { best = c; as = s; }
     if (as === null) { stats.skipped++; continue; }
-    const mesh = (meshes[as] ??= emptyMesh());
-    members.sort((a, b) => a - b);
-    for (let k = 0; k < members.length;) {
-      const p = members[k], j = Math.floor(p / W), i0 = p - j * W;
-      let i1 = i0;
-      while (k + 1 < members.length && members[k + 1] === members[k] + 1 && Math.floor(members[k + 1] / W) === j) { k++; i1++; }
-      k++;
-      const ax = x0 + i0 * res - grow, bx = x0 + (i1 + 1) * res + grow, ay = y0 + j * res - grow, by = y0 + (j + 1) * res + grow;
-      drapeTriangles(mesh, [ax, ay, bx, ay, bx, by, ax, by], [0, 1, 2, 0, 2, 3], height, lift, 4);
-    }
+    pave(as, members);
     stats.pockets++; stats.pixels += n; stats.m2 += n * res * res;
   }
   stats.ms = Date.now() - t0;

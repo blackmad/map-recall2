@@ -16,19 +16,14 @@ const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 // `?trees3d=0` (or window.__canalRecallFacades / __canalRecallTrees3d = false
 // before load) bring back the old flat look for A/B comparison.
 const GENERIC_FACADES_DEFAULT = true;
-// Experiment (2026-10-09): canal water below quay level and measured bridge
-// decks (docs/elevation.md). Visual only — routing and physics stay 2D. Off by
-// default; `?elevation=1` or window.__canalRecallElevation = true. The bundle
-// is fetched only when the flag is on.
-const CANAL_ELEVATION_DEFAULT = false;
-const CANAL_ELEVATION_BUNDLE = 'js/canal-elevation.bundle.js';
 const STYLISED_TREES_DEFAULT = true;
 // Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
 // three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
 // draws through one renderer / scene / light rig (src/canalRecall/
-// rendererShared/), with lit facades and sun shadows. Off by default while it
-// is measured; `?sharedFrame=1` or window.__canalRecallSharedFrame = true.
-// Inside it, `?shadows=0` and `?litFacades=0` turn those two parts off.
+// rendererShared/), with lit facades and sun shadows. On in practice: the own
+// ground (default since 2026-10-14) implies it. `?sharedFrame=0` (with the own
+// ground off) keeps the legacy per-layer frame for A/B specs. Inside it,
+// `?shadows=0` turns the sun shadows off (ride-perf SHADOWS=0).
 const SHARED_FRAME_DEFAULT = false;
 // Phase 2 (2026-10-10): three.js draws the riding-view ground itself — AHN
 // relief, streets by OSM cross-section, quays, sunken water and measured
@@ -37,16 +32,16 @@ const SHARED_FRAME_DEFAULT = false;
 // docs/research/own-ground-20261009.md). On by default since 2026-10-14 (user);
 // `?ownGround=0` or window.__canalRecallOwnGround = false opts out, and an
 // explicit `?sharedFrame=0` does too unless `?ownGround=1` is also given.
-// Implies the shared frame, and replaces the `?elevation=1` stencil layer.
+// Implies the shared frame. (It replaced the 2026-10-09 `?elevation=1`
+// stencil layer, deleted 2026-10-16.)
 const OWN_GROUND_DEFAULT = true;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
-// Basemap ground the own ground hides while it covers the rider: none. The
-// basemap's fills and lines sit below the first 3D layer, so MapLibre draws
-// them at the back of the depth range and the own ground covers them wherever
-// it is resident (the near field is pixel-identical either way, measured);
-// beyond the resident cells they are the far field (hidden, it was bare white).
-const OWN_GROUND_HIDDEN_SOURCE_LAYERS = [];
+// The basemap's own ground fills and lines stay visible under the own ground:
+// they sit below the first 3D layer, so MapLibre draws them at the back of the
+// depth range and the own ground covers them wherever it is resident (the near
+// field is pixel-identical either way, measured); beyond the resident cells
+// they are the far field (hidden, it was bare white).
 // The game's own flat overlays that the draped ribbons replace.
 const OWN_GROUND_HIDDEN_OVERLAYS = ['navigation-route-casing', 'navigation-route-line', 'active-street-line', 'cycle-tracks'];
 function canalRecallLookFlag(param, global, fallback) {
@@ -90,7 +85,6 @@ class VectorBasemap {
     this._treesVisible = false;
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
-    this._elevationEnabled = canalRecallLookFlag('elevation', '__canalRecallElevation', CANAL_ELEVATION_DEFAULT);
     this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
     this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround',
       OWN_GROUND_DEFAULT && canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', null) !== false);
@@ -102,7 +96,6 @@ class VectorBasemap {
     if (this._sculpturesEnabled) this._sharedFrameEnabled = true;
     this._ownGround = null;
     this._sharedFrame = null;
-    this._elevation = null;
     this._riderSurfaceM = 0;
     this._rawTrees = null;
     this._treeRoute = null;
@@ -220,6 +213,8 @@ class VectorBasemap {
           ...shared,
           models: manualModels,
           streetChunks: true,
+          // The recipe tiles (opt-in) carry the building types themselves; drawing both would double them.
+          buildingTypes: !this._recipeTilesEnabled,
           loadVisibleOnly: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,
@@ -244,9 +239,7 @@ class VectorBasemap {
       }
       this.ready = true;
       if (this._recipeTilesEnabled) void this._ensureRecipeTiles();
-      // Own ground retires the stencil elevation layer: one ground, one water.
       if (this._ownGroundEnabled) void this._ensureOwnGround();
-      else if (this._elevationEnabled) void this._ensureElevation();
       if (this._sculpturesEnabled) void this._ensureSculptures();
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
         this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility(), this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
@@ -307,7 +300,6 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
-    if (this._elevation) void this._elevation.load(path).then(() => this._syncElevationConsumers());
     if (this._ownGround) void this._ownGround.load(this._absoluteExtractRoot()).then(() => this._syncElevationConsumers());
     if (this._artisAnimals) this._artisAnimals.setExtractRoot(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
@@ -1026,7 +1018,7 @@ class VectorBasemap {
     this._ensureSharedFrame();
     if (this._sharedFrame && this._threeBuildings.attachToSharedFrame) {
       if (!this._threeBuildings.inSharedFrame) {
-        this._threeBuildings.attachToSharedFrame(this._sharedFrame, { lit: canalRecallLookFlag('litFacades', '__canalRecallLitFacades', true) });
+        this._threeBuildings.attachToSharedFrame(this._sharedFrame);
         if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
       }
     } else if (!this.map.getLayer(this._threeBuildings.layer.id)) {
@@ -1041,7 +1033,6 @@ class VectorBasemap {
     this._syncMaplibreBuildingVisibility();
     this._loadHouseboats();
     this._loadShopfronts();
-    if (this._elevation) this._syncElevationConsumers();
   }
 
   /** Where the city's shops, cafés and bars really are (shopfronts extract); re-decorates the resident tiles. */
@@ -1377,6 +1368,7 @@ class VectorBasemap {
       // A streamed tile becomes the render owner. Keep this state so later
       // settings synchronisation cannot revive the overlapping basemap copy.
       this._completeCityHasBuildings = true;
+      if (this._completeCityFirstAt == null) this._completeCityFirstAt = performance.now();
       this._syncDetailedBuildingLayers();
       // A camera check made before the newly requested z14 tile arrived only
       // saw the previous district's footprints. Re-run the same request after
@@ -1894,6 +1886,43 @@ class VectorBasemap {
     this._syncDetailedBuildingLayers();
   }
 
+  /**
+   * Whether the streamed city is on screen yet. MapLibre's own copy of it is ghosted under the three.js look, so
+   * hiding the basemap's extrusion at the first streamed tile left the start of a ride with no buildings at all
+   * until the first shells had built and installed (1-3 s; then the whole district popped in at once). The
+   * basemap's extrusion now stays until the three.js layer draws every resident shell (or 8 s have passed).
+   * Latched: once the streamed city draws, the basemap copy never returns (docs/perf-pop-in-20261016.md).
+   */
+  _streamedCityDraws() {
+    if (this._streamedCityDrawn) return true;
+    // `window.__canalRecallHoldBasemap = false`: hand over at the first streamed tile, as before (A/B, scripts/pop-in.mjs).
+    if (typeof window !== 'undefined' && window.__canalRecallHoldBasemap === false) { this._streamedCityDrawn = true; return true; }
+    const three = this._threeBuildings;
+    // Release on the first of: a shell drawn under the rider; 400 ms after the first shell anywhere (the view
+    // is filling in, as it would with no hold); 8 s after the first streamed tile.
+    const now = performance.now(), first = three && typeof three.firstShellAt === 'function' ? three.firstShellAt() : null;
+    const waiting = this._threeOwnsTops() && three && typeof three.drawsResidentCity === 'function'
+      && !three.drawsResidentCity(this._nearViewTiles14())
+      && !(first != null && now - first > 400)
+      && !(this._completeCityFirstAt != null && now - this._completeCityFirstAt > 8000);
+    if (three && typeof three.setBasemapHeld === 'function') three.setBasemapHeld(!!waiting);
+    if (waiting) return false;
+    this._streamedCityDrawn = true;
+    return true;
+  }
+
+  /** z14 tiles (`x/y`) under the rider: the screen's centre line from the bottom to the middle. */
+  _nearViewTiles14() {
+    const canvas = this.map.getCanvas(), w = canvas.clientWidth, h = canvas.clientHeight, n = 2 ** 14, out = new Set();
+    for (const [fx, fy] of [[0.5, 1], [0.5, 0.75], [0.5, 0.5]]) {
+      const p = this.map.unproject([fx * w, fy * h]);
+      if (!p || !Number.isFinite(p.lat)) continue;
+      const rad = p.lat * Math.PI / 180;
+      out.add(`${Math.floor((p.lng + 180) / 360 * n)}/${Math.floor((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2 * n)}`);
+    }
+    return out;
+  }
+
   _syncDetailedBuildingLayers() {
     if (!this.map) return;
     const google = this._googleTilesActive;
@@ -1904,7 +1933,9 @@ class VectorBasemap {
     // The streamed complete city owns every building once its first real tile
     // lands. Never resurrect the basemap copy during a later settings/readiness
     // sync; before that first tile, keep it as the no-empty-city fallback.
-    const hideBasemap = this._measuredColoursOnly || detailed || google || !!this._completeCityHasBuildings;
+    const hideBasemap = this._measuredColoursOnly || detailed || google || (!!this._completeCityHasBuildings && this._streamedCityDraws());
+    // A hard swap: fading the extrusion's opacity does not dissolve it, since its depth still hides the streamed
+    // shells (measured: 400 ms of a near-empty city, docs/perf-pop-in-20261016.md).
     if (this.map.getLayer('building-3d')) {
       this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
     }
@@ -1988,32 +2019,6 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
-  /** Load the elevation bundle on demand (flag on only) and add its layer. */
-  async _ensureElevation() {
-    if (this._elevation || this._elevationLoading || !this.map) return;
-    this._elevationLoading = true;
-    try {
-      if (!window.CanalRecallElevation) {
-        await new Promise((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = CANAL_ELEVATION_BUNDLE;
-          script.onload = resolve;
-          script.onerror = () => reject(new Error(`${CANAL_ELEVATION_BUNDLE} failed to load`));
-          document.head.appendChild(script);
-        });
-      }
-      const api = window.CanalRecallElevation;
-      if (!api || !api.CanalElevation) throw new Error('CanalRecallElevation missing');
-      this._elevation = new api.CanalElevation(this.map, maplibregl, { beforeId: 'building' });
-      await this._elevation.load(this._extractPath);
-      this._syncElevationConsumers();
-    } catch (error) {
-      console.warn('Canal elevation unavailable; the flat map stays.', error);
-    } finally {
-      this._elevationLoading = false;
-    }
-  }
-
   _absoluteExtractRoot() {
     return new URL(this._extractPath || '../data/extracts/amsterdam', window.location.href).href.replace(/\/$/, '');
   }
@@ -2090,10 +2095,8 @@ class VectorBasemap {
     const targets = [];
     for (const layer of layers) {
       // The basemap's fills stay visible (2026-10-13): the own ground draws over them where its cells are resident, and beyond the
-      // resident ring (or until the next cells load) they are the ground instead of bare white. `__canalRecallHideBasemapFills = true`
-      // restores the old behaviour for A/B (measured on the fixed route, 2 runs each: map render 3.5/2.2 ms hidden vs 3.9/2.4 ms visible, about +30 draw calls, no long frames).
-      if ((layer.type === 'fill' || layer.type === 'line') && OWN_GROUND_HIDDEN_SOURCE_LAYERS.includes(layer['source-layer'])) { if (typeof window !== 'undefined' && window.__canalRecallHideBasemapFills) targets.push(layer); }
-      else if (OWN_GROUND_HIDDEN_OVERLAYS.includes(layer.id)) targets.push(layer);
+      // resident ring (or until the next cells load) they are the ground instead of bare white.
+      if (OWN_GROUND_HIDDEN_OVERLAYS.includes(layer.id)) targets.push(layer);
     }
     this._ownGroundSaved = this._ownGroundSaved || new Map();
     for (const layer of targets) {
@@ -2173,10 +2176,9 @@ class VectorBasemap {
     return ring && ring.length >= 3 ? ring : null;
   }
 
-  /** The surface the rider stands on: the own ground when present, else the opt-in elevation layer. */
+  /** The surface the rider stands on: the own ground once ready, else none (flat). */
   _riderSurface() {
-    if (this._ownGround && this._ownGround.ready) return this._ownGround;
-    return this._elevation;
+    return this._ownGround && this._ownGround.ready ? this._ownGround : null;
   }
 
   /** Houseboats float on the sunken water; everything else on land stays at z = 0 (or stands on the own ground's relief). */
@@ -2188,7 +2190,7 @@ class VectorBasemap {
 
   elevationStatus() {
     if (this._ownGround) return this._ownGround.status();
-    return this._elevation ? this._elevation.stats() : { enabled: false, ready: false };
+    return { enabled: false, ready: false };
   }
 
   /** True while the own ground drapes the route and highlight, so the canvas must not draw its flat copies. */
@@ -2834,6 +2836,8 @@ class VectorBasemap {
     this.map.jumpTo(cameraOptions);
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
+    // The basemap's extrusion holds until the streamed city draws (_streamedCityDraws); hand over once it does.
+    if (this._completeCityHasBuildings && !this._streamedCityDrawn && this._streamedCityDraws()) this._syncDetailedBuildingLayers();
     this._syncFacadeZoom(mapZoom);
     this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
@@ -2850,6 +2854,8 @@ class VectorBasemap {
       }
     }
     if (introFlat === 0 && this._completeCity && typeof this._completeCity.followCamera === 'function') {
+      // The rider's motion puts the next building tile on the plan before the view reaches it (look-ahead).
+      if (!detached && typeof this._completeCity.setRider === 'function') this._completeCity.setRider(subject[0], subject[1]);
       this._completeCity.followCamera();
     }
     this._updateGoogleTiles();
@@ -3266,7 +3272,6 @@ class VectorBasemap {
     } catch (_) {}
     if (this._parkLandscape) this._parkLandscape.setTheme(this.theme);
     if (this._inventoryTrees) this._inventoryTrees.setTheme(this.theme);
-    if (this._elevation) this._elevation.applyTheme();
     // A theme restores the basemap's paint; keep its ground hidden under the own ground.
     if (this._basemapGroundHidden) {
       if (this._ownGroundSaved) this._ownGroundSaved.clear();

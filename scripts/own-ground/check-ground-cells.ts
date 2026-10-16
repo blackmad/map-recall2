@@ -4,6 +4,7 @@
 //
 //   npx tsx scripts/own-ground/check-ground-cells.ts            # cells around BRU0166 + BRU0044, both LODs
 //   npx tsx scripts/own-ground/check-ground-cells.ts --all      # every cell of the OSM cell manifest (LOD 0)
+//   npx tsx scripts/own-ground/check-ground-cells.ts --road-regressions  # only the roads-v1 named regressions
 //   npx tsx scripts/own-ground/check-ground-cells.ts --parapets # the canal-mouth parapet regressions alone
 //   npx tsx scripts/own-ground/check-ground-cells.ts --roads    # roads-v1 cells: before/after table (triangles, build ms, gz) against the budgets
 //
@@ -20,7 +21,7 @@ import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGr
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
@@ -79,6 +80,7 @@ async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
+  if (process.argv.includes('--road-regressions')) { await roadRegressions(); if (failed) process.exit(1); return; }
   if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
@@ -677,8 +679,6 @@ async function neighbourhood(s: GroundStore, x: number, y: number): Promise<{ ke
   const input = await s.cellInput(key, 0), seen = new Set<number>();
   const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id)));
   const index = input.roads || input.roadsAround?.some(Boolean) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])]) : null;
-  // As buildCell: red rijbanen under tram track draw grey, so the survey the regressions read is what was drawn.
-  index?.railCarriages(ways.filter(w => w.section.rails?.length).map(w => w.points));
   return { key, cells, ways, index };
 }
 const cellCentre = (s: GroundStore, key: string): [number, number] => { const r = s.cellRect(key); return [(r[0] + r[2]) / 2, (r[1] + r[3]) / 2]; };
@@ -707,7 +707,7 @@ async function roadRegressions(): Promise<void> {
     let found = false;
     for (const key of [...roadsStore.roadCells].sort()) {
       const n = await neighbourhood(roadsStore, ...cellCentre(roadsStore, key)), way = n.ways.find(w => w.id === reg.way);
-      if (!way) continue;
+      if (!way || roadsStore.cellAt(way.points[0][0], way.points[0][1]) !== key) continue;
       found = true;
       const total = reg.fractions.length * reg.offsets.length, hits = wayStrayHits(n.cells, way, reg);
       check(hits.length === 0, `${reg.id} roads-v1: ${total - hits.length}/${total} probes clean${hits.length ? ` ${JSON.stringify(hits)}` : ''}`);
@@ -719,7 +719,9 @@ async function roadRegressions(): Promise<void> {
     let found = false;
     for (const key of [...roadsStore.roadCells].sort()) {
       const c = cellCentre(roadsStore, key), n = await neighbourhood(roadsStore, ...c), ways = n.ways.filter(w => reg.ways.includes(w.id));
-      if (ways.length < reg.ways.length || !n.index) continue;
+      // The cell the crossings lie in (with every cell published, an earlier cell's 3×3 also holds the ways but not
+      // all the polygons around them).
+      if (ways.length < reg.ways.length || !n.index || roadsStore.cellAt(ways[0].points[0][0], ways[0].points[0][1]) !== key) continue;
       found = true;
       const index = n.index, onRoad = (x: number, y: number) => index.onRoad(x, y) || index.classAt(x, y) === null;
       const r = zebraOffRoad(n.cells, ways, reg, onRoad);
@@ -729,6 +731,18 @@ async function roadRegressions(): Promise<void> {
       break;
     }
     check(found, `${reg.id}: ways ${reg.ways.join(', ')} found in a roads-v1 cell`);
+  }
+  for (const reg of SURVEY_GAPS) {
+    // The cell alone, its neighbours' roads withheld: the extract's edge (where the pilot ended at the Nieuwmarkt).
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), key = roadsStore.cellAt(x, y);
+    if (!roadsStore.roadCells.has(key)) { console.log(`skip ${reg.id} (cell ${key} not in roads-v1)`); continue; }
+    const full = await roadsStore.cellInput(key, 0), roads = full.roads ?? null;
+    const edge = { ...full, roadsAround: (full.roadsAround ?? []).map(r => (r === roads ? r : null)), coverWays: roads?.coverWays ?? [] };
+    const index = new RoadIndex([roads]);
+    const off = [buildCell(await store.cellInput(key, 0))];
+    const r = gapLand([buildCell(edge)], off, [x, y], reg.radiusM, index), pin = gapLand([buildCell({ ...edge, surveyGaps: false })], off, [x, y], reg.radiusM, index);
+    check(r.land <= reg.maxLandM2, `${reg.id} roads-v1 survey gap (extract edge): ${r.land} m² land of ${r.probes} m² the bands paved (≤ ${reg.maxLandM2}; without the gap pass ${pin.land})`);
+    check(pin.land > reg.maxLandM2, `${reg.id}: without the survey-gap pass ${pin.land} m² land (the pin is live)`);
   }
   // The pin is live: a pilot cell with roads draws polygons and culls land under them; without, no roads stats.
   const key = [...roadsStore.roadCells].sort()[0];

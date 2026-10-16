@@ -1,10 +1,10 @@
 { "mode": "car", "dest": "Westerkerk", "step": 60,
   "legs": [],
   "extra": [
-    { "name": "kinkerstraat-dacostagracht-east", "at": [4.87243, 52.36731, 64] },
-    { "name": "kinkerstraat-dacostagracht-west", "at": [4.87465, 52.36797, 244] },
-    { "name": "marnixstraat-plantsoen-north", "at": [4.87643, 52.37421, 20] },
-    { "name": "marnixstraat-plantsoen-south", "at": [4.87703, 52.37528, 200] },
-    { "name": "bilderdijkgracht-crossings-east", "at": [4.86975, 52.36652, 64] },
-    { "name": "bilderdijkgracht-crossings-west", "at": [4.87195, 52.36716, 244] }
+    { "name": "kinkerstraat-dacostakade-west-quay-from-west", "at": [4.87269, 52.3674, 67] },
+    { "name": "kinkerstraat-dacostakade-east-quay-from-east", "at": [4.87437, 52.36786, 247] },
+    { "name": "marnixstraat-busway-plantsoen-from-south", "at": [4.8765, 52.37437, 20] },
+    { "name": "marnixstraat-busway-plantsoen-from-north", "at": [4.87698, 52.37512, 202] },
+    { "name": "kinkerstraat-bilderdijkgracht-zebras-from-west", "at": [4.86987, 52.36657, 66] },
+    { "name": "kinkerstraat-bilderdijkgracht-zebras-from-east", "at": [4.87175, 52.36711, 246] }
   ] }

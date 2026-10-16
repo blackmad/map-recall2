@@ -266,5 +266,5 @@ export * from './cycleTracks';
 export * from './ownPois';
 // POI label overlay (lane 2026-10-13): ships in this bundle so vector-map.js
 // can mount it without a new build script.
-export { mountLabelOverlay, labelOverlayEnabled, REPLACED_LAYER_IDS } from './labels/labelOverlay';
+export { mountLabelOverlay, REPLACED_LAYER_IDS } from './labels/labelOverlay';
 export * as Labels from './labels/labelPlan';

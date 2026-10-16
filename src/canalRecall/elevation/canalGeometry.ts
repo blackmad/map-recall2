@@ -1,9 +1,7 @@
 // Canal water surfaces, openings and quay walls for one extract cell.
 //
-// The flat MapLibre water stays as it is. This layer draws, through a stencil
-// "opening" the shape of the water at street level, the sunken scene below it:
-// a water plane `freeboard` metres down and the quay walls that face into the
-// canal. See elevationBrowser.ts for the pass order and docs/elevation.md.
+// The sunken scene below street level: a water plane `freeboard` metres down
+// and the quay walls that face into the canal. See docs/elevation.md.
 
 import earcut from 'earcut';
 import type { WaterCell } from './elevationData.js';
