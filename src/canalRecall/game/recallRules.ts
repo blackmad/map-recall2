@@ -404,3 +404,14 @@ export function hudWithholdsRouteName(input: HudNameInput): boolean {
   if (!input.roadName || input.roadName === input.currentName) return false;
   return !input.revealed && !input.learned;
 }
+
+/**
+ * What the street plaque prints: `roadName` is the name the route question
+ * settles on (on a bridge-named deck, the street it carries, or '' when the
+ * deck is transparent; see bridgeStreetName.ts), and the plaque withholds it
+ * under `hudWithholdsRouteName`, exactly as on an ordinary street.
+ */
+export function routePlaqueName(input: HudNameInput): { routeName: string; answerHidden: boolean } {
+  const answerHidden = hudWithholdsRouteName(input);
+  return { routeName: answerHidden ? '' : input.roadName, answerHidden };
+}
