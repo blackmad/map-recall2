@@ -115,9 +115,13 @@ export function routedDeckGroups(ways: readonly RoutingWay[]): DeckGroup[] {
 export type ExclusionReason = 'register-number' | 'deck-too-short' | 'no-geometry' | 'spelling-variant';
 
 /** "Heiligewegssluis" and "Heiligewegsluis", "Katten brug" and "Kattenbrug":
- *  case, spaces, punctuation and doubled letters folded away. */
+ *  case, spaces, punctuation and doubled letters folded away. A trailing
+ *  -sluis folds to -brug: in Amsterdam "sluis" is the old word for a bridge,
+ *  and OSM maps the Vier Heemskinderenbrug also as "Vier Heemskinderensluis"
+ *  7 m away (nl.wikipedia gives both names). Only spellings within
+ *  SAME_BRIDGE_METRES collide, so distinct -sluis and -brug stay apart. */
 export function bridgeSpellingKey(name: string): string {
-  return name.toLocaleLowerCase().normalize('NFD').replace(/[^\p{L}]/gu, '').replace(/(\p{L})\1+/gu, '$1');
+  return name.toLocaleLowerCase().normalize('NFD').replace(/[^\p{L}]/gu, '').replace(/(\p{L})\1+/gu, '$1').replace(/sluis$/u, 'brug');
 }
 
 export interface AskableDecision {

@@ -533,7 +533,7 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/game/routeKnowledge.ts
   var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
-  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}) {
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}, bridges = []) {
     const index = /* @__PURE__ */ new Map();
     const add = (entry, type) => {
       index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
@@ -541,6 +541,18 @@ Map source: ${osmUrl(places[i][0])}`);
     for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
     for (const entry of streets) if (eligible(entry)) add(entry, "street");
     for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    for (const bridge of bridges) {
+      if (!bridge.name || !bridge.wikipediaExtract) continue;
+      if (bridge.wikipediaExtractLang && bridge.wikipediaExtractLang !== "en") continue;
+      index.set(`bridge:${normalise(bridge.name)}`, {
+        id: bridge.id,
+        name: bridge.name,
+        type: "bridge",
+        wikipediaExtract: bridge.wikipediaExtract,
+        ...bridge.wikipediaUrl ? { wikipediaUrl: bridge.wikipediaUrl } : {},
+        ...bridge.wikipediaImageUrl ? { wikipediaImageUrl: bridge.wikipediaImageUrl } : {}
+      });
+    }
     for (const origin of origins) {
       if (!origin.en) continue;
       const type = origin.kind;
@@ -48475,7 +48487,7 @@ Map source: ${osmUrl(places[i][0])}`);
           typeof localStorage === "undefined" ? null : localStorage
         );
         const normalise = (name) => this._normaliseCanalName(name);
-        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
+        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise, [], {}, bridgeFeatures);
         this.streetKnowledge = knowledge;
         const deferredJson = (name) => fetch(url(name)).then((response) => readJson(response, null)).catch(() => null);
         void Promise.all([
@@ -48497,7 +48509,8 @@ Map source: ${osmUrl(places[i][0])}`);
               waterFeatures,
               normalise,
               originsFile?.origins ?? [],
-              bridgeRegister?.bridges ?? {}
+              bridgeRegister?.bridges ?? {},
+              bridgeFeatures
             );
           }
           if (brandedPois) this.vectorMap.setBrandedPois(brandedPois);
