@@ -2480,6 +2480,14 @@ screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 ---
 
 ## P3 — Bets worth a spike, on their own branch
+- **PARKED (user 2026-10-16: "way too much effort/tokens for now"): road
+  paint and look from the orthophoto.** Surveyed roads draw no procedural
+  paint (`streets.ts PAINT_ON_SURVEY = false`, HISTORY "No procedural
+  paint on surveyed roads"). Parked: data-backed markings (orthophoto paint
+  segmentation or OSM crossing/give_way/stop nodes) drawn whole, red cycle
+  crossings through junctions, one asphalt tone across carriageway/parking
+  seams, red only on cycle polygons, and a top-down comparison harness
+  against the PDOK 8 cm orthophoto at six junctions. Only on the user's ask.
 
 **17. Public transit mode.** Tram / metro / ferry as its own routing and
 recall model, not a vehicle skin. *Large.* **GTFS-first** (OVapi → GVB). Plan:
