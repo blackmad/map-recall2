@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { loadavg } from 'node:os';
 import { openRoute } from './helpers';
 
 // Riding frame-cost baseline (2026-10-09 perf cycle).
@@ -70,13 +71,18 @@ async function instrument(page: Page) {
     const w = window as any;
     const vm = w.canalRecallGame.vectorMap;
     const map = vm.map;
-    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [], labelFrame: [] };
+    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [], labelFrame: [], minimap: [], gameRender: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => {
       const original = obj[key].bind(obj);
       obj[key] = (...args: unknown[]) => { const s = performance.now(); try { return original(...args); } finally { t[bucket].push(performance.now() - s); } };
     };
     wrap(map, '_render', 'mapRender');
+    // The HUD frame and, inside it, the minimap (the riding radar since 2026-10-16, the city sheet before).
+    const game = w.canalRecallGame;
+    wrap(game, '_render', 'gameRender');
+    if (typeof game._renderMinimap === 'function') wrap(game, '_renderMinimap', 'minimap');
+    else wrap(game.hud, 'drawCityOverview', 'minimap');
     // The POI label overlay's per-frame handler (plan, occlusion picks, placement).
     if (vm._labelOverlay?.frame) wrap(vm._labelOverlay, 'frame', 'labelFrame');
     const layer = vm._signatureLandmarks?.layer;
@@ -141,6 +147,7 @@ for (const variant of variants) {
     const profiling = !!process.env.PERF_PROFILE;
     if (profiling) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); await cdp.send('Profiler.start'); }
     await instrument(page);
+    const loadBefore = loadavg()[0];
     await page.keyboard.down('ArrowUp');
     await page.waitForTimeout(12_000);
     await page.keyboard.up('ArrowUp');
@@ -171,7 +178,11 @@ for (const variant of variants) {
       mapRender: summary(raw.t.mapRender), landmarkRender: summary(raw.t.landmarkRender), threeLayers: summary(raw.t.threeLayers),
       labelFrame: { ...summary(raw.t.labelFrame), maxMs: +Math.max(0, ...raw.t.labelFrame).toFixed(1) },
       moveend: summary(raw.t.moveend), move: summary(raw.t.move),
+      minimap: { ...summary(raw.t.minimap), p99: +pick(raw.t.minimap, 0.99).toFixed(2), maxMs: +Math.max(0, ...raw.t.minimap).toFixed(1) },
+      gameRender: summary(raw.t.gameRender),
       landmarksShown: raw.shown, heapMB: raw.heapMB, threeBuildings: raw.three, hot,
+      // Machine load (1-min average) around the measured ride; numbers taken above ~20 are not comparable.
+      load: { before: +loadBefore.toFixed(1), after: +loadavg()[0].toFixed(1) },
     };
     results.push(sample);
     console.log(JSON.stringify(sample));

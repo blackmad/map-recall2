@@ -160,6 +160,8 @@ class Renderer {
   _drawDestination(camera, track) {
     const ctx = this.ctx;
     const destination = camera.worldToScreen(track.finishPoint.x, track.finishPoint.y);
+    // Pin and pill, in canvas px, so map labels keep clear of them.
+    this.destinationPillRect = { x: destination.x - 43, y: destination.y - 20, width: 86, height: 58 };
     ctx.save();
     ctx.translate(destination.x, destination.y);
     const surface = window.CanalRecallUi.hudSurface;
@@ -169,7 +171,13 @@ class Renderer {
     ctx.fillStyle = surface.ink;
     ctx.font = `700 10px ${surface.fontPlaque}`;
     ctx.textAlign = 'center';
-    ctx.fillText('DESTINATION', 0, 32);
+    // Centre the ink in the pill by its measured bounds. A fixed alphabetic
+    // baseline at y 32 sat the caps on the pill's bottom edge (user 2026-10-16).
+    ctx.textBaseline = 'alphabetic';
+    const ink = ctx.measureText('DESTINATION');
+    const ascent = ink.actualBoundingBoxAscent || 7;
+    const descent = ink.actualBoundingBoxDescent || 0;
+    ctx.fillText('DESTINATION', 0, 28 + (ascent - descent) / 2);
     ctx.fillStyle = surface.arrow;
     ctx.strokeStyle = surface.ink;
     ctx.lineWidth = 2;
