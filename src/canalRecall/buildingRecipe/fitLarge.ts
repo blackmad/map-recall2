@@ -13,7 +13,7 @@
  * - roof plant: a lift overrun and a plant box at the most interior points of the largest flat roof.
  */
 import type {BuildingFacts} from './facts.ts';
-import {swatch, type LargeBuildingIntent, type LargeWallIntent} from './intent.ts';
+import {swatch, type LargeBuildingIntent, type LargeWallIntent, type RoofMaterial} from './intent.ts';
 import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/panels.ts';
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
@@ -78,7 +78,7 @@ export interface LargeBuildingRecipe {
   wallGroup: number[];
   groups: LargeGroupFit[]; other: {system: LargeSystemName; specSystem: string};
   roofPlant: PlantBox[]; recessM: number;
-  roof: {material: NonNullable<LargeBuildingIntent['roof']>['material']};
+  roof: LargeRoofFit;
   wallMaterial: 'brick' | 'stucco';
   /** per-panel spec system replacing the group's (curved runs: bay axes along the arc); only present when a group opts in */
   panelSystem?: Record<number, string>;
@@ -100,6 +100,33 @@ export interface LargeFitReport {
   warnings: string[];
   /** only with `shellRepair` / `footprint: "bag"` (shellRepair.ts) */
   shellRepair?: ShellRepairReport;
+}
+
+/**
+ * The roof's materials: `material` by default; `flat` for the default's flat class; `regions` = the intent's
+ * `roof.surfaces`, each 3DBAG roof plane as its local plan rings (X east, Z south) and height range, so a roof triangle
+ * is matched to the plane it was cut from (largeCompile `roofMaterialOf`). `flat` and `regions` only when the intent sets them.
+ */
+export interface LargeRoofFit {
+  material: RoofMaterial;
+  flat?: RoofMaterial;
+  regions?: {material: RoofMaterial; surface: number; rings: [number, number][][]; yMin: number; yMax: number}[];
+}
+
+/** Intent `roof` → `LargeRoofFit`; every listed surface must be a roof plane of the facts. */
+export function largeRoofFit(roof: LargeBuildingIntent['roof'], facts: BuildingFacts, anchorRD: [number, number]): LargeRoofFit {
+  const fit: LargeRoofFit = {material: roof?.material ?? 'bitumen'};
+  if (roof?.flat) fit.flat = roof.flat;
+  if (!roof?.surfaces?.length) return fit;
+  const [ax, ay] = anchorRD, g = facts.heights.groundNAP;
+  const byNumber = new Map(facts.roofsRD.map(r => [Number(r.surfaceId.split(':').at(-1)), r]));
+  fit.regions = roof.surfaces.flatMap(s => s.roofSurfaces.map(n => {
+    const r = byNumber.get(n);
+    if (!r) throw Error(`${facts.pandId}: roof.surfaces lists ${n}, not a 3DBAG roof surface of this pand (roof-dump.ts --surfaces)`);
+    const ys = r.ringsRD[0].map(p => p[2] - g);
+    return {material: s.material, surface: n, rings: r.ringsRD.map(ring => ring.map(p => [r3(p[0] - ax), r3(ay - p[1])] as [number, number])), yMin: r3(Math.min(...ys)), yMax: r3(Math.max(...ys))};
+  }));
+  return fit;
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
@@ -361,12 +388,14 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the
   // look (with the wall, glass and split slots pushed above); deduplicated.
   for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
+  // `measured.otherWalls`: palette.brick was measured too (the rear and courtyard walls of the same brick as the fronts)
+  if (intent.measured?.otherWalls) measuredSlots.push('wall');
   const unlistedSurfaces = set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
   const spec: BlockSpec = {id: intent.id, pandId: intent.pandId, name: intent.address, palette, levels: {groundM: civicM, storeyM: civicM}, systems, default: 'other', roofSlot: 'roof', wallSlot: 'wall'};
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
   if (intent.roofPlant && !roofPlant.length) warnings.push('roofPlant: no flat roof of 40 m² with room for a lift overrun');
   const recipe: LargeBuildingRecipe = {id: intent.id, pandId: intent.pandId, anchorRD, set, spec, panelGroup, wallGroup, groups, other: {system: otherName, specSystem: 'other'}, roofPlant, recessM: LARGE_RECESS_M,
-    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: (pal.wallMaterial === 'painted-brick' ? 'brick' : pal.wallMaterial) ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {}), ...(lanterns.length ? {lanterns} : {}), ...(measuredSlots.length ? {measuredSlots: [...new Set(measuredSlots)]} : {})};
+    roof: largeRoofFit(intent.roof, facts, anchorRD), wallMaterial: (pal.wallMaterial === 'painted-brick' ? 'brick' : pal.wallMaterial) ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {}), ...(lanterns.length ? {lanterns} : {}), ...(measuredSlots.length ? {measuredSlots: [...new Set(measuredSlots)]} : {})};
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),
