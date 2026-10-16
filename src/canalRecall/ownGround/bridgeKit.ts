@@ -32,6 +32,7 @@ import { emptyMesh, vertex, type MeshArrays } from './drape.js';
 import { BRIDGE_CODES, BRIDGE_FACTS, FLAT_HINTS } from './bridgeHints.js';
 import { cityTint } from '../look/palette.js';
 import type { Vec2 } from './surface.js';
+import { railRuns, type CrossingTest } from './railingRuns.js';
 
 export type RGB = [number, number, number];
 type V3 = [number, number, number];
@@ -221,7 +222,8 @@ export function beam(m: MeshArrays, a: V3, b: V3, half: number, col: RGB, open =
 // ------------------------------------------------------------------ spine
 
 /** One station across the bridge: centre, left unit normal, edges, riding-surface z there, water under the centre/edges, relief at the edges. */
-export interface KitRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; z: number; zL: number; zR: number; water: boolean; wL: boolean; wR: boolean; gL: number; gR: number }
+/** `oL`/`oR`: water just outside the edge (RAIL_WATER_PROBE_M; the water polygon stops at the bridge faces): the railing's water side (railingRuns.ts railRuns). */
+export interface KitRow { s: number; c: Vec2; n: Vec2; L: Vec2; R: Vec2; z: number; zL: number; zR: number; water: boolean; wL: boolean; wR: boolean; gL: number; gR: number; oL?: boolean; oR?: boolean }
 
 export interface KitInput {
   id: string;
@@ -250,6 +252,8 @@ export interface KitInput {
   lampsAt?: number[];
   /** A flush deck (decks.ts isFlushDeck): the parapet gets FLUSH_PARAPET's kerb and top rail, so the edge reads from above. */
   flush?: boolean;
+  /** The streets and paths crossing the parapet line (railingRuns.ts crossingWays): no parapet stands on them. */
+  crossing?: CrossingTest;
 }
 
 /**
@@ -394,6 +398,11 @@ function paletteOf(facts: BridgeFacts | null | undefined): FamilyPalette {
 
 /** Optional trace of each attempt (the census's --trace): stations and triangles per part. */
 export const kitTrace: { fn: ((id: string, level: number, parts: Record<string, number>) => void) | null } = { fn: null };
+/**
+ * Optional trace of each drawn parapet line (audits): per side and piece, the edge points it runs through and their
+ * outward normal, with the coarsening level of the attempt (buildKit keeps the last, highest level).
+ */
+export const parapetTrace: { fn: ((id: string, side: 1 | -1, line: { s: number; p: Vec2; out: Vec2 }[], at: { level: number; piece: number }) => void) | null } = { fn: null };
 
 function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays; info: KitInfo } {
   const m = emptyMesh(true), { rows, kind, waterZ } = input;
@@ -573,11 +582,11 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
 /** Parapet (plinth, coping or edge upstand), posts, rails and lamps on both edges of the deck span. */
 function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[], info: KitInfo, fascia: RGB): void {
   const { rows, kind } = input, C = KIT_COLOURS;
-  const [p0, p1] = [Math.max(rows[0].s, input.parapet[0]), Math.min(rows[rows.length - 1].s, input.parapet[1])];
-  if (p1 - p0 < 1) return;
+  const [d0, d1] = [Math.max(rows[0].s, input.parapet[0]), Math.min(rows[rows.length - 1].s, input.parapet[1])];
+  if (d1 - d0 < 1) return;
   // The parapet follows the deck edge's height alone (within the 3-4 cm its outer face reaches down over the face below); rails a little coarser.
-  const ps = [p0, ...spineStations(rows, lv.tol >= 0.5 ? lv.tol : Math.min(lv.tol, 0.05), [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3), p1], P = ps.map(s => rowAt(rows, s));
-  const railSpine = spineStations(rows, 0.06, [], false, input.lateralTol).filter(s => s > p0 + 0.3 && s < p1 - 0.3);
+  const psAll = spineStations(rows, lv.tol >= 0.5 ? lv.tol : Math.min(lv.tol, 0.05), [], false, input.lateralTol);
+  const railAll = spineStations(rows, 0.06, [], false, input.lateralTol);
   const wood = input.material === 'wood';
   // A bascule's railing takes the bridge's colour (the Magere Brug's is white like its portals).
   const railColour = kind === 'bascule' && input.colour ? input.colour : wood ? C.woodRail : C.iron;
@@ -601,8 +610,15 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
     ? { ...base, plinth: Math.max(base.plinth, FLUSH_PARAPET.kerb), width: Math.max(base.width, FLUSH_PARAPET.width), plinthCol: base.plinth < FLUSH_PARAPET.kerb ? FLUSH_PARAPET.colour : base.plinthCol, rail: base.rail > 0 ? Math.max(base.rail, FLUSH_PARAPET.rail / 1.4) : 0 }
     : base;
   for (const side of [1, -1] as const) {
+    // Each side over its water-side edge only, onto the abutments (railingRuns.ts railRuns): never across the street.
+    const runs = railRuns(rows, d0, d1, side, input.crossing);
+    for (let piece = 0; piece < runs.length; piece++) {
+    const [p0, p1] = runs[piece];
+    const P = [p0, ...psAll.filter(s => s > p0 + 0.3 && s < p1 - 0.3), p1].map(s => rowAt(rows, s));
+    const railSpine = railAll.filter(s => s > p0 + 0.3 && s < p1 - 0.3);
     const edge = (r: KitRow) => (side > 0 ? r.L : r.R), zt = (r: KitRow) => (side > 0 ? r.zL : r.zR), out = (r: KitRow): Vec2 => [r.n[0] * side, r.n[1] * side];
     const inward = (r: KitRow, d: number): Vec2 => { const e = edge(r), o = out(r); return [e[0] - o[0] * d, e[1] - o[1] * d]; };
+    parapetTrace.fn?.(input.id, side, P.map(r => ({ s: r.s, p: edge(r), out: out(r) })), { level: info.level, piece });
     // Plinth: outer face from the deck edge up, its top, its inner face toward the road (near ring); the far ring keeps the outer face.
     if (style.plinth > 0) for (let k = 0; k + 1 < P.length; k++) {
       const a = P[k], b = P[k + 1], o = [out(a)[0] + out(b)[0], out(a)[1] + out(b)[1], 0], h = style.plinth;
@@ -673,6 +689,7 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
         if (cr[0] * n[0] + cr[1] * n[1] + cr[2] * n[2] >= 0) m.indices.push(i0, i1, i2); else m.indices.push(i0, i2, i1);
       }
       info.lamps++;
+    }
     }
   }
 }
