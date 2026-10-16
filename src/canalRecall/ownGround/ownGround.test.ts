@@ -25,6 +25,7 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
+import { wayDeckGroups, wayDeckProfile } from './wayDecks';
 import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -384,6 +385,21 @@ test('canal-mouth class (BRU0160): flush, wider than long, pre-1940: brick-rail 
   assert.deepEqual(mouthFacts(null, false, 5), { named: false, parapet: 'brick-rail', arches: 1, shapes: ['flat'] });
   assert.deepEqual(mouthFacts({ named: true, parapet: 'iron-rail', arches: 3 }, false, 5), { named: true, parapet: 'iron-rail', arches: 3 }, 'measured facts win');
   assert.deepEqual(mouthFacts(null, true, 5), { named: false, parapet: 'brick-rail' }, 'a masonry mouth keeps its arch');
+});
+
+test('way decks (user 2026-10-16, Jan Evertsenstraat): a bridge way over water with no deck gets one; parallel ways share it; claimed or dry ways do not', () => {
+  // A canal 10 m wide along y (x 20..30); a carriageway along x at y = 0 and cycle paths at y = ±9.
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[12, 0], [38, 0]], north: [number, number][] = [[12, 9], [38, 9]], south: [number, number][] = [[12, -9], [38, -9]];
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false)!;
+  assert.ok(p && Math.abs(p.water![1] - p.water![0] - 9) < 1.01 && Math.abs(p.x[0] + p.water![0] - 20.5) < 0.6, `water run ${p?.water} from x ${p?.x[0]}`);
+  assert.ok(p.deck[0] < p.water![0] && p.deck[1] > p.water![1] && p.h.every(v => v === 0), 'a flush deck over the water plus the abutments');
+  assert.equal(wayDeckProfile('OSM1', 'test', road, 6, wet, (x) => x > 24 && x < 26), null, 'another bridge there');
+  assert.equal(wayDeckProfile('OSM1', 'test', [[0, 0], [15, 0]], 6, wet, () => false), null, 'no water crossed');
+  const g = wayDeckGroups([{ id: 1, name: '', points: road, halfWidth: 6 }, { id: 2, name: '', points: north, halfWidth: 1.5 }, { id: 3, name: '', points: south, halfWidth: 1.5 }], wet, () => false);
+  assert.equal(g.profiles.length, 1, 'one deck for the three ways');
+  assert.deepEqual(g.covered.sort(), [1, 2, 3]);
+  assert.ok(Math.abs(g.profiles[0].halfWidth[0] - 10.5) < 1e-9 && Math.abs(g.profiles[0].y[0]) < 1e-9, `half ${g.profiles[0].halfWidth[0]}`);
 });
 
 test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {

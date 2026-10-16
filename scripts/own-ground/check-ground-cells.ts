@@ -21,6 +21,7 @@ const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.na
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
+import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { statSync } from 'node:fs';
 
@@ -77,7 +78,7 @@ async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
-  if (process.argv.includes('--parapets')) { await parapetRegressions(); process.exitCode = failed ? 1 : 0; return; }
+  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -244,6 +245,7 @@ async function main(): Promise<void> {
   await approachRegressions();
   await deckSlabRegressions();
   await parapetRegressions();
+  await bridgeSurfaceRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -766,6 +768,26 @@ async function parapetRegressions(): Promise<void> {
       const top = cells.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut).sort(compareHits)[0];
       check(!!top && top.layer !== 'water', `${id} ${mode} ${name}: inside the parapet the top is ${top?.layer ?? 'nothing'}`);
     }
+  }
+}
+
+/**
+ * Bridges drawn (user 2026-10-16, "bridge missing entirely here": the Jan Evertsenstraat over the Erasmusgracht beside
+ * the Erasmuspark ended at the quay wall, open water across the street, the far bank resuming). No measured deck or flat
+ * footprint carried its bridge ways, so their bands draped on the canal bed under the water. The way decks (wayDecks.ts)
+ * give them one: every named bridge way carries a drawn surface (audit-bridge-surfaces.ts), and without the way decks it
+ * does not (the pin is live).
+ */
+const BRIDGE_SURFACES: [number, number, number, string][] = [[323258135, 4.84795, 52.36965, 'Jan Evertsenstraat over the Erasmusgracht']];
+async function bridgeSurfaceRegressions(): Promise<void> {
+  const off = new GroundStore(readExtract, { wayDecks: false });
+  await off.init();
+  for (const [id, lng, lat, label] of BRIDGE_SURFACES) {
+    const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
+    const on = await auditBridgeSurfaces(store, [key]), was = await auditBridgeSurfaces(off, [key]);
+    const miss = (r: typeof on) => r.missing.find(m => m.id === id);
+    check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}; ${on.missing.length} of ${on.ways} bridge ways in ${key} missing`);
+    check(!!miss(was), `bridge way ${id}: without the way decks ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
   }
 }
 

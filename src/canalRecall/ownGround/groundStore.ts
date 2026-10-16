@@ -26,7 +26,9 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
-import { movableApproaches } from './decks.js';
+import { movableApproaches, pointInRing } from './decks.js';
+import { prepareWays, isBridgeWay } from './streets.js';
+import { WAY_DECK_CLEAR_M, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -91,7 +93,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -289,6 +291,49 @@ export class GroundStore {
     // this one: place neighbours' decks too, so streets and the rider here
     // see the hump (their approach ends lie within the relief pad).
     for (const n of GroundStore.neighbours(key)) if (n !== key) this.placeDecks(n, [x0 - 60, y0 - 60, x1 + 60, y1 + 60]);
+    if (this.options.wayDecks !== false) await this.placeWayDecks(key);
+  }
+
+  /** OSM bridge ways given a deck (wayDecks.ts), by way id. */
+  private wayDeckIds = new Set<number>();
+  /**
+   * Decks for the OSM bridge ways of this cell and its neighbours that no measured deck or flat footprint carries
+   * (wayDecks.ts, user 2026-10-16: the Jan Evertsenstraat over the Erasmusgracht drew no bridge). Each is placed once,
+   * owned by the cell of its first point, when its box lies within this cell's relief pad.
+   */
+  private async placeWayDecks(key: string): Promise<void> {
+    const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M - 50;
+    const around = GroundStore.neighbours(key);
+    const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
+    const polys = waters.flatMap(w => w?.polygons ?? []);
+    const wet = (x: number, y: number) => polys.some(poly => { let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+    const flats = around.flatMap(k => this.flatDecks(k));
+    // Every measured bridge around, placed or not (a deck is placed only near the cell being prepared).
+    const quant = this.elevation.quantization.xy;
+    const measuredProfiles = around.flatMap(k => this.measuredByCell.get(k) ?? []).map(b => decodeProfile(b, quant, this.toScene));
+    const nearRing = (ring: Vec2[], x: number, y: number) => pointInRing(ring, x, y) || ring.some((a, i) => { const b = ring[(i + 1) % ring.length], dx = b[0] - a[0], dy = b[1] - a[1], t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy || 1e-9))); return Math.hypot(a[0] + dx * t - x, a[1] + dy * t - y) < WAY_DECK_CLEAR_M; });
+    const claimed = (x: number, y: number) => measuredProfiles.some(p => {
+      const [a0, b0, a1, b1] = p.bbox;
+      if (x < a0 - 30 || x > a1 + 30 || y < b0 - 30 || y > b1 + 30) return false;
+      let best = Infinity, at = 0;
+      for (let i = 0; i + 1 < p.x.length; i++) { const dx = p.x[i + 1] - p.x[i], dy = p.y[i + 1] - p.y[i], t = Math.max(0, Math.min(1, ((x - p.x[i]) * dx + (y - p.y[i]) * dy) / (dx * dx + dy * dy || 1e-9))), d = Math.hypot(p.x[i] + dx * t - x, p.y[i] + dy * t - y); if (d < best) { best = d; at = i; } }
+      const half = Math.max(p.halfWidth[at], ...(p.sides ?? []));
+      return p.s[at] >= p.deck[0] - 1 && p.s[at] <= p.deck[1] + 1 && best <= half + WAY_DECK_CLEAR_M;
+    })
+      || flats.some(r => nearRing(r, x, y));
+    const ways: WayDeckInput[] = [];
+    for (const osm of osms) for (const w of osm ? prepareWays(osm.ways, p => toLocal(p[0], p[1])) : []) {
+      if (this.wayDeckIds.has(w.id) || ways.some(q => q.id === w.id) || !isBridgeWay(w) || !wayDeckHighway(w.tags.highway)) continue;
+      const xs = w.points.map(p => p[0]), ys = w.points.map(p => p[1]);
+      if (Math.min(...xs) < x0 - pad || Math.max(...xs) > x1 + pad || Math.min(...ys) < y0 - pad || Math.max(...ys) > y1 + pad) continue;
+      ways.push({ id: w.id, name: w.tags.name ?? '', points: w.points, halfWidth: w.section.halfWidth });
+    }
+    const { profiles } = wayDeckGroups(ways, wet, claimed);
+    for (const w of ways) this.wayDeckIds.add(w.id);
+    for (const profile of profiles) {
+      const owner = this.cellAt(profile.x[0], profile.y[0]);
+      (this.decksByCell.get(owner) ?? this.decksByCell.set(owner, []).get(owner)!).push(this.surface.addDeck(profile));
+    }
   }
 
   /** Measured decks assigned to `key` (optionally only those whose bbox meets `within`), each placed once. */
