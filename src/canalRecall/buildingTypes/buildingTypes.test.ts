@@ -7,7 +7,8 @@ import {frontSide, frontTowardBearing, frontYaw, type Street} from './orientatio
 import {generate, layoutBays, mirrorBays} from './generate.ts';
 import {bakeWorld} from './glb.ts';
 import {FACADE_IDS, validateSpec, type TypeSpec} from './spec.ts';
-import {paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes} from './facts.ts';
+import {bodyRectFromRoof, paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes} from './facts.ts';
+import {solarPosition} from '../../../scripts/building-types/solar.ts';
 import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
 
 const TYPES = path.join(import.meta.dirname, 'types');
@@ -452,4 +453,79 @@ test('params from 3DBAG attributes stand on the trusted ground (Nassaukade 63X);
   const ordinary = pand(fixture.ordinary);
   assert.deepEqual(paramsFromFacts(T6, rect, ordinary.attrs, null, {}, {terrainAt, ringRd: ordinary.ringRd}), paramsFromFacts(T6, rect, ordinary.attrs, null));
   assert.equal(paramsFromFacts(T6, rect, ordinary.attrs, null).groundNapM, ordinary.attrs.b3_h_maaiveld);
+});
+
+// --- 2026-10-16 Burgemeester Hogguerstraat galerijflats (Noordoever Sloterplas): inset walls, galleries, annexes, roof body --------
+
+const HOG = load('nw-gallery-slab-15st-hogguer.json');
+const HOG_PARAMS = {lengthM: 109.5, widthM: 12.4, eavesM: 43.8};
+const annexOn = (variant: string) => HOG.annexes!.filter(a => (!a.variants || a.variants.includes(variant)) && !a.exceptVariants?.includes(variant)).length;
+
+test('gallery slab: validates, matches its counted facades for both variants, 15 storeys, annexes drawn, within 24k triangles (a 110 m, 15-storey block of 190 flats)', () => {
+  assert.deepEqual(validateSpec(HOG), []);
+  for (const variant of Object.keys(HOG.variants)) {
+    const {report, mesh} = generate(HOG, {...HOG_PARAMS, variant});
+    for (const id of FACADE_IDS) assert.deepEqual(report.facades[id], HOG.facades[id].counted, `${variant}/${id}`);
+    assert.equal(report.storeys, 15);
+    assert.equal(report.annexes, annexOn(variant));
+    assert.ok(mesh.triangles <= 24000, `${variant}: ${mesh.triangles} triangles`);
+    for (const bucket of mesh.buckets.values()) assert.ok(bucket.positions.every(Number.isFinite));
+  }
+});
+
+test('gallery slab: walls stand inset from the footprint edge; lift tower and machine room stand out east (front +z) and above the roof; the long entrance only on its variant; gable windows on the south gable only', () => {
+  const {mesh} = generate(HOG, HOG_PARAMS), pal = HOG.variants['concrete-buff'].palette;
+  const zf = 12.4 / 2 - HOG.insetM!.front, wall = mesh.buckets.get(`stucco|${pal.wall.tint}`)!;
+  let wallMaxZ = -Infinity;
+  for (let i = 2; i < wall.positions.length; i += 3) if (wall.positions[i - 1] > 6 && wall.positions[i - 1] < 43.7) wallMaxZ = Math.max(wallMaxZ, wall.positions[i]);
+  assert.ok(Math.abs(wallMaxZ - zf) < 1e-6, `upper long wall at the inset line ${wallMaxZ}`);
+  const b = mesh.bounds();
+  assert.ok(Math.abs(b.max[2] - (12.4 / 2 + 6.8)) < 0.05, `lift tower 6.8 m out of the east edge: ${b.max[2]}`);
+  assert.ok(Math.abs(b.max[1] - (43.8 + 3.9)) < 1e-6, `machine room / lift top ${b.max[1]}`);
+  assert.ok(b.min[2] >= -12.4 / 2 - 5.9 && b.min[1] >= -1e-9);
+  assert.equal(annexOn('long-entrance'), annexOn('concrete-buff'));
+  const long = generate(HOG, {...HOG_PARAMS, variant: 'long-entrance'}).mesh;
+  assert.ok(long.triangles !== mesh.triangles || JSON.stringify(long.bounds()) !== JSON.stringify(b) || [...long.buckets.values()].some((bk, i) => bk.positions.length !== [...mesh.buckets.values()][i]?.positions.length), 'long-entrance draws the longer wing');
+  const glass = mesh.buckets.get(`glass|${pal.glass}`)!;
+  let south = 0, north = 0;
+  for (let i = 0; i < glass.positions.length; i += 9) { const x = glass.positions[i]; if (x < -109.5 / 2 - 0.01) south++; if (x > 109.5 / 2 + 0.01) north++; }
+  assert.ok(south >= 14 && north === 0, `gable glass south ${south} north ${north}`);
+});
+
+test('generator features absent -> byte-identical mesh: zero inset and no annexes leave type 6 unchanged', () => {
+  const p = {lengthM: 15.7, widthM: 9.9, eavesM: 16.1};
+  const a = generate(T6, p).mesh, b = generate({...T6, insetM: {front: 0, back: 0}, annexes: []}, p).mesh;
+  assert.deepEqual([...a.buckets.keys()], [...b.buckets.keys()]);
+  for (const [key, bucket] of a.buckets) assert.deepEqual(b.buckets.get(key)!.positions, bucket.positions, key);
+});
+
+test('body rectangle from the 3DBAG roof: the tall slab, not the ring with its garage row, lift shaft, entrance hall; a split-off end bay is included', () => {
+  const box2 = (x0: number, x1: number, z0: number, z1: number): Pt[] => [[x0, z0], [x1, z0], [x1, z1], [x0, z1]];
+  const axis = minimumRotatedRectangle(box2(-55, 51, -9.5, 15.5)); // ring rectangle of the pand without its end bay
+  const roofs = [
+    {ring: box2(-55, 51, -3.2, 9.2), z: 43.3, area: 1314},
+    {ring: box2(51, 55, -3.2, 9.2), z: 43.32, area: 50}, // the absorbed end bay (another pand), same roof level
+    {ring: box2(42, 46, 9.2, 16), z: 43.3, area: 27}, // lift shaft at the slab's roof level: a local protrusion
+    {ring: box2(-46, 42, 9.2, 15.5), z: 2.4, area: 500}, // garages
+    {ring: box2(38, 51, -9.5, -3.2), z: 2.4, area: 80}, // entrance hall
+  ];
+  const body = bodyRectFromRoof(roofs, axis)!;
+  assert.ok(Math.abs(body.length - 110) < 0.6 && Math.abs(body.width - 12.4) < 0.25, `${body.length} x ${body.width}`);
+  assert.ok(Math.hypot(body.center[0], body.center[1] - 3) < 0.3, `centre ${body.center}`);
+  assert.equal(bodyRectFromRoof([], axis), null);
+});
+
+test('a flat-roofed type keeps its own ridge key when 3DBAG reads a stepped roof as slanted (one unit for identical slabs)', () => {
+  const rect = minimumRotatedRectangle(block(109.5, 12.4));
+  const roof = {form: 'gable' as const, ridgeDirRD: [0, 1] as [number, number], slopeDeg: 40, slantedPlanes: 3, roofAreaM2: 30};
+  const {params} = paramsFromFacts(HOG, rect, {b3_h_dak_50p: 43.3, b3_h_dak_max: 47.2, b3_h_maaiveld: -0.5}, roof);
+  assert.equal(params.ridge, HOG.roof.ridge);
+  assert.equal(params.roofForm, 'flat');
+  assert.equal(params.storeys, 15);
+});
+
+test('review-render sun from the panorama timestamp (camera-sheets --sun=photo)', () => {
+  const [az, el] = solarPosition(new Date('2025-06-21T11:40:00Z'), 52.37, 4.83); // about local solar noon at midsummer
+  assert.ok(Math.abs(az - 180) < 6 && Math.abs(el - 61) < 1.5, `${az} ${el}`);
+  assert.ok(solarPosition(new Date('2025-01-01T00:00:00Z'), 52.37, 4.83)[1] < -40);
 });
