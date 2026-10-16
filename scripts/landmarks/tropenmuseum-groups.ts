@@ -41,6 +41,29 @@ const enclosed = (p: ReturnType<typeof buildHost>['panels'][number]) => {
 /** Panels left blank on purpose (surface id -> reason): the kit could only draw their windows flush, coplanar with the wall (audit zfight). */
 const NO_WINDOWS: Record<number, string> = {138: 'Oosterpark-side stair bay, skewed 3DBAG members: windows fall back to flush sheets that z-fight the wall'};
 const angDiff = (a: number, b: number) => Math.abs(((a - b + 540) % 360) - 180);
+/**
+ * Fourth pass (2026-10-16, user report: plain dark walls with bare blue cells either side of the measured portal): the wall
+ * groups dressed from the panoramas, pane-split so that white frames, mullions and transoms cost no bar boxes.
+ *  - `long` (the museum's Mauritskade wing, w01-331, crop w01-331.alt 2024): souterrain with paired round-arched lights, three
+ *    floors of round-arched three-light windows (w 0.66 of the 3.2 m bay, h 0.64 of the storey, sill 0.08) whose heads carry
+ *    white springer, haunch and key blocks on the brick, a white sill course under every floor's windows, white cornice.
+ *  - street `cross` (the Instituut's Mauritskade and Linnaeusstraat wings, w04-331, w07-331, w46-331): souterrain with paired
+ *    round-arched lights, cross windows (stone mullion and transom at 0.7; w 0.72, h 0.6, sill 0.12), white sill and head
+ *    courses, white cornice. The grouping of the lights in twos and threes is not expressed (one cross window per bay).
+ *  - rear `cross` (Oosterpark side, w25-241, w30-241, w27-151): framed windows with a transom (w 0.5, h 0.62, sill 0.14) and
+ *    their own sills, souterrain lights single per bay.
+ * Byte budget (500 KB): the souterrain lights are single per bay everywhere (the photos show pairs), the street towers (> 3
+ * storeys) get a sill course only and no cornice, the street cross windows no arched souterrain heads, the rear walls no
+ * courses. Measured cost of the whole dressing: courses ~2.7k triangles, cornice ~0.9k, blocks ~1k, souterrain saves ~0.4k.
+ */
+const dress = (r: {style: 'long' | 'cross'; tier: 'street' | 'rear'; storeys: number}): Record<string, unknown> => {
+  if (r.storeys < 2) return {};
+  const base = {frames: true, glazing: 'panes'};
+  if (r.style === 'long') return {...base, souterrain: 'single', cornice: true, windows: 'three-light', arches: {windows: 'round', ground: 'round', band: 'blocks'}, windowShape: {w: 0.66, h: 0.64, sill: 0.08}, courses: ['sill']};
+  if (r.tier === 'street' && r.storeys === 3) return {...base, souterrain: 'single', cornice: true, windows: 'cross', windowShape: {w: 0.72, h: 0.6, sill: 0.12}, courses: ['sill', 'head']};
+  if (r.tier === 'street' && r.storeys > 3) return {...base, souterrain: 'single', windows: 'cross', windowShape: {w: 0.6, h: 0.6, sill: 0.12}, courses: ['sill']};
+  return {...base, souterrain: 'single', windows: 'transom', windowShape: {w: 0.5, h: 0.62, sill: 0.14}};
+};
 export const rows: PanelRow[] = panels.map(p => {
   const width = p.uMax - p.uMin, eaves = panelEaves(p), um = (p.uMin + p.uMax) / 2;
   const at: [number, number] = [p.o[0] + p.r[0] * um, p.o[2] + p.r[2] * um], bearing = Math.round(bearingOfNormal(p.n));
@@ -58,6 +81,7 @@ if (process.argv[1]?.endsWith('tropenmuseum-groups.ts')) {
     wallSurfaces: list.flatMap(r => r.surfaces).sort((a, b) => a - b), system: 'brick-bay-grid', storeys: list[0].storeys, windows: 'two-light', ground: 'system',
     ...(list[0].style === 'long' ? {arches: {windows: 'round', ground: 'round', band: 'none'}, windows: 'plain'} : {}),
     frames: false, sills: false, ...(list[0].tier === 'rear' || list[0].storeys <= STACKED_TWO_LIGHT_ABOVE ? {windows: 'plain'} : {}),
+    ...dress(list[0]),
   }));
   console.log(`panels ${rows.length}, windowed ${rows.filter(r => !r.blank).length}, blank ${rows.filter(r => r.blank).length}`);
   for (const [k, l] of byKey) console.log(k, l.length, 'panels');
@@ -65,7 +89,7 @@ if (process.argv[1]?.endsWith('tropenmuseum-groups.ts')) {
   const out = {
     schemaVersion: 1, kind: 'large', id: 'tropenmuseum', pandId: '0363100012237251', address: 'Koninklijk Instituut voor de Tropen / Tropenmuseum, Linnaeusstraat 2, Amsterdam',
     sources: intent.sources ?? [{id: 'pano-2020-04-24', kind: 'street-panorama', capturedAt: '2020-04-24', url: 'https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001674_pano_0000_003613/', license: 'Gemeente Amsterdam panorama, CC BY 4.0'}],
-    walls, otherWalls: 'blank', roof: {material: 'slate'}, palette: {brick: '#8a5a47', frame: '#e8e4d8', door: '#2f3b33', stone: '#d9cfb8'}, closedBands: true,
+    walls, otherWalls: 'blank', roof: {material: 'slate'}, palette: {brick: '#a2856c', frame: '#efece3', door: '#2f3b33', stone: '#e2d6bc'}, closedBands: false,
     notes: intent.notes ?? [],
   };
   if (process.argv.includes('--write')) fs.writeFileSync('scripts/landmarks/tropenmuseum-intent.json', JSON.stringify(out, null, 1) + '\n');

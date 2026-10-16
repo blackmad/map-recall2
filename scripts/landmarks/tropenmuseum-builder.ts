@@ -70,9 +70,20 @@ const GABLES: {surfaces: number[]; statue: boolean}[] = [
 
 export interface TropenmuseumStats extends KitStats {triangles: number}
 
-export function tropenmuseumHooks(stats: TropenmuseumStats, opt: TropenmuseumOptions = {}, hidden?: Set<string>, collect?: CellsByPanel): LargeCompileHooks {
+/** A panel whose face is drawn by hand (the kit's cells there are skipped or overdrawn). */
+function bespokePanel(p: Panel): boolean {
+  const sf = surfacesOf(p);
+  if (has(p, ...PORTAL_SURFACES)) return true;
+  if (gableWingOf(sf)?.panel === p.index || risalitOf(sf)?.panel === p.index || pavilionWallOf(sf)?.panel === p.index) return true;
+  return PAVILIONS.some(q => has(p, ...q.surfaces));
+}
+
+export function tropenmuseumHooks(stats: TropenmuseumStats, opt: TropenmuseumOptions = {}, hidden?: Set<string>, collect?: CellsByPanel, courtPanels?: Set<number>): LargeCompileHooks {
   return {
     budget: 40000,
+    // court faces (every window cell looks at another wall within 40 m): no string courses or cornice either
+    // and none across the measured faces (portal, pavilions, gable wing, risalit), which draw their own courses and cornices
+    skipBands: (p: Panel) => !!courtPanels?.has(p.index) || bespokePanel(p),
     barOffsetM: BAR,
     afterCompose: (_m, recipe) => { recipe.spec.palette[IRON] = '#3a3a3a'; }, // wrought-iron slot, see IRON in the kit
     skipCell: (p, floor, bay) => {
@@ -108,20 +119,21 @@ export function tropenmuseumHooks(stats: TropenmuseumStats, opt: TropenmuseumOpt
 export function compileTropenmuseum(opt: TropenmuseumOptions = {}) {
   const intent = validateLargeIntent(intentJson);
   const stats: TropenmuseumStats = {triangles: 0, openings: 0, failed: [], drawn: []};
-  let hidden: Set<string> | undefined;
+  let hidden: Set<string> | undefined, court: Set<number> | undefined;
   if (!opt.keepHiddenCells) {
     // pass 1 collects every panel's cells; the second pass leaves out the ones that face a court wall
     const cells: CellsByPanel = new Map();
     const first = compileLargeBuilding(intent, FACTS, tropenmuseumHooks({triangles: 0, openings: 0, failed: [], drawn: []}, {...opt, plain: true}, undefined, cells));
     hidden = hiddenCells(first.panels, cells);
+    court = new Set([...cells].filter(([pi, list]) => list.length && list.every(cl => hidden!.has(`${pi}:${cl.floor}:${cl.bay}`))).map(([pi]) => pi));
   }
-  const built = compileLargeBuilding(intent, FACTS, tropenmuseumHooks(stats, opt, hidden));
+  const built = compileLargeBuilding(intent, FACTS, tropenmuseumHooks(stats, opt, hidden, undefined, court));
   return {built, stats};
 }
 
 export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools, opt: TropenmuseumOptions = {}) {
   const {built} = compileTropenmuseum(opt);
-  const all: number[] = [];
+  const all: number[] = [], glassTri: boolean[] = [];
   built.group.traverse(o => {
     if (!(o instanceof T.Mesh)) return;
     const name = o.name.endsWith('/cross') ? 'slate' : PALETTE[o.userData.materialSlot as string]; // IRON: wrought iron reads as host trim in the opening audit
@@ -139,10 +151,11 @@ export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools, opt:
     }
     if (!keep.length) return;
     for (const v of keep) all.push(v);
+    for (let k = 0; k < keep.length / 9; k++) glassTri.push(name === 'glass');
     const out = new T.BufferGeometry(); out.setAttribute('position', new T.Float32BufferAttribute(keep, 3)); out.computeVertexNormals();
     b.add(out, name);
   });
-  const cap = capShellHoles(all);
+  const cap = capShellHoles(all, glassTri);
   if (cap.length) {
     const out = new T.BufferGeometry(); out.setAttribute('position', new T.Float32BufferAttribute(cap, 3)); out.computeVertexNormals();
     b.add(out, 'brick');
@@ -155,7 +168,7 @@ export function buildTropenmuseum(_w: number, _d: number, b: BuildingTools, opt:
  * vertical edge with skewed neighbours): chain the unpaired directed edges into loops and fan-fill every loop longer than 5 m
  * (the audit lists loops above this) with at most 24 vertices. The many tiny open edges on trim are left alone.
  */
-function capShellHoles(pos: number[]): number[] {
+function capShellHoles(pos: number[], glassTri: boolean[] = []): number[] {
   const key = (i: number) => `${Math.round(pos[i * 3] * 50)},${Math.round(pos[i * 3 + 1] * 50)},${Math.round(pos[i * 3 + 2] * 50)}`;
   const n = pos.length / 3, edges = new Map<string, {a: number; b: number; ka: string; kb: string}>();
   for (let t = 0; t < n; t += 3) for (let k = 0; k < 3; k++) {
@@ -177,6 +190,8 @@ function capShellHoles(pos: number[]): number[] {
       used.add(next); loop.push(next); cur = next;
     }
     if (cur.kb !== first.ka || loop.length < 3 || loop.length > 24) continue;
+    // a pane laid in front of its frame sheet (pane-split glazing) is a glass quad with open edges, not a hole in the shell
+    if (loop.every(e => glassTri[Math.floor(e.a / 3)])) continue;
     let perim = 0;
     for (const e of loop) perim += Math.hypot(pos[e.a * 3] - pos[e.b * 3], pos[e.a * 3 + 1] - pos[e.b * 3 + 1], pos[e.a * 3 + 2] - pos[e.b * 3 + 2]);
     if (perim < 5) continue;
