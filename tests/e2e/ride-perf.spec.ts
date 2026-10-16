@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { loadavg } from 'node:os';
 import { openRoute } from './helpers';
 
 // Riding frame-cost baseline (2026-10-09 perf cycle).
@@ -143,6 +144,7 @@ for (const variant of variants) {
     const profiling = !!process.env.PERF_PROFILE;
     if (profiling) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); await cdp.send('Profiler.start'); }
     await instrument(page);
+    const loadBefore = loadavg()[0];
     await page.keyboard.down('ArrowUp');
     await page.waitForTimeout(12_000);
     await page.keyboard.up('ArrowUp');
@@ -176,6 +178,8 @@ for (const variant of variants) {
       minimap: { ...summary(raw.t.minimap), p99: +pick(raw.t.minimap, 0.99).toFixed(2), maxMs: +Math.max(0, ...raw.t.minimap).toFixed(1) },
       gameRender: summary(raw.t.gameRender),
       landmarksShown: raw.shown, heapMB: raw.heapMB, threeBuildings: raw.three, hot,
+      // Machine load (1-min average) around the measured ride; numbers taken above ~20 are not comparable.
+      load: { before: +loadBefore.toFixed(1), after: +loadavg()[0].toFixed(1) },
     };
     results.push(sample);
     console.log(JSON.stringify(sample));
