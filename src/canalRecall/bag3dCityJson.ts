@@ -13,10 +13,11 @@
  */
 
 import { rdToLngLat } from './rdCoordinates.js';
+import { lod13RoofFaces, polygonAreaM2, splitTowerPodium, type RdPolygon } from './towerPodium.js';
 
 type Transform = { scale: [number, number, number]; translate: [number, number, number] };
-type Geometry = { type: string; lod?: string; boundaries: unknown };
-type CityObject = { type: string; attributes?: Record<string, unknown>; geometry?: Geometry[] };
+type Geometry = { type: string; lod?: string; boundaries: unknown; semantics?: { surfaces: { type: string }[]; values: unknown } };
+type CityObject = { type: string; attributes?: Record<string, unknown>; geometry?: Geometry[]; children?: string[] };
 export type CityJson = { transform: Transform; vertices: number[][]; CityObjects: Record<string, CityObject> };
 
 /** A ring of `[lng, lat]`, closed. */
@@ -50,9 +51,22 @@ export type BagBuilding = {
   rmseLod22: number | null;
   /** BAG lifecycle status — demolished pands are still published. */
   status: string | null;
+  /**
+   * The tower of a `tower-podium` pand: its own footprint (WGS84 polygons,
+   * outer ring first), standing from the podium roof (`minHeightM`, which is
+   * this pand's `heightM`) to the ridge. Null for every other pand.
+   */
+  tower: BagTower | null;
 };
 
-export type BagHeightSource = 'roof-70p' | 'lod12-volume' | 'ridge' | 'ridge-tower' | 'none';
+/** A tower drawn over part of its pand's footprint; see `splitTowerPodium`. */
+export type BagTower = { polygons: Ring[][]; minHeightM: number; heightM: number; areaM2: number; tallShare: number };
+
+/**
+ * `tower-podium`: a ridge-tower pand whose LoD1.3 parts place the tower on part
+ * of the footprint, so `heightM` is the podium (70p) and `tower` carries the rest.
+ */
+export type BagHeightSource = 'roof-70p' | 'lod12-volume' | 'ridge' | 'ridge-tower' | 'tower-podium' | 'none';
 
 const number = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null);
 const text = (value: unknown): string | null => (typeof value === 'string' && value !== '' ? value : null);
@@ -260,6 +274,29 @@ function footprintRingRd(geometry: Geometry[] | undefined, rd: (index: number) =
   return ring.length ? ring : null;
 }
 
+/**
+ * Place the tower of a ridge-tower pand from its `BuildingPart` LoD1.3 roof
+ * faces (`splitTowerPodium`), or null when the tower covers most of the pand
+ * or cannot be located — those keep the ridge over the whole footprint.
+ */
+export function towerSplitOf(city: CityJson, object: CityObject, attributes: Record<string, unknown>, groundNapM: number, ridgeM: number): BagTower | null {
+  const roof70 = number(attributes.b3_h_dak_70p);
+  if (roof70 === null) return null;
+  const { scale, translate } = city.transform;
+  const rd = (index: number): [number, number, number] | undefined => {
+    const v = city.vertices[index];
+    return v ? [v[0] * scale[0] + translate[0], v[1] * scale[1] + translate[1], v[2] * scale[2] + translate[2]] : undefined;
+  };
+  const lod0 = object.geometry?.find(part => part.lod === '0' && part.type === 'MultiSurface');
+  const footprintAreaM2 = ((lod0?.boundaries as number[][][] | undefined) ?? [])
+    .reduce((sum, surface) => sum + polygonAreaM2(surface.map(ring => ring.map(rd).filter((p): p is [number, number, number] => !!p).map(([x, y]) => [x, y] as [number, number]))), 0);
+  const faces = lod13RoofFaces(city.CityObjects, object, rd, groundNapM);
+  const split = splitTowerPodium({ podiumM: roof70 - groundNapM, ridgeM, footprintAreaM2, faces });
+  if (split.kind !== 'split') return null;
+  const toLngLat = (polygon: RdPolygon): Ring[] => polygon.map(ring => ring.map(([x, y]) => rdToLngLat(x, y)));
+  return { polygons: split.polygons.map(toLngLat), minHeightM: split.podiumM, heightM: split.towerM, areaM2: split.towerAreaM2, tallShare: split.tallShare };
+}
+
 /** Every `Building` in one CityJSON tile, with its footprint already in WGS84. `terrainAt` lets heights reject a failed 3DBAG ground. */
 export function readBagBuildings(city: CityJson, terrainAt?: TerrainAt): BagBuilding[] {
   const { scale, translate } = city.transform;
@@ -285,13 +322,19 @@ export function readBagBuildings(city: CityJson, terrainAt?: TerrainAt): BagBuil
     }) : null;
     const { groundNapM: ground, terrain } = pandGroundNap(attributes, terrainAt, ringRd);
     const ridge = number(attributes.b3_h_nok);
-    const { heightM, source } = bagHeightM(attributes, terrain);
+    let { heightM, source } = bagHeightM(attributes, terrain);
+    let tower: BagTower | null = null;
+    if (source === 'ridge-tower' && heightM !== null && ground !== null) {
+      const split = towerSplitOf(city, object, attributes, ground, heightM);
+      if (split) { tower = split; heightM = split.minHeightM; source = 'tower-podium'; }
+    }
     const roofMin = number(attributes.b3_h_dak_min);
     buildings.push({
       bagId,
       rings,
       heightM,
       heightSource: source,
+      tower,
       groundNapM: ground,
       ridgeM: ridge !== null && ground !== null && ridge - ground > 0 ? ridge - ground : null,
       eavesM: roofMin !== null && ground !== null && roofMin - ground > 0 ? roofMin - ground : null,

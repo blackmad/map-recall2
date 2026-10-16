@@ -10,7 +10,8 @@ import {
   type CompositionFeature,
 } from '../src/canalRecall/buildingComposition.js';
 import { type Ring } from '../src/canalRecall/buildingGeometry.js';
-import { bagHeightM, TOWER_PODIUM_GAP_M } from '../src/canalRecall/bag3dCityJson.js';
+import { readFileSync } from 'node:fs';
+import { bagHeightM, readBagBuildings, TOWER_PODIUM_GAP_M, type CityJson } from '../src/canalRecall/bag3dCityJson.js';
 import { lod1HeightM } from '../src/canalRecall/bag3dTiles.js';
 
 const square = (x: number, y: number, size: number): Ring =>
@@ -101,5 +102,14 @@ const tilesTower = lod1HeightM({
 });
 assert.equal(tilesTower.source, 'ridge-tower');
 assert.equal(tilesTower.heightM, 45);
+
+// Named regression: Hotelschool The Hague, Jan Evertsenstraat 171-175, drew as a 72 m slab over
+// 14,270 m². Its LoD1.3 parts put the tower on 1,243 m²; the podium stands at the 70p (~13 m).
+// The full suite is src/canalRecall/towerPodium.test.ts.
+const towerFixture = JSON.parse(readFileSync(new URL('../src/canalRecall/fixtures/tower-podium-3dbag.json', import.meta.url), 'utf8')) as CityJson;
+const hotelschool = readBagBuildings(towerFixture).find(b => b.bagId === 'NL.IMBAG.Pand.0363100012148630');
+assert.equal(hotelschool?.heightSource, 'tower-podium');
+assert.ok(Math.abs(hotelschool!.heightM! - 13.65) < 0.05, `Hotelschool podium ${hotelschool!.heightM}`);
+assert.ok(Math.abs(hotelschool!.tower!.heightM - 72.62) < 0.05 && Math.abs(hotelschool!.tower!.areaM2 - 1243) < 15, 'Hotelschool tower over its own part');
 
 process.stdout.write('Building composition and tower-height checks passed\n');
