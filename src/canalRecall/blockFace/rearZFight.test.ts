@@ -127,3 +127,23 @@ test('a shell standing 4 cm behind the BAG rear edge: the window sits on the mea
   const z = auditZFight(soupOf([shell.group]));
   assert.equal(+(z.area + z.tightArea).toFixed(3), 0);
 });
+
+test('kinker-363-371 089983 (sloped wall top under a roof cut): no frame reaches above the wall it stands on', async () => {
+  const {wallTopAt} = await import('./rear.ts');
+  // One rear wall facing -z local (RD +y) at z = -10, its top sloping from 12 m at x = 0 to 6 m at x = 8.
+  const quad = [[0, 0, -10], [8, 0, -10], [8, 6, -10], [0, 12, -10]];
+  const facing = new T.Vector3().crossVectors(new T.Vector3(8, 0, 0), new T.Vector3(8, 6, 0)).z < 0; // order 0,1,2 faces -z
+  const order = facing ? [0, 1, 2, 0, 2, 3] : [0, 2, 1, 0, 3, 2];
+  const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(order.flatMap(i => quad[i]), 3));
+  const wall = new T.Mesh(g, new T.MeshStandardMaterial()); wall.name = 'shell/walls'; wall.userData = {surface: 'wall'};
+  const group = new T.Group(); group.add(wall);
+  assert.ok(Math.abs(wallTopAt(group, [4, -10], [0, -1]) - 9) < 1e-3, 'height at the point, not the highest corner');
+  const facts = {pandId: 'W', fronts: [{outwardNormalRD: [0, -1]}], surveyFootprintPolygonsRD: [[[[0, 0], [8, 0], [8, 10], [0, 10]]]]} as unknown as BuildingFacts;
+  const r = addInferredRear(group, facts, [0, 0], [3, 3, 3, 3], 12, '#223344', '#eeeeee', []);
+  assert.ok(r.windows >= 3);
+  group.traverse(o => {
+    if (!(o instanceof T.Mesh) || o.userData.component !== 'rear') return;
+    const p = (o.geometry as T.BufferGeometry).getAttribute('position');
+    for (let i = 0; i < p.count; i++) assert.ok(p.getY(i) <= 12 - 0.75 * p.getX(i) + 1e-6, `frame vertex at x ${p.getX(i).toFixed(2)} y ${p.getY(i).toFixed(2)} above the wall top`);
+  });
+});
