@@ -832,6 +832,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   cannot escape the mapped road corridor" (21–23 m off the corridor, limit
   12.5) and "anonymous year-only buildings clear selection without opening a
   card" (desktop and iPhone). Lane `lane/canal-spec-fails-20261016` on them.
+- **Bridge ends and spans, after the Berensluis** (2026-10-16): ~2,900
+  deck-top misses remain at other belt bridge ends (BRU0140 Jean Dulieubrug
+  52; BRU0066's north pavement stops 2 m short;
+  `scripts/own-ground/audit-deck-ends.ts --list`); land strips mid-span
+  under 44 decks (19 wider than 6 m: BRU0067, Blauwbrug, Oosterbeerbrug,
+  Hendrick Jacobsz. Staetsbrug; extend `openUnderFootbridges` or open BGT
+  pier gaps; census `probe-midspan-land.ts`); Berensluis piers grey stone,
+  not brick-red (P3).
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
