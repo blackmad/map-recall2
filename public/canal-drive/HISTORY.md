@@ -1,5 +1,41 @@
 # Canal Recall — what is built
 
+## Bridges: canal-mouth parapets at the Bullebakssluis, decks for unmeasured bridge ways (2026-10-16)
+
+User (2026-10-16): "no idea what this bridge is trying to be" (Marnixstraat
+over the Lijnbaansgracht mouth, BRU0160 Bullebakssluis) and "bridge missing
+entirely here" (Jan Evertsenstraat over the Erasmusgracht, OSM 323258135).
+Lane `lane/marnix-bloemgracht-bridge-20261016` (49d439acc).
+- **Railing stubs:** `decks.ts deckWidths` follows the skewed quay, so the
+  last stations narrow (16.3 → 9.5 → 3.5 m) and the parapet, interpolated
+  toward them, turned in across pavement and cycle path. `parapetRuns`
+  drops turned-in end stations; dips ≤ 3 m between full-width stations are
+  filled. Parapets shortened on 347 of 1,092 measured decks (nearly all by
+  ≤ 0.5 m, max 1.8 m).
+- **Canal-mouth bridges:** flush decks ≥ 12 m wide, ≥ 1.5× their span,
+  pre-1940 or masonry (31 decks) get a `brick-rail` parapet (brick wall,
+  stone coping, iron rails, brick end piers, no lamps) and flat openings
+  under steel/concrete decks; measured facts still win. BRU0160 was a
+  segmental arch with balustrade and lamps; the panorama shows a flat steel
+  girder with brick abutments.
+- **Missing bridges:** not caused by BGT roads (pilot cells: 11 bridge ways
+  without a surface with roads, 19 with bands; none a road bridge). Bridge
+  ways with no measured deck or flat footprint draped on the relief (−0.9 m
+  in the canal) under the water. `ownGround/wayDecks.ts` gives a straight
+  bridge way crossing ≥ 2 m of water, with land within 6 m at both ends and
+  no deck within 4 m, its own flush deck (parallel ways share one).
+  City-wide audit (`audit-bridge-surfaces.ts --all`): road bridge ways
+  with no surface 137 → 31 of 1,294 (some of the 31 lie outside the
+  elevation data, in Zaanstad and Haarlemmermeer).
+  ~+50 ms `cellInput` per cell.
+- Regressions in `check-ground-cells --parapets` (BRU0160 in both road
+  modes; way 323258135 has a surface, pin live) and unit tests. Frames:
+  the lane's `artifacts/marnix/sheet-janevertsen.png`, `sheet-chase-south.png`.
+Still open: on the Jan Evertsenstraat way deck one railing end runs
+diagonally across the cycle path; the parapet jogs outward mid-span on
+widened sides (BRU0063, BRU0108); the art-installation footbridges (De
+Oase, De Octopus, Grachtenvlinder) draw in neither mode.
+
 ## Towers on podiums: the tall part over its own footprint (2026-10-16)
 
 User (2026-10-16), at the Hotelschool The Hague, Jan Evertsenstraat 171-175
