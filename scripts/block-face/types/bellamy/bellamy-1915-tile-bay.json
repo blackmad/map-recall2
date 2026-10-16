@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "bellamy-1915-tile-bay",
  "district": "bellamy",
- "description": "Hasebroekstraat 56-70 (1915): orange-red brick fronts of a narrow and a wide axis, mirrored in pairs; a white painted bay window stack on the top two storeys of the wide axis over a white-framed triple window, glazed tile diamonds between patterned brick courses beside the bays, red house doors at the outer party walls, a thin white eaves over a red-tile roof front with dormers",
+ "description": "Hasebroekstraat 56-70 (1915): orange-red brick fronts of a narrow and a wide axis, mirrored in pairs; a three-storey timber oriel on the wide axis (white-framed three-light fronts over brick stallrisers, a white painted top storey, a white console under its foot), glazed tile diamonds between patterned brick courses beside the bays, red house doors at the outer party walls, a thin white eaves over a red-tile roof front, a dormer under a hoist cap over the oriel",
  "fit": {
   "widthM": [
    6.3,
@@ -77,16 +77,60 @@
     "to": 1
    },
    "storeys": [
+    1,
     2,
     3
    ],
-   "hood": true
+   "oriel": {
+    "span": 2.2,
+    "projection": 0.5,
+    "returns": 0.3,
+    "stallriser": 0.45,
+    "head": 0.45,
+    "frontLights": 3,
+    "transom": 0.7,
+    "panels": {
+     "2": {
+      "stallriser": 0.5,
+      "head": 0.15
+     },
+     "3": {
+      "stallriser": 2.0,
+      "head": 0.2
+     }
+    },
+    "paintedStoreys": [
+     3
+    ],
+    "paintFrom": 0.72,
+    "console": true
+   }
   }
  },
  "crowns": {
   "eaves": {
    "gable": "cornice",
-   "note": "thin white eaves; the low red-tile roof face and the set-back dormers stay out of the model (a 70 degree mansard face drew a 2.7 m red wall the photo does not show)"
+   "dormers": 2,
+   "dormerAt": [
+    {
+     "from": 0.09,
+     "to": 0.28
+    },
+    {
+     "from": 0.57,
+     "to": 0.76
+    }
+   ],
+   "dormerCap": {
+    "kind": "hoist",
+    "dormers": [
+     1
+    ],
+    "rise": 1.2,
+    "flare": 0.25,
+    "colour": "#adad9d"
+   },
+   "note": "thin white eaves; a white dormer over the oriel axis under a flared hoist cap (14.1-15.1 m on the 2024-12-11 strip, 1.15 m at its foot, 1.65 m at its top, #adad9d), a plain set-back dormer over the narrow axis; the low red-tile roof face stays out of the model (a 70 degree mansard face drew a 2.7 m red wall the photo does not show)"
   }
  },
  "grounds": {
@@ -141,8 +185,9 @@
   }
  ],
  "schemaLimits": [
-  "the bay windows are drawn as square-cornered boxes; the photo's are segmental in plan",
-  "the dark checkered brick courses"
+  "the oriel is drawn three-faced; the photo's is segmental in plan",
+  "the dark checkered brick courses",
+  "one dormer height for both dormers (the narrow-axis dormer is 1.0 m in the photo, drawn 1.45 m)"
  ],
  "notes": []
 }
