@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Surveyed road surface city-wide: 291 cells, 10.2 MB (2026-10-16)
+
+Lane `lane/roads-citywide-20261016` (1f707e183, dc5b2d4cc, publish 17e62fba3,
+7dc036f63, c49ac7711). roads-v1 now covers 291 of 294 cells (three open-water
+cells hold no wegdeel and keep the bands): 223,591 BGT polygons, 10.2 MB gz,
+max 119 KB, median 21 KB per cell. Topology-preserving simplification
+(`topoSimplify.ts`) keeps shared edges identical on both polygons and kerbs,
+so `probe-junction-overlap --pairs` reads 0 at Kinkerstraat × Da Costakade
+and the Marnixstraat busway. Fietsstraat red is decided per section in the
+extractor (58 red sections; tram-track and junction sections stay grey;
+the runtime `railCarriages` override removed). Survey-gap pockets around
+junction nodes are paved (Nieuwmarkt regression at the extract edge, 155 →
+25 m²). 62.4 % of OSM ways are covered (primary 98.7 %, residential 92.5 %).
+Orthophoto sheet `docs/images/roads/roads-citywide-ortho-20261016.jpg` at
+Oost (Linnaeusstraat, which OSM tags `construction` and the bands left
+blank), Zuid (Ferdinand Bol × Ceintuurbaan) and Noord (Mosplein): the
+survey matches the photo; the bands did not. Triangles city-wide 79.8 M →
+78.1 M; build time 1.20× summed; six rural/dike cells exceed the 1.15×
+per-cell triangle gate (worst -8_4 1.43×, all ≤ 242k, under dense cells),
+accepted by the integrator with a coarser-drape follow-up. Desktop
+ride-perf 5/5 (p95 16.8 ms).
+
 ## Flags decided: building types by default; elevation stencil, ground-look variants, label tones and six A/B toggles deleted (2026-10-16)
 
 User (2026-10-16): "what things are behind flags that we should make default?
