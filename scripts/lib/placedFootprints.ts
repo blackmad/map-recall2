@@ -26,7 +26,7 @@ export const tileXY = (lon: number, lat: number): [number, number] => {
   const n = 2 ** 14, r = (lat * Math.PI) / 180;
   return [Math.floor(((lon + 180) / 360) * n), Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n)];
 };
-export type Feature = {properties: {id?: string; height?: number}; geometry: {type: string; coordinates: unknown}};
+export type Feature = {properties: {id?: string; height?: number; roofShape?: string}; geometry: {type: string; coordinates: unknown}};
 const tileCache = new Map<string, TileBuilding[]>();
 export function tileBuildings(x: number, y: number): TileBuilding[] {
   const key = `${x}/${y}`;
@@ -36,7 +36,7 @@ export function tileBuildings(x: number, y: number): TileBuilding[] {
     // The game drops the redundant nested copy (OSM outline vs BAG pand twin) per tile before drawing; so do we.
     const raw: Feature[] = fs.existsSync(file) ? JSON.parse(zlib.gunzipSync(fs.readFileSync(file)).toString()).features : [];
     const feats = dropNestedDuplicates(raw as never) as unknown as Feature[];
-    out = feats.filter(f => f.properties.id).map(f => ({id: String(f.properties.id), height: f.properties.height, rings: outerRings(f.geometry)})).filter(b => b.rings.length);
+    out = feats.filter(f => f.properties.id).map(f => ({id: String(f.properties.id), height: f.properties.height, ...(f.properties.roofShape ? {roofShape: f.properties.roofShape} : {}), rings: outerRings(f.geometry)})).filter(b => b.rings.length);
     tileCache.set(key, out);
   }
   return out;
