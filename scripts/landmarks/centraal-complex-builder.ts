@@ -72,7 +72,7 @@ export function buildCentraalComplex(b:BuildingTools){
     if(part.glass){const u=columns-1-s.i,glyph=Math.floor((u-3)/6),col=(u-3)%6,row=8-j,word='AMSTERDAM';
      return glyph>=0&&glyph<word.length&&col>=0&&col<5&&row>=0&&row<7&&letters[word[glyph]][row][col]==='1'?((s.i+j)%3===0?'gold':'red'):'glass';
     }
-    return j===7||j===8?'glass':'slate';
+    return j===7||j===8?'glass':'bronze';
    };
    // Neighbouring strips of one colour in one segment are coplanar: one panel (keeps the GLB under its 500 kB budget).
    for(let k=0;k<strips.length;){
@@ -80,7 +80,7 @@ export function buildCentraalComplex(b:BuildingTools){
     panel(strips[k].xa,z0+span*j/segments,strips[e].xb,z0+span*(j+1)/segments,c,0,roofSink);k=e+1;
    }
   }
-  slab(roofSink,.14,'slate');
+  slab(roofSink,.14,'bronze');
   // Open supports. No filled ground-level station or bike-path slab.
   for(let i=0;i<8;i++)for(const z of [z0+.4,z1-.4]){
    const x=x0+4+(x1-x0-8)*i/7;
@@ -89,7 +89,7 @@ export function buildCentraalComplex(b:BuildingTools){
   }
   if(part.glass){
    // Raised bus road, shaped to the current IJ canopy outline. Clear below.
-   for(const poly of part.localPolygons){const s=new T.Shape(poly[0].map(p=>new T.Vector2(p[0],p[1])));const g=new T.ExtrudeGeometry(s,{depth:.35,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,6.5,0);add(g,'slate');}
+   for(const poly of part.localPolygons){const s=new T.Shape(poly[0].map(p=>new T.Vector2(p[0],p[1])));const g=new T.ExtrudeGeometry(s,{depth:.35,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,6.5,0);add(g,'bronze');}
    for(let i=0;i<8;i++){const x=x0+12+(x1-x0-24)*i/7;box(x,0,(z0+z1)/2,.65,6.15,.65,'stone');}
   }
  }

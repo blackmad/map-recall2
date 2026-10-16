@@ -1,0 +1,1165 @@
+{
+ "schemaVersion": 1,
+ "id": "centraal-station",
+ "pand": "0363100012185598",
+ "brief": "scripts/landmarks/centraal-station-brief.md",
+ "signature": [
+  "clock-dial",
+  "wind-dial",
+  "tower-e-roof",
+  "great-windows",
+  "central-gable-arms",
+  "tower-e-relief",
+  "tower-w-relief",
+  "red-canopy",
+  "risalit-gables",
+  "arms-frieze"
+ ],
+ "walls": [
+  {
+   "tag": "w01-121",
+   "bearing": 121,
+   "lengthM": 32,
+   "centre": [
+    4.9026237,
+    52.3784736
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_000549",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "ij-glass-vault-end",
+     "kind": "other",
+     "where": "glazed end of the IJ-side bus station roof",
+     "approxSizeM": [
+      30,
+      22
+     ],
+     "plan": "modelled",
+     "how": "centraal-complex-builder.ts (IJ canopy, unchanged)",
+     "seenIn": "TMX7316010203-002532_pano_0000_000549"
+    }
+   ]
+  },
+  {
+   "tag": "w02-31",
+   "bearing": 31,
+   "lengthM": 29.9,
+   "centre": [
+    4.9028945,
+    52.3786161
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002032_pano_0000_000906",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [],
+   "note": "IJ-side bus station / shed walls, not the Cuypers building; nothing notable for this inventory"
+  },
+  {
+   "tag": "w03-210",
+   "bearing": 210,
+   "lengthM": 24.3,
+   "centre": [
+    4.902394,
+    52.3775986
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track24_Sphere_00005",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "ew-windows-208",
+     "kind": "window-shape",
+     "where": "east wing: two rows of cream-framed cross windows over a stone ground storey",
+     "approxSizeM": [
+      1.55,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "centraal-cuypers-builder.ts east wing: holes, white reveals, white mullion/transom and 2x3 glazing bars, stone sills",
+     "seenIn": "b_20250108_1349_Track24_Sphere_00005"
+    },
+    {
+     "id": "ew-pilasters-208",
+     "kind": "other",
+     "where": "brick pilaster strips between every bay, stone piers in the ground storey",
+     "approxSizeM": [
+      0.45,
+      10
+     ],
+     "plan": "modelled",
+     "how": "proud brick / stone slabs",
+     "seenIn": "b_20250108_1349_Track24_Sphere_00005"
+    },
+    {
+     "id": "ew-red-doors-208",
+     "kind": "other",
+     "where": "red doors alternating with windows in the stone ground storey",
+     "approxSizeM": [
+      1.35,
+      3.0
+     ],
+     "plan": "modelled",
+     "how": "recessed red door panels",
+     "seenIn": "b_20250108_1349_Track24_Sphere_00005"
+    }
+   ]
+  },
+  {
+   "tag": "w04-212",
+   "bearing": 212,
+   "lengthM": 24.3,
+   "centre": [
+    4.9018455,
+    52.3777985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002857_pano_0000_000023",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "ew-windows-165",
+     "kind": "window-shape",
+     "where": "east wing: cream-framed windows (blinds drawn) over red doors",
+     "approxSizeM": [
+      1.55,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "as ew-windows-208",
+     "seenIn": "TMX7316010203-002857_pano_0000_000023"
+    },
+    {
+     "id": "ew-cornice-165",
+     "kind": "other",
+     "where": "stone cornice and slate roof with chimneys",
+     "approxSizeM": [
+      118,
+      0.5
+     ],
+     "plan": "modelled",
+     "how": "cornice slab, gabled roof 15.2 -> 21.0 m hipped at the east end, seven brick chimneys with stone caps",
+     "seenIn": "TMX7316010203-002857_pano_0000_000023"
+    }
+   ]
+  },
+  {
+   "tag": "w05-121",
+   "bearing": 121,
+   "lengthM": 23,
+   "centre": [
+    4.9030087,
+    52.3784566
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1041_Track08_Sphere_00016",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [],
+   "note": "IJ-side bus station / shed walls, not the Cuypers building; nothing notable for this inventory"
+  },
+  {
+   "tag": "w06-212",
+   "bearing": 212,
+   "lengthM": 21.3,
+   "centre": [
+    4.902788,
+    52.3784175
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "IJ-side bus station / shed walls, not the Cuypers building; nothing notable for this inventory"
+  },
+  {
+   "tag": "w07-211",
+   "bearing": 211,
+   "lengthM": 19.6,
+   "centre": [
+    4.901565,
+    52.377896
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002354_pano_0000_000016",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "ew-tall-gable-143",
+     "kind": "other",
+     "where": "tall pointed gable at 139.7-145.7 with three lights and a top light, chimneys either side",
+     "approxSizeM": [
+      6,
+      9
+     ],
+     "plan": "modelled",
+     "how": "brick gable panel 15.2 -> 24.5 m, stone copings and apex block, three windows + a round-headed top light, cross roof, two flanking chimneys",
+     "seenIn": "TMX7316010203-002354_pano_0000_000016"
+    }
+   ]
+  },
+  {
+   "tag": "w08-211",
+   "bearing": 211,
+   "lengthM": 19.2,
+   "centre": [
+    4.9021174,
+    52.3776957
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002354_pano_0000_000007",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "ew-three-gables",
+     "kind": "other",
+     "where": "three pointed gables over the four-storey middle bays (178-196)",
+     "approxSizeM": [
+      18,
+      6
+     ],
+     "plan": "modelled",
+     "how": "three gable panels to 21.4 m with copings and paired windows, cross roofs",
+     "seenIn": "TMX7316010203-001668_pano_0000_001165 (2020)"
+    }
+   ]
+  },
+  {
+   "tag": "w09-121",
+   "bearing": 121,
+   "lengthM": 19,
+   "centre": [
+    4.9029879,
+    52.3775453
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000125",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "ew-east-end",
+     "kind": "other",
+     "where": "east end of the east wing behind a stone retaining wall and cycle racks",
+     "approxSizeM": [
+      16,
+      15
+     ],
+     "plan": "simplified",
+     "how": "brick end wall with two rows of windows; the hipped roof end",
+     "seenIn": "TMX7316010203-001055_pano_0000_000125"
+    }
+   ]
+  },
+  {
+   "tag": "w10-211",
+   "bearing": 211,
+   "lengthM": 18.7,
+   "centre": [
+    4.9026621,
+    52.3774964
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_04-36-25_01464",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "ew-scaffold-230",
+     "kind": "other",
+     "where": "wing under scaffolding (2025)",
+     "approxSizeM": [
+      19,
+      20
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "scaffolding in 2025; drawn like the photographed 2021 east wing (tall gable as at 143)"
+     },
+     "seenIn": "recording_2025-07-03_04-36-25_01464"
+    }
+   ]
+  },
+  {
+   "tag": "w11-211",
+   "bearing": 211,
+   "lengthM": 14.4,
+   "centre": [
+    4.8985613,
+    52.3790248
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02978",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ww-window-groups",
+     "kind": "window-shape",
+     "where": "west low wing: groups of three small segment-headed lights in stone surrounds",
+     "approxSizeM": [
+      3.5,
+      2.05
+     ],
+     "plan": "modelled",
+     "how": "centraal-cuypers-builder.ts west low wing: grouped openings with surrounds and mullions",
+     "seenIn": "recording_2025-06-16_06-42-40_02978"
+    },
+    {
+     "id": "ww-zinc-canopy",
+     "kind": "canopy",
+     "where": "long zinc canopy on slender posts along the ground storey",
+     "approxSizeM": [
+      60,
+      5.5
+     ],
+     "plan": "modelled",
+     "how": "sloping canopy prism 4.95 -> 4.1 m, 5.5 m deep, posts every 6 m, red-brown fascia",
+     "seenIn": "TMX7316010203-001643_pano_0000_000078 (2020)"
+    },
+    {
+     "id": "ww-mansard-dormers",
+     "kind": "other",
+     "where": "slate mansard with pointed dormers",
+     "approxSizeM": [
+      60,
+      4.8
+     ],
+     "plan": "modelled",
+     "how": "mansard 8.1 -> 12.9 m, a dormer per window group",
+     "seenIn": "recording_2025-06-16_06-42-40_02978"
+    },
+    {
+     "id": "ww-turret",
+     "kind": "tower",
+     "where": "small square turret with slate spire and finial",
+     "approxSizeM": [
+      2.6,
+      10
+     ],
+     "plan": "modelled",
+     "how": "brick stage to 13.6, slate pyramid to 17.6, gilt finial 18.3",
+     "seenIn": "TMX7316010203-001643_pano_0000_000078 (2020)"
+    }
+   ]
+  },
+  {
+   "tag": "w12-301",
+   "bearing": 301,
+   "lengthM": 13.2,
+   "centre": [
+    4.8983434,
+    52.3792645
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "west end of the low west wing (no panorama): plain brick end wall with one window"
+  },
+  {
+   "tag": "w13-301",
+   "bearing": 301,
+   "lengthM": 13.1,
+   "centre": [
+    4.9027037,
+    52.3785178
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0000_000705",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [],
+   "note": "IJ-side bus station / shed walls, not the Cuypers building; nothing notable for this inventory"
+  },
+  {
+   "tag": "w14-121",
+   "bearing": 121,
+   "lengthM": 13,
+   "centre": [
+    4.9013087,
+    52.3780123
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_00012",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "ep-east-end",
+     "kind": "other",
+     "where": "east end wall of the east pavilion over the notch to the east wing (scaffolded 2025)",
+     "approxSizeM": [
+      13,
+      17.5
+     ],
+     "plan": "simplified",
+     "how": "brick end wall with three cross windows; carved details not drawn (under scaffolding)",
+     "seenIn": "recording_2025-06-16_08-26-12_00012"
+    }
+   ]
+  },
+  {
+   "tag": "w15-211",
+   "bearing": 211,
+   "lengthM": 12.1,
+   "centre": [
+    4.9009518,
+    52.37809
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002354_pano_0000_000026",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-e-cross-windows",
+     "kind": "window-shape",
+     "where": "two storeys of tall segment-headed two-light windows with stone transom, stone surround and sill",
+     "approxSizeM": [
+      1.95,
+      4.6
+     ],
+     "plan": "modelled",
+     "how": "centraal-cuypers-builder.ts wingRun: holes in the brick wall, stone surround ring in the wall plane, 22 cm reveals, recessed glass, stone mullion + transom, leaded panes as glazing bars",
+     "seenIn": "TMX7316010203-002354_pano_0000_000026"
+    },
+    {
+     "id": "wing-e-banding",
+     "kind": "other",
+     "where": "white stone courses at plinth, sills, imposts and heads across the piers (Cuypers banding)",
+     "approxSizeM": [
+      48,
+      0.2
+     ],
+     "plan": "modelled",
+     "how": "proud stone slabs at measured heights, the impost/head bands broken by the openings (band())",
+     "seenIn": "TMX7316010203-002354_pano_0000_000026"
+    },
+    {
+     "id": "wing-e-tympana",
+     "kind": "relief",
+     "where": "ornamented tile fields under stone relieving arches over every upper window",
+     "approxSizeM": [
+      2.0,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "ochre tile slab under a two-piece stone coping arch; the tile pattern itself is a flat colour",
+     "seenIn": "TMX7316010203-002354_pano_0000_000026"
+    },
+    {
+     "id": "wing-e-anchors",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron cross wall anchors between the windows at both floor levels",
+     "approxSizeM": [
+      0.5,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "dark cross strips 5 cm proud",
+     "seenIn": "TMX7316010203-002354_pano_0000_000026"
+    },
+    {
+     "id": "wing-e-frieze",
+     "kind": "other",
+     "where": "coloured tile frieze under the cornice",
+     "approxSizeM": [
+      48,
+      0.65
+     ],
+     "plan": "simplified",
+     "how": "one ochre band; the tile pattern is not drawn",
+     "seenIn": "TMX7316010203-002354_pano_0000_000026"
+    },
+    {
+     "id": "wing-e-mansard",
+     "kind": "other",
+     "where": "slate mansard with small pointed dormers and iron ridge cresting",
+     "approxSizeM": [
+      48,
+      5
+     ],
+     "plan": "modelled",
+     "how": "mansard prism 17.5 -> 22.4 m, dormers (red cheeks, dark light, pointed slate hood, finial) every second bay, spiked cresting strip",
+     "seenIn": "TMX7316010203-002354_pano_0000_000026"
+    },
+    {
+     "id": "red-canopy",
+     "kind": "canopy",
+     "where": "red cast-iron marquee along the east main wing with crowned cartouches on its fascia",
+     "approxSizeM": [
+      52,
+      5.2
+     ],
+     "plan": "modelled",
+     "how": "sloping canopy prism, red fascia, dark posts and brackets every 6.5 m, three white cartouches with gilt crowns; extended to the royal block (photo 2017)",
+     "seenIn": "TMX7316010203-000227_pano_0000_001006 (2017, extends to the royal block)"
+    }
+   ]
+  },
+  {
+   "tag": "w16-211",
+   "bearing": 211,
+   "lengthM": 12,
+   "centre": [
+    4.9007153,
+    52.3781766
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002354_pano_0000_000030",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-e-78",
+     "kind": "window-shape",
+     "where": "east main wing bays (as w15)",
+     "approxSizeM": [
+      12,
+      17
+     ],
+     "plan": "modelled",
+     "how": "wingRun",
+     "seenIn": "TMX7316010203-002354_pano_0000_000030"
+    }
+   ]
+  },
+  {
+   "tag": "w17-211",
+   "bearing": 211,
+   "lengthM": 11.9,
+   "centre": [
+    4.8995303,
+    52.3786076
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02816",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-w-cross-windows",
+     "kind": "window-shape",
+     "where": "two storeys of tall segment-headed two-light windows with stone transom, stone surround and sill",
+     "approxSizeM": [
+      1.95,
+      4.6
+     ],
+     "plan": "modelled",
+     "how": "centraal-cuypers-builder.ts wingRun: holes in the brick wall, stone surround ring in the wall plane, 22 cm reveals, recessed glass, stone mullion + transom, leaded panes as glazing bars",
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    },
+    {
+     "id": "wing-w-banding",
+     "kind": "other",
+     "where": "white stone courses at plinth, sills, imposts and heads across the piers (Cuypers banding)",
+     "approxSizeM": [
+      48,
+      0.2
+     ],
+     "plan": "modelled",
+     "how": "proud stone slabs at measured heights, the impost/head bands broken by the openings (band())",
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    },
+    {
+     "id": "wing-w-tympana",
+     "kind": "relief",
+     "where": "ornamented tile fields under stone relieving arches over every upper window",
+     "approxSizeM": [
+      2.0,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "ochre tile slab under a two-piece stone coping arch; the tile pattern itself is a flat colour",
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    },
+    {
+     "id": "wing-w-anchors",
+     "kind": "balcony-ironwork",
+     "where": "wrought-iron cross wall anchors between the windows at both floor levels",
+     "approxSizeM": [
+      0.5,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "dark cross strips 5 cm proud",
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    },
+    {
+     "id": "wing-w-frieze",
+     "kind": "other",
+     "where": "coloured tile frieze under the cornice",
+     "approxSizeM": [
+      48,
+      0.65
+     ],
+     "plan": "simplified",
+     "how": "one ochre band; the tile pattern is not drawn",
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    },
+    {
+     "id": "wing-w-mansard",
+     "kind": "other",
+     "where": "slate mansard with small pointed dormers and iron ridge cresting",
+     "approxSizeM": [
+      48,
+      5
+     ],
+     "plan": "modelled",
+     "how": "mansard prism 17.5 -> 22.4 m, dormers (red cheeks, dark light, pointed slate hood, finial) every second bay, spiked cresting strip",
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    },
+    {
+     "id": "metro-sign",
+     "kind": "sign",
+     "where": "metro \"M\" totem and NS information board at the forecourt",
+     "approxSizeM": [
+      1.5,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not the building"
+     },
+     "seenIn": "recording_2025-06-16_06-42-40_02816"
+    }
+   ]
+  },
+  {
+   "tag": "w18-211",
+   "bearing": 211,
+   "lengthM": 11.9,
+   "centre": [
+    4.8997675,
+    52.3785215
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_001389",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-w-3",
+     "kind": "window-shape",
+     "where": "west main wing bays next to the west tower",
+     "approxSizeM": [
+      12,
+      17
+     ],
+     "plan": "modelled",
+     "how": "wingRun",
+     "seenIn": "TMX7316010203-002532_pano_0000_001389"
+    }
+   ]
+  },
+  {
+   "tag": "w19-211",
+   "bearing": 211,
+   "lengthM": 11.9,
+   "centre": [
+    4.9004787,
+    52.378263
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000168",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-e-59",
+     "kind": "window-shape",
+     "where": "east main wing bays next to the east tower, red canopy",
+     "approxSizeM": [
+      12,
+      17
+     ],
+     "plan": "modelled",
+     "how": "wingRun + red-canopy",
+     "seenIn": "TMX7316010203-001055_pano_0000_000168"
+    }
+   ]
+  },
+  {
+   "tag": "w20-211",
+   "bearing": 211,
+   "lengthM": 9.3,
+   "centre": [
+    4.8990894,
+    52.3787587
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track28_Sphere_00163",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "wp-three-rows",
+     "kind": "window-shape",
+     "where": "west pavilion: three rows of stone-framed windows, quoins, cornice",
+     "approxSizeM": [
+      19,
+      18
+     ],
+     "plan": "modelled",
+     "how": "west pavilion block in the builder",
+     "seenIn": "TMX7316010203-001643_pano_0000_000089 (2020)"
+    },
+    {
+     "id": "wp-gilt-panels",
+     "kind": "relief",
+     "where": "gilt mosaic panels in the pavilion front",
+     "approxSizeM": [
+      1.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "four flat gold panels; the mosaic pictures are not drawn",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00163"
+    },
+    {
+     "id": "wp-gable",
+     "kind": "other",
+     "where": "gabled west bay with a pinnacle (apex 26 m)",
+     "approxSizeM": [
+      4.9,
+      7.7
+     ],
+     "plan": "modelled",
+     "how": "gable panel, copings, pinnacle, cross roof",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00163"
+    },
+    {
+     "id": "wp-tower-bay",
+     "kind": "tower",
+     "where": "tower bay with three arched lights, pyramid roof and gilt finial (29 m)",
+     "approxSizeM": [
+      5.6,
+      11
+     ],
+     "plan": "modelled",
+     "how": "tower stage, slate pyramid 21 -> 26.3 m, lantern and gilt finial",
+     "seenIn": "TMX7316010203-001643_pano_0000_000089 (2020)"
+    }
+   ]
+  },
+  {
+   "tag": "w21-210",
+   "bearing": 210,
+   "lengthM": 8.5,
+   "centre": [
+    4.9027965,
+    52.3785788
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "IJ-side bus station / shed walls, not the Cuypers building; nothing notable for this inventory"
+  },
+  {
+   "tag": "w22-301",
+   "bearing": 301,
+   "lengthM": 8.2,
+   "centre": [
+    4.901399,
+    52.3780043
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000227_pano_0000_001006",
+   "capturedAt": "2017-03-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "rw-west-portal",
+     "kind": "other",
+     "where": "royal waiting room block, west side: round-headed portal with timber doors in rusticated stone",
+     "approxSizeM": [
+      3.0,
+      4.6
+     ],
+     "plan": "modelled",
+     "how": "rusticated courses, stone ring, recessed red-brown door leaf, stone piers",
+     "seenIn": "TMX7316010203-000227_pano_0000_001006"
+    },
+    {
+     "id": "rw-west-frieze",
+     "kind": "relief",
+     "where": "carved figure frieze above the west portal",
+     "approxSizeM": [
+      5.6,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "stone panel with six low-relief figure silhouettes",
+     "seenIn": "TMX7316010203-000227_pano_0000_001006"
+    },
+    {
+     "id": "rw-portal-front",
+     "kind": "colonnade",
+     "where": "columned front portal with the arms relief above (front)",
+     "approxSizeM": [
+      3.4,
+      7
+     ],
+     "plan": "simplified",
+     "how": "stone column slabs, lintel, relief panel with gold shield and two figures",
+     "seenIn": "TMX7316010203-000227_pano_0000_001006"
+    }
+   ]
+  },
+  {
+   "tag": "w23-211",
+   "bearing": 211,
+   "lengthM": 7.9,
+   "centre": [
+    4.8988972,
+    52.3789026
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000198",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "ww-canopy-69",
+     "kind": "canopy",
+     "where": "zinc canopy and window groups (as w11)",
+     "approxSizeM": [
+      40,
+      5
+     ],
+     "plan": "modelled",
+     "how": "as ww-zinc-canopy",
+     "seenIn": "TMX7316010203-001055_pano_0000_000198"
+    }
+   ]
+  },
+  {
+   "tag": "w24-211",
+   "bearing": 211,
+   "lengthM": 7.4,
+   "centre": [
+    4.9002764,
+    52.3782152
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001643_pano_0000_000034",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-e-relief",
+     "kind": "relief",
+     "where": "east tower: three gilt bust tondi, figure frieze on gold, three roundels",
+     "approxSizeM": [
+      6.4,
+      6.2
+     ],
+     "plan": "simplified",
+     "how": "stone relief panel: proud tondi (gold field, stone bust drum), frieze of six low-relief figures with a gilt upper ground, three stone roundels with figures; carving reduced to silhouettes",
+     "seenIn": "TMX7316010203-001643_pano_0000_000034"
+    },
+    {
+     "id": "wind-dial",
+     "kind": "clock",
+     "where": "east tower: the wind dial (compass rose, red ring, gilt pointer) in a stone frame",
+     "approxSizeM": [
+      3.3,
+      3.5
+     ],
+     "plan": "modelled",
+     "how": "stone dial drum, gilt rim, red ring, 16 dark rays, gilt pointer, on the front and the east side",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001643_pano_0000_000034"
+    },
+    {
+     "id": "tower-e-roof",
+     "kind": "tower",
+     "where": "slate spire roof with dormer, corner pinnacles, lantern with gallery, tall finial (41.8 m)",
+     "approxSizeM": [
+      8,
+      14.4
+     ],
+     "plan": "modelled",
+     "how": "frustum 27.4 -> 33.4, four stone pinnacles, dormer, octagonal lantern with cresting, red-brown spire stages with gilt bands and tip",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001643_pano_0000_000034"
+    },
+    {
+     "id": "tower-e-arches",
+     "kind": "window-shape",
+     "where": "arched storey: centre cross window, two blind arches with gilt mosaic tympana; arcade storey of five small arches",
+     "approxSizeM": [
+      7.4,
+      6
+     ],
+     "plan": "modelled",
+     "how": "round-headed openings, gilt tympanum fills, arcade of dark recessed arches",
+     "seenIn": "TMX7316010203-001643_pano_0000_000034"
+    },
+    {
+     "id": "central-gable-arms",
+     "kind": "crest",
+     "where": "central gable with the gilt state arms (two lions, crowned shield) in a round niche",
+     "approxSizeM": [
+      3.9,
+      3.9
+     ],
+     "plan": "simplified",
+     "how": "stone niche, blue shield with gold field, two gold lion silhouettes, gold crown, all as raised panels",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001643_pano_0000_000034"
+    },
+    {
+     "id": "arms-frieze",
+     "kind": "crest",
+     "where": "frieze of twelve coats of arms between the towers",
+     "approxSizeM": [
+      30,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "stone band with twelve shield panels in red/blue/gold/white with a fess strip; charges not drawn",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001643_pano_0000_000034"
+    }
+   ]
+  },
+  {
+   "tag": "w25-211",
+   "bearing": 211,
+   "lengthM": 7.4,
+   "centre": [
+    4.8997955,
+    52.3783903
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0000_000803",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-w-relief",
+     "kind": "relief",
+     "where": "west tower: relief storey as the east tower",
+     "approxSizeM": [
+      6.4,
+      6.2
+     ],
+     "plan": "simplified",
+     "how": "as tower-e-relief",
+     "seenIn": "TMX7316010203-001178_pano_0000_000803"
+    },
+    {
+     "id": "clock-dial",
+     "kind": "clock",
+     "where": "west tower: red clock dial with twelve grey-green hour plaques and gilt hands, stone frame",
+     "approxSizeM": [
+      3.3,
+      3.5
+     ],
+     "plan": "modelled",
+     "how": "red dial drum, gilt rim, twelve plaques, gilt hands at ten past ten; on the front and the west side",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001178_pano_0000_000803"
+    },
+    {
+     "id": "great-windows",
+     "kind": "window-shape",
+     "where": "central block: three tall round-arched windows with carved tympana, five first-floor cross windows",
+     "approxSizeM": [
+      3.3,
+      7.5
+     ],
+     "plan": "modelled",
+     "how": "glazing to the springing with 3 lights + transom + panes, sandstone tympanum with three figure silhouettes, stone surround ring",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001178_pano_0000_000803"
+    },
+    {
+     "id": "balustrade",
+     "kind": "other",
+     "where": "cornice and balustrade, pinnacles at the corners",
+     "approxSizeM": [
+      30.5,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "stone rail and base slabs, balusters every 42 cm on a dark backing, corner pinnacles",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001178_pano_0000_000803"
+    },
+    {
+     "id": "central-finial",
+     "kind": "other",
+     "where": "gable pinnacles, pedestal, finial and wind-vane flag (35.6 m)",
+     "approxSizeM": [
+      1,
+      5
+     ],
+     "plan": "modelled",
+     "how": "stone pinnacles, pedestal, spire, gilt flag",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001178_pano_0000_000803"
+    },
+    {
+     "id": "station-sign",
+     "kind": "lettering",
+     "where": "AMSTERDAM CENTRAAL station sign over the entrances",
+     "approxSizeM": [
+      10.5,
+      0.7
+     ],
+     "plan": "simplified",
+     "how": "grey sign band with raised white capitals (stroke font); the NS logo is not drawn",
+     "seenIn": "TMX7316010203-002532_pano_0000_001491 (2022, 47 m out on the axis) and TMX7316010203-001178_pano_0000_000803"
+    }
+   ]
+  },
+  {
+   "tag": "w26-121",
+   "bearing": 121,
+   "lengthM": 6.9,
+   "centre": [
+    4.9003493,
+    52.3782249
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001643_pano_0000_000029",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-e-side",
+     "kind": "relief",
+     "where": "east tower east face: relief storey, arched storey, wind dial",
+     "approxSizeM": [
+      6.7,
+      27
+     ],
+     "plan": "modelled",
+     "how": "tower(): the outer side repeats the front programme as photographed",
+     "seenIn": "TMX7316010203-001643_pano_0000_000029"
+    }
+   ]
+  },
+  {
+   "tag": "w27-301",
+   "bearing": 301,
+   "lengthM": 6.8,
+   "centre": [
+    4.8997742,
+    52.3784337
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001643_pano_0000_000048",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-w-side",
+     "kind": "clock",
+     "where": "west tower west face: relief storey, arched storey, clock dial",
+     "approxSizeM": [
+      6.7,
+      27
+     ],
+     "plan": "modelled",
+     "how": "tower(): outer side as the front",
+     "seenIn": "TMX7316010203-001643_pano_0000_000048"
+    }
+   ]
+  },
+  {
+   "tag": "w28-211",
+   "bearing": 211,
+   "lengthM": 6.8,
+   "centre": [
+    4.9005933,
+    52.3782163
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001643_pano_0000_000030",
+   "capturedAt": "2020-02-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "risalit-gables",
+     "kind": "other",
+     "where": "gabled risalits: two windows a storey, quoins, dormer gable with oculi, copings and pinnacles (24.4 m, finial 26.6)",
+     "approxSizeM": [
+      6.8,
+      26.6
+     ],
+     "plan": "modelled",
+     "how": "risalit loop: projecting front, gable panel with a round-headed two-light window, two stone oculi with ochre centres, copings, shoulder and apex pinnacles, cross roof",
+     "seenIn": "TMX7316010203-001643_pano_0000_000030"
+    }
+   ]
+  },
+  {
+   "tag": "w29-121",
+   "bearing": 121,
+   "lengthM": 6.8,
+   "centre": [
+    4.9028918,
+    52.3774456
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1041_Track08_Sphere_00049",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [],
+   "note": "east end of the east wing (2025, crane in front): brick end wall with windows, see w09-121"
+  },
+  {
+   "tag": "w30-211",
+   "bearing": 211,
+   "lengthM": 6.7,
+   "centre": [
+    4.90083,
+    52.3781302
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002354_pano_0000_000028",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "risalit-87",
+     "kind": "other",
+     "where": "gabled risalit at 87 m (as w28)",
+     "approxSizeM": [
+      6.8,
+      26.6
+     ],
+     "plan": "modelled",
+     "how": "risalit loop",
+     "seenIn": "TMX7316010203-002354_pano_0000_000028"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand outline (PDOK WFS)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "BAG pand outline (PDOK WFS)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  }
+ ]
+}
