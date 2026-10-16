@@ -17,7 +17,7 @@
  "match": {
   "years": [
    1912,
-   1918
+   1917
   ],
   "eavesM": [
    11.8,
@@ -39,7 +39,7 @@
   "crowns": {
    "point-gable": {
     "riseM": [
-     2.0,
+     1.9,
      5.0
     ],
     "topWidthM": [
@@ -48,7 +48,7 @@
     ],
     "alt": {
      "widthM": [
-      2.2,
+      2.1,
       4.0
      ],
      "topWidthM": [
@@ -72,12 +72,13 @@
     ]
    }
   },
-  "note": "shares year and width with the tile-bay rows (Hasebroekstraat 56-70); the tile-bay type needs its one-sided white bay stack, this one does not, and the challengers settle the rest; 2026-10-16 (2): the white bay test is the exposure-normalised bay width (blockFace/stripStructure.ts, plain window columns <= 1.3 m), not the accent share; balcony fronts (Jan Hanzenstraat 49-51, Ten Katestraat 29, Bellamystraat 18-20) veto it; a gable over the pair reads 2.4-2.7 m wide with its shoulder taken for the eaves (Hasebroekstraat 69, Van Effenstraat 9: rise 1.6-1.8 m), hence the point-gable alternative",
+  "note": "shares year and width with the tile-bay rows (Hasebroekstraat 56-70); the tile-bay type needs its one-sided white bay stack, this one does not, and the challengers settle the rest; 2026-10-16 (2): the white bay test is the exposure-normalised bay width (blockFace/stripStructure.ts, plain window columns <= 1.3 m), not the accent share; balcony fronts (Jan Hanzenstraat 49-51, Ten Katestraat 29, Bellamystraat 18-20) veto it; a gable over the pair reads 2.4-2.7 m wide with its shoulder taken for the eaves (Hasebroekstraat 69, Van Effenstraat 9 and 10: 2.15-2.67 m wide, rise 1.6-1.8 m), hence the point-gable alternative; 2026-10-16 (2): 1911-1918 only (yearSlack 1): Bellamystraat 117-119 (1919) are Amsterdam School fronts with a raised brick crown and a stacked balconette axis that the green-tile type drew (review of the 2026-10-16 run); the point gable of Hasebroekstraat 109A rises 1.97 m",
   "bayWidthM": [
    0,
    1.4
   ],
-  "balconies": false
+  "balconies": false,
+  "yearSlack": 1
  },
  "body": {
   "storeys": 4,

@@ -214,6 +214,9 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const forced = arg('force-type');
   if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: [0, 99], ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
   const typeIds = types.map(t => t.id);
+  // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
+  const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
+  const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
@@ -227,7 +230,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const tf = performance.now();
     const {discovery, strip, uses, evs} = await faceEvidence(f.id);
     // Pass 1: match. Pass 2+: compile the runs, hold the pands that fail the likeness gate, repeat until stable.
-    const decisions: Decision[] = evs.map(ev => decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date));
+    const decisions: Decision[] = evs.map(ev => {
+      const hold = reviewHolds.get(ev.pandId);
+      if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
+      return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
+    });
     fillPairs(decisions, types);
     const challengers = new Map<string, Record<string, number | null>>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
@@ -337,7 +344,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     for (const p of out.pands as any[]) console.log(`  ${p.pandId.slice(-6)} ${String(p.address).padEnd(26)} ${p.status === 'placed' ? `${p.type} ${p.score} | NCC ${p.likeness?.ncc ?? '-'} (raw ${p.likeness?.nccRaw ?? '-'}) ${p.notes?.join('; ') ?? ''}` : `HELD ${p.stage}: ${p.reason}`}`.slice(0, 260));
     summary.push({face: f.id, street: f.street, pands: out.pands.length, placed, held: out.pands.length - placed, runs: out.runs, seconds: out.seconds,
       byType: Object.fromEntries([...new Set(out.pands.filter((p: any) => p.type).map((p: any) => p.type))].map(t => [t, out.pands.filter((p: any) => p.type === t).length])),
-      holds: Object.fromEntries(['evidence', 'match', 'likeness', 'run'].map(s => [s, out.pands.filter((p: any) => p.stage === s).length]))});
+      holds: Object.fromEntries(['evidence', 'match', 'likeness', 'run', 'review'].map(s => [s, out.pands.filter((p: any) => p.stage === s).length]))});
   }
   const file = path.join('scripts/block-face/buurten', `${buurt}-placement.json`);
   const prev = existsSync(file) ? await readJson(file) : {faces: []};
