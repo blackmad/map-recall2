@@ -20,6 +20,7 @@ import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, 
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
+import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
@@ -32,7 +33,7 @@ const KX = 111_320 * Math.cos(GAME_ORIGIN.lat * Math.PI / 180), KY = 110_540;
 export const toLocal = (lng: number, lat: number): Vec2 => [(lng - GAME_ORIGIN.lng) * KX, (lat - GAME_ORIGIN.lat) * KY];
 export const fromLocal = (x: number, y: number): Vec2 => [GAME_ORIGIN.lng + x / KX, GAME_ORIGIN.lat + y / KY];
 
-export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', water: 'elevation-v1', parks: 'parks-v1' } as const;
+export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', water: 'elevation-v1', parks: 'parks-v1', courtyards: 'courtyards-v1' } as const;
 /** Water surface, scene z (canal level −0.40 NAP below the +1.37 NAP datum). */
 export const WATER_Z = -1.77;
 /** Relief loaded this far around a cell before it is built (decks and streets reach past its edge). */
@@ -54,6 +55,8 @@ export class GroundStore {
   osmCells = new Set<string>();
   /** Cells of the parks-v1 extract (empty when parks are off or the extract is missing). */
   parkCells = new Set<string>();
+  /** Cells of the courtyards-v1 extract (BGT block interiors, courtyards.ts; empty when off or missing). */
+  courtyardCells = new Set<string>();
   field!: GroundField;
   surface!: GroundSurface;
   private bridges: BridgeExtract | null = null;
@@ -62,6 +65,7 @@ export class GroundStore {
   private readonly water = new Map<string, Promise<WaterGeometry | null>>();
   private readonly osm = new Map<string, Promise<OsmGroundExtract | null>>();
   private readonly parks = new Map<string, Promise<ParksCell | null>>();
+  private readonly courtyards = new Map<string, Promise<CourtyardsCell | null>>();
   /** Polder water levels (null: the extract has none, every polygon sits at WATER_Z). */
   waterLevels: WaterLevels | null = null;
   /** Resident cells' water, for `waterZAt`. */
@@ -71,11 +75,12 @@ export class GroundStore {
   private readonly flatByCell = new Map<string, Vec2[][]>();
   private measuredByCell = new Map<string, BridgeExtract['measured']>();
   private fallbackByCell = new Map<string, BridgeExtract['fallback']>();
-  readonly loadedBytes = { relief: 0, water: 0, osm: 0, parks: 0 };
+  readonly loadedBytes = { relief: 0, water: 0, osm: 0, parks: 0, courtyards: 0 };
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
+  /** `courtyards`: load the courtyards-v1 extract (BGT courtyard and back-garden cover); off for the regression's before. */
   /** `moorings`: open the water under houseboats the generalised water cuts (moorings.ts); off for the regression's before. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -96,6 +101,8 @@ export class GroundStore {
     const boats = this.options.moorings === false ? null : await this.json<{ boats: { id: string; ring: [number, number][] }[] }>('houseboats.json').catch(() => null);
     const parks = this.options.parks === false ? null : await this.json<ParksManifest>(`${EXTRACTS.parks}/cells.json`).catch(() => null);
     this.parkCells = new Set(parks?.version === 1 ? parks.cells : []);
+    const courtyards = this.options.courtyards === false ? null : await this.json<CourtyardsManifest>(`${EXTRACTS.courtyards}/cells.json`).catch(() => null);
+    this.courtyardCells = new Set(courtyards?.version === 1 ? courtyards.cells : []);
     this.waterLevels = levels?.version === 1 ? levels : null;
     this.relief = relief;
     this.elevation = elevation;
@@ -395,9 +402,21 @@ export class GroundStore {
     return p;
   }
 
+  /** A cell's BGT courtyards (null: none, or courtyards off). */
+  courtyardCell(key: string): Promise<CourtyardsCell | null> {
+    let p = this.courtyards.get(key);
+    if (!p) {
+      p = this.courtyardCells.has(key)
+        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.courtyards += bytes.byteLength; return JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell; }).catch(() => null)
+        : Promise.resolve(null);
+      this.courtyards.set(key, p);
+    }
+    return p;
+  }
+
   /** Forget cached water/OSM data for cells far away (relief is evicted separately). */
   forgetCells(keep: ReadonlySet<string>): void {
-    for (const map of [this.water, this.osm, this.parks, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
+    for (const map of [this.water, this.osm, this.parks, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
   }
 
   /**
@@ -407,12 +426,13 @@ export class GroundStore {
   async cellInput(key: string, lod: 0 | 1): Promise<CellInput> {
     await this.prepareCell(key);
     const around = GroundStore.neighbours(key);
-    const [water, waterAround, osm, osmAround, parksAround] = await Promise.all([
+    const [water, waterAround, osm, osmAround, parksAround, courtyardsAround] = await Promise.all([
       this.waterCell(key),
       Promise.all(around.map(k => this.waterCell(k))),
       this.osmCell(key),
       Promise.all(around.filter(k => k !== key).map(k => this.osmCell(k))),
       Promise.all(around.map(k => this.parkCell(k))),
+      Promise.all(around.map(k => this.courtyardCell(k))),
     ]);
     // Path ways a park's BGT path polygons replace may run into the neighbours' junction graph: drop them everywhere.
     const dropWays = parksAround.flatMap(p => p?.dropWays ?? []);
@@ -438,6 +458,7 @@ export class GroundStore {
       flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}),
+      courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
       project: p => toLocal(p[0], p[1]),
     };
   }
