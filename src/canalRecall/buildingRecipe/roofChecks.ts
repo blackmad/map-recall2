@@ -6,6 +6,47 @@
 import * as T from 'three';
 import type {BuildingFacts} from './facts.ts';
 import {fitPlane, pointInRing} from './facts.ts';
+import type {Gate} from './gates.ts';
+import {openingsWithinWalls, WITHIN_WALLS, type WithinWallsReport} from '../landmarks/geometryAudit.ts';
+import type {MaterialSoup} from '../landmarks/facadeCompare.ts';
+
+/**
+ * A compiled kit group as a material soup for the landmark geometry audit: one material per slot (`slotFor`, the same
+ * mapping the GLB exporter uses), world-space triangles, so the audit sees what ships.
+ */
+export function groupSoup(group: T.Group, slotFor: (m: T.Mesh) => string): MaterialSoup {
+  group.updateMatrixWorld(true);
+  const names: string[] = [], positions: number[] = [], triMaterial: number[] = [];
+  const v = new T.Vector3();
+  group.traverse(o => {
+    if (!(o instanceof T.Mesh)) return;
+    const slot = slotFor(o) || 'brick';
+    let k = names.indexOf(slot);
+    if (k < 0) { k = names.length; names.push(slot); }
+    const geo = o.geometry.index ? o.geometry.toNonIndexed() : o.geometry, p = geo.getAttribute('position');
+    for (let i = 0; i < p.count; i += 3) {
+      for (let j = 0; j < 3; j++) { v.fromBufferAttribute(p, i + j).applyMatrix4(o.matrixWorld); positions.push(v.x, v.y, v.z); }
+      triMaterial.push(k);
+    }
+  });
+  return {positions, indices: Array.from({length: positions.length / 3}, (_, i) => i), triMaterial, materials: names.map(name => ({name, rgb: [128, 128, 128] as [number, number, number], slot: name, materialSlot: name}))};
+}
+
+/**
+ * Gate for block faces and large recipes (2026-10-16, with the landmark pipeline): every opening part (glass, frame, door) lies
+ * inside its host wall's silhouette (5 cm) and crosses no roof plane; fails on any part with more than 0.02 m2 outside. Catches a
+ * roof plane drawn above a parapet across the top windows (De Baarsjes) as well as a window run past a gable rake.
+ * Advisory (reported, not counted) until OPENINGS_WITHIN_WALLS=strict: on 2026-10-16 it failed 19 of 22 installed chunks and the
+ * sampled houses (attic windows sunk in the 3DBAG roof mass), which the kit lane triages; the landmark gate is hard from the start.
+ */
+export function openingsWithinWallsGate(group: T.Group, slotFor: (m: T.Mesh) => string): {gate: Gate; report: WithinWallsReport} {
+  const report = openingsWithinWalls(groupSoup(group, slotFor));
+  const worst = report.failing[0];
+  return {report, gate: {id: 'openings-within-walls', pass: report.failing.length === 0, ...(process.env.OPENINGS_WITHIN_WALLS === 'strict' ? {} : {advisory: true}),
+    value: {outsideM2: report.outsideM2, failing: report.failing.length, judged: report.judged, hostless: report.hostless,
+      ...(worst ? {worst: {outsideM2: worst.outsideM2, roofM2: worst.roofM2, piercesRoof: worst.piercesRoof, materials: worst.materials, centre: worst.centre.map(x => +x.toFixed(2))}} : {})},
+    limit: `no opening part > ${WITHIN_WALLS.failM2} m2 outside its wall (tol ${WITHIN_WALLS.tol} m) or through a roof plane`}};
+}
 
 export interface RoofFidelity {
   /** Largest |model roof height − 3DBAG plane height| over all roof vertices (m). */
