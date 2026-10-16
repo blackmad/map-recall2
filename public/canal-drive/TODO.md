@@ -799,6 +799,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   Mosplein roundabout centre) are not wegdeel and draw as land/paving;
   ~12,000 m² of berms and tree pits the bands used to pave, in seven dense
   cells.
+- **Pop-in, next** (2026-10-16, HISTORY "Pop-in: streaming look-ahead"):
+  the intro descent (overview → city ground blend and landmark LOD swaps,
+  ~28k px/s, the largest source); MapLibre basemap tiles are not steered by
+  the look-ahead; landmark models have no look-ahead padding; the basemap
+  handover is a one-frame swap; a lingering detail tile drops to coarse in
+  one frame; a route-following look-ahead would load fewer tiles than the
+  heading; the metric can't judge long frames or sharp turns, and 4× CPU
+  throttle makes every frame a hitch.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;

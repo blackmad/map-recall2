@@ -54,6 +54,10 @@ const variants: Variant[] = [
   { label: 'default (repeat)', landmarks: 'default' },
 ];
 
+/** POPIN_FLAGS=LookAhead=false,HoldBasemap=false,ChunkFade=false: the pop-in fixes' off switches (docs/perf-pop-in-20261016.md), for an A/B of their frame cost. */
+const popInFlags = () => Object.fromEntries((process.env.POPIN_FLAGS ?? '').split(',').filter(Boolean)
+  .map(kv => { const [k, v] = kv.split('='); return [`__canalRecall${k}`, v === 'true' ? true : v === 'false' ? false : v]; }));
+
 const pick = (values: number[], q: number) => {
   const sorted = [...values].sort((a, b) => a - b);
   return sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] ?? 0;
@@ -109,6 +113,7 @@ for (const variant of variants) {
     if (process.env.SHADOWS) await page.addInitScript((on: boolean) => { (window as any).__canalRecallShadows = on; }, process.env.SHADOWS === '1');
     // OWN_GROUND=1|0 and RECIPE_TILES=1|0 force the own ground and the recipe-tile near tier (both imply the shared frame).
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
+    if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
     if (process.env.RECIPE_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallRecipeTiles = on; }, process.env.RECIPE_TILES === '1');
     const bundles = process.env.BUNDLES_DIR;
     if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
@@ -210,6 +215,7 @@ test('motion stutter: steady ride through the Jordaan to Kinkerstraat', async ({
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
+  if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
   await page.goto(process.env.BUILDING_TYPES === '0' ? '/canal-drive/?buildingTypes=0' : '/canal-drive/');
   await page.waitForFunction(([a, b]) => (window as any).canalRecallGame?.routePois?.some((p: any) => p.id === a) && (window as any).canalRecallGame.routePois.some((p: any) => p.id === b), [MOTION_START, MOTION_DEST], { timeout: 90_000 });
   await page.locator('#travel-mode').selectOption('car', { force: true });
