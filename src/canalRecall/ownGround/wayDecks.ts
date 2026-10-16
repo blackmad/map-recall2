@@ -27,6 +27,13 @@ export const wayDeckHighway = (h: string | undefined): boolean => !!h && !/^(ste
  */
 export function wayDeckProfile(id: string, name: string, points: readonly Vec2[], halfWidth: number, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean): DeckProfile | null {
   if (points.length < 2) return null;
+  // A coarse pass first (every 2 m): most bridge ways in a cell cross no water the extract leaves undecked.
+  let any = false;
+  for (let i = 0; i + 1 < points.length && !any; i++) {
+    const [ax, ay] = points[i], [bx, by] = points[i + 1], n = Math.max(1, Math.ceil(Math.hypot(bx - ax, by - ay) / 2));
+    for (let j = 0; j <= n && !any; j++) any = wet(ax + (bx - ax) * j / n, ay + (by - ay) * j / n);
+  }
+  if (!any) return null;
   // Resample the polyline every WAY_DECK_STEP_M.
   const pts: Vec2[] = [];
   for (let i = 0; i + 1 < points.length; i++) {
