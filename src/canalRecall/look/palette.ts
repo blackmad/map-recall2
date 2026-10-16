@@ -189,11 +189,20 @@ export function periodForYear(year: number): Period {
 // Roofs
 // ---------------------------------------------------------------------------
 
+/**
+ * Slate (and the dark pitched roofs that take its tones), measured: the drawn slate (tone x the slate cell's mean,
+ * 0.794) lands on the PDOK orthophoto's pitched-slate roofs (roof-facts, 174,801 roofs: luma p10 84, p25 101,
+ * median 116), in the old tones' cool hue. Index 0 (the default) is p25, 1 the darker p10, 2 the lighter median.
+ * Were #4b525c #3f464f #5a6068, drawn at 65 / 55 / 76: below the orthophoto's p10, so a chunk's or a canal house's
+ * slate read near-black beside every measured roof (docs/one-material-20261016.md).
+ */
+export const MEASURED_SLATE: readonly string[] = ['#76808f', '#606b79', '#8c939c'];
+
 /** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
 export const ROOF_TONES: Record<BuildingLook, { tile: readonly string[]; slate: readonly string[] }> = {
-  procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  untextured: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
+  procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: MEASURED_SLATE },
+  untextured: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: MEASURED_SLATE },
+  photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: MEASURED_SLATE },
   storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
   cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
 };
@@ -222,7 +231,7 @@ export const ROOF_SLOT_TONES: Readonly<Record<RoofSlot, { hex: string; luma: rea
   'white-membrane': { hex: '#d9d9d3', luma: [196, 228], cell: 'flat' },
   'pantile-red': { hex: '#b5543a', luma: [84, 124], cell: 'tile' },
   'pantile-dark': { hex: '#6a5248', luma: [64, 98], cell: 'tile' },
-  'slate': { hex: '#4b525c', luma: [62, 140], cell: 'slate' },
+  'slate': { hex: '#76808f', luma: [62, 140], cell: 'slate' },
   'zinc': { hex: '#9aa1a6', luma: [138, 176], cell: 'slate' },
   'sedum': { hex: '#7a8350', luma: [96, 132], cell: 'flat' },
   'solar': { hex: '#2e3a52', luma: [44, 70], cell: 'flat' },
