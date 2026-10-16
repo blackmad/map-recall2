@@ -485,6 +485,12 @@ class VectorBasemap {
     this._cameraTilt = Number.isFinite(value) ? Math.max(min, Math.min(max, value)) : 0;
   }
 
+  /** Chase-view pitch lift and lead toward a tall landmark ahead (src/canalRecall/game/landmarkSightline.ts). */
+  setLandmarkView(view) { this._landmarkView = view && (view.pitchDeg > 0 || view.leadM > 0) ? view : null; }
+
+  /** The highlighted landmark's anchor and roof height (look/highlightMarker.ts), for the sightline. */
+  highlightTarget() { return this._highlightMarker?.target?.() || null; }
+
   pitchForViewMode(viewMode) {
     const chase = viewMode === 'chase';
     const cockpit = viewMode === 'cockpit';
@@ -2711,7 +2717,9 @@ class VectorBasemap {
     // lands (`introOverview` 1 → 0), so the overview is a true plan view and
     // its framing matches the flat camera maths exactly.
     const introFlat = Math.max(0, Math.min(1, camera.introOverview || 0));
-    const targetPitch = this.pitchForViewMode(viewMode) * (1 - introFlat);
+    // Chase: look up at a tall highlighted landmark ahead (presentationRuntime _updateLandmarkSightline, ride review J3).
+    const sight = viewMode === 'chase' && !camera.detached && this._landmarkView ? this._landmarkView : null;
+    const targetPitch = Math.min(85, this.pitchForViewMode(viewMode) + (sight ? sight.pitchDeg : 0)) * (1 - introFlat);
     // Ease pitch when entering chase/cockpit so the load-to-race handoff is
     // not a hard snap, then apply the appearance branch's clearance guard.
     if (this._pitchSmoothed == null || camera.reducedMotion || introFlat > 0) this._pitchSmoothed = targetPitch;
@@ -2793,7 +2801,8 @@ class VectorBasemap {
     }
     // With elevation on, the camera centre rides at the rider's surface (a deck
     // or the sunken water) so the cockpit eye never ends up inside a bridge.
-    const cameraOptions = { center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch };
+    const leadM = sight ? sight.leadM * (1 - introFlat) : 0;
+    const cameraOptions = { center: [lon + Math.sin(bearing * Math.PI / 180) * leadM / metersPerDegreeLng, lat + Math.cos(bearing * Math.PI / 180) * leadM / metersPerDegreeLat], zoom: mapZoom, bearing, pitch: appliedPitch };
     if (this._riderSurface()) cameraOptions.elevation = detached || introFlat > 0 ? 0 : this._riderSurfaceM;
     // Own-ground residency follows the rider (not the led view centre); below
     // its minimum zoom (start flight, overview) it hides and the basemap shows.

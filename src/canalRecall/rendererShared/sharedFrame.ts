@@ -21,6 +21,7 @@
 
 import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator, type FrameMatrices, type Mat4, type Vec3 } from './frameMath.js';
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
+import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from './residency.js';
 
@@ -124,6 +125,10 @@ export class SharedFrame {
     const before = this.options.beforeId?.();
     if (!this.map.getLayer(SHARED_FRAME_MAIN_ID)) this.map.addLayer(this.mainLayer, before && this.map.getLayer(before) ? before : undefined);
     if (!this.map.getLayer(SHARED_FRAME_OVERLAY_ID)) this.map.addLayer(this.overlayLayer);
+    // The sunny look's measured sky above the horizon (look/sunny.ts SKY); without it MapLibre shows the basemap's
+    // background there, the land colour, which read as a pale cream sky.
+    const sky = mapLibreSky();
+    if (sky && typeof this.map.setSky === 'function') { try { this.map.setSky(sky); } catch (_) { /* style not ready */ } }
     if (!this.keepOverlayOnTop) {
       this.keepOverlayOnTop = () => {
         const order: string[] | undefined = this.map.getLayersOrder?.();

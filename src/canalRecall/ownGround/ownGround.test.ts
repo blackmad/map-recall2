@@ -15,7 +15,8 @@ import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { groundLookFrom, groundPalette } from './groundLook';
-import { drawnGrey, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
+import { drawnGrey, flatGroundGain, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
+import { LEGACY_LIGHT_RIG } from '../rendererShared/lightRig';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
@@ -23,10 +24,11 @@ import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, enco
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
+import { BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
+import { FLUSH_PARAPET } from './bridgeKit';
 import { fillPockets, POCKET_LIFT } from './pockets';
 import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
 import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
@@ -318,13 +320,59 @@ test('deck widths (ride review J6, BRU0063): the outline widens the deck over th
     if (x < 13 - WIDEN_PAST_WATER_M || x > 27 + WIDEN_PAST_WATER_M) landMax = Math.max(landMax, y); else waterMax = Math.max(waterMax, y);
   }
   assert.ok(landMax <= 4 + 1e-9 && waterMax > 11.9, `top reaches ${landMax.toFixed(2)} m on land, ${waterMax.toFixed(2)} m over water`);
-  // With the street bands: on land the road part itself is clipped to the band (here 2 m either side of the axis).
-  const band = bandCorridor([{ points: [[0, 0], [40, 0]], half: 2 }]);
+  // With the street bands: past the span (land not culled) the road part is clipped to the band (1 m either side); inside it keeps the road (no hole).
+  const band = bandCorridor([{ points: [[0, 0], [40, 0]], half: 1 }]);
   const wb = deckWidths(deck, (x) => water(x), band);
-  assert.ok(Math.abs(wb.left[at(9)] - (2 + BAND_MARGIN_M + BAND_MARGIN_M)) < WIDTH_PROBE_M + 1e-9 && wb.left[at(20)] === 12, `banded: ${wb.left[at(9)]} on land, ${wb.left[at(20)]} over water`);
+  assert.ok(Math.abs(wb.left[at(4)] - (1 + BAND_MARGIN_M + BAND_MARGIN_M)) < WIDTH_PROBE_M + 1e-9 && wb.left[at(10)] === 4 && wb.left[at(20)] === 12, `banded: ${wb.left[at(4)]} past the span, ${wb.left[at(10)]} on land in it, ${wb.left[at(20)]} over water`);
   // Without an outline (no sides) and no bands the widths are the road's: the top is byte-identical to the unclipped one.
   const plain = s.addDeck(syntheticDeck());
   assert.deepEqual(measuredDeckTop(plain, s.height, 4, 2, undefined, deckWidths(plain, (x) => water(x))), measuredDeckTop(plain, s.height));
+});
+
+test('flush deck (ride review J8, BRU0124): a kerb and a heavy top rail, the water under it left open', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  const flat = syntheticDeck(); flat.family = 'steel-deck';
+  for (let i = 0; i < flat.h.length; i++) flat.h[i] = flat.s[i] >= 8 && flat.s[i] <= 32 ? 0.35 * Math.sin(Math.PI * (flat.s[i] - 8) / 24) : 0;
+  flat.water = [15, 25];
+  const humped = syntheticDeck(); humped.family = 'steel-deck';
+  const d0 = s.addDeck(flat), d1 = s.addDeck(humped);
+  assert.ok(isFlushDeck(d0) && !isFlushDeck(d1), 'a 0.3 m crown is flush, a 1.2 m hump is not');
+  const water = (x: number) => x > 15 && x < 25; // 10 m: one opening, no piers
+  // The plinth's top face: its height over the deck edge at mid-span.
+  const kerbTop = (m: MeshArrays) => {
+    let best = 0;
+    for (const { n, c } of faces(m)) if (n[2] > 0.9 && Math.abs(c[0] - 20) < 2 && Math.abs(c[1]) > 3.5 && Math.abs(c[1]) < 4) best = Math.max(best, c[2] - s.height(c[0], Math.sign(c[1]) * 4));
+    return best;
+  };
+  const flushBody = measuredDeckBody(d0, s.ground, x => water(x), -1.77, s.height), humpBody = measuredDeckBody(d1, s.ground, x => water(x), -1.77, s.height);
+  assert.ok(kerbTop(flushBody) >= FLUSH_PARAPET.kerb - 0.02, `flush kerb ${kerbTop(flushBody).toFixed(2)} m`);
+  assert.ok(kerbTop(humpBody) < FLUSH_PARAPET.kerb - 0.05, `humped deck keeps its plinth (${kerbTop(humpBody).toFixed(2)} m)`);
+  // Open under the deck: over the water's middle no wall across the canal stands between the water and the deck (vault and soffit are the opening).
+  const zDeck = s.height(20, 0);
+  for (const { n, c } of faces(flushBody)) if (Math.abs(c[0] - 20) < 3 && Math.abs(c[1]) < 3 && Math.abs(n[0]) > 3 * Math.hypot(n[1], n[2])) assert.ok(c[2] > zDeck - 0.5 || c[2] < -1.77, `face at z ${c[2].toFixed(2)} closes the opening`);
+});
+
+test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {
+  // The footprint along +x (0–21.5 m, 6 m wide), the movable way 4.4–17.1 m, the fixed ways beyond it.
+  const ring: Vec2[] = [[0, -3], [21.5, -3], [21.5, 3], [0, 3]];
+  const moving: Vec2[][] = [[[4.4, 0.2], [17.1, -0.1]]];
+  const plan = movableLeaves(ring, [1, 0], moving)!;
+  const c = 21.5 / 2;
+  assert.ok(plan.double, 'longer than FRAME.maxLeaf: two leaves');
+  assert.ok(Math.abs(plan.leaves[0][0] + c - 4.4) < 1e-6 && Math.abs(plan.leaves[1][1] + c - 17.1) < 1e-6, `leaves ${JSON.stringify(plan.leaves)}`);
+  assert.ok(Math.abs(plan.leaf - 6.35) < 1e-6);
+  // The guess from the footprint alone: one 9 m leaf, one portal.
+  assert.equal(movableFrame(ring, () => 0.5, [[[-2, 0], [24, 0]]]).units, 1);
+  assert.equal(movableFrame(ring, () => 0.5, [[[-2, 0], [24, 0]]], 0.02, true, plan).units, 2);
+  // A short stretch is one leaf at the heel; no movable way, or one beside the footprint, gives no plan.
+  const single = movableLeaves(ring, [1, 0], [[[6, 0], [13, 0]]])!;
+  assert.ok(!single.double && Math.abs(single.leaves[0][0] + c - 6) < 1e-6 && Math.abs(single.leaves[0][1] + c - 13) < 1e-6);
+  assert.equal(movableLeaves(ring, [1, 0], []), null);
+  assert.equal(movableLeaves(ring, [1, 0], [[[4, 20], [17, 20]]]), null);
+  // The kit draws the leaves where the way says: flatDeckBody takes them through opts.movableWays (byte-identical without).
+  const water = (x: number) => x > 3 && x < 18.5;
+  assert.deepEqual(flatDeckBody(ring, () => 0.5, water, 0.02, 0.45, { axis: [1, 0] }), flatDeckBody(ring, () => 0.5, water, 0.02, 0.45, { axis: [1, 0], movableWays: [] }));
 });
 
 test('deck grade clamp: spikes over 1:8 come out, the crown stays', () => {
@@ -1247,7 +1295,12 @@ test('far ring: radius only past the resident ring, blocks nearest first, one pa
 
 test('ground light: level sunlit ground draws its palette luminance; the road stays above the shade floor in cast shadow (live play 2026-10-14)', () => {
   // Before the gain the rig drew level ground at 0.83 of its albedo (sRGB ≈ 0.92): the "city too dark".
-  assert.ok(Math.abs(flatGroundLuminance() - 0.828) < 0.01, `rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(flatGroundLuminance(LEGACY_LIGHT_RIG) - 0.828) < 0.01, `legacy rig lights level ground at ${flatGroundLuminance(LEGACY_LIGHT_RIG)}`);
+  // The sunny look (look/sunny.ts, default since 2026-10-16) folds its exposure into the rig and white-balances it:
+  // level ground receives neutral light at 1.004, so the gain nearly vanishes (0.996) and the bright ground still
+  // draws its palette, hue included.
+  assert.ok(Math.abs(flatGroundLuminance() - 1.004) < 0.01, `sunny rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(flatGroundGain(LEGACY_LIGHT_RIG) - 1.208) < 0.01 && Math.abs(FLAT_GROUND_GAIN - 0.996) < 0.01, `gains ${flatGroundGain(LEGACY_LIGHT_RIG)} / ${FLAT_GROUND_GAIN}`);
   assert.ok(Math.abs(FLAT_GROUND_GAIN * flatGroundLuminance() - 1) < 1e-9);
   for (const v of [60, 104, 164, 220]) assert.ok(Math.abs(drawnGrey(v, FLAT_GROUND_GAIN) - v) < 0.01, `palette ${v} draws ${drawnGrey(v, FLAT_GROUND_GAIN)}`);
   const asphalt = 0.2126 * STREET_GROUND.asphalt.base[0] + 0.7152 * STREET_GROUND.asphalt.base[1] + 0.0722 * STREET_GROUND.asphalt.base[2];

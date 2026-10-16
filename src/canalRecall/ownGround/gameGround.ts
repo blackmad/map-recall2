@@ -840,7 +840,7 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key) };
+    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat };
   }
 
   status(): Record<string, unknown> {

@@ -47,7 +47,8 @@ mode, three.js layers 0.74 → 0.89 ms, +5.5 MB textures, flag-off
 pixel-identical. Not flipped yet: the user called the shared-frame default a
 look decision for them, and the user's 2026-10-13 notes ("the sun moves
 with me", "the whole city is a little dark/dour") go to the lighting lane
-first, so the flip lands on a frame whose sun is fixed. Still open from the
+first, so the flip lands on a frame whose sun is fixed (the sunny look
+landed 2026-10-16, HISTORY "Sunny look is the default"). Still open from the
 review: three builder re-tags (Uilenburger synagoge and Podium Mozaïek
 roofs → `roofTile`, American Hotel sandstone), 57 covered models without a
 BAG year, Hemp Gallery (1993) and Theo Thijssen Museum (1994) carry rebuild
@@ -714,6 +715,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Sunny look follow-ups** (2026-10-16, HISTORY "Sunny look is the
+  default"; `?look=legacy` opts out): re-tune the opt-in yellow highlight
+  (clips at 206.6 under the rig); undo the city look's extra 0.9 cell
+  level so `?cityLook=1` also draws sun-facing walls at their own colour;
+  regenerate gallery covers, goldens and `docs/LOOK.md` under the rig;
+  per-house white points for hand-edited intents and the Oud-West strip
+  faces (median 1.106 today); decide the road grey (~98–117 vs the user's
+  ~150) and the cycle red (190,96,92 proposed); ride-level before/after
+  frames from the bike, the sheet is mostly aerial.
 - **Kit roof rules (user, 2026-10-16; plan Part 2, lane in flight):** roofs
   follow the measured front, not 3DBAG ("don't give so much credence to
   3DBAG roofs"): saddle under the crown profile, flat under a parapet, attic
@@ -1275,9 +1285,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   survey"; queue and evidence in `docs/landmark-abutters-survey-20261016.md`,
   verdicts in `scripts/landmarks/landmark-abutters-allowlist.json`): 25
   city buildings are part of their landmark and draw as generic kit
-  blocks. In progress: Noorderkerk corner houses (rijksmonument 3923,
-  pands 177303/176942/176956, own lane). Queued, one lane each, photo
-  first: Nieuwe Kerk choir annex (pand 0363100012176224), Sint Nicolaas
+  blocks. Noorderkerk corner houses DONE (HISTORY). Its south-west
+  consistory is now plainer than the three new houses; bring it up with
+  the same helpers. Queued, one lane each, photo first: Nieuwe Kerk choir annex (pand 0363100012176224), Sint Nicolaas
   wing/rear wing/pastorie (w750591089/87/84), Oude Kerk houses against
   the walls and chapel bay (w749242497/98, w747868956, w749242502),
   Amstelkerk house/lean-to with bell-cote/timber annex (pands 178570,
@@ -1295,6 +1305,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   terraced neighbours on a wrapped block and complex-wide monument
   records (Mercatorplein, Westergasfabriek, DeLaMar). Each fold-in that
   lands removes its PENDING entries from the allowlist.
+- **DeLaMar rear walls** (2026-10-16, HISTORY "DeLaMar on every side"):
+  the north-west auditorium curve and the south-east and rear walls are
+  inferred plain brown brick (no street panorama sees them), and they show
+  on gallery cards and from the pitched camera. Read them from open aerial
+  or oblique sources (open data only) and dress them. Kit gaps the lane
+  reported: mixed-case lettering, glazed tile texture, curved glazing,
+  pediment-dormer and stepped-gable silhouettes; `review:sheet` ignores
+  the panorama's camera height (2.44 m fixed), so across-the-canal photos
+  misalign vertically.
 - **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
   10" and "Figures, second pass"): STOP building statues with the figure
   kit (user, 2026-10-14: "bizarre"); the prototype (HISTORY "Measured
@@ -1531,15 +1550,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
 - **P1 Ride-review rows, Jordaan and Plantage** (HISTORY "Ride review,
-  Jordaan and Plantage"; three fixed there): the Westerkerk roof wash when
-  the church is large in frame (J2); chase pitch hides the Westertoren
-  until ~100 m (J3); inner-block gardens as bare sand (J4, needs a garden
-  class from BGT or BAG courtyards); Bloemgracht streamed boxes (J5, the
-  recipe-tiles migration); Nieuwe-Wercksbrug deck slabs over land (J6);
-  Noordermarkt playground slabs (J7); Pansemertbrug flush deck (J8);
-  Entrepotdok warehouse boxes and gable stubs (P3); Walter Süskindbrug as
-  a wire cube (P4, movable without deck data); Artis main gate and the
-  Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from
+  Jordaan and Plantage"; three fixed there; J2, J3, J6, J8 and P4 fixed
+  2026-10-16, HISTORY "Ride-review rows fixed"): still open: J3's tower
+  top (MapLibre caps pitch at 60°); J8's flush cue is ~1 px from the
+  chase camera, the deck needs its own surface from the quay's bands
+  (the BGT roads lane); J6's e2e has one probe of headroom; the
+  `landmarkSightline` test needs an npm script; inner-block gardens as
+  bare sand (J4, the courtyards lane); Bloemgracht streamed boxes (J5,
+  the recipe-tiles migration); Noordermarkt playground slabs (J7);
+  Entrepotdok warehouse boxes and gable stubs (P3); Artis main gate and
+  the Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from
   Artis (P7); the rippling curved facade (P8, check a photo); the
   Gandhiplantsoen hedge box (P9). `scripts/ride-review-shots.mjs` with
   specs in `scripts/ride-review/` is the method for the next
