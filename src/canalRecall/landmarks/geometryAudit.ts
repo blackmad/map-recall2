@@ -324,6 +324,15 @@ function rasterWall(s: MaterialSoup, seg: WallSegment, hostTris: number[], cell 
       const w1 = ((p[2][0] - sx) * (p[0][1] - sy) - (p[0][0] - sx) * (p[2][1] - sy)) / area;
       if (w0 >= -1e-6 && w1 >= -1e-6 && 1 - w0 - w1 >= -1e-6) occ[y * nu + x] = 1;
     }
+    // A strip thinner than a cell covers no cell centre: its edges mark the cells they cross (a 2 cm lintel between a window head
+    // and the eaves is the wall's top in that column; Tropenmuseum pavilion, 2026-10-16).
+    for (let k = 0; k < 3; k++) {
+      const a = p[k], b = p[(k + 1) % 3], n = Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) * 2) + 1;
+      for (let i = 0; i <= n; i++) {
+        const x = Math.floor(a[0] + (b[0] - a[0]) * i / n), y = Math.floor(a[1] + (b[1] - a[1]) * i / n);
+        if (x >= 0 && x < nu && y >= 0 && y < nv) occ[y * nu + x] = 1;
+      }
+    }
   }
   const colLo = new Float64Array(nu).fill(Infinity), colHi = new Float64Array(nu).fill(-Infinity);
   for (let x = 0; x < nu; x++) for (let y = 0; y < nv; y++) if (occ[y * nu + x]) { colLo[x] = Math.min(colLo[x], v0 + y * cell); colHi[x] = Math.max(colHi[x], v0 + (y + 1) * cell); }
@@ -339,6 +348,26 @@ function inSilhouette(w: WallRaster, u: number, v: number, tol: number): boolean
     if (v >= w.colLo[xx] - tol && v <= w.colHi[xx] + tol) return true;
   }
   return false;
+}
+
+/**
+ * Is (u, v) inside the silhouette of a group of parallel wall planes taken as one wall (holes ignored), within `tol`? Per
+ * column the lowest and highest occupied v over all of them. One 3DBAG wall is often clustered into several planes: member
+ * normals differ by a few tenths of a degree, which moves `d` by decimetres 70 m from the origin (Tropenmuseum, Mauritskade),
+ * and the rows above and below a ground-storey window then fall into different planes, none of which covers the window alone.
+ */
+export function inGroupSilhouette(ws: WallRaster[], q: V3, tol: number): boolean {
+  let lo = Infinity, hi = -Infinity;
+  const v = q[1];
+  for (const w of ws) {
+    const u = q[0] * w.seg.t[0] + q[2] * w.seg.t[1], r = Math.ceil(tol / w.cell), x = Math.floor((u - w.u0) / w.cell);
+    for (let dx = -r; dx <= r; dx++) {
+      const xx = x + dx;
+      if (xx < 0 || xx >= w.nu) continue;
+      lo = Math.min(lo, w.colLo[xx]); hi = Math.max(hi, w.colHi[xx]);
+    }
+  }
+  return v >= lo - tol && v <= hi + tol;
 }
 
 /** Is the wall surface solid at (u, v) (not a cut hole)? */
@@ -814,14 +843,15 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
     // judged against its own ring every lancet fits).
     const corners = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]];
     const partFace = Math.max(skin / 2, (bb.max[1] - bb.min[1]) * Math.max(bb.max[0] - bb.min[0], bb.max[2] - bb.min[2]) * 0.5);
-    const cands: {w: WallSegment; sd: number}[] = [];
+    const cands: {w: WallSegment; sd: number}[] = [], pieces: WallSegment[] = [];
     for (const w of walls) {
       if (axisStrength > 0.3 && Math.abs(w.n[0] * axis[0] + w.n[1] * axis[1]) < 0.94) continue;
-      if (w.area < 3 * partFace) continue;
       const sds = corners.map(([x, z]) => w.n[0] * x + w.n[1] * z - w.d), lo = Math.min(...sds), hi = Math.max(...sds);
       if (hi < -0.8 || lo > 0.8) continue;
       const us = corners.map(([x, z]) => x * w.t[0] + z * w.t[1]);
       if (Math.max(...us) < w.uMin - 0.3 || Math.min(...us) > w.uMax + 0.3 || bb.max[1] < w.vMin - 0.3 || bb.min[1] > w.vMax + 0.3) continue;
+      // smaller planes in reach: fragments of a host wall (they extend its silhouette, see `measure`), never hosts themselves
+      if (w.area < 3 * partFace) { pieces.push(w); continue; }
       cands.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0)});
     }
     cands.sort((p, q) => (Math.abs(p.sd - q.sd) > 0.02 ? p.sd - q.sd : q.w.area - p.w.area));
@@ -829,7 +859,11 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
     judged++;
     /** The part's face turned to `w`'s outside, sampled against the parallel planes and curved facets around `w`: projected area and the share outside. */
     const measure = (w: WallSegment): {faceM2: number; outsideM2: number; samples: V3[]; weights: number[]} => {
-      const group = cands.filter(x => x.w.n[0] * w.n[0] + x.w.n[1] * w.n[1] > 0.94).map(x => x.w);
+      // Fragments of the same wall: one 3DBAG wall is often clustered into several planes (member normals a few tenths of a degree
+      // apart move `d` by decimetres 70 m from the origin), so the rows above and below a window can each be a plane too small to
+      // host it. A piece within 3 cm of `w`'s plane at the part joins the silhouette; a stone ring or surround stands prouder.
+      const at = (g: WallSegment) => g.n[0] * c[0] + g.n[1] * c[2] - g.d, sw = at(w);
+      const group = [...cands.map(x => x.w), ...pieces].filter(g => g.n[0] * w.n[0] + g.n[1] * w.n[1] > 0.94 && (g === w || cands.some(x => x.w === g) || Math.abs(at(g) - sw) <= 0.03)), groupRasters = group.map(raster);
       // Facets of a curved or polygonal wall continue it: neighbours turned less than ~46 degrees (an octagonal tower's facets are 45 apart).
       const facets = cands.filter(x => x.w.n[0] * w.n[0] + x.w.n[1] * w.n[1] > 0.7).map(x => x.w);
       let faceM2 = 0, outsideM2 = 0;
@@ -842,7 +876,7 @@ export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds
         for (const q of pts) {
           faceM2 += wgt;
           let inside = false;
-          for (const g of group) { if (inSilhouette(raster(g), q[0] * g.t[0] + q[2] * g.t[1], q[1], opt.tol)) { inside = true; break; } }
+          if (inGroupSilhouette(groupRasters, q, opt.tol)) inside = true;
           for (const g of facets) { if (inside) break; const sd = g.n[0] * q[0] + g.n[1] * q[2] - g.d; if (sd <= 0.8 && sd >= -0.3 && inSilhouette(raster(g), q[0] * g.t[0] + q[2] * g.t[1], q[1], opt.tol)) inside = true; }
           if (!inside) outsideM2 += wgt; else { samples.push(q); weights.push(wgt); }
         }

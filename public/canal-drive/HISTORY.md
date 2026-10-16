@@ -50,6 +50,43 @@ diagonally across the cycle path; the parapet jogs outward mid-span on
 widened sides (BRU0063, BRU0108); the art-installation footbridges (De
 Oase, De Octopus, Grachtenvlinder) draw in neither mode.
 
+## Tropenmuseum, fourth pass: the walls around the portal dressed (2026-10-16)
+
+User (2026-10-16): the measured Mauritskade portal read as a panel pasted onto
+plain dark-brown walls with bare blue cells. Lane `worktree-agent-a2ff32df9c82e9393`,
+from the `review:sheet` IN GAME column: the 331 street wings and museum wing and
+the 241 low wing get white-framed windows split into panes (round-arched
+three-light with springer and key blocks on the museum wing, cross windows on
+the street wings, framed transoms at the rear), continuous sill and head
+courses, a souterrain and a cornice; brick measured from three panorama crops
+#a2856c (was #8a5a47), stone #e2d6bc, frames #efece3. New kit options, unchanged
+output when absent (156 fit goldens identical): `glazing: "panes"`,
+`courses`, `souterrain`, `arches.band: "blocks"`, `windows: "three-light"`.
+Fully dressed it was 44.0k tris / 637 KB; the shipped cut is 33.9k / 496 KB
+(single souterrain lights, no tower cornice, no courses on rear and court
+walls, back faces within 25 cm culled), lod1 7.3k. `audit:glb` still reports
+opening-outside 21 parts / 33.1 m², mostly pane sheets on twisted 3DBAG faces
+(the audit's plane clustering; probes show brick around them). `check:canal`
+157/157.
+
+## Hollow landmark cards: Multatuli and 28 more sourced (2026-10-16)
+
+User (2026-10-16), on the Multatuli bust's card ("LANDMARK · W SOURCE · MULTATULI"
+and nothing else): "why no info". Its only text was the Wikidata one-liner
+"Public sculpture in Amsterdam, the Netherlands." (no lede, no funFact); the card
+opens because a photo passes `isWorthACard`, and a drive-by card folds to its
+title after 8 s (`teachingPacer.cardCollapsed`), which is the blank card the
+user saw. "W SOURCE" pointed at a Commons photo category. Lane
+`worktree-agent-ac89003c665aaa03e`: the audit gains a `stub` issue and
+`hollowCardsThatOpen`; `test:landmark-cards` now fails on any card that opens
+empty or stub-only unless allowlisted with a reason (25 today: 19 OBA branches
+with no own article, five places with no article). 29 new sourced overrides
+(Multatuli: Hans Bayens's bust, 1987; Douwes Dekker, Max Havelaar 1860), 17 into
+the extract and 12 kit POIs into `manual-poi-data.json`; overrides can cite
+`extraSources`, and a card with no link gets the override's article as its
+source. Counts: 42 hollow cards that open → 25 (all allowlisted). Bundles
+rebuilt (game-landmarks, -presentation, -recall, route-selection).
+
 ## Towers on podiums: the tall part over its own footprint (2026-10-16)
 
 User (2026-10-16), at the Hotelschool The Hague, Jan Evertsenstraat 171-175

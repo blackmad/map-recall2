@@ -758,6 +758,16 @@ export interface LargeWallIntent {
    */
   windowShape?: LargeWindowShape;
   /**
+   * `panes`: pane-split glazing (block kit `WinParams.paneSplit`): the frame is one sheet at the back of the recess and the
+   * glass separate panes in front of it, so frames, mullions and transoms cost no bar boxes (white-framed cross windows on
+   * a byte budget). Absent: the kit's frame ring and bar boxes, byte-identical.
+   */
+  glazing?: 'panes';
+  /** Stone courses at the windows' sill line (`sill`, replacing the per-window sills) and head line (`head`) on every upper storey. */
+  courses?: ('sill' | 'head')[];
+  /** The ground storey is a souterrain: a low raised basement (blockBuilding/systems.ts SOUTERRAIN) with two small windows per bay (`single`: one), arched with `arches.ground`. */
+  souterrain?: boolean | 'single';
+  /**
    * `glazed-hall` (Apollohal): the brick base rises to `base` (fraction of the eaves height); above it one glass skin to the
    * eaves, divided into `lights` columns per bay (`baysPerStorey` = the structural posts) and `rows` rows by a mullion grid.
    */
@@ -783,7 +793,7 @@ export interface LargeWallIntent {
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
    * `voussoir` (stone with imposts and a keystone) or `none`.
    */
-  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
+  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'blocks' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
   /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
