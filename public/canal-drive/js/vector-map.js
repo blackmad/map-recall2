@@ -1907,17 +1907,23 @@ class VectorBasemap {
     // `window.__canalRecallHoldBasemap = false`: hand over at the first streamed tile, as before (A/B, scripts/pop-in.mjs).
     if (typeof window !== 'undefined' && window.__canalRecallHoldBasemap === false) { this._streamedCityDrawn = true; return true; }
     const three = this._threeBuildings;
+    // Release on the first of: a shell drawn under the rider; 400 ms after the first shell anywhere (the view
+    // is filling in, as it would with no hold); 8 s after the first streamed tile.
+    const now = performance.now(), first = three && typeof three.firstShellAt === 'function' ? three.firstShellAt() : null;
     const waiting = this._threeOwnsTops() && three && typeof three.drawsResidentCity === 'function'
-      && !three.drawsResidentCity(this._nearViewTiles14()) && !(this._completeCityFirstAt != null && performance.now() - this._completeCityFirstAt > 8000);
+      && !three.drawsResidentCity(this._nearViewTiles14())
+      && !(first != null && now - first > 400)
+      && !(this._completeCityFirstAt != null && now - this._completeCityFirstAt > 8000);
+    if (three && typeof three.setBasemapHeld === 'function') three.setBasemapHeld(!!waiting);
     if (waiting) return false;
     this._streamedCityDrawn = true;
     return true;
   }
 
-  /** z14 tiles (`x/y`) around the rider: under the screen's bottom corners and its centre line. */
+  /** z14 tiles (`x/y`) under the rider: the screen's centre line from the bottom to the middle. */
   _nearViewTiles14() {
     const canvas = this.map.getCanvas(), w = canvas.clientWidth, h = canvas.clientHeight, n = 2 ** 14, out = new Set();
-    for (const [fx, fy] of [[0, 1], [0.5, 1], [1, 1], [0.5, 0.75], [0.5, 0.5]]) {
+    for (const [fx, fy] of [[0.5, 1], [0.5, 0.75], [0.5, 0.5]]) {
       const p = this.map.unproject([fx * w, fy * h]);
       if (!p || !Number.isFinite(p.lat)) continue;
       const rad = p.lat * Math.PI / 180;

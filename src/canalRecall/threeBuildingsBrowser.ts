@@ -803,24 +803,28 @@ export class ThreeBuildings {
   }
 
   /**
-   * Whether this layer draws the city on screen yet: the coarse shell group of every z14 tile in `tiles`
-   * (`x/y`, the tiles under the near half of the view) that it was given is installed (a rebuild in flight
-   * still draws the previous mesh). Until then the map keeps the basemap's own extrusions, so a ride does not
-   * start in an empty city while the first shells build (docs/perf-pop-in-20261016.md). Groups elsewhere
-   * (look-ahead tiles, the far horizon) do not hold it.
+   * Whether this layer draws the city under the rider yet: the coarse shell group of a z14 tile in `tiles`
+   * (`x/y`) is installed (a rebuild in flight still draws the previous mesh). Until then the map keeps the
+   * basemap's own extrusions, so a ride does not start in an empty city while the first shells build
+   * (docs/perf-pop-in-20261016.md). Any one tile is enough: off-centre tiles arrive as they would without
+   * the hold, so the hold never reveals the streamed city later than no hold.
    */
   drawsResidentCity(tiles: Iterable<string>): boolean {
     if (!this.visible || !this.ready) return false;
-    let wanted = 0;
-    for (const tile of tiles) {
-      const key = `${COARSE_PREFIX}${tile}`;
-      if (!this.sourceGroups.has(key)) continue;
-      wanted++;
-      if (!this.chunks.has(key)) return false;
-      if (this.fading.has(key)) return false; // still dissolving in
-    }
-    return wanted > 0;
+    for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
+    return false;
   }
+
+  /** performance.now() of the first coarse shell installed with geometry, or null. */
+  firstShellAt(): number | null { return this.firstShellTime; }
+  private firstShellTime: number | null = null;
+
+  /**
+   * While the basemap's extrusions stand in for the city (vector-map holds them), shells install at once:
+   * a dissolve under the opaque extrusions would only delay the handover.
+   */
+  setBasemapHeld(held: boolean): void { this.basemapHeld = held; }
+  private basemapHeld = false;
 
   stats(): ThreeBuildingStats {
     let buildings = 0, walls = 0, quads = 0, vertices = 0, bytes = 0;
@@ -1274,6 +1278,7 @@ export class ThreeBuildings {
     this.chunks.set(key, entry);
     this.scene.add(mesh);
     if (arriving) this.fadeIn(key, mesh);
+    if (this.firstShellTime === null && key.startsWith(COARSE_PREFIX)) this.firstShellTime = performance.now();
     this.refreshSurveyedRoofOwnership();
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
@@ -1305,7 +1310,7 @@ export class ThreeBuildings {
    * dissolve rather than a one-frame jump. `?chunkFade=0` installs at once, as before.
    */
   private fadeIn(key: string, mesh: any): void {
-    if (!CHUNK_FADE || key === KIT_KEY) return;
+    if (!CHUNK_FADE || key === KIT_KEY || this.basemapHeld) return;
     const source = mesh.material;
     if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return;
     const fade = { value: 0 };
