@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit', 'arcade'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -158,7 +158,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.arches.storeys !== undefined) { if (!Array.isArray(w.arches.storeys) || !w.arches.storeys.length) problems.push(`${at}.arches.storeys: list of storeys (0 = ground)`); else w.arches.storeys.forEach(s => count(s, `${at}.arches.storeys`, 0, 39)); }
       if (w.arches.windows !== undefined) oneOf(w.arches.windows, ARCH_KINDS, `${at}.arches.windows`);
       if (w.arches.ground !== undefined) oneOf(w.arches.ground, ARCH_KINDS, `${at}.arches.ground`);
-      if (w.arches.band !== undefined) oneOf(w.arches.band, ['brick', 'stone', 'voussoir', 'none'], `${at}.arches.band`);
+      if (w.arches.band !== undefined) oneOf(w.arches.band, ['brick', 'stone', 'voussoir', 'blocks', 'none'], `${at}.arches.band`);
       if (w.arches.windows !== undefined && !['brick-bay-grid', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.arches.windows: arched windows need system brick-bay-grid or french-window-ledge`);
     }
     if (w.gateways !== undefined) {
@@ -195,6 +195,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       }
       if (w.hoist.arch !== undefined) oneOf(w.hoist.arch, ARCH_KINDS, `${at}.hoist.arch`);
     }
+    if (w.glazing !== undefined) { oneOf(w.glazing, ['panes'], `${at}.glazing`); if (w.frames === false) problems.push(`${at}.glazing: panes are framed by the sheet between them; not with frames false`); }
+    if (w.courses !== undefined) { if (!Array.isArray(w.courses) || !w.courses.length) problems.push(`${at}.courses: list of sill, head`); else { w.courses.forEach(k => oneOf(k, ['sill', 'head'], `${at}.courses`)); if (new Set(w.courses).size !== w.courses.length) problems.push(`${at}.courses: each line once`); } if (!['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts', 'french-window-ledge'].includes(w.system)) problems.push(`${at}.courses: needs windows (brick-bay-grid, ribbon-windows, plinth-shopfronts or french-window-ledge)`); }
+    if (w.souterrain !== undefined && w.souterrain !== true && w.souterrain !== false && w.souterrain !== 'single') problems.push(`${at}.souterrain: true, false or "single"`);
+    if (w.souterrain && (w.system !== 'brick-bay-grid' || (w.ground !== undefined && w.ground !== 'system'))) problems.push(`${at}.souterrain: a brick-bay-grid with ground "system"`);
+    if (w.souterrain && (w.hoist || w.gateways || w.hallDoors || w.entrance || w.garageDoors || w.garageBays)) problems.push(`${at}.souterrain: not with hoist, gateways, hallDoors, entrance or garage doors (they claim the ground storey)`);
     bool(w.sills, `${at}.sills`); bool(w.frames, `${at}.frames`); bool(w.deepBars, `${at}.deepBars`); bool(w.curve, `${at}.curve`);
     if (w.wallMaterial !== undefined) oneOf(w.wallMaterial, GROUP_WALL_MATERIALS, `${at}.wallMaterial`);
     bool(w.screen, `${at}.screen`); bool(w.pilasters, `${at}.pilasters`); bool(w.lantern, `${at}.lantern`);

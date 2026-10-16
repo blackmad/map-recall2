@@ -682,3 +682,45 @@ test('within-walls: the geometry audit reports the gate and a new export fails o
   assert.deepEqual(regressions({'opening-outside-parts': 1, 'opening-outside-m2': 0.66}, {'opening-outside-parts': 1, 'opening-outside-m2': 0.66}), []);
   assert.equal(regressions({'opening-outside-parts': 2, 'opening-outside-m2': 1.2}, {'opening-outside-parts': 1, 'opening-outside-m2': 0.66}).length, 2);
 });
+
+test('within-walls: a wall clustered into planes a few tenths of a degree apart is still one silhouette', () => {
+  // Far from the origin (x ~ 66 m) a 0.4 degree turn moves the plane offset 0.46 m, so the strip under the window is a plane of
+  // its own, too small to host the window (Tropenmuseum, Mauritskade: the ground-storey windows failed on main 2026-10-16).
+  const soup = boxes({min: [60, 0, 0], max: [72, 9, 6.9], mat: 'brick'}, {min: [62.5, 1.1, 7.85], max: [64.1, 4.4, 7.9], mat: 'glass'});
+  const P = soup.positions as number[], I = soup.indices as number[], M = soup.triMaterial as number[];
+  const quad = (pts: V3[], mat: string) => {
+    const base = P.length / 3;
+    for (const p of pts) P.push(...p);
+    I.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    M.push(MATS.indexOf(mat), MATS.indexOf(mat));
+  };
+  const front = (x0: number, x1: number, y0: number, y1: number, turn = 0) => {
+    const z = (x: number) => 8 + (x - 63.3) * Math.tan(turn * Math.PI / 180);
+    quad([[x0, y0, z(x0)], [x1, y0, z(x1)], [x1, y1, z(x1)], [x0, y1, z(x0)]], 'brick');
+  };
+  front(60, 72, 4.5, 9); front(60, 62.4, 1.0, 4.5); front(64.2, 72, 1.0, 4.5); front(60, 72, 0, 1.0, 0.4);
+  const r = openingsWithinWalls(soup);
+  assert.equal(r.judged, 1);
+  assert.equal(r.failing.length, 0, JSON.stringify(r.failing.map(f => f.outsideM2)));
+  // the same window really past the strip's end still fails
+  const past = boxes({min: [60, 0, 0], max: [72, 9, 6.9], mat: 'brick'}, {min: [71.5, 1.1, 7.85], max: [73.1, 4.4, 7.9], mat: 'glass'});
+  const PP = past.positions as number[], PI = past.indices as number[], PM = past.triMaterial as number[];
+  const q2 = (pts: V3[]) => { const base = PP.length / 3; for (const p of pts) PP.push(...p); PI.push(base, base + 1, base + 2, base, base + 2, base + 3); PM.push(0, 0); };
+  for (const [x0, x1, y0, y1] of [[60, 72, 4.5, 9], [60, 72, 1.0, 4.5], [60, 72, 0, 1.0]]) q2([[x0, y0, 8], [x1, y0, 8], [x1, y1, 8], [x0, y1, 8]]);
+  assert.equal(openingsWithinWalls(past).failing.length, 1);
+});
+
+test('within-walls: a window head 2 cm under the eaves is inside (a strip thinner than a raster cell still tops its column)', () => {
+  const soup = boxes({min: [2, 6.3, 7.85], max: [3.2, 8.98, 7.9], mat: 'white'});
+  const P = soup.positions as number[], I = soup.indices as number[], M = soup.triMaterial as number[];
+  const front = (x0: number, x1: number, y0: number, y1: number) => {
+    const base = P.length / 3;
+    P.push(x0, y0, 8, x1, y0, 8, x1, y1, 8, x0, y1, 8);
+    I.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    M.push(0, 0);
+  };
+  front(0, 12, 0, 6.3); front(0, 2, 6.3, 9); front(3.2, 12, 6.3, 9); front(2, 3.2, 8.98, 9);
+  const r = openingsWithinWalls(soup);
+  assert.equal(r.judged, 1);
+  assert.equal(r.failing.length, 0, JSON.stringify(r.failing.map(f => f.outsideM2)));
+});
