@@ -30,6 +30,8 @@ export interface RuntimeInstance {
   groundAltitudeMetres: number;
   /** Pilot area the instance belongs to (one landmark-source spec per area). */
   area?: string;
+  /** Other BAG panden this instance's model covers (a split-off end bay or entrance of the same block): suppressed with it. */
+  alsoSuppress?: string[];
 }
 
 export interface Nominal { L0: number; W0: number; E0: number; R0?: number }
@@ -79,7 +81,7 @@ export function areaRadiusMetres(instances: readonly RuntimeInstance[]): number 
 export const pandOsmId =(pand: string) => `NL.IMBAG.Pand.${pand}`;
 /** BAG pand ids the instances replace: the OSM/BAG extrusion of each is suppressed (as street chunks' `suppress`). */
 export function suppressionIds(instances: readonly RuntimeInstance[]): string[] {
-  return [...new Set(instances.map(i => pandOsmId(i.pand)))].sort();
+  return [...new Set(instances.flatMap(i => [i.pand, ...(i.alsoSuppress ?? [])].map(pandOsmId)))].sort();
 }
 
 /** Far LOD geometry: wall box plus gable prism (ridge along x) or flat slab; metre UVs like the unit mesh. */

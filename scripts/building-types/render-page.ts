@@ -76,8 +76,14 @@ function shot(cam: THREE.PerspectiveCamera, w: number, h: number): string {
   renderer.setSize(w, h); renderer.render(scene, cam); return renderer.domElement.toDataURL('image/png');
 }
 
-function camera(o: {x: number; z: number; y: number; heading: number; pitch: number; hfov: number; w: number; h: number; groundY: number}) {
+/** `sun`: [azimuth from north clockwise, elevation] in degrees (the panorama's own sun, camera-sheets --sun=photo); default the fixed review sun. Below the horizon: sky light only. */
+function camera(o: {x: number; z: number; y: number; heading: number; pitch: number; hfov: number; w: number; h: number; groundY: number; sun?: [number, number]}) {
   extra.clear(); extra.add(ground(o.groundY));
+  if (o.sun) {
+    const az = o.sun[0] * Math.PI / 180, el = Math.max(2, o.sun[1]) * Math.PI / 180;
+    sun.position.set(Math.sin(az) * Math.cos(el) * 100, Math.sin(el) * 100, -Math.cos(az) * Math.cos(el) * 100); // x east, z south
+    sun.intensity = o.sun[1] > 0 ? 2.0 : 0;
+  } else { sun.position.set(-40, 80, 55); sun.intensity = 2.0; }
   const hf = o.hfov * Math.PI / 180, vfov = 2 * Math.atan(Math.tan(hf / 2) * o.h / o.w) * 180 / Math.PI;
   const cam = new THREE.PerspectiveCamera(vfov, o.w / o.h, 0.3, 3000);
   cam.position.set(o.x, o.y, o.z);
