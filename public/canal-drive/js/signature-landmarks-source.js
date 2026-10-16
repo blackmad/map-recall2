@@ -667,12 +667,14 @@ export class SignatureLandmarks {
     }
     // `bagYear` (BAG construction year, published into the placement catalogue from scripts/landmarks/landmark-bag-years.ts)
     // picks the city look's era brick; without it the model keeps the canal brick.
-    return this._recipeLookReady.then(look => { look.apply(gltf.scene, { year: spec?.bagYear ?? null }); gltf.scene.userData.recipeLook = true; return gltf; });
+    // `wallExposure` (street chunks, look/chunkWallExposure.ts): the walls were matched to a photo strip; the sunny look
+    // draws them at that colour normalised to sunlight.
+    return this._recipeLookReady.then(look => { look.apply(gltf.scene, { year: spec?.bagYear ?? null, wallExposure: spec?.wallExposure ?? null }); gltf.scene.userData.recipeLook = true; return gltf; });
   }
 
   /** LOD levels load synchronously into place: dress them too once the city look exists (`?cityLook=1` only). */
   _dressLevel(gltf, spec = null) {
-    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene, { year: spec?.bagYear ?? null }); gltf.scene.userData.recipeLook = true; }
+    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene, { year: spec?.bagYear ?? null, wallExposure: spec?.wallExposure ?? null }); gltf.scene.userData.recipeLook = true; }
     return gltf;
   }
 

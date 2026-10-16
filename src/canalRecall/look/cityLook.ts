@@ -44,6 +44,7 @@ import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
+import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -141,6 +142,10 @@ export type SlotVariantHints = {
    * 0.02-0.03 L light); glass samples the grey measured-glass pane in the measured hue, lifted to the stock pane's lightness (`cityMeasuredGlassTint`).
    */
   source?: TintSource;
+  /** The white a measured tint was recorded under (the `tintWhitePoint` glTF extra), for the sunny look's exposure. */
+  whitePoint?: string | null;
+  /** The model's walls were matched to a photo under this exposure (street chunks, look/chunkWallExposure.ts). */
+  exposure?: WallExposure | null;
 };
 
 /** Brick from this year on samples the 20th-century brick (docs/LOOK.md "One era scheme"). */
@@ -219,10 +224,10 @@ const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
  * with the legacy recipe look) with the review corrections above. Flag off
  * never calls this.
  */
-export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom()): string {
+export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null): string {
   // Sunny look: a measured wall is first brought from its crop's white point to a sunlit white (look/sunny.ts);
   // painted stone and glass keep their own rules.
-  if (isMeasuredTint(slot, source)) return cityTint(slot, sceneSlotHex(slot, hex, source, look), source);
+  if (isMeasuredTint(slot, source)) return cityTint(slot, sceneSlotHex(slot, hex, source, look, white), source);
   const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
   if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
   if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
@@ -233,8 +238,8 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
 }
 
 /** A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. */
-export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom()): [number, number, number, number] {
-  const [r, g, b] = hexToRgb(cityLookTint(slot, hex, source, look));
+export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null): [number, number, number, number] {
+  const [r, g, b] = hexToRgb(photoMatchedWallTint(slot, cityLookTint(slot, hex, source, look, white), exposure, source, look));
   return [r, g, b, 255];
 }
 
@@ -591,11 +596,12 @@ export function slotIneligible(material: any): string | null {
 }
 
 /** Slot + tint a material declares, or (when `infer`) what its name and colour say. Null = leave it. */
-export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource } | null {
+export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource; white?: string } | null {
   const ud = material?.userData ?? {};
   if (isMaterialSlot(ud.materialSlot) && typeof ud.tint === 'string') {
     // Inferred extras written into a GLB only take part under the flag (they are, here).
-    return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(ud.tintSource === 'measured' ? { source: 'measured' as const } : {}) };
+    const measured = ud.tintSource === 'measured';
+    return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(measured ? { source: 'measured' as const } : {}), ...(measured && typeof ud.tintWhitePoint === 'string' ? { white: ud.tintWhitePoint } : {}) };
   }
   if (!infer || slotIneligible(material) || !material.color) return null;
   const tint = '#' + material.color.getHexString();
@@ -606,7 +612,7 @@ export function slotForMaterial(material: any, infer: boolean): { slot: Material
 /** Write `layer` (slot ordinal) and `tint` on a geometry; false when it already carries different ones. */
 export function setSlotAttributes(THREE: any, geometry: any, slot: MaterialSlot, hex: string, hints: SlotVariantHints = {}): boolean {
   const n = geometry.getAttribute('position')?.count ?? 0;
-  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex, hints.source);
+  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex, hints.source, undefined, hints.whitePoint, hints.exposure);
   const prior = geometry.getAttribute('layer'), priorTint = geometry.getAttribute('tint');
   if (prior && priorTint) {
     const same = prior.getX(0) === layer && Math.round(priorTint.getX(0) * 255) === tint[0] && Math.round(priorTint.getY(0) * 255) === tint[1] && Math.round(priorTint.getZ(0) * 255) === tint[2];
@@ -640,7 +646,7 @@ export interface CityLook {
    * landmark materials take the slot their name and colour say). Returns the
    * number of meshes changed.
    */
-  dress(root: any, options: { lit: boolean; infer?: boolean; year?: number | null }): number;
+  dress(root: any, options: { lit: boolean; infer?: boolean; year?: number | null; wallExposure?: WallExposure | null }): number;
   /** The same mesh's material with the highlight on or off. */
   highlighted(material: any, on: boolean): any;
   /** The same mesh's material desaturated (style c's neighbours) or not. */
@@ -702,7 +708,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
     uniforms,
     ready,
     material,
-    dress(root, { lit, infer = false, year = null }) {
+    dress(root, { lit, infer = false, year = null, wallExposure = null }) {
       let changed = 0;
       root.traverse((o: any) => {
         if (!o.isMesh || Array.isArray(o.material) || o.material?.userData?.cityLook) return;
@@ -713,7 +719,8 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         const hasUv = !!geometry.getAttribute('uv');
         if (!hasUv && !geometry.getAttribute('normal')) geometry.computeVertexNormals();
         // Variants: the BAG year picks the brick; an inferred white material takes the smooth render.
-        const hints: SlotVariantHints = { year, white: found.inferred && isWhiteWord(o.material.name), source: found.source };
+        const hints: SlotVariantHints = { year, white: found.inferred && isWhiteWord(o.material.name), source: found.source,
+          ...(found.white ? { whitePoint: found.white } : {}), ...(wallExposure ? { exposure: wallExposure } : {}) };
         if (!setSlotAttributes(THREE, geometry, found.slot, found.tint, hints)) {
           // A geometry shared with another material: give this mesh its own attributes.
           geometry = o.geometry = geometry.clone();

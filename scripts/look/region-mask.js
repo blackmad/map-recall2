@@ -6,12 +6,29 @@
 //   own ground -> (255,0,0); trees -> (0,255,0); everything else drawn by three -> (255,255,0); sky/basemap -> black.
 // The HUD is hidden by the caller (HUD_HIDE_CSS in live-play-shots.mjs). `window.__regionMaskRestore()` puts the
 // materials and the layers back.
+// Suppressed pands: the streamed facades hide a building a landmark or chunk replaces through the per-vertex `hidden`
+// attribute (rendererShared/litFacadeMaterial.ts VERTEX_HIDE: 1 = suppressed). The ID materials discard those vertices
+// the same way (HIDDEN_DISCARD), or the hidden generic prism comes back in the mask and covers the walls drawn in its
+// place (chunk-look lane 2026-10-16: Bilderdijkstraat chunk walls were counted as generic walls).
 (() => {
   const vm = canalRecallGame.vectorMap, frame = vm._sharedFrame, map = vm.map, THREE = frame.THREE;
   const normal = new THREE.MeshNormalMaterial({ flatShading: true });
   const flat = c => new THREE.MeshBasicMaterial({ color: new THREE.Color(c[0] / 255, c[1] / 255, c[2] / 255), toneMapped: false });
   const ground = flat([255, 0, 0]), tree = flat([0, 255, 0]), other = flat([255, 255, 0]);
   [normal, ground, tree, other].forEach(m => { m.side = THREE.DoubleSide; });
+  const HIDDEN_DISCARD = 'if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);';
+  const hideCache = new Map();
+  const hideAware = m => {
+    const c = m.clone();
+    c.onBeforeCompile = s => {
+      s.vertexShader = s.vertexShader.replace('#include <common>', '#include <common>\nattribute float hidden;')
+        .replace('#include <project_vertex>', `#include <project_vertex>\n${HIDDEN_DISCARD}`);
+    };
+    c.customProgramCacheKey = () => 'region-mask-hidden-' + m.uuid;
+    return c;
+  };
+  // A mesh whose geometry carries `hidden` draws the ID material with the discard; every other mesh the plain one.
+  const idMaterial = (o, m) => (o.geometry?.getAttribute?.('hidden') ? (hideCache.get(m) ?? hideCache.set(m, hideAware(m)).get(m)) : m);
   const kindOf = id => /ground/i.test(id) ? 'ground' : /tree/i.test(id) ? 'tree'
     : /facade|building|landmark|roof|recipe|kit|types|tile/i.test(id) ? 'building' : 'other';
   const saved = [], kinds = {};
@@ -22,7 +39,8 @@
       if (!o.material) return;
       saved.push([o, o.material, o.customDepthMaterial]);
       // Meshes whose own shader displaces or culls vertices keep their geometry close enough for a mask.
-      o.material = Array.isArray(o.material) ? o.material.map(() => mat) : mat;
+      const id = idMaterial(o, mat);
+      o.material = Array.isArray(o.material) ? o.material.map(() => id) : id;
     });
   }
   const layers = [];
