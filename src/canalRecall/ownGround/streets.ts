@@ -47,6 +47,8 @@ export type StreetLayer = Surface | 'paint' | 'kerb' | 'tram' | 'bollard';
 export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
   /** Every junction node of the graph (not only the owned ones): the pocket fill looks near them (pockets.ts). */
   junctionPoints: Vec2[];
+  /** Parallel to junctionPoints: the road extent around the node (the widest arm side, metres + 1). */
+  junctionReach: number[];
   stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number; junctions: number; corners: number; markings: MarkingStats };
 };
 
@@ -417,7 +419,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   // vertices only on its two edges spans from the relief beside the deck to the relief beside it and sags under the
   // deck top in the middle; BRU0292 Schottenburchsbrug sat 0.15 m under it).
   const acrossOf = (width: number) => (opts.acrossStep ? Math.max(width > 7 ? 2 : 1, Math.ceil(width / opts.acrossStep)) : undefined);
-  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0, markings: { stopLines: 0, giveWays: 0, teeth: 0, laneLinks: 0, cycleCrossings: 0, blocks: 0, ...(bgt ? { clipped } : {}) } }, junctionPoints: [] as Vec2[] } as StreetMeshes;
+  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0, markings: { stopLines: 0, giveWays: 0, teeth: 0, laneLinks: 0, cycleCrossings: 0, blocks: 0, ...(bgt ? { clipped } : {}) } }, junctionPoints: [] as Vec2[], junctionReach: [] as number[] } as StreetMeshes;
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
   const discDone = new Set<string>();
@@ -534,7 +536,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
-    if (n.kind === 'junction') out.junctionPoints.push(n.p);
+    if (n.kind === 'junction') { out.junctionPoints.push(n.p); out.junctionReach.push(1 + Math.max(0, ...n.arms.map(a => Math.max(a.left, a.right)))); }
     if (n.kind === 'none' || !n.polygon.length) continue;
     const owner = byId.get(n.owner);
     if (!owner || (opts.only && !opts.only(owner))) continue;

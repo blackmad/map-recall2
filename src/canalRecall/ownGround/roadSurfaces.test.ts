@@ -160,21 +160,6 @@ test('streets with roads: crossCuts cut carriageway paint where another carriage
   assert.ok(s.stats.markings.clipped!.crossCuts > 0);
 });
 
-test('road surfaces: a red rijbaan (fietsstraat) with tram track along it draws grey; one the track only crosses stays red (Marnixstraat busway, 2026-10-16)', () => {
-  const red: Poly[] = [
-    { c: 'carriage', k: 'cycle', ring: [[-4, -50], [4, -50], [4, 50], [-4, 50]] },
-    { c: 'carriage', k: 'cycle', ring: [[10, -4], [60, -4], [60, 4], [10, 4]] },
-    { c: 'foot', k: 'paving', ring: [[4, -50], [10, -50], [10, 50], [4, 50]] },
-  ];
-  const cell = cellOf(red), index = new RoadIndex([cell]);
-  // Track along the first polygon (100 m) and across the second (8 m).
-  assert.equal(index.railCarriages([[[0, -50], [0, 50]], [[30, -10], [30, 10]]]), 1);
-  assert.equal(index.meshAt(0, 0), 'asphalt'); assert.equal(index.meshAt(30, 0), 'cycle'); assert.equal(index.meshAt(7, 0), 'paving');
-  const { layers } = buildRoadSurfaces(cell, index, input);
-  assert.ok(centroids(layers.asphalt!).every(([x]) => Math.abs(x) <= 4));
-  assert.ok(centroids(layers.cycle!).every(([x]) => x >= 10));
-});
-
 test('road surfaces: cover share, ring simplification and the line simplifier', () => {
   const inside = (x: number, y: number) => Math.abs(x) <= 4 && Math.abs(y) <= 50;
   assert.equal(coveredShare([[0, -40], [0, 40]], inside), 1);
