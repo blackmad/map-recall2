@@ -1,0 +1,3424 @@
+{
+ "when": "2026-10-16T11:45:05.905Z",
+ "seconds": 90,
+ "device": "desktop",
+ "results": [
+  {
+   "kind": "cold",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2957px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 1.75,
+    "submitted": 2.09,
+    "player": 24.17,
+    "racing": 27.56,
+    "motionStart": 38.12,
+    "motionEnd": 98.13
+   },
+   "frames": {
+    "n": 3055,
+    "p50": 16.7,
+    "p95": 50.1,
+    "p99": 150.1,
+    "over50": 167,
+    "over100": 52,
+    "longestMs": 900,
+    "stalledS": 21.3,
+    "hist": {
+     "<=17": 1833,
+     "17-33": 906,
+     "33-50": 149,
+     "50-100": 115,
+     "100-250": 33,
+     "250-500": 15,
+     ">500": 4
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 2116,
+     "p50": 33.2,
+     "p95": 50,
+     "p99": 116.6,
+     "over50": 102,
+     "over100": 22,
+     "longestMs": 649.9,
+     "stalledS": 10.3,
+     "hist": {
+      "<=17": 1034,
+      "17-33": 852,
+      "33-50": 128,
+      "50-100": 80,
+      "100-250": 16,
+      "250-500": 4,
+      ">500": 2
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 1879,
+     "p50": 16.8,
+     "p95": 50,
+     "p99": 83.4,
+     "over50": 64,
+     "over100": 13,
+     "longestMs": 350,
+     "stalledS": 5.83,
+     "hist": {
+      "<=17": 964,
+      "17-33": 758,
+      "33-50": 93,
+      "50-100": 51,
+      "100-250": 11,
+      "250-500": 2,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 64,
+     "over100": 13
+    },
+    "cadence": {
+     "rafFrames": 1879,
+     "renders": 2185,
+     "gameTicks": 2185,
+     "renderPerFrame": 1.163,
+     "movingRenders": 2185,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 6,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3277,
+      -7435,
+      120
+     ],
+     [
+      -3131,
+      -7018,
+      120
+     ],
+     [
+      -3311,
+      -6885,
+      120
+     ],
+     [
+      -3543,
+      -6804,
+      120
+     ],
+     [
+      -3859,
+      -6648,
+      120
+     ],
+     [
+      -3714,
+      -6252,
+      120
+     ],
+     [
+      -3509,
+      -5991,
+      120
+     ],
+     [
+      -3342,
+      -6075,
+      120
+     ],
+     [
+      -3421,
+      -5778,
+      120
+     ],
+     [
+      -3437,
+      -5450,
+      120
+     ],
+     [
+      -3458,
+      -5051,
+      120
+     ],
+     [
+      -3605,
+      -4685,
+      120
+     ],
+     [
+      -3886,
+      -4684,
+      120
+     ],
+     [
+      -4020,
+      -5003,
+      120
+     ],
+     [
+      -4175,
+      -5374,
+      120
+     ],
+     [
+      -4375,
+      -5637,
+      120
+     ],
+     [
+      -4750,
+      -5487,
+      120
+     ],
+     [
+      -5134,
+      -5353,
+      120
+     ],
+     [
+      -5441,
+      -5208,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 64,
+     "alignedWithStreaming": 48,
+     "byKind": {
+      "treesRebuild": {
+       "hitches": 6,
+       "ms": 144
+      },
+      "chunkInstall": {
+       "hitches": 10,
+       "ms": 77
+      },
+      "labels": {
+       "hitches": 25,
+       "ms": 162
+      },
+      "landmarkRequest": {
+       "hitches": 12,
+       "ms": 21
+      },
+      "groundInstall": {
+       "hitches": 4,
+       "ms": 127
+      },
+      "setFeatures": {
+       "hitches": 13,
+       "ms": 1231
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 134
+      }
+     },
+     "gapsS": [
+      1.1,
+      0.1,
+      0.4,
+      0.3,
+      0.9,
+      2.7,
+      2.6,
+      0.7,
+      0.2,
+      0.5,
+      0.2,
+      0.3,
+      0.1,
+      0.4,
+      0.7,
+      0.5,
+      0.1,
+      0.1,
+      2.5,
+      0.3,
+      0.3,
+      0.8,
+      0.4,
+      0.2,
+      0.5,
+      0.5,
+      0.2,
+      0.7,
+      0.1,
+      0.2,
+      0.2,
+      0.1,
+      0.2,
+      0.1,
+      1.1,
+      0.1,
+      1.2,
+      1.9,
+      3.7,
+      1.5,
+      0.1,
+      0.1,
+      1.2,
+      0.1,
+      0.2,
+      0.1,
+      0.4,
+      0.1,
+      2.3,
+      0.3,
+      0.2,
+      0.6,
+      1,
+      0.1,
+      0.3,
+      0.7,
+      1.7,
+      0.7,
+      2.6,
+      1.8,
+      1,
+      4.8,
+      0.3
+     ]
+    },
+    "events": {
+     "labels": {
+      "n": 234,
+      "ms": 1574,
+      "maxMs": 11.6
+     },
+     "landmarkRequest": {
+      "n": 164,
+      "ms": 267,
+      "maxMs": 6.2
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 491,
+      "maxMs": 27.9
+     },
+     "chunkInstall": {
+      "n": 59,
+      "ms": 358,
+      "maxMs": 17.7
+     },
+     "groundDecks": {
+      "n": 6,
+      "ms": 14,
+      "maxMs": 3.2
+     },
+     "groundOverlays": {
+      "n": 5,
+      "ms": 9,
+      "maxMs": 2.3
+     },
+     "groundInstall": {
+      "n": 15,
+      "ms": 266,
+      "maxMs": 41.5
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 989,
+      "maxMs": 196.8
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 134,
+      "maxMs": 134.2
+     }
+    },
+    "longTasks": {
+     "n": 41,
+     "totalMs": 3779,
+     "over100": 12,
+     "longestMs": 343
+    }
+   },
+   "longTasks": {
+    "n": 115,
+    "totalMs": 14401,
+    "over100": 40,
+    "longestMs": 706
+   },
+   "loaf": {
+    "over50": 200,
+    "renderMsInStalls": 11386,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 6082
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 3166
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1908
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 1619
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 1225
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 789
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 699
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 546
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 542
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 412
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 389
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 333
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 248
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 234
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 184
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ three-buildings.bundle.js t",
+      "ms": 184
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 159
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 151
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 143
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 113
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 112
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 108
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 105
+     },
+     {
+      "k": "user-callback IdleRequestCallback @ signature-landmarks.bundle.js n",
+      "ms": 86
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 74
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 53.3,
+     "ms": 350,
+     "scripts": [
+      "329ms FrameRequestCallback e @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.6,
+     "ms": 283,
+     "scripts": [
+      "230ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.7,
+     "ms": 250,
+     "scripts": [
+      "329ms FrameRequestCallback e @building-tiles.bundle.js",
+      "10ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.4,
+     "ms": 233,
+     "scripts": [
+      "138ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "27ms Response.arrayBuffer.then @building-style.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 53.9,
+     "ms": 167,
+     "scripts": [
+      "213ms FrameRequestCallback r @building-tiles.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 77.6,
+     "ms": 150,
+     "scripts": [
+      "115ms Response.arrayBuffer.then @three.bundle.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 71.9,
+     "ms": 133,
+     "scripts": [
+      "109ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 80.2,
+     "ms": 133,
+     "scripts": [
+      "107ms FrameRequestCallback @game.js",
+      "24ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 55.3,
+     "ms": 133,
+     "scripts": [
+      "64ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 76.9,
+     "ms": 133,
+     "scripts": [
+      "111ms FrameRequestCallback @game.js",
+      "22ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 62.2,
+     "ms": 117,
+     "scripts": [
+      "91ms FrameRequestCallback @game.js",
+      "28ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 57.9,
+     "ms": 117,
+     "scripts": [
+      "86ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 56.4,
+     "ms": 117,
+     "scripts": [
+      "96ms FrameRequestCallback @game.js",
+      "25ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 56.2,
+     "ms": 100,
+     "scripts": [
+      "75ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 59.1,
+     "ms": 100,
+     "scripts": [
+      "96ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 69.5,
+     "ms": 100,
+     "scripts": [
+      "39ms Response.arrayBuffer.then @three.bundle.js",
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 69.1,
+     "ms": 83,
+     "scripts": [
+      "73ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 69.6,
+     "ms": 83,
+     "scripts": [
+      "39ms Response.arrayBuffer.then @three.bundle.js",
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 39.9,
+     "ms": 83,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 49,
+     "ms": 83,
+     "scripts": [
+      "32ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback e @building-tiles.bundle.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 75.2,
+     "ms": 83,
+     "scripts": [
+      "31ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "28ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "23ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 49.4,
+     "ms": 83,
+     "scripts": [
+      "50ms FrameRequestCallback @game.js",
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 67.6,
+     "ms": 83,
+     "scripts": [
+      "55ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 74,
+     "ms": 83,
+     "scripts": [
+      "41ms Response.arrayBuffer.then @three.bundle.js",
+      "29ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 40.4,
+     "ms": 83,
+     "scripts": [
+      "38ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 40.7,
+     "ms": 83,
+     "scripts": [
+      "55ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 72.2,
+     "ms": 83,
+     "scripts": [
+      "69ms FrameRequestCallback @maplibre-gl.js",
+      "10ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "6ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 74.1,
+     "ms": 83,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "14ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 68.9,
+     "ms": 83,
+     "scripts": [
+      "32ms FrameRequestCallback @maplibre-gl.js",
+      "15ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 57.1,
+     "ms": 67,
+     "scripts": [
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 66,
+     "ms": 67,
+     "scripts": [
+      "30ms Response.arrayBuffer.then @three.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 47.7,
+     "ms": 67,
+     "scripts": [
+      "26ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "25ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 54.8,
+     "ms": 67,
+     "scripts": [
+      "33ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 59.2,
+     "ms": 67,
+     "scripts": [
+      "96ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 40,
+     "ms": 67,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 41.6,
+     "ms": 67,
+     "scripts": [
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 50.8,
+     "ms": 67,
+     "scripts": [
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "16ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "15ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c"
+     ]
+    },
+    {
+     "atS": 57.3,
+     "ms": 67,
+     "scripts": [
+      "34ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js",
+      "10ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 67.6,
+     "ms": 67,
+     "scripts": [
+      "55ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 68.8,
+     "ms": 67,
+     "scripts": [
+      "36ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 69.2,
+     "ms": 67,
+     "scripts": [
+      "73ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 72.4,
+     "ms": 67,
+     "scripts": [
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback t @three-buildings.bundle.js",
+      "9ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 74.5,
+     "ms": 67,
+     "scripts": [
+      "35ms FrameRequestCallback @game.js",
+      "33ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 88.2,
+     "ms": 67,
+     "scripts": [
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "15ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "14ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c"
+     ]
+    },
+    {
+     "atS": 57.7,
+     "ms": 67,
+     "scripts": [
+      "27ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 67.5,
+     "ms": 67,
+     "scripts": [
+      "47ms Response.arrayBuffer.then @three.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 38.8,
+     "ms": 67,
+     "scripts": [
+      "32ms Response.arrayBuffer.then @three.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 47.9,
+     "ms": 67,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 49,
+     "ms": 67,
+     "scripts": [
+      "29ms Response.arrayBuffer.then @three.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 50.6,
+     "ms": 67,
+     "scripts": [
+      "47ms FrameRequestCallback @game.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 55.8,
+     "ms": 67,
+     "scripts": [
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 57.2,
+     "ms": 67,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 73,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 82,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 44.4,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 47,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 50.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 50.7,
+     "ms": 50,
+     "scripts": [
+      "47ms FrameRequestCallback @game.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 55.1,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 57.5,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 58,
+     "ms": 50,
+     "scripts": [
+      "86ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.4,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 83,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 87.8,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 705,
+   "distanceM": 2603,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 13,
+    "built": 29,
+    "buildMsMedian": 313,
+    "installMsMedian": 13.1
+   }
+  },
+  {
+   "kind": "warm",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 2958px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 1.05,
+    "submitted": 3.23,
+    "player": 18.74,
+    "racing": 21.11,
+    "motionStart": 31.67,
+    "motionEnd": 91.69
+   },
+   "frames": {
+    "n": 3302,
+    "p50": 16.7,
+    "p95": 50,
+    "p99": 150.1,
+    "over50": 148,
+    "over100": 47,
+    "longestMs": 700,
+    "stalledS": 18.38,
+    "hist": {
+     "<=17": 2142,
+     "17-33": 896,
+     "33-50": 116,
+     "50-100": 101,
+     "100-250": 33,
+     "250-500": 11,
+     ">500": 3
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 2522,
+     "p50": 16.7,
+     "p95": 50,
+     "p99": 100,
+     "over50": 103,
+     "over100": 25,
+     "longestMs": 683.3,
+     "stalledS": 10.6,
+     "hist": {
+      "<=17": 1454,
+      "17-33": 857,
+      "33-50": 108,
+      "50-100": 78,
+      "100-250": 20,
+      "250-500": 4,
+      ">500": 1
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 2280,
+     "p50": 16.7,
+     "p95": 50,
+     "p99": 83.4,
+     "over50": 65,
+     "over100": 16,
+     "longestMs": 450,
+     "stalledS": 6.22,
+     "hist": {
+      "<=17": 1377,
+      "17-33": 766,
+      "33-50": 72,
+      "50-100": 49,
+      "100-250": 14,
+      "250-500": 2,
+      ">500": 0
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 65,
+     "over100": 16
+    },
+    "cadence": {
+     "rafFrames": 2280,
+     "renders": 2343,
+     "gameTicks": 2343,
+     "renderPerFrame": 1.028,
+     "movingRenders": 2343,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 2,
+      "p95": 6,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3275,
+      -7427,
+      120
+     ],
+     [
+      -3164,
+      -7112,
+      120
+     ],
+     [
+      -3243,
+      -6909,
+      120
+     ],
+     [
+      -3496,
+      -6821,
+      120
+     ],
+     [
+      -3751,
+      -6731,
+      120
+     ],
+     [
+      -3772,
+      -6412,
+      120
+     ],
+     [
+      -3635,
+      -6046,
+      120
+     ],
+     [
+      -3290,
+      -6105,
+      120
+     ],
+     [
+      -3415,
+      -5895,
+      120
+     ],
+     [
+      -3429,
+      -5620,
+      120
+     ],
+     [
+      -3449,
+      -5226,
+      120
+     ],
+     [
+      -3468,
+      -4865,
+      120
+     ],
+     [
+      -3747,
+      -4611,
+      120
+     ],
+     [
+      -3955,
+      -4850,
+      120
+     ],
+     [
+      -4104,
+      -5204,
+      120
+     ],
+     [
+      -4202,
+      -5437,
+      120
+     ],
+     [
+      -4298,
+      -5669,
+      120
+     ],
+     [
+      -4566,
+      -5559,
+      120
+     ],
+     [
+      -4916,
+      -5422,
+      120
+     ],
+     [
+      -5295,
+      -5264,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 65,
+     "alignedWithStreaming": 53,
+     "byKind": {
+      "chunkInstall": {
+       "hitches": 6,
+       "ms": 56
+      },
+      "treesRebuild": {
+       "hitches": 8,
+       "ms": 151
+      },
+      "labels": {
+       "hitches": 34,
+       "ms": 259
+      },
+      "setFeatures": {
+       "hitches": 12,
+       "ms": 1243
+      },
+      "landmarkRequest": {
+       "hitches": 15,
+       "ms": 22
+      },
+      "groundInstall": {
+       "hitches": 7,
+       "ms": 201
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 175
+      },
+      "groundDecks": {
+       "hitches": 4,
+       "ms": 10
+      },
+      "groundBases": {
+       "hitches": 1,
+       "ms": 1
+      },
+      "groundOverlays": {
+       "hitches": 1,
+       "ms": 4
+      }
+     },
+     "gapsS": [
+      0.4,
+      1.9,
+      0.5,
+      6.4,
+      0.7,
+      0.2,
+      0.7,
+      0.5,
+      0.6,
+      0.1,
+      0.7,
+      0.4,
+      0.9,
+      0.5,
+      0.3,
+      1.4,
+      0.1,
+      0.3,
+      0.1,
+      0.2,
+      0.3,
+      0.1,
+      0.7,
+      0.6,
+      0.2,
+      0.3,
+      0.4,
+      1,
+      0.1,
+      3.2,
+      0.6,
+      3.1,
+      1.2,
+      0.2,
+      0.1,
+      0.5,
+      0.1,
+      0.7,
+      0.2,
+      0.1,
+      0.1,
+      0.1,
+      0.5,
+      2.3,
+      2.1,
+      0.1,
+      0.7,
+      0.4,
+      0.6,
+      1.1,
+      0.3,
+      0.2,
+      0.2,
+      0.1,
+      0.1,
+      2.5,
+      10.5,
+      0.4,
+      2,
+      0.5,
+      0.1,
+      1.7,
+      0.1,
+      0.1
+     ]
+    },
+    "events": {
+     "chunkInstall": {
+      "n": 64,
+      "ms": 479,
+      "maxMs": 22.7
+     },
+     "labels": {
+      "n": 233,
+      "ms": 1576,
+      "maxMs": 15.6
+     },
+     "landmarkRequest": {
+      "n": 135,
+      "ms": 199,
+      "maxMs": 3.3
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 462,
+      "maxMs": 29.3
+     },
+     "groundDecks": {
+      "n": 5,
+      "ms": 12,
+      "maxMs": 3.8
+     },
+     "groundOverlays": {
+      "n": 4,
+      "ms": 10,
+      "maxMs": 3.6
+     },
+     "groundInstall": {
+      "n": 15,
+      "ms": 298,
+      "maxMs": 40.8
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 1014,
+      "maxMs": 228.5
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 175,
+      "maxMs": 175.3
+     },
+     "groundBases": {
+      "n": 1,
+      "ms": 1,
+      "maxMs": 1.1
+     }
+    },
+    "longTasks": {
+     "n": 39,
+     "totalMs": 3824,
+     "over100": 11,
+     "longestMs": 441
+    }
+   },
+   "longTasks": {
+    "n": 108,
+    "totalMs": 12429,
+    "over100": 34,
+    "longestMs": 561
+   },
+   "loaf": {
+    "over50": 157,
+    "renderMsInStalls": 9561,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 4586
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 2944
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 1500
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 1162
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 1160
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 636
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 555
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 543
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 428
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 367
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 353
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 197
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 189
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 168
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 160
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 156
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 127
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ three-buildings.bundle.js t",
+      "ms": 125
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 101
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 71
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 70
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 69
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 67
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 64
+     },
+     {
+      "k": "user-callback IdleRequestCallback @ signature-landmarks.bundle.js n",
+      "ms": 62
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 46,
+     "ms": 450,
+     "scripts": [
+      "422ms FrameRequestCallback e @building-tiles.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 46.4,
+     "ms": 300,
+     "scripts": [
+      "422ms FrameRequestCallback e @building-tiles.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 46.7,
+     "ms": 200,
+     "scripts": [
+      "247ms FrameRequestCallback r @building-tiles.bundle.js",
+      "40ms FrameRequestCallback @maplibre-gl.js",
+      "23ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 41.9,
+     "ms": 183,
+     "scripts": [
+      "163ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "13ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 41.7,
+     "ms": 167,
+     "scripts": [
+      "95ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "12ms Response.arrayBuffer.then @building-style.bundle.js"
+     ]
+    },
+    {
+     "atS": 65.3,
+     "ms": 167,
+     "scripts": [
+      "118ms FrameRequestCallback @game.js",
+      "36ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 70.8,
+     "ms": 167,
+     "scripts": [
+      "139ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 73.7,
+     "ms": 167,
+     "scripts": [
+      "105ms FrameRequestCallback @game.js",
+      "57ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 70.3,
+     "ms": 150,
+     "scripts": [
+      "117ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 86.6,
+     "ms": 133,
+     "scripts": [
+      "97ms FrameRequestCallback @game.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 52.5,
+     "ms": 133,
+     "scripts": [
+      "93ms FrameRequestCallback @game.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "7ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 50.4,
+     "ms": 117,
+     "scripts": [
+      "83ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "13ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 89,
+     "ms": 117,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "22ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 49.1,
+     "ms": 117,
+     "scripts": [
+      "59ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 55.6,
+     "ms": 117,
+     "scripts": [
+      "94ms FrameRequestCallback @game.js",
+      "24ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.3,
+     "ms": 100,
+     "scripts": [
+      "80ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 31.8,
+     "ms": 100,
+     "scripts": [
+      "69ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "14ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 49.8,
+     "ms": 100,
+     "scripts": [
+      "84ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 51.3,
+     "ms": 100,
+     "scripts": [
+      "65ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "14ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 87.1,
+     "ms": 100,
+     "scripts": [
+      "82ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 67.5,
+     "ms": 83,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.8,
+     "ms": 83,
+     "scripts": [
+      "62ms FrameRequestCallback @game.js",
+      "15ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 61.4,
+     "ms": 83,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.6,
+     "ms": 83,
+     "scripts": [
+      "71ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 71,
+     "ms": 83,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js",
+      "7ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 62,
+     "ms": 83,
+     "scripts": [
+      "71ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 62.3,
+     "ms": 83,
+     "scripts": [
+      "35ms Response.arrayBuffer.then @three.bundle.js",
+      "33ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 62.5,
+     "ms": 83,
+     "scripts": [
+      "38ms Response.arrayBuffer.then @three.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 68.6,
+     "ms": 83,
+     "scripts": [
+      "30ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "27ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 34.7,
+     "ms": 67,
+     "scripts": [
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js",
+      "6ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 84.2,
+     "ms": 67,
+     "scripts": []
+    },
+    {
+     "atS": 89.1,
+     "ms": 67,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "22ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 41.1,
+     "ms": 67,
+     "scripts": [
+      "19ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "18ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "15ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 60.7,
+     "ms": 67,
+     "scripts": [
+      "40ms Response.arrayBuffer.then @three.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 63,
+     "ms": 67,
+     "scripts": [
+      "31ms Response.arrayBuffer.then @three.bundle.js",
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "10ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 32.3,
+     "ms": 67,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.9,
+     "ms": 67,
+     "scripts": [
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "14ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "14ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c"
+     ]
+    },
+    {
+     "atS": 44.6,
+     "ms": 67,
+     "scripts": [
+      "44ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 48.1,
+     "ms": 67,
+     "scripts": [
+      "48ms FrameRequestCallback @game.js",
+      "13ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 48.6,
+     "ms": 67,
+     "scripts": [
+      "25ms Response.arrayBuffer.then @three.bundle.js",
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 48.6,
+     "ms": 67,
+     "scripts": [
+      "18ms FrameRequestCallback t @three-buildings.bundle.js",
+      "12ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 49.1,
+     "ms": 67,
+     "scripts": [
+      "20ms Promise.resolve @three.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "15ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 59.4,
+     "ms": 67,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "27ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 61.3,
+     "ms": 67,
+     "scripts": [
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 62.4,
+     "ms": 67,
+     "scripts": [
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "15ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 62.6,
+     "ms": 67,
+     "scripts": [
+      "28ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 71.2,
+     "ms": 67,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js",
+      "10ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 84.6,
+     "ms": 67,
+     "scripts": []
+    },
+    {
+     "atS": 87.3,
+     "ms": 67,
+     "scripts": [
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "13ms Response.arrayBuffer.then @three.bundle.js",
+      "10ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 48.8,
+     "ms": 67,
+     "scripts": [
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js",
+      "5ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 52.4,
+     "ms": 67,
+     "scripts": [
+      "27ms FrameRequestCallback t @three-buildings.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 71,
+     "ms": 67,
+     "scripts": [
+      "139ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 34.1,
+     "ms": 67,
+     "scripts": [
+      "53ms FrameRequestCallback @game.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42.6,
+     "ms": 67,
+     "scripts": [
+      "43ms FrameRequestCallback @game.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 50.7,
+     "ms": 67,
+     "scripts": [
+      "15ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.8,
+     "ms": 67,
+     "scripts": [
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback @game.js",
+      "6ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 67.4,
+     "ms": 67,
+     "scripts": [
+      "35ms Response.arrayBuffer.then @three.bundle.js",
+      "24ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 88.9,
+     "ms": 67,
+     "scripts": [
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "28ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 43.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 68.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 69.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 45,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 50.9,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 56.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 70.6,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 1261,
+   "distanceM": 2604,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 13,
+    "built": 29,
+    "buildMsMedian": 350,
+    "installMsMedian": 13.7
+   }
+  },
+  {
+   "kind": "warm2",
+   "throttle": 4,
+   "device": "desktop",
+   "qs": "",
+   "errors": [
+    "route finish dist 3231px dest lm-extract_landmarks_1632187034"
+   ],
+   "reached": "racing",
+   "marksS": {
+    "menuReady": 1.62,
+    "submitted": 5.44,
+    "player": 27.04,
+    "racing": 29.74,
+    "motionStart": 40.85,
+    "motionEnd": 100.88
+   },
+   "frames": {
+    "n": 2822,
+    "p50": 16.7,
+    "p95": 66.7,
+    "p99": 183.4,
+    "over50": 216,
+    "over100": 68,
+    "longestMs": 999.9,
+    "stalledS": 27.35,
+    "hist": {
+     "<=17": 1632,
+     "17-33": 812,
+     "33-50": 162,
+     "50-100": 148,
+     "100-250": 47,
+     "250-500": 14,
+     ">500": 7
+    }
+   },
+   "phases": {
+    "load": {
+     "n": 0,
+     "p50": 0,
+     "p95": 0,
+     "p99": 0,
+     "over50": 0,
+     "over100": 0,
+     "longestMs": 0,
+     "stalledS": 0,
+     "hist": {
+      "<=17": 0,
+      "17-33": 0,
+      "33-50": 0,
+      "50-100": 0,
+      "100-250": 0,
+      "250-500": 0,
+      ">500": 0
+     }
+    },
+    "ride": {
+     "n": 1736,
+     "p50": 33.3,
+     "p95": 66.7,
+     "p99": 150,
+     "over50": 161,
+     "over100": 34,
+     "longestMs": 733.3,
+     "stalledS": 16.19,
+     "hist": {
+      "<=17": 657,
+      "17-33": 775,
+      "33-50": 143,
+      "50-100": 127,
+      "100-250": 27,
+      "250-500": 4,
+      ">500": 3
+     }
+    }
+   },
+   "motion": {
+    "seconds": 60,
+    "frames": {
+     "n": 1547,
+     "p50": 33.3,
+     "p95": 66.6,
+     "p99": 133.3,
+     "over50": 105,
+     "over100": 19,
+     "longestMs": 550,
+     "stalledS": 9.59,
+     "hist": {
+      "<=17": 635,
+      "17-33": 692,
+      "33-50": 115,
+      "50-100": 86,
+      "100-250": 15,
+      "250-500": 3,
+      ">500": 1
+     }
+    },
+    "hitchesPerMin": {
+     "over50": 105,
+     "over100": 19
+    },
+    "cadence": {
+     "rafFrames": 1547,
+     "renders": 2009,
+     "gameTicks": 2009,
+     "renderPerFrame": 1.299,
+     "movingRenders": 2009,
+     "renderedWithoutRiderStep": 0,
+     "stepPx": {
+      "p50": 4,
+      "p95": 6,
+      "max": 6
+     }
+    },
+    "track": [
+     [
+      -3304,
+      -7512,
+      120
+     ],
+     [
+      -3137,
+      -7035,
+      120
+     ],
+     [
+      -3504,
+      -6818,
+      120
+     ],
+     [
+      -3852,
+      -6629,
+      120
+     ],
+     [
+      -3684,
+      -6174,
+      120
+     ],
+     [
+      -3356,
+      -6069,
+      120
+     ],
+     [
+      -3415,
+      -5887,
+      120
+     ],
+     [
+      -3435,
+      -5490,
+      120
+     ],
+     [
+      -3453,
+      -5137,
+      120
+     ],
+     [
+      -3475,
+      -4769,
+      120
+     ],
+     [
+      -3761,
+      -4604,
+      120
+     ],
+     [
+      -3957,
+      -4854,
+      120
+     ],
+     [
+      -4077,
+      -5139,
+      120
+     ],
+     [
+      -4200,
+      -5433,
+      120
+     ],
+     [
+      -4344,
+      -5650,
+      120
+     ],
+     [
+      -4672,
+      -5517,
+      120
+     ],
+     [
+      -4983,
+      -5396,
+      120
+     ]
+    ],
+    "bursts": {
+     "hitches": 105,
+     "alignedWithStreaming": 82,
+     "byKind": {
+      "landmarkRequest": {
+       "hitches": 24,
+       "ms": 39
+      },
+      "labels": {
+       "hitches": 49,
+       "ms": 417
+      },
+      "treesRebuild": {
+       "hitches": 15,
+       "ms": 308
+      },
+      "chunkInstall": {
+       "hitches": 18,
+       "ms": 274
+      },
+      "groundDecks": {
+       "hitches": 2,
+       "ms": 4
+      },
+      "groundOverlays": {
+       "hitches": 1,
+       "ms": 4
+      },
+      "groundInstall": {
+       "hitches": 6,
+       "ms": 133
+      },
+      "setFeatures": {
+       "hitches": 12,
+       "ms": 1247
+      },
+      "tileFlush": {
+       "hitches": 1,
+       "ms": 214
+      }
+     },
+     "gapsS": [
+      0.6,
+      0.1,
+      0.7,
+      0.1,
+      0.4,
+      0.3,
+      0.2,
+      0.4,
+      0.1,
+      0.1,
+      0.1,
+      0.3,
+      0.2,
+      0.1,
+      0.1,
+      0.4,
+      0.2,
+      0.1,
+      0.3,
+      0.7,
+      0.1,
+      0.2,
+      0.1,
+      0.3,
+      0.9,
+      0.1,
+      0.1,
+      0.3,
+      0.1,
+      0.3,
+      0.1,
+      0.1,
+      2.4,
+      0.1,
+      0.3,
+      0.4,
+      0.2,
+      0.1,
+      0.5,
+      0.3,
+      0.4,
+      0.1,
+      0.1,
+      0.3,
+      0.1,
+      0.2,
+      0.5,
+      0.5,
+      0.1,
+      0.2,
+      0.8,
+      0.2,
+      1.4,
+      0.2,
+      1.3,
+      0.6,
+      0.3,
+      0.2,
+      0.2,
+      0.3,
+      0.1,
+      0.4,
+      0.1,
+      0.1,
+      0.2,
+      0.6,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.1,
+      0.4,
+      0.9,
+      0.8,
+      0.1,
+      0.1,
+      0.2,
+      1.2,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.2,
+      0.9,
+      1.2,
+      1.2,
+      0.1,
+      1.4,
+      0.5,
+      0.1,
+      0.1,
+      0.7,
+      0.1,
+      0.6,
+      0.1,
+      1.9,
+      0.3,
+      2,
+      1.1,
+      1.7,
+      0.5,
+      0.2,
+      2.7,
+      1.9
+     ]
+    },
+    "events": {
+     "labels": {
+      "n": 229,
+      "ms": 1762,
+      "maxMs": 16.2
+     },
+     "landmarkRequest": {
+      "n": 155,
+      "ms": 258,
+      "maxMs": 4.1
+     },
+     "treesRebuild": {
+      "n": 26,
+      "ms": 506,
+      "maxMs": 30.9
+     },
+     "chunkInstall": {
+      "n": 63,
+      "ms": 642,
+      "maxMs": 38.5
+     },
+     "groundDecks": {
+      "n": 9,
+      "ms": 16,
+      "maxMs": 2.7
+     },
+     "groundOverlays": {
+      "n": 5,
+      "ms": 10,
+      "maxMs": 3.9
+     },
+     "groundInstall": {
+      "n": 14,
+      "ms": 274,
+      "maxMs": 32.5
+     },
+     "setFeatures": {
+      "n": 11,
+      "ms": 1033,
+      "maxMs": 226.1
+     },
+     "tileFlush": {
+      "n": 1,
+      "ms": 214,
+      "maxMs": 213.6
+     }
+    },
+    "longTasks": {
+     "n": 74,
+     "totalMs": 6355,
+     "over100": 18,
+     "longestMs": 525
+    }
+   },
+   "longTasks": {
+    "n": 184,
+    "totalMs": 20306,
+    "over100": 50,
+    "longestMs": 846
+   },
+   "loaf": {
+    "over50": 255,
+    "renderMsInStalls": 16066,
+    "entries": [
+     {
+      "k": "user-callback FrameRequestCallback @ maplibre-gl.js",
+      "ms": 8042
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ game.js",
+      "ms": 4907
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ ",
+      "ms": 2015
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js e",
+      "ms": 1835
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ three.bundle.js",
+      "ms": 1748
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-tiles.bundle.js",
+      "ms": 912
+     },
+     {
+      "k": "event-listener SCRIPT[src=\"js/own-ground-game.bundle.js\"].onload @ ",
+      "ms": 838
+     },
+     {
+      "k": "user-callback TimerHandler:setTimeout @ three-buildings.bundle.js",
+      "ms": 759
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ building-tiles.bundle.js r",
+      "ms": 517
+     },
+     {
+      "k": "resolve-promise Response.json.then @ osm-loader.js",
+      "ms": 499
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ inventory-trees.bundle.js",
+      "ms": 482
+     },
+     {
+      "k": "user-callback FrameRequestCallback @ three-buildings.bundle.js t",
+      "ms": 365
+     },
+     {
+      "k": "event-listener DOMWindow.onload @ game.js",
+      "ms": 337
+     },
+     {
+      "k": "resolve-promise Response.json.then @ park-landscape.js",
+      "ms": 299
+     },
+     {
+      "k": "event-listener Worker.onmessage @ maplibre-gl.js",
+      "ms": 289
+     },
+     {
+      "k": "resolve-promise Promise.resolve @ three.bundle.js",
+      "ms": 234
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 223
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ game-landmarks.bundle.js?v=20260903c",
+      "ms": 182
+     },
+     {
+      "k": "resolve-promise Response.json.then @ game-route.js?v=20261013a",
+      "ms": 180
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/three-buildings.bundle.js @ three-buildings.bundle.js",
+      "ms": 115
+     },
+     {
+      "k": "resolve-promise Response.arrayBuffer.then @ building-style.bundle.js",
+      "ms": 102
+     },
+     {
+      "k": "classic-script http://127.0.0.1:4544/canal-drive/js/overlay.bundle.js?v=20260908b @ overlay.bundle.js?v=20260908b",
+      "ms": 102
+     },
+     {
+      "k": "resolve-promise Response.json.then @ maplibre-gl.js",
+      "ms": 101
+     },
+     {
+      "k": "user-callback IdleRequestCallback @ signature-landmarks.bundle.js n",
+      "ms": 96
+     },
+     {
+      "k": "event-listener Worker.onmessage @ own-ground-game.bundle.js",
+      "ms": 88
+     }
+    ]
+   },
+   "worst": [
+    {
+     "atS": 59.1,
+     "ms": 550,
+     "scripts": [
+      "498ms FrameRequestCallback e @building-tiles.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 52.9,
+     "ms": 317,
+     "scripts": [
+      "266ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 59.6,
+     "ms": 300,
+     "scripts": [
+      "498ms FrameRequestCallback e @building-tiles.bundle.js",
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 52.7,
+     "ms": 267,
+     "scripts": [
+      "157ms Response.arrayBuffer.then @building-tiles.bundle.js",
+      "32ms FrameRequestCallback @maplibre-gl.js",
+      "23ms Response.arrayBuffer.then @building-style.bundle.js"
+     ]
+    },
+    {
+     "atS": 59.9,
+     "ms": 217,
+     "scripts": [
+      "151ms Worker.onmessage @maplibre-gl.js",
+      "53ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 82.5,
+     "ms": 183,
+     "scripts": [
+      "130ms Response.arrayBuffer.then @three.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 67.8,
+     "ms": 150,
+     "scripts": [
+      "108ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 62.4,
+     "ms": 150,
+     "scripts": [
+      "102ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 64.1,
+     "ms": 150,
+     "scripts": [
+      "118ms FrameRequestCallback @game.js",
+      "27ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 85.4,
+     "ms": 150,
+     "scripts": [
+      "103ms FrameRequestCallback @game.js",
+      "48ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42.8,
+     "ms": 133,
+     "scripts": [
+      "101ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js",
+      "6ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 45,
+     "ms": 133,
+     "scripts": [
+      "103ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.1,
+     "ms": 133,
+     "scripts": [
+      "151ms Worker.onmessage @maplibre-gl.js",
+      "53ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 61.3,
+     "ms": 133,
+     "scripts": [
+      "109ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 63.7,
+     "ms": 133,
+     "scripts": [
+      "84ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 65.8,
+     "ms": 133,
+     "scripts": [
+      "77ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "36ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 44.6,
+     "ms": 117,
+     "scripts": [
+      "80ms FrameRequestCallback @game.js",
+      "33ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 67.4,
+     "ms": 117,
+     "scripts": [
+      "90ms FrameRequestCallback @game.js",
+      "29ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 77.2,
+     "ms": 117,
+     "scripts": [
+      "97ms FrameRequestCallback @game.js",
+      "19ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 41,
+     "ms": 100,
+     "scripts": [
+      "85ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "36ms FrameRequestCallback @game.js",
+      "21ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 42.4,
+     "ms": 100,
+     "scripts": [
+      "35ms FrameRequestCallback @maplibre-gl.js",
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.3,
+     "ms": 100,
+     "scripts": [
+      "32ms FrameRequestCallback @maplibre-gl.js",
+      "12ms Response.arrayBuffer.then @three.bundle.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 82,
+     "ms": 100,
+     "scripts": [
+      "92ms FrameRequestCallback @game.js",
+      "16ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 82.7,
+     "ms": 100,
+     "scripts": [
+      "130ms Response.arrayBuffer.then @three.bundle.js",
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.8,
+     "ms": 100,
+     "scripts": [
+      "40ms FrameRequestCallback @maplibre-gl.js",
+      "39ms Response.arrayBuffer.then @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 48.7,
+     "ms": 100,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js",
+      "5ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 61.5,
+     "ms": 100,
+     "scripts": [
+      "55ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 67.7,
+     "ms": 100,
+     "scripts": [
+      "72ms FrameRequestCallback @game.js",
+      "26ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 79.2,
+     "ms": 84,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "5ms Worker.onmessage @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 41.6,
+     "ms": 83,
+     "scripts": [
+      "18ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "6ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 45.6,
+     "ms": 83,
+     "scripts": [
+      "24ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 46.9,
+     "ms": 83,
+     "scripts": [
+      "32ms FrameRequestCallback @game.js",
+      "30ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 53.8,
+     "ms": 83,
+     "scripts": [
+      "65ms FrameRequestCallback @game.js",
+      "23ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 55.1,
+     "ms": 83,
+     "scripts": [
+      "62ms FrameRequestCallback @game.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 60.6,
+     "ms": 83,
+     "scripts": [
+      "34ms Promise.resolve @three.bundle.js",
+      "33ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 46.3,
+     "ms": 83,
+     "scripts": [
+      "37ms FrameRequestCallback @maplibre-gl.js",
+      "32ms Response.arrayBuffer.then @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 72.8,
+     "ms": 83,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "7ms Worker.onmessage @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 74.8,
+     "ms": 83,
+     "scripts": [
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 46.4,
+     "ms": 83,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "13ms FrameRequestCallback t @three-buildings.bundle.js",
+      "12ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 48.3,
+     "ms": 83,
+     "scripts": [
+      "35ms FrameRequestCallback @game.js",
+      "28ms FrameRequestCallback @maplibre-gl.js",
+      "7ms TimerHandler:setTimeout @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 55,
+     "ms": 83,
+     "scripts": [
+      "62ms FrameRequestCallback @game.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 55.2,
+     "ms": 83,
+     "scripts": [
+      "20ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "19ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c",
+      "16ms Response.arrayBuffer.then @game-landmarks.bundle.js?v=20260903c"
+     ]
+    },
+    {
+     "atS": 57.6,
+     "ms": 83,
+     "scripts": [
+      "46ms FrameRequestCallback @maplibre-gl.js",
+      "26ms FrameRequestCallback @game.js",
+      "5ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 67.5,
+     "ms": 83,
+     "scripts": [
+      "90ms FrameRequestCallback @game.js",
+      "29ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 80.3,
+     "ms": 83,
+     "scripts": [
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "23ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "21ms Response.arrayBuffer.then @inventory-trees.bundle.js"
+     ]
+    },
+    {
+     "atS": 42.5,
+     "ms": 83,
+     "scripts": [
+      "35ms FrameRequestCallback @maplibre-gl.js",
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.8,
+     "ms": 83,
+     "scripts": [
+      "40ms FrameRequestCallback @maplibre-gl.js",
+      "39ms Response.arrayBuffer.then @three.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 51.9,
+     "ms": 83,
+     "scripts": [
+      "34ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "29ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 53.3,
+     "ms": 83,
+     "scripts": [
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 62.1,
+     "ms": 83,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "16ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 60.7,
+     "ms": 83,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js",
+      "7ms Worker.onmessage @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 47.9,
+     "ms": 67,
+     "scripts": [
+      "39ms FrameRequestCallback t @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.5,
+     "ms": 67,
+     "scripts": [
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 76.9,
+     "ms": 67,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "24ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.1,
+     "ms": 67,
+     "scripts": [
+      "26ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "15ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 51.3,
+     "ms": 67,
+     "scripts": [
+      "32ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 62,
+     "ms": 67,
+     "scripts": [
+      "33ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 43.9,
+     "ms": 67,
+     "scripts": [
+      "31ms FrameRequestCallback @maplibre-gl.js",
+      "18ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 45.3,
+     "ms": 67,
+     "scripts": [
+      "32ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 56.2,
+     "ms": 67,
+     "scripts": [
+      "44ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 65.9,
+     "ms": 67,
+     "scripts": [
+      "77ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "36ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 66,
+     "ms": 67,
+     "scripts": [
+      "26ms FrameRequestCallback t @three-buildings.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js",
+      "14ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 66.2,
+     "ms": 67,
+     "scripts": [
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "22ms FrameRequestCallback @game.js",
+      "17ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 70.1,
+     "ms": 67,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "21ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 71.3,
+     "ms": 67,
+     "scripts": [
+      "30ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 44.5,
+     "ms": 67,
+     "scripts": [
+      "35ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.4,
+     "ms": 67,
+     "scripts": [
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 62.9,
+     "ms": 67,
+     "scripts": [
+      "25ms Response.arrayBuffer.then @inventory-trees.bundle.js",
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 74.2,
+     "ms": 67,
+     "scripts": [
+      "16ms FrameRequestCallback @maplibre-gl.js",
+      "12ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 74.9,
+     "ms": 67,
+     "scripts": [
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "27ms Response.arrayBuffer.then @three.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 41.6,
+     "ms": 67,
+     "scripts": [
+      "33ms Response.arrayBuffer.then @three.bundle.js",
+      "32ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 44.4,
+     "ms": 67,
+     "scripts": [
+      "35ms Response.arrayBuffer.then @three.bundle.js",
+      "26ms FrameRequestCallback @maplibre-gl.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 45.2,
+     "ms": 67,
+     "scripts": [
+      "32ms Response.arrayBuffer.then @three.bundle.js",
+      "25ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 46.6,
+     "ms": 67,
+     "scripts": [
+      "35ms FrameRequestCallback @maplibre-gl.js",
+      "30ms FrameRequestCallback @game.js",
+      "7ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 51.2,
+     "ms": 67,
+     "scripts": [
+      "32ms Response.arrayBuffer.then @three.bundle.js",
+      "30ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 52.1,
+     "ms": 67,
+     "scripts": [
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 61,
+     "ms": 67,
+     "scripts": [
+      "19ms FrameRequestCallback @maplibre-gl.js",
+      "17ms FrameRequestCallback t @three-buildings.bundle.js",
+      "9ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 71.4,
+     "ms": 67,
+     "scripts": [
+      "18ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 73.3,
+     "ms": 67,
+     "scripts": [
+      "30ms Response.arrayBuffer.then @three.bundle.js",
+      "20ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 47.9,
+     "ms": 67,
+     "scripts": [
+      "39ms FrameRequestCallback t @three-buildings.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 43.7,
+     "ms": 50,
+     "scripts": [
+      "21ms FrameRequestCallback @maplibre-gl.js",
+      "18ms FrameRequestCallback t @three-buildings.bundle.js",
+      "8ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 44.2,
+     "ms": 50,
+     "scripts": [
+      "29ms FrameRequestCallback @maplibre-gl.js",
+      "24ms Response.arrayBuffer.then @three.bundle.js"
+     ]
+    },
+    {
+     "atS": 52.2,
+     "ms": 50,
+     "scripts": [
+      "34ms Response.arrayBuffer.then @three.bundle.js",
+      "22ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 56,
+     "ms": 50,
+     "scripts": [
+      "38ms FrameRequestCallback @maplibre-gl.js",
+      "10ms FrameRequestCallback @game.js",
+      "8ms FrameRequestCallback e @building-tiles.bundle.js"
+     ]
+    },
+    {
+     "atS": 67.6,
+     "ms": 50,
+     "scripts": [
+      "30ms FrameRequestCallback @maplibre-gl.js",
+      "11ms FrameRequestCallback @game.js",
+      "9ms Worker.onmessage @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 68,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 68.9,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 73.3,
+     "ms": 50,
+     "scripts": [
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "7ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 73.4,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 43.3,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 46.6,
+     "ms": 50,
+     "scripts": [
+      "27ms FrameRequestCallback @maplibre-gl.js",
+      "18ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "6ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 48,
+     "ms": 50,
+     "scripts": [
+      "46ms FrameRequestCallback @maplibre-gl.js",
+      "11ms TimerHandler:setTimeout @three-buildings.bundle.js",
+      "9ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 48.2,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 48.7,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 48.8,
+     "ms": 50,
+     "scripts": [
+      "33ms FrameRequestCallback @maplibre-gl.js",
+      "6ms FrameRequestCallback @game.js",
+      "5ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 51.6,
+     "ms": 50,
+     "scripts": [
+      "46ms FrameRequestCallback @maplibre-gl.js",
+      "5ms FrameRequestCallback @game.js"
+     ]
+    },
+    {
+     "atS": 53.7,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 54,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 54.5,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 57.8,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 61.1,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 63.7,
+     "ms": 50,
+     "scripts": [
+      "17ms FrameRequestCallback @maplibre-gl.js",
+      "17ms Worker.onmessage @three-buildings.bundle.js",
+      "12ms FrameRequestCallback t @three-buildings.bundle.js"
+     ]
+    },
+    {
+     "atS": 65,
+     "ms": 50,
+     "scripts": [
+      "42ms FrameRequestCallback t @three-buildings.bundle.js",
+      "6ms FrameRequestCallback @maplibre-gl.js"
+     ]
+    },
+    {
+     "atS": 74.1,
+     "ms": 50,
+     "scripts": []
+    },
+    {
+     "atS": 87.3,
+     "ms": 50,
+     "scripts": []
+    }
+   ],
+   "attribution": null,
+   "alignErrMs": null,
+   "heapMB": 1098,
+   "distanceM": 2509,
+   "railM": 5125,
+   "ownGround": {
+    "cells": 13,
+    "built": 28,
+    "buildMsMedian": 453,
+    "installMsMedian": 19.1
+   }
+  }
+ ]
+}

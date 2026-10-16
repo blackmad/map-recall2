@@ -21,7 +21,9 @@
 // supplies the camera; `GroundHost` is the thin adapter the page implements
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
-import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './groundStore.js';
+import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
+import { readGroundTile } from './heightField.js';
+import { boundingSphereOf } from '../geometryBounds.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
@@ -172,7 +174,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, reliefTile: this.reliefLoader(root) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -195,6 +197,40 @@ export class OwnGround {
     if (this.centre) this.updateResidency();
   }
 
+  /**
+   * Relief tiles for the main-thread surface (poses, building bases, overlays) are fetched and decoded in a
+   * second instance of the ground worker, not on the main thread. Falls back to the main thread without workers.
+   */
+  private reliefWorker: Worker | null = null;
+  private readonly reliefWaiting = new Map<number, { resolve: (v: { heights: Float32Array; bytes: number }) => void; reject: (e: Error) => void }>();
+  private reliefIds = 0;
+  private reliefLoader(root: string): ReliefTileLoader | undefined {
+    if (typeof Worker === 'undefined' || !this.opts.workerUrl) return undefined;
+    return (path, index, entry) => {
+      if (!this.reliefWorker) {
+        try {
+          const worker = new Worker(this.opts.workerUrl);
+          worker.onmessage = event => {
+            const msg = event.data, waiting = this.reliefWaiting.get(msg.id);
+            if (msg.type !== 'relief' || !waiting) return;
+            this.reliefWaiting.delete(msg.id);
+            if (msg.heights) waiting.resolve({ heights: msg.heights, bytes: msg.bytes });
+            else waiting.reject(new Error(msg.error ?? 'relief tile failed'));
+          };
+          this.reliefWorker = worker;
+        } catch (error) {
+          this.stats.errors.push(`relief worker unavailable: ${String(error)}`);
+          return httpFetchBytes(root)(path).then(bytes => ({ heights: readGroundTile(index, entry, bytes), bytes: bytes.byteLength }));
+        }
+      }
+      const id = ++this.reliefIds;
+      return new Promise((resolve, reject) => {
+        this.reliefWaiting.set(id, { resolve, reject });
+        this.reliefWorker!.postMessage({ type: 'relief', id, url: `${root}/${path}`, index: { stepM: index.stepM, tileSizeM: index.tileSizeM, samples: index.samples, predictor: index.predictor }, entry: [...entry] });
+      });
+    };
+  }
+
   dispose(full = true): void {
     for (const key of [...this.resident.keys()]) this.drop(key);
     for (const key of [...this.far.keys()]) this.dropFar(key);
@@ -205,9 +241,13 @@ export class OwnGround {
     this.prepared.clear();
     this.worker?.terminate();
     this.worker = null;
+    this.reliefWorker?.terminate();
+    this.reliefWorker = null;
+    for (const w of this.reliefWaiting.values()) w.reject(new Error('own ground disposed'));
+    this.reliefWaiting.clear();
     this.workerReady = false;
     this.gen++;
-    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); }
+    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; }
   }
 
   setEnabled(enabled: boolean): void {
@@ -236,6 +276,7 @@ export class OwnGround {
   /** Per frame, from the shared frame's main pass. */
   private beforeRender(zoom: number): boolean {
     this.zoom = zoom;
+    if (!this.precompiled) this.precompile();
     if (this.opts.transition) {
       this.blendUniform.value = this.blend.update(zoom);
       this.presenceUniform.value = presenceOf(this.blendUniform.value);
@@ -520,6 +561,48 @@ export class OwnGround {
     Object.assign(this.base, M);
   }
 
+  /**
+   * Every ground program a cell can use (each layer's base, its water cut, and the dissolve of either),
+   * compiled once when the frame first draws, and held by keeper materials for the session. Before this,
+   * each arriving cell compiled its dissolve programs in the frame it first drew, and released them when
+   * its dissolve ended, so the next cell compiled them again: ~90 program links in the first seconds of a
+   * ride and three's first-use link waits inside MapLibre's frame (docs/perf-motion-stutter-20261016.md).
+   * Same materials and cache keys as the cells', so the cells reuse these programs.
+   */
+  private precompiled = false;
+  private readonly keepers: any[] = [];
+  private precompile(): void {
+    const renderer = this.frame?.renderer;
+    if (!renderer || typeof this.frame.compile !== 'function') return;
+    this.precompiled = true;
+    const THREE = this.THREE;
+    const uniforms = { waterMask: { value: null }, maskOrigin: { value: new THREE.Vector2(0, 0) }, maskSize: { value: new THREE.Vector2(1, 1) } };
+    // The cells' attribute set (geometry()): normals and uvs are part of a program's key, colours where a layer uses them.
+    const plain = new THREE.BufferGeometry();
+    plain.setAttribute('position', new THREE.BufferAttribute(new Float32Array(9), 3));
+    plain.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(9), 3));
+    plain.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(6), 2));
+    const coloured = plain.clone();
+    coloured.setAttribute('color', new THREE.BufferAttribute(new Float32Array(9), 3));
+    const group = new THREE.Group();
+    for (const layer of GROUND_LAYERS) {
+      const base = this.base[layer];
+      if (!base) continue;
+      const variants = [base];
+      if (CUT[layer]) variants.push(this.cutMaterial(layer, uniforms));
+      for (const v of [...variants]) variants.push(this.fadeMaterial(v, { value: 1 }));
+      for (const m of variants) {
+        const mesh = new THREE.Mesh(m.vertexColors ? coloured : plain, m);
+        mesh.receiveShadow = true;
+        mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
+        group.add(mesh);
+        if (m !== base) this.keepers.push(m);
+      }
+    }
+    group.updateMatrixWorld(true);
+    this.frame.compile(group);
+  }
+
   /** A clone of a base material that discards fragments over water by this cell's mask. */
   private cutMaterial(layer: GroundLayer, uniforms: Record<string, { value: unknown }>): any {
     const channel = CUT[layer]!;
@@ -632,7 +715,9 @@ export class OwnGround {
       g.setAttribute('color', new THREE.BufferAttribute(c, 3));
     }
     g.setIndex(new THREE.BufferAttribute(p.indices, 1));
-    g.computeBoundingSphere();
+    // three's computeBoundingSphere, without its per-vertex attribute accessors (geometryBounds.ts).
+    const sphere = boundingSphereOf(p.positions);
+    g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     return g;
   }
 
