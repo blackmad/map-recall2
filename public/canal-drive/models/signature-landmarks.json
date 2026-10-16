@@ -48577,14 +48577,14 @@
         "depthMetres": 48.522464752197266,
         "depthCoverage": 1.4271313162410961
       },
-      "triangles": 7436,
-      "bytes": 113276,
+      "triangles": 7228,
+      "bytes": 110392,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0c77e3b173b19e93",
+        "sourceHash": "0f26022c827780cb",
         "buildVersion": 2,
-        "bytes": 33260,
-        "triangles": 1316
+        "bytes": 32652,
+        "triangles": 1284
       }
     },
     "wilhelmina-ruiterstandbeeld": {
