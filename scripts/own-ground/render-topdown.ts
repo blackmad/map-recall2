@@ -3,7 +3,9 @@
 // them, the water-mask discard applied as the shader does. For reviewing road
 // drawing at a named spot without the game.
 //
-//   npx tsx scripts/own-ground/render-topdown.ts <lng> <lat> [halfM=120] [mPerPx=0.25] [out.png] [--lod=1] [--bgt]
+//   npx tsx scripts/own-ground/render-topdown.ts <lng> <lat> [halfM=120] [mPerPx=0.25] [out.png] [--lod=1] [--bgt] [--roads]
+//
+// `--roads` builds with the roads-v1 survey (the game's `?roads=bgt`).
 //
 // `--bgt` also writes `<out>-bgt.png`: the BGT wegdeel polygons of the same
 // view (ground truth; tiles from fetch-bgt.ts under BGT_DIR or the source-data archive).
@@ -75,7 +77,7 @@ async function main(): Promise<void> {
   const [lng, lat] = [Number(args[0]), Number(args[1])], half = Number(args[2] ?? 120), res = Number(args[3] ?? 0.25);
   const outPath = args[4] ?? `artifacts/own-ground-roads/topdown-${lng}-${lat}.png`;
   const ROOT = 'public/data/extracts/amsterdam';
-  const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); });
+  const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, process.argv.includes('--roads') ? { roads: true } : {});
   await store.init();
   const [x, y] = toLocal(lng, lat);
   // Every cell whose ways can reach the view (a way lives in the cell of its midpoint).

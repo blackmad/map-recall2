@@ -18,7 +18,7 @@ import earcut from 'earcut';
 import { drapeTriangles, emptyMesh, vertex, type MeshArrays } from './drape.js';
 import {
   basculeColour, basculeLeaves, basculeStyle, basculeUnit, basementEnd, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
-  type BridgeKind, type KitRow, type RGB,
+  type BridgeFacts, type BridgeKind, type KitRow, type RegisterHint, type RGB,
 } from './bridgeKit.js';
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
 import { sideWidths } from '../elevation/bridgeDeck.js';
@@ -105,7 +105,7 @@ export function floatingEnds(deck: DeckSurface, overWater: WaterTest, height: He
  * clipped to the street bands drawn there or the water: on land the top stays under the bands. Inside the footprint
  * the land is culled (groundCell underOwnSurface), so the top keeps the road's half-width there (no hole).
  */
-export const WIDEN_PAST_WATER_M = 1.0, WIDTH_PROBE_M = 0.5, BAND_MARGIN_M = 0.3, DECK_CORE_M = 1.0;
+export const WIDEN_PAST_WATER_M = 1.0, WIDTH_PROBE_M = 0.5, BAND_MARGIN_M = 0.3, DECK_CORE_M = 1.0, WIDTH_DIP_M = 3;
 export type BandTest = (x: number, y: number) => boolean;
 export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: BandTest): { left: Float64Array; right: Float64Array } {
   const p = deck.profile, n = p.s.length, core = [new Float64Array(n), new Float64Array(n)], wet = [new Float64Array(n), new Float64Array(n)];
@@ -131,6 +131,17 @@ export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: Ban
     for (let j = i - 1; j >= 0 && p.s[i] - p.s[j] <= WIDEN_PAST_WATER_M; j--) v = Math.max(v, wet[side][j]);
     for (let j = i + 1; j < n && p.s[j] - p.s[i] <= WIDEN_PAST_WATER_M; j++) v = Math.max(v, wet[side][j]);
     out[side][i] = Math.max(core[side][i], Math.min(sideWidths(p, i)[side], v));
+  }
+  // A dip between two stations at the outline, at most WIDTH_DIP_M apart along the span, is the mask's speckle under the
+  // deck (a pier footing, the Blauwbrug BRU0236's left side fell from 14.6 to 10.4 m at two stations): it takes the
+  // narrower of the two, so the edge and the parapet on it run straight past it.
+  for (const side of [0, 1] as const) {
+    let last = -1;
+    for (let i = 0; i < n; i++) {
+      if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1] || out[side][i] < sideWidths(p, i)[side] - PARAPET_SETTLE_M) continue;
+      if (last >= 0 && i - last > 1 && p.s[i] - p.s[last] <= WIDTH_DIP_M) for (let j = last + 1; j < i; j++) out[side][j] = Math.max(out[side][j], Math.min(out[side][last], out[side][i]));
+      last = i;
+    }
   }
   return { left: out[0], right: out[1] };
 }
@@ -164,8 +175,68 @@ export function isFlushDeck(deck: DeckSurface, onSpan?: readonly number[]): bool
   return crown - ends < FLUSH_RISE_M;
 }
 
+/**
+ * The parapet's run on each side of a measured deck (user 2026-10-16, Marnixstraat over the Bullebakssluis BRU0160:
+ * "no idea what this bridge is trying to be"). deckWidths widens a side to the outline only where the water reaches
+ * across it; past a skewed quay the span's last stations pull the edge back toward the road, and the parapet, which
+ * followed the edge, turned in across the pavement and the cycle path as two loose stubs at the slab's corners.
+ * A side's run leaves out the end stations where the edge turns in: narrower than the next station inward by more than
+ * PARAPET_TURN times their spacing (and PARAPET_SETTLE_M). (A width test against the water was tried and dropped: the
+ * mask leaves the deck footprints out, so a deck edge over the canal reads as land; BRU0108 lost 39 m of parapet.) It ends on the span's
+ * last station rather than at the deck end when the station beyond the span turns in (rowAt interpolates the end toward
+ * it). Undefined when both sides keep the whole span (every deck whose widths do not turn in at the ends: the kit is
+ * byte-identical).
+ */
+export const PARAPET_SETTLE_M = 0.5, PARAPET_TURN = 2;
+export function parapetRuns(deck: DeckSurface, widths: { left: Float64Array; right: Float64Array }): [[number, number], [number, number]] | undefined {
+  const p = deck.profile, n = p.s.length, idx: number[] = [];
+  for (let i = 0; i < n; i++) if (p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1]) idx.push(i);
+  if (idx.length < 2) return undefined;
+  let changed = false;
+  const runs = [widths.left, widths.right].map((w): [number, number] => {
+    // Station i turns in against station j (its neighbour inward).
+    const turnsIn = (i: number, j: number) => w[j] - w[i] > Math.max(PARAPET_SETTLE_M, PARAPET_TURN * Math.abs(p.s[j] - p.s[i]));
+    let a = 0, b = idx.length - 1;
+    while (a < b && turnsIn(idx[a], idx[a + 1])) a++;
+    while (b > a && turnsIn(idx[b], idx[b - 1])) b--;
+    const s0 = a > 0 || (idx[0] > 0 && p.s[idx[0]] > p.deck[0] && turnsIn(idx[0] - 1, idx[0])) ? p.s[idx[a]] : p.deck[0];
+    const s1 = b < idx.length - 1 || (idx[idx.length - 1] < n - 1 && p.s[idx[idx.length - 1]] < p.deck[1] && turnsIn(idx[idx.length - 1] + 1, idx[idx.length - 1])) ? p.s[idx[b]] : p.deck[1];
+    if (s0 !== p.deck[0] || s1 !== p.deck[1]) changed = true;
+    return [s0, s1];
+  });
+  return changed ? [runs[0], runs[1]] : undefined;
+}
+
+/**
+ * A canal-mouth street bridge (user 2026-10-16, BRU0160 and its panoramas): a flush deck carrying a whole street
+ * (carriageway, cycle paths, pavements) over a short span, at least MOUTH_ACROSS_M across its drawn deck over the water
+ * and MOUTH_RATIO times as wide as its span is long, pre-1940 or masonry (register). Its parapets are low brick walls
+ * with a stone coping and an iron railing on them, brick piers at the quays (ParapetClass 'brick-rail'), no lamps; under
+ * a steel or concrete deck the face over the water is one flat girder opening between brick abutments, not an arch.
+ * Measured facts (bridgeHints) win where they say otherwise.
+ */
+/** One flat opening per ~9 m of water (the L.H. Sarlouisbrug BRU0240: 16 m, two openings on one pier). */
+export const MOUTH_ACROSS_M = 12, MOUTH_RATIO = 1.5, MOUTH_BAY_M = 9;
+export function canalMouth(deck: DeckSurface, flush: boolean, roadWidth: number, hint: RegisterHint | null, widths?: { left: Float64Array; right: Float64Array }): boolean {
+  const p = deck.profile;
+  if (!flush || roadWidth < 3.5 || hint?.light || hint?.movable || !(hint?.classic || hint?.material === 'masonry' || p.family === 'masonry-arch')) return false;
+  const ext = p.water ?? p.deck, across: number[] = [];
+  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= ext[0] && p.s[i] <= ext[1]) { const [l, r] = widths ? [widths.left[i], widths.right[i]] : sideWidths(p, i); across.push(l + r); }
+  if (!across.length) return false;
+  across.sort((a, b) => a - b);
+  const w = across[across.length >> 1];
+  return w >= MOUTH_ACROSS_M && w >= MOUTH_RATIO * (p.deck[1] - p.deck[0]);
+}
+/** A canal-mouth bridge's facts: the brick-rail parapet, and a flat girder opening under a steel or concrete deck. */
+export function mouthFacts(facts: BridgeFacts | null, masonry: boolean, waterM: number): BridgeFacts {
+  return {
+    ...(facts ?? { named: false }), parapet: facts?.parapet ?? 'brick-rail',
+    ...(!masonry && !facts?.arches ? { arches: Math.max(1, Math.round(waterM / MOUTH_BAY_M)), shapes: ['flat' as const] } : {}),
+  };
+}
+
 /** What one measured deck drew (named regressions and the lane report). */
-export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number; topRows: number }
+export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number; topRows: number; mouth?: boolean; parapetSides?: [[number, number], [number, number]] }
 
 /**
  * One measured deck. `ground` is the relief without decks (for burying the
@@ -206,11 +277,13 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
   }
   const roadWidths = onSpan.map(i => 2 * p.halfWidth[i]).sort((a, b) => a - b), width = roadWidths[roadWidths.length >> 1] ?? 2 * p.halfWidth[idx[0]];
   const hump = Math.max(0, ...onSpan.map(i => p.h[i])), waterM = spans.reduce((s, [a, b]) => s + Math.max(0, b - a), 0);
-  const facts = bridgeFacts(p.id);
+  const flush = isFlushDeck(deck, onSpan), material = materialOf(p.family, hint);
+  const mouth = canalMouth(deck, flush, width, hint, widths);
+  const facts = mouth ? mouthFacts(bridgeFacts(p.id), material === 'masonry', waterM) : bridgeFacts(p.id);
   const kind = measuredKind(p.family, width, hump, waterM, hint, facts);
-  const flush = isFlushDeck(deck, onSpan);
-  const { mesh, info: k } = buildKit({ id: p.id, kind, material: materialOf(p.family, hint), rows, parapet: [p.deck[0], p.deck[1]], spans, waterZ, lod: detail ? 0 : 1, facts, ...(flush ? { flush } : {}), ...(crossing ? { crossing } : {}) });
-  info?.push({ id: p.id, kind, triangles: k.triangles, level: k.level, railingPosts: k.railingPosts, piers: k.piers, arches: k.arches, abutments: k.abutments, lamps: k.lamps, topRows: idx.length });
+  const sides = widths ? parapetRuns(deck, widths) : undefined;
+  const { mesh, info: k } = buildKit({ id: p.id, kind, material, rows, parapet: [p.deck[0], p.deck[1]], spans, waterZ, lod: detail ? 0 : 1, facts, ...(flush ? { flush } : {}), ...(sides ? { parapetSides: sides } : {}), ...(crossing ? { crossing } : {}) });
+  info?.push({ id: p.id, kind, triangles: k.triangles, level: k.level, railingPosts: k.railingPosts, piers: k.piers, arches: k.arches, abutments: k.abutments, lamps: k.lamps, topRows: idx.length, ...(mouth ? { mouth } : {}), ...(sides ? { parapetSides: sides } : {}) });
   return mesh;
 }
 
