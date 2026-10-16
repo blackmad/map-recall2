@@ -37,6 +37,10 @@ export interface LandmarkCardProps {
   hasArticle?: boolean;
   articleLabel?: string;
   hasImage?: boolean;
+  /** Cap on body lines (a folded card keeps one fact in two lines). */
+  maxBodyLines?: number;
+  /** The card holds more than its body: a folded card still opens to the rest. */
+  hasMore?: boolean;
 }
 
 export interface LandmarkCardLayout {
@@ -174,7 +178,7 @@ export function measureLandmarkCard(
   const columnWidth = Math.max(60, cardWidth - textLeft - PAD_RIGHT);
   const bodyWidth = Math.min(columnWidth, BODY_MEASURE);
   const body = props.body || '';
-  const maxLines = hasImage ? PHOTO_BODY_LINES : (body ? BARE_BODY_LINES : 0);
+  const maxLines = !body ? 0 : Math.min(props.maxBodyLines ?? Infinity, hasImage ? PHOTO_BODY_LINES : BARE_BODY_LINES);
   const wrapped = wrapToLines(body, bodyWidth, maxLines, measure, BODY_FONT);
   // The card shows a prefix of the body; whether anything was left behind is
   // what decides if there is a bigger version worth opening.
@@ -198,7 +202,7 @@ export function measureLandmarkCard(
   if (props.hasArticle) pushBadge(props.articleLabel || 'W  WIKIPEDIA', 'article');
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
-  if (truncated) pushBadge(MORE_LABEL, 'more');
+  if (truncated || props.hasMore) pushBadge(MORE_LABEL, 'more');
   // The header row shares its right end with the close "×".
   const headerColumn = columnWidth - CLOSE_ROOM;
   badges = fitBadges(badges, headerColumn, measure);

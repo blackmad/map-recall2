@@ -533,7 +533,7 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/game/routeKnowledge.ts
   var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
-  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}) {
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}, bridges = []) {
     const index = /* @__PURE__ */ new Map();
     const add = (entry, type) => {
       index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
@@ -541,6 +541,18 @@ Map source: ${osmUrl(places[i][0])}`);
     for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
     for (const entry of streets) if (eligible(entry)) add(entry, "street");
     for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    for (const bridge of bridges) {
+      if (!bridge.name || !bridge.wikipediaExtract) continue;
+      if (bridge.wikipediaExtractLang && bridge.wikipediaExtractLang !== "en") continue;
+      index.set(`bridge:${normalise(bridge.name)}`, {
+        id: bridge.id,
+        name: bridge.name,
+        type: "bridge",
+        wikipediaExtract: bridge.wikipediaExtract,
+        ...bridge.wikipediaUrl ? { wikipediaUrl: bridge.wikipediaUrl } : {},
+        ...bridge.wikipediaImageUrl ? { wikipediaImageUrl: bridge.wikipediaImageUrl } : {}
+      });
+    }
     for (const origin of origins) {
       if (!origin.en) continue;
       const type = origin.kind;
@@ -48053,6 +48065,23 @@ Map source: ${osmUrl(places[i][0])}`);
     if (source !== "street" && source !== "drive-by") return false;
     return elapsed >= CARD_COLLAPSE_AFTER_SECONDS;
   }
+  var FOLDED_BODY_LINES = 2;
+  function foldedCardLine(notice) {
+    const detail = (notice.detail || "").trim();
+    const fact = notice.factTexts?.find((text2) => text2 && detail.endsWith(text2.trim()));
+    if (fact) return fact.trim();
+    const text = detail || (notice.longDetail || "").trim();
+    return firstSentence(text);
+  }
+  var ABBREVIATIONS = /\b(St|Sts|Dr|Mr|Mrs|Ms|Prof|Jr|Sr|ca|c|no|nr|vol|Ste|Mt)\.$/i;
+  function firstSentence(text) {
+    const end = /[.!?](?=\s+[A-Z0-9"'‘“(])/g;
+    for (let m = end.exec(text); m; m = end.exec(text)) {
+      const head = text.slice(0, m.index + 1);
+      if (!ABBREVIATIONS.test(head)) return head.trim();
+    }
+    return text.trim();
+  }
 
   // src/canalRecall/game/postcardPacing.ts
   var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
@@ -48475,7 +48504,7 @@ Map source: ${osmUrl(places[i][0])}`);
           typeof localStorage === "undefined" ? null : localStorage
         );
         const normalise = (name) => this._normaliseCanalName(name);
-        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
+        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise, [], {}, bridgeFeatures);
         this.streetKnowledge = knowledge;
         const deferredJson = (name) => fetch(url(name)).then((response) => readJson(response, null)).catch(() => null);
         void Promise.all([
@@ -48497,7 +48526,8 @@ Map source: ${osmUrl(places[i][0])}`);
               waterFeatures,
               normalise,
               originsFile?.origins ?? [],
-              bridgeRegister?.bridges ?? {}
+              bridgeRegister?.bridges ?? {},
+              bridgeFeatures
             );
           }
           if (brandedPois) this.vectorMap.setBrandedPois(brandedPois);
@@ -48702,17 +48732,18 @@ Map source: ${osmUrl(places[i][0])}`);
       };
       const card = cards.measureLandmarkCard({
         name: lm.name,
-        body: collapsed ? "" : lm.longDetail || lm.detail || cards.placeOnlyDetail(
+        body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
           lm.type,
           this.currentNeighborhood,
           this._cityDisplayName()
         ),
         category: lm.type ? lm.type.toUpperCase() : "",
-        factKind: collapsed ? void 0 : lm.factKind,
-        extractLang: collapsed ? void 0 : lm.extractLang,
+        factKind: lm.factKind,
+        extractLang: lm.extractLang,
         hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
         articleLabel: lm.wikipediaUrl ? "W  WIKIPEDIA" : "W  SOURCE",
-        hasImage
+        hasImage,
+        ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {}
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({

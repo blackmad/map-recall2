@@ -49,7 +49,7 @@ import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
-import { cardCollapsed } from './teachingPacer';
+import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
@@ -625,8 +625,9 @@ export class GameLandmarkRuntime {
     const alpha = this._landmarkNoticeAlpha;
     if (alpha <= 0) return;
 
-    // A card that opened by itself folds to its title line after a while, so
-    // it stops competing with the corridor. Presentation only: the notice
+    // A card that opened by itself folds after a while, so it stops competing
+    // with the corridor: no photo, and only its fact in two lines
+    // (teachingPacer.foldedCardLine); a title alone read as "no info". Presentation only: the notice
     // keeps its full text for the expanded panel, and a card the rider
     // clicked open never folds (see teachingPacer.cardCollapsed).
     const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
@@ -636,17 +637,18 @@ export class GameLandmarkRuntime {
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
     const card = cards.measureLandmarkCard({
       name: lm.name,
-      body: collapsed ? '' : lm.longDetail || lm.detail || cards.placeOnlyDetail(
+      body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
         lm.type,
         this.currentNeighborhood,
         this._cityDisplayName(),
       ),
       category: lm.type ? lm.type.toUpperCase() : '',
-      factKind: collapsed ? undefined : lm.factKind,
-      extractLang: collapsed ? undefined : lm.extractLang,
+      factKind: lm.factKind,
+      extractLang: lm.extractLang,
       hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
       articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
       hasImage,
+      ...(collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || '').trim() !== foldedCardLine(lm) } : {}),
     }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly

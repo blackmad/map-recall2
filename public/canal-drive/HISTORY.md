@@ -19,6 +19,17 @@ the spelling key folds a trailing -sluis into -brug (within 150 m only):
 Vier Heemskinderensluis, 7 m from the Vier Heemskinderenbrug and the same
 bridge on nl.wikipedia, was asked twice; 416 → 415.
 
+## A folded drive-by card keeps its fact (2026-10-16)
+
+User (2026-10-16), on the Multatuli card that folded to its title after 8 s:
+"needs a fact". A drive-by or street card still folds (no photo, so the
+corridor stays clear), but keeps the fact it was telling in up to two lines
+(`teachingPacer.foldedCardLine`: the rotated fact without its opening sentence,
+else the card text's first sentence, abbreviations like "St." kept whole), its
+fact-kind and language chips, and "more ›" while the full text is longer.
+Two lines rather than one: one line cut most facts mid-sentence. Named
+regression on the Multatuli card in `teachingPacer.test.ts`; Storybook states
+`LandmarkCardFolded` and `LandmarkCardFoldedMobile`. `check:canal` 159/159.
 ## HUD: a riding radar instead of the city minimap; pill centring, labels under cards, corner buttons tucked (2026-10-16)
 
 User (2026-10-16): "destination not vertically centered, zimmerterrein label
