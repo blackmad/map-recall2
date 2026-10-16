@@ -1,0 +1,289 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:20:11.030Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012092172",
+   "addresses": [
+    "Bellamystraat 14A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 14A-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000580023"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809206725,
+     "lngLat": [
+      4.8669004,
+      52.3674178
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14A-H",
+      "addr:postcode": "1053BL",
+      "addr:street": "Bellamystraat",
+      "name": "Topido",
+      "phone": "+31 20 683 0816",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.topido.com/"
+     },
+     "fetchedAt": "2026-10-16T11:20:11.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012104328",
+   "addresses": [
+    "Bellamystraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000580019"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145798",
+   "addresses": [
+    "Bellamystraat 12A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 12A-H",
+     "use": "industriefunctie",
+     "areaM2": 140,
+     "bagId": "0363010000580015"
+    },
+    {
+     "address": "Ten Katestraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001005901"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834771,
+     "lngLat": [
+      4.866602,
+      52.3675521
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23",
+      "addr:postcode": "1053BW",
+      "addr:street": "Ten Katestraat",
+      "name": "Abraham Bloemen & Planten",
+      "shop": "florist"
+     },
+     "fetchedAt": "2026-10-16T11:20:11.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236187",
+   "addresses": [
+    "Bellamystraat 10",
+    "Bellamystraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 10-H",
+     "use": "industriefunctie",
+     "areaM2": 235,
+     "bagId": "0363010000580002"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8736261229,
+     "lngLat": [
+      4.8671499,
+      52.3674571
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10",
+      "addr:postcode": "1053BL",
+      "addr:street": "Bellamystraat",
+      "name": "Sener Bikes",
+      "rental": "yes",
+      "second_hand": "yes",
+      "shop": "bicycle",
+      "website": "https://sener-bike.business.site/"
+     },
+     "fetchedAt": "2026-10-16T11:20:11.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154386",
+   "addresses": [
+    "Bellamystraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001030043"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4472338608,
+     "lngLat": [
+      4.8672336,
+      52.3674829
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8",
+      "addr:postcode": "1053BL",
+      "addr:street": "Bellamystraat",
+      "shop": "cheese"
+     },
+     "fetchedAt": "2026-10-16T11:20:11.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153267",
+   "addresses": [
+    "Bellamystraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000579987"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158488",
+   "addresses": [
+    "Bellamystraat 2",
+    "Bellamystraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 2-H",
+     "use": "winkelfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001001198"
+    },
+    {
+     "address": "Bellamystraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012087650"
+    },
+    {
+     "address": "Bellamystraat 4-H",
+     "use": "kantoorfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012087651"
+    },
+    {
+     "address": "Bellamyplein 40",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012087652"
+    },
+    {
+     "address": "Bellamystraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 146,
+     "bagId": "0363010012113543"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809212000,
+     "lngLat": [
+      4.8674251,
+      52.3675543
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1053BL",
+      "addr:street": "Bellamystraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam West",
+      "brand": "The Breakfast Club",
+      "brand:website": "https://thebreakfastclub.nl",
+      "brand:wikidata": "Q138774027",
+      "cuisine": "breakfast",
+      "email": "bellamystraat@thebreakfastclub.nl",
+      "indoor_seating": "yes",
+      "name": "The Breakfast Club",
+      "opening_hours": "Mo-Su 08:00-17:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 2234933",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.thebreakfastclub.nl/amsterdam/west"
+     },
+     "fetchedAt": "2026-10-16T11:20:11.030Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 8736261228,
+     "lngLat": [
+      4.8673604,
+      52.3675218
+     ],
+     "tags": {
+      "beauty": "nails",
+      "name": "Nail studio",
+      "shop": "beauty",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-16T11:20:11.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1039 @@
+{
+ "face": "kate-37-101",
+ "street": "Ten Katestraat",
+ "library": "bellamy",
+ "stripDate": "2019-12-09",
+ "seconds": 2.12,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012154173",
+   "address": "Ten Katestraat 37",
+   "builtYear": 1890,
+   "widthM": 5.01,
+   "eavesM": 17.4,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6c5854",
+    "wallRaw": "#6c615c",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 4.38,
+      "topWidthM": 0.1,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.28,
+    "voidShare": 0.08,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1890, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 17.4 m = 5 storeys of 3.48 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.149 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156336",
+   "address": "Ten Katestraat 39",
+   "builtYear": 1890,
+   "widthM": 4.95,
+   "eavesM": 17.2,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": "#878585",
+    "wallRaw": "#6d615a",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 4.77,
+      "topWidthM": 0.2,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.215,
+    "voidShare": 0.07,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1890, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 17.2 m = 5 storeys of 3.44 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.11 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156544",
+   "address": "Ten Katestraat 41",
+   "builtYear": 1894,
+   "widthM": 4.95,
+   "eavesM": 17.17,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8a8c8f",
+    "wallRaw": "#6a5d58",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 5.6,
+      "topWidthM": 0.1,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.179,
+    "voidShare": 0.05,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 17.17 m = 5 storeys of 3.43 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.09 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154285",
+   "address": "Ten Katestraat 43",
+   "builtYear": 1894,
+   "widthM": 4.96,
+   "eavesM": 16.88,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#544d42",
+    "wallRaw": "#6b625b",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.85,
+      "riseM": 5.8,
+      "topWidthM": 0.28,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.237,
+    "voidShare": 0.05,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 16.88 m = 5 storeys of 3.38 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.127 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154389",
+   "address": "Ten Katestraat 45",
+   "builtYear": 1894,
+   "widthM": 4.94,
+   "eavesM": 16.94,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#4e5151",
+    "wallRaw": "#555453",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 271,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 5.97,
+      "topWidthM": 0.1,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.203,
+    "voidShare": 0.05,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 16.94 m = 5 storeys of 3.39 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.08 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.105 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145751",
+   "address": "Ten Katestraat 47",
+   "builtYear": 1894,
+   "widthM": 14.84,
+   "eavesM": 17.08,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#50443f",
+    "wallRaw": "#605551",
+    "skyline": {
+     "eavesM": 16.3,
+     "eavesRow": 221,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 5.32,
+      "topWidthM": 0.55,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.135,
+    "voidShare": 0.02,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 14.84 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 14.84 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 17.08 m = 5 storeys of 3.42 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.34 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.09 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167027",
+   "address": "Ten Katestraat 53",
+   "builtYear": 1894,
+   "widthM": 4.37,
+   "eavesM": 16.24,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#786f65",
+    "wallRaw": "#504644",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 272,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 6.6,
+      "topWidthM": 0.1,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.088,
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.37 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.37 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.24 m = 5 storeys of 3.25 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.67 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.031 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155390",
+   "address": "Ten Katestraat 55",
+   "builtYear": 1894,
+   "widthM": 4.25,
+   "eavesM": 14.33,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#645149",
+    "wallRaw": "#514744",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 272,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 6.4,
+      "topWidthM": 0.05,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.041,
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.25 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.25 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.33 m = 5 storeys of 2.87 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.036 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165679",
+   "address": "Ten Katestraat 57",
+   "builtYear": 1894,
+   "widthM": 4.35,
+   "eavesM": 14.37,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#61554e",
+    "wallRaw": "#594c48",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 281,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.22,
+      "topWidthM": 0.23,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.146,
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.35 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.35 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.37 m = 5 storeys of 2.87 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.16 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.134 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161372",
+   "address": "Ten Katestraat 59",
+   "builtYear": 1894,
+   "widthM": 4.32,
+   "eavesM": 16.16,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#674f46",
+    "wallRaw": "#654e47",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 278,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 6.55,
+      "topWidthM": 0.2,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.099,
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.32 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.32 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.16 m = 5 storeys of 3.23 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.67 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154178",
+   "address": "Ten Katestraat 61",
+   "builtYear": 1894,
+   "widthM": 4.27,
+   "eavesM": 16.3,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#605654",
+    "wallRaw": "#524943",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 873,
+     "confidence": 0.06,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.07,
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.27 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.27 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.3 m = 5 storeys of 3.26 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.23 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.045 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158689",
+   "address": "Ten Katestraat 63",
+   "builtYear": 1894,
+   "widthM": 4.2,
+   "eavesM": 16.22,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#78665d",
+    "wallRaw": "#544c46",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 873,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.072,
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.2 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.2 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.22 m = 5 storeys of 3.24 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.07 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.043 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167006",
+   "address": "Ten Katestraat 65",
+   "builtYear": 1894,
+   "widthM": 4.31,
+   "eavesM": 16.25,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#826e66",
+    "wallRaw": "#706156",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 873,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.114,
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1894, type 1928-1935; frontage 4.31 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1928-1935",
+     "frontage 4.31 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.25 m = 5 storeys of 3.25 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.78 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.09 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098626",
+   "address": "Ten Katestraat 67",
+   "builtYear": 2006,
+   "widthM": 30.6,
+   "eavesM": 18.76,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#5b5657",
+    "wallRaw": "#585552",
+    "skyline": {
+     "eavesM": 18.23,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.67,
+      "topWidthM": 0.72,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 18,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.071,
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2006, type 1928-1935; frontage 30.6 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2006, type 1928-1935",
+     "frontage 30.6 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 18.76 m = 5 storeys of 3.75 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.045 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 18 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

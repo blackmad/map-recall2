@@ -1,0 +1,838 @@
+{
+ "face": "bellamy-33-63",
+ "street": "Bellamystraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 0.84,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236969",
+   "address": "Bellamystraat 33",
+   "builtYear": 1895,
+   "widthM": 14.96,
+   "eavesM": 12.33,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#caaf9b",
+    "wallRaw": "#a69983",
+    "skyline": {
+     "eavesM": 11.6,
+     "eavesRow": 245,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.33,
+      "topWidthM": 1.8,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 7,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.561,
+    "voidShare": 0.14,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 14.96 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "frontage 14.96 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.33 m = 4 storeys of 3.08 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.378 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156662",
+   "address": "Bellamystraat 37A",
+   "builtYear": 1895,
+   "widthM": 7.41,
+   "eavesM": 12.45,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#edceba",
+    "wallRaw": "#e9c8b4",
+    "skyline": {
+     "eavesM": 11.75,
+     "eavesRow": 239,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.2,
+      "topWidthM": 1.15,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.499,
+    "voidShare": 0.22,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 7.41 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "frontage 7.41 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.45 m = 4 storeys of 3.11 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.27 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.189 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155719",
+   "address": "Bellamystraat 41",
+   "builtYear": 1895,
+   "widthM": 4.03,
+   "eavesM": 10.76,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#9f887c",
+    "wallRaw": "#91887b",
+    "skyline": {
+     "eavesM": 11.63,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 1.72,
+      "topWidthM": 0.7,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.515,
+    "voidShare": 0.13,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1895, type 1928-1935; frontage 4.03 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1928-1935",
+     "frontage 4.03 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.76 m = 4 storeys of 2.69 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.64 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.316 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158344",
+   "address": "Bellamystraat 43",
+   "builtYear": 1928,
+   "widthM": 4.03,
+   "eavesM": 12.29,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#927a6d",
+    "wallRaw": "#998c7e",
+    "skyline": {
+     "eavesM": 11.68,
+     "eavesRow": 242,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.27,
+      "topWidthM": 1.77,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.525,
+    "voidShare": 0.17,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165408",
+   "address": "Bellamystraat 43A",
+   "builtYear": 1928,
+   "widthM": 9.37,
+   "eavesM": 10.83,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#9d877a",
+    "wallRaw": "#9d8f80",
+    "skyline": {
+     "eavesM": 11.55,
+     "eavesRow": 247,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 1.4,
+      "topWidthM": 0.78,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.583,
+    "voidShare": 0.17,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 9.37 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 9.37 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.83 m = 4 storeys of 2.71 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.314 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236899",
+   "address": "Bellamystraat 49",
+   "builtYear": 1928,
+   "widthM": 10.71,
+   "eavesM": 10.96,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#a69282",
+    "wallRaw": "#bdac9f",
+    "skyline": {
+     "eavesM": 11.57,
+     "eavesRow": 246,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 5.05,
+      "topWidthM": 1,
+      "centre": 0.15
+     }
+    },
+    "stucco": true,
+    "bands": 1,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.62,
+    "voidShare": 0.12,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 10.71 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.71 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.96 m = 4 storeys of 2.74 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.535 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012250623",
+   "address": "Bellamystraat 51",
+   "builtYear": 1893,
+   "widthM": 8.52,
+   "eavesM": 13.84,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#eeded3",
+    "wallRaw": "#e6c9b4",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 184,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.2,
+      "topWidthM": 2.15,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 10,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.6,
+    "voidShare": 0.37,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 37 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156988",
+   "address": "Bellamystraat 55",
+   "builtYear": 1893,
+   "widthM": 4.2,
+   "eavesM": 13.75,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#a28073",
+    "wallRaw": "#878676",
+    "skyline": {
+     "eavesM": 16.7,
+     "eavesRow": 41,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1.03,
+      "topWidthM": 0.7,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.423,
+    "voidShare": 0.03,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1893, type 1928-1935; frontage 4.2 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1893, type 1928-1935",
+     "frontage 4.2 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.75 m = 4 storeys of 3.44 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.359 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166763",
+   "address": "Bellamystraat 57",
+   "builtYear": 1893,
+   "widthM": 4.31,
+   "eavesM": 13.78,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#cab5aa",
+    "wallRaw": "#c5b7ae",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.584,
+    "voidShare": 0.08,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1893, type 1928-1935; frontage 4.31 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1893, type 1928-1935",
+     "frontage 4.31 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.78 m = 4 storeys of 3.44 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.13 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.479 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156322",
+   "address": "Bellamystraat 59",
+   "builtYear": 1893,
+   "widthM": 4,
+   "eavesM": 12.31,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#686a6b",
+    "wallRaw": "#b1795d",
+    "skyline": {
+     "eavesM": 12.07,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.85,
+      "topWidthM": 0.6,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.242,
+    "voidShare": 0.06,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1893, type 1928-1935; frontage 4 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1893, type 1928-1935",
+     "frontage 4 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.31 m = 4 storeys of 3.08 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.49 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158097",
+   "address": "Bellamystraat 61",
+   "builtYear": 1893,
+   "widthM": 4,
+   "eavesM": 12.31,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#b56e53",
+    "wallRaw": "#be8267",
+    "skyline": {
+     "eavesM": 11.93,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 1,
+      "topWidthM": 0.25,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.239,
+    "voidShare": 0.08,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1893, type 1928-1935; frontage 4 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1893, type 1928-1935",
+     "frontage 4 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.31 m = 4 storeys of 3.08 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.46 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.067 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160044",
+   "address": "Bellamystraat 63",
+   "builtYear": 1893,
+   "widthM": 8.24,
+   "eavesM": 6.85,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#6d5e4a",
+    "wallRaw": "#544b39",
+    "skyline": {
+     "eavesM": 7.67,
+     "eavesRow": 402,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.53,
+      "riseM": 3.75,
+      "topWidthM": 0.45,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1893, type 1928-1935; frontage 8.24 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1893, type 1928-1935",
+     "frontage 8.24 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.85 m = 4 storeys of 1.71 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.06 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

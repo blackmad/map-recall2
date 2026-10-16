@@ -1,0 +1,693 @@
+{
+ "face": "heije-40-56",
+ "street": "Jan Pieter Heijestraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 8.32,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "heije-40-56-r1",
+   "pands": [
+    "0363100012127322",
+    "0363100012147904"
+   ],
+   "passed": false,
+   "triangles": 3655
+  },
+  {
+   "face": "heije-40-56-r2",
+   "pands": [
+    "0363100012065334",
+    "0363100012073446",
+    "0363100012064006"
+   ],
+   "passed": false,
+   "triangles": 3547
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012571479",
+   "address": "Jan Pieter Heijestraat 56",
+   "builtYear": 1915,
+   "widthM": 4.97,
+   "eavesM": 14.99,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#948260",
+    "wallRaw": "#67523a",
+    "skyline": {
+     "eavesM": 17.5,
+     "eavesRow": 111,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.38,
+      "topWidthM": 0.68,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.03,
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1916-two-axis scores 0.69 < 0.7 (3DBAG eaves 14.99 m = 4 storeys of 3.75 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5)",
+   "best": {
+    "type": "bellamy-1916-two-axis",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.99 m = 4 storeys of 3.75 m vs the type's 3.45 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.017 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162489",
+   "address": "Jan Pieter Heijestraat 54",
+   "builtYear": 1915,
+   "widthM": 4.03,
+   "eavesM": 15.48,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6f5237",
+    "wallRaw": "#69563e",
+    "skyline": {
+     "eavesM": 19.27,
+     "eavesRow": 40,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.063,
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.104 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.36; glazing storey band off by 0.39; wall family unresolved (#141408 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012162489",
+    "ncc": 0.104,
+    "nccRaw": 0.104,
+    "shiftM": [
+     -0.1,
+     0.3
+    ],
+    "usable": 0.66,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.36",
+     "glazing storey band off by 0.39",
+     "wall family unresolved (#141408 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#141408",
+     "model": "#8d6846",
+     "dL": 0.359
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.331
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127322",
+   "address": "Jan Pieter Heijestraat 52A",
+   "builtYear": 1915,
+   "widthM": 6.82,
+   "eavesM": 13.42,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7f5e43",
+    "wallRaw": "#6a4f33",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.35,
+      "topWidthM": 0.85,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.05,
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.75
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#7f5e43",
+     "evidence": "strip 2024-12-11 span 360-633: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown dormers: skyline rise 1.35 m, width 1.6 m, top 0.85 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012127322",
+    "ncc": 0.302,
+    "nccRaw": 0.302,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.77,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo tall",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#7c5c40",
+     "model": "#9a7251",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.473
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147904",
+   "address": "Jan Pieter Heijestraat 50A",
+   "builtYear": 1915,
+   "widthM": 6.03,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b684d",
+    "wallRaw": "#775b3e",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.28,
+      "topWidthM": 0.78,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.074,
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.57
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#8b684d",
+     "evidence": "strip 2024-12-11 span 633-874: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 127322",
+    "crown dormers: skyline rise 1.28 m, width 1.57 m, top 0.78 m matches no variant"
+   ],
+   "likeness": {
+    "pandId": "0363100012147904",
+    "ncc": 0.332,
+    "nccRaw": 0.332,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.69,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing  mean 0.34 vs photo 0.22"
+    ],
+    "wall": {
+     "photo": "#795d42",
+     "model": "#a47b5b",
+     "dL": 0.133
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.428
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109054",
+   "address": "Jan Pieter Heijestraat 48A",
+   "builtYear": 1915,
+   "widthM": 6.09,
+   "eavesM": 13.39,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b6849",
+    "wallRaw": "#795d3e",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 176,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 4.02,
+      "topWidthM": 0.25,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.067,
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.112 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.12; glazing storey band off by 0.20)",
+   "likeness": {
+    "pandId": "0363100012109054",
+    "ncc": 0.112,
+    "nccRaw": 0.112,
+    "shiftM": [
+     -0.4,
+     -0.35
+    ],
+    "usable": 0.73,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12",
+     "glazing storey band off by 0.20"
+    ],
+    "wall": {
+     "photo": "#7c5d41",
+     "model": "#a57c57",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.391
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147847",
+   "address": "Jan Pieter Heijestraat 46A",
+   "builtYear": 1915,
+   "widthM": 5.61,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#82664d",
+    "wallRaw": "#896c4d",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.35,
+      "topWidthM": 0.9,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.137,
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.103 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.288 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012147847",
+    "ncc": 0.103,
+    "nccRaw": 0.103,
+    "shiftM": [
+     0,
+     0.2
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.288 < 0.45"
+    ],
+    "wall": {
+     "photo": "#7c614b",
+     "model": "#9b7a5c",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.288
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065334",
+   "address": "Jan Pieter Heijestraat 44A",
+   "builtYear": 1915,
+   "widthM": 5.35,
+   "eavesM": 13.29,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#85644b",
+    "wallRaw": "#9a7653",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 231,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 1.3,
+      "topWidthM": 0.82,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.193,
+    "voidShare": 0.04,
+    "foliageShare": 0.17
+   },
+   "status": "placed",
+   "type": "bellamy-1916-two-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.91
+   },
+   "placement": {
+    "type": "bellamy-1916-two-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#85644b",
+     "evidence": "strip 2024-12-11 span 1342-1556: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown cornice (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012065334",
+    "ncc": 0.16,
+    "nccRaw": 0.16,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.29 vs photo 0.18",
+     "window shape square vs photo tall",
+     "columns 2 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#83654c",
+     "model": "#9f775a",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": 2
+    },
+    "iou": 0.257
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073446",
+   "address": "Jan Pieter Heijestraat 42A",
+   "builtYear": 1915,
+   "widthM": 6.35,
+   "eavesM": 13.27,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#997659",
+    "wallRaw": "#a4805b",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.4,
+      "topWidthM": 0.75,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.165,
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.57
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#997659",
+     "evidence": "strip 2024-12-11 span 1556-1810: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown dormers: skyline rise 1.4 m, width 1.57 m, top 0.75 m matches no variant"
+   ],
+   "likeness": {
+    "pandId": "0363100012073446",
+    "ncc": 0.294,
+    "nccRaw": 0.294,
+    "shiftM": [
+     -0.4,
+     0.2
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#937154",
+     "model": "#aa896d",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.374
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064006",
+   "address": "Jan Pieter Heijestraat 40A",
+   "builtYear": 1915,
+   "widthM": 3.72,
+   "eavesM": 13.05,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#a17b5c",
+    "wallRaw": "#a78360",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.25,
+      "topWidthM": 1.27,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.193,
+    "voidShare": 0.02,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "bellamy-1916-two-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1916-two-axis",
+    "measuredPalette": {
+     "brick": "#a17b5c",
+     "evidence": "strip 2024-12-11 span 1810-1959: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown cornice (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012064006",
+    "ncc": 0.276,
+    "nccRaw": 0.276,
+    "shiftM": [
+     -0.35,
+     -0.25
+    ],
+    "usable": 0.76,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#9b7354",
+     "model": "#af8d72",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.461
+   },
+   "challengers": {}
+  }
+ ]
+}

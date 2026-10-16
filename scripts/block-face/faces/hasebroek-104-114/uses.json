@@ -1,0 +1,138 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080765",
+   "addresses": [
+    "Hasebroekstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000659707"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236316",
+   "addresses": [
+    "Hasebroekstraat 112A",
+    "Hasebroekstraat 112B",
+    "Hasebroekstraat 112C",
+    "Hasebroekstraat 112D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 112A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001019765"
+    },
+    {
+     "address": "Hasebroekstraat 112B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001019766"
+    },
+    {
+     "address": "Hasebroekstraat 112C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001019767"
+    },
+    {
+     "address": "Hasebroekstraat 112D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001019768"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233446",
+   "addresses": [
+    "Hasebroekstraat 108",
+    "Hasebroekstraat 110A",
+    "Hasebroekstraat 110B",
+    "Hasebroekstraat 110C",
+    "Hasebroekstraat 110D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 108",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001019758"
+    },
+    {
+     "address": "Hasebroekstraat 110A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001019759"
+    },
+    {
+     "address": "Hasebroekstraat 110B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001019762"
+    },
+    {
+     "address": "Hasebroekstraat 110C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001019763"
+    },
+    {
+     "address": "Hasebroekstraat 110D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001019764"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130888",
+   "addresses": [
+    "Hasebroekstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000659678"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088526",
+   "addresses": [
+    "Hasebroekstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 104-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000659670"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

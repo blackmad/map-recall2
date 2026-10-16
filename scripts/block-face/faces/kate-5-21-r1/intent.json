@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kate-5-21-r1",
+ "street": "Ten Katestraat",
+ "sources": [
+  {
+   "id": "strip-2018-07-29",
+   "kind": "street-panorama",
+   "capturedAt": "2018-07-29",
+   "image": "staging/block-face/kate-5-21-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/kate-5-21/auto-place.json"
+ },
+ "types": [
+  "bellamy-1937-flat-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012144382",
+   "slug": "kate-144382",
+   "address": "Ten Katestraat 13",
+   "type": {
+    "type": "bellamy-1937-flat-row",
+    "measuredPalette": {
+     "brick": "#875e4d",
+     "evidence": "strip 2018-07-29 span 734-979: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-07-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1937-flat-row scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2018-07-29 span 734-979"
+   }
+  },
+  {
+   "pandId": "0363100012083242",
+   "slug": "kate-083242",
+   "address": "Ten Katestraat 15",
+   "type": {
+    "type": "bellamy-1937-flat-row",
+    "measuredPalette": {
+     "brick": "#875d4c",
+     "evidence": "strip 2018-07-29 span 978-1223: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-07-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1937-flat-row scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2018-07-29 span 978-1223"
+   }
+  },
+  {
+   "pandId": "0363100012146613",
+   "slug": "kate-146613",
+   "address": "Ten Katestraat 17",
+   "type": {
+    "type": "bellamy-1937-flat-row",
+    "measuredPalette": {
+     "brick": "#865b4e",
+     "evidence": "strip 2018-07-29 span 1223-1468: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-07-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1937-flat-row scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2018-07-29 span 1223-1468"
+   }
+  },
+  {
+   "pandId": "0363100012129411",
+   "slug": "kate-129411",
+   "address": "Ten Katestraat 19",
+   "type": {
+    "type": "bellamy-1937-flat-row",
+    "measuredPalette": {
+     "brick": "#7a564b",
+     "evidence": "strip 2018-07-29 span 1468-1713: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-07-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1937-flat-row scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2018-07-29 span 1468-1713"
+   }
+  },
+  {
+   "pandId": "0363100012101150",
+   "slug": "kate-101150",
+   "address": "Ten Katestraat 21",
+   "type": {
+    "type": "bellamy-1937-flat-row",
+    "ground": {
+     "shopfront": {
+      "colour": "#82857e",
+      "fascia": true,
+      "name": "Ad Straathof Marktbakkerij",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=bakery); fascia colour measured on the strip 2018-07-29 span 1713-1961"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#815a51",
+     "evidence": "strip 2018-07-29 span 1713-1961: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Ad Straathof Marktbakkerij",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 8727834770,
+     "name": "Ad Straathof Marktbakkerij"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2018-07-29",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1937-flat-row scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2018-07-29 span 1713-1961"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

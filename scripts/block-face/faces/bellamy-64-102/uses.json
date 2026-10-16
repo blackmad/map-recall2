@@ -1,0 +1,326 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:23:10.100Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163531",
+   "addresses": [
+    "Bellamystraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000580194"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158514",
+   "addresses": [
+    "Bellamystraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 100",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000580193"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152375",
+   "addresses": [
+    "Bellamystraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000580191"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163629",
+   "addresses": [
+    "Bellamystraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000580189"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126139",
+   "addresses": [
+    "Bellamystraat 88",
+    "Bellamystraat 90",
+    "Bellamystraat 92A",
+    "Bellamystraat 92B",
+    "Bellamystraat 94A",
+    "Bellamystraat 94B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 88",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756159"
+    },
+    {
+     "address": "Bellamystraat 90",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000756160"
+    },
+    {
+     "address": "Bellamystraat 92A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000756161"
+    },
+    {
+     "address": "Bellamystraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756162"
+    },
+    {
+     "address": "Bellamystraat 94A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000756163"
+    },
+    {
+     "address": "Bellamystraat 94B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000756164"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158680",
+   "addresses": [
+    "Bellamystraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000580177"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164198",
+   "addresses": [
+    "Bellamystraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 84",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010001171321"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163580",
+   "addresses": [
+    "Bellamystraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000580168"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166989",
+   "addresses": [
+    "Bellamystraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 80",
+     "use": "woonfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000580166"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012252233",
+   "addresses": [
+    "Bellamystraat 74",
+    "Bellamystraat 76",
+    "Bellamystraat 76B",
+    "Bellamystraat 76A",
+    "Bellamystraat 78",
+    "Bellamystraat 78B",
+    "Bellamystraat 78A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 74-H",
+     "use": "industriefunctie",
+     "areaM2": 266,
+     "bagId": "0363010000580157"
+    },
+    {
+     "address": "Bellamystraat 76",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000580161"
+    },
+    {
+     "address": "Bellamystraat 78",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000580163"
+    },
+    {
+     "address": "Bellamystraat 76B",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010012125470"
+    },
+    {
+     "address": "Bellamystraat 76A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012125471"
+    },
+    {
+     "address": "Bellamystraat 78B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012125472"
+    },
+    {
+     "address": "Bellamystraat 78A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012125473"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074230",
+   "addresses": [
+    "Bellamystraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 72",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000580062"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065779",
+   "addresses": [
+    "Bellamystraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000580150"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163468",
+   "addresses": [
+    "Bellamystraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000580148"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152980",
+   "addresses": [
+    "Bellamystraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 66",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000580147"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163151",
+   "addresses": [
+    "Bellamystraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 64",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000580145"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

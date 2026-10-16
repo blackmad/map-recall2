@@ -1,0 +1,1022 @@
+{
+ "street": "Bilderdijkkade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:37:37.929Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012247947",
+   "addresses": [
+    "Bilderdijkkade 50E",
+    "Bilderdijkkade 430"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 430",
+     "use": "industriefunctie",
+     "areaM2": 69,
+     "bagId": "0363010000943286"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012247367",
+   "addresses": [
+    "Bilderdijkkade 50D",
+    "Bilderdijkkade 426",
+    "Bilderdijkkade 428"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 426",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943284"
+    },
+    {
+     "address": "Bilderdijkkade 428",
+     "use": "industriefunctie",
+     "areaM2": 229,
+     "bagId": "0363010000943285"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006304397,
+     "lngLat": [
+      4.8695981,
+      52.3680073
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 2.3
+    },
+    {
+     "type": "node",
+     "id": 12006306482,
+     "lngLat": [
+      4.8696209,
+      52.3679688
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 2.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012247852",
+   "addresses": [
+    "Bilderdijkkade 50C",
+    "Bilderdijkkade 424"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 424",
+     "use": "industriefunctie",
+     "areaM2": 458,
+     "bagId": "0363010000943283"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012243774",
+   "addresses": [
+    "Bilderdijkkade 50D",
+    "Bilderdijkkade 50C",
+    "Bilderdijkkade 50B",
+    "Bilderdijkkade 50E",
+    "Bilderdijkkade 50A",
+    "Bilderdijkkade 418",
+    "Bilderdijkkade 420",
+    "Bilderdijkkade 422",
+    "Bilderdijkkade 424",
+    "Bilderdijkkade 426",
+    "Bilderdijkkade 428",
+    "Bilderdijkkade 430",
+    "Bilderdijkkade 432",
+    "Bilderdijkkade 434",
+    "Bilderdijkkade 436",
+    "Bilderdijkkade 438",
+    "Bilderdijkkade 440",
+    "Bilderdijkkade 442"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 418",
+     "use": "kantoorfunctie",
+     "areaM2": 1280,
+     "bagId": "0363010000943280"
+    },
+    {
+     "address": "Bilderdijkkade 420",
+     "use": "kantoorfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000943281"
+    },
+    {
+     "address": "Bilderdijkkade 422",
+     "use": "industriefunctie",
+     "areaM2": 230,
+     "bagId": "0363010000943282"
+    },
+    {
+     "address": "Bilderdijkkade 424",
+     "use": "industriefunctie",
+     "areaM2": 458,
+     "bagId": "0363010000943283"
+    },
+    {
+     "address": "Bilderdijkkade 426",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943284"
+    },
+    {
+     "address": "Bilderdijkkade 428",
+     "use": "industriefunctie",
+     "areaM2": 229,
+     "bagId": "0363010000943285"
+    },
+    {
+     "address": "Bilderdijkkade 430",
+     "use": "industriefunctie",
+     "areaM2": 69,
+     "bagId": "0363010000943286"
+    },
+    {
+     "address": "Bilderdijkkade 432",
+     "use": "industriefunctie",
+     "areaM2": 144,
+     "bagId": "0363010000943287"
+    },
+    {
+     "address": "Bilderdijkkade 434",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943288"
+    },
+    {
+     "address": "Bilderdijkkade 436",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943289"
+    },
+    {
+     "address": "Bilderdijkkade 438",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943290"
+    },
+    {
+     "address": "Bilderdijkkade 440",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943292"
+    },
+    {
+     "address": "Bilderdijkkade 442",
+     "use": "industriefunctie",
+     "areaM2": 93,
+     "bagId": "0363010000943293"
+    },
+    {
+     "address": "Kwakersstraat 3",
+     "use": "kantoorfunctie",
+     "areaM2": 3913,
+     "bagId": "0363010000943305"
+    },
+    {
+     "address": "Kwakersstraat 5",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 9360,
+     "bagId": "0363010012087433"
+    },
+    {
+     "address": "Tollensstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012087436"
+    },
+    {
+     "address": "Tollensstraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012087437"
+    },
+    {
+     "address": "Tollensstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012087438"
+    },
+    {
+     "address": "Tollensstraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012087439"
+    },
+    {
+     "address": "Tollensstraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012087440"
+    },
+    {
+     "address": "Tollensstraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012087441"
+    },
+    {
+     "address": "Tollensstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012087442"
+    },
+    {
+     "address": "Tollensstraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012087443"
+    },
+    {
+     "address": "Tollensstraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012087444"
+    },
+    {
+     "address": "Tollensstraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012087445"
+    },
+    {
+     "address": "Tollensstraat 41D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087446"
+    },
+    {
+     "address": "Tollensstraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012087447"
+    },
+    {
+     "address": "Tollensstraat 41B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087448"
+    },
+    {
+     "address": "Tollensstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012087449"
+    },
+    {
+     "address": "Tollensstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012087450"
+    },
+    {
+     "address": "Tollensstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012087451"
+    },
+    {
+     "address": "Tollensstraat 43D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087452"
+    },
+    {
+     "address": "Tollensstraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012087453"
+    },
+    {
+     "address": "Tollensstraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087454"
+    },
+    {
+     "address": "Tollensstraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012087455"
+    },
+    {
+     "address": "Tollensstraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012087456"
+    },
+    {
+     "address": "Tollensstraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012087457"
+    },
+    {
+     "address": "Tollensstraat 45D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087458"
+    },
+    {
+     "address": "Tollensstraat 45C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012087459"
+    },
+    {
+     "address": "Tollensstraat 45B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087460"
+    },
+    {
+     "address": "Tollensstraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012087461"
+    },
+    {
+     "address": "Tollensstraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012087462"
+    },
+    {
+     "address": "Tollensstraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012087463"
+    },
+    {
+     "address": "Tollensstraat 47D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087464"
+    },
+    {
+     "address": "Tollensstraat 47C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012087465"
+    },
+    {
+     "address": "Tollensstraat 47B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087466"
+    },
+    {
+     "address": "Tollensstraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012087467"
+    },
+    {
+     "address": "Tollensstraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012087468"
+    },
+    {
+     "address": "Tollensstraat 37A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012087469"
+    },
+    {
+     "address": "Tollensstraat 49D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087470"
+    },
+    {
+     "address": "Tollensstraat 49C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012087471"
+    },
+    {
+     "address": "Tollensstraat 49B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012087472"
+    },
+    {
+     "address": "Tollensstraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012087473"
+    },
+    {
+     "address": "Tollensstraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087474"
+    },
+    {
+     "address": "Tollensstraat 45A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012087475"
+    },
+    {
+     "address": "Tollensstraat 47A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087476"
+    },
+    {
+     "address": "Tollensstraat 49A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087477"
+    },
+    {
+     "address": "Tollensstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012087478"
+    },
+    {
+     "address": "Tollensstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012087479"
+    },
+    {
+     "address": "Tollensstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087480"
+    },
+    {
+     "address": "Tollensstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012087481"
+    },
+    {
+     "address": "Tollensstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087482"
+    },
+    {
+     "address": "Tollensstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012087483"
+    },
+    {
+     "address": "Tollensstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012087484"
+    },
+    {
+     "address": "Tollensstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087485"
+    },
+    {
+     "address": "Tollensstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012087486"
+    },
+    {
+     "address": "Tollensstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087487"
+    },
+    {
+     "address": "Tollensstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012087488"
+    },
+    {
+     "address": "Tollensstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012087489"
+    },
+    {
+     "address": "Tollensstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087490"
+    },
+    {
+     "address": "Tollensstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012087491"
+    },
+    {
+     "address": "Tollensstraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087492"
+    },
+    {
+     "address": "Tollensstraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012087493"
+    },
+    {
+     "address": "Tollensstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012087494"
+    },
+    {
+     "address": "Tollensstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087495"
+    },
+    {
+     "address": "Tollensstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012087496"
+    },
+    {
+     "address": "Tollensstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087497"
+    },
+    {
+     "address": "Tollensstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012087498"
+    },
+    {
+     "address": "Tollensstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012087499"
+    },
+    {
+     "address": "Tollensstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087500"
+    },
+    {
+     "address": "Tollensstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012087501"
+    },
+    {
+     "address": "Tollensstraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087502"
+    },
+    {
+     "address": "Tollensstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087503"
+    },
+    {
+     "address": "Tollensstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012087504"
+    },
+    {
+     "address": "Tollensstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012087505"
+    },
+    {
+     "address": "Tollensstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012087506"
+    },
+    {
+     "address": "Kwakersstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087507"
+    },
+    {
+     "address": "Kwakersstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012087508"
+    },
+    {
+     "address": "Kwakersstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087509"
+    },
+    {
+     "address": "Kwakersstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087510"
+    },
+    {
+     "address": "Kwakersstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087511"
+    },
+    {
+     "address": "Kwakersstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012087512"
+    },
+    {
+     "address": "Kwakersstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087513"
+    },
+    {
+     "address": "Kwakersstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087514"
+    },
+    {
+     "address": "Kwakersstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087515"
+    },
+    {
+     "address": "Kwakersstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012087516"
+    },
+    {
+     "address": "Kwakersstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087517"
+    },
+    {
+     "address": "Kwakersstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087518"
+    },
+    {
+     "address": "Kwakersstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087519"
+    },
+    {
+     "address": "Kwakersstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012087520"
+    },
+    {
+     "address": "Kwakersstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012087521"
+    },
+    {
+     "address": "Kwakersstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012087522"
+    },
+    {
+     "address": "Kwakersstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012087523"
+    },
+    {
+     "address": "Kwakersstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012087524"
+    },
+    {
+     "address": "Kwakersstraat 43",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012087525"
+    },
+    {
+     "address": "Kwakersstraat 45",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012087526"
+    },
+    {
+     "address": "Kwakersstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012087527"
+    },
+    {
+     "address": "Kwakersstraat 49",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012087528"
+    },
+    {
+     "address": "Tollensstraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012087535"
+    },
+    {
+     "address": "Tollensstraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012087536"
+    },
+    {
+     "address": "Tollensstraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012087537"
+    },
+    {
+     "address": "Tollensstraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012087538"
+    },
+    {
+     "address": "Tollensstraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012087539"
+    },
+    {
+     "address": "Tollensstraat 41E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087540"
+    },
+    {
+     "address": "Tollensstraat 43E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087541"
+    },
+    {
+     "address": "Tollensstraat 45E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087542"
+    },
+    {
+     "address": "Tollensstraat 47E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087543"
+    },
+    {
+     "address": "Tollensstraat 49E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012087544"
+    },
+    {
+     "address": "Dichtershofje 2",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012089137"
+    },
+    {
+     "address": "Dichtershofje 12",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012089138"
+    },
+    {
+     "address": "Dichtershofje 4",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012089139"
+    },
+    {
+     "address": "Dichtershofje 6",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012089140"
+    },
+    {
+     "address": "Dichtershofje 8",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012089141"
+    },
+    {
+     "address": "Dichtershofje 10",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012089142"
+    },
+    {
+     "address": "Bilderdijkkade 50A-1",
+     "use": "kantoorfunctie",
+     "areaM2": 219,
+     "bagId": "0363010012112012"
+    }
+   ],
+   "units": 180,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006304397,
+     "lngLat": [
+      4.8695981,
+      52.3680073
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 2.3
+    },
+    {
+     "type": "node",
+     "id": 12006306482,
+     "lngLat": [
+      4.8696209,
+      52.3679688
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 2.1
+    },
+    {
+     "type": "node",
+     "id": 12006318252,
+     "lngLat": [
+      4.8693581,
+      52.3683754
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 3.3
+    },
+    {
+     "type": "node",
+     "id": 12006318470,
+     "lngLat": [
+      4.8691528,
+      52.3684195
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012247939",
+   "addresses": [
+    "Bilderdijkkade 50B",
+    "Bilderdijkkade 420",
+    "Bilderdijkkade 422"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 420",
+     "use": "kantoorfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000943281"
+    },
+    {
+     "address": "Bilderdijkkade 422",
+     "use": "industriefunctie",
+     "areaM2": 230,
+     "bagId": "0363010000943282"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012248049",
+   "addresses": [
+    "Bilderdijkkade 50A",
+    "Bilderdijkkade 418"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkkade 418",
+     "use": "kantoorfunctie",
+     "areaM2": 1280,
+     "bagId": "0363010000943280"
+    },
+    {
+     "address": "Bilderdijkkade 50A-1",
+     "use": "kantoorfunctie",
+     "areaM2": 219,
+     "bagId": "0363010012112012"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12006318252,
+     "lngLat": [
+      4.8693581,
+      52.3683754
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 3.3
+    },
+    {
+     "type": "node",
+     "id": 12006318470,
+     "lngLat": [
+      4.8691528,
+      52.3684195
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "floor",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:37.929Z",
+     "match": "frontage",
+     "distanceM": 8
+    }
+   ]
+  }
+ ]
+}

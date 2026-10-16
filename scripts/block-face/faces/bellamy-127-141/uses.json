@@ -1,0 +1,110 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:36:14.820Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012099202",
+   "addresses": [
+    "Bellamystraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 127-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000580218"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075066",
+   "addresses": [
+    "Bellamystraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000580222"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134227",
+   "addresses": [
+    "Bellamystraat 131",
+    "Bellamystraat 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580226"
+    },
+    {
+     "address": "Bellamystraat 133-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580230"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108097",
+   "addresses": [
+    "Bellamystraat 135",
+    "Bellamystraat 137"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 135-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580234"
+    },
+    {
+     "address": "Bellamystraat 137-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580238"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081452",
+   "addresses": [
+    "Bellamystraat 139",
+    "Bellamystraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 139-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580242"
+    },
+    {
+     "address": "Bellamystraat 141-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000580246"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

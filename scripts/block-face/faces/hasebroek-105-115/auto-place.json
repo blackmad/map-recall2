@@ -1,0 +1,321 @@
+{
+ "face": "hasebroek-105-115",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2018-06-13",
+ "seconds": 4.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hasebroek-105-115-r1",
+   "pands": [
+    "0363100012133637",
+    "0363100012082619"
+   ],
+   "passed": false,
+   "triangles": 3562
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012154793",
+   "address": "Hasebroekstraat 105A",
+   "builtYear": 1915,
+   "widthM": 7.24,
+   "eavesM": 13.34,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#51413a",
+    "wallRaw": "#4d4038",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 801,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.114 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24; window shape square vs photo tall)",
+   "likeness": {
+    "pandId": "0363100012154793",
+    "ncc": 0.114,
+    "nccRaw": 0.114,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#504039",
+     "model": "#6d574e",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 4,
+     "model": 4
+    },
+    "iou": 0.382
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133637",
+   "address": "Hasebroekstraat 107A",
+   "builtYear": 1915,
+   "widthM": 7,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#5a4a42",
+    "wallRaw": "#584941",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 200,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.22,
+      "topWidthM": 0.23,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.7
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#5a4a42",
+     "evidence": "strip 2018-06-13 span 290-570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "notes": [
+    "door unread",
+    "crown point-gable: skyline rise 2.22 m, width 1.57 m, top 0.23 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012133637",
+    "ncc": 0.236,
+    "nccRaw": 0.236,
+    "shiftM": [
+     -0.4,
+     -0.35
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.48 mean 0.34 vs photo 0.48",
+     "window shape square vs photo tall",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#58473f",
+     "model": "#746055",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.398
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082619",
+   "address": "Hasebroekstraat 109A",
+   "builtYear": 1915,
+   "widthM": 6.39,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#594840",
+    "wallRaw": "#594942",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 207,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.97,
+      "topWidthM": 0.35,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.75
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#594840",
+     "evidence": "strip 2018-06-13 span 570-826: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown dormers: skyline rise 1.97 m, width 1.98 m, top 0.35 m matches no variant"
+   ],
+   "likeness": {
+    "pandId": "0363100012082619",
+    "ncc": 0.339,
+    "nccRaw": 0.339,
+    "shiftM": [
+     -0.3,
+     -0.35
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#594841",
+     "model": "#745e53",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.448
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233665",
+   "address": "Hasebroekstraat 111A",
+   "builtYear": 1915,
+   "widthM": 15.97,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#57463e",
+    "wallRaw": "#55463e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 801,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 15.97 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 15.97 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.51 m = 4 storeys of 3.38 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.52 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

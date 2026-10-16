@@ -1,0 +1,413 @@
+{
+ "face": "wenslauer-54-76",
+ "street": "Wenslauerstraat",
+ "library": "bellamy",
+ "stripDate": "2023-01-12",
+ "seconds": 0.24,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237264",
+   "address": "Wenslauerstraat 66",
+   "builtYear": 1921,
+   "widthM": 9.25,
+   "eavesM": 10.43,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#575853",
+    "wallRaw": "#494746",
+    "skyline": {
+     "eavesM": 11.07,
+     "eavesRow": 219,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 5.28,
+      "topWidthM": 0.38,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.052,
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1921, type 1928-1935; frontage 9.25 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1928-1935",
+     "frontage 9.25 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.43 m = 4 storeys of 2.61 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.12 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166378",
+   "address": "Wenslauerstraat 64",
+   "builtYear": 1922,
+   "widthM": 4.02,
+   "eavesM": 7.43,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#51413e",
+    "wallRaw": "#6b665d",
+    "skyline": {
+     "eavesM": 8.95,
+     "eavesRow": 304,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 2.43,
+      "topWidthM": 0.82,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.13,
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1916-two-axis scores 0.4 < 0.7 (3DBAG eaves 7.43 m = 4 storeys of 1.86 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5)",
+   "best": {
+    "type": "bellamy-1916-two-axis",
+    "score": 0.4,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.43 m = 4 storeys of 1.86 m vs the type's 3.45 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.018 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160684",
+   "address": "Wenslauerstraat 62",
+   "builtYear": 1922,
+   "widthM": 4.14,
+   "eavesM": 7.4,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 662,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165612",
+   "address": "Wenslauerstraat 60",
+   "builtYear": 1922,
+   "widthM": 4.66,
+   "eavesM": 7.32,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#9f7d6f",
+    "wallRaw": "#c69582",
+    "skyline": {
+     "eavesM": 8.38,
+     "eavesRow": 327,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 4.6,
+      "topWidthM": 0.47,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.153,
+    "voidShare": 0.15,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1916-two-axis scores 0.4 < 0.7 (3DBAG eaves 7.32 m = 4 storeys of 1.83 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "bellamy-1916-two-axis",
+    "score": 0.4,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.32 m = 4 storeys of 1.83 m vs the type's 3.45 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.207 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159466",
+   "address": "Wenslauerstraat 58",
+   "builtYear": 1925,
+   "widthM": 4.76,
+   "eavesM": 7.23,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#808080",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 662,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153358",
+   "address": "Wenslauerstraat 56",
+   "builtYear": 1925,
+   "widthM": 4.66,
+   "eavesM": 7.2,
+   "storeys3dbag": 0,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#5d5d5c",
+    "skyline": {
+     "eavesM": 9.3,
+     "eavesRow": 290,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 4.45,
+      "topWidthM": 0.25,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1916-two-axis scores 0.54 < 0.7 (3DBAG eaves 7.2 m = 4 storeys of 1.8 m vs the type's 3.45 m; 3DBAG bouwlagen 0 vs 4/5)",
+   "best": {
+    "type": "bellamy-1916-two-axis",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.2 m = 4 storeys of 1.8 m vs the type's 3.45 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153104",
+   "address": "Wenslauerstraat 54",
+   "builtYear": 1925,
+   "widthM": 3.68,
+   "eavesM": 7.05,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#373333",
+    "wallRaw": "#3c3738",
+    "skyline": {
+     "eavesM": 9.3,
+     "eavesRow": 290,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 2.05,
+      "topWidthM": 0.38,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1916-two-axis scores 0.31 < 0.7 (3DBAG eaves 7.05 m = 4 storeys of 1.76 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5; strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "bellamy-1916-two-axis",
+    "score": 0.31,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.05 m = 4 storeys of 1.76 m vs the type's 3.45 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

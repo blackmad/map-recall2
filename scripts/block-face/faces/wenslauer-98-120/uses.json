@@ -1,0 +1,111 @@
+{
+ "street": "Wenslauerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012141125",
+   "addresses": [
+    "Wenslauerstraat 110",
+    "Wenslauerstraat 112",
+    "Wenslauerstraat 114",
+    "Wenslauerstraat 116",
+    "Wenslauerstraat 118",
+    "Wenslauerstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 110",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000865113"
+    },
+    {
+     "address": "Wenslauerstraat 112",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000865114"
+    },
+    {
+     "address": "Wenslauerstraat 114",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000865115"
+    },
+    {
+     "address": "Wenslauerstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000865116"
+    },
+    {
+     "address": "Wenslauerstraat 118",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000865117"
+    },
+    {
+     "address": "Wenslauerstraat 120",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000865118"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096163",
+   "addresses": [
+    "Wenslauerstraat 98",
+    "Wenslauerstraat 100",
+    "Wenslauerstraat 102",
+    "Wenslauerstraat 104",
+    "Wenslauerstraat 106",
+    "Wenslauerstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 98",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000865107"
+    },
+    {
+     "address": "Wenslauerstraat 100",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000865108"
+    },
+    {
+     "address": "Wenslauerstraat 102",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000865109"
+    },
+    {
+     "address": "Wenslauerstraat 104",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000865110"
+    },
+    {
+     "address": "Wenslauerstraat 106",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000865111"
+    },
+    {
+     "address": "Wenslauerstraat 108",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000865112"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

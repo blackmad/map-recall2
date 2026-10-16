@@ -1,0 +1,89 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012117742",
+   "addresses": [
+    "Hasebroekstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000659646"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117879",
+   "addresses": [
+    "Hasebroekstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000659638"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091668",
+   "addresses": [
+    "Hasebroekstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000659630"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121449",
+   "addresses": [
+    "Hasebroekstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000659622"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069093",
+   "addresses": [
+    "Hasebroekstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 90-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000659614"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
