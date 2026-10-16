@@ -1,0 +1,293 @@
+{
+ "schemaVersion": 1,
+ "id": "delamar",
+ "pand": "0363100012169852",
+ "brief": "scripts/landmarks/delamar-brief.md",
+ "signature": [
+  "bellevue-drum",
+  "bellevue-ribbon-window",
+  "bellevue-sign",
+  "delamar-glass-foyer",
+  "delamar-lettering",
+  "marnix-palazzo",
+  "marnix-turrets",
+  "bellevue-fly-tower",
+  "delamar-zinc-roof"
+ ],
+ "walls": [
+  {
+   "tag": "w01-203",
+   "bearing": 203,
+   "lengthM": 14.5,
+   "centre": [4.8801685, 52.3641215],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000717",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "note": "Theater Bellevue's Leidsekade drum (BAG 0363100012169852 ring edge 14). Read on the 50 px/m rectified crop artifacts/landmark-briefs/delamar/w01-203.jpg (sidewalk at y 712): glazed tile base 0-2.8 m, ribbon window 2.8-4.55 m under a thin dark canopy to 4.8 m, glazed yellow brick to 8.24 m, dark roof edge 8.24-8.88 m. Second capture 2017 (alt) and the 2017 cross-canal view TMX7316010203-000355_pano_0000_000073 agree.",
+   "items": [
+    {"id": "bellevue-drum", "kind": "other", "where": "the whole two-storey drum front, glazed yellow brick over a dark-brown tile base", "approxSizeM": [14.5, 8.9], "plan": "modelled", "how": "delamar-builder bellevueDrum: per 3DBAG facet of the drum (ring edges 2-16: the straight front, the west curve and the oculus return) a bronze tile skin 0-2.8 m with dark course strips every 0.3 m, sill and head rail, the glazed ribbon 2.95-4.4 m with a mullion per curve facet, the canopy at 4.55 m, the yellow-brick (ochre) wall above and the deep dark roof edge 8.24-8.88 m", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-ribbon-window", "kind": "window-shape", "where": "continuous window band over the tile base, 2.8-4.55 m, wide/narrow light rhythm on a 2.3 m module", "approxSizeM": [14.0, 1.75], "plan": "modelled", "how": "glass band with dark-brown frames, mullions at the measured wide 1.65 m / narrow 0.65 m rhythm, sill and head rails; it turns the west curve (w05-curve)", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-canopy", "kind": "canopy", "where": "thin dark slab over the ribbon window, 4.55-4.8 m, 0.35 m deep", "approxSizeM": [14.5, 0.25], "plan": "modelled", "how": "dark slab 0.35 m out, following the drum edges", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-roof-edge", "kind": "other", "where": "deep dark roof edge (fascia and soffit) round the drum top, 8.24-8.88 m", "approxSizeM": [14.5, 0.64], "plan": "modelled", "how": "dark fascia band 0.5 m out with its soffit, along every drum edge", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-sign", "kind": "sign", "where": "upper left of centre, t 4.28-6.8 m, 6.2-7.54 m up: olive panel 'Theater' over orange-red panel 'Bellevue'", "approxSizeM": [2.52, 1.34], "plan": "modelled", "how": "two-colour sign box (gold over red) with raised white THEATER / BELLEVUE lettering", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-red-pier", "kind": "other", "where": "red brick pier closing the ribbon window at its east end, t 13.44-13.96 m", "approxSizeM": [0.52, 1.75], "plan": "modelled", "how": "brick slab in the window band", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-poster-cases", "kind": "sign", "where": "three red-framed poster cases in the tile base, 1.15-2.35 m", "approxSizeM": [0.9, 1.2], "plan": "simplified", "how": "dark case with a red panel; poster content is temporary", "seenIn": "TMX7316010203-001967_pano_0000_000717"},
+    {"id": "bellevue-wall-lamps", "kind": "lamp", "where": "four small uplighters on the canopy at 4.9 m", "approxSizeM": [0.2, 0.15], "plan": "skipped", "skip": {"reason": "too-small", "note": "20 cm fittings, invisible at gallery size and from the road"}, "seenIn": "TMX7316010203-001967_pano_0000_000717"}
+   ]
+  },
+  {
+   "tag": "w02-208",
+   "bearing": 208,
+   "lengthM": 13.9,
+   "centre": [4.8804325, 52.3640485],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000287",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "note": "Ring edge 18: the two-storey cream-brick block (t 0-6.9 m, coping 8.0 m) and the 1880s house front kept in the Bellevue pand (t 6.9-13.9 m, eaves 19.3 m). Crop w02-208.jpg at 50 px/m, sidewalk y 712; upper storeys of the house from w02-208.thumb.jpg and TMX7316010203-001968_pano_0000_000116 (2021).",
+   "items": [
+    {"id": "bellevue-fascia", "kind": "lettering", "where": "2025 state (recording_2025-07-03_10-58-37_00042): large white THEATER BELLEVUE letters on the pale grey glazed brick over a white canopy band, a small DE SMOESHAAN sign at the right; the 2017 panorama still shows the earlier black fascia", "approxSizeM": [7.0, 0.62], "plan": "modelled", "how": "raised white lettering 0.62 m on the grey skin at t 4.1 m, 3.3 m up; white canopy band 2.85-3.17 m along the whole front; DE SMOESHAAN as 0.16 m white letters on a dark plate at t 12.6 m", "seenIn": "TMX7316010203-000199_pano_0002_000287"},
+    {"id": "cream-block", "kind": "other", "where": "left part: two-storey block, now (2025) pale grey glazed brick with white coping at 8.0 m, porthole and revolving door in the ground storey", "approxSizeM": [6.9, 8.0], "plan": "modelled", "how": "pale grey (stone) skin over the 3DBAG wall, white coping, porthole ring, revolving-door drum and cafe doors between white piers", "seenIn": "TMX7316010203-000199_pano_0002_000287"},
+    {"id": "cream-block-window", "kind": "window-shape", "where": "six-light first-floor window with a grey hood, t 2.1-5.0 m, 4.7-6.3 m", "approxSizeM": [2.9, 1.6], "plan": "modelled", "how": "framed window 3 x 2 lights and a hood slab", "seenIn": "TMX7316010203-000199_pano_0002_000287"},
+    {"id": "porthole", "kind": "window-shape", "where": "round porthole window in the white ground storey, t 7.1 m, 2.0 m up", "approxSizeM": [0.86, 0.86], "plan": "modelled", "how": "white ring and dark glass disc", "seenIn": "TMX7316010203-000199_pano_0002_000287"},
+    {"id": "house-bay-window", "kind": "window-shape", "where": "the 1880s house: projecting bay window on the second storey, t 9.1-11.8 m, 5.3-8.5 m, balcony above it", "approxSizeM": [2.7, 3.2], "plan": "modelled", "how": "three-sided erker (cream base, framed glazing, flat cap) and a balcony slab with railing", "seenIn": "TMX7316010203-000199_pano_0002_000287"},
+    {"id": "house-front", "kind": "window-shape", "where": "the 1880s house: rose-red brick with cream stucco ground/first storey, white window surrounds and string courses, three window axes to 19 m, small awnings over the first-storey windows", "approxSizeM": [7.0, 19.3], "plan": "modelled", "how": "brick wall (3DBAG), cream skin 0-5.3 m, four first-storey windows with awnings, three axes of white-framed windows on four upper storeys, white string courses and cornice", "seenIn": "TMX7316010203-000199_pano_0002_000287 / TMX7316010203-001968_pano_0000_000116"},
+    {"id": "stage-roof-sage", "kind": "other", "where": "behind the cream block: brown brick wall and the sage zinc roofs of the Bellevue stage house", "approxSizeM": [20, 4], "plan": "modelled", "how": "3DBAG roof slopes 10-15.6 m in the green (sage zinc) material, their walls in brown brick", "seenIn": "TMX7316010203-000199_pano_0002_000287"}
+   ]
+  },
+  {
+   "tag": "w03-283",
+   "bearing": 283,
+   "lengthM": 9,
+   "centre": [4.880052, 52.3642175],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002926_pano_0004_000023",
+   "capturedAt": "2023-01-11",
+   "checked": true,
+   "note": "Ring edge 1, facing the gated yard next to the Quentin hotel (Leidsekade 89): a plain brown-brick two-storey block with a white string course and white coping in front of the drum's west end. The Quentin hotel itself (BAG 0363100012168512) is not DeLaMar and is no longer suppressed.",
+   "items": [
+    {"id": "west-string-course", "kind": "other", "where": "white string course with drip at about 4.6 m and white coping at the top (8.3 m)", "approxSizeM": [8.3, 0.25], "plan": "modelled", "how": "white ledge strips on the brown brick", "seenIn": "TMX7316010203-002926_pano_0004_000023"},
+    {"id": "west-door", "kind": "other", "where": "grey steel service door under an exit sign, ground storey", "approxSizeM": [1.2, 2.3], "plan": "simplified", "how": "dark door slab with a frame; the exit sign is too small", "seenIn": "TMX7316010203-002926_pano_0004_000023"}
+   ]
+  },
+  {
+   "tag": "w04-202",
+   "bearing": 202,
+   "lengthM": 5.4,
+   "centre": [4.8803105, 52.364092],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000286",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "note": "Ring edge 16: the drum's straight east return in yellow brick, with the oculus and a grey-framed side door.",
+   "items": [
+    {"id": "bellevue-oculus", "kind": "window-shape", "where": "round window with white frame and cross glazing, t 2.8 m, centre 6.4 m", "approxSizeM": [1.55, 1.55], "plan": "modelled", "how": "white ring, cross bars and dark glass disc", "seenIn": "TMX7316010203-000199_pano_0002_000286"},
+    {"id": "east-side-door", "kind": "other", "where": "grey-framed double door with red poster panels, t 3.6-5.2 m", "approxSizeM": [1.6, 2.3], "plan": "simplified", "how": "concrete-grey surround with a red door panel", "seenIn": "TMX7316010203-001968_pano_0000_000116"}
+   ]
+  },
+  {
+   "tag": "w05-curve",
+   "bearing": 240,
+   "lengthM": 5.0,
+   "centre": [4.8800429, 52.3641584],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002926_pano_0004_000023",
+   "capturedAt": "2023-01-11",
+   "checked": true,
+   "note": "The rounded west corner of the drum (ring edges 2-13, radius about 4 m), seen from the Leidsekade west (w03-283 thumb) and across the canal (TMX7316010203-000355_pano_0000_000073). The ribbon window, tile base, yellow brick and roof edge run round it.",
+   "items": [
+    {"id": "curve-band", "kind": "window-shape", "where": "the ribbon window and canopy turning the corner", "approxSizeM": [5.0, 1.75], "plan": "modelled", "how": "drumSkin runs every small ring edge of the curve with the same bands", "seenIn": "TMX7316010203-002926_pano_0004_000023"}
+   ]
+  },
+  {
+   "tag": "u01-fly-s",
+   "bearing": 194,
+   "lengthM": 12.3,
+   "centre": [4.8801959, 52.3642536],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000073",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "note": "Bellevue fly tower (3DBAG roof 17.6 m, x -13..-1, z -2..12) seen over the drum from the Stadhouderskade quay across the Singelgracht: dark brown brick with white vertical pilaster strips and a white coping; also in w01-203.thumb.jpg (2021). Pitched look artifacts/landmark-lanes/delamar/aim/s195-detail.jpg.",
+   "items": [
+    {"id": "bellevue-fly-tower", "kind": "tower", "where": "the tall brick block over the drum's west half", "approxSizeM": [12.3, 17.6], "plan": "modelled", "how": "3DBAG fly-tower walls in brown brick (greyBrick) on every exposed face", "seenIn": "TMX7316010203-000355_pano_0000_000073"},
+    {"id": "fly-tower-strips", "kind": "other", "where": "white vertical strips on the south face at about 3.3 m spacing, corners included, and a white coping band", "approxSizeM": [0.35, 8.8], "plan": "modelled", "how": "white slabs from the lower roof to the coping on each exposed fly-tower face; white coping band 0.4 m", "seenIn": "TMX7316010203-000355_pano_0000_000073"},
+    {"id": "mast", "kind": "other", "where": "a thin white mast rising from behind the fly tower", "approxSizeM": [0.15, 8], "plan": "skipped", "skip": {"reason": "too-small", "note": "15 cm pole, a sub-pixel line at gallery size"}, "seenIn": "TMX7316010203-001967_pano_0000_000717"}
+   ]
+  },
+  {
+   "tag": "u02-fly-w",
+   "bearing": 283,
+   "lengthM": 14.4,
+   "centre": [4.8801047, 52.3643201],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002926_pano_0004_000023",
+   "capturedAt": "2023-01-11",
+   "checked": true,
+   "note": "The fly tower's west face above the yard and the Quentin hotel (19.6 m) roof: brown brick with a steel access ladder (w03-283 thumb, top left).",
+   "items": [
+    {"id": "fly-ladder", "kind": "other", "where": "steel access ladder and cage on the west face near the top", "approxSizeM": [0.6, 3], "plan": "skipped", "skip": {"reason": "too-small", "note": "60 cm steel ladder, hidden by the Quentin hotel from most of the street"}, "seenIn": "TMX7316010203-002926_pano_0004_000023"}
+   ]
+  },
+  {
+   "tag": "u03-setback-s",
+   "bearing": 200,
+   "lengthM": 24.0,
+   "centre": [4.8803724, 52.3641853],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000073",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "note": "Set-back storey of the Bellevue over the drum's east half (3DBAG roofs 11.1-11.8 m): a light grey rendered band with a row of white-framed windows, under the sage and grey zinc roofs.",
+   "items": [
+    {"id": "setback-windows", "kind": "window-shape", "where": "row of small white-framed windows in the grey band, about 9.3-10.6 m", "approxSizeM": [20, 1.3], "plan": "modelled", "how": "grey render (concrete) on the exposed 3DBAG walls from the drum roof up to 12 m, white-framed window row on the south-facing ones", "seenIn": "TMX7316010203-000355_pano_0000_000073"}
+   ]
+  },
+  {
+   "tag": "u04-delamar-s",
+   "bearing": 194,
+   "lengthM": 25.1,
+   "centre": [4.8804166, 52.364356],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000073",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "note": "The 2010 DeLaMar hall rises behind the Bellevue (3DBAG 19-22.9 m): a brown brick band under a large grey standing-seam zinc roof slope, the part of DeLaMar seen across the Singelgracht from the Leidsebosje.",
+   "items": [
+    {"id": "delamar-zinc-roof", "kind": "other", "where": "large grey standing-seam roof slope from about 19 m to 22.9 m over the whole Bellevue width", "approxSizeM": [25, 4], "plan": "modelled", "how": "3DBAG sloped roofs of the DeLaMar pand in zinc grey (copper) with standing seams as thin ribs down the slope", "seenIn": "TMX7316010203-000355_pano_0000_000073"},
+    {"id": "delamar-hall-brick", "kind": "other", "where": "brown brick wall under the zinc roof", "approxSizeM": [25, 3], "plan": "modelled", "how": "3DBAG walls of the DeLaMar pand in brown brick (greyBrick)", "seenIn": "TMX7316010203-000355_pano_0000_000073"}
+   ]
+  },
+  {
+   "tag": "m01-w01-48",
+   "bearing": 48,
+   "lengthM": 19,
+   "centre": [4.880854497341321, 52.36442350219339],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002550_pano_0000_001763",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "note": "DeLaMar's Marnixstraat entrance (BAG 0363100012571556 ring edge 10): the full-height glass foyer. Crop artifacts/landmark-lanes/delamar/walls/0363100012571556/w01-48.jpg at 50 px/m, sidewalk y 1075.",
+   "items": [
+    {"id": "delamar-glass-foyer", "kind": "other", "where": "glass wall t 0-17.8 m, 0-15.5 m, on eleven tapered steel fins at a 1.62 m pitch with transoms at 5.6, 8.7 and 11.9 m", "approxSizeM": [17.8, 15.5], "plan": "modelled", "how": "glass skin on the 3DBAG wall, steel (frame) fins 0.12 x 0.45 m at the measured pitch, transom rails, glazed entrance doors", "seenIn": "TMX7316010203-002550_pano_0000_001763"},
+    {"id": "delamar-canopy", "kind": "canopy", "where": "glass canopy over the entrance, 4.5-4.9 m, about 2 m deep, hung from the fins by tie rods", "approxSizeM": [17.0, 0.4], "plan": "modelled", "how": "thin glass slab with a steel edge and diagonal tie rods", "seenIn": "TMX7316010203-002550_pano_0000_001763"},
+    {"id": "delamar-lettering", "kind": "lettering", "where": "bronze letters DELAMAR THEATER standing on the canopy, t 4.6-12.6 m, 4.95-5.75 m", "approxSizeM": [8.0, 0.8], "plan": "modelled", "how": "raised gold lettering, DELAMAR 0.8 m and THEATER 0.6 m high, on the canopy", "seenIn": "TMX7316010203-002550_pano_0000_001763"},
+    {"id": "foyer-red-band", "kind": "other", "where": "red band behind the glass over the doors, 3.7-4.0 m", "approxSizeM": [17, 0.3], "plan": "simplified", "how": "red strip just behind the glass plane", "seenIn": "TMX7316010203-002550_pano_0000_001763"},
+    {"id": "foyer-banner", "kind": "sign", "where": "vertical show banner inside the glass, t 14.5-15.1 m, 5.9-13.1 m (red in 2021-22, green in 2025)", "approxSizeM": [0.6, 7.2], "plan": "simplified", "how": "plain red vertical panel; the show artwork is temporary", "seenIn": "TMX7316010203-002550_pano_0000_001763"},
+    {"id": "foyer-brick-pier", "kind": "other", "where": "red brick pier and chimney at the north-west end, t 17.8-19 m", "approxSizeM": [1.2, 16.5], "plan": "modelled", "how": "brick skin on the end of the glass wall", "seenIn": "TMX7316010203-002550_pano_0000_001763"}
+   ]
+  },
+  {
+   "tag": "m02-w09-47",
+   "bearing": 47,
+   "lengthM": 3.2,
+   "centre": [4.88075099721082, 52.36450150215696],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002996_pano_0003_000105",
+   "capturedAt": "2023-03-13",
+   "checked": true,
+   "note": "Narrow neo-Renaissance tower bay south-east of the palazzo (ring edge 12), crop w09-47.jpg at 50 px/m, sidewalk y 1065.",
+   "items": [
+    {"id": "marnix-turrets", "kind": "tower", "where": "brick turret over the cornice with a round-arched window, a slate pyramid and a finial to 19.8 m", "approxSizeM": [1.8, 4.1], "plan": "modelled", "how": "towerBay(): brick box 15.7-17.5 m with an arched window, sandstone cap, slate pyramid and an iron finial; same on the north-west bay", "seenIn": "TMX7316010203-002996_pano_0003_000105"},
+    {"id": "tower-door", "kind": "other", "where": "dark green double door with a transom between sandstone pilasters, 0.2-3.6 m", "approxSizeM": [1.7, 3.4], "plan": "modelled", "how": "dark door with a glazed transom, pilasters and a granite plinth", "seenIn": "TMX7316010203-002996_pano_0003_000105"},
+    {"id": "tower-balcony", "kind": "balcony-ironwork", "where": "round iron balcony on a corbel at 6.6 m and a flat railing at 11.2 m", "approxSizeM": [1.5, 1.0], "plan": "modelled", "how": "half-round slab with a dark railing ring; flat railing bars higher up", "seenIn": "TMX7316010203-002996_pano_0003_000105"},
+    {"id": "tower-bands", "kind": "other", "where": "sandstone lower storeys, red brick with sandstone bands from 6.4 m, bracketed cornice 14.1-15.7 m", "approxSizeM": [3.2, 9.3], "plan": "modelled", "how": "sandstone skin 0-6.4 m, sandstone band strips every 0.6 m, cornice band with two consoles", "seenIn": "TMX7316010203-002996_pano_0003_000105"},
+    {"id": "tower-lanterns", "kind": "lamp", "where": "two wall lanterns beside the door", "approxSizeM": [0.3, 0.5], "plan": "simplified", "how": "small dark lantern boxes with a gold glass", "seenIn": "TMX7316010203-002996_pano_0003_000105"}
+   ]
+  },
+  {
+   "tag": "m03-w02-47",
+   "bearing": 47,
+   "lengthM": 12.4,
+   "centre": [4.880668997263012, 52.364550502172776],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0000_000353",
+   "capturedAt": "2021-09-09",
+   "checked": true,
+   "note": "The neo-Renaissance palazzo front on the Marnixstraat (ring edge 14), crop w02-47.jpg at 50 px/m, sidewalk y 1040.",
+   "items": [
+    {"id": "marnix-palazzo", "kind": "other", "where": "the whole front: sandstone ground storey, red brick with sandstone bands above, corbel cornice at 14.9 m", "approxSizeM": [12.4, 14.9], "plan": "modelled", "how": "palazzo(): sandstone skin 0-6.0 m, band strips, cornice with corbel table", "seenIn": "TMX7316010203-002306_pano_0000_000353"},
+    {"id": "palazzo-oriels", "kind": "window-shape", "where": "canted corner oriels at both ends from 5 m to 12.4 m with small caps", "approxSizeM": [2.2, 7.4], "plan": "modelled", "how": "three-sided oriel prisms (brick, sandstone sill and cap) with windows on the front faces", "seenIn": "TMX7316010203-002306_pano_0000_000353"},
+    {"id": "palazzo-entrance", "kind": "other", "where": "central door with an aedicule and arched window over it, pediment at 5.8 m", "approxSizeM": [1.8, 6.0], "plan": "modelled", "how": "dark door, arched window slab and a sandstone pediment", "seenIn": "TMX7316010203-002306_pano_0000_000353"},
+    {"id": "palazzo-windows", "kind": "window-shape", "where": "two-tier ground windows, four first-storey windows with iron balconettes, four arched second-storey windows behind a loggia railing", "approxSizeM": [8, 8], "plan": "modelled", "how": "framed windows at the measured axes t 3.6, 5.3, 7.3, 9.1 m; railings as dark bars", "seenIn": "TMX7316010203-002306_pano_0000_000353"},
+    {"id": "palazzo-dormers", "kind": "other", "where": "two tall pointed dormers over the cornice, t 3.2-4.9 and 7.3-9.0 m, 14.9-17.8 m", "approxSizeM": [1.7, 2.9], "plan": "modelled", "how": "white dormer boxes with a window and steep gable caps", "seenIn": "TMX7316010203-002306_pano_0000_000353"}
+   ]
+  },
+  {
+   "tag": "m04-w08-47",
+   "bearing": 47,
+   "lengthM": 3.2,
+   "centre": [4.880594497209558, 52.364603502157976],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0001_000686",
+   "capturedAt": "2021-09-09",
+   "checked": true,
+   "note": "North-west tower bay (ring edge 16), the twin of m02 (crop w08-47.jpg).",
+   "items": [
+    {"id": "nw-turret", "kind": "tower", "where": "turret, pyramid and finial over the cornice", "approxSizeM": [1.8, 4.1], "plan": "modelled", "how": "towerBay() as m02", "seenIn": "TMX7316010203-002306_pano_0001_000686"}
+   ]
+  },
+  {
+   "tag": "m05-w07-54",
+   "bearing": 54,
+   "lengthM": 5.5,
+   "centre": [4.880553997216051, 52.3646340021596],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00127",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "note": "Gabled house front at the north end of the DeLaMar pand (ring edge 17), crop w07-54.jpg (washed out) at 50 px/m, sidewalk y 1085; the 2016 view TMX7316010203-000076_pano_0000_006459 confirms the gable.",
+   "items": [
+    {"id": "gable-house-gable", "kind": "other", "where": "curved neo-Renaissance gable with arched heads and a finial, 14.9-19.5 m", "approxSizeM": [5.5, 4.6], "plan": "simplified", "how": "stepped gable silhouette in brick with white bands and a central arched window", "seenIn": "b_20241211_0954_Track09_Sphere_00127"},
+    {"id": "gable-house-arches", "kind": "window-shape", "where": "big segmental-arched three-light window band over the shopfront, 3.9-6.3 m", "approxSizeM": [5.2, 2.4], "plan": "modelled", "how": "three arched lights under a white arch band", "seenIn": "b_20241211_0954_Track09_Sphere_00127"},
+    {"id": "gable-house-oriel", "kind": "window-shape", "where": "white central oriel over storeys 3-4, 6.9-11.1 m", "approxSizeM": [1.9, 4.2], "plan": "modelled", "how": "white oriel box with framed glazing", "seenIn": "b_20241211_0954_Track09_Sphere_00127"}
+   ]
+  },
+  {
+   "tag": "m06-w01-56",
+   "bearing": 56,
+   "lengthM": 5.8,
+   "centre": [4.880505997216258, 52.36467550216004],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00128",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "note": "BAG 0363100012169853 (2010) front: red brick, white stone bands and window heads, three axes, cornice at about 16 m with dormers (crop artifacts/landmark-lanes/delamar/walls/0363100012169853/w01-56.jpg).",
+   "items": [
+    {"id": "h853-front", "kind": "window-shape", "where": "three axes of white-framed windows on four storeys, balconettes on the centre axis, door with an arched light", "approxSizeM": [5.8, 16], "plan": "modelled", "how": "windows on the measured storeys 2.6, 5.8, 9.0, 12.2 m; white band strips; dark balconettes", "seenIn": "b_20241211_0954_Track09_Sphere_00128"},
+    {"id": "h853-cornice", "kind": "other", "where": "white cornice at 15.6-16.4 m", "approxSizeM": [5.8, 0.8], "plan": "modelled", "how": "white cornice slab", "seenIn": "b_20241211_0954_Track09_Sphere_00128"}
+   ]
+  },
+  {
+   "tag": "r01-rear",
+   "bearing": 227,
+   "lengthM": 40,
+   "centre": [4.8802989, 52.3645896],
+   "evidence": "inferred",
+   "panoId": null,
+   "checked": true,
+   "note": "The DeLaMar's rear and side walls stand behind 19-21 m Marnixstraat and Leidsekade houses; no panorama sees them (pitched looks up-n, up-nw, up-w, up-se in artifacts/landmark-lanes/delamar/aim/ show only the neighbours). Seen only from the air: PDOK 2025 orthophoto (artifacts/landmark-lanes/delamar/aerial/pdok-rgb.jpg) shows the fan-shaped auditorium roof, the light metal ridge strip and the grey standing-seam fly tower roof near the Marnixstraat. Walls in the same brown brick as the hall face seen over the Bellevue.",
+   "items": []
+  },
+  {
+   "tag": "r02-fan",
+   "bearing": 300,
+   "lengthM": 30,
+   "centre": [4.8801518, 52.3644907],
+   "evidence": "inferred",
+   "panoId": null,
+   "checked": true,
+   "note": "Curved back wall of the DeLaMar auditorium facing the gardens behind the Leidsekade houses (3DBAG ring edges 19-38 of 0363100012571556, 13.9-16 m). Not visible from any street; the orthophoto shows a light metal parapet along its top.",
+   "items": [
+    {"id": "fan-parapet", "kind": "other", "where": "light metal parapet capping along the curved wall top", "approxSizeM": [30, 0.4], "plan": "simplified", "how": "white coping band on the exposed fan-wall tops", "seenIn": "PDOK Luchtfoto RGB Actueel_orthoHR (CC BY 4.0)"}
+   ]
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"},
+  {"name": "3DBAG LoD2.2 (pands 0363100012169852, 0363100012571556, 0363100012169853)", "url": "https://api.3dbag.nl/collections/pand/items/", "licence": "CC BY 4.0"},
+  {"name": "PDOK Luchtfoto RGB", "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0", "licence": "CC BY 4.0"},
+  {"name": "BAG (pand names Theater Bellevue / Theater Delamar)", "url": "https://api.data.amsterdam.nl/v1/bag/panden/", "licence": "CC0"}
+ ]
+}
