@@ -892,9 +892,8 @@ export class ThreeBuildings {
   }
 
   /**
-   * Canal water height relative to the street (metres, ≤ 0). The opt-in
-   * elevation layer (`?elevation=1`) sinks canal water below the quays; boats
-   * follow it. Buildings, kits and trees stay at street level.
+   * Canal water height relative to the street (metres, ≤ 0). The own ground
+   * sinks canal water below the quays; boats follow it. Buildings, kits and trees stay at street level.
    */
   setWaterLevel(metres: number): void {
     this.waterLevel = Number.isFinite(metres) ? Math.min(0, metres) : 0;
