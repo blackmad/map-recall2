@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Flags decided: building types by default; elevation stencil, ground-look variants, label tones and six A/B toggles deleted (2026-10-16)
+
+User (2026-10-16): "what things are behind flags that we should make default?
+… if there are dead ends, delete the code and the flag". Lane
+`lane/flags-20261016` (ee92f9351, 8e56b5ba3, 68e9c7a2b, 44a147beb,
+3dbf017cd). Building types are on by default (`?buildingTypes=0` opts out):
+frames at 11 Nieuw-West views, 0 of 3,075 instance pands overlap a landmark
+or chunk `suppressOsmIds`, static frames 16.7 ms median either way, desktop
+ride-perf 5/5 (load 14–20). Recipe tiles turn the runtime types off (they
+carry them). Deleted: the `?elevation=1` stencil layer
+(`elevationBrowser.ts`, its bundle, spec and ride-perf case; superseded by
+the own ground), `?groundLook=measured|legacy-ish`, `?farGround=0`,
+`?labelTone=paper`, `?labels=maplibre`, HideBasemapFills (a no-op),
+litFacades, PrismGrid, LandmarkLod, landmarkBatch and RoofBatch with the
+unbatched roof path; −879/+146 lines of source. Kept: the opt-outs the specs
+use (`ownGround`, `roads`, `parks`, `shadows`, `transition`, `look=legacy`,
+`sharedFrame`, `facades`, `trees3d`, `highlight*`, `streetChunks`,
+`roofFacts`). Not flipped: `?cityLook=1` (frames 5–6 luma darker, the 0.9
+cell level), `?recipeTiles=1` (stale pilots), `?bagTiles=1` (user's call),
+`?sculptures=1` (waits for the user's look).
+
 ## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
 
 User (2026-10-16): "I feel like there should probably be a building here?", an
