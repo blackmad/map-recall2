@@ -27,6 +27,7 @@ import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './stree
 import { CELL_VARIANTS, CELL_LAYER_COUNT, cellLayer } from './facadeCells.js';
 import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
+import type { StreetFacing } from './streetGableEnds.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
@@ -439,6 +440,21 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     return new Set(best ? [best] : []);
   };
 
+  // Crowns: a gable roof's ornamental end goes on the street front only (streetGableEnds.ts). Rays stop at this
+  // chunk's walls and at the resident context's, so a rear end does not see the next street across the courtyard.
+  let crownWalls: SegmentGrid | null = null;
+  const crownFacing = (bi: number): StreetFacing | undefined => {
+    if (!streetGrid) return undefined;
+    if (!crownWalls) {
+      const segs: number[] = [], owners: number[] = [];
+      prepared.forEach(({ edges }, i) => { for (const e of edges) { segs.push(e.x0, e.y0, e.x1, e.y1); owners.push(i); } });
+      for (const { edges } of contextPrepared) for (const e of edges) { segs.push(e.x0, e.y0, e.x1, e.y1); owners.push(-2); }
+      crownWalls = new SegmentGrid(segs, 25, owners);
+    }
+    const walls = crownWalls;
+    return (wall, fallback) => fallback ? streetDistance(wall, streetGrid, null, bi, FALLBACK_REACH_M) : streetDistance(wall, streetGrid, walls, bi);
+  };
+
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
@@ -593,7 +609,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if(b.surveyedEnvelope){
       roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'})),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
     }else if (b.roof) {
-      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal);
+      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, b.roof.plan.kind === 'gable' ? crownFacing(bi) : undefined);
       if (crownFronts.length&&!b.roof.plan.repeatedTerrace) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
     }
     const walled = mode === 'walls';
