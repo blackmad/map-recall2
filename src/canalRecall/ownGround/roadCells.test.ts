@@ -135,11 +135,28 @@ test('roads-v1 extract: every listed cell file is a valid cell within budget, on
       if (s.c === 'cycle') assert.equal(s.k, 'cycle');
       if (s.c === 'parking') assert.notEqual(s.k, 'cycle');
     }
-    // Every kerb vertex lies on some polygon boundary (within the decimetre quantisation and 0.15 m simplification).
-    const vertices = new Set<string>();
-    for (const s of cell.surfaces) for (const r of s.r) for (const [x, y] of decodeRoadLine(r)) vertices.add(`${Math.round(x * 10)},${Math.round(y * 10)}`);
-    let onVertex = 0, total = 0;
-    for (const k of d.kerbs) for (const [x, y] of k) { total++; if (vertices.has(`${Math.round(x * 10)},${Math.round(y * 10)}`)) onVertex++; }
-    assert.ok(total === 0 || onVertex / total > 0.7, `${key}: only ${onVertex}/${total} kerb vertices coincide with polygon vertices`);
+    // Every kerb vertex lies on some polygon boundary: runs and rings are simplified independently, so they
+    // share vertices only sometimes, but both stay within the 0.15 m lever tolerance plus decimetre rounding.
+    const segs = new Map<string, [number, number, number, number][]>();
+    const G = 10;
+    for (const s of d.surfaces) for (const r of s.rings) for (let i = 0; i < r.length; i++) {
+      const a = r[i], b = r[(i + 1) % r.length];
+      for (let gx = Math.floor(Math.min(a[0], b[0]) / G); gx <= Math.floor(Math.max(a[0], b[0]) / G); gx++) for (let gy = Math.floor(Math.min(a[1], b[1]) / G); gy <= Math.floor(Math.max(a[1], b[1]) / G); gy++) {
+        const k = `${gx},${gy}`; (segs.get(k) ?? segs.set(k, []).get(k)!).push([a[0], a[1], b[0], b[1]]);
+      }
+    }
+    const nearBoundary = (x: number, y: number, tol: number): boolean => {
+      for (let gx = Math.floor((x - tol) / G); gx <= Math.floor((x + tol) / G); gx++) for (let gy = Math.floor((y - tol) / G); gy <= Math.floor((y + tol) / G); gy++) {
+        for (const [ax, ay, bx, by] of segs.get(`${gx},${gy}`) ?? []) {
+          const dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, t = l2 ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l2)) : 0;
+          if (Math.hypot(ax + t * dx - x, ay + t * dy - y) <= tol) return true;
+        }
+      }
+      return false;
+    };
+    let near = 0, total = 0;
+    for (const k of d.kerbs) for (const [x, y] of k) { total++; if (nearBoundary(x, y, 0.3)) near++; }
+    // Kerbs at the cell edge follow polygons the neighbour cell owns, so a few vertices have no boundary here.
+    assert.ok(total === 0 || near / total > 0.97, `${key}: only ${near}/${total} kerb vertices lie on a polygon boundary`);
   }
 });
