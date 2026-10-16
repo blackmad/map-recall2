@@ -175,7 +175,7 @@ export function polygonArea(rings: readonly (readonly Vec2[])[]): number {
 }
 
 /** Rings (closed or not; the first is the outer) as earcut input. */
-function flatten(rings: readonly (readonly Vec2[])[]): { flat: number[]; holes: number[] } {
+export function flatten(rings: readonly (readonly Vec2[])[]): { flat: number[]; holes: number[] } {
   const flat: number[] = [], holes: number[] = [];
   rings.forEach((r, i) => {
     const pts = r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1] ? r.slice(0, -1) : r;
@@ -518,21 +518,27 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
 /** The surfaces as a raster: `find` the surface id at a point (-1: none); `uniform`: every texel of a box is surface k. */
 export interface SurfaceRaster { find(x: number, y: number): number; uniform(ax: number, ay: number, bx: number, by: number, k: number): boolean }
 
-/** Point lookup over the BGT park surfaces of a cell neighbourhood (a 25 m bucket grid of their bboxes). */
-export class SurfaceIndex {
+/**
+ * Point lookup over the BGT surfaces of a cell neighbourhood (a 25 m bucket grid of their bboxes).
+ * Generic over the surface record (`r`: encoded rings): parks-v1 surfaces by default, roads-v1 polygons
+ * through roadSurfaces.ts RoadIndex. `records[k]` is the record behind polygon `k`.
+ */
+export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces'][number]> {
   private readonly polys: { rings: Vec2[][]; box: [number, number, number, number]; flat: number[]; tris: number[] }[] = [];
+  /** The record each polygon was built from, parallel to the polygon ids `find` returns. */
+  readonly records: S[] = [];
   private readonly grid = new Map<string, number[]>();
   private static readonly G = 25;
   /** Surfaces [0, own) belong to the first cell passed (drawn by the same build as the land under them). */
   readonly own: number = 0;
-  constructor(cells: readonly (ParksCell | null | undefined)[]) {
-    const seen = new Set<ParksCell>();
+  /** `keep`: which records are cover (parks: not ponds, which buildParks may skip and whose edge is a bank). */
+  constructor(cells: readonly ({ surfaces: readonly S[] } | null | undefined)[], keep: (s: S) => boolean = s => (s as { k?: string }).k !== 'pond') {
+    const seen = new Set<{ surfaces: readonly S[] }>();
     for (const c of cells) {
       if (!c || seen.has(c)) continue;
       seen.add(c);
       for (const s of c.surfaces) {
-        // Ponds are not culling cover: buildParks skips one the canal water already draws, and its edge is a bank.
-        if (s.k === 'pond') continue;
+        if (!keep(s)) continue;
         const rings = s.r.map(decodeLine);
         if (!rings.length || rings[0].length < 3) continue;
         const xs = rings[0].map(p => p[0]), ys = rings[0].map(p => p[1]);
@@ -541,12 +547,18 @@ export class SurfaceIndex {
         // and the Vondelpark had a 5 x 4 m one that the even-odd ring test called lawn).
         const { flat, holes } = flatten(rings);
         this.polys.push({ rings, box, flat, tris: flat.length >= 6 ? earcut(flat, holes) : [] });
+        this.records.push(s);
         const G = SurfaceIndex.G;
         for (let gx = Math.floor(box[0] / G); gx <= Math.floor(box[2] / G); gx++) for (let gy = Math.floor(box[1] / G); gy <= Math.floor(box[3] / G); gy++) (this.grid.get(`${gx}:${gy}`) ?? this.grid.set(`${gx}:${gy}`, []).get(`${gx}:${gy}`)!).push(k);
       }
       if (c === cells[0]) (this as { own: number }).own = this.polys.length;
     }
   }
+  /** Decoded rings of polygon `k` (outer first). */
+  ringsOf(k: number): readonly Vec2[][] { return this.polys[k].rings; }
+  /** Earcut input of polygon `k` (as the raster and the drawn mesh use it). */
+  flatOf(k: number): { flat: readonly number[]; tris: readonly number[] } { const p = this.polys[k]; return { flat: p.flat, tris: p.tris }; }
+  boxOf(k: number): readonly [number, number, number, number] { return this.polys[k].box; }
   get size(): number { return this.polys.length; }
   /** Bounding box of every surface (null: none). */
   bounds(): [number, number, number, number] | null {
@@ -568,6 +580,16 @@ export class SurfaceIndex {
     return -1;
   }
   contains(x: number, y: number): boolean { return this.find(x, y) >= 0; }
+  /** Every surface containing (x, y) (stacked bridge decks over a street). */
+  findAll(x: number, y: number): number[] {
+    const G = SurfaceIndex.G, out: number[] = [];
+    for (const k of this.grid.get(`${Math.floor(x / G)}:${Math.floor(y / G)}`) ?? []) {
+      const { rings, box } = this.polys[k];
+      if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) continue;
+      if (inRings(rings, x, y)) out.push(k);
+    }
+    return out;
+  }
 
   /**
    * The surfaces over a box as a raster of surface ids + 1 (0: none) at `res`

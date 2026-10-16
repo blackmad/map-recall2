@@ -59,6 +59,15 @@ export interface OwnGroundOptions {
   far?: boolean;
   /** Ground palette variant (groundLook.ts; default from `?groundLook=`). Colour only. */
   groundLook?: GroundLook;
+  /** The surveyed road partition from roads-v1 (roadSurfaces.ts). Phase 1: on with `?roads=bgt` (or `window.__canalRecallRoads = true`), off by default. */
+  roads?: boolean;
+}
+
+/** The roads flag from the page: `?roads=bgt` or `window.__canalRecallRoads = true` turns the BGT road surfaces on (phase 1 opt-in). */
+function roadsFlag(): boolean {
+  const g = globalThis as { __canalRecallRoads?: boolean; location?: { search?: string } };
+  if (g.__canalRecallRoads === true) return true;
+  return /[?&]roads=bgt\b/.test(g.location?.search ?? '');
 }
 
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
@@ -148,7 +157,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), groundLook: groundLookFrom(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: groundLookFrom(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -161,7 +170,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, roads: this.opts.roads });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -169,7 +178,7 @@ export class OwnGround {
       this.worker = new Worker(this.opts.workerUrl);
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, groundLook: this.opts.groundLook });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, roads: this.opts.roads, groundLook: this.opts.groundLook });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -831,7 +840,7 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key) };
+    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key) };
   }
 
   status(): Record<string, unknown> {
@@ -840,7 +849,7 @@ export class OwnGround {
     for (const r of this.resident.values()) { triangles += r.triangles; bytes += r.bytes; cells[r.key] = r.lod; }
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
-      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom,
+      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false,
       cells, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
