@@ -805,6 +805,25 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   one frame; a route-following look-ahead would load fewer tiles than the
   heading; the metric can't judge long frames or sharp turns, and 4× CPU
   throttle makes every frame a hitch.
+- **Houseboat follow-ups** (2026-10-16, HISTORY "Houseboats: arks, barges
+  and hullboxes"): hullbox roofs are often white/cream on the orthophoto
+  (give hullbox a measured roof palette); barrel-roof and terrace variants;
+  ~5 % of OSM outlines are stale (empty berth, or an ark where a ship was
+  traced): a BGT/orthophoto berth check could hide or replace them; label
+  the Amstel and outer-canal traced outlines to extend the overrides.
+  Pre-existing: `scripts/check-signature-houseboat-suppression.ts` fails
+  (`sea-palace-footprints.json` has no `houseboatRepresentation`).
+- **Radar follow-ups** (2026-10-16, HISTORY "HUD: a riding radar"): iPhone
+  at 4× throttle unmeasured; the overview extract costs ~1.6 MB once per
+  session (a radar-only slice would shrink it); the label plan doesn't avoid
+  the overview flight's YOU marker; on phones a map tap shows the cluster
+  over the bottom-right quiz answer for 3 s; `osm-loader.js` `_loadTile`
+  (CARTO) is dead code.
+- **Two canal-recall.spec tests fail on main** (2026-10-16, found merging
+  the HUD radar; fail before it too at 43b3999e9): "an actual high-speed car
+  cannot escape the mapped road corridor" (21–23 m off the corridor, limit
+  12.5) and "anonymous year-only buildings clear selection without opening a
+  card" (desktop and iPhone). Lane `lane/canal-spec-fails-20261016` on them.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
