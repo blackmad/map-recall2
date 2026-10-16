@@ -3,7 +3,7 @@
  "street": "Ten Katestraat",
  "library": "bellamy",
  "stripDate": "2023-01-12",
- "seconds": 2.41,
+ "seconds": 3.72,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,25 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.97,
+       "widthM": 1.2,
+       "centre": 0.3
+      },
+      {
+       "atM": 6.97,
+       "widthM": 1.18,
+       "centre": 0.31
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -109,41 +128,64 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.97,
+       "widthM": 1.27,
+       "centre": 0.42
+      },
+      {
+       "atM": 8.02,
+       "widthM": 0.9,
+       "centre": 0.73
+      },
+      {
+       "atM": 7.05,
+       "widthM": 1.15,
+       "centre": 0.42
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28; window shape square vs photo tall)",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012117439",
-    "ncc": 0.133,
-    "nccRaw": 0.133,
+    "ncc": 0.177,
+    "nccRaw": 0.177,
     "shiftM": [
      -0.25,
-     -0.15
+     0.05
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.28",
-     "window shape square vs photo tall"
+     "glazing storey band off by 0.27"
     ],
     "wall": {
-     "photo": "#614f4a",
+     "photo": "#614f49",
      "model": "#7a635d",
-     "dL": 0.086
+     "dL": 0.088
     },
     "glazing": {
      "photo": 0.26,
-     "model": 0.32
+     "model": 0.34
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.257
+    "iou": 0.317
    },
    "challengers": {}
   },
@@ -174,25 +216,54 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.05,
+       "widthM": 1.18,
+       "centre": 0.35
+      },
+      {
+       "atM": 7.65,
+       "widthM": 1,
+       "centre": 0.61
+      },
+      {
+       "atM": 6.67,
+       "widthM": 0.82,
+       "centre": 0.34
+      },
+      {
+       "atM": 5.17,
+       "widthM": 1.05,
+       "centre": 0.38
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.051 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38; columns 3 vs photo 2)",
+   "reason": "edge NCC 0.054 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.41; columns 3 vs photo 2)",
    "likeness": {
     "pandId": "0363100012096370",
-    "ncc": 0.051,
-    "nccRaw": 0.051,
+    "ncc": 0.054,
+    "nccRaw": 0.054,
     "shiftM": [
-     -0.1,
-     0.4
+     0,
+     0.05
     ],
     "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.38",
+     "glazing storey band off by 0.41",
      "columns 3 vs photo 2"
     ],
     "wall": {
@@ -208,7 +279,7 @@
      "photo": 2,
      "model": 3
     },
-    "iou": 0.221
+    "iou": 0.252
    },
    "challengers": {}
   },
@@ -239,6 +310,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0
    },

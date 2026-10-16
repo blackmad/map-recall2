@@ -2,33 +2,33 @@
  "face": "heije-41-53-r1",
  "image": "staging/block-face/heije-41-53-r1/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 745,
+ "width": 502,
  "height": 800,
  "groundNAP": 0.51,
  "heightM": 19.99,
  "frame": {
   "midRD": [
-   119268.41414583333,
-   486493.9216666667
+   119267.31981249999,
+   486496.748
   ],
   "uRD": [
-   0.3611215655565305,
-   -0.9325187477418352
+   0.36112538025752516,
+   -0.9325172704748464
   ],
   "nRD": [
-   -0.9325187477418352,
-   -0.3611215655565305
+   -0.9325172704748464,
+   -0.36112538025752516
   ]
  },
- "x0M": -9.52,
- "x1M": 9.11,
+ "x0M": -6.49,
+ "x1M": 6.06,
  "date": "2024-12-11",
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012109543",
-   "x0M": -9.52,
-   "x1M": -2.82,
+   "x0M": -6.49,
+   "x1M": 0.21,
    "px": [
     0,
     268
@@ -61,8 +61,8 @@
   },
   {
    "pandId": "0363100012128983",
-   "x0M": -2.79,
-   "x1M": 3.03,
+   "x0M": 0.23,
+   "x1M": 6.06,
    "px": [
     269,
     502
@@ -92,40 +92,6 @@
      "missingFraction": 0
     }
    ]
-  },
-  {
-   "pandId": "0363100012117355",
-   "x0M": 3.03,
-   "x1M": 9.11,
-   "px": [
-    502,
-    745
-   ],
-   "date": "2024-12-11",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "b_20241211_0838_Track49_Sphere_00007",
-     "timestamp": "2024-12-11T11:46:08Z",
-     "distanceM": 7.7,
-     "obliquityDeg": 18.3,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241211_0838_Track49_Sphere_00008",
-     "timestamp": "2024-12-11T11:46:12Z",
-     "distanceM": 9.6,
-     "obliquityDeg": 20.6,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241211_0838_Track49_Sphere_00009",
-     "timestamp": "2024-12-11T11:46:13Z",
-     "distanceM": 11.5,
-     "obliquityDeg": 37.3,
-     "missingFraction": 0
-    }
-   ]
   }
  ],
  "candidatesByDate": {
@@ -151,7 +117,7 @@
   "face": "heije-41-53",
   "px": [
    819,
-   1564
+   1321
   ]
  }
 }

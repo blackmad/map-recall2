@@ -102,7 +102,13 @@ const asFeature = (building: BagBuilding): string => {
       partyWallArea: round2(building.partyWallAreaM2),
       groundArea: round2(building.groundAreaM2),
       rmseLod22: building.rmseLod22 === null ? null : Math.round(building.rmseLod22 * 1000) / 1000,
-      status: building.status
+      status: building.status,
+      // The tower of a `tower-podium` pand: build-lod1-city emits it as its own feature.
+      ...(building.tower ? { tower: {
+        minHeight: round2(building.tower.minHeightM), height: round2(building.tower.heightM),
+        area: Math.round(building.tower.areaM2), tallShare: Math.round(building.tower.tallShare * 1000) / 1000,
+        coordinates: building.tower.polygons.map(polygon => polygon.map(ring => ring.map(([lng, lat]) => [round6(lng), round6(lat)]))),
+      } } : {})
     },
     // One surface is a Polygon; a pand split across several is a MultiPolygon.
     // Holes are not distinguished from separate surfaces at LoD0 in this

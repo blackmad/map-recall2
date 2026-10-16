@@ -1,0 +1,41 @@
+{
+ "street": "Van Effenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073026",
+   "addresses": [
+    "Van Effenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000838884"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084995",
+   "addresses": [
+    "Van Effenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000838876"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

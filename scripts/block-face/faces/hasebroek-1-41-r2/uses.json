@@ -90,54 +90,6 @@
    ],
    "units": 4,
    "osm": []
-  },
-  {
-   "pandId": "0363100012163274",
-   "addresses": [
-    "Hasebroekstraat 21"
-   ],
-   "groundUnits": [
-    {
-     "address": "Hasebroekstraat 21-H",
-     "use": "woonfunctie",
-     "areaM2": 53,
-     "bagId": "0363010012067084"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012157261",
-   "addresses": [
-    "Hasebroekstraat 23"
-   ],
-   "groundUnits": [
-    {
-     "address": "Hasebroekstraat 23-H",
-     "use": "woonfunctie",
-     "areaM2": 63,
-     "bagId": "0363010000659355"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012158415",
-   "addresses": [
-    "Hasebroekstraat 25"
-   ],
-   "groundUnits": [
-    {
-     "address": "Hasebroekstraat 25-H",
-     "use": "woonfunctie",
-     "areaM2": 63,
-     "bagId": "0363010000659363"
-    }
-   ],
-   "units": 4,
-   "osm": []
   }
  ]
 }

@@ -38,6 +38,8 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import { hudWithholdsRouteName } from './recallRules';
+import { finishBlurb } from './finishBlurb';
+import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
 import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
@@ -1352,8 +1354,7 @@ export class GamePresentationRuntime {
         const textX = cardX + padX + (hasImage ? photo + 16 : 0);
         const textW = cardX + cardW - padX - textX;
         ctx.font = '12px system-ui, sans-serif';
-        const blurb = wrapText(ctx, landmark.longDetail || landmark.detail
-          || `A place to remember on your ${this._cityDisplayName()} map.`, textW,
+        const blurb = wrapText(ctx, this._finishBlurbText(landmark), textW,
           [hasImage ? 4 : 3, 3, 2][level]);
         const height = Math.max(photo, 20 + blurb.length * 17) + 14;
         blocks.push({ height, draw: (top) => {
@@ -1656,6 +1657,17 @@ export class GamePresentationRuntime {
       }
     }
     ctx.textAlign = 'center';
+  }
+
+  /** The ARRIVED card's text for this arrival (finishBlurb.ts): chosen once per route, since the card redraws every
+   *  frame, and the chosen fact committed then so the next card tells another. */
+  _finishBlurbText(landmark: Landmark): string {
+    const cached = this._finishBlurb;
+    if (cached && cached.route === this.routeTo && cached.id === landmark.id) return cached.text;
+    const chosen = finishBlurb(landmark, this._facts, this._factRotation, `A place to remember on your ${this._cityDisplayName()} map.`);
+    if (chosen.choice) this._factRotation = commitShownFact(typeof localStorage === 'undefined' ? null : localStorage, this._factRotation, chosen.choice);
+    this._finishBlurb = {route: this.routeTo, id: landmark.id, text: chosen.text};
+    return chosen.text;
   }
 
   /** The landmark that stands for the destination: the one that shares its

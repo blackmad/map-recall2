@@ -10,9 +10,18 @@ export const STONE = 'stone', FRAME = 'frame', GLASS = 'glass', DARK = 'door', W
 /** wrought iron: a slot the opening audit reads as host trim (an isolated 'dark' part counts as a detached opening assembly) */
 export const IRON = 'cross';
 
-/** A closed box (the compile sets closedBoxes, so PanelCtx.box already closes its back). */
+/**
+ * Faces turned straight into the wall (normal -d) within this distance of the wall face are left out of the hand-drawn parts: a
+ * camera would have to stand between the face and the wall to see one. Box backs and extrusion back caps, about 2k triangles of
+ * the 500 KB budget (fourth pass, 2026-10-16). The kit's own components keep theirs.
+ */
+export const BACK_FACE_CULL_M = 0.25;
+
+/** A box on the wall; its back is left out when it stands within BACK_FACE_CULL_M of the wall face (see there). */
 export function solid(c: PanelCtx, slot: string, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part = c.part()) {
-  c.box(slot, u0, u1, v0, v1, d0, d1, part);
+  const closed = c.closedBoxes;
+  if (d0 <= BACK_FACE_CULL_M) c.closedBoxes = false;
+  try { c.box(slot, u0, u1, v0, v1, d0, d1, part); } finally { c.closedBoxes = closed; }
   return part;
 }
 
@@ -20,7 +29,12 @@ export function solid(c: PanelCtx, slot: string, u0: number, u1: number, v0: num
 export function geom(c: PanelCtx, slot: string, g: T.BufferGeometry, u: number, v: number, d: number, part = c.part()) {
   const src = g.index ? g.toNonIndexed() : g, a = src.getAttribute('position');
   for (let i = 0; i < a.count; i += 3) {
-    const q = [0, 1, 2].map(k => c.P(u + a.getX(i + k), v + a.getY(i + k), d + a.getZ(i + k)));
+    // a face turned straight into the wall near it (a box back, an extrusion's back cap) is never seen (BACK_FACE_CULL_M)
+    const x = [0, 1, 2].map(k => a.getX(i + k)), y = [0, 1, 2].map(k => a.getY(i + k)), z = [0, 1, 2].map(k => a.getZ(i + k));
+    const nx = (y[1] - y[0]) * (z[2] - z[0]) - (z[1] - z[0]) * (y[2] - y[0]), ny = (z[1] - z[0]) * (x[2] - x[0]) - (x[1] - x[0]) * (z[2] - z[0]), nz = (x[1] - x[0]) * (y[2] - y[0]) - (y[1] - y[0]) * (x[2] - x[0]);
+    const len = Math.hypot(nx, ny, nz);
+    if (len > 0 && nz / len < -0.999 && Math.max(...z) + d <= BACK_FACE_CULL_M) continue;
+    const q = [0, 1, 2].map(k => c.P(u + x[k], v + y[k], d + z[k]));
     c.mesh.tri(slot, q[0], q[1], q[2], part);
   }
   return part;
@@ -46,7 +60,7 @@ export function archRing(c: PanelCtx, slot: string, u0: number, u1: number, spri
 }
 /** A measured window cut into the wall (recess, glass back, frame ring, bars BAR in front of the glass). */
 export function opening(c: PanelCtx, stats: KitStats, what: string, u0: number, u1: number, v0: number, v1: number, w: WinParams) {
-  const back = drawOpening(c, u0, u1, v0, v1, {frameW: 0.05, sillSlot: null, headSlot: null, barD: BAR, ...w}, 1);
+  const back = drawOpening(c, u0, u1, v0, v1, {frameW: 0.05, sillSlot: null, headSlot: null, barD: BAR, paneSplit: true, ...w}, 1);
   if (back === null || back > 0) stats.failed.push(`${what}${back === null ? '' : ' (proud, not cut)'} u ${u0.toFixed(2)}..${u1.toFixed(2)} v ${v0.toFixed(2)}..${v1.toFixed(2)}`); else stats.openings++;
   return back;
 }

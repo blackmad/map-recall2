@@ -43,6 +43,8 @@ type Properties = {
   tier: number; bagId: string | null; osmId: string | null;
   height: number | null; heightSource: string | null; roofShape: string | null;
   roofHeight?: number | null;
+  /** On a tower-podium tower: the pand it stands on. */
+  pand?: string | null;
 };
 
 const bagIds = new Set<string>();
@@ -71,14 +73,15 @@ for await (const rawLine of reader) {
   if (properties.bagId) {
     if (bagIds.has(properties.bagId)) duplicateBagIds++;
     bagIds.add(properties.bagId);
-  } else if (!properties.osmId) {
+  } else if (!properties.osmId && !properties.pand) {
     missingIdentity++;
   }
 
   tiers.set(properties.tier, (tiers.get(properties.tier) ?? 0) + 1);
   heightSources.set(properties.heightSource ?? 'null', (heightSources.get(properties.heightSource ?? 'null') ?? 0) + 1);
   if (properties.tier === 3 && (properties.heightSource === 'none' || properties.height === null)) tier3WithoutMeasuredHeight++;
-  if (properties.heightSource === 'ridge-tower') ridgeTower++;
+  // A tower kept at the ridge over its whole pand, or a tower-podium tower over its own part.
+  if (properties.heightSource === 'ridge-tower' || (properties.heightSource === 'tower-podium' && properties.pand)) ridgeTower++;
 
   const rings = (feature.geometry.type === 'Polygon' ? feature.geometry.coordinates : (feature.geometry.coordinates as Ring[][]).flat()) as Ring[];
   const centre = ringCentroid(rings[0]);
@@ -92,7 +95,7 @@ for await (const rawLine of reader) {
 // means the BAG side did not land and the merge is dressing up the status quo.
 assert.ok(features > 250_000, `the merged city covers the whole city, not a fraction of it (${features} features)`);
 assert.ok(bagIds.size > 250_000, `most features are BAG-identified panden (${bagIds.size})`);
-assert.equal(missingIdentity, 0, 'every feature carries either a BAG id or an OSM id');
+assert.equal(missingIdentity, 0, 'every feature carries a BAG id, an OSM id, or (a tower) its pand');
 
 // --- uniqueness --------------------------------------------------------------
 assert.equal(duplicateBagIds, 0, `no pand appears twice (${duplicateBagIds} duplicates)`);
@@ -103,6 +106,7 @@ assert.equal(duplicateBagIds, 0, `no pand appears twice (${duplicateBagIds} dupl
 const measured = (heightSources.get('roof-70p') ?? 0)
   + (heightSources.get('lod12-volume') ?? 0)
   + (heightSources.get('ridge-tower') ?? 0)
+  + (heightSources.get('tower-podium') ?? 0)
   + (heightSources.get('ridge') ?? 0);
 const bagExtrusions = tiers.get(3) ?? 0;
 assert.ok(
@@ -148,7 +152,7 @@ const oudeHeights = [...new Set(oudeKerk.map(part => part.height).filter((height
 assert.ok(oudeOsm.length >= 8, `Oude Kerk keeps hand-mapped parts (${oudeOsm.length})`);
 assert.ok(oudeHeights.length >= 3, `Oude Kerk keeps a multi-height massing (${oudeHeights.join(', ')})`);
 
-assert.ok(ridgeTower >= 50, `tower-on-podium panden use the ridge (${ridgeTower} ridge-tower heights)`);
+assert.ok(ridgeTower >= 50, `tower-on-podium panden keep their towers at the ridge (${ridgeTower} ridge-tower heights and tower-podium towers)`);
 
 process.stdout.write(
   `LoD1 city checks passed (${features} features, ${bagIds.size} panden, ` +

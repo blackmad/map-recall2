@@ -675,6 +675,22 @@ photos. The process that would have caught it:
 6. **Retro-fit.** Existing bespoke landmarks get inventories in batches
    (`ornament-inventory.ts`), cheapest misses fixed in the builders, the
    sculpture groups that need a modeller go to the splat/impostor track.
+7. **One model per ground (2026-10-16).** A new model of a building that
+   already has one (same `landmarkId`, or any shared suppressed OSM way /
+   BAG pand) holds the old manual entry (`status: "held"` with a
+   `heldReason`) or lists the ordinary install in `SHADOWED_BY_LANDMARK`
+   (`ordinaryModels.ts`) in the same change. `modelOverlap.test.ts`
+   (`test:building-taxonomy`, in `check:canal`) fails otherwise. The
+   Tropenmuseum lane added `tropenmuseum` beside the 2026-10-04
+   `wereldmuseum-amsterdam` massing; every sheet rendered one GLB alone, the
+   OSM suppression checks passed for both, and only a ride showed the new
+   entrance faces poking through the old walls.
+8. **In-game frame of every reviewed wall.** `review:sheet` (without
+   `--no-game`) adds an IN GAME tile to each wall row, looking at that wall
+   from the street in the running game, which draws every model and the city
+   around it. Offline sheets and strips cannot show a second model,
+   a neighbour through the wall, palette under game light or ground
+   mismatches; the integrator reads the IN GAME column before installing.
 
 ### Tooling (ornament-inventory lane, 2026-10-13)
 
@@ -799,7 +815,8 @@ Both were judged as "recognisable from its best side". That is not the bar.
      band ends through walls at grazing angles (Rijksmuseum entrance);
      `--game-bias` still reproduces that old setting, so judge z-fight with
      plain shots or `--bias=0,-4096`.
-5. **Street-level in-game shot** from where riders actually pass it.
+5. **Street-level in-game shot** from where riders actually pass it, of every
+   modelled face, not only the main front (`review:sheet` IN GAME column).
 6. **Uncertainty blocks acceptance.** Anything a lane lists as unverified or
    uncertain is a hold until resolved; it is never merged "for now".
 7. **Integrator record.** On install, HISTORY notes which sheets were viewed,
