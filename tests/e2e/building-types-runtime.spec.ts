@@ -12,6 +12,10 @@ const label = on ? 'types' : 'default';
 const pick = (v: number[], q: number) => { const s = [...v].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))] ?? 0; };
 const summary = (v: number[]) => ({ n: v.length, median: +pick(v, 0.5).toFixed(2), p95: +pick(v, 0.95).toFixed(2), mean: +(v.reduce((a, b) => a + b, 0) / Math.max(1, v.length)).toFixed(2) });
 const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: number; bearing: number }> = {
+  // 2026-10-16 Sloterplas galerijflats (lane/sloterplas-towers-20261016): Burgemeester Hogguerstraat 1-1223, one gallery-slab type x3; galleries face north-east, balconies the lake.
+  'sloterplas-galleries': { center: [4.829277, 52.3724985], zoom: 17.2, pitch: 62, bearing: 231 },
+  'sloterplas-lake': { center: [4.829277, 52.3724985], zoom: 17.2, pitch: 62, bearing: 51 },
+  'sloterplas-close': { center: [4.8280785, 52.3733715], zoom: 18.3, pitch: 60, bearing: 231 },
   'sonderbuur-street': { center: [4.7991, 52.3641], zoom: 17.8, pitch: 62, bearing: 250 },
   'sonderbuur-close': { center: [4.79931801, 52.3639055], zoom: 19.2, pitch: 60, bearing: 72 },
   'comenius-street': { center: [4.8267, 52.3587], zoom: 17.8, pitch: 62, bearing: 270 },
