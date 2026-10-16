@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buurt Coverage Map</title>
+<meta name="description" content="Canal Recall: per Amsterdam buurt, the share of BAG pands drawn by each tier, and the generator to-do list (most repetitive buurten with the least kit coverage).">
+<style>
+:root {
+  color-scheme: light;
+  --surface-0: #f4f3f0; --surface-1: #fcfcfb; --line: #dddbd5;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #7a7974;
+  --empty: #e6e4df; --stroke: #fcfcfb; --hi: #0b0b0b; --accent: #2a78d6;
+  --s0: #eceae5; --s1: #cde2fb; --s2: #9ec5f4; --s3: #6da7ec; --s4: #3987e5; --s5: #256abf; --s6: #104281;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-0: #121211; --surface-1: #1a1a19; --line: #33332f;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #8f8e86;
+    --empty: #262624; --stroke: #1a1a19; --hi: #f0efec; --accent: #3987e5;
+    --s0: #2a2a27; --s1: #0d366b; --s2: #104281; --s3: #184f95; --s4: #256abf; --s5: #3987e5; --s6: #86b6ef;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #121211; --surface-1: #1a1a19; --line: #33332f;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #8f8e86;
+  --empty: #262624; --stroke: #1a1a19; --hi: #f0efec; --accent: #3987e5;
+  --s0: #2a2a27; --s1: #0d366b; --s2: #104281; --s3: #184f95; --s4: #256abf; --s5: #3987e5; --s6: #86b6ef;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface-0); color: var(--text-primary); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1280px; margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
+h2 { font-size: 16px; margin: 0 0 6px; }
+p.lede { margin: 0 0 16px; color: var(--text-secondary); max-width: 72ch; }
+.panel { background: var(--surface-1); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.totals { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(140px, 40vw), 1fr)); gap: 8px; margin-bottom: 16px; }
+.tile { background: var(--surface-1); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.tile .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 12px; color: var(--text-secondary); }
+.tile .f { font-size: 11px; color: var(--text-muted); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-bottom: 10px; }
+.controls label { font-size: 13px; color: var(--text-secondary); display: inline-flex; gap: 6px; align-items: center; }
+select, input[type=number] { font: inherit; color: var(--text-primary); background: var(--surface-1); border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; }
+input[type=number] { width: 70px; }
+.mapwrap { position: relative; }
+canvas#map { width: 100%; height: 620px; display: block; border-radius: 8px; background: var(--surface-1); touch-action: manipulation; cursor: crosshair; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+.legend span.sw { display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+#card { position: absolute; pointer-events: none; display: none; width: 340px; max-width: calc(100% - 16px); background: var(--surface-1); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; box-shadow: 0 6px 24px rgba(0,0,0,.18); font-size: 12px; z-index: 2; }
+#card h3 { margin: 0; font-size: 14px; }
+#card .sub { color: var(--text-secondary); margin-bottom: 6px; }
+#card table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+#card td { padding: 1px 0; }
+#card td.n { text-align: right; width: 48px; }
+#card td.bar { width: 80px; padding-left: 8px; }
+#card td.bar i { display: block; height: 6px; border-radius: 0 3px 3px 0; background: var(--accent); }
+#card .off { color: var(--text-muted); }
+#card .kv { display: grid; grid-template-columns: auto 1fr; gap: 1px 10px; margin-top: 6px; }
+#card .kv b { font-weight: 600; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+.tablewrap { overflow-x: auto; }
+table.rank { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 13px; }
+table.rank th, table.rank td { padding: 5px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+table.rank th { color: var(--text-secondary); font-weight: 600; cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--surface-1); }
+table.rank th[aria-sort] { color: var(--text-primary); }
+table.rank td.t, table.rank th.t { text-align: left; }
+table.rank tbody tr { cursor: pointer; }
+table.rank tbody tr:hover, table.rank tbody tr.sel { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.muted { color: var(--text-muted); }
+.note { font-size: 12px; color: var(--text-secondary); margin-top: 8px; max-width: 90ch; }
+.flag { display: inline-block; font-size: 11px; padding: 0 5px; border-radius: 4px; border: 1px solid var(--line); color: var(--text-secondary); margin-left: 4px; }
+#err { display: none; color: #b42318; }
+@media (max-width: 640px) {
+  canvas#map { height: 440px; }
+  #card { position: fixed; left: 8px !important; right: 8px; bottom: 8px; top: auto !important; width: auto; max-width: none; }
+}
+</style>
+</head>
+<body>
+<main>
+  <h1>Buurt coverage map</h1>
+  <p class="lede">Which drawing tier each BAG pand in Amsterdam's buurten gets in Canal Recall today, and where repeated building stock still gets only the generic extrusion. The table at the bottom is the to-do list for generator lanes: the most repetitive buurten with the least modelled coverage.</p>
+  <p id="err" class="panel"></p>
+  <div class="totals" id="totals"></div>
+  <div class="panel">
+    <div class="controls">
+      <label>Colour by
+        <select id="metric">
+          <option value="share">Modelled share (all tiers, flags on)</option>
+          <option value="shareDefault">Modelled share (default game, no flags)</option>
+          <option value="kitTypeBespoke">Kit + type + bespoke share</option>
+          <option value="repetition">Repetition score</option>
+          <option value="priority">Generator priority</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="flags"> Outline buurten with a survey or type library</label>
+    </div>
+    <div class="mapwrap">
+      <canvas id="map" aria-label="Choropleth of Amsterdam buurten"></canvas>
+      <div id="card" role="status"></div>
+    </div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="grid2">
+    <div class="panel">
+      <h2>Generator to-do: most repetitive buurten with the least kit coverage</h2>
+      <div class="controls">
+        <label>Min pands <input type="number" id="minp" value="80" min="0" step="10"></label>
+        <label>Stadsdeel <select id="sd"><option value="">All</option></select></label>
+        <label>Dominant decade
+          <select id="era"><option value="">Any</option><option value="pre1945">Before 1945</option><option value="post1945">1945 or later</option></select>
+        </label>
+        <label>Show <select id="limit"><option>25</option><option>50</option><option>100</option><option value="0">All</option></select></label>
+      </div>
+      <div class="tablewrap"><table class="rank" id="rank"></table></div>
+      <p class="note" id="method"></p>
+    </div>
+  </div>
+</main>
+<script>
+(async function () {
+  const $ = id => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  const candidates = [params.get('data'), '../../public/data/extracts/amsterdam/coverage-v1/buurten.json', '/data/extracts/amsterdam/coverage-v1/buurten.json', './buurten.json'].filter(Boolean);
+  let data = null;
+  for (const url of candidates) {
+    try { const r = await fetch(url); if (r.ok) { data = await r.json(); break; } } catch (e) { /* try the next */ }
+  }
+  if (!data) {
+    $('err').style.display = 'block';
+    $('err').textContent = 'Could not load buurten.json. Serve the repository root (for example `npx serve .`) and open /docs/coverage/, or pass ?data=<url>.';
+    return;
+  }
+  const TIERS = data.tiers;
+  const feats = data.features;
+  const P = f => f.properties;
+  const fmt = n => n.toLocaleString('en-GB');
+  const pct = (v, d = 1) => (v * 100).toFixed(v > 0 && v < 0.01 ? 2 : d) + '%';
+  const kitTypeBespoke = p => p.pands ? (p.tiers.bespoke + p.tiers.chunk + p.tiers.buildingType) / p.pands : 0;
+
+  // ---- totals tiles ----
+  const T = data.totals;
+  $('totals').innerHTML = [
+    `<div class="tile"><div class="v">${fmt(T.pands)}</div><div class="l">BAG pands in ${feats.length} buurten</div><div class="f">+ model/kit units on OSM parts</div></div>`,
+    ...TIERS.map(t => `<div class="tile"><div class="v">${fmt(T.tiers[t.id])}</div><div class="l">${t.label}</div><div class="f">${pct(T.tiers[t.id] / T.pands, 2)}${t.defaultOn ? '' : ' · behind a flag'}</div></div>`),
+  ].join('');
+  $('method').innerHTML = `Method: ${data.method}. Tiers (highest precedence first): ${TIERS.map(t => `<b>${t.label}</b> (${t.note})`).join('; ')}. Sources: ${Object.values(data.sources).join(' · ')}. Generated ${data.generatedAt.slice(0, 10)}.`;
+
+  // ---- projection ----
+  const canvas = $('map'), ctx = canvas.getContext('2d');
+  const merc = ([lng, lat]) => [lng, Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)) * 180 / Math.PI];
+  const polysOf = g => g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
+  for (const f of feats) f._polys = polysOf(f.geometry).map(poly => poly.map(ring => ring.map(merc)));
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const f of feats) for (const poly of f._polys) for (const [x, y] of poly[0]) { minX = Math.min(minX, x); maxX = Math.max(maxX, x); minY = Math.min(minY, y); maxY = Math.max(maxY, y); }
+  let view = { s: 1, ox: 0, oy: 0 }, selected = null, hovered = null;
+  function fit() {
+    const r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    canvas.width = r.width * dpr; canvas.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const pad = 12, s = Math.min((r.width - 2 * pad) / (maxX - minX), (r.height - 2 * pad) / (maxY - minY));
+    view = { s, ox: (r.width - s * (maxX - minX)) / 2, oy: (r.height - s * (maxY - minY)) / 2 };
+  }
+  const px = ([x, y]) => [view.ox + (x - minX) * view.s, view.oy + (maxY - y) * view.s];
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+  // ---- colour scales ----
+  const SHARE_BINS = [0, 0.005, 0.02, 0.05, 0.15, 0.4];          // tiny shares need a log-ish scale
+  const UNIT_BINS = [0, 0.2, 0.35, 0.5, 0.65, 0.8];
+  const metricVal = (p, m) => m === 'kitTypeBespoke' ? kitTypeBespoke(p) : p[m];
+  const binsFor = m => (m === 'repetition' || m === 'priority') ? UNIT_BINS : SHARE_BINS;
+  function binOf(v, bins) { if (!(v > 0)) return 0; let b = 1; for (let i = 1; i < bins.length; i++) if (v >= bins[i]) b = i + 1; return Math.min(b, 6); }
+  function legend() {
+    const m = $('metric').value, bins = binsFor(m), unit = bins === UNIT_BINS;
+    const lab = i => i === 0 ? (unit ? '0' : 'none') : i === 6 ? `≥ ${unit ? bins[5] : pct(bins[5], 0)}` : `${unit ? bins[i - 1] : pct(bins[i - 1], 1)}–${unit ? bins[i] : pct(bins[i], 1)}`;
+    $('legend').innerHTML = [0, 1, 2, 3, 4, 5, 6].map(i => `<span><span class="sw" style="background:var(--s${i})"></span>${lab(i)}</span>`).join('') +
+      `<span><span class="sw" style="background:var(--empty);outline:1px dashed var(--text-muted)"></span>no pands</span>` +
+      ($('flags').checked ? `<span><span class="sw" style="background:transparent;outline:2px solid var(--hi)"></span>survey or type library</span>` : '');
+  }
+
+  function trace(f) { ctx.beginPath(); for (const poly of f._polys) for (const ring of poly) ring.forEach((pt, i) => { const [x, y] = px(pt); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); }
+  function draw() {
+    const r = canvas.getBoundingClientRect();
+    ctx.clearRect(0, 0, r.width, r.height);
+    const m = $('metric').value, bins = binsFor(m), stroke = css('--stroke');
+    const fills = [0, 1, 2, 3, 4, 5, 6].map(i => css(`--s${i}`)), empty = css('--empty');
+    for (const f of feats) {
+      const p = P(f);
+      trace(f);
+      ctx.fillStyle = p.pands ? fills[binOf(metricVal(p, m), bins)] : empty;
+      ctx.fill('evenodd');
+      ctx.strokeStyle = stroke; ctx.lineWidth = 0.75; ctx.stroke();
+    }
+    if ($('flags').checked) {
+      ctx.strokeStyle = css('--hi'); ctx.lineWidth = 1.5;
+      for (const f of feats) { const p = P(f); if (p.survey.pands || p.types.pands) { trace(f); ctx.stroke(); } }
+    }
+    for (const f of [selected, hovered]) if (f) { trace(f); ctx.strokeStyle = css('--hi'); ctx.lineWidth = 2.5; ctx.stroke(); }
+  }
+
+  // ---- hit testing ----
+  function inRing(x, y, ring) { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; }
+  function hit(cx, cy) {
+    const x = minX + (cx - view.ox) / view.s, y = maxY - (cy - view.oy) / view.s;
+    for (const f of feats) for (const poly of f._polys) { let c = false; for (const ring of poly) if (inRing(x, y, ring)) c = !c; if (c) return f; }
+    return null;
+  }
+  function card(f, cx, cy) {
+    const el = $('card');
+    if (!f) { el.style.display = 'none'; return; }
+    const p = P(f), max = Math.max(1, ...TIERS.map(t => p.tiers[t.id]));
+    el.innerHTML = `<h3>${p.name}</h3><div class="sub">${p.code} · ${p.wijk ?? ''}${p.stadsdeel ? ' · ' + p.stadsdeel : ''}</div>
+      <table>${TIERS.map(t => `<tr class="${t.defaultOn ? '' : 'off'}"><td>${t.label}${t.defaultOn ? '' : ' (flag)'}</td><td class="n">${fmt(p.tiers[t.id])}</td><td class="bar"><i style="width:${p.tiers[t.id] ? Math.max(2, 100 * p.tiers[t.id] / max) : 0}%"></i></td></tr>`).join('')}</table>
+      <div class="kv">
+        <span>Pands</span><b>${fmt(p.pands)} <span class="muted">(${fmt(p.minor)} sheds/annexes)</span></b>
+        <span>Modelled</span><b>${pct(p.share)} <span class="muted">· default ${pct(p.shareDefault)}</span></b>
+        <span>Repetition</span><b>${p.repetition.toFixed(2)} <span class="muted">· priority ${p.priority.toFixed(2)}</span></b>
+        <span>Top clusters</span><b>${p.clusters.map(c => `${c.key} (${c.n})`).join(', ') || '–'}</b>
+        <span>Uncovered</span><b>${fmt(p.repetitiveGeneric)} generic pands in the top clusters</b>
+        <span>Decade</span><b>${p.decade ? p.decade + 's' : '–'} <span class="muted">${p.decade ? pct(p.decadeShare, 0) : ''}</span></b>
+        <span>Survey</span><b>${p.survey.pands ? `${p.survey.pands} pands · ${p.survey.streets.join(', ')}` : 'none'}</b>
+        <span>Types</span><b>${p.types.pands ? `${p.types.pands} evidence pands · ${p.types.districts.join(', ')}` : 'none'}${p.faces ? ` · ${p.faces} on block faces` : ''}</b>
+      </div>`;
+    el.style.display = 'block';
+    if (cx != null) {
+      const wrap = canvas.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight;
+      el.style.left = Math.min(wrap.width - w - 8, Math.max(8, cx + 14)) + 'px';
+      el.style.top = Math.min(wrap.height - h - 8, Math.max(8, cy + 14)) + 'px';
+    }
+  }
+  canvas.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    const f = hit(e.offsetX, e.offsetY);
+    if (f !== hovered) { hovered = f; draw(); }
+    card(f ?? selected, e.offsetX, e.offsetY);
+  });
+  canvas.addEventListener('pointerleave', () => { hovered = null; draw(); card(selected); });
+  canvas.addEventListener('click', e => { selected = hit(e.offsetX, e.offsetY); draw(); card(selected, e.offsetX, e.offsetY); markRow(); });
+
+  // ---- ranked table ----
+  const COLS = [
+    { k: 'rank', l: '#', v: (p, i) => i + 1, nosort: true },
+    { k: 'name', l: 'Buurt', t: true, v: p => p.name, h: p => `${p.name} <span class="muted">${p.code}</span>${p.survey.pands ? '<span class="flag">survey</span>' : ''}${p.types.pands ? '<span class="flag">types</span>' : ''}` },
+    { k: 'wijk', l: 'Wijk', t: true, v: p => p.wijk ?? '' },
+    { k: 'pands', l: 'Pands', v: p => p.pands, h: p => fmt(p.pands) },
+    { k: 'repetition', l: 'Repetition', v: p => p.repetition, h: p => p.repetition.toFixed(2) },
+    { k: 'share', l: 'Modelled', v: p => p.share, h: p => pct(p.share) },
+    { k: 'kitTypeBespoke', l: 'Kit+type+bespoke', v: kitTypeBespoke, h: p => pct(kitTypeBespoke(p)) },
+    { k: 'priority', l: 'Priority', v: p => p.priority, h: p => p.priority.toFixed(2) },
+    { k: 'repetitiveGeneric', l: 'Uncovered repeats', v: p => p.repetitiveGeneric, h: p => fmt(p.repetitiveGeneric) },
+    { k: 'top', l: 'Top cluster', t: true, v: p => p.clusters[0]?.key ?? '', h: p => p.clusters[0] ? `${p.clusters[0].key} <span class="muted">×${p.clusters[0].n}</span>` : '–' },
+    { k: 'decade', l: 'Decade', v: p => p.decade ?? 0, h: p => p.decade ? `${p.decade}s <span class="muted">${pct(p.decadeShare, 0)}</span>` : '–' },
+  ];
+  let sortKey = 'priority', sortDir = -1, rows = [];
+  for (const sd of [...new Set(feats.map(f => P(f).stadsdeel).filter(Boolean))].sort()) $('sd').insertAdjacentHTML('beforeend', `<option>${sd}</option>`);
+  function table() {
+    const minp = +$('minp').value || 0, sd = $('sd').value, era = $('era').value, limit = +$('limit').value;
+    const col = COLS.find(c => c.k === sortKey);
+    rows = feats.filter(f => { const p = P(f); return p.pands >= minp && (!sd || p.stadsdeel === sd) && (!era || (p.decade && (era === 'pre1945' ? p.decade < 1945 : p.decade >= 1945))); })
+      .sort((a, b) => { const x = col.v(P(a)), y = col.v(P(b)); return (typeof x === 'string' ? x.localeCompare(y) : x - y) * sortDir || P(b).repetitiveGeneric - P(a).repetitiveGeneric; });
+    const shown = limit ? rows.slice(0, limit) : rows;
+    $('rank').innerHTML = `<thead><tr>${COLS.map(c => `<th class="${c.t ? 't' : ''}" data-k="${c.k}"${c.k === sortKey ? ` aria-sort="${sortDir < 0 ? 'descending' : 'ascending'}"` : ''}>${c.l}${c.k === sortKey ? (sortDir < 0 ? ' ↓' : ' ↑') : ''}</th>`).join('')}</tr></thead>
+      <tbody>${shown.map((f, i) => `<tr data-code="${P(f).code}">${COLS.map(c => `<td class="${c.t ? 't' : ''}">${(c.h ?? c.v)(P(f), i)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+    markRow();
+  }
+  function markRow() { for (const tr of $('rank').querySelectorAll('tbody tr')) tr.classList.toggle('sel', !!selected && tr.dataset.code === P(selected).code); }
+  $('rank').addEventListener('click', e => {
+    const th = e.target.closest('th');
+    if (th) { const c = COLS.find(x => x.k === th.dataset.k); if (c.nosort) return; if (sortKey === c.k) sortDir = -sortDir; else { sortKey = c.k; sortDir = c.t ? 1 : -1; } table(); return; }
+    const tr = e.target.closest('tr[data-code]');
+    if (!tr) return;
+    selected = feats.find(f => P(f).code === tr.dataset.code);
+    draw(); card(selected, 8, 8); markRow();
+    canvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  for (const id of ['minp', 'sd', 'era', 'limit']) $(id).addEventListener('input', table);
+  $('metric').addEventListener('input', () => { legend(); draw(); });
+  $('flags').addEventListener('input', () => { legend(); draw(); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+  new ResizeObserver(() => { fit(); draw(); }).observe(canvas);
+  fit(); legend(); draw(); table();
+})();
+</script>
+</body>
+</html>
