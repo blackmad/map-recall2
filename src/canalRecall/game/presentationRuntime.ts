@@ -37,7 +37,7 @@ import { vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
-import { hudWithholdsRouteName } from './recallRules';
+import { routePlaqueName } from './recallRules';
 import { finishBlurb } from './finishBlurb';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
@@ -708,7 +708,15 @@ export class GamePresentationRuntime {
     // delayed question opens. Otherwise the HUD reveals the answer during the
     // turn-confirmation window. Transit keeps a sticky line plaque after the
     // first answer — stop/street quizzes must not blank it.
-    const roadName = this.track.getRoadName(player.x, player.y, player.angle);
+    // The plaque names the same street the question settles on: a deck OSM
+    // maps under the bridge's name ("Niek Engelschmanbrug" carrying the
+    // Raadhuisstraat) reads as the carried street, so the corridor plaque
+    // does not blank for the length of a bridge. The ordinary withholding
+    // rule below still applies to it, so the carried street shows only once it
+    // is the settled corridor, or answered or shown (bridgeStreetName.ts).
+    const roadName = isTransit(this.travelMode)
+      ? this.track.getRoadName(player.x, player.y, player.angle)
+      : this._routeQuestionRoadName(player.angle);
     let visibleRouteName = '';
     let routeAnswerHidden = false;
     if (isTransit(this.travelMode) && window.CanalRecallTransit?.transitPlaqueRouteName) {
@@ -724,7 +732,7 @@ export class GamePresentationRuntime {
       visibleRouteName = plaque.routeName;
       routeAnswerHidden = plaque.answerHidden;
     } else {
-      routeAnswerHidden = hudWithholdsRouteName({
+      const plaque = routePlaqueName({
         roadName: roadName || '',
         currentName: this.quizCurrentName || '',
         promptName: this.quizPromptName || '',
@@ -732,7 +740,8 @@ export class GamePresentationRuntime {
         revealed: !!roadName && this.revealedNames.has(roadName),
         learned: !!roadName && this.learnedNames.has(roadName),
       });
-      visibleRouteName = routeAnswerHidden ? '' : (roadName || '');
+      visibleRouteName = plaque.routeName;
+      routeAnswerHidden = plaque.answerHidden;
     }
     // One plaque: street, neighbourhood + trip, score. Speed and odometer live
     // here on every viewport; there is no separate trip pill any more.
