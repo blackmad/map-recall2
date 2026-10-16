@@ -279,6 +279,8 @@ class VectorBasemap {
     this._sharedFrame = new api.SharedFrame(api.THREE, this.map, {
       shadows: canalRecallLookFlag('shadows', '__canalRecallShadows', true),
       shadowMapSize: coarse ? 1024 : 2048,
+      // Overview → city: shadows ramp on the same curve as the ground and buildings (`?transition=0`: on at zoom 15).
+      shadowRamp: api.transitionOn && api.transitionOn() ? zoom => api.blendAtZoom(zoom) : undefined,
       beforeId: () => {
         const order = this.map.getLayersOrder ? this.map.getLayersOrder() : [];
         return order.find(id => slotIds.includes(id));
@@ -640,7 +642,10 @@ class VectorBasemap {
       this.map.addLayer({
         id: 'city-building-overview', type: 'raster', source: 'city-building-overview', minzoom: 10, maxzoom: 15.6,
         paint: {
-          'raster-opacity': ['interpolate', ['linear'], ['zoom'], 12, 0.55, 14, 0.45, 15, 0.15, 15.6, 0],
+          // Overview → city: gone by zoom 14, where the 3D city starts from the basemap's roof-toned footprints.
+          'raster-opacity': this._ownGroundEnabled && canalRecallLookFlag('transition', '__canalRecallTransition', true)
+            ? ['interpolate', ['linear'], ['zoom'], 12, 0.55, 14, 0]
+            : ['interpolate', ['linear'], ['zoom'], 12, 0.55, 14, 0.45, 15, 0.15, 15.6, 0],
           'raster-fade-duration': 200
         }
       }, this.map.getLayer('osm-colored-building-ground-floors') ? 'osm-colored-building-ground-floors' : undefined);
@@ -2046,6 +2051,8 @@ class VectorBasemap {
       await this._ownGround.load(this._absoluteExtractRoot());
       this._syncElevationConsumers();
       this._ownGroundReplay();
+      // Overview → city: the basemap takes the own-ground palette at every zoom, not only under the resident cells.
+      this._setBasemapGroundHidden(!!this._basemapGroundHidden);
     } catch (error) {
       console.warn('Own ground unavailable; the basemap ground stays.', error);
       this._ownGround = null;
@@ -2096,14 +2103,25 @@ class VectorBasemap {
         }
       } catch (_) { /* layer gone with a style swap */ }
     }
-    // The basemap's ground layers take the own-ground palette while it is on (no white/light-blue edge beyond the resident cells).
+    // The basemap's ground layers take the own-ground palette while it is on (no white/light-blue edge beyond the resident cells),
+    // and with the overview → city transition (`?transition=0` off) at every zoom, so the flat overview is already in the city's colours.
     const api = window.CanalRecallOwnGround;
+    const three = window.CanalRecallThree;
+    const transition = !!(this._ownGround && three && three.transitionOn && three.transitionOn());
+    const palette = hidden || transition;
     for (const p of (api && api.basemapGroundPatches ? api.basemapGroundPatches(layers) : [])) {
       const key = `${p.id}:${p.property}`;
       try {
-        if (hidden) { if (!this._ownGroundSaved.has(key)) this._ownGroundSaved.set(key, this.map.getPaintProperty(p.id, p.property)); this.map.setPaintProperty(p.id, p.property, p.value); }
+        if (palette) { if (!this._ownGroundSaved.has(key)) this._ownGroundSaved.set(key, this.map.getPaintProperty(p.id, p.property)); this.map.setPaintProperty(p.id, p.property, p.value); }
         else if (this._ownGroundSaved.has(key)) { const v = this._ownGroundSaved.get(key); this.map.setPaintProperty(p.id, p.property, v === undefined ? null : v); this._ownGroundSaved.delete(key); }
       } catch (_) { /* layer gone with a style swap */ }
+    }
+    // Overview → city (src/canalRecall/overviewTransition/basemapOverview.ts): protected areas in the land tone, footprints in the roof tone until the city is complete.
+    if (transition && api && api.overviewBasemapPatches && !this._overviewPatched) {
+      this._overviewPatched = true;
+      const extra = api.overviewBasemapPatches(layers);
+      for (const p of extra.paint) { try { this.map.setPaintProperty(p.id, p.property, p.value); } catch (_) { /* layer gone */ } }
+      for (const z of extra.zoomRanges) { try { this.map.setLayerZoomRange(z.id, z.minzoom, z.maxzoom); } catch (_) { /* layer gone */ } }
     }
   }
 
