@@ -35,7 +35,7 @@ import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
-import { buildPrismGrid, buildPrismIndex, pickPrism, pickPrismGrid, type PrismEntry, type PrismGrid } from './prismPick.js';
+import { buildPrismGrid, buildPrismIndex, pickPrismGrid, type PrismEntry, type PrismGrid } from './prismPick.js';
 import { ORIGIN, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -47,6 +47,8 @@ import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererSh
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
+import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
+import { detailBlock, type DetailBlock } from './detailRing.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -208,6 +210,16 @@ const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 
 export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable };
 
 const KIT_KEY = '__kit';
+/** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
+const COARSE_HOLE_BONUS_M = 400;
+/** Arriving chunks dissolve in over this long (fadeIn); `?chunkFade=0` or `window.__canalRecallChunkFade = false` turns it off. */
+const CHUNK_FADE_MS = 350;
+const CHUNK_FADE = (() => {
+  try {
+    const g = globalThis as { __canalRecallChunkFade?: boolean; location?: { search?: string } };
+    return g.__canalRecallChunkFade !== false && new URLSearchParams(g.location?.search ?? '').get('chunkFade') !== '0';
+  } catch { return true; }
+})();
 const BOAT_PREFIX = 'boats:';
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
@@ -384,6 +396,8 @@ export class ThreeBuildings {
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
     this.look = this.requestedLook = look;
     this.layer = this.makeLayer();
+    // Nearest-ahead chunk first (chunkRank); `?lookAhead=0` keeps request order.
+    this.pending.setRank(key => this.lookAheadOn === false ? NaN : this.chunkRank(key));
   }
 
   /** Resolve the building under a screen point to an exact building ID.
@@ -424,10 +438,7 @@ export class ThreeBuildings {
         return hidden > 0.5 && hidden < 1.5;
       };
       const liftOf = (id: string) => lift?.get(id) ?? 0;
-      // `window.__canalRecallPrismGrid = false`: every prism of the chunk (the same hit; in-page A/B).
-      const hit = (globalThis as any).__canalRecallPrismGrid === false
-        ? pickPrism(index, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip)
-        : pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
+      const hit = pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
       if (!hit) continue;
       const point = o.clone().addScaledVector(d, hit.t).applyMatrix4(chunk.mesh.matrixWorld);
       const depth = point.applyMatrix4(projection).z;
@@ -788,6 +799,30 @@ export class ThreeBuildings {
     this.map.triggerRepaint();
   }
 
+  /**
+   * Whether this layer draws the city under the rider yet: the coarse shell group of a z14 tile in `tiles`
+   * (`x/y`) is installed (a rebuild in flight still draws the previous mesh). Until then the map keeps the
+   * basemap's own extrusions, so a ride does not start in an empty city while the first shells build
+   * (docs/perf-pop-in-20261016.md). Any one tile is enough: off-centre tiles arrive as they would without
+   * the hold, so the hold never reveals the streamed city later than no hold.
+   */
+  drawsResidentCity(tiles: Iterable<string>): boolean {
+    if (!this.visible || !this.ready) return false;
+    for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
+    return false;
+  }
+
+  /** performance.now() of the first coarse shell installed with geometry, or null. */
+  firstShellAt(): number | null { return this.firstShellTime; }
+  private firstShellTime: number | null = null;
+
+  /**
+   * While the basemap's extrusions stand in for the city (vector-map holds them), shells install at once:
+   * a dissolve under the opaque extrusions would only delay the handover.
+   */
+  setBasemapHeld(held: boolean): void { this.basemapHeld = held; }
+  private basemapHeld = false;
+
   stats(): ThreeBuildingStats {
     let buildings = 0, walls = 0, quads = 0, vertices = 0, bytes = 0;
     for (const { info } of this.chunks.values()) {
@@ -843,13 +878,49 @@ export class ThreeBuildings {
    * Cheap to call every frame; regroups only when that block changes.
    */
   setDetailCentre(lng: number, lat: number): void {
-    const n = 2 ** this.detailZoom, rad = lat * Math.PI / 180;
-    const fx = ((lng + 180) / 360) * n, fy = ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n;
-    const x = Math.floor(fx), y = Math.floor(fy), dx = fx - x < 0.5 ? -1 : 1, dy = fy - y < 0.5 ? -1 : 1;
-    const next = [`${x}/${y}`, `${x + dx}/${y}`, `${x}/${y + dy}`, `${x + dx}/${y + dy}`];
+    const on = this.lookAheadOn ??= lookAheadEnabled();
+    this.rider = [lng, lat];
+    if (on) this.motion.update(lng, lat, performance.now());
+    // Look-ahead (default): the block leads the rider, flips sides with hysteresis and lets tiles it leaves linger
+    // (detailRing.ts); `?lookAhead=0` is the old rider-centred block with a hard midline.
+    const block = detailBlock([lng, lat], on ? this.motion.direction : null, this.detailZoom, this.detailBlockState, { legacy: !on });
+    this.detailBlockState = block;
+    const next = block.keys;
     if (next.length === this.detailTiles.size && next.every(k => this.detailTiles.has(k))) return;
     this.detailTiles = new Set(next);
     this.setFeatures(this.lastFeatures);
+  }
+  private rider: [number, number] | null = null;
+  private readonly motion = new MotionEstimate();
+  private lookAheadOn: boolean | undefined;
+  private detailBlockState: DetailBlock | null = null;
+  /** Chunks dissolving in (fadeIn). */
+  private readonly fading = new Map<string, { mesh: any; source: any; clone: any; start: number }>();
+
+  /**
+   * Build order: the chunk nearest the rider, ahead first (streamingLookAhead.ts aheadRank on the nearest point
+   * of the chunk's tile); detailed extras after their facades, missing coarse shells before detail. Kits first
+   * (small, and every landmark kit waits on them).
+   */
+  private chunkRank(key: string): number {
+    const at = this.rider;
+    if (key === KIT_KEY) return -Infinity;
+    if (!at) return 0;
+    let zoom = TILE_ZOOM, tile = key, extra = 0;
+    if (key.startsWith(COARSE_PREFIX)) tile = key.slice(COARSE_PREFIX.length);
+    else if (key.startsWith('near:')) { zoom = this.detailZoom; tile = key.slice(5); }
+    else if (key.startsWith(EXTRAS_PREFIX)) { zoom = this.detailZoom; tile = key.slice(EXTRAS_PREFIX.length); extra = 60; }
+    else if (key.startsWith(BOAT_PREFIX)) { tile = key.slice(BOAT_PREFIX.length); extra = 30; }
+    else return 0;
+    const [x, y] = tile.split('/').map(Number);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return 0;
+    const n = 2 ** zoom, latOf = (t: number) => (Math.atan(Math.sinh(Math.PI * (1 - (2 * t) / n))) * 180) / Math.PI;
+    const west = (x / n) * 360 - 180, east = ((x + 1) / n) * 360 - 180, north = latOf(y), south = latOf(y + 1);
+    const nearest: [number, number] = [Math.max(west, Math.min(east, at[0])), Math.max(south, Math.min(north, at[1]))];
+    // A tile with no shell drawn yet is a hole in the city, detail only refines one: its coarse shell goes before
+    // detail up to ~400 m nearer.
+    const hole = key.startsWith(COARSE_PREFIX) && !this.chunks.has(key) ? COARSE_HOLE_BONUS_M : 0;
+    return aheadRank(at, nearest, this.motion.direction) + extra - hole;
   }
 
   /**
@@ -897,9 +968,8 @@ export class ThreeBuildings {
   }
 
   /**
-   * Canal water height relative to the street (metres, ≤ 0). The opt-in
-   * elevation layer (`?elevation=1`) sinks canal water below the quays; boats
-   * follow it. Buildings, kits and trees stay at street level.
+   * Canal water height relative to the street (metres, ≤ 0). The own ground
+   * sinks canal water below the quays; boats follow it. Buildings, kits and trees stay at street level.
    */
   setWaterLevel(metres: number): void {
     this.waterLevel = Number.isFinite(metres) ? Math.min(0, metres) : 0;
@@ -1146,6 +1216,7 @@ export class ThreeBuildings {
     const context=this.contextGroups.get(key);
     if(options?.contextFeatures && context && (context.length!==options.contextFeatures.length || context.some((f,i)=>f!==options.contextFeatures![i]))) return;
     const t0 = performance.now() - buildMs;
+    const arriving = !this.chunks.get(key)?.mesh;
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
     const THREE = this.THREE;
@@ -1202,6 +1273,8 @@ export class ThreeBuildings {
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])), lift };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
+    if (arriving) this.fadeIn(key, mesh);
+    if (this.firstShellTime === null && key.startsWith(COARSE_PREFIX)) this.firstShellTime = performance.now();
     this.refreshSurveyedRoofOwnership();
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
@@ -1225,7 +1298,51 @@ export class ThreeBuildings {
     if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
   }
 
+  /**
+   * A chunk that arrives where nothing of its own drew (not a rebuild of a drawn chunk) dissolves in over
+   * CHUNK_FADE_MS with the overview's screen-door dither on a material clone that shares the program (no
+   * compile); the mesh returns to the shared material when it ends. Detail (`near:`) replacing coarse shells
+   * keeps the coarse buildings drawn until its dissolve ends (refreshDetailOwnership), so the swap is a
+   * dissolve rather than a one-frame jump. `?chunkFade=0` installs at once, as before.
+   */
+  private fadeIn(key: string, mesh: any): void {
+    if (!CHUNK_FADE || key === KIT_KEY || this.basemapHeld) return;
+    const source = mesh.material;
+    if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return;
+    const fade = { value: 0 };
+    const clone = source.clone();
+    clone.uniforms = { ...source.uniforms, cityFade: fade };
+    clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; };
+    clone.customProgramCacheKey = () => source.customProgramCacheKey();
+    if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
+    mesh.material = clone;
+    this.fading.set(key, { mesh, source, clone, start: performance.now() });
+  }
+
+  /** Advance the arriving chunks' dissolve under the overview's own fade `global`; nothing runs when none fade. */
+  private tickFades(global: number): void {
+    if (!this.fading.size) return;
+    const now = performance.now();
+    for (const [key, f] of this.fading) {
+      const t = (now - f.start) / CHUNK_FADE_MS;
+      if (t < 1) { f.clone.uniforms.cityFade.value = global * t; continue; }
+      this.endFade(key);
+    }
+    this.map.triggerRepaint();
+  }
+
+  private endFade(key: string, refresh = true): void {
+    const f = this.fading.get(key);
+    if (!f) return;
+    if (f.mesh.material === f.clone) f.mesh.material = f.source;
+    f.clone.dispose();
+    this.fading.delete(key);
+    // The detail chunk is solid now: hide the coarse shells it replaces.
+    if (refresh && key.startsWith('near:') && this.chunks.has(key)) this.refreshDetailOwnership();
+  }
+
   private dropChunk(key: string): void {
+    this.endFade(key, false);
     const held = this.chunks.get(key);
     if (!held) return;
     if (held.mesh) { this.scene?.remove(held.mesh); held.mesh.geometry.dispose(); }
@@ -1246,7 +1363,7 @@ export class ThreeBuildings {
 
   private refreshDetailOwnership(): void {
     const next = new Set<string>();
-    for (const [key, entry] of this.chunks) if (key.startsWith('near:') && entry.mesh) for (const id of entry.ranges.keys()) next.add(id);
+    for (const [key, entry] of this.chunks) if (key.startsWith('near:') && entry.mesh && !this.fading.has(key)) for (const id of entry.ranges.keys()) next.add(id);
     const changed = new Set([...next, ...this.installedDetailIds].filter(id => next.has(id) !== this.installedDetailIds.has(id)));
     this.installedDetailIds = next;
     if (!changed.size) return;
@@ -1255,7 +1372,7 @@ export class ThreeBuildings {
 
   /** Set when the facades draw in the shared frame (`?sharedFrame=1`) instead of their own layer. */
   private sharedFrame: any = null;
-  /** Lit material + sun shadows; only inside the shared frame (`?litFacades=0` keeps the unlit shader there). */
+  /** Lit material + sun shadows; only inside the shared frame. */
   private lit = false;
   private depthMaterial: any = null;
   /** Bumped whenever suppressed/answer walls change (they cast differently). */
@@ -1338,22 +1455,23 @@ export class ThreeBuildings {
       material.uniforms.cityFade.value = fade;
       if (material.uniforms.cityTone) material.uniforms.cityTone.value = b;
     }
+    this.tickFades(fade);
     return true;
   }
 
   /**
    * Draw in the page's shared three.js frame instead of an own custom layer:
    * one renderer, scene and light rig with the landmarks, trees and vehicles,
-   * plus (unless `lit: false`) the lit facade material and sun shadows. Call
+   * plus the lit facade material and sun shadows. Call
    * this instead of adding `layer` to the map.
    */
-  attachToSharedFrame(frame: any, options: { lit?: boolean; order?: number } = {}): void {
+  attachToSharedFrame(frame: any, options: { order?: number } = {}): void {
     if (this.sharedFrame) return;
     const THREE = (window as any).CanalRecallThree?.THREE;
     if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
     this.THREE = THREE;
     this.sharedFrame = frame;
-    this.lit = options.lit !== false;
+    this.lit = true;
     const root = new THREE.Group();
     root.name = 'three-building-facades';
     const camera = new THREE.Camera();

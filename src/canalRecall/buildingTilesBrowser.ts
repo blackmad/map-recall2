@@ -22,12 +22,13 @@
 
 import { dropNestedDuplicates } from './buildingNesting.js';
 import {
-  BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTiles, planSourceDiff, tileUrl,
+  BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTilesAhead, planSourceDiff, tileUrl,
   type BuildingFeature, type Bounds, type LandmarkBuildingQuery, type TileSetDir
 } from './buildingTileSource.js';
 import { bagTilesEnabled, hiddenIdsFor, type CoversFile } from './bagTiles.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
 import { introLandingArea } from './game/introFlight.js';
+import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
 type GeoJsonSource = {
@@ -142,6 +143,9 @@ export function sameStyledFeature(a: BuildingFeature, b: BuildingFeature): boole
 /** Main-thread ms per frame for styling arriving buildings before a flush publishes them. */
 export const STYLE_BUDGET_MS = 5;
 
+/** Half-size of a look-ahead area: enough to touch the next z14 tile (about 1.5 km) a little early. */
+const LOOK_AHEAD_HALF_M = 150;
+
 export class BuildingTileStreamer {
   /** Which published tile set this streamer reads; 'bag-tiles' only after a successful bag probe under `?bagTiles=1`. */
   private tileDir: TileSetDir = 'building-tiles';
@@ -154,7 +158,7 @@ export class BuildingTileStreamer {
   /** In-flight fetches, keyed so a camera jump can abort the ones we no longer want. */
   private readonly controllers = new Map<string, AbortController>();
   /** Nearest-first remaining work for the current plan. */
-  private queue: ReturnType<typeof planTiles>['load'] = [];
+  private queue: ReturnType<typeof planTilesAhead>['load'] = [];
   private inFlight = 0;
   private onFirstBuildings?: () => void;
   private onFeatures?: (features: BuildingFeature[]) => void;
@@ -373,6 +377,22 @@ export class BuildingTileStreamer {
     this.update();
   }
 
+  /**
+   * The rider's position, every frame (vector-map sync). Its motion puts look-ahead areas in front of the view:
+   * the z14 tile the rider is heading into loads before the view reaches it. At riding speed the view's far edge
+   * is 4-6 s ahead, and a tile took longer than that to fetch, style, regroup and build, so whole districts
+   * arrived under the rider (docs/perf-pop-in-20261016.md). `?lookAhead=0` plans from the view alone, as before.
+   */
+  setRider(lng: number, lat: number, nowMs = (typeof performance !== 'undefined' ? performance.now() : Date.now())): void {
+    if (!(this.lookAheadOn ??= lookAheadEnabled())) return;
+    this.motion.update(lng, lat, nowMs);
+    const points = lookAheadPoints([lng, lat], this.motion, { seconds: [5, 12], maxM: 1200, minM: 200 });
+    this.lookAhead = points.map(p => boxAround(p, LOOK_AHEAD_HALF_M));
+  }
+  private readonly motion = new MotionEstimate();
+  private lookAheadOn: boolean | undefined;
+  private lookAhead: Bounds[] = [];
+
   followCamera(): void {
     if (this.suspended) return;
     // The caller replaces its GeoJSON source after probing and loading priors.
@@ -386,7 +406,8 @@ export class BuildingTileStreamer {
     // camera widens the visible ground without moving the centre tile or the
     // zoom bucket, and those tiles used to stay unrequested (bare patches).
     const needed = tilesCovering(this.bounds(), this.zoom, 0).map(tileKey).join(',');
-    const signature = `${tileKey(tile)}@${zoomBucket}|${needed}`;
+    const ahead = this.lookAhead.flatMap(area => tilesCovering(area, this.zoom, 0).map(tileKey)).join(',');
+    const signature = `${tileKey(tile)}@${zoomBucket}|${needed}|${ahead}`;
     if (signature === this.lastFollowSignature) return;
     this.lastFollowSignature = signature;
     this.update();
@@ -409,7 +430,7 @@ export class BuildingTileStreamer {
     // The LoD1 city is the gap-free fallback beneath optional detail. At game
     // zoom the viewport itself covers every required z14 tile; a neighbour
     // ring only multiplies residency during low-pitch clearance adjustments.
-    const plan = planTiles(this.preloadBounds ?? this.bounds(), this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: 12 });
+    const plan = planTilesAhead(this.preloadBounds ?? this.bounds(), this.preloadBounds ? [] : this.lookAhead, this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: 12 });
     const wantedKeys = new Set(plan.wanted);
 
     let changed = false;
@@ -449,7 +470,7 @@ export class BuildingTileStreamer {
     }
   }
 
-  private async fetchTile(tile: ReturnType<typeof planTiles>['load'][number]): Promise<void> {
+  private async fetchTile(tile: ReturnType<typeof planTilesAhead>['load'][number]): Promise<void> {
     const key = tileKey(tile);
     if (this.cache.has(key) || this.empty.has(key) || this.controllers.has(key)) return;
 
