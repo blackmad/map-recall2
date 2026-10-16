@@ -3,7 +3,7 @@
  *
  *   PORT=4401 npm run dev                      # only for the in-game shot (skip with --no-game)
  *   node --import tsx scripts/landmarks/review-sheet.ts --id=nassaukerk [--bag=0363100012237328] [--glb=...]
- *        [--out=artifacts/review/<id>] [--port=4401] [--walls=6] [--no-game] [--inventory]
+ *        [--out=artifacts/review/<id>] [--port=4401] [--walls=6] [--no-game] [--inventory] [--ring=<n> for a MultiPolygon footprint]
  *
  * For every exposed wall of the BAG footprint (party walls are dropped by the pand-reference selector) the nearest
  * Gemeente Amsterdam panorama (5-35 m from the wall, obliquity <= 55 deg) is aimed at the wall centre through the public
@@ -37,7 +37,7 @@ const flag = (k: string) => process.argv.includes(`--${k}`);
 const id = arg('id');
 if (!id) { console.error('--id=<model id> required'); process.exit(2); }
 
-interface CatalogueEntry {id: string; modelUrl: string; suppressOsmIds?: string[]; surveyed?: {anchor: [number, number]; northOffsetDegrees: number}; footprint?: {centre: [number, number]}; buildingFootprint?: {type: string; coordinates: number[][][]}}
+interface CatalogueEntry {id: string; modelUrl: string; suppressOsmIds?: string[]; surveyed?: {anchor: [number, number]; northOffsetDegrees: number}; footprint?: {centre: [number, number]}; buildingFootprint?: {type: string; coordinates: number[][][] | number[][][][]}}
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/canalRecall/landmarks/manualCatalogue.json'), 'utf8')) as CatalogueEntry[];
 const entry = catalogue.find(c => c.id === id);
 if (!entry) { console.error(`${id} not in manualCatalogue.json`); process.exit(2); }
@@ -174,10 +174,13 @@ async function main() {
   let fp: Footprint | undefined = found.get(bag);
   // A pand the landmark replaces can be missing from the building tiles (Zuiderkerk, Waag): use the catalogue footprint
   // and the GLB's height from the manifest instead.
-  if (!fp && entry.buildingFootprint?.type === 'Polygon') {
+  // A MultiPolygon footprint (Noorderkerk: the church and its three corner houses) is reviewed one polygon at a time: --ring=<n>.
+  const outer = entry.buildingFootprint?.type === 'Polygon' ? (entry.buildingFootprint.coordinates as number[][][])[0]
+    : entry.buildingFootprint?.type === 'MultiPolygon' ? (entry.buildingFootprint.coordinates as number[][][][])[Number(arg('ring') ?? 0)]?.[0] : undefined;
+  if (!fp && outer) {
     const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/canal-drive/models/signature-landmarks.json'), 'utf8')).models?.[id];
     const height = manifest?.bounds ? manifest.bounds.max[1] - manifest.bounds.min[1] : 15;
-    fp = {id: bag, ring: entry.buildingFootprint.coordinates[0].map(p => lngLatToRd([p[0], p[1]])), height};
+    fp = {id: bag, ring: outer.map(p => lngLatToRd([p[0], p[1]])), height};
     console.log(`${bag} not in the building tiles: catalogue buildingFootprint, height ${height.toFixed(1)} m from the manifest`);
   }
   if (!fp) throw new Error(`BAG pand ${bag} not in the building tiles and no catalogue buildingFootprint`);

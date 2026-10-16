@@ -1361,27 +1361,53 @@
         "w267565782",
         "NL.IMBAG.Pand.0363100012169852",
         "NL.IMBAG.Pand.0363100012571556",
-        "NL.IMBAG.Pand.0363100012168512",
         "NL.IMBAG.Pand.0363100012169853"
       ],
       footprint: {
         centre: [
-          4.880400054157671,
-          52.36434979965863
+          4.88029887,
+          52.36436498
         ],
-        headingDegrees: 37.39619010728296,
-        lengthMetres: 64.0719941600419,
-        widthMetres: 57.92999384246876
+        headingDegrees: 0,
+        lengthMetres: 62.2,
+        widthMetres: 75.4
+      },
+      surveyed: {
+        anchor: [
+          4.88029887,
+          52.36436498
+        ],
+        northOffsetDegrees: 0,
+        source: "Vertex average of the BAG footprints of 0363100012169852 (Theater Bellevue), 0363100012571556 (Theater DeLaMar) and 0363100012169853; 3DBAG LoD2.2 shells in native east/south metres from the anchor (scripts/landmarks/delamar-prepare.ts). Facades measured on rectified Gemeente Amsterdam panorama crops (scripts/landmarks/delamar-inventory.json)."
       },
       groundAltitudeMetres: 0,
-      facingOffsetDegrees: 90,
+      facingOffsetDegrees: 0,
+      heightMetres: 23,
+      materialOverrides: {
+        ochre: "#ddd09c",
+        brick: "#a4533f",
+        greyBrick: "#6b5345",
+        sandstone: "#c3b08f",
+        stone: "#c9c6ba",
+        white: "#eee8d8",
+        concrete: "#b9b8ad",
+        dark: "#35302b",
+        frame: "#7d8283",
+        glass: "#4d606c",
+        bronze: "#5b4637",
+        red: "#cf5b3c",
+        gold: "#a08046",
+        slate: "#575653",
+        copper: "#8d928d",
+        green: "#9fa794"
+      },
       attribution: {
-        title: "DeLaMar",
+        title: "DeLaMar and Theater Bellevue",
         author: "Map Recall",
-        sourceUrl: "https://delamar.nl/en/business/about-us/history/",
+        sourceUrl: "https://nl.wikipedia.org/wiki/DeLaMar",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+        modifications: "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) of the three DeLaMar/Bellevue pands, with every street front (the Bellevue drum, cream block and house on the Leidsekade; the glass foyer, tower bays, palazzo and houses on the Marnixstraat), the fly tower, set-back storeys and zinc roofs measured from Gemeente Amsterdam panoramas (CC BY 4.0) read on a metre grid. No pixels or meshes imported."
       },
       bagYear: 2010
     },
@@ -2796,17 +2822,20 @@
           52.37443243333333
         ],
         northOffsetDegrees: 0,
-        source: "Three extreme vertices of the current mapped whole-monument perimeter; local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Waterside stair-platform tip intentionally extends into Keizersgracht."
+        source: "Three extreme vertices of the current mapped whole-monument perimeter (OSM w37737807; the 36 m triangle of en.wikipedia.org/wiki/Homomonument); local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Stones assigned from the sources: north tip flush (towards the Anne Frank Huis), south-west tip the 0.60 m podium (towards Rozenstraat), east tip the steps into the Keizersgracht (towards the Dam). Quay line on the stepped stone's axis 12.56 m east of the centroid from BGT waterdeel (api.pdok.nl/lv/bgt, 2026-10-16)."
       },
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
+      materialOverrides: {
+        pink: "#cdcbb0"
+      },
       attribution: {
         title: "Homomonument",
         author: "Map Recall",
         sourceUrl: "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
+        modifications: "Original geometric interpretation of the mapped whole-monument outline and the RCE overhead photograph: three 10 m granite stones, flush / 0.60 m podium / four risers from the quay to a platform 0.30 m above the canal with granite side walls to the water, thin granite lines between them. Granite tint #cdcbb0 measured on the podium riser in municipal panorama recording_2025-06-16_04-42-37_02924 (sunlit #ede7c5 and shaded #adae9b averaged; the Rosa Porrino reads grey-beige with a faint pink). The eastern tip's projection into the Keizersgracht is the mapped one (8 m past the BGT quay line). Step treads 0.5 m and the 36 cm risers are the game's canal depth, not measured. No surrounding ground or host buildings replaced."
       }
     },
     {
@@ -37346,7 +37375,20 @@
         "w749871272",
         "w749269859",
         "w749269858",
-        "w749871267"
+        "w749871267",
+        "NL.IMBAG.Pand.0363100012177303",
+        "NL.IMBAG.Pand.0363100012176942",
+        "NL.IMBAG.Pand.0363100012176956",
+        "w749871260",
+        "w749871261",
+        "w749871264",
+        "w749871265",
+        "w749871266",
+        "w749871269",
+        "w749871270",
+        "w749871273",
+        "w749871274",
+        "w749871275"
       ],
       spatialSuppression: false,
       footprint: {
@@ -37364,101 +37406,271 @@
           52.37960207395543
         ],
         northOffsetDegrees: 0,
-        source: "BAG pand 0363100012177304 and 3DBAG LoD2.2, native east/south metres from the anchor (eaves 15.0 m, gable tops 22.0 m, ridge 27.8 m, turret 38.8 m)"
+        source: "BAG pand 0363100012177304 and 3DBAG LoD2.2, native east/south metres from the anchor (eaves 15.0 m, gable tops 22.0 m, ridge 27.8 m, turret 38.8 m) Corner houses: BAG pands 0363100012177303 (NE), 0363100012176942 (SE), 0363100012176956 (NW), bouwjaar 1623, rings in noorderkerk-footprints.json cornerHouses."
       },
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       buildingFootprint: {
-        type: "Polygon",
+        type: "MultiPolygon",
         coordinates: [
           [
             [
-              4.886722785840835,
-              52.37964145107595
-            ],
+              [
+                4.886722785840835,
+                52.37964145107595
+              ],
+              [
+                4.8866700606823015,
+                52.37977154987507
+              ],
+              [
+                4.886509227160011,
+                52.379746693042364
+              ],
+              [
+                4.886467631144163,
+                52.37984711648335
+              ],
+              [
+                4.886257223951708,
+                52.37981364617685
+              ],
+              [
+                4.886298710638572,
+                52.37971253928017
+              ],
+              [
+                4.886132626934587,
+                52.37968703957486
+              ],
+              [
+                4.886152206714869,
+                52.37963743841563
+              ],
+              [
+                4.886153143955434,
+                52.379635078616104
+              ],
+              [
+                4.8861870749805245,
+                52.37955666967922
+              ],
+              [
+                4.886241432540962,
+                52.37953699189166
+              ],
+              [
+                4.886250531580041,
+                52.37953368695966
+              ],
+              [
+                4.886273817140137,
+                52.37952525613608
+              ],
+              [
+                4.886309342734082,
+                52.37951239221977
+              ],
+              [
+                4.886393223965058,
+                52.379482000073544
+              ],
+              [
+                4.8864051688093655,
+                52.3794529843666
+              ],
+              [
+                4.886435832130492,
+                52.3794310941737
+              ],
+              [
+                4.886627015878022,
+                52.37946038451951
+              ],
+              [
+                4.886659028976037,
+                52.37949195881569
+              ],
+              [
+                4.886603371373603,
+                52.37951233233934
+              ],
+              [
+                4.886561226574913,
+                52.37961587222872
+              ],
+              [
+                4.886722785840835,
+                52.37964145107595
+              ]
+            ]
+          ],
+          [
             [
-              4.8866700606823015,
-              52.37977154987507
-            ],
+              [
+                4.886467631,
+                52.379847116
+              ],
+              [
+                4.886509227,
+                52.379746693
+              ],
+              [
+                4.886670061,
+                52.37977155
+              ],
+              [
+                4.886722786,
+                52.379641451
+              ],
+              [
+                4.886728375,
+                52.379639408
+              ],
+              [
+                4.886742143,
+                52.379653181
+              ],
+              [
+                4.886763038,
+                52.379674345
+              ],
+              [
+                4.886811749,
+                52.379722977
+              ],
+              [
+                4.886735043,
+                52.379751297
+              ],
+              [
+                4.886744533,
+                52.37976019
+              ],
+              [
+                4.88674308,
+                52.379767958
+              ],
+              [
+                4.886705191,
+                52.379781962
+              ],
+              [
+                4.88667214,
+                52.379794244
+              ],
+              [
+                4.886653851,
+                52.379801033
+              ],
+              [
+                4.886652449,
+                52.379801638
+              ],
+              [
+                4.886641135,
+                52.379799496
+              ],
+              [
+                4.886631083,
+                52.379789684
+              ],
+              [
+                4.88659256,
+                52.379803911
+              ],
+              [
+                4.886562341,
+                52.379815062
+              ],
+              [
+                4.886473114,
+                52.379848002
+              ],
+              [
+                4.886467631,
+                52.379847116
+              ]
+            ]
+          ],
+          [
             [
-              4.886509227160011,
-              52.379746693042364
-            ],
+              [
+                4.886561227,
+                52.379615872
+              ],
+              [
+                4.886603371,
+                52.379512332
+              ],
+              [
+                4.886659029,
+                52.379491959
+              ],
+              [
+                4.886689604,
+                52.379522134
+              ],
+              [
+                4.886633303,
+                52.379543511
+              ],
+              [
+                4.886702139,
+                52.379612567
+              ],
+              [
+                4.886758454,
+                52.379591181
+              ],
+              [
+                4.886798222,
+                52.379631874
+              ],
+              [
+                4.886742143,
+                52.379653181
+              ],
+              [
+                4.886728375,
+                52.379639408
+              ],
+              [
+                4.886722786,
+                52.379641451
+              ],
+              [
+                4.886561227,
+                52.379615872
+              ]
+            ]
+          ],
+          [
             [
-              4.886467631144163,
-              52.37984711648335
-            ],
-            [
-              4.886257223951708,
-              52.37981364617685
-            ],
-            [
-              4.886298710638572,
-              52.37971253928017
-            ],
-            [
-              4.886132626934587,
-              52.37968703957486
-            ],
-            [
-              4.886152206714869,
-              52.37963743841563
-            ],
-            [
-              4.886153143955434,
-              52.379635078616104
-            ],
-            [
-              4.8861870749805245,
-              52.37955666967922
-            ],
-            [
-              4.886241432540962,
-              52.37953699189166
-            ],
-            [
-              4.886250531580041,
-              52.37953368695966
-            ],
-            [
-              4.886273817140137,
-              52.37952525613608
-            ],
-            [
-              4.886309342734082,
-              52.37951239221977
-            ],
-            [
-              4.886393223965058,
-              52.379482000073544
-            ],
-            [
-              4.8864051688093655,
-              52.3794529843666
-            ],
-            [
-              4.886435832130492,
-              52.3794310941737
-            ],
-            [
-              4.886627015878022,
-              52.37946038451951
-            ],
-            [
-              4.886659028976037,
-              52.37949195881569
-            ],
-            [
-              4.886603371373603,
-              52.37951233233934
-            ],
-            [
-              4.886561226574913,
-              52.37961587222872
-            ],
-            [
-              4.886722785840835,
-              52.37964145107595
+              [
+                4.886257224,
+                52.379813646
+              ],
+              [
+                4.88618048,
+                52.379802455
+              ],
+              [
+                4.886113547,
+                52.379735313
+              ],
+              [
+                4.886132627,
+                52.37968704
+              ],
+              [
+                4.886298711,
+                52.379712539
+              ],
+              [
+                4.886257224,
+                52.379813646
+              ]
             ]
           ]
         ]
@@ -42009,6 +42221,300 @@
         modifications: "Original texture-free low-poly steel ribbon, flying figures, paving and wall built from Commons photographs: 2021 Spanjemonument beeld 1-3 and plaquette 1 (Ceescamel, CC BY-SA 4.0) and Spanje monument groot (Eddy Roos, CC BY-SA 4.0). No pixels or third-party meshes imported.",
         licence: "Original project asset",
         licenceUrl: "./LICENSE"
+      }
+    },
+    {
+      id: "mercatorplein-noordtoren",
+      name: "Mercatorplein north tower",
+      modelUrl: "./models/mercatorplein-noordtoren.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012107349"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.850677,
+          52.3704295
+        ],
+        headingDegrees: 0,
+        lengthMetres: 73.2,
+        widthMetres: 35.2
+      },
+      surveyed: {
+        anchor: [
+          4.850677,
+          52.3704295
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG 0363100012107349 footprint vertex average and 3DBAG LoD2.2 heights; native east/south metres from the anchor (the large-tier frame). Tower and gatehouse measured on rectified panorama crops (docs/mercatorplein-20261014.md)."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      heightMetres: 37.5,
+      bagYear: 1996,
+      materialOverrides: {
+        brick: "#8b5a4a",
+        concrete: "#9d978a",
+        greyBrick: "#4f4744",
+        slate: "#5b6168",
+        frame: "#e6dfca",
+        glass: "#3a4148",
+        dark: "#2c2a28",
+        stone: "#b9b2a3",
+        white: "#f1ede2",
+        red: "#a0705c"
+      },
+      attribution: {
+        title: "Mercatorplein north wall and tower (Berlage 1925-27, rebuilt 1995-98)",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) of the north wall block with block-kit facade systems (the square front with the kit ground arcade), plus the hand-modelled tower (clock dials, balconies, paired windows), the gatehouse over the Mercatorstraat underpass, erkers and hoist beams, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0; Pbech, public domain) read on a metre grid. No pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8509621,
+              52.3704626
+            ],
+            [
+              4.8509264,
+              52.3705399
+            ],
+            [
+              4.8507846,
+              52.3705154
+            ],
+            [
+              4.8507606,
+              52.3705673
+            ],
+            [
+              4.8506193,
+              52.370543
+            ],
+            [
+              4.8506281,
+              52.3705239
+            ],
+            [
+              4.8505716,
+              52.3705141
+            ],
+            [
+              4.8505868,
+              52.3704813
+            ],
+            [
+              4.8504193,
+              52.3704523
+            ],
+            [
+              4.8504037,
+              52.3704821
+            ],
+            [
+              4.8503335,
+              52.37047
+            ],
+            [
+              4.8503346,
+              52.3704679
+            ],
+            [
+              4.850315,
+              52.3704641
+            ],
+            [
+              4.8503145,
+              52.370465
+            ],
+            [
+              4.8502952,
+              52.3704612
+            ],
+            [
+              4.8503013,
+              52.3704494
+            ],
+            [
+              4.8503029,
+              52.3704497
+            ],
+            [
+              4.8503424,
+              52.370374
+            ],
+            [
+              4.8503494,
+              52.3703755
+            ],
+            [
+              4.8503991,
+              52.3702861
+            ],
+            [
+              4.8503898,
+              52.3702845
+            ],
+            [
+              4.8503918,
+              52.3702801
+            ],
+            [
+              4.8503908,
+              52.3702783
+            ],
+            [
+              4.8504014,
+              52.3702555
+            ],
+            [
+              4.8504037,
+              52.3702543
+            ],
+            [
+              4.8504059,
+              52.3702497
+            ],
+            [
+              4.851023,
+              52.3703568
+            ],
+            [
+              4.8510088,
+              52.3703873
+            ],
+            [
+              4.8510584,
+              52.3703958
+            ],
+            [
+              4.851245,
+              52.3704282
+            ],
+            [
+              4.8512452,
+              52.3704278
+            ],
+            [
+              4.85137,
+              52.3704493
+            ],
+            [
+              4.8513536,
+              52.3704879
+            ],
+            [
+              4.8513251,
+              52.3705497
+            ],
+            [
+              4.8511988,
+              52.3705278
+            ],
+            [
+              4.851209,
+              52.3705051
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "mercatorplein-zuidtoren",
+      name: "Mercatorplein south tower",
+      modelUrl: "./models/mercatorplein-zuidtoren.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012073289"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8507542,
+          52.3688725
+        ],
+        headingDegrees: 0,
+        lengthMetres: 25.5,
+        widthMetres: 18.2
+      },
+      surveyed: {
+        anchor: [
+          4.8507542,
+          52.3688725
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG 0363100012073289 footprint vertex average and 3DBAG LoD2.2 heights; native east/south metres from the anchor (the large-tier frame). Tower and gatehouse measured on rectified panorama crops (docs/mercatorplein-20261014.md)."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      heightMetres: 35.4,
+      bagYear: 1927,
+      materialOverrides: {
+        brick: "#8b5a4a",
+        concrete: "#9d978a",
+        greyBrick: "#4f4744",
+        slate: "#5b6168",
+        frame: "#e6dfca",
+        glass: "#3a4148",
+        dark: "#2c2a28",
+        stone: "#b9b2a3",
+        white: "#f1ede2",
+        red: "#a0705c"
+      },
+      attribution: {
+        title: "Mercatorplein south gatehouse and tower (Berlage 1925-27)",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry: the hand-modelled tower, rear shaft with its balconies and the gatehouse over the Van Spilbergenstraat underpass, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0) read on a metre grid, plus the 3DBAG LoD2.2 east bay (CC BY 4.0) with block-kit facades. No pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8507899,
+              52.3689114
+            ],
+            [
+              4.8506035,
+              52.3688786
+            ],
+            [
+              4.8505525,
+              52.3688697
+            ],
+            [
+              4.8505875,
+              52.3687934
+            ],
+            [
+              4.8508359,
+              52.3688365
+            ],
+            [
+              4.8508418,
+              52.3688238
+            ],
+            [
+              4.850928,
+              52.3688386
+            ],
+            [
+              4.8508728,
+              52.3689585
+            ],
+            [
+              4.8507759,
+              52.3689418
+            ]
+          ]
+        ]
       }
     }
   ];
@@ -47244,6 +47750,30 @@
           preferDescription: true
         }
       ]
+    },
+    {
+      modelId: "mercatorplein-noordtoren",
+      name: "Mercatorplein north tower",
+      description: "Berlage designed the walls of the Mercatorplein in 1925-27 as one closed square, with two brick towers standing on gatehouses over the streets that enter it. This is the north tower, over the underpass to the Mercatorstraat: a tall square shaft with clock faces on three sides, curved balconies tucked into its corners and an arcade of shops running along the square in front of it.",
+      funFact: "The original north tower was pulled down in 1961; the one standing now was rebuilt to Berlage's design in the 1990s, when the square was restored.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527136",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "mercatorplein-zuidtoren",
+      name: "Mercatorplein south tower",
+      description: "The south tower of the Mercatorplein stands on the gatehouse over the Van Spilbergenstraat, part of H.P. Berlage's 1925-27 design for the square. Eight storeys of brick under a flat roof, it has small windows low down, four large square windows stacked above them, and a narrower shaft at the back that rises higher still, with small balconies in its corners.",
+      funFact: "Unlike its northern twin, this tower is original: the register of national monuments describes it as a 'poortgebouw met hoge toren', a gatehouse with a high tower.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527135",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289"
+      ],
+      preferDescription: true
     }
   ];
 
@@ -47293,6 +47823,54 @@
   function bearingAfterTwist(bearingDeg, clockwiseDeg) {
     const next = bearingDeg - clockwiseDeg;
     return ((next + 180) % 360 + 360) % 360 - 180;
+  }
+
+  // src/canalRecall/game/landmarkSightline.ts
+  var SIGHTLINE = {
+    minHeightM: 40,
+    reachM: 300,
+    fullM: 250,
+    nearFullM: 120,
+    nearZeroM: 80,
+    enterDeg: 45,
+    stayDeg: 60,
+    maxPitchDeg: 8,
+    maxLeadM: 50,
+    /** Easing per 60 Hz frame toward the target view. */
+    ease: 0.04
+  };
+  var NO_SIGHTLINE = Object.freeze({ pitchDeg: 0, leadM: 0 });
+  var smooth = (t) => {
+    const c = Math.min(1, Math.max(0, t));
+    return c * c * (3 - 2 * c);
+  };
+  function sightlineWeight(distanceM) {
+    const s = SIGHTLINE;
+    if (!Number.isFinite(distanceM) || distanceM >= s.reachM || distanceM <= s.nearZeroM) return 0;
+    if (distanceM > s.fullM) return smooth((s.reachM - distanceM) / (s.reachM - s.fullM));
+    if (distanceM < s.nearFullM) return smooth((distanceM - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
+    return 1;
+  }
+  function landmarkSightline(target, engaged, enabled = true) {
+    const s = SIGHTLINE;
+    if (!enabled || !target || !(target.heightM >= s.minHeightM)) return { view: NO_SIGHTLINE, engaged: false };
+    const off = Math.abs((target.offAxisDeg % 360 + 540) % 360 - 180);
+    const inCone = off <= (engaged ? s.stayDeg : s.enterDeg);
+    const w = inCone ? sightlineWeight(target.distanceM) : 0;
+    if (!(w > 0)) return { view: NO_SIGHTLINE, engaged: false };
+    return { view: { pitchDeg: s.maxPitchDeg * w, leadM: s.maxLeadM * w }, engaged: true };
+  }
+  function easeSightline(current, target, dt, reducedMotion = false) {
+    if (reducedMotion) return target;
+    const k = 1 - Math.pow(1 - SIGHTLINE.ease, Math.max(0, Math.min(dt, 1)) * 60);
+    const pitchDeg = current.pitchDeg + (target.pitchDeg - current.pitchDeg) * k, leadM = current.leadM + (target.leadM - current.leadM) * k;
+    return { pitchDeg: Math.abs(pitchDeg - target.pitchDeg) < 0.01 ? target.pitchDeg : pitchDeg, leadM: Math.abs(leadM - target.leadM) < 0.05 ? target.leadM : leadM };
+  }
+  function relativeTo(from, headingDeg, to) {
+    const lat = (from[1] + to[1]) / 2, kx = 111320 * Math.cos(lat * Math.PI / 180), ky = 110540;
+    const dx = (to[0] - from[0]) * kx, dy = (to[1] - from[1]) * ky;
+    const bearing = Math.atan2(dx, dy) * 180 / Math.PI;
+    return { distanceM: Math.hypot(dx, dy), offAxisDeg: bearing - headingDeg };
   }
 
   // src/canalRecall/game/presentationRuntime.ts
@@ -47718,6 +48296,35 @@
       ctx.fillText(destination, CANVAS_W / 2, top + 39, width - 16);
       ctx.restore();
     }
+    /**
+     * Chase view: look up at a tall highlighted landmark ahead (game/landmarkSightline.ts, ride review J3). Desktop
+     * first: not in the compact (phone) layout, not while panned away or during the start flight.
+     */
+    _updateLandmarkSightline() {
+      const vm = this.vectorMap, l = this.osmLoader, player = this.player;
+      if (!vm.setLandmarkView) return;
+      const now = performance.now(), dt = this._sightlineAt ? (now - this._sightlineAt) / 1e3 : 1 / 60;
+      this._sightlineAt = now;
+      let target = null;
+      const enabled = this.viewMode === "chase" && this.viewport?.mode !== "compact" && !this.camera.detached && !this._intro;
+      const lit = enabled ? vm.highlightTarget?.() ?? null : null;
+      if (lit && player && l && l._lastCenterLat != null && l._lastCenterLng != null) {
+        const lat0 = l._lastCenterLat;
+        const at = [
+          l._lastCenterLng + (player.x - l._lastOffsetX) / (111320 * Math.cos(lat0 * Math.PI / 180) * PIXELS_PER_METER),
+          lat0 - (player.y - l._lastOffsetY) / (111320 * PIXELS_PER_METER)
+        ];
+        const heading = Math.atan2(Math.cos(player.angle), -Math.sin(player.angle)) * 180 / Math.PI;
+        target = { ...relativeTo(at, heading, lit.lngLat), heightM: lit.heightM };
+      }
+      const next = landmarkSightline(target, !!this._sightlineEngaged, enabled);
+      this._sightlineEngaged = next.engaged;
+      this._sightline = easeSightline(this._sightline ?? NO_SIGHTLINE, next.view, dt, !!this.camera.reducedMotion);
+      vm.setLandmarkView(this._sightline);
+    }
+    _sightline;
+    _sightlineAt;
+    _sightlineEngaged;
     // ---- The frame ----
     _render() {
       this._syncViewportSize();
@@ -47760,6 +48367,7 @@
         this._lastZoomShown = this.camera.zoom;
         this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
       }
+      this._updateLandmarkSightline();
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       const pitched = this.viewMode === "chase" || this.viewMode === "cockpit";

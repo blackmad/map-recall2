@@ -35,6 +35,8 @@ import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { groundLookFrom, groundPalette, type GroundLook } from './groundLook.js';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
+import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
+import { groundTokens } from '../look/sunny.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -61,6 +63,11 @@ export interface OwnGroundOptions {
   far?: boolean;
   /** Ground palette variant (groundLook.ts; default from `?groundLook=`). Colour only. */
   groundLook?: GroundLook;
+  /**
+   * The overview → city blend (overviewTransition/blend.ts; default on, `?transition=0` off): the ground dissolves in
+   * from zoom 14 to 15.6 instead of appearing at `minZoom`.
+   */
+  transition?: boolean;
 }
 
 /** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
@@ -144,13 +151,17 @@ export class OwnGround {
   /** Far blocks with nothing to draw (outside the extracts). */
   private readonly farEmpty = new Set<string>();
   private readonly farStats = { built: 0, buildMs: [] as number[] };
+  /** The overview → city blend (transition on): drawn while `blend.active`, dithered by `blendUniform`. */
+  readonly blend = new OverviewBlend();
+  private readonly blendUniform = { value: 1 };
+  private readonly presenceUniform = { value: 1 };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), groundLook: groundLookFrom(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), groundLook: groundLookFrom(), transition: transitionOn(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -257,12 +268,20 @@ export class OwnGround {
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();
   }
 
-  private visibleAtZoom(zoom: number): boolean { return this.enabled && this.ready && zoom >= this.opts.minZoom; }
+  private visibleAtZoom(zoom: number): boolean {
+    if (!this.enabled || !this.ready) return false;
+    return this.opts.transition ? this.blend.active : zoom >= this.opts.minZoom;
+  }
 
   /** Per frame, from the shared frame's main pass. */
   private beforeRender(zoom: number): boolean {
     this.zoom = zoom;
     if (!this.precompiled) this.precompile();
+    if (this.opts.transition) {
+      this.blendUniform.value = this.blend.update(zoom);
+      this.presenceUniform.value = presenceOf(this.blendUniform.value);
+      this.setGroundTransparent(this.presenceUniform.value < 1);
+    }
     const visible = this.visibleAtZoom(zoom);
     // One cell per frame: geometry upload is the cost, not the build (that is in the worker).
     const next = this.installQueue.shift();
@@ -364,7 +383,7 @@ export class OwnGround {
   private installFar(b: BuiltFar): void {
     const THREE = this.THREE, t0 = performance.now();
     this.dropFar(b.key);
-    if (!this.base.far) { this.base.far = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 }); this.base.far.color.multiplyScalar(FLAT_GROUND_GAIN); }
+    if (!this.base.far) { this.base.far = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, metalness: 0 }); this.base.far.color.multiplyScalar(FLAT_GROUND_GAIN); this.blendMaterial(this.base.far, 'vertex'); }
     const group = new THREE.Group(), parts = new Map<string, any>();
     group.name = `own-ground/far/${b.key}`;
     group.matrixAutoUpdate = false;
@@ -522,6 +541,17 @@ export class OwnGround {
     for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Level sunlit ground draws its palette luminance (groundLight.ts); objects standing on it keep the rig's light as the buildings do.
     for (const [layer, m] of Object.entries(M)) if (!UNGAINED.has(layer)) m.color.multiplyScalar(FLAT_GROUND_GAIN);
+    // The overview → city blend: every ground material (not the draped overlays below) is present early and takes its
+    // colour from the flat palette tone the basemap draws (`flat`), so the shaded ground crossfades over the flat one.
+    // The basemap's tones are look/sunny.ts `groundTokens` (basemapPalette.ts); the ground fades from the same strings.
+    const T = groundTokens(groundPalette(this.opts.groundLook));
+    const flat: Record<string, readonly number[] | string | 'vertex'> = {
+      land: T.land, klinker: T.klinker, asphalt: T.road, cycle: T.cycle,
+      paving: T.pavement, gravel: T.gravel, kerb: STREET_GROUND.kerb, paint: T.road, tram: T.road,
+      bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
+      lawn: G.lawn, bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,
+    };
+    for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex');
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
     const overlay = (color: string, k: number, o: Record<string, unknown> = {}) => new THREE.MeshBasicMaterial({ color, polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k, ...o });
     M.routeCasing = overlay('#03121c', 5, { transparent: true, opacity: 0.75, depthWrite: false });
@@ -577,7 +607,9 @@ export class OwnGround {
   private cutMaterial(layer: GroundLayer, uniforms: Record<string, { value: unknown }>): any {
     const channel = CUT[layer]!;
     const m = this.base[layer].clone();
-    m.onBeforeCompile = (shader: any) => {
+    const base = this.base[layer];
+    m.onBeforeCompile = (shader: any, renderer: any) => {
+      base.onBeforeCompile?.(shader, renderer);
       Object.assign(shader.uniforms, uniforms);
       // The mask UV is formed per vertex (0..1, highp): scene metres reach ±15 km
       // city-wide, too coarse for a mediump varying on a phone GPU.
@@ -590,8 +622,48 @@ export class OwnGround {
       shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform sampler2D waterMask;')
         .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nif (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0 && texture2D(waterMask, vMaskUV).${channel} < 0.5) discard;`);
     };
-    m.customProgramCacheKey = () => `ownGround-cut2-${channel}-${layer}`;
+    m.customProgramCacheKey = () => `ownGround-cut2-${channel}-${layer}${this.opts.transition ? '-blend' : ''}`;
     return m;
+  }
+
+  /**
+   * While the ground is becoming present (presence < 1) its materials alpha-blend over the flat basemap (a smooth
+   * crossfade: a screen-door dither re-randomised under the moving camera and read as sparkle, ~6 % of the view per
+   * 0.1 zoom). Opaque again once present, so the ride itself draws exactly as before. Toggled only on the crossing.
+   */
+  private groundTransparent = false;
+  private setGroundTransparent(on: boolean): void {
+    if (on === this.groundTransparent) return;
+    this.groundTransparent = on;
+    const all = new Set<any>();
+    for (const [layer, m] of Object.entries(this.base)) if (!['routeCasing', 'route', 'highlight', 'destination'].includes(layer)) all.add(m);
+    for (const r of this.resident.values()) {
+      for (const m of r.materials) all.add(m);
+      for (const f of r.fade?.meshes ?? []) all.add(f.clone);
+    }
+    for (const m of all) { m.transparent = on; m.needsUpdate = true; }
+  }
+
+  /**
+   * Patch a base ground material for the overview blend (transition on; no-op otherwise): its alpha is the presence
+   * (`presenceOf(b)`, blended only while `setGroundTransparent`), and its output colour mixes from `flat` (the palette tone the basemap draws, sRGB; 'vertex' =
+   * its own vertex colour) to the lit, textured ground by `b`.
+   */
+  private blendMaterial(m: any, flat: readonly number[] | string | 'vertex'): void {
+    if (!this.opts.transition) return;
+    const { blendUniform: blend, presenceUniform: presence } = this;
+    const vertex = flat === 'vertex';
+    const rgb = vertex ? [0, 0, 0] : typeof flat === 'string' ? new this.THREE.Color(flat).convertLinearToSRGB().toArray() : (flat as number[]).map(v => v / 255);
+    const tone = { value: rgb };
+    m.onBeforeCompile = (shader: any) => {
+      shader.uniforms.ownBlend = blend;
+      shader.uniforms.ownPresence = presence;
+      shader.uniforms.ownFlat = tone;
+      const flatExpr = vertex ? 'pow(max(vColor.rgb, vec3(0.0)), vec3(1.0 / 2.2))' : 'ownFlat';
+      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform float ownBlend;\nuniform float ownPresence;\nuniform vec3 ownFlat;')
+        .replace('#include <dithering_fragment>', `#include <dithering_fragment>\nif (ownBlend < 1.0) gl_FragColor.rgb = mix(${flatExpr}, gl_FragColor.rgb, ownBlend);\ngl_FragColor.a = ownPresence;`);
+    };
+    m.customProgramCacheKey = () => `ownGround-blend3-${m.type}-${vertex ? 'vc' : 'flat'}`;
   }
 
   /**
@@ -916,7 +988,7 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key) };
+    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), flatBridges: b.bridges.flat };
   }
 
   status(): Record<string, unknown> {
@@ -925,7 +997,7 @@ export class OwnGround {
     for (const r of this.resident.values()) { triangles += r.triangles; bytes += r.bytes; cells[r.key] = r.lod; }
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
-      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom,
+      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom,
       cells, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),

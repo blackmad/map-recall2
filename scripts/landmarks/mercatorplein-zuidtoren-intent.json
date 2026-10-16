@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "mercatorplein-zuidtoren",
+ "pandId": "0363100012073289",
+ "address": "Mercatorplein south gatehouse and tower, Amsterdam (Berlage 1925-27)",
+ "sources": [
+  {
+   "id": "pano-2025-09-25-w03-344",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_25_07_44_15_00222/",
+   "image": "staging/pand-reference-walls/0363100012073289/w03-344.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    4
+   ],
+   "street": "Mercatorplein",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "plinth-shopfronts",
+   "windows": "two-light"
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "street": "Van Spilbergenstraat",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 2,
+   "ground": "system",
+   "windows": "two-light"
+  },
+  {
+   "wallSurfaces": [
+    46
+   ],
+   "street": "Mercatorplein",
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 1,
+   "ground": "system",
+   "windows": "two-light"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7b5246",
+  "frame": "#e6dfca",
+  "door": "#4f4744",
+  "stone": "#9d978a",
+  "glass": "#3a4148"
+ },
+ "notes": [
+  "Kit part of the Mercatorplein south landmark: only the east bay of pand 0363100012073289 (the 3DBAG shell east of the gatehouse); the tower, the gatehouse over the Van Spilbergenstraat underpass and the bay's erker and hoist beam are drawn by scripts/landmarks/mercatorplein-zuidtoren-builder.ts."
+ ]
+}

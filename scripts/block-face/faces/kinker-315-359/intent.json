@@ -196,26 +196,26 @@
       "entrance": "left",
       "glazing": "transom",
       "stallriser": "low",
-      "evidence": "strip.jpg 2024-12-11 pand 3: black fascia lettered GÖNÜL coiffure",
-      "name": "Gőnűl"
+      "evidence": "strip.jpg 2024-12-11 pand 3: black fascia lettered G\u00d6N\u00dcL coiffure",
+      "name": "G\u0151n\u0171l"
      }
     }
    },
    "groundFloor": {
     "use": "services",
     "photoDate": "2024-12-11",
-    "name": "Gőnűl",
+    "name": "G\u0151n\u0171l",
     "category": "shop=hairdresser",
     "osm": {
      "type": "node",
      "id": 4899464724,
-     "name": "Gőnűl"
+     "name": "G\u0151n\u0171l"
     },
     "bag": [
      "winkelfunctie"
     ],
     "agreement": "osm-and-photo",
-    "note": "GÖNÜL coiffure lettered on the black fascia"
+    "note": "G\u00d6N\u00dcL coiffure lettered on the black fascia"
    },
    "rhythm": {
     "photoRows": [
@@ -1088,56 +1088,9 @@
   "partyClip": true,
   "corniceGroups": [],
   "identical": [],
-  "measuredEaves": [
-   {
-    "pand": "0363100012156907",
-    "stripRow": 298,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 16.1 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012165777",
-    "stripRow": 298,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 16.0 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012153818",
-    "stripRow": 298,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 15.9 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012153447",
-    "stripRow": 298,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 16.0 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012159990",
-    "stripRow": 298,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 14.5 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012236156",
-    "stripRow": 298,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 298 (13.5 m); 3DBAG eaves 15.9 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012167386",
-    "stripRow": 300,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 300 (13.4 m); 3DBAG eaves 15.8 m read the mansard or gable roof"
-   },
-   {
-    "pand": "0363100012236481",
-    "stripRow": 316,
-    "frontRoof": {},
-    "evidence": "strip.jpg: top of the row's cornice at row 316 (13.1 m); 3DBAG eaves 15.5 m read the mansard or gable roof"
-   }
-  ]
+  "rowCoherence": {
+   "thresholdM": 0.8
+  }
  },
  "limitations": [
   "Straight-sided gables (323, 353; pairs 331|333 and 343|345 with one wide gable over two fronts) drawn as the type bell gable, one per front: the type has no pointed or pair gable variant.",

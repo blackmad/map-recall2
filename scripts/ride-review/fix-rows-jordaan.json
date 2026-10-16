@@ -1,0 +1,8 @@
+{ "mode": "car", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "J2-westerkerk-p19", "at": [4.882993, 52.374563, 170] },
+    { "name": "J3-leliegracht", "at": [4.88437, 52.37641, 182] },
+    { "name": "J6-nieuwe-wercksbrug", "at": [4.88292, 52.37433, 191] },
+    { "name": "J8-pansemertbrug", "at": [4.88464, 52.37671, 264] }
+  ] }

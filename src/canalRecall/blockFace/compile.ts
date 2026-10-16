@@ -24,10 +24,14 @@ import {findContacts} from '../streetChunks/party.ts';
 import {fitEaves, shiftFactsHeights} from '../streetChunks/ground.ts';
 import type {ChunkResult} from '../streetChunks/types.ts';
 import {houseIntents, rigidCanopyFront, type BlockFaceIntent} from './intent.ts';
+import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
-import {recipeRoofFacts, type RecipeRoofReport} from './recipeRoof.ts';
+import {recipeRoofFacts, saddleUnderProfile, type FrontRoofSpec, type RecipeRoofReport} from './recipeRoof.ts';
+import {clampRoofVertices, findRows, rowClampFor, rowLines, ROW_COHERENCE, type RowClamp, type RowMember} from './rowCoherence.ts';
+import {roofHeightAt} from '../buildingRecipe/facts.ts';
+import type {CanalhousePoint} from '../canalhouseRecipes.ts';
 
 export interface FaceGate { pand: string; id: string; pass: boolean; value: unknown; limit: string }
 export interface Interference {
@@ -51,12 +55,16 @@ export interface Interference {
 }
 export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBefore: number[]; eavesAfter: number[]; groups: {pands: string[]; spreadM: number; snapped: boolean; trust?: 'photo'; reference?: string}[]; facts: BuildingFacts[];
   /** Photo-measured eaves (continuity.measuredEaves) per pand: front id -> metres above the shared street level. */
-  measured?: Record<string, Record<string, number>> }
+  measured?: Record<string, Record<string, number>>;
+  /** Row coherence (blockFace/rowCoherence.ts): every member the row line or ridge clamped, and why. */
+  rowClamps?: RowClamp[] }
 /** The strip's vertical scale (strip.json): pixel rows to metres above the strip's ground line. */
 export interface StripScale { heightPx: number; pixelsPerMetre: number; groundNAP: number }
 export interface BlockFaceResult {
-  /** Roofs generated from the recipe (`continuity.roof.source = recipe`), per pand; pands that kept 3DBAG are absent. */
+  /** Roofs generated from the recipe or the front (`roofSourceFor`), per pand; pands that kept 3DBAG are absent. */
   recipeRoofs?: RecipeRoofReport[];
+  /** Row coherence: every member the row line or ridge clamped. */
+  rowClamps?: RowClamp[];
   /** Crowns taken from the photo (`continuity.crownFromPhoto`): applied patches and fronts that kept their authored crown. */
   photoCrowns?: {patches: PhotoCrownPatch[]; kept: {pand: string; front: string; why: string}[]};
   instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]; fronts: {id: string; widthM: number; eavesM: number; storeyHeightsM: number[]}[]}[]; passed: boolean }
@@ -65,7 +73,9 @@ const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return
 const cm = (v: number) => Math.round(v * 100) / 100;
 
 /** One street level (median ground, shifts <= 1 m) and the intent's cornice groups. */
-export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], maxGroupSpreadM = 0.8, strip?: StripScale): FaceGroundPlan {
+export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], maxGroupSpreadM = 0.8, strip?: StripScale, extras: {
+  /** Photo skyline eaves per pand (m above the pand's ground), a row member's confirmation that it really stands off the row line. */
+  skylineEavesM?: Map<string, number>} = {}): FaceGroundPlan {
   const sharedNapM = cm(median(facts.map(f => f.heights.groundNAP)));
   const shiftsM = facts.map(f => { const d = f.heights.groundNAP - sharedNapM; return face.continuity.streetLevel === 'shared' && Math.abs(d) <= 1 ? cm(d) : 0; });
   const grounded = facts.map((f, i) => shiftsM[i] ? shiftFactsHeights(f, shiftsM[i], sharedNapM) : f);
@@ -84,19 +94,49 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
   });
   // Photo-measured eaves: strip row -> metres above the strip ground -> metres above this pand's (shifted) ground.
   const measuredList = face.continuity.measuredEaves ?? [];
-  if (!measuredList.length) return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: out};
-  if (!strip) throw Error('continuity.measuredEaves needs the strip scale (strip.json)');
+  if (measuredList.length && !strip) throw Error('continuity.measuredEaves needs the strip scale (strip.json)');
   const intents = houseIntents(face), measured: Record<string, Record<string, number>> = {};
   for (const m of measuredList) {
-    const i = index.get(m.pand)!, aboveStrip = (strip.heightPx - m.stripRow) / strip.pixelsPerMetre;
-    const value = cm(aboveStrip + strip.groundNAP - facts[i].heights.groundNAP + shiftsM[i]);
+    const i = index.get(m.pand)!, aboveStrip = (strip!.heightPx - m.stripRow) / strip!.pixelsPerMetre;
+    const value = cm(aboveStrip + strip!.groundNAP - facts[i].heights.groundNAP + shiftsM[i]);
     for (const fr of intents[i].fronts) if (m.front === undefined || m.front === fr.id) (measured[m.pand] ??= {})[fr.id] = value;
   }
-  const withMeasured = out.map((f, i) => {
+  // Row coherence: a typed row's cornice is one line and its roof one ridge (blockFace/rowCoherence.ts). Runs after the
+  // cornice groups (a member's line is its group's) and before the explicit measurements, which always win.
+  const rowClamps: RowClamp[] = [], rowed = [...out];
+  if (face.continuity.rowCoherence !== false) {
+    const thresholdM = face.continuity.rowCoherence?.thresholdM ?? ROW_COHERENCE.thresholdM;
+    const rows = findRows(face.houses.map((h, i) => ({pandId: h.pandId, typeId: h.type?.type, builtYear: grounded[i].heights.builtYear})));
+    for (const row of rows) {
+      const members: RowMember[] = row.map(i => {
+        // Each street front's own fitted eaves (modules of one pand read their own stretch of the 3DBAG profile).
+        const street = intents[i].fronts[0].street, fit = fitIntent(intents[i], out[i]).report;
+        const frontEavesM = Object.fromEntries(intents[i].fronts.filter(fr => fr.street === street).map(fr => [fr.id, fit.fronts.find(x => x.id === fr.id)?.eavesM ?? eavesAfter[i]]));
+        return {i, pandId: face.houses[i].pandId, eavesM: eavesAfter[i], frontEavesM, stripEavesM: measured[face.houses[i].pandId]?.[intents[i].fronts[0].id], ridgeM: out[i].heights.ridgeM, roofMaxM: out[i].heights.roofMaxM, skylineEavesM: extras.skylineEavesM?.get(face.houses[i].pandId)};
+      });
+      const lines = rowLines(members, thresholdM), rowId = `${face.houses[row[0]].type!.type} ${m6(face.houses[row[0]].pandId)}..${m6(face.houses[row.at(-1)!].pandId)}`;
+      for (const m of members) {
+        const clamp = rowClampFor(m, lines, rowId, {thresholdM});
+        if (!clamp) continue;
+        let f = rowed[m.i];
+        if (clamp.fronts) {
+          const mine: Record<string, number> = Object.fromEntries(Object.entries(clamp.fronts).map(([id, c]) => [id, c.to]));
+          measured[m.pandId] = {...(measured[m.pandId] ?? {}), ...mine};
+          if (mine[intents[m.i].fronts[0].id] !== undefined) eavesAfter[m.i] = mine[intents[m.i].fronts[0].id];
+          f = {...f, measuredEavesM: {...(f.measuredEavesM ?? {}), ...mine}};
+        }
+        if (clamp.ridgeM) f = clampRoofVertices(f, clamp.ridgeM.to);
+        rowed[m.i] = {...f, rowClamp: clamp};
+        rowClamps.push(clamp);
+      }
+    }
+  }
+  if (!measuredList.length && !rowClamps.length) return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: out};
+  const withMeasured = rowed.map((f, i) => {
     const mine = measured[face.houses[i].pandId];
     if (!mine) return f;
     for (const pitch of measuredList.filter(m => m.pand === face.houses[i].pandId && m.frontRoof)) {
-      const row = (r: number) => strip.groundNAP + (strip.heightPx - r) / strip.pixelsPerMetre, fr = pitch.frontRoof!;
+      const row = (r: number) => strip!.groundNAP + (strip!.heightPx - r) / strip!.pixelsPerMetre, fr = pitch.frontRoof!;
       const fronts = intents[i].fronts, k = pitch.front === undefined ? 0 : fronts.findIndex(x => x.id === pitch.front), value = mine[fronts[k].id];
       // One front of several: re-pitch only along its stretch of the frontage (the fit's own split of the chain).
       let along: [number, number] | undefined;
@@ -117,7 +157,91 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
     eavesAfter[i] = mine[intents[i].fronts[0].id] ?? eavesAfter[i];
     return {...f, measuredEavesM: {...(f.measuredEavesM ?? {}), ...mine}};
   });
-  return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: withMeasured, measured};
+  return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: withMeasured, measured, ...(rowClamps.length ? {rowClamps} : {})};
+}
+
+export type RoofSourceKind = 'survey' | 'recipe' | 'front';
+
+/**
+ * Where one pand's roof comes from. The house says so (`roof.source`: `3dbag` keeps LoD2.2, `front` follows the
+ * front), a `keepSurvey` entry keeps LoD2.2, and otherwise the roof follows the front as soon as a street front
+ * carries a measured crown: a gable (the crown outline was read off the strip when the house was typed) or a measured
+ * eaves line (strip or row). Cornice fronts, capped or plain, keep the face rule (a wide cap is a parapet on De
+ * Clercqstraat and a cornice band under a steep roof elsewhere; the parapet alone says nothing about the roof).
+ */
+export function roofSourceFor(intent: CanalHouseIntent, facts: BuildingFacts, faceRule: 'recipe' | 'survey', keepSurvey: Set<string> = new Set()): RoofSourceKind {
+  if (intent.roof.source === '3dbag') return 'survey';
+  if (intent.roof.source === 'front') return 'front';
+  if (keepSurvey.has(intent.pandId)) return 'survey';
+  const street = intent.fronts[0].street;
+  const measuredCrown = intent.fronts.some(fr => fr.street === street && (!['cornice', 'flat'].includes(fr.gable) || facts.measuredEavesM?.[fr.id] !== undefined));
+  return measuredCrown ? 'front' : faceRule;
+}
+
+export interface FrontRoofHint { topM?: number; pitchDeg?: number }
+
+/**
+ * The form of every street front band of a `front` pand (blockFace/recipeRoof.ts `FrontRoofSpec`): a saddle under a
+ * gable's crown outline (`saddleUnderProfile`; an attic face when the saddle's side eaves would drop over a metre under
+ * the cornice), an attic face behind dormers or a `frontRoof` hint (the hint's top row and pitch, no 3DBAG p95 cap),
+ * and the 3DBAG-bounded attic for the rest; that one goes flat by itself when 3DBAG stands under a metre over the
+ * eaves (a measured cornice says where the cornice is, not that nothing rises behind it: De Clercqstraat's parapets
+ * hide 1.5 m of roof). A row ridge caps every attic band. `roof.form` on the house forces one form for all its bands;
+ * `flat` is the only way to a flat band.
+ */
+export function frontRoofSpecs(intent: CanalHouseIntent, fit: {recipe: {elevations: {id: string; crown?: {value: {profile: CanalhousePoint[]}}}[]}; report: {fronts: {id: string; widthM: number; eavesM: number}[]}}, facts: BuildingFacts, opts: {hints?: Record<string, FrontRoofHint>; rowRidgeM?: number} = {}): Record<string, FrontRoofSpec> {
+  const street = intent.fronts[0].street, forced = intent.roof.form, pitchOpt = intent.roof.pitchDeg, out: Record<string, FrontRoofSpec> = {};
+  for (const fr of intent.fronts) {
+    if (fr.street !== street) continue;
+    const rf = fit.report.fronts.find(x => x.id === fr.id), el = fit.recipe.elevations.find(x => x.id === fr.id);
+    if (!rf) continue;
+    const gabled = !['cornice', 'flat'].includes(fr.gable), hint = opts.hints?.[fr.id], profile = el?.crown?.value.profile;
+    let note: string | undefined;
+    if (forced === 'saddle' || (!forced && gabled)) {
+      const s = profile ? saddleUnderProfile(profile, rf.widthM, rf.eavesM, pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}) : null;
+      if (s) { out[fr.id] = {form: 'saddle', ridgeM: s.ridgeM, pitchDeg: s.pitchDeg, sideEavesM: s.sideEavesM, lineM: cm(Math.max(...profile!.map(p => p[1])))}; continue; }
+      note = profile ? `saddle under the ${fr.gable} crown would drop its side eaves over a metre under the cornice (a crown on part of the front); attic face instead` : `no crown outline on the ${fr.gable} front; attic face instead`;
+    }
+    if (forced === 'flat') { out[fr.id] = {form: 'flat', lineM: rf.eavesM, ...(note ? {note} : {})}; continue; }
+    const capM = Math.min(hint?.topM ?? Infinity, opts.rowRidgeM !== undefined ? opts.rowRidgeM + ROW_COHERENCE.ridgeCapAboveM : Infinity);
+    out[fr.id] = {form: 'attic', ...(hint?.pitchDeg !== undefined ? {pitchDeg: hint.pitchDeg} : pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}), ...(Number.isFinite(capM) ? {capM: cm(capM)} : {}), surveyCap: !hint, ...(note ? {note} : {})};
+  }
+  return out;
+}
+
+/** Highest crown outline value at x (vertical risers take their upper end). */
+function profileAt(profile: CanalhousePoint[], x: number): number {
+  let h = -Infinity;
+  for (let i = 1; i < profile.length; i++) {
+    const [x0, y0] = profile[i - 1], [x1, y1] = profile[i];
+    if (x < Math.min(x0, x1) - 1e-6 || x > Math.max(x0, x1) + 1e-6) continue;
+    h = Math.max(h, Math.abs(x1 - x0) < 1e-9 ? Math.max(y0, y1) : y0 + (y1 - y0) * (x - x0) / (x1 - x0));
+  }
+  return h;
+}
+
+/**
+ * How far the roof stands above the crown outline along the facade line of every street front (m; negative = under),
+ * sampled every 0.1 m, 5 cm inside the frontage. The `roof-under-crown` gate for front roofs.
+ */
+export function roofAboveCrown(intent: CanalHouseIntent, fit: {recipe: {elevations: {id: string; polygonIndex: number; edgeIndex: number; endEdgeIndex?: number; crown?: {value: {profile: CanalhousePoint[]}}; bodyEavesM?: {value: number}}[]; footprint: {value: {outer: CanalhousePoint[]}[]}; house: {eavesHeightM: {value: number}}}; anchorRD: [number, number]}, facts: BuildingFacts): number {
+  const street = intent.fronts[0].street, n = facts.fronts[0].outwardNormalRD, nl = Math.hypot(n[0], n[1]) || 1, inward = [-n[0] / nl, -n[1] / nl];
+  let worst = -Infinity;
+  for (const el of fit.recipe.elevations) {
+    const fr = intent.fronts.find(f => f.id === el.id);
+    if (!fr || fr.street !== street) continue;
+    const ring = fit.recipe.footprint.value[el.polygonIndex].outer, a = ring[el.edgeIndex], b = ring[el.endEdgeIndex ?? (el.edgeIndex + 1) % ring.length];
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]), u = [(b[0] - a[0]) / len, (b[1] - a[1]) / len];
+    const eaves = el.bodyEavesM?.value ?? fit.recipe.house.eavesHeightM.value, profile = el.crown?.value.profile ?? [[0, eaves], [len, eaves]] as CanalhousePoint[];
+    for (let x = 0.05; x < len - 0.05; x += 0.1) {
+      // 5 mm inside the facade line: an attic face rising at 72 degrees gains 1.5 cm there, within the gate's 3 cm.
+      const lx = a[0] + u[0] * x, lz = a[1] + u[1] * x, p = [fit.anchorRD[0] + lx + inward[0] * 0.005, fit.anchorRD[1] - lz + inward[1] * 0.005];
+      const h = roofHeightAt(facts.roofsRD, p, facts.heights.groundNAP);
+      if (h === null) continue;
+      worst = Math.max(worst, h - profileAt(profile, x));
+    }
+  }
+  return worst;
 }
 
 const m6 = (p: string) => p.slice(-6);
@@ -345,41 +469,75 @@ export function faceFactsOnTrustedGround(face: Pick<BlockFaceIntent, 'houses'>, 
   return face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return trustFactsGround(f, terrainAt); });
 }
 
-export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale;
+/** Triangles of a compiled group (what the chunk's per-pand triangle-budget gate counts, before party-wall trimming). */
+function groupTriangles(group: T.Object3D): number {
+  let n = 0;
+  group.traverse(o => { if (o instanceof T.Mesh) { const g = o.geometry as T.BufferGeometry; n += (g.index ? g.index.count : g.getAttribute('position').count) / 3; } });
+  return n;
+}
+
+export interface FacePlanOptions {
+  strip?: StripScale;
   /** Photo gable readings keyed `<pandId>/<frontId>` (scripts/block-face/gable-from-photo.ts), used for `continuity.crownFromPhoto`. */
   photoGables?: Map<string, PhotoGable>;
   /** Override the intent's `continuity.roof.source` (before/after comparisons). */
   roofSource?: 'recipe' | 'survey';
   /** AHN terrain (scripts/lib/terrainField.ts): every pand's heights stand on its trusted ground (`trustFactsGround`). */
-  terrainAt?: TerrainAt | null} = {}): Promise<BlockFaceResult> {
+  terrainAt?: TerrainAt | null;
+}
+
+/** What the face compile decides before any GLB exists: the facts every pand is compiled from, and how its roof was chosen. */
+export interface PreparedFace {
+  /** Resolved house intents (photo crowns applied), street order. */
+  intents: CanalHouseIntent[];
+  /** The ground plan the chunk compiles from (shared street level, cornice lines, measured eaves, roofs, canopies). */
+  ground: FaceGroundPlan;
+  /** Per pand (street order): where its roof came from. `survey` = 3DBAG LoD2.2 as fitted; `recipe` = blockFace/recipeRoof.ts. */
+  roofClasses: string[];
+  photoCrowns?: BlockFaceResult['photoCrowns'];
+  recipeRoofs?: RecipeRoofReport[];
+}
+
+/**
+ * The planning half of `compileBlockFace`, shared with it: facts on trusted ground, front slits closed, the ground plan
+ * with roofs and canopies, the resolved intents. `plan(current)` re-plans from other facts (the compile snaps front
+ * corners and re-plans). Pure and GLB-free, so identity tests can hash what every pand is compiled from.
+ */
+function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, options: FacePlanOptions) {
   let intents = houseIntents(face);
   const facts = faceFactsOnTrustedGround(face, factsByPand, options.terrainAt);
   const slits = closeFrontSlits(facts);
-  // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
-  const rears = new Map<string, RearReport>();
-  // Faces model the street side only; without this the backs of a straight row are one blank plane (GLB audit blank-wall).
-  const decorate = options.inferRears === false ? undefined : (built: CompiledBuilding, input: {id: string}) => {
-    const f = built.facts, i = intents.findIndex(x => x.id === input.id), report = built.fit.fronts[0];
-    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
-  };
-  const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
   const roofSource = options.roofSource ?? face.continuity.roof?.source ?? 'survey', keepSurvey = new Set(face.continuity.roof?.keepSurvey ?? []);
   let recipeRoofs: RecipeRoofReport[] | undefined;
-  /** Recipe roofs: fit once on the 3DBAG facts for the front eaves and storeys, then replace the roof (blockFace/recipeRoof.ts). */
+  /** `frontRoof` hints per pand and front (strip rows -> m above the pand's ground): a photo roof top and pitch for an attic band. */
+  const hintsFor = (i: number, f: BuildingFacts): Record<string, FrontRoofHint> => {
+    const out: Record<string, FrontRoofHint> = {};
+    for (const m of (face.continuity.measuredEaves ?? []).filter(x => x.pand === f.pandId && x.frontRoof)) {
+      const id = m.front ?? intents[i].fronts[0].id, fr = m.frontRoof!;
+      out[id] = {...(fr.topRow !== undefined && options.strip ? {topM: cm(options.strip.groundNAP + (options.strip.heightPx - fr.topRow) / options.strip.pixelsPerMetre - f.heights.groundNAP)} : {}), ...(fr.pitchDeg !== undefined ? {pitchDeg: fr.pitchDeg} : {})};
+    }
+    return out;
+  };
+  /**
+   * Roofs per pand: `survey` keeps 3DBAG; `recipe` and `front` fit once on the 3DBAG facts for the front eaves and
+   * storeys, then replace the roof (blockFace/recipeRoof.ts); `front` bands take the form the street front implies.
+   */
   const withRoofs = (plan: FaceGroundPlan): FaceGroundPlan => {
-    if (roofSource !== 'recipe') return plan;
+    const sources = plan.facts.map((f, i) => roofSourceFor(intents[i], f, roofSource, keepSurvey));
+    if (sources.every(s => s === 'survey')) return plan;
     const make = (i: number, ridgeCapM?: number) => {
       const f = plan.facts[i], fit = fitIntent(intents[i], f), f0 = fit.report.fronts[0];
       const pitch = face.continuity.roof?.pitchDeg, street = intents[i].fronts[0].street;
+      const forms = sources[i] === 'front' ? frontRoofSpecs(intents[i], fit, f, {hints: hintsFor(i, f), rowRidgeM: f.rowClamp?.ridgeM?.to}) : undefined;
       // Several fronts on the street (two houses in one pand, tower bays): each keeps its eaves (fit's own split).
       const same = intents[i].fronts.filter(fr => fr.street === street), ff = fit.facts.fronts.find(x => x.street === street);
       const ends = same.length > 1 && ff ? splitChain(ff, (() => { const sh = same.map(fr => fr.share ?? 1 / same.length), t = sh.reduce((a, b) => a + b, 0); return sh.map(x => x / t); })()).pairs : null;
       const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k]})) : undefined;
-      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts,
+      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}),
         // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them.
         faceSetbackM: intents[i].fronts.some(fr => fr.street === intents[i].fronts[0].street && fr.dormers && fr.roofFront !== 'mansard') ? 0.4 : 0}, pitch ? {frontPitchDeg: pitch} : {});
     };
-    let made = plan.facts.map((f, i) => keepSurvey.has(f.pandId) ? null : make(i));
+    let made = plan.facts.map((f, i) => sources[i] === 'survey' ? null : make(i));
     // One attic line per cornice group (the photo reads them as one roof): the lowest member's top, in NAP.
     for (const g of face.continuity.corniceGroups) {
       const ids = g.pands.map(p => face.houses.findIndex(h => h.pandId === p)).filter(i => made[i]?.report.form === 'attic');
@@ -418,7 +576,13 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     }
     return {...plan, facts: out};
   };
-  let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip);
+  // A photo skyline (gables.json readings) confirms a row member that really stands off its row line.
+  const skylineEavesM = options.photoGables && options.strip ? new Map(face.houses.map((h, i) => {
+    const r = options.photoGables!.get(`${h.pandId}/${houseIntents(face)[i].fronts[0].id}`);
+    return [h.pandId, r && Number.isFinite(r.shape.eavesUp) && !r.abstain.length ? r.shape.eavesUp + options.strip!.groundNAP - facts[i].heights.groundNAP : NaN] as [string, number];
+  }).filter(([, v]) => Number.isFinite(v))) : undefined;
+  const extras = skylineEavesM ? {skylineEavesM} : {};
+  let ground = planFaceGround(face, slits.facts, undefined, options.strip, extras);
   let photoCrowns: BlockFaceResult['photoCrowns'];
   if (face.continuity.crownFromPhoto?.length) {
     if (!options.photoGables || !options.strip) throw Error('continuity.crownFromPhoto needs photo gable readings and the strip scale');
@@ -427,6 +591,34 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     photoCrowns = {patches, kept};
   }
   ground = withCanopies(withRoofs(ground));
+  // `+mate`: a survey/recipe pand whose cornice group gained a front member (the group's shared attic line changed with it).
+  const classOf = (f: BuildingFacts, i: number) => {
+    const kind = f.roofSource?.kind ?? 'survey', mate = kind !== 'front' && face.continuity.corniceGroups.some(g => g.pands.includes(f.pandId) && g.pands.some(p => ground.facts.find(x => x.pandId === p)?.roofSource?.kind === 'front'));
+    return `${kind}${f.rowClamp ? '+row' : ''}${mate ? '+mate' : ''}`;
+  };
+  return {intents, facts, slits, ground, photoCrowns, recipeRoofs: () => recipeRoofs, classes: () => ground.facts.map(classOf),
+    plan: (current: BuildingFacts[]) => withCanopies(withRoofs(planFaceGround(face, current, undefined, options.strip, extras)))};
+}
+
+/** The facts and roof classes every pand of a face is compiled from, before the chunk compile (no GLB; see `facePlanner`). */
+export function prepareFaceFacts(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, options: FacePlanOptions = {}): PreparedFace {
+  const p = facePlanner(face, factsByPand, options);
+  return {intents: p.intents, ground: p.ground, roofClasses: p.classes(), ...(p.photoCrowns ? {photoCrowns: p.photoCrowns} : {}), ...(p.recipeRoofs() ? {recipeRoofs: p.recipeRoofs()} : {})};
+}
+
+export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: FacePlanOptions & {inferRears?: boolean} = {}): Promise<BlockFaceResult> {
+  const planner = facePlanner(face, factsByPand, options), {intents, facts, slits, photoCrowns} = planner;
+  let ground = planner.ground, current = slits.facts;
+  // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
+  const rears = new Map<string, RearReport>();
+  // Faces model the street side only; without this the backs of a straight row are one blank plane (GLB audit blank-wall).
+  const decorate = options.inferRears === false ? undefined : (built: CompiledBuilding, input: {id: string}) => {
+    const f = built.facts, i = intents.findIndex(x => x.id === input.id), report = built.fit.fronts[0];
+    // The rear grid spends what is left of the pand's triangle budget (the gate below counts rears too).
+    const maxTriangles = BUDGET_TRIANGLES * intents[i].fronts.length - groupTriangles(built.group);
+    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i), {maxTriangles}));
+  };
+  const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
   let chunk = await compile();
   const frontSnaps: FrontSnap[] = [];
   for (let pass = 0; pass < 2; pass++) {
@@ -435,9 +627,10 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     if (!todo.length) break;
     current = snapFrontSteps(current, todo.map(x => ({i: x.i, stepM: x.stepM!})), chunk.frame.nRD);
     for (const x of todo) frontSnaps.push({left: face.houses[x.i].pandId, right: face.houses[x.i + 1].pandId, stepBeforeM: cm(x.stepM!), pass: pass + 1});
-    ground = withCanopies(withRoofs(planFaceGround(face, current, undefined, options.strip)));
+    ground = planner.plan(current);
     chunk = await compile();
   }
+  const recipeRoofs = planner.recipeRoofs();
   const stepsAfter = groundCornerSteps(await decodePands(chunk.glb, intents.length));
   for (const sn of frontSnaps) sn.stepAfterM = cm(stepsAfter[face.houses.findIndex(h => h.pandId === sn.left)] ?? NaN);
   if (chunk.order.join() !== intents.map(i => i.id).join()) throw Error(`chunk order ${chunk.order.join()} differs from the intent's street order`);
@@ -454,7 +647,17 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const budget = BUDGET_TRIANGLES * intent.fronts.length;
     g(pand, 'triangle-budget', t.length <= budget, t.length, `<= ${BUDGET_TRIANGLES} per front (${intent.fronts.length})`);
     const recipe = ground.facts[i].roofSource;
-    if (recipe) g(pand, 'height-vs-3dbag', roofMax - recipe.surveyRoofMaxM <= 0.5 + allowance && roofMax >= fit.report.fronts[0].eavesM - 0.05, {modelM: cm(roofMax), threeDBagM: cm(recipe.surveyRoofMaxM), capM: recipe.capM, roof: 'recipe'}, 'recipe roof: max <= LoD2.2 roof max + 0.5 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only');
+    if (recipe?.kind === 'front') {
+      // A front roof is bounded by its crown line (the gable top, the attic cap, a tower on the cornice), not by LoD2.2;
+      // 0.3 m for what stands on the outline (a cap, a finial, the roof cladding over a crown plate).
+      const streetId = new Set(intent.fronts.filter(fr => fr.street === intent.fronts[0].street).map(fr => fr.id));
+      const crownTops = fit.recipe.elevations.filter(el => streetId.has(el.id) && el.crown).map(el => Math.max(...el.crown!.value.profile.map(p => p[1])));
+      const line = Math.max(recipe.crownTopM ?? -Infinity, ...crownTops, ...fit.report.fronts.filter(fr => streetId.has(fr.id)).map(fr => fr.crownTopM));
+      g(pand, 'height-vs-3dbag', roofMax <= line + 0.3 + allowance && roofMax >= fit.report.fronts[0].eavesM - 0.05, {modelM: cm(roofMax), crownTopM: cm(line), threeDBagM: cm(recipe.surveyRoofMaxM), roof: 'front', forms: recipe.forms}, 'front roof: max <= the crown line + 0.3 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only');
+      const above = roofAboveCrown(intent, fit, ground.facts[i]);
+      g(pand, 'roof-under-crown', above <= 0.03, {maxAboveCrownM: cm(above)}, 'front roof: along the facade line (every 0.1 m, 5 cm inside) the roof stays under the crown outline (<= 3 cm above)');
+    }
+    else if (recipe) g(pand, 'height-vs-3dbag', roofMax - recipe.surveyRoofMaxM <= 0.5 + allowance && roofMax >= fit.report.fronts[0].eavesM - 0.05, {modelM: cm(roofMax), threeDBagM: cm(recipe.surveyRoofMaxM), capM: recipe.capM, roof: 'recipe'}, 'recipe roof: max <= LoD2.2 roof max + 0.5 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only');
     else g(pand, 'height-vs-3dbag', roofMax - factsMax <= 0.5 + allowance && factsMax - roofMax <= 0.5, {modelM: cm(roofMax), threeDBagM: cm(factsMax), surveyM: cm(ground.facts[i].heights.roofMaxM)}, '|Δ| <= 0.5 m (roof max vs LoD2.2 after roofCleanup; dormers +1.9 m)');
     const f0 = fit.report.fronts[0];
     const trusted = ground.groups.find(gr => gr.trust === 'photo' && gr.snapped && gr.pands.includes(intent.pandId));
@@ -498,14 +701,21 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     // Street-side details (not the shell or roof, which end on the party wall by construction) that reach past the
     // party line. The line is the front-most shared footprint edge of the pair (frame plan), not the frame x: fronts
     // are rarely square to the averaged face axis.
-    const pairContacts = contacts.filter(c => (c.a === i && c.b === i + 1));
+    // Only edges that run back from the street are party lines across the frontage: a pand that wraps behind its
+    // neighbour (Kinkerstraat 64-66 behind 68-70) also shares a rear edge parallel to the street, which must not win
+    // the front-most pick (its far end can lie a few cm further out than the party line's street end).
+    const allPair = contacts.filter(c => (c.a === i && c.b === i + 1)), across0 = allPair.filter(c => Math.abs(c.dz) >= 0.5);
+    const pairContacts = across0.length ? across0 : allPair;
     const front = pairContacts.sort((p, q) => Math.max(q.oz, q.oz + q.dz * q.s1) - Math.max(p.oz, p.oz + p.dz * p.s1))[0];
     // "Street side" is relative to each house's own front plane (street-facing wall), not the chunk frame's z = 0: on a
     // face that bends a few degrees the middle houses stand more than 1 m behind the frame line (Nassaukade 312-307).
     const detail = (a: Tri[], k: number) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > frontZ[k] - 1));
     // Signed distance across the contact line, positive towards the right-hand house.
     const across = (v: number[]) => front ? ((v[0] - front.ox) * -front.dz + (v[2] - front.oz) * front.dx) * sideSign : v[0] - xLine;
-    const sideSign = front ? Math.sign((rings[i + 1][0].reduce((s, q) => s + q[0], 0) / rings[i + 1][0].length - front.ox) * -front.dz + (rings[i + 1][0].reduce((s, q) => s + q[1], 0) / rings[i + 1][0].length - front.oz) * front.dx) || 1 : 1;
+    // Which side of the line is the right-hand house: its street frontage midpoint (z = 0), not its footprint centroid,
+    // which lies on the LEFT of the line when the right pand wraps behind its neighbour (Kinkerstraat 64-66 behind 68-70).
+    const rMid = (chunk.pands[i + 1].frontage.x0 + chunk.pands[i + 1].frontage.x1) / 2;
+    const sideSign = front ? Math.sign((rMid - front.ox) * -front.dz + (0 - front.oz) * front.dx) || 1 : 1;
     const overL = Math.max(0, ...detail(L, i).flatMap(t => t.p.map(v => across(v)))), overR = Math.max(0, ...detail(R, i + 1).flatMap(t => t.p.map(v => -across(v))));
     const near = (a: Tri[]) => a.filter(t => t.p.some(v => Math.abs(v[0] - xLine) < 1.5));
     // Facade z-fighting fails at 1 dm2; roof planes (3DBAG partitions that overlap by centimetres at the party line) at 5 dm2.
@@ -522,6 +732,6 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     interference.push(item);
   }
   const instancing = planInstancing(intents, sizes, perPand.map(p => p.triangles));
-  return {...(photoCrowns ? {photoCrowns} : {}), ...(recipeRoofs ? {recipeRoofs} : {}), instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
+  return {...(photoCrowns ? {photoCrowns} : {}), ...(recipeRoofs ? {recipeRoofs} : {}), ...(ground.rowClamps ? {rowClamps: ground.rowClamps} : {}), instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
 }
 export {chunkFrame};

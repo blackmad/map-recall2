@@ -5,6 +5,10 @@
  *     wall they belong to: floating in front of it, buried behind its surface, or hanging past a wall end / corner
  *     (Oude Lutherse Kerk, 2026-10-10: tracery windows past the gable's edge, axis-aligned side windows half inside a
  *     skewed wall).
+ *  1b. Openings within walls (`openingsWithinWalls`, hard gate since 2026-10-16): every opening PART, projected onto its host wall,
+ *     lies inside the wall's silhouette (5 cm) and crosses no roof-class surface; the area outside is reported in m2 per part and a
+ *     part fails above 0.02 m2 (the Krijtberg's transept lancets rising past the gable rakes). Also run by the kit
+ *     (`buildingRecipe/roofChecks.ts`) over block faces and large recipes.
  *  2. Window rhythm (`auditRhythm`): per facade elevation, openings in one storey row should share size, sill and head;
  *     columns should align across storeys; a gap where the row's spacing predicts a window is a missing opening.
  *     On a facade counted from a photo (`<id>-elevations.json`) the rhythm is a FAIL when more than 15% of the openings are
@@ -147,6 +151,8 @@ export interface GeometryFinding { kind: string; severity: 'fail' | 'warn'; mess
 
 export interface GeometryAuditReport {
   openings: {assemblies: number; issues: OpeningIssue[]};
+  /** Hard gate: every opening part inside its host wall's silhouette and clear of the roof planes (`openingsWithinWalls`). */
+  withinWalls: WithinWallsReport;
   zfight: ZFightResult;
   rhythm: RhythmFacade[];
   /** Share of visible surface area with `materialSlot` + `tint` (see `materialSlotCoverage`). */
@@ -685,6 +691,229 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
 }
 
 const extent = (i: {min: V3; max: V3}) => Math.hypot(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]);
+
+// ---------------------------------------------------------------------------------------------------------------
+// 1b. Openings within their walls (hard gate, 2026-10-16: the Krijtberg's transept windows rising past the gable rakes
+//     into the roof planes; the De Baarsjes roof-above-parapet case from the other direction).
+
+/** Roof-class materials: the kit's roof slots and the landmark palette's roofing names. */
+export const ROOF_MATERIAL = /^(slate|roof|tile|bitumen|copper|zinc|lead|shingle|pantile)/i;
+export const ROOF_SLOTS = new Set(['roofTile', 'slate', 'bitumen']);
+export function isRoofMaterial(m: {name: string; slot?: string; materialSlot?: string}): boolean {
+  const slot = m.materialSlot ?? m.slot;
+  return (slot ? ROOF_SLOTS.has(slot) : false) || ROOF_MATERIAL.test(m.name);
+}
+/** Opening materials by slot (kit exports name their materials `<tint>_<slot>`) or by palette name (landmarks). */
+export const OPENING_SLOTS = new Set(['glass', 'frame', 'door']);
+export function isOpeningMaterial(m: {name: string; slot?: string; materialSlot?: string}): boolean {
+  const slot = m.materialSlot ?? m.slot;
+  return (slot ? OPENING_SLOTS.has(slot) : false) || OPENING_MATERIAL.test(m.name);
+}
+
+export interface WithinWallsOptions {
+  /** Silhouette tolerance (m): a sample this close outside the wall raster still counts as on it. */
+  tol: number;
+  /** A part with more than this (m2) of its face outside fails. */
+  failM2: number;
+  /** Spacing (m) of the face samples (each carries its triangle's projected area / sample count). */
+  step: number;
+}
+export const WITHIN_WALLS: WithinWallsOptions = {tol: 0.05, failM2: 0.02, step: 0.05};
+
+export interface OpeningOutsideWall {
+  materials: string[];
+  min: V3; max: V3; centre: V3;
+  /** Area (m2) of the part's face turned to the wall's outside, projected onto the wall plane. */
+  faceM2: number;
+  /** Area (m2) of that face outside the host wall's silhouette or through a roof-class surface (`roofM2` is the roof share, included). */
+  outsideM2: number;
+  roofM2: number;
+  /** An edge of the part crosses a roof-class triangle. */
+  piercesRoof: boolean;
+  wallBearing: number;
+  wallNormal: [number, number];
+  triangles: number[];
+}
+
+export interface WithinWallsReport {
+  /** Opening-material parts in the model, those judged against a host wall, and those with no vertical wall plane within 0.8 m (reported, not judged). */
+  parts: number; judged: number; hostless: number;
+  /** Sum of `outsideM2` over the judged parts. */
+  outsideM2: number;
+  /** Judged parts with any face outside, worst first; `failing` is the subset over `failM2` (or piercing a roof). */
+  outside: OpeningOutsideWall[];
+  failing: OpeningOutsideWall[];
+  options: WithinWallsOptions;
+}
+
+/**
+ * Every opening part (one connected piece of glass, frame, door, louvre, bar) must lie, projected onto its host wall, inside that
+ * wall's silhouette (tol 0.05 m) and must not run through a roof-class surface. Per part the outside area is reported in m2 and a
+ * part fails above `failM2` (0.02 m2 = a 2 x 10 cm corner). Unlike `auditOpenings` (assemblies, fractions, soft) this is a hard rule
+ * for the build pipeline: parts are judged one by one so a single lancet poking past a gable rake is caught beside twenty good ones.
+ *
+ * Host wall: the vertical host plane (`clusterWalls`, >= 1 m each way) nearest in front of or behind the part within 0.8 m whose
+ * normal agrees with the part's facing axis; parallel planes within that band and curved-wall facets (< 37 degrees off) extend the
+ * silhouette as in `auditOpenings`. Exempt: posts/rails/slabs in opening materials (`nonOpeningShape`), glazed skins
+ * (>= glazedSkinArea of outward glass: the glass IS the wall), parts with no host wall (counted `hostless`), and a low guard rail
+ * standing on the wall's top edge. Roof rule: a roof-class triangle (`isRoofMaterial`, not vertical) that an edge of the part crosses
+ * is pierced; the part fails outright, and the share of its face on the roof's upper side within that triangle is reported as
+ * `roofM2` (a roof plane drawn over a parapet across a window: the window's top emerges through the slates). A dormer window's roof
+ * meets the dormer's own wall and crosses no window, so it is not a pierce.
+ */
+export function openingsWithinWalls(s: MaterialSoup, th: GeometryAuditThresholds = GEOMETRY_THRESHOLDS, options: Partial<WithinWallsOptions> = {}): WithinWallsReport {
+  const opt = {...WITHIN_WALLS, ...options};
+  const nTri = s.indices.length / 3;
+  const isOpeningMat = s.materials.map(m => isOpeningMaterial(m));
+  const isRoofMat = s.materials.map(m => isRoofMaterial(m));
+  // Parts are connected pieces of opening material only: a pane shares its outline vertices with the hole in its stone ring (the
+  // Krijtberg's lancets, every extruded tracery window), so welded whole-model parts would fold the glass into the ring and judge nothing.
+  const host: number[] = [], openTris: number[] = [];
+  for (let t = 0; t < nTri; t++) (isOpeningMat[s.triMaterial[t]] ? openTris : host).push(t);
+  const openingParts: {tris: number[]; min: V3; max: V3}[] = [];
+  if (openTris.length) {
+    const sub = asTriSoup(s, openTris), subPart = partsOf({positions: sub.positions, indices: sub.indices, triMaterial: openTris.map(t => s.triMaterial[t]), materials: s.materials}, th.weld);
+    const parts = new Map<number, number[]>();
+    openTris.forEach((t, i) => { const l = parts.get(subPart[i]); if (l) l.push(t); else parts.set(subPart[i], [t]); });
+    for (const tris of parts.values()) {
+      const bb = bboxOf(s, tris);
+      if (extent(bb) <= th.maxOpeningDiag) openingParts.push({tris, ...bb}); else host.push(...tris);
+    }
+  }
+  const empty: WithinWallsReport = {parts: openingParts.length, judged: 0, hostless: 0, outsideM2: 0, outside: [], failing: [], options: opt};
+  if (!openingParts.length || !host.length) return empty;
+
+  // Roof-class surfaces: roof materials on faces that are not vertical (a slate-clad wall is a wall).
+  const roofTri = new Uint8Array(nTri);
+  for (const t of host) if (isRoofMat[s.triMaterial[t]]) { const [a, b, c] = triVerts(s, t); if (Math.abs(triNormal(a, b, c).n[1]) >= 0.2) roofTri[t] = 1; }
+  const grid = new TriGrid(s, host, 1);
+  const hostSoup = asTriSoup(s, host);
+  const walls = clusterWalls(hostSoup, {outwardOnly: false, minArea: 1.5, splitGap: 0.6}).filter(w => w.vMax - w.vMin >= 1 && w.uMax - w.uMin >= 1);
+  const rasters = new Map<WallSegment, WallRaster>();
+  const raster = (w: WallSegment) => { let r = rasters.get(w); if (!r) { r = rasterWall(s, w, host); rasters.set(w, r); } return r; };
+
+  const out: OpeningOutsideWall[] = [];
+  let judged = 0, hostless = 0, total = 0;
+  for (const p of openingParts) {
+    const {tris} = p, bb = {min: p.min, max: p.max}, c = centreOf(bb);
+    // Facing axis (as auditOpenings): principal direction of the area-weighted horizontal normals.
+    let mxx = 0, mxz = 0, mzz = 0, skin = 0;
+    for (const t of tris) {
+      const [a, b, cc] = triVerts(s, t), {n, area} = triNormal(a, b, cc);
+      if (Math.abs(n[1]) > 0.7) continue;
+      skin += area;
+      mxx += area * n[0] * n[0]; mxz += area * n[0] * n[2]; mzz += area * n[2] * n[2];
+    }
+    const ang = 0.5 * Math.atan2(2 * mxz, mxx - mzz), axis: [number, number] = [Math.cos(ang), Math.sin(ang)];
+    const axisStrength = (mxx + mzz) > 0 ? Math.hypot(mxx - mzz, 2 * mxz) / (mxx + mzz) : 0;
+    if (nonOpeningShape(s, tris, axis)) continue;
+    const glazed = tris.some(t => { const m = s.materials[s.triMaterial[t]]; return (m.materialSlot ?? m.slot) === 'glass' || /^(glass|window|pane|sash)/i.test(m.name); });
+    if (glazed && skin / 2 >= th.glazedSkinArea) continue;
+    // Candidate host walls: within 0.8 m either way, laterally/vertically overlapping, facing along the part's axis, and at least
+    // three times the part's own face (a window's stone ring, a surround or a sill is host material too, but it is not the wall:
+    // judged against its own ring every lancet fits).
+    const corners = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]];
+    const partFace = Math.max(skin / 2, (bb.max[1] - bb.min[1]) * Math.max(bb.max[0] - bb.min[0], bb.max[2] - bb.min[2]) * 0.5);
+    const cands: {w: WallSegment; sd: number}[] = [];
+    for (const w of walls) {
+      if (axisStrength > 0.3 && Math.abs(w.n[0] * axis[0] + w.n[1] * axis[1]) < 0.94) continue;
+      if (w.area < 3 * partFace) continue;
+      const sds = corners.map(([x, z]) => w.n[0] * x + w.n[1] * z - w.d), lo = Math.min(...sds), hi = Math.max(...sds);
+      if (hi < -0.8 || lo > 0.8) continue;
+      const us = corners.map(([x, z]) => x * w.t[0] + z * w.t[1]);
+      if (Math.max(...us) < w.uMin - 0.3 || Math.min(...us) > w.uMax + 0.3 || bb.max[1] < w.vMin - 0.3 || bb.min[1] > w.vMax + 0.3) continue;
+      cands.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0)});
+    }
+    cands.sort((p, q) => (Math.abs(p.sd - q.sd) > 0.02 ? p.sd - q.sd : q.w.area - p.w.area));
+    if (!cands.length) { hostless++; continue; }
+    judged++;
+    /** The part's face turned to `w`'s outside, sampled against the parallel planes and curved facets around `w`: projected area and the share outside. */
+    const measure = (w: WallSegment): {faceM2: number; outsideM2: number; samples: V3[]; weights: number[]} => {
+      const group = cands.filter(x => x.w.n[0] * w.n[0] + x.w.n[1] * w.n[1] > 0.94).map(x => x.w);
+      // Facets of a curved or polygonal wall continue it: neighbours turned less than ~46 degrees (an octagonal tower's facets are 45 apart).
+      const facets = cands.filter(x => x.w.n[0] * w.n[0] + x.w.n[1] * w.n[1] > 0.7).map(x => x.w);
+      let faceM2 = 0, outsideM2 = 0;
+      const samples: V3[] = [], weights: number[] = [];
+      for (const t of tris) {
+        const [a, b, cc] = triVerts(s, t), {n, area} = triNormal(a, b, cc);
+        const facing = n[0] * w.n[0] + n[2] * w.n[1];
+        if (area < 1e-6 || facing < 0.7) continue;
+        const pts = samplesOn(a, b, cc, opt.step), wgt = area * facing / pts.length;
+        for (const q of pts) {
+          faceM2 += wgt;
+          let inside = false;
+          for (const g of group) { if (inSilhouette(raster(g), q[0] * g.t[0] + q[2] * g.t[1], q[1], opt.tol)) { inside = true; break; } }
+          for (const g of facets) { if (inside) break; const sd = g.n[0] * q[0] + g.n[1] * q[2] - g.d; if (sd <= 0.8 && sd >= -0.3 && inSilhouette(raster(g), q[0] * g.t[0] + q[2] * g.t[1], q[1], opt.tol)) inside = true; }
+          if (!inside) outsideM2 += wgt; else { samples.push(q); weights.push(wgt); }
+        }
+      }
+      return {faceM2, outsideM2, samples, weights};
+    };
+    // Host wall: of the planes in reach (nearest first, at most six), the one the part fits best. A kit window sits 20-30 cm behind its
+    // wall plane inside the reveal, so "in front of" cannot decide; a closed pane's back face must not be judged against an inner plane.
+    let best: WallSegment | undefined, fit: ReturnType<typeof measure> | undefined;
+    for (const cnd of cands.slice(0, 6)) {
+      const m = measure(cnd.w);
+      if (m.faceM2 <= 0) continue;
+      if (!fit || m.outsideM2 < fit.outsideM2 - 1e-6) { best = cnd.w; fit = m; }
+      if (fit.outsideM2 <= 1e-6) break;
+    }
+    if (!best || !fit) { hostless++; judged--; continue; }
+    // Pierced roof planes: an edge of the part crosses a roof-class triangle (a roof drawn across a window, a lancet through a rake).
+    const pierced: {n: V3; d: number; a: V3; b: V3; c: V3}[] = [];
+    const nearRoof = grid.near([bb.min[0] - 0.05, bb.min[1] - 0.05, bb.min[2] - 0.05], [bb.max[0] + 0.05, bb.max[1] + 0.05, bb.max[2] + 0.05]).filter(t => roofTri[t]);
+    for (const t of nearRoof) {
+      const [ra, rb, rc] = triVerts(s, t);
+      let crossed = false;
+      edges: for (const pt of tris) {
+        const v = triVerts(s, pt);
+        for (const [p0, p1] of [[v[0], v[1]], [v[1], v[2]], [v[2], v[0]]] as [V3, V3][]) {
+          const d = sub(p1, p0), L = Math.hypot(d[0], d[1], d[2]);
+          if (!(L > 0)) continue;
+          const dir: V3 = [d[0] / L, d[1] / L, d[2] / L], hit = rayTriangle(p0, dir, ra, rb, rc, L);
+          if (hit > 0.002 && hit < L - 0.002) { crossed = true; break edges; }
+        }
+      }
+      if (!crossed) continue;
+      let rn = triNormal(ra, rb, rc).n;
+      if (rn[1] < 0) rn = [-rn[0], -rn[1], -rn[2]]; // the roof's outer side is up
+      pierced.push({n: rn, d: rn[0] * ra[0] + rn[1] * ra[1] + rn[2] * ra[2], a: ra, b: rb, c: rc});
+    }
+    /** Is the sample on the outer (upper) side of a pierced roof plane, within that triangle's footprint? */
+    const throughRoof = (q: V3): boolean => {
+      for (const r of pierced) {
+        const sd = r.n[0] * q[0] + r.n[1] * q[1] + r.n[2] * q[2] - r.d;
+        if (sd <= 0.005) continue;
+        const foot: V3 = [q[0] - r.n[0] * sd, q[1] - r.n[1] * sd, q[2] - r.n[2] * sd];
+        if (pointTriangleDistSq(foot, r.a, r.b, r.c) <= 1e-6) return true;
+      }
+      return false;
+    };
+    const faceM2 = fit.faceM2;
+    let outsideM2 = fit.outsideM2, roofM2 = 0;
+    // Inside the wall's outline but emerging through a roof plane drawn across it: the share above the roof.
+    if (pierced.length) fit.samples.forEach((q, i) => { if (throughRoof(q)) { roofM2 += fit!.weights[i]; outsideM2 += fit!.weights[i]; } });
+    // Guard rail on the wall's top edge: low (<= 1.8 m), its foot within 15 cm below to 10 cm above the top along its whole length.
+    if (outsideM2 > 0 && bb.max[1] - bb.min[1] <= 1.8) {
+      const r = raster(best);
+      let u0 = Infinity, u1 = -Infinity;
+      for (const t of tris) for (const v of triVerts(s, t)) { const u = v[0] * best.t[0] + v[2] * best.t[1]; u0 = Math.min(u0, u); u1 = Math.max(u1, u); }
+      const x0 = Math.floor((u0 - r.u0) / r.cell), x1 = Math.floor((u1 - r.u0) / r.cell);
+      let resting = x0 >= 0 && x1 < r.nu;
+      for (let x = Math.max(0, x0); resting && x <= Math.min(r.nu - 1, x1); x++) resting = Number.isFinite(r.colHi[x]) && bb.min[1] >= r.colHi[x] - 0.15 && bb.min[1] <= r.colHi[x] + 0.1;
+      if (resting) continue;
+    }
+    const piercesRoof = pierced.length > 0;
+    total += outsideM2;
+    if (outsideM2 > 1e-6 || piercesRoof) {
+      const mats = [...new Set(tris.map(t => s.materials[s.triMaterial[t]].name))].sort();
+      out.push({materials: mats, min: bb.min, max: bb.max, centre: c, faceM2: +faceM2.toFixed(3), outsideM2: +outsideM2.toFixed(3), roofM2: +roofM2.toFixed(3), piercesRoof, wallBearing: best.bearingDeg, wallNormal: best.n, triangles: tris});
+    }
+  }
+  out.sort((a, b) => b.outsideM2 - a.outsideM2 || Number(b.piercesRoof) - Number(a.piercesRoof));
+  return {parts: openingParts.length, judged, hostless, outsideM2: +total.toFixed(3), outside: out, failing: out.filter(o => o.outsideM2 > opt.failM2 || o.piercesRoof), options: opt};
+}
+
 function issueWeight(i: OpeningIssue): number {
   const size = extent(i);
   return (i.severity === 'fail' ? 10 : 1) * size * (i.kind === 'floating' ? Math.min(1, i.gap) * 4 : i.kind === 'overhang' ? i.outside * 3 : i.buried);
@@ -1156,8 +1385,10 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
   const T = Date.now();
   const openings = auditOpenings(s, th, part);
   const T1 = Date.now();
+  const withinWalls = openingsWithinWalls(s, th);
+  const T2 = Date.now();
   const zfight = auditZFight(s, th, part);
-  if (process.env.GEO_TIMING) console.log(`openings ${T1 - T} ms, zfight ${Date.now() - T1} ms`);
+  if (process.env.GEO_TIMING) console.log(`openings ${T1 - T} ms, within-walls ${T2 - T1} ms, zfight ${Date.now() - T2} ms`);
   const fromSpec = !!opts.facades?.length;
   const rhythm = opts.skipRhythm ? [] : auditRhythm(s, fromSpec ? opts.facades! : dominantFacades(s), fromSpec);
 
@@ -1170,6 +1401,12 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     const fail = l.filter(i => i.severity === 'fail').length;
     const what = k === 'floating' ? `not touching any wall (worst gap ${Math.max(...l.map(i => i.gap)).toFixed(2)} m)` : k === 'overhang' ? `sticking out past the wall's edge (worst ${Math.round(100 * Math.max(...l.map(i => i.outside)))}% of the face off the wall)` : `sunk behind the solid wall surface (worst ${Math.round(100 * Math.max(...l.map(i => i.buried)))}% hidden)`;
     findings.push({kind: `opening-${k}`, severity: fail ? 'fail' : 'warn', message: `${l.length} opening/trim assemblies ${what}; e.g. ${fmt(l[0])}`});
+  }
+  if (withinWalls.failing.length) {
+    const w = withinWalls.failing[0];
+    findings.push({kind: 'opening-outside', severity: 'fail', message: `${withinWalls.failing.length} of ${withinWalls.judged} opening parts reach past their wall's silhouette or through a roof plane (${withinWalls.outsideM2} m2 in all; worst ${w.outsideM2} m2 ${w.materials.join('+')} at (${w.centre.map(v => v.toFixed(1)).join(', ')})${w.roofM2 ? `, ${w.roofM2} m2 of it through a roof` : ''}${w.piercesRoof ? ', pierces a roof' : ''})`});
+  } else if (withinWalls.outside.length) {
+    findings.push({kind: 'opening-outside', severity: 'warn', message: `${withinWalls.outside.length} opening parts a sliver (<= ${withinWalls.options.failM2} m2) past their wall (${withinWalls.outsideM2} m2 in all)`});
   }
   const real = zfight.patches.filter(p => !p.near && !p.sameMaterial), near = zfight.patches.filter(p => p.near);
   if (zfight.area >= th.zWarnArea) {
@@ -1200,6 +1437,9 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'opening-floating': byKind('floating').length, 'opening-floating-fail': byKind('floating').filter(i => i.severity === 'fail').length,
     'opening-overhang': byKind('overhang').length, 'opening-overhang-fail': byKind('overhang').filter(i => i.severity === 'fail').length,
     'opening-buried': byKind('buried').length,
+    // Hard gate (2026-10-16): opening parts past their wall's silhouette / through a roof plane, and the area outside in m2 (openingsWithinWalls).
+    'opening-outside-parts': withinWalls.failing.length,
+    'opening-outside-m2': Math.round(withinWalls.outsideM2 * 100) / 100,
     'zfight-m2': Math.round(zfight.area * 10) / 10,
     'zfight-near-m2': Math.round(zfight.nearArea * 10) / 10,
     'zfight-tight-m2': Math.round(zfight.tightArea * 10) / 10,
@@ -1213,8 +1453,8 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'window-mismatch-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.mismatched.length, 0),
     'window-missing-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.missing.length, 0),
   };
-  const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.tightArea, 100) * 1 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
-  return {openings, zfight, rhythm, materialSlots: slots, normals, counts, findings, score: +score.toFixed(1)};
+  const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + withinWalls.failing.length * 2 + Math.min(withinWalls.outsideM2, 50) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.tightArea, 100) * 1 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
+  return {openings, withinWalls, zfight, rhythm, materialSlots: slots, normals, counts, findings, score: +score.toFixed(1)};
 }
 
 export interface MaterialSlotCoverage {
@@ -1261,13 +1501,16 @@ export function materialSlotCoverage(s: MaterialSoup): MaterialSlotCoverage {
  * gated: the fix for a 2-3 cm overlay is to lift it to ~5 cm, which moves its area into the near band.
  */
 export function regressions(counts: Record<string, number>, baseline: Record<string, number> | undefined): string[] {
-  const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-tight-m2': 0.3, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
+  const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-tight-m2': 0.3, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1, 'opening-outside-m2': 0.02};
   const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'zfight-tight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
     // Since the 2026-10-13 cleanup pass every detached or sunk window counts, not only the 10 cm fails; a recorded model may not add any.
-    'opening-floating', 'opening-buried', 'opening-overhang']);
+    'opening-floating', 'opening-buried', 'opening-overhang',
+    // Since 2026-10-16 (Krijtberg gable windows): no opening part past its wall's silhouette or through a roof plane. A new export must
+    // have none; a recorded model may not add one, nor grow its outside area past the entry (plus 0.02 m2).
+    'opening-outside-parts', 'opening-outside-m2']);
   // Recorded-only: a model without the key in its entry predates the gate (legacy, reported as a warning); a model with NO entry is a new
   // export and must be 100% tagged.
-  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang', 'zfight-tight-m2']);
+  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang', 'zfight-tight-m2', 'opening-outside-parts', 'opening-outside-m2']);
   const out: string[] = [];
   if (!baseline) {
     const z = (counts['zfight-m2'] ?? 0) + (counts['zfight-tight-m2'] ?? 0);
