@@ -3,7 +3,7 @@
  "street": "Jan Hanzenstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.41,
+ "seconds": 0.69,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -37,28 +37,58 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.23 m at 0.5 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.23,
+       "centre": 0.5,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.07,
+       "widthM": 0.85,
+       "centre": 0.26
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.29
    },
    "status": "held",
    "stage": "match",
-   "reason": "best bellamy-1916-two-axis scores 0.23 < 0.7 (3DBAG eaves 6.29 m = 4 storeys of 1.57 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5; strip accent share 0.457 (stucco))",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1925, type 1928-1935; frontage 3.53 m, type 4.8-5.8 m; strip shows balconies (dark open axis 3.23 m at 0.5 (light 0): no brick spandrel between the storeys))",
    "best": {
-    "type": "bellamy-1916-two-axis",
-    "score": 0.23,
-    "veto": [],
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1925, type 1928-1935",
+     "frontage 3.53 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 3.23 m at 0.5 (light 0): no brick spandrel between the storeys)"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 6.29 m = 4 storeys of 1.57 m vs the type's 3.45 m"
+      "note": "3DBAG eaves 6.29 m = 4 storeys of 1.57 m vs the type's 3.13 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
       "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.33 m (pitched) vs pitched"
      },
      {
       "key": "stucco",
@@ -69,8 +99,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 2 vs 2 bays"
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
      }
     ]
    },
@@ -99,28 +129,58 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.23 m at 0.5 (light 0.02): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.23,
+       "centre": 0.5,
+       "light": 0.02
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5,
+       "widthM": 0.82,
+       "centre": 0.72
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.3
    },
    "status": "held",
    "stage": "match",
-   "reason": "best bellamy-1916-two-axis scores 0.54 < 0.7 (3DBAG eaves 6.26 m = 4 storeys of 1.56 m vs the type's 3.45 m; 3DBAG bouwlagen 3 vs 4/5)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1925, type 1928-1935; frontage 3.53 m, type 4.8-5.8 m; strip shows balconies (dark open axis 3.23 m at 0.5 (light 0.02): no brick spandrel between the storeys))",
    "best": {
-    "type": "bellamy-1916-two-axis",
-    "score": 0.54,
-    "veto": [],
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1925, type 1928-1935",
+     "frontage 3.53 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 3.23 m at 0.5 (light 0.02): no brick spandrel between the storeys)"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 6.26 m = 4 storeys of 1.56 m vs the type's 3.45 m"
+      "note": "3DBAG eaves 6.26 m = 4 storeys of 1.56 m vs the type's 3.13 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
       "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.3 m (pitched) vs pitched"
      },
      {
       "key": "stucco",
@@ -131,8 +191,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 2 vs 2 bays"
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
      }
     ]
    },
@@ -166,6 +226,20 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.73,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 6.55 m @ 0.56), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 6.55,
+       "centre": 0.5,
+       "light": 0.56
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.12,
     "foliageShare": 0.06
    },
@@ -237,6 +311,20 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 1,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.79,
+     "balconies": true,
+     "why": "bay-less open axis 3.33 m at 0.5 (light 0.73): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.33,
+       "centre": 0.5,
+       "light": 0.73
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.47,
     "foliageShare": 0.03
    },
@@ -268,6 +356,7 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 1,
     "foliageShare": 0
    },
@@ -304,6 +393,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 1,
     "foliageShare": 0
    },
@@ -335,6 +425,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 1,
     "foliageShare": 0
    },
@@ -371,6 +462,7 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": null,
     "voidShare": 1,
     "foliageShare": 0
    },
@@ -402,28 +494,57 @@
     "doorSide": "right",
     "accentSide": "left",
     "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 1.48,
+     "bayCentre": 0.34,
+     "balconies": true,
+     "why": "dark open axis 1.55 m at 0.35 (light 0.44): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.55,
+       "centre": 0.35,
+       "light": 0.44
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 2.15,
+       "centre": 0.34
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.19
    },
    "status": "held",
    "stage": "match",
-   "reason": "best bellamy-1916-two-axis scores 0.55 < 0.7 (3DBAG eaves 9.32 m = 4 storeys of 2.33 m vs the type's 3.45 m; strip columns 3 vs 2 bays)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1913, type 1928-1935; strip shows balconies (dark open axis 1.55 m at 0.35 (light 0.44): no brick spandrel between the storeys))",
    "best": {
-    "type": "bellamy-1916-two-axis",
-    "score": 0.55,
-    "veto": [],
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1928-1935",
+     "strip shows balconies (dark open axis 1.55 m at 0.35 (light 0.44): no brick spandrel between the storeys)"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 9.32 m = 4 storeys of 2.33 m vs the type's 3.45 m"
+      "note": "3DBAG eaves 9.32 m = 4 storeys of 2.33 m vs the type's 3.13 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
       "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.63 m (pitched) vs pitched"
      },
      {
       "key": "stucco",
@@ -434,8 +555,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 2 bays"
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },
@@ -464,28 +585,57 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 1.5,
+     "bayCentre": 0.64,
+     "balconies": true,
+     "why": "dark open axis 1.55 m at 0.64 (light 0.42): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.55,
+       "centre": 0.64,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 2.1,
+       "centre": 0.64
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.14
    },
    "status": "held",
    "stage": "match",
-   "reason": "best bellamy-1916-two-axis scores 0.55 < 0.7 (3DBAG eaves 9.25 m = 4 storeys of 2.31 m vs the type's 3.45 m; strip columns 3 vs 2 bays)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1913, type 1928-1935; strip shows balconies (dark open axis 1.55 m at 0.64 (light 0.42): no brick spandrel between the storeys))",
    "best": {
-    "type": "bellamy-1916-two-axis",
-    "score": 0.55,
-    "veto": [],
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1928-1935",
+     "strip shows balconies (dark open axis 1.55 m at 0.64 (light 0.42): no brick spandrel between the storeys)"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 9.25 m = 4 storeys of 2.31 m vs the type's 3.45 m"
+      "note": "3DBAG eaves 9.25 m = 4 storeys of 2.31 m vs the type's 3.13 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
       "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.4 m (pitched) vs pitched"
      },
      {
       "key": "stucco",
@@ -496,8 +646,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 2 bays"
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },
@@ -531,28 +681,57 @@
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.55 m at 0.3 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.55,
+       "centre": 0.3,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 1.57,
+       "centre": 0.37
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.16
    },
    "status": "held",
    "stage": "match",
-   "reason": "best bellamy-1916-two-axis scores 0.46 < 0.7 (3DBAG eaves 9.25 m = 4 storeys of 2.31 m vs the type's 3.45 m; strip columns 6 vs 2 bays)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1913, type 1928-1935; strip shows balconies (dark open axis 1.55 m at 0.3 (light 0.23): no brick spandrel between the storeys))",
    "best": {
-    "type": "bellamy-1916-two-axis",
-    "score": 0.46,
-    "veto": [],
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1928-1935",
+     "strip shows balconies (dark open axis 1.55 m at 0.3 (light 0.23): no brick spandrel between the storeys)"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 9.25 m = 4 storeys of 2.31 m vs the type's 3.45 m"
+      "note": "3DBAG eaves 9.25 m = 4 storeys of 2.31 m vs the type's 3.13 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
       "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.45 m (pitched) vs pitched"
      },
      {
       "key": "stucco",
@@ -564,7 +743,7 @@
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 6 vs 2 bays"
+      "note": "strip columns 6 vs 3 bays"
      }
     ]
    },
@@ -593,18 +772,44 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.67,
+     "balconies": true,
+     "why": "dark open axis 1.55 m at 0.29 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.55,
+       "centre": 0.29,
+       "light": 0.46
+      },
+      {
+       "widthM": 1.55,
+       "centre": 0.67,
+       "light": 0.66
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 2.3,
+       "centre": 0.67
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.23
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1913, type 1928-1935; frontage 10.05 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1913, type 1928-1935; frontage 10.05 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.55 m at 0.29 (light 0.46): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1913, type 1928-1935",
-     "frontage 10.05 m, type 4.8-5.8 m"
+     "frontage 10.05 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.55 m at 0.29 (light 0.46): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {

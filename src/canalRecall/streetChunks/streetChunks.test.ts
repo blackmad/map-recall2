@@ -6,7 +6,7 @@ import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {resolveIntent} from '../buildingRecipe/compile.ts';
 import {buildFacts, type BuildingFacts, type CityJsonItem} from '../buildingRecipe/facts.ts';
 import {sharedTerrain} from '../../../scripts/lib/terrainField.ts';
-import {applyStreetChunks, chunkSpecFor, streetChunksEnabled, streetSurveyMode, withoutStreetSurveys} from '../landmarks/ordinaryChunks.ts';
+import {applyStreetChunks, chunkSpecFor, heldStreetChunks, streetChunksEnabled, streetSurveyMode, withoutStreetSurveys} from '../landmarks/ordinaryChunks.ts';
 import {compileChunk, groupBlockFaces, findContacts, trimPartyWalls, remainder, planGround, pandIndexForFace, readChunkExtras, buildChunkManifest} from './index.ts';
 import type {Bucket, BucketMap, ChunkHouseInput, P2} from './types.ts';
 
@@ -94,19 +94,23 @@ test('extras: pand index from a primitive range table', () => {
 });
 
 test('?streetChunks flag parsing: street surveys are retired by default (2026-10-13)', () => {
+  // Chunks are the default since 2026-10-16 (user: "what things are behind flags that we should make default?").
   assert.equal(streetChunksEnabled('?streetChunks=1'), true);
   assert.equal(streetChunksEnabled('?a=b&streetChunks=true'), true);
   assert.equal(streetChunksEnabled('?streetChunks=0'), false);
-  assert.equal(streetChunksEnabled(''), false);
+  assert.equal(streetChunksEnabled(''), true);
   assert.equal(streetChunksEnabled('?streetChunks=false'), false);
-  assert.equal(streetChunksEnabled('?a=b'), false);
-  assert.equal(streetSurveyMode(''), 'retired');
-  assert.equal(streetSurveyMode('?streetChunks='), 'retired');
-  assert.equal(streetSurveyMode('?streetChunks=maybe'), 'retired');
+  assert.equal(streetChunksEnabled('?a=b'), true);
+  assert.equal(streetSurveyMode(''), 'chunks');
+  assert.equal(streetSurveyMode('?streetChunks='), 'chunks');
+  assert.equal(streetSurveyMode('?streetChunks=retired'), 'retired');
   assert.equal(streetSurveyMode('?streetChunks=1'), 'chunks');
   assert.equal(streetSurveyMode('?streetChunks=on'), 'chunks');
   assert.equal(streetSurveyMode('?streetChunks=0'), 'houses');
   assert.equal(streetSurveyMode('?x=1&streetChunks=off'), 'houses');
+  // The default holds the dark Oudezijds Voorburgwal face; ?streetChunks=1 draws every chunk.
+  assert.ok(heldStreetChunks('').has('chunk-face-wallen-ozv-115-125'));
+  assert.equal(heldStreetChunks('?streetChunks=1').size, 0);
 });
 
 test('retired street surveys leave landmarks and one-off ordinary buildings alone', () => {
@@ -200,4 +204,12 @@ test('planGround: a failed 3DBAG ground is re-measured from the terrain before t
   // The ordinary neighbour's cornice keeps its absolute height either way.
   const nap = (p: typeof raw, i: number) => p.eavesBefore[i] + p.facts[i].heights.groundNAP;
   assert.ok(Math.abs(nap(trusted, 1) - nap(raw, 1)) < 0.01);
+});
+
+test('a held chunk is not drawn and its per-house models leave too', () => {
+  const spec = {id: 'x', buildingCategory: 'street-survey'} as any;
+  const manifest = {version: 1, chunks: [{id: 'chunk-face-held', replaces: ['house-a'], url: 'a.glb', anchor: [0, 0], northOffsetDegrees: 0, pands: []}]} as any;
+  const out = applyStreetChunks([{...spec, id: 'house-a'}, {...spec, id: 'other'}], manifest, new Set(['chunk-face-held']));
+  assert.deepEqual(out.models.map(m => m.id), ['other']);
+  assert.equal(out.chunks.length, 0);
 });

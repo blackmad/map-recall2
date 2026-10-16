@@ -14,7 +14,7 @@
     "test:rose-gardens": "node --import tsx --test src/canalRecall/roseBeds.test.ts && node --import tsx scripts/check-rose-gardens.mjs",
     "test:landmark-shading": "node --import tsx --test src/canalRecall/landmarks/landmarkShading.test.ts",
     "build:street-surveys": "esbuild src/canalRecall/streetSurveys/page.ts --bundle --format=iife --outfile=public/canal-drive/js/street-surveys.bundle.js --minify",
-    "test:building-taxonomy": "node --import tsx --test src/canalRecall/buildingCategory.test.ts src/canalRecall/streetSurveys/classify.test.ts",
+    "test:building-taxonomy": "node --import tsx --test src/canalRecall/buildingCategory.test.ts src/canalRecall/streetSurveys/classify.test.ts src/canalRecall/landmarks/modelOverlap.test.ts",
     "street-surveys": "node --import tsx scripts/street-surveys/build.ts",
     "block-face:gables": "node --import tsx scripts/block-face/gable-from-photo.ts",
     "test:landmark-lod": "node --import tsx --test src/canalRecall/landmarks/landmarkLod.test.ts",
@@ -498,6 +498,9 @@
     "test:roofs": "node --import tsx --test src/canalRecall/roofs/*.test.ts src/canalRecall/roofTier.test.ts src/canalRecall/gardenSheds.test.ts",
     "check:roof-attachment": "node --import tsx scripts/check-roof-attachment.ts",
     "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts",
+    "audit:landmark-cards": "tsx scripts/audit-landmark-cards.ts",
+    "test:bridge-street-name": "node --import tsx --test src/canalRecall/game/bridgeStreetName.test.ts",
+    "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts"
   },
   "dependencies": {

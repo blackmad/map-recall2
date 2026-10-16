@@ -3,7 +3,7 @@
  "street": "Nicolaas Beetsstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.32,
+ "seconds": 0.54,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.02,
     "foliageShare": 0.22
    },
@@ -118,6 +126,20 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.382,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.17,
+       "widthM": 0.95,
+       "centre": 0.82
+      }
+     ]
+    },
     "voidShare": 0.16,
     "foliageShare": 0.29
    },
@@ -191,6 +213,30 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.637,
+    "structure": {
+     "bayWidthM": 1.52,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.07 m @ 0.67, 1.18 m @ 0.61, 1.07 m @ 0.66), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.14,
+       "light": 0.67
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.47,
+       "light": 0.61
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.8,
+       "light": 0.66
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.42,
     "foliageShare": 0.12
    },
@@ -227,6 +273,36 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.641,
+    "structure": {
+     "bayWidthM": 1.32,
+     "bayCentre": 0.46,
+     "balconies": true,
+     "why": "bay-less open axis 0.72 m at 0.1 (light 0.56): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.1,
+       "light": 0.56
+      },
+      {
+       "widthM": 1,
+       "centre": 0.47,
+       "light": 0.6
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.8,
+       "light": 0.63
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.05,
+       "widthM": 1.1,
+       "centre": 0.47
+      }
+     ]
+    },
     "voidShare": 0.33,
     "foliageShare": 0.22
    },
@@ -263,6 +339,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.599,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.23,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.37,
     "foliageShare": 0.13
    },
@@ -299,6 +383,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.542,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.38,
     "foliageShare": 0.11
    },

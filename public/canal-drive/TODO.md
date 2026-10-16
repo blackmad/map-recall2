@@ -679,6 +679,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
+
+- **`check:covers` red on main (found 2026-10-16)**: 10 inconsistencies,
+  all `noorderkerk` suppressing OSM-only ways w749871260–275 that
+  `covers.json` does not keep. It fails `check:canal` at its `&&` chain, so
+  the later chained checks (building-types, osm-under-models, abutters,
+  inventory, signature-fallback, manual-landmarks) are skipped unless run by
+  hand; rebuild covers (`build-covers`, staged then copied to models/) or
+  drop the stale ids.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**
@@ -729,13 +737,37 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Buurt generator, next** (2026-10-16, HISTORY "Buurt coverage in the
-  app"): the photo gate passes five wrong types in Bellamybuurt-Zuid; add
-  balcony detection from the strip and a green-tile vs tile-bay test that
-  survives exposure, then install the placed runs after a gallery-size
-  review; kit components for painted timber oriels and hoist-cap dormers;
-  types for the 31 faces that place nothing; then the next buurt from the
-  coverage page's pre-1945 list (Postjeskade e.o., Cremerbuurt-West).
+
+- **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
+  bridge deck is never the answer")**: the street plaque
+  (`presentationRuntime.ts` ~709) still reads the raw way name, so it stays
+  blank on a deck that carries a street; pass the carried name through. 85
+  transparent bridge names outside `bridges.json` (Noordsche Compagniebrug
+  among them) are now taught by no question; decide whether some join the
+  crossing quiz. Culvert names without a bridge suffix (Bullebak, Kanaalpost)
+  are not treated as decks. `quiz.spec.ts` "first launch is playable without
+  an account" fails on main independent of this change.
+
+- **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
+  cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
+  buildings, libraries, Vue, Pathé Noord, LAB111) and need a sourced pass; 4
+  definitional cards wait on an entity check (HvA links the former HES
+  article, Onze Lieve Vrouwe Kapel has two chapels, Frascati and Scheltema
+  have no Wikipedia link). The arrival card should show `_landmarkNotice`
+  when it matches the finish landmark (`presentationRuntime.ts` ~1311/1355),
+  so published trivia reaches arrival. `protectNames` should carry a leading
+  Dutch article into the protected name, or the next translation run brings
+  "Het Huis …" back (the audit will flag it). The audit misses thin cards
+  that name a person (Anne Frank House). `scripts/check-manual-poi-contract.{ts,cjs}`
+  are stale and ungated (they fail on krijtberg arrival info and a coordinate
+  mismatch); regenerate them or delete them.
+- **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
+  auto-placed runs installed"): 69 of 335 pands installed. Next: types for
+  Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
+  Wenslauerstraat rows; green-tile gable over the window pair and its
+  mirror; per-front dormer heights; the 21 review holds; then the next buurt
+  from the coverage page (Postjeskade e.o., Cremerbuurt-West), driven by a
+  Haiku lane for survey/intake/placement and Opus for types and review.
 - **Coverage page gaps:** ship exemplar photo crops and building-type
   thumbnails; refresh the street-surveys data (10-10).
 - **Motion stutter, next pass** (2026-10-16, HISTORY "Motion stutter";
@@ -745,14 +777,20 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   `sendToSource` deep clone; `_refreshColoredBuildingFilter` on landmark
   load; the 50 ms `dt` clamp in `game.js` (interpolate instead of slowing
   the rider); then measure iPhone.
-- **Kit work is not drawn by default** (2026-10-16, HISTORY "Coverage by
-  buurt"): block-face chunks (131 pands, every face re-installed today)
-  are retired behind `?streetChunks=1` since 2026-10-14 because they drew
-  near-black under the old light; building types (3,075) are behind
-  `?buildingTypes=1`. The sunny look and shadow fill landed since: measure
-  the chunks' luma under today's default frame and put the decision to
-  bring them back to the user with frames. Coverage page
-  `docs/coverage/index.html` ranks buurten for generator lanes.
+- **Flags: decide the rest** (2026-10-16, user: "figure out for all of these
+  which you actually want to use, and if there are dead ends, delete the code
+  and the flag"). Street chunks and BGT roads are default now (HISTORY
+  "Street chunks and BGT roads drawn by default"). Still to decide, with
+  measurements: building types (3,075 Nieuw-West instances,
+  `?buildingTypes=1`), recipe tiles (`?recipeTiles=1`), sculpture impostors
+  (`?sculptures=1`), canal elevation (`?elevation=1`), the city look
+  (`?cityLook=1`), the shared frame (forced on by own ground), the ground
+  look variants, `?look=legacy`, `?transition=0`. Default what wins;
+  delete the code and flag of dead ends.
+- **Held chunk and the two Bilderdijkstraat pilot houses:** Oudezijds
+  Voorburgwal 115-125 stays out of the default (black on its shade side,
+  `DEFAULT_HELD_CHUNKS`); Bilderdijkstraat pands 152669 and 079721 (the
+  retired 10-10 pilot chunk) need a block face under the front-roof rules.
 - **Sunny look follow-ups** (2026-10-16, HISTORY "Sunny look is the
   default"; `?look=legacy` opts out): re-tune the opt-in yellow highlight
   (clips at 206.6 under the rig); undo the city look's extra 0.9 cell
@@ -1520,7 +1558,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
 - **Tropenmuseum, fourth pass** (2026-10-14, HISTORY "Tropenmuseum, third
-  pass"): the swung gables (wing, risalit) keep 3DBAG's plain outline; the
+  pass"; user report 2026-10-16, HISTORY "One model per ground"): the long
+  walls either side of the Mauritskade portal (bearings 331/151/241) are
+  still the kit's plain cells on dark brown brick (no frames, no white stone
+  bands, brick far darker than the photo's red), so the measured portal reads
+  as a panel pasted on; in-game frames from `review:sheet` show it. Then the swung gables (wing, risalit) keep 3DBAG's plain outline; the
   south-pavilion clock dormer, relief iconography, arcade brick tracery,
   risalit souterrain arches, the wing's ground floor and banner field;
   only 3.4 KB of byte headroom (cut elsewhere first); inventory text says

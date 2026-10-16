@@ -9,18 +9,25 @@ import { openRoute } from './helpers';
 // bridge way (17–34 m into every street on this ride). It now also settles on
 // distance and opens ~8 m in. The ride also crosses straight on, which is not
 // a turn, so the card must not say so.
-const ARMS: Record<string, [number, number]> = {
-  prinsenstraat: [52.3779, 4.8867],
-  herenstraat: [52.37715, 4.8889],
-};
-const BRIDGE = 'Noordsche Compagniebrug';
+//
+// Since 2026-10-16 (user report, the Niek Engelschmanbrug on the
+// Raadhuisstraat) a bridge's name is never the answer to "which street?": the
+// deck runs from the Prinsenstraat onto the Herenstraat, carries neither on
+// both sides, and is transparent (bridgeStreetName.ts). The ask is now the
+// Herenstraat, still a few metres in. The reported deck itself rides from the
+// Westermarkt (Homomonument) east onto the Raadhuisstraat towards the
+// Herengracht.
+const CASES: Array<{ bridge: string; street: string; from: [number, number]; to: [number, number] }> = [
+  { bridge: 'Noordsche Compagniebrug', street: 'Herenstraat', from: [52.3779, 4.8867], to: [52.37715, 4.8889] },
+  { bridge: 'Niek Engelschmanbrug', street: 'Raadhuisstraat', from: [52.37395, 4.8845], to: [52.37345, 4.8872] },
+];
 const MAX_METRES_INTO_STREET = 12;
 
-test('the route question opens a few metres onto the Noordsche Compagniebrug, not at the far quay', async ({ page }, testInfo) => {
+for (const { bridge: BRIDGE, street: STREET_BEYOND, from: FROM, to: TO } of CASES) test(`across the ${BRIDGE} the route question asks the ${STREET_BEYOND} a few metres in, never the bridge`, async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'pure simulation; one project is enough');
   test.setTimeout(180_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 90_000 });
-  const result = await page.evaluate(({ arms, bridge }) => {
+  const result = await page.evaluate(({ fromLatLng, toLatLng, bridge, street }) => {
     const game = (window as any).canalRecallGame;
     const loader = game.osmLoader;
     const perLat = 111320 * 3, perLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * 3;
@@ -44,7 +51,7 @@ test('the route question opens a few metres onto the Noordsche Compagniebrug, no
     player.handleInput = () => {};
     game._updateLandmarks = () => {};
     const STEP = 1 / 30;
-    const from = snap(arms.prinsenstraat), to = snap(arms.herenstraat);
+    const from = snap(fromLatLng), to = snap(toLatLng);
     const path = game.track.findRoute(from, to);
     Object.assign(player, { x: from.x, y: from.y, speed: 0, vx: 0, vy: 0, angle: Math.atan2(path[1].y - from.y, path[1].x - from.x) });
     game.track.finishPoint = { ...to };
@@ -99,17 +106,23 @@ test('the route question opens a few metres onto the Noordsche Compagniebrug, no
       arrived = Math.hypot(to.x - player.x, to.y - player.y) < 30;
     }
     game.state = 4;
-    return { arrived, asks, bridgeAsk: asks.find(ask => ask.name === bridge) ?? null };
-  }, { arms: ARMS, bridge: BRIDGE });
+    return {
+      arrived,
+      asks,
+      bridgeAsk: asks.find(ask => ask.name === bridge) ?? null,
+      streetAsk: asks.find(ask => ask.name === street) ?? null,
+    };
+  }, { fromLatLng: FROM, toLatLng: TO, bridge: BRIDGE, street: STREET_BEYOND });
 
   expect(result.arrived, JSON.stringify(result)).toBe(true);
-  expect(result.bridgeAsk, JSON.stringify(result)).not.toBeNull();
-  // Asked while still on the bridge, within a few metres of riding onto it
-  // (was 33.5 m in, at the far quay).
-  expect(result.bridgeAsk!.nameUnder).toBe(BRIDGE);
-  expect(result.bridgeAsk!.metresIn).toBeLessThanOrEqual(MAX_METRES_INTO_STREET);
-  // Prinsenstraat runs straight onto the bridge: no turn was made.
-  expect(result.bridgeAsk!.context).not.toBe('You made a turn');
+  // The bridge's name is not a street: it is never the answer.
+  expect(result.bridgeAsk, JSON.stringify(result)).toBeNull();
+  expect(result.streetAsk, JSON.stringify(result)).not.toBeNull();
+  // Asked within a few metres of riding onto the Herenstraat.
+  expect(result.streetAsk!.nameUnder).toBe(STREET_BEYOND);
+  expect(result.streetAsk!.metresIn).toBeLessThanOrEqual(MAX_METRES_INTO_STREET);
+  // Both rides run straight over the bridge: no turn was made.
+  expect(result.streetAsk!.context).not.toBe('You made a turn');
   for (const ask of result.asks) {
     expect(ask.metresIn, JSON.stringify(ask)).toBeLessThanOrEqual(MAX_METRES_INTO_STREET);
     expect(ask.nameUnder, JSON.stringify(ask)).toBe(ask.name);

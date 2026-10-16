@@ -3,7 +3,7 @@
  "street": "Jan Hanzenstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 2.64,
+ "seconds": 4,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.222,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.01,
     "foliageShare": 0.24
    },
@@ -117,6 +125,14 @@
     "doorSide": "right",
     "accentSide": "left",
     "accentShare": 0.27,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.17
    },
@@ -182,6 +198,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.315,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.14
    },
@@ -248,6 +272,20 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.373,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.65,
+       "widthM": 0.85,
+       "centre": 0.23
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.3
    },

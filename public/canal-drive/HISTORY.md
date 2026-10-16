@@ -1,5 +1,138 @@
 # Canal Recall — what is built
 
+## A bridge deck is never the answer to "which street?" (2026-10-16)
+
+User (2026-10-16), riding the Raadhuisstraat over the Keizersgracht: "the game
+asks me what street am I on when I'm on this bridge, and the correct answer is a
+brug". `_updateCanalQuiz` (`recallRuntime.ts`) settled the route question on the
+way's own OSM name, and OSM names that deck "Niek Engelschmanbrug". The
+deliberate bridge question only knows the 300 curated `bridges.json` bridges, so
+123 other bridge names were asked as streets (the 2026-10-09 spec even pinned
+"asks the Noordsche Compagniebrug as a street"). `bridgeStreetName.ts`: a way named
+…brug/…sluis/…duiker/Brug N (not Brugstraat, Oudebrugsteeg) answers with the one
+street that continues in line (45°) at both ends, following decks split mid-span
+and ignoring quays that meet at ~90° (Grote Brouwerssluis → Prinsengracht,
+Vingboomsbrug → Huidenstraat). With no single carried street the deck is
+transparent and the street beyond is asked ~8 m after it (Westermarkt → Niek
+Engelschmanbrug → Raadhuisstraat). Askable `bridges.json` bridges keep "Which
+bridge are you on?". Citywide: 436 bridge-named ways under 194 names, 126 ways
+now carry a street and 310 are transparent; the Raadhuisstraat, Leidsestraat and
+Utrechtsestraat radial decks are already mapped under the street's name.
+Regressions: `check-canal-car.ts` (both reported bridges, the two carried
+cases, no bridge-named way ever a street answer citywide),
+`turn-question-timing.spec.ts` rides both decks, `test:bridge-street-name`
+(in `check:canal`).
+
+## Landmark cards: sourced English facts, and an audit for bare definitions and leftover Dutch (2026-10-16)
+
+User (2026-10-16), on the Huis Bartolotti arrival card: "this is a really
+uninspiring fact for this house that has a whole wikipedia page". The card
+read "Het Huis Bartolotti (also Het Bonte Huis) is a canal house at
+Herengracht 170-172". Three causes. `splitDetail` (`landmarkData.ts`) keeps
+whole sentences up to 280 characters, so a long second sentence leaves the
+bare first one. The arrival card reads the raw landmark (`presentationRuntime.ts`
+`_finishLandmark`), not the rotated trivia notice, so the three published
+Bartolotti facts never reach it. And `protectNames` (`scripts/lib/translation.ts`)
+keeps the Dutch article in front of a protected name ("Het [Huis Bartolotti]").
+Lane `lane/landmark-card-text-20261016`: `landmark-card-overrides.json` holds 43
+curated English cards (Bartolotti first: built c. 1617 for Willem van den Heuvel,
+who took the name Bartolotti to inherit, attributed to Hendrick de Keyser, bending
+twice with the Herengracht), each with source URL, article, language, the
+verbatim original passages (Dutch kept), licence and the text it replaces.
+`audit:landmark-cards --publish` writes them into `funFact` and the drive-by
+`opening`; the published diff is exactly 43 `funFact`/`funFactSourceUrl` and 43
+`opening` fields, `wikipediaExtract` untouched. `landmarkCardAudit.ts` and
+`test:landmark-cards` (now in `check:canal`) flag definitional-only and
+Dutch-leaking cards; Bartolotti is the named regression. Over 537 cards: 139
+flagged before (45 definitional, 3 Dutch, 92 empty), 96 after (4, 0, 92).
+Re-run `--publish` after any extract regeneration or `facts:attach-openings
+--force`.
+
+## Bellamybuurt-Zuid: 12 auto-placed runs installed (69 pands) (2026-10-16)
+
+Lane `lane/buurt-generator-2-20261016` (0ec8a8cfb). The pilot's photo gate
+passed five wrong types; `blockFace/stripStructure.ts` now measures each
+strip relative to the pand's own wall colour (green-tile vs tile-bay no
+longer depends on exposure) and reads balconies from open window axes and
+stacked dark slabs, vetoing types without them. Jan Hanzenstraat 49–51,
+Ten Katestraat 29–31, Bellamystraat 18–20 and Van Effenstraat 7D are held;
+Hasebroekstraat 69 places as green-tile with a point gable (right). Kit:
+`buildingRecipe/orielHoist.ts` adds white painted timber oriels and dormers
+under hoist caps (tile-bay likeness 0.19–0.24 → 0.31–0.43); box dormers
+stop at a 2.0 m rise; green-tile limited to 1911–1918. A reviewer's holds
+file (`scripts/block-face/buurten/bellamybuurt-zuid-review-holds.json`, 21
+pands with reasons) holds pands at a `review` stage. Placed 102 (pilot) →
+93 → 69 on 10 faces; 12 runs installed after each sheet was reviewed at
+full size: hasebroek-52-88-r1, -43-101-r1, -90-98-r1, -2-46-r1, -1-41-r1
+and -r2, bellamydwars-4-12, bellamyplein-18-38-r1 and -r2, effen-2-12-r1,
+heije-41-53-r1, kate-5-21-r1. A full buurt placement runs in 213–366 s.
+The kit still cannot say a segmental oriel, more than one dormer height
+per front, a green-tile gable over the window pair or its mirror, window
+kinds per axis, double doors, chequered courses, the Bellamyplein towers
+and pediment-hooded neck dormers, Hasebroekstraat 21–37's wide-arch
+full-balcony design, or the flat 1930s Wenslauerstraat type.
+
+## One model per ground: the Wereldmuseum drew twice (2026-10-16)
+
+User (2026-10-16), with two ride screenshots of the Mauritskade portal:
+"wereld frontage issues - why not caught?". Two models stood on the KIT
+complex: `wereldmuseum-amsterdam` (2026-10-04 massing) and `tropenmuseum`
+(the measured 2026-10-14 model), same landmark, 38 shared suppressed ids,
+both in `GAME_BUILDING_MODELS`. Not caught because the Tropenmuseum lane
+added a new id instead of holding the old one, every review rendered one
+GLB alone (`landmark-strip`, `review:sheet`), and the suppression checks
+only compare models against OSM/BAG, which both passed. The old entry is now
+`status: "held"` with a `heldReason`. `modelOverlap.ts` and its test
+(`test:building-taxonomy`, in `check:canal`) fail when two drawn models share
+a landmark id or a suppressed OSM way / BAG pand. Across 485 drawn models it
+found one more pair: Brandweerkazerne Nico (`fire-station-nico`, every side
+modelled) and the 2026-10-13 Politiebureau IJ-tunnel large recipe on the same
+1972 pand (three sides blank). The landmark wins: `SHADOWED_BY_LANDMARK` in
+`ordinaryModels.ts` keeps the install catalogued but undrawn, and the test
+fails if a pair goes stale. (`royal-palace` in `signature-landmarks.json` is
+a stale manifest record, not drawn.) `review:sheet` now puts an IN GAME
+tile on every wall row (one browser, a 70° frame of that wall), not one
+overhead shot of the main wall; `docs/buildings-pipeline.md` (bespoke lane,
+items 7-8) requires both. Correction to the first diagnosis: with the old
+model gone, the in-game frames of the Mauritskade face still show what the
+user saw. The plain brown walls with bare blue cells either side of the portal
+are the Tropenmuseum's own kit walls, so that face goes to the fourth pass
+(TODO).
+
+## Street chunks and BGT roads drawn by default; blue water; the pilot chunk retired (2026-10-16)
+
+User (2026-10-16): "what things are behind flags that we should make
+default? if BGT is the fix, then make it the default, same with ownGround,
+whatever else". Own ground was already the default.
+- **BGT roads:** `gameGround.ts roadsFlag` is on unless `?roads=0` (or
+  `window.__canalRecallRoads = false`); cells without the roads-v1 extract
+  (all but the seven pilot cells until the city-wide publish) keep the OSM
+  bands. The own-ground e2e specs take `ROADS=0` for the before shots.
+- **Street chunks:** `streetSurveyMode` defaults to `chunks`;
+  `?streetChunks=retired` hides them, `=0` draws the per-house models,
+  `=1` draws every installed chunk. The default holds
+  `DEFAULT_HELD_CHUNKS` = Oudezijds Voorburgwal 115-125 (and the per-house
+  models it replaced), which still draws black on its shade side. The
+  chunk-brightness lane (lane/chunk-brightness-20261016, 869302223,
+  `look/chunkWallExposure.ts`; doc `docs/chunk-brightness-20261016.md`)
+  is what made them presentable: walls at their photo colour normalised to
+  sunlight, 0.91–1.08 of the sunlit photo on the five measured faces (raw
+  photo ratio on shade sides 0.70–0.86, capped by the rig's 0.41 shade
+  ratio); before it they sat at 0.62–0.73.
+- **Retired `chunk-bilder-079721-x2`** after the user asked "why did this
+  get built as a custom build AND why is the roof still broken from
+  3dbag?": it was the 2026-10-10 two-house pilot chunk (per-house recipes
+  bilder-152669 and bilder-079721 with 3DBAG roofs), never replaced by a
+  block face and never under the front-roof rules; its sibling
+  chunk-bilder-152363-x2 was retired on 10-10. It showed as "Today 01:37
+  PM" because `model-first-added.json` had no chunk entries and What's new
+  fell back to the manifest's `generatedAt`, which today's re-install
+  rewrote; the index is regenerated, and every chunk now dates from 10-10.
+- **Desktop ride-perf with both defaults on:** 5/5 within budget run alone
+  (motion p95 16.8 ms, 0 frames over 100 ms, longest 83 ms; map render
+  median 2.7 ms default, 5.6 ms all landmarks resident); a run beside two
+  other Playwright suites failed the motion budget, so measure alone.
+
 ## Roads from the surveyed BGT surface, behind ?roads=bgt (2026-10-16)
 
 User (2026-10-16): "road rendering needs to get fixed" (Marnixstraat busway

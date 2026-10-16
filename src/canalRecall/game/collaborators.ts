@@ -7,6 +7,7 @@
 import type { LandmarkCardLayout, PostcardLayout } from '../noticeCards';
 import type { BuildingHit, LandmarkNotice, WorldPoint } from './worldTypes';
 import type { StreetLabelAnchor } from './streetLabelCandidates';
+import type { RoadSpatialIndex } from '../routing/roadSurface';
 
 export interface Camera {
   worldToScreen(worldX: number, worldY: number): WorldPoint;
@@ -119,6 +120,8 @@ export interface Track {
   /** Street-name anchors along the network, in draw order. */
   labels?: StreetLabelAnchor[];
   segments: RoadSegment[];
+  /** The surface spatial index over `segments` (road-network.js). */
+  roadIndex?: RoadSpatialIndex | null;
   startPoint: WorldPoint;
   finishPoint: WorldPoint;
   /** The name of the way under a point, or '' where nothing is mapped. */
