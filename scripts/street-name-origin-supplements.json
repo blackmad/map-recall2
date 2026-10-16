@@ -110,5 +110,14 @@
       "https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"
     ],
     "reason": "The register's whole text is the fragment \"met name op het gebied van het verkeer.\""
+  },
+  {
+    "name": "Vierwindstrekenbrug",
+    "kind": "bridge",
+    "en": "Takes its name from the four points of the compass: north, east, south and west.",
+    "sources": [
+      "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950131/"
+    ],
+    "reason": "The register lists the winds as \"Noord, West, Zuid en West\"; vier windstreken are the four points of the compass, so the second west is east."
   }
 ]

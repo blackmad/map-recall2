@@ -167,6 +167,28 @@ export function indexOrigins(origins: readonly NameOrigin[]): Map<string, NameOr
 }
 
 /**
+ * A bridge's origin under the register's spelling when OSM spells it
+ * otherwise ("Katten brug" = Kattenbrug, "Hollandse Iepbrug" = De Hollandse
+ * Iepbrug). `spellingKey` folds the variants (`bridgeMatchKey`); a key that
+ * two differently named bridge records share is ambiguous and matches none.
+ * Only for bridges: street names are matched exactly, as published.
+ */
+export function bridgeOriginBySpelling(
+  index: ReadonlyMap<string, readonly NameOrigin[]>,
+  name: string,
+  spellingKey: (name: string) => string,
+): NameOrigin | null {
+  const exact = originFor(index, name, 'bridge');
+  if (exact) return exact;
+  const key = spellingKey(name);
+  const names = new Set<string>();
+  for (const origins of index.values()) {
+    for (const origin of origins) if (origin.kind === 'bridge' && spellingKey(origin.name) === key) names.add(origin.name);
+  }
+  return names.size === 1 ? originFor(index, [...names][0], 'bridge') : null;
+}
+
+/**
  * Repair what the on-device translator reliably gets wrong in this register
  * (measured on the 2026-09-29 run of 5,203 texts):
  * - `gedempt` (a canal filled in) came out as "muted", "silenced" or
@@ -226,6 +248,10 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   Smallepadsgracht: "the register's text is the Smalschipstraat's",
   // The ADM-smithy text word for word, the same as the Smederij's.
   Smaragdplein: "the register's text is the Smederij's",
+  // "Van 30-3-1881 tot 1913 was dit de Eerste Spaarndammerdwarsstraat": the
+  // Zaandijkstraat's text on the railway viaduct's record. A bridge was never
+  // a street; its card keeps the Wikipedia lede and the register sentence.
+  Zaandijksspoorbrug: "the register's text is the Zaandijkstraat's",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
@@ -528,6 +554,8 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/kleefeigenschap/i, /\bits hairy characteristic\b/g, 'its stickiness'],
   [/ook klaproos genoemd/i, /\bis also called buttercup\b/g, 'Also called klaproos (corn poppy)'],
   [/helmkruidfamilie/i, /\bthe mint family\b/g, 'the figwort family'],
+  // An iep is an elm, not an oak (De Hollandse Iepbrug, "de vele iepen").
+  [/\biep(?:en)?\b/i, /\boaks\b/g, 'elms'],
   [/kruisbloemigen/i, /\bfamily of the cruciferous vegetables\b/g, 'of the cabbage family (crucifers)'],
   [/vossenbes/i, /\bred currant\b/g, 'lingonberry (cowberry)'],
   [/vossenbes/i, /\bThe foxberry\b/g, 'The lingonberry'],
