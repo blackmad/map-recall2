@@ -53,6 +53,8 @@ export const RECIPE_ROOF = {
   snapM: 0.6,
   /** Sampling grid and depth bins (m). */
   sampleM: 0.35, binM: 0.5,
+  /** Depth is measured square to the frontage chord when the front's normal leans off it by more than this along the front (m). */
+  chordDriftM: 0.01,
 };
 
 export type FrontRoofForm = 'saddle' | 'flat' | 'attic';
@@ -104,9 +106,11 @@ export interface RecipeRoofInput {
    * its own fitted eaves at the frontage, the attic rises from it to the shared top, and the split points stay roof
    * vertices so each front wall meets the roof edge (bilder-233580-162444 158-162: a 34 m open loop otherwise).
    * A front whose eaves reach the attic top (a tower bay: a front-plane wall to its measured top, no tower body)
-   * takes the roof of the front beside it.
+   * takes the roof of the front beside it. A front with `dormers` is never a tower bay: it is a house front whose
+   * dormers stand on its own roof (Oudezijds Achterburgwal 55, wallen-oza-41-57 177943 b, 4.2 m over the bell gable
+   * beside it: as a tower bay its dormer hovered over the neighbour's attic).
    */
-  fronts?: {id: string; eavesM: number; endpointsRD: number[][]}[];
+  fronts?: {id: string; eavesM: number; endpointsRD: number[][]; dormers?: boolean}[];
   /**
    * Front forms per front id (see `FrontRoofSpec`); absent = the 3DBAG-bounded attic/flat rule for every band,
    * byte-identical. A single-front pand keys its form by `frontId` (or the one entry).
@@ -300,14 +304,56 @@ export function atticProfile(eavesM: number, ridgeM: number, mainDepthM: number,
 }
 
 /**
+ * Earcut can cut a zero-area ear off three collinear outline points a-b-c (a footprint corner b on the eaves line) and
+ * cover a-c with one triangle: the ear is dropped as a sliver below, and the open edge b-c of its neighbour sliver is a
+ * T-junction along the eaves that the GLB audit reads as an open loop (wallen-oza-41-57 177915, Oudezijds Achterburgwal
+ * 43: 1.45 m at the party corner). The triangle on a-c is split at b instead. Only for an a-c of `minM` or more; shorter
+ * T-junctions, and any off the `where` line, stay (byte-identical elsewhere).
+ */
+export function splitAtDroppedSlivers(tris: number[][][], where: (p: number[]) => boolean = () => true, minM = 0.5, dropM2 = 1e-5): number[][][] {
+  const out = tris.map(t => [...t]);
+  for (const t of tris) {
+    if (Math.abs(planArea(t)) >= dropM2) continue;
+    const len = (k: number) => Math.hypot(t[(k + 1) % 3][0] - t[k][0], t[(k + 1) % 3][1] - t[k][1]);
+    const k = [0, 1, 2].reduce((m, i) => len(i) > len(m) ? i : m, 0), a = t[k], c = t[(k + 1) % 3], b = t[(k + 2) % 3];
+    if (len(k) < minM || !t.every(where)) continue;
+    const l2 = len(k) ** 2, u = ((b[0] - a[0]) * (c[0] - a[0]) + (b[1] - a[1]) * (c[1] - a[1])) / l2;
+    if (u <= 1e-6 || u >= 1 - 1e-6) continue;
+    const same = (p: number[], q: number[]) => p === q || (Math.abs(p[0] - q[0]) < 1e-9 && Math.abs(p[1] - q[1]) < 1e-9);
+    const j = out.findIndex(o => o !== t && Math.abs(planArea(o)) >= dropM2 && o.some(p => same(p, a)) && o.some(p => same(p, c)));
+    if (j < 0) continue;
+    const o = out[j];
+    out.splice(j, 1, o.map(p => same(p, c) ? b : p), o.map(p => same(p, a) ? b : p));
+  }
+  return out;
+}
+
+/**
  * Replace a pand's 3DBAG roof with the recipe roof. `facts` are the pand's facts as the face compile fits them (front
  * snaps, shared ground, measured eaves, roofCleanup applied).
  */
-export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, opts: Partial<typeof RECIPE_ROOF> = {}): {facts: BuildingFacts; report: RecipeRoofReport} {
+export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, opts: Partial<typeof RECIPE_ROOF> = {}, squareToChord?: boolean): {facts: BuildingFacts; report: RecipeRoofReport} {
   const o = {...RECIPE_ROOF, ...opts}, ground = facts.heights.groundNAP, notes: string[] = [];
   const front = facts.fronts.find(f => f.street === input.street) ?? facts.fronts[0];
   const e0 = front.endpointsRD[0], nl = Math.hypot(front.outwardNormalRD[0], front.outwardNormalRD[1]);
-  const inward = [-front.outwardNormalRD[0] / nl, -front.outwardNormalRD[1] / nl];
+  // A front roof's depth is measured square to the frontage chord (the line the elevation and its crown outline stand on)
+  // when the front's outward normal leans off it so far that a rising attic face climbs along the facade line: the
+  // normal comes from the BAG facade edge, the chord ends at the survey footprint's corners (De Clercqstraat 22, 153066:
+  // 4 degrees, the attic climbed 1.4 m over the parapet; Nassaukade 162089 and six neighbours 5-20 cm). Only a front
+  // roof whose chord end stands deeper than the attic setback + `chordDriftM`, and only when a band rises as an attic;
+  // every other roof keeps the normal (byte-identical).
+  const e1 = front.endpointsRD[1], cl = Math.hypot(e1[0] - e0[0], e1[1] - e0[1]);
+  const nIn = [-front.outwardNormalRD[0] / nl, -front.outwardNormalRD[1] / nl];
+  const lean = dot([e1[0] - e0[0], e1[1] - e0[1]], nIn);
+  if (squareToChord === undefined && input.forms && cl > 1e-6 && lean > (input.faceSetbackM ?? 0) + o.chordDriftM) {
+    const asIs = recipeRoofFacts(facts, input, opts, false);
+    if (!asIs.report.bands?.some(b => b.form === 'attic' && b.ridgeM - b.eavesM >= 0.05)) return asIs;
+    const sq = recipeRoofFacts(facts, input, opts, true);
+    sq.report.notes.push(`attic square to the frontage chord (the front normal leans ${r3(lean)} m deep along ${r3(cl)} m)`);
+    return sq;
+  }
+  const chordIn = [-(e1[1] - e0[1]) / cl, (e1[0] - e0[0]) / cl], sgn = dot(chordIn, nIn) < 0 ? -1 : 1;
+  const inward = squareToChord ? [sgn * chordIn[0], sgn * chordIn[1]] : nIn;
   const depth = (p: number[]) => dot([p[0] - e0[0], p[1] - e0[1]], inward);
   const E = input.eavesM;
 
@@ -315,11 +361,11 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const polys = facts.surveyFootprintPolygonsRD;
   const inside = (p: number[]) => polys.some(poly => pointInRing(p, poly[0]) && !poly.slice(1).some(h => pointInRing(p, h)));
   const all = polys.flatMap(p => p.flat()), xs = all.map(p => p[0]), ys = all.map(p => p[1]);
-  const samples: {d: number; h: number}[] = [];
+  const samples: {d: number; h: number; p: number[]}[] = [];
   for (let x = Math.min(...xs) + o.sampleM / 2; x < Math.max(...xs); x += o.sampleM) for (let y = Math.min(...ys) + o.sampleM / 2; y < Math.max(...ys); y += o.sampleM) {
     if (!inside([x, y])) continue;
     const h = roofHeightAt(facts.roofsRD, [x, y], ground);
-    if (h !== null) samples.push({d: depth([x, y]), h});
+    if (h !== null) samples.push({d: depth([x, y]), h, p: [x, y]});
   }
   const depths = all.map(depth), plotDepth = Math.max(...depths);
   const bins = new Map<number, number[]>();
@@ -365,7 +411,15 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const bands: {lo: number; hi: number; eaves: number; id?: string; centre: number; fLo: number; fHi: number}[] = fronts.length < 2 ? [{lo: -Infinity, hi: Infinity, eaves: E, id: input.frontId, centre: (e0a + e1a) / 2, fLo: Math.min(e0a, e1a), fHi: Math.max(e0a, e1a)}] : fronts.map((f, i) => ({
     lo: i === 0 ? -Infinity : (fronts[i - 1].hi + f.lo) / 2, hi: i === fronts.length - 1 ? Infinity : (f.hi + fronts[i + 1].lo) / 2, eaves: f.eavesM, id: f.id, centre: (f.lo + f.hi) / 2, fLo: f.lo, fHi: f.hi}));
   if (fronts.length >= 2) {
-    const plain = bands.map((b, i) => tower(b.eaves) ? -1 : i);
+    // A dormered front whose eaves the neighbour's roof never reaches is a house front, not a tower bay (see `fronts`).
+    const ownRoof = (i: number) => !!fronts[i].dormers && ridge < bands[i].eaves;
+    const plain = bands.map((b, i) => tower(b.eaves) && !ownRoof(i) ? -1 : i);
+    // Its attic is bounded by its own share of 3DBAG: the pand's p95 pools the low front's roof and would turn the band
+    // flat under its dormer.
+    for (const [i, b] of bands.entries()) if (tower(b.eaves) && ownRoof(i)) {
+      const own = samples.filter(sm => sm.d <= mainDepth && along(sm.p) >= fronts[i].lo && along(sm.p) <= fronts[i].hi).map(sm => sm.h);
+      if (own.length) { (b as {ownCapM?: number}).ownCapM = quantile(own, 0.95); notes.push(`front ${fronts[i].id}: dormered front over its neighbour, attic bounded by its own 3DBAG p95 ${r3(quantile(own, 0.95))} m`); }
+    }
     for (const [i, b] of bands.entries()) if (plain[i] < 0) {
       const j = plain.filter(k => k >= 0).sort((a, c) => Math.abs(a - i) - Math.abs(c - i) || a - c)[0];
       b.eaves = j === undefined ? E : bands[j].eaves;
@@ -385,8 +439,9 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     if (spec.form === 'flat') return {...b, form: 'flat' as FrontRoofForm, ridge: b.eaves, pitch: o.frontPitchDeg, tan: t, spec};
     if (spec.form === 'saddle') { const pitch = spec.pitchDeg ?? o.frontPitchDeg; return {...b, form: 'saddle' as FrontRoofForm, ridge: r3(spec.ridgeM ?? b.eaves), pitch, tan: Math.tan(pitch * Math.PI / 180), spec}; }
     // Attic: the recipe's steep face, capped by the hint's top (a photo row, a row ridge) and, unless the hint says otherwise, by the 3DBAG p95.
-    const pitch = spec.pitchDeg ?? o.frontPitchDeg, tb = Math.tan(pitch * Math.PI / 180), cap = Math.min(spec.capM ?? Infinity, spec.surveyCap === false ? surveyMaxM : capM, input.ridgeCapM ?? Infinity);
-    const flatB = spec.surveyCap !== false && capM - b.eaves < o.flatRiseM;
+    const bandCapM = (b as {ownCapM?: number}).ownCapM ?? capM;
+    const pitch = spec.pitchDeg ?? o.frontPitchDeg, tb = Math.tan(pitch * Math.PI / 180), cap = Math.min(spec.capM ?? Infinity, spec.surveyCap === false ? surveyMaxM : bandCapM, input.ridgeCapM ?? Infinity);
+    const flatB = spec.surveyCap !== false && bandCapM - b.eaves < o.flatRiseM;
     const rb = r3(flatB ? b.eaves : Math.max(b.eaves, Math.min(b.eaves + attic, cap, b.eaves + tb * (mainDepth - setback) / 2)));
     return {...b, form: (rb - b.eaves < 0.05 ? 'flat' : 'attic') as FrontRoofForm, ridge: rb, pitch, tan: tb, spec};
   });
@@ -421,6 +476,8 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
       if (parts.length > 1) { for (const part of parts) emit(part, h); return; }
       tris = fan;
     }
+    // Only on a front roof's eaves line (the facade wall top): elsewhere the recipe keeps its triangulation.
+    if (input.forms) tris = splitAtDroppedSlivers(tris, p => Math.abs(depth(p)) <= 0.05);
     for (const tri of tris) {
       const area = Math.abs(planArea(tri));
       // Under 0.1 dm2 the survey conversion omits a triangle anyway, but caps the omissions at 1 cm2 per house; dropped
