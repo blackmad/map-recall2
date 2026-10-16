@@ -573,9 +573,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `recipe-bilder-{153622,153782,154127}.glb` are stale (game draws the faces);
   reinstall via `scripts/building-recipes/install.ts`. Document `frontRoof` in
   docs/buildings-pipeline.md. iPhone e2e street shots frame too close.
-- **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
-  photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
-  reports party-wall "holes" on several faces (exempted by the compile).
+- **Inferred rears**: z-fight DONE 2026-10-16 (HISTORY "Rear windows no
+  longer z-fight": rears add nothing on 13 faces). Open: recompile and
+  re-install the installed faces so they take the new rears; the rear
+  window grid is generic (2.5 m pitch), use rear photos (`pand-reference
+  --prefer-bearing`) where they exist; the remaining 0.1–8.3 m² coplanar
+  z-fight is front/shell geometry (12 of 13 faces fail the 0.5 m²
+  new-export regression); holes on 31-49, 265-313, 363-371 and the blank
+  wall on 265-313 predate the lane.
 - **Block faces next** (`docs/buildings-pipeline.md` "Block-face authoring";
   now the default unit for attached ordinary buildings): schema for per-bay
   widths and off-centre gables (081118, 156286, Utrechtse 76), a shopfront

@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Rear windows no longer z-fight: 186 → 0.8 m² on kinker-1-29, rears add nothing on 13 faces (2026-10-16)
+
+Lane `worktree-agent-ac7e0d88ffcb68470` (final 15a9403ee). The rears were
+not overlapping each other, the party walls or the 3DBAG box: each
+inferred window was its own z-fight pair, a frame plate 3 cm proud of the
+wall (the audit's 2–3 cm "tight" band, bleeds through at distance) with
+the glass 1.5 cm in front of it (counted coplanar). `blockFace/rear.ts`
+now draws a sloped frame ring standing on the wall around a pane 4 cm
+proud (10 triangles per window instead of 4), spends only what is left
+of each pand's triangle budget (storeys dropped from the ground up,
+reported as `droppedForBudget`; kinker-363-371 pand 089983 drops 4 of 8
+and passes its 3,000 gate), sits windows on the wall plane actually found
+(`wallAt`; columns whose wall steps > 1 cm are `skippedOffWall`) and
+measures the wall height at the window, not the triangle's top corner
+(a frame on 363-371 had reached over a roof-cut wall onto the roof).
+Coplanar z-fight before → after: kinker-1-29 186.5 → 0.8, 2-30 115.1 →
+0.7, 31-49 148.0 → 8.2, 49-63 152.1 → 7.1, 65-87 88.7 → 0.6, 109-161 148.1
+→ 8.3, 173-225 137.9 → 5.5, 265-313 211.9 → 0.9, 315-359 179.8 → 0.1,
+363-371 53.9 → 1.7, marnix-124-138 284.6 → 0.0, marnix-c 363.9 → 0.0,
+bilder-157757-164549 43.8 → 0.0 m²; tight band 15.8–188.6 → 0.3–7.8 m²;
++124 to +1,296 triangles per face. The `--no-rears` GLBs are
+byte-identical, with-rears z-fight now equals no-rears z-fight, hole
+loops fell (1-29 45 → 40) because plates exactly 3 cm off the wall had
+counted as holes. Tests: `rearZFight.test.ts` (synthetic L-block 27.4 →
+0 m², named regression kinker-1-29 < 5 m², a shell 4 cm behind the BAG
+edge, the sloped wall top of 089983); `rearsAndWinding` per-window limit
+4 → 10. Sheet `docs/images/kinkerstraat/rears-20261014.jpg`. Still
+failing and not in the rears: 0.1–8.3 m² coplanar in front and shell
+geometry on 12 of 13 faces (the new-export regression allows 0.5 m²),
+holes on 31-49, 265-313, 363-371, blank wall on 265-313. Installed faces
+keep the old rears until recompiled.
+
 ## Kinkerstraat even side authored: twelve faces, 103 pands; three single-pand faces blocked (2026-10-16)
 
 Lane `lane/kinkerstraat-even-20261014` (plan Part 2 step 4), on the
