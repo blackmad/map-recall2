@@ -1269,6 +1269,30 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Landmark abutter fold-ins** (2026-10-16, HISTORY "Landmark abutter
+  survey"; queue and evidence in `docs/landmark-abutters-survey-20261016.md`,
+  verdicts in `scripts/landmarks/landmark-abutters-allowlist.json`): 25
+  city buildings are part of their landmark and draw as generic kit
+  blocks. In progress: Noorderkerk corner houses (rijksmonument 3923,
+  pands 177303/176942/176956, own lane). Queued, one lane each, photo
+  first: Nieuwe Kerk choir annex (pand 0363100012176224), Sint Nicolaas
+  wing/rear wing/pastorie (w750591089/87/84), Oude Kerk houses against
+  the walls and chapel bay (w749242497/98, w747868956, w749242502),
+  Amstelkerk house/lean-to with bell-cote/timber annex (pands 178570,
+  178594, 178561), Vredeskerk parish building (w1462571384), Rijksmuseum
+  Philips Wing (pand 0363100012235882), W139 street front (pand
+  0363100012171794); suppress only: Centraal w1239767726 under the bus
+  roof. Separate but drawn wrong (kit/height, not fold-in): RAI
+  w806961002 (8 vs 15.6 m), Nieuwe Kerk w747924620 (mansard drawn as a
+  19 m box), Rijksmuseum Asian Pavilion 0363100012241554, Petruskerk shed
+  0363100012220864 (0.04 m). 13 unclear (Centraal east wing in
+  scaffolding, The Movies Haarlemmerdijk 157, De Krakeling, Frascati,
+  Tussauds, Victoria Hotel, Walloon portal, Fatih gate, Chassékerk,
+  Sint-Agneskerk ×2, Boomkerk) need a second photo. 465 of 560
+  candidates are unreviewed (score below the gate); main noise is
+  terraced neighbours on a wrapped block and complex-wide monument
+  records (Mercatorplein, Westergasfabriek, DeLaMar). Each fold-in that
+  lands removes its PENDING entries from the allowlist.
 - **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
   10" and "Figures, second pass"): STOP building statues with the figure
   kit (user, 2026-10-14: "bizarre"); the prototype (HISTORY "Measured
