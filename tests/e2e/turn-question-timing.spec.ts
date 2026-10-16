@@ -126,8 +126,10 @@ for (const { bridge: BRIDGE, street: STREET_BEYOND, from: FROM, to: TO } of CASE
   for (const ask of result.asks) {
     // Since the askable-bridges extract (2026-10-16) both decks are in
     // bridge-crossings.json, so the ride also asks the canal it crosses; that
-    // ask is about the water, not a street, and has no metres-into-street.
-    if (ask.context === 'Crossing a bridge') {
+    // ask is about the water, not a street, and has no metres-into-street (the
+    // rider never entered a road of that name). The card's context line is no
+    // guide: a street asked just past a deck also reads "Crossing a bridge".
+    if (!Number.isFinite(ask.metresIn)) {
       expect(ask.name, JSON.stringify(ask)).toMatch(/gracht$/);
       continue;
     }
