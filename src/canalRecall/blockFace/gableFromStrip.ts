@@ -206,6 +206,71 @@ export function crownShape(profile: GableProfileSample[], eavesUp?: number): Cro
     peakOffset: round((peakIdx - centre) / Math.max(1, b - a + 1), 3), symmetry: round(1 - Math.min(1, mirror / Math.max(1, m) / Math.max(rise, 0.5)), 3), stepsLeft: steps.left, stepsRight: steps.right};
 }
 
+/** One flank of a neck/bell crown, foot to neck, normalised: t along (0 foot, 1 neck), h up (0 eaves, 1 the flank top). */
+export interface FlankReading {
+  /** Samples used (outer 15 % trimmed: the foot scroll curls up off the curve). */
+  samples: number;
+  /** Mean of h - t over the flank (negative = under the chord = concave), and over its lower and upper halves. */
+  deviation: number; lower: number; upper: number;
+  /** Flank width (m) and the height it climbs (m above the eaves line). */
+  widthM: number; riseM: number;
+  curve: [number, number][];
+}
+export interface FlankCurvature {
+  shoulder: 'concave' | 'ogee' | 'straight' | 'convex' | null;
+  /** Mean of the two flanks (gables are symmetric: one shoulder for both). */
+  deviation: number; lower: number; upper: number;
+  flanks: (FlankReading | null)[];
+  reason: string;
+}
+/** Deviation from the chord that names a curve (fraction of the flank's climb). */
+export const FLANK_CURVE_TOL = 0.04;
+
+/**
+ * The flank curve of a neck or bell crown off its photo profile (user, 2026-10-16: "the kit inverts the curve of the
+ * roof from concave to convex"). Each flank runs from the front's outer edge (where the kit's crown foot stands, at the
+ * eaves line) inward to the neck wall: the first sample at 75 % of the crown's rise. Its climb is the flank's own top
+ * (the kit's shoulder height), not the neck's, so a straight or bulging flank meeting a taller neck reads as what it is.
+ * The flank, normalised to its own width and climb, is compared with its chord: under
+ * it is concave (a claw piece's hollow sweep, a bell's flare), over it convex, under in the lower half and over in the
+ * upper an ogee, within the tolerance of it straight. Both flanks are averaged (gables are symmetric); a flank under 0.5 m or 5 samples abstains, and so does
+ * a crown whose two flanks disagree in sign by more than the tolerance each (one is a neighbour or a tree).
+ */
+export function flankCurvature(profile: GableProfileSample[], shape: CrownShape): FlankCurvature {
+  const none = (reason: string, flanks: (FlankReading | null)[] = []): FlankCurvature => ({shoulder: null, deviation: 0, lower: 0, upper: 0, flanks, reason});
+  if (!shape.span || !(shape.riseM > 0.8) || !Number.isFinite(shape.eavesUp)) return none('no crown to read');
+  const up = dense(profile), n = up.length, e = shape.eavesUp, wall = e + 0.75 * shape.riseM;
+  const known = profile.map(p => p[1] !== null);
+  const first = known.indexOf(true), last = known.lastIndexOf(true), centre = (Math.round(shape.span.from * n) + Math.round(shape.span.to * n) - 1) / 2;
+  const flank = (side: 1 | -1): FlankReading | null => {
+    const idx: number[] = [];
+    let i = side === 1 ? first : last;
+    for (; side === 1 ? i < centre : i > centre; i += side) { if (up[i] >= wall) break; idx.push(i); }
+    if (idx.length * SAMPLE_M < 0.5 || (side === 1 ? i >= centre : i <= centre)) return null;
+    // The flank's own climb (the kit's shoulder: its curve runs from the eaves to the shoulder, then the neck rises
+    // vertically): the highest of its last three samples, so one low column at the neck edge does not inflate it.
+    // The foot: the eaves line, or the flank's outer sample when that is lower (a flank rising from the party wall pulls
+    // the outer-eighth eaves estimate up).
+    const foot = Math.min(e, up[idx[0]]), climb = Math.max(...idx.slice(-3).map(j => up[j])) - foot;
+    if (!(climb > 0.25)) return null;
+    const curve: [number, number][] = idx.map((j, k) => [(k + 0.5) / (idx.length + 0.5), (up[j] - foot) / climb]);
+    const used = curve.filter(([t]) => t >= 0.1);
+    if (used.length < 5) return null;
+    const mean = (v: number[]) => v.reduce((s, x) => s + x, 0) / Math.max(1, v.length);
+    const dev = (c: [number, number][]) => mean(c.map(([t, h]) => h - t));
+    return {samples: used.length, deviation: round(dev(used), 3), lower: round(dev(used.filter(([t]) => t < 0.55)), 3), upper: round(dev(used.filter(([t]) => t >= 0.55)), 3),
+      widthM: round(idx.length * SAMPLE_M), riseM: round(climb), curve: curve.map(([t, h]) => [round(t, 3), round(h, 3)] as [number, number])};
+  };
+  const flanks = [flank(1), flank(-1)], ok = flanks.filter((f): f is FlankReading => !!f), tol = FLANK_CURVE_TOL;
+  if (!ok.length) return none('neither flank is 0.5 m wide below the neck', flanks);
+  if (ok.length === 2 && Math.sign(ok[0].deviation) !== Math.sign(ok[1].deviation) && Math.min(Math.abs(ok[0].deviation), Math.abs(ok[1].deviation)) > tol)
+    return none(`flanks disagree (${ok[0].deviation} / ${ok[1].deviation}): one is not the gable`, flanks);
+  const avg = (k: 'deviation' | 'lower' | 'upper') => round(ok.reduce((s, f) => s + f[k], 0) / ok.length, 3);
+  const d = avg('deviation'), lo = avg('lower'), hi = avg('upper');
+  const shoulder = lo < -tol && hi > tol ? 'ogee' : d < -tol ? 'concave' : d > tol ? 'convex' : 'straight';
+  return {shoulder, deviation: d, lower: lo, upper: hi, flanks, reason: `${ok.length} flank(s): ${d} of the climb off the chord (lower ${lo}, upper ${hi})`};
+}
+
 export interface PhotoGable {
   /** Fraction of the front's 0.1 m samples with a measured roofline. */
   coverage: number;
@@ -221,6 +286,8 @@ export interface PhotoGable {
   fit: {method: 'template' | 'polyline'; params: Record<string, number> | null; fitErrorM: number; polylineErrorM: number; templateParams: Record<string, number> | null; templateErrorM: number | null; trace: [number, number][]};
   /** Why the reading should not drive a crown (empty = usable). */
   abstain: string[];
+  /** Neck/bell flank curve (`flankCurvature`), read when the crown classifies as a neck or bell. */
+  flanks?: FlankCurvature;
 }
 
 /** Read a front's gable off its photo profile (along from the viewer's left, up above the strip ground). */
@@ -266,7 +333,8 @@ export function readPhotoGable(profile: GableProfileSample[]): PhotoGable {
   if (crown.type === 'unknown') abstain.push(`classifier: ${crown.reason}`);
   const fitIn = {profile: crownProfile.map(([x, y]) => [x, y] as const), type: crown.type};
   const decided = fitGable(fitIn), template = fitGableTemplate(fitIn);
-  return {coverage: round(coverage, 3), crownCoverage: round(crownCoverage, 3), flankCoverage, shape, crown, front, intentGable: GABLE_TO_INTENT[crown.type],
+  const flanks = crown.type === 'halsgevel' || crown.type === 'klokgevel' ? {flanks: flankCurvature(profile, shape)} : {};
+  return {coverage: round(coverage, 3), crownCoverage: round(crownCoverage, 3), flankCoverage, shape, crown, front, intentGable: GABLE_TO_INTENT[crown.type], ...flanks,
     fit: {method: decided.method, params: decided.params, fitErrorM: round(decided.fitErrorM, 3), polylineErrorM: round(decided.polylineErrorM, 3), templateParams: template?.params ? Object.fromEntries(Object.entries(template.params).map(([k, v]) => [k, round(v, 3)])) : null, templateErrorM: template ? round(template.fitErrorM, 3) : null,
       trace: (template?.trace ?? decided.trace).map(([x, y]) => [round(x, 3), round(y, 3)] as [number, number])}, abstain};
 }
@@ -346,7 +414,7 @@ export function stepsFromFlanks(left: number, right: number, flankCoverage?: [nu
 }
 
 /** Front fields a photo crown sets; every other crown field is removed so stale authored values cannot conflict. */
-const CROWN_FIELDS = ['crownSteps', 'crownRise', 'crownAt', 'crownBays', 'crownGroups', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownFinial'] as const;
+const CROWN_FIELDS = ['crownSteps', 'crownRise', 'crownAt', 'crownBays', 'crownGroups', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownFinial', 'crownShoulder'] as const;
 
 export interface PhotoCrownPatch {
   pandId: string;
@@ -379,6 +447,12 @@ export function photoCrownPatch(pandId: string, front: FrontIntent, reading: Pho
     // (the larger count: an occluded flank loses plateaus, it never gains them).
     if (gable === 'step') set.crownSteps = Math.min(6, Math.max(1, stepsFromFlanks(s.stepsLeft, s.stepsRight, reading.flankCoverage)));
     if (sameType) for (const k of ['crownCap', 'crownFinial'] as const) if (front[k] !== undefined && (k !== 'crownFinial' || ['step', 'neck', 'raised-neck', 'bell'].includes(set.gable!))) (set as any)[k] = front[k];
+    // Flank curve: the photo's when it reads one, else an authored one carried over on an unchanged type.
+    if (['neck', 'raised-neck', 'bell'].includes(set.gable!)) {
+      const measured = reading.flanks?.shoulder;
+      if (measured) set.crownShoulder = measured;
+      else if (sameType && front.crownShoulder) set.crownShoulder = front.crownShoulder;
+    }
     const span = s.span!, tol = 0.4 / fit.widthM, keep = fit.authoredSpan && Math.abs(fit.authoredSpan.from - span.from) <= tol && Math.abs(fit.authoredSpan.to - span.to) <= tol;
     if (keep && front.crownBays) set.crownBays = front.crownBays;
     else if (keep && front.crownAt) set.crownAt = front.crownAt;

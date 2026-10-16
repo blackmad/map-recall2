@@ -22,6 +22,7 @@ import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMes
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { bandCorridor, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
+import { crossingWays } from './railingRuns.js';
 import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
@@ -51,7 +52,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Red rijbaan polygons drawn grey under tram track. */ railGrey?: number }) | null; courtyards?: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Red rijbaan polygons drawn grey under tram track. */ railGrey?: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number }) | null; courtyards?: number };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -233,6 +234,7 @@ export function buildCell(input: CellInput): BuiltCell {
   const roadIndex = lod === 0 && (input.roads?.surfaces.length || input.roadsAround?.some(r => r?.surfaces.length)) ? new RoadIndex([input.roads, ...(input.roadsAround ?? [])], rb) : null;
   // Red rijbanen carrying tram track are grey (RoadIndex.railCarriages), for the polygons and for every lookup after.
   const railGrey = roadIndex ? roadIndex.railCarriages(all.filter(w => w.section.rails?.length).map(w => w.points)) : 0;
+  const parkingIslands = roadIndex ? roadIndex.parkingIslands() : 0;
   phase('roadIndex');
   let roads: BuiltCell['stats']['roads'] = null;
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
@@ -241,7 +243,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
     roadSkipped = built.skipped;
-    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, railGrey };
+    roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, railGrey, parkingIslands };
   }
   // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
   phase('roads');
@@ -369,6 +371,8 @@ export function buildCell(input: CellInput): BuiltCell {
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [], floating: [] };
   // The street bands of the bridge ways: on land the deck top stays under them (decks.ts deckWidths, ride review J6).
   const clip = input.clipDecks !== false, onBridgeBand = bandCorridor(ways.filter(isBridgeWay).map(w => ({ points: w.points, half: w.section.halfWidth })));
+  // No parapet on a street or path crossing its line (railingRuns.ts crossingWays; a deck measured along the canal).
+  const crossing = crossingWays(ways.filter(isBridgeWay).map(w => ({ points: w.points, half: w.section.halfWidth })));
   // roads-v1: where the survey's deck polygons (h ≥ 1) cover a measured deck, they are the visible deck out to the
   // parapet; the deck top keeps to the road's half-width under them (no sides), so no grey slab shows beside the road.
   const roadsOnDeck = (deck: DeckSurface): boolean => {
@@ -382,7 +386,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined));
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing));
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
     const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined);
@@ -396,7 +400,7 @@ export function buildCell(input: CellInput): BuiltCell {
   input.flatDecks.forEach((ring, k) => {
     const through = bridgeLines.filter(l => l.some(q => pointInRing(ring, q[0], q[1])) || l.some((q, i) => i > 0 && pointInRing(ring, (q[0] + l[i - 1][0]) / 2, (q[1] + l[i - 1][1]) / 2)));
     const axis = footprintAxis(ring, through).u, movingThrough = movableLines.filter(l => through.includes(l));
-    const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis, movableWays: movingThrough });
+    const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis, movableWays: movingThrough, crossing });
     if (floating) bridges.floating.push(`${input.flatDeckMeta?.[k]?.id ?? 'flat'}:${floating} end(s) over water past ${DECK_REACH_MAX_M} m`);
     add('deckTop', top); add('deckBody', body);
     bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;

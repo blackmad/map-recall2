@@ -816,10 +816,11 @@
       tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
     }
   };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
   var ROOF_TONES = {
-    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: ["#4b525c", "#3f464f", "#5a6068"] },
-    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: ["#4b525c", "#3f464f", "#5a6068"] },
-    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: ["#4b525c", "#3f464f", "#5a6068"] },
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
     storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
     cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
   };
@@ -830,7 +831,7 @@
     "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
     "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
     "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
-    "slate": { hex: "#4b525c", luma: [62, 140], cell: "slate" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
     "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
     "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
     "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
@@ -38741,15 +38742,15 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#8a5a47",
-        stone: "#d9d3c1",
-        frame: "#e8e4d6",
+        brick: "#a2856c",
+        stone: "#e2d6bc",
+        frame: "#efece3",
         glass: "#4f6270",
         dark: "#2a3330",
         slate: "#58626d",
         copper: "#6f9d8c",
         gold: "#c9a23a",
-        white: "#e9e5da",
+        white: "#f0ede4",
         red: "#7a4a3a",
         concrete: "#a8a59c"
       },

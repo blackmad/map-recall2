@@ -2,10 +2,10 @@
   "city": "amsterdam",
   "zoom": 14,
   "generatedAt": "2026-09-03T21:20:05.136Z",
-  "features": 347162,
+  "features": 348763,
   "tiles": 295,
-  "totalBytes": 111964945,
-  "totalGzipBytes": 15454178,
+  "totalBytes": 112333597,
+  "totalGzipBytes": 15619561,
   "tileList": [
     "14/8405/5378",
     "14/8405/5379",
@@ -311,5 +311,10 @@
     ],
     "source": ".cache/osm-source/derived/amsterdam-buildings.geojsonseq",
     "approximateHeightM": 3.4
+  },
+  "bagGapSupplement": {
+    "version": "bag-gaps-v1",
+    "source": "scripts/data/bag-gaps/bag-gaps-supplement.geojson (BAG WFS footprint, AHN dsm/dtm 05m height)",
+    "features": 1601
   }
 }

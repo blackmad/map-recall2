@@ -18,7 +18,7 @@ import type {TerrainAt} from '../bag3dCityJson.ts';
 import {fitIntent, splitChain} from '../buildingRecipe/fit.ts';
 import type {CompiledBuilding} from '../buildingRecipe/compile.ts';
 import {BUDGET_TRIANGLES} from '../buildingRecipe/gates.ts';
-import {ringToFrame, type FrontFrame} from '../buildingRecipe/instances.ts';
+import {frontFrame, ringToFrame, type FrontFrame} from '../buildingRecipe/instances.ts';
 import {compileChunk, chunkFrame} from '../streetChunks/compileChunk.ts';
 import {findContacts} from '../streetChunks/party.ts';
 import {fitEaves, shiftFactsHeights} from '../streetChunks/ground.ts';
@@ -199,9 +199,13 @@ export function frontRoofSpecs(intent: CanalHouseIntent, fit: {recipe: {elevatio
     const gabled = !['cornice', 'flat'].includes(fr.gable), hint = opts.hints?.[fr.id], profile = el?.crown?.value.profile;
     let note: string | undefined;
     if (forced === 'saddle' || (!forced && gabled)) {
-      const s = profile ? saddleUnderProfile(profile, rf.widthM, rf.eavesM, pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}) : null;
+      // A neck or bell crown over the whole front stands in front of the whole roof, so the saddle's sides may meet the party walls
+      // under the cornice: concave neck/bell flanks hug the eaves line and only rise at the neck (2026-10-16), and a
+      // saddle under them drops its sides 1-2.5 m. A crown on part of the front, and a step/spout/point crown, keep the 1 m limit.
+      const fullFront = CURVED_GABLES.has(fr.gable) && !fr.crownAt && !fr.crownBays && !fr.crownGroups;
+      const s = profile ? saddleUnderProfile(profile, rf.widthM, rf.eavesM, {...(pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}), ...(fullFront ? {maxDropM: SADDLE_FULL_FRONT_DROP_M} : {})}) : null;
       if (s) { out[fr.id] = {form: 'saddle', ridgeM: s.ridgeM, pitchDeg: s.pitchDeg, sideEavesM: s.sideEavesM, lineM: cm(Math.max(...profile!.map(p => p[1])))}; continue; }
-      note = profile ? `saddle under the ${fr.gable} crown would drop its side eaves over a metre under the cornice (a crown on part of the front); attic face instead` : `no crown outline on the ${fr.gable} front; attic face instead`;
+      note = profile ? `saddle under the ${fr.gable} crown would drop its side eaves over ${fullFront ? SADDLE_FULL_FRONT_DROP_M + ' m' : 'a metre'} under the cornice (a crown on part of the front); attic face instead` : `no crown outline on the ${fr.gable} front; attic face instead`;
     }
     if (forced === 'flat') { out[fr.id] = {form: 'flat', lineM: rf.eavesM, ...(note ? {note} : {})}; continue; }
     const capM = Math.min(hint?.topM ?? Infinity, opts.rowRidgeM !== undefined ? opts.rowRidgeM + ROW_COHERENCE.ridgeCapAboveM : Infinity);
@@ -243,6 +247,104 @@ export function roofAboveCrown(intent: CanalHouseIntent, fit: {recipe: {elevatio
     }
   }
   return worst;
+}
+
+/** How far a saddle's sides may drop under the cornice behind a crown that spans the whole front (m). */
+export const SADDLE_FULL_FRONT_DROP_M = 3;
+/** `roofAboveCrownFrontView` tolerance (m): the roof pieces follow the footprint, whose rear corners are a few cm off square. */
+export const FRONT_VIEW_TOL_M = 0.1;
+/**
+ * Gables with curved flanks (`crownShoulder`) whose crown hides the roof behind it: the front view over the whole plot
+ * stays under the outline, and the saddle may drop its sides `SADDLE_FULL_FRONT_DROP_M` under the cornice. Step, spout
+ * and point crowns are not held yet: the front view finds bilder-081118-155417 156287/155418 with their attic faces
+ * 2.3 m over the lower treads (the attic fallback of a saddle that would drop over a metre), a separate change.
+ */
+const CURVED_GABLES = new Set(['neck', 'raised-neck', 'bell']);
+
+/**
+ * How far the roof stands above the crown outline in a FRONT VIEW (m; negative = under): every roof surface of the pand,
+ * at any depth, projected square onto the frontage line and compared with the crown outline at that point. Only fronts
+ * whose gable crown spans the whole front (neck, raised neck, bell: `CURVED_GABLES`; no `crownAt`/`crownBays`/
+ * `crownGroups`) are checked: there the photo shows sky beside the crown, so a roof showing above the flanks is the
+ * "roofs from the front, not 3DBAG" fault. `roofAboveCrown` samples 5 mm inside the facade only, where a 70 degree
+ * attic face has risen 1.4 cm, so an attic standing 2-3 m over a neck gable's shoulders passed it (Oudezijds
+ * Achterburgwal 177920/177946, 2026-10-16). -Infinity when no front qualifies.
+ */
+export function roofAboveCrownFrontView(intent: CanalHouseIntent, fit: Parameters<typeof roofAboveCrown>[1], facts: BuildingFacts, step = 0.1): number {
+  const street = intent.fronts[0].street;
+  let worst = -Infinity;
+  for (const el of fit.recipe.elevations) {
+    const fr = intent.fronts.find(f => f.id === el.id);
+    if (!fr || fr.street !== street || !el.crown || !CURVED_GABLES.has(fr.gable) || fr.crownAt || fr.crownBays || fr.crownGroups) continue;
+    const ring = fit.recipe.footprint.value[el.polygonIndex].outer, a = ring[el.edgeIndex], b = ring[el.endEdgeIndex ?? (el.edgeIndex + 1) % ring.length];
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    // Frame: along the frontage in RD (local z runs against RD y).
+    const A = [fit.anchorRD[0] + a[0], fit.anchorRD[1] - a[1]], u = [(b[0] - a[0]) / len, -(b[1] - a[1]) / len];
+    const along = (p: number[]) => (p[0] - A[0]) * u[0] + (p[1] - A[1]) * u[1];
+    const profile = el.crown.value.profile;
+    for (const r of facts.roofsRD) {
+      const outer = r.ringsRD[0];
+      // A planar piece's highest point on the line along = x lies on its boundary: walk every edge crossing x.
+      for (let k = 0; k < outer.length; k++) {
+        const p = outer[k], q = outer[(k + 1) % outer.length], ap = along(p), aq = along(q);
+        const lo = Math.max(step / 2, Math.min(ap, aq)), hi = Math.min(len - step / 2, Math.max(ap, aq));
+        for (let x = Math.ceil(lo / step) * step; x <= hi + 1e-9; x += step) {
+          const t = Math.abs(aq - ap) < 1e-9 ? 0 : (x - ap) / (aq - ap), z = p[2] + (q[2] - p[2]) * t - facts.heights.groundNAP;
+          worst = Math.max(worst, z - profileAt(profile, x));
+        }
+        if (ap >= step / 2 && ap <= len - step / 2) worst = Math.max(worst, p[2] - facts.heights.groundNAP - profileAt(profile, ap));
+      }
+    }
+  }
+  return worst;
+}
+
+const ROOF_SLOTS = new Set(['roofTile', 'slate', 'bitumen']);
+/** Highest point of a triangle on the plane x = const (frame coordinates), or -Infinity when it does not cross it. */
+function sliceTop(t: Tri, x: number): number {
+  let top = -Infinity;
+  for (let k = 0; k < 3; k++) {
+    const a = t.p[k], b = t.p[(k + 1) % 3];
+    if (x < Math.min(a[0], b[0]) - 1e-9 || x > Math.max(a[0], b[0]) + 1e-9) continue;
+    top = Math.max(top, Math.abs(b[0] - a[0]) < 1e-9 ? Math.max(a[1], b[1]) : a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]));
+  }
+  return top;
+}
+
+/**
+ * The compiled chunk in a front view, square to each checked pand's own frontage (y up): behind every full-front gable
+ * crown (neck, raised neck, bell; one street front, no `crownAt`/`crownBays`/`crownGroups`) the highest ROOF
+ * triangle of ANY pand stays under the highest facade-near triangle of that pand (crown, trim and caps: everything
+ * within `nearM` of its front line). Catches what the per-pand facts check cannot: a deep neighbour's roof or attic
+ * standing beside a neck (an L-shaped plot behind it) and cladding the compile adds over the facts. Worst excess per
+ * checked pand (m), its own roof and the worst neighbour's apart: the face gate holds the pand's own roof; a neighbour's
+ * shows where an oblique party wall or an L-shaped plot carries its attic beside the crown in a square view, and is
+ * reported (the photo, taken 15-25 m off, often cannot see it).
+ */
+export interface RoofOverCrown { aboveM: number; atM: number; roofOf: string }
+export function roofsBehindCrowns(intents: CanalHouseIntent[], facts: BuildingFacts[], tris: Tri[][], frame: FrontFrame, opts: {stepM?: number; nearM?: number; edgeM?: number} = {}): {pand: string; own: RoofOverCrown; neighbour: RoofOverCrown | null}[] {
+  const step = opts.stepM ?? 0.05, near = opts.nearM ?? 0.8, edge = opts.edgeM ?? 0.15, out: {pand: string; own: RoofOverCrown; neighbour: RoofOverCrown | null}[] = [];
+  // Chunk frame (x along u, y up, z along n) -> RD.
+  const rd = (v: number[]) => [frame.midRD[0] + v[0] * frame.uRD[0] + v[2] * frame.nRD[0], frame.midRD[1] + v[0] * frame.uRD[1] + v[2] * frame.nRD[1]];
+  for (const [i, intent] of intents.entries()) {
+    const fr = intent.fronts[0];
+    if (!CURVED_GABLES.has(fr.gable) || fr.crownAt || fr.crownBays || fr.crownGroups || intent.fronts.filter(f => f.street === fr.street).length > 1) continue;
+    const own = frontFrame(facts[i].fronts[0]);
+    const map = (t: Tri): Tri => ({...t, p: t.p.map(v => { const q = rd(v), d = [q[0] - own.midRD[0], q[1] - own.midRD[1]]; return [d[0] * own.uRD[0] + d[1] * own.uRD[1], v[1], d[0] * own.nRD[0] + d[1] * own.nRD[1]]; })});
+    const half = Math.hypot(facts[i].fronts[0].endpointsRD[1][0] - facts[i].fronts[0].endpointsRD[0][0], facts[i].fronts[0].endpointsRD[1][1] - facts[i].fronts[0].endpointsRD[0][1]) / 2;
+    const facade = tris[i].filter(t => !ROOF_SLOTS.has(t.slot)).map(map).filter(t => t.p.every(v => v[2] >= -near));
+    const roofs = tris.flatMap((ts, j) => ts.filter(t => ROOF_SLOTS.has(t.slot)).map(t => ({t: map(t), j})));
+    const worst = [{aboveM: -Infinity, atM: NaN, roofOf: ''}, {aboveM: -Infinity, atM: NaN, roofOf: ''}];
+    for (let x = -half + edge; x <= half - edge + 1e-9; x += step) {
+      let sky = -Infinity;
+      for (const t of facade) sky = Math.max(sky, sliceTop(t, x));
+      if (!Number.isFinite(sky)) continue;
+      for (const {t, j} of roofs) { const h = sliceTop(t, x) - sky, w = worst[j === i ? 0 : 1]; if (h > w.aboveM) worst[j === i ? 0 : 1] = {aboveM: h, atM: x + half, roofOf: intents[j].pandId}; }
+    }
+    const fin = (w: RoofOverCrown) => Number.isFinite(w.aboveM) ? {aboveM: cm(w.aboveM), atM: cm(w.atM), roofOf: w.roofOf} : null;
+    if (fin(worst[0])) out.push({pand: intent.pandId, own: fin(worst[0])!, neighbour: fin(worst[1])});
+  }
+  return out;
 }
 
 const m6 = (p: string) => p.slice(-6);
@@ -640,6 +742,9 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
   const rings = facts.map(f => f.bagFootprintRD.map(r => ringToFrame(r, frame)));
   const gates: FaceGate[] = [], g = (pand: string, id: string, pass: boolean, value: unknown, limit: string) => gates.push({pand, id, pass, value, limit});
   const perPand: BlockFaceResult['perPand'] = [], sizes: FitSize[][] = [];
+  // Front view of the compiled chunk: no roof (this pand's or a deep neighbour's) shows over a full-front gable crown.
+  for (const r of roofsBehindCrowns(intents, ground.facts, tris, frame))
+    g(m6(r.pand), 'roof-behind-crown', r.own.aboveM <= 0.05, {aboveM: r.own.aboveM, atM: r.own.atM, ...(r.neighbour && r.neighbour.aboveM > 0.05 ? {neighbourAboveM: r.neighbour.aboveM, neighbourAtM: r.neighbour.atM, neighbour: m6(r.neighbour.roofOf)} : {})}, 'compiled chunk, square front view: behind a full-front gable crown the pand\'s own roof stays under the crown (<= 5 cm); a neighbour\'s roof over it is reported, not gated');
   for (const [i, intent] of intents.entries()) {
     const pand = intent.pandId.slice(-6), fit = fitIntent(intent, ground.facts[i]), t = tris[i];
     const roof = t.filter(x => ['roofTile', 'slate', 'bitumen'].includes(x.slot)).flatMap(x => x.p.map(v => v[1]));
@@ -655,8 +760,8 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
       const crownTops = fit.recipe.elevations.filter(el => streetId.has(el.id) && el.crown).map(el => Math.max(...el.crown!.value.profile.map(p => p[1])));
       const line = Math.max(recipe.crownTopM ?? -Infinity, ...crownTops, ...fit.report.fronts.filter(fr => streetId.has(fr.id)).map(fr => fr.crownTopM));
       g(pand, 'height-vs-3dbag', roofMax <= line + 0.3 + allowance && roofMax >= fit.report.fronts[0].eavesM - 0.05, {modelM: cm(roofMax), crownTopM: cm(line), threeDBagM: cm(recipe.surveyRoofMaxM), roof: 'front', forms: recipe.forms}, 'front roof: max <= the crown line + 0.3 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only');
-      const above = roofAboveCrown(intent, fit, ground.facts[i]);
-      g(pand, 'roof-under-crown', above <= 0.03, {maxAboveCrownM: cm(above)}, 'front roof: along the facade line (every 0.1 m, 5 cm inside) the roof stays under the crown outline (<= 3 cm above)');
+      const above = roofAboveCrown(intent, fit, ground.facts[i]), view = roofAboveCrownFrontView(intent, fit, ground.facts[i]);
+      g(pand, 'roof-under-crown', above <= 0.03 && view <= FRONT_VIEW_TOL_M, {maxAboveCrownM: cm(above), ...(Number.isFinite(view) ? {frontViewAboveCrownM: cm(view)} : {})}, 'front roof: along the facade line (every 0.1 m, 5 mm inside) the roof stays under the crown outline (<= 3 cm above); behind a full-front gable crown the whole roof does, seen square to the frontage (<= 10 cm: a skewed rear wall shifts a ridge a few cm)');
     }
     else if (recipe) g(pand, 'height-vs-3dbag', roofMax - recipe.surveyRoofMaxM <= 0.5 + allowance && roofMax >= fit.report.fronts[0].eavesM - 0.05, {modelM: cm(roofMax), threeDBagM: cm(recipe.surveyRoofMaxM), capM: recipe.capM, roof: 'recipe'}, 'recipe roof: max <= LoD2.2 roof max + 0.5 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only');
     else g(pand, 'height-vs-3dbag', roofMax - factsMax <= 0.5 + allowance && factsMax - roofMax <= 0.5, {modelM: cm(roofMax), threeDBagM: cm(factsMax), surveyM: cm(ground.facts[i].heights.roofMaxM)}, '|Δ| <= 0.5 m (roof max vs LoD2.2 after roofCleanup; dormers +1.9 m)');
