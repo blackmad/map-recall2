@@ -8,6 +8,7 @@
 //   npx tsx scripts/own-ground/audit-bridge-railings.ts                 # citywide table + totals
 //   npx tsx scripts/own-ground/audit-bridge-railings.ts --ids=BRU0063   # these bridges, with their lines
 //   … --json=out.json
+//   … --max-inside=N                     fail above N metres inside traffic city-wide (default INSIDE_CAP_M)
 //   … --before                           the parapet over the whole deck span, as drawn before the clip (railingRuns RAIL_CLIP)
 //   … --ids=… --plot=dir [--tag=before]   per bridge, <dir>/<id>-<tag>.png: the PDOK orthophoto with the parapet lines
 //                                          (red) beside the roads-v1 polygons (carriage grey, cycle red, foot light) and water
@@ -26,6 +27,8 @@ import sharp from 'sharp';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
+/** check:bridge-railings fails when the parapet runs more than this many metres inside carriageways and cycle lanes city-wide (--max-inside=N). */
+export const INSIDE_CAP_M = 1650;
 const flag = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const only = flag('ids')?.split(',');
 const store = new GroundStore(async path => {
@@ -81,6 +84,10 @@ async function main(): Promise<void> {
   const bad = all.filter(r => r.turns > 0 || r.insideM >= 1).sort((a, b) => b.turnM + b.insideM - a.turnM - a.insideM);
   for (const r of bad.slice(0, 40)) console.log(JSON.stringify(r));
   console.log(JSON.stringify({ bridges: all.length, withTurn: all.filter(r => r.turns > 0).length, turnM: +all.reduce((s, r) => s + r.turnM, 0).toFixed(1), withInside1m: all.filter(r => r.insideM >= 1).length, insideM: +all.reduce((s, r) => s + r.insideM, 0).toFixed(1), parapetM: +all.reduce((s, r) => s + r.parapetM, 0).toFixed(0) }));
+  // The gate (coordinator 2026-10-16): parapet metres inside traffic city-wide stay under INSIDE_CAP_M (main 4,512 m with
+  // the way decks at the OSM way's half-width; 1,543 m with them at the road surfaces' edges, wayDecks.ts roadEdgeSides).
+  const insideM = all.reduce((s, r) => s + r.insideM, 0), cap = Number(flag('max-inside') ?? INSIDE_CAP_M);
+  if (!only && !process.argv.includes('--before') && insideM > cap) { console.log(`FAIL parapet inside traffic ${insideM.toFixed(0)} m > ${cap} m`); process.exitCode = 1; }
   const dir = flag('plot');
   if (dir) { mkdirSync(dir, { recursive: true }); for (const [id, p] of plots) await plot(`${dir}/${id}-${flag('tag') ?? 'after'}.png`, id, p.input, p.lines); }
   const out = flag('json');
