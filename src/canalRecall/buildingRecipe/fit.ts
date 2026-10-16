@@ -126,6 +126,8 @@ export interface FitReport {
       hoods?: {topM: number}[]};
     /** Hood slabs over the top `slab-hood` balconettes (facade x). */
     balconyHoods?: {leftM: number; widthM: number; bottomM: number; heightM: number; projectM: number}[];
+    /** `balconyRun`: the front-wide balcony, facade x 0..width, its floor (slab top) at `floorM`. */
+    balconyRun?: {widthM: number; floorM: number; projectM: number; slabM: number; guard: 'iron' | 'brick'; guardM: number; slabColour?: string};
     /** Timber balconies on brackets (facade x): one per storey run of neighbouring balcony bays; `floorM` = platform top. */
     timberBalconies?: {id: string; leftM: number; widthM: number; floorM: number; projectM: number; slabM: number; guardM: number; rail: 'turned' | 'iron'}[];
     /** Eaves from a photo measurement (block-face strip) instead of the 3DBAG profile. */ measuredEaves?: boolean}[];
@@ -503,6 +505,7 @@ export function groundFrontLayout(g: NonNullable<FrontIntent['groundFront']>, wi
       if (framed && w - dw > 0.2) for (const [side, x, pw] of [['l', left, dl - left], ['r', dl + dw, left + w - dl - dw]] as const) if (pw > 0.08) blocks.push({id: `${id}-door-panel-${side}`, leftM: round(x), bottomM: 0.02, widthM: round(pw), heightM: round(dh), depthM: 0.05, surface: 'shop'});
       return;
     }
+    if (kind === 'blank') return;
     const sill = framed ? k.riserM : h * 0.2;
     if (framed) blocks.push({id: `${id}-riser`, leftM: round(left), bottomM: 0.02, widthM: round(w), heightM: round(sill - 0.02), depthM: 0.05, surface: 'shop'});
     if (kind === 'panel') { openings.push({id: `${id}-panel`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', frameSurface: joinery, barSurface: joinery}); return; }
@@ -917,9 +920,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const style = front.dormerStyle ?? 'plain';
       // Pediment: a triangular trim pediment over a projecting frame. Pointed: a tall pointed roof. On a mansard the dormer
       // stands on the roof face, its front just behind the cornice.
-      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'box' ? {roofRiseM: 0} : {roofRiseM: 0.45};
+      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
-      const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : {setbackM: 0.35, heightM: 1.45};
+      const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
       elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' ? 'wall' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
@@ -1078,7 +1081,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       ...(lisenes ? {lisenes} : {}),
       ...(erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
         : {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
-      ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {})});
+      ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});
   }
   // The corner tower's body stands on the lower of the two fronts' eaves, to the shared top.
   if (corner) for (const r of reports) for (const t of r.towers ?? []) if (t.corner) { t.bottomM = corner.bottomM; t.topM = corner.topM!; }
@@ -1153,6 +1156,13 @@ function timberBalconyRuns(front: FrontIntent, layout: Layout, openings: Canalho
   return out;
 }
 
+/** The front-wide balcony (`balconyRun`): its floor is the bottom of `storey` (0 = ground, above any basement). */
+function balconyRunFor(run: NonNullable<FrontIntent['balconyRun']>, layout: Layout, width: number): NonNullable<FitReport['fronts'][number]['balconyRun']> {
+  const heights = layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0);
+  const floor = layout.groundBase + heights.slice(0, run.storey).reduce((s, h) => s + h, 0);
+  return {widthM: Math.floor(width * 1000) / 1000, floorM: round(floor), projectM: run.projection, slabM: run.slab ?? 0.25, guard: run.guard, guardM: run.guardRise ?? 1.0, ...(run.slabColour ? {slabColour: run.slabColour} : {})};
+}
+
 /** The storey (0 = ground) of a storey window id (`s2-b1`, `front-s2-b1a`), or null. */
 const storeyOf = (id: string) => { const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(id); return m ? Number(m[1]) : null; };
 
@@ -1183,6 +1193,8 @@ function paintedBands(front: FrontIntent, layout: Layout, openings: CanalhouseOp
     // Two-tone piers (`bandPiers`, De Baarsjes): the window zone between the bands in the band brick, behind the bands.
     if (front.bandPiers) runs.forEach(([a, c], k) => out.push({id: runs.length > 1 ? `band-piers-s${s}-${k}` : `band-piers-s${s}`, leftM: round(Math.max(0, a)), bottomM: round(sill), widthM: Math.floor((Math.min(full, c) - Math.max(0, a)) * 1000) / 1000, heightM: round(head - sill), depthM: DE_BAARSJES.pierDepthM, surface: 'accent'}));
   }
+  // Floor ledges (`bandFloors`): one painted ledge on the floor line of each listed storey.
+  for (const s of front.bandFloors?.storeys ?? []) if (bottoms[s] !== undefined) out.push({id: `painted-floor-s${s}`, leftM: 0, bottomM: round(bottoms[s]), widthM: full, heightM: round(front.bandFloors!.courses * COURSE_M), depthM: PAINTED.bandDepthM, surface: 'stone'});
   return out.filter(b => b.heightM >= 0.04 && b.widthM > 0.1);
 }
 

@@ -62,6 +62,23 @@ export function deBaarsjesProblems(f: FrontIntent, palette: PaletteIntent | unde
     if (bw.cap !== undefined || bw.finish !== undefined) p.push(`${at}.bayWindows.hood: a box frame has its own hoods and white finish; drop cap/finish`);
     if (f.windows === 'ladder') p.push(`${at}.bayWindows.hood: not on a ladder-window front`);
   }
+  const bf = f.bandFloors;
+  if (bf !== undefined) {
+    if (f.bands !== 'painted') p.push(`${at}.bandFloors: only with bands "painted"`);
+    if (!Array.isArray(bf.storeys) || !bf.storeys.length || bf.storeys.some(s => !Number.isInteger(s) || s < 1 || (f.storeys && s >= f.storeys))) p.push(`${at}.bandFloors.storeys: upper storeys (1..storeys-1)`);
+    if (!Number.isInteger(bf.courses) || bf.courses < 1 || bf.courses > 9) p.push(`${at}.bandFloors.courses: 1..9 brick courses`);
+  }
+  const run = f.balconyRun;
+  if (run !== undefined) {
+    const n = f.storeys ?? 0;
+    if (!Number.isInteger(run.storey) || run.storey < 1 || (n && run.storey >= n)) p.push(`${at}.balconyRun.storey: an upper storey (1..storeys-1)`);
+    if (!(run.projection >= 0.2 && run.projection <= 1.5)) p.push(`${at}.balconyRun.projection: 0.2..1.5 m`);
+    if (run.slab !== undefined && !(run.slab >= 0.08 && run.slab <= 0.5)) p.push(`${at}.balconyRun.slab: 0.08..0.5 m`);
+    if (run.guardRise !== undefined && !(run.guardRise >= 0.5 && run.guardRise <= 1.5)) p.push(`${at}.balconyRun.guardRise: 0.5..1.5 m`);
+    if (run.guard !== 'iron' && run.guard !== 'brick') p.push(`${at}.balconyRun.guard: iron or brick`);
+    if (run.slabColour !== undefined && !/^#[0-9a-f]{6}$/i.test(run.slabColour)) p.push(`${at}.balconyRun.slabColour: #rrggbb`);
+    if (!run.evidence) p.push(`${at}.balconyRun.evidence: the strip rows of slab and guard`);
+  }
   const b = f.balconies;
   if (b?.style === 'slab-hood') {
     if (b.projecting) p.push(`${at}.balconies: slab-hood already projects; drop projecting`);

@@ -6,7 +6,11 @@
  *  - 93 (114417): no box frame and no lisene (`null` overrides remove the type's fields);
  *  - 129 (102496): the wide four-light window beside its box (`axisWindows`);
  *  - 101-119: one coping line for the row (`measuredEaves`, one strip row);
- *  - the measured glass-block band: joints read with the band, deeper steps only when measured.
+ *  - the measured glass-block band: joints read with the band, deeper steps only when measured;
+ *  - 45-53, 52-56, 68-92: small-pane windows, the shared street level, the stepped body, the Staal windows split at the
+ *    party walls;
+ *  - 139-143 and 151 (white-attic and 1939 rows): the front-wide balcony (`balconyRun`), the floor ledge (`bandFloors`),
+ *    a blank ground bay, the stair tower's own roof, the flat dormer.
  *   node --import tsx --test src/canalRecall/blockFace/deBaarsjesRows.test.ts
  */
 import {test} from 'node:test';
@@ -19,7 +23,7 @@ import {fitIntent} from '../buildingRecipe/fit.ts';
 import {compileBuilding} from '../buildingRecipe/compile.ts';
 import {WINDOWS, validateIntent, type FrontIntent} from '../buildingRecipe/intent.ts';
 import {WINDOW_KINDS} from '../buildingRecipe/deBaarsjesIntent.ts';
-import {GLASS_BLOCK, glassBlockBand, measuredMortar} from '../buildingRecipe/amsterdamSchool.ts';
+import {GLASS_BLOCK, balconyRunGeometry, glassBlockBand, measuredMortar} from '../buildingRecipe/amsterdamSchool.ts';
 import {houseIntents, validateBlockFace, type BlockFaceIntent} from './intent.ts';
 import {mirrorFront} from './houseType.ts';
 import {mergeCoplanar} from './recipeRoof.ts';
@@ -197,4 +201,34 @@ test('52-56: the row house beside the low end keeps its own roof band (stepBody)
   const r = prep.recipeRoofs!.find(x => x.pandId.endsWith('147483'))!;
   assert.ok(!r.notes.some(n => /tower bay/.test(n)), r.notes.join('; '));
   assert.ok(r.notes.some(n => /^per-front eaves 17\.\d+\/13\.\d+ m$/.test(n)), r.notes.join('; '));
+});
+
+test('139-141: the white attic row: storey-1 balcony run (white slab, iron rail), the white floor ledge under the band storey', () => {
+  const {fit} = planned('evertsen-139-143');
+  const f141 = fit('151275'), run = f141.report.fronts[0].balconyRun!;
+  assert.equal(run.guard, 'iron');
+  assert.ok(Math.abs(run.floorM - 3.45) < 0.15, `floor ${run.floorM}`);
+  assert.ok(Math.abs(run.widthM - f141.report.fronts[0].widthM) < 0.005, 'the run spans the whole front');
+  const ledge = f141.recipe.elevations[0].bands!.value.find(b => b.id === 'painted-floor-s3')!;
+  assert.ok(Math.abs(ledge.bottomM - 9.35) < 0.2 && Math.abs(ledge.heightM - 0.22) < 0.01, JSON.stringify(ledge));
+  // 143: brick between the house door and the cafe window (a blank ground bay), and the stair tower keeps its own roof.
+  const f143 = fit('115917'), ids = f143.recipe.elevations.flatMap(e => e.openings.value.map(o => o.id)).filter(i => /gf-b\d/.test(i));
+  assert.ok(ids.some(i => /gf-b0-door/.test(i)) && ids.some(i => /gf-b2-window/.test(i)) && !ids.some(i => /gf-b1-/.test(i)), ids.join(' '));
+  const roof = planned('evertsen-139-143').prep.recipeRoofs!.find(r => r.pandId.endsWith('115917'))!;
+  assert.ok(roof.notes.some(n => /^per-front eaves 12\.\d+\/17\.\d+ m$/.test(n)) && !roof.notes.some(n => /tower bay/.test(n)), roof.notes.join('; '));
+});
+
+test('balconyRun geometry: an iron guard on the nose and both returns, or a solid brick front; validation', () => {
+  const base = {widthM: 6, floorM: 3.45, projectM: 0.5, slabM: 0.3, guardM: 0.95};
+  const iron = balconyRunGeometry({...base, guard: 'iron'}), brick = balconyRunGeometry({...base, guard: 'brick'});
+  const ys = (v: number[]) => v.filter((_, i) => i % 3 === 1), zs = (v: number[]) => v.filter((_, i) => i % 3 === 2);
+  const near = (a: number, b: number) => assert.ok(Math.abs(a - b) < 1e-9, `${a} vs ${b}`);
+  near(Math.min(...ys(iron.slab)), 3.15); near(Math.max(...ys(iron.slab)), 3.45); near(Math.max(...zs(iron.slab)), 0.5);
+  assert.ok(Math.abs(Math.max(...ys(iron.guard)) - 4.4) < 1e-9 && iron.guard.length > 40 * brick.guard.length / 3);
+  near(Math.max(...zs(brick.guard)), 0.5); near(Math.max(...ys(brick.guard)), 4.4);
+  const intent = houseIntents(validateBlockFace(JSON.parse(fs.readFileSync('scripts/block-face/faces/evertsen-139-143/intent.json', 'utf8')), JSON.parse(fs.readFileSync('scripts/block-face/faces/evertsen-139-143/discovery.json', 'utf8')).members))[1];
+  const bad = structuredClone(intent);
+  (bad.fronts[0] as FrontIntent).balconyRun = {storey: 0, projection: 3, guard: 'glass' as any, evidence: ''};
+  (bad.fronts[0] as FrontIntent).bandFloors = {storeys: [9], courses: 0};
+  assert.throws(() => validateIntent(bad), (e: Error) => ['balconyRun.storey', 'balconyRun.projection', 'balconyRun.guard', 'balconyRun.evidence', 'bandFloors.storeys', 'bandFloors.courses'].every(k => e.message.includes(k)));
 });

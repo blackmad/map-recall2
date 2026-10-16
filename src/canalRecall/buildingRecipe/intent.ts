@@ -91,6 +91,8 @@ export const WINDOW_SILLS = ['consoles'] as const;
 export const BALCONY_STYLES = ['guard', 'timber-bracketed', 'slab-hood'] as const;
 /** Guard of a timber balcony: white turned balusters under a handrail, or a wrought-iron grille. */
 export const BALCONY_RAILS = ['turned', 'iron'] as const;
+/** Guard of a front-wide balcony (`balconyRun`): iron bars or a solid brick front. */
+export const BALCONY_RUN_GUARDS = ['iron', 'brick'] as const;
 export const QUOINS = ['none', 'stone'] as const;
 /**
  * Shop canopy. `fabric-straight`/`fabric-dutch`: a sloped fabric awning. `rigid` (Amsterdam School luifel): a horizontal
@@ -107,10 +109,12 @@ export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
 export const GABLE_FINIALS = ['crab', 'vase', 'ball'] as const;
 export const ROOF_GABLETS = ['crest', 'pediment'] as const;
 export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
-export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel'] as const;
+/** `blank`: a bay of plain wall with no opening (Jan Evertsenstraat 143: brick between the house door and the cafe window). */
+export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel', 'blank'] as const;
 export type GroundBay = typeof GROUND_BAYS[number];
 /** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
-export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box'] as const;
+/** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
+export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat'] as const;
 /** Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab). */
 export const TOWER_CAPS = ['pyramid', 'flat', 'stepped'] as const;
 /** Cap on the top storey of a multi-bay erker (`bayWindows.bays`): a hipped lean-to roof, a flat slab, or none (a plain closure). */
@@ -352,6 +356,12 @@ export interface FrontIntent {
   /** `bands: painted`: the centre of the transom band as a share of the window height from the sill (0.3..0.95, default 0.78), measured on the strip (Kinkerstraat 18-4: 0.65). */
   bandTransomAt?: number;
   bandLines?: ('sill' | 'transom' | 'head')[];
+  /**
+   * `bands: painted`: a painted ledge `courses` brick courses high (0.055 m each) on the floor line of each listed storey (0-based), the stone colour,
+   * the bands' depth (Jan Evertsenstraat 139-160: the white ledge at 9.7 m under the white window band, brick between it
+   * and the band's sill). Absent = none.
+   */
+  bandFloors?: {storeys: number[]; courses: number};
   /** 0-based storeys carrying the painted bands (default every storey above the ground, and the ground when it has no shopfront). */
   bandStoreys?: number[];
   /** Sills under the surround-storey windows: `consoles` = a painted sill slab on two console blocks. */
@@ -377,6 +387,14 @@ export interface FrontIntent {
    * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
    */
   windowHoods?: boolean;
+  /**
+   * One balcony along the whole front at the floor of `storey` (Jan Evertsenstraat 139-160, over the ground storey): a
+   * slab `slab` m thick (default 0.25) and `projection` m deep, its top on the storey floor, in `slabColour` (default the stone
+   * colour), under a guard `guardRise` m high (default 1.0) on its nose and both returns: `iron` bars (the door colour) or a
+   * solid `brick` front in the wall material, 0.1 m thick. Neighbours' runs meet on the party plane. Evidence = the strip
+   * rows of slab and guard.
+   */
+  balconyRun?: {storey: number; projection: number; slab?: number; guard: typeof BALCONY_RUN_GUARDS[number]; guardRise?: number; slabColour?: string; evidence: string};
   /**
    * Tall plain parapet (Jan Evertsenstraat): the full storeys end `courses` brick courses (0.055 m each) under the eaves
    * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
