@@ -6,6 +6,7 @@ import {
   detachHighlightPasses, featureCentre, highlightAccent, highlightDefines, highlightFeature, highlightMaterialFor, highlightStyle, metresBetween,
   OUTLINE_FAR_PX, OUTLINE_PX, outlineWidthPx, withinDesaturation,
   HIGHLIGHT_BOOST_GLOBAL, LANDMARK_WORLD_UP, ROOF_WASH_ALPHA, SMALL_TARGET_FADE_SHARE, SMALL_TARGET_SHARE, footprintShare, smallTargetBoost,
+  EXTENT_FRESH_MS, SMALL_TARGET_UNLATCH_SHARE, clippedArea, convexHull, extentRegistry, modelScreenShare, smallTargetBoostLatched,
 } from './highlight.ts';
 import { landmarkHighlightStates } from './highlightLandmarks.ts';
 import { beaconAlpha, beaconRaise, footprintRadiusPx, markerSlot, mercatorFromLocal, mercatorOf, ringBand, ringOutlines, ringsArea } from './highlightMarker.ts';
@@ -306,4 +307,62 @@ test('landmark roof wash in the shared frame: east/north/up world, so glTF +y is
   const wrong = upFor(LANDMARK_WORLD_UP.legacy);
   assert.ok(Math.abs(wrong.y) < 1e-6, `+y in this world is horizontal in glTF space (${wrong.toArray()}): walls would be washed`);
   detachHighlightPasses(church);
+});
+
+test('small-target boost with hysteresis (ride review J2): latched off at the fade end, back on only under 1 %, never a jump', () => {
+  let latched = false;
+  const step = (share: number) => { const r = smallTargetBoostLatched(share, latched); latched = r.latched; return r.boost.weight; };
+  assert.equal(step(0.005), 1);
+  assert.ok(step(0.03) > 0 && step(0.03) < 1 && !latched, 'rising: the old fade');
+  assert.equal(step(SMALL_TARGET_FADE_SHARE), 0); assert.ok(latched, 'latched at the fade end');
+  assert.equal(step(0.03), 0, 'falling back to 3 %: still off (no flicker between 2 and 4 %)');
+  assert.equal(step(SMALL_TARGET_SHARE), 0);
+  const mid = step((SMALL_TARGET_SHARE + SMALL_TARGET_UNLATCH_SHARE) / 2);
+  assert.ok(mid > 0.4 && mid < 0.6 && latched, `fading in over 1–2 % (${mid})`);
+  assert.equal(step(SMALL_TARGET_UNLATCH_SHARE), 1); assert.ok(!latched, 'unlatched at 1 %');
+  // Continuous: a fine sweep up and down never moves the weight by more than a small step.
+  latched = false;
+  let last = 1, worst = 0;
+  for (const s of [...Array.from({ length: 101 }, (_, i) => 0.005 + i * 0.0005), ...Array.from({ length: 101 }, (_, i) => 0.055 - i * 0.0005)]) { const w = step(s); worst = Math.max(worst, Math.abs(w - last)); last = w; }
+  assert.ok(worst < 0.1, `largest step ${worst}`);
+  assert.equal(smallTargetBoostLatched(0, true).latched, false, 'off screen: unlatched');
+});
+
+test('model screen share (ride review J2): the hull of the highlighted boxes, clipped to the frame', () => {
+  assert.equal(clippedArea(convexHull([0, 0, 10, 0, 10, 10, 0, 10, 5, 5]), 100, 100), 100);
+  assert.equal(clippedArea(convexHull([-10, -10, 10, -10, 10, 10, -10, 10]), 100, 100), 100, 'clipped at the frame corner');
+  const now = 1000, frame = { width: 1280, height: 800, behind: false };
+  // A church filling ~15 % of the frame (two meshes, one box each): the hull of both.
+  const nave = { ...frame, t: now - 10, points: [100, 300, 500, 300, 500, 600, 100, 600] }, tower = { ...frame, t: now - 10, points: [300, 0, 380, 0, 380, 300, 300, 300] };
+  const share = modelScreenShare([nave, tower], now);
+  assert.ok(share > 0.12 && share < 0.2, `share ${share}`);
+  assert.equal(modelScreenShare([{ ...nave, t: now - EXTENT_FRESH_MS - 1 }], now), 0, 'a stale box is a model no longer drawn');
+  assert.equal(modelScreenShare([{ ...nave, behind: true }], now), 1, 'a box behind the camera: the camera is at the model');
+  assert.equal(smallTargetBoostLatched(Math.max(0.018, share), false).boost.weight, 0, 'the Westertoren footprint\'s 1.8 % no longer decides');
+});
+
+test('outline passes of whole meshes leave their screen extent; merged chunks and detach leave none', () => {
+  const reg = extentRegistry();
+  reg.clear();
+  const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(50, 1.6, 0.1, 1000);
+  camera.position.set(0, 0, 20); camera.lookAt(0, 0, 0); camera.updateMatrixWorld(); camera.matrixWorldInverse.copy(camera.matrixWorld).invert();
+  const renderer = { getDrawingBufferSize: (v: any) => v.set(1280, 800), domElement: { clientWidth: 1280, clientHeight: 800 } };
+  const church = new THREE.Mesh(new THREE.BoxGeometry(4, 4, 4), new THREE.MeshLambertMaterial());
+  scene.add(church);
+  const [outline] = attachHighlightPasses(THREE, church, { style: 'a' });
+  scene.updateMatrixWorld(true);
+  outline.onBeforeRender(renderer, scene, camera);
+  const e = reg.get(outline)!;
+  assert.ok(e && e.points.length === 16 && !e.behind, 'eight corners');
+  const share = modelScreenShare(reg.values(), performance.now());
+  assert.ok(share > 0.02 && share < 0.2, `a 4 m box 20 m off: ${share}`);
+  detachHighlightPasses(church);
+  assert.equal(reg.size, 0, 'detached: forgotten');
+  const chunk = new THREE.Mesh(new THREE.BoxGeometry(400, 400, 4), new THREE.MeshLambertMaterial());
+  scene.add(chunk);
+  const [merged] = attachHighlightPasses(THREE, chunk, { style: 'a', merged: true });
+  scene.updateMatrixWorld(true);
+  merged.onBeforeRender(renderer, scene, camera);
+  assert.equal(reg.size, 0, 'a merged chunk\'s box is the tile, not the building');
+  void SMALL_TARGET_UNLATCH_SHARE;
 });

@@ -229,6 +229,10 @@ export interface VectorMap {
   /** Point building/tile fetches at the active city's extract root. */
   setExtractRoot?(path: string): void;
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
+  /** The highlighted landmark's anchor and roof height (look/highlightMarker.ts `target`), for the chase sightline. */
+  highlightTarget?(): { lngLat: [number, number]; heightM: number } | null;
+  /** Chase-view pitch lift and forward lead toward a tall landmark (game/landmarkSightline.ts, ride review J3). */
+  setLandmarkView?(view: { pitchDeg: number; leadM: number }): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
   setFerryTerminals?(track: Track, loader: OsmLoader): void;
   setPlayerFerry?(player: unknown, loader: OsmLoader, visible: boolean): void;

@@ -46,6 +46,7 @@ import { bicycleRestrictionNotice } from '../routing/bikeAccess';
 import { maskSpoiledName } from '../orientationPois';
 import { isReviewStop, REVIEW_STOP_LABEL } from './routeSelection';
 import { bearingAfterTwist, startTwist, twistStep, wheelTwistDegrees, WHEEL_PINCH_GRACE_MS } from './trackpadTwist';
+import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type SightlineView } from './landmarkSightline';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -523,6 +524,36 @@ export class GamePresentationRuntime {
     ctx.restore();
   }
 
+  /**
+   * Chase view: look up at a tall highlighted landmark ahead (game/landmarkSightline.ts, ride review J3). Desktop
+   * first: not in the compact (phone) layout, not while panned away or during the start flight.
+   */
+  _updateLandmarkSightline(): void {
+    const vm = this.vectorMap, l = this.osmLoader, player = this.player;
+    if (!vm.setLandmarkView) return;
+    const now = performance.now(), dt = this._sightlineAt ? (now - this._sightlineAt) / 1000 : 1 / 60;
+    this._sightlineAt = now;
+    let target: { distanceM: number; offAxisDeg: number; heightM: number } | null = null;
+    const enabled = this.viewMode === 'chase' && this.viewport?.mode !== 'compact' && !this.camera.detached && !this._intro;
+    const lit = enabled ? vm.highlightTarget?.() ?? null : null;
+    if (lit && player && l && l._lastCenterLat != null && l._lastCenterLng != null) {
+      const lat0 = l._lastCenterLat;
+      const at: [number, number] = [l._lastCenterLng + (player.x - l._lastOffsetX) / (111320 * Math.cos(lat0 * Math.PI / 180) * PIXELS_PER_METER),
+        lat0 - (player.y - l._lastOffsetY) / (111320 * PIXELS_PER_METER)];
+      // Game angle: +x east, +y south; the heading clockwise from north.
+      const heading = Math.atan2(Math.cos(player.angle), -Math.sin(player.angle)) * 180 / Math.PI;
+      target = { ...relativeTo(at, heading, lit.lngLat), heightM: lit.heightM };
+    }
+    const next = landmarkSightline(target, !!this._sightlineEngaged, enabled);
+    this._sightlineEngaged = next.engaged;
+    this._sightline = easeSightline(this._sightline ?? NO_SIGHTLINE, next.view, dt, !!this.camera.reducedMotion);
+    vm.setLandmarkView(this._sightline);
+  }
+
+  _sightline?: SightlineView;
+  _sightlineAt?: number;
+  _sightlineEngaged?: boolean;
+
   // ---- The frame ----
 
   _render(): void {
@@ -581,6 +612,7 @@ export class GamePresentationRuntime {
     }
 
     // Transparent game world over the live MapLibre vector basemap.
+    this._updateLandmarkSightline();
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
     this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     // Both travel modes have a real model now; the canvas glyph stays only as
