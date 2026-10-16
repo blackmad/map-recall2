@@ -4,13 +4,21 @@
  *  - Hasebroekstraat 2 (158343, 16.7 m corner block) is vetoed by every type's frontage fit;
  *  - Hasebroekstraat 52-54 (161640, 157313: the 1904 balcony front with a 1915 BAG year) match no type (held);
  *  - Bellamystraat 18-20 (127784, 091626: 6.0 m, 1916) do not take the tile-bay type without a one-sided white bay;
- *  - 3DBAG bouwlagen 5 on the 4-storey Hasebroekstraat rows is not drawn as a fifth storey.
+ *  - 3DBAG bouwlagen 5 on the 4-storey Hasebroekstraat rows is not drawn as a fifth storey;
+ *  - the pilot's five false positives on real strip crops (fixtures/strip-structure): Jan Hanzenstraat 49-51, Ten
+ *    Katestraat 29-31 and Bellamystraat 18-20 (balcony fronts) and Van Effenstraat 7D are held, Hasebroekstraat 69 is
+ *    green-tile with its point gable.
  *   node --import tsx --test src/canalRecall/blockFace/autoPlace.test.ts
  */
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {AUTO_PLACE, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
+import {readFileSync} from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import sharp from 'sharp';
+import {accentSideOf, AUTO_PLACE, baysFor, crownFor, decidePand, fillPairs, groundUse, placedRuns, placementGate, runIntent, scoreType, type Decision, type MatchableType, type PandEvidence, type StripEvidence} from './autoPlace.ts';
 import {measureSkyline} from './stripSkyline.ts';
+import {measureStripStructure, type StripStructure} from './stripStructure.ts';
 import {bestNcc, gradient, type Gray} from './stripLikeness.ts';
 import {pointInPolygon, proposeFaces, streetPrefix, type BuurtPand} from './buurtFaces.ts';
 import {defaultTypeLoader} from './typeLibrary.ts';
@@ -146,17 +154,89 @@ test('buurt faces: parity sides joined by party walls, prefixes', () => {
   assert.deepEqual(faces.map(f => f.members.length).sort(), [1, 3]);
 });
 
-test('regression: green-tile vs tile-bay by the upper accent share (Hasebroekstraat 90-98 vs 56-70; Bellamystraat 20 is neither)', () => {
+test('green-tile vs tile-bay by the exposure-normalised bay width, not the accent share (Van Effenstraat 9 read 0.48)', () => {
   const all = ['bellamy-1915-green-tile', 'bellamy-1915-tile-bay'].map(id => defaultTypeLoader(id) as MatchableType);
-  const ev = (accentShare: number, accentSide: 'left' | 'right' | null) => pand({builtYear: 1915, widthM: 6.0, eavesM: 12.9, strip: strip({columns: 3, accentShare, accentSide})});
-  const green = decidePand(all, ev(0.13, null), 'x', '2024-12-11');
+  const st = (bayWidthM: number, bayCentre: number | null): StripStructure => ({wallLab: [50, 8, 15], spread: 50, bayWidthM, bayCentre, openAxes: [], slabs: [], balconies: false, balconyWhy: 'none'});
+  const ev = (accentShare: number, structure: StripStructure) => pand({builtYear: 1915, widthM: 6.4, eavesM: 12.9, strip: strip({columns: 3, accentShare, accentSide: null, structure})});
+  // An overexposed green-tile front (accent share 0.48) without a bay is green-tile; a 2.1 m bay on a dark strip is tile-bay.
+  const green = decidePand(all, ev(0.48, st(1.0, null)), 'x', '2024-12-11');
   assert.equal(green.kind === 'placed' && green.typeId, 'bellamy-1915-green-tile');
-  const bay = decidePand(all, ev(0.45, 'right'), 'x', '2024-12-11');
+  const bay = decidePand(all, ev(0, st(2.15, 0.3)), 'x', '2024-12-11');
   assert.equal(bay.kind === 'placed' && bay.typeId, 'bellamy-1915-tile-bay');
-  // Not a veto: the share is exposure-dependent both ways (Van Effenstraat 1-12, green-tile fronts, read 0.48 on an
-  // overexposed strip), so an out-of-range share only costs its weight.
-  assert.deepEqual(scoreType(all[0], ev(0.52, null)).veto, []);
-  assert.ok(scoreType(all[0], ev(0.52, null)).score < scoreType(all[0], ev(0.13, null)).score);
+  // The bay's side mirrors the type (drawn right): a bay on the left mirrors it, whatever the accent pixels say.
+  assert.equal(bay.kind === 'placed' && bay.house.type!.mirror, true);
+  assert.equal(accentSideOf(strip({accentSide: 'right', structure: st(2.15, 0.3)})), 'left');
+  assert.equal(accentSideOf(strip({accentSide: 'right', structure: st(1.0, null)})), 'right');
+});
+
+test('balconies veto the balcony-free types; a crown rule alternative', () => {
+  const green = defaultTypeLoader('bellamy-1915-green-tile') as MatchableType;
+  const balc: StripStructure = {wallLab: [50, 8, 15], spread: 50, bayWidthM: 0, bayCentre: null, openAxes: [{widthM: 0.9, centre: 0.2, light: 0.16}], slabs: [], balconies: true, balconyWhy: 'dark open axis'};
+  const ev = pand({builtYear: 1915, widthM: 5.9, eavesM: 12.9, strip: strip({columns: 3, structure: balc})});
+  assert.match(scoreType(green, ev).veto.join(), /balconies/);
+  // Hasebroekstraat 69: the gable over the pair, its shoulder read as the eaves (rise 1.63 m, 2.67 m wide, top 1.0 m).
+  assert.equal(crownFor(green, {eavesM: 14.25, eavesRow: 169, confidence: 1, crown: {widthM: 2.67, riseM: 1.63, topWidthM: 1, centre: 0.27}}).name, 'point-gable');
+  // Hasebroekstraat 98: two dormers (1.27 m, rise 1.5 m) stay dormers.
+  assert.equal(crownFor(green, {eavesM: 13, eavesRow: 0, confidence: 1, crown: {widthM: 1.27, riseM: 1.5, topWidthM: 0.3, centre: 0.88}}).name, 'dormers');
+});
+
+/**
+ * Named regressions on real strips: body bands of the 2026-10-16 intake strips (fixtures/strip-structure, cut by
+ * scripts/block-face/auto-place.ts' span frames; index.json carries the facts auto-place read). The five rows the pilot
+ * placed with a wrong type that still passed the likeness gate, and controls of every Bellamy type:
+ *  - Jan Hanzenstraat 49-51 (balcony fronts, green-tile before): held;
+ *  - Ten Katestraat 29-31 (balcony fronts, green-tile / two-axis before): held;
+ *  - Bellamystraat 18-20 (balcony fronts with neck gables, green-tile before): held;
+ *  - Hasebroekstraat 69 (pair + single with green tiles and a gable over the pair: the green-tile design; the pilot drew
+ *    it with dormers): green-tile with the point gable;
+ *  - Van Effenstraat 7D (a 7.3 m green-tile-like front, tile-bay before on an accent share of 0.49): held; 9 stays green-tile.
+ */
+const FIX = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/strip-structure');
+interface FixturePand { pandId: string; address: string; truth: string; file: string; pixelsPerMetre: number; bottomM: number; eavesRead: number; stripDate: string;
+  facts: {builtYear: number; widthM: number; eavesM: number; roofMaxM: number; storeys3dbag: number | null};
+  strip: {wall: string | null; skyline: StripEvidence['skyline']; columns: number | null; doorSide: 'left' | 'right' | null; accentSide: 'left' | 'right' | null; accentShare: number; stucco: boolean; bands: number} }
+const fixtures: FixturePand[] = JSON.parse(readFileSync(path.join(FIX, 'index.json'), 'utf8')).pands;
+async function fixtureStructure(f: FixturePand) {
+  const {data, info} = await sharp(path.join(FIX, f.file)).removeAlpha().raw().toBuffer({resolveWithObject: true});
+  // The fixture is the body band; pad the rows under it (to the ground line) with the strip's grey placeholder.
+  const pad = Math.round(f.bottomM * f.pixelsPerMetre), rgb = new Uint8Array(info.width * (info.height + pad) * 3).fill(128);
+  rgb.set(data, 0);
+  return measureStripStructure({rgb, width: info.width, height: info.height + pad, x0: 0, x1: info.width, pixelsPerMetre: f.pixelsPerMetre, eavesM: f.eavesRead});
+}
+async function fixtureEvidence(f: FixturePand): Promise<PandEvidence> {
+  const structure = await fixtureStructure(f);
+  return {pandId: f.pandId, address: f.address, builtYear: f.facts.builtYear, widthM: f.facts.widthM, eavesM: f.facts.eavesM, roofMaxM: f.facts.roofMaxM, storeys3dbag: f.facts.storeys3dbag, groundUses: ['woonfunctie'], osm: [],
+    strip: strip({date: f.stripDate, palette: palette({stucco: f.strip.stucco, bandRunsM: Array.from({length: f.strip.bands}, (_, k) => [k, k + 0.1] as [number, number])}), wall: f.strip.wall, skyline: f.strip.skyline, columns: f.strip.columns, doorSide: f.strip.doorSide, accentSide: f.strip.accentSide, accentShare: f.strip.accentShare, structure})};
+}
+const bellamyAll = ['bellamy-1895-plain-three-axis', 'bellamy-1904-balcony-axis', 'bellamy-1915-green-tile', 'bellamy-1915-tile-bay', 'bellamy-1916-two-axis', 'bellamy-1937-flat-row'].map(id => defaultTypeLoader(id) as MatchableType);
+const byAddress = (a: string) => { const f = fixtures.find(x => x.address === a); assert.ok(f, a); return f!; };
+
+test('stripStructure on real strips: balconies on the balcony fronts only, the bay on the tile-bay fronts only', async () => {
+  for (const f of fixtures) {
+    const s = (await fixtureStructure(f))!;
+    assert.ok(s, f.address);
+    assert.equal(s.balconies, f.truth === 'balcony', `${f.address}: ${s.balconyWhy}`);
+    if (f.truth === 'tile-bay') assert.ok(s.bayWidthM >= 1.9, `${f.address}: bay ${s.bayWidthM}`);
+    else assert.ok(s.bayWidthM <= 1.3 || f.truth === 'balcony', `${f.address}: bay ${s.bayWidthM}`);
+  }
+});
+
+test('regression: the five false positives of the pilot are held or take the right type', async () => {
+  const decide = async (a: string) => decidePand(bellamyAll, await fixtureEvidence(byAddress(a)), 'x', '2024-12-11');
+  for (const a of ['Jan Hanzenstraat 49', 'Jan Hanzenstraat 51', 'Ten Katestraat 29', 'Ten Katestraat 31', 'Bellamystraat 18', 'Bellamystraat 20', 'Van Effenstraat 7D']) {
+    const d = await decide(a);
+    assert.equal(d.kind, 'held', `${a}: ${d.kind === 'placed' ? d.typeId : ''}`);
+  }
+  const h69 = await decide('Hasebroekstraat 69');
+  assert.equal(h69.kind === 'placed' && h69.typeId, 'bellamy-1915-green-tile');
+  assert.equal(h69.kind === 'placed' && h69.house.type!.crown, 'point-gable');
+  const e9 = await decide('Van Effenstraat 9');
+  assert.equal(e9.kind === 'placed' && e9.typeId, 'bellamy-1915-green-tile');
+  // Controls keep their types.
+  for (const [a, t] of [['Hasebroekstraat 94', 'bellamy-1915-green-tile'], ['Hasebroekstraat 90', 'bellamy-1915-green-tile'], ['Hasebroekstraat 60', 'bellamy-1915-tile-bay'], ['Hasebroekstraat 65', 'bellamy-1915-tile-bay'], ['Bellamystraat 24', 'bellamy-1916-two-axis'], ['Ten Katestraat 17', 'bellamy-1937-flat-row']]) {
+    const d = await decide(a);
+    assert.equal(d.kind === 'placed' && d.typeId, t, `${a}: ${d.kind === 'held' ? d.reason : d.typeId}`);
+  }
 });
 
 test('regression: Hasebroekstraat 1-37 (16.5 m eaves) is the 1904 row type drawn with 5 storeys; 4-36 (13.2 m) with 4', () => {
