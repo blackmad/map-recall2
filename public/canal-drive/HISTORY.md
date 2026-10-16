@@ -1,5 +1,81 @@
 # Canal Recall — what is built
 
+## Openings must stay inside their walls: a hard landmark gate, the Krijtberg, the Homomonument as three stones, Westerkerk and Nieuwe Kerk (2026-10-16)
+
+Lane `lane/homomonument-krijtberg-20261016` (9df2f4858 gate, e99029437
+Krijtberg, a5f193a17 Homomonument, 476c6c858 the two churches), from
+the user's "windows shouldn't overshoot the geometry of the building…
+fixed in this building but also in our build pipeline" and "Homomonument
+still looks wrong (missing a triangle, sticks into the canal)". Gate:
+`geometryAudit.ts openingsWithinWalls(soup, th, options)` takes each
+opening part (connected components of opening-material triangles: slot
+glass/frame/door, else by name) and projects it onto its best-fitting
+host wall (planes within 0.8 m and ≥ 3× the part's face; parallel planes
+and facets turned < 46° extend the silhouette), reporting m² outside the
+silhouette (tol 0.05 m) and m² emerging through a pierced roof-class
+triangle; fail > 0.02 m² or any edge crossing a roof plane; counts
+`opening-outside-parts`/`-m2`, finding `opening-outside`, hard in
+`regressions()` (new export 0, recorded model may not add a part or grow
+> 0.02 m²), baseline keys for all 316 recorded models;
+`audit-glb-quality.ts` gets the "Openings past their walls" table,
+`--set=kit`, `--write-baseline-keys`, `belowGroundMetres` in the spec,
+and the evidence shoot of the worst part. In the kit,
+`roofChecks.ts openingsWithinWallsGate` (via `groupSoup`) is wired into
+`large.ts`, `compile.ts` and the block-face audit but **advisory** until
+`OPENINGS_WITHIN_WALLS=strict`, because on day one it fails 19 of 22
+installed chunks (attic panes sunk in the 3DBAG roof mass: bloemgracht-80
+5.0 m²/4 parts, apollolaan-4 9.1 m², chunk-face-nassau-162289 28.9 m²/47
+parts, bilder-166802-235892 16.3, utrechtse-48-76 12.6) and a hard fail
+would have blocked every kit lane; the kit-rules lane owns those. Krijtberg
+(`krijtberg-builder.ts`): `window()` takes the host wall's top profile
+(`flatTop`/`gableTop`), `fitWindow()` lowers the springing until the
+stone ring stays 0.15 m under the eaves or rake and drops windows under
+1.2× their width; the flanking transept lancets moved to t = ±1.9, w =
+1.0; no clerestory bay inside the tower bases; 3 parts / 1.24 m² outside
+and a roof pierce → 0. Homomonument (`memorial-builders.ts`, sources:
+en/nl Wikipedia, the RCE post-65 description with its overhead photo
+archived in source-data `models/homomonument/files/`, OSM way 37737807,
+BGT waterdeel/wegdeel, panorama recording_2025-06-16_04-42-37_02924):
+three 10 m granite stones in a 36 m triangle, the north tip flush (2 cm
+proud, toward the Anne Frank Huis), the south-west tip a 0.60 m podium
+(toward the Rozenstraat/COC; the old build had these two swapped), the
+east tip stepped into the Keizersgracht: 0.7 m of pavement to the BGT
+quay line (12.56 m from the centroid), four 0.5 m treads down to a
+platform 0.30 m above the water, every band a solid prism to −2.1 m so
+the sides are granite walls meeting the quay; three granite lines stop
+0.15 m short of the stones; tint #cdcbb0 measured on the podium riser
+(it reads grey-beige, not pink). Own ground: `landedPlatforms.ts` (ring
+= the builder's `homomonumentQuayPlatformRing()`) makes `groundStore`/
+`groundCell` skip the quay wall across the platform as `underDeck` does;
+`check:manual-landmarks` pins 3 stones, 3 lines, 4 risers, podium 0.60,
+flush 0.02 and the tint. Step-4 fixes near the Dam: Westerkerk tower
+lights whose wall lies inside the nave/aisle footprint are no longer
+drawn (28.5 → 0 m²); Nieuwe Kerk's covering-part test samples 0.5 m
+inward over the part's full height, the nave west windows stand above
+the ambulatory ridge, west sill 15.3 m (23.7 → 0 m²). Offenders: 211 of
+351 landmarks carry opening parts past their walls, 2,894 m² in all;
+within 1.5 km of the Dam by m²: stadhuis 361.9 (180 parts),
+scheepvaarthuis 216.3, royal-theater-carre 161.6 (a 25 m² frame),
+academie-theater-dans 132.9, fire-station-nico 104.3,
+hoofdbureau-elandsgracht 83.6 (a 39.7 m² ground-floor curtain, probably a
+glazed skin misjudged), jewish-museum 80.0 (through a roof),
+hotel-de-l-europe 62.6, kattenkabinet 60.3, brakke-grond 51.1,
+walloon-church 50.1 (pierces the roof), fire-station-hendrik 49.8, foam
+46.7, sint-nicolaas 46.6, krasnapolsky 41.9 (held), singelkerk 37.0,
+athenaeum 35.7, posthoornkerk 34.1, oude-kerk 33.4, centraal-station
+32.8; beyond: beest-boulders 884, valley 339, vinoly 286,
+haparandaweg-2-4 246, wereldmuseum 172, rijksmuseum 130 (33 dormer
+parts behind the roof). Glass-heavy moderns may be curtain walls the
+glazed-skin exemption misses. Checks: `test:geometry-audit` (10 new),
+the landed-platform test, `check:manual-landmarks` 354, `check:landmark-lods`
+296, `audit:glb` PASS on the four models. Frames and sheets under
+`artifacts/landmark-lanes/homomonument-krijtberg-20261016/` (the lane's
+worktree; copies on the demo page); ride specs
+`scripts/ride-review/landmarks-{homomonument-krijtberg,homomonument-boat,dam-churches}.json`.
+Remains: the east tip is still mapped 8 m past the quay line by the
+36 m geometry, now as steps and a platform rather than a slab; tread
+and riser sizes come from the description, not a measurement.
+
 ## Sloterplas galerijflats as one instanced type; building-type far boxes restored under the shared frame (2026-10-16)
 
 User asked where the "big buildings" by the Sloterplas stood in the
