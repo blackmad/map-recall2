@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## Facade measurement limits: white-framed panes and dark brick classified; 43 triage verdicts move (2026-10-16)
+
+Lane `lane/measurement-limits-20261014` (final a6b148ea7; 9436b81fa
+classifier, texture, likeness and synthetic tests; a6b148ea7 the
+`replay` field in `likeness-house.ts` and `measurement-sheet.ts
+--legacy-likeness`, which recomputes the old verdict live on today's
+models). The two named limits in `measure.ts` (white-framed panes classed
+as trim → glazing undercount; dark brick reading as paint) are closed by
+the classifier; `test:building-recipes` 186/186, `fit-golden` 156
+identical, `large-mesh-hashes` 115 identical, so no installed model
+changed. Replayed over 94 houses (252 groups): 43 verdicts move in 35
+houses, 63 wall families change (paint → unresolved 38, paint → brick 17,
+brick → unresolved 6, brick → paint 2), 3 groups now abstain on glazing.
+PASS → FAIL 3 (balboaplein-48 g1 glazing .46 → .55 vs model .44;
+meeuwenlaan-132 g2 .71 → .76 vs .65; politie-zuidoost-gaasperdam g0 wall
+family paint vs photo brick), PASS → WARN 1 (vossius g1 IoU 0.442),
+WARN → FAIL 24, FAIL → WARN 15 (incl. oba-mercatorplein g1 and
+stadsloket-oost g2 abstaining on glazing). Caveat: most moves to FAIL are
+a storey's glazing crossing the 0.15 band as measured glazing rises by
+0.03–0.10, and lane D re-fitted 54 models to the old undercounted
+glazing, so re-fit before treating them as model faults; none of the 43
+checked by eye yet. Sheet `docs/images/large-tier/measurement-20261014.jpg`.
+
 ## Rear windows no longer z-fight: 186 → 0.8 m² on kinker-1-29, rears add nothing on 13 faces (2026-10-16)
 
 Lane `worktree-agent-ac7e0d88ffcb68470` (final 15a9403ee). The rears were

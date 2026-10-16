@@ -1342,10 +1342,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 - **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
   "User review + plan", "Large tier reconciled"): lanes A, B, B2, C and
   the reconciliation are DONE; the five pilots are installed from
-  measured values on the kit systems with inferred notes. Open: (1) the
-  measurement lane for the two named limits in `measure.ts` (white-framed
-  panes classed as trim → glazing undercount; dark brick reading as
-  paint); (2) lane D DONE (HISTORY "Large tier triaged": 54 re-fitted, 12
+  measured values on the kit systems with inferred notes. (1) measurement
+  limits DONE 2026-10-16 (HISTORY "Facade measurement limits": 43 of 252
+  group verdicts move, 3 PASS → FAIL, 24 WARN → FAIL, 15 FAIL → WARN);
+  open from it: re-fit the 54 lane-D houses to the new glazing before
+  reading the 27 new FAILs as model faults, and eyeball the 43; (2) lane
+  D DONE (HISTORY "Large tier triaged": 54 re-fitted, 12
   uninstalled, 11 kept, ride visibility written); open from it: verify the
   11 "re-fit cheap" verdicts without a re-install (Oude Turfmarkt, Nieuwe
   Achtergracht 253754, Politie Van Leijenberghlaan, Zuidoost-Gaasperdam,
