@@ -213,6 +213,8 @@ class VectorBasemap {
           ...shared,
           models: manualModels,
           streetChunks: true,
+          // The recipe tiles (opt-in) carry the building types themselves; drawing both would double them.
+          buildingTypes: !this._recipeTilesEnabled,
           loadVisibleOnly: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,

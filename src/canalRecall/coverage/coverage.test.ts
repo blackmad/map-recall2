@@ -74,14 +74,14 @@ test('aggregate: per-tier counts, shares, survey/type flags and the generator ra
   assert.equal(w.tiers.chunk, 1);
   assert.equal(w.tiers.generic, 11);
   assert.equal(w.modelled, 1);
-  assert.equal(w.modelledDefault, 0, 'chunks are behind ?streetChunks=1');
+  assert.equal(w.modelledDefault, 1, 'chunks are drawn by default (2026-10-16)');
   assert.equal(w.repetitiveGeneric, 9, 'row houses 0–6 + the two one-offs, not the chunk house');
   assert.deepEqual(w.survey, { pands: 2, streets: ['Teststraat'] });
   assert.deepEqual(w.types, { pands: 1, districts: ['test-district'] });
   assert.equal(w.faces, 1);
   assert.deepEqual({ ...e.tiers }, { bespoke: 1, chunk: 0, largeRecipe: 1, houseRecipe: 0, ordinaryGlb: 0, buildingType: 1, landmarkKit: 0, generic: 1 });
   assert.equal(e.share, 0.75);
-  assert.equal(e.shareDefault, 0.5);
+  assert.equal(e.shareDefault, 0.75, 'building types are drawn by default (2026-10-16)');
   assert.equal(e.repetition, 0.75, 'four singletons: the top 3 hold three of four');
   assert.equal(e.priority, 0.188);
   // Ranking: the repetitive, barely-modelled west first.

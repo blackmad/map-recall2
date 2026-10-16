@@ -1,5 +1,5 @@
 /**
- * Publish the confirmed building-type instances of the pilot areas for the opt-in runtime (`?buildingTypes=1`).
+ * Publish the confirmed building-type instances of the pilot areas for the runtime (default on since 2026-10-16).
  *
  *   node --import tsx scripts/building-types/export-runtime.ts --areas=sonderbuur,comenius
  *   node --import tsx scripts/building-types/export-runtime.ts --areas=nwsub-a,nwsub-b --merge   # keep the already published instances of other areas
