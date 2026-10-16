@@ -6,7 +6,10 @@
  * Every field is optional and never checked when absent. Kept out of intent.ts so that file does not grow; type-only
  * imports, so there is no runtime cycle.
  */
-import type {FrontIntent, PaletteIntent, ShopAwningIntent} from './intent.ts';
+import type {FrontIntent, PaletteIntent, ShopAwningIntent, WindowKind} from './intent.ts';
+
+/** Window kinds an `axisWindows` entry may name (kept in step with intent.ts WINDOWS; a type-only import keeps the cycle out). */
+export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-pair'];
 
 /** Problems with a shop awning's rigid-canopy fields (`glassBlocks`, `wallCourses`). */
 export function awningProblems(aw: ShopAwningIntent, at: string): string[] {
@@ -23,6 +26,20 @@ export function awningProblems(aw: ShopAwningIntent, at: string): string[] {
 /** Problems with the De Baarsjes front fields. */
 export function deBaarsjesProblems(f: FrontIntent, palette: PaletteIntent | undefined, at: string): string[] {
   const p: string[] = [];
+  if (f.bayFill !== undefined) {
+    const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays]));
+    if (!Array.isArray(f.bayFill) || f.bayFill.length !== grid || f.bayFill.some(x => typeof x !== 'number' || !(x >= 0.3 && x <= 1))) p.push(`${at}.bayFill: ${grid} window shares of their bays (one per axis), each 0.3..1`);
+    if (!f.bayWidths) p.push(`${at}.bayFill: needs bayWidths (the bays the windows fill)`);
+  }
+  if (f.axisWindows !== undefined) {
+    const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays]));
+    const o = f.axisWindows as unknown;
+    if (!o || typeof o !== 'object' || Array.isArray(o) || !Object.keys(o).length) p.push(`${at}.axisWindows: {axis: window kind}`);
+    else for (const [k, v] of Object.entries(f.axisWindows)) {
+      if (!(Number.isInteger(Number(k)) && Number(k) >= 0 && Number(k) < grid)) p.push(`${at}.axisWindows.${k}: an axis 0..${grid - 1}`);
+      if (!(WINDOW_KINDS as readonly string[]).includes(v)) p.push(`${at}.axisWindows.${k}: one of ${WINDOW_KINDS.join('|')}`);
+    }
+  }
   if (f.parapet !== undefined) {
     const q = f.parapet as unknown as Record<string, unknown>;
     if (!q || typeof q !== 'object' || Object.keys(q).some(k => !['courses', 'coping'].includes(k)) || !(Number.isInteger(q.courses) && (q.courses as number) >= 4 && (q.courses as number) <= 90)) p.push(`${at}.parapet: {courses: 4..90 brick courses, coping?: boolean}`);

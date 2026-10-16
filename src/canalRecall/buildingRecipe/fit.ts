@@ -60,6 +60,9 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   'casement-gridded-toplight': {verticalBars: [.5], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05, diagonalBars: [[[.25, .81], [.25, .95]], [[.75, .81], [.75, .95]]]},
   // A fixed centre light between two narrow casements (Jan Evertsenstraat 9-33: 0.35 | 0.6 | 0.35 m of a 1.3 m window).
   'casement-triple': {verticalBars: [.27, .73], mullionWidthM: .05},
+  // Jan Evertsenstraat 129 / 93: two casement pairs under one top light (four lights); 133-135: a casement pair, no top light.
+  'casement-toplight-double': {verticalBars: [.25, .5, .75], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05},
+  'casement-pair': {verticalBars: [.5], mullionWidthM: .05},
 };
 /** Share of the storey height above a window head when `windowHeights` is given (survey median, all eras). */
 const HEAD_LINE = 0.86;
@@ -211,7 +214,12 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const bays = Array.isArray(f.bays) ? f.bays : Array(n).fill(f.bays);
   const bars = WINDOW_BARS[f.windows], segmental = f.windows === 'arched' ? {head: 'segmental' as const, headRiseM: 0.18, headSegments: 4} : {};
   // Per-storey pane layout (`storeyWindows`), else the front's.
-  const barsFor = (s: number) => { const k = f.storeyWindows?.[String(s)] ?? (s === n - 1 ? f.storeyWindows?.last : undefined); return k ? WINDOW_BARS[k] : bars; };
+  const barsFor = (s: number, axis?: number | null) => {
+    // `axisWindows`: a per-axis kind on the window storeys wins over the storey's and the front's.
+    const ak = s > 0 && axis !== undefined && axis !== null ? f.axisWindows?.[String(axis)] : undefined;
+    if (ak) return WINDOW_BARS[ak];
+    const k = f.storeyWindows?.[String(s)] ?? (s === n - 1 ? f.storeyWindows?.last : undefined); return k ? WINDOW_BARS[k] : bars;
+  };
   // `windowHead`: segmental (rise 0.14 x width) or round heads on the listed storeys (default every storey above the ground).
   const wh = f.windowHead, headStorey = (s: number) => !!wh && wh.kind !== 'flat' && wh.kind !== 'relieving' && (wh.storeys ? wh.storeys.includes(s) : s > 0);
   // Round-arched storeys: a semicircular head (rise = half the width).
@@ -246,6 +254,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     return {edges, cell, centre: (a: number) => (edges[a] + edges[a + 1]) / 2, w: (a: number) => Math.min(clamp(0.58 * cell(a), 0.5, 2.8), 0.82 * cell(a))};
   };
   const sharedWeighted = f.bayWidths ? weighted(f.bayWidths) : null;
+  // `bayFill`: each axis's window takes that share of its bay (touching windows, a half window at the party wall).
+  if (sharedWeighted && f.bayFill) { const fill = f.bayFill; sharedWeighted.w = (a: number) => round(sharedWeighted.cell(a) * fill[a]); }
   const ownWeights = (s: number) => f.storeyBayWidths?.[String(s)] ?? (s === n - 1 ? f.storeyBayWidths?.last : undefined);
   /** The axes storey `s` uses on the shared grid, or null when it has to space its windows on its own. */
   const axesFor = (s: number, count: number): number[] | null => {
@@ -259,11 +269,11 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   /** Window `b` of a storey: centre, window width and the width of the cell around it. */
   const storeyPlan = (s: number, count: number) => {
     const own = ownWeights(s);
-    if (own) { const wg = weighted(own); return {centre: wg.centre, w: wg.w, pitch: wg.cell}; }
+    if (own) { const wg = weighted(own); return {centre: wg.centre, w: wg.w, pitch: wg.cell, axis: (): number | null => null}; }
     const axes = axesFor(s, count);
-    if (axes && sharedWeighted) return {centre: (b: number) => sharedWeighted.centre(axes[b]), w: (b: number) => sharedWeighted.w(axes[b]), pitch: (b: number) => sharedWeighted.cell(axes[b])};
+    if (axes && sharedWeighted) return {centre: (b: number) => sharedWeighted.centre(axes[b]), w: (b: number) => sharedWeighted.w(axes[b]), pitch: (b: number) => sharedWeighted.cell(axes[b]), axis: (b: number): number | null => axes[b]};
     const g = axes ? sharedGrid : gridOf(count);
-    return {centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b), w: () => g.winW, pitch: () => g.pitch};
+    return {centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b), w: () => g.winW, pitch: () => g.pitch, axis: (b: number): number | null => axes ? axes[b] : null};
   };
   // Bay boundaries of the shared grid (left to right, `grid + 1` values): crown and shop spans follow them.
   const bayEdges = sharedWeighted ? sharedWeighted.edges : [f.gridAt ? Math.max(0, gx0) : 0, ...Array.from({length: grid - 1}, (_, a) => { const g = sharedGrid; return g.first + g.pitch * a + g.pitch / 2; }), f.gridAt ? Math.min(width, gx0 + gw) : width];
@@ -275,7 +285,10 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // Amsterdam School set (absent = untouched): a multi-bay erker over bay axes, ladder windows, brick course banding.
   const erkerBays = f.bayWindows?.bays, ladder = f.windows === 'ladder';
   const school: Layout['school'] | null = erkerBays || ladder || f.bands === 'courses' ? {bottoms: [], heads: []} : null;
-  const erkerSpan: [number, number] | null = erkerBays ? [bayEdges[erkerBays.from] + ERKER.insetM, bayEdges[erkerBays.to + 1] - ERKER.insetM] : null;
+  // A box frame over filled axes (`bayFill`) wraps their windows exactly.
+  const erkerSpan: [number, number] | null = !erkerBays ? null : f.bayFill && sharedWeighted && f.bayWindows!.hood
+    ? [round(sharedWeighted.centre(erkerBays.from) - sharedWeighted.w(erkerBays.from) / 2), round(sharedWeighted.centre(erkerBays.to) + sharedWeighted.w(erkerBays.to) / 2)]
+    : [bayEdges[erkerBays.from] + ERKER.insetM, bayEdges[erkerBays.to + 1] - ERKER.insetM];
   const boxRows = new Map<number, {bottom: number; height: number}>();
   let y = basement;
   for (let s = 0; s < n; s++) {
@@ -313,7 +326,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       if (balcony) {
         balconies.push({storey: s, bay: b});
         const balW = Math.min(winW * 1.15, winW + 0.3 * Math.max(0, pitch - winW));
-        openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - balW / 2, bottomM: y + 0.04, widthM: balW, heightM: Math.min(h - 0.2, winH + sill - 0.04), trimWidthM: 0.07, ...barsFor(s), ...segmental, frameSurface: 'trim', barSurface: 'trim'});
+        openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - balW / 2, bottomM: y + 0.04, widthM: balW, heightM: Math.min(h - 0.2, winH + sill - 0.04), trimWidthM: 0.07, ...barsFor(s, plan.axis(b)), ...segmental, frameSurface: 'trim', barSurface: 'trim'});
         continue;
       }
       if (ladder) {
@@ -328,7 +341,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       const head = s > 0 || f.archedStoreys?.includes(s) || headStorey(s) ? headFor(s, winW) : {};
       // A round head needs height for its arch above the sash rail.
       const h2 = 'headRiseM' in head && head.headRiseM! > 0.3 ? Math.min(h - 0.25, Math.max(winH, head.headRiseM! / 0.42)) : winH;
-      openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + Math.min(sill, h - 0.12 - h2), widthM: winW, heightM: h2, trimWidthM: 0.07, ...barsFor(s), ...head, frameSurface: 'trim', barSurface: 'trim'});
+      openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + Math.min(sill, h - 0.12 - h2), widthM: winW, heightM: h2, trimWidthM: 0.07, ...barsFor(s, plan.axis(b)), ...head, frameSurface: 'trim', barSurface: 'trim'});
     }
     if (school) {
       const mine = openings.filter(o => new RegExp(`^s${s}-b\\d+[ab]?$`).test(o.id));
@@ -340,7 +353,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // one light per angled side), closed at foot and top. Its cap (hip/flat) is added after the library (amsterdamSchool.ts).
   if (school && erkerSpan && erkerBays && f.bayWindows!.hood) {
     // Box frames (De Baarsjes): a shallow square box round the window of each listed storey, white, a hood over each.
-    const b = DE_BAARSJES, w = round(erkerSpan[1] - erkerSpan[0]), axes = erkerBays.to - erkerBays.from + 1, own = WINDOW_BARS[f.windows];
+    const b = DE_BAARSJES, w = round(erkerSpan[1] - erkerSpan[0]), axes = erkerBays.to - erkerBays.from + 1, own = WINDOW_BARS[f.axisWindows?.[String(erkerBays.from)] ?? f.windows];
     const front = {verticalBars: axes > 1 ? Array.from({length: axes - 1}, (_, k) => round((k + 1) / axes, 4)) : own.verticalBars ?? [], horizontalBars: own.horizontalBars ?? []};
     const hoods: {topM: number}[] = [];
     for (const s of f.bayWindows!.storeys) {
