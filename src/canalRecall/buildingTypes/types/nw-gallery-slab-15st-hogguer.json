@@ -1,0 +1,884 @@
+{
+ "id": "nw-gallery-slab-15st-hogguer",
+ "label": "Burgemeester Hogguerstraat galerijflats (Noordoever Sloterplas, 1965, three identical 110 x 12.4 m slabs, 15 storeys): east access galleries with white concrete parapets over a row of 25 red garage doors between brown brick piers, a dark-framed glazed first floor on both long sides, west balconies with grey bar railings and white cross-wall fins over open ground-floor columns, buff brick gables, a buff brick lift tower with a glazed stair beside it at the north end and an open stair the galleries swing out to at the south end",
+ "source": {
+  "clusterRank": 0,
+  "panden": 3,
+  "bouwjaar": [
+   1965,
+   1965
+  ],
+  "lengthM": 109.5,
+  "widthM": 12.4,
+  "bouwlagen": 15,
+  "roof": "flat",
+  "dwellingsMedian": 190
+ },
+ "storeys": 15,
+ "insetM": {
+  "front": 1.7,
+  "back": 1.6
+ },
+ "bodyFromRoof": true,
+ "roof": {
+  "form": "flat",
+  "ridge": "long",
+  "eavesOverhangM": 0,
+  "vergeOverhangM": 0,
+  "thicknessM": 0.22,
+  "pitchDeg": 0
+ },
+ "ground": {
+  "mode": "solid",
+  "columns": {
+   "facades": [
+    "back"
+   ],
+   "pitchM": 5.5,
+   "sizeM": 0.4,
+   "toM": 2.47
+  }
+ },
+ "defaultVariant": "concrete-buff",
+ "variants": {
+  "concrete-buff": {
+   "label": "White concrete decks and parapets, light wall panels, buff brick gables and lift tower, brown brick plinth, red garage and front doors",
+   "evidence": "sunlit crops (panos/ in the staged evidence): lift tower b-east 2022-04-12 #b6a38a (59 %), south gable a-south-2021 #f7ddb5 (low sun, over-exposed): gable brick authored between them, #c2ad90; parapets b-east cluster #e9e8d9; garage doors b-east-close-low 2024-09-18 #63291e and the 2021-03-31 close crop #67242c, piers #614733; first-floor glazing #484b42 / #3d403a; west railing band a-south-2021 #87928b. 2025 'recording_' panoramas have a cyan cast and were not used for colour.",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#d8d5ca"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#614733"
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#c2ad90"
+    },
+    "frame": "#e8e6dc",
+    "glass": "#3f4744",
+    "door": "#67262a",
+    "accent": "#d9d7cc",
+    "rail": "#8a948e",
+    "dark": "#2f3432",
+    "column": "#e9e8d9",
+    "joint": "#8a8a84",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#a9a79f"
+    }
+   }
+  },
+  "long-entrance": {
+   "label": "As concrete-buff, with the 22 m west entrance wing (pand 0363100012201815 absorbed) of Burgemeester Hogguerstraat 399-793",
+   "evidence": "3DBAG: the 2.95 m roof west of 0363100012063809 runs s 28.8-51.3 m (13.4 m on the other two slabs); b-west-close / m-b-west-sun show the low brick-and-glass wing with its white fascia",
+   "palette": {
+    "wall": {
+     "slot": "stucco",
+     "tint": "#d8d5ca"
+    },
+    "plinth": {
+     "slot": "brick",
+     "tint": "#614733"
+    },
+    "gable": {
+     "slot": "brick",
+     "tint": "#c2ad90"
+    },
+    "frame": "#e8e6dc",
+    "glass": "#3f4744",
+    "door": "#67262a",
+    "accent": "#d9d7cc",
+    "rail": "#8a948e",
+    "dark": "#2f3432",
+    "column": "#e9e8d9",
+    "joint": "#8a8a84",
+    "roof": {
+     "slot": "bitumen",
+     "tint": "#a9a79f"
+    }
+   }
+  }
+ },
+ "annexes": [
+  {
+   "id": "south-stair",
+   "facade": "front",
+   "u": [
+    0,
+    7.4
+   ],
+   "d": [
+    0,
+    6.0
+   ],
+   "from": {
+    "storey": 1
+   },
+   "to": {
+    "eaves": 1.05
+   },
+   "kind": "openStair",
+   "screen": "column",
+   "screenH": 1.05,
+   "fascia": {
+    "h": 0.3
+   },
+   "evidence": "3DBAG roof 44.4 NAP over s -55..-47.7, t 5.6..11.6; b-south / a-east: the galleries swing out to an open stair with landing slabs and a grey bar screen"
+  },
+  {
+   "id": "stair-base",
+   "facade": "front",
+   "u": [
+    0,
+    7.4
+   ],
+   "d": [
+    -1.7,
+    6.0
+   ],
+   "to": {
+    "storey": 1,
+    "plus": -0.25
+   },
+   "material": "plinth",
+   "evidence": "b-south / a-south-2021: closed brick and glass base under the open stair"
+  },
+  {
+   "id": "stair-head",
+   "facade": "front",
+   "u": [
+    0.3,
+    3.3
+   ],
+   "d": [
+    2.5,
+    5.8
+   ],
+   "from": {
+    "storey": 14
+   },
+   "to": {
+    "eaves": 0.75
+   },
+   "material": "plinth",
+   "evidence": "a-east / b-north: dark brick stair head at the top of the south stair"
+  },
+  {
+   "id": "garages",
+   "facade": "front",
+   "u": [
+    9.0,
+    96.4
+   ],
+   "d": [
+    -1.7,
+    6.1
+   ],
+   "to": 2.95,
+   "material": "plinth",
+   "fascia": {
+    "h": 0.55
+   },
+   "doors": {
+    "pitchM": 3.48,
+    "w": 2.95,
+    "h": 2.15,
+    "colour": "door"
+   },
+   "evidence": "3DBAG roof 2.4 NAP over s 9.0-96.5 m from the south end of the body, 6.0-6.3 m out of the east edge; BAG 25 'overige gebruiksfunctie' units per pand; b-east-close-low: numbered red sectional doors between brown brick piers under a white fascia"
+  },
+  {
+   "id": "stair-glass",
+   "facade": "front",
+   "u": [
+    94.7,
+    96.4
+   ],
+   "d": [
+    -1.7,
+    2.6
+   ],
+   "from": 2.9,
+   "to": {
+    "eaves": 0
+   },
+   "material": "column",
+   "glaze": {
+    "faces": [
+     "out",
+     "left"
+    ],
+    "sill": 0.1,
+    "h": 40.5,
+    "lightM": 0.9,
+    "frame": "frame",
+    "marginM": 0.1
+   },
+   "evidence": "m-b-east-sun / b-east: white-framed glazed stair strip on the south side of the lift tower, full height"
+  },
+  {
+   "id": "garage-roof-stair-0",
+   "facade": "front",
+   "u": [
+    11.4,
+    15.7
+   ],
+   "d": [
+    -0.25,
+    1.9
+   ],
+   "from": 2.9,
+   "to": 3.45,
+   "material": "accent",
+   "evidence": "3DBAG roofs at 3.3-3.9 NAP over s 11.4-15.7 m (2-4 per slab): small concrete stairs from the glazed first floor onto the garage roof (b-east-close-low)"
+  },
+  {
+   "id": "garage-roof-stair-1",
+   "facade": "front",
+   "u": [
+    29.6,
+    33.6
+   ],
+   "d": [
+    -0.25,
+    1.9
+   ],
+   "from": 2.9,
+   "to": 3.45,
+   "material": "accent",
+   "evidence": "3DBAG roofs at 3.3-3.9 NAP over s 29.6-33.6 m (2-4 per slab): small concrete stairs from the glazed first floor onto the garage roof (b-east-close-low)"
+  },
+  {
+   "id": "garage-roof-stair-2",
+   "facade": "front",
+   "u": [
+    65.7,
+    69.4
+   ],
+   "d": [
+    -0.25,
+    1.9
+   ],
+   "from": 2.9,
+   "to": 3.45,
+   "material": "accent",
+   "evidence": "3DBAG roofs at 3.3-3.9 NAP over s 65.7-69.4 m (2-4 per slab): small concrete stairs from the glazed first floor onto the garage roof (b-east-close-low)"
+  },
+  {
+   "id": "lift-tower",
+   "facade": "front",
+   "u": [
+    96.4,
+    101.0
+   ],
+   "d": [
+    -1.7,
+    6.8
+   ],
+   "to": {
+    "eaves": 3.9
+   },
+   "material": "gable",
+   "evidence": "3DBAG roof 47.1-47.2 NAP over s 96.0-101.2 m, from the slab centreline to 6.8 m out of the east edge (all three slabs); b-east / m-b-east-sun: plain buff brick tower standing proud of the galleries"
+  },
+  {
+   "id": "machine-room",
+   "facade": "front",
+   "u": [
+    96.4,
+    101.0
+   ],
+   "d": [
+    -6.3,
+    -1.7
+   ],
+   "from": {
+    "eaves": 0
+   },
+   "to": {
+    "eaves": 3.9
+   },
+   "material": "wall",
+   "evidence": "3DBAG 47.2 NAP across the roof; a-west-2022 / m-c-west-far: light lift machine room at the north end of the roof"
+  },
+  {
+   "id": "ne-entrance",
+   "facade": "front",
+   "u": [
+    101.0,
+    105.7
+   ],
+   "d": [
+    -1.7,
+    5.8
+   ],
+   "to": 2.95,
+   "material": "plinth",
+   "fascia": {
+    "h": 0.5
+   },
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.1,
+    "h": 2.1,
+    "lightM": 1.2,
+    "frame": "dark"
+   },
+   "evidence": "3DBAG roof 2.4 NAP over s 46.3..51.2, t 5.4..11.4 (north of the lift tower)"
+  },
+  {
+   "id": "nw-entrance",
+   "facade": "back",
+   "u": [
+    3.8,
+    17.1
+   ],
+   "d": [
+    -1.6,
+    5.8
+   ],
+   "to": 2.95,
+   "material": "plinth",
+   "fascia": {
+    "h": 0.5
+   },
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.1,
+    "h": 2.1,
+    "lightM": 1.3,
+    "frame": "dark",
+    "marginM": 2.0
+   },
+   "exceptVariants": [
+    "long-entrance"
+   ],
+   "evidence": "3DBAG roof 2.4 NAP over s 37.9..51.3, t -12.5..-6.7 on 0363100012151987 and 0363100012095578"
+  },
+  {
+   "id": "nw-entrance-long",
+   "facade": "back",
+   "u": [
+    3.8,
+    25.9
+   ],
+   "d": [
+    -1.6,
+    5.8
+   ],
+   "to": 2.95,
+   "material": "plinth",
+   "fascia": {
+    "h": 0.5
+   },
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.1,
+    "h": 2.1,
+    "lightM": 1.3,
+    "frame": "dark",
+    "marginM": 2.0
+   },
+   "variants": [
+    "long-entrance"
+   ],
+   "evidence": "3DBAG roof 2.4 NAP over s 28.8..51.3 (0363100012063809 + 0363100012201815); m-b-west-sun bottom left"
+  },
+  {
+   "id": "roof-edge-east",
+   "facade": "front",
+   "u": [
+    -0.06,
+    109.56
+   ],
+   "d": [
+    -1.7,
+    0.1
+   ],
+   "from": {
+    "eaves": -0.55
+   },
+   "to": {
+    "eaves": 0.15
+   },
+   "material": "column",
+   "evidence": "a-east / b-east: a thick white roof-slab edge over the top gallery"
+  },
+  {
+   "id": "roof-edge-west",
+   "facade": "back",
+   "u": [
+    -0.06,
+    109.56
+   ],
+   "d": [
+    -1.6,
+    0.1
+   ],
+   "from": {
+    "eaves": -0.55
+   },
+   "to": {
+    "eaves": 0.15
+   },
+   "material": "column",
+   "evidence": "m-c-west-far / a-west-2022: white roof-slab edge over the top balconies"
+  },
+  {
+   "id": "first-floor-east",
+   "facade": "front",
+   "u": [
+    0,
+    109.5
+   ],
+   "d": [
+    -1.7,
+    -0.25
+   ],
+   "from": 2.9,
+   "to": {
+    "storey": 2,
+    "plus": -0.25
+   },
+   "material": "dark",
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.05,
+    "h": 2.55,
+    "lightM": 1.25,
+    "frame": "dark",
+    "marginM": 0.05
+   },
+   "evidence": "b-east-close-low / m-b-east-sun: dark-framed curtain wall over the garage roof, 21 dwellings on floor 1 (BAG)"
+  },
+  {
+   "id": "first-floor-west",
+   "facade": "back",
+   "u": [
+    0,
+    109.5
+   ],
+   "d": [
+    -1.6,
+    -0.2
+   ],
+   "from": {
+    "storey": 1
+   },
+   "to": {
+    "storey": 2,
+    "plus": -0.25
+   },
+   "material": "dark",
+   "glaze": {
+    "faces": [
+     "out"
+    ],
+    "sill": 0.05,
+    "h": 2.6,
+    "lightM": 1.25,
+    "frame": "dark",
+    "marginM": 0.05
+   },
+   "evidence": "m-c-west-far / a-south-2021: dark-framed glazed first floor under the first balcony slab"
+  },
+  {
+   "id": "first-floor-slab-west",
+   "facade": "back",
+   "u": [
+    0,
+    109.5
+   ],
+   "d": [
+    -1.6,
+    0
+   ],
+   "from": {
+    "storey": 1,
+    "plus": -0.45
+   },
+   "to": {
+    "storey": 1
+   },
+   "material": "column",
+   "evidence": "m-c-west-far: white slab edge over the open ground floor"
+  }
+ ],
+ "facades": {
+  "front": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "panos/b-east-close-low.jpg",
+     "pand": "0363100012063809",
+     "address": "Burgemeester Hogguerstraat 399-793",
+     "note": "2024-09-18: garage doors between brick piers, glazed first floor, gallery parapets with red front doors and white-framed windows behind"
+    },
+    {
+     "photo": "panos/a-east.jpg",
+     "pand": "0363100012151987",
+     "address": "Burgemeester Hogguerstraat 795-1223",
+     "note": "2019-07-11: whole east front, galleries swinging out to the south stair, lift tower at the north end"
+    },
+    {
+     "photo": "panos/b-east.jpg",
+     "pand": "0363100012063809",
+     "address": "Burgemeester Hogguerstraat 399-793",
+     "note": "2022-04-12: sunlit east front and lift tower (colour reference)"
+    },
+    {
+     "photo": "sheets (camera-matched)",
+     "pand": "0363100012095578",
+     "address": "Burgemeester Hogguerstraat 1-397",
+     "note": "east front of the third slab on the contact sheet"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "deck",
+     "w": 1,
+     "role": "windows",
+     "elements": [
+      {
+       "kind": "gallery",
+       "levels": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "railing": "solid",
+       "h": 1.0,
+       "colour": "column",
+       "note": "13 access galleries, white parapet band ~1.28 m incl. slab (b-east-close-low: 55 of 125 px per storey)"
+      },
+      {
+       "kind": "door",
+       "levels": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "repeat": 20,
+       "u": -1.9,
+       "w": 1.0,
+       "h": 2.1,
+       "frameStyle": "strips",
+       "note": "front doors, red, on the 5.5 m structural module (20 per 110 m)"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "repeat": 20,
+       "u": 0.55,
+       "w": 2.1,
+       "h": 1.15,
+       "sill": 1.0,
+       "lights": 3,
+       "frameStyle": "strips"
+      },
+      {
+       "kind": "window",
+       "levels": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "repeat": 20,
+       "u": 2.15,
+       "w": 0.8,
+       "h": 1.15,
+       "sill": 1.0,
+       "lights": 1,
+       "frameStyle": "strips"
+      }
+     ]
+    }
+   ]
+  },
+  "back": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "panos/m-c-west-far.jpg",
+     "pand": "0363100012095578",
+     "address": "Burgemeester Hogguerstraat 1-397",
+     "note": "2025-06-18 (cyan cast; geometry only): 13 balcony storeys, open ground floor with columns at ~5.5 m in front of brick, glazed first floor"
+    },
+    {
+     "photo": "panos/a-west-2022.jpg",
+     "pand": "0363100012151987",
+     "address": "Burgemeester Hogguerstraat 795-1223",
+     "note": "2022-04-08: 12 balcony spans between white cross-wall fins (~9.2 m)"
+    },
+    {
+     "photo": "panos/m-b-west-sun.jpg",
+     "pand": "0363100012063809",
+     "address": "Burgemeester Hogguerstraat 399-793",
+     "note": "2025-06-18: grey bar railings, large white-framed windows and balcony doors, the long west entrance wing"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "balconies",
+     "w": 1,
+     "role": "balcony",
+     "elements": [
+      {
+       "kind": "gallery",
+       "levels": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "railing": "panel",
+       "h": 1.05,
+       "colour": "rail",
+       "fins": 13,
+       "note": "continuous balcony band, fins at both ends and 11 between (12 spans)"
+      },
+      {
+       "kind": "ribbon",
+       "levels": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "repeat": 20,
+       "w": 5.0,
+       "h": 2.3,
+       "sill": 0.05,
+       "lights": 5,
+       "colour": "frame",
+       "frameStyle": "strips",
+       "note": "windows and balcony doors almost wall to wall between thin white piers, ~72 % of the wall behind the balconies (m-b-west-sun)"
+      }
+     ]
+    }
+   ]
+  },
+  "left": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "panos/a-south-2021.jpg",
+     "pand": "0363100012151987",
+     "address": "Burgemeester Hogguerstraat 795-1223",
+     "note": "2021-03-31: sunlit south gable, buff brick, white slab edge at every floor"
+    },
+    {
+     "photo": "sheets/nw-gallery-slab-15st-hogguer-contact-gables.jpg",
+     "pand": "0363100012063809",
+     "address": "Burgemeester Hogguerstraat 399-793",
+     "note": "2022-04-08 / 2021-03-31 straight-on: one stack of small paired windows two thirds of the way east, floors 1-14, on both A and B"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 1,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "gable",
+     "w": 1,
+     "role": "corner",
+     "elements": [
+      {
+       "kind": "window",
+       "levels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+       ],
+       "u": 1.55,
+       "w": 1.1,
+       "h": 0.6,
+       "sill": 1.25,
+       "lights": 2,
+       "frameStyle": "strips",
+       "note": "paired small windows (stair/bathroom) above each other"
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "floor": 0,
+     "levels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     "below": 0.25,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  },
+  "right": {
+   "confidence": "partly-measured",
+   "evidence": [
+    {
+     "photo": "panos/b-north.jpg",
+     "pand": "0363100012063809",
+     "address": "Burgemeester Hogguerstraat 399-793",
+     "note": "2022-04-12: north gable in shade, the same brick and white slab edges"
+    }
+   ],
+   "counted": {
+    "bays": 1,
+    "openingsPerUpperStorey": 0,
+    "groundDoors": 0,
+    "balconiesPerUpperStorey": 0
+   },
+   "bays": [
+    {
+     "id": "gable",
+     "w": 1,
+     "role": "corner",
+     "elements": []
+    }
+   ],
+   "bands": [
+    {
+     "floor": 0,
+     "levels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     "below": 0.25,
+     "above": 0.0,
+     "palette": "column"
+    }
+   ]
+  }
+ },
+ "notes": [
+  "Identity: BAG (api.data.amsterdam.nl/v1/bag/panden/<id>): all three panden oorspronkelijk bouwjaar 1965, 'Meerdere woningen', buurt Noordoever Sloterplas; each holds 215 verblijfsobjecten, 190 woonfunctie (21 on floor 1, 13 on each of floors 2-14) and 25 'overige gebruiksfunctie' (the garages). Addresses Burgemeester Hogguerstraat 1-397 (0363100012095578), 399-793 (0363100012063809), 795-1223 (0363100012151987).",
+  "Front is the east gallery side (pinned frontBearingDeg 90 in variants.json); +x runs north. Annex u values are metres on the 109.5 m rectangle edge from the south (front) or north (back) end, measured on the 3DBAG LoD2.2 roof surfaces in the slab frame.",
+  "The footprint rectangle is the tall body from the 3DBAG roof (bodyFromRoof): the BAG rings hold the garage row and entrance halls too (ring-rectangle IoU 0.73-0.75). 0363100012196327 (the 3.9 m north end bay of 0363100012095578) and 0363100012201815 (the west entrance extension and a slice of 0363100012063809) are absorbed by their slabs and suppressed with them.",
+  "Not modelled: the gallery slabs bend out diagonally to the south stair (here a square step), small stair/landings from the first floor onto the garage roof, planters on the garage roof, per-flat awnings, the curved gallery ends, slab overrun past the gables, the 48.5 m lift motor box."
+ ]
+}
