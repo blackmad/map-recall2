@@ -1,5 +1,169 @@
 # Canal Recall — what is built
 
+## Landmark abutter survey: buildings in a landmark's angles and walls (2026-10-16)
+
+Lane `lane/landmark-abutters-survey-20261016` (dd7ca183c). The user saw a
+4-storey stucco kit block in an angle of the Noorderkerk's Greek cross;
+BAG/3DBAG and the register say the angles hold the 1623 corner houses
+("dienstwoningen diagonaal tussen de armen", rijksmonument 3923) with
+slanted roofs. `check:osm-under-models` could not see it: it flags only
+city buildings at least 50 % inside a model footprint, and the corner
+houses are outside it. New typed module `landmarkAbutters.ts` (8 tests)
+lists unsuppressed city buildings that share a wall with a placed model
+(measured edge length, corner touches excluded), sit mostly inside its
+convex hull (angle/notch/courtyard), or overlap it below 50 %, and scores
+them on bouwjaar, shared monument record, shared address, 3DBAG roof vs
+the drawn roof, hull position and wall length; terrace damping (-1.5)
+for one-sided walls outside the hull, and a "wraps" bonus only with walls
+on two sides. 337 landmarks, 560 candidates (526 wall, 133 notch, 166
+partial); 95 photo-reviewed (all 43 notch candidates at score >= 8, top
+25 overall, up to 3 per church): 25 fold-in, 4 separate-but-wrong, 53
+fine, 13 unclear. Clearest true signal: OSM building parts on the
+church's own pand (Oude Kerk, Sint Nicolaas, Noorderkerk); next, a
+slanted 3DBAG roof under an OSM flat box. False positives: terraced
+fronts of a block the landmark wraps, complex-wide monument records,
+same-era streets, convex hulls of large irregular models (RAI, Centraal,
+Rijksmuseum, Heineken). Gate `check:landmark-abutters` (in `check:canal`)
+fails on any unreviewed notch candidate at score >= 8; reviews and
+PENDING fold-ins live in `landmark-abutters-allowlist.json` with pano ids
+and crop paths. Contact sheets were kept outside the repo in
+`map-recall2-worktrees/landmark-abutters-sheets-20261016/`. Queue in TODO P2.
+## De Baarsjes type library: five 1926-27 types measured, ten kit keys, evertsen-7-41 proved (2026-10-16)
+
+Lane `worktree-agent-a11677e1cecaef496` (final 5afb00778; kit and tests
+99f5b058b). `scripts/block-face/types/de-baarsjes/`, each type's default
+crown the tall plain parapet, heights counted in brick courses or
+glass-block rows because the intent contract refuses metric keys:
+`evertsen-1926-lintel-band` (18–20 pands; pitch 2.88 m, three 1.30 m
+windows per 6 m, 0.15 m sill and 0.15–0.20 m head bands, parapet 22
+courses, spandrel #6e4b44, pier #6f6356, bands #a5a59e), `-hood-lisene`
+(40; glass block 8 rows + 8 courses, parapet 55 courses, wall #54432e,
+hood #3d3827), `-balcony-slot` (14; parapet 60 courses, wall #54402a),
+`-ladder-plain` (19; window share 0.68, parapet 56 courses), and
+`evertsen-1927-white-attic-tile-roof` (12; white band storey 9.6–12.6 m
+with 5 lights, tiles to 15.0 m). Kit keys, all byte-identical when
+absent (32 other faces' chunk sha256 unchanged, `fit-golden` 156 and 115
+large meshes identical): `windows: casement-toplight |
+casement-gridded-toplight | casement-triple`, crown `parapet: {courses,
+coping}`, `bandPiers` (the zone between sill and head bands faced in
+`palette.band`), `bayWindows.hood`, `balconies.style: slab-hood`,
+`awning.glassBlocks: {rows}`, `awning.wallCourses`, `palette.glassBlock`;
+validation in `buildingRecipe/deBaarsjesIntent.ts`, 8 tests in
+`blockFace/deBaarsjes.test.ts`; corner and end crowns reuse `tower` with
+`cap: flat`. Proof face `evertsen-7-41` (18 pands, 27,314 tris, gates
+pass, compiled without `--install`): on 9–33 the storey lines, three
+windows per house, white bands, yellow piers under red spandrels and the
+14.0 m coping line land and every upper row count matches; the canopy
+reads as a thin line where the photo has a deep white slab, the shop
+glass head sits high (photo ≈ 2.6 m), wall-band signs, dentils and the
+curved corner at 9–11 are not drawn; 35's raised corner mass lands (its
+oriel stack does not); 37/39 fail the ground-bay count; 41's strip is
+ghosted; 7 and 158391 (1912 Oud-West pands) keep their own designs. Only
+lintel-band is proved on a face; the other four build in tests on a 6 m
+pand. Today's roof rule, recorded not fitted: 3DBAG roofs at 16.6–17.4
+m show above the measured 15.3 m parapet on 35–41 and above the cornice
+on 7 and 158391 where the photo shows sky. Sheets
+`docs/images/jan-evertsenstraat/evertsen-7-41-sheet.jpg` and
+`evertsen-7-41-19-23-zoom.jpg`; doc `docs/de-baarsjes-types-20261014.md`.
+Still cannot say: signs on the glass-block or wall band, a box frame
+touching a flat neighbour, a window straddling a party wall, the diamond
+frieze, cast-iron balustrade and stacked oriels of the corner groups,
+curved corners, dentils under painted bands, the white attic band as
+timber, all-over small panes on 43–53, a measured canopy depth.
+
+## Kinkerstraat wall colours read from the photo; two types promoted; odd-side window widths (2026-10-16)
+
+Lane `worktree-agent-a8fc6a969506a4249` (final 0b915cada). Kit keys,
+each byte-identical when absent: `paletteOverrides` on a placement
+(recolours the house's own wall, no 3 cm facing), `palette.wallTint:
+"measured"` (keeps a brick wall's measured colour instead of clamping it
+into the city brick range), `palette.whitePoint` (the white-frame colour
+of the crop, exported with the tint as `tintWhitePoint` in the GLB
+material extras; no look reads it yet, so walls still draw the overcast
+reading), and `paintedStoreys: {storeys, colour}` (a painted facing per
+storey cut around the windows). Medians on the same pixels, summed RGB
+distance to the photo before → after: 31 (158968, painted brick) 87 → 17
+(cannot go below #2d312a because the look floors measured walls at
+lightness 0.18; the photo is 0.15), 47 (161457) 90 → 8, 63 (133467) 36 →
+4, 87 (156991) 44 → 6; 21/23 storey 1 painted frame-white (#e3e2d7)
+because the photo's white reads as bright as their frames; the white
+storey sits ~0.5 m higher than the photo because a 4.1 m top storey
+lifted the wall dormer 1 m and failed the 3DBAG height gate (recorded as
+a limitation). Triangles: 31-49 15,698 → 15,110, 1-29 24,700 → 25,591.
+`kinker-1885-wall-dormer` and `kinker-1893-plain-step-gable` are in
+`scripts/block-face/types/oud-west/` with per-pand evidence and measured
+palettes; the faces refer to them by id and their chunk sha256 is
+unchanged. Window widths measured frame-included from the strip (the
+method reads the kit's own renders within 0.01 m): the even 18-4 row
+draws 0.97–1.15 m against 0.97–1.10 m in the photo, so the earlier "0.8
+vs 0.95 m" figure measured glass only and the even side needs no
+override; Kinkerstraat 2 (163325/161331) is the only even house drawn
+narrow (0.99 vs 1.20 m, another lane's face); odd 57, 59, 63 get
+`windowShare` 0.59/0.61/0.64 (1.13/1.08/1.04 → 1.21/1.20/1.25 m). Tests:
+`wallFidelity.test.ts` (7), `test:block-face` 91, `test:look` 60,
+`fit-golden` 156 identical, `block-kit-installed` identical, 115 large
+meshes identical. Sheet `docs/images/kinkerstraat/colour-fidelity-20261014.jpg`;
+doc `docs/kinkerstraat-faces-odd-20261014.md` "Colour fidelity, library
+promotion and window widths". Still cannot say: a painted storey that
+follows the photo's storey heights when the top storey holds a frieze;
+black paint below lightness 0.18; a white point per storey; a painted
+ground storey behind a shop (363-365).
+
+## Facade measurement limits: white-framed panes and dark brick classified; 43 triage verdicts move (2026-10-16)
+
+Lane `lane/measurement-limits-20261014` (final a6b148ea7; 9436b81fa
+classifier, texture, likeness and synthetic tests; a6b148ea7 the
+`replay` field in `likeness-house.ts` and `measurement-sheet.ts
+--legacy-likeness`, which recomputes the old verdict live on today's
+models). The two named limits in `measure.ts` (white-framed panes classed
+as trim → glazing undercount; dark brick reading as paint) are closed by
+the classifier; `test:building-recipes` 186/186, `fit-golden` 156
+identical, `large-mesh-hashes` 115 identical, so no installed model
+changed. Replayed over 94 houses (252 groups): 43 verdicts move in 35
+houses, 63 wall families change (paint → unresolved 38, paint → brick 17,
+brick → unresolved 6, brick → paint 2), 3 groups now abstain on glazing.
+PASS → FAIL 3 (balboaplein-48 g1 glazing .46 → .55 vs model .44;
+meeuwenlaan-132 g2 .71 → .76 vs .65; politie-zuidoost-gaasperdam g0 wall
+family paint vs photo brick), PASS → WARN 1 (vossius g1 IoU 0.442),
+WARN → FAIL 24, FAIL → WARN 15 (incl. oba-mercatorplein g1 and
+stadsloket-oost g2 abstaining on glazing). Caveat: most moves to FAIL are
+a storey's glazing crossing the 0.15 band as measured glazing rises by
+0.03–0.10, and lane D re-fitted 54 models to the old undercounted
+glazing, so re-fit before treating them as model faults; none of the 43
+checked by eye yet. Sheet `docs/images/large-tier/measurement-20261014.jpg`.
+
+## Rear windows no longer z-fight: 186 → 0.8 m² on kinker-1-29, rears add nothing on 13 faces (2026-10-16)
+
+Lane `worktree-agent-ac7e0d88ffcb68470` (final 15a9403ee). The rears were
+not overlapping each other, the party walls or the 3DBAG box: each
+inferred window was its own z-fight pair, a frame plate 3 cm proud of the
+wall (the audit's 2–3 cm "tight" band, bleeds through at distance) with
+the glass 1.5 cm in front of it (counted coplanar). `blockFace/rear.ts`
+now draws a sloped frame ring standing on the wall around a pane 4 cm
+proud (10 triangles per window instead of 4), spends only what is left
+of each pand's triangle budget (storeys dropped from the ground up,
+reported as `droppedForBudget`; kinker-363-371 pand 089983 drops 4 of 8
+and passes its 3,000 gate), sits windows on the wall plane actually found
+(`wallAt`; columns whose wall steps > 1 cm are `skippedOffWall`) and
+measures the wall height at the window, not the triangle's top corner
+(a frame on 363-371 had reached over a roof-cut wall onto the roof).
+Coplanar z-fight before → after: kinker-1-29 186.5 → 0.8, 2-30 115.1 →
+0.7, 31-49 148.0 → 8.2, 49-63 152.1 → 7.1, 65-87 88.7 → 0.6, 109-161 148.1
+→ 8.3, 173-225 137.9 → 5.5, 265-313 211.9 → 0.9, 315-359 179.8 → 0.1,
+363-371 53.9 → 1.7, marnix-124-138 284.6 → 0.0, marnix-c 363.9 → 0.0,
+bilder-157757-164549 43.8 → 0.0 m²; tight band 15.8–188.6 → 0.3–7.8 m²;
++124 to +1,296 triangles per face. The `--no-rears` GLBs are
+byte-identical, with-rears z-fight now equals no-rears z-fight, hole
+loops fell (1-29 45 → 40) because plates exactly 3 cm off the wall had
+counted as holes. Tests: `rearZFight.test.ts` (synthetic L-block 27.4 →
+0 m², named regression kinker-1-29 < 5 m², a shell 4 cm behind the BAG
+edge, the sloped wall top of 089983); `rearsAndWinding` per-window limit
+4 → 10. Sheet `docs/images/kinkerstraat/rears-20261014.jpg`. Still
+failing and not in the rears: 0.1–8.3 m² coplanar in front and shell
+geometry on 12 of 13 faces (the new-export regression allows 0.5 m²),
+holes on 31-49, 265-313, 363-371, blank wall on 265-313. Installed faces
+keep the old rears until recompiled.
+
 ## Kinkerstraat even side authored: twelve faces, 103 pands; three single-pand faces blocked (2026-10-16)
 
 Lane `lane/kinkerstraat-even-20261014` (plan Part 2 step 4), on the

@@ -406,7 +406,8 @@
      "windowSurround": "keystone",
      "surroundStoreys": [
       3
-     ]
+     ],
+     "windowShare": 0.59
     },
     "ground": {
      "shopfront": {
@@ -440,7 +441,7 @@
     "note": "clothing repair and dry cleaner; no OSM node"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 6: 3 axes; storeys 1-2 segmental heads under white blocked arches with white sill and impost courses, top storey flat heads under keystones; frieze cornice with consoles; pediment dormer",
+    "citation": "strip.jpg pand 6: 3 axes; storeys 1-2 segmental heads under white blocked arches with white sill and impost courses, top storey flat heads under keystones; frieze cornice with consoles; pediment dormer; windows 1.21 m wide over the white frames (strip column profile, 2026-10-14; the type share 0.55 drew them 1.04-1.13 m)",
     "photoRows": [
      2,
      3,
@@ -476,7 +477,8 @@
      "windowSurround": "keystone",
      "surroundStoreys": [
       3
-     ]
+     ],
+     "windowShare": 0.61
     },
     "ground": {
      "shopfront": {
@@ -506,7 +508,7 @@
     "note": "phone repair; no OSM node (cluster table: plain-brick auto; the photo has the blocked arches of 57)"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 7: as pand 6",
+    "citation": "strip.jpg pand 7: as pand 6; windows 1.20 m wide over the white frames (strip column profile, 2026-10-14; the type share 0.55 drew them 1.04-1.13 m)",
     "photoRows": [
      2,
      3,
@@ -570,6 +572,11 @@
     "type": "kinker-1890-brick-arched",
     "crown": "pediment-dormer",
     "palette": "red-brown-sunlit",
+    "paletteOverrides": {
+     "brick": "#78675b",
+     "wallTint": "measured",
+     "whitePoint": "#b1b3a8"
+    },
     "overrides": {
      "bays": 3,
      "windowHead": {
@@ -587,7 +594,8 @@
      "windowSurround": "keystone",
      "surroundStoreys": [
       3
-     ]
+     ],
+     "windowShare": 0.64
     },
     "ground": {
      "shopfront": {
@@ -622,7 +630,7 @@
     "agreement": "osm-and-photo"
    },
    "rhythm": {
-    "citation": "strip.jpg pand 9: as pand 6, red tile roof behind the dormer",
+    "citation": "strip.jpg pand 9: as pand 6, red tile roof behind the dormer; windows 1.22-1.25 m wide over the white frames (strip column profile 1.32 inflated by the banner; by eye 1.22-1.25; the type share 0.55 drew them 1.04 m)",
     "photoRows": [
      2,
      3,
