@@ -1,0 +1,338 @@
+{
+ "face": "kate-25-31",
+ "street": "Ten Katestraat",
+ "library": "bellamy",
+ "stripDate": "2023-01-12",
+ "seconds": 5.96,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "kate-25-31-r1",
+   "pands": [
+    "0363100012139746",
+    "0363100012093654"
+   ],
+   "passed": true,
+   "triangles": 2687
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012071572",
+   "address": "Ten Katestraat 25",
+   "builtYear": 1915,
+   "widthM": 5.39,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#403530",
+    "wallRaw": "#433b36",
+    "skyline": {
+     "eavesM": 16.02,
+     "eavesRow": 107,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 3.88,
+      "riseM": 2.68,
+      "topWidthM": 0.75,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.096 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21)",
+   "likeness": {
+    "pandId": "0363100012071572",
+    "ncc": 0.096,
+    "nccRaw": 0.096,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#3e312d",
+     "model": "#5d4d45",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.287
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233527",
+   "address": "Ten Katestraat 27",
+   "builtYear": 1915,
+   "widthM": 5.01,
+   "eavesM": 14.04,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#3e312d",
+    "wallRaw": "#433935",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 148,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 3.7,
+      "topWidthM": 0.5,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts WARN: wall family unresolved (#3d312d is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 2 vs photo 3; mask IoU 0.363 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012233527",
+    "ncc": 0.145,
+    "nccRaw": 0.145,
+    "shiftM": [
+     0.25,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "wall family unresolved (#3d312d is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 2 vs photo 3",
+     "mask IoU 0.363 < 0.45"
+    ],
+    "wall": {
+     "photo": "#3d312d",
+     "model": "#5b4842",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": 2
+    },
+    "iou": 0.363
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139746",
+   "address": "Ten Katestraat 29",
+   "builtYear": 1915,
+   "widthM": 5.69,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#3c322f",
+    "wallRaw": "#413633",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 157,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 3.92,
+      "topWidthM": 0.2,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2823",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-12 span 416-643"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3c322f",
+     "evidence": "strip 2023-01-12 span 416-643: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "notes": [
+    "door unread",
+    "crown point-gable: skyline rise 3.92 m, width 0.75 m, top 0.2 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012139746",
+    "ncc": 0.219,
+    "nccRaw": 0.219,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.43 vs photo 0.30"
+    ],
+    "wall": {
+     "photo": "#3a2f2b",
+     "model": "#584a45",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.345
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093654",
+   "address": "Ten Katestraat 31",
+   "builtYear": 1915,
+   "widthM": 4.51,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#3b302c",
+    "wallRaw": "#403633",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 748,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "bellamy-1916-two-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1916-two-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#222421",
+      "fascia": true,
+      "name": "Bar Kaat",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-12 span 643-823"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3b302c",
+     "evidence": "strip 2023-01-12 span 643-823: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown cornice (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012093654",
+    "ncc": 0.22,
+    "nccRaw": 0.22,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#3e322e",
+     "model": "#584842",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.518
+   },
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,333 @@
+{
+ "face": "bellamy-113-121",
+ "street": "Bellamystraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 2.94,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "bellamy-113-121-r1",
+   "pands": [
+    "0363100012146466",
+    "0363100012115607"
+   ],
+   "passed": false,
+   "triangles": 3705
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012073911",
+   "address": "Bellamystraat 113",
+   "builtYear": 1992,
+   "widthM": 16.68,
+   "eavesM": 14.22,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#8b866f",
+    "wallRaw": "#878671",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1.78,
+      "topWidthM": 0.4,
+      "centre": 0.98
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.179,
+    "voidShare": 0.02,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1992, type 1928-1935; frontage 16.68 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1928-1935",
+     "frontage 16.68 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.22 m = 5 storeys of 2.84 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146466",
+   "address": "Bellamystraat 117",
+   "builtYear": 1919,
+   "widthM": 6.86,
+   "eavesM": 14.16,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#5c4f43",
+    "wallRaw": "#5c5142",
+    "skyline": {
+     "eavesM": 15.82,
+     "eavesRow": 99,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 1.78,
+      "topWidthM": 1.3,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.165,
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.8
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#5c4f43",
+     "evidence": "strip 2024-12-11 span 668-942: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown dormers: skyline rise 1.78 m, width 2.83 m, top 1.3 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012146466",
+    "ncc": 0.288,
+    "nccRaw": 0.288,
+    "shiftM": [
+     -0.25,
+     -0.3
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.33 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#605347",
+     "model": "#766656",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.245
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115607",
+   "address": "Bellamystraat 119",
+   "builtYear": 1919,
+   "widthM": 6.86,
+   "eavesM": 14.03,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#6d5c4e",
+    "wallRaw": "#5a4f40",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 1.6,
+      "topWidthM": 1.23,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.155,
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "bellamy-1915-green-tile",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-tile-bay",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#6d5c4e",
+     "evidence": "strip 2024-12-11 span 942-1216: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown dormers: skyline rise 1.6 m, width 3.17 m, top 1.23 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012115607",
+    "ncc": 0.23,
+    "nccRaw": 0.23,
+    "shiftM": [
+     -0.15,
+     0
+    ],
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#6d5a4c",
+     "model": "#867160",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.241
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069215",
+   "address": "Bellamystraat 121",
+   "builtYear": 1919,
+   "widthM": 9.18,
+   "eavesM": 13.89,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#665449",
+    "wallRaw": "#625646",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 1.6,
+      "topWidthM": 1.07,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.184,
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1919, type 1928-1935; frontage 9.18 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1919, type 1928-1935",
+     "frontage 9.18 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.89 m = 5 storeys of 2.78 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.05 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.166 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,536 @@
+{
+ "street": "Bellamystraat",
+ "seed": "0363100012158488",
+ "members": [
+  "0363100012092172",
+  "0363100012104328",
+  "0363100012145798",
+  "0363100012236187",
+  "0363100012154386",
+  "0363100012153267",
+  "0363100012158488"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012092172 (face continues: 093654)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012066222",
+   "reason": "frontage 107.4 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012067143",
+   "reason": "frontage 77.9 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012071572",
+   "reason": "sightline to Bellamystraat crosses 0363100012093654"
+  },
+  {
+   "pandId": "0363100012072007",
+   "reason": "frontage 108.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012083242",
+   "reason": "frontage 53.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012091722",
+   "reason": "frontage 109.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012096370",
+   "reason": "sightline to Bellamystraat crosses 0363100012110457"
+  },
+  {
+   "pandId": "0363100012101150",
+   "reason": "frontage 34.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012117439",
+   "reason": "sightline to Bellamystraat crosses 0363100012110457"
+  },
+  {
+   "pandId": "0363100012125392",
+   "reason": "frontage 108.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012129411",
+   "reason": "frontage 41.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012139746",
+   "reason": "sightline to Bellamystraat crosses 0363100012093654"
+  },
+  {
+   "pandId": "0363100012144382",
+   "reason": "frontage 59.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012146613",
+   "reason": "frontage 47.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012153217",
+   "reason": "frontage 39.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012153270",
+   "reason": "sightline to Bellamystraat crosses 0363100012158671"
+  },
+  {
+   "pandId": "0363100012153275",
+   "reason": "frontage 42.9 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012153430",
+   "reason": "frontage 104.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012154173",
+   "reason": "sightline to Bellamystraat crosses 0363100012161934"
+  },
+  {
+   "pandId": "0363100012154285",
+   "reason": "frontage 36.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012154389",
+   "reason": "frontage 41.7 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012155752",
+   "reason": "sightline to Bellamystraat crosses 0363100012158671"
+  },
+  {
+   "pandId": "0363100012155932",
+   "reason": "frontage 47.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012156272",
+   "reason": "frontage 30.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012156336",
+   "reason": "sightline to Bellamystraat crosses 0363100012154173"
+  },
+  {
+   "pandId": "0363100012156338",
+   "reason": "frontage 97.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012156544",
+   "reason": "frontage 31.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012157876",
+   "reason": "frontage 106.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012158350",
+   "reason": "frontage 105.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012152424",
+   "reason": "no frontage on Bellamystraat: No footprint edge faces Bellamystraat"
+  },
+  {
+   "pandId": "0363100012156935",
+   "reason": "frontage 96.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012157933",
+   "reason": "no frontage on Bellamystraat: No footprint edge faces Bellamystraat"
+  },
+  {
+   "pandId": "0363100012158103",
+   "reason": "frontage 95.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012158384",
+   "reason": "frontage 94.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012158557",
+   "reason": "frontage 66.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012159339",
+   "reason": "frontage 102.7 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012159793",
+   "reason": "frontage 45.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012159962",
+   "reason": "frontage 61.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012160094",
+   "reason": "frontage 60.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012161111",
+   "reason": "frontage 34.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012161685",
+   "reason": "frontage 45.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012161731",
+   "reason": "frontage 38.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012162005",
+   "reason": "frontage 55.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012163272",
+   "reason": "frontage 103.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012163466",
+   "reason": "frontage 34.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012163720",
+   "reason": "frontage 71.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012163944",
+   "reason": "frontage 51.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012164224",
+   "reason": "sightline to Bellamystraat crosses 0363100012158488"
+  },
+  {
+   "pandId": "0363100012164456",
+   "reason": "frontage 30.9 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012164492",
+   "reason": "frontage 77.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012164493",
+   "reason": "frontage 83.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012166207",
+   "reason": "frontage 102.4 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012166965",
+   "reason": "frontage 50.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012167027",
+   "reason": "frontage 61.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012183366",
+   "reason": "frontage 52.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012187019",
+   "reason": "frontage 63.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012187969",
+   "reason": "frontage 107.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012189128",
+   "reason": "sightline to Bellamystraat crosses 0363100012236187"
+  },
+  {
+   "pandId": "0363100012191260",
+   "reason": "frontage 69.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012191801",
+   "reason": "frontage 41.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012191958",
+   "reason": "frontage 65.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012197601",
+   "reason": "frontage 73.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012202718",
+   "reason": "frontage 73.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012203538",
+   "reason": "sightline to Bellamystraat crosses 0363100012104328"
+  },
+  {
+   "pandId": "0363100012203539",
+   "reason": "sightline to Bellamystraat crosses 0363100012104328"
+  },
+  {
+   "pandId": "0363100012206956",
+   "reason": "frontage 30.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012207111",
+   "reason": "frontage 41.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012208946",
+   "reason": "frontage 74.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012210008",
+   "reason": "frontage 36.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012212769",
+   "reason": "frontage 47.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012216958",
+   "reason": "frontage 69.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012218837",
+   "reason": "sightline to Bellamystraat crosses 0363100012092172"
+  },
+  {
+   "pandId": "0363100012160350",
+   "reason": "frontage 95.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012161564",
+   "reason": "frontage 96.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012165766",
+   "reason": "frontage 94.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012166272",
+   "reason": "frontage 94.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012210596",
+   "reason": "frontage 61.7 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012221150",
+   "reason": "frontage 73.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012222272",
+   "reason": "frontage 51.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012222290",
+   "reason": "frontage 63.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012226226",
+   "reason": "frontage 71.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012229220",
+   "reason": "sightline to Bellamystraat crosses 0363100012154386"
+  },
+  {
+   "pandId": "0363100012230727",
+   "reason": "frontage 58.1 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012233028",
+   "reason": "frontage 53.2 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012233527",
+   "reason": "sightline to Bellamystraat crosses 0363100012093654"
+  },
+  {
+   "pandId": "0363100012233538",
+   "reason": "frontage 84.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012233696",
+   "reason": "frontage 107.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012236297",
+   "reason": "frontage 65.7 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012236554",
+   "reason": "frontage 73.9 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012236761",
+   "reason": "frontage 115.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012236819",
+   "reason": "frontage 82.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012236856",
+   "reason": "frontage 72.6 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012239620",
+   "reason": "frontage 60.3 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012232032",
+   "reason": "frontage 39.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012236057",
+   "reason": "frontage 102.8 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012243774",
+   "reason": "frontage 72.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012243775",
+   "reason": "frontage 79.0 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012243776",
+   "reason": "frontage 71.5 m from Bellamystraat"
+  },
+  {
+   "pandId": "0363100012065055",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145751",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156469",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157043",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158150",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159378",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161934",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236693",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012092172",
+   "alongM": -34.63,
+   "widthM": 5.5,
+   "eavesM": 13.39,
+   "roofMaxM": 15.92,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012104328",
+   "alongM": -29.7,
+   "widthM": 5.38,
+   "eavesM": 12.56,
+   "roofMaxM": 15.52,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012145798",
+   "alongM": -25,
+   "widthM": 5.02,
+   "eavesM": 12.54,
+   "roofMaxM": 15.57,
+   "storeys3dbag": 5,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236187",
+   "alongM": -18.65,
+   "widthM": 8.95,
+   "eavesM": 12.66,
+   "roofMaxM": 15.58,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012154386",
+   "alongM": -12.38,
+   "widthM": 4.67,
+   "eavesM": 12.47,
+   "roofMaxM": 15.36,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012153267",
+   "alongM": -7.92,
+   "widthM": 4.72,
+   "eavesM": 12.53,
+   "roofMaxM": 18.01,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158488",
+   "alongM": 0,
+   "widthM": 11.29,
+   "eavesM": 12.56,
+   "roofMaxM": 16.75,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

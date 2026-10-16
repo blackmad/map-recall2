@@ -1,0 +1,1948 @@
+{
+ "street": "Ten Katestraat",
+ "seed": "0363100012154173",
+ "members": [
+  "0363100012154173",
+  "0363100012156336",
+  "0363100012156544",
+  "0363100012154285",
+  "0363100012154389",
+  "0363100012145751",
+  "0363100012167027",
+  "0363100012155390",
+  "0363100012165679",
+  "0363100012161372",
+  "0363100012154178",
+  "0363100012158689",
+  "0363100012167006",
+  "0363100012098626"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012161934 14.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012098626 (face continues: 236981)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012074213",
+   "reason": "frontage 77.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012061723",
+   "reason": "frontage 137.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012063580",
+   "reason": "frontage 84.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012064013",
+   "reason": "frontage 84.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012064751",
+   "reason": "frontage 76.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012064752",
+   "reason": "frontage 74.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012065055",
+   "reason": "sightline to Ten Katestraat crosses 0363100012158671"
+  },
+  {
+   "pandId": "0363100012065691",
+   "reason": "frontage 204.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012065779",
+   "reason": "frontage 161.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012065825",
+   "reason": "frontage 80.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012066222",
+   "reason": "frontage 34.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012067622",
+   "reason": "frontage 117.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012067749",
+   "reason": "frontage 44.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012069845",
+   "reason": "frontage 210.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012073104",
+   "reason": "frontage 137.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012073298",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012078442",
+   "reason": "frontage 88.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012079796",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012080571",
+   "reason": "frontage 77.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012080701",
+   "reason": "frontage 197.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012082699",
+   "reason": "frontage 134.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012083034",
+   "reason": "frontage 134.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012085030",
+   "reason": "sightline to Ten Katestraat crosses 0363100012115555"
+  },
+  {
+   "pandId": "0363100012085498",
+   "reason": "frontage 188.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012086476",
+   "reason": "frontage 104.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012087255",
+   "reason": "frontage 40.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012089000",
+   "reason": "frontage 50.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012090456",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012090634",
+   "reason": "frontage 137.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012091626",
+   "reason": "sightline to Ten Katestraat crosses 0363100012110457"
+  },
+  {
+   "pandId": "0363100012091722",
+   "reason": "sightline to Ten Katestraat crosses 0363100012072007"
+  },
+  {
+   "pandId": "0363100012092172",
+   "reason": "sightline to Ten Katestraat crosses 0363100012093654"
+  },
+  {
+   "pandId": "0363100012092267",
+   "reason": "frontage 82.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012093238",
+   "reason": "frontage 73.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012093786",
+   "reason": "frontage 39.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012067449",
+   "reason": "frontage 32.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012067928",
+   "reason": "frontage 48.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012069448",
+   "reason": "frontage 94.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012072076",
+   "reason": "frontage 58.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012084581",
+   "reason": "frontage 37.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012092013",
+   "reason": "frontage 150.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012094018",
+   "reason": "frontage 79.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012094639",
+   "reason": "frontage 62.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012096163",
+   "reason": "frontage 84.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012098305",
+   "reason": "frontage 100.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012099177",
+   "reason": "frontage 113.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012099290",
+   "reason": "frontage 184.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012100499",
+   "reason": "frontage 184.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012103152",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012103549",
+   "reason": "frontage 99.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012104328",
+   "reason": "sightline to Ten Katestraat crosses 0363100012092172"
+  },
+  {
+   "pandId": "0363100012107941",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012108264",
+   "reason": "frontage 81.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012110654",
+   "reason": "frontage 190.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012111836",
+   "reason": "frontage 121.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012111903",
+   "reason": "frontage 51.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012112111",
+   "reason": "frontage 117.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012112967",
+   "reason": "sightline to Ten Katestraat crosses 0363100012160094"
+  },
+  {
+   "pandId": "0363100012115555",
+   "reason": "sightline to Ten Katestraat crosses 0363100012148565"
+  },
+  {
+   "pandId": "0363100012116959",
+   "reason": "frontage 44.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012117685",
+   "reason": "frontage 111.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012118514",
+   "reason": "frontage 65.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012119330",
+   "reason": "frontage 139.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012119385",
+   "reason": "frontage 46.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012123310",
+   "reason": "frontage 197.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012123901",
+   "reason": "frontage 91.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012125803",
+   "reason": "frontage 63.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012127784",
+   "reason": "sightline to Ten Katestraat crosses 0363100012091626"
+  },
+  {
+   "pandId": "0363100012130890",
+   "reason": "frontage 93.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012131204",
+   "reason": "frontage 103.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012136389",
+   "reason": "frontage 105.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012140769",
+   "reason": "frontage 105.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012141125",
+   "reason": "frontage 99.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012141212",
+   "reason": "frontage 135.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012095974",
+   "reason": "frontage 90.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012107234",
+   "reason": "frontage 53.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012112435",
+   "reason": "frontage 66.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012119011",
+   "reason": "frontage 109.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012119012",
+   "reason": "frontage 110.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012119702",
+   "reason": "frontage 109.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012130663",
+   "reason": "frontage 80.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012132092",
+   "reason": "frontage 43.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012139609",
+   "reason": "frontage 65.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012143043",
+   "reason": "frontage 72.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012143198",
+   "reason": "frontage 78.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012146038",
+   "reason": "frontage 83.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012146138",
+   "reason": "frontage 137.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012150893",
+   "reason": "frontage 51.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012151677",
+   "reason": "frontage 56.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012152706",
+   "reason": "sightline to Ten Katestraat crosses 0363100012165485"
+  },
+  {
+   "pandId": "0363100012152825",
+   "reason": "frontage 156.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012152980",
+   "reason": "frontage 151.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012152992",
+   "reason": "frontage 118.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153022",
+   "reason": "frontage 30.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153029",
+   "reason": "frontage 127.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153107",
+   "reason": "frontage 41.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153109",
+   "reason": "sightline to Ten Katestraat crosses 0363100012152706"
+  },
+  {
+   "pandId": "0363100012153154",
+   "reason": "frontage 54.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153189",
+   "reason": "frontage 61.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153206",
+   "reason": "frontage 127.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153217",
+   "reason": "frontage 50.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153267",
+   "reason": "frontage 48.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153331",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153430",
+   "reason": "frontage 54.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153488",
+   "reason": "frontage 47.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153531",
+   "reason": "frontage 207.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153671",
+   "reason": "frontage 31.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153737",
+   "reason": "frontage 66.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012154341",
+   "reason": "frontage 55.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012154364",
+   "reason": "frontage 41.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012141247",
+   "reason": "frontage 50.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012141675",
+   "reason": "frontage 83.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012141903",
+   "reason": "frontage 96.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012144295",
+   "reason": "frontage 103.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012148220",
+   "reason": "frontage 148.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012149986",
+   "reason": "frontage 122.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012152424",
+   "reason": "frontage 159.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012152558",
+   "reason": "frontage 123.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012152661",
+   "reason": "frontage 95.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153391",
+   "reason": "frontage 122.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012153468",
+   "reason": "frontage 121.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012154386",
+   "reason": "frontage 43.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012155451",
+   "reason": "frontage 166.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012155507",
+   "reason": "frontage 74.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012155719",
+   "reason": "frontage 89.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012155789",
+   "reason": "frontage 80.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012155942",
+   "reason": "frontage 117.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156007",
+   "reason": "frontage 168.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156322",
+   "reason": "frontage 134.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156338",
+   "reason": "frontage 90.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156469",
+   "reason": "sightline to Ten Katestraat crosses 0363100012155752"
+  },
+  {
+   "pandId": "0363100012156584",
+   "reason": "frontage 108.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156654",
+   "reason": "frontage 63.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156662",
+   "reason": "frontage 82.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156816",
+   "reason": "frontage 174.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156893",
+   "reason": "frontage 203.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156988",
+   "reason": "frontage 126.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157007",
+   "reason": "frontage 175.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157025",
+   "reason": "frontage 219.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157043",
+   "reason": "sightline to Ten Katestraat crosses 0363100012161934"
+  },
+  {
+   "pandId": "0363100012157145",
+   "reason": "frontage 79.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157261",
+   "reason": "frontage 68.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157271",
+   "reason": "frontage 57.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157310",
+   "reason": "frontage 51.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157313",
+   "reason": "frontage 173.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157395",
+   "reason": "frontage 118.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157433",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157443",
+   "reason": "frontage 58.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157515",
+   "reason": "frontage 61.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157702",
+   "reason": "frontage 123.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157730",
+   "reason": "frontage 53.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157799",
+   "reason": "frontage 69.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157844",
+   "reason": "frontage 101.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157876",
+   "reason": "frontage 44.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158097",
+   "reason": "frontage 138.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158150",
+   "reason": "sightline to Ten Katestraat crosses 0363100012157043"
+  },
+  {
+   "pandId": "0363100012155310",
+   "reason": "frontage 83.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156298",
+   "reason": "frontage 123.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156935",
+   "reason": "frontage 128.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012156969",
+   "reason": "frontage 53.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157274",
+   "reason": "frontage 150.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157726",
+   "reason": "frontage 77.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012157933",
+   "reason": "frontage 154.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158103",
+   "reason": "frontage 100.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158344",
+   "reason": "frontage 93.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158350",
+   "reason": "frontage 49.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158415",
+   "reason": "frontage 73.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158488",
+   "reason": "frontage 53.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158503",
+   "reason": "frontage 174.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158557",
+   "reason": "frontage 50.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158839",
+   "reason": "frontage 166.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159101",
+   "reason": "frontage 117.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159125",
+   "reason": "frontage 86.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159209",
+   "reason": "frontage 122.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159236",
+   "reason": "frontage 125.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159323",
+   "reason": "frontage 211.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159339",
+   "reason": "frontage 63.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159351",
+   "reason": "sightline to Ten Katestraat crosses 0363100012073962"
+  },
+  {
+   "pandId": "0363100012159378",
+   "reason": "sightline to Ten Katestraat crosses 0363100012157043"
+  },
+  {
+   "pandId": "0363100012159474",
+   "reason": "frontage 79.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159576",
+   "reason": "frontage 70.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159657",
+   "reason": "frontage 124.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159774",
+   "reason": "frontage 160.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159793",
+   "reason": "frontage 50.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159816",
+   "reason": "frontage 59.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159817",
+   "reason": "frontage 92.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159872",
+   "reason": "frontage 166.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159892",
+   "reason": "frontage 129.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159894",
+   "reason": "frontage 112.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159950",
+   "reason": "frontage 75.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159962",
+   "reason": "frontage 50.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160044",
+   "reason": "frontage 142.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160094",
+   "reason": "sightline to Ten Katestraat crosses 0363100012239620"
+  },
+  {
+   "pandId": "0363100012160152",
+   "reason": "frontage 165.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160178",
+   "reason": "frontage 113.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160192",
+   "reason": "frontage 215.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160213",
+   "reason": "sightline to Ten Katestraat crosses 0363100012152706"
+  },
+  {
+   "pandId": "0363100012160226",
+   "reason": "sightline to Ten Katestraat crosses 0363100012073962"
+  },
+  {
+   "pandId": "0363100012160346",
+   "reason": "frontage 58.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160593",
+   "reason": "frontage 30.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160838",
+   "reason": "frontage 126.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160832",
+   "reason": "frontage 199.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158295",
+   "reason": "frontage 124.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012158384",
+   "reason": "frontage 117.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159487",
+   "reason": "frontage 175.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012159726",
+   "reason": "frontage 203.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160298",
+   "reason": "frontage 48.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160350",
+   "reason": "frontage 122.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160567",
+   "reason": "frontage 164.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160768",
+   "reason": "frontage 61.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160871",
+   "reason": "frontage 64.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012160986",
+   "reason": "frontage 126.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161009",
+   "reason": "frontage 40.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161035",
+   "reason": "frontage 90.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161048",
+   "reason": "frontage 35.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161056",
+   "reason": "frontage 105.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161113",
+   "reason": "frontage 94.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161134",
+   "reason": "frontage 47.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161211",
+   "reason": "frontage 85.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161362",
+   "reason": "frontage 166.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161486",
+   "reason": "frontage 102.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161640",
+   "reason": "frontage 178.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161685",
+   "reason": "sightline to Ten Katestraat crosses 0363100012164456"
+  },
+  {
+   "pandId": "0363100012161752",
+   "reason": "frontage 93.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161954",
+   "reason": "frontage 154.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162005",
+   "reason": "frontage 50.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162138",
+   "reason": "frontage 154.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162287",
+   "reason": "frontage 56.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162527",
+   "reason": "frontage 99.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162552",
+   "reason": "frontage 170.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162559",
+   "reason": "frontage 125.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162560",
+   "reason": "frontage 110.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162761",
+   "reason": "frontage 125.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162936",
+   "reason": "frontage 40.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163006",
+   "reason": "frontage 96.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163151",
+   "reason": "frontage 142.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163272",
+   "reason": "frontage 58.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163274",
+   "reason": "frontage 63.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163466",
+   "reason": "frontage 50.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163468",
+   "reason": "frontage 156.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163536",
+   "reason": "frontage 97.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163671",
+   "reason": "frontage 106.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163673",
+   "reason": "frontage 89.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163720",
+   "reason": "frontage 50.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163768",
+   "reason": "frontage 114.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163978",
+   "reason": "frontage 69.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161002",
+   "reason": "frontage 149.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161564",
+   "reason": "frontage 95.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012161899",
+   "reason": "frontage 192.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012162136",
+   "reason": "frontage 203.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012163844",
+   "reason": "frontage 151.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164134",
+   "reason": "frontage 179.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164224",
+   "reason": "frontage 50.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164250",
+   "reason": "frontage 35.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164271",
+   "reason": "frontage 125.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164276",
+   "reason": "frontage 39.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164429",
+   "reason": "frontage 57.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164477",
+   "reason": "frontage 69.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164492",
+   "reason": "frontage 49.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164493",
+   "reason": "frontage 44.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164498",
+   "reason": "frontage 52.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164522",
+   "reason": "frontage 91.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164568",
+   "reason": "frontage 125.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164752",
+   "reason": "frontage 117.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165141",
+   "reason": "frontage 122.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165183",
+   "reason": "frontage 52.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165214",
+   "reason": "frontage 58.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165408",
+   "reason": "frontage 97.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165448",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165475",
+   "reason": "frontage 36.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165951",
+   "reason": "sightline to Ten Katestraat crosses 0363100012091626"
+  },
+  {
+   "pandId": "0363100012166034",
+   "reason": "frontage 97.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166207",
+   "reason": "frontage 68.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166233",
+   "reason": "frontage 46.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166505",
+   "reason": "frontage 52.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166541",
+   "reason": "frontage 163.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166561",
+   "reason": "frontage 95.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166638",
+   "reason": "frontage 70.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166668",
+   "reason": "frontage 121.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166763",
+   "reason": "frontage 130.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166965",
+   "reason": "frontage 48.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012167170",
+   "reason": "frontage 107.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012167197",
+   "reason": "frontage 62.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012167454",
+   "reason": "frontage 127.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012183366",
+   "reason": "frontage 35.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012185144",
+   "reason": "frontage 46.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012186273",
+   "reason": "frontage 68.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012164341",
+   "reason": "frontage 112.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165766",
+   "reason": "frontage 111.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165925",
+   "reason": "frontage 150.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012165926",
+   "reason": "frontage 149.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166164",
+   "reason": "frontage 197.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166236",
+   "reason": "frontage 208.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166272",
+   "reason": "frontage 105.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012166815",
+   "reason": "frontage 170.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012183193",
+   "reason": "frontage 165.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012186274",
+   "reason": "frontage 63.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012187019",
+   "reason": "sightline to Ten Katestraat crosses 0363100012144382"
+  },
+  {
+   "pandId": "0363100012187969",
+   "reason": "frontage 38.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012189128",
+   "reason": "frontage 39.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012189421",
+   "reason": "frontage 60.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012190004",
+   "reason": "frontage 63.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012191260",
+   "reason": "frontage 35.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012191631",
+   "reason": "frontage 97.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012191801",
+   "reason": "sightline to Ten Katestraat crosses 0363100012129411"
+  },
+  {
+   "pandId": "0363100012191958",
+   "reason": "sightline to Ten Katestraat crosses 0363100012236297"
+  },
+  {
+   "pandId": "0363100012197601",
+   "reason": "sightline to Ten Katestraat crosses 0363100012236297"
+  },
+  {
+   "pandId": "0363100012201902",
+   "reason": "frontage 211.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012202718",
+   "reason": "sightline to Ten Katestraat crosses 0363100012197601"
+  },
+  {
+   "pandId": "0363100012203538",
+   "reason": "sightline to Ten Katestraat crosses 0363100012071572"
+  },
+  {
+   "pandId": "0363100012203539",
+   "reason": "sightline to Ten Katestraat crosses 0363100012071572"
+  },
+  {
+   "pandId": "0363100012204471",
+   "reason": "frontage 54.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012206748",
+   "reason": "frontage 125.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012206749",
+   "reason": "frontage 125.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012206750",
+   "reason": "frontage 125.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012206751",
+   "reason": "frontage 124.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012206956",
+   "reason": "frontage 35.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012207111",
+   "reason": "frontage 35.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012208580",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012208946",
+   "reason": "frontage 44.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012210008",
+   "reason": "frontage 35.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012210608",
+   "reason": "frontage 109.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012212769",
+   "reason": "frontage 35.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012216958",
+   "reason": "frontage 43.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012218837",
+   "reason": "sightline to Ten Katestraat crosses 0363100012233527"
+  },
+  {
+   "pandId": "0363100012221150",
+   "reason": "sightline to Ten Katestraat crosses 0363100012197601"
+  },
+  {
+   "pandId": "0363100012222272",
+   "reason": "sightline to Ten Katestraat crosses 0363100012146613"
+  },
+  {
+   "pandId": "0363100012222290",
+   "reason": "frontage 35.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012223864",
+   "reason": "sightline to Ten Katestraat crosses 0363100012152727"
+  },
+  {
+   "pandId": "0363100012226226",
+   "reason": "frontage 31.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012227396",
+   "reason": "frontage 59.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012229220",
+   "reason": "frontage 43.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012187885",
+   "reason": "frontage 117.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012189633",
+   "reason": "frontage 186.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012190223",
+   "reason": "frontage 170.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012191455",
+   "reason": "frontage 123.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012197462",
+   "reason": "frontage 115.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012200535",
+   "reason": "frontage 113.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012208475",
+   "reason": "frontage 114.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012210596",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012211540",
+   "reason": "frontage 111.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012217503",
+   "reason": "frontage 179.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012217958",
+   "reason": "frontage 177.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012222723",
+   "reason": "frontage 114.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012226406",
+   "reason": "frontage 173.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236901",
+   "reason": "frontage 100.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012230727",
+   "reason": "frontage 35.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012232351",
+   "reason": "frontage 63.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233028",
+   "reason": "sightline to Ten Katestraat crosses 0363100012083242"
+  },
+  {
+   "pandId": "0363100012233487",
+   "reason": "frontage 154.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233496",
+   "reason": "frontage 154.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233589",
+   "reason": "frontage 72.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233696",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236014",
+   "reason": "frontage 109.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236187",
+   "reason": "frontage 34.7 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236219",
+   "reason": "frontage 199.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236307",
+   "reason": "frontage 54.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236532",
+   "reason": "frontage 83.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236554",
+   "reason": "frontage 35.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236622",
+   "reason": "frontage 75.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236761",
+   "reason": "sightline to Ten Katestraat crosses 0363100012072007"
+  },
+  {
+   "pandId": "0363100012236801",
+   "reason": "frontage 43.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236819",
+   "reason": "sightline to Ten Katestraat crosses 0363100012233538"
+  },
+  {
+   "pandId": "0363100012236856",
+   "reason": "frontage 40.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236886",
+   "reason": "frontage 85.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236899",
+   "reason": "frontage 106.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236919",
+   "reason": "frontage 50.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236953",
+   "reason": "frontage 134.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236958",
+   "reason": "sightline to Ten Katestraat crosses 0363100012158343"
+  },
+  {
+   "pandId": "0363100012236969",
+   "reason": "frontage 67.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236982",
+   "reason": "frontage 93.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237017",
+   "reason": "frontage 191.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237021",
+   "reason": "frontage 87.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237138",
+   "reason": "frontage 117.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237189",
+   "reason": "frontage 49.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012230607",
+   "reason": "frontage 115.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012232032",
+   "reason": "no frontage on Ten Katestraat: No footprint edge faces Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233413",
+   "reason": "frontage 31.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233461",
+   "reason": "frontage 149.5 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233470",
+   "reason": "sightline to Ten Katestraat crosses 0363100012236981"
+  },
+  {
+   "pandId": "0363100012233518",
+   "reason": "frontage 120.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012233545",
+   "reason": "sightline to Ten Katestraat crosses 0363100012233470"
+  },
+  {
+   "pandId": "0363100012235229",
+   "reason": "frontage 156.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012235778",
+   "reason": "frontage 180.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236035",
+   "reason": "frontage 117.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236057",
+   "reason": "frontage 148.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236448",
+   "reason": "frontage 181.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236491",
+   "reason": "frontage 88.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012236693",
+   "reason": "frontage 31.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237004",
+   "reason": "frontage 40.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237261",
+   "reason": "frontage 89.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237297",
+   "reason": "frontage 130.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237316",
+   "reason": "frontage 40.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012250623",
+   "reason": "frontage 117.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012250624",
+   "reason": "frontage 107.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012252239",
+   "reason": "frontage 155.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237340",
+   "reason": "frontage 126.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012237396",
+   "reason": "sightline to Ten Katestraat crosses 0363100012233470"
+  },
+  {
+   "pandId": "0363100012241863",
+   "reason": "frontage 144.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012241864",
+   "reason": "frontage 159.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012241865",
+   "reason": "frontage 198.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012241866",
+   "reason": "frontage 198.8 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012241870",
+   "reason": "frontage 144.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012242761",
+   "reason": "frontage 148.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012243774",
+   "reason": "frontage 144.3 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012243775",
+   "reason": "frontage 143.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012243776",
+   "reason": "frontage 143.6 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012243777",
+   "reason": "frontage 170.4 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012247367",
+   "reason": "frontage 198.1 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012247852",
+   "reason": "frontage 198.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012247939",
+   "reason": "frontage 198.0 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012247947",
+   "reason": "frontage 198.2 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012248049",
+   "reason": "frontage 191.9 m from Ten Katestraat"
+  },
+  {
+   "pandId": "0363100012072007",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073962",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090063",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096370",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110457",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117439",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125392",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129253",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152726",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152727",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153270",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153275",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148565",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155752",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156272",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158343",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160807",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161111",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161123",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161731",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162871",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163357",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163944",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164456",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012239620",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012154173",
+   "alongM": 0,
+   "widthM": 5.01,
+   "eavesM": 17.4,
+   "roofMaxM": 17.4,
+   "storeys3dbag": 5,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156336",
+   "alongM": 4.98,
+   "widthM": 4.95,
+   "eavesM": 17.2,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 0,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156544",
+   "alongM": 9.93,
+   "widthM": 4.95,
+   "eavesM": 17.17,
+   "roofMaxM": 17.18,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154285",
+   "alongM": 14.89,
+   "widthM": 4.96,
+   "eavesM": 16.88,
+   "roofMaxM": 16.91,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154389",
+   "alongM": 19.84,
+   "widthM": 4.94,
+   "eavesM": 16.94,
+   "roofMaxM": 17.02,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012145751",
+   "alongM": 29.73,
+   "widthM": 14.84,
+   "eavesM": 17.08,
+   "roofMaxM": 19.42,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012167027",
+   "alongM": 39.33,
+   "widthM": 4.37,
+   "eavesM": 16.24,
+   "roofMaxM": 18.91,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155390",
+   "alongM": 43.64,
+   "widthM": 4.25,
+   "eavesM": 14.33,
+   "roofMaxM": 16.25,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165679",
+   "alongM": 47.94,
+   "widthM": 4.35,
+   "eavesM": 14.37,
+   "roofMaxM": 16.53,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161372",
+   "alongM": 52.27,
+   "widthM": 4.32,
+   "eavesM": 16.16,
+   "roofMaxM": 17.83,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154178",
+   "alongM": 56.55,
+   "widthM": 4.27,
+   "eavesM": 16.3,
+   "roofMaxM": 16.53,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158689",
+   "alongM": 60.79,
+   "widthM": 4.2,
+   "eavesM": 16.22,
+   "roofMaxM": 18.29,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167006",
+   "alongM": 65.05,
+   "widthM": 4.31,
+   "eavesM": 16.25,
+   "roofMaxM": 17.03,
+   "storeys3dbag": 5,
+   "builtYear": 1894,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012098626",
+   "alongM": 82.5,
+   "widthM": 30.6,
+   "eavesM": 18.76,
+   "roofMaxM": 19.82,
+   "storeys3dbag": 5,
+   "builtYear": 2006,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

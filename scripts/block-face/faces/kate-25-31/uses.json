@@ -1,0 +1,97 @@
+{
+ "street": "Ten Katestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:41:19.421Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012071572",
+   "addresses": [
+    "Ten Katestraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000825338"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233527",
+   "addresses": [
+    "Ten Katestraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000825349"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139746",
+   "addresses": [
+    "Ten Katestraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000825358"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093654",
+   "addresses": [
+    "Ten Katestraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 31-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001005903"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8727834772,
+     "lngLat": [
+      4.8667214,
+      52.3673756
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1053BW",
+      "addr:street": "Ten Katestraat",
+      "amenity": "cafe",
+      "check_date": "2026-09-13",
+      "check_date:opening_hours": "2026-09-13",
+      "name": "Bar Kaat",
+      "opening_hours": "We-Th 15:00-23:00; Fr-Sa 15:00-01:00; Su 13:00-21:00",
+      "website": "https://barkaat.nl"
+     },
+     "fetchedAt": "2026-10-16T11:41:19.421Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

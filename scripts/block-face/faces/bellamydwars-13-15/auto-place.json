@@ -1,0 +1,81 @@
+{
+ "face": "bellamydwars-13-15",
+ "street": "Bellamydwarsstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 0.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012067622",
+   "address": "Bellamydwarsstraat 13",
+   "builtYear": 1934,
+   "widthM": 5.74,
+   "eavesM": 12.75,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b4a99a",
+    "wallRaw": "#bcb5ac",
+    "skyline": {
+     "eavesM": 13,
+     "eavesRow": 249,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.882,
+    "voidShare": 0.48,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 48 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012112111",
+   "address": "Bellamydwarsstraat 15",
+   "builtYear": 1934,
+   "widthM": 5.86,
+   "eavesM": 13.15,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b0a89f",
+    "wallRaw": "#b7afa6",
+    "skyline": {
+     "eavesM": 13.22,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.787,
+    "voidShare": 0.42,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 42 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

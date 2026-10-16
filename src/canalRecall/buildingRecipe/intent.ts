@@ -352,6 +352,17 @@ export interface FrontIntent {
    */
   windowHoods?: boolean;
   /**
+   * Glazed tile panels (Bellamybuurt 1915 rows, Hasebroekstraat 56-70; buildingRecipe/tileAccents.ts): on every pier of
+   * the listed storeys (0-based, >= 1), at the windows' mid-height, a row of tile diamonds in `colour` (a measured tint)
+   * between two patterned brick courses in `courses` (default the palette's band brick, else the wall). Absent =
+   * byte-identical.
+   */
+  tilePanels?: {storeys: number[]; colour: string; courses?: string | false;
+    /** `piers` (default): diamonds between two courses on every pier at the windows' mid-height (Hasebroekstraat 56-70).
+     * `sills`: a row of `count` (default 3) small square tiles 0.25 m under the sill of the windows on the listed `axes`
+     * (default every axis), no courses (Hasebroekstraat 90-114, green tiles under the narrow window). */
+    place?: 'piers' | 'sills'; axes?: number[]; count?: number};
+  /**
    * Tall plain parapet (Jan Evertsenstraat): the full storeys end `courses` brick courses (0.055 m each) under the eaves
    * and the wall above them is plain; `coping: true` lays a thin coping (0.1 m, 4 cm proud, the cornice colour) on its
    * top. A crown field; needs `cornice: "none"` and a `flat` or `cornice` gable.
@@ -861,6 +872,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     problems.push(...paintedProblems(f, at, oneOf));
     if (f.bands === 'courses' || f.courseStoreys !== undefined) problems.push(...courseProblems(f, intent?.palette, at));
     if (f.windowHoods !== undefined && f.windowHoods !== true) problems.push(`${at}.windowHoods: true (or leave it out)`);
+    if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.lisenes !== undefined) {
       const l = f.lisenes as Record<string, unknown>;
       if (typeof l !== 'object' || l === null || Object.keys(l).some(k => !['leftEnd', 'rightEnd'].includes(k)) || Object.values(l).some(v => v !== 'half' && v !== 'full') || !Object.keys(l).length) problems.push(`${at}.lisenes: {leftEnd?, rightEnd?} each "half" or "full"`);
@@ -1055,6 +1067,19 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
   }
   if (f.windowSills !== undefined) oneOf(f.windowSills, WINDOW_SILLS, `${at}.windowSills`);
   if (f.paintedStoreys !== undefined) p.push(...paintedStoreyProblems(f, at));
+  return p;
+}
+
+/** Problems with `tilePanels` (glazed tile diamonds on the piers of upper storeys). */
+export function tilePanelProblems(f: FrontIntent, at: string): string[] {
+  const t = f.tilePanels as {storeys?: unknown; colour?: unknown; courses?: unknown; place?: unknown; axes?: unknown; count?: unknown} | undefined, p: string[] = [];
+  if (!t || typeof t !== 'object' || Object.keys(t).some(k => !['storeys', 'colour', 'courses', 'place', 'axes', 'count'].includes(k))) return [`${at}.tilePanels: {storeys, colour, courses?, place?, axes?, count?}`];
+  if (t.place !== undefined && t.place !== 'piers' && t.place !== 'sills') p.push(`${at}.tilePanels.place: "piers" or "sills"`);
+  if (t.axes !== undefined && (!Array.isArray(t.axes) || !t.axes.length || t.axes.some(a => !Number.isInteger(a) || a < 0 || a > 15))) p.push(`${at}.tilePanels.axes: window axis indices`);
+  if (t.count !== undefined && !(Number.isInteger(t.count) && (t.count as number) >= 1 && (t.count as number) <= 6)) p.push(`${at}.tilePanels.count: 1..6`);
+  const l = t.storeys as number[];
+  if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 1 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.tilePanels.storeys: ascending storey indices within 1..${f.storeys - 1}`);
+  for (const k of ['colour', 'courses'] as const) if ((k === 'colour' || (t[k] !== undefined && t[k] !== false)) && (typeof t[k] !== 'string' || !/^#[0-9a-f]{6}$/i.test(t[k] as string))) p.push(`${at}.tilePanels.${k}: a #rrggbb colour`);
   return p;
 }
 

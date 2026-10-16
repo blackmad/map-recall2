@@ -1,0 +1,41 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149447",
+   "addresses": [
+    "Hasebroekstraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 118-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000659723"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144553",
+   "addresses": [
+    "Hasebroekstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000659715"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

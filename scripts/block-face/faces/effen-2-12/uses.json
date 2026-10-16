@@ -1,0 +1,105 @@
+{
+ "street": "Van Effenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148395",
+   "addresses": [
+    "Van Effenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000838888"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073026",
+   "addresses": [
+    "Van Effenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000838884"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084995",
+   "addresses": [
+    "Van Effenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000838876"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131145",
+   "addresses": [
+    "Van Effenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000838868"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069039",
+   "addresses": [
+    "Van Effenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000838860"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081532",
+   "addresses": [
+    "Van Effenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Effenstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000838852"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

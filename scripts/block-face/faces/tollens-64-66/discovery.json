@@ -1,0 +1,243 @@
+{
+ "street": "Tollensstraat",
+ "seed": "0363100012152558",
+ "members": [
+  "0363100012156298",
+  "0363100012152558"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012156298 (face continues: 237340)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012152558 (face continues: 236693)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012067449",
+   "reason": "frontage 104.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012067928",
+   "reason": "frontage 88.5 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012072076",
+   "reason": "frontage 58.3 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012079593",
+   "reason": "frontage 109.4 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012084581",
+   "reason": "frontage 99.0 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012095974",
+   "reason": "frontage 45.8 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012107234",
+   "reason": "frontage 83.3 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012119702",
+   "reason": "sightline to Tollensstraat crosses 0363100012149986"
+  },
+  {
+   "pandId": "0363100012132092",
+   "reason": "frontage 93.8 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012139609",
+   "reason": "frontage 64.9 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012141675",
+   "reason": "frontage 52.1 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012141903",
+   "reason": "frontage 38.5 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012144295",
+   "reason": "frontage 32.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012153271",
+   "reason": "frontage 46.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012155310",
+   "reason": "frontage 53.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012156969",
+   "reason": "frontage 80.1 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012157726",
+   "reason": "frontage 59.1 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012158550",
+   "reason": "frontage 58.9 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012159740",
+   "reason": "frontage 51.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012159806",
+   "reason": "frontage 56.3 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012160298",
+   "reason": "frontage 88.7 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012160768",
+   "reason": "frontage 76.1 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012161375",
+   "reason": "frontage 58.9 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012164341",
+   "reason": "sightline to Tollensstraat crosses 0363100012236035"
+  },
+  {
+   "pandId": "0363100012164444",
+   "reason": "frontage 56.4 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012166144",
+   "reason": "frontage 59.0 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012166997",
+   "reason": "frontage 61.4 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012167037",
+   "reason": "frontage 56.3 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012202474",
+   "reason": "frontage 41.3 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012233413",
+   "reason": "frontage 100.7 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012233545",
+   "reason": "frontage 114.4 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012236035",
+   "reason": "sightline to Tollensstraat crosses 0363100012237340"
+  },
+  {
+   "pandId": "0363100012236198",
+   "reason": "frontage 41.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012236491",
+   "reason": "sightline to Tollensstraat crosses 0363100012164341"
+  },
+  {
+   "pandId": "0363100012237004",
+   "reason": "frontage 92.2 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012237396",
+   "reason": "frontage 108.7 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012241863",
+   "reason": "sightline to Tollensstraat crosses 0363100012241870"
+  },
+  {
+   "pandId": "0363100012241864",
+   "reason": "sightline to Tollensstraat crosses 0363100012241870"
+  },
+  {
+   "pandId": "0363100012241866",
+   "reason": "frontage 62.3 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012241867",
+   "reason": "frontage 62.1 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012241869",
+   "reason": "frontage 62.1 m from Tollensstraat"
+  },
+  {
+   "pandId": "0363100012241870",
+   "reason": "sightline to Tollensstraat crosses 0363100012241863"
+  },
+  {
+   "pandId": "0363100012242761",
+   "reason": "sightline to Tollensstraat crosses 0363100012241870"
+  },
+  {
+   "pandId": "0363100012092013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142956",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148220",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148345",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235229",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012156298",
+   "alongM": -5.07,
+   "widthM": 5.07,
+   "eavesM": 11.96,
+   "roofMaxM": 15.72,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152558",
+   "alongM": 0,
+   "widthM": 5.07,
+   "eavesM": 12.06,
+   "roofMaxM": 14.09,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  }
+ ]
+}

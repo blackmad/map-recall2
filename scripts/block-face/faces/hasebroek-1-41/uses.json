@@ -1,0 +1,339 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:25:53.378Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165485",
+   "addresses": [
+    "Hasebroekstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 1-H",
+     "use": "industriefunctie",
+     "areaM2": 140,
+     "bagId": "0363010000659270"
+    },
+    {
+     "address": "Hasebroekstraat 1-H",
+     "use": "winkelfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012143101"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679403,
+     "lngLat": [
+      4.8671057,
+      52.3663724
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1053CL",
+      "addr:street": "Hasebroekstraat",
+      "cuisine": "turkish",
+      "name": "Dunya Firini",
+      "shop": "bakery"
+     },
+     "fetchedAt": "2026-10-16T11:25:53.378Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152706",
+   "addresses": [
+    "Hasebroekstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012143102"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153109",
+   "addresses": [
+    "Hasebroekstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000659285"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160213",
+   "addresses": [
+    "Hasebroekstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 7-H",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000659292"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153022",
+   "addresses": [
+    "Hasebroekstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000659300"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164250",
+   "addresses": [
+    "Hasebroekstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000659308"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153107",
+   "addresses": [
+    "Hasebroekstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000659316"
+    },
+    {
+     "address": "Hasebroekstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010003716752"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166233",
+   "addresses": [
+    "Hasebroekstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000659324"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165183",
+   "addresses": [
+    "Hasebroekstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000659332"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157271",
+   "addresses": [
+    "Hasebroekstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000659340"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163274",
+   "addresses": [
+    "Hasebroekstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012067084"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157261",
+   "addresses": [
+    "Hasebroekstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000659355"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158415",
+   "addresses": [
+    "Hasebroekstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000659363"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159474",
+   "addresses": [
+    "Hasebroekstraat 27"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063580",
+   "addresses": [
+    "Hasebroekstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001012854"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161035",
+   "addresses": [
+    "Hasebroekstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001007408"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166561",
+   "addresses": [
+    "Hasebroekstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012066663"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157844",
+   "addresses": [
+    "Hasebroekstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000659399"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163671",
+   "addresses": [
+    "Hasebroekstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000659407"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

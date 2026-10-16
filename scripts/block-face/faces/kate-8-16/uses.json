@@ -1,0 +1,177 @@
+{
+ "street": "Ten Katestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:37:38.913Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012110457",
+   "addresses": [
+    "Ten Katestraat 14",
+    "Ten Katestraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 16",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010003780178"
+    },
+    {
+     "address": "Ten Katestraat 16",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010011323306"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809208207,
+     "lngLat": [
+      4.8664302,
+      52.3673157
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1053CE",
+      "addr:street": "Ten Katestraat",
+      "amenity": "bar",
+      "indoor_seating": "yes",
+      "name": "Bar Centraal",
+      "opening_hours": "Mo-Th 09:00-18:00; Fr 16:00-01:00; Sa 12:00-01:00; Su 12:00-00:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 779 9094",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://barcentraal.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-16T11:37:38.913Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012117439",
+   "addresses": [
+    "Ten Katestraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000825276"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096370",
+   "addresses": [
+    "Ten Katestraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000825268"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164456",
+   "addresses": [
+    "Ten Katestraat 8",
+    "Ten Katestraat 8A",
+    "Ten Katestraat 8B",
+    "Ten Katestraat 8E",
+    "Ten Katestraat 8F",
+    "Ten Katestraat 8G",
+    "Ten Katestraat 8H",
+    "Ten Katestraat 8K",
+    "Ten Katestraat 8C",
+    "Ten Katestraat 8D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 8",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001010624"
+    },
+    {
+     "address": "Ten Katestraat 8A",
+     "use": "industriefunctie",
+     "areaM2": 92,
+     "bagId": "0363010012089000"
+    },
+    {
+     "address": "Ten Katestraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012089002"
+    },
+    {
+     "address": "Ten Katestraat 8F",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012089003"
+    },
+    {
+     "address": "Ten Katestraat 8G",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012089004"
+    },
+    {
+     "address": "Ten Katestraat 8H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012089005"
+    },
+    {
+     "address": "Ten Katestraat 8K",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012089006"
+    },
+    {
+     "address": "Wenslauerstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012089007"
+    },
+    {
+     "address": "Wenslauerstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012089008"
+    },
+    {
+     "address": "Ten Katestraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012133643"
+    },
+    {
+     "address": "Ten Katestraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010012133644"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  }
+ ]
+}

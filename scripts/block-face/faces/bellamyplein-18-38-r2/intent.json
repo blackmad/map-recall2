@@ -1,0 +1,145 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bellamyplein-18-38-r2",
+ "street": "Bellamyplein",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/bellamyplein-18-38-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/bellamyplein-18-38/auto-place.json"
+ },
+ "types": [
+  "bellamy-1904-balcony-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012159962",
+   "slug": "bellamyplein-159962",
+   "address": "Bellamyplein 26",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8d6139",
+     "evidence": "strip 2024-12-11 span 1323-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "box-dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1323-1542"
+   }
+  },
+  {
+   "pandId": "0363100012158557",
+   "slug": "bellamyplein-158557",
+   "address": "Bellamyplein 24",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "crown": "box-dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1543-1763"
+   }
+  },
+  {
+   "pandId": "0363100012163720",
+   "slug": "bellamyplein-163720",
+   "address": "Bellamyplein 22",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "crown": "box-dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1763-1984"
+   }
+  },
+  {
+   "pandId": "0363100012164492",
+   "slug": "bellamyplein-164492",
+   "address": "Bellamyplein 20",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#26261a",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2024-12-11 span 1983-2203"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#73513c",
+     "evidence": "strip 2024-12-11 span 1983-2203: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "box-dormer"
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2024-12-11 span 1983-2203"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

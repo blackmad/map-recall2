@@ -1,0 +1,173 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:29:26.030Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154793",
+   "addresses": [
+    "Hasebroekstraat 105A",
+    "Hasebroekstraat 105B",
+    "Hasebroekstraat 105C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 105A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001044139"
+    },
+    {
+     "address": "Hasebroekstraat 105B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001044140"
+    },
+    {
+     "address": "Hasebroekstraat 105C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001044141"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133637",
+   "addresses": [
+    "Hasebroekstraat 107A",
+    "Hasebroekstraat 107B",
+    "Hasebroekstraat 107C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 107A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001044142"
+    },
+    {
+     "address": "Hasebroekstraat 107B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001044143"
+    },
+    {
+     "address": "Hasebroekstraat 107C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001044144"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082619",
+   "addresses": [
+    "Hasebroekstraat 109A",
+    "Hasebroekstraat 109B",
+    "Hasebroekstraat 109C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 109A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001044145"
+    },
+    {
+     "address": "Hasebroekstraat 109B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001044146"
+    },
+    {
+     "address": "Hasebroekstraat 109C",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001044147"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233665",
+   "addresses": [
+    "Hasebroekstraat 111A",
+    "Hasebroekstraat 111B",
+    "Hasebroekstraat 111C",
+    "Hasebroekstraat 111D",
+    "Hasebroekstraat 115A",
+    "Hasebroekstraat 115B",
+    "Hasebroekstraat 115C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 111A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001044152"
+    },
+    {
+     "address": "Hasebroekstraat 111B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010001044153"
+    },
+    {
+     "address": "Hasebroekstraat 111C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001044154"
+    },
+    {
+     "address": "Hasebroekstraat 111D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001044155"
+    },
+    {
+     "address": "Hasebroekstraat 115A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001044158"
+    },
+    {
+     "address": "Hasebroekstraat 115B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001044159"
+    },
+    {
+     "address": "Hasebroekstraat 115C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001044160"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 679091166,
+     "lngLat": [
+      4.8614669,
+      52.365241
+     ],
+     "tags": {
+      "amenity": "school",
+      "name": "Winterkoninkje"
+     },
+     "fetchedAt": "2026-10-16T11:29:26.030Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,613 @@
+{
+ "face": "wenslauer-69-85",
+ "street": "Wenslauerstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 3.41,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012241283",
+   "address": "Wenslauerstraat 69",
+   "builtYear": 2012,
+   "widthM": 4.44,
+   "eavesM": 9.9,
+   "storeys3dbag": 3,
+   "strip": {
+    "wall": "#b8c9ca",
+    "wallRaw": "#8c9087",
+    "skyline": {
+     "eavesM": 9.6,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.482,
+    "voidShare": 0.24,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 2012, type 1928-1935)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 2012, type 1928-1935"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.9 m = 4 storeys of 2.48 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.179 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150434",
+   "address": "Wenslauerstraat 69A",
+   "builtYear": 1922,
+   "widthM": 9.05,
+   "eavesM": 11.06,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#e1cbb5",
+    "wallRaw": "#e4cdb6",
+    "skyline": {
+     "eavesM": 11.35,
+     "eavesRow": 282,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.64,
+    "voidShare": 0.43,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 43 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012081134",
+   "address": "Wenslauerstraat 71",
+   "builtYear": 1922,
+   "widthM": 9.03,
+   "eavesM": 10.44,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#e5ccb4",
+    "wallRaw": "#e7ceb5",
+    "skyline": {
+     "eavesM": 11.28,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.539,
+    "voidShare": 0.4,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 40 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064390",
+   "address": "Wenslauerstraat 73",
+   "builtYear": 1938,
+   "widthM": 5.82,
+   "eavesM": 10.39,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#d3aa93",
+    "wallRaw": "#dab29b",
+    "skyline": {
+     "eavesM": 10.35,
+     "eavesRow": 322,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 1.1,
+      "topWidthM": 0.4,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.582,
+    "voidShare": 0.27,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.6 < 0.7 (3DBAG eaves 10.39 m = 5 storeys of 2.08 m vs the type's 3.02 m; roof rise 3.59 m (pitched) vs flat)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.39 m = 5 storeys of 2.08 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 3.59 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.183 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086952",
+   "address": "Wenslauerstraat 75",
+   "builtYear": 1938,
+   "widthM": 5.75,
+   "eavesM": 10.4,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#cfa891",
+    "wallRaw": "#ddb69f",
+    "skyline": {
+     "eavesM": 10.18,
+     "eavesRow": 329,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.22,
+      "topWidthM": 0.4,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.614,
+    "voidShare": 0.26,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.6 < 0.7 (3DBAG eaves 10.4 m = 5 storeys of 2.08 m vs the type's 3.02 m; roof rise 3.9 m (pitched) vs flat)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.4 m = 5 storeys of 2.08 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 3.9 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.23 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149826",
+   "address": "Wenslauerstraat 77",
+   "builtYear": 1938,
+   "widthM": 5.75,
+   "eavesM": 10.35,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#423724",
+    "wallRaw": "#6d6548",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 736,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.48 < 0.7 (3DBAG eaves 10.35 m = 5 storeys of 2.07 m vs the type's 3.02 m; roof rise 3.21 m (pitched) vs flat; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.48,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.35 m = 5 storeys of 2.07 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 3.21 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136309",
+   "address": "Wenslauerstraat 79",
+   "builtYear": 1938,
+   "widthM": 5.75,
+   "eavesM": 10.41,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#524730",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 736,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.5 < 0.7 (3DBAG eaves 10.41 m = 5 storeys of 2.08 m vs the type's 3.02 m; roof rise 3.21 m (pitched) vs flat)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.41 m = 5 storeys of 2.08 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 3.21 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132592",
+   "address": "Wenslauerstraat 81",
+   "builtYear": 1938,
+   "widthM": 5.75,
+   "eavesM": 10.18,
+   "storeys3dbag": 4,
+   "strip": {
+    "wall": "#786e4e",
+    "wallRaw": "#463925",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 736,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.5 < 0.7 (3DBAG eaves 10.18 m = 5 storeys of 2.04 m vs the type's 3.02 m; roof rise 5.14 m (pitched) vs flat)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.18 m = 5 storeys of 2.04 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 5.14 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012066665",
+   "address": "Wenslauerstraat 83",
+   "builtYear": 1938,
+   "widthM": 5.75,
+   "eavesM": 15.21,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#58442f",
+    "wallRaw": "#4f5042",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 736,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.041 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19; window shape square vs photo tall)",
+   "likeness": {
+    "pandId": "0363100012066665",
+    "ncc": 0.041,
+    "nccRaw": 0.041,
+    "shiftM": [
+     -0.2,
+     0.4
+    ],
+    "usable": 0.62,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#56442e",
+     "model": "#775c40",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.249
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070740",
+   "address": "Wenslauerstraat 85",
+   "builtYear": 1938,
+   "widthM": 5.75,
+   "eavesM": 15.2,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#5e4935",
+    "wallRaw": "#4d402f",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 66,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.65,
+      "topWidthM": 0.2,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.09 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.32 vs photo 0.18)",
+   "likeness": {
+    "pandId": "0363100012070740",
+    "ncc": 0.09,
+    "nccRaw": 0.09,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.32 vs photo 0.18"
+    ],
+    "wall": {
+     "photo": "#5b4834",
+     "model": "#7c6046",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.239
+   },
+   "challengers": {}
+  }
+ ]
+}

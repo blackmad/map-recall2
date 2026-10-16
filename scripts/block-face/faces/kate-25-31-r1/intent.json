@@ -1,0 +1,118 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kate-25-31-r1",
+ "street": "Ten Katestraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-12",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/kate-25-31-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/kate-25-31/auto-place.json"
+ },
+ "types": [
+  "bellamy-1915-green-tile",
+  "bellamy-1916-two-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012139746",
+   "slug": "kate-139746",
+   "address": "Ten Katestraat 29",
+   "type": {
+    "type": "bellamy-1915-green-tile",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2823",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-12 span 416-643"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3c322f",
+     "evidence": "strip 2023-01-12 span 416-643: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, columns 1; strip 2023-01-12 span 416-643"
+   }
+  },
+  {
+   "pandId": "0363100012093654",
+   "slug": "kate-093654",
+   "address": "Ten Katestraat 31",
+   "type": {
+    "type": "bellamy-1916-two-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#222421",
+      "fascia": true,
+      "name": "Bar Kaat",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-12 span 643-823"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3b302c",
+     "evidence": "strip 2023-01-12 span 643-823: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Bar Kaat",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 8727834772,
+     "name": "Bar Kaat"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-12",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1916-two-axis scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2023-01-12 span 643-823"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

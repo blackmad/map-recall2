@@ -1,0 +1,175 @@
+{
+ "street": "Wenslauerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:51:00.904Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012241283",
+   "addresses": [
+    "Wenslauerstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005753"
+    },
+    {
+     "address": "Wenslauerstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012073845"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150434",
+   "addresses": [
+    "Wenslauerstraat 69A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 69A-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000865060"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081134",
+   "addresses": [
+    "Wenslauerstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 246,
+     "bagId": "0363010000865067"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064390",
+   "addresses": [
+    "Wenslauerstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000865074"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086952",
+   "addresses": [
+    "Wenslauerstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000865080"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149826",
+   "addresses": [
+    "Wenslauerstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 77-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000865086"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136309",
+   "addresses": [
+    "Wenslauerstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 79-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000865089"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132592",
+   "addresses": [
+    "Wenslauerstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000865092"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066665",
+   "addresses": [
+    "Wenslauerstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 83-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000865095"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070740",
+   "addresses": [
+    "Wenslauerstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000865099"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

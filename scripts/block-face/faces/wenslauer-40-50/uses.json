@@ -1,0 +1,105 @@
+{
+ "street": "Wenslauerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:45:18.237Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012240536",
+   "addresses": [
+    "Wenslauerstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 50",
+     "use": "industriefunctie",
+     "areaM2": 22,
+     "bagId": "0363010000865027"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166945",
+   "addresses": [
+    "Wenslauerstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010002005063"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157119",
+   "addresses": [
+    "Wenslauerstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000865022"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162169",
+   "addresses": [
+    "Wenslauerstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000865021"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091181",
+   "addresses": [
+    "Wenslauerstraat 42A",
+    "Wenslauerstraat 42B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wenslauerstraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001956368"
+    },
+    {
+     "address": "Wenslauerstraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001956369"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073104",
+   "addresses": [
+    "Wenslauerstraat 40"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}
