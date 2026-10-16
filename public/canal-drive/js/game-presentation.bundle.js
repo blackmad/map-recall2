@@ -42010,6 +42010,300 @@
         licence: "Original project asset",
         licenceUrl: "./LICENSE"
       }
+    },
+    {
+      id: "mercatorplein-noordtoren",
+      name: "Mercatorplein north tower",
+      modelUrl: "./models/mercatorplein-noordtoren.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012107349"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.850677,
+          52.3704295
+        ],
+        headingDegrees: 0,
+        lengthMetres: 73.2,
+        widthMetres: 35.2
+      },
+      surveyed: {
+        anchor: [
+          4.850677,
+          52.3704295
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG 0363100012107349 footprint vertex average and 3DBAG LoD2.2 heights; native east/south metres from the anchor (the large-tier frame). Tower and gatehouse measured on rectified panorama crops (docs/mercatorplein-20261014.md)."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      heightMetres: 37.5,
+      bagYear: 1996,
+      materialOverrides: {
+        brick: "#8b5a4a",
+        concrete: "#9d978a",
+        greyBrick: "#4f4744",
+        slate: "#5b6168",
+        frame: "#e6dfca",
+        glass: "#3a4148",
+        dark: "#2c2a28",
+        stone: "#b9b2a3",
+        white: "#f1ede2",
+        red: "#a0705c"
+      },
+      attribution: {
+        title: "Mercatorplein north wall and tower (Berlage 1925-27, rebuilt 1995-98)",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) of the north wall block with block-kit facade systems (the square front with the kit ground arcade), plus the hand-modelled tower (clock dials, balconies, paired windows), the gatehouse over the Mercatorstraat underpass, erkers and hoist beams, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0; Pbech, public domain) read on a metre grid. No pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8509621,
+              52.3704626
+            ],
+            [
+              4.8509264,
+              52.3705399
+            ],
+            [
+              4.8507846,
+              52.3705154
+            ],
+            [
+              4.8507606,
+              52.3705673
+            ],
+            [
+              4.8506193,
+              52.370543
+            ],
+            [
+              4.8506281,
+              52.3705239
+            ],
+            [
+              4.8505716,
+              52.3705141
+            ],
+            [
+              4.8505868,
+              52.3704813
+            ],
+            [
+              4.8504193,
+              52.3704523
+            ],
+            [
+              4.8504037,
+              52.3704821
+            ],
+            [
+              4.8503335,
+              52.37047
+            ],
+            [
+              4.8503346,
+              52.3704679
+            ],
+            [
+              4.850315,
+              52.3704641
+            ],
+            [
+              4.8503145,
+              52.370465
+            ],
+            [
+              4.8502952,
+              52.3704612
+            ],
+            [
+              4.8503013,
+              52.3704494
+            ],
+            [
+              4.8503029,
+              52.3704497
+            ],
+            [
+              4.8503424,
+              52.370374
+            ],
+            [
+              4.8503494,
+              52.3703755
+            ],
+            [
+              4.8503991,
+              52.3702861
+            ],
+            [
+              4.8503898,
+              52.3702845
+            ],
+            [
+              4.8503918,
+              52.3702801
+            ],
+            [
+              4.8503908,
+              52.3702783
+            ],
+            [
+              4.8504014,
+              52.3702555
+            ],
+            [
+              4.8504037,
+              52.3702543
+            ],
+            [
+              4.8504059,
+              52.3702497
+            ],
+            [
+              4.851023,
+              52.3703568
+            ],
+            [
+              4.8510088,
+              52.3703873
+            ],
+            [
+              4.8510584,
+              52.3703958
+            ],
+            [
+              4.851245,
+              52.3704282
+            ],
+            [
+              4.8512452,
+              52.3704278
+            ],
+            [
+              4.85137,
+              52.3704493
+            ],
+            [
+              4.8513536,
+              52.3704879
+            ],
+            [
+              4.8513251,
+              52.3705497
+            ],
+            [
+              4.8511988,
+              52.3705278
+            ],
+            [
+              4.851209,
+              52.3705051
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "mercatorplein-zuidtoren",
+      name: "Mercatorplein south tower",
+      modelUrl: "./models/mercatorplein-zuidtoren.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012073289"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8507542,
+          52.3688725
+        ],
+        headingDegrees: 0,
+        lengthMetres: 25.5,
+        widthMetres: 18.2
+      },
+      surveyed: {
+        anchor: [
+          4.8507542,
+          52.3688725
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG 0363100012073289 footprint vertex average and 3DBAG LoD2.2 heights; native east/south metres from the anchor (the large-tier frame). Tower and gatehouse measured on rectified panorama crops (docs/mercatorplein-20261014.md)."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      heightMetres: 35.4,
+      bagYear: 1927,
+      materialOverrides: {
+        brick: "#8b5a4a",
+        concrete: "#9d978a",
+        greyBrick: "#4f4744",
+        slate: "#5b6168",
+        frame: "#e6dfca",
+        glass: "#3a4148",
+        dark: "#2c2a28",
+        stone: "#b9b2a3",
+        white: "#f1ede2",
+        red: "#a0705c"
+      },
+      attribution: {
+        title: "Mercatorplein south gatehouse and tower (Berlage 1925-27)",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry: the hand-modelled tower, rear shaft with its balconies and the gatehouse over the Van Spilbergenstraat underpass, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0) read on a metre grid, plus the 3DBAG LoD2.2 east bay (CC BY 4.0) with block-kit facades. No pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8507899,
+              52.3689114
+            ],
+            [
+              4.8506035,
+              52.3688786
+            ],
+            [
+              4.8505525,
+              52.3688697
+            ],
+            [
+              4.8505875,
+              52.3687934
+            ],
+            [
+              4.8508359,
+              52.3688365
+            ],
+            [
+              4.8508418,
+              52.3688238
+            ],
+            [
+              4.850928,
+              52.3688386
+            ],
+            [
+              4.8508728,
+              52.3689585
+            ],
+            [
+              4.8507759,
+              52.3689418
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -47244,6 +47538,30 @@
           preferDescription: true
         }
       ]
+    },
+    {
+      modelId: "mercatorplein-noordtoren",
+      name: "Mercatorplein north tower",
+      description: "Berlage designed the walls of the Mercatorplein in 1925-27 as one closed square, with two brick towers standing on gatehouses over the streets that enter it. This is the north tower, over the underpass to the Mercatorstraat: a tall square shaft with clock faces on three sides, curved balconies tucked into its corners and an arcade of shops running along the square in front of it.",
+      funFact: "The original north tower was pulled down in 1961; the one standing now was rebuilt to Berlage's design in the 1990s, when the square was restored.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527136",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "mercatorplein-zuidtoren",
+      name: "Mercatorplein south tower",
+      description: "The south tower of the Mercatorplein stands on the gatehouse over the Van Spilbergenstraat, part of H.P. Berlage's 1925-27 design for the square. Eight storeys of brick under a flat roof, it has small windows low down, four large square windows stacked above them, and a narrower shaft at the back that rises higher still, with small balconies in its corners.",
+      funFact: "Unlike its northern twin, this tower is original: the register of national monuments describes it as a 'poortgebouw met hoge toren', a gatehouse with a high tower.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527135",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289"
+      ],
+      preferDescription: true
     }
   ];
 
