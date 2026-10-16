@@ -1,0 +1,167 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:37:57.815Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153673",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 79",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000559194"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 79",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 289,
+     "bagId": "0363010012073654"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814134756,
+     "lngLat": [
+      4.8596542,
+      52.3714035
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "79",
+      "addr:postcode": "1057JZ",
+      "addr:street": "Admiraal De Ruijterweg",
+      "amenity": "restaurant",
+      "cuisine": "pizza;italian",
+      "name": "Volare",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.volare.amsterdam/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T13:37:57.815Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164622",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 81-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000559199"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5774803476,
+     "lngLat": [
+      4.8595979,
+      52.3713688
+     ],
+     "tags": {
+      "name": "Fietsenwinkel Admiraal",
+      "service:bicycle:repair": "yes",
+      "service:bicycle:retail": "yes",
+      "service:bicycle:second_hand": "yes",
+      "shop": "bicycle",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-14T13:37:57.815Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155829",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 83-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000559207"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5774803475,
+     "lngLat": [
+      4.8594579,
+      52.3713443
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "Café-Bar Ülfet"
+     },
+     "fetchedAt": "2026-10-14T13:37:57.815Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012138537",
+   "addresses": [
+    "Jan Evertsenstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 1-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000684057"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156134",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Witte de Withstraat 188-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000874979"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5774803474,
+     "lngLat": [
+      4.8591961,
+      52.3713365
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "Cafe Plan West",
+      "panoramax": "e0845ec2-c43c-44b6-9d70-7721c3136255",
+      "website": "https://cafeplanwest.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-14T13:37:57.815Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

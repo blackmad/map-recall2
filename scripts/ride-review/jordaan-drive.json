@@ -1,0 +1,5 @@
+{ "mode": "car", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "prinsengracht-start", "at": [4.887691, 52.380069, 215] }
+  ] }

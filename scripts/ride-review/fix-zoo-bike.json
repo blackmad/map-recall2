@@ -1,0 +1,6 @@
+{ "mode": "car", "dest": "Artis", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "middenlaan-10", "at": [4.914344, 52.365529, 120] },
+    { "name": "middenlaan-12", "at": [4.915884, 52.364999, 119] }
+  ] }

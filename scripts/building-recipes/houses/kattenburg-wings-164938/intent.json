@@ -6,19 +6,12 @@
  "address": "Kattenburg (Marineterrein), Amsterdam: 1782 brick wings on Kattenburgerstraat and the canal",
  "sources": [
   {
-   "id": "pano-2024-12-10-n",
+   "id": "pano-2018-05-08-w04-344",
    "kind": "street-panorama",
-   "capturedAt": "2024-12-10",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00184/",
-   "image": "staging/pand-reference-walls/0363100012164938/w02-344.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2021-01-22-s",
-   "kind": "street-panorama",
-   "capturedAt": "2021-01-22",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000992/",
-   "image": "staging/pand-reference-walls/0363100012164938/w01-164.jpg",
+   "capturedAt": "2018-05-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000711_pano_0000_000302/",
+   "image": "source-data://pand-reference-walls/0363100012164938/w04-344.jpg",
+   "sha256": "97e942fe5564cd6de7c7343dca005904a7f8bb7d908264de7fd78a6516bac4b4",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -40,9 +33,19 @@
    "windows": "plain",
    "cornice": true,
    "palette": {
-    "brick": "dark-brown",
+    "brick": "#645f5f",
     "frame": "#e8e6df",
     "stone": "#6d6a64"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.42,
+    "h": 0.55,
+    "sill": 0.25
    }
   },
   {
@@ -63,7 +66,12 @@
     "brick": "#c2a572",
     "frame": "#e8e6df",
     "stone": "#d8cfb8"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -78,6 +86,13 @@
  },
  "notes": [
   "Four-storey 1782 brick wings, two parallel ranges. Street (north, 344 deg) wings from the 2024-12-10 panorama (w02-344, rectified, 14 window axes, three rows visible above a 4 m boundary wall that hides the ground floor, white-framed small-pane sashes, white cornice, dark brown brick); canal (south, 164 deg) wings from the 2021-01-22 panorama (w01-164, 14 axes, four rows, lighter yellow-brown brick in sun, wrought iron fence in front). Colours differ between the two photos because of sun and brick weathering; the south wings use the sunlit tone, the north the shaded one.",
-  "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used."
- ]
+  "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #4e585c not used (not darker than the wall #645f5f by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0
+  ]
+ }
 }

@@ -1,0 +1,446 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "de-hallen-236693",
+ "pandId": "0363100012236693",
+ "address": "De Hallen (former Tollensstraat tram depot), Tollensstraat / Bellamyplein / Hannie Dankbaarpassage / Kinkerstraat, Amsterdam-West (Oud-West): BAG pand 0363100012236693, one pand over the depot halls and the brick head and corner buildings; pale concrete hall front on the Tollensstraat, the brick gateway building with two glazed round arches at the Hannie Dankbaarpassage, tram-hall gables with glazed portals on the Bellamyplein",
+ "sources": [
+  {
+   "id": "pano-2020-02-07-w01-67s7",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001631_pano_0000_000439/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s7.jpg",
+   "sha256": "168609867ba46e4befa6ef37ebd33b669e61c8c78e79557fc887390e978b1bfe",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s4",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s4.jpg",
+   "sha256": "4a4a64d1e73c43e3aefca4f6de8d739c01e7e8e98554e8be1aab079d3d702345",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s5",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s5.jpg",
+   "sha256": "6e439cbeb454672d4e62f1b63c49d01337b056f2a544fa5f453d8b5d491bc0bf",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s6",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s6.jpg",
+   "sha256": "4fd15d4b0dd1e45b22c3b8b8ce0716018abe231503617aabfba4f00062f9456c",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s8",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s8.jpg",
+   "sha256": "2f4b4160967a0260aacacf8c31af661f8c8dded0ebade817f4676fbab243515a",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s9",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s9.jpg",
+   "sha256": "fa70426061c03c80793198876f4dd15b428e8b36c5ca83afd753e8e3a7b1d894",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s11",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s11.jpg",
+   "sha256": "e1bdcf860a994bcc4a9ddcbe03bee79112dcedc36560ae267a583be0511e4b51",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s1",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001631_pano_0000_000423/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s1.jpg",
+   "sha256": "915101a2c49f4cf4a6e211f6c0b13ed4a1274071a90da95d5528afe85fa8d50f",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-08-09-w01-67s2",
+   "kind": "street-panorama",
+   "capturedAt": "2016-08-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000053_pano_0000_001610/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s2.jpg",
+   "sha256": "bc0a9a874638ac6eb3fca3be085e9120fe1c2d846904635dab0d4f25955775a8",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w01-67s3",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "image": "source-data://pand-reference-walls/0363100012236693/w01-67s3.jpg",
+   "sha256": "e0ed2ba18993ed6e0e027d858dfd11440083ec15f9dcfef2bc59572861e78302",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-02-07-w12-336",
+   "kind": "street-panorama",
+   "capturedAt": "2020-02-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001631_pano_0000_000453/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w12-336.jpg",
+   "sha256": "c96c394fe5672d0403d701c732b5f7d953cc1aea6c48a763e1531bfa06f8f592",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-25-w11-337L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002060_pano_0000_006011/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w11-337L.jpg",
+   "sha256": "05b0d0280a5559034146f2be61272a5798d6db8fe470b115bc97f8900340cbc2",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-25-w14-337L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002060_pano_0000_005271/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w14-337L.jpg",
+   "sha256": "5678c54ee20683c286ad3f160635164b115d9afeac63395a595686d8da94d851",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-12-31-w06-157s2L",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002374_pano_0001_000047/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w06-157s2L.jpg",
+   "sha256": "7cfdebcfe2ba23fc5596968696fff1a02a5d8848e666158c239c55629e40a488",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-12-11-w06-157s1",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "source-data://pand-reference-walls/0363100012236693/w06-157s1.jpg",
+   "sha256": "17e0b3be81c15dd4b0c0afd39af6f0396fd47175cb066023da92582850193764",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-09-w10-67L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001041_pano_0002_004267/",
+   "image": "source-data://pand-reference-walls/0363100012236693/w10-67L.jpg",
+   "sha256": "fffbf820b012d5bc3b0ba51338c91a68e9d801fa8f6bfde70d7f955a899b8969",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    77
+   ],
+   "street": "Tollensstraat",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 15,
+   "ground": "system",
+   "windows": "wide",
+   "piers": true,
+   "cornice": true,
+   "deepBars": true,
+   "wallMaterial": "render",
+   "windowShape": {
+    "w": 0.88,
+    "h": 0.66,
+    "sill": 0.1
+   },
+   "palette": {
+    "brick": "#7a756f",
+    "frame": "#a8a49c",
+    "stone": "#d4cfc4",
+    "glass": "#4d4e4a"
+   },
+   "hand": [
+    "system",
+    "windows",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "blankStoreys": [
+    1
+   ]
+  },
+  {
+   "wallSurfaces": [
+    69
+   ],
+   "street": "Tollensstraat",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "windows": "cross",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#5d4c45",
+    "frame": "#e8e6dc",
+    "stone": "#d8d4c8",
+    "glass": "#1b1b19"
+   },
+   "hand": [
+    "system"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    68,
+    105,
+    65
+   ],
+   "street": "Tollensstraat",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "cross",
+   "stringCourses": true,
+   "deepBars": true,
+   "hallDoors": {
+    "bays": [
+     0,
+     3
+    ],
+    "lights": 3,
+    "rows": 4,
+    "h": 0.85,
+    "arch": "round"
+   },
+   "arches": {
+    "band": "stone"
+   },
+   "palette": {
+    "brick": "#5a4439",
+    "frame": "#e8e6dc",
+    "stone": "#d8d4c8"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "hallDoors"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    76
+   ],
+   "street": "Tollensstraat",
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "windows": "transom",
+   "deepBars": true,
+   "palette": {
+    "brick": "#5a4439",
+    "frame": "#e8e6dc",
+    "stone": "#a8a49a",
+    "glass": "#524641"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick",
+    "windowShape",
+    "stoneStoreys"
+   ],
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.22
+   },
+   "baysPerStorey": 5,
+   "stoneStoreys": [
+    0
+   ]
+  },
+  {
+   "wallSurfaces": [
+    78
+   ],
+   "street": "Tollensstraat",
+   "system": "brick-bay-grid",
+   "windows": "cross",
+   "stringCourses": true,
+   "deepBars": true,
+   "alignWith": 1,
+   "palette": {
+    "brick": "#5b4a45",
+    "frame": "#e8e6dc",
+    "stone": "#d8d4c8"
+   },
+   "hand": [
+    "system",
+    "windowShape"
+   ],
+   "windowShape": {
+    "w": 0.55,
+    "h": 0.55,
+    "sill": 0.3
+   }
+  },
+  {
+   "wallSurfaces": [
+    93,
+    32,
+    36,
+    34
+   ],
+   "street": "Bellamyplein",
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "windows": "cross",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#575256",
+    "frame": "#e8e6dc",
+    "stone": "#d8d4c8"
+   },
+   "hand": [
+    "system"
+   ],
+   "windowShape": {
+    "w": 0.314,
+    "h": 0.699,
+    "sill": 0.25
+   },
+   "baysPerStorey": 8
+  },
+  {
+   "wallSurfaces": [
+    38,
+    40,
+    154
+   ],
+   "street": "Bellamyplein",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "deepBars": true,
+   "hallDoors": {
+    "bays": [
+     1,
+     2,
+     3
+    ],
+    "lights": 2,
+    "rows": 4,
+    "h": 0.65
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.42,
+    "sill": 0.25
+   },
+   "palette": {
+    "brick": "#463d3d",
+    "frame": "#e8e6dc",
+    "stone": "#d8d4c8"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "hallDoors",
+    "windowShape",
+    "palette.brick"
+   ],
+   "blankStoreys": [
+    1
+   ]
+  },
+  {
+   "wallSurfaces": [
+    42,
+    137,
+    141,
+    46,
+    109,
+    51,
+    148,
+    293,
+    492
+   ],
+   "street": "Bellamyplein",
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "deepBars": true,
+   "hallDoors": {
+    "bays": [
+     1,
+     2,
+     3
+    ],
+    "lights": 2,
+    "rows": 4,
+    "h": 0.82
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.5,
+    "sill": 0.3
+   },
+   "palette": {
+    "brick": "#463d3d",
+    "frame": "#e8e6dc",
+    "stone": "#d8d4c8"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "hallDoors",
+    "windowShape",
+    "palette.brick"
+   ],
+   "blankStoreys": [
+    1
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#5a4439",
+  "frame": "#e8e6dc",
+  "door": "#2a2a2a",
+  "stone": "#d8d4c8"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ]
+ },
+ "notes": [
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #49433e not used (not darker than the wall #5a4439 by 10 L*, or tinted): kit glass kept; walls[4] glass #45403d not used (not darker than the wall #5b4a45 by 10 L*, or tinted): kit glass kept; walls[5] glass #49525a not used (not darker than the wall #575256 by 10 L*, or tinted): kit glass kept; walls[6] glass #3f3d2f not used (not darker than the wall #403630 by 10 L*, or tinted): kit glass kept; walls[7] glass #30312f not used (not darker than the wall #372f2e by 10 L*, or tinted): kit glass kept; walls[8] wall split #5e4c31 | #65635d at 19 % (dE 18.5); walls[9] glass #776275 not used (not darker than the wall #786363 by 10 L*, or tinted): kit glass kept."
+ ],
+ "groundClamp": true
+}

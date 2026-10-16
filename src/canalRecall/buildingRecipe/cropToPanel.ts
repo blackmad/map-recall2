@@ -101,6 +101,18 @@ export function panelCoverage(crops: CropWall[], p: PanelPlan, anchorRD: Xy, ste
   return {pieces, coverage: Math.round(Math.min(1, covered / Math.max(1e-6, width)) * 1000) / 1000};
 }
 
+/**
+ * `panelCoverage` without the pieces seen more than `maxObliquityDeg` off square, when the straighter crops still cover
+ * CROP_MIN_OVERLAP of the panel (a segmented hall side whose last piece only has a 47 degree view): the likeness
+ * abstains on any oblique piece, so dropping it keeps the rest of the mosaic as evidence. Otherwise the full coverage.
+ */
+export function panelCoverageStraight(crops: CropWall[], p: PanelPlan, anchorRD: Xy, maxObliquityDeg = 45): {pieces: CoveragePiece[]; coverage: number} {
+  const all = panelCoverage(crops, p, anchorRD);
+  if (!all.pieces.some(q => (q.crop.obliquityDeg ?? 0) > maxObliquityDeg)) return all;
+  const straight = panelCoverage(crops.filter(c => (c.obliquityDeg ?? 0) <= maxObliquityDeg), p, anchorRD);
+  return straight.pieces.length && straight.coverage >= CROP_MIN_OVERLAP ? straight : all;
+}
+
 /** walls.json (v2) rows with a crop -> CropWall (file names relative to the pand directory). */
 export function cropsOfWallsJson(json: {walls: any[]}): CropWall[] {
   return json.walls.filter(w => w.crop && w.wallRD && w.ppm).map(w => ({

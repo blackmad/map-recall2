@@ -1,5 +1,422 @@
 # Canal Recall — what is built
 
+## Large tier triaged: 95 houses measured, 54 re-fitted to the photo, 12 uninstalled (2026-10-14)
+
+Lane `lane/large-triage-20261014` (plan Part 1 lane D). Crops archived for
+94 pands (source-data b348d50f8, 2,791 files; Politie Zuid has no crops,
+its pand is missing from the BAG tiles), measured with `measure.ts`,
+ranked worst-first on the installed state in
+`artifacts/building-recipes/likeness/report.md` (force-added with the
+`before/` snapshots and `houses.tsv`); verdicts in
+`scripts/building-recipes/likeness-triage.json`; index of the worst 20 as
+installed | re-fitted or uninstalled | photo in
+`docs/images/large-tier/triage-20261014.jpg`. Outcomes: re-fit cheap 65,
+keep 11, uninstall 12, re-fit after a new system 1, inferred 6.
+**Re-fitted and re-installed (54):** the police stations (Oost-Zeeburg,
+Lijnbaansgracht, IJ-tunnel, Houtmankade, Postjesweg, Meer en Vaart), the
+Kattenburg wings and Kattenburgerstraat, Quellijnstraat 36, Entrepotdok,
+Overtoom 283, OZ Achterburgwal 233, Engelsesteeg, Westerdok 186086 and
+748, Aambeeldstraat, OBA Javaplein, Olympisch Kwartier and Linnaeus, the
+stadsloketten Oost, Noord, Zuidoost and West, Stadsdeel Nieuw-West,
+Hamerkanaal 209 and 175, CGM 190, Hotel Arena, Utrechtsestraat 15,
+Funenpark 427, Buitenzagerij 45, Barlaeus, Vossius, Weteringstraat 16,
+Montessori Van Ostade, Rijksakademie, Cygnus, Kloveniersburgwal 72, Van
+Oldenbarneveldtstraat 48, Schaafstraat 17, Asterweg 19 and 19b, Van der
+Palmkade 191, Tilanusstraat 23, Hoogte Kadijk 400, Valckenierstraat 65,
+Nieuwe Achtergracht 100, Oostelijke Handelskade 749, Balboaplein 48,
+Spinozastraat 51, WG-plein 600, Da Costakade 146, Revaleiland 437, Louise
+Wentstraat 230. The common fixes: measured wall colours (the authored
+brick was usually 0.1–0.3 L lighter and redder than the photo) and hand
+window shapes where the refine loop made slits; shaded, leafy or low-sun
+crops kept a hand colour with an `--allow-inferred` note.
+**Uninstalled (12)**, recipe and intent kept with a note, GLB, catalogue
+entry and cover gone: ornamented historic fronts for bespoke if they
+return (Leidsestraat 67, Amstel 142, Beursplein 5, Damrak 77, Pijlsteeg 31
+Krasnapolsky, Stadhouderskade 25, Hirschpassage 2); no matching photo on
+ride-visible fronts (OBA Mercatorplein, also an ornamented Amsterdam
+School front; Plantage Middenlaan 52 with curved balcony bands; the
+Amsterdams Lyceum gate arches; Leidsekade 106 Holland Casino); an
+irregular row of separate fronts (Stadhouderskade 111). **Keep (11)**,
+the measured FAIL from shade or backlight in the crop: Heinekenplein,
+Politie Johan Huizingalaan, Marnixstraat 248, CGM 114, 183 and 168, Berlage
+Lyceum, Reade, Polderweg 3, Van Beuningenstraat 48, Archangelkade 3.
+**Inferred (6):** Politie Flierbosdreef, Boven-IJ, Zuid-De Pijp, Distelweg
+88 (blank), Grasweg 41, Asterweg 37. **Unverified:** 11 "re-fit cheap"
+verdicts have no re-install the lane could account for (Oude Turfmarkt
+168172, Nieuwe Achtergracht 253754, Politie Van Leijenberghlaan,
+Zuidoost-Gaasperdam, Nieuwezijds Voorburgwal, Oost-Watergraafsmeer,
+Politiepost IJburg, Meeuwenlaan 132, Rigakade 8, Nieuwpoortstraat 126319,
+Warmoesstraat garage); on the board. Kit needs by count: ornamented
+historic fronts 8 (bespoke, not the kit), a louvre screen 2 (Haarlemmerweg
+325, the one waiting re-fit, and Tilanusstraat 23), and one each of a
+second `wallSplit` per group, coloured posts on framed fronts, glazed
+infill, mixed ribbon and punched storeys in one group, warehouse shutters
+and hoist beams, a bay window with a rounded corner, a full-height hall
+arch with a stepped gable, striped brick banding, stone string courses,
+curved balcony bands, through-passage gate arches, a carved stone portal,
+awnings, saw-tooth roof glazing, a curtain-wall glazing share. OBA
+Olympisch Kwartier walls[0] keeps its preset window (every measured shape
+opened 4–15 m of open edges across merged 3DBAG surfaces). **Ride
+visibility** replaces footprint ÷ distance:
+`scripts/building-recipes/ride-visibility.ts` samples 2,000 seeded bike
+routes, counts route metres within 60 m with an unblocked line of sight,
+weighted by visible wall length, written as `rideVisibility` into
+`dominant-building-backlog.json` (new top 10: 0012185418, 0012098925,
+0012186093, 0012243823, the Amsterdamse Hogeschool voor de Kunsten,
+0012165293, 1489746218, 0012087570, 1489746219, 0012165077; the old top 10
+now rank 6, 93, 121, 138, 329, 145, 609, 24, 69, 70; Rasphuispoort 16,
+Allard Pierson 18, Van Gendt Hallen 166); `build-dominant-building-backlog.ts`
+does not carry the field yet, so a regenerated backlog loses it until
+`ride-visibility.ts --write` is re-run. Two test fixtures moved to Politie
+West Overtoomsesluis because the old fixture house is now measured.
+Checks: building-recipes 162, geometry-audit, block-kit-installed,
+fit-golden and 112 meshes identical after the golden update (each batch's
+diff touched only that batch), stale-installs strict 0, covers, osm-under
+0, audit:glb per re-installed house.
+
+
+## Jan Evertsenstraat surveyed: 148 pands, 19 faces, the De Baarsjes type sketch (2026-10-14)
+
+Lane `lane/jan-evertsen-survey-20261014` (plan Part 2 step 7, survey
+half). BAG has 148 pands with a current Jan Evertsenstraat address, not
+the ~168 the plan counted (a 120 m buffer finds the same 148); 1910s is 6
+not 18. Style groups: 1920s Amsterdam School (1925–27) 123 (odd 65, even
+58), 1910s (1912–13) 6, 1939 6, post-war 13. Faces: even 4-44 (17), 52-66
+(6), 68-92 (10), 94-142 (26, re-seeded at no. 126 because the corner seed
+stopped after 96), 144-150 (4), 152-160 (5); odd 1-1 (5), 7-41 (18), 43-57
+(8), 59-89 (15), 91-135 (19), 137-143 (4), 145-155 (6), 171-175 (1),
+201-267, 269-335, 337-403, 405-471, 473-781 (2 each). Strips fused from
+one capture day each (2024-12-06; 4-44 and 7-41 from 2021-03-26 leaf-off;
+1-1 from 2022-12-12), coverage 1.0. No frontage: 162, 164; no sightline:
+none; strip only: 57 (side wall only), 473–715 (not in the tiles); washed
+out: 32, 34, 42, 44, 58, 60, 86, 94, 102, 122, 132, 134; trees on the upper
+storeys with Beeldbank cover 74–78, 84, 98, 114, 121–125, without 145,
+151, 152, 153, 155, 158; scaffold 87; 63 pands carry Beeldbank references
+(the 1960 Dijkstra aerial excluded as copyrighted). Tooling:
+`street-style.ts` (hyphenated index names, `commercial-faces.ts
+--style=de-baarsjes`, Oud-West default), `commercial-merge.ts --beeldbank`
+(by reference, nothing fetched) and `--notes`
+(`scripts/street-surveys/notes/jan-evertsenstraat.json`), each pand's
+strip span, `run.ts --street` falling back to `streets-routing.json`,
+`intake.ts` backing off 30 s then 90 s between Overpass rounds (the first
+pass lost 7 of 19 faces). **Bug found:** `commercial-merge.ts` never
+merged ground-floor uses, so `kinkerstraat.json` has uses on 0 of 217
+pands; fixed (146 of 148 here), Kinkerstraat to be re-merged from a
+checkout that has its staged crops. Large/bespoke candidates: the
+Mercatorplein clock tower 107349 (bespoke, 37.5 m), a possible twin tower
+073289 (29.8 m, confirm from a photo), 144 (106884: 20.9 m tower, pointed
+oriels, two-arch arcade), 121–125 (085815, 37.3 m, large recipe), 52–56
+corner mass, 40 (089629: corner tower and half-round oriels), raised or
+stepped corner masses at 20–24, 35/31–37/39/41, 66, 91, 94, the
+Hotelschool 171–175 (148630, 100.7 m), 473–715 (134306, 60 m tower),
+717–781 (113136), the Knijtijzer slabs 203–471 (ordinary kit); 3DBAG reads
+eaves at 3–6 m on corners 52–56, 89, 91, 92, 94 and 64 (`measuredEaves`
+on the face pass). Type sketch over the 148: bodies lintel-band 18 (13,
+23, 32), hood-lisene 40 (101, 118, 126), balcony-slot 14 (61, 69, 81),
+ladder/small-pane plain 19 (49, 60, 70), 1926–27 white attic under a tile
+roof 12 (141, 148, 154), 1939 with dormers 5, corner and end masses 16;
+crowns tall plain parapet 91, raised corner tower flat top 7 (no pyramid
+cap on any street front), raised stair-tower ends 7 (the plan's
+"raised-centre", at row ends), tile roof over the white attic 13;
+components rigid canopy ~95, glass-block band 73, two-bay erker only 4,
+no separate dark plinth course. Kit gaps: side-hung casements with a
+fixed top light, the tall parapet zone, the single-bay box bay with hood,
+stacked balconettes, white bands with two-tone brick piers, the
+small-pane top-light grid, the white attic and brick balcony bands, signs
+on the glass-block band, corner oriels and friezes. Archive: source-data
+c399ed38 (crops and reference.json for 207 pands, all-walls for 21, 19
+strips), merged to source-data main 8e36d460. Files:
+`docs/jan-evertsenstraat-survey-20261014.md`,
+`scripts/street-surveys/streets/jan-evertsenstraat.json`,
+`scripts/block-face/faces/evertsen-*/`. Nothing authored or installed.
+
+
+## Ride review, Jordaan and Plantage: three fixes, seventeen rows (2026-10-14)
+
+Lane `lane/ride-review-jordaan-plantage-20261014`. New
+`scripts/ride-review-shots.mjs` runs one seeded ride in chase view at
+1280×800, holding the pose every 60 m, at turns over 25°, 35 m before each
+routed bridge and at named landmarks, quiz cards visible; specs in
+`scripts/ride-review/`; every frame viewed in 2×2 grids at 640 px, suspects
+at full size (`docs/images/ride-review-20261014/{jordaan,plantage}-contact.jpg`,
+doc `docs/ride-review-jordaan-plantage-20261014.md`). **Fixes:** (1) movable
+leaves get their fixed spans: the Nijlpaardenbrug BRU1907 was a 10 m leaf
+floating mid-canal with the cycleway cut at both quays, because the
+register footprint of a movable bridge is the leaf only while the OSM way
+runs 36 m quay to quay; `movableApproaches` in `decks.ts` extends the leaf
+along each OSM bridge way through it (leaf width, at most 30 m a side),
+`groundStore.cellInput` adds these spans as flat decks exempt from the
+water cut on street bands, the portal stays on the leaf; named regression
+BRU1907 in `check:own-ground-cells` (deck and cycle band at 0.2/0.3/0.7/0.8
+of the way). (2) Landmark roof wash uses the frame's up: with the
+Westertoren card open the whole Westerkerk turned orange, walls included,
+because the highlight passed up = +y which is north in the shared frame;
+`LANDMARK_WORLD_UP` in `look/highlight.ts` (+z in the shared frame, +y in
+the older paths), measured up vector [-0.06, 0, -1] → [0, 1, 0]; `test:look`
+reproduces the chain. (3) Zoos are green: the city fetch never queried
+`tourism=zoo`, so Artis read as a sand plaza; `areaKind` maps zoo to park,
+`fetch-osm-ground.ts` queries it, `scripts/own-ground/add-zoo-areas.ts`
+(osmium from the cached extract) added 16 zoo polygons to 15 published
+cells (Artis plus 15 petting farms, 19.8 ha); turning Artis green exposed
+bare land through the green in hollows (14 % of Artis, 54 % of its west
+third in the next cell), so `groundCell` skips land squares wholly inside
+a park-class area of the cell or its neighbours (small risk of a gap at
+the far ring's coarser neighbour; none seen at Wertheimpark or the
+Hortus); named regression a8733446 (3 % bare land over 72 probes, 53 %
+without the zoo). **Open rows** (place as lng, lat, bearing): Jordaan J2
+the Westerkerk roofs still get the small-target wash though the church
+fills ~15 % of the frame (the marker measures the boost on the tower
+footprint); J3 the Westertoren is out of frame until ~100 m (chase pitch);
+J4 inner-block gardens draw as bare sand, blocks read as squares (no OSM
+area, default land); J5 Bloemgracht houses at 30–60 m are flat grey boxes
+(streamed tier); J6 grey slabs over the four corners of the
+Nieuwe-Wercksbrug BRU0063 (deck top 4–10 m onto land, wider than the
+street bands); J7 playground slabs and a white frame float on the
+Noordermarkt; J8 the Egelantiersgracht mouth looks closed (Pansemertbrug
+BRU0124 a flush 8.4 m deck). Plantage P3 the Entrepotdok warehouses are
+long dark boxes with khaki roofs and loose gable stubs; P4 the Walter
+Süskindbrug BRU0237 reads as a thin white wire cube (movable without deck
+data drawn as posts and beam); P5 no Artis main gate; P6 the Hollandsche
+Schouwburg is an ordinary terrace front; P7 dark-brown windowless masses
+across from Artis; P8 a pale facade ripples along a curved footprint
+(unchecked); P9 the Mahatma Gandhiplantsoen sits on a ~1 m hedge box.
+Cleared: the HUD; a "Which street are you on now?" prompt for the
+Prinsengracht stayed open 45 s with the name nowhere on screen (the quiz
+working as designed). Two capture problems were the lane's own: trees
+vanished when the dev server died mid-run, and early Bloemgracht frames
+rode on the routing extract's straight two-node line. Checks: own-ground
+71, canal-elevation 11, look 59, own-ground-cells 0 FAIL.
+
+
+## Kinkerstraat odd side authored: eight faces, 76 pands, 184,519 tris (2026-10-14)
+
+Lane `lane/kinkerstraat-odd-20261014` (plan Part 2 step 4). Faces
+`kinker-1-29` (11 pands, 24,700 tris), `31-49` (10, 15,698), `49-63` (9,
+23,312), `65-87` (10, 20,311), `173-225` (10, 29,517), `315-359` (19,
+42,735), `363-371` (4, 13,706), `265-313` (3, 14,540), compiled without
+`--install` on the accents kit (merged origin/main at 48752138 and
+re-reviewed all eight; Kinkerstraat 59 then drew 3,036 tris on its front
+from the measured-brick facing and keeps the type palette instead). The
+sheet headers say GATES FAIL from the GLB audit's z-fight check, which
+fails on every Kinkerstraat face including the proof faces 2-30 and
+109-161 on main: the overlap is in the inferred rear facades (1-29 drops
+from 187 m² to 1.5 m² with `--no-rears`); no intent fixes it, the
+rear-facade lane does. Verdicts at gallery size
+(`docs/images/kinkerstraat/<face>-sheet.jpg`, doc
+`docs/kinkerstraat-faces-odd-20261014.md`): 1-29 right on 8 of 11 (19-23
+on an inline centre wall-dormer type; wrong: no. 1's windows too wide,
+21-23's white-painted first storey drawn as brick, 7-17's irregular lights
+made regular); 31-49 storeys, axes, dormers right, wall check fails on 31
+(black paint renders olive #494b3b vs #282b24) and 47 (sunlit brick too
+dark); 49-63 the neo-renaissance and brick-arched rows read with white
+springers, 51 a four-module front, the shop at 51 conflicts (OSM Mano
+Bakery vs sign Chez Rome), 63 too saturated; 65-87 65 and 67 on an inline
+plain step-gable type, cornices read, missing brick-relief tympana, frieze
+panels and the shops' mezzanine, 87 too saturated; 173-225 the 1985
+infill reads, arcade piers, cream set-back top storey and penthouse bays
+cannot be drawn; 315-359 the balcony-axis row reads with the corner block
+in two modules, pointed gables drawn as bell gables, shared gables become
+one per front, the drum corner bay and gallery missing; 363-371 (1914–16,
+no library type) balcony-axis with flat heads, gable shape and 371's
+chimney wrong or missing; 265-313 (1992 loggia block) infill with a
+16.4 m bay unit as overrides, the glazed grid bays as ~1.5 m windows,
+loggias and arcade flush. Brick-arched window width does not show on this
+side: the three 3-axis fronts measure 0.55, 0.56, 0.59 of the front
+against the type's 0.55. Kit gaps counted in pands: iron wall anchors 21,
+arcade piers 13, frieze panels and consoles 13, straight-sided pointed
+gables 10 fronts, set-back top storey 10, brick-relief tympana 7, shop
+mezzanine 7, penthouse bays 5, centre wall dormer (inline type) 5,
+measured brick dropped for the triangle budget 5, brick render clamping
+dark and light colours 4, shared gable over two pands 4, sunburst
+voussoirs 3, dormers on neo-renaissance 3, curtain-wall bays and loggias
+3, one-storey paint 3, footprint step over 0.5 m 3, gable scrollwork 2,
+plain step-gable (inline type) 2, stoops on a wall ground 2, and one each
+of painted-brick per placement, one type per pand, blind front part,
+gable over part of a module, drum bay with gallery, Gothic mezzanine
+lights, plain flat dormer, corbel-table cornice, chimney beside a gable.
+Library candidates: `kinker-1885-wall-dormer`, `kinker-1893-plain-step-gable`.
+Checks: lint, block-face 84, fit-golden 153 identical; no kit or src
+change, so every other face's chunk is unchanged.
+
+
+## De Hallen measured and staged behind its landmark; the two Kinkerstraat halls installed (2026-10-14)
+
+Lane `lane/de-hallen-20261014` (plan Part 2 step 8). The brief's pand ids
+were wrong: the 1902 tram depot is `0363100012236693` (already drawn by
+the bespoke signature landmark `de-hallen` with a POI card); 092013 is
+the 1987 infill at Kinkerstraat 89–105 and 137280 is Kinkerstraat 32–54
+(1999). Crops archived for all three (source-data cdffbca02) with new
+`all-walls.ts` options `--date`, `--exclude-date`, `--exclude-pano`,
+`--segment`, `--walls`, `--suffix`, `--min-dist` (logic in a typed, tested
+`panoPick.ts`), `closeCameraSpan`, and `panelCoverageStraight` (drops
+pieces more than 45° oblique when the straight pieces cover the panel).
+Kit added, validated, tested, byte-identical when unused: `hallDoors`
+(glazed hall portals on chosen ground bays; the photos show no arched
+hall: the round arches are only the two glazed gateways, the long side
+is a pale concrete front, the gables have flat-headed portals, so no
+`arched-hall` system), `glazedStoreys` (upper storeys glazed like a shop
+front), `groundClamp` (clamps 3DBAG faces that sink below ground).
+**De Hallen** (10,662 tris; g0 Tollensstraat concrete hall WARN with the
+photo counting mullions 86 vs 15 columns, g1 corner house FAIL inferred
+with stone surrounds read as trim, g2 gateway WARN, g3 stone ground under
+brick FAIL inferred, g4 corner bay FAIL inferred, g5 Bellamyplein corner
+block WARN IoU 0.28, g6 tram-hall gable PASS, g7 gables FAIL inferred,
+north shade and fence) is compiled and staged at
+`artifacts/building-recipes/de-hallen-236693/catalogue-entry.json`, not
+installed: from the Bellamyplein at street level the recipe is closer
+than the landmark (dark brick gables with wide glazed portals, the corner
+block, the gateway arches) but from above the landmark's striped roofs
+read better than the recipe's plain slate saw-tooth without its glass
+ridge lights, and the concrete hall front is right in colour and rhythm
+but flat; keep the landmark until the kit does ridge lights and stepped
+stone-coped gables, then retire it and install the recipe in one change
+(`docs/images/de-hallen/ride-{kinkerstraat,bellamyplein}.jpg` pair main
+with a local trial). **Kinkerstraat 32–54** (8,708 tris, g0–g3 FAIL
+inferred on the red awnings, the glazed mezzanine, the orange/dark split
+and the stair slot, g4 WARN): installed, clearly better than the city box.
+**Kinkerstraat 89–105** (3,205 tris, g0 FAIL inferred: cantilevered
+balconies, g1 FAIL inferred: yellow tiled stair towers): installed as a
+fair block in the right colour family; the balconies and towers that
+define it are new systems for a later pass. Index rows in
+`docs/images/de-hallen/index-{de-hallen,kinkerstraat}.jpg` (new
+`scripts/building-recipes/index-row-sheet.ts`); doc
+`docs/de-hallen-20261014.md`. Kit gaps: brick attic band over the
+concrete hall, scalloped lintel band and deep concrete fins, stepped
+gables with stone copings and the oculus, wide rusticated arch rings,
+round-arched upper windows in stone surrounds, GEMEENTETRAM lettering,
+glass ridge lights, eared/stone-dressed surrounds in the measurement,
+per-storey wall colour in the measurement; red shop awnings, a dormered
+set-back attic, mezzanine glazing on one side of a split, a recessed
+glazed stair slot; cantilevered balconies on chosen bays, yellow-tiled
+stair towers, a blue tiled shop ground. Checks: building-recipes 171,
+geometry-audit 47, fit-golden 156 identical, 115 meshes identical,
+covers, stale-installs strict 0, osm-under-models 0, audit:glb PASS.
+Near-miss: two Kinkerstraat `walls.json` were reverted by accident and
+rebuilt byte-identical (74 crops, same row counts).
+
+
+## The bridge e2e reads deck crowns in metres, not pixels (2026-10-14)
+
+Lane `lane/bridge-crowns-20261014`. The pixel hump reading in
+`own-ground-bridge-fidelity.spec.ts` had given two false alarms in a day
+(a railing post, then the brighter ground look moving BRU0038 from +11 to
+−9 px). The spec now reads each placed deck from
+`canalRecallGame.vectorMap._ownGround.store.surface.decks` in the page
+(`deckCrowns(page, ids)`: the deck by `profile.id`, `surface.height()` at
+every profile station, max minus `max(deck.ends)`, the crown over the
+higher approach end in metres, the same function the streamed-cell unit
+tests use). Shared module `ownGround/bridgeCrowns.ts` exports
+`PINNED_CROWNS` (tolerance 0.05 m) and `crownOverHigherEnd()`: Seven
+Bridges BRU0031 2.14, 0032 2.02, 0039 1.70, 0074 1.79, 0073 1.30, 0072
+1.50; side views BRU0009 1.66 (Torensluis), 0038 1.61; the Blauwbrug
+stays unpinned (level deck). `ownGround.test.ts` asserts the module for
+BRU0009 and, in a new test, every pinned bridge against a fresh
+`GroundStore` (80/80). The pixel `humpPx` stays in the report JSON as
+information; arch counts, bascules and screenshots unchanged. Three
+consecutive desktop runs green (Seven Bridges read 2.136, 2.018, 1.703,
+1.786, 1.301, 1.498; BRU0009 1.658); pinning BRU0009 at 1.20 fails with
+"crown 1.658 m vs pinned 1.2 m". No game source changed, no bundles.
+
+
+## White accents read white: painted stone tint, springer rows, round arches with dark tympana, measured head lines (2026-10-14, user)
+
+Lane `lane/oud-west-accents-20261014`, from the user's priority on white
+accents and the gallery-size review of the Kinkerstraat 18-4 and
+Nassaukade sheets. New keys, typed in `intent.ts`, laid out in `fit.ts`,
+marked in `oudWest.ts`, byte-identical when absent (fit-golden 153, 112
+meshes, 22 of 24 face chunks identical; only the two re-authored faces
+changed): `palette.stoneMaterial: "painted"` exports every stone-surface
+mesh (bands, springers, keystones, rings, eared heads, consoles, quoins)
+as a measured tint, and `cityMeasuredStoneTint` in `look/palette.ts`
+divides by the stone cell mean instead of the floor-and-mix that greyed
+it; `archRing.style: "springers"` with `springerSize: [length, height]`
+(no ring: a slab at each foot of the arch on the springing line, 6 cm
+proud, two over a narrow pier cut back to leave 0.09 m, the keystone cut
+at the eaves); `archRing.shape: "round"` (relieving arches, rise = half
+the span) and `archRing.springGap` (default 0.04 m above the head);
+`windowHead.tympanum: "dark"` (the arch field in `palette.band`, else the
+wall × 0.72, measured 0.67–0.80 on Nassaukade 150 and 147); `headLines`
+(one share per storey, needs a `windowHeights` list; the head sits there
+instead of the common 0.86); `bandTransomAt` (the transom band as a share
+of the window height, default 0.78). `palette-from-strip.ts` prints
+`paint`: the drawn frame colour × the photo's band-to-frame brightness
+ratio, because the overcast strips read white paint as light grey
+(#b2b3a8) and a raw median rendered grey next to the white frames.
+Measured painted-stone colours: `kinker-1890-brick-arched` #eae7dc
+(median of 7 pands; dark-brown palette #dddad0), `kinker-1895-painted-band`
+#e2e1d5 / #e3e1d5, `nassau-1900-three-axis` #eeeae0,
+`nassau-1900-two-axis-balcony` #f5f1e7 (measured on 149), 151-152
+#eeeae0; 150's stone is also its granite base, so its springers and
+keystone take the frame paint. Rendered vs photo on the same pier
+pixels: Kinkerstraat 8-10 sill course #a6a496 → #e0e0d9 (photo raw
+#ada99b, lit peak #c2c9c1, target #eae7dc); Nassaukade 148 storey-2 band
+~#c1bcb1 → #e1e1dd (photo #fefdce at golden hour); the brick did not
+move (8-10 #6b5744 vs #6d5543). Nassaukade 147's eaves re-measured at
+15.5 m (14.6 m hid the round arches under the cornice). Re-authored:
+kinker-2-30 (32,043 → 29,595 tris) and nassau-145-152 (19,441 → 19,159,
+heaviest front 2,887), all gates. Verdict at gallery size
+(`docs/images/kinkerstraat/kinker-2-30-row-18-4-zoom.jpg`,
+`docs/images/nassaukade-506/{photo-over-model,arches-147-150}.jpg`):
+the white reads as white as the frames; the 18-4 row has the dotted row
+at the springing, one springer pair per pier and a keystone per window
+within 0.12 m of the photo's rows (7.15, 9.97, 12.75 m), the thin course
+at the measured 0.63 of the window, the 5-block ring gone; 147 and 150
+show semicircular dark tympana with two white springers and a keystone,
+147 springing on its head band and 150 0.55 m above its heads; heads
+within ~0.1 m on 148, 149, 147, 150 and the 18-4 row (147 and 150 needed
+measured storey heights). Still wrong: 147's crown draws a cream cornice
+band where the photo has brick; the Kinkerstraat windows are ~0.8 m wide
+against the photo's 0.95 m (`windowShare` 0.55 in the type). Kit gaps:
+wedge-shaped springers and keystones (slabs are square), the dark
+rubbed-brick ring between springers on the 18-4 row, band lines per
+storey (147's storey-1 band sits mid-window, its upper bands at the
+heads; the kit has one set per front), 150's dark recessed course between
+head and springing, painted dressings and a granite base on one house
+(one stone colour per house), a per-house T-window transom (fixed 0.76),
+wall anchors between springers; the 1890 type's `red-brown-sunlit`
+palette keeps unmeasured stone (no white course on its strips). Tests:
+building-recipes 168, block-face 82, look 41, with named regressions on
+162482's impost rows, the heads of 148/149/147/150, the round arches, the
+painted-stone tints, `paintFromFrames`. Bundles rebuilt here for the
+look change.
+
+
+## Bridge regressions on main were two readings, not the bridges (2026-10-14)
+
+Lane `lane/bridge-regressions-20261014`. After the bridges merge met the
+houseboat berths on main, `check:own-ground-belt` reported a NEW finding
+at the Westerdok and the bridge-fidelity e2e failed on the Torensluis
+hump; both branches had passed alone. **Belt audit:** `moorings.ts`
+re-cuts shores near a boat into collinear 0.5 m pieces and the audit
+took at least one sample per segment, so the reviewed Westerdok spot
+went from 16 to 106 samples and its worst sample moved 1.4 m off its
+KNOWN key; with berths off the old audit reproduced the lane's "7
+findings, all KNOWN" exactly. Fix in `ownGround/roadRegressions.ts`:
+`shoreSamples` joins collinear pieces back into one segment before
+sampling every 5 m (identical output without berths), and reviewed quay
+spots match a finding within 15 m (`KNOWN_SPOT_M`, `spotDistanceM`) in
+`scripts/own-ground/audit-belt.ts`; one real new KNOWN entry,
+`quay-flooded:4.90768,52.38468` (ground −2.05 under the default −1.77
+plane on the IJ-side dock quay; a berth cut moved a sample onto it).
+**Torensluis hump:** deck body, deck top and quay walls are byte-identical
+between the lane tip and main (cell build hashed); the e2e took the hump
+from single columns, so on the lane the 28 px came from a railing post
+against the next bridge down the Singel, and on main an orange-outlined
+figure on the crown and streaks at the deck ends tipped the reading to
+−12 px. Fix in `own-ground-bridge-fidelity.spec.ts`: `spanColumns`
+projects the deck-span ends to screen columns and `readMask` takes the
+median top edge over column bands between them, ignoring mask runs under
+6 px, so posts, rails, figures and neighbouring bridges no longer decide
+it (Seven Bridges 138 px, BRU0073 94, BRU0038 11; the lane's 296 was
+also an artefact; the Torensluis reads 4.5–5.5 px against a threshold of
+2, a weak margin); BRU0009 joins the streamed-cell deck regressions in
+`test:own-ground` (crown 1.66 m over the higher end). Checks: belt "8
+findings, all reviewed (KNOWN)", cells, own-ground 78, canal-elevation
+11, census 0 new, both e2e on desktop. Also noted: the bundles committed
+at the bridges lane tip did not match that commit's own source; main's
+bundles match main's source, so the integrator's rebuild was right.
+
+
 ## Ground from the terrain everywhere, with a reach test: 312 pands corrected, 98 split-level pands restored (2026-10-14)
 
 Lane `lane/ground-rule-everywhere-20261014`, the follow-up to "3DBAG

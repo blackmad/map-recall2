@@ -20,7 +20,7 @@ import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlight
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { LANDMARK_SEQUENCE, anchorWorldFromMercator, bySequence, mercatorFromAnchorWorld, multiplyMat4, needsRebase, painterSortStable, reversePainterSortStable } from '../../../src/canalRecall/landmarks/batchedLegacyFrame.ts';
-import { applyMeshHighlight, highlightRecipe } from '../../../src/canalRecall/look/highlight.ts';
+import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 import { enuDirectionInLocal, SUN_DIRECTION, sunDirection, DEFAULT_LIGHT_RIG } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 
 // The weak fill faces the sun from the other side, low: shade walls read, never a second sun.
@@ -434,7 +434,7 @@ export class SignatureLandmarks {
       if (entry.highlightState === state) continue;
       entry.highlightState = state;
       entry.highlighted = state === 'highlight';
-      applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m, up: [0, 1, 0] }); // glTF: +y up
+      applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m, up: this.sharedFrame ? LANDMARK_WORLD_UP.shared : LANDMARK_WORLD_UP.legacy });
       // Highlight passes are new children: give them world matrices (legacy scenes no longer auto-update).
       this._refreshSceneMatrices(entry);
     }

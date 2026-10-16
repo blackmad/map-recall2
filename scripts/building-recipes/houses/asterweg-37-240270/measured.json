@@ -1,0 +1,169 @@
+{
+ "id": "asterweg-37-240270",
+ "pandId": "0363100012240270",
+ "date": "2026-10-14",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 2,
+   "verdict": "NO EVIDENCE",
+   "reasons": [
+    "obliquity 54.5 deg > 45"
+   ],
+   "crop": {
+    "ref": "source-data://pand-reference-walls/0363100012240270/w02-344.jpg",
+    "sha256": "85606d8804ebb2e7cdc4dad8f2031a6b66020fece0e15260689b0f3d5b7f5515",
+    "panoId": "TMX7316010203-000301_pano_0000_006223",
+    "capturedAt": "2017-05-18",
+    "obliquityDeg": 54.5,
+    "cameraDistM": 10.2
+   },
+   "pieces": [
+    {
+     "tag": "w02-344",
+     "ref": "source-data://pand-reference-walls/0363100012240270/w02-344.jpg",
+     "sha256": "85606d8804ebb2e7cdc4dad8f2031a6b66020fece0e15260689b0f3d5b7f5515",
+     "capturedAt": "2017-05-18",
+     "u0": 0,
+     "u1": 70.2
+    }
+   ],
+   "coverage": 0.997,
+   "placement": {
+    "offsetM": 0.17,
+    "angleDeg": 0.062,
+    "overlap": 0.997,
+    "along": [
+     0.291,
+     70.688
+    ],
+    "shift": {
+     "uM": 0,
+     "vM": 0
+    },
+    "box": {
+     "u0": 0,
+     "u1": 70.397,
+     "v0": 0.001,
+     "v1": 9.195
+    }
+   },
+   "likeness": {
+    "shift": {
+     "uM": 0,
+     "vM": 0
+    },
+    "iou": 0,
+    "wall": {
+     "photo": "#5d5d5c",
+     "photoRaw": "#686a6a",
+     "model": "#9fa2a6",
+     "modelToday": "#9fa2a6",
+     "photoFamily": "paint",
+     "modelFamily": "paint",
+     "photoMaterial": "painted-black",
+     "modelMaterial": "painted-grey",
+     "dL": 0.275,
+     "dHue": null,
+     "pass": false
+    },
+    "glass": {
+     "photo": "#4f4f4d",
+     "model": null
+    },
+    "glazing": {
+     "photo": [
+      null,
+      0.206,
+      0.193,
+      null
+     ],
+     "model": [
+      null,
+      0,
+      0,
+      null
+     ],
+     "photoMean": 0.234,
+     "modelMean": 0,
+     "maxDiff": 0.206,
+     "meanDiff": 0.234,
+     "pass": false
+    },
+    "columns": {
+     "photo": 12,
+     "model": null,
+     "pass": false
+    },
+    "shape": {
+     "photo": null,
+     "model": null,
+     "pass": null
+    },
+    "classes": {
+     "photo": "punched",
+     "model": "blank"
+    },
+    "ground": {
+     "photo": 0.318,
+     "model": 0
+    },
+    "evidence": {
+     "usable": 0.916,
+     "foliage": 0.086,
+     "washedOut": 0.123,
+     "obliquityDeg": 54.5,
+     "cameraDistM": 10.2,
+     "widthM": 70.4,
+     "abstain": [
+      "obliquity 54.5 deg > 45"
+     ]
+    }
+   },
+   "measured": {
+    "wall": "#5d5d5c",
+    "wallRaw": "#686a6a",
+    "glass": "#4f4f4d",
+    "trim": "#a5a7a4",
+    "glazing": 0.234,
+    "storeyGlazing": [
+     null,
+     0.206,
+     0.193,
+     null
+    ],
+    "ground": 0.318,
+    "bays": 14,
+    "pitchM": 4.952,
+    "storeyM": null,
+    "window": null,
+    "frontClass": "punched",
+    "normalisation": {
+     "method": "light-trim p97 of neutral cells -> 215/255 when >= 25 L* above the median cell, else raw (gain 0.75..1.45, white balance +-8 %)",
+     "ref": [
+      239,
+      244,
+      250
+     ],
+     "gain": 0.879,
+     "wb": [
+      1.021,
+      1.001,
+      0.979
+     ]
+    },
+    "usable": 0.841,
+    "foliage": 0.086,
+    "washedOut": 0.123,
+    "split": null
+   },
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no evidence: obliquity 54.5 deg > 45"
+    ]
+   }
+  }
+ ]
+}

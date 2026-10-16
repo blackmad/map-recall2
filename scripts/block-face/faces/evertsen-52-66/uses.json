@@ -1,0 +1,187 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:36:12.296Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131498",
+   "addresses": [
+    "Jan Evertsenstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 66",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000684249"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115017",
+   "addresses": [
+    "Jan Evertsenstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 64-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000684241"
+    },
+    {
+     "address": "Marco Polostraat 230-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001005451"
+    },
+    {
+     "address": "Jan Evertsenstraat 64-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 173,
+     "bagId": "0363010012066185"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2812000392,
+     "lngLat": [
+      4.8555777,
+      52.3711146
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64-H",
+      "addr:postcode": "1056ED",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "restaurant",
+      "cuisine": "turkish",
+      "name": "Ufuk",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ufukrestaurant.nl"
+     },
+     "fetchedAt": "2026-10-14T13:36:12.296Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012128896",
+   "addresses": [
+    "Jan Evertsenstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 62-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000684234"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2812000360,
+     "lngLat": [
+      4.8556659,
+      52.3711241
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62-H",
+      "addr:postcode": "1056ED",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "De Kaaswinkel",
+      "shop": "cheese",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:36:12.296Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012124819",
+   "addresses": [
+    "Jan Evertsenstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000684226"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2812000328,
+     "lngLat": [
+      4.8557392,
+      52.3711425
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1056ED",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Akdeniz",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:36:12.296Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012134101",
+   "addresses": [
+    "Jan Evertsenstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000684218"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147483",
+   "addresses": [
+    "Jan Evertsenstraat 52",
+    "Jan Evertsenstraat 54",
+    "Jan Evertsenstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 52",
+     "use": "winkelfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000946492"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

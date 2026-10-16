@@ -1,25 +1,134 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politiepost-ijburg",
-  "pandId": "0363100012127406",
-  "address": "Politiepost IJburg, IJburglaan 1397, Amsterdam (2004; ground-floor police post in a red-brick housing block, one pand)",
-  "sources": [
-    {"id": "pano-2022-05-13-sw-tower", "kind": "street-panorama", "capturedAt": "2022-05-13", "image": "staging/pand-reference-walls/0363100012127406/w01-221.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002580_pano_0008_001836/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2022-05-13-sw-post", "kind": "street-panorama", "capturedAt": "2022-05-13", "image": "staging/pand-reference-walls/0363100012127406/w01-221.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002580_pano_0008_001836/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2021-02-04-se", "kind": "street-panorama", "capturedAt": "2021-02-04", "image": "staging/pand-reference-walls/0363100012127406/w04-131.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001992_pano_0001_000424/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [72], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 6, "ground": "system", "windows": "plain", "entrance": {"bay": 2, "storeys": 2, "canopy": true}},
-    {"wallSurfaces": [77, 26], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 4, "ground": "system", "windows": "plain", "entrance": {"bay": 1, "storeys": 1}, "police": {"lamp": true}},
-    {"wallSurfaces": [32], "system": "brick-bay-grid", "storeys": 6, "baysPerStorey": 5, "ground": "blank", "windows": "plain"}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#8a3e30", "frame": "#d8d6d0", "door": "#d98a1a", "stone": "#c6c3bb", "wallMaterial": "stucco"},
-  "notes": [
-    "2004 housing block on IJburglaan with the Politiepost IJburg (103 LoD2.2 wall surfaces, 63 m SW front); the pand is the whole block and the police post is its ground-floor unit. SW front from the 2022-05-13 panorama (w01-221, 13 m away, rectified): at the right a six-storey red-brick tower with railings behind white frames and a two-storey open gate portal under a flat concrete slab; at the left a four-storey brick base with a glass shopfront ground floor, orange-painted entrance boxes and a blue diamond police sign (the post), under a steel and timber-louvre loggia level that steps back. SE end (2021-02-04, w04-131, from across the canal): the same brick, seven rows of paired windows, shutters at the ground.",
-    "Ornaments from the panorama: blue diamond police blade sign by the post doors (SIMPLIFIED as the kit blue lamp beside the post entrance: same colour and position, a box not a diamond); orange entrance boxes at the post (door colour orange MODELLED as the entrance door, the projecting orange box is SIMPLIFIED: recessed door); P-politie parking signs (SKIPPED: street furniture on poles); open gate portal under a concrete slab (MODELLED as a two-storey entrance hall with a canopy); no POLITIE lettering on the building (the sign is the blade), no striped band or crest; steel and louvre loggia at the left upper levels (SKIPPED: a 4 m deep open frame structure with slatted shutters, not in the 3DBAG volume above the plinth line, which the loggia surfaces 44/39/75 already take as flat walls left blank).",
-    "Surface 35 (7.7 m of the tower front, 33.5 to 41.2 m along the panel) is left blank: grouping it with surface 72 gives 0.4 m2 coplanar sill/reveal overlap at audit:glb (zfight-m2 above the zero baseline). The entrance hall is bay 2 of 6 of the tower group; the gate portal in the photo is at the right of the tower, so it sits about 6 m left of its real position. North-east, north-west and courtyard walls have no panorama (candidates 0) and stay blank."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politiepost-ijburg",
+ "pandId": "0363100012127406",
+ "address": "Politiepost IJburg, IJburglaan 1397, Amsterdam (2004; ground-floor police post in a red-brick housing block, one pand)",
+ "sources": [
+  {
+   "id": "pano-2022-12-28-w01-221L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002898_pano_0001_000160/",
+   "image": "source-data://pand-reference-walls/0363100012127406/w01-221L.jpg",
+   "sha256": "59bb9ff1ff0dd5cc895c761a5093a166dcde1eafdd3634dd037768f81c987d72",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-02-04-w04-131",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001992_pano_0001_000424/",
+   "image": "source-data://pand-reference-walls/0363100012127406/w04-131.jpg",
+   "sha256": "2cd04b84baff2e0b422d7bd45a478fe9e2760f29fd1bdea9acb9e4dd78e73f82",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    72
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "plain",
+   "entrance": {
+    "bay": 2,
+    "storeys": 2,
+    "canopy": true
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#41322a"
+   },
+   "windowShape": {
+    "w": 0.45,
+    "h": 0.6,
+    "sill": 0.2
+   }
+  },
+  {
+   "wallSurfaces": [
+    77,
+    26
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "entrance": {
+    "bay": 1,
+    "storeys": 1
+   },
+   "police": {
+    "lamp": true
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#3d2d25"
+   },
+   "windowShape": {
+    "w": 0.584,
+    "h": 0.85,
+    "sill": 0.13
+   }
+  },
+  {
+   "wallSurfaces": [
+    32
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 5,
+   "ground": "blank",
+   "windows": "plain",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#5e3f35"
+   },
+   "windowShape": {
+    "w": 0.35,
+    "h": 0.58,
+    "sill": 0.28
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#8a3e30",
+  "frame": "#d8d6d0",
+  "door": "#d98a1a",
+  "stone": "#c6c3bb",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "2004 housing block on IJburglaan with the Politiepost IJburg (103 LoD2.2 wall surfaces, 63 m SW front); the pand is the whole block and the police post is its ground-floor unit. SW front from the 2022-05-13 panorama (w01-221, 13 m away, rectified): at the right a six-storey red-brick tower with railings behind white frames and a two-storey open gate portal under a flat concrete slab; at the left a four-storey brick base with a glass shopfront ground floor, orange-painted entrance boxes and a blue diamond police sign (the post), under a steel and timber-louvre loggia level that steps back. SE end (2021-02-04, w04-131, from across the canal): the same brick, seven rows of paired windows, shutters at the ground.",
+  "Ornaments from the panorama: blue diamond police blade sign by the post doors (SIMPLIFIED as the kit blue lamp beside the post entrance: same colour and position, a box not a diamond); orange entrance boxes at the post (door colour orange MODELLED as the entrance door, the projecting orange box is SIMPLIFIED: recessed door); P-politie parking signs (SKIPPED: street furniture on poles); open gate portal under a concrete slab (MODELLED as a two-storey entrance hall with a canopy); no POLITIE lettering on the building (the sign is the blade), no striped band or crest; steel and louvre loggia at the left upper levels (SKIPPED: a 4 m deep open frame structure with slatted shutters, not in the 3DBAG volume above the plinth line, which the loggia surfaces 44/39/75 already take as flat walls left blank).",
+  "Surface 35 (7.7 m of the tower front, 33.5 to 41.2 m along the panel) is left blank: grouping it with surface 72 gives 0.4 m2 coplanar sill/reveal overlap at audit:glb (zfight-m2 above the zero baseline). The entrance hall is bay 2 of 6 of the tower group; the gate portal in the photo is at the right of the tower, so it sits about 6 m left of its real position. North-east, north-west and courtyard walls have no panorama (candidates 0) and stay blank.",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #353432 not used (not darker than the wall #41322a by 10 L*, or tinted): kit glass kept; walls[1] glass #2c2929 not used (not darker than the wall #3d2d25 by 10 L*, or tinted): kit glass kept; walls[2] glass #494844 not used (not darker than the wall #5e3f35 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1,
+   2
   ]
+ }
 }

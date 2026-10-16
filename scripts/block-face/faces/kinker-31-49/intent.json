@@ -1,0 +1,586 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-31-49",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-31-49/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip."
+ },
+ "types": [
+  "kinker-1890-plain-brick",
+  "kinker-1886-neo-renaissance"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012158968",
+   "slug": "kinker-158968",
+   "address": "Kinkerstraat 31",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "overrides": {
+     "bays": 2,
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#262620"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "entrance": "none",
+      "glazing": "single",
+      "stallriser": "medium",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#2f5a3a"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 1: white pui with a dark green frame, a coffee-cup logo on the glass, black house door right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "coffee-cup logo on the glass, no legible name; BAG bijeenkomstfunctie; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): black-painted brick, 2 axes, flat heads with white keystones, cornice, no dormer",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2
+    ],
+    "schemaLimits": [
+     "black paint drawn as dark brick: the painted-band type has no crown without a dormer, and a placement cannot change the wall material"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160646",
+   "slug": "kinker-160646",
+   "address": "Kinkerstraat 33",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#352f26"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-12-11 pand 2: dark shop between white pilasters, PIZZ.. letters on the stall board"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "pizzeria: PIZZA on the stall board, neon lettering on the fascia illegible; no OSM node"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 2: dark grey-brown brick, 3 axes, keystones, a plain flat-topped dormer",
+    "schemaLimits": [
+     "the dormer is a plain flat-topped box with a white frame, drawn as the type pediment dormer"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012155369",
+   "slug": "kinker-155369",
+   "address": "Kinkerstraat 35",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#49382d"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "medium",
+      "evidence": "strip.jpg 2024-12-11 pand 3: white pui, a door with a 35 transom left; a truck hides the glass"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "white pui, mostly hidden by a truck on the strip"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 3: dark red brick, 3 axes, keystones, pediment dormer"
+   }
+  },
+  {
+   "pandId": "0363100012160073",
+   "slug": "kinker-160073",
+   "address": "Kinkerstraat 37",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "De Hoge Bi Fietswinkel",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 4: white pui, display glass left, door right, bicycles in front; OSM node 926571671 shop=bicycle"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "De Hoge Bi Fietswinkel",
+    "category": "shop=bicycle",
+    "osm": {
+     "type": "node",
+     "id": 926571671,
+     "name": "De Hoge Bi Fietswinkel"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "bicycles in front; lettering hidden"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 4: 3 axes, keystones, pediment dormer"
+   }
+  },
+  {
+   "pandId": "0363100012160074",
+   "slug": "kinker-160074",
+   "address": "Kinkerstraat 39",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Kapsalon Pronto",
+      "sign": {
+       "text": "KAPSALON PRONTO",
+       "textColour": "#ffffff",
+       "mount": "fascia",
+       "background": "#4b2a6a"
+      },
+      "entrance": "left",
+      "glazing": "single",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 5: purple fascia KAPSALON PRONTO over a white pui, black house door right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Kapsalon Pronto",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "hairdresser; purple fascia lettered Kapsalon Pronto; no OSM node"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 5: 3 axes, keystones, pediment dormer"
+   }
+  },
+  {
+   "pandId": "0363100012167106",
+   "slug": "kinker-167106",
+   "address": "Kinkerstraat 41",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#856c57"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": true,
+      "name": "Madam Fifi",
+      "entrance": "right",
+      "glazing": "single",
+      "stallriser": "low",
+      "evidence": "strip.jpg 2024-12-11 pand 6: black shop, red-papered glass with a white script name, orange board on the fascia; OSM node 7533672000"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Madam Fifi",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 7533672000,
+     "name": "Madam Fifi"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "red-papered glass with a white script name (read as Madam Fifi)"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 6: 3 axes, keystones, pediment dormer"
+   }
+  },
+  {
+   "pandId": "0363100012159384",
+   "slug": "kinker-159384",
+   "address": "Kinkerstraat 43",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#91735c"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": true,
+      "name": "Tandoori Express",
+      "entrance": "none",
+      "glazing": "single",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2e3a40"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 7: black fascia over a white-framed display window, door left and right"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Tandoori Express",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2809441379,
+     "name": "Tandoori Express"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "black fascia, no legible lettering"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 7: 3 axes, keystones, pediment dormer"
+   }
+  },
+  {
+   "pandId": "0363100012154359",
+   "slug": "kinker-154359",
+   "address": "Kinkerstraat 45",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#c9a080"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "fasciaColour": "#1e1e1e",
+      "entrance": "centre",
+      "glazing": "single",
+      "stallriser": "medium",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2e3a40"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 8: white pui under a black fascia with white letters, dark doors either side"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "black fascia with white lettering (read as WOMANITY, uncertain); BAG bijeenkomstfunctie; no OSM node"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 8: 3 axes, keystones, pediment dormer (sunlit)"
+   }
+  },
+  {
+   "pandId": "0363100012161457",
+   "slug": "kinker-161457",
+   "address": "Kinkerstraat 47",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.64,
+     "palette": {
+      "brick": "#d8b093"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "entrance": "none",
+      "glazing": "split",
+      "displayWindows": 3,
+      "stallriser": "medium",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2e3a40"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 9: white timber pui with pilasters and three lights, dark house door left"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "logiesfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "BAG logiesfunctie (lodging); white timber pui with pilasters, no sign"
+   },
+   "rhythm": {
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "citation": "strip.jpg pand 9: 3 axes, keystones, pediment dormer (sunlit)"
+   }
+  },
+  {
+   "pandId": "0363100012157926",
+   "slug": "kinker-157926",
+   "address": "Kinkerstraat 49",
+   "type": {
+    "type": "kinker-1886-neo-renaissance",
+    "crown": "none",
+    "overrides": {
+     "windowHead": {
+      "kind": "relieving",
+      "storeys": [
+       1,
+       2
+      ],
+      "archRing": {
+       "colour": "stone",
+       "style": "blocks",
+       "keystone": true
+      }
+     },
+     "cornice": "bracketed",
+     "palette": {
+      "brick": "#d0ab8d"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1f3a32",
+      "fascia": true,
+      "name": "Excellent Tailor & Dry Cleaning",
+      "sign": {
+       "text": "EXCELLENT TAILOR & DRY CLEANING",
+       "textColour": "#e8e2cc",
+       "mount": "fascia"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "medium",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "black"
+      },
+      "evidence": "strip.jpg 2024-12-11 pand 10: dark green shopfront lettered EXCELLENT TAILOR & DRY CLEANING (corner Da Costakade)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Excellent Tailor & Dry Cleaning",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "no OSM node; lettering legible"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10 (zoom): 1893 corner, brick with white speklagen, 3 axes, blocked relieving arches over the storey 1-2 windows, flat top storey, bracketed cornice; a brick wall dormer with a flat cap between two small dormers",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the brick wall dormer with flanking dormers is not drawn (no crown variant of the type has it)",
+     "several speklagen per storey stepping round the arches"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30
+  }
+ },
+ "limitations": [
+  "Kinkerstraat 31: black paint (painted-band type has no crown without a dormer; a placement cannot change the wall material). Drawn as dark brick.",
+  "Kinkerstraat 33: plain flat-topped box dormer with a white frame drawn as the type pediment dormer (plain-brick has no plain-dormer crown).",
+  "Kinkerstraat 49: centre brick wall dormer with a flat cap between two small dormers; not drawn (neo-renaissance has no wall-dormer crown).",
+  "Iron wall anchors; tall carved keystones drawn as plain keystone blocks."
+ ]
+}

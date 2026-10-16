@@ -6,35 +6,30 @@
  "address": "Valckenierstraat 65, Amsterdam-Centrum (Roeterseiland): 1963 university laboratory block, four storeys of brick ribbon windows with cream bands over a dark plinth, a two-storey steel-window canal wing and a brick tower with a chimney stack",
  "sources": [
   {
-   "id": "pano-2018-05-08-w01",
+   "id": "pano-2021-12-31-w01-163L",
    "kind": "street-panorama",
-   "capturedAt": "2018-05-08",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000711_pano_0000_000127/",
-   "image": "staging/pand-reference-walls/0363100012170734/w01-163.jpg",
+   "capturedAt": "2021-12-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002373_pano_0005_000001/",
+   "image": "source-data://pand-reference-walls/0363100012170734/w01-163L.jpg",
+   "sha256": "64820721d417f80cdd010193902989aa4c4682091cbf27cfed028d01819b2733",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2018-05-08-w01-2",
-   "kind": "street-panorama",
-   "capturedAt": "2018-05-08",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000711_pano_0000_000127/",
-   "image": "staging/pand-reference-walls/0363100012170734/w01-163.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-02-14-w03",
+   "id": "pano-2020-02-14-w03-253",
    "kind": "street-panorama",
    "capturedAt": "2020-02-14",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001644_pano_0002_000082/",
-   "image": "staging/pand-reference-walls/0363100012170734/w03-253.jpg",
+   "image": "source-data://pand-reference-walls/0363100012170734/w03-253.jpg",
+   "sha256": "bd6e4d0d69efafd8c7782510ea59347fcdd9d0b17acde9a369b26adb9a525e06",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2017-07-06-w04",
+   "id": "pano-2017-07-06-w04-343",
    "kind": "street-panorama",
    "capturedAt": "2017-07-06",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0002_000084/",
-   "image": "staging/pand-reference-walls/0363100012170734/w04-343.jpg",
+   "image": "source-data://pand-reference-walls/0363100012170734/w04-343.jpg",
+   "sha256": "d09858ce963b6254ad8cbdc11be71341413e9e8f34b2b0d3896f12db5fea48ae",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -53,10 +48,15 @@
    "stringCourses": true,
    "deepBars": true,
    "palette": {
-    "brick": "#9a5240",
+    "brick": "#5b463e",
     "frame": "#d8dcd6",
-    "stone": "#cdc6b2"
-   }
+    "stone": "#cdc6b2",
+    "glass": "#3b322e"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -69,7 +69,11 @@
     "brick": "#9a5240",
     "frame": "#9aa4a8",
     "stone": "#cdc6b2"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -84,10 +88,14 @@
    "stringCourses": true,
    "deepBars": true,
    "palette": {
-    "brick": "#9a5240",
+    "brick": "#765e52",
     "frame": "#d8dcd6",
     "stone": "#cdc6b2"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -98,10 +106,14 @@
    "storeys": 2,
    "ground": "system",
    "palette": {
-    "brick": "#8a4a3a",
+    "brick": "#4e4740",
     "frame": "#5a6a74",
     "stone": "#b8b4a8"
-   }
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
   }
  ],
  "otherWalls": "blank",
@@ -119,6 +131,15 @@
  "notes": [
   "Valckenierstraat 65 (BAG pand 0363100012170734, built 1963, 81 3DBAG wall surfaces, roof max 32.8 m): a university laboratory block of the Roeterseiland campus on the Nieuwe Achtergracht, a square four-storey brick ring round a courtyard with a brick tower and chimney stack at its north-east corner. Four walls are photographed: the south front (w01-163, 2018-05-08), the west front (w03-253, 2020-02-14), the north canal wing (w04-343, 2017-07-06) and the chimney tower (w06-343, 2021-01-22); w05-343 is the underside of the bridge and shows nothing.",
   "walls[0] = panels 32 and 12 (S, 69 m and 37 m, eaves 16.1): a dark brick plinth, cream stone bands between the floors and three storeys of paired and triple windows in grey frames, drawn as 4 storeys x 14 bays with string courses. walls[1] = panel 14 (S, eaves 18.9 over a 16.1 m base): the set-back top floor, one ribbon-window storey. walls[2] = panels 64 and 61 (W, 54 m and 22 m, eaves 16.1): the same four storeys x 11 bays. walls[3] = panels 2 and 10 (N, 37 m and 11 m, eaves 9.3): the two-storey steel-window laboratory wing over brick bands, drawn as two ribbon-window storeys in a dark frame colour.",
-  "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m)."
- ]
+  "Simplified: the brick plinth is the ground storey of the same brick, the stone bands are string courses, window groups are evenly spaced bays; the chimney tower and the two stair towers are the 3DBAG mass in brick colour (the second chimney stack and the roof plant are not modelled). Not drawn: the east front, the courtyard walls and the tower faces, which stay blank wall (no panorama within 35 m).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 2, 3 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #544f3e not used (not darker than the wall #765e52 by 10 L*, or tinted): kit glass kept; walls[3] glass #444946 not used (not darker than the wall #4e4740 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   2,
+   3
+  ]
+ }
 }

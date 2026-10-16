@@ -1,0 +1,44 @@
+{
+ "id": "plantage-middenlaan-52-186093",
+ "pandId": "0363100012186093",
+ "date": "2026-10-14",
+ "method": "measureFacade.ts (k=4 clusters on smoothed normalised Lab + texture, wall = clusters enriched in the floor zones, mixed edge cells by nearest pure colour, light-trim exposure normalisation, autocorrelated bay/storey rhythm, colour split along u) on all-walls.ts --archive crops paired by cropToPanel.ts; likeness.ts against the model elevation",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 8,
+   "verdict": "NO PHOTO",
+   "coverage": 0.542,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 8"
+    ]
+   }
+  },
+  {
+   "group": 1,
+   "panel": 98,
+   "verdict": "NO PHOTO",
+   "coverage": 0,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 98"
+    ]
+   }
+  },
+  {
+   "group": 2,
+   "panel": 24,
+   "verdict": "NO PHOTO",
+   "coverage": 0.593,
+   "gaps": {
+    "kit": [],
+    "evidence": [
+     "no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 24"
+    ]
+   }
+  }
+ ]
+}

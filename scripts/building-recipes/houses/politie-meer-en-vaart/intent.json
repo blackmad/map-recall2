@@ -1,27 +1,120 @@
 {
-  "schemaVersion": 1,
-  "kind": "large",
-  "id": "politie-meer-en-vaart",
-  "pandId": "0363100012089344",
-  "address": "Politiebureau Meer en Vaart, Meer en Vaart 284, Amsterdam (1982)",
-  "sources": [
-    {"id": "pano-2024-09-18-east", "kind": "street-panorama", "capturedAt": "2024-09-18", "image": "staging/pand-reference-walls/0363100012089344/w01-72.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240918_0854_Track02_Sphere_00297/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "inferred-north", "kind": "street-panorama", "capturedAt": "2024-09-18", "image": "staging/pand-reference-walls/0363100012089344/w01-72.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240918_0854_Track02_Sphere_00297/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-09-09-west-oblique", "kind": "street-panorama", "capturedAt": "2025-09-09", "image": "staging/pand-reference-walls/0363100012089344/w04-252.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-09_06-44-43_02225/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "inferred-south", "kind": "street-panorama", "capturedAt": "2024-09-18", "image": "staging/pand-reference-walls/0363100012089344/w01-72.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20240918_0854_Track02_Sphere_00297/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
-  ],
-  "walls": [
-    {"wallSurfaces": [71], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 10, "ground": "blank", "windows": "two-light"},
-    {"wallSurfaces": [4], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 9, "ground": "blank", "windows": "two-light"},
-    {"wallSurfaces": [58], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 4, "ground": "blank", "windows": "two-light"},
-    {"wallSurfaces": [9, 5], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 4, "ground": "blank", "windows": "two-light"}
-  ],
-  "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#cdc3ae", "frame": "#eeeeea", "door": "#4a4a4a", "stone": "#b8b2a4", "wallMaterial": "stucco"},
-  "notes": [
-    "1982 three-storey concrete and rendered office block used as police bureau (the whole pand, 34 x 30 m, 9.2 m eaves with a 12.0 m stair and plant volume). East front (2024-09-18, w01-72, 31 m away, partly behind a birch): beige rendered wall, two rows of paired white-framed windows over projecting concrete cill panels, a plinth with low basement-light windows. West side (2025-09-09, w04-252, oblique 47 deg, behind a hedge): same windows, a ribbon of six lights, grey concrete stair tower.",
-    "Ornaments: none of POLITIE lettering, blue lamp, striped band, canopy or crest is visible on any photographed wall (east and west fronts show no sign at all, the entrance side is not in the cache; the south and north have no usable panorama: candidates 0): none modelled because none is present in the evidence. The concrete cill panels under the first-floor windows are SIMPLIFIED to the kit's sills; the basement lights (0.3 m slots) are SKIPPED: below the grain of the bay system and 0.3 m from the ground.",
-    "North, south and west walls are INFERRED from the east front (same window pairs and rendering, bay counts from wall widths); the stair/plant volume at 12.0 m and the courtyard walls stay blank (otherWalls)."
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "politie-meer-en-vaart",
+ "pandId": "0363100012089344",
+ "address": "Politiebureau Meer en Vaart, Meer en Vaart 284, Amsterdam (1982)",
+ "sources": [
+  {
+   "id": "pano-2022-01-07-w02-342L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002398_pano_0001_000074/",
+   "image": "source-data://pand-reference-walls/0363100012089344/w02-342L.jpg",
+   "sha256": "2f4ad76ae8895dbd4259322d4ff8d00b42d278301a1b0e0906686b4f7b8fa0b0",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    71
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 10,
+   "ground": "blank",
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "palette.brick",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#776f62"
+   },
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.42,
+    "sill": 0.3
+   }
+  },
+  {
+   "wallSurfaces": [
+    4
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 9,
+   "ground": "blank",
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#5d5a55"
+   },
+   "windowShape": {
+    "w": 0.9,
+    "h": 0.42,
+    "sill": 0.3
+   }
+  },
+  {
+   "wallSurfaces": [
+    58
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "ground": "blank",
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    9,
+    5
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 4,
+   "ground": "blank",
+   "windows": "two-light",
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#cdc3ae",
+  "frame": "#eeeeea",
+  "door": "#4a4a4a",
+  "stone": "#b8b2a4",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "1982 three-storey concrete and rendered office block used as police bureau (the whole pand, 34 x 30 m, 9.2 m eaves with a 12.0 m stair and plant volume). East front (2024-09-18, w01-72, 31 m away, partly behind a birch): beige rendered wall, two rows of paired white-framed windows over projecting concrete cill panels, a plinth with low basement-light windows. West side (2025-09-09, w04-252, oblique 47 deg, behind a hedge): same windows, a ribbon of six lights, grey concrete stair tower.",
+  "Ornaments: none of POLITIE lettering, blue lamp, striped band, canopy or crest is visible on any photographed wall (east and west fronts show no sign at all, the entrance side is not in the cache; the south and north have no usable panorama: candidates 0): none modelled because none is present in the evidence. The concrete cill panels under the first-floor windows are SIMPLIFIED to the kit's sills; the basement lights (0.3 m slots) are SKIPPED: below the grain of the bay system and 0.3 m from the ground.",
+  "North, south and west walls are INFERRED from the east front (same window pairs and rendering, bay counts from wall widths); the stair/plant volume at 12.0 m and the courtyard walls stay blank (otherWalls).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #505654 not used (not darker than the wall #5d5a55 by 10 L*, or tinted): kit glass kept."
+ ],
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   0,
+   1
   ]
+ }
 }
