@@ -20,10 +20,17 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 7,
-   "windows": "plain",
+   "windows": "transom",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.14
+   }
   },
   {
    "wallSurfaces": [
@@ -37,10 +44,20 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 7,
-   "windows": "two-light",
+   "windows": "cross",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.6,
+    "sill": 0.12
+   },
+   "courses": [
+    "sill"
+   ]
   },
   {
    "wallSurfaces": [
@@ -54,10 +71,20 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 6,
-   "windows": "plain",
+   "windows": "cross",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.6,
+    "sill": 0.12
+   },
+   "courses": [
+    "sill"
+   ]
   },
   {
    "wallSurfaces": [
@@ -68,10 +95,17 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "windows": "plain",
+   "windows": "transom",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.14
+   }
   },
   {
    "wallSurfaces": [
@@ -86,10 +120,20 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 5,
-   "windows": "plain",
+   "windows": "cross",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.6,
+    "sill": 0.12
+   },
+   "courses": [
+    "sill"
+   ]
   },
   {
    "wallSurfaces": [
@@ -103,10 +147,17 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "windows": "plain",
+   "windows": "transom",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.14
+   }
   },
   {
    "wallSurfaces": [
@@ -120,10 +171,20 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "windows": "plain",
+   "windows": "cross",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.6,
+    "h": 0.6,
+    "sill": 0.12
+   },
+   "courses": [
+    "sill"
+   ]
   },
   {
    "wallSurfaces": [
@@ -132,15 +193,26 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "windows": "plain",
+   "windows": "three-light",
    "ground": "system",
    "arches": {
     "windows": "round",
     "ground": "round",
-    "band": "none"
+    "band": "blocks"
    },
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "cornice": true,
+   "windowShape": {
+    "w": 0.66,
+    "h": 0.64,
+    "sill": 0.08
+   },
+   "courses": [
+    "sill"
+   ]
   },
   {
    "wallSurfaces": [
@@ -190,10 +262,17 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 3,
-   "windows": "plain",
+   "windows": "transom",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.14
+   }
   },
   {
    "wallSurfaces": [
@@ -247,10 +326,22 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 3,
-   "windows": "plain",
+   "windows": "cross",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "cornice": true,
+   "windowShape": {
+    "w": 0.72,
+    "h": 0.6,
+    "sill": 0.12
+   },
+   "courses": [
+    "sill",
+    "head"
+   ]
   },
   {
    "wallSurfaces": [
@@ -266,10 +357,17 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 2,
-   "windows": "plain",
+   "windows": "transom",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.14
+   }
   },
   {
    "wallSurfaces": [
@@ -285,10 +383,17 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 2,
-   "windows": "plain",
+   "windows": "transom",
    "ground": "system",
-   "frames": false,
-   "sills": false
+   "frames": true,
+   "sills": false,
+   "glazing": "panes",
+   "souterrain": "single",
+   "windowShape": {
+    "w": 0.5,
+    "h": 0.62,
+    "sill": 0.14
+   }
   },
   {
    "wallSurfaces": [
@@ -338,11 +443,11 @@
   "material": "slate"
  },
  "palette": {
-  "brick": "#8a5a47",
-  "frame": "#e8e4d8",
+  "brick": "#a2856c",
+  "frame": "#efece3",
   "door": "#2f3b33",
-  "stone": "#d9cfb8"
+  "stone": "#e2d6bc"
  },
- "closedBands": true,
+ "closedBands": false,
  "notes": []
 }

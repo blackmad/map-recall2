@@ -46,6 +46,8 @@ export interface ComposeOptions {
   systemFor?: (p: Panel) => string | null;
   /** Leave this cell empty so a component (entrance, garage door) can take it. */
   skipCell?: (p: Panel, floor: number, bay: number, bays: number) => boolean;
+  /** Leave this panel's bands (string courses) out: a wall no one sees, a court face (opt-in). */
+  skipBands?: (p: Panel) => boolean;
   /** Components drawn on a panel after its facade system, with the panel's storey lines and the cells it laid out. */
   panelHook?: (c: Ctx, info: { system: string | null; levels: number[]; cells: Cell[] }) => void;
 }
@@ -305,6 +307,32 @@ function drawTilt(c: Ctx, u0: number, u1: number, v0: number, v1: number, tilt: 
 export { Ctx as PanelCtx, drawOpening, stripBox, intervals };
 const frac = (x: number | undefined, total: number, dflt: number) => { const v = x ?? dflt; return v <= 1 ? v * total : v; };
 
+/**
+ * Pane-split glazing (`WinParams.paneSplit`): the panes stand one sheet layer in front of the frame sheet, clear of the audit's
+ * 3 cm coplanar bands even on a skewed 3DBAG cut (audit:glb joins such assemblies at 10 cm: LAYERED_SHEET_IDS).
+ */
+export const PANE_OUT_M = SHEET_PITCH;
+/**
+ * The pane rectangles of an opening: inset `fw` from its edges, split at the glazing-bar fractions `mulls` (of the width) and
+ * `rows` (of the height) by gaps `bw` wide. Bars that would leave a pane under 4 cm are dropped.
+ */
+export function paneRects(u0: number, u1: number, v0: number, v1: number, fw: number, bw: number, mulls: number[], rows: number[]): [number, number, number, number][] {
+  const cuts = (a: number, b: number, at: number[], len: number): [number, number][] => {
+    const out: [number, number][] = [];
+    let lo = a;
+    for (const f of [...at].sort((p, q) => p - q)) {
+      const m = a - fw + len * f;
+      if (m - bw / 2 - lo < 0.04 || b - (m + bw / 2) < 0.04) continue;
+      out.push([lo, m - bw / 2]); lo = m + bw / 2;
+    }
+    if (b - lo > 0.01) out.push([lo, b]);
+    return out;
+  };
+  const us = cuts(u0 + fw, u1 - fw, mulls, u1 - u0), vs = cuts(v0 + fw, v1 - fw, rows, v1 - v0), out: [number, number, number, number][] = [];
+  for (const [lo, hi] of vs) for (const [a, b] of us) out.push([a, b, lo, hi]);
+  return out;
+}
+
 /** Returns the depth of the glass plane (m in front of the wall; negative when recessed), or null when nothing was drawn. */
 function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams, seed: number): number | null {
   const frameSlot = w.frame ?? 'frame', glassSlot = w.glass ?? 'glass', fw = w.frameW ?? 0.07;
@@ -398,17 +426,25 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     back = 0.015;
   }
   const g = (a: number, b: number, lo: number, hi: number, slot: string, d: number, pt = part) => c.mesh.quad(slot, Q(a, lo, d), Q(b, lo, d), Q(b, hi, d), Q(a, hi, d), pt, n);
-  g(u0, u1, v0, v0 + fw, frameSlot, 0); g(u0, u1, v1 - fw, v1, frameSlot, 0);
-  g(u0, u0 + fw, v0 + fw, v1 - fw, frameSlot, 0); g(u1 - fw, u1, v0 + fw, v1 - fw, frameSlot, 0);
-  g(u0 + fw, u1 - fw, v0 + fw, v1 - fw, glassSlot, -c.glassBack);
-  const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
-  const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
-  if (mulls.length || rows.length || w.transom) {
-    // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
-    const bars = c.part(), bw = fw > 0 ? fw : 0.06;
-    const bd = c.barDepth(w);
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, bd, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, bars); }
+  if (w.paneSplit) {
+    // one frame sheet at the back, the panes in front of it: ring and bars are the sheet between the panes
+    g(u0, u1, v0, v1, frameSlot, 0);
+    const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
+    const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
+    for (const [a, b, lo, hi] of paneRects(u0, u1, v0, v1, fw, fw > 0 ? fw : 0.06, mulls, [...rows, ...(w.transom ? [w.transom] : [])])) g(a, b, lo, hi, glassSlot, PANE_OUT_M);
+  } else {
+    g(u0, u1, v0, v0 + fw, frameSlot, 0); g(u0, u1, v1 - fw, v1, frameSlot, 0);
+    g(u0, u0 + fw, v0 + fw, v1 - fw, frameSlot, 0); g(u1 - fw, u1, v0 + fw, v1 - fw, frameSlot, 0);
+    g(u0 + fw, u1 - fw, v0 + fw, v1 - fw, glassSlot, -c.glassBack);
+    const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
+    const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
+    if (mulls.length || rows.length || w.transom) {
+      // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
+      const bars = c.part(), bw = fw > 0 ? fw : 0.06;
+      const bd = c.barDepth(w);
+      for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, bd, bars); }
+      for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, bars); }
+    }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();
@@ -429,7 +465,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
 
 /** Arched opening (`WinParams.arch`): arch.ts cuts it (recess mode) or lays it proud; sill as for a rectangular one. */
 function drawArched(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams): number {
-  const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!, barD: c.barDepth(w),
+  const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!, barD: c.barDepth(w), ...(w.paneSplit ? { paneSplit: true } : {}),
     mullAt: w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1)),
     rowsAt: [...(w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1))), ...(w.transom ? [w.transom] : [])] };
   let back = 0.035, shift: V3 | null = null;
@@ -735,13 +771,15 @@ function stripBox(c: Ctx, slot: Slot, a: number, b: number, v0: number, v1: numb
   if (!joinB || c.closedBands) mesh.quad(slot, B0, oB0, oB1, B1, part, p.r);
 }
 
-function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System) {
+function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System, top = Infinity) {
   void sys;
   for (const band of bands) {
     levels.forEach((L, f) => {
       if (f === 0 || (band.skipGround && f === 1) || (band.fromFloor && f < band.fromFloor)) return;
-      const v0 = L + (band.lift ?? 0) - band.h / 2, v1 = v0 + band.h;
-      for (const [a, b] of intervals(c.p, v0, v1)) if (b - a > 0.2) stripBox(c, band.slot, a, b, v0, v1, band.out);
+      const next = levels[f + 1] ?? top;
+      if (band.liftFrac !== undefined && !Number.isFinite(next)) return;
+      const v0 = L + (band.lift ?? 0) + (band.liftFrac !== undefined ? band.liftFrac * (next - L) : 0) - band.h / 2, v1 = v0 + band.h;
+      for (const [a, b] of intervals(c.p, v0, v1)) if (b - a > (band.minRun ?? 0.2)) stripBox(c, band.slot, a, b, v0, v1, band.out);
     });
   }
 }
@@ -819,7 +857,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     }
     if (c.layered) drawBalconyRuns(c);
     if (sys.cladding) for (const [a0, b0] of intervals(p, sys.cladding.from, p.vMax - 0.35)) for (const [a, b] of [[Math.max(a0, p.uMin + W * (sys.cladding.u?.[0] ?? 0)), Math.min(b0, p.uMin + W * (sys.cladding.u?.[1] ?? 1))]]) if (b - a > 0.3) { const part = c.part(); c.quad(sys.cladding.slot, a, sys.cladding.from, b, p.vMax - 0.35, 0.012, part); }
-    if (sys.bands) drawBands(c, sys.bands, levels.slice(0, floors), sys);
+    if (sys.bands && !opts.skipBands?.(p)) drawBands(c, sys.bands, levels.slice(0, floors), sys, levels[floors]);
     if (sys.piers) {
       for (let b = 0; b <= nb; b++) {
         const u = p.uMin + W * b / nb, w = sys.piers.w, a = Math.max(p.uMin, u - w / 2), bb = Math.min(p.uMax, u + w / 2);
