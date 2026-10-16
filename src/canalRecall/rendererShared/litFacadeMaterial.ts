@@ -27,6 +27,10 @@ export type FacadeUniforms = {
   bands: { value: number };
   flatColour: { value: number };
   cityFade: { value: number };
+  /** The overview → city colour weight (overviewTransition/blend.ts): 1 = the city's own colour, 0 = `cityFlat`. */
+  cityTone: { value: number };
+  /** The flat overview's footprint colour (sRGB 0..1) the city colour mixes from. */
+  cityFlat: { value: number[] };
   /** Gain on wall-masked cell texels (look/palette.ts `litWallGain`): the wall shows its tint, like a landmark's brick slot. */
   wallGain: { value: number };
   /** `[lo, hi)` layers of the pantile and slate cells (roofTier.ts); lo < 0 turns the distance tiers off. */
@@ -68,6 +72,8 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     bands: uniforms?.bands ?? { value: 0 },
     flatColour: uniforms?.flatColour ?? { value: 0 },
     cityFade: uniforms?.cityFade ?? { value: 1 },
+    cityTone: uniforms?.cityTone ?? { value: 1 },
+    cityFlat: uniforms?.cityFlat ?? { value: [0.5, 0.5, 0.5] },
     wallGain: uniforms?.wallGain ?? { value: 1 },
     roofLayers: uniforms?.roofLayers ?? { value: ROOF_LAYERS_OFF },
     roofTier: uniforms?.roofTier ?? { value: roofTierUniform() },
@@ -79,6 +85,8 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     shader.uniforms.masks = shared.masks;
     shader.uniforms.flatColour = shared.flatColour;
     shader.uniforms.cityFade = shared.cityFade;
+    shader.uniforms.cityTone = shared.cityTone;
+    shader.uniforms.cityFlat = shared.cityFlat;
     shader.uniforms.wallGain = shared.wallGain;
     shader.uniforms.roofLayers = shared.roofLayers;
     shader.uniforms.roofTier = shared.roofTier;
@@ -95,6 +103,8 @@ uniform sampler2DArray cells;
 uniform sampler2DArray masks;
 uniform float flatColour;
 uniform float cityFade;
+uniform float cityTone;
+uniform vec3 cityFlat;
 uniform float wallGain;
 ${ROOF_TIER_GLSL}
 ${FACADE_TIER_GLSL}
@@ -120,11 +130,13 @@ facadeLuma = dot(fc, vec3(0.299, 0.587, 0.114));
 diffuseColor.rgb *= HL_PAINT(vHighlight) ? vec3(${HIGHLIGHT_LINEAR.join(', ')}) : pow(hlDesat(fc, vHighlight), vec3(2.2));`)
       .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
 roughnessFactor = mix(0.32, 0.92, smoothstep(0.06, 0.2, facadeLuma));`)
+      .replace('#include <dithering_fragment>', `#include <dithering_fragment>
+if (cityTone < 1.0) gl_FragColor.rgb = mix(cityFlat, gl_FragColor.rgb, cityTone);`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
   material.defines = { ...(material.defines ?? {}), ...highlightDefines() };
-  material.customProgramCacheKey = () => 'shared-frame-facade-v5';
+  material.customProgramCacheKey = () => 'shared-frame-facade-v6';
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
   material.uniforms = shared;
   material.userData.litFacade = true;

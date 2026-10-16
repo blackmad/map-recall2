@@ -6,3 +6,4 @@ export { GROUND_ORDER } from './sharedFrameGround.js';
 export { WATER_Z, toLocal, fromLocal } from './groundStore.js';
 export { separatePands, remapAttribute, groundVertices, liftPands } from './chunkBases.js';
 export { basemapGroundPatches } from './basemapPalette.js';
+export { overviewBasemapPatches } from '../overviewTransition/basemapOverview.js';
