@@ -92,6 +92,7 @@ export class SignatureLandmarks {
     this.loadVisibleOnly = options.loadVisibleOnly === true;
     this.depthBiasEnabled = options.depthBiasEnabled !== false;
     this.streetChunks = options.streetChunks === true;
+    this.buildingTypes = options.buildingTypes !== false;
     this._pending = new Map();
     this._failed = new Set();
     /** One decoded GLB per shared-mesh URL (recipe-pipeline houses); instances clone it and share geometry and materials. */
@@ -152,15 +153,17 @@ export class SignatureLandmarks {
   }
 
   /**
-   * `?buildingTypes=1` (default OFF; game host only): shared unit meshes drawn with THREE.InstancedMesh for the
-   * Nieuw-West pilot areas (src/canalRecall/buildingTypes/runtime.ts, bundled as js/building-types.bundle.js).
+   * Building types (default ON since 2026-10-16; game host only): shared unit meshes drawn with THREE.InstancedMesh
+   * for the Nieuw-West areas (src/canalRecall/buildingTypes/runtime.ts, bundled as js/building-types.bundle.js).
    * One spec per area; its scene is built by `spec.sceneFactory`, and its `suppressOsmIds` are the BAG panden it
-   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. No flag, no data: no change.
+   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. `?buildingTypes=0` keeps the
+   * generic extrusions (building-types-runtime.spec BT=0); the host passes `buildingTypes: false` under
+   * `?recipeTiles=1`, whose tiles carry the types.
    */
   _loadBuildingTypes() {
-    let on = false;
-    try { on = new URLSearchParams(window.location.search).get('buildingTypes') === '1'; } catch { /* no location */ }
-    if (!on || this.streetChunks !== true) return;
+    let on = true;
+    try { on = new URLSearchParams(window.location.search).get('buildingTypes') !== '0'; } catch { /* no location */ }
+    if (!on || this.streetChunks !== true || !this.buildingTypes) return;
     const script = document.createElement('script');
     script.src = new URL('./js/building-types.bundle.js', window.location.href).href;
     const loaded = new Promise((resolve, reject) => { script.onload = resolve; script.onerror = () => reject(new Error('building-types.bundle.js')); });
