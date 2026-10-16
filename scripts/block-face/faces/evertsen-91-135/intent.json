@@ -1,0 +1,1740 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "evertsen-91-135",
+ "street": "Jan Evertsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-06",
+   "image": "staging/block-face/evertsen-91-135/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (de-baarsjes-faces lane)",
+  "passes": 1,
+  "note": "Jan Evertsenstraat 89A-135 (odd side, Hoofdweg to the Mercatorplein passage). The hood-lisene row 93-129 (evertsen-1926-hood-lisene): box frames by the lisenes on every other party wall (none on 93-99), the party-wall windows completed by mirrored neighbours (bayFill), the glass-block band over the canopy; the stepped corner 89A-91, the 121-125 mass in modules, and the plain 133-135."
+ },
+ "types": [
+  "evertsen-1926-hood-lisene"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012070651",
+   "slug": "evertsen-070651",
+   "address": "Jan Evertsenstraat 89-91",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#58462f",
+     "wallTint": "measured",
+     "whitePoint": "#adac95",
+     "stone": "#6b6758"
+    },
+    "modules": [
+     {
+      "share": 0.27,
+      "crown": "low-parapet",
+      "overrides": {
+       "bays": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "storeyHeights": [
+        4.55,
+        2.77,
+        2.77,
+        2.53
+       ],
+       "axisGrid": 2,
+       "storeyAxes": {
+        "1": [
+         1
+        ],
+        "2": [
+         1
+        ],
+        "3": [
+         1
+        ]
+       },
+       "bayWidths": [
+        1.3,
+        1.5
+       ],
+       "bayFill": [
+        0.5,
+        0.97
+       ],
+       "windows": "casement-toplight",
+       "bayWindows": null,
+       "lisenes": null
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#5e5d4a",
+         "fasciaColour": "#5e5d4a",
+         "wallCourses": 37
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 1 (corner, 0-2.8 m): bar glazing under the canopy, a round \"BB\" sign; no glass-block band on the corner, plain wall over the canopy"
+       }
+      }
+     },
+     {
+      "share": 0.34,
+      "crown": "parapet",
+      "overrides": {
+       "stepBody": true,
+       "bays": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "axisGrid": 2,
+       "storeyAxes": {
+        "1": [
+         0
+        ],
+        "2": [
+         0
+        ],
+        "3": [
+         0
+        ]
+       },
+       "bayWidths": [
+        2.15,
+        1.38
+       ],
+       "bayFill": [
+        0.97,
+        0.5
+       ],
+       "windows": "casement-toplight-double",
+       "bayWindows": null,
+       "lisenes": null
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#5e5d4a",
+         "fasciaColour": "#5e5d4a",
+         "wallCourses": 37
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 1 (2.8-6.3 m): the bar glazing continues; plain wall over the canopy"
+       }
+      }
+     },
+     {
+      "share": 0.39,
+      "crown": "raised-end",
+      "overrides": {
+       "bays": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "storeyAxes": {
+        "1": [
+         2
+        ],
+        "2": [
+         2
+        ],
+        "3": [
+         2
+        ]
+       },
+       "bayWidths": [
+        0.9,
+        0.3,
+        2.1,
+        0.3,
+        0.5
+       ],
+       "bayFill": [
+        0.5,
+        0.5,
+        0.95,
+        0.5,
+        0.5
+       ],
+       "windows": "casement-toplight",
+       "windowSurround": "full-frame",
+       "bayWindows": null,
+       "lisenes": null
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#5e5d4a",
+         "fasciaColour": "#5e5d4a",
+         "wallCourses": 37
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 1 (right): the bar continues under the canopy"
+       }
+      }
+     }
+    ],
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 1338089288,
+     "name": "Bar Baarsch"
+    },
+    "name": "Bar Baarsch",
+    "category": "amenity=pub",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "three modules: the 13.4 m corner step and the 15.9 m step share one window ribbon per storey (split at the step), the stair tower with one window per storey (right)",
+    "windowsPerStorey": "ground: bar | 1-3: 1 ribbon (two halves) + 1 tower window",
+    "symmetry": "none",
+    "groundFloor": "bar glazing under the canopy",
+    "signage": "round BB sign on the glass (not drawn)",
+    "roofline": "stepped corner: 13.4 m to 2.8 m, 15.9 m to 6.3 m, 18.2 m tower top",
+    "citation": "strip.jpg 2024-12-06 pand 1 (ruler crop 52 px/m): ribbons 1.3-4.95 m, the parapet steps at 2.8 m (13.4 -> 15.9 m) and 6.3 m; tower 7.1-9.9 m to 18.2 m",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "schemaLimits": [
+     "the ribbon is two windows split at the parapet step (one ribbon on the photo)",
+     "the 16.9 m step beside the tower is drawn at the tower line",
+     "no glass-block band over the corner canopy: a plain wall band"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012114417",
+   "slug": "evertsen-114417",
+   "address": "Jan Evertsenstraat 93",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#5f4930",
+     "wallTint": "measured",
+     "whitePoint": "#afae95",
+     "glassBlock": "#4a4b39"
+    },
+    "overrides": {
+     "bayWindows": null,
+     "bayWidths": [
+      0.8,
+      1.25,
+      1.25,
+      1.26,
+      1.44
+     ],
+     "lisenes": null
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 114417: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 114417: no lisene, no box; window 0.8-3.3 m and the party-wall window with 95",
+    "schemaLimits": [
+     "no box frames on 93-99: flat windows on the box axis"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012062057",
+   "slug": "evertsen-062057",
+   "address": "Jan Evertsenstraat 95",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#58442c",
+     "wallTint": "measured",
+     "whitePoint": "#abab94",
+     "glassBlock": "#47473a"
+    },
+    "overrides": {
+     "bayWindows": null
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 062057: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 062057: no box; window 3.0-5.0 m by the lisene with 97, half the party-wall window with 93",
+    "schemaLimits": [
+     "no box frames on 93-99: flat windows on the box axis"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012094286",
+   "slug": "evertsen-094286",
+   "address": "Jan Evertsenstraat 97",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#5b462d",
+     "wallTint": "measured",
+     "whitePoint": "#acac96",
+     "glassBlock": "#53503d"
+    },
+    "overrides": {
+     "bayWindows": null
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 094286: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 094286: no box; window 1.2-3.1 m by the lisene with 95",
+    "schemaLimits": [
+     "no box frames on 93-99: flat windows on the box axis"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012089507",
+   "slug": "evertsen-089507",
+   "address": "Jan Evertsenstraat 99",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#59452d",
+     "wallTint": "measured",
+     "whitePoint": "#abab95",
+     "glassBlock": "#4a4b39"
+    },
+    "overrides": {
+     "bayWindows": null
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 089507: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 089507: no box; by the lisene with 101",
+    "schemaLimits": [
+     "no box frames on 93-99: flat windows on the box axis"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012147193",
+   "slug": "evertsen-147193",
+   "address": "Jan Evertsenstraat 101",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#5a4a31",
+     "wallTint": "measured",
+     "whitePoint": "#aeac94",
+     "glassBlock": "#4f503f"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 147193: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 147193: exemplar: box frames by the lisene with 99"
+   }
+  },
+  {
+   "pandId": "0363100012113053",
+   "slug": "evertsen-113053",
+   "address": "Jan Evertsenstraat 103",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4f3e28",
+     "wallTint": "measured",
+     "whitePoint": "#adab91",
+     "glassBlock": "#4c4d3d"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 113053: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 113053: boxes by the lisene with 105"
+   }
+  },
+  {
+   "pandId": "0363100012155048",
+   "slug": "evertsen-155048",
+   "address": "Jan Evertsenstraat 105",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#50402b",
+     "wallTint": "measured",
+     "whitePoint": "#a8a78f",
+     "glassBlock": "#484c3d"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 155048: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 155048: ruler crop 120 px/m: box 1.10-1.93 m, flat 1.93-2.98 m, half window 4.56-6.00 m"
+   }
+  },
+  {
+   "pandId": "0363100012078348",
+   "slug": "evertsen-078348",
+   "address": "Jan Evertsenstraat 107",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#51402b",
+     "wallTint": "measured",
+     "whitePoint": "#a9aa90",
+     "glassBlock": "#505141"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 078348: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 078348: boxes by the lisene with 109"
+   }
+  },
+  {
+   "pandId": "0363100012065988",
+   "slug": "evertsen-065988",
+   "address": "Jan Evertsenstraat 109",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#54432d",
+     "wallTint": "measured",
+     "whitePoint": "#aca891",
+     "glassBlock": "#4f4f35"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 065988: dark shop glass under the canopy; sign on the glass-block band (Zeeman)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 13005033886,
+     "name": "Zeeman"
+    },
+    "name": "Zeeman",
+    "category": "shop=clothes",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 065988: boxes by the lisene with 107"
+   }
+  },
+  {
+   "pandId": "0363100012062999",
+   "slug": "evertsen-062999",
+   "address": "Jan Evertsenstraat 111",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#52422b",
+     "wallTint": "measured",
+     "whitePoint": "#b3ae90",
+     "glassBlock": "#4a4b32"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 062999: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 062999: boxes by the lisene with 113"
+   }
+  },
+  {
+   "pandId": "0363100012099114",
+   "slug": "evertsen-099114",
+   "address": "Jan Evertsenstraat 113",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#52422d",
+     "wallTint": "measured",
+     "whitePoint": "#b1b39d",
+     "glassBlock": "#574e3d"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 099114: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "overige gebruiksfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 099114: boxes by the lisene with 111"
+   }
+  },
+  {
+   "pandId": "0363100012151042",
+   "slug": "evertsen-151042",
+   "address": "Jan Evertsenstraat 115",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4e3d27",
+     "wallTint": "measured",
+     "whitePoint": "#9da892",
+     "glassBlock": "#4e4f3d"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 151042: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 151042: boxes by the lisene with 117"
+   }
+  },
+  {
+   "pandId": "0363100012142949",
+   "slug": "evertsen-142949",
+   "address": "Jan Evertsenstraat 117",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#514029",
+     "wallTint": "measured",
+     "whitePoint": "#a9a690",
+     "glassBlock": "#4d4e3e"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 142949: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 142949: boxes by the lisene with 115"
+   }
+  },
+  {
+   "pandId": "0363100012096804",
+   "slug": "evertsen-096804",
+   "address": "Jan Evertsenstraat 119",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#51412d",
+     "wallTint": "measured",
+     "whitePoint": "#a9a891",
+     "glassBlock": "#44493c"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 096804: dark shop glass under the canopy; sign on the glass-block band illegible"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 096804: boxes by the lisene with 121"
+   }
+  },
+  {
+   "pandId": "0363100012085815",
+   "slug": "evertsen-085815",
+   "address": "Jan Evertsenstraat 121-125",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#473a28",
+     "wallTint": "measured",
+     "whitePoint": "#acab93",
+     "glassBlock": "#4f503f"
+    },
+    "modules": [
+     {
+      "share": 0.18,
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#5e5d4a",
+         "fasciaColour": "#5e5d4a",
+         "glassBlocks": {
+          "rows": 8
+         },
+         "wallCourses": 8
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 16 (0-6.7 m): shop glass under the canopy, glass-block band over it"
+       }
+      }
+     },
+     {
+      "share": 0.145,
+      "mirror": true,
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#5e5d4a",
+         "fasciaColour": "#5e5d4a",
+         "glassBlocks": {
+          "rows": 8
+         },
+         "wallCourses": 8
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 16 (6.7-12.1 m): shop glass under the canopy, glass-block band over it"
+       }
+      }
+     },
+     {
+      "share": 0.22,
+      "overrides": {
+       "bays": [
+        1,
+        2,
+        2,
+        2
+       ],
+       "axisGrid": 4,
+       "storeyAxes": {
+        "1": [
+         1,
+         3
+        ],
+        "2": [
+         1,
+         3
+        ],
+        "3": [
+         1,
+         3
+        ]
+       },
+       "bayWidths": [
+        1.5,
+        2.7,
+        1.8,
+        2.2
+       ],
+       "bayFill": [
+        0.5,
+        0.98,
+        0.5,
+        0.95
+       ],
+       "bayWindows": null,
+       "lisenes": {
+        "leftEnd": "full"
+       }
+      },
+      "ground": {
+       "groundFront": {
+        "kind": "wall",
+        "bays": [
+         "panel",
+         "door",
+         "panel"
+        ],
+        "evidence": "strip.jpg 2024-12-06 pand 16 (13.5-18.6 m): the gateway to the Hudsonhof courtyard under a short canopy; drawn as a wall with a door (the open passage cannot be said)"
+       }
+      }
+     },
+     {
+      "share": 0.078,
+      "crown": "raised-end",
+      "overrides": {
+       "bays": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "storeyAxes": {
+        "1": [
+         2
+        ],
+        "2": [
+         2
+        ],
+        "3": [
+         2
+        ]
+       },
+       "bayWidths": [
+        0.5,
+        0.4,
+        1.1,
+        0.4,
+        0.5
+       ],
+       "bayFill": [
+        0.5,
+        0.5,
+        0.95,
+        0.5,
+        0.5
+       ],
+       "bayWindows": null,
+       "lisenes": null
+      },
+      "ground": {
+       "groundFront": {
+        "kind": "wall",
+        "bays": [
+         "glazed-door"
+        ],
+        "evidence": "strip.jpg 2024-12-06 pand 16 (20.3-23.2 m): the stair tower's entrance under a canopy"
+       }
+      }
+     },
+     {
+      "share": 0.377,
+      "overrides": {
+       "bays": [
+        1,
+        4,
+        4,
+        4
+       ],
+       "axisGrid": 8,
+       "storeyAxes": {
+        "1": [
+         1,
+         3,
+         5,
+         7
+        ],
+        "2": [
+         1,
+         3,
+         5,
+         7
+        ],
+        "3": [
+         1,
+         3,
+         5,
+         7
+        ]
+       },
+       "bayWidths": [
+        0.5,
+        2.7,
+        1.1,
+        2.7,
+        1.2,
+        2.7,
+        1,
+        2.15
+       ],
+       "bayFill": [
+        0.5,
+        0.98,
+        0.5,
+        0.98,
+        0.5,
+        0.98,
+        0.5,
+        0.97
+       ],
+       "windows": "casement-toplight-double",
+       "bayWindows": null,
+       "lisenes": null
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#5e5d4a",
+         "fasciaColour": "#5e5d4a",
+         "glassBlocks": {
+          "rows": 8
+         },
+         "wallCourses": 8
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 16 (23.2-37.25 m): the Dirk supermarket glass under the canopy, glass-block band over it"
+       }
+      }
+     }
+    ],
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 4455699189,
+     "name": "Dirk"
+    },
+    "name": "Dirk",
+    "category": "shop=supermarket",
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie",
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie",
+     "woonfunctie",
+     "bijeenkomstfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "winkelfunctie",
+     "winkelfunctie",
+     "winkelfunctie",
+     "winkelfunctie",
+     "winkelfunctie",
+     "winkelfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "bays": "five modules: two hood-lisene houses, the gate bay, the stair tower, four wide windows",
+    "windowsPerStorey": "ground: shops, gate, tower door | 1-3: 2 + 1 box pair, 2, 1, 4",
+    "symmetry": "none",
+    "groundFloor": "shops under the canopy, the Hudsonhof gate and the tower door",
+    "signage": "Dirk letters on the glass-block band (not drawn)",
+    "roofline": "the row parapet at 16.7 m, the stair tower to 18.2 m",
+    "citation": "strip.jpg 2024-12-06 pand 16 (37.25 m; ruler crops at 50 px/m): boxes 1.4-2.5 and 10.6-11.6 m, a 2.8 m window over the 6.7 m line, lisene 12.1-13.6 m to 15.6 m, windows 13.6-16.3 and 18.1-20.2 m, tower 20.3-23.2 m, windows at 23.7, 27.5, 31.4 m (2.7 m) and 35.1-37.25 m (the party-wall window with 127)",
+    "photoRows": [
+     5,
+     10,
+     10,
+     10
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the open gateway to the Hudsonhof is drawn as a wall with a door",
+     "the wide lisene steps up to 15.6 m (drawn as a plain full lisene)",
+     "trees and a pole ghost the 23-37 m strip"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012118443",
+   "slug": "evertsen-118443",
+   "address": "Jan Evertsenstraat 127 (127A, 127C, 127D, 127B)",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#463723",
+     "wallTint": "measured",
+     "whitePoint": "#abaa90",
+     "glassBlock": "#545442"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 118443: dark shop glass under the canopy; sign on the glass-block band"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 118443 (ruler crop 64 px/m): half window 0-1.4 m, flat 3.05-4.1 m, box 4.1-4.9 m, lisene with 129"
+   }
+  },
+  {
+   "pandId": "0363100012102496",
+   "slug": "evertsen-102496",
+   "address": "Jan Evertsenstraat 129 (129A, 129B, 129C, 129D)",
+   "type": {
+    "type": "evertsen-1926-hood-lisene",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#503e28",
+     "wallTint": "measured",
+     "whitePoint": "#ada98f",
+     "glassBlock": "#53523e"
+    },
+    "overrides": {
+     "bays": [
+      1,
+      2,
+      2,
+      2
+     ],
+     "axisGrid": 4,
+     "storeyAxes": {
+      "1": [
+       1,
+       2
+      ],
+      "2": [
+       1,
+       2
+      ],
+      "3": [
+       1,
+       2
+      ]
+     },
+     "bayWidths": [
+      0.97,
+      0.81,
+      3.12,
+      1.02
+     ],
+     "bayFill": [
+      0.5,
+      0.98,
+      0.98,
+      0.5
+     ],
+     "axisWindows": {
+      "2": "casement-toplight-double"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#5e5d4a",
+       "fasciaColour": "#5e5d4a",
+       "glassBlocks": {
+        "rows": 8
+       },
+       "wallCourses": 8
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 102496: dark shop glass under the canopy; sign on the glass-block band"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping (skyline 16.6-16.9 m along the row); the 3DBAG roof max 17.1-18.9 m reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie",
+     "woonfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 102496 (ruler crop 64 px/m): end house: box 0.97-1.78 m, a 3.1 m four-light window 1.78-4.9 m, no party-wall window (the passage beyond)",
+    "photoRows": [
+     1,
+     1,
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012096363",
+   "slug": "evertsen-096363",
+   "address": "Jan Evertsenstraat 133-135",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Jan Evertsenstraat",
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {
+       "courses": 34,
+       "coping": true
+      },
+      "storeys": 4,
+      "bays": [
+       3,
+       3,
+       3,
+       3
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "casement-pair",
+      "hoist": false,
+      "storeyHeights": [
+       1.25,
+       1,
+       1,
+       1
+      ],
+      "windowHeights": [
+       0.5,
+       0.465,
+       0.465,
+       0.465
+      ],
+      "headLines": [
+       0.725,
+       0.95,
+       0.95,
+       0.95
+      ],
+      "windowShare": 0.45,
+      "groundFront": {
+       "kind": "wall",
+       "bays": [
+        "window",
+        "window",
+        "window"
+       ],
+       "colour": "#3b3a33",
+       "evidence": "strip.jpg 2024-12-06 pand 19: three cafe windows in dark surrounds, a frieze of small square vents over them"
+      }
+     }
+    ],
+    "roof": {
+     "material": "bitumen",
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky over the coping at 15.0 m"
+    },
+    "palette": {
+     "brick": "#5a3a26",
+     "frame": "#adaa8e",
+     "door": "black",
+     "cornice": "#553825",
+     "wallTint": "measured",
+     "whitePoint": "#adaa8e"
+    },
+    "notes": [
+     "1926 plain red-brick front between the passage and the corner; no canopy"
+    ]
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 595260077,
+     "name": "De Biertuin West"
+    },
+    "name": "De Biertuin West",
+    "category": "amenity=pub",
+    "bag": [
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "bays": "3 even axes",
+    "windowsPerStorey": "ground: 3 cafe windows | 1-3: 3",
+    "symmetry": "symmetric",
+    "groundFloor": "cafe windows in dark surrounds under a vent frieze",
+    "signage": "none legible",
+    "roofline": "flat parapet with a thin coping at 15.0 m",
+    "citation": "strip.jpg 2024-12-06 pand 19 (ruler crop 72 px/m): windows 1.15 m, heads 13.0/9.9/6.8 m, sills 11.6/8.5/5.4 m, top 15.0 m",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "schemaLimits": [
+     "the frieze of small square vents over the cafe windows is not drawn"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "070651: the 16.9 m step beside the stair tower is drawn at the tower line",
+  "085815: the open gateway to the Hudsonhof",
+  "glass-block band signs (every shop)",
+  "096363: the vent frieze"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012114417",
+    "stripRow": 168,
+    "evidence": "strip.jpg: one coping line for 93-99 (1927): the median skyline row 168 (16.65 m) of the members' rows 168/167/171/166; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012062057",
+    "stripRow": 168,
+    "evidence": "strip.jpg: one coping line for 93-99 (1927): the median skyline row 168 (16.65 m) of the members' rows 168/167/171/166; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012094286",
+    "stripRow": 168,
+    "evidence": "strip.jpg: one coping line for 93-99 (1927): the median skyline row 168 (16.65 m) of the members' rows 168/167/171/166; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012089507",
+    "stripRow": 168,
+    "evidence": "strip.jpg: one coping line for 93-99 (1927): the median skyline row 168 (16.65 m) of the members' rows 168/167/171/166; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012147193",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012113053",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012155048",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012078348",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012065988",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012062999",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012099114",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012151042",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012142949",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012096804",
+    "stripRow": 165,
+    "evidence": "strip.jpg: one coping line for 101-119 (1926): the median skyline row 165 (16.73 m) of the members' rows 166/165/165/165/165/165/165/164/164/163; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012085815",
+    "stripRow": 167,
+    "evidence": "strip.jpg: one coping line for 121-125 (1927 block, its own coping 10 cm under the 1926 row's): the median skyline row 167 (16.68 m) of the members' rows 167; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012118443",
+    "stripRow": 161,
+    "evidence": "strip.jpg: one coping line for 127-129 (1926): the median skyline row 161 (16.82 m) of the members' rows 161/158; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012102496",
+    "stripRow": 161,
+    "evidence": "strip.jpg: one coping line for 127-129 (1926): the median skyline row 161 (16.82 m) of the members' rows 161/158; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012096363",
+    "stripRow": 234,
+    "evidence": "strip.jpg: one coping line for 133-135: the median skyline row 234 (15.00 m) of the members' rows 234; 3DBAG front eaves read the canopy (4.5-5.4 m on 93-99) or the rear roofs"
+   },
+   {
+    "pand": "0363100012070651",
+    "front": "m0",
+    "stripRow": 299,
+    "evidence": "strip.jpg: the corner step's parapet (skyline over 0.3-2.6 m)"
+   },
+   {
+    "pand": "0363100012070651",
+    "front": "m1",
+    "stripRow": 198,
+    "evidence": "strip.jpg: the second step's parapet (skyline over 3.0-6.1 m)"
+   },
+   {
+    "pand": "0363100012070651",
+    "front": "m2",
+    "stripRow": 198,
+    "evidence": "strip.jpg: the stair tower rises from the second step's line to 18.2 m (the raised-end crown)"
+   }
+  ],
+  "canopy": [
+   {
+    "pands": [
+     "0363100012070651",
+     "0363100012114417",
+     "0363100012062057",
+     "0363100012094286",
+     "0363100012089507",
+     "0363100012147193",
+     "0363100012113053",
+     "0363100012155048",
+     "0363100012078348",
+     "0363100012065988",
+     "0363100012062999",
+     "0363100012099114",
+     "0363100012151042",
+     "0363100012142949",
+     "0363100012096804",
+     "0363100012085815",
+     "0363100012118443",
+     "0363100012102496"
+    ],
+    "evidence": "strip.jpg: one canopy runs from the corner bar to 129, broken only by the Hudsonhof gate"
+   }
+  ]
+ }
+}

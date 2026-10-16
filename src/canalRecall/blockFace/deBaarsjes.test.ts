@@ -144,7 +144,8 @@ test('ladder-plain and white-attic: gridded top lights; the white band storey', 
   const a = compileBuilding(typed('evertsen-1927-white-attic-tile-roof', 'tile-roof'), factsOf('081449'));
   const bands = a.recipe.elevations[0].bands?.value ?? [];
   assert.ok(bands.some(b => b.id === 'band-piers-s3') && !bands.some(b => b.id === 'band-piers-s1'), 'only the top storey is the white band');
-  assert.equal(a.recipe.elevations[0].openings.value.filter(o => /^s3-b\d$/.test(o.id)).length, 5);
+  // Six lights between white piers (141's ruler crop, 104 px/m; the type first read five).
+  assert.equal(a.recipe.elevations[0].openings.value.filter(o => /^s3-b\d$/.test(o.id)).length, 6);
 });
 
 test('absent keys leave a house untouched: no De Baarsjes meshes or report fields', () => {

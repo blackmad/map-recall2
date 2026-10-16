@@ -1,0 +1,1107 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "evertsen-59-89",
+ "street": "Jan Evertsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-06",
+   "image": "staging/block-face/evertsen-59-89/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (de-baarsjes-faces lane)",
+  "passes": 1,
+  "note": "Jan Evertsenstraat 59-89 (odd side). The balcony-slot row (evertsen-1926-balcony-slot): French-door slots with stacked balconettes paired at every other party wall, a wide window touching each door, the party-wall windows completed by mirrored neighbours; glass block over the canopy on 59-73, painted sign panels on 75-89."
+ },
+ "types": [
+  "evertsen-1926-balcony-slot"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012093459",
+   "slug": "evertsen-093459",
+   "address": "Jan Evertsenstraat 59",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#544633",
+     "wallTint": "measured",
+     "whitePoint": "#aaa98e",
+     "glassBlock": "#4d4f3e"
+    },
+    "overrides": {
+     "axisGrid": 6,
+     "storeyAxes": {
+      "1": [
+       1,
+       2,
+       4
+      ],
+      "2": [
+       1,
+       2,
+       4
+      ],
+      "3": [
+       1,
+       2,
+       4
+      ]
+     },
+     "bayWidths": [
+      0.67,
+      0.9,
+      1.85,
+      1.2,
+      1.6,
+      0.74
+     ],
+     "bayFill": [
+      0.5,
+      0.98,
+      0.98,
+      0.5,
+      0.95,
+      0.5
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 093459 (59): shop glass under the canopy, glass-block band over it"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 4292762227,
+     "name": "Smartmen"
+    },
+    "name": "Smartmen",
+    "category": "shop=clothes",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 59 (ruler crop 36 px/m): windows 0.7-2.3 and 3.5-5.3 m, the French door 5.4-6.3 m, the slot pier with 61"
+   }
+  },
+  {
+   "pandId": "0363100012107408",
+   "slug": "evertsen-107408",
+   "address": "Jan Evertsenstraat 61",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#54402a",
+     "wallTint": "measured",
+     "whitePoint": "#afac91",
+     "glassBlock": "#4e4f3d"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 107408: shop glass under the canopy (Stoffenprins)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 4292762230,
+     "name": "Stoffenprins"
+    },
+    "name": "Stoffenprins",
+    "category": "shop=fabric",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 107408: exemplar (ruler crop 120 px/m): slot pier 0-0.3 m, door 0.32-1.23 m, window 1.23-3.11 m, half window 4.34-6.03 m"
+   }
+  },
+  {
+   "pandId": "0363100012107315",
+   "slug": "evertsen-107315",
+   "address": "Jan Evertsenstraat 63",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#523f29",
+     "wallTint": "measured",
+     "whitePoint": "#adaa8d",
+     "glassBlock": "#4e503c"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 107315: shop glass under the canopy (Bosphorus)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 4292762229,
+     "name": "Bosphorus"
+    },
+    "name": "Bosphorus",
+    "category": "shop=hairdresser",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 107315: slot on the right, paired with 65"
+   }
+  },
+  {
+   "pandId": "0363100012103732",
+   "slug": "evertsen-103732",
+   "address": "Jan Evertsenstraat 65",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#4e3d27",
+     "wallTint": "measured",
+     "whitePoint": "#aca98d",
+     "glassBlock": "#424333"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 103732: shop glass under the canopy (PizzaPezzi)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 4292762228,
+     "name": "PizzaPezzi"
+    },
+    "name": "PizzaPezzi",
+    "category": "amenity=restaurant",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 103732: slot on the left, paired with 63"
+   }
+  },
+  {
+   "pandId": "0363100012147518",
+   "slug": "evertsen-147518",
+   "address": "Jan Evertsenstraat 67",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#513e28",
+     "wallTint": "measured",
+     "whitePoint": "#a8a68e",
+     "glassBlock": "#414231"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 147518: shop glass under the canopy (Baraka)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 4292762231,
+     "name": "Baraka"
+    },
+    "name": "Baraka",
+    "category": "amenity=fast_food",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 147518: slot on the right, paired with 69"
+   }
+  },
+  {
+   "pandId": "0363100012080856",
+   "slug": "evertsen-080856",
+   "address": "Jan Evertsenstraat 69",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#56432c",
+     "wallTint": "measured",
+     "whitePoint": "#aba88d",
+     "glassBlock": "#474735"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 080856: shop glass under the canopy (Sham Maza)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 12323180997,
+     "name": "Sham Maza"
+    },
+    "name": "Sham Maza",
+    "category": "amenity=restaurant",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 080856: slot on the left, paired with 67"
+   }
+  },
+  {
+   "pandId": "0363100012070389",
+   "slug": "evertsen-070389",
+   "address": "Jan Evertsenstraat 71",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#534029",
+     "wallTint": "measured",
+     "whitePoint": "#acaa91",
+     "glassBlock": "#464734"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 070389: shop glass under the canopy (Clear)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2814046172,
+     "name": "Clear"
+    },
+    "name": "Clear",
+    "category": "shop=beauty",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 070389: slot on the right, paired with 73"
+   }
+  },
+  {
+   "pandId": "0363100012064061",
+   "slug": "evertsen-064061",
+   "address": "Jan Evertsenstraat 73",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#594630",
+     "wallTint": "measured",
+     "whitePoint": "#aaae96",
+     "glassBlock": "#464837"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 064061: shop glass under the canopy (Léan)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2814046722,
+     "name": "Léan"
+    },
+    "name": "Léan",
+    "category": "shop=clothes",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 064061: slot on the left, paired with 71"
+   }
+  },
+  {
+   "pandId": "0363100012107343",
+   "slug": "evertsen-107343",
+   "address": "Jan Evertsenstraat 75",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#54402a",
+     "wallTint": "measured",
+     "whitePoint": "#aaac9a"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7,
+        "panel": "#9a947d"
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 107343: shop glass under the canopy (Thai King)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2814046772,
+     "name": "Thai King"
+    },
+    "name": "Thai King",
+    "category": "amenity=fast_food",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 107343: slot on the right, paired with 77; a painted sign panel over the canopy"
+   }
+  },
+  {
+   "pandId": "0363100012153862",
+   "slug": "evertsen-153862",
+   "address": "Jan Evertsenstraat 77",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#533f28",
+     "wallTint": "measured",
+     "whitePoint": "#a7a997"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7,
+        "panel": "#838270"
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 153862: shop glass under the canopy (Achie de Barber)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2814047414,
+     "name": "Achie de Barber"
+    },
+    "name": "Achie de Barber",
+    "category": "shop=hairdresser",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 153862: slot on the left, paired with 75; the panel carries a mural"
+   }
+  },
+  {
+   "pandId": "0363100012144026",
+   "slug": "evertsen-144026",
+   "address": "Jan Evertsenstraat 79",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#55402a",
+     "wallTint": "measured",
+     "whitePoint": "#a7aa98"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7,
+        "panel": "#a4a08a"
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 144026: shop glass under the canopy (Fotolab Kiekie)"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 8134054316,
+     "name": "Fotolab Kiekie"
+    },
+    "name": "Fotolab Kiekie",
+    "category": "shop=photo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 144026: slot on the right, paired with 81; sign panel"
+   }
+  },
+  {
+   "pandId": "0363100012110182",
+   "slug": "evertsen-110182",
+   "address": "Jan Evertsenstraat 81",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#533e28",
+     "wallTint": "measured",
+     "whitePoint": "#adad9b"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7,
+        "panel": "#9d9985"
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 110182: shop glass under the canopy"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 110182: slot on the left, paired with 79; sign panel"
+   }
+  },
+  {
+   "pandId": "0363100012119877",
+   "slug": "evertsen-119877",
+   "address": "Jan Evertsenstraat 83-85",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#4e4230",
+     "wallTint": "measured",
+     "whitePoint": "#a7a994"
+    },
+    "modules": [
+     {
+      "share": 0.5,
+      "mirror": true,
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#3e3d2c",
+         "fasciaColour": "#3e3d2c",
+         "glassBlocks": {
+          "rows": 7,
+          "panel": "#848574"
+         },
+         "wallCourses": 16
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 119877 (83): shop glass under the canopy; sign panel"
+       }
+      }
+     },
+     {
+      "share": 0.5,
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#3e3d2c",
+         "fasciaColour": "#3e3d2c",
+         "glassBlocks": {
+          "rows": 7,
+          "panel": "#848574"
+         },
+         "wallCourses": 16
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 119877 (85): shop glass under the canopy; sign panel"
+       }
+      }
+     }
+    ],
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie",
+     "overige gebruiksfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 83-85: two type houses, the slot pier at 5.8 m with French doors either side; half windows at both party walls",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012077667",
+   "slug": "evertsen-077667",
+   "address": "Jan Evertsenstraat 87",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#54402a",
+     "wallTint": "measured",
+     "whitePoint": "#aaaa91"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "centre-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7,
+        "panel": "#9a947d"
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 077667 (87): under scaffold; a white sign panel shows under the sheeting"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 87: under blue scaffold sheeting to the coping; the row's pattern is assumed (the slot pairs with 89's)",
+    "photoRows": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "schemaLimits": [
+     "under scaffold on the strip: the openings are the row's, not read"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012085532",
+   "slug": "evertsen-085532",
+   "address": "Jan Evertsenstraat 89",
+   "type": {
+    "type": "evertsen-1926-balcony-slot",
+    "crown": "parapet",
+    "palette": "dark-brown",
+    "paletteOverrides": {
+     "brick": "#4b3826",
+     "wallTint": "measured",
+     "whitePoint": "#aeaa9e"
+    },
+    "overrides": {
+     "bays": [
+      1,
+      2,
+      2,
+      2
+     ],
+     "axisGrid": 4,
+     "storeyAxes": {
+      "1": [
+       1,
+       2
+      ],
+      "2": [
+       1,
+       2
+      ],
+      "3": [
+       1,
+       2
+      ]
+     },
+     "bayWidths": [
+      0.4,
+      0.92,
+      3.2,
+      3
+     ],
+     "bayFill": [
+      0.5,
+      0.98,
+      0.98,
+      0.5
+     ],
+     "axisWindows": {
+      "2": "casement-toplight-double"
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#3e3d2c",
+       "fasciaColour": "#3e3d2c",
+       "glassBlocks": {
+        "rows": 7,
+        "panel": "#272011"
+       },
+       "wallCourses": 16
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 085532 (89): the tea bar glass under the canopy, a dark timber sign board over it"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping along the row; the 3DBAG roof max reads the rear roofs and stair housings, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2814049214,
+     "name": "T's Tea Bar"
+    },
+    "name": "T's Tea Bar",
+    "category": "shop=tea",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 89 (ruler crop 36 px/m): the French door 0.4-1.3 m, a four-light window 1.3-4.5 m touching it, plain wall to the corner",
+    "photoRows": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "schemaLimits": [
+     "the rooftop glass box at the corner (16.7-17.2 m) is not drawn",
+     "the corner return to the side street"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "077667 (87): under scaffold on the strip",
+  "085532 (89): the rooftop glass box and the corner return",
+  "signs on the bands (every shop); the mural on 77"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012093459",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012107408",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012107315",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012103732",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012147518",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012080856",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012070389",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012064061",
+    "stripRow": 216,
+    "evidence": "strip.jpg: one coping line for 59-73 (glass-block bands): the median skyline row 216 (16.90 m) of the members' rows 214/214/215/215/216/216/216/216; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012107343",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012153862",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012144026",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012110182",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012119877",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012077667",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   },
+   {
+    "pand": "0363100012085532",
+    "stripRow": 222,
+    "evidence": "strip.jpg: one coping line for 75-89 (sign panels; the coping steps down 0.17 m at 73|75 on the strip): the median skyline row 222 (16.75 m) of the members' rows 222/221/222/222/223/218/223; 3DBAG front eaves read the canopy or the rear roofs"
+   }
+  ],
+  "canopy": [
+   {
+    "pands": [
+     "0363100012093459",
+     "0363100012107408",
+     "0363100012107315",
+     "0363100012103732",
+     "0363100012147518",
+     "0363100012080856",
+     "0363100012070389",
+     "0363100012064061",
+     "0363100012107343",
+     "0363100012153862",
+     "0363100012144026",
+     "0363100012110182",
+     "0363100012119877",
+     "0363100012077667",
+     "0363100012085532"
+    ],
+    "evidence": "strip.jpg: one canopy runs from 59 to the corner"
+   }
+  ]
+ }
+}
