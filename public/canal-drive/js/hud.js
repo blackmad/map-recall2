@@ -16,9 +16,29 @@ class HUD {
     // Placed by hudLayout once per frame; see setLayout. Every card reads its
     // rectangle from here rather than carrying constants written for 1280x720.
     this.layout = null;
+    // Every card drawn on this frame and the one before, in canvas px. The map
+    // label overlay keeps names out of them (a park name printed across the
+    // RE-CENTER button, user 2026-10-16).
+    this._cards = [];
+    this.frameCards = [];
   }
 
   setTime(t) { this._time = t; }
+
+  /** Start a frame's card list; the finished list of the last frame stays readable. */
+  beginFrame() {
+    this.frameCards = this._cards;
+    this._cards = [];
+  }
+
+  /** Record a card's rectangle (canvas px) for label avoidance. */
+  noteCard(rect) {
+    if (!rect || !(rect.width > 0) || !(rect.height > 0)) return;
+    this._cards.push({ x: rect.x, y: rect.y, width: rect.width, height: rect.height });
+  }
+
+  /** Cards of the last finished frame plus the one being drawn (a card that just appeared counts at once). */
+  cardRects() { return this.frameCards.concat(this._cards); }
 
   /** The frame's HUD geometry, from the typed layout module. */
   setLayout(layout) { this.layout = layout; }
@@ -30,6 +50,7 @@ class HUD {
   // slightly different creams and three different corner radii.
   paperCard(ctx, rect, { solid = false, radius = 12 } = {}) {
     const theme = window.CanalRecallUi.hudSurface;
+    this.noteCard(rect);
     ctx.save();
     ctx.shadowColor = theme.shadow;
     ctx.shadowBlur = 14;

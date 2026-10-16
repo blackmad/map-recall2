@@ -353,6 +353,13 @@ export interface PresentationHost extends GameCoreHost {
   _utilityRevealUntil?: number;
   _utilityPointer?: { x: number; y: number };
   _wasRiding?: boolean;
+  /** The riding radar (radar.ts) and its per-route caches. */
+  _radar?: import('./radar.ts').RadarMap;
+  _radarRadiusM?: number;
+  _radarRoute?: { source: WorldPoint[]; offsetX: number; offsetY: number; local: Float32Array } | null;
+  _radarRouteIndex?: number;
+  /** The always-on minimap: the riding radar (default) or the whole-city sheet (M key). */
+  minimapMode?: 'radar' | 'city';
   /** An overview planned and pre-loaded behind the loading screen. */
   /** Set by the finish card's ride-on action: the next ride starts on the bike, no overview. */
   _skipNextIntro?: boolean;

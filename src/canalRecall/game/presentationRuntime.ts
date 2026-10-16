@@ -49,6 +49,9 @@ import { maskSpoiledName } from '../orientationPois';
 import { isReviewStop, REVIEW_STOP_LABEL } from './routeSelection';
 import { bearingAfterTwist, startTwist, twistStep, wheelTwistDegrees, WHEEL_PINCH_GRACE_MS } from './trackpadTwist';
 import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type SightlineView } from './landmarkSightline';
+import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, RadarMap } from './radar';
+import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
+import { revealOnEnter, utilityVisibility } from './utilityTuck';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -75,6 +78,8 @@ const COPPER = '#c9844a';
 const RULE = 'rgba(31,28,23,0.16)';
 /** How long a tap or mouse move keeps the settings/help buttons up mid-ride. */
 const UTILITY_REVEAL_MS = 3000;
+/** The own-map overview extract the riding radar draws from (Amsterdam only). */
+const RADAR_OVERVIEW_URL = '../data/extracts/amsterdam/own-map-v1/overview.json.gz';
 /** Steering keys never wake the utilities; every other key does. */
 const STEERING_KEYS = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd', 'W', 'A', 'S', 'D', ' ', 'Shift']);
 
@@ -565,20 +570,26 @@ export class GamePresentationRuntime {
     this._syncViewportSize();
     const ctx = this.ctx;
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+    this.hud.beginFrame?.();
 
     // The arrival card is a full-screen modal; on a phone the settings and help
     // buttons sat on top of its actions in the bottom-right corner.
     const utility = document.getElementById('utility-buttons');
     // Nor while loading: there is nothing yet to configure or explain.
     if (utility) {
-      utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? 'none' : '';
-      // While riding they stay out of the corridor until asked for: a tap on
-      // the map (not the stick) or a mouse move brings them up for a moment.
-      // Keys G and ? work regardless.
-      const riding = this.state === GameState.RACING && !this._utilityOpen;
+      // Whenever the map is the content (riding, the overview flight, the
+      // paused map) they stay out of the way until asked for: a tap on the
+      // map (not the stick), a mouse move or a non-steering key brings them up
+      // for a moment. Keys G and ? work regardless (utilityTuck.ts).
+      const visibility = utilityVisibility({ state: this.state, utilityOpen: !!this._utilityOpen });
+      utility.style.display = visibility === 'none' ? 'none' : '';
+      const riding = visibility === 'tuckable';
       const now = performance.now();
-      // The ride's first seconds count as a reveal, so they fade out 3 s in.
-      if (riding && !this._wasRiding) this._utilityRevealUntil = now + UTILITY_REVEAL_MS;
+      // A ride's first seconds count as a reveal, so they fade out 3 s in;
+      // not over the overview flight, which they used to sit on.
+      // Entering the flight also drops a reveal left over from the setup
+      // screen (the mouse travelling to "Go" counted as a wiggle).
+      if (riding && !this._wasRiding) this._utilityRevealUntil = revealOnEnter(true, !!this._intro) ? now + UTILITY_REVEAL_MS : 0;
       this._wasRiding = riding;
       // Hover keeps them: while the pointer rests on the corner cluster the
       // timer is held open.
@@ -588,9 +599,10 @@ export class GamePresentationRuntime {
         this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
       }
       const revealed = !riding || now < (this._utilityRevealUntil || 0);
-      // Desktop tucks the whole cluster (feedback, build stamp too); a phone
-      // keeps its older rule of tucking only settings and help.
-      utility.classList.toggle('tucked-all', this._hudRects().mode !== 'compact');
+      // The whole cluster tucks (feedback, build stamp too). A phone used to
+      // keep Feedback up, and it sat on a quiz answer ("Plantage Kerklaan",
+      // 390×844 frame 2026-10-16); a tap on the map brings it back.
+      utility.classList.toggle('tucked-all', true);
       utility.classList.toggle('tucked', !revealed);
     }
 
@@ -772,7 +784,7 @@ export class GamePresentationRuntime {
     }
 
     this.hud.drawCompass(ctx, this.camera);
-    if (showMiniMap) this.hud.drawCityOverview(ctx, this);
+    if (showMiniMap) this._renderMinimap();
     this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
     this._renderLandmarkNotice();
     this._renderNeighborhoodNotice();
@@ -839,6 +851,7 @@ export class GamePresentationRuntime {
       })(),
       neighborhoodVisible: !!this.currentNeighborhood,
       minimapVisible,
+      minimapShape: this._radarAvailable() ? 'radar' : 'city',
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
     });
@@ -898,6 +911,73 @@ export class GamePresentationRuntime {
     ctx.restore();
     this._recenterBtnBounds = { x, y, w: width, h: height };
   }
+
+  // ---- Minimap ----
+
+  /** The radar needs the own-map extract, which exists for Amsterdam only;
+   *  the M key's whole-city sheet is the other choice. */
+  _radarAvailable(): boolean {
+    return this.minimapMode !== 'city' && (this.cityId || 'amsterdam') === 'amsterdam';
+  }
+
+  /** M / Tab: radar → whole city → off → radar. */
+  _cycleMinimap(): void {
+    if (!this.showMiniMap) { this.showMiniMap = true; this.minimapMode = 'radar'; }
+    else if (this.minimapMode !== 'city') this.minimapMode = 'city';
+    else { this.showMiniMap = false; this.minimapMode = 'radar'; }
+  }
+
+  _renderMinimap(): void {
+    if (this._radarAvailable()) this._renderRadar();
+    else this.hud.drawCityOverview(this.ctx, this);
+    const rect = this._hudRects().minimap;
+    if (rect) this.hud.noteCard?.(rect);
+  }
+
+  /** The riding radar: centred on the rider, turning with the main view. */
+  _renderRadar(): void {
+    const player = this.player;
+    const loader = this.osmLoader;
+    if (!player || !this.track || loader?._lastCenterLat == null || loader._lastCenterLng == null) return;
+    const frame = loader as GameLoaderFrame;
+    const radar = (this._radar ||= new RadarMap());
+    void radar.load(RADAR_OVERVIEW_URL);
+    const local = (x: number, y: number) => { const [lng, lat] = gameWorldToLngLat(x, y, frame, PIXELS_PER_METER); return radarLocal(lng, lat); };
+    const layout = this._hudRects();
+    const range = RADAR_RADIUS_M[layout.mode === 'compact' ? 'compact' : 'desktop'];
+    const maxSpeed = (player as unknown as { maxSpeed?: number }).maxSpeed;
+    const speedRatio = maxSpeed ? Math.abs(player.speed) / maxSpeed : 0;
+    const target = radarRadiusForSpeed(speedRatio, range);
+    // Eased, so the radar breathes with speed instead of pumping with the throttle.
+    const now = performance.now();
+    const dt = Math.min(0.1, Math.max(0, (now - (this._radarAt ?? now)) / 1000));
+    this._radarAt = now;
+    this._radarRadiusM = this._radarRadiusM == null ? target : this._radarRadiusM + (target - this._radarRadiusM) * Math.min(1, dt * 1.5);
+    // The route in local metres, once per route (and per projection origin).
+    const source = this._liveRoutePath || this.routePath;
+    let cached = this._radarRoute;
+    if (source && (!cached || cached.source !== source || cached.offsetX !== loader._lastOffsetX || cached.offsetY !== loader._lastOffsetY)) {
+      const flat = new Float32Array(source.length * 2);
+      source.forEach((p, i) => { const [x, y] = local(p.x, p.y); flat[i * 2] = x; flat[i * 2 + 1] = y; });
+      cached = this._radarRoute = { source, offsetX: loader._lastOffsetX, offsetY: loader._lastOffsetY, local: flat };
+      this._radarRouteIndex = 0;
+    }
+    const at = local(player.x, player.y);
+    const route = this.routeOptions?.line !== false && source && cached ? cached.local : null;
+    if (route) this._radarRouteIndex = nearestRouteIndex(route, at, this._radarRouteIndex ?? 0);
+    const finish = this.track.finishPoint;
+    radar.draw(this.ctx, layout.minimap, {
+      at,
+      rotation: this.camera.rotation || 0,
+      angle: player.angle,
+      radiusM: this._radarRadiusM,
+      destination: finish ? local(finish.x, finish.y) : null,
+      route,
+      routeIndex: this._radarRouteIndex ?? 0,
+    }, range[0]);
+  }
+
+  _radarAt?: number;
 
   /** Only while the player is settling in. It used to sit permanently on top
    *  of the recall panel. */
@@ -1883,6 +1963,9 @@ export class GamePresentationRuntime {
     return explorationGain(before, after);
   }
 }
+
+// For Storybook's radar states, which draw a fixed view without a ride.
+(window as unknown as { CanalRecallRadar?: unknown }).CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
 
 window.CanalRecallGameModules = window.CanalRecallGameModules || [];
 window.CanalRecallGameModules.push(GamePresentationRuntime);
