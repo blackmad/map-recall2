@@ -1,10 +1,11 @@
 // When the corner utilities (Feedback, settings, help, build stamp) show.
 //
 // Whenever the map is the content they stay out of the picture until asked
-// for: riding, the start-of-ride overview flight, and the paused map. A mouse
+// for: riding and the start-of-ride overview flight. A mouse
 // move, a non-steering key or a map tap reveals them for a few seconds, and a
 // pointer resting on them holds them. Menus, route setup and an open panel
-// keep them up; loading and the arrival card hide them outright.
+// keep them up, and so does the pause card (a menu); loading and the arrival
+// card hide them outright.
 // (User 2026-10-16: "hide these buttons unless the mouse is moved", seen over
 // the overview flight.) Keys G and ? work regardless.
 
@@ -22,7 +23,7 @@ export interface UtilityInput {
 export function utilityVisibility({ state, utilityOpen }: UtilityInput): UtilityVisibility {
   if (state === UTILITY_STATES.FINISHED || state === UTILITY_STATES.LOADING) return 'none';
   if (utilityOpen) return 'shown';
-  if (state === UTILITY_STATES.RACING || state === UTILITY_STATES.PAUSED) return 'tuckable';
+  if (state === UTILITY_STATES.RACING) return 'tuckable';
   return 'shown';
 }
 

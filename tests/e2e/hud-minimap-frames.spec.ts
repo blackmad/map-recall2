@@ -75,3 +75,30 @@ test('frames: overview flight, ride, destination pill, re-center over a label', 
   await page.waitForTimeout(1500);
   await shot(page, 'recenter-settled', project);
 });
+
+test('frames: phone utilities tucked over a quiz, back on a map tap', async ({ page }, info) => {
+  test.skip(info.project.name !== 'iphone', 'phone rule');
+  test.setTimeout(180_000);
+  const project = info.project.name;
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
+  await page.waitForTimeout(4500);
+  await page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    g._openQuizPrompt({
+      kind: 'route', name: 'Prinsengracht', subject: 'water',
+      question: 'Which canal are you on?', context: 'Crossing a bridge',
+      choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Plantage Kerklaan'],
+    });
+  });
+  await page.waitForTimeout(800);
+  const tucked = await page.evaluate(() => document.getElementById('utility-buttons')!.classList.contains('tucked'));
+  console.log('phone quiz tucked', tucked);
+  await shot(page, 'quiz-tucked', project);
+  // A tap on the map (above the quiz card, clear of the stick) brings the cluster back.
+  const size = page.viewportSize()!;
+  await page.touchscreen.tap(size.width / 2, size.height * 0.33);
+  await page.waitForTimeout(400);
+  const shown = await page.evaluate(() => !document.getElementById('utility-buttons')!.classList.contains('tucked'));
+  console.log('phone tap revealed', shown);
+  await shot(page, 'quiz-tap', project);
+});
