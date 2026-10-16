@@ -4,7 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { groundTokens } from './sunny.ts';
-import { GROUND_LOOKS, GROUND_LOOK_DEFAULT, groundPalette } from '../ownGround/groundLook.ts';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from '../ownGround/groundLook.ts';
+const GROUND_LOOKS: readonly GroundLook[] = ['default', 'bright'];
 import { GROUND_LAYERS, type BuiltCell, type GroundLayer } from '../ownGround/groundCell.ts';
 import { basemapGroundColour } from '../ownGround/basemapPalette.ts';
 import { flatLayerTones, overviewLayerColours, OVERVIEW_SKIPPED, toneRgb } from '../overviewTiles/layerColours.ts';
@@ -54,9 +55,9 @@ const manifestFor = (look: typeof GROUND_LOOK_DEFAULT): OverviewTilesManifest =>
 
 test('tiles baked in one palette are refused under another', () => {
   assert.deepEqual(tilesetMismatch(manifestFor('bright'), 'bright'), []);
-  assert.ok(tilesetMismatch(manifestFor('bright'), 'legacy-ish').includes('water'));
+  assert.ok(tilesetMismatch(manifestFor('bright'), 'default').includes('water'));
   assert.deepEqual(tilesetMismatch({ ...manifestFor('bright'), roof: [0, 0, 0] }, 'bright'), ['roof']);
-  const plan = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'measured');
+  const plan = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'default');
   assert.ok('skip' in plan);
   assert.ok('skip' in overviewTilesPlan(null, 'http://x/root', []));
   const ok = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'bright');

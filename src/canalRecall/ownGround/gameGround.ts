@@ -32,7 +32,7 @@ import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar }
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
-import { groundLookFrom, groundPalette, type GroundLook } from './groundLook.js';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
@@ -59,9 +59,9 @@ export interface OwnGroundOptions {
   minZoom?: number;
   /** Park surfaces and furniture from parks-v1 (default on; `?parks=0` or `window.__canalRecallParks = false` turns them off). */
   parks?: boolean;
-  /** The far ring beyond the resident cells from the air (default on; `?farGround=0` turns it off). */
+  /** The far ring beyond the resident cells from the air (default on). */
   far?: boolean;
-  /** Ground palette variant (groundLook.ts; default from `?groundLook=`). Colour only. */
+  /** Ground palette (groundLook.ts; GROUND_LOOK_DEFAULT unless given). Colour only. */
   groundLook?: GroundLook;
   /** The surveyed road partition from roads-v1 (roadSurfaces.ts). On by default (2026-10-16); `?roads=0` draws the OSM bands. */
   roads?: boolean;
@@ -172,7 +172,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: groundLookFrom(), transition: transitionOn(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';

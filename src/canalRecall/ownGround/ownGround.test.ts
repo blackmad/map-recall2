@@ -14,7 +14,7 @@ import { herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
-import { groundLookFrom, groundPalette } from './groundLook';
+import { GROUND_LOOK_DEFAULT, groundPalette } from './groundLook';
 import { drawnGrey, flatGroundGain, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
 import { LEGACY_LIGHT_RIG } from '../rendererShared/lightRig';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
@@ -31,7 +31,7 @@ import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
 import { FLUSH_PARAPET } from './bridgeKit';
-import { fillPockets, POCKET_LIFT } from './pockets';
+import { fillPockets, POCKET_LIFT, SURVEY_GAP_MAX_R } from './pockets';
 import { berthRect, openUnderHouseboats, MOORING_MARGIN_M } from './moorings';
 import { houseboatsOnLand, HOUSEBOAT_LAND_CELLS } from './houseboatLand';
 import type { DeckProfile } from '../elevation/bridgeDeck';
@@ -1144,6 +1144,29 @@ test('land pockets: a small gap enclosed by sidewalks near a junction is paved; 
   assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT, { maxM2: 10 }).stats.pockets, 0, 'larger than the cap');
 });
 
+test('survey gaps (roads-v1): a junction node in a gap of the survey paves the open land within its disc; a park-ringed disc stays land', () => {
+  // A plein the survey does not cover (Nieuwmarkt): klinker polygons along two sides of a 60 m cell, open land
+  // between them that touches the cell edge, so the pocket flood alone never paves it.
+  const quad = (m: MeshArrays, x0: number, y0: number, x1: number, y1: number) => { const b = m.positions.length / 3; m.positions.push(x0, y0, 0, x1, y0, 0, x1, y1, 0, x0, y1, 0); m.uvs.push(0, 0, 0, 0, 0, 0, 0, 0); m.indices.push(b, b + 1, b + 2, b, b + 2, b + 3); };
+  const klinker = emptyMesh(), park = emptyMesh();
+  quad(klinker, 0, 20, 60, 24); quad(klinker, 28, 0, 32, 60);
+  quad(park, 50, 0, 60, 10);
+  const cover = [{ meshes: [klinker], as: 'klinker' as const }, { meshes: [park], as: null }];
+  const plain = fillPockets(cover, [0, 0, 60, 60], [[30, 22]], () => 0, POCKET_LIFT);
+  assert.equal(plain.stats.pockets, 0, 'the open land touches the cell edge: no pocket');
+  const r = fillPockets(cover, [0, 0, 60, 60], [[30, 22]], () => 0, POCKET_LIFT, { gaps: [{ p: [30, 22], r: 10 }] });
+  assert.equal(r.stats.gaps, 1);
+  const disc = Math.PI * 100, covered = 4 * 20 + 4 * 20 - 16;
+  assert.ok(Math.abs(r.stats.gapM2! - (disc - covered)) < 12, `the bare part of the disc is paved (${r.stats.gapM2} m²)`);
+  const tris = faces(r.meshes.klinker!);
+  assert.ok(tris.every(f => Math.hypot(f.c[0] - 30, f.c[1] - 22) < 10.5), 'inside the disc');
+  // The radius is capped; a disc mostly over a park stays land.
+  const big = fillPockets(cover, [0, 0, 60, 60], [], () => 0, POCKET_LIFT, { gaps: [{ p: [30, 22], r: 40 }] });
+  assert.ok(big.stats.gapM2! <= Math.PI * SURVEY_GAP_MAX_R ** 2);
+  const parkDisc = fillPockets(cover, [0, 0, 60, 60], [], () => 0, POCKET_LIFT, { gaps: [{ p: [55, 5], r: 4 }] });
+  assert.equal(parkDisc.stats.gaps ?? 0, 0);
+});
+
 test('water opens under a footbridge whose water polygon stops at it (Melkmeisjesbrug), not under a wide deck', () => {
   // A canal along x (y 0..10) cut by a 3 m land strip at x 19..21; a footbridge along y at x = 20, 2.4 m wide.
   const west: Vec2[] = [[0, 0], [19, 0], [19, 10], [0, 10]], east: Vec2[] = [[21, 0], [40, 0], [40, 10], [21, 10]];
@@ -1392,37 +1415,29 @@ test('regression: the Westerkanaalschutsluis middle head stays an island, with a
 });
 
 // ------------------------------------------------------------- ground look variants (user 2026-10-14, "city too dark")
-test('ground looks: default is palette.ts untouched; measured/bright/legacy-ish hit their luma targets and keep the legend ΔE ≥ 20', () => {
+test('ground looks: default is palette.ts untouched; bright hits its luma targets and keeps the legend ΔE ≥ 20', () => {
   const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
   const rgbOf = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   const d = groundPalette('default');
   assert.equal(d.street, STREET_GROUND); assert.equal(d.tones, GROUND_TONES);
   const def = basemapGroundPatches([{ id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('default'));
   assert.deepEqual(def.map(p => p.value), ['rgb(86,88,93)', '#46707c', '#46707c'], 'default basemap patches unchanged');
-  // Targets: measured = the dehazed sunlit orthophoto medians (docs/ground-tones-20261014.md); bright road ~130 / pavement ~175; legacy-ish road ~200 / pavement ~215 / water ~170.
-  const target: Record<string, { asphalt: number; pavement: number; water: number }> = { measured: { asphalt: 166, pavement: 165, water: 54 }, bright: { asphalt: 130, pavement: 175, water: 124 }, 'legacy-ish': { asphalt: 200, pavement: 215, water: 170 } };
-  for (const look of ['measured', 'bright', 'legacy-ish'] as const) {
-    const { street, tones } = groundPalette(look);
-    assert.ok(Math.abs(luma(street.asphalt.base) - target[look].asphalt) <= 4, `${look} road luma ${luma(street.asphalt.base).toFixed(0)}`);
-    assert.ok(Math.abs(luma(street.pavement.base) - target[look].pavement) <= 4, `${look} pavement luma ${luma(street.pavement.base).toFixed(0)}`);
-    assert.ok(Math.abs(luma(rgbOf(tones.water)) - target[look].water) <= 4, `${look} water luma ${luma(rgbOf(tones.water)).toFixed(0)}`);
-    for (const [a, b] of [['asphalt', 'cycle'], ['asphalt', 'klinker'], ['klinker', 'cycle']] as const) {
-      const e = deltaE(street[a].base, street[b].base);
-      assert.ok(e >= 20, `${look} ${a}/${b} ΔE ${e.toFixed(1)}`);
-    }
-    // Only ground: paint, rails, bollards, parks and woods are today's.
-    for (const k of ['paint', 'rail', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
-    for (const k of ['park', 'wood', 'lawn', 'shrub', 'bed', 'bark', 'sand', 'gravel', 'parkGravel'] as const) assert.equal(tones[k], GROUND_TONES[k]);
-    assert.equal(tones.pond, tones.water);
-    // The default (bright) canal is blue, not grey-green (user 2026-10-16: "why is the water this color now?", "just pick a good blue").
-    if (look === 'bright') { const [r, g, b] = rgbOf(tones.water); assert.ok(b > g && g > r && b - r >= 60, `bright canal blue: ${tones.water}`); }
-    if (look === 'legacy-ish') { const [r, g, b] = rgbOf(tones.water); assert.ok(g > b && g > r, `${look} canal grey-green, not teal: ${tones.water}`); }
+  // Targets: bright road ~130 / pavement ~175 / water ~124 (docs/ground-tones-20261014.md).
+  assert.equal(GROUND_LOOK_DEFAULT, 'bright');
+  const { street, tones } = groundPalette('bright');
+  assert.ok(Math.abs(luma(street.asphalt.base) - 130) <= 4, `road luma ${luma(street.asphalt.base).toFixed(0)}`);
+  assert.ok(Math.abs(luma(street.pavement.base) - 175) <= 4, `pavement luma ${luma(street.pavement.base).toFixed(0)}`);
+  assert.ok(Math.abs(luma(rgbOf(tones.water)) - 124) <= 4, `water luma ${luma(rgbOf(tones.water)).toFixed(0)}`);
+  for (const [a, b] of [['asphalt', 'cycle'], ['asphalt', 'klinker'], ['klinker', 'cycle']] as const) {
+    const e = deltaE(street[a].base, street[b].base);
+    assert.ok(e >= 20, `${a}/${b} ΔE ${e.toFixed(1)}`);
   }
-  assert.equal(groundLookFrom('?ownGround=1&groundLook=bright'), 'bright');
-  assert.equal(groundLookFrom('?groundLook=legacy-ish'), 'legacy-ish');
-  assert.equal(groundLookFrom('?groundLook=nonsense'), 'bright');
-  assert.equal(groundLookFrom(''), 'bright');
-  assert.equal(groundLookFrom('?groundLook=default'), 'default');
+  // Only ground: paint, rails, bollards, parks and woods are today's.
+  for (const k of ['paint', 'rail', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
+  for (const k of ['park', 'wood', 'lawn', 'shrub', 'bed', 'bark', 'sand', 'gravel', 'parkGravel'] as const) assert.equal(tones[k], GROUND_TONES[k]);
+  assert.equal(tones.pond, tones.water);
+  // The canal is blue, not grey-green (user 2026-10-16: "why is the water this color now?", "just pick a good blue").
+  { const [r, g, b] = rgbOf(tones.water); assert.ok(b > g && g > r && b - r >= 60, `bright canal blue: ${tones.water}`); }
   const bright = basemapGroundPatches([{ id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('bright'));
   assert.equal(bright[0].value, groundPalette('bright').tones.water);
 });

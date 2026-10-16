@@ -10,7 +10,7 @@
 // extract.
 
 import type { RGB } from '../look/palette.js';
-import { groundLookFrom, groundPalette, type GroundLook } from '../ownGround/groundLook.js';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from '../ownGround/groundLook.js';
 import type { GroundLayer } from '../ownGround/groundCell.js';
 import { overviewLayerColours } from './layerColours.js';
 import { footprintTone } from '../overviewTransition/basemapOverview.js';
@@ -89,7 +89,7 @@ export function overviewTilesStyle(manifest: OverviewTilesManifest, root: string
  * The adapter's whole decision (vector-map.js `_ensureOverviewTiles`): the source, layer and insertion point for a
  * manifest, or why the tiles are not drawn (no manifest, a different ground look, a palette not yet re-baked).
  */
-export function overviewTilesPlan(manifest: OverviewTilesManifest | null | undefined, root: string, layers: readonly LayerLike[], look: GroundLook = groundLookFrom()):
+export function overviewTilesPlan(manifest: OverviewTilesManifest | null | undefined, root: string, layers: readonly LayerLike[], look: GroundLook = GROUND_LOOK_DEFAULT):
   { source: Record<string, unknown>; layer: Record<string, unknown>; beforeId: string | undefined } | { skip: string } {
   if (!manifest || manifest.version !== 1) return { skip: 'no overview tiles manifest' };
   const bad = tilesetMismatch(manifest, look);
