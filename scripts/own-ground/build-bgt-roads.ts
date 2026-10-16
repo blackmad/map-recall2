@@ -271,6 +271,7 @@ function main(): void {
   const highNoDeck: { key: string; id: string; cls: RoadClass; h: number; areaM2: number; lngLat: LngLat }[] = [];
   const fietsstraatWays = new Map<number, string>();
   let polygons = 0, rawVertices = 0, simplifiedVertices = 0, encodedVertices = 0, kerbRunsN = 0, kerbM = 0, kerbEdges = 0, sharedEdges = 0;
+  const emptyCells: string[] = [];
   let graphPolys = 0, greyRails = 0, greyOther = 0;
   let fietsstraatPolys = 0, highOverDeck = 0, highNoDeckArea = 0, areaM2 = 0, coverTotal = 0, crossings = 0, fetched = '';
   const t0 = Date.now();
@@ -413,6 +414,8 @@ function main(): void {
     }
     const problems = roadCellProblems(built.cell);
     if (problems.length) throw new Error(`${key}: invalid cell: ${problems.join('; ')}`);
+    // A cell with no wegdeel at all (8_-1, open water) is not published: the runtime keeps the bands there.
+    if (!built.cell.surfaces.length) { emptyCells.push(key); return; }
     writeFileSync(`${OUT}/cells/${key}.json.gz`, gz);
     gzPerCell[key] = gz.length;
 
@@ -453,7 +456,7 @@ function main(): void {
     built: new Date().toISOString(),
     source: 'BGT wegdeel, Kadaster via PDOK OGC API (CC0 1.0); OSM own-ground-osm-v1 (ODbL)',
     tolerance: { defaultM: TOL, leverM: TOL_LEVER, budgetBytes: BUDGET, cellsOverBudgetAtDefault: lever },
-    cells: { built: keys.length, skippedNoCache: skipped.length, neighboursMissing: [...neighboursMissing].sort() },
+    cells: { built: keys.length - emptyCells.length, emptyNotPublished: emptyCells, skippedNoCache: skipped.length, neighboursMissing: [...neighboursMissing].sort() },
     gzBytes: { total, totalMB: +(total / 1048576).toFixed(2), max: Math.max(0, ...sizes), median: Math.round(median(sizes)), perCell: gzPerCell },
     polygons: { count: polygons, areaHa: +(areaM2 / 1e4).toFixed(1), byClass, byH, byClassH, byMesh, fietsstraatOverrides: fietsstraatPolys },
     dropped,
@@ -464,7 +467,8 @@ function main(): void {
     coverWays: { total: coverTotal, uniqueWays: allWays, uniqueCovered: allCovered, share: +(allCovered / Math.max(1, allWays)).toFixed(3), crossingsSeen: crossings, byHighway: coverByHighway },
     highOverDeck: { overDeck: highOverDeck, noDeck: highNoDeck.length, noDeckAreaM2: Math.round(highNoDeckArea), samples: highNoDeck.slice(0, 60) },
   };
-  const out: RoadsManifest = { version: 1, cells: keys, fetched: fetched || new Date().toISOString().slice(0, 10) + 'T00:00:00Z', attribution: ROADS_ATTRIBUTION, report: { built: report.built, cells: keys.length, gzBytes: { total, max: report.gzBytes.max, median: report.gzBytes.median }, polygons, kerbRuns: kerbRunsN, coverWays: coverTotal } };
+  const published = keys.filter(k => !emptyCells.includes(k));
+  const out: RoadsManifest = { version: 1, cells: published, fetched: fetched || new Date().toISOString().slice(0, 10) + 'T00:00:00Z', attribution: ROADS_ATTRIBUTION, report: { built: report.built, cells: published.length, gzBytes: { total, max: report.gzBytes.max, median: report.gzBytes.median }, polygons, kerbRuns: kerbRunsN, coverWays: coverTotal } };
   writeFileSync(`${OUT}/cells.json`, JSON.stringify(out));
   writeFileSync(`${OUT}/report.json`, JSON.stringify(report, null, 1));
   const { perCell, ...gzSummary } = report.gzBytes;
