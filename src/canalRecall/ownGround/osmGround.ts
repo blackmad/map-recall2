@@ -13,8 +13,8 @@ export type LngLat = [number, number];
  */
 export type BgtWidthDm = [number, number, number];
 export interface OsmWay { id: number; tags: Record<string, string>; g: LngLat[]; bw?: BgtWidthDm }
-export type AreaKind = 'park' | 'grass' | 'wood' | 'square' | 'paved' | 'parking' | 'courtyard';
-/** `hw`: the `area:highway` value (or `highway` of an `area=yes` way) of a `paved` area; `surface`: its OSM surface tag, or a `courtyard`'s CourtyardSurface (courtyards.ts, BGT). */
+export type AreaKind = 'park' | 'grass' | 'wood' | 'square' | 'paved' | 'parking';
+/** `hw`: the `area:highway` value (or `highway` of an `area=yes` way) of a `paved` area; `surface`: its OSM surface tag. */
 export interface OsmArea { id: string; kind: AreaKind; name?: string; rings: LngLat[][]; hw?: string; surface?: string }
 export interface OsmGroundExtract {
   version: 1;

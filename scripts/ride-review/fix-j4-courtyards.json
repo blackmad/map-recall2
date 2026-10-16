@@ -1,0 +1,6 @@
+{ "mode": "car", "dest": "Westerkerk", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "j4-prinsengracht", "at": [4.88513, 52.37724, 209] },
+    { "name": "j4-egelantiersstraat", "at": [4.8838, 52.3767, 240] }
+  ] }

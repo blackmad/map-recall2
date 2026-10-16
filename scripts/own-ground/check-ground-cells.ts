@@ -33,6 +33,8 @@ const noParks = new GroundStore(readExtract, { parks: false });
 const noOpenings = new GroundStore(readExtract, { openings: false });
 /** The same ground without the fixed spans beside movable leaves (the approaches regression shows the pin is live). */
 const noApproaches = new GroundStore(readExtract, { approaches: false });
+/** The same ground without courtyards-v1 (the J4 courtyard regression's before). */
+const noCourtyards = new GroundStore(readExtract, { courtyards: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -230,6 +232,7 @@ async function main(): Promise<void> {
   await openingRegressions();
   await approachRegressions();
   await zooRegressions();
+  await courtyardRegressions();
   await parkFillRegressions();
   await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
@@ -453,6 +456,37 @@ async function zooRegressions(): Promise<void> {
     check(on.all <= 0.05 && on.own <= 0.1 && on.neighbour <= 0.1, `${id} (${label}): ${(on.all * 100).toFixed(0)} % of ${probes.length} probes inside it read bare land (${(on.own * 100).toFixed(0)} % in its own cell, ${(on.neighbour * 100).toFixed(0)} % in the neighbour's)`);
     check(off.all > 0.5, `${id}: without the zoo area ${(off.all * 100).toFixed(0)} % read bare land (the pin is live)`);
   }
+}
+
+/**
+ * Courtyards are their real cover (ride review 2026-10-14 row J4, the Jordaan from Egelantiersstraat at the Prinsengracht,
+ * 4.88513 52.37724 bearing 209): the inner gardens drew as bare sand land, so closed blocks read as public squares.
+ * courtyards-v1 (add-bgt-courtyards.ts) draws the BGT terrain of block interiors, erf (yards) by the PDOK infrared aerial.
+ * Probes: j4-courtyard-probes.json, a 4 m grid from Bloemgracht to Tuinstraat and Lijnbaansgracht to Keizersgracht (the
+ * Jordaan blocks and the canal-belt block the J4 frame looks into), kept
+ * on open BGT terrain inside a block (the extractor's ray test). Over 40 % of them read vegetated (lawn, bed, shrub,
+ * bark, OSM park/wood) with the extract, under 5 % without it (the pin is live).
+ */
+const VEGETATED_LAYERS = new Set(['lawn', 'bed', 'shrub', 'bark', 'park', 'wood']);
+async function courtyardRegressions(): Promise<void> {
+  const fixture = JSON.parse(readFileSync('scripts/own-ground/j4-courtyard-probes.json', 'utf8')) as { probes: [number, number][] };
+  const probes = fixture.probes.map(([x, y]) => [x / 10, y / 10] as [number, number]);
+  const share = async (s: GroundStore) => {
+    const keys = [...new Set(probes.map(([x, y]) => s.cellAt(x, y)))];
+    const cells: BuiltCell[] = [];
+    for (const k of keys) cells.push(buildCell({ ...(await s.cellInput(k, 0)), pockets: false }));
+    const tops = probes.map(([x, y]) => {
+      const hits = cells.flatMap(c => layersAt(c, x, y).hits).filter(h => !h.cut && h.layer !== 'water').sort(compareHits);
+      return hits[0]?.layer ?? 'none';
+    });
+    const count = (t: string) => tops.filter(x => x === t).length;
+    return { veg: tops.filter(t => VEGETATED_LAYERS.has(t)).length / Math.max(1, tops.length), land: count('land') / Math.max(1, tops.length), paving: count('paving') / Math.max(1, tops.length) };
+  };
+  await noCourtyards.init();
+  const on = await share(store), off = await share(noCourtyards);
+  const pct = (v: number) => `${(v * 100).toFixed(0)} %`;
+  check(probes.length > 500 && on.veg > 0.4, `J4 Jordaan courtyards: ${pct(on.veg)} of ${probes.length} block-interior probes vegetated, ${pct(on.paving)} paving, ${pct(on.land)} bare land (want > 40 % vegetated)`);
+  check(off.veg < 0.05, `J4: without courtyards-v1 ${pct(off.veg)} vegetated, ${pct(off.land)} bare land (want < 5 %: the pin is live)`);
 }
 
 /**

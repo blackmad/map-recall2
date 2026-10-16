@@ -1,11 +1,11 @@
-// Add the BGT terrain of block interiors (courtyards, back gardens) to the published own-ground OSM cells as
-// `courtyard` areas (ride review 2026-10-14 row J4: Jordaan inner gardens drew as bare sand land, so closed blocks
+// Build the courtyards-v1 extract: the BGT terrain of block interiors (courtyards, back gardens) per own-ground 1 km
+// cell, kept apart from the OSM cells (ride review 2026-10-14 row J4: Jordaan inner gardens drew as bare sand land, so closed blocks
 // read as public squares). docs/bgt-courtyards-20261014.md; the classification is src/canalRecall/ownGround/courtyards.ts.
 //
 //   npx tsx scripts/own-ground/add-bgt-courtyards.ts --raw <empty scratch dir> [--cells k1,k2] [--concurrency 4]
 //       fetch (cached in --raw) + classify; writes the patched cells and report.json to the staging directory
 //   npx tsx scripts/own-ground/add-bgt-courtyards.ts --raw <dir> --offline     # cached responses only
-//   npx tsx scripts/own-ground/add-bgt-courtyards.ts --publish                 # after review: staged cells → published, provenance into cells.json
+//   npx tsx scripts/own-ground/add-bgt-courtyards.ts --publish                 # after review: staging → public/data/extracts/amsterdam/courtyards-v1 (cells.json carries provenance)
 //
 // Sources (open data):
 //   BGT (Kadaster / gemeente Amsterdam, CC0 1.0) via the PDOK OGC API https://api.pdok.nl/lv/bgt/ogc/v1:
@@ -13,22 +13,23 @@
 //   PDOK Luchtfoto CIR (Beeldmateriaal Nederland, CC BY 4.0), WMS https://service.pdok.nl/hwh/luchtfotocir/wms/v1_0
 //     layer IMAGERY_LAYER at 0.5 m: the vegetated share of each `erf` (yard), which BGT leaves untyped
 //   OSM streets (ODbL): the ways already in the published cells (open a ray)
-// Idempotent: a cell's `courtyard` areas are replaced as a whole. An area belongs to the cell of its interior point.
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+// Idempotent: the extract is rebuilt whole; the report diffs each cell against the published one (id:class). An area belongs to the cell of its interior point.
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { cellBounds, elevationIndex } from './game-cells.ts';
 import { cellKey, lngLatToLocal } from '../../src/canalRecall/elevation/elevationData.ts';
 import { fromLocal, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { inRings, interiorPoint, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
-import type { OsmArea, OsmGroundExtract } from '../../src/canalRecall/ownGround/osmGround.ts';
-import { COURTYARD_SURFACES, OPENING_HIGHWAYS, SegmentIndex, closedRays, courtyardSurface, MIN_CLOSED, pixelVegetated, segmentsOf, vegetatedShare, RAY_M, VEGETATED, type CourtyardSurface, type Segment } from '../../src/canalRecall/ownGround/courtyards.ts';
+import { encodeLine, inRings, interiorPoint, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
+import type { OsmGroundExtract } from '../../src/canalRecall/ownGround/osmGround.ts';
+import { COURTYARD_SURFACES, OPENING_HIGHWAYS, SegmentIndex, closedRays, courtyardSurface, MIN_CLOSED, pixelVegetated, segmentsOf, vegetatedShare, RAY_M, VEGETATED, type BgtProps, type CourtyardSurface, type CourtyardsCell, type CourtyardsManifest, type Segment } from '../../src/canalRecall/ownGround/courtyards.ts';
 import type { Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
 
 type LngLat = [number, number];
 const EXTRACT = 'public/data/extracts/amsterdam/own-ground-osm-v1';
-const STAGING = 'artifacts/own-ground/staging/bgt-courtyards';
+const STAGING = 'artifacts/own-ground/staging/courtyards-v1';
+const PUBLISHED = 'public/data/extracts/amsterdam/courtyards-v1';
 const API = 'https://api.pdok.nl/lv/bgt/ogc/v1/collections';
 const WMS = 'https://service.pdok.nl/hwh/luchtfotocir/wms/v1_0';
 export const IMAGERY_LAYER = '2025_ortho25IR';
@@ -48,6 +49,7 @@ const RAW = arg('--raw');
 const index = elevationIndex();
 const manifest = JSON.parse(readFileSync(join(EXTRACT, 'cells.json'), 'utf8')) as { cells: string[]; [k: string]: unknown };
 const cellOf = (lng: number, lat: number) => { const [x, y] = lngLatToLocal(index, lng, lat); return cellKey(Math.floor(x / index.cellSizeM), Math.floor(y / index.cellSizeM)); };
+const readCourtyards = (dir: string, key: string): CourtyardsCell | null => { const f = join(dir, 'cells', `${key}.json.gz`); return existsSync(f) ? JSON.parse(gunzipSync(readFileSync(f)).toString('utf8')) : null; };
 const readCell = (dir: string, key: string): OsmGroundExtract | null => { const f = join(dir, 'cells', `${key}.json.gz`); return existsSync(f) ? JSON.parse(gunzipSync(readFileSync(f)).toString('utf8')) : null; };
 
 // ------------------------------------------------------------------ fetch (cached)
@@ -104,7 +106,9 @@ async function fetchTile(key: string, q: number, lngLat: number[]): Promise<Tile
     const url = `${WMS}?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=${IMAGERY_LAYER}&STYLES=&CRS=EPSG:3857&BBOX=${[a[0], a[1], b[0], b[1]].map(v => v.toFixed(2)).join(',')}&WIDTH=${w}&HEIGHT=${h}&FORMAT=image/jpeg`;
     for (let attempt = 0; ; attempt++) {
       const res = await fetch(url).catch(() => null);
-      if (res?.ok && (res.headers.get('content-type') ?? '').startsWith('image/')) { const buf = Buffer.from(await res.arrayBuffer()); requests++; bytesIn += buf.length; mkdirSync(join(RAW!, 'cir', key), { recursive: true }); writeFileSync(file, buf); break; }
+      // The body can still be cut off (ECONNRESET) after the headers: retried like a failed request.
+      const buf = res?.ok && (res.headers.get('content-type') ?? '').startsWith('image/') ? await res.arrayBuffer().then(b => Buffer.from(b)).catch(() => null) : null;
+      if (buf) { requests++; bytesIn += buf.length; mkdirSync(join(RAW!, 'cir', key), { recursive: true }); writeFileSync(file, buf); break; }
       if (attempt > 5) throw new Error(`CIR ${res?.status} ${url}`);
       await new Promise(r => setTimeout(r, 2000 * (attempt + 1)));
     }
@@ -161,9 +165,9 @@ function pixelCounts(rings: LngLat[][], tiles: Tile[]) {
 
 // ------------------------------------------------------------------ per cell
 
-interface CellReport { key: string; candidates: number; interior: number; skippedUnderOsm: number; erfUnknown: number; added: number; removed: number; kept: number; m2: Partial<Record<CourtyardSurface, number>>; ms: number }
+interface CellReport { key: string; candidates: number; interior: number; skippedUnderOsm: number; erfUnknown: number; added: number; removed: number; kept: number; m2: Partial<Record<CourtyardSurface, number>>; bytes: number; ms: number }
 
-interface CellContext { items: BgtItem[]; pands: Vec2[][][]; rays: SegmentIndex; underOsm: (x: number, y: number) => boolean; osmHere: OsmGroundExtract | null; bounds: number[] }
+interface CellContext { items: BgtItem[]; pands: Vec2[][][]; rays: SegmentIndex; underOsm: (x: number, y: number) => boolean; bounds: number[] }
 
 /** A cell's candidates (BGT terrain touching it) and what the interior test needs (buildings, water and streets around it). */
 async function cellContext(key: string): Promise<CellContext> {
@@ -189,18 +193,18 @@ async function cellContext(key: string): Promise<CellContext> {
     seenWay.add(w.id);
     segs.push(...segmentsOf(w.g.map(([x, y]) => toLocal(x, y)), false));
   }
-  // What the OSM areas already paint (any kind but courtyards) is left to them.
-  const osmRings = around.flatMap(o => o.areas.filter(a => a.kind !== 'courtyard').flatMap(a => a.rings.map(r => r.map(([x, y]) => toLocal(x, y)))))
+  // What the OSM areas already paint is left to them.
+  const osmRings = around.flatMap(o => o.areas.flatMap(a => a.rings.map(r => r.map(([x, y]) => toLocal(x, y)))))
     .map(r => ({ r, b: [Math.min(...r.map(p => p[0])), Math.min(...r.map(p => p[1])), Math.max(...r.map(p => p[0])), Math.max(...r.map(p => p[1]))] }));
   const underOsm = (x: number, y: number) => osmRings.some(({ r, b }) => x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3] && inRings([r], x, y));
-  return { items, pands, rays: new SegmentIndex(segs), underOsm, osmHere: readCell(EXTRACT, key), bounds: [lo, la, hi, ha] };
+  return { items, pands, rays: new SegmentIndex(segs), underOsm, bounds: [lo, la, hi, ha] };
 }
 
 async function cell(key: string): Promise<CellReport> {
   const t0 = Date.now();
-  const { items, rays, underOsm, osmHere, bounds: [lo, la, hi, ha] } = await cellContext(key);
+  const { items, rays, underOsm, bounds: [lo, la, hi, ha] } = await cellContext(key);
 
-  const rep: CellReport = { key, candidates: 0, interior: 0, skippedUnderOsm: 0, erfUnknown: 0, added: 0, removed: 0, kept: 0, m2: {}, ms: 0 };
+  const rep: CellReport = { key, candidates: 0, interior: 0, skippedUnderOsm: 0, erfUnknown: 0, added: 0, removed: 0, kept: 0, m2: {}, bytes: 0, ms: 0 };
   const picked: { it: BgtItem; rings: LngLat[][]; local: Vec2[][]; erf: boolean }[] = [];
   const seen = new Set<string>();
   for (const it of items) {
@@ -236,27 +240,27 @@ async function cell(key: string): Promise<CellReport> {
       if (t) tiles.push(t);
     }
   }
-  const fresh: OsmArea[] = [];
+  const fresh: CourtyardsCell['areas'] = [];
   for (const p of picked) {
     const share = p.erf ? vegetatedShare(pixelCounts(p.rings, tiles)) : null;
-    const k = courtyardSurface(p.it.c, p.it.props as any, share);
+    const k = courtyardSurface(p.it.c, p.it.props as BgtProps, share);
     if (!k) { if (p.erf) rep.erfUnknown++; continue; }
     const rings = p.local.map(simplifyRing).filter(r => r.length >= 4);
     if (!rings.length) continue;
     rep.m2[k] = (rep.m2[k] ?? 0) + polygonArea(rings);
-    const round = (v: number) => Math.round(v * 1e6) / 1e6;
-    const lngLat = rings.map(r => r.map(([x, y]) => { const q = fromLocalLngLat(x, y); return [round(q[0]), round(q[1])] as LngLat; }));
-    fresh.push({ id: `bgt:${p.it.id}`, kind: 'courtyard', surface: k, rings: lngLat });
+    fresh.push({ id: p.it.id, k, r: rings.map(encodeLine) });
   }
-  // Stage the patched cell (courtyards replaced as a whole).
-  if (osmHere) {
-    const before = new Set(osmHere.areas.filter(a => a.kind === 'courtyard').map(a => a.id)), after = new Set(fresh.map(a => a.id));
-    rep.removed = [...before].filter(id => !after.has(id)).length;
-    rep.added = [...after].filter(id => !before.has(id)).length;
-    rep.kept = [...after].filter(id => before.has(id)).length;
-    const out = { ...osmHere, areas: [...osmHere.areas.filter(a => a.kind !== 'courtyard'), ...fresh] };
+  // Stage the cell (its courtyards replaced as a whole); the diff is against the published cell.
+  const before = new Set(readCourtyards(PUBLISHED, key)?.areas.map(a => `${a.id}:${a.k}`) ?? []), after = new Set(fresh.map(a => `${a.id}:${a.k}`));
+  rep.removed = [...before].filter(id => !after.has(id)).length;
+  rep.added = [...after].filter(id => !before.has(id)).length;
+  rep.kept = [...after].filter(id => before.has(id)).length;
+  if (fresh.length) {
+    const out: CourtyardsCell = { version: 1, key, areas: fresh };
     mkdirSync(join(STAGING, 'cells'), { recursive: true });
-    writeFileSync(join(STAGING, 'cells', `${key}.json.gz`), gzipSync(JSON.stringify(out), { level: 9 }));
+    const bytes = gzipSync(JSON.stringify(out), { level: 9 });
+    writeFileSync(join(STAGING, 'cells', `${key}.json.gz`), bytes);
+    rep.bytes = bytes.length;
   }
   for (const k of Object.keys(rep.m2) as CourtyardSurface[]) rep.m2[k] = Math.round(rep.m2[k]!);
   rep.ms = Date.now() - t0;
@@ -301,16 +305,21 @@ async function main(): Promise<void> {
   const probeBox = arg('--probes');
   if (probeBox) { if (!RAW) throw new Error('--raw is required'); await writeProbes(probeBox.split(',').map(Number), arg('--out') ?? 'scripts/own-ground/j4-courtyard-probes.json'); return; }
   if (publish) {
-    const report = JSON.parse(readFileSync(join(STAGING, 'report.json'), 'utf8'));
-    for (const r of report.cells as CellReport[]) copyFileSync(join(STAGING, 'cells', `${r.key}.json.gz`), join(EXTRACT, 'cells', `${r.key}.json.gz`));
-    manifest.courtyards = report.provenance;
-    writeFileSync(join(EXTRACT, 'cells.json'), JSON.stringify(manifest, null, 2) + '\n');
-    console.log(`published ${report.cells.length} cells`);
+    // The staged extract replaces the published one whole (cells with no courtyard are not written).
+    const report = JSON.parse(readFileSync(join(STAGING, 'report.json'), 'utf8')) as { provenance: Record<string, unknown>; cells: CellReport[] };
+    rmSync(PUBLISHED, { recursive: true, force: true });
+    mkdirSync(join(PUBLISHED, 'cells'), { recursive: true });
+    const cells = report.cells.filter(r => r.bytes > 0).map(r => r.key);
+    for (const k of cells) copyFileSync(join(STAGING, 'cells', `${k}.json.gz`), join(PUBLISHED, 'cells', `${k}.json.gz`));
+    const out: CourtyardsManifest = { version: 1, cells, provenance: report.provenance };
+    writeFileSync(join(PUBLISHED, 'cells.json'), JSON.stringify(out, null, 1) + '\n');
+    console.log(`published ${cells.length} cells to ${PUBLISHED}`);
     return;
   }
   if (!RAW) throw new Error('--raw <empty download directory> is required');
   const only = arg('--cells')?.split(',');
   const keys = only ?? manifest.cells;
+  if (!only) rmSync(STAGING, { recursive: true, force: true });
   const todo = [...keys], reports: CellReport[] = [];
   const t0 = Date.now();
   await Promise.all(Array.from({ length: Number(arg('--concurrency') ?? 4) }, async () => {
@@ -331,7 +340,7 @@ async function main(): Promise<void> {
     imagery: { source: `PDOK Luchtfoto CIR WMS ${WMS}`, layer: IMAGERY_LAYER, metresPerPixel: IMAGE_M_PER_PX, licence: 'CC BY 4.0 (Beeldmateriaal Nederland)', use: 'vegetated share of BGT erf (yard) polygons' },
     osm: '© OpenStreetMap contributors (ODbL): street centrelines for the block-interior test',
   };
-  const report = { provenance, cells: reports, totals: { cells: reports.length, candidates: sum(r => r.candidates), interior: sum(r => r.interior), skippedUnderOsm: sum(r => r.skippedUnderOsm), erfUnknown: sum(r => r.erfUnknown), added: sum(r => r.added), removed: sum(r => r.removed), kept: sum(r => r.kept), m2: total, requests, MB: +(bytesIn / 1048576).toFixed(1) } };
+  const report = { provenance, cells: reports, totals: { cells: reports.length, candidates: sum(r => r.candidates), interior: sum(r => r.interior), skippedUnderOsm: sum(r => r.skippedUnderOsm), erfUnknown: sum(r => r.erfUnknown), added: sum(r => r.added), removed: sum(r => r.removed), kept: sum(r => r.kept), m2: total, requests, MB: +(bytesIn / 1048576).toFixed(1), extractKB: Math.round(sum(r => r.bytes) / 1024) } };
   mkdirSync(STAGING, { recursive: true });
   writeFileSync(join(STAGING, 'report.json'), JSON.stringify(report, null, 1));
   console.log(JSON.stringify(report.totals));
