@@ -403,6 +403,10 @@ export interface PresentationHost extends GameCoreHost {
   quizCandidateName: string;
   quizPromptSubject: string;
   _silentPass?: import('./silentPass').SilentPassState | null;
+  /** The name the route question settles on under the rider: the way's own
+   *  name, except that a bridge-named deck answers with the street it carries
+   *  (or '' when transparent). RecallHost implements it (recallRuntime.ts). */
+  _routeQuestionRoadName(heading: number): string;
   _activeTransitLine: string;
   _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;

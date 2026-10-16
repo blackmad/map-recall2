@@ -23,14 +23,31 @@
 import { contactsAt, roadsNear, type RoadPoint, type RoadSpatialIndex } from '../routing/roadSurface';
 
 /** Dutch (and English) bridge names: "…brug", "…sluis", "Brug 117". Locks
- *  in the canal belt are road bridges ("Torensluis", "Hoge Sluis"). */
+ *  in the canal belt are road bridges ("Torensluis", "Hoge Sluis"). A few
+ *  decks have no suffix at all (`UNSUFFIXED_DECK_NAMES`). */
 const BRIDGE_SUFFIX = /(?:brug|brugje|bruggetje|sluis|sluisje|duiker|viaduct|aquaduct|bridge)$/i;
 const NUMBERED_BRIDGE = /^brug\s+\d+/i;
+
+/**
+ * Decks whose names carry no bridge suffix. Each is a structure in the
+ * municipal bridge register (Gemeente Amsterdam, civiele constructies) and
+ * every OSM way under the name is `bridge=yes`: the Bullebak is a lifting
+ * bridge, the Kanaalpost a fixed bridge, the Postje van Gerrit Vreling a
+ * movable footbridge. Without this list they were asked as streets.
+ * Raampoort is deliberately absent: it is a street as well as a bridge.
+ * `bridgeStreetName.test.ts` re-derives the list from the register and the
+ * routing graph, so a refreshed extract that adds one fails the test.
+ */
+export const UNSUFFIXED_DECK_NAMES: ReadonlySet<string> = new Set([
+  'Bullebak',
+  'Kanaalpost',
+  'Postje van Gerrit Vreling',
+]);
 
 export function isBridgeWayName(name: string | null | undefined): boolean {
   const trimmed = (name || '').trim();
   if (!trimmed) return false;
-  return BRIDGE_SUFFIX.test(trimmed) || NUMBERED_BRIDGE.test(trimmed);
+  return BRIDGE_SUFFIX.test(trimmed) || NUMBERED_BRIDGE.test(trimmed) || UNSUFFIXED_DECK_NAMES.has(trimmed);
 }
 
 /** One way touching a point: its index and the line angle of its span there. */

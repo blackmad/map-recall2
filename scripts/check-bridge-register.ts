@@ -91,7 +91,8 @@ check('bridge cards: the register sentence stands alone or follows the origin, n
   assert.ok(magere.longDetail.length <= STREET_CARD_LONG_CHARS);
 });
 
-const extract = path.resolve('public/data/extracts/amsterdam');
+// `--directory=` checks a staged extract (build-askable-bridges.ts) before it is published.
+const extract = path.resolve(process.argv.find(argument => argument.startsWith('--directory='))?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const published = JSON.parse(readFileSync(path.join(extract, 'bridge-register.json'), 'utf8')) as BridgeRegisterFile;
 check('published: named bridges carry their register entries', () => {
   assert.deepEqual(published.bridges['Magere Brug'], { movable: true, nr: 242, material: 'wooden' });
