@@ -846,6 +846,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   blue-green faces, solar panels); apply `roof.flat`/`roof.surfaces` to
   other large recipes whose flat roofs draw as pale gravel. OZV 115-125's
   hold is its dark measured wall colours, unrelated.
+- **Houseboat cabin colours** (P3, 2026-10-16, HISTORY "Houseboats placed
+  from the orthophoto"): the orthophoto gives roofs only; sample municipal
+  panorama thumbnails (CC BY 4.0) per boat for a sunlit cabin median, and
+  relabel the 91 unseen boats and the 56 hashed ship hulls from panoramas.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
