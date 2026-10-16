@@ -466,6 +466,10 @@
     if (!input.roadName || input.roadName === input.currentName) return false;
     return !input.revealed && !input.learned;
   }
+  function routePlaqueName(input) {
+    const answerHidden = hudWithholdsRouteName(input);
+    return { routeName: answerHidden ? "" : input.roadName, answerHidden };
+  }
 
   // src/canalRecall/facts/factRotation.ts
   var RECENT_KIND_MEMORY = 3;
@@ -886,6 +890,33 @@
     return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
   })();
   var STONE_CELL_MEAN = 228 / 255;
+  var HIGHLIGHT_CORAL = "#ff8033";
+  var GROUND_TONES = {
+    land: { base: [168, 158, 142], joint: "#857b6d" },
+    paving: { base: [184, 174, 158], joint: "#8f8577" },
+    square: { base: [190, 179, 161], joint: "#958a7c" },
+    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
+    klinker: { base: [158, 124, 114], joint: "#7a6660" },
+    asphalt: [68, 72, 80],
+    cycle: [156, 76, 66],
+    gravel: [180, 166, 136],
+    park: [96, 140, 70],
+    wood: [70, 112, 58],
+    parking: [102, 102, 105],
+    kerb: "#aaa498",
+    water: "#46707c",
+    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
+    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
+    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
+    lawn: [110, 154, 74],
+    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
+    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
+    bark: [118, 84, 58],
+    sand: [212, 194, 150],
+    parkGravel: [198, 184, 152],
+    parkPath: [110, 110, 112],
+    pond: "#46707c"
+  };
 
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
@@ -45258,11 +45289,29 @@
         "w1240314142",
         "w1239767723",
         "w1240155433",
-        "w1240155432"
+        "w1240155432",
+        // 2026-10-16 the east wing of the station pand (BAG 0363100012185598, x 122..246 in the model frame) is now modelled: its
+        // building:parts were the flat 20 m city-layer box east of the Cuypers front (user report, aerial screenshot).
+        "w752286896",
+        "w752286897",
+        "w752286898",
+        "w1239767701",
+        "w1239767702",
+        "w752328422",
+        "w752328423",
+        "w752328424",
+        "w752328425",
+        "w752328426",
+        "w752653574",
+        "w752653575",
+        "w752738610"
       ],
       spatialSuppression: false,
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 210.6533,
+      // Measured from the 2022 sunlit Stationsplein panorama (TMX7316010203-002532_pano_0000_001491) and the 2020/2025 wing and
+      // east-wing panoramas: per-class pixel medians (artifacts/centraal-lane/classify.ts). 'bronze' is the train-shed roofing.
+      materialOverrides: { brick: "#7b5141", stone: "#b8ad92", sandstone: "#9a8f7a", slate: "#676863", glass: "#3f4a4f", gold: "#c09a45", red: "#8a3c31", frame: "#7d8384", white: "#e3dccb", ochre: "#9c7d4e", green: "#7d8a78", dark: "#2f2d2a", concrete: "#8e9396", bronze: "#4a4a4c", pink: "#7a4850" },
       footprint: { centre: [4.899750668752946, 52.37855998792934], headingDegrees: 120.65330083236796, lengthMetres: 244.34798071019168, widthMetres: 30.916412054875813 },
       surveyed: { anchor: [4.899750668752946, 52.37855998792934], northOffsetDegrees: 30.65330083236796, source: "OSM Cuypersgebouw anchor/bearing; four exact current train/bus roof outlines. Zuidkap 23 m /50 frames per ProRail; other profiles and bus deck approximately reconstructed from architect photographs and 3DBAG." },
       attribution: { ...ownAttribution("Amsterdam Centraal", "https://www.benthemcrouwel.com/projects/bus-station-amsterdam-cs"), modifications: "Original texture-free Cuypers facade and four arched roof structures. Current mapped roof perimeters retained at native scale; approximate interior roof profiles, frame details and raised bus deck. Published Zuidkap 23 m height and 50 frames. Colored AMSTERDAM glass panels follow architect photographs. No imported geometry or photo pixels. Metro, ferry piers, hotel/postal buildings and ground-level streets omitted." }
@@ -48164,6 +48213,519 @@
     return { distanceM: Math.hypot(dx, dy), offAxisDeg: bearing - headingDeg };
   }
 
+  // src/canalRecall/ownMap/frame.ts
+  var ORIGIN = { lng: 4.9, lat: 52.37 };
+  var KX = 111320 * Math.cos(ORIGIN.lat * Math.PI / 180);
+  var KY = 110540;
+  function gameWorldToLngLat(worldX, worldY, loader, pixelsPerMetre = 3) {
+    const mLat = 111320, mLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    return [
+      loader._lastCenterLng + (worldX - loader._lastOffsetX) / (mLng * pixelsPerMetre),
+      loader._lastCenterLat - (worldY - loader._lastOffsetY) / (mLat * pixelsPerMetre)
+    ];
+  }
+
+  // src/canalRecall/ownGround/groundLook.ts
+  var GROUND_LOOK_TONES = {
+    bright: {
+      asphalt: [132, 130, 124],
+      pavement: [183, 174, 161],
+      klinker: [138, 101, 78],
+      cycle: [204, 107, 106],
+      water: [79, 134, 163],
+      land: [185, 174, 156],
+      paving: [194, 184, 167],
+      square: [198, 187, 169],
+      parking: [126, 125, 120],
+      parkPath: [142, 140, 134]
+    }
+  };
+
+  // src/canalRecall/game/radar.ts
+  var RADAR_TILE_M = 160;
+  var RADAR_RADIUS_M = { desktop: [220, 320], compact: [170, 240] };
+  function radarRadiusForSpeed(speedRatio, range) {
+    const t = Math.max(0, Math.min(1, Number.isFinite(speedRatio) ? speedRatio : 0));
+    const eased = t * t * (3 - 2 * t);
+    return range[0] + (range[1] - range[0]) * eased;
+  }
+  function radarOffset(d, rotation, pxPerMetre) {
+    const dx = d[0], dyS = -d[1];
+    const c = Math.cos(rotation), s = Math.sin(rotation);
+    return [(dx * c + dyS * s) * pxPerMetre, (-dx * s + dyS * c) * pxPerMetre];
+  }
+  function clampToRim(offset, rimPx) {
+    const len = Math.hypot(offset[0], offset[1]);
+    const angle = Math.atan2(offset[1], offset[0]);
+    if (len <= rimPx) return { at: offset, clamped: false, angle };
+    return { at: [Math.cos(angle) * rimPx, Math.sin(angle) * rimPx], clamped: true, angle };
+  }
+  function tileRange(at, r, tile = RADAR_TILE_M) {
+    return {
+      x0: Math.floor((at[0] - r) / tile),
+      y0: Math.floor((at[1] - r) / tile),
+      x1: Math.floor((at[0] + r) / tile),
+      y1: Math.floor((at[1] + r) / tile)
+    };
+  }
+  var radarLocal = (lng, lat) => [(lng - ORIGIN.lng) * KX, (lat - ORIGIN.lat) * KY];
+  function nearestRouteIndex(route, at, hint) {
+    const n = route.length / 2;
+    if (n === 0) return 0;
+    const scan = (from, to) => {
+      let best = -1, bestD = Infinity;
+      for (let i = Math.max(0, from); i < Math.min(n, to); i++) {
+        const d = (route[i * 2] - at[0]) ** 2 + (route[i * 2 + 1] - at[1]) ** 2;
+        if (d < bestD) {
+          bestD = d;
+          best = i;
+        }
+      }
+      return { best, bestD };
+    };
+    const near = scan(hint - 30, hint + 60);
+    if (near.best >= 0 && near.bestD < 60 * 60) return near.best;
+    return scan(0, n).best;
+  }
+  var rgb = (c, a = 1) => a >= 1 ? `rgb(${c[0]},${c[1]},${c[2]})` : `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  var mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  var BRIGHT = GROUND_LOOK_TONES.bright;
+  var RADAR_COLORS = {
+    land: rgb(mix(BRIGHT.land, [251, 248, 242], 0.12)),
+    park: rgb(mix(GROUND_TONES.park, BRIGHT.land, 0.3)),
+    water: rgb(BRIGHT.water),
+    street: "#ffffff",
+    streetCasing: rgb(BRIGHT.asphalt),
+    major: "#fff1c9",
+    cycle: rgb(BRIGHT.cycle),
+    route: "#38BDF8",
+    routeCasing: "rgba(3,18,28,0.78)",
+    routePassed: "rgba(56,189,248,0.38)",
+    rim: "rgba(251,248,242,0.97)",
+    rimLine: "rgba(31,28,23,0.28)",
+    rider: "#1f1c17"
+  };
+  var CLASS_WIDTH = [3.4, 3, 2.5, 1.9, 1.1, 1.1];
+  var CLASS_ORDER = [5, 4, 3, 2, 1, 0];
+  var PATH_CLASS = 6;
+  function radarWorkerMain() {
+    const scope = self;
+    scope.onmessage = async (event) => {
+      try {
+        const response = await fetch(event.data.url);
+        if (!response.ok) throw new Error(`overview ${response.status}`);
+        let bytes = new Uint8Array(await response.arrayBuffer());
+        if (bytes[0] === 31 && bytes[1] === 139) {
+          const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+          bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+        }
+        const file = JSON.parse(new TextDecoder().decode(bytes));
+        const unit = file.unit;
+        const packPolys = (polys) => {
+          let points2 = 0, rings = 0;
+          for (const poly of polys) for (const ring of poly) {
+            points2 += ring.length >> 1;
+            rings++;
+          }
+          const coords2 = new Float32Array(points2 * 2), ringStart = new Uint32Array(rings + 1), polyRing = new Uint32Array(polys.length + 1);
+          const bbox2 = new Float32Array(polys.length * 4);
+          let p2 = 0, r = 0;
+          polys.forEach((poly, i) => {
+            polyRing[i] = r;
+            let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+            for (const ring of poly) {
+              ringStart[r++] = p2;
+              let x = 0, y = 0;
+              for (let k = 0; k + 1 < ring.length; k += 2) {
+                x += ring[k];
+                y += ring[k + 1];
+                const X = x * unit, Y = y * unit;
+                coords2[p2 * 2] = X;
+                coords2[p2 * 2 + 1] = Y;
+                p2++;
+                if (X < x0) x0 = X;
+                if (X > x1) x1 = X;
+                if (Y < y0) y0 = Y;
+                if (Y > y1) y1 = Y;
+              }
+            }
+            bbox2.set([x0, y0, x1, y1], i * 4);
+          });
+          ringStart[r] = p2;
+          polyRing[polys.length] = r;
+          return { coords: coords2, ringStart, polyRing, bbox: bbox2 };
+        };
+        const streetsIn = file.streets.filter((row) => row[0] !== 6);
+        let points = 0;
+        for (const row of streetsIn) points += row.length - 2 >> 1;
+        const coords = new Float32Array(points * 2), start = new Uint32Array(streetsIn.length + 1), cls = new Uint8Array(streetsIn.length);
+        const bbox = new Float32Array(streetsIn.length * 4);
+        let p = 0;
+        streetsIn.forEach((row, i) => {
+          start[i] = p;
+          cls[i] = row[0];
+          let x = 0, y = 0, x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+          for (let k = 2; k + 1 < row.length; k += 2) {
+            x += row[k];
+            y += row[k + 1];
+            const X = x * unit, Y = y * unit;
+            coords[p * 2] = X;
+            coords[p * 2 + 1] = Y;
+            p++;
+            if (X < x0) x0 = X;
+            if (X > x1) x1 = X;
+            if (Y < y0) y0 = Y;
+            if (Y > y1) y1 = Y;
+          }
+          bbox.set([x0, y0, x1, y1], i * 4);
+        });
+        start[streetsIn.length] = p;
+        const water = packPolys(file.water);
+        const parks = packPolys(file.parks.map(([, ...rings]) => rings));
+        const streets = { coords, start, cls, bbox };
+        const buffers = [water, parks].flatMap((l) => [l.coords.buffer, l.ringStart.buffer, l.polyRing.buffer, l.bbox.buffer]).concat([coords.buffer, start.buffer, cls.buffer, bbox.buffer]);
+        scope.postMessage({ data: { water, parks, streets } }, buffers);
+      } catch (error) {
+        scope.postMessage({ error: String(error?.message || error) });
+      }
+    };
+  }
+  function loadRadarData(url) {
+    return new Promise((resolve) => {
+      try {
+        const source = `(${radarWorkerMain.toString()})();`;
+        const blobUrl = URL.createObjectURL(new Blob([source], { type: "text/javascript" }));
+        const worker = new Worker(blobUrl);
+        const done = (value) => {
+          worker.terminate();
+          URL.revokeObjectURL(blobUrl);
+          resolve(value);
+        };
+        worker.onmessage = (event) => {
+          if (event.data?.data) done(event.data.data);
+          else {
+            console.warn("radar: overview not loaded", event.data?.error);
+            done(null);
+          }
+        };
+        worker.onerror = (event) => {
+          console.warn("radar: worker failed", event.message);
+          done(null);
+        };
+        worker.postMessage({ url: new URL(url, location.href).href });
+      } catch (error) {
+        console.warn("radar: no worker", error);
+        resolve(null);
+      }
+    });
+  }
+  function makeCanvas(w, h) {
+    if (typeof OffscreenCanvas !== "undefined") return new OffscreenCanvas(w, h);
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+    return c;
+  }
+  var TILE_CACHE = 96;
+  var TILE_BUDGET_MS = 2;
+  var RadarMap = class {
+    data = null;
+    loading = null;
+    tiles = /* @__PURE__ */ new Map();
+    /** Device px per metre the tiles are rasterised at. */
+    ppm = 0;
+    sheet = null;
+    stats = { frames: 0, drawMs: 0, maxMs: 0, tilesRendered: 0 };
+    /** Start loading (once). */
+    load(url) {
+      if (!this.loading) this.loading = loadRadarData(url).then((data) => {
+        this.data = data;
+        this.sheet = null;
+        return data;
+      });
+      return this.loading;
+    }
+    get ready() {
+      return !!this.data;
+    }
+    renderTile(tx, ty) {
+      const T = RADAR_TILE_M, ppm = this.ppm, size = Math.ceil(T * ppm);
+      const canvas = makeCanvas(size, size);
+      const ctx = canvas.getContext("2d");
+      const data = this.data;
+      if (!data) return canvas;
+      const x0 = tx * T, y0 = ty * T, x1 = x0 + T, y1 = y0 + T;
+      ctx.setTransform(size / T, 0, 0, -size / T, -x0 * size / T, y1 * size / T);
+      const hits = (bbox, i, pad2) => bbox[i * 4] <= x1 + pad2 && bbox[i * 4 + 2] >= x0 - pad2 && bbox[i * 4 + 1] <= y1 + pad2 && bbox[i * 4 + 3] >= y0 - pad2;
+      const fillPolys = (layer, colour) => {
+        ctx.fillStyle = colour;
+        ctx.beginPath();
+        const n2 = layer.polyRing.length - 1;
+        for (let i = 0; i < n2; i++) {
+          if (!hits(layer.bbox, i, 0)) continue;
+          for (let r = layer.polyRing[i]; r < layer.polyRing[i + 1]; r++) {
+            const a = layer.ringStart[r], b = layer.ringStart[r + 1];
+            if (b - a < 3) continue;
+            ctx.moveTo(layer.coords[a * 2], layer.coords[a * 2 + 1]);
+            for (let k = a + 1; k < b; k++) ctx.lineTo(layer.coords[k * 2], layer.coords[k * 2 + 1]);
+            ctx.closePath();
+          }
+        }
+        ctx.fill("evenodd");
+      };
+      fillPolys(data.parks, RADAR_COLORS.park);
+      fillPolys(data.water, RADAR_COLORS.water);
+      const streets = data.streets;
+      const n = streets.cls.length;
+      const pad = 6;
+      const inTile = CLASS_ORDER.map(() => []);
+      for (let i = 0; i < n; i++) {
+        const cls = streets.cls[i];
+        if (cls >= PATH_CLASS || !hits(streets.bbox, i, pad)) continue;
+        inTile[CLASS_ORDER.indexOf(cls)].push(i);
+      }
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      const stroke = (list, width, colour) => {
+        if (!list.length) return;
+        ctx.strokeStyle = colour;
+        ctx.lineWidth = width / (size / T);
+        ctx.beginPath();
+        for (const i of list) {
+          const a = streets.start[i], b = streets.start[i + 1];
+          ctx.moveTo(streets.coords[a * 2], streets.coords[a * 2 + 1]);
+          for (let k = a + 1; k < b; k++) ctx.lineTo(streets.coords[k * 2], streets.coords[k * 2 + 1]);
+        }
+        ctx.stroke();
+      };
+      const dpr = this.ppm / this.cssPpm;
+      const roads = inTile.slice(1);
+      roads.forEach((list, k) => stroke(list, (CLASS_WIDTH[CLASS_ORDER[k + 1]] + 1.4) * dpr, RADAR_COLORS.streetCasing));
+      stroke(inTile[0], CLASS_WIDTH[5] * dpr, RADAR_COLORS.cycle);
+      roads.forEach((list, k) => {
+        const cls = CLASS_ORDER[k + 1];
+        stroke(list, CLASS_WIDTH[cls] * dpr, cls <= 1 ? RADAR_COLORS.major : RADAR_COLORS.street);
+      });
+      this.stats.tilesRendered++;
+      return canvas;
+    }
+    /** CSS px per metre at the sharpest (smallest) radius. */
+    cssPpm = 0;
+    ensureScale(cssPpm, dpr) {
+      const ppm = cssPpm * dpr;
+      if (Math.abs(ppm - this.ppm) / Math.max(ppm, 1e-6) < 0.01) return;
+      this.ppm = ppm;
+      this.cssPpm = cssPpm;
+      this.tiles.clear();
+      this.sheet = null;
+    }
+    /** Make the tiles in range; returns whether all of them exist. */
+    ensureTiles(range, at) {
+      if (!this.data) return false;
+      const missing = [];
+      for (let ty = range.y0; ty <= range.y1; ty++) for (let tx = range.x0; tx <= range.x1; tx++) {
+        const key = `${tx},${ty}`;
+        const tile = this.tiles.get(key);
+        if (tile) {
+          this.tiles.delete(key);
+          this.tiles.set(key, tile);
+          continue;
+        }
+        const cx = (tx + 0.5) * RADAR_TILE_M - at[0], cy = (ty + 0.5) * RADAR_TILE_M - at[1];
+        missing.push([tx, ty, cx * cx + cy * cy]);
+      }
+      if (!missing.length) return true;
+      missing.sort((a, b) => a[2] - b[2]);
+      const started = performance.now();
+      for (const [tx, ty] of missing) {
+        this.tiles.set(`${tx},${ty}`, this.renderTile(tx, ty));
+        if (performance.now() - started > TILE_BUDGET_MS) break;
+      }
+      while (this.tiles.size > TILE_CACHE) this.tiles.delete(this.tiles.keys().next().value);
+      return missing.every(([tx, ty]) => this.tiles.has(`${tx},${ty}`));
+    }
+    ensureSheet(range, complete, grew) {
+      const s = this.sheet;
+      if (s && s.x0 === range.x0 && s.y0 === range.y0 && s.x1 === range.x1 && s.y1 === range.y1 && (s.complete || !grew)) return;
+      const size = Math.ceil(RADAR_TILE_M * this.ppm);
+      const w = (range.x1 - range.x0 + 1) * size, h = (range.y1 - range.y0 + 1) * size;
+      const canvas = s && s.canvas.width === w && s.canvas.height === h ? s.canvas : makeCanvas(w, h);
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      for (let ty = range.y0; ty <= range.y1; ty++) for (let tx = range.x0; tx <= range.x1; tx++) {
+        const tile = this.tiles.get(`${tx},${ty}`);
+        if (tile) ctx.drawImage(tile, (tx - range.x0) * size, (range.y1 - ty) * size);
+      }
+      this.sheet = { canvas, ...range, complete };
+    }
+    /**
+     * Draw the radar into `rect` (CSS px of the HUD canvas; the caller's
+     * transform carries the device pixel ratio). The rect's shorter side is the
+     * diameter; the radar is centred in it.
+     */
+    draw(ctx, rect, view, minRadiusM) {
+      const started = performance.now();
+      const dpr = ctx.getTransform().a || 1;
+      const diameter = Math.min(rect.width, rect.height);
+      const R = diameter / 2;
+      const cx = rect.x + rect.width / 2, cy = rect.y + rect.height / 2;
+      const inner = R - 3;
+      const scale = inner / view.radiusM;
+      this.ensureScale(inner / minRadiusM, dpr);
+      ctx.save();
+      ctx.shadowColor = "rgba(31,28,23,0.22)";
+      ctx.shadowBlur = 14;
+      ctx.shadowOffsetY = 3;
+      ctx.fillStyle = RADAR_COLORS.rim;
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowColor = "transparent";
+      ctx.strokeStyle = RADAR_COLORS.rimLine;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, inner, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.fillStyle = RADAR_COLORS.land;
+      ctx.fillRect(cx - inner, cy - inner, inner * 2, inner * 2);
+      if (this.data) {
+        const range = tileRange(view.at, view.radiusM + 4);
+        const before = this.tiles.size;
+        const complete = this.ensureTiles(range, view.at);
+        this.ensureSheet(range, complete, this.tiles.size !== before);
+        const s = this.sheet;
+        const tilePx = Math.ceil(RADAR_TILE_M * this.ppm);
+        const k2 = scale * RADAR_TILE_M / tilePx;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(-view.rotation);
+        ctx.imageSmoothingEnabled = true;
+        ctx.drawImage(
+          s.canvas,
+          scale * (s.x0 * RADAR_TILE_M - view.at[0]),
+          scale * (view.at[1] - (s.y1 + 1) * RADAR_TILE_M),
+          s.canvas.width * k2,
+          s.canvas.height * k2
+        );
+        ctx.restore();
+      }
+      const route = view.route;
+      if (route && route.length >= 4) {
+        const reach = view.radiusM * 1.5;
+        const pathOf = (from, to) => {
+          ctx.beginPath();
+          let pen = false;
+          for (let i = from; i < to; i++) {
+            const x = route[i * 2], y = route[i * 2 + 1];
+            if (Math.abs(x - view.at[0]) > reach || Math.abs(y - view.at[1]) > reach) {
+              pen = false;
+              continue;
+            }
+            const o = radarOffset([x - view.at[0], y - view.at[1]], view.rotation, scale);
+            if (pen) ctx.lineTo(cx + o[0], cy + o[1]);
+            else ctx.moveTo(cx + o[0], cy + o[1]);
+            pen = true;
+          }
+        };
+        const n = route.length / 2;
+        const split = Math.max(0, Math.min(n - 1, view.routeIndex));
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        if (split > 0) {
+          pathOf(0, split + 1);
+          ctx.strokeStyle = RADAR_COLORS.routePassed;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        }
+        pathOf(split, n);
+        ctx.strokeStyle = RADAR_COLORS.routeCasing;
+        ctx.lineWidth = 6.5;
+        ctx.stroke();
+        ctx.strokeStyle = RADAR_COLORS.route;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+      }
+      ctx.restore();
+      ctx.save();
+      const north = radarOffset([0, 1], view.rotation, 1);
+      ctx.fillStyle = "rgba(31,28,23,0.72)";
+      ctx.font = `700 ${diameter < 120 ? 8 : 9}px system-ui, -apple-system, "Segoe UI", sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      const nr = R - (diameter < 120 ? 7 : 8);
+      ctx.fillStyle = RADAR_COLORS.rim;
+      ctx.beginPath();
+      ctx.arc(cx + north[0] * nr, cy + north[1] * nr, diameter < 120 ? 6 : 7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "rgba(31,28,23,0.8)";
+      ctx.fillText("N", cx + north[0] * nr, cy + north[1] * nr + 0.5);
+      if (view.destination) {
+        const o = radarOffset([view.destination[0] - view.at[0], view.destination[1] - view.at[1]], view.rotation, scale);
+        const pinRim = inner - 9;
+        const placed = clampToRim(o, pinRim);
+        ctx.translate(cx + placed.at[0], cy + placed.at[1]);
+        ctx.fillStyle = HIGHLIGHT_CORAL;
+        ctx.strokeStyle = "#fbf8f2";
+        ctx.lineWidth = 2;
+        if (placed.clamped) {
+          ctx.rotate(placed.angle);
+          ctx.beginPath();
+          ctx.moveTo(8, 0);
+          ctx.lineTo(-5, -6.5);
+          ctx.lineTo(-2.5, 0);
+          ctx.lineTo(-5, 6.5);
+          ctx.closePath();
+          ctx.stroke();
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, 5.5, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.fill();
+          ctx.fillStyle = "#071E2B";
+          ctx.beginPath();
+          ctx.arc(0, 0, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.restore();
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(view.angle - view.rotation + Math.PI / 2);
+      const k = diameter < 120 ? 0.8 : 1;
+      ctx.fillStyle = RADAR_COLORS.rider;
+      ctx.strokeStyle = "#fbf8f2";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, -8 * k);
+      ctx.lineTo(6 * k, 6.5 * k);
+      ctx.lineTo(0, 3.5 * k);
+      ctx.lineTo(-6 * k, 6.5 * k);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+      ctx.restore();
+      const ms = performance.now() - started;
+      this.stats.frames++;
+      this.stats.drawMs += ms;
+      if (ms > this.stats.maxMs) this.stats.maxMs = ms;
+    }
+  };
+
+  // src/canalRecall/game/utilityTuck.ts
+  var UTILITY_STATES = { MENU: 0, MAP_SELECT: 1, LOADING: 2, RACING: 4, FINISHED: 5, PAUSED: 6 };
+  function utilityVisibility({ state, utilityOpen }) {
+    if (state === UTILITY_STATES.FINISHED || state === UTILITY_STATES.LOADING) return "none";
+    if (utilityOpen) return "shown";
+    if (state === UTILITY_STATES.RACING) return "tuckable";
+    return "shown";
+  }
+  function revealOnEnter(enteringTuckable, introRunning) {
+    return enteringTuckable && !introRunning;
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#1f1c17";
   var MUTED = "#5f584d";
@@ -48173,6 +48735,7 @@
   var COPPER = "#c9844a";
   var RULE = "rgba(31,28,23,0.16)";
   var UTILITY_REVEAL_MS = 3e3;
+  var RADAR_OVERVIEW_URL = "../data/extracts/amsterdam/own-map-v1/overview.json.gz";
   var STEERING_KEYS = /* @__PURE__ */ new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "a", "s", "d", "W", "A", "S", "D", " ", "Shift"]);
   var GamePresentationRuntime = class {
     /** Return focus to the canvas after a card action so keyboard driving resumes. */
@@ -48623,12 +49186,14 @@
       this._syncViewportSize();
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+      this.hud.beginFrame?.();
       const utility = document.getElementById("utility-buttons");
       if (utility) {
-        utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? "none" : "";
-        const riding = this.state === GameState.RACING && !this._utilityOpen;
+        const visibility = utilityVisibility({ state: this.state, utilityOpen: !!this._utilityOpen });
+        utility.style.display = visibility === "none" ? "none" : "";
+        const riding = visibility === "tuckable";
         const now = performance.now();
-        if (riding && !this._wasRiding) this._utilityRevealUntil = now + UTILITY_REVEAL_MS;
+        if (riding && !this._wasRiding) this._utilityRevealUntil = revealOnEnter(true, !!this._intro) ? now + UTILITY_REVEAL_MS : 0;
         this._wasRiding = riding;
         const box = utility.getBoundingClientRect();
         const pointer = this._utilityPointer;
@@ -48636,7 +49201,7 @@
           this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
         }
         const revealed = !riding || now < (this._utilityRevealUntil || 0);
-        utility.classList.toggle("tucked-all", this._hudRects().mode !== "compact");
+        utility.classList.toggle("tucked-all", true);
         utility.classList.toggle("tucked", !revealed);
       }
       if (this.state === GameState.MENU) {
@@ -48741,7 +49306,7 @@
       const teaching = this._teachingGate();
       const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
       if (byFerry) this._renderFerryNotice(player, showMiniMap);
-      const roadName = this.track.getRoadName(player.x, player.y, player.angle);
+      const roadName = isTransit(this.travelMode) ? this.track.getRoadName(player.x, player.y, player.angle) : this._routeQuestionRoadName(player.angle);
       let visibleRouteName = "";
       let routeAnswerHidden = false;
       if (isTransit(this.travelMode) && window.CanalRecallTransit?.transitPlaqueRouteName) {
@@ -48757,7 +49322,7 @@
         visibleRouteName = plaque.routeName;
         routeAnswerHidden = plaque.answerHidden;
       } else {
-        routeAnswerHidden = hudWithholdsRouteName({
+        const plaque = routePlaqueName({
           roadName: roadName || "",
           currentName: this.quizCurrentName || "",
           promptName: this.quizPromptName || "",
@@ -48765,7 +49330,8 @@
           revealed: !!roadName && this.revealedNames.has(roadName),
           learned: !!roadName && this.learnedNames.has(roadName)
         });
-        visibleRouteName = routeAnswerHidden ? "" : roadName || "";
+        visibleRouteName = plaque.routeName;
+        routeAnswerHidden = plaque.answerHidden;
       }
       const { feedback, restrictionNote } = this._plaqueNotes();
       const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
@@ -48807,7 +49373,7 @@
         );
       }
       this.hud.drawCompass(ctx, this.camera);
-      if (showMiniMap) this.hud.drawCityOverview(ctx, this);
+      if (showMiniMap) this._renderMinimap();
       this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
       this._renderLandmarkNotice();
       this._renderNeighborhoodNotice();
@@ -48859,6 +49425,7 @@
         })(),
         neighborhoodVisible: !!this.currentNeighborhood,
         minimapVisible,
+        minimapShape: this._radarAvailable() ? "radar" : "city",
         zoomVisible: this._zoomBadgeTimer > 0,
         controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
       });
@@ -48912,6 +49479,77 @@
       ctx.restore();
       this._recenterBtnBounds = { x, y, w: width, h: height };
     }
+    // ---- Minimap ----
+    /** The radar needs the own-map extract, which exists for Amsterdam only;
+     *  the M key's whole-city sheet is the other choice. */
+    _radarAvailable() {
+      return this.minimapMode !== "city" && (this.cityId || "amsterdam") === "amsterdam";
+    }
+    /** M / Tab: radar → whole city → off → radar. */
+    _cycleMinimap() {
+      if (!this.showMiniMap) {
+        this.showMiniMap = true;
+        this.minimapMode = "radar";
+      } else if (this.minimapMode !== "city") this.minimapMode = "city";
+      else {
+        this.showMiniMap = false;
+        this.minimapMode = "radar";
+      }
+    }
+    _renderMinimap() {
+      if (this._radarAvailable()) this._renderRadar();
+      else this.hud.drawCityOverview(this.ctx, this);
+      const rect = this._hudRects().minimap;
+      if (rect) this.hud.noteCard?.(rect);
+    }
+    /** The riding radar: centred on the rider, turning with the main view. */
+    _renderRadar() {
+      const player = this.player;
+      const loader = this.osmLoader;
+      if (!player || !this.track || loader?._lastCenterLat == null || loader._lastCenterLng == null) return;
+      const frame = loader;
+      const radar = this._radar ||= new RadarMap();
+      void radar.load(RADAR_OVERVIEW_URL);
+      const local = (x, y) => {
+        const [lng, lat] = gameWorldToLngLat(x, y, frame, PIXELS_PER_METER);
+        return radarLocal(lng, lat);
+      };
+      const layout = this._hudRects();
+      const range = RADAR_RADIUS_M[layout.mode === "compact" ? "compact" : "desktop"];
+      const maxSpeed = player.maxSpeed;
+      const speedRatio = maxSpeed ? Math.abs(player.speed) / maxSpeed : 0;
+      const target = radarRadiusForSpeed(speedRatio, range);
+      const now = performance.now();
+      const dt = Math.min(0.1, Math.max(0, (now - (this._radarAt ?? now)) / 1e3));
+      this._radarAt = now;
+      this._radarRadiusM = this._radarRadiusM == null ? target : this._radarRadiusM + (target - this._radarRadiusM) * Math.min(1, dt * 1.5);
+      const source = this._liveRoutePath || this.routePath;
+      let cached = this._radarRoute;
+      if (source && (!cached || cached.source !== source || cached.offsetX !== loader._lastOffsetX || cached.offsetY !== loader._lastOffsetY)) {
+        const flat = new Float32Array(source.length * 2);
+        source.forEach((p, i) => {
+          const [x, y] = local(p.x, p.y);
+          flat[i * 2] = x;
+          flat[i * 2 + 1] = y;
+        });
+        cached = this._radarRoute = { source, offsetX: loader._lastOffsetX, offsetY: loader._lastOffsetY, local: flat };
+        this._radarRouteIndex = 0;
+      }
+      const at = local(player.x, player.y);
+      const route = this.routeOptions?.line !== false && source && cached ? cached.local : null;
+      if (route) this._radarRouteIndex = nearestRouteIndex(route, at, this._radarRouteIndex ?? 0);
+      const finish = this.track.finishPoint;
+      radar.draw(this.ctx, layout.minimap, {
+        at,
+        rotation: this.camera.rotation || 0,
+        angle: player.angle,
+        radiusM: this._radarRadiusM,
+        destination: finish ? local(finish.x, finish.y) : null,
+        route,
+        routeIndex: this._radarRouteIndex ?? 0
+      }, range[0]);
+    }
+    _radarAt;
     /** Only while the player is settling in. It used to sit permanently on top
      *  of the recall panel. */
     _renderControlsHint() {
@@ -49792,6 +50430,7 @@
       return explorationGain(before, after);
     }
   };
+  window.CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
   window.CanalRecallGameModules = window.CanalRecallGameModules || [];
   window.CanalRecallGameModules.push(GamePresentationRuntime);
 })();

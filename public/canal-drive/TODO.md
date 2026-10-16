@@ -742,14 +742,23 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   road bridge ways still without a surface (`audit-bridge-surfaces.ts
   --all`; 137 before way decks); cap that count in a check.
 
-- **Bridge decks after the carried-street fix (2026-10-16, HISTORY "A
-  bridge deck is never the answer")**: the street plaque
-  (`presentationRuntime.ts` ~709) still reads the raw way name, so it stays
-  blank on a deck that carries a street; pass the carried name through. 85
-  transparent bridge names outside `bridges.json` (Noordsche Compagniebrug
-  among them) are now taught by no question; decide whether some join the
-  crossing quiz. Culvert names without a bridge suffix (Bullebak, Kanaalpost)
-  are not treated as decks.
+- **Bridge names and cards after the askable-bridges pass (2026-10-16,
+  HISTORY "Every named bridge is a bridge question", "Cards for the new
+  bridges")**: OSM spellings stay as answer text ("Katten brug", "Hilletjes
+  Brug"); fix in OSM or add an alias match. Seven new bridges have no sourced
+  card (Godenbrug, Kaassluis, Kleine Brouwerssluis, Melkwegbrug,
+  Vingboomsbrug, Zandbrug, Zwanenburger fiets brug): most sit 1–12 m from a
+  register bridge with another official name and need a source tying the
+  names. Moddermolenbrug's card is the Theo Boschbrug article (Wikidata alias:
+  the OSM name is the old one); Uiverbrug's origin says aluminium, the
+  register reinforced concrete. IJburg Baltic-port bridge names (Kolbergbrug,
+  Pernaubrug, Rostockbrug …) may be shifted in OSM; compare with the
+  orthophoto. trn ledes keep slips ("structural work of art" for bouwkundig
+  kunstwerk, a garbled Zaandijkspoorbrug lede); an edit pass is due.
+  **Load time:** `bridges.json` is a ride-start file and grew 871 → ~1,050 KB
+  (+45 KB gzipped); `wikipediaSourceText` (~300 KB) is read by nothing at
+  runtime, so strip it from the shipped file. Railway flags were not rebuilt
+  (needs Overpass). The 8 m cutoff covers the distance settle only.
 
 - **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
   cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
@@ -764,8 +773,6 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   sources (kunstwacht.nl and venue sites have material); 78 empty cards don't
   open; `'t Brinkie`'s wikipediaUrl points at a missing nl article; kit model
   `winkler-prins-monument` duplicates `extract_landmarks_1897367071`'s pin.
-  Product question for the user: a folded drive-by card shows only its title
-  (by design, to keep the corridor clear); keep, or keep one line.
 - **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
   auto-placed runs installed"): 69 of 335 pands installed. Next: types for
   Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
@@ -798,6 +805,51 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   Mosplein roundabout centre) are not wegdeel and draw as land/paving;
   ~12,000 m² of berms and tree pits the bands used to pave, in seven dense
   cells.
+- **Pop-in, next** (2026-10-16, HISTORY "Pop-in: streaming look-ahead"):
+  the intro descent (overview → city ground blend and landmark LOD swaps,
+  ~28k px/s, the largest source); MapLibre basemap tiles are not steered by
+  the look-ahead; landmark models have no look-ahead padding; the basemap
+  handover is a one-frame swap; a lingering detail tile drops to coarse in
+  one frame; a route-following look-ahead would load fewer tiles than the
+  heading; the metric can't judge long frames or sharp turns, and 4× CPU
+  throttle makes every frame a hitch.
+- **Houseboat follow-ups** (2026-10-16, HISTORY "Houseboats: arks, barges
+  and hullboxes"): hullbox roofs are often white/cream on the orthophoto
+  (give hullbox a measured roof palette); barrel-roof and terrace variants;
+  ~5 % of OSM outlines are stale (empty berth, or an ark where a ship was
+  traced): a BGT/orthophoto berth check could hide or replace them; label
+  the Amstel and outer-canal traced outlines to extend the overrides.
+  Pre-existing: `scripts/check-signature-houseboat-suppression.ts` fails
+  (`sea-palace-footprints.json` has no `houseboatRepresentation`).
+- **Radar follow-ups** (2026-10-16, HISTORY "HUD: a riding radar"): iPhone
+  at 4× throttle unmeasured; the overview extract costs ~1.6 MB once per
+  session (a radar-only slice would shrink it); the label plan doesn't avoid
+  the overview flight's YOU marker; on phones a map tap shows the cluster
+  over the bottom-right quiz answer for 3 s; `osm-loader.js` `_loadTile`
+  (CARTO) is dead code.
+- **Two canal-recall.spec tests fail on main** (2026-10-16, found merging
+  the HUD radar; fail before it too at 43b3999e9): "an actual high-speed car
+  cannot escape the mapped road corridor" (21–23 m off the corridor, limit
+  12.5) and "anonymous year-only buildings clear selection without opening a
+  card" (desktop and iPhone). Lane `lane/canal-spec-fails-20261016` on them.
+- **Bridge ends and spans, after the Berensluis** (2026-10-16): ~2,900
+  deck-top misses remain at other belt bridge ends (BRU0140 Jean Dulieubrug
+  52; BRU0066's north pavement stops 2 m short;
+  `scripts/own-ground/audit-deck-ends.ts --list`); land strips mid-span
+  under 44 decks (19 wider than 6 m: BRU0067, Blauwbrug, Oosterbeerbrug,
+  Hendrick Jacobsz. Staetsbrug; extend `openUnderFootbridges` or open BGT
+  pier gaps; census `probe-midspan-land.ts`); Berensluis piers grey stone,
+  not brick-red (P3).
+- **Large tier roof materials** (2026-10-16, HISTORY "Entrepotdok roofs"):
+  thin 3DBAG courtyard roofs leave wedge notches (Entrepotdok
+  286/287/316/285); roof material per face from the orthophoto (glazed
+  blue-green faces, solar panels); apply `roof.flat`/`roof.surfaces` to
+  other large recipes whose flat roofs draw as pale gravel. OZV 115-125's
+  hold is its dark measured wall colours, unrelated.
+- **Houseboat cabin colours** (P3, 2026-10-16, HISTORY "Houseboats placed
+  from the orthophoto"): the orthophoto gives roofs only; sample municipal
+  panorama thumbnails (CC BY 4.0) per boat for a sunlit cabin median, and
+  relabel the 91 unseen boats and the 56 hashed ship hulls from panoramas.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
@@ -1416,6 +1468,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **Centraal Station after the 2026-10-16 rebuild (HISTORY "Centraal Station:
+  the Cuypers front…")**: reliefs, tympanum figures and statues are flat
+  silhouettes; tile/mosaic fields and heraldic charges are flat tinctures;
+  leaded tracery is bars; no NS logo; the roof lettering is a 5x7 block font
+  without the tan border; east-wing kneelers and step profiles are straight
+  copings.
 
 - **BAG holes after the 1,601 fills (2026-10-16, HISTORY "BAG pands the tiles
   never drew")**: 1,325 post-2019 pands wait for AHN5 or a newer 3DBAG; the 12

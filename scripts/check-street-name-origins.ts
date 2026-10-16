@@ -1,9 +1,10 @@
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
-  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, refersToItself, withoutCrossReference, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
+  AMSTERDAM_WOONPLAATS_ID, bridgeOriginBySpelling, cleanDescription, indexOrigins, nameGenericOrigin, refersToItself, withoutCrossReference, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
   type BagOpenbareRuimte,
 } from './lib/streetNameOrigins.ts';
+import { bridgeMatchKey } from '../src/canalRecall/bridgeWikidata.ts';
 
 const record = (overrides: Partial<BagOpenbareRuimte>): BagOpenbareRuimte => ({
   identificatie: '0363300000000001', naam: 'Rozengracht', typeOmschrijving: 'Weg',
@@ -271,8 +272,13 @@ assert.equal(repairOriginTranslation('Lid van de Tweede Kamer, later van de Eers
   'Member of the House of Representatives, later of the Senate.', 'the Tweede Kamer stays the House');
 assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut- en klokkengieterij.", "Named after 't Giethuis, the city's gunpowder and bell foundry."),
   "Named after 't Giethuis, the city's cannon and bell foundry.");
+assert.equal(repairOriginTranslation('De Hollandse Iepbrug verwijst naar de vele iepen in de omgeving van deze fietsbrug',
+  'De Hollandse Iepbrug refers to the many oaks in the vicinity of this bicycle bridge'),
+  'De Hollandse Iepbrug refers to the many elms in the vicinity of this bicycle bridge', 'an iep is an elm');
 {
-  const published = JSON.parse(readFileSync('public/data/extracts/amsterdam/street-name-origins.json', 'utf8')) as { origins: Array<{ name: string; en: string }> };
+  // `--directory=` checks a staged extract before it is published.
+  const directory = process.argv.find(argument => argument.startsWith('--directory='))?.slice('--directory='.length) || 'public/data/extracts/amsterdam';
+  const published = JSON.parse(readFileSync(`${directory}/street-name-origins.json`, 'utf8')) as { origins: Array<{ name: string; en: string }> };
   const supplements = JSON.parse(readFileSync('scripts/street-name-origin-supplements.json', 'utf8')) as Array<{ name: string; en: string; sources: string[] }>;
   const supplemented = new Map(supplements.map(entry => [entry.name, entry]));
   const { WITHHELD_ORIGINS } = await import('./lib/streetNameOrigins.ts');
@@ -296,6 +302,12 @@ assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut-
   assert.match(published.origins.find(origin => origin.name === 'Na Druk Gelukbrug')!.en, /after hardship, good fortune/);
   // Regression: the Scharwouderstraat record is the end of the Scharrebiersluis's beer text.
   assert.ok(!published.origins.some(origin => origin.name === 'Scharwouderstraat'));
+  // Regression: the Zaandijkspoorbrug record carries the Zaandijkstraat's former-street text.
+  assert.ok(!published.origins.some(origin => origin.name === 'Zaandijksspoorbrug'));
+  // Regression: the Hoge Sluis is not translated into "High Lock".
+  assert.ok(!published.origins.some(origin => origin.name === 'Hoge Sluis' && /High Lock/.test(origin.en)));
+  // Regression: the register's Vier Windstrekenbrug text names west twice.
+  assert.ok(!published.origins.some(origin => origin.name === 'Vierwindstrekenbrug' && /West, South and West/.test(origin.en)));
   // Regression: the Smallepadsgracht record repeats the Smalschipstraat's boat text.
   assert.ok(!published.origins.some(origin => origin.name === 'Smallepadsgracht'));
   // Regression: the register's whole Trimurtistraat text is "Trimur: onafhankelijkheid".
@@ -306,4 +318,19 @@ assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar 
 assert.equal(repairOriginTranslation('Het IJ was vroeger een zeearm van de Zuiderzee. In 1872 door de IJdijk en de Oranjesluizen afgesloten van de Zuiderzee.',
   'The IJ was formerly a branch of the North Sea. In 1872 closed off from the North Sea by the IJdijk and the Orange Locks.'),
   'The IJ was formerly an arm of the Zuiderzee. In 1872 closed off from the Zuiderzee by the IJdijk and the Oranjesluizen.', 'the IJ was an arm of the Zuiderzee');
+// OSM's bridge spellings find the register's record; street names stay exact.
+{
+  const bridgeIndex = indexOrigins(originsFromRecords([
+    record({ identificatie: '20', naam: 'Kattenbrug', typeOmschrijving: 'Kunstwerk', beschrijvingNaam: 'Naar de katten.' }),
+    record({ identificatie: '21', naam: 'De Hollandse Iepbrug', typeOmschrijving: 'Kunstwerk', beschrijvingNaam: 'Naar de iepen.' }),
+    record({ identificatie: '22', naam: 'Jaap Kunstbrug', typeOmschrijving: 'Kunstwerk', beschrijvingNaam: 'Naar Jaap Kunst.' }),
+    record({ identificatie: '23', naam: 'Hilletjesbrug', typeOmschrijving: 'Kunstwerk', beschrijvingNaam: 'Naar Hilletje.' }),
+    record({ identificatie: '24', naam: 'Hilletjes-brug', typeOmschrijving: 'Kunstwerk', beschrijvingNaam: 'Een andere tekst.' }),
+  ]));
+  assert.equal(bridgeOriginBySpelling(bridgeIndex, 'Katten brug', bridgeMatchKey)?.bagId, '20');
+  assert.equal(bridgeOriginBySpelling(bridgeIndex, 'Hollandse Iepbrug', bridgeMatchKey)?.bagId, '21');
+  assert.equal(bridgeOriginBySpelling(bridgeIndex, 'Kunstbrug', bridgeMatchKey), null, 'Kunstbrug is not the Jaap Kunstbrug');
+  assert.equal(bridgeOriginBySpelling(bridgeIndex, 'Hilletjes Brug', bridgeMatchKey), null, 'two records under one spelling are ambiguous');
+  assert.equal(bridgeOriginBySpelling(bridgeIndex, 'Hilletjesbrug', bridgeMatchKey)?.bagId, '23', 'an exact name still wins');
+}
 process.stdout.write('Street-name origin checks passed\n');

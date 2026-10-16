@@ -1,7 +1,9 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { existsSync } from 'node:fs';
 import { FeatureCategory, FeatureType, StreetFeature } from '../src/types.ts';
 import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors.ts';
+import { supplementBridges, type RoutingWay } from '../src/canalRecall/askableBridges.ts';
 import { renamedPoi, unusedPoiRenames } from '../src/canalRecall/poiRenames.ts';
 import { isBikeRoutingHighway, isBicycleRestricted } from '../src/canalRecall/routing/bikeAccess.ts';
 import { findMunicipality, hasAreaGeometry } from './lib/municipality.ts';
@@ -573,6 +575,11 @@ const publish = (paths: [number, number][][], keepJunctions: boolean) => paths
 
 const partitions: Record<string, { file: string; count: number; availableCount: number; availableLinkedCount: number; bytes: number; linkedCount: number }> = {};
 const selectedAll: StreetFeature[] = [];
+// The published routing ways, kept for the bridge partition: every routed,
+// bridge-named deck is askable by the bridge question, not only the top 300
+// by prominence (askableBridges.ts; `build-askable-bridges.ts` applies the
+// same rule to an already published extract).
+let publishedRouting: RoutingWay[] = [];
 for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'landmarks'] as FeatureCategory[]) {
   const available = [...grouped.values()].filter((entry) => entry.category === category).sort((a, b) => b.score - a.score);
   const candidates = category === 'streets'
@@ -607,13 +614,27 @@ for (const category of ['water', 'streets', 'bridges', 'squares', 'parks', 'land
       return entry;
     });
     await writeFile(path.join(outputDirectory, 'streets-routing.json'), JSON.stringify(routing));
+    publishedRouting = routing as unknown as RoutingWay[];
   }
-  const selected = candidates.map(({ feature, paths, score }) => {
+  const selected: Array<StreetFeature & { paths?: unknown }> = candidates.map(({ feature, paths, score }) => {
     const lines = publish(paths, navigable);
     return {
       ...feature, path: lines[0], paths: lines.length > 1 ? lines : undefined, prominenceScore: score,
     };
   });
+  if (category === 'bridges') {
+    // Same official spellings as build-askable-bridges.ts, so the two agree.
+    const registerPath = path.resolve('scripts/data/amsterdam-bridge-register.json');
+    const officialNames = new Set(cityId === 'amsterdam' && existsSync(registerPath)
+      ? (JSON.parse(await readFile(registerPath, 'utf8')) as { bridges: Array<[string, string]> }).bridges
+        .map((row) => (row[1] || '').trim()).filter(Boolean)
+      : []);
+    const askable = supplementBridges(selected as Array<{ id: string; name: string; center?: [number, number] }>,
+      publishedRouting, cityId, { officialNames });
+    selected.push(...(askable.added as unknown as StreetFeature[]));
+    process.stdout.write(`Bridges: ${askable.added.length} routed decks added for the bridge question, `
+      + `${askable.excluded.length} excluded (${askable.excluded.map(({ name, reason }) => `${name}: ${reason}`).join(', ')})\n`);
+  }
   // `available` is sorted by score, so slicing the first twelve alternatives
   // handed every feature in a category the same dozen famous names: 300
   // bridges shared a 13-name distractor pool, and the right answer was the

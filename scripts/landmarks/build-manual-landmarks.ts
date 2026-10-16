@@ -210,6 +210,7 @@ import {buildMontelbaanstoren} from './montelbaanstoren-builder';
 import {buildMunttoren} from './munttoren-builder';
 import {buildNationalMonument} from './national-monument-builder';
 import {buildCentraalComplex} from './centraal-complex-builder';
+import {buildCentraalCuypers} from './centraal-cuypers-builder';
 import {buildBeursBerlage} from './beurs-berlage-builder';
 import {buildAmstaDePoort} from './amsta-de-poort-builder';
 import {buildAmstelTowerLandmark} from './amstel-towers-builders';
@@ -358,14 +359,6 @@ Object.assign(letters,{
  '8':['01110','10001','10001','01110','10001','10001','01110'],'9':['01110','10001','10001','01111','00001','00001','01110'],
 });
 function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
-function station(){box(0,0,0,244,1,31,'stone');box(0,1,0,244,15.7,29,'brick');gableRoof(0,16.7,0,244,29,6.3,'slate');for(let z of [-14.65,14.65]){for(let y of [1,6.6,12.5,16])box(0,y,z,244,.4,.6,'stone');for(let x=-117;x<=117;x+=5.85){for(let y of [1.9,8.1])window(x,y,z>0?14.72:-14.72,2.5,y<3?3.7:3.4,z>0?1:-1);box(x-2.8,1,z,.5,15.7,.65,'stone');}}
- // Central entrance pavilion, paired clock / wind-dial towers, steep roof and crest.
- box(0,1,14,33,19,5,'brick');prism(0,20,14,33,8,11,'brick');prism(0,20.7,14.275,29,7.95,9.5,'stone');prism(0,21.3,14.525,26,8.05,8,'brick'); /* stepped gable fronts; the inner two end 0.3/0.5 m inside the outer one at the back (their back faces were flush/4.5 cm behind it) */for(let x of [-10,0,10])window(x,1.5,16.6,5.5,7);for(let x of [-9,-3,3,9])window(x,11.3,16.6,3.7,5.4);box(0,19,16.8,31,.8,.8,'stone');box(0,27.5,18.75,3,2,.4,'gold');
- for(let x of [-23,23]){box(x,0,11,10,26,10,'brick');for(let y of [6.6,17,23.5,25.8])box(x,y,11,10.7,.55,10.7,'stone');window(x,8.5,16.1,3.2,6.2);clock(x,21,16.35,x<0);hip(x,26.5,11,11,11,8,'slate');box(x,34.5,11,.2,2,.2,'gold');for(let dx of [-4.6,4.6]){box(x+dx,24,15.7,.9,4,.9,'brick');hip(x+dx,28,15.7,1.4,1.4,2.8,'slate');}}
- for(let x of [-105,-63,63,105]){box(x,1,0,14,17,31,'brick');prism(x,18,0,14,31,8,'slate');prism(x,18,15.75,14,.5,8,'brick');/* gable starts at the slate roof's end (it overlapped its slopes by 30 cm) */prism(x,18.4,16.05,12,.4,6.8,'stone');prism(x,18.9,16.32,10,.25,5.3,'brick');window(x,19.4,16.6,2.3,3.1);for(let dx of [-6.3,6.3]){box(x+dx,18,15.9,.65,6,.7,'stone');hip(x+dx,24,15.9,1,1,2,'slate');}}
- sign('AMSTERDAM CENTRAAL',0,9.4,17.05,.22,'stone');
- for(let x of [-120,120]){box(x,1,0,8,22,31,'brick');hip(x,23,0,9,32,8,'slate');}
-}
 function music(){box(0,0,0,70,1.1,43,'stone');box(0,1.1,0,66,18.7,40,'glass');box(8,1.1,-3,35,17.5,28,'white'); // auditorium visible through foyer
  for(let x=-32;x<=32;x+=4){box(x,1.1,20.2,.19,18.7,.3,'frame');box(x,1.1,-20.2,.19,18.7,.3,'frame');}for(let z=-18;z<=18;z+=4){for(let x of [-33.2,33.2])box(x,1.1,z,.3,18.7,.19,'frame');}for(let y of [6,11,16]){box(0,y,20.25,66,.2,.3,'frame');box(0,y,-20.25,66,.2,.3,'frame');for(let x of [-33.25,33.25])box(x,y,0,.3,.2,40,'frame');}
  box(0,20,0,77,1.5,48,'slate');box(0,19.7,0,77,.35,48,'white');box(-13,4,21,21,1,7,'red'); // foyer connector
@@ -388,8 +381,8 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 // Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
 const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5],['stadhuis',6],['straat-museum',8],['hilton-amsterdam',5],['max-euwe-centrum',4]]); // id -> largest assembly (m) that may be dropped
 const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3],['max-euwe-centrum',.2]]); // default .35
-const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}],['valley',{dropBuried:{minHidden:.95,maxExtent:14}}],['centraal-station',{clearMargin:.08}] /* bays buried in the wing pavilions come out 8 cm clear of the pavilion fronts, not 3 (2.3 cm read as a z-fight) */]); // per-model snapOpenings overrides
-const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','hotel-de-l-europe','max-euwe-centrum','academie-theater-dans','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
+const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}],['valley',{dropBuried:{minHidden:.95,maxExtent:14}}]]); // per-model snapOpenings overrides
+const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','hotel-de-l-europe','max-euwe-centrum','academie-theater-dans','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id)||process.env.SNAP_SKIP===id)return;
  const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
@@ -502,7 +495,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   // Signature-inventory gate (landmark-inventory-gate.ts): a landmark first exported after 2026-10-13 needs a resolved scripts/landmarks/<id>-inventory.json.
   assertInventoryForExport(id);
   parts=[];
-  if(id==='centraal-station'){station();buildCentraalComplex(helpers);}
+  // The Cuypersgebouw and its east wing (centraal-cuypers-builder.ts, 2026-10-16; it replaced a parametric box whose front stood
+  // 11.5 m out on the Stationsplein) and the four train/bus roofs.
+  if(id==='centraal-station'){buildCentraalCuypers(helpers);buildCentraalComplex(helpers);}
   else if(id==='muziekgebouw-bimhuis')music();
   else if(id.startsWith('olvg-'))hospital(id);
   else {

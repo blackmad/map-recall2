@@ -6,7 +6,7 @@
 // width. The answer must be a street surface (or paint/kerb/rail on it),
 // never the land's paving, a square, or nothing.
 
-import { layersAt, type BuiltCell, type GroundLayer } from './groundCell.js';
+import { compareHits, layersAt, type BuiltCell, type GroundLayer } from './groundCell.js';
 import { pointAt, stations } from './drape.js';
 import type { LocalWay } from './streets.js';
 import type { RoadIndex } from './roadSurfaces.js';
@@ -366,4 +366,49 @@ export function deckSlabOnLand(cells: readonly BuiltCell[], deck: { profile: { x
     if (!hits.some(h => h.layer === 'water')) slab++;
   }
   return { slabM2: slab, deckM2 };
+}
+
+/**
+ * A measured deck's ends read as road (user 2026-10-16, a Prinsengracht bridge: "small grey slivers/wedges sticking
+ * out at both ends where the decks meet the quay"). Over the water between the bank and the bridge's surveyed start
+ * the street mask cut the survey's ground polygons (h = 0), so the grey deck top showed as a jagged band across the
+ * road; on the bank the deck top, at the riding surface, poked through the polygons draped a centimetre or two under
+ * it. Probes along the deck at `offsets` (fractions of the road's half-width) every `stepM` from `beforeM` outside each
+ * span end to `intoM` inside it: the topmost surface must not be the grey deck top, water or nothing (DECK_END_FORBID;
+ * a bollard, a kerb or a quay coping there is street furniture or the survey's own edge, counted apart).
+ */
+export const DECK_END_FORBID: ReadonlySet<string> = new Set(['deckTop', 'water', 'none']);
+/** `maxMisses` of the 378 probes (measured 2026-10-16); `pinMin`: without the fix at least this many (the pin is live). */
+export interface DeckEndRegression { id: string; label: string; at: [number, number]; maxMisses: number; pinMin?: number }
+export const DECK_ENDS: DeckEndRegression[] = [
+  // The user's bridge (screenshots 2026-10-16, houseboats both sides): 1 miss with the fix, 36 without.
+  { id: 'BRU0065', label: 'Berensluis, Prinsengracht × Berenstraat', at: [4.88272, 52.37043], maxMisses: 2, pinMin: 20 },
+  // Its east end's north pavement polygon stops 2 m short of the span end: 8 probes see the deck top there (10 without).
+  { id: 'BRU0066', label: 'Brug 66, Prinsengracht × Runstraat', at: [4.88261, 52.36892], maxMisses: 8 },
+  { id: 'BRU0064', label: 'Reesluis, Prinsengracht × Reestraat', at: [4.8829, 52.37242], maxMisses: 1 },
+  { id: 'BRU0067', label: 'Angenietje Swarthofbrug, Prinsengracht × Leidsegracht', at: [4.88271, 52.36629], maxMisses: 1 },
+];
+type DeckLine = { profile: { x: ArrayLike<number>; y: ArrayLike<number>; s: ArrayLike<number>; halfWidth: ArrayLike<number>; deck: readonly [number, number] } };
+export function deckEndMisses(cells: readonly BuiltCell[], deck: DeckLine, offsets = [-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8], beforeM = 3, intoM = 2, stepM = 0.25): { probes: number; misses: { s: number; t: number; top: string }[] } {
+  const p = deck.profile, n = p.s.length, misses: { s: number; t: number; top: string }[] = [];
+  let probes = 0;
+  const at = (s: number) => {
+    let i = 0;
+    while (i < n - 2 && p.s[i + 1] < s) i++;
+    const f = Math.max(0, Math.min(1, (s - p.s[i]) / (p.s[i + 1] - p.s[i] || 1))), dx = p.x[i + 1] - p.x[i], dy = p.y[i + 1] - p.y[i], l = Math.hypot(dx, dy) || 1;
+    return { x: p.x[i] + dx * f, y: p.y[i] + dy * f, nx: -dy / l, ny: dx / l, hw: p.halfWidth[i] };
+  };
+  for (const [from, to] of [[p.deck[0] - beforeM, p.deck[0] + intoM], [p.deck[1] - intoM, p.deck[1] + beforeM]]) {
+    for (let s = from; s <= to + 1e-6; s += stepM) {
+      const c = at(s);
+      for (const f of offsets) {
+        const x = c.x + c.nx * c.hw * f, y = c.y + c.ny * c.hw * f;
+        const hits = cells.flatMap(cell => layersAt(cell, x, y).hits).filter(h => !h.cut).sort(compareHits);
+        probes++;
+        const top = hits[0]?.layer ?? 'none';
+        if (DECK_END_FORBID.has(top)) misses.push({ s: +s.toFixed(2), t: f, top });
+      }
+    }
+  }
+  return { probes, misses };
 }

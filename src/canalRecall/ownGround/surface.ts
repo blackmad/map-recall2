@@ -134,11 +134,15 @@ export class GroundSurface {
     return Math.min(smoothstep((s - span[0]) / ease[0]), smoothstep((span[1] - s) / ease[1]));
   }
 
-  /** The deck span's footprint as a closed ring (left edge out, right edge back), scene coords. */
-  static footprint(deck: DeckSurface): Vec2[] {
+  /**
+   * The deck span's footprint as a closed ring (left edge out, right edge back), scene coords. `range` (stations) widens
+   * it along the axis, e.g. to the drawn reach onto the banks (decks.ts deckReach).
+   */
+  static footprint(deck: DeckSurface, range?: readonly [number, number]): Vec2[] {
     const p = deck.profile, left: Vec2[] = [], right: Vec2[] = [];
+    const s0 = Math.min(deck.span[0], range?.[0] ?? Infinity), s1 = Math.max(deck.span[1], range?.[1] ?? -Infinity);
     for (let i = 0; i < p.s.length; i++) {
-      if (p.s[i] < deck.span[0] - 0.5 || p.s[i] > deck.span[1] + 0.5) continue;
+      if (p.s[i] < s0 - 0.5 || p.s[i] > s1 + 0.5) continue;
       const a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
       const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
       left.push([p.x[i] + nx * hw, p.y[i] + ny * hw]); right.push([p.x[i] - nx * hw, p.y[i] - ny * hw]);

@@ -12,6 +12,19 @@ export const LOD1_TRIANGLE_RATIO = 0.15;
 export const LOD1_MAX_ERROR = 0.01;
 /** Textures are shrunk to this (never enlarged); lod1 is only seen small. */
 export const LOD1_MAX_TEXTURE_SIZE = 256;
+/**
+ * Per-model lod1 error caps (meshoptimizer's scale, relative to the mesh extent) where the default is too coarse. On
+ * Centraal's 430 m site 0.01 lets vertices move 4.3 m: the 1.4 m brick bands between the east wing's window rows collapsed
+ * onto the window edges and the 119 m wall went see-through (integrator review 2026-10-16). 0.001 (0.43 m) keeps every band
+ * and pier: 42,807 -> 14,278 triangles, 185 kB. (A locked border also kept it solid but stopped at 31k triangles.)
+ */
+export const LOD1_MAX_ERROR_BY_ID: Readonly<Record<string, number>> = {'centraal-station': 0.001};
+
+/** meshoptimizer settings for one model's lod1. */
+export function lod1SimplifyOptions(id: string): {ratio: number; error: number} {
+  return {ratio: LOD1_TRIANGLE_RATIO, error: LOD1_MAX_ERROR_BY_ID[id] ?? LOD1_MAX_ERROR};
+}
+
 /** Models at or under this many triangles are not worth a second level. */
 export const LOD1_MIN_SOURCE_TRIANGLES = 3000;
 

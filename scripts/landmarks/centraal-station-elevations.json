@@ -1,11 +1,95 @@
 {
   "id": "centraal-station",
-  "countedBy": "pending blind count",
+  "source": "Gemeente Amsterdam panoramas (CC BY 4.0) rectified in the model frame, artifacts/centraal-lane/view.ts; plan from BAG 0363100012185598",
+  "countedBy": "centraal lane 2026-10-16, per section of the Stationsplein front (GLB frame: the front faces bearing 180, t = model x)",
   "facades": [
     {
-      "name": "south (Stationsplein side)",
-      "bearing": 182.5,
-      "photo": "artifacts/landmark-lanes/centraal-station/ref-south.jpg"
+      "name": "west main wing (Stationsplein)",
+      "bearing": 180,
+      "span": [
+        -40.1,
+        8.3
+      ],
+      "frontDepth": 3.55,
+      "depthBand": 1.2,
+      "photo": "TMX7316010203-002532_pano_0000_001491",
+      "note": "13 wing bays and the gabled risalits at -24.95 and -6.2"
+    },
+    {
+      "name": "central block, great-window bays (Stationsplein)",
+      "bearing": 180,
+      "span": [
+        22.0,
+        40.3
+      ],
+      "frontDepth": 14.0,
+      "depthBand": 0.8,
+      "photo": "TMX7316010203-002532_pano_0000_001491",
+      "note": "the three middle bays: entrances, cross windows, the great round-arched windows; the outer bays (square second-floor windows, narrower doors) are two a row and are not rhythm-checked"
+    },
+    {
+      "name": "east main wing (Stationsplein)",
+      "bearing": 180,
+      "span": [
+        53.9,
+        101.7
+      ],
+      "frontDepth": 3.55,
+      "depthBand": 1.2,
+      "photo": "TMX7316010203-002532_pano_0000_001491",
+      "note": "13 wing bays and the gabled risalits at 68.6 and 87.35 (the red canopy in front)"
+    },
+    {
+      "name": "west pavilion, gable and middle bays (Stationsplein)",
+      "bearing": 180,
+      "span": [
+        -59.3,
+        -46.1
+      ],
+      "frontDepth": 4.6,
+      "depthBand": 0.8,
+      "photo": "TMX7316010203-001643_pano_0000_000089",
+      "note": "the gable bay and the four middle bays; the tower bay (-45.8..-40.2) has its own three narrow lights a storey"
+    },
+    {
+      "name": "west pavilion tower bay (Stationsplein)",
+      "bearing": 180,
+      "span": [
+        -45.7,
+        -40.3
+      ],
+      "frontDepth": 4.6,
+      "depthBand": 0.8,
+      "photo": "TMX7316010203-001643_pano_0000_000089",
+      "note": "three narrow round-headed lights a storey"
+    },
+    {
+      "name": "west low wing (Stationsplein)",
+      "bearing": 180,
+      "span": [
+        -126.0,
+        -59.5
+      ],
+      "frontDepth": -3.0,
+      "depthBand": 2.6,
+      "photo": "TMX7316010203-001643_pano_0000_000078",
+      "note": "shop fronts under the zinc canopy, grouped first-floor windows"
+    },
+    {
+      "name": "east wing (Stationsplein / De Ruijterkade)",
+      "bearing": 180,
+      "span": [
+        127.7,
+        246.3
+      ],
+      "frontDepth": 0.0,
+      "depthBand": 0.8,
+      "photo": "TMX7316010203-001668_pano_0000_001165",
+      "note": "1889 east wing, the two rows of sash windows; the stone ground storey alternates doors and transom-lit windows (two sizes by design) and the gables carry their own lights",
+      "heightM": [
+        4.6,
+        15.2
+      ]
     }
   ]
 }

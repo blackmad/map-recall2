@@ -352,7 +352,7 @@ class Game {
       if (this._utilityOpen) return;
     }
     if (this.state !== GameState.FINISHED && this.state !== GameState.PAUSED) {
-      if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) this.showMiniMap = !this.showMiniMap;
+      if (this.input.wasPressed('Tab') || this.input.wasPressed('KeyM')) { if (this._cycleMinimap) this._cycleMinimap(); else this.showMiniMap = !this.showMiniMap; }
     }
     if (this.input.wasPressed('KeyL')) {
       this.routeOptions.line = !this.routeOptions.line;

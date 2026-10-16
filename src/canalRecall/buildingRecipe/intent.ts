@@ -16,7 +16,8 @@ export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 
 export type GableIntent = typeof GABLES[number];
 /** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
 export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as const;
-export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
+/** `segmental`: a low circular arc (meets the head at an angle); `rounded` is a half ellipse with upright ends. */
+export const CROWN_CAPS = ['flat', 'rounded', 'pediment', 'segmental'] as const;
 export const CROWN_CAP_RISES = ['low', 'normal'] as const;
 export const CROWN_CAP_SPANS = ['narrow', 'medium', 'wide'] as const;
 /**
@@ -111,7 +112,7 @@ export const QUOINS = ['none', 'stone'] as const;
  * pand keeps its own piece (blockFace/intent.ts).
  */
 export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch', 'rigid'] as const;
-export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
+export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review', 'orthophoto'] as const;
 /**
  * A timber oriel stack (`bayWindows.oriel`, Bellamybuurt 1915: Hasebroekstraat 53-67 and 56-70, measured on the
  * 2024-12-11 strip at 40 px/m): a three-face projecting bay `span` metres wide centred on the spanned axes (not the whole
@@ -204,6 +205,16 @@ export interface FrontIntent {
   crownCapRise?: typeof CROWN_CAP_RISES[number];
   /** Neck/bell flank curve (CROWN_SHOULDERS); read from the strip skyline (`flankCurvature`), default `concave`. */
   crownShoulder?: typeof CROWN_SHOULDERS[number];
+  /** Neck/bell: the neck's width as a share of the crown width, measured on the photo (default 0.5 neck, 0.46 bell). */
+  crownNeckWidth?: number;
+  /**
+   * Neck/bell: an entablature under the cap, measured on the photo, every part a share of the neck width (intents carry
+   * no metres): a cornice `ledge` tall projecting `projection` past each side of the neck, over a `frieze` (painted with
+   * the cap in the stone colour). Absent: the cap sits straight on the brick neck (unchanged).
+   */
+  crownCapCornice?: {ledge: number; projection: number; frieze?: number};
+  /** Neck/bell: cap rise as a share of the neck width, measured (absent: the stock share of the crown rise). */
+  crownCapRatio?: number;
   /**
    * Window axes. The front has `axisGrid` vertical axes (default: the largest per-storey bay count above the
    * ground storey). Every storey's windows sit on those axes, so they line up between storeys and the piers
@@ -867,7 +878,13 @@ export interface LargeBuildingIntent {
   otherWalls?: LargeSystemName;
   /** Lift overrun and plant boxes on the largest flat roof. */
   roofPlant?: boolean;
-  roof?: {material: typeof ROOF_MATERIALS[number]};
+  /**
+   * Roof material. `material` covers every 3DBAG roof plane by default. From the orthophoto (2026-10-16, Entrepotdok):
+   * `flat` re-materials the flat class (< 8°) of the default (a dark membrane under solar panels where the default's
+   * flat tone would draw as pale gravel), and `surfaces` re-materials listed 3DBAG roof planes (the trailing number of
+   * `roofsRD[].surfaceId`, `roof-dump.ts --surfaces`) with the evidence for it. Absent: unchanged output.
+   */
+  roof?: LargeRoofIntent;
   palette: PaletteIntent;
   /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
   closedBands?: boolean;
@@ -896,8 +913,14 @@ export interface LargeBuildingIntent {
    * The intent carries values measured from the rectified photos (`measure.ts --write`, the evidence in
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
    */
-  measured?: {date: string; groups: number[]};
+  measured?: {date: string; groups: number[]; /** `palette.brick` (the unlisted walls' colour) was measured too, so it is drawn as is */ otherWalls?: boolean};
   notes?: string[];
+}
+export type RoofMaterial = typeof ROOF_MATERIALS[number];
+export interface LargeRoofIntent {
+  material: RoofMaterial;
+  flat?: RoofMaterial;
+  surfaces?: {roofSurfaces: number[]; material: RoofMaterial; evidence: string}[];
 }
 
 export type BuildingIntent = CanalHouseIntent | LargeBuildingIntent;
@@ -987,6 +1010,14 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     problems.push(...deBaarsjesProblems(f, intent?.palette, at));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
+    const neckOrBell = ['neck', 'raised-neck', 'bell'].includes(f.gable);
+    if (f.crownNeckWidth !== undefined && (!neckOrBell || !(f.crownNeckWidth >= 0.2 && f.crownNeckWidth <= 0.8))) problems.push(`${at}.crownNeckWidth: a neck/bell neck share in [0.2, 0.8] (gable ${f.gable}, ${f.crownNeckWidth})`);
+    if (f.crownCapRatio !== undefined && (!neckOrBell || !(f.crownCapRatio >= 0.03 && f.crownCapRatio <= 0.6))) problems.push(`${at}.crownCapRatio: a neck/bell cap rise share of the neck in [0.03, 0.6]`);
+    if (f.crownCapCornice !== undefined) {
+      const k = f.crownCapCornice;
+      if (!neckOrBell) problems.push(`${at}.crownCapCornice: only a neck or bell head carries a cap cornice (gable ${f.gable})`);
+      if (!(k && k.ledge >= 0.03 && k.ledge <= 0.3 && k.projection >= 0 && k.projection <= 0.2 && (k.frieze === undefined || (k.frieze >= 0 && k.frieze <= 0.5)))) problems.push(`${at}.crownCapCornice: shares of the neck width: ledge 0.03-0.3, projection 0-0.2, frieze 0-0.5`);
+    }
     if (f.crownShoulder !== undefined) {
       oneOf(f.crownShoulder, CROWN_SHOULDERS, `${at}.crownShoulder`);
       if (!['neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownShoulder: only a neck or bell crown has curved flanks (gable ${f.gable})`);
