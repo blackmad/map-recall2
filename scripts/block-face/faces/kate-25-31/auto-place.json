@@ -3,7 +3,7 @@
  "street": "Ten Katestraat",
  "library": "bellamy",
  "stripDate": "2023-01-12",
- "seconds": 5.96,
+ "seconds": 0.45,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "kate-25-31-r1",
-   "pands": [
-    "0363100012139746",
-    "0363100012093654"
-   ],
-   "passed": true,
-   "triangles": 2687
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012071572",
@@ -52,41 +42,27 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.65,
+       "widthM": 1.6,
+       "centre": 0.21
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.096 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21)",
-   "likeness": {
-    "pandId": "0363100012071572",
-    "ncc": 0.096,
-    "nccRaw": 0.096,
-    "shiftM": [
-     0,
-     -0.4
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.21"
-    ],
-    "wall": {
-     "photo": "#3e312d",
-     "model": "#5d4d45",
-     "dL": 0.108
-    },
-    "glazing": {
-     "photo": 0.33,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.287
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -116,43 +92,72 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.68 m (1.5 m wide), 7.75 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.68,
+       "widthM": 1.5,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.75,
+       "widthM": 1.27,
+       "centre": 0.23
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts WARN: wall family unresolved (#3d312d is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 2 vs photo 3; mask IoU 0.363 < 0.45)",
-   "likeness": {
-    "pandId": "0363100012233527",
-    "ncc": 0.145,
-    "nccRaw": 0.145,
-    "shiftM": [
-     0.25,
-     -0.4
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; strip shows balconies (balcony slabs stacked at 10.68 m (1.5 m wide), 7.75 m (1.27 m wide)))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "strip shows balconies (balcony slabs stacked at 10.68 m (1.5 m wide), 7.75 m (1.27 m wide))"
     ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "wall family unresolved (#3d312d is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 2 vs photo 3",
-     "mask IoU 0.363 < 0.45"
-    ],
-    "wall": {
-     "photo": "#3d312d",
-     "model": "#5b4842",
-     "dL": 0.1
-    },
-    "glazing": {
-     "photo": 0.29,
-     "model": 0.29
-    },
-    "columns": {
-     "photo": 3,
-     "model": 2
-    },
-    "iou": 0.363
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.04 m = 5 storeys of 2.81 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 1.26 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -182,71 +187,72 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.21,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.63 m (1.48 m wide), 7.7 m (1.55 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.63,
+       "widthM": 1.48,
+       "centre": 0.21
+      },
+      {
+       "atM": 7.7,
+       "widthM": 1.55,
+       "centre": 0.21
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "bellamy-1915-green-tile",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1915-green-tile",
-    "ground": {
-     "shopfront": {
-      "colour": "#2f2823",
-      "fascia": true,
-      "entrance": "centre",
-      "glazing": "split",
-      "stallriser": "low",
-      "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
-      },
-      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-12 span 416-643"
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; strip shows balconies (balcony slabs stacked at 10.63 m (1.48 m wide), 7.7 m (1.55 m wide)))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "strip shows balconies (balcony slabs stacked at 10.63 m (1.48 m wide), 7.7 m (1.55 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.8 m = 4 storeys of 3.2 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.89 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
-    },
-    "measuredPalette": {
-     "brick": "#3c322f",
-     "evidence": "strip 2023-01-12 span 416-643: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "point-gable"
+    ]
    },
-   "notes": [
-    "door unread",
-    "crown point-gable: skyline rise 3.92 m, width 0.75 m, top 0.2 m"
-   ],
-   "likeness": {
-    "pandId": "0363100012139746",
-    "ncc": 0.219,
-    "nccRaw": 0.219,
-    "shiftM": [
-     -0.05,
-     -0.4
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing  mean 0.43 vs photo 0.30"
-    ],
-    "wall": {
-     "photo": "#3a2f2b",
-     "model": "#584a45",
-     "dL": 0.11
-    },
-    "glazing": {
-     "photo": 0.3,
-     "model": 0.43
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.345
-   },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -271,67 +277,72 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.74,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.18 m (1.52 m wide), 7.17 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.18,
+       "widthM": 1.52,
+       "centre": 0.66
+      },
+      {
+       "atM": 7.17,
+       "widthM": 1.3,
+       "centre": 0.69
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "bellamy-1916-two-axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1916-two-axis",
-    "ground": {
-     "shopfront": {
-      "colour": "#222421",
-      "fascia": true,
-      "name": "Bar Kaat",
-      "entrance": "centre",
-      "glazing": "split",
-      "stallriser": "low",
-      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2023-01-12 span 643-823"
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; strip shows balconies (balcony slabs stacked at 10.18 m (1.52 m wide), 7.17 m (1.3 m wide)))",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "strip shows balconies (balcony slabs stacked at 10.18 m (1.52 m wide), 7.17 m (1.3 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.72 m = 4 storeys of 3.18 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.72 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
      }
-    },
-    "measuredPalette": {
-     "brick": "#3b302c",
-     "evidence": "strip 2023-01-12 span 643-823: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    ]
    },
-   "notes": [
-    "crown cornice (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012093654",
-    "ncc": 0.22,
-    "nccRaw": 0.22,
-    "shiftM": [
-     -0.15,
-     -0.4
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.18",
-     "window shape square vs photo tall"
-    ],
-    "wall": {
-     "photo": "#3e322e",
-     "model": "#584842",
-     "dL": 0.09
-    },
-    "glazing": {
-     "photo": 0.4,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": 2,
-     "model": 2
-    },
-    "iou": 0.518
-   },
+   "likeness": null,
    "challengers": {}
   }
  ]

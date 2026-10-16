@@ -3,7 +3,7 @@
  "street": "Jan Pieter Heijestraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 3.99,
+ "seconds": 3.22,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -18,11 +18,10 @@
    "face": "heije-41-53-r1",
    "pands": [
     "0363100012109543",
-    "0363100012128983",
-    "0363100012117355"
+    "0363100012128983"
    ],
    "passed": false,
-   "triangles": 5265
+   "triangles": 3433
   }
  ],
  "pands": [
@@ -53,6 +52,14 @@
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.01,
     "foliageShare": 0.15
    },
@@ -89,6 +96,14 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.134,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.4,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.16
    },
@@ -165,6 +180,14 @@
     "doorSide": "right",
     "accentSide": "left",
     "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.13
    },
@@ -173,7 +196,7 @@
    "score": 0.91,
    "runnerUp": {
     "typeId": "bellamy-1915-tile-bay",
-    "score": 0.7
+    "score": 0.64
    },
    "placement": {
     "type": "bellamy-1915-green-tile",
@@ -190,8 +213,8 @@
    ],
    "likeness": {
     "pandId": "0363100012109543",
-    "ncc": 0.37,
-    "nccRaw": 0.37,
+    "ncc": 0.362,
+    "nccRaw": 0.362,
     "shiftM": [
      0.1,
      0.4
@@ -247,6 +270,14 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0.14,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.09
    },
@@ -271,8 +302,8 @@
    ],
    "likeness": {
     "pandId": "0363100012128983",
-    "ncc": 0.44,
-    "nccRaw": 0.44,
+    "ncc": 0.446,
+    "nccRaw": 0.446,
     "shiftM": [
      -0.1,
      0.4
@@ -285,9 +316,9 @@
      "window shape tall vs photo square"
     ],
     "wall": {
-     "photo": "#493928",
+     "photo": "#4d3c2a",
      "model": "#6e563c",
-     "dL": 0.112
+     "dL": 0.1
     },
     "glazing": {
      "photo": 0.14,
@@ -297,7 +328,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.341
+    "iou": 0.339
    },
    "challengers": {}
   },
@@ -328,57 +359,21 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.105,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.05
    },
-   "status": "placed",
-   "type": "bellamy-1915-green-tile",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1915-tile-bay",
-    "score": 0.75
-   },
-   "placement": {
-    "type": "bellamy-1915-green-tile",
-    "measuredPalette": {
-     "brick": "#473a26",
-     "evidence": "strip 2024-12-11 span 1321-1564: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "notes": [
-    "door unread: mirrored, the opposite of 128983",
-    "crown dormers: skyline unread (confidence 0.56)"
-   ],
-   "likeness": {
-    "pandId": "0363100012117355",
-    "ncc": 0.449,
-    "nccRaw": 0.449,
-    "shiftM": [
-     0.2,
-     0.4
-    ],
-    "usable": 0.87,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.35 mean 0.35 vs photo 0.60"
-    ],
-    "wall": {
-     "photo": "#51412e",
-     "model": "#685538",
-     "dL": 0.065
-    },
-    "glazing": {
-     "photo": 0.6,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.478
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: green-tile front with its point gable over the right-hand pair drawn with two dormers: the skyline is unread under the tree (confidence 0.56)",
+   "likeness": null,
    "challengers": {}
   }
  ]

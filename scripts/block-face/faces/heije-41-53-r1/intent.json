@@ -44,7 +44,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-green-tile scored 0.91 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, columns 0.4; strip 2024-12-11 span 819-1087"
+    "citation": "auto-place: bellamy-1915-green-tile scored 0.91 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, columns 0.4; strip 2024-12-11 span 819-1087"
    }
   },
   {
@@ -69,32 +69,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, columns 1; strip 2024-12-11 span 1088-1321"
-   }
-  },
-  {
-   "pandId": "0363100012117355",
-   "slug": "heije-117355",
-   "address": "Jan Pieter Heijestraat 53",
-   "type": {
-    "type": "bellamy-1915-green-tile",
-    "measuredPalette": {
-     "brick": "#473a26",
-     "evidence": "strip 2024-12-11 span 1321-1564: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-12-11",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, columns 1; strip 2024-12-11 span 1321-1564"
+    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, columns 1; strip 2024-12-11 span 1088-1321"
    }
   }
  ],
