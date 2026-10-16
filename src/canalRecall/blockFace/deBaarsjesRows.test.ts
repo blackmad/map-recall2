@@ -113,3 +113,19 @@ test('mergeCoplanar: the memoised merge gives the restart-from-scratch result (h
   assert.equal(out.reduce((n: number, r) => n + (r as unknown[]).length, 0), 151);
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(out)).digest('hex').slice(0, 16), 'bb1a64b41f2c3eb3');
 });
+
+test('94-142: box frames flank the shared lisenes; 96 ends the row with a wide window and a recessed tail', () => {
+  const dir = 'scripts/block-face/faces/evertsen-94-142';
+  const even = validateBlockFace(JSON.parse(fs.readFileSync(`${dir}/intent.json`, 'utf8')), JSON.parse(fs.readFileSync(`${dir}/discovery.json`, 'utf8')).members);
+  const hs = houseIntents(even);
+  const fit = (p: string) => fitIntent(hs.find(i => i.pandId.endsWith(p))!, JSON.parse(fs.readFileSync(`${dir}/pands/0363100012${p}/facts.json`, 'utf8')));
+  // 128 (088014) and 126 (118917) share a lisene: 128's box at its right end, 126's at its left (strip ruler crop of 118).
+  const r = fit('088014').report.fronts[0], l = fit('118917').report.fronts[0];
+  assert.ok(r.erker!.leftM + r.erker!.widthM > r.widthM - 1.5, `128 box on the right (${r.erker!.leftM})`);
+  assert.ok(l.erker!.leftM < 1.5, `126 box on the left (${l.erker!.leftM})`);
+  const end = fit('110500');
+  assert.equal(end.report.fronts.length, 2, 'the visible front and the recessed tail');
+  const wide = end.recipe.elevations[0].openings.value.find(o => /s2-/.test(o.id) && o.widthM > 2.5);
+  assert.deepEqual(wide?.verticalBars, [0.25, 0.5, 0.75]);
+  assert.equal(end.recipe.elevations[1].openings.value.filter(o => /s[123]-/.test(o.id)).length, 0, 'no windows on the unseen tail');
+});
