@@ -103,19 +103,7 @@ export class GroundStore {
     return JSON.parse(new TextDecoder().decode(await this.fetchBytes(path))) as T;
   }
 
-  /**
-   * Load the indexes and make the deck surface. Idempotent: a second call returns the first one's promise. (A second
-   * load replaced `surface` and `field` while the per-cell caches, decksByCell, wayDeckIds and reliefTiles, still held
-   * the old ones: the cells built afterwards had no decks and no relief under them. check-ground-cells re-inits the
-   * roads store per regression group, and roads-v1 cell -1_-1 counted 58 deck polygons over no deck instead of 13.)
-   */
-  private initDone: Promise<void> | null = null;
-  init(): Promise<void> {
-    this.initDone ??= this.load().catch(e => { this.initDone = null; throw e; });
-    return this.initDone;
-  }
-
-  private async load(): Promise<void> {
+  async init(): Promise<void> {
     const [relief, elevation, bridges, manifest, levels] = await Promise.all([
       this.json<GroundIndex>(`${EXTRACTS.relief}/index.json`),
       this.json<unknown>(`${EXTRACTS.water}/index.json`).then(validateIndex),
