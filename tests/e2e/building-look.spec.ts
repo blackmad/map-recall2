@@ -211,8 +211,11 @@ test('shadow fill: brick in cast shadow stays readable, lit walls do not move', 
  * Mid-grey brick, south wall, under the rig with no shadows. Legacy rig: docs/LOOK.md §Parity and §City look
  * (2026-10-13): generic 108.3, recipe 102.4, landmark 106.0, city-generic 105.1, city-recipe 109.2, city-landmark 109.2.
  * Sunny rig (look/sunny.ts, the default since 2026-10-16), measured with this harness: +12 to +20 on every pipeline.
+ * One material (2026-10-16, shade ratio 0.55, lit facades diffuse-only with the measured walls' fallback exposure):
+ * generic 124.5 -> 129.7 (the exposure: a grey with no white takes 1.106 linear like a measured wall), the others
+ * +1.2 to +1.6 (the stronger sky fill lights a sun-side wall's sky half a little more at the same sun-wall exposure).
  */
-const SUN_SIDE_GREY: Record<string, number> = { generic: 124.5, recipe: 117.7, landmark: 121.7, 'city-generic': 121.1, 'city-recipe': 125.7, 'city-landmark': 125.7 };
+const SUN_SIDE_GREY: Record<string, number> = { generic: 129.7, recipe: 119.2, landmark: 122.9, 'city-generic': 122.7, 'city-recipe': 127.3, 'city-landmark': 127.3 };
 
 // A measured wall colour (material extras `tintSource: 'measured'`) survives the city look's brick clamp: the rendered brick swatch
 // lands on the authored colour (the paint slot keeps authored colours, so it is the reference), the unmeasured one stays clamped.

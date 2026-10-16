@@ -35,6 +35,61 @@ a gate 559 → 12, lateral gate run 6,473 → 76 m, parapet inside a carriageway
 cycle polygon 50 bridges / 568 m → 6 / 75 m (roads-v1 pilot cells). Regressions
 BRU0166, BRU0063, BRU0257 in `check:own-ground-cells`, unit tests, e2e
 `BRIDGES=RAILINGS`; checked against PDOK orthophoto crops.
+## One wall material for every building, shade ratio 0.55, measured slate (2026-10-16)
+
+User (2026-10-16): "can't you just match the materials between them?" (block
+faces reading darker than the generic boxes beside them). Lane
+`lane/one-material-20261016` (794babb4b, a5f5a13fa); doc
+`docs/one-material-20261016.md`, sheet `docs/images/look/one-material-20261016.jpg`.
+A same-hex/same-normal probe (`lookParity` `chunk` and `recipe-measured`
+paths) and an in-game white-Lambert pass showed chunk and same-facing
+generic walls already got identical light. Two real differences removed:
+generic walls drew `MeshStandardMaterial` (≈ +3 luma on sun sides, glints),
+now `MeshLambertMaterial` like every other building
+(`rendererShared/litFacadeMaterial.ts`, cache `-v7`); and they lacked the
+1.106 sunlit fallback gain (`look/sunny.ts litFacadeWallGain`). Generic,
+chunk and measured-recipe walls of one colour now agree within 2 luma (new
+"one material" test in `look-parity.spec.ts`). `SUNNY_SHADE_RATIO` 0.55
+(was 0.41) for every building, exposure 1.081, ground gain 0.896 so the
+ground draws unchanged. Slate from the orthophoto's 174,801 slate roofs
+(`MEASURED_SLATE` #76808f / #606b79 / #8c939c), so chunk roofs draw 88–122
+instead of 54–75. Frames: walls +5–8 luma, roofs +15–22, chroma held. The
+remaining chunk-vs-neighbour gap is colour, not light: the generic
+period-prior palette runs about twice a measured chunk's albedo (Nassaukade
+0.43 vs 0.22). Shade sides reach 0.65–0.82 of the sunlit photo (the rig
+caps them at 0.77 at 0.55). Oudezijds Voorburgwal 115-125 stays held (65 %
+of wall pixels under luma 60 against its photo's 29 %). Desktop ride-perf
+5/5 under the browser lock at load 6 (map render 2.3 ms default, 3.9 ms all
+landmarks resident; motion longest 66.7 ms).
+
+## Neck and bell gables curve the right way: concave shoulders, measured from the photo (2026-10-16)
+
+User (2026-10-16), on a Wallen review sheet: "weird that the kit inverts the
+curve of the roof from concave to convex or vice versa". Lane
+`lane/gable-curves-20261016` (1599228cb). Cause in `fit.ts crownProfile`:
+neck flanks used `shoulderCurve 0.6` (f^0.6) and bell flanks fell back to
+`sin(f·π/2)`, both bulging outward; real claw pieces and bell flares stay
+low at the foot and rise steeply into the neck (Oudezijds Achterburgwal
+177920: the claw 0.05–0.4 m over the eaves until 0.2 m from the neck).
+New `crownShoulder: 'concave' | 'ogee' | 'straight' | 'convex'` on the
+front intent (neck/bell), default concave (quarter ellipse tangent to the
+neck); landmark builders without the option stay byte-identical.
+`gableFromStrip.flankCurvature` measures each flank against its chord: 19
+of 25 measured bell/neck fronts read concave (Utrechtsestraat 66-68 set
+`straight`). Roofs over the crowns: `roof-under-crown` sampled only 5 mm
+inside the facade, so an attic standing 1.5–2.8 m over the shoulders
+passed; `roofAboveCrownFrontView` now checks the whole plot square to the
+frontage and a new `roof-behind-crown` gate checks the chunk; saddles
+behind full-front neck/bell crowns may drop to 3 m below the cornice at the
+party walls; every own roof sits under its crown. Reinstalled
+wallen-oza-41-57, wallen-ozv-115-125, utrechtse-48-76, nassau-162289,
+bilder-164451-156126, bilder-233580-162444. Still open: a neighbour's roof
+behind an oblique party wall showing beside a crown (177915 by 177916,
+2.9 m), step/spout/point gables not yet under the front-view check
+(bilder-081118-155417), and the kit cannot yet say neck width (fixed 0.5 of
+the front; photos 0.38–0.45), claw height, a cornice band and pediment
+wider than the neck, an inset foot ledge, or a mansard with hipped sides.
+
 ## Parking bays read as street, not stripes (2026-10-16)
 
 User (2026-10-16), Prinsengracht by the Pulitzer: "are these bits from BGT?

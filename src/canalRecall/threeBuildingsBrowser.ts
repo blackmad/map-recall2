@@ -30,6 +30,7 @@ import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, ki
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry } from './landmarkFronts.js';
 import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN, lookHex } from './look/palette.js';
+import { litFacadeWallGain } from './look/sunny.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
@@ -469,7 +470,8 @@ export class ThreeBuildings {
     material.uniforms.masks.value = set.mask;
     material.uniforms.bands.value = LOOK_VARIANTS[look].shadeBands;
     material.uniforms.flatColour.value = LOOK_VARIANTS[look].flatColour ? 1 : 0;
-    if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[look].litWallGain;
+    // Lit facades take the sunny look's wall exposure (look/sunny.ts litFacadeWallGain); the opt-in city look keeps its own.
+    if (material.uniforms.wallGain) material.uniforms.wallGain.value = this.cityLook ? LOOK_VARIANTS[look].litWallGain : litFacadeWallGain(LOOK_VARIANTS[look].litWallGain);
     this.material = material;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     if (this.cityLook) {
@@ -1313,7 +1315,7 @@ export class ThreeBuildings {
       const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
-      if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[this.look].litWallGain;
+      if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
       return material;
     }
     return new THREE.RawShaderMaterial({

@@ -1347,10 +1347,11 @@ test('ground light: level sunlit ground draws its palette luminance; the road st
   // Before the gain the rig drew level ground at 0.83 of its albedo (sRGB ≈ 0.92): the "city too dark".
   assert.ok(Math.abs(flatGroundLuminance(LEGACY_LIGHT_RIG) - 0.828) < 0.01, `legacy rig lights level ground at ${flatGroundLuminance(LEGACY_LIGHT_RIG)}`);
   // The sunny look (look/sunny.ts, default since 2026-10-16) folds its exposure into the rig and white-balances it:
-  // level ground receives neutral light at 1.004, so the gain nearly vanishes (0.996) and the bright ground still
-  // draws its palette, hue included.
-  assert.ok(Math.abs(flatGroundLuminance() - 1.004) < 0.01, `sunny rig lights level ground at ${flatGroundLuminance()}`);
-  assert.ok(Math.abs(flatGroundGain(LEGACY_LIGHT_RIG) - 1.208) < 0.01 && Math.abs(FLAT_GROUND_GAIN - 0.996) < 0.01, `gains ${flatGroundGain(LEGACY_LIGHT_RIG)} / ${FLAT_GROUND_GAIN}`);
+  // level ground received neutral light at 1.004 (gain 0.996). Since the 0.55 shade ratio (look/sunny.ts
+  // SUNNY_SHADE_RATIO, 2026-10-16 one-material lane) the stronger sky fill lights it at 1.116, and the gain (0.896)
+  // divides that out, so the ground still draws its palette, hue included.
+  assert.ok(Math.abs(flatGroundLuminance() - 1.116) < 0.01, `sunny rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(flatGroundGain(LEGACY_LIGHT_RIG) - 1.208) < 0.01 && Math.abs(FLAT_GROUND_GAIN - 0.896) < 0.01, `gains ${flatGroundGain(LEGACY_LIGHT_RIG)} / ${FLAT_GROUND_GAIN}`);
   assert.ok(Math.abs(FLAT_GROUND_GAIN * flatGroundLuminance() - 1) < 1e-9);
   for (const v of [60, 104, 164, 220]) assert.ok(Math.abs(drawnGrey(v, FLAT_GROUND_GAIN) - v) < 0.01, `palette ${v} draws ${drawnGrey(v, FLAT_GROUND_GAIN)}`);
   const asphalt = 0.2126 * STREET_GROUND.asphalt.base[0] + 0.7152 * STREET_GROUND.asphalt.base[1] + 0.0722 * STREET_GROUND.asphalt.base[2];
