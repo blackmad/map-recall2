@@ -37,7 +37,7 @@ test('Marnixstraat 124-138: inferred rears clear blank-wall legitimately, attach
   for (const rear of r.rears) {
     assert.equal(rear.source, 'inferred');
     assert.ok(rear.windows >= 12, `${rear.pandId} has a window grid`);
-    assert.ok(rear.triangles / rear.windows <= 4, 'frame plate + pane only');
+    assert.ok(rear.triangles / rear.windows <= 10, 'sloped frame ring + pane only');
     assert.ok(rear.maxProudM <= 0.05, 'attached within 5 cm');
   }
   const tmp = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'rear-')), 'chunk.glb');

@@ -12,9 +12,12 @@
  *    at least `minEdgeM` long;
  *  - never on a party wall or a wall shared with a neighbour: a window whose centre lies on a neighbour footprint edge
  *    (within `partyTolM`), or whose outside is inside a neighbour footprint, is not placed;
- *  - windows are attached: a frame plate `plateM` (3 cm) proud of the wall and a glass pane 1.5 cm further, never more
- *    than 5 cm from the wall;
- *  - modest cost: 4 triangles per window (frame plate + pane).
+ *  - windows are attached and never z-fight (rearZFight.test.ts): a sloped frame ring whose outer edge stands on the wall
+ *    and whose inner edge is `paneM` (4 cm) proud, around a glass pane in that inner plane. Nothing lies parallel within
+ *    3 cm of the wall or of another part (the GLB audit's coplanar and 2-3 cm "tight" bands bleed through at distance;
+ *    the old full frame plate 3 cm proud under a pane 1.5 cm in front of it was 187 m2 of z-fight on kinker-1-29), and
+ *    nothing is more than 5 cm from the wall;
+ *  - modest cost: 10 triangles per window (frame ring 8 + pane 2).
  */
 import * as T from 'three';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
@@ -28,6 +31,9 @@ export interface RearOptions {
   /** Margin kept free at each end of an edge and around shared spans (m). */
   marginM?: number;
   partyTolM?: number;
+  /** Triangles the pand may still spend (its house budget minus what it already has). A grid that does not fit loses whole
+   *  storeys from the ground floor up (yard walls and extensions hide those first); the loss is reported. */
+  maxTriangles?: number;
 }
 
 export interface RearEdgeReport { lengthM: number; windowsPerStorey: number; skippedShared: number }
@@ -40,9 +46,14 @@ export interface RearReport {
   /** Storey heights the grid used (floor to floor, m). */
   storeys: number[];
   maxProudM: number;
+  /** Windows left out to stay inside `maxTriangles` (absent when none). */
+  droppedForBudget?: number;
 }
 
-export const REAR_DEFAULTS = {minEdgeM: 2.2, pitchM: 2.5, windowWidthM: 1.05, marginM: 0.9, partyTolM: 0.12, plateM: 0.03, paneM: 0.045, frameM: 0.09};
+/** Triangles per inferred window: sloped frame ring (8) + glass pane (2). */
+export const REAR_WINDOW_TRIANGLES = 10;
+
+export const REAR_DEFAULTS = {minEdgeM: 2.2, pitchM: 2.5, windowWidthM: 1.05, marginM: 0.9, partyTolM: 0.12, paneM: 0.04, frameM: 0.09};
 
 const sub = (a: number[], b: number[]) => [a[0] - b[0], a[1] - b[1]];
 
@@ -110,16 +121,21 @@ export function addInferredRear(group: T.Group, facts: BuildingFacts, anchorRD: 
   let y = 0;
   for (const h of storeyHeightsM) { if (h >= 2.3 && y + h <= eavesM + 0.3) floors.push({y0: y, y1: Math.min(y + h, eavesM)}); y += h; }
   const trimPos: number[] = [], glassPos: number[] = [], edges: RearEdgeReport[] = [];
-  const quad = (pos: number[], c: [number, number], t: [number, number], n: [number, number], w: number, y0: number, y1: number, off: number) => {
-    const bl = [c[0] - t[0] * w / 2 + n[0] * off, y0, c[1] - t[1] * w / 2 + n[1] * off], br = [c[0] + t[0] * w / 2 + n[0] * off, y0, c[1] + t[1] * w / 2 + n[1] * off];
-    const tl = [bl[0], y1, bl[2]], tr = [br[0], y1, br[2]];
-    pos.push(...bl, ...br, ...tr, ...bl, ...tr, ...tl);
+  // Corners bl, br, tr, tl in this order face +n (up x n = (n_z, 0, -n_x) in (x, z)).
+  const quad = (pos: number[], bl: number[], br: number[], tr: number[], tl: number[]) => pos.push(...bl, ...br, ...tr, ...bl, ...tr, ...tl);
+  const at = (c: [number, number], t: [number, number], n: [number, number], s: number, y: number, off: number) => [c[0] + t[0] * s + n[0] * off, y, c[1] + t[1] * s + n[1] * off];
+  /** Glass pane `paneM` proud, framed by a ring sloping from the wall (outer edge, frame width out) to the pane's edge. */
+  const windowAt = (c: [number, number], t: [number, number], n: [number, number], sill: number, head: number) => {
+    const w = o.windowWidthM / 2, W = w + o.frameM, f = o.frameM, p = o.paneM;
+    const iBL = at(c, t, n, -w, sill, p), iBR = at(c, t, n, w, sill, p), iTR = at(c, t, n, w, head, p), iTL = at(c, t, n, -w, head, p);
+    const oBL = at(c, t, n, -W, sill - f, 0), oBR = at(c, t, n, W, sill - f, 0), oTR = at(c, t, n, W, head + f, 0), oTL = at(c, t, n, -W, head + f, 0);
+    quad(glassPos, iBL, iBR, iTR, iTL);
+    quad(trimPos, oBL, oBR, iBR, iBL); quad(trimPos, oBR, oTR, iTR, iBR); quad(trimPos, oTR, oTL, iTL, iTR); quad(trimPos, oTL, oBL, iBL, iTL);
   };
-  let windows = 0;
+  const planned: {c: [number, number]; t: [number, number]; n: [number, number]; sill: number; head: number; floor: number}[] = [];
   for (const e of rearEdges(facts, opts)) {
     const la = local(e.a), lb = local(e.b), len = Math.hypot(e.b[0] - e.a[0], e.b[1] - e.a[1]);
     const nLocal: [number, number] = [e.n[0], -e.n[1]], t: [number, number] = [nLocal[1], -nLocal[0]];
-    // up × n = (n_z, 0, -n_x) in (x, z): quad winding below makes the face look along +n.
     const usable = len - 2 * o.marginM, count = Math.max(0, Math.round(usable / o.pitchM) + (usable >= 0 ? 1 : 0));
     if (usable < 0 || !count) { edges.push({lengthM: +len.toFixed(2), windowsPerStorey: 0, skippedShared: 0}); continue; }
     const step = count > 1 ? usable / (count - 1) : 0, along = count > 1 ? (i: number) => o.marginM + i * step : () => len / 2;
@@ -131,17 +147,20 @@ export function addInferredRear(group: T.Group, facts: BuildingFacts, anchorRD: 
       if (ends.some(p => shared(p, e.n))) { skipped++; continue; }
       const c: [number, number] = [la[0] + (lb[0] - la[0]) * s / len, la[1] + (lb[1] - la[1]) * s / len];
       const wallTop = Math.min(...[-o.windowWidthM / 2, 0, o.windowWidthM / 2].map(k => wallTopAt(group, [c[0] + t[0] * k, c[1] + t[1] * k], nLocal)));
-      for (const f of floors) {
+      for (const [floor, f] of floors.entries()) {
         const sill = f.y0 + 0.9, head = Math.min(f.y1 - 0.45, sill + 1.8, wallTop - 0.3);
         if (head - sill < 1.0) continue;
-        quad(trimPos, c, t, nLocal, o.windowWidthM + 2 * o.frameM, sill - o.frameM, head + o.frameM, o.plateM);
-        quad(glassPos, c, t, nLocal, o.windowWidthM, sill, head, o.paneM);
-        windows++;
+        planned.push({c, t, n: nLocal, sill, head, floor});
       }
       placed++;
     }
     edges.push({lengthM: +len.toFixed(2), windowsPerStorey: placed, skippedShared: skipped});
   }
+  let kept = planned, dropped = 0;
+  for (let floor = 0; opts.maxTriangles !== undefined && kept.length * REAR_WINDOW_TRIANGLES > opts.maxTriangles && floor < floors.length; floor++) kept = kept.filter(w => w.floor > floor);
+  dropped = planned.length - kept.length;
+  for (const w of kept) windowAt(w.c, w.t, w.n, w.sill, w.head);
+  const windows = kept.length;
   const add = (pos: number[], colour: string, surface: 'trim' | 'glass') => {
     if (!pos.length) return;
     const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.computeVertexNormals();
@@ -150,5 +169,5 @@ export function addInferredRear(group: T.Group, facts: BuildingFacts, anchorRD: 
     group.add(m);
   };
   add(trimPos, trim, 'trim'); add(glassPos, glass, 'glass');
-  return {pandId: facts.pandId, source: 'inferred', edges, windows, triangles: (trimPos.length + glassPos.length) / 9, storeys: floors.map(f => +(f.y1 - f.y0).toFixed(2)), maxProudM: windows ? o.paneM : 0};
+  return {pandId: facts.pandId, source: 'inferred', edges, windows, triangles: (trimPos.length + glassPos.length) / 9, storeys: floors.map(f => +(f.y1 - f.y0).toFixed(2)), maxProudM: windows ? o.paneM : 0, ...(dropped ? {droppedForBudget: dropped} : {})};
 }
