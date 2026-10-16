@@ -13,11 +13,15 @@
 // can count them over every landmark and the curated overrides in
 // `landmark-card-overrides.json` can be checked against the same rules.
 
-import { splitDetail } from '../game/landmarkData';
+import { isWorthACard, splitDetail } from '../game/landmarkData';
 
 export type CardIssue =
   /** Nothing to show at all. */
   | 'empty'
+  /** Only the one-line Wikidata description ("Public sculpture in Amsterdam,
+   *  the Netherlands."): a register line, not something worth stopping for.
+   *  The Multatuli bust on the Torensluis (user report 2026-10-16). */
+  | 'stub'
   /** Only "X is a <type> at/in <place>" — no date, person or event. */
   | 'definitional'
   /** A Dutch article or function word left in the English text. */
@@ -31,7 +35,8 @@ export interface CardAuditInput {
   funFact?: string;
   wikipediaExtract?: string;
   wikipediaExtractLang?: string;
-  /** `translated` when the extract is a machine translation of a Dutch lede. */
+  /** `translated` when the extract is a machine translation of a Dutch lede;
+   *  `wikidata-description` when it is only the Wikidata one-liner. */
   wikipediaExtractSource?: string;
 }
 
@@ -169,6 +174,7 @@ export function auditCard(feature: CardAuditInput): CardAudit {
   const text = cardBodyText(feature);
   const issues: CardIssue[] = [];
   if (!text) issues.push('empty');
+  else if (!feature.funFact && feature.wikipediaExtractSource === 'wikidata-description') issues.push('stub');
   // A curated `funFact` is English by construction; the language tag only
   // describes the encyclopedia extract underneath it.
   if (!feature.funFact && feature.wikipediaExtractLang && feature.wikipediaExtractLang !== 'en') {
@@ -182,6 +188,16 @@ export function auditCard(feature: CardAuditInput): CardAudit {
 }
 
 // ---- Curated overrides ----
+
+/** A further article a card text rests on, when one article does not carry
+ *  every fact (the Multatuli bust: the bridge article dates it, the writer's
+ *  article explains the name). Checked exactly like the primary source. */
+export interface CardSource {
+  sourceUrl: string;
+  articleTitle: string;
+  sourceLanguage: 'en' | 'nl';
+  sourceQuote: string;
+}
 
 /** One curated card text, with the provenance a translation pass needs to
  *  resume: the exact original sentences it rests on, their language, where
@@ -204,6 +220,14 @@ export interface CardOverride {
   translator: string;
   /** The card text this replaces, for the diff and for a later pass. */
   replaces: string;
+  /** Further articles, when the text combines facts from more than one. */
+  extraSources?: CardSource[];
+}
+
+/** Every article an override cites, primary first. */
+export function overrideSources(override: CardOverride): CardSource[] {
+  const { sourceUrl, articleTitle, sourceLanguage, sourceQuote } = override;
+  return [{ sourceUrl, articleTitle, sourceLanguage, sourceQuote }, ...(override.extraSources ?? [])];
 }
 
 export interface OverrideProblem {
@@ -226,8 +250,12 @@ export function validateOverride(override: CardOverride): OverrideProblem[] {
   const first = sentencesOf(text)[0] || '';
   if (first.length > CARD_FIRST_SENTENCE_MAX) problems.push(`first sentence is ${first.length} chars (max ${CARD_FIRST_SENTENCE_MAX})`);
   if (cardBodyText({ funFact: text }) !== text) problems.push('card would not show the whole text');
-  if (!/^https:\/\/(en|nl)\.wikipedia\.org\/wiki\//.test(override.sourceUrl)) problems.push('sourceUrl is not a Wikipedia article');
-  if (!override.sourceQuote.trim()) problems.push('no sourceQuote');
+  for (const [index, source] of overrideSources(override).entries()) {
+    const which = index ? `extraSources[${index - 1}] ` : '';
+    if (!/^https:\/\/(en|nl)\.wikipedia\.org\/wiki\//.test(source.sourceUrl)) problems.push(`${which}sourceUrl is not a Wikipedia article`);
+    if (!source.sourceQuote.trim()) problems.push(`${which}no sourceQuote`);
+    if (!source.articleTitle) problems.push(`${which}no articleTitle`);
+  }
   if (!override.license) problems.push('no license');
   const audit = auditCard({ id: override.id, name: override.name, funFact: text });
   for (const issue of audit.issues) problems.push(`override fails audit: ${issue}${issue === 'dutch' ? ` (${audit.dutchTokens.join(', ')})` : ''}`);
@@ -242,8 +270,13 @@ export interface OverrideApplication<T> {
 
 /** Put each override into its feature's `funFact` — the slot `buildLandmarks`
  *  already prefers over the encyclopedia extract — leaving the extract and
- *  its original-language text untouched underneath. Idempotent. */
-export function applyOverrides<T extends CardAuditInput & { sourceUrl?: string }>(
+ *  its original-language text untouched underneath. Idempotent.
+ *
+ *  A feature with neither a Wikipedia link nor a source link also gets the
+ *  override's article as `sourceUrl`, so the card's "W SOURCE" chip opens the
+ *  page the text came from. Without it a manual POI falls back to its model's
+ *  attribution, which for the Multatuli bust was a Commons photo category. */
+export function applyOverrides<T extends CardAuditInput & { sourceUrl?: string; wikipediaUrl?: string }>(
   features: readonly T[],
   overrides: readonly CardOverride[],
 ): OverrideApplication<T> {
@@ -253,7 +286,13 @@ export function applyOverrides<T extends CardAuditInput & { sourceUrl?: string }
     const override = byId.get(feature.id);
     if (!override) return feature;
     applied.push(feature.id);
-    return { ...feature, funFact: override.text, funFactSourceUrl: override.sourceUrl };
+    const linked = feature.sourceUrl || feature.wikipediaUrl;
+    return {
+      ...feature,
+      funFact: override.text,
+      funFactSourceUrl: override.sourceUrl,
+      ...(linked ? {} : { sourceUrl: override.sourceUrl }),
+    };
   });
   const seen = new Set(applied);
   return { features: next, applied, missing: overrides.map(o => o.id).filter(id => !seen.has(id)) };
@@ -263,4 +302,105 @@ export function applyOverrides<T extends CardAuditInput & { sourceUrl?: string }
  *  sentence, so a drive-by card no longer leads with the bare definition. */
 export function overrideOpening(override: CardOverride): string {
   return sentencesOf(override.text.trim())[0] || '';
+}
+
+// ---- Manual POIs that exist only in the model catalogue ----
+
+/** The slice of a `manual-poi-data.json` entry this module reads and writes. */
+export interface ManualPoiFact {
+  modelId: string;
+  landmarkId?: string;
+  name: string;
+  sourceUrl: string;
+  description?: string;
+  funFact?: string;
+  [key: string]: unknown;
+}
+
+export interface ManualModelRef {
+  id: string;
+  landmarkId?: string;
+  name: string;
+}
+
+/**
+ * Kit statues such as Het Lieverdje or the Spinoza monument have no record in
+ * `landmarks.json`: `mergeManualPoiFeatures` builds their landmark from the
+ * model catalogue and `manual-poi-data.json`. An override for one of them goes
+ * into that file's `funFact` (with `sourceUrl`), the slot the merge already
+ * reads, creating the entry when the model has none. Overrides whose id is in
+ * `extractIds` belong to `applyOverrides` and are left alone. Idempotent.
+ */
+export function applyManualPoiOverrides(
+  facts: readonly ManualPoiFact[],
+  overrides: readonly CardOverride[],
+  models: readonly ManualModelRef[],
+  extractIds: ReadonlySet<string>,
+): { facts: ManualPoiFact[]; applied: string[] } {
+  const modelByLandmark = new Map(models.filter(model => model.landmarkId).map(model => [model.landmarkId!, model]));
+  const next = facts.map(fact => ({ ...fact }));
+  const applied: string[] = [];
+  for (const override of overrides) {
+    if (extractIds.has(override.id)) continue;
+    const model = modelByLandmark.get(override.id);
+    if (!model) continue;
+    const existing = next.find(fact => fact.modelId === model.id);
+    if (existing) {
+      existing.funFact = override.text;
+      existing.sourceUrl = override.sourceUrl;
+    } else {
+      next.push({ modelId: model.id, landmarkId: override.id, name: model.name, funFact: override.text, sourceUrl: override.sourceUrl });
+    }
+    applied.push(override.id);
+  }
+  return { facts: next, applied };
+}
+
+// ---- Cards that open with nothing to say ----
+
+/** The fields `buildLandmarks` turns into the card `isWorthACard` judges. */
+export interface CardOpenInput extends CardAuditInput {
+  wikipediaImageUrl?: string;
+  wikipediaUrl?: string;
+}
+
+/** Would the game open this card, on a drive-by or a click? Reproduces
+ *  `buildLandmarks` (`splitDetail(funFact || wikipediaExtract)`, the photo,
+ *  the article link) and asks `isWorthACard`. A photo or an article link
+ *  alone is enough, which is how a card with no text still opens. */
+export function cardOpens(feature: CardOpenInput): boolean {
+  const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || '');
+  return isWorthACard({ detail, longDetail, imageUrl: feature.wikipediaImageUrl || '', wikipediaUrl: feature.wikipediaUrl || '' });
+}
+
+/** A card that opens with nothing (or only a Wikidata one-liner) on it, kept
+ *  on purpose. The reason says why no sourced text exists yet. */
+export interface CardAllowance {
+  id: string;
+  name: string;
+  reason: string;
+}
+
+export interface HollowCard {
+  id: string;
+  name: string;
+  issue: 'empty' | 'stub';
+  text: string;
+}
+
+/** Cards that open but say nothing worth saying, minus the allowlist: the
+ *  `test:landmark-cards` gate. Each one needs an override or an allowance. */
+export function hollowCardsThatOpen(
+  features: readonly CardOpenInput[],
+  allowances: readonly CardAllowance[] = [],
+): HollowCard[] {
+  const allowed = new Set(allowances.map(allowance => allowance.id));
+  const hollow: HollowCard[] = [];
+  for (const feature of features) {
+    if (allowed.has(feature.id) || !cardOpens(feature)) continue;
+    const card = auditCard(feature);
+    const issue = card.issues.includes('empty') ? 'empty' : card.issues.includes('stub') ? 'stub' : null;
+    if (issue) hollow.push({ id: feature.id, name: feature.name, issue, text: card.text });
+  }
+  return hollow;
 }
