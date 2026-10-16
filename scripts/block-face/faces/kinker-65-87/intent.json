@@ -18,90 +18,7 @@
   "note": "Kinkerstraat 65-87 (odd side, to Bilderdijkkade), all 1893. Three gabled fronts (65, 67 stepped; 69 pointed, the left part of BAG pand 69-73), the 6-axis 71-73 front with blocked arches and two dormers, and the narrow row 75-87 (3 axes on 3.3-4.4 m, brick-relief tympana, frieze, pediment dormers, tall shop grounds). Strip 2024-11-29 (low sun)."
  },
  "types": [
-  {
-   "schemaVersion": 1,
-   "kind": "house-type",
-   "id": "kinker-1893-plain-step-gable",
-   "district": "oud-west",
-   "description": "Face-local (kinker-65-87 pands 1-2, Kinkerstraat 65 and 67, 1893): plain red-brown brick without speklagen or painted courses, flat heads, iron anchors, 4 upper storeys, a stepped gable with one attic light under a relieving arch. Inline because no library type has it: plain-brick has no gable crown, and the gabled types (neo-renaissance, brick-arched) carry speklagen or painted courses that a placement cannot remove (speklagen needs bands speklagen; bandLines needs bands painted).",
-   "fit": {
-    "widthM": [
-     5.5,
-     6.3
-    ],
-    "storeys": [
-     5
-    ]
-   },
-   "body": {
-    "storeys": 5,
-    "bays": 3,
-    "cornice": "none",
-    "windows": "t-window",
-    "windowHeights": [
-     0.7,
-     0.72,
-     0.72,
-     0.72,
-     0.7
-    ]
-   },
-   "crowns": {
-    "step-2": {
-     "gable": "step",
-     "crownSteps": 2,
-     "crownRise": 1.3,
-     "atticWindows": 1,
-     "note": "65: two steps a side, narrow top"
-    },
-    "step-3": {
-     "gable": "step",
-     "crownSteps": 3,
-     "crownRise": 1.2,
-     "atticWindows": 1,
-     "note": "67: three steps a side"
-    }
-   },
-   "palettes": {
-    "red-brown-65-67": {
-     "brick": "#77553a",
-     "frame": "#b8bfa4",
-     "door": "black",
-     "stone": "#bac1a5",
-     "cornice": "#b8bfa4"
-    }
-   },
-   "roof": {
-    "material": "slate"
-   },
-   "rhythm": {
-    "bays": "2-3 axes",
-    "identicalBays": "equal axes",
-    "windowsPerStorey": "ground: shop | 1-4: 2-3",
-    "symmetry": "symmetric above the ground",
-    "groundFloor": "shop",
-    "signage": "per house",
-    "roofline": "stepped gable with one attic light",
-    "photoGables": 1,
-    "schemaLimits": [
-     "iron wall anchors",
-     "relieving arch over the attic light"
-    ]
-   },
-   "evidence": [
-    {
-     "face": "kinker-65-87",
-     "pands": [
-      "106015",
-      "156997"
-     ],
-     "citation": "strip.jpg 2024-11-29 pands 1-2: plain brick, flat heads, anchors, stepped gables"
-    }
-   ],
-   "notes": [
-    "Palette: mean of palette-from-strip walls #714a2d and #7e5e40 (sunlit 2024-11-29). Candidate for the Oud-West library (types lane)."
-   ]
-  },
+  "kinker-1893-plain-step-gable",
   "kinker-1895-painted-band",
   "kinker-1890-plain-brick"
  ],
@@ -910,6 +827,11 @@
    "type": {
     "type": "kinker-1890-plain-brick",
     "crown": "pediment-dormer",
+    "paletteOverrides": {
+     "brick": "#74705e",
+     "wallTint": "measured",
+     "whitePoint": "#a8ad9a"
+    },
     "storeys": 5,
     "overrides": {
      "windowHead": {
@@ -947,8 +869,7 @@
      "windowShare": 0.6,
      "bays": 2,
      "palette": {
-      "band": "#7a4a30",
-      "brick": "#6f5a40"
+      "band": "#7a4a30"
      }
     },
     "ground": {
