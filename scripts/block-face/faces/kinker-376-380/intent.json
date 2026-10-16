@@ -1,0 +1,268 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-376-380",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-376-380/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 380-376 (even side, 1902), 2024-12-11 overcast strip: three 3-axis houses of 5 storeys continuing the 374-364 row, plain brick, segmental heads with a small white keystone, a round-arched outer window on storey 1, one white pediment dormer each (kinker-1890-plain-brick by eye; the cluster put them on kinker-1902-balcony-axis, but there is no balcony stack)."
+ },
+ "types": [
+  "kinker-1890-plain-brick"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160877",
+   "slug": "kinker-160877",
+   "address": "Kinkerstraat 380",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#533f31",
+     "evidence": "palette-from-strip.ts --face=kinker-376-380: wall median #533f31 on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1f1f1f",
+      "fascia": true,
+      "name": "Yarnhugs",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#1f1f1f",
+      "evidence": "strip.jpg pand 1: black fascia and pui, a wool display, lettering not legible; OSM shop=clothes Yarnhugs"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Yarnhugs",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 12006420258,
+     "name": "Yarnhugs"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): 3 axes, 4 upper storeys, segmental heads with white keystones, pediment dormer",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "one round-arched outer window on storey 1"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158308",
+   "slug": "kinker-158308",
+   "address": "Kinkerstraat 378",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#55402f",
+     "evidence": "palette-from-strip.ts --face=kinker-376-380: wall median #55402f on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "De Kinker",
+      "sign": {
+       "text": "De Kinker",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#1d3b78"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 2: white pui, blue sign board lettered \"... DE KINKER\"; OSM shop=tobacco De Kinker"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "De Kinker",
+    "category": "shop=tobacco",
+    "osm": {
+     "type": "node",
+     "id": 12006431601,
+     "name": "De Kinker"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): as 380",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "one round-arched outer window on storey 1"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165323",
+   "slug": "kinker-165323",
+   "address": "Kinkerstraat 376",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#533d2c",
+     "evidence": "palette-from-strip.ts --face=kinker-376-380: wall median #533d2c on the 2024-12-11 strip"
+    },
+    "storeys": 5,
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#e8641e",
+      "fascia": true,
+      "name": "Ria",
+      "sign": {
+       "text": "Ria",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#e8641e"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 3: orange fascia \"ria Money Transfer\"; OSM amenity=money_transfer Ria"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Ria",
+    "category": "amenity=money_transfer",
+    "osm": {
+     "type": "node",
+     "id": 12006443305,
+     "name": "Ria"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): as 380",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "one round-arched outer window on storey 1"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "160877: one round-arched outer window on storey 1",
+  "158308: one round-arched outer window on storey 1",
+  "165323: one round-arched outer window on storey 1"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ }
+}

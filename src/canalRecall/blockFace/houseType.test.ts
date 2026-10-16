@@ -67,6 +67,24 @@ test('a type resolves to a valid canal-house intent; modules give one front per 
   assert.ok(r.deviations.some(d => /module 0: balconies/.test(d)));
 });
 
+test('measuredPalette: per-pand measured strip colours go over the named palette; evidence and hex are required', () => {
+  const t: HouseTypeIntent = {schemaVersion: 1, kind: 'house-type', id: 't', description: 'x', body: {storeys: 4, bays: 3, cornice: 'simple', windows: 'sash'},
+    crowns: {plain: {gable: 'cornice'}}, palettes: {p: {brick: '#604e3d', frame: '#a7a89d', door: 'black', stone: '#acaf9f'}}, roof: {material: 'slate'}, rhythm: {}, evidence: [{face: 'f', pands: ['1'], citation: 'c'}]};
+  const plain = resolvePlacement(t, {type: 't'}, 'Kinkerstraat');
+  assert.deepEqual(plain.design.palette, t.palettes.p, 'absent: the named palette unchanged');
+  assert.doesNotMatch(plain.design.notes!.join(' '), /measured/);
+  const r = resolvePlacement(t, {type: 't', measuredPalette: {brick: '#635e52', evidence: 'palette-from-strip wall median'}}, 'Kinkerstraat');
+  assert.deepEqual(r.design.palette, {...t.palettes.p, brick: '#635e52'});
+  assert.match(r.design.notes![0], /palette p \+ measured brick #635e52/);
+  const face = load('kinker-2-30');
+  const bad = structuredClone(face);
+  (bad.houses[0].type as any).measuredPalette = {brick: 'red'};
+  assert.throws(() => validateBlockFace(bad), /measuredPalette: needs evidence[\s\S]*measuredPalette.brick: a #rrggbb colour/);
+  const bad2 = structuredClone(face);
+  (bad2.houses[0].type as any).measuredPalette = {wallMaterial: 'stucco', evidence: 'e'};
+  assert.throws(() => validateBlockFace(bad2), /measuredPalette.wallMaterial: not a colour slot/);
+});
+
 test('faces without types resolve exactly as before (no type fields leak into designs)', () => {
   const face = validateBlockFace(load('marnix-124-138'));
   for (const i of houseIntents(face)) for (const f of i.fronts) { assert.equal(f.gridAt, undefined); assert.equal(f.dormerAt, undefined); assert.equal(f.souterrain, undefined); }

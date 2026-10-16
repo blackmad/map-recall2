@@ -1,0 +1,1124 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-206-242",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-206-242/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 242-206 (even side, 1896-1904), 2024-12-11 overcast strip. 242-234: five narrow kinker-1895-painted-band houses (242 and 240 black-painted, 238-234 dark brown), white blocked heads, pediment dormers and two neck gables, under one long curved white-and-blue canopy. 232-212: plain-brick fronts (2 axes per ~4 m), 224 with a white-clad attic storey, 222-212 over the cream Action/Etos shop front with wide arched first-floor shop windows; 214-212 with white blocked heads. 210-206: kinker-1890-brick-arched with white courses and brick dormer towers."
+ },
+ "types": [
+  "kinker-1895-painted-band",
+  "kinker-1890-plain-brick",
+  "kinker-1890-brick-arched"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012236953",
+   "slug": "kinker-236953",
+   "address": "Kinkerstraat 242",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "pediment-dormer",
+    "palette": "black-painted",
+    "measuredPalette": {
+     "brick": "#1f2420",
+     "evidence": "strip 2024-12-11: wall-colour sampler on the review sheet: photo median #1c211e; palette-from-strip.ts classes the black paint as glass and reports #575f57"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1f2021",
+      "fascia": true,
+      "name": "Sun City",
+      "sign": {
+       "text": "Sun City",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#1f2021"
+      },
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 1: black pui, \"SUN CITY\" in white over the window; OSM shop=beauty Sun City"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "Sun City",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 4711284143,
+     "name": "Sun City"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): black-painted brick, 2 axes, white blocked heads (springers + keystone), white pediment dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012237297",
+   "slug": "kinker-237297",
+   "address": "Kinkerstraat 240",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "neck-gable",
+    "palette": "black-painted",
+    "measuredPalette": {
+     "brick": "#2a302d",
+     "evidence": "strip 2024-12-11: wall-colour sampler on the review sheet: photo median #2c322f; palette-from-strip.ts classes the black paint as glass and reports #585f5a"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2c30",
+      "fascia": false,
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-dutch",
+       "colour": "#d6d8d5"
+      },
+      "evidence": "strip.jpg pand 2: under the curved white-and-blue canopy; a long curved white canopy with a blue stripe runs over 240-234 at the first-floor sills"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "under the shared canopy, no lettering; BAG bijeenkomstfunctie"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): black-painted brick, 2 axes, blocked heads, neck gable with one attic light; the canopy hides the storey-1 windows",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012160838",
+   "slug": "kinker-160838",
+   "address": "Kinkerstraat 238",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "pediment-dormer",
+    "palette": "black-painted",
+    "measuredPalette": {
+     "brick": "#2c261d",
+     "evidence": "strip 2024-12-11: painted dark brown (the brick slot clamps lightness at 0.30 and rendered #504535); wall-colour sampler on the review sheet: photo median #282218 (near-black brown); palette-from-strip.ts classes the dark wall as glass and reports #757a72"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2c30",
+      "fascia": false,
+      "name": "Asian King",
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-dutch",
+       "colour": "#d6d8d5"
+      },
+      "evidence": "strip.jpg pand 3: under the shared canopy; OSM amenity=fast_food Asian King"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Asian King",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2809215643,
+     "name": "Asian King"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): dark brown brick, 2 axes, blocked heads, pediment dormer",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012165141",
+   "slug": "kinker-165141",
+   "address": "Kinkerstraat 236",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "pediment-dormer",
+    "palette": "dark-brown",
+    "measuredPalette": {
+     "brick": "#5a4e41",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #5a4e41 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2c30",
+      "fascia": false,
+      "name": "American Nails",
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-dutch",
+       "colour": "#d6d8d5"
+      },
+      "evidence": "strip.jpg pand 4: under the shared canopy; OSM shop=beauty American Nails"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "photoDate": "2024-12-11",
+    "name": "American Nails",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 12006318922,
+     "name": "American Nails"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (zoom): brown brick, 2 axes, blocked heads, pediment dormer",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012152992",
+   "slug": "kinker-152992",
+   "address": "Kinkerstraat 234",
+   "type": {
+    "type": "kinker-1895-painted-band",
+    "crown": "neck-gable",
+    "palette": "dark-brown",
+    "measuredPalette": {
+     "brick": "#574333",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #574333 on the 2024-12-11 strip"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2c30",
+      "fascia": false,
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-dutch",
+       "colour": "#d6d8d5"
+      },
+      "evidence": "strip.jpg pand 5: end of the shared canopy, \"FOOD DEALS\" posters in the window"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "\"FOOD DEALS\" posters, no name; BAG bijeenkomstfunctie"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (zoom): brown brick, 2 axes, blocked heads, neck gable with one attic light",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012163768",
+   "slug": "kinker-163768",
+   "address": "Kinkerstraat 232",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4b4034",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #4b4034 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#25467e",
+      "fascia": false,
+      "name": "Monopoly",
+      "entrance": "left",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "rigid",
+       "colour": "#c9cbc8"
+      },
+      "evidence": "strip.jpg pand 6: grey canopy with a blue stripe over a blue-framed shop; no legible name; OSM amenity=fast_food Monopoly"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Monopoly",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2452226916,
+     "name": "Monopoly"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6 (zoom): plain brick, 2 axes, flat heads, dentil cornice, pediment dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012162560",
+   "slug": "kinker-162560",
+   "address": "Kinkerstraat 230",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4c4035",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #4c4035 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#25467e",
+      "fascia": false,
+      "name": "Cartagena",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "rigid",
+       "colour": "#c9cbc8"
+      },
+      "evidence": "strip.jpg pand 7: the same grey canopy, yellow and blue signs (not legible); OSM amenity=restaurant Cartagena"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Cartagena",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2809215630,
+     "name": "Cartagena"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7 (zoom): plain brick, 2 axes, flat heads, pediment dormer",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012161056",
+   "slug": "kinker-161056",
+   "address": "Kinkerstraat 228",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4c3f33",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #4c3f33 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#ece6d6",
+      "fascia": false,
+      "name": "ô mai café",
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#ece6d6"
+      },
+      "glazing": "transom",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 8: cream timber pui with a transom row; no legible name; OSM amenity=restaurant \"ô mai café\""
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "ô mai café",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12006378074,
+     "name": "ô mai café"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8 (zoom): plain brick, 2 axes, flat heads, consoled cornice, pediment dormer",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012166034",
+   "slug": "kinker-166034",
+   "address": "Kinkerstraat 224",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "none",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4c4034",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #4c4034 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#4a2a20",
+        "fascia": false,
+        "name": "Fat Phill's",
+        "sign": {
+         "text": "Fat Phill's",
+         "textColour": "white",
+         "mount": "wall"
+        },
+        "entrance": "right",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "#4a2a20"
+        },
+        "glazing": "transom",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 9 left module: dark red-brown timber front with a transom row, white neon script \"Fat Phill's\"; no OSM node"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#4a2a20",
+        "fascia": false,
+        "entrance": "left",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "#4a2a20"
+        },
+        "glazing": "transom",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 9 right module: the same timber front"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Fat Phill's",
+    "category": "amenity=restaurant",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "\"BURGERS\" on the transom boards"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9 (zoom): 4 axes over two modules, plain brick, flat heads, a tall ground storey, a white weatherboarded attic storey with two wide windows on the roof. The cluster type (kinker-1890-brick-arched) is overruled: no blocked arches or courses",
+    "photoRows": [
+     4,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "white weatherboarded attic storey with two wide windows standing on the cornice (drawn as the 3DBAG roof mass)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236982",
+   "slug": "kinker-236982",
+   "address": "Kinkerstraat 222",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#473d2f",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #473d2f on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": [
+      2,
+      1,
+      2,
+      2
+     ],
+     "storeyWindows": {
+      "1": "plain"
+     },
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1
+      ]
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#ebe4d2",
+      "fascia": false,
+      "name": "Action",
+      "sign": {
+       "text": "Action",
+       "textColour": "#1d3b8c",
+       "mount": "wall",
+       "span": 0.5
+      },
+      "entrance": "none",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#8f9ea8"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 10: cream pui, small \"ACTION\" sign, graffiti shutter; OSM node 2452226921 (in 212-216) shop=variety_store; one cream-painted shop front with pilasters runs under 222-212 (Action, Etos)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Action",
+    "category": "shop=variety_store",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "osm": {
+     "type": "node",
+     "id": 2452226921,
+     "name": "Action"
+    },
+    "note": "OSM node mapped inside 212-216; the store runs under 222-212; OSM also has a vacant shop node here"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10 (zoom): plain brick, 2 axes, flat heads with anchors, a wide basket-arched first-floor shop window, dentil cornice, pediment dormer",
+    "photoRows": [
+     2,
+     1,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012237261",
+   "slug": "kinker-237261",
+   "address": "Kinkerstraat 220",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#493f31",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #493f31 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": [
+      2,
+      1,
+      2,
+      2
+     ],
+     "storeyWindows": {
+      "1": "plain"
+     },
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1
+      ]
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#ebe4d2",
+      "fascia": false,
+      "entrance": "none",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 11: cream pui of the Action store; one cream-painted shop front with pilasters runs under 222-212 (Action, Etos)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "part of the Action store front; no BAG non-residential unit on this pand"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 11 (zoom): as 222",
+    "photoRows": [
+     1,
+     1,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236886",
+   "slug": "kinker-236886",
+   "address": "Kinkerstraat 218",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4f4031",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #4f4031 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": [
+      2,
+      1,
+      2,
+      2
+     ],
+     "storeyWindows": {
+      "1": "plain"
+     },
+     "windowHead": {
+      "kind": "segmental",
+      "storeys": [
+       1
+      ]
+     }
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#ebe4d2",
+      "fascia": false,
+      "entrance": "none",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 12: cream pui of the Action store; one cream-painted shop front with pilasters runs under 222-212 (Action, Etos)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "photo-only",
+    "note": "part of the Action store front; no BAG non-residential unit on this pand"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 12 (zoom): as 222, a lighter consoled cornice",
+    "photoRows": [
+     1,
+     1,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012233589",
+   "slug": "kinker-233589",
+   "address": "Kinkerstraat 212-216",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#4c4233",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #4c4233 on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bays": 2
+    },
+    "modules": [
+     {
+      "overrides": {
+       "bays": [
+        2,
+        1,
+        2,
+        2
+       ],
+       "storeyWindows": {
+        "1": "plain"
+       },
+       "windowHead": {
+        "kind": "segmental",
+        "storeys": [
+         1
+        ]
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#ebe4d2",
+        "fascia": true,
+        "name": "Action",
+        "sign": {
+         "text": "Action",
+         "textColour": "#1d3b8c",
+         "mount": "fascia",
+         "background": "#f4f2ec"
+        },
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 13 left module (216): \"ACTION\" fascia over the store entrance"
+       }
+      }
+     },
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "segmental",
+        "archRing": {
+         "colour": "stone",
+         "style": "blocks",
+         "keystone": true
+        }
+       },
+       "windowSurround": "sill"
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#ebe4d2",
+        "fascia": false,
+        "entrance": "none",
+        "residentialDoor": {
+         "side": "right",
+         "colour": "#8f9ea8"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 13 middle module (214): cream pui, a grey house door"
+       }
+      }
+     },
+     {
+      "overrides": {
+       "windowHead": {
+        "kind": "segmental",
+        "archRing": {
+         "colour": "stone",
+         "style": "blocks",
+         "keystone": true
+        }
+       },
+       "windowSurround": "sill"
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#ebe4d2",
+        "fascia": false,
+        "entrance": "none",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 13 right module (212): cream pui display window"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Action",
+    "category": "shop=variety_store",
+    "osm": {
+     "type": "node",
+     "id": 2452226921,
+     "name": "Action"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Etos (OSM node 2452226913, mapped here) is lettered over 208-210"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 13 (zoom): left module like 222 (arched first-floor shop window), two modules with white blocked segmental heads and white sill blocks; three pediment dormers",
+    "photoRows": [
+     3,
+     5,
+     6,
+     6,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+     "white sill-course blocks between the windows (dotted course)",
+     "iron wall anchors"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160871",
+   "slug": "kinker-160871",
+   "address": "Kinkerstraat 208-210",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "tower",
+    "palette": "red-brown-sunlit",
+    "measuredPalette": {
+     "brick": "#473b2f",
+     "evidence": "palette-from-strip.ts --face=kinker-206-242: wall median #473b2f on the 2024-12-11 strip"
+    },
+    "overrides": {
+     "bandLines": [
+      "sill",
+      "transom",
+      "head"
+     ],
+     "bandHeights": {
+      "sill": 0.1,
+      "transom": 0.1,
+      "head": 0.1
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#ebe4d2",
+        "fascia": false,
+        "name": "Etos",
+        "sign": {
+         "text": "Etos",
+         "textColour": "#1f1f1f",
+         "mount": "wall",
+         "span": 0.5
+        },
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 14 left module: script \"Etos\" over the cream pui; OSM node 2452226913 shop=chemist (mapped in 212-216)"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#ebe4d2",
+        "fascia": false,
+        "entrance": "none",
+        "residentialDoor": {
+         "side": "left",
+         "colour": "#8f9ea8"
+        },
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 14 right module: cream pui, grey house door"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Etos",
+    "category": "shop=chemist",
+    "bag": [
+     "overige gebruiksfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "osm": {
+     "type": "node",
+     "id": 2452226913,
+     "name": "Etos"
+    },
+    "note": "OSM node mapped inside 212-216; the lettering is over 208-210"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 14 (zoom): 4 axes over two modules, many white courses per storey, blocked segmental heads, white console blocks, two brick dormer towers with a round-arched light",
+    "photoRows": [
+     3,
+     4,
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "white console blocks under the sill course at the module ends",
+     "tower dormers have a round-arched light and a corbelled top"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159816",
+   "slug": "kinker-159816",
+   "address": "Kinkerstraat 206",
+   "type": {
+    "type": "kinker-1890-brick-arched",
+    "crown": "tower",
+    "palette": "red-brown-sunlit",
+    "measuredPalette": {
+     "brick": "#54402f",
+     "evidence": "strip 2024-12-11: wall-colour sampler on the review sheet: photo median #513c2e; the palette-from-strip median #584e3f rendered too grey"
+    },
+    "mirror": true,
+    "overrides": {
+     "bays": 3
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#1d1c1c",
+      "fascia": true,
+      "name": "Tex & Leder",
+      "sign": {
+       "text": "Tex & Leder",
+       "textColour": "white",
+       "mount": "fascia",
+       "background": "#1d1c1c"
+      },
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#3a3a38"
+      },
+      "evidence": "strip.jpg pand 15: black front and awning, \"Tex & Leder\" lettered; OSM shop=clothes Tex Leder"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Tex Leder",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 4714011114,
+     "name": "Tex Leder"
+    },
+    "bag": [
+     "industriefunctie",
+     "woonfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "OSM also has Imperial barbershop on this pand"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 15 (zoom): 3 axes, white sill and transom courses, small pediment hoods on storey 2, round-arched blocked heads on storey 1, a brick dormer tower over the right axis",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "small white pediment hoods over the storey-2 windows",
+     "the tower dormer stands over one axis; the type tower spans two"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "166034: white weatherboarded attic storey with two wide windows standing on the cornice (drawn as the 3DBAG roof mass)",
+  "236982: first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+  "236982: iron wall anchors",
+  "237261: first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+  "237261: iron wall anchors",
+  "236886: first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+  "236886: iron wall anchors",
+  "233589: first-floor shop window: one wide basket-arched opening with a panel; drawn as one wide plain segmental window",
+  "233589: white sill-course blocks between the windows (dotted course)",
+  "233589: iron wall anchors",
+  "160871: white console blocks under the sill course at the module ends",
+  "160871: tower dormers have a round-arched light and a corbelled top",
+  "159816: small white pediment hoods over the storey-2 windows",
+  "159816: the tower dormer stands over one axis; the type tower spans two",
+  "233589: the 3DBAG roof partition of this deep pand fails the library footprint check whatever the design; recipe roof for this pand only"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012166034",
+    "front": "m0",
+    "stripRow": 225,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 9: top of the cornice under the weatherboarded attic at row 225 (14.5 m); 3DBAG eaves 16.7 m is the attic"
+   },
+   {
+    "pand": "0363100012166034",
+    "front": "m1",
+    "stripRow": 225,
+    "frontRoof": {},
+    "evidence": "strip.jpg pand 9: top of the cornice under the weatherboarded attic at row 225 (14.5 m); 3DBAG eaves 16.7 m is the attic"
+   }
+  ],
+  "roof": {
+   "source": "recipe",
+   "keepSurvey": [
+    "0363100012236953",
+    "0363100012237297",
+    "0363100012160838",
+    "0363100012165141",
+    "0363100012152992",
+    "0363100012163768",
+    "0363100012162560",
+    "0363100012161056",
+    "0363100012166034",
+    "0363100012236982",
+    "0363100012237261",
+    "0363100012236886",
+    "0363100012160871",
+    "0363100012159816"
+   ],
+   "evidence": "212-216 (the Action store, 32 m deep with flat rear wings): its 3DBAG LoD2.2 roof partition does not preserve the surveyed footprint (library error \"Roof partition must preserve surveyed footprint and courtyard area\" with any design), so its roof is generated from the design; the strip shows a slate mansard with three dormers behind the cornice there. Every other pand keeps its 3DBAG roof."
+  }
+ }
+}

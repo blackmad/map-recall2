@@ -1,0 +1,331 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kinker-120-138",
+ "street": "Kinkerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/kinker-120-138/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (kinkerstraat even-side faces lane)",
+  "passes": 1,
+  "note": "Kinkerstraat 138-120 (even side, 1895), 2024-12-11 overcast strip. 126-138 is one BAG pand of seven street modules: 138 and 134-130 plain brick with flat heads and white pediment dormers, 126-128 a symmetric front with two pointed street gables over round-headed end axes and two dormers between, a timber shopfront with dark piers across. 122 and 120: 3-axis plain brick with pediment dormers. All on kinker-1890-plain-brick by eye (the cluster put 126-138 and 120 on kinker-1902-balcony-axis, NCC 0.22/0.35: there are no balconies)."
+ },
+ "types": [
+  "kinker-1890-plain-brick"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012233461",
+   "slug": "kinker-233461",
+   "address": "Kinkerstraat 126-138",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#544232",
+     "evidence": "palette-from-strip.ts --face=kinker-120-138: wall median #544232 on the 2024-12-11 strip"
+    },
+    "storeys": 4,
+    "overrides": {
+     "cornice": "simple"
+    },
+    "modules": [
+     {
+      "share": 0.146,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#2a2826",
+        "fascia": true,
+        "name": "Legerdump",
+        "sign": {
+         "text": "Legerdump",
+         "textColour": "#1f1f1f",
+         "mount": "fascia",
+         "background": "#e7c22a"
+        },
+        "entrance": "right",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "strip.jpg pand 1 module 1 (138): yellow fascia \"...ERDUMP\" (Legerdump); OSM node 2772298382 shop=outdoor"
+       }
+      }
+     },
+     {
+      "share": 0.15,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#d9d6cc",
+        "fascia": true,
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#ece9e0",
+        "evidence": "module 2 (134): white fascia, grey roller shutters down"
+       }
+      }
+     },
+     {
+      "share": 0.15,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#d9d6cc",
+        "fascia": true,
+        "entrance": "right",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#ece9e0",
+        "evidence": "module 3 (130-132): white fascia, shutters, a parking sign in front"
+       }
+      }
+     },
+     {
+      "share": 0.113,
+      "crown": "none",
+      "overrides": {
+       "bays": 2,
+       "windowHead": {
+        "kind": "round"
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#6b4a2a",
+        "fascia": true,
+        "entrance": "left",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#6b4a2a",
+        "evidence": "module 4 (128 gable axis): timber shopfront between dark piers"
+       }
+      }
+     },
+     {
+      "share": 0.166,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#6b4a2a",
+        "fascia": true,
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#6b4a2a",
+        "evidence": "module 5: timber shopfront, Pets Place display"
+       }
+      }
+     },
+     {
+      "share": 0.166,
+      "overrides": {
+       "bays": 3
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#6b4a2a",
+        "fascia": true,
+        "name": "Pets Place",
+        "sign": {
+         "text": "Pets Place",
+         "textColour": "white",
+         "mount": "fascia",
+         "background": "#d2232a"
+        },
+        "entrance": "centre",
+        "glazing": "split",
+        "stallriser": "low",
+        "evidence": "module 6: red \"pets place\" sign board; OSM node 12160371750 shop=pet"
+       }
+      }
+     },
+     {
+      "share": 0.109,
+      "crown": "none",
+      "overrides": {
+       "bays": 2,
+       "windowHead": {
+        "kind": "round"
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "#6b4a2a",
+        "fascia": true,
+        "entrance": "right",
+        "glazing": "split",
+        "stallriser": "low",
+        "fasciaColour": "#6b4a2a",
+        "evidence": "module 7 (126 gable axis): timber shopfront, a timber door"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "name": "Legerdump",
+    "category": "shop=outdoor",
+    "osm": {
+     "type": "node",
+     "id": 2772298382,
+     "name": "Legerdump"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie",
+     "overige gebruiksfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Pets Place (OSM 12160371750, lettered) across 126-128; Fred's Koffie (OSM 11049877818) not visible on the strip"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1 (zoom): seven street modules 3+3+3+2+3+3+2 axes, flat heads, round heads on the gable axes of 126-128, pediment dormers (one per 3-axis module), two pointed street gables with one light each",
+    "photoRows": [
+     12,
+     19,
+     19,
+     19,
+     5
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "two pointed brick street gables over the end axes of 126-128 (no plain-brick crown for a point gable; left off)",
+     "timber shopfront with dark stone piers across 126-128 drawn as plain shop bays"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236198",
+   "slug": "kinker-236198",
+   "address": "Kinkerstraat 122",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#41372a",
+     "evidence": "palette-from-strip.ts --face=kinker-120-138: wall median #41372a on the 2024-12-11 strip"
+    },
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#3a2420",
+      "fascia": true,
+      "name": "Paindemie",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "fasciaColour": "#3a2420",
+      "evidence": "strip.jpg pand 2: dark red-brown front, a green light, lettering not legible; OSM node 2441927948 amenity=fast_food Paindemie; the zoom crop (other date) shows LAMERA grill restaurant"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-11",
+    "name": "Paindemie",
+    "category": "amenity=fast_food",
+    "osm": {
+     "type": "node",
+     "id": 2441927948,
+     "name": "Paindemie"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "zoom crop of another date lettered LAMERA"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (zoom): 3 axes, flat heads, white pediment dormer. Cluster plain-brick kept",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012153271",
+   "slug": "kinker-153271",
+   "address": "Kinkerstraat 120",
+   "type": {
+    "type": "kinker-1890-plain-brick",
+    "crown": "pediment-dormer",
+    "palette": "red-brown",
+    "measuredPalette": {
+     "brick": "#594333",
+     "evidence": "palette-from-strip.ts --face=kinker-120-138: wall median #594333 on the 2024-12-11 strip"
+    },
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": false,
+      "entrance": "right",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "white"
+      },
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "strip.jpg pand 3: white door left, the shop window boarded in orange"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-11",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "window boarded on the strip; the zoom crop (other date) shows In Gold We Trust; the OSM nodes Glam by Mooi and Knip je Knap are 116 (lettered there)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3 (zoom): as 122. Cluster kinker-1902-balcony-axis overruled: no balconies",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0
+   }
+  }
+ ],
+ "limitations": [
+  "233461: two pointed brick street gables over the end axes of 126-128 (no plain-brick crown for a point gable; left off)",
+  "233461: timber shopfront with dark stone piers across 126-128 drawn as plain shop bays"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": []
+ }
+}

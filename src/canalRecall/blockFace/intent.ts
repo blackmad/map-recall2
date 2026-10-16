@@ -86,6 +86,9 @@ export interface BlockFaceIntent {
    * (`scripts/block-face/types/<district>/<id>.json`, blockFace/typeLibrary.ts). Absent = every house has its own design or sameAs. */
   types?: (HouseTypeIntent | string)[];
   houses: BlockFaceHouse[];
+  /** What the photo shows that no type and no kit key can say, per pand (`<pand6>: <what>`); left out of the model rather
+   * than approximated with the nearest option. Documentation only (not read by fit/compile). */
+  limitations?: string[];
   continuity: {
     /** `shared`: one street level for the face (median 3DBAG ground). */
     streetLevel: 'shared' | 'stepped';
