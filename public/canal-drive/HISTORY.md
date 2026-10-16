@@ -1,5 +1,52 @@
 # Canal Recall — what is built
 
+## The overview-to-city switch is a blend: worst step 70 % → 2 % of pixels over ΔE 20 (2026-10-16)
+
+Lane `lane/overview-transition-20261016` (b91c77955), answering "the
+transition from the map-coloured flat overview to our shaded city is
+jarring". `src/canalRecall/overviewTransition/blend.ts` defines one blend
+value, 0 at map zoom 14 and 1 at 15.6 on a smooth S-curve, with
+hysteresis for whether the city draws at all (on above 0.02, off below
+0.005); `?transition=0` or `window.__canalRecallTransition = false`
+restores the old hard switches exactly. Basemap: the own-ground palette
+at every zoom, not only under resident cells; `basemapOverview.ts` gives
+the map's protected areas the land tone (the UNESCO canal belt had
+turned the Grachtengordel green) and the flat footprints the city's roof
+tone (`CITY_ROOF`), kept until 16.2 instead of ending at 14 (that
+cut-off was a ΔL −28 jump of its own). Own ground fades in with real
+alpha over the first 40 % of the blend while still flat-coloured (a
+screen-door dither re-randomised under the moving camera, ~6 % sparkle
+per step, rejected), opaque once in, its lit textured colour mixing in by
+the blend. Buildings appear in the footprint tone and take their own
+colour across the window (`cityTone`/`cityFlat` uniforms in both
+shaders). Shadow intensity scales with the blend (`SharedFrame`
+`shadowRamp`) instead of switching on at zoom 15; the dark footprint
+raster of the overview is gone by 14. Nothing renders twice. Measured
+(desktop 1280×800, chase, flight from 0.15× driving zoom over 1.9 s):
+before, the switch step at z15 moved 80.7 % (Westerstraat) and 83.0 %
+(Kinkerstraat) of pixels over ΔE 20 with whole-frame median ΔL −86 and
+−91; camera motion alone moves 40–46 % between 100 ms frames, so the
+switch is measured by a straight-down 0.1-zoom sweep with motion
+cancelled: worst step 69.7 % / 69.3 % before, 2.4 % / 2.0 % after (at
+15.5 → 15.6), worst Δ mean luma −3.8 / −5.2, sweep floor 0.3–1 %; phone
+(not asserted) worst 4.7 % at 13.9 → 14. `vector-map.js` edits: ~282
+`shadowRamp`, ~645–648 overview raster opacity, ~2054 palette patches
+re-applied after the own ground loads, ~2106–2125 patches in
+`_setBasemapGroundHidden`. Tests: `look/overviewTransition.test.ts` (7,
+under `test:look`), `tests/e2e/overview-transition.spec.ts` (desktop: ≤
+5 % of pixels over ΔE 20 and |Δ mean luma| ≤ 10 per step; `TRANSITION_AB=1`
+proves `?transition=0` fails the bound); ride-perf unchanged (16.7 ms
+frames, map 2.4 ms, three.js 0.8 ms, no frame over 50 ms).
+`scripts/look/transition-zoom.ts` captures and builds the strips
+`docs/images/look/transition-{before,after}.jpg`. Open: the flat overview
+now uses the city's colours with roof-toned footprints and reads darker
+and browner than the old white-and-blue map (the user decides whether it
+still reads as a map); far from the rider the map's footprints fade out
+where no 3D buildings are streamed (before they popped); in a tilted
+manual zoom-out walls appear in the footprint tone through a short
+dither; the tones come from `groundPalette(groundLookFrom())` and
+`CITY_ROOF` and should switch to the sunny look's `sceneTokens()`.
+
 ## Openings must stay inside their walls: a hard landmark gate, the Krijtberg, the Homomonument as three stones, Westerkerk and Nieuwe Kerk (2026-10-16)
 
 Lane `lane/homomonument-krijtberg-20261016` (9df2f4858 gate, e99029437
