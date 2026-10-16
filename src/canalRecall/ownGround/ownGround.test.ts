@@ -25,7 +25,7 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
+import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
@@ -352,6 +352,38 @@ test('flush deck (ride review J8, BRU0124): a kerb and a heavy top rail, the wat
   // Open under the deck: over the water's middle no wall across the canal stands between the water and the deck (vault and soffit are the opening).
   const zDeck = s.height(20, 0);
   for (const { n, c } of faces(flushBody)) if (Math.abs(c[0] - 20) < 3 && Math.abs(c[1]) < 3 && Math.abs(n[0]) > 3 * Math.hypot(n[1], n[2])) assert.ok(c[2] > zDeck - 0.5 || c[2] < -1.77, `face at z ${c[2].toFixed(2)} closes the opening`);
+});
+
+test('parapet runs (user 2026-10-16, BRU0160): a side whose edge turns in at the span end stops before it; untouched widths change nothing', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  const p = syntheticDeck(); p.sides = [12, 4];
+  const deck = s.addDeck(p);
+  const n = p.s.length, left = new Float64Array(n), right = new Float64Array(n);
+  for (let i = 0; i < n; i++) { const on = p.s[i] >= 8 && p.s[i] <= 32; left[i] = on ? 12 : 2; right[i] = on ? 4 : 2; }
+  assert.equal(parapetRuns(deck, { left: left.slice(), right: right.slice() }), undefined, 'the deck ends on stations: nothing turns in');
+  // Past a skewed quay the last two stations pull the left edge back toward the road (9, then 5 m).
+  const at = (x: number) => p.s.findIndex(v => v >= x);
+  left[at(31.5)] = 9; left[at(32)] = 5;
+  const runs = parapetRuns(deck, { left, right })!;
+  assert.deepEqual(runs[0], [8, 31], 'the left parapet ends on the last station at the outline');
+  assert.deepEqual(runs[1], [8, 32], 'the right parapet keeps the span');
+});
+
+test('canal-mouth class (BRU0160): flush, wider than long, pre-1940: brick-rail parapet and a flat girder opening; a humped or narrow deck is not', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  const p = syntheticDeck(); p.family = 'steel-deck'; p.deck = [17, 23]; p.water = [17.5, 22.5]; p.sides = [16, 8];
+  for (let i = 0; i < p.h.length; i++) p.h[i] = 0;
+  const deck = s.addDeck(p), classic = { material: 'steel' as const, classic: true, light: false, movable: false };
+  assert.ok(canalMouth(deck, true, 7, classic), '24 m across a 6 m span');
+  assert.ok(!canalMouth(deck, false, 7, classic), 'not flush');
+  assert.ok(!canalMouth(deck, true, 7, { ...classic, classic: false }), 'post-war steel');
+  const narrow = syntheticDeck(); narrow.family = 'steel-deck'; narrow.deck = [17, 23]; narrow.water = [17.5, 22.5];
+  assert.ok(!canalMouth(s.addDeck(narrow), true, 7, classic), 'an 8 m deck is not a street over a mouth');
+  assert.deepEqual(mouthFacts(null, false, 5), { named: false, parapet: 'brick-rail', arches: 1, shapes: ['flat'] });
+  assert.deepEqual(mouthFacts({ named: true, parapet: 'iron-rail', arches: 3 }, false, 5), { named: true, parapet: 'iron-rail', arches: 3 }, 'measured facts win');
+  assert.deepEqual(mouthFacts(null, true, 5), { named: false, parapet: 'brick-rail' }, 'a masonry mouth keeps its arch');
 });
 
 test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {
