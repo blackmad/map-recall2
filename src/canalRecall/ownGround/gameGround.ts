@@ -22,6 +22,7 @@
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './groundStore.js';
+import { boundingSphereOf } from '../geometryBounds.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
@@ -560,7 +561,9 @@ export class OwnGround {
       g.setAttribute('color', new THREE.BufferAttribute(c, 3));
     }
     g.setIndex(new THREE.BufferAttribute(p.indices, 1));
-    g.computeBoundingSphere();
+    // three's computeBoundingSphere, without its per-vertex attribute accessors (geometryBounds.ts).
+    const sphere = boundingSphereOf(p.positions);
+    g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     return g;
   }
 

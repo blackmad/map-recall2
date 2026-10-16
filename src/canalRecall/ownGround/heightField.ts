@@ -204,22 +204,28 @@ export const tileKey = (tx: number, ty: number) => `${tx}_${ty}`;
 
 /** A set of decoded tiles with bilinear sampling across tile seams (RD metres → metres NAP). */
 export class GroundField {
-  private readonly tiles = new Map<string, Float32Array>();
-  constructor(readonly stepM: number, readonly tileSizeM: number) {}
-  get samples(): number { return Math.round(this.tileSizeM / this.stepM); }
+  // Keyed by `tx * 2^21 + ty` (tile indices are small and non-negative in RD), not a `${tx}_${ty}` string:
+  // sampleAt runs millions of times while riding (footprint bases, decks, poses) and building the string key
+  // per sample was most of its cost (docs/perf-motion-stutter-20261016.md).
+  private readonly tiles = new Map<number, Float32Array>();
+  private readonly n: number;
+  constructor(readonly stepM: number, readonly tileSizeM: number) { this.n = Math.round(tileSizeM / stepM); }
+  get samples(): number { return this.n; }
   get tileCount(): number { return this.tiles.size; }
+
+  private static key(tx: number, ty: number): number { return tx * 2097152 + ty; }
 
   addTile(tx: number, ty: number, heights: Float32Array): void {
     if (heights.length !== this.samples * this.samples) throw new Error('ground tile size mismatch');
-    this.tiles.set(tileKey(tx, ty), heights);
+    this.tiles.set(GroundField.key(tx, ty), heights);
   }
 
-  removeTile(tx: number, ty: number): void { this.tiles.delete(tileKey(tx, ty)); }
+  removeTile(tx: number, ty: number): void { this.tiles.delete(GroundField.key(tx, ty)); }
 
   /** Grid sample by global column/row index, NaN if its tile is not loaded. */
   sampleAt(gi: number, gj: number): number {
-    const n = this.samples, tx = Math.floor(gi / n), ty = Math.floor(gj / n);
-    const t = this.tiles.get(tileKey(tx, ty));
+    const n = this.n, tx = Math.floor(gi / n), ty = Math.floor(gj / n);
+    const t = this.tiles.get(GroundField.key(tx, ty));
     return t ? t[(gj - ty * n) * n + (gi - tx * n)] : NaN;
   }
 

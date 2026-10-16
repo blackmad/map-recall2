@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { decorateRoof, roofPlanForFeature } from './roofMesh.js';
 import { sameStyledFeature } from './buildingTilesBrowser.js';
+import { boundingSphereOf } from './geometryBounds.js';
 
 const LAT = 52.372, KX = 111_320 * Math.cos(LAT * Math.PI / 180), KY = 110_540;
 const ring = (pts: [number, number][]) => [...pts, pts[0]].map(([x, y]) => [4.88 + x / KX, LAT + y / KY]);
@@ -46,5 +47,20 @@ test('sameStyledFeature: same geometry and shallow-equal properties only', () =>
   assert.ok(!sameStyledFeature(f as any, { ...f, properties: { ...f.properties, height: 15 } } as any));
   assert.ok(!sameStyledFeature(f as any, { ...f, properties: { ...f.properties, extra: true } } as any));
   assert.ok(!sameStyledFeature(f as any, { ...f, geometry: JSON.parse(JSON.stringify(f.geometry)) } as any));
+});
+
+test('boundingSphereOf matches three.js computeBoundingSphere exactly', async () => {
+  const THREE = await import('three');
+  let seed = 7;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 2 ** 32; };
+  for (const n of [3, 10, 1000, 20000]) {
+    const positions = new Float32Array(n * 3).map(() => (rnd() - 0.3) * 1500);
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.computeBoundingSphere();
+    const ours = boundingSphereOf(positions);
+    assert.deepEqual(ours.center, geometry.boundingSphere!.center.toArray());
+    assert.equal(ours.radius, geometry.boundingSphere!.radius);
+  }
 });
 
