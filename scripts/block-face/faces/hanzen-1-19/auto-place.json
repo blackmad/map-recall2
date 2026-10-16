@@ -3,7 +3,7 @@
  "street": "Jan Hanzenstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 3.38,
+ "seconds": 1.2,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "hanzen-1-19-r1",
-   "pands": [
-    "0363100012236856",
-    "0363100012236554"
-   ],
-   "passed": false,
-   "triangles": 5285
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012236856",
@@ -52,61 +42,38 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.345,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.22 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.22,
+       "light": 0.37
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1.4,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.5,
+       "centre": 0.28
+      }
+     ]
+    },
     "voidShare": 0.05,
     "foliageShare": 0.28
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 0.75,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "storeys": 5,
-    "ground": "door-left",
-    "measuredPalette": {
-     "brick": "#343320",
-     "evidence": "strip 2024-12-11 span 0-177: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "storeys 5: eaves 15.64 m at the type's 3.35 m pitch",
-    "crown neck-hoist: skyline rise 2.43 m, width 2.8 m, top 0.4 m",
-    "no photo evidence of its own (usable photo 47 % < 50 %); placed on row evidence from 236554"
-   ],
-   "likeness": {
-    "pandId": "0363100012236856",
-    "ncc": null,
-    "nccRaw": 0.337,
-    "shiftM": [
-     -0.1,
-     0.05
-    ],
-    "usable": 0.47,
-    "abstain": "usable photo 47 % < 50 %",
-    "verdict": "FAIL",
-    "reasons": [
-     "wall hue 36 deg",
-     "glazing storey band off by 0.52 mean 0.35 vs photo 0.64",
-     "columns 3 vs photo 2"
-    ],
-    "wall": {
-     "photo": "#76513d",
-     "model": "#5f5d3a",
-     "dL": -0.051
-    },
-    "glazing": {
-     "photo": 0.64,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": 2,
-     "model": 3
-    },
-    "iou": 0.354
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a two-axis front of paired windows without balconettes drawn as the three-axis 1904 balcony type, five storeys, its wall measured olive (#343320)",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -136,57 +103,21 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.297,
+    "structure": {
+     "bayWidthM": 1.27,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.25
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 0.88,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "ground": "door-right",
-    "measuredPalette": {
-     "brick": "#7a5c46",
-     "evidence": "strip 2024-12-11 span 177-368: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown neck-hoist: skyline rise 2.25 m, width 2.8 m, top 0.82 m"
-   ],
-   "likeness": {
-    "pandId": "0363100012236554",
-    "ncc": 0.278,
-    "nccRaw": 0.278,
-    "shiftM": [
-     0,
-     0.3
-    ],
-    "usable": 0.53,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.17 mean 0.37 vs photo 0.54",
-     "columns 3 vs photo 2"
-    ],
-    "wall": {
-     "photo": "#7c5c45",
-     "model": "#957055",
-     "dL": 0.08
-    },
-    "glazing": {
-     "photo": 0.54,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": 2,
-     "model": 3
-    },
-    "iou": 0.364
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a two-axis front of paired windows without balconettes drawn as the three-axis 1904 balcony type",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -211,6 +142,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.198,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.17
    },
@@ -281,6 +220,14 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.134,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0.03,
     "foliageShare": 0.09
    },

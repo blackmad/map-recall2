@@ -1027,7 +1027,7 @@ export class SignatureLandmarks {
 
   /**
    * Diagnostics (A/B in one page, the same frame): switch the legacy layer between one scene for every model
-   * (default) and one scene and render per model (`?landmarkBatch=0`). Returns the mode now in force.
+   * (default) and one scene and render per model. Returns the mode now in force.
    */
   setLegacyBatch(on) {
     const scene = this._batchScene;

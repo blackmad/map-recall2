@@ -1,12 +1,12 @@
 {
  "buurt": "bellamybuurt-zuid",
  "library": "bellamy",
- "generatedAt": "2026-10-16T12:09:50.945Z",
- "seconds": 20.51,
+ "generatedAt": "2026-10-16T13:03:21.030Z",
+ "seconds": 8.42,
  "totals": {
   "faces": 49,
   "pands": 335,
-  "placed": 102
+  "placed": 69
  },
  "faces": [
   {
@@ -24,13 +24,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.75,
+   "seconds": 0.67,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 2,
-    "likeness": 1,
-    "run": 1
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -40,13 +41,14 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 0.32,
+   "seconds": 0.54,
    "byType": {},
    "holds": {
     "evidence": 3,
     "match": 2,
     "likeness": 0,
-    "run": 1
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -56,13 +58,14 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.24,
+   "seconds": 0.4,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -76,41 +79,31 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.15,
+   "seconds": 0.29,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "bellamy-113-121",
    "street": "Bellamystraat",
    "pands": 4,
-   "placed": 2,
-   "held": 2,
-   "runs": [
-    {
-     "face": "bellamy-113-121-r1",
-     "pands": [
-      "0363100012146466",
-      "0363100012115607"
-     ],
-     "passed": false,
-     "triangles": 3705
-    }
-   ],
-   "seconds": 2.94,
-   "byType": {
-    "bellamy-1915-green-tile": 2
-   },
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.37,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 2,
+    "match": 3,
     "likeness": 0,
-    "run": 0
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -120,45 +113,31 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.71,
+   "seconds": 5.45,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 3,
     "likeness": 1,
-    "run": 1
+    "run": 1,
+    "review": 0
    }
   },
   {
    "face": "bellamy-18-50",
    "street": "Bellamystraat",
    "pands": 14,
-   "placed": 5,
-   "held": 9,
-   "runs": [
-    {
-     "face": "bellamy-18-50-r1",
-     "pands": [
-      "0363100012161048",
-      "0363100012153671",
-      "0363100012165951",
-      "0363100012127784",
-      "0363100012091626"
-     ],
-     "passed": false,
-     "triangles": 5722
-    }
-   ],
-   "seconds": 6.08,
-   "byType": {
-    "bellamy-1916-two-axis": 3,
-    "bellamy-1915-green-tile": 2
-   },
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 1.98,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 8,
-    "likeness": 1,
-    "run": 0
+    "match": 10,
+    "likeness": 0,
+    "run": 1,
+    "review": 3
    }
   },
   {
@@ -168,13 +147,14 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.48,
+   "seconds": 1.06,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 3,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -188,13 +168,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.21,
+   "seconds": 0.43,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 4,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -204,13 +185,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.02,
+   "seconds": 2.27,
    "byType": {},
    "holds": {
     "evidence": 1,
     "match": 3,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -220,13 +202,14 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 0.84,
+   "seconds": 2.04,
    "byType": {},
    "holds": {
     "evidence": 1,
-    "match": 10,
+    "match": 11,
     "likeness": 0,
-    "run": 1
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -244,13 +227,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.17,
+   "seconds": 0.32,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 4,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -260,13 +244,14 @@
    "placed": 0,
    "held": 15,
    "runs": [],
-   "seconds": 0.64,
+   "seconds": 1.27,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 15,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -276,13 +261,14 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 0.3,
+   "seconds": 0.6,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 9,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -292,13 +278,14 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.19,
+   "seconds": 0.41,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 3,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -316,13 +303,14 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.14,
+   "seconds": 0.35,
    "byType": {},
    "holds": {
     "evidence": 2,
     "match": 0,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -349,7 +337,7 @@
      "triangles": 6366
     }
    ],
-   "seconds": 4.68,
+   "seconds": 5.23,
    "byType": {
     "bellamy-1895-plain-three-axis": 5
    },
@@ -357,7 +345,8 @@
     "evidence": 0,
     "match": 0,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -381,7 +370,7 @@
       "0363100012166965"
      ],
      "passed": false,
-     "triangles": 11525
+     "triangles": 11822
     },
     {
      "face": "bellamyplein-18-38-r2",
@@ -392,10 +381,10 @@
       "0363100012164492"
      ],
      "passed": false,
-     "triangles": 8253
+     "triangles": 9224
     }
    ],
-   "seconds": 11.21,
+   "seconds": 17.45,
    "byType": {
     "bellamy-1904-balcony-axis": 9
    },
@@ -403,7 +392,8 @@
     "evidence": 0,
     "match": 1,
     "likeness": 1,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -417,13 +407,14 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 3,
+   "seconds": 13.01,
    "byType": {},
    "holds": {
     "evidence": 1,
     "match": 5,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -433,13 +424,14 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.36,
+   "seconds": 5.14,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 5,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -449,13 +441,14 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.36,
+   "seconds": 1.25,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 5,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -474,73 +467,63 @@
    "face": "effen-1-9",
    "street": "Van Effenstraat",
    "pands": 5,
-   "placed": 2,
-   "held": 3,
-   "runs": [
-    {
-     "face": "effen-1-9-r1",
-     "pands": [
-      "0363100012061382",
-      "0363100012064327"
-     ],
-     "passed": false,
-     "triangles": 3526
-    }
-   ],
-   "seconds": 2.3,
-   "byType": {
-    "bellamy-1915-tile-bay": 1,
-    "bellamy-1915-green-tile": 1
-   },
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.74,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 2,
+    "match": 3,
     "likeness": 0,
-    "run": 1
+    "run": 2,
+    "review": 0
    }
   },
   {
    "face": "effen-2-12",
    "street": "Van Effenstraat",
    "pands": 6,
-   "placed": 0,
-   "held": 6,
-   "runs": [],
-   "seconds": 3.55,
-   "byType": {},
+   "placed": 2,
+   "held": 4,
+   "runs": [
+    {
+     "face": "effen-2-12-r1",
+     "pands": [
+      "0363100012073026",
+      "0363100012084995"
+     ],
+     "passed": false,
+     "triangles": 3549
+    }
+   ],
+   "seconds": 5.02,
+   "byType": {
+    "bellamy-1915-green-tile": 2
+   },
    "holds": {
     "evidence": 0,
-    "match": 3,
+    "match": 2,
     "likeness": 2,
-    "run": 1
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "hanzen-1-19",
    "street": "Jan Hanzenstraat",
    "pands": 4,
-   "placed": 2,
-   "held": 2,
-   "runs": [
-    {
-     "face": "hanzen-1-19-r1",
-     "pands": [
-      "0363100012236856",
-      "0363100012236554"
-     ],
-     "passed": false,
-     "triangles": 5285
-    }
-   ],
-   "seconds": 3.38,
-   "byType": {
-    "bellamy-1904-balcony-axis": 2
-   },
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.2,
+   "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 2
    }
   },
   {
@@ -550,13 +533,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.64,
+   "seconds": 4,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 1,
     "likeness": 1,
-    "run": 2
+    "run": 2,
+    "review": 0
    }
   },
   {
@@ -566,49 +550,39 @@
    "placed": 0,
    "held": 12,
    "runs": [],
-   "seconds": 0.41,
+   "seconds": 0.69,
    "byType": {},
    "holds": {
     "evidence": 5,
     "match": 7,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "hanzen-21-73",
    "street": "Jan Hanzenstraat",
    "pands": 9,
-   "placed": 2,
-   "held": 7,
-   "runs": [
-    {
-     "face": "hanzen-21-73-r1",
-     "pands": [
-      "0363100012143043",
-      "0363100012080571"
-     ],
-     "passed": true,
-     "triangles": 3674
-    }
-   ],
-   "seconds": 4.03,
-   "byType": {
-    "bellamy-1915-green-tile": 2
-   },
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 2.14,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 7,
+    "match": 9,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "hasebroek-1-41",
    "street": "Hasebroekstraat",
    "pands": 19,
-   "placed": 16,
-   "held": 3,
+   "placed": 9,
+   "held": 10,
    "runs": [
     {
      "face": "hasebroek-1-41-r1",
@@ -628,42 +602,22 @@
       "0363100012153107",
       "0363100012166233",
       "0363100012165183",
-      "0363100012157271",
-      "0363100012163274",
-      "0363100012157261",
-      "0363100012158415"
+      "0363100012157271"
      ],
      "passed": false,
-     "triangles": 22439
-    },
-    {
-     "face": "hasebroek-1-41-r3",
-     "pands": [
-      "0363100012063580",
-      "0363100012161035"
-     ],
-     "passed": false,
-     "triangles": 4854
-    },
-    {
-     "face": "hasebroek-1-41-r4",
-     "pands": [
-      "0363100012157844",
-      "0363100012163671"
-     ],
-     "passed": false,
-     "triangles": 4880
+     "triangles": 14075
     }
    ],
-   "seconds": 20.68,
+   "seconds": 27.81,
    "byType": {
-    "bellamy-1904-balcony-axis": 16
+    "bellamy-1904-balcony-axis": 9
    },
    "holds": {
     "evidence": 0,
     "match": 0,
-    "likeness": 3,
-    "run": 0
+    "likeness": 1,
+    "run": 2,
+    "review": 7
    }
   },
   {
@@ -677,41 +631,31 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.41,
+   "seconds": 4.83,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 2,
-    "run": 1
+    "run": 1,
+    "review": 0
    }
   },
   {
    "face": "hasebroek-105-115",
    "street": "Hasebroekstraat",
    "pands": 4,
-   "placed": 2,
-   "held": 2,
-   "runs": [
-    {
-     "face": "hasebroek-105-115-r1",
-     "pands": [
-      "0363100012133637",
-      "0363100012082619"
-     ],
-     "passed": false,
-     "triangles": 3562
-    }
-   ],
-   "seconds": 4.95,
-   "byType": {
-    "bellamy-1915-green-tile": 2
-   },
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.97,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 1,
-    "likeness": 1,
-    "run": 0
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
    }
   },
   {
@@ -725,13 +669,14 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.16,
+   "seconds": 0.45,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 1,
     "likeness": 0,
-    "run": 1
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -763,10 +708,10 @@
       "0363100012236958"
      ],
      "passed": false,
-     "triangles": 41233
+     "triangles": 40969
     }
    ],
-   "seconds": 10.75,
+   "seconds": 21.43,
    "byType": {
     "bellamy-1904-balcony-axis": 17
    },
@@ -774,7 +719,8 @@
     "evidence": 0,
     "match": 1,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -798,10 +744,10 @@
       "0363100012086970"
      ],
      "passed": false,
-     "triangles": 14344
+     "triangles": 19292
     }
    ],
-   "seconds": 10.82,
+   "seconds": 17.62,
    "byType": {
     "bellamy-1915-tile-bay": 8,
     "bellamy-1915-green-tile": 1
@@ -810,7 +756,8 @@
     "evidence": 0,
     "match": 1,
     "likeness": 5,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -833,117 +780,95 @@
       "0363100012099290"
      ],
      "passed": false,
-     "triangles": 12209
+     "triangles": 17234
     }
    ],
-   "seconds": 20.51,
+   "seconds": 20.71,
    "byType": {
     "bellamy-1915-tile-bay": 8
    },
    "holds": {
     "evidence": 0,
-    "match": 0,
-    "likeness": 2,
-    "run": 0
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "hasebroek-90-98",
    "street": "Hasebroekstraat",
    "pands": 5,
-   "placed": 5,
-   "held": 0,
+   "placed": 3,
+   "held": 2,
    "runs": [
     {
-     "face": "hasebroek-90-98",
+     "face": "hasebroek-90-98-r1",
      "pands": [
-      "0363100012117742",
-      "0363100012117879",
       "0363100012091668",
       "0363100012121449",
       "0363100012069093"
      ],
-     "passed": false,
-     "triangles": 8823
+     "passed": true,
+     "triangles": 5179
     }
    ],
-   "seconds": 4.1,
+   "seconds": 4.22,
    "byType": {
-    "bellamy-1915-green-tile": 5
+    "bellamy-1915-green-tile": 3
    },
    "holds": {
     "evidence": 0,
     "match": 0,
     "likeness": 0,
-    "run": 0
+    "run": 1,
+    "review": 1
    }
   },
   {
    "face": "heije-40-56",
    "street": "Jan Pieter Heijestraat",
    "pands": 9,
-   "placed": 5,
-   "held": 4,
-   "runs": [
-    {
-     "face": "heije-40-56-r1",
-     "pands": [
-      "0363100012127322",
-      "0363100012147904"
-     ],
-     "passed": false,
-     "triangles": 3655
-    },
-    {
-     "face": "heije-40-56-r2",
-     "pands": [
-      "0363100012065334",
-      "0363100012073446",
-      "0363100012064006"
-     ],
-     "passed": false,
-     "triangles": 3547
-    }
-   ],
-   "seconds": 8.32,
-   "byType": {
-    "bellamy-1915-green-tile": 3,
-    "bellamy-1916-two-axis": 2
-   },
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 3.01,
+   "byType": {},
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 3,
-    "run": 0
+    "likeness": 2,
+    "run": 1,
+    "review": 5
    }
   },
   {
    "face": "heije-41-53",
    "street": "Jan Pieter Heijestraat",
    "pands": 5,
-   "placed": 3,
-   "held": 2,
+   "placed": 2,
+   "held": 3,
    "runs": [
     {
      "face": "heije-41-53-r1",
      "pands": [
       "0363100012109543",
-      "0363100012128983",
-      "0363100012117355"
+      "0363100012128983"
      ],
      "passed": false,
-     "triangles": 5265
+     "triangles": 3433
     }
    ],
-   "seconds": 3.99,
+   "seconds": 3.22,
    "byType": {
-    "bellamy-1915-green-tile": 3
+    "bellamy-1915-green-tile": 2
    },
    "holds": {
     "evidence": 0,
     "match": 1,
     "likeness": 0,
-    "run": 1
+    "run": 1,
+    "review": 1
    }
   },
   {
@@ -962,29 +887,17 @@
    "face": "kate-25-31",
    "street": "Ten Katestraat",
    "pands": 4,
-   "placed": 2,
-   "held": 2,
-   "runs": [
-    {
-     "face": "kate-25-31-r1",
-     "pands": [
-      "0363100012139746",
-      "0363100012093654"
-     ],
-     "passed": true,
-     "triangles": 2687
-    }
-   ],
-   "seconds": 5.96,
-   "byType": {
-    "bellamy-1915-green-tile": 1,
-    "bellamy-1916-two-axis": 1
-   },
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.45,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 0,
-    "likeness": 2,
-    "run": 0
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -994,13 +907,14 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.29,
+   "seconds": 0.39,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 3,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -1010,13 +924,14 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 2.12,
+   "seconds": 3.14,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 14,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -1039,7 +954,7 @@
      "triangles": 5964
     }
    ],
-   "seconds": 3.68,
+   "seconds": 3.76,
    "byType": {
     "bellamy-1937-flat-row": 5
    },
@@ -1047,7 +962,8 @@
     "evidence": 0,
     "match": 1,
     "likeness": 0,
-    "run": 1
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -1057,13 +973,14 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.41,
+   "seconds": 3.72,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 3,
-    "run": 0
+    "likeness": 2,
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -1149,42 +1066,31 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.17,
+   "seconds": 0.21,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "wenslauer-1-35",
    "street": "Wenslauerstraat",
    "pands": 8,
-   "placed": 3,
-   "held": 5,
-   "runs": [
-    {
-     "face": "wenslauer-1-35-r1",
-     "pands": [
-      "0363100012103549",
-      "0363100012140769",
-      "0363100012117685"
-     ],
-     "passed": false,
-     "triangles": 3563
-    }
-   ],
-   "seconds": 4.3,
-   "byType": {
-    "bellamy-1895-plain-three-axis": 3
-   },
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.17,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 5,
+    "match": 7,
     "likeness": 0,
-    "run": 0
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -1198,13 +1104,14 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 0.3,
+   "seconds": 0.38,
    "byType": {},
    "holds": {
     "evidence": 1,
     "match": 5,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -1214,13 +1121,14 @@
    "placed": 0,
    "held": 11,
    "runs": [],
-   "seconds": 0.36,
+   "seconds": 0.43,
    "byType": {},
    "holds": {
     "evidence": 1,
     "match": 10,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -1230,13 +1138,14 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.24,
+   "seconds": 0.29,
    "byType": {},
    "holds": {
     "evidence": 2,
     "match": 5,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   },
   {
@@ -1246,13 +1155,14 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 3.41,
+   "seconds": 1.27,
    "byType": {},
    "holds": {
     "evidence": 2,
-    "match": 6,
-    "likeness": 2,
-    "run": 0
+    "match": 7,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
    }
   },
   {
@@ -1262,13 +1172,14 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.31,
+   "seconds": 0.39,
    "byType": {},
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 0,
-    "run": 0
+    "run": 0,
+    "review": 0
    }
   }
  ]

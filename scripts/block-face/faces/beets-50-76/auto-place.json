@@ -3,7 +3,7 @@
  "street": "Nicolaas Beetsstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 0.24,
+ "seconds": 0.4,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -37,18 +37,33 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.37,
+    "structure": {
+     "bayWidthM": 2.45,
+     "bayCentre": 0.18,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.07 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.07,
+       "light": 0.4
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.18,
     "foliageShare": 0.16
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1897, type 1928-1935; frontage 7.31 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1897, type 1928-1935; frontage 7.31 m, type 4.8-5.8 m; strip shows balconies (dark open axis 0.97 m at 0.07 (light 0.4): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1897, type 1928-1935",
-     "frontage 7.31 m, type 4.8-5.8 m"
+     "frontage 7.31 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 0.97 m at 0.07 (light 0.4): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {
@@ -113,18 +128,33 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.302,
+    "structure": {
+     "bayWidthM": 1.5,
+     "bayCentre": 0.85,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.37 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.37,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
     "voidShare": 0.14,
     "foliageShare": 0.17
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1905, type 1928-1935; frontage 8.17 m, type 4.8-5.8 m)",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1905, type 1928-1935; frontage 8.17 m, type 4.8-5.8 m; strip shows balconies (dark open axis 1.05 m at 0.37 (light 0.13): no brick spandrel between the storeys))",
    "best": {
     "type": "bellamy-1895-plain-three-axis",
     "score": 0,
     "veto": [
      "built 1905, type 1928-1935",
-     "frontage 8.17 m, type 4.8-5.8 m"
+     "frontage 8.17 m, type 4.8-5.8 m",
+     "strip shows balconies (dark open axis 1.05 m at 0.37 (light 0.13): no brick spandrel between the storeys)"
     ],
     "criteria": [
      {

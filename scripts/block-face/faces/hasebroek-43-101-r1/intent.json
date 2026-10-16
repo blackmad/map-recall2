@@ -44,7 +44,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 0.87 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 1, columns 0; strip 2024-12-11 span 1133-1383"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1, columns 0; strip 2024-12-11 span 1133-1383"
    }
   },
   {
@@ -64,7 +64,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 0.8 on eaves 1, storeys 1, roof 1, stucco 0, accent-share 1, accent-side 1; strip 2024-12-11 span 1383-1653"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.82 on eaves 1, storeys 1, roof 1, stucco 0, bay 1, accent-side 1; strip 2024-12-11 span 1383-1653"
    }
   },
   {
@@ -89,7 +89,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 1; strip 2024-12-11 span 1653-1923"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1; strip 2024-12-11 span 1653-1923"
    }
   },
   {
@@ -113,7 +113,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 1; strip 2024-12-11 span 1924-2174"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1; strip 2024-12-11 span 1924-2174"
    }
   },
   {
@@ -138,7 +138,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 1; strip 2024-12-11 span 2174-2424"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1; strip 2024-12-11 span 2174-2424"
    }
   },
   {
@@ -162,7 +162,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 1, columns 1; strip 2024-12-11 span 2425-2695"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1, columns 1; strip 2024-12-11 span 2425-2695"
    }
   },
   {
@@ -187,7 +187,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 0.7 on eaves 0.5, storeys 1, roof 0, stucco 1, accent-share 1, accent-side 1, columns 0; strip 2024-12-11 span 2695-2965"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.72 on eaves 0.5, storeys 1, roof 0, stucco 1, bay 1, accent-side 1, columns 0; strip 2024-12-11 span 2695-2965"
    }
   },
   {
@@ -211,7 +211,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-tile-bay scored 0.87 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 1, columns 0; strip 2024-12-11 span 2965-3215"
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, accent-side 1, columns 0; strip 2024-12-11 span 2965-3215"
    }
   },
   {
@@ -224,7 +224,8 @@
     "measuredPalette": {
      "brick": "#a28e86",
      "evidence": "strip 2024-12-11 span 3216-3455: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "point-gable"
    },
    "groundFloor": {
     "use": "residential",
@@ -236,7 +237,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: bellamy-1915-green-tile scored 0.79 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 0, columns 1; strip 2024-12-11 span 3216-3455"
+    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bay 1, columns 1; strip 2024-12-11 span 3216-3455"
    }
   }
  ],

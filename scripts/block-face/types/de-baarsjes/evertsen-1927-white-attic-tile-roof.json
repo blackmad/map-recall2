@@ -3,27 +3,29 @@
   "kind": "house-type",
   "id": "evertsen-1927-white-attic-tile-roof",
   "district": "de-baarsjes",
-  "description": "Jan Evertsenstraat 139-149 odd and 146-156 even, west of the Mercatorplein (1926-27): brown brick, two storeys of three two-light casements over a residential ground (paired doors), a white-painted continuous window band as the top storey (white piers between five lights), a white band at the ground-storey top, under a pitched tiled roof",
+  "description": "Jan Evertsenstraat 139-149 odd and 146-156 even, west of the Mercatorplein (1926-27): brown brick, two storeys of three two-light casements over a residential ground (paired doors), a white-painted continuous window band as the top storey (white piers between six lights), a white band at the ground-storey top, under a pitched tiled roof",
   "fit": {
     "widthM": [5.5, 6.7],
     "storeys": [4]
   },
   "body": {
     "storeys": 4,
-    "bays": [3, 3, 3, 5],
+    "bays": [3, 3, 3, 6],
     "axisGrid": 3,
-    "storeyBayWidths": {"3": [1, 1, 1, 1, 1]},
+    "storeyBayWidths": {"3": [1, 1, 1, 1, 1, 1]},
     "cornice": "none",
     "windows": "casement-toplight",
     "windowShare": 0.55,
-    "storeyHeights": [1.05, 1.02, 1.05, 1],
-    "windowHeights": [0.6, 0.42, 0.5, 0.47],
-    "headLines": [0.86, 0.68, 0.8, 0.9],
+    "storeyHeights": [3.45, 2.95, 2.95, 2.78],
+    "windowHeights": [0.49, 0.51, 0.54, 0.5],
+    "headLines": [0.81, 0.8, 0.85, 0.95],
     "bands": "painted",
     "bandLines": ["sill", "head"],
     "bandStoreys": [3],
     "bandHeights": {"sill": 0.4, "head": 0.3},
-    "bandPiers": true
+    "bandPiers": true,
+    "bandFloors": {"storeys": [3], "courses": 4},
+    "balconyRun": {"storey": 1, "projection": 0.5, "slab": 0.15, "guard": "brick", "guardRise": 1.05, "evidence": "strip.jpg 2024-12-06 of 147 (evertsen-145-155): the brick balcony front 3.4-4.45 m over a slab shadow 3.25-3.4 m along the whole front; the 0.5 m depth is not measurable on the ortho strip"}
   },
   "crowns": {
     "tile-roof": {
@@ -34,13 +36,13 @@
     "raised-end": {
       "gable": "flat",
       "cornice": "none",
-      "parapet": {"courses": 8, "coping": true},
-      "tower": {"bays": {"from": 0, "to": 2}, "rise": 0.9, "cap": "flat"},
-      "note": "raised stair-tower ends at 143, 145, 150, 152"
+      "parapet": {"courses": 40, "coping": true},
+      "note": "raised stair-tower ends at 143, 145, 150, 152: a module of their own (one window per storey, a fifth storey, 2.2 m of plain brick to the coping at 17.4 m on 143)"
     }
   },
   "grounds": {
-    "paired-doors": {"doorBay": 2, "note": "141, 148: a pair of house doors at one end, windows beside them"}
+    "paired-doors": {"doorBay": 2, "note": "141, 148: a pair of house doors at one end, windows beside them"},
+    "windows": {"doorBay": null, "note": "139: windows only on this front (the doors are on the neighbour's side)"}
   },
   "palettes": {
     "brown-white": {
@@ -55,19 +57,19 @@
   },
   "roof": {"material": "black-tile"},
   "rhythm": {
-    "bays": "3 axes on the brick storeys, 5 lights in the white top band",
+    "bays": "3 axes on the brick storeys, 6 lights in the white top band",
     "identicalBays": "storeys 1-2 the same",
-    "windowsPerStorey": "ground: doors + windows | 1-2: 3 | 3: 5 in the white band",
+    "windowsPerStorey": "ground: doors + windows | 1-2: 3 | 3: 6 in the white band",
     "symmetry": "symmetric uppers",
     "groundFloor": "residential, paired doors",
     "signage": "none",
     "roofline": "white band storey under a pitched tile roof",
-    "photoRows": [2, 3, 3, 5],
+    "photoRows": [3, 3, 3, 6],
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
       "the white attic band is painted timber; drawn as white painted bands and piers over brick",
-      "the brick balcony band over the ground storey is drawn as plain wall (its white edge is not drawn)"
+      "the balcony depth (0.5 m) is not measurable on the ortho strip"
     ]
   },
   "evidence": [
@@ -75,6 +77,16 @@
       "face": "evertsen-137-143",
       "pands": ["151275"],
       "citation": "strip.jpg 2024-12-06, ruler crop of 141: white line at the ground-storey top 3.15-3.4 m, windows 4.0-5.3 and 7.25-8.85 m, white band 9.6-12.6 m with lights 10.9-12.3 m between white piers, tiles 12.6-15.0 m; storeys 3.2/3.1/3.2/3.0 m; palette-from-strip band rows 9.45-9.55, 10.55-11.85, 12.47-12.5 m"
+    },
+    {
+      "face": "evertsen-139-143",
+      "pands": ["151275"],
+      "citation": "strip.jpg 2024-12-06, ruler crop (104 px/m) of 141: six lights between white piers in the top band (10.4-12.6 m), not five; ground windows 0.15-1.3 and 2.25-3.35 m and the paired doors 4.1-6.0 m (three ground openings); storey windows 0.2-1.35, 2.35-3.45, 4.5-5.6 m; a white ledge 9.45-9.65 m under the band storey and the balcony ledge 3.2-3.5 m with an iron rail along storey 1"
+    },
+    {
+      "face": "evertsen-139-143",
+      "pands": ["151275"],
+      "citation": "strip.jpg 2024-12-06, column profile of the pier at 1.5-2.2 m on 141 (vprofile.mjs): white slab edge 3.15-3.45 m, iron rail to 4.4 m, white ledge 9.35-9.6 m over a shadow, brick 9.6-10.3 m, the white band 10.3-12.1 m, shadow 12.2-12.35 m, white cornice 12.35-12.65 m; storeys 3.45/2.95/2.95/2.78 m to 12.13 m under the cornice; windows 1.1-2.8 / 4.3-5.8 / 7.3-8.9 m, band lights 10.6-12.0 m"
     },
     {
       "face": "evertsen-144-150",
@@ -94,9 +106,10 @@
   ],
   "schemaLimits": [
     "painted timber attic band",
-    "brick balcony band over the ground storey"
+    "balcony depth"
   ],
   "notes": [
-    "Not proved on a face in this lane (the proof face is evertsen-7-41)."
+    "Placed on evertsen-139-143, -145-155, -146-150 and -152-160 (lane de-baarsjes-faces-20261016); mirror: true puts the paired doors at the left.",
+    "The raised stair-tower ends (143, 145, 150, 152) are raised-end modules with their own window axes."
   ]
 }

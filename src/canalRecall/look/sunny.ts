@@ -78,7 +78,18 @@ export function rigIrradiance(rig: Pick<Required<LightRigOptions>, 'sunColour' |
 }
 
 /** The 2026-10-14 rig (rendererShared/lightRig.ts before the sunny look), for the shade-to-sun balance. */
-const LEGACY = { sunColour: '#ffe9cc', sunIntensity: 2.15, skyColour: '#e3ebf6', groundColour: '#998a72', skyIntensity: 1.75, sunElevationDeg: 40 };
+export const LEGACY_RIG_LIGHT = { sunColour: '#ffe9cc', sunIntensity: 2.15, skyColour: '#e3ebf6', groundColour: '#998a72', skyIntensity: 1.75, sunElevationDeg: 40 };
+
+/**
+ * Light on a wall facing away from the sun over light on a wall facing it (linear luminance), for every wall in the
+ * sunny look: generic extrusions, street chunks, recipe houses, building types and landmarks share the one rig.
+ * Was the legacy rig's 0.41 until 2026-10-16 (docs/one-material-20261016.md): a wall drawn at exactly its sunlit
+ * photo colour then capped at ~0.67 sRGB of that colour on its shade side, and the shade sides of the canal rows,
+ * which the default sun (215 deg) puts on most canal fronts facing north and east, read as a dark band. 0.55 lifts
+ * a shade side to ~0.76 sRGB of its sunlit colour (+13 %) and keeps a clear sun/shade read (the sun side is still
+ * 1.8x the shade side in linear light).
+ */
+export const SUNNY_SHADE_RATIO = 0.55;
 
 /**
  * The sunny rig before exposure. The key is warmer (#ffe2bf, ~4,600 K, was #ffe9cc ~5,000 K). The hemisphere's ground
@@ -87,10 +98,10 @@ const LEGACY = { sunColour: '#ffe9cc', sunIntensity: 2.15, skyColour: '#e3ebf6',
  * (red = blue), as the panorama and orthophoto colours the walls and ground were measured from are white-balanced.
  * So a sun-facing wall reads warm, a shade side cool, and on average a measured colour keeps its hue. (The pure
  * measured sky as fill turned level ground blue, r/b 0.92, and shade sides 0.70: every warm brick went grey.)
- * The sky intensity keeps the legacy shade-to-sun wall ratio (0.41: shade sides read as daylight, docs/LOOK.md).
+ * The sky intensity sets the shade-to-sun wall ratio, SUNNY_SHADE_RATIO.
  */
-export function sunnyBase(sunColour = '#ffe2bf', groundColour = '#aca497') {
-  const legacy = rigIrradiance(LEGACY), ratio = legacy.shadeWall / legacy.sunWall, el = (40 * Math.PI) / 180;
+export function sunnyBase(sunColour = '#ffe2bf', groundColour = '#aca497', ratio = SUNNY_SHADE_RATIO) {
+  const el = (40 * Math.PI) / 180;
   const build = (t: number) => {
     const skyColour = rgbHex(hexRgb(SKY.horizon).map(v => v + (255 - v) * t));
     const sun = linY(sunColour) * 2.15 / Math.PI * Math.cos(el), hemiPerUnit = (linY(skyColour) + linY(groundColour)) / 2 / Math.PI;
@@ -209,4 +220,20 @@ export function sceneTokens(look: SceneLook = sceneLookFrom(), ground: GroundLoo
     sky: look === 'sunny' ? SKY.zenith : g.land,
     horizon: look === 'sunny' ? SKY.horizon : g.land,
   };
+}
+
+// ---------------------------------------------------------------------------
+// The streamed facades' wall colour at the look's exposure
+// ---------------------------------------------------------------------------
+
+/**
+ * The lit facades' wall gain (rendererShared/litFacadeMaterial.ts `wallGain`, an sRGB factor on wall-masked cell
+ * texels that the shader linearises with pow 2.2). `litWallGain` makes cell x tint = the tint (look/palette.ts); the
+ * sunny look then brings the tint to sunlit exposure like every other photo-read wall: a generic wall carries no
+ * recorded white, so it takes FALLBACK_WALL_GAIN in linear light, which is what a chunk wall without a strip and a
+ * measured recipe wall without a white take. So the same wall colour draws the same pixel on a generic extrusion, a
+ * street chunk and a measured recipe house (docs/one-material-20261016.md). The legacy look keeps `litWallGain`.
+ */
+export function litFacadeWallGain(litWallGain: number, look: SceneLook = sceneLookFrom()): number {
+  return look === 'sunny' ? litWallGain * FALLBACK_WALL_GAIN ** (1 / 2.2) : litWallGain;
 }
