@@ -92,6 +92,12 @@ export interface BlockFaceIntent {
   continuity: {
     /** `shared`: one street level for the face (median 3DBAG ground). */
     streetLevel: 'shared' | 'stepped';
+    /**
+     * With `shared`: pands set on the shared street level although their 3DBAG ground is more than 1 m off it (the usual
+     * limit), e.g. a maaiveld read 1.4 m high on a flat shopping street (Jan Evertsenstraat 43-45). Evidence = what on the
+     * strip shows the shared level (canopy, shop sills). Absent = the 1 m limit for every pand.
+     */
+    streetLevelPands?: {pands: string[]; evidence: string};
     /** Houses whose eaves/cornice read as ONE line on the photo; evidence = what on the strip shows it. */
     corniceGroups: {pands: string[]; evidence: string;
       /** The photo overrules 3DBAG for this line: snap every member to `reference`'s surveyed eaves even beyond the usual
@@ -293,6 +299,12 @@ export function validateBlockFace(input: unknown, order?: string[], load: TypeLo
     if (roof?.keepSurvey?.length && !roof.evidence) problems.push('continuity.roof.keepSurvey needs evidence (why those pands keep the 3DBAG roof)');
   }
   if (face?.continuity?.partyClip !== undefined && typeof face.continuity.partyClip !== 'boolean') problems.push('continuity.partyClip must be boolean');
+  const sl = face?.continuity?.streetLevelPands;
+  if (sl !== undefined) {
+    if (face.continuity.streetLevel !== 'shared') problems.push('continuity.streetLevelPands: only with streetLevel "shared"');
+    if (!Array.isArray(sl?.pands) || !sl.pands.length || sl.pands.some(p => !pands.has(p))) problems.push('continuity.streetLevelPands.pands: pands of this face');
+    if (!sl?.evidence) problems.push('continuity.streetLevelPands needs evidence (what on the strip shows the shared street level)');
+  }
   const rc = face?.continuity?.rowCoherence;
   if (rc !== undefined && rc !== false && !(rc && typeof rc === 'object' && typeof rc.thresholdM === 'number' && rc.thresholdM >= 0.2 && rc.thresholdM <= 3)) problems.push('continuity.rowCoherence: false, or {thresholdM} between 0.2 and 3 m');
   problems.push(...canopyProblems(face, intents));

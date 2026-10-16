@@ -19,7 +19,7 @@ import {frontGrid} from '../buildingRecipe/intent.ts';
 import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
-export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
+export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
   'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
@@ -32,6 +32,8 @@ type GroundKey = typeof GROUND_KEYS[number];
 
 /** The upper body: bays, storeys, windows, balconies, bay windows, bands, surrounds, cornice. Written once per type. */
 export type BodyIntent = Omit<FrontIntent, CrownKey | GroundKey | typeof PLACEMENT_KEYS[number]>;
+/** Placement overrides of body fields: a value replaces the type's, `null` removes it. */
+export type BodyOverrides = {[K in keyof BodyIntent]?: BodyIntent[K] | null};
 /** A crown variant. `pair: true` = the crown straddles the party wall of a pair module; it is authored for the LEFT member. */
 export type CrownIntent = Partial<Pick<FrontIntent, CrownKey | typeof CROWN_BODY_KEYS[number]>> & {gable: FrontIntent['gable']; pair?: boolean; note?: string};
 /** A named ground variant (residential rows). Shop streets give a per-house shop in the placement instead. */
@@ -68,8 +70,8 @@ export interface ModulePlacement {
   doorBay?: number | null;
   /** Share of the pand's frontage (default: equal shares). */
   share?: number;
-  /** Body fields this module changes (e.g. no balcony stack on the end module). Reported as a type deviation. */
-  overrides?: Partial<BodyIntent>;
+  /** Body fields this module changes (e.g. no balcony stack on the end module); `null` removes the type's field. Reported as a type deviation. */
+  overrides?: BodyOverrides;
 }
 
 export interface HousePlacement {
@@ -108,7 +110,8 @@ export interface HousePlacement {
   modules?: ModulePlacement[];
   /** Pair module: this house is the left or right half of a pair whose crown straddles the party wall. */
   pair?: 'left' | 'right';
-  overrides?: Partial<BodyIntent>;
+  /** Body fields this house changes; `null` removes the type's field (absent = the type's). */
+  overrides?: BodyOverrides;
   /** This house's roof over the type's (`RoofIntent` minus the material: source, form, pitch, evidence). Absent = the type's roof, byte-identical. */
   roof?: Partial<Omit<CanalHouseIntent['roof'], 'material'>>;
 }
@@ -117,7 +120,7 @@ export interface HousePlacement {
 export const MEASURED_PALETTE_KEYS = ['brick', 'frame', 'stone', 'band', 'cornice', 'door'] as const;
 export type MeasuredPalette = Partial<Pick<PaletteIntent, typeof MEASURED_PALETTE_KEYS[number]>> & {evidence: string};
 /** House-palette fields a placement may override (`paletteOverrides`); values are checked by the house intent validation. */
-export const PALETTE_OVERRIDE_KEYS = ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'wallMaterial', 'stoneMaterial', 'wallTint', 'whitePoint'] as const;
+export const PALETTE_OVERRIDE_KEYS = ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'wallMaterial', 'stoneMaterial', 'wallTint', 'whitePoint', 'glassBlock'] as const;
 
 const has = (o: object, k: string) => Object.prototype.hasOwnProperty.call(o, k);
 const flipFrac = (s: {from: number; to: number}) => ({from: +(1 - s.to).toFixed(4), to: +(1 - s.from).toFixed(4)});
@@ -138,6 +141,8 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   };
   if (f.doorBay !== null && f.doorBay !== undefined) out.doorBay = bays[0] - 1 - f.doorBay;
   if (f.bayWidths) out.bayWidths = [...f.bayWidths].reverse();
+  if (f.bayFill) out.bayFill = [...f.bayFill].reverse();
+  if (f.axisWindows) out.axisWindows = Object.fromEntries(Object.entries(f.axisWindows).map(([k, v]) => [String(flipAxis(Number(k))), v]));
   if (f.storeyBayWidths) out.storeyBayWidths = Object.fromEntries(Object.entries(f.storeyBayWidths).map(([k, v]) => [k, [...v].reverse()]));
   if (f.storeyAxes) out.storeyAxes = Object.fromEntries(Object.entries(f.storeyAxes).map(([k, v]) => [k, v.map(flipAxis).sort((p, q) => p - q)]));
   if (f.crownAt) out.crownAt = flipFrac(f.crownAt);
@@ -224,6 +229,8 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (!has(f, 'hoist')) f.hoist = false;
     if (place.storeys !== undefined) { f.storeys = place.storeys; if (place.storeys !== t.body.storeys) deviations.push(`storeys ${place.storeys} (type: ${t.body.storeys})`); }
     f = {...f, ...overrides} as FrontIntent;
+    // A `null` override removes the type's body field (a row house without the type's box frames or lisenes).
+    for (const [key, v] of Object.entries(overrides)) if (v === null) delete (f as unknown as Record<string, unknown>)[key];
     if (m.mirror ?? place.mirror) f = mirrorFront(f);
     // The visual module is read off the strip as seen, so it is applied after mirroring.
     if (place.visualSpan) f.gridAt = {from: place.visualSpan.from, to: place.visualSpan.to};

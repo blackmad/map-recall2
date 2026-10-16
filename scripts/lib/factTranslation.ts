@@ -40,7 +40,7 @@ async function translateSentence(sentence: string, names: readonly string[]): Pr
         reject(new Error(`trn exited ${code}: ${stderr.join('').trim()}`));
         return;
       }
-      resolve(held.restore(cleanTranslatorOutput(stdout.join(''))));
+      resolve(held.restoreEnglish(cleanTranslatorOutput(stdout.join(''))));
     });
     if (invocation.stdin === null) child.stdin!.end();
     else child.stdin!.end(invocation.stdin);

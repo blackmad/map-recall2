@@ -1,0 +1,591 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "evertsen-52-66",
+ "street": "Jan Evertsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-06",
+   "image": "staging/block-face/evertsen-52-66/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (de-baarsjes-faces lane)",
+  "passes": 1,
+  "note": "Jan Evertsenstraat 52-66 (even side). The ladder-plain row 52-64 (evertsen-1926-ladder-plain): three windows per house with gridded top lights, a glass-block band over the canopy, one coping line; the tall corner block 66 and the low end of 52."
+ },
+ "types": [
+  "evertsen-1926-ladder-plain"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012131498",
+   "slug": "evertsen-131498",
+   "address": "Jan Evertsenstraat 66",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Jan Evertsenstraat",
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {
+       "courses": 49,
+       "coping": true
+      },
+      "storeys": 5,
+      "bays": [
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "casement-gridded-toplight",
+      "hoist": false,
+      "axisGrid": 4,
+      "storeyAxes": {
+       "1": [
+        2
+       ],
+       "2": [
+        2
+       ],
+       "3": [
+        2
+       ],
+       "4": [
+        1
+       ]
+      },
+      "bayWidths": [
+       1.4,
+       0.9,
+       4.6,
+       1.45
+      ],
+      "bayFill": [
+       0.5,
+       0.6,
+       0.98,
+       0.5
+      ],
+      "axisWindows": {
+       "2": "casement-gridded-toplight-double"
+      },
+      "storeyHeights": [
+       1.55,
+       1,
+       1,
+       1,
+       1
+      ],
+      "windowHeights": [
+       0.55,
+       0.58,
+       0.58,
+       0.58,
+       0.3
+      ],
+      "headLines": [
+       0.8,
+       0.9,
+       0.9,
+       0.9,
+       0.65
+      ],
+      "shopfront": {
+       "colour": "black",
+       "fascia": false,
+       "entrance": "none",
+       "stallriser": "low",
+       "glazing": "split",
+       "awning": {
+        "style": "rigid",
+        "colour": "#4a4a3c",
+        "fasciaColour": "#4a4a3c"
+       },
+       "evidence": "strip.jpg 2024-12-06 pand 66: the shop glass under a canopy, a red sign band over it"
+      }
+     }
+    ],
+    "roof": {
+     "material": "bitumen",
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky over the coping at 20.7 m"
+    },
+    "palette": {
+     "brick": "#68553d",
+     "wallTint": "measured",
+     "whitePoint": "#aeac93",
+     "frame": "#aeac93",
+     "door": "black"
+    },
+    "notes": [
+     "the tall corner block at the Marco Polostraat: one wide window per storey"
+    ]
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "one wide window per storey, a small top window at the left",
+    "windowsPerStorey": "ground: shop | 1-3: 1 | 4: 1",
+    "symmetry": "none",
+    "groundFloor": "shop under a canopy, a sign band over it",
+    "signage": "red sign band (not drawn)",
+    "roofline": "flat at 20.7 m",
+    "citation": "strip.jpg 2024-12-06 pand 66 (ruler crop 64 px/m): windows 2.3-6.9 m at 6.1-7.9 / 9.3-11.1 / 12.4-14.3 m, a top window 1.25-1.95 m at 16.1-16.9 m, top 20.7 m",
+    "photoRows": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "schemaLimits": [
+     "the windows are three units of two lights (drawn four lights)",
+     "a small box window at the left of the third storey is not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012115017",
+   "slug": "evertsen-115017",
+   "address": "Jan Evertsenstraat 64",
+   "type": {
+    "type": "evertsen-1926-ladder-plain",
+    "crown": "parapet",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#645039",
+     "wallTint": "measured",
+     "whitePoint": "#a9a993",
+     "glassBlock": "#4c4635"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#4a4a3c",
+       "fasciaColour": "#4a4a3c",
+       "glassBlocks": {
+        "rows": 6
+       },
+       "wallCourses": 12
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 115017: shop glass under the canopy (Ufuk), glass-block band over it"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping; the 3DBAG roof max reads the rear roofs, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2812000392,
+     "name": "Ufuk"
+    },
+    "name": "Ufuk",
+    "category": "amenity=restaurant",
+    "bag": [
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 115017: three windows per storey with gridded top lights at the type's lines (ruler crop of 52 at 64 px/m: rows 5.2-6.9 / 8.1-9.8 / 11.0-12.7 m)"
+   }
+  },
+  {
+   "pandId": "0363100012128896",
+   "slug": "evertsen-128896",
+   "address": "Jan Evertsenstraat 62",
+   "type": {
+    "type": "evertsen-1926-ladder-plain",
+    "crown": "parapet",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#6c5941",
+     "wallTint": "measured",
+     "whitePoint": "#acac99",
+     "glassBlock": "#515345"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#4a4a3c",
+       "fasciaColour": "#4a4a3c",
+       "glassBlocks": {
+        "rows": 6
+       },
+       "wallCourses": 12
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 128896: shop glass under the canopy (De Kaaswinkel), glass-block band over it"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping; the 3DBAG roof max reads the rear roofs, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2812000360,
+     "name": "De Kaaswinkel"
+    },
+    "name": "De Kaaswinkel",
+    "category": "shop=cheese",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 128896: three windows per storey with gridded top lights at the type's lines (ruler crop of 52 at 64 px/m: rows 5.2-6.9 / 8.1-9.8 / 11.0-12.7 m)"
+   }
+  },
+  {
+   "pandId": "0363100012124819",
+   "slug": "evertsen-124819",
+   "address": "Jan Evertsenstraat 60",
+   "type": {
+    "type": "evertsen-1926-ladder-plain",
+    "crown": "parapet",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#68553e",
+     "wallTint": "measured",
+     "whitePoint": "#abac9c",
+     "glassBlock": "#5a5b4c"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#4a4a3c",
+       "fasciaColour": "#4a4a3c",
+       "glassBlocks": {
+        "rows": 6
+       },
+       "wallCourses": 12
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 124819: shop glass under the canopy (Akdeniz), glass-block band over it"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping; the 3DBAG roof max reads the rear roofs, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2812000328,
+     "name": "Akdeniz"
+    },
+    "name": "Akdeniz",
+    "category": "shop=hairdresser",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 124819: three windows per storey with gridded top lights at the type's lines (ruler crop of 52 at 64 px/m: rows 5.2-6.9 / 8.1-9.8 / 11.0-12.7 m)"
+   }
+  },
+  {
+   "pandId": "0363100012134101",
+   "slug": "evertsen-134101",
+   "address": "Jan Evertsenstraat 58",
+   "type": {
+    "type": "evertsen-1926-ladder-plain",
+    "crown": "parapet",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#64523b",
+     "wallTint": "measured",
+     "whitePoint": "#a9a895",
+     "glassBlock": "#4a4a3a"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#4a4a3c",
+       "fasciaColour": "#4a4a3c",
+       "glassBlocks": {
+        "rows": 6
+       },
+       "wallCourses": 12
+      },
+      "evidence": "strip.jpg 2024-12-06 pand 134101: shop glass under the canopy, glass-block band over it"
+     }
+    },
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping; the 3DBAG roof max reads the rear roofs, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 134101: three windows per storey with gridded top lights at the type's lines (ruler crop of 52 at 64 px/m: rows 5.2-6.9 / 8.1-9.8 / 11.0-12.7 m)"
+   }
+  },
+  {
+   "pandId": "0363100012147483",
+   "slug": "evertsen-147483",
+   "address": "Jan Evertsenstraat 52-56",
+   "type": {
+    "type": "evertsen-1926-ladder-plain",
+    "crown": "parapet",
+    "palette": "brown",
+    "paletteOverrides": {
+     "brick": "#5d4e39",
+     "wallTint": "measured",
+     "whitePoint": "#aeb2a9",
+     "glassBlock": "#5b5847"
+    },
+    "modules": [
+     {
+      "share": 0.68,
+      "overrides": {
+       "stepBody": true
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#4a4a3c",
+         "fasciaColour": "#4a4a3c",
+         "glassBlocks": {
+          "rows": 6
+         },
+         "wallCourses": 12
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 147483 (0-5.6 m): white shop panels under the canopy, glass-block band over it"
+       }
+      }
+     },
+     {
+      "share": 0.32,
+      "crown": "low-parapet",
+      "overrides": {
+       "bays": [
+        1,
+        1,
+        1,
+        1
+       ],
+       "axisGrid": 3,
+       "storeyAxes": {
+        "1": [
+         1
+        ],
+        "2": [
+         1
+        ],
+        "3": [
+         1
+        ]
+       },
+       "bayWidths": [
+        0.6,
+        1.1,
+        0.95
+       ],
+       "bayFill": [
+        0.5,
+        0.95,
+        0.5
+       ],
+       "windows": "casement-toplight",
+       "windowShare": null,
+       "storeyHeights": [
+        1.25,
+        1,
+        1,
+        1
+       ],
+       "headLines": [
+        0.86,
+        0.75,
+        0.75,
+        0.75
+       ]
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "awning": {
+         "style": "rigid",
+         "colour": "#4a4a3c",
+         "fasciaColour": "#4a4a3c",
+         "wallCourses": 30
+        },
+        "evidence": "strip.jpg 2024-12-06 pand 147483 (5.6-8.3 m): a door and a white panel under the canopy, plain brick over it"
+       }
+      }
+     }
+    ],
+    "roof": {
+     "form": "flat",
+     "evidence": "strip.jpg 2024-12-06: sky directly over the coping; the 3DBAG roof max reads the rear roofs, not seen from the street"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "two modules: the row house (3 windows), the low end with one window per storey",
+    "windowsPerStorey": "ground: shop | 1-3: 3 + 1",
+    "symmetry": "none",
+    "groundFloor": "shop panels under the canopy",
+    "signage": "none legible",
+    "roofline": "the row line to 5.6 m, then 13.9 m",
+    "citation": "strip.jpg 2024-12-06 pand 52-56 (ruler crop 64 px/m): row windows 0.1-1.35, 1.8-3.3, 3.9-5.2 m; the low end 5.6-8.3 m to 13.9 m, windows 6.2-7.3 m at 11.0-12.8 / 7.3-9.0 / 4.6-6.2 m",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4
+    ],
+    "schemaLimits": [
+     "the low end's windows sit on the stair landings, 0.3-0.7 m off the row's lines"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "the strip tilts about 0.5 m along 64-52 (the windows fall with the coping): one coping line, the median",
+  "66: six-light windows drawn as four-light; the small box window",
+  "signs on the bands"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "streetLevelPands": {
+   "pands": [
+    "0363100012147483"
+   ],
+   "evidence": "strip.jpg: the canopy and the shop panels of 52-56 run level with 58-64 (3DBAG maaiveld 1.35 m NAP against 0.06-0.09 m for 58-64)"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012115017",
+    "stripRow": 286,
+    "evidence": "strip.jpg: one coping line for 52-64: the median skyline row 286 (17.05 m) of the members' rows 277/280/286/292/297 (the strip tilts: the window rows fall with them)"
+   },
+   {
+    "pand": "0363100012128896",
+    "stripRow": 286,
+    "evidence": "strip.jpg: one coping line for 52-64: the median skyline row 286 (17.05 m) of the members' rows 277/280/286/292/297 (the strip tilts: the window rows fall with them)"
+   },
+   {
+    "pand": "0363100012124819",
+    "stripRow": 286,
+    "evidence": "strip.jpg: one coping line for 52-64: the median skyline row 286 (17.05 m) of the members' rows 277/280/286/292/297 (the strip tilts: the window rows fall with them)"
+   },
+   {
+    "pand": "0363100012134101",
+    "stripRow": 286,
+    "evidence": "strip.jpg: one coping line for 52-64: the median skyline row 286 (17.05 m) of the members' rows 277/280/286/292/297 (the strip tilts: the window rows fall with them)"
+   },
+   {
+    "pand": "0363100012147483",
+    "front": "m0",
+    "stripRow": 286,
+    "evidence": "strip.jpg: one coping line for 52-64: the median skyline row 286 (17.05 m) of the members' rows 277/280/286/292/297 (the strip tilts: the window rows fall with them)"
+   },
+   {
+    "pand": "0363100012147483",
+    "front": "m1",
+    "stripRow": 416,
+    "evidence": "strip.jpg: the low end's coping at 13.9 m (skyline over 6.0-8.0 m)"
+   },
+   {
+    "pand": "0363100012131498",
+    "stripRow": 139,
+    "evidence": "strip.jpg: the corner block's coping at 20.7 m (skyline)"
+   }
+  ],
+  "canopy": [
+   {
+    "pands": [
+     "0363100012115017",
+     "0363100012128896",
+     "0363100012124819",
+     "0363100012134101",
+     "0363100012147483"
+    ],
+    "evidence": "strip.jpg: one canopy runs from 64 to 52"
+   }
+  ]
+ }
+}

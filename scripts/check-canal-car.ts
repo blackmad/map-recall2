@@ -3,6 +3,8 @@ import { readFile } from 'node:fs/promises';
 import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
 import { ROUTE_QUIZ_SETTLE_METRES } from '../src/canalRecall/game/recallRules';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
+import { buildRoadSpatialIndex, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
+import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
 
 const options = { edgeTolerance: 12 };
 const road = (overrides: Partial<RoadContact> = {}): RoadContact => ({
@@ -199,7 +201,10 @@ for (const name of ['Van Limburg Stirumstraat', 'De Wittenkade', 'Staatsliedenbr
   // Prinsenstraat, and its routing ways are its own ~40 m street. The route
   // question settled on 0.65 s, which at cruise covered 33 m of it, so it was
   // asked at the far quay. tests/e2e/turn-question-timing.spec.ts drives it;
-  // this pins the geometry that makes the time settle too long.
+  // this pins the geometry that makes the time settle too long. Since
+  // 2026-10-16 the deck itself is transparent to the street question (see the
+  // Niek Engelschmanbrug regression below) and the Herenstraat is asked
+  // instead, on the same distance settle.
   const ways = routing.filter(street => street.name === 'Noordsche Compagniebrug');
   assert.ok(ways.some(street => street.bridge), 'Noordsche Compagniebrug is a routed bridge way');
   const length = ways.flatMap(street => street.paths ?? (street.path ? [street.path] : []))
@@ -209,4 +214,72 @@ for (const name of ['Van Limburg Stirumstraat', 'De Wittenkade', 'Staatsliedenbr
     'the distance settle asks in the first third of the bridge, not at its end');
 }
 
-process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);
+let bridgeWaySummary = '';
+{
+  // Named regression (user report 2026-10-16, cycling north-east on the
+  // Raadhuisstraat over the Keizersgracht by the Homomonument): "Which street
+  // are you on?" accepted "Niek Engelschmanbrug". OSM names that deck after
+  // the bridge, and it runs from the Westermarkt onto the Raadhuisstraat. A
+  // street question on a bridge-named way now answers with the street the deck
+  // carries, or with no name (the street beyond is asked once off the deck);
+  // only the deliberate "Which bridge are you on?" keeps a bridge's name.
+  // Built the way the game builds it: 3 px a metre, closed rings dropped.
+  const PX_PER_M = 3;
+  const lat0 = 52.37, lon0 = 4.9, lonScale = Math.cos(lat0 * Math.PI / 180);
+  const segments: Array<{ name: string; width: number; points: RoadPoint[] }> = [];
+  for (const street of routing) {
+    for (const path of street.paths ?? (street.path ? [street.path] : [])) {
+      if (path.length < 2) continue;
+      const first = path[0], last = path[path.length - 1];
+      if (path.length > 3 && first[0] === last[0] && first[1] === last[1]) continue;
+      segments.push({ name: street.name, width: 20, points: path.map(([lat, lon]) => ({
+        x: (lon - lon0) * 111_320 * lonScale * PX_PER_M,
+        y: -(lat - lat0) * 111_320 * PX_PER_M,
+      })) });
+    }
+  }
+  const network = bridgeWayNetwork(segments, buildRoadSpatialIndex(segments, 100));
+  const options = { touchRadius: 3 * PX_PER_M };
+  const answerOn = (index: number) => routeQuestionRoadName({
+    rawName: segments[index].name,
+    deliberateBridge: false,
+    carriedStreet: () => carriedStreetName(network, index, options),
+  });
+  const indexesOf = (name: string) => segments.flatMap((segment, index) => (segment.name === name ? [index] : []));
+
+  const deck = indexesOf('Niek Engelschmanbrug');
+  assert.ok(deck.length >= 2, 'the Niek Engelschmanbrug carriageways are routed ways');
+  for (const index of deck) {
+    const answer = answerOn(index);
+    assert.ok(answer === '' || answer === 'Raadhuisstraat',
+      `on the Niek Engelschmanbrug the street question answers "${answer}", not the bridge`);
+  }
+  // Same shape, the 2026-10-09 timing report: Herenstraat over the
+  // Keizersgracht onto the Prinsenstraat.
+  for (const index of indexesOf('Noordsche Compagniebrug')) {
+    assert.ok(!isBridgeWayName(answerOn(index)), 'the Noordsche Compagniebrug is never a street answer');
+  }
+  // A quay continuing over a side canal is that quay; a lane continuing over
+  // a canal is that lane.
+  for (const [bridge, street] of [['Grote Brouwerssluis', 'Prinsengracht'], ['Vingboomsbrug', 'Huidenstraat']]) {
+    assert.ok(indexesOf(bridge).some(index => answerOn(index) === street), `${bridge} carries the ${street}`);
+  }
+  // The radial streets' own bridges are mapped under the street's name, so
+  // they are untouched: the Raadhuisstraat over the Herengracht and Singel,
+  // the Leidsestraat and the Utrechtsestraat over the canal belt.
+  for (const name of ['Raadhuisstraat', 'Leidsestraat', 'Utrechtsestraat']) {
+    assert.ok(routing.some(street => street.name === name && street.bridge), `${name} has bridge ways in its own name`);
+  }
+  // City-wide: no bridge-named way is ever a street answer.
+  let bridgeWays = 0, carried = 0;
+  for (let index = 0; index < segments.length; index++) {
+    if (!isBridgeWayName(segments[index].name)) continue;
+    bridgeWays++;
+    const answer = answerOn(index);
+    assert.ok(!isBridgeWayName(answer), `${segments[index].name} answers a street question with "${answer}"`);
+    if (answer) carried++;
+  }
+  bridgeWaySummary = `, ${bridgeWays} bridge-named ways (${carried} carry a street, ${bridgeWays - carried} transparent)`;
+}
+
+process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}).\n`);

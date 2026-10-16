@@ -291,7 +291,7 @@ if (useCli && needsTranslation.length) {
         throw new Error(`exited ${code}${why ? `: ${why}` : ''}`);
       }
 
-      const english = trimToSentence(held.restore(cleanTranslatorOutput(chunksOut.join(''))));
+      const english = trimToSentence(held.restoreEnglish(cleanTranslatorOutput(chunksOut.join(''))));
       if (!english) throw new Error('empty output');
 
       // A fluent translation that renamed the place teaches the wrong name,
@@ -331,7 +331,7 @@ if (useCli && needsTranslation.length) {
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}: ${await response.text()}`);
       const payload = await response.json() as { response?: string };
-      const english = trimToSentence(held.restore(cleanTranslatorOutput(payload.response || '')));
+      const english = trimToSentence(held.restoreEnglish(cleanTranslatorOutput(payload.response || '')));
       if (!english) throw new Error('empty response');
       const dropped = droppedProperNames(original, english, [group[0].name]);
       if (dropped.length) {
@@ -372,7 +372,7 @@ if (useCli && needsTranslation.length) {
       for (const entry of JSON.parse(body) as { id: number; text: string }[]) {
         const group = batch[entry.id];
         if (!group || !entry.text) continue;
-        const english = trimToSentence(heldByIndex[entry.id].restore(cleanTranslatorOutput(entry.text)));
+        const english = trimToSentence(heldByIndex[entry.id].restoreEnglish(cleanTranslatorOutput(entry.text)));
         const original = group[0].wikipediaExtractOriginal || group[0].wikipediaExtract!;
         const dropped = droppedProperNames(original, english, [group[0].name]);
         if (dropped.length) {

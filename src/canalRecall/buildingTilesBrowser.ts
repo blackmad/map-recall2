@@ -71,7 +71,8 @@ export async function loadVerifiedAppearanceCatalog(catalogUrl:string,fetcher:ty
 }
 const present=(value:unknown)=>value!==undefined&&value!==null&&value!=='';
 export function decorateBuildingFeature(feature:BuildingFeature,priors:ReadonlyMap<string,BuildingAppearancePrior>):BuildingFeature{
-  const properties=feature.properties??{},id=String(properties.id??''),prior=priors.get(id);
+  // A tower-podium tower (towerPodium.ts) wears its pand's identity: same prior, same palette draw.
+  const properties=feature.properties??{},id=String(typeof properties.pand==='string'?properties.pand:properties.id??''),prior=priors.get(id);
   if(prior)return{...feature,properties:{...properties,sideColour:prior.sideColour,sideColourSource:prior.sideColourSource??'procedural-prior-not-measured',sideColourObservationId:prior.sideColourObservationId,sideColourSourceSha256:prior.sideColourSourceSha256,sideColourReviewOrigin:prior.sideColourReviewOrigin,sideColourReviewer:prior.sideColourReviewer,roofColour:prior.roofColour,groundColour:prior.sideColour,groundAppearanceStyleSource:'wall-inherited-not-independently-measured',groundFloorHeightM:prior.groundFloorHeightM,roofShape:prior.roofShape,roofEavesHeightM:prior.roofEavesHeightM,roofGeometrySource:prior.roofGeometrySource,constructionYear:prior.constructionYear,appearanceStyleSource:prior.sideColourSource??'procedural-prior-not-measured',appearanceGeometryRevision:prior.geometryRevision}};
   // The complete-city tiles also retain OSM outlines where BAG has no equivalent.
   // They need the same display prior; source identity does not imply mapped appearance.

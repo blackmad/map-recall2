@@ -23,7 +23,9 @@ import { normaliseLandmarkMaterials } from '../landmarks/landmarkShading.js';
 import { buildLookTextures, VERTEX as FACADE_VERTEX, FRAGMENT as FACADE_FRAGMENT } from '../threeBuildingsBrowser.js';
 import { bayLayer } from '../bayLook.js';
 import { wallShade } from '../threeBuildingMesh.js';
-import { LOOK_VARIANTS, cityTint, hexToRgb } from './palette.js';
+import { BRICK_CELL_MEAN, LOOK_VARIANTS, cityTint, hexToRgb } from './palette.js';
+import { litFacadeWallGain, srgbToLinear } from './sunny.js';
+import type { WallExposure } from './chunkWallExposure.js';
 import { createCityLook, createCityLookMaterial, createCityUniforms, paintSlotLayers } from './cityLook.js';
 import { faceNormal, lumaSpread, meanLuma, PARITY_FACES, type ParityFace, type ParityResult } from './lookParityMath.js';
 
@@ -32,7 +34,8 @@ export type { ParityFace, ParityResult };
 
 export type ParityPipeline = 'generic' | 'recipe' | 'landmark' | 'generic-unlit' | 'recipe-unlit'
   | 'city-generic' | 'city-recipe' | 'city-landmark' | 'city-generic-unlit' | 'city-recipe-unlit' | 'city-landmark-unlit'
-  | 'landmark-highlight' | 'city-landmark-highlight' | 'city-landmark-highlight-unlit';
+  | 'landmark-highlight' | 'city-landmark-highlight' | 'city-landmark-highlight-unlit'
+  | 'chunk' | 'recipe-measured';
 export const SHARED_PIPELINES: readonly ParityPipeline[] = ['generic', 'recipe', 'landmark'];
 /**
  * `?cityLook=1` (look/cityLook.ts): the same three pipelines through the one
@@ -53,6 +56,12 @@ export const HIGHLIGHT_PIPELINES: readonly ParityPipeline[] = ['landmark-highlig
 const HIGHLIGHT_HEX = 0xffd21f;
 
 const SIZE = 96;
+
+/** The exposure record of a chunk whose strip wall measured `hex` under no recorded white (build-chunk-wall-exposure.ts). */
+export function chunkExposureForMeasured(hex: string): WallExposure {
+  const lin = (c: readonly number[]) => srgbToLinear(0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]);
+  return { white: null, stripOverDrawn: lin(hexToRgb(hex)) / lin(hexToRgb(cityTint('brick', hex)).map(v => v * BRICK_CELL_MEAN)) };
+}
 const WALL_M = 10;
 
 /** One quad, WALL_M square, centred on the origin, facing `normal` (ENU, horizontal). */
@@ -151,7 +160,7 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * WALL_M / 5, uv.getY(i) * WALL_M / 3.2);
         facadeAttributes(g, hex, plainLayer, wallShade(normal[0], normal[1]));
         const material = pipeline === 'generic'
-          ? createLitFacadeMaterial(THREE, { cells: { value: cells.colour }, masks: { value: cells.mask }, wallGain: { value: LOOK_VARIANTS.photo.litWallGain } })
+          ? createLitFacadeMaterial(THREE, { cells: { value: cells.colour }, masks: { value: cells.mask }, wallGain: { value: litFacadeWallGain(LOOK_VARIANTS.photo.litWallGain) } })
           : new THREE.RawShaderMaterial({ glslVersion: THREE.GLSL3, vertexShader: FACADE_VERTEX, fragmentShader: FACADE_FRAGMENT, side: THREE.FrontSide,
             uniforms: { cells: { value: cells.colour }, masks: { value: cells.mask }, bands: { value: 0 }, flatColour: { value: 0 }, cityFade: { value: 1 } } });
         mesh = new THREE.Mesh(g, material);
@@ -161,6 +170,14 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         source.userData = { materialSlot: 'brick', tint: hex };
         mesh = new THREE.Mesh(wallGeometry(normal, WALL_M), source);
         (pipeline === 'recipe' ? recipeLit : recipeUnlit).apply(mesh);
+      } else if (pipeline === 'chunk' || pipeline === 'recipe-measured') {
+        // The same measured wall colour as a street chunk and as a per-house recipe (`tintSource: measured`): what each
+        // draws is that colour at the look's exposure. A chunk's measured colour is its strip's (look/chunkWallExposure.ts):
+        // the exposure record says the strip wall is `hex`, i.e. stripOverDrawn = lin(hex) / lin(the chunk's drawn wall).
+        const source = new THREE.MeshStandardMaterial({ color: hex });
+        source.userData = { materialSlot: 'brick', tint: hex, ...(pipeline === 'recipe-measured' ? { tintSource: 'measured' } : {}) };
+        mesh = new THREE.Mesh(wallGeometry(normal, WALL_M), source);
+        recipeLit.apply(mesh, pipeline === 'chunk' ? { wallExposure: chunkExposureForMeasured(hex) } : undefined);
       } else if (pipeline === 'city-generic' || pipeline === 'city-generic-unlit') {
         // Generic extrusion in the city look: the plain bay cell, with the tint the city gives this brick.
         const g = wallGeometry(normal, 1);

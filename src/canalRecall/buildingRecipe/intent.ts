@@ -19,6 +19,14 @@ export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as co
 export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
 export const CROWN_CAP_RISES = ['low', 'normal'] as const;
 export const CROWN_CAP_SPANS = ['narrow', 'medium', 'wide'] as const;
+/**
+ * Flank curve of a neck/bell crown, from the foot at the eaves to the neck (both flanks, mirrored). `concave`: the hollow
+ * sweep of a neck gable's claw pieces and a bell's flared flanks, low at the foot and rising steeply into the neck (the
+ * default: every bell/neck flank measured on the 2026-10-16 faces was concave or ogee); `ogee`: concave at the foot,
+ * convex into the neck (an S); `straight`: a plain slant (Utrechtsestraat 62a, 169207); `convex`: the flank bulges out (a
+ * quarter dome, the legacy sine shoulder).
+ */
+export const CROWN_SHOULDERS = ['concave', 'ogee', 'straight', 'convex'] as const;
 export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'right', 'left-recessed', 'right-recessed'] as const;
 export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
 export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
@@ -38,9 +46,14 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * De Baarsjes (Jan Evertsenstraat 1925-1927, docs/de-baarsjes-types-20261014.md): `casement-toplight` two side-hung
  * casements under a fixed top light (a thin transom at 0.8 of the height, the mullion running through both);
  * `casement-gridded-toplight` the same with the top light in small panes (three bars across it); `casement-triple` a
- * fixed centre light between two narrow side-hung casements (mullions at 0.27 and 0.73, no transom).
+ * fixed centre light between two narrow side-hung casements (mullions at 0.27 and 0.73, no transom);
+ * `casement-toplight-double` two casement pairs side by side under one top light (a 3 m window of four lights, the
+ * end house of a hood-lisene row); `casement-gridded-toplight-double` the same with a small-pane top light (two bars over
+ * each light: J.F. Staal's 2.6 m windows on 68-92); `casement-pair` two side-hung casements with no top light (a mullion only);
+ * `casement-small-panes` two casements glazed in small panes all over (bars at thirds across, a transom row under a top
+ * light: Jan Evertsenstraat 45-53).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -86,6 +99,8 @@ export const WINDOW_SILLS = ['consoles'] as const;
 export const BALCONY_STYLES = ['guard', 'timber-bracketed', 'slab-hood'] as const;
 /** Guard of a timber balcony: white turned balusters under a handrail, or a wrought-iron grille. */
 export const BALCONY_RAILS = ['turned', 'iron'] as const;
+/** Guard of a front-wide balcony (`balconyRun`): iron bars or a solid brick front. */
+export const BALCONY_RUN_GUARDS = ['iron', 'brick'] as const;
 export const QUOINS = ['none', 'stone'] as const;
 /**
  * Shop canopy. `fabric-straight`/`fabric-dutch`: a sloped fabric awning. `rigid` (Amsterdam School luifel): a horizontal
@@ -135,10 +150,12 @@ export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
 export const GABLE_FINIALS = ['crab', 'vase', 'ball'] as const;
 export const ROOF_GABLETS = ['crest', 'pediment'] as const;
 export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
-export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel'] as const;
+/** `blank`: a bay of plain wall with no opening (Jan Evertsenstraat 143: brick between the house door and the cafe window). */
+export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel', 'blank'] as const;
 export type GroundBay = typeof GROUND_BAYS[number];
 /** `box` (1976-1992 infill, Kinkerstraat 109-161): a flat-topped dormer whose cheeks and back are in the wall material (a brick roof box), roof covering on its flat top. */
-export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box'] as const;
+/** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
+export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat'] as const;
 /** Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab). */
 export const TOWER_CAPS = ['pyramid', 'flat', 'stepped'] as const;
 /** Cap on the top storey of a multi-bay erker (`bayWindows.bays`): a hipped lean-to roof, a flat slab, or none (a plain closure). */
@@ -185,6 +202,8 @@ export interface FrontIntent {
   crownCapSpan?: typeof CROWN_CAP_SPANS[number];
   /** Cap height: `low` = a shallow pointed pediment/segment (about 0.35 m), default `normal`. */
   crownCapRise?: typeof CROWN_CAP_RISES[number];
+  /** Neck/bell flank curve (CROWN_SHOULDERS); read from the strip skyline (`flankCurvature`), default `concave`. */
+  crownShoulder?: typeof CROWN_SHOULDERS[number];
   /**
    * Window axes. The front has `axisGrid` vertical axes (default: the largest per-storey bay count above the
    * ground storey). Every storey's windows sit on those axes, so they line up between storeys and the piers
@@ -203,6 +222,27 @@ export interface FrontIntent {
    * Default: the shared equal-pier grid. Needs one entry per axis (`axisGrid`, else the widest upper storey).
    */
   bayWidths?: number[];
+  /**
+   * With `bayWidths` (Jan Evertsenstraat 1925-27 rows): the window of each axis as a share of its bay (one per axis,
+   * 0.3..1), centred in the bay, instead of the default 58 %. A share near 1 lets two windows touch across a thin pier
+   * (a box frame beside its flat neighbour) or brings a window against the party wall, where the neighbour's mirrored
+   * half completes it (a window straddling the party wall). A box frame (`bayWindows.hood`) then wraps the windows of its
+   * axes exactly. Absent = the default widths, byte-identical.
+   */
+  bayFill?: number[];
+  /**
+   * Window kind per axis where it differs from `windows` (key = axis index on the front's grid, left to right as seen;
+   * every window storey above the ground): the wide four-light window of a row's end house beside its box frame. A box
+   * frame (`bayWindows.hood`) takes the kind of its first axis. Wins over `storeyWindows`. Absent = byte-identical.
+   */
+  axisWindows?: Record<string, WindowKind>;
+  /**
+   * One front of a pand with several fronts on the street, raised over its lower neighbour with a full-depth body behind
+   * it: its flat roof band keeps its own eaves (a stepped flat roof) instead of being read as a tower bay that takes the
+   * neighbour's roof (a front-plane wall with nothing behind it). Jan Evertsenstraat 52-56 (the row house beside the low
+   * end) and 89A-91 (the 15.9 m step). Absent = the tower-bay rule, byte-identical.
+   */
+  stepBody?: boolean;
   /** A storey whose windows do not sit on the shared bays gives its own weights (one per window of that storey; key = storey index from the ground, or "last"), e.g. `{"4": [1, 0.6, 0.6]}` for one far-left and a close pair. */
   storeyBayWidths?: Record<string, number[]>;
   /**
@@ -364,6 +404,12 @@ export interface FrontIntent {
   /** `bands: painted`: the centre of the transom band as a share of the window height from the sill (0.3..0.95, default 0.78), measured on the strip (Kinkerstraat 18-4: 0.65). */
   bandTransomAt?: number;
   bandLines?: ('sill' | 'transom' | 'head')[];
+  /**
+   * `bands: painted`: a painted ledge `courses` brick courses high (0.055 m each) on the floor line of each listed storey (0-based), the stone colour,
+   * the bands' depth (Jan Evertsenstraat 139-160: the white ledge at 9.7 m under the white window band, brick between it
+   * and the band's sill). Absent = none.
+   */
+  bandFloors?: {storeys: number[]; courses: number};
   /** 0-based storeys carrying the painted bands (default every storey above the ground, and the ground when it has no shopfront). */
   bandStoreys?: number[];
   /** Sills under the surround-storey windows: `consoles` = a painted sill slab on two console blocks. */
@@ -389,6 +435,14 @@ export interface FrontIntent {
    * the wall material 0.12 m high and 0.22 m proud, 2 cm over the head, 0.1 m wider than the window on each side.
    */
   windowHoods?: boolean;
+  /**
+   * One balcony along the whole front at the floor of `storey` (Jan Evertsenstraat 139-160, over the ground storey): a
+   * slab `slab` m thick (default 0.25) and `projection` m deep, its top on the storey floor, in `slabColour` (default the stone
+   * colour), under a guard `guardRise` m high (default 1.0) on its nose and both returns: `iron` bars (the door colour) or a
+   * solid `brick` front in the wall material, 0.1 m thick. Neighbours' runs meet on the party plane. Evidence = the strip
+   * rows of slab and guard.
+   */
+  balconyRun?: {storey: number; projection: number; slab?: number; guard: typeof BALCONY_RUN_GUARDS[number]; guardRise?: number; slabColour?: string; evidence: string};
   /**
    * Glazed tile panels (Bellamybuurt 1915 rows, Hasebroekstraat 56-70; buildingRecipe/tileAccents.ts): on every pier of
    * the listed storeys (0-based, >= 1), at the windows' mid-height, a row of tile diamonds in `colour` (a measured tint)
@@ -559,9 +613,10 @@ export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour:
   /**
    * `{rows}` (Jan Evertsenstraat 43-135): the band is `rows` glass blocks tall (0.2 m each) instead of filling up to the
    * sills, and the canopy and the shop-glass head drop to sit under it (with `wallCourses` of brick between the band and
-   * the first-storey sills). With `palette.glassBlock` the band is its own measured material.
+   * the first-storey sills). With `palette.glassBlock` the band is its own measured material. `panel` (Jan Evertsenstraat
+   * 75-87): the band is a flat painted sign panel of that measured colour instead of glass block (no mortar grid).
    */
-  glassBlocks?: boolean | {rows: number};
+  glassBlocks?: boolean | {rows: number; panel?: string};
   /**
    * Rigid canopy only: brick courses (0.055 m) of wall between the canopy (or its glass-block band) and the first-storey
    * window sills, measured on the strip; the canopy and the shop-glass head drop to keep it (Jan Evertsenstraat 9-33: the
@@ -713,6 +768,16 @@ export interface LargeWallIntent {
    */
   windowShape?: LargeWindowShape;
   /**
+   * `panes`: pane-split glazing (block kit `WinParams.paneSplit`): the frame is one sheet at the back of the recess and the
+   * glass separate panes in front of it, so frames, mullions and transoms cost no bar boxes (white-framed cross windows on
+   * a byte budget). Absent: the kit's frame ring and bar boxes, byte-identical.
+   */
+  glazing?: 'panes';
+  /** Stone courses at the windows' sill line (`sill`, replacing the per-window sills) and head line (`head`) on every upper storey. */
+  courses?: ('sill' | 'head')[];
+  /** The ground storey is a souterrain: a low raised basement (blockBuilding/systems.ts SOUTERRAIN) with two small windows per bay (`single`: one), arched with `arches.ground`. */
+  souterrain?: boolean | 'single';
+  /**
    * `glazed-hall` (Apollohal): the brick base rises to `base` (fraction of the eaves height); above it one glass skin to the
    * eaves, divided into `lights` columns per bay (`baysPerStorey` = the structural posts) and `rows` rows by a mullion grid.
    */
@@ -738,7 +803,7 @@ export interface LargeWallIntent {
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
    * `voussoir` (stone with imposts and a keystone) or `none`.
    */
-  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
+  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'blocks' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
   /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
@@ -922,6 +987,10 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     problems.push(...deBaarsjesProblems(f, intent?.palette, at));
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
+    if (f.crownShoulder !== undefined) {
+      oneOf(f.crownShoulder, CROWN_SHOULDERS, `${at}.crownShoulder`);
+      if (!['neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownShoulder: only a neck or bell crown has curved flanks (gable ${f.gable})`);
+    }
     if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
     if (f.axisGrid !== undefined) count(f.axisGrid, `${at}.axisGrid`, 1, 16);
     for (const [k, v] of Object.entries(f.storeyAxes ?? {})) {

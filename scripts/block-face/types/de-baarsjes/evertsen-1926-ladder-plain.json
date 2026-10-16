@@ -25,6 +25,12 @@
       "parapet": {"courses": 56, "coping": true},
       "note": "3.1 m of plain brick over the storeys (14.1-17.2 m on 49)"
     },
+    "low-parapet": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 14, "coping": true},
+      "note": "the lower end bays of a row (52: 13.9 m beside the 16.8 m row, its stair windows on the landings)"
+    },
     "corner-tower": {
       "gable": "flat",
       "cornice": "none",

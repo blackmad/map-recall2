@@ -36,7 +36,9 @@ async function boot(page: Page): Promise<string[]> {
   });
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
   // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
-  if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
+  // Surveyed (BGT) ground draws no procedural paint since 2026-10-16 (streets.ts PAINT_ON_SURVEY; user: "maybe we
+  // just stop showing dashes for now"), so this pins the paint of the band fallback (cells without the survey).
+  await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
   await openRoute(page, { travelMode: 'car', viewMode: 'cockpit', abortHeavyTiles: false, enterRacing: false, query: '?ownGround=1' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;

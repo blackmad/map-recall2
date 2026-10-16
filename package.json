@@ -202,7 +202,7 @@
     "test:rgb-city-demo": "tsx scripts/check-rgb-city-demo.ts",
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
-    "test:bag-tiles": "node --import tsx --test src/canalRecall/bagTiles.test.ts",
+    "test:bag-tiles": "node --import tsx --test src/canalRecall/bagGaps.test.ts src/canalRecall/towerPodium.test.ts src/canalRecall/bagTiles.test.ts",
     "check:covers": "node --max-old-space-size=8192 --import tsx scripts/check-covers.ts",
     "build:bag-tiles": "node --max-old-space-size=12288 --import tsx scripts/build-bag-buildings.ts --tiles && node --max-old-space-size=8192 --import tsx scripts/build-covers.ts",
     "test:look": "node --import tsx --test src/canalRecall/look/*.test.ts src/canalRecall/rendererShared/*.test.ts",
@@ -498,6 +498,12 @@
     "test:roofs": "node --import tsx --test src/canalRecall/roofs/*.test.ts src/canalRecall/roofTier.test.ts src/canalRecall/gardenSheds.test.ts",
     "check:roof-attachment": "node --import tsx scripts/check-roof-attachment.ts",
     "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts",
+    "audit:landmark-cards": "tsx scripts/audit-landmark-cards.ts",
+    "test:bridge-street-name": "node --import tsx --test src/canalRecall/game/bridgeStreetName.test.ts",
+    "test:finish-blurb": "node --import tsx --test src/canalRecall/game/finishBlurb.test.ts",
+    "check:bridge-railings": "node --import tsx scripts/own-ground/audit-bridge-railings.ts",
+    "check:bag-gaps": "node --import tsx scripts/check-bag-gaps.ts",
+    "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts"
   },
   "dependencies": {

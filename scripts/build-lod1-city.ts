@@ -41,6 +41,8 @@ import {
   resolvePaintProps,
   type PaintDonor,
 } from '../src/canalRecall/buildingPaintInherit.js';
+import { towerFeatureId } from '../src/canalRecall/towerPodium.js';
+import { modelOwnedPands } from './lib/towerPodiumOwners.js';
 import { decideTier, FootprintGrid, type LadderTier, type OsmFootprint, type Ring } from '../src/canalRecall/buildingLadder.js';
 import {
   asGeometry,
@@ -184,6 +186,18 @@ const inAllotmentScope = (geometry: FootprintGeometry): boolean => city === 'ams
 
 await output.write('{"type":"FeatureCollection","features":[\n');
 
+// Tower-podium pands a model, kit, type or recipe owns stay one feature at the ridge: every hide path matches the exact id.
+type TowerProps = { minHeight: number; height: number; coordinates: Ring[][] };
+const towerOwners = new Set<string>();
+{
+  const towered: string[] = [];
+  const scan = createInterface({ input: createReadStream(bagFile), crlfDelay: Infinity });
+  for await (const raw of scan) if (raw.includes('"tower":{')) towered.push(String((JSON.parse(raw.replace(/,\s*$/, '')) as Feature).properties.bagId));
+  for (const id of modelOwnedPands(towered).keys()) towerOwners.add(id);
+}
+let towersEmitted = 0;
+let towersOwned = 0;
+
 const reader = createInterface({ input: createReadStream(bagFile), crlfDelay: Infinity });
 for await (const rawLine of reader) {
   const line = rawLine.replace(/,\s*$/, '');
@@ -214,6 +228,13 @@ for await (const rawLine of reader) {
   }
 
   bump(3);
+  const tower = (feature.properties.tower ?? null) as TowerProps | null;
+  delete feature.properties.tower;
+  if (tower && towerOwners.has(bagId)) {
+    feature.properties.height = tower.height;
+    feature.properties.heightSource = 'ridge-tower';
+    towersOwned++;
+  }
   const matched = decision.matchedOsmIds.length > 0 ? osmById.get(decision.matchedOsmIds[0]) : undefined;
   const inherited = resolvePaintProps(matched?.properties, rings, paintDonors);
   if (matched) {
@@ -250,6 +271,14 @@ for await (const rawLine of reader) {
     },
     geometry: useOsmCourtyard ? asGeometry(matched!.polygons) : feature.geometry
   }));
+  if (tower && !towerOwners.has(bagId)) {
+    towersEmitted++;
+    await write(JSON.stringify({
+      type: 'Feature',
+      properties: { tier: 3, towerId: towerFeatureId(bagId), pand: bagId, bagId: null, osmId: null, heightSource: 'tower-podium', minHeight: tower.minHeight, height: tower.height },
+      geometry: tower.coordinates.length === 1 ? { type: 'Polygon', coordinates: tower.coordinates[0] } : { type: 'MultiPolygon', coordinates: tower.coordinates },
+    }));
+  }
 }
 
 // Parts that missed every BAG centroid still belong to a composition that
@@ -296,6 +325,10 @@ for (const building of osmById.values()) {
     // coverage are digitisation disagreements with a pand we already drew —
     // emitting them doubles the city and reintroduces z-fighting. Keep only
     // parts, stacked members, and named leftovers (true gaps in the register).
+    // This also drops the OSM outline over a pand 3DBAG never reconstructed
+    // (Prinsengracht 221-227, 2026-10-16: an empty lot). Those are filled from
+    // the BAG footprint + AHN height by scripts/survey-bag-gaps.ts and
+    // publish-bag-gaps.ts; re-run the publish after a rebuild from here.
     const named = typeof building.properties.name === 'string' && building.properties.name.length > 0;
     if (!building.isPart && building.minHeightM <= 0 && !named && !park) {
       suppressedUnmatched++;
@@ -352,6 +385,7 @@ const report = {
   osmUnmatchedSuppressed: suppressedUnmatched,
   osmSiblingPartsSuppressed: suppressedSiblingParts,
   osmCourtyardGeometry,
+  towerPodium: { towersEmitted, ownedKeptAtRidge: towersOwned },
   pandsWithOsmAppearance: colouredFromOsm,
   osmFeatures: osmById.size,
   heightChangeVsOsm: {

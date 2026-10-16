@@ -1,0 +1,79 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:13:56.222Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012100052",
+   "addresses": [
+    "Jan Evertsenstraat 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 139-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010011122743"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151275",
+   "addresses": [
+    "Jan Evertsenstraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 141-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684534"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115917",
+   "addresses": [
+    "Jan Evertsenstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Orteliusstraat 188",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000764754"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814026773,
+     "lngLat": [
+      4.8495904,
+      52.369756
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143-1;143-2;143-3",
+      "addr:postcode": "1057BW",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "cafe",
+      "name": "Pudu Cafe Koffiehuis",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-16T11:13:56.222Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
