@@ -14,7 +14,7 @@ import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
-import {pointInRing} from './facts.ts';
+import {pointInRing, roofHeightAt} from './facts.ts';
 import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
@@ -654,7 +654,18 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // fill above the lowest roof edge of this front (`bodyEaves`, what the library knows as the elevation's eaves).
     const measuredEaves = facts.measuredEavesM?.[front.id];
     const eaves = measuredEaves !== undefined ? round(measuredEaves) : round(along[Math.floor(along.length * 0.1)]), profileTop = along.at(-1)!;
-    const bodyEaves = measuredEaves !== undefined ? round(Math.min(eaves, Math.max(along[0], survey.shellTopM + 0.002))) : eaves;
+    // A front roof (blockFace/recipeRoof.ts, a saddle under a gable) can meet the facade below the cornice at its sides: the
+    // body eaves drop to its lowest edge there, so the crown fills the facade from that edge up to the outline.
+    const frontRoofMin = facts.roofSource?.kind === 'front' ? (() => {
+      const [p0, p1] = endpoints, w = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), nn = ff.outwardNormalRD, nl = Math.hypot(nn[0], nn[1]) || 1;
+      let lo = Infinity;
+      for (let x = 0.05; x < w - 0.05; x += 0.1) {
+        const h = roofHeightAt(facts.roofsRD, [p0[0] + (p1[0] - p0[0]) * x / w - nn[0] / nl * 0.05, p0[1] + (p1[1] - p0[1]) * x / w - nn[1] / nl * 0.05], facts.heights.groundNAP);
+        if (h !== null) lo = Math.min(lo, h);
+      }
+      return Number.isFinite(lo) ? lo : eaves;
+    })() : undefined;
+    const bodyEaves = frontRoofMin !== undefined ? round(Math.min(eaves, Math.max(frontRoofMin, survey.shellTopM + 0.002))) : measuredEaves !== undefined ? round(Math.min(eaves, Math.max(along[0], survey.shellTopM + 0.002))) : eaves;
     // Gabled crowns rise above the roof meeting line; their top is the higher
     // of the profile peak and a proportion of the width, capped by the ridge.
     const gabled = !['cornice', 'flat'].includes(front.gable);

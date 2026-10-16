@@ -44,7 +44,8 @@ export async function compileFace(faceId: string) {
   const roofArg = arg('roof') as 'recipe' | 'survey' | undefined;
   if (roofArg && !['recipe', 'survey'].includes(roofArg)) throw Error('--roof=recipe|survey');
   const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip, photoGables, roofSource: roofArg, terrainAt: sharedTerrain()});
-  if (result.recipeRoofs) for (const r of result.recipeRoofs) console.log(`  recipe roof ${r.pandId.slice(-6)}: ${r.form} eaves ${r.eavesM} -> ridge ${r.ridgeM} m (3DBAG p95 ${r.capM}, max ${r.surveyMaxM}); main depth ${r.mainDepthM}/${r.plotDepthM} m; wings ${r.wings.map(w => `${w.areaM2} m2 @${w.heightM}`).join(' ') || 'none'}; surfaces ${r.surfacesBefore} -> ${r.surfacesAfter}${r.notes.length ? ' | ' + r.notes.join('; ') : ''}`);
+  if (result.recipeRoofs) for (const r of result.recipeRoofs) console.log(`  ${r.bands ? 'front' : 'recipe'} roof ${r.pandId.slice(-6)}: ${r.form} eaves ${r.eavesM} -> ridge ${r.ridgeM} m (3DBAG p95 ${r.capM}, max ${r.surveyMaxM}${r.crownTopM !== undefined ? `; crown line ${r.crownTopM}` : ''}); main depth ${r.mainDepthM}/${r.plotDepthM} m; wings ${r.wings.map(w => `${w.areaM2} m2 @${w.heightM}`).join(' ') || 'none'}; surfaces ${r.surfacesBefore} -> ${r.surfacesAfter}${r.bands ? ' | bands ' + r.bands.map(b => `${b.id} ${b.form} ${b.eavesM}->${b.ridgeM}${b.pitchDeg !== undefined ? ` @${b.pitchDeg}°` : ''}${b.sideEavesM !== undefined ? ` sides ${b.sideEavesM}` : ''}`).join(', ') : ''}${r.notes.length ? ' | ' + r.notes.join('; ') : ''}`);
+  if (result.rowClamps) for (const c of result.rowClamps) console.log(`  row clamp ${c.pandId.slice(-6)} (${c.row}): ${c.note}`);
   if (result.photoCrowns) console.log(`  crowns from photo: ${result.photoCrowns.patches.map(p => `${p.pandId.slice(-6)}/${p.frontId} ${JSON.stringify(p.set)}`).join('; ') || 'none'}${result.photoCrowns.kept.length ? ` | kept authored: ${result.photoCrowns.kept.map(k => `${k.pand.slice(-6)}/${k.front} (${k.why})`).join('; ')}` : ''}`);
   const out = path.join(STAGING, faceId);
   await fs.mkdir(out, {recursive: true});
@@ -72,7 +73,7 @@ export async function compileFace(faceId: string) {
   const entry = buildChunkManifest([result.chunk], n => `./models/ordinary-buildings/chunks/chunk-${n}.glb`).chunks[0];
   const r = result.chunk.report;
   const report = {face: faceId, name, passed: result.passed && audit.passWithPartyExemption, seconds: +((performance.now() - t0) / 1000).toFixed(1),
-    ...(result.photoCrowns ? {photoCrowns: result.photoCrowns} : {}), ...(result.recipeRoofs ? {recipeRoofs: result.recipeRoofs} : {}),
+    ...(result.photoCrowns ? {photoCrowns: result.photoCrowns} : {}), ...(result.recipeRoofs ? {recipeRoofs: result.recipeRoofs} : {}), ...(result.rowClamps ? {rowClamps: result.rowClamps} : {}),
     triangles: r.triangles, primitives: r.primitives, bytes: r.bytes, gzipBytes: r.gzipBytes,
     ground: {sharedNapM: result.ground.sharedNapM, shiftsM: result.ground.shiftsM, eavesBefore: result.ground.eavesBefore, eavesAfter: result.ground.eavesAfter, groups: result.ground.groups},
     instancing: result.instancing, slitsClosed: result.slitsClosed, frontSnaps: result.frontSnaps, rears: result.rears, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,
