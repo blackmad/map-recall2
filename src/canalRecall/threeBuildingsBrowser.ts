@@ -211,6 +211,14 @@ export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorate
 const KIT_KEY = '__kit';
 /** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
 const COARSE_HOLE_BONUS_M = 400;
+/** Arriving chunks dissolve in over this long (fadeIn); `?chunkFade=0` or `window.__canalRecallChunkFade = false` turns it off. */
+const CHUNK_FADE_MS = 350;
+const CHUNK_FADE = (() => {
+  try {
+    const g = globalThis as { __canalRecallChunkFade?: boolean; location?: { search?: string } };
+    return g.__canalRecallChunkFade !== false && new URLSearchParams(g.location?.search ?? '').get('chunkFade') !== '0';
+  } catch { return true; }
+})();
 const BOAT_PREFIX = 'boats:';
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
@@ -807,6 +815,7 @@ export class ThreeBuildings {
       if (!this.sourceGroups.has(key)) continue;
       wanted++;
       if (!this.chunks.has(key)) return false;
+      if (this.fading.has(key)) return false; // still dissolving in
     }
     return wanted > 0;
   }
@@ -882,6 +891,8 @@ export class ThreeBuildings {
   private readonly motion = new MotionEstimate();
   private lookAheadOn: boolean | undefined;
   private detailBlockState: DetailBlock | null = null;
+  /** Chunks dissolving in (fadeIn). */
+  private readonly fading = new Map<string, { mesh: any; source: any; clone: any; start: number }>();
 
   /**
    * Build order: the chunk nearest the rider, ahead first (streamingLookAhead.ts aheadRank on the nearest point
@@ -1203,6 +1214,7 @@ export class ThreeBuildings {
     const context=this.contextGroups.get(key);
     if(options?.contextFeatures && context && (context.length!==options.contextFeatures.length || context.some((f,i)=>f!==options.contextFeatures![i]))) return;
     const t0 = performance.now() - buildMs;
+    const arriving = !this.chunks.get(key)?.mesh;
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
     const THREE = this.THREE;
@@ -1259,6 +1271,7 @@ export class ThreeBuildings {
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])), lift };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
+    if (arriving) this.fadeIn(key, mesh);
     this.refreshSurveyedRoofOwnership();
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
@@ -1282,7 +1295,51 @@ export class ThreeBuildings {
     if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
   }
 
+  /**
+   * A chunk that arrives where nothing of its own drew (not a rebuild of a drawn chunk) dissolves in over
+   * CHUNK_FADE_MS with the overview's screen-door dither on a material clone that shares the program (no
+   * compile); the mesh returns to the shared material when it ends. Detail (`near:`) replacing coarse shells
+   * keeps the coarse buildings drawn until its dissolve ends (refreshDetailOwnership), so the swap is a
+   * dissolve rather than a one-frame jump. `?chunkFade=0` installs at once, as before.
+   */
+  private fadeIn(key: string, mesh: any): void {
+    if (!CHUNK_FADE || key === KIT_KEY) return;
+    const source = mesh.material;
+    if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return;
+    const fade = { value: 0 };
+    const clone = source.clone();
+    clone.uniforms = { ...source.uniforms, cityFade: fade };
+    clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; };
+    clone.customProgramCacheKey = () => source.customProgramCacheKey();
+    if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
+    mesh.material = clone;
+    this.fading.set(key, { mesh, source, clone, start: performance.now() });
+  }
+
+  /** Advance the arriving chunks' dissolve under the overview's own fade `global`; nothing runs when none fade. */
+  private tickFades(global: number): void {
+    if (!this.fading.size) return;
+    const now = performance.now();
+    for (const [key, f] of this.fading) {
+      const t = (now - f.start) / CHUNK_FADE_MS;
+      if (t < 1) { f.clone.uniforms.cityFade.value = global * t; continue; }
+      this.endFade(key);
+    }
+    this.map.triggerRepaint();
+  }
+
+  private endFade(key: string, refresh = true): void {
+    const f = this.fading.get(key);
+    if (!f) return;
+    if (f.mesh.material === f.clone) f.mesh.material = f.source;
+    f.clone.dispose();
+    this.fading.delete(key);
+    // The detail chunk is solid now: hide the coarse shells it replaces.
+    if (refresh && key.startsWith('near:') && this.chunks.has(key)) this.refreshDetailOwnership();
+  }
+
   private dropChunk(key: string): void {
+    this.endFade(key, false);
     const held = this.chunks.get(key);
     if (!held) return;
     if (held.mesh) { this.scene?.remove(held.mesh); held.mesh.geometry.dispose(); }
@@ -1303,7 +1360,7 @@ export class ThreeBuildings {
 
   private refreshDetailOwnership(): void {
     const next = new Set<string>();
-    for (const [key, entry] of this.chunks) if (key.startsWith('near:') && entry.mesh) for (const id of entry.ranges.keys()) next.add(id);
+    for (const [key, entry] of this.chunks) if (key.startsWith('near:') && entry.mesh && !this.fading.has(key)) for (const id of entry.ranges.keys()) next.add(id);
     const changed = new Set([...next, ...this.installedDetailIds].filter(id => next.has(id) !== this.installedDetailIds.has(id)));
     this.installedDetailIds = next;
     if (!changed.size) return;
@@ -1395,6 +1452,7 @@ export class ThreeBuildings {
       material.uniforms.cityFade.value = fade;
       if (material.uniforms.cityTone) material.uniforms.cityTone.value = b;
     }
+    this.tickFades(fade);
     return true;
   }
 
