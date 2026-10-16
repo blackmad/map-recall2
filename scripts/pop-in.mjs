@@ -230,6 +230,10 @@ async function run(browser, n) {
     await cdp.send('Network.enable');
     await cdp.send('Network.emulateNetworkConditions', { offline: false, latency, downloadThroughput: mbps * 125000, uploadThroughput: mbps * 125000 / 4 });
   }
+  // --cpu <rate>: a slower machine (CDP CPU throttling of the page's main thread), so streaming falls behind the way
+  // it does on a loaded or older computer, deterministically instead of by whatever else the machine runs.
+  const cpu = Number(opt('cpu', '1'));
+  if (cpu > 1) { const c = await context.newCDPSession(page); await c.send('Emulation.setCPUThrottlingRate', { rate: cpu }); }
   await page.goto(`${origin}/canal-drive/${qs}`);
   await page.waitForFunction(([a, b]) => window.canalRecallGame?.routePois?.some(p => p.id === a) && window.canalRecallGame.routePois.some(p => p.id === b), [R.start, R.dest], { timeout: 120_000 });
   await page.locator('#travel-mode').selectOption(R.mode, { force: true });
@@ -293,12 +297,19 @@ async function run(browser, n) {
         const t = performance.now();
         ctx.drawImage(map.getCanvas(), 0, 0, 640, 400);
         const img = ctx.getImageData(0, 0, 640, 400);
+        if (P.shots === undefined) { P.shots = (window.__popShots || []).slice(); P.shotUrls = []; }
         P.captureMs = (P.captureMs || 0) + performance.now() - t;
         const i = P.frame++;
         if (i % 60 === 0) { const c = map.getCenter(); P.track = P.track || []; P.track.push([+(t / 1000).toFixed(1), +c.lat.toFixed(5), +c.lng.toFixed(5), +map.getZoom().toFixed(2), +map.getPitch().toFixed(0)]); }
-        P.captures.push([i, t, p.x, p.y]);
+        const cap = [i, t, p.x, p.y, map.getBearing(), map.getPitch(), map.getZoom(), g.camera.introOverview || 0], last = P.captures[P.captures.length - 1];
+        P.captures.push(cap);
+        // Frames the summary does not judge (hitch, turn; see summarise) are not kept as strips either.
+        const turned = last && !(cap[7] > 0 || last[7] > 0) && (Math.abs(((cap[4] - last[4] + 540) % 360) - 180) > 2 || Math.abs(cap[5] - last[5]) > 1 || Math.abs(cap[6] - last[6]) > 0.02);
+        const unjudged = !last || t - last[1] > 50 || turned;
+        // --shots: the whole frame at fixed seconds into the measurement (the start of a ride, side by side).
+        if (P.shots && P.shots.length) { P.t0 ??= t; if (t - P.t0 >= P.shots[0] * 1000) { const sec = P.shots.shift(); const sc = document.createElement('canvas'); sc.width = 480; sc.height = 300; sc.getContext('2d').drawImage(cv, 0, 0, 480, 300); P.shotUrls.push([sec, sc]); } }
         let force = null; if (P.force && P.force.left-- > 0) force = P.force.kind; else P.force = null;
-        worker.postMessage({ type: 'frame', t, i, rgba: img.data, keep: P.keepFrames, force }, [img.data.buffer]);
+        worker.postMessage({ type: 'frame', t, i, rgba: img.data, keep: P.keepFrames && !unjudged, force }, [img.data.buffer]);
       }
       return r;
     };
@@ -309,6 +320,7 @@ async function run(browser, n) {
   const heap0 = await page.evaluate(() => performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null);
   const net0 = { bytes, requests };
   // --watch kind,kind: also keep the two frames after each such step, whatever their pop-in (to check the detector).
+  await page.evaluate(shots => { window.__popShots = shots; }, opt('shots', '').split(',').filter(Boolean).map(Number));
   await page.evaluate(([keepFrames, watch]) => { window.__pop.keepFrames = keepFrames; window.__pop.watch = watch; window.__pop.on = true; }, [!!framesDir, opt('watch', '').split(',').filter(Boolean)]);
   // --calibrate: known pops (trees off and on, then every landmark off and on) to check the detector sees them.
   if (argv.includes('--calibrate')) await page.evaluate(() => {
@@ -341,11 +353,22 @@ async function run(browser, n) {
     g.putImageData(new ImageData(ov, W, H), 2 * W + 8, 0);
     return { i: k.i, t: k.t, area: k.area, force: k.force, png: cv.toDataURL('image/png') };
   })) : [];
+  // The --shots contact sheet: 4 across, each labelled with its second.
+  const sheet = await page.evaluate(() => {
+    const shots = window.__pop.shotUrls || [];
+    if (!shots.length) return null;
+    const cols = 4, rows = Math.ceil(shots.length / cols), W = 480, H = 300;
+    const cv = document.createElement('canvas'); cv.width = cols * (W + 4); cv.height = rows * (H + 4);
+    const g = cv.getContext('2d'); g.fillStyle = '#111'; g.fillRect(0, 0, cv.width, cv.height);
+    shots.forEach(([sec, c], j) => { const x = (j % cols) * (W + 4), y = Math.floor(j / cols) * (H + 4); g.drawImage(c, x, y); g.fillStyle = '#000a'; g.fillRect(x, y, 70, 26); g.fillStyle = '#fff'; g.font = 'bold 18px sans-serif'; g.fillText(`${sec} s`, x + 8, y + 19); });
+    return cv.toDataURL('image/png');
+  });
+  if (sheet && framesDir) { fs.mkdirSync(framesDir, { recursive: true }); fs.writeFileSync(path.join(framesDir, `${route}-run${n}-shots.png`), Buffer.from(sheet.split(',')[1], 'base64')); }
   await context.close();
   return { n, setup, raw, dump, errors, heap0, net: { bytes: bytes - net0.bytes, requests: requests - net0.requests } };
 }
 
-const HITCH_MS = 50;
+const HITCH_MS = 50, TURN_DEG = 2, TILT_DEG = 1, ZOOM_STEP = 0.02;
 function summarise(r) {
   const { raw } = r;
   const caps = raw.captures; // [i, t, x, y]
@@ -356,12 +379,18 @@ function summarise(r) {
   for (const e of evs) (sources[e[1]] ||= { frames: 0, area: 0, soloFrames: 0, soloArea: 0, events: 0 }).events++;
   const perSecond = Array.from({ length: Math.ceil(secs) + 1 }, () => 0);
   const events = [];
-  let ei = 0, total = 0, framesWithPop = 0, hitches = 0, hitchArea = 0;
+  let ei = 0, total = 0, framesWithPop = 0, hitches = 0, hitchArea = 0, turns = 0, turnArea = 0;
   for (let k = 1; k < caps.length; k++) {
     const res = byI.get(caps[k][0]); if (!res) continue;
     const lo = caps[Math.max(0, k - 2)][1], hi = caps[k][1];
     // A long frame moves the camera further than the motion search reaches (and is a stutter, not a pop): not judged.
     if (hi - caps[k - 1][1] > HITCH_MS) { hitches++; hitchArea += res.area; continue; }
+    // A camera that turned, tilted or zoomed by more than a homography explains for a tall scene (the chase
+    // camera orbits the rider, so a turn is parallax, not a plane): not judged either.
+    const db = Math.abs(((caps[k][4] - caps[k - 1][4] + 540) % 360) - 180);
+    // (Not during the start flight: it zooms every frame by design, looking straight down at a flat city.)
+    const flying = caps[k][7] > 0 || caps[k - 1][7] > 0;
+    if (!flying && (db > TURN_DEG || Math.abs(caps[k][5] - caps[k - 1][5]) > TILT_DEG || Math.abs(caps[k][6] - caps[k - 1][6]) > ZOOM_STEP)) { turns++; turnArea += res.area; continue; }
     while (ei < evs.length && evs[ei][0] <= lo) ei++;
     const kinds = new Set(); for (let j = ei; j < evs.length && evs[j][0] <= hi; j++) kinds.add(evs[j][1]);
     if (!res.area) continue;
@@ -377,7 +406,7 @@ function summarise(r) {
   for (const s of Object.values(sources)) { s.area = Math.round(s.area); s.soloArea = Math.round(s.soloArea); s.pxPerS = Math.round(s.area / secs); }
   const frameArea = 1280 * 800;
   return {
-    seconds: +secs.toFixed(1), frames: caps.length, analysed: raw.results.length, hitchFramesSkipped: hitches, hitchFramesPopPx: hitchArea, captureMsPerFrame: +(raw.captureMs / caps.length).toFixed(2),
+    seconds: +secs.toFixed(1), frames: caps.length, analysed: raw.results.length, hitchFramesSkipped: hitches, hitchFramesPopPx: hitchArea, turnFramesSkipped: turns, turnFramesPopPx: turnArea, captureMsPerFrame: +(raw.captureMs / caps.length).toFixed(2),
     popPxPerS: Math.round(total / secs), popScreensPerMin: +((total / frameArea) / secs * 60).toFixed(3), framesWithPop,
     bigEvents: events.filter(e => e.area >= 1280 * 800 * 0.005).length,
     sources: Object.fromEntries(Object.entries(sources).sort((a, b) => b[1].area - a[1].area)),
@@ -396,18 +425,31 @@ async function strips(dump, dir, tag) {
   });
 }
 
+const report = s => {
+  console.log(`${route} run ${s.run}: ${s.seconds}s pop ${s.popPxPerS} px/s (${s.popScreensPerMin} screens/min), frames with pop ${s.framesWithPop}/${s.frames} (skipped: hitches ${s.hitchFramesSkipped}, turns ${s.turnFramesSkipped}; capture ${s.captureMsPerFrame} ms/frame), big ${s.bigEvents}, heap ${s.heapMB.start}->${s.heapMB.end} MB, net ${(s.net.bytes / 1e6).toFixed(1)} MB/${s.net.requests} req`);
+  for (const [k, v] of Object.entries(s.sources)) console.log(`  ${k.padEnd(20)} ${String(v.pxPerS).padStart(7)} px/s  frames ${v.frames} (solo ${v.soloFrames}, ${v.soloArea} px)  events ${v.events}`);
+  if (s.errors.length) console.log('  errors', s.errors);
+};
+// --resummarise <json>: recompute the summaries from a run's saved raw data (filters tuned after the fact).
+if (opt('resummarise', null)) {
+  const saved = JSON.parse(fs.readFileSync(opt('resummarise'), 'utf8'));
+  saved.results = saved.results.map((s, n) => { const again = { ...summarise(s.rawRun), run: n, raw: undefined, rawRun: s.rawRun, strips: s.strips }; report(again); return again; });
+  fs.writeFileSync(out, JSON.stringify(saved, null, 1));
+  console.log('wrote', out);
+  process.exit(0);
+}
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
 const results = [];
 for (let n = 0; n < runs; n++) {
   const r = await run(browser, n);
-  const s = summarise(r);
+  const s = { ...summarise(r), run: n };
   if (framesDir) s.strips = await strips(r.dump, framesDir, `${route}-run${n}`);
+  // The raw series, for --resummarise: captures, per-frame results (no masks) and the streaming steps.
+  s.rawRun = { raw: { captures: r.raw.captures, results: r.raw.results, events: r.raw.events, track: r.raw.track, captureMs: r.raw.captureMs, heapMB: r.raw.heapMB, og: r.raw.og }, setup: r.setup, errors: r.errors, heap0: r.heap0, net: r.net };
   results.push(s);
-  console.log(`${route} run ${n}: ${s.seconds}s pop ${s.popPxPerS} px/s (${s.popScreensPerMin} screens/min), frames with pop ${s.framesWithPop}/${s.frames} (hitches skipped ${s.hitchFramesSkipped}, capture ${s.captureMsPerFrame} ms/frame), big ${s.bigEvents}, heap ${s.heapMB.start}->${s.heapMB.end} MB, net ${(r.net.bytes / 1e6).toFixed(1)} MB/${r.net.requests} req`);
-  for (const [k, v] of Object.entries(s.sources)) console.log(`  ${k.padEnd(20)} ${String(v.pxPerS).padStart(7)} px/s  frames ${v.frames} (solo ${v.soloFrames}, ${v.soloArea} px)  events ${v.events}`);
-  if (s.errors.length) console.log('  errors', s.errors);
+  report(s);
 }
 await browser.close();
 fs.mkdirSync(path.dirname(out), { recursive: true });
-fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), route, qs, flags: opt('flags', ''), net: opt('net', ''), speed: R.speed, warmup, measure, results }, null, 1));
+fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), route, qs, flags: opt('flags', ''), net: opt('net', ''), cpu: opt('cpu', '1'), speed: R.speed, warmup, measure, results }, null, 1));
 console.log('wrote', out);
