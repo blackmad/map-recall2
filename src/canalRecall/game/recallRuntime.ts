@@ -53,8 +53,11 @@ import { feedbackExpired, gapElapsed, streetClearOfStop } from './teachingPacer'
 import { decideQuestion, EMPTY_BUDGET, recordAsk, type BudgetDecision, type NameEvent } from './questionBudget';
 import { advanceSilentPass, beginSilentPass, questionFreezesRide } from './silentPass';
 import { bridgeNameAskable } from './notableBridges';
+import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from './bridgeStreetName';
 import { nearestRouteIndex } from './routeSelection';
 
+/** Metres: how close another way must come to a deck end to continue it. */
+const BRIDGE_END_TOUCH_METRES = 3;
 /** How many wrong answers a multiple-choice question offers. */
 const DISTRACTOR_COUNT = 3;
 /** px — a street within this of the planned route is one the ride is teaching. */
@@ -373,7 +376,9 @@ export class GameRecallRuntime {
       this._updateTransitStreetQuiz();
     }
     const heading = this.player.angle;
-    const name = this.track.getRoadName(this.player.x, this.player.y, heading);
+    // On a bridge-named way this is the street the deck carries, or '' (the
+    // deck is transparent): "which street?" never answers with a bridge name.
+    const name = this._routeQuestionRoadName(heading);
     // Remember the heading while still on the settled corridor, so the
     // question can tell a real turn from a name change straight ahead.
     if (name && name === this.quizCurrentName) this._quizCorridorHeading = heading;
@@ -504,6 +509,46 @@ export class GameRecallRuntime {
       segmentIndex: quizRoad ? quizRoad.segIdx : -1,
       pointIndex: quizRoad ? quizRoad.ptIdx : 0,
     });
+  }
+
+  /**
+   * The name the route question settles on at the rider's position.
+   * `getRoadName` is the OSM way's own name, and OSM names many decks after
+   * the bridge (the Raadhuisstraat over the Keizersgracht is "Niek
+   * Engelschmanbrug"). The deliberate bridge question ("Which bridge are you
+   * on?") keeps the bridge's name; otherwise the deck answers with the street
+   * it carries, or with no name so the street beyond is asked once the rider
+   * is off it (bridgeStreetName.ts; user report 2026-10-16).
+   */
+  _routeQuestionRoadName(heading: number): string {
+    if (!this.player) return '';
+    const raw = this.track.getRoadName(this.player.x, this.player.y, heading) || '';
+    if (!isCar(this.travelMode) || !isBridgeWayName(raw)) return raw;
+    const player = this.player;
+    return routeQuestionRoadName({
+      rawName: raw,
+      deliberateBridge: !!findBridgeRouteAt(this.bridges, raw, player, BRIDGE_GATE_HALF_WIDTH)
+        && bridgeNameAskable(this.routeDifficulty, raw, this.routeOptions.answerMode),
+      carriedStreet: () => this._carriedStreetAt(player.x, player.y, heading),
+    });
+  }
+
+  /** The street the bridge-named way under a point carries, cached per way. */
+  _carriedStreetAt(x: number, y: number, heading: number): string {
+    const contact = this.track.getNearestRoad(x, y, heading);
+    const index = this.track.roadIndex;
+    if (!contact || !index) return '';
+    if (!this._bridgeCarriedStreets || this._bridgeCarriedStreets.track !== this.track) {
+      this._bridgeCarriedStreets = { track: this.track, bySegment: new Map() };
+    }
+    const cache = this._bridgeCarriedStreets.bySegment;
+    let carried = cache.get(contact.segIdx);
+    if (carried === undefined) {
+      carried = carriedStreetName(bridgeWayNetwork(this.track.segments, index), contact.segIdx,
+        { touchRadius: BRIDGE_END_TOUCH_METRES * PIXELS_PER_METER });
+      cache.set(contact.segIdx, carried);
+    }
+    return carried;
   }
 
   /**
@@ -942,7 +987,9 @@ export class GameRecallRuntime {
   _updateSilentPass(dt: number): void {
     const state = this._silentPass;
     if (!state || !this.player) return;
-    const roadName = this.track.getRoadName(this.player.x, this.player.y, this.player.angle) || '';
+    // The same name the question settled on, so riding onto a deck that
+    // carries the withheld street does not count as leaving it.
+    const roadName = this._routeQuestionRoadName(this.player.angle);
     const step = advanceSilentPass(state, { dt, roadName });
     this._silentPass = step.state;
     if (step.left) this._finishSilentPass();
