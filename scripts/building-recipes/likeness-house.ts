@@ -26,6 +26,8 @@ export interface GroupLikeness {
   photoRgb?: {data: Buffer; width: number; height: number};
   /** the padded photo mosaic as measured (metric image, its box and the fit lines), for sheets and probes */
   photoImage?: {image: FacadeImage; box: FacadeBox; lines: number[]; inside?: (u: number, v: number) => boolean};
+  /** the model and comparison inputs, so a review script can replay another measurement or likeness version on this group */
+  replay?: {soup: Parameters<typeof modelElevation>[0]; panel: Parameters<typeof modelElevation>[1]; measuredTints?: Set<string>; obliquityDeg: number; cameraDistM: number; cameraSpanM?: number};
   /** measured values for the intent: on the panel's own width (bays) */
   measured?: {wall: string; wallRaw: string; glass: string | null; trim: string | null; glazing: number; storeyGlazing: (number | null)[]; ground: number | null; bays: number | null; pitchM: number | null; storeyM: number | null;
     window: FacadeMeasurement['window']; frontClass: FacadeMeasurement['frontClass']; normalisation: FacadeMeasurement['normalisation']; usable: number; foliage: number; washedOut: number;
@@ -84,8 +86,9 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const photo = measureFacade({image, box: photoBox, lines: g.lines, inside});
     const model = modelElevation(soup, p, box, g.lines, 0.1, measuredTints);
     const main = [...pieces].sort((a, b) => (b.u1 - b.u0) - (a.u1 - a.u0))[0];
-    const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: g.lines, obliquityDeg: Math.max(...pieces.map(q => q.crop.obliquityDeg ?? 0)), cameraDistM: Math.min(...pieces.map(q => q.crop.cameraDistM ?? 99)),
-      ...(pieces.length > 1 ? {cameraSpanM: closeCameraSpan(pieces)} : {})});
+    const replay = {soup, panel: p, measuredTints, obliquityDeg: Math.max(...pieces.map(q => q.crop.obliquityDeg ?? 0)), cameraDistM: Math.min(...pieces.map(q => q.crop.cameraDistM ?? 99)),
+      ...(pieces.length > 1 ? {cameraSpanM: closeCameraSpan(pieces)} : {})};
+    const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: g.lines, obliquityDeg: replay.obliquityDeg, cameraDistM: replay.cameraDistM, cameraSpanM: replay.cameraSpanM});
     // the mosaic on the model box after the shift, for the sheet
     const x0 = Math.max(0, Math.round((PAD_M + likeness.shift.uM) * PPM)), wpx = Math.min(width - x0, Math.round((box.u1 - box.u0) * PPM));
     const y0 = Math.max(0, Math.round((PAD_M - likeness.shift.vM) * PPM)), hpx = Math.min(height - y0, Math.round((box.v1 - box.v0) * PPM));
@@ -93,7 +96,7 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
     const bays = photo.pitchM ? Math.max(1, Math.round((box.u1 - box.u0) / photo.pitchM)) : null;
     out.push({group: g.index, panel: p.index, status: 'measured', crop: {...main.crop, ref: sourceRef(pand, main.crop.file)}, match: main.match, coverage,
       pieces: pieces.map(q => ({tag: q.crop.tag, ref: sourceRef(pand, q.crop.file), sha256: q.crop.sha256, capturedAt: q.crop.capturedAt, u0: r3(q.u0 - p.uMin), u1: r3(q.u1 - p.uMin)})),
-      box, photo, model, likeness, photoRgb, photoImage: {image, box: photoBox, lines: g.lines, inside},
+      box, photo, model, likeness, photoRgb, photoImage: {image, box: photoBox, lines: g.lines, inside}, replay,
       measured: {wall: photo.wall.hex, wallRaw: photo.wall.rawHex, glass: photo.glass?.hex ?? null, trim: photo.trim?.hex ?? null, glazing: photo.glazing, storeyGlazing: photo.storeyGlazing, ground: photo.ground.glazing, bays,
         pitchM: photo.pitchM, storeyM: photo.storeyM, window: photo.window, frontClass: photo.frontClass, normalisation: photo.normalisation, usable: photo.usableFraction, foliage: photo.foliageFraction, washedOut: photo.washedOutFraction,
         // the colour split as a fraction of the panel width from uMin (the photo box is padded by PAD_M)
