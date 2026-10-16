@@ -122,6 +122,25 @@ export async function loadBagCovers(url: string, fetcher: typeof fetch = fetch):
   }
 }
 
+/** Two styled copies of one building draw the same: same geometry object and shallow-equal properties. */
+export function sameStyledFeature(a: BuildingFeature, b: BuildingFeature): boolean {
+  if (a === b) return true;
+  if (a.geometry !== b.geometry) return false;
+  const pa = a.properties ?? {}, pb = b.properties ?? {};
+  const ka = Object.keys(pa), kb = Object.keys(pb);
+  if (ka.length !== kb.length) return false;
+  for (const k of ka) {
+    const va = (pa as Record<string, unknown>)[k], vb = (pb as Record<string, unknown>)[k];
+    if (va === vb || (Number.isNaN(va) && Number.isNaN(vb))) continue;
+    if (va && vb && typeof va === 'object' && typeof vb === 'object' && JSON.stringify(va) === JSON.stringify(vb)) continue;
+    return false;
+  }
+  return true;
+}
+
+/** Main-thread ms per frame for styling arriving buildings before a flush publishes them. */
+export const STYLE_BUDGET_MS = 5;
+
 export class BuildingTileStreamer {
   /** Which published tile set this streamer reads; 'bag-tiles' only after a successful bag probe under `?bagTiles=1`. */
   private tileDir: TileSetDir = 'building-tiles';
@@ -225,7 +244,7 @@ export class BuildingTileStreamer {
     this.map.on('moveend', () => this.followCamera());
   }
 
-  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.decorated=new WeakMap();this.published=null;if(this.cache.size)this.flush();}
+  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.restyleResident();}
 
   /** Per-tile side data (e.g. construction years) fetched alongside each
    *  building tile; the returned function stamps it onto that tile's copies
@@ -238,9 +257,49 @@ export class BuildingTileStreamer {
   private featureDecorator?: (feature: BuildingFeature) => BuildingFeature;
   setFeatureDecorator(decorator: ((feature: BuildingFeature) => BuildingFeature) | undefined): void {
     this.featureDecorator = decorator;
+    this.restyleResident();
+  }
+
+  /**
+   * Restyle the resident set after a styling input changed (priors, decorator). A building whose
+   * restyled copy equals its previous one keeps the previous object, so the three.js layer sees the
+   * same feature and rebuilds only the chunks that really changed, and MapLibre is sent only the
+   * changed buildings. Vector-map swaps the decorator up to four times at the start of a ride (as
+   * shopfronts, monument gables and landmark ids arrive), and each swap used to resend and rebuild
+   * the whole resident city (docs/perf-motion-stutter-20261016.md).
+   */
+  private restyleResident(): void {
+    const previous = this.decorated;
     this.decorated = new WeakMap();
-    this.published = null;
-    if (this.cache.size) this.flush();
+    if (!this.cache.size) { this.published = null; return; }
+    const changed: BuildingFeature[] = [];
+    for (const raw of this.cache.collection().features) {
+      const before = previous.get(raw);
+      if (!before) continue; // styled on demand at the next flush
+      const after = this.styled(raw);
+      if (sameStyledFeature(before, after)) this.decorated.set(raw, before);
+      else changed.push(after);
+    }
+    if (!changed.length) return;
+    const features = this.cache.collection().features.map(feature => this.styled(feature));
+    this.countsDirty = true;
+    this.onFeatures?.(features);
+    const source = this.map.getSource(this.sourceId);
+    if (!source) return;
+    const ids = changed.map(feature => String(feature.properties?.id ?? ''));
+    if (!this.published || typeof source.updateData !== 'function' || ids.some(id => !id) || new Set(ids).size !== ids.length) {
+      this.published = null;
+      this.sendToSource(source, features);
+      return;
+    }
+    this.watchForDiffErrors(source);
+    try {
+      source.updateData({ remove: ids, add: JSON.parse(JSON.stringify(changed)) });
+    } catch (error) {
+      console.warn('Building source restyle failed; resending the whole set', error);
+      this.published = null;
+      this.sendToSource(source, features);
+    }
   }
 
   /** Tile → feature array MapLibre currently holds; null forces a full send. */
