@@ -467,6 +467,210 @@
     return !input.revealed && !input.learned;
   }
 
+  // src/canalRecall/facts/factRotation.ts
+  var RECENT_KIND_MEMORY = 3;
+  function factKey(featureId, fact) {
+    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+    let hash = 2166136261;
+    for (let index = 0; index < normalised.length; index++) {
+      hash ^= normalised.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  }
+  var KIND_APPEAL = {
+    surprise: 5,
+    naming: 4,
+    culture: 3,
+    people: 3,
+    history: 2,
+    design: 1
+  };
+  function chooseFact(featureId, facts, state) {
+    if (!facts.length) return null;
+    const scored = facts.map((fact) => {
+      const key = factKey(featureId, fact);
+      const lastShown = state.history[key];
+      const seen = lastShown !== void 0;
+      const recency = state.recentKinds.indexOf(fact.kind);
+      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
+      return {
+        fact,
+        key,
+        seen,
+        lastShown: lastShown ?? -1,
+        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
+      };
+    });
+    scored.sort((a, b) => (
+      // Unseen first; then among seen, the one shown longest ago; then appeal.
+      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
+    ));
+    const best = scored[0];
+    return { fact: best.fact, key: best.key, repeat: best.seen };
+  }
+  function recordShown(state, choice) {
+    const shown = state.shown + 1;
+    return {
+      history: { ...state.history, [choice.key]: shown },
+      shown,
+      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
+    };
+  }
+  function expandedFacts(facts, shownText, limit = 3) {
+    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  }
+  function pruneHistory(state, maxEntries = 4e3) {
+    const entries = Object.entries(state.history);
+    if (entries.length <= maxEntries) return state;
+    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
+    return { ...state, history: Object.fromEntries(kept) };
+  }
+
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+  function words(text) {
+    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function similarity(a, b) {
+    const left = new Set(words(a));
+    const right = new Set(words(b));
+    if (!left.size || !right.size) return 0;
+    let shared = 0;
+    for (const word of left) if (right.has(word)) shared++;
+    return shared / Math.min(left.size, right.size);
+  }
+
+  // src/canalRecall/facts/factTypes.ts
+  var FACT_KIND_LABELS = {
+    naming: "Name",
+    history: "History",
+    people: "People",
+    design: "Design",
+    culture: "Culture",
+    surprise: "Curiosity"
+  };
+
+  // src/canalRecall/facts/factStore.ts
+  function openingSentence(text, maxChars = 160) {
+    const trimmed = (text || "").replace(/\s+/g, " ").trim();
+    if (!trimmed) return "";
+    const abbreviations = /* @__PURE__ */ new Set([
+      "st",
+      "sint",
+      "ste",
+      "mr",
+      "mrs",
+      "ms",
+      "dr",
+      "prof",
+      "ir",
+      "ing",
+      "drs",
+      "jr",
+      "sr",
+      "nr",
+      "no",
+      "vs",
+      "ca",
+      "ong",
+      "bijv",
+      "nl",
+      "oa",
+      "dwz",
+      "zgn",
+      "etc",
+      "incl",
+      "excl",
+      "eeuw",
+      "eeuwse"
+    ]);
+    const isSentenceEnd = (index) => {
+      if (trimmed[index] !== ".") return true;
+      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+      if (!before) return true;
+      const word = before[1];
+      if (word.length === 1) return false;
+      return !abbreviations.has(word.toLocaleLowerCase());
+    };
+    let end = -1;
+    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) {
+        end = match.index + 1;
+        break;
+      }
+    }
+    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
+    if (sentence.length <= maxChars) return sentence;
+    const window2 = sentence.slice(0, maxChars);
+    let boundary = -1;
+    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) boundary = match.index + 1;
+    }
+    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
+    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
+    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
+  }
+  function composeFactWithOpening(factText, opening) {
+    const lead = openingSentence(opening);
+    if (!lead) return { detail: factText };
+    if (similarity(lead, factText) >= 0.55) return { detail: factText };
+    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
+    if (leadStem.length >= 24 && factText.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+      return { detail: factText };
+    }
+    return { detail: `${lead} ${factText}`, opening: lead };
+  }
+  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
+  function saveRotationState(storage, state) {
+    try {
+      storage?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+    } catch {
+    }
+  }
+  function factCardText(featureId, index, state, fallbackOpening) {
+    const entry = index.get(featureId);
+    if (!entry?.facts?.length) return null;
+    const choice = chooseFact(featureId, entry.facts, state);
+    if (!choice) return null;
+    const composed = composeFactWithOpening(
+      choice.fact.text,
+      entry.opening || fallbackOpening
+    );
+    const others = expandedFacts(entry.facts, choice.fact.text);
+    const all = composed.opening ? [composed.opening, choice.fact.text, ...others.map((fact) => fact.text)] : [choice.fact.text, ...others.map((fact) => fact.text)];
+    return {
+      choice,
+      text: {
+        detail: composed.detail,
+        longDetail: all.join(" "),
+        factTexts: all,
+        factKind: FACT_KIND_LABELS[choice.fact.kind]
+      }
+    };
+  }
+  function commitShownFact(storage, state, choice) {
+    const next = recordShown(state, choice);
+    saveRotationState(storage, next);
+    return next;
+  }
+
+  // src/canalRecall/game/finishBlurb.ts
+  function finishBlurb(landmark, facts, rotation, fallback) {
+    const lede = landmark.longDetail || landmark.detail || "";
+    const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
+    if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
+    return { text: lede || fallback, choice: null };
+  }
+
   // src/canalRecall/game/streetLabelCandidates.ts
   var LABEL_CELL_SIZE = 256;
   var REACH_BUCKET_STEP = 1.25;
@@ -49015,7 +49219,7 @@
           ctx.font = "12px system-ui, sans-serif";
           const blurb = wrapText(
             ctx,
-            landmark.longDetail || landmark.detail || `A place to remember on your ${this._cityDisplayName()} map.`,
+            this._finishBlurbText(landmark),
             textW,
             [hasImage ? 4 : 3, 3, 2][level2]
           );
@@ -49299,6 +49503,16 @@
         }
       }
       ctx.textAlign = "center";
+    }
+    /** The ARRIVED card's text for this arrival (finishBlurb.ts): chosen once per route, since the card redraws every
+     *  frame, and the chosen fact committed then so the next card tells another. */
+    _finishBlurbText(landmark) {
+      const cached = this._finishBlurb;
+      if (cached && cached.route === this.routeTo && cached.id === landmark.id) return cached.text;
+      const chosen = finishBlurb(landmark, this._facts, this._factRotation, `A place to remember on your ${this._cityDisplayName()} map.`);
+      if (chosen.choice) this._factRotation = commitShownFact(typeof localStorage === "undefined" ? null : localStorage, this._factRotation, chosen.choice);
+      this._finishBlurb = { route: this.routeTo, id: landmark.id, text: chosen.text };
+      return chosen.text;
     }
     /** The landmark that stands for the destination: the one that shares its
      *  name, or failing that the nearest one to the finish point. */

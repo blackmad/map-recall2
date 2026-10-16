@@ -339,6 +339,11 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** Published trivia and what has been told (LandmarkHost owns them); the ARRIVED card draws from the same rotation. */
+  _facts: FactIndex;
+  _factRotation: RotationState;
+  /** The ARRIVED card's text, chosen once per arrival (finishBlurb.ts). */
+  _finishBlurb?: { route: unknown; id: string; text: string } | null;
   /** Orbit chase/cockpit by `delta` degrees and persist it (game-route.js). */
   _nudgeCameraBearing?(delta: number): void;
   _recenterCamera(): void;
