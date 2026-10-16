@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
+  | 'landmark-card-folded' | 'landmark-card-folded-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
@@ -303,6 +304,13 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           };
           game._landmarkNoticeAlpha = 1;
           game.currentNeighborhood = 'De Wallen';
+          if (scenario.startsWith('landmark-card-folded')) {
+            // A drive-by card past its fold (teachingPacer.cardCollapsed): no photo, one fact in two lines.
+            game._landmarkNoticeSource = 'drive-by';
+            game._landmarkNoticeState = { ...(game._landmarkNoticeState || {}), elapsed: 10 };
+            game._renderLandmarkNotice();
+            return;
+          }
           if (bare) {
             game._renderLandmarkNotice();
             return;
@@ -535,6 +543,12 @@ export const NeighborhoodFallbackCard: Story = { args: { scenario: 'neighborhood
 /** Landmark trivia and neighborhood postcard sharing the bottom band. */
 export const StackedNotices: Story = { args: { scenario: 'stacked-notices' } };
 export const LandmarkCard: Story = { args: { scenario: 'landmark-card' } };
+/** A drive-by card folded after 8 s keeps its fact (user 2026-10-16, Multatuli: "needs a fact"). */
+export const LandmarkCardFolded: Story = { args: { scenario: 'landmark-card-folded' } };
+export const LandmarkCardFoldedMobile: Story = {
+  args: { scenario: 'landmark-card-folded-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 /** Landmark card when the extract has no image. */
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 export const LandmarkPanel: Story = { args: { scenario: 'landmark-panel' } };
