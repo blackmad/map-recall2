@@ -125,12 +125,16 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     svg += tx(71, 12, clip(`${g.agreement} · photo ${g.photoDate}`, 12), g.agreement === 'osm-and-photo' ? '#1d7a35' : '#a15c00');
     svg += tx(91, 12, clip(`${t.triangles} tris · eaves ${t.eavesM} m · roof ${t.roofMaxM}/${t.roofMaxFactsM}`, 12));
     svg += tx(108, 12, clip(bad.length ? `GATES: ${bad.map((q: any) => q.id).join(', ')}` : `gates: ${gates.length} pass`, 12), bad.length ? '#c62828' : '#1d7a35');
+    // Roof source line (front saddle / attic / flat, recipe, or 3DBAG) and the row clamp, after the checks.
+    const rr = (report.recipeRoofs ?? []).find((r: any) => r.pandId === h.pandId), rc = (report.rowClamps ?? []).find((c: any) => c.pandId === h.pandId);
+    const roofLine = rr ? `roof: ${rr.bands ? 'front ' + rr.bands.map((b: any) => `${b.form}${b.pitchDeg !== undefined ? ' ' + b.pitchDeg + '°' : ''}`).join('/') : 'recipe ' + rr.form} ${rr.ridgeM} (3DBAG ${rr.surveyMaxM})` : `roof: 3DBAG ${t.roofMaxFactsM}`;
+    const rowLine = rc ? `row: ${rc.eavesM ? `eaves ${rc.eavesM.from}→${rc.eavesM.to}` : ''}${rc.eavesM && rc.ridgeM ? ', ' : ''}${rc.ridgeM ? `roof ${rc.ridgeM.from}→${rc.ridgeM.to}` : ''} m` : null;
     checks.forEach((c, k) => { svg += tx(126 + k * 16, 12, clip(`${c.pass ? '✓' : '✗'} ${c.what.replace(' (bottom→top)', '')}: ${c.expected} vs ${c.measured.replace(/ at y.*$/, '')}`, 12), c.pass ? '#1d7a35' : '#c62828'); });
     const wc = wall[i];
     if (wc) svg += tx(126 + checks.length * 16, 12, clip(`${wc.pass ? '✓' : '✗'} wall ${toHex(wc.photo)} photo / ${toHex(wc.model)} model${wc.pass ? '' : ': ' + wc.note}`, 12), wc.pass ? '#1d7a35' : '#c62828');
     // Backs are not photographed: the plain window grid in the model is INFERRED from storey heights and width.
     const rear = (report.rears ?? []).find((r: any) => r.pandId === h.pandId);
-    const rearLines = rear ? [`rear: INFERRED (no photo), ${rear.windows} plain windows`] : [];
+    const rearLines = [roofLine, ...(rowLine ? [rowLine] : []), ...(rear ? [`rear: INFERRED (no photo), ${rear.windows} plain windows`] : [])];
     rearLines.forEach((l, k) => { svg += tx(126 + checks.length * 16 + 18 + k * 15, 11, clip(l, 11), '#7a1fa2', 'bold'); });
     (h.rhythm.schemaLimits ?? []).slice(0, 3).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 20 + (rearLines.length + k) * 15, 11, clip(`limit: ${l}`, 11), '#6b4e00'); });
     void cbad;

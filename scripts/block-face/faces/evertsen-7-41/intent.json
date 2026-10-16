@@ -1,0 +1,1059 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "evertsen-7-41",
+ "street": "Jan Evertsenstraat",
+ "sources": [
+  {
+   "id": "strip-2021-03-26",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-26",
+   "image": "staging/block-face/evertsen-7-41/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (de-baarsjes-types lane)",
+  "passes": 1,
+  "note": "Jan Evertsenstraat 7-41 (odd side, Admiralengracht end). Proof face for the De Baarsjes type library: 13 pands of evertsen-1926-lintel-band (9-33) with the parapet crown, the corner group 35-41 on the same body with the corner-group parapet and the corner-tower crown (35), and the two 1912 Oud-West pands at the west end as own designs. Shops from the 2021-03-26 strip (zoom) and OSM."
+ },
+ "types": [
+  "evertsen-1926-lintel-band"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012158391",
+   "slug": "evertsen-158391",
+   "address": "Witte de Withstraat 153 (corner, Jan Evertsenstraat front)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Jan Evertsenstraat",
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": [
+       2,
+       2,
+       2,
+       2
+      ],
+      "gridAt": {
+       "from": 0.42,
+       "to": 1
+      },
+      "doorBay": null,
+      "basement": "none",
+      "windows": "t-window",
+      "hoist": false,
+      "storeyHeights": [
+       1.05,
+       1,
+       1,
+       1.05
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.62
+      ],
+      "headLines": [
+       0.86,
+       0.75,
+       0.75,
+       0.72
+      ],
+      "shopfront": {
+       "colour": "dark-red",
+       "fascia": false,
+       "entrance": "right",
+       "stallriser": "medium",
+       "glazing": "split",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "cream"
+       },
+       "evidence": "strip.jpg 2021-03-26 pand 1: dark red painted ground with three shop windows, a cream house door; BAG bijeenkomstfunctie (Witte de Withstraat 153)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#5b4440",
+     "frame": "#c9cac2",
+     "door": "dark-red",
+     "cornice": "#c9cac2"
+    },
+    "notes": [
+     "1912 Oud-West corner block (Kinkerstraat 1890-1910 vocabulary); the left 42 % of the front is blind brick with a ghost of the old neighbour's step gable (gridAt)"
+    ]
+   },
+   "groundFloor": {
+    "use": "other",
+    "photoDate": "2021-03-26",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "shop windows on the photo, no sign legible"
+   },
+   "rhythm": {
+    "bays": "2 axes on the right 58 %, blind brick left",
+    "windowsPerStorey": "ground: shop | 1-3: 2",
+    "symmetry": "none",
+    "groundFloor": "shop windows and a house door",
+    "signage": "none legible",
+    "roofline": "bracketed cornice, a chimney",
+    "citation": "strip.jpg pand 1 (2021-03-26): 1912, plain brown brick, T-windows on two axes, bracketed cornice; blind left part",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the ghost step-gable outline in the blind wall is not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159654",
+   "slug": "evertsen-159654",
+   "address": "Jan Evertsenstraat 7",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Jan Evertsenstraat",
+      "gable": "step",
+      "crownBays": {
+       "from": 2,
+       "to": 2
+      },
+      "crownSteps": 2,
+      "crownRise": 0.65,
+      "atticWindows": 1,
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": 3,
+      "bayWidths": [
+       1,
+       1,
+       1.5
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "windows": "t-window",
+      "hoist": false,
+      "storeyHeights": [
+       1.05,
+       1,
+       1,
+       1.05
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.66,
+       0.62
+      ],
+      "headLines": [
+       0.86,
+       0.75,
+       0.75,
+       0.72
+      ],
+      "balconies": {
+       "storeys": [
+        2,
+        3
+       ],
+       "bays": [
+        2
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "entrance": "left-recessed",
+       "stallriser": "low",
+       "glazing": "split",
+       "evidence": "strip.jpg 2021-03-26 pand 2: white shopfront with a white fascia (lettering illegible); OSM node 2814134536 shop=vacant"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#5e463f",
+     "frame": "#c9cac2",
+     "door": "black",
+     "cornice": "#c9cac2"
+    },
+    "notes": [
+     "1912: two plain axes under the row cornice and a wider right axis with French windows and iron balconettes under a stepped gable (Oud-West 1902 vocabulary)"
+    ]
+   },
+   "groundFloor": {
+    "use": "vacant",
+    "photoDate": "2021-03-26",
+    "category": "shop=vacant",
+    "osm": {
+     "type": "node",
+     "id": 2814134536
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "3 axes, the right one wider",
+    "windowsPerStorey": "ground: shop | 1-3: 3 (French windows on the right axis of 2-3)",
+    "symmetry": "none",
+    "groundFloor": "white shopfront",
+    "signage": "fascia, illegible",
+    "roofline": "cornice over two axes, stepped gable over the right one",
+    "citation": "strip.jpg pand 2 (2021-03-26)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the arched relieving head over the top French window is drawn square"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012090327",
+   "slug": "evertsen-090327",
+   "address": "Jan Evertsenstraat 9-11",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg 2021-03-26 pand 3: black shop glass under the white canopy, sign illegible; OSM node 2814122189 WONTON"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2814122189,
+     "name": "WONTON"
+    },
+    "name": "WONTON",
+    "category": "amenity=restaurant",
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3: 5.7 m, the row's body; the curved corner to the gap is drawn square",
+    "schemaLimits": [
+     "curved corner drawn square"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012071876",
+   "slug": "evertsen-071876",
+   "address": "Jan Evertsenstraat 13",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 4: dark shopfront under the canopy, no sign legible; OSM Napoli Pizza"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2814123536,
+     "name": "Napoli Pizza"
+    },
+    "name": "Napoli Pizza",
+    "category": "amenity=restaurant",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4 (exemplar)"
+   }
+  },
+  {
+   "pandId": "0363100012132952",
+   "slug": "evertsen-132952",
+   "address": "Jan Evertsenstraat 15",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "mirror": true,
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 5: dark shopfront; OSM shop=tattoo"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "category": "shop=tattoo",
+    "osm": {
+     "type": "node",
+     "id": 2814124862
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5"
+   }
+  },
+  {
+   "pandId": "0363100012126159",
+   "slug": "evertsen-126159",
+   "address": "Jan Evertsenstraat 17",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 6: \"MAZ MEZ\" on white boards on the wall band over the canopy; OSM Maz Mez"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2814125892,
+     "name": "Maz Mez"
+    },
+    "name": "Maz Mez",
+    "category": "amenity=restaurant",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6"
+   }
+  },
+  {
+   "pandId": "0363100012136734",
+   "slug": "evertsen-136734",
+   "address": "Jan Evertsenstraat 19",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "mirror": true,
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "none",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 7: the Maz Mez board continues over this front"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "name": "Maz Mez",
+    "bag": [],
+    "agreement": "photo-only",
+    "note": "the \"MAZ MEZ\" board continues over 19; BAG gives no ground unit"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7 (ruler crop 19-21)"
+   }
+  },
+  {
+   "pandId": "0363100012125587",
+   "slug": "evertsen-125587",
+   "address": "Jan Evertsenstraat 21",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 8: dark lettering \"...DISTRICT\" on a dark board over the canopy; OSM Grapedistrict"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "osm": {
+     "type": "node",
+     "id": 2814127464,
+     "name": "Grapedistrict"
+    },
+    "name": "Grapedistrict",
+    "category": "shop=wine",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8 (ruler crop 19-21)"
+   }
+  },
+  {
+   "pandId": "0363100012081449",
+   "slug": "evertsen-081449",
+   "address": "Jan Evertsenstraat 23",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "mirror": true,
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 9: dark board over the canopy; OSM Lara (cafe), the 2021 board differs"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "cafe",
+    "osm": {
+     "type": "node",
+     "id": 2814127751,
+     "name": "Lara"
+    },
+    "name": "Lara",
+    "category": "amenity=cafe",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "the 2021 strip shows a \"veganfresh\"-like board; OSM 2026 has Lara"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9 (exemplar, row profile)"
+   }
+  },
+  {
+   "pandId": "0363100012063583",
+   "slug": "evertsen-063583",
+   "address": "Jan Evertsenstraat 25",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 10: red lettering on the wall band (illegible); OSM Konya Etliekmek"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2814128224,
+     "name": "Konya Etliekmek"
+    },
+    "name": "Konya Etliekmek",
+    "category": "amenity=restaurant",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10"
+   }
+  },
+  {
+   "pandId": "0363100012071593",
+   "slug": "evertsen-071593",
+   "address": "Jan Evertsenstraat 27",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "mirror": true,
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 11: white board over the canopy, lettering illegible"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 11"
+   }
+  },
+  {
+   "pandId": "0363100012125072",
+   "slug": "evertsen-125072",
+   "address": "Jan Evertsenstraat 29",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 12: dark shopfront"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 12"
+   }
+  },
+  {
+   "pandId": "0363100012141138",
+   "slug": "evertsen-141138",
+   "address": "Jan Evertsenstraat 31",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "mirror": true,
+    "ground": {
+     "shopfront": {
+      "colour": "dark-green",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 13: green \"FORT NEGEN\" boards over the canopy; OSM Fort Negen"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "osm": {
+     "type": "node",
+     "id": 9423581853,
+     "name": "Fort Negen"
+    },
+    "name": "Fort Negen",
+    "category": "shop=bakery",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 13"
+   }
+  },
+  {
+   "pandId": "0363100012252159",
+   "slug": "evertsen-252159",
+   "address": "Jan Evertsenstraat 33",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "parapet",
+    "palette": "red-yellow",
+    "ground": {
+     "shopfront": {
+      "colour": "dark-green",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 23
+      },
+      "evidence": "strip.jpg pand 14: the Fort Negen boards continue; dark shopfront"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "green Fort Negen boards continue over 33"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 14 (end of the row at the gap)"
+   }
+  },
+  {
+   "pandId": "0363100012147692",
+   "slug": "evertsen-147692",
+   "address": "Jan Evertsenstraat 35",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "corner-tower",
+    "palette": "red-yellow",
+    "overrides": {
+     "storeyHeights": [
+      1.92,
+      1,
+      1,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 31
+      },
+      "evidence": "strip.jpg pand 15: shop glass under the corner group's canopy"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 15: the corner mass with a stack of half-round white oriels (not drawn), raised flat top",
+    "schemaLimits": [
+     "the half-round oriel stack and its pointed top are not drawn: a flat-topped raised mass instead"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012128604",
+   "slug": "evertsen-128604",
+   "address": "Jan Evertsenstraat 37",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "corner-group-parapet",
+    "palette": "red-yellow",
+    "mirror": true,
+    "overrides": {
+     "bays": 4,
+     "windowShare": 0.78,
+     "storeyHeights": [
+      1.92,
+      1,
+      1,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 31
+      },
+      "evidence": "strip.jpg pand 16: corner group, glazed shopfront under the canopy, a cast-iron balustrade band over it (not drawn)"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "osm": {
+     "type": "node",
+     "id": 12147770701,
+     "name": "Fort Negen Sandwichbar"
+    },
+    "name": "Fort Negen Sandwichbar",
+    "category": "amenity=fast_food",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 16: corner group window bands, diamond frieze (not drawn)",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4
+    ],
+    "schemaLimits": [
+     "diamond-brick frieze",
+     "cast-iron balustrade over the canopy"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012120124",
+   "slug": "evertsen-120124",
+   "address": "Jan Evertsenstraat 39",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "corner-group-parapet",
+    "palette": "red-yellow",
+    "overrides": {
+     "bays": 3,
+     "windowShare": 0.78,
+     "storeyHeights": [
+      1.92,
+      1,
+      1,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 31
+      },
+      "evidence": "strip.jpg pand 17: glazed shopfront, a parking sign in front"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 17",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "schemaLimits": [
+     "diamond-brick frieze",
+     "cast-iron balustrade over the canopy"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012150064",
+   "slug": "evertsen-150064",
+   "address": "Jan Evertsenstraat 41",
+   "type": {
+    "type": "evertsen-1926-lintel-band",
+    "crown": "corner-group-parapet",
+    "palette": "red-yellow",
+    "overrides": {
+     "storeyHeights": [
+      1.92,
+      1,
+      1,
+      1
+     ]
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "black",
+      "fascia": false,
+      "entrance": "left-recessed",
+      "stallriser": "low",
+      "glazing": "split",
+      "awning": {
+       "style": "rigid",
+       "colour": "#b8bdba",
+       "fasciaColour": "#b8bdba",
+       "wallCourses": 31
+      },
+      "evidence": "strip.jpg pand 18: ghosted (two panoramas blended); glazed ground"
+     }
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2021-03-26",
+    "use": "restaurant",
+    "osm": {
+     "type": "node",
+     "id": 1338094260,
+     "name": "Radijs"
+    },
+    "name": "Radijs",
+    "category": "amenity=restaurant",
+    "bag": [
+     "bijeenkomstfunctie",
+     "overige gebruiksfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 18: ghosted; glazed window bands with white bands like 37-39",
+    "schemaLimits": [
+     "ghosted strip: storey lines read at about +-0.3 m"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012071876",
+     "0363100012132952",
+     "0363100012126159",
+     "0363100012136734",
+     "0363100012125587",
+     "0363100012081449",
+     "0363100012063583",
+     "0363100012071593",
+     "0363100012125072",
+     "0363100012141138",
+     "0363100012252159"
+    ],
+    "evidence": "strip.jpg: one coping line at 14.0 m from 13 to 33"
+   }
+  ],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012159654",
+    "stripRow": 202,
+    "evidence": "strip.jpg: top of the bracketed cornice of 7 at row 202 (14.35 m), level with its neighbour; 3DBAG eaves 16.5 m read the stepped gable"
+   },
+   {
+    "pand": "0363100012090327",
+    "stripRow": 216,
+    "evidence": "strip.jpg: the row's coping at 14.0 m (row 216) continues over 9-11; 3DBAG eaves 14.3 m"
+   },
+   {
+    "pand": "0363100012128604",
+    "stripRow": 164,
+    "evidence": "strip.jpg: the corner group's coping at 15.3 m (row 164); 3DBAG eaves 16.6-17.4 m read the roof structures behind"
+   },
+   {
+    "pand": "0363100012120124",
+    "stripRow": 164,
+    "evidence": "strip.jpg: the corner group's coping at 15.3 m (row 164); 3DBAG eaves 16.6-17.4 m read the roof structures behind"
+   },
+   {
+    "pand": "0363100012150064",
+    "stripRow": 164,
+    "evidence": "strip.jpg: the corner group's coping at 15.3 m (row 164); 3DBAG eaves 16.6-17.4 m read the roof structures behind"
+   },
+   {
+    "pand": "0363100012147692",
+    "stripRow": 164,
+    "evidence": "strip.jpg: the corner mass rises from the corner group's parapet line at 15.3 m (row 164); its raised top (about 16.6 m) is the corner-tower crown"
+   }
+  ],
+  "canopy": [
+   {
+    "pands": [
+     "0363100012090327",
+     "0363100012071876",
+     "0363100012132952",
+     "0363100012126159",
+     "0363100012136734",
+     "0363100012125587",
+     "0363100012081449",
+     "0363100012063583",
+     "0363100012071593",
+     "0363100012125072",
+     "0363100012141138",
+     "0363100012252159"
+    ],
+    "evidence": "strip.jpg: one white canopy slab runs from 9-11 to 33 (the grey gap after 33 ends it)"
+   },
+   {
+    "pands": [
+     "0363100012147692",
+     "0363100012128604",
+     "0363100012120124"
+    ],
+    "evidence": "strip.jpg: the corner group's canopy under the balustrade band runs over 35-39 to the gap"
+   }
+  ]
+ }
+}

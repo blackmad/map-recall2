@@ -66,6 +66,7 @@ for (const area of areas) {
       scale: [round(d.lengthM / n.L, 4), round(d.eavesM / n.eaves, 4), round(d.widthM / n.W, 4)], variant: d.variant,
       // Altitude the instance is lifted by in the game's own frame: the basemap ground is flat at 0 (as for street chunks).
       groundAltitudeMetres: 0, groundNapM: round(t.positionEastNapSouth[1], 2), area,
+      ...(d.absorbed?.length ? {alsoSuppress: d.absorbed} : {}),
     });
   }
 }

@@ -11,7 +11,8 @@
 import fs from 'node:fs';
 import sharp from 'sharp';
 
-const dir = '.cache/building-types/crops', files = fs.readdirSync(dir);
+// --dir=<folder of crops> samples other crops (e.g. a lane's rectified panorama crops) instead of the survey cache.
+const dir = process.argv.find(a => a.startsWith('--dir='))?.slice(6) ?? '.cache/building-types/crops', files = fs.readdirSync(dir);
 const hex = (c: number[]) => `#${c.map(v => Math.round(v).toString(16).padStart(2, '0')).join('')}`;
 const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
 
@@ -31,7 +32,7 @@ function kmeans(px: number[][], k: number): {c: number[]; n: number}[] {
   return cs.map((c, i) => ({c, n: counts[i] / px.length})).sort((a, b) => b.n - a.n);
 }
 
-for (const arg of process.argv.slice(2)) {
+for (const arg of process.argv.slice(2).filter(a => !a.startsWith('--'))) {
   const [id, rect] = arg.split(':');
   const f = files.find(n => n === `${id}.jpg`) ?? files.find(n => n.endsWith(`${id}.jpg`));
   if (!f || !rect) throw new Error(`bad argument ${arg}`);

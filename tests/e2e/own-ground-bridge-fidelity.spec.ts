@@ -249,5 +249,55 @@ test('bridge fidelity: arches, humps, bascules and landed ends', async ({ page }
     report[b.id] = ends; save();
     for (const e of ends) expect(e.top, `${b.id}: an end over water`).not.toBeNull();
   }
+
+  // 5. Ride review 2026-10-14, geometry in metres from the store and the built cells.
+  // J6, the Nieuwe-Wercksbrug BRU0063: its 18 m outline side widens the deck over the water only. Every metre of the
+  // widened side (past the road's half-width) along the deck span: on land the deck top is not what a camera above
+  // sees (it lay as grey slabs over the quay corners), over the water it is (or a band on it).
+  await teleport(page, 4.88292, 52.37433, 191);
+  await settle(page);
+  const j6 = await page.evaluate(() => {
+    const ground = (window as any).canalRecallGame.vectorMap._ownGround, p = ground.store.surface.decks.find((d: any) => d.profile.id === 'BRU0063')?.profile;
+    if (!p?.sides) return null;
+    let land = 0, slab = 0, water = 0, decked = 0;
+    for (let i = 4; i + 4 < p.s.length; i++) {
+      if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+      const dx = p.x[i + 4] - p.x[i - 4], dy = p.y[i + 4] - p.y[i - 4], l = Math.hypot(dx, dy), nx = -dy / l, ny = dx / l;
+      for (let t = p.halfWidth[i] + 1.5; t < p.sides[0] - 0.5; t += 1) {
+        const hit = ground.layersAt(p.x[i] + nx * t, p.y[i] + ny * t), wet = hit.hits.some((h: any) => h.layer === 'water');
+        if (wet) { water++; if (hit.top && hit.top !== 'water') decked++; } else { land++; if (hit.top === 'deckTop') slab++; }
+      }
+    }
+    return { land, slab, water, decked };
+  });
+  report.BRU0063widths = j6; save();
+  expect(j6, 'BRU0063 placed with its outline').not.toBeNull();
+  expect(j6!.slab, `BRU0063: deck top seen over ${j6!.slab} of ${j6!.land} land probes of the widened side`).toBeLessThanOrEqual(Math.ceil(j6!.land * 0.1));
+  expect(j6!.decked, `BRU0063: the widened side over the water (${j6!.decked}/${j6!.water})`).toBeGreaterThanOrEqual(Math.floor(j6!.water * 0.9));
+  // P4, the Walter Süskindbrug BRU0237: its leaves from OSM way 38322370 (bridge=movable, 12.7 m between the heels on a
+  // 21.5 m register footprint): a double bascule, a portal at each heel.
+  await teleport(page, 4.90206, 52.36593, 163);
+  await settle(page);
+  const p4 = await page.evaluate(async () => {
+    const ground = (window as any).canalRecallGame.vectorMap._ownGround, api = (window as any).CanalRecallOwnGround, store = ground.store;
+    for (const key of api.GroundStore.neighbours(ground.cellKeyAt([4.90206, 52.36593]))) {
+      const i = store.flatDeckMeta(key).findIndex((m: any) => m.id === 'BRU0237');
+      if (i < 0) continue;
+      const ring = store.flatDecks(key)[i], input = await store.cellInput(key, 0);
+      const lines = [input.osm, ...input.osmAround].flatMap((o: any) => o?.ways ?? []).filter((w: any) => w.tags.bridge && w.tags.bridge !== 'no');
+      const local = (w: any) => w.g.map((q: [number, number]) => api.toLocal(q[0], q[1]));
+      const through = lines.map(local).filter((l: [number, number][]) => l.some(q => api.pointInRing(ring, q[0], q[1])) || l.some((q, k) => k > 0 && api.pointInRing(ring, (q[0] + l[k - 1][0]) / 2, (q[1] + l[k - 1][1]) / 2)));
+      const moving = lines.filter((w: any) => w.tags.bridge === 'movable' || w.tags['bridge:movable']).map(local);
+      const axis = api.footprintAxis(ring, through), plan = api.movableLeaves(ring, axis.u, moving);
+      const frames = (ground.cellStats(key)?.flatBridges ?? []).find((f: any) => f.id === 'BRU0237')?.frames ?? null;
+      return { footprintM: axis.along[1] - axis.along[0], double: plan?.double ?? null, leavesM: plan ? plan.leaves[plan.leaves.length - 1][1] - plan.leaves[0][0] : null, frames };
+    }
+    return null;
+  });
+  report.BRU0237leaves = p4; save();
+  expect(p4, 'BRU0237 footprint in the store').not.toBeNull();
+  expect(p4!.double, 'BRU0237: a double bascule from its OSM way').toBe(true);
+  expect(Math.abs(p4!.leavesM! - 12.7), `BRU0237 leaves span ${p4!.leavesM?.toFixed(2)} m (the OSM movable way 12.7 m)`).toBeLessThan(0.6);
+  expect(p4!.frames, 'BRU0237: a portal at each heel').toBe(2);
   expect(errors).toEqual([]);
 });

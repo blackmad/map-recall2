@@ -92,6 +92,77 @@ export function floatingEnds(deck: DeckSurface, overWater: WaterTest, height: He
   return out;
 }
 
+/**
+ * The deck's drawn half-widths per station (ride review 2026-10-14, J6: grey slabs over the four corners of the
+ * Nieuwe-Wercksbrug BRU0063). The bridge outline's cross-section (DeckProfile.sides, sideWidths) widened the deck over
+ * its whole span, and BRU0063's span [20.2, 53.9] runs 4–10 m past its water [24.3, 44.3]: an 18 m left side lay
+ * 0.3–0.6 m over the Prinsengracht quay street. The outline now widens a station's side only as far as the water
+ * reaches across it (probes every WIDTH_PROBE_M out to the outline), plus WIDEN_PAST_WATER_M, and a station takes the
+ * widest of its neighbours within WIDEN_PAST_WATER_M along the deck, so the deck still lands on the quay wall. Never
+ * narrower than the road's half-width (the street bands' own deck). With `onBand` (the deck top only), past the deck
+ * span's footprint (a reach to the bank, where the land is not culled under the deck) the road's half-width itself is
+ * clipped to the street bands drawn there or the water: on land the top stays under the bands. Inside the footprint
+ * the land is culled (groundCell underOwnSurface), so the top keeps the road's half-width there (no hole).
+ */
+export const WIDEN_PAST_WATER_M = 1.0, WIDTH_PROBE_M = 0.5, BAND_MARGIN_M = 0.3, DECK_CORE_M = 1.0;
+export type BandTest = (x: number, y: number) => boolean;
+export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: BandTest): { left: Float64Array; right: Float64Array } {
+  const p = deck.profile, n = p.s.length, core = [new Float64Array(n), new Float64Array(n)], wet = [new Float64Array(n), new Float64Array(n)];
+  for (let i = 0; i < n; i++) {
+    const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l, hw = p.halfWidth[i], sw = sideWidths(p, i);
+    for (const side of [0, 1] as const) {
+      const sg = side === 0 ? 1 : -1, w = sw[side];
+      const banded = !!onBand && (p.s[i] < deck.span[0] - 0.5 || p.s[i] > deck.span[1] + 0.5);
+      let road = banded ? Math.min(hw, DECK_CORE_M) : hw, water = 0;
+      for (let t = WIDTH_PROBE_M; t <= w + 1e-6; t += WIDTH_PROBE_M) {
+        const x = p.x[i] + nx * sg * t, y = p.y[i] + ny * sg * t;
+        if (overWater(x, y)) water = t + WIDEN_PAST_WATER_M;
+        else if (banded && t <= hw && onBand!(x, y)) road = Math.max(road, t + BAND_MARGIN_M);
+      }
+      core[side][i] = Math.min(hw, road);
+      wet[side][i] = water;
+    }
+  }
+  // Along the deck the water's reach spreads to the neighbours within WIDEN_PAST_WATER_M (the deck overlaps the quay).
+  const out = [new Float64Array(n), new Float64Array(n)];
+  for (const side of [0, 1] as const) for (let i = 0; i < n; i++) {
+    let v = wet[side][i];
+    for (let j = i - 1; j >= 0 && p.s[i] - p.s[j] <= WIDEN_PAST_WATER_M; j--) v = Math.max(v, wet[side][j]);
+    for (let j = i + 1; j < n && p.s[j] - p.s[i] <= WIDEN_PAST_WATER_M; j++) v = Math.max(v, wet[side][j]);
+    out[side][i] = Math.max(core[side][i], Math.min(sideWidths(p, i)[side], v));
+  }
+  return { left: out[0], right: out[1] };
+}
+
+/** Is (x, y) within `half` (+ BAND_MARGIN_M) of one of the polylines? (the street bands of the bridge ways, deckWidths) */
+export function bandCorridor(lines: readonly { points: readonly Vec2[]; half: number }[]): BandTest {
+  const segs: number[] = [];
+  for (const { points, half } of lines) for (let i = 0; i + 1 < points.length; i++) segs.push(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], half + BAND_MARGIN_M);
+  return (x, y) => {
+    for (let k = 0; k < segs.length; k += 5) {
+      const ax = segs[k], ay = segs[k + 1], dx = segs[k + 2] - ax, dy = segs[k + 3] - ay, h = segs[k + 4];
+      if (x < Math.min(ax, ax + dx) - h || x > Math.max(ax, ax + dx) + h || y < Math.min(ay, ay + dy) - h || y > Math.max(ay, ay + dy) + h) continue;
+      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy || 1e-9)));
+      if (Math.hypot(ax + dx * t - x, ay + dy * t - y) <= h) return true;
+    }
+    return false;
+  };
+}
+
+/**
+ * A flush deck (ride review 2026-10-14, J8: the Pansemertbrug BRU0124 over the Egelantiersgracht mouth, an 8.4 m deck
+ * whose crown rises 0.31 m over its span ends): from the chase camera the quay seemed to run straight over the mouth.
+ * Its crown rises less than FLUSH_RISE_M over the higher end of its span; the kit gives it a kerb and a parapet line
+ * (bridgeKit.ts FLUSH_PARAPET) that read from above.
+ */
+export const FLUSH_RISE_M = 0.5;
+export function isFlushDeck(deck: DeckSurface, onSpan?: readonly number[]): boolean {
+  const p = deck.profile, idx = onSpan ?? [...p.s.keys()].filter(i => p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1]);
+  if (idx.length < 2) return false;
+  const crown = Math.max(...idx.map(i => deck.z[i])), ends = Math.max(deck.z[idx[0]], deck.z[idx[idx.length - 1]]);
+  return crown - ends < FLUSH_RISE_M;
+}
+
 /** What one measured deck drew (named regressions and the lane report). */
 export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number; level: number; railingPosts: number; piers: number; arches: number; abutments: number; lamps: number; topRows: number }
 
@@ -101,14 +172,14 @@ export interface DeckBuildInfo { id: string; kind: BridgeKind; triangles: number
  * deck top and the tops of the side faces follow it exactly). `detail` false
  * is the far ring (LOD 1): the kit's far budget, no railings.
  */
-export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true, reach?: [number, number]): MeshArrays {
+export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }): MeshArrays {
   const p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const idx: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) idx.push(i);
   if (idx.length < 2) return emptyMesh(true);
   const rows: KitRow[] = idx.map(i => {
     const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1;
-    const n: Vec2 = [-dy / l, dx / l], hw = p.halfWidth[i], [hl, hr] = sideWidths(p, i);
+    const n: Vec2 = [-dy / l, dx / l], hw = p.halfWidth[i], [hl, hr] = widths ? [widths.left[i], widths.right[i]] : sideWidths(p, i);
     const L: Vec2 = [p.x[i] + n[0] * hl, p.y[i] + n[1] * hl], R: Vec2 = [p.x[i] - n[0] * hr, p.y[i] - n[1] * hr];
     const z = deck.z[i];
     // Past the road's half-width (an outline wider than the road, DeckProfile.sides) the surface there is the canal: the deck's own level.
@@ -132,11 +203,12 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
     const humped = onSpan.filter(i => p.h[i] >= 0.25);
     if (humped.length > 2) spans = [[p.s[humped[0]], p.s[humped[humped.length - 1]]]];
   }
-  const widths = onSpan.map(i => 2 * p.halfWidth[i]).sort((a, b) => a - b), width = widths[widths.length >> 1] ?? 2 * p.halfWidth[idx[0]];
+  const roadWidths = onSpan.map(i => 2 * p.halfWidth[i]).sort((a, b) => a - b), width = roadWidths[roadWidths.length >> 1] ?? 2 * p.halfWidth[idx[0]];
   const hump = Math.max(0, ...onSpan.map(i => p.h[i])), waterM = spans.reduce((s, [a, b]) => s + Math.max(0, b - a), 0);
   const facts = bridgeFacts(p.id);
   const kind = measuredKind(p.family, width, hump, waterM, hint, facts);
-  const { mesh, info: k } = buildKit({ id: p.id, kind, material: materialOf(p.family, hint), rows, parapet: [p.deck[0], p.deck[1]], spans, waterZ, lod: detail ? 0 : 1, facts });
+  const flush = isFlushDeck(deck, onSpan);
+  const { mesh, info: k } = buildKit({ id: p.id, kind, material: materialOf(p.family, hint), rows, parapet: [p.deck[0], p.deck[1]], spans, waterZ, lod: detail ? 0 : 1, facts, ...(flush ? { flush } : {}) });
   info?.push({ id: p.id, kind, triangles: k.triangles, level: k.level, railingPosts: k.railingPosts, piers: k.piers, arches: k.arches, abutments: k.abutments, lamps: k.lamps, topRows: idx.length });
   return mesh;
 }
@@ -145,7 +217,7 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
  * The deck top of a measured deck: a strip over its footprint (the deck span
  * plus half a metre), draped on the riding surface, under every street band.
  */
-export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number]): MeshArrays {
+export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }): MeshArrays {
   const m = emptyMesh(true), p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const all: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) all.push(i);
@@ -155,15 +227,19 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
   const idx = all.filter((_, k) => k % stride === k0m || k === 0 || k === all.length - 1);
   if (idx.length < 2) return m;
   // Columns across, left to right: the road's half-width in `across` steps, then every ≤ 4 m out to a wider outline
-  // (DeckProfile.sides; the same count on every row, so the grid stays regular).
-  const sideMax = p.sides ? [Math.max(0, p.sides[0] - Math.max(...idx.map(i => p.halfWidth[i]))), Math.max(0, p.sides[1] - Math.max(...idx.map(i => p.halfWidth[i])))] : [0, 0];
+  // (DeckProfile.sides, clipped by deckWidths; the same count on every row, so the grid stays regular).
+  const W = (i: number): [number, number] => (widths ? [widths.left[i], widths.right[i]] : sideWidths(p, i));
+  const sideMax = !widths ? (p.sides ? [Math.max(0, p.sides[0] - Math.max(...idx.map(i => p.halfWidth[i]))), Math.max(0, p.sides[1] - Math.max(...idx.map(i => p.halfWidth[i])))] : [0, 0])
+    : [0, 1].map(k => Math.max(0, ...idx.map(i => W(i)[k] - p.halfWidth[i])));
   const extra = sideMax.map(w => (w > 0.01 ? Math.ceil(w / 4) : 0));
   const J = Math.max(2, across) + extra[0] + extra[1], base = m.positions.length / 3;
   for (const i of idx) {
     const [dx, dy] = axisAt(p, i), l = Math.hypot(dx, dy) || 1;
-    const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i], [hl, hr] = sideWidths(p, i), A = Math.max(2, across);
+    const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i], [hl, hr] = W(i), A = Math.max(2, across);
+    // The road's part, clipped where deckWidths (with the street bands) draws narrower than the road's half-width.
+    const cl = Math.min(hw, hl), cr = Math.min(hw, hr);
     for (let j = 0; j <= J; j++) {
-      const t = j < extra[0] ? hl - (hl - hw) * j / extra[0] : j > J - extra[1] ? -hw - (hr - hw) * (j - (J - extra[1])) / extra[1] : hw * (1 - 2 * (j - extra[0]) / A);
+      const t = j < extra[0] ? hl - (hl - cl) * j / extra[0] : j > J - extra[1] ? -cr - (hr - cr) * (j - (J - extra[1])) / extra[1] : cl === hw && cr === hw ? hw * (1 - 2 * (j - extra[0]) / A) : cl - (cl + cr) * (j - extra[0]) / A;
       const x = p.x[i] + nx * t, y = p.y[i] + ny * t;
       // Past the measured span (a reach to the bank) the top stays on the riding surface too: the street bands drawn on it
       // must stay on top (BRU0077 in the belt audit, a top on the profile's z rose 2 cm over the klinker band).
@@ -266,6 +342,36 @@ export function movableApproaches(ring: readonly Vec2[], ways: readonly (readonl
   return out;
 }
 
+/** Leaves of a movable footprint along its axis (basculeLeaves' shape: stations from the ring's vertex centroid). */
+export type LeafPlan = ReturnType<typeof basculeLeaves>;
+/** A movable leaf shorter than this along the OSM way is noise (a node on the heel), not a leaf. */
+const LEAF_MIN_M = 2;
+/** A leaf placed from its OSM way is drawn this deep (the steel leaf girders under a timber or steel deck, ~0.8 m): its white fascia reads from the chase camera. */
+export const LEAF_DEPTH_M = 0.8;
+
+/**
+ * The leaves where the OSM way says the bridge moves (ride review 2026-10-14, P4: the Walter Süskindbrug BRU0237 over
+ * the Nieuwe Herengracht mouth). Its register footprint runs 21.5 m with the quays' abutments, so basculeLeaves guessed
+ * one 9 m leaf in the middle and one portal unit; OSM way 38322370 (bridge=movable, bridge:movable=bascule) is the
+ * 12.7 m between the heels, a double bascule. The `bridge=movable` ways' points within the footprint's width are
+ * projected on the crossing axis `u`; a stretch longer than FRAME.maxLeaf is two leaves meeting over its middle, each
+ * with its portal at its heel. Null without a movable way through the footprint (basculeLeaves stays the guess).
+ */
+export function movableLeaves(ring: readonly Vec2[], u: Vec2, movableWays: readonly (readonly Vec2[])[]): LeafPlan | null {
+  if (!movableWays.length) return null;
+  const f = ringFrame(ring, u), half = (f.across[1] - f.across[0]) / 2, mid = (f.across[0] + f.across[1]) / 2;
+  let a0 = Infinity, a1 = -Infinity;
+  for (const w of movableWays) for (const [x, y] of w) {
+    const a = (x - f.centre[0]) * u[0] + (y - f.centre[1]) * u[1], b = (x - f.centre[0]) * f.v[0] + (y - f.centre[1]) * f.v[1];
+    if (Math.abs(b - mid) > half + APPROACH_AXIS_TOL_M || a < f.along[0] - APPROACH_AXIS_TOL_M || a > f.along[1] + APPROACH_AXIS_TOL_M) continue;
+    a0 = Math.min(a0, a); a1 = Math.max(a1, a);
+  }
+  a0 = Math.max(a0, f.along[0]); a1 = Math.min(a1, f.along[1]);
+  if (!(a1 - a0 >= LEAF_MIN_M)) return null;
+  const length = a1 - a0, centre = (a0 + a1) / 2, double = length > FRAME.maxLeaf, leaf = double ? length / 2 : length;
+  return { double, leaf, mid: centre, leaves: double ? [[a0, centre], [centre, a1]] : [[a0, a1]] };
+}
+
 /**
  * A movable bridge's portals (the Amsterdam ophaalbrug "galg" with its
  * "hameien"): one unit at the heel of each leaf, its balance beams sloping
@@ -275,11 +381,11 @@ export function movableApproaches(ring: readonly Vec2[], ways: readonly (readonl
  * bridges white, steel and concrete green). `detail` false: the far ring's
  * posts and beams only.
  */
-export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: readonly (readonly Vec2[])[] = [], topLift = 0.02, detail = true): { mesh: MeshArrays; units: number } {
+export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: readonly (readonly Vec2[])[] = [], topLift = 0.02, detail = true, plan?: LeafPlan | null): { mesh: MeshArrays; units: number } {
   const m = emptyMesh(true), ax = footprintAxis(ring, ways), { u } = ax, v: Vec2 = [-u[1], u[0]];
   const half = Math.max(1.5, (ax.across[1] - ax.across[0]) / 2), vc = (ax.across[0] + ax.across[1]) / 2;
   const P = (a: number, b: number): Vec2 => [ax.centre[0] + u[0] * a + v[0] * b, ax.centre[1] + u[1] * a + v[1] * b];
-  const { double, leaf, mid } = basculeLeaves(ax.along);
+  const { double, leaf, mid } = plan ?? basculeLeaves(ax.along);
   const found = flatHintAt(ax.centre[0], ax.centre[1]), colour = basculeColour(found?.hint ?? null, found?.id);
   const deckZ = (q: Vec2) => height(q[0], q[1]) + topLift;
   const side = [vc + half + 0.45, vc - half - 0.45] as const;
@@ -302,8 +408,8 @@ export function movableFrame(ring: readonly Vec2[], height: HeightFn, ways: read
 }
 
 /** Triangles of movableFrame's portals for a footprint this long along its axis. */
-function frameTriangles(along: readonly [number, number], detail: boolean, style: 'portal' | 'basement' = 'portal'): number {
-  const L = along[1] - along[0];
+function frameTriangles(along: readonly [number, number], detail: boolean, style: 'portal' | 'basement' = 'portal', plan?: LeafPlan | null): number {
+  const L = plan ? (plan.double ? FRAME.doubleOver + 6 : Math.min(along[1] - along[0], FRAME.doubleOver)) : along[1] - along[0];
   if (style === 'basement') { const m = emptyMesh(true); for (const at of [0, L]) basementEnd(m, (a, b) => [a, b], [1, 0], at, [3, -3], () => 0, !detail); return m.indices.length / 3; }
   return movableFrame([[0, -3], [L, -3], [L, 3], [0, 3]], () => 0, [], 0.02, detail).mesh.indices.length / 3;
 }
@@ -338,7 +444,7 @@ function flatRows(ring: readonly Vec2[], u: Vec2, height: HeightFn, overWater: W
  * axis). Masonry footprints (the Torensluis) get arches, movable ones the
  * bascule leaf, narrow ones the footbridge, the rest a girder.
  */
-export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2 } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
+export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater: WaterTest, topLift = 0.02, thickness = 0.45, opts: { railings?: boolean; axis?: Vec2; movableWays?: readonly (readonly Vec2[])[] } = {}): { top: MeshArrays; body: MeshArrays; railingPosts: number; kind: BridgeKind | null; triangles: number; level: number; floating: number } {
   const top = emptyMesh(true);
   const flat = ring.flatMap(p => [p[0], p[1]]);
   drapeTriangles(top, flat, earcut(flat), height, topLift, 3, DECK_TOP);
@@ -385,16 +491,17 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
   const widths = rows.map(r => Math.hypot(r.L[0] - r.R[0], r.L[1] - r.R[1])).sort((a, b) => a - b);
   const facts = found ? bridgeFacts(found.id) : null;
   const kind = flatKind(false, widths[widths.length >> 1], hint, facts);
-  const leaves = kind === 'bascule' ? basculeLeaves(ringFrame(ring, u).along).leaves : undefined;
+  const plan = kind === 'bascule' ? movableLeaves(ring, u, opts.movableWays ?? []) : null;
+  const leaves = kind === 'bascule' ? (plan ?? basculeLeaves(ringFrame(ring, u).along)).leaves : undefined;
   const { mesh, info } = buildKit({
     id: found?.id ?? '', kind, material: kind === 'arch' ? 'masonry' : hint?.material ?? 'concrete', rows,
-    parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness,
+    parapet: [all[first].s - 0.5, all[last].s + 0.5], spans, waterZ: Math.min(...rows.map(r => r.z)) - FLAT_FREEBOARD_M, lod, thickness: plan ? Math.max(thickness, LEAF_DEPTH_M) : thickness,
     leaves, colour: kind === 'bascule' ? basculeColour(hint, found?.id) : undefined, lateralTol: 0.5, facts,
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
-    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint)) : undefined,
+    budget: kind === 'bascule' ? (lod === 0 ? (facts?.named ? KIT_BUDGET.named : KIT_BUDGET.near) : (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far)) - frameTriangles(ringFrame(ring, u).along, lod === 0, basculeStyle(found?.id, hint), plan) : undefined,
   });
   // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
-  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint))) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
+  if (kind === 'bascule' && lod === 1 && info.triangles > (facts?.named ? KIT_BUDGET.namedFar : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, false, basculeStyle(found?.id, hint), plan)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level, floating };
   return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level, floating };
 }
 

@@ -17,7 +17,7 @@ import { bridgeFacts, flatHintAt, KIT_BUDGET, registerHint } from '../../src/can
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -33,6 +33,8 @@ const noParks = new GroundStore(readExtract, { parks: false });
 const noOpenings = new GroundStore(readExtract, { openings: false });
 /** The same ground without the fixed spans beside movable leaves (the approaches regression shows the pin is live). */
 const noApproaches = new GroundStore(readExtract, { approaches: false });
+/** The same ground without courtyards-v1 (the J4 courtyard regression's before). */
+const noCourtyards = new GroundStore(readExtract, { courtyards: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -229,7 +231,9 @@ async function main(): Promise<void> {
   await pocketRegressions();
   await openingRegressions();
   await approachRegressions();
+  await deckSlabRegressions();
   await zooRegressions();
+  await courtyardRegressions();
   await parkFillRegressions();
   await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
@@ -456,6 +460,37 @@ async function zooRegressions(): Promise<void> {
 }
 
 /**
+ * Courtyards are their real cover (ride review 2026-10-14 row J4, the Jordaan from Egelantiersstraat at the Prinsengracht,
+ * 4.88513 52.37724 bearing 209): the inner gardens drew as bare sand land, so closed blocks read as public squares.
+ * courtyards-v1 (add-bgt-courtyards.ts) draws the BGT terrain of block interiors, erf (yards) by the PDOK infrared aerial.
+ * Probes: j4-courtyard-probes.json, a 4 m grid from Bloemgracht to Tuinstraat and Lijnbaansgracht to Keizersgracht (the
+ * Jordaan blocks and the canal-belt block the J4 frame looks into), kept
+ * on open BGT terrain inside a block (the extractor's ray test). Over 40 % of them read vegetated (lawn, bed, shrub,
+ * bark, OSM park/wood) with the extract, under 5 % without it (the pin is live).
+ */
+const VEGETATED_LAYERS = new Set(['lawn', 'bed', 'shrub', 'bark', 'park', 'wood']);
+async function courtyardRegressions(): Promise<void> {
+  const fixture = JSON.parse(readFileSync('scripts/own-ground/j4-courtyard-probes.json', 'utf8')) as { probes: [number, number][] };
+  const probes = fixture.probes.map(([x, y]) => [x / 10, y / 10] as [number, number]);
+  const share = async (s: GroundStore) => {
+    const keys = [...new Set(probes.map(([x, y]) => s.cellAt(x, y)))];
+    const cells: BuiltCell[] = [];
+    for (const k of keys) cells.push(buildCell({ ...(await s.cellInput(k, 0)), pockets: false }));
+    const tops = probes.map(([x, y]) => {
+      const hits = cells.flatMap(c => layersAt(c, x, y).hits).filter(h => !h.cut && h.layer !== 'water').sort(compareHits);
+      return hits[0]?.layer ?? 'none';
+    });
+    const count = (t: string) => tops.filter(x => x === t).length;
+    return { veg: tops.filter(t => VEGETATED_LAYERS.has(t)).length / Math.max(1, tops.length), land: count('land') / Math.max(1, tops.length), paving: count('paving') / Math.max(1, tops.length) };
+  };
+  await noCourtyards.init();
+  const on = await share(store), off = await share(noCourtyards);
+  const pct = (v: number) => `${(v * 100).toFixed(0)} %`;
+  check(probes.length > 500 && on.veg > 0.4, `J4 Jordaan courtyards: ${pct(on.veg)} of ${probes.length} block-interior probes vegetated, ${pct(on.paving)} paving, ${pct(on.land)} bare land (want > 40 % vegetated)`);
+  check(off.veg < 0.05, `J4: without courtyards-v1 ${pct(off.veg)} vegetated, ${pct(off.land)} bare land (want < 5 %: the pin is live)`);
+}
+
+/**
  * The far ring (lane belt audit 2026-10-14): the aerial views over Nieuw-West and Noord that ended in an edge. Each
  * named block builds all four parts with land, water, green and streets, within FAR_BLOCK_BUDGET and without dropping
  * a street tier (measured 6.6k-11.7k triangles, 0.4-0.75 MB, 4-14 ms).
@@ -562,6 +597,30 @@ async function parkRegressions(): Promise<void> {
       }
       check(n === 0, `${reg.id}: BAG pand ${reg.building.pand} keeps its footprint (${n} park vertices inside)`);
     }
+  }
+}
+
+/**
+ * Deck tops stay off the quays (ride review 2026-10-14, J6): the Nieuwe-Wercksbrug BRU0063 by the Westerkerk is
+ * 17.2 m wide with an 18 m outline side, and its deck span [20.2, 53.9] runs 4–10 m past its water [24.3, 44.3]; the
+ * widened deck top lay as grey slabs over the four corners, across the quay pavements and the cycle-lane ends.
+ * decks.ts deckWidths clips the top to the water (+1 m onto the quay) and the bridge ways' street bands. The square
+ * metres where the deck top is the topmost surface over land (roadRegressions deckSlabOnLand), with and without.
+ */
+const SLABS: [string, number, number, number, string][] = [['BRU0063', 4.88292, 52.37433, 40, 'Nieuwe-Wercksbrug, Raadhuisstraat']];
+async function deckSlabRegressions(): Promise<void> {
+  const noClip = new GroundStore(readExtract, { clipDecks: false });
+  await noClip.init();
+  for (const [id, lng, lat, max, label] of SLABS) {
+    const [x, y] = toLocal(lng, lat);
+    const slab = async (s: GroundStore) => {
+      const cells: BuiltCell[] = [];
+      for (const k of GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k))) cells.push(buildCell(await s.cellInput(k, 0)));
+      return deckSlabOnLand(cells, s.surface.decks.find(d => d.profile.id === id)!);
+    };
+    const on = await slab(store), off = await slab(noClip);
+    check(on.slabM2 <= max, `${id} (${label}): deck top over land ${on.slabM2} m² of ${on.deckM2} m² seen (at most ${max})`);
+    check(off.slabM2 > 2 * max, `${id}: without the clip ${off.slabM2} m² (the pin is live)`);
   }
 }
 

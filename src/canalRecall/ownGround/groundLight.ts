@@ -14,7 +14,7 @@
 // palette luminance. Buildings, trees and vehicles are not touched: their
 // calibration (docs/LOOK.md §Parity) is against the rig as it is.
 
-import { DEFAULT_LIGHT_RIG, SHADOW_FILL, type LightRigOptions } from '../rendererShared/lightRig.js';
+import { activeLightRig, SHADOW_FILL, type LightRigOptions } from '../rendererShared/lightRig.js';
 
 const srgbToLinear = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
 const linearToSrgb = (c: number) => (c <= 0.0031308 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
@@ -30,20 +30,22 @@ const Y = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2
  * `skyColour × intensity`, both × 1/π). `sunShare` is the share of the sun that
  * reaches it (1 in sun, `SHADOW_FILL` in cast shadow).
  */
-export function flatGroundLight(rig: Required<LightRigOptions> = DEFAULT_LIGHT_RIG, sunShare = 1): [number, number, number] {
+export function flatGroundLight(rig: Required<LightRigOptions> = activeLightRig(), sunShare = 1): [number, number, number] {
   const sun = hexLinear(rig.sunColour), sky = hexLinear(rig.skyColour);
   const cosZ = Math.sin((rig.sunElevationDeg * Math.PI) / 180);
   return [0, 1, 2].map(i => (sun[i] * rig.sunIntensity * cosZ * sunShare + sky[i] * rig.skyIntensity) / Math.PI) as [number, number, number];
 }
 
 /** Luminance of `flatGroundLight` (linear). */
-export const flatGroundLuminance = (rig: Required<LightRigOptions> = DEFAULT_LIGHT_RIG, sunShare = 1) => Y(flatGroundLight(rig, sunShare));
+export const flatGroundLuminance = (rig: Required<LightRigOptions> = activeLightRig(), sunShare = 1) => Y(flatGroundLight(rig, sunShare));
 
-/** Scalar gain on ground materials so a level sunlit surface draws its palette luminance. */
+/** Scalar gain on ground materials so a level sunlit surface draws its palette luminance (under the page's rig: `?look=`). */
 export const FLAT_GROUND_GAIN = 1 / flatGroundLuminance();
+/** The gain under a given rig (tests, before/after). */
+export const flatGroundGain = (rig: Required<LightRigOptions>) => 1 / flatGroundLuminance(rig);
 
 /** sRGB value (0–255) a grey palette value `v` draws at on level ground, in sun or cast shadow, with a material gain. */
 export function drawnGrey(v: number, gain = 1, shadow = false): number {
-  const lit = flatGroundLuminance(DEFAULT_LIGHT_RIG, shadow ? SHADOW_FILL : 1) * gain;
+  const lit = flatGroundLuminance(activeLightRig(), shadow ? SHADOW_FILL : 1) * gain;
   return Math.min(255, 255 * linearToSrgb(Math.min(1, srgbToLinear(v / 255) * lit)));
 }

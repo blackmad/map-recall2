@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit', 'arcade'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -99,6 +99,17 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (w.signage.mount !== undefined) oneOf(w.signage.mount, ['fascia', 'wall', 'glazing', 'canopy', 'cornice'], `${at}.signage.mount`);
         if (w.signage.mount === 'canopy' && !(typeof w.entrance === 'object' && w.entrance.canopy)) problems.push(`${at}.signage.mount: canopy needs entrance.canopy`);
         if (w.signage.mount === 'glazing' && !(typeof w.entrance === 'object' && (w.entrance.storeys ?? 1) > 1)) problems.push(`${at}.signage.mount: glazing needs an entrance hall (entrance.storeys >= 2)`);
+      }
+    }
+    if (w.arcade !== undefined) {
+      if (w.ground !== 'arcade') problems.push(`${at}.arcade needs ground "arcade"`);
+      if (!w.arcade || typeof w.arcade !== 'object') problems.push(`${at}.arcade: object`);
+      else {
+        for (const k of Object.keys(w.arcade)) if (!['pier', 'walk', 'head', 'rise', 'chamfer', 'storeyFactor', 'facing'].includes(k)) problems.push(`${at}.arcade.${k}: unknown field (pier, walk, head, rise, chamfer, storeyFactor, facing)`);
+        const range = (v: unknown, lo: number, hi: number, k: string) => { if (v !== undefined && !(typeof v === 'number' && v >= lo && v <= hi)) problems.push(`${at}.arcade.${k}: number ${lo}..${hi}`); };
+        range(w.arcade.pier, 0.05, 0.5, 'pier'); range(w.arcade.walk, 0.05, 1.2, 'walk'); range(w.arcade.head, 0.4, 0.95, 'head');
+        range(w.arcade.rise, 0, 0.5, 'rise'); range(w.arcade.chamfer, 0, 0.45, 'chamfer'); range(w.arcade.storeyFactor, 1, 2.5, 'storeyFactor');
+        bool(w.arcade.facing, `${at}.arcade.facing`);
       }
     }
     if (w.crosses !== undefined) {

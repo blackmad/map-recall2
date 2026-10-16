@@ -175,6 +175,7 @@ import {buildDageraad} from './dageraad-builder';
 import {buildOurLordAttic} from './our-lord-attic-builder';
 import {buildSilodam} from './silodam-builder';
 import {buildVenueLandmark} from './venue-builders';
+import {buildDelamar} from './delamar-builder';
 import {buildTheaterLandmark} from './theater-builders';
 import {buildHouseMuseumLandmark} from './house-museum-builders';
 import {buildCivicLandmark} from './civic-builders';
@@ -254,6 +255,8 @@ import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
 import {buildHoofdbureauElandsgracht} from './hoofdbureau-elandsgracht-builder';
+import {buildMercatorpleinNoordtoren} from './mercatorplein-noordtoren-builder';
+import {buildMercatorpleinZuidtoren} from './mercatorplein-zuidtoren-builder';
 import {buildOpstandingskerk} from './opstandingskerk-builder';
 import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
@@ -472,7 +475,7 @@ async function save(id:string){
 }
 const manifest=JSON.parse(fs.readFileSync(path.join(out,'signature-landmarks.json'),'utf8'));
 const helpers={add,box,prism,gableRoof,hip,window,clock,sign};
-const venueIds=new Set(['embassy-free-mind','the-movies','delamar','magna-plaza']);
+const venueIds=new Set(['embassy-free-mind','the-movies','magna-plaza']);
 const theaterIds=new Set(['felix-meritis','kleine-komedie','de-balie']);
 const houseMuseumIds=new Set(['anne-frank-house','rembrandt-house','moco-museum','museum-van-loon']);
 const civicIds=new Set(['amstelkerk','he-hua-temple','haarlemmerpoort']);
@@ -612,6 +615,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='dageraad')buildDageraad(id,w,d,helpers);
     else if(id==='ons-lieve-heer-op-solder')buildOurLordAttic(w,d,helpers);
     else if(id==='silodam')buildSilodam(w,d,helpers);
+    else if(id==='delamar')buildDelamar(w,d,helpers);
     else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
     else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);
     else if(houseMuseumIds.has(id))buildHouseMuseumLandmark(id,w,d,helpers);
@@ -740,6 +744,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else if(id==='hoofdbureau-elandsgracht')buildHoofdbureauElandsgracht(w,d,helpers);
+    else if(id==='mercatorplein-noordtoren')buildMercatorpleinNoordtoren(w,d,helpers);
+    else if(id==='mercatorplein-zuidtoren')buildMercatorpleinZuidtoren(w,d,helpers);
     else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
     else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
     else if(id==='de-duif')buildDeDuif(w,d,helpers);

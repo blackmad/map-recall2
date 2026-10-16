@@ -54,10 +54,10 @@
   "triangles": 4631
  },
  "westerkerk": {
-  "sourceHash": "140201e4cd470a98",
+  "sourceHash": "c0fc848649680324",
   "buildVersion": 2,
-  "bytes": 72032,
-  "triangles": 3567
+  "bytes": 70244,
+  "triangles": 3457
  },
  "concertgebouw": {
   "sourceHash": "4d80783fac5a2e71",
@@ -142,6 +142,12 @@
   "buildVersion": 2,
   "bytes": 23484,
   "triangles": 908
+ },
+ "delamar": {
+  "sourceHash": "5d32162e58b46fa2",
+  "buildVersion": 2,
+  "bytes": 76704,
+  "triangles": 3263
  },
  "magna-plaza": {
   "sourceHash": "ddd4641379f24f7d",
@@ -246,10 +252,10 @@
   "triangles": 932
  },
  "nieuwe-kerk": {
-  "sourceHash": "823a1b6d51951d91",
+  "sourceHash": "5ee4be33beed348c",
   "buildVersion": 2,
-  "bytes": 86288,
-  "triangles": 4981
+  "bytes": 84128,
+  "triangles": 4849
  },
  "buiksloterkerk": {
   "sourceHash": "5f33780635f73091",
@@ -1668,16 +1674,16 @@
   "triangles": 644
  },
  "noorderkerk": {
-  "sourceHash": "93f7f58651032213",
+  "sourceHash": "a4227eb4d1476caf",
   "buildVersion": 2,
-  "bytes": 51948,
-  "triangles": 2204
+  "bytes": 64464,
+  "triangles": 2856
  },
  "krijtberg": {
-  "sourceHash": "0c77e3b173b19e93",
+  "sourceHash": "0f26022c827780cb",
   "buildVersion": 2,
-  "bytes": 33260,
-  "triangles": 1316
+  "bytes": 32652,
+  "triangles": 1284
  },
  "wilhelmina-ruiterstandbeeld": {
   "sourceHash": "ce5ceee85bd19387",
@@ -1762,5 +1768,17 @@
   "buildVersion": 2,
   "bytes": 91388,
   "triangles": 4431
+ },
+ "mercatorplein-noordtoren": {
+  "sourceHash": "3a3caa031f218cde",
+  "buildVersion": 2,
+  "bytes": 65920,
+  "triangles": 3373
+ },
+ "mercatorplein-zuidtoren": {
+  "sourceHash": "edbf5280bf75e26d",
+  "buildVersion": 2,
+  "bytes": 37028,
+  "triangles": 1430
  }
 }

@@ -1,0 +1,22 @@
+{
+ "0363100012151987": {
+  "type": "nw-gallery-slab-15st-hogguer",
+  "variant": "concrete-buff",
+  "frontBearingDeg": 90,
+  "note": "Burgemeester Hogguerstraat 795-1223 (north-west slab). Photos a-east (2019-07-11), a-west-2022 (2022-04-08), a-south-2021 (2021-03-31): same east galleries, garage row, lift tower and south stair, same west balconies and glazed first floor as the other two; 13.4 m west entrance."
+ },
+ "0363100012063809": {
+  "type": "nw-gallery-slab-15st-hogguer",
+  "variant": "long-entrance",
+  "frontBearingDeg": 90,
+  "absorb": ["0363100012201815"],
+  "note": "Burgemeester Hogguerstraat 399-793 (middle slab). Photos b-east, b-east-close-low, b-west-close, m-b-west-sun, b-north, b-south. Only difference from the other two: the low west entrance wing is 22.5 m long; its southern 8.8 m is BAG pand 0363100012201815 (1965, no verblijfsobjecten, 2.4 m roof plus a slice of the slab), absorbed here."
+ },
+ "0363100012095578": {
+  "type": "nw-gallery-slab-15st-hogguer",
+  "variant": "concrete-buff",
+  "frontBearingDeg": 90,
+  "absorb": ["0363100012196327"],
+  "note": "Burgemeester Hogguerstraat 1-397 (south-east slab). Photos c-west, m-c-west-far, c-southwest. Its BAG ring stops 3.9 m short of the north end; that end bay is BAG pand 0363100012196327 (1965, no verblijfsobjecten, roof at the slab's 43.3 NAP), absorbed here so the body is the same 110 m."
+ }
+}

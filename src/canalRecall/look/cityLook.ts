@@ -43,6 +43,7 @@ import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
+import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -218,8 +219,10 @@ const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
  * with the legacy recipe look) with the review corrections above. Flag off
  * never calls this.
  */
-export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null): string {
-  if (isMeasuredTint(slot, source)) return cityTint(slot, hex, source);
+export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom()): string {
+  // Sunny look: a measured wall is first brought from its crop's white point to a sunlit white (look/sunny.ts);
+  // painted stone and glass keep their own rules.
+  if (isMeasuredTint(slot, source)) return cityTint(slot, sceneSlotHex(slot, hex, source, look), source);
   const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
   if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
   if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
@@ -230,8 +233,8 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
 }
 
 /** A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. */
-export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null): [number, number, number, number] {
-  const [r, g, b] = hexToRgb(cityLookTint(slot, hex, source));
+export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom()): [number, number, number, number] {
+  const [r, g, b] = hexToRgb(cityLookTint(slot, hex, source, look));
   return [r, g, b, 255];
 }
 

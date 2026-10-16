@@ -21,6 +21,7 @@
 
 import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator, type FrameMatrices, type Mat4, type Vec3 } from './frameMath.js';
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
+import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from './residency.js';
 
@@ -59,6 +60,11 @@ export type SharedFrameOptions = {
   beforeId?: () => string | undefined;
   /** Minimum map zoom for shadows; below it the box would be too coarse to read. */
   shadowMinZoom?: number;
+  /**
+   * Shadow strength by map zoom, 0..1 (the overview → city blend, overviewTransition/blend.ts): replaces the hard
+   * `shadowMinZoom` step; the shadow is drawn while it is above 0 and its intensity scales with it.
+   */
+  shadowRamp?: (zoom: number) => number;
   /** Shadow box step while following the view, metres (default 16). */
   shadowSnapM?: number;
   /** Redraw the shadow map at least this often, frames (default 120), for changes no signature catches. */
@@ -124,6 +130,10 @@ export class SharedFrame {
     const before = this.options.beforeId?.();
     if (!this.map.getLayer(SHARED_FRAME_MAIN_ID)) this.map.addLayer(this.mainLayer, before && this.map.getLayer(before) ? before : undefined);
     if (!this.map.getLayer(SHARED_FRAME_OVERLAY_ID)) this.map.addLayer(this.overlayLayer);
+    // The sunny look's measured sky above the horizon (look/sunny.ts SKY); without it MapLibre shows the basemap's
+    // background there, the land colour, which read as a pale cream sky.
+    const sky = mapLibreSky();
+    if (sky && typeof this.map.setSky === 'function') { try { this.map.setSky(sky); } catch (_) { /* style not ready */ } }
     if (!this.keepOverlayOnTop) {
       this.keepOverlayOnTop = () => {
         const order: string[] | undefined = this.map.getLayersOrder?.();
@@ -302,8 +312,9 @@ export class SharedFrame {
       // castShadow stays constant (toggling it recompiles every lit program);
       // below the shadow zoom, or when switched off, the map is not redrawn and
       // its contribution is zeroed instead.
-      const shadows = this.rig.options.shadows && this.shadowsOn && ctx.zoom >= (this.options.shadowMinZoom ?? 15);
-      this.rig.sun.shadow.intensity = shadows ? this.rig.options.shadowIntensity : 0;
+      const ramp = this.options.shadowRamp ? Math.max(0, Math.min(1, this.options.shadowRamp(ctx.zoom))) : ctx.zoom >= (this.options.shadowMinZoom ?? 15) ? 1 : 0;
+      const shadows = this.rig.options.shadows && this.shadowsOn && ramp > 0;
+      this.rig.sun.shadow.intensity = shadows ? this.rig.options.shadowIntensity * ramp : 0;
       let redraw = false;
       if (shadows) {
         const c = this.map.getCenter();

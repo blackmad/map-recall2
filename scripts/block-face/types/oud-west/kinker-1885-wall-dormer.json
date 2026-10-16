@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "kinker-1885-wall-dormer",
+  "district": "oud-west",
+  "description": "(kinker-1-29 pands 6-8, Kinkerstraat 19-23, 1885): plain red-brown brick, 3 axes, segmental heads without dressing, iron anchors, bracketed cornice with carved end consoles, broken in the middle by a brick wall dormer (one light, flat cap with an iron finial) over the centre axis. A library type of its own because no other type has a centre-axis wall dormer: plain-brick has only pediment dormers, brick-arched's tower crown spans axes 0-1 of a 2-axis module.",
+  "fit": {
+    "widthM": [
+      5,
+      6.3
+    ],
+    "storeys": [
+      5
+    ]
+  },
+  "body": {
+    "storeys": 5,
+    "bays": 3,
+    "cornice": "bracketed",
+    "windows": "t-window",
+    "windowHead": {
+      "kind": "segmental"
+    },
+    "windowHeights": [
+      0.7,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+    ]
+  },
+  "crowns": {
+    "wall-dormer": {
+      "gable": "cornice",
+      "tower": {
+        "bays": {
+          "from": 1,
+          "to": 1
+        },
+        "rise": 1,
+        "cap": "flat"
+      },
+      "note": "a brick wall dormer over the centre axis rising one storey through the cornice, one light, flat cap (19, 21, 23)"
+    }
+  },
+  "palettes": {
+    "red-brown-19-23": {
+      "brick": "#69533f",
+      "frame": "#a8ada0",
+      "door": "black",
+      "stone": "#bec2b3",
+      "cornice": "#c2c7b9"
+    },
+    "red-brown-19": {
+      "brick": "#67523f",
+      "frame": "#a7aca3",
+      "door": "black",
+      "stone": "#c2c7b9",
+      "cornice": "#c2c7b9"
+    },
+    "red-brown-21": {
+      "brick": "#69533f",
+      "frame": "#a2a69b",
+      "door": "black",
+      "stone": "#bec2b3",
+      "cornice": "#c2c7b9"
+    },
+    "red-brown-23": {
+      "brick": "#6f5d49",
+      "frame": "#b5bcb0",
+      "door": "black",
+      "stone": "#b7bcae",
+      "cornice": "#c2c7b9"
+    }
+  },
+  "roof": {
+    "material": "slate"
+  },
+  "rhythm": {
+    "bays": "3 window axes",
+    "identicalBays": "upper storeys: equal axes",
+    "windowsPerStorey": "ground: shop | 1-4: 3",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "shop per house",
+    "signage": "per house",
+    "roofline": "bracketed cornice broken by a centre brick wall dormer",
+    "photoGables": 0,
+    "schemaLimits": [
+      "iron wall anchors",
+      "carved end consoles of the cornice",
+      "iron finial on the dormer cap"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "kinker-1-29",
+      "pands": [
+        "158983"
+      ],
+      "citation": "strip.jpg 2024-12-11 pand 6 (Kinkerstraat 19, zoom): 3 axes x 4 upper storeys, segmental heads without dressing, iron anchors, bracketed cornice with carved end consoles, centre brick wall dormer (one light, flat cap, iron finial) through the cornice; palette-from-strip wall #67523f, frame #a7aca3, band #c2c7b9"
+    },
+    {
+      "face": "kinker-1-29",
+      "pands": [
+        "165338",
+        "159971"
+      ],
+      "citation": "strip.jpg 2024-12-11 pands 7-8 (Kinkerstraat 21, 23): the same body and wall dormer over a later shop insert: the first storey white-painted over the whole width with four lights (placement overrides bays [1,4,3,3,3] and paintedStoreys); palette-from-strip walls #69533f, #6f5d49"
+    }
+  ],
+  "notes": [
+    "Palette: median of the three pands on palette-from-strip (#67523f, #69533f, #6f5d49).",
+    "Promoted to the Oud-West library 2026-10-14 (lane kinker-colour-fidelity) from kinker-1-29 inline; the first palette is the inline one, so placements resolve unchanged. Per-pand palettes are palette-from-strip medians (wall, frame, band as stone)."
+  ],
+  "schemaLimits": [
+    "iron wall anchors",
+    "carved end consoles of the cornice",
+    "iron finial on the dormer cap"
+  ]
+}

@@ -19,6 +19,17 @@
  * Gable/cornice crowns are facade walls standing in front of this roof (fit.ts), so the profile does not depend on the
  * crown type.
  *
+ * Front forms (2026-10-16, `RecipeRoofInput.forms`, blockFace/compile.ts `frontRoofSpecs`): when the street front has
+ * a measured crown, each front band takes the form the front implies instead of the 3DBAG-bounded attic:
+ *   - `saddle` under a gable: two planes meeting at a ridge over the band's centre, running the main depth, the ridge
+ *     and side pitch chosen by `saddleUnderProfile` so the roof stays 3 cm under every vertex of the crown outline
+ *     (the user, 2026-10-16: the lopsided step gables were LoD2.2 planes showing above the symmetric crown);
+ *   - `flat` behind a parapet or a measured cornice with nothing on it;
+ *   - `attic` behind a dormered cornice (the same steep face as the recipe form, capped by a photo top or a row ridge
+ *     instead of the 3DBAG p95 when a hint says so).
+ * Rear wings then sit no higher than the lowest saddle eaves. 3DBAG is an upper bound only ("don't give so much
+ * credence to 3DBAG roofs").
+ *
  * The output is planar convex pieces written into `roofsRD` exactly as 3DBAG surfaces would be, so fit/surveyRecipe and
  * the library compile them unchanged (closures on footprint edges, step walls at wing steps). `roofSource` marks the
  * facts so the fit skips roofCleanup and the face gates treat 3DBAG as an upper bound.
@@ -44,9 +55,27 @@ export const RECIPE_ROOF = {
   sampleM: 0.35, binM: 0.5,
 };
 
+export type FrontRoofForm = 'saddle' | 'flat' | 'attic';
+
+/** The roof form one front band takes (blockFace/compile.ts `frontRoofSpecs`). Heights in metres above the pand ground. */
+export interface FrontRoofSpec {
+  form: FrontRoofForm;
+  /** Saddle: the ridge height and side pitch (from `saddleUnderProfile`). Attic: the face pitch (default `frontPitchDeg`). */
+  ridgeM?: number;
+  pitchDeg?: number;
+  /** Saddle: the roof height at the band's outer edges (reported; rear wings stay under it). */
+  sideEavesM?: number;
+  /** Attic: a cap on the attic top (a photo top row, a row ridge). `surveyCap: false` drops the 3DBAG p95 cap (a photo hint). */
+  capM?: number;
+  surveyCap?: boolean;
+  /** The crown line this band stays under (saddle: the crown outline top); reported as the pand's `crownTopM`. */
+  lineM?: number;
+  note?: string;
+}
+
 export interface RecipeRoofReport {
   pandId: string;
-  form: 'attic' | 'flat';
+  form: 'attic' | 'flat' | 'saddle' | 'mixed';
   eavesM: number;
   /** Top of the generated main roof, and the 3DBAG main-body cap (p95) and absolute max it was bounded by. */
   ridgeM: number; capM: number; surveyMaxM: number;
@@ -55,6 +84,9 @@ export interface RecipeRoofReport {
   wings: {areaM2: number; heightM: number}[];
   surfacesBefore: number; surfacesAfter: number;
   notes: string[];
+  /** Front forms only: per front band, and the crown line the roof stays under. */
+  bands?: {id: string; form: FrontRoofForm; eavesM: number; ridgeM: number; pitchDeg?: number; sideEavesM?: number}[];
+  crownTopM?: number;
 }
 
 export interface RecipeRoofInput {
@@ -75,6 +107,48 @@ export interface RecipeRoofInput {
    * takes the roof of the front beside it.
    */
   fronts?: {id: string; eavesM: number; endpointsRD: number[][]}[];
+  /**
+   * Front forms per front id (see `FrontRoofSpec`); absent = the 3DBAG-bounded attic/flat rule for every band,
+   * byte-identical. A single-front pand keys its form by `frontId` (or the one entry).
+   */
+  forms?: Record<string, FrontRoofSpec>;
+  frontId?: string;
+}
+
+export interface SaddleFit { ridgeM: number; pitchDeg: number; sideEavesM: number; centreM: number }
+
+/**
+ * The saddle roof under a crown outline: ridge over the front's centre (`w / 2`), the smallest side pitch (within
+ * `minPitchDeg..maxPitchDeg`) that keeps the roof `marginM` under every vertex of the outline, risers included (a
+ * vertical step has two vertices at one x; the lower one binds). When even the steepest pitch cannot hold the ridge
+ * at the outline top, the ridge drops to what fits. Returns null when the roof's side eaves would sit more than
+ * `maxDropM` under the eaves `eavesM` (a small crown on a wide front: the caller falls back to an attic face).
+ * `profile` is the crown outline in facade metres (x from the left edge, y above the pand ground), as fit.ts writes it.
+ */
+export function saddleUnderProfile(profile: [number, number][], widthM: number, eavesM: number, opts: {pitchDeg?: number; marginM?: number; minPitchDeg?: number; maxPitchDeg?: number; maxDropM?: number} = {}): SaddleFit | null {
+  const m = opts.marginM ?? 0.03, c = widthM / 2, minTan = Math.tan((opts.minPitchDeg ?? 30) * Math.PI / 180), maxTan = Math.tan((opts.maxPitchDeg ?? 65) * Math.PI / 180);
+  if (!(widthM > 0) || profile.length < 2) return null;
+  // The outline height at the centre: the highest segment there (a riser at the centre takes its upper end).
+  let top = -Infinity;
+  for (let i = 1; i < profile.length; i++) {
+    const [x0, y0] = profile[i - 1], [x1, y1] = profile[i];
+    if (c < Math.min(x0, x1) - 1e-9 || c > Math.max(x0, x1) + 1e-9) continue;
+    top = Math.max(top, Math.abs(x1 - x0) < 1e-9 ? Math.max(y0, y1) : y0 + (y1 - y0) * (c - x0) / (x1 - x0));
+  }
+  if (!Number.isFinite(top)) return null;
+  const ridge0 = top - m;
+  // Each vertex bounds the ridge for a given pitch: ridge <= y - m + tan * |x - c|.
+  const bound = (tan: number) => Math.min(ridge0, ...profile.map(([x, y]) => y - m + tan * Math.abs(x - c)));
+  let tan: number;
+  if (opts.pitchDeg !== undefined) tan = Math.tan(opts.pitchDeg * Math.PI / 180);
+  else {
+    // The pitch that keeps the ridge at the top: the steepest demand of any vertex off the centre.
+    const need = Math.max(0, ...profile.filter(([x]) => Math.abs(x - c) > 1e-6).map(([x, y]) => (ridge0 - (y - m)) / Math.abs(x - c)));
+    tan = Math.min(maxTan, Math.max(minTan, need));
+  }
+  const ridgeM = bound(tan), sideEavesM = ridgeM - tan * c;
+  if (sideEavesM < eavesM - (opts.maxDropM ?? 1)) return null;
+  return {ridgeM: r3(ridgeM), pitchDeg: Math.round(Math.atan(tan) * 180 / Math.PI * 10) / 10, sideEavesM: r3(sideEavesM), centreM: c};
 }
 
 const dot = (a: number[], b: number[]) => a[0] * b[0] + a[1] * b[1];
@@ -270,8 +344,8 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   if (flat) notes.push(`3DBAG main body flat (p95 ${r3(capM)} m vs eaves ${r3(E)} m): flat at the eaves`);
   else if (capM < E + attic) notes.push(`attic capped by 3DBAG p95 ${r3(capM)} m`);
   const cornerDepths = polys.flatMap(poly => poly.flat()).map(depth);
-  const makeProfile = (eaves: number) => {
-    const profile = atticProfile(eaves, Math.max(eaves, ridge), mainDepth, o.frontPitchDeg, setback);
+  const makeProfile = (eaves: number, ridgeB = ridge, pitchB = o.frontPitchDeg) => {
+    const profile = atticProfile(eaves, Math.max(eaves, ridgeB), mainDepth, pitchB, setback);
     // A cut within 2 cm of a footprint corner passes through it: a sub-mm miss leaves slivers that invert when snapped.
     for (const k of profile) { const near = cornerDepths.find(d => Math.abs(d - k[0]) < 0.02); if (near !== undefined && k[0] > 0) k[0] = near; }
     // Knots within 2 cm of each other (a pitch whose faces meet with no flat top) become one: a corner snap moving only
@@ -286,8 +360,10 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   // the bay's own wall cap and z-fight (bilder-233580-162444 tower bays: 0.5 m2), so it takes its neighbour's roof.
   const lowest = Math.min(E, ...(input.fronts ?? []).map(f => f.eavesM));
   const tower = (e: number) => e > lowest + 1.0 || (e >= ridge - 0.05 && ridge - E >= 0.05);
-  const bands: {lo: number; hi: number; eaves: number}[] = fronts.length < 2 ? [{lo: -Infinity, hi: Infinity, eaves: E}] : fronts.map((f, i) => ({
-    lo: i === 0 ? -Infinity : (fronts[i - 1].hi + f.lo) / 2, hi: i === fronts.length - 1 ? Infinity : (f.hi + fronts[i + 1].lo) / 2, eaves: f.eavesM}));
+  const e0a = along(front.endpointsRD[0]), e1a = along(front.endpointsRD[1]);
+  // `fLo..fHi`: the band's own front along the street (a saddle spans it; beyond it the roof is flat at the saddle's side eaves).
+  const bands: {lo: number; hi: number; eaves: number; id?: string; centre: number; fLo: number; fHi: number}[] = fronts.length < 2 ? [{lo: -Infinity, hi: Infinity, eaves: E, id: input.frontId, centre: (e0a + e1a) / 2, fLo: Math.min(e0a, e1a), fHi: Math.max(e0a, e1a)}] : fronts.map((f, i) => ({
+    lo: i === 0 ? -Infinity : (fronts[i - 1].hi + f.lo) / 2, hi: i === fronts.length - 1 ? Infinity : (f.hi + fronts[i + 1].lo) / 2, eaves: f.eavesM, id: f.id, centre: (f.lo + f.hi) / 2, fLo: f.lo, fHi: f.hi}));
   if (fronts.length >= 2) {
     const plain = bands.map((b, i) => tower(b.eaves) ? -1 : i);
     for (const [i, b] of bands.entries()) if (plain[i] < 0) {
@@ -297,6 +373,27 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     }
     if (bands.some(b => Math.abs(b.eaves - E) > 0.02)) notes.push(`per-front eaves ${bands.map(b => r3(b.eaves)).join('/')} m`);
   }
+  // Front forms per band (absent: the 3DBAG-bounded rule above for every band).
+  const specOf = (b: {id?: string}): FrontRoofSpec | undefined => {
+    if (!input.forms) return undefined;
+    if (b.id !== undefined && input.forms[b.id]) return input.forms[b.id];
+    return bands.length === 1 ? Object.values(input.forms)[0] : undefined;
+  };
+  const shaped = bands.map(b => {
+    const spec = specOf(b);
+    if (!spec) return {...b, form: (ridge - b.eaves < 0.05 ? 'flat' : 'attic') as FrontRoofForm, ridge: Math.max(b.eaves, ridge), pitch: o.frontPitchDeg, tan: t, spec};
+    if (spec.form === 'flat') return {...b, form: 'flat' as FrontRoofForm, ridge: b.eaves, pitch: o.frontPitchDeg, tan: t, spec};
+    if (spec.form === 'saddle') { const pitch = spec.pitchDeg ?? o.frontPitchDeg; return {...b, form: 'saddle' as FrontRoofForm, ridge: r3(spec.ridgeM ?? b.eaves), pitch, tan: Math.tan(pitch * Math.PI / 180), spec}; }
+    // Attic: the recipe's steep face, capped by the hint's top (a photo row, a row ridge) and, unless the hint says otherwise, by the 3DBAG p95.
+    const pitch = spec.pitchDeg ?? o.frontPitchDeg, tb = Math.tan(pitch * Math.PI / 180), cap = Math.min(spec.capM ?? Infinity, spec.surveyCap === false ? surveyMaxM : capM, input.ridgeCapM ?? Infinity);
+    const flatB = spec.surveyCap !== false && capM - b.eaves < o.flatRiseM;
+    const rb = r3(flatB ? b.eaves : Math.max(b.eaves, Math.min(b.eaves + attic, cap, b.eaves + tb * (mainDepth - setback) / 2)));
+    return {...b, form: (rb - b.eaves < 0.05 ? 'flat' : 'attic') as FrontRoofForm, ridge: rb, pitch, tan: tb, spec};
+  });
+  if (input.forms) for (let k = notes.length - 1; k >= 0; k--) if (/^(attic capped by 3DBAG|3DBAG main body flat|attic line of its cornice group)/.test(notes[k])) notes.splice(k, 1);
+  for (const b of shaped) if (b.spec?.note) notes.push(`front ${b.id ?? ''}: ${b.spec.note}`);
+  // Rear wings never rise over the lowest saddle eaves: a wing standing above a gable roof's sides would show beside the crown.
+  const wingCapE = Math.min(E, ...shaped.filter(b => b.form === 'saddle').map(b => b.spec?.sideEavesM ?? (b.ridge - b.tan * Math.max(b.centre - (Number.isFinite(b.lo) ? b.lo : along(front.endpointsRD[0])), (Number.isFinite(b.hi) ? b.hi : along(front.endpointsRD[1])) - b.centre))));
 
   const roofsRD: BuildingFacts['roofsRD'] = [];
   // Coplanar pieces are merged, triangulated here, and each triangle written as its own planar surface: surveyRecipe
@@ -382,16 +479,29 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const footTris = polys.flatMap(poly => footprintTriangles(poly));
   // Main body: footprint triangles cut at the profile knots; a footprint corner in front of the frontage stays at the eaves.
   const wingCut = mainDepth < plotDepth ? mainDepth : Infinity;
-  for (const [bi, band] of bands.entries()) {
-    const profile = makeProfile(band.eaves), knots = profile.map(p => p[0]), Eb = band.eaves;
+  for (const [bi, band] of shaped.entries()) {
+    const profile = makeProfile(band.eaves, band.ridge, band.pitch), knots = profile.map(p => p[0]), Eb = band.eaves;
     const heightIn = (k: number, d: number) => { const [d0, h0] = profile[k], [d1, h1] = profile[k + 1]; return d1 - d0 < 1e-9 ? h0 : h0 + (h1 - h0) * (d - d0) / (d1 - d0); };
     // A band boundary passes through its split point exactly (snapped to the outline above).
     const cut = (v: number) => { const c = corners.find(q => Math.abs(along(q) - v) < 0.02 && Math.abs(depth(q)) < 0.05); return c ? along(c) : v; };
     const [alo, ahi] = [Number.isFinite(band.lo) ? cut(band.lo) : -Infinity, Number.isFinite(band.hi) ? cut(band.hi) : Infinity];
-    const tag = `${r3(Eb)}`;
+    const tag = band.spec ? `${r3(Eb)}-${bi}` : `${r3(Eb)}`;
     for (const whole of footTris) {
       const tri = bands.length > 1 ? clipBand(whole, along, alo, ahi) : whole;
       if (tri.length < 3) continue;
+      if (band.form === 'saddle') {
+        // Two planes meeting over the band's centre, over the whole main body (a corner in front of the frontage included);
+        // footprint beyond the band's own front (a pand wrapping behind its neighbour, Kinkerstraat 64-66) is flat at the
+        // saddle's side eaves, where the planes would otherwise run on downhill.
+        const c = cut(band.centre), R = band.ridge, tn = band.tan, main = clipBand(tri, depth, -Infinity, wingCut);
+        if (main.length < 3) continue;
+        const lo = cut(band.fLo), hi = cut(band.fHi), side = r3(R - tn * Math.max(c - lo, hi - c));
+        push(clipBand(main, along, -Infinity, lo), () => side, `saddle-${tag}-skirt`);
+        push(clipBand(main, along, lo, c), p => R - tn * (c - along(p)), `saddle-${tag}-L`);
+        push(clipBand(main, along, c, hi), p => R - tn * (along(p) - c), `saddle-${tag}-R`);
+        push(clipBand(main, along, hi, Infinity), () => side, `saddle-${tag}-skirt`);
+        continue;
+      }
       // An outline that wanders a few mm either side of the frontage line is not cut there: the cut would leave a
       // metres-long mm-wide sliver along the front that the snaps turn into overlaps (marnix-124-138 at 30 degrees).
       const lead = Math.min(...tri.map(depth)) > -0.02;
@@ -410,7 +520,7 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   // survey ground by fractions of a millimetre, enough to break the library's area check once clipped.
   const wings: RecipeRoofReport['wings'] = [];
   if (wingCut < Infinity) {
-    const levelOf = (sf: BuildingFacts['roofsRD'][number]) => Math.max(o.wingMinM, Math.min(E, quantile((sf.ringsRD?.[0] ?? sf.vertices).map(v => v[2] - ground), 0.5)));
+    const levelOf = (sf: BuildingFacts['roofsRD'][number]) => Math.max(o.wingMinM, Math.min(wingCapE, quantile((sf.ringsRD?.[0] ?? sf.vertices).map(v => v[2] - ground), 0.5)));
     const levels = facts.roofsRD.map(levelOf);
     const levelAt = (p: number[]): number | null => {
       let best: number | null = null, top = -Infinity;
@@ -462,7 +572,7 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
       const via = corners.find(q => Math.abs(dot(n, q) - c) < 0.02 && depth(q) > wingCut - 0.05), cc = via ? dot(n, via) : c;
       if (!lines.some(l => Math.abs(dot(l.n, n)) > 0.9998 && Math.abs(l.c * Math.sign(dot(l.n, n)) - cc) < 0.05)) lines.push({n, c: cc});
     }
-    const fallback = quantile(samples.filter(x => x.d > wingCut).map(x => Math.max(o.wingMinM, Math.min(E, x.h))), 0.5);
+    const fallback = quantile(samples.filter(x => x.d > wingCut).map(x => Math.max(o.wingMinM, Math.min(wingCapE, x.h))), 0.5);
     const byLevel = new Map<number, number>(), wingPieces: {ring: number[][]; level: number; width: number}[] = [];
     for (const tri of footTris) {
       let pieces = [clipBand(tri, depth, wingCut, Infinity)].filter(q => q.length >= 3);
@@ -495,6 +605,17 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const isCorner = (p: number[]) => corners.some(c => c === p || (Math.abs(c[0] - p[0]) < 1e-9 && Math.abs(c[1] - p[1]) < 1e-9));
   for (const {h, pieces} of planes.values()) for (const m of mergeCoplanar(pieces, isCorner)) emit(m.ring, h, m.parts);
   if (droppedM2 > 1e-4) notes.push(`${droppedM2.toExponential(1)} m2 of sub-0.1-dm2 slivers dropped`);
-  const out: BuildingFacts = {...facts, roofsRD, roofSource: {kind: 'recipe', surveyRoofMaxM: surveyMaxM, capM: r3(capM)}};
-  return {facts: out, report: {pandId: facts.pandId, form: ridge - E < 0.05 ? 'flat' : 'attic', eavesM: r3(E), ridgeM: ridge, capM: r3(capM), surveyMaxM: r3(surveyMaxM), atticM: r3(attic), mainDepthM: r3(mainDepth), plotDepthM: r3(plotDepth), wings, surfacesBefore: facts.roofsRD.length, surfacesAfter: roofsRD.length, notes}};
+  if (!input.forms) {
+    const out: BuildingFacts = {...facts, roofsRD, roofSource: {kind: 'recipe', surveyRoofMaxM: surveyMaxM, capM: r3(capM)}};
+    return {facts: out, report: {pandId: facts.pandId, form: ridge - E < 0.05 ? 'flat' : 'attic', eavesM: r3(E), ridgeM: ridge, capM: r3(capM), surveyMaxM: r3(surveyMaxM), atticM: r3(attic), mainDepthM: r3(mainDepth), plotDepthM: r3(plotDepth), wings, surfacesBefore: facts.roofsRD.length, surfacesAfter: roofsRD.length, notes}};
+  }
+  // Front forms: the crown line is the highest line any band may reach (the gate `height-vs-3dbag` bounds the model by it).
+  const lineOf = (b: typeof shaped[number]) => b.spec?.lineM ?? b.ridge;
+  const crownTopM = r3(Math.max(...shaped.map(lineOf))), ridgeTop = r3(Math.max(...shaped.map(b => b.ridge)));
+  const forms = Object.fromEntries(shaped.map(b => [b.id ?? input.frontId ?? 'front0', b.form]));
+  const formSet = new Set(shaped.map(b => b.form)), form = formSet.size === 1 ? shaped[0].form : 'mixed';
+  const out: BuildingFacts = {...facts, roofsRD, roofSource: {kind: 'front', surveyRoofMaxM: surveyMaxM, capM: r3(capM), crownTopM, forms}};
+  return {facts: out, report: {pandId: facts.pandId, form, eavesM: r3(E), ridgeM: ridgeTop, capM: r3(capM), surveyMaxM: r3(surveyMaxM), atticM: r3(attic), mainDepthM: r3(mainDepth), plotDepthM: r3(plotDepth), wings, surfacesBefore: facts.roofsRD.length, surfacesAfter: roofsRD.length, notes,
+    bands: shaped.map(b => ({id: b.id ?? input.frontId ?? 'front0', form: b.form, eavesM: r3(b.eaves), ridgeM: b.ridge, ...(b.form !== 'flat' ? {pitchDeg: b.pitch} : {}), ...(b.form === 'saddle' ? {sideEavesM: r3(b.spec?.sideEavesM ?? (b.ridge - b.tan * c0(b)))} : {})})), crownTopM}};
+  function c0(b: typeof shaped[number]) { return Math.max(b.centre - (Number.isFinite(b.lo) ? b.lo : along(front.endpointsRD[0])), (Number.isFinite(b.hi) ? b.hi : along(front.endpointsRD[1])) - b.centre); }
 }

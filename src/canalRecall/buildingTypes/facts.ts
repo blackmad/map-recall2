@@ -142,9 +142,72 @@ export function paramsFromFacts(spec: TypeSpec, rect: Rect, attrs: Bag3dAttribut
   if (storeys !== spec.storeys) warnings.push(`eaves ${eavesM.toFixed(2)} m say ${storeys} storeys, the type has ${spec.storeys} (3DBAG bouwlagen ${attrs.b3_bouwlagen ?? '?'} counts the attic)`);
   else if (attrs.b3_bouwlagen != null && attrs.b3_bouwlagen !== storeys) warnings.push(`3DBAG bouwlagen ${attrs.b3_bouwlagen} != type storeys ${storeys}`);
   if (sh < 2.6 || sh > 3.4) warnings.push(`storey height ${sh.toFixed(2)} m outside 2.6-3.4 m`);
-  const ridge = roof?.ridgeDirRD ? ridgeAlongOf(rect, roof.ridgeDirRD) : spec.roof.ridge;
+  // A flat roof has no ridge: a stepped 3DBAG roof (stair heads, lift rooms) must not split flat instances into 'long'/'short' units.
+  const ridge = roofForm === 'flat' ? spec.roof.ridge : roof?.ridgeDirRD ? ridgeAlongOf(rect, roof.ridgeDirRD) : spec.roof.ridge;
   return {params: {lengthM: rect.length, widthM: rect.width, eavesM, ridgeM, storeys, roofForm, ridge, ...overrides}, warnings, groundNapM: ground};
 }
 
 /** Footprint ring (local metres) to its rectangle: re-exported so callers need one import. */
 export const rectOf = (ring: Pt[]) => minimumRotatedRectangle(ring);
+
+/** A roof surface in local metres: outer ring, mean height (NAP) and plan area. */
+export interface RoofPolygon { ring: Pt[]; z: number; area: number }
+
+/** LoD2.2 roof surfaces of a 3DBAG item, mapped to local metres by `toLocal(rdX, rdY)`. */
+export function roofPolygons(item: CityJsonItem, toLocal: (x: number, y: number) => Pt): RoofPolygon[] {
+  const t = item.metadata.transform, verts = item.feature.vertices.map(v => v.map((x, i) => x * t.scale[i] + t.translate[i]));
+  const out: RoofPolygon[] = [];
+  for (const o of Object.values(item.feature.CityObjects)) for (const g of o.geometry ?? []) {
+    if (String(g.lod) !== '2.2' || !g.semantics) continue;
+    const shells = g.boundaries as number[][][][];
+    for (let si = 0; si < shells.length; si++) for (let j = 0; j < shells[si].length; j++) {
+      if (g.semantics.surfaces[g.semantics.values[si][j]]?.type !== 'RoofSurface') continue;
+      const pts = shells[si][j][0].map(k => verts[k]), ring = pts.map(p => toLocal(p[0], p[1]));
+      const area = Math.abs(ring.reduce((s, p, i) => { const q = ring[(i + 1) % ring.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) / 2);
+      out.push({ring, z: pts.reduce((s, p) => s + p[2], 0) / pts.length, area});
+    }
+  }
+  return out;
+}
+
+const insideRing = (p: Pt, ring: Pt[]): boolean => {
+  let r = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a[1] > p[1]) !== (b[1] > p[1]) && p[0] < (b[0] - a[0]) * (p[1] - a[1]) / (b[1] - a[1]) + a[0]) r = !r;
+  }
+  return r;
+};
+
+/**
+ * The tall body of a pand whose BAG ring also holds low annexes (a garage row, entrance halls, stair and lift towers): the
+ * roof surfaces at the main roof level (within `tolM` of the largest surface's height) are cut into cross-sections across the
+ * `axis` rectangle's long axis every `stepM`; the body spans the median cross-section across, and along the axis as far as the
+ * cross-sections are at least 60 % of that width. Local protrusions of the roof outline (a lift shaft, a mapping sliver) do not
+ * move it. Returns null when there is no roof surface.
+ */
+export function bodyRectFromRoof(roofs: RoofPolygon[], axis: Rect, tolM = 0.6, stepM = 0.5): Rect | null {
+  if (!roofs.length) return null;
+  const main = roofs.reduce((a, b) => (b.area > a.area ? b : a));
+  const toST = (p: Pt): Pt => { const dx = p[0] - axis.center[0], dz = p[1] - axis.center[1]; return [dx * axis.long[0] + dz * axis.long[1], dx * axis.short[0] + dz * axis.short[1]]; };
+  const st = roofs.filter(r => Math.abs(r.z - main.z) <= tolM).map(r => r.ring.map(toST));
+  // scan the axis rectangle and every selected surface (an absorbed end bay may lie beyond the ring's rectangle)
+  const all = st.flat(), s0 = Math.min(-axis.length / 2, ...all.map(p => p[0])) - 1, s1 = Math.max(axis.length / 2, ...all.map(p => p[0])) + 1;
+  const t0 = Math.min(-axis.width / 2, ...all.map(p => p[1])) - 1, t1 = Math.max(axis.width / 2, ...all.map(p => p[1])) + 1, dt = 0.1;
+  const sections: {s: number; lo: number; hi: number}[] = [];
+  for (let s = s0 + stepM / 2; s < s1; s += stepM) {
+    let lo = Infinity, hi = -Infinity;
+    for (let t = t0; t <= t1; t += dt) if (st.some(r => insideRing([s, t], r))) { lo = Math.min(lo, t); hi = Math.max(hi, t); }
+    if (hi > lo) sections.push({s, lo, hi});
+  }
+  if (!sections.length) return null;
+  const med = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+  const lo = med(sections.map(x => x.lo)), hi = med(sections.map(x => x.hi)) + dt, width = hi - lo;
+  const full = sections.filter(x => x.hi - x.lo >= 0.6 * width);
+  const sa = Math.min(...full.map(x => x.s)) - stepM / 2, sb = Math.max(...full.map(x => x.s)) + stepM / 2, length = sb - sa;
+  const cs = (sa + sb) / 2, ct = (lo + hi) / 2;
+  const center: Pt = [axis.center[0] + axis.long[0] * cs + axis.short[0] * ct, axis.center[1] + axis.long[1] * cs + axis.short[1] * ct];
+  const corner = (a: number, b: number): Pt => [center[0] + axis.long[0] * a + axis.short[0] * b, center[1] + axis.long[1] * a + axis.short[1] * b];
+  const L = length / 2, W = width / 2;
+  return {center, long: axis.long, short: axis.short, length, width, corners: [corner(-L, -W), corner(L, -W), corner(L, W), corner(-L, W)]};
+}

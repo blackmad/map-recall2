@@ -62,7 +62,8 @@ const ll = (x: number, y: number) => { const p = rdToLngLat({x, y}); return [+p[
 
 export async function largeCatalogueEntry(id: string, catalogue: {models: any[]}, now = new Date().toISOString(), allowInferred: Map<number, string> = new Map()) {
   const {report, built, intent, likeness} = await compileLargeHouse(id);
-  const bad = report.gates.filter(g => !g.pass);
+  const bad = report.gates.filter(g => !g.pass && !g.advisory), advisory = report.gates.filter(g => !g.pass && g.advisory);
+  if (advisory.length) console.log(`${id}: advisory gates not passing: ${advisory.map(g => `${g.id}=${JSON.stringify(g.value)}`).join('; ')}`);
   if (bad.length) throw Error(`${id}: gates failed (${bad.map(g => g.id).join(', ')}); not installing`);
   // likeness gate (likenessGate.ts): street-facing groups must look like their photo, or be allowed as inferred with a note
   const gate = likenessGate(likeness && likeness.map(g => ({group: g.group, system: intent.walls[g.group].system, street: intent.walls[g.group].street,
