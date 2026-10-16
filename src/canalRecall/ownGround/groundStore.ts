@@ -93,7 +93,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -341,7 +341,7 @@ export class GroundStore {
       ways.push({ id: w.id, name: w.tags.name ?? '', points: w.points, halfWidth: w.section.halfWidth });
     }
     // Consecutive pieces of one bridge join first (wayDecks.ts joinChains).
-    const { profiles } = wayDeckGroups(joinChains(ways).ways, wet, claimed, this.options.wayDeckHoles === false ? undefined : this.surface.ground);
+    const { profiles } = wayDeckGroups(this.options.wayDeckChains === false ? ways : joinChains(ways).ways, wet, claimed, this.options.wayDeckHoles === false ? undefined : this.surface.ground);
     for (const w of ways) this.wayDeckIds.add(w.id);
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);

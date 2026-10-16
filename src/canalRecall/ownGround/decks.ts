@@ -23,6 +23,9 @@ import {
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
 import { sideWidths } from '../elevation/bridgeDeck.js';
 import { waterOutside, type CrossingTest } from './railingRuns.js';
+import { HOLE_M } from './wayDecks.js';
+/** How far outside a way deck's edge over a hole the drop is looked for (past the deck's DECK_BLEND_M). */
+export const HOLE_DROP_PROBE_M = 1.5;
 
 export { FRAME, RAILING, PIER_SPAN_M } from './bridgeKit.js';
 const hex = (h: string): RGB => { const v = parseInt(h.slice(1), 16); return [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255]; };
@@ -258,8 +261,12 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
     const zAt = (q: Vec2, w: number) => (!height ? z : w > hw + 0.01 ? Math.max(z, height(q[0], q[1])) : height(q[0], q[1]));
     return { s: p.s[i], c: [p.x[i], p.y[i]], n, L, R, z, zL: zAt(L, hl), zR: zAt(R, hr),
       water: overWater(p.x[i], p.y[i]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: ground(L[0], L[1]), gR: ground(R[0], R[1]),
-      // Over a hole past a way deck's water (wayDecks.ts HOLE_M: an underpass, its ramps) the edge has a drop outside it, as over the water: the parapet runs on.
-      ...(p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) ? { oL: true, oR: true } : waterOutside(L, R, n, overWater)) };
+      // Over a hole past a way deck's water (wayDecks.ts HOLE_M: an underpass, its ramps) an edge with a drop outside it
+      // (the riding surface HOLE_DROP_PROBE_M out more than HOLE_M under the deck) takes a parapet, as over the water; an
+      // edge beside another deck at its level (a dual carriageway's other half) does not.
+      ...(p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) && height
+        ? { oL: height(L[0] + n[0] * HOLE_DROP_PROBE_M, L[1] + n[1] * HOLE_DROP_PROBE_M) < z - HOLE_M, oR: height(R[0] - n[0] * HOLE_DROP_PROBE_M, R[1] - n[1] * HOLE_DROP_PROBE_M) < z - HOLE_M }
+        : waterOutside(L, R, n, overWater)) };
   });
   // Water spans: the profile's measured water (the pipeline's AHN water) where it has one, else the mask's runs along the centre.
   const runs: [number, number][] = [];
