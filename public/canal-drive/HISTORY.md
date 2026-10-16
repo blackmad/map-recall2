@@ -1,5 +1,59 @@
 # Canal Recall — what is built
 
+## Kinkerstraat even side authored: twelve faces, 103 pands; three single-pand faces blocked (2026-10-16)
+
+Lane `lane/kinkerstraat-even-20261014` (plan Part 2 step 4), on the
+accents kit (origin/main 1c8005b8 merged, all faces recompiled). Faces
+(pands, tris): kinker-56-84 (5, 22,817: neo-renaissance gables and
+speklagen good; 76-84 gets a hipped 3DBAG roof instead of its flat
+parapet; 56-62 fails the wall check on glare), 86-110 (10, 16,444: the
+white head course drawn continuous where the photo dots it; 86-88 fails
+the wall check on low sun), 112-116 (2, 3,908: relieving arches with
+measured cornice and storey pitch; the moulded brick ornament bay left
+off), 120-138 (3, 10,136: 126-138 as 7 plain-brick modules; the two
+pointed gables of 126-128 left off), 142-178 (11, 23,988: rows and rhythm
+good; infill walls read olive; the 142 lettering dropped for the
+budget), 182-184 (2, 2,286: 1989 infill, loggia and glazed balustrade
+left off), 186-202 (6, 16,696: brick-arched with springers good; the 186
+bell gable, the 192-198 roof box and towers, the corner gable left off),
+206-242 (15, 25,795: black-painted fronts take walls from the review
+sampler; 212-216 needs a recipe roof because 3DBAG's partition fails),
+244-332 (26, 62,479: one intent, chunk 3.2 MB, about twice the others;
+bracketed cornices on the brick-arched pands; seven cluster assignments
+overruled), 334-374 (18, 45,076: plain-brick 374-364, the balcony-axis
+row with curved and stepped gables, the 1915 brick-arched pands; yellow
+courses and scrolled gable ornament missing), 376-380 (3, 6,484: keystone
+heads and pediment dormers good), 386-390 (2, 4,128: 390 under scaffold on
+the 2024 strip, read from the 2020 crop, gable left off). Kit:
+`measuredPalette` (per-pand measured colours over the named palette,
+requires evidence and `#rrggbb`), `limitations?: string[]` on the face
+intent, and the interference check takes the overhang side from the
+frontage (a false 8.6 m overhang where 68-70 wraps behind 64-66;
+regression test with 56-84); 25 other faces hashed identically with the
+kit change. **Blocked:** `kinker-140-142`, `kinker-382-382`, `kinker-392-392`
+hold one pand each and `validateBlockFace` rejects a face under two
+houses; the 382-384 draft is parked at
+`staging/look/kinker-382-382.intent.json` (not committed); the 140-142
+strip span is ~3 m off (its left part is 142, already in 142-178); 392 is
+a one-storey building behind a wall. Brick-arched window width: no
+consistent under-width on this side either (298-302 photo 1.19 m vs
+model 1.12; 202 both ~1.0 m). Kit gaps (pands): iron wall anchors 27,
+tympanum ornament 13, dormer shapes the crowns cannot draw 13, yellow
+courses on the 1902 balcony row 10, narrow centre French windows 10,
+gables the crown set cannot draw 9, round-arched windows mixed into a
+segmental storey 9, dotted white block courses 7, flat brick arches 5,
+loggias and glazed balustrades 5, yellow/red alternating arch blocks 4,
+basket-arched first-floor shop windows 4, 3DBAG roof mass wrong 3, very
+dark brick below the 0.30 floor 2, pediment hoods 2, two styles in one
+pand 1. Pipeline gaps: `palette-from-strip` reads black paint as glass
+(238–248); sign lettering can push a front past the 3,000-tri budget;
+no Ö glyph and the sign validator strips accents (Dönerland unlettered);
+infill walls read olive. Sheets `docs/images/kinkerstraat/<face>-sheet.jpg`,
+doc `docs/kinkerstraat-faces-even-20261014.md`. Checks: lint, block-face
+86, fit-golden 156 identical. The GATES FAIL header is the inferred-rear
+z-fight (rear-facade lane running).
+
+
 ## Mercatorplein: both towers built bespoke from a photo-first inventory (2026-10-14)
 
 Lane `lane/mercatorplein-20261014` (plan Part 2 step 8). Photo-first
