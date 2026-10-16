@@ -113,7 +113,9 @@ export interface FitReport {
       /** Glass-block band over the canopy (`awning.glassBlocks`), facade x (leftM, widthM) and heights. */
       glassBlocks?: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number;
         /** `palette.glassBlock`: the band's measured colour (its own material, a measured tint). */
-        colour?: string}};
+        colour?: string;
+        /** `awning.glassBlocks.panel`: the band is a flat painted panel of this measured colour (no glass, no grid). */
+        panel?: string}};
     /** Brick lisenes (`lisenes`), facade x; `party` marks the end whose outer face follows the party plane. */
     lisenes?: {leftM: number; widthM: number; bottomM: number; topM: number; party: 'start' | 'end' | null}[];
     /** Multi-bay erker (facade x): its stack's top, plan and cap. */
@@ -1217,11 +1219,11 @@ function rigidCanopy(front: FrontIntent, layout: Layout, width: number, mirrored
   // Glass-block band: in the wall between the canopy and the first-storey sills, brick piers kept at the ends.
   let glassBlocks: NonNullable<FitReport['fronts'][number]['canopy']>['glassBlocks'];
   if (aw.glassBlocks) {
-    const rows = typeof aw.glassBlocks === 'object' ? aw.glassBlocks.rows : 0;
+    const rows = typeof aw.glassBlocks === 'object' ? aw.glassBlocks.rows : 0, panel = typeof aw.glassBlocks === 'object' ? aw.glassBlocks.panel : undefined;
     const b0 = bottom + c.thicknessM + 0.02, b1 = rows ? Math.min(b0 + rows * DE_BAARSJES.glassBlockM, (Number.isFinite(sill) ? sill : Infinity) - 0.05) : Math.min(b0 + 1.1, (Number.isFinite(sill) ? sill : b0 + 1.1) - 0.08);
     const gl = left + (group?.joinLeft ? 0.25 : 0.05), gr = right - (group?.joinRight ? 0.25 : 0.05);
     if (b1 - b0 < 0.4 || gr - gl < 0.6) warnings.push(`${front.id}: no room for the glass-block band (${round(b1 - b0, 2)} m high, ${round(gr - gl, 2)} m wide)`);
-    else glassBlocks = {leftM: round(mirrored ? width - gr : gl), widthM: round(gr - gl), bottomM: round(b0), topM: round(b1), cellM: 0.2, ...(rows && glassBlockColour ? {colour: swatch(glassBlockColour)} : {})};
+    else glassBlocks = {leftM: round(mirrored ? width - gr : gl), widthM: round(gr - gl), bottomM: round(b0), topM: round(b1), cellM: 0.2, ...(rows && glassBlockColour ? {colour: swatch(glassBlockColour)} : {}), ...(panel ? {panel: swatch(panel)} : {})};
   }
   return {leftM: round(mirrored ? width - right : left), widthM: round(right - left), bottomM: round(bottom), projectM: c.projectM, thicknessM: c.thicknessM, fasciaM: c.fasciaM, fasciaDepthM: c.fasciaDepthM,
     partyStart: !!(mirrored ? group?.joinRight : group?.joinLeft), partyEnd: !!(mirrored ? group?.joinLeft : group?.joinRight), colour: swatch(aw.colour), fasciaColour: swatch(aw.fasciaColour ?? aw.colour), ...(glassBlocks ? {glassBlocks} : {})};

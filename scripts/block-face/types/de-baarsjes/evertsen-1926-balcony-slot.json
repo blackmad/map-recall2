@@ -3,21 +3,25 @@
   "kind": "house-type",
   "id": "evertsen-1926-balcony-slot",
   "district": "de-baarsjes",
-  "description": "Jan Evertsenstraat 59-87 odd (1927): plain dark brown brick; per house a French door at the party wall with a stacked concrete balconette on every upper storey and a hood slab over the top one (two houses' slots flank one brick pier), the other windows wide two-light casements under fixed top lights; a glass-block band over the continuous rigid canopy; a tall plain parapet (about 3.3 m) with a thin coping",
+  "description": "Jan Evertsenstraat 59-87 odd (1927): plain dark brown brick; per house a French door at the party wall with a stacked concrete balconette on every upper storey and a hood slab over the top one (two houses' slots flank one brick pier), a wide two-light casement under a fixed top light touching the door, and half of a window that straddles the far party wall (the mirrored neighbour completes it); a glass-block band (on 75-87 a painted sign panel) over the continuous rigid canopy; a tall plain parapet (about 3.3 m) with a thin coping",
   "fit": {
     "widthM": [5.5, 6.5],
     "storeys": [4]
   },
   "body": {
     "storeys": 4,
-    "bays": 3,
+    "bays": [1, 3, 3, 3],
+    "axisGrid": 5,
+    "storeyAxes": {"1": [1, 2, 4], "2": [1, 2, 4], "3": [1, 2, 4]},
     "cornice": "none",
     "windows": "casement-toplight",
-    "bayWidths": [1.25, 2.6, 2.15],
+    "bayWidths": [0.3, 0.93, 1.88, 1.23, 1.69],
+    "bayFill": [0.5, 0.98, 0.98, 0.5, 0.98],
     "storeyHeights": [1.72, 1, 1, 1],
     "windowHeights": [0.6, 0.55, 0.55, 0.55],
     "headLines": [0.86, 0.69, 0.69, 0.69],
-    "balconies": {"storeys": [1, 2, 3], "bays": [0], "style": "slab-hood"}
+    "balconies": {"storeys": [1, 2, 3], "bays": [0], "style": "slab-hood"},
+    "lisenes": {"leftEnd": "half"}
   },
   "crowns": {
     "parapet": {
@@ -30,7 +34,7 @@
       "gable": "flat",
       "cornice": "none",
       "parapet": {"courses": 60, "coping": true},
-      "tower": {"bays": {"from": 0, "to": 2}, "rise": 0.85, "cap": "flat"},
+      "tower": {"bays": {"from": 0, "to": 4}, "rise": 0.85, "cap": "flat"},
       "note": "a raised stair-tower end at a row end (89 at the Vespuccistraat side is a stepped corner, not drawn)"
     }
   },
@@ -46,19 +50,19 @@
   },
   "roof": {"material": "bitumen"},
   "rhythm": {
-    "bays": "3 axes per house: the French-door slot at the party wall, two wide two-light windows",
+    "bays": "per house, slot side first: the slot pier 0.3 m, the French door 0.93 m touching a wide two-light window 1.88 m, plain wall 1.23 m, and half (1.69 m) of the window that straddles the far party wall",
     "identicalBays": "every upper storey the same; houses mirror in pairs so two slots flank one pier",
-    "windowsPerStorey": "ground: shop | 1-3: French door + 2 windows",
+    "windowsPerStorey": "ground: shop | 1-3: French door + window touching, half a party-wall window",
     "symmetry": "mirrored pairs about the slot pier",
     "groundFloor": "shop under the continuous rigid canopy, a glass-block band over it",
     "signage": "letters on the glass-block band (not drawn)",
     "roofline": "tall plain parapet with a thin coping",
-    "photoRows": [1, 3, 3, 3],
+    "photoRows": [1, 2, 2, 2],
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the brick pier between two slots projects slightly on the photo; drawn flush",
-      "signs on the glass-block band are not drawn"
+      "signs on the glass-block band are not drawn",
+      "the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)"
     ]
   },
   "evidence": [
@@ -75,15 +79,21 @@
     {
       "face": "evertsen-59-89",
       "pands": ["107408"],
+      "citation": "strip.jpg 2024-12-06, ruler crop (120 px/m) of 61 (slot on its left): the slot pier 0-0.3 m, the French door 0.32-1.23 m touching a 1.88 m two-light window (1.23-3.11 m), plain wall, then 4.34-6.03 m of a window centred on the party wall with 63; the window rows 5.4-7.0 / 8.3-9.9 / 11.1-12.9 m. The slots pair at every other party wall (59|61, 63|65, 67|69 ... 85|85A), as on the hood-lisene rows"
+    },
+    {
+      "face": "evertsen-59-89",
+      "pands": ["107408"],
       "citation": "palette over the type's 14 pands (de-baarsjes-palettes.ts): wall #54402a, frames #aaaa91, coping/cornice band #4b4131; glass-block rows 3.4-4.2 m #555645 type-wide, #535442 on 61 (3.3-4.4 m); hood slab on 61 #7e7a5f (concrete), balconette slab edge #5d5d48 (in shadow)"
     }
   ],
   "schemaLimits": [
-    "projecting slot pier",
     "signs on the glass-block band"
   ],
   "notes": [
     "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 7}, wallCourses: 16}; palette.band is the hood/slab concrete (the hood slab takes the band colour).",
-    "Place with mirror: true on every other house so the slots pair up at the shared pier."
+    "The slot pier is a lisene (leftEnd half): two houses' halves make the 0.4 m pier between their slots, from the band to the parapet. photoRows count columns: the French door and its touching window read as one.",
+    "Place with mirror: true on every other house so the slots pair up at the shared pier; the party-wall windows then meet across the other party wall.",
+    "On 75-87 the band over the canopy is a painted sign panel: glassBlocks {rows, panel: '#rrggbb'} draws it flat in the measured colour."
   ]
 }

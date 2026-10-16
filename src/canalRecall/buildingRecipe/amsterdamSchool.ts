@@ -144,7 +144,13 @@ export function addCanopies(group: T.Group, intent: CanalHouseIntent, recipe: Ca
     box(fascia, nose, c.projectM, top - c.fasciaM, top);
     facade.add(meshOf(slab, material(c.colour), `canopy/${f.id}/slab`, 'canopy', 'awning', intent.pandId));
     facade.add(meshOf(fascia, material(c.fasciaColour), `canopy/${f.id}/fascia`, 'canopy', 'awning', intent.pandId));
-    if (c.glassBlocks) {
+    if (c.glassBlocks?.panel) {
+      // A painted sign panel in the band's place (Jan Evertsenstraat 75-87): the band's slab at the measured depth, no grid.
+      const {glass} = glassBlockBand({...c.glassBlocks, colour: c.glassBlocks.panel});
+      const panelMaterial = material(c.glassBlocks.panel);
+      panelMaterial.userData = {tintSource: 'measured'};
+      facade.add(meshOf(glass, panelMaterial, `canopy/${f.id}/band-panel`, 'canopy', 'trim', intent.pandId));
+    } else if (c.glassBlocks) {
       const {glass, grid} = glassBlockBand(c.glassBlocks);
       // A measured glass-block colour is its own material: a measured tint, so the look keeps the pale band instead of the dark pane.
       const glassMaterial = material(c.glassBlocks.colour ?? GLASS_BLOCK.glass);

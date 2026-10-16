@@ -12,15 +12,18 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import * as T from 'three';
 import crypto from 'node:crypto';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {fitIntent} from '../buildingRecipe/fit.ts';
+import {compileBuilding} from '../buildingRecipe/compile.ts';
 import {WINDOWS, validateIntent, type FrontIntent} from '../buildingRecipe/intent.ts';
 import {WINDOW_KINDS} from '../buildingRecipe/deBaarsjesIntent.ts';
 import {GLASS_BLOCK, glassBlockBand, measuredMortar} from '../buildingRecipe/amsterdamSchool.ts';
 import {houseIntents, validateBlockFace, type BlockFaceIntent} from './intent.ts';
 import {mirrorFront} from './houseType.ts';
 import {mergeCoplanar} from './recipeRoof.ts';
+import {prepareFaceFacts} from './compile.ts';
 
 const DIR = 'scripts/block-face/faces/evertsen-91-135';
 const raw = JSON.parse(fs.readFileSync(`${DIR}/intent.json`, 'utf8'));
@@ -29,6 +32,7 @@ const face: BlockFaceIntent = validateBlockFace(raw, members);
 const intents = houseIntents(face);
 const intentOf = (pand: string) => intents.find(i => i.pandId.endsWith(pand))!;
 const factsOf = (pand: string): BuildingFacts => JSON.parse(fs.readFileSync(`${DIR}/pands/0363100012${pand}/facts.json`, 'utf8'));
+const meshes = (g: T.Object3D, re: RegExp) => { const out: T.Mesh[] = []; g.traverse(o => { if (o instanceof T.Mesh && re.test(o.name)) out.push(o); }); return out; };
 const storey2 = (pand: string) => {
   const {recipe, report} = fitIntent(intentOf(pand), factsOf(pand));
   const el = recipe.elevations[0];
@@ -112,6 +116,31 @@ test('mergeCoplanar: the memoised merge gives the restart-from-scratch result (h
   }
   assert.equal(out.reduce((n: number, r) => n + (r as unknown[]).length, 0), 151);
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(out)).digest('hex').slice(0, 16), 'bb1a64b41f2c3eb3');
+});
+
+test('59-89: slots pair at shared piers; 75-89 carry a painted sign panel over the canopy instead of glass block', () => {
+  const dir = 'scripts/block-face/faces/evertsen-59-89';
+  const odd = validateBlockFace(JSON.parse(fs.readFileSync(`${dir}/intent.json`, 'utf8')), JSON.parse(fs.readFileSync(`${dir}/discovery.json`, 'utf8')).members);
+  const hs = houseIntents(odd);
+  // Through the face planner (measured coping, shared ground, canopy group), as the chunk compile builds them.
+  const st = JSON.parse(fs.readFileSync(`${dir}/strip.json`, 'utf8'));
+  const prep = prepareFaceFacts(odd, new Map(odd.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(`${dir}/pands/${h.pandId}/facts.json`, 'utf8'))])), {strip: {heightPx: st.height, pixelsPerMetre: st.pixelsPerMetre, groundNAP: st.groundNAP}});
+  const build = (p: string) => { const k = prep.intents.findIndex(i => i.pandId.endsWith(p)); return compileBuilding(prep.intents[k], prep.ground.facts[k]); };
+  // 61 (107408): slot on the left: the French door 0.32-1.23 m touching its window, the half window at 4.34-6.03 m.
+  const b = build('107408'), fr = b.fit.fronts[0], s2 = b.recipe.elevations[0].openings.value.filter(o => /^s2-/.test(o.id)).sort((p, q) => p.leftM - q.leftM);
+  assert.ok(Math.abs(s2[0].leftM - 0.32) < 0.05 && s2[1].leftM - (s2[0].leftM + s2[0].widthM) < 0.03, `door then its window (${s2.map(o => o.leftM).join(', ')})`);
+  assert.ok(fr.widthM - (s2[2].leftM + s2[2].widthM) < 0.03, 'the half window reaches the party wall');
+  assert.equal(fr.lisenes?.length, 1, 'the slot pier');
+  assert.equal(fr.canopy!.glassBlocks!.panel, undefined);
+  const p = build('107343'), g = p.fit.fronts[0].canopy!.glassBlocks!;
+  assert.equal(g.panel, '#9a947d');
+  assert.equal(meshes(p.group, /glass-block/).length, 0, 'no glass, no grid');
+  const panel = meshes(p.group, /band-panel$/)[0];
+  assert.equal((panel.material as T.MeshStandardMaterial).color.getHexString(), '9a947d');
+  assert.equal((panel.material as T.Material).userData.tintSource, 'measured');
+  const intent = structuredClone(hs.find(i => i.pandId.endsWith('107343'))!) as any;
+  intent.fronts[0].shopfront.awning.glassBlocks = {rows: 7, panel: 'white'};
+  assert.throws(() => validateIntent(intent), /panel: '#rrggbb'/);
 });
 
 test('94-142: box frames flank the shared lisenes; 96 ends the row with a wide window and a recessed tail', () => {
