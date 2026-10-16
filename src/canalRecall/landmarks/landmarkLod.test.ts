@@ -47,3 +47,9 @@ test('a GLB rebuilt after its lod1 (new asset version) is stale, so full is draw
   versions.palace = 'old';
   assert.ok(lod1IsCurrent(lods.palace, versions.palace));
 });
+
+test('lod1 error: Centraal keeps its east-wing storey bands (0.43 m on a 430 m site); others keep the default', async () => {
+  const {lod1SimplifyOptions, LOD1_MAX_ERROR, LOD1_TRIANGLE_RATIO} = await import('./landmarkLod');
+  assert.deepEqual(lod1SimplifyOptions('centraal-station'), {ratio: LOD1_TRIANGLE_RATIO, error: 0.001});
+  assert.deepEqual(lod1SimplifyOptions('nassaukerk'), {ratio: LOD1_TRIANGLE_RATIO, error: LOD1_MAX_ERROR});
+});

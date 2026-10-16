@@ -168,3 +168,30 @@ export function cardCollapsed(source: CardSource | null | undefined, elapsed: nu
   if (source !== 'street' && source !== 'drive-by') return false;
   return elapsed >= CARD_COLLAPSE_AFTER_SECONDS;
 }
+
+/** Body lines a folded card keeps: room for one fact, not the article. */
+export const FOLDED_BODY_LINES = 2;
+
+/** What a folded card still says (user 2026-10-16, the Multatuli card folded
+ *  to its title and read as "no info": "needs a fact"). The fact chosen from
+ *  the rotation, without the opening sentence composed ahead of it; with no
+ *  facts, the first sentence of the card's own text. */
+export function foldedCardLine(notice: { detail?: string; longDetail?: string; factTexts?: string[] }): string {
+  const detail = (notice.detail || '').trim();
+  const fact = notice.factTexts?.find(text => text && detail.endsWith(text.trim()));
+  if (fact) return fact.trim();
+  const text = detail || (notice.longDetail || '').trim();
+  return firstSentence(text);
+}
+
+/** Abbreviations whose full stop does not end a sentence ("St. Nicholas", "c. 1650"). */
+const ABBREVIATIONS = /\b(St|Sts|Dr|Mr|Mrs|Ms|Prof|Jr|Sr|ca|c|no|nr|vol|Ste|Mt)\.$/i;
+
+function firstSentence(text: string): string {
+  const end = /[.!?](?=\s+[A-Z0-9"'‘“(])/g;
+  for (let m = end.exec(text); m; m = end.exec(text)) {
+    const head = text.slice(0, m.index + 1);
+    if (!ABBREVIATIONS.test(head)) return head.trim();
+  }
+  return text.trim();
+}

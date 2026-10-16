@@ -349,6 +349,8 @@ test('the city overview draws the whole city, not a local scrap', async ({ page 
   const drawn = await page.evaluate(() => {
     const game = window.canalRecallGame;
     game.showMiniMap = true;
+    // The whole-city sheet is the M-key map; the always-on minimap is the radar.
+    game.minimapMode = 'city';
     game._render();
     // Ask the layout where the overview is: it is 260x200 bottom-left on
     // desktop and 124x96 on a phone. Count *ink* — pixels that differ from the
@@ -356,7 +358,7 @@ test('the city overview draws the whole city, not a local scrap', async ({ page 
     // meaning anything when the panel became paper instead of dark navy.
     const scale = game.ctx.getTransform().a;
     const rect = window.CanalRecallUi.hudLayout({
-      viewport: game.viewport, tripWidth: 180,
+      viewport: game.viewport, tripWidth: 180, minimapShape: 'city',
     }).minimap;
     const data = game.ctx.getImageData(
       Math.round(rect.x * scale), Math.round(rect.y * scale),

@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
+  | 'landmark-card-folded' | 'landmark-card-folded-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
@@ -30,7 +31,42 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Desktop utilities: tucked a few seconds into the ride, and back after a
   // mouse wiggle (with the destination card's hover-only "% new" badge).
   | 'hud-idle' | 'hud-wiggle'
+  // The riding radar (the always-on minimap since 2026-10-16), heading-up at
+  // Westermarkt with the route along Raadhuisstraat and the Dam off the rim.
+  | 'hud-radar' | 'touch-hud-radar'
 ;
+
+/** Draw the radar once its tiles around the view are all rasterised. */
+function drawStoryRadar(win: Window, game: any, ctx: CanvasRenderingContext2D) {
+  const R = (win as unknown as { CanalRecallRadar?: any }).CanalRecallRadar;
+  const rect = game.hud.layout?.minimap;
+  if (!R || !rect) return;
+  const local = (lng: number, lat: number) => R.radarLocal(lng, lat);
+  const route = [[4.8826, 52.3748], [4.8841, 52.3747], [4.8870, 52.3741], [4.8900, 52.3735], [4.8927, 52.3731]];
+  const flat = new Float32Array(route.flatMap(([lng, lat]) => local(lng, lat)));
+  // Riding east along Raadhuisstraat, the camera heading-up behind the bike.
+  const angle = -0.2;
+  const view = {
+    at: local(4.8846, 52.3746), rotation: angle + Math.PI / 2, angle, radiusM: 0,
+    destination: local(4.8927, 52.3731), route: flat, routeIndex: 1,
+  };
+  const range = R.RADAR_RADIUS_M[game.hud.layout.mode === 'compact' ? 'compact' : 'desktop'];
+  view.radiusM = range[0];
+  const radar = new R.RadarMap();
+  void radar.load('../data/extracts/amsterdam/own-map-v1/overview.json.gz').then(() => {
+    const scratch = win.document.createElement('canvas');
+    scratch.width = ctx.canvas.width; scratch.height = ctx.canvas.height;
+    const sctx = scratch.getContext('2d')!;
+    sctx.setTransform(ctx.getTransform());
+    let last = -1;
+    const step = () => {
+      radar.draw(sctx, rect, view, range[0]);
+      if (radar.stats.tilesRendered !== last) { last = radar.stats.tilesRendered; win.requestAnimationFrame(step); return; }
+      radar.draw(ctx, rect, view, range[0]);
+    };
+    step();
+  });
+}
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
@@ -117,7 +153,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       win.localStorage.setItem('mapRecall_reviewEvents_v1', JSON.stringify(events));
       doc.getElementById('knowledge-button')?.click();
     }
-    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
+    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-radar' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
       || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
@@ -268,6 +304,13 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           };
           game._landmarkNoticeAlpha = 1;
           game.currentNeighborhood = 'De Wallen';
+          if (scenario.startsWith('landmark-card-folded')) {
+            // A drive-by card past its fold (teachingPacer.cardCollapsed): no photo, one fact in two lines.
+            game._landmarkNoticeSource = 'drive-by';
+            game._landmarkNoticeState = { ...(game._landmarkNoticeState || {}), elapsed: 10 };
+            game._renderLandmarkNotice();
+            return;
+          }
           if (bare) {
             game._renderLandmarkNotice();
             return;
@@ -344,7 +387,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           frameMath.random = random;
           return;
         }
-        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario.startsWith('touch-hud')) {
+        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'hud-radar' || scenario.startsWith('touch-hud')) {
           const ferry = scenario.endsWith('-ferry');
           const asking = scenario === 'touch-hud-question' || ferry;
           const long = scenario === 'touch-hud-long';
@@ -382,7 +425,8 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           }
           if (!merged) game.hud.drawDestination(ctx, destinationName, 1860, 0.42, -Math.PI / 3);
           game.hud.drawCompass(ctx, game.camera);
-          game.hud.drawCityOverview(ctx, game);
+          if (scenario.endsWith('-radar') && win) drawStoryRadar(win, game, ctx);
+          else game.hud.drawCityOverview(ctx, game);
           // Steering: a thumb that landed in the zone and slid up-left, as a
           // held stick draws it. Idle: the faint ring that says "drive here".
           const pad = game.hud.layout?.dpad;
@@ -475,6 +519,12 @@ export const LiveHudIdle: Story = { args: { scenario: 'hud-idle' } };
 /** Desktop after a mouse wiggle: the corner cluster is back and the destination card shows "% new" on hover. */
 export const LiveHudWiggle: Story = { args: { scenario: 'hud-wiggle' } };
 export const LiveHudFerry: Story = { args: { scenario: 'hud-ferry' } };
+/** The riding radar: heading-up, route ahead in bold, the Dam clamped to the rim as an arrow. */
+export const LiveHudRadar: Story = { args: { scenario: 'hud-radar' } };
+export const LiveHudRadarPhone: Story = {
+  args: { scenario: 'touch-hud-radar' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 /** Every block at once; the card must still fit a laptop screen. */
 export const FinishCardFull: Story = { args: { scenario: 'finish-full' } };
@@ -493,6 +543,12 @@ export const NeighborhoodFallbackCard: Story = { args: { scenario: 'neighborhood
 /** Landmark trivia and neighborhood postcard sharing the bottom band. */
 export const StackedNotices: Story = { args: { scenario: 'stacked-notices' } };
 export const LandmarkCard: Story = { args: { scenario: 'landmark-card' } };
+/** A drive-by card folded after 8 s keeps its fact (user 2026-10-16, Multatuli: "needs a fact"). */
+export const LandmarkCardFolded: Story = { args: { scenario: 'landmark-card-folded' } };
+export const LandmarkCardFoldedMobile: Story = {
+  args: { scenario: 'landmark-card-folded-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 /** Landmark card when the extract has no image. */
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 export const LandmarkPanel: Story = { args: { scenario: 'landmark-panel' } };

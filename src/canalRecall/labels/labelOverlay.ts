@@ -1,5 +1,5 @@
-// The POI label overlay: DOM labels over the map canvas (under the HUD
-// canvas), replacing MapLibre's POI symbol layers (`poi-labels`,
+// The POI label overlay: DOM labels over the map canvas, under the HUD
+// canvas, replacing MapLibre's POI symbol layers (`poi-labels`,
 // `brand-poi-labels`, `local-food-labels`, `own-poi-labels-*`). DOM because
 // the labels are typed in the HUD's face, which MapLibre's glyph PBFs do not
 // carry, and because each label needs its own opacity (distance fade,
@@ -153,11 +153,14 @@ export class LabelOverlay {
     document.head.appendChild(style);
     this.root = document.createElement('div');
     this.root.className = LABEL_ROOT_CLASS;
-    // Above the game canvas (z 2, which draws over the map container), so
-    // after it in the same stacking layer; the HUD plates it carries are kept
-    // clear by collision, and DOM cards (z > 2) still cover the labels.
+    // Under the game canvas: same stacking layer (z 2, over the map
+    // container) but before it in the DOM, so every HUD card painted on the
+    // canvas covers a label. It used to sit after the canvas, and a park name
+    // printed across the RE-CENTER button (user 2026-10-16). Labels are also
+    // kept out of the HUD cards by collision (hudRects), so they are not
+    // placed under a card at all; DOM cards (z > 2) still cover them too.
     const gameCanvas = document.getElementById('gameCanvas');
-    if (gameCanvas?.parentElement) gameCanvas.after(this.root); else container.appendChild(this.root);
+    if (gameCanvas?.parentElement) gameCanvas.before(this.root); else container.appendChild(this.root);
     this.fit(container);
     map.on('render', () => this.frame());
     // A state change (finish card → setup, setup → loading) need not repaint
@@ -360,6 +363,11 @@ export class LabelOverlay {
           if (r) add(new DOMRect(box.left + r.x * sx, box.top + r.y * sy, r.width * sx, r.height * sy));
         }
         if (layout.dpad?.bounds) { const r = layout.dpad.bounds; add(new DOMRect(box.left + r.x * sx, box.top + r.y * sy, r.width * sx, r.height * sy)); }
+        // Every card the HUD painted (re-center, notices, radar…), and the
+        // destination pin with its pill, which the renderer draws on the map.
+        const cards: Array<{ x: number; y: number; width: number; height: number }> = game.hud?.cardRects?.() ?? [];
+        const pill = game.renderer?.destinationPillRect;
+        for (const r of pill ? [...cards, pill] : cards) add(new DOMRect(box.left + r.x * sx, box.top + r.y * sy, r.width * sx, r.height * sy));
         // The arrival card (user 2026-10-13: a label cut through the finish card).
         const fin = game?._finishCardBounds;
         const finished = (0, eval)('typeof GameState === "object" ? GameState.FINISHED : 5');

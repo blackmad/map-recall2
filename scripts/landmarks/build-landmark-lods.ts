@@ -19,8 +19,8 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import sharp from 'sharp';
 
 import {
-  LOD1_BUILD_VERSION, LOD1_MAX_ERROR, LOD1_MAX_TEXTURE_SIZE, LOD1_MIN_SOURCE_TRIANGLES, LOD1_TRIANGLE_RATIO,
-  lod1IsCurrent, lod1Url, type LandmarkLodRecord,
+  LOD1_BUILD_VERSION, LOD1_MAX_TEXTURE_SIZE, LOD1_MIN_SOURCE_TRIANGLES,
+  lod1IsCurrent, lod1SimplifyOptions, lod1Url, type LandmarkLodRecord,
 } from '../../src/canalRecall/landmarks/landmarkLod';
 
 const ROOT = path.resolve(import.meta.dirname, '..', '..');
@@ -68,7 +68,7 @@ async function main(): Promise<void> {
     for (const mesh of document.getRoot().listMeshes()) for (const primitive of mesh.listPrimitives()) primitive.setAttribute('NORMAL', null);
     await document.transform(
       weld(),
-      simplify({ simplifier: MeshoptSimplifier, ratio: LOD1_TRIANGLE_RATIO, error: LOD1_MAX_ERROR }),
+      simplify({ simplifier: MeshoptSimplifier, ...lod1SimplifyOptions(id) }),
       unweld(),
       normals({ overwrite: true }),
       weld(),
