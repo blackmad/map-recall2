@@ -113,3 +113,17 @@ test('kinker-1-29 (named regression): the compiled chunk has under 5 m2 of visib
   const z = auditZFight(await loadMaterialSoup(tmp));
   assert.ok(z.area + z.tightArea < 5, `kinker-1-29 z-fight ${z.area.toFixed(1)} m2 coplanar + ${z.tightArea.toFixed(1)} m2 tight (was 186.5 + 115.0)`);
 });
+
+test('a shell standing 4 cm behind the BAG rear edge: the window sits on the measured wall, not on the BAG line', () => {
+  const shell = pand('S', [[0, 0], [8, 0], [8, 10.04], [0, 10.04]]);
+  const facts = {...shell.facts, surveyFootprintPolygonsRD: [[[[0, 0], [8, 0], [8, 10], [0, 10]]]]} as unknown as BuildingFacts;
+  const r = addInferredRear(shell.group, facts, [0, 0], [3.2, 3.2, 3.2], 9.6, '#223344', '#eeeeee', []);
+  assert.ok(r.windows >= 6);
+  shell.group.traverse(o => {
+    if (!(o instanceof T.Mesh) || o.userData.component !== 'rear') return;
+    const p = (o.geometry as T.BufferGeometry).getAttribute('position');
+    for (let i = 0; i < p.count; i++) { const proud = -10.04 - p.getZ(i); assert.ok(proud >= -0.001 && proud <= 0.041, `vertex ${proud.toFixed(3)} m off the wall`); }
+  });
+  const z = auditZFight(soupOf([shell.group]));
+  assert.equal(+(z.area + z.tightArea).toFixed(3), 0);
+});

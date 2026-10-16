@@ -36,7 +36,9 @@ export interface RearOptions {
   maxTriangles?: number;
 }
 
-export interface RearEdgeReport { lengthM: number; windowsPerStorey: number; skippedShared: number }
+export interface RearEdgeReport { lengthM: number; windowsPerStorey: number; skippedShared: number;
+  /** Window columns with no single wall plane under the whole frame (no wall within 6 cm, or one stepped > 1 cm). */
+  skippedOffWall?: number }
 export interface RearReport {
   pandId: string;
   source: 'inferred';
@@ -87,9 +89,18 @@ export function rearEdges(facts: BuildingFacts, opts: RearOptions = {}): {a: num
  * has a lower wall than the main body, and a window above it would hover in the air.
  */
 export function wallTopAt(group: T.Group, c: [number, number], n: [number, number]): number {
+  return wallAt(group, c, n).top;
+}
+
+/**
+ * The wall standing at a rear edge point: its top (as `wallTopAt`) and the measured offset of its plane along `n` from
+ * the footprint point (m; the 3DBAG/recipe shell can stand a few cm off the BAG edge). The plane is the one of the
+ * highest wall triangle there; `NaN` when no wall stands within 6 cm.
+ */
+export function wallAt(group: T.Group, c: [number, number], n: [number, number]): {top: number; off: number} {
   group.updateMatrixWorld(true);
   const t: [number, number] = [n[1], -n[0]], a = new T.Vector3(), b = new T.Vector3(), d = new T.Vector3();
-  let top = 0;
+  let top = 0, plane = NaN;
   group.traverse(o => {
     if (!(o instanceof T.Mesh) || o.userData.surface !== 'wall' || !/^shell\//.test(o.name)) return;
     const g = o.geometry as T.BufferGeometry, pos = g.getAttribute('position'), idx = g.index, count = idx ? idx.count : pos.count;
@@ -101,10 +112,11 @@ export function wallTopAt(group: T.Group, c: [number, number], n: [number, numbe
       if (off.some(q => Math.abs(q) > 0.06)) continue;
       const along = v.map(q => (q.x - c[0]) * t[0] + (q.z - c[1]) * t[1]);
       if (Math.min(...along) > 0.05 || Math.max(...along) < -0.05) continue;
-      top = Math.max(top, ...v.map(q => q.y));
+      const high = Math.max(...v.map(q => q.y));
+      if (high > top) { top = high; plane = (off[0] + off[1] + off[2]) / 3; }
     }
   });
-  return top;
+  return {top, off: plane};
 }
 
 /**
@@ -139,14 +151,20 @@ export function addInferredRear(group: T.Group, facts: BuildingFacts, anchorRD: 
     const usable = len - 2 * o.marginM, count = Math.max(0, Math.round(usable / o.pitchM) + (usable >= 0 ? 1 : 0));
     if (usable < 0 || !count) { edges.push({lengthM: +len.toFixed(2), windowsPerStorey: 0, skippedShared: 0}); continue; }
     const step = count > 1 ? usable / (count - 1) : 0, along = count > 1 ? (i: number) => o.marginM + i * step : () => len / 2;
-    let skipped = 0, placed = 0;
+    let skipped = 0, placed = 0, offWall = 0;
     for (let i = 0; i < count; i++) {
       const s = along(i), rd = [e.a[0] + (e.b[0] - e.a[0]) * s / len, e.a[1] + (e.b[1] - e.a[1]) * s / len];
       // The whole window width must stay clear of shared spans.
       const ends = [-o.windowWidthM / 2 - 0.2, 0, o.windowWidthM / 2 + 0.2].map(k => [rd[0] + (e.b[0] - e.a[0]) / len * k, rd[1] + (e.b[1] - e.a[1]) / len * k]);
       if (ends.some(p => shared(p, e.n))) { skipped++; continue; }
       const c: [number, number] = [la[0] + (lb[0] - la[0]) * s / len, la[1] + (lb[1] - la[1]) * s / len];
-      const wallTop = Math.min(...[-o.windowWidthM / 2, 0, o.windowWidthM / 2].map(k => wallTopAt(group, [c[0] + t[0] * k, c[1] + t[1] * k], nLocal)));
+      // Measured on the wall that stands there: the window sits on its plane, not on the BAG line, so the frame neither
+      // floats off nor sinks into a shell a few cm away; a wall stepped across the window width (> 1 cm) gets none.
+      const walls = [-o.windowWidthM / 2 - o.frameM, 0, o.windowWidthM / 2 + o.frameM].map(k => wallAt(group, [c[0] + t[0] * k, c[1] + t[1] * k], nLocal));
+      const offs = walls.map(w => w.off), wallTop = Math.min(...walls.map(w => w.top));
+      if (offs.some(Number.isNaN) || Math.max(...offs) - Math.min(...offs) > 0.01) { offWall++; continue; }
+      const off = (offs[0] + offs[1] + offs[2]) / 3;
+      c[0] += nLocal[0] * off; c[1] += nLocal[1] * off;
       for (const [floor, f] of floors.entries()) {
         const sill = f.y0 + 0.9, head = Math.min(f.y1 - 0.45, sill + 1.8, wallTop - 0.3);
         if (head - sill < 1.0) continue;
@@ -154,7 +172,7 @@ export function addInferredRear(group: T.Group, facts: BuildingFacts, anchorRD: 
       }
       placed++;
     }
-    edges.push({lengthM: +len.toFixed(2), windowsPerStorey: placed, skippedShared: skipped});
+    edges.push({lengthM: +len.toFixed(2), windowsPerStorey: placed, skippedShared: skipped, ...(offWall ? {skippedOffWall: offWall} : {})});
   }
   let kept = planned, dropped = 0;
   for (let floor = 0; opts.maxTriangles !== undefined && kept.length * REAR_WINDOW_TRIANGLES > opts.maxTriangles && floor < floors.length; floor++) kept = kept.filter(w => w.floor > floor);
