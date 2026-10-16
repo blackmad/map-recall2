@@ -3,7 +3,7 @@
  "street": "Hasebroekstraat",
  "library": "bellamy",
  "stripDate": "2018-06-13",
- "seconds": 2.41,
+ "seconds": 4.83,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -42,6 +42,20 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.68,
+       "widthM": 1.25,
+       "centre": 0.81
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -78,6 +92,40 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.95,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.22,
+       "widthM": 1.07,
+       "centre": 0.5
+      },
+      {
+       "atM": 8.25,
+       "widthM": 1.23,
+       "centre": 0.06
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.15,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.1,
+       "widthM": 1.27,
+       "centre": 0.26
+      },
+      {
+       "atM": 4.8,
+       "widthM": 0.95,
+       "centre": 0.07
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.06
    },
@@ -154,6 +202,35 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.15,
+       "centre": 0.91
+      },
+      {
+       "atM": 8.35,
+       "widthM": 1.18,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.23,
+       "centre": 0.91
+      },
+      {
+       "atM": 5.13,
+       "widthM": 1.2,
+       "centre": 0.62
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.08
    },
@@ -225,6 +302,14 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.1
    },
@@ -285,6 +370,14 @@
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.02
    },

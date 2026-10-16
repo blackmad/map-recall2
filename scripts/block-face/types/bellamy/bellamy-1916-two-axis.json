@@ -10,6 +10,7 @@
   "eavesM": [12.0, 15.6],
   "storeys3dbag": [4, 5],
   "baysByWidth": [{"maxWidthM": 99, "bays": 2}],
+  "balconies": false,
   "stucco": false,
   "note": "BAG gives 1916 for 22-24 and 1934 for 26-28 of one identical row: the year range is wide on purpose"
  },

@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import {isBuildingCategory, ordinaryEntryCategory} from './buildingCategory.ts';
 import {SIGNATURE_MODELS} from './landmarks/signatureModels.ts';
 import {MANUAL_LANDMARKS, MANUAL_ORDINARY_BUILDINGS} from './landmarks/manualModels.ts';
-import {ORDINARY_BUILDINGS, ORDINARY_CATEGORY_BUILDINGS, STREET_SURVEY_HOUSES} from './landmarks/ordinaryModels.ts';
+import {ORDINARY_BUILDINGS, ORDINARY_CATEGORY_BUILDINGS, SHADOWED_BY_LANDMARK, STREET_SURVEY_HOUSES} from './landmarks/ordinaryModels.ts';
 import {GAME_BUILDING_MODELS} from './landmarks/browser.ts';
 import {chunkSpecFor} from './landmarks/ordinaryChunks.ts';
 import {mergeManualPoiFeatures, manualPoiModelIds} from './game/manualPoiCatalog.ts';
@@ -49,7 +49,8 @@ test('the landmark list holds only landmarks: no Bilderdijkstraat houses, chunks
 
 test('ordinary and street-survey models are still drawn by the game', () => {
   const drawn = new Set(GAME_BUILDING_MODELS.map(m => m.id));
-  for (const m of catalogue.models) assert.ok(drawn.has(m.id), m.id);
+  // An install a bespoke landmark already draws (SHADOWED_BY_LANDMARK) is the one exception: see modelOverlap.test.ts.
+  for (const m of catalogue.models) assert.equal(drawn.has(m.id), !SHADOWED_BY_LANDMARK[m.id], m.id);
   for (const m of MANUAL_ORDINARY_BUILDINGS) assert.ok(drawn.has(m.id), m.id);
   assert.ok(MANUAL_ORDINARY_BUILDINGS.some(m => m.id === 'haparandaweg-902-950'));
   for (const m of MANUAL_ORDINARY_BUILDINGS) assert.ok(MANUAL_LANDMARKS.includes(m));

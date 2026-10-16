@@ -3,7 +3,7 @@
  "street": "Bellamydwarsstraat",
  "library": "bellamy",
  "stripDate": "2024-12-11",
- "seconds": 4.68,
+ "seconds": 5.23,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -50,6 +50,14 @@
     "doorSide": "left",
     "accentSide": "right",
     "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.25
    },
@@ -129,6 +137,14 @@
     "doorSide": "right",
     "accentSide": "left",
     "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.18
    },
@@ -209,6 +225,20 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 1.45,
+       "centre": 0.18
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.26
    },
@@ -287,6 +317,30 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.23,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.42,
+       "widthM": 0.97,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.82,
+       "widthM": 0.85,
+       "centre": 0.54
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.1
    },
@@ -366,6 +420,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.044,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.23,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0.1
    },

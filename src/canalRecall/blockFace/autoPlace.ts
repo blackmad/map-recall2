@@ -20,6 +20,7 @@ import type {HousePlacement, HouseTypeIntent} from './houseType.ts';
 import type {BlockFaceHouse, BlockFaceIntent, GroundFloorUse, RhythmSpec} from './intent.ts';
 import type {StripPalette} from './stripPalette.ts';
 import type {Skyline} from './stripSkyline.ts';
+import type {StripStructure} from './stripStructure.ts';
 import {rgbToLab, type Rgb} from '../buildingRecipe/measureFacade.ts';
 import type {ShopfrontIntent} from '../buildingRecipe/intent.ts';
 
@@ -59,9 +60,23 @@ export interface TypeMatchRule {
    * dependent (a dark 2022 strip reads 0 everywhere), so it is a weighted criterion, never a veto.
    */
   accentShare?: [number, number];
-  crowns?: Record<string, {none?: boolean; riseM?: [number, number]; topWidthM?: [number, number]; widthM?: [number, number]}>;
+  /**
+   * The type has no balconies: a strip that reads balconies (blockFace/stripStructure.ts: a dark open axis without
+   * brick spandrels, or stacked balcony slabs) VETOES it. Jan Hanzenstraat 49-51, Ten Katestraat 29-31 and Bellamystraat
+   * 18-20 took the green-tile and two-axis types without it.
+   */
+  balconies?: false;
+  /**
+   * Range of the widest light bay (stripStructure.ts `bayWidthM`, read relative to the pand's own wall, so it holds on
+   * dark and washed-out strips alike): the tile-bay oriels read 2.0-2.3 m, plain window columns at most 1.3 m.
+   */
+  bayWidthM?: [number, number];
+  crowns?: Record<string, CrownRule & {alt?: CrownRule}>;
   note?: string;
 }
+
+/** Skyline ranges of a crown variant; `alt` is a second accepted range set (either matches). */
+export interface CrownRule { none?: boolean; riseM?: [number, number]; topWidthM?: [number, number]; widthM?: [number, number] }
 
 /** A library type with its match rule (typeLibrary.ts LibraryHouseType plus `match`). */
 export type MatchableType = HouseTypeIntent & {match?: TypeMatchRule};
@@ -84,6 +99,8 @@ export interface StripEvidence {
   accentSide?: 'left' | 'right' | null;
   /** Share of the upper storeys' (6.5 m .. eaves - 0.5 m) non-placeholder pixels that are light accent (white bays, frames). */
   accentShare?: number;
+  /** Exposure-normalised structure of the upper body (blockFace/stripStructure.ts): bays, open axes, balconies. */
+  structure?: StripStructure | null;
 }
 
 export interface PandEvidence {
@@ -136,6 +153,16 @@ export function storeysFor(t: MatchableType, eavesM: number): number {
   return options.reduce((best, s) => Math.abs(eavesM / s - p) < Math.abs(eavesM / best - p) ? s : best, t.body.storeys);
 }
 
+/**
+ * The side of a pand's one-sided light mass: the bay's centre when the structure reads a bay of 1.5 m or more (exposure
+ * independent), else the strip's accent-pixel asymmetry.
+ */
+export function accentSideOf(s: StripEvidence): 'left' | 'right' | null {
+  const b = s.structure;
+  if (b && b.bayWidthM >= 1.5 && b.bayCentre !== null && Math.abs(b.bayCentre - 0.5) >= 0.1) return b.bayCentre < 0.5 ? 'left' : 'right';
+  return s.accentSide ?? null;
+}
+
 /** Score one type for one pand. A veto (year, width) makes the score 0. */
 export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   const m = t.match, veto: string[] = [], criteria: Criterion[] = [];
@@ -166,8 +193,11 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
     const runs = usable ? s!.palette.bandRunsM.length : null;
     criteria.push({key: 'bands', weight: W.bands, score: runs === null ? null : (runs >= 2) === m.bands ? 1 : 0, note: runs === null ? 'no strip' : `${runs} painted band runs`});
   }
+  const st = usable ? s!.structure ?? null : null;
+  if (m.balconies === false && st?.balconies) veto.push(`strip shows balconies (${st.balconyWhy})`);
+  if (m.bayWidthM) criteria.push({key: 'bay', weight: 3, score: st ? (st.bayWidthM >= m.bayWidthM[0] && st.bayWidthM <= m.bayWidthM[1] ? 1 : 0) : null, note: st ? `widest light bay ${st.bayWidthM} m vs ${m.bayWidthM.join('-')} m` : 'no strip structure'});
   if (m.accentShare) criteria.push({key: 'accent-share', weight: 2, score: usable && s!.accentShare !== undefined ? (s!.accentShare >= m.accentShare[0] && s!.accentShare <= m.accentShare[1] ? 1 : 0) : null, note: usable ? `upper accent share ${s!.accentShare ?? '-'} vs ${m.accentShare.join('-')}` : 'no strip'});
-  if (m.mirrorForAccent) criteria.push({key: 'accent-side', weight: 2, score: usable ? (s!.accentSide ? 1 : 0) : null, note: usable ? `upper accent ${s!.accentSide ?? 'even'} (type: one-sided)` : 'no strip'});
+  if (m.mirrorForAccent) { const side = usable ? accentSideOf(s!) : null; criteria.push({key: 'accent-side', weight: 2, score: usable ? (side ? 1 : 0) : null, note: usable ? `upper accent ${side ?? 'even'} (type: one-sided)` : 'no strip'}); }
   const want = baysFor(t, ev.widthM);
   if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
   const scored = criteria.filter(c => c.score !== null), wsum = scored.reduce((a, c) => a + c.weight, 0);
@@ -189,7 +219,8 @@ export interface Placed {
   pandId: string; typeId: string; score: number; runnerUp?: {typeId: string; score: number};
   house: BlockFaceHouse; notes: string[];
 }
-export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run'; reason: string; best?: TypeScore }
+/** `review`: held after a person reviewed the run's strip sheet (buurten/<buurt>-review-holds.json). */
+export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run' | 'review'; reason: string; best?: TypeScore }
 export type Decision = ({kind: 'placed'} & Placed) | ({kind: 'held'} & Held);
 
 /** The shop ground of an auto-placed trading pand: the measured fascia colour, a residential door on the door side. */
@@ -225,7 +256,8 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});
   if (trading) placement.ground = {shopfront: autoShopfront(ev, use)};
-  if (t.match?.mirrorForAccent && s.accentSide) { if (s.accentSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${s.accentSide}${placement.mirror ? ': mirrored' : ''}`); }
+  const aSide = accentSideOf(s);
+  if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
   if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: trim-normalised wall (buildingRecipe/measureFacade.ts)`};
@@ -247,7 +279,8 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
   const c = sky.crown, inR = (v: number, r?: [number, number]) => !r || (v >= r[0] && v <= r[1]);
   for (const [name, r] of Object.entries(rules)) {
     if (!t.crowns[name]) continue;
-    if (r.none ? !c : c && inR(c.riseM, r.riseM) && inR(c.topWidthM, r.topWidthM) && inR(c.widthM, r.widthM)) return {name, why: `crown ${name}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown over the eaves'}`};
+    const fits = (q: CrownRule) => !!c && inR(c.riseM, q.riseM) && inR(c.topWidthM, q.topWidthM) && inR(c.widthM, q.widthM);
+    if (r.none ? !c : fits(r) || (!!r.alt && fits(r.alt))) return {name, why: `crown ${name}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown over the eaves'}`};
   }
   return {name: first, why: `crown ${first}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown'} matches no variant`};
 }

@@ -25,7 +25,8 @@ import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segments
 import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
-import { BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
+import { wayDeckGroups, wayDeckProfile } from './wayDecks';
+import { canalMouth, mouthFacts, parapetRuns, BAND_MARGIN_M, DECK_TOP_LIFT, FRAME, RAILING, WIDEN_PAST_WATER_M, WIDTH_PROBE_M, bandCorridor, deckWidths, flatDeckBody, isFlushDeck, movableLeaves, measuredDeckBody, measuredDeckTop, movableApproaches, movableFrame, APPROACH_MAX_M, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import { PINNED_CROWNS, crownOverHigherEnd } from './bridgeCrowns';
@@ -352,6 +353,53 @@ test('flush deck (ride review J8, BRU0124): a kerb and a heavy top rail, the wat
   // Open under the deck: over the water's middle no wall across the canal stands between the water and the deck (vault and soffit are the opening).
   const zDeck = s.height(20, 0);
   for (const { n, c } of faces(flushBody)) if (Math.abs(c[0] - 20) < 3 && Math.abs(c[1]) < 3 && Math.abs(n[0]) > 3 * Math.hypot(n[1], n[2])) assert.ok(c[2] > zDeck - 0.5 || c[2] < -1.77, `face at z ${c[2].toFixed(2)} closes the opening`);
+});
+
+test('parapet runs (user 2026-10-16, BRU0160): a side whose edge turns in at the span end stops before it; untouched widths change nothing', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  const p = syntheticDeck(); p.sides = [12, 4];
+  const deck = s.addDeck(p);
+  const n = p.s.length, left = new Float64Array(n), right = new Float64Array(n);
+  for (let i = 0; i < n; i++) { const on = p.s[i] >= 8 && p.s[i] <= 32; left[i] = on ? 12 : 2; right[i] = on ? 4 : 2; }
+  assert.equal(parapetRuns(deck, { left: left.slice(), right: right.slice() }), undefined, 'the deck ends on stations: nothing turns in');
+  // Past a skewed quay the last two stations pull the left edge back toward the road (9, then 5 m).
+  const at = (x: number) => p.s.findIndex(v => v >= x);
+  left[at(31.5)] = 9; left[at(32)] = 5;
+  const runs = parapetRuns(deck, { left, right })!;
+  assert.deepEqual(runs[0], [8, 31], 'the left parapet ends on the last station at the outline');
+  assert.deepEqual(runs[1], [8, 32], 'the right parapet keeps the span');
+});
+
+test('canal-mouth class (BRU0160): flush, wider than long, pre-1940: brick-rail parapet and a flat girder opening; a humped or narrow deck is not', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  const p = syntheticDeck(); p.family = 'steel-deck'; p.deck = [17, 23]; p.water = [17.5, 22.5]; p.sides = [16, 8];
+  for (let i = 0; i < p.h.length; i++) p.h[i] = 0;
+  const deck = s.addDeck(p), classic = { material: 'steel' as const, classic: true, light: false, movable: false };
+  assert.ok(canalMouth(deck, true, 7, classic), '24 m across a 6 m span');
+  assert.ok(!canalMouth(deck, false, 7, classic), 'not flush');
+  assert.ok(!canalMouth(deck, true, 7, { ...classic, classic: false }), 'post-war steel');
+  const narrow = syntheticDeck(); narrow.family = 'steel-deck'; narrow.deck = [17, 23]; narrow.water = [17.5, 22.5];
+  assert.ok(!canalMouth(s.addDeck(narrow), true, 7, classic), 'an 8 m deck is not a street over a mouth');
+  assert.deepEqual(mouthFacts(null, false, 5), { named: false, parapet: 'brick-rail', arches: 1, shapes: ['flat'] });
+  assert.deepEqual(mouthFacts({ named: true, parapet: 'iron-rail', arches: 3 }, false, 5), { named: true, parapet: 'iron-rail', arches: 3 }, 'measured facts win');
+  assert.deepEqual(mouthFacts(null, true, 5), { named: false, parapet: 'brick-rail' }, 'a masonry mouth keeps its arch');
+});
+
+test('way decks (user 2026-10-16, Jan Evertsenstraat): a bridge way over water with no deck gets one; parallel ways share it; claimed or dry ways do not', () => {
+  // A canal 10 m wide along y (x 20..30); a carriageway along x at y = 0 and cycle paths at y = ±9.
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[12, 0], [38, 0]], north: [number, number][] = [[12, 9], [38, 9]], south: [number, number][] = [[12, -9], [38, -9]];
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false)!;
+  assert.ok(p && Math.abs(p.water![1] - p.water![0] - 9) < 1.01 && Math.abs(p.x[0] + p.water![0] - 20.5) < 0.6, `water run ${p?.water} from x ${p?.x[0]}`);
+  assert.ok(p.deck[0] < p.water![0] && p.deck[1] > p.water![1] && p.h.every(v => v === 0), 'a flush deck over the water plus the abutments');
+  assert.equal(wayDeckProfile('OSM1', 'test', road, 6, wet, (x) => x > 24 && x < 26), null, 'another bridge there');
+  assert.equal(wayDeckProfile('OSM1', 'test', [[0, 0], [15, 0]], 6, wet, () => false), null, 'no water crossed');
+  const g = wayDeckGroups([{ id: 1, name: '', points: road, halfWidth: 6 }, { id: 2, name: '', points: north, halfWidth: 1.5 }, { id: 3, name: '', points: south, halfWidth: 1.5 }], wet, () => false);
+  assert.equal(g.profiles.length, 1, 'one deck for the three ways');
+  assert.deepEqual(g.covered.sort(), [1, 2, 3]);
+  assert.ok(Math.abs(g.profiles[0].halfWidth[0] - 10.5) < 1e-9 && Math.abs(g.profiles[0].y[0]) < 1e-9, `half ${g.profiles[0].halfWidth[0]}`);
 });
 
 test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {
@@ -977,6 +1025,7 @@ test('crossSection prefers the BGT width, takes painted lanes off it, and says w
 
 // The bridge kit's own tests (lane bridge-kit 2026-10-13), run with this file.
 import './bridgeKit.test';
+import './railingRuns.test';
 // ------------------------------------------------------------- parks (lane parks 2026-10-13)
 
 test('parks: BGT terrain classes map to park surfaces; streets and yards are not parks', () => {
@@ -1321,10 +1370,11 @@ test('ground light: level sunlit ground draws its palette luminance; the road st
   // Before the gain the rig drew level ground at 0.83 of its albedo (sRGB ≈ 0.92): the "city too dark".
   assert.ok(Math.abs(flatGroundLuminance(LEGACY_LIGHT_RIG) - 0.828) < 0.01, `legacy rig lights level ground at ${flatGroundLuminance(LEGACY_LIGHT_RIG)}`);
   // The sunny look (look/sunny.ts, default since 2026-10-16) folds its exposure into the rig and white-balances it:
-  // level ground receives neutral light at 1.004, so the gain nearly vanishes (0.996) and the bright ground still
-  // draws its palette, hue included.
-  assert.ok(Math.abs(flatGroundLuminance() - 1.004) < 0.01, `sunny rig lights level ground at ${flatGroundLuminance()}`);
-  assert.ok(Math.abs(flatGroundGain(LEGACY_LIGHT_RIG) - 1.208) < 0.01 && Math.abs(FLAT_GROUND_GAIN - 0.996) < 0.01, `gains ${flatGroundGain(LEGACY_LIGHT_RIG)} / ${FLAT_GROUND_GAIN}`);
+  // level ground received neutral light at 1.004 (gain 0.996). Since the 0.55 shade ratio (look/sunny.ts
+  // SUNNY_SHADE_RATIO, 2026-10-16 one-material lane) the stronger sky fill lights it at 1.116, and the gain (0.896)
+  // divides that out, so the ground still draws its palette, hue included.
+  assert.ok(Math.abs(flatGroundLuminance() - 1.116) < 0.01, `sunny rig lights level ground at ${flatGroundLuminance()}`);
+  assert.ok(Math.abs(flatGroundGain(LEGACY_LIGHT_RIG) - 1.208) < 0.01 && Math.abs(FLAT_GROUND_GAIN - 0.896) < 0.01, `gains ${flatGroundGain(LEGACY_LIGHT_RIG)} / ${FLAT_GROUND_GAIN}`);
   assert.ok(Math.abs(FLAT_GROUND_GAIN * flatGroundLuminance() - 1) < 1e-9);
   for (const v of [60, 104, 164, 220]) assert.ok(Math.abs(drawnGrey(v, FLAT_GROUND_GAIN) - v) < 0.01, `palette ${v} draws ${drawnGrey(v, FLAT_GROUND_GAIN)}`);
   const asphalt = 0.2126 * STREET_GROUND.asphalt.base[0] + 0.7152 * STREET_GROUND.asphalt.base[1] + 0.0722 * STREET_GROUND.asphalt.base[2];

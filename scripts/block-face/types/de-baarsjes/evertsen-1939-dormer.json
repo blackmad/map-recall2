@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "evertsen-1939-dormer",
+  "district": "de-baarsjes",
+  "description": "Jan Evertsenstraat 151-153 odd and 158-160 even (late 1930s infill in the white-attic rows): brown brick, three storeys of one wide three-light window and one narrow two-light window per storey, a wide window and a pair of arched house doors on the ground, a tiled roof from 12.5 m with one broad dormer of three lights; some houses stack balconies with French doors on the narrow axis",
+  "fit": {
+    "widthM": [5.0, 6.9],
+    "storeys": [4]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 2,
+    "axisGrid": 2,
+    "cornice": "simple",
+    "windows": "casement-toplight",
+    "bayWidths": [3.8, 2.6],
+    "bayFill": [0.8, 0.45],
+    "axisWindows": {"0": "casement-triple"},
+    "storeyHeights": [1.2, 1, 1, 1],
+    "windowHeights": [0.5, 0.62, 0.62, 0.62],
+    "headLines": [0.72, 0.73, 0.73, 0.73]
+  },
+  "crowns": {
+    "dormer": {
+      "gable": "cornice",
+      "cornice": "simple",
+      "dormers": 1,
+      "dormerStyle": "flat",
+      "dormerAt": [{"from": 0.3, "to": 0.76}],
+      "note": "one broad dormer of three lights in the tiled roof (151: 1.9-4.9 m, 13.3-15.3 m)"
+    },
+    "dormer-end": {
+      "gable": "cornice",
+      "cornice": "simple",
+      "dormers": 1,
+      "dormerStyle": "flat",
+      "dormerAt": [{"from": 0.44, "to": 0.97}],
+      "note": "the dormer pushed to the end over the wide window (160, mirrored: 0.15-2.95 m of 5.28 m)"
+    }
+  },
+  "grounds": {
+    "door-right": {"doorBay": 1, "note": "151, 153: a wide window and the arched pair of house doors at the right"}
+  },
+  "palettes": {
+    "brown": {
+      "brick": "#5a4430",
+      "frame": "#b4b3a2",
+      "cornice": "#4a3c2c",
+      "door": "#5b2a20"
+    }
+  },
+  "roof": {"material": "black-tile"},
+  "rhythm": {
+    "bays": "2 axes: one wide three-light window, one narrow two-light window (or a French door on a balcony)",
+    "identicalBays": "storeys 1-3 the same",
+    "windowsPerStorey": "ground: wide window + paired doors | 1-3: 2",
+    "symmetry": "none; houses mirror",
+    "groundFloor": "residential: a wide window and an arched pair of doors",
+    "signage": "none",
+    "roofline": "tiled roof from a simple cornice at 12.5 m, one broad dormer",
+    "photoRows": [2, 2, 2, 2],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "the arched door heads are drawn square",
+      "the dormer's three lights are drawn as two lights in the kit's flat dormer"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "evertsen-145-155",
+      "pands": ["138602"],
+      "citation": "strip.jpg 2024-12-06 (ruler crop 32 px/m) of 151: wide windows 0.5-3.5 m and narrow 4.2-5.3 m at 3.9-5.8 / 6.9-8.75 / 9.85-11.7 m, the arched door pair 4.2-5.5 m on the ground, eaves 12.5 m, dormer 1.9-4.9 m at 13.3-15.3 m"
+    },
+    {
+      "face": "evertsen-145-155",
+      "pands": ["105558"],
+      "citation": "strip.jpg 2024-12-06 of 153: the same body with a balcony stack (French doors) on the narrow axis"
+    },
+    {
+      "face": "evertsen-152-160",
+      "pands": ["065375", "144634"],
+      "citation": "strip.jpg 2024-12-06 of 160 and 158: the same body, mirrored (narrow axis at the left), the dormer over the wide window on 160; 158 behind a tree"
+    }
+  ],
+  "schemaLimits": [
+    "arched door heads",
+    "three-light dormer"
+  ],
+  "notes": [
+    "Placed on evertsen-145-155 and evertsen-152-160 (lane de-baarsjes-faces-20261016). mirror: true puts the narrow axis (and the doors) at the left."
+  ]
+}

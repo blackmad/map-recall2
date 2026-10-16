@@ -2349,6 +2349,8 @@
   },
   {
     "id": "wereldmuseum-amsterdam",
+    "status": "held",
+    "heldReason": "Superseded by `tropenmuseum` (the measured 2026-10-14 model of the same KIT complex, same landmark). Both were drawn on top of each other: the new entrance faces poked through this 2026-10-04 massing (user report 2026-10-16). modelOverlap.test.ts now fails on any two drawn models sharing a landmark or a suppressed pand.",
     "name": "Wereldmuseum Amsterdam — KIT complex",
     "landmarkId": "extract_landmarks_754896207",
     "modelUrl": "./models/wereldmuseum-amsterdam.glb",
@@ -37529,15 +37531,15 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#8a5a47",
-      "stone": "#d9d3c1",
-      "frame": "#e8e4d6",
+      "brick": "#a2856c",
+      "stone": "#e2d6bc",
+      "frame": "#efece3",
       "glass": "#4f6270",
       "dark": "#2a3330",
       "slate": "#58626d",
       "copper": "#6f9d8c",
       "gold": "#c9a23a",
-      "white": "#e9e5da",
+      "white": "#f0ede4",
       "red": "#7a4a3a",
       "concrete": "#a8a59c"
     },

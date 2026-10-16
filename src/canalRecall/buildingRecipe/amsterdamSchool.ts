@@ -87,15 +87,25 @@ export function steppedTowerCap(parent: T.Object3D, plan: [number, number][], y1
 }
 
 /** Glass-block band: pale grey-green blocks, a light mortar grid. */
-export const GLASS_BLOCK = {glass: '#aebbb8', mortar: '#d4d2ca', proudM: 0.015, gridProudM: 0.025, jointM: 0.03};
+export const GLASS_BLOCK = {glass: '#aebbb8', mortar: '#d4d2ca', proudM: 0.015, gridProudM: 0.025, jointM: 0.03, measuredMortarK: 1.3, measuredProudM: 0.04, measuredGridProudM: 0.07};
+
+/** Joint colour of a measured glass-block band: the measured glass lifted `measuredMortarK` (the strip median holds both). */
+export function measuredMortar(glass: string): string {
+  const v = parseInt(glass.slice(1), 16), k = GLASS_BLOCK.measuredMortarK;
+  return '#' + [16, 8, 0].map(s => Math.min(255, Math.round(((v >> s) & 255) * k)).toString(16).padStart(2, '0')).join('');
+}
 
 /**
  * Glass-block band over a rigid canopy (facade frame): one glass panel `proudM` in front of the wall (front face and its
  * four 1.5 cm reveals) and the mortar joints of a `cellM` grid as flat strips just in front of it. About 2 triangles per
- * joint: a 6 x 1 m band is ~90 triangles.
+ * joint: a 6 x 1 m band is ~90 triangles. A measured band (`colour`, counted rows) stands `measuredProudM` (4 cm) proud
+ * with its joints 3 cm over it: the default 1.5 cm and 1 cm steps lie under the GLB audit's 3 cm z-fight tolerance (178 m2
+ * of coplanar overlap on Jan Evertsenstraat 91-135, the first face that placed measured bands). Without a colour the band
+ * is byte-identical to before.
  */
-export function glassBlockBand(b: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number}) {
-  const glass: number[] = [], grid: number[] = [], g = GLASS_BLOCK, x0 = b.leftM, x1 = b.leftM + b.widthM, y0 = b.bottomM, y1 = b.topM;
+export function glassBlockBand(b: {leftM: number; widthM: number; bottomM: number; topM: number; cellM: number; colour?: string}) {
+  const g = b.colour ? {...GLASS_BLOCK, proudM: GLASS_BLOCK.measuredProudM, gridProudM: GLASS_BLOCK.measuredGridProudM} : GLASS_BLOCK;
+  const glass: number[] = [], grid: number[] = [], x0 = b.leftM, x1 = b.leftM + b.widthM, y0 = b.bottomM, y1 = b.topM;
   face(glass, [[x0, y0, g.proudM], [x1, y0, g.proudM], [x1, y1, g.proudM], [x0, y1, g.proudM]], [0, 0, 1]);
   face(glass, [[x0, y1, 0], [x1, y1, 0], [x1, y1, g.proudM], [x0, y1, g.proudM]], [0, 1, 0]);
   face(glass, [[x0, y0, 0], [x1, y0, 0], [x1, y0, g.proudM], [x0, y0, g.proudM]], [0, -1, 0]);
@@ -134,13 +144,26 @@ export function addCanopies(group: T.Group, intent: CanalHouseIntent, recipe: Ca
     box(fascia, nose, c.projectM, top - c.fasciaM, top);
     facade.add(meshOf(slab, material(c.colour), `canopy/${f.id}/slab`, 'canopy', 'awning', intent.pandId));
     facade.add(meshOf(fascia, material(c.fasciaColour), `canopy/${f.id}/fascia`, 'canopy', 'awning', intent.pandId));
-    if (c.glassBlocks) {
+    if (c.glassBlocks?.panel) {
+      // A painted sign panel in the band's place (Jan Evertsenstraat 75-87): the band's slab at the measured depth, no grid.
+      const {glass} = glassBlockBand({...c.glassBlocks, colour: c.glassBlocks.panel});
+      const panelMaterial = material(c.glassBlocks.panel);
+      panelMaterial.userData = {tintSource: 'measured'};
+      facade.add(meshOf(glass, panelMaterial, `canopy/${f.id}/band-panel`, 'canopy', 'trim', intent.pandId));
+    } else if (c.glassBlocks) {
       const {glass, grid} = glassBlockBand(c.glassBlocks);
       // A measured glass-block colour is its own material: a measured tint, so the look keeps the pale band instead of the dark pane.
       const glassMaterial = material(c.glassBlocks.colour ?? GLASS_BLOCK.glass);
       if (c.glassBlocks.colour) glassMaterial.userData = {tintSource: 'measured'};
-      facade.add(meshOf(glass, glassMaterial, `canopy/${f.id}/glass-blocks`, 'canopy', 'glass', intent.pandId));
-      facade.add(meshOf(grid, material(GLASS_BLOCK.mortar), `canopy/${f.id}/glass-block-grid`, 'canopy', 'trim', intent.pandId));
+      // A measured band is matte (slot trim): as glass it took the pane shading and rendered 1.3-2x the strip's colour
+      // (Jan Evertsenstraat 91-135 #676852 for #4e4f3e; 94-142, north-facing, #737356 for #373729).
+      facade.add(meshOf(glass, glassMaterial, `canopy/${f.id}/glass-blocks`, 'canopy', c.glassBlocks.colour ? 'trim' : 'glass', intent.pandId));
+      // With a measured band the joints are read with it: the strip median already holds them, so the bright default
+      // mortar (a quarter of the band's area) lifted the 91-135 bands 1.6x over the photo; draw them 1.3x the glass.
+      const mortar = c.glassBlocks.colour ? measuredMortar(c.glassBlocks.colour) : GLASS_BLOCK.mortar;
+      const mortarMaterial = material(mortar);
+      if (c.glassBlocks.colour) mortarMaterial.userData = {tintSource: 'measured'};
+      facade.add(meshOf(grid, mortarMaterial, `canopy/${f.id}/glass-block-grid`, 'canopy', 'trim', intent.pandId));
     }
     added++;
   }
@@ -295,9 +318,56 @@ export function addCornerTowers(group: T.Group, intent: CanalHouseIntent, recipe
   return added;
 }
 
+/** Iron guard proportions of a front-wide balcony (`balconyRun`), metres. */
+export const BALCONY_RUN = {railHM: 0.05, railDM: 0.05, baseHM: 0.05, barM: 0.018, pitchM: 0.14, insetM: 0.04, brickM: 0.1};
+
+/**
+ * One front-wide balcony (`balconyRun`) in the facade frame: `slab` (0..width, nose at projectM) and `guard`, an iron
+ * grille (rails and bars on the nose and both returns) or a solid brick front with brick returns. Exported for tests.
+ */
+export function balconyRunGeometry(b: NonNullable<FitReport['fronts'][number]['balconyRun']>): {slab: number[]; guard: number[]} {
+  const slab: number[] = [], guard: number[] = [], B = BALCONY_RUN, x0 = 0, x1 = b.widthM, y = b.floorM, z1 = b.projectM, top = y + b.guardM;
+  prism(slab, [[x0, -0.005], [x1, -0.005], [x1, z1], [x0, z1]], y - b.slabM, y);
+  if (b.guard === 'brick') {
+    prism(guard, [[x0, z1 - B.brickM], [x1, z1 - B.brickM], [x1, z1], [x0, z1]], y, top, {bottom: false});
+    for (const [a, c] of [[x0, x0 + B.brickM], [x1 - B.brickM, x1]]) prism(guard, [[a, 0], [c, 0], [c, z1 - B.brickM], [a, z1 - B.brickM]], y, top, {bottom: false});
+    return {slab, guard};
+  }
+  const zf = z1 - B.insetM, runs: {along: 'x' | 'z'; a: number; c: number; at: number}[] = [
+    {along: 'x', a: x0 + B.insetM, c: x1 - B.insetM, at: zf}, {along: 'z', a: 0.02, c: zf, at: x0 + B.insetM}, {along: 'z', a: 0.02, c: zf, at: x1 - B.insetM}];
+  const bar = (r: typeof runs[number], t0: number, t1: number, ya: number, yb: number, w: number) => {
+    const plan: [number, number][] = r.along === 'x' ? [[t0, r.at - w / 2], [t1, r.at - w / 2], [t1, r.at + w / 2], [t0, r.at + w / 2]] : [[r.at - w / 2, t0], [r.at + w / 2, t0], [r.at + w / 2, t1], [r.at - w / 2, t1]];
+    prism(guard, plan, ya, yb);
+  };
+  for (const r of runs) {
+    bar(r, r.a - B.railDM / 2, r.c + B.railDM / 2, top - B.railHM, top, B.railDM);
+    bar(r, r.a, r.c, y, y + B.baseHM, B.railDM * 0.8);
+    const count = Math.max(1, Math.floor((r.c - r.a) / B.pitchM));
+    for (let k = 1; k < count; k++) { const t = r.a + (r.c - r.a) * k / count; bar(r, t - B.barM / 2, t + B.barM / 2, y + B.baseHM, top - B.railHM, B.barM); }
+  }
+  return {slab, guard};
+}
+
+/** Front-wide balconies (`balconyRun`): the slab in its colour (default stone), the guard in iron (door colour) or the wall brick. */
+export function addBalconyRuns(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport): number {
+  let added = 0;
+  const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+  for (const f of fit.fronts) {
+    const facade = group.getObjectByName(`elevation/${f.id}`), b = f.balconyRun;
+    if (!b || !facade) continue;
+    const palette = recipe.elevations.find(e => e.id === f.id)?.palette?.value ?? recipe.palette.value, g = balconyRunGeometry(b);
+    facade.add(meshOf(g.slab, material(b.slabColour ?? palette.stone ?? palette.trim), `balcony-run/${f.id}/slab`, 'balcony', b.slabColour ? 'accent' : 'stone', intent.pandId));
+    const brick = b.guard === 'brick';
+    facade.add(meshOf(g.guard, brick ? ((shell?.material as T.Material) ?? material(palette.wall)) : material(palette.door), `balcony-run/${f.id}/guard`, 'balcony', brick ? 'wall' : 'door', intent.pandId));
+    added++;
+  }
+  return added;
+}
+
 /** Every Amsterdam School pass, or null when the house uses none of the set (nothing is touched). */
 export function applyAmsterdamSchool(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport) {
-  if (!fit.fronts.some(f => f.canopy || f.erker || f.lisenes || f.towers?.some(t => t.corner) || f.balconyHoods?.length) && !intent.fronts.some(f => f.windowHoods)) return null;
+  if (!fit.fronts.some(f => f.canopy || f.erker || f.lisenes || f.towers?.some(t => t.corner) || f.balconyHoods?.length || f.balconyRun) && !intent.fronts.some(f => f.windowHoods)) return null;
   const balconyHoods = fit.fronts.some(f => f.balconyHoods?.length) ? {balconyHoods: addBalconyHoods(group, intent, recipe, fit)} : {};
-  return {windowHoods: addWindowHoods(group, intent, recipe), lisenes: addLisenes(group, intent, recipe, fit), canopies: addCanopies(group, intent, recipe, fit), erkerCaps: addErkerCaps(group, intent, recipe, fit), cornerTowers: addCornerTowers(group, intent, recipe, fit), ...balconyHoods};
+  const balconyRuns = fit.fronts.some(f => f.balconyRun) ? {balconyRuns: addBalconyRuns(group, intent, recipe, fit)} : {};
+  return {windowHoods: addWindowHoods(group, intent, recipe), lisenes: addLisenes(group, intent, recipe, fit), canopies: addCanopies(group, intent, recipe, fit), erkerCaps: addErkerCaps(group, intent, recipe, fit), cornerTowers: addCornerTowers(group, intent, recipe, fit), ...balconyHoods, ...balconyRuns};
 }

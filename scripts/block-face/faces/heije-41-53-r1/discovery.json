@@ -3,8 +3,7 @@
  "seed": "0363100012145336",
  "members": [
   "0363100012109543",
-  "0363100012128983",
-  "0363100012117355"
+  "0363100012128983"
  ],
  "ends": [
   {
@@ -13,7 +12,7 @@
   },
   {
    "side": "right",
-   "reason": "trimmed at 0363100012117355 (face continues: 159927)"
+   "reason": "run of heije-41-53: 117355 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -612,16 +611,6 @@
    "widthM": 5.83,
    "eavesM": 13.04,
    "roofMaxM": 15.52,
-   "storeys3dbag": 5,
-   "builtYear": 1915,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012117355",
-   "alongM": 33.84,
-   "widthM": 6.09,
-   "eavesM": 13.06,
-   "roofMaxM": 16.35,
    "storeys3dbag": 5,
    "builtYear": 1915,
    "uncertainty": []

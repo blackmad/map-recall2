@@ -84,6 +84,10 @@ const host = {
 };
 // The pacer tick (2026-10-13) lives on the runtime; this host only exercises the heading logic.
 (host as Record<string, unknown>)._tickFeedbackTimeout ??= () => {};
+// The route question's name (bridge decks answer with the street they carry,
+// bridgeStreetName.ts) is a runtime method; it must use the heading too.
+(host as Record<string, unknown>)._routeQuestionRoadName ??= GameRecallRuntime.prototype._routeQuestionRoadName;
+(host as Record<string, unknown>)._carriedStreetAt ??= GameRecallRuntime.prototype._carriedStreetAt;
 GameRecallRuntime.prototype._updateCanalQuiz.call(host as unknown as GameRecallRuntime, 1 / 60);
 
 assert.equal(host.quizCandidateName, 'Kinkerstraat',

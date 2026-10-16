@@ -3,7 +3,7 @@
  "street": "Hasebroekstraat",
  "library": "bellamy",
  "stripDate": "2022-01-04",
- "seconds": 20.68,
+ "seconds": 27.81,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -32,31 +32,10 @@
     "0363100012153107",
     "0363100012166233",
     "0363100012165183",
-    "0363100012157271",
-    "0363100012163274",
-    "0363100012157261",
-    "0363100012158415"
+    "0363100012157271"
    ],
    "passed": false,
-   "triangles": 22439
-  },
-  {
-   "face": "hasebroek-1-41-r3",
-   "pands": [
-    "0363100012063580",
-    "0363100012161035"
-   ],
-   "passed": false,
-   "triangles": 4854
-  },
-  {
-   "face": "hasebroek-1-41-r4",
-   "pands": [
-    "0363100012157844",
-    "0363100012163671"
-   ],
-   "passed": false,
-   "triangles": 4880
+   "triangles": 14075
   }
  ],
  "pands": [
@@ -82,6 +61,14 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -175,6 +162,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 1.15,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.72,
+       "widthM": 1.32,
+       "centre": 0.87
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0
    },
@@ -252,6 +258,25 @@
     "doorSide": null,
     "accentSide": "right",
     "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.7,
+       "widthM": 0.93,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.3,
+       "centre": 0.84
+      }
+     ]
+    },
     "voidShare": 0.02,
     "foliageShare": 0
    },
@@ -333,6 +358,35 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.22,
+       "widthM": 0.97,
+       "centre": 0.19
+      },
+      {
+       "atM": 9.93,
+       "widthM": 1,
+       "centre": 0.2
+      },
+      {
+       "atM": 9.55,
+       "widthM": 0.9,
+       "centre": 0.58
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.05,
+       "centre": 0.2
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
@@ -414,31 +468,50 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.75 m (1.25 m wide), 6.6 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 1.25,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.27,
+       "centre": 0.22
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.03
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.088 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.50 mean 0.35 vs photo 0.66; wall family unresolved (#392d28 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.088 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.50 mean 0.35 vs photo 0.66; wall family unresolved (#392d29 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012153022",
     "ncc": 0.088,
     "nccRaw": 0.088,
     "shiftM": [
      0.1,
-     0.15
+     0.1
     ],
-    "usable": 0.93,
+    "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "glazing storey band off by 0.50 mean 0.35 vs photo 0.66",
-     "wall family unresolved (#392d28 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "wall family unresolved (#392d29 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#392d28",
+     "photo": "#392d29",
      "model": "#594943",
-     "dL": 0.116
+     "dL": 0.114
     },
     "glazing": {
      "photo": 0.66,
@@ -448,7 +521,7 @@
      "photo": null,
      "model": 3
     },
-    "iou": 0.377
+    "iou": 0.375
    },
    "challengers": {}
   },
@@ -479,6 +552,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.68,
+       "widthM": 1.5,
+       "centre": 0.54
+      },
+      {
+       "atM": 6.38,
+       "widthM": 1.18,
+       "centre": 0.52
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0
    },
@@ -504,18 +596,18 @@
    ],
    "likeness": {
     "pandId": "0363100012164250",
-    "ncc": 0.281,
-    "nccRaw": 0.281,
+    "ncc": 0.283,
+    "nccRaw": 0.283,
     "shiftM": [
      0.1,
-     0.3
+     0.35
     ],
-    "usable": 0.98,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.14",
-     "glazing storey band off by 0.23 mean 0.34 vs photo 0.23",
+     "glazing storey band off by 0.22 mean 0.34 vs photo 0.23",
      "wall family unresolved (#362b27 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -531,7 +623,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.465
+    "iou": 0.468
    },
    "challengers": {}
   },
@@ -562,6 +654,30 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.1,
+       "widthM": 0.9,
+       "centre": 0.51
+      },
+      {
+       "atM": 9.8,
+       "widthM": 1.3,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.18,
+       "centre": 0.51
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0.01
    },
@@ -587,34 +703,34 @@
    ],
    "likeness": {
     "pandId": "0363100012153107",
-    "ncc": 0.291,
-    "nccRaw": 0.291,
+    "ncc": 0.306,
+    "nccRaw": 0.306,
     "shiftM": [
      0.05,
-     0.25
+     0.35
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.13",
-     "glazing storey band off by 0.55 mean 0.34 vs photo 0.52",
-     "wall family unresolved (#332b28 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "wall dL +0.12",
+     "glazing storey band off by 0.22 mean 0.33 vs photo 0.20",
+     "wall family unresolved (#352c29 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#332b28",
+     "photo": "#352c29",
      "model": "#564c46",
-     "dL": 0.127
+     "dL": 0.122
     },
     "glazing": {
-     "photo": 0.52,
-     "model": 0.34
+     "photo": 0.2,
+     "model": 0.33
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.308
+    "iou": 0.412
    },
    "challengers": {}
   },
@@ -645,6 +761,25 @@
     "doorSide": "right",
     "accentSide": "left",
     "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.88,
+       "widthM": 1.3,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.45,
+       "centre": 0.84
+      }
+     ]
+    },
     "voidShare": 0.03,
     "foliageShare": 0
    },
@@ -670,34 +805,34 @@
    ],
    "likeness": {
     "pandId": "0363100012166233",
-    "ncc": 0.256,
-    "nccRaw": 0.256,
+    "ncc": 0.246,
+    "nccRaw": 0.246,
     "shiftM": [
      0.1,
-     0.05
+     0.1
     ],
     "usable": 0.95,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.12",
-     "glazing storey band off by 0.46 mean 0.34 vs photo 0.61",
-     "wall family unresolved (#382f2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.41 mean 0.33 vs photo 0.60",
+     "wall family unresolved (#392f2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#382f2a",
+     "photo": "#392f2a",
      "model": "#5b4d46",
-     "dL": 0.124
+     "dL": 0.122
     },
     "glazing": {
-     "photo": 0.61,
-     "model": 0.34
+     "photo": 0.6,
+     "model": 0.33
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.453
+    "iou": 0.472
    },
    "challengers": {}
   },
@@ -728,6 +863,25 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.8,
+       "widthM": 1.25,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.32,
+       "centre": 0.86
+      }
+     ]
+    },
     "voidShare": 0.03,
     "foliageShare": 0.01
    },
@@ -753,33 +907,33 @@
    ],
    "likeness": {
     "pandId": "0363100012165183",
-    "ncc": 0.318,
-    "nccRaw": 0.318,
+    "ncc": 0.308,
+    "nccRaw": 0.308,
     "shiftM": [
      0.05,
-     0.05
+     0.1
     ],
     "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.20",
-     "glazing storey band off by 0.60 mean 0.34 vs photo 0.79"
+     "wall dL +0.23",
+     "glazing storey band off by 0.39 mean 0.33 vs photo 0.55"
     ],
     "wall": {
-     "photo": "#473b37",
+     "photo": "#3f332f",
      "model": "#7d6d65",
-     "dL": 0.196
+     "dL": 0.227
     },
     "glazing": {
-     "photo": 0.79,
-     "model": 0.34
+     "photo": 0.55,
+     "model": 0.33
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.361
+    "iou": 0.462
    },
    "challengers": {}
   },
@@ -805,6 +959,25 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.83,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.77 m (1.55 m wide), 6.63 m (1.38 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.55,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.38,
+       "centre": 0.19
+      }
+     ]
+    },
     "voidShare": 0.06,
     "foliageShare": 0.01
    },
@@ -829,32 +1002,32 @@
    ],
    "likeness": {
     "pandId": "0363100012157271",
-    "ncc": 0.337,
-    "nccRaw": 0.337,
+    "ncc": 0.328,
+    "nccRaw": 0.328,
     "shiftM": [
-     0.05,
-     0.05
+     0.1,
+     0.1
     ],
-    "usable": 0.91,
+    "usable": 0.9,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.19"
+     "glazing storey band off by 0.68 mean 0.33 vs photo 0.89"
     ],
     "wall": {
-     "photo": "#66524c",
+     "photo": "#7c625f",
      "model": "#6a5652",
-     "dL": 0.02
+     "dL": -0.061
     },
     "glazing": {
-     "photo": 0.29,
-     "model": 0.34
+     "photo": 0.89,
+     "model": 0.33
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.651
+    "iou": 0.365
    },
    "challengers": {}
   },
@@ -880,58 +1053,37 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0.087,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.47 m (1.4 m wide), 6.7 m (1.32 m wide), 6.25 m (1.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.47,
+       "widthM": 1.4,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.7,
+       "widthM": 1.32,
+       "centre": 0.82
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.35,
+       "centre": 0.48
+      }
+     ]
+    },
     "voidShare": 0.04,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 0.83,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "storeys": 5,
-    "ground": "door-right",
-    "measuredPalette": {
-     "brick": "#463630",
-     "evidence": "strip 2022-01-04 span 2144-2355: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "storeys 5: eaves 15.77 m at the type's 3.35 m pitch",
-    "crown neck-hoist: skyline unread (confidence 0.11)"
-   ],
-   "likeness": {
-    "pandId": "0363100012163274",
-    "ncc": 0.181,
-    "nccRaw": 0.181,
-    "shiftM": [
-     0.4,
-     -0.15
-    ],
-    "usable": 0.89,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.58 mean 0.35 vs photo 0.73"
-    ],
-    "wall": {
-     "photo": "#4a3a35",
-     "model": "#634d44",
-     "dL": 0.078
-    },
-    "glazing": {
-     "photo": 0.73,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.4
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the second design of Hasebroekstraat 21-37: a wide centre window under a segmental arch with full balconies, drawn as the narrow balconette axis of the 1904 type",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -956,58 +1108,37 @@
     "doorSide": "left",
     "accentSide": "left",
     "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.13,
+       "widthM": 0.97,
+       "centre": 0.71
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.13,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.43,
+       "centre": 0.71
+      }
+     ]
+    },
     "voidShare": 0.05,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 0.87,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "storeys": 5,
-    "ground": "door-left",
-    "measuredPalette": {
-     "brick": "#5b4f49",
-     "evidence": "strip 2022-01-04 span 2355-2571: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "storeys 5: eaves 15.81 m at the type's 3.35 m pitch",
-    "crown neck-hoist: skyline unread (confidence 0.07)"
-   ],
-   "likeness": {
-    "pandId": "0363100012157261",
-    "ncc": 0.222,
-    "nccRaw": 0.222,
-    "shiftM": [
-     0.25,
-     -0.05
-    ],
-    "usable": 0.9,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.20"
-    ],
-    "wall": {
-     "photo": "#564b46",
-     "model": "#74655d",
-     "dL": 0.104
-    },
-    "glazing": {
-     "photo": 0.39,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.436
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 21: wide arched centre bay with full balconies",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1032,59 +1163,32 @@
     "doorSide": "right",
     "accentSide": "right",
     "accentShare": 0.062,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.5,
+       "widthM": 1.32,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.13,
+       "widthM": 2.08,
+       "centre": 0.52
+      }
+     ]
+    },
     "voidShare": 0.02,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 0.83,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "storeys": 5,
-    "ground": "door-right",
-    "measuredPalette": {
-     "brick": "#443b36",
-     "evidence": "strip 2022-01-04 span 2571-2785: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "storeys 5: eaves 15.88 m at the type's 3.35 m pitch",
-    "crown neck-hoist: skyline unread (confidence 0.23)"
-   ],
-   "likeness": {
-    "pandId": "0363100012158415",
-    "ncc": 0.211,
-    "nccRaw": 0.211,
-    "shiftM": [
-     0.1,
-     0.4
-    ],
-    "usable": 0.96,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.12",
-     "glazing storey band off by 0.66 mean 0.34 vs photo 0.79"
-    ],
-    "wall": {
-     "photo": "#3d332f",
-     "model": "#5f534c",
-     "dL": 0.124
-    },
-    "glazing": {
-     "photo": 0.79,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.364
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 21: wide arched centre bay with full balconies",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1109,41 +1213,32 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.57,
+       "widthM": 1.23,
+       "centre": 0.88
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.88,
+       "centre": 0.7
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.148 < 0.15 (photo vs model body; likeness.ts WARN: wall family unresolved (#362f2b is dark and neutral, brick courses not resolved): lightness and hue judged only)",
-   "likeness": {
-    "pandId": "0363100012159474",
-    "ncc": 0.148,
-    "nccRaw": 0.148,
-    "shiftM": [
-     -0.4,
-     0.15
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "wall family unresolved (#362f2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
-    ],
-    "wall": {
-     "photo": "#362f2b",
-     "model": "#554a44",
-     "dL": 0.11
-    },
-    "glazing": {
-     "photo": 0.39,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.511
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1168,56 +1263,32 @@
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.57 m (1.35 m wide), 6.27 m (1.4 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.57,
+       "widthM": 1.35,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.4,
+       "centre": 0.51
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "measuredPalette": {
-     "brick": "#655551",
-     "evidence": "strip 2022-01-04 span 3001-3220: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown neck-hoist: skyline unread (confidence 0.26)"
-   ],
-   "likeness": {
-    "pandId": "0363100012063580",
-    "ncc": 0.227,
-    "nccRaw": 0.227,
-    "shiftM": [
-     0.1,
-     0.4
-    ],
-    "usable": 0.96,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.17",
-     "glazing storey band off by 0.20"
-    ],
-    "wall": {
-     "photo": "#4f433b",
-     "model": "#7d6964",
-     "dL": 0.171
-    },
-    "glazing": {
-     "photo": 0.32,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.449
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 21 (and alone between held neighbours once 31 is held)",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1242,57 +1313,37 @@
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.55,
+       "widthM": 1.55,
+       "centre": 0.73
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.27,
+       "centre": 0.22
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1,
+       "centre": 0.68
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "ground": "door-left",
-    "measuredPalette": {
-     "brick": "#5c4f4b",
-     "evidence": "strip 2022-01-04 span 3221-3441: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown neck-hoist: skyline unread (confidence 0.32)"
-   ],
-   "likeness": {
-    "pandId": "0363100012161035",
-    "ncc": 0.208,
-    "nccRaw": 0.208,
-    "shiftM": [
-     0.4,
-     0.05
-    ],
-    "usable": 0.97,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.15",
-     "glazing storey band off by 0.37 mean 0.37 vs photo 0.48"
-    ],
-    "wall": {
-     "photo": "#49413c",
-     "model": "#75645f",
-     "dL": 0.155
-    },
-    "glazing": {
-     "photo": 0.48,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.418
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 21: wide arched centre bay with full balconies",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1317,42 +1368,27 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.32,
+       "widthM": 1.02,
+       "centre": 0.52
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.097 < 0.15 (photo vs model body; likeness.ts FAIL: wall hue 21 deg; glazing storey band off by 0.62 mean 0.36 vs photo 0.85)",
-   "likeness": {
-    "pandId": "0363100012166561",
-    "ncc": 0.097,
-    "nccRaw": 0.097,
-    "shiftM": [
-     0.1,
-     -0.1
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall hue 21 deg",
-     "glazing storey band off by 0.62 mean 0.36 vs photo 0.85"
-    ],
-    "wall": {
-     "photo": "#5d4d4e",
-     "model": "#574842",
-     "dL": -0.033
-    },
-    "glazing": {
-     "photo": 0.85,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.371
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1377,54 +1413,27 @@
     "doorSide": "left",
     "accentSide": "left",
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.17,
+       "widthM": 1.65,
+       "centre": 0.69
+      }
+     ]
+    },
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "ground": "door-left",
-    "measuredPalette": {
-     "brick": "#5f4e4a",
-     "evidence": "strip 2022-01-04 span 3660-3878: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown neck-hoist: skyline unread (confidence 0.1)"
-   ],
-   "likeness": {
-    "pandId": "0363100012157844",
-    "ncc": 0.192,
-    "nccRaw": 0.192,
-    "shiftM": [
-     0.35,
-     0.15
-    ],
-    "usable": 0.96,
-    "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
-    "wall": {
-     "photo": "#5e504c",
-     "model": "#78625d",
-     "dL": 0.084
-    },
-    "glazing": {
-     "photo": 0.39,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.512
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 21: wide arched centre bay with full balconies",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1449,58 +1458,32 @@
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.84,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.07,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.63,
+       "widthM": 0.95,
+       "centre": 0.23
+      }
+     ]
+    },
     "voidShare": 0.01,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "bellamy-1904-balcony-axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "bellamy-1895-plain-three-axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "bellamy-1904-balcony-axis",
-    "ground": "door-right",
-    "measuredPalette": {
-     "brick": "#695b56",
-     "evidence": "strip 2022-01-04 span 3878-4100: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown neck-hoist: skyline unread (confidence 0.02)"
-   ],
-   "likeness": {
-    "pandId": "0363100012163671",
-    "ncc": 0.187,
-    "nccRaw": 0.187,
-    "shiftM": [
-     0,
-     0.05
-    ],
-    "usable": 0.94,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.27",
-     "glazing storey band off by 0.55 mean 0.36 vs photo 0.78",
-     "wall family unresolved (#322d2c is dark and neutral, brick courses not resolved): lightness and hue judged only"
-    ],
-    "wall": {
-     "photo": "#322d2c",
-     "model": "#806f69",
-     "dL": 0.273
-    },
-    "glazing": {
-     "photo": 0.78,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.391
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: as 21 (and alone once 35 is held)",
+   "likeness": null,
    "challengers": {}
   }
  ]

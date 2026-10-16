@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 import { bridgesFromExtract, type Bridge } from './ownGroundBridges';
 
@@ -25,7 +25,11 @@ const NAMED = ['BRU0063', 'BRU0165', 'BRU0167', 'BRU0166', 'BRU0044', 'BRU0067',
 // Melkmeisjesbrug footbridge BRU0016 beside it), the Magere Brug, the Blauwbrug and the Torensluis (BRU0009).
 //   BRIDGES=KIT … uses this list.
 const KIT = ['BRU0064', 'BRU0017', 'BRU0016', 'BRU0242', 'BRU0236', 'BRU0009'];
-const ONLY = process.env.BRIDGES === 'KIT' ? KIT : process.env.BRIDGES?.split(',');
+// Railings that stood across the road at the abutments (user 2026-10-16, "why do the gates dip into the road?";
+// railingRuns.ts railRuns): the Nieuwe-Wercksbrug, BRU0166 by the Bilderdijkgracht mouth, the Angenietje Swarthofbrug.
+//   BRIDGES=RAILINGS … uses this list; BUNDLES_DIR=<dir> serves *.bundle.js from <dir> (a staged build, the after).
+const RAILINGS = ['BRU0063', 'BRU0166', 'BRU0067'];
+const ONLY = process.env.BRIDGES === 'KIT' ? KIT : process.env.BRIDGES === 'RAILINGS' ? RAILINGS : process.env.BRIDGES?.split(',');
 /** Fallback footprints whose long axis is not the road (the bridge is wider than long): the crossing bearing. */
 const BEARING_OVERRIDE: Record<string, number> = { BRU0165: 96, BRU0009: 104 };
 /** Half-widths past the default 22 m water-view offset (the Torensluis is ~42 m wide). */
@@ -34,6 +38,11 @@ const SIDE_OFFSET: Record<string, number> = { BRU0009: 45 };
 async function boot(page: Page): Promise<string[]> {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
+  const dir = process.env.BUNDLES_DIR;
+  if (dir) await page.context().route(/\/js\/[^/?]+\.bundle\.js/, route => {
+    const file = `${dir}/${new URL(route.request().url()).pathname.split('/').pop()}`;
+    return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'text/javascript' }) : route.continue();
+  });
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });

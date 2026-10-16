@@ -222,6 +222,23 @@ export interface ProtectedSource {
   protectedNames: string[];
   /** Put the real names back into a translation of `text`. */
   restore(translated: string): string;
+  /** `restore`, then turn a Dutch article the translator left before a restored name into English (`englishArticleBefore`). */
+  restoreEnglish(translated: string): string;
+}
+
+/**
+ * A Dutch article the translator left in front of a restored name becomes English.
+ *
+ * The translator usually turns "De ⟨placeholder⟩" into "The ⟨placeholder⟩", but not always: Huis Bartolotti's
+ * lede came back as "Het Huis Bartolotti (also Het Bonte Huis) is a canal house" (user report 2026-10-16), the
+ * article read as part of an unknown name. Only an article directly before the whole restored name is touched, so
+ * a name that starts with its own article (Het Schip, De Dageraad) keeps it, and so does a Dutch alias the source
+ * quotes in brackets. Capitalised stays capitalised: "Het" at a sentence start becomes "The".
+ */
+export function englishArticleBefore(text: string, name: string): string {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(`(?<![\\p{L}\\p{N}])(het|de|'t)\\s+(?=${escaped}(?![\\p{L}\\p{N}]))`, 'giu'),
+    (article: string) => (/^[HD]/.test(article) ? 'The ' : 'the '));
 }
 
 /**
@@ -280,13 +297,15 @@ export function protectNames(source: string, names: string[]): ProtectedSource {
     substitutions.push({ placeholder, name });
   }
 
+  // Case-insensitive on the way back: the translator is free to lowercase a
+  // placeholder it read as a common noun, and the name still belongs there.
+  const restore = (translated: string) => substitutions.reduce(
+    (result, entry) => result.replace(wholeWord(entry.placeholder, 'giu'), entry.name),
+    translated);
   return {
     text,
     protectedNames: substitutions.map((entry) => entry.name),
-    // Case-insensitive on the way back: the translator is free to lowercase a
-    // placeholder it read as a common noun, and the name still belongs there.
-    restore: (translated: string) => substitutions.reduce(
-      (result, entry) => result.replace(wholeWord(entry.placeholder, 'giu'), entry.name),
-      translated),
+    restore,
+    restoreEnglish: (translated: string) => substitutions.reduce((result, entry) => englishArticleBefore(result, entry.name), restore(translated)),
   };
 }
