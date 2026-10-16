@@ -32,6 +32,8 @@ export const DECK_TOP: RGB = hex('#8e8a84');
 export const RAILING_GREEN: RGB = KIT_COLOURS.iron;
 /** Deck-top lift over the surface: under every street band (LIFT.carriageway 0.03; bridge bands are sampled every 0.75 m), 2 cm down so the deck top's 1 m chords stay under the bands where a ramp turns concave (BRU0290, BRU0044, BRU0052 in the belt audit); the parapet covers its edge. */
 export const DECK_TOP_LIFT = 0;
+/** A covered deck's top past its span sinks this far under the riding surface (measuredDeckTop `sinkPastSpan`). */
+export const COVERED_TOP_SINK_M = 0.06;
 
 /** Is (x, y) over water? (signed mask distance < 0) */
 export type WaterTest = (x: number, y: number) => boolean;
@@ -290,8 +292,12 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
 /**
  * The deck top of a measured deck: a strip over its footprint (the deck span
  * plus half a metre), draped on the riding surface, under every street band.
+ * `sinkPastSpan` lowers it past the deck span (the reach onto the banks): under
+ * the survey's ground polygons (roads-v1), which drape on the land within a
+ * couple of centimetres of the riding surface, an unsunk top poked through them
+ * as grey wedges at both bridge ends (user 2026-10-16, Prinsengracht).
  */
-export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }): MeshArrays {
+export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2, reach?: [number, number], widths?: { left: Float64Array; right: Float64Array }, sinkPastSpan = 0): MeshArrays {
   const m = emptyMesh(true), p = deck.profile, [r0, r1] = reach ?? [p.deck[0], p.deck[1]];
   const all: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= r0 - 0.5 && p.s[i] <= r1 + 0.5) all.push(i);
@@ -319,7 +325,8 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
       // must stay on top (BRU0077 in the belt audit, a top on the profile's z rose 2 cm over the klinker band).
       // Past the road's half-width on a wider outline: the deck's own level (the surface there is the canal).
       const z = Math.abs(t) > hw + 0.01 ? Math.max(deck.z[i], height(x, y)) : height(x, y);
-      vertex(m, x, y, z + DECK_TOP_LIFT, DECK_TOP);
+      const sink = p.s[i] < p.deck[0] || p.s[i] > p.deck[1] ? sinkPastSpan : 0;
+      vertex(m, x, y, z + DECK_TOP_LIFT - sink, DECK_TOP);
     }
   }
   // Left (+n) to right per row; the next row is +s. (+s) × (−n) is up, so a row's j → j+1 then the next row is counter-clockwise from above.

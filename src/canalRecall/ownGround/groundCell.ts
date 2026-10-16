@@ -21,7 +21,7 @@ import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
-import { bandCorridor, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
+import { bandCorridor, COVERED_TOP_SINK_M, DECK_REACH_MAX_M, deckReach, deckWidths, flatDeckBody, floatingEnds, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, movableLeaves, pointInRing, underDeck, type DeckBuildInfo } from './decks.js';
 import { crossingWays } from './railingRuns.js';
 import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
@@ -86,6 +86,8 @@ export interface CellInput {
   surveyGaps?: boolean;
   /** Clip measured deck tops and faces to the water and the street bands (decks.ts deckWidths); default on. */
   clipDecks?: boolean;
+  /** Sink a covered deck's top past its span under the survey's ground polygons (decks.ts COVERED_TOP_SINK_M); default on. */
+  deckEnds?: boolean;
   /** The cell's surveyed road partition (roads-v1, roadSurfaces.ts), null when it has none or roads are off. */
   roads?: RoadCell | null;
   /** roads-v1 cells of the 3×3 neighbourhood (polygons live in the cell of their interior point). */
@@ -391,7 +393,7 @@ export function buildCell(input: CellInput): BuiltCell {
     add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing));
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined);
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
     if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }

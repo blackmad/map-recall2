@@ -26,7 +26,7 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
-import { movableApproaches, pointInRing } from './decks.js';
+import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
 import { WAY_DECK_CLEAR_M, wayDeckGroups, wayDeckHighway, type WayDeckInput } from './wayDecks.js';
 import { landedPlatformRings } from './landedPlatforms.js';
@@ -52,6 +52,12 @@ export interface WaterLevels { version: 1; defaultNap: number; cells: Record<str
 export interface OsmCellsManifest { version: 1; area: string; cellSizeM: number; cells: string[]; fetched?: string; attribution?: string }
 
 export type Rect = [number, number, number, number];
+
+/** Inside any of the water polygons (outer ring and holes, even-odd), each tested only within its box. */
+export function waterTest(polygons: readonly (readonly (readonly Vec2[])[])[]): (x: number, y: number) => boolean {
+  const polys = polygons.map(poly => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); } return { poly, box: [a, b, c, d] }; });
+  return (x, y) => polys.some(({ poly, box }) => { if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false; let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+}
 
 export class GroundStore {
   relief!: GroundIndex;
@@ -93,7 +99,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -316,8 +322,7 @@ export class GroundStore {
     const around = GroundStore.neighbours(key);
     const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
     // Each polygon with its box: a station tests only the polygons around it.
-    const polys = waters.flatMap(w => w?.polygons ?? []).map(poly => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); } return { poly, box: [a, b, c, d] }; });
-    const wet = (x: number, y: number) => polys.some(({ poly, box }) => { if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false; let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+    const wet = waterTest(waters.flatMap(w => w?.polygons ?? []));
     const flats = around.flatMap(k => this.flatDecks(k));
     // Every measured bridge around, placed or not (a deck is placed only near the cell being prepared).
     const quant = this.elevation.quantization.xy;
@@ -536,8 +541,13 @@ export class GroundStore {
       return this.flatDecks(k).flatMap((ring, i) => meta[i]?.movable && bridgeLines.length ? movableApproaches(ring, bridgeLines).map(r => ({ ring: r, id: `${meta[i].id}-approach` })) : []);
     };
     const own = approaches(key);
+    // A measured deck's footprint reaches over the water past its span to the bank (decks.ts deckReach, as the deck top
+    // and the kit draw it): the survey's ground polygons (h = 0) that end at the bridge's surveyed start overlie that
+    // water, and the street mask cut them there, leaving the grey deck top as a jagged band across the road at both
+    // ends (user 2026-10-16, a Prinsengracht bridge). The reach is read off the water polygons (the mask is built from these rings).
+    const wetAround = waterTest(waterAround.flatMap(g => g?.polygons ?? []));
     const deckRingsAround: Vec2[][] = [
-      ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d)),
+      ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d, this.options.deckEnds === false ? undefined : deckReach(d, wetAround).reach)),
       ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
       // roads-v1 deck polygons (h ≥ 1): the water mask never cuts a surveyed bridge surface (or the bands over it).
       ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
@@ -551,7 +561,7 @@ export class GroundStore {
       // Landed platforms near the cell (landedPlatforms.ts): the quay wall leaves them out, their own stone walls meet it.
       landedPlatforms: landedPlatformRings(toLocal).filter(r => near(r.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity] as [number, number, number, number]))),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
-      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}),
+      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}),
       ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
       project: p => toLocal(p[0], p[1]),

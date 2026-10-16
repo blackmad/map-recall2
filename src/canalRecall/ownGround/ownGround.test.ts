@@ -22,7 +22,7 @@ import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type Bgt
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParksCell } from './parks';
 import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segmentsOf, vegetatedShare, BED_SHARE, COURTYARD_SURFACES, LAWN_SHARE, RAYS, SegmentIndex, type CourtyardsCell, type Segment as CourtyardSegment } from './courtyards';
-import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
+import { buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { wayDeckGroups, wayDeckProfile } from './wayDecks';
@@ -1193,6 +1193,24 @@ test('water opens under a footbridge whose water polygon stops at it (Melkmeisje
   for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
   assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
   assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
+});
+
+test('mid-span land: a short land run under a deck with water both sides along it (BRU0067), not a dam', () => {
+  // A canal along y (x 0..20) split by a 1.5 m gap at y 9.25..10.75; a deck along y over it, span y 2..18.
+  const south: Vec2[] = [[0, 0], [20, 0], [20, 9.25], [0, 9.25]], north: Vec2[] = [[0, 10.75], [20, 10.75], [20, 20], [0, 20]];
+  const n = 41, deck = { x: Float64Array.from({ length: n }, () => 10), y: Float64Array.from({ length: n }, (_, i) => i * 0.5), s: Float64Array.from({ length: n }, (_, i) => i * 0.5), deck: [2, 18] as [number, number] };
+  assert.deepEqual(midSpanLand(deck, [[south], [north]]), [[9.5, 10.5]]);
+  assert.deepEqual(midSpanLand(deck, [[south]]), [], 'land to the span end: a bank, not a strip');
+  assert.deepEqual(midSpanLand(deck, [[[[0, 0], [20, 0], [20, 4], [0, 4]]], [north]]), [], 'a land run over 4 m is not a strip');
+});
+
+test('deck footprint over the reach: the street mask keeps the survey ground polygons between the bank and the span', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const d = new GroundSurface(field, IDENTITY, 1).addDeck(syntheticDeck());
+  const span = GroundSurface.footprint(d), reach = GroundSurface.footprint(d, [d.span[0] - 3, d.span[1] + 3]);
+  const along = (ring: Vec2[]) => { const xs = ring.map(p => p[0]); return Math.max(...xs) - Math.min(...xs); };
+  assert.ok(Math.abs(along(reach) - along(span) - 6) < 1.1, `reach footprint ${along(reach).toFixed(1)} m vs span ${along(span).toFixed(1)} m`);
+  assert.deepEqual(GroundSurface.footprint(d, [d.span[0] + 2, d.span[1] - 2]), span, 'a range inside the span never shrinks it');
 });
 
 test('a houseboat half over the generalised shore gets its berth opened: water under the hull, the wall behind it', () => {
