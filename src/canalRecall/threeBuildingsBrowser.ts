@@ -792,6 +792,25 @@ export class ThreeBuildings {
     this.map.triggerRepaint();
   }
 
+  /**
+   * Whether this layer draws the city on screen yet: the coarse shell group of every z14 tile in `tiles`
+   * (`x/y`, the tiles under the near half of the view) that it was given is installed (a rebuild in flight
+   * still draws the previous mesh). Until then the map keeps the basemap's own extrusions, so a ride does not
+   * start in an empty city while the first shells build (docs/perf-pop-in-20261016.md). Groups elsewhere
+   * (look-ahead tiles, the far horizon) do not hold it.
+   */
+  drawsResidentCity(tiles: Iterable<string>): boolean {
+    if (!this.visible || !this.ready) return false;
+    let wanted = 0;
+    for (const tile of tiles) {
+      const key = `${COARSE_PREFIX}${tile}`;
+      if (!this.sourceGroups.has(key)) continue;
+      wanted++;
+      if (!this.chunks.has(key)) return false;
+    }
+    return wanted > 0;
+  }
+
   stats(): ThreeBuildingStats {
     let buildings = 0, walls = 0, quads = 0, vertices = 0, bytes = 0;
     for (const { info } of this.chunks.values()) {
