@@ -1171,7 +1171,6 @@
       "landmarkId": "extract_landmarks_1692085215",
       "modelUrl": "./models/westerkerk.glb",
       "suppressOsmIds": [
-        "w99203577",
         "w99205257",
         "w749268115",
         "w749268116",
@@ -1183,8 +1182,11 @@
         "w751083597",
         "w751083598",
         "w751083599",
-        "NL.IMBAG.Pand.0363100012174221",
-        "NL.IMBAG.Pand.0363100012164998"
+        "NL.IMBAG.Pand.0363100012164998",
+        "NL.IMBAG.Pand.0363100012168591",
+        "NL.IMBAG.Pand.0363100012174220",
+        "NL.IMBAG.Pand.0363100012174222",
+        "NL.IMBAG.Pand.0363100012174224"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -1214,6 +1216,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
       },
+      "bagYear": 1631,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -1243,14 +1246,14 @@
         "depthMetres": 33.65139579772949,
         "depthCoverage": 0.7762337337772733
       },
-      "triangles": 20627,
-      "bytes": 241992,
+      "triangles": 19883,
+      "bytes": 234440,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "140201e4cd470a98",
+        "sourceHash": "c0fc848649680324",
         "buildVersion": 2,
-        "bytes": 72032,
-        "triangles": 3567
+        "bytes": 70244,
+        "triangles": 3457
       }
     },
     "bimhuis-in-amsterdam-the-netherlands": {
@@ -4176,7 +4179,6 @@
       "landmarkId": "extract_landmarks_239964759",
       "modelUrl": "./models/nieuwe-kerk.glb",
       "suppressOsmIds": [
-        "w220749328",
         "w174987150",
         "w747911435",
         "w747911436",
@@ -4196,7 +4198,6 @@
         "w747924626",
         "w748997143",
         "w748997144",
-        "NL.IMBAG.Pand.0363100012169079",
         "w748997142"
       ],
       "spatialSuppression": false,
@@ -4256,14 +4257,14 @@
         "depthMetres": 66.11294555664062,
         "depthCoverage": 0.9999999630453931
       },
-      "triangles": 29268,
-      "bytes": 344604,
+      "triangles": 28392,
+      "bytes": 334340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "823a1b6d51951d91",
+        "sourceHash": "5ee4be33beed348c",
         "buildVersion": 2,
-        "bytes": 86288,
-        "triangles": 4981
+        "bytes": 84128,
+        "triangles": 4849
       }
     },
     "buiksloterkerk": {
@@ -5102,9 +5103,7 @@
       "assetKind": "memorial",
       "landmarkId": "extract_landmarks_7630368",
       "modelUrl": "./models/homomonument.glb",
-      "suppressOsmIds": [
-        "w37737807"
-      ],
+      "suppressOsmIds": [],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
@@ -5121,22 +5120,26 @@
           52.37443243333333
         ],
         "northOffsetDegrees": 0,
-        "source": "Three extreme vertices of the current mapped whole-monument perimeter; local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Waterside stair-platform tip intentionally extends into Keizersgracht."
+        "source": "Three extreme vertices of the current mapped whole-monument perimeter (OSM w37737807; the 36 m triangle of en.wikipedia.org/wiki/Homomonument); local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Stones assigned from the sources: north tip flush (towards the Anne Frank Huis), south-west tip the 0.60 m podium (towards Rozenstraat), east tip the steps into the Keizersgracht (towards the Dam). Quay line on the stepped stone's axis 12.56 m east of the centroid from BGT waterdeel (api.pdok.nl/lv/bgt, 2026-10-16)."
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "pink": "#cdcbb0"
+      },
       "attribution": {
         "title": "Homomonument",
         "author": "Map Recall",
         "sourceUrl": "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
+        "modifications": "Original geometric interpretation of the mapped whole-monument outline and the RCE overhead photograph: three 10 m granite stones, flush / 0.60 m podium / four risers from the quay to a platform 0.30 m above the canal with granite side walls to the water, thin granite lines between them. Granite tint #cdcbb0 measured on the podium riser in municipal panorama recording_2025-06-16_04-42-37_02924 (sunlit #ede7c5 and shaded #adae9b averaged; the Rosa Porrino reads grey-beige with a faint pink). The eastern tip's projection into the Keizersgracht is the mapped one (8 m past the BGT quay line). Step treads 0.5 m and the 36 cm risers are the game's canal depth, not measured. No surrounding ground or host buildings replaced."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -14.733881950378418,
-          -2.3841858265427618e-8,
+          -2.1000001430511475,
           -20.111812591552734
         ],
         "max": [
@@ -5157,12 +5160,12 @@
       },
       "extent": {
         "widthMetres": 35.655795097351074,
-        "heightMetres": 0.6000000476837162,
+        "heightMetres": 2.7000001668930054,
         "depthMetres": 34.72792339324951,
         "depthCoverage": 0.9739769487522448
       },
-      "triangles": 96,
-      "bytes": 3608,
+      "triangles": 108,
+      "bytes": 3856,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "micropia-ledenlokalen": {
@@ -48798,14 +48801,14 @@
         "depthMetres": 48.522464752197266,
         "depthCoverage": 1.4271313162410961
       },
-      "triangles": 7436,
-      "bytes": 113276,
+      "triangles": 7228,
+      "bytes": 110392,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0c77e3b173b19e93",
+        "sourceHash": "0f26022c827780cb",
         "buildVersion": 2,
-        "bytes": 33260,
-        "triangles": 1316
+        "bytes": 32652,
+        "triangles": 1284
       }
     },
     "wilhelmina-ruiterstandbeeld": {

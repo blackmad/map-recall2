@@ -209,8 +209,9 @@ export function crownShape(profile: GableProfileSample[], eavesUp?: number): Cro
 export interface PhotoGable {
   /** Fraction of the front's 0.1 m samples with a measured roofline. */
   coverage: number;
-  /** Fraction measured inside the crown span. */
+  /** Fraction measured inside the crown span, and per flank of it (left, right of the crown centre). */
   crownCoverage: number;
+  flankCoverage?: [number, number];
   shape: CrownShape;
   /** Classifier on the crown span (the gable itself), and on the whole front (as the register would see it). */
   crown: GableReading;
@@ -242,6 +243,8 @@ export function readPhotoGable(profile: GableProfileSample[]): PhotoGable {
   const crownProfile = profile.slice(a, b);
   const crownCoverage = crownProfile.filter(p => p[1] !== null).length / Math.max(1, crownProfile.length);
   if (crownCoverage < 0.7) abstain.push(`only ${Math.round(crownCoverage * 100)} % of the crown measured`);
+  const mid = crownProfile.length >> 1, cov = (s: GableProfileSample[]) => round(s.filter(p => p[1] !== null).length / Math.max(1, s.length), 3);
+  const flankCoverage: [number, number] = [cov(crownProfile.slice(0, mid)), cov(crownProfile.slice(mid))];
   // Pad with eaves-level samples so the classifier's flank median sees the crown's foot.
   const pad = Math.max(2, Math.round(crownProfile.length / 10));
   const rel = [...Array(pad).fill(0), ...dense(crownProfile).map(v => v - shape.eavesUp), ...Array(pad).fill(0)];
@@ -263,7 +266,7 @@ export function readPhotoGable(profile: GableProfileSample[]): PhotoGable {
   if (crown.type === 'unknown') abstain.push(`classifier: ${crown.reason}`);
   const fitIn = {profile: crownProfile.map(([x, y]) => [x, y] as const), type: crown.type};
   const decided = fitGable(fitIn), template = fitGableTemplate(fitIn);
-  return {coverage: round(coverage, 3), crownCoverage: round(crownCoverage, 3), shape, crown, front, intentGable: GABLE_TO_INTENT[crown.type],
+  return {coverage: round(coverage, 3), crownCoverage: round(crownCoverage, 3), flankCoverage, shape, crown, front, intentGable: GABLE_TO_INTENT[crown.type],
     fit: {method: decided.method, params: decided.params, fitErrorM: round(decided.fitErrorM, 3), polylineErrorM: round(decided.polylineErrorM, 3), templateParams: template?.params ? Object.fromEntries(Object.entries(template.params).map(([k, v]) => [k, round(v, 3)])) : null, templateErrorM: template ? round(template.fitErrorM, 3) : null,
       trace: (template?.trace ?? decided.trace).map(([x, y]) => [round(x, 3), round(y, 3)] as [number, number])}, abstain};
 }
@@ -336,6 +339,12 @@ export function compareCrowns(gable: GableIntent, authored: CrownShape, photo: P
   return {authored: {gable, shape: authored, steps: authoredSteps}, photo: {gable: photo.intentGable, confidence: photo.crown.confidence, shape: p}, mismatches: out};
 }
 
+/** The step count of a symmetric stepped gable from its two flank readings (see `photoCrownPatch`). */
+export function stepsFromFlanks(left: number, right: number, flankCoverage?: [number, number], minCoverage = 0.7): number {
+  if (flankCoverage && (flankCoverage[0] < minCoverage) !== (flankCoverage[1] < minCoverage)) return Math.max(left, right);
+  return Math.round((left + right) / 2);
+}
+
 /** Front fields a photo crown sets; every other crown field is removed so stale authored values cannot conflict. */
 const CROWN_FIELDS = ['crownSteps', 'crownRise', 'crownAt', 'crownBays', 'crownGroups', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownFinial'] as const;
 
@@ -365,7 +374,10 @@ export function photoCrownPatch(pandId: string, front: FrontIntent, reading: Pho
     if (sameType && s.span) for (const k of ['crownCap', 'crownCapSpan', 'crownCapRise'] as const) if (front[k] !== undefined) (set as any)[k] = front[k];
   } else {
     set.crownRise = round(Math.min(3, Math.max(0.3, s.riseM / fit.upperStoreyM)), 2);
-    if (gable === 'step') set.crownSteps = Math.min(6, Math.max(1, Math.round((s.stepsLeft + s.stepsRight) / 2)));
+    // Stepped gables are symmetric (user, 2026-10-16): one step count for both flanks, the mean of the two readings; when
+    // one flank is poorly measured (a tree, a wire, a neighbour's roof: coverage under 0.7) the better-read flank decides
+    // (the larger count: an occluded flank loses plateaus, it never gains them).
+    if (gable === 'step') set.crownSteps = Math.min(6, Math.max(1, stepsFromFlanks(s.stepsLeft, s.stepsRight, reading.flankCoverage)));
     if (sameType) for (const k of ['crownCap', 'crownFinial'] as const) if (front[k] !== undefined && (k !== 'crownFinial' || ['step', 'neck', 'raised-neck', 'bell'].includes(set.gable!))) (set as any)[k] = front[k];
     const span = s.span!, tol = 0.4 / fit.widthM, keep = fit.authoredSpan && Math.abs(fit.authoredSpan.from - span.from) <= tol && Math.abs(fit.authoredSpan.to - span.to) <= tol;
     if (keep && front.crownBays) set.crownBays = front.crownBays;

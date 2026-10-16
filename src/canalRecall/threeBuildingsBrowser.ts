@@ -1,4 +1,6 @@
 import { BuildingContextIndex } from './buildingContextIndex.js';
+import { blendAtZoom, presenceOf, transitionOn } from './overviewTransition/blend.js';
+import { footprintTone } from './overviewTransition/basemapOverview.js';
 import { ChunkBuildQueue } from './chunkBuildQueue.js';
 import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
 import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE_TRANSPORT,type EnvelopeTransport} from './surveyedEnvelopeTransport.js';
@@ -60,6 +62,9 @@ const COARSE_PREFIX = 'coarse:';
 const chunkMode = (key: string): 'walls' | 'extras' | 'coarse' => key.startsWith(EXTRAS_PREFIX) ? 'extras' : key.startsWith(COARSE_PREFIX) ? 'coarse' : 'walls';
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
+const TRANSITION = transitionOn();
+/** The flat overview's footprint colour the buildings emerge from (sRGB 0..1). */
+const CITY_FLAT = footprintTone().map(v => v / 255);
 
 export const VERTEX = /* glsl */ `
 in vec3 position;
@@ -96,6 +101,8 @@ uniform float bands;
 // Untextured: the vertex colour alone, no brick, tile or grain from any cell.
 uniform float flatColour;
 uniform float cityFade;
+uniform float cityTone;
+uniform vec3 cityFlat;
 ${ROOF_TIER_GLSL}
 ${FACADE_TIER_GLSL}
 in vec2 vUv;
@@ -120,6 +127,7 @@ void main() {
   c = hlDesat(c, vHighlight);
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   fragColor = vec4(c * shade, 1.0);
+  if (cityTone < 1.0) fragColor.rgb = mix(cityFlat, fragColor.rgb, cityTone);
 }`;
 
 const ROOF_LAYER_COUNT = 4;
@@ -1191,7 +1199,7 @@ export class ThreeBuildings {
       }));
     }
     if (this.lit) {
-      const material = createLitFacadeMaterial(THREE, { roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[this.look].litWallGain;
@@ -1199,7 +1207,7 @@ export class ThreeBuildings {
     }
     return new THREE.RawShaderMaterial({
       glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT, defines: highlightDefines(),
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } }, side: THREE.FrontSide,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } }, side: THREE.FrontSide,
     });
   }
 
@@ -1207,8 +1215,16 @@ export class ThreeBuildings {
   private prepareFrame(): boolean {
     this.refreshSurveyedRoofOwnership();
     if (!this.visible || !this.ready || !this.scene || !this.chunks.size || this.map.getZoom() < MIN_ZOOM) return false;
-    const fade = Math.max(0, Math.min(1, (this.map.getZoom() - MIN_ZOOM) / 1.6));
-    for (const material of this.materials.values()) material.uniforms.cityFade.value = fade;
+    // One curve with the own ground and the shadows (overviewTransition/blend.ts); `?transition=0` keeps the old linear ramp.
+    const zoom = this.map.getZoom();
+    // With the transition the buildings are present early (a short dither while they are still the footprint's
+    // colour) and their colour comes in from the flat footprint tone over the whole window.
+    const b = TRANSITION ? blendAtZoom(zoom) : 1;
+    const fade = TRANSITION ? presenceOf(b) : Math.max(0, Math.min(1, (zoom - MIN_ZOOM) / 1.6));
+    for (const material of this.materials.values()) {
+      material.uniforms.cityFade.value = fade;
+      if (material.uniforms.cityTone) material.uniforms.cityTone.value = b;
+    }
     return true;
   }
 

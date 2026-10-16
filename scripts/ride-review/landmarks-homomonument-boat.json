@@ -1,0 +1,24 @@
+{
+ "mode": "boat",
+ "dest": "Westerkerk",
+ "step": 60,
+ "legs": [],
+ "extra": [
+  {
+   "name": "homomonument-boat-ne",
+   "at": [
+    4.88545,
+    52.37425,
+    290
+   ]
+  },
+  {
+   "name": "homomonument-boat-sw",
+   "at": [
+    4.8847,
+    52.37395,
+    20
+   ]
+  }
+ ]
+}

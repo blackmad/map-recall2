@@ -238,6 +238,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tessellating shell faces (big-facade.ts addShellTess); fix the grid
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
+- **Building types under the shared frame** (2026-10-16, HISTORY
+  "Sloterplas galerijflats"): the lit recipe look (`MeshLambertMaterial`)
+  does not merge, so every unit draws one call per material near (the
+  86 -> 18 draw-call merge is lost in the default game); far boxes now draw
+  unmerged. Next: a lit merged material (Lambert + per-vertex slot/tint).
+  Sloterplas towers' weak points vs the photos: gallery/balcony soffits
+  render dark (no bounce light), west faces read more vertical than the
+  hazy photos, first-floor glass black, doors read strong red up close;
+  kit cannot yet say the diagonal gallery swing to the south stair, curved
+  gallery ends, railing bars or recessed glass. The landmark GLB baseline
+  gate fails the unit on ~930 window plates 4 cm proud (same as the
+  installed pilotis unit).
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
   draws 3,072 photo-confirmed instances (2026-10-11 latest: +85 post-war
   flats west of the A10 in three designs: loggia-stack 5st 30 (Osdorp),
@@ -724,7 +736,31 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   faces (median 1.106 today); decide the road grey (~98–117 vs the user's
   ~150) and the cycle red (190,96,92 proposed); ride-level before/after
   frames from the bike, the sheet is mostly aerial.
-- **Kit roof rules (user, 2026-10-16; plan Part 2, lane in flight):** roofs
+- **Overview transition follow-ups** (2026-10-16, HISTORY "The
+  overview-to-city switch is a blend"; `?transition=0` opts out): the
+  user judges whether the flat overview in city colours with roof-toned
+  footprints still reads as a map (it is darker and browner than the old
+  white-and-blue); switch its tones to `look/sunny.ts sceneTokens()`;
+  footprints far from the rider fade out where nothing 3D is streamed;
+  tilted manual zoom-out shows a short footprint-tone dither; phone
+  worst step 4.7 % at 13.9 → 14 is outside the window, bring it in.
+- **Kit roof rules follow-ups** (2026-10-16, HISTORY "Roofs follow the
+  front": the step-gable library leaned by one tread and is fixed; saddles
+  under crowns, row coherence and `roof-under-crown` landed; 232 of 371
+  pands change class): (1) re-install every face whose class changed
+  (`compile.ts --face=<id> --install`, 46 faces) after a sheet pass, then
+  `test:block-kit-installed` and `check:stale-installs`; (2) 76-84
+  (152566) and the other flat-parapet fronts need `roof.form: flat` on the
+  placement, the hipped 3DBAG mass is still drawn; (3) re-record
+  `test:tile-buildings` pilot-golden (`UPDATE_GOLDEN=1`) after reviewing
+  the new large pand 137280 and the step-gable changes; (4) cross-gable /
+  hip-and-gablet when a gable sits over one bay of a wide front; (5)
+  attic faces behind plain cornices still 3DBAG-p95-bounded (236441
+  m0/m1); (6) gable crown height from the photo, not `crownRise`; (7)
+  Mercatorplein's raised roof block is large-tier `roofPlant`; (8) flip
+  `openingsWithinWallsGate` to strict once attic panes are out of the
+  roof mass.
+- **Kit roof rules (user, 2026-10-16; plan Part 2, DONE, see above):** roofs
   follow the measured front, not 3DBAG ("don't give so much credence to
   3DBAG roofs"): saddle under the crown profile, flat under a parapet, attic
   from the top row, rear wings clamped under the crown line; step gables
@@ -736,8 +772,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   8 hand `measuredEaves` must be reproduced by the rule). Identity by
   `roof-golden`; the six faces re-installed after sheet review. Follow-up:
   Mercatorplein's raised roof block is large-tier `roofPlant`.
+- **Openings-past-walls offenders** (2026-10-16, HISTORY "Openings must
+  stay inside their walls"; the Homomonument, Krijtberg, Westerkerk and
+  Nieuwe Kerk are DONE, the landmark gate is hard, baseline frozen at 316
+  models): 208 landmarks still carry parts past their walls (2,894 m²);
+  next pass by ride visibility: stadhuis, scheepvaarthuis,
+  royal-theater-carre, academie-theater-dans, then the roof-pierced dark
+  panels on sint-nicolaas, posthoornkerk and jewish-museum; check whether
+  stadhuis/valley/vinoly/hoofdbureau are curtain walls the glazed-skin
+  exemption misses before touching builders. Kit gate
+  `openingsWithinWallsGate` is advisory until the kit-rules lane lifts
+  attic panes out of the 3DBAG roof mass (19 of 22 installed chunks
+  fail; nassau-162289 28.9 m²), then set `OPENINGS_WITHIN_WALLS=strict`
+  and remove the advisory flag. Homomonument: measure the treads and the
+  pink of the Rosa Porrino granite (the panorama reads grey-beige).
 - **Homomonument and Krijtberg windows + pipeline gate (user, 2026-10-16;
-  plan Part 3, lane in flight):** Homomonument "still looks wrong (missing a
+  plan Part 3, DONE, see the item above):** Homomonument "still looks wrong (missing a
   triangle, sticks into the canal)": rebuild as three 10 m granite
   triangles (podium, flush, water steps meeting the quay wall), quay not cut
   through the steps, pinned in `check:manual-landmarks`. Krijtberg windows
@@ -1556,7 +1606,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   chase camera, the deck needs its own surface from the quay's bands
   (the BGT roads lane); J6's e2e has one probe of headroom; the
   `landmarkSightline` test needs an npm script; inner-block gardens as
-  bare sand (J4, the courtyards lane); Bloemgracht streamed boxes (J5,
+  bare sand DONE 2026-10-16 (J4, HISTORY "Inner-block gardens from
+  BGT"; open: shadowed yards, canopy over paving reads as lawn, sheds as
+  holes, the far ring); Bloemgracht streamed boxes (J5,
   the recipe-tiles migration); Noordermarkt playground slabs (J7);
   Entrepotdok warehouse boxes and gable stubs (P3); Artis main gate and
   the Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from

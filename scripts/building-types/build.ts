@@ -12,11 +12,11 @@ import path from 'node:path';
 import {generate, type GenerateReport} from '../../src/canalRecall/buildingTypes/generate.ts';
 import {lngLatToLocal, minimumRotatedRectangle, swapAxes, freeSides, rectIoU, bearingDeg, type Anchor, type Pt} from '../../src/canalRecall/buildingTypes/geometry.ts';
 import {frontSide, frontTowardBearing, frontYaw, type Street} from '../../src/canalRecall/buildingTypes/orientation.ts';
-import {paramsFromFacts, roofFactsFromItem, type CityJsonItem, type RoofFacts} from '../../src/canalRecall/buildingTypes/facts.ts';
+import {bodyRectFromRoof, paramsFromFacts, roofFactsFromItem, roofPolygons, type CityJsonItem, type RoofFacts} from '../../src/canalRecall/buildingTypes/facts.ts';
 import {validateSpec, type TypeSpec} from '../../src/canalRecall/buildingTypes/spec.ts';
 import {writeBakedGlb, writeInstancedGlb, writeMergedGlb, writeTypeGlb, type InstancedGroup, type PlacedInstance} from '../../src/canalRecall/buildingTypes/glb.ts';
 import type {MeshBuilder} from '../../src/canalRecall/buildingTypes/mesh.ts';
-import {lngLatToRd} from '../../src/canalRecall/rdCoordinates.ts';
+import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/rdCoordinates.ts';
 import {loadTerrain} from '../lib/terrainField.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
@@ -29,7 +29,7 @@ for (const f of fs.readdirSync(TYPES_DIR).filter(f => f.endsWith('.json'))) { co
 
 const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor; instances: any[]; streets: Street[]};
 const variantsFile = path.join(dir, 'variants.json');
-const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; eavesM?: number; mirror?: boolean; hold?: string; note?: string; frontBearingDeg?: number}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
+const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; eavesM?: number; mirror?: boolean; hold?: string; note?: string; frontBearingDeg?: number; absorb?: string[]}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
 
 async function item3d(id: string): Promise<CityJsonItem> {
   const file = `.cache/building-types/3dbag/${id}.json`;
@@ -47,7 +47,7 @@ async function item3d(id: string): Promise<CityJsonItem> {
 
 interface Built {
   pandId: string; type: string; variant: string; mesh: MeshBuilder; report: GenerateReport; position: [number, number, number]; yaw: number;
-  held?: string; rect: ReturnType<typeof minimumRotatedRectangle>; front: ReturnType<typeof frontSide>; roof: RoofFacts | null; warnings: string[]; iou: number; bytes?: number; params: any;
+  held?: string; absorbed?: string[]; rect: ReturnType<typeof minimumRotatedRectangle>; front: ReturnType<typeof frontSide>; roof: RoofFacts | null; warnings: string[]; iou: number; bytes?: number; params: any;
 }
 const built: Built[] = [];
 // Terraced houses built in mirrored pairs (spec.alternateMirror): along each terrace (houses whose centres are one frontage apart, side by side) every second house is mirrored.
@@ -84,7 +84,19 @@ for (const instIn of input.instances) {
   const spec = specs.get(inst.type);
   if (!spec) throw new Error(`${inst.pandId}: unknown type ${inst.type}`);
   const ring: Pt[] = inst.ringLngLat.map(([lng, lat]: number[]) => lngLatToLocal(input.anchor, lng, lat));
-  const rect0 = minimumRotatedRectangle(ring), iou = rectIoU(ring, rect0);
+  const ringRect = minimumRotatedRectangle(ring), iou = rectIoU(ring, ringRect);
+  // Slabs whose BAG ring also holds low annexes (spec.bodyFromRoof): the rectangle is the tall body read from the 3DBAG roof of this
+  // pand and of the panden variants.json `absorb`s into it (a split-off end bay or core of the same block), the annexes come from the spec.
+  let rect0 = ringRect;
+  const bodyWarnings: string[] = [];
+  if (spec.bodyFromRoof) {
+    const toLocal = (x: number, y: number): Pt => lngLatToLocal(input.anchor, ...rdToLngLat(x, y));
+    const roofs = [];
+    for (const id of [inst.pandId, ...(o.absorb ?? [])]) roofs.push(...roofPolygons(await item3d(id), toLocal));
+    const body = bodyRectFromRoof(roofs, ringRect);
+    if (body) { rect0 = body; bodyWarnings.push(`body ${body.length.toFixed(2)} x ${body.width.toFixed(2)} m from the 3DBAG roof${o.absorb?.length ? ` incl. ${o.absorb.join(', ')}` : ''} (BAG ring rectangle ${ringRect.length.toFixed(2)} x ${ringRect.width.toFixed(2)} m)`); }
+    else bodyWarnings.push('no 3DBAG roof surfaces: body = BAG ring rectangle');
+  }
   const rect = spec.frontOnShort ? swapAxes(rect0) : rect0; // terraced houses front on the short side
   // variants.json may pin the front by a photo-confirmed compass bearing (a terrace whose garden side faces the nearest OSM street).
   const front0 = frontSide(rect, input.streets), front = o.frontBearingDeg != null ? frontTowardBearing(rect, front0, o.frontBearingDeg) : front0;
@@ -93,6 +105,7 @@ for (const instIn of input.instances) {
   const {params, warnings, groundNapM} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode, ...(o.storeys ? {storeys: o.storeys} : {})}, {terrainAt, ringRd: (inst.ringLngLat as number[][]).map(([lng, lat]) => lngLatToRd(lng, lat))});
   // variants.json may pin the wall-top height read from the photo (a flat roof whose 3DBAG median roof height includes a plant box or parapet): storeys then follow the type.
   if (o.eavesM) { params.eavesM = o.eavesM; params.storeys = spec.storeys; warnings.push(`eaves pinned to ${o.eavesM} m from the photo (3DBAG roof height ignored)`); }
+  warnings.push(...bodyWarnings);
   if (front.ambiguous) warnings.push(`front ambiguous (scores ${front.score.toFixed(1)} / ${front.otherScore.toFixed(1)})`);
   if (spec.frontOnShort) params.freeSides = freeSides(rect, front.tangent, otherRings.filter(r => r.id !== inst.pandId).map(r => r.ring));
   // variants.json `mirror` is the handedness read from the photos (explicit per house); otherwise the alternation rule of the spec applies.
@@ -100,7 +113,7 @@ for (const instIn of input.instances) {
   const {mesh, report} = generate(spec, params);
   const outOfRange = spec.eavesRangeM && (params.eavesM < spec.eavesRangeM[0] || params.eavesM > spec.eavesRangeM[1]) ? `eaves ${params.eavesM.toFixed(2)} m outside the ${spec.eavesRangeM.join('-')} m of ${spec.id}: not this two-storey design` : undefined;
   const fr = spec.footprintRangeM, outOfFootprint = fr && (params.lengthM < fr.frontage[0] || params.lengthM > fr.frontage[1] || params.widthM < fr.depth[0] || params.widthM > fr.depth[1]) ? `footprint ${params.lengthM.toFixed(2)} x ${params.widthM.toFixed(2)} m outside ${fr.frontage.join('-')} x ${fr.depth.join('-')} m of ${spec.id}: extended or notched house` : undefined;
-  built.push({held: o.hold ?? outOfRange ?? outOfFootprint, pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], groundNapM, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
+  built.push({held: o.hold ?? outOfRange ?? outOfFootprint, ...(o.absorb?.length ? {absorbed: o.absorb} : {}), pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], groundNapM, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
 }
 
 // One street level per chunk, as the street-chunks lane does: every instance stands on y = 0 and the median 3DBAG ground (NAP) is in the asset extras;
@@ -170,7 +183,7 @@ const report = {
     saving: {bytesVsMerged: +(1 - inst.bytes.length / merged.bytes.length).toFixed(3), bytesVsBaked: +(1 - inst.bytes.length / baked.bytes).toFixed(3), bytesUncompressedVsMerged: +(1 - instRaw.bytes.length / mergedRaw.bytes.length).toFixed(3)},
   },
   groups: groupInfo,
-  instancesDetail: built.map(b => ({pandId: b.pandId, held: b.held ?? null, type: b.type, variant: b.variant, groundMode: b.report.groundMode, sides: b.report.sides ?? null, mirrored: !!b.report.mirrored, storeys: b.report.storeys, tris: b.report.triangles, lengthM: +b.rect.length.toFixed(2), widthM: +b.rect.width.toFixed(2), eavesM: +b.params.eavesM.toFixed(2), ridgeM: b.params.ridgeM && +b.params.ridgeM.toFixed(2), roof3dbag: b.roof?.form ?? null, roofUsed: b.report.roofForm, ridge: b.report.ridge, rectIoU: +b.iou.toFixed(3), frontBearingDeg: Math.round(bearingDeg(b.front.normal[0], b.front.normal[1])), frontStreet: b.front.street, frontStreetDistM: +b.front.streetDistanceM.toFixed(1), ambiguous: b.front.ambiguous, warnings: b.warnings})),
+  instancesDetail: built.map(b => ({pandId: b.pandId, held: b.held ?? null, ...(b.absorbed ? {absorbed: b.absorbed} : {}), type: b.type, variant: b.variant, groundMode: b.report.groundMode, sides: b.report.sides ?? null, mirrored: !!b.report.mirrored, storeys: b.report.storeys, tris: b.report.triangles, lengthM: +b.rect.length.toFixed(2), widthM: +b.rect.width.toFixed(2), eavesM: +b.params.eavesM.toFixed(2), ridgeM: b.params.ridgeM && +b.params.ridgeM.toFixed(2), roof3dbag: b.roof?.form ?? null, roofUsed: b.report.roofForm, ridge: b.report.ridge, rectIoU: +b.iou.toFixed(3), frontBearingDeg: Math.round(bearingDeg(b.front.normal[0], b.front.normal[1])), frontStreet: b.front.street, frontStreetDistM: +b.front.streetDistanceM.toFixed(1), ambiguous: b.front.ambiguous, warnings: b.warnings})),
 };
 fs.writeFileSync(path.join(dir, 'report.json'), JSON.stringify(report, null, 1) + '\n');
 fs.writeFileSync(path.join(dir, 'placements.json'), JSON.stringify({area, frame: 'x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south', anchor: input.anchor, placements: built.map(b => ({pand: b.pandId, type: b.type, variant: b.variant, groundMode: b.report.groundMode, transform: {positionEastNapSouth: b.position.map(v => +v.toFixed(3)), positionChunk: [b.position[0], 0, b.position[2]].map(v => +v.toFixed(3)), yawRad: +b.yaw.toFixed(5), lengthM: +b.params.lengthM.toFixed(2), widthM: +b.params.widthM.toFixed(2), eavesM: +b.params.eavesM.toFixed(2)}}))}, null, 1) + '\n');

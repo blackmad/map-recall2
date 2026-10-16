@@ -109,6 +109,8 @@ export interface HousePlacement {
   /** Pair module: this house is the left or right half of a pair whose crown straddles the party wall. */
   pair?: 'left' | 'right';
   overrides?: Partial<BodyIntent>;
+  /** This house's roof over the type's (`RoofIntent` minus the material: source, form, pitch, evidence). Absent = the type's roof, byte-identical. */
+  roof?: Partial<Omit<CanalHouseIntent['roof'], 'material'>>;
 }
 
 /** Colour slots a placement may measure per pand (`HousePlacement.measuredPalette`). */
@@ -241,7 +243,8 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
   if (t.fit?.widthM && perModule !== undefined && (perModule < t.fit.widthM[0] - 0.25 || perModule > t.fit.widthM[1] + 0.25)) deviations.push(`module width ${perModule.toFixed(2)} m outside the type's ${t.fit.widthM.join('-')} m`);
   const tag = `type ${t.id}${modules.length > 1 ? ` x${modules.length} modules` : ''}: crown ${modules.map(m => m.crown ?? place.crown ?? Object.keys(t.crowns)[0]).join('/')}` +
     `${modules.some(m => (m.mirror ?? place.mirror)) ? ', mirrored' : ''}${place.pair ? `, pair ${place.pair}` : ''}, palette ${paletteName}${Object.keys(measured).length ? ` + measured ${Object.entries(measured).map(([k, v]) => `${k} ${v}`).join(', ')}` : ''}`;
-  return {design: {fronts, roof: t.roof, palette, notes: [tag, ...(deviations.length ? [`type deviations: ${deviations.join('; ')}`] : [])]}, rhythm: t.rhythm, deviations};
+  const roof = place.roof && Object.keys(place.roof).length ? {...t.roof, ...place.roof} : t.roof;
+  return {design: {fronts, roof, palette, notes: [tag, ...(deviations.length ? [`type deviations: ${deviations.join('; ')}`] : [])]}, rhythm: t.rhythm, deviations};
 }
 
 /** Problems with the placements of a face: unknown types, pairs that do not pair, visual spans without evidence. */
@@ -270,6 +273,11 @@ export function placementProblems(types: Map<string, HouseTypeIntent>, houses: {
       const o = pl.paletteOverrides as Record<string, unknown>;
       if (!o || typeof o !== 'object' || Array.isArray(o) || !Object.keys(o).length) p.push(`${at}.paletteOverrides: an object of house-palette fields`);
       else for (const k of Object.keys(o)) if (!PALETTE_OVERRIDE_KEYS.includes(k as typeof PALETTE_OVERRIDE_KEYS[number])) p.push(`${at}.paletteOverrides.${k}: not a house-palette field (${PALETTE_OVERRIDE_KEYS.join(', ')})`);
+    }
+    if (pl.roof !== undefined) {
+      if (!pl.roof || typeof pl.roof !== 'object' || Array.isArray(pl.roof)) p.push(`${at}.roof: an object (source, form, pitchDeg, evidence)`);
+      else for (const k of Object.keys(pl.roof)) if (!['source', 'form', 'pitchDeg', 'evidence'].includes(k)) p.push(`${at}.roof.${k}: not a placement roof field (source, form, pitchDeg, evidence; the material is the type's)`);
+      if (pl.roof?.source === 'front' && !pl.roof.evidence) p.push(`${at}.roof.source front needs evidence (what on the strip shows the roof form)`);
     }
     if (pl.modules && pl.modules.length < 2) p.push(`${at}.modules: two or more modules (one module is the placement itself)`);
     if (pl.modules && pl.visualSpan) p.push(`${at}: visualSpan and modules are alternatives`);

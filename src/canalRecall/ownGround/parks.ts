@@ -282,7 +282,7 @@ export type SharedLayer = 'paving' | 'cycle';
 export const PARK_LIFT: Record<ParkSurface, number> = {
   lawn: 0.018, bed: 0.021, shrub: 0.021, bark: 0.021, sand: 0.022, gravel: 0.024, path: 0.024, paving: 0.024, cycle: 0.025, pond: 0.023,
 };
-const SURFACE_LAYER: Record<ParkSurface, ParkLayer | SharedLayer> = {
+export const SURFACE_LAYER: Record<ParkSurface, ParkLayer | SharedLayer> = {
   lawn: 'lawn', bed: 'bed', shrub: 'shrub', bark: 'bark', sand: 'sand', gravel: 'parkGravel', path: 'parkPath', paving: 'paving', cycle: 'cycle', pond: 'pond',
 };
 

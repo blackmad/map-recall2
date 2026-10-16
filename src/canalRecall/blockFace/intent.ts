@@ -127,6 +127,14 @@ export interface BlockFaceIntent {
       /** Pitch of the attic face (degrees, default 70: a steep tiled attic over the eaves, Bilderdijkstraat). A low pitch
        * (about 30) keeps the roof out of sight from the street, for fronts where the photo shows sky above the cornice. */
       pitchDeg?: number};
+    /**
+     * Row coherence (blockFace/rowCoherence.ts, default ON at 0.8 m): consecutive houses of one type built within two
+     * years of each other are one row; a member whose 3DBAG eaves stand more than `thresholdM` off the row's line
+     * without a photo measurement takes the row line (LoD2.2 reads a mansard top or a rear roof as the eaves on one
+     * house in a uniform row), and a ridge more than `thresholdM` over the row ridge is capped. `false` = off,
+     * byte-identical to before. Explicit `measuredEaves` always win.
+     */
+    rowCoherence?: false | {thresholdM: number};
     /** Clip street-side details at oblique party walls on every house of the face (FrontIntent `partyClip`). */
     partyClip?: boolean;
     /**
@@ -285,6 +293,8 @@ export function validateBlockFace(input: unknown, order?: string[], load: TypeLo
     if (roof?.keepSurvey?.length && !roof.evidence) problems.push('continuity.roof.keepSurvey needs evidence (why those pands keep the 3DBAG roof)');
   }
   if (face?.continuity?.partyClip !== undefined && typeof face.continuity.partyClip !== 'boolean') problems.push('continuity.partyClip must be boolean');
+  const rc = face?.continuity?.rowCoherence;
+  if (rc !== undefined && rc !== false && !(rc && typeof rc === 'object' && typeof rc.thresholdM === 'number' && rc.thresholdM >= 0.2 && rc.thresholdM <= 3)) problems.push('continuity.rowCoherence: false, or {thresholdM} between 0.2 and 3 m');
   problems.push(...canopyProblems(face, intents));
   if (problems.length) throw Error(`Invalid block face ${face?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return face;

@@ -17,6 +17,7 @@ import {canalhouseGroupToGlb} from '../canalhouse-recipes/export-glb.ts';
 import {compileBuilding} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
 import {evaluateLargeGates} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
+import {openingsWithinWallsGate} from '../../src/canalRecall/buildingRecipe/roofChecks.ts';
 import {trustFactsGround, type BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
 import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
@@ -39,6 +40,8 @@ export async function compileLargeHouse(id: string) {
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: m => m.userData.materialSlot as string, maxBytes: 2_000_000});
   const tris = await decodeTriangles(glb.bytes);
   const {gates, topology} = evaluateLargeGates(tris, built);
+  // Openings inside their walls and clear of the roof planes (roofChecks.ts, with the landmark pipeline's hard gate).
+  gates.push(openingsWithinWallsGate(built.group, m => m.userData.materialSlot as string).gate);
   const out = path.join(ARTIFACTS, id);
   await fs.mkdir(out, {recursive: true});
   await fs.writeFile(path.join(out, 'model.glb'), glb.bytes);
@@ -49,7 +52,7 @@ export async function compileLargeHouse(id: string) {
     partyWallBearings: [...new Set(built.panels.filter(p => p.partyH > 0.5 && p.uMax - p.uMin >= 8 && r.panelGroup[p.index] < 0).map(p => Math.round(bearingOfNormal(p.n))))].sort((a, b) => a - b),
     triangles: glb.triangles, bytes: glb.bytes.length, materials: glb.materials, sha256: createHash('sha256').update(glb.bytes).digest('hex'),
     gates, topology: {components: topology.components, floating: topology.floating, openEdges: topology.openEdges, openEdgeLengthM: +topology.openEdgeLengthM.toFixed(2), openEdgeSamples: topology.openEdgeSamples},
-    passed: gates.every(g => g.pass), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
+    passed: gates.every(g => g.pass || g.advisory), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
   // Likeness to the archived photos (needs MAP_RECALL_SOURCE_DATA; a warning, not a gate: install-large decides).
   // Tints the intent measured (measure.ts --write): drawn as measured once the exporter marks them `tintSource: "measured"`.
   const measuredTints = new Set<string>();
