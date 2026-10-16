@@ -216,12 +216,16 @@ if (!ONLY || ONLY === 'designs') {
     try {
       const b = await load(glb);
       const sx = b.max[0] - b.min[0], sz = b.max[2] - b.min[2], hgt = b.max[1] - b.min[1];
-      // Look at the long side from 35° off its normal, slightly from above.
-      const longX = sx >= sz, az = longX ? 35 : 90 - 35;
-      const across = longX ? sx : sz, depth = longX ? sz : sx;
-      const w = across * Math.cos(35 * Math.PI / 180) + depth * Math.sin(35 * Math.PI / 180) + 4;
-      const png = await shoot([(b.min[0] + b.max[0]) / 2, b.min[1] + hgt / 2, (b.min[2] + b.max[2]) / 2], w, hgt + 4, az, b.min[1], 12);
-      manifest.designs[key] = { unit, render: { file: await writeJpeg(`design-${key}-kit`, png), label: `Kit render of ${unit}` } };
+      // Which side is the front is not in the GLB (a slab fronts its long side, a row house its short one): shoot the
+      // four three-quarter views and keep the busiest (windows and doors), not a blank party wall or gable.
+      let png: Buffer | null = null, best = -1;
+      for (const az of [35, 125, 215, 305]) {
+        const a = az * Math.PI / 180, w = Math.abs(sx * Math.cos(a)) + Math.abs(sz * Math.sin(a)) + 4;
+        const shot = await shoot([(b.min[0] + b.max[0]) / 2, b.min[1] + hgt / 2, (b.min[2] + b.max[2]) / 2], w, hgt + 4, az, b.min[1], 12);
+        const st = await sharp(shot).extract({ left: W / 2, top: H / 2, width: W, height: H }).greyscale().stats();
+        if (st.channels[0].stdev > best) { best = st.channels[0].stdev; png = shot; }
+      }
+      manifest.designs[key] = { unit, render: { file: await writeJpeg(`design-${key}-kit`, png!), label: `Kit render of ${unit}` } };
     } catch (e) { manifest.missing.push(`design:${key}:render ${(e as Error).message}`); }
     console.log(`design ${key}: ${manifest.designs[key]?.render ? 'render' : '-'}`);
   }
