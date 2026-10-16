@@ -252,16 +252,26 @@ export function uncoveredShare(ring: readonly Vec2[], rects: ReadonlyArray<{ cx:
   let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
   for (const [x, y] of pts) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
   let total = 0, bare = 0;
-  for (let i = 0; i < grid; i++) for (let j = 0; j < grid; j++) {
-    const x = x0 + ((i + 0.5) / grid) * (x1 - x0), y = y0 + ((j + 0.5) / grid) * (y1 - y0);
-    let c = false;
+  // Scanline form of the even-odd test: per grid row, the same edge crossings (same formula) once, then each
+  // column counts the crossings to its right. Identical inside/outside answers to testing every sample against
+  // every edge, without the grid² × edges loop (roof planning during tile flushes, docs/perf-motion-stutter-20261016.md).
+  const xs = new Float64Array(n);
+  for (let j = 0; j < grid; j++) {
+    const y = y0 + ((j + 0.5) / grid) * (y1 - y0);
+    let m = 0;
     for (let a = 0, b = n - 1; a < n; b = a++) {
       const [xa, ya] = pts[a], [xb, yb] = pts[b];
-      if ((ya > y) !== (yb > y) && x < ((xb - xa) * (y - ya)) / (yb - ya) + xa) c = !c;
+      if ((ya > y) !== (yb > y)) xs[m++] = ((xb - xa) * (y - ya)) / (yb - ya) + xa;
     }
-    if (!c) continue;
-    total++;
-    if (!rects.some(r => Math.abs((x - r.cx) * r.ux + (y - r.cy) * r.uy) <= r.len / 2 && Math.abs(-(x - r.cx) * r.uy + (y - r.cy) * r.ux) <= r.wid / 2)) bare++;
+    if (!m) continue;
+    for (let i = 0; i < grid; i++) {
+      const x = x0 + ((i + 0.5) / grid) * (x1 - x0);
+      let c = false;
+      for (let k = 0; k < m; k++) if (x < xs[k]) c = !c;
+      if (!c) continue;
+      total++;
+      if (!rects.some(r => Math.abs((x - r.cx) * r.ux + (y - r.cy) * r.uy) <= r.len / 2 && Math.abs(-(x - r.cx) * r.uy + (y - r.cy) * r.ux) <= r.wid / 2)) bare++;
+    }
   }
   return total ? bare / total : 0;
 }
