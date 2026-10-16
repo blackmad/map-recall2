@@ -8,7 +8,8 @@ import { GROUND_LOOKS, GROUND_LOOK_DEFAULT, groundPalette } from '../ownGround/g
 import { GROUND_LAYERS, type BuiltCell, type GroundLayer } from '../ownGround/groundCell.ts';
 import { basemapGroundColour } from '../ownGround/basemapPalette.ts';
 import { flatLayerTones, overviewLayerColours, OVERVIEW_SKIPPED, toneRgb } from '../overviewTiles/layerColours.ts';
-import { layerId, layerOfId, rasterLayerIds } from '../overviewTiles/raster.ts';
+import { fillPolygons, layerId, layerOfId, rasterLayerIds, ROOF_ID } from '../overviewTiles/raster.ts';
+import { footprintTone } from '../overviewTransition/basemapOverview.ts';
 import { isEmptyTile, lngLatOfTile, parentTile, renderTile, tileOf, TILE_PX } from '../overviewTiles/tiles.ts';
 import { overviewTilesBeforeId, overviewTilesPlan, tilesetMismatch, OVERVIEW_TILES_DIR, type OverviewTilesManifest } from '../overviewTiles/tileset.ts';
 
@@ -47,13 +48,14 @@ test('the basemap patches beyond the tiles wear the same land, water and park', 
 });
 
 const manifestFor = (look: typeof GROUND_LOOK_DEFAULT): OverviewTilesManifest => ({
-  version: 1, look, colours: overviewLayerColours(groundPalette(look), GROUND_LAYERS), minzoom: 11, maxzoom: 16,
+  version: 1, look, colours: overviewLayerColours(groundPalette(look), GROUND_LAYERS), roof: footprintTone(), minzoom: 11, maxzoom: 16,
   bounds: [4.7, 52.2, 5.1, 52.5], tiles: 1, bytes: 1, built: '', attribution: '',
 });
 
 test('tiles baked in one palette are refused under another', () => {
   assert.deepEqual(tilesetMismatch(manifestFor('bright'), 'bright'), []);
   assert.ok(tilesetMismatch(manifestFor('bright'), 'legacy-ish').includes('water'));
+  assert.deepEqual(tilesetMismatch({ ...manifestFor('bright'), roof: [0, 0, 0] }, 'bright'), ['roof']);
   const plan = overviewTilesPlan(manifestFor('bright'), 'http://x/root', [], 'measured');
   assert.ok('skip' in plan);
   assert.ok('skip' in overviewTilesPlan(null, 'http://x/root', []));
@@ -67,14 +69,15 @@ test('the published tileset is baked in the default palette (re-run the generato
   assert.deepEqual(tilesetMismatch(m, GROUND_LOOK_DEFAULT), []);
 });
 
-test('the tiles sit above the basemap ground and below its buildings and labels', () => {
+test('the tiles sit above the basemap ground and flat footprints, below its 3D buildings and labels', () => {
   const layers = [
     { id: 'background', type: 'background' }, { id: 'park', type: 'fill', 'source-layer': 'park' }, { id: 'water', type: 'fill', 'source-layer': 'water' },
     { id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'building', type: 'fill', 'source-layer': 'building' },
+    { id: 'cycle-tracks', type: 'line', source: 'cycle-tracks' }, { id: 'building-3d', type: 'fill-extrusion', 'source-layer': 'building' },
     { id: 'road_label', type: 'symbol', 'source-layer': 'transportation_name' },
   ];
-  assert.equal(overviewTilesBeforeId(layers), 'building');
-  assert.equal(overviewTilesBeforeId(layers.slice(0, 4)), undefined);
+  assert.equal(overviewTilesBeforeId(layers), 'cycle-tracks');
+  assert.equal(overviewTilesBeforeId(layers.slice(0, 5)), undefined);
 });
 
 test('tile maths: a point lies in its tile; pyramids average by coverage', () => {
@@ -101,4 +104,13 @@ test('the rasteriser keeps the topmost layer, and the higher draw rank within 2 
   assert.equal(at(cell({ land: quad(0.5), asphalt: quad(0) })), 'land');
   assert.equal(at(cell({ land: quad(0), paint: quad(0.01) }), OVERVIEW_SKIPPED as Set<GroundLayer>), 'land');
   assert.equal(layerOfId(layerId('water')), 'water');
+});
+
+test('footprints fill by pixel centre, holes left open', () => {
+  const out = new Uint8Array(100);
+  // A 10 m square with a 4 m hole, 1 m pixels over [0, 10]².
+  fillPolygons(out, [[[[0, 0], [10, 0], [10, 10], [0, 10]], [[3, 3], [7, 3], [7, 7], [3, 7]]]], 0, 0, 10, 10, 1, ROOF_ID);
+  assert.equal(out[0], ROOF_ID);
+  assert.equal(out[5 * 10 + 5], 0);
+  assert.equal(out.filter(v => v === ROOF_ID).length, 100 - 16);
 });
