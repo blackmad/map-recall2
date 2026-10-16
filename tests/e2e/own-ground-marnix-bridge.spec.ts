@@ -9,13 +9,17 @@ import { openRoute } from './helpers';
 test.skip(!process.env.OWN_GROUND, 'set OWN_GROUND=1');
 
 const OUT = process.env.SHOT_DIR ?? 'artifacts/own-ground-marnix-bridge';
-const C: [number, number] = [4.87615, 52.37375];
+// SHOT_AT=lng,lat aims the same views at another bridge (SHOT_NAME prefixes the files); ROADS=0 the OSM bands.
+// SHOT_LIST=name:lng,lat;name:lng,lat shoots several places in one boot.
+const PLACES: [string, [number, number]][] = process.env.SHOT_LIST
+  ? process.env.SHOT_LIST.split(';').map(e => { const [n, c] = e.split(':'); return [n, c.split(',').map(Number) as [number, number]]; })
+  : [[process.env.SHOT_NAME ?? '', (process.env.SHOT_AT?.split(',').map(Number) as [number, number] | undefined) ?? [4.87615, 52.37375]]];
 const offset = (p: [number, number], east: number, north: number): [number, number] =>
   [p[0] + east / (111320 * Math.cos(p[1] * Math.PI / 180)), p[1] + north / 111320];
 
 async function boot(page: Page): Promise<void> {
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
-  if (process.env.ROADS === 'bgt') await page.addInitScript(() => { (window as any).__canalRecallRoads = true; });
+  if (process.env.ROADS) { const on = process.env.ROADS === 'bgt'; await page.addInitScript(on => { (window as any).__canalRecallRoads = on; }, on); }
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   await page.addStyleTag({ content: 'body * { visibility: hidden !important; } #vector-map, #vector-map * { visibility: visible !important; }' });
@@ -59,7 +63,8 @@ test('Marnixstraat bridge frames', async ({ page }, info) => {
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
   await boot(page);
-  const P = `${info.project.name}${process.env.ROADS === 'bgt' ? '-bgt' : ''}`;
+  for (const [place, C] of PLACES) {
+  const P = `${place ? `${place}-` : ''}${info.project.name}${process.env.ROADS ? `-roads${process.env.ROADS}` : ''}`;
   // The chase angle: riding south down Marnixstraat (bearing ~190), the Nassaukade over the Singelgracht to the right.
   const views: [string, [number, number], number, [number, number], number, boolean][] = [
     ['chase-south', offset(C, 1, 30), 3.2, offset(C, -1, -8), 0.5, false],
@@ -72,5 +77,6 @@ test('Marnixstraat bridge frames', async ({ page }, info) => {
   for (const [name, from, up, to, toUp, water] of views) {
     await lookFrom(page, from, up, to, toUp, water);
     await page.screenshot({ path: `${OUT}/${P}-${name}.png` });
+  }
   }
 });

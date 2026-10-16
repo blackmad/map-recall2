@@ -284,7 +284,7 @@ export const PIER_SPAN_M = 12;
 /** Railing geometry, metres. */
 export const RAILING = { height: 1.05, post: 0.07, rail: 0.05, plinthWidth: 0.28 };
 /** The brick-rail parapet (ParapetClass 'brick-rail'): wall height and width over the deck edge, end piers (half size, height, stone cap), metres. */
-export const BRICK_RAIL = { wall: 0.5, width: 0.4, pier: 0.24, pierTop: 1.12, cap: 0.08, postStep: 1.8 };
+export const BRICK_RAIL = { wall: 0.35, width: 0.4, pier: 0.24, pierTop: 1.12, cap: 0.08, postStep: 1.8 };
 
 function lerpRow(a: KitRow, b: KitRow, s: number): KitRow {
   const t = b.s > a.s ? Math.max(0, Math.min(1, (s - a.s) / (b.s - a.s))) : 0, l = (x: number, y: number) => x + (y - x) * t;
