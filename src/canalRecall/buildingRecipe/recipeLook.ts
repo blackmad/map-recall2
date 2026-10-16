@@ -29,6 +29,7 @@ import {cityLookEnabled, getCityLook, type CityLook} from '../look/cityLook.ts';
 import {INFERRED_SLOT_SOURCE} from '../look/materialSlotInference.ts';
 import {MATERIAL_SLOTS, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type TintSource} from '../look/palette.ts';
 import {sceneSlotHex} from '../look/sunny.ts';
+import {photoMatchedWallTint, type WallExposure} from '../look/chunkWallExposure.ts';
 
 /** A GLB material's `materialSlot` extra (look/palette.ts owns the slot → cell/tint mapping). */
 export type RecipeSlot = MaterialSlot;
@@ -81,13 +82,17 @@ export interface RecipeLook {
   /**
    * Replace slot-tagged materials under `root`; returns how many meshes changed.
    * `context.year` (BAG construction year, `?cityLook=1` only) picks the city look's era brick; the legacy path ignores it.
+   * `context.wallExposure`: the model's walls were matched to a photo under this exposure (street chunks,
+   * look/chunkWallExposure.ts); the sunny look draws them at that photo's colour normalised to sunlight.
    */
-  apply(root: any, context?: {year?: number | null}): number;
+  apply(root: any, context?: RecipeLookContext): number;
   /** `?cityLook=1`: the shared city look behind this adapter (look/cityLook.ts); absent on the legacy path. */
   readonly city?: CityLook;
   /** `?cityLook=1`: resolves when its atlas is painted (apply before this and the slots would draw black for a frame). */
   readonly ready?: Promise<void>;
 }
+
+export type RecipeLookContext = {year?: number | null; wallExposure?: WallExposure | null};
 
 export type RecipeLookOptions = {
   document?: Document;
@@ -120,7 +125,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
   if (options.cityLook ?? cityLookEnabled()) {
     // Thin adapter: callers keep `apply` / `enuFromWorld`; the city look does the work.
     const city = getCityLook(THREE, {document: options.document, brick: options.brick, anisotropy: options.anisotropy});
-    return {enuFromWorld: city.uniforms.enuFromWorld, lit, city, ready: city.ready, apply: (root, context) => city.dress(root, {lit, infer: !!options.inferSlots, year: context?.year ?? null})};
+    return {enuFromWorld: city.uniforms.enuFromWorld, lit, city, ready: city.ready, apply: (root, context) => city.dress(root, {lit, infer: !!options.inferSlots, year: context?.year ?? null, wallExposure: context?.wallExposure ?? null})};
   }
   const doc = options.document ?? document;
   const enuFromWorld = {value: new THREE.Matrix3()};
@@ -153,9 +158,11 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     }
   };
   const materials = new Map<string, any>();
-  const materialFor = (slot: RecipeSlot, tintHex: string, side: number, source?: TintSource | null) => {
-    // Sunny look (look/sunny.ts): a measured wall is first brought to its sunlit exposure.
-    const tint = cityTint(slot, sceneSlotHex(slot, tintHex, source), source), key = `${slot}|${tint}|${side}${source === 'measured' && slot === 'glass' ? '|measured' : ''}`;
+  const materialFor = (slot: RecipeSlot, tintHex: string, side: number, source?: TintSource | null, white?: string | null, exposure?: WallExposure | null) => {
+    // Sunny look (look/sunny.ts): a measured wall is first brought to its sunlit exposure (from the white it carries, else
+    // by hex); a photo-matched chunk wall is brought from its strip's exposure (look/chunkWallExposure.ts).
+    const tint = photoMatchedWallTint(slot, cityTint(slot, sceneSlotHex(slot, tintHex, source, undefined, white), source), exposure, source);
+    const key = `${slot}|${tint}|${side}${source === 'measured' && slot === 'glass' ? '|measured' : ''}`;
     let m = materials.get(key);
     if (!m && lit) {
       // Same cell, same tint, same metre scale; the texture is decoded from
@@ -184,7 +191,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
   return {
     enuFromWorld,
     lit,
-    apply(root: any) {
+    apply(root: any, context?: RecipeLookContext) {
       let changed = 0;
       root.traverse((o: any) => {
         if (!o.isMesh || Array.isArray(o.material)) return;
@@ -193,7 +200,8 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
         // Slots inferred into a legacy GLB (look/materialSlotInference.ts) only take part in the city look (`?cityLook=1`).
         if (o.material.userData.materialSlotSource === INFERRED_SLOT_SOURCE) return;
         const previous = o.material;
-        o.material = materialFor(slot, tint, previous.side, previous.userData?.tintSource === 'measured' ? 'measured' : null);
+        const measured = previous.userData?.tintSource === 'measured';
+        o.material = materialFor(slot, tint, previous.side, measured ? 'measured' : null, measured ? previous.userData?.tintWhitePoint ?? null : null, context?.wallExposure);
         if (!previous.userData?.[RECIPE_LOOK_SHARED]) previous.dispose();
         changed++;
       });
