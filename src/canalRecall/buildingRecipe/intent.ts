@@ -111,7 +111,7 @@ export const QUOINS = ['none', 'stone'] as const;
  * pand keeps its own piece (blockFace/intent.ts).
  */
 export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch', 'rigid'] as const;
-export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
+export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review', 'orthophoto'] as const;
 /**
  * A timber oriel stack (`bayWindows.oriel`, Bellamybuurt 1915: Hasebroekstraat 53-67 and 56-70, measured on the
  * 2024-12-11 strip at 40 px/m): a three-face projecting bay `span` metres wide centred on the spanned axes (not the whole
@@ -867,7 +867,13 @@ export interface LargeBuildingIntent {
   otherWalls?: LargeSystemName;
   /** Lift overrun and plant boxes on the largest flat roof. */
   roofPlant?: boolean;
-  roof?: {material: typeof ROOF_MATERIALS[number]};
+  /**
+   * Roof material. `material` covers every 3DBAG roof plane by default. From the orthophoto (2026-10-16, Entrepotdok):
+   * `flat` re-materials the flat class (< 8°) of the default (a dark membrane under solar panels where the default's
+   * flat tone would draw as pale gravel), and `surfaces` re-materials listed 3DBAG roof planes (the trailing number of
+   * `roofsRD[].surfaceId`, `roof-dump.ts --surfaces`) with the evidence for it. Absent: unchanged output.
+   */
+  roof?: LargeRoofIntent;
   palette: PaletteIntent;
   /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
   closedBands?: boolean;
@@ -896,8 +902,14 @@ export interface LargeBuildingIntent {
    * The intent carries values measured from the rectified photos (`measure.ts --write`, the evidence in
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
    */
-  measured?: {date: string; groups: number[]};
+  measured?: {date: string; groups: number[]; /** `palette.brick` (the unlisted walls' colour) was measured too, so it is drawn as is */ otherWalls?: boolean};
   notes?: string[];
+}
+export type RoofMaterial = typeof ROOF_MATERIALS[number];
+export interface LargeRoofIntent {
+  material: RoofMaterial;
+  flat?: RoofMaterial;
+  surfaces?: {roofSurfaces: number[]; material: RoofMaterial; evidence: string}[];
 }
 
 export type BuildingIntent = CanalHouseIntent | LargeBuildingIntent;

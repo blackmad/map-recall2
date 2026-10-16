@@ -6,7 +6,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { classifyHouseboatHull, houseboatFrame, houseboatGeometry, houseboatKind, type Houseboat, type HouseboatKind } from '../src/canalRecall/houseboats.ts';
+import { HOUSEBOAT_KIND_OVERRIDES, classifyHouseboatHull, houseboatFrame, houseboatGeometry, houseboatKind, type Houseboat, type HouseboatKind } from '../src/canalRecall/houseboats.ts';
+import { ROOF_CLASS_HEX, roofClass } from './houseboat-kinds/roofClass.ts';
 
 const rectangle: [number, number][] = [[-10, -2], [10, -2], [10, 2], [-10, 2]];
 const densify = (ring: [number, number][]) => ring.flatMap((p, i) => { const q = ring[(i + 1) % ring.length]; return Array.from({ length: 8 }, (_, j) => [p[0] + (q[0] - p[0]) * j / 8, p[1] + (q[1] - p[1]) * j / 8] as [number, number]); });
@@ -29,7 +30,9 @@ const { boats }: { boats: Houseboat[] } = JSON.parse(fs.readFileSync('public/dat
 const byId = new Map(boats.map(b => [b.id, b]));
 const frameOf = (id: string) => { const f = houseboatFrame(byId.get(id)!); assert(f, `${id} has a frame`); return f; };
 const hull = (id: string) => { const f = frameOf(id); return classifyHouseboatHull(f.local, f.length, f.width); };
-const drawn = (id: string) => { const f = frameOf(id); return houseboatKind(id, f.local, f.length, f.width); };
+/** What the game draws: photo facts from the extract first, the footprint (+ hash) otherwise. */
+const drawnBoat = (b: Houseboat) => { const f = houseboatFrame(b)!; return b.stale ? 'hidden' : HOUSEBOAT_KIND_OVERRIDES[b.id] ?? b.form ?? houseboatKind(b.id, f.local, f.length, f.width); };
+const drawn = (id: string) => drawnBoat(byId.get(id)!);
 
 // Real outlines from the orthophoto sample, pinned by id.
 for (const id of ['w277293288', 'w274024163', 'w277259764']) assert.equal(hull(id), 'ship', `${id}: long barge with rounded ends was an ark under the ±0.46 L rule`);
@@ -55,13 +58,36 @@ const score = (set?: string) => {
 };
 assert(score() >= 0.93, `hull accuracy on all labels ${score().toFixed(3)} (old rule 0.833)`);
 assert(score('ring') >= 0.95, `hull accuracy on the blind ring-canal set ${score('ring').toFixed(3)} (old rule 0.948)`);
-execFileSync('npx', ['tsx', 'scripts/houseboat-kinds/overrides.ts', '--check'], { stdio: 'inherit' });
+execFileSync('npx', ['tsx', 'scripts/houseboat-kinds/enrich.ts', '--check'], { stdio: 'inherit' });
+
+// Named regressions from the city photo pass (2026-10-16): the Amstel by the Blauwbrug, where
+// the footprint drew a sky-blue-roofed hullbox as an ark, and Brouwersgracht, where a 4 m
+// outline holds only a dinghy.
+assert.equal(drawn('w268782267'), 'hullbox', 'Amstel at Blauwbrug w268782267: hullbox, not an ark');
+assert.equal(drawn('w266550796'), 'hidden', 'Brouwersgracht w266550796: a dinghy berth, not a houseboat');
+assert.equal(houseboatGeometry(byId.get('w266550796')!, { lng: 4.88, lat: 52.38 }), null, 'a stale outline draws nothing');
+// Photo coverage: every boat a person could see carries its form; the hash split is the remainder.
+const photo = boats.filter(b => b.form || b.stale).length;
+const hashed = boats.filter(b => !b.form && !b.stale && !HOUSEBOAT_KIND_OVERRIDES[b.id] && (f => f && classifyHouseboatHull(f.local, f.length, f.width) === 'ship')(houseboatFrame(b))).length;
+assert(photo >= 1600 && hashed <= 60, `photo facts on ${photo} boats, ${hashed} ship hulls left to the hash`);
+// Roof classes: the flight's blue haze is not a blue roof; white stays white.
+assert.equal(roofClass([97, 112, 118]), 'grey');
+assert.equal(roofClass([200, 198, 190]), 'white');
+assert.equal(roofClass([80, 110, 60]), 'sedum');
+assert(boats.every(b => !b.roofHex || Object.values(ROOF_CLASS_HEX).includes(b.roofHex)), 'roofHex is a roof class colour');
+// A measured cabin share sets a hullbox cabin's length.
+{
+  const b = byId.get('w266555535')!, origin = { lng: b.ring[0][0], lat: b.ring[0][1] }, f = frameOf(b.id);
+  const span = (g: NonNullable<ReturnType<typeof houseboatGeometry>>) => { const us = g.tris.filter(t => t.p.every(p => p[2] > 1.2 && p[2] < 2.5)).flatMap(t => t.p).map(p => p[0] * f.ux + p[1] * f.uy); return Math.max(...us) - Math.min(...us); };
+  const short = span(houseboatGeometry({ ...b, form: 'hullbox', cabinShare: 0.5 }, origin)!), long = span(houseboatGeometry({ ...b, form: 'hullbox', cabinShare: 0.9 }, origin)!);
+  assert(long - short > 0.3 * f.length, `cabin share 0.5 → ${short.toFixed(1)} m, 0.9 → ${long.toFixed(1)} m on a ${f.length.toFixed(1)} m hull`);
+}
 
 const counts: Record<string, number> = {};
 for (const boat of boats) {
   const f = houseboatFrame(boat);
   if (!f) continue;
-  const kind = houseboatKind(boat.id, f.local, f.length, f.width);
+  const kind = drawnBoat(boat);
   counts[kind] = (counts[kind] ?? 0) + 1;
   const origin = { lng: boat.ring[0][0], lat: boat.ring[0][1] };
   if (boat.id === 'w96706553') {
@@ -71,8 +97,9 @@ for (const boat of boats) {
     assert(hullVertices.every(p => f.pts.some(q => Math.hypot(p[0] - q[0], p[1] - q[1]) < 1e-8)), 'pontoon waterline preserves mapped notch vertices rather than fitted rectangle');
   }
 }
-// What the city draws: open barges are a minority of ship hulls (old rule: 960 barges, no hullboxes).
-assert(counts.barge < 500 && counts.hullbox > counts.barge && counts.ark > 1900, `kinds ${JSON.stringify(counts)}`);
+// What the city draws: open barges are a minority of ship hulls (old rule: 960 barges, no
+// hullboxes); about 200 outlines are empty berths or dinghies on the photo.
+assert(counts.barge < 450 && counts.hullbox > counts.barge && counts.ark > 1800 && counts.hidden > 150 && counts.hidden < 260, `kinds ${JSON.stringify(counts)}`);
 
 // Geometry per kind: a hullbox has no flag and keeps its cabin inside the hull; a barge flies the flag.
 const flagRed = '#ae1c28';
