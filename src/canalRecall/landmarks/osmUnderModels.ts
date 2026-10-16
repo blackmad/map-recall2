@@ -153,7 +153,7 @@ export function overlapFraction(subject: Ring, footprint: Footprint | readonly R
   return inside / total;
 }
 
-export interface TileBuilding { id: string; height: number | undefined; rings: Ring[] }
+export interface TileBuilding { id: string; height: number | undefined; rings: Ring[]; /** Tile roofShape (absent = flat box). */ roofShape?: string }
 
 export interface UnderHit { id: string; overlap: number; height: number | undefined; areaM2: number }
 
