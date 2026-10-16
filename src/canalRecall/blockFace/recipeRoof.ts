@@ -106,7 +106,9 @@ export interface RecipeRoofInput {
    * A front whose eaves reach the attic top (a tower bay: a front-plane wall to its measured top, no tower body)
    * takes the roof of the front beside it.
    */
-  fronts?: {id: string; eavesM: number; endpointsRD: number[][]}[];
+  fronts?: {id: string; eavesM: number; endpointsRD: number[][];
+    /** `stepBody`: a raised front with a full-depth body: never a tower bay, its band keeps its own eaves. */
+    body?: boolean}[];
   /**
    * Front forms per front id (see `FrontRoofSpec`); absent = the 3DBAG-bounded attic/flat rule for every band,
    * byte-identical. A single-front pand keys its form by `frontId` (or the one entry).
@@ -402,7 +404,7 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const bands: {lo: number; hi: number; eaves: number; id?: string; centre: number; fLo: number; fHi: number}[] = fronts.length < 2 ? [{lo: -Infinity, hi: Infinity, eaves: E, id: input.frontId, centre: (e0a + e1a) / 2, fLo: Math.min(e0a, e1a), fHi: Math.max(e0a, e1a)}] : fronts.map((f, i) => ({
     lo: i === 0 ? -Infinity : (fronts[i - 1].hi + f.lo) / 2, hi: i === fronts.length - 1 ? Infinity : (f.hi + fronts[i + 1].lo) / 2, eaves: f.eavesM, id: f.id, centre: (f.lo + f.hi) / 2, fLo: f.lo, fHi: f.hi}));
   if (fronts.length >= 2) {
-    const plain = bands.map((b, i) => tower(b.eaves) ? -1 : i);
+    const plain = bands.map((b, i) => tower(b.eaves) && !fronts[i].body ? -1 : i);
     for (const [i, b] of bands.entries()) if (plain[i] < 0) {
       const j = plain.filter(k => k >= 0).sort((a, c) => Math.abs(a - i) - Math.abs(c - i) || a - c)[0];
       b.eaves = j === undefined ? E : bands[j].eaves;

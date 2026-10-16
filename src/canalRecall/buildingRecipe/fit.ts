@@ -62,7 +62,9 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   'casement-triple': {verticalBars: [.27, .73], mullionWidthM: .05},
   // Jan Evertsenstraat 129 / 93: two casement pairs under one top light (four lights); 133-135: a casement pair, no top light.
   'casement-toplight-double': {verticalBars: [.25, .5, .75], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05},
+  'casement-gridded-toplight-double': {verticalBars: [.25, .5, .75], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05, diagonalBars: [.125, .375, .625, .875].map(x => [[x, .81], [x, .95]] as [[number, number], [number, number]])},
   'casement-pair': {verticalBars: [.5], mullionWidthM: .05},
+  'casement-small-panes': {verticalBars: [.25, .5, .75], horizontalBars: [.36, .8], horizontalBarWidthsM: [.03, .05], mullionWidthM: .05},
 };
 /** Share of the storey height above a window head when `windowHeights` is given (survey median, all eras). */
 const HEAD_LINE = 0.86;

@@ -9,7 +9,7 @@
 import type {FrontIntent, PaletteIntent, ShopAwningIntent, WindowKind} from './intent.ts';
 
 /** Window kinds an `axisWindows` entry may name (kept in step with intent.ts WINDOWS; a type-only import keeps the cycle out). */
-export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-pair'];
+export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes'];
 
 /** Problems with a shop awning's rigid-canopy fields (`glassBlocks`, `wallCourses`). */
 export function awningProblems(aw: ShopAwningIntent, at: string): string[] {
@@ -33,6 +33,7 @@ export function deBaarsjesProblems(f: FrontIntent, palette: PaletteIntent | unde
     if (!Array.isArray(f.bayFill) || f.bayFill.length !== grid || f.bayFill.some(x => typeof x !== 'number' || !(x >= 0.3 && x <= 1))) p.push(`${at}.bayFill: ${grid} window shares of their bays (one per axis), each 0.3..1`);
     if (!f.bayWidths) p.push(`${at}.bayFill: needs bayWidths (the bays the windows fill)`);
   }
+  if (f.stepBody !== undefined && f.stepBody !== true) p.push(`${at}.stepBody: true (or absent)`);
   if (f.axisWindows !== undefined) {
     const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays]));
     const o = f.axisWindows as unknown;
