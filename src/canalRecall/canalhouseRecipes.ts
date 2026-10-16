@@ -208,6 +208,24 @@ export interface CanalhouseCrownOptions {
   capRiseM?: number;
   /** Clock shoulder power: 1 straight, >1 concave, <1 convex. Omit for legacy sine. */
   shoulderCurve?: number;
+  /**
+   * Named flank curve for clock and neck crowns (overrides `shoulderCurve`), foot to neck, mirrored on both flanks:
+   * `concave` a quarter ellipse, flat at the foot and tangent to the neck (a claw piece, a bell's flare: the Wallen
+   * fronts measure 0.1 of the climb at mid-flank, the ellipse gives 0.13); `ogee` concave below and convex above (an S);
+   * `straight` a plain slant; `convex` the quarter-sine bulge.
+   */
+  shoulder?: CrownShoulder;
+}
+export type CrownShoulder = 'concave' | 'ogee' | 'straight' | 'convex';
+/** Flank samples (f along foot->neck, h up eaves->shoulder), both in [0, 1], foot first. */
+export function crownShoulderCurve(shoulder: CrownShoulder, segments = 8): [number, number][] {
+  return Array.from({length: segments + 1}, (_, i) => {
+    const u = i / segments;
+    if (shoulder === 'concave') { const a = u * Math.PI / 2; return [Math.sin(a), 1 - Math.cos(a)] as [number, number]; }
+    if (shoulder === 'ogee') return [u, u < 0.5 ? 2 * u * u : 1 - 2 * (1 - u) ** 2] as [number, number];
+    if (shoulder === 'straight') return [u, u] as [number, number];
+    return [u, Math.sin(u * Math.PI / 2)] as [number, number];
+  });
 }
 export function canalhouseCrownProfile(type: GableType, widthM: number, eavesM: number, topM: number,
   neckWidthM: number, shoulderM: number, steps: number, options: CanalhouseCrownOptions = {}): CanalhousePoint[] {
@@ -218,7 +236,8 @@ export function canalhouseCrownProfile(type: GableType, widthM: number, eavesM: 
   if(crest<0||crest>neckWidthM||rise<0||rise>topM-shoulderM+EPS||
     !['flat','rounded','pediment'].includes(cap)||(cap==='flat'&&rise!==0)||
     (cap!=='flat'&&(crest===0||rise===0))||
-    (options.shoulderCurve!==undefined&&(options.shoulderCurve<.25||options.shoulderCurve>8)))throw new Error('Invalid crown cap or shoulder dimensions');
+    (options.shoulderCurve!==undefined&&(options.shoulderCurve<.25||options.shoulderCurve>8))||
+    (options.shoulder!==undefined&&!['concave','ogee','straight','convex'].includes(options.shoulder)))throw new Error('Invalid crown cap or shoulder dimensions');
   if(Object.keys(options).length&&!['klok','hals','lijst'].includes(type))throw new Error('Cap controls require a clock, neck or list crown');
   const mid = widthM/2, left = (widthM-neckWidthM)/2, right = widthM-left;
   if (type === 'lijst' && !Object.keys(options).length) return [[0,eavesM],[widthM,eavesM]];
@@ -242,6 +261,13 @@ export function canalhouseCrownProfile(type: GableType, widthM: number, eavesM: 
   capPoints.push([right,capBase]);
   const compact=(points:CanalhousePoint[])=>points.filter((p,i)=>i===0||Math.hypot(p[0]-points[i-1][0],p[1]-points[i-1][1])>EPS);
   if (type === 'lijst') return compact([[0,eavesM],[left,eavesM],...capPoints,[right,eavesM],[widthM,eavesM]]);
+  if ((type === 'klok' || type === 'hals') && options.shoulder) {
+    const curve = crownShoulderCurve(options.shoulder), out: CanalhousePoint[] = [];
+    for (const [f, h] of curve) out.push([left*f, eavesM+(shoulderM-eavesM)*h]);
+    out.push(...capPoints);
+    for (const [f, h] of [...curve].reverse()) out.push([widthM-left*f, eavesM+(shoulderM-eavesM)*h]);
+    return compact(out);
+  }
   if (type === 'klok') {
     const out: CanalhousePoint[] = [];
     // Smooth reusable silhouette; width, shoulder and crest remain measured inputs.

@@ -113,7 +113,7 @@ const label = (r: FrontRow) => {
   const a = r.comparison.authored, p = r.photo, steps = (s: {stepsLeft: number; stepsRight: number}) => `${s.stepsLeft}/${s.stepsRight}`;
   return [`${r.slug}${r.front !== 'front0' ? ' ' + r.front : ''}`,
     `intent ${a.gable}${a.steps ? ' ' + a.steps : ''} rise ${a.shape.riseM} w ${a.shape.widthM} st ${steps(a.shape)}`,
-    `photo ${p.intentGable ?? '?'} (${p.crown.type} ${p.crown.confidence.toFixed(2)}) rise ${p.shape.riseM} w ${p.shape.widthM} st ${steps(p.shape)} sym ${p.shape.symmetry}`,
+    `photo ${p.intentGable ?? '?'} (${p.crown.type} ${p.crown.confidence.toFixed(2)}) rise ${p.shape.riseM} w ${p.shape.widthM} st ${steps(p.shape)} sym ${p.shape.symmetry}${p.flanks ? ` flanks ${p.flanks.shoulder ?? '?'} ${p.flanks.deviation}` : ''}`,
     p.abstain.length ? `ABSTAIN ${p.abstain[0]}` : r.comparison.mismatches.length ? `${r.comparison.mismatches.length} mismatch` : 'match'];
 };
 

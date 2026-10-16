@@ -729,6 +729,11 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Chunks vs generic boxes, the colour gap** (2026-10-16, HISTORY "One
+  wall material"): light and material now match; the generic period-prior
+  palette is about twice as light as measured walls. Next: measured colours
+  for generic facades next to chunks (facade-colour pipeline). Whether shade
+  sides go past 0.55 toward flat overcast light is the user's call.
 - **Bridge follow-ups** (2026-10-16, HISTORY "Bridges: canal-mouth
   parapets"): the way-deck railing that runs diagonally across the cycle
   path at the Jan Evertsenstraat/Erasmusgracht end (apply `parapetRuns`'
