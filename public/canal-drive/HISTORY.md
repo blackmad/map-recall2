@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## A bridge deck is never the answer to "which street?" (2026-10-16)
+
+User (2026-10-16), riding the Raadhuisstraat over the Keizersgracht: "the game
+asks me what street am I on when I'm on this bridge, and the correct answer is a
+brug". `_updateCanalQuiz` (`recallRuntime.ts`) settled the route question on the
+way's own OSM name, and OSM names that deck "Niek Engelschmanbrug". The
+deliberate bridge question only knows the 300 curated `bridges.json` bridges, so
+123 other bridge names were asked as streets (the 2026-10-09 spec even pinned
+"asks the Noordsche Compagniebrug as a street"). `bridgeStreetName.ts`: a way named
+…brug/…sluis/…duiker/Brug N (not Brugstraat, Oudebrugsteeg) answers with the one
+street that continues in line (45°) at both ends, following decks split mid-span
+and ignoring quays that meet at ~90° (Grote Brouwerssluis → Prinsengracht,
+Vingboomsbrug → Huidenstraat). With no single carried street the deck is
+transparent and the street beyond is asked ~8 m after it (Westermarkt → Niek
+Engelschmanbrug → Raadhuisstraat). Askable `bridges.json` bridges keep "Which
+bridge are you on?". Citywide: 436 bridge-named ways under 194 names, 126 ways
+now carry a street and 310 are transparent; the Raadhuisstraat, Leidsestraat and
+Utrechtsestraat radial decks are already mapped under the street's name.
+Regressions: `check-canal-car.ts` (both reported bridges, the two carried
+cases, no bridge-named way ever a street answer citywide),
+`turn-question-timing.spec.ts` rides both decks, `test:bridge-street-name`
+(in `check:canal`).
+
 ## Landmark cards: sourced English facts, and an audit for bare definitions and leftover Dutch (2026-10-16)
 
 User (2026-10-16), on the Huis Bartolotti arrival card: "this is a really
