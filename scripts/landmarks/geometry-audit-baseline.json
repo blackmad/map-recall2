@@ -17,7 +17,8 @@
   "obrechtkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
   "opstandingskerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
   "mozes-en-aaronkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
-  "da-costakade-13": "First record (2026-10-13, feat/da-costakade-13-20261013 merge): window-rhythm mismatch against its photo spec; fix the builder and lower the entry."
+  "da-costakade-13": "First record (2026-10-13, feat/da-costakade-13-20261013 merge): window-rhythm mismatch against its photo spec; fix the builder and lower the entry.",
+  "delamar": "Rebuilt 2026-10-16 (lane delamar-all-sides) from the 3DBAG shells of Bellevue, DeLaMar and the Marnixstraat house: 9 opening-overhang warnings (<= 33% off the wall) are real projections - the drum roof edge round the curved facets, the revolving-door drum, canted-bay windows, set-back storey windows; no fails."
  },
  "models": {
   "academie-theater-dans": {
@@ -1083,21 +1084,24 @@
    "zfight-same-m2": 31.5
   },
   "delamar": {
-   "opening-floating": 71,
-   "opening-floating-fail": 1,
-   "opening-overhang": 0,
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 5,
+   "opening-floating-fail": 0,
+   "opening-overhang": 9,
    "opening-overhang-fail": 0,
    "opening-buried": 0,
-   "zfight-m2": 0,
-   "zfight-near-m2": 7.5,
-   "window-mismatch": 1,
+   "zfight-m2": 0.2,
+   "zfight-near-m2": 312.1,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 1.1,
+   "window-mismatch": 0,
    "window-missing": 0,
    "window-misaligned": 0,
    "window-rhythm-fail": 0,
-   "window-mismatch-spec": 1,
-   "window-missing-spec": 0,
-   "zfight-tight-m2": 0,
-   "zfight-same-m2": 0
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "dominicuskerk": {
    "opening-floating": 0,

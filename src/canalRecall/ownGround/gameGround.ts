@@ -34,6 +34,7 @@ import { groundLookFrom, groundPalette, type GroundLook } from './groundLook.js'
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
+import { groundTokens } from '../look/sunny.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -501,10 +502,12 @@ export class OwnGround {
     for (const [layer, m] of Object.entries(M)) if (!UNGAINED.has(layer)) m.color.multiplyScalar(FLAT_GROUND_GAIN);
     // The overview → city blend: every ground material (not the draped overlays below) is present early and takes its
     // colour from the flat palette tone the basemap draws (`flat`), so the shaded ground crossfades over the flat one.
+    // The basemap's tones are look/sunny.ts `groundTokens` (basemapPalette.ts); the ground fades from the same strings.
+    const T = groundTokens(groundPalette(this.opts.groundLook));
     const flat: Record<string, readonly number[] | string | 'vertex'> = {
-      land: G.land.base, klinker: STREET_GROUND.klinker.base, asphalt: STREET_GROUND.asphalt.base, cycle: STREET_GROUND.cycle.base,
-      paving: STREET_GROUND.pavement.base, gravel: G.gravel, kerb: STREET_GROUND.kerb, paint: STREET_GROUND.asphalt.base, tram: STREET_GROUND.asphalt.base,
-      bollard: STREET_GROUND.pavement.base, park: G.park, wood: G.wood, square: G.square.base, parking: G.parking, water: G.water,
+      land: T.land, klinker: T.klinker, asphalt: T.road, cycle: T.cycle,
+      paving: T.pavement, gravel: T.gravel, kerb: STREET_GROUND.kerb, paint: T.road, tram: T.road,
+      bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
       lawn: G.lawn, bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,
     };
     for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex');
@@ -900,7 +903,7 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key) };
+    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), flatBridges: b.bridges.flat };
   }
 
   status(): Record<string, unknown> {

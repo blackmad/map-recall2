@@ -1,0 +1,352 @@
+{
+ "schemaVersion": 1,
+ "id": "mercatorplein-zuidtoren",
+ "pand": "0363100012073289",
+ "brief": "scripts/landmarks/mercatorplein-zuidtoren-brief.md",
+ "signature": [
+  "s-tower",
+  "s-tower-big-windows",
+  "s-gate-portal",
+  "s-rear-shaft",
+  "s-gate-erker",
+  "s-gate-roof",
+  "s-tower-balconies"
+ ],
+ "walls": [
+  {
+   "tag": "w01-164",
+   "bearing": 164,
+   "lengthM": 17.7,
+   "centre": [
+    4.8507145,
+    52.368817
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_25_09_30_15_00283",
+   "capturedAt": "2025-09-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-gate-portal-rear",
+     "kind": "other",
+     "where": "the same chamfered underpass in its stepped render frame on the rear",
+     "approxSizeM": [
+      8.8,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241206_0806_Track65_Sphere_00013",
+     "how": "builder: the through-passage's south mouth, same frame"
+    },
+    {
+     "id": "s-gate-erker-rear",
+     "kind": "window-shape",
+     "where": "three-sided erker with stone cap and flanking windows over the rear mouth",
+     "approxSizeM": [
+      5.8,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241206_0806_Track65_Sphere_00013",
+     "how": "builder: same erker as the front"
+    },
+    {
+     "id": "s-rear-shaft",
+     "kind": "tower",
+     "where": "the narrower rear shaft of the tower (about 4.5 m wide) rising above the main tower, with four pairs of tall narrow small-paned windows stacked up its face",
+     "approxSizeM": [
+      4.5,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241206_0806_Track65_Sphere_00013",
+     "how": "builder: shaft box with paired framed openings"
+    },
+    {
+     "id": "s-tower-base-windows",
+     "kind": "window-shape",
+     "where": "two columns of single windows on the tower base, a door under them",
+     "approxSizeM": [
+      3.5,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241206_0806_Track65_Sphere_00013",
+     "how": "builder: framed openings and a dark door panel"
+    },
+    {
+     "id": "s-plinth",
+     "kind": "other",
+     "where": "dark brick plinth with rough natural-stone blocks along the ground storey",
+     "approxSizeM": [
+      17.7,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241206_0806_Track65_Sphere_00013",
+     "how": "builder: dark plinth strip"
+    }
+   ],
+   "note": "The Van Spilbergenstraat (rear) front: the same gatehouse front reversed and the tower base with its raised rear shaft. Crops 2025-09, 2024-12 (sharp, sunny), 2016-06."
+  },
+  {
+   "tag": "w02-344",
+   "bearing": 344,
+   "lengthM": 16.9,
+   "centre": [
+    4.850674,
+    52.368893
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002556_pano_0000_001939",
+   "capturedAt": "2022-05-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-gate-portal",
+     "kind": "other",
+     "where": "ground storey: a 6 m wide underpass to Van Spilbergenstraat with a chamfered head (jambs to ~3.2-3.4 m, flat head ~4.5-4.8 m), set in a rough-rendered frame that steps up in two shoulders to ~6 m over a dark brick plinth with rough natural-stone blocks; the render band runs across the front at ~2.6-4.4 m",
+     "approxSizeM": [
+      8.8,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: real through-passage (side walls, rendered soffit), stepped render frame as closed slabs, plinth and band strips"
+    },
+    {
+     "id": "s-side-doors",
+     "kind": "other",
+     "where": "pedestrian door east of the underpass and a shop door and a door with a three-light transom under the tower",
+     "approxSizeM": [
+      1.8,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: dark recessed door panels; white transom frame on the tower door"
+    },
+    {
+     "id": "s-gate-erker",
+     "kind": "window-shape",
+     "where": "over the underpass on storeys 1-2: a three-sided erker (3.5 m wide, three lights, two rows) with a stone cap bent up at the ends, a tall two-row window either side",
+     "approxSizeM": [
+      5.8,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: prism erker with frames, glazing bars and a slab cap; flank windows as framed openings"
+    },
+    {
+     "id": "s-gate-roof",
+     "kind": "other",
+     "where": "steep transverse saddle roof in blue-grey tiles with a white eaves board at ~12 m, a glazed strip along the eaves, and a low three-light dormer",
+     "approxSizeM": [
+      10.2,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: tiled slopes and flat top from 3DBAG LoD2.2 heights, eaves board, dormer box with three lights"
+    },
+    {
+     "id": "s-tower",
+     "kind": "tower",
+     "where": "the south tower: eight storeys of brick, 6.8 m by 8.9 m, flat roof at 29.2 m with a thin coping; a narrower rear shaft rises to 35.4 m",
+     "approxSizeM": [
+      6.8,
+      35.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: hand massing from 3DBAG LoD2.2 roof heights and the crops"
+    },
+    {
+     "id": "s-tower-big-windows",
+     "kind": "window-shape",
+     "where": "four large square windows (four lights by three rows over a low row of four) stacked on the tower's upper north face, one per storey",
+     "approxSizeM": [
+      2.5,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Mercatorplein 1-17 (1).jpg",
+     "how": "builder: framed openings with a mullion grid, cut into the tower wall"
+    },
+    {
+     "id": "s-tower-lower-windows",
+     "kind": "window-shape",
+     "where": "three single windows per storey on the three lower storeys of the tower front",
+     "approxSizeM": [
+      1.05,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: framed openings"
+    },
+    {
+     "id": "s-corbel-panel",
+     "kind": "other",
+     "where": "a stepped brick corbel panel (three horizontal steps) under the lowest big window",
+     "approxSizeM": [
+      3.4,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001700_pano_0003_001126",
+     "how": "builder: three stepped brick slabs"
+    },
+    {
+     "id": "s-corner-grooves",
+     "kind": "other",
+     "where": "vertical grooved brickwork (three parallel lines) on the tower's chamfered corners ('verticale accentuering in het metselwerk op de hoeken')",
+     "approxSizeM": [
+      0.5,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Mercatorplein 1-17 (1).jpg",
+     "how": "builder: three thin dark vertical strips standing 3 cm proud on the corners above the gate roof"
+    },
+    {
+     "id": "s-diaper-frieze",
+     "kind": "other",
+     "where": "a frieze of lighter brick in a diamond (diaper) pattern under the coping of the east face",
+     "approxSizeM": [
+      7,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Mercatorplein 1-17 (1).jpg",
+     "how": "builder: a lighter brick band with a raised lozenge row"
+    },
+    {
+     "id": "s-east-windows",
+     "kind": "window-shape",
+     "where": "three small horizontal four-light windows stacked on the tower's east face above the gate roof",
+     "approxSizeM": [
+      1.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Mercatorplein 1-17 (1).jpg",
+     "how": "builder: framed openings with three bars"
+    },
+    {
+     "id": "s-vent-squares",
+     "kind": "other",
+     "where": "scattered small square ventilation openings in the tower walls",
+     "approxSizeM": [
+      0.2,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "Commons: Mercatorplein 1-17 (1).jpg",
+     "skip": {
+      "reason": "too-small",
+      "note": "20 cm squares, under a pixel at gallery size"
+     }
+    },
+    {
+     "id": "s-tower-balconies",
+     "kind": "balcony-ironwork",
+     "where": "small balconies with white slab undersides in the angles beside the rear shaft (three per side)",
+     "approxSizeM": [
+      1.3,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Mercatorplein 1-17 (1).jpg",
+     "how": "builder: slab with a white soffit and a solid brick parapet as closed boxes, three per side"
+    }
+   ],
+   "note": "The square front of the 1927 gatehouse and its tower (register 527135: 'poortgebouw met hoge toren'). Crops 2022-05, 2020-05, 2019-01; the tower's upper stages from the Commons photo Mercatorplein 1-17 (1).jpg (Ceescamel, CC BY-SA 4.0, 2019-07). No clock on this tower in any source."
+  },
+  {
+   "tag": "w03-344",
+   "bearing": 344,
+   "lengthM": 6.9,
+   "centre": [
+    4.8508275,
+    52.3689525
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_25_07_44_15_00222",
+   "capturedAt": "2025-09-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-bay-erker",
+     "kind": "window-shape",
+     "where": "one two-sided (prismatic) erker over storeys 1-3 with a pitched cap, a single window either side",
+     "approxSizeM": [
+      2.6,
+      8.4
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_25_07_44_15_00222",
+     "how": "builder hook: the same prism erker as the north arcade front"
+    },
+    {
+     "id": "s-hoist-beam",
+     "kind": "balcony-ironwork",
+     "where": "one hoist beam with a double curled scroll over the parapet",
+     "approxSizeM": [
+      0.6,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_25_07_44_15_00222",
+     "how": "builder: the shared hoist-beam part, its scroll on the wall face just under the parapet (the panel top is the audit's wall edge)"
+    },
+    {
+     "id": "s-bay-shopfront",
+     "kind": "other",
+     "where": "shop front with a door either side under the rendered band",
+     "approxSizeM": [
+      6.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_25_07_44_15_00222",
+     "how": "kit plinth-shopfronts ground"
+    }
+   ],
+   "note": "The 6.9 m east bay on the square: a three-storey two-sided erker with a pointed cap, a window either side, a shop front under the render band, one hoist beam on the parapet."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 527135 register text (poortgebouw met hoge toren, acht lagen, smaller deel hoger opgetrokken, drie kleine balkons in de oksels)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527135",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikipedia: Mercatorplein (Amsterdam)",
+   "url": "https://nl.wikipedia.org/wiki/Mercatorplein_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: Mercatorplein 1-17 (1).jpg (Ceescamel, 2019-07-04; the south tower from the square)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercatorplein_1-17_(1).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons: Mercatorplein 1-17 (3).jpg (Ceescamel, 2019-07-04)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercatorplein_1-17_(3).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012073289",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

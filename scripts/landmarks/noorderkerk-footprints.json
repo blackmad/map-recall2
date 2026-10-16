@@ -4926,5 +4926,393 @@
     ]
    ]
   }
- ]
+ ],
+ "cornerHouses": [
+  {
+   "tag": "ne",
+   "bagId": "0363100012177303",
+   "bagBuildYear": 1623,
+   "role": "north-east angle: two-storey service house with diagonal front (arched portal, oculus, dormer with arms, white timber shaft) and the one-storey annex in front of the east gable",
+   "groundNAP": 1.055,
+   "roof3dbag": {
+    "type": "slanted",
+    "minNAP": 5.097,
+    "medianNAP": 10.572,
+    "maxNAP": 16.688
+   },
+   "modelled": {
+    "eaveM": 8.5,
+    "ridgeM": 14.0,
+    "slopeDeg": 47,
+    "annexM": 4.1
+   },
+   "nativeRing": [
+    [
+     3.875,
+     -27.278
+    ],
+    [
+     6.701,
+     -16.099
+    ],
+    [
+     17.63,
+     -18.866
+    ],
+    [
+     21.213,
+     -4.383
+    ],
+    [
+     21.593,
+     -4.156
+    ],
+    [
+     22.528,
+     -5.689
+    ],
+    [
+     23.948,
+     -8.045
+    ],
+    [
+     27.258,
+     -13.459
+    ],
+    [
+     22.046,
+     -16.611
+    ],
+    [
+     22.691,
+     -17.601
+    ],
+    [
+     22.592,
+     -18.466
+    ],
+    [
+     20.018,
+     -20.025
+    ],
+    [
+     17.772,
+     -21.392
+    ],
+    [
+     16.529,
+     -22.148
+    ],
+    [
+     16.434,
+     -22.215
+    ],
+    [
+     15.665,
+     -21.977
+    ],
+    [
+     14.982,
+     -20.885
+    ],
+    [
+     12.364,
+     -22.468
+    ],
+    [
+     10.31,
+     -23.71
+    ],
+    [
+     4.247,
+     -27.377
+    ],
+    [
+     3.875,
+     -27.278
+    ]
+   ],
+   "ringLngLat": [
+    [
+     4.886467631,
+     52.379847116
+    ],
+    [
+     4.886509227,
+     52.379746693
+    ],
+    [
+     4.886670061,
+     52.37977155
+    ],
+    [
+     4.886722786,
+     52.379641451
+    ],
+    [
+     4.886728375,
+     52.379639408
+    ],
+    [
+     4.886742143,
+     52.379653181
+    ],
+    [
+     4.886763038,
+     52.379674345
+    ],
+    [
+     4.886811749,
+     52.379722977
+    ],
+    [
+     4.886735043,
+     52.379751297
+    ],
+    [
+     4.886744533,
+     52.37976019
+    ],
+    [
+     4.88674308,
+     52.379767958
+    ],
+    [
+     4.886705191,
+     52.379781962
+    ],
+    [
+     4.88667214,
+     52.379794244
+    ],
+    [
+     4.886653851,
+     52.379801033
+    ],
+    [
+     4.886652449,
+     52.379801638
+    ],
+    [
+     4.886641135,
+     52.379799496
+    ],
+    [
+     4.886631083,
+     52.379789684
+    ],
+    [
+     4.88659256,
+     52.379803911
+    ],
+    [
+     4.886562341,
+     52.379815062
+    ],
+    [
+     4.886473114,
+     52.379848002
+    ],
+    [
+     4.886467631,
+     52.379847116
+    ]
+   ]
+  },
+  {
+   "tag": "se",
+   "bagId": "0363100012176942",
+   "bagBuildYear": 1623,
+   "role": "south-east angle: two-storey service house with diagonal front (red double door under two arched lights, dormer with arms) between two one-storey wings",
+   "groundNAP": 1.625,
+   "roof3dbag": {
+    "type": "slanted",
+    "minNAP": 5.905,
+    "medianNAP": 10.749,
+    "maxNAP": 16.798
+   },
+   "modelled": {
+    "eaveM": 8.3,
+    "ridgeM": 13.9,
+    "slopeDeg": 48,
+    "wingsM": [
+     4.3,
+     4.5
+    ]
+   },
+   "nativeRing": [
+    [
+     10.235,
+     -1.536
+    ],
+    [
+     13.099,
+     9.99
+    ],
+    [
+     16.881,
+     12.258
+    ],
+    [
+     18.958,
+     8.899
+    ],
+    [
+     15.133,
+     6.519
+    ],
+    [
+     19.81,
+     -1.168
+    ],
+    [
+     23.637,
+     1.213
+    ],
+    [
+     26.339,
+     -3.317
+    ],
+    [
+     22.528,
+     -5.689
+    ],
+    [
+     21.593,
+     -4.156
+    ],
+    [
+     21.213,
+     -4.383
+    ],
+    [
+     10.235,
+     -1.536
+    ]
+   ],
+   "ringLngLat": [
+    [
+     4.886561227,
+     52.379615872
+    ],
+    [
+     4.886603371,
+     52.379512332
+    ],
+    [
+     4.886659029,
+     52.379491959
+    ],
+    [
+     4.886689604,
+     52.379522134
+    ],
+    [
+     4.886633303,
+     52.379543511
+    ],
+    [
+     4.886702139,
+     52.379612567
+    ],
+    [
+     4.886758454,
+     52.379591181
+    ],
+    [
+     4.886798222,
+     52.379631874
+    ],
+    [
+     4.886742143,
+     52.379653181
+    ],
+    [
+     4.886728375,
+     52.379639408
+    ],
+    [
+     4.886722786,
+     52.379641451
+    ],
+    [
+     4.886561227,
+     52.379615872
+    ]
+   ]
+  },
+  {
+   "tag": "nw",
+   "bagId": "0363100012176956",
+   "bagBuildYear": 1623,
+   "role": "north-west angle: the kosterij, one-storey entrance block with a pilastered doorcase on the diagonal, upper storey and dormer set back, tall west wing with a pyramid roof",
+   "groundNAP": 0.977,
+   "roof3dbag": {
+    "type": "slanted",
+    "minNAP": 6.735,
+    "medianNAP": 11.197,
+    "maxNAP": 15.316
+   },
+   "modelled": {
+    "eaveM": 8.2,
+    "ridgeM": 13.7,
+    "slopeDeg": 46,
+    "entranceBlockM": 5.8,
+    "wingEaveM": 9.0
+   },
+   "nativeRing": [
+    [
+     -10.423,
+     -23.552
+    ],
+    [
+     -15.638,
+     -22.306
+    ],
+    [
+     -20.186,
+     -14.832
+    ],
+    [
+     -18.89,
+     -9.458
+    ],
+    [
+     -7.604,
+     -12.297
+    ],
+    [
+     -10.423,
+     -23.552
+    ]
+   ],
+   "ringLngLat": [
+    [
+     4.886257224,
+     52.379813646
+    ],
+    [
+     4.88618048,
+     52.379802455
+    ],
+    [
+     4.886113547,
+     52.379735313
+    ],
+    [
+     4.886132627,
+     52.37968704
+    ],
+    [
+     4.886298711,
+     52.379712539
+    ],
+    [
+     4.886257224,
+     52.379813646
+    ]
+   ]
+  }
+ ],
+ "cornerHousesSource": "BAG pand rings (api.pdok.nl, CC0) and 3DBAG LoD2.2 roof faces (CC BY 4.0) of the three pands with bouwjaar 1623 in the cross's angles; eaves read from the rectified Gemeente Amsterdam panoramas (CC BY 4.0) and the 3DBAG roof faces (NAP minus local ground). The south-west angle is the consistory, already inside the church pand. RCE register 3923: \"met diagonaal tussen de armen geplaatste dienstwoningen\"."
 }

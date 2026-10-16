@@ -48,6 +48,11 @@ test('suppression set: unique BAG pand ids in the OSM id form', () => {
   assert.deepEqual(suppressionIds([]), []);
 });
 
+test('suppression set: an instance also suppresses the panden its model absorbs (split-off end bay / entrance of the same slab)', () => {
+  const list = [inst({pand: '0363100012095578', alsoSuppress: ['0363100012196327']}), inst({pand: '0363100012063809', alsoSuppress: ['0363100012201815']})];
+  assert.deepEqual(suppressionIds(list), ['0363100012063809', '0363100012095578', '0363100012196327', '0363100012201815'].map(pandOsmId));
+});
+
 test('published instances.json: every unit has a GLB, ids unique, scales sane, suppression covers every instance', () => {
   const dir = path.join(import.meta.dirname, '../../../public/canal-drive/building-types');
   const list = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as RuntimeInstance[];
@@ -58,7 +63,8 @@ test('published instances.json: every unit has a GLB, ids unique, scales sane, s
     assert.ok(i.scale.every(s => s > 0.85 && s < 1.2), `${i.pand} ${i.scale}`);
     assert.equal(i.groundAltitudeMetres, 0);
   }
-  assert.equal(suppressionIds(list).length, list.length);
+  const absorbed = list.reduce((n, i) => n + (i.alsoSuppress?.length ?? 0), 0);
+  assert.equal(suppressionIds(list).length, list.length + absorbed);
 });
 
 test('far massing: outward winding, roof only when pitched', () => {

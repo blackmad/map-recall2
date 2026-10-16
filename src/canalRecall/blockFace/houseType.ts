@@ -20,7 +20,7 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist'] as const;
+  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
@@ -79,6 +79,19 @@ export interface HousePlacement {
   /** Ground: a named variant, or this house's own shop / historic ground front (written as seen, never mirrored). */
   ground?: ModulePlacement['ground'];
   palette?: string;
+  /**
+   * This pand's own measured colours over the named palette (strip medians from scripts/block-face/palette-from-strip.ts):
+   * a row of one type is rarely one brick. Only colour slots; `evidence` (the measurement) is required. Absent = the
+   * named palette unchanged.
+   */
+  measuredPalette?: MeasuredPalette;
+  /**
+   * House-palette fields this pand changes over its named palette (one wall per house): a measured wall colour with
+   * `wallTint: "measured"` or `wallMaterial: "painted-brick"` (drawn as measured, no 0.3-0.6 lightness clamp), frames,
+   * stone. Unlike a front's `overrides.palette.brick` (a 3 cm facing over the type's wall, double the wall triangles and
+   * still clamped) this recolours the house's own wall. Reported as a type deviation. Absent = byte-identical.
+   */
+  paletteOverrides?: Partial<PaletteIntent>;
   /** Left-right mirror of the type as seen from the street (door, balconies, crown placement, dormers, bay widths). */
   mirror?: boolean;
   /** Full storeys incl. ground when this house has one more/less than the type. */
@@ -97,6 +110,12 @@ export interface HousePlacement {
   pair?: 'left' | 'right';
   overrides?: Partial<BodyIntent>;
 }
+
+/** Colour slots a placement may measure per pand (`HousePlacement.measuredPalette`). */
+export const MEASURED_PALETTE_KEYS = ['brick', 'frame', 'stone', 'band', 'cornice', 'door'] as const;
+export type MeasuredPalette = Partial<Pick<PaletteIntent, typeof MEASURED_PALETTE_KEYS[number]>> & {evidence: string};
+/** House-palette fields a placement may override (`paletteOverrides`); values are checked by the house intent validation. */
+export const PALETTE_OVERRIDE_KEYS = ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'wallMaterial', 'stoneMaterial', 'wallTint', 'whitePoint'] as const;
 
 const has = (o: object, k: string) => Object.prototype.hasOwnProperty.call(o, k);
 const flipFrac = (s: {from: number; to: number}) => ({from: +(1 - s.to).toFixed(4), to: +(1 - s.from).toFixed(4)});
@@ -210,14 +229,18 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (door !== undefined) f.doorBay = door;
     return f;
   });
-  const paletteName = place.palette ?? Object.keys(t.palettes)[0], palette = t.palettes[paletteName];
-  if (!palette) throw Error(`type ${t.id}: no palette "${paletteName}" (has ${Object.keys(t.palettes).join(', ')})`);
+  const paletteName = place.palette ?? Object.keys(t.palettes)[0], named = t.palettes[paletteName];
+  if (!named) throw Error(`type ${t.id}: no palette "${paletteName}" (has ${Object.keys(t.palettes).join(', ')})`);
+  const measured = place.measuredPalette ? Object.fromEntries(MEASURED_PALETTE_KEYS.filter(k => place.measuredPalette![k] !== undefined).map(k => [k, place.measuredPalette![k]!])) : {};
+  const layered: PaletteIntent = Object.keys(measured).length ? {...named, ...measured} : named;
+  const palette: PaletteIntent = place.paletteOverrides ? {...layered, ...place.paletteOverrides} : layered;
+  if (place.paletteOverrides) deviations.push(`palette ${JSON.stringify(place.paletteOverrides)} (type palette ${paletteName})`);
   const storeys = place.storeys ?? t.body.storeys;
   if (t.fit?.storeys && !t.fit.storeys.includes(storeys)) deviations.push(`storeys ${storeys} outside the type's ${t.fit.storeys.join('/')}`);
   const perModule = widthM !== undefined ? widthM / modules.length : undefined;
   if (t.fit?.widthM && perModule !== undefined && (perModule < t.fit.widthM[0] - 0.25 || perModule > t.fit.widthM[1] + 0.25)) deviations.push(`module width ${perModule.toFixed(2)} m outside the type's ${t.fit.widthM.join('-')} m`);
   const tag = `type ${t.id}${modules.length > 1 ? ` x${modules.length} modules` : ''}: crown ${modules.map(m => m.crown ?? place.crown ?? Object.keys(t.crowns)[0]).join('/')}` +
-    `${modules.some(m => (m.mirror ?? place.mirror)) ? ', mirrored' : ''}${place.pair ? `, pair ${place.pair}` : ''}, palette ${paletteName}`;
+    `${modules.some(m => (m.mirror ?? place.mirror)) ? ', mirrored' : ''}${place.pair ? `, pair ${place.pair}` : ''}, palette ${paletteName}${Object.keys(measured).length ? ` + measured ${Object.entries(measured).map(([k, v]) => `${k} ${v}`).join(', ')}` : ''}`;
   return {design: {fronts, roof: t.roof, palette, notes: [tag, ...(deviations.length ? [`type deviations: ${deviations.join('; ')}`] : [])]}, rhythm: t.rhythm, deviations};
 }
 
@@ -233,6 +256,20 @@ export function placementProblems(types: Map<string, HouseTypeIntent>, houses: {
       const s = pl.visualSpan;
       if (!(s.from >= -0.5 && s.to <= 1.5 && s.to - s.from >= 0.5)) p.push(`${at}.visualSpan: {from, to} fractions of the frontage, -0.5 <= from, to <= 1.5, at least 0.5 wide`);
       if (!s.evidence) p.push(`${at}.visualSpan: needs evidence (strip columns of the visual party walls)`);
+    }
+    if (pl.measuredPalette) {
+      const mp = pl.measuredPalette as Record<string, unknown>;
+      if (!mp.evidence) p.push(`${at}.measuredPalette: needs evidence (the strip measurement)`);
+      for (const [k, v] of Object.entries(mp)) {
+        if (k === 'evidence') continue;
+        if (!(MEASURED_PALETTE_KEYS as readonly string[]).includes(k)) p.push(`${at}.measuredPalette.${k}: not a colour slot (${MEASURED_PALETTE_KEYS.join(', ')})`);
+        else if (typeof v !== 'string' || !/^#[0-9a-f]{6}$/i.test(v)) p.push(`${at}.measuredPalette.${k}: a #rrggbb colour`);
+      }
+    }
+    if (pl.paletteOverrides !== undefined) {
+      const o = pl.paletteOverrides as Record<string, unknown>;
+      if (!o || typeof o !== 'object' || Array.isArray(o) || !Object.keys(o).length) p.push(`${at}.paletteOverrides: an object of house-palette fields`);
+      else for (const k of Object.keys(o)) if (!PALETTE_OVERRIDE_KEYS.includes(k as typeof PALETTE_OVERRIDE_KEYS[number])) p.push(`${at}.paletteOverrides.${k}: not a house-palette field (${PALETTE_OVERRIDE_KEYS.join(', ')})`);
     }
     if (pl.modules && pl.modules.length < 2) p.push(`${at}.modules: two or more modules (one module is the placement itself)`);
     if (pl.modules && pl.visualSpan) p.push(`${at}: visualSpan and modules are alternatives`);

@@ -18,7 +18,7 @@
  * Style b also keeps the map redrawing while shown (the rim's pulse).
  */
 import {
-  HIGHLIGHT_BOOST_GLOBAL, HIGHLIGHT_RECIPES, HULL_SOURCE, footprintShare, smallTargetBoost, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightAccent, highlightStyle, mPerDegLng,
+  HIGHLIGHT_BOOST_GLOBAL, HIGHLIGHT_RECIPES, HULL_SOURCE, extentRegistry, footprintShare, modelScreenShare, smallTargetBoost, smallTargetBoostLatched, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightAccent, highlightStyle, mPerDegLng,
   type HighlightFocus, type HighlightStyle, type LngLat,
 } from './highlight.ts';
 import { hexToRgb } from './palette.ts';
@@ -257,6 +257,9 @@ export class HighlightMarker {
   private radiusM = 0;
   /** Last frame's small-target boost (footprint share of the frame, weight, shortfall). */
   lastBoost = { share: 0, weight: 0, shortfall: 0 };
+  /** Small-target latch (smallTargetBoostLatched) and the two shares last measured (footprint, model extent). */
+  private latched = false;
+  lastShares = { footprint: 0, model: 0 };
 
   constructor(private readonly THREE: any, private readonly map: any, private readonly options: HighlightMarkerOptions = {}) {
     this.style = options.style ?? highlightStyle();
@@ -283,6 +286,7 @@ export class HighlightMarker {
     this.ring = this.beacon = this.hull = null;
     this.anchor = null;
     this.radiusM = 0;
+    this.latched = false;
     this.publishBoost({ share: 0, weight: 0, shortfall: 0 });
     cancelAnimationFrame(this.raf);
     if (!focus || (!this.recipe.ring && !this.recipe.beacon)) { this.focus = null; this.map.triggerRepaint?.(); return; }
@@ -363,7 +367,14 @@ export class HighlightMarker {
         renderer.getDrawingBufferSize(size);
         inv.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(mesh.matrixWorld);
         const dpr = size.x / (renderer.domElement?.clientWidth || size.x);
-        const boost = this.radiusM > 0 ? smallTargetBoost(footprintShare(footprintRadiusPx(inv.elements, [0, 0, roofM], this.radiusM, size.x / dpr, size.y / dpr), size.x / dpr, size.y / dpr)) : smallTargetBoost(0);
+        // The share: the footprint's, or the highlighted model's own screen extent when larger (J2: the Westerkerk's
+        // 15 % of the frame against the Westertoren footprint's 2 %), with hysteresis (smallTargetBoostLatched).
+        const footShare = this.radiusM > 0 ? footprintShare(footprintRadiusPx(inv.elements, [0, 0, roofM], this.radiusM, size.x / dpr, size.y / dpr), size.x / dpr, size.y / dpr) : 0;
+        const modelShare = this.radiusM > 0 ? modelScreenShare(extentRegistry().values(), performance.now()) : 0;
+        const latched = smallTargetBoostLatched(Math.max(footShare, modelShare), this.latched);
+        this.latched = latched.latched;
+        this.lastShares = { footprint: footShare, model: modelShare };
+        const boost = latched.boost;
         this.publishBoost(boost);
         m.uniforms.raise.value = beaconRaise(boost);
         inv.invert();
@@ -386,12 +397,17 @@ export class HighlightMarker {
     this.map.triggerRepaint?.();
   }
 
+  /** The highlighted building's anchor (footprint centroid) and roof height, metres; null when nothing is highlighted. */
+  target(): { lngLat: [number, number]; heightM: number } | null {
+    return this.anchor && this.focus ? { lngLat: [this.anchor[0], this.anchor[1]], heightM: Number(this.focus.heightM) || 0 } : null;
+  }
+
   /** What is shown, for tests and the readout. */
   status(): { style: HighlightStyle; anchor: LngLat | null; ring: boolean; beacon: boolean; hull: boolean; distanceM: number;
-    boost: { share: number; weight: number; shortfall: number; radiusM: number } } {
+    boost: { share: number; weight: number; shortfall: number; radiusM: number; footprintShare: number; modelShare: number; latched: boolean } } {
     const b = this.lastBoost, r = (v: number, d = 4) => +v.toFixed(d);
     return { style: this.style, anchor: this.anchor, ring: !!this.ring, beacon: !!this.beacon, hull: !!this.hull, distanceM: this.lastDistanceM,
-      boost: { share: r(b.share, 5), weight: r(b.weight, 3), shortfall: r(b.shortfall, 3), radiusM: r(this.radiusM, 2) } };
+      boost: { share: r(b.share, 5), weight: r(b.weight, 3), shortfall: r(b.shortfall, 3), radiusM: r(this.radiusM, 2), footprintShare: r(this.lastShares.footprint, 5), modelShare: r(this.lastShares.model, 5), latched: this.latched } };
   }
 
   /**

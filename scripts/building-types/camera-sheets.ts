@@ -4,6 +4,10 @@
  *   node --import tsx scripts/building-types/camera-sheets.ts --area=slotermeer-geuzenveld --survey            # photos only, all pands (to pick variants)
  *   node --import tsx scripts/building-types/camera-sheets.ts --area=... --sheets=nw-portiek-brick-pitched:2107311,...   # one sheet per type
  *   node --import tsx scripts/building-types/camera-sheets.ts --area=... --aerial
+ *   node --import tsx scripts/building-types/camera-sheets.ts --area=... --sheets=<type>:<pand>:back,<type>:<pand>:right --dist=80 --radius=45 --tag=far
+ *       a third field picks the facade (front | back | left | right, default front); --dist is the camera distance wanted from the
+ *       facade (default 0.9 x its length, 14-32 m), --radius the panorama search radius around that point (default 32 m): tall
+ *       slabs need 60-100 m to fit in one frame.
  *
  * The camera is the municipal panorama's own position, aimed at the front facade (heading, pitch and horizontal
  * FOV computed from the facade width and building height); the render uses the same numbers. No game server is needed:
@@ -15,6 +19,7 @@ import {build} from 'esbuild';
 import sharp from 'sharp';
 import {chromium, type Page} from '@playwright/test';
 import {perspectiveCrop} from '../street-appearance/perspective.ts';
+import {solarPosition} from './solar.ts';
 import {lngLatToLocal, localToLngLat, bearingDeg, type Anchor, type Pt} from '../../src/canalRecall/buildingTypes/geometry.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
@@ -41,37 +46,43 @@ async function bytes(url: string, file: string): Promise<Buffer> {
   }
 }
 
-interface View { pandId: string; cam: Pt; camLngLat: [number, number]; heading: number; pitch: number; hfov: number; panoId: string; timestamp: string; depth: number; lateral: number; frontSide: boolean }
+type Side = 'front' | 'back' | 'left' | 'right';
+interface View { side?: Side; pandId: string; cam: Pt; camLngLat: [number, number]; heading: number; pitch: number; hfov: number; panoId: string; timestamp: string; depth: number; lateral: number; frontSide: boolean }
 
-async function pickView(pandId: string): Promise<View | null> {
+const sideKey = (pandId: string, side: Side) => (side === 'front' && !arg('dist') ? pandId : `${pandId}-${side}${arg('dist') ? '-' + arg('dist') : ''}`);
+
+async function pickView(pandId: string, side: Side = 'front'): Promise<View | null> {
   const d = detail.get(pandId), pl = placement.get(pandId), t = pl.transform;
   const [px, , pz] = t.positionChunk as number[];
-  const yaw = t.yawRad as number, n: Pt = [Math.sin(yaw), Math.cos(yaw)], tangent: Pt = [Math.cos(yaw), -Math.sin(yaw)];
-  const mid: Pt = [px + n[0] * t.widthM / 2, pz + n[1] * t.widthM / 2];
-  const target = Math.min(32, Math.max(14, t.lengthM * 0.9)), want: Pt = [mid[0] + n[0] * target, mid[1] + n[1] * target];
+  const yaw = t.yawRad as number, nF: Pt = [Math.sin(yaw), Math.cos(yaw)], tF: Pt = [Math.cos(yaw), -Math.sin(yaw)];
+  // Facade normal/tangent and half-depth for the chosen side (front +z, back -z, right +x, left -x in the unit frame).
+  const [n, tangent, half, len]: [Pt, Pt, number, number] = side === 'front' ? [nF, tF, t.widthM / 2, t.lengthM] : side === 'back' ? [[-nF[0], -nF[1]], [-tF[0], -tF[1]], t.widthM / 2, t.lengthM]
+    : side === 'right' ? [tF, [-nF[0], -nF[1]], t.lengthM / 2, t.widthM] : [[-tF[0], -tF[1]], nF, t.lengthM / 2, t.widthM];
+  const mid: Pt = [px + n[0] * half, pz + n[1] * half];
+  const target = arg('dist') ? Number(arg('dist')) : Math.min(32, Math.max(14, len * 0.9)), want: Pt = [mid[0] + n[0] * target, mid[1] + n[1] * target];
   const [lng, lat] = localToLngLat(anchor, want);
-  const file = `${SCRATCH}/pano-list/${pandId}.json`;
-  const listing = JSON.parse((await bytes(`https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng},${lat}&radius=32&page_size=250&timestamp_after=2019-01-01`, file)).toString());
+  const file = `${SCRATCH}/pano-list/${sideKey(pandId, side)}.json`;
+  const listing = JSON.parse((await bytes(`https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng},${lat}&radius=${arg('radius', '32')}&page_size=250&timestamp_after=2019-01-01`, file)).toString());
   const cands = (listing._embedded?.panoramas ?? []).map((p: any) => {
     const c = lngLatToLocal(anchor, p.geometry.coordinates[0], p.geometry.coordinates[1]), dx = c[0] - mid[0], dz = c[1] - mid[1];
     const depth = dx * n[0] + dz * n[1], lateral = Math.abs(dx * tangent[0] + dz * tangent[1]);
     const month = Number(String(p.timestamp).slice(5, 7)), leafOff = month <= 4 || month >= 11;
     return {p, c, depth, lateral, score: lateral + 0.35 * Math.abs(depth - target) - (leafOff ? 6 : 0) - (p.timestamp > '2023' ? 1 : 0)};
-  }).filter((x: any) => x.depth > 5 && x.depth < 45).sort((a: any, b: any) => a.score - b.score);
+  }).filter((x: any) => x.depth > 5 && x.depth < Math.max(45, target * 1.5)).sort((a: any, b: any) => a.score - b.score);
   const best = cands[0];
   if (!best) return null;
   const dist = Math.hypot(best.c[0] - mid[0], best.c[1] - mid[1]);
   const heading = bearingDeg(mid[0] - best.c[0], mid[1] - best.c[1]);
   const top = (d.ridgeM ?? d.eavesM + 0.3), topAng = Math.atan((top - CAM_H) / dist) * 180 / Math.PI, botAng = -Math.atan(CAM_H / dist) * 180 / Math.PI;
   const pitch = (topAng + botAng) / 2, halfV = (topAng - botAng) / 2 + 3;
-  const hNeeded = 2 * Math.atan((t.lengthM / 2 + Number(arg('margin', '1.5'))) / dist) * 180 / Math.PI, vAsH = 2 * Math.atan(Math.tan(halfV * Math.PI / 180) * W / H) * 180 / Math.PI;
-  return {pandId, cam: best.c, camLngLat: [best.p.geometry.coordinates[0], best.p.geometry.coordinates[1]], heading, pitch, hfov: Math.min(105, Math.max(hNeeded, vAsH)), panoId: best.p.pano_id, timestamp: best.p.timestamp, depth: best.depth, lateral: best.lateral, frontSide: true,
+  const hNeeded = 2 * Math.atan((len / 2 + Number(arg('margin', '1.5'))) / dist) * 180 / Math.PI, vAsH = 2 * Math.atan(Math.tan(halfV * Math.PI / 180) * W / H) * 180 / Math.PI;
+  return {side, pandId, cam: best.c, camLngLat: [best.p.geometry.coordinates[0], best.p.geometry.coordinates[1]], heading, pitch, hfov: Math.min(105, Math.max(hNeeded, vAsH)), panoId: best.p.pano_id, timestamp: best.p.timestamp, depth: best.depth, lateral: best.lateral, frontSide: true,
     // keep the pano url for the crop
     ...{url: best.p._links.equirectangular_medium.href}} as View & {url: string};
 }
 
 async function photo(v: View & {url?: string}): Promise<Buffer> {
-  const file = `${SCRATCH}/crops/${v.pandId}.jpg`;
+  const file = `${SCRATCH}/crops/${sideKey(v.pandId, v.side ?? 'front')}.jpg`;
   if (fs.existsSync(file)) return fs.readFileSync(file);
   const pano = await bytes(v.url!, `${SCRATCH}/pano/${v.panoId}.jpg`);
   const jpg = perspectiveCrop(pano, v.heading, W, H, v.hfov, v.pitch);
@@ -120,21 +131,24 @@ async function sheets(spec: string) {
   const {page, info, close} = await pageWith(bakedGlb);
   console.log('page loaded', info);
   const byType = new Map<string, string[]>();
-  for (const part of spec.split(',')) { const [t, id] = part.split(':'); byType.set(t, [...(byType.get(t) ?? []), id]); }
+  for (const part of spec.split(',')) { const [t, id, side] = part.split(':'); byType.set(t, [...(byType.get(t) ?? []), side ? `${id}:${side}` : id]); }
   fs.mkdirSync(path.join(dir, 'sheets'), {recursive: true});
   for (const [type, ids] of byType) {
     const rowsImgs: sharp.OverlayOptions[] = [];
     let y = 0;
-    for (const id of ids) {
-      const v = await pickView(id) as (View & {url?: string}) | null, d = detail.get(id);
+    for (const entry of ids) {
+      const [id, side = 'front'] = entry.split(':') as [string, Side?];
+      const v = await pickView(id, side) as (View & {url?: string}) | null, d = detail.get(id);
       if (!v) { console.warn('no pano for', id); continue; }
       const ph = await sharp(await photo(v)).resize(500, 375).jpeg().toBuffer();
       const pl = placement.get(id).transform, groundY = pl.positionChunk[1];
-      const url: string = await page.evaluate(o => (window as any).bt.camera(o), {x: v.cam[0], z: v.cam[1], y: groundY + CAM_H, heading: v.heading, pitch: v.pitch, hfov: v.hfov, w: W, h: H, groundY});
+      // --sun=photo lights the render with the sun of the panorama's own timestamp (fair brightness comparison: a facade in shade in the photo is in shade in the render).
+      const sunAt = arg('sun') === 'photo' ? solarPosition(new Date(v.timestamp), v.camLngLat[1], v.camLngLat[0]) : undefined;
+      const url: string = await page.evaluate(o => (window as any).bt.camera(o), {x: v.cam[0], z: v.cam[1], y: groundY + CAM_H, heading: v.heading, pitch: v.pitch, hfov: v.hfov, w: W, h: H, groundY, ...(sunAt ? {sun: sunAt} : {})});
       const render = await sharp(dataUrlToBuffer(url)).resize(500, 375).png().toBuffer();
       const blend = await sharp(ph).composite([{input: await sharp(render).ensureAlpha().linear([1, 1, 1, 0.5], [0, 0, 0, 0]).png().toBuffer(), blend: 'over'}]).jpeg().toBuffer();
-      fs.writeFileSync(path.join(dir, 'sheets', `${type}-${id.slice(-7)}-render.png`), dataUrlToBuffer(url));
-      const text = `${id}  ${d.variant} ${d.storeys}st ${d.groundMode} roof ${d.roofUsed}/${d.ridge}  front ${d.frontBearingDeg}deg ${d.frontStreet ?? ''}  ${v.timestamp.slice(0, 10)}  cam ${v.depth.toFixed(0)} m out`;
+      fs.writeFileSync(path.join(dir, 'sheets', `${type}-${id.slice(-7)}${side === 'front' ? '' : '-' + side}-render.png`), dataUrlToBuffer(url));
+      const text = `${id} ${side === 'front' ? '' : side + ' '} ${d.variant} ${d.storeys}st ${d.groundMode} roof ${d.roofUsed}/${d.ridge}  front ${d.frontBearingDeg}deg ${d.frontStreet ?? ''}  ${v.timestamp.slice(0, 10)}  cam ${v.depth.toFixed(0)} m out`;
       rowsImgs.push({input: label(text, 1500), left: 0, top: y}, {input: ph, left: 0, top: y + 26}, {input: render, left: 500, top: y + 26}, {input: blend, left: 1000, top: y + 26});
       y += 26 + 375;
     }
