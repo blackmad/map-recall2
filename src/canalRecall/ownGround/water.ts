@@ -93,13 +93,12 @@ export function buildWaterMask(geo: WaterGeometry, x0: number, y0: number, x1: n
   const sdf = new Float32Array(width * height);
   for (let k = 0; k < sdf.length; k++) sdf[k] = inside[k] ? -dist[k] : dist[k];
   let sdfStreets = sdf;
+  // Rings that do not reach the mask (roads-v1 adds every deck polygon of the 3×3 neighbourhood) cost a full raster each: skipped.
+  decks = decks.filter(ring => { let bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity; for (const [x, y] of ring) { bx0 = Math.min(bx0, x); by0 = Math.min(by0, y); bx1 = Math.max(bx1, x); by1 = Math.max(by1, y); } return bx1 >= x0 - range && bx0 <= x1 + range && by1 >= y0 - range && by0 <= y1 + range; });
   if (decks.length) {
-    // Each deck rasterised on its own: overlapping footprints must not cancel under even-odd.
-    const onDeck = new Uint8Array(width * height);
-    for (const ring of decks) {
-      const r = rasterInside({ polygons: [[ring as Vec2[]]], shores: [] }, x0, y0, res, width, height);
-      for (let k = 0; k < r.length; k++) onDeck[k] |= r[k];
-    }
+    // One raster, each deck its own polygon: rasterInside pairs crossings per polygon, so overlapping footprints
+    // union instead of cancelling under even-odd (one pass over the rows for hundreds of rings, not one raster each).
+    const onDeck = rasterInside({ polygons: decks.map(ring => [ring as Vec2[]]), shores: [] }, x0, y0, res, width, height);
     const d2 = dist.slice();
     segmentDistances(d2, decks, true, x0, y0, res, width, height, range);
     sdfStreets = new Float32Array(width * height);
