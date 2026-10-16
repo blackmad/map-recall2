@@ -172,7 +172,20 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
 }
 
 
+// Per-ring memo of tile keys by zoom: setFeatures regroups the whole resident city (up to ~20k buildings) on every
+// tile flush and every detail-centre move, and the tile maths plus key string per building per call were most of
+// its own cost while riding (docs/perf-motion-stutter-20261016.md). Keyed by the first ring, which fixes the answer.
+const tileKeyMemo = new WeakMap<object, Map<number, string>>();
 const tileKeyOf = (polygons: number[][][][], zoom = TILE_ZOOM): string => {
+  const ring = polygons[0]?.[0];
+  if (!ring) return tileKeyAt(polygons, zoom);
+  let byZoom = tileKeyMemo.get(ring);
+  if (!byZoom) tileKeyMemo.set(ring, byZoom = new Map());
+  let key = byZoom.get(zoom);
+  if (key === undefined) byZoom.set(zoom, key = tileKeyAt(polygons, zoom));
+  return key;
+};
+const tileKeyAt = (polygons: number[][][][], zoom: number): string => {
   const [lng, lat] = polygons[0]?.[0]?.[0] ?? [0, 0];
   const n = 2 ** zoom, rad = lat * Math.PI / 180;
   const x = Math.floor(((lng + 180) / 360) * n);
@@ -571,7 +584,12 @@ export class ThreeBuildings {
 
   /** The resident building set from the tile streamer; rebuilds only chunks whose features changed. */
   setFeatures(features: readonly Feature[]): void {
-    if (features !== this.lastFeatures) this.contextIndex = new BuildingContextIndex(features, f => this.boundsFor(f));
+    if (features !== this.lastFeatures) {
+      // The index is built only if some group's context must be recomputed (contextFor).
+      this.contextIndex = undefined;
+      this.contextFeatures = features;
+      this.contextChanges = this.changedBoxes(this.lastFeatures, features);
+    } else this.contextChanges = [];
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
     for (const feature of features) {
@@ -610,13 +628,14 @@ export class ThreeBuildings {
     for (const [key, list] of groups) {
       const contextKey = key.startsWith(EXTRAS_PREFIX) ? `near:${key.slice(EXTRAS_PREFIX.length)}` : key;
       let context = contexts.get(contextKey);
-      if (!context) { context = key === KIT_KEY || key.startsWith(BOAT_PREFIX) ? [] : this.contextFor(list); contexts.set(contextKey, context); }
+      if (!context) { context = key === KIT_KEY || key.startsWith(BOAT_PREFIX) ? [] : this.cachedContextFor(contextKey, list); contexts.set(contextKey, context); }
       const previousContext=this.contextGroups.get(key);
       this.contextGroups.set(key,context);
       const flying = this.inflight.get(key);
       if (same(previousContext,context) && (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list))) continue;
       this.pending.push(key, () => this.rebuild(key, list));
     }
+    for (const k of [...this.contextCache.keys()]) if (!contexts.has(k)) this.contextCache.delete(k);
     this.pump();
   }
 
@@ -908,8 +927,37 @@ export class ThreeBuildings {
   }
   // Include overlapping footprints in adjacent detail/tile batches as context,
   // without drawing them twice. Picking retains the same installed context.
+  /**
+   * Context of a group, reused when its own buildings are the same objects and no building that arrived,
+   * left or was restyled since lies within the group's padded bounds (only those can join or leave its
+   * neighbours; the relative order of the rest is unchanged). Recomputing every group's neighbours on every
+   * tile flush and detail-centre move was 50–280 ms per call while riding (docs/perf-motion-stutter-20261016.md).
+   */
+  private contextCache = new Map<string, { source: readonly Feature[]; box: [number, number, number, number]; context: Feature[]; boats: ReadonlySet<string> }>();
+  private contextFeatures: readonly Feature[] = [];
+  private contextChanges: [number, number, number, number][] = [];
+  private changedBoxes(previous: readonly Feature[], next: readonly Feature[]): [number, number, number, number][] {
+    const before = new Set(previous), after = new Set(next), out: [number, number, number, number][] = [];
+    for (const f of next) if (!before.has(f)) out.push(this.boundsFor(f));
+    for (const f of previous) if (!after.has(f)) out.push(this.boundsFor(f));
+    return out;
+  }
+  private cachedContextFor(cacheKey: string, source: readonly Feature[]): Feature[] {
+    const held = this.contextCache.get(cacheKey);
+    const PAD = 1e-6;
+    if (held && held.boats === this.boatIds && held.source.length === source.length && held.source.every((f, i) => f === source[i])) {
+      const [x0, y0, x1, y1] = held.box;
+      if (!this.contextChanges.some(b => b[2] >= x0 - PAD && b[0] <= x1 + PAD && b[3] >= y0 - PAD && b[1] <= y1 + PAD)) return held.context;
+    }
+    const context = this.contextFor(source);
+    const box: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity];
+    for (const f of source) { const b = this.boundsFor(f); if (b[0] < box[0]) box[0] = b[0]; if (b[1] < box[1]) box[1] = b[1]; if (b[2] > box[2]) box[2] = b[2]; if (b[3] > box[3]) box[3] = b[3]; }
+    this.contextCache.set(cacheKey, { source, box, context, boats: this.boatIds });
+    return context;
+  }
   private contextFor(source:readonly Feature[]):Feature[]{
     const ids=new Set(source.map(f=>String(f.properties.id)));
+    this.contextIndex ??= new BuildingContextIndex(this.contextFeatures, f => this.boundsFor(f));
     return this.contextIndex?.neighbors(source, f => {
       const id=String(f.properties.id);return ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id);
     }) ?? [];
