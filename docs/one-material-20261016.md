@@ -76,15 +76,19 @@ luma × the strip's white gain (sRGB): the wall's colour in sun, facing the sun.
 | view | chunk before → after | same-facing generic before → after | after gap | photo | sunlit | chunk ÷ sunlit | roof before → after |
 |---|---|---|---|---|---|---|---|
 | Nassaukade 318, bike | 84/31 11 % → 97/41 7 % | 113/20 → 134/31 | −37 | 98/27 | 119 | 0.82 | 74 → 121 |
-| Nassaukade 318, boat | 76/17 22 % → 111/22 3 % ¹ | 137/11 → – | – | 98/27 | 119 | 0.93 | 75 → 122 |
-| Marnixstraat marnix-c, bike | 79/13 11 % → 92/21 6 % | 84/23 → 102/25 | −10 | 98/24 | 117 | 0.79 | 53 → 88 |
-| Utrechtsestraat 48-76, bike | 95/28 25 % → 93/28 8 % ¹ | 74/19 → 86/25 | +7 | 123/25 | 142 | 0.65 | 60 → 99 |
-| Oudezijds Voorburgwal 115-125, bike | 50/18 89 % → 59/25 65 % | 70/25 → 84/30 | −25 | 71/8 | 82 | 0.72 | 73 → 120 |
+| Nassaukade 318, boat | 76/17 22 % → 98/22 4 % | 137/11 → 164/22 ¹ | −66 | 98/27 | 119 | 0.82 | 75 → 122 |
+| Marnixstraat marnix-c, bike | 79/13 12 % → 92/21 6 % | 88/21 → 106/25 | −14 | 98/24 | 117 | 0.79 | 53 → 88 |
+| Utrechtsestraat 48-76, bike | 87/28 27 % → 93/28 8 % | 73/20 → 86/25 | +7 | 123/25 | 142 | 0.65 | 60 → 99 |
+| Oudezijds Voorburgwal 115-125, bike | 50/18 90 % → 59/25 65 % | 70/25 → 84/30 | −25 | 71/8 | 82 | 0.72 | 73 → 120 |
 | Oudezijds Voorburgwal 115-125, boat | 50/18 87 % → 59/25 64 % | 68/23 → 83/29 | −24 | 71/8 | 82 | 0.72 | 73 → 120 |
 | Bilderdijkstraat 236022-167243, bike (sun side) | 53/35 58 % → 54/36 58 % | 115/83 → 119/87 | −65 | 49/10 | 51 | 1.06 | 59 → 97 |
 
-¹ Run-to-run framing noise. The derived chunk albedo moved between runs (Nassaukade boat 0.18 → 0.29,
-Utrechtsestraat 0.28 → 0.20), which none of the code changes can do. Read those two rows with care.
+All frames were re-taken under the shared browser lock (`/tmp/canal-pw.sh`, one lane at a time), with the origin/main
+bundles swapped into `public/` for "before". The first, unlocked pass agreed within 1–2 luma, except for two framing
+outliers that the locked pass replaces.
+
+¹ The only generic wall facing the same way in this frame is a small corner of a pale stucco building (431 px).
+It is not a comparison.
 
 **Reading the table**
 
@@ -95,8 +99,9 @@ Utrechtsestraat 0.28 → 0.20), which none of the code changes can do. Read thos
   - The chunk's albedo is its photo's. Oudezijds Voorburgwal's chunk albedo is 0.079 (sRGB 79), against a sunlit
     photo of 82.
   - The generic walls there are period priors, not measurements. "Chunk within 10 of neighbour" is met only where
-    the colours are alike: Marnixstraat −10, Utrechtsestraat +7.
-- Target of ≥ 0.9 of the sunlit photo: met on the sun side (Bilderdijkstraat 1.06). On shade sides it is 0.65–0.82.
+    the colours are alike: Utrechtsestraat +7, Marnixstraat −14 (albedo 0.19 vs 0.26).
+- Target of ≥ 0.9 of the sunlit photo: met on the sun side (Bilderdijkstraat 1.06). On shade sides it is 0.65–0.82
+  (was 0.61–0.71).
   At ratio 0.55 the rig's shade cap is 0.77 sRGB. Reaching 0.9 on a shade side would need a ratio near 0.8, which is
   close to overcast light with no visible sun/shade.
 
@@ -104,15 +109,15 @@ Utrechtsestraat 0.28 → 0.20), which none of the code changes can do. Read thos
 
 | place | walls | roofs | paved | frame |
 |---|---|---|---|---|
-| Singelgracht boat spot | 117/49 → 126/51 | 118/5 → 134/9 | 133/22 → 137/21 | 126/27 → 131/27 |
-| Nassaukade south end (bike) | 158/30 → 164/26 | 99/7 → 115/7 | 134/22 → 133/22 | 126/44 → 126/46 |
+| Singelgracht boat spot | 116/48 → 124/52 | 118/5 → 136/7 | 133/22 → 133/22 | 126/27 → 131/27 |
+| Nassaukade south end (bike) | 158/30 → 163/26 | 99/7 → 114/7 | 134/22 → 133/22 | 126/44 → 126/46 |
 | Nieuw-West, Slotermeer (bike) | 136/27 → 142/26 | 133/3 → 155/6 | 168/28 → 168/28 | 145/28 → 154/28 |
 | Overview (zoom 0.16) | 122/38 → 129/38 | 114/5 → 134/7 | 132/29 → 132/29 | 124/23 → 130/23 |
 
 The city reads sunnier, not greyer:
 
-- Walls are +6 to +9 luma, with chroma held.
-- Roofs are +16 to +22, with chroma up 2–4. The near-black slate patches are gone.
+- Walls are +5 to +8 luma, with chroma held.
+- Roofs are +15 to +22, with chroma up 0–3. The near-black slate patches are gone.
 - The ground is within ±1, except one road reading at Nieuw-West.
 - Nothing clips: white membrane 222 draws about 233.
 
@@ -131,3 +136,19 @@ The city reads sunnier, not greyer:
 Keep it held. Its walls are now drawn at its photo's colour, and that colour is soot-dark brick: 71/8 overcast, 82
 sunlit. On the shade side it is 59 luma, with 64–65 % of wall pixels under luma 60. The photo has 29 %, and the
 bound is the photo + 10. The generic draw at the same pixels was darker than the chunk before this change.
+
+## Ride perf (desktop, `PERF_RIDE=1`, alone under the browser lock, load 6)
+
+5/5 within budget.
+
+| variant | frame interval median/p95 | map render median/p95 | three.js median | heap | landmarks shown |
+|---|---|---|---|---|---|
+| default | 16.7/16.7 | 2.3/5.2 | 0.8 | 1,047 MB | 76 |
+| landmarks off | 16.7/16.7 | 2.2/4.5 | 0.6 | 909 MB | 53 |
+| all landmarks resident | 16.7/16.8 | 3.9/6.6 | 1.8 | 1,137 MB | 486 |
+| default (repeat) | 16.7/16.8 | 2.3/5.0 | 0.9 | 874 MB | 76 |
+
+Motion stutter: p95 16.7 ms, p99 16.8 ms, 2 frames over 50 ms, 0 over 100 ms, longest 66.7 ms.
+
+Earlier unlocked runs were taken at load 40–110 and are void. They failed the map-render budget on origin/main's
+bundles and on this lane's alike.
