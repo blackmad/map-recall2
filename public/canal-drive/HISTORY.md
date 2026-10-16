@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## GroundStore.init loads once; the -1_-1 deck-polygon pin green again (2026-10-16)
+
+`check:own-ground-cells` failed on main from 49c7bd019 on ("-1_-1: 58 deck
+polygons (h ≥ 1) over no deck", limit < 40; 13 before). Bisected to the BRU0160
+regression calling `roadsStore.init()` after earlier regressions had built cells
+in that store: `init()` replaced `surface`, dropping the decks those cells had
+registered while the per-cell caches stayed. The game inits each store once, so
+riders never saw it. `init()` now memoises its load; unit test in
+`ownGround.test.ts`; the pin reads 13.
+
 ## Centraal Station: the Cuypers front, the east wing and AMSTERDAM on the IJ canopy (2026-10-16)
 
 User (2026-10-16): "centraal could probably use some help" (flat red brick, plain
