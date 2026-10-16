@@ -1,5 +1,54 @@
 # Canal Recall — what is built
 
+## Buurt coverage in the app, and the first buurt generator pilot (Bellamybuurt-Zuid) (2026-10-16)
+
+User (2026-10-16), on the coverage map: "would be nice if this was bundled
+into our app … I'd love to be able to click on a neighborhood and explore
+its kits". `coverage.html` (lane/coverage-app-20261016, 0fc950d7c data,
+0b57e6fa4 page; linked from What's new, Street surveys and the chunks lab):
+the buurt map coloured by modelled share or "what we have"; click, search
+or `?buurt=<code>` opens a panel with the tier counts, top uncovered repeat
+clusters, the type libraries whose evidence pands stand there (swatches,
+kit keys, exemplar pands, source faces), block faces (installed ones link
+to `street-chunks.html?only=…`), recipe and ordinary models, landmark
+kits, building-type designs with an inline 3D preview, and the street
+surveys. `buurten.json` carries per-buurt id lists (603 KB); names, links
+and thumbnails sit in `contents.json` (254 KB) loaded on the first click;
+the build verifies every link and thumbnail on disk. A buurt with nothing
+says so and names its biggest uncovered cluster. 312 of 518 buurten have
+something, but 210 only through generic landmark kits: 122 have more than
+landmarks, 18 block-face work, 23 building-type designs, 206 nothing.
+Gaps: no exemplar photo crops ship under `public/`, building-type designs
+have no thumbnails, `street-surveys` data dates from 10-10.
+
+Buurt generator pilot (lane/buurt-generator-20261016, f6dcd8527; doc
+`docs/buurt-generator-20261016.md`), answering "how close are we to being
+able to cheaply install generators in places like this?":
+`block-face:buurt-survey` proposes 97 street-side faces from shared party
+walls and intakes the uncovered ones (49, ~85 s each);
+`block-face:auto-place` (`blockFace/autoPlace.ts`) scores every library
+type per pand (hard vetoes year ±2, frontage ±0.4 m; storeys from eaves,
+3DBAG storeys and roof form, measured wall colour and stucco, bands,
+window columns, white-bay side and share), mirrors from door/bay side,
+takes the crown from the photo skyline and a shopfront from BAG/OSM, then
+gates on an edge likeness (`stripLikeness.ts`, floor 0.15) with every
+rival type compiled on the same runs (held if a rival scores > 0.05
+higher). New kit component `tilePanels` (`buildingRecipe/tileAccents.ts`:
+yellow pier diamonds, green sill tiles) and six measured types in
+`scripts/block-face/types/bellamy/`. Result: 102 of 335 pands placed on 17
+faces, the rest held with reasons; 31 faces place nothing because their
+designs are not in the library. Five rows get a wrong type that still
+passes the gate (Jan Hanzenstraat 49–51, Ten Katestraat 29–31,
+Bellamystraat 18–20, Hasebroekstraat 69, Van Effenstraat 7D), so nothing
+is installed: the gate cannot yet certify a match. The kit still cannot
+say Hasebroekstraat 56–70's white painted timber oriels or its white
+cornice with hoist-cap dormers, a window kind per axis, double house
+doors, or balconies read from the strip. Cost: the survey, intake and
+placement are machine time (~150 s for a full placement run) a Haiku lane
+can drive; authoring types (10–20 min each, measuring is what pays: the
+flat row's score 0.05 → 0.55), kit components and gallery-size review
+need an Opus lane.
+
 ## Motion stutter: longest desktop frame 383 → 83 ms, long tasks 13 → 2 per minute (2026-10-16)
 
 Lane `worktree-agent-a2001077bb7d13480` (final 23144a68e; doc
