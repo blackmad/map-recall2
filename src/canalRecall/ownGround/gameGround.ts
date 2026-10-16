@@ -223,6 +223,7 @@ export class OwnGround {
   /** Per frame, from the shared frame's main pass. */
   private beforeRender(zoom: number): boolean {
     this.zoom = zoom;
+    if (!this.precompiled) this.precompile();
     const visible = this.visibleAtZoom(zoom);
     // One cell per frame: geometry upload is the cost, not the build (that is in the worker).
     const next = this.installQueue.shift();
@@ -489,6 +490,48 @@ export class OwnGround {
     M.highlight = overlay('#38BDF8', 7, { transparent: true, opacity: 0.96, depthWrite: false });
     M.destination = overlay('#f97316', 7, { transparent: true, opacity: 0.85, depthWrite: false });
     Object.assign(this.base, M);
+  }
+
+  /**
+   * Every ground program a cell can use (each layer's base, its water cut, and the dissolve of either),
+   * compiled once when the frame first draws, and held by keeper materials for the session. Before this,
+   * each arriving cell compiled its dissolve programs in the frame it first drew, and released them when
+   * its dissolve ended, so the next cell compiled them again: ~90 program links in the first seconds of a
+   * ride and three's first-use link waits inside MapLibre's frame (docs/perf-motion-stutter-20261016.md).
+   * Same materials and cache keys as the cells', so the cells reuse these programs.
+   */
+  private precompiled = false;
+  private readonly keepers: any[] = [];
+  private precompile(): void {
+    const renderer = this.frame?.renderer;
+    if (!renderer || typeof this.frame.compile !== 'function') return;
+    this.precompiled = true;
+    const THREE = this.THREE;
+    const uniforms = { waterMask: { value: null }, maskOrigin: { value: new THREE.Vector2(0, 0) }, maskSize: { value: new THREE.Vector2(1, 1) } };
+    // The cells' attribute set (geometry()): normals and uvs are part of a program's key, colours where a layer uses them.
+    const plain = new THREE.BufferGeometry();
+    plain.setAttribute('position', new THREE.BufferAttribute(new Float32Array(9), 3));
+    plain.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(9), 3));
+    plain.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(6), 2));
+    const coloured = plain.clone();
+    coloured.setAttribute('color', new THREE.BufferAttribute(new Float32Array(9), 3));
+    const group = new THREE.Group();
+    for (const layer of GROUND_LAYERS) {
+      const base = this.base[layer];
+      if (!base) continue;
+      const variants = [base];
+      if (CUT[layer]) variants.push(this.cutMaterial(layer, uniforms));
+      for (const v of [...variants]) variants.push(this.fadeMaterial(v, { value: 1 }));
+      for (const m of variants) {
+        const mesh = new THREE.Mesh(m.vertexColors ? coloured : plain, m);
+        mesh.receiveShadow = true;
+        mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
+        group.add(mesh);
+        if (m !== base) this.keepers.push(m);
+      }
+    }
+    group.updateMatrixWorld(true);
+    this.frame.compile(group);
   }
 
   /** A clone of a base material that discards fragments over water by this cell's mask. */
