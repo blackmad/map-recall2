@@ -38525,15 +38525,15 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#8a5a47",
-        stone: "#d9d3c1",
-        frame: "#e8e4d6",
+        brick: "#a2856c",
+        stone: "#e2d6bc",
+        frame: "#efece3",
         glass: "#4f6270",
         dark: "#2a3330",
         slate: "#58626d",
         copper: "#6f9d8c",
         gold: "#c9a23a",
-        white: "#e9e5da",
+        white: "#f0ede4",
         red: "#7a4a3a",
         concrete: "#a8a59c"
       },
@@ -47764,6 +47764,90 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289"
       ],
       preferDescription: true
+    },
+    {
+      modelId: "lieverdje",
+      landmarkId: "osm_node_3975877474",
+      name: "Het Lieverdje (Spui)",
+      funFact: "Carel Kneulman's little street urchin was unveiled in 1960, paid for by a cigarette maker. Robert Jasper Grootveld's anti-smoking happenings here in the 1960s gave rise to the Provo movement.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Het_Lieverdje"
+    },
+    {
+      modelId: "spinoza-standbeeld",
+      landmarkId: "osm_way_175846077",
+      name: "Spinoza statue (Zwanenburgwal)",
+      funFact: "Nicolas Dings's Spinoza (2008) stands near where the philosopher was born. Parakeets and sparrows on his cloak stand for newcomers and locals; the granite icosahedron recalls his trade as a lens grinder.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Spinozamonument"
+    },
+    {
+      modelId: "joods-verzetsmonument",
+      landmarkId: "osm_memorial_jewish_ww2_resistance",
+      name: "Joods Verzetsmonument (Amstel 1)",
+      funFact: "Unveiled in 1988, this black granite column carved with the stone tablets honours the Jewish resistance fighters killed in the Second World War. Since 1992 it has been the centre of the yearly Kristallnacht commemoration.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Joods_Verzetsmonument"
+    },
+    {
+      modelId: "figure-decoupee",
+      landmarkId: "osm_artwork_538934266",
+      name: "Figure decoupee (Picasso, Vondelpark)",
+      funFact: "Picasso asked no fee for this seven-metre concrete bird, made by Carl Nesjar from his sketch for the park's centenary in 1965. His one condition: it must always stay on public display.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Figure_d\xE9coup\xE9e"
+    },
+    {
+      modelId: "teun-de-jager",
+      landmarkId: "osm_artwork_5653694042",
+      name: "Teun de Jager (Vondelpark)",
+      funFact: "Jan Bronner's almost abstract hunter, placed here around 1958, is Teun de Jager from Hildebrand's Camera Obscura. It was cast from plasters of his Haarlem Hildebrand monument, commissioned in 1914 and finished only in 1947.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Teun_de_Jager"
+    },
+    {
+      modelId: "johnny-jordaan-groep",
+      landmarkId: "osm_artwork_1704741755",
+      name: "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer)",
+      funFact: "Kees Verkade's Johnny Jordaan came first, in 1991, two years after the singer died; Tante Leen followed in 1994. By 2010 five statues of Jordaan musicians stood here, and the square was named after him.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Johnny_Jordaanplein"
+    },
+    {
+      modelId: "theo-thijssen-standbeeld",
+      landmarkId: "osm_artwork_250624675",
+      name: "Theo Thijssen monument (Lindengracht)",
+      funFact: "Theo Thijssen (1879\u20131943) taught in Amsterdam schools for over twenty years. His best-known book, Kees de jongen (1923), about an imaginative boy called Kees, is set in the Jordaan.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Theo_Thijssen"
+    },
+    {
+      modelId: "carmiggelt-borstbeeld",
+      landmarkId: "osm_artwork_440673918",
+      name: "Simon Carmiggelt bust (Weteringplantsoen)",
+      funFact: "Kees Verkade's bust of the writer Simon Carmiggelt was unveiled in 1988, a year after his death. Its hollow plinth holds the 4,000 transfer slips sent in by the people who paid for it.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Buste_Simon_Carmiggelt"
+    },
+    {
+      modelId: "kinderbrug-meisje-eekhoorns",
+      landmarkId: "osm_artwork_4370460330",
+      name: "Kinderbrug: Girl with squirrels (Hildo Krop)",
+      funFact: "Hildo Krop carved this girl with squirrels into a capstone of Piet Kramer's bridge. Her twin is a boy with rabbits; on a ten-metre pylon above, a child stands under a rearing horse.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Kindertjesbrug"
+    },
+    {
+      modelId: "kinderbrug-jongen-konijnen",
+      landmarkId: "osm_artwork_4370459609",
+      name: "Kinderbrug: Boy with rabbits (Hildo Krop)",
+      funFact: "Hildo Krop carved this boy with rabbits into a capstone of Piet Kramer's bridge. The child under the rearing horse on its ten-metre pylon was Hedda van Gennep, later a documentary maker.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Kindertjesbrug"
+    },
+    {
+      modelId: "krijtberg",
+      landmarkId: "krijtberg",
+      name: "De Krijtberg",
+      funFact: "The Jesuits have served this spot since 1654, first in a hidden church in a house called Crijtberg. Alfred Tepe's neo-Gothic church of 1881-83 squeezes between canal houses, with a 31-metre vault and two stair towers.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/De_Krijtberg"
+    },
+    {
+      modelId: "westermoskee",
+      landmarkId: "lm-extract_landmarks_1632187034",
+      name: "Westermoskee",
+      funFact: "Milli G\xF6r\xFC\u015F bought the derelict site in 1994; years of fierce dispute followed before a 2000 deal set a 43-metre minaret. Building began in 2013 and the mosque opened on 1 April 2016.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Westermoskee"
     }
   ];
 
