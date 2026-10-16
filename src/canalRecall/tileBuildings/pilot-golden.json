@@ -2,62 +2,68 @@
  "16/33655/21538": {
   "0363100012133467": {
    "kind": "canal-house",
-   "triangles": 1772,
-   "triangleHash": "7c24bbe0b9d39acc",
+   "triangles": 1892,
+   "triangleHash": "b4b65a07ad232111",
+   "unit": null
+  },
+  "0363100012137280": {
+   "kind": "large",
+   "triangles": 8708,
+   "triangleHash": "a01eef315ec2fc13",
    "unit": null
   },
   "0363100012152363": {
    "kind": "canal-house",
-   "triangles": 1161,
-   "triangleHash": "f2451cc4ad4ce1e6",
+   "triangles": 1233,
+   "triangleHash": "d7efb315a4ebec00",
    "unit": null
   },
   "0363100012153622": {
    "kind": "canal-house",
-   "triangles": 1605,
-   "triangleHash": "c9823cc0d3eaa099",
+   "triangles": 1683,
+   "triangleHash": "b407cd1d30550ce8",
    "unit": null
   },
   "0363100012153782": {
    "kind": "canal-house",
-   "triangles": 1536,
-   "triangleHash": "1ae56d9c542cb7df",
+   "triangles": 1560,
+   "triangleHash": "045c7b9d96661742",
    "unit": null
   },
   "0363100012154127": {
    "kind": "canal-house",
-   "triangles": 930,
-   "triangleHash": "e48140bb489837bc",
+   "triangles": 978,
+   "triangleHash": "255d88a045e6d73c",
    "unit": null
   },
   "0363100012156732": {
    "kind": "canal-house",
-   "triangles": 738,
-   "triangleHash": "a26b2816dba2e95b",
+   "triangles": 810,
+   "triangleHash": "6b0ed908aba87efa",
    "unit": null
   },
   "0363100012159426": {
    "kind": "canal-house",
-   "triangles": 1439,
-   "triangleHash": "775848cfde143f71",
+   "triangles": 1583,
+   "triangleHash": "7a7dd49b45d01b0b",
    "unit": null
   },
   "0363100012159649": {
    "kind": "canal-house",
-   "triangles": 1669,
-   "triangleHash": "aad452a894b0dda6",
+   "triangles": 1693,
+   "triangleHash": "fb95f598b8e36a55",
    "unit": null
   },
   "0363100012161613": {
    "kind": "canal-house",
-   "triangles": 1122,
-   "triangleHash": "82f0961a23895032",
+   "triangles": 1170,
+   "triangleHash": "772c97ca646c0817",
    "unit": null
   },
   "0363100012165632": {
    "kind": "canal-house",
-   "triangles": 918,
-   "triangleHash": "efb221637d7cdc15",
+   "triangles": 990,
+   "triangleHash": "a150fde8d2d300db",
    "unit": null
   },
   "0363100012169550": {
@@ -68,8 +74,8 @@
   },
   "0363100012236799": {
    "kind": "large",
-   "triangles": 11707,
-   "triangleHash": "91372c1b6a45794f",
+   "triangles": 11484,
+   "triangleHash": "d8b157c03c1854d7",
    "unit": null
   }
  },
@@ -88,8 +94,8 @@
   },
   "0363100012169471": {
    "kind": "large",
-   "triangles": 3250,
-   "triangleHash": "7e26c5990982ea96",
+   "triangles": 3114,
+   "triangleHash": "20455961a1dde129",
    "unit": null
   },
   "0363100012173447": {
@@ -102,9 +108,9 @@
  "16/33657/21536": {
   "0363100012164998": {
    "kind": "glb",
-   "triangles": 20627,
-   "triangleHash": "10a1038a366af9de",
-   "unit": "gfaab2d584852f03"
+   "triangles": 19883,
+   "triangleHash": "0056718ed67d17ae",
+   "unit": "gf8f930a3994f5d4"
   },
   "0363100012169583": {
    "kind": "glb",

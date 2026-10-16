@@ -29,6 +29,11 @@
    "type": {
     "type": "kinker-1985-infill",
     "crown": "flat",
+    "roof": {
+     "source": "front",
+     "form": "flat",
+     "evidence": "2024-11-29 strip: flat parapet with two raised blocks, sky behind"
+    },
     "measuredPalette": {
      "brick": "#635e52",
      "evidence": "palette-from-strip.ts --face=kinker-56-84: wall median #635e52 on the 2024-11-29 strip"
