@@ -85,6 +85,13 @@ export interface HousePlacement {
    * named palette unchanged.
    */
   measuredPalette?: MeasuredPalette;
+  /**
+   * House-palette fields this pand changes over its named palette (one wall per house): a measured wall colour with
+   * `wallTint: "measured"` or `wallMaterial: "painted-brick"` (drawn as measured, no 0.3-0.6 lightness clamp), frames,
+   * stone. Unlike a front's `overrides.palette.brick` (a 3 cm facing over the type's wall, double the wall triangles and
+   * still clamped) this recolours the house's own wall. Reported as a type deviation. Absent = byte-identical.
+   */
+  paletteOverrides?: Partial<PaletteIntent>;
   /** Left-right mirror of the type as seen from the street (door, balconies, crown placement, dormers, bay widths). */
   mirror?: boolean;
   /** Full storeys incl. ground when this house has one more/less than the type. */
@@ -107,6 +114,8 @@ export interface HousePlacement {
 /** Colour slots a placement may measure per pand (`HousePlacement.measuredPalette`). */
 export const MEASURED_PALETTE_KEYS = ['brick', 'frame', 'stone', 'band', 'cornice', 'door'] as const;
 export type MeasuredPalette = Partial<Pick<PaletteIntent, typeof MEASURED_PALETTE_KEYS[number]>> & {evidence: string};
+/** House-palette fields a placement may override (`paletteOverrides`); values are checked by the house intent validation. */
+export const PALETTE_OVERRIDE_KEYS = ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'wallMaterial', 'stoneMaterial', 'wallTint', 'whitePoint'] as const;
 
 const has = (o: object, k: string) => Object.prototype.hasOwnProperty.call(o, k);
 const flipFrac = (s: {from: number; to: number}) => ({from: +(1 - s.to).toFixed(4), to: +(1 - s.from).toFixed(4)});
@@ -223,7 +232,9 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
   const paletteName = place.palette ?? Object.keys(t.palettes)[0], named = t.palettes[paletteName];
   if (!named) throw Error(`type ${t.id}: no palette "${paletteName}" (has ${Object.keys(t.palettes).join(', ')})`);
   const measured = place.measuredPalette ? Object.fromEntries(MEASURED_PALETTE_KEYS.filter(k => place.measuredPalette![k] !== undefined).map(k => [k, place.measuredPalette![k]!])) : {};
-  const palette: PaletteIntent = Object.keys(measured).length ? {...named, ...measured} : named;
+  const layered: PaletteIntent = Object.keys(measured).length ? {...named, ...measured} : named;
+  const palette: PaletteIntent = place.paletteOverrides ? {...layered, ...place.paletteOverrides} : layered;
+  if (place.paletteOverrides) deviations.push(`palette ${JSON.stringify(place.paletteOverrides)} (type palette ${paletteName})`);
   const storeys = place.storeys ?? t.body.storeys;
   if (t.fit?.storeys && !t.fit.storeys.includes(storeys)) deviations.push(`storeys ${storeys} outside the type's ${t.fit.storeys.join('/')}`);
   const perModule = widthM !== undefined ? widthM / modules.length : undefined;
@@ -254,6 +265,11 @@ export function placementProblems(types: Map<string, HouseTypeIntent>, houses: {
         if (!(MEASURED_PALETTE_KEYS as readonly string[]).includes(k)) p.push(`${at}.measuredPalette.${k}: not a colour slot (${MEASURED_PALETTE_KEYS.join(', ')})`);
         else if (typeof v !== 'string' || !/^#[0-9a-f]{6}$/i.test(v)) p.push(`${at}.measuredPalette.${k}: a #rrggbb colour`);
       }
+    }
+    if (pl.paletteOverrides !== undefined) {
+      const o = pl.paletteOverrides as Record<string, unknown>;
+      if (!o || typeof o !== 'object' || Array.isArray(o) || !Object.keys(o).length) p.push(`${at}.paletteOverrides: an object of house-palette fields`);
+      else for (const k of Object.keys(o)) if (!PALETTE_OVERRIDE_KEYS.includes(k as typeof PALETTE_OVERRIDE_KEYS[number])) p.push(`${at}.paletteOverrides.${k}: not a house-palette field (${PALETTE_OVERRIDE_KEYS.join(', ')})`);
     }
     if (pl.modules && pl.modules.length < 2) p.push(`${at}.modules: two or more modules (one module is the placement itself)`);
     if (pl.modules && pl.visualSpan) p.push(`${at}: visualSpan and modules are alternatives`);
