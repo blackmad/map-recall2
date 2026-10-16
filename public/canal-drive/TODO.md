@@ -1273,9 +1273,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   survey"; queue and evidence in `docs/landmark-abutters-survey-20261016.md`,
   verdicts in `scripts/landmarks/landmark-abutters-allowlist.json`): 25
   city buildings are part of their landmark and draw as generic kit
-  blocks. In progress: Noorderkerk corner houses (rijksmonument 3923,
-  pands 177303/176942/176956, own lane). Queued, one lane each, photo
-  first: Nieuwe Kerk choir annex (pand 0363100012176224), Sint Nicolaas
+  blocks. Noorderkerk corner houses DONE (HISTORY). Its south-west
+  consistory is now plainer than the three new houses; bring it up with
+  the same helpers. Queued, one lane each, photo first: Nieuwe Kerk choir annex (pand 0363100012176224), Sint Nicolaas
   wing/rear wing/pastorie (w750591089/87/84), Oude Kerk houses against
   the walls and chapel bay (w749242497/98, w747868956, w749242502),
   Amstelkerk house/lean-to with bell-cote/timber annex (pands 178570,
@@ -1293,6 +1293,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   terraced neighbours on a wrapped block and complex-wide monument
   records (Mercatorplein, Westergasfabriek, DeLaMar). Each fold-in that
   lands removes its PENDING entries from the allowlist.
+- **DeLaMar rear walls** (2026-10-16, HISTORY "DeLaMar on every side"):
+  the north-west auditorium curve and the south-east and rear walls are
+  inferred plain brown brick (no street panorama sees them), and they show
+  on gallery cards and from the pitched camera. Read them from open aerial
+  or oblique sources (open data only) and dress them. Kit gaps the lane
+  reported: mixed-case lettering, glazed tile texture, curved glazing,
+  pediment-dormer and stepped-gable silhouettes; `review:sheet` ignores
+  the panorama's camera height (2.44 m fixed), so across-the-canal photos
+  misalign vertically.
 - **Landmark queue, next** (2026-10-14, HISTORY "Landmark queue, batch
   10" and "Figures, second pass"): STOP building statues with the figure
   kit (user, 2026-10-14: "bizarre"); the prototype (HISTORY "Measured

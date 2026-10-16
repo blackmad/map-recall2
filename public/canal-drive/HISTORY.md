@@ -1,5 +1,49 @@
 # Canal Recall — what is built
 
+## DeLaMar on every side; Noorderkerk corner houses folded in (2026-10-16)
+
+User reports from the game: DeLaMar "is visible on many sides, so needs
+the back modeled" (a plain brick box with a dark slab seen across the
+Singelgracht from the Leidsebosje), and "does noorderkerk really have
+these sort of infill building sides?" (a 4-storey stucco kit block in
+an angle of the cross).
+
+Lane `lane/delamar-all-sides-20261016` (2a5ceee8e). New
+`delamar-builder.ts` builds the three BAG pands (0363100012169852
+Theater Bellevue, 0363100012571556 DeLaMar, 0363100012169853 the
+Marnixstraat house) from their 3DBAG LoD2.2 shells
+(`delamar-prepare.ts` → `delamar-shell.json`, reproducible byte for
+byte), every street wall dressed from panoramas: the Bellevue drum and
+its 2025 Leidsekade front (white lettering on pale grey glazed brick,
+porthole, revolving door; the 2017 sheet photo still shows the old black
+fascia), white-striped fly towers, glazed foyer with DELAMAR / THEATER,
+the palazzo with two turreted tower bays, the gable house; zinc and
+green standing-seam roofs; colours measured into `materialOverrides`.
+The old box branch left `venue-builders.ts`. Pand 168512 (Leidsekade 89,
+the Quentin hotel) is no longer suppressed: it is not DeLaMar. 18,364
+tris, `audit:glb` PASS (baseline entry replaced with a reason: drum and
+bay overhangs are real), LOD1 added, inventory 50 items (39 modelled, 8
+simplified, 3 too small); delamar is in `INVENTORY_REQUIRED_IDS`. The
+rear and north-west walls are inferred plain brick (see TODO).
+
+Lane `lane/noorderkerk-corner-houses-20261016` (8796149aa). The three
+1623 pands in the angles (177303 NE, 176942 SE = Noordermarkt 45, 176956
+NW = the kosterij) are two-storey brick service houses with slate hipped
+roofs into the arm walls, cream cornices, white small-pane sashes and a
+stone dormer with the city arms (RCE 3923: "met diagonaal tussen de armen
+geplaatste dienstwoningen"); panoramas 2020–2025 and Beeldbank. Built by
+`buildCornerHouses` from the BAG rings at the 3DBAG slope (46–48°);
+3 pands and 10 OSM ways suppressed; footprint is now a MultiPolygon;
+`review-sheet --ring=<n>` reviews one polygon of it. 16,219 → 21,127
+tris, `audit:glb` PASS. The two Noordermarkt sheds (177300/177301, white
+panelled storage, 3.4 m) stay city boxes. `check:noorderkerk-corner-houses`
+(in `check:canal`) pins suppression, ring coverage and the NE front. Its
+abutter reviews were pruned from the allowlist, and so was one DeLaMar
+review the new footprint made stale. Not modelled: the arms carving in
+the dormer cartouches, the doorcase capitals, ramp railings; the NW
+wing's pyramid tops at ~11 m against 3DBAG 12.4 m; the SE ground is
+0.64 m above the church's but placed at 0.
+
 ## Landmark abutter survey: buildings in a landmark's angles and walls (2026-10-16)
 
 Lane `lane/landmark-abutters-survey-20261016` (dd7ca183c). The user saw a
