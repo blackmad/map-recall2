@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Follow-ups: covers green, the first-launch test, arrival trivia, the stranded Dutch article (2026-10-16)
+
+`covers.json` rebuilt from the published BAG tiles (Noorderkerk's OSM-only ways
+w749871260–275 kept, today's chunk faces and DeLaMar added, the held
+Wereldmuseum and shadowed IJ-tunnel install gone): `check:covers` is green, so
+the nine checks chained after it in `check:canal` run again. `quiz.spec.ts`
+"first launch is playable without an account" was stale, not broken: the
+enamel restyle (2026-09-04) dropped the "Learn Amsterdam" tagline; it now
+asserts the fresh-profile line "0 known yet — start with canals". The ARRIVED
+card took the landmark's raw lede and never the published trivia, so Huis
+Bartolotti's three facts were never told on arrival; `finishBlurb.ts` picks the
+next fact from the same rotation as drive-by cards, once per arrival, and
+commits it (`test:finish-blurb`, Bartolotti as the named regression).
+`protectNames` gains `restoreEnglish`: a Dutch article the translator left in
+front of a restored name ("Het Huis Bartolotti") becomes "The"/"the", names that
+carry their own article (Het Schip) keep it, and `restore` stays a pure inverse;
+all six translation callers use it (`test:translation`). The stale, ungated
+`check-manual-poi-contract.{ts,cjs}` are deleted.
+
 ## No procedural paint on surveyed roads (2026-10-16)
 
 User (2026-10-16), on Kinkerstraat × Bilderdijkstraat with the BGT surface:
