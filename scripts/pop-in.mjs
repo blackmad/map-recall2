@@ -337,7 +337,9 @@ async function run(browser, n) {
   const raw = await page.evaluate(() => {
     const P = window.__pop;
     return { events: P.events, results: P.results, captures: P.captures, track: P.track, captureMs: P.captureMs, heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
-      distancePx: null, og: canalRecallGame.vectorMap._ownGround?.status?.() ?? null };
+      distancePx: null, og: canalRecallGame.vectorMap._ownGround?.status?.() ?? null,
+      // What is resident at the end (memory growth): facade chunks and building tiles held.
+      resident: (() => { const vm = canalRecallGame.vectorMap; try { return { three: vm._threeBuildings?.stats?.(), tilesHeld: [...(vm._completeCity?.cache?.heldKeys ?? [])].length }; } catch (e) { return String(e); } })() };
   });
   // Strips (previous | current | residual blobs in magenta) composed in the page, returned as PNG data URLs.
   const dump = framesDir ? await page.evaluate(() => window.__pop.dump.filter((k, j) => j < 12 || k.force).map(k => {
@@ -412,7 +414,7 @@ function summarise(r) {
     sources: Object.fromEntries(Object.entries(sources).sort((a, b) => b[1].area - a[1].area)),
     perSecond: perSecond.map(Math.round),
     top: events.sort((a, b) => b.area - a.area).slice(0, 25),
-    track: raw.track, ground: raw.og ? { built: raw.og.built, buildMsMedian: raw.og.buildMsMedian, latencyMsMedian: raw.og.latencyMsMedian, latencyMsMax: raw.og.latencyMsMax } : null, heapMB: { start: r.heap0, end: raw.heapMB }, net: r.net, railPx: r.setup.railPx, startLngLat: r.setup.startLngLat, hooked: r.setup.hooked, errors: r.errors.slice(0, 5),
+    track: raw.track, resident: raw.resident ?? null, ground: raw.og ? { built: raw.og.built, buildMsMedian: raw.og.buildMsMedian, latencyMsMedian: raw.og.latencyMsMedian, latencyMsMax: raw.og.latencyMsMax } : null, heapMB: { start: r.heap0, end: raw.heapMB }, net: r.net, railPx: r.setup.railPx, startLngLat: r.setup.startLngLat, hooked: r.setup.hooked, errors: r.errors.slice(0, 5),
   };
 }
 
