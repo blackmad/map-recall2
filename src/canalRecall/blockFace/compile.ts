@@ -345,6 +345,13 @@ export function faceFactsOnTrustedGround(face: Pick<BlockFaceIntent, 'houses'>, 
   return face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return trustFactsGround(f, terrainAt); });
 }
 
+/** Triangles of a compiled group (what the chunk's per-pand triangle-budget gate counts, before party-wall trimming). */
+function groupTriangles(group: T.Object3D): number {
+  let n = 0;
+  group.traverse(o => { if (o instanceof T.Mesh) { const g = o.geometry as T.BufferGeometry; n += (g.index ? g.index.count : g.getAttribute('position').count) / 3; } });
+  return n;
+}
+
 export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale;
   /** Photo gable readings keyed `<pandId>/<frontId>` (scripts/block-face/gable-from-photo.ts), used for `continuity.crownFromPhoto`. */
   photoGables?: Map<string, PhotoGable>;
@@ -360,7 +367,9 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
   // Faces model the street side only; without this the backs of a straight row are one blank plane (GLB audit blank-wall).
   const decorate = options.inferRears === false ? undefined : (built: CompiledBuilding, input: {id: string}) => {
     const f = built.facts, i = intents.findIndex(x => x.id === input.id), report = built.fit.fronts[0];
-    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
+    // The rear grid spends what is left of the pand's triangle budget (the gate below counts rears too).
+    const maxTriangles = BUDGET_TRIANGLES * intents[i].fronts.length - groupTriangles(built.group);
+    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i), {maxTriangles}));
   };
   const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
   const roofSource = options.roofSource ?? face.continuity.roof?.source ?? 'survey', keepSurvey = new Set(face.continuity.roof?.keepSurvey ?? []);

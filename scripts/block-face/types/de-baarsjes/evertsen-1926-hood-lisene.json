@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "evertsen-1926-hood-lisene",
+  "district": "de-baarsjes",
+  "description": "Jan Evertsenstraat 93-129 odd and 96-140 even (1925-26): dark brown brick, per house one shallow white box frame with a dark hood slab round the window beside a brick lisene (the lisenes stand at every other party wall, the boxes flank them), the other windows flat two-light casements under fixed top lights; a glass-block band over the continuous rigid canopy; a tall plain parapet (about 3 m) with a thin coping",
+  "fit": {
+    "widthM": [5.5, 6.5],
+    "storeys": [4]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "none",
+    "windows": "casement-toplight",
+    "bayWidths": [1.45, 1.85, 2.7],
+    "storeyHeights": [1.64, 1, 1, 1],
+    "windowHeights": [0.6, 0.62, 0.62, 0.62],
+    "headLines": [0.86, 0.72, 0.72, 0.72],
+    "bayWindows": {"bays": {"from": 0, "to": 0}, "storeys": [1, 2, 3], "hood": true},
+    "lisenes": {"leftEnd": "half"}
+  },
+  "crowns": {
+    "parapet": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 55, "coping": true},
+      "note": "the row's crown: 3.0 m of plain brick over the storeys (13.6-16.6 m on 101 and 118); lisenes stop 0.3 m into it"
+    },
+    "corner-tower": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 55, "coping": true},
+      "tower": {"corner": true, "rise": 1.0, "cap": "flat"},
+      "note": "raised corner masses on two-front corner pands (94, 66, 91 on the survey's list): a flat-topped brick tower on the corner, no pyramid"
+    },
+    "raised-end": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 55, "coping": true},
+      "tower": {"bays": {"from": 0, "to": 2}, "rise": 0.85, "cap": "flat"},
+      "note": "raised stair-tower ends (55, 57, 143, 145, 150, 152, 155): a narrow brick mass 2.5 m over the parapet across the front, one small light per storey of rise"
+    }
+  },
+  "palettes": {
+    "dark-brown": {
+      "brick": "#54432e",
+      "band": "#3d3827",
+      "frame": "#acab93",
+      "cornice": "#554b38",
+      "glassBlock": "#4f503f",
+      "door": "black"
+    }
+  },
+  "roof": {"material": "bitumen"},
+  "rhythm": {
+    "bays": "3 axes per house: the boxed light by the lisene, a flat two-light window, a wide window at the far party wall",
+    "identicalBays": "every upper storey the same; houses mirror in pairs about the lisene",
+    "windowsPerStorey": "ground: shop | 1-3: box + 2 flat windows",
+    "symmetry": "mirrored pairs about a lisene",
+    "groundFloor": "shop under the continuous rigid canopy, a glass-block band over it",
+    "signage": "letters on the glass-block band (not drawn)",
+    "roofline": "tall plain parapet with a thin coping",
+    "photoRows": [1, 3, 3, 3],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "the box and its flat neighbour touch on the photo; the kit keeps a pier between axes",
+      "signs on the glass-block band are not drawn",
+      "the wide window that straddles a party wall on some pairs is drawn inside one house"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "evertsen-91-135",
+      "pands": ["147193"],
+      "citation": "strip.jpg 2024-12-06, ruler crop of 101: canopy fascia 2.85-3.05 m, glass-block band 3.1-4.65 m (1.55 m, 8 rows of 0.2 m), wall 4.65-5.1 m (8 courses), box windows 5.15-6.95, 8.0-9.85, 10.95-12.85 m (pitch 2.93 m; floors at 4.8/7.73/10.66 m give sill 0.10, head 0.72, height 0.62 of the storey), hood slabs about 0.15 m on each box top, lisene 0.4 m wide from 4.7 to 13.6 m, eaves 16.6 m: a 3.0 m parapet over the storeys (55 courses); top light 0.2 of the window"
+    },
+    {
+      "face": "evertsen-94-142",
+      "pands": ["081416", "118917"],
+      "citation": "strip.jpg 2024-12-06, ruler crop of 118: the same lines (canopy 3.0-3.2, glass block 3.3-4.6, windows 5.0-6.9 / 8.0-9.85 / 10.9-12.85 m, hood about 13.0 m, eaves 16.6 m); 126 matches (body NCC on the zoom)"
+    },
+    {
+      "face": "evertsen-91-135",
+      "pands": ["147193", "113053", "118443"],
+      "citation": "palette over the 40 pands of the type (de-baarsjes-palettes.ts): wall #54432e, frames #acab93, coping/cornice band #554b38 (n=40); glass-block rows 3.3-4.5 m on 101 and 103 #4c4d3c-#5a5946 (the 3.3-4.5 m rows over 101 #4f503f; the type-wide median #46432f picks up canopy rows where the band sits lower); hood slabs sampled on 101 (sample.mjs on the strip): #3d3827 on the top hood, #2c2718 and #292412 on the lower two (in their own shadow); the top one is the palette"
+    }
+  ],
+  "schemaLimits": [
+    "box and flat window touching",
+    "signs on the glass-block band",
+    "121-125 (085815) is one 37 m mass: a large recipe in this body"
+  ],
+  "notes": [
+    "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 8}, wallCourses: 8} so the canopy and the band land on the measured lines; palette.glassBlock exports the band as its own measured material.",
+    "Place with mirror: true on every other house so the boxes flank the shared lisene (lisenes leftEnd half on both, mirrored)."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "house-type",
+  "id": "evertsen-1926-ladder-plain",
+  "district": "de-baarsjes",
+  "description": "Jan Evertsenstraat 45-53 odd, 52-64 even and 68-90 even (J.F. Staal on 68-92, 1925-27): plain brown brick, three wide windows per house with small-pane top lights (ladder lights on 43-53), a glass-block band over the continuous rigid canopy, a tall plain parapet (about 3.1 m) with a thin coping",
+  "fit": {
+    "widthM": [5.5, 6.7],
+    "storeys": [4]
+  },
+  "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "none",
+    "windows": "casement-gridded-toplight",
+    "windowShare": 0.68,
+    "storeyHeights": [1.7, 1, 1, 1],
+    "windowHeights": [0.6, 0.53, 0.53, 0.53],
+    "headLines": [0.86, 0.63, 0.63, 0.63]
+  },
+  "crowns": {
+    "parapet": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 56, "coping": true},
+      "note": "3.1 m of plain brick over the storeys (14.1-17.2 m on 49)"
+    },
+    "corner-tower": {
+      "gable": "flat",
+      "cornice": "none",
+      "parapet": {"courses": 56, "coping": true},
+      "tower": {"corner": true, "rise": 1.0, "cap": "flat"},
+      "note": "66 (Marco Polostraat) and 52-56: raised flat-topped corner masses"
+    }
+  },
+  "palettes": {
+    "brown": {
+      "brick": "#614e37",
+      "frame": "#acac99",
+      "cornice": "#5c4e3a",
+      "glassBlock": "#4f5140",
+      "door": "black"
+    }
+  },
+  "roof": {"material": "bitumen"},
+  "rhythm": {
+    "bays": "3 wide windows per house",
+    "identicalBays": "every upper storey the same",
+    "windowsPerStorey": "ground: shop | 1-3: 3 windows",
+    "symmetry": "symmetric",
+    "groundFloor": "shop under the continuous rigid canopy, a glass-block band over it",
+    "signage": "letters on the glass-block band (not drawn)",
+    "roofline": "tall plain parapet with a thin coping",
+    "photoRows": [1, 3, 3, 3],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+      "43-53's windows are small-paned all over (ladder-like crosses at thirds); drawn as a gridded top light over two casements",
+      "signs on the glass-block band are not drawn"
+    ]
+  },
+  "evidence": [
+    {
+      "face": "evertsen-43-57",
+      "pands": ["127935"],
+      "citation": "strip.jpg 2024-12-06, ruler crop of 49: canopy 3.0-3.2 m, glass-block band 3.3-4.5 m (6 rows), wall to the sills at 5.4 m (16 courses), windows 5.4-7.0 / 8.4-10.0 / 11.4-13.0 m (pitch 3.0 m; floors 5.1/8.1/11.1 m: sill 0.10, head 0.63, height 0.53), three windows 1.35 m wide per 6 m (share 0.68), eaves 17.2 m: 3.1 m parapet (56 courses)"
+    },
+    {
+      "face": "evertsen-52-66",
+      "pands": ["124819"],
+      "citation": "strip.jpg 2024-12-06: 60, the same three-window body with gridded top lights"
+    },
+    {
+      "face": "evertsen-68-92",
+      "pands": ["079120"],
+      "citation": "strip.jpg 2024-12-06: 70 (Staal row), white band rows 11.15-12.65 m are the top-storey windows behind white curtains"
+    },
+    {
+      "face": "evertsen-43-57",
+      "pands": ["127935"],
+      "citation": "palette over the type's 19 pands (de-baarsjes-palettes.ts): wall #614e37, frames #acac99, cornice band #5c4e3a, glass-block rows 3.6-4.3 m #4f5140"
+    }
+  ],
+  "schemaLimits": [
+    "all-over small panes on 43-53",
+    "signs on the glass-block band"
+  ],
+  "notes": [
+    "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 6}, wallCourses: 16}. On 43-53 a placement may override windows to ladder."
+  ]
+}
