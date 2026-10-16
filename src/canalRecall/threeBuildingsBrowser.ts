@@ -43,6 +43,7 @@ import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
+import { boundingSphereOf } from './geometryBounds.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -287,6 +288,16 @@ export type GroundBaseFn = (feature: Feature) => number | null | undefined;
 /** Per chunk: what each building was lifted by, and which still wait for their relief. */
 type GroundLift = { applied: Map<string, number>; pending: Set<string>; features: Map<string, Feature> };
 
+/**
+ * Main-thread work per display frame for staging worker-built chunks (ground lift) before they
+ * install. A z14 coarse chunk carries ~1–3k buildings, and lifting them all at once (each footprint
+ * sampled on the relief) plus the bounding sphere was 90–140 ms in one message handler while riding
+ * (docs/perf-motion-stutter-20261016.md). Staged, the old chunk keeps drawing until the new one swaps in.
+ */
+export const INSTALL_BUDGET_MS = 4;
+type StagedInstall = { key: string; source: Feature[]; chunk: Chunk; ms: number; options: BuildOptions; boundParentIds: string[]; lift?: GroundLift; ranges?: Map<string, { start: number; count: number }> };
+
+
 export class ThreeBuildings {
   readonly layer: any;
   private visible = true;
@@ -334,6 +345,8 @@ export class ThreeBuildings {
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
   private readonly inflightOptions = new Map<string, BuildOptions>();
+  private readonly staged: StagedInstall[] = [];
+  private stageScheduled = false;
   private hostWallOpenings: readonly ChunkHostOpeningConfig[] = [];
   private hostWallOpeningsRevision = '[]';
   private boatTiles = new Map<string, Houseboat[]>();
@@ -941,7 +954,7 @@ export class ThreeBuildings {
         if (!options || event.data.appearanceRevision !== options.appearanceRevision || options.appearanceRevision !== this.appearanceRevision || event.data.surveyedEnvelopeRevision !== options.surveyedEnvelopeRevision || options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || event.data.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
         this.inflight.delete(key);
         this.inflightOptions.delete(key);
-        this.install(key, source, chunk, ms, options, event.data.boundParentIds);
+        this.stage({ key, source, chunk, ms, options, boundParentIds: event.data.boundParentIds });
         this.pump();
       };
       worker.onerror = (error) => {
@@ -1004,9 +1017,14 @@ export class ThreeBuildings {
     return { chunks, lifted, pending, minBase: Number.isFinite(minBase) ? +minBase.toFixed(2) : null, maxBase: Number.isFinite(maxBase) ? +maxBase.toFixed(2) : null, keptMB: +(keptBytes / 1048576).toFixed(1) };
   }
 
-  private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift): number {
+  private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift & { todo?: string[] }, deadline = Infinity): number {
     let n = 0;
-    for (const id of [...lift.pending]) {
+    // A staged lift walks its own list in slices; buildings whose relief is not resident stay pending.
+    const ids = lift.todo ?? [...lift.pending];
+    let k = 0;
+    for (; k < ids.length; k++) {
+      if ((k & 31) === 31 && performance.now() > deadline) break;
+      const id = ids[k];
       const feature = lift.features.get(id);
       const base = feature ? this.groundBase!(feature) : null;
       if (base === undefined) continue;
@@ -1017,10 +1035,54 @@ export class ThreeBuildings {
       lift.applied.set(id, z);
       n++;
     }
+    if (lift.todo) { lift.todo.splice(0, k); if (!lift.todo.length) delete lift.todo; }
     return n;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = []): void {
+  /** Queue a worker-built chunk; its ground lift runs in budgeted slices, then it installs (one per frame). */
+  private stage(job: StagedInstall): void {
+    const i = this.staged.findIndex(s => s.key === job.key);
+    if (i >= 0) this.staged.splice(i, 1);
+    this.staged.push(job);
+    this.scheduleStage();
+  }
+
+  private scheduleStage(): void {
+    if (this.stageScheduled || !this.staged.length) return;
+    this.stageScheduled = true;
+    const run = () => { this.stageScheduled = false; this.drainStaged(); };
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else setTimeout(run, 0);
+  }
+
+  private drainStaged(): void {
+    const deadline = performance.now() + INSTALL_BUDGET_MS;
+    let installed = false;
+    while (this.staged.length) {
+      const job = this.staged[0];
+      if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(job.key, job.source)) { this.staged.shift(); continue; }
+      if (this.groundBase && !job.key.startsWith(BOAT_PREFIX) && !job.lift) {
+        const features = new Map<string, Feature>();
+        for (const f of job.source) { const id = String((f.properties as any)?.id ?? (f as any).id ?? ''); if (id) features.set(id, f); }
+        job.lift = { applied: new Map(), pending: new Set(job.chunk.ranges.map(r => r.id)), features };
+        job.ranges = new Map(job.chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
+        (job.lift as GroundLift & { todo?: string[] }).todo = [...job.lift.pending];
+      }
+      const lift = job.lift as (GroundLift & { todo?: string[] }) | undefined;
+      if (lift?.todo?.length) {
+        this.applyGroundLift(job.chunk.positions, job.ranges!, lift, deadline);
+        if (lift.todo?.length) break; // out of budget: carry on next frame
+      }
+      // One install per frame: the geometry upload follows at the next render.
+      if (installed) break;
+      this.staged.shift();
+      this.install(job.key, job.source, job.chunk, job.ms, job.options, job.boundParentIds, lift);
+      installed = true;
+      if (performance.now() > deadline) break;
+    }
+    this.scheduleStage();
+  }
+
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = [], staged?: GroundLift): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (options && (options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
     const context=this.contextGroups.get(key);
@@ -1036,8 +1098,8 @@ export class ThreeBuildings {
     const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
     // Own ground: lift each building onto its relief before upload. Houseboats
     // follow the water level instead (mesh.position.z below).
-    let lift: GroundLift | undefined;
-    if (this.groundBase && !key.startsWith(BOAT_PREFIX)) {
+    let lift: GroundLift | undefined = staged;
+    if (!lift && this.groundBase && !key.startsWith(BOAT_PREFIX)) {
       const features = new Map<string, Feature>();
       for (const f of source) { const id = String((f.properties as any)?.id ?? (f as any).id ?? ''); if (id) features.set(id, f); }
       lift = { applied: new Map(), pending: new Set(chunk.ranges.map(r => r.id)), features };
@@ -1055,7 +1117,8 @@ export class ThreeBuildings {
     // three.js uploads a new mesh, then computes its bounding sphere to sort it.
     // With `position` already freed that throws inside MapLibre's frame and the
     // whole map flashes once per new chunk, so measure while the array exists.
-    geometry.computeBoundingSphere();
+    const sphere = boundingSphereOf(chunk.positions);
+    geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     const mesh = new THREE.Mesh(geometry, this.material);
     mesh.userData ??= {};
     mesh.userData.installedSurveyedEnvelopeData = options?.surveyedEnvelopeData;
