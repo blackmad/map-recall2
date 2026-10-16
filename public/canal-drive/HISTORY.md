@@ -1,5 +1,51 @@
 # Canal Recall — what is built
 
+## Sunny look is the default: measured exposure, white-balanced rig, measured clear sky (2026-10-16)
+
+Lane `worktree-agent-a2d8e28de68096908` (b9c4b8126), answering "the game
+feels a little dark/dour"; `?look=legacy` opts out. Rig
+(`rendererShared/lightRig.ts`): sun `#ffe2bf` (was `#ffe9cc`); fill is the
+measured clear sky mixed toward white until flat ground in sun gets
+neutral light (`#b5d2ea`; the pure sky colour turned every warm brick grey
+and was rejected); ground bounce from the orthophoto's sunlit pavement;
+sky intensity keeps the 0.41 shade-to-sun wall ratio; sun direction and
+shadows unchanged. Exposure 1.423 = 1 / (light on a sun-facing wall), so
+a wall facing the sun draws its own colour (the old rig drew it at 0.74),
+folded into the light intensities instead of tone mapping so the route
+ribbon, question street and highlight keep exact colours; the ground gain
+follows the rig (1.208 → 0.996). Sky: MapLibre's sky is the clear sky
+measured from 300 clear views out of 1,256 municipal panoramas (`#9ec3ed`
+upper, `#a1c6e5` at the roofline; before, the basemap land colour showed
+above the horizon as cream). Measured walls with a recorded white are
+scaled in linear light by sunlit white (219, median light-trim white of
+the 35 May–September crops) ÷ the crop's recorded white, one factor for
+all channels (148 crops across 106 houses in `measuredWhitePoints.ts`),
+else the median correction 1.106, bounded 0.85–1.6, in both the city-look
+and recipe-house paths. Tokens: `look/sunny.ts` exports `sceneTokens()`
+and `groundTokens()`; `basemapGroundPatches` reads `groundTokens`, so the
+flat overview and the 3D ground share values (unit-tested). Before →
+after median luma/chroma: walls +9–15 luma, −1 to −6 chroma (cooler shade
+sides, warm sun sides), e.g. Kinkerstraat 100/30 → 115/27 (ΔE 6.5), Jan
+Evertsenstraat 65/29 → 74/26, Prinsengracht 94/24 → 106/23; roofs +7–12;
+paved ground within ±2 luma except Singelgracht +10, chroma −6 to −9
+because cast shadows are sky-blue; water within 2; sky 239/15 → 190/79
+(matches the measured 190–192); whole frame +3 to +13. References:
+orthophoto sunlit ground 165–168, photo brick 87–98 relative to a white of
+215–240. Tests: `test:look` 67 (normalisation, fallback, rig balance,
+exposure, defaults, opt-out, sky, tokens, frame-region classifier),
+`test:own-ground` pins both ground gains, `building-look.spec.ts` 8/8
+with the sun-side grey table re-measured (+12 to +20). Tools:
+`scripts/look/region-mask.js` (in-page wall/roof/ground/tree/sky
+labelling, `live-play-shots.mjs MASK=1`), `sunny-frames.ts`,
+`sunny-sheet.ts`, `measure-sky.ts`, `build-measured-white-points.ts`.
+Sheets `docs/images/look/sunny-20261016.jpg`, `-zoom.jpg`, stats
+`.json`. Not changed: the opt-in yellow highlight clips slightly (206.6
+vs ~201; its test pinned to `?look=legacy`), the city look's extra 0.9
+cell level (`?cityLook=1`) draws a sun-facing wall at 0.79, hand-edited
+intents and the Oud-West strip faces use the median correction, gallery
+covers, goldens and `docs/LOOK.md` are not regenerated, the road grey
+(~98–117 against the user's ~150) and cycle red stay a separate decision.
+
 ## roads-v1: the surveyed BGT road partition fetched city-wide, seven pilot cells published (2026-10-16)
 
 Lane `lane/roads-data-20261016` (d8f734147 scripts and schema, 1670a1b9b
