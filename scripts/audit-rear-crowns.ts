@@ -50,7 +50,7 @@ if (areasOnly) {
   tiles.push(...set);
 } else for (const x of readdirSync(`${BASE}/building-tiles/14`)) for (const f of readdirSync(`${BASE}/building-tiles/14/${x}`)) tiles.push(`${x}/${f.replace('.geojson.gz', '')}`);
 
-type Row = { id: string; tile: string; gable: string; style: string; area: string | null; centre: [number, number]; before: number; after: number; street: [boolean, boolean] | null; ends: number; throughLot: boolean };
+type Row = { id: string; tile: string; gable: string; style: string; area: string | null; centre: [number, number]; before: number; after: number; street: [boolean, boolean] | null; ends: number; throughLot: boolean; /** Outward normal of the plain (rear) end, metres frame: a camera standing behind the house looks along its reverse. */ rearNormal: [number, number] | null };
 const rows: Row[] = [];
 let pands = 0, gableRoofs = 0;
 for (const key of tiles) {
@@ -76,7 +76,7 @@ for (const key of tiles) {
     const offStreet = (list: typeof before) => crowned(list).filter(({ p, e }) => { const s = streetOf[list.indexOf(p)]; return s ? !s[e] : false; }).length;
     const centre = local(outer.reduce((s, q) => s + q[0], 0) / outer.length, outer.reduce((s, q) => s + q[1], 0) / outer.length);
     const area = AREAS.find(([, lat, lng]) => { const c = local(lng, lat); return Math.hypot(c[0] - centre[0], c[1] - centre[1]) <= RADIUS_M; })?.[0] ?? null;
-    rows.push({ id: String(d.properties.id), tile: key, gable: b.roof.plan.gable, style: String(d.properties.facadeStyle ?? ''), area, centre, before: offStreet(before), after: offStreet(after), street: streetOf[0] ?? null, ends: crowned(before).length, throughLot: !!after[0] && gableEndWalls(after[0].rect).every(w => facing(w) < Infinity) });
+    rows.push({ id: String(d.properties.id), tile: key, gable: b.roof.plan.gable, style: String(d.properties.facadeStyle ?? ''), area, centre, before: offStreet(before), after: offStreet(after), street: streetOf[0] ?? null, ends: crowned(before).length, throughLot: !!after[0] && gableEndWalls(after[0].rect).every(w => facing(w) < Infinity), rearNormal: after[0] && streetOf[0] ? (w => [+w.nx.toFixed(3), +w.ny.toFixed(3)] as [number, number])(gableEndWalls(after[0].rect)[streetOf[0][0] ? 1 : 0]) : null });
   });
 }
 
