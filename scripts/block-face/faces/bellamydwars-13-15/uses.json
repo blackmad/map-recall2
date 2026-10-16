@@ -1,0 +1,41 @@
+{
+ "street": "Bellamydwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012067622",
+   "addresses": [
+    "Bellamydwarsstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000579860"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112111",
+   "addresses": [
+    "Bellamydwarsstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamydwarsstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000579865"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

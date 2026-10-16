@@ -1,0 +1,90 @@
+{
+ "street": "Tollensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:49:53.218Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156298",
+   "addresses": [
+    "Tollensstraat 66",
+    "Tollensstraat 66B",
+    "Tollensstraat 66D",
+    "Tollensstraat 66F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tollensstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000828769"
+    },
+    {
+     "address": "Tollensstraat 66B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012110685"
+    },
+    {
+     "address": "Tollensstraat 66D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012110687"
+    },
+    {
+     "address": "Tollensstraat 66F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012110689"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152558",
+   "addresses": [
+    "Tollensstraat 64",
+    "Tollensstraat 64A",
+    "Tollensstraat 66C",
+    "Tollensstraat 66E",
+    "Tollensstraat 66A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tollensstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000828765"
+    },
+    {
+     "address": "Tollensstraat 64A",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012110684"
+    },
+    {
+     "address": "Tollensstraat 66C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012110686"
+    },
+    {
+     "address": "Tollensstraat 66E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012110688"
+    },
+    {
+     "address": "Tollensstraat 66A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012110690"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

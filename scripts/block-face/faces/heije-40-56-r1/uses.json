@@ -1,0 +1,62 @@
+{
+ "street": "Jan Pieter Heijestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:43:33.442Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012127322",
+   "addresses": [
+    "Jan Pieter Heijestraat 52A",
+    "Jan Pieter Heijestraat 52B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 52A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044131"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 52B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044132"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147904",
+   "addresses": [
+    "Jan Pieter Heijestraat 50A",
+    "Jan Pieter Heijestraat 50B",
+    "Jan Pieter Heijestraat 50C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 50A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001044128"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044129"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044130"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

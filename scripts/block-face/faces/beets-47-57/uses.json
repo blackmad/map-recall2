@@ -1,0 +1,227 @@
+{
+ "street": "Nicolaas Beetsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:48:58.292Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159209",
+   "addresses": [
+    "Nicolaas Beetsstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 47-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000750326"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4770031585,
+     "lngLat": [
+      4.86536,
+      52.3659514
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1053RJ",
+      "addr:street": "Nicolaas Beetsstraat",
+      "amenity": "restaurant",
+      "name": "Restaurante Dona",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:48:58.292Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167454",
+   "addresses": [
+    "Nicolaas Beetsstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 49-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000750333"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8730863078,
+     "lngLat": [
+      4.8653888,
+      52.3659005
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49",
+      "addr:postcode": "1053RJ",
+      "addr:street": "Nicolaas Beetsstraat",
+      "amenity": "fast_food",
+      "check_date": "2024-10-02",
+      "cuisine": "pizza",
+      "name": "Pizzalicious",
+      "takeaway": "only",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:48:58.292Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153206",
+   "addresses": [
+    "Nicolaas Beetsstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 51-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012077138"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8730863077,
+     "lngLat": [
+      4.8654112,
+      52.3658594
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51",
+      "addr:postcode": "1053RJ",
+      "addr:street": "Nicolaas Beetsstraat",
+      "amenity": "restaurant",
+      "name": "Petit Péché",
+      "website": "https://www.petitpecheamsterdam.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-16T11:48:58.292Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153029",
+   "addresses": [
+    "Nicolaas Beetsstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 53-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000750346"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159236",
+   "addresses": [
+    "Nicolaas Beetsstraat 55B",
+    "Nicolaas Beetsstraat 55C",
+    "Nicolaas Beetsstraat 55D",
+    "Nicolaas Beetsstraat 55E",
+    "Nicolaas Beetsstraat 55A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000750350"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 55C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000750351"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 55D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000750352"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 55E",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010001024422"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 55A",
+     "use": "industriefunctie",
+     "areaM2": 180,
+     "bagId": "0363010001024428"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 55A",
+     "use": "industriefunctie",
+     "areaM2": 80,
+     "bagId": "0363010012103545"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160986",
+   "addresses": [
+    "Nicolaas Beetsstraat 57A",
+    "Nicolaas Beetsstraat 57B",
+    "Nicolaas Beetsstraat 57C",
+    "Nicolaas Beetsstraat 57D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 57A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000750353"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 57B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000750354"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 57C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000750355"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 57D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010001027631"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

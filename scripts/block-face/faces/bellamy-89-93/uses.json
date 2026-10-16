@@ -1,0 +1,126 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:34:35.758Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157996",
+   "addresses": [
+    "Bellamystraat 89A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 89A",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010001975051"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012570734",
+   "addresses": [
+    "Bellamystraat 91",
+    "Bellamystraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 91",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 878,
+     "bagId": "0363010000580188"
+    },
+    {
+     "address": "Bellamystraat 93",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010012067041"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164438",
+   "addresses": [
+    "Bellamystraat 91A",
+    "Bellamystraat 91B",
+    "Bellamystraat 91C",
+    "Bellamystraat 91D",
+    "Bellamystraat 91E",
+    "Bellamystraat 91F",
+    "Bellamystraat 91G",
+    "Bellamystraat 91H",
+    "Bellamystraat 91K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 91A",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 194,
+     "bagId": "0363010012574190"
+    },
+    {
+     "address": "Bellamystraat 91B",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012574191"
+    },
+    {
+     "address": "Bellamystraat 91C",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012574192"
+    },
+    {
+     "address": "Bellamystraat 91D",
+     "use": "industriefunctie",
+     "areaM2": 136,
+     "bagId": "0363010012574193"
+    },
+    {
+     "address": "Bellamystraat 91E",
+     "use": "industriefunctie",
+     "areaM2": 52,
+     "bagId": "0363010012574194"
+    },
+    {
+     "address": "Bellamystraat 91F",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010012574195"
+    },
+    {
+     "address": "Bellamystraat 91G",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010012574196"
+    },
+    {
+     "address": "Bellamystraat 91H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010012574197"
+    },
+    {
+     "address": "Bellamystraat 91K",
+     "use": "industriefunctie",
+     "areaM2": 104,
+     "bagId": "0363010012574198"
+    },
+    {
+     "address": "Caspar Flickhof 9",
+     "use": "industriefunctie",
+     "areaM2": 33,
+     "bagId": "0363010012574199"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

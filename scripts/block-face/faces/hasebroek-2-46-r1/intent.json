@@ -1,0 +1,525 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hasebroek-2-46-r1",
+ "street": "Hasebroekstraat",
+ "sources": [
+  {
+   "id": "strip-2022-01-04",
+   "kind": "street-panorama",
+   "capturedAt": "2022-01-04",
+   "image": "staging/block-face/hasebroek-2-46-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/hasebroek-2-46/auto-place.json"
+ },
+ "types": [
+  "bellamy-1904-balcony-axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160178",
+   "slug": "hasebroek-160178",
+   "address": "Hasebroekstraat 36",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3e3836",
+     "evidence": "strip 2022-01-04 span 0-221: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 0-221"
+   }
+  },
+  {
+   "pandId": "0363100012167170",
+   "slug": "hasebroek-167170",
+   "address": "Hasebroekstraat 34",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "measuredPalette": {
+     "brick": "#483f39",
+     "evidence": "strip 2022-01-04 span 221-438: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.87 on eaves 0.5, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 221-438"
+   }
+  },
+  {
+   "pandId": "0363100012161486",
+   "slug": "hasebroek-161486",
+   "address": "Hasebroekstraat 32",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#38312e",
+     "evidence": "strip 2022-01-04 span 437-653: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 437-653"
+   }
+  },
+  {
+   "pandId": "0363100012163006",
+   "slug": "hasebroek-163006",
+   "address": "Hasebroekstraat 30",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#37302d",
+     "evidence": "strip 2022-01-04 span 654-870: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2022-01-04 span 654-870"
+   }
+  },
+  {
+   "pandId": "0363100012164522",
+   "slug": "hasebroek-164522",
+   "address": "Hasebroekstraat 28",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#201e1b",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (industriefunctie, amenity=public_bookcase); fascia colour measured on the strip 2022-01-04 span 870-1086"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#433b36",
+     "evidence": "strip 2022-01-04 span 870-1086: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "category": "amenity=public_bookcase",
+    "osm": {
+     "type": "node",
+     "id": 10598756425
+    },
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 870-1086"
+   }
+  },
+  {
+   "pandId": "0363100012159125",
+   "slug": "hasebroek-159125",
+   "address": "Hasebroekstraat 26",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#342e2a",
+     "evidence": "strip 2022-01-04 span 1086-1301: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 1086-1301"
+   }
+  },
+  {
+   "pandId": "0363100012155789",
+   "slug": "hasebroek-155789",
+   "address": "Hasebroekstraat 24",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#322c28",
+     "evidence": "strip 2022-01-04 span 1301-1517: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 1301-1517"
+   }
+  },
+  {
+   "pandId": "0363100012236622",
+   "slug": "hasebroek-236622",
+   "address": "Hasebroekstraat 22",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#413530",
+     "evidence": "strip 2022-01-04 span 1518-1743: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.87 on eaves 0.5, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 1518-1743"
+   }
+  },
+  {
+   "pandId": "0363100012164477",
+   "slug": "hasebroek-164477",
+   "address": "Hasebroekstraat 20",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3e332e",
+     "evidence": "strip 2022-01-04 span 1742-1968: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 1742-1968"
+   }
+  },
+  {
+   "pandId": "0363100012156654",
+   "slug": "hasebroek-156654",
+   "address": "Hasebroekstraat 18",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#423530",
+     "evidence": "strip 2022-01-04 span 1968-2191: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.8 on eaves 1, storeys 1, roof 1, stucco 1, columns 0; strip 2022-01-04 span 1968-2191"
+   }
+  },
+  {
+   "pandId": "0363100012165214",
+   "slug": "hasebroek-165214",
+   "address": "Hasebroekstraat 16",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#423733",
+      "fascia": true,
+      "name": "El Imaan Wa Nour",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (woonfunctie, shop=butcher); fascia colour measured on the strip 2022-01-04 span 2192-2417"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#443934",
+     "evidence": "strip 2022-01-04 span 2192-2417: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "El Imaan Wa Nour",
+    "category": "shop=butcher",
+    "osm": {
+     "type": "node",
+     "id": 8730863079,
+     "name": "El Imaan Wa Nour"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 2192-2417"
+   }
+  },
+  {
+   "pandId": "0363100012164498",
+   "slug": "hasebroek-164498",
+   "address": "Hasebroekstraat 14",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#3f3531",
+     "evidence": "strip 2022-01-04 span 2416-2638: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-01-04 span 2416-2638"
+   }
+  },
+  {
+   "pandId": "0363100012153488",
+   "slug": "hasebroek-153488",
+   "address": "Hasebroekstraat 12",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#352924",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2022-01-04 span 2638-2855"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#614d47",
+     "evidence": "strip 2022-01-04 span 2638-2855: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 0.87 on eaves 1, storeys 0, roof 1, stucco 1, columns 1; strip 2022-01-04 span 2638-2855"
+   }
+  },
+  {
+   "pandId": "0363100012154364",
+   "slug": "hasebroek-154364",
+   "address": "Hasebroekstraat 10",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#564540",
+     "evidence": "strip 2022-01-04 span 2855-3074: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-01-04 span 2855-3074"
+   }
+  },
+  {
+   "pandId": "0363100012165475",
+   "slug": "hasebroek-165475",
+   "address": "Hasebroekstraat 8",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#4e3f3a",
+     "evidence": "strip 2022-01-04 span 3074-3289: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 3074-3289"
+   }
+  },
+  {
+   "pandId": "0363100012160593",
+   "slug": "hasebroek-160593",
+   "address": "Hasebroekstraat 6",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#554845",
+     "evidence": "strip 2022-01-04 span 3289-3505: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 3289-3505"
+   }
+  },
+  {
+   "pandId": "0363100012236958",
+   "slug": "hasebroek-236958",
+   "address": "Hasebroekstraat 4",
+   "type": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": {
+     "shopfront": {
+      "colour": "#27201e",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2022-01-04 span 3506-3716"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3e3631",
+     "evidence": "strip 2022-01-04 span 3506-3716: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2022-01-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1904-balcony-axis scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-01-04 span 3506-3716"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

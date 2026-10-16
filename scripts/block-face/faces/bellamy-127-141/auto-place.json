@@ -1,0 +1,375 @@
+{
+ "face": "bellamy-127-141",
+ "street": "Bellamystraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 2.71,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012099202",
+   "address": "Bellamystraat 127",
+   "builtYear": 1915,
+   "widthM": 5.6,
+   "eavesM": 13.34,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#a29890",
+    "wallRaw": "#92877c",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 167,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.78,
+      "topWidthM": 0.42,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.606,
+    "voidShare": 0.21,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012099202",
+    "ncc": 0.329,
+    "nccRaw": 0.329,
+    "shiftM": [
+     -0.4,
+     -0.25
+    ],
+    "usable": 0.55,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 31 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#988981",
+     "model": "#a29890",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.1,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.38
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012075066",
+   "address": "Bellamystraat 129",
+   "builtYear": 1915,
+   "widthM": 5.6,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#625348",
+    "wallRaw": "#625c52",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.63,
+      "topWidthM": 0.63,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.068,
+    "voidShare": 0.04,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.083 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20 mean 0.33 vs photo 0.45)",
+   "likeness": {
+    "pandId": "0363100012075066",
+    "ncc": 0.083,
+    "nccRaw": 0.083,
+    "shiftM": [
+     0.05,
+     -0.2
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.33 vs photo 0.45"
+    ],
+    "wall": {
+     "photo": "#66594d",
+     "model": "#7b695b",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.462
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134227",
+   "address": "Bellamystraat 131",
+   "builtYear": 1915,
+   "widthM": 13.86,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#514538",
+    "wallRaw": "#37362e",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 167,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 1.8,
+      "topWidthM": 0.72,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 13.86 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 13.86 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.25 m = 4 storeys of 3.31 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.86 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012108097",
+   "address": "Bellamystraat 135",
+   "builtYear": 1915,
+   "widthM": 13.69,
+   "eavesM": 13.18,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#1f1d14",
+    "wallRaw": "#363c36",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 1.2,
+      "topWidthM": 0.78,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 13.69 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 13.69 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.18 m = 4 storeys of 3.29 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.66 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012081452",
+   "address": "Bellamystraat 139",
+   "builtYear": 1915,
+   "widthM": 13.69,
+   "eavesM": 13.18,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#211f16",
+    "wallRaw": "#3a4039",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 157,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.3,
+      "topWidthM": 0.68,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1915, type 1928-1935; frontage 13.69 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1928-1935",
+     "frontage 13.69 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.18 m = 4 storeys of 3.29 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.32 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

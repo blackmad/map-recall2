@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "effen-1-9-r1",
+ "street": "Van Effenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/effen-1-9-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/effen-1-9/auto-place.json"
+ },
+ "types": [
+  "bellamy-1915-green-tile",
+  "bellamy-1915-tile-bay"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012061382",
+   "slug": "effen-061382",
+   "address": "Van Effenstraat 7D",
+   "type": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#d1bead",
+     "evidence": "strip 2024-12-11 span 901-1193: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-tile-bay scored 0.7 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, accent-side 0, columns 0; strip 2024-12-11 span 901-1193"
+   }
+  },
+  {
+   "pandId": "0363100012064327",
+   "slug": "effen-064327",
+   "address": "Van Effenstraat 9",
+   "type": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#ccae9c",
+     "evidence": "strip 2024-12-11 span 1193-1449: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-green-tile scored 0.79 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 0, columns 1; strip 2024-12-11 span 1193-1449"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
