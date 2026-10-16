@@ -15,7 +15,7 @@ import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {pointInRing, roofHeightAt} from './facts.ts';
-import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
+import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
@@ -115,6 +115,8 @@ export interface FitReport {
     lisenes?: {leftM: number; widthM: number; bottomM: number; topM: number; party: 'start' | 'end' | null}[];
     /** Multi-bay erker (facade x): its stack's top, plan and cap. */
     erker?: {leftM: number; widthM: number; frontWidthM: number; depthM: number; topM: number; cap: 'hip' | 'flat' | 'none'; finish?: 'painted';
+      /** A timber oriel (`bayWindows.oriel`): the storeys painted in the trim colour, the console under its foot. */
+      oriel?: {paintedStoreys: number[]; paintFrom?: number; console: boolean; footM: number; storeys: number[]};
       /** Box frames (`bayWindows.hood`): one hood slab over each box, at the box tops (elevation metres). */
       hoods?: {topM: number}[]};
     /** Hood slabs over the top `slab-hood` balconettes (facade x). */
@@ -188,7 +190,9 @@ export function insertFootprintVertex(facts: BuildingFacts, a: number[], b: numb
 
 interface Layout { openings: CanalhouseOpening[]; glazedBays: CanalhouseGlazedBay[]; balconies: {storey: number; bay: number}[]; storeyHeights: number[]; groundBase: number; doorLeft: number | null; doorWidth: number; shopSpans: [number, number][]; shopGlass: [number, number] | null; warnings: string[]; /** Shop zone and riser top in viewer-left-to-right metres. */ shopZone: [number, number] | null; riserTopM: number; entrance: {leftM: number; widthM: number} | null; /** Bay boundaries of the shared grid, viewer-left to right. */ bayEdges: number[]; axisCentres: number[]; shopStoreys: 1 | 2; /** `groundFront` piers, beam and panels (viewer-left metres). */ groundBlocks?: CanalhouseFacadeBlock[];
   /** Amsterdam School set only (absent otherwise): storey bottoms and window heads (index = storey from the ground), and the multi-bay erker span (viewer-left metres). */
-  school?: {bottoms: number[]; heads: (number | null)[]; erker?: {leftM: number; widthM: number; storeys: number[]; topM: number; hoods?: {topM: number}[]}} }
+  school?: {bottoms: number[]; heads: (number | null)[]; erker?: {leftM: number; widthM: number; storeys: number[]; topM: number; hoods?: {topM: number}[];
+    /** A timber oriel (`bayWindows.oriel`): its plan, the painted storeys, a console under its foot (elevation metres). */
+    oriel?: {depthM: number; frontWidthM: number; footM: number; paintedStoreys: number[]; paintFrom?: number; console: boolean}}} }
 
 /** Shopfront proportions: pier width, stall riser top, fascia depth below the ground-storey top. */
 const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
@@ -275,7 +279,9 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // Amsterdam School set (absent = untouched): a multi-bay erker over bay axes, ladder windows, brick course banding.
   const erkerBays = f.bayWindows?.bays, ladder = f.windows === 'ladder';
   const school: Layout['school'] | null = erkerBays || ladder || f.bands === 'courses' ? {bottoms: [], heads: []} : null;
-  const erkerSpan: [number, number] | null = erkerBays ? [bayEdges[erkerBays.from] + ERKER.insetM, bayEdges[erkerBays.to + 1] - ERKER.insetM] : null;
+  // A timber oriel stands on the middle of its axes, `widthM` wide; the storey-high erker fills the bay span.
+  const oriel = f.bayWindows?.oriel, orielCentre = oriel && erkerBays ? (axisCentres[erkerBays.from] + axisCentres[erkerBays.to]) / 2 : 0;
+  const erkerSpan: [number, number] | null = !erkerBays ? null : oriel ? [orielCentre - oriel.span / 2, orielCentre + oriel.span / 2] : [bayEdges[erkerBays.from] + ERKER.insetM, bayEdges[erkerBays.to + 1] - ERKER.insetM];
   const boxRows = new Map<number, {bottom: number; height: number}>();
   let y = basement;
   for (let s = 0; s < n; s++) {
@@ -353,6 +359,20 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       hoods.push({topM: round(bottom + height)});
     }
     if (hoods.length) school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys: f.bayWindows!.storeys, topM: hoods.at(-1)!.topM, hoods};
+  } else if (school && erkerSpan && erkerBays && oriel) {
+    // Timber oriel: a module per storey; brick (wall) panels unless painted (oudWest.ts paints `paintedStoreys`).
+    const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), ret = oriel.returns ?? ORIEL.returns, depth = oriel.projection ?? ORIEL.projection;
+    const lights = oriel.frontLights ?? ORIEL.frontLights, bars = oriel.transom !== undefined ? [oriel.transom] : [];
+    for (const s of storeys) {
+      const own = oriel.panels?.[String(s)] ?? {}, lower = own.stallriser ?? oriel.stallriser ?? ORIEL.stallriser, upper = own.head ?? oriel.head ?? ORIEL.head;
+      if (lower + upper > heights[s] - 0.3) { warnings.push(`${f.id}: oriel storey ${s}: panels ${lower} + ${upper} m leave no light in ${round(heights[s])} m`); continue; }
+      glazedBays.push({id: `erker-s${s}`, leftM: round(erkerSpan[0]), bottomM: round(school.bottoms[s]), widthM: w, heightM: round(heights[s]), depthM: depth, frontWidthM: round(w - 2 * ret),
+        lowerPanelM: lower, upperPanelM: upper, frameWidthM: 0.06, frameDepthM: 0.07, glassDepthM: 0.02, capM: ERKER.closureM,
+        faces: {front: {verticalBars: Array.from({length: lights - 1}, (_, k) => round((k + 1) / lights, 4)), horizontalBars: bars}, left: {verticalBars: [], horizontalBars: bars}, right: {verticalBars: [], horizontalBars: bars}}});
+    }
+    const top = storeys.at(-1)!;
+    school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + heights[top]),
+      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
   } else if (school && erkerSpan && erkerBays) {
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), lights = 2 * (erkerBays.to - erkerBays.from + 1);
     for (const s of storeys) {
@@ -1059,7 +1079,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
       ...(canopy ? {canopy} : {}),
       ...(lisenes ? {lisenes} : {}),
-      ...(erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
+      ...(erker?.oriel ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.oriel.frontWidthM, depthM: erker.oriel.depthM, topM: erker.topM, cap: 'none' as const,
+        oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys}}}
+      : erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
         : {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
       ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {})});
   }

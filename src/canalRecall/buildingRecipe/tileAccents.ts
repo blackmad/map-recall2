@@ -77,7 +77,9 @@ export function addTilePanels(group: T.Group, intent: CanalHouseIntent, recipe: 
         continue;
       }
       const yc = wins.reduce((t, o) => t + o.bottomM + o.heightM / 2, 0) / wins.length;
-      for (const [l, r] of storeyPiers(wins.map(o => ({l: o.leftM, r: o.leftM + o.widthM})), frontL, frontR)) {
+      // A timber oriel (`bayWindows.oriel`) on this storey is an opening too: no pier runs behind it.
+      const oriel = f.erker?.oriel?.storeys.includes(s) ? [{l: f.erker.leftM, r: f.erker.leftM + f.erker.widthM}] : [];
+      for (const [l, r] of storeyPiers([...wins.map(o => ({l: o.leftM, r: o.leftM + o.widthM})), ...oriel], frontL, frontR)) {
         const inset = 0.04, a = l + inset, b = r - inset;
         for (const dy of [-TILE_PANELS.courseOffsetM, TILE_PANELS.courseOffsetM]) slab(courses, [[a, yc + dy - TILE_PANELS.courseM / 2], [b, yc + dy - TILE_PANELS.courseM / 2], [b, yc + dy + TILE_PANELS.courseM / 2], [a, yc + dy + TILE_PANELS.courseM / 2]], -0.005, TILE_PANELS.courseProudM);
         const n = Math.max(1, Math.min(TILE_PANELS.maxPerPier, Math.floor((b - a - 0.1) / TILE_PANELS.pitchM)));
