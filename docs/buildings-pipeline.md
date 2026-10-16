@@ -1442,7 +1442,7 @@ Bilderdijkstraat chunks byte-identical to the installed ones. Golden: `golden.te
 (211 pands, every kind) and compares per-pand triangle hashes with `pilot-golden.json`.
 
 Static spots (`tests/e2e/recipe-tiles.spec.ts`, look-consistency camera, 6 s of forced repaints, means). Off is
-`?sharedFrame=1&cityLook=1`, on adds `&recipeTiles=1`, types is `&buildingTypes=1`. "ms" is the CPU time of the
+`?sharedFrame=1&cityLook=1`, on adds `&recipeTiles=1`, types is `&buildingTypes=1` (2026-10-13; types are the default since 2026-10-16, so the spec's off mode now passes `&buildingTypes=0`). "ms" is the CPU time of the
 shared frame's main pass; frames are vsync-bound (16.67 ms) in every mode.
 
 | spot | main pass ms off / on / types | draw calls off / on / types | triangles k off / on | recipe-tile meshes | px differ off→on |

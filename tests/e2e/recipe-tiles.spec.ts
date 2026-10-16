@@ -17,7 +17,7 @@ import { openRoute } from './helpers';
 const OUT = process.env.RT_OUT || 'artifacts/recipe-tiles-e2e';
 const DATA = process.env.RECIPE_TILES_DIR || 'artifacts/recipe-tiles';
 const BUNDLES = process.env.RECIPE_BUNDLES_DIR || 'artifacts/recipe-tiles-bundles';
-const MODES = (process.env.RT_MODES || 'off:?sharedFrame=1&cityLook=1,on:?sharedFrame=1&cityLook=1&recipeTiles=1,types:?sharedFrame=1&cityLook=1&buildingTypes=1')
+const MODES = (process.env.RT_MODES || 'off:?sharedFrame=1&cityLook=1&buildingTypes=0,on:?sharedFrame=1&cityLook=1&recipeTiles=1,types:?sharedFrame=1&cityLook=1')
   .split(',').map(s => { const i = s.indexOf(':'); return { label: s.slice(0, i), query: s.slice(i + 1) }; });
 const PERF_MS = Number(process.env.RT_PERF_MS || 6000);
 
