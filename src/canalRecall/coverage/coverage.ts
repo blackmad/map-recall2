@@ -26,11 +26,11 @@ export type Ring = LngLat[];
  */
 export const TIERS = [
   { id: 'bespoke', label: 'Bespoke landmark', defaultOn: true, note: 'manual/signature landmark catalogue GLBs (incl. manual ordinary blocks)' },
-  { id: 'chunk', label: 'Block-face kit chunk', defaultOn: false, note: 'ordinary-buildings-data/chunks.json; ?streetChunks=1 (street surveys retired by default 2026-10-13)' },
+  { id: 'chunk', label: 'Block-face kit chunk', defaultOn: true, note: 'ordinary-buildings-data/chunks.json; default since 2026-10-16 (?streetChunks=retired hides them)' },
   { id: 'largeRecipe', label: 'Large-tier recipe', defaultOn: true, note: 'ordinary catalogue, source building-recipes-large' },
   { id: 'houseRecipe', label: 'Per-house recipe GLB', defaultOn: false, note: 'ordinary catalogue, category street-survey; ?streetChunks=0 (retired by default)' },
   { id: 'ordinaryGlb', label: 'Hand-built ordinary GLB', defaultOn: true, note: 'ordinary catalogue, category ordinary, hand-built (no recipe source)' },
-  { id: 'buildingType', label: 'Building-type instance', defaultOn: false, note: 'building-types/instances.json; ?buildingTypes=1' },
+  { id: 'buildingType', label: 'Building-type instance', defaultOn: true, note: 'building-types/instances.json; default since 2026-10-16 (?buildingTypes=0 hides them)' },
   { id: 'landmarkKit', label: 'Landmark kit on extrusion', defaultOn: true, note: 'landmarkKits.ts KITS (towers/roofs/halls on the BAG/OSM parts)' },
   { id: 'generic', label: 'Generic extrusion', defaultOn: true, note: 'everything else (era facade grammar / large-tier generic facade)' },
 ] as const;

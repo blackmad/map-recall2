@@ -4,13 +4,13 @@
 //    names, the HUD UI face for venues; sizes by class, landmark > museum /
 //    church > civic > hotel / shop. Small caps (uppercase, tracked) only for
 //    landmarks and the destination, as the street plaque sets names.
-//  - Ink: the plaque's warm dark on a thin paper halo (tone `ink`, default),
-//    or paper on an ink halo (tone `paper`, `?labelTone=paper`).
+//  - Ink: the plaque's warm dark on a thin paper halo (the `?labelTone=paper`
+//    inverse was deleted 2026-10-16).
 //  - A leader dot at the POI, a short stem up to the name.
 //  - The destination reuses the destination card: a paper chip, copper
 //    arrowhead, uppercase plaque face.
 
-import { LABEL_INK, labelTone, type LabelTone } from '../look/palette';
+import { LABEL_INK, labelInk } from '../look/palette';
 import type { LabelClass } from './labelPlan';
 
 const PLAQUE = '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif';
@@ -35,8 +35,8 @@ export function labelFont(cls: LabelClass): string {
 export const LABEL_ROOT_CLASS = 'cr-map-labels';
 
 /** The overlay's stylesheet. One rule per class; positions are set inline per frame. */
-export function labelCss(tone: LabelTone): string {
-  const ink = labelTone(tone);
+export function labelCss(): string {
+  const ink = labelInk();
   const halo = `0 0 1px ${ink.halo}, 0 0 2px ${ink.halo}, 0 0 3px ${ink.halo}, 0 0 4px ${ink.halo}`;
   const root = `.${LABEL_ROOT_CLASS}`;
   const rules = [
