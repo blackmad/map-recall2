@@ -737,6 +737,20 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+
+- **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
+  cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
+  buildings, libraries, Vue, Pathé Noord, LAB111) and need a sourced pass; 4
+  definitional cards wait on an entity check (HvA links the former HES
+  article, Onze Lieve Vrouwe Kapel has two chapels, Frascati and Scheltema
+  have no Wikipedia link). The arrival card should show `_landmarkNotice`
+  when it matches the finish landmark (`presentationRuntime.ts` ~1311/1355),
+  so published trivia reaches arrival. `protectNames` should carry a leading
+  Dutch article into the protected name, or the next translation run brings
+  "Het Huis …" back (the audit will flag it). The audit misses thin cards
+  that name a person (Anne Frank House). `scripts/check-manual-poi-contract.{ts,cjs}`
+  are stale and ungated (they fail on krijtberg arrival info and a coordinate
+  mismatch); regenerate them or delete them.
 - **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
   auto-placed runs installed"): 69 of 335 pands installed. Next: types for
   Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s

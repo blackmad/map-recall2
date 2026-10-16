@@ -498,6 +498,8 @@
     "test:roofs": "node --import tsx --test src/canalRecall/roofs/*.test.ts src/canalRecall/roofTier.test.ts src/canalRecall/gardenSheds.test.ts",
     "check:roof-attachment": "node --import tsx scripts/check-roof-attachment.ts",
     "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts",
+    "audit:landmark-cards": "tsx scripts/audit-landmark-cards.ts",
+    "test:landmark-cards": "node --import tsx --test src/canalRecall/facts/landmarkCardAudit.test.ts",
     "check:manual-landmarks": "node --import tsx scripts/landmarks/check-manual-landmarks.ts"
   },
   "dependencies": {
