@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## The Berensluis and its Prinsengracht neighbours: one deck, landed ends, a level girder (2026-10-16)
+
+User (2026-10-16): "what's going on with this bridge?" Lane
+`lane/prinsengracht-bridge-20261016` (2377869bc). The bridge is BRU0065
+Berensluis (Prinsengracht × Berenstraat); BRU0064 Reesluis, 0060, 0061,
+0066 and 0067 showed the same. Causes: the survey's flat ground polygons
+between bank and span lie over water and were cut by the street water mask,
+so the grey deck top showed as jagged wedges (deck footprints now extend to
+`deckReach`, covered deck tops sink 6 cm past the span); the steel family's
+parapet coping was a pale stone band over a 0.3 m girder face and read as a
+second deck (now the girder's dark steel, as the municipal water panorama
+shows; 147 steel bridges); side faces half over water slanted from the land
+bottom to the water bottom, the sawtooth skirt (now level at the water
+bottom). Regression `DECK_ENDS` in `check:own-ground-cells
+--road-regressions` with a live pin (36 → 1 misses on the Berensluis).
+Canal-belt audit (16 cells, 217 decks): end misses 6,901 → 3,200, decks
+with ≥ 3 misses 160 → 128, none worse.
+
 ## Cards for the new bridges (2026-10-16)
 
 User: "new bridges? are you going to find facts?". Lane
