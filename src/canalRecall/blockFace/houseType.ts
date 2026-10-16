@@ -79,6 +79,13 @@ export interface HousePlacement {
   /** Ground: a named variant, or this house's own shop / historic ground front (written as seen, never mirrored). */
   ground?: ModulePlacement['ground'];
   palette?: string;
+  /**
+   * House-palette fields this pand changes over its named palette (one wall per house): a measured wall colour with
+   * `wallTint: "measured"` or `wallMaterial: "painted-brick"` (drawn as measured, no 0.3-0.6 lightness clamp), frames,
+   * stone. Unlike a front's `overrides.palette.brick` (a 3 cm facing over the type's wall, double the wall triangles and
+   * still clamped) this recolours the house's own wall. Reported as a type deviation. Absent = byte-identical.
+   */
+  paletteOverrides?: Partial<PaletteIntent>;
   /** Left-right mirror of the type as seen from the street (door, balconies, crown placement, dormers, bay widths). */
   mirror?: boolean;
   /** Full storeys incl. ground when this house has one more/less than the type. */
@@ -97,6 +104,9 @@ export interface HousePlacement {
   pair?: 'left' | 'right';
   overrides?: Partial<BodyIntent>;
 }
+
+/** House-palette fields a placement may override (`paletteOverrides`); values are checked by the house intent validation. */
+export const PALETTE_OVERRIDE_KEYS = ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'wallMaterial', 'stoneMaterial', 'wallTint', 'whitePoint'] as const;
 
 const has = (o: object, k: string) => Object.prototype.hasOwnProperty.call(o, k);
 const flipFrac = (s: {from: number; to: number}) => ({from: +(1 - s.to).toFixed(4), to: +(1 - s.from).toFixed(4)});
@@ -210,8 +220,10 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (door !== undefined) f.doorBay = door;
     return f;
   });
-  const paletteName = place.palette ?? Object.keys(t.palettes)[0], palette = t.palettes[paletteName];
-  if (!palette) throw Error(`type ${t.id}: no palette "${paletteName}" (has ${Object.keys(t.palettes).join(', ')})`);
+  const paletteName = place.palette ?? Object.keys(t.palettes)[0], named = t.palettes[paletteName];
+  if (!named) throw Error(`type ${t.id}: no palette "${paletteName}" (has ${Object.keys(t.palettes).join(', ')})`);
+  const palette: PaletteIntent = place.paletteOverrides ? {...named, ...place.paletteOverrides} : named;
+  if (place.paletteOverrides) deviations.push(`palette ${JSON.stringify(place.paletteOverrides)} (type palette ${paletteName})`);
   const storeys = place.storeys ?? t.body.storeys;
   if (t.fit?.storeys && !t.fit.storeys.includes(storeys)) deviations.push(`storeys ${storeys} outside the type's ${t.fit.storeys.join('/')}`);
   const perModule = widthM !== undefined ? widthM / modules.length : undefined;
@@ -233,6 +245,11 @@ export function placementProblems(types: Map<string, HouseTypeIntent>, houses: {
       const s = pl.visualSpan;
       if (!(s.from >= -0.5 && s.to <= 1.5 && s.to - s.from >= 0.5)) p.push(`${at}.visualSpan: {from, to} fractions of the frontage, -0.5 <= from, to <= 1.5, at least 0.5 wide`);
       if (!s.evidence) p.push(`${at}.visualSpan: needs evidence (strip columns of the visual party walls)`);
+    }
+    if (pl.paletteOverrides !== undefined) {
+      const o = pl.paletteOverrides as Record<string, unknown>;
+      if (!o || typeof o !== 'object' || Array.isArray(o) || !Object.keys(o).length) p.push(`${at}.paletteOverrides: an object of house-palette fields`);
+      else for (const k of Object.keys(o)) if (!PALETTE_OVERRIDE_KEYS.includes(k as typeof PALETTE_OVERRIDE_KEYS[number])) p.push(`${at}.paletteOverrides.${k}: not a house-palette field (${PALETTE_OVERRIDE_KEYS.join(', ')})`);
     }
     if (pl.modules && pl.modules.length < 2) p.push(`${at}.modules: two or more modules (one module is the placement itself)`);
     if (pl.modules && pl.visualSpan) p.push(`${at}: visualSpan and modules are alternatives`);

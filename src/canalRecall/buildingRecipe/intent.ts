@@ -317,6 +317,14 @@ export interface FrontIntent {
   /** `bands: courses`: 0-based storeys laid whole in the band brick (ground = 0 only without a shopfront/ground front). */
   courseStoreys?: number[];
   /**
+   * Storeys painted in a second colour over the brick (Kinkerstraat 21 and 23: a later shop insert left the first storey
+   * white-painted over the whole width): each listed 0-based storey (the ground only without a shopfront/ground front) is
+   * laid as a 4 cm facing from its floor to the next floor (the top storey to 2 cm under the eaves), cut around the
+   * openings, in the wall material and `colour`, exported as a measured tint (the paint is drawn as measured, not lifted
+   * into the city brick range). Absent = byte-identical.
+   */
+  paintedStoreys?: {storeys: number[]; colour: string};
+  /**
    * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
    * of a lisene shared across the party wall (its outer face follows the party plane); `full` is a whole 0.45 m lisene.
@@ -488,6 +496,20 @@ export interface PaletteIntent {
    * paint to ~#a5a395 on the sheet). House palette only.
    */
   stoneMaterial?: 'painted';
+  /**
+   * `measured` (Kinkerstraat 47, 63, 87): the wall colour `brick` is a measured strip colour and is drawn as measured
+   * (the wall materials export `tintSource: measured`), instead of being lifted and saturated into the city brick range
+   * (`cityWallTint` clamps L to 0.3-0.6 and floors S at 0.12: a sunlit light brick darkened, a grey-brown one saturated).
+   * The brick texture stays; `painted-brick` implies it. House palette only.
+   */
+  wallTint?: 'measured';
+  /**
+   * Exposure record of a measured wall colour (`wallTint: measured` or `painted-brick`): the light-trim white point of the
+   * strip crop the colour was read on (palette-from-strip `frame`, the median of the white frames). The panoramas are
+   * mostly overcast; with this a look can normalise the wall to a sunlit white point (tint x white / whitePoint) instead
+   * of drawing the overcast reading. Exported with the tint as `tintWhitePoint`. House palette only.
+   */
+  whitePoint?: string;
   /** Large tier only: the glazing colour (default the kit's dark glass `#2a3a42`); measured from the photo by `measure.ts`. */
   glass?: string;
 }
@@ -878,6 +900,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     for (const [k, v] of Object.entries(f.palette ?? {})) {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
       else if (k === 'stoneMaterial') problems.push(`${at}.palette.stoneMaterial: set the stone material on the house palette (one material per house)`);
+      else if (k === 'whitePoint') problems.push(`${at}.palette.whitePoint: the exposure of the house wall's measurement belongs on the house palette`);
+      else if (k === 'wallTint') problems.push(`${at}.palette.wallTint: set the wall tint on the house palette (one wall per house)`);
       else colour(v, `${at}.palette.${k}`);
     }
     problems.push(...historicProblems(f, at, colour, oneOf));
@@ -890,6 +914,14 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
+  if (intent?.palette?.wallTint !== undefined) {
+    oneOf(intent.palette.wallTint, ['measured'], 'palette.wallTint');
+    if (intent.palette.wallMaterial === 'stucco') problems.push('palette.wallTint: a measured brick tint; stucco keeps its own tint');
+  }
+  if (intent?.palette?.whitePoint !== undefined) {
+    colour(intent.palette.whitePoint, 'palette.whitePoint');
+    if (intent.palette.wallTint !== 'measured' && intent.palette.wallMaterial !== 'painted-brick') problems.push('palette.whitePoint: the exposure of a measured wall (wallTint measured or painted-brick)');
+  }
   if (problems.length) throw new Error(`Invalid intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return intent;
 }
@@ -948,6 +980,19 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
     if (!frac(f.bandTransomAt, 0.3, 0.95)) p.push(`${at}.bandTransomAt: share of the window height, 0.3..0.95`);
   }
   if (f.windowSills !== undefined) oneOf(f.windowSills, WINDOW_SILLS, `${at}.windowSills`);
+  if (f.paintedStoreys !== undefined) p.push(...paintedStoreyProblems(f, at));
+  return p;
+}
+
+/** Problems with `paintedStoreys` (one or more storeys painted in a second colour). */
+export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
+  const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown} | undefined;
+  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour}`];
+  const l = ps.storeys as number[];
+  if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);
+  else if (l.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.paintedStoreys.storeys: the ground storey holds a shop/ground front; paint the upper storeys`);
+  if (typeof ps.colour !== 'string' || !/^#[0-9a-f]{6}$/i.test(ps.colour)) p.push(`${at}.paintedStoreys.colour: a #rrggbb paint colour`);
+  if (f.bands === 'courses' && (f.courseStoreys ?? []).some(s => (l ?? []).includes(s))) p.push(`${at}.paintedStoreys: a storey is either laid in band brick (courseStoreys) or painted`);
   return p;
 }
 
