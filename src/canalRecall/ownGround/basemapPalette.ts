@@ -8,14 +8,14 @@
 // GROUND_TONES, as the tokens of look/sunny.ts `groundTokens`), so the edge disappears in colour. Buildings, labels, POIs,
 // boundaries and the game's own overlays are left alone.
 
-import { groundLookFrom, groundPalette, type GroundPalette } from './groundLook.js';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundPalette } from './groundLook.js';
 import { groundTokens } from '../look/sunny.js';
 
 export interface StyleLayerLike { id: string; type: string; 'source-layer'?: string }
 export interface PaintPatch { id: string; property: string; value: string }
 
-/** The own-ground colour for a basemap layer, or null to leave it (in the page's `?groundLook` palette by default). */
-export function basemapGroundColour(layer: StyleLayerLike, palette: GroundPalette = groundPalette(groundLookFrom())): string | null {
+/** The own-ground colour for a basemap layer, or null to leave it (in the game's ground palette by default). */
+export function basemapGroundColour(layer: StyleLayerLike, palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): string | null {
   // The same tokens the transition and the 3D ground read (look/sunny.ts `groundTokens` / `sceneTokens`).
   const id = layer.id, src = layer['source-layer'] ?? '', t = groundTokens(palette);
   if (layer.type === 'background') return t.land;
@@ -35,7 +35,7 @@ export function basemapGroundColour(layer: StyleLayerLike, palette: GroundPalett
 }
 
 /** Paint patches (property, value) for every basemap ground layer of a style. */
-export function basemapGroundPatches(layers: readonly StyleLayerLike[], palette: GroundPalette = groundPalette(groundLookFrom())): PaintPatch[] {
+export function basemapGroundPatches(layers: readonly StyleLayerLike[], palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): PaintPatch[] {
   const out: PaintPatch[] = [];
   for (const layer of layers) {
     const colour = basemapGroundColour(layer, palette);

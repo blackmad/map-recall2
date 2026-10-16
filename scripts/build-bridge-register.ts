@@ -25,7 +25,10 @@ import { metresToRing, pointInRing } from './lib/landmarkBuildings.ts';
  *  the deck, OSM ways its centreline, and the two are drawn independently. */
 export const TOUCH_METRES = 3;
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+// `--directory=` like the other bridge builders, so a staged extract
+// (`build-askable-bridges.ts`) is described from its own bridges.json.
+const directoryArgument = process.argv.find(argument => argument.startsWith('--directory='));
+const directory = path.resolve(directoryArgument?.slice('--directory='.length) || 'public/data/extracts/amsterdam');
 const publish = process.argv.includes('--publish');
 const register = JSON.parse(await readFile(path.resolve('scripts/data/amsterdam-bridge-register.json'), 'utf8')) as {
   source: string; bridges: BridgeRegisterRow[];

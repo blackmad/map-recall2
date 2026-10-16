@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
-import { ROUTE_QUIZ_SETTLE_METRES } from '../src/canalRecall/game/recallRules';
+import { ROUTE_QUIZ_SETTLE_METRES, routePlaqueName } from '../src/canalRecall/game/recallRules';
+import { bridgeNameAskable } from '../src/canalRecall/game/notableBridges';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
 import { buildRoadSpatialIndex, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
@@ -280,6 +281,48 @@ let bridgeWaySummary = '';
     if (answer) carried++;
   }
   bridgeWaySummary = `, ${bridgeWays} bridge-named ways (${carried} carry a street, ${bridgeWays - carried} transparent)`;
+
+  // Named regression (TODO "Bridge decks after the carried-street fix",
+  // 2026-10-16): the plaque read the raw way name, so it was blank for the
+  // length of a deck that carries a street. It now reads the name the route
+  // question settles on, under the ordinary withholding rule: the street
+  // shows once it is the settled corridor (or known), never before.
+  const bridgeNames = new Set((JSON.parse(await readFile(
+    `${process.env.BRIDGES_EXTRACT_DIR || 'public/data/extracts/amsterdam'}/bridges.json`, 'utf8',
+  )) as Array<{ name: string }>).map(bridge => bridge.name));
+  const settledName = (index: number, difficulty: 'medium' | 'hard') => routeQuestionRoadName({
+    rawName: segments[index].name,
+    deliberateBridge: bridgeNames.has(segments[index].name) && bridgeNameAskable(difficulty, segments[index].name),
+    carriedStreet: () => carriedStreetName(network, index, options),
+  });
+  const plaqueOn = (index: number, difficulty: 'medium' | 'hard', currentName: string, candidateName = '') => {
+    const roadName = settledName(index, difficulty);
+    return routePlaqueName({ roadName, currentName, promptName: '', candidateName, revealed: false, learned: false }).routeName;
+  };
+  const vingbooms = indexesOf('Vingboomsbrug').find(index => answerOn(index) === 'Huidenstraat')!;
+  assert.equal(plaqueOn(vingbooms, 'medium', 'Huidenstraat'), 'Huidenstraat', 'the Vingboomsbrug plaque reads Huidenstraat');
+  assert.equal(plaqueOn(vingbooms, 'medium', 'Keizersgracht'), '', 'an unasked Huidenstraat is not revealed on the deck');
+  assert.equal(plaqueOn(vingbooms, 'medium', 'Keizersgracht', 'Huidenstraat'), '', 'nor while it settles');
+  // Raadhuisstraat over the Keizersgracht: the Niek Engelschmanbrug deck is
+  // transparent below hard, so the plaque names neither the bridge nor the
+  // Raadhuisstraat until the rider is on the Raadhuisstraat itself.
+  for (const index of deck) {
+    for (const current of ['Westermarkt', 'Raadhuisstraat']) {
+      const shown = plaqueOn(index, 'medium', current);
+      assert.ok(shown === '' || (shown === 'Raadhuisstraat' && current === 'Raadhuisstraat'),
+        `Niek Engelschmanbrug plaque after ${current}: "${shown}"`);
+    }
+  }
+  // Named regression (same TODO): the bridges.json cut left 124 routed bridge
+  // names asked by no question. At hard both reported decks are asked as
+  // bridges ("Which bridge are you on?"), and the plaque withholds the name.
+  for (const name of ['Noordsche Compagniebrug', 'Niek Engelschmanbrug']) {
+    assert.ok(bridgeNames.has(name), `${name} is in bridges.json (askable by the bridge question)`);
+    for (const index of indexesOf(name)) {
+      assert.equal(settledName(index, 'hard'), name, `at hard the ${name} is asked as a bridge`);
+      assert.equal(plaqueOn(index, 'hard', 'Herenstraat'), '', `the ${name} is not revealed before it is asked`);
+    }
+  }
 }
 
 process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}).\n`);

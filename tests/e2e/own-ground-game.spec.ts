@@ -97,13 +97,12 @@ test('named regressions in game: BRU0166 Nassaukade and BRU0044 Leidsegracht', a
   expect(errors).toEqual([]);
 });
 
-test('start flight: overview shows the flat basemap, the ground takes over on landing; no stencil elevation layer', async ({ page }, info) => {
+test('start flight: overview shows the flat basemap, the ground takes over on landing', async ({ page }, info) => {
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
-  // Both flags: own ground must retire the ?elevation=1 stencil layer.
-  await page.addInitScript(() => { Object.assign(window as any, { __canalRecallOwnGround: true, __canalRecallElevation: true, __canalRecallForceIntro: true }); });
+  await page.addInitScript(() => { Object.assign(window as any, { __canalRecallOwnGround: true, __canalRecallForceIntro: true }); });
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
   await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame._intro), { timeout: 60_000 }).toBe(true);
   await page.waitForTimeout(500);
@@ -116,8 +115,6 @@ test('start flight: overview shows the flat basemap, the ground takes over on la
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame._intro), { timeout: 20_000 }).toBe(null);
   await expect.poll(async () => (await status(page)).basemapHidden, { timeout: 120_000, intervals: [1000] }).toBe(true);
   await page.screenshot({ path: `${OUT}/${info.project.name}-intro-landed.png` });
-  const layers = await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.map; return { elevation: !!m.getLayer('canal-elevation'), flatDecks: !!m.getLayer('canal-elevation-flat-decks'), elevationObject: !!(window as any).canalRecallGame.vectorMap._elevation }; });
-  expect(layers).toEqual({ elevation: false, flatDecks: false, elevationObject: false });
   expect(errors).toEqual([]);
 });
 

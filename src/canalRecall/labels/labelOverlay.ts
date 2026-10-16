@@ -6,7 +6,6 @@
 // occlusion) and a box the HUD can be tested against.
 //
 // Mounted by vector-map.js (`mountLabelOverlay(this, () => window.canalRecallGame)`).
-// `?labels=maplibre` keeps the old symbol layers.
 //
 // Per frame (MapLibre `render`): project the chosen labels and move them.
 // Four times a second: rebuild the candidate set's screen positions, test the
@@ -15,7 +14,6 @@
 
 import { HEIGHT_BAND_METRES, type HeightBand } from '../poiCatalog';
 import { buildSpoilerIndex, POI_ROOF_HEIGHT_METRES, type SpoilerIndex } from '../orientationPois';
-import type { LabelTone } from '../look/palette';
 import {
   categoryClass, distanceFade, labelAllowed, labelBudget, labelPriority, planLabels, VENUE_RADIUS_M,
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
@@ -57,18 +55,6 @@ type GameLike = any;
 
 interface Projected { x: number; y: number; ndcZ: number; w: number; distM: number; behind: boolean }
 
-/** The overlay is on unless `?labels=maplibre` / window.__canalRecallLabels === 'maplibre'. */
-export function labelOverlayEnabled(): boolean {
-  try {
-    const w = window as any;
-    if (w.__canalRecallLabels === 'maplibre') return false;
-    return new URLSearchParams(window.location.search).get('labels') !== 'maplibre';
-  } catch (_) { return true; }
-}
-
-function toneFromUrl(): LabelTone {
-  try { return new URLSearchParams(window.location.search).get('labelTone') === 'paper' ? 'paper' : 'ink'; } catch (_) { return 'ink'; }
-}
 
 /** The camera as a MercatorCoordinate. MapLibre has no `getFreeCameraOptions()` (that is Mapbox GL). */
 function cameraMercator(map: AnyMap): any {
@@ -159,15 +145,14 @@ export class LabelOverlay {
   /** Last plan's counts, for the e2e and the debug overlay. */
   stats = { candidates: 0, inView: 0, occluded: 0, drawn: 0, budget: 0 };
 
-  constructor(private readonly vm: VectorMapLike, private readonly game: () => GameLike, tone: LabelTone = toneFromUrl()) {
+  constructor(private readonly vm: VectorMapLike, private readonly game: () => GameLike) {
     const map: AnyMap = vm.map;
     const container: HTMLElement = map.getContainer();
     const style = document.createElement('style');
-    style.textContent = labelCss(tone);
+    style.textContent = labelCss();
     document.head.appendChild(style);
     this.root = document.createElement('div');
     this.root.className = LABEL_ROOT_CLASS;
-    this.root.dataset.labelTone = tone;
     // Above the game canvas (z 2, which draws over the map container), so
     // after it in the same stacking layer; the HUD plates it carries are kept
     // clear by collision, and DOM cards (z > 2) still cover the labels.
@@ -531,8 +516,8 @@ export function isCoveredState(state: unknown): boolean {
   return typeof state === 'number' && covered.includes(state);
 }
 
-/** vector-map.js mount: one overlay per map, or null when `?labels=maplibre`. */
+/** vector-map.js mount: one overlay per map (null without a map). */
 export function mountLabelOverlay(vm: VectorMapLike, game: () => GameLike): LabelOverlay | null {
-  if (!labelOverlayEnabled() || !vm?.map) return null;
+  if (!vm?.map) return null;
   return new LabelOverlay(vm, game);
 }

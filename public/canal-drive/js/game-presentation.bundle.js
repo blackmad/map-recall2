@@ -466,6 +466,10 @@
     if (!input.roadName || input.roadName === input.currentName) return false;
     return !input.revealed && !input.learned;
   }
+  function routePlaqueName(input) {
+    const answerHidden = hudWithholdsRouteName(input);
+    return { routeName: answerHidden ? "" : input.roadName, answerHidden };
+  }
 
   // src/canalRecall/facts/factRotation.ts
   var RECENT_KIND_MEMORY = 3;
@@ -48759,7 +48763,7 @@
       const teaching = this._teachingGate();
       const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
       if (byFerry) this._renderFerryNotice(player, showMiniMap);
-      const roadName = this.track.getRoadName(player.x, player.y, player.angle);
+      const roadName = isTransit(this.travelMode) ? this.track.getRoadName(player.x, player.y, player.angle) : this._routeQuestionRoadName(player.angle);
       let visibleRouteName = "";
       let routeAnswerHidden = false;
       if (isTransit(this.travelMode) && window.CanalRecallTransit?.transitPlaqueRouteName) {
@@ -48775,7 +48779,7 @@
         visibleRouteName = plaque.routeName;
         routeAnswerHidden = plaque.answerHidden;
       } else {
-        routeAnswerHidden = hudWithholdsRouteName({
+        const plaque = routePlaqueName({
           roadName: roadName || "",
           currentName: this.quizCurrentName || "",
           promptName: this.quizPromptName || "",
@@ -48783,7 +48787,8 @@
           revealed: !!roadName && this.revealedNames.has(roadName),
           learned: !!roadName && this.learnedNames.has(roadName)
         });
-        visibleRouteName = routeAnswerHidden ? "" : roadName || "";
+        visibleRouteName = plaque.routeName;
+        routeAnswerHidden = plaque.answerHidden;
       }
       const { feedback, restrictionNote } = this._plaqueNotes();
       const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(

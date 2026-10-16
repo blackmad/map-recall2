@@ -542,9 +542,8 @@ accent, the outline widens at chase distance. 3DBAG mode is still unverified liv
 - **One layer, the HUD's language.** POI names are a DOM layer over the map
   (above the game canvas, below DOM cards), not MapLibre symbols: MapLibre's
   glyphs cannot set the plaque face. Ink from `LABEL_INK` (`look/palette.ts`):
-  the plaque's warm dark `#1f1c17` on a thin paper halo (default), or paper on
-  an ink halo (`?labelTone=paper`, kept for comparison; heavier on brick).
-  `?labels=maplibre` restores the old symbol layers.
+  the plaque's warm dark `#1f1c17` on a thin paper halo. (The `?labelTone=paper`
+  inverse and the `?labels=maplibre` fallback were deleted 2026-10-16.)
 - **Type by class:** landmark 15 px Barlow Condensed 700, uppercase, tracked
   0.06 em (only landmarks and the destination are set in caps); museum/church
   14 px 600; civic 13 px 600; hotel/shop/café 11 px UI face, muted ink. A

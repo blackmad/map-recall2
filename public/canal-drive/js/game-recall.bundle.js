@@ -612,10 +612,15 @@
   // src/canalRecall/game/bridgeStreetName.ts
   var BRIDGE_SUFFIX = /(?:brug|brugje|bruggetje|sluis|sluisje|duiker|viaduct|aquaduct|bridge)$/i;
   var NUMBERED_BRIDGE = /^brug\s+\d+/i;
+  var UNSUFFIXED_DECK_NAMES = /* @__PURE__ */ new Set([
+    "Bullebak",
+    "Kanaalpost",
+    "Postje van Gerrit Vreling"
+  ]);
   function isBridgeWayName(name) {
     const trimmed = (name || "").trim();
     if (!trimmed) return false;
-    return BRIDGE_SUFFIX.test(trimmed) || NUMBERED_BRIDGE.test(trimmed);
+    return BRIDGE_SUFFIX.test(trimmed) || NUMBERED_BRIDGE.test(trimmed) || UNSUFFIXED_DECK_NAMES.has(trimmed);
   }
   var DEFAULT_MAX_TURN = Math.PI / 4;
   var DEFAULT_MAX_PIECES = 4;

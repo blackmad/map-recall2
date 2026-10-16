@@ -79,21 +79,48 @@ export function planTiles(
   held: Iterable<string>,
   options: { zoom?: number; margin?: number; budget?: number } = {}
 ): TilePlan {
+  return planTilesAhead(bounds, [], held, options);
+}
+
+/**
+ * `planTiles` plus look-ahead areas (where the rider will be in a few seconds, streamingLookAhead.ts): their
+ * tiles are wanted too, so they load before the view reaches them and are not evicted while still ahead. The
+ * view's tiles always load first (nearest first); look-ahead tiles follow in the order the areas are given.
+ * With no areas this is exactly `planTiles`.
+ */
+export function planTilesAhead(
+  bounds: Bounds,
+  ahead: readonly Bounds[],
+  held: Iterable<string>,
+  options: { zoom?: number; margin?: number; budget?: number } = {}
+): TilePlan {
   const zoom = options.zoom ?? BUILDING_TILE_ZOOM;
   const margin = options.margin ?? MARGIN_TILES;
   const budget = options.budget ?? DEFAULT_BUDGET;
 
   const wantedTiles = tilesCovering(bounds, zoom, margin);
-  const wanted = wantedTiles.map(tileKey);
+  const viewKeys = new Set(wantedTiles.map(tileKey));
+  const aheadTiles: TileId[] = [];
+  const aheadKeys = new Set<string>();
+  for (const area of ahead) for (const tile of tilesCovering(area, zoom, 0)) {
+    const key = tileKey(tile);
+    if (viewKeys.has(key) || aheadKeys.has(key)) continue;
+    aheadKeys.add(key);
+    aheadTiles.push(tile);
+  }
+  const wanted = [...wantedTiles, ...aheadTiles].map(tileKey);
   const wantedKeys = new Set(wanted);
   const heldKeys = new Set(held);
 
   const [centreLng, centreLat] = centreOf(bounds);
   const centreTile = tilesCovering({ west: centreLng, south: centreLat, east: centreLng, north: centreLat }, zoom)[0];
 
-  const load = wantedTiles
-    .filter(tile => !heldKeys.has(tileKey(tile)))
-    .sort((a, b) => tileDistance(a, centreTile) - tileDistance(b, centreTile));
+  const load = [
+    ...wantedTiles
+      .filter(tile => !heldKeys.has(tileKey(tile)))
+      .sort((a, b) => tileDistance(a, centreTile) - tileDistance(b, centreTile)),
+    ...aheadTiles.filter(tile => !heldKeys.has(tileKey(tile))),
+  ];
 
   // Evict only what the camera does not need, furthest first, and only enough
   // to get back inside the budget.
