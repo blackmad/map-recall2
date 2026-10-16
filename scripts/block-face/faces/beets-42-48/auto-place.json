@@ -1,0 +1,267 @@
+{
+ "face": "beets-42-48",
+ "street": "Nicolaas Beetsstraat",
+ "library": "bellamy",
+ "stripDate": "2019-04-30",
+ "seconds": 2.75,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158839",
+   "address": "Nicolaas Beetsstraat 48",
+   "builtYear": 1915,
+   "widthM": 6.49,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#473a32",
+    "wallRaw": "#4b4238",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 762,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012158839",
+    "ncc": 0.181,
+    "nccRaw": 0.181,
+    "shiftM": [
+     -0.4,
+     -0.25
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.39 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#473c33",
+     "model": "#645246",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.306
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155451",
+   "address": "Nicolaas Beetsstraat 46",
+   "builtYear": 1915,
+   "widthM": 6,
+   "eavesM": 13.71,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#47362e",
+    "wallRaw": "#4e4139",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 762,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.31 mean 0.34 vs photo 0.22; columns 3 vs photo 4)",
+   "likeness": {
+    "pandId": "0363100012155451",
+    "ncc": 0.089,
+    "nccRaw": 0.089,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.34 vs photo 0.22",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#493931",
+     "model": "#654d41",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.343
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161362",
+   "address": "Nicolaas Beetsstraat 44",
+   "builtYear": 1984,
+   "widthM": 5.53,
+   "eavesM": 13.64,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#4e3b32",
+    "wallRaw": "#564a40",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 762,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.67 < 0.7 (3DBAG eaves 13.64 m = 5 storeys of 2.73 m vs the type's 3.02 m; roof rise 3.4 m (pitched) vs flat)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.64 m = 5 storeys of 2.73 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 3.4 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159872",
+   "address": "Nicolaas Beetsstraat 42",
+   "builtYear": 1984,
+   "widthM": 5.46,
+   "eavesM": 13.55,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#5d4d45",
+    "skyline": {
+     "eavesM": 16.25,
+     "eavesRow": 112,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 2.8,
+      "topWidthM": 0.55,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.1,
+    "voidShare": 0.06,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1937-flat-row scores 0.67 < 0.7 (3DBAG eaves 13.55 m = 5 storeys of 2.71 m vs the type's 3.02 m; roof rise 2.56 m (pitched) vs flat)",
+   "best": {
+    "type": "bellamy-1937-flat-row",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.55 m = 5 storeys of 2.71 m vs the type's 3.02 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5/6"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.56 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.017 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

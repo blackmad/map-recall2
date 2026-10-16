@@ -1,0 +1,260 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:30:07.241Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156469",
+   "addresses": [
+    "Bellamystraat 19",
+    "Bellamystraat 19A",
+    "Bellamystraat 19B",
+    "Bellamystraat 19C",
+    "Bellamystraat 19D",
+    "Bellamystraat 19E",
+    "Bellamystraat 19F",
+    "Bellamystraat 19H",
+    "Bellamystraat 21A",
+    "Bellamystraat 21B",
+    "Bellamystraat 21C",
+    "Bellamystraat 21D",
+    "Bellamystraat 21E",
+    "Bellamystraat 21F",
+    "Bellamystraat 21G",
+    "Bellamystraat 21H",
+    "Bellamystraat 21K",
+    "Bellamystraat 21L",
+    "Bellamystraat 21M",
+    "Bellamystraat 21N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 19",
+     "use": "industriefunctie",
+     "areaM2": 479,
+     "bagId": "0363010000580036"
+    },
+    {
+     "address": "Bellamystraat 19A",
+     "use": "industriefunctie",
+     "areaM2": 27,
+     "bagId": "0363010012085981"
+    },
+    {
+     "address": "Bellamystraat 19B",
+     "use": "industriefunctie",
+     "areaM2": 32,
+     "bagId": "0363010012085982"
+    },
+    {
+     "address": "Bellamystraat 19C",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010012085983"
+    },
+    {
+     "address": "Bellamystraat 19D",
+     "use": "industriefunctie",
+     "areaM2": 27,
+     "bagId": "0363010012085984"
+    },
+    {
+     "address": "Bellamystraat 19E",
+     "use": "industriefunctie",
+     "areaM2": 27,
+     "bagId": "0363010012085985"
+    },
+    {
+     "address": "Bellamystraat 19F",
+     "use": "industriefunctie",
+     "areaM2": 44,
+     "bagId": "0363010012085986"
+    },
+    {
+     "address": "Bellamystraat 21A",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010012085987"
+    },
+    {
+     "address": "Bellamystraat 21B",
+     "use": "industriefunctie",
+     "areaM2": 34,
+     "bagId": "0363010012085988"
+    },
+    {
+     "address": "Bellamystraat 21C",
+     "use": "industriefunctie",
+     "areaM2": 17,
+     "bagId": "0363010012085989"
+    },
+    {
+     "address": "Bellamystraat 21D",
+     "use": "industriefunctie",
+     "areaM2": 39,
+     "bagId": "0363010012085990"
+    },
+    {
+     "address": "Bellamystraat 21E",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010012085991"
+    },
+    {
+     "address": "Bellamystraat 21F",
+     "use": "industriefunctie",
+     "areaM2": 76,
+     "bagId": "0363010012085992"
+    },
+    {
+     "address": "Bellamystraat 21G",
+     "use": "industriefunctie",
+     "areaM2": 34,
+     "bagId": "0363010012085993"
+    },
+    {
+     "address": "Bellamystraat 21H",
+     "use": "industriefunctie",
+     "areaM2": 19,
+     "bagId": "0363010012085994"
+    },
+    {
+     "address": "Bellamystraat 21K",
+     "use": "industriefunctie",
+     "areaM2": 19,
+     "bagId": "0363010012085995"
+    },
+    {
+     "address": "Bellamystraat 21L",
+     "use": "industriefunctie",
+     "areaM2": 62,
+     "bagId": "0363010012085996"
+    },
+    {
+     "address": "Bellamystraat 21M",
+     "use": "industriefunctie",
+     "areaM2": 26,
+     "bagId": "0363010012085997"
+    },
+    {
+     "address": "Bellamystraat 19H",
+     "use": "industriefunctie",
+     "areaM2": 56,
+     "bagId": "0363010012578347"
+    },
+    {
+     "address": "Bellamystraat 21N",
+     "use": "industriefunctie",
+     "areaM2": 82,
+     "bagId": "0363010012603069"
+    }
+   ],
+   "units": 20,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150893",
+   "addresses": [
+    "Bellamystraat 23",
+    "Bellamystraat 25A",
+    "Bellamystraat 25B",
+    "Bellamystraat 25C",
+    "Bellamystraat 27B",
+    "Bellamystraat 27C",
+    "Bellamystraat 27D",
+    "Bellamystraat 27A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 23",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000984121"
+    },
+    {
+     "address": "Bellamystraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000984123"
+    },
+    {
+     "address": "Bellamystraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000984127"
+    },
+    {
+     "address": "Bellamystraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000984131"
+    },
+    {
+     "address": "Bellamystraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000984136"
+    },
+    {
+     "address": "Bellamystraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000984137"
+    },
+    {
+     "address": "Bellamystraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000984138"
+    },
+    {
+     "address": "Bellamystraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001001349"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125803",
+   "addresses": [
+    "Bellamystraat 29A",
+    "Bellamystraat 29B",
+    "Bellamystraat 29C",
+    "Bellamystraat 29D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001039695"
+    },
+    {
+     "address": "Bellamystraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001039697"
+    },
+    {
+     "address": "Bellamystraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001039698"
+    },
+    {
+     "address": "Bellamystraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001039699"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

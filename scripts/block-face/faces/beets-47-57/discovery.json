@@ -1,0 +1,695 @@
+{
+ "street": "Nicolaas Beetsstraat",
+ "seed": "0363100012159209",
+ "members": [
+  "0363100012159209",
+  "0363100012167454",
+  "0363100012153206",
+  "0363100012153029",
+  "0363100012159236",
+  "0363100012160986"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012082699 20.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012160986 (face continues: 236953)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063580",
+   "reason": "frontage 55.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012065691",
+   "reason": "frontage 49.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012065779",
+   "reason": "no frontage on Nicolaas Beetsstraat: No footprint edge faces Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012069845",
+   "reason": "frontage 55.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012074230",
+   "reason": "no frontage on Nicolaas Beetsstraat: No footprint edge faces Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012078442",
+   "reason": "frontage 51.5 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012080701",
+   "reason": "frontage 42.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012085498",
+   "reason": "frontage 35.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012088024",
+   "reason": "frontage 49.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012099290",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012157313"
+  },
+  {
+   "pandId": "0363100012100499",
+   "reason": "frontage 30.5 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012110654",
+   "reason": "frontage 36.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012123310",
+   "reason": "frontage 43.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012127527",
+   "reason": "frontage 68.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012130890",
+   "reason": "frontage 41.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012144253",
+   "reason": "frontage 55.5 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012148175",
+   "reason": "frontage 62.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012150893",
+   "reason": "frontage 90.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012151677",
+   "reason": "frontage 57.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012152726",
+   "reason": "frontage 128.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012152727",
+   "reason": "frontage 129.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012152992",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012160838"
+  },
+  {
+   "pandId": "0363100012153022",
+   "reason": "frontage 109.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012153031",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012152825"
+  },
+  {
+   "pandId": "0363100012153107",
+   "reason": "frontage 98.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012153275",
+   "reason": "frontage 131.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012153488",
+   "reason": "frontage 94.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012153531",
+   "reason": "frontage 61.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012154164",
+   "reason": "frontage 80.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012154341",
+   "reason": "frontage 85.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012154364",
+   "reason": "frontage 99.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012155719",
+   "reason": "frontage 59.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012155789",
+   "reason": "frontage 62.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012155932",
+   "reason": "frontage 131.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012156007",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012162138"
+  },
+  {
+   "pandId": "0363100012156322",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012158097"
+  },
+  {
+   "pandId": "0363100012156469",
+   "reason": "frontage 101.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012156654",
+   "reason": "frontage 78.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012156662",
+   "reason": "frontage 63.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012156816",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012233496"
+  },
+  {
+   "pandId": "0363100012156893",
+   "reason": "frontage 57.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012156988",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012156322"
+  },
+  {
+   "pandId": "0363100012157007",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012152825"
+  },
+  {
+   "pandId": "0363100012157025",
+   "reason": "frontage 73.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012157261",
+   "reason": "frontage 72.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012157271",
+   "reason": "frontage 82.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012157310",
+   "reason": "frontage 90.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012157313",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012158839"
+  },
+  {
+   "pandId": "0363100012157395",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012159657"
+  },
+  {
+   "pandId": "0363100012157844",
+   "reason": "frontage 39.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012158097",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012160044"
+  },
+  {
+   "pandId": "0363100012158343",
+   "reason": "frontage 121.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012158344",
+   "reason": "frontage 55.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012158415",
+   "reason": "frontage 66.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012158503",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012156007"
+  },
+  {
+   "pandId": "0363100012159101",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012167454"
+  },
+  {
+   "pandId": "0363100012159125",
+   "reason": "frontage 56.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012159323",
+   "reason": "frontage 66.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012159351",
+   "reason": "frontage 98.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012159474",
+   "reason": "frontage 61.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012159657",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012082699"
+  },
+  {
+   "pandId": "0363100012159774",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012152825"
+  },
+  {
+   "pandId": "0363100012159816",
+   "reason": "frontage 80.5 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012159892",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012082699"
+  },
+  {
+   "pandId": "0363100012159894",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012159101"
+  },
+  {
+   "pandId": "0363100012160152",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012152825"
+  },
+  {
+   "pandId": "0363100012160178",
+   "reason": "frontage 32.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012160192",
+   "reason": "frontage 70.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012160593",
+   "reason": "frontage 111.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012160798",
+   "reason": "frontage 32.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012160838",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012236953"
+  },
+  {
+   "pandId": "0363100012160871",
+   "reason": "frontage 72.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012160876",
+   "reason": "frontage 37.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012161035",
+   "reason": "frontage 50.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012161056",
+   "reason": "frontage 35.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012161134",
+   "reason": "frontage 94.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012161486",
+   "reason": "frontage 41.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012161640",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012157313"
+  },
+  {
+   "pandId": "0363100012162552",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012152825"
+  },
+  {
+   "pandId": "0363100012162559",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012141212"
+  },
+  {
+   "pandId": "0363100012162560",
+   "reason": "frontage 31.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012162761",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012141212"
+  },
+  {
+   "pandId": "0363100012163006",
+   "reason": "frontage 46.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012163274",
+   "reason": "frontage 77.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012163357",
+   "reason": "frontage 128.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012163468",
+   "reason": "no frontage on Nicolaas Beetsstraat: No footprint edge faces Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012163671",
+   "reason": "frontage 33.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012163768",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012152992"
+  },
+  {
+   "pandId": "0363100012163944",
+   "reason": "frontage 130.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012164134",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012156007"
+  },
+  {
+   "pandId": "0363100012164250",
+   "reason": "frontage 104.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012164271",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012141212"
+  },
+  {
+   "pandId": "0363100012164477",
+   "reason": "frontage 72.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012164498",
+   "reason": "frontage 89.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012164522",
+   "reason": "frontage 51.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012164568",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012141212"
+  },
+  {
+   "pandId": "0363100012165141",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012160838"
+  },
+  {
+   "pandId": "0363100012165183",
+   "reason": "frontage 88.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012165214",
+   "reason": "frontage 83.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012165408",
+   "reason": "frontage 45.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012165475",
+   "reason": "frontage 105.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012166034",
+   "reason": "frontage 39.5 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012166233",
+   "reason": "frontage 93.5 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012166541",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012162138"
+  },
+  {
+   "pandId": "0363100012166561",
+   "reason": "frontage 44.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012166763",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012156322"
+  },
+  {
+   "pandId": "0363100012166916",
+   "reason": "frontage 41.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012167053",
+   "reason": "frontage 88.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012167170",
+   "reason": "frontage 36.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012186273",
+   "reason": "frontage 71.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012186274",
+   "reason": "frontage 76.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012189421",
+   "reason": "frontage 81.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012190004",
+   "reason": "frontage 86.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012191631",
+   "reason": "frontage 46.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012201902",
+   "reason": "frontage 61.4 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012206748",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012141212"
+  },
+  {
+   "pandId": "0363100012206749",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012141212"
+  },
+  {
+   "pandId": "0363100012210608",
+   "reason": "frontage 31.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012223864",
+   "reason": "frontage 119.2 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012227396",
+   "reason": "frontage 87.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012232351",
+   "reason": "frontage 86.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012233466",
+   "reason": "frontage 60.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012233589",
+   "reason": "frontage 44.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236219",
+   "reason": "frontage 53.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236233",
+   "reason": "frontage 84.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236622",
+   "reason": "frontage 67.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236631",
+   "reason": "frontage 92.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236886",
+   "reason": "frontage 56.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236899",
+   "reason": "frontage 35.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236958",
+   "reason": "frontage 116.3 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236969",
+   "reason": "frontage 70.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012236982",
+   "reason": "frontage 47.7 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012237017",
+   "reason": "frontage 45.6 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012237261",
+   "reason": "frontage 52.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012237297",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012236953"
+  },
+  {
+   "pandId": "0363100012242956",
+   "reason": "frontage 45.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012242957",
+   "reason": "frontage 47.8 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012242958",
+   "reason": "frontage 48.0 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012242959",
+   "reason": "frontage 47.9 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012250623",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012156322"
+  },
+  {
+   "pandId": "0363100012250624",
+   "reason": "frontage 38.1 m from Nicolaas Beetsstraat"
+  },
+  {
+   "pandId": "0363100012252233",
+   "reason": "sightline to Nicolaas Beetsstraat crosses 0363100012065779"
+  },
+  {
+   "pandId": "0363100012078005",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155451",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159872",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162138",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233487",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233496",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012159209",
+   "alongM": 0,
+   "widthM": 4.23,
+   "eavesM": 13.58,
+   "roofMaxM": 15.23,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167454",
+   "alongM": 4.77,
+   "widthM": 5.32,
+   "eavesM": 11.78,
+   "roofMaxM": 15.68,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153206",
+   "alongM": 10.12,
+   "widthM": 5.38,
+   "eavesM": 13,
+   "roofMaxM": 17.59,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153029",
+   "alongM": 15.5,
+   "widthM": 5.38,
+   "eavesM": 12.79,
+   "roofMaxM": 16.19,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159236",
+   "alongM": 20.28,
+   "widthM": 4.19,
+   "eavesM": 12.59,
+   "roofMaxM": 14.97,
+   "storeys3dbag": 5,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160986",
+   "alongM": 24.47,
+   "widthM": 4.19,
+   "eavesM": 13.04,
+   "roofMaxM": 14.93,
+   "storeys3dbag": 5,
+   "builtYear": 1896,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "bellamy-1916-two-axis",
+ "district": "bellamy",
+ "description": "Bellamystraat 22-28 (1916 rows, BAG dates some 1934): narrow red-brick fronts of two axes on 4.0-5.0 m, white T-windows in plain openings, a shallow cornice with a brick corbel course, the house doors paired at every other party wall",
+ "fit": {"widthM": [3.9, 5.0], "storeys": [4, 5]},
+ "match": {
+  "years": [1910, 1936],
+  "eavesM": [12.0, 15.6],
+  "storeys3dbag": [4, 5],
+  "baysByWidth": [{"maxWidthM": 99, "bays": 2}],
+  "stucco": false,
+  "note": "BAG gives 1916 for 22-24 and 1934 for 26-28 of one identical row: the year range is wide on purpose"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "cornice": "simple",
+  "windows": "t-window",
+  "windowSurround": "sill"
+ },
+ "crowns": {
+  "cornice": {"gable": "cornice", "note": "flat roof behind; roof-terrace boxes set back"}
+ },
+ "grounds": {
+  "door-left": {"doorBay": 0, "note": "door at the left party wall (Bellamystraat 26, 22)"},
+  "door-right": {"doorBay": 1, "note": "door at the right party wall (Bellamystraat 28, 24)"}
+ },
+ "palettes": {
+  "red": {"brick": "#a0604c", "frame": "#eeeeea", "door": "black", "stone": "#e4e2da", "cornice": "#d8d8d0"}
+ },
+ "roof": {"material": "bitumen"},
+ "rhythm": {
+  "bays": "2 window axes",
+  "identicalBays": "equal axes",
+  "windowsPerStorey": "ground: door + 1 | 1: 2 | 2: 2 | 3: 2",
+  "symmetry": "mirrored in pairs: the doors meet at every other party wall",
+  "groundFloor": "house door at a party wall, one wide window",
+  "signage": "none",
+  "roofline": "shallow cornice over a brick corbel course",
+  "photoRows": [2, 2, 2, 2],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {"face": "bellamy-18-50", "pands": ["162936", "161048", "153671", "165951"], "citation": "strip.jpg 2024-12-11 pands 9-12: four identical 2-axis fronts, doors in pairs at 9|10 and 11|12 (washed-out strip)"}
+ ],
+ "schemaLimits": ["the brick corbel course under the cornice", "the setback roof-terrace boxes"],
+ "notes": ["The strip is washed out (2024-12-11 low sun): the palette brick is the trim-normalised wall, not the raw median."]
+}

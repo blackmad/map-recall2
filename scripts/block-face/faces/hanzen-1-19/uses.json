@@ -1,0 +1,121 @@
+{
+ "street": "Jan Hanzenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:42:25.603Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236856",
+   "addresses": [
+    "Jan Hanzenstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001014983"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236554",
+   "addresses": [
+    "Jan Hanzenstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001014982"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236819",
+   "addresses": [
+    "Jan Hanzenstraat 13",
+    "Jan Hanzenstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 15-H",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000604748"
+    },
+    {
+     "address": "Jan Hanzenstraat 13-H",
+     "use": "kantoorfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000684839"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8736208913,
+     "lngLat": [
+      4.8665062,
+      52.3680843
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-15",
+      "addr:postcode": "1053SJ",
+      "addr:street": "Jan Hanzenstraat",
+      "amenity": "ice_cream",
+      "check_date": "2026-07-16",
+      "check_date:opening_hours": "2026-07-16",
+      "contact:instagram": "massimogelatoamsterdam",
+      "email": "info@massimogelato.nl",
+      "level": "0",
+      "name": "Massimo Gelato",
+      "opening_hours": "Mo-Su 10:00-23:00",
+      "phone": "+31 20 737 0537",
+      "website": "https://www.massimogelato.com/west"
+     },
+     "fetchedAt": "2026-10-16T11:42:25.603Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233538",
+   "addresses": [
+    "Jan Hanzenstraat 17",
+    "Jan Hanzenstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Hanzenstraat 17-H",
+     "use": "winkelfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000684852"
+    },
+    {
+     "address": "Jan Hanzenstraat 19",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000684859"
+    },
+    {
+     "address": "Jan Hanzenstraat 19",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010012073647"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

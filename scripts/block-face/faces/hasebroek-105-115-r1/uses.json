@@ -1,0 +1,69 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:29:26.030Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012133637",
+   "addresses": [
+    "Hasebroekstraat 107A",
+    "Hasebroekstraat 107B",
+    "Hasebroekstraat 107C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 107A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001044142"
+    },
+    {
+     "address": "Hasebroekstraat 107B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001044143"
+    },
+    {
+     "address": "Hasebroekstraat 107C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001044144"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082619",
+   "addresses": [
+    "Hasebroekstraat 109A",
+    "Hasebroekstraat 109B",
+    "Hasebroekstraat 109C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 109A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001044145"
+    },
+    {
+     "address": "Hasebroekstraat 109B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001044146"
+    },
+    {
+     "address": "Hasebroekstraat 109C",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001044147"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

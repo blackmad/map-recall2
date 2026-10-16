@@ -1,0 +1,73 @@
+{
+ "street": "Nicolaas Beetsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158839",
+   "addresses": [
+    "Nicolaas Beetsstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 50",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000659461"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155451",
+   "addresses": [
+    "Nicolaas Beetsstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000750322"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161362",
+   "addresses": [
+    "Nicolaas Beetsstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000750318"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159872",
+   "addresses": [
+    "Nicolaas Beetsstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Beetsstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012067117"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

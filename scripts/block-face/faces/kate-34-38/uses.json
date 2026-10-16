@@ -1,0 +1,120 @@
+{
+ "street": "Ten Katestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:38:46.290Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160807",
+   "addresses": [
+    "Ten Katestraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000825385"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679406,
+     "lngLat": [
+      4.8672461,
+      52.3661699
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "38",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "check_date": "2026-09-09",
+      "name": "Energy Dictator",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-16T11:38:46.290Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161123",
+   "addresses": [
+    "Ten Katestraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 36-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000825376"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679405,
+     "lngLat": [
+      4.8672324,
+      52.3662
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "check_date": "2026-09-09",
+      "name": "Tropische Winkel Rustem",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-16T11:38:46.290Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163096",
+   "addresses": [
+    "Ten Katestraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ten Katestraat 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000825372"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8724679404,
+     "lngLat": [
+      4.8671854,
+      52.366252
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1053CG",
+      "addr:street": "Ten Katestraat",
+      "check_date": "2026-09-09",
+      "name": "Baby Boem",
+      "shop": "baby_goods"
+     },
+     "fetchedAt": "2026-10-16T11:38:46.290Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,333 @@
+{
+ "face": "hanzen-1-19",
+ "street": "Jan Hanzenstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 3.38,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hanzen-1-19-r1",
+   "pands": [
+    "0363100012236856",
+    "0363100012236554"
+   ],
+   "passed": false,
+   "triangles": 5285
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012236856",
+   "address": "Jan Hanzenstraat 1",
+   "builtYear": 1905,
+   "widthM": 4.42,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#343320",
+    "wallRaw": "#7f5f44",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.43,
+      "topWidthM": 0.4,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.345,
+    "voidShare": 0.05,
+    "foliageShare": 0.28
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 0.75,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "storeys": 5,
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#343320",
+     "evidence": "strip 2024-12-11 span 0-177: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 5: eaves 15.64 m at the type's 3.35 m pitch",
+    "crown neck-hoist: skyline rise 2.43 m, width 2.8 m, top 0.4 m",
+    "no photo evidence of its own (usable photo 47 % < 50 %); placed on row evidence from 236554"
+   ],
+   "likeness": {
+    "pandId": "0363100012236856",
+    "ncc": null,
+    "nccRaw": 0.337,
+    "shiftM": [
+     -0.1,
+     0.05
+    ],
+    "usable": 0.47,
+    "abstain": "usable photo 47 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 36 deg",
+     "glazing storey band off by 0.52 mean 0.35 vs photo 0.64",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#76513d",
+     "model": "#5f5d3a",
+     "dL": -0.051
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.354
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236554",
+   "address": "Jan Hanzenstraat 3",
+   "builtYear": 1905,
+   "widthM": 4.79,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7a5c46",
+    "wallRaw": "#7a5e43",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.25,
+      "topWidthM": 0.82,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.297,
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "placed",
+   "type": "bellamy-1904-balcony-axis",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "bellamy-1895-plain-three-axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "bellamy-1904-balcony-axis",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#7a5c46",
+     "evidence": "strip 2024-12-11 span 177-368: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-hoist: skyline rise 2.25 m, width 2.8 m, top 0.82 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012236554",
+    "ncc": 0.278,
+    "nccRaw": 0.278,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 0.53,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17 mean 0.37 vs photo 0.54",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#7c5c45",
+     "model": "#957055",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.364
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236819",
+   "address": "Jan Hanzenstraat 13",
+   "builtYear": 1937,
+   "widthM": 12.44,
+   "eavesM": 15.11,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#624e3b",
+    "wallRaw": "#745a40",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 133,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 7,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.198,
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 12.44 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 12.44 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.11 m = 5 storeys of 3.02 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.68 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.176 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233538",
+   "address": "Jan Hanzenstraat 17",
+   "builtYear": 1937,
+   "widthM": 15.19,
+   "eavesM": 15.2,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#9f7055",
+    "wallRaw": "#b8825f",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 162,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.134,
+    "voidShare": 0.03,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: frontage 15.19 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "frontage 15.19 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.2 m = 5 storeys of 3.04 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

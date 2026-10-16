@@ -1,0 +1,153 @@
+{
+ "street": "Hasebroekstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:28:03.862Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012100499",
+   "addresses": [
+    "Hasebroekstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 53-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000659470"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085498",
+   "addresses": [
+    "Hasebroekstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000659481"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123310",
+   "addresses": [
+    "Hasebroekstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000659489"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065691",
+   "addresses": [
+    "Hasebroekstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000659497"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069845",
+   "addresses": [
+    "Hasebroekstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000659505"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233466",
+   "addresses": [
+    "Hasebroekstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000659513"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127527",
+   "addresses": [
+    "Hasebroekstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000659521"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113587",
+   "addresses": [
+    "Hasebroekstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000659529"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086970",
+   "addresses": [
+    "Hasebroekstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hasebroekstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000659534"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

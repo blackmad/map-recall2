@@ -1,0 +1,180 @@
+{
+ "street": "Bellamystraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152825",
+   "addresses": [
+    "Bellamystraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 73",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000580156"
+    },
+    {
+     "address": "Nicolaas Beetsstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000750303"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159774",
+   "addresses": [
+    "Bellamystraat 75A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 75A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000580159"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160152",
+   "addresses": [
+    "Bellamystraat 75B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 75B",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000580160"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162552",
+   "addresses": [
+    "Bellamystraat 77",
+    "Bellamystraat 79A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 77",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000580162"
+    },
+    {
+     "address": "Bellamystraat 79A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000580164"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157007",
+   "addresses": [
+    "Bellamystraat 79B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 79B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000580165"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153031",
+   "addresses": [
+    "Bellamystraat 81",
+    "Bellamystraat 83A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 81",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000580167"
+    },
+    {
+     "address": "Bellamystraat 83A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000580171"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160798",
+   "addresses": [
+    "Bellamystraat 83B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 83B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000580172"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160876",
+   "addresses": [
+    "Bellamystraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 85",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000580176"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166916",
+   "addresses": [
+    "Bellamystraat 87A",
+    "Bellamystraat 87B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bellamystraat 87A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000580180"
+    },
+    {
+     "address": "Bellamystraat 87B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000580181"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

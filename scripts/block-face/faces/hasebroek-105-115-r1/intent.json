@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hasebroek-105-115-r1",
+ "street": "Hasebroekstraat",
+ "sources": [
+  {
+   "id": "strip-2018-06-13",
+   "kind": "street-panorama",
+   "capturedAt": "2018-06-13",
+   "image": "staging/block-face/hasebroek-105-115-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the bellamy library (buurt Bellamybuurt-Zuid); scores and holds in scripts/block-face/faces/hasebroek-105-115/auto-place.json"
+ },
+ "types": [
+  "bellamy-1915-green-tile"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012133637",
+   "slug": "hasebroek-133637",
+   "address": "Hasebroekstraat 107A",
+   "type": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#5a4a42",
+     "evidence": "strip 2018-06-13 span 290-570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-06-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-green-tile scored 0.91 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, columns 0.4; strip 2018-06-13 span 290-570"
+   }
+  },
+  {
+   "pandId": "0363100012082619",
+   "slug": "hasebroek-082619",
+   "address": "Hasebroekstraat 109A",
+   "type": {
+    "type": "bellamy-1915-green-tile",
+    "measuredPalette": {
+     "brick": "#594840",
+     "evidence": "strip 2018-06-13 span 570-826: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-06-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: bellamy-1915-green-tile scored 1 on eaves 1, storeys 1, roof 1, stucco 1, accent-share 1, columns 1; strip 2018-06-13 span 570-826"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

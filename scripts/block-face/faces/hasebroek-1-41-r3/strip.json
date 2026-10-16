@@ -1,0 +1,131 @@
+{
+ "face": "hasebroek-1-41-r3",
+ "image": "staging/block-face/hasebroek-1-41-r3/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 440,
+ "height": 846,
+ "groundNAP": 0.21,
+ "heightM": 21.14,
+ "frame": {
+  "midRD": [
+   119500.5558125,
+   486598.65625
+  ],
+  "uRD": [
+   -0.933387916390883,
+   -0.3588690534658651
+  ],
+  "nRD": [
+   -0.3588690534658651,
+   0.933387916390883
+  ]
+ },
+ "x0M": -5.49,
+ "x1M": 5.51,
+ "date": "2022-01-04",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012063580",
+   "x0M": -5.49,
+   "x1M": -0.02,
+   "px": [
+    0,
+    219
+   ],
+   "date": "2022-01-04",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002385_pano_0000_000021",
+     "timestamp": "2022-01-04T08:35:33.866130Z",
+     "distanceM": 6.5,
+     "obliquityDeg": 2.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002385_pano_0000_000022",
+     "timestamp": "2022-01-04T08:35:34.426140Z",
+     "distanceM": 7.9,
+     "obliquityDeg": 35.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002385_pano_0000_000020",
+     "timestamp": "2022-01-04T08:35:33.311110Z",
+     "distanceM": 8.2,
+     "obliquityDeg": 38.2,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161035",
+   "x0M": 0.01,
+   "x1M": 5.51,
+   "px": [
+    220,
+    440
+   ],
+   "date": "2022-01-04",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002385_pano_0000_000020",
+     "timestamp": "2022-01-04T08:35:33.311110Z",
+     "distanceM": 6.5,
+     "obliquityDeg": 3.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002385_pano_0000_000019",
+     "timestamp": "2022-01-04T08:35:32.761120Z",
+     "distanceM": 7.8,
+     "obliquityDeg": 34.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002385_pano_0000_000021",
+     "timestamp": "2022-01-04T08:35:33.866130Z",
+     "distanceM": 8.4,
+     "obliquityDeg": 38.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2024-12-11": 13,
+  "2022-09-02": 14,
+  "2019-01-09": 14,
+  "2022-05-02": 19,
+  "2020-05-11": 14,
+  "2019-12-09": 19,
+  "2025-07-31": 16,
+  "2022-01-04": 19,
+  "2017-04-21": 13,
+  "2019-04-30": 19,
+  "2021-03-25": 15,
+  "2018-06-13": 14,
+  "2020-08-17": 6,
+  "2016-08-09": 0,
+  "2021-12-31": 0,
+  "2018-11-19": 0,
+  "2023-01-10": 0,
+  "2025-06-30": 0,
+  "2020-02-07": 0,
+  "2018-07-29": 1,
+  "2022-04-29": 0,
+  "2023-01-12": 1,
+  "2016-08-28": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "hasebroek-1-41",
+  "px": [
+   3001,
+   3441
+  ]
+ }
+}

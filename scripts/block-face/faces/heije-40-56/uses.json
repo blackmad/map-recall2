@@ -1,0 +1,272 @@
+{
+ "street": "Jan Pieter Heijestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T11:43:33.442Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012571479",
+   "addresses": [
+    "Jan Pieter Heijestraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 56",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000685997"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162489",
+   "addresses": [
+    "Jan Pieter Heijestraat 54",
+    "Jan Pieter Heijestraat 54D",
+    "Jan Pieter Heijestraat 54A",
+    "Jan Pieter Heijestraat 54C",
+    "Jan Pieter Heijestraat 54B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 54-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000685989"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 54D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001982051"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 54A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010003713689"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 54C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010003713690"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 54B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010003713691"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127322",
+   "addresses": [
+    "Jan Pieter Heijestraat 52A",
+    "Jan Pieter Heijestraat 52B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 52A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044131"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 52B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044132"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147904",
+   "addresses": [
+    "Jan Pieter Heijestraat 50A",
+    "Jan Pieter Heijestraat 50B",
+    "Jan Pieter Heijestraat 50C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 50A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001044128"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044129"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044130"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109054",
+   "addresses": [
+    "Jan Pieter Heijestraat 48A",
+    "Jan Pieter Heijestraat 48B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 48A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044126"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 48B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044127"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147847",
+   "addresses": [
+    "Jan Pieter Heijestraat 46A",
+    "Jan Pieter Heijestraat 46B",
+    "Jan Pieter Heijestraat 46C",
+    "Jan Pieter Heijestraat 46D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 46A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001044121"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 46B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001044122"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 46C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001044123"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 46D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044124"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065334",
+   "addresses": [
+    "Jan Pieter Heijestraat 44A",
+    "Jan Pieter Heijestraat 44B",
+    "Jan Pieter Heijestraat 44C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 44A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001044116"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 44B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044117"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 44C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001044118"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073446",
+   "addresses": [
+    "Jan Pieter Heijestraat 42A",
+    "Jan Pieter Heijestraat 42B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001044114"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001044115"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064006",
+   "addresses": [
+    "Jan Pieter Heijestraat 40A",
+    "Jan Pieter Heijestraat 40B",
+    "Jan Pieter Heijestraat 40C",
+    "Jan Pieter Heijestraat 40D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Pieter Heijestraat 40A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001044110"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 40B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001044111"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 40C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001044112"
+    },
+    {
+     "address": "Jan Pieter Heijestraat 40D",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001044113"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

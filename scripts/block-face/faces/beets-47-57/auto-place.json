@@ -1,0 +1,312 @@
+{
+ "face": "beets-47-57",
+ "street": "Nicolaas Beetsstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 0.32,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012159209",
+   "address": "Nicolaas Beetsstraat 47",
+   "builtYear": 1904,
+   "widthM": 4.23,
+   "eavesM": 13.58,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#7f6b62",
+    "wallRaw": "#817b72",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 192,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.63,
+      "topWidthM": 1.07,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.225,
+    "voidShare": 0.02,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best bellamy-1895-plain-three-axis: built 1904, type 1928-1935; frontage 4.23 m, type 4.8-5.8 m)",
+   "best": {
+    "type": "bellamy-1895-plain-three-axis",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1928-1935",
+     "frontage 4.23 m, type 4.8-5.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.58 m = 4 storeys of 3.4 m vs the type's 3.13 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.65 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.144 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167454",
+   "address": "Nicolaas Beetsstraat 49",
+   "builtYear": 1904,
+   "widthM": 5.32,
+   "eavesM": 11.78,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#826753",
+    "wallRaw": "#747260",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 3.2,
+      "topWidthM": 0.4,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.382,
+    "voidShare": 0.16,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best bellamy-1904-balcony-axis scores 0.67 < 0.7 (3DBAG eaves 11.78 m = 4 storeys of 2.94 m vs the type's 3.35 m; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "bellamy-1904-balcony-axis",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 11.78 m = 4 storeys of 2.94 m vs the type's 3.35 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.117 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153206",
+   "address": "Nicolaas Beetsstraat 51",
+   "builtYear": 1904,
+   "widthM": 5.38,
+   "eavesM": 13,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#635448",
+    "wallRaw": "#948672",
+    "skyline": {
+     "eavesM": 13.7,
+     "eavesRow": 236,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2.3,
+      "topWidthM": 0.47,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.637,
+    "voidShare": 0.42,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 42 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153029",
+   "address": "Nicolaas Beetsstraat 53",
+   "builtYear": 1904,
+   "widthM": 5.38,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#595146",
+    "wallRaw": "#8b8373",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 234,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.05,
+      "topWidthM": 0.72,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.641,
+    "voidShare": 0.33,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159236",
+   "address": "Nicolaas Beetsstraat 55B",
+   "builtYear": 1896,
+   "widthM": 4.19,
+   "eavesM": 12.59,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#a9b0b4",
+    "wallRaw": "#7c847d",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 248,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 1.8,
+      "topWidthM": 0.3,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.599,
+    "voidShare": 0.37,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 37 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160986",
+   "address": "Nicolaas Beetsstraat 57A",
+   "builtYear": 1896,
+   "widthM": 4.19,
+   "eavesM": 13.04,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#899397",
+    "wallRaw": "#767d78",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 252,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.8,
+      "topWidthM": 0.78,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.542,
+    "voidShare": 0.38,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 38 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

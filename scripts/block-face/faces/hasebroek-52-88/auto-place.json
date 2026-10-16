@@ -1,0 +1,808 @@
+{
+ "face": "hasebroek-52-88",
+ "street": "Hasebroekstraat",
+ "library": "bellamy",
+ "stripDate": "2024-12-11",
+ "seconds": 20.51,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hasebroek-52-88-r1",
+   "pands": [
+    "0363100012132372",
+    "0363100012086016",
+    "0363100012148175",
+    "0363100012144253",
+    "0363100012088024",
+    "0363100012080701",
+    "0363100012110654",
+    "0363100012099290"
+   ],
+   "passed": false,
+   "triangles": 12209
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012132372",
+   "address": "Hasebroekstraat 70",
+   "builtYear": 1915,
+   "widthM": 6.58,
+   "eavesM": 14.69,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b7917f",
+    "wallRaw": "#d2ae96",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.4,
+      "topWidthM": 1.52,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.562,
+    "voidShare": 0.27,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.7,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.42
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b7917f",
+     "evidence": "strip 2024-12-11 span 0-263: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012132372",
+    "ncc": 0.187,
+    "nccRaw": 0.187,
+    "shiftM": [
+     0.25,
+     0
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 31 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#caab94",
+     "model": "#b68f7c",
+     "dL": -0.086
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.3
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086016",
+   "address": "Hasebroekstraat 68",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.29,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#ba907c",
+    "wallRaw": "#d1ad95",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.43,
+      "topWidthM": 0.93,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.422,
+    "voidShare": 0.2,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.75
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#ba907c",
+     "evidence": "strip 2024-12-11 span 263-521: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012086016",
+    "ncc": 0.235,
+    "nccRaw": 0.235,
+    "shiftM": [
+     -0.15,
+     0.05
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.46 mean 0.48 vs photo 0.16",
+     "columns 4 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#cbab94",
+     "model": "#b98e79",
+     "dL": -0.088
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 2,
+     "model": 4
+    },
+    "iou": 0.256
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148175",
+   "address": "Hasebroekstraat 66",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.21,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b78d79",
+    "wallRaw": "#cfaa91",
+    "skyline": {
+     "eavesM": 13.05,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.42,
+      "topWidthM": 0.9,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.518,
+    "voidShare": 0.23,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.9,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.75
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b78d79",
+     "evidence": "strip 2024-12-11 span 522-780: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012148175",
+    "ncc": 0.215,
+    "nccRaw": 0.215,
+    "shiftM": [
+     0.3,
+     0.1
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.443 < 0.45"
+    ],
+    "wall": {
+     "photo": "#c1937e",
+     "model": "#b88e7a",
+     "dL": -0.025
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.443
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144253",
+   "address": "Hasebroekstraat 64",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.16,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#9a7b6d",
+    "wallRaw": "#d0ab93",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.4,
+      "topWidthM": 0.25,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.388,
+    "voidShare": 0.19,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.9,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.75
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#9a7b6d",
+     "evidence": "strip 2024-12-11 span 780-1038: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012144253",
+    "ncc": 0.235,
+    "nccRaw": 0.235,
+    "shiftM": [
+     -0.3,
+     0.15
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.55 mean 0.49 vs photo 0.90"
+    ],
+    "wall": {
+     "photo": "#8f7467",
+     "model": "#a88e82",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.9,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.442
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088024",
+   "address": "Hasebroekstraat 62",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.25,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#ba8d78",
+    "wallRaw": "#cea68c",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.8,
+      "topWidthM": 0.38,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.372,
+    "voidShare": 0.17,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.9,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.75
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#ba8d78",
+     "evidence": "strip 2024-12-11 span 1038-1296: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012088024",
+    "ncc": 0.21,
+    "nccRaw": 0.21,
+    "shiftM": [
+     -0.25,
+     0.05
+    ],
+    "usable": 0.66,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38",
+     "window shape none vs photo tall",
+     "columns none vs photo 4"
+    ],
+    "wall": {
+     "photo": "#bd907b",
+     "model": "#ba8d78",
+     "dL": -0.012
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 4,
+     "model": null
+    },
+    "iou": 0.336
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080701",
+   "address": "Hasebroekstraat 60",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.22,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b18974",
+    "wallRaw": "#c49e86",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.4,
+      "topWidthM": 1.2,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.451,
+    "voidShare": 0.17,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.69
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#b18974",
+     "evidence": "strip 2024-12-11 span 1297-1555: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012080701",
+    "ncc": 0.24,
+    "nccRaw": 0.24,
+    "shiftM": [
+     -0.2,
+     0.15
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.49 vs photo 0.33",
+     "window shape square vs photo tall",
+     "columns 4 vs photo 6"
+    ],
+    "wall": {
+     "photo": "#b68c79",
+     "model": "#b6907c",
+     "dL": 0.006
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 6,
+     "model": 4
+    },
+    "iou": 0.3
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110654",
+   "address": "Hasebroekstraat 58",
+   "builtYear": 1915,
+   "widthM": 6.46,
+   "eavesM": 12.24,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#b48a76",
+    "wallRaw": "#cfa78d",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.43,
+      "topWidthM": 0.72,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.457,
+    "voidShare": 0.22,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.91,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.69
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#b48a76",
+     "evidence": "strip 2024-12-11 span 1555-1813: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent left: mirrored",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012110654",
+    "ncc": 0.215,
+    "nccRaw": 0.215,
+    "shiftM": [
+     0.35,
+     0.05
+    ],
+    "usable": 0.59,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20",
+     "window shape none vs photo tall",
+     "columns none vs photo 9"
+    ],
+    "wall": {
+     "photo": "#c6947e",
+     "model": "#b78e7b",
+     "dL": -0.035
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 9,
+     "model": null
+    },
+    "iou": 0.382
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099290",
+   "address": "Hasebroekstraat 56",
+   "builtYear": 1915,
+   "widthM": 6.58,
+   "eavesM": 12.37,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#c69380",
+    "wallRaw": "#d0a990",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.4,
+      "topWidthM": 1.23,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.403,
+    "voidShare": 0.19,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "bellamy-1915-tile-bay",
+   "score": 0.87,
+   "runnerUp": {
+    "typeId": "bellamy-1915-green-tile",
+    "score": 0.63
+   },
+   "placement": {
+    "type": "bellamy-1915-tile-bay",
+    "measuredPalette": {
+     "brick": "#c69380",
+     "evidence": "strip 2024-12-11 span 1814-2077: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "accent right",
+    "crown eaves (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012099290",
+    "ncc": 0.22,
+    "nccRaw": 0.22,
+    "shiftM": [
+     -0.25,
+     0.05
+    ],
+    "usable": 0.62,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.48 mean 0.49 vs photo 0.34",
+     "window shape tall vs photo square",
+     "columns 4 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#c4907d",
+     "model": "#c08772",
+     "dL": -0.029
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 2,
+     "model": 4
+    },
+    "iou": 0.319
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161640",
+   "address": "Hasebroekstraat 54",
+   "builtYear": 1915,
+   "widthM": 5.57,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#d0b5a6",
+    "wallRaw": "#9f9388",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.8,
+      "topWidthM": 0.5,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 13,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.571,
+    "voidShare": 0.21,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 48 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012161640",
+    "ncc": null,
+    "nccRaw": 0.132,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.48,
+    "abstain": "usable photo 48 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 45 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#7b7063",
+     "model": "#b9907a",
+     "dL": 0.167
+    },
+    "glazing": {
+     "photo": 0.77,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.4
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157313",
+   "address": "Hasebroekstraat 52",
+   "builtYear": 1915,
+   "widthM": 5.41,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "strip": {
+    "wall": "#e2c4b7",
+    "wallRaw": "#a19387",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.65,
+      "topWidthM": 1.02,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.599,
+    "voidShare": 0.26,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 43 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012157313",
+    "ncc": null,
+    "nccRaw": 0.192,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.43,
+    "abstain": "usable photo 43 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 41 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#d8bcaf",
+     "model": "#c4886e",
+     "dL": -0.167
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.173
+   },
+   "challengers": {}
+  }
+ ]
+}
