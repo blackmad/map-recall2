@@ -4,10 +4,11 @@
  * new openings outlined; and a before/after table (glazing mean and bands, wall family and colour, verdict).
  *
  *   MAP_RECALL_SOURCE_DATA=<checkout> node --import tsx scripts/building-recipes/measurement-sheet.ts \
- *     --houses=<id>[,<id>] [--before=<dir with <id>/measured.json>] [--hand=<id>:<group>=#hex,...] [--out=<file.jpg>] [--json=<file>]
+ *     --houses=<id>[,<id>] [--before=<dir with <id>/measured.json>] [--legacy=<old measureFacade.ts> [--legacy-likeness=<old likeness.ts>]] [--hand=<id>:<group>=#hex,...] [--out=<file.jpg>] [--json=<file>]
  *
  * Compiles each house as it is (no intent is written). `--before` reads earlier `measured.json` files (one per house in
- * `<dir>/<id>/`) for the "before" columns; without it the cluster mask's glazing stands in.
+ * `<dir>/<id>/`) for the "before" columns; without it the cluster mask's glazing stands in. With `--legacy` and
+ * `--legacy-likeness` (copies of the modules as they were) the "before" is replayed live on the house as it is now.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -49,6 +50,19 @@ function paintMask(photo: Buffer, pw: number, ph: number, win: Uint8Array, cols:
 
 type LegacyMeasure = (input: {image: unknown; box: unknown; lines: number[]; inside?: unknown}) => {mask: Uint8Array; cols: number; rows: number};
 let legacy: LegacyMeasure | null = null;
+/** the likeness module as it was (--legacy-likeness=<file>): replays the old verdict on the house as it is now */
+interface LegacyLikenessModule {
+  modelElevation: (soup: unknown, panel: unknown, box: unknown, lines: number[], cell?: number, tints?: Set<string>) => unknown;
+  compareLikeness: (a: Record<string, unknown>) => {verdict: string; reasons: string[]; glazing: {photoMean: number | null; photo: (number | null)[]}; wall: {photoFamily?: string | null}};
+}
+let legacyLikeness: LegacyLikenessModule | null = null;
+function legacyBefore(g: GroupLikeness, oldPhoto: ReturnType<LegacyMeasure>): Before | undefined {
+  if (!legacyLikeness || !g.replay || !g.photoImage) return undefined;
+  const r = g.replay, ph = oldPhoto as unknown as {cell: number; wall: {hex: string}};
+  const model = legacyLikeness.modelElevation(r.soup, r.panel, g.box, g.photoImage.lines, 0.1, r.measuredTints);
+  const like = legacyLikeness.compareLikeness({photo: oldPhoto, padCells: Math.round(PAD_M / ph.cell), model, lines: g.photoImage.lines, obliquityDeg: r.obliquityDeg, cameraDistM: r.cameraDistM, cameraSpanM: r.cameraSpanM});
+  return {verdict: like.verdict, glazing: like.glazing.photoMean, bands: like.glazing.photo, family: like.wall.photoFamily ?? null, wall: ph.wall.hex, reasons: like.reasons};
+}
 
 async function row(id: string, g: GroupLikeness, before: Before | undefined, hand: string | undefined, H: number) {
   const box = g.box!, model = g.model!, like = g.likeness!, photo = g.photo! as FacadeMeasurement;
@@ -57,7 +71,8 @@ async function row(id: string, g: GroupLikeness, before: Before | undefined, han
   const pad = Math.round(PAD_M / photo.cell), du = Math.round(like.shift.uM / photo.cell), dv = Math.round(like.shift.vM / photo.cell);
   const winNew = photoWindow(photo, pad, du, dv, model.cols, model.rows);
   // the old classification: the measurement module as it was (--legacy=<file>), else this one's cluster mask
-  const oldMask = legacy && g.photoImage ? legacy(g.photoImage).mask : photo.clusterMask ?? photo.mask;
+  const oldPhoto = legacy && g.photoImage ? legacy(g.photoImage) : null, oldMask = oldPhoto ? oldPhoto.mask : photo.clusterMask ?? photo.mask;
+  if (oldPhoto) before = legacyBefore(g, oldPhoto) ?? before;
   const winOld = photoWindow({...photo, mask: oldMask}, pad, du, dv, model.cols, model.rows);
   const oldImg = paintMask(photoImg, pw, ph, winOld, model.cols, model.rows, true), newImg = paintMask(photoImg, pw, ph, winNew, model.cols, model.rows, false);
   // overlay: photo and model elevation at 50 %, the new openings outlined in cyan
@@ -98,6 +113,7 @@ if (process.argv[1]?.endsWith('building-recipes/measurement-sheet.ts')) {
   const hand = new Map((arg('hand') ?? '').split(',').filter(Boolean).map(s => { const [k, v] = s.split('='); return [k, v] as const; }));
   if (!ids.length) throw Error('Use --houses=<id>[,<id>...]');
   if (arg('legacy')) legacy = (await import(path.resolve(arg('legacy')!))).measureFacade as LegacyMeasure;
+  if (arg('legacy-likeness')) legacyLikeness = (await import(path.resolve(arg('legacy-likeness')!))) as LegacyLikenessModule;
   const rows: {img: Buffer; width: number; height: number}[] = [], summaries: unknown[] = [];
   try {
     for (const id of ids) {
