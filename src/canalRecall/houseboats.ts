@@ -11,15 +11,23 @@
 //     amidships with plants on its roof, a wheelhouse aft and a Dutch flag at the stern.
 // Real Amsterdam houseboats are cheerful: cream, sky blue, sage, ochre and barn red
 // cabins, green roofs, bright doors. Dark hulls stay on the barges, where they are true.
-// Everything is derived from the footprint and a hash of the id, so a boat keeps its
-// look between sessions. Flat colours only, recoloured per Building look by the caller.
+// Each boat's form, cabin length and roof colour come from the extract where a person
+// read them off the orthophoto (scripts/houseboat-kinds/enrich.ts); what nobody could see
+// is derived from the footprint and a hash of the id, so a boat keeps its look between
+// sessions. Outlines over open water (a berth the boat has left) are not drawn. Flat colours only, recoloured per Building look by the caller.
 
 import earcut from 'earcut';
 import { fitRect } from './roofMesh.js';
-import { LABELLED_HOUSEBOAT_KINDS } from './houseboatKindOverrides.js';
 import type { KitPartGeometry, KitTri } from './landmarkKits.js';
 
-export type Houseboat = { id: string; ring: [number, number][]; levels?: number; roof?: string; name?: string; kind?: string };
+export type HouseboatKind = 'ark' | 'barge' | 'hullbox';
+export type Houseboat = {
+  id: string; ring: [number, number][]; levels?: number; roof?: string; name?: string;
+  /** OSM building tag when not `houseboat` (boathouse, apartments, ...). */
+  kind?: string;
+  /** Read off the orthophoto: the boat's form, an empty berth, the roofed share of the length, the roof colour. */
+  form?: HouseboatKind; stale?: true; cabinShare?: number; roofHex?: string;
+};
 type V3 = [number, number, number];
 
 /** Concrete pontoons, a few painted. */
@@ -35,6 +43,8 @@ const HULLBOX_CABINS = ['#f0ebde', '#e6dcc4', '#45494c', '#2f4a3c', '#9a7448', '
 /** Their hulls: black-blue, slate, bottle green, and the red-brown many are painted. */
 const HULLBOX_HULLS = ['#2c3a4a', '#3a4148', '#25443a', '#6a2f29', '#8a3a2c'];
 /** Bitumen and zinc, and the sedum roofs many arks carry. */
+/** The orthophoto's white roof class (scripts/houseboat-kinds/roofClass.ts) and white cabins. */
+const WHITE_ROOF = '#efece4', WHITE_CABINS = ['#f0ebde', '#f4f1ea', '#e6dcc4'];
 const ROOFS = ['#6a6e72', '#8a857c', '#9aa1a6', '#7c9a5e', '#8fae6a', '#a35d45', '#7d8a94'];
 const DOORS = ['#c0392b', '#2f6e4f', '#2d5d8c', '#efc24a', '#3d3d3d', '#7b4a8c'];
 const FLOWERS = ['#e0475a', '#f08a3c', '#e86fa8', '#f4d54a', '#ffffff'];
@@ -118,18 +128,15 @@ export function classifyHouseboatHull(points: P2, length: number, width: number)
   return ends.some(e => e.widths[0] <= SHIP_END.at03 && e.widths[1] <= SHIP_END.at1 && e.offset <= SHIP_END.symmetry * (1 - e.widths[0])) ? 'ship' : 'ark';
 }
 
-export type HouseboatKind = 'ark' | 'barge' | 'hullbox';
-/** Per-boat kinds the footprint cannot tell, read off the orthophoto (PDOK 8 cm) for the
- *  boats on the ride corridors (generated, see houseboatKindOverrides.ts). */
+/** Kinds pinned in code; the extract's `form` (read off the orthophoto) covers the rest. */
 export const HOUSEBOAT_KIND_OVERRIDES: Readonly<Record<string, HouseboatKind>> = {
-  ...LABELLED_HOUSEBOAT_KINDS,
   w174999382: 'barge', // Hendrika Maria, the Houseboat Museum (Prinsengracht)
 };
 /**
- * What a boat is drawn as. A pontoon outline is an ark. A ship hull is either a
- * converted barge with an open foredeck and a wheelhouse (`barge`) or a hull under
- * one box cabin over most of its length (`hullbox`); the outline cannot tell them
- * apart, so a hash of the id picks with the shares measured on the orthophoto
+ * What a boat without a photo label is drawn as. A pontoon outline is an ark. A ship
+ * hull is either a converted barge with an open foredeck and a wheelhouse (`barge`) or a
+ * hull under one box cabin over most of its length (`hullbox`); the outline cannot tell
+ * them apart, so a hash of the id picks with the shares measured on the orthophoto
  * (164 labelled ship hulls, scripts/houseboat-kinds/shares.ts): above 28 m, 63 %
  * were open barges; up to 28 m, 42 % with a pointed end (≤ 0.75 of the body 1 m
  * in) and 22 % with rounded ends. The ring canals run lower (27 %).
@@ -176,6 +183,7 @@ function clipPlan(poly: [number, number][], axis: 0 | 1, value: number, above: b
 
 /** One boat's triangles in local metres from `origin` (x east, y north, z up). */
 export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: number }): KitPartGeometry | null {
+  if (boat.stale) return null;
   const frame = houseboatFrame(boat, origin);
   if (!frame) return null;
   const { pts, ux, uy, vx, vy, cx, cy } = frame, L = frame.length, W = frame.width;
@@ -219,8 +227,9 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     const area=ring.reduce((a,p,i)=>{const q=ring[(i+1)%ring.length];return a+p[0]*q[1]-q[0]*p[1];},0);
     for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];sink.quad([p[0],p[1],base],[q[0],q[1],base],[q[0],q[1],top],[p[0],p[1],top],side,area>0?[q[1]-p[1],p[0]-q[0],0]:[p[1]-q[1],q[0]-p[0],0]);}
   };
-  const roofHex = pick(ROOFS, id, 'roof'), doorHex = pick(DOORS, id, 'door');
-  const form = houseboatKind(id, frame.local, L, W);
+  const roofHex = boat.roofHex ?? pick(ROOFS, id, 'roof'), doorHex = pick(DOORS, id, 'door');
+  const form = HOUSEBOAT_KIND_OVERRIDES[id] ?? boat.form ?? houseboatKind(id, frame.local, L, W);
+  const share = boat.cabinShare;
 
   if (form === 'ark') {
     // An ark: pontoon, cabin over most of it, an open deck at one end.
@@ -285,7 +294,8 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     // A barge keeps an open foredeck, a low cabin amidships and a wheelhouse aft; a
     // hullbox carries one box cabin over most of its length (see `houseboatKind`).
     const barge = form === 'barge';
-    const cabinHex = pick(barge ? BARGE_CABINS : HULLBOX_CABINS, id, 'cabin'), hullHex = pick(barge ? BARGE_HULLS : HULLBOX_HULLS, id, 'hull');
+    // A hullbox whose roof reads white on the photo is a white-painted superstructure.
+    const cabinHex = !barge && boat.roofHex === WHITE_ROOF ? pick(WHITE_CABINS, id, 'cabin') : pick(barge ? BARGE_CABINS : HULLBOX_CABINS, id, 'cabin'), hullHex = pick(barge ? BARGE_HULLS : HULLBOX_HULLS, id, 'hull');
     const hullTop = barge ? 0.9 : 0.7, stripe = 0.16, rise = barge ? 0.55 : 0.25;
     const widthAt = (a: number) => {
       let w = 0;
@@ -314,7 +324,9 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     if (!barge) {
       // A hullbox: one cabin from a short stern deck to a foredeck at the bow, inset from
       // the gunwale and clipped to the hull, so a rounded end narrows the cabin with it.
-      const bowDeck = Math.min(2.4, Math.max(1.2, L * 0.08)), sternDeck = Math.min(1.2, Math.max(0.5, L * 0.03));
+      // A measured cabin share sets the foredeck; the stern deck stays short.
+      const sternDeck = Math.min(1.2, Math.max(0.5, L * 0.03));
+      const bowDeck = share ? Math.max(0.8, Math.min(L - sternDeck - 2, L * (1 - share) - sternDeck)) : Math.min(2.4, Math.max(1.2, L * 0.08));
       const c0 = stern > 0 ? -L / 2 + bowDeck : -L / 2 + sternDeck, c1 = stern > 0 ? L / 2 - sternDeck : L / 2 - bowDeck;
       // Scale the hull across about its centreline, so the walls stand 0.3 m inside the
       // gunwale amidships and follow a rounded end in, then cut at the two decks.
@@ -348,7 +360,9 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
       return { id, tris: sink.tris };
     }
     const half = Math.max(0.8, W / 2 - 0.6);
-    const c0 = Math.min(-0.34 * L * stern, 0.28 * L * stern), c1 = Math.max(-0.34 * L * stern, 0.28 * L * stern), cabinTop = hullTop + 1.9;
+    // The cabin ends 0.28 L aft of centre; a measured roofed share (cabins + 2.2 m wheelhouse) sets where it starts.
+    const fore = share ? Math.max(2, Math.min(0.75 * L, share * L - 2.2)) - 0.28 * L : 0.34 * L;
+    const c0 = Math.min(-fore * stern, 0.28 * L * stern), c1 = Math.max(-fore * stern, 0.28 * L * stern), cabinTop = hullTop + 1.9;
     box(c0, c1, -half, half, hullTop, cabinTop, cabinHex);
     box(c0 - 0.15, c1 + 0.15, -half - 0.15, half + 0.15, cabinTop, cabinTop + 0.12, roofHex, true, FRAME);
     sideWindows(c0 + 0.4, c1 - 0.4, -half, hullTop + 0.55, hullTop + 1.5, 2.1, 1.1);

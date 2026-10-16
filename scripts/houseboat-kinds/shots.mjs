@@ -11,11 +11,14 @@ const PLACES = {
   'prinsengracht-noordermarkt': [4.88736, 52.37913, 202], // east quay, looking SSW at w266604434/36/50
   'prinsengracht-westermarkt': [4.88553, 52.37763, 30],   // west quay, looking NNE at w266555542, w266555540
   'prinsengracht-amstelveld': [4.89721, 52.36194, 75],    // Amstelveld quay, looking ENE along five hullboxes
+  'amstel-blauwbrug': [4.90080, 52.36693, 303],          // Amstel east quay by the Blauwbrug, looking WNW at w268782272/65/67
+  'brouwersgracht': [4.88735, 52.38082, 331],            // Brouwersgracht south quay, looking NNW at w266550794 and the dinghy berth
 };
 const out = `artifacts/houseboat-kinds/shots/${tag}`;
 fs.mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+page.on('pageerror', e => console.error('pageerror', e.message)); page.on('console', m => m.type() === 'error' && console.error('console', m.text().slice(0, 200)));
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
 if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
