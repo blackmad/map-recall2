@@ -736,6 +736,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   faces (median 1.106 today); decide the road grey (~98–117 vs the user's
   ~150) and the cycle red (190,96,92 proposed); ride-level before/after
   frames from the bike, the sheet is mostly aerial.
+- **Overview transition follow-ups** (2026-10-16, HISTORY "The
+  overview-to-city switch is a blend"; `?transition=0` opts out): the
+  user judges whether the flat overview in city colours with roof-toned
+  footprints still reads as a map (it is darker and browner than the old
+  white-and-blue); switch its tones to `look/sunny.ts sceneTokens()`;
+  footprints far from the rider fade out where nothing 3D is streamed;
+  tilted manual zoom-out shows a short footprint-tone dither; phone
+  worst step 4.7 % at 13.9 → 14 is outside the window, bring it in.
 - **Kit roof rules (user, 2026-10-16; plan Part 2, lane in flight):** roofs
   follow the measured front, not 3DBAG ("don't give so much credence to
   3DBAG roofs"): saddle under the crown profile, flat under a parapet, attic
