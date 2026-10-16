@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Parking bays read as street, not stripes (2026-10-16)
+
+User (2026-10-16), Prinsengracht by the Pulitzer: "are these bits from BGT?
+I don't think we need to draw parking spots". The bays (BGT parkeervlak)
+already drew in the quay's brick; the stripes were the small footway
+polygons between them (islands and tree pits), drawn as raised pale paving
+with granite kerb lines. `RoadIndex.parkingIslands`: a foot polygon of at
+most 40 m² bordered by parking for at least half its perimeter draws as
+parking (the bays' mesh, road height) and its kerbs are dropped (a kerb
+with the street on both sides). 198 islands (2,475 m²) in the seven pilot
+cells. Unit test in `roadSurfaces.test.ts`, which also now follows
+`PAINT_ON_SURVEY` (two paint tests there had failed since the no-paint
+switch; the file is outside the npm suites).
+
 ## Bridges: canal-mouth parapets at the Bullebakssluis, decks for unmeasured bridge ways (2026-10-16)
 
 User (2026-10-16): "no idea what this bridge is trying to be" (Marnixstraat
