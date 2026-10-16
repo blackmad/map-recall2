@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## Coverage by buurt: 97.8 % of pands draw as generic boxes by default; a ranked generator to-do (2026-10-16)
+
+Lane `lane/coverage-map-20261016` (8175de1e2 data, 3c3d0211b page), from
+the user's "a progress map of postcodes? neighborhoods? that we've
+surveyed and made custom local generators for". Per municipal buurt (518,
+CC0, archived in source-data `datasets/gebieden-buurten-20261016/`), pands
+by footprint centroid and the tier the game draws them with, read from
+the loaders, one tier per pand in the order bespoke > chunk > large
+recipe > house recipe > hand-built ordinary > building type > landmark
+kit > generic. City: 192,081 pands; bespoke 461, block-face chunk 131,
+large recipe 97, per-house recipe 0 (all 19 superseded by chunks),
+hand-built ordinary 37, building type 3,075, landmark kit 345, generic
+187,935 (97.84 %). By default the game draws only bespoke, large recipe,
+hand-built and landmark kit: chunks need `?streetChunks=1` (retired by
+default 2026-10-14, HISTORY "Street-survey chunks retired") and building
+types `?buildingTypes=1`. Repetition = share of a buurt's pands in its
+top three width × height × year clusters (sheds under 3.5 m or 20 m²
+excluded); priority = repetition × (1 − modelled share). Top of the
+to-do: Kelbergen, Holendrecht-Oost, Gein 3, Blauwe Zand, Gein 4 (post-war
+low-rise); before 1945: Blauwe Zand, Tuindorp Amstelstation, Tuindorp
+Oostzaan-Oost, Tuindorp Nieuwendam-Oost, Postjeskade e.o. (712 pands,
+one 6 × 15 m × 1935 type covers 265). Bellamybuurt-Zuid ranks 282
+(repetition 0.20: the 1895–1915 rows split across 4–6 m widths and
+5-year bins), Bellamybuurt-Noord 204. Not attributed: 36 models without a
+pand (memorials, bridges, gates, houseboats), 116 landmark units on OSM
+parts, 1,714 generic OSM-part units. Extract
+`public/data/extracts/amsterdam/coverage-v1/buurten.json(.gz)` (545 / 77
+KB), `npm run build:coverage -- --publish`, `test:coverage` 6/6, page
+`docs/coverage/index.html`.
+
 ## Fourteen installed faces re-installed under the roof rules; three held (2026-10-16)
 
 Lane `lane/roof-reinstall-20261016` (703ce590b, e23d73927, fd3a92664,
