@@ -21,7 +21,7 @@ import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGr
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, deckSlabOnLand, deckStreetTop, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, junctionCoverage, strayHits, surveyedCoverage, wayStrayHits, zebraOffRoad, gapLand, DE_CLERCQSTRAAT, JUNCTIONS, ROAD_JUNCTIONS, ROAD_WAY_STRAYS, STRAYS, SURVEY_GAPS, ZEBRAS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { auditBridgeSurfaces } from './audit-bridge-surfaces.ts';
 import { ROAD_CELL_BUDGET_GZ } from '../../src/canalRecall/ownGround/roadCells.ts';
@@ -742,6 +742,20 @@ async function roadRegressions(): Promise<void> {
     const r = gapLand([buildCell(edge)], off, [x, y], reg.radiusM, index), pin = gapLand([buildCell({ ...edge, surveyGaps: false })], off, [x, y], reg.radiusM, index);
     check(r.land <= reg.maxLandM2, `${reg.id} roads-v1 survey gap (extract edge): ${r.land} m² land of ${r.probes} m² the bands paved (≤ ${reg.maxLandM2}; without the gap pass ${pin.land})`);
     check(pin.land > reg.maxLandM2, `${reg.id}: without the survey-gap pass ${pin.land} m² land (the pin is live)`);
+  }
+  // Deck ends read as road (user 2026-10-16, Berensluis BRU0065: grey wedges where the bridge met the quays).
+  const noEnds = new GroundStore(readExtract, { roads: true, deckEnds: false });
+  await noEnds.init();
+  for (const reg of DECK_ENDS) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), n = await neighbourhood(roadsStore, x, y), deck = roadsStore.surface.decks.find(d => d.profile.id === reg.id);
+    check(!!deck, `${reg.id}: deck placed`);
+    if (!deck) continue;
+    const r = deckEndMisses(n.cells, deck);
+    check(r.misses.length <= reg.maxMisses, `${reg.id} (${reg.label}) roads-v1: ${r.misses.length}/${r.probes} end probes show the deck top, water or nothing (≤ ${reg.maxMisses})${r.misses.length ? ` ${JSON.stringify(r.misses.slice(0, 6))}` : ''}`);
+    if (reg.pinMin === undefined) continue;
+    const off = await neighbourhood(noEnds, x, y), offDeck = noEnds.surface.decks.find(d => d.profile.id === reg.id)!;
+    const p = deckEndMisses(off.cells, offDeck);
+    check(p.misses.length >= reg.pinMin, `${reg.id}: without the deck-end fix ${p.misses.length} misses (≥ ${reg.pinMin}, the pin is live)`);
   }
   // The pin is live: a pilot cell with roads draws polygons and culls land under them; without, no roads stats.
   const key = [...roadsStore.roadCells].sort()[0];
