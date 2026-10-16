@@ -1431,21 +1431,30 @@ test('ground looks: default is palette.ts untouched; bright hits its luma target
   const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
   const rgbOf = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
   const d = groundPalette('default');
-  assert.equal(d.street, STREET_GROUND); assert.equal(d.tones, GROUND_TONES);
+  assert.deepEqual(d.street, { ...STREET_GROUND, brick: STREET_GROUND.klinker }); assert.equal(d.tones, GROUND_TONES);
   const def = basemapGroundPatches([{ id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'water', type: 'fill', 'source-layer': 'water' }], groundPalette('default'));
   assert.deepEqual(def.map(p => p.value), ['rgb(86,88,93)', '#46707c', '#46707c'], 'default basemap patches unchanged');
-  // Targets: bright road ~130 / pavement ~175 / water ~124 (docs/ground-tones-20261014.md).
+  // Targets: bright road ~144 (road look v2; 130 before) / pavement ~175 / water ~124 (docs/ground-tones-20261014.md).
   assert.equal(GROUND_LOOK_DEFAULT, 'bright');
   const { street, tones } = groundPalette('bright');
-  assert.ok(Math.abs(luma(street.asphalt.base) - 130) <= 4, `road luma ${luma(street.asphalt.base).toFixed(0)}`);
+  assert.ok(Math.abs(luma(street.asphalt.base) - 144) <= 4, `road luma ${luma(street.asphalt.base).toFixed(0)}`);
   assert.ok(Math.abs(luma(street.pavement.base) - 175) <= 4, `pavement luma ${luma(street.pavement.base).toFixed(0)}`);
   assert.ok(Math.abs(luma(rgbOf(tones.water)) - 124) <= 4, `water luma ${luma(rgbOf(tones.water)).toFixed(0)}`);
   for (const [a, b] of [['asphalt', 'cycle'], ['asphalt', 'klinker'], ['klinker', 'cycle']] as const) {
     const e = deltaE(street[a].base, street[b].base);
     assert.ok(e >= 20, `${a}/${b} ΔE ${e.toFixed(1)}`);
   }
-  // Only ground: paint, rails, bollards, parks and woods are today's.
-  for (const k of ['paint', 'rail', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
+  // Road look v2 (2026-10-16): inrit / parking klinker is a muted grey brick near the pavement (ΔE ≤ 10, luma within
+  // 20 of it) and still warmer than the asphalt; the klinker carriageway stays brick (legend above) but is no longer
+  // the saturated brown (chroma under 60, luma ≥ 110); rails are lighter than the asphalt round them.
+  assert.ok(deltaE(street.brick.base, street.pavement.base) <= 10, `brick/pavement ΔE ${deltaE(street.brick.base, street.pavement.base).toFixed(1)}`);
+  assert.ok(Math.abs(luma(street.brick.base) - luma(street.pavement.base)) <= 20, 'inrit brick near the pavement');
+  assert.ok(street.brick.base[0] - street.brick.base[2] > street.asphalt.base[0] - street.asphalt.base[2], 'inrit brick warmer than asphalt');
+  assert.ok(deltaE(street.klinker.base, street.brick.base) >= 15, 'road klinker distinct from inrit brick');
+  assert.ok(Math.max(...street.klinker.base) - Math.min(...street.klinker.base) < 60 && luma(street.klinker.base) >= 110, `klinker ${street.klinker.base}`);
+  assert.ok(luma(rgbOf(street.rail)) > luma(street.asphalt.base) + 25, `rail ${street.rail} over asphalt`);
+  // Only ground: paint, bollards, parks and woods are today's.
+  for (const k of ['paint', 'bollard'] as const) assert.equal(street[k], STREET_GROUND[k]);
   for (const k of ['park', 'wood', 'lawn', 'shrub', 'bed', 'bark', 'sand', 'gravel', 'parkGravel'] as const) assert.equal(tones[k], GROUND_TONES[k]);
   assert.equal(tones.pond, tones.water);
   // The canal is blue, not grey-green (user 2026-10-16: "why is the water this color now?", "just pick a good blue").
