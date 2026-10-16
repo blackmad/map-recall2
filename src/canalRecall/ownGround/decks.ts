@@ -17,7 +17,7 @@
 import earcut from 'earcut';
 import { drapeTriangles, emptyMesh, vertex, type MeshArrays } from './drape.js';
 import {
-  basculeColour, basculeLeaves, basculeStyle, basculeUnit, basementEnd, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS, PIER_SPAN_M,
+  basculeColour, basculeLeaves, basculeStyle, basculeUnit, basementEnd, bridgeFacts, buildKit, flatHintAt, flatKind, FRAME, materialOf, measuredKind, registerHint, KIT_BUDGET, KIT_COLOURS,
   type BridgeFacts, type BridgeKind, type KitRow, type RegisterHint, type RGB,
 } from './bridgeKit.js';
 import type { DeckSurface, HeightFn, Vec2 } from './surface.js';
@@ -214,7 +214,8 @@ export function parapetRuns(deck: DeckSurface, widths: { left: Float64Array; rig
  * a steel or concrete deck the face over the water is one flat girder opening between brick abutments, not an arch.
  * Measured facts (bridgeHints) win where they say otherwise.
  */
-export const MOUTH_ACROSS_M = 12, MOUTH_RATIO = 1.5;
+/** One flat opening per ~9 m of water (the L.H. Sarlouisbrug BRU0240: 16 m, two openings on one pier). */
+export const MOUTH_ACROSS_M = 12, MOUTH_RATIO = 1.5, MOUTH_BAY_M = 9;
 export function canalMouth(deck: DeckSurface, flush: boolean, roadWidth: number, hint: RegisterHint | null, widths?: { left: Float64Array; right: Float64Array }): boolean {
   const p = deck.profile;
   if (!flush || roadWidth < 3.5 || hint?.light || hint?.movable || !(hint?.classic || hint?.material === 'masonry' || p.family === 'masonry-arch')) return false;
@@ -229,7 +230,7 @@ export function canalMouth(deck: DeckSurface, flush: boolean, roadWidth: number,
 export function mouthFacts(facts: BridgeFacts | null, masonry: boolean, waterM: number): BridgeFacts {
   return {
     ...(facts ?? { named: false }), parapet: facts?.parapet ?? 'brick-rail',
-    ...(!masonry && !facts?.arches ? { arches: waterM > PIER_SPAN_M ? 3 : 1, shapes: ['flat' as const] } : {}),
+    ...(!masonry && !facts?.arches ? { arches: Math.max(1, Math.round(waterM / MOUTH_BAY_M)), shapes: ['flat' as const] } : {}),
   };
 }
 
