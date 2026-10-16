@@ -10,7 +10,7 @@
 //   three.js city is complete (BLEND_END_ZOOM), then fade out, so the 3D roofs dissolve in over their own colour.
 
 import { CITY_ROOF, hexToRgb, type RGB } from '../look/palette.js';
-import { groundLookFrom, groundPalette, type GroundPalette } from '../ownGround/groundLook.js';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundPalette } from '../ownGround/groundLook.js';
 import type { StyleLayerLike } from '../ownGround/basemapPalette.js';
 import { BLEND_END_ZOOM } from './blend.js';
 import { groundTokens } from '../look/sunny.js';
@@ -39,7 +39,7 @@ export const NOT_PARK_CLASSES = ['protected_area', 'nature_reserve', 'national_p
 export const FOOTPRINT_FADE_ZOOM = 0.6;
 
 /** Paint and zoom-range patches for the overview (transition on), on top of basemapGroundPatches. */
-export function overviewBasemapPatches(layers: readonly StyleLayerLike[], palette: GroundPalette = groundPalette(groundLookFrom())): { paint: OverviewPatch[]; zoomRanges: ZoomRangePatch[] } {
+export function overviewBasemapPatches(layers: readonly StyleLayerLike[], palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): { paint: OverviewPatch[]; zoomRanges: ZoomRangePatch[] } {
   const paint: OverviewPatch[] = [], zoomRanges: ZoomRangePatch[] = [];
   // The same tokens the basemap ground patches and the 3D ground read (look/sunny.ts).
   const { land, park } = groundTokens(palette);

@@ -19,7 +19,7 @@
 
 import type { LightRigOptions } from '../rendererShared/lightRig.js';
 import { FALLBACK_WALL_GAIN, SUNLIT_WHITE_LUMA, WALL_WHITE_POINTS } from './measuredWhitePoints.js';
-import { groundLookFrom, groundPalette, type GroundLook, type GroundPalette } from '../ownGround/groundLook.js';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook, type GroundPalette } from '../ownGround/groundLook.js';
 
 export type SceneLook = 'sunny' | 'legacy';
 export const SCENE_LOOKS: readonly SceneLook[] = ['sunny', 'legacy'];
@@ -212,7 +212,7 @@ export function groundTokens(palette: GroundPalette): GroundTokens {
 }
 
 /** The look's base tones: the ground look's ground (ownGround/groundLook.ts), the measured facade and the sky. */
-export function sceneTokens(look: SceneLook = sceneLookFrom(), ground: GroundLook = groundLookFrom()): SceneTokens {
+export function sceneTokens(look: SceneLook = sceneLookFrom(), ground: GroundLook = GROUND_LOOK_DEFAULT): SceneTokens {
   const g = groundTokens(groundPalette(ground));
   return {
     ...g,

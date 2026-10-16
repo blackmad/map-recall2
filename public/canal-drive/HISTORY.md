@@ -30,7 +30,104 @@ The CC BY Sketchfab model (Jungle Jim, uid 582a09c2…) was a reference only: no
 geometry or textures ship (AI-assisted, unverified, brick/stone only in its
 textures; 46.5 m against the measured 41.8 m finial). New typed kit
 `ornateFrontKit.ts` (8 tests). 42,807 tris / 406,912 B (OVER_BUDGET allows
-Centraal 60k / 650 KB), lod1 7,387; `audit:glb` PASS; `check:canal` 158/158.
+Centraal 60k / 650 KB); `audit:glb` PASS. Integrator review of the ride found
+two blockers, both fixed in the lane: the lod1 east wing was see-through (the
+simplifier's error is relative to the mesh, 0.01 of a 430 m site let vertices
+move 4.3 m and the brick bands collapsed; `LOD1_MAX_ERROR_BY_ID` centraal 0.001,
+lod1 14,278 tris / 185 KB, pinned in `check-centraal-complex.ts`), and the game
+drew terracotta city-layer roofs through the wing because
+`signature-placement.bundle.js` was stale (49 of 62 suppress ids, no measured
+colours) and nothing rebuilt it; `check:signature-bundle` (in `check:canal`)
+rebuilds it and fails when a manual spec's suppress ids or colours are missing.
+## Every named bridge is a bridge question (2026-10-16)
+
+After "A bridge deck is never the answer", bridge names outside the 300
+`bridges.json` entries (a top-300-by-prominence cut of OSM bridges, not the
+municipal register) were taught by no question. `askableBridges.ts`: every
+bridge-named routed way joins `bridges.json` except register numbers, decks
+shorter than the 8 m route-question settle distance, and a second OSM spelling
+within 150 m. 300 → 416 bridges, 0 existing ids lost (the generator's own hash
+reproduces all 300; only `distractors` changed, on 128), 116 new crossings all
+over mapped water (85 named), 98 new register descriptions; 363 reach the quiz
+at load. Excluded: nine short decks (Spiegelbrug 6.5 m … Kanaalpost 4.3 m) and
+Heiligewegssluis (variant of Heiligewegsluis, 6 m apart). New bridges are not
+notable, so they are asked at hard/expert/custom only. `build-askable-bridges.ts`
+stages and `--publish`es the four extract files together; the generator applies
+the same rule on refresh. Culverts without a suffix (Bullebak, Kanaalpost,
+Postje van Gerrit Vreling) are decks via `UNSUFFIXED_DECK_NAMES`. The street
+plaque reads the carried street (`routePlaqueName`, same withholding rule as
+any street), so it is no longer blank on a carrying deck. Riding the
+Noordsche Compagniebrug and Niek Engelschmanbrug now also asks the canal
+crossed; `turn-question-timing.spec.ts` accepts that ask. Regressions:
+`test:bridge-street-name` (13), `check-canal-car.ts` named cases,
+`askable-bridges.spec.ts`. Lane `fix/bridge-names-quiz-20261016`.
+
+## Pop-in: streaming look-ahead, a basemap hold, chunk dissolve; a houseboat freeze fixed (2026-10-16)
+
+User (2026-10-16): "there's a lot of pop-in in the game, is that something
+we can improve without harming perf?". Lane `lane/pop-in-20261016`
+(2c15ac288 metric, bef643cdb, f7484e12f, 35e77cf11, b2e717abd, afe9f2636,
+02acc7256, 63f23d0a5); doc `docs/perf-pop-in-20261016.md`. A pop-in metric
+(camera-compensated per-frame residual blobs on a scripted ride, attributed
+to their source) found a freeze first: a houseboat chunk's highlight pass
+read vertex arrays three.js had freed (`TypeError` every frame on the boat
+route; regression test). Fixes, each with an off switch: look-ahead steered
+by the rider's heading (`streamingLookAhead.ts`: building tiles 5–12 s
+ahead, facade chunks nearest-ahead first, the own-ground worker queue drops
+left cells and builds ahead-first; `?lookAhead=0`); the basemap's buildings
+hold until a coarse shell under the rider is installed, 400 ms after the
+first shell, or 8 s (`__canalRecallHoldBasemap=false`); a first version
+waited on off-screen shells and showed the city ~1 s late at light load,
+caught at integration and fixed); arriving facade chunks dissolve in over
+350 ms (`?chunkFade=0`). Loaded machine, start of ride: building pop-in
+14,429 → 593 px/s, ground-cell latency 8.6 → 3.3 s. Light load: first real
+city 0.3 s either way, attributed pop-in 250 → 124 px/s (CPU ×2: 912 →
+182). Desktop motion: longest frame 33 ms, p95 16.8 ms; facade geometry
+140 → 200 MB resident. Gate: `tests/e2e/pop-in.spec.ts` (`PERF_POPIN=1`,
+≤ 1000 px/s, ground-cell latency median ≤ 1500 ms).
+
+## Surveyed road surface city-wide: 291 cells, 10.2 MB (2026-10-16)
+
+Lane `lane/roads-citywide-20261016` (1f707e183, dc5b2d4cc, publish 17e62fba3,
+7dc036f63, c49ac7711). roads-v1 now covers 291 of 294 cells (three open-water
+cells hold no wegdeel and keep the bands): 223,591 BGT polygons, 10.2 MB gz,
+max 119 KB, median 21 KB per cell. Topology-preserving simplification
+(`topoSimplify.ts`) keeps shared edges identical on both polygons and kerbs,
+so `probe-junction-overlap --pairs` reads 0 at Kinkerstraat × Da Costakade
+and the Marnixstraat busway. Fietsstraat red is decided per section in the
+extractor (58 red sections; tram-track and junction sections stay grey;
+the runtime `railCarriages` override removed). Survey-gap pockets around
+junction nodes are paved (Nieuwmarkt regression at the extract edge, 155 →
+25 m²). 62.4 % of OSM ways are covered (primary 98.7 %, residential 92.5 %).
+Orthophoto sheet `docs/images/roads/roads-citywide-ortho-20261016.jpg` at
+Oost (Linnaeusstraat, which OSM tags `construction` and the bands left
+blank), Zuid (Ferdinand Bol × Ceintuurbaan) and Noord (Mosplein): the
+survey matches the photo; the bands did not. Triangles city-wide 79.8 M →
+78.1 M; build time 1.20× summed; six rural/dike cells exceed the 1.15×
+per-cell triangle gate (worst -8_4 1.43×, all ≤ 242k, under dense cells),
+accepted by the integrator with a coarser-drape follow-up. Desktop
+ride-perf 5/5 (p95 16.8 ms).
+
+## Flags decided: building types by default; elevation stencil, ground-look variants, label tones and six A/B toggles deleted (2026-10-16)
+
+User (2026-10-16): "what things are behind flags that we should make default?
+… if there are dead ends, delete the code and the flag". Lane
+`lane/flags-20261016` (ee92f9351, 8e56b5ba3, 68e9c7a2b, 44a147beb,
+3dbf017cd). Building types are on by default (`?buildingTypes=0` opts out):
+frames at 11 Nieuw-West views, 0 of 3,075 instance pands overlap a landmark
+or chunk `suppressOsmIds`, static frames 16.7 ms median either way, desktop
+ride-perf 5/5 (load 14–20). Recipe tiles turn the runtime types off (they
+carry them). Deleted: the `?elevation=1` stencil layer
+(`elevationBrowser.ts`, its bundle, spec and ride-perf case; superseded by
+the own ground), `?groundLook=measured|legacy-ish`, `?farGround=0`,
+`?labelTone=paper`, `?labels=maplibre`, HideBasemapFills (a no-op),
+litFacades, PrismGrid, LandmarkLod, landmarkBatch and RoofBatch with the
+unbatched roof path; −879/+146 lines of source. Kept: the opt-outs the specs
+use (`ownGround`, `roads`, `parks`, `shadows`, `transition`, `look=legacy`,
+`sharedFrame`, `facades`, `trees3d`, `highlight*`, `streetChunks`,
+`roofFacts`). Not flipped: `?cityLook=1` (frames 5–6 luma darker, the 0.9
+cell level), `?recipeTiles=1` (stale pilots), `?bagTiles=1` (user's call),
+`?sculptures=1` (waits for the user's look).
 
 ## BAG pands the tiles never drew: 1,601 filled (2026-10-16)
 

@@ -32,11 +32,12 @@ import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar }
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
-import { groundLookFrom, groundPalette, type GroundLook } from './groundLook.js';
+import { GROUND_LOOK_DEFAULT, groundPalette, type GroundLook } from './groundLook.js';
 import { herringboneBricks, KLINKER_TONES } from './streetTextures.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { groundTokens } from '../look/sunny.js';
+import { MotionEstimate, aheadRankXY, lookAheadEnabled } from '../streamingLookAhead.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -59,9 +60,9 @@ export interface OwnGroundOptions {
   minZoom?: number;
   /** Park surfaces and furniture from parks-v1 (default on; `?parks=0` or `window.__canalRecallParks = false` turns them off). */
   parks?: boolean;
-  /** The far ring beyond the resident cells from the air (default on; `?farGround=0` turns it off). */
+  /** The far ring beyond the resident cells from the air (default on). */
   far?: boolean;
-  /** Ground palette variant (groundLook.ts; default from `?groundLook=`). Colour only. */
+  /** Ground palette (groundLook.ts; GROUND_LOOK_DEFAULT unless given). Colour only. */
   groundLook?: GroundLook;
   /** The surveyed road partition from roads-v1 (roadSurfaces.ts). On by default (2026-10-16); `?roads=0` draws the OSM bands. */
   roads?: boolean;
@@ -172,7 +173,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: groundLookFrom(), transition: transitionOn(), far: !/[?&]farGround=0\b/.test((globalThis as { location?: { search?: string } }).location?.search ?? ''), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -271,6 +272,7 @@ export class OwnGround {
   update(lngLat: LngLat, zoom: number, pitchDeg = 60): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
+    if (this.lookAheadOn ??= lookAheadEnabled()) this.motion.update(lngLat[0], lngLat[1], performance.now());
     const reach = viewReachM(zoom, pitchDeg, lngLat[1]), radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     const far = this.opts.far ? farRadiusM(reach, radius) : 0;
@@ -329,21 +331,31 @@ export class OwnGround {
     return Math.hypot(dx, dy);
   }
 
-  /** Cells wanted now, nearest first, with their LOD. */
+  /** The rider's motion (look-ahead), from the positions `update` is given. */
+  private readonly motion = new MotionEstimate();
+  private lookAheadOn: boolean | undefined;
+
+  /**
+   * Cells wanted now with their LOD, best first: nearest ahead of the rider (streamingLookAhead.ts aheadRankXY on
+   * the cell's nearest point), so the cells the rider is riding into build before the ones it left behind;
+   * nearest first while standing or with `?lookAhead=0`. The LOD still follows the plain distance.
+   */
   wantedCells(): { key: string; lod: 0 | 1; d: number }[] {
     if (!this.centre || !this.ready) return [];
     const [x, y] = this.centre, R = this.radiusM, size = this.store.elevation.cellSizeM;
-    const out: { key: string; lod: 0 | 1; d: number }[] = [];
+    const direction = this.lookAheadOn ? this.motion.direction : null;
+    const out: { key: string; lod: 0 | 1; d: number; rank: number }[] = [];
     const span = Math.ceil(R / size) + 1;
     const [cx, cy] = this.store.cellAt(x, y).split('_').map(Number);
     for (let dy = -span; dy <= span; dy++) for (let dx = -span; dx <= span; dx++) {
       const key = `${cx + dx}_${cy + dy}`;
       if (!this.store.covers(key)) continue;
-      const d = this.rectDistance(this.store.cellRect(key), this.centre);
+      const rect = this.store.cellRect(key), d = this.rectDistance(rect, this.centre);
       if (d > R) continue;
-      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, d });
+      const near: [number, number] = [Math.max(rect[0], Math.min(rect[2], x)), Math.max(rect[1], Math.min(rect[3], y))];
+      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
     }
-    return out.sort((a, b) => a.d - b.d);
+    return out.sort((a, b) => a.rank - b.rank || a.d - b.d);
   }
 
   private updateResidency(): void {
@@ -363,6 +375,8 @@ export class OwnGround {
       this.requestedAt.set(`${w.key}:${w.lod}`, performance.now());
       this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, gen: this.gen });
     }
+    // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts).
+    if (this.lookAheadOn) this.worker?.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
     // Relief far behind is dropped on both sides (decks keep their placed heights).
     const keepM = this.radiusM + 2200;
     this.worker?.postMessage({ type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) });
