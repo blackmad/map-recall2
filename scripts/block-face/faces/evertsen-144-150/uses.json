@@ -1,0 +1,104 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:06:51.540Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148979",
+   "addresses": [
+    "Jan Evertsenstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Orteliusstraat 190",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000764759"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2672642907,
+     "lngLat": [
+      4.8494195,
+      52.3700464
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housename": "Janssen Tweewielers",
+      "addr:housenumber": "190",
+      "addr:postcode": "1056PE",
+      "addr:street": "Orteliusstraat",
+      "check_date": "2025-12-01",
+      "name": "Janssen Tweewielers",
+      "phone": "+31 20 616 4358",
+      "shop": "bicycle",
+      "website": "http://www.janssentweewielers.nl/"
+     },
+     "fetchedAt": "2026-10-14T13:06:51.540Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012093776",
+   "addresses": [
+    "Jan Evertsenstraat 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 148-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000684560"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106073",
+   "addresses": [
+    "Jan Evertsenstraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 146-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000684551"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106884",
+   "addresses": [
+    "Jan Evertsenstraat 144",
+    "Jan Evertsenstraat 144A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 144A-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000684544"
+    },
+    {
+     "address": "Hoofdweg 311",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000671661"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{ "mode": "boat", "dest": "Artis", "step": 60,
+  "legs": [],
+  "extra": [
+    { "name": "entrepotdok-22", "at": [4.915328, 52.368092, 119] },
+    { "name": "entrepotdok-24", "at": [4.916872, 52.367568, 119] }
+  ] }

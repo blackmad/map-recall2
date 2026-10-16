@@ -24,6 +24,7 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
+import { movableApproaches } from './decks.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
 export const GAME_ORIGIN = { lng: 4.9, lat: 52.37 } as const;
@@ -74,7 +75,7 @@ export class GroundStore {
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
   /** `moorings`: open the water under houseboats the generalised water cuts (moorings.ts); off for the regression's before. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -417,14 +418,24 @@ export class GroundStore {
     const dropWays = parksAround.flatMap(p => p?.dropWays ?? []);
     const rect = this.cellRect(key), pad = 200;
     const near = (b: [number, number, number, number]) => !(b[2] < rect[0] - pad || b[0] > rect[2] + pad || b[3] < rect[1] - pad || b[1] > rect[3] + pad);
+    // Movable leaves get the fixed spans to the quays their bridge way crosses (decks.ts movableApproaches).
+    const bridgeLines = this.options.approaches === false ? [] : [osm, ...osmAround].flatMap(o => o?.ways ?? [])
+      .filter(w => w.tags.bridge && w.tags.bridge !== 'no').map(w => w.g.map(p => toLocal(p[0], p[1])));
+    const approaches = (k: string) => {
+      const meta = this.flatDeckMeta(k);
+      return this.flatDecks(k).flatMap((ring, i) => meta[i]?.movable && bridgeLines.length ? movableApproaches(ring, bridgeLines).map(r => ({ ring: r, id: `${meta[i].id}-approach` })) : []);
+    };
+    const own = approaches(key);
     const deckRingsAround: Vec2[][] = [
       ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d)),
-      ...around.flatMap(k => this.flatDecks(k)),
+      ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
     ];
     return {
       key, lod, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
-      decks: this.decks(key), deckRingsAround, flatDecks: this.flatDecks(key), flatDeckMeta: this.flatDeckMeta(key),
+      decks: this.decks(key), deckRingsAround,
+      flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
+      flatDeckMeta: [...this.flatDeckMeta(key), ...own.map(a => ({ id: a.id, movable: false }))],
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays,
       project: p => toLocal(p[0], p[1]),

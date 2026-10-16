@@ -1303,10 +1303,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   measured values on the kit systems with inferred notes. Open: (1) the
   measurement lane for the two named limits in `measure.ts` (white-framed
   panes classed as trim → glazing undercount; dark brick reading as
-  paint); (2) lane D, the triage of the other ~65 installed large houses
-  (archive crops, measure, likeness report worst-first, re-fit / uninstall
-  per the rule in the plan; ride-visibility ranking replaces footprint ÷
-  distance); (3) the held `large/dominant-7-20261014` branch gets the same
+  paint); (2) lane D DONE (HISTORY "Large tier triaged": 54 re-fitted, 12
+  uninstalled, 11 kept, ride visibility written); open from it: verify the
+  11 "re-fit cheap" verdicts without a re-install (Oude Turfmarkt, Nieuwe
+  Achtergracht 253754, Politie Van Leijenberghlaan, Zuidoost-Gaasperdam,
+  Nieuwezijds Voorburgwal, Oost-Watergraafsmeer, Politiepost IJburg,
+  Meeuwenlaan 132, Rigakade 8, Nieuwpoortstraat, Warmoesstraat garage),
+  Haarlemmerweg 325 after a louvre-screen system, the 7 ornamented fronts
+  as bespoke builders, `build-dominant-building-backlog.ts` to carry
+  `rideVisibility`; (3) the held `large/dominant-7-20261014` branch gets the same
   pass and merges only passers; (4) kit gaps per pilot listed in the
   HISTORY entry (Waagdragerhof's light band storeys and paired windows,
   Houthavenkade's column transoms, Spinoza's mullioned doubles,
@@ -1406,8 +1411,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   has the 26-pand strip, facts and uses, no intent yet) and the
   Street-View pilot retired; the two long-red tests are green (HISTORY
   "3DBAG ground outliers": stale survey paths re-recorded, a VM harness
-  fixed); Jan Evertsenstraat survey lane running; then Jan Evertsenstraat
-  (~168 pands, 1920s 117) with the De Baarsjes types, Mercatorplein towers
+  fixed); Jan Evertsenstraat survey DONE (HISTORY "Jan Evertsenstraat
+  surveyed": 148 pands, 19 faces, type sketch; the plan's "erker" type is
+  rare there, 4 of 148, hood-lisene 40 and lintel-band 18 are the bodies);
+  next: the De Baarsjes type library (`scripts/block-face/types/de-baarsjes/`
+  from the sketch's exemplars, with the kit gaps it lists: box bay with
+  hood, stacked balconettes, tall parapet zone, two-tone piers, glass-block
+  band signs), then face lanes; re-run `commercial-merge.ts` for
+  Kinkerstraat from a checkout with its staged crops (uses on 0 of 217
+  pands, bug fixed in the survey lane); Mercatorplein towers
   and arcades bespoke (lane running), De Hallen DONE as a staged recipe
   behind its landmark (HISTORY "De Hallen measured and staged"; retire
   the landmark and install when the kit does glass ridge lights and
@@ -1435,6 +1447,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the face and the two Kinkerstraat proof faces through the tile compiler; then a pass over the installed
   canal-belt recipes with `windowHeights: 'diminishing'` and the measured
   `windowShare`.
+- **P1 Ride-review rows, Jordaan and Plantage** (HISTORY "Ride review,
+  Jordaan and Plantage"; three fixed there): the Westerkerk roof wash when
+  the church is large in frame (J2); chase pitch hides the Westertoren
+  until ~100 m (J3); inner-block gardens as bare sand (J4, needs a garden
+  class from BGT or BAG courtyards); Bloemgracht streamed boxes (J5, the
+  recipe-tiles migration); Nieuwe-Wercksbrug deck slabs over land (J6);
+  Noordermarkt playground slabs (J7); Pansemertbrug flush deck (J8);
+  Entrepotdok warehouse boxes and gable stubs (P3); Walter Süskindbrug as
+  a wire cube (P4, movable without deck data); Artis main gate and the
+  Hollandsche Schouwburg as landmarks (P5, P6); dark masses across from
+  Artis (P7); the rippling curved facade (P8, check a photo); the
+  Gandhiplantsoen hedge box (P9). `scripts/ride-review-shots.mjs` with
+  specs in `scripts/ride-review/` is the method for the next
+  neighbourhoods.
 - **P1 Bridges: per-bridge fidelity** (plan Part 3, user 2026-10-14): the
   lane is DONE (HISTORY "Bridges per bridge": 255 bridges with facts, 43
   of 48 named sheets pass, two bascule styles, decks reach the banks, 190

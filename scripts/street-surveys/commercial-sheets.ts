@@ -5,10 +5,11 @@
  */
 import fs from 'node:fs/promises';
 import {buildContactSheet} from '../pand-reference/contact.ts';
+import {streetFile, streetSlug} from './street-style.ts';
 
 const street = (process.argv.find(a => a.startsWith('--street=')) ?? '--street=Kinkerstraat').slice(9);
-const doc = JSON.parse(await fs.readFile(`scripts/street-surveys/streets/${street.toLowerCase()}.json`, 'utf8'));
+const doc = JSON.parse(await fs.readFile(streetFile(street), 'utf8'));
 for (const side of ['odd', 'even']) {
   const ids = doc.pands.filter((p: any) => p.side === side && p.crop).sort((a: any, b: any) => a.numbers[0] - b.numbers[0]).map((p: any) => p.pandId);
-  await buildContactSheet(`${street.toLowerCase()}-${side}`, 'staging/pand-reference', ids);
+  await buildContactSheet(`${streetSlug(street)}-${side}`, 'staging/pand-reference', ids);
 }

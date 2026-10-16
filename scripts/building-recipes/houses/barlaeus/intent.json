@@ -6,27 +6,21 @@
  "address": "Barlaeus Gymnasium, Weteringschans 31, Amsterdam (1866 Neo-Renaissance school, Singelgracht side behind)",
  "sources": [
   {
-   "id": "pano-2021-09-09-front",
-   "kind": "street-panorama",
-   "capturedAt": "2021-09-09",
-   "image": "staging/pand-reference-walls/0363100012169564/w02-218.jpg",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002306_pano_0000_000433/",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2025-07-14-wing",
+   "id": "pano-2025-07-14-w04-218",
    "kind": "street-panorama",
    "capturedAt": "2025-07-14",
-   "image": "staging/pand-reference-walls/0363100012169564/w04-218.jpg",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-14_05-25-22_02128/",
+   "image": "source-data://pand-reference-walls/0363100012169564/w04-218.jpg",
+   "sha256": "5cb2650393c2bc3a558713be4cd0f2dfd3ff554f613581041a9a4cb2d44508ca",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-01-22-canal",
+   "id": "pano-2021-01-22-w01-39",
    "kind": "street-panorama",
    "capturedAt": "2021-01-22",
-   "image": "staging/pand-reference-walls/0363100012169564/w01-39.jpg",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001974_pano_0000_001109/",
+   "image": "source-data://pand-reference-walls/0363100012169564/w01-39.jpg",
+   "sha256": "ae6b51343ffaf62c319cec49c6c1ef0b74eca91cd98285dff264e9ce776c8d75",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -71,7 +65,13 @@
    "stoneStoreys": [
     0
    ],
-   "cornice": true
+   "cornice": true,
+   "hand": [
+    "palette",
+    "windowShape",
+    "system",
+    "baysPerStorey"
+   ]
   },
   {
    "wallSurfaces": [
@@ -96,7 +96,14 @@
    "stoneStoreys": [
     0
    ],
-   "cornice": true
+   "cornice": true,
+   "hand": [
+    "palette",
+    "windowShape",
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {}
   },
   {
    "wallSurfaces": [
@@ -113,7 +120,20 @@
    "stoneStoreys": [
     0
    ],
-   "cornice": true
+   "cornice": true,
+   "hand": [
+    "system",
+    "baysPerStorey",
+    "windowShape"
+   ],
+   "palette": {
+    "brick": "#5d534b"
+   },
+   "windowShape": {
+    "w": 0.528,
+    "h": 0.58,
+    "sill": 0.28
+   }
   }
  ],
  "otherWalls": "blank",
@@ -130,7 +150,15 @@
  },
  "notes": [
   "Barlaeus Gymnasium, Weteringschans 31 (pand 0363100012169564, built 1866, 65 LoD2.2 surfaces, roof max 25.4 m). Street front (SW, surfaces 31 centre, 29 and 44 wings; 2021-09-09 and 2025-07-14 panoramas): stucco ground storey, two round-headed storeys with polychrome (brick and stone alternating) voussoir arches, a square-headed attic storey of triple windows; centre bay has a round-headed portal, a first-floor balcony with a white balustrade and BARLAEUS / GYMNASIUM in gilt capitals either side of the door. Canal front (NE, surfaces 48/55; 2021-01-22): ten bays, stucco ground with small windows, three brick storeys of sashes, an attic row of triple windows in white-framed bays.",
-  "MODELLED: stucco ground (stoneStoreys [0]), round-headed windows on storeys 1 and 2 only (new arches.storeys), voussoir arch bands, balcony over the centre bay only (new balconies.bays), stone portal with the lettering on its frieze, cornice. SIMPLIFIED: BARLAEUS GYMNASIUM is one lettering on the portal frieze, not two words either side of the door; the attic triple windows are three single windows per bay; the canal front is plain sashes; the 3DBAG roof is flat bitumen over the mansard slate. SKIPPED: wrought-iron area railings and street furniture (temporary / too thin), polychrome string bands between the arched storeys (below the component), the unphotographed courtyard and rear walls (blank otherWalls)."
+  "MODELLED: stucco ground (stoneStoreys [0]), round-headed windows on storeys 1 and 2 only (new arches.storeys), voussoir arch bands, balcony over the centre bay only (new balconies.bays), stone portal with the lettering on its frieze, cornice. SIMPLIFIED: BARLAEUS GYMNASIUM is one lettering on the portal frieze, not two words either side of the door; the attic triple windows are three single windows per bay; the canal front is plain sashes; the 3DBAG roof is flat bitumen over the mansard slate. SKIPPED: wrought-iron area railings and street furniture (temporary / too thin), polychrome string bands between the arched storeys (below the component), the unphotographed courtyard and rear walls (blank otherWalls).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[2] glass #4f4f4b not used (not darker than the wall #5d534b by 10 L*, or tinted): kit glass kept."
  ],
- "layeredKit": true
+ "layeredKit": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   1,
+   2
+  ]
+ }
 }

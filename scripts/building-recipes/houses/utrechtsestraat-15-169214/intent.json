@@ -6,27 +6,21 @@
  "address": "Utrechtsestraat 15 / Rembrandtplein, Amsterdam (Booking.com HQ): 1932 Amsterdam School office block, brick with granite base, stepped to 36 m",
  "sources": [
   {
-   "id": "pano-2024-12-03-w01",
-   "kind": "street-panorama",
-   "capturedAt": "2024-12-03",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track01_Sphere_00298/",
-   "image": "staging/pand-reference-walls/0363100012169214/w01-257.jpg",
-   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
-  },
-  {
-   "id": "pano-2020-04-21-w03",
+   "id": "pano-2020-04-21-w03-258",
    "kind": "street-panorama",
    "capturedAt": "2020-04-21",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001664_pano_0000_001944/",
-   "image": "staging/pand-reference-walls/0363100012169214/w03-258.jpg",
+   "image": "source-data://pand-reference-walls/0363100012169214/w03-258.jpg",
+   "sha256": "58c360b7189873fdab9d5df89a23f98a891e34a61a7654b89cae1e93f2c65dff",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   },
   {
-   "id": "pano-2021-03-08-w02",
+   "id": "pano-2021-03-08-w02-3",
    "kind": "street-panorama",
    "capturedAt": "2021-03-08",
    "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0001_001992/",
-   "image": "staging/pand-reference-walls/0363100012169214/w02-3.jpg",
+   "image": "source-data://pand-reference-walls/0363100012169214/w02-3.jpg",
+   "sha256": "5b6a2152a94fe3c5ce646cb6803fc95ec90abb5249c072e7ebb9ca5ae6a36186",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
@@ -53,6 +47,10 @@
    "piers": true,
    "stoneStoreys": [
     0
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey"
    ]
   },
   {
@@ -75,6 +73,18 @@
     "text": "Booking.com",
     "colour": "#eef2ff",
     "mount": "wall"
+   },
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#5b564e"
+   },
+   "windowShape": {
+    "w": 0.368,
+    "h": 0.65,
+    "sill": 0.25
    }
   },
   {
@@ -93,7 +103,20 @@
    "piers": true,
    "stoneStoreys": [
     0
-   ]
+   ],
+   "hand": [
+    "system",
+    "baysPerStorey"
+   ],
+   "palette": {
+    "brick": "#6c584f",
+    "glass": "#453c37"
+   },
+   "windowShape": {
+    "w": 0.65,
+    "h": 0.6,
+    "sill": 0.05
+   }
   }
  ],
  "otherWalls": "blank",
@@ -109,7 +132,15 @@
  "notes": [
   "Utrechtsestraat 15 (BAG: built 1932; four offices, five shops, two assembly and two other units; 3,221 m2 footprint, 36 m): an Amsterdam School office block on the Rembrandtplein, now the Booking.com head office. Three fronts are photographed: the west street front (w01-257, panorama 2024-12-03: five floors of triple tall windows between vertical brick piers over a granite base with deep open loggias under green copper canopies, a copper cornice and a glass roof pavilion), the Booking.com corner (w03-258, 2020-04-21: a granite rusticated base with Starbucks and shop glazing, four floors of triple windows, two recessed attic floors with the lettering Booking.com) and the north front (w02-3, 2021-03-08: granite base with Vapiano, four rows of triple windows, a stair tower at the right).",
   "Modelled: the west street front (panels 49, 94, 165) as a 6-storey brick-bay-grid with stone ground, piers and cornice; the Booking.com wall (panel 523) as 7 storeys with a stone ground storey, cornice and the lettering Booking.com on the wall; the north front (panel 502 with the stair tower) as 5 storeys with a stone ground storey, piers and cornice. Roofs and unlisted walls are the 3DBAG LoD2.2 shell in the brick colour.",
-  "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard)."
+  "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard).",
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #414142 not used (not darker than the wall #5b564e by 10 L*, or tinted): kit glass kept."
  ],
- "closedBands": true
+ "closedBands": true,
+ "measured": {
+  "date": "2026-10-14",
+  "groups": [
+   1,
+   2
+  ]
+ }
 }

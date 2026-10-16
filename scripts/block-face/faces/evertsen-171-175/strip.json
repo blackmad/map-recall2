@@ -1,0 +1,80 @@
+{
+ "face": "evertsen-171-175",
+ "image": "staging/block-face/evertsen-171-175/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 4026,
+ "height": 3031,
+ "groundNAP": -0.771,
+ "heightM": 75.78,
+ "frame": {
+  "midRD": [
+   117987.3924375,
+   486940.16125
+  ],
+  "uRD": [
+   -0.9999382061715364,
+   -0.011116826815699418
+  ],
+  "nRD": [
+   -0.011116826815699418,
+   0.9999382061715364
+  ]
+ },
+ "x0M": -50.33,
+ "x1M": 50.33,
+ "date": "2024-12-06",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012148630",
+   "x0M": -50.33,
+   "x1M": 50.33,
+   "px": [
+    0,
+    4026
+   ],
+   "date": "2024-12-06",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241206_0806_Track47_Sphere_00100",
+     "timestamp": "2024-12-06T10:28:40Z",
+     "distanceM": 28.3,
+     "obliquityDeg": 4.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241206_0806_Track47_Sphere_00101",
+     "timestamp": "2024-12-06T10:28:40Z",
+     "distanceM": 27.7,
+     "obliquityDeg": 5.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241206_0806_Track55_Sphere_00174",
+     "timestamp": "2024-12-06T10:46:57Z",
+     "distanceM": 20.9,
+     "obliquityDeg": 6.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-08-10": 1,
+  "2025-09-25": 1,
+  "2020-05-06": 1,
+  "2017-05-10": 1,
+  "2017-04-20": 1,
+  "2024-12-06": 1,
+  "2020-05-08": 1,
+  "2019-04-18": 1,
+  "2021-04-09": 1,
+  "2019-07-11": 1,
+  "2022-04-08": 1,
+  "2018-07-06": 1,
+  "2025-01-31": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

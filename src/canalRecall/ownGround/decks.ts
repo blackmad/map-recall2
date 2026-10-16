@@ -227,6 +227,45 @@ function ringFrame(ring: readonly Vec2[], u: Vec2): { centre: Vec2; v: Vec2; alo
   return { centre: [cx, cy], v, along: [a0, a1], across: [b0, b1] };
 }
 
+/** Longest fixed approach movableApproaches adds on one side of a leaf, metres. */
+export const APPROACH_MAX_M = 30;
+/** A bridge way's point counts for the approaches only this far (metres) beyond the leaf's half-width off its axis. */
+const APPROACH_AXIS_TOL_M = 2.5;
+
+/**
+ * The fixed spans either side of a movable bridge's leaf (ride review 2026-10-14, the Nijlpaardenbrug BRU1907 over the
+ * Entrepotdok): the municipal footprint of a "Beweegbare brug" is the leaf alone (~10 × 4 m), while the OSM bridge way
+ * runs 36 m from quay to quay, so the leaf floated mid-canal with water between it and both quays. Each bridge way
+ * through the footprint (the same lines that give footprintAxis its axis) is projected on the axis; where it reaches
+ * past the leaf, a rectangle as wide as the leaf continues it to the way's end (at most APPROACH_MAX_M). Returns 0-2
+ * rings in the footprint's frame, each overlapping the leaf by 5 cm so no seam opens between them.
+ */
+export function movableApproaches(ring: readonly Vec2[], ways: readonly (readonly Vec2[])[]): Vec2[][] {
+  const cross = (p: Vec2, q: Vec2, a: Vec2, b: Vec2) => {
+    const d = (o: Vec2, s: Vec2, t: Vec2) => (s[0] - o[0]) * (t[1] - o[1]) - (s[1] - o[1]) * (t[0] - o[0]);
+    return d(p, q, a) * d(p, q, b) < 0 && d(a, b, p) * d(a, b, q) < 0;
+  };
+  // A way meets the leaf if a vertex lies in it or a segment crosses its outline (a two-node way spanning the canal).
+  const meets = (l: readonly Vec2[]) => l.some(q => pointInRing(ring, q[0], q[1]))
+    || l.some((q, i) => i > 0 && ring.some((a, k) => cross(l[i - 1], q, a, ring[(k + 1) % ring.length])));
+  const through = ways.filter(meets);
+  if (!through.length) return [];
+  const ax = footprintAxis(ring, through), { u, centre } = ax, v: Vec2 = [-u[1], u[0]];
+  const half = (ax.across[1] - ax.across[0]) / 2, mid = (ax.across[0] + ax.across[1]) / 2;
+  let w0 = Infinity, w1 = -Infinity;
+  for (const l of through) for (const [x, y] of l) {
+    const a = (x - centre[0]) * u[0] + (y - centre[1]) * u[1], b = (x - centre[0]) * v[0] + (y - centre[1]) * v[1];
+    if (Math.abs(b - mid) > half + APPROACH_AXIS_TOL_M) continue;
+    w0 = Math.min(w0, a); w1 = Math.max(w1, a);
+  }
+  const P = (a: number, b: number): Vec2 => [centre[0] + u[0] * a + v[0] * b, centre[1] + u[1] * a + v[1] * b];
+  const rect = (a0: number, a1: number): Vec2[] => [P(a0, ax.across[0]), P(a1, ax.across[0]), P(a1, ax.across[1]), P(a0, ax.across[1])];
+  const out: Vec2[][] = [];
+  if (w0 < ax.along[0] - 0.5) out.push(rect(Math.max(w0, ax.along[0] - APPROACH_MAX_M), ax.along[0] + 0.05));
+  if (w1 > ax.along[1] + 0.5) out.push(rect(ax.along[1] - 0.05, Math.min(w1, ax.along[1] + APPROACH_MAX_M)));
+  return out;
+}
+
 /**
  * A movable bridge's portals (the Amsterdam ophaalbrug "galg" with its
  * "hameien"): one unit at the heel of each leaf, its balance beams sloping

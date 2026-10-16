@@ -1,0 +1,280 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:19:38.659Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012138503",
+   "addresses": [
+    "Jan Evertsenstraat 137A",
+    "Jan Evertsenstraat 137B",
+    "Jan Evertsenstraat 137C",
+    "Jan Evertsenstraat 137D",
+    "Jan Evertsenstraat 137E",
+    "Jan Evertsenstraat 137F",
+    "Jan Evertsenstraat 137G",
+    "Jan Evertsenstraat 137H",
+    "Jan Evertsenstraat 137J",
+    "Jan Evertsenstraat 137K",
+    "Jan Evertsenstraat 137L",
+    "Jan Evertsenstraat 137M",
+    "Jan Evertsenstraat 137N",
+    "Jan Evertsenstraat 137P",
+    "Jan Evertsenstraat 137R",
+    "Jan Evertsenstraat 137S"
+   ],
+   "groundUnits": [
+    {
+     "address": "Mercatorplein 115",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000984313"
+    },
+    {
+     "address": "Mercatorplein 117",
+     "use": "winkelfunctie",
+     "areaM2": 252,
+     "bagId": "0363010000984314"
+    },
+    {
+     "address": "Mercatorplein 119",
+     "use": "kantoorfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000984315"
+    },
+    {
+     "address": "Mercatorplein 121",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000984316"
+    },
+    {
+     "address": "Jan Evertsenstraat 137A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001014426"
+    },
+    {
+     "address": "Jan Evertsenstraat 137B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001014427"
+    },
+    {
+     "address": "Jan Evertsenstraat 137C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001014428"
+    },
+    {
+     "address": "Jan Evertsenstraat 137D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001014429"
+    },
+    {
+     "address": "Jan Evertsenstraat 137E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001014430"
+    },
+    {
+     "address": "Jan Evertsenstraat 137F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001014431"
+    },
+    {
+     "address": "Jan Evertsenstraat 137G",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001014432"
+    },
+    {
+     "address": "Jan Evertsenstraat 137H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001014433"
+    },
+    {
+     "address": "Jan Evertsenstraat 137J",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001014434"
+    },
+    {
+     "address": "Jan Evertsenstraat 137K",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001014435"
+    },
+    {
+     "address": "Jan Evertsenstraat 137L",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001014436"
+    },
+    {
+     "address": "Jan Evertsenstraat 137M",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001014437"
+    },
+    {
+     "address": "Jan Evertsenstraat 137N",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001014438"
+    },
+    {
+     "address": "Jan Evertsenstraat 137P",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001014439"
+    },
+    {
+     "address": "Jan Evertsenstraat 137R",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001014440"
+    },
+    {
+     "address": "Jan Evertsenstraat 137S",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001014441"
+    }
+   ],
+   "units": 20,
+   "osm": [
+    {
+     "type": "node",
+     "id": 595256852,
+     "lngLat": [
+      4.8501586,
+      52.3697404
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "117-121",
+      "addr:postcode": "1057CA",
+      "addr:street": "Mercatorplein",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-23:00",
+      "ref": "1057003",
+      "source": "Geldmaat",
+      "source:date": "2025-06-07",
+      "speech_output": "yes",
+      "website": "https://www.locatiewijzer.geldmaat.nl/nl/location/1057003"
+     },
+     "fetchedAt": "2026-10-14T13:19:38.659Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2814024227,
+     "lngLat": [
+      4.8500881,
+      52.3697593
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "121",
+      "addr:postcode": "1057CA",
+      "addr:street": "Mercatorplein",
+      "brand": "Fysiotherapie de Baarsjes",
+      "healthcare": "physiotherapist",
+      "name": "Fysiotherapie de Baarsjes",
+      "office": "therapist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.fysiotherapiedebaarsjes.nl/contact/locatie-mercatorplein/"
+     },
+     "fetchedAt": "2026-10-14T13:19:38.659Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012100052",
+   "addresses": [
+    "Jan Evertsenstraat 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 139-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010011122743"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151275",
+   "addresses": [
+    "Jan Evertsenstraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 141-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000684534"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115917",
+   "addresses": [
+    "Jan Evertsenstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Orteliusstraat 188",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000764754"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814026773,
+     "lngLat": [
+      4.8495904,
+      52.369756
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143-1;143-2;143-3",
+      "addr:postcode": "1057BW",
+      "addr:street": "Jan Evertsenstraat",
+      "amenity": "cafe",
+      "name": "Pudu Cafe Koffiehuis",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:19:38.659Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
