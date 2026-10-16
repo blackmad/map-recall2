@@ -126,7 +126,8 @@ test('frame regions (scripts/look/sunny-frames.ts): mask classes, the ground spl
   assert.equal(groundKind(132, 130, 124), 'road');
   assert.equal(groundKind(204, 107, 106), 'cycle');
   assert.equal(groundKind(183, 174, 161), 'pavement');
-  assert.equal(groundKind(104, 122, 114), 'water', 'the bright look canal is water, not park');
+  assert.equal(groundKind(79, 134, 163), 'water', 'the bright look canal is water, not park');
+  assert.equal(groundKind(104, 122, 114), 'water', 'the old grey-green canal still reads as water');
   assert.equal(groundKind(96, 140, 70), 'park');
   // 4 x 3 frame: left half wall, right half ground; only the interior pixels whose neighbours agree count.
   const W = 6, H = 3, mask = new Uint8Array(W * H * 3), clean = new Uint8Array(W * H * 3).fill(120);
