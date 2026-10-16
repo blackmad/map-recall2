@@ -21,7 +21,8 @@
 // supplies the camera; `GroundHost` is the thin adapter the page implements
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
-import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './groundStore.js';
+import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
+import { readGroundTile } from './heightField.js';
 import { boundingSphereOf } from '../geometryBounds.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
@@ -162,7 +163,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, reliefTile: this.reliefLoader(root) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -185,6 +186,40 @@ export class OwnGround {
     if (this.centre) this.updateResidency();
   }
 
+  /**
+   * Relief tiles for the main-thread surface (poses, building bases, overlays) are fetched and decoded in a
+   * second instance of the ground worker, not on the main thread. Falls back to the main thread without workers.
+   */
+  private reliefWorker: Worker | null = null;
+  private readonly reliefWaiting = new Map<number, { resolve: (v: { heights: Float32Array; bytes: number }) => void; reject: (e: Error) => void }>();
+  private reliefIds = 0;
+  private reliefLoader(root: string): ReliefTileLoader | undefined {
+    if (typeof Worker === 'undefined' || !this.opts.workerUrl) return undefined;
+    return (path, index, entry) => {
+      if (!this.reliefWorker) {
+        try {
+          const worker = new Worker(this.opts.workerUrl);
+          worker.onmessage = event => {
+            const msg = event.data, waiting = this.reliefWaiting.get(msg.id);
+            if (msg.type !== 'relief' || !waiting) return;
+            this.reliefWaiting.delete(msg.id);
+            if (msg.heights) waiting.resolve({ heights: msg.heights, bytes: msg.bytes });
+            else waiting.reject(new Error(msg.error ?? 'relief tile failed'));
+          };
+          this.reliefWorker = worker;
+        } catch (error) {
+          this.stats.errors.push(`relief worker unavailable: ${String(error)}`);
+          return httpFetchBytes(root)(path).then(bytes => ({ heights: readGroundTile(index, entry, bytes), bytes: bytes.byteLength }));
+        }
+      }
+      const id = ++this.reliefIds;
+      return new Promise((resolve, reject) => {
+        this.reliefWaiting.set(id, { resolve, reject });
+        this.reliefWorker!.postMessage({ type: 'relief', id, url: `${root}/${path}`, index: { stepM: index.stepM, tileSizeM: index.tileSizeM, samples: index.samples, predictor: index.predictor }, entry: [...entry] });
+      });
+    };
+  }
+
   dispose(full = true): void {
     for (const key of [...this.resident.keys()]) this.drop(key);
     for (const key of [...this.far.keys()]) this.dropFar(key);
@@ -195,9 +230,13 @@ export class OwnGround {
     this.prepared.clear();
     this.worker?.terminate();
     this.worker = null;
+    this.reliefWorker?.terminate();
+    this.reliefWorker = null;
+    for (const w of this.reliefWaiting.values()) w.reject(new Error('own ground disposed'));
+    this.reliefWaiting.clear();
     this.workerReady = false;
     this.gen++;
-    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); }
+    if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); for (const m of this.keepers) m.dispose(); this.keepers.length = 0; this.precompiled = false; }
   }
 
   setEnabled(enabled: boolean): void {
