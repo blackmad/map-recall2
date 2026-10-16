@@ -679,14 +679,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-
-- **`check:covers` red on main (found 2026-10-16)**: 10 inconsistencies,
-  all `noorderkerk` suppressing OSM-only ways w749871260–275 that
-  `covers.json` does not keep. It fails `check:canal` at its `&&` chain, so
-  the later chained checks (building-types, osm-under-models, abutters,
-  inventory, signature-fallback, manual-landmarks) are skipped unless run by
-  hand; rebuild covers (`build-covers`, staged then copied to models/) or
-  drop the stale ids.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**
@@ -745,22 +737,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   transparent bridge names outside `bridges.json` (Noordsche Compagniebrug
   among them) are now taught by no question; decide whether some join the
   crossing quiz. Culvert names without a bridge suffix (Bullebak, Kanaalpost)
-  are not treated as decks. `quiz.spec.ts` "first launch is playable without
-  an account" fails on main independent of this change.
+  are not treated as decks.
 
 - **Landmark cards, after the 43 rewrites (2026-10-16, HISTORY "Landmark
   cards")**: 92 cards are empty (mostly manual POIs and kit locations: UvA
   buildings, libraries, Vue, Pathé Noord, LAB111) and need a sourced pass; 4
   definitional cards wait on an entity check (HvA links the former HES
   article, Onze Lieve Vrouwe Kapel has two chapels, Frascati and Scheltema
-  have no Wikipedia link). The arrival card should show `_landmarkNotice`
-  when it matches the finish landmark (`presentationRuntime.ts` ~1311/1355),
-  so published trivia reaches arrival. `protectNames` should carry a leading
-  Dutch article into the protected name, or the next translation run brings
-  "Het Huis …" back (the audit will flag it). The audit misses thin cards
-  that name a person (Anne Frank House). `scripts/check-manual-poi-contract.{ts,cjs}`
-  are stale and ungated (they fail on krijtberg arrival info and a coordinate
-  mismatch); regenerate them or delete them.
+  have no Wikipedia link). The audit misses thin cards that name a person
+  (Anne Frank House).
 - **Buurt generator, next** (2026-10-16, HISTORY "Bellamybuurt-Zuid: 12
   auto-placed runs installed"): 69 of 335 pands installed. Next: types for
   Hasebroekstraat 21–37 (wide arch, full balconies) and the flat 1930s
