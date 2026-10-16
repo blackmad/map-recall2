@@ -1465,10 +1465,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   fixed); Jan Evertsenstraat survey DONE (HISTORY "Jan Evertsenstraat
   surveyed": 148 pands, 19 faces, type sketch; the plan's "erker" type is
   rare there, 4 of 148, hood-lisene 40 and lintel-band 18 are the bodies);
-  next: the De Baarsjes type library (`scripts/block-face/types/de-baarsjes/`
-  from the sketch's exemplars, with the kit gaps it lists: box bay with
-  hood, stacked balconettes, tall parapet zone, two-tone piers, glass-block
-  band signs), then face lanes; re-run `commercial-merge.ts` for
+  De Baarsjes type library DONE 2026-10-16 (HISTORY "De Baarsjes type
+  library": five types, ten kit keys, evertsen-7-41 proved; open: author
+  the hood-lisene row 93–140, balcony-slot 59–87, ladder-plain 45–90 and
+  white-attic 139–156 faces, the canopy as a deep white slab with a
+  measured depth, the shop-glass head at 2.6 m, the corner groups'
+  oriels/frieze/balustrade, the 7.51 m strip gap between 9–11 and 13, and
+  the 3DBAG roofs above the 15.3 m parapet on 35–41 wait for the
+  kit-rules lane), then face lanes; re-run `commercial-merge.ts` for
   Kinkerstraat from a checkout with its staged crops (uses on 0 of 217
   pands, bug fixed in the survey lane); Mercatorplein towers
   and arcades DONE bespoke (HISTORY "Mercatorplein: both towers"; next
