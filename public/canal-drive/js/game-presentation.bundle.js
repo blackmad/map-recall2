@@ -47295,6 +47295,54 @@
     return ((next + 180) % 360 + 360) % 360 - 180;
   }
 
+  // src/canalRecall/game/landmarkSightline.ts
+  var SIGHTLINE = {
+    minHeightM: 40,
+    reachM: 300,
+    fullM: 250,
+    nearFullM: 120,
+    nearZeroM: 80,
+    enterDeg: 45,
+    stayDeg: 60,
+    maxPitchDeg: 8,
+    maxLeadM: 50,
+    /** Easing per 60 Hz frame toward the target view. */
+    ease: 0.04
+  };
+  var NO_SIGHTLINE = Object.freeze({ pitchDeg: 0, leadM: 0 });
+  var smooth = (t) => {
+    const c = Math.min(1, Math.max(0, t));
+    return c * c * (3 - 2 * c);
+  };
+  function sightlineWeight(distanceM) {
+    const s = SIGHTLINE;
+    if (!Number.isFinite(distanceM) || distanceM >= s.reachM || distanceM <= s.nearZeroM) return 0;
+    if (distanceM > s.fullM) return smooth((s.reachM - distanceM) / (s.reachM - s.fullM));
+    if (distanceM < s.nearFullM) return smooth((distanceM - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
+    return 1;
+  }
+  function landmarkSightline(target, engaged, enabled = true) {
+    const s = SIGHTLINE;
+    if (!enabled || !target || !(target.heightM >= s.minHeightM)) return { view: NO_SIGHTLINE, engaged: false };
+    const off = Math.abs((target.offAxisDeg % 360 + 540) % 360 - 180);
+    const inCone = off <= (engaged ? s.stayDeg : s.enterDeg);
+    const w = inCone ? sightlineWeight(target.distanceM) : 0;
+    if (!(w > 0)) return { view: NO_SIGHTLINE, engaged: false };
+    return { view: { pitchDeg: s.maxPitchDeg * w, leadM: s.maxLeadM * w }, engaged: true };
+  }
+  function easeSightline(current, target, dt, reducedMotion = false) {
+    if (reducedMotion) return target;
+    const k = 1 - Math.pow(1 - SIGHTLINE.ease, Math.max(0, Math.min(dt, 1)) * 60);
+    const pitchDeg = current.pitchDeg + (target.pitchDeg - current.pitchDeg) * k, leadM = current.leadM + (target.leadM - current.leadM) * k;
+    return { pitchDeg: Math.abs(pitchDeg - target.pitchDeg) < 0.01 ? target.pitchDeg : pitchDeg, leadM: Math.abs(leadM - target.leadM) < 0.05 ? target.leadM : leadM };
+  }
+  function relativeTo(from, headingDeg, to) {
+    const lat = (from[1] + to[1]) / 2, kx = 111320 * Math.cos(lat * Math.PI / 180), ky = 110540;
+    const dx = (to[0] - from[0]) * kx, dy = (to[1] - from[1]) * ky;
+    const bearing = Math.atan2(dx, dy) * 180 / Math.PI;
+    return { distanceM: Math.hypot(dx, dy), offAxisDeg: bearing - headingDeg };
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#1f1c17";
   var MUTED = "#5f584d";
@@ -47718,6 +47766,35 @@
       ctx.fillText(destination, CANVAS_W / 2, top + 39, width - 16);
       ctx.restore();
     }
+    /**
+     * Chase view: look up at a tall highlighted landmark ahead (game/landmarkSightline.ts, ride review J3). Desktop
+     * first: not in the compact (phone) layout, not while panned away or during the start flight.
+     */
+    _updateLandmarkSightline() {
+      const vm = this.vectorMap, l = this.osmLoader, player = this.player;
+      if (!vm.setLandmarkView) return;
+      const now = performance.now(), dt = this._sightlineAt ? (now - this._sightlineAt) / 1e3 : 1 / 60;
+      this._sightlineAt = now;
+      let target = null;
+      const enabled = this.viewMode === "chase" && this.viewport?.mode !== "compact" && !this.camera.detached && !this._intro;
+      const lit = enabled ? vm.highlightTarget?.() ?? null : null;
+      if (lit && player && l && l._lastCenterLat != null && l._lastCenterLng != null) {
+        const lat0 = l._lastCenterLat;
+        const at = [
+          l._lastCenterLng + (player.x - l._lastOffsetX) / (111320 * Math.cos(lat0 * Math.PI / 180) * PIXELS_PER_METER),
+          lat0 - (player.y - l._lastOffsetY) / (111320 * PIXELS_PER_METER)
+        ];
+        const heading = Math.atan2(Math.cos(player.angle), -Math.sin(player.angle)) * 180 / Math.PI;
+        target = { ...relativeTo(at, heading, lit.lngLat), heightM: lit.heightM };
+      }
+      const next = landmarkSightline(target, !!this._sightlineEngaged, enabled);
+      this._sightlineEngaged = next.engaged;
+      this._sightline = easeSightline(this._sightline ?? NO_SIGHTLINE, next.view, dt, !!this.camera.reducedMotion);
+      vm.setLandmarkView(this._sightline);
+    }
+    _sightline;
+    _sightlineAt;
+    _sightlineEngaged;
     // ---- The frame ----
     _render() {
       this._syncViewportSize();
@@ -47760,6 +47837,7 @@
         this._lastZoomShown = this.camera.zoom;
         this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
       }
+      this._updateLandmarkSightline();
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       const pitched = this.viewMode === "chase" || this.viewMode === "cockpit";
