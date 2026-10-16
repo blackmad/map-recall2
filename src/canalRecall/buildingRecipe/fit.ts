@@ -574,8 +574,11 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
     case 'point': return canalhouseCrownProfile('punt', width, eaves, top, 0, eaves, 0);
     case 'spout': return canalhouseCrownProfile('tuit', width, eaves, top, width * 0.34, top - Math.min(0.7, rise * 0.15), 0);
     case 'step': return canalhouseCrownProfile('trap', width, eaves, top, width * 0.3, eaves, f.crownSteps ?? clamp(Math.round(rise / 1.4), 2, 5));
-    case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.5, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.45, rise * 0.1), crestWidthM: width * 0.5, shoulderCurve: 0.6});
-    case 'bell': return canalhouseCrownProfile('klok', width, eaves, top, width * 0.46, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.46});
+    // Flanks: `crownShoulder` (measured off the strip, gableFromStrip `flankCurvature`), default concave. The kit drew
+    // every neck (power 0.6) and bell (quarter sine) flank convex, the inverse of the claw pieces and bell flares on the
+    // photos (user, 2026-10-16); every flank measured on the six bell/neck faces reads concave.
+    case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.5, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.45, rise * 0.1), crestWidthM: width * 0.5, shoulder: f.crownShoulder ?? 'concave'});
+    case 'bell': return canalhouseCrownProfile('klok', width, eaves, top, width * 0.46, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.46, shoulder: f.crownShoulder ?? 'concave'});
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') {
         // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
