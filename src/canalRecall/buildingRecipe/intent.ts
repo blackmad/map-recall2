@@ -524,9 +524,10 @@ export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour:
   /**
    * `{rows}` (Jan Evertsenstraat 43-135): the band is `rows` glass blocks tall (0.2 m each) instead of filling up to the
    * sills, and the canopy and the shop-glass head drop to sit under it (with `wallCourses` of brick between the band and
-   * the first-storey sills). With `palette.glassBlock` the band is its own measured material.
+   * the first-storey sills). With `palette.glassBlock` the band is its own measured material. `panel` (Jan Evertsenstraat
+   * 75-87): the band is a flat painted sign panel of that measured colour instead of glass block (no mortar grid).
    */
-  glassBlocks?: boolean | {rows: number};
+  glassBlocks?: boolean | {rows: number; panel?: string};
   /**
    * Rigid canopy only: brick courses (0.055 m) of wall between the canopy (or its glass-block band) and the first-storey
    * window sills, measured on the strip; the canopy and the shop-glass head drop to keep it (Jan Evertsenstraat 9-33: the

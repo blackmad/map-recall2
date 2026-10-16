@@ -16,8 +16,10 @@ export function awningProblems(aw: ShopAwningIntent, at: string): string[] {
   const p: string[] = [], g = aw.glassBlocks as unknown;
   if (g !== undefined) {
     const rows = g && typeof g === 'object' ? (g as {rows?: unknown}).rows : undefined;
-    const ok = g === true || (g !== null && typeof g === 'object' && Object.keys(g).every(k => k === 'rows') && Number.isInteger(rows) && (rows as number) >= 2 && (rows as number) <= 12);
-    if (!ok || aw.style !== 'rigid') p.push(`${at}.shopfront.awning.glassBlocks: true, and only over a rigid canopy (or {rows: 2..12} rows of glass block)`);
+    const panel = g && typeof g === 'object' ? (g as {panel?: unknown}).panel : undefined;
+    const ok = g === true || (g !== null && typeof g === 'object' && Object.keys(g).every(k => k === 'rows' || k === 'panel') && Number.isInteger(rows) && (rows as number) >= 2 && (rows as number) <= 12
+      && (panel === undefined || (typeof panel === 'string' && /^#[0-9a-f]{6}$/i.test(panel))));
+    if (!ok || aw.style !== 'rigid') p.push(`${at}.shopfront.awning.glassBlocks: true, and only over a rigid canopy (or {rows: 2..12} rows of glass block, optionally panel: '#rrggbb' for a painted sign panel)`);
   }
   if (aw.wallCourses !== undefined && (aw.style !== 'rigid' || !(Number.isInteger(aw.wallCourses) && aw.wallCourses >= 0 && aw.wallCourses <= 40))) p.push(`${at}.shopfront.awning.wallCourses: integer 0..40 brick courses, only over a rigid canopy`);
   return p;
