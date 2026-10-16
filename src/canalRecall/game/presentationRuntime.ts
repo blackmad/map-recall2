@@ -577,8 +577,8 @@ export class GamePresentationRuntime {
     const utility = document.getElementById('utility-buttons');
     // Nor while loading: there is nothing yet to configure or explain.
     if (utility) {
-      // Whenever the map is the content (riding, the overview flight, the
-      // paused map) they stay out of the way until asked for: a tap on the
+      // Whenever the map is the content (riding, the overview flight) they
+      // stay out of the way until asked for: a tap on the
       // map (not the stick), a mouse move or a non-steering key brings them up
       // for a moment. Keys G and ? work regardless (utilityTuck.ts).
       const visibility = utilityVisibility({ state: this.state, utilityOpen: !!this._utilityOpen });
