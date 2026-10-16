@@ -453,7 +453,7 @@ export class GroundStore {
       ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d)),
       ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
       // roads-v1 deck polygons (h ≥ 1): the water mask never cuts a surveyed bridge surface (or the bands over it).
-      ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3) : [])),
+      ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
     ];
     return {
       key, lod, rect, surface: this.surface, water,
