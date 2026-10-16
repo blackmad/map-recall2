@@ -318,9 +318,56 @@ export function addCornerTowers(group: T.Group, intent: CanalHouseIntent, recipe
   return added;
 }
 
+/** Iron guard proportions of a front-wide balcony (`balconyRun`), metres. */
+export const BALCONY_RUN = {railHM: 0.05, railDM: 0.05, baseHM: 0.05, barM: 0.018, pitchM: 0.14, insetM: 0.04, brickM: 0.1};
+
+/**
+ * One front-wide balcony (`balconyRun`) in the facade frame: `slab` (0..width, nose at projectM) and `guard`, an iron
+ * grille (rails and bars on the nose and both returns) or a solid brick front with brick returns. Exported for tests.
+ */
+export function balconyRunGeometry(b: NonNullable<FitReport['fronts'][number]['balconyRun']>): {slab: number[]; guard: number[]} {
+  const slab: number[] = [], guard: number[] = [], B = BALCONY_RUN, x0 = 0, x1 = b.widthM, y = b.floorM, z1 = b.projectM, top = y + b.guardM;
+  prism(slab, [[x0, -0.005], [x1, -0.005], [x1, z1], [x0, z1]], y - b.slabM, y);
+  if (b.guard === 'brick') {
+    prism(guard, [[x0, z1 - B.brickM], [x1, z1 - B.brickM], [x1, z1], [x0, z1]], y, top, {bottom: false});
+    for (const [a, c] of [[x0, x0 + B.brickM], [x1 - B.brickM, x1]]) prism(guard, [[a, 0], [c, 0], [c, z1 - B.brickM], [a, z1 - B.brickM]], y, top, {bottom: false});
+    return {slab, guard};
+  }
+  const zf = z1 - B.insetM, runs: {along: 'x' | 'z'; a: number; c: number; at: number}[] = [
+    {along: 'x', a: x0 + B.insetM, c: x1 - B.insetM, at: zf}, {along: 'z', a: 0.02, c: zf, at: x0 + B.insetM}, {along: 'z', a: 0.02, c: zf, at: x1 - B.insetM}];
+  const bar = (r: typeof runs[number], t0: number, t1: number, ya: number, yb: number, w: number) => {
+    const plan: [number, number][] = r.along === 'x' ? [[t0, r.at - w / 2], [t1, r.at - w / 2], [t1, r.at + w / 2], [t0, r.at + w / 2]] : [[r.at - w / 2, t0], [r.at + w / 2, t0], [r.at + w / 2, t1], [r.at - w / 2, t1]];
+    prism(guard, plan, ya, yb);
+  };
+  for (const r of runs) {
+    bar(r, r.a - B.railDM / 2, r.c + B.railDM / 2, top - B.railHM, top, B.railDM);
+    bar(r, r.a, r.c, y, y + B.baseHM, B.railDM * 0.8);
+    const count = Math.max(1, Math.floor((r.c - r.a) / B.pitchM));
+    for (let k = 1; k < count; k++) { const t = r.a + (r.c - r.a) * k / count; bar(r, t - B.barM / 2, t + B.barM / 2, y + B.baseHM, top - B.railHM, B.barM); }
+  }
+  return {slab, guard};
+}
+
+/** Front-wide balconies (`balconyRun`): the slab in its colour (default stone), the guard in iron (door colour) or the wall brick. */
+export function addBalconyRuns(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport): number {
+  let added = 0;
+  const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+  for (const f of fit.fronts) {
+    const facade = group.getObjectByName(`elevation/${f.id}`), b = f.balconyRun;
+    if (!b || !facade) continue;
+    const palette = recipe.elevations.find(e => e.id === f.id)?.palette?.value ?? recipe.palette.value, g = balconyRunGeometry(b);
+    facade.add(meshOf(g.slab, material(b.slabColour ?? palette.stone ?? palette.trim), `balcony-run/${f.id}/slab`, 'balcony', b.slabColour ? 'accent' : 'stone', intent.pandId));
+    const brick = b.guard === 'brick';
+    facade.add(meshOf(g.guard, brick ? ((shell?.material as T.Material) ?? material(palette.wall)) : material(palette.door), `balcony-run/${f.id}/guard`, 'balcony', brick ? 'wall' : 'door', intent.pandId));
+    added++;
+  }
+  return added;
+}
+
 /** Every Amsterdam School pass, or null when the house uses none of the set (nothing is touched). */
 export function applyAmsterdamSchool(group: T.Group, intent: CanalHouseIntent, recipe: CanalHouseRecipe, fit: FitReport) {
-  if (!fit.fronts.some(f => f.canopy || f.erker || f.lisenes || f.towers?.some(t => t.corner) || f.balconyHoods?.length) && !intent.fronts.some(f => f.windowHoods)) return null;
+  if (!fit.fronts.some(f => f.canopy || f.erker || f.lisenes || f.towers?.some(t => t.corner) || f.balconyHoods?.length || f.balconyRun) && !intent.fronts.some(f => f.windowHoods)) return null;
   const balconyHoods = fit.fronts.some(f => f.balconyHoods?.length) ? {balconyHoods: addBalconyHoods(group, intent, recipe, fit)} : {};
-  return {windowHoods: addWindowHoods(group, intent, recipe), lisenes: addLisenes(group, intent, recipe, fit), canopies: addCanopies(group, intent, recipe, fit), erkerCaps: addErkerCaps(group, intent, recipe, fit), cornerTowers: addCornerTowers(group, intent, recipe, fit), ...balconyHoods};
+  const balconyRuns = fit.fronts.some(f => f.balconyRun) ? {balconyRuns: addBalconyRuns(group, intent, recipe, fit)} : {};
+  return {windowHoods: addWindowHoods(group, intent, recipe), lisenes: addLisenes(group, intent, recipe, fit), canopies: addCanopies(group, intent, recipe, fit), erkerCaps: addErkerCaps(group, intent, recipe, fit), cornerTowers: addCornerTowers(group, intent, recipe, fit), ...balconyHoods, ...balconyRuns};
 }

@@ -1,0 +1,337 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "evertsen-139-143",
+ "street": "Jan Evertsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-06",
+   "image": "staging/block-face/evertsen-139-143/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (de-baarsjes-faces lane)",
+  "passes": 1,
+  "note": "Jan Evertsenstraat 139-143 (odd side, west of the Mercatorplein): the white-attic row (evertsen-1927-white-attic-tile-roof): three axes of brick storeys, the white window band as the top storey, tiles from one eaves line; 143 ends the row with a raised stair tower."
+ },
+ "types": [
+  "evertsen-1927-white-attic-tile-roof"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012100052",
+   "slug": "evertsen-100052",
+   "address": "Jan Evertsenstraat 139",
+   "type": {
+    "type": "evertsen-1927-white-attic-tile-roof",
+    "crown": "tile-roof",
+    "palette": "brown-white",
+    "paletteOverrides": {
+     "brick": "#5d5545",
+     "wallTint": "measured",
+     "whitePoint": "#acad99"
+    },
+    "ground": "windows",
+    "overrides": {
+     "balconyRun": {
+      "storey": 1,
+      "projection": 0.5,
+      "slab": 0.3,
+      "guard": "iron",
+      "guardRise": 0.95,
+      "evidence": "strip.jpg 2024-12-06: 139: the white slab edge 3.15-3.45 m and the iron rail to 4.4 m"
+     },
+     "bays": [
+      2,
+      2,
+      2,
+      4
+     ],
+     "axisGrid": 2,
+     "bayWidths": [
+      1.45,
+      2.63
+     ],
+     "bayFill": [
+      0.79,
+      0.44
+     ],
+     "windowShare": null,
+     "storeyBayWidths": {
+      "3": [
+       1,
+       1,
+       1,
+       1
+      ]
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "2 axes, 4 lights in the white band",
+    "windowsPerStorey": "ground: 2 windows | 1-2: 2 | 3: 4 in the white band",
+    "photoRows": [
+     2,
+     2,
+     2,
+     4
+    ],
+    "citation": "strip.jpg 2024-12-06 pand 139 (ruler crop 104 px/m): windows 0.15-1.3 and 2.15-3.3 m on every storey, the white band 10.5-12.6 m with four lights"
+   }
+  },
+  {
+   "pandId": "0363100012151275",
+   "slug": "evertsen-151275",
+   "address": "Jan Evertsenstraat 141",
+   "type": {
+    "type": "evertsen-1927-white-attic-tile-roof",
+    "crown": "tile-roof",
+    "palette": "brown-white",
+    "paletteOverrides": {
+     "brick": "#584938",
+     "wallTint": "measured",
+     "whitePoint": "#abac93"
+    },
+    "ground": "paired-doors",
+    "overrides": {
+     "balconyRun": {
+      "storey": 1,
+      "projection": 0.5,
+      "slab": 0.3,
+      "guard": "iron",
+      "guardRise": 0.95,
+      "evidence": "strip.jpg 2024-12-06: 141 (column profile at 1.5-2.2 m): the white slab edge 3.15-3.45 m and the iron rail to 4.4 m"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-12-06",
+    "bag": [
+     "woonfunctie"
+    ],
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-12-06 pand 141 (ruler crop 104 px/m): windows 0.2-1.35, 2.35-3.45, 4.5-5.6 m; ground two windows and the paired doors 4.1-6.0 m; six lights in the white band 10.4-12.6 m"
+   }
+  },
+  {
+   "pandId": "0363100012115917",
+   "slug": "evertsen-115917",
+   "address": "Jan Evertsenstraat 143",
+   "type": {
+    "type": "evertsen-1927-white-attic-tile-roof",
+    "crown": "tile-roof",
+    "palette": "brown-white",
+    "paletteOverrides": {
+     "brick": "#5a4a37",
+     "wallTint": "measured",
+     "whitePoint": "#acae9b"
+    },
+    "modules": [
+     {
+      "share": 0.48,
+      "overrides": {
+       "balconyRun": {
+        "storey": 1,
+        "projection": 0.5,
+        "slab": 0.3,
+        "guard": "iron",
+        "guardRise": 0.95,
+        "evidence": "strip.jpg 2024-12-06: 143: the white slab edge and iron rail over the house door and the cafe, 0-5.35 m"
+       },
+       "bays": [
+        3,
+        3,
+        3,
+        5
+       ],
+       "storeyBayWidths": {
+        "3": [
+         1,
+         1,
+         1,
+         1,
+         1
+        ]
+       }
+      },
+      "ground": {
+       "groundFront": {
+        "kind": "wall",
+        "bays": [
+         "door",
+         "blank",
+         "window"
+        ],
+        "evidence": "strip.jpg 2024-12-06 pand 143: the house door 0.25-1.2 m and the cafe window 3.4-5.0 m, plain brick between"
+       }
+      }
+     },
+     {
+      "share": 0.52,
+      "crown": "raised-end",
+      "overrides": {
+       "storeys": 5,
+       "bays": [
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "axisGrid": 3,
+       "storeyBayWidths": null,
+       "bands": null,
+       "bandLines": null,
+       "bandStoreys": null,
+       "bandHeights": null,
+       "bandPiers": null,
+       "bandFloors": null,
+       "balconyRun": null,
+       "windowShare": null,
+       "stepBody": true,
+       "bayWidths": [
+        2.3,
+        1.15,
+        2.38
+       ],
+       "bayFill": [
+        0.5,
+        0.98,
+        0.5
+       ],
+       "storeyAxes": {
+        "1": [
+         1
+        ],
+        "2": [
+         1
+        ],
+        "3": [
+         1
+        ],
+        "4": [
+         1
+        ]
+       },
+       "storeyHeights": [
+        3.45,
+        2.95,
+        2.95,
+        2.95,
+        2.9
+       ],
+       "windowHeights": [
+        0.5,
+        0.53,
+        0.54,
+        0.54,
+        0.4
+       ],
+       "headLines": [
+        0.8,
+        0.75,
+        0.81,
+        0.86,
+        0.74
+       ]
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": false,
+        "entrance": "none",
+        "stallriser": "low",
+        "glazing": "split",
+        "evidence": "strip.jpg 2024-12-06 pand 143: the cafe's red door 1.45-2.45 m and its shop window under the tower"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "photoDate": "2024-12-06",
+    "osm": {
+     "type": "node",
+     "id": 2814026773,
+     "name": "Pudu Cafe Koffiehuis"
+    },
+    "name": "Pudu Cafe Koffiehuis",
+    "category": "amenity=cafe",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only"
+   },
+   "rhythm": {
+    "bays": "three axes of the row, then the raised end with one window per storey",
+    "windowsPerStorey": "ground: door + cafe | 1-2: 3 + 1 | 3: 5 lights + 1 | 4: 1 small (the tower)",
+    "symmetry": "none",
+    "groundFloor": "house door, cafe",
+    "signage": "cafe sign (not drawn)",
+    "roofline": "the row eaves at 12.6 m under tiles, then the raised end to 17.4 m",
+    "photoRows": [
+     2,
+     4,
+     4,
+     6,
+     1
+    ],
+    "citation": "strip.jpg 2024-12-06 pand 143 (ruler crop 64 px/m): row windows 0.35-1.5, 2.15-3.3, 3.95-5.1 m; the raised end 5.35-11.13 m to 17.4 m, windows 7.6-8.75 m at 4.1-5.65 / 7.2-8.8 / 10.3-11.9 m, a small window 7.8-8.65 m at 13.3-14.45 m",
+    "schemaLimits": [
+     "the white oriel round the corner at 9.8-11.1 m (3.9-6.3 m) is not drawn"
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "the French door onto the balcony (middle axis, storey 1) is drawn as a window",
+  "the balcony depth is assumed (0.5 m)",
+  "the cafe sign",
+  "the oriel round the corner of 143"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "partyClip": true,
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012100052",
+    "stripRow": 242,
+    "evidence": "strip.jpg: one eaves line for the row, the top of the white band on 141 at 12.63 m (row 242; column-median luminance scan, ledge.mjs)"
+   },
+   {
+    "pand": "0363100012151275",
+    "stripRow": 242,
+    "evidence": "strip.jpg: one eaves line for the row, the top of the white band on 141 at 12.63 m (row 242; column-median luminance scan, ledge.mjs)"
+   },
+   {
+    "pand": "0363100012115917",
+    "front": "m0",
+    "stripRow": 242,
+    "evidence": "strip.jpg: the row's eaves line (12.63 m) over 143's row axes"
+   },
+   {
+    "pand": "0363100012115917",
+    "front": "m1",
+    "stripRow": 51,
+    "evidence": "strip.jpg: the raised end's coping at 17.4 m (ruler crop 64 px/m)"
+   }
+  ]
+ }
+}
