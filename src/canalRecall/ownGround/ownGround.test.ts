@@ -1454,3 +1454,28 @@ test('regression (streamed cell): a courtyards-v1 lawn draws in the lawn layer o
   assert.equal(layersAt(cell, x - 25, y - 25).top, 'lawn');
   assert.ok(!layersAt(cell, x - 25, y - 25).hits.some(h => h.layer === 'land'), 'the land under a 30 m yard is culled');
 });
+
+// Landed platforms (landedPlatforms.ts, 2026-10-16): the Homomonument's stepped stone brings its own granite walls from the quay
+// into the Keizersgracht, so the municipal quay wall skips the shore across it, as it does under a bridge deck.
+test('landed platform: the quay wall leaves out the shore across the Homomonument steps, pinned to the builder', async () => {
+  const {LANDED_PLATFORMS, inLandedPlatform, landedPlatformRings} = await import('./landedPlatforms');
+  const {homomonumentQuayPlatformRing, homomonumentStones} = await import('../../../scripts/landmarks/memorial-builders');
+  const pinned = LANDED_PLATFORMS.find(p => p.id === 'homomonument-steps')!, fromBuilder = homomonumentQuayPlatformRing();
+  assert.equal(pinned.ring.length, 3);
+  pinned.ring.forEach((p, i) => { assert.ok(Math.abs(p[0] - fromBuilder[i][0]) < 2e-7 && Math.abs(p[1] - fromBuilder[i][1]) < 2e-7, `ring vertex ${i} matches the builder's padded stone`); });
+  // In the game frame: the stepped stone's tip (east, into the canal), its base corners and the BGT quay crossing on its axis are inside; the podium and the flush stone are not.
+  const rings = landedPlatformRings(toLocal), inside = inLandedPlatform(rings);
+  const anchor = [4.8846925, 52.37443243333333] as const, sx = 111320 * Math.cos(anchor[1] * Math.PI / 180);
+  const at = (x: number, ySouth: number) => toLocal(anchor[0] + x / sx, anchor[1] - ySouth / 111320);
+  const [north, east, southWest] = homomonumentStones();
+  for (const p of [east.tip, east.left, east.right]) assert.ok(inside(...at(p.x, p.y)), `stepped stone vertex (${p.x.toFixed(1)}, ${p.y.toFixed(1)}) is on the platform`);
+  assert.ok(inside(...at(12.56 * 0.975, 12.56 * 0.223)), 'the BGT quay crossing 12.56 m along the axis is on the platform');
+  for (const p of [north.tip, southWest.tip, new (await import('three')).Vector2(0, 0)]) assert.ok(!inside(...at(p.x, p.y)), 'the other stones and the centroid are not');
+  // A shore running through the platform gets no quay wall there; the same shore elsewhere does.
+  const ring = rings[0], cx = ring.reduce((s, p) => s + p[0], 0) / 3, cy = ring.reduce((s, p) => s + p[1], 0) / 3;
+  const shore: Vec2[] = [[cx - 40, cy], [cx + 40, cy]];
+  const walled = quayWallMesh({ polygons: [], shores: [shore] }, () => 0.5, -1.77, 2, 0, inside), plain = quayWallMesh({ polygons: [], shores: [shore] }, () => 0.5, -1.77, 2, 0);
+  assert.ok(walled.indices.length > 0 && walled.indices.length < plain.indices.length, `fewer wall triangles with the platform skipped (${walled.indices.length} < ${plain.indices.length})`);
+  for (let i = 0; i < walled.positions.length; i += 3) assert.ok(Math.hypot(walled.positions[i] - cx, walled.positions[i + 1] - cy) > 1.5, 'no wall vertex at the platform\'s middle');
+  assert.ok(Array.from({length: plain.positions.length / 3}, (_, k) => k).some(k => Math.hypot(plain.positions[k * 3] - cx, plain.positions[k * 3 + 1] - cy) <= 1.5), 'without the skip the wall runs through it');
+});

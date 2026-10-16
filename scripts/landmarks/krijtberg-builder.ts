@@ -23,9 +23,10 @@ const ARMS: {n: [number, number]; R: number; gable: boolean}[] = [
   {n: [1, 0], R: 34.5, gable: true}, {n: [0, 1], R: 10.7, gable: true}, {n: [-1, 0], R: 13.7, gable: false}, {n: [0, -1], R: 9.4, gable: true},
 ];
 
-export interface KrijtbergStats {portals: number; windows: number; spires: number}
+/** `dropped`: windows that would not fit under their wall's top profile even shortened (fitWindow). */
+export interface KrijtbergStats {portals: number; windows: number; spires: number; dropped: number}
 
-export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: KrijtbergStats = {portals: 0, windows: 0, spires: 0}) {
+export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: KrijtbergStats = {portals: 0, windows: 0, spires: 0, dropped: 0}) {
   const add = (g: T.BufferGeometry, c: Colour) => b.add(g, c);
   const prism = (pts: [number, number][], y0: number, y1: number, c: Colour) => {
     const g = new T.ExtrudeGeometry(new T.Shape(pts.map(p => new T.Vector2(p[0], p[1]))), {depth: y1 - y0, bevelEnabled: false});
@@ -55,8 +56,31 @@ export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: 
   const pointed = (t0: number, w: number, y0: number, y1: number): [number, number][] => [[t0 - w / 2, y0], [t0 + w / 2, y0], [t0 + w / 2, y1], [t0, y1 + w * 0.75], [t0 - w / 2, y1]];
   const shapeOf = (p: [number, number][]) => new T.Shape(p.map(q => new T.Vector2(q[0], q[1])));
   type F = ReturnType<typeof frame>;
-  /** Pointed window: stone ring, glass, mullions and transoms. */
-  const window = (f: F, t: number, y0: number, w: number, h: number, lights = 3) => {
+  /** The hosting wall's top profile at frame offset t (m): a flat eaves line, or a gable rake; `top` is where the wall ends. */
+  type TopProfile = (t: number) => number;
+  const flatTop = (y: number): TopProfile => () => y;
+  /** A gable of half-width hw between eaves and ridge, apex at t = 0 (the plate sits 5 cm inside the rakes). */
+  const gableTop = (hw: number, eaves: number, ridge: number): TopProfile => t => Math.abs(t) >= hw ? eaves : eaves + (ridge - eaves) * (1 - Math.abs(t) / hw) - 0.05;
+  const WINDOW_CLEAR = 0.15;
+  /**
+   * Fit a pointed window under its wall's top profile (openingsWithinWalls gate, 2026-10-16: the transept lancets rose past the
+   * gable rakes into the roof planes). The stone ring's outline (width w + 0.5, apex 0.75 of that above the springing) must stay
+   * WINDOW_CLEAR under `top` at every t it spans; the springing drops until it does. A window shortened below 1.2 x its width
+   * is dropped (returns null). Returns the fitted height.
+   */
+  const fitWindow = (t: number, y0: number, w: number, h: number, top: TopProfile): number | null => {
+    const wo = w + 0.5, half = wo / 2;
+    let spring = y0 + h;
+    for (let k = 0; k <= 16; k++) {
+      const x = t - half + (wo * k) / 16, rise = 0.75 * wo * (1 - Math.abs(x - t) / half);
+      spring = Math.min(spring, top(x) - WINDOW_CLEAR - rise);
+    }
+    const fitted = spring - y0;
+    return fitted >= 1.2 * w ? Math.min(h, fitted) : null;
+  };
+  /** Pointed window: stone ring, glass, mullions and transoms. With `top`, fitted under the wall's top profile (or dropped). */
+  const window = (f: F, t: number, y0: number, w: number, h: number, lights = 3, top?: TopProfile) => {
+    if (top) { const fitted = fitWindow(t, y0, w, h, top); if (fitted === null) { stats.dropped++; return; } h = fitted; }
     stats.windows++;
     const spring = y0 + h, outer = pointed(t, w + 0.5, y0 - 0.25, spring), inner = pointed(t, w, y0, spring);
     const ring = shapeOf(outer); ring.holes.push(new T.Path(inner.map(q => new T.Vector2(q[0], q[1]))));
@@ -106,19 +130,21 @@ export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: 
 
   // Transept gables: a three-light pointed window over two-light pair and a rose-like round, plinth and string courses.
   for (const a of [ARMS[1], ARMS[3]]) {
-    const f = frame(...xzInv(a), a.n[0], a.n[1]);
-    window(f, 0, 13.0, 3.0, 8.0, 4);
+    const f = frame(...xzInv(a), a.n[0], a.n[1]), rake = gableTop(HW, EAVE, RIDGE);
+    window(f, 0, 13.0, 3.0, 8.0, 4, rake);
     f.box(0, 21.2, 0, 2 * HW + 0.5, 0.3, 0.25, 'stone'); f.box(0, 11.5, 0, 2 * HW + 0.5, 0.3, 0.25, 'stone');
-    for (const t of [-2.2, 2.2]) window(f, t, 27.0, 1.2, 2.6, 2);
+    // Flanking lancets in the gable, fitted under the rakes (at t = 2.2 / w 1.2 they rose 1.5 m past the rake; now t = 1.9 / w 1.0, shortened to fit).
+    for (const t of [-1.9, 1.9]) window(f, t, 26.6, 1.0, 2.6, 2, rake);
     { const c = 31.0, r = new T.Shape(); r.absarc(0, c, 1.0, 0, Math.PI * 2, false); const h = new T.Path(); h.absarc(0, c, 0.7, 0, Math.PI * 2, true); r.holes.push(h);
       f.ext(r, 0, 0.14, 'stone'); const d = new T.Shape(); d.absarc(0, c, 0.7, 0, Math.PI * 2, false); f.ext(d, 0, 0.08, 'glass'); }
     for (const s of [-1, 1]) { f.box(s * (HW - 0.15), 0, 0, 0.9, 20, 0.5, 'stone'); f.box(s * (HW - 0.15), 20, 0, 0.7, 0.4, 0.4, 'stone'); }
   }
 
   // Nave clerestory: lancet windows on both sides (frame t = side * (u - 8)).
+  // Under the eaves (flat top); the bay inside the tower bases (u > 26.9, both sides) has no exposed wall and gets no window.
   for (const side of [-1, 1]) {
     const f = frame(8, side > 0 ? CV + HW : CV - HW, 0, side);
-    for (let u = 4.5; u < 29; u += 3.8) window(f, side * (u - 8), 19.8, 1.4, 3.6, 2);
+    for (let u = 4.5; u < 29; u += 3.8) { if (u + 0.95 > 26.9) continue; window(f, side * (u - 8), 19.8, 1.4, 3.6, 2, flatTop(EAVE)); }
   }
   // South and north aisles (lean-to roofs) and their windows.
   const aisleS: [number, number] = [-9.0, -5.35], aisleN: [number, number] = [4.15, 7.5];
@@ -129,7 +155,7 @@ export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: 
   sheet([[1.05, aisleN[1], AISLE], [26.9, aisleN[1], AISLE], [26.9, aisleN[0], AISLE_IN], [1.05, aisleN[0], AISLE_IN]], 'slate');
   for (const [vw, nvs] of [[aisleS[0], -1], [aisleN[1], 1]] as [number, number][]) {
     const f = frame(0, vw, 0, nvs);
-    for (let u = 4.0; u < 26.5; u += 3.8) window(f, nvs * u, 5.0, 1.3, 5.0, 2);
+    for (let u = 4.0; u < 26.5; u += 3.8) window(f, nvs * u, 5.0, 1.3, 5.0, 2, flatTop(AISLE));
   }
 
   // Choir and apse: polygonal apse beyond the choir, chapels either side, transept annexes, presbytery wings.
@@ -167,7 +193,7 @@ export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: 
       const f = nu ? frame(dist, vc, 1, 0) : frame(uc, dist, 0, nv), wide = nu ? tw.v1 - tw.v0 : 4.3;
       // corner buttresses: slim stepped piers on the front faces
       if (nu) for (const s of [-1, 1]) { f.box(s * (wide / 2 - 0.15), 0, 0, 0.7, 15, 0.45, 'stone'); f.box(s * (wide / 2 - 0.15), 15, 0, 0.55, 18, 0.3, 'stone'); }
-      window(f, 0, 16.0, 1.1, 4.8, 1);
+      window(f, 0, 16.0, 1.1, 4.8, 1, flatTop(33));
       for (const dt of [-0.7, 0.7]) { const o = pointed(dt, 0.7, 25.2, 29.5), s = shapeOf(o); f.ext(s, 0, 0.09, 'dark'); void o; }
       f.box(0, 31.0, 0, 3.0, 0.3, 0.3, 'stone');
     }
@@ -190,7 +216,7 @@ export function buildKrijtberg(_w: number, _d: number, b: BuildingTools, stats: 
     const f = frame(CENTRE_PLANE, 0, 1, 0);
     const tCentre = (t: number) => -t; // frame t runs to the viewer's right = -v
     void tCentre;
-    for (const t of [-1.2, 3.1]) { window(f, t, 10.5, 2.4, 7.8, 3); portal(f, t, 2.2, 3.6); }
+    for (const t of [-1.2, 3.1]) { window(f, t, 10.5, 2.4, 7.8, 3, flatTop(EAVE)); portal(f, t, 2.2, 3.6); }
     f.box(0.95, 9.2, 0, 8.4, 0.3, 0.25, 'stone'); f.box(0.95, 22.0, 0, 8.4, 0.3, 0.25, 'stone'); f.box(0.95, 7.0, 0, 8.4, 0.35, 0.25, 'stone');
     // centre gable: brick triangle between the towers with three louvre lancets and a cross
     const gb = frame(CENTRE_PLANE, 0, 1, 0);

@@ -5,11 +5,13 @@
  *   npx tsx scripts/audit-glb-quality.ts --file=path/to.glb
  *   npx tsx scripts/audit-glb-quality.ts                            # audit every landmark GLB
  *   npx tsx scripts/audit-glb-quality.ts --set=ordinary [--limit=200]
+ *   npx tsx scripts/audit-glb-quality.ts --set=kit [--only-geometry]  # installed kit houses + block-face chunks, geometry-audited
  *   flags: --shots (contact images of top offenders), --top=15, --out=artifacts/glb-audit, --quiet
  *
  * Landmark geometry audit (src/canalRecall/landmarks/geometryAudit.ts) runs on landmark GLBs too: detached openings
- * (window/door parts floating off, buried in, or hanging past their wall), window rhythm per facade (photo spec from
- * scripts/landmarks/<id>-elevations.json when present) and coplanar z-fighting. Existing offenders are recorded in
+ * (window/door parts floating off, buried in, or hanging past their wall), openings past their wall's silhouette or through a
+ * roof plane (`openingsWithinWalls`, hard: a new export fails on any part > 0.02 m2 outside), window rhythm per facade (photo
+ * spec from scripts/landmarks/<id>-elevations.json when present) and coplanar z-fighting. Existing offenders are recorded in
  * scripts/landmarks/geometry-audit-baseline.json; a model fails only when a gated count grows beyond its baseline.
  *   --no-geometry            skip it            --write-baseline     record current counts as the baseline
  *   --only-geometry          skip the shell checks (fast geometry-only run)
@@ -107,6 +109,9 @@ function modelThresholds(id: string, file?: string): Partial<Thresholds> {
     if (Array.isArray(spec.throughPassages)) out.throughPassages = spec.throughPassages;
     // Declared free-standing structures ({box: [minX, minZ, maxX, maxZ], evidence}) exempt from the far-outside check; see Thresholds.detachedStructures.
     if (Array.isArray(spec.detachedStructures)) out.detachedStructures = spec.detachedStructures;
+    // Declared depth below the ground plane ({belowGroundMetres: -2.2, evidence}): a memorial stepping down to the water (the
+    // Homomonument, ownGround WATER_Z -1.77) carries its stones below y = 0 on purpose; nothing else may.
+    if (typeof spec.belowGroundMetres === 'number' && spec.belowGroundMetres < 0) out.belowGround = spec.belowGroundMetres;
     return out;
   } catch { return {}; }
 }
@@ -159,6 +164,7 @@ function mergeGeometry(report: QualityReport, g: GeometryAuditReport, base: Reco
 /** Strip triangle lists from the JSON report (they are only needed for the evidence shots). */
 function slim(g: GeometryAuditReport) {
   return {...g, normals: {...g.normals, inwardTriangles: g.normals.inwardTriangles.length}, openings: {...g.openings, issues: g.openings.issues.slice(0, 40).map(({triangles, ...i}) => ({...i, triangles: triangles.length}))},
+    withinWalls: {...g.withinWalls, outside: g.withinWalls.outside.slice(0, 40).map(({triangles, ...o}) => ({...o, triangles: triangles.length})), failing: g.withinWalls.failing.length},
     zfight: {...g.zfight, patches: g.zfight.patches.slice(0, 40).map(({trisA, trisB, samples, ...p}) => ({...p, triangles: trisA.length + trisB.length}))},
     rhythm: g.rhythm.map(f => ({...f, mismatched: f.mismatched.slice(0, 20)}))};
 }
@@ -174,6 +180,14 @@ function listTargets(): {id: string; file: string; status?: string}[] {
   if (file) return [{id: path.basename(file, '.glb'), file: path.resolve(file)}];
   const set = arg('set') ?? 'landmarks';
   const idArg = arg('id');
+  // --set=kit: the installed kit houses (recipe-large-*.glb) and block-face chunks (chunks/*.glb), geometry-audited (openingsWithinWalls).
+  if (set === 'kit') {
+    const dir = path.join(MODELS, 'ordinary-buildings'), chunks = path.join(dir, 'chunks');
+    let files = [...fs.readdirSync(dir).filter(f => f.startsWith('recipe-large-') && f.endsWith('.glb')).map(f => path.join(dir, f)),
+      ...(fs.existsSync(chunks) ? fs.readdirSync(chunks).filter(f => f.endsWith('.glb')).map(f => path.join(chunks, f)) : [])].sort();
+    if (idArg) files = files.filter(f => idArg.split(',').includes(path.basename(f, '.glb')));
+    return files.map(f => ({id: path.basename(f, '.glb'), file: f}));
+  }
   if (set === 'ordinary') {
     const dir = path.join(MODELS, 'ordinary-buildings');
     let files = fs.readdirSync(dir).filter(f => f.endsWith('.glb')).sort();
@@ -223,12 +237,23 @@ function geometryMd(rows: Row[]): string {
   const z = g.filter(r => r.geometry!.zfight.area >= 0.25);
   const lines = ['', '## Landmark geometry audit', '',
     `${g.length} models. Detached openings: ${sum('opening-floating')} models with floating parts (${sum('opening-floating-fail')} beyond ${'10 cm'}), ${sum('opening-overhang')} with parts hanging past a wall edge, ${sum('opening-buried')} with parts sunk behind the wall surface. Visible coplanar z-fighting >= 0.25 m2: ${z.length} models. Window-rhythm warnings: ${sum('window-mismatch') + sum('window-missing')} models.`, '',
-    '| # | id | geo score | floating (fail) | overhang (fail) | buried | z-fight m2 | near m2 | hidden m2 | off-size | missing | worst |', '|---|---|---|---|---|---|---|---|---|---|---|---|',
+    '| # | id | geo score | floating (fail) | overhang (fail) | buried | outside m2 (parts) | z-fight m2 | near m2 | hidden m2 | off-size | missing | worst |', '|---|---|---|---|---|---|---|---|---|---|---|---|---|',
     ...[...g].sort((a, b) => b.geometry!.score - a.geometry!.score).filter(r => r.geometry!.score > 0).map((r, i) => {
       const x = r.geometry!, c = x.counts, w = x.findings.find(f => f.severity === 'fail') ?? x.findings[0];
-      return `| ${i + 1} | ${r.id} | ${x.score.toFixed(0)} | ${c['opening-floating']} (${c['opening-floating-fail']}) | ${c['opening-overhang']} (${c['opening-overhang-fail']}) | ${c['opening-buried']} | ${c['zfight-m2']} | ${c['zfight-near-m2']} | ${x.zfight.hiddenArea} | ${c['window-mismatch']} | ${c['window-missing']} | ${w ? `${w.kind}: ${w.message}` : ''} |`;
+      return `| ${i + 1} | ${r.id} | ${x.score.toFixed(0)} | ${c['opening-floating']} (${c['opening-floating-fail']}) | ${c['opening-overhang']} (${c['opening-overhang-fail']}) | ${c['opening-buried']} | ${c['opening-outside-m2']} (${c['opening-outside-parts']}) | ${c['zfight-m2']} | ${c['zfight-near-m2']} | ${x.zfight.hiddenArea} | ${c['window-mismatch']} | ${c['window-missing']} | ${w ? `${w.kind}: ${w.message}` : ''} |`;
     })];
-  return lines.join('\n') + '\n';
+  return lines.join('\n') + withinWallsMd(rows) + '\n';
+}
+
+/** Openings past their walls (openingsWithinWalls): every model with a failing part, worst first, with its worst part. */
+function withinWallsMd(rows: Row[]): string {
+  const g = rows.filter(r => r.geometry?.withinWalls.failing.length);
+  if (!g.length) return '\n\nNo opening part reaches past its wall or through a roof plane (openingsWithinWalls, tol 0.05 m, fail > 0.02 m2).\n';
+  return ['', '', `### Openings past their walls (${g.length} models)`, '', '| # | id | status | outside m2 | parts failing / judged | hostless | worst part |', '|---|---|---|---|---|---|---|',
+    ...[...g].sort((a, b) => b.geometry!.withinWalls.outsideM2 - a.geometry!.withinWalls.outsideM2).map((r, i) => {
+      const w = r.geometry!.withinWalls, p = w.failing[0];
+      return `| ${i + 1} | ${r.id} | ${r.status ?? ''} | ${w.outsideM2} | ${w.failing.length} / ${w.judged} | ${w.hostless} | ${p.outsideM2} m2 ${p.materials.join('+')} at (${p.centre.map(v => v.toFixed(1)).join(', ')}) bearing ${Math.round(p.wallBearing)}${p.roofM2 ? `, ${p.roofM2} m2 through a roof` : ''}${p.piercesRoof ? ', pierces a roof' : ''} |`;
+    })].join('\n');
 }
 
 function normalsMd(rows: Row[]): string {
@@ -290,7 +315,7 @@ async function main(): Promise<void> {
     }
     // Signature inventory (landmark-inventory-gate.ts): fails only for a landmark that requires one; rows print under the gates.
     let inventoryLines: string[] = [];
-    if (arg('set') !== 'ordinary' && !flag('no-inventory') && !arg('file')) {
+    if (arg('set') !== 'ordinary' && arg('set') !== 'kit' && !flag('no-inventory') && !arg('file')) {
       try {
         const g = inventoryGate(t.id);
         if (!g.pass) report.findings.push({kind: 'signature-inventory', severity: 'fail', message: g.issues.filter(i => i.severity === 'error' || g.required).slice(0, 3).map(i => `${i.path} ${i.message}`.trim()).join('; ')});
@@ -318,9 +343,12 @@ async function main(): Promise<void> {
       fs.writeFileSync(SLOT_BASELINE, JSON.stringify({generated: new Date().toISOString().slice(0, 10), note: slotBaseline?.note ?? 'Material slot coverage per legacy model (glbQuality.ts materialSlotCoverage). A model listed here fails audit:glb only when its coverage drops below this value; models not listed must reach 100 %. Lower a value never; raise it when a model gains slots (infer-material-slots.ts --write, builder edits).', models: sorted}, null, 1) + '\n');
       console.log(`Wrote ${path.relative(ROOT, SLOT_BASELINE)} (${Object.keys(sorted).length} models)`);
     }
-    if (flag('write-baseline')) {
+    // --write-baseline-keys=k1,k2: record only those counts (a new gate's keys for the recorded models) and leave the rest of each entry alone.
+    if (flag('write-baseline') || arg('write-baseline-keys')) {
       const models: Baseline['models'] = {...(baseline?.models ?? {})};
-      for (const r of rows) if (r.geometry) models[r.id] = r.geometry.counts;
+      const keys = arg('write-baseline-keys')?.split(',').filter(Boolean);
+      // Only recorded models take the keys: a model without an entry stays a new export, gated at zero.
+      for (const r of rows) if (r.geometry && (!keys || models[r.id])) models[r.id] = keys ? {...models[r.id], ...Object.fromEntries(keys.map(k => [k, r.geometry!.counts[k] ?? 0]))} : r.geometry.counts;
       const sorted = Object.fromEntries(Object.entries(models).sort(([a], [b]) => a.localeCompare(b)));
       fs.writeFileSync(BASELINE, JSON.stringify({generated: new Date().toISOString().slice(0, 10), note: baseline?.note ?? '', ...(baseline?.reasons ? {reasons: baseline.reasons} : {}), models: sorted}, null, 1) + '\n');
       console.log(`Wrote ${path.relative(ROOT, BASELINE)} (${Object.keys(sorted).length} models)`);
