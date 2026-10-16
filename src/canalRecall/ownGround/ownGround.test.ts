@@ -402,6 +402,26 @@ test('way decks (user 2026-10-16, Jan Evertsenstraat): a bridge way over water w
   assert.ok(Math.abs(g.profiles[0].halfWidth[0] - 10.5) < 1e-9 && Math.abs(g.profiles[0].y[0]) < 1e-9, `half ${g.profiles[0].halfWidth[0]}`);
 });
 
+test('way decks over a hole (Jan Evertsenstraat, OSM 323258135): the deck runs on over an underpass past the water to the bank, level; a slope that never climbs back keeps the deck', () => {
+  // The canal x 20..30; the bridge way 12..45; the relief 1 m on the west bank, an underpass hole at −1 from the water to
+  // x 50, the bank at 0.8 beyond.
+  const wet = (x: number) => x > 20 && x < 30;
+  const road: [number, number][] = [[12, 0], [45, 0]];
+  const hole = (x: number) => (x <= 20 ? 1 : x < 50 ? -1 : 0.8);
+  const p = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, hole)!;
+  const end = p.x[0] + p.deck[1];
+  assert.ok(end > 49 && end < 53, `deck ends at x ${end.toFixed(1)} (the bank at 50)`);
+  assert.ok(p.under && p.under.length === 1 && Math.abs(p.x[0] + p.under[0][0] - 30) < 0.6, `hole past the water ${JSON.stringify(p.under)}`);
+  // Without the relief (or a way ending at the water): as before.
+  const before = wayDeckProfile('OSM1', 'test', road, 6, wet, () => false)!;
+  assert.ok(Math.abs(before.x[0] + before.deck[1] - 31) < 0.6 && !before.under, 'no relief: the water plus the abutment');
+  // A slope away from the water that never climbs back (a dike down to a polder): no hole.
+  const slope = (x: number) => (x <= 20 ? 1 : -1);
+  assert.ok(!wayDeckProfile('OSM1', 'test', road, 6, wet, () => false, slope)!.under, 'a slope keeps the deck');
+  // A way that ends at the water: the bank beside it is not under the bridge.
+  assert.ok(!wayDeckProfile('OSM1', 'test', [[12, 0], [31, 0]], 6, wet, () => false, hole)!.under, 'the way ends at the quay');
+});
+
 test('movable leaves from the OSM way (ride review P4, BRU0237): a 12.7 m movable stretch on a 21.5 m footprint is a double bascule at its heels', () => {
   // The footprint along +x (0–21.5 m, 6 m wide), the movable way 4.4–17.1 m, the fixed ways beyond it.
   const ring: Vec2[] = [[0, -3], [21.5, -3], [21.5, 3], [0, 3]];

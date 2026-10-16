@@ -79,7 +79,7 @@ async function main(): Promise<void> {
   await store.init();
   console.log(JSON.stringify({ osmCells: store.osmCells.size, reliefTiles: store.relief.tiles.length }));
   if (process.argv.includes('--roads')) { await roadsTable(); return; }
-  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); process.exitCode = failed ? 1 : 0; return; }
+  if (process.argv.includes('--parapets')) { await parapetRegressions(); await bridgeSurfaceRegressions(); await wayDeckHoleRegressions(); process.exitCode = failed ? 1 : 0; return; }
   if (process.argv.includes('--all')) {
     const rows = [];
     for (const key of [...store.osmCells].sort()) {
@@ -248,6 +248,7 @@ async function main(): Promise<void> {
   await deckSlabRegressions();
   await parapetRegressions();
   await bridgeSurfaceRegressions();
+  await wayDeckHoleRegressions();
   await zooRegressions();
   await courtyardRegressions();
   await parkFillRegressions();
@@ -833,6 +834,45 @@ async function bridgeSurfaceRegressions(): Promise<void> {
     const miss = (r: typeof on) => r.missing.find(m => m.id === id);
     check(!miss(on), `bridge way ${id} (${label}): a surface along it${miss(on) ? ` (missing ${miss(on)!.missing}/${miss(on)!.stations})` : ''}; ${on.missing.length} of ${on.ways} bridge ways in ${key} missing`);
     check(!!miss(was), `bridge way ${id}: without the way decks ${miss(was)?.missing ?? 0}/${miss(was)?.stations ?? 0} stations missing (the pin is live)`);
+  }
+}
+
+/**
+ * Way decks over a hole (user 2026-10-16, "the railing runs diagonally across the cycle path" at the Jan Evertsenstraat
+ * over the Erasmusgracht): the bridge spans the canal and the Rembrandtpark underpass beside it (OSM path 122525654,
+ * municipal panorama TMX7316010203-002500_pano_0000_000916 under the deck), and the relief is interpolated low under the
+ * whole structure. The way deck ended 1 m past the water, its approach landed in the underpass 1.8 m under the west
+ * bank, the street sloped down into it and the south parapet ran 1.7 m down its ramp. Now (wayDecks.ts HOLE_M) the
+ * deck runs on to the far bank: over the underpass the street stays within 0.6 m of the west bank, and each parapet
+ * stays within 0.6 m of the deck level over its run, reaching past the underpass. Without the hole rule it does not
+ * (the pin is live). Both road modes.
+ */
+const WAY_DECK_HOLES: [string, number, number, [number, number], string][] = [['OSM323258135', 4.84795, 52.36965, [4.84787, 52.36963], 'Jan Evertsenstraat over the Erasmusgracht and the Rembrandtpark underpass']];
+async function wayDeckHoleRegressions(): Promise<void> {
+  const noHoles = new GroundStore(readExtract, { wayDeckHoles: false });
+  await noHoles.init();
+  for (const [id, lng, lat, underpass, label] of WAY_DECK_HOLES) for (const [mode, s] of [['osm', store], ['roads', roadsStore], ['no-holes', noHoles]] as const) {
+    await s.init();
+    const [x, y] = toLocal(lng, lat), [ux, uy] = toLocal(underpass[0], underpass[1]);
+    let input: KitInput | null = null;
+    kitTrace.input = k => { if (k.id === id && k.lod === 0) input = k; };
+    for (const k of GroundStore.neighbours(s.cellAt(x, y)).filter(k => s.covers(k))) buildCell(await s.cellInput(k, 0));
+    kitTrace.input = null;
+    const got = input as KitInput | null;
+    check(!!got, `${id} (${label}, ${mode}): kit built`);
+    if (!got) continue;
+    const bank = got.rows[0].z, over = s.surface.height(ux, uy);
+    const live = mode === 'no-holes';
+    const level = Math.abs(over - bank) <= 0.6;
+    check(live ? !level : level, `${id} ${mode}: over the underpass the street at ${over.toFixed(2)} m, the west bank ${bank.toFixed(2)} m${live ? ' (without the hole rule it sinks: the pin is live)' : ''}`);
+    if (live) continue;
+    for (const side of [0, 1]) {
+      const run = got.parapetSides?.[side] ?? got.parapet, on = got.rows.filter(r => r.s >= run[0] - 1e-6 && r.s <= run[1] + 1e-6);
+      const drop = Math.max(...on.map(r => Math.abs((side ? r.zR : r.zL) - r.z)));
+      // Past the underpass: the run's end station beyond the station nearest the path, plus its half-width (2.35 m).
+      const atPath = got.rows.reduce((m, r) => (Math.hypot(r.c[0] - ux, r.c[1] - uy) < Math.hypot(m.c[0] - ux, m.c[1] - uy) ? r : m)), reach = run[1] > atPath.s + 2.35;
+      check(drop <= 0.6 && reach, `${id} ${mode} ${side ? 'right' : 'left'} parapet: within ${drop.toFixed(2)} m of the deck level over ${(run[1] - run[0]).toFixed(1)} m, ${reach ? 'past' : 'short of'} the underpass`);
+    }
   }
 }
 

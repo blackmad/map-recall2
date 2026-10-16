@@ -257,7 +257,9 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
     // Past the road's half-width (an outline wider than the road, DeckProfile.sides) the surface there is the canal: the deck's own level.
     const zAt = (q: Vec2, w: number) => (!height ? z : w > hw + 0.01 ? Math.max(z, height(q[0], q[1])) : height(q[0], q[1]));
     return { s: p.s[i], c: [p.x[i], p.y[i]], n, L, R, z, zL: zAt(L, hl), zR: zAt(R, hr),
-      water: overWater(p.x[i], p.y[i]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: ground(L[0], L[1]), gR: ground(R[0], R[1]), ...waterOutside(L, R, n, overWater) };
+      water: overWater(p.x[i], p.y[i]), wL: overWater(L[0], L[1]), wR: overWater(R[0], R[1]), gL: ground(L[0], L[1]), gR: ground(R[0], R[1]),
+      // Over a hole past a way deck's water (wayDecks.ts HOLE_M: an underpass, its ramps) the edge has a drop outside it, as over the water: the parapet runs on.
+      ...(p.under?.some(([a, b]) => p.s[i] >= a - 1e-6 && p.s[i] <= b + 1e-6) ? { oL: true, oR: true } : waterOutside(L, R, n, overWater)) };
   });
   // Water spans: the profile's measured water (the pipeline's AHN water) where it has one, else the mask's runs along the centre.
   const runs: [number, number][] = [];
