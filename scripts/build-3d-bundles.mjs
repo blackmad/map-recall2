@@ -51,12 +51,6 @@ const targets = [
     globalName: 'CanalRecallSignature3D',
   },
   {
-    // Opt-in canal elevation (`?elevation=1`); vector-map.js loads it on demand.
-    entry: 'src/canalRecall/elevation/elevationBrowser.ts',
-    out: 'public/canal-drive/js/canal-elevation.bundle.js',
-    globalName: 'CanalRecallElevation',
-  },
-  {
     // Own ground in the riding view (`?ownGround=1`); vector-map.js loads it on
     // demand. THREE is injected by the shared frame, so no shim is involved.
     entry: 'src/canalRecall/ownGround/gameBrowser.ts',

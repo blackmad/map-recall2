@@ -670,13 +670,9 @@ export const LABEL_INK = {
   destination: HIGHLIGHT_CORAL,
 } as const;
 
-/** `ink`: warm dark text on a thin paper halo (default). `paper`: paper text on an ink halo. */
-export type LabelTone = 'ink' | 'paper';
-
-export function labelTone(tone: LabelTone): { text: string; muted: string; halo: string; dot: string } {
-  return tone === 'paper'
-    ? { text: LABEL_INK.paper, muted: LABEL_INK.paperSunk, halo: 'rgba(31,28,23,0.82)', dot: LABEL_INK.paper }
-    : { text: LABEL_INK.ink, muted: LABEL_INK.inkMuted, halo: 'rgba(251,248,242,0.94)', dot: LABEL_INK.ink };
+/** Label ink: warm dark text on a thin paper halo. */
+export function labelInk(): { text: string; muted: string; halo: string; dot: string } {
+  return { text: LABEL_INK.ink, muted: LABEL_INK.inkMuted, halo: 'rgba(251,248,242,0.94)', dot: LABEL_INK.ink };
 }
 
 /**

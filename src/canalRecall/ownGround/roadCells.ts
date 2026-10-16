@@ -87,6 +87,23 @@ export function roadMesh(cls: RoadClass, fysiekVoorkomen: string | null | undefi
   return 'asphalt';
 }
 
+/** Metres of tram track along a rijbaan section that keep it grey under a fietsstraat (the Marnixstraat busway). */
+export const FIETSSTRAAT_RAIL_MAX_M = 12;
+/** A fietsstraat needs this many metres of its own centreline on a rijbaan section to paint it. */
+export const FIETSSTRAAT_MIN_M = 4;
+/**
+ * Whether a BGT rijbaan section is the fietsstraat's (roads lane phase 2, 2026-10-16): decided per polygon in the
+ * extractor from the OSM carriageway centrelines measured over it. `fiets`: metres of fietsstraat way
+ * (cyclestreet / bicycle_road, osmGround `isFietsstraat`) inside the polygon; `other`: metres of any other
+ * carriageway (the cross street through a junction polygon, a busway); `rails`: metres of tram track
+ * (`embedded_rails=tram`). Red when the fietsstraat runs along the section at least as far as everything else and
+ * no tram track runs along it: a junction polygon at a fietsstraat's end belongs to the cross street, and the
+ * busway with four rails by the Tweede Marnixplantsoen stays grey (it was one red polygon with the rails on it).
+ */
+export function fietsstraatSection(m: { fiets: number; other: number; rails: number }): boolean {
+  return m.fiets >= FIETSSTRAAT_MIN_M && m.fiets >= m.other && m.rails < FIETSSTRAAT_RAIL_MAX_M;
+}
+
 /** Whether a kerb runs between two touching polygons (one at road level, one at pavement level, same height). */
 export function kerbBetween(a: Pick<RoadSurface, 'c' | 'h'>, b: Pick<RoadSurface, 'c' | 'h'>): boolean {
   if (a.h !== b.h) return false;

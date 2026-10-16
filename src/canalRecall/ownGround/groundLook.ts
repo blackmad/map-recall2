@@ -1,27 +1,21 @@
-// Ground palette variants for the own ground (`?groundLook=measured|bright|legacy-ish`), colour only (pure).
+// The own ground's palette, colour only (pure).
 //
 // The user's "city too dark" (2026-10-14) after the light lane's flat-ground gain: own ground drew road 99 /
 // pavement 150 / water 105 against the legacy basemap's 234 / 246 / 187 at the Singelgracht boat spot, and the
-// gap is palette. Three candidates sit beside today's palette (`default`, unchanged until the user picks one);
-// docs/ground-tones-20261014.md has the measurements and the frames.
+// gap is palette. docs/ground-tones-20261014.md has the measurements and the frames. The user picked `bright`;
+// the `measured` and `legacy-ish` candidates and the `?groundLook=` flag were deleted 2026-10-16 (HISTORY).
 //
-//   measured    PDOK 8 cm orthophoto, dehazed, sunlit medians (scripts/own-ground/measure-ground-tones.ts) over
-//               the Singelgracht, Houtmankade and Prinsengracht: asphalt, pavement and cycle red all sit at luma
-//               ~165 from above, klinker ~148, so the legend there is hue, not lightness. Legend floor: klinker
-//               and cycle chroma raised (cycle along the panoramas' red hue, 26–30°) until asphalt, klinker and
-//               cycle are ΔE76 ≥ 20 apart; luma kept. Water is the nadir median (dark, near-neutral).
-//   bright      measured hues, road at luma 130 and pavement 175; klinker and cycle keep their measured ratio to
-//               the road; a sunny canal blue, 4f86a3 at luma ~123 (user 2026-10-16: "just pick a good blue").
-//   legacy-ish  toward the legacy basemap's near-white streets: road 200, pavement 215, pale grey-green water 170;
-//               land, squares and paving lifted with it so a pavement is not brighter than the square it meets.
+//   default     palette.ts as it is (the base the bright look patches; unit tests and the far-ring fallback).
+//   bright      measured hues (PDOK 8 cm orthophoto, dehazed sunlit medians), road at luma 130 and pavement 175;
+//               klinker and cycle keep their measured ratio to the road; a sunny canal blue, 4f86a3 at luma ~123
+//               (user 2026-10-16: "just pick a good blue").
 //
 // Only ground surfaces change: facades, roofs, trees, hedges, furniture, bollards, rails and lane paint keep
-// their colours, and the materials are the same (no perf difference: a variant is a different base colour).
+// their colours, and the materials are the same.
 
 import { GROUND_TONES, STREET_GROUND, type RGB } from '../look/palette.js';
 
-export type GroundLook = 'default' | 'measured' | 'bright' | 'legacy-ish';
-export const GROUND_LOOKS: readonly GroundLook[] = ['default', 'measured', 'bright', 'legacy-ish'];
+export type GroundLook = 'default' | 'bright';
 
 export interface StreetGroundPalette {
   asphalt: { base: RGB };
@@ -35,16 +29,8 @@ type Widen<T> = T extends string ? string : T extends RGB ? RGB : { readonly [K 
 export type GroundTonesPalette = Widen<typeof GROUND_TONES>;
 export interface GroundPalette { street: StreetGroundPalette; tones: GroundTonesPalette }
 
-/** The look the game ships with (user 2026-10-14, "city too dark": `bright`); `?groundLook=default` gives the old palette. */
+/** The look the game ships with (user 2026-10-14, "city too dark": `bright`). */
 export const GROUND_LOOK_DEFAULT: GroundLook = 'bright';
-
-/** The look from the page: `?groundLook=` or `window.__canalRecallGroundLook`; anything else is GROUND_LOOK_DEFAULT. */
-export function groundLookFrom(search?: string): GroundLook {
-  const g = globalThis as { __canalRecallGroundLook?: string; location?: { search?: string } };
-  const m = /[?&]groundLook=([\w-]+)/.exec(search ?? g.location?.search ?? '');
-  const v = m?.[1] ?? g.__canalRecallGroundLook;
-  return (GROUND_LOOKS as readonly string[]).includes(v ?? '') ? v as GroundLook : GROUND_LOOK_DEFAULT;
-}
 
 const hex = (c: RGB) => '#' + c.map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
 /** A joint the same fraction of its base as today's (klinker 0.62, pavement 0.72), so mortar stays proportionate. */
@@ -55,18 +41,9 @@ export const GROUND_LOOK_TONES: Readonly<Record<Exclude<GroundLook, 'default'>, 
   asphalt: RGB; cycle: RGB; klinker: RGB; pavement: RGB; water: RGB; kerb?: string;
   land?: RGB; paving?: RGB; square?: RGB; parking: RGB; parkPath: RGB;
 }>> = {
-  measured: {
-    asphalt: [168, 166, 157], pavement: [172, 164, 151], klinker: [172, 133, 108], cycle: [242, 145, 142],
-    water: [50, 55, 55], land: [172, 164, 151], paving: [176, 168, 155], square: [180, 172, 158], parking: [160, 158, 151], parkPath: [174, 172, 164],
-  },
   bright: {
     asphalt: [132, 130, 124], pavement: [183, 174, 161], klinker: [138, 101, 78], cycle: [204, 107, 106],
     water: [79, 134, 163], land: [185, 174, 156], paving: [194, 184, 167], square: [198, 187, 169], parking: [126, 125, 120], parkPath: [142, 140, 134],
-  },
-  'legacy-ish': {
-    asphalt: [202, 200, 193], pavement: [222, 214, 202], klinker: [199, 159, 134], cycle: [255, 167, 163],
-    water: [154, 175, 167], kerb: '#e6e2d9', land: [200, 190, 172], paving: [214, 204, 188], square: [218, 208, 190],
-    parking: [192, 191, 185], parkPath: [206, 204, 197],
   },
 };
 
