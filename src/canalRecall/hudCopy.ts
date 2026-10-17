@@ -23,3 +23,12 @@ export function scoreTally({ correct, attempts, points, gamey, compact = false }
 export function zoomBadgeText(zoom: number): string {
   return `Zoom ${Math.round(zoom * 100)}%`;
 }
+
+/**
+ * One frame of the zoom badge: flash only when the zoom changed and the
+ * player asked for it. Other changes (intro flight, the camera settling
+ * after it, a resize) are absorbed. The caller clears the request each frame.
+ */
+export function zoomBadgeShouldFlash(lastShown: number | null, zoom: number, playerZoomed: boolean): boolean {
+  return playerZoomed && lastShown !== null && lastShown !== zoom;
+}
