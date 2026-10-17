@@ -30,11 +30,11 @@
     "brick": "#8f4c3b"
   },
   "attribution": {
-    "title": "Kinderbrug: Girl with squirrels (Hildo Krop) - original low-poly reconstruction",
-    "author": "Map Recall; after the group by Hildo Krop on bridge 420",
-    "sourceUrl": "https://www.openstreetmap.org/node/4370460330",
-    "modifications": "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE"
+    "title": "Kinderbrug: Girl with squirrels (Hildo Krop) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Hildo Krop (1931); figure reconstructed from photographs by Alf van Beem, Paul van Galen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brug_420_Kinderbrug_pic_7.JPG",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"Brug 420 Kinderbrug pic 7.JPG\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Brug_420_Kinderbrug_pic_7.JPG); \"Brug over Boerenwetering tussen Muzenplein en Churchilllaan - Amsterdam - 20011025 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_tussen_Muzenplein_en_Churchilllaan_-_Amsterdam_-_20011025_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/kinderbrug-meisje-eekhoorns.json."
   }
 }

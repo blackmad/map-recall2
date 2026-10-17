@@ -31,11 +31,11 @@
     "greyBrick": "#4b4c4c"
   },
   "attribution": {
-    "title": "Simon Carmiggelt bust - original low-poly reconstruction",
-    "author": "Map Recall; after the 1988 bust by Kees Verkade",
-    "sourceUrl": "https://www.openstreetmap.org/node/440673918",
-    "modifications": "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE"
+    "title": "Simon Carmiggelt bust (Weteringplantsoen) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Kees Verkade (1988); figure reconstructed from photographs by Ceescamel, Rob Croes / Anefo",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Simon Carmiggeltbeeld.jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6,_Bestanddeelnr_934-3460.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam_Ton_van_Duinhoven_en,_Bestanddeelnr_934-3461.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/carmiggelt-borstbeeld.json."
   }
 }

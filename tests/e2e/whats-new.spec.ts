@@ -29,10 +29,9 @@ test('whats-new landing page shows counts, a drawn 3D card, and fits the viewpor
   await page.getByRole('button', { name: 'All', exact: true }).click();
   await page.locator('#q').fill('zzzz-no-such-building');
   await expect(page.locator('#feed .empty')).toBeVisible();
-  // Held models (`status: "held"` in manualCatalogue.json, `held` in signature-landmarks.json) stay off the page:
-  // the two Kinderbrug figure-kit statues were held after the 2026-10-17 review.
+  // The two Kinderbrug groups, held after the 2026-10-17 review, are back as photo reconstructions.
   await page.locator('#q').fill('Kinderbrug');
-  await expect(page.locator('#feed .empty')).toBeVisible();
+  await expect(page.locator('#feed .empty')).toBeHidden();
   await page.locator('#q').fill('');
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);

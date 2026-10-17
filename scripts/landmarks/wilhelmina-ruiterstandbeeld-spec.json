@@ -32,11 +32,11 @@
     "gold": "#a38d4d"
   },
   "attribution": {
-    "title": "Ruiterstandbeeld Wilhelmina - original low-poly reconstruction",
-    "author": "Map Recall; commemorated sculpture by Theresia van der Pant (1960)",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Equestrian_statue_of_Wilhelmina,_Rokin_(Amsterdam)",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly figure and pedestal. Pose and proportions from RCE photographs by Loek Tangel (CC BY-SA 4.0), a FaceMePLS photograph (CC BY 2.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+    "title": "Ruiterstandbeeld Wilhelmina - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Theresia van der Pant (1972); figure reconstructed from photographs by Stephencdickson, Gouwenaar, Pēteris",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Queen_Wilhelmina_of_the_Netherlands,_Amsterdam.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Statue of Queen Wilhelmina of the Netherlands, Amsterdam.jpg\" by Stephencdickson (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Statue_of_Queen_Wilhelmina_of_the_Netherlands,_Amsterdam.jpg); \"Wilhelmina Rokin door Theresia van der Pant.jpg\" by Gouwenaar (CC0, https://commons.wikimedia.org/wiki/File:Wilhelmina_Rokin_door_Theresia_van_der_Pant.jpg); \"File by Peteris P1170742 (3666927469).jpg\" by Pēteris (CC BY 2.0, https://commons.wikimedia.org/wiki/File:File_by_Peteris_P1170742_(3666927469).jpg); \"Wilhelmina2 Rokin door Theresia van der Pant.jpg\" by Gouwenaar (CC0, https://commons.wikimedia.org/wiki/File:Wilhelmina2_Rokin_door_Theresia_van_der_Pant.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/wilhelmina-ruiterstandbeeld.json."
   }
 }

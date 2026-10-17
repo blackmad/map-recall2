@@ -35,11 +35,11 @@
     "frame": "#8f8a7f"
   },
   "attribution": {
-    "title": "Gandhi statue (Churchill-laan) - original low-poly reconstruction",
-    "author": "Map Recall; after the Gandhi statue on the Churchill-laan median",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(5).jpg",
-    "modifications": "Original texture-free low-poly figure, plinth, paving, benches and hedge built from Commons photographs: Gandhi (Amsterdam) 1-5 (Ceescamel, CC BY-SA 4.0), Statue of Gandhi, Amsterdam (Antony Antony, CC BY 2.0), Gandhi churchilllaan (Evanherk, CC BY-SA 3.0). No pixels or third-party meshes imported.",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE"
+    "title": "Mahatma Gandhi statue (Churchill-laan) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Gautam Pal (1990); figure reconstructed from photographs by Antony Antony, Ceescamel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi,_Amsterdam.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Statue of Gandhi, Amsterdam.jpg\" by Antony Antony (CC BY 2.0, https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi,_Amsterdam.jpg); \"Gandhi (Amsterdam) (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(1).jpg); \"Gandhi (Amsterdam) (2).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(2).jpg); \"Gandhi (Amsterdam) (3).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(3).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/gandhi-churchill-laan.json."
   }
 }

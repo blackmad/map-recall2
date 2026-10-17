@@ -31,11 +31,11 @@
     "concrete": "#7f8283"
   },
   "attribution": {
-    "title": "Theo Thijssen monument - original low-poly reconstruction",
-    "author": "Map Recall; after the 1960 monument by Hans Bayens",
-    "sourceUrl": "https://www.openstreetmap.org/node/250624675",
-    "modifications": "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+    "title": "Theo Thijssen monument (Lindengracht) - reconstruction from photographs",
+    "author": "Map Recall; sculpture by Hans Bayens (1960); figure reconstructed from photographs by Alf van Beem, Ceescamel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
     "licence": "Original project asset",
-    "licenceUrl": "./LICENSE"
+    "licenceUrl": "./LICENSE",
+    "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Lindengracht, Theo Thijssen beeld foto 1.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg); \"Lindengracht, Theo Thijssen beeld foto 2.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_2.jpg); \"2023 Theo Thijssen door Bayens, Asd (3).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(3).jpg); \"2023 Theo Thijssen door Bayens, Asd (2).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(2).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/theo-thijssen-standbeeld.json."
   }
 }
