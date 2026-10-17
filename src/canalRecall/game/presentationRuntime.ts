@@ -36,6 +36,7 @@ import { introFrame, introOverview, introPlan } from './introFlight';
 import { vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
+import { zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
 import { finishBlurb } from './finishBlurb';
@@ -888,9 +889,9 @@ export class GamePresentationRuntime {
     const surface = window.CanalRecallUi.hudSurface;
     this.hud.paperCard(ctx, rect, { radius: 9 });
     ctx.fillStyle = surface.inkMuted;
-    ctx.font = `700 12px ${surface.fontMono}`;
+    ctx.font = `700 11px ${surface.fontMono}`;
     ctx.textAlign = 'center';
-    ctx.fillText(`${Math.round(this.camera.zoom * 100)}%`, rect.x + rect.width / 2, rect.y + 15);
+    ctx.fillText(zoomBadgeText(this.camera.zoom), rect.x + rect.width / 2, rect.y + 15);
   }
 
   _renderRecenterButton(): void {

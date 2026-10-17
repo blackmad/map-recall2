@@ -44,8 +44,8 @@ const TRANSIT = [
 ];
 const HOME = [
   (km: number) => km > 0
-    ? `Home ring · learn within ~${km.toFixed(1)} km`
-    : 'Home base · grow your learning ring',
+    ? `Learn the streets within ~${km.toFixed(1)} km of home`
+    : 'Rides from home reach further as you learn',
   () => 'Errand mode: leave knowing the way back',
 ];
 const HERE = [
