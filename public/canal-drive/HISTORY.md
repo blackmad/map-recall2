@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## Feedback preview no longer black; coverage page shows buurten with their own look (2026-10-17)
+
+Lane `lane/feedback-coverage-20261016` (b87dca908, 6d9a93c53, 4b8be10d1,
+c782b9ff4). User: "why black screen on this popup?". The default feedback
+target's `querySelector('#gameCanvas, main canvas, canvas')` returned
+MapLibre's canvas (first in DOM order), so the capture skipped the render
+callback and read a cleared WebGL buffer; the JPEG made the transparent
+frame black (5.6 KB, luma 0). It now prefers the HUD canvas, routes a map
+canvas through the HUD composite, captures on `'render'` even while tiles
+stream and drops a fully transparent capture; no preserveDrawingBuffer.
+`feedback.spec.ts` asserts preview luma and variance on desktop and phone
+(147/38 desktop, 140/43 phone).
+
+User: "are there any buurts that have their own look/style? could we
+highlight those and see some examples". "Own look" counts pands drawn from
+kit made for the district (block-face chunks by house type or measured
+face, plus building-type design instances), each pand once by tier
+(`src/canalRecall/coverage/ownLook.ts`, tested). 34 buurten drawn (3,367
+pands), 6 authored only; KD02 Cornelis Schuytbuurt has none and says so.
+`coverage.html` gains `?colour=look`, an orange outline (solid drawn,
+dashed authored; `?mark=0`), a filter `?own=1`, a ranked list, and per-buurt
+cards: kit render beside the archived CC BY 4.0 photo crop, 3D link and a
+"ride past it" link. Thumbnails from `scripts/coverage/build-look-thumbs.ts`
+(141 JPEGs, ~1 MB in `coverage-v1/look/`).
+
 ## Road look v2: measured tones and markings on the surveyed roads (2026-10-16)
 
 User (2026-10-16 evening): "not gonna lie, our roads still don't look great".
