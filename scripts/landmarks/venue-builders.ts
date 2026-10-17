@@ -46,8 +46,13 @@ export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
  }else if(id==='magna-plaza'){
   // Neo-Gothic post office: striped brick, tall arches, pear-shaped corner turrets.
   box(0,0,0,width*.98,18.5,depth*.95,'brick');gable(0,18.5,0,width*.98,6,depth*.96,'slate');
-  for(const z of [-depth*.48,depth*.48]){for(const y of [1,5.6,10.2,14.7,18.2])box(0,y,z,width,.35,.45,'stone');for(let x=-width*.44;x<=width*.44;x+=5.3){win(x,1.5,z+.15,2.5,3.6,true);win(x,6.4,z+.15,2.4,3.1,true);win(x,10.9,z+.15,2.4,3.1,true);box(x-2.1,.4,z,.35,18,.5,'stone');gable(x,18.8,z,3.7,3.5,2,'brick');win(x,19.1,z+1.06,1.5,2.2,true);}}
-  for(const x of [-width*.43,width*.43])for(const z of [-depth*.39,depth*.39]){box(x,0,z,6,23.3,6,'brick');for(const y of [5.6,10.2,14.7,18.2,22.9])box(x,y,z,6.4,.4,6.4,'stone');for(const y of [6.4,11,16.1])win(x,y,z+3.1,2.4,3.7,true);add(new T.CylinderGeometry(2.2,3.1,2,8),'stone',x,24.4,z);add(new T.SphereGeometry(1,8,6).scale(2.9,4.5,2.9),'slate',x,29.6,z);add(new T.ConeGeometry(1.3,3,8),'slate',x,34.4,z);box(x,35.7,z,.14,2.4,.14,'gold');}
+  // Long fronts, the north one through the same yaw as the south (2026-10-17: its windows were extruded into the wall and
+  // z-fought it 3 cm deep), with no bays drawn into the corner turrets.
+  const turretX=width*.43,clearOfTurret=(x:number)=>Math.abs(Math.abs(x)-turretX)>3.6;
+  for(const t of [0,Math.PI]){turn=t;const z=depth*.48;for(const y of [1,5.6,10.2,14.7,18.2])box(0,y,z,width,.35,.45,'stone');for(let x=-width*.44;x<=width*.44;x+=5.3){if(!clearOfTurret(x))continue;win(x,1.5,z+.15,2.5,3.6,true);win(x,6.4,z+.15,2.4,3.1,true);win(x,10.9,z+.15,2.4,3.1,true);box(x-2.1,.4,z,.35,18,.5,'stone');gable(x,18.8,z,3.7,3.5,2,'brick');win(x,19.1,z+1.06,1.5,2.2,true);}turn=0;}
+  // Corner turrets: the brick shaft stops 10 cm inside its top stone band and the stone drum stands in that band, so no brick
+  // face is flush with the band's top under the slate dome (2026-10-17 z-fight); windows on the turret's street face.
+  for(const t of [0,Math.PI])for(const x of [-turretX,turretX]){turn=t;const z=depth*.39;box(x,0,z,6,23.2,6,'brick');for(const y of [5.6,10.2,14.7,18.2,22.9])box(x,y,z,6.4,.4,6.4,'stone');for(const y of [6.4,11,16.1])win(x,y,z+3.1,2.4,3.7,true);add(new T.CylinderGeometry(2.2,3.1,2,8),'stone',x,24.25,z);add(new T.SphereGeometry(1,8,6).scale(2.9,4.5,2.9),'slate',x,29.6,z);add(new T.ConeGeometry(1.3,3,8),'slate',x,34.4,z);box(x,35.7,z,.14,2.4,.14,'gold');turn=0;}
   // East and west elevations (643 m2 of blank brick each): the same stone-banded rhythm of arched windows as the long fronts, clear of the corner turrets.
   for(const t of [Math.PI/2,-Math.PI/2]){turn=t;const zz=width*.49;
    for(const y of [1,5.6,10.2,14.7,18.2])box(0,y,zz,depth*.95,.35,.45,'stone');
