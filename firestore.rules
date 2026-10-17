@@ -55,6 +55,27 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // POI and tour stamps (src/canalRecall/collection/poiCollection.ts). One
+    // document per stamp; the client merges newest-wins with counts max'd.
+    match /users/{userId}/poiStamps/{stampId} {
+      allow read, delete: if owns(userId);
+      allow create, update: if owns(userId)
+        && request.resource.data.keys().hasOnly(['id', 'kind', 'name', 'firstEarnedAt', 'lastEarnedAt', 'how', 'count', 'schemaVersion'])
+        && request.resource.data.id == stampId
+        && stampId.size() <= 128
+        && (request.resource.data.kind == 'poi' || request.resource.data.kind == 'tour')
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 200
+        && request.resource.data.firstEarnedAt is number
+        && request.resource.data.lastEarnedAt is number
+        && request.resource.data.lastEarnedAt >= request.resource.data.firstEarnedAt
+        && (request.resource.data.how == 'arrived' || request.resource.data.how == 'named' || request.resource.data.how == 'completed')
+        && request.resource.data.count is int
+        && request.resource.data.count >= 1
+        && request.resource.data.count <= 100000
+        && request.resource.data.schemaVersion == 1;
+    }
+
     match /users/{userId}/gameSessions/{sessionId} {
       allow read, create, update, delete: if owns(userId);
     }
