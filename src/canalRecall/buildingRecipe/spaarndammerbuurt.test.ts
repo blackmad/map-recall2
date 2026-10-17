@@ -163,6 +163,9 @@ test('renderedGable: the Zaanhof crown painted white, two bargeboards inside its
   // Without the key: no boards.
   const plain = fitIntent(house('zaanhof-1919-white-gable', pand, 'Zaanhof', f => { delete f.renderedGable; }), facts);
   assert.ok(!(plain.recipe.elevations[0].ornaments?.value ?? []).some(o => o.id.startsWith('bargeboard-')));
+  // The boards replace the crown's frame-class edge boxes.
+  assert.equal(e.crown!.value.trimWidthM, 0);
+  assert.equal(plain.recipe.elevations[0].crown!.value.trimWidthM, 0.08);
 });
 
 test('bargeboardOrnaments: raking edges only, cut level at the eaves', () => {

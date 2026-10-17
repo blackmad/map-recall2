@@ -947,8 +947,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       }
     }
     if (profile) {
-      elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
-      // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts).
+      elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
+      // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
       if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
       // A measured entablature under a neck/bell cap: a stone frieze and cap (the crown head clipped above the frieze
       // foot) and a cornice ledge projecting past the neck. One crown per front only.
