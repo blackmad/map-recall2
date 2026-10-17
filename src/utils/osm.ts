@@ -626,22 +626,6 @@ export async function fetchCategorySpecificOSMFeatures(
 }
 
 /**
- * Standard fetch of local OSM features for "My Location" or city
- */
-export async function fetchLocalOSMFeatures(
-  lat: number,
-  lon: number,
-  locationName: string,
-  scope: LocationScope = 'city',
-  onProgress?: (progress: LoadingProgress) => void,
-  forceRefresh = false,
-  radiusOverride?: number,
-  areaId?: number
-): Promise<StreetFeature[]> {
-  return fetchCategorySpecificOSMFeatures(lat, lon, locationName, 'all', scope, onProgress, forceRefresh, radiusOverride, areaId);
-}
-
-/**
  * Calculates Euclidean distance in meters between two coordinates.
  */
 function distanceMeters(a: { lat: number; lon: number }, b: { lat: number; lon: number }): number {

@@ -309,24 +309,6 @@ export function clearAllFeatureCache(): void {
   }
 }
 
-/**
- * Removes an individual cache entry
- */
-export function removeCacheEntry(id: string): void {
-  memoryCache.delete(id);
-  try {
-    localStorage.removeItem(`${STORAGE_PREFIX}feat_${id}`);
-    const rawIndex = localStorage.getItem(FEATURES_INDEX_KEY);
-    if (rawIndex) {
-      const keys: string[] = JSON.parse(rawIndex);
-      const filtered = keys.filter((k) => k !== id);
-      localStorage.setItem(FEATURES_INDEX_KEY, JSON.stringify(filtered));
-    }
-  } catch (err) {
-    console.warn('Error removing cache entry:', err);
-  }
-}
-
 const SEARCH_HISTORY_KEY = `${STORAGE_PREFIX}search_history`;
 
 /**

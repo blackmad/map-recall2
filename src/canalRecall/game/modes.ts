@@ -46,7 +46,6 @@ export type RoutePattern = typeof ROUTE_PATTERNS[number];
 
 /** Which leg of a there-and-back home route is being driven. */
 export const HOME_LEGS = ['outbound', 'return'] as const;
-export type HomeLeg = typeof HOME_LEGS[number];
 
 /** What a recall question is asking about. Drives the chip at the top of the
  *  prompt card. */

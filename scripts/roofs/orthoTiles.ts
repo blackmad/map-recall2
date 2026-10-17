@@ -27,11 +27,6 @@ export const tileOfRd = (x: number, y: number, level: number): { col: number; ro
   col: Math.floor((x - RD_ORIGIN.x) / tileSpanM(level)),
   row: Math.floor((RD_ORIGIN.y - y) / tileSpanM(level)),
 });
-/** RD of a tile's top-left corner. */
-export const tileOriginRd = (col: number, row: number, level: number): { x: number; y: number } => ({
-  x: RD_ORIGIN.x + col * tileSpanM(level),
-  y: RD_ORIGIN.y - row * tileSpanM(level),
-});
 
 export const DEFAULT_CACHE = path.resolve('.cache/luchtfoto-20261013');
 export const tileFile = (cache: string, k: OrthoTileKey) => path.join(cache, k.layer, String(k.level), String(k.col), `${k.row}.jpeg`);

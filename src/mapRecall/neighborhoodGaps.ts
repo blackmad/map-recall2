@@ -100,13 +100,6 @@ export function distanceKm(a: LatLng, b: LatLng): number {
   return Math.hypot((a[0] - b[0]) * 110.54, (a[1] - b[1]) * kx);
 }
 
-/** The district and quarter (if any) whose outline holds the area's centroid. */
-export function parentsOf(hood: Boundary, all: readonly Boundary[]): { district?: string; quarter?: string } {
-  const c = centroidOf(hood.geometry);
-  const holds = (kind: string) => all.find(b => b !== hood && b.kind === kind && pointInPolygons(c, b.geometry))?.name;
-  return { district: holds('suburb'), quarter: holds('quarter') };
-}
-
 // ---------------------------------------------------------------------------
 // Names
 

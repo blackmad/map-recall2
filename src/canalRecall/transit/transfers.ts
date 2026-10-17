@@ -6,7 +6,7 @@
  * still teaches hub changes without a live download.
  */
 import type { TransitLine, TransitNetwork, TransitStop } from './network.ts';
-import { lineDisplayName, type TransitLineFeature, type TransitPlayLoad } from './segments.ts';
+import { type TransitLineFeature, type TransitPlayLoad } from './segments.ts';
 import type { TransitMode } from './network.ts';
 
 export type TransitTransferSource = 'gtfs' | 'parent' | 'proximity' | 'same-platform';
@@ -434,11 +434,6 @@ export function transferTargetLines(
     for (const line of otherLinesAtStop(load, other, currentLineName)) names.add(line);
   }
   return [...names].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-}
-
-/** Helper for builders: line display name from a network line. */
-export function networkLineName(line: TransitLine): string {
-  return lineDisplayName(line.mode, line.ref);
 }
 
 export type TransitAnchor = {

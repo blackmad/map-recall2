@@ -40,8 +40,3 @@ export function createFacadeSignMaterial(THREE: any, options: FacadeSignMaterial
   const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.DoubleSide });
   return { material, texture, canvas };
 }
-
-/** Assigns a conventional left-to-right sign UV rectangle to a quad. */
-export function signQuadUv(THREE: any) {
-  return [new THREE.Vector2(0, 0), new THREE.Vector2(1, 0), new THREE.Vector2(1, 1), new THREE.Vector2(0, 1)];
-}
