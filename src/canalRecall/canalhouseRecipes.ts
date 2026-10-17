@@ -356,18 +356,32 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     for(let j=0;j<p.count;j++){const y=r.plane.heightM+p.getX(j)*r.plane.slopeX+p.getZ(j)*r.plane.slopeZ; if(y<shellTop-EPS)throw new Error('Roof falls below surveyed shell top');p.setY(j,y);}
     g.computeVertexNormals(); add(g,'roof',`roof/${i}`);
     // Close only surveyed exterior/courtyard boundary edges, never partition seams.
-    for(const ring of [r.polygon.outer,...r.polygon.holes])for(let j=0;j<ring.length;j++){
-      let a=ring[j],b=ring[(j+1)%ring.length];
-      const boundary=boundaries.find(edge=>onSegment(a,edge.a,edge.b)&&onSegment(b,edge.a,edge.b));
-      if(!boundary)continue;
+    const height=(v:CanalhousePoint)=>r.plane.heightM+v[0]*r.plane.slopeX+v[1]*r.plane.slopeZ;
+    const close=(a:CanalhousePoint,b:CanalhousePoint,boundary:typeof boundaries[number],name:string)=>{
       const alignment=(b[0]-a[0])*(boundary.b[0]-boundary.a[0])+(b[1]-a[1])*(boundary.b[1]-boundary.a[1]);
       if(alignment*boundary.sign<0)[a,b]=[b,a];
-      const height=(v:CanalhousePoint)=>r.plane.heightM+v[0]*r.plane.slopeX+v[1]*r.plane.slopeZ;
-      const ha=height(a),hb=height(b);if(Math.max(ha,hb)<=shellTop+EPS)continue;
+      const ha=height(a),hb=height(b);if(Math.max(ha,hb)<=shellTop+EPS)return;
       const values:number[]=[];
       if(ha>shellTop+EPS)values.push(a[0],shellTop,a[1],a[0],ha,a[1],b[0],hb,b[1]);
       if(hb>shellTop+EPS)values.push(a[0],shellTop,a[1],b[0],hb,b[1],b[0],shellTop,b[1]);
-      const closure=new T.BufferGeometry();closure.setAttribute('position',new T.Float32BufferAttribute(values,3));closure.computeVertexNormals();add(closure,'wall',`shell/roof-closure-${i}-${j}`);
+      const closure=new T.BufferGeometry();closure.setAttribute('position',new T.Float32BufferAttribute(values,3));closure.computeVertexNormals();add(closure,'wall',name);
+    };
+    for(const ring of [r.polygon.outer,...r.polygon.holes])for(let j=0;j<ring.length;j++){
+      const a=ring[j],b=ring[(j+1)%ring.length];
+      const boundary=boundaries.find(edge=>onSegment(a,edge.a,edge.b)&&onSegment(b,edge.a,edge.b));
+      if(boundary){close(a,b,boundary,`shell/roof-closure-${i}-${j}`);continue;}
+      // A roof edge over several collinear footprint edges (a facade chord across the erker's foot, Boterdiepstraat 57:
+      // the front's top storey stood open over 2.5 m): split it at the footprint vertices on it and close each piece
+      // that one boundary edge holds.
+      const len=Math.hypot(b[0]-a[0],b[1]-a[1]);if(len<EPS)continue;
+      const cuts=[0,1,...boundaries.flatMap(e=>[e.a,e.b]).filter(v=>onSegment(v,a,b)).map(v=>((v[0]-a[0])*(b[0]-a[0])+(v[1]-a[1])*(b[1]-a[1]))/(len*len))]
+        .filter(t=>t>=0&&t<=1).sort((x,y)=>x-y).filter((t,k,ts)=>k===0||(t-ts[k-1])*len>EPS);
+      if(cuts.length<3)continue;
+      for(let k=0;k+1<cuts.length;k++){
+        const p:CanalhousePoint=[a[0]+(b[0]-a[0])*cuts[k],a[1]+(b[1]-a[1])*cuts[k]],q:CanalhousePoint=[a[0]+(b[0]-a[0])*cuts[k+1],a[1]+(b[1]-a[1])*cuts[k+1]];
+        const piece=boundaries.find(edge=>onSegment(p,edge.a,edge.b)&&onSegment(q,edge.a,edge.b));
+        if(piece)close(p,q,piece,`shell/roof-closure-${i}-${j}-${k}`);
+      }
     }
   }
   // Adjacent surveyed roof partitions can be different-height volumes. Close their
