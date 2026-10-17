@@ -20,6 +20,7 @@ import {
 import { sounds } from '../utils/audio';
 import { mapQuestSite } from '../mapQuestSite';
 import { SiteSwitch } from './SiteSwitch';
+import { AccountChip, type AccountChipUser } from './AccountChip';
 
 interface GameHeaderProps {
   cities: City[];
@@ -55,6 +56,8 @@ interface GameHeaderProps {
   onSelectAdministrativeArea?: (areaId: number | null) => void;
   onSearchLocation?: (query: string) => Promise<void>;
   accountEmail?: string | null;
+  /** The signed-in player for the header's account chip; null for a guest. */
+  accountUser?: AccountChipUser | null;
   isCloudConfigured?: boolean;
   onOpenAuth?: () => void;
   onSignOut?: () => void;
@@ -90,6 +93,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   locationScope,
   onChangeLocationScope,
   accountEmail,
+  accountUser = null,
   isCloudConfigured,
   onOpenAuth,
   onSignOut,
@@ -298,6 +302,16 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               </button>
             )}
 
+            <AccountChip
+              id="header-account-chip"
+              user={accountUser}
+              available={!!isCloudConfigured}
+              onSignIn={() => onOpenAuth?.()}
+              onSignOut={() => onSignOut?.()}
+              progressHref={mapQuestSite.progress}
+              compact={!!roundActive}
+            />
+
             {/* All Options Overflow Menu Button */}
             <button
               id="header-menu-btn"
@@ -411,9 +425,14 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 </div>
               </div>
               {accountEmail ? (
-                <button onClick={() => { onSignOut?.(); setIsMenuOpen(false); }} className="button-secondary flex w-full items-center justify-center gap-2 py-2 text-xs font-semibold">
-                  <LogOut className="h-3.5 w-3.5" /> Sign out
-                </button>
+                <div className="grid grid-cols-2 gap-2">
+                  <a href={mapQuestSite.progress} className="button-secondary flex items-center justify-center gap-2 py-2 text-xs font-semibold no-underline">
+                    My progress
+                  </a>
+                  <button onClick={() => { onSignOut?.(); setIsMenuOpen(false); }} className="button-secondary flex w-full items-center justify-center gap-2 py-2 text-xs font-semibold">
+                    <LogOut className="h-3.5 w-3.5" /> Sign out
+                  </button>
+                </div>
               ) : (
                 <button disabled={!isCloudConfigured} onClick={() => { onOpenAuth?.(); setIsMenuOpen(false); }} className="button-primary flex w-full items-center justify-center gap-2 py-2 text-xs disabled:cursor-not-allowed" title={isCloudConfigured ? 'Sign in to sync progress' : 'Add Firebase environment variables to enable cloud sync'}>
                   <LogIn className="h-3.5 w-3.5" /> {isCloudConfigured ? 'Sign in to sync' : 'Cloud sync not configured'}

@@ -620,6 +620,8 @@ class Game {
       this._ribbon = this.gameyFeatures ? this._computeRouteRibbon() : null;
       this._saveBestTime();
       this._explorationSnapshot = this._saveExploration();
+      // One history record per ride, for My progress (src/canalRecall/routeHistory.ts).
+      if (window.CanalRouteHistory) window.CanalRouteHistory.recordFinishedRide(this);
     } else {
       this.player.finished = false;
       this._reviewStopWait = 0;

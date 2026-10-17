@@ -1,0 +1,143 @@
+/* My progress — daylight paper, Barlow Condensed caps, one copper action per
+   row and one cobalt plaque (the wordmark). The street-name plaques are the
+   only other enamel: they are the signs the player can now read. Matches
+   public/canal-drive/landing.html. */
+/* index.html is the quiz's fixed full-screen shell (html, body and #root are
+   100dvh, overflow hidden); this page scrolls like a document. */
+html.pg-doc, html.pg-doc body, html.pg-doc #root { height: auto; min-height: 100%; overflow: visible; }
+body.pg-body {
+  margin: 0;
+  background: var(--day-paper);
+  color: var(--day-ink);
+  -webkit-font-smoothing: antialiased;
+}
+.pg {
+  --pg-gutter: clamp(16px, 4.5vw, 56px);
+  --pg-display: var(--font-plaque);
+  --pg-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  min-height: 100dvh;
+  background: var(--day-paper);
+  color: var(--day-ink);
+  font: 400 16px/1.55 var(--pg-body);
+  color-scheme: light;
+}
+.pg ::selection { background: var(--day-accent-soft); color: var(--day-ink); }
+:where(.pg) a { color: var(--day-accent-ink); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+:where(.pg) a:hover { text-decoration-thickness: 2px; }
+.pg :focus-visible { outline: 2px solid var(--day-accent-ink); outline-offset: 3px; border-radius: 4px; }
+.pg-wrap { width: min(1120px, 100%); margin: 0 auto; padding: 0 var(--pg-gutter); box-sizing: border-box; }
+
+/* Top bar, as on the landing page, with the account chip at the end. */
+.pg-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: 8px; }
+.pg-wordmark { display: inline-flex; align-items: center; padding: 12px 20px 11px; font: 800 20px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; color: #fff !important; text-decoration: none !important; white-space: nowrap; }
+.pg-nav { display: flex; align-items: center; gap: clamp(8px, 2.2vw, 24px); }
+.pg-nav > a { font: 700 15px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--day-ink); text-decoration: none; padding: 10px 2px; }
+.pg-nav > a:hover { color: var(--day-accent-ink); }
+
+/* Intro: the heading and one sentence of totals, not a row of stat tiles. */
+.pg section.pg-intro { padding: clamp(28px, 6vw, 72px) 0 clamp(32px, 5vw, 56px); }
+.pg h1 { margin: 0; font: 800 clamp(3rem, 7vw, 5.4rem)/0.9 var(--pg-display); letter-spacing: -0.01em; text-transform: uppercase; text-wrap: balance; }
+.pg-ledger { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 22px 0 0; max-width: 46rem; font: 600 clamp(1.25rem, 2.4vw, 1.7rem)/1.3 var(--pg-display); letter-spacing: 0.01em; color: var(--day-ink-muted); text-wrap: pretty; }
+.pg-ledger > span { white-space: nowrap; }
+.pg-ledger > span + span::before { content: "·"; margin: 0 0.55em; color: var(--day-line-strong); }
+.pg-ledger b { font-weight: 800; font-size: 1.32em; color: var(--day-accent-ink); font-variant-numeric: tabular-nums; }
+.pg-ledger em { font-style: normal; font-weight: 500; }
+.pg-ledger:not(:has(span)) { display: block; font: 400 clamp(17px, 1.6vw, 20px)/1.5 var(--pg-body); max-width: 34rem; }
+.pg-sync { margin: 14px 0 0; font-size: 14px; color: var(--day-ink-muted); max-width: 40rem; }
+.pg-link { padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--day-accent-ink); text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+
+/* Sections */
+.pg section { padding: clamp(40px, 6vw, 80px) 0; }
+.pg-band { background: var(--day-paper-raised); border-top: 1px solid var(--day-line); border-bottom: 1px solid var(--day-line); }
+.pg-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; margin-bottom: 20px; }
+.pg h2 { margin: 0; font: 800 clamp(1.9rem, 3.6vw, 2.8rem)/0.95 var(--pg-display); text-transform: uppercase; text-wrap: balance; }
+.pg-head p { margin: 0; font-size: 14px; color: var(--day-ink-muted); }
+.pg h3 { margin: 0; }
+
+/* Rides: a ruled ledger, newest first. */
+.pg-rides { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--day-line); }
+.pg-ride { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--day-line); }
+.pg-ride-mode { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--day-line-strong); background: var(--day-paper); color: var(--day-accent-ink); }
+.pg-ride-mode svg { width: 21px; height: 21px; }
+.pg-ride-route { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.45em; font: 700 clamp(19px, 2vw, 23px)/1.15 var(--pg-display); letter-spacing: 0.01em; text-transform: uppercase; }
+.pg-ride-arrow { color: var(--day-accent); font-family: var(--pg-body); font-weight: 400; }
+.pg-ride-meta { margin: 4px 0 0; font-size: 14px; color: var(--day-ink-muted); font-variant-numeric: tabular-nums; }
+.pg-ride-meta strong { color: var(--day-ink); font-weight: 600; }
+.pg-ride-names { margin: 4px 0 0; font-size: 14px; color: var(--day-ink); overflow-wrap: anywhere; }
+
+/* The copper stamp from the ride's Start button, small. */
+.pg-again, .pg-stamp {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 18px 10px; border-radius: 6px; white-space: nowrap;
+  font: 800 16px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none !important; color: #2a1606 !important;
+  background: linear-gradient(180deg, var(--enamel-copper-hi) 0%, var(--enamel-copper) 48%, var(--enamel-copper-deep) 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 6px 14px rgba(138,85,36,.26);
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms;
+}
+.pg-again::before, .pg-stamp::before { content: ''; position: absolute; inset: 4px; border: 1px solid rgba(255,244,222,.8); border-radius: 3px; pointer-events: none; }
+.pg-again:hover, .pg-stamp:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 10px 20px rgba(138,85,36,.32); }
+.pg-stamp { min-height: 52px; padding: 14px 28px 13px; font-size: 19px; }
+.pg-quiet { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; border-radius: 6px; border: 1px solid var(--day-line-strong); background: var(--day-paper); font: 700 15px/1 var(--pg-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--day-ink); cursor: pointer; }
+.pg-quiet:hover { border-color: var(--day-accent); }
+.pg-more { margin-top: 18px; }
+
+/* Empty states */
+.pg-empty { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 20px 28px; padding: 28px; border: 1px dashed var(--day-line-strong); border-radius: 10px; background: var(--day-paper); }
+.pg-empty h3 { font: 800 24px/1 var(--pg-display); text-transform: uppercase; }
+.pg-empty p { margin: 8px 0 0; color: var(--day-ink-muted); max-width: 34rem; }
+.pg-empty-glyph { width: 150px; height: auto; color: var(--day-ink-muted); }
+.pg-none { margin: 0; color: var(--day-ink-muted); font-size: 15px; max-width: 30rem; }
+
+/* Known names: two columns of street plaques. */
+.pg-known { display: grid; grid-template-columns: 1fr 1fr; gap: 28px clamp(28px, 5vw, 64px); }
+.pg-known-col h3 { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; font: 700 18px/1 var(--pg-display); letter-spacing: 0.06em; text-transform: uppercase; }
+.pg-known-col h3 span { font-variant-numeric: tabular-nums; color: var(--day-accent-ink); }
+.pg-plaques { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.pg-plaque {
+  padding: 6px 11px 5px; border-radius: 4px;
+  font: 700 15px/1.1 var(--pg-display); letter-spacing: 0.05em; text-transform: uppercase; color: var(--enamel-ink);
+  background: linear-gradient(165deg, var(--enamel-bright) 0%, var(--enamel) 45%, var(--enamel-deep) 100%);
+  box-shadow: inset 0 0 0 2px var(--enamel), inset 0 0 0 3px rgba(255,255,255,.85), 0 1px 2px rgba(31,28,23,.2);
+}
+.pg-foot { margin: 22px 0 0; font-size: 15px; color: var(--day-ink-muted); }
+.pg-foot strong { color: var(--day-ink); font-weight: 600; }
+
+/* Postcards reuse the quiz's rack; give each city a small label. */
+.pg-postcards + .pg-postcards { margin-top: 24px; }
+.pg-postcards h3 { margin-bottom: 8px; font: 700 16px/1 var(--pg-display); letter-spacing: 0.06em; text-transform: uppercase; }
+.pg-postcards .mr-postcard-rack { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+
+/* Landmark stamps: round franking marks. */
+.pg-stamps { list-style: none; display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 14px; padding: 0; }
+.pg-stamp-token {
+  display: grid; place-content: center; gap: 4px; width: 112px; height: 112px; padding: 12px; box-sizing: border-box; border-radius: 50%; text-align: center;
+  border: 2px solid var(--day-accent-ink); box-shadow: inset 0 0 0 4px var(--day-paper-raised), inset 0 0 0 5px var(--day-accent);
+  color: var(--day-accent-ink); background: var(--day-paper-raised); transform: rotate(-4deg);
+}
+.pg-stamp-token:nth-child(even) { transform: rotate(3deg); }
+.pg-stamp-token span { font: 800 14px/1.05 var(--pg-display); letter-spacing: 0.04em; text-transform: uppercase; overflow-wrap: anywhere; }
+.pg-stamp-token small { font-size: 11px; color: var(--day-ink-muted); }
+.pg-stamp-blank { border-style: dashed; border-color: var(--day-line-strong); box-shadow: none; color: var(--day-line-strong); background: transparent; }
+.pg-stamp-blank span { font-size: 28px; }
+
+.pg-foot-bar { padding: 28px 0 max(28px, env(safe-area-inset-bottom)); border-top: 1px solid var(--day-line); }
+.pg-foot-bar .pg-wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; }
+.pg-foot-bar .site-switch { width: min(100%, 460px); box-sizing: border-box; }
+.pg-foot-bar p { margin: 0; font-size: 14px; color: var(--day-ink-muted); }
+
+@media (max-width: 760px) {
+  .pg { font-size: 15px; }
+  .pg-wordmark { font-size: 16px; padding: 10px 13px 9px; }
+  .pg-nav { gap: 10px; }
+  .pg-nav > a { font-size: 14px; }
+  .pg-ride { grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: start; }
+  .pg-ride-mode { width: 36px; height: 36px; }
+  .pg-again { grid-column: 2; justify-self: start; margin-top: 8px; }
+  .pg-empty { grid-template-columns: 1fr; padding: 22px; }
+  .pg-empty .pg-stamp { justify-self: stretch; }
+  .pg-known { grid-template-columns: 1fr; }
+  .pg-stamp-token { width: 96px; height: 96px; }
+}
+@media (max-width: 400px) {
+  .pg-nav > a { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .pg *, .pg *::before { transition: none !important; } }

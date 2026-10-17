@@ -55,6 +55,39 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    function validLngLat(point) {
+      return point is list && point.size() == 2 && point[0] is number && point[1] is number
+        && point[0] >= -180 && point[0] <= 180 && point[1] >= -90 && point[1] <= 90;
+    }
+
+    function shortText(value) {
+      return value is string && value.size() > 0 && value.size() <= 200;
+    }
+
+    function wholeCount(value) {
+      return value is int && value >= 0 && value <= 100000;
+    }
+
+    // One finished Canal Recall ride (src/canalRecall/routeHistory.ts RideRecord).
+    function validRide(ride, sessionId) {
+      return ride.keys().hasAll(['id', 'schemaVersion', 'startedAt', 'endedAt', 'mode', 'cityId', 'start', 'finish', 'namedCount', 'askedCount', 'points', 'streetsLearned', 'raceHash'])
+        && ride.keys().hasOnly(['id', 'schemaVersion', 'startedAt', 'endedAt', 'mode', 'cityId', 'start', 'finish', 'namedCount', 'askedCount', 'points', 'streetsLearned', 'raceHash'])
+        && ride.id == sessionId && sessionId.size() <= 64
+        && ride.schemaVersion == 1
+        && ride.startedAt is number && ride.endedAt is number && ride.startedAt <= ride.endedAt
+        && (ride.mode == 'boat' || ride.mode == 'bike' || ride.mode == 'transit')
+        && shortText(ride.cityId)
+        && ride.start is map && ride.start.keys().hasOnly(['name', 'lngLat'])
+        && shortText(ride.start.name) && validLngLat(ride.start.lngLat)
+        && ride.finish is map && ride.finish.keys().hasOnly(['name', 'landmarkId', 'lngLat'])
+        && shortText(ride.finish.name) && validLngLat(ride.finish.lngLat)
+        && (ride.finish.landmarkId == null || shortText(ride.finish.landmarkId))
+        && wholeCount(ride.namedCount) && wholeCount(ride.askedCount) && ride.namedCount <= ride.askedCount
+        && ride.points is number && ride.points >= 0 && ride.points <= 10000000
+        && ride.streetsLearned is list && ride.streetsLearned.size() <= 100
+        && ride.raceHash is string && ride.raceHash.size() <= 200;
+    }
+
     // POI and tour stamps (src/canalRecall/collection/poiCollection.ts). One
     // document per stamp; the client merges newest-wins with counts max'd.
     match /users/{userId}/poiStamps/{stampId} {
@@ -77,7 +110,8 @@ service cloud.firestore {
     }
 
     match /users/{userId}/gameSessions/{sessionId} {
-      allow read, create, update, delete: if owns(userId);
+      allow read, delete: if owns(userId);
+      allow create, update: if owns(userId) && validRide(request.resource.data, sessionId);
     }
 
     // Browser feedback is private to its author. Queue workers use IAM via the

@@ -48133,19 +48133,23 @@ Learned names, exploration collection, personal bests, route settings and the ho
             visible: true,
             label: user.label,
             note: `${recall.masteredCount} synced`,
-            buttonLabel: "Sign out"
+            buttonLabel: "Sign out",
+            signedIn: true,
+            photoURL: user.photoURL
           });
         } else {
           overlay.store.setAccount({
             visible: true,
             label: "Playing as guest",
             note: "Sign in to keep your progress on every device",
-            buttonLabel: "Sign in"
+            buttonLabel: "Sign in",
+            signedIn: false,
+            photoURL: null
           });
         }
       });
       recall.init().then(() => {
-        if (overlay) overlay.store.setAccount({ visible: true });
+        if (overlay) overlay.store.setAccount({ visible: true, available: recall.available });
         this._refreshMasteredLabels();
       });
     }
@@ -49107,6 +49111,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         recallStore: this.recall,
         revealName: (name) => this._revealName(name),
         markLearned: (name) => {
+          if (this._rideNamedNames && !this._rideNamedNames.includes(name)) this._rideNamedNames.push(name);
           if (isStopQuiz) {
             this.learnedStopNames = this.learnedStopNames || /* @__PURE__ */ new Set();
             this.learnedStopNames.add(name);
