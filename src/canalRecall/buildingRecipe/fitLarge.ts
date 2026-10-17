@@ -49,6 +49,10 @@ export interface LargeGroupFit {
   split?: {panel: number; uM: number; slot: string};
   /** perforated-brick screen lattice over the group's walls */
   screen?: boolean;
+  /** layered curtain wall: opaque spandrel panels (fractions of an upper storey over each floor line and under the next) in `slot` */
+  spandrels?: {sill: number; head: number; slot: string};
+  /** mesh plinth panel slot when the group colours it (palette.plinth); default the door slot */
+  plinthSlot?: string;
   entrance: {panel: number; bay: number; storeys: number; canopy: boolean; portal?: boolean} | null;
   /** storeys faced in stone, banded end pilasters (with the darker band slot) */
   stoneStoreys?: number[]; pilasters?: string;
@@ -173,8 +177,8 @@ export function panelEaves(p: Panel): number {
 }
 
 /** Storey lines: N storeys under `eaves` (ground storey `gw` units tall), then the same unit up to `maxTop`. */
-export function storeyLines(eaves: number, flatTop: boolean, storeys: number | undefined, civicM: number, gw: number, maxTop: number) {
-  const parapet = flatTop ? 0.5 : 0.15, usable = Math.max(2.5, eaves - parapet);
+export function storeyLines(eaves: number, flatTop: boolean, storeys: number | undefined, civicM: number, gw: number, maxTop: number, parapetM?: number) {
+  const parapet = parapetM ?? (flatTop ? 0.5 : 0.15), usable = Math.max(2.5, eaves - parapet);
   const n = storeys ?? Math.max(1, Math.round(usable / civicM - (gw - 1)));
   const unit = usable / (n - 1 + gw), ground = unit * gw;
   const lines = [0, ground];
@@ -315,6 +319,12 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const colGlass = w.columns?.glass ? `glass@g${gi}c` : undefined;
     if (colGlass) { palette[colGlass] = swatch(w.columns!.glass!); if (measuredGroups.has(gi)) measuredSlots.push(colGlass); }
     palette[slots.curtain] = palette[slots.frame];
+    // Spandrel panels of a layered curtain wall: their own slot, the measured colour or the group's frame colour.
+    // A coloured mesh plinth (palette.plinth): a matte panel slot of its own instead of the door slot.
+    const plinthSlot = w.palette?.plinth ? `plinth@g${gi}` : undefined;
+    if (plinthSlot) { palette[plinthSlot] = swatch(w.palette!.plinth!); if (measuredGroups.has(gi)) measuredSlots.push(plinthSlot); }
+    const spandrelSlot = w.spandrels ? `spandrel@g${gi}` : undefined;
+    if (spandrelSlot) { palette[spandrelSlot] = w.spandrels!.colour ? swatch(w.spandrels!.colour) : palette[slots.frame]; if (measuredGroups.has(gi) && w.spandrels!.colour) measuredSlots.push(spandrelSlot); }
     // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
     if (arch) palette[arch] = w.palette?.arch ? swatch(w.palette.arch) : shade(palette[slots.wall], 0.82);
@@ -326,12 +336,13 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const main = [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
     if (!main) warnings.push(`walls[${gi}]: no panel takes this group (its surfaces are minorities of other panels)`);
     const widthM = main ? main.uMax - main.uMin : 0, eaves = main ? panelEaves(main) : 0, flatTop = main ? main.vMax - eaves < 0.5 : true;
-    const gw = w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
+    const gw = w.groundFactor !== undefined ? w.groundFactor : w.souterrain ? SOUTERRAIN.factor : ground === 'arcade' ? w.arcade?.storeyFactor ?? 1.6 : ground === 'plinth-shopfronts' || ground === 'glazed' ? 1.25 : year !== null && year < 1945 ? 1.15 : 1;
     const maxTop = Math.max(eaves, ...own.map(p => p.vMax));
     // alignWith: share another group's storey lines (wings whose windows line up with the centre block), extended to this group's top.
     const ref = w.alignWith !== undefined ? aligned.get(w.alignWith) : undefined;
     if (w.alignWith !== undefined && !ref) throw Error(`${intent.id}: walls[${gi}].alignWith ${w.alignWith} must name an earlier group without alignWith`);
-    const st = ref ? alignLines(ref, maxTop) : storeyLines(eaves, flatTop, w.storeys, civicM, gw, maxTop);
+    // A curtain wall with spandrels runs to the roof edge: its top storey's head spandrel covers the slab and parapet (no parapet allowance).
+    const st = ref ? alignLines(ref, maxTop) : storeyLines(eaves, flatTop, w.storeys, civicM, gw, maxTop, w.spandrels ? 0 : undefined);
     if (w.alignWith === undefined) aligned.set(gi, st);
     const uppers = st.heights.slice(1);
     if (main && uppers.some(h => h < 2.3 || h > 6.2)) warnings.push(`walls[${gi}]: upper storeys ${uppers[0]} m (storeys ${st.storeys} under ${eaves.toFixed(2)} m eaves)`);
@@ -377,7 +388,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(plinthSlot ? {plinthSlot} : {}), ...(spandrelSlot ? {spandrels: {sill: w.spandrels!.sill ?? 0, head: w.spandrels!.head ?? 0, slot: spandrelSlot}} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hall ? {hall: {baseM: r3(w.hall.base * eaves), lights: w.hall.lights, rows: w.hall.rows}} : {}),
       ...(w.columns ? {columns: {bays: [...w.columns.bays], share: w.columns.share ?? 0.9, from: w.columns.from ?? 1, slabs: !!w.columns.slabs, ...(colGlass ? {glass: colGlass} : {})}} : {}),
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}),

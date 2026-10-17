@@ -788,3 +788,72 @@ test('roof.flatHex composes with roof.flat and roof.surfaces (Entrepotdok): one 
   let mat: any = null; measuredGroup.traverse((o: any) => { if (o.isMesh && o.name === 'roof/flat') mat = o.material; });
   assert.equal(mat.userData.tintSource, 'measured');
 });
+
+// ---------------------------------------------------------------------------------------------------------------
+// Rietveld building (1967): a curtain wall of square modules where every storey is a clear vision band between frosted
+// spandrel bands, over a low dark plinth (lane public-large-20261017).
+
+test('curtain-wall spandrels: panels on the 9 cm layer, the grid one layer out with rails at the panel edges; no coplanar overlap', async () => {
+  const wall = await layeredWall(), {drawSpandrels, drawCurtainGrid, CURTAIN_GRID_OVER_SPANDRELS, CURTAIN_GRID} = await import('../blockBuilding/components.ts');
+  const sys = {pitch: 2, lines: [0, 1.4, 5.2, 9], ground: {kind: 'wall' as const}, typical: {kind: 'wall' as const}};
+  let panels = 0, rails: number[] = [], gridLevels: number[] = [];
+  const hook = (c: Parameters<typeof drawSpandrels>[0], info: {levels: number[]; cells: Parameters<typeof drawSpandrels>[1]}) => {
+    if (c.p.n[2] < 0.9) return;
+    const cells = info.cells.filter(x => x.floor > 0), sp = drawSpandrels(c, cells, info.levels, {sill: 0.25, head: 0.25, slot: 'stone'}, 8.95);
+    panels += sp.panels; rails = sp.rails;
+    gridLevels = sp.gridLevels;
+    drawCurtainGrid(c, cells, sp.gridLevels, 'frame', 8.95, CURTAIN_GRID_OVER_SPANDRELS);
+  };
+  const r = wall(sys, true, {wallSlotFor: () => 'glass', panelHook: hook});
+  // storeys 1.4-5.2 and 5.2-8.95 (unit 3.8): sill 1.4-2.35, head+sill 4.25-6.15 (one panel across the floor line), top head 8.0-8.905 (under the top rail centre)
+  assert.equal(panels, 3, 'three bands on the 12 m front, the two meeting at 5.2 m merged');
+  assert.deepEqual(rails, [2.35, 4.25, 6.15, 8], 'transoms at the vision band edges');
+  assert.deepEqual(gridLevels, [0, 1.4, 2.35, 4.25, 6.15, 8, 9], 'the 5.2 m floor line inside the merged panel takes no transom');
+  assert.equal(r.m2, 0, 'spandrels (9 cm), transoms (13.5 cm) and mullions (18 cm) never share a plane');
+  assert.ok(r.mesh.slots.get('stone')!.positions.length > 0);
+  // the plain grid keeps its layers: the default argument is the old one
+  assert.deepEqual({...CURTAIN_GRID_OVER_SPANDRELS, postOut: CURTAIN_GRID.postOut, railOut: CURTAIN_GRID.railOut}, CURTAIN_GRID);
+});
+
+test('spandrels, groundFactor and palette.plinth: validated, fitted (no parapet allowance, low plinth storey) and compiled within the gates (Rietveld building)', async () => {
+  const id = 'rietveld-gebouw-077325', base = raw(id), w0 = base.walls[0];
+  const intent = validateLargeIntent(base), f = facts(id);
+  const bad = (patch: object, re: RegExp) => assert.throws(() => validateLargeIntent({...base, walls: [{...w0, ...patch}, ...base.walls.slice(1)]}), re);
+  bad({spandrels: {sill: 0.5, head: 0.5}}, /vision band/);
+  bad({spandrels: {sill: 0.25, top: 0.2}}, /top/);
+  bad({system: 'brick-bay-grid', ground: 'system', spandrels: {sill: 0.25}}, /layered curtain-wall/);
+  bad({groundFactor: 0.1}, /groundFactor/);
+  bad({ground: 'system', palette: {...w0.palette, plinth: '#888888'}}, /plinth/);
+  assert.throws(() => validateLargeIntent({...base, layeredKit: false}), /spandrels/);
+  const {recipe} = fitLarge(intent, f), g0 = recipe.groups[0];
+  assert.ok(g0.spandrels && g0.spandrels.sill === 0.25 && g0.spandrels.head === 0.25);
+  assert.equal(recipe.spec.palette[g0.spandrels!.slot], w0.spandrels.colour);
+  assert.ok(recipe.measuredSlots?.includes(g0.spandrels!.slot), 'a measured group draws its spandrel colour as measured');
+  // 5 storeys, ground 0.4 of an upper storey, lines up to the eaves (no 0.5 m parapet)
+  const h = g0.storeyHeightsM;
+  assert.ok(Math.abs(h[0] / h[1] - 0.4) < 0.01 && Math.abs(g0.lines[5] - g0.eavesM) < 0.01, JSON.stringify(g0.lines));
+  // walls[1]'s plinth (groundFactor 1.4) ends on walls[0]'s second floor line, in its own matte slot
+  const g1 = recipe.groups[1];
+  assert.ok(Math.abs(g1.lines[1] - g0.lines[2]) < 0.2, `${g1.lines[1]} vs ${g0.lines[2]}`);
+  assert.equal(recipe.spec.palette[g1.plinthSlot!], base.walls[1].palette.plinth);
+  const {gates, tris, built} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
+  assert.ok(tris.length <= LARGE_BUDGET_TRIANGLES, `${tris.length}`);
+  assert.ok((built.components as {spandrels?: number}).spandrels! > 20);
+  // without the new fields the group is a plain layered curtain wall: no spandrel slot, the parapet allowance back
+  const {spandrels: _s, groundFactor: _g, hand: _h, ...plainW0} = w0;
+  const plain = fitLarge(validateLargeIntent({...base, measured: undefined, walls: [plainW0, base.walls[4]]}), f).recipe;
+  assert.equal(plain.groups[0].spandrels, undefined);
+  assert.equal(Object.keys(plain.spec.palette).some(k => k.startsWith('spandrel@')), false);
+  assert.ok(plain.groups[0].lines[5] < plain.groups[0].eavesM - 0.4, 'the plain grid keeps the 0.5 m parapet');
+});
+
+test('storey-height gate: a mesh plinth under a curtain wall may be a low raised plinth; any other ground keeps 2.3 m', async () => {
+  const {LARGE_MIN_PLINTH_M} = await import('./largeGates.ts');
+  assert.equal(LARGE_MIN_PLINTH_M, 1.2);
+  const id = 'rietveld-gebouw-077325', base = raw(id);
+  const {spandrels: _s, ...w0} = base.walls[0];
+  const glazedGround = {...base, walls: [{...w0, system: 'brick-bay-grid', ground: 'glazed'}, ...base.walls.slice(1)]};
+  const {gates} = await gatesOf(validateLargeIntent(glazedGround), facts(id));
+  assert.equal(gates.find(g => g.id === 'storey-height/walls[0]')?.pass, false, 'a 1.7 m glazed ground storey is still refused');
+});
