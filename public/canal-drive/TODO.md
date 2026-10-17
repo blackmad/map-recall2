@@ -850,6 +850,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   from the orthophoto"): the orthophoto gives roofs only; sample municipal
   panorama thumbnails (CC BY 4.0) per boat for a sunlit cabin median, and
   relabel the 91 unseen boats and the 56 hashed ship hulls from panoramas.
+- **Street gables, after** (2026-10-16, HISTORY "Crowns on the street end
+  only"): re-install face-wallen-ozv-115-125 with the new neck heads (115's
+  cap reads as a large cream panel where the photo has brick under a narrow
+  stone cornice; fix before installing), then un-hold it once its shade side
+  reads; recrown the ~346 houses whose street end is interior (gable along
+  the street); the 434 houses with no routing street; address-aware choice
+  for through-lots; moulded scrolled/arched neck caps (wallen-oza 177916,
+  177946) and cap finials are kit gaps.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;

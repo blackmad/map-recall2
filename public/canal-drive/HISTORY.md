@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## Crowns on the street end only; neck heads with a cornice and a segmental cap (2026-10-16)
+
+User (2026-10-16): "sometimes houses have gables on both the street and back
+side, which is wrong", and on the Oudezijds Voorburgwal sheet "did you fix
+the curves on this gable model?". Lane `lane/street-gables-only-20261016`
+(5f8869ac3, bd5f11613, 20f4c73e2). Only the city-tier roof planner
+(`roofMesh.ts` gable kind) drew the shaped crown on both short ends; recipe,
+block-face and bespoke builders were clean. `streetGableEnds` picks the end
+with the street ray test the doors use; the rear becomes a plain saddle
+triangle with no verge boards. City: 5,998 rear crowns → 0 (cornice 1,967,
+neck 1,595, step 1,361, bell 608, …); a through-lot is crowned on the
+nearer street (no addresses at runtime); a corner's second street runs
+along a long side, which never had a crown; 434 houses with no street known
+are unchanged; ~346 whose only crown was on the rear now have none. Output
+without street data is byte-identical (288 cases). Neck/bell heads gained
+`crownNeckWidth`, `crownCapRatio` and `crownCapCornice` (shares of the neck):
+a segmental cap over a cornice entablature; OZV 115 and 119 measured by
+hand (the strip skyline abstains). The concave shoulders were already fixed
+earlier the same day. Tests in `test:street-gables` (in `check:canal`).
+
 ## Houseboats placed from the orthophoto, boat by boat (2026-10-16)
 
 User: "is there any way to actually get these right in placement?" and "see
