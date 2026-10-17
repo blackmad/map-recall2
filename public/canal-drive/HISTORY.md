@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Account chip, ride history, /progress; POI stamps and tours staged (2026-10-17)
+
+- One sign-in for the ride, the quiz and `/progress`: both use Firebase's
+  default app on one origin; the ride page now runs a single Firebase app
+  (`src/canalRecall/firebaseShared.ts`), so App Check covers the recall store
+  too. `AccountChip` (Sign in / avatar + My progress, Sign out) in the ride
+  setup and the Map Quest header.
+- Ride history (`src/canalRecall/routeHistory.ts`, `canalRecall.routeHistory.v1`,
+  200 newest) synced to `users/{uid}/gameSessions`, now field-validated in the
+  rules (`test:route-history:rules`).
+- `/progress` is a Map Quest view (hosting rewrite to `/quiz/index.html`):
+  summary, recent rides with Ride again (`ride?travel=…#race=…`), streets
+  mastered, postcards, landmark stamps when present. `progress.spec` 4/4.
+- POI stamps (`src/canalRecall/collection/`, 261 collectibles, 41 A-list;
+  `users/{uid}/poiStamps` rules) and 8 sourced tours, 47 stops
+  (`scripts/tours/amsterdam-tours.json` → `tours.json`, `test:tours` pins
+  resolution, range, leg length, routable snap; food/café tours are
+  volatile, checkedAt 2026-10-17, every "best" attributed). Wiring into the
+  ride: `docs/preview/tours-and-stamps-wiring.md`.
+- A-list Wikidata ids checked against landmarks.json; 10 were guesses.
+
 ## Neighbourhood explorer: browse, download, report, request (2026-10-17)
 
 `explore.html` (`/explore`), typed in `src/canalRecall/explorer/`, bundle
