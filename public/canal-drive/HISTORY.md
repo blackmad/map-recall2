@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Westerkerk aisles and windows, Magna Plaza caps, zebras city-wide (2026-10-17)
+
+User screenshots: gaps in the Westerkerk aisle roofs and weak windows; Magna
+Plaza turret caps z-fighting; splayed, overlapping zebras at the Dam. The
+z-fight detector (`geometryAudit.ts auditZFight`) tested one point per
+overlap and called Magna's 36 m² cap fight hidden; it now samples the overlap
+at ~1 m (`scripts/landmarks/zfight-patches.ts`). 142 zfight baseline keys rose
+with the stricter measure on unchanged models (accepted by the integrator as
+a detector recalibration, not a regression); Westerkerk's window-rhythm entry
+rose because the check lumps its three tiers into one row (needs a row count
+in `westerkerk-elevations.json`). Westerkerk: one closed slate lean-to per
+aisle bay, buttress piers, the tower-base fin gone, new kit component
+`renaissance-window.ts` (round head in a 24 cm reveal, keystone, tracery or
+fan light, leaded panes), windows only on exposed spans. Magna Plaza: shafts
+stop under the band, drums sit on them, visible coplanar fight 117.7 → 0 m².
+Across 351 landmarks 247 still fight above 0.5 m² (worst: bercylaan-801-855,
+jacob-bontiusplaats-9, jodenbreestraat-11) — builder-specific, no safe
+generic nudge. Zebras (`ownGround/crossingAudit.ts`, `audit:crossings`,
+regressions in `test:own-ground`): one zebra per crossing, stripes along the
+kerb, clipped to exact BGT polygons (the 0.5 m raster dropped every other
+stripe), rows stop at tram/bus lanes; 3,467 → 2,347 drawn, overlaps 2,149 → 0,
+gaps 1,339 → 2, implausible length 331 → 0, off-carriageway 16 → 0; zebras on
+klinker reported, not capped (Amsterdam paints them there).
+
 ## The Marnixstraat Europarking reads as the Waterkant (2026-10-17)
 
 User: the car park "really fails to get the look of waterkant". It was a

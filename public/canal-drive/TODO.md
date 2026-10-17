@@ -778,6 +778,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
     publish, rerun `build:explorer-looks` (looks switch to live by
     themselves); then step 4 and the `recipeTiles` default. Phone: the
     explorer path badge sits over the 3D view's lower left.
+  - Visuals follow-ups: 247 landmarks z-fight > 0.5 m² (zfight-patches.ts
+    --top; worst bercylaan-801-855, jacob-bontiusplaats-9, jodenbreestraat-11);
+    Westerkerk row count in westerkerk-elevations.json and side-on pediments;
+    Magna Plaza x≈7.1 window column 20.9 m² near-flush; gallery renderer's
+    depth bias draws false streaks; zebras missing where OSM has none
+    (Magna south, Weteringcircuit west arms, Museumplein, Rembrandtplein
+    busway) and OSM nodes 3–8 m off the paint; `own-ground.bundle.js` lab
+    bundle stale; Europarking helical ramps and interiors.
   - Dead code left: ~1,600 module-internal exports; unused deps in
     package.json; `scripts/canalhouse-recipes/capture.mjs` needs the missing
     `canalhouse-recipes.html` (on `wip/canalhouse-recipes-20261008`).
