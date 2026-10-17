@@ -268,6 +268,13 @@ export interface FrontIntent {
    */
   storeyRibbons?: Record<string, {from: number; to: number; pier?: number}>;
   /**
+   * Window width per storey, in metres (Indische Buurt 1925-26 rows, Molukkenstraat 7-29: three 0.75 m square attic
+   * lights over three 1.17 m windows, on the same axes): each window of the listed storey keeps its axis centre and
+   * takes this width instead of the grid's. Key = storey index from the ground, or "last". Only on the shared axes (not
+   * with `storeyRibbons` or `storeyBayWidths` for that storey). Absent = byte-identical.
+   */
+  storeyWindowWidths?: Record<string, number>;
+  /**
    * Gable/crown that covers only part of the front: `{from, to}` as fractions of the front width from the viewer's
    * left (`{from: 0.4, to: 1}` = the right 60 %). Gable windows, the hoist and the crown cap follow it. Default: the whole front.
    */
@@ -445,9 +452,11 @@ export interface FrontIntent {
    * white-painted over the whole width): each listed 0-based storey (the ground only without a shopfront/ground front) is
    * laid as a 4 cm facing from its floor to the next floor (the top storey to 2 cm under the eaves), cut around the
    * openings, in the wall material and `colour`, exported as a measured tint (the paint is drawn as measured, not lifted
-   * into the city brick range). Absent = byte-identical.
+   * into the city brick range). Absent = byte-identical. `from` (m, 0.05..2): the paint starts that far over each listed
+   * storey's floor, brick below it (Gorontalostraat 25-45, 1926: the white top storey begins at its window sills, 0.45 m
+   * over the floor; absent = from the floor).
    */
-  paintedStoreys?: {storeys: number[]; colour: string};
+  paintedStoreys?: {storeys: number[]; colour: string; from?: number};
   /**
    * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
@@ -1072,6 +1081,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (r.pier !== undefined && !(typeof r.pier === 'number' && r.pier >= 0.02 && r.pier <= 1)) problems.push(`${at}.storeyRibbons.${k}.pier: metres between windows, 0.02-1`);
       else if (f.storeyAxes?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyRibbons.${k}: not together with storeyAxes or storeyBayWidths for the same storey`);
     }
+    for (const [k, v] of Object.entries(f.storeyWindowWidths ?? {})) {
+      const s = Number(k);
+      if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyWindowWidths.${k}: key must be a storey index or "last"`);
+      else if (!(typeof v === 'number' && v >= 0.3 && v <= 2.5)) problems.push(`${at}.storeyWindowWidths.${k}: a window width in metres, 0.3-2.5`);
+      else if (f.storeyRibbons?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyWindowWidths.${k}: only on the shared axes (not with storeyRibbons or storeyBayWidths for the same storey)`);
+    }
     for (const [k, v] of Object.entries(f.storeyBayWidths ?? {})) {
       const s = k === 'last' ? f.storeys - 1 : Number(k), per = Array.isArray(f.bays) ? f.bays[s] : f.bays;
       if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyBayWidths.${k}: key must be a storey index or "last"`);
@@ -1297,8 +1312,9 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
 
 /** Problems with `paintedStoreys` (one or more storeys painted in a second colour). */
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
-  const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown} | undefined;
-  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour}`];
+  const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
+  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?}`];
+  if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 2)) p.push(`${at}.paintedStoreys.from: 0.05..2 m over the storey floor`);
   const l = ps.storeys as number[];
   if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);
   else if (l.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.paintedStoreys.storeys: the ground storey holds a shop/ground front; paint the upper storeys`);
