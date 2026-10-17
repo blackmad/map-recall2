@@ -21,6 +21,12 @@ Joods Museum and the Dokwerker) → Hollandsche Schouwburg → Gerard Dou
 Synagogue → Merwedeplein → Liberal Jewish Synagogue (Zuidelijke Wandelweg
 41), all sourced; Art museums ends on a Museumplein stop; Golden Age drops
 Huis Bartolotti and reorders. All 44 leg setups across 8 tours succeed.
+User follow-up: Jewish Amsterdam now ends at David & Mouwes (Kastelenstraat
+64, Buitenveldert; Mouwes merged with David's Corner on 2026-07-01, per
+esnoga.com), resolved to the David's Corner OSM node 35 m away since OSM has
+no element for the merged shop. The Gerard Dou Synagogue made room (7-stop
+cap); the tour is `volatile`, checked 2026-10-17, and alone may resolve to
+5.5 km from the centre (`MAX_KM_FROM_CENTRE_BY_TOUR`).
 
 ## Statue rebuilds installed: 16 in the game, Kinderbrug built but held (2026-10-17)
 
