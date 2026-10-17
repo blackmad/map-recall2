@@ -1,5 +1,86 @@
 # Canal Recall — what is built
 
+## The "De Hallen slab" was Kinkerstraat 89–105: measured flat roofs for large recipes (2026-10-17)
+
+User (2026-10-16), riding the Tollensstraat with the De Hallen card open: one
+flat brown-grey slab covered a whole block. Lane `lane/de-hallen-slab-20261016`
+(63a3922c3, 493b87695, ead4d6b9b, 18edcaa0d). De Hallen drew correctly; hiding
+only the large recipe for Kinkerstraat 89–105 (pand 092013) removed the slab.
+Two causes: the kit's flat-roof grey #6a6c6c maps through `cityRoofTint` to the
+buff gravel #9e9281, 4 dE from the buff render, so roof, walls and courtyard
+read as one mass; and the 29.9 m Tollensstraat front was installed blank under
+`otherWalls` although its crop w04-248 was archived. One roof schema with
+Entrepotdok's: `roof.flat` stays the material, new `roof.flatHex` carries the
+orthophoto colour (`roof-flat.ts --write`, roof-facts `roofSlotHex`), drawn as
+one measured `roof/flat` mesh outside any `surfaces` region; fit-golden hashes
+it because the mesh hash is positions-only. 089 reinstalled with roof #87898d
+and a `walls[2]` Tollensstraat front (pale buff brick hand-sampled, the crop is
+57 % washed out; ten bays). The audit's lowest roof-to-wall contrasts were
+reinstalled with measured roofs, walls untouched: Stadsloket Noord #87898d,
+Polderweg 3 #898c89, Politie Oost Watergraafsmeer #87898d, the Apollohal
+#e3e3e1 (white membrane). Polderweg 3 and Politie needed new `--allow-inferred`
+notes because the likeness gate tightened after their first installs; each
+note says only the roof colour changed. Exactly five fit-golden hashes moved;
+Entrepotdok and every other house are identical.
+
+## canal-recall.spec: two failures were stale tests, not regressions (2026-10-17)
+
+Lane `lane/canal-spec-fails-20261016` (009cf1d20, test only). The corridor
+test failed 21–23 px vs 12.5 because it measured the heading-less nearest
+centreline: beside a wide corridor that is a narrow way the car is not on,
+while the guard's union contact (pickGuardContact) kept the car within
+0.7 px. Its seeded start also varied between runs (four starts in four
+repeats), so it was flaky before today; a bisect of today's merges named
+1f4862dd8, but its parent failed 1/4 too. The test now judges
+`getGuardRoad` against CAR_ROAD_EDGE_TOLERANCE (4 px) from a pinned start
+mid-block on Reestraat, aimed at the houses, with questions off. The
+anonymous-building test still expected no card; since 7f4d1e818
+(2026-10-10) every drawn building opens a card, so it now asserts the
+"Built 1887" card replaces the previous selection and "Unnamed building"
+never shows.
+
+## Feedback preview no longer black; coverage page shows buurten with their own look (2026-10-17)
+
+Lane `lane/feedback-coverage-20261016` (b87dca908, 6d9a93c53, 4b8be10d1,
+c782b9ff4). User: "why black screen on this popup?". The default feedback
+target's `querySelector('#gameCanvas, main canvas, canvas')` returned
+MapLibre's canvas (first in DOM order), so the capture skipped the render
+callback and read a cleared WebGL buffer; the JPEG made the transparent
+frame black (5.6 KB, luma 0). It now prefers the HUD canvas, routes a map
+canvas through the HUD composite, captures on `'render'` even while tiles
+stream and drops a fully transparent capture; no preserveDrawingBuffer.
+`feedback.spec.ts` asserts preview luma and variance on desktop and phone
+(147/38 desktop, 140/43 phone).
+
+User: "are there any buurts that have their own look/style? could we
+highlight those and see some examples". "Own look" counts pands drawn from
+kit made for the district (block-face chunks by house type or measured
+face, plus building-type design instances), each pand once by tier
+(`src/canalRecall/coverage/ownLook.ts`, tested). 34 buurten drawn (3,367
+pands), 6 authored only; KD02 Cornelis Schuytbuurt has none and says so.
+`coverage.html` gains `?colour=look`, an orange outline (solid drawn,
+dashed authored; `?mark=0`), a filter `?own=1`, a ranked list, and per-buurt
+cards: kit render beside the archived CC BY 4.0 photo crop, 3D link and a
+"ride past it" link. Thumbnails from `scripts/coverage/build-look-thumbs.ts`
+(141 JPEGs, ~1 MB in `coverage-v1/look/`).
+
+## Road look v2: measured tones and markings on the surveyed roads (2026-10-16)
+
+User (2026-10-16 evening): "not gonna lie, our roads still don't look great".
+Lane `lane/road-look-v2-20261016` (4b5d9df36, 7dfe6653c), bounded after the
+user parked the big orthophoto road study. Tones measured from the PDOK
+orthophoto inside BGT polygons (sunlit, dehazed medians): asphalt luma 130 →
+144, klinker lightened, inrit and parking klinker now a muted `brick` layer
+near the pavement instead of saturated brown slabs; tram rails light steel.
+Markings on surveyed roads from OSM nodes (new extract `road-marks-v1`, from
+the archived pbf, 83 KB, 11,661 nodes) and the road graph, clipped to BGT
+carriageway polygons: zebras, block lines, red cycle crossings with blocks,
+stop lines at signals, give-way teeth, centre dashes on two-way carriageways
+≥ 6 m wide stopping 8 m before junctions; the old band paint stays off.
+Cost +1.9 % triangles, ~+10 % cell build, desktop ride frames unchanged.
+Regressions `SURVEY_PAINT` (Bilderdijkgracht, Marnixstraat busway,
+Nassaukade × Frederik Hendrikplantsoen); the paint spec expects survey paint.
+
 ## Crowns on the street end only; neck heads with a cornice and a segmental cap (2026-10-16)
 
 User (2026-10-16): "sometimes houses have gables on both the street and back

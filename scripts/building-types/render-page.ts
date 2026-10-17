@@ -2,6 +2,7 @@
 // window.bt.load(base64Glb)      decode a staged GLB (baked or instanced), dress `materialSlot` materials with procedural textures
 // window.bt.camera(opts)         street camera matched to a panorama: x, z (east/south m), y (eye height NAP), heading, pitch, hfov, w, h -> PNG data URL
 // window.bt.aerial(opts)         oblique/top view of the area with context buildings and streets -> PNG data URL
+// window.bt.bounds()             world bounds of the loaded models
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
@@ -119,4 +120,7 @@ function aerial(o: {cx: number; cz: number; groundY: number; distance: number; h
   return shot(cam, o.w, o.h);
 }
 
-(window as unknown as {bt: unknown}).bt = {load, camera, aerial};
+/** World bounds of the loaded models: {min: [x, y, z], max: [x, y, z]} (coverage look thumbs frame on it). */
+function bounds() { const b = new THREE.Box3().setFromObject(world); return {min: b.min.toArray(), max: b.max.toArray()}; }
+
+(window as unknown as {bt: unknown}).bt = {load, camera, aerial, bounds};

@@ -108,12 +108,12 @@ const RESIDENCY_STEP_M = 60;
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   land: 'r', park: 'r', wood: 'r', square: 'r', parking: 'r',
   lawn: 'r', bed: 'r', shrub: 'r', bark: 'r', sand: 'r', parkGravel: 'r', parkPath: 'r', pond: 'r',
-  asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
+  asphalt: 'g', klinker: 'g', brick: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
 /** Materials that are objects on the ground, not the ground: lit by the rig as is (no FLAT_GROUND_GAIN). */
 const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram']);
-const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 
 export class OwnGround {
   readonly root: any;
@@ -533,6 +533,17 @@ export class OwnGround {
           g.fillRect(b.x * px + 1.2, b.y * px + 1.2, b.w * px - 2.4, b.h * px - 2.4);
         }
       }), roughness: 0.9 }),
+      // Inritten and parking bays of klinker (roads-v1 driveway / parking): the same herringbone, a muted grey brick
+      // near the pavement, the tone mix halved (road look v2: the saturated klinker slabs read as wedges on the photo).
+      brick: std({ map: this.canvasTexture(512, 2, (g, s) => {
+        const units = 20, px = s / units, base = STREET_GROUND.brick.base;
+        g.fillStyle = STREET_GROUND.brick.joint; g.fillRect(0, 0, s, s);
+        for (const b of herringboneBricks(units, KLINKER_TONES.length)) {
+          const t = KLINKER_TONES[b.tone].map(v => 1 + (v - 1) * 0.5), v = (rnd() - 0.5) * 12;
+          g.fillStyle = `rgb(${base[0] * t[0] + v},${base[1] * t[1] + v},${base[2] * t[2] + v})`;
+          g.fillRect(b.x * px + 1.2, b.y * px + 1.2, b.w * px - 2.4, b.h * px - 2.4);
+        }
+      }), roughness: 0.92 }),
       asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.asphalt.base], 18)) }),
       cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.cycle.base], 18)), roughness: 0.85 }),
       // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
@@ -540,7 +551,8 @@ export class OwnGround {
       gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.gravel, 30, 2)) }),
       kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9 }),
       paint: std({ color: STREET_GROUND.paint, roughness: 0.6 }),
-      tram: std({ color: STREET_GROUND.rail, roughness: 0.45, metalness: 0.6 }),
+      // Light steel, little metalness: with no environment map a metalness of 0.6 drew the rails darker than the asphalt (road look v2).
+      tram: std({ color: STREET_GROUND.rail, roughness: 0.4, metalness: 0.2 }),
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
       park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.park, 30, 3)), roughness: 1 }),
       wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.wood, 34, 3)), roughness: 1 }),
@@ -571,7 +583,7 @@ export class OwnGround {
     // The basemap's tones are look/sunny.ts `groundTokens` (basemapPalette.ts); the ground fades from the same strings.
     const T = groundTokens(groundPalette(this.opts.groundLook));
     const flat: Record<string, readonly number[] | string | 'vertex'> = {
-      land: T.land, klinker: T.klinker, asphalt: T.road, cycle: T.cycle,
+      land: T.land, klinker: T.klinker, brick: STREET_GROUND.brick.base, asphalt: T.road, cycle: T.cycle,
       paving: T.pavement, gravel: T.gravel, kerb: STREET_GROUND.kerb, paint: T.road, tram: T.road,
       bollard: T.pavement, park: T.park, wood: T.wood, square: G.square.base, parking: G.parking, water: T.water,
       lawn: G.lawn, bed: G.bed.soil, shrub: G.shrub.base, bark: G.bark, sand: G.sand, parkGravel: G.parkGravel, parkPath: G.parkPath, pond: G.pond,

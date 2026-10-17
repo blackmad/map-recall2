@@ -882,7 +882,12 @@ export interface LargeBuildingIntent {
    * Roof material. `material` covers every 3DBAG roof plane by default. From the orthophoto (2026-10-16, Entrepotdok):
    * `flat` re-materials the flat class (< 8°) of the default (a dark membrane under solar panels where the default's
    * flat tone would draw as pale gravel), and `surfaces` re-materials listed 3DBAG roof planes (the trailing number of
-   * `roofsRD[].surfaceId`, `roof-dump.ts --surfaces`) with the evidence for it. Absent: unchanged output.
+   * `roofsRD[].surfaceId`, `roof-dump.ts --surfaces`) with the evidence for it. `flatHex`: the colour of the flat
+   * class outside the `surfaces` regions (whichever material it takes) as the PDOK orthophoto reads this pand (roof-facts
+   * sidecar, `roofSlotHex`: the colour the city draws the same roof in; `roof-flat.ts`), exported with `tintSource:
+   * "measured"` so the look keeps it instead of mapping the material's flat tone onto a flat-roof prior by lightness
+   * (Kinkerstraat 89-105, 2026-10-16: the slate flat grey became buff gravel over a buff render, one slab from the
+   * street). Absent: unchanged output.
    */
   roof?: LargeRoofIntent;
   palette: PaletteIntent;
@@ -921,6 +926,8 @@ export interface LargeRoofIntent {
   material: RoofMaterial;
   flat?: RoofMaterial;
   surfaces?: {roofSurfaces: number[]; material: RoofMaterial; evidence: string}[];
+  /** measured flat-roof colour, `#rrggbb` (see `LargeBuildingIntent.roof`) */
+  flatHex?: string;
 }
 
 export type BuildingIntent = CanalHouseIntent | LargeBuildingIntent;

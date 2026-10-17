@@ -21,6 +21,7 @@ import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { decodeRoadLine, type RoadCell, type RoadsManifest } from './roadCells.js';
+import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
 import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import { openUnderHouseboats, type Boat } from './moorings.js';
@@ -38,7 +39,7 @@ const KX = 111_320 * Math.cos(GAME_ORIGIN.lat * Math.PI / 180), KY = 110_540;
 export const toLocal = (lng: number, lat: number): Vec2 => [(lng - GAME_ORIGIN.lng) * KX, (lat - GAME_ORIGIN.lat) * KY];
 export const fromLocal = (x: number, y: number): Vec2 => [GAME_ORIGIN.lng + x / KX, GAME_ORIGIN.lat + y / KY];
 
-export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', water: 'elevation-v1', parks: 'parks-v1', roads: 'roads-v1', courtyards: 'courtyards-v1' } as const;
+export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', water: 'elevation-v1', parks: 'parks-v1', roads: 'roads-v1', courtyards: 'courtyards-v1', marks: 'road-marks-v1' } as const;
 /** Water surface, scene z (canal level −0.40 NAP below the +1.37 NAP datum). */
 export const WATER_Z = -1.77;
 /** Relief loaded this far around a cell before it is built (decks and streets reach past its edge). */
@@ -79,6 +80,9 @@ export class GroundStore {
   private readonly osm = new Map<string, Promise<OsmGroundExtract | null>>();
   private readonly parks = new Map<string, Promise<ParksCell | null>>();
   private readonly roads = new Map<string, Promise<RoadCell | null>>();
+  /** road-marks-v1 (roadMarks.ts): crossing / signal / give-way nodes, loaded with the roads. */
+  private readonly marks = new Map<string, Promise<RoadMark[]>>();
+  markCells = new Set<string>();
   private readonly courtyards = new Map<string, Promise<CourtyardsCell | null>>();
   /** Polder water levels (null: the extract has none, every polygon sits at WATER_Z). */
   waterLevels: WaterLevels | null = null;
@@ -133,6 +137,8 @@ export class GroundStore {
     this.parkCells = new Set(parks?.version === 1 ? parks.cells : []);
     const roads = this.options.roads === true ? await this.json<RoadsManifest>(`${EXTRACTS.roads}/cells.json`).catch(() => null) : null;
     this.roadCells = new Set(roads?.version === 1 ? roads.cells : []);
+    const marks = this.options.roads === true ? await this.json<RoadMarksManifest>(`${EXTRACTS.marks}/cells.json`).catch(() => null) : null;
+    this.markCells = new Set(marks?.version === 1 ? marks.cells : []);
     const courtyards = this.options.courtyards === false ? null : await this.json<CourtyardsManifest>(`${EXTRACTS.courtyards}/cells.json`).catch(() => null);
     this.courtyardCells = new Set(courtyards?.version === 1 ? courtyards.cells : []);
     this.waterLevels = levels?.version === 1 ? levels : null;
@@ -507,6 +513,18 @@ export class GroundStore {
     return p;
   }
 
+  /** A cell's road-marking nodes (empty: none, or roads off). */
+  markCell(key: string): Promise<RoadMark[]> {
+    let p = this.marks.get(key);
+    if (!p) {
+      p = this.markCells.has(key)
+        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
+        : Promise.resolve([]);
+      this.marks.set(key, p);
+    }
+    return p;
+  }
+
   /** A cell's BGT courtyards (null: none, or courtyards off). */
   courtyardCell(key: string): Promise<CourtyardsCell | null> {
     let p = this.courtyards.get(key);
@@ -521,7 +539,7 @@ export class GroundStore {
 
   /** Forget cached water/OSM data for cells far away (relief is evicted separately). */
   forgetCells(keep: ReadonlySet<string>): void {
-    for (const map of [this.water, this.osm, this.parks, this.roads, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
+    for (const map of [this.water, this.osm, this.parks, this.roads, this.marks, this.courtyards, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
   }
 
   /**
@@ -531,7 +549,7 @@ export class GroundStore {
   async cellInput(key: string, lod: 0 | 1): Promise<CellInput> {
     await this.prepareCell(key);
     const around = GroundStore.neighbours(key);
-    const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround] = await Promise.all([
+    const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround] = await Promise.all([
       this.waterCell(key),
       Promise.all(around.map(k => this.waterCell(k))),
       this.osmCell(key),
@@ -539,6 +557,7 @@ export class GroundStore {
       Promise.all(around.map(k => this.parkCell(k))),
       Promise.all(around.map(k => this.roadCell(k))),
       Promise.all(around.map(k => this.courtyardCell(k))),
+      Promise.all(around.map(k => this.markCell(k))),
     ]);
     // Path ways a park's BGT path polygons replace may run into the neighbours' junction graph: drop them everywhere.
     const dropWays = parksAround.flatMap(p => p?.dropWays ?? []);
@@ -576,7 +595,7 @@ export class GroundStore {
       landedPlatforms: landedPlatformRings(toLocal).filter(r => near(r.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity] as [number, number, number, number]))),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}),
-      ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays } : {}),
+      ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays, marks: marksAround.flat() } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
       project: p => toLocal(p[0], p[1]),
     };
