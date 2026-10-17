@@ -34,6 +34,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Politiebureau IJ-tunnel 2 (2026-10-13 large recipe) is the same 1972 pand as Brandweerkazerne Nico (2026-10-09),
   // which models every side; the install left three sides blank. Found 2026-10-16 by the overlap check.
   'ordinary-0363100012165618': 'fire-station-nico',
+  // Marnixstraat car park (2026-10-13 large recipe): its ribbon windows were 18 cm holes in the 3DBAG shell and the ramp
+  // drums plain cylinders; the bespoke Europarking model (2026-10-17) draws the banded drums, deck block and Waterkant.
+  'ordinary-0363100012185422': 'europarking-marnixstraat',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

@@ -1,0 +1,458 @@
+{
+ "schemaVersion": 1,
+ "id": "europarking-marnixstraat",
+ "pand": "0363100012185422",
+ "brief": "scripts/landmarks/europarking-marnixstraat-brief.md",
+ "signature": [
+  "drum-bands",
+  "drum-pillars",
+  "waterkant-sign",
+  "block-bands-sw",
+  "pillared-undercroft",
+  "drum-underside"
+ ],
+ "walls": [
+  {
+   "tag": "d1-247",
+   "bearing": 247,
+   "lengthM": 37,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000207",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "note": "The two ramp drums seen from the Singelgracht (canal panoramas 001979_0001_000206/207, 001968_0000_000040; Commons Europarking_Marnixstraat.jpg). No panorama street wall: the drum facets are under the brief tool's minimum length.",
+   "items": [
+    {
+     "id": "drum-bands",
+     "kind": "window-shape",
+     "where": "both drums: seven thick white bands with rounded noses alternating with six deep dark slots",
+     "approxSizeM": [
+      37,
+      17.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "openDeckStack drum section: nose 0.4 m, slot 2.2 m deep, 64 facets, clipped at the radical line where the drums meet"
+    },
+    {
+     "id": "drum-underside",
+     "kind": "other",
+     "where": "the lowest band curves under to a 4.6 m soffit over the undercroft",
+     "approxSizeM": [
+      18.6,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "1.0 m rounded underside on the lowest band"
+    },
+    {
+     "id": "drum-rails",
+     "kind": "balcony-ironwork",
+     "where": "thin blue rail along the top of every band",
+     "approxSizeM": [
+      37,
+      0.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "0.1 x 0.12 m rail ring on each band top"
+    },
+    {
+     "id": "drum-pillars",
+     "kind": "colonnade",
+     "where": "dark round pillars under the drums",
+     "approxSizeM": [
+      0.9,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "eight 0.9 m pillars per drum at r 6 m"
+    },
+    {
+     "id": "waterkant-sign",
+     "kind": "sign",
+     "where": "green WATERKANT letters on a teal board over the bar",
+     "approxSizeM": [
+      8.5,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "raised stroke letters on a teal board standing on the pavilion roof edge (BAG 0363100012243632 canal edge)"
+    },
+    {
+     "id": "waterkant-zigzag",
+     "kind": "other",
+     "where": "black and white zigzag frieze under the letters",
+     "approxSizeM": [
+      8.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "white strip with twelve dark chevrons"
+    },
+    {
+     "id": "waterkant-front",
+     "kind": "canopy",
+     "where": "bar front: glazing under an awning (red/blue stripes in 2015, a dark canopy in 2021)",
+     "approxSizeM": [
+      8.5,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "glazed front with frame posts under a red and blue striped awning; the bulb strings and the 2021 OPEN FOR TAKEAWAY lettering (temporary) are not drawn"
+    },
+    {
+     "id": "waterkant-pavilion",
+     "kind": "other",
+     "where": "teal pavilion filling the undercroft under the drum pinch",
+     "approxSizeM": [
+      16,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "BAG 0363100012243632 footprint extruded 3.2 m in teal"
+    },
+    {
+     "id": "terrace",
+     "kind": "other",
+     "where": "picnic tables and blue tents along the quay under the drums",
+     "approxSizeM": [
+      30,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "how": "eight red picnic tables and two blue tents inside the drum outlines; the real tables stand on the quay edge, partly beyond the BAG outline"
+    },
+    {
+     "id": "night-lights",
+     "kind": "lamp",
+     "where": "coloured lighting under the decks at night",
+     "approxSizeM": [
+      37,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the game has no night mode"
+     }
+    },
+    {
+     "id": "pride-wrap",
+     "kind": "other",
+     "where": "rainbow / Amsterdam 750 banners on the drum bands",
+     "approxSizeM": [
+      37,
+      17
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001979_pano_0001_000207",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal wraps (2022, 2024, 2025 Commons photos)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "d2-337",
+   "bearing": 337,
+   "lengthM": 18.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000209",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "note": "North drum from the Lijnbaansgracht mouth.",
+   "items": [
+    {
+     "id": "store-243633",
+     "kind": "other",
+     "where": "small store under the north drum (BAG 0363100012243633)",
+     "approxSizeM": [
+      9,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000209",
+     "how": "BAG footprint extruded 2.6 m in container blue"
+    }
+   ]
+  },
+  {
+   "tag": "w01-67",
+   "bearing": 67,
+   "lengthM": 71,
+   "centre": [
+    4.8768707,
+    52.3697844
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002989_pano_0007_000039",
+   "capturedAt": "2023-03-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "block-bands-ne",
+     "kind": "window-shape",
+     "where": "Marnixstraat face: seven white parapet bands and six grey glazed ribbons above the fuel canopy",
+     "approxSizeM": [
+      71,
+      17.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0007_000039",
+     "how": "openDeckStack block section (square bands, 0.45 m glazed slots, mullions every 1.9 m)"
+    },
+    {
+     "id": "qpark-sign",
+     "kind": "lettering",
+     "where": "Q-PARK EUROPARKING on the lowest band, north end",
+     "approxSizeM": [
+      8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0007_000039",
+     "how": "raised stroke letters on the lowest band, 48-56 m from the east corner"
+    },
+    {
+     "id": "fuel-canopy",
+     "kind": "canopy",
+     "where": "petrol station canopy with a red and white fascia in front of the face",
+     "approxSizeM": [
+      45,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002989_pano_0007_000039",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a separate structure in front of the pand (not in BAG 0363100012185422 or its undercroft pands); the city layer owns it"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-247",
+   "bearing": 247,
+   "lengthM": 56.3,
+   "centre": [
+    4.8763915,
+    52.3695872
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000202",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "block-bands-sw",
+     "kind": "window-shape",
+     "where": "canal face: white parapet panels with small slots over grey ribbons, six decks",
+     "approxSizeM": [
+      56,
+      17.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000202",
+     "how": "openDeckStack block section, mullions"
+    },
+    {
+     "id": "parapet-slots",
+     "kind": "other",
+     "where": "small slot perforations in every white parapet panel",
+     "approxSizeM": [
+      0.5,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001979_pano_0001_000202",
+     "skip": {
+      "reason": "too-small",
+      "note": "15 cm slots, one per 3.6 m panel"
+     }
+    },
+    {
+     "id": "undercroft-sw",
+     "kind": "colonnade",
+     "where": "open undercroft on pale round pillars behind fences and booths",
+     "approxSizeM": [
+      56,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000202",
+     "how": "40 round concrete pillars 3 m in from the faces under a flat soffit"
+    },
+    {
+     "id": "container-243634",
+     "kind": "other",
+     "where": "blue container block along the face south of drum B (BAG 0363100012243634)",
+     "approxSizeM": [
+      15,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000202",
+     "how": "BAG footprint extruded 3.0 m in container blue; the graffiti is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w03-157",
+   "bearing": 157,
+   "lengthM": 38.6,
+   "centre": [
+    4.8768143,
+    52.3694228
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002637_pano_0000_000010",
+   "capturedAt": "2022-06-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "block-bands-se",
+     "kind": "window-shape",
+     "where": "south end: six white deck fronts with glass ribbon panels",
+     "approxSizeM": [
+      38.6,
+      17.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002637_pano_0000_000010",
+     "how": "openDeckStack block section"
+    },
+    {
+     "id": "pillared-undercroft",
+     "kind": "colonnade",
+     "where": "open undercroft on round concrete pillars",
+     "approxSizeM": [
+      38,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002637_pano_0000_000010",
+     "how": "pillar grid under the soffit"
+    }
+   ]
+  },
+  {
+   "tag": "w04-337",
+   "bearing": 337,
+   "lengthM": 38.6,
+   "centre": [
+    4.8764055,
+    52.3700097
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000213",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "block-bands-nw",
+     "kind": "window-shape",
+     "where": "Lijnbaansgracht end: seven bands, the lowest 1.75 m deep, over the open undercroft and the ramp in",
+     "approxSizeM": [
+      38.6,
+      17.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001979_pano_0001_000213",
+     "how": "openDeckStack block section; measured levels"
+    },
+    {
+     "id": "p-sign",
+     "kind": "sign",
+     "where": "P arrow sign on the quay wall",
+     "approxSizeM": [
+      1,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001979_pano_0001_000213",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1 m road sign"
+     }
+    },
+    {
+     "id": "red-containers",
+     "kind": "other",
+     "where": "red storage containers on the quay",
+     "approxSizeM": [
+      10,
+      2.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001979_pano_0001_000213",
+     "skip": {
+      "reason": "temporary",
+      "note": "site containers, absent in other captures"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Europarking Marnixstraat (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Europarking_Marnixstraat.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Waterkant Amsterdam (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Waterkant_Amsterdam_(52555855777).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Waterkant restaurant 2017 (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Waterkant_restaurant_(Amsterdam,_The_Netherlands_2017)_(33534528214).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Europarking02c1 (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Europarking02c1.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Europarking01 (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Europarking01.JPG",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Canal panorama 2021-01-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001979_pano_0001_000207/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Canal panorama 2021-01-25 (north)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001979_pano_0001_000209/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK orthophoto (plan)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=Actueel_orthoHR&CRS=EPSG:28992&BBOX=120135,486925,120285,487060&WIDTH=1200&HEIGHT=1080&FORMAT=image/jpeg",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012185422",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012185422/",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG pand 0363100012185422",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185422",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
