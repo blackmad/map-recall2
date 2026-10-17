@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## CI green again: held-model card overrides and an opt-in spec's local file (2026-10-17)
+
+Canal CI had failed on every push since 2026-10-16 evening, so the GitHub Pages
+deploy (gated on a green CI) was skipped each time while Firebase kept deploying.
+Two causes: `haparandaweg-street.spec.ts` read the gitignored
+`artifacts/haparandaweg/spots.json` at module load, before its `test.skip`, so the
+full e2e job crashed at collection (ENOENT); it now reads the file only with
+`HAP_SHOTS`. And holding the Kinderbrug statue model (2026-10-17) took its POI
+out of the game, orphaning its card override (`osm_artwork_4370460330`);
+`test:landmark-cards` now accepts an override whose kit model is held.
+
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 
 User (2026-10-16): "can you pick some more neighborhoods to give that

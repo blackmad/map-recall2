@@ -87,7 +87,11 @@ test('regression: Huis Bartolotti in the published extract is clean once overrid
   const { features, missing } = applyOverrides(published, overrides);
   // Only kit POIs absent from the extract miss it; they go through manual-poi-data.json.
   const merged = new Set(mergeManualPoiFeatures(published as unknown as LandmarkFeature[], 'amsterdam').map(feature => feature.id));
-  for (const id of missing) assert.ok(merged.has(id), `override ${id} matches no landmark`);
+  // A held kit model takes its POI out of the game; its card override waits for it (Kinderbrug statues, held 2026-10-17).
+  const catalogue = JSON.parse(readFileSync(new URL('../landmarks/manualCatalogue.json', import.meta.url), 'utf8'));
+  const entries = (Array.isArray(catalogue) ? catalogue : catalogue.models ?? catalogue.landmarks ?? []) as { landmarkId?: string; status?: string }[];
+  const heldPois = new Set(entries.filter(entry => entry.status === 'held' && entry.landmarkId).map(entry => entry.landmarkId!));
+  for (const id of missing) assert.ok(merged.has(id) || heldPois.has(id), `override ${id} matches no landmark`);
   const bartolotti = features.find(feature => feature.id === BARTOLOTTI_ID)!;
   assert.deepEqual(auditCard(bartolotti).issues, []);
   // Idempotent: applying twice changes nothing.
