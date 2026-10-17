@@ -281,6 +281,9 @@ export interface RecallHost extends GameCoreHost {
   learnedNames: Set<string>;
   /** Stop names answered on a transit run. */
   learnedStopNames: Set<string>;
+  /** Names answered right on the current ride, for its history record
+   *  (routeHistoryBrowser.ts); reset when a ride is set up. */
+  _rideNamedNames?: string[];
   revealedNames: Set<string>;
   _mapLabelNames: Set<string>;
   /** name -> world points where the store says this name is already known.

@@ -1288,6 +1288,7 @@ export class GameRecallRuntime {
       recallStore: this.recall,
       revealName: (name: string) => this._revealName(name),
       markLearned: (name: string) => {
+        if (this._rideNamedNames && !this._rideNamedNames.includes(name)) this._rideNamedNames.push(name);
         if (isStopQuiz) {
           this.learnedStopNames = this.learnedStopNames || new Set();
           this.learnedStopNames.add(name);

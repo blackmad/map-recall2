@@ -17,12 +17,13 @@ import { RoundResult, StreetFeature } from '../types';
 import { LatLon, chunkCenter, isKnownNear, isSuppressedNear } from './recallChunks';
 import { belongsToKnowledgeItem } from './knowledgeReview';
 import { scheduleExposure } from './recallExposure';
+import { canalFirebase, type CanalFirebase } from './firebaseShared';
+import { loadRouteHistory, mergeHistories, saveRouteHistory, toCloudDoc, type RideRecord } from './routeHistory';
 
 export { RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallChunks';
 
 const STATES_KEY = 'mapRecall_reviewStates_v1';
 const EVENTS_KEY = 'mapRecall_reviewEvents_v1';
-const CONFIG_URL = 'firebase-config.json';
 
 export interface RecallFeature {
   name: string;
@@ -107,12 +108,21 @@ function asRoundResult(feature: RecallFeature, correct: boolean, timeSpentMs: nu
   };
 }
 
+/** The signed-in rider as the HUD shows them. */
+export interface RecallUser {
+  uid: string;
+  label: string;
+  photoURL: string | null;
+}
+
 class RecallStore {
   private states: StateMap = {};
   private auth: import('firebase/auth').Auth | null = null;
   private db: import('firebase/firestore').Firestore | null = null;
+  /** SDK namespaces the shared app was created with; see firebaseShared.ts. */
+  private fb: CanalFirebase | null = null;
   private uid: string | null = null;
-  private listeners: Array<(user: { uid: string; label: string } | null) => void> = [];
+  private listeners: Array<(user: RecallUser | null) => void> = [];
   /** Mastery gating is opt-in so a fresh player is still asked everything. */
   enabled = true;
   private markHistoryReady: () => void = () => {};
@@ -134,21 +144,18 @@ class RecallStore {
     this.states = read<StateMap>(STATES_KEY, {});
     if (typeof window === 'undefined') { this.markHistoryReady(); return; } // Node tests / scripts
     try {
-      const response = await fetch(new URL(CONFIG_URL, window.location.href));
-      if (!response.ok) { this.markHistoryReady(); return; }  // guest mode
-      const config = await response.json();
-      if (!config?.apiKey || !config?.projectId) { this.markHistoryReady(); return; }
-      const [{ initializeApp }, authModule, firestoreModule] = await Promise.all([
-        import('firebase/app'), import('firebase/auth'), import('firebase/firestore'),
-      ]);
-      const app = initializeApp(config);
-      this.auth = authModule.getAuth(app);
-      this.db = firestoreModule.getFirestore(app);
-      authModule.onAuthStateChanged(this.auth, (user) => {
+      const fb = await canalFirebase();
+      if (!fb) { this.markHistoryReady(); return; } // guest mode
+      this.fb = fb;
+      this.auth = fb.auth;
+      this.db = fb.db;
+      fb.authApi.onAuthStateChanged(this.auth, (user) => {
         this.uid = user ? user.uid : null;
         this._emitUser();
-        if (this.uid) void this.pull().finally(() => this.markHistoryReady());
-        else this.markHistoryReady();
+        if (this.uid) {
+          void this.pull().finally(() => this.markHistoryReady());
+          void this.syncRides();
+        } else this.markHistoryReady();
       });
     } catch (reason) {
       console.warn('Canal Recall progress is local only:', reason);
@@ -158,20 +165,19 @@ class RecallStore {
 
   get available(): boolean { return this.auth !== null; }
   get signedIn(): boolean { return this.uid !== null; }
-  onUserChange(listener: (user: { uid: string; label: string } | null) => void): void {
+  onUserChange(listener: (user: RecallUser | null) => void): void {
     this.listeners.push(listener);
   }
 
   async signIn(): Promise<void> {
-    if (!this.auth) throw new Error('Sign-in is unavailable — no Firebase config.');
-    const { GoogleAuthProvider, signInWithPopup } = await import('firebase/auth');
+    if (!this.auth || !this.fb) throw new Error('Sign-in is unavailable — no Firebase config.');
+    const { GoogleAuthProvider, signInWithPopup } = this.fb.authApi;
     await signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
   async signOut(): Promise<void> {
-    if (!this.auth) return;
-    const { signOut } = await import('firebase/auth');
-    await signOut(this.auth);
+    if (!this.auth || !this.fb) return;
+    await this.fb.authApi.signOut(this.auth);
   }
 
   /**
@@ -186,7 +192,7 @@ class RecallStore {
     write(EVENTS_KEY, {});
     if (this.uid && this.db) {
       try {
-        const { collection, getDocs, writeBatch } = await import('firebase/firestore');
+        const { collection, getDocs, writeBatch } = this.fb!.firestoreApi;
         for (const name of ['reviewStates', 'reviewEvents'] as const) {
           const snapshot = await getDocs(collection(this.db, 'users', this.uid, name));
           let batch = writeBatch(this.db);
@@ -211,12 +217,13 @@ class RecallStore {
   }
 
   private _emitUser(): void {
-    const user = this.uid
+    const user: RecallUser | null = this.uid
       ? {
         uid: this.uid,
         label: this.auth?.currentUser?.displayName
           || this.auth?.currentUser?.email
           || 'Signed in',
+        photoURL: this.auth?.currentUser?.photoURL || null,
       }
       : null;
     for (const listener of this.listeners) listener(user);
@@ -405,7 +412,7 @@ class RecallStore {
    *  straight back, undoing the forget on every reload. */
   private async deleteFromCloud(states: readonly ReviewState[]): Promise<void> {
     try {
-      const { doc, writeBatch } = await import('firebase/firestore');
+      const { doc, writeBatch } = this.fb!.firestoreApi;
       const batch = writeBatch(this.db!);
       for (const state of states) {
         batch.delete(doc(this.db!, 'users', this.uid!, 'reviewStates', stateId(state)));
@@ -459,7 +466,7 @@ class RecallStore {
 
   private async push(state: ReviewState, event?: unknown): Promise<void> {
     try {
-      const { doc, writeBatch } = await import('firebase/firestore');
+      const { doc, writeBatch } = this.fb!.firestoreApi;
       const clean = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T;
       const batch = writeBatch(this.db!);
       batch.set(doc(this.db!, 'users', this.uid!, 'reviewStates', stateId(state)), clean(state));
@@ -475,7 +482,7 @@ class RecallStore {
   /** Merge newer cloud state down, then upload anything the cloud has not seen. */
   private async pull(): Promise<void> {
     try {
-      const { collection, getDocs } = await import('firebase/firestore');
+      const { collection, getDocs } = this.fb!.firestoreApi;
       const snapshot = await getDocs(collection(this.db!, 'users', this.uid!, 'reviewStates'));
       snapshot.forEach((entry) => {
         const cloud = entry.data() as ReviewState;
@@ -485,6 +492,39 @@ class RecallStore {
       write(STATES_KEY, this.states);
     } catch (reason) {
       console.warn('Could not load recall progress:', reason);
+    }
+  }
+
+  // ---- Ride history (routeHistory.ts) ----
+
+  /** Mirror one finished ride to `users/{uid}/gameSessions/{id}`; a no-op for guests. */
+  async saveRide(record: RideRecord): Promise<boolean> {
+    if (!this.uid || !this.db || !this.fb) return false;
+    try {
+      const { doc, setDoc } = this.fb.firestoreApi;
+      await setDoc(doc(this.db, 'users', this.uid, 'gameSessions', record.id), toCloudDoc(record));
+      return true;
+    } catch (reason) {
+      console.warn('Could not sync ride history:', reason);
+      return false;
+    }
+  }
+
+  /** On sign-in: pull cloud rides into this device's history, push rides the cloud lacks. */
+  private async syncRides(): Promise<void> {
+    if (!this.uid || !this.db || !this.fb) return;
+    try {
+      const { collection, getDocs, doc, writeBatch } = this.fb.firestoreApi;
+      const snapshot = await getDocs(collection(this.db, 'users', this.uid, 'gameSessions'));
+      const storage = typeof localStorage === 'undefined' ? null : localStorage;
+      const { merged, upload } = mergeHistories(loadRouteHistory(storage), snapshot.docs.map(entry => entry.data()));
+      saveRouteHistory(storage, merged);
+      if (!upload.length) return;
+      const batch = writeBatch(this.db);
+      for (const record of upload) batch.set(doc(this.db, 'users', this.uid, 'gameSessions', record.id), toCloudDoc(record));
+      await batch.commit();
+    } catch (reason) {
+      console.warn('Could not sync ride history:', reason);
     }
   }
 }
