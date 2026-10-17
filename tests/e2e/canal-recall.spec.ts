@@ -9,7 +9,10 @@ type HarnessGame = {
   quizFeedback: string;
   _utilityOpen: boolean;
   player: { x: number; y: number; angle: number; speed: number };
-  track: { getNearestRoad(x: number, y: number): { dist: number; width: number; angle: number } | null };
+  track: {
+    getNearestRoad(x: number, y: number): { dist: number; width: number; angle: number } | null;
+    getGuardRoad(x: number, y: number, preferredAngle?: number | null): { dist: number; width: number; angle: number } | null;
+  };
   landmarks: Array<{ id: string; name: string; x: number; y: number }>;
   vectorMap: {
     ready?: boolean;
@@ -188,15 +191,36 @@ test('HUD withholds an unanswered street even when the bike is turned across it'
   expect(hudCall.captured).toEqual({ routeName: '', answerHidden: true });
 });
 
+// The corridor is the union of every mapped road, the surface the road guard
+// enforces (pickGuardContact, 2026-10-01). Until 2026-10-17 this measured the
+// heading-less nearest centreline, which beside a wide corridor is often a
+// narrow way the car is not on: in failing runs the car sat inside a 30 px
+// corridor (guard excess <= 0.7) while a 9 px way 30 px away read 21–23 px
+// "off". It also aimed across wherever the seeded route happened to start
+// (four different starts in four repeats), so whether a kerb lay ahead was
+// luck. Pinned now: mid-block on Reestraat (a one-lane canal-ring cross
+// street, houses both sides), aimed straight at the houses, questions off.
 test('an actual high-speed car cannot escape the mapped road corridor', async ({ page }) => {
   await openCarRoute(page);
-  await page.evaluate(() => {
-    const game = window.canalRecallGame;
-    const road = game.track.getNearestRoad(game.player.x, game.player.y);
-    if (!road) throw new Error('Harness route did not start on a road');
-    game.player.angle = road.angle + Math.PI / 2;
-    game.player.speed = 190;
+  const placed = await page.evaluate(() => {
+    const game = window.canalRecallGame as any;
+    const spans = (game.track.segments as Array<{ name?: string; points: Array<{ x: number; y: number }> }>)
+      .filter(seg => seg.name === 'Reestraat' && seg.points.length >= 2);
+    const length = (pts: Array<{ x: number; y: number }>) => pts.slice(1)
+      .reduce((sum, p, i) => sum + Math.hypot(p.x - pts[i].x, p.y - pts[i].y), 0);
+    const span = spans.sort((a, b) => length(b.points) - length(a.points))[0];
+    if (!span) return null;
+    const pts = span.points;
+    const i = Math.floor((pts.length - 1) / 2);
+    const x = (pts[i].x + pts[i + 1].x) / 2, y = (pts[i].y + pts[i + 1].y) / 2;
+    const road = game.track.getNearestRoad(x, y);
+    game.maxAsksPerMinute = 0;
+    game.quizPromptName = '';
+    Object.assign(game.player, { x: road.x, y: road.y, vx: 0, vy: 0, angle: road.angle + Math.PI / 2, speed: 190 });
+    return { name: game.track.getRoadName(road.x, road.y), width: road.width };
   });
+  expect(placed, 'Reestraat is in the street extract').not.toBeNull();
+  expect(placed!.name).toBe('Reestraat');
 
   await page.keyboard.down('ArrowUp');
   const samples: Array<{ excess: number; speed: number }> = [];
@@ -205,13 +229,15 @@ test('an actual high-speed car cannot escape the mapped road corridor', async ({
     samples.push(await page.evaluate(() => {
       const game = window.canalRecallGame;
       game.state = 4;
-      const road = game.track.getNearestRoad(game.player.x, game.player.y);
+      const road = game.track.getGuardRoad(game.player.x, game.player.y);
       return { excess: road ? road.dist - road.width : Number.POSITIVE_INFINITY, speed: game.player.speed };
     }));
   }
   await page.keyboard.up('ArrowUp');
 
-  expect(Math.max(...samples.map(sample => sample.excess))).toBeLessThanOrEqual(12.5);
+  // Judged against the union, the guard's rollback line is the bound:
+  // CAR_ROAD_EDGE_TOLERANCE (4 px) past the nearest asphalt.
+  expect(Math.max(...samples.map(sample => sample.excess))).toBeLessThanOrEqual(4);
   expect(samples.some(sample => sample.speed < 150)).toBe(true);
 });
 
@@ -234,7 +260,12 @@ test('curated POI identity wins over an unnamed building hit', async ({ page }) 
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
-test('anonymous year-only buildings clear selection without opening a card', async ({ page }) => {
+// Premise changed 2026-10-10 (7f4d1e818, user: "why does this building not
+// let me click on it?"): every drawn building answers a click with what the
+// register knows. A nameless year-only footprint now replaces the previous
+// selection with its own "Built <year>" card; it must never fall back to an
+// "Unnamed building" title or keep the previous museum lit.
+test('anonymous year-only buildings open their own year card, never "Unnamed building"', async ({ page }) => {
   await openCarRoute(page);
   const result = await page.evaluate(() => {
     const game = window.canalRecallGame as any;
@@ -253,7 +284,9 @@ test('anonymous year-only buildings clear selection without opening a card', asy
     inspector._inspectBuildingAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
     return { card: game._landmarkNotice, active };
   });
-  expect(result).toEqual({ card: null, active: null });
+  expect(result.card).toMatchObject({ id: 'clicked-anonymous-footprint', type: 'building', name: 'Built 1887' });
+  expect(result.card.detail).toContain('1887');
+  expect(result.active).toEqual(result.card);
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
