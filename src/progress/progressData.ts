@@ -76,7 +76,7 @@ export function rideWhen(endedAt: number, now = Date.now()): string {
 
 // ---- Landmark stamps (src/canalRecall/collection/poiCollection.ts, another lane) ----
 
-export interface StampEntry { id: string; name: string; firstEarnedAt: number; how: string; count: number }
+export interface StampEntry { id: string; kind?: string; name: string; firstEarnedAt: number; how: string; count: number }
 export interface StampCollection {
   progress(): { earned: number; total: number };
   all(): StampEntry[];

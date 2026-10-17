@@ -6,6 +6,8 @@
  */
 import type { User } from 'firebase/auth';
 import { loadRouteHistory, mergeHistories, saveRouteHistory, toCloudDoc, type RideRecord } from '../canalRecall/routeHistory';
+import { mergeIntoStorage, syncStamps as syncStampDocs, type StampCloud } from '../canalRecall/collection/stampSync';
+import type { StampRecord } from '../canalRecall/collection/poiCollection';
 
 const storage = (): Storage | null => {
   try { return localStorage; } catch { return null; }
@@ -23,5 +25,14 @@ export async function syncRides(user: User): Promise<RideRecord[]> {
     for (const record of upload) batch.set(doc(db, 'users', user.uid, 'gameSessions', record.id), toCloudDoc(record));
     await batch.commit();
   }
+  return merged;
+}
+
+/** Landmark stamps: users/{uid}/poiStamps merged with this device's, and the difference written back. */
+export async function syncStamps(user: User): Promise<StampRecord[] | null> {
+  const [{ db }, firestore] = await Promise.all([import('../firebase'), import('firebase/firestore')]);
+  if (!db) return null;
+  const cloud = { db, api: firestore as unknown as StampCloud['api'], uid: user.uid } as StampCloud;
+  const { merged } = await syncStampDocs(cloud, mergeIntoStorage(storage()));
   return merged;
 }

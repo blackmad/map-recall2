@@ -116,6 +116,7 @@ body.pg-body {
 .pg-stamp-token:nth-child(even) { transform: rotate(3deg); }
 .pg-stamp-token span { font: 800 14px/1.05 var(--pg-display); letter-spacing: 0.04em; text-transform: uppercase; overflow-wrap: anywhere; }
 .pg-stamp-token small { font-size: 11px; color: var(--day-ink-muted); }
+.pg-stamp-token em { font: 700 10px/1 var(--pg-display); letter-spacing: 0.12em; text-transform: uppercase; font-style: normal; color: var(--day-accent-ink, var(--day-ink-muted)); }
 .pg-stamp-blank { border-style: dashed; border-color: var(--day-line-strong); box-shadow: none; color: var(--day-line-strong); background: transparent; }
 .pg-stamp-blank span { font-size: 28px; }
 
@@ -136,6 +137,8 @@ body.pg-body {
   .pg-empty .pg-stamp { justify-self: stretch; }
   .pg-known { grid-template-columns: 1fr; }
   .pg-stamp-token { width: 96px; height: 96px; }
+  /* "Rijksmuseum" broke as RIJKSMUSE/UM at 14px in a 96px token. */
+  .pg-stamp-token span { font-size: 12px; overflow-wrap: break-word; hyphens: auto; }
 }
 @media (max-width: 400px) {
   .pg-nav > a { display: none; }

@@ -11,30 +11,12 @@ import { loadLocalReviewStates, syncProgress } from '../progressRepository';
 import type { ReviewEvent, ReviewState } from '../spacedRepetition';
 import { REVIEW_EVENTS_KEY } from '../canalRecall/knowledgeReview';
 import { loadRouteHistory, rideAgainHref, rideMinutes, type RideMode, type RideRecord } from '../canalRecall/routeHistory';
-import { syncRides } from './cloud';
-import {
-  pickStampCollection, plural, progressView, rideWhen, isStampCollection,
-  type StampCollection,
-} from './progressData';
+import { syncRides, syncStamps } from './cloud';
+import { plural, progressView, rideWhen, type StampCollection } from './progressData';
+import { loadLocalStamps, loadPool, stampView } from './stamps';
 import './progress.css';
 
 const AuthModal = lazy(() => import('../components/AuthModal').then(({ AuthModal }) => ({ default: AuthModal })));
-
-/** The landmark-stamp collection is another lane's module; the glob is empty until it lands. */
-const collectionModules = import.meta.glob('../canalRecall/collection/poiCollection.ts');
-
-async function loadStamps(): Promise<StampCollection | null> {
-  const global = (window as unknown as { CanalCollection?: unknown }).CanalCollection;
-  if (isStampCollection(global)) return global;
-  const load = Object.values(collectionModules)[0];
-  if (!load) return null;
-  try {
-    return pickStampCollection(await load());
-  } catch (reason) {
-    console.warn('Landmark stamps unavailable:', reason);
-    return null;
-  }
-}
 
 function readEvents(): ReviewEvent[] {
   try {
@@ -138,8 +120,9 @@ export function ProgressPage() {
 
   useEffect(() => {
     let cancelled = false;
-    void loadStamps().then(found => { if (!cancelled) setStamps(found); });
-    const refresh = () => { setRides(safeRides()); setStates(safeStates()); };
+    const refreshStamps = () => { void loadLocalStamps().then(found => { if (!cancelled) setStamps(found); }); };
+    refreshStamps();
+    const refresh = () => { setRides(safeRides()); setStates(safeStates()); refreshStamps(); };
     window.addEventListener('storage', refresh);
     return () => { cancelled = true; window.removeEventListener('storage', refresh); };
   }, []);
@@ -148,11 +131,15 @@ export function ProgressPage() {
     if (!user) { setSyncNote(''); return; }
     let cancelled = false;
     setSyncNote('Syncing…');
-    Promise.allSettled([syncRides(user), syncProgress(user)]).then(([rideResult, stateResult]) => {
+    Promise.allSettled([syncRides(user), syncProgress(user), syncStamps(user)]).then(async ([rideResult, stateResult, stampResult]) => {
       if (cancelled) return;
       if (rideResult.status === 'fulfilled') setRides(rideResult.value);
       if (stateResult.status === 'fulfilled') setStates(stateResult.value);
-      const failed = rideResult.status === 'rejected' || stateResult.status === 'rejected';
+      if (stampResult.status === 'fulfilled' && stampResult.value) {
+        const pool = await loadPool();
+        if (!cancelled) setStamps(stampView(stampResult.value, pool));
+      }
+      const failed = rideResult.status === 'rejected' || stateResult.status === 'rejected' || stampResult.status === 'rejected';
       setSyncNote(failed ? 'Could not reach the cloud copy; showing this device.' : '');
     });
     return () => { cancelled = true; };
@@ -308,7 +295,8 @@ export function ProgressPage() {
               </div>
               <ul className="pg-stamps">
                 {stampList.map(stamp => (
-                  <li key={stamp.id} className="pg-stamp-token" title={`${stamp.how}${stamp.count > 1 ? ` · ${stamp.count} times` : ''}`}>
+                  <li key={stamp.id} className={`pg-stamp-token${stamp.kind === 'tour' ? ' pg-stamp-tour' : ''}`} data-testid="stamp-token" data-stamp-id={stamp.id} title={`${stamp.how}${stamp.count > 1 ? ` · ${stamp.count} times` : ''}`}>
+                    {stamp.kind === 'tour' ? <em>Tour</em> : null}
                     <span>{stamp.name}</span>
                     <small>{rideWhen(stamp.firstEarnedAt, now)}</small>
                   </li>
@@ -317,7 +305,7 @@ export function ProgressPage() {
                   <li key={`blank-${index}`} className="pg-stamp-token pg-stamp-blank" aria-hidden="true"><span>?</span></li>
                 ))}
               </ul>
-              {stampList.length === 0 ? <p className="pg-none">Arrive at a landmark on a ride to collect its stamp.</p> : null}
+              {stampList.length === 0 ? <p className="pg-none">Ride to a landmark you chose, or finish a tour, to collect its stamp.</p> : null}
             </div>
           </section>
         ) : null}
