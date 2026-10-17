@@ -674,6 +674,13 @@ function useScrollEdges(active: boolean) {
   return { ref, edges, scrollOn };
 }
 
+/** Scroll an opened section to the top of its rail, so what it revealed is
+ *  in sight. Waits a frame for the content to lay out. */
+function revealOpenedSection(section: HTMLElement): void {
+  const reduce = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  requestAnimationFrame(() => section.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' }));
+}
+
 export function OverlayApp({
   store,
   callbacks,
@@ -932,7 +939,13 @@ export function OverlayApp({
             <details
               className="advanced-options enamel-advanced"
               open={state.advancedOpen}
-              onToggle={event => store.setAdvancedOpen((event.target as HTMLDetailsElement).open)}
+              onToggle={event => {
+                const details = event.target as HTMLDetailsElement;
+                store.setAdvancedOpen(details.open);
+                // The controls opened below the fold on desktop, so the click
+                // seemed to do nothing (clarity review 12). Bring them up.
+                if (details.open) revealOpenedSection(details);
+              }}
             >
               <summary>More options</summary>
               <ChoiceRow
@@ -987,11 +1000,20 @@ export function OverlayApp({
               </div>
             </details>
             </div>
-            {setupScroll.edges.below ? (
-              <button type="button" className="setup-scroll-cue" onClick={setupScroll.scrollOn} aria-label="Scroll for more options">
-                More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
-              </button>
-            ) : null}
+            {/* Docked in its own row under the rail, never over a field: it
+                floated on the Destination select's chevron (clarity review 11).
+                The row is kept while hidden so the rail does not jump. */}
+            <button
+              type="button"
+              className="setup-scroll-cue"
+              data-idle={setupScroll.edges.below ? undefined : ''}
+              aria-hidden={setupScroll.edges.below ? undefined : true}
+              tabIndex={setupScroll.edges.below ? undefined : -1}
+              onClick={setupScroll.scrollOn}
+              aria-label="Scroll for more options"
+            >
+              More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
+            </button>
             </div>
             <div className="enamel-setup-footer">
               <p className="enamel-field-note" id="mission-brief" style={{ margin: '0 0 8px', textAlign: 'center' }}>
@@ -1047,11 +1069,20 @@ export function OverlayApp({
             >
               <RideOptions prefs={prefs} patch={patch} live />
             </div>
-            {settingsScroll.edges.below ? (
-              <button type="button" className="setup-scroll-cue" onClick={settingsScroll.scrollOn} aria-label="Scroll for more settings">
-                More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
-              </button>
-            ) : null}
+            {/* Docked in its own row under the rail, never over a field: it
+                floated on the Destination select's chevron (clarity review 11).
+                The row is kept while hidden so the rail does not jump. */}
+            <button
+              type="button"
+              className="setup-scroll-cue"
+              data-idle={settingsScroll.edges.below ? undefined : ''}
+              aria-hidden={settingsScroll.edges.below ? undefined : true}
+              tabIndex={settingsScroll.edges.below ? undefined : -1}
+              onClick={settingsScroll.scrollOn}
+              aria-label="Scroll for more settings"
+            >
+              More <ChevronDown aria-hidden="true" size={14} strokeWidth={2.5} />
+            </button>
           </div>
           <div className="utility-actions">
             <div className="utility-actions-row">

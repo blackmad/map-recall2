@@ -402,10 +402,13 @@ a.account-button { display: inline-flex; align-items: center; text-decoration: n
   -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 44px), transparent);
   mask-image: linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 44px), transparent);
 }
+/* The cue has its own slim row under the rail. Floating, it sat on the
+   Destination select's chevron and read as part of the field (clarity
+   review 11). Idle, it keeps the row so the rail does not jump. */
 .setup-scroll-cue {
-  position: absolute; right: 6px; bottom: 4px; z-index: 2;
+  flex: none; align-self: center; margin: 2px 0 0;
   display: inline-flex; align-items: center; gap: 4px;
-  min-height: 30px; padding: 0 12px;
+  min-height: 24px; padding: 0 12px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--surface-raised, var(--surface));
@@ -417,6 +420,7 @@ a.account-button { display: inline-flex; align-items: center; text-decoration: n
   text-transform: uppercase;
   animation: setup-cue-nudge 1.8s ease-in-out 2;
 }
+.setup-scroll-cue[data-idle] { visibility: hidden; animation: none; }
 @keyframes setup-cue-nudge { 50% { transform: translateY(3px); } }
 @media (prefers-reduced-motion: reduce) { .setup-scroll-cue { animation: none; } }
 /* Destructive actions, fenced and labelled; both still confirm first. */
