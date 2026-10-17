@@ -50126,16 +50126,14 @@
         }
         const profile = travelProfile(this.travelMode);
         const recallNoun = profile.recallNoun;
-        const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
         const stats = this.quizAttempts > 0 ? [
-          { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
-          { label: "Recall", value: `${accuracy}%` }
+          { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` }
         ] : [];
         stats.push(
           { label: "Time", value: this.hud.formatTime(this.raceTime).slice(0, -2) },
           { label: "Distance", value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
         );
-        if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: "Points", value: String(this.quizPoints) });
+        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: "Points", value: String(this.quizPoints) });
         const footerBits = [
           this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
           profile.label,
@@ -50270,7 +50268,7 @@
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
           { id: "again", key: "ENTER", caption: tour && !tour.completed ? "Next stop" : "Next route" }
         ];
-        if (compact) actions.push({ id: "route", key: "", caption: "Route setup" });
+        actions.push({ id: "route", key: compact ? "" : "M", caption: "Route setup" });
         if (this._shareUrl) {
           actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Share this route" });
         }
@@ -50323,7 +50321,9 @@
               ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
               ctx.font = "12px system-ui, sans-serif";
               ctx.fillText(action.caption, ax, top + 18);
-              ax += ctx.measureText(action.caption).width + 22;
+              const captionW = ctx.measureText(action.caption).width;
+              finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
+              ax += captionW + 22;
             }
           }
         });
