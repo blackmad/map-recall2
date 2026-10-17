@@ -1,5 +1,10 @@
 "use strict";
 (() => {
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
   // src/canalRecall/game/landmarkData.ts
   var GENERIC_BRIDGE_NAME_PATTERN = /^\s*(brug\s*)?\d+\s*$/i;
   var NEIGHBORHOOD_KIND_RANKS = {
@@ -91,6 +96,10 @@
         wikidata: feature.wikidata || "",
         wikipedia: feature.wikipedia || "",
         extractLang: feature.wikipediaExtractLang || "en",
+        wikipediaPageviews60d: feature.wikipediaPageviews60d,
+        wikidataSitelinks: feature.wikidataSitelinks,
+        heritage: feature.heritage,
+        wikidataInstanceOf: feature.wikidataInstanceOf,
         geojson: { type: "FeatureCollection", features: displayGeometry(feature, center) }
       });
     }
@@ -154,6 +163,7 @@
       bridges.push({
         id: feature.id,
         name: feature.name,
+        ...feature.displayName ? { displayName: feature.displayName } : {},
         lines,
         crossings: source.map((crossing) => ({ ...crossing, ...toWorld(crossing.center) })),
         distractors: (feature.distractors || []).filter((name) => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
@@ -441,6 +451,7 @@ Map source: ${osmUrl(places[i][0])}`);
       if (!before) return true;
       const word = before[1];
       if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
       return !abbreviations.has(word.toLocaleLowerCase());
     };
     let end = -1;
@@ -531,6 +542,19 @@ Map source: ${osmUrl(places[i][0])}`);
   }
   var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
+  // src/canalRecall/bridgeLedeRepair.ts
+  var NOT_A_SENTENCE_END = /(?:^|[\s(])(?:[A-Z][a-z]?|[A-Z]\.[A-Z]|Mr|Dr|Ir|St|Prof|ca|nr|no|[A-Z][a-z]*s?z)\.$/;
+  function ledeSentences(text) {
+    const pieces = text.trim().split(/(?<=[.!?])\s+(?=[A-Z"'“‘(0-9])/u).filter(Boolean);
+    const sentences2 = [];
+    for (const piece of pieces) {
+      const previous = sentences2[sentences2.length - 1];
+      if (previous !== void 0 && NOT_A_SENTENCE_END.test(previous)) sentences2[sentences2.length - 1] = `${previous} ${piece}`;
+      else sentences2.push(piece);
+    }
+    return sentences2;
+  }
+
   // src/canalRecall/game/routeKnowledge.ts
   var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
   function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}, bridges = []) {
@@ -567,9 +591,15 @@ Map source: ${osmUrl(places[i][0])}`);
       const existing = index.get(key);
       index.set(key, existing ? { ...existing, structureFact } : { name, type: "bridge", structureFact });
     }
+    for (const bridge of bridges) {
+      if (!bridge.name || !bridge.displayName) continue;
+      const key = `bridge:${normalise(bridge.name)}`;
+      const existing = index.get(key);
+      if (existing) index.set(key, { ...existing, name: bridge.displayName });
+    }
     return index;
   }
-  var sentencesOf = (text) => text.trim().split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
+  var sentencesOf = (text) => ledeSentences(text).map((part) => part.trim()).filter(Boolean);
   var STREET_CARD_DETAIL_CHARS = 150;
   var STREET_CARD_LONG_CHARS = 280;
   function streetCardText(entry) {
@@ -38629,7 +38659,7 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2856c",
+        brick: "#a28382",
         stone: "#e2d6bc",
         frame: "#efece3",
         glass: "#4f6270",
@@ -48036,7 +48066,11 @@ Map source: ${osmUrl(places[i][0])}`);
           manualPoi: true,
           modelId: model.id,
           buildingIds: manualPoiBuildingIds(id, [...existing?.buildingIds ?? [], ...model.suppressOsmIds ?? []]),
-          prominenceScore: Math.max(existing?.prominenceScore ?? 0, 220)
+          // Hand-modelled assets get a tie-break bump over their extract score,
+          // not the old hard 220 floor that let any modelled building outrank a
+          // genuinely famous one. Routing now weighs real notability; this field
+          // only orders ties and keeps the map-label admission via `manualPoi`.
+          prominenceScore: (existing?.prominenceScore ?? 0) + 1
         });
       }
       if (model.id !== "muziekgebouw-bimhuis") {
@@ -48108,6 +48142,75 @@ Map source: ${osmUrl(places[i][0])}`);
     } catch {
     }
     return prior;
+  }
+
+  // src/canalRecall/game/poiNotability.ts
+  var A_LIST = [
+    { name: "Rijksmuseum", wikidata: ["Q190804"] },
+    { name: "Van Gogh Museum", wikidata: ["Q224124"] },
+    { name: "Stedelijk Museum", aliases: ["Stedelijk Museum Amsterdam"], wikidata: ["Q924335", "Q42175133"] },
+    { name: "Anne Frank Huis", aliases: ["Anne Frank House"], wikidata: ["Q165366"] },
+    { name: "Westerkerk", wikidata: ["Q1130722"] },
+    { name: "Koninklijk Paleis", aliases: ["Royal Palace", "Paleis op de Dam", "Royal Palace of Amsterdam"], wikidata: ["Q1056152"] },
+    { name: "Nieuwe Kerk", aliases: ["Nieuwe Kerk Amsterdam"], wikidata: ["Q1419675"] },
+    { name: "Oude Kerk", aliases: ["Oude Kerk Amsterdam"], wikidata: ["Q623558"] },
+    { name: "Concertgebouw", aliases: ["Royal Concertgebouw", "Koninklijk Concertgebouw"], wikidata: ["Q849957"] },
+    { name: "Amsterdam Centraal", aliases: ["Central Station", "Amsterdam Centraal Station"], wikidata: ["Q50719"] },
+    { name: "Magere Brug", aliases: ["Skinny Bridge", "Skinny bridge"], wikidata: ["Q1344400"] },
+    { name: "Munttoren", aliases: ["Mint Tower", "Munt Tower"], wikidata: ["Q1429748"] },
+    { name: "De Waag", aliases: ["Waag", "Weigh House"], wikidata: ["Q2466999"] },
+    { name: "Begijnhof", wikidata: ["Q1629214"] },
+    { name: "Homomonument", wikidata: ["Q51411"] },
+    { name: "Rembrandthuis", aliases: ["Rembrandt House", "Museum Het Rembrandthuis", "Rembrandt House Museum"], wikidata: ["Q277316"] },
+    { name: "Portugese Synagoge", aliases: ["Portuguese Synagogue"], wikidata: ["Q1853707"] },
+    { name: "Joods Museum", aliases: ["Jewish Museum", "Jewish Historical Museum", "Joods Historisch Museum"], wikidata: ["Q702726"] },
+    { name: "Het Scheepvaartmuseum", aliases: ["National Maritime Museum", "Scheepvaartmuseum", "Nederlands Scheepvaartmuseum"], wikidata: ["Q1616123"] },
+    { name: "NEMO", aliases: ["NEMO Science Museum", "Nemo"], wikidata: ["Q1422000"] },
+    { name: "EYE Filmmuseum", aliases: ["Eye Filmmuseum", "EYE Film Institute"], wikidata: ["Q1538389"] },
+    { name: "A'DAM Toren", aliases: ["A'DAM Tower", "Adam Tower", "ADAM Tower"], wikidata: ["Q21185268"] },
+    { name: "Artis", aliases: ["Natura Artis Magistra", "Artis Zoo"], wikidata: ["Q713124"] },
+    { name: "Hortus Botanicus", aliases: ["Hortus Botanicus Amsterdam", "Botanical Garden Amsterdam"], wikidata: ["Q2475752"] },
+    { name: "Koninklijk Theater Carr\xE9", aliases: ["Royal Theater Carr\xE9", "Theater Carr\xE9", "Carr\xE9"], wikidata: ["Q1106490"] },
+    { name: "Tuschinski", aliases: ["Path\xE9 Tuschinski", "Tuschinski Theater", "Path\xE9 Tuschinski Cinema"], wikidata: ["Q599272"] },
+    { name: "Bloemenmarkt", aliases: ["Flower Market"], wikidata: ["Q643079"] },
+    { name: "Schreierstoren", aliases: ["Schreierstoren"], wikidata: ["Q610402"] },
+    { name: "Montelbaanstoren", wikidata: ["Q1946061"] },
+    { name: "Westergasfabriek", wikidata: ["Q4848627"] },
+    { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
+    { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Amstel Hotel", wikidata: ["Q1780741"] },
+    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
+    { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1180056"] },
+    { name: "Zuiderkerk", wikidata: ["Q228629"] },
+    { name: "Noorderkerk", wikidata: ["Q613854"] },
+    { name: "Vondelpark", wikidata: ["Q2279698"] },
+    { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q473851"] },
+    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Rembrandtplein", wikidata: ["Q613678"] },
+    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam", "Internationaal Theater Amsterdam"], wikidata: ["Q1817103"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
+    { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
+    { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
+    { name: "Ons' Lieve Heer op Solder", aliases: ["Our Lord in the Attic", "Museum Ons' Lieve Heer op Solder"], wikidata: ["Q493160"] },
+    { name: "Amsterdam Museum", wikidata: ["Q1820897"] },
+    { name: "Moco", aliases: ["Moco Museum"], wikidata: ["Q26832671"] },
+    { name: "FOAM", aliases: ["Foam", "Fotografiemuseum Amsterdam"], wikidata: ["Q5422840"] },
+    { name: "Huis Bartolotti", aliases: ["Bartolotti House"], wikidata: ["Q2205055"] },
+    { name: "Scheepvaarthuis", aliases: ["Shipping House"], wikidata: ["Q2078885"] },
+    { name: "Beurs van Berlage", aliases: ["Berlage's Stock Market", "Berlage Beurs"], wikidata: ["Q851200"] },
+    { name: "Centrale Bibliotheek", aliases: ["OBA", "Amsterdam Public Library Oosterdok", "Openbare Bibliotheek Amsterdam", "Centrale Bibliotheek OBA"], wikidata: ["Q50413436"] }
+  ];
+  var A_LIST_BY_NAME = /* @__PURE__ */ new Map();
+  var A_LIST_BY_WIKIDATA = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) {
+    for (const name of [entry.name, ...entry.aliases ?? []]) {
+      A_LIST_BY_NAME.set(normaliseAnswer(name), entry);
+    }
+    for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
   }
 
   // src/canalRecall/game/routeSelection.ts
@@ -48549,7 +48652,9 @@ Map source: ${osmUrl(places[i][0])}`);
           ...streetFeatures,
           ...waterFeatures,
           ...bridgeFeatures,
-          ...transitStops
+          ...transitStops,
+          // A bridge's official spelling is an answer too.
+          ...bridgeFeatures.map((bridge) => ({ name: bridge.displayName }))
         ].map((item) => item.name || "").filter(Boolean));
         this.vectorMap.setPlaces(features, boundaries);
         const metersPerDegreeLat = 111320;
