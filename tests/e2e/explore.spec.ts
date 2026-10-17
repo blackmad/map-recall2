@@ -134,3 +134,61 @@ test('a deep link opens its building, and a click off the pins offers a request'
   expect(['point', 'pand', 'osm']).toContain(calls[0].subject.kind);
   expect(calls[0].subject.lngLat[0]).toBeCloseTo(4.905, 3);
 });
+
+// Buurt looks (?buurt=<slug>): a buurt drawn from its own district recipes, shown in the same viewer.
+for (const slug of ['rijnbuurt-oost', 'bellamybuurt-zuid', 'osdorp-zuidoost']) {
+  test(`?buurt=${slug} shows that buurt's own look in 3D`, async ({ page, request }) => {
+    const three = await boot(page, `?buurt=${slug}`);
+    await expect(page.locator('#panel')).toBeVisible();
+    await expect(page.locator('#look-details')).toBeVisible();
+    await expect(page.locator('#model-details')).toBeHidden();
+    await expect(page.locator('#p-kind')).toHaveText(/^Own look/);
+    await expect(page.locator('#l-uses .use').first()).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#stage')).toHaveAttribute('data-state', 'ready', { timeout: 45_000 });
+    expect(three.length).toBe(1);
+    await expect(page.locator('#l-sw-own .sw').first()).toBeVisible();
+    await expect(page.locator('#l-sw-city .sw').first()).toBeAttached();
+    await expect(page.locator('#l-licence-line')).toContainText('CC BY 4.0 · credit Canal Recall, 3DBAG, BAG and OpenStreetMap contributors');
+    const href = await page.locator('#l-download').getAttribute('href');
+    expect((await request.head(new URL(href!, page.url()).href)).status()).toBe(200);
+    expect(new URL(page.url()).searchParams.get('buurt')).toBe(slug);
+    await waitForMap(page);
+    await page.waitForTimeout(800);
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/explore-${test.info().project.name}-look-${slug}.png` });
+
+    await stubFeedback(page);
+    await page.locator('#l-report').click();
+    const calls = await page.evaluate(() => (window as any).__feedbackCalls);
+    expect(calls).toHaveLength(1);
+    expect(calls[0]).toMatchObject({ category: 'building', subject: { kind: 'point' } });
+    expect(calls[0].id).toMatch(/^explore:look:[A-Z]{2}\d{2}$/);
+  });
+}
+
+test('the rail offers a neighbourhood its look, says when there is none, and a model link leaves the look', async ({ page }) => {
+  await boot(page, '?buurt=Rijnbuurt');
+  const entry = page.locator('#look-entry');
+  await expect(entry.locator('button[data-look="rijnbuurt-oost"]')).toBeVisible();
+  await entry.locator('button[data-look="rijnbuurt-oost"]').click();
+  await expect(page.locator('#l-title')).toHaveText('Rijnbuurt-Oost');
+  expect(new URL(page.url()).searchParams.get('buurt')).toBe('rijnbuurt-oost');
+  // A second recipe swaps the model in the one viewer.
+  await page.locator('#l-uses .use').nth(1).click();
+  await expect(page.locator('#l-uses .use').nth(1)).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('#stage')).toHaveAttribute('data-state', 'ready', { timeout: 45_000 });
+  await expect(page.locator('canvas.viewer-canvas')).toHaveCount(1);
+  // Its modelled buildings open as ?model= panels.
+  await page.locator('#l-models .row').first().click();
+  await expect(page.locator('#model-details')).toBeVisible();
+  expect(new URL(page.url()).searchParams.get('model')).toBeTruthy();
+  await page.locator('#close').click();
+
+  // A buurt without a look says so and lists those that have one.
+  await page.goto(`${PATH}?buurt=cornelis-schuytbuurt`);
+  await expect(page.locator('body[data-ready="1"]')).toBeAttached({ timeout: 20_000 });
+  await expect(page.locator('#l-summary')).toContainText('has no building look of its own');
+  await expect(page.locator('#l-all li').first()).toBeVisible();
+  expect(await page.locator('#l-all li').count()).toBeGreaterThan(30);
+  await page.locator('#close').click();
+  await expect(page.locator('#panel')).toBeHidden();
+});
