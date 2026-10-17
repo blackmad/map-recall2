@@ -1,0 +1,168 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "rietveld-gebouw-077325",
+ "pandId": "0363100012077325",
+ "address": "Gerrit Rietveld Academie, the Rietveld building (1967, Gerrit Rietveld with J. van Dillen and J. van Tricht), Fred. Roeskestraat 96: a four-storey glass box on a low dark plinth, a fully glazed curtain wall of square grey modules where every floor is a clear vision band between frosted spandrel bands, beside a low workshop wing with saw-tooth roofs",
+ "sources": [
+  {
+   "id": "pano-2021-01-18-w01-357w21",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001966_pano_0000_000402/",
+   "image": "source-data://pand-reference-walls/0363100012077325/w01-357w21.jpg",
+   "sha256": "db8b36858aba8b09ee62fb772f063de672f78ecfa06c828c6d8598e8c7861842",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-03-10-w11-357m17",
+   "kind": "street-panorama",
+   "capturedAt": "2017-03-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000199_pano_0002_001043/",
+   "image": "source-data://pand-reference-walls/0363100012077325/w11-357m17.jpg",
+   "sha256": "90ab5061061e6067c4cae2730bd3fb8ca613068a314f42db8aba8f085ee294b5",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-04-30-w02-87s2far",
+   "kind": "street-panorama",
+   "capturedAt": "2019-04-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001151_pano_0001_002227/",
+   "image": "source-data://pand-reference-walls/0363100012077325/w02-87s2far.thumb.jpg",
+   "sha256": "4b07cad3ff331d946430d1854d5d2f804a50e4cdd7c7bb161a994d62cd242b10",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    68,
+    6,
+    19
+   ],
+   "system": "curtain-wall",
+   "storeys": 5,
+   "groundFactor": 0.4,
+   "hand": ["palette.frame", "palette.glass", "baysPerStorey"],
+   "baysPerStorey": 19,
+   "ground": "mesh-plinth",
+   "spandrels": {
+    "sill": 0.25,
+    "head": 0.25,
+    "colour": "#5e6461"
+   },
+   "palette": {
+    "frame": "#727771",
+    "glass": "#3a4240"
+   }
+  },
+  {
+   "wallSurfaces": [
+    2
+   ],
+   "system": "curtain-wall",
+   "storeys": 4,
+   "groundFactor": 1.4,
+   "hand": ["palette.frame", "palette.glass", "baysPerStorey"],
+   "baysPerStorey": 6,
+   "ground": "mesh-plinth",
+   "spandrels": {
+    "sill": 0.25,
+    "head": 0.25,
+    "colour": "#5e6461"
+   },
+   "palette": {
+    "frame": "#727771",
+    "glass": "#3a4240",
+    "plinth": "#858880"
+   }
+  },
+  {
+   "wallSurfaces": [
+    67
+   ],
+   "system": "curtain-wall",
+   "alignWith": 0,
+   "baysPerStorey": 10,
+   "ground": "mesh-plinth",
+   "spandrels": {
+    "sill": 0.25,
+    "head": 0.25,
+    "colour": "#5e6461"
+   },
+   "palette": {
+    "frame": "#727771",
+    "glass": "#3a4240"
+   }
+  },
+  {
+   "wallSurfaces": [
+    168,
+    8,
+    15,
+    60,
+    30
+   ],
+   "system": "curtain-wall",
+   "alignWith": 0,
+   "ground": "mesh-plinth",
+   "spandrels": {
+    "sill": 0.25,
+    "head": 0.25,
+    "colour": "#5e6461"
+   },
+   "palette": {
+    "frame": "#727771",
+    "glass": "#3a4240"
+   }
+  },
+  {
+   "wallSurfaces": [
+    152,
+    48,
+    79,
+    120,
+    72,
+    118,
+    138,
+    160,
+    34,
+    117,
+    105,
+    100,
+    134, 5, 9, 16, 27, 28, 29, 31, 35, 46, 130, 47, 73, 74, 75, 80, 81, 88, 89, 102, 103, 104, 106, 111, 167, 119, 121, 122, 129, 148, 149, 150, 151, 153, 154, 161, 162
+   ],
+   "system": "blank",
+   "palette": {
+    "brick": "#3f413e"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen",
+  "flatHex": "#818387"
+ },
+ "palette": {
+  "brick": "#858880",
+  "frame": "#727771",
+  "door": "#2b2d2b",
+  "stone": "#9a9c97",
+  "wallMaterial": "stucco"
+ },
+ "measured": {
+  "date": "2026-10-17",
+  "groups": [0, 1, 2, 3]
+ },
+ "layeredKit": true,
+ "notes": [
+  "Gerrit Rietveld Academie, the Rietveld building (BAG pand 0363100012077325, built 1967; 168 3DBAG wall surfaces, roof 18.2 m with stair and lift heads to 20.3 m): the four-storey glass block along the Fred. Roeskestraat canal (63 x 22 m) and the low workshop wing behind it to the south-east (saw-tooth north lights at 4.7-6.2 m).",
+  "walls[0] north front (panels 56 and 5; crops w01-357w21 2021-01-18 leaf-off at 55 m across the canal, w01-357 2019-04-30 at 25 m, w01-357s1m17/s2m17 2017-03-10): a curtain wall of square modules, 30 across the 62.9 m front, so 2.07 m (79 px at 38.1 px/m in w01-357; 19 on panel 56's 39.4 m). Every floor reads as a clear vision band about 2.1 m tall between frosted spandrel bands about 2.1 m tall (two 1.05 m panels split by a transom at the floor line): floors measured at 1.8, 6.0, 10.2 and 14.4 m and the roof at 18.5 m from the spandrel mid-rails, so a 1.8 m dark plinth (the set-back ground storey and its bicycle park) and four 4.2 m storeys; spandrels.sill and .head 0.25 of a storey each; groundFactor 0.4 (swept 0.3-0.5 against the photo mask, IoU best at 0.38-0.45). The floor line inside each merged spandrel band takes no transom (the photo shows none at that distance).",
+  "Colours hand-sampled from the crops (sample boxes in the lane report): mullions L 80-110 of 255, light grey; frosted spandrels L 70-85 (2019) and 70-76 (2021-01, against the vision glass 43-49), grey-green; vision glass dark grey-green. Chosen after the city look tints: frame #727771 (a lighter frame is lifted to cream by the city frame tint), spandrel #5e6461 (drawn as measured stone, dL 0.09 / 0.01 against the photo wall on walls[0] / walls[1]), glass #3a4240.",
+  "walls[1] west end of the north front (panel 1, surface 2, 12.5 m; crops w11-357m17 2017-03-10 and w11-357w21): a pale rendered plinth wall up to the second floor (6.0 m) under the same curtain wall; groundFactor 1.4 puts its ground storey line on walls[0]'s second floor line, palette.plinth #858880 the render (sampled #5d605a-#62645e in the overcast 2017 crop, L 95-99, lifted for exposure).",
+  "walls[2] east end of the glass block (surface 67, 20.7 m): the 2019-04-30 panorama from the Fred. Roeskestraat corner (w02-87s2far, thumbnail) shows the upper storeys' frosted and clear squares over the neighbour then standing east of it (since demolished; BAG 0363100100092566/67, building started 2025); the lower storeys are inferred as walls[0].",
+  "walls[3] south and west walls of the glass block (panels 140, 7, 14 over the workshop roof, 25): no panorama sees them (the south wall faces the courtyard between this building and the 2006 building, the west wall the 2001 neighbour); inferred as walls[0] because the block is one curtain-wall box. walls[4]: the stair and lift heads on the roof, dark grey in w01-357w21.",
+  "otherWalls: the workshop wing's walls (no panorama; the east panorama of 2019 shows the old neighbour in front of it) stay blank in the render colour of the west plinth (#858880); the narrow full-height 3DBAG slivers at the corners and the stair cores (18-21 m tall) are in walls[4] with the roof heads, dark, so no pale strips cut the glass. Not expressed: the interior columns seen through the glass, the occasional opaque infill panes in the vision bands, the bicycle racks.",
+  "roof.flatHex #818387: the PDOK orthophoto's reading of this pand (roof-facts 14/8413/5386: slot slate, rgb 132/132/132, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
+ ]
+}
