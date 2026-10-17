@@ -131,6 +131,15 @@
               "value": "no-cache"
             }
           ]
+        },
+        {
+          "source": "/progress",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
         }
       ],
       "redirects": [
@@ -138,12 +147,21 @@
           "source": "/ride/",
           "destination": "/ride",
           "type": 301
+        },
+        {
+          "source": "/progress/",
+          "destination": "/progress",
+          "type": 301
         }
       ],
       "rewrites": [
         {
           "source": "/ride",
           "destination": "/ride.html"
+        },
+        {
+          "source": "/progress",
+          "destination": "/quiz/index.html"
         },
         {
           "source": "/quiz/**",

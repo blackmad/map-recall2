@@ -5,6 +5,9 @@ import App from './App';
 import './index.css';
 import { AuthProvider } from './AuthContext';
 import { CardGallery } from './CardGallery';
+import { isProgressPath } from './progress/route';
+
+const ProgressPage = React.lazy(() => import('./progress/ProgressPage').then(({ ProgressPage }) => ({ default: ProgressPage })));
 
 // Error monitoring is a no-op until a Sentry DSN is configured.
 const sentryDsn = import.meta.env.VITE_SENTRY_DSN;
@@ -51,7 +54,10 @@ function ErrorFallback() {
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Sentry.ErrorBoundary fallback={<ErrorFallback />}>
-      {new URLSearchParams(window.location.search).get('gallery') === 'cards' ? <CardGallery /> : <AuthProvider><App /></AuthProvider>}
+      {new URLSearchParams(window.location.search).get('gallery') === 'cards' ? <CardGallery />
+        : isProgressPath(window.location.pathname)
+          ? <AuthProvider><React.Suspense fallback={null}><ProgressPage /></React.Suspense></AuthProvider>
+          : <AuthProvider><App /></AuthProvider>}
     </Sentry.ErrorBoundary>
   </React.StrictMode>,
 );
