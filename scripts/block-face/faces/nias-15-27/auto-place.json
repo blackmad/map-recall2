@@ -1,0 +1,481 @@
+{
+ "face": "nias-15-27",
+ "street": "Niasstraat",
+ "library": "indische-buurt",
+ "stripDate": "2020-02-03",
+ "seconds": 1.17,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "nias-15-27-r1",
+   "pands": [
+    "0363100012066206",
+    "0363100012146333",
+    "0363100012138107",
+    "0363100012107819"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012149087",
+   "address": "Niasstraat 15",
+   "builtYear": 1926,
+   "widthM": 5.96,
+   "eavesM": 14.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d7d6c",
+    "wallRaw": "#7f7467",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 40,
+     "confidence": 0.32,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1,
+      "topWidthM": 0.6,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.087,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012092960",
+   "address": "Niasstraat 17",
+   "builtYear": 1926,
+   "widthM": 6.21,
+   "eavesM": 14.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a98e78",
+    "wallRaw": "#a8957e",
+    "skyline": {
+     "eavesM": 10,
+     "eavesRow": 268,
+     "confidence": 0.83,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.197,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.05 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.05,
+       "light": 0.18
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: strip shows balconies (dark open axis 0.6 m at 0.05 (light 0.18): no brick spandrel between the storeys))",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "strip shows balconies (dark open axis 0.6 m at 0.05 (light 0.18): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.63 m = 5 storeys of 2.93 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.04 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.284 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131679",
+   "address": "Niasstraat 19",
+   "builtYear": 1926,
+   "widthM": 6.16,
+   "eavesM": 14.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b6a28c",
+    "wallRaw": "#9c8d79",
+    "skyline": {
+     "eavesM": 14.2,
+     "eavesRow": 100,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 2.3,
+      "topWidthM": 0.2,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.181,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.08 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.08,
+       "light": 0.22
+      },
+      {
+       "widthM": 1.65,
+       "centre": 0.85,
+       "light": 0.55
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: strip shows balconies (dark open axis 0.9 m at 0.08 (light 0.22): no brick spandrel between the storeys))",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "strip shows balconies (dark open axis 0.9 m at 0.08 (light 0.22): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.66 m = 5 storeys of 2.93 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.01 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.255 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012066206",
+   "address": "Niasstraat 21",
+   "builtYear": 1926,
+   "widthM": 6.16,
+   "eavesM": 14.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ccb59c",
+    "wallRaw": "#dec7ad",
+    "skyline": {
+     "eavesM": 9.7,
+     "eavesRow": 280,
+     "confidence": 0.98,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.194,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.4
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#dad4c7",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2020-02-03 span 734-980"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#ccb59c",
+     "evidence": "strip 2020-02-03 span 734-980: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2020-02-03: the same white-fascia overhang over Niasstraat 15-27)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146333",
+   "address": "Niasstraat 23",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 14.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b7a18a",
+    "wallRaw": "#a9957e",
+    "skyline": {
+     "eavesM": 9.8,
+     "eavesRow": 276,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.31,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.48
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#b7a18a",
+     "evidence": "strip 2020-02-03 span 980-1226: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2020-02-03: the same white-fascia overhang over Niasstraat 15-27)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012138107",
+   "address": "Niasstraat 25",
+   "builtYear": 1926,
+   "widthM": 6.22,
+   "eavesM": 14.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4a08a",
+    "wallRaw": "#a8947e",
+    "skyline": {
+     "eavesM": 9.8,
+     "eavesRow": 276,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.209,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#b4a08a",
+     "evidence": "strip 2020-02-03 span 1226-1475: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2020-02-03: the same white-fascia overhang over Niasstraat 15-27)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107819",
+   "address": "Niasstraat 27",
+   "builtYear": 1926,
+   "widthM": 5.75,
+   "eavesM": 14.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9e8774",
+    "wallRaw": "#a5917c",
+    "skyline": {
+     "eavesM": 8.47,
+     "eavesRow": 329,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 1.43,
+      "topWidthM": 1.73,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.135,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.85,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 0.88,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.48
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#9e8774",
+     "evidence": "strip 2020-02-03 span 1475-1705: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "overhang"
+   },
+   "notes": [
+    "crown overhang: reviewer pin (strip 2020-02-03: the same white-fascia overhang over Niasstraat 15-27)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

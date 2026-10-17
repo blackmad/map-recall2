@@ -1,0 +1,113 @@
+{
+ "street": "Gorontalostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:18:46.578Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012099162",
+   "addresses": [
+    "Gorontalostraat 41",
+    "Gorontalostraat 41A",
+    "Gorontalostraat 41C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647514"
+    },
+    {
+     "address": "Gorontalostraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012071071"
+    },
+    {
+     "address": "Gorontalostraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012071074"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124861",
+   "addresses": [
+    "Gorontalostraat 43",
+    "Gorontalostraat 43A",
+    "Gorontalostraat 43B",
+    "Gorontalostraat 43E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647518"
+    },
+    {
+     "address": "Gorontalostraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012071084"
+    },
+    {
+     "address": "Gorontalostraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012071086"
+    },
+    {
+     "address": "Gorontalostraat 43E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012071090"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089355",
+   "addresses": [
+    "Gorontalostraat 43C",
+    "Gorontalostraat 43D",
+    "Gorontalostraat 43F",
+    "Gorontalostraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647522"
+    },
+    {
+     "address": "Gorontalostraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012071088"
+    },
+    {
+     "address": "Gorontalostraat 43D",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012071089"
+    },
+    {
+     "address": "Gorontalostraat 43F",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012071092"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,948 @@
+{
+ "street": "Boetonstraat",
+ "seed": "0363100012151910",
+ "members": [
+  "0363100012155108",
+  "0363100012130694",
+  "0363100012110184",
+  "0363100012087501",
+  "0363100012088267",
+  "0363100012093961"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of boeton-2-42: 135267 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of boeton-2-42: 068895 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062019",
+   "reason": "frontage 44.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012062819",
+   "reason": "frontage 187.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012063465",
+   "reason": "frontage 131.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012066275",
+   "reason": "frontage 155.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012067440",
+   "reason": "frontage 181.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012067802",
+   "reason": "frontage 177.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012069060",
+   "reason": "frontage 32.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012069661",
+   "reason": "frontage 37.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012070299",
+   "reason": "frontage 36.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012070662",
+   "reason": "frontage 208.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012071073",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012071151",
+   "reason": "frontage 61.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012073612",
+   "reason": "frontage 188.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012074470",
+   "reason": "frontage 140.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012074619",
+   "reason": "sightline to Boetonstraat crosses 0363100012151910"
+  },
+  {
+   "pandId": "0363100012075602",
+   "reason": "frontage 151.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012075864",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012076490",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012076585",
+   "reason": "frontage 91.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012077692",
+   "reason": "frontage 190.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012078200",
+   "reason": "frontage 141.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012080440",
+   "reason": "frontage 114.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012080630",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012081354",
+   "reason": "frontage 119.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012081478",
+   "reason": "frontage 113.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012081654",
+   "reason": "frontage 36.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012081854",
+   "reason": "frontage 134.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012083492",
+   "reason": "frontage 186.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012083953",
+   "reason": "frontage 180.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012084455",
+   "reason": "sightline to Boetonstraat crosses 0363100012075400"
+  },
+  {
+   "pandId": "0363100012085198",
+   "reason": "frontage 114.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012085255",
+   "reason": "frontage 122.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012085537",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012085701",
+   "reason": "sightline to Boetonstraat crosses 0363100012075400"
+  },
+  {
+   "pandId": "0363100012086084",
+   "reason": "frontage 44.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012086289",
+   "reason": "frontage 42.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012087505",
+   "reason": "frontage 44.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012087570",
+   "reason": "frontage 69.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012087916",
+   "reason": "frontage 112.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012088818",
+   "reason": "frontage 69.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012089355",
+   "reason": "frontage 180.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012089422",
+   "reason": "frontage 170.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012090190",
+   "reason": "frontage 156.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012090266",
+   "reason": "frontage 165.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012090337",
+   "reason": "frontage 91.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012090942",
+   "reason": "frontage 214.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012091543",
+   "reason": "frontage 78.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012091815",
+   "reason": "frontage 103.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012091940",
+   "reason": "frontage 33.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012092915",
+   "reason": "frontage 195.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012092951",
+   "reason": "frontage 137.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012093164",
+   "reason": "frontage 37.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012094338",
+   "reason": "frontage 124.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012094616",
+   "reason": "frontage 185.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012094674",
+   "reason": "frontage 61.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012095485",
+   "reason": "sightline to Boetonstraat crosses 0363100012143859"
+  },
+  {
+   "pandId": "0363100012098443",
+   "reason": "frontage 44.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012098644",
+   "reason": "frontage 76.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012098925",
+   "reason": "frontage 110.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012099162",
+   "reason": "frontage 180.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012099909",
+   "reason": "frontage 110.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012100172",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012100973",
+   "reason": "frontage 61.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012100975",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012101503",
+   "reason": "frontage 126.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012103163",
+   "reason": "frontage 109.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012103210",
+   "reason": "frontage 139.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012103944",
+   "reason": "frontage 143.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012104681",
+   "reason": "frontage 97.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012105799",
+   "reason": "frontage 151.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012105858",
+   "reason": "frontage 84.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012107740",
+   "reason": "frontage 141.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012108682",
+   "reason": "frontage 96.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012108735",
+   "reason": "frontage 57.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012109485",
+   "reason": "frontage 171.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012109510",
+   "reason": "frontage 43.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012109585",
+   "reason": "frontage 46.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012109591",
+   "reason": "frontage 36.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012110121",
+   "reason": "frontage 62.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012111313",
+   "reason": "frontage 44.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012111477",
+   "reason": "frontage 91.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012111633",
+   "reason": "frontage 84.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012112430",
+   "reason": "frontage 91.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012113700",
+   "reason": "frontage 143.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012114488",
+   "reason": "frontage 124.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012114908",
+   "reason": "frontage 36.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012115094",
+   "reason": "frontage 112.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012115812",
+   "reason": "frontage 94.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012116728",
+   "reason": "frontage 112.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012116758",
+   "reason": "sightline to Boetonstraat crosses 0363100012082167"
+  },
+  {
+   "pandId": "0363100012116826",
+   "reason": "frontage 98.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012117117",
+   "reason": "frontage 193.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012118025",
+   "reason": "frontage 78.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012118478",
+   "reason": "sightline to Boetonstraat crosses 0363100012132253"
+  },
+  {
+   "pandId": "0363100012119898",
+   "reason": "frontage 149.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012120886",
+   "reason": "frontage 141.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012121834",
+   "reason": "frontage 127.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012121852",
+   "reason": "frontage 132.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012121879",
+   "reason": "frontage 126.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012121998",
+   "reason": "frontage 167.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012122134",
+   "reason": "frontage 91.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012122626",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012122655",
+   "reason": "frontage 141.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012122904",
+   "reason": "frontage 44.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012123086",
+   "reason": "frontage 42.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012123464",
+   "reason": "frontage 182.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012124861",
+   "reason": "frontage 180.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012125169",
+   "reason": "frontage 112.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012125447",
+   "reason": "frontage 177.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012126503",
+   "reason": "frontage 89.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012126596",
+   "reason": "frontage 148.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012127080",
+   "reason": "frontage 33.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012127687",
+   "reason": "frontage 79.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012127748",
+   "reason": "frontage 141.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012128603",
+   "reason": "sightline to Boetonstraat crosses 0363100012082167"
+  },
+  {
+   "pandId": "0363100012128949",
+   "reason": "frontage 91.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012129124",
+   "reason": "frontage 92.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012129367",
+   "reason": "frontage 79.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012129709",
+   "reason": "frontage 126.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012129821",
+   "reason": "frontage 105.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012131373",
+   "reason": "frontage 62.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012131376",
+   "reason": "frontage 74.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012131909",
+   "reason": "frontage 189.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012132700",
+   "reason": "frontage 49.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012136285",
+   "reason": "frontage 167.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012136757",
+   "reason": "sightline to Boetonstraat crosses 0363100012152259"
+  },
+  {
+   "pandId": "0363100012136795",
+   "reason": "frontage 37.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012136941",
+   "reason": "frontage 76.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012137651",
+   "reason": "frontage 80.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012138071",
+   "reason": "frontage 120.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012138187",
+   "reason": "frontage 56.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012138643",
+   "reason": "frontage 43.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012138859",
+   "reason": "frontage 143.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012139600",
+   "reason": "frontage 44.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012139619",
+   "reason": "frontage 91.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012140216",
+   "reason": "frontage 61.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012140614",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012140837",
+   "reason": "frontage 73.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012140907",
+   "reason": "frontage 97.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012142097",
+   "reason": "frontage 150.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012142460",
+   "reason": "frontage 91.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012144300",
+   "reason": "frontage 222.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012144627",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012145299",
+   "reason": "frontage 88.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012145314",
+   "reason": "sightline to Boetonstraat crosses 0363100012082167"
+  },
+  {
+   "pandId": "0363100012145814",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012146156",
+   "reason": "frontage 109.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012147474",
+   "reason": "frontage 201.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012147494",
+   "reason": "frontage 157.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012147632",
+   "reason": "frontage 172.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012148266",
+   "reason": "frontage 184.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012148670",
+   "reason": "frontage 80.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012149514",
+   "reason": "frontage 89.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012150260",
+   "reason": "frontage 79.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012150586",
+   "reason": "sightline to Boetonstraat crosses 0363100012075400"
+  },
+  {
+   "pandId": "0363100012151593",
+   "reason": "frontage 35.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012152259",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012152476",
+   "reason": "sightline to Boetonstraat crosses 0363100012082167"
+  },
+  {
+   "pandId": "0363100012153261",
+   "reason": "frontage 82.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012183353",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012189745",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012189746",
+   "reason": "frontage 31.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012190020",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012193462",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012194863",
+   "reason": "sightline to Boetonstraat crosses 0363100012123827"
+  },
+  {
+   "pandId": "0363100012194864",
+   "reason": "sightline to Boetonstraat crosses 0363100012133901"
+  },
+  {
+   "pandId": "0363100012194865",
+   "reason": "sightline to Boetonstraat crosses 0363100012134360"
+  },
+  {
+   "pandId": "0363100012194866",
+   "reason": "sightline to Boetonstraat crosses 0363100012078149"
+  },
+  {
+   "pandId": "0363100012194867",
+   "reason": "sightline to Boetonstraat crosses 0363100012116229"
+  },
+  {
+   "pandId": "0363100012194868",
+   "reason": "sightline to Boetonstraat crosses 0363100012133379"
+  },
+  {
+   "pandId": "0363100012194869",
+   "reason": "sightline to Boetonstraat crosses 0363100012122533"
+  },
+  {
+   "pandId": "0363100012194870",
+   "reason": "sightline to Boetonstraat crosses 0363100012068922"
+  },
+  {
+   "pandId": "0363100012194871",
+   "reason": "sightline to Boetonstraat crosses 0363100012118024"
+  },
+  {
+   "pandId": "0363100012194872",
+   "reason": "sightline to Boetonstraat crosses 0363100012089880"
+  },
+  {
+   "pandId": "0363100012196244",
+   "reason": "frontage 81.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012197421",
+   "reason": "frontage 81.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012199175",
+   "reason": "frontage 31.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012203309",
+   "reason": "frontage 69.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012206512",
+   "reason": "frontage 81.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012208273",
+   "reason": "frontage 40.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012208841",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012217970",
+   "reason": "frontage 43.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012218196",
+   "reason": "frontage 32.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012220949",
+   "reason": "frontage 30.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012221007",
+   "reason": "frontage 56.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012224730",
+   "reason": "sightline to Boetonstraat crosses 0363100012093961"
+  },
+  {
+   "pandId": "0363100012225045",
+   "reason": "frontage 81.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012225862",
+   "reason": "frontage 144.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012227912",
+   "reason": "frontage 81.4 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012228854",
+   "reason": "frontage 53.2 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012229599",
+   "reason": "sightline to Boetonstraat crosses 0363100012081027"
+  },
+  {
+   "pandId": "0363100012233908",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012233985",
+   "reason": "frontage 66.6 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012240315",
+   "reason": "frontage 141.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012240316",
+   "reason": "frontage 79.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012241723",
+   "reason": "frontage 73.7 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012243265",
+   "reason": "no frontage on Boetonstraat: No footprint edge faces Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253328",
+   "reason": "frontage 41.8 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253329",
+   "reason": "frontage 34.1 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253330",
+   "reason": "frontage 33.3 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253331",
+   "reason": "frontage 32.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253332",
+   "reason": "frontage 32.9 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253333",
+   "reason": "frontage 37.0 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012253334",
+   "reason": "frontage 38.5 m from Boetonstraat"
+  },
+  {
+   "pandId": "0363100012063404",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070307",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075400",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082167",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132253",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139070",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139404",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142420",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143859",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145179",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012155108",
+   "alongM": -57.72,
+   "widthM": 6.3,
+   "eavesM": 14.93,
+   "roofMaxM": 14.94,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012130694",
+   "alongM": -51.41,
+   "widthM": 6.3,
+   "eavesM": 14.41,
+   "roofMaxM": 14.9,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012110184",
+   "alongM": -45.12,
+   "widthM": 6.3,
+   "eavesM": 14.39,
+   "roofMaxM": 14.43,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012087501",
+   "alongM": -38.82,
+   "widthM": 6.3,
+   "eavesM": 14.44,
+   "roofMaxM": 15.37,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012088267",
+   "alongM": -32.52,
+   "widthM": 6.3,
+   "eavesM": 14.6,
+   "roofMaxM": 14.62,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093961",
+   "alongM": -26.22,
+   "widthM": 6.3,
+   "eavesM": 14.61,
+   "roofMaxM": 14.63,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "boeton-2-42"
+}

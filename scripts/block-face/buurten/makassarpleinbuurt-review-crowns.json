@@ -1,0 +1,8 @@
+{
+ "note": "Crown variants pinned after reading the strips (blockFace/reviewCrowns.ts): the skyline reads both flat crowns of indisch-1926-attic-lights as no crown over the eaves; the strip shows which one stands there.",
+ "reviewed": "2026-10-17",
+ "pins": [
+  {"face": "nias-1-13", "type": "indisch-1926-attic-lights", "crown": "overhang", "reason": "strip 2023-01-02: a deep flat overhang with a white fascia over the whole row, its brown soffit at 15.1 m over the attic lights"},
+  {"face": "nias-15-27", "type": "indisch-1926-attic-lights", "crown": "overhang", "reason": "strip 2020-02-03: the same white-fascia overhang over Niasstraat 15-27"}
+ ]
+}

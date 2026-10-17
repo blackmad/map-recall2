@@ -28,6 +28,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
 
@@ -234,6 +235,18 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
   const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
+  // Crowns a reviewer pinned after reading the strip (blockFace/reviewCrowns.ts): flat crowns the skyline cannot tell apart.
+  const crownsFile = path.join('scripts/block-face/buurten', `${buurt}-review-crowns.json`);
+  const crownPins: CrownPin[] = existsSync(crownsFile) ? (await readJson(crownsFile)).pins : [];
+  const pinProblems = crownPinProblems(crownPins, types);
+  if (pinProblems.length) throw Error(`${crownsFile}: ${pinProblems.join('; ')}`);
+  // Types a reviewer restricted a face to (blockFace/reviewCrowns.ts typesForFace): rows the facts and edges cannot settle.
+  const typesFile = path.join('scripts/block-face/buurten', `${buurt}-review-types.json`);
+  const typesDoc = existsSync(typesFile) ? await readJson(typesFile) : {};
+  const typePins: TypePin[] = typesDoc.pins ?? [], mirrorPins: MirrorPin[] = typesDoc.mirrors ?? [];
+  const typePinErrs = [...typePinProblems(typePins, types), ...mirrorPinProblems(mirrorPins, types)];
+  if (typePinErrs.length) throw Error(`${typesFile}: ${typePinErrs.join('; ')}`);
+  const library = types;
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
@@ -246,12 +259,15 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     dateGains.set(strip.date, [...(dateGains.get(strip.date) ?? []), ...trimGains(evs)]);
   }
   for (const f of doc.faces) {
+    // This face's library: every type, or the ones a reviewer pinned it to (the run intents still list the whole library).
+    const types = typesForFace(f.id, library, typePins);
     // `covered` by an authored face; a face this buurt generated itself (the face or its runs) is not a cover.
     const coverIntent = f.covered && existsSync(path.join(FACES, f.covered, 'intent.json')) ? await readJson(path.join(FACES, f.covered, 'intent.json')) : null;
     const coveredByOther = !!coverIntent && !String(coverIntent.authoring?.author ?? '').startsWith('auto-place');
     if (coveredByOther || (only && !only.includes(f.id))) continue;
     if (!existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) { summary.push({face: f.id, status: 'no intake'}); continue; }
     const tf = performance.now();
+    if (types !== library) console.log(`${f.id}: types pinned to ${types.map(t => t.id).join(', ')}`);
     const {discovery, strip, uses, evs} = await faceEvidence(f.id);
     if (rowExposureOn) {
       const pooled = dateGains.get(strip.date), g = rowExposure(evs, pooled && pooled.length >= 8 ? medianGain(pooled) : undefined);
@@ -263,7 +279,9 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
       return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
+    if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
+    if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
@@ -348,7 +366,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         const l = likeness.get(d.pandId), own = variantKey(d);
         if (!l || l.ncc === null) continue;
         // A side the evidence set (door or accent read, BAG bay, a paired neighbour's door) is not reopened by a same-type flip.
-        const sideKnown = d.notes.some(n => /^(door|accent) (left|right)|paired with|the opposite of/.test(n));
+        const sideKnown = d.notes.some(n => /^(door|accent) (left|right)|paired with|the opposite of|^door reviewer pin/.test(n));
         // Where BAG draws the pand's erker, its place in the outline is fact and the edges are not: a candidate type whose
         // `bagBay` criterion disagrees is no candidate (Boterdiepstraat 40: the strip sits 0.4 m off the BAG party lines,
         // so the edges preferred an erker against the party wall to BAG's erker 1 m from it, 0.48 vs 0.35).

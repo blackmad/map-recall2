@@ -1,0 +1,501 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "molukken-35-67-r1",
+ "street": "Molukkenstraat",
+ "sources": [
+  {
+   "id": "strip-2019-12-18",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-18",
+   "image": "staging/block-face/molukken-35-67-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Makassarpleinbuurt); scores and holds in scripts/block-face/faces/molukken-35-67/auto-place.json"
+ },
+ "types": [
+  "indisch-1925-stair-pair"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012080763",
+   "slug": "molukken-080763",
+   "address": "Molukkenstraat 35",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#7c7a79",
+      "fascia": true,
+      "name": "Kapsalon TND",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2019-12-18 span 0-246"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#776259",
+     "evidence": "strip 2019-12-18 span 0-246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Kapsalon TND",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 2830032571,
+     "name": "Kapsalon TND"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-12-18 span 0-246"
+   }
+  },
+  {
+   "pandId": "0363100012131182",
+   "slug": "molukken-131182",
+   "address": "Molukkenstraat 37",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#473c37",
+      "fascia": true,
+      "name": "Fysiotherapie Molukkenstraat",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (kantoorfunctie, healthcare=physiotherapist); fascia colour measured on the strip 2019-12-18 span 246-492"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#70574c",
+     "evidence": "strip 2019-12-18 span 246-492: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "Fysiotherapie Molukkenstraat",
+    "category": "healthcare=physiotherapist",
+    "osm": {
+     "type": "node",
+     "id": 2830033500,
+     "name": "Fysiotherapie Molukkenstraat"
+    },
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-12-18 span 246-492"
+   }
+  },
+  {
+   "pandId": "0363100012111959",
+   "slug": "molukken-111959",
+   "address": "Molukkenstraat 39",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#443a36",
+      "fascia": true,
+      "name": "Ramazan",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2019-12-18 span 491-737"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#776058",
+     "evidence": "strip 2019-12-18 span 491-737: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Ramazan",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 2830035104,
+     "name": "Ramazan"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 491-737"
+   }
+  },
+  {
+   "pandId": "0363100012148990",
+   "slug": "molukken-148990",
+   "address": "Molukkenstraat 41",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#373733",
+      "fascia": true,
+      "name": "Stomerij SuperNette",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=laundry); fascia colour measured on the strip 2019-12-18 span 737-983"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#705b52",
+     "evidence": "strip 2019-12-18 span 737-983: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Stomerij SuperNette",
+    "category": "shop=laundry",
+    "osm": {
+     "type": "node",
+     "id": 12714077342,
+     "name": "Stomerij SuperNette"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 737-983"
+   }
+  },
+  {
+   "pandId": "0363100012080878",
+   "slug": "molukken-080878",
+   "address": "Molukkenstraat 43",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#4a3f38",
+      "fascia": true,
+      "name": "Kapsalon The Friends",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2019-12-18 span 982-1228"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#786259",
+     "evidence": "strip 2019-12-18 span 982-1228: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Kapsalon The Friends",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 2830036266,
+     "name": "Kapsalon The Friends"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 982-1228"
+   }
+  },
+  {
+   "pandId": "0363100012107515",
+   "slug": "molukken-107515",
+   "address": "Molukkenstraat 45",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#473e3a",
+      "fascia": true,
+      "name": "Pampering Myself",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2019-12-18 span 1228-1474"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#776259",
+     "evidence": "strip 2019-12-18 span 1228-1474: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Pampering Myself",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 12714072197,
+     "name": "Pampering Myself"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 1228-1474"
+   }
+  },
+  {
+   "pandId": "0363100012086183",
+   "slug": "molukken-086183",
+   "address": "Molukkenstraat 47",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#483c37",
+      "fascia": true,
+      "name": "Sala Thai Wellness",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (industriefunctie, shop=massage); fascia colour measured on the strip 2019-12-18 span 1474-1720"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#79645b",
+     "evidence": "strip 2019-12-18 span 1474-1720: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Sala Thai Wellness",
+    "category": "shop=massage",
+    "osm": {
+     "type": "node",
+     "id": 12714049640,
+     "name": "Sala Thai Wellness"
+    },
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-12-18 span 1474-1720"
+   }
+  },
+  {
+   "pandId": "0363100012149152",
+   "slug": "molukken-149152",
+   "address": "Molukkenstraat 49",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#4a403a",
+      "fascia": true,
+      "name": "Kleine Wasjes Grote Wasjes",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=laundry); fascia colour measured on the strip 2019-12-18 span 1719-1965"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#534641",
+     "evidence": "strip 2019-12-18 span 1719-1965: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Kleine Wasjes Grote Wasjes",
+    "category": "shop=laundry",
+    "osm": {
+     "type": "node",
+     "id": 12714040608,
+     "name": "Kleine Wasjes Grote Wasjes"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 1719-1965"
+   }
+  },
+  {
+   "pandId": "0363100012092896",
+   "slug": "molukken-092896",
+   "address": "Molukkenstraat 51",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#443a35",
+      "fascia": true,
+      "name": "Super Toko Nawied",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2019-12-18 span 1965-2211"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4c3f38",
+     "evidence": "strip 2019-12-18 span 1965-2211: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Super Toko Nawied",
+    "category": "shop=convenience",
+    "osm": {
+     "type": "node",
+     "id": 12714064013,
+     "name": "Super Toko Nawied"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 1965-2211"
+   }
+  },
+  {
+   "pandId": "0363100012146291",
+   "slug": "molukken-146291",
+   "address": "Molukkenstraat 53",
+   "type": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#443934",
+      "fascia": true,
+      "name": "Chantilly",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2019-12-18 span 2210-2456"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#6d5349",
+     "evidence": "strip 2019-12-18 span 2210-2456: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Chantilly",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 2830039871,
+     "name": "Chantilly"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1925-stair-pair scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 2210-2456"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

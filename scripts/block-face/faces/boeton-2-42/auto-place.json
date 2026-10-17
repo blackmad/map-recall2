@@ -1,0 +1,1085 @@
+{
+ "face": "boeton-2-42",
+ "street": "Boetonstraat",
+ "library": "indische-buurt",
+ "stripDate": "2025-09-26",
+ "seconds": 3.43,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "boeton-2-42-r1",
+   "pands": [
+    "0363100012155108",
+    "0363100012130694",
+    "0363100012110184",
+    "0363100012087501",
+    "0363100012088267",
+    "0363100012093961"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012116229",
+   "address": "Boetonstraat 32",
+   "builtYear": 1933,
+   "widthM": 6.06,
+   "eavesM": 15.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#746863",
+    "wallRaw": "#74736e",
+    "skyline": {
+     "eavesM": 16.05,
+     "eavesRow": 54,
+     "confidence": 0.8,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.53,
+       "widthM": 4.8,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1933, type 1924-1927)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1924-1927"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.35 m = 5 storeys of 3.07 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.01 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133379",
+   "address": "Boetonstraat 30",
+   "builtYear": 1933,
+   "widthM": 6.06,
+   "eavesM": 15.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6d68",
+    "wallRaw": "#847f7d",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 56,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.47,
+       "widthM": 5.55,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1933, type 1924-1927)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1924-1927"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.37 m = 5 storeys of 3.07 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.02 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123827",
+   "address": "Boetonstraat 28",
+   "builtYear": 1933,
+   "widthM": 6.21,
+   "eavesM": 15.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6f6c",
+    "wallRaw": "#878380",
+    "skyline": {
+     "eavesM": 16.02,
+     "eavesRow": 55,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.53,
+       "widthM": 5.7,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1933, type 1924-1927)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1924-1927"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.27 m = 5 storeys of 3.05 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.02 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133901",
+   "address": "Boetonstraat 26",
+   "builtYear": 1933,
+   "widthM": 6.02,
+   "eavesM": 15.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#82716d",
+    "wallRaw": "#827f79",
+    "skyline": {
+     "eavesM": 15.97,
+     "eavesRow": 57,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.53,
+       "widthM": 2.8,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1933, type 1924-1927)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1924-1927"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.28 m = 5 storeys of 3.06 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.03 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134360",
+   "address": "Boetonstraat 24",
+   "builtYear": 1933,
+   "widthM": 6.02,
+   "eavesM": 15.32,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.38,
+    "toM": 5.05,
+    "depthM": 0.5,
+    "centre": 0.699
+   },
+   "strip": {
+    "wall": "#7b6c69",
+    "wallRaw": "#87837f",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 78,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.5,
+       "widthM": 4.83,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1933, type 1924-1927)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1924-1927"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.32 m = 5 storeys of 3.06 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.02 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.025 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012135267",
+   "address": "Boetonstraat 22",
+   "builtYear": 1925,
+   "widthM": 4.3,
+   "eavesM": 14.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9f827b",
+    "wallRaw": "#9a8b83",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 116,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 11,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.488,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: frontage 4.3 m, type 5.6-6.8 m)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "frontage 4.3 m, type 5.6-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.72 m = 5 storeys of 2.94 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.54 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.388 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155108",
+   "address": "Boetonstraat 20",
+   "builtYear": 1925,
+   "widthM": 6.3,
+   "eavesM": 14.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#946f60",
+    "wallRaw": "#596048",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 696,
+     "confidence": 0.18,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 0.88,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.65
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.25
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left"
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012130694",
+   "address": "Boetonstraat 18",
+   "builtYear": 1925,
+   "widthM": 6.3,
+   "eavesM": 14.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#61564c",
+    "wallRaw": "#545245",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 696,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.36
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.5
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right"
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110184",
+   "address": "Boetonstraat 16",
+   "builtYear": 1925,
+   "widthM": 6.3,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d6d63",
+    "wallRaw": "#847166",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.283,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.73
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#8d6d63",
+     "evidence": "strip 2025-09-26 span 1978-2230: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087501",
+   "address": "Boetonstraat 14",
+   "builtYear": 1925,
+   "widthM": 6.3,
+   "eavesM": 14.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b5e54",
+    "wallRaw": "#776f5c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 696,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.73
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#7b5e54",
+     "evidence": "strip 2025-09-26 span 2230-2482: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088267",
+   "address": "Boetonstraat 12",
+   "builtYear": 1925,
+   "widthM": 6.3,
+   "eavesM": 14.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9e7f76",
+    "wallRaw": "#867a70",
+    "skyline": {
+     "eavesM": 15.6,
+     "eavesRow": 72,
+     "confidence": 0.35,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.278,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.57,
+       "widthM": 0.8,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.09
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.67
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#9e7f76",
+     "evidence": "strip 2025-09-26 span 2482-2734: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093961",
+   "address": "Boetonstraat 10",
+   "builtYear": 1925,
+   "widthM": 6.3,
+   "eavesM": 14.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9f837c",
+    "wallRaw": "#8c7e75",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 1.45,
+      "topWidthM": 0.25,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 12,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.387,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#9f837c",
+     "evidence": "strip 2025-09-26 span 2734-2986: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068895",
+   "address": "Boetonstraat 8",
+   "builtYear": 1912,
+   "widthM": 6.3,
+   "eavesM": 14.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a3877f",
+    "wallRaw": "#7e776a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 696,
+     "confidence": 0.08,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.322,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1912, type 1924-1927)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1924-1927"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.62 m = 5 storeys of 2.92 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.01 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.208 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012081027",
+   "address": "Boetonstraat 6",
+   "builtYear": 1925,
+   "widthM": 6.47,
+   "eavesM": 14.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#92756c",
+    "wallRaw": "#696459",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 696,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.1,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151910",
+   "address": "Boetonstraat 2B",
+   "builtYear": 1991,
+   "widthM": 20.59,
+   "eavesM": 13.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655e5c",
+    "wallRaw": "#424f3f",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 74,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.85,
+      "topWidthM": 0.85,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.4,
+       "widthM": 0.82,
+       "centre": 0.68
+      },
+      {
+       "atM": 7.27,
+       "widthM": 0.88,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.75,
+       "widthM": 0.93,
+       "centre": 0.74
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.07,
+       "centre": 0.14
+      },
+      {
+       "atM": 5.77,
+       "widthM": 1.13,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1926-attic-lights: built 1991, type 1924-1927; frontage 20.59 m, type 5.6-6.8 m)",
+   "best": {
+    "type": "indisch-1926-attic-lights",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1924-1927",
+     "frontage 20.59 m, type 5.6-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.88 m = 5 storeys of 2.78 m vs the type's 2.96 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.02 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

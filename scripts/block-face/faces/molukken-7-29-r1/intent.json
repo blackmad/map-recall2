@@ -1,0 +1,181 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "molukken-7-29-r1",
+ "street": "Molukkenstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/molukken-7-29-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Makassarpleinbuurt); scores and holds in scripts/block-face/faces/molukken-7-29/auto-place.json"
+ },
+ "types": [
+  "indisch-1926-attic-lights"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012147120",
+   "slug": "molukken-147120",
+   "address": "Molukkenstraat 9",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#4b4541",
+     "evidence": "strip 2023-01-02 span 272-521: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2023-01-02 span 272-521"
+   }
+  },
+  {
+   "pandId": "0363100012106655",
+   "slug": "molukken-106655",
+   "address": "Molukkenstraat 11",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#484340",
+      "fascia": true,
+      "name": "Café Peep",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=bar); fascia colour measured on the strip 2023-01-02 span 521-770"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#74635c",
+     "evidence": "strip 2023-01-02 span 521-770: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "bar",
+    "name": "Café Peep",
+    "category": "amenity=bar",
+    "osm": {
+     "type": "node",
+     "id": 12714040623,
+     "name": "Café Peep"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2023-01-02 span 521-770"
+   }
+  },
+  {
+   "pandId": "0363100012136784",
+   "slug": "molukken-136784",
+   "address": "Molukkenstraat 13",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": {
+     "shopfront": {
+      "colour": "#45403c",
+      "fascia": true,
+      "name": "De Snelbinder",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (industriefunctie, winkelfunctie, woonfunctie, shop=bicycle); fascia colour measured on the strip 2023-01-02 span 769-1018"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4a4440",
+     "evidence": "strip 2023-01-02 span 769-1018: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "De Snelbinder",
+    "category": "shop=bicycle",
+    "osm": {
+     "type": "node",
+     "id": 8364294974,
+     "name": "De Snelbinder"
+    },
+    "bag": [
+     "industriefunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 769-1018"
+   }
+  },
+  {
+   "pandId": "0363100012131890",
+   "slug": "molukken-131890",
+   "address": "Molukkenstraat 15",
+   "type": {
+    "type": "indisch-1926-attic-lights",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6f6059",
+     "evidence": "strip 2023-01-02 span 1018-1267: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1926-attic-lights scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 1018-1267"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

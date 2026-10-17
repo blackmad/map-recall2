@@ -1,0 +1,244 @@
+{
+ "street": "Soembawastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:42:16.745Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080630",
+   "addresses": [
+    "Soembawastraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 63",
+     "use": "onderwijsfunctie",
+     "areaM2": 1824,
+     "bagId": "0363010000689751"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2830042684,
+     "lngLat": [
+      4.9438059,
+      52.363092
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "63",
+      "addr:postcode": "1095VZ",
+      "addr:street": "Soembawastraat",
+      "amenity": "school",
+      "description": "dependance",
+      "education": "school",
+      "email": "oostpoort@msa.nl",
+      "isced:level": "2;3",
+      "name": "Montessori Lyceum Oostpoort",
+      "operator": "Montessori Scholengemeenschap Amsterdam",
+      "operator:website": "https://msa.nl",
+      "operator:wikidata": "Q52220519",
+      "pedagogy": "montessori",
+      "phone": "+31 20 597 98 01",
+      "school": "secondary",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://oostpoort.nl"
+     },
+     "fetchedAt": "2026-10-17T07:42:16.745Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012070863",
+   "addresses": [
+    "Soembawastraat 65A",
+    "Soembawastraat 65B",
+    "Soembawastraat 65C",
+    "Soembawastraat 65D",
+    "Soembawastraat 65E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 65A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000813261"
+    },
+    {
+     "address": "Soembawastraat 65B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000813262"
+    },
+    {
+     "address": "Soembawastraat 65C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000813263"
+    },
+    {
+     "address": "Soembawastraat 65D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000813264"
+    },
+    {
+     "address": "Soembawastraat 65E",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001020409"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150245",
+   "addresses": [
+    "Soembawastraat 67A",
+    "Soembawastraat 67B",
+    "Soembawastraat 67C",
+    "Soembawastraat 67D",
+    "Soembawastraat 67E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 67A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000813265"
+    },
+    {
+     "address": "Soembawastraat 67B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813266"
+    },
+    {
+     "address": "Soembawastraat 67C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813267"
+    },
+    {
+     "address": "Soembawastraat 67D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813268"
+    },
+    {
+     "address": "Soembawastraat 67E",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001020410"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102232",
+   "addresses": [
+    "Soembawastraat 69A",
+    "Soembawastraat 69B",
+    "Soembawastraat 69C",
+    "Soembawastraat 69D",
+    "Soembawastraat 69E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 69A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000813269"
+    },
+    {
+     "address": "Soembawastraat 69B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813270"
+    },
+    {
+     "address": "Soembawastraat 69C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813271"
+    },
+    {
+     "address": "Soembawastraat 69D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813272"
+    },
+    {
+     "address": "Soembawastraat 69E",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001020411"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089069",
+   "addresses": [
+    "Soembawastraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 71-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012078688"
+    },
+    {
+     "address": "Soembawastraat 71-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000813273"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117079",
+   "addresses": [
+    "Soembawastraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000996079"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066047",
+   "addresses": [
+    "Soembawastraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000813280"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}
