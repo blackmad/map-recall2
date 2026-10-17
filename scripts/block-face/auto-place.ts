@@ -16,7 +16,7 @@ import fs from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, decidePand, fillPairs, rowCoherence, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, decidePand, fillPairs, rowCoherence, rowExposure, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
@@ -222,6 +222,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   // (Boterdiepstraat's flat and erker fronts share year, width, eaves and roof; the sunlit strip reads no door or accent
   // side), the edge NCC of every candidate (type x mirroring) decides instead of holding the pand.
   const photoDecides = process.argv.includes('--photo-decides');
+  // --row-exposure: one trim-normalisation gain per face (autoPlace.ts rowExposure) instead of one per pand.
+  const rowExposureOn = process.argv.includes('--row-exposure');
   const variantKey = (d: Placed) => `${d.typeId}${d.house.type?.mirror ? '~m' : ''}`;
   const doc = await readJson(path.join('scripts/block-face/buurten', `${buurt}.json`));
   let types = await loadTypes(district);
@@ -244,6 +246,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (!existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) { summary.push({face: f.id, status: 'no intake'}); continue; }
     const tf = performance.now();
     const {discovery, strip, uses, evs} = await faceEvidence(f.id);
+    if (rowExposureOn) { const g = rowExposure(evs); if (g) console.log(`${f.id}: row exposure gain ${g.join('/')} over ${evs.filter(e => e.strip?.wallOwnGain).length} pands`); }
     // Pass 1: match. Pass 2+: compile the runs, hold the pands that fail the likeness gate, repeat until stable.
     const decisions: Decision[] = evs.map(ev => {
       const hold = reviewHolds.get(ev.pandId);
