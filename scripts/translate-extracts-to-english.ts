@@ -61,6 +61,7 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 import { config as loadEnv } from 'dotenv';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import { readPartition, shipPartition } from './lib/extract-sidecar.ts';
 import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
 import {
   CLI_TRANSLATORS,
@@ -161,7 +162,8 @@ const groupKey = (group: Feature[]) => {
 const partitions = new Map<string, Feature[]>();
 for (const file of files) {
   try {
-    partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
+    // The Dutch original of a bridge lede lives in the extract sidecar.
+    partitions.set(file, readPartition<Feature>(directory, file));
   } catch (error) {
     // Utrecht and other cities may lack a generated street-knowledge.json;
     // partitions that are not on disk are simply skipped.
@@ -233,7 +235,7 @@ for (const city of siblingCities) {
   if (path.resolve(cityDir) === directory) continue;
   for (const file of files) {
     try {
-      addLiveHashes(JSON.parse(await readFile(path.join(cityDir, file), 'utf8')) as Feature[]);
+      addLiveHashes(readPartition<Feature>(cityDir, file, city));
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === 'ENOENT') continue;
       throw error;
@@ -456,7 +458,7 @@ if (!dryRun) {
   // Nothing to apply — leave partition files alone (avoids JSON reformat churn
   // on prune-only / already-English runs).
   if (groups.length) {
-    for (const [file, partition] of partitions) await writeFile(path.join(directory, file), JSON.stringify(partition));
+    for (const [file, partition] of partitions) await writeFile(path.join(directory, file), shipPartition(file, partition, path.basename(directory)));
   }
   // Sorted so the file diffs by feature rather than by the order a run happened
   // to translate things in.

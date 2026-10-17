@@ -22,6 +22,12 @@ export interface AnswerRecallStore {
 
 export interface SubmitAnswerInput {
   correctName: string;
+  /** How the name is shown in feedback, when it differs from `correctName`
+   *  (a bridge's official spelling; `correctName` stays the matched OSM name). */
+  displayName?: string;
+  /** Other spellings a typed answer may use ("Katten brug" and "Kattenbrug").
+   *  `correctName` and `displayName` are always accepted. */
+  acceptedAnswers?: readonly string[];
   answer: string;
   noIdea?: boolean;
   /**
@@ -67,25 +73,27 @@ export function normaliseAnswer(value: string): string {
  * their contract can be tested without constructing the canvas application.
  */
 export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
+  const shown = input.displayName || input.correctName;
   if (input.passed) {
     input.revealName(input.correctName);
     if (input.recallStore && input.recallFeature) input.recallStore.expose?.(input.recallFeature);
     return {
       ...input.score, wasCorrect: false, passed: true,
-      feedback: `Passed — that was ${input.correctName}`,
+      feedback: `Passed — that was ${shown}`,
       feedbackColor: '#3a5a86',
     };
   }
   const noIdea = input.noIdea === true;
-  const wasCorrect = !noIdea
-    && normaliseAnswer(input.answer) === normaliseAnswer(input.correctName);
+  const given = normaliseAnswer(input.answer);
+  const wasCorrect = !noIdea && [input.correctName, input.displayName, ...(input.acceptedAnswers ?? [])]
+    .some((name) => !!name && normaliseAnswer(name) === given);
   let { attempts, correct, points, streak, bestStreak } = input.score;
   let feedback: string;
 
   if (!noIdea) attempts++;
   if (noIdea) {
     streak = 0;
-    feedback = `This is ${input.correctName}`;
+    feedback = `This is ${shown}`;
     input.revealName(input.correctName);
   } else if (wasCorrect) {
     correct++;
@@ -102,21 +110,21 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
     input.markLearned?.(input.correctName);
     input.revealName(input.correctName);
     if (!input.gameyFeatures) {
-      feedback = `Correct — ${input.correctName}`;
+      feedback = `Correct — ${shown}`;
     } else if (noveltyMultiplier > 1 && cycleTrackMultiplier > 1) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, new · cycle track)`;
+      feedback = `Correct — ${shown}  (+${earned} pts, new · cycle track)`;
     } else if (noveltyMultiplier > 1) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, ${noveltyMultiplier.toFixed(2)}× new street)`;
+      feedback = `Correct — ${shown}  (+${earned} pts, ${noveltyMultiplier.toFixed(2)}× new street)`;
     } else if (cycleTrackMultiplier > 1) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, cycle track)`;
+      feedback = `Correct — ${shown}  (+${earned} pts, cycle track)`;
     } else if (streak >= 2) {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts, ${streak}× streak)`;
+      feedback = `Correct — ${shown}  (+${earned} pts, ${streak}× streak)`;
     } else {
-      feedback = `Correct — ${input.correctName}  (+${earned} pts)`;
+      feedback = `Correct — ${shown}  (+${earned} pts)`;
     }
   } else {
     streak = 0;
-    feedback = `Not quite — this is ${input.correctName}`;
+    feedback = `Not quite — this is ${shown}`;
     input.revealName(input.correctName);
   }
 

@@ -51,6 +51,8 @@ export interface NeighborhoodEnrichment {
 export interface BridgeFeature {
   id: string;
   name?: string;
+  /** Official spelling to show; `name` stays OSM's (bridgeDisplayNames.ts). */
+  displayName?: string;
   center?: LatLng;
   path?: LatLng[];
   paths?: LatLng[][];
