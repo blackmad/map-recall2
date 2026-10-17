@@ -7,7 +7,9 @@
       "id": "jewish-amsterdam",
       "title": "Jewish Amsterdam",
       "theme": "history",
-      "blurb": "From the Anne Frank House across the old Jewish quarter and the Plantage to the Rivierenbuurt, where the Frank family lived before going into hiding.",
+      "volatile": true,
+      "checkedAt": "2026-10-17",
+      "blurb": "From the Anne Frank House across the old Jewish quarter and the Plantage to the Rivierenbuurt, where the Frank family lived before going into hiding, ending at a kosher delicatessen in Buitenveldert. Shops change: check before you go.",
       "stops": [
         {
           "name": "Anne Frank House",
@@ -49,16 +51,6 @@
           ]
         },
         {
-          "name": "Gerard Dou Synagogue",
-          "landmarkId": "extract_landmarks_25099441",
-          "why": "Built in 1892 for the Ashkenazi charity Tesjoe'at Israël, the De Pijp synagogue came through the war relatively intact and is still in use.",
-          "source": "https://nl.wikipedia.org/wiki/Synagoge_Gerard_Doustraat",
-          "lngLat": [
-            4.897862,
-            52.357057
-          ]
-        },
-        {
           "name": "Merwedeplein",
           "why": "The German-Jewish Frank family lived in a second-floor flat at Merwedeplein 37 for more than eight years, until they went into hiding on 6 July 1942; Jet Schepp's statue of Anne stands on the square.",
           "source": "https://nl.wikipedia.org/wiki/Merwedeplein",
@@ -75,6 +67,16 @@
           "lngLat": [
             4.897869,
             52.337913
+          ]
+        },
+        {
+          "name": "David & Mouwes",
+          "osm": "node/2818708275",
+          "why": "Mouwes says it has been Amsterdam's address for kosher products for more than 200 years, and from 1 July it carries on as David & Mouwes at Kastelenstraat 64 in Buitenveldert.",
+          "source": "https://www.mouwes.nl/",
+          "lngLat": [
+            4.883022,
+            52.325936
           ]
         }
       ]

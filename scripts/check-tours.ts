@@ -2,7 +2,7 @@
 //
 // Asserts that public/data/extracts/amsterdam/tours.json is fresh against
 // scripts/tours/amsterdam-tours.json, and that every tour has 4-7 stops, every
-// stop resolves to a coordinate within 4 km of the centre with a why and an
+// stop resolves to a coordinate within 4 km of the centre (or its tour's explicit MAX_KM_FROM_CENTRE_BY_TOUR allowance) with a why and an
 // https source, every leg is between MIN_TOUR_LEG_KM (0.3 km, so the game's
 // start/finish gate never refuses it) and the 2.5 km detour cap, and every stop is
 // within 60 m of a way the cycling router can use (motor-only ways are dropped
@@ -17,6 +17,15 @@ import { readSource, resolveTours, routingWays } from './tours/resolveTours.ts';
 
 const CENTRE: LngLat = [4.8936, 52.372851];
 const MAX_KM_FROM_CENTRE = 4;
+/**
+ * Tours allowed past MAX_KM_FROM_CENTRE, each with its own limit and reason.
+ * Not a global raise: every other tour still has to stay within 4 km.
+ */
+const MAX_KM_FROM_CENTRE_BY_TOUR: Record<string, { km: number; why: string }> = {
+  'jewish-amsterdam': { km: 5.5, why: 'ends at a kosher delicatessen in Buitenveldert, about 5.3 km south (user, 2026-10-17)' },
+};
+const maxKmFromCentre = (tourId: string): number => MAX_KM_FROM_CENTRE_BY_TOUR[tourId]?.km ?? MAX_KM_FROM_CENTRE;
+const FARTHEST_KM = Math.max(MAX_KM_FROM_CENTRE, ...Object.values(MAX_KM_FROM_CENTRE_BY_TOUR).map(a => a.km));
 const SNAP_M = 60;
 
 const built = JSON.parse(readFileSync('public/data/extracts/amsterdam/tours.json', 'utf8')) as { tours: Tour[] };
@@ -35,7 +44,7 @@ for (const way of ways) {
     for (let i = 0; i + 1 < line.length; i++) {
       const a: LngLat = [line[i][1], line[i][0]];
       const b: LngLat = [line[i + 1][1], line[i + 1][0]];
-      if (legKm(a, CENTRE) > MAX_KM_FROM_CENTRE + 1) continue;
+      if (legKm(a, CENTRE) > FARTHEST_KM + 1) continue;
       const seg = { a, b, name: way.name || `(${way.highway ?? 'unnamed'})` };
       for (const key of new Set([cell(...a), cell(...b)])) {
         const list = grid.get(key) ?? [];
@@ -85,7 +94,7 @@ for (const tour of built.tours) {
     const leg = legs[i - 1];
     const problems: string[] = [];
     if (!Array.isArray(stop.lngLat) || stop.lngLat.length !== 2 || !stop.lngLat.every(Number.isFinite)) problems.push('no coordinate');
-    if (fromCentre > MAX_KM_FROM_CENTRE) problems.push(`${fromCentre.toFixed(2)} km from centre`);
+    if (fromCentre > maxKmFromCentre(tour.id)) problems.push(`${fromCentre.toFixed(2)} km from centre (limit ${maxKmFromCentre(tour.id)} km)`);
     if (!/^https:\/\/\S+$/.test(stop.source ?? '')) problems.push('no https source');
     if (!stop.why || stop.why.length < 20 || !/[.!?]$/.test(stop.why)) problems.push('why is not a sentence');
     if (/\bbest\b/i.test(stop.why) && !/(Time Out|I amsterdam|Little Black Book)/.test(stop.why)) problems.push('unattributed "best"');
@@ -122,4 +131,4 @@ if (failures.length) {
   console.error(`\n${failures.length} tour problem(s):\n  ${failures.join('\n  ')}`);
   process.exit(1);
 }
-console.log(`\nTours: ${built.tours.length} tours, ${stops} stops; all resolve within ${MAX_KM_FROM_CENTRE} km, legs ${MIN_TOUR_LEG_KM}-${MAX_TOUR_LEG_KM} km, stops within ${SNAP_M} m of a routable way.`);
+console.log(`\nTours: ${built.tours.length} tours, ${stops} stops; all resolve within ${MAX_KM_FROM_CENTRE} km (${Object.entries(MAX_KM_FROM_CENTRE_BY_TOUR).map(([id, a]) => `${id} ${a.km} km: ${a.why}`).join('; ')}), legs ${MIN_TOUR_LEG_KM}-${MAX_TOUR_LEG_KM} km, stops within ${SNAP_M} m of a routable way.`);

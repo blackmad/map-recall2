@@ -168,7 +168,7 @@ test('?tour= starts the tour, hides a street stop until arrival, and rides on st
     t.state = { ...t.state, legIndex: 5, completedStops: [0, 1, 2, 3, 4, 5] };
   });
   await nextLeg(page, await page.evaluate(() => window.canalRecallGame._shareUrl));
-  expect(await page.evaluate(() => window.canalRecallGame.routeTo.name)).toBe('Liberal Jewish Synagogue');
+  expect(await page.evaluate(() => window.canalRecallGame.routeTo.name)).toBe('David & Mouwes');
   await arrive(page);
   const done = await page.evaluate(() => ({ arrival: window.canalRecallGame._tourArrival, stamp: window.canalRecallGame._finishStamp, completed: window.canalRecallGame._tour?.completed }));
   expect(done.arrival).toMatchObject({ completed: true, stopIndex: 6 });

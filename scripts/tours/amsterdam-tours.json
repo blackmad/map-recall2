@@ -7,15 +7,17 @@
       "id": "jewish-amsterdam",
       "title": "Jewish Amsterdam",
       "theme": "history",
-      "blurb": "From the Anne Frank House across the old Jewish quarter and the Plantage to the Rivierenbuurt, where the Frank family lived before going into hiding.",
+      "volatile": true,
+      "checkedAt": "2026-10-17",
+      "blurb": "From the Anne Frank House across the old Jewish quarter and the Plantage to the Rivierenbuurt, where the Frank family lived before going into hiding, ending at a kosher delicatessen in Buitenveldert. Shops change: check before you go.",
       "stops": [
         { "name": "Anne Frank House", "landmarkId": "extract_landmarks_614625734", "why": "Anne Frank hid from Nazi persecution with her family in the rear of this Prinsengracht building during the German occupation.", "source": "https://en.wikipedia.org/wiki/Anne_Frank_House" },
         { "name": "Jodenbreestraat", "street": "Jodenbreestraat", "near": [4.9006, 52.37], "why": "The southern part of Sint Antoniesbreestraat came to be called Jodenbreestraat, 'Jewish Broad Street', in the later 17th century, after Jewish refugees from Portugal and Spain settled around it.", "source": "https://en.wikipedia.org/wiki/Jodenbreestraat" },
         { "name": "Portuguese Synagogue", "landmarkId": "extract_landmarks_1311905515", "why": "On Jonas Daniël Meijerplein stand the Portuguese Synagogue of 1675, once the largest synagogue in the world, the four former Ashkenazi synagogues used as the Joods Museum since 1987, and De Dokwerker, unveiled by Queen Juliana in 1952 in memory of the February Strike.", "source": "https://nl.wikipedia.org/wiki/Jonas_Dani%C3%ABl_Meijerplein" },
         { "name": "Hollandsche Schouwburg", "landmarkId": "extract_landmarks_1588171596", "why": "The occupiers made this theatre a Jewish theatre in 1941 and then used it as a deportation centre.", "source": "https://en.wikipedia.org/wiki/Hollandsche_Schouwburg" },
-        { "name": "Gerard Dou Synagogue", "landmarkId": "extract_landmarks_25099441", "why": "Built in 1892 for the Ashkenazi charity Tesjoe'at Israël, the De Pijp synagogue came through the war relatively intact and is still in use.", "source": "https://nl.wikipedia.org/wiki/Synagoge_Gerard_Doustraat" },
         { "name": "Merwedeplein", "orientation": "Merwedeplein", "why": "The German-Jewish Frank family lived in a second-floor flat at Merwedeplein 37 for more than eight years, until they went into hiding on 6 July 1942; Jet Schepp's statue of Anne stands on the square.", "source": "https://nl.wikipedia.org/wiki/Merwedeplein" },
-        { "name": "Liberal Jewish Synagogue", "osm": "way/277313909", "why": "The Liberaal Joodse Gemeente, whose Amsterdam branch was founded in 1932, opened its synagogue at Zuidelijke Wandelweg 41 in August 2010, having left Graafschapstraat in 2007.", "source": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam" }
+        { "name": "Liberal Jewish Synagogue", "osm": "way/277313909", "why": "The Liberaal Joodse Gemeente, whose Amsterdam branch was founded in 1932, opened its synagogue at Zuidelijke Wandelweg 41 in August 2010, having left Graafschapstraat in 2007.", "source": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam" },
+        { "name": "David & Mouwes", "osm": "node/2818708275", "why": "Mouwes says it has been Amsterdam's address for kosher products for more than 200 years, and from 1 July it carries on as David & Mouwes at Kastelenstraat 64 in Buitenveldert.", "source": "https://www.mouwes.nl/" }
       ]
     },
     {
