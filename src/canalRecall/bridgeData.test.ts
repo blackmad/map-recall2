@@ -12,6 +12,7 @@ import { dropUnfinishedSentence, ledeSentences, repairBridgeLede } from './bridg
 import { submitAnswer } from './answerPath.ts';
 import { buildRouteKnowledgeIndex, streetCardText } from './game/routeKnowledge.ts';
 import { routePlaqueName } from './game/recallRules.ts';
+import { openingSentence } from './facts/factStore.ts';
 
 const score = { attempts: 0, correct: 0, points: 0, streak: 0, bestStreak: 0 };
 
@@ -147,4 +148,13 @@ test('named regression: the card does not cut a name at its patronymic', () => {
   });
   assert.ok(card.detail.startsWith('The Hendrick Jacobsz. Staetsbrug (bridge 35) is a fixed bridge'), card.detail);
   assert.doesNotMatch(card.longDetail, /Jacobsz\. Stone/);
+});
+
+test('named regression: the trivia opening keeps a patronymic whole', () => {
+  assert.equal(openingSentence('The Hendrick Jacobsz. Staetsbrug (bridge 35) is a fixed bridge in Amsterdam-Centrum. It spans the Herengracht.'),
+    'The Hendrick Jacobsz. Staetsbrug (bridge 35) is a fixed bridge in Amsterdam-Centrum.');
+  assert.equal(openingSentence('The Frans Hendricksz. Oetgensbrug (bridge 76) is a fixed bridge. More.'),
+    'The Frans Hendricksz. Oetgensbrug (bridge 76) is a fixed bridge.');
+  // A sentence that ends on an ordinary word ending in -sz is not a name.
+  assert.equal(openingSentence('It was built in Gdańsk. Later moved.'), 'It was built in Gdańsk.');
 });
