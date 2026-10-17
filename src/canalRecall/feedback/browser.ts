@@ -2,10 +2,15 @@ export {};
 /** Shared static-page feedback. Firebase loads only when a user opens the form. */
 declare const __FEEDBACK_BUILD__: { builtAt: string; sha: string; workspaceDirty: boolean };
 type Context = Record<string, unknown>;
+type Category = 'bug' | 'building' | 'data' | 'request' | 'other';
+/** The real-world object a note is about (a building, a model, an OSM element, or a map point). */
+type Subject = { kind: 'pand' | 'model' | 'osm' | 'point'; id?: string; lngLat?: [number, number] };
 type Target = { id: string; label: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
+/** open() accepts either a card target or a pre-filled report/request. */
+type OpenOptions = { category?: Category; target?: Subject; id?: string; label?: string; canvas?: HTMLCanvasElement; image?: HTMLImageElement; context?: () => Context; map?: any };
 declare global {
   interface Window {
-    CanalFeedback: { attach: (container: HTMLElement, target: Target) => void; open: (target?: Target) => void };
+    CanalFeedback: { attach: (container: HTMLElement, target: Target) => void; open: (options?: OpenOptions) => void };
   }
 }
 const w = window as any;
@@ -17,12 +22,12 @@ style.textContent = `
 .cf-button{font:13px system-ui;padding:8px 12px;border:1px solid #8b887f;border-radius:7px;background:#f7f4ec;color:#303b43;cursor:pointer;min-height:44px}
 .cf-note{margin:6px 14px 12px;align-self:flex-start}
 .cf-dialog{margin:auto;box-sizing:border-box;width:min(520px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;padding:20px;border:1px solid #8b887f;border-radius:12px;background:#f7f4ec;color:#303b43;font:14px/1.5 system-ui;z-index:1000}
-.cf-dialog::backdrop{background:#0008}.cf-dialog h2{margin:0 0 8px;font-size:18px;padding:0}.cf-dialog textarea{box-sizing:border-box;width:100%;min-height:100px;font:inherit;padding:8px;margin:8px 0}.cf-actions{display:flex;gap:8px;flex-wrap:wrap}.cf-preview{max-width:100%;max-height:220px;display:block;cursor:crosshair}.cf-dialog small{display:block}.cf-history{max-height:180px;overflow:auto}.cf-history p{border-top:1px solid #d4cfc3;padding-top:6px}.cf-dialog [role=status]{white-space:pre-wrap}`;
+.cf-dialog::backdrop{background:#0008}.cf-dialog h2{margin:0 0 8px;font-size:18px;padding:0}.cf-dialog textarea{box-sizing:border-box;width:100%;min-height:100px;font:inherit;padding:8px;margin:8px 0}.cf-actions{display:flex;gap:8px;flex-wrap:wrap}.cf-preview{max-width:100%;max-height:220px;display:block;cursor:crosshair}.cf-dialog small{display:block}.cf-history{max-height:180px;overflow:auto}.cf-history p{border-top:1px solid #d4cfc3;padding-top:6px}.cf-dialog [role=status]{white-space:pre-wrap}.cf-dialog select{box-sizing:border-box;width:100%;font:inherit;padding:7px 8px;margin:4px 0 8px;border:1px solid #8b887f;border-radius:7px;background:#fff;color:#303b43}`;
 document.head.append(style);
 const dialog = document.createElement('dialog');
 dialog.className = 'cf-dialog';
 dialog.setAttribute('aria-label', 'Leave feedback');
-dialog.innerHTML = `<h2>Leave feedback</h2><small class="cf-target"></small><img class="cf-preview" alt="Captured view for this feedback" hidden><small class="cf-anchor"></small><label for="cf-text">What should change?</label><textarea id="cf-text" maxlength="12000" placeholder="Describe what you see and what you expected…"></textarea><div class="cf-actions"><button type="button" class="cf-button cf-save">Save feedback</button><button type="button" class="cf-button cf-login">Sign in with Google</button><button type="button" class="cf-button cf-history-button">My feedback</button><button type="button" class="cf-button cf-close">Close</button></div><p role="status" aria-live="polite"></p><div class="cf-history"></div>`;
+dialog.innerHTML = `<h2>Leave feedback</h2><small class="cf-target"></small><img class="cf-preview" alt="Captured view for this feedback" hidden><small class="cf-anchor"></small><label for="cf-category">Category</label><select id="cf-category"><option value="bug">Bug</option><option value="building">Building</option><option value="data">Data</option><option value="request">Request</option><option value="other">Other</option></select><label for="cf-text">What should change?</label><textarea id="cf-text" maxlength="12000" placeholder="Describe what you see and what you expected…"></textarea><div class="cf-actions"><button type="button" class="cf-button cf-save">Save feedback</button><button type="button" class="cf-button cf-login">Sign in with Google</button><button type="button" class="cf-button cf-history-button">My feedback</button><button type="button" class="cf-button cf-close">Close</button></div><p role="status" aria-live="polite"></p><div class="cf-history"></div>`;
 document.body.append(dialog);
 const text = dialog.querySelector('textarea')!;
 const status = dialog.querySelector('[role=status]')!;
@@ -32,6 +37,8 @@ saveButton.setAttribute('aria-keyshortcuts', 'Meta+Enter Control+Enter');
 saveButton.title = 'Save feedback (⌘/Ctrl+Enter)';
 let current: Target;
 let payload: Context;
+let category: Category = 'bug';
+let subject: Subject | undefined;
 let anchor: { x: number; y: number } | null = null;
 let noteId = '';
 let captured = '';
@@ -99,14 +106,24 @@ function gameContext(): Context {
     landmark: g._landmarkNotice?.id || null,
   };
 }
-function open(target?: Target) {
+function open(options?: OpenOptions) {
   if (dialog.open) return;
   // `querySelector('#gameCanvas, main canvas, canvas')` returns the first match in
   // document order, which in the game is MapLibre's canvas (it precedes the HUD).
   // That skipped the render-callback capture below and read a cleared WebGL
   // buffer: a transparent frame, encoded as a black JPEG. Prefer the HUD canvas.
   const pageCanvas = (document.getElementById('gameCanvas') || document.querySelector('main canvas, canvas')) as HTMLCanvasElement | null;
-  current = target || w.CanalFeedbackPage?.() || { id: 'page', label: document.title, canvas: pageCanvas || undefined, context: gameContext };
+  const pageTarget: Target = (w.CanalFeedbackPage?.() as Target | undefined) || { id: 'page', label: document.title, canvas: pageCanvas || undefined, context: gameContext };
+  current = {
+    id: options?.id || pageTarget.id,
+    label: options?.label || pageTarget.label,
+    canvas: options?.canvas ?? pageTarget.canvas,
+    image: options?.image ?? pageTarget.image,
+    context: options?.context ?? pageTarget.context,
+    map: options?.map ?? pageTarget.map,
+  };
+  category = options?.category ?? 'bug';
+  subject = options?.target;
   anchor = null; noteId = crypto.randomUUID(); captured = ''; readyCloud = undefined;
   payload = JSON.parse(JSON.stringify(current.context?.() || {}));
   draftKey = `canalFeedback.draft:${location.pathname}:${current.id}`;
@@ -115,6 +132,7 @@ function open(target?: Target) {
   frozenGame = w.canalRecallGame;
   if (frozenGame) { frozenGame._feedbackOpen = true; frozenGame.input.keys = {}; frozenGame.input.justPressed = {}; frozenGame.sound?.silence?.(); }
   dialog.querySelector('.cf-target')!.textContent = current.label;
+  (dialog.querySelector('#cf-category') as HTMLSelectElement).value = category;
   preview.hidden = true;
   dialog.querySelector('.cf-anchor')!.textContent = captured ? 'Tap the image to mark the spot you mean (optional).' : 'Page and view context will be included.';
   try { text.value = localStorage.getItem(draftKey) || ''; } catch { text.value = ''; }
@@ -162,6 +180,8 @@ dialog.addEventListener('keydown', event => {
 });
 dialog.querySelector('.cf-close')!.addEventListener('click', close);
 text.addEventListener('input', () => { try { localStorage.setItem(draftKey, text.value); } catch { /* local storage unavailable */ } });
+const categorySelect = dialog.querySelector('#cf-category') as HTMLSelectElement;
+categorySelect.addEventListener('change', () => { category = categorySelect.value as Category; });
 preview.addEventListener('click', e => {
   const r = preview.getBoundingClientRect();
   anchor = { x: Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)), y: Math.max(0, Math.min(1, (e.clientY - r.top) / r.height)) };
@@ -178,11 +198,14 @@ saveButton.addEventListener('click', async () => {
     const api = await cloud();
     const build = await buildPromise;
     await capturePromise;
-    await api.save(noteId, {
-      text: text.value.trim(), target: { id: current.id.slice(0,2048), label: current.label.slice(0,500), imageUrl: current.image?.currentSrc?.startsWith('http') ? current.image.currentSrc.slice(0,4096) : '', anchor },
+    const note: Record<string, unknown> = {
+      text: text.value.trim(), category,
+      target: { id: current.id.slice(0,2048), label: current.label.slice(0,500), imageUrl: current.image?.currentSrc?.startsWith('http') ? current.image.currentSrc.slice(0,4096) : '', anchor },
       screenshot: captured, context: payload,
       environment: { kind: ['localhost','127.0.0.1','[::1]'].includes(location.hostname) ? 'local-development' : /\.(web\.app|firebaseapp\.com)$/.test(location.hostname) ? 'firebase-hosting' : location.hostname.endsWith('github.io') ? 'github-pages' : 'custom-host', feedbackBuild: __FEEDBACK_BUILD__, host: location.host, origin: location.origin, page: pageUrl(), local: ['localhost','127.0.0.1','[::1]'].includes(location.hostname), userAgent: navigator.userAgent, viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio }, capturedAt: new Date().toISOString(), build: build || w.CanalRecallBuild || null },
-    });
+    };
+    if (subject) note.subject = subject;
+    await api.save(noteId, note);
     try { localStorage.removeItem(draftKey); } catch { /* optional local storage */ }
     text.value = ''; noteId = crypto.randomUUID();
     status.textContent = 'Saved to the feedback queue.';
@@ -207,7 +230,7 @@ function attach(container: HTMLElement, target: Target) {
   button.addEventListener('click', () => open(target)); container.append(button);
 }
 window.CanalFeedback = { attach, open };
-const launch = document.createElement('button'); launch.type = 'button'; launch.className = 'cf-button cf-launch'; launch.textContent = 'Feedback'; launch.addEventListener('click', () => open()); (document.getElementById('utility-buttons') || document.body).append(launch);
+const launch = document.createElement('button'); launch.type = 'button'; launch.className = 'cf-button cf-launch'; launch.textContent = 'Report a problem'; launch.addEventListener('click', () => open()); (document.getElementById('utility-buttons') || document.body).append(launch);
 // Other gallery pages opt in simply by loading this module. Dynamic cards are supported.
 function discover() {
   for (const card of document.querySelectorAll<HTMLElement>('article, .card, [data-feedback-id]')) {

@@ -42,12 +42,19 @@ export async function main(args = process.argv.slice(2)) {
     const data=await r.json(); if(!r.ok) throw new Error(`Firestore ${r.status}: ${data.error?.message || 'request failed'}`); return data;
   }
   const readNote = doc => ({ id:doc.name.split('/').at(-1), updateTime:doc.updateTime, ...Object.fromEntries(Object.entries(doc.fields || {}).map(([k,v])=>[k,decode(v)])) });
+  const categories = ['bug','building','data','request','other'];
   if(command==='pull') {
     const status=option('--status','open');
     if(status!=='all' && !Object.hasOwn(transitions,status)) throw new Error('Invalid status');
+    const category=option('--category','');
+    if(category!=='' && !categories.includes(category)) throw new Error('Invalid category');
     const max=Number(option('--limit','50'));
     if(!Number.isInteger(max)||max<1||max>500) throw new Error('Limit must be 1–500');
-    const query={from:[{collectionId:'canalFeedback'}],limit:max, ...(status==='all'?{}:{where:{fieldFilter:{field:{fieldPath:'status'},op:'EQUAL',value:{stringValue:status}}}})};
+    const filters=[];
+    if(status!=='all') filters.push({fieldFilter:{field:{fieldPath:'status'},op:'EQUAL',value:{stringValue:status}}});
+    if(category) filters.push({fieldFilter:{field:{fieldPath:'category'},op:'EQUAL',value:{stringValue:category}}});
+    const where=filters.length===0?{}:filters.length===1?{where:filters[0]}:{where:{compositeFilter:{op:'AND',filters}}};
+    const query={from:[{collectionId:'canalFeedback'}],limit:max,...where};
     const result=await api(':runQuery','POST',{structuredQuery:query});
     await mkdir(directory,{recursive:true});
     const notes=[];
@@ -62,7 +69,7 @@ export async function main(args = process.argv.slice(2)) {
     }
     notes.sort((a,b)=>String(a.createdAt).localeCompare(String(b.createdAt)));
     const file=join(directory,`queue-${status}.json`); await writeFile(file,JSON.stringify({project,pulledAt:new Date().toISOString(),status,limit:max,notes},null,2)+'\n');
-    console.log(JSON.stringify({file,count:notes.length,atLimit:notes.length===max,notes:notes.map(n=>({id:n.id,status:n.status,target:n.target?.label,text:n.text.slice(0,400),host:n.environment?.host,build:n.environment?.build,screenshotPath:n.screenshotPath}))},null,2));
+    console.log(JSON.stringify({file,count:notes.length,atLimit:notes.length===max,notes:notes.map(n=>({id:n.id,status:n.status,category:n.category,subject:n.subject,target:n.target?.label,text:n.text.slice(0,400),host:n.environment?.host,build:n.environment?.build,screenshotPath:n.screenshotPath}))},null,2));
     return;
   }
   if(command==='status') {
@@ -77,6 +84,6 @@ export async function main(args = process.argv.slice(2)) {
     const updated = await api(`/canalFeedback/${id}?updateMask.fieldPaths=status&updateMask.fieldPaths=resolution&updateMask.fieldPaths=updatedAt&currentDocument.updateTime=${encodeURIComponent(expected)}`,'PATCH', {fields:{status:encode(next),resolution:encode(message),updatedAt:{timestampValue:new Date().toISOString()}}});
     console.log(JSON.stringify({id,status:next,updateTime:updated.updateTime}));return;
   }
-  throw new Error('Commands: pull [--status open|in-progress|deferred|resolved|all] [--limit 50] [--out DIR]; status ID STATUS --expected UPDATE_TIME --note-file FILE');
+  throw new Error('Commands: pull [--status open|in-progress|deferred|resolved|all] [--category bug|building|data|request|other] [--limit 50] [--out DIR]; status ID STATUS --expected UPDATE_TIME --note-file FILE');
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(resolve(process.argv[1])).href) main().catch(e=>{console.error(e.message);process.exitCode=1;});
