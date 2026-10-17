@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Verified dead-code cleanup (2026-10-17)
+
+649 lines / 42 KB removed in four batches (`docs/dead-code-cleanup-2026-10-17.md`
+has the zero-hit evidence per item): the orphaned canalhouse-recipe preview
+script and its two private modules, `scripts/landmarks/modern-fit.ts`, 21
+uncalled exported functions, 9 unused constants/types, 5 unused script
+exports. Kept on purpose: lab-page bundle sources, names that appear in
+committed bundles (possible browser globals), kit components, entry scripts,
+and anything touched on any branch in the last 3 days. The deepseek draft
+report (14a6c2284) was not used as a deletion list; its "high confidence"
+entries included live modules.
+
 ## Spaarndammerbuurt: 54 pands from five measured types (2026-10-17)
 
 Lane `lane/spaarndammer-20261017` (19ec2cff4 … b0aec6444). 54 pands in 13
