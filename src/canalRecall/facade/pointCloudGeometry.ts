@@ -211,8 +211,6 @@ export function rasteriseWall(
   return { frame, cellSize, columns, rows, bottomUp: bottomLimit, planeOffset, pointCount: slab.length, cells, byIndex };
 }
 
-export type WallElement = 'wall' | 'recessed' | 'protruding';
-
 export interface WallRasterClassification {
   wall: WallRasterCell[];
   recessed: WallRasterCell[];

@@ -37,8 +37,6 @@ export interface PlaceCluster {
   score: number;
 }
 
-export type AreaCandidate = SentenceCandidate | PlaceCluster;
-
 /**
  * Text the cards do not carry, matching the review rules already applied to
  * Utrecht/Rotterdam (HISTORY 2026-10-02): resident statistics, crime and
