@@ -89,7 +89,7 @@ if (process.argv[1]?.endsWith('tropenmuseum-groups.ts')) {
   const out = {
     schemaVersion: 1, kind: 'large', id: 'tropenmuseum', pandId: '0363100012237251', address: 'Koninklijk Instituut voor de Tropen / Tropenmuseum, Linnaeusstraat 2, Amsterdam',
     sources: intent.sources ?? [{id: 'pano-2020-04-24', kind: 'street-panorama', capturedAt: '2020-04-24', url: 'https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001674_pano_0000_003613/', license: 'Gemeente Amsterdam panorama, CC BY 4.0'}],
-    walls, otherWalls: 'blank', roof: {material: 'slate'}, palette: {brick: '#a2856c', frame: '#efece3', door: '#2f3b33', stone: '#e2d6bc'}, closedBands: false,
+    walls, otherWalls: 'blank', roof: {material: 'slate'}, palette: {brick: '#a28382', frame: '#efece3', door: '#2f3b33', stone: '#e2d6bc'}, closedBands: false,
     notes: intent.notes ?? [],
   };
   if (process.argv.includes('--write')) fs.writeFileSync('scripts/landmarks/tropenmuseum-intent.json', JSON.stringify(out, null, 1) + '\n');

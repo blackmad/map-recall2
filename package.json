@@ -507,7 +507,7 @@
     "check:roof-attachment": "node --import tsx scripts/check-roof-attachment.ts",
     "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts",
     "audit:landmark-cards": "tsx scripts/audit-landmark-cards.ts",
-    "test:bridge-street-name": "node --import tsx --test src/canalRecall/game/bridgeStreetName.test.ts",
+    "test:bridge-street-name": "node --import tsx --test src/canalRecall/game/bridgeStreetName.test.ts src/canalRecall/bridgeData.test.ts",
     "test:finish-blurb": "node --import tsx --test src/canalRecall/game/finishBlurb.test.ts",
     "check:bridge-railings": "node --import tsx scripts/own-ground/audit-bridge-railings.ts",
     "check:signature-bundle": "npm run -s build:canal-signature-landmarks && node --import tsx scripts/landmarks/check-signature-bundle.ts",

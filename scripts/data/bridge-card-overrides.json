@@ -1,0 +1,51 @@
+{
+ "note": "Sourced bridge cards for OSM bridge names no register or Wikidata item carries. Each OSM name is a former unofficial name of the register bridge at the same spot, tied by the quoted sentence of the cited article. `en` is a faithful English rendering of `nl` (sentences selected from the article, nothing added). Applied by scripts/stage-bridge-data.ts.",
+ "reviewedAt": "2026-10-17",
+ "cards": [
+  {
+   "name": "Godenbrug",
+   "registerBridge": "BRU0411 (Herman van den Eerenbeemtbrug), 13 m",
+   "tie": "Tot 2016 werden drie officieuze namen gebruikt. De vernoeming naar 'Godenbrug' dankt het aan de namen van goden die in deze buurt aan straten zouden zijn gegeven",
+   "nl": "Brug 411 is een vaste brug in Amsterdam-Zuid. Ze overspant het Noorder Amstelkanaal. Tot 2016 werden drie officieuze namen gebruikt. De vernoeming naar 'Godenbrug' dankt het aan de namen van goden die in deze buurt aan straten zouden zijn gegeven. De brug is ontworpen door Piet Kramer in de Amsterdamse Schoolstijl.",
+   "en": "Bridge 411 is a fixed bridge in Amsterdam-Zuid, over the Noorder Amstelkanaal. Until 2016 it went by three unofficial names; 'Godenbrug' comes from the names of gods that streets in this neighbourhood were said to have been given. It was designed by Piet Kramer in the Amsterdam School style.",
+   "wikipediaUrl": "https://nl.wikipedia.org/wiki/Brug_411",
+   "wikipediaImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Brug_411%2C_lengte.jpg/960px-Brug_411%2C_lengte.jpg",
+   "sources": ["https://nl.wikipedia.org/w/index.php?title=Brug_411&oldid=56465009"]
+  },
+  {
+   "name": "Kleine Brouwerssluis",
+   "registerBridge": "BRU0067 (Angenietje Swarthofbrug), 3 m",
+   "tie": "Ze stond tot april 2016 bekend als de Kleine Brouwerssluis.",
+   "nl": "Angenietje Swarthofbrug (brug 67) is een vaste brug in Amsterdam-Centrum. De verkeersbrug is gelegen in de noordelijke kade van de Leidsegracht en voert over de Prinsengracht. Ze stond tot april 2016 bekend als de Kleine Brouwerssluis. In december 2021 kreeg de brug alsnog een naam: Angenietje Swartbrug. Angenietje was een van de minnen in Amsterdam, vrouwen die vondelingen opvingen.",
+   "en": "Bridge 67 is a fixed bridge in Amsterdam-Centrum, carrying the north quay of the Leidsegracht over the Prinsengracht. Until April 2016 it was known as the Kleine Brouwerssluis. In December 2021 it was named after Angenietje Swart, one of Amsterdam's wet nurses, women who took in foundlings.",
+   "wikipediaUrl": "https://nl.wikipedia.org/wiki/Angenietje_Swarthofbrug",
+   "wikipediaImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Amsterdam_-_Koninginnedag_2012_-_Prinsengracht_bridge.JPG/960px-Amsterdam_-_Koninginnedag_2012_-_Prinsengracht_bridge.JPG",
+   "sources": ["https://nl.wikipedia.org/w/index.php?title=Angenietje_Swarthofbrug&oldid=71797602"]
+  },
+  {
+   "name": "Vingboomsbrug",
+   "registerBridge": "BRU0026, 0 m (the register names it Simon Wiesenthalbrug; BAG and nl.wikipedia put that name on bridge 790 in Nieuw-West)",
+   "tie": "De brug werd officieus aangeduid als Vingboonsbrug, naar de architect Philips Vingboons",
+   "nl": "Brug 26 is een vaste brug in Amsterdam-Centrum. De brug verbindt de Wijde Heisteeg met de Huidenstraat en voert daarbij over de Herengracht. De brug werd officieus aangeduid als Vingboonsbrug, naar de architect Philips Vingboons, die het ontwerp leverde voor de zogenaamde Vingboonshuizen aan Herengracht 362-370. In 2016 vervielen alle officieuze vernoemingen van bruggen.",
+   "en": "Bridge 26 is a fixed bridge in Amsterdam-Centrum, linking the Wijde Heisteeg and the Huidenstraat over the Herengracht. It was unofficially called the Vingboonsbrug, after the architect Philips Vingboons, who designed the so-called Vingboons houses at Herengracht 362–370. In 2016 all unofficial bridge names lapsed.",
+   "wikipediaUrl": "https://nl.wikipedia.org/wiki/Brug_26",
+   "wikipediaImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Stadsgezicht_gevelwand_Leidsestraat_met_op_de_voorgrond_een_stenen_brug_-_Amsterdam_-_20398223_-_RCE.jpg/960px-Stadsgezicht_gevelwand_Leidsestraat_met_op_de_voorgrond_een_stenen_brug_-_Amsterdam_-_20398223_-_RCE.jpg",
+   "sources": ["https://nl.wikipedia.org/w/index.php?title=Brug_26&oldid=52754033"]
+  },
+  {
+   "name": "Zandbrug",
+   "registerBridge": "BRU0225 (Seraphina van Braziliëbrug), 2 m",
+   "tie": "De brug ging jarenlang als Zandbrug door het leven, vernoemd naar de nabijgelegen Zandstraat en Zanddwarsstraat.",
+   "nl": "Seraphina van Braziliëbrug (Brug 225) is een vaste brug in Amsterdam-Centrum. De verkeersbrug is gelegen in de oostkade van de Kloveniersburgwal en overspant de Raamgracht. De brug ging jarenlang als Zandbrug door het leven, vernoemd naar de nabijgelegen Zandstraat en Zanddwarsstraat. In 2016 trok de Gemeente Amsterdam alle officieuze tenaamstellingen in. Op 14 mei 2025 besloot de gemeente Amsterdam de brug te vernoemen naar Seraphina van Brazilië.",
+   "en": "Bridge 225 is a fixed bridge in Amsterdam-Centrum, carrying the east quay of the Kloveniersburgwal over the Raamgracht. For years it went by the name Zandbrug, after the nearby Zandstraat and Zanddwarsstraat. In 2016 the city withdrew all unofficial names, and on 14 May 2025 it named the bridge after Seraphina van Brazilië.",
+   "wikipediaUrl": "https://nl.wikipedia.org/wiki/Seraphina_van_Brazili%C3%ABbrug",
+   "wikipediaImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/2019_Brug_225%2C_zijaanzicht_%282%29.jpg/960px-2019_Brug_225%2C_zijaanzicht_%282%29.jpg",
+   "sources": ["https://nl.wikipedia.org/w/index.php?title=Seraphina_van_Brazili%C3%ABbrug&oldid=72062077"]
+  }
+ ],
+ "leftEmpty": {
+  "Kaassluis": "The register's Kaasmarktsluis (BRU0032) is 1 m away, but no source found (nl.wikipedia Kaasmarktsluis, BAG, web search) uses the name Kaassluis.",
+  "Melkwegbrug": "The register's Melkfabriekbrug (BRU1900) is 7 m away. nl.wikipedia ties it to the Melkweg only by use (its entrance since 1969) and a Commons file name; no text calls it the Melkwegbrug.",
+  "Zwanenburger fiets brug": "No register bridge within 290 m (outside the municipal register). A Noord-Holland decision of 6 April 2012 mentions a new foot/cycle bridge at Zwanenburg on the Ringvaart, but nothing ties these OSM coordinates to it."
+ }
+}

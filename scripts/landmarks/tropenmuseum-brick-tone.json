@@ -1,0 +1,705 @@
+{
+ "id": "tropenmuseum",
+ "measuredAt": "2026-10-17",
+ "method": "src/canalRecall/look/brickTone.ts: brick-only median per crop (sky, leaves, glass/shadow under 0.6x and stone/frames over 1.45x the wall luma dropped; brick/joint split by saturation); crop light from its light trim (cropLight); albedo hue and C*:L* pooled one vote per camera system over diffuse crops (brickAlbedo), at the L* of the exposure-calibrated panorama tint #a2856c (look/sunny.ts). Command: scripts/look/measure-brick-tone.ts --lightness=#a2856c --system=<name> <image>@<box> ...",
+ "previous": {
+  "brick": "#a2856c",
+  "labHue": 67,
+  "labChroma": 19.1,
+  "note": "fourth pass: per-channel median of three panorama crops (#9d8061, #947e6f, #594c45; Lab hue 72, 62, 56), luma-only sunlit gain"
+ },
+ "result": {
+  "brick": "#a28382",
+  "labL": 58,
+  "labHue": 23,
+  "labChroma": 12.7
+ },
+ "systems": [
+  {
+   "system": "panorama",
+   "diffuseCrops": 10,
+   "labHue": 58,
+   "chromaPerL": 0.221
+  },
+  {
+   "system": "c2011",
+   "diffuseCrops": 2,
+   "labHue": 15,
+   "chromaPerL": 0.216
+  },
+  {
+   "system": "c2014-mulder",
+   "diffuseCrops": 1,
+   "labHue": 27,
+   "chromaPerL": 0.221
+  },
+  {
+   "system": "c2020",
+   "diffuseCrops": 2,
+   "labHue": 24,
+   "chromaPerL": 0.114
+  },
+  {
+   "system": "c2024",
+   "diffuseCrops": 1,
+   "labHue": 2,
+   "chromaPerL": 0.07
+  }
+ ],
+ "sunlitOnly": [
+  "c2005-rce",
+  "c2007-pd",
+  "c2009",
+  "c2017-pd"
+ ],
+ "sources": {
+  "panorama": {
+   "url": "Gemeente Amsterdam panoramas (data.amsterdam.nl), rectified wall crops of landmark-brief.ts",
+   "licence": "CC BY 4.0"
+  },
+  "c2005-rce": {
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_voorgevel_met_twee_torenfronten_en_ingangsportaal_-_Amsterdam_-_20409038_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0 (Rijksdienst voor het Cultureel Erfgoed)"
+  },
+  "c2007-pd": {
+   "url": "https://commons.wikimedia.org/wiki/File:Tropenmuseum_front.jpg",
+   "licence": "Public domain"
+  },
+  "c2009": {
+   "url": "https://commons.wikimedia.org/wiki/File:Ingang_Tropenmuseum1.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  "c2011": {
+   "url": "https://commons.wikimedia.org/wiki/File:Tropenmuseum_B.jpg ; https://commons.wikimedia.org/wiki/File:Tropenmuseum_D.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  "c2014-mulder": {
+   "url": "https://commons.wikimedia.org/wiki/File:KIT_of_Tropenmuseum.JPG (the game card photo)",
+   "licence": "CC BY-SA 3.0 nl (Marcel Mulder)"
+  },
+  "c2017-pd": {
+   "url": "https://commons.wikimedia.org/wiki/File:Tropenmuseum,_Linnaeusstraat_foto_1.jpg ; https://commons.wikimedia.org/wiki/File:Tropenmuseum,_Linnaeusstraat_foto_2.jpg",
+   "licence": "Public domain"
+  },
+  "c2020": {
+   "url": "https://commons.wikimedia.org/wiki/File:Tropenmuseum_N_(in_2020)_(1).jpg ; https://commons.wikimedia.org/wiki/File:Tropenmuseum_N_(in_2020)_(2).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  "c2024": {
+   "url": "https://commons.wikimedia.org/wiki/File:Wereldmuseum_Amsterdam_(2024).jpg",
+   "licence": "CC BY-SA 4.0"
+  }
+ },
+ "crops": [
+  {
+   "system": "panorama",
+   "source": "w10-61.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#66584f",
+   "wall": "#675a52",
+   "lightTrim": "#9b9591",
+   "split": true,
+   "hsl": [
+    23,
+    0.127,
+    0.355
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w10-61.alt.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#473b35",
+   "wall": "#483d39",
+   "lightTrim": "#6a6866",
+   "split": true,
+   "hsl": [
+    20,
+    0.145,
+    0.243
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w11-61.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#8f7c6d",
+   "wall": "#8b7b6f",
+   "lightTrim": "#d3c8bb",
+   "split": true,
+   "hsl": [
+    26,
+    0.135,
+    0.494
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w16-61.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#917e6d",
+   "wall": "#917e6d",
+   "lightTrim": "#d7cdc3",
+   "split": false,
+   "hsl": [
+    28,
+    0.142,
+    0.498
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w16-61.alt.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#5e5046",
+   "wall": "#5c514a",
+   "lightTrim": "#89867e",
+   "split": true,
+   "hsl": [
+    25,
+    0.146,
+    0.322
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w12-331.alt.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#473b35",
+   "wall": "#463c37",
+   "lightTrim": "#6c6662",
+   "split": true,
+   "hsl": [
+    20,
+    0.145,
+    0.243
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w17-331.alt.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#64554c",
+   "wall": "#61564f",
+   "lightTrim": "#91897e",
+   "split": true,
+   "hsl": [
+    22,
+    0.136,
+    0.345
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w36-61.alt.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#4e443f",
+   "wall": "#514a47",
+   "lightTrim": "#898783",
+   "split": true,
+   "hsl": [
+    20,
+    0.106,
+    0.276
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w37-61.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#473c38",
+   "wall": "#4a4140",
+   "lightTrim": "#76736f",
+   "split": true,
+   "hsl": [
+    16,
+    0.118,
+    0.249
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w42-358.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#423a34",
+   "wall": "#423c39",
+   "lightTrim": "#797976",
+   "split": true,
+   "hsl": [
+    26,
+    0.119,
+    0.231
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w44-337.alt.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#594a40",
+   "wall": "#5a4e45",
+   "lightTrim": "#aba8a7",
+   "split": true,
+   "hsl": [
+    24,
+    0.163,
+    0.3
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w44-337.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#443b35",
+   "wall": "#443e3a",
+   "lightTrim": "#716962",
+   "split": true,
+   "hsl": [
+    24,
+    0.124,
+    0.237
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w45-331.alt.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#594b40",
+   "wall": "#594d46",
+   "lightTrim": "#88857f",
+   "split": true,
+   "hsl": [
+    26,
+    0.163,
+    0.3
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w46-331.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#433a37",
+   "wall": "#433c39",
+   "lightTrim": "#6b6965",
+   "split": true,
+   "hsl": [
+    15,
+    0.098,
+    0.239
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w47-61.alt.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#514640",
+   "wall": "#544944",
+   "lightTrim": "#eff0f4",
+   "split": true,
+   "hsl": [
+    21,
+    0.117,
+    0.284
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w48-348.alt.jpg",
+   "box": null,
+   "light": "diffuse",
+   "brick": "#52443b",
+   "wall": "#53473f",
+   "lightTrim": "#f1f3f6",
+   "split": true,
+   "hsl": [
+    23,
+    0.163,
+    0.276
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w27-151.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#d7aa70",
+   "wall": "#d1a973",
+   "lightTrim": null,
+   "split": true,
+   "hsl": [
+    34,
+    0.563,
+    0.641
+   ]
+  },
+  {
+   "system": "panorama",
+   "source": "w38-61.jpg",
+   "box": null,
+   "light": "sunlit",
+   "brick": "#e2bb80",
+   "wall": "#e2bb80",
+   "lightTrim": null,
+   "split": false,
+   "hsl": [
+    36,
+    0.628,
+    0.694
+   ]
+  },
+  {
+   "system": "c2005-rce",
+   "source": "Overzicht_voorgevel_met_twee_torenfronten_en_ingangsportaal_Amsterdam_20409038_RCE.jpg@0.609,0.552,0.630,0.594",
+   "box": [
+    0.609,
+    0.552,
+    0.63,
+    0.594
+   ],
+   "light": "sunlit",
+   "brick": "#524832",
+   "wall": "#675d48",
+   "lightTrim": "#a7a289",
+   "split": true,
+   "hsl": [
+    41,
+    0.242,
+    0.259
+   ]
+  },
+  {
+   "system": "c2005-rce",
+   "source": "Overzicht_voorgevel_met_twee_torenfronten_en_ingangsportaal_Amsterdam_20409038_RCE.jpg@0.552,0.615,0.573,0.698",
+   "box": [
+    0.552,
+    0.615,
+    0.573,
+    0.698
+   ],
+   "light": "sunlit",
+   "brick": "#5b5038",
+   "wall": "#70674f",
+   "lightTrim": "#b4af9f",
+   "split": true,
+   "hsl": [
+    41,
+    0.238,
+    0.288
+   ]
+  },
+  {
+   "system": "c2005-rce",
+   "source": "Overzicht_voorgevel_met_twee_torenfronten_en_ingangsportaal_Amsterdam_20409038_RCE.jpg@0.677,0.6,0.698,0.703",
+   "box": [
+    0.677,
+    0.6,
+    0.698,
+    0.703
+   ],
+   "light": "sunlit",
+   "brick": "#938767",
+   "wall": "#9e9273",
+   "lightTrim": "#fbf5dc",
+   "split": true,
+   "hsl": [
+    44,
+    0.176,
+    0.49
+   ]
+  },
+  {
+   "system": "c2007-pd",
+   "source": "Tropenmuseum_front.jpg@0.648,0.436,0.672,0.62",
+   "box": [
+    0.648,
+    0.436,
+    0.672,
+    0.62
+   ],
+   "light": "sunlit",
+   "brick": "#c79875",
+   "wall": "#c99c7a",
+   "lightTrim": null,
+   "split": true,
+   "hsl": [
+    26,
+    0.423,
+    0.62
+   ]
+  },
+  {
+   "system": "c2007-pd",
+   "source": "Tropenmuseum_front.jpg@0.542,0.436,0.56,0.5",
+   "box": [
+    0.542,
+    0.436,
+    0.56,
+    0.5
+   ],
+   "light": "sunlit",
+   "brick": "#d9aa87",
+   "wall": "#e1b18f",
+   "lightTrim": null,
+   "split": true,
+   "hsl": [
+    26,
+    0.519,
+    0.69
+   ]
+  },
+  {
+   "system": "c2007-pd",
+   "source": "Tropenmuseum_front.jpg@0.367,0.436,0.385,0.615",
+   "box": [
+    0.367,
+    0.436,
+    0.385,
+    0.615
+   ],
+   "light": "sunlit",
+   "brick": "#c4916d",
+   "wall": "#d4a27e",
+   "lightTrim": null,
+   "split": true,
+   "hsl": [
+    25,
+    0.424,
+    0.598
+   ]
+  },
+  {
+   "system": "c2007-pd",
+   "source": "Tropenmuseum_front.jpg@0.28,0.56,0.36,0.65",
+   "box": [
+    0.28,
+    0.56,
+    0.36,
+    0.65
+   ],
+   "light": "sunlit",
+   "brick": "#3f2d24",
+   "wall": "#3d3029",
+   "lightTrim": "#898278",
+   "split": true,
+   "hsl": [
+    20,
+    0.273,
+    0.194
+   ]
+  },
+  {
+   "system": "c2009",
+   "source": "Ingang_Tropenmuseum1.jpg@0.6,0.3,0.8,0.7",
+   "box": [
+    0.6,
+    0.3,
+    0.8,
+    0.7
+   ],
+   "light": "sunlit",
+   "brick": "#c39475",
+   "wall": "#c19477",
+   "lightTrim": "#fff6e0",
+   "split": true,
+   "hsl": [
+    24,
+    0.394,
+    0.612
+   ]
+  },
+  {
+   "system": "c2011",
+   "source": "Tropenmuseum_B.jpg@0.05,0.0,0.95,0.3",
+   "box": [
+    0.05,
+    0,
+    0.95,
+    0.3
+   ],
+   "light": "diffuse",
+   "brick": "#93777a",
+   "wall": "#9a8284",
+   "lightTrim": "#e5dbda",
+   "split": true,
+   "hsl": [
+    354,
+    0.115,
+    0.522
+   ]
+  },
+  {
+   "system": "c2011",
+   "source": "Tropenmuseum_D.jpg@0.0,0.15,0.3,0.7",
+   "box": [
+    0,
+    0.15,
+    0.3,
+    0.7
+   ],
+   "light": "diffuse",
+   "brick": "#846c6d",
+   "wall": "#847172",
+   "lightTrim": "#bab5b1",
+   "split": true,
+   "hsl": [
+    358,
+    0.1,
+    0.471
+   ]
+  },
+  {
+   "system": "c2014-mulder",
+   "source": "KIT_of_Tropenmuseum.JPG@0.768,0.326,0.786,0.389",
+   "box": [
+    0.768,
+    0.326,
+    0.786,
+    0.389
+   ],
+   "light": "sunlit",
+   "brick": "#685a5c",
+   "wall": "#685a5c",
+   "lightTrim": "#9e8d8e",
+   "split": false,
+   "hsl": [
+    351,
+    0.072,
+    0.38
+   ]
+  },
+  {
+   "system": "c2014-mulder",
+   "source": "KIT_of_Tropenmuseum.JPG@0.672,0.417,0.693,0.472",
+   "box": [
+    0.672,
+    0.417,
+    0.693,
+    0.472
+   ],
+   "light": "diffuse",
+   "brick": "#8b716f",
+   "wall": "#8d7775",
+   "lightTrim": "#cec4c0",
+   "split": true,
+   "hsl": [
+    4,
+    0.112,
+    0.49
+   ]
+  },
+  {
+   "system": "c2017-pd",
+   "source": "Tropenmuseum_Linnaeusstraat_foto_1.jpg@0.6,0.3,0.75,0.6",
+   "box": [
+    0.6,
+    0.3,
+    0.75,
+    0.6
+   ],
+   "light": "sunlit",
+   "brick": "#cba691",
+   "wall": "#d2b29f",
+   "lightTrim": null,
+   "split": true,
+   "hsl": [
+    22,
+    0.358,
+    0.682
+   ]
+  },
+  {
+   "system": "c2017-pd",
+   "source": "Tropenmuseum_Linnaeusstraat_foto_2.jpg@0.15,0.3,0.4,0.55",
+   "box": [
+    0.15,
+    0.3,
+    0.4,
+    0.55
+   ],
+   "light": "sunlit",
+   "brick": "#473626",
+   "wall": "#44392f",
+   "lightTrim": "#a0998f",
+   "split": true,
+   "hsl": [
+    29,
+    0.303,
+    0.214
+   ]
+  },
+  {
+   "system": "c2020",
+   "source": "Tropenmuseum_N_in_2020_1_.jpg@0.05,0.0,0.95,0.25",
+   "box": [
+    0.05,
+    0,
+    0.95,
+    0.25
+   ],
+   "light": "diffuse",
+   "brick": "#8e7e7b",
+   "wall": "#8e7e7b",
+   "lightTrim": "#d5d2ca",
+   "split": false,
+   "hsl": [
+    9,
+    0.078,
+    0.52
+   ]
+  },
+  {
+   "system": "c2020",
+   "source": "Tropenmuseum_N_in_2020_2_.jpg@0.0,0.15,0.2,0.75",
+   "box": [
+    0,
+    0.15,
+    0.2,
+    0.75
+   ],
+   "light": "diffuse",
+   "brick": "#7d7172",
+   "wall": "#7d7172",
+   "lightTrim": "#cacac5",
+   "split": false,
+   "hsl": [
+    355,
+    0.05,
+    0.467
+   ]
+  },
+  {
+   "system": "c2024",
+   "source": "Wereldmuseum_Amsterdam_2024_.jpg@0.45,0.15,0.75,0.5",
+   "box": [
+    0.45,
+    0.15,
+    0.75,
+    0.5
+   ],
+   "light": "diffuse",
+   "brick": "#898082",
+   "wall": "#898082",
+   "lightTrim": "#d1cfcf",
+   "split": false,
+   "hsl": [
+    347,
+    0.037,
+    0.52
+   ]
+  }
+ ]
+}

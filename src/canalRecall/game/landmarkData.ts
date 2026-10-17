@@ -311,6 +311,7 @@ export function buildBridges(
     bridges.push({
       id: feature.id,
       name: feature.name,
+      ...(feature.displayName ? { displayName: feature.displayName } : {}),
       lines,
       crossings: source.map(crossing => ({ ...crossing, ...toWorld(crossing.center) })),
       distractors: (feature.distractors || []).filter(name => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),

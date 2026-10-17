@@ -28,9 +28,10 @@
  *                               [-- --files=streets.json,water.json]
  *                               [-- --directory=public/data/extracts/amsterdam]
  */
-import { readFile, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import { readPartition, shipPartition } from './lib/extract-sidecar.ts';
 import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
 import { cityById } from '../src/canalRecall/game/cities.ts';
 import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
@@ -148,7 +149,9 @@ async function fetchPages(language: string, titles: string[], withLangLinks: boo
 }
 
 const partitions = new Map<string, Feature[]>();
-for (const file of files) partitions.set(file, JSON.parse(await readFile(path.join(directory, file), 'utf8')));
+// Build-only fields (`wikipediaSourceText` on bridges) come back from the
+// extract sidecar here and go back to it on write: the shipped file never has them.
+for (const file of files) partitions.set(file, readPartition<Feature>(directory, file, cityId));
 
 // A prior run may have discovered the article only after the broad Wikimedia
 // enrichment pass. Treat a missing thumbnail as pending too, so rerunning the
@@ -416,7 +419,7 @@ for (const [file, partition] of partitions) {
     filled.set(file, (filled.get(file) || 0) + 1);
     described++;
   }
-  if (!dryRun) await writeFile(path.join(directory, file), JSON.stringify(partition));
+  if (!dryRun) await writeFile(path.join(directory, file), shipPartition(file, partition, cityId));
 }
 
 if (followedDisambiguation) {

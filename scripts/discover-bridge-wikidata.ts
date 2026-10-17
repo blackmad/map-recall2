@@ -30,6 +30,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cachedJsonFetch } from './lib/cached-json-fetch.ts';
+import { cityOfDirectory, readPartition, shipPartition } from './lib/extract-sidecar.ts';
 import {
   MATCH_METRES, matchBridgeWikidata, wikipediaTag, type LatLon, type WikidataBridgeCandidate,
 } from '../src/canalRecall/bridgeWikidata.ts';
@@ -43,7 +44,8 @@ interface Bridge {
   wikidata?: string; wikipedia?: string; askableBy?: string;
   [field: string]: unknown;
 }
-const bridges = JSON.parse(await readFile(path.join(directory, 'bridges.json'), 'utf8')) as Bridge[];
+// With the build-only fields (`wikipediaSourceText` …) back from the sidecar.
+const bridges = readPartition<Bridge>(directory, 'bridges.json');
 
 /** What the encyclopedia passes write onto a bridge. */
 const CARD_FIELDS = [
@@ -52,7 +54,7 @@ const CARD_FIELDS = [
 ];
 
 if (process.argv.includes('--merge')) {
-  const worked = new Map((JSON.parse(await readFile(path.join(work, 'bridges.json'), 'utf8')) as Bridge[])
+  const worked = new Map(readPartition<Bridge>(work, 'bridges.json', cityOfDirectory(directory))
     .map(bridge => [bridge.id, bridge]));
   let changed = 0, untouched = 0;
   const merged = bridges.map((bridge) => {
@@ -67,7 +69,9 @@ if (process.argv.includes('--merge')) {
     return next;
   });
   const out = path.join(directory, 'staging/bridge-cards/bridges.json');
-  await writeFile(out, JSON.stringify(merged));
+  // Shipped without the build-only fields, which go to the sidecar.
+  const shipped = shipPartition('bridges.json', merged, cityOfDirectory(directory));
+  await writeFile(out, shipped);
   // The untouched bridges must serialise exactly as published.
   const before = new Map(bridges.map(bridge => [bridge.id, JSON.stringify(bridge)]));
   const drift = merged.filter(bridge => !worked.has(bridge.id) && before.get(bridge.id) !== JSON.stringify(bridge));
@@ -76,7 +80,7 @@ if (process.argv.includes('--merge')) {
   // bridges are Wikidata/Wikipedia-linked (as build-amsterdam-extract.ts counts).
   const manifest = JSON.parse(await readFile(path.join(directory, 'manifest.json'), 'utf8'));
   if (manifest.partitions?.bridges) {
-    manifest.partitions.bridges.bytes = Buffer.byteLength(JSON.stringify(merged));
+    manifest.partitions.bridges.bytes = Buffer.byteLength(shipped);
     manifest.partitions.bridges.linkedCount = merged.filter(bridge => bridge.wikidata || bridge.wikipedia).length;
     await writeFile(path.join(directory, 'staging/bridge-cards/manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
   }
@@ -148,7 +152,7 @@ for (const bridge of untagged) {
 }
 
 await mkdir(work, { recursive: true });
-await writeFile(path.join(work, 'bridges.json'), JSON.stringify(untagged));
+await writeFile(path.join(work, 'bridges.json'), shipPartition('bridges.json', untagged, cityOfDirectory(directory)));
 await writeFile(path.join(work, 'bridge-wikidata-report.json'), `${JSON.stringify({
   candidates: candidates.length, matched: report.filter(row => row.qid && !row.reason).length, rows: report,
 }, null, 1)}\n`);

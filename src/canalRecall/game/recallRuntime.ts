@@ -55,6 +55,7 @@ import { advanceSilentPass, beginSilentPass, questionFreezesRide } from './silen
 import { bridgeNameAskable } from './notableBridges';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from './bridgeStreetName';
 import { nearestRouteIndex } from './routeSelection';
+import { acceptedBridgeAnswers, bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
 
 /** Metres: how close another way must come to a deck end to continue it. */
 const BRIDGE_END_TOUCH_METRES = 3;
@@ -255,6 +256,13 @@ export class GameRecallRuntime {
     };
   }
 
+  /** The spelling to show for a name the game matched by its raw OSM name:
+   *  a bridge's official spelling ("Katten brug" is shown as Kattenbrug),
+   *  anything else unchanged. Every key, match and record keeps the raw name. */
+  _shownName(name: string): string {
+    return displayBridgeName(bridgeDisplayNamesOf(this.bridges), name);
+  }
+
   _revealName(name: string): void {
     if (!name) return;
     this.revealedNames.add(name);
@@ -332,12 +340,13 @@ export class GameRecallRuntime {
         (range - BRIDGE_LABEL_CLEARANCE) / BRIDGE_LABEL_CLEARANCE));
       if (clearance <= 0) continue;
       ctx.globalAlpha = 0.55 * clearance;
-      const width = ctx.measureText(bridge.name).width + 12;
+      const label = this._shownName(bridge.name);
+      const width = ctx.measureText(label).width + 12;
       ctx.fillStyle = 'rgba(3,18,28,0.55)';
       roundRect(ctx, screen.x - width / 2, screen.y - 24, width, 16, 4);
       ctx.fill();
       ctx.fillStyle = '#E7D5A3';
-      ctx.fillText(bridge.name, screen.x, screen.y - 12);
+      ctx.fillText(label, screen.x, screen.y - 12);
     }
     ctx.restore();
   }
@@ -430,7 +439,7 @@ export class GameRecallRuntime {
       this.learnedNames.add(decision.name);
       this._revealName(decision.name);
       if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
-      this.quizFeedback = knowThisCornerFeedback(decision.name);
+      this.quizFeedback = knowThisCornerFeedback(this._shownName(decision.name));
       return;
     }
 
@@ -1003,6 +1012,7 @@ export class GameRecallRuntime {
     const recallFeature = this._recallFeatureAt(name, this.player.x, this.player.y, this.quizPromptSubject === 'bridge' ? 'bridge' : '');
     const result = CanalRecallAnswerPath.submitAnswer({
       correctName: name,
+      displayName: this._shownName(name),
       answer: '',
       passed: true,
       score: {
@@ -1016,7 +1026,7 @@ export class GameRecallRuntime {
       revealName: (revealed: string) => this._revealName(revealed),
     });
     void result;
-    this.quizFeedback = `That was ${name}`;
+    this.quizFeedback = `That was ${this._shownName(name)}`;
     this._silentPass = null;
     this.quizCurrentName = name;
     this.quizCandidateName = '';
@@ -1165,7 +1175,7 @@ export class GameRecallRuntime {
       key.className = 'canal-choice-key';
       key.textContent = String(index + 1);
       button.dataset.name = name;
-      button.append(key, document.createTextNode(name));
+      button.append(key, document.createTextNode(this._shownName(name)));
       button.addEventListener('click', () => this._submitCanalAnswer(name));
       return button;
     }));
@@ -1266,6 +1276,9 @@ export class GameRecallRuntime {
     }
     const result = CanalRecallAnswerPath.submitAnswer({
       correctName,
+      // A bridge is asked under its official spelling and typed either way.
+      displayName: this._shownName(correctName),
+      acceptedAnswers: acceptedBridgeAnswers(bridgeDisplayNamesOf(this.bridges), correctName),
       answer,
       noIdea,
       score: {
@@ -1317,6 +1330,7 @@ export class GameRecallRuntime {
     // And paint its name on the road for a few seconds, right or wrong.
     this._answerStamp = this.quizPromptSegmentIndex >= 0 ? {
       name: correctName,
+      label: this._shownName(correctName),
       segmentIndex: this.quizPromptSegmentIndex,
       correct,
       until: this.raceTime + ANSWERED_STREET_SECONDS,

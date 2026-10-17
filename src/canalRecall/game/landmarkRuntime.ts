@@ -405,6 +405,8 @@ export class GameLandmarkRuntime {
         ?.transitLoad?.stops || [];
       this.vectorMap.setSpoilerNames([
         ...streetFeatures, ...waterFeatures, ...bridgeFeatures, ...transitStops,
+        // A bridge's official spelling is an answer too.
+        ...bridgeFeatures.map(bridge => ({ name: bridge.displayName })),
       ].map(item => (item as { name?: string }).name || '').filter(Boolean));
       this.vectorMap.setPlaces(features, boundaries);
 

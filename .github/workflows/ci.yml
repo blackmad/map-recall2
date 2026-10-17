@@ -5,9 +5,12 @@ on:
   push:
     branches: [main]
 
+# On main a run in progress finishes (GitHub keeps one pending run, the newest push): with several sessions pushing
+# more often than a run takes (~8 min), cancel-in-progress meant no main run completed and the Pages deploy, which
+# waits for a green run, was skipped for hours (2026-10-17). Pull requests still cancel superseded runs.
 concurrency:
   group: canal-ci-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   check-canal:
