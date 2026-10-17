@@ -561,6 +561,15 @@ export interface FrontIntent {
   gridAt?: {from: number; to: number};
   /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
   dormerAt?: {from: number; to: number}[];
+  /**
+   * Measured dormer size and place on the slope: the sill `sill` (m, 0.05..2) over the eaves line, the dormer's height `rise`
+   * (0.6..2.5) and its front's `setback` (0.05..2) behind the facade, instead of the style default (sill 0.05 m, setback
+   * 0.35 m, height 1.45 m; flat 1.8 m). On a low-pitched roof the default sill sits under the roof plane at the setback and
+   * the roof cuts through the dormer frame; a raised sill needs the front set back to where the slope reaches it
+   * (Gorontalostraat 25-45: dormers 13.7-15.2 m over a 12.7 m eaves; Molukkenstraat 35-53: 13.05-13.9 m over 12.8 m).
+   * Not on a mansard. Absent = byte-identical.
+   */
+  dormerSize?: {sill: number; rise: number; setback: number};
   /** A hoist cap on some dormers (`DormerCapIntent`). */
   dormerCap?: DormerCapIntent;
 }
@@ -1447,6 +1456,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     const list = Array.isArray(f.dormerAt) ? f.dormerAt : [];
     if (list.length !== (f.dormers ?? 0)) problems.push(`${at}.dormerAt: one span per dormer (dormers ${f.dormers ?? 0})`);
     list.forEach((d, i) => { if (!d || !(d.from >= 0 && d.to <= 1 && d.to - d.from >= 0.1 && (i === 0 || d.from >= list[i - 1].to))) problems.push(`${at}.dormerAt[${i}]: {from, to} ascending, non-overlapping fractions of the front within 0..1, at least 0.1 wide`); });
+  }
+  if (f.dormerSize !== undefined) {
+    const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};
+    if (!f.dormers) problems.push(`${at}.dormerSize: only with dormers`);
+    else if (f.roofFront === 'mansard') problems.push(`${at}.dormerSize: not on a mansard (its dormers stand on the roof face)`);
+    else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['sill', 'rise', 'setback'].includes(k)) || !(typeof z.sill === 'number' && z.sill >= 0.05 && z.sill <= 2) || !(typeof z.rise === 'number' && z.rise >= 0.6 && z.rise <= 2.5) || !(typeof z.setback === 'number' && z.setback >= 0.05 && z.setback <= 2)) problems.push(`${at}.dormerSize: {sill 0.05..2 m over the eaves, rise (dormer height) 0.6..2.5 m, setback 0.05..2 m behind the facade}`);
   }
   return problems;
 }

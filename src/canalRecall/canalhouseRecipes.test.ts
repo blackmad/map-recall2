@@ -827,3 +827,25 @@ test('neck entablature: a cornice ledge projects past the neck under a segmental
  e.crown.value.capCornice!.heightM=.8;assert.throws(()=>compileCanalHouseRecipe(r),/Invalid crown cap cornice/);
  e.crown.value.capCornice!.heightM=.25;e.crown.value.capCornice!.bottomM=10.9;assert.throws(()=>compileCanalHouseRecipe(r),/Invalid crown cap cornice/);
 });
+test('bars stand 4 cm over a pane (door leaf or glass) where the frame is deep enough; shallow frames keep their bars inside',()=>{
+ const zMax=(g:T.Group,name:string)=>{let z=-Infinity;g.traverse((o:T.Object3D)=>{if(o instanceof T.Mesh&&o.name===name){o.geometry.computeBoundingBox();z=Math.max(z,o.geometry.boundingBox!.max.z);}});return z;};
+ const r=fixture();r.elevations[0].openings=m([{id:'door',kind:'door',leftM:1,bottomM:.1,widthM:1.2,heightM:2.4,trimWidthM:.08,verticalBars:[.5],paneSurface:'door',frameSurface:'trim',barSurface:'trim'},{id:'win',kind:'window',leftM:4,bottomM:3,widthM:1.2,heightM:1.6,trimWidthM:.07,verticalBars:[.5]},{id:'cellar',kind:'window',leftM:3,bottomM:.2,widthM:.8,heightM:.6,trimWidthM:.045,frameDepthM:.08,paneOffsetM:.03,verticalBars:[.5]}]);
+ const {group}=compileCanalHouseRecipe(r);
+ const names:string[]=[];group.traverse((o:T.Object3D)=>{if(o instanceof T.Mesh&&/(door|win|cellar)\/(bar|pane|frame)$/.test(o.name))names.push(o.name);});
+ const named=(id:string,part:string)=>names.find(n=>n.endsWith(`${id}/${part}`))!;
+ // Gorontalostraat 25-45 (2026-10-17): 3 cm sat in the audit's 2-3 cm band that bleeds through at distance.
+ for(const id of ['door','win'])assert.ok(Math.abs(zMax(group,named(id,'bar'))-zMax(group,named(id,'pane'))-.04)<1e-6,`${id} bar over pane`);
+ for(const id of ['door','win'])assert.ok(zMax(group,named(id,'bar'))<zMax(group,named(id,'frame')),`${id} bar inside the frame depth`);
+ // An 8 cm frame has no room: its bar stays where it was (4 cm over a pane set back 3 cm).
+ assert.ok(Math.abs(zMax(group,named('cellar','bar'))-zMax(group,named('cellar','pane'))-.04)<1e-6);
+});
+test('a flat dormer roof is an upward sheet 6 cm over the wall tops on a slab, not a sheet in their plane',()=>{
+ const r=fixture();r.elevations[0].crown=undefined;r.elevations[0].dormers=m([{id:'flat',leftM:1,widthM:1.6,bottomM:8,heightM:1.4,depthM:1.2,roofRiseM:0,verticalBars:[.5]}]);
+ const {group}=compileCanalHouseRecipe(r);
+ const box=(name:string)=>{let b:T.Box3|undefined;group.traverse((o:T.Object3D)=>{if(o instanceof T.Mesh&&o.name===name){o.geometry.computeBoundingBox();b=o.geometry.boundingBox!;}});return b!;};
+ const wall=box('dormer/flat/left-wall'),roof=box('dormer/flat/roof'),slab=box('dormer/flat/roof-slab');
+ assert.ok(Math.abs(roof.min.y-wall.max.y-.06)<1e-6&&Math.abs(roof.max.y-roof.min.y)<1e-9,`roof sheet ${roof.min.y} over wall top ${wall.max.y}`);
+ assert.ok(Math.abs(slab.min.y-wall.max.y)<1e-6&&slab.max.y<roof.min.y);
+ // 3 cm proud at the front: the fascia board.
+ assert.ok(Math.abs(slab.max.z-roof.max.z)<1e-6&&roof.max.z>wall.max.z);
+});

@@ -25,6 +25,7 @@
   "windows": "casement-pair",
   "storeyWindows": {"0": "casement-toplight", "3": "casement-toplight"},
   "windowShare": 0.46,
+  "storeyWindowWidths": {"3": 0.94},
   "storeyRibbons": {"1": {"from": 0.147, "to": 0.853, "pier": 0.36}, "2": {"from": 0.147, "to": 0.853, "pier": 0.36}},
   "storeyHeights": [3.4, 3.0, 3.0, 2.5],
   "windowHeights": [0.44, 0.59, 0.59, 0.61],
@@ -37,6 +38,7 @@
    "eavesOverhang": {"projection": 0.9, "fascia": 0.3, "colour": "#e6e8e2", "soffit": "#c9ccc4"},
    "dormers": 1,
    "dormerStyle": "flat",
+   "dormerSize": {"sill": 1.0, "rise": 1.4, "setback": 1.6},
    "note": "the deep white overhang at 12.0-12.7 m; one flat-roofed dormer (blue-grey boards, two-light window) per house on the low tile roof behind it"
   }
  },
