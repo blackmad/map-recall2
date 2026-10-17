@@ -76,8 +76,8 @@ test('measured walls bypass the brick clamp: cell mean x tint lands on the autho
   // The clamp would have lifted the dark wall to L 0.3 and tanned the pale one; measured does neither.
   assert.ok(L(cityWallTint('#3a2a28')) >= 0.3 - 1e-9 && afterCell(cityTint('brick', '#3a2a28', 'measured')) < 0.25);
   assert.ok(L(cityWallTint('#d8d2c4')) <= 0.6 + 1e-9 && afterCell(cityTint('brick', '#d8d2c4', 'measured')) > 0.75);
-  // Only brick/accent (and glass and painted stone, their own tests) are touched; every other slot ignores the source.
-  for (const slot of ['stucco', 'frame', 'door', 'paint', 'roofTile', 'slate', 'bitumen'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
+  // Only brick/accent (and glass, painted stone and the flat roof, their own tests) are touched; every other slot ignores the source.
+  for (const slot of ['stucco', 'frame', 'door', 'paint', 'roofTile', 'slate'] as const) assert.equal(cityTint(slot, '#8a7656', 'measured'), cityTint(slot, '#8a7656'), slot);
   // Below L 0.18 the floor holds.
   assert.ok(afterCell(cityTint('brick', '#0a0808', 'measured')) >= 0.17);
 });
@@ -123,4 +123,10 @@ test('measured stone (painted white stucco dressings) keeps its paint: cell mean
     assert.equal(cityTint('stone', hex), cityStoneTint(hex), 'unmeasured: the sandstone mix');
   }
   assert.ok(isMeasuredTint('stone', 'measured') && !isMeasuredTint('stone', null));
+});
+
+test('a measured flat roof (roof-facts colour) is kept by the city tint; unmeasured flat roofs keep their prior', () => {
+  assert.ok(isMeasuredTint('bitumen', 'measured') && !isMeasuredTint('bitumen', null));
+  for (const hex of ['#87898d', '#56585e', '#d9d9d3']) assert.equal(cityTint('bitumen', hex, 'measured'), hex);
+  assert.ok(FLAT_ROOF_GREYS.includes(cityTint('bitumen', '#6a6c6c')), 'unmeasured: one of the flat-roof priors');
 });

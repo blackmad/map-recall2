@@ -122,7 +122,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#e3e3e1"
  },
  "palette": {
   "brick": "#a89070",
@@ -147,6 +148,7 @@
   "Re-fit 2026-10-14 (kit vocabulary lane) from w01-231: walls[0] is a glazed-hall, a tan-grey brick base to 0.4 of the eaves (photo 0.40) under one glass skin to the eaves with a mullion grid of 26 lights per structural bay (0.64 m; photo 0.63 m) and 6 rows (photo 6, about 1.03 m), structural posts every 16.6 m (photo about 15.1 m: 4 bays over 66.6 m), dark grey-blue glass #46545c (photo raw #596b74 with the sky reflected; darkened to the dark band the user reads) and a pale tan plinth #a2937e (photo raw #5c5347 under overcast, x1.75 by the light metal door panel). The APOLLOHAL letters on the base and the roof-edge louvres are not drawn.",
   "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #5e605e not used (not darker than the wall #5f5950 by 10 L*, or tinted): kit glass kept.",
   "Reconciled 2026-10-14 (lane A measurement on lane C's systems): `hand` holds every group's system and walls[0]'s and walls[3]'s bay counts (lane C's choice); walls[1]'s 2 bays are measured (lane C kept the original 3; the photo w04-321L shows two bays). walls[0] stays lane C's hand sample from w01-231 (2017): the 2024 crop of that flank is NO EVIDENCE (foliage 32 %), so its brick #a2937e and glass #46545c remain hand-sampled measured values (hand palette.brick, palette.glass). walls[0] is a glazed hall: a measured windowShape is meaningless there (no punched windows; the hall's lights and rows are the shape), so none is written. walls[1]: wall #5f5950 measured (grey-brown, not lane C's orange #9a5a44); its measured shape 0.40 x 1.00 (\"glazed columns\") was rejected on review: the annex is a glazed shopfront under a blank panel beside brick with a ribbon clerestory, not full-height columns, so the wide preset is kept (hand windowShape).",
-  "Kit gap: walls[1] mixes bays of different systems on one front (glazed shopfront under a blank screen panel | brick with a clerestory ribbon); the kit has one system per group. walls[0] APOLLOHAL letters on the base and the roof-edge louvres; walls[2] the curved glass roof edge."
+  "Kit gap: walls[1] mixes bays of different systems on one front (glazed shopfront under a blank screen panel | brick with a clerestory ribbon); the kit has one system per group. walls[0] APOLLOHAL letters on the base and the roof-edge louvres; walls[2] the curved glass roof edge.",
+  "roof.flatHex #e3e3e1: the PDOK orthophoto's reading of this pand (roof-facts 14/8414/5386: slot white-membrane, rgb 230/230/230, confidence 0.6; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }

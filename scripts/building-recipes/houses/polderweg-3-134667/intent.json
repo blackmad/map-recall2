@@ -99,7 +99,8 @@
  ],
  "otherWalls": "blank",
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "flatHex": "#898c89"
  },
  "palette": {
   "brick": "#c9c3b4",
@@ -112,6 +113,7 @@
  "notes": [
   "Polderweg 3 (BAG pand 0363100012134667, built 1999, 136 3DBAG wall surfaces, 70 m long, roof max 23.4 m): a campus building in Watergraafsmeer. Three fronts are photographed: the south front (w02-161 2021-05-28 and w07-161 2019-05-23), a four-storey bar with white concrete balcony fascias, continuous strip windows with metal rails and a glazed recessed ground storey (the piloti ground); and the north-west side (w01-317 and w04-317, 2020-09-10, oblique at 53 degrees) where a timber-clad sports hall with a curved roof, steel arch ribs and a glazed ground band meets the bar. The partly hidden lettering on the hall (w04-317) reads only 'orth...' and is not used.",
   "walls[0] = panels 60 and 12 (S, 68.5 m and 23.5 m, eaves 14.8): the 4-storey front drawn as ribbon windows over a glazed ground with balcony runs on storeys 1-3 (bars). walls[1] = panels 58 and 7 (S, eaves 20.5, ground 14.8): the set-back top floor, one storey of ribbon glazing. walls[2] = panels 29 and 30 (NW, 75.7 m and 36.8 m, eaves 5.9-16.3): the timber hall wall, a glazed ground band under a closed timber storey. Simplified: the white balcony slabs are one slab and rail per storey run, the steel ribs of the hall and the lamp are not modelled, the curved roof is the 3DBAG roof.",
-  "Not drawn: the north front of the bar (panels 14, 31, 82, no panorama within 35 m), the east hall front (panel 15 end) and the south-east wing, which stay blank wall."
+  "Not drawn: the north front of the bar (panels 14, 31, 82, no panorama within 35 m), the east hall front (panel 15 end) and the south-east wing, which stay blank wall.",
+  "roof.flatHex #898c89: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5385: slot slate, rgb 148/148/140, confidence 0.9; roof-flat.ts), the colour the city drew it in before the install."
  ]
 }
