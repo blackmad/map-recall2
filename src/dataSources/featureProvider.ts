@@ -1,3 +1,4 @@
+import { mapQuestSite } from '../mapQuestSite';
 import { AdministrativeArea, FeatureCategory, LoadingProgress, LocationScope, PlacePhoto, StreetFeature } from '../types';
 import { calculateHaversineDistanceMeters } from '../utils/geo';
 import { fetchCategorySpecificOSMFeatures } from '../utils/osm';
@@ -55,7 +56,7 @@ const areaPhotoPromises = new Map<string, Promise<Record<string, Array<{ title: 
 const placePhotoPromises = new Map<string, Promise<Record<string, PlacePhoto>>>();
 const hintReferencePromises = new Map<string, Promise<HintReference[]>>();
 
-const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
+const assetUrl = (path: string) => `${mapQuestSite.data}extracts/${path}`;
 
 /** Optional trivia files: a missing one means fewer facts, never a failed quiz. */
 const optionalJson = <T>(path: string): Promise<T | null> => fetch(assetUrl(path))
