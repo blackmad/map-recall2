@@ -85,7 +85,7 @@ test('a pin opens the 3D viewer, download and report', async ({ page, request })
   await expect(download).toContainText(/Download GLB · \d+ KB/);
   const head = await request.head(new URL('models/westerkerk.glb', page.url()).href);
   expect(head.status()).toBe(200);
-  await expect(page.locator('.licence')).toContainText('CC BY 4.0, derived from 3DBAG/BAG/OSM; see credits.html');
+  await expect(page.locator('.licence')).toContainText('Built from 3DBAG (CC BY 4.0), BAG and OpenStreetMap (ODbL) data; see credits.html');
 
   await page.waitForTimeout(600);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/explore-${test.info().project.name}-panel.png` });
