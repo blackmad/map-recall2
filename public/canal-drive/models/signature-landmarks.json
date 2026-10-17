@@ -1147,24 +1147,24 @@
         "bronze": "#2c3835"
       },
       "attribution": {
-        "title": "Teun de Jager - original low-poly reconstruction",
-        "author": "Map Recall; after the 1958 statue by Jan Bronner",
-        "sourceUrl": "https://www.openstreetmap.org/node/5653694042",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly figure and plinth from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+        "title": "Teun de Jager (Vondelpark) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Jan Bronner (1958); figure reconstructed from photographs by Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(02).jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2019 Teun de Jager (02).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(02).jpg); \"2019 Teun de Jager (03).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(03).jpg); \"2019 Teun de Jager (04).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(04).jpg); \"2019 Teun de Jager (05).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2019_Teun_de_Jager_(05).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/teun-de-jager.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.4357823431491852,
+          -0.4065285921096802,
           -1.1920929132713809e-8,
-          -0.4357823431491852
+          -0.3820820450782776
         ],
         "max": [
-          0.4357823431491852,
-          2.990000009536743,
-          0.4357823431491852
+          0.3851166069507599,
+          2.9899771213531494,
+          0.42143091559410095
         ]
       },
       "placement": {
@@ -1178,14 +1178,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 0.8715646862983704,
-        "heightMetres": 2.9900000214576723,
-        "depthMetres": 0.8715646862983704,
-        "depthCoverage": 1.245092408997672
+        "widthMetres": 0.8035129606723785,
+        "heightMetres": 2.9899771332740785,
+        "depthMetres": 0.7916451990604401,
+        "depthCoverage": 1.1309217129434859
       },
-      "triangles": 582,
-      "bytes": 9204,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6012,
+      "bytes": 39556,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e75a89af6d620770",
+        "buildVersion": 2,
+        "bytes": 24920,
+        "triangles": 1080
+      }
     },
     "westerkerk": {
       "id": "westerkerk",
@@ -1243,7 +1249,7 @@
       "bounds": {
         "min": [
           -30.662643432617188,
-          -1.3732910986163915e-7,
+          -1.9073486612342094e-7,
           -18.91600799560547
         ],
         "max": [
@@ -1264,18 +1270,18 @@
       },
       "extent": {
         "widthMetres": 62.75692367553711,
-        "heightMetres": 87.00000013732911,
+        "heightMetres": 87.00000019073487,
         "depthMetres": 33.65139579772949,
         "depthCoverage": 0.7762337337772733
       },
-      "triangles": 19883,
-      "bytes": 234440,
+      "triangles": 30574,
+      "bytes": 340192,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "c0fc848649680324",
+        "sourceHash": "29cc7723458acc71",
         "buildVersion": 2,
-        "bytes": 70244,
-        "triangles": 3457
+        "bytes": 88112,
+        "triangles": 4797
       }
     },
     "bimhuis-in-amsterdam-the-netherlands": {
@@ -2752,16 +2758,17 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
+      "bagYear": 1899,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -40.17490005493164,
-          0,
-          -18.550453186035156
+          -3.814697322468419e-7,
+          -18.93045425415039
         ],
         "max": [
           40.17490005493164,
-          37.9849967956543,
+          38.099998474121094,
           20.50172233581543
         ]
       },
@@ -2777,18 +2784,18 @@
       },
       "extent": {
         "widthMetres": 80.34980010986328,
-        "heightMetres": 37.9849967956543,
-        "depthMetres": 39.052175521850586,
-        "depthCoverage": 1.068066064678131
+        "heightMetres": 38.099998855590826,
+        "depthMetres": 39.43217658996582,
+        "depthCoverage": 1.078458987478763
       },
-      "triangles": 26300,
-      "bytes": 277776,
+      "triangles": 23852,
+      "bytes": 254276,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ddd4641379f24f7d",
+        "sourceHash": "62aa346d9154e7fd",
         "buildVersion": 2,
-        "bytes": 80024,
-        "triangles": 4292
+        "bytes": 73444,
+        "triangles": 3896
       }
     },
     "felix-meritis": {
@@ -7067,23 +7074,23 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "attribution": {
-        "title": "De Dokwerker — original faceted interpretation",
-        "author": "Map Recall; commemorated sculpture by Mari Andriessen",
-        "sourceUrl": "https://www.4en5mei.nl/oorlogsmonumenten/zoeken/1434/amsterdam-de-dokwerker",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free geometric silhouette with documented1.60m pedestal and2.60m standing figure; body/pose divisions and facing approximate. Exact node position. No surrounding buildings or plaza replaced."
+        "title": "De Dokwerker - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Mari Andriessen (1952); figure reconstructed from photographs by A.A.W.J. Rietman, Bert Verhoeff for Anefo, Joop van Bilsen for Anefo",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Amsterdam, De dokwerker 07.JPG\" by A.A.W.J. Rietman (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG); \"Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg\" by Bert Verhoeff for Anefo (CC0, https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_vlag_halfstok_bij_dokwerken,_Bestanddeelnr_925-4107.jpg); \"Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg\" by Joop van Bilsen for Anefo (CC0, https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_Jonas_Daniel_Meijerplein_Na_de_kranslegging_,_Bestanddeelnr_916-0908.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/de-dokwerker.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.7129079699516296,
+          -0.574999988079071,
           -1.1920929132713809e-8,
           -0.550000011920929
         ],
         "max": [
-          0.7129079699516296,
-          4.127633094787598,
+          0.6745800375938416,
+          4.127557754516602,
           0.5899999737739563
         ]
       },
@@ -7098,14 +7105,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.4258159399032593,
-        "heightMetres": 4.127633106708527,
+        "widthMetres": 1.2495800256729126,
+        "heightMetres": 4.127557766437531,
         "depthMetres": 1.1399999856948853,
         "depthCoverage": 0.949999988079071
       },
-      "triangles": 516,
-      "bytes": 11000,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6228,
+      "bytes": 36620,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2358cce2579ce451",
+        "buildVersion": 2,
+        "bytes": 37888,
+        "triangles": 1808
+      }
     },
     "westermoskee": {
       "id": "westermoskee",
@@ -47671,12 +47684,12 @@
         "copper": "#4a524c"
       },
       "attribution": {
-        "title": "Rembrandtmonument - original low-poly interpretation",
-        "author": "Map Recall; commemorated sculpture by Louis Royer (1852)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free geometric figure and terrace. Pose and costume from the Rijksmuseum print RP-P-1933-342 (CC0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the panoramas. No pixels or third-party meshes imported."
+        "title": "Rembrandtmonument - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Louis Royer (1852); figure reconstructed from photographs by Elekes Andor, Yair Haklai, Владимир Шеляпин, Julien Chatelain from Paris, France",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rembrandtplein_(11).jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Rembrandtplein (11).jpg\" by Elekes Andor (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Rembrandtplein_(11).jpg); \"Louis Royer-Rembrandt-Amsterdam.jpg\" by Yair Haklai (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Louis_Royer-Rembrandt-Amsterdam.jpg); \"Rembrandt.JPG\" by Владимир Шеляпин (CC0, https://commons.wikimedia.org/wiki/File:Rembrandt.JPG); \"Rembrandt (42707741651).jpg\" by Julien Chatelain from Paris, France (CC BY-SA 2.0, https://commons.wikimedia.org/wiki/File:Rembrandt_(42707741651).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/rembrandtmonument.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -47687,7 +47700,7 @@
         ],
         "max": [
           5.650000095367432,
-          6.588562965393066,
+          6.588854789733887,
           11.242998123168945
         ]
       },
@@ -47703,18 +47716,18 @@
       },
       "extent": {
         "widthMetres": 16.892998218536377,
-        "heightMetres": 6.588562965393066,
+        "heightMetres": 6.588854789733887,
         "depthMetres": 14.642998218536377,
         "depthCoverage": 2.153382090961232
       },
-      "triangles": 8142,
-      "bytes": 95524,
+      "triangles": 13730,
+      "bytes": 122408,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "789043ca1e977063",
+        "sourceHash": "25a9f7d133328b2a",
         "buildVersion": 2,
-        "bytes": 37992,
-        "triangles": 1672
+        "bytes": 58820,
+        "triangles": 2855
       }
     },
     "vondelmonument": {
@@ -47751,12 +47764,12 @@
         "dark": "#2c2e30"
       },
       "attribution": {
-        "title": "Vondelmonument - original low-poly interpretation",
-        "author": "Map Recall; commemorated sculpture by Louis Royer (1867)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_Vondelpark_monument_of_Joost_van_den_Vondel.jpg",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free geometric figures, pedestal and kerb. Proportions and pose from Gemeente Amsterdam panoramas (CC BY 4.0), Commons photograph by Dguendel (CC BY 4.0) and Rijksmuseum RP-F-F01187-BS (CC0); dimensions estimated. No pixels or third-party meshes imported."
+        "title": "Vondelmonument - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Louis Royer (statue); P.J.H. Cuypers (pedestal) (1867); figure reconstructed from photographs by Wikifrits, Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_joost_van_den_vondel.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Amsterdam kunstwerk joost van den vondel.jpg\" by Wikifrits (CC0, https://commons.wikimedia.org/wiki/File:Amsterdam_kunstwerk_joost_van_den_vondel.jpg); \"Vondelbeeld in 2019 (24).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(24).jpg); \"Vondelbeeld in 2019 (26).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(26).jpg); \"Vondelbeeld in 2019 (28).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(28).jpg); \"Vondelbeeld in 2019 (29).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vondelbeeld_in_2019_(29).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/vondelmonument.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -47767,7 +47780,7 @@
         ],
         "max": [
           6.21539306640625,
-          7.1599626541137695,
+          7.159729480743408,
           6.21539306640625
         ]
       },
@@ -47783,18 +47796,18 @@
       },
       "extent": {
         "widthMetres": 12.4307861328125,
-        "heightMetres": 7.1599626541137695,
+        "heightMetres": 7.159729480743408,
         "depthMetres": 12.4307861328125,
         "depthCoverage": 0.927670606926306
       },
-      "triangles": 4392,
-      "bytes": 65972,
+      "triangles": 13938,
+      "bytes": 106336,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6ac87d4c2310cfcf",
+        "sourceHash": "5f88f48d99715441",
         "buildVersion": 2,
-        "bytes": 37856,
-        "triangles": 1794
+        "bytes": 78292,
+        "triangles": 4094
       }
     },
     "begijnhof": {
@@ -48868,23 +48881,23 @@
         "gold": "#a38d4d"
       },
       "attribution": {
-        "title": "Ruiterstandbeeld Wilhelmina - original low-poly reconstruction",
-        "author": "Map Recall; commemorated sculpture by Theresia van der Pant (1960)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Equestrian_statue_of_Wilhelmina,_Rokin_(Amsterdam)",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly figure and pedestal. Pose and proportions from RCE photographs by Loek Tangel (CC BY-SA 4.0), a FaceMePLS photograph (CC BY 2.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+        "title": "Ruiterstandbeeld Wilhelmina - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Theresia van der Pant (1972); figure reconstructed from photographs by Stephencdickson, Gouwenaar, Pēteris",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Queen_Wilhelmina_of_the_Netherlands,_Amsterdam.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Statue of Queen Wilhelmina of the Netherlands, Amsterdam.jpg\" by Stephencdickson (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Statue_of_Queen_Wilhelmina_of_the_Netherlands,_Amsterdam.jpg); \"Wilhelmina Rokin door Theresia van der Pant.jpg\" by Gouwenaar (CC0, https://commons.wikimedia.org/wiki/File:Wilhelmina_Rokin_door_Theresia_van_der_Pant.jpg); \"File by Peteris P1170742 (3666927469).jpg\" by Pēteris (CC BY 2.0, https://commons.wikimedia.org/wiki/File:File_by_Peteris_P1170742_(3666927469).jpg); \"Wilhelmina2 Rokin door Theresia van der Pant.jpg\" by Gouwenaar (CC0, https://commons.wikimedia.org/wiki/File:Wilhelmina2_Rokin_door_Theresia_van_der_Pant.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/wilhelmina-ruiterstandbeeld.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -1.960498571395874,
+          -2.2301621437072754,
           0,
           -1.3812718391418457
         ],
         "max": [
-          1.960498571395874,
-          7.929999828338623,
+          2.178628444671631,
+          7.9301276206970215,
           1.3812718391418457
         ]
       },
@@ -48899,19 +48912,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 3.920997142791748,
-        "heightMetres": 7.929999828338623,
+        "widthMetres": 4.408790588378906,
+        "heightMetres": 7.9301276206970215,
         "depthMetres": 2.7625436782836914,
         "depthCoverage": 0.9866227422441756
       },
-      "triangles": 3716,
-      "bytes": 53436,
+      "triangles": 8254,
+      "bytes": 79856,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ce5ceee85bd19387",
+        "sourceHash": "f25096f25e831407",
         "buildVersion": 2,
-        "bytes": 27580,
-        "triangles": 1206
+        "bytes": 34660,
+        "triangles": 1526
       }
     },
     "sarphatimonument": {
@@ -48952,12 +48965,12 @@
         "dark": "#1f2326"
       },
       "attribution": {
-        "title": "Sarphatimonument - original low-poly reconstruction",
-        "author": "Map Recall; commemorated monument of 1886 (bust by Jacques de Braekeleer)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Sarphati_monument",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly monument. Layout and proportions measured from Commons photographs by Ceescamel (CC BY-SA 4.0) and SanderK (CC BY-SA 2.5); no pixels or third-party meshes imported."
+        "title": "Sarphatimonument - reconstruction from photographs",
+        "author": "Map Recall; sculpture by J.Th. Stracké (bust); J. Gosschalk (monument) (1886); figure reconstructed from photographs by Huegette D. Eldering, Alf van Beem, Wikifrits",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sarpahti_monument.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"Sarpahti monument.jpg\" by Huegette D. Eldering (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Sarpahti_monument.jpg); \"Sarphatipark pic5.JPG\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Sarphatipark_pic5.JPG); \"Amsterdam monument samuel sarphati.jpg\" by Wikifrits (CC0, https://commons.wikimedia.org/wiki/File:Amsterdam_monument_samuel_sarphati.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/sarphatimonument.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -48988,14 +49001,14 @@
         "depthMetres": 23.299999237060547,
         "depthCoverage": 0.896153816810021
       },
-      "triangles": 13632,
-      "bytes": 149352,
+      "triangles": 19350,
+      "bytes": 183720,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2ebf7005547722f2",
+        "sourceHash": "68d73896c3a5ffb2",
         "buildVersion": 2,
-        "bytes": 63920,
-        "triangles": 3215
+        "bytes": 71200,
+        "triangles": 3783
       }
     },
     "thorbecke-standbeeld": {
@@ -49033,12 +49046,12 @@
         "dark": "#1c1f22"
       },
       "attribution": {
-        "title": "Thorbecke statue - original low-poly reconstruction",
-        "author": "Map Recall; commemorated sculpture by Ferdinand Leenhoff (1876)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Statue_of_Johan_Rudolph_Thorbecke,_Amsterdam",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly figure, pedestal and railing. Pose and costume from Commons photographs (public domain; CC BY-SA 3.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+        "title": "Thorbecke statue - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Ferdinand Leenhoff (1876); figure reconstructed from photographs by Brbbl, Phyzome, Gerard Dukker",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thorbecke_statue_Amsterdam.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Thorbecke statue Amsterdam.jpg\" by Brbbl (uploader; no Artist field) (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Thorbecke_statue_Amsterdam.jpg); \"Thorbecke statue - amsterdam nl.jpg\" by Phyzome (uploader; no Artist field) (Public domain, https://commons.wikimedia.org/wiki/File:Thorbecke_statue_-_amsterdam_nl.jpg); \"Exterieur OVERZICHT - Amsterdam - 20292626 - RCE.jpg\" by Gerard Dukker (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Exterieur_OVERZICHT_-_Amsterdam_-_20292626_-_RCE.jpg); \"Eind, overzicht - Amsterdam - 20021118 - RCE.jpg\" by Gerard Dukker (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Eind,_overzicht_-_Amsterdam_-_20021118_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/thorbecke-standbeeld.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -49049,7 +49062,7 @@
         ],
         "max": [
           3.396538734436035,
-          6.050000190734863,
+          6.0501885414123535,
           3.3982317447662354
         ]
       },
@@ -49065,18 +49078,18 @@
       },
       "extent": {
         "widthMetres": 6.798949241638184,
-        "heightMetres": 6.050000194311142,
+        "heightMetres": 6.050188544988632,
         "depthMetres": 6.797973155975342,
         "depthCoverage": 1.1329955259958904
       },
-      "triangles": 6316,
-      "bytes": 83024,
+      "triangles": 11396,
+      "bytes": 102912,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "41535bb315fa8feb",
+        "sourceHash": "099d46093ba4a47d",
         "buildVersion": 2,
-        "bytes": 31568,
-        "triangles": 1478
+        "bytes": 55528,
+        "triangles": 2746
       }
     },
     "multatuli-standbeeld": {
@@ -49113,12 +49126,12 @@
         "white": "#d8d0bc"
       },
       "attribution": {
-        "title": "Multatuli statue - original low-poly reconstruction",
-        "author": "Map Recall; commemorated bust by Hans Bayens (1987)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Multatuli_statue,_Torensluis,_Amsterdam",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly bust and granite block. Form and proportions from Commons photographs (FaceMePLS CC BY 2.0; Paul van Galen / RCE CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+        "title": "Multatuli statue (Torensluis) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Hans Bayens (1987); figure reconstructed from photographs by Vysotsky, Brbbl, Paul van Galen",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam32.JPG",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Amsterdam32.JPG\" by Vysotsky (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Amsterdam32.JPG); \"Multatuli Hans Bayens Torensluis Amsterdam.jpg\" by Brbbl (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Multatuli_Hans_Bayens_Torensluis_Amsterdam.jpg); \"Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536117 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_(buste_door_Hans_Bayens,_1987)_-_Amsterdam_-_20536117_-_RCE.jpg); \"Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_(buste_door_Hans_Bayens,_1987)_-_Amsterdam_-_20536116_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/multatuli-standbeeld.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -49129,7 +49142,7 @@
         ],
         "max": [
           1.2048423290252686,
-          3.0450000762939453,
+          3.04498291015625,
           0.8803784251213074
         ]
       },
@@ -49145,13 +49158,19 @@
       },
       "extent": {
         "widthMetres": 2.409684658050537,
-        "heightMetres": 3.0450000753998756,
+        "heightMetres": 3.0449829092621803,
         "depthMetres": 1.7607568502426147,
         "depthCoverage": 0.9781982501347859
       },
-      "triangles": 1408,
-      "bytes": 18464,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6346,
+      "bytes": 49668,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "525e790cde684c79",
+        "buildVersion": 2,
+        "bytes": 26008,
+        "triangles": 1028
+      }
     },
     "lieverdje": {
       "id": "lieverdje",
@@ -49186,12 +49205,12 @@
         "greyBrick": "#6e706f"
       },
       "attribution": {
-        "title": "Het Lieverdje - original low-poly reconstruction",
-        "author": "Map Recall; commemorated sculpture by Carel Kneulman (1960)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Het_Lieverdje",
+        "title": "Het Lieverdje (Spui) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Carel Kneulman (1960); figure reconstructed from photographs by Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(D).jpg",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly figure and column. Pose and costume from Commons photographs (Anefo CC0, FaceMePLS CC BY 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2024 Lieverdje, Amsterdam (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(D).jpg); \"2024 Lieverdje, Amsterdam (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(E).jpg); \"2024 Lieverdje, Amsterdam (G).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(G).jpg); \"2024 Lieverdje, Amsterdam (F).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(F).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/lieverdje.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -49202,7 +49221,7 @@
         ],
         "max": [
           0.6830127239227295,
-          2.6660983562469482,
+          2.666057586669922,
           0.6830127239227295
         ]
       },
@@ -49218,13 +49237,19 @@
       },
       "extent": {
         "widthMetres": 1.366025447845459,
-        "heightMetres": 2.6660983569920065,
+        "heightMetres": 2.66605758741498,
         "depthMetres": 1.366025447845459,
         "depthCoverage": 0.9757324627467565
       },
-      "triangles": 636,
-      "bytes": 11024,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 6060,
+      "bytes": 41708,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f7a9c22f444051bc",
+        "buildVersion": 2,
+        "bytes": 22580,
+        "triangles": 942
+      }
     },
     "anne-frank-merwedeplein": {
       "id": "anne-frank-merwedeplein",
@@ -49263,12 +49288,12 @@
         "white": "#e2dccb"
       },
       "attribution": {
-        "title": "Anne Frank statue, Merwedeplein - original low-poly reconstruction",
-        "author": "Map Recall; commemorated sculpture by Mari Andriessen (1977)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Anne_Frank_statue,_Merwedeplein,_Amsterdam",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly figure and granite block. Pose, coat and bags from Commons photographs (CC BY-SA 4.0, 3.0, 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+        "title": "Anne Frank statue (Merwedeplein) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Jet Schepp (2005); figure reconstructed from photographs by Christian Michelides, Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_03.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Anne Frank-Denkmal Amsterdam 03.jpg\" by Christian Michelides (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_03.jpg); \"Anne Frank 2019, Merwedeplein (3).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank_2019,_Merwedeplein_(3).jpg); \"Anne Frank 2019, Merwedeplein (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank_2019,_Merwedeplein_(1).jpg); \"Anne Frank-Denkmal Amsterdam 02.jpg\" by Christian Michelides (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_02.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/anne-frank-merwedeplein.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -49279,7 +49304,7 @@
         ],
         "max": [
           0.6408563852310181,
-          2.9784774780273438,
+          2.9785025119781494,
           0.6408563852310181
         ]
       },
@@ -49295,13 +49320,19 @@
       },
       "extent": {
         "widthMetres": 1.2817127704620361,
-        "heightMetres": 2.9784774773567912,
+        "heightMetres": 2.978502511307597,
         "depthMetres": 1.2817127704620361,
         "depthCoverage": 0.9155091217585973
       },
-      "triangles": 2396,
-      "bytes": 35696,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 7034,
+      "bytes": 53248,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "5e2a5a2077afe355",
+        "buildVersion": 2,
+        "bytes": 35116,
+        "triangles": 1606
+      }
     },
     "walraven-van-hall": {
       "id": "walraven-van-hall",
@@ -51758,12 +51789,12 @@
         "greyBrick": "#4f504f"
       },
       "attribution": {
-        "title": "Johnny Jordaanplein group - original low-poly reconstruction",
-        "author": "Map Recall; after the bronzes by Kees Verkade (Tante Leen, Johnny Jordaan) and Rob Cerneus (Johnny Meijer) on the plein of 1990",
-        "sourceUrl": "https://www.openstreetmap.org/node/1704741755",
-        "modifications": "Original texture-free low-poly figures, busts, plinths and bench built from Commons photographs: Statues in Johnny Jordaanplein 01-03 (HJ Mitchell, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Statues_in_Johnny_Jordaanplein_03.jpg) and 2024 Johnny Jordaanplein ... (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        "title": "Johnny Jordaanplein groep (Johnny Jordaan, Tante Leen, Johnny Meijer) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Kees Verkade (Johnny Jordaan, Tante Leen); others per the plaques (Manke Nelis, Johnny Meijer, Mien and Jan Froger, signed 'Dominic 2010') (1991); figure reconstructed from photographs by Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg",
         "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "licenceUrl": "./LICENSE",
+        "modifications": "Figures reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"2024 Johnny Jordaanplein, Asd-Manke Nelis (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Manke Nelis (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Manke Nelis (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Manke_Nelis_(E).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (B).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(B).jpg); \"2024 Johnny Jordaanplein, Asd-Tante leen (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Tante_leen_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (B).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(B).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Jordaan (E).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Jordaan_(E).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(D).jpg); \"2024 Johnny Jordaanplein, Asd-Johnny Meijer (F).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Johnny_Meijer_(F).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(A).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(C).jpg); \"2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2024_Johnny_Jordaanplein,_Asd-Mien_en_Jan_Froger_(D).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/johnny-jordaan-groep.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -51774,7 +51805,7 @@
         ],
         "max": [
           4.181951999664307,
-          2.9475505352020264,
+          2.9477200508117676,
           4.112924098968506
         ]
       },
@@ -51790,18 +51821,18 @@
       },
       "extent": {
         "widthMetres": 7.849419593811035,
-        "heightMetres": 2.9475505471229555,
+        "heightMetres": 2.9477200627326967,
         "depthMetres": 5.156344294548035,
         "depthCoverage": 1.1209444118582685
       },
-      "triangles": 14306,
-      "bytes": 134044,
+      "triangles": 37394,
+      "bytes": 198096,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d1d0e32949f7736b",
+        "sourceHash": "8a8093a144c3965a",
         "buildVersion": 2,
-        "bytes": 46468,
-        "triangles": 2231
+        "bytes": 99688,
+        "triangles": 5452
       }
     },
     "theo-thijssen-standbeeld": {
@@ -51837,23 +51868,23 @@
         "concrete": "#7f8283"
       },
       "attribution": {
-        "title": "Theo Thijssen monument - original low-poly reconstruction",
-        "author": "Map Recall; after the 1960 monument by Hans Bayens",
-        "sourceUrl": "https://www.openstreetmap.org/node/250624675",
-        "modifications": "Original texture-free low-poly man, boy, desk and block built from Commons photographs: Lindengracht, Theo Thijssen beeld foto 1 (Alf van Beem, public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg) and 2023 Theo Thijssen door Bayens (Ceescamel, CC0). No pixels or third-party meshes imported.",
+        "title": "Theo Thijssen monument (Lindengracht) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Hans Bayens (1960); figure reconstructed from photographs by Alf van Beem, Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg",
         "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "licenceUrl": "./LICENSE",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Lindengracht, Theo Thijssen beeld foto 1.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_1.jpg); \"Lindengracht, Theo Thijssen beeld foto 2.jpg\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Lindengracht,_Theo_Thijssen_beeld_foto_2.jpg); \"2023 Theo Thijssen door Bayens, Asd (3).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(3).jpg); \"2023 Theo Thijssen door Bayens, Asd (2).jpg\" by Ceescamel (CC0, https://commons.wikimedia.org/wiki/File:2023_Theo_Thijssen_door_Bayens,_Asd_(2).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/theo-thijssen-standbeeld.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -0.800000011920929,
           -1.1920929132713809e-8,
-          -0.8453311920166016
+          -0.9137009978294373
         ],
         "max": [
           0.800000011920929,
-          2.6798200607299805,
+          2.6802101135253906,
           0.6000000238418579
         ]
       },
@@ -51869,18 +51900,18 @@
       },
       "extent": {
         "widthMetres": 1.600000023841858,
-        "heightMetres": 2.6798200726509096,
-        "depthMetres": 1.4453312158584595,
-        "depthCoverage": 1.1117932429680457
+        "heightMetres": 2.6802101254463198,
+        "depthMetres": 1.5137010216712952,
+        "depthCoverage": 1.1643854012856116
       },
-      "triangles": 4936,
-      "bytes": 57684,
+      "triangles": 8890,
+      "bytes": 64272,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6faf541ad5ec9cef",
+        "sourceHash": "ddac9403630d4828",
         "buildVersion": 2,
-        "bytes": 27932,
-        "triangles": 1314
+        "bytes": 56352,
+        "triangles": 2732
       }
     },
     "carmiggelt-borstbeeld": {
@@ -51916,12 +51947,12 @@
         "greyBrick": "#4b4c4c"
       },
       "attribution": {
-        "title": "Simon Carmiggelt bust - original low-poly reconstruction",
-        "author": "Map Recall; after the 1988 bust by Kees Verkade",
-        "sourceUrl": "https://www.openstreetmap.org/node/440673918",
-        "modifications": "Original texture-free low-poly bust and pillar built from Anefo photographs (Rob Croes / Anefo, CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg). No pixels or third-party meshes imported.",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "title": "Simon Carmiggelt bust (Weteringplantsoen) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Kees Verkade (1988); figure reconstructed from photographs by Ceescamel, Rob Croes / Anefo",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Simon Carmiggeltbeeld.jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6,_Bestanddeelnr_934-3460.jpg); \"Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg\" by Rob Croes / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam_Ton_van_Duinhoven_en,_Bestanddeelnr_934-3461.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/carmiggelt-borstbeeld.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -51932,7 +51963,7 @@
         ],
         "max": [
           0.39614737033843994,
-          1.965000033378601,
+          1.964961051940918,
           0.39614737033843994
         ]
       },
@@ -51948,13 +51979,19 @@
       },
       "extent": {
         "widthMetres": 0.7922947406768799,
-        "heightMetres": 1.9650000095367428,
+        "heightMetres": 1.9649610280990597,
         "depthMetres": 0.7922947406768799,
         "depthCoverage": 1.3204912344614665
       },
-      "triangles": 1208,
-      "bytes": 13852,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 8698,
+      "bytes": 45972,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a9f3fbc991ba4591",
+        "buildVersion": 2,
+        "bytes": 37788,
+        "triangles": 1802
+      }
     },
     "winkler-prins-monument": {
       "id": "winkler-prins-monument",
@@ -52036,8 +52073,6 @@
     },
     "kinderbrug-meisje-eekhoorns": {
       "id": "kinderbrug-meisje-eekhoorns",
-      "status": "held",
-      "heldReason": "Figure-kit statue: blobby ellipsoid figures on a brown pier (user, What's new review 2026-10-17: \"a little rough\"; the figure kit was stopped for statues on 2026-10-14). The brick pier exists only in this GLB, so bridge 420 shows no pier while held. Waits for a route-B (TripoSR/TRELLIS.2) group on a kit pier or the user's call.",
       "name": "Kinderbrug: Girl with squirrels (Hildo Krop)",
       "landmarkId": "osm_artwork_4370460330",
       "modelUrl": "./models/kinderbrug-meisje-eekhoorns.glb",
@@ -52068,24 +52103,24 @@
         "brick": "#8f4c3b"
       },
       "attribution": {
-        "title": "Kinderbrug: Girl with squirrels (Hildo Krop) - original low-poly reconstruction",
-        "author": "Map Recall; after the group by Hildo Krop on bridge 420",
-        "sourceUrl": "https://www.openstreetmap.org/node/4370460330",
-        "modifications": "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "title": "Kinderbrug: Girl with squirrels (Hildo Krop) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Hildo Krop (1931); figure reconstructed from photographs by Alf van Beem, Paul van Galen",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brug_420_Kinderbrug_pic_7.JPG",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"Brug 420 Kinderbrug pic 7.JPG\" by Alf van Beem (Public domain, https://commons.wikimedia.org/wiki/File:Brug_420_Kinderbrug_pic_7.JPG); \"Brug over Boerenwetering tussen Muzenplein en Churchilllaan - Amsterdam - 20011025 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_tussen_Muzenplein_en_Churchilllaan_-_Amsterdam_-_20011025_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/kinderbrug-meisje-eekhoorns.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.7181138396263123,
+          -0.675000011920929,
           4.7683716530855236e-8,
-          -0.574999988079071
+          -0.6523568034172058
         ],
         "max": [
           0.675000011920929,
-          3.4600000381469727,
-          0.574999988079071
+          3.459995746612549,
+          0.7063568234443665
         ]
       },
       "placement": {
@@ -52099,20 +52134,23 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.3931138515472412,
-        "heightMetres": 3.459999990463256,
-        "depthMetres": 1.149999976158142,
-        "depthCoverage": 0.9583333134651184
+        "widthMetres": 1.3587136268615723,
+        "heightMetres": 3.4599956989288323,
+        "depthMetres": 1.350000023841858,
+        "depthCoverage": 1.125000019868215
       },
-      "triangles": 2766,
-      "bytes": 26628,
+      "triangles": 6034,
+      "bytes": 42448,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "d37201221a696b1d",
+        "buildVersion": 2,
+        "bytes": 25424,
+        "triangles": 1164
+      }
     },
     "kinderbrug-jongen-konijnen": {
       "id": "kinderbrug-jongen-konijnen",
-      "status": "held",
-      "heldReason": "Figure-kit statue: blobby ellipsoid figures on a brown pier (user, What's new review 2026-10-17: \"a little rough\"; the figure kit was stopped for statues on 2026-10-14). The brick pier exists only in this GLB, so bridge 420 shows no pier while held. Waits for a route-B (TripoSR/TRELLIS.2) group on a kit pier or the user's call.",
       "name": "Kinderbrug: Boy with rabbits (Hildo Krop)",
       "landmarkId": "osm_artwork_4370459609",
       "modelUrl": "./models/kinderbrug-jongen-konijnen.glb",
@@ -52143,24 +52181,24 @@
         "brick": "#8f4c3b"
       },
       "attribution": {
-        "title": "Kinderbrug: Boy with rabbits (Hildo Krop) - original low-poly reconstruction",
-        "author": "Map Recall; after the group by Hildo Krop on bridge 420",
-        "sourceUrl": "https://www.openstreetmap.org/node/4370459609",
-        "modifications": "Original texture-free low-poly pier and group built from Commons photographs: Brug 420 Kinderbrug pic 7 and Jongen met konijnen, beeld op de Kinder(tjes)brug (Alf van Beem, public domain), Brug over Boerenwetering (Beeld van Jongen met konijnen) and Beeld door hildo krop. Kinderbrug (Marcelmulder68, CC BY-SA 3.0 nl). No pixels or third-party meshes imported.",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "title": "Kinderbrug: Boy with rabbits (Hildo Krop) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Hildo Krop (1931); figure reconstructed from photographs by Paul van Galen",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TripoSR single-view) from Wikimedia Commons photographs: \"Brug over Boerenwetering beeldhouwwerk tussen Churchilllaan en Muzenplein - Amsterdam - 20011022 - RCE.jpg\" by Paul van Galen (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Brug_over_Boerenwetering_beeldhouwwerk_tussen_Churchilllaan_en_Muzenplein_-_Amsterdam_-_20011022_-_RCE.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/kinderbrug-jongen-konijnen.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -0.675000011920929,
           4.7683716530855236e-8,
-          -0.574999988079071
+          -0.650513231754303
         ],
         "max": [
           0.675000011920929,
-          3.4600000381469727,
-          0.574999988079071
+          3.459995746612549,
+          0.710513174533844
         ]
       },
       "placement": {
@@ -52174,15 +52212,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.350000023841858,
-        "heightMetres": 3.459999990463256,
-        "depthMetres": 1.149999976158142,
-        "depthCoverage": 0.9583333134651184
+        "widthMetres": 1.361026406288147,
+        "heightMetres": 3.4599956989288323,
+        "depthMetres": 1.350000023841858,
+        "depthCoverage": 1.125000019868215
       },
-      "triangles": 1472,
-      "bytes": 15812,
+      "triangles": 6034,
+      "bytes": 42376,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "93e98bd5315de9da",
+        "buildVersion": 2,
+        "bytes": 23204,
+        "triangles": 1040
+      }
     },
     "gandhi-churchill-laan": {
       "id": "gandhi-churchill-laan",
@@ -52221,12 +52264,12 @@
         "frame": "#8f8a7f"
       },
       "attribution": {
-        "title": "Gandhi statue (Churchill-laan) - original low-poly reconstruction",
-        "author": "Map Recall; after the Gandhi statue on the Churchill-laan median",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(5).jpg",
-        "modifications": "Original texture-free low-poly figure, plinth, paving, benches and hedge built from Commons photographs: Gandhi (Amsterdam) 1-5 (Ceescamel, CC BY-SA 4.0), Statue of Gandhi, Amsterdam (Antony Antony, CC BY 2.0), Gandhi churchilllaan (Evanherk, CC BY-SA 3.0). No pixels or third-party meshes imported.",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "title": "Mahatma Gandhi statue (Churchill-laan) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Gautam Pal (1990); figure reconstructed from photographs by Antony Antony, Ceescamel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi,_Amsterdam.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Statue of Gandhi, Amsterdam.jpg\" by Antony Antony (CC BY 2.0, https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi,_Amsterdam.jpg); \"Gandhi (Amsterdam) (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(1).jpg); \"Gandhi (Amsterdam) (2).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(2).jpg); \"Gandhi (Amsterdam) (3).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(3).jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/gandhi-churchill-laan.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -52237,7 +52280,7 @@
         ],
         "max": [
           3.4000000953674316,
-          3.200000047683716,
+          3.1995837688446045,
           4.492386817932129
         ]
       },
@@ -52253,18 +52296,18 @@
       },
       "extent": {
         "widthMetres": 8.984773635864258,
-        "heightMetres": 3.200000047683716,
+        "heightMetres": 3.1995837688446045,
         "depthMetres": 7.900000095367432,
         "depthCoverage": 0.8977272835644808
       },
-      "triangles": 5432,
-      "bytes": 62476,
+      "triangles": 9695,
+      "bytes": 84588,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "42c051d7754d99f5",
+        "sourceHash": "339181a31e96abad",
         "buildVersion": 2,
-        "bytes": 38504,
-        "triangles": 1830
+        "bytes": 40740,
+        "triangles": 1951
       }
     },
     "de-schreeuw-oosterpark": {
@@ -52533,12 +52576,12 @@
         "white": "#efe9db"
       },
       "attribution": {
-        "title": "Spanjemonument - original low-poly reconstruction",
-        "author": "Map Recall; after the Spanjemonument in Amsterdam-Noord",
+        "title": "Spanjemonument (Amsterdam-Noord) - reconstruction from photographs",
+        "author": "Map Recall; sculpture by Eddy Roos (1986); figure reconstructed from photographs by Eddy Roos, Ceescamel, Roland Gerrits / Anefo",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spanje_monument_groot.jpg",
-        "modifications": "Original texture-free low-poly steel ribbon, flying figures, paving and wall built from Commons photographs: 2021 Spanjemonument beeld 1-3 and plaquette 1 (Ceescamel, CC BY-SA 4.0) and Spanje monument groot (Eddy Roos, CC BY-SA 4.0). No pixels or third-party meshes imported.",
-        "licence": "Original project asset",
-        "licenceUrl": "./LICENSE"
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "modifications": "Figure reconstructed (TRELLIS.2 multi-view) from Wikimedia Commons photographs: \"Spanje monument groot.jpg\" by Eddy Roos (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Spanje_monument_groot.jpg); \"2021 Spanjemonument-beeld (4).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(4).jpg); \"2021 Spanjemonument-beeld (1).jpg\" by Ceescamel (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(1).jpg); \"Opdracht Tendenzen Spanje-Monument, Bestanddeelnr 933-6767.jpg\" by Roland Gerrits / Anefo (CC0, https://commons.wikimedia.org/wiki/File:Opdracht_Tendenzen_Spanje-Monument,_Bestanddeelnr_933-6767.jpg). Decimated to about 6,000 triangles per figure in the kit's material, no photo colour; plinth, pier and setting are the original low-poly kit model. Provenance: scripts/sculptures/rebuild-sources/spanjemonument.json."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -52549,7 +52592,7 @@
         ],
         "max": [
           2.99928617477417,
-          6.143473148345947,
+          6.143855571746826,
           3.4309003353118896
         ]
       },
@@ -52565,18 +52608,18 @@
       },
       "extent": {
         "widthMetres": 7.123937606811523,
-        "heightMetres": 6.143473150134087,
+        "heightMetres": 6.143855573534966,
         "depthMetres": 6.43018651008606,
         "depthCoverage": 0.45929903643471853
       },
-      "triangles": 4880,
-      "bytes": 53704,
+      "triangles": 7864,
+      "bytes": 68320,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5dce32739bc8cd46",
+        "sourceHash": "cfe7909241c5b93b",
         "buildVersion": 2,
-        "bytes": 35636,
-        "triangles": 1531
+        "bytes": 29824,
+        "triangles": 1203
       }
     },
     "motorkade-1": {
@@ -53129,6 +53172,470 @@
         "bytes": 37028,
         "triangles": 1430
       }
+    },
+    "europarking-marnixstraat": {
+      "id": "europarking-marnixstraat",
+      "category": "ordinary",
+      "name": "Europarking, Marnixstraat car park, with the Waterkant",
+      "modelUrl": "./models/europarking-marnixstraat.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012185422",
+        "NL.IMBAG.Pand.0363100012243632",
+        "NL.IMBAG.Pand.0363100012243633",
+        "NL.IMBAG.Pand.0363100012243634",
+        "NL.IMBAG.Pand.0363100012245310"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87610787,
+          52.36981887
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 82.5,
+        "widthMetres": 80.4
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.87610787,
+          52.36981887
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG footprint of 0363100012185422 (RD); BAG footprints of the car park and the four undercroft pands in native east/south metres (scripts/landmarks/europarking-prepare.ts). Band levels measured on rectified Gemeente Amsterdam panorama crops (scripts/landmarks/europarking-marnixstraat-inventory.json)."
+      },
+      "heightMetres": 22,
+      "materialOverrides": {
+        "white": "#ece6d9",
+        "stone": "#dcdbd3",
+        "dark": "#2b2b2c",
+        "slate": "#5f605c",
+        "concrete": "#b3b1a9",
+        "glass": "#6f7d82",
+        "frame": "#3b4246",
+        "blue": "#3a6db0",
+        "pink": "#3f8c84",
+        "green": "#2fc46c",
+        "red": "#c8413a",
+        "bronze": "#6b5845",
+        "copper": "#4b8a9c"
+      },
+      "attribution": {
+        "title": "Europarking (Parkeergarage Marnixstraat) and the Waterkant",
+        "author": "Map Recall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Europarking_Marnixstraat.jpg",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) of the car park and its undercroft pands: two banded ramp drums and the deck block swept from a measured band section (openDeckStack.ts), the Waterkant pavilion, its sign and terrace. Band levels from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA 4.0 / CC BY 2.0) read for proportion only; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8758584,
+              52.36990971
+            ],
+            [
+              4.87585934,
+              52.36989758
+            ],
+            [
+              4.87586311,
+              52.36988565
+            ],
+            [
+              4.87586968,
+              52.3698742
+            ],
+            [
+              4.87587889,
+              52.36986343
+            ],
+            [
+              4.87589055,
+              52.36985361
+            ],
+            [
+              4.87590439,
+              52.36984491
+            ],
+            [
+              4.87592016,
+              52.36983754
+            ],
+            [
+              4.87593751,
+              52.36983164
+            ],
+            [
+              4.87595607,
+              52.36982734
+            ],
+            [
+              4.87597544,
+              52.36982473
+            ],
+            [
+              4.87599524,
+              52.36982387
+            ],
+            [
+              4.87601503,
+              52.36982476
+            ],
+            [
+              4.87601607,
+              52.36982327
+            ],
+            [
+              4.87600269,
+              52.36981595
+            ],
+            [
+              4.875991,
+              52.36980762
+            ],
+            [
+              4.87598118,
+              52.36979841
+            ],
+            [
+              4.87597344,
+              52.3697885
+            ],
+            [
+              4.87596789,
+              52.36977805
+            ],
+            [
+              4.87596769,
+              52.36977759
+            ],
+            [
+              4.87596413,
+              52.36976432
+            ],
+            [
+              4.87596409,
+              52.36975086
+            ],
+            [
+              4.87596758,
+              52.36973757
+            ],
+            [
+              4.87597451,
+              52.36972481
+            ],
+            [
+              4.8759847,
+              52.36971289
+            ],
+            [
+              4.87599788,
+              52.36970212
+            ],
+            [
+              4.87601373,
+              52.3696928
+            ],
+            [
+              4.8760318,
+              52.36968515
+            ],
+            [
+              4.87603254,
+              52.3696849
+            ],
+            [
+              4.87605034,
+              52.36967969
+            ],
+            [
+              4.87606917,
+              52.3696761
+            ],
+            [
+              4.87608865,
+              52.36967422
+            ],
+            [
+              4.87610837,
+              52.36967408
+            ],
+            [
+              4.87612793,
+              52.36967568
+            ],
+            [
+              4.87614691,
+              52.36967897
+            ],
+            [
+              4.87616489,
+              52.36968392
+            ],
+            [
+              4.87618153,
+              52.3696904
+            ],
+            [
+              4.87619647,
+              52.36969829
+            ],
+            [
+              4.87620941,
+              52.3697074
+            ],
+            [
+              4.87622005,
+              52.36971756
+            ],
+            [
+              4.87622819,
+              52.36972856
+            ],
+            [
+              4.87623367,
+              52.36974016
+            ],
+            [
+              4.87623634,
+              52.36975213
+            ],
+            [
+              4.87623618,
+              52.3697642
+            ],
+            [
+              4.87623317,
+              52.36977613
+            ],
+            [
+              4.87623211,
+              52.36977879
+            ],
+            [
+              4.8762309,
+              52.36978143
+            ],
+            [
+              4.87622954,
+              52.36978404
+            ],
+            [
+              4.87622803,
+              52.36978662
+            ],
+            [
+              4.87622637,
+              52.36978917
+            ],
+            [
+              4.8762253,
+              52.3697908
+            ],
+            [
+              4.87622319,
+              52.36979465
+            ],
+            [
+              4.87622191,
+              52.36979865
+            ],
+            [
+              4.87622148,
+              52.3698027
+            ],
+            [
+              4.87622191,
+              52.36980676
+            ],
+            [
+              4.87622317,
+              52.36981075
+            ],
+            [
+              4.87622568,
+              52.36981521
+            ],
+            [
+              4.87622754,
+              52.36981758
+            ],
+            [
+              4.87622928,
+              52.36981942
+            ],
+            [
+              4.87655344,
+              52.3693542
+            ],
+            [
+              4.87707488,
+              52.36949062
+            ],
+            [
+              4.87703199,
+              52.36955217
+            ],
+            [
+              4.87702082,
+              52.3695682
+            ],
+            [
+              4.8766661,
+              52.37007729
+            ],
+            [
+              4.87614455,
+              52.36994114
+            ],
+            [
+              4.87615751,
+              52.36992253
+            ],
+            [
+              4.87614941,
+              52.36992278
+            ],
+            [
+              4.87614164,
+              52.3699242
+            ],
+            [
+              4.87613464,
+              52.36992671
+            ],
+            [
+              4.87612883,
+              52.36993017
+            ],
+            [
+              4.87612452,
+              52.36993437
+            ],
+            [
+              4.8761199,
+              52.36994161
+            ],
+            [
+              4.8761142,
+              52.36994855
+            ],
+            [
+              4.87610747,
+              52.36995513
+            ],
+            [
+              4.87609978,
+              52.3699613
+            ],
+            [
+              4.87609118,
+              52.36996702
+            ],
+            [
+              4.8760761,
+              52.3699749
+            ],
+            [
+              4.87605931,
+              52.36998138
+            ],
+            [
+              4.87604117,
+              52.36998629
+            ],
+            [
+              4.87602204,
+              52.36998955
+            ],
+            [
+              4.87600236,
+              52.36999108
+            ],
+            [
+              4.87598253,
+              52.36999085
+            ],
+            [
+              4.87596295,
+              52.36998886
+            ],
+            [
+              4.87594405,
+              52.36998516
+            ],
+            [
+              4.87592623,
+              52.36997982
+            ],
+            [
+              4.87590984,
+              52.36997296
+            ],
+            [
+              4.87589527,
+              52.36996472
+            ],
+            [
+              4.8758828,
+              52.36995528
+            ],
+            [
+              4.87587268,
+              52.36994483
+            ],
+            [
+              4.87586516,
+              52.36993359
+            ],
+            [
+              4.87586036,
+              52.3699218
+            ],
+            [
+              4.8758584,
+              52.36990971
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -16.91900062561035,
+          -4.7683716530855236e-8,
+          -28.483999252319336
+        ],
+        "max": [
+          65.5999984741211,
+          22,
+          51.915000915527344
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87610787,
+          52.36981887
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 82.51899909973145,
+        "heightMetres": 22.000000047683717,
+        "depthMetres": 80.39900016784668,
+        "depthCoverage": 0.9999875642766999
+      },
+      "triangles": 28488,
+      "bytes": 409668,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
