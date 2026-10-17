@@ -757,7 +757,23 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Explorer looks: Rivierenbuurt/Spaarndammer/Indische types lack kit
     thumbs (rerun `scripts/coverage/build-look-thumbs.ts`); design kit keys
     are thin; rerun `build:explorer-looks` after coverage/chunk/index regen.
-  - Recipe tiles cover only Nieuw-West + the Bilderdijkstraat pilot: compile
+  - **Owner setup (not code):** (1) `bash scripts/setup-sentry.sh` → secrets
+    SENTRY_DSN, SENTRY_DSN_MAP_QUEST, SENTRY_AUTH_TOKEN; (2) reCAPTCHA
+    Enterprise key (`gcloud recaptcha keys create …`, docs/MONITORING.md) →
+    secret APPCHECK_SITE_KEY, register both web apps in Firebase App Check
+    (monitor first, enforce Firestore after a week of clean metrics);
+    (3) canalrecall.blackmad.com DNS points at 45.63.21.43, not Firebase —
+    re-add the records from Hosting → custom domain (deploy "verify live"
+    step fails until then), optionally edumap.blackmad.com; (4) Auth →
+    authorized domains include canalrecall.blackmad.com; (5) real Google
+    sign-in test across /ride, /quiz/, /progress; (6) buy a .amsterdam domain
+    (ride.amsterdam / canalrecall.amsterdam; Gandi or Namecheap).
+  - Decisions pending: clarity finding 16 (HUD names the start street);
+    whether this session or integrator-f5 runs the recipe-tile compile pass
+    (district libraries + stale pilots, width quantisation) and step 4 (mid
+    tier, then the `recipeTiles` default); Bellamybuurt next types
+    (Hasebroek 21–37, Wenslauer 1930s) + kit gaps + 21 holds.
+ + the Bilderdijkstraat pilot: compile
     the district type libraries/faces with `compile-recipes.ts`, review,
     publish, rerun `build:explorer-looks` (looks switch to live by
     themselves); then step 4 and the `recipeTiles` default. Phone: the
