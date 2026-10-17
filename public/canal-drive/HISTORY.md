@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Clarity polish, tours keep your settings, Buildings in the switch (2026-10-17)
+
+Clarity findings 10–15 fixed (each pinned in `tests/e2e/clarity-polish.spec.ts`;
+review doc marks commits): the zoom badge only follows a player zoom; the
+phone More cue has its own row; More options scrolls into view; "No idea"
+gives its slot to a draining "Riding on" line; arrival drops Recall % (it
+repeated the canal count) and desktop gets **M = Route setup** on the arrival
+card (M no longer doubles as Next route there); How to play groups keys into
+Ride / Answer / View with debug keys behind "Developer keys". Tours snapshot
+the travel mode, city and route they override, never persist the tour's
+values, and restore the player's own on leaving. The site switch gains
+Buildings (/explore); under 430 px the five items stack icon over label.
+
 ## Share this route and a lighter first load (2026-10-17)
 
 "Share this route" on the arrival/pause cards and My progress uses the share
