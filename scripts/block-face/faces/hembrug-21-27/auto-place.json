@@ -1,0 +1,151 @@
+{
+ "face": "hembrug-21-27",
+ "street": "Hembrugstraat",
+ "library": "spaarndammerbuurt",
+ "stripDate": "2022-12-14",
+ "seconds": 2.02,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "hembrug-21-27",
+   "pands": [
+    "0363100012139242",
+    "0363100012081333"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012139242",
+   "address": "Hembrugstraat 21",
+   "builtYear": 1933,
+   "widthM": 12.59,
+   "eavesM": 14.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#795a4f",
+    "wallRaw": "#5c4940",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 100,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 0.87,
+      "topWidthM": 1.93,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.07,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "spaarndammer-1933-stair-ladder",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "spaarndammer-1933-stair-ladder",
+    "measuredPalette": {
+     "brick": "#795a4f",
+     "evidence": "strip 2022-12-14 span 0-503: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012081333",
+   "address": "Hembrugstraat 25",
+   "builtYear": 1933,
+   "widthM": 12.64,
+   "eavesM": 14.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f493d",
+    "wallRaw": "#615044",
+    "skyline": {
+     "eavesM": 15.78,
+     "eavesRow": 105,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.5,
+      "riseM": 0.75,
+      "topWidthM": 2.5,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.036,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.67,
+       "widthM": 1.07,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "spaarndammer-1933-stair-ladder",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "spaarndammer-1933-stair-ladder",
+    "measuredPalette": {
+     "brick": "#5f493d",
+     "evidence": "strip 2022-12-14 span 503-1008: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

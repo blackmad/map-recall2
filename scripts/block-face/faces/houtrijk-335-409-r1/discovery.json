@@ -1,0 +1,676 @@
+{
+ "street": "Houtrijkstraat",
+ "seed": "0363100012082941",
+ "members": [
+  "0363100012113918",
+  "0363100012099132"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of houtrijk-335-409: 069936 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012145950 29.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062059",
+   "reason": "frontage 74.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012066643",
+   "reason": "frontage 38.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012068236",
+   "reason": "frontage 40.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012071140",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012072676",
+   "reason": "frontage 86.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012074107",
+   "reason": "frontage 35.3 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012075084",
+   "reason": "frontage 90.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012075725",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012075860",
+   "reason": "frontage 74.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012079013",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012152129"
+  },
+  {
+   "pandId": "0363100012081333",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012082072",
+   "reason": "frontage 91.1 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012082119",
+   "reason": "frontage 34.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012083852",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012084164",
+   "reason": "frontage 91.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012084343",
+   "reason": "frontage 68.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012084821",
+   "reason": "frontage 50.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012086871",
+   "reason": "frontage 117.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012087149",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012087668",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012090336",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012092078",
+   "reason": "frontage 35.3 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012095236",
+   "reason": "frontage 44.8 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012096276",
+   "reason": "frontage 38.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012100580",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012079013"
+  },
+  {
+   "pandId": "0363100012101945",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012136307"
+  },
+  {
+   "pandId": "0363100012101946",
+   "reason": "frontage 40.8 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012102822",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012104089",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012104770",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012106430",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012112136",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012143580"
+  },
+  {
+   "pandId": "0363100012116998",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012145950"
+  },
+  {
+   "pandId": "0363100012118062",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012118245",
+   "reason": "frontage 59.1 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012118304",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012123840",
+   "reason": "frontage 42.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012124377",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012125074",
+   "reason": "frontage 38.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012127236",
+   "reason": "frontage 90.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012129108",
+   "reason": "frontage 82.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012131460",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012132207",
+   "reason": "frontage 46.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012133080",
+   "reason": "frontage 62.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012133368",
+   "reason": "frontage 65.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012133437",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012094301"
+  },
+  {
+   "pandId": "0363100012139242",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012141325",
+   "reason": "frontage 125.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012142112",
+   "reason": "frontage 37.9 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012142984",
+   "reason": "frontage 32.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012144157",
+   "reason": "frontage 91.3 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012145428",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012147064",
+   "reason": "frontage 34.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012147151",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012147600",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012094301"
+  },
+  {
+   "pandId": "0363100012149627",
+   "reason": "frontage 36.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012151399",
+   "reason": "frontage 37.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012151701",
+   "reason": "frontage 62.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012152722",
+   "reason": "frontage 39.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012153710",
+   "reason": "frontage 46.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012155087",
+   "reason": "frontage 89.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012155312",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012157531"
+  },
+  {
+   "pandId": "0363100012155677",
+   "reason": "frontage 47.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012155810",
+   "reason": "frontage 37.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012156301",
+   "reason": "frontage 37.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012156903",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012135194"
+  },
+  {
+   "pandId": "0363100012159153",
+   "reason": "frontage 43.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012160526",
+   "reason": "frontage 32.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012161333",
+   "reason": "frontage 40.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012161452",
+   "reason": "frontage 42.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012161608",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012107076"
+  },
+  {
+   "pandId": "0363100012161751",
+   "reason": "frontage 32.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012161965",
+   "reason": "frontage 61.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012162126",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012135194"
+  },
+  {
+   "pandId": "0363100012163529",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012155312"
+  },
+  {
+   "pandId": "0363100012164619",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012155312"
+  },
+  {
+   "pandId": "0363100012164772",
+   "reason": "frontage 48.9 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012165909",
+   "reason": "frontage 60.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012166161",
+   "reason": "frontage 40.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012167134",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012155312"
+  },
+  {
+   "pandId": "0363100012167298",
+   "reason": "frontage 37.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012184029",
+   "reason": "frontage 34.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012185008",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012072402"
+  },
+  {
+   "pandId": "0363100012185009",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012072402"
+  },
+  {
+   "pandId": "0363100012186106",
+   "reason": "frontage 79.9 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012186805",
+   "reason": "frontage 80.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012189940",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012113918"
+  },
+  {
+   "pandId": "0363100012189941",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012189942",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012189943",
+   "reason": "frontage 31.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012189944",
+   "reason": "frontage 33.1 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012189945",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012189946",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012113918"
+  },
+  {
+   "pandId": "0363100012189947",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012113918"
+  },
+  {
+   "pandId": "0363100012189948",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012189949",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012113918"
+  },
+  {
+   "pandId": "0363100012189950",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012113918"
+  },
+  {
+   "pandId": "0363100012190043",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012092325"
+  },
+  {
+   "pandId": "0363100012190044",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012092325"
+  },
+  {
+   "pandId": "0363100012191812",
+   "reason": "frontage 52.5 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012191813",
+   "reason": "frontage 50.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012194189",
+   "reason": "frontage 79.9 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012194725",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012106397"
+  },
+  {
+   "pandId": "0363100012194726",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012106397"
+  },
+  {
+   "pandId": "0363100012196742",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012160109"
+  },
+  {
+   "pandId": "0363100012199551",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012082941"
+  },
+  {
+   "pandId": "0363100012199552",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012069936"
+  },
+  {
+   "pandId": "0363100012199553",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012069936"
+  },
+  {
+   "pandId": "0363100012199554",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012069936"
+  },
+  {
+   "pandId": "0363100012199555",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012069936"
+  },
+  {
+   "pandId": "0363100012199556",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012101696"
+  },
+  {
+   "pandId": "0363100012199557",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012082941"
+  },
+  {
+   "pandId": "0363100012199558",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012082941"
+  },
+  {
+   "pandId": "0363100012199559",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012082941"
+  },
+  {
+   "pandId": "0363100012199561",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012101696"
+  },
+  {
+   "pandId": "0363100012199562",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012101696"
+  },
+  {
+   "pandId": "0363100012205940",
+   "reason": "frontage 35.6 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012206008",
+   "reason": "frontage 80.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012207057",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012067414"
+  },
+  {
+   "pandId": "0363100012209493",
+   "reason": "frontage 80.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012212047",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012138541"
+  },
+  {
+   "pandId": "0363100012213930",
+   "reason": "frontage 82.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012216778",
+   "reason": "frontage 80.1 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012220440",
+   "reason": "frontage 80.1 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012222401",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012106397"
+  },
+  {
+   "pandId": "0363100012222402",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012072615"
+  },
+  {
+   "pandId": "0363100012222403",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012072615"
+  },
+  {
+   "pandId": "0363100012222404",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012106397"
+  },
+  {
+   "pandId": "0363100012222405",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012072615"
+  },
+  {
+   "pandId": "0363100012222406",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012072615"
+  },
+  {
+   "pandId": "0363100012224779",
+   "reason": "frontage 79.9 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012226327",
+   "reason": "frontage 77.2 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012226328",
+   "reason": "frontage 82.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012227470",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012136307"
+  },
+  {
+   "pandId": "0363100012227565",
+   "reason": "sightline to Houtrijkstraat crosses 0363100012136307"
+  },
+  {
+   "pandId": "0363100012229611",
+   "reason": "frontage 80.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012231332",
+   "reason": "frontage 79.9 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012233178",
+   "reason": "frontage 80.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012233623",
+   "reason": "frontage 47.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012236797",
+   "reason": "frontage 47.0 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012249762",
+   "reason": "frontage 63.7 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012251649",
+   "reason": "frontage 92.4 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012251650",
+   "reason": "frontage 117.8 m from Houtrijkstraat"
+  },
+  {
+   "pandId": "0363100012063336",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065516",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012067414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072402",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092325",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107076",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125669",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135194",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136307",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138541",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143580",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154377",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157531",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160109",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012113918",
+   "alongM": 52.15,
+   "widthM": 12.52,
+   "eavesM": 13.96,
+   "roofMaxM": 16.46,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099132",
+   "alongM": 66.12,
+   "widthM": 15.42,
+   "eavesM": 13.98,
+   "roofMaxM": 16.41,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "houtrijk-335-409"
+}

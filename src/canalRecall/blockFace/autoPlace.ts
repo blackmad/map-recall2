@@ -51,6 +51,12 @@ export interface TypeMatchRule {
   /** The type is drawn with its house door on this side; a pand whose door reads on the other side is mirrored (pairs). */
   mirrorForDoor?: 'left' | 'right';
   /**
+   * `false`: the strip's wall reading is not the brick, so placed pands keep the type palette (no measuredPalette).
+   * Zaanhof 1919: half of every front is white render over the brick and the 2021 strips are sunlit past the trim
+   * white point (the readings came out #eac495-#fffcd6 for a red-brown brick).
+   */
+  measuredWall?: false;
+  /**
    * Doors pair across the party wall whatever the neighbour's type (`fillPairs`): a pand whose door was not read takes
    * the side that meets a placed neighbour of any type whose door side is known (read, or set by its accent/BAG bay).
    * Rivierenbuurt 1934 portiek rows: a flat front's door meets the door of the erker house beside it.
@@ -286,7 +292,7 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
-  if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
+  if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage && t.match?.measuredWall !== false) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
   const crown = crownFor(t, s.skyline);
   if (crown.name !== Object.keys(t.crowns)[0]) placement.crown = crown.name;
   notes.push(crown.why);

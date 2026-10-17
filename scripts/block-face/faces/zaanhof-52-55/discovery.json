@@ -1,0 +1,591 @@
+{
+ "street": "Zaanhof",
+ "seed": "0363100012127918",
+ "members": [
+  "0363100012127918",
+  "0363100012098344"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012127918 (face continues: 143746 114675 091396)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012135824 24.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061275",
+   "reason": "sightline to Zaanhof crosses 0363100012070692"
+  },
+  {
+   "pandId": "0363100012062857",
+   "reason": "sightline to Zaanhof crosses 0363100012117014"
+  },
+  {
+   "pandId": "0363100012064968",
+   "reason": "sightline to Zaanhof crosses 0363100012075697"
+  },
+  {
+   "pandId": "0363100012066030",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012066126",
+   "reason": "frontage 39.6 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012066411",
+   "reason": "frontage 39.0 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012066473",
+   "reason": "frontage 71.2 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012067376",
+   "reason": "frontage 59.6 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012068007",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012072489",
+   "reason": "frontage 66.4 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012072922",
+   "reason": "frontage 59.7 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012073972",
+   "reason": "frontage 62.7 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012073983",
+   "reason": "frontage 65.8 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012076883",
+   "reason": "frontage 104.0 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012078548",
+   "reason": "frontage 31.6 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012079827",
+   "reason": "sightline to Zaanhof crosses 0363100012101802"
+  },
+  {
+   "pandId": "0363100012080385",
+   "reason": "frontage 63.2 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012082557",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012094665",
+   "reason": "sightline to Zaanhof crosses 0363100012103385"
+  },
+  {
+   "pandId": "0363100012100080",
+   "reason": "frontage 37.4 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012100669",
+   "reason": "frontage 62.6 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012101802",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012103590",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012104008",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012106564",
+   "reason": "sightline to Zaanhof crosses 0363100012065518"
+  },
+  {
+   "pandId": "0363100012107283",
+   "reason": "sightline to Zaanhof crosses 0363100012109995"
+  },
+  {
+   "pandId": "0363100012108079",
+   "reason": "sightline to Zaanhof crosses 0363100012127592"
+  },
+  {
+   "pandId": "0363100012108427",
+   "reason": "frontage 89.8 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012109403",
+   "reason": "frontage 33.3 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012110511",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012110854",
+   "reason": "sightline to Zaanhof crosses 0363100012066030"
+  },
+  {
+   "pandId": "0363100012111401",
+   "reason": "frontage 69.3 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012113246",
+   "reason": "frontage 71.7 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012115849",
+   "reason": "frontage 71.0 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012117014",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012117862",
+   "reason": "sightline to Zaanhof crosses 0363100012101802"
+  },
+  {
+   "pandId": "0363100012119170",
+   "reason": "frontage 33.8 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012126325",
+   "reason": "sightline to Zaanhof crosses 0363100012061939"
+  },
+  {
+   "pandId": "0363100012129132",
+   "reason": "frontage 74.4 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012134665",
+   "reason": "frontage 46.5 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012135902",
+   "reason": "sightline to Zaanhof crosses 0363100012147168"
+  },
+  {
+   "pandId": "0363100012140463",
+   "reason": "sightline to Zaanhof crosses 0363100012101802"
+  },
+  {
+   "pandId": "0363100012142603",
+   "reason": "frontage 38.2 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012142859",
+   "reason": "frontage 32.1 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012143326",
+   "reason": "frontage 77.7 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012144053",
+   "reason": "sightline to Zaanhof crosses 0363100012097562"
+  },
+  {
+   "pandId": "0363100012146365",
+   "reason": "frontage 33.9 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012151489",
+   "reason": "frontage 31.2 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012154861",
+   "reason": "frontage 69.9 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012156813",
+   "reason": "frontage 88.1 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012206305",
+   "reason": "sightline to Zaanhof crosses 0363100012123914"
+  },
+  {
+   "pandId": "0363100012206306",
+   "reason": "sightline to Zaanhof crosses 0363100012065518"
+  },
+  {
+   "pandId": "0363100012206307",
+   "reason": "sightline to Zaanhof crosses 0363100012074829"
+  },
+  {
+   "pandId": "0363100012206308",
+   "reason": "sightline to Zaanhof crosses 0363100012097562"
+  },
+  {
+   "pandId": "0363100012206309",
+   "reason": "sightline to Zaanhof crosses 0363100012109995"
+  },
+  {
+   "pandId": "0363100012206310",
+   "reason": "sightline to Zaanhof crosses 0363100012061939"
+  },
+  {
+   "pandId": "0363100012206311",
+   "reason": "sightline to Zaanhof crosses 0363100012114944"
+  },
+  {
+   "pandId": "0363100012206312",
+   "reason": "sightline to Zaanhof crosses 0363100012147168"
+  },
+  {
+   "pandId": "0363100012206313",
+   "reason": "sightline to Zaanhof crosses 0363100012111405"
+  },
+  {
+   "pandId": "0363100012206314",
+   "reason": "sightline to Zaanhof crosses 0363100012103385"
+  },
+  {
+   "pandId": "0363100012206315",
+   "reason": "sightline to Zaanhof crosses 0363100012107452"
+  },
+  {
+   "pandId": "0363100012206316",
+   "reason": "sightline to Zaanhof crosses 0363100012096324"
+  },
+  {
+   "pandId": "0363100012206317",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012206413",
+   "reason": "sightline to Zaanhof crosses 0363100012141963"
+  },
+  {
+   "pandId": "0363100012206414",
+   "reason": "sightline to Zaanhof crosses 0363100012087177"
+  },
+  {
+   "pandId": "0363100012206417",
+   "reason": "sightline to Zaanhof crosses 0363100012142675"
+  },
+  {
+   "pandId": "0363100012206572",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012217537",
+   "reason": "sightline to Zaanhof crosses 0363100012217538"
+  },
+  {
+   "pandId": "0363100012217538",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012217541",
+   "reason": "sightline to Zaanhof crosses 0363100012217540"
+  },
+  {
+   "pandId": "0363100012217542",
+   "reason": "sightline to Zaanhof crosses 0363100012111330"
+  },
+  {
+   "pandId": "0363100012217543",
+   "reason": "sightline to Zaanhof crosses 0363100012103199"
+  },
+  {
+   "pandId": "0363100012217544",
+   "reason": "sightline to Zaanhof crosses 0363100012082437"
+  },
+  {
+   "pandId": "0363100012217545",
+   "reason": "sightline to Zaanhof crosses 0363100012085115"
+  },
+  {
+   "pandId": "0363100012217546",
+   "reason": "sightline to Zaanhof crosses 0363100012074750"
+  },
+  {
+   "pandId": "0363100012217547",
+   "reason": "sightline to Zaanhof crosses 0363100012080422"
+  },
+  {
+   "pandId": "0363100012217548",
+   "reason": "sightline to Zaanhof crosses 0363100012217540"
+  },
+  {
+   "pandId": "0363100012219484",
+   "reason": "sightline to Zaanhof crosses 0363100012143746"
+  },
+  {
+   "pandId": "0363100012219485",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012219486",
+   "reason": "sightline to Zaanhof crosses 0363100012219485"
+  },
+  {
+   "pandId": "0363100012219487",
+   "reason": "sightline to Zaanhof crosses 0363100012127918"
+  },
+  {
+   "pandId": "0363100012219488",
+   "reason": "sightline to Zaanhof crosses 0363100012114675"
+  },
+  {
+   "pandId": "0363100012219489",
+   "reason": "sightline to Zaanhof crosses 0363100012091396"
+  },
+  {
+   "pandId": "0363100012225942",
+   "reason": "sightline to Zaanhof crosses 0363100012114675"
+  },
+  {
+   "pandId": "0363100012225944",
+   "reason": "sightline to Zaanhof crosses 0363100012091396"
+  },
+  {
+   "pandId": "0363100012225945",
+   "reason": "sightline to Zaanhof crosses 0363100012075697"
+  },
+  {
+   "pandId": "0363100012232006",
+   "reason": "sightline to Zaanhof crosses 0363100012065518"
+  },
+  {
+   "pandId": "0363100012232007",
+   "reason": "sightline to Zaanhof crosses 0363100012065518"
+  },
+  {
+   "pandId": "0363100012232009",
+   "reason": "sightline to Zaanhof crosses 0363100012114944"
+  },
+  {
+   "pandId": "0363100012232010",
+   "reason": "sightline to Zaanhof crosses 0363100012096324"
+  },
+  {
+   "pandId": "0363100012232012",
+   "reason": "sightline to Zaanhof crosses 0363100012107452"
+  },
+  {
+   "pandId": "0363100012232013",
+   "reason": "sightline to Zaanhof crosses 0363100012111405"
+  },
+  {
+   "pandId": "0363100012232016",
+   "reason": "sightline to Zaanhof crosses 0363100012068007"
+  },
+  {
+   "pandId": "0363100012232017",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012232018",
+   "reason": "sightline to Zaanhof crosses 0363100012141963"
+  },
+  {
+   "pandId": "0363100012232022",
+   "reason": "sightline to Zaanhof crosses 0363100012123914"
+  },
+  {
+   "pandId": "0363100012232023",
+   "reason": "sightline to Zaanhof crosses 0363100012087177"
+  },
+  {
+   "pandId": "0363100012233101",
+   "reason": "frontage 93.0 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012233102",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012233105",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012233106",
+   "reason": "frontage 107.8 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012233107",
+   "reason": "no frontage on Zaanhof: No footprint edge faces Zaanhof"
+  },
+  {
+   "pandId": "0363100012233108",
+   "reason": "frontage 79.0 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012233109",
+   "reason": "frontage 78.1 m from Zaanhof"
+  },
+  {
+   "pandId": "0363100012233904",
+   "reason": "sightline to Zaanhof crosses 0363100012103199"
+  },
+  {
+   "pandId": "0363100012233906",
+   "reason": "sightline to Zaanhof crosses 0363100012074750"
+  },
+  {
+   "pandId": "0363100012235208",
+   "reason": "sightline to Zaanhof crosses 0363100012235209"
+  },
+  {
+   "pandId": "0363100012061939",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065518",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012067520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074829",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087177",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097562",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103385",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109995",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111405",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114944",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116456",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117213",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123914",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139891",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141963",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142675",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143789",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146841",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147168",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012217539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012217540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233907",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235209",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012127918",
+   "alongM": 0,
+   "widthM": 5.89,
+   "eavesM": 7.61,
+   "roofMaxM": 11.76,
+   "storeys3dbag": 3,
+   "builtYear": 1919,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012098344",
+   "alongM": 5.93,
+   "widthM": 5.98,
+   "eavesM": 7.63,
+   "roofMaxM": 11.76,
+   "storeys3dbag": 3,
+   "builtYear": 1919,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

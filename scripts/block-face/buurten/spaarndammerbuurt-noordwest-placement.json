@@ -1,0 +1,284 @@
+{
+ "buurt": "spaarndammerbuurt-noordwest",
+ "library": "spaarndammerbuurt",
+ "generatedAt": "2026-10-17T09:51:09.353Z",
+ "seconds": 1.56,
+ "totals": {
+  "faces": 10,
+  "pands": 50,
+  "placed": 37
+ },
+ "faces": [
+  {
+   "face": "hembrug-160-272",
+   "street": "Hembrugstraat",
+   "pands": 8,
+   "placed": 4,
+   "held": 4,
+   "runs": [
+    {
+     "face": "hembrug-160-272-r1",
+     "pands": [
+      "0363100012102874",
+      "0363100012115911",
+      "0363100012125901",
+      "0363100012067159"
+     ]
+    }
+   ],
+   "seconds": 2.61,
+   "byType": {
+    "hembrug-1925-white-attic": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hembrug-44-154",
+   "street": "Hembrugstraat",
+   "pands": 8,
+   "placed": 3,
+   "held": 5,
+   "runs": [
+    {
+     "face": "hembrug-44-154-r1",
+     "pands": [
+      "0363100012110068",
+      "0363100012103688",
+      "0363100012118245"
+     ]
+    }
+   ],
+   "seconds": 2.25,
+   "byType": {
+    "hembrug-1925-white-attic": 3
+   },
+   "holds": {
+    "evidence": 1,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-1-20",
+   "street": "Zaanhof",
+   "pands": 10,
+   "placed": 10,
+   "held": 0,
+   "runs": [
+    {
+     "face": "zaanhof-1-20",
+     "pands": [
+      "0363100012094000",
+      "0363100012146841",
+      "0363100012142675",
+      "0363100012087177",
+      "0363100012123914",
+      "0363100012096324",
+      "0363100012147168",
+      "0363100012111405",
+      "0363100012103385",
+      "0363100012107452"
+     ]
+    }
+   ],
+   "seconds": 0.7,
+   "byType": {
+    "zaanhof-1919-white-gable": 10
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-113-119",
+   "street": "Zaanhof",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.79,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-125-134",
+   "street": "Zaanhof",
+   "pands": 5,
+   "placed": 5,
+   "held": 0,
+   "runs": [
+    {
+     "face": "zaanhof-125-134",
+     "pands": [
+      "0363100012127622",
+      "0363100012139676",
+      "0363100012063074",
+      "0363100012131844",
+      "0363100012109397"
+     ]
+    }
+   ],
+   "seconds": 0.39,
+   "byType": {
+    "zaanhof-1919-white-gable": 5
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-23-34",
+   "street": "Zaanhof",
+   "pands": 6,
+   "placed": 6,
+   "held": 0,
+   "runs": [
+    {
+     "face": "zaanhof-23-34",
+     "pands": [
+      "0363100012114944",
+      "0363100012109995",
+      "0363100012074829",
+      "0363100012065518",
+      "0363100012097562",
+      "0363100012141963"
+     ]
+    }
+   ],
+   "seconds": 0.83,
+   "byType": {
+    "zaanhof-1919-white-gable": 6
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-46-49",
+   "street": "Zaanhof",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.19,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-52-55",
+   "street": "Zaanhof",
+   "pands": 2,
+   "placed": 2,
+   "held": 0,
+   "runs": [
+    {
+     "face": "zaanhof-52-55",
+     "pands": [
+      "0363100012127918",
+      "0363100012098344"
+     ]
+    }
+   ],
+   "seconds": 0.22,
+   "byType": {
+    "zaanhof-1919-white-gable": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-71-78",
+   "street": "Zaanhof",
+   "pands": 4,
+   "placed": 4,
+   "held": 0,
+   "runs": [
+    {
+     "face": "zaanhof-71-78",
+     "pands": [
+      "0363100012085115",
+      "0363100012074750",
+      "0363100012080422",
+      "0363100012116468"
+     ]
+    }
+   ],
+   "seconds": 0.69,
+   "byType": {
+    "zaanhof-1919-white-gable": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zaanhof-99-104",
+   "street": "Zaanhof",
+   "pands": 3,
+   "placed": 3,
+   "held": 0,
+   "runs": [
+    {
+     "face": "zaanhof-99-104",
+     "pands": [
+      "0363100012066165",
+      "0363100012116074",
+      "0363100012131022"
+     ]
+    }
+   ],
+   "seconds": 0.22,
+   "byType": {
+    "zaanhof-1919-white-gable": 3
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

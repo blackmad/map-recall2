@@ -1,0 +1,196 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "polanen-1935-white-attic",
+ "district": "spaarndammerbuurt",
+ "description": "Spaarndammerbuurt-Midden (BAG 1935), Polanenstraat 229-311: a 6.2 m brown-purple brick front of a narrow window axis at the party wall and a wide three-light window, white frames, on three storeys, the third storey's window low in a tall brick storey, a white-rendered attic band of three small lights under the row's deep flat-roof overhang; on the ground a round-arched portiek door at the party wall (two neighbours' doors stand under one arch) and a wide window; mirrored in pairs so the arches fall on every second party wall",
+ "fit": {
+  "widthM": [
+   5.8,
+   6.8
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "body": {
+  "storeys": 5,
+  "bays": [
+   2,
+   2,
+   2,
+   2,
+   3
+  ],
+  "axisGrid": 3,
+  "bayWidths": [
+   2.4,
+   1.0,
+   2.8
+  ],
+  "bayFill": [
+   0.42,
+   0.5,
+   0.85
+  ],
+  "storeyAxes": {
+   "1": [
+    0,
+    2
+   ],
+   "2": [
+    0,
+    2
+   ],
+   "3": [
+    0,
+    2
+   ]
+  },
+  "storeyBayWidths": {
+   "0": [
+    1.0,
+    5.2
+   ],
+   "4": [
+    1,
+    1,
+    1
+   ]
+  },
+  "axisWindows": {
+   "0": "casement-sidelights-toplight",
+   "2": "casement-sidelights-toplight"
+  },
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-sidelights-toplight",
+   "4": "plain"
+  },
+  "storeyHeights": [
+   3.4,
+   3.15,
+   3.15,
+   3.2,
+   2.6
+  ],
+  "windowHeights": [
+   0.54,
+   0.62,
+   0.62,
+   0.61,
+   0.35
+  ],
+  "headLines": [
+   0.78,
+   0.76,
+   0.76,
+   0.75,
+   0.79
+  ],
+  "paintedStoreys": {
+   "storeys": [
+    4
+   ],
+   "colour": "#e9e4d6",
+   "from": 1.05
+  }
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.8,
+    "fascia": 0.6,
+    "colour": "#9a9180",
+    "soffit": "#6e665a"
+   },
+   "note": "a deep fascia band (rectified 15.0-16.0 m, grey-brown in the street's light, #706a5a raw beside brick #4e4744) along the whole row over the white attic"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "doorArch": {
+    "span": 0.9,
+    "apex": 2.6
+   },
+   "note": "the portiek arch stands on the party wall (rectified 1.8-2.0 m wide, crown 2.7 m); each house draws its half as a 0.9 m arched door"
+  }
+ },
+ "palettes": {
+  "brown-purple": {
+   "brick": "#5a4a45",
+   "frame": "#ecebe4",
+   "door": "#2c3a2c",
+   "stone": "#d8d2c2",
+   "cornice": "#9a9180"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1933,
+   1937
+  ],
+  "eavesM": [
+   14.2,
+   15.4
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "flat",
+  "stucco": false,
+  "mirrorForDoor": "left",
+  "doorsPairAcross": true,
+  "note": "the 1935 Polanenstraat rows; the 1924 fronts at 181-221 are another design"
+ },
+ "rhythm": {
+  "bays": "a narrow window axis at the party wall and a wide axis",
+  "identicalBays": "no: narrow + wide",
+  "windowsPerStorey": "ground: arched door + 1 wide | 1-3: 1 narrow + 1 wide | attic: 3 small",
+  "symmetry": "mirrored in pairs: the arched doors and the narrow axes meet on every second party wall, the wide windows on the others",
+  "groundFloor": "round-arched portiek door at the party wall, one wide window",
+  "signage": "none",
+  "roofline": "flat roof with a deep fascia band over a white attic",
+  "photoRows": [
+   2,
+   2,
+   2,
+   2,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "polanen-181-331",
+   "pands": [
+    "131460",
+    "087668",
+    "124377",
+    "118304",
+    "151701",
+    "145428",
+    "106430",
+    "104089",
+    "147151",
+    "075725"
+   ],
+   "citation": "strip.jpg 2022-12-14 (40 px/m, camera 2.1 m), ruler crops 44.4-57.8 and 63-107 m: arches centred on the party walls at 44.9, 57.35, 69.47, 81.9 and 94.6 m (1.8-2.0 m wide, crown 2.7 m); Polanenstraat 245 (69.47-75.55): narrow window 0.73-1.73 m, wide window 3.4-5.7 m; sills/heads 0.8/2.65, 3.85/5.8, 7.0/8.95, 10.15/12.1 m; white band 13.95-15.0 m with three 1.2 m lights at 14.05-14.95 m; fascia 15.0-16.0 m"
+  }
+ ],
+ "schemaLimits": [
+  "the portiek arch is one opening across the party wall; each house draws its half as a narrow arched door, so the pair reads as two arches side by side",
+  "the ground window stands 1.2 m nearer the door than on the photo (the ground storey's own bay widths centre it)",
+  "the overhang is drawn flat-ended; the attic's thin white sill ledge under the band"
+ ],
+ "notes": [
+  "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

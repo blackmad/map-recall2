@@ -1,0 +1,132 @@
+{
+ "buurt": "spaarndammerbuurt-midden",
+ "library": "spaarndammerbuurt",
+ "generatedAt": "2026-10-17T09:24:45.829Z",
+ "seconds": 8.72,
+ "totals": {
+  "faces": 4,
+  "pands": 27,
+  "placed": 17
+ },
+ "faces": [
+  {
+   "face": "hembrug-21-27",
+   "street": "Hembrugstraat",
+   "pands": 2,
+   "placed": 2,
+   "held": 0,
+   "runs": [
+    {
+     "face": "hembrug-21-27",
+     "pands": [
+      "0363100012139242",
+      "0363100012081333"
+     ]
+    }
+   ],
+   "seconds": 2.02,
+   "byType": {
+    "spaarndammer-1933-stair-ladder": 2
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "houtrijk-335-409",
+   "street": "Houtrijkstraat",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "houtrijk-335-409-r1",
+     "pands": [
+      "0363100012113918",
+      "0363100012099132"
+     ]
+    }
+   ],
+   "seconds": 5.68,
+   "byType": {
+    "spaarndammer-1933-stair-ladder": 1,
+    "spaarndammer-1933-stair-ladder-five": 1
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "polanen-181-331",
+   "street": "Polanenstraat",
+   "pands": 15,
+   "placed": 11,
+   "held": 4,
+   "runs": [
+    {
+     "face": "polanen-181-331-r1",
+     "pands": [
+      "0363100012131460",
+      "0363100012087668",
+      "0363100012124377",
+      "0363100012118304",
+      "0363100012151701",
+      "0363100012145428",
+      "0363100012106430",
+      "0363100012104089",
+      "0363100012147151",
+      "0363100012075725",
+      "0363100012087149"
+     ]
+    }
+   ],
+   "seconds": 4.05,
+   "byType": {
+    "polanen-1935-white-attic": 11
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "polanen-184-250",
+   "street": "Polanenstraat",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "polanen-184-250-r1",
+     "pands": [
+      "0363100012066643",
+      "0363100012096276"
+     ]
+    }
+   ],
+   "seconds": 3.29,
+   "byType": {
+    "spaarndammer-1933-stair-ladder-five": 1,
+    "spaarndammer-1933-stair-ladder": 1
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

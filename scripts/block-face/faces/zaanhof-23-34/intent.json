@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "zaanhof-23-34",
+ "street": "Zaanhof",
+ "sources": [
+  {
+   "id": "strip-2021-03-19",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-19",
+   "image": "staging/block-face/zaanhof-23-34/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the spaarndammerbuurt library (buurt Spaarndammerbuurt-Noordwest); scores and holds in scripts/block-face/faces/zaanhof-23-34/auto-place.json"
+ },
+ "types": [
+  "zaanhof-1919-white-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012114944",
+   "slug": "zaanhof-114944",
+   "address": "Zaanhof 23",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1; strip 2021-03-19 span 0-234"
+   }
+  },
+  {
+   "pandId": "0363100012109995",
+   "slug": "zaanhof-109995",
+   "address": "Zaanhof 25",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2021-03-19 span 234-472"
+   }
+  },
+  {
+   "pandId": "0363100012074829",
+   "slug": "zaanhof-074829",
+   "address": "Zaanhof 27",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco 1; strip 2021-03-19 span 471-709"
+   }
+  },
+  {
+   "pandId": "0363100012065518",
+   "slug": "zaanhof-065518",
+   "address": "Zaanhof 29",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2021-03-19 span 709-949"
+   }
+  },
+  {
+   "pandId": "0363100012097562",
+   "slug": "zaanhof-097562",
+   "address": "Zaanhof 31",
+   "type": {
+    "type": "zaanhof-1919-white-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2021-03-19 span 949-1189"
+   }
+  },
+  {
+   "pandId": "0363100012141963",
+   "slug": "zaanhof-141963",
+   "address": "Zaanhof 33",
+   "type": {
+    "type": "zaanhof-1919-white-gable",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-19",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: zaanhof-1919-white-gable scored 1 on eaves 1, storeys 1, stucco -; strip 2021-03-19 span 1189-1420"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
