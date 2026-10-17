@@ -946,6 +946,19 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   attic pilasters with capitals; curved parapets with plaques; brick header
   accents; specific shop fronts; walls lighter than the overcast strip after
   trim normalisation.
+- **Spaarndammerbuurt, next** (2026-10-17, HISTORY "Spaarndammerbuurt"):
+  Spaarndammerstraat 121–137 (1884, 9 pands; draft in the lane's scratchpad,
+  held on 35 open shell loops and cornice-through-roof on 3DBAG rear wings);
+  Oostzaanstraat (De Klerk; balcony-ribbon fronts on 8–15 m pands of differing
+  widths); Spaarndammerdijk 1922 (centre-piece types: octagon lights, bay
+  stacks, small eaves gables); P3 Zaanhof dormers. Kit gaps: dormers seated in
+  3DBAG roof planes; the back of a rendered gable shows as a white triangle
+  (no cross-gable roof); render keeps the brick texture; tall bars over 4 cm
+  near the z-fight floor; ribbed soffits, corbels, rounded overhang ends;
+  octagon lights, per-axis vertical offsets, ground windows over 2.8 m, a
+  narrower portiek door, a portiek arch shared across the party wall; brick
+  relieving arches; flush wall dormers; a ride spec switch to leave one face's
+  chunk out for before frames.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
