@@ -752,16 +752,22 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   sides go past 0.55 toward flat overcast light is the user's call.
 - **Bridge follow-ups** (2026-10-17, HISTORY "Way decks: level over
   underpasses, chained ways, parapets at the road edges"): 22 of 1,200 street
-  bridge ways still draw no surface (`audit-bridge-surfaces.ts --all --streets
-  --max=22`, several minutes, not yet in `check:canal`). 21 sit in polders
-  missing from `water-levels.json`, so the −1.77 default floods their decks
-  (Dijkwater −4.54, Th. Weeversweg −4.33, Aandammerbrug −2.28): add those
-  polder levels. Gevlebrug 991513319 is claimed by another deck at station 45
-  of 143; Provincialeweg 7038514 and Gooilandseweg 706268062 are refused for
-  an end over water; none investigated. With roads-v1 off the old half-width
-  parapet placement still applies. One new 1 m turn on OSM1150921009 (likely
-  the width step at the deck end), unchecked. The A10/A4 viaducts are at
-  grade in the ground model, so they show no elevated deck.
+  bridge ways still draw no surface. **PAUSED by the user (2026-10-17):**
+  branch `fix/bridge-surfaces-polders-20261017` (a71c79e65, not merged)
+  takes it to 1. AGV publishes no peilgebied polygons for Noord, Westpoort,
+  Osdorp-west, the Bos or Waterland (PDF maps only), so
+  `build-polder-levels.ts` measures them from AHN dtm_05m (median error
+  +0.05 m against 120 AGV polygons; bank − 0.75 m fallback ±0.4 m). It
+  moves 2,578 polygons in 98 cells, median −1.8 m, and the ground-height
+  blanking now uses each polygon's level. It also fixes Gevlebrug
+  (`LONG_WATER_M` decks reach their banks) and pins six polder bridges.
+  Before merging: in-game before/after frames at Dijkwater, Aandammerbrug,
+  Bosbaanweg, Elzenhagensingel, Michielsenweg and a Noord ditch polder
+  against the orthophoto, then publish water-levels.json (and the
+  ground-height output) and add `check:bridge-surfaces --max=1` (5.5 min,
+  integration chain). Remaining miss: Pandorinastraat 376306137 (BRU0323
+  footprint claims the crossing). Provincialeweg/Gooilandseweg are the
+  Weesperbrug, already one chained way deck.
 
 - **Bridge names and cards (2026-10-17, HISTORY "Bridges shown under their
   official spelling")**: three bridges still have no sourced card (Kaassluis,
