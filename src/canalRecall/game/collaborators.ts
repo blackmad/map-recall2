@@ -145,6 +145,9 @@ export interface Track {
     player: WorldPoint | null,
     /** Anchors that could pass the reach box and `isKnown`, in label order. */
     candidatesFor?: (labels: StreetLabelAnchor[] | undefined, cx: number, cy: number, reach: number) => readonly StreetLabelAnchor[],
+    /** The text printed for a raw way name (a bridge's official spelling);
+     *  every test above still runs on the raw name. */
+    shownText?: (text: string) => string,
   ): void;
 }
 
