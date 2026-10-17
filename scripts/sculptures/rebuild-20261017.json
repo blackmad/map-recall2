@@ -99,7 +99,7 @@
      "views": [{"title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg", "box": [0.2, 0.08, 0.8, 0.59]}, {"title": "File:Lindengracht, Theo Thijssen beeld foto 2.jpg", "box": [0.2, 0.05, 0.8, 0.93]},
                {"title": "File:2023 Theo Thijssen door Bayens, Asd (3).jpg", "box": [0.15, 0, 0.85, 0.5]}, {"title": "File:2023 Theo Thijssen door Bayens, Asd (2).jpg", "box": [0.2, 0.08, 0.75, 0.55]}]}
    ]},
-  "carmiggelt-borstbeeld": {"kit": "carmiggelt-borstbeeld", "categories": ["Category:Buste Simon Carmiggelt (Kees Verkade, Amsterdam)"],
+  "carmiggelt-borstbeeld": {"kit": "carmiggelt-borstbeeld", "verdict": "better: the head with glasses, the jacket lapels and the sloping shoulders read like Verkade's bust; three photos (two from the 1988 unveiling), so the back is soft", "categories": ["Category:Buste Simon Carmiggelt (Kees Verkade, Amsterdam)"],
    "sculptor": {"name": "Kees Verkade", "born": 1941, "died": 2020, "year": 1988},
    "figures": [
     {"name": "bust", "route": "trellis", "facing": 150, "material": "bronze", "cut": {"min": [-1, 1.1, -1], "max": [1, 2.2, 1]},
@@ -120,17 +120,17 @@
     {"name": "waterdraagster", "route": "triposr", "facing": 0, "front": "-y", "material": "bronze", "cut": {"min": [-0.6, 0.42, -0.5], "max": [0.6, 1.6, 0.5]},
      "views": [{"title": "File:2021 Waterdraagster met vissen-Waterdraagster (1).jpg", "box": [0.16, 0.09, 0.83, 0.91]}, {"title": "File:Waterdraagster 2.JPG", "box": [0.2, 0, 0.95, 0.93]}]}
    ]},
-  "mama-baranka": {"kit": "mama-baranka", "categories": ["Category:Mama Baranka"],
+  "mama-baranka": {"kit": "mama-baranka", "verdict": "no better: the rough-cast surface makes TRELLIS punch holes through the torso and legs; the stance is truer than the kit's blob figure, but the see-through holes show at gallery size", "categories": ["Category:Mama Baranka"],
    "sculptor": {"name": "Nelson Carrilho", "born": 1960, "died": null, "year": 2002},
    "figures": [
     {"name": "woman", "route": "trellis", "facing": 200, "material": "bronze", "note": "the cut-outs drop the cast ground disc, so the kit disc stays", "cut": {"min": [-1.5, 0.12, -1.5], "max": [1.5, 2.3, 1.5]},
      "views": [{"title": "File:Mama Baranka in 2019 (1).jpg", "box": [0.05, 0.1, 0.95, 0.85]}, {"title": "File:Mama Baranka in 2019 (3).jpg", "box": [0.05, 0.1, 0.95, 0.85]}, {"title": "File:Mama Baranka in 2019 (5).jpg", "box": [0, 0.1, 0.95, 0.85]}, {"title": "File:Amsterdam Nelson Carrilho Mama Baranka.jpg", "box": [0.25, 0.1, 0.75, 0.95]}]}
    ]},
-  "spanjemonument": {"kit": "spanjemonument", "categories": ["Category:Spanjemonument"],
+  "spanjemonument": {"kit": "spanjemonument", "verdict": "better: the two linked flying figures with stretched arms and legs read, where the kit has two flat planks; placed broadside to the south-east like the kit", "categories": ["Category:Spanjemonument"],
    "sculptor": {"name": "Eddy Roos", "born": 1949, "died": null, "year": 1986},
    "note": "the two flying figures only; the steel stem stays kit",
    "figures": [
-    {"name": "flyers", "route": "trellis", "facing": 235, "material": "bronze", "cut": {"min": [-1, 5.1, -1.5], "max": [2.2, 6.4, 0.7]},
+    {"name": "flyers", "route": "trellis", "facing": 145, "facingNote": "v0 is a broadside view, which the kit shows from the south-east, so the first photo is placed at 145 (the kit facing 235 is the flight direction)", "material": "bronze", "cut": {"min": [-1, 5.1, -1.5], "max": [2.2, 6.4, 0.7]},
      "views": [{"title": "File:Spanje monument groot.jpg", "box": [0.25, 0.05, 0.72, 0.26]}, {"title": "File:2021 Spanjemonument-beeld (4).jpg", "box": [0.25, 0.02, 0.72, 0.3]}, {"title": "File:2021 Spanjemonument-beeld (1).jpg", "box": [0.28, 0.06, 0.64, 0.43]}, {"title": "File:Opdracht Tendenzen Spanje-Monument, Bestanddeelnr 933-6767.jpg", "box": [0.2, 0.02, 0.85, 0.34]}]}
    ]},
   "kinderbrug-meisje-eekhoorns": {"kit": "kinderbrug-meisje-eekhoorns", "verdict": "better: the girl with a squirrel in her arms over a ring of squirrels reads; one photo, the back is guessed", "categories": ["Category:Brug 420, Kindertjesbrug"],
