@@ -1124,10 +1124,11 @@ class GameRouteRuntime {
     const [lat, lng, startLat, startLng, finishLat, finishLng] = parts;
     // A share link plays once; the next load starts from the menu.
     history.replaceState(null, '', window.location.pathname + window.location.search);
-    // `?travel=car|boat` picks the mode (the gallery's "See it in the game" asks for the street ride,
-    // since a boat cannot reach most buildings); otherwise the saved preference stands.
+    // `?travel=car|boat|transit` picks the mode (the gallery's "See it in the game" asks for the street ride,
+    // since a boat cannot reach most buildings; My progress's "Ride again" replays any mode); otherwise the
+    // saved preference stands.
     const travel = new URLSearchParams(window.location.search).get('travel');
-    if (travel === 'car' || travel === 'boat') {
+    if (travel === 'car' || travel === 'boat' || travel === 'transit') {
       this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: travel }, this._overlayZoom());
       this._applyPrefsToRuntime(this._prefs());
     }
@@ -1140,6 +1141,7 @@ class GameRouteRuntime {
   _setupRace() {
     this.cars = [];
     this.raceTime = 0;
+    if (window.CanalRouteHistory) window.CanalRouteHistory.beginRide(this);
     this.particles = new ParticleSystem();
 
     this._seenLandmarks = new Set();

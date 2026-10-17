@@ -182,6 +182,8 @@ export class GameRecallRuntime {
           label: user.label,
           note: `${recall.masteredCount} synced`,
           buttonLabel: 'Sign out',
+          signedIn: true,
+          photoURL: user.photoURL,
         });
       } else {
         overlay.store.setAccount({
@@ -189,11 +191,13 @@ export class GameRecallRuntime {
           label: 'Playing as guest',
           note: 'Sign in to keep your progress on every device',
           buttonLabel: 'Sign in',
+          signedIn: false,
+          photoURL: null,
         });
       }
     });
     recall.init().then(() => {
-      if (overlay) overlay.store.setAccount({ visible: true });
+      if (overlay) overlay.store.setAccount({ visible: true, available: recall.available });
       this._refreshMasteredLabels();
     });
   }
@@ -1301,6 +1305,7 @@ export class GameRecallRuntime {
       recallStore: this.recall,
       revealName: (name: string) => this._revealName(name),
       markLearned: (name: string) => {
+        if (this._rideNamedNames && !this._rideNamedNames.includes(name)) this._rideNamedNames.push(name);
         if (isStopQuiz) {
           this.learnedStopNames = this.learnedStopNames || new Set();
           this.learnedStopNames.add(name);

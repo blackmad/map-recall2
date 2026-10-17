@@ -1,19 +1,12 @@
-import { initializeApp } from 'firebase/app';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { getFirestore, doc, runTransaction, serverTimestamp, getDocs, collection, query, where, limit } from 'firebase/firestore';
+import { canalFirebase } from '../firebaseShared';
 
-const response = await fetch(new URL('firebase-config.json', location.href), { cache: 'no-store' });
-if (!response.ok) throw new Error('Firebase configuration is unavailable. Your draft is kept on this device.');
-const app = initializeApp(await response.json());
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// App Check is a no-op until a reCAPTCHA site key is provided via runtime-config.js.
-const appCheckSiteKey = (window as unknown as { CANAL_RUNTIME_CONFIG?: { appCheckSiteKey?: string } }).CANAL_RUNTIME_CONFIG?.appCheckSiteKey;
-if (appCheckSiteKey) {
-  initializeAppCheck(app, { provider: new ReCaptchaEnterpriseProvider(appCheckSiteKey), isTokenAutoRefreshEnabled: true });
-}
+// One Firebase app per page: on the ride this reuses the recall store's
+// instance (and its sign-in) instead of initialising a second app.
+const fb = await canalFirebase();
+if (!fb) throw new Error('Firebase configuration is unavailable. Your draft is kept on this device.');
+const { auth, db } = fb;
+const { GoogleAuthProvider, signInWithPopup } = fb.authApi;
+const { doc, runTransaction, serverTimestamp, getDocs, collection, query, where, limit } = fb.firestoreApi;
 
 await auth.authStateReady();
 

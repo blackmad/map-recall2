@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { SiteSwitch } from '../../components/SiteSwitch.tsx';
+import { AccountChip } from '../../components/AccountChip.tsx';
 import { canalPageLinks } from '../../siteLinks.ts';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
@@ -681,6 +682,7 @@ export function OverlayApp({
   callbacks: OverlayCallbacks;
 }) {
   const state = useSyncExternalStore(store.subscribe, store.getState, store.getState);
+  const accountSignedIn = state.account.signedIn ?? state.account.buttonLabel === 'Sign out';
   const prefs = state.prefs;
   const [knowledgeRefresh, setKnowledgeRefresh] = useState(0);
   const knowledgeNow = useMemo(() => Date.now(), [knowledgeRefresh]);
@@ -760,15 +762,15 @@ export function OverlayApp({
                 >
                   Knowledge
                 </button>
-                <button
+                <AccountChip
                   id="account-button"
-                  type="button"
-                  className="account-button enamel-quiet"
-                  disabled={state.account.busy}
-                  onClick={() => callbacks.onAccountClick()}
-                >
-                  {state.account.buttonLabel}
-                </button>
+                  user={accountSignedIn ? { label: state.account.label, photoURL: state.account.photoURL } : null}
+                  available={state.account.available !== false}
+                  busy={state.account.busy}
+                  onSignIn={() => callbacks.onAccountClick()}
+                  onSignOut={() => callbacks.onAccountClick()}
+                  progressHref={siteLinksHere.progress}
+                />
               </div>
             </div>
 
@@ -1004,15 +1006,18 @@ export function OverlayApp({
               <strong id="settings-account-label">{state.account.buttonLabel === 'Sign out' ? `Signed in as ${state.account.label}` : state.account.label}</strong>
               <small>{state.account.note}</small>
             </div>
-            <button
-              id="settings-account-button"
-              type="button"
-              className="account-button enamel-quiet"
-              disabled={state.account.busy}
-              onClick={() => callbacks.onAccountClick()}
-            >
-              {state.account.buttonLabel}
-            </button>
+            <div className="setup-account-actions">
+              <a id="settings-progress-link" className="account-button enamel-quiet" href={siteLinksHere.progress}>My progress</a>
+              <button
+                id="settings-account-button"
+                type="button"
+                className="account-button enamel-quiet"
+                disabled={state.account.busy}
+                onClick={() => callbacks.onAccountClick()}
+              >
+                {state.account.buttonLabel}
+              </button>
+            </div>
           </div>
           <div className="enamel-setup-scroll-wrap">
             <div

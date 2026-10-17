@@ -64,3 +64,29 @@ test('Map Quest reads extracts from the site root, not /quiz/data', async ({ pag
   await expect.poll(() => extractRequests.length, { timeout: 30_000 }).toBeGreaterThan(0);
   expect(extractRequests.every((path) => path.startsWith('/data/extracts/'))).toBe(true);
 });
+
+test('My progress is served at /progress and Ride again replays the route on /ride', async ({ page }, info) => {
+  const origin = new URL(site!).origin;
+  const raceHash = '#race=52.3737,4.8816,52.3728,4.8737,52.3757,4.8898';
+  await page.goto(`${site}/progress`);
+  await expect(page).toHaveURL(`${origin}/progress`);
+  await expect(page.getByTestId('rides-empty')).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator('#progress-account-chip')).toContainText('Sign in');
+  await expect(page.getByTestId('rides-empty').locator('a')).toHaveAttribute('href', '/ride');
+  await expect(page.locator('#progress-site-switch a[data-site="progress"]')).toHaveAttribute('href', '/progress');
+  await page.screenshot({ path: `${shots}/progress-empty-${info.project.name}.png`, fullPage: true });
+
+  await page.evaluate((hash) => localStorage.setItem('canalRecall.routeHistory.v1', JSON.stringify([{
+    id: 'ride-site-check', schemaVersion: 1, startedAt: Date.now() - 400_000, endedAt: Date.now() - 60_000, mode: 'bike', cityId: 'amsterdam',
+    start: { name: 'Westermarkt', lngLat: [4.8737, 52.3728] }, finish: { name: 'Dam', landmarkId: null, lngLat: [4.8898, 52.3757] },
+    namedCount: 3, askedCount: 4, points: 310, streetsLearned: ['Raadhuisstraat', 'Keizersgracht', 'Herengracht'], raceHash: hash,
+  }])), raceHash);
+  await page.reload();
+  const again = page.getByTestId('ride-again');
+  await expect(again).toHaveAttribute('href', `/ride?travel=car${raceHash}`);
+  await page.screenshot({ path: `${shots}/progress-one-ride-${info.project.name}.png`, fullPage: true });
+  await again.click();
+  await expect(page).toHaveURL(new RegExp(`^${origin}/ride\\?travel=car`));
+  await expect.poll(() => page.evaluate(() => (window as { canalRecallGame?: { _raceKey?: string } }).canalRecallGame?._raceKey), { timeout: 120_000 })
+    .toBe('52.374,4.882_52.373,4.874_52.376,4.890');
+});

@@ -717,6 +717,80 @@
     };
   }
 
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // src/canalRecall/game/poiNotability.ts
+  var A_LIST = [
+    { name: "Rijksmuseum", wikidata: ["Q190804"] },
+    { name: "Van Gogh Museum", wikidata: ["Q224124"] },
+    { name: "Stedelijk Museum", aliases: ["Stedelijk Museum Amsterdam"], wikidata: ["Q924335", "Q42175133"] },
+    { name: "Anne Frank Huis", aliases: ["Anne Frank House"], wikidata: ["Q165366"] },
+    { name: "Westerkerk", wikidata: ["Q1130722"] },
+    { name: "Koninklijk Paleis", aliases: ["Royal Palace", "Paleis op de Dam", "Royal Palace of Amsterdam"], wikidata: ["Q1056152"] },
+    { name: "Nieuwe Kerk", aliases: ["Nieuwe Kerk Amsterdam"], wikidata: ["Q1419675"] },
+    { name: "Oude Kerk", aliases: ["Oude Kerk Amsterdam"], wikidata: ["Q623558"] },
+    { name: "Concertgebouw", aliases: ["Royal Concertgebouw", "Koninklijk Concertgebouw"], wikidata: ["Q849957"] },
+    { name: "Amsterdam Centraal", aliases: ["Central Station", "Amsterdam Centraal Station"], wikidata: ["Q50719"] },
+    { name: "Magere Brug", aliases: ["Skinny Bridge", "Skinny bridge"], wikidata: ["Q1344400"] },
+    { name: "Munttoren", aliases: ["Mint Tower", "Munt Tower"], wikidata: ["Q1429748"] },
+    { name: "De Waag", aliases: ["Waag", "Weigh House"], wikidata: ["Q2466999"] },
+    { name: "Begijnhof", wikidata: ["Q1629214"] },
+    { name: "Homomonument", wikidata: ["Q51411"] },
+    { name: "Rembrandthuis", aliases: ["Rembrandt House", "Museum Het Rembrandthuis", "Rembrandt House Museum"], wikidata: ["Q277316"] },
+    { name: "Portugese Synagoge", aliases: ["Portuguese Synagogue"], wikidata: ["Q1853707"] },
+    { name: "Joods Museum", aliases: ["Jewish Museum", "Jewish Historical Museum", "Joods Historisch Museum"], wikidata: ["Q702726"] },
+    { name: "Het Scheepvaartmuseum", aliases: ["National Maritime Museum", "Scheepvaartmuseum", "Nederlands Scheepvaartmuseum"], wikidata: ["Q1616123"] },
+    { name: "NEMO", aliases: ["NEMO Science Museum", "Nemo"], wikidata: ["Q1422000"] },
+    { name: "EYE Filmmuseum", aliases: ["Eye Filmmuseum", "EYE Film Institute"], wikidata: ["Q1538389"] },
+    { name: "A'DAM Toren", aliases: ["A'DAM Tower", "Adam Tower", "ADAM Tower"], wikidata: ["Q21185268"] },
+    { name: "Artis", aliases: ["Natura Artis Magistra", "Artis Zoo"], wikidata: ["Q713124"] },
+    { name: "Hortus Botanicus", aliases: ["Hortus Botanicus Amsterdam", "Botanical Garden Amsterdam"], wikidata: ["Q2475752"] },
+    { name: "Koninklijk Theater Carr\xE9", aliases: ["Royal Theater Carr\xE9", "Theater Carr\xE9", "Carr\xE9"], wikidata: ["Q1106490"] },
+    { name: "Tuschinski", aliases: ["Path\xE9 Tuschinski", "Tuschinski Theater", "Path\xE9 Tuschinski Cinema"], wikidata: ["Q599272"] },
+    { name: "Bloemenmarkt", aliases: ["Flower Market"], wikidata: ["Q643079"] },
+    { name: "Schreierstoren", aliases: ["Schreierstoren"], wikidata: ["Q610402"] },
+    { name: "Montelbaanstoren", wikidata: ["Q1946061"] },
+    { name: "Westergasfabriek", wikidata: ["Q4848627"] },
+    { name: "Albert Cuypmarkt", aliases: ["Albert Cuyp Market"], wikidata: ["Q1322408"] },
+    { name: "Heineken Experience", aliases: ["Heineken Experience Amsterdam"], wikidata: ["Q2087161"] },
+    { name: "Hermitage", aliases: ["H'ART Museum", "Hermitage Amsterdam", "H ART Museum"], wikidata: ["Q2509774"] },
+    { name: "Amstel Hotel", wikidata: ["Q1780741"] },
+    { name: "Stopera", aliases: ["Muziektheater"], wikidata: ["Q1587736"] },
+    { name: "Sint-Nicolaasbasiliek", aliases: ["Basilica of Saint Nicholas", "Basiliek van de Heilige Nicolaas", "Co-kathedrale Basiliek van Sint Nicolaas"], wikidata: ["Q1350750"] },
+    { name: "De Krijtberg", aliases: ["Krijtberg", "Sint-Franciscus Xaveriuskerk"], wikidata: ["Q1180056"] },
+    { name: "Zuiderkerk", wikidata: ["Q228629"] },
+    { name: "Noorderkerk", wikidata: ["Q613854"] },
+    { name: "Vondelpark", wikidata: ["Q2279698"] },
+    { name: "Nationaal Monument", aliases: ["National Monument", "National Monument on Dam Square", "Dam Square", "Nationaal Monument op de Dam"], wikidata: ["Q473851"] },
+    { name: "Leidseplein", wikidata: ["Q501445"] },
+    { name: "Rembrandtplein", wikidata: ["Q613678"] },
+    { name: "Museumplein", wikidata: ["Q2172631"] },
+    { name: "Stadsschouwburg", aliases: ["Stadsschouwburg Amsterdam", "Internationaal Theater Amsterdam"], wikidata: ["Q1817103"] },
+    { name: "Bijbels Museum", aliases: ["Biblical Museum"], wikidata: ["Q2111026"] },
+    { name: "Hollandsche Schouwburg", wikidata: ["Q2206529"] },
+    { name: "Nationaal Holocaust Namenmonument", aliases: ["Holocaust Namenmonument", "National Holocaust Names Monument"], wikidata: ["Q66023853"] },
+    { name: "De Dokwerker", aliases: ["Dokwerker"], wikidata: ["Q1179838"] },
+    { name: "Ons' Lieve Heer op Solder", aliases: ["Our Lord in the Attic", "Museum Ons' Lieve Heer op Solder"], wikidata: ["Q493160"] },
+    { name: "Amsterdam Museum", wikidata: ["Q1820897"] },
+    { name: "Moco", aliases: ["Moco Museum"], wikidata: ["Q26832671"] },
+    { name: "FOAM", aliases: ["Foam", "Fotografiemuseum Amsterdam"], wikidata: ["Q5422840"] },
+    { name: "Huis Bartolotti", aliases: ["Bartolotti House"], wikidata: ["Q2205055"] },
+    { name: "Scheepvaarthuis", aliases: ["Shipping House"], wikidata: ["Q2078885"] },
+    { name: "Beurs van Berlage", aliases: ["Berlage's Stock Market", "Berlage Beurs"], wikidata: ["Q851200"] },
+    { name: "Centrale Bibliotheek", aliases: ["OBA", "Amsterdam Public Library Oosterdok", "Openbare Bibliotheek Amsterdam", "Centrale Bibliotheek OBA"], wikidata: ["Q50413436"] }
+  ];
+  var A_LIST_BY_NAME = /* @__PURE__ */ new Map();
+  var A_LIST_BY_WIKIDATA = /* @__PURE__ */ new Map();
+  for (const entry of A_LIST) {
+    for (const name of [entry.name, ...entry.aliases ?? []]) {
+      A_LIST_BY_NAME.set(normaliseAnswer(name), entry);
+    }
+    for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
+  }
+
   // src/canalRecall/landmarks/surveyedLandmarks.json
   var surveyedLandmarks_default = [
     {
@@ -38530,7 +38604,7 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2856c",
+        brick: "#a28382",
         stone: "#e2d6bc",
         frame: "#efece3",
         glass: "#4f6270",
@@ -47909,6 +47983,37 @@
   }
   var START_HEADING_SNAP_RAD = Math.PI / 6;
 
+  // src/canalRecall/bridgeDisplayNames.ts
+  function bridgeLetterKey(name) {
+    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
+  }
+  function isBridgeSpelling(osmName, displayName) {
+    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
+  }
+  function buildBridgeDisplayNames(bridges) {
+    const names = /* @__PURE__ */ new Map();
+    for (const bridge of bridges) {
+      const name = bridge.name?.trim();
+      const shown = bridge.displayName?.trim();
+      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
+    }
+    return names;
+  }
+  var indexes = /* @__PURE__ */ new WeakMap();
+  function bridgeDisplayNamesOf(bridges) {
+    if (!bridges) return /* @__PURE__ */ new Map();
+    let index = indexes.get(bridges);
+    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
+    return index;
+  }
+  function displayBridgeName(names, name) {
+    return names && names.get(name) || name;
+  }
+  function acceptedBridgeAnswers(names, name) {
+    const shown = names?.get(name);
+    return shown ? [shown, name] : [name];
+  }
+
   // src/canalRecall/game/recallRuntime.ts
   var BRIDGE_END_TOUCH_METRES = 3;
   var DISTRACTOR_COUNT = 3;
@@ -48028,19 +48133,23 @@ Learned names, exploration collection, personal bests, route settings and the ho
             visible: true,
             label: user.label,
             note: `${recall.masteredCount} synced`,
-            buttonLabel: "Sign out"
+            buttonLabel: "Sign out",
+            signedIn: true,
+            photoURL: user.photoURL
           });
         } else {
           overlay.store.setAccount({
             visible: true,
             label: "Playing as guest",
             note: "Sign in to keep your progress on every device",
-            buttonLabel: "Sign in"
+            buttonLabel: "Sign in",
+            signedIn: false,
+            photoURL: null
           });
         }
       });
       recall.init().then(() => {
-        if (overlay) overlay.store.setAccount({ visible: true });
+        if (overlay) overlay.store.setAccount({ visible: true, available: recall.available });
         this._refreshMasteredLabels();
       });
     }
@@ -48082,6 +48191,12 @@ Learned names, exploration collection, personal bests, route settings and the ho
         cityId: meta && meta.cityId || this.cityId || "amsterdam",
         center
       };
+    }
+    /** The spelling to show for a name the game matched by its raw OSM name:
+     *  a bridge's official spelling ("Katten brug" is shown as Kattenbrug),
+     *  anything else unchanged. Every key, match and record keeps the raw name. */
+    _shownName(name) {
+      return displayBridgeName(bridgeDisplayNamesOf(this.bridges), name);
     }
     _revealName(name) {
       if (!name) return;
@@ -48154,12 +48269,13 @@ Learned names, exploration collection, personal bests, route settings and the ho
         ));
         if (clearance <= 0) continue;
         ctx.globalAlpha = 0.55 * clearance;
-        const width = ctx.measureText(bridge.name).width + 12;
+        const label = this._shownName(bridge.name);
+        const width = ctx.measureText(label).width + 12;
         ctx.fillStyle = "rgba(3,18,28,0.55)";
         roundRect(ctx, screen.x - width / 2, screen.y - 24, width, 16, 4);
         ctx.fill();
         ctx.fillStyle = "#E7D5A3";
-        ctx.fillText(bridge.name, screen.x, screen.y - 12);
+        ctx.fillText(label, screen.x, screen.y - 12);
       }
       ctx.restore();
     }
@@ -48232,7 +48348,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this.learnedNames.add(decision.name);
         this._revealName(decision.name);
         if (isTransit(this.travelMode)) this._stickTransitLine(decision.name);
-        this.quizFeedback = knowThisCornerFeedback(decision.name);
+        this.quizFeedback = knowThisCornerFeedback(this._shownName(decision.name));
         return;
       }
       if (isTransit(this.travelMode) && !transitReady) return;
@@ -48726,6 +48842,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const recallFeature = this._recallFeatureAt(name, this.player.x, this.player.y, this.quizPromptSubject === "bridge" ? "bridge" : "");
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName: name,
+        displayName: this._shownName(name),
         answer: "",
         passed: true,
         score: {
@@ -48742,7 +48859,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         revealName: (revealed) => this._revealName(revealed)
       });
       void result;
-      this.quizFeedback = `That was ${name}`;
+      this.quizFeedback = `That was ${this._shownName(name)}`;
       this._silentPass = null;
       this.quizCurrentName = name;
       this.quizCandidateName = "";
@@ -48878,7 +48995,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         key.className = "canal-choice-key";
         key.textContent = String(index + 1);
         button.dataset.name = name;
-        button.append(key, document.createTextNode(name));
+        button.append(key, document.createTextNode(this._shownName(name)));
         button.addEventListener("click", () => this._submitCanalAnswer(name));
         return button;
       }));
@@ -48969,6 +49086,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
       }
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName,
+        // A bridge is asked under its official spelling and typed either way.
+        displayName: this._shownName(correctName),
+        acceptedAnswers: acceptedBridgeAnswers(bridgeDisplayNamesOf(this.bridges), correctName),
         answer,
         noIdea,
         score: {
@@ -48991,6 +49111,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         recallStore: this.recall,
         revealName: (name) => this._revealName(name),
         markLearned: (name) => {
+          if (this._rideNamedNames && !this._rideNamedNames.includes(name)) this._rideNamedNames.push(name);
           if (isStopQuiz) {
             this.learnedStopNames = this.learnedStopNames || /* @__PURE__ */ new Set();
             this.learnedStopNames.add(name);
@@ -49017,6 +49138,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       };
       this._answerStamp = this.quizPromptSegmentIndex >= 0 ? {
         name: correctName,
+        label: this._shownName(correctName),
         segmentIndex: this.quizPromptSegmentIndex,
         correct,
         until: this.raceTime + ANSWERED_STREET_SECONDS

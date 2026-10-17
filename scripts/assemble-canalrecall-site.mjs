@@ -10,6 +10,9 @@
 //                                through a Hosting rewrite; same directory, so
 //                                every relative path still resolves)
 //   /quiz/       Map Quest      (`vite build --mode quiz`, dist-quiz/)
+//   /progress    My progress    (a Map Quest view: a Hosting rewrite onto
+//                                /quiz/index.html, whose assets are absolute
+//                                /quiz/ paths; src/progress/route.ts)
 // The landing page forwards any URL with a query or hash, and any returning
 // player, to /ride, so deep links to the old root keep working.
 //
@@ -58,6 +61,10 @@ const quiz = path.join(destination, 'quiz');
 await cp(quizSource, quiz, clone);
 for (const file of ['app-icon.svg', 'apple-touch-icon.png', 'manifest.webmanifest']) {
   await copyFile(path.join(source, file), path.join(quiz, file));
+}
+// /progress serves quiz/index.html from the root, so its relative icon links resolve there.
+for (const file of ['app-icon.svg', 'apple-touch-icon.png']) {
+  await copyFile(path.join(source, file), path.join(destination, file));
 }
 
 await rm(edumap, { recursive: true, force: true });

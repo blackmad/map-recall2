@@ -1011,6 +1011,7 @@ export default function App() {
         onSelectAdministrativeArea={handleSelectAdministrativeArea}
         onSearchLocation={handleSearchLocation}
         accountEmail={user?.email || null}
+        accountUser={user ? { label: user.displayName || user.email || 'Signed in', email: user.email, photoURL: user.photoURL } : null}
         isCloudConfigured={isCloudConfigured}
         onOpenAuth={() => setIsAuthOpen(true)}
         onSignOut={() => void signOutUser()}

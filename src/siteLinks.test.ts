@@ -4,13 +4,13 @@ import { canalPageLinks, markReturningPlayer, RETURNING_PLAYER_KEY, siteLinks } 
 
 test('public site links are same-origin and root-relative', () => {
   assert.deepEqual(siteLinks('canal-site'), {
-    home: '/?home', ride: '/ride', quiz: '/quiz/', canal: '/', data: '/data/',
+    home: '/?home', ride: '/ride', quiz: '/quiz/', progress: '/progress', canal: '/', data: '/data/',
   });
 });
 
 test('dev layout keeps Map Quest at the root and Canal Recall under canal-drive/', () => {
   assert.deepEqual(siteLinks('dev', '/'), {
-    home: '/canal-drive/landing.html', ride: '/canal-drive/', quiz: '/', canal: '/canal-drive/', data: '/data/',
+    home: '/canal-drive/landing.html', ride: '/canal-drive/', quiz: '/', progress: '/progress', canal: '/canal-drive/', data: '/data/',
   });
   assert.equal(siteLinks('dev', '/map-recall2').quiz, '/map-recall2/');
   assert.equal(siteLinks('dev', '/map-recall2/').ride, '/map-recall2/canal-drive/');
@@ -23,6 +23,9 @@ test('canal pages detect their layout from their own path', () => {
   assert.equal(canalPageLinks('/ride').quiz, '/quiz/');
   assert.equal(canalPageLinks('/ride.html').home, '/?home');
   assert.equal(canalPageLinks('/').ride, '/ride');
+  assert.equal(canalPageLinks('/canal-drive/').progress, '/progress');
+  assert.equal(canalPageLinks('/map-recall2/canal-drive/').progress, '/map-recall2/progress');
+  assert.equal(canalPageLinks('/ride').progress, '/progress');
 });
 
 test('returning-player flag survives storage that throws', () => {

@@ -63,9 +63,11 @@ export const PostcardRack: React.FC<{
   states: readonly ReviewState[];
   /** Neighbourhood features to use instead of fetching the extract (Storybook). */
   features?: StreetFeature[];
-  /** Render regardless of window width (Storybook frames). */
+  /** Render regardless of window width (Storybook frames, My progress). */
   alwaysShow?: boolean;
-}> = ({ placement = 'rail', cityId, cityCenter, states, features: providedFeatures, alwaysShow = false }) => {
+  /** Omit the small "Postcards" label when the host page already titles the rack. */
+  hideTitle?: boolean;
+}> = ({ placement = 'rail', cityId, cityCenter, states, features: providedFeatures, alwaysShow = false, hideTitle = false }) => {
   const desktop = useDesktop();
   const visible = alwaysShow || (placement === 'vista') === desktop;
   const extractCity = visible ? extractCityById(cityId) : undefined;
@@ -122,7 +124,7 @@ export const PostcardRack: React.FC<{
     data-placement={placement}
   >
     <div className="flex items-baseline justify-between gap-2">
-      <p className="enamel-brand text-sm text-white tracking-wide">Postcards</p>
+      {hideTitle ? <span /> : <p className="enamel-brand text-sm text-white tracking-wide">Postcards</p>}
       <p className="text-xs text-white/55" data-testid="postcard-count">
         {total === null ? `${cards.length} collected` : `${cards.length} of ${total} postcards`}
       </p>
