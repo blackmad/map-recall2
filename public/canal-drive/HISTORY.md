@@ -1,5 +1,53 @@
 # Canal Recall — what is built
 
+## Bridges shown under their official spelling; bridges.json halved (2026-10-17)
+
+Lane `content/bridge-data-finish-20261017`. Load: `bridges.json` (ride start)
+1,056,203 → 553,504 bytes, 227,818 → 101,146 gzipped; fields nothing reads
+at runtime (`wikipediaSourceText`, `wikipediaExtractOriginal(Lang)`,
+`encyclopediaScore`, `wikidataSitelinks`, `wikipediaPageviews60d`) live in
+`scripts/data/extract-sidecars/amsterdam/bridges.json`, and every enrich,
+translate and build script reads them back and splits them out on write
+(`extractSidecar.ts`). Spelling: a bridge may carry `displayName` (BAG
+spelling, only when the letters match exactly; table
+`scripts/data/bridge-display-names.json`); the raw OSM `name` keeps way
+matching, crossings, recall and knowledge keys. Shown on choices, feedback,
+card title, map labels, the answer stamp and the HUD road title
+(`routePlaqueName` `shownName`, withholding still on the raw name); typed
+answers accept both. 15 change, e.g. Katten brug → Kattenbrug, Hilletjes
+Brug → Hilletjesbrug, Mr. J.J. van der Veldebrug → Mr. J. J. van der
+Veldebrug. Cards: Godenbrug, Kleine Brouwerssluis, Vingboomsbrug, Zandbrug
+from the nl.wikipedia article of the register bridge on the spot, which names
+the OSM name as a former name (revision-pinned,
+`bridge-card-overrides.json`). Ledes: 227 of 365 edited
+(`bridgeLedeRepair.ts`: kunstwerk → structure, welfbrug → vaulted bridge …,
+Dutch names restored, cut sentences dropped; old text kept as `machine`), and
+91 bridge trivia openings re-derived from them. Cards no longer cut at a
+patronymic or initials ("The Hendrick Jacobsz." was the whole opening).
+Checked on iPhone renders: question, two-line choices, feedback, HUD title
+and card. `bridgeData.test.ts` (11) runs in `test:bridge-street-name`.
+
+## Tropenmuseum brick: measured in diffuse light, rose-brown not tan (2026-10-17)
+
+User (2026-10-16/17): the Tropenmuseum read tan-brown against the card photo's
+rosier brick; "figure it out". Lane `worktree-agent-a71864c1df179c607`: the
+colour, not the lighting. The brick carries little colour of its own (chroma
+~10), so its hue follows the light: every panorama crop and sunlit photo reads
+Lab hue 55-65, diffuse photos from four photographers (card photo included)
+hue 2-35. The old #a2856c was a sun reading, and the rig's warm sun added the
+warmth again; the tint method keeps hue (uniform linear gain) and the crops were
+not contaminated (brick-only re-measure ~58). In-game frames match plain diffuse
+shading under SUNNY_LIGHT (shade x0.563, chroma -28 %, hue within 3 degrees) on
+the controls too (Oosterparkkerk, Hoofdbureau: photos and panoramas agree), so
+it is a Tropenmuseum colour, not a citywide bias. New `look/brickTone.ts`
+(brick-only crop measure, sun/diffuse classification from the pale trim,
+`brickAlbedo`: diffuse crops, one vote per camera, calibrated lightness; 8
+tests) and `scripts/look/measure-brick-tone.ts`, `brick-tone-frames.ts`. Brick
+#a28382 (hue 23, chroma 12.7); GLB geometry unchanged. Trade-off: sunlit walls
+read pinker (hue 38) than real sunlit photos (55-63), the rig's sun being less
+warm than real sun against skylight; left alone (the "One wall material" pass).
+Sheets: `artifacts/brick-tone/` in the lane worktree.
+
 ## CI green again: held-model card overrides and an opt-in spec's local file (2026-10-17)
 
 Canal CI had failed on every push since 2026-10-16 evening, so the GitHub Pages
@@ -16,6 +64,10 @@ when absent; `playwright test --list` collects all 986 tests), and eight new
 Boterdiep/Hoendiep block faces had no `chunkWallExposureData.ts` entry
 (regenerated from their strips; the 42 existing entries unchanged). Installs
 must re-run `scripts/look/build-chunk-wall-exposure.ts --write`.
+Even green, Pages would not deploy: three sessions pushed more often than a CI
+run takes (~8 min) and `cancel-in-progress` cancelled every main run before it
+finished. CI now lets a main run finish (GitHub keeps one pending, the newest);
+pull requests still cancel.
 
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 

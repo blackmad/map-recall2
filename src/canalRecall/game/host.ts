@@ -268,7 +268,7 @@ export interface RecallHost extends GameCoreHost {
   /** The just-answered feature, kept lit on the map through the answer hold. */
   _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
   /** The answered street, painted on the road for a few seconds (see answeredStreetNameLayer). */
-  _answerStamp?: { name: string; segmentIndex: number; correct: boolean; until: number } | null;
+  _answerStamp?: { name: string; label?: string; segmentIndex: number; correct: boolean; until: number } | null;
   /** Bumped by each answer hold and each new question; a stale hold timer does nothing. */
   _answerHoldToken?: number;
   quizCorrect: number;
@@ -339,6 +339,8 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** For the plaque's bridge spellings (bridgeDisplayNames.ts). */
+  bridges: Bridge[];
   /** Published trivia and what has been told (LandmarkHost owns them); the ARRIVED card draws from the same rotation. */
   _facts: FactIndex;
   _factRotation: RotationState;
@@ -420,7 +422,7 @@ export interface PresentationHost extends GameCoreHost {
   quizPromptPointIndex: number;
   _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
   /** The answered street, painted on the road for a few seconds (see answeredStreetNameLayer). */
-  _answerStamp?: { name: string; segmentIndex: number; correct: boolean; until: number } | null;
+  _answerStamp?: { name: string; label?: string; segmentIndex: number; correct: boolean; until: number } | null;
   /** Bumped by each answer hold and each new question; a stale hold timer does nothing. */
   _answerHoldToken?: number;
   /** Window size the HUD was last laid out for; see `_syncViewportSize`. */

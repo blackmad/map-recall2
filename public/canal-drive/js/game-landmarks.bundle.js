@@ -163,6 +163,7 @@
       bridges.push({
         id: feature.id,
         name: feature.name,
+        ...feature.displayName ? { displayName: feature.displayName } : {},
         lines,
         crossings: source.map((crossing) => ({ ...crossing, ...toWorld(crossing.center) })),
         distractors: (feature.distractors || []).filter((name) => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
@@ -450,6 +451,7 @@ Map source: ${osmUrl(places[i][0])}`);
       if (!before) return true;
       const word = before[1];
       if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
       return !abbreviations.has(word.toLocaleLowerCase());
     };
     let end = -1;
@@ -540,6 +542,19 @@ Map source: ${osmUrl(places[i][0])}`);
   }
   var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
+  // src/canalRecall/bridgeLedeRepair.ts
+  var NOT_A_SENTENCE_END = /(?:^|[\s(])(?:[A-Z][a-z]?|[A-Z]\.[A-Z]|Mr|Dr|Ir|St|Prof|ca|nr|no|[A-Z][a-z]*s?z)\.$/;
+  function ledeSentences(text) {
+    const pieces = text.trim().split(/(?<=[.!?])\s+(?=[A-Z"'“‘(0-9])/u).filter(Boolean);
+    const sentences2 = [];
+    for (const piece of pieces) {
+      const previous = sentences2[sentences2.length - 1];
+      if (previous !== void 0 && NOT_A_SENTENCE_END.test(previous)) sentences2[sentences2.length - 1] = `${previous} ${piece}`;
+      else sentences2.push(piece);
+    }
+    return sentences2;
+  }
+
   // src/canalRecall/game/routeKnowledge.ts
   var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
   function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}, bridges = []) {
@@ -576,9 +591,15 @@ Map source: ${osmUrl(places[i][0])}`);
       const existing = index.get(key);
       index.set(key, existing ? { ...existing, structureFact } : { name, type: "bridge", structureFact });
     }
+    for (const bridge of bridges) {
+      if (!bridge.name || !bridge.displayName) continue;
+      const key = `bridge:${normalise(bridge.name)}`;
+      const existing = index.get(key);
+      if (existing) index.set(key, { ...existing, name: bridge.displayName });
+    }
     return index;
   }
-  var sentencesOf = (text) => text.trim().split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
+  var sentencesOf = (text) => ledeSentences(text).map((part) => part.trim()).filter(Boolean);
   var STREET_CARD_DETAIL_CHARS = 150;
   var STREET_CARD_LONG_CHARS = 280;
   function streetCardText(entry) {
@@ -38638,7 +38659,7 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2856c",
+        brick: "#a28382",
         stone: "#e2d6bc",
         frame: "#efece3",
         glass: "#4f6270",
@@ -48631,7 +48652,9 @@ Map source: ${osmUrl(places[i][0])}`);
           ...streetFeatures,
           ...waterFeatures,
           ...bridgeFeatures,
-          ...transitStops
+          ...transitStops,
+          // A bridge's official spelling is an answer too.
+          ...bridgeFeatures.map((bridge) => ({ name: bridge.displayName }))
         ].map((item) => item.name || "").filter(Boolean));
         this.vectorMap.setPlaces(features, boundaries);
         const metersPerDegreeLat = 111320;

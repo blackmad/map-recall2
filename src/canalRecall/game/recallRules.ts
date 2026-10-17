@@ -384,6 +384,10 @@ export interface HudNameInput {
   revealed: boolean;
   /** Answered correctly or adopted as known. */
   learned: boolean;
+  /** How `roadName` is printed once it may show: a bridge's official spelling
+   *  ("Katten brug" prints as Kattenbrug; bridgeDisplayNames.ts). Withholding
+   *  is still decided on the raw `roadName`. */
+  shownName?: string;
 }
 
 /**
@@ -413,5 +417,5 @@ export function hudWithholdsRouteName(input: HudNameInput): boolean {
  */
 export function routePlaqueName(input: HudNameInput): { routeName: string; answerHidden: boolean } {
   const answerHidden = hudWithholdsRouteName(input);
-  return { routeName: answerHidden ? '' : input.roadName, answerHidden };
+  return { routeName: answerHidden ? '' : (input.shownName || input.roadName), answerHidden };
 }

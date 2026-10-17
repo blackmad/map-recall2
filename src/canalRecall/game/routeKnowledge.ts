@@ -1,6 +1,7 @@
 import type { StreetKnowledgeEntry } from './extracts';
 import { sentencesUpTo } from './landmarkData';
 import { describeRegisteredBridge, type BridgeRegisterFact } from '../bridgeRegister';
+import { ledeSentences } from '../bridgeLedeRepair';
 
 export type RouteKnowledgeType = 'street' | 'water' | 'bridge';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
@@ -11,6 +12,8 @@ const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wi
 export interface BridgeKnowledgeSource {
   id?: string;
   name?: string;
+  /** Official spelling for the card title; the entry stays keyed by `name`. */
+  displayName?: string;
   wikipediaUrl?: string;
   wikipediaExtract?: string;
   wikipediaExtractLang?: string;
@@ -76,10 +79,21 @@ export function buildRouteKnowledgeIndex(
     const existing = index.get(key);
     index.set(key, existing ? { ...existing, structureFact } : { name, type: 'bridge', structureFact });
   }
+  // The card is titled with the bridge's official spelling (Kattenbrug, not
+  // OSM's "Katten brug"); it is still found by the name the question used.
+  for (const bridge of bridges) {
+    if (!bridge.name || !bridge.displayName) continue;
+    const key = `bridge:${normalise(bridge.name)}`;
+    const existing = index.get(key);
+    if (existing) index.set(key, { ...existing, name: bridge.displayName });
+  }
   return index;
 }
 
-const sentencesOf = (text: string) => text.trim().split(/(?<=[.!?])\s+/).map(part => part.trim()).filter(Boolean);
+// A name's initials and patronymics ("Hendrick Jacobsz. Staetsbrug",
+// "Mr. J. J. van der Veldebrug") do not end a sentence: splitting there put
+// "The Hendrick Jacobsz." alone on the card.
+const sentencesOf = (text: string) => ledeSentences(text).map(part => part.trim()).filter(Boolean);
 
 export const STREET_CARD_DETAIL_CHARS = 150;
 export const STREET_CARD_LONG_CHARS = 280;

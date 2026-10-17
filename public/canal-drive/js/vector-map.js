@@ -2441,7 +2441,7 @@ class VectorBasemap {
       features: points.map(point => ({
         type: 'Feature',
         // Bearing of travel, clockwise from north (world y points south).
-        properties: { name: stamp.name, correct: !!stamp.correct, bearing: Math.atan2(Math.cos(point.angle), -Math.sin(point.angle)) * 180 / Math.PI },
+        properties: { name: stamp.label || stamp.name, correct: !!stamp.correct, bearing: Math.atan2(Math.cos(point.angle), -Math.sin(point.angle)) * 180 / Math.PI },
         geometry: { type: 'Point', coordinates: this.worldToLngLat(point.x, point.y, loader) },
       })),
     });

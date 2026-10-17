@@ -6,7 +6,8 @@
  *
  * Usage: tsx scripts/scrub-disambiguation-extracts.ts [city-id ...]
  */
-import { readFile, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
+import { readPartition, shipPartition } from './lib/extract-sidecar.ts';
 import path from 'node:path';
 import { ENCYCLOPEDIA_PARTITION_FILES } from './lib/encyclopedia-extract-files.ts';
 import { isDisambiguationExtract } from '../src/canalRecall/game/encyclopediaDisambiguation.ts';
@@ -33,7 +34,7 @@ for (const cityId of cities) {
     const filePath = path.join(directory, file);
     let features: Feature[];
     try {
-      features = JSON.parse(await readFile(filePath, 'utf8')) as Feature[];
+      features = readPartition<Feature>(directory, file);
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === 'ENOENT') continue;
       throw error;
@@ -60,7 +61,7 @@ for (const cityId of cities) {
       dirty = true;
     }
     if (dirty) {
-      await writeFile(filePath, JSON.stringify(features));
+      await writeFile(filePath, shipPartition(file, features, path.basename(directory)));
       touched.add(file);
     }
   }
