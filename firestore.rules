@@ -14,6 +14,22 @@ service cloud.firestore {
       return rating == 'again' || rating == 'hard' || rating == 'good' || rating == 'easy';
     }
 
+    function validCategory(category) {
+      return category == null || category == 'bug' || category == 'building' || category == 'data' || category == 'request' || category == 'other';
+    }
+
+    // The real-world object a note is about. `target` is already the image/card
+    // annotation, so the geographic/object reference is stored as `subject`.
+    function validSubject(subject) {
+      return subject == null || (
+        subject is map
+        && subject.kind is string
+        && (subject.kind == 'pand' || subject.kind == 'model' || subject.kind == 'osm' || subject.kind == 'point')
+        && (!('id' in subject) || (subject.id is string && subject.id.size() <= 64))
+        && (!('lngLat' in subject) || (subject.lngLat is list && subject.lngLat.size() == 2 && subject.lngLat[0] is number && subject.lngLat[1] is number))
+      );
+    }
+
     match /users/{userId}/reviewStates/{stateId} {
       allow read, delete: if owns(userId);
       allow create, update: if owns(userId)
@@ -51,7 +67,7 @@ service cloud.firestore {
       allow create: if request.auth != null
         && request.auth.token.firebase.sign_in_provider == 'google.com'
         && request.resource.data.keys().hasAll(['schemaVersion', 'ownerUid', 'text', 'target', 'context', 'environment', 'screenshot', 'status', 'createdAt', 'updatedAt', 'resolution'])
-        && request.resource.data.keys().hasOnly(['schemaVersion', 'ownerUid', 'text', 'target', 'context', 'environment', 'screenshot', 'status', 'createdAt', 'updatedAt', 'resolution'])
+        && request.resource.data.keys().hasOnly(['schemaVersion', 'ownerUid', 'text', 'target', 'context', 'environment', 'screenshot', 'status', 'createdAt', 'updatedAt', 'resolution', 'category', 'subject'])
         && request.resource.data.schemaVersion == 1
         && request.resource.data.ownerUid == request.auth.uid
         && request.resource.data.text is string
@@ -70,6 +86,8 @@ service cloud.firestore {
         && request.resource.data.environment.host is string
         && request.resource.data.environment.page is string
         && request.resource.data.screenshot is string && request.resource.data.screenshot.size() <= 240000
+        && (!('category' in request.resource.data) || validCategory(request.resource.data.category))
+        && (!('subject' in request.resource.data) || validSubject(request.resource.data.subject))
         && request.resource.data.status == 'open' && request.resource.data.resolution == ''
         && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time;
       allow update, delete: if false;
