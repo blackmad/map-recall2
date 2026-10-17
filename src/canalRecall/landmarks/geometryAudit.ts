@@ -983,7 +983,7 @@ function clipConvex(a: number[][], b: number[][]): number[][] {
  * Overlap of two same-facing coplanar triangles after the abutment shrink: area (m^2, true 3D area) and the overlap
  * centroid on A's plane. Same measure as blockFace `zFightArea` for one pair.
  */
-export function coplanarOverlap(pa: V3[], pb: V3[], n: V3, abut: number): {area: number; centroid: V3} | null {
+export function coplanarOverlap(pa: V3[], pb: V3[], n: V3, abut: number): {area: number; centroid: V3; pieces: {centroid: V3; area: number}[]} | null {
   const a = shrinkTri(pa, abut), b = shrinkTri(pb, abut);
   if (!a || !b) return null;
   const ax = Math.abs(n[0]) > Math.abs(n[1]) && Math.abs(n[0]) > Math.abs(n[2]) ? [1, 2] : Math.abs(n[1]) > Math.abs(n[2]) ? [0, 2] : [0, 1];
@@ -1001,8 +1001,26 @@ export function coplanarOverlap(pa: V3[], pb: V3[], n: V3, abut: number): {area:
   centroid[ax[0]] = cx / (3 * s2); centroid[ax[1]] = cy / (3 * s2);
   // Recover the dropped coordinate from A's plane.
   const dA = n[0] * pa[0][0] + n[1] * pa[0][1] + n[2] * pa[0][2];
-  centroid[drop] = (dA - n[ax[0]] * centroid[ax[0]] - n[ax[1]] * centroid[ax[1]]) / (Math.abs(n[drop]) > 1e-6 ? n[drop] : 1);
-  return {area: (Math.abs(s2) / 2) * scale, centroid};
+  const lift = (u: number, v: number): V3 => {
+    const q: V3 = [0, 0, 0];
+    q[ax[0]] = u; q[ax[1]] = v;
+    q[drop] = (dA - n[ax[0]] * u - n[ax[1]] * v) / (Math.abs(n[drop]) > 1e-6 ? n[drop] : 1);
+    return q;
+  };
+  centroid[drop] = lift(centroid[ax[0]], centroid[ax[1]])[drop];
+  // Fan pieces about the centroid: the visibility probe samples each piece, so a big overlap that is covered in the middle
+  // (a turret's flat top under its drum) but bare at the corners still reads as seen (Magna Plaza, 2026-10-17).
+  const pieces: {centroid: V3; area: number}[] = [];
+  const c2 = [centroid[ax[0]], centroid[ax[1]]];
+  for (let i = 0; i < poly.length; i++) {
+    const p = poly[i], q = poly[(i + 1) % poly.length];
+    const a2 = Math.abs((p[0] - c2[0]) * (q[1] - c2[1]) - (q[0] - c2[0]) * (p[1] - c2[1])) / 2;
+    if (a2 < 1e-9) continue;
+    // Spread samples over the fan triangle (about 1 m apart, at most 4 per edge), each carrying its share of the area.
+    const pts = samplesOn(lift(c2[0], c2[1]), lift(p[0], p[1]), lift(q[0], q[1]), Math.max(1, Math.sqrt(a2 * scale) / 2));
+    for (const pt of pts) pieces.push({centroid: pt, area: (a2 * scale) / pts.length});
+  }
+  return {area: (Math.abs(s2) / 2) * scale, centroid, pieces};
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -1113,12 +1131,15 @@ export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOME
       }
       // The overlap centroid lies on R's plane; the visibility probe starts from whichever face is in front, or a strip
       // floating 2 cm over a roof would hide the roof under it and read as never drawn.
-      const c = ov.centroid, cq: V3 = [c[0] + R.n[0] * sd, c[1] + R.n[1] * sd, c[2] + R.n[2] * sd];
-      const g = sd > 0 ? cq : c, rear = sd > 0 ? c : cq;
-      // Area-weighted reservoir (A-Res, deterministic LCG): the kept samples estimate the visible share of the patch.
-      rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
-      const key = Math.pow((rng + 1) / 4294967297, 1 / o);
-      if (P.samples.length < 64 || key > P.samples[P.samples.length - 1].area) { P.samples.push({p: g, q: rear, area: key}); P.samples.sort((x, y) => y.area - x.area); P.samples.length = Math.min(64, P.samples.length); }
+      // Each fan piece of the overlap is a sample, so a pair covered in the middle but bare at its corners is not all hidden.
+      for (const piece of ov.pieces.length ? ov.pieces : [{centroid: ov.centroid, area: o}]) {
+        const c = piece.centroid, cq: V3 = [c[0] + R.n[0] * sd, c[1] + R.n[1] * sd, c[2] + R.n[2] * sd];
+        const g = sd > 0 ? cq : c, rear = sd > 0 ? c : cq;
+        // Area-weighted reservoir (A-Res, deterministic LCG): the kept samples estimate the visible share of the patch.
+        rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
+        const key = Math.pow((rng + 1) / 4294967297, 1 / piece.area);
+        if (P.samples.length < 64 || key > P.samples[P.samples.length - 1].area) { P.samples.push({p: g, q: rear, area: key}); P.samples.sort((x, y) => y.area - x.area); P.samples.length = Math.min(64, P.samples.length); }
+      }
       for (let k2 = 0; k2 < 3; k2++) { P.centre[k2] = (P.centre[k2] * P.area + ov.centroid[k2] * o) / (P.area + o); P.min[k2] = Math.min(P.min[k2], A.min[k2], B.min[k2]); P.max[k2] = Math.max(P.max[k2], A.max[k2], B.max[k2]); }
       P.gap = (P.gap * P.area + Math.abs(sd) * o) / (P.area + o);
       P.area += o;
