@@ -117,7 +117,8 @@
  "otherWalls": "blank",
  "closedBands": true,
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "flatHex": "#87898d"
  },
  "palette": {
   "brick": "#2a2c31",
@@ -130,7 +131,8 @@
   "1999 office tower at Buikslotermeerplein (pand 0363100012104378, 82 LoD2.2 surfaces, roof max 30.6 m). North-west wall (surfaces 31/64/39, 2019-06-27 panorama w01-308, 13 m away): a black-brick eight-storey wall with ten bays of small paired windows, a parking row at the foot, and the three red-pink St Andrew's crosses of the Amsterdam coat of arms stacked down its top-left corner. South-east front (2021-06-17 w03-123, 27 m away): the same black brick, six storeys of paired low windows over a glazed ground floor carried on round white piers.",
   "Signature: the three St Andrew's crosses MODELLED with a new kit component (`crosses`, `drawStAndrewsCross`: two diagonal closed prisms per cross, three crosses 3.2 m, pink-red, on the top-left of the main north-west panel); black brick MODELLED as the brick palette; low paired windows MODELLED (windows: low); glazed ground on round white piers MODELLED as ground glazed + piers (square projecting piers, not round columns: SIMPLIFIED); parking signs and the foot-of-wall bike park SKIPPED (temporary); the stadsloket entrance and signage are on the Buikslotermeerplein side which has no panorama in range (SKIPPED: not-visible); the stepped south-west block, the stair tower on the roof and the rear walls (surfaces 73/8/10/36/60/37/6/33/72/71/52/7) are one blank group (no panorama or closed seams).",
   "Panels 31 and 64 are one 24 m panel that must stay in one group (split groups fail storey-height); crosses are closed prisms because flat letter glyphs counted as 38.7 m of open edge.",
-  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #11151c not used (not darker than the wall #24282e by 10 L*, or tinted): kit glass kept; walls[1] glass #1c1f24 not used (not darker than the wall #2f2e3b by 10 L*, or tinted): kit glass kept."
+  "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 2 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #11151c not used (not darker than the wall #24282e by 10 L*, or tinted): kit glass kept; walls[1] glass #1c1f24 not used (not darker than the wall #2f2e3b by 10 L*, or tinted): kit glass kept.",
+  "roof.flatHex #87898d: the PDOK orthophoto's reading of this pand (roof-facts 14/8416/5382: slot slate, rgb 140/140/140, confidence 1; roof-flat.ts), the colour the city drew it in before the install."
  ],
  "measured": {
   "date": "2026-10-14",

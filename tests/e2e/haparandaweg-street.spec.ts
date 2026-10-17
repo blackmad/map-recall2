@@ -9,7 +9,9 @@ import { openRoute } from './helpers';
 test.skip(!process.env.HAP_SHOTS, 'set HAP_SHOTS=1 to capture');
 
 const OUT = process.env.HAP_DIR || 'artifacts/haparandaweg/ingame';
-const SPOTS: { name: string; at: [number, number]; face: [number, number] }[] = JSON.parse(readFileSync('artifacts/haparandaweg/spots.json', 'utf8'));
+// Read at collection only when capturing: the spots file is a local artifact, and reading it unconditionally failed
+// every CI e2e run (ENOENT) even though the test itself is skipped there.
+const SPOTS: { name: string; at: [number, number]; face: [number, number] }[] = process.env.HAP_SHOTS ? JSON.parse(readFileSync('artifacts/haparandaweg/spots.json', 'utf8')) : [];
 
 test('haparandaweg in-game shots', async ({ page }, testInfo) => {
   test.setTimeout(900_000);

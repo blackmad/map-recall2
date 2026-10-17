@@ -1,0 +1,426 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "eems-6-78",
+ "street": "Eemsstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-03",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-03",
+   "image": "staging/block-face/eems-6-78/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the rivierenbuurt library (buurt Rijnbuurt-Oost); scores and holds in scripts/block-face/faces/eems-6-78/auto-place.json"
+ },
+ "types": [
+  "rijn-1934-erker-centre",
+  "rijn-1934-erker-end",
+  "rijn-1934-flat-three"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012140994",
+   "slug": "eems-140994",
+   "address": "Eemsstraat 36",
+   "type": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#483f38",
+     "evidence": "strip 2023-01-03 span 0-243: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #685951)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-centre scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 0-243"
+   }
+  },
+  {
+   "pandId": "0363100012124657",
+   "slug": "eems-124657",
+   "address": "Eemsstraat 34",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4c423c",
+     "evidence": "strip 2023-01-03 span 243-486: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #6f6059)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2023-01-03 span 243-486"
+   }
+  },
+  {
+   "pandId": "0363100012061247",
+   "slug": "eems-061247",
+   "address": "Eemsstraat 32",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#49403a",
+     "evidence": "strip 2023-01-03 span 485-729: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #483f39)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 485-729"
+   }
+  },
+  {
+   "pandId": "0363100012111889",
+   "slug": "eems-111889",
+   "address": "Eemsstraat 30",
+   "type": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#463d37",
+     "evidence": "strip 2023-01-03 span 729-963: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #453c37)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-end scored 0.83 on eaves 1, storeys -, roof 1, stucco 1, bag-bay 1, accent-side 0, columns 1; strip 2023-01-03 span 729-963"
+   }
+  },
+  {
+   "pandId": "0363100012121394",
+   "slug": "eems-121394",
+   "address": "Eemsstraat 28",
+   "type": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#453d38",
+     "evidence": "strip 2023-01-03 span 973-1217: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625751)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-centre scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 973-1217"
+   }
+  },
+  {
+   "pandId": "0363100012088569",
+   "slug": "eems-088569",
+   "address": "Eemsstraat 26",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#493f3a",
+     "evidence": "strip 2023-01-03 span 1217-1461: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #493f3a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 1217-1461"
+   }
+  },
+  {
+   "pandId": "0363100012094658",
+   "slug": "eems-094658",
+   "address": "Eemsstraat 24",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#4a413b",
+     "evidence": "strip 2023-01-03 span 1461-1705: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #483f38)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 1461-1705"
+   }
+  },
+  {
+   "pandId": "0363100012069912",
+   "slug": "eems-069912",
+   "address": "Eemsstraat 22",
+   "type": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#463e38",
+     "evidence": "strip 2023-01-03 span 1704-1948: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625651)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-end scored 0.84 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0, columns 1; strip 2023-01-03 span 1704-1948"
+   }
+  },
+  {
+   "pandId": "0363100012149922",
+   "slug": "eems-149922",
+   "address": "Eemsstraat 20",
+   "type": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#413a35",
+     "evidence": "strip 2023-01-03 span 1948-2196: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #403934)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-centre scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 1948-2196"
+   }
+  },
+  {
+   "pandId": "0363100012087051",
+   "slug": "eems-087051",
+   "address": "Eemsstraat 18",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#433c37",
+     "evidence": "strip 2023-01-03 span 2196-2444: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #423a35)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 2196-2444"
+   }
+  },
+  {
+   "pandId": "0363100012138436",
+   "slug": "eems-138436",
+   "address": "Eemsstraat 16",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#443c37",
+     "evidence": "strip 2023-01-03 span 2444-2688: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #443b35)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 2444-2688"
+   }
+  },
+  {
+   "pandId": "0363100012084686",
+   "slug": "eems-084686",
+   "address": "Eemsstraat 14",
+   "type": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#3f3732",
+     "evidence": "strip 2023-01-03 span 2688-2932: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3e3732)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-end scored 0.84 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0, columns 1; strip 2023-01-03 span 2688-2932"
+   }
+  },
+  {
+   "pandId": "0363100012104341",
+   "slug": "eems-104341",
+   "address": "Eemsstraat 12",
+   "type": {
+    "type": "rijn-1934-erker-centre",
+    "measuredPalette": {
+     "brick": "#3c3530",
+     "evidence": "strip 2023-01-03 span 2932-3185: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3c3530)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-centre scored 0.82 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, accent-side 0; strip 2023-01-03 span 2932-3185"
+   }
+  },
+  {
+   "pandId": "0363100012062063",
+   "slug": "eems-062063",
+   "address": "Eemsstraat 10",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#3c3530",
+     "evidence": "strip 2023-01-03 span 3185-3430: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3c3630)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2023-01-03 span 3185-3430"
+   }
+  },
+  {
+   "pandId": "0363100012063274",
+   "slug": "eems-063274",
+   "address": "Eemsstraat 8",
+   "type": {
+    "type": "rijn-1934-flat-three",
+    "measuredPalette": {
+     "brick": "#423c38",
+     "evidence": "strip 2023-01-03 span 3429-3680: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #3e3531)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-flat-three scored 1 on eaves 1, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2023-01-03 span 3429-3680"
+   }
+  },
+  {
+   "pandId": "0363100012148727",
+   "slug": "eems-148727",
+   "address": "Eemsstraat 6",
+   "type": {
+    "type": "rijn-1934-erker-end",
+    "measuredPalette": {
+     "brick": "#403834",
+     "evidence": "strip 2023-01-03 span 3681-3891: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5c4f4a)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-03",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: rijn-1934-erker-end scored 0.91 on eaves 1, storeys 1, roof 0, stucco 1, bag-bay 1, accent-side 1; strip 2023-01-03 span 3681-3891"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

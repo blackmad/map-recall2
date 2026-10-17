@@ -1,5 +1,98 @@
 # Canal Recall — what is built
 
+## CI green again: held-model card overrides and an opt-in spec's local file (2026-10-17)
+
+Canal CI had failed on every push since 2026-10-16 evening, so the GitHub Pages
+deploy (gated on a green CI) was skipped each time while Firebase kept deploying.
+Two causes: `haparandaweg-street.spec.ts` read the gitignored
+`artifacts/haparandaweg/spots.json` at module load, before its `test.skip`, so the
+full e2e job crashed at collection (ENOENT); it now reads the file only with
+`HAP_SHOTS`. And holding the Kinderbrug statue model (2026-10-17) took its POI
+out of the game, orphaning its card override (`osm_artwork_4370460330`);
+`test:landmark-cards` now accepts an override whose kit model is held.
+The next run showed two more: `street-chunks.spec.ts` read `chunk.instance` at
+load though chunks.json no longer holds a `chunk-bilder-*` chunk (now skipped
+when absent; `playwright test --list` collects all 986 tests), and eight new
+Boterdiep/Hoendiep block faces had no `chunkWallExposureData.ts` entry
+(regenerated from their strips; the 42 existing entries unchanged). Installs
+must re-run `scripts/look/build-chunk-wall-exposure.ts --write`.
+
+## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
+
+User (2026-10-16): "can you pick some more neighborhoods to give that
+coverage to?". Lane `lane/buurt-looks-20261016` (28420445b … b2541075e). 103
+pands on Boterdiep-, Hoendiep- and Eemsstraat in 8 chunks from six types
+(`scripts/block-face/types/rivierenbuurt/`: flat-three, erker-pair,
+erker-ribbon, erker-white-attic, erker-centre, erker-end), placed by
+auto-place with BAG erker evidence, row coherence (across one held pand, a
+confirmed four-house rhythm) and date-pooled trim exposure
+(`--row-exposure=date`). Kit: eaves overhang, ground canopies, storey ribbons,
+erker at the party wall, ribbon piers, ground-storey oriel. Review sheets
+caught Boterdiepstraat 57's top storey standing open: the library never closed
+a roof edge spanning collinear footprint edges; it now closes each piece (test
+pinned, fit-golden identical). Auto-place no longer always holds challenger
+types, so re-runs elsewhere may place more pands. Held: Boterdiepstraat 3–7
+(pitched corner, 3.39 m frontage), Hoendiepstraat 2 (corner), 11 (NCC 0.143).
+Desktop ride-perf 9/9 (motion p95 16.7 ms).
+
+## Kinderbrug statues held (2026-10-17)
+
+User, on the What's new gallery: "these are a little rough". Lane
+`lane/hold-kit-statues-20261017` (93542c00d, c39ea88fd, 0a6e86714). The two
+Hildo Krop figure-kit groups on bridge 420 (Girl with squirrels, Boy with
+rabbits) are `status: held`: out of the game, galleries and What's new;
+sources, specs and GLBs stay (the manifest flag came from
+`build-manual-landmarks --only`, GLBs byte-identical); `whats-new.spec` pins
+the hold. Their brick piers existed only in these GLBs, so bridge 420 has none
+until a route-B group on a kit pier returns. The 20 other live figure-kit
+statues were inventoried on contact sheets for the user's call; none held.
+
+## Our own flat overview tiles (2026-10-16)
+
+User (2026-10-16): "we should just generate our own flat tiles for the
+overview? the change in colors as it zooms in is jarring". Lane
+`lane/overview-tiles-20261016` (aedd7f837 … 823cce0fe). The overview now
+draws `overview-tiles-v1`, a z11–z15 raster (893 files, 18.3 MB) rasterised
+from directly above the built own-ground cells plus the city's footprints,
+in the ground palette's flat tones; it sits just above liberty's top ground
+or building fill, under extrusions, labels and game overlays, fades in over
+z11→11.5 and is transparent outside coverage. The manifest records every
+layer colour; `overviewTilesPlan` skips the tiles (console.info) on any
+mismatch with the live palette and `overviewTiles.test.ts` fails when they
+go stale. Opt-out `?overviewTiles=0`. The reported 13.9→14 jump was
+OpenMapTiles' footprints switching from generalised to detailed shapes at
+z14 (ground-only tiles made it worse, 9.3 %); baking our own footprints
+fixed it: the `overview-transition` gate went 7.7 % (fail) → 2.7 % (pass).
+Its canvas "Entering quarter" postcard fade was a separate flake; the spec
+holds it off. Desktop ride-perf unchanged. z16 skipped (+22 MB). Rebuild with
+`npm run build:overview-tiles -- --publish` after any palette or ground
+extract change. The Vondelpark lawn (bd47c876d): the game's
+`park-landscape-ground` sat above the raster in the park token; it now counts
+as flat ground under the tiles (lawn 96,140,70 → 110,154,74 at z13.5–14).
+
+## The "De Hallen slab" was Kinkerstraat 89–105: measured flat roofs for large recipes (2026-10-17)
+
+User (2026-10-16), riding the Tollensstraat with the De Hallen card open: one
+flat brown-grey slab covered a whole block. Lane `lane/de-hallen-slab-20261016`
+(63a3922c3, 493b87695, ead4d6b9b, 18edcaa0d). De Hallen drew correctly; hiding
+only the large recipe for Kinkerstraat 89–105 (pand 092013) removed the slab.
+Two causes: the kit's flat-roof grey #6a6c6c maps through `cityRoofTint` to the
+buff gravel #9e9281, 4 dE from the buff render, so roof, walls and courtyard
+read as one mass; and the 29.9 m Tollensstraat front was installed blank under
+`otherWalls` although its crop w04-248 was archived. One roof schema with
+Entrepotdok's: `roof.flat` stays the material, new `roof.flatHex` carries the
+orthophoto colour (`roof-flat.ts --write`, roof-facts `roofSlotHex`), drawn as
+one measured `roof/flat` mesh outside any `surfaces` region; fit-golden hashes
+it because the mesh hash is positions-only. 089 reinstalled with roof #87898d
+and a `walls[2]` Tollensstraat front (pale buff brick hand-sampled, the crop is
+57 % washed out; ten bays). The audit's lowest roof-to-wall contrasts were
+reinstalled with measured roofs, walls untouched: Stadsloket Noord #87898d,
+Polderweg 3 #898c89, Politie Oost Watergraafsmeer #87898d, the Apollohal
+#e3e3e1 (white membrane). Polderweg 3 and Politie needed new `--allow-inferred`
+notes because the likeness gate tightened after their first installs; each
+note says only the roof colour changed. Exactly five fit-golden hashes moved;
+Entrepotdok and every other house are identical.
+
 ## canal-recall.spec: two failures were stale tests, not regressions (2026-10-17)
 
 Lane `lane/canal-spec-fails-20261016` (009cf1d20, test only). The corridor

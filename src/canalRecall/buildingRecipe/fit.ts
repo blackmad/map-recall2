@@ -74,6 +74,8 @@ const COURSE_M = 0.055;
 /** Ladder window (Amsterdam School): width range of one light, the brick pier between a pair, bars by height. */
 export const LADDER = {minM: 0.55, maxM: 0.75, pierM: 0.16, heightK: 0.68, sillK: 0.17};
 /** 4-6 horizontal glazing bars, one per ~0.5 m of light height, evenly spaced. */
+/** `storeyRibbons`: brick between neighbouring ribbon lights; their frames (0.07 m trim, inside the opening) read as one white post. */
+export const RIBBON_POST_M = 0.02;
 export const ladderBars = (heightM: number): number[] => { const n = clamp(Math.round(heightM / 0.5), 4, 6); return Array.from({length: n}, (_, k) => round((k + 1) / (n + 1), 4)); };
 /** Multi-bay erker (`bayWindows.bays`) proportions. */
 export const ERKER = {depthM: 0.55, returnM: 0.25, insetM: 0.08, stallriserM: 0.85, headM: 0.2, closureM: 0.08};
@@ -278,6 +280,16 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   };
   /** Window `b` of a storey: centre, window width and the width of the cell around it. */
   const storeyPlan = (s: number, count: number) => {
+    // `storeyRibbons`: the storey's windows side by side between two shares of the front, frames touching (one white post).
+    const ribbon = f.storeyRibbons?.[String(s)] ?? (s === n - 1 ? f.storeyRibbons?.last : undefined);
+    if (ribbon && count > 0 && ribbon.pier !== undefined) {
+      const pier = ribbon.pier, w = (gw * (ribbon.to - ribbon.from) - pier * (count - 1)) / count, x0 = gx0 + gw * ribbon.from;
+      return {centre: (b: number) => x0 + (w + pier) * b + w / 2, w: () => round(w), pitch: () => w + pier, axis: (): number | null => null};
+    }
+    if (ribbon && count > 0) {
+      const cell = gw * (ribbon.to - ribbon.from) / count, x0 = gx0 + gw * ribbon.from;
+      return {centre: (b: number) => x0 + cell * (b + 0.5), w: () => round(cell - RIBBON_POST_M), pitch: () => cell, axis: (): number | null => null};
+    }
     const own = ownWeights(s);
     if (own) { const wg = weighted(own); return {centre: wg.centre, w: wg.w, pitch: wg.cell, axis: (): number | null => null}; }
     const axes = axesFor(s, count);
@@ -392,7 +404,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     }
     const top = storeys.at(-1)!;
     school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + heights[top]),
-      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
+      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
   } else if (school && erkerSpan && erkerBays) {
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), lights = 2 * (erkerBays.to - erkerBays.from + 1);
     for (const s of storeys) {

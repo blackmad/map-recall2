@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Credits &amp; data licences · Canal Recall</title>
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#f4f1e8; --panel:#fffdf8; --ink:#2b2622; --muted:#6d655b;
+  --line:#ddd5c4; --accent:#9a4a2e; --link:#2f5d8a; --code:#ece7db;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#1f1c18; --panel:#2a2621; --ink:#eee8da; --muted:#a39a8a;
+    --line:#3b362e; --accent:#e09a78; --link:#8fb8e3; --code:#332e28; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.62 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:780px;margin:0 auto;padding:32px 20px 72px}
+h1{font-size:clamp(24px,4.6vw,32px);line-height:1.2;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-size:19px;line-height:1.3;margin:34px 0 8px;padding-top:18px;border-top:1px solid var(--line)}
+h2:first-of-type{border-top:0;padding-top:0}
+p{margin:10px 0}
+ul{margin:8px 0;padding-left:1.25em}
+li{margin:8px 0}
+a{color:var(--link);overflow-wrap:anywhere}
+code{font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+.lede{color:var(--muted);font-size:17px;margin-top:0}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;padding:12px 16px;margin:22px 0}
+.updated{color:var(--muted);font-size:13px}
+footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer a{margin-right:12px}
+@media (max-width:520px){
+  main{padding:24px 16px 56px}
+  body{font-size:15px}
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Credits &amp; data licences</h1>
+<p class="lede">Amsterdam Canal Recall rebuilds the city from open data, plus original flat-colour geometry drawn by the project. Nothing here is traced from a commercial map or a stock photo library. This page lists the sources and their licences; where a source asks for attribution, the credit also appears in the game.</p>
+
+<h2>Map and geometry data</h2>
+<ul>
+<li><strong>OpenStreetMap contributors</strong> — canals, streets, bridges, parks, public transport lines, building footprints and landmark placement coordinates. Licensed under the <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">Open Database License (ODbL)</a>. © OpenStreetMap contributors.</li>
+<li><strong>BAG</strong> (Basisregistratie Adressen en Gebouwen) and <strong>BGT</strong> (Basisregistratie Grootschalige Topografie) — building footprints, addresses, construction years, ground cover and street names, via Kadaster and PDOK. CC0 1.0 (public domain).</li>
+<li><strong>3DBAG</strong> — 3D building massing, roof shapes and heights, from TU Delft 3D geoinformation. CC BY 4.0. <a href="https://docs.3dbag.nl/en/" target="_blank" rel="noopener">docs.3dbag.nl</a>.</li>
+<li><strong>AHN</strong> (Actueel Hoogtebestand Nederland) — terrain and surface heights. CC0 1.0. <a href="https://www.ahn.nl" target="_blank" rel="noopener">ahn.nl</a>.</li>
+<li><strong>Gemeente Amsterdam open data</strong> — <a href="https://data.amsterdam.nl" target="_blank" rel="noopener">data.amsterdam.nl</a>: neighbourhood and district boundaries, street-name register records, the municipal tree inventory and other datasets published as open data. The buurt/gebied data is CC0; the tree inventory is published as “openbaar, tenzij anders aangegeven” (open unless stated otherwise).</li>
+<li><strong>PDOK aerial imagery</strong> — orthophoto and colour-infrared reference used to study facades and roofs. CC BY 4.0.</li>
+</ul>
+
+<h2>Street panoramas and photographs (reference only)</h2>
+<ul>
+<li><strong>Gemeente Amsterdam street panoramas</strong> — via <a href="https://data.amsterdam.nl" target="_blank" rel="noopener">data.amsterdam.nl</a>, CC BY 4.0. Used to measure real facades, roofs, signs and street furniture. The models are original flat-colour geometry; no panorama pixels are shipped.</li>
+<li><strong>Stadsarchief Amsterdam Beeldbank</strong> — <a href="https://archief.amsterdam/beeldbank/" target="_blank" rel="noopener">archief.amsterdam/beeldbank</a>: historical photographs, referenced by catalogue number and used only where the item is licensed. Each item keeps its own rights statement.</li>
+<li><strong>Wikimedia Commons</strong> — reference photographs for landmark, bridge and sculpture reconstructions. Each file carries its own licence (commonly CC0 / public domain, CC BY or CC BY-SA); the author and licence for each model are recorded in the model catalogue and on the in-game card for that landmark. No photograph pixels and no third-party meshes are shipped.</li>
+</ul>
+
+<h2>Text and facts</h2>
+<ul>
+<li><strong>Wikipedia</strong> — landmark and street summaries, used under <strong>CC BY-SA 4.0</strong>. Each card links to its own article (“Read the full article on Wikipedia”), and text translated from Dutch is marked as translated.</li>
+<li><strong>Wikidata</strong> — identifiers and cross-references for bridges and landmarks. CC0. <a href="https://www.wikidata.org" target="_blank" rel="noopener">wikidata.org</a>.</li>
+<li><strong>RCE national monuments register</strong> — descriptions of listed buildings (rijksmonumenten). CC0.</li>
+</ul>
+
+<h2>Basemap</h2>
+<ul>
+<li>The optional vector basemap uses <strong>OpenStreetMap</strong> data (ODbL) served by <strong>OpenFreeMap</strong>, styled with the <strong>OpenMapTiles</strong> schema. The same attribution is shown in the map corner during play.</li>
+</ul>
+
+<h2>Software</h2>
+<ul>
+<li><strong>three.js</strong> — MIT licence. <a href="https://threejs.org" target="_blank" rel="noopener">threejs.org</a>.</li>
+<li><strong>MapLibre GL JS</strong> — BSD-3-Clause. <a href="https://maplibre.org" target="_blank" rel="noopener">maplibre.org</a>.</li>
+<li><strong>Firebase</strong> (Authentication, Firestore, App Check) — Google, used for optional sign-in, progress sync and feedback.</li>
+<li>Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit" target="_blank" rel="noopener">Smokey’s and the Bandit</a> by Alan Wright — GPL-3.0. The original licence text ships in <code>LICENSE</code>.</li>
+</ul>
+
+<h2>Fonts</h2>
+<ul>
+<li><strong>Anton</strong>, <strong>Pacifico</strong> and <strong>Archivo Black</strong>, served from <code>fonts/</code> — SIL Open Font License 1.1, from the <a href="https://github.com/google/fonts" target="_blank" rel="noopener">google/fonts</a> repository.</li>
+<li><strong>Barlow Condensed</strong> and <strong>JetBrains Mono</strong> — SIL Open Font License 1.1, loaded via Google Fonts.</li>
+</ul>
+
+<h2>Models, icons and other assets</h2>
+<ul>
+<li><strong>Icons</strong> — the Route and Waves icons are from <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC licence); the Bridge icon is from <a href="https://fontawesome.com" target="_blank" rel="noopener">Font Awesome Free</a> (CC BY 4.0).</li>
+<li><strong>Bicycles</strong> — the default omafiets and the Swapfiets-style bike are authored by the project; the pink city bicycle is Kin Chen’s “Pink city bicycle”, released CC0 via MorfVision / BlenderKit.</li>
+<li><strong>Boat</strong> — the canal sloep was generated by the project with Meshy AI.</li>
+<li><strong>Trees and planting</strong> — crown shapes, foliage and bark colours are original approximations, not surveyed crowns. Positions, species and (where recorded) planting years come from the municipal tree inventory and OpenStreetMap.</li>
+<li><strong>Transit mode</strong> currently shows a placeholder metro mesh; it is not part of the credited asset set and is not final.</li>
+</ul>
+
+<div class="note">
+<strong>Report a problem.</strong> Spotted a wrong name, a missing or incorrect credit, or anything that looks copied? Use the <strong>Feedback</strong> button in the game — it captures the exact view you are looking at, so we can find the spot. Say which source looks wrong and what you expected. For questions about stored data, see the <a href="privacy.html">privacy note</a>.
+</div>
+
+<p class="updated">Last updated 2026-10-17.</p>
+
+<footer>
+<a href="./">← Play Canal Recall</a>
+<a href="privacy.html">Privacy</a>
+</footer>
+</main>
+</body>
+</html>
