@@ -12,11 +12,14 @@ and each one was then checked by hand.
 
 ## Totals
 
-- 4 commits, 31 files, **649 lines deleted, 4 inserted** (net −645 lines).
-- **41,977 bytes** removed (the summed size of the touched files at `50caf0b1f`
-  minus their size at the branch head).
-- No generated bundle, data file, extract, model, lab/review HTML page, test file
-  or TODO/HISTORY entry was touched.
+- 4 deletion commits across 31 source files: **649 lines deleted, 4 inserted**
+  (net −645 lines).
+- **41,977 bytes** removed (the summed size of those files at `50caf0b1f` minus
+  their size after the deletions).
+- 1 bundle-rebuild commit (`0405e971a`). In five bundles only minifier
+  identifier names change, and each file keeps its byte size. See Gate results.
+- No data file, extract, model, lab/review HTML page, test file or
+  TODO/HISTORY entry was touched.
 
 ## Method
 
@@ -123,7 +126,41 @@ passed 14/14.
 
 ## Gate results
 
-GATE_RESULTS_PLACEHOLDER
+`npm run check:canal` at `670b4a0ec` exited 1:
+
+- `scripts/check-canal.ts` (lint, the builds and the typed checks):
+  `159 passed, 0 failed in 5.3 min`. `build-storybook` passed in 27.3s.
+- The chained `test:houseboat-kinds`, `test:hud`, `test:street-gables` and
+  `check:stale-installs` passed.
+- `test:look` failed `pass 101, fail 1`:
+  `face-gorontalo-25-47-r1: no entry in chunkWallExposureData.ts`. The same
+  failure occurs at the base commit `50caf0b1f` in a clean detached worktree, so
+  it is **pre-existing**: an installed chunk is missing its exposure entry, and
+  `build-chunk-wall-exposure.ts` needs a rerun.
+- `test:look` stopped the `&&` chain, so the remaining steps were run one by
+  one. `test:bag-tiles`, `check:covers`, `test:building-types`,
+  `check:osm-under-models`, `test:osm-under-models`, `check:landmark-abutters`,
+  `test:landmark-abutters`, `check:noorderkerk-corner-houses`,
+  `check:landmark-inventory`, `check:signature-fallback` and
+  `check:manual-landmarks` all exited 0.
+- `test:tile-buildings` failed `pass 17, fail 1`: `compiler golden: pilot tiles
+  hash per pand as committed — 16/33655/21538: per-pand geometry changed`. It
+  fails the same way at `50caf0b1f`, so it is **pre-existing**.
+- Bundle rebuild: check:canal rewrote `game-ui.bundle.js`,
+  `preferences.bundle.js`, `recall-store/index.js`, `study-facades.bundle.js`
+  and `transit.bundle.js`. The only differences are minifier identifier names,
+  and each file keeps its exact byte size. Rebuilding the same five at
+  `50caf0b1f` reproduces the committed files byte for byte, so the renames come
+  from the deletions. The deleted code had already been tree-shaken out.
+  The rebuilt bundles are committed as `0405e971a` so that the source and
+  bundles agree. The integrator owns bundles and may regenerate them instead.
+
+Smoke e2e, run as `bash /tmp/canal-pw.sh env PW_PORT=4450 npx playwright test
+tests/e2e/canal-recall.spec.ts -g "boots and starts a route" --project=desktop`:
+`✓ 1 [desktop] › boots and starts a route from the setup form (13.5s)`,
+`1 passed (19.5s)`. The web server warned that it could not resolve
+`@sparkjsdev/spark` from the untracked `storybook-static/` build output, which
+is unrelated. No server was left on port 4450.
 
 ## Kept despite looking dead
 
