@@ -97,6 +97,13 @@ function doorSide(raw: Raw, px: [number, number], ppm: number): 'left' | 'right'
   return best.at < cols / 3 ? 'left' : best.at > cols * 2 / 3 ? 'right' : null;
 }
 
+/**
+ * A loosened type's eaves range: wide enough to veto nothing, centred on the type's own range, so the eaves criterion
+ * still weighs the storey pitch (storeyPitch is the range's middle; [0, 99] made it 12.4 m on a 4-storey type and
+ * scored every challenger's eaves 0: Eemsstraat's erker types never placed as challengers).
+ */
+const looseEaves = (t: MatchableType): [number, number] => { const e = t.match?.eavesM; if (!e) return [0, 99]; const mid = (e[0] + e[1]) / 2; return [mid - 50, mid + 50]; };
+
 async function loadTypes(district: string): Promise<MatchableType[]> {
   const dir = path.join(TYPE_LIBRARY_DIR, district);
   return Promise.all((await fs.readdir(dir)).filter(f => f.endsWith('.json')).sort().map(f => readJson(path.join(dir, f))));
@@ -220,7 +227,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   let types = await loadTypes(district);
   // Calibration: every pand placed as one type, no vetoes, no gate (--force-type=<id> --no-gate); output under staging/buurt/calibrate.
   const forced = arg('force-type');
-  if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: [0, 99], ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
+  if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: looseEaves(t), ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
   const typeIds = types.map(t => t.id);
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
@@ -299,7 +306,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       // mirrored by what the edges of the photo prefer.
       const variants = types.flatMap((ct, ci) => [{ct, ci, flip: false}, ...(photoDecides && (ct.match?.mirrorForDoor || ct.match?.mirrorForAccent) ? [{ct, ci, flip: true}] : [])]);
       if (pass === 0 && !forced && !process.argv.includes('--no-challenge')) for (const {ct, ci, flip} of variants) {
-        const loose = {...ct, fit: undefined, match: {years: [0, 9999] as [number, number], eavesM: [0, 99] as [number, number], ...(ct.match?.crowns ? {crowns: ct.match.crowns} : {}), ...(ct.match?.baysByWidth ? {baysByWidth: ct.match.baysByWidth} : {}), ...(ct.match?.mirrorForDoor ? {mirrorForDoor: ct.match.mirrorForDoor} : {}), ...(ct.match?.mirrorForAccent ? {mirrorForAccent: ct.match.mirrorForAccent} : {})}} as MatchableType;
+        const loose = {...ct, fit: undefined, match: {years: [0, 9999] as [number, number], eavesM: looseEaves(ct), ...(ct.match?.crowns ? {crowns: ct.match.crowns} : {}), ...(ct.match?.baysByWidth ? {baysByWidth: ct.match.baysByWidth} : {}), ...(ct.match?.mirrorForDoor ? {mirrorForDoor: ct.match.mirrorForDoor} : {}), ...(ct.match?.mirrorForAccent ? {mirrorForAccent: ct.match.mirrorForAccent} : {})}} as MatchableType;
         const cd: Decision[] = decisions.map((d, k) => d.kind !== 'placed' || (d.typeId === ct.id && !flip) ? d : d.typeId === ct.id ? structuredClone(d) : decidePand([loose], {...evs[k], strip: evs[k].strip && {...evs[k].strip!, accentSide: evs[k].strip!.accentSide ?? 'right'}}, d.house.slug, strip.date));
         if (process.env.AUTO_PLACE_DEBUG) for (const [k, d] of cd.entries()) if (d.kind === 'held' && decisions[k].kind === 'placed') console.log(`  challenger ${ct.id}${flip ? '~m' : ''} on ${d.pandId.slice(-6)}: held, ${d.reason}`);
         if (!cd.some((d, k) => d.kind === 'placed' && decisions[k].kind === 'placed' && ((decisions[k] as Placed).typeId !== ct.id || flip))) continue;
@@ -329,7 +336,14 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         if (!l || l.ncc === null) continue;
         // A side the evidence set (door or accent read, BAG bay, a paired neighbour's door) is not reopened by a same-type flip.
         const sideKnown = d.notes.some(n => /^(door|accent) (left|right)|paired with|the opposite of/.test(n));
-        const best = Object.entries(challengers.get(d.pandId) ?? {}).filter(([key, v]) => key !== own && !(sideKnown && key.split('~')[0] === d.typeId) && v !== null && scoreType(types.find(t => t.id === key.split('~')[0])!, evs[k]).veto.length === 0)
+        // Where BAG draws the pand's erker, its place in the outline is fact and the edges are not: a candidate type whose
+        // `bagBay` criterion disagrees is no candidate (Boterdiepstraat 40: the strip sits 0.4 m off the BAG party lines,
+        // so the edges preferred an erker against the party wall to BAG's erker 1 m from it, 0.48 vs 0.35).
+        // Without a BAG bay the edges may move an erker but not add or remove one (Boterdiepstraat 52 read closer to the odd
+        // side's erker type than to its own flat front, 0.44 vs 0.35): rowCoherence's rhythm rule does that from BAG anchors.
+        const bagAgrees = (t: MatchableType) => evs[k].bagBay ? (scoreType(t, evs[k]).criteria.find(c => c.key === 'bag-bay')?.score ?? 1) === 1
+          : !!t.match?.bagBay === !!types.find(x => x.id === d.typeId)?.match?.bagBay;
+        const best = Object.entries(challengers.get(d.pandId) ?? {}).filter(([key, v]) => key !== own && !(sideKnown && key.split('~')[0] === d.typeId) && v !== null && scoreType(types.find(t => t.id === key.split('~')[0])!, evs[k]).veto.length === 0 && bagAgrees(types.find(t => t.id === key.split('~')[0])!))
           .sort((a, b) => b[1]! - a[1]!)[0];
         if (!best || best[1]! <= l.ncc + STRIP_LIKENESS.challengeMargin) continue;
         const [typeId, m] = best[0].split('~'), t = types.find(x => x.id === typeId)!;

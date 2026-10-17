@@ -310,27 +310,47 @@ export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; 
 }
 
 /**
- * Row coherence for the BAG erker (Rivierenbuurt 1934 rows): the types of a street side tell their erker apart by its
- * place in the BAG outline (`match.bagBayOffset`), and BAG digitises the same erker 0.05-0.15 of the front apart from
- * house to house (Boterdiepstraat 25: 0.75 among 0.65s), so a lone pand lands on a neighbour row's type. A placed pand
- * between two placed neighbours of one other type, drawn the same way round, that this type fits without a veto once
- * the BAG bay is set aside, takes their type and side. Returns the pands changed.
+ * Row coherence for the BAG erker (Rivierenbuurt 1934 rows). Two rules, BAG's erker outline the fact they never override:
+ *
+ * 1. Between two of a kind. The types of a street side tell their erker apart by its place in the BAG outline
+ *    (`match.bagBayOffset`), and BAG digitises the same erker 0.05-0.15 of the front apart from house to house
+ *    (Boterdiepstraat 25: 0.75 among 0.65s), so a lone pand lands on a neighbour row's type. A placed pand between two
+ *    placed neighbours of one other type, drawn the same way round, takes their type and side, the bay's offset set
+ *    aside but not its presence: a pand BAG draws with an erker never becomes a type without one.
+ * 2. The rhythm. BAG misses some erkers the photo shows (Eemsstraat 22 and 14, Boterdiepstraat 50): a placed pand
+ *    without a BAG bay takes the type and side of the houses four along (the rows repeat every four houses: erker pair,
+ *    then flat pair) when those of them that BAG draws with an erker agree and at least one does.
+ *
+ * Returns the pands changed.
  */
 export function rowCoherence(decisions: Decision[], types: MatchableType[], evs: PandEvidence[], photoDate: string): string[] {
   const changed: string[] = [];
+  const adopt = (k: number, t: MatchableType, mirror: boolean, why: string) => {
+    const d = decisions[k] as {kind: 'placed'} & Placed;
+    const {bagBay: _bay, bagBayOffset: _offset, ...rest} = t.match!;
+    const nd = decidePand([{...t, match: rest} as MatchableType], evs[k], d.house.slug, photoDate);
+    if (nd.kind !== 'placed') return;
+    if (mirror) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
+    const bay = evs[k].bagBay;
+    nd.notes = [...nd.notes.filter(x => !/^(accent|door) /.test(x)), `row coherence: ${why}, was ${d.typeId}${bay ? ` (BAG bay centre ${bay.centre})` : ' (no BAG bay)'}`];
+    decisions[k] = nd; changed.push(d.pandId);
+  };
   for (let k = 1; k + 1 < decisions.length; k++) {
     const d = decisions[k], a = decisions[k - 1], b = decisions[k + 1];
     if (d.kind !== 'placed' || a.kind !== 'placed' || b.kind !== 'placed' || a.typeId !== b.typeId || a.typeId === d.typeId) continue;
     if (!!a.house.type?.mirror !== !!b.house.type?.mirror) continue;
     const t = types.find(x => x.id === a.typeId);
-    if (!t?.match || t.match.bagBay === undefined) continue;
-    const {bagBay: _bay, bagBayOffset: _offset, ...rest} = t.match;
-    const nd = decidePand([{...t, match: rest} as MatchableType], evs[k], d.house.slug, photoDate);
-    if (nd.kind !== 'placed') continue;
-    if (a.house.type?.mirror) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
-    const bay = evs[k].bagBay;
-    nd.notes = [...nd.notes.filter(x => !/^(accent|door) /.test(x)), `row coherence: between two ${t.id}${a.house.type?.mirror ? ' (mirrored)' : ''} houses, was ${d.typeId}${bay ? ` (BAG bay centre ${bay.centre})` : ' (no BAG bay)'}`];
-    decisions[k] = nd; changed.push(d.pandId);
+    if (!t?.match || t.match.bagBay === undefined || (evs[k].bagBay && !t.match.bagBay)) continue;
+    adopt(k, t, !!a.house.type?.mirror, `between two ${t.id}${a.house.type?.mirror ? ' (mirrored)' : ''} houses`);
+  }
+  for (let k = 0; k < decisions.length; k++) {
+    const d = decisions[k];
+    if (d.kind !== 'placed' || evs[k].bagBay || evs[k].bagBay === undefined || changed.includes(d.pandId)) continue;
+    const anchors = [k - 4, k + 4].filter(j => j >= 0 && j < decisions.length && decisions[j].kind === 'placed' && evs[j].bagBay).map(j => decisions[j] as {kind: 'placed'} & Placed);
+    if (!anchors.length || anchors.some(x => x.typeId !== anchors[0].typeId || !!x.house.type?.mirror !== !!anchors[0].house.type?.mirror)) continue;
+    const t = types.find(x => x.id === anchors[0].typeId);
+    if (!t?.match?.bagBay || (anchors[0].typeId === d.typeId && !!anchors[0].house.type?.mirror === !!d.house.type?.mirror)) continue;
+    adopt(k, t, !!anchors[0].house.type?.mirror, `the row repeats every four houses: ${anchors.map(x => x.pandId.slice(-6)).join(' and ')} (BAG erker) are ${t.id}${anchors[0].house.type?.mirror ? ' (mirrored)' : ''}`);
   }
   return changed;
 }

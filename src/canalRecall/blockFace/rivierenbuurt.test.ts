@@ -123,3 +123,23 @@ test('rowCoherence: a lone pand between two houses of one type takes theirs (Bot
   // A pand already of its neighbours' type: nothing changes.
   assert.deepEqual(rowCoherence(ds, types, evs, '2020-01-07'), []);
 });
+
+test('rowCoherence: BAG erkers are never dropped between flat fronts; a missed one follows the four-house rhythm (Eemsstraat 30 / 22)', () => {
+  const end = defaultTypeLoader('rijn-1934-erker-end') as MatchableType, types = [flat, end];
+  const bay = (centre: number) => ({fromM: 4.1, toM: 5.8, depthM: 0.65, centre});
+  // Boterdiepstraat 48: an erker pand between two flat fronts keeps its erker.
+  const evs1 = [pand({pandId: '0363100012086703', bagBay: null}), pand({pandId: '0363100012067390', bagBay: bay(0.85)}), pand({pandId: '0363100012065337', bagBay: null})];
+  const ds1: Decision[] = evs1.map(ev => decidePand(types, ev, `b-${ev.pandId.slice(-6)}`, '2023-01-03'));
+  assert.equal(ds1[1].kind === 'placed' && ds1[1].typeId, 'rijn-1934-erker-end');
+  assert.deepEqual(rowCoherence(ds1, types, evs1, '2023-01-03'), []);
+  // Eemsstraat 30 (BAG erker at the party wall) and 22, four houses along, which BAG draws flat: 22 follows 30.
+  const evs2 = Array.from({length: 8}, (_, k) => pand({pandId: `03631000121119${80 + k}`, bagBay: k === 3 ? bay(0.85) : null}));
+  const ds2: Decision[] = evs2.map(ev => decidePand(types, ev, `e-${ev.pandId.slice(-6)}`, '2023-01-03'));
+  assert.deepEqual(ds2.map(d => d.kind === 'placed' ? d.typeId.replace('rijn-1934-', '') : null), ['flat-three', 'flat-three', 'flat-three', 'erker-end', 'flat-three', 'flat-three', 'flat-three', 'flat-three']);
+  assert.deepEqual(rowCoherence(ds2, types, evs2, '2023-01-03'), ['0363100012111987']);
+  assert.ok(ds2[7].kind === 'placed' && ds2[7].typeId === 'rijn-1934-erker-end' && ds2[7].notes.some(n => /^row coherence: the row repeats every four houses: 111983 \(BAG erker\)/.test(n)));
+  // Unread BAG bays (an intake without the bay evidence) are no anchors and nothing to correct.
+  const evs3 = evs2.map(ev => ({...ev, bagBay: undefined}));
+  const ds3: Decision[] = evs3.map(ev => decidePand(types, ev, `e-${ev.pandId.slice(-6)}`, '2023-01-03'));
+  assert.deepEqual(rowCoherence(ds3, types, evs3, '2023-01-03'), []);
+});
