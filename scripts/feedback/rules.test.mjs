@@ -19,12 +19,20 @@ async function create(id,uid,change={},provider='google.com') {
   return r.status;
 }
 assert.equal(await create('valid','alice'),200,'author can submit');
+// A legacy note with no `category`/`subject` (old schema) still passes.
+assert.equal(await create('legacy','alice'),200,'legacy note without category still passes');
 assert.equal(await create('guest',null),403,'unauthenticated cannot submit');
 assert.equal(await create('spoof','bob'),403,'cannot spoof owner');
 assert.equal(await create('anon','alice',{},'anonymous'),403,'anonymous cannot submit');
 assert.equal(await create('oversize','alice',{text:'x'.repeat(12001)}),403);
 assert.equal(await create('status','alice',{status:'resolved'}),403,'cannot pre-resolve');
 assert.equal(await create('anchor','alice',{target:{id:'t',label:'t',imageUrl:'',anchor:{x:2,y:0}}}),403);
+assert.equal(await create('category','alice',{category:'request'}),200,'valid category accepted');
+assert.equal(await create('category-bad','alice',{category:'nonsense'}),403,'invalid category rejected');
+assert.equal(await create('subject','alice',{subject:{kind:'pand',id:'0363000012345678',lngLat:[4.9003,52.3716]}}),200,'valid subject accepted');
+assert.equal(await create('subject-bigid','alice',{subject:{kind:'pand',id:'x'.repeat(65)}}),403,'oversized subject id rejected');
+assert.equal(await create('subject-badkind','alice',{subject:{kind:'district'}}),403,'invalid subject kind rejected');
+assert.equal(await create('subject-badlnglat','alice',{subject:{kind:'point',lngLat:[4.9,'north']}}),403,'invalid subject lngLat rejected');
 assert.equal(await create('valid','alice',{text:'Changed evidence'}),403,'cannot rewrite');
 async function get(uid,path='/canalFeedback/valid',method='GET') {return fetch(`${base}${path}`,{method,headers:uid?{Authorization:`Bearer ${token(uid)}`}:{}});}
 assert.equal((await get('alice')).status,200);
@@ -32,4 +40,4 @@ assert.equal((await get('alice','/canalFeedback/not-yet-created')).status,404,'t
 assert.equal((await get('bob')).status,403);
 assert.equal((await get(null)).status,403);
 assert.equal((await get('alice','/canalFeedback/valid','DELETE')).status,403);
-console.log('Feedback rules: owner submission/read, immutable evidence, auth/size/anchor/status rejection passed.');
+console.log('Feedback rules: owner submission/read, immutable evidence, auth/size/anchor/status/category/subject rejection passed.');
