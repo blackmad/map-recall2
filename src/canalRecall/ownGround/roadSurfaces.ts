@@ -295,7 +295,16 @@ export interface RoadBuildStats {
   ms: number;
 }
 
-export type RoadLayer = RoadMesh | 'kerb' | 'bollard';
+export type RoadLayer = RoadMesh | 'brick' | 'kerb' | 'bollard';
+
+/**
+ * The layer a polygon draws in: its mesh, except klinker inritten and parking bays (and the footway islands drawn
+ * with them), which take the muted grey `brick` (road look v2, 2026-10-16: on the orthophoto they read as greyish
+ * brick close to the pavement; drawn as the klinker carriageway they were saturated brown wedges across pavements).
+ */
+export function surfaceLayer(cls: RoadClass, mesh: RoadMesh): RoadLayer {
+  return mesh === 'klinker' && (cls === 'driveway' || cls === 'parking') ? 'brick' : mesh;
+}
 
 export interface RoadBuildInput {
   /** The land surface the h = 0 polygons drape on (groundCell `onLand`). */
@@ -364,10 +373,11 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       stats.onDeck++;
     }
     const cls = index.drawClass(k);
-    if (rec.h >= 1) drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[cls], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
+    const layer = get(surfaceLayer(cls, index.mesh(k)));
+    if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else {
       const tol = DRAPE_TOL[cls], low = isLow(cls);
-      drapeAdaptive(get(index.mesh(k)), flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
+      drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, (low && input.drapeTol) || tol.sag, DRAPE_MIN_EDGE_M, far ? Infinity : (low && input.drapeFloatTol) || tol.float);
     }
     stats.drawn[cls]++;
   }
