@@ -796,7 +796,7 @@ export interface LargeWallIntent {
    * Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing, `arch` = the
    * brick arch rings over arched openings, default a shade darker than the wall).
    */
-  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string};
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string; /** the mesh plinth panel under a layered curtain wall (`ground: "mesh-plinth"`), a matte panel in this colour instead of the door slot (the Rietveld building's white rendered plinth) */ plinth?: string};
   /**
    * Measured window proportions (`measure.ts` from the rectified photo; replaces the `windows` preset's size): `w` window
    * width as a fraction of the bay, `h` height as a fraction of the storey, `sill` sill height as a fraction of the storey.
@@ -870,6 +870,39 @@ export interface LargeWallIntent {
   lantern?: boolean;
   /** Perforated-brick screen (car parks): a concrete lattice of posts and rails over the wall, glass-block perforations in one bay of three; brick-bay-grid only. */
   screen?: boolean;
+  /**
+   * Layered `curtain-wall` with opaque spandrel panels (the Rietveld building, 1967: every storey is a 2 m vision band
+   * between frosted panels over the floor slab and under the ceiling): in every storey above the ground, a panel `sill`
+   * of the storey tall over its floor line and one `head` of the storey under the next floor line (fractions of an upper
+   * storey; the top storey's head panel runs up to the eaves), in `colour` (measured from the crop; default the group's
+   * frame colour). The grid gains transoms at the panel edges. Absent: the plain grid, byte-identical.
+   */
+  spandrels?: {sill?: number; head?: number; colour?: string};
+  /**
+   * The ground storey's height as a fraction of an upper storey (0.3..2.5), when the photo shows it differs from the
+   * ground system's default (a low raised plinth under the Rietveld building's curtain wall: 1.8 m under 4.2 m floors).
+   */
+  groundFactor?: number;
+  /**
+   * The 3DBAG shell (1-based, in facts order) whose surfaces `wallSurfaces` names. A pand of two separate solids (the 2006
+   * Rietveld Academie: the tower and the low block) numbers each shell's wall surfaces from 1, so a bare index claims a
+   * surface in every shell. Absent: every shell, as before.
+   */
+  shell?: number;
+  /**
+   * Openings in only some bays of some storeys: on each entry's `storeys` (1 = first floor) only the listed `bays` (of
+   * `baysPerStorey`, from the viewer's left on the widest panel) keep the storey's windows; the rest of the storey is plain
+   * wall. The 2006 Rietveld Academie tower: ribbon windows across the middle 16 m of a 40 m dimpled-metal front on three
+   * floors, blank metal between. Absent: every bay, byte-identical.
+   */
+  openBays?: {storeys: number[]; bays: number[]}[];
+  /**
+   * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
+   * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving
+   * the slab edges in the wall colour), in `colour`; bays with an opening are left open (the window shows). The 2006
+   * Rietveld Academie low block: white expanded-metal panels over its upper storey between white slab edges. Layered kit only.
+   */
+  meshScreen?: {storeys: number[]; colour: string; from?: number; to?: number; joint?: number};
   /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
