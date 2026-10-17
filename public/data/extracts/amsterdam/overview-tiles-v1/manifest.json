@@ -73,14 +73,19 @@
    51
   ],
   "asphalt": [
-   132,
-   130,
-   124
+   146,
+   144,
+   137
   ],
   "klinker": [
-   138,
-   101,
-   78
+   147,
+   110,
+   90
+  ],
+  "brick": [
+   168,
+   156,
+   146
   ],
   "cycle": [
    204,
@@ -132,7 +137,7 @@
   52.435921
  ],
  "tiles": 892,
- "bytes": 18328887,
- "built": "2026-10-16T20:37:38.513Z",
+ "bytes": 18445872,
+ "built": "2026-10-17T07:05:28.309Z",
  "attribution": "© OpenStreetMap contributors (ODbL); BGT © Kadaster (CC0); AHN"
 }
