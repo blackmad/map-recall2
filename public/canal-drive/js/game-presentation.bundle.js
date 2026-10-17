@@ -890,6 +890,21 @@
     return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
   })();
   var STONE_CELL_MEAN = 228 / 255;
+  var STREET_GROUND = {
+    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
+    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
+    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
+    asphalt: { base: [86, 88, 93] },
+    cycle: { base: [150, 66, 58] },
+    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
+    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
+    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
+    pavement: { base: [174, 162, 152], joint: "#7f756b" },
+    kerb: "#cfcac0",
+    paint: "#f2f0ea",
+    rail: "#6c6e72",
+    bollard: "#5a2a26"
+  };
   var HIGHLIGHT_CORAL = "#ff8033";
   var GROUND_TONES = {
     land: { base: [168, 158, 142], joint: "#857b6d" },
@@ -48228,10 +48243,13 @@
   // src/canalRecall/ownGround/groundLook.ts
   var GROUND_LOOK_TONES = {
     bright: {
-      asphalt: [132, 130, 124],
+      asphalt: [146, 144, 137],
       pavement: [183, 174, 161],
-      klinker: [138, 101, 78],
+      klinker: [147, 110, 90],
+      brick: [168, 156, 146],
       cycle: [204, 107, 106],
+      // Tram rails: light steel (they were #6c6e72, darker than the asphalt round them and lost from the bike).
+      rail: "#b4b7bb",
       water: [79, 134, 163],
       land: [185, 174, 156],
       paving: [194, 184, 167],
@@ -48240,6 +48258,7 @@
       parkPath: [142, 140, 134]
     }
   };
+  var DEFAULT_PALETTE = { street: { ...STREET_GROUND, brick: STREET_GROUND.klinker }, tones: GROUND_TONES };
 
   // src/canalRecall/game/radar.ts
   var RADAR_TILE_M = 160;

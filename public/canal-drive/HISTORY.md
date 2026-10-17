@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Road look v2: measured tones and markings on the surveyed roads (2026-10-16)
+
+User (2026-10-16 evening): "not gonna lie, our roads still don't look great".
+Lane `lane/road-look-v2-20261016` (4b5d9df36, 7dfe6653c), bounded after the
+user parked the big orthophoto road study. Tones measured from the PDOK
+orthophoto inside BGT polygons (sunlit, dehazed medians): asphalt luma 130 →
+144, klinker lightened, inrit and parking klinker now a muted `brick` layer
+near the pavement instead of saturated brown slabs; tram rails light steel.
+Markings on surveyed roads from OSM nodes (new extract `road-marks-v1`, from
+the archived pbf, 83 KB, 11,661 nodes) and the road graph, clipped to BGT
+carriageway polygons: zebras, block lines, red cycle crossings with blocks,
+stop lines at signals, give-way teeth, centre dashes on two-way carriageways
+≥ 6 m wide stopping 8 m before junctions; the old band paint stays off.
+Cost +1.9 % triangles, ~+10 % cell build, desktop ride frames unchanged.
+Regressions `SURVEY_PAINT` (Bilderdijkgracht, Marnixstraat busway,
+Nassaukade × Frederik Hendrikplantsoen); the paint spec expects survey paint.
+
 ## Crowns on the street end only; neck heads with a cornice and a segmental cap (2026-10-16)
 
 User (2026-10-16): "sometimes houses have gables on both the street and back

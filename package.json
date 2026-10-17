@@ -35,7 +35,7 @@
     "block-face:buurt-survey": "node --import tsx scripts/block-face/buurt-survey.ts",
     "block-face:auto-place": "node --import tsx scripts/block-face/auto-place.ts",
     "block-face:auto-place-calibrate": "node --import tsx scripts/block-face/auto-place-calibrate.ts",
-    "test:own-ground": "node --import tsx --test src/canalRecall/ownGround/ownGround.test.ts src/canalRecall/ownGround/roadCells.test.ts src/canalRecall/ownGround/topoSimplify.test.ts src/canalRecall/ownGround/roadSurfaces.test.ts",
+    "test:own-ground": "node --import tsx --test src/canalRecall/ownGround/ownGround.test.ts src/canalRecall/ownGround/roadCells.test.ts src/canalRecall/ownGround/topoSimplify.test.ts src/canalRecall/ownGround/roadSurfaces.test.ts src/canalRecall/ownGround/surveyMarkings.test.ts",
     "test:roads-cells": "node --import tsx --test src/canalRecall/ownGround/roadCells.test.ts",
     "fetch:bgt-roads": "node --import tsx scripts/own-ground/fetch-bgt-roads.ts",
     "build:bgt-roads": "node --import tsx scripts/own-ground/build-bgt-roads.ts",
