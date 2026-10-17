@@ -16,7 +16,7 @@ import fs from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, decidePand, fillPairs, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, decidePand, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
@@ -28,6 +28,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
+import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -96,6 +97,13 @@ function doorSide(raw: Raw, px: [number, number], ppm: number): 'left' | 'right'
   return best.at < cols / 3 ? 'left' : best.at > cols * 2 / 3 ? 'right' : null;
 }
 
+/**
+ * A loosened type's eaves range: wide enough to veto nothing, centred on the type's own range, so the eaves criterion
+ * still weighs the storey pitch (storeyPitch is the range's middle; [0, 99] made it 12.4 m on a 4-storey type and
+ * scored every challenger's eaves 0: Eemsstraat's erker types never placed as challengers).
+ */
+const looseEaves = (t: MatchableType): [number, number] => { const e = t.match?.eavesM; if (!e) return [0, 99]; const mid = (e[0] + e[1]) / 2; return [mid - 50, mid + 50]; };
+
 async function loadTypes(district: string): Promise<MatchableType[]> {
   const dir = path.join(TYPE_LIBRARY_DIR, district);
   return Promise.all((await fs.readdir(dir)).filter(f => f.endsWith('.json')).sort().map(f => readJson(path.join(dir, f))));
@@ -112,7 +120,9 @@ async function faceEvidence(faceId: string) {
     const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 ? f0.eavesM : facts.heights.dak70pM;
     const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
-      osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: b.tags.shop ? `shop=${b.tags.shop}` : b.tags.amenity ? `amenity=${b.tags.amenity}` : b.tags.craft ? `craft=${b.tags.craft}` : b.tags.office ? `office=${b.tags.office}` : b.tags.healthcare ? `healthcare=${b.tags.healthcare}` : undefined}))};
+      osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: b.tags.shop ? `shop=${b.tags.shop}` : b.tags.amenity ? `amenity=${b.tags.amenity}` : b.tags.craft ? `craft=${b.tags.craft}` : b.tags.office ? `office=${b.tags.office}` : b.tags.healthcare ? `healthcare=${b.tags.healthcare}` : undefined})),
+      // The bay of the discovered BAG front (bay-outline.ts / intake --bay-outline=auto keep it in facts-bay-outline.json).
+      bagBay: frontBump((existsSync(path.join(dir, 'pands', id, 'facts-bay-outline.json')) ? await readJson(path.join(dir, 'pands', id, 'facts-bay-outline.json')) as BuildingFacts : facts).fronts[0])};
     if (span) {
       const px: [number, number] = [Math.max(0, span.px[0]), Math.min(raw.width, span.px[1])];
       const palette = measureStripPalette({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM});
@@ -208,11 +218,18 @@ async function runLikeness(runId: string): Promise<PandLikeness[]> {
 
 if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(',');
+  // --photo-decides (Rivierenbuurt, 2026-10-16): where facts and strip readings cannot tell two types of one row apart
+  // (Boterdiepstraat's flat and erker fronts share year, width, eaves and roof; the sunlit strip reads no door or accent
+  // side), the edge NCC of every candidate (type x mirroring) decides instead of holding the pand.
+  const photoDecides = process.argv.includes('--photo-decides');
+  // --row-exposure: one trim-normalisation gain per face (autoPlace.ts rowExposure) instead of one per pand; =date: one per strip date.
+  const rowExposureOn = process.argv.some(a => a === '--row-exposure' || a === '--row-exposure=date');
+  const variantKey = (d: Placed) => `${d.typeId}${d.house.type?.mirror ? '~m' : ''}`;
   const doc = await readJson(path.join('scripts/block-face/buurten', `${buurt}.json`));
   let types = await loadTypes(district);
   // Calibration: every pand placed as one type, no vetoes, no gate (--force-type=<id> --no-gate); output under staging/buurt/calibrate.
   const forced = arg('force-type');
-  if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: [0, 99], ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
+  if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: looseEaves(t), ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
   const typeIds = types.map(t => t.id);
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
@@ -221,6 +238,13 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
   const t0 = performance.now();
+  // --row-exposure=date: the trim gains of every face of this run, pooled per strip date, before any face is placed.
+  const dateGains = new Map<string, number[][]>();
+  if (process.argv.includes('--row-exposure=date')) for (const f of doc.faces) {
+    if ((only && !only.includes(f.id)) || !existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) continue;
+    const {strip, evs} = await faceEvidence(f.id);
+    dateGains.set(strip.date, [...(dateGains.get(strip.date) ?? []), ...trimGains(evs)]);
+  }
   for (const f of doc.faces) {
     // `covered` by an authored face; a face this buurt generated itself (the face or its runs) is not a cover.
     const coverIntent = f.covered && existsSync(path.join(FACES, f.covered, 'intent.json')) ? await readJson(path.join(FACES, f.covered, 'intent.json')) : null;
@@ -229,6 +253,10 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (!existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) { summary.push({face: f.id, status: 'no intake'}); continue; }
     const tf = performance.now();
     const {discovery, strip, uses, evs} = await faceEvidence(f.id);
+    if (rowExposureOn) {
+      const pooled = dateGains.get(strip.date), g = rowExposure(evs, pooled && pooled.length >= 8 ? medianGain(pooled) : undefined);
+      if (g) console.log(`${f.id}: row exposure gain ${g.join('/')} over ${evs.filter(e => e.strip?.wallOwnGain).length} pands${pooled ? ` (pooled over ${pooled.length} pands of ${strip.date})` : ''}`);
+    }
     // Pass 1: match. Pass 2+: compile the runs, hold the pands that fail the likeness gate, repeat until stable.
     const decisions: Decision[] = evs.map(ev => {
       const hold = reviewHolds.get(ev.pandId);
@@ -236,7 +264,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       return decidePand(types, ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
     fillPairs(decisions, types);
-    const challengers = new Map<string, Record<string, number | null>>();
+    const rowSet = rowCoherence(decisions, types, evs, strip.date);
+    const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
     let runFaces: {id: string; ids: string[]}[] = [];
     for (let pass = 0; pass < 3; pass++) {
@@ -283,32 +312,75 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       if (process.argv.includes('--no-gate')) break;
       // Challengers (first pass): every other library type placed on the same runs, without vetoes. The photo must not
       // prefer one of them over the placed type by more than `challengeMargin` (blockFace/stripLikeness.ts).
-      if (pass === 0 && !forced && !process.argv.includes('--no-challenge')) for (const [ci, ct] of types.entries()) {
-        const loose = {...ct, fit: undefined, match: {years: [0, 9999] as [number, number], eavesM: [0, 99] as [number, number], ...(ct.match?.crowns ? {crowns: ct.match.crowns} : {}), ...(ct.match?.baysByWidth ? {baysByWidth: ct.match.baysByWidth} : {}), ...(ct.match?.mirrorForDoor ? {mirrorForDoor: ct.match.mirrorForDoor} : {}), ...(ct.match?.mirrorForAccent ? {mirrorForAccent: ct.match.mirrorForAccent} : {})}} as MatchableType;
-        const cd: Decision[] = decisions.map((d, k) => d.kind !== 'placed' || d.typeId === ct.id ? d : decidePand([loose], {...evs[k], strip: evs[k].strip && {...evs[k].strip!, accentSide: evs[k].strip!.accentSide ?? 'right'}}, d.house.slug, strip.date));
-        if (!cd.some((d, k) => d.kind === 'placed' && decisions[k].kind === 'placed' && (decisions[k] as Placed).typeId !== ct.id)) continue;
+      // --photo-decides: each placement's own NCC is a candidate too, keyed by type and mirroring (`<type>~m` = mirrored).
+      if (pass === 0 && photoDecides) for (const d of decisions) if (d.kind === 'placed' && likeness.has(d.pandId)) challengers.set(d.pandId, {...challengers.get(d.pandId), [variantKey(d)]: likeness.get(d.pandId)!.ncc});
+      // With --photo-decides a type that mirrors (match.mirrorForDoor / mirrorForAccent) is also tried flipped, on every
+      // placed pand, its own included: a row whose door and accent sides do not read (sunlit or washed-out strips) is
+      // mirrored by what the edges of the photo prefer.
+      const variants = types.flatMap((ct, ci) => [{ct, ci, flip: false}, ...(photoDecides && (ct.match?.mirrorForDoor || ct.match?.mirrorForAccent) ? [{ct, ci, flip: true}] : [])]);
+      if (pass === 0 && !forced && !process.argv.includes('--no-challenge')) for (const {ct, ci, flip} of variants) {
+        const loose = {...ct, fit: undefined, match: {years: [0, 9999] as [number, number], eavesM: looseEaves(ct), ...(ct.match?.crowns ? {crowns: ct.match.crowns} : {}), ...(ct.match?.baysByWidth ? {baysByWidth: ct.match.baysByWidth} : {}), ...(ct.match?.mirrorForDoor ? {mirrorForDoor: ct.match.mirrorForDoor} : {}), ...(ct.match?.mirrorForAccent ? {mirrorForAccent: ct.match.mirrorForAccent} : {})}} as MatchableType;
+        const cd: Decision[] = decisions.map((d, k) => d.kind !== 'placed' || (d.typeId === ct.id && !flip) ? d : d.typeId === ct.id ? structuredClone(d) : decidePand([loose], {...evs[k], strip: evs[k].strip && {...evs[k].strip!, accentSide: evs[k].strip!.accentSide ?? 'right'}}, d.house.slug, strip.date));
+        if (process.env.AUTO_PLACE_DEBUG) for (const [k, d] of cd.entries()) if (d.kind === 'held' && decisions[k].kind === 'placed') console.log(`  challenger ${ct.id}${flip ? '~m' : ''} on ${d.pandId.slice(-6)}: held, ${d.reason}`);
+        if (!cd.some((d, k) => d.kind === 'placed' && decisions[k].kind === 'placed' && ((decisions[k] as Placed).typeId !== ct.id || flip))) continue;
         fillPairs(cd, [loose]);
+        if (flip) for (const d of cd) if (d.kind === 'placed' && d.typeId === ct.id) { if (d.house.type!.mirror) delete d.house.type!.mirror; else d.house.type!.mirror = true; }
         const {runs} = placedRuns(cd);
         for (const [k, run] of runs.entries()) {
-          const id = `${f.id}-x${ci + 1}${k + 1}`;
+          const id = `${f.id}-x${ci + 1}${flip ? 'm' : ''}${k + 1}`;
           await writeRunFace(f.id, id, run.map(p => p.pandId), strip, uses, discovery);
-          await fs.writeFile(path.join(FACES, id, 'intent.json'), JSON.stringify(runIntent({id, street: f.street, stripDate: strip.date, stripImage: path.join(STAGING, id, 'strip.jpg'), types: typeIds, run, note: `challenger ${ct.id}`}), null, 1) + '\n');
+          await fs.writeFile(path.join(FACES, id, 'intent.json'), JSON.stringify(runIntent({id, street: f.street, stripDate: strip.date, stripImage: path.join(STAGING, id, 'strip.jpg'), types: typeIds, run, note: `challenger ${ct.id}${flip ? ' (mirrored)' : ''}`}), null, 1) + '\n');
           try {
             await compileFace(id);
-            for (const l of await runLikeness(id)) if ((decisions.find(d => d.pandId === l.pandId) as Placed | undefined)?.typeId !== ct.id) challengers.set(l.pandId, {...challengers.get(l.pandId), [ct.id]: l.ncc});
+            for (const l of await runLikeness(id)) {
+              const own = decisions.find(d => d.pandId === l.pandId) as Placed | undefined, mine = run.find(p => p.pandId === l.pandId);
+              if (photoDecides && mine) challengers.set(l.pandId, {...challengers.get(l.pandId), [variantKey(mine)]: l.ncc});
+              else if (own?.typeId !== ct.id) challengers.set(l.pandId, {...challengers.get(l.pandId), [ct.id]: l.ncc});
+            }
           } catch (e) { console.log(`${id}: challenger ${ct.id} did not compile: ${(e as Error).message.slice(0, 160)}`); }
           await fs.rm(path.join(FACES, id), {recursive: true}); await fs.rm(path.join(STAGING, id), {recursive: true, force: true});
         }
       }
+      // --photo-decides: a placement whose candidate (another plausible type, or the same type mirrored) the photo's edges
+      // prefer by more than the challenge margin is switched to it, once per pand; the next pass compiles and gates it.
+      if (photoDecides && pass === 0) for (const [k, d] of decisions.entries()) {
+        if (d.kind !== 'placed' || switched.has(d.pandId) || rowSet.includes(d.pandId)) continue; // row coherence decided these
+        const l = likeness.get(d.pandId), own = variantKey(d);
+        if (!l || l.ncc === null) continue;
+        // A side the evidence set (door or accent read, BAG bay, a paired neighbour's door) is not reopened by a same-type flip.
+        const sideKnown = d.notes.some(n => /^(door|accent) (left|right)|paired with|the opposite of/.test(n));
+        // Where BAG draws the pand's erker, its place in the outline is fact and the edges are not: a candidate type whose
+        // `bagBay` criterion disagrees is no candidate (Boterdiepstraat 40: the strip sits 0.4 m off the BAG party lines,
+        // so the edges preferred an erker against the party wall to BAG's erker 1 m from it, 0.48 vs 0.35).
+        // Without a BAG bay the edges may move an erker but not add or remove one (Boterdiepstraat 52 read closer to the odd
+        // side's erker type than to its own flat front, 0.44 vs 0.35): rowCoherence's rhythm rule does that from BAG anchors.
+        const bagAgrees = (t: MatchableType) => evs[k].bagBay ? (scoreType(t, evs[k]).criteria.find(c => c.key === 'bag-bay')?.score ?? 1) === 1
+          : !!t.match?.bagBay === !!types.find(x => x.id === d.typeId)?.match?.bagBay;
+        const best = Object.entries(challengers.get(d.pandId) ?? {}).filter(([key, v]) => key !== own && !(sideKnown && key.split('~')[0] === d.typeId) && v !== null && scoreType(types.find(t => t.id === key.split('~')[0])!, evs[k]).veto.length === 0 && bagAgrees(types.find(t => t.id === key.split('~')[0])!))
+          .sort((a, b) => b[1]! - a[1]!)[0];
+        if (!best || best[1]! <= l.ncc + STRIP_LIKENESS.challengeMargin) continue;
+        const [typeId, m] = best[0].split('~'), t = types.find(x => x.id === typeId)!;
+        const loose = {...t, match: {...t.match!, years: [0, 9999] as [number, number]}} as MatchableType;
+        const nd = decidePand([loose], evs[k], d.house.slug, strip.date);
+        if (nd.kind !== 'placed') continue;
+        nd.typeId = t.id; nd.house.type!.type = t.id;
+        if (m) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
+        nd.notes = [...nd.notes.filter(x => !/^(accent|door) /.test(x)), `photo decides: ${best[0]} edge NCC ${best[1]} vs ${own} ${l.ncc}`];
+        decisions[k] = nd; switched.add(d.pandId); changed = true;
+      }
       // The gate: FAIL holds; NO EVIDENCE holds unless a same-type neighbour in the run passes (row evidence).
       for (const [k, d] of decisions.entries()) {
         if (d.kind !== 'placed') continue;
+        // Switched this pass: its likeness is the old placement's; the next pass compiles and gates the new one.
+        if (pass === 0 && switched.has(d.pandId)) continue;
         const l = likeness.get(d.pandId);
         if (!l) { decisions[k] = {kind: 'held', pandId: d.pandId, address: d.house.address, stage: 'likeness', reason: 'run did not compile'}; changed = true; continue; }
         const g = placementGate({ncc: l.ncc, abstain: l.abstain});
         // A challenger holds the placement only when it is a plausible alternative (no year/frontage veto of its own);
         // an implausible type that reads closer is noted (the edge NCC differences are 0.05-0.15, the facts are not).
-        const better = Object.entries(challengers.get(d.pandId) ?? {}).filter(([, v]) => v !== null && l.ncc !== null && v > l.ncc + STRIP_LIKENESS.challengeMargin).sort((a, b) => b[1]! - a[1]!);
+        // --photo-decides: candidates were already weighed (a switched pand's own variant and its old one are in the map);
+        // a placement is never held for a rival here, only switched once above.
+        const better = photoDecides ? [] : Object.entries(challengers.get(d.pandId) ?? {}).filter(([, v]) => v !== null && l.ncc !== null && v > l.ncc + STRIP_LIKENESS.challengeMargin).sort((a, b) => b[1]! - a[1]!);
         const plausible = (id: string) => scoreType(types.find(t => t.id === id)!, evs[k]).veto.length === 0;
         const rival = better.find(([id]) => plausible(id));
         for (const [id, v] of better) if (!plausible(id)) d.notes.push(`the edges read closer to ${id} (${v} vs ${l.ncc}), vetoed by its facts`);
@@ -331,7 +403,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const out = {face: f.id, street: f.street, library: district, stripDate: strip.date, seconds: r2((performance.now() - tf) / 1000), thresholds: AUTO_PLACE,
       runs: runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})),
       pands: decisions.map((d, k) => {
-        const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag,
+        const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag, bagBay: ev.bagBay ?? null,
           strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare,
             structure: ev.strip.structure ? {bayWidthM: ev.strip.structure.bayWidthM, bayCentre: ev.strip.structure.bayCentre, balconies: ev.strip.structure.balconies, why: ev.strip.structure.balconyWhy, openAxes: ev.strip.structure.openAxes, slabs: ev.strip.structure.slabs} : null, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
         return d.kind === 'placed' ? {...base, status: 'placed', type: d.typeId, score: d.score, runnerUp: d.runnerUp, placement: d.house.type, notes: d.notes, likeness: l ?? null, challengers: challengers.get(d.pandId) ?? {}}

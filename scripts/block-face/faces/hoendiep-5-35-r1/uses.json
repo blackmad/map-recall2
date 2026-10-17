@@ -1,0 +1,57 @@
+{
+ "street": "Hoendiepstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-16T20:43:00.921Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012124406",
+   "addresses": [
+    "Hoendiepstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000668467"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078854",
+   "addresses": [
+    "Hoendiepstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000668473"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138426",
+   "addresses": [
+    "Hoendiepstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hoendiepstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000668479"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -890,6 +890,18 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   ×3, kinderbrug-meisje-eekhoorns ×2), and `build-manual-landmarks.ts` repeats
   imports and `id ===` dispatch lines; the game may draw these several times on
   top of each other. Dedupe and add a uniqueness check to `check:manual-landmarks`.
+- **Buurt looks, next** (2026-10-17, HISTORY "Rivierenbuurt (Plan Zuid,
+  1934)"): Spaarndammerbuurt (surveys committed in `scripts/block-face/buurten/`:
+  EB04 noordwest 200 pands/87 faces, EB05 midden — the Het Schip streets — 149
+  pands/30 faces, noordoost): intake `--camera-height=2.1 --bay-outline=auto`,
+  then Amsterdam School and Zaanhof types. Rivierenbuurt faces intaken but not
+  placed: hoendiep-36-60, rijn-157-237, uiterwaarden-3-33, vecht-111-185,
+  -130-188, -145-173, -162-186 (new Rijnstraat/Vechtstraat types). Consider
+  making `--camera-height=2.1` and `--row-exposure=date` the defaults. Kit gaps:
+  oriel white cap, double portiek doors with side lights, attic windows on a row
+  pitch across party walls, per-house ribbon variants, white posts between
+  ribbon windows, the 2–3 cm door-leaf/frame z-fight, strip x-registration
+  (~0.4 m off BAG party lines).
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
