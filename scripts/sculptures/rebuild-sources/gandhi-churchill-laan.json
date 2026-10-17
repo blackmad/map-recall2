@@ -1,0 +1,200 @@
+{
+ "id": "gandhi-churchill-laan",
+ "figures": {
+  "walker": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Statue of Gandhi, Amsterdam.jpg",
+     "box": [
+      0.2,
+      0,
+      0.7,
+      0.72
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (1).jpg",
+     "box": [
+      0.38,
+      0.12,
+      0.62,
+      0.44
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (2).jpg",
+     "box": [
+      0.32,
+      0.18,
+      0.58,
+      0.56
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Gandhi (Amsterdam) (3).jpg",
+     "box": [
+      0.28,
+      0.15,
+      0.58,
+      0.49
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 43.3,
+    "trellisWall": 358.1,
+    "decimate": 3.3
+   },
+   "freeGbAtStart": 31.5,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/gandhi-churchill-laan/rebuild/walker/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/gandhi-churchill-laan/rebuild/walker/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/gandhi-churchill-laan/rebuild/walker/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/gandhi-churchill-laan/rebuild/walker/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.4,
+    "generateS": 352.7,
+    "rawVertices": 285216,
+    "rawTriangles": 626592
+   },
+   "placement": {
+    "cutKitTriangles": 1737,
+    "heightM": 1.96,
+    "baseM": [
+     -0.041,
+     1.24,
+     0.015
+    ],
+    "facingDeg": 90
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.498,
+      "greyCorr": 0.374,
+      "score": 0.685
+     },
+     "-x": {
+      "iou": 0.406,
+      "greyCorr": 0.288,
+      "score": 0.55
+     },
+     "+y": {
+      "iou": 0.685,
+      "greyCorr": 0.014,
+      "score": 0.693
+     },
+     "-y": {
+      "iou": 0.706,
+      "greyCorr": 0.512,
+      "score": 0.962
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 68888,
+    "afterDebris": 68888,
+    "triangles": 6000,
+    "scale": 1.958,
+    "sizeM": [
+     0.67,
+     1.96,
+     0.73
+    ],
+    "watertight": true
+   },
+   "cutMask": 1737
+  }
+ },
+ "sculptor": {
+  "name": "Gautam Pal",
+  "born": null,
+  "died": null,
+  "year": 1990,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/gandhi-churchill-laan.glb",
+ "photos": {
+  "File:Statue of Gandhi, Amsterdam.jpg": {
+   "title": "File:Statue of Gandhi, Amsterdam.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Gandhi,_Amsterdam.jpg",
+   "author": "Antony Antony",
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+   "date": "2007-01-30 15:19:17",
+   "originalSize": [
+    2448,
+    3264
+   ],
+   "sha1": "ce1478a95108d304826292c87b167371f1f2546b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Statue_of_Gandhi%2C_Amsterdam.jpg/1920px-Statue_of_Gandhi%2C_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/download/ce1478a951.jpg"
+  },
+  "File:Gandhi (Amsterdam) (1).jpg": {
+   "title": "File:Gandhi (Amsterdam) (1).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(1).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-09-13 15:22:38",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "287b618a54f5a9074a3866212c98af488f006e5a",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Gandhi_%28Amsterdam%29_%281%29.jpg/1920px-Gandhi_%28Amsterdam%29_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/download/287b618a54.jpg"
+  },
+  "File:Gandhi (Amsterdam) (2).jpg": {
+   "title": "File:Gandhi (Amsterdam) (2).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(2).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-09-13 15:22:55",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "64cee7aaf76c432a92c80406030e4bc412995460",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Gandhi_%28Amsterdam%29_%282%29.jpg/1920px-Gandhi_%28Amsterdam%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/download/64cee7aaf7.jpg"
+  },
+  "File:Gandhi (Amsterdam) (3).jpg": {
+   "title": "File:Gandhi (Amsterdam) (3).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Gandhi_(Amsterdam)_(3).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-09-13 15:23:06",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "debbf47f2d13636b6fe8305de7fbb37ef75746ed",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Gandhi_%28Amsterdam%29_%283%29.jpg/1920px-Gandhi_%28Amsterdam%29_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/download/debbf47f2d.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/gandhi-churchill-laan/rebuild/gandhi-churchill-laan.glb",
+  "triangles": 9695,
+  "keptKitTriangles": 3695,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 1737
+ },
+ "generated": "2026-10-17T11:45:03.014Z",
+ "sheet": "docs/images/sculptures/gandhi-churchill-laan-rebuild.jpg",
+ "verdict": "better: the striding Gandhi with staff and wrapped shawl reads; the kit walker is stiff"
+}

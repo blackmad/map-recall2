@@ -1,0 +1,200 @@
+{
+ "id": "mama-baranka",
+ "figures": {
+  "woman": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Mama Baranka in 2019 (1).jpg",
+     "box": [
+      0.05,
+      0.1,
+      0.95,
+      0.85
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Mama Baranka in 2019 (3).jpg",
+     "box": [
+      0.05,
+      0.1,
+      0.95,
+      0.85
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Mama Baranka in 2019 (5).jpg",
+     "box": [
+      0,
+      0.1,
+      0.95,
+      0.85
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Amsterdam Nelson Carrilho Mama Baranka.jpg",
+     "box": [
+      0.25,
+      0.1,
+      0.75,
+      0.95
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 328.4,
+    "trellisWall": 1876.6,
+    "decimate": 4.5
+   },
+   "freeGbAtStart": 34.6,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/mama-baranka/rebuild/woman/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/mama-baranka/rebuild/woman/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/mama-baranka/rebuild/woman/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/mama-baranka/rebuild/woman/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 1872.8,
+    "rawVertices": 313159,
+    "rawTriangles": 618994
+   },
+   "placement": {
+    "cutKitTriangles": 1730,
+    "heightM": 1.95,
+    "baseM": [
+     -0.021,
+     0.08,
+     0.085
+    ],
+    "facingDeg": 200
+   },
+   "orient": {
+    "front": "-x",
+    "scores": {
+     "+x": {
+      "iou": 0.757,
+      "greyCorr": -0.05,
+      "score": 0.732
+     },
+     "-x": {
+      "iou": 0.704,
+      "greyCorr": 0.129,
+      "score": 0.768
+     },
+     "+y": {
+      "iou": 0.525,
+      "greyCorr": 0.103,
+      "score": 0.577
+     },
+     "-y": {
+      "iou": 0.685,
+      "greyCorr": 0.071,
+      "score": 0.721
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 150944,
+    "afterDebris": 148776,
+    "triangles": 6000,
+    "scale": 1.966,
+    "sizeM": [
+     0.69,
+     1.95,
+     0.81
+    ],
+    "watertight": true
+   },
+   "cutMask": 1730
+  }
+ },
+ "sculptor": {
+  "name": "Nelson Carrilho",
+  "born": 1960,
+  "died": null,
+  "year": 2002,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/mama-baranka.glb",
+ "photos": {
+  "File:Mama Baranka in 2019 (1).jpg": {
+   "title": "File:Mama Baranka in 2019 (1).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(1).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:16:21",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "690911062051a1bfa8fcab595ebe1eae9edd52bc",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Mama_Baranka_in_2019_%281%29.jpg/1920px-Mama_Baranka_in_2019_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/mama-baranka/download/6909110620.jpg"
+  },
+  "File:Mama Baranka in 2019 (3).jpg": {
+   "title": "File:Mama Baranka in 2019 (3).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(3).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:16:47",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "12a952d43ae882fd14fa080843631f82a6211f25",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Mama_Baranka_in_2019_%283%29.jpg/1920px-Mama_Baranka_in_2019_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/mama-baranka/download/12a952d43a.jpg"
+  },
+  "File:Mama Baranka in 2019 (5).jpg": {
+   "title": "File:Mama Baranka in 2019 (5).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Mama_Baranka_in_2019_(5).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-12-01 15:17:15",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "29725c6f45ed57ff6e973e22792c9e63f197b947",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Mama_Baranka_in_2019_%285%29.jpg/1920px-Mama_Baranka_in_2019_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/mama-baranka/download/29725c6f45.jpg"
+  },
+  "File:Amsterdam Nelson Carrilho Mama Baranka.jpg": {
+   "title": "File:Amsterdam Nelson Carrilho Mama Baranka.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_Nelson_Carrilho_Mama_Baranka.jpg",
+   "author": "FaceMePLS from The Hague, The Netherlands",
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+   "date": "2009-08-20 13:53",
+   "originalSize": [
+    1024,
+    680
+   ],
+   "sha1": "cac10d4136b35aeb03b220ac4ef6bc191b53208b",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Amsterdam_Nelson_Carrilho_Mama_Baranka.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/mama-baranka/download/cac10d4136.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/mama-baranka/rebuild/mama-baranka.glb",
+  "triangles": 7656,
+  "keptKitTriangles": 1656,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 1730
+ },
+ "generated": "2026-10-17T12:15:33.039Z",
+ "sheet": "docs/images/sculptures/mama-baranka-rebuild.jpg",
+ "verdict": "no better: the rough-cast surface makes TRELLIS punch holes through the torso and legs; the stance is truer than the kit's blob figure, but the see-through holes show at gallery size"
+}

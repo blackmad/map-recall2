@@ -1,0 +1,205 @@
+{
+ "id": "wilhelmina-ruiterstandbeeld",
+ "figures": {
+  "horse-and-rider": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Statue of Queen Wilhelmina of the Netherlands, Amsterdam.jpg",
+     "box": [
+      0.1,
+      0.05,
+      0.85,
+      0.75
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Wilhelmina Rokin door Theresia van der Pant.jpg",
+     "box": null,
+     "keepTop": null
+    },
+    {
+     "title": "File:File by Peteris P1170742 (3666927469).jpg",
+     "box": [
+      0.25,
+      0.25,
+      0.95,
+      0.98
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Wilhelmina2 Rokin door Theresia van der Pant.jpg",
+     "box": null,
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 51.5,
+    "trellisWall": 461,
+    "decimate": 21.2
+   },
+   "freeGbAtStart": 31.8,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/rebuild/horse-and-rider/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/rebuild/horse-and-rider/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/rebuild/horse-and-rider/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/rebuild/horse-and-rider/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 454,
+    "rawVertices": 496322,
+    "rawTriangles": 1005828
+   },
+   "placement": {
+    "cutKitTriangles": 1462,
+    "heightM": 4.37,
+    "baseM": [
+     0.004,
+     3.56,
+     0.129
+    ],
+    "facingDeg": 255
+   },
+   "orient": {
+    "front": "+y",
+    "scores": {
+     "+x": {
+      "iou": 0.313,
+      "greyCorr": 0.075,
+      "score": 0.35
+     },
+     "-x": {
+      "iou": 0.246,
+      "greyCorr": 0.017,
+      "score": 0.254
+     },
+     "+y": {
+      "iou": 0.48,
+      "greyCorr": 0.079,
+      "score": 0.52
+     },
+     "-y": {
+      "iou": 0.438,
+      "greyCorr": 0,
+      "score": 0.438
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 140536,
+    "afterDebris": 140176,
+    "triangles": 6000,
+    "scale": 4.636,
+    "sizeM": [
+     4.41,
+     4.37,
+     1.92
+    ],
+    "watertight": true
+   },
+   "cutMask": 1462
+  }
+ },
+ "sculptor": {
+  "name": "Theresia van der Pant",
+  "born": 1924,
+  "died": 2016,
+  "year": 1972,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/wilhelmina-ruiterstandbeeld.glb",
+ "photos": {
+  "File:Wilhelmina Rokin door Theresia van der Pant.jpg": {
+   "title": "File:Wilhelmina Rokin door Theresia van der Pant.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Wilhelmina_Rokin_door_Theresia_van_der_Pant.jpg",
+   "author": "Gouwenaar",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2012-11-08",
+   "originalSize": [
+    3425,
+    3208
+   ],
+   "sha1": "168faf37fbe5cfe9dd970d9ed42c76a85423881c",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Wilhelmina_Rokin_door_Theresia_van_der_Pant.jpg/1920px-Wilhelmina_Rokin_door_Theresia_van_der_Pant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/download/168faf37fb.jpg"
+  },
+  "File:File by Peteris P1170742 (3666927469).jpg": {
+   "title": "File:File by Peteris P1170742 (3666927469).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:File_by_Peteris_P1170742_(3666927469).jpg",
+   "author": "Pēteris",
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+   "date": "2009-01-13 17:23",
+   "originalSize": [
+    1983,
+    2129
+   ],
+   "sha1": "cba45482cc4f8202ebfe20c08917e281fc0a949e",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/File_by_Peteris_P1170742_%283666927469%29.jpg/1920px-File_by_Peteris_P1170742_%283666927469%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/download/cba45482cc.jpg"
+  },
+  "File:Close-up van ruiterstandbeeld van koningin Wilhelmina - Amsterdam - 20362368 - RCE.jpg": {
+   "title": "File:Close-up van ruiterstandbeeld van koningin Wilhelmina - Amsterdam - 20362368 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Close-up_van_ruiterstandbeeld_van_koningin_Wilhelmina_-_Amsterdam_-_20362368_-_RCE.jpg",
+   "author": "Loek Tangel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2003-04",
+   "originalSize": [
+    3060,
+    3060
+   ],
+   "sha1": "b5e539d67eae69707c93bb87ba6a1e467b3aed0c",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Close-up_van_ruiterstandbeeld_van_koningin_Wilhelmina_-_Amsterdam_-_20362368_-_RCE.jpg/1920px-Close-up_van_ruiterstandbeeld_van_koningin_Wilhelmina_-_Amsterdam_-_20362368_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/download/b5e539d67e.jpg"
+  },
+  "File:Statue of Queen Wilhelmina of the Netherlands, Amsterdam.jpg": {
+   "title": "File:Statue of Queen Wilhelmina of the Netherlands, Amsterdam.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Queen_Wilhelmina_of_the_Netherlands,_Amsterdam.jpg",
+   "author": "Stephencdickson",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-09-16 15:48:06",
+   "originalSize": [
+    2056,
+    3088
+   ],
+   "sha1": "7d2c9123be7d730ed638e8b6a2a6d80a6fe48ff1",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Statue_of_Queen_Wilhelmina_of_the_Netherlands%2C_Amsterdam.jpg/1920px-Statue_of_Queen_Wilhelmina_of_the_Netherlands%2C_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/download/7d2c9123be.jpg"
+  },
+  "File:Wilhelmina2 Rokin door Theresia van der Pant.jpg": {
+   "title": "File:Wilhelmina2 Rokin door Theresia van der Pant.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Wilhelmina2_Rokin_door_Theresia_van_der_Pant.jpg",
+   "author": "Gouwenaar",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2012-11-08",
+   "originalSize": [
+    3672,
+    4896
+   ],
+   "sha1": "deff55b2445b376ddf80d3c5fbc118a449c2e479",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Wilhelmina2_Rokin_door_Theresia_van_der_Pant.jpg/1920px-Wilhelmina2_Rokin_door_Theresia_van_der_Pant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/download/deff55b244.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/wilhelmina-ruiterstandbeeld/rebuild/wilhelmina-ruiterstandbeeld.glb",
+  "triangles": 8254,
+  "keptKitTriangles": 2254,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 1462
+ },
+ "generated": "2026-10-17T09:11:28.218Z",
+ "sheet": "docs/images/sculptures/wilhelmina-ruiterstandbeeld-rebuild.jpg",
+ "verdict": "better: a true dressage horse with raised foreleg and side-saddle rider, against the kit's box horse; heading set by eye (orient_front picked the wrong axis)"
+}

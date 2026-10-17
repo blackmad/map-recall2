@@ -1,0 +1,189 @@
+{
+ "id": "de-dokwerker",
+ "figures": {
+  "docker": {
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Amsterdam, De dokwerker 07.JPG",
+     "box": [
+      0,
+      0,
+      1,
+      0.56
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg",
+     "box": [
+      0,
+      0,
+      1,
+      0.91
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg",
+     "box": [
+      0,
+      0,
+      1,
+      0.545
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 29.4,
+    "trellisWall": 316.1,
+    "decimate": 5.2
+   },
+   "freeGbAtStart": 27.2,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/de-dokwerker/rebuild/docker/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/de-dokwerker/rebuild/docker/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/de-dokwerker/rebuild/docker/mv-inputs/v2-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.3,
+    "generateS": 309.6,
+    "rawVertices": 403023,
+    "rawTriangles": 845254
+   },
+   "placement": {
+    "cutKitTriangles": 288,
+    "heightM": 2.453,
+    "baseM": [
+     0,
+     1.675,
+     0.012
+    ],
+    "facingDeg": 252
+   },
+   "orient": {
+    "front": "+x",
+    "scores": {
+     "+x": {
+      "iou": 0.748,
+      "greyCorr": 0.203,
+      "score": 0.85
+     },
+     "-x": {
+      "iou": 0.736,
+      "greyCorr": 0.093,
+      "score": 0.782
+     },
+     "+y": {
+      "iou": 0.729,
+      "greyCorr": 0.172,
+      "score": 0.815
+     },
+     "-y": {
+      "iou": 0.659,
+      "greyCorr": 0.142,
+      "score": 0.731
+     }
+    }
+   },
+   "front": "+x",
+   "mesh": {
+    "rawTriangles": 197172,
+    "afterDebris": 197172,
+    "triangles": 6000,
+    "scale": 2.474,
+    "sizeM": [
+     1.15,
+     2.45,
+     1
+    ],
+    "watertight": true
+   },
+   "cutMask": 288
+  }
+ },
+ "sculptor": {
+  "name": "Mari Andriessen",
+  "born": 1897,
+  "died": 1979,
+  "year": 1952,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/de-dokwerker.glb",
+ "photos": {
+  "File:Amsterdam, De dokwerker 07.JPG": {
+   "title": "File:Amsterdam, De dokwerker 07.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG",
+   "author": "A.A.W.J. Rietman",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2013-08-16 14:37:46",
+   "originalSize": [
+    1172,
+    1758
+   ],
+   "sha1": "063a4a6f299bb3d8ba3d75b709bff4f47f0a44f4",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Amsterdam%2C_De_dokwerker_07.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/de-dokwerker/download/063a4a6f29.jpg"
+  },
+  "File:Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg": {
+   "title": "File:Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_vlag_halfstok_bij_dokwerken,_Bestanddeelnr_925-4107.jpg",
+   "author": "Bert Verhoeff for Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1972-02-25",
+   "originalSize": [
+    2448,
+    3675
+   ],
+   "sha1": "199936e0f305d1e4535e1246182de7c5a0129886",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Herdenking_februaristaking_vlag_halfstok_bij_dokwerken%2C_Bestanddeelnr_925-4107.jpg/1920px-Herdenking_februaristaking_vlag_halfstok_bij_dokwerken%2C_Bestanddeelnr_925-4107.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/de-dokwerker/download/199936e0f3.jpg"
+  },
+  "File:Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg": {
+   "title": "File:Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_Jonas_Daniel_Meijerplein_Na_de_kranslegging_,_Bestanddeelnr_916-0908.jpg",
+   "author": "Joop van Bilsen for Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1964-02-25",
+   "originalSize": [
+    2626,
+    3304
+   ],
+   "sha1": "912b19a47b5fda95f52d09c40f506c1f7b0097bc",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Herdenking_februaristaking_1941_op_Jonas_Daniel_Meijerplein_Na_de_kranslegging_%2C_Bestanddeelnr_916-0908.jpg/1920px-Herdenking_februaristaking_1941_op_Jonas_Daniel_Meijerplein_Na_de_kranslegging_%2C_Bestanddeelnr_916-0908.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/de-dokwerker/download/912b19a47b.jpg"
+  },
+  "File:Herdenking februaristaking 1941 op het J D Meyerplein het standbeeld De Dokwe, Bestanddeelnr 912-1300.jpg": {
+   "title": "File:Herdenking februaristaking 1941 op het J D Meyerplein het standbeeld De Dokwe, Bestanddeelnr 912-1300.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_het_J_D_Meyerplein_het_standbeeld_De_Dokwe,_Bestanddeelnr_912-1300.jpg",
+   "author": "Hugo van Gelderen / Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1961-02-22",
+   "originalSize": [
+    2583,
+    2589
+   ],
+   "sha1": "b568fca34c5dae6bff27a4ade894d31fdeb48d6f",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Herdenking_februaristaking_1941_op_het_J_D_Meyerplein_het_standbeeld_De_Dokwe%2C_Bestanddeelnr_912-1300.jpg/1920px-Herdenking_februaristaking_1941_op_het_J_D_Meyerplein_het_standbeeld_De_Dokwe%2C_Bestanddeelnr_912-1300.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/de-dokwerker/download/b568fca34c.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/de-dokwerker/rebuild/de-dokwerker.glb",
+  "triangles": 6228,
+  "keptKitTriangles": 228,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 288
+ },
+ "generated": "2026-10-17T09:21:45.029Z",
+ "sheet": "docs/images/sculptures/de-dokwerker-rebuild.jpg",
+ "verdict": "better: the stocky docker's stance and rolled sleeves read; hands at the sides are softer than in the photo"
+}
