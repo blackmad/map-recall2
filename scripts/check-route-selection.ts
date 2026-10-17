@@ -80,6 +80,19 @@ check('route destinations have something to teach on arrival', () => {
   assert.equal(isTeachableRouteDestination({
     wikipediaUrl: 'https://en.wikipedia.org/wiki/Example',
   }), true, 'an article can be fetched and opened even before its extract is cached');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaExtract: 'A museum in Amsterdam.',
+    wikipediaExtractSource: 'wikidata-description',
+  }), false, 'a thin Wikidata one-liner with no image or article is not a reward');
+  assert.equal(isTeachableRouteDestination({
+    wikipediaExtract: 'A museum in Amsterdam.',
+    wikipediaExtractSource: 'wikidata-description',
+    wikipediaImageUrl: 'https://example.invalid/place.jpg',
+  }), true, 'a photograph redeems a thin description');
+  assert.equal(isTeachableRouteDestination({
+    funFact: 'Opened in 1895.',
+    wikipediaExtractSource: 'wikidata-description',
+  }), true, 'a real fact redeems a thin description');
 });
 
 check('kmBetween is right at city scale', () => {
@@ -95,7 +108,7 @@ check('a destination is picked from within pairing range', () => {
   // Both ends have to fit in one fetched OSM window.
   const picks = new Set<string>();
   for (let i = 0; i < POIS.length; i++) {
-    const chosen = pickDestinationNear(POIS, CENTRAL, () => i % 3);
+    const chosen = pickDestinationNear(POIS, CENTRAL, () => (i % 3) / 3);
     if (chosen) picks.add(chosen.id);
   }
   assert.ok(!picks.has('weesp'), 'a Weesp fort must not be paired with the centre');
@@ -119,7 +132,7 @@ check('a pool with nothing in it produces nothing, not a crash', () => {
 
 check('an excluded destination is not offered', () => {
   for (let i = 0; i < 6; i++) {
-    const chosen = pickDestinationNear(POIS, CENTRAL, () => i % 3, 'palace');
+    const chosen = pickDestinationNear(POIS, CENTRAL, () => (i % 3) / 3, 'palace');
     assert.notEqual(chosen?.id, 'palace');
   }
 });
