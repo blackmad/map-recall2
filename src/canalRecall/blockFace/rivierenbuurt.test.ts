@@ -119,7 +119,7 @@ test('rowCoherence: a lone pand between two houses of one type takes theirs (Bot
   assert.deepEqual(rowCoherence(ds, types, evs, '2020-01-07'), ['0363100012117854']);
   const mid = ds[1];
   assert.ok(mid.kind === 'placed' && mid.typeId === 'rijn-1934-erker-ribbon' && !mid.house.type!.mirror);
-  assert.ok(mid.kind === 'placed' && mid.notes.some(n => /^row coherence: between two rijn-1934-erker-ribbon houses, was rijn-1934-erker-white-attic \(BAG bay centre 0.75\)/.test(n)));
+  assert.ok(mid.kind === 'placed' && mid.notes.some(n => /^row coherence: between two rijn-1934-erker-ribbon houses, was rijn-1934-erker-white-attic( \(mirrored\))? \(BAG bay centre 0.75\)/.test(n)));
   // A pand already of its neighbours' type: nothing changes.
   assert.deepEqual(rowCoherence(ds, types, evs, '2020-01-07'), []);
 });
@@ -138,6 +138,18 @@ test('rowCoherence: BAG erkers are never dropped between flat fronts; a missed o
   assert.deepEqual(ds2.map(d => d.kind === 'placed' ? d.typeId.replace('rijn-1934-', '') : null), ['flat-three', 'flat-three', 'flat-three', 'erker-end', 'flat-three', 'flat-three', 'flat-three', 'flat-three']);
   assert.deepEqual(rowCoherence(ds2, types, evs2, '2023-01-03'), ['0363100012111987']);
   assert.ok(ds2[7].kind === 'placed' && ds2[7].typeId === 'rijn-1934-erker-end' && ds2[7].notes.some(n => /^row coherence: the row repeats every four houses: 111983 \(BAG erker\)/.test(n)));
+  // A BAG erker off its row's place moves only on a confirmed rhythm (Hoendiepstraat 8: 16 and 24 agree), never on a
+  // single house at the end of the face.
+  const att = defaultTypeLoader('rijn-1934-erker-white-attic') as MatchableType, types4 = [flat, erker, att];
+  const left = (c: number) => ({fromM: 1.1, toM: 2.9, depthM: 0.7, centre: c});
+  const evs4 = Array.from({length: 9}, (_, k) => pand({pandId: `03631000121083${50 + k}`, bagBay: k % 4 === 0 ? left(k === 8 ? 0.253 : 0.31) : null}));
+  const ds4: Decision[] = evs4.map(ev => decidePand(types4, ev, `h-${ev.pandId.slice(-6)}`, '2023-01-03'));
+  assert.deepEqual([0, 4, 8].map(k => ds4[k].kind === 'placed' && ds4[k].typeId), ['rijn-1934-erker-pair', 'rijn-1934-erker-pair', 'rijn-1934-erker-white-attic']);
+  assert.ok(rowCoherence(ds4, types4, evs4, '2023-01-03').includes('0363100012108358'));
+  assert.ok(ds4[8].kind === 'placed' && ds4[8].typeId === 'rijn-1934-erker-pair' && ds4[8].house.type!.mirror === true);
+  assert.ok(ds4[0].kind === 'placed' && ds4[0].typeId === 'rijn-1934-erker-pair');
+  const ds5: Decision[] = evs4.slice(4).map(ev => decidePand(types4, ev, `h-${ev.pandId.slice(-6)}`, '2023-01-03'));
+  assert.ok(!rowCoherence(ds5, types4, evs4.slice(4), '2023-01-03').includes('0363100012108358'), 'one unconfirmed anchor');
   // Unread BAG bays (an intake without the bay evidence) are no anchors and nothing to correct.
   const evs3 = evs2.map(ev => ({...ev, bagBay: undefined}));
   const ds3: Decision[] = evs3.map(ev => decidePand(types, ev, `e-${ev.pandId.slice(-6)}`, '2023-01-03'));
