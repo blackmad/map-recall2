@@ -11,9 +11,11 @@ SENTRY="npx --yes sentry@latest"
 command -v gh >/dev/null || { echo "Needs the GitHub CLI (gh)."; exit 1; }
 gh auth status >/dev/null 2>&1 || { echo "Run 'gh auth login' first."; exit 1; }
 
-echo "== Sentry login (opens a browser if needed)"
-$SENTRY auth login || true
-$SENTRY info >/dev/null || { echo "Sentry login failed."; exit 1; }
+if ! $SENTRY auth whoami >/dev/null 2>&1; then
+  echo "== Sentry login (opens a browser)"
+  $SENTRY auth login
+fi
+$SENTRY auth whoami >/dev/null || { echo "Sentry login failed."; exit 1; }
 
 # Print the first DSN-looking string anywhere in a JSON document.
 dsn_from_json() {
@@ -31,6 +33,9 @@ dsn_from_json() {
 project_dsn() {
   local slug=$1 dsn
   dsn=$($SENTRY project view "$ORG/$slug" --json 2>/dev/null | dsn_from_json || true)
+  if [ -z "$dsn" ]; then
+    dsn=$($SENTRY dsn list "$ORG/$slug" 2>/dev/null | grep -Eo 'https://[^@[:space:]]+@[^[:space:]]+/[0-9]+' | head -1 || true)
+  fi
   if [ -z "$dsn" ]; then
     dsn=$($SENTRY project view "$ORG/$slug" 2>/dev/null | grep -Eo 'https://[^@[:space:]]+@[^[:space:]]+/[0-9]+' | head -1 || true)
   fi
