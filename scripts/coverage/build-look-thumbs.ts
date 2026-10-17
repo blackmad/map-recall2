@@ -51,7 +51,9 @@ const manifest: LookManifest = fs.existsSync(manifestFile) && ONLY ? readJson(ma
   : { version: 1, generatedAt: '', sourceData: '', types: {}, designs: {}, families: {}, missing: [] };
 manifest.generatedAt = new Date().toISOString();
 manifest.sourceData = SOURCE;
-manifest.missing = manifest.missing.filter(m => ONLY && !m.startsWith(`${ONLY.replace(/s$/, '')}:`));
+// A partial run (--only) re-checks only its own kinds; designs also own the family photos.
+const redo = ONLY === 'types' ? ['type:'] : ONLY === 'designs' ? ['design:', 'family:'] : [];
+manifest.missing = ONLY ? [...new Set(manifest.missing)].filter(m => !redo.some(p => m.startsWith(p))) : [];
 
 /** Renders fill the frame; photos are letterboxed whole (a facade crop cut to 4:3 loses its gable or its ground floor). */
 async function writeJpeg(name: string, input: Buffer | sharp.Sharp, fit: 'cover' | 'contain' = 'cover'): Promise<string> {
