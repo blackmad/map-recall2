@@ -1,0 +1,200 @@
+{
+ "id": "spanjemonument",
+ "figures": {
+  "flyers": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Spanje monument groot.jpg",
+     "box": [
+      0.25,
+      0.05,
+      0.72,
+      0.26
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2021 Spanjemonument-beeld (4).jpg",
+     "box": [
+      0.25,
+      0.02,
+      0.72,
+      0.3
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2021 Spanjemonument-beeld (1).jpg",
+     "box": [
+      0.28,
+      0.06,
+      0.64,
+      0.43
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Opdracht Tendenzen Spanje-Monument, Bestanddeelnr 933-6767.jpg",
+     "box": [
+      0.2,
+      0.02,
+      0.85,
+      0.34
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 31.2,
+    "trellisWall": 302.9,
+    "decimate": 1.9
+   },
+   "freeGbAtStart": 31.9,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/spanjemonument/rebuild/flyers/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/spanjemonument/rebuild/flyers/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/spanjemonument/rebuild/flyers/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/spanjemonument/rebuild/flyers/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 297.8,
+    "rawVertices": 129044,
+    "rawTriangles": 258466
+   },
+   "placement": {
+    "cutKitTriangles": 3016,
+    "heightM": 0.996,
+    "baseM": [
+     0.688,
+     5.148,
+     -0.318
+    ],
+    "facingDeg": 145
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.044,
+      "greyCorr": -0.336,
+      "score": -0.124
+     },
+     "-x": {
+      "iou": 0.054,
+      "greyCorr": -0.433,
+      "score": -0.163
+     },
+     "+y": {
+      "iou": 0.329,
+      "greyCorr": -0.08,
+      "score": 0.289
+     },
+     "-y": {
+      "iou": 0.404,
+      "greyCorr": -0.094,
+      "score": 0.356
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 39220,
+    "afterDebris": 39220,
+    "triangles": 6000,
+    "scale": 2.856,
+    "sizeM": [
+     2.24,
+     1,
+     1.8
+    ],
+    "watertight": true
+   },
+   "cutMask": 3016
+  }
+ },
+ "sculptor": {
+  "name": "Eddy Roos",
+  "born": 1949,
+  "died": null,
+  "year": 1986,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/spanjemonument.glb",
+ "photos": {
+  "File:Spanje monument groot.jpg": {
+   "title": "File:Spanje monument groot.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Spanje_monument_groot.jpg",
+   "author": "Eddy Roos",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2016-06-07 22:31:44",
+   "originalSize": [
+    838,
+    667
+   ],
+   "sha1": "3da45e0b111fd7fa3b2761526dcfaa094bb5964c",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/95/Spanje_monument_groot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/spanjemonument/download/3da45e0b11.jpg"
+  },
+  "File:2021 Spanjemonument-beeld (4).jpg": {
+   "title": "File:2021 Spanjemonument-beeld (4).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(4).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2021-07-09 10:36:28",
+   "originalSize": [
+    4160,
+    3120
+   ],
+   "sha1": "10b0f5d5cab99237b941408dce36d5a678326f77",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/2021_Spanjemonument-beeld_%284%29.jpg/1920px-2021_Spanjemonument-beeld_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/spanjemonument/download/10b0f5d5ca.jpg"
+  },
+  "File:2021 Spanjemonument-beeld (1).jpg": {
+   "title": "File:2021 Spanjemonument-beeld (1).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2021_Spanjemonument-beeld_(1).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2021-07-09 10:35:25",
+   "originalSize": [
+    4160,
+    3120
+   ],
+   "sha1": "e42e85e7cf5cc1c1d5abacf09cc2b1ae51a59603",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/2021_Spanjemonument-beeld_%281%29.jpg/1920px-2021_Spanjemonument-beeld_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/spanjemonument/download/e42e85e7cf.jpg"
+  },
+  "File:Opdracht Tendenzen Spanje-Monument, Bestanddeelnr 933-6767.jpg": {
+   "title": "File:Opdracht Tendenzen Spanje-Monument, Bestanddeelnr 933-6767.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Opdracht_Tendenzen_Spanje-Monument,_Bestanddeelnr_933-6767.jpg",
+   "author": "Roland Gerrits / Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1986-06-04",
+   "originalSize": [
+    2428,
+    3651
+   ],
+   "sha1": "a2b85234859e30d7d7b5de9fdc234c6f8c2ae65b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Opdracht_Tendenzen_Spanje-Monument%2C_Bestanddeelnr_933-6767.jpg/1920px-Opdracht_Tendenzen_Spanje-Monument%2C_Bestanddeelnr_933-6767.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/spanjemonument/download/a2b8523485.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/spanjemonument/rebuild/spanjemonument.glb",
+  "triangles": 7864,
+  "keptKitTriangles": 1864,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 3016
+ },
+ "generated": "2026-10-17T12:29:07.364Z",
+ "sheet": "docs/images/sculptures/spanjemonument-rebuild.jpg",
+ "verdict": "better: the two linked flying figures with stretched arms and legs read, where the kit has two flat planks; placed broadside to the south-east like the kit"
+}

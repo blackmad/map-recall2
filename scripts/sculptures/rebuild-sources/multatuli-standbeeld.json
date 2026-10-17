@@ -1,0 +1,214 @@
+{
+ "id": "multatuli-standbeeld",
+ "figures": {
+  "bust": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Amsterdam32.JPG",
+     "box": [
+      0,
+      0,
+      9999,
+      1880
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Multatuli Hans Bayens Torensluis Amsterdam.jpg",
+     "box": [
+      0,
+      0,
+      9999,
+      1760
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536117 - RCE.jpg",
+     "box": [
+      0,
+      0,
+      1000,
+      1760
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg",
+     "box": [
+      100,
+      0,
+      1150,
+      1450
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "trellisWall": 475.8,
+    "decimate": 4.9
+   },
+   "freeGbAtStart": 26.5,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/multatuli-standbeeld/rebuild/bust/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/multatuli-standbeeld/rebuild/bust/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/multatuli-standbeeld/rebuild/bust/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/multatuli-standbeeld/rebuild/bust/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.7,
+    "generateS": 465.5,
+    "rawVertices": 460972,
+    "rawTriangles": 954038
+   },
+   "placement": {
+    "cutKitTriangles": 1062,
+    "heightM": 1.94,
+    "baseM": [
+     -0.063,
+     1.105,
+     -0.017
+    ],
+    "facingDeg": 350
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.478,
+      "greyCorr": -0.119,
+      "score": 0.419
+     },
+     "-x": {
+      "iou": 0.518,
+      "greyCorr": -0.112,
+      "score": 0.462
+     },
+     "+y": {
+      "iou": 0.711,
+      "greyCorr": -0.032,
+      "score": 0.695
+     },
+     "-y": {
+      "iou": 0.704,
+      "greyCorr": 0.011,
+      "score": 0.71
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 116908,
+    "afterDebris": 116908,
+    "triangles": 6000,
+    "scale": 1.936,
+    "sizeM": [
+     0.95,
+     1.94,
+     1.05
+    ],
+    "watertight": true
+   },
+   "cutMask": 1062
+  }
+ },
+ "sculptor": {
+  "name": "Hans Bayens",
+  "born": 1924,
+  "died": 2003,
+  "year": 1987,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/multatuli-standbeeld.glb",
+ "photos": {
+  "File:Amsterdam32.JPG": {
+   "title": "File:Amsterdam32.JPG",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam32.JPG",
+   "author": "Vysotsky",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2014-09-22 14:32:20",
+   "originalSize": [
+    2112,
+    2816
+   ],
+   "sha1": "8df179d2e775889123baedf383fe69461a912f7c",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Amsterdam32.JPG/1920px-Amsterdam32.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/multatuli-standbeeld/download/8df179d2e7.jpg"
+  },
+  "File:Multatuli Hans Bayens Torensluis Amsterdam.jpg": {
+   "title": "File:Multatuli Hans Bayens Torensluis Amsterdam.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Multatuli_Hans_Bayens_Torensluis_Amsterdam.jpg",
+   "author": "Brbbl",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "date": "",
+   "originalSize": [
+    1882,
+    2786
+   ],
+   "sha1": "bf85e9b1447793955d5b654819d448af7d25df05",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Multatuli_Hans_Bayens_Torensluis_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/multatuli-standbeeld/download/bf85e9b144.jpg"
+  },
+  "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536117 - RCE.jpg": {
+   "title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536117 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_(buste_door_Hans_Bayens,_1987)_-_Amsterdam_-_20536117_-_RCE.jpg",
+   "author": "Paul van Galen",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2010-07-15",
+   "originalSize": [
+    3744,
+    5616
+   ],
+   "sha1": "233b83c885b53aa5b885facba2183ec5802b334e",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_%28buste_door_Hans_Bayens%2C_1987%29_-_Amsterdam_-_20536117_-_RCE.jpg/1920px-Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_%28buste_door_Hans_Bayens%2C_1987%29_-_Amsterdam_-_20536117_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/multatuli-standbeeld/download/233b83c885.jpg"
+  },
+  "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg": {
+   "title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_(buste_door_Hans_Bayens,_1987)_-_Amsterdam_-_20536116_-_RCE.jpg",
+   "author": "Paul van Galen",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2010-07-15",
+   "originalSize": [
+    3744,
+    5175
+   ],
+   "sha1": "cc6461c27054152aa637b91728c1665346eec101",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_%28buste_door_Hans_Bayens%2C_1987%29_-_Amsterdam_-_20536116_-_RCE.jpg/1920px-Brug_9-_Torensluis_over_het_Singel_-_toeristen_rond_het_standbeeld_van_Mutatuli_%28buste_door_Hans_Bayens%2C_1987%29_-_Amsterdam_-_20536116_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/multatuli-standbeeld/download/cc6461c270.jpg"
+  },
+  "File:Amsterdam - Singel - Multatuli.jpg": {
+   "title": "File:Amsterdam - Singel - Multatuli.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Singel_-_Multatuli.jpg",
+   "author": "Jean-Christophe BENOIST",
+   "licence": "CC BY 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+   "date": "2013-05-07 11:36:24",
+   "originalSize": [
+    3596,
+    4000
+   ],
+   "sha1": "dc69cc5e6d5b84e812d83655fe775a92af433943",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Amsterdam_-_Singel_-_Multatuli.jpg/1920px-Amsterdam_-_Singel_-_Multatuli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/multatuli-standbeeld/download/dc69cc5e6d.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/multatuli-standbeeld/rebuild/multatuli-standbeeld.glb",
+  "triangles": 6346,
+  "keptKitTriangles": 346,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 1062
+ },
+ "generated": "2026-10-17T08:49:34.677Z",
+ "sheet": "docs/images/sculptures/multatuli-standbeeld-rebuild.jpg",
+ "verdict": "better: the twisted Bayens torso and outstretched arm read, though the surface is rough"
+}

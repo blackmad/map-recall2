@@ -1,0 +1,189 @@
+{
+ "id": "carmiggelt-borstbeeld",
+ "figures": {
+  "bust": {
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Simon Carmiggeltbeeld.jpg",
+     "box": [
+      0.25,
+      0.08,
+      0.75,
+      0.41
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg",
+     "box": [
+      0.63,
+      0,
+      1,
+      0.83
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg",
+     "box": [
+      0,
+      0,
+      0.32,
+      0.85
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 23.7,
+    "trellisWall": 377.1,
+    "decimate": 4.9
+   },
+   "freeGbAtStart": 31.3,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/rebuild/bust/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/rebuild/bust/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/rebuild/bust/mv-inputs/v2-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.3,
+    "generateS": 372.4,
+    "rawVertices": 719411,
+    "rawTriangles": 1403806
+   },
+   "placement": {
+    "cutKitTriangles": 1172,
+    "heightM": 0.865,
+    "baseM": [
+     0,
+     1.1,
+     0
+    ],
+    "facingDeg": 150
+   },
+   "orient": {
+    "front": "+y",
+    "scores": {
+     "+x": {
+      "iou": 0.668,
+      "greyCorr": -0.04,
+      "score": 0.648
+     },
+     "-x": {
+      "iou": 0.675,
+      "greyCorr": -0.073,
+      "score": 0.638
+     },
+     "+y": {
+      "iou": 0.83,
+      "greyCorr": 0.159,
+      "score": 0.909
+     },
+     "-y": {
+      "iou": 0.827,
+      "greyCorr": 0.005,
+      "score": 0.83
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 297718,
+    "afterDebris": 295210,
+    "triangles": 8662,
+    "scale": 0.865,
+    "sizeM": [
+     0.58,
+     0.86,
+     0.51
+    ],
+    "watertight": true
+   },
+   "cutMask": 1172
+  }
+ },
+ "sculptor": {
+  "name": "Kees Verkade",
+  "born": 1941,
+  "died": 2020,
+  "year": 1988,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/carmiggelt-borstbeeld.glb",
+ "photos": {
+  "File:Simon Carmiggeltbeeld.jpg": {
+   "title": "File:Simon Carmiggeltbeeld.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Simon_Carmiggeltbeeld.jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2018-08-28 14:51:08",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "75996ffe3e420866a876e8ae2a8c5cbf8f021159",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Simon_Carmiggeltbeeld.jpg/1920px-Simon_Carmiggeltbeeld.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/download/75996ffe3e.jpg"
+  },
+  "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg": {
+   "title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6,_Bestanddeelnr_934-3460.jpg",
+   "author": "Rob Croes / Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1988-10-25",
+   "originalSize": [
+    3683,
+    2445
+   ],
+   "sha1": "6d11a19739680284c34569101c62333c40040d96",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Borstbeeld_Simon_Carmiggelt_%28Kronkel%29_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6%2C_Bestanddeelnr_934-3460.jpg/1920px-Borstbeeld_Simon_Carmiggelt_%28Kronkel%29_onthuld_in_Amsterdamweduwe_Tiny_Carmigge%E2%80%A6%2C_Bestanddeelnr_934-3460.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/download/6d11a19739.jpg"
+  },
+  "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg": {
+   "title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam_Ton_van_Duinhoven_en,_Bestanddeelnr_934-3461.jpg",
+   "author": "Rob Croes / Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1988-10-25",
+   "originalSize": [
+    3674,
+    2445
+   ],
+   "sha1": "c8c00906816ffb22b813517650fa5f5df956d1ea",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Borstbeeld_Simon_Carmiggelt_%28Kronkel%29_onthuld_in_Amsterdam_Ton_van_Duinhoven_en%2C_Bestanddeelnr_934-3461.jpg/1920px-Borstbeeld_Simon_Carmiggelt_%28Kronkel%29_onthuld_in_Amsterdam_Ton_van_Duinhoven_en%2C_Bestanddeelnr_934-3461.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/download/c8c0090681.jpg"
+  },
+  "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam, Bestanddeelnr 934-3464.jpg": {
+   "title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam, Bestanddeelnr 934-3464.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Borstbeeld_Simon_Carmiggelt_(Kronkel)_onthuld_in_Amsterdam,_Bestanddeelnr_934-3464.jpg",
+   "author": "Rob Croes / Anefo",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "1988-10-25",
+   "originalSize": [
+    3584,
+    2448
+   ],
+   "sha1": "9e910f5d331c79c3504020bf091e53fa0e42b999",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Borstbeeld_Simon_Carmiggelt_%28Kronkel%29_onthuld_in_Amsterdam%2C_Bestanddeelnr_934-3464.jpg/1920px-Borstbeeld_Simon_Carmiggelt_%28Kronkel%29_onthuld_in_Amsterdam%2C_Bestanddeelnr_934-3464.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/download/9e910f5d33.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/carmiggelt-borstbeeld/rebuild/carmiggelt-borstbeeld.glb",
+  "triangles": 8698,
+  "keptKitTriangles": 36,
+  "figureTriangles": 8662,
+  "droppedKitTriangles": 1172
+ },
+ "generated": "2026-10-17T12:27:57.266Z",
+ "sheet": "docs/images/sculptures/carmiggelt-borstbeeld-rebuild.jpg",
+ "verdict": "better: the head with glasses, the jacket lapels and the sloping shoulders read like Verkade's bust; three photos (two from the 1988 unveiling), so the back is soft"
+}
