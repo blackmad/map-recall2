@@ -514,8 +514,11 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 .enamel-start.enamel-framed::before { border-color: rgba(31,28,23,.4); }
 .enamel-start:hover { filter: brightness(1.04); }
-body.setup-open #utility-buttons #open-settings,
-body.setup-open #utility-buttons #open-help { display: none; }
+/* Settings duplicate the setup form, so they hide there; How to play stays:
+   a first-time player needs it most on this screen (clarity review 2026-10-17). */
+body.setup-open #utility-buttons #open-settings { display: none; }
+/* Glosses that explain the current choice stay on a phone. */
+.setup-choice-gloss.keep { display: block; }
 #route-error { min-height: 20px; margin-top: 10px; color: var(--day-danger); font: 13px/1.4 var(--font-ui); }
 
 /* ---- Help and live settings panels (enamel) ---- */
@@ -593,6 +596,8 @@ body.setup-open #utility-buttons #open-help { display: none; }
   .help-touch { display: block; }
   .help-pointer { display: none; }
 }
+.help-replay { margin: 0 0 14px; min-height: 40px; padding: 0 14px; border: 1px solid var(--day-line-strong); border-radius: 8px; background: var(--day-paper-raised); color: var(--day-ink); cursor: pointer; font: 700 13px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; }
+.help-replay:hover { border-color: var(--day-accent-ink); }
 .help-credits { margin: 12px 0 0; color: var(--enamel-muted); font: 12px/1.45 var(--font-ui); }
 .help-credits a { color: var(--day-accent-ink); }
 /* The landmark panel is the card's expanded form: the full extract, at length,
@@ -1143,6 +1148,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
   .setup-field select, .setup-field input[type="text"] { min-height: 30px; font-size: 16px; }
   /* Flex footer — never sticky-over-scroll on phone. */
   .enamel-setup-footer { padding-top: 6px; gap: 4px; }
+  /* Feedback and How to play sit in one row under Start, not over it. */
+  body.setup-open .enamel-setup-footer { padding-bottom: 22px; }
+  body.setup-open #utility-buttons { grid-template-columns: auto 46px; }
+  body.setup-open #utility-buttons .cf-launch { grid-column: 1; grid-row: 1; align-self: center; }
+  body.setup-open #utility-buttons #open-help { grid-column: 2; grid-row: 1; }
   #route-start, .enamel-start { position: relative; z-index: 1; min-height: 48px; }
   #canal-prompt, #canal-prompt.dock-left { align-items: flex-end; justify-content: center; padding: 12px calc(12px + env(safe-area-inset-right, 0px)) calc(12px + var(--safe-bottom)) calc(12px + env(safe-area-inset-left, 0px)); background: linear-gradient(0deg, rgba(28,24,18,0.23), transparent 62%); }
   /* Capped so the vehicle, which sits at the centre of the screen, stays above
@@ -1215,6 +1225,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 <div id="help-panel" class="utility-panel enamel-utility"><div class="utility-card enamel-plaque enamel-framed enamel-panel">
   <h2>How to play</h2>
   <div class="utility-scroll">
+    <button id="replay-intro" class="help-replay enamel-quiet" type="button">Show the 3-step intro</button>
     <section class="help-section">
       <h3>Ride</h3>
       <p class="help-touch">Hold the ring at the bottom of the screen and slide. Sideways steers, up goes faster, back brakes. In compass mode, point where you want to go.</p>
@@ -1298,7 +1309,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 
 <!-- Rendering (depends on constants/utils) -->
 <script src="js/renderer.js"></script>
-<script src="js/game-ui.bundle.js?v=20260903c"></script>
+<script src="js/game-ui.bundle.js?v=20261017o"></script>
 <script src="js/notice-cards.bundle.js"></script>
 <script src="js/answer-path.bundle.js"></script>
 <script src="js/hud.js"></script>
@@ -1345,11 +1356,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 <script src="js/city-overview.bundle.js"></script>
 <script src="js/preferences.bundle.js?v=20260907a"></script>
 <script src="js/transit.bundle.js"></script>
-<script src="js/overlay.bundle.js?v=20260908b"></script>
+<script src="js/overlay.bundle.js?v=20261017o"></script>
 <script src="js/game-landmarks.bundle.js?v=20260903c"></script>
 <script src="js/game-recall.bundle.js?v=20260908b"></script>
-<script src="js/game-route.js?v=20261013a"></script>
-<script src="js/game-presentation.bundle.js?v=20261003a"></script>
+<script src="js/game-route.js?v=20261017o"></script>
+<script src="js/game-presentation.bundle.js?v=20261017o"></script>
 <script src="js/game.js"></script>
 <!-- Shows the deployed revision (SHA + build date) from deployment.json. -->
 <script src="js/build-stamp.js"></script>

@@ -7,3 +7,6 @@ export * from './viewport.ts';
 export * from './touchControls.ts';
 export * from './hudLayout.ts';
 export * from './hudTheme.ts';
+export * from './hudCopy.ts';
+export { openOnboarding, maybeShowOnboarding, isOnboardingOpen } from './onboarding/dom.ts';
+export { ONBOARDING_STORAGE_KEY, onboardingSteps } from './onboarding/steps.ts';
