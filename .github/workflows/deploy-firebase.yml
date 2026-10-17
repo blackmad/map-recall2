@@ -75,9 +75,11 @@ jobs:
           SENTRY_ORG: whizziwig
           SENTRY_PROJECT: map-quest
         run: |
-          npx @sentry/cli sourcemaps inject dist
-          npx @sentry/cli sourcemaps upload --release "$GITHUB_SHA" dist
-          find dist -name '*.map' -delete
+          # Map Quest is served from the /quiz/ build (dist-quiz).
+          npx @sentry/cli sourcemaps inject dist-quiz
+          npx @sentry/cli sourcemaps upload --release "$GITHUB_SHA" dist-quiz
+      # Hidden source maps are never served, uploaded or not.
+      - run: find dist dist-quiz -name '*.map' -delete
       - run: node scripts/assemble-canalrecall-site.mjs
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e:smoke
@@ -92,7 +94,8 @@ jobs:
             run: process.env.GITHUB_RUN_ID,
             builtAt: new Date().toISOString(),
           });
-          for (const site of ['dist', 'dist-canalrecall']) {
+          // dist-canalrecall/quiz answers the edumap host, which now redirects there.
+          for (const site of ['dist', 'dist-edumap', 'dist-canalrecall', 'dist-canalrecall/quiz']) {
             writeFileSync(`${site}/deployment.json`, revision);
           }
           JS
@@ -100,8 +103,8 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-service-account.json"
-      # One command publishes both targets: edumap (Map Quest at the site root)
-      # and canalrecall (Canal Recall, rewritten from the site root).
+      # One command publishes both targets: canalrecall (landing at /, the ride
+      # at /ride, Map Quest at /quiz/) and edumap (a redirect to /quiz/).
       - name: Deploy hosting targets
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
@@ -110,7 +113,8 @@ jobs:
         run: |
           for site in edumap-blackmad canalrecall-blackmad; do
             for attempt in 1 2 3 4 5; do
-              if curl --fail --silent --show-error "https://${site}.web.app/deployment.json?sha=${GITHUB_SHA}" | \
+              # edumap redirects to canalrecall's /quiz/deployment.json: following it checks the redirect is live.
+              if curl --fail --silent --show-error --location "https://${site}.web.app/deployment.json?sha=${GITHUB_SHA}" | \
                 node -e 'let body=""; process.stdin.on("data", c => body += c); process.stdin.on("end", () => { if (JSON.parse(body).sha !== process.env.GITHUB_SHA) process.exit(1); });'; then
                 break
               fi

@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 import { defaultPreferences, type ZoomClamp } from '../game/preferences.ts';
 import { OverlayApp, type OverlayCallbacks } from './OverlayApp.tsx';
 import { createOverlayStore, type OverlayStore } from './store.ts';
+import { markReturningPlayer } from '../../siteLinks.ts';
 
 const FALLBACK_ZOOM: ZoomClamp = { min: 0.2, max: 1.5, defaultZoom: 0.5 };
 
@@ -19,6 +20,8 @@ function noop(): void {}
 export function install(container: HTMLElement | null): CanalOverlayHandle {
   if (installed) return installed;
   if (!container) throw new Error('canal-overlay-root is missing');
+  // The landing page sends a player who has opened the ride before straight back to it.
+  markReturningPlayer(typeof localStorage === 'undefined' ? undefined : localStorage);
   const callbacks: OverlayCallbacks = {
     zoom: FALLBACK_ZOOM,
     onStart: noop,

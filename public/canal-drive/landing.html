@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+// Landing page at the site root. Old links to the root carried the ride's own
+// query (route, mode, home address…) or hash, and a player who has ridden before
+// wants the ride, not the pitch: both go straight to /ride, before anything else
+// loads. `?home` (the Home switch) always shows this page.
+(function () {
+  var dev = location.pathname.indexOf('/canal-drive/') >= 0;
+  var params = new URLSearchParams(location.search);
+  if (params.has('home')) {
+    history.replaceState(null, '', location.pathname);
+    return;
+  }
+  if (dev || !/^\/(index\.html)?$/.test(location.pathname)) return;
+  var returning = false;
+  try { returning = localStorage.getItem('canalRecall.returningPlayer.v1') === '1'; } catch (e) {}
+  if (location.search || location.hash || returning) location.replace('/ride' + location.search + location.hash);
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canal Recall — learn Amsterdam by name</title>
+<meta name="description" content="Ride Amsterdam's real canals and streets in 3D and name each one before the map gives it away. A free learning game built from open city data.">
+<link rel="canonical" href="https://canalrecall.blackmad.com/">
+<meta name="theme-color" content="#f4efe5">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Canal Recall">
+<meta property="og:title" content="Canal Recall — learn Amsterdam by name">
+<meta property="og:description" content="Ride a boat or a bike through a 3D Amsterdam built from open city data, and name each canal and street before the map gives it away.">
+<meta property="og:url" content="https://canalrecall.blackmad.com/">
+<meta property="og:image" content="https://canalrecall.blackmad.com/assets/landing/share-landing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Canal Recall: a boat on the Prinsengracht beside the Westerkerk, under a blue enamel street-plaque title">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Canal Recall — learn Amsterdam by name">
+<meta name="twitter:description" content="Ride a boat or a bike through a 3D Amsterdam built from open city data, and name each canal and street before the map gives it away.">
+<meta name="twitter:image" content="https://canalrecall.blackmad.com/assets/landing/share-landing.jpg">
+<link rel="icon" type="image/svg+xml" href="quiz/app-icon.svg" data-dev-href="../app-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="css/enamel.css" rel="stylesheet">
+<link rel="preload" as="image" href="assets/landing/ride-desktop.webp" type="image/webp" media="(min-width: 760px)">
+<link rel="preload" as="image" href="assets/landing/ride-phone.webp" type="image/webp" media="(max-width: 759px)">
+<style>
+:root {
+  --page: var(--day-paper);
+  --raised: var(--day-paper-raised);
+  --sunk: var(--day-paper-sunk);
+  --ink: var(--day-ink);
+  --muted: var(--day-ink-muted);
+  --line: var(--day-line);
+  --line-strong: var(--day-line-strong);
+  --copper: var(--day-accent);
+  --copper-ink: var(--day-accent-ink);
+  --gutter: clamp(16px, 4.5vw, 56px);
+  --measure: 34rem;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --display: var(--font-plaque);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 400 17px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--day-accent-soft); color: var(--ink); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--copper-ink); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--copper-ink); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+.wrap { width: min(1240px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Top bar */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: 8px; }
+.wordmark { display: inline-flex; align-items: center; padding: 12px 20px 11px; font: 800 20px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-decoration: none; }
+.top nav { display: flex; align-items: center; gap: clamp(10px, 2.4vw, 26px); }
+.top nav a { font: 700 15px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 10px 2px; }
+.top nav a:hover { color: var(--copper-ink); }
+
+/* Buttons: the copper Start stamp from the ride, and a quiet paper twin. */
+.stamp { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 14px 30px 13px; border-radius: 6px;
+  font: 800 20px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: #2a1606;
+  background: linear-gradient(180deg, var(--enamel-copper-hi) 0%, var(--enamel-copper) 48%, var(--enamel-copper-deep) 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 8px 20px rgba(138,85,36,.32); transition: transform 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms; }
+.stamp::before { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(255,244,222,.8); border-radius: 3px; pointer-events: none; }
+.stamp:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,.35) inset, 0 12px 26px rgba(138,85,36,.38); text-decoration: none; }
+.stamp svg, .quiet svg { width: 20px; height: 20px; flex: none; }
+.quiet { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 54px; padding: 13px 24px; border-radius: 6px; border: 1px solid var(--line-strong); background: var(--raised);
+  font: 700 18px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; cursor: pointer; transition: border-color 140ms, background 140ms; }
+.quiet:hover { border-color: var(--copper); text-decoration: none; }
+button.quiet { font-family: var(--display); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(28px, 5vw, 72px); padding-top: clamp(28px, 6vw, 76px); padding-bottom: clamp(48px, 8vw, 104px); }
+h1 { margin: 0; font: 800 clamp(3rem, 7.4vw, 5.9rem)/0.9 var(--display); letter-spacing: -0.01em; text-transform: uppercase; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--enamel); }
+.lede { margin: 22px 0 0; max-width: var(--measure); font-size: clamp(18px, 1.6vw, 20px); color: var(--muted); text-wrap: pretty; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.fine { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+
+.shot { position: relative; }
+.frame { border-radius: 10px; overflow: hidden; background: var(--sunk); border: 1px solid var(--line-strong);
+  box-shadow: 0 2px 4px rgba(31,28,23,.08), 0 24px 60px rgba(31,28,23,.22); }
+.hero .shot { padding-bottom: 7%; }
+.hero .desk { aspect-ratio: 1200 / 750; }
+.hero .desk img { width: 100%; height: 100%; object-fit: cover; }
+.hero .phone { position: absolute; right: -2%; bottom: 0; width: 25%; aspect-ratio: 390 / 844; border-radius: 18px; border: 5px solid #1f1c17; }
+.hero .phone img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Sections */
+section { padding: clamp(56px, 8vw, 112px) 0; }
+.band { background: var(--raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+h2 { margin: 0; font: 800 clamp(2.1rem, 4.4vw, 3.4rem)/0.95 var(--display); letter-spacing: -0.005em; text-transform: uppercase; text-wrap: balance; }
+h3 { margin: 0; font: 800 clamp(1.6rem, 2.6vw, 2.2rem)/1 var(--display); text-transform: uppercase; text-wrap: balance; }
+.prose { max-width: var(--measure); }
+.prose p { margin: 16px 0 0; color: var(--muted); text-wrap: pretty; }
+.prose p strong { color: var(--ink); font-weight: 600; }
+
+.idea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+.idea + .idea { margin-top: clamp(64px, 9vw, 120px); }
+.idea.flip { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+.idea.flip .prose { order: 2; }
+.idea .frame img { width: 100%; }
+figure { margin: 0; }
+figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+/* Ride and quiz side by side: two genuinely different ways in. */
+.ways { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); margin-top: clamp(28px, 4vw, 48px); }
+.way { display: flex; flex-direction: column; gap: 16px; }
+.way .frame { aspect-ratio: 16 / 10; }
+.way .frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.way p { margin: 0; color: var(--muted); max-width: 32rem; }
+.way .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 4px; }
+
+.help { display: grid; grid-template-columns: minmax(0, 1.2fr) auto; gap: 24px 48px; align-items: end; }
+.help .row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+footer { padding: 36px 0 max(36px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: baseline; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer nav a { font: 700 15px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 6px 0; }
+footer nav a:hover { color: var(--copper-ink); }
+footer p { margin: 0; max-width: 46rem; }
+footer p a { color: var(--muted); }
+
+/* The feedback module adds its own floating launcher; this page has a button for it. */
+.cf-launch { display: none !important; }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero .shot { max-width: 760px; }
+  .idea, .idea.flip { grid-template-columns: 1fr; }
+  .idea.flip .prose { order: 0; }
+  .help { grid-template-columns: 1fr; align-items: start; }
+}
+@media (max-width: 759px) {
+  body { font-size: 16px; }
+  .top nav .hide-sm { display: none; }
+  .wordmark { font-size: 17px; padding: 11px 16px 10px; }
+  .hero { padding-top: 20px; gap: 28px; }
+  .hero .shot { padding: 0; width: min(100%, 360px); margin: 0 auto; }
+  .hero .desk { display: none; }
+  .hero .phone { position: relative; right: auto; width: 100%; border-width: 6px; border-radius: 26px; box-shadow: 0 24px 60px rgba(31,28,23,.25); }
+  .ctas > * { flex: 1 1 100%; }
+  .ways { grid-template-columns: 1fr; }
+  .way .row > * { flex: 1 1 auto; }
+  .help .row > * { flex: 1 1 100%; }
+}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="wordmark enamel-plaque enamel-framed" href="/?home" data-dev-href="landing.html" aria-label="Canal Recall home">Canal Recall</a>
+  <nav aria-label="Site">
+    <a href="/quiz/" data-dev-href="../">Quiz</a>
+    <a class="hide-sm" href="landmark-gallery.html">Buildings</a>
+    <a href="/ride" data-dev-href="./">Ride</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Learn Amsterdam <em>by&nbsp;name</em></h1>
+      <p class="lede">Steer a boat or a bike through a 3D Amsterdam built from open city data. <strong>Every canal and street you pass is a question</strong>, and the map keeps the name to itself until you answer.</p>
+      <div class="ctas">
+        <a class="stamp" href="/ride" data-dev-href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>
+          Start a ride
+        </a>
+        <a class="quiet" href="/quiz/" data-dev-href="../">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+          Map quiz
+        </a>
+      </div>
+      <p class="fine">Free, in the browser, on desktop or phone. No account needed.</p>
+    </div>
+    <div class="shot">
+      <div class="frame desk"><img src="assets/landing/ride-desktop.webp" width="1200" height="750" alt="Canal Recall on a desktop: a boat on the Prinsengracht beside the Westerkerk tower, with a card about the Anne Frank House" fetchpriority="high"></div>
+      <div class="frame phone"><img src="assets/landing/ride-phone.webp" width="600" height="1298" alt="Canal Recall on a phone: a boat on the Prinsengracht, with the on-screen steering pad"></div>
+    </div>
+  </div>
+
+  <section class="band" aria-labelledby="idea-title">
+    <div class="wrap">
+      <div class="idea">
+        <div class="prose">
+          <h2 id="idea-title">Answer first. Then the map tells&nbsp;you.</h2>
+          <p>Ride along a real canal and a question card asks which one you are on. <strong>Nothing on screen gives it away:</strong> no labels on the water, no street names on the route. Pick from the choices, or type it on harder settings, and only then does the name appear.</p>
+          <p>Guessing wrong is part of it. The card tells you a little about the place, so the name has something to stick to.</p>
+        </div>
+        <figure>
+          <div class="frame"><img src="assets/landing/question-desktop.webp" width="1200" height="750" loading="lazy" decoding="async" alt="A question card asks which waterway the boat is on, with three choices and a no-idea button; the HUD shows only question marks"></div>
+        </figure>
+      </div>
+
+      <div class="idea flip">
+        <div class="prose">
+          <h3>Wrong today, back tomorrow</h3>
+          <p>Every name you meet joins your knowledge. The ones you miss come back on a later ride, spaced out until you know them; the ones you know stop being asked.</p>
+          <p>Ride from your own address and the first routes stay close to home, then widen as the neighbourhood sticks.</p>
+        </div>
+        <figure>
+          <div class="frame"><img src="assets/landing/knowledge.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The knowledge screen lists canals and streets by how well you know them"></div>
+        </figure>
+      </div>
+
+      <div class="idea">
+        <div class="prose">
+          <h3>A city you will recognise</h3>
+          <p>The canals, streets and bridges come from OpenStreetMap; the buildings from the Dutch building registry and its 3D heights. Landmarks and canal houses are modelled from photographs, one by one, so the Westerkerk looks like the Westerkerk.</p>
+          <p><a href="landmark-gallery.html">Browse the modelled buildings</a></p>
+        </div>
+        <figure>
+          <div class="frame"><img src="assets/landing/buildings.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Canal houses, houseboats and bridges along the Prinsengracht, seen from the boat"></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ways-title">
+    <div class="wrap">
+      <h2 id="ways-title">Two ways in</h2>
+      <div class="ways">
+        <article class="way">
+          <div class="frame"><img src="assets/landing/ride-wide.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Cycling along the Prinsengracht quay in Canal Recall"></div>
+          <h3>Ride</h3>
+          <p>A boat on the canals or a bike on the streets, from a surprise start, your home, or wherever you are standing.</p>
+          <div class="row"><a class="stamp" href="/ride" data-dev-href="./">Start a ride</a></div>
+        </article>
+        <article class="way">
+          <div class="frame"><img src="assets/landing/quiz.webp" width="1200" height="750" loading="lazy" decoding="async" alt="The map quiz start screen: daily five, canals and water, streets, and neighbourhoods, beside a photo of a canal bridge"></div>
+          <h3>Quiz</h3>
+          <p>The quick version on a flat map: one street, canal or neighbourhood at a time, name it or find it. What you learn in one counts in the other.</p>
+          <div class="row"><a class="quiet" href="/quiz/" data-dev-href="../">Open the quiz</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="help-title">
+    <div class="wrap help">
+      <div class="prose">
+        <h2 id="help-title">Spot something wrong?</h2>
+        <p>A canal with the wrong name, a bridge you can't cross, a building that doesn't look like itself, or one you'd like to see modelled next. Tell us: reports go straight to the people building it.</p>
+      </div>
+      <div class="row">
+        <button class="quiet" type="button" id="report-problem">Report a problem</button>
+        <button class="quiet" type="button" id="request-building">Request a building</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="About">
+      <a href="credits.html">Credits</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="landmark-gallery.html">Buildings</a>
+      <a href="/quiz/" data-dev-href="../">Quiz</a>
+    </nav>
+    <p>Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. Buildings from BAG and 3DBAG. Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s and the Bandit</a> (GPL-3.0).</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Dev server and legacy builds: this page is canal-drive/landing.html, the
+  // ride is the directory index and Map Quest is the parent.
+  if (location.pathname.indexOf('/canal-drive/') >= 0) {
+    document.querySelectorAll('[data-dev-href]').forEach(function (el) { el.setAttribute('href', el.getAttribute('data-dev-href')); });
+  }
+  // The shared feedback form, loaded only when asked for (Firebase loads later still, on save).
+  var loading;
+  function feedback(target) {
+    loading = loading || new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = 'js/feedback/browser.js';
+      s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    loading.then(function () { window.CanalFeedback.open(target); }, function () {
+      loading = null;
+      alert('The feedback form could not load. Please try again in a moment.');
+    });
+  }
+  document.getElementById('report-problem').addEventListener('click', function () {
+    feedback({ id: 'landing:problem', label: 'Problem report (from the landing page)' });
+  });
+  document.getElementById('request-building').addEventListener('click', function () {
+    feedback({ id: 'landing:building-request', label: 'Building request (from the landing page)' });
+  });
+})();
+</script>
+</body>
+</html>
