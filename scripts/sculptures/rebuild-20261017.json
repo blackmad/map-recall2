@@ -15,7 +15,7 @@
      "views": [{"title": "File:Amsterdam, De dokwerker 07.JPG", "box": [0, 0, 1, 0.56]}, {"title": "File:Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg", "box": [0, 0, 1, 0.91]},
                {"title": "File:Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg", "box": [0, 0, 1, 0.545]}]}
    ]},
-  "rembrandtmonument": {"kit": "rembrandtmonument", "categories": ["Category:Rembrandtmonument, Amsterdam"],
+  "rembrandtmonument": {"kit": "rembrandtmonument", "verdict": "better: the cloaked painter with beret and folded hands reads from all sides, where the kit is blocks; the Night Watch group (22 figures) stays kit", "categories": ["Category:Rembrandtmonument, Amsterdam"], "stripCrop": {"min": [-2.5, 0, -2.5], "max": [2.5, 7.5, 2.5]},
    "sculptor": {"name": "Louis Royer", "born": 1793, "died": 1868, "year": 1852},
    "note": "statue only: the Night Watch group (2006, 22 bronze figures after the painting) stays kit; one run per figure is out of scope for this batch",
    "figures": [
@@ -77,7 +77,7 @@
     {"name": "hunter", "route": "trellis", "facing": 250, "material": "bronze", "cut": {"min": [-1, 1.1, -1], "max": [1, 3.2, 1]},
      "views": [{"title": "File:2019 Teun de Jager (02).jpg", "box": [0, 0, 1, 0.53]}, {"title": "File:2019 Teun de Jager (03).jpg", "box": [0, 0, 1, 0.54]}, {"title": "File:2019 Teun de Jager (04).jpg", "box": [0, 0, 1, 0.56]}, {"title": "File:2019 Teun de Jager (05).jpg", "box": [0, 0, 1, 0.53]}]}
    ]},
-  "johnny-jordaan-groep": {"kit": "johnny-jordaan-groep", "categories": ["Category:Johnny Jordaanplein", "Category:Bust of Johnny Jordaan, Amsterdam"],
+  "johnny-jordaan-groep": {"kit": "johnny-jordaan-groep", "verdict": "better: Manke Nelis on his stool with the double bass, Johnny Meijer seated at the accordion and the three busts all read as people, where the kit figures are blocky; five runs, about 6.7k tris each", "categories": ["Category:Johnny Jordaanplein", "Category:Bust of Johnny Jordaan, Amsterdam"],
    "sculptor": {"name": "Kees Verkade (Johnny Jordaan, Tante Leen); others per the plaques (Manke Nelis, Johnny Meijer, Mien and Jan Froger, signed 'Dominic 2010')", "born": 1941, "died": 2020, "year": 1991},
    "figures": [
     {"name": "manke-nelis", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [-3.8, 0.8, 0.9], "max": [-2.1, 3.1, 2.4]},
@@ -91,7 +91,7 @@
     {"name": "mien-en-jan-froger", "route": "trellis", "facing": 160, "material": "bronze", "cut": {"min": [2.75, 0.9, -1.1], "max": [4.05, 2.45, 0.15]},
      "views": [{"title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (A).jpg", "box": [0.16, 0, 0.64, 0.6]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (C).jpg", "box": [0.23, 0.03, 0.68, 0.83]}, {"title": "File:2024 Johnny Jordaanplein, Asd-Mien en Jan Froger (D).jpg", "box": [0.22, 0.05, 0.6, 0.77]}]}
    ]},
-  "theo-thijssen-standbeeld": {"kit": "theo-thijssen-standbeeld", "categories": ["Category:Statue of Theo Thijssen by Hans Bayens", "Category:Theo Thijssenmonument"],
+  "theo-thijssen-standbeeld": {"kit": "theo-thijssen-standbeeld", "verdict": "better: the master leaning over the boy at the open-framed desk reads as Bayens's group from every side; the kit figures are stick-like. Man, boy and desk are one casting, so one run, not two", "categories": ["Category:Statue of Theo Thijssen by Hans Bayens", "Category:Theo Thijssenmonument"],
    "sculptor": {"name": "Hans Bayens", "born": 1924, "died": 2003, "year": 1960},
    "figures": [
     {"name": "master-boy-desk", "route": "trellis", "facing": 0, "material": "bronze", "cut": {"min": [-1, 1.0, -1.2], "max": [1, 3, 0.5]},
@@ -106,10 +106,10 @@
      "views": [{"title": "File:Simon Carmiggeltbeeld.jpg", "box": [0.25, 0.08, 0.75, 0.41]}, {"title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdamweduwe Tiny Carmigge…, Bestanddeelnr 934-3460.jpg", "box": [0.63, 0, 1, 0.83]},
                {"title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam Ton van Duinhoven en, Bestanddeelnr 934-3461.jpg", "box": [0, 0, 0.32, 0.85]}]}
    ]},
-  "gandhi-churchill-laan": {"kit": "gandhi-churchill-laan", "categories": ["Category:Mahatma Gandhi (Amsterdam)"],
+  "gandhi-churchill-laan": {"kit": "gandhi-churchill-laan", "verdict": "better: the striding Gandhi with staff and wrapped shawl reads; the kit walker is stiff", "categories": ["Category:Mahatma Gandhi (Amsterdam)"],
    "sculptor": {"name": "Gautam Pal", "born": null, "died": null, "year": 1990},
    "figures": [
-    {"name": "walker", "route": "trellis", "facing": 90, "material": "bronze", "cut": {"min": [-1, 1.24, -1], "max": [1, 3.4, 1]},
+    {"name": "walker", "route": "trellis", "facing": 90, "material": "bronze", "cutMaterials": ["bronze", "dark"], "cut": {"min": [-1, 1.24, -1], "max": [1, 3.4, 1]},
      "views": [{"title": "File:Statue of Gandhi, Amsterdam.jpg", "box": [0.2, 0, 0.7, 0.72]}, {"title": "File:Gandhi (Amsterdam) (1).jpg", "box": [0.38, 0.12, 0.62, 0.44]},
                {"title": "File:Gandhi (Amsterdam) (2).jpg", "box": [0.32, 0.18, 0.58, 0.56]}, {"title": "File:Gandhi (Amsterdam) (3).jpg", "box": [0.28, 0.15, 0.58, 0.49]}]}
    ]},
