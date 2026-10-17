@@ -632,6 +632,10 @@ body.setup-open #utility-buttons #open-settings { display: none; }
 }
 .help-replay { margin: 0 0 14px; min-height: 40px; padding: 0 14px; border: 1px solid var(--day-line-strong); border-radius: 8px; background: var(--day-paper-raised); color: var(--day-ink); cursor: pointer; font: 700 13px/1 var(--font-plaque); letter-spacing: .06em; text-transform: uppercase; }
 .help-replay:hover { border-color: var(--day-accent-ink); }
+.help-keys h4 { margin: 12px 0 2px; color: var(--enamel-muted); font: 700 12px/1.2 var(--font-plaque); letter-spacing: .12em; text-transform: uppercase; }
+.help-keys td:first-child { width: 42%; font-weight: 600; white-space: nowrap; }
+.help-dev-keys { margin-top: 12px; }
+.help-dev-keys summary { cursor: pointer; color: var(--enamel-muted); font: 700 12px/1.2 var(--font-plaque); letter-spacing: .12em; text-transform: uppercase; }
 .help-credits { margin: 12px 0 0; color: var(--enamel-muted); font: 12px/1.45 var(--font-ui); }
 .help-credits a { color: var(--day-accent-ink); }
 /* The landmark panel is the card's expanded form: the full extract, at length,
@@ -1275,30 +1279,50 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
       <h3>Remember it</h3>
       <p>Names you get right come back later, just before you would forget them (spaced review). <em>Knowledge</em> on the setup screen shows what is due. “% new” on the destination card is how much of the route you have not ridden before.</p>
     </section>
+    <!-- Grouped by what you are doing; the debug keys sit behind a
+         disclosure. A flat 21-row table hid steer and answer among them
+         (clarity review 15). -->
     <h3 class="help-pointer">Keyboard</h3>
-    <table class="help-pointer">
-      <tr><td>Arrows</td><td>Steer and accelerate / brake</td></tr>
-      <tr><td>Space</td><td>Handbrake</td></tr>
-      <tr><td>M / Tab</td><td>Minimap</td></tr>
-      <tr><td>L</td><td>Route line</td></tr>
-      <tr><td>F</td><td>Destination arrow</td></tr>
-      <tr><td>D</td><td>Road name labels</td></tr>
-      <tr><td>O</td><td>North-up / heading-up</td></tr>
-      <tr><td>[ / ]</td><td>3D tilt (chase / cockpit)</td></tr>
-      <tr><td>Shift + [ / ]</td><td>Spin 3D camera around vehicle</td></tr>
-      <tr><td>Twist / ⌥ + scroll</td><td>Spin 3D camera (trackpad twist in Safari)</td></tr>
-      <tr><td>1 – 4</td><td>Multiple-choice answer</td></tr>
-      <tr><td>W</td><td>Wikipedia for the on-screen landmark</td></tr>
-      <tr><td>Click card</td><td>Full landmark article</td></tr>
-      <tr><td>G</td><td>Settings</td></tr>
-      <tr><td>N</td><td>Sound</td></tr>
-      <tr><td>P / Esc</td><td>Pause</td></tr>
-      <tr><td>M (paused)</td><td>Route setup</td></tr>
-      <tr><td>− / +</td><td>Zoom (or pinch)</td></tr>
-      <tr><td>Drag / IJKU</td><td>Pan camera</td></tr>
-      <tr><td>R</td><td>Recenter</td></tr>
-      <tr><td>`</td><td>Debug overlay</td></tr>
-    </table>
+    <div class="help-pointer help-keys">
+      <h4>Ride</h4>
+      <table>
+        <tr><td>Arrows</td><td>Steer and accelerate / brake</td></tr>
+        <tr><td>Space</td><td>Handbrake</td></tr>
+        <tr><td>P / Esc</td><td>Pause</td></tr>
+        <tr><td>M (paused or arrived)</td><td>Route setup</td></tr>
+        <tr><td>G</td><td>Settings</td></tr>
+        <tr><td>N</td><td>Sound</td></tr>
+      </table>
+      <h4>Answer</h4>
+      <table>
+        <tr><td>1 – 4</td><td>Multiple-choice answer</td></tr>
+        <tr><td>0</td><td>No idea — tell me</td></tr>
+        <tr><td>W</td><td>Wikipedia for the on-screen landmark</td></tr>
+        <tr><td>Click card</td><td>Full landmark article</td></tr>
+      </table>
+      <h4>View</h4>
+      <table>
+        <tr><td>M / Tab</td><td>Minimap</td></tr>
+        <tr><td>L</td><td>Route line</td></tr>
+        <tr><td>F</td><td>Destination arrow</td></tr>
+        <tr><td>O</td><td>North-up / heading-up</td></tr>
+        <tr><td>− / +</td><td>Zoom (or pinch)</td></tr>
+        <tr><td>Drag</td><td>Pan camera</td></tr>
+        <tr><td>R</td><td>Recenter</td></tr>
+        <tr><td>[ / ]</td><td>3D tilt (chase / cockpit)</td></tr>
+        <tr><td>Shift + [ / ]</td><td>Spin 3D camera around vehicle</td></tr>
+        <tr><td>Twist / ⌥ + scroll</td><td>Spin 3D camera (trackpad twist in Safari)</td></tr>
+      </table>
+      <details class="help-dev-keys">
+        <summary>Developer keys</summary>
+        <table>
+          <tr><td>D</td><td>Road name labels</td></tr>
+          <tr><td>B</td><td>Building look</td></tr>
+          <tr><td>IJKU</td><td>Pan camera</td></tr>
+          <tr><td>`</td><td>Debug overlay</td></tr>
+        </table>
+      </details>
+    </div>
     <p class="help-credits"><a href="credits.html">Credits</a> · <a href="privacy.html">Privacy</a> · Adapted from <a href="https://github.com/a1anw2/smokeysandthebandit">Smokey’s</a> (GPL-3.0) · © OSM · OpenFreeMap · © OpenMapTiles</p>
   </div>
   <button class="utility-close enamel-plaque enamel-framed enamel-start" type="button">Close</button>
