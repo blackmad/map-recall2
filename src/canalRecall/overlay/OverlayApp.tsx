@@ -1016,7 +1016,7 @@ export function OverlayApp({
             </button>
             </div>
             <div className="enamel-setup-footer">
-              <p className="enamel-field-note" id="mission-brief" style={{ margin: '0 0 8px', textAlign: 'center' }}>
+              <p className="enamel-field-note" id="mission-brief">
                 {selectedTour ? `Ride the ${selectedTour.title} tour stop by stop. Each arrival tells you why it is on the list.` : briefingMission(prefs)}
               </p>
               <button id="route-start" className="enamel-plaque enamel-framed enamel-start" type="submit">{selectedTour ? 'Start tour' : 'Start route'}</button>
