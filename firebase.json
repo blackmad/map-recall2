@@ -146,6 +146,10 @@
           "destination": "/ride.html"
         },
         {
+          "source": "/explore",
+          "destination": "/explore.html"
+        },
+        {
           "source": "/quiz/**",
           "destination": "/quiz/index.html"
         }
