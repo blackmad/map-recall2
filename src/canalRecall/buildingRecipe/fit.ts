@@ -11,6 +11,7 @@ import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, Canalhou
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {brickStripeBlocks} from './brickStripes.ts';
 import {stairLightOpenings} from './stairLight.ts';
+import {bargeboardOrnaments} from './bargeboards.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
@@ -68,7 +69,7 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   'casement-pair': {verticalBars: [.5], mullionWidthM: .05},
   'casement-small-panes': {verticalBars: [.25, .5, .75], horizontalBars: [.36, .8], horizontalBarWidthsM: [.03, .05], mullionWidthM: .05},
   // Polanenstraat 229-311 (1935): narrow side lights either side of a wide fixed light, one top light band over all three.
-  'casement-sidelights-toplight': {verticalBars: [.14, .86], horizontalBars: [.86], horizontalBarWidthsM: [.04], mullionWidthM: .035},
+  'casement-sidelights-toplight': {verticalBars: [.14, .86], horizontalBars: [.86], horizontalBarWidthsM: [.035], mullionWidthM: .035},
 };
 /** Share of the storey height above a window head when `windowHeights` is given (survey median, all eras). */
 const HEAD_LINE = 0.86;
@@ -947,6 +948,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     }
     if (profile) {
       elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
+      // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts).
+      if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
       // A measured entablature under a neck/bell cap: a stone frieze and cap (the crown head clipped above the frieze
       // foot) and a cornice ledge projecting past the neck. One crown per front only.
       const k = front.crownCapCornice;

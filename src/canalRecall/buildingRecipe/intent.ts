@@ -461,9 +461,9 @@ export interface FrontIntent {
    * white-painted over the whole width): each listed 0-based storey (the ground only without a shopfront/ground front) is
    * laid as a 4 cm facing from its floor to the next floor (the top storey to 2 cm under the eaves), cut around the
    * openings, in the wall material and `colour`, exported as a measured tint (the paint is drawn as measured, not lifted
-   * into the city brick range). Absent = byte-identical. `from` (m, 0.05..2): the paint starts that far over each listed
+   * into the city brick range). Absent = byte-identical. `from` (m, 0.05..4): the paint starts that far over each listed
    * storey's floor, brick below it (Gorontalostraat 25-45, 1926: the white top storey begins at its window sills, 0.45 m
-   * over the floor; absent = from the floor).
+   * over the floor; Zaanhof 1919: the render starts over the first-floor window heads, 3.3 m up a tall top storey; absent = from the floor).
    */
   paintedStoreys?: {storeys: number[]; colour: string; from?: number};
   /**
@@ -486,6 +486,13 @@ export interface FrontIntent {
    */
   /** A staircase light through the storeys on one axis of the shared grid (stairLight.ts). Absent = byte-identical. */
   stairLight?: StairLightIntent;
+  /**
+   * A rendered gable (Zaanhof 1919, Walenkamp): the crown face in the render `colour` (#rrggbb, a measured tint; the
+   * storeys under it keep their brick or take `paintedStoreys`) and a painted board `bargeboard` metres deep inside each
+   * raking edge in the trim colour (0.08..0.4; bargeboards.ts). Only on a gabled crown (point, step, neck, raised-neck,
+   * bell, spout). Absent = byte-identical.
+   */
+  renderedGable?: {bargeboard: number; colour: string};
   brickStripes?: BrickStripeZone[];
   /**
    * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
@@ -1083,6 +1090,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else problems.push(...liseneAtProblems(f, at));
       if (f.repeat) problems.push(`${at}.lisenes: not on a repeated front`);
     }
+    if (f.renderedGable !== undefined) {
+      const r = f.renderedGable as unknown as Record<string, unknown>;
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => k !== 'bargeboard' && k !== 'colour') || !(typeof r.bargeboard === 'number' && r.bargeboard >= 0.08 && r.bargeboard <= 0.4) || typeof r.colour !== 'string' || !/^#[0-9a-f]{6}$/i.test(r.colour)) problems.push(`${at}.renderedGable: {bargeboard: 0.08..0.4 m, colour: #rrggbb}`);
+      if (f.gable === 'flat' || f.gable === 'cornice') problems.push(`${at}.renderedGable: only on a gabled crown (gable ${f.gable})`);
+    }
     if (f.stairLight !== undefined) problems.push(...stairLightProblems(f.stairLight, f.storeys, frontGrid(f), !!f.repeat, at));
     if (f.brickStripes !== undefined) problems.push(...brickStripeProblems(f.brickStripes, f.palette?.band ?? intent?.palette?.band, !!f.repeat, at));
     problems.push(...windowProblems(f, at, oneOf));
@@ -1354,7 +1366,7 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
   const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
   if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?}`];
-  if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 2)) p.push(`${at}.paintedStoreys.from: 0.05..2 m over the storey floor`);
+  if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 4)) p.push(`${at}.paintedStoreys.from: 0.05..4 m over the storey floor`);
   const l = ps.storeys as number[];
   if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);
   else if (l.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.paintedStoreys.storeys: the ground storey holds a shop/ground front; paint the upper storeys`);
