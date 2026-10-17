@@ -88,18 +88,24 @@ export class ModelViewer {
     this.resize();
   }
 
-  /** Loads a GLB, replacing (and disposing) the current one. Rejects if a newer open() superseded it. */
-  async open(url: string): Promise<OpenResult> {
+  /**
+   * Loads a GLB, replacing (and disposing) the current one. Rejects if a newer open() superseded it.
+   * `focus` (GLB-local box, e.g. a run of houses inside a street chunk) is centred and framed instead of the whole
+   * model; the rest of the model stays drawn around it.
+   */
+  async open(url: string, opts: { focus?: { min: readonly number[]; max: readonly number[] } } = {}): Promise<OpenResult> {
     const token = ++this.token;
     this.clear();
     const gltf: any = await new Promise((resolve, reject) => this.loader.load(url, resolve, undefined, reject));
     if (token !== this.token) { disposeTree(gltf.scene); throw new Error('superseded'); }
     const { THREE } = this.three;
     const model = gltf.scene;
-    const box = new THREE.Box3().setFromObject(model);
+    const whole = new THREE.Box3().setFromObject(model);
+    const box = opts.focus ? new THREE.Box3(new THREE.Vector3(...opts.focus.min), new THREE.Vector3(...opts.focus.max)) : whole;
     const size = box.getSize(new THREE.Vector3());
     const centre = box.getCenter(new THREE.Vector3());
-    const longest = Math.max(size.x, size.y, size.z) || 1;
+    // A focus run is framed on its front (width and height) with a margin, so the neighbouring houses show around it.
+    const longest = (opts.focus ? Math.max(size.x, size.y) * 1.35 : Math.max(size.x, size.y, size.z)) || 1;
     const pivot = new THREE.Group();
     model.position.set(-centre.x, -box.min.y, -centre.z);
     pivot.add(model);
