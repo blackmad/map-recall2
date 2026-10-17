@@ -21,6 +21,8 @@ export interface AccountChipProps {
   id?: string;
   /** Avatar only when signed in, and a round icon-only "Sign in" for a guest (in-round headers). */
   compact?: boolean;
+  /** Start with the menu open (Storybook states). */
+  defaultOpen?: boolean;
 }
 
 /** First letter of the first word, for the avatar fallback. */
@@ -50,8 +52,8 @@ function Avatar({ user }: { user: AccountChipUser }) {
  * small menu with My progress and Sign out. Styled by `.account-chip` in
  * src/theme/enamel-chrome.css.
  */
-export function AccountChip({ user, available = true, busy = false, onSignIn, onSignOut, progressHref, id, compact = false }: AccountChipProps) {
-  const [open, setOpen] = useState(false);
+export function AccountChip({ user, available = true, busy = false, onSignIn, onSignOut, progressHref, id, compact = false, defaultOpen = false }: AccountChipProps) {
+  const [open, setOpen] = useState(defaultOpen);
   const root = useRef<HTMLDivElement>(null);
   const menuId = useId();
 
