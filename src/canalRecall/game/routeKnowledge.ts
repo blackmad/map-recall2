@@ -11,6 +11,8 @@ const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wi
 export interface BridgeKnowledgeSource {
   id?: string;
   name?: string;
+  /** Official spelling for the card title; the entry stays keyed by `name`. */
+  displayName?: string;
   wikipediaUrl?: string;
   wikipediaExtract?: string;
   wikipediaExtractLang?: string;
@@ -75,6 +77,14 @@ export function buildRouteKnowledgeIndex(
     const key = `bridge:${normalise(name)}`;
     const existing = index.get(key);
     index.set(key, existing ? { ...existing, structureFact } : { name, type: 'bridge', structureFact });
+  }
+  // The card is titled with the bridge's official spelling (Kattenbrug, not
+  // OSM's "Katten brug"); it is still found by the name the question used.
+  for (const bridge of bridges) {
+    if (!bridge.name || !bridge.displayName) continue;
+    const key = `bridge:${normalise(bridge.name)}`;
+    const existing = index.get(key);
+    if (existing) index.set(key, { ...existing, name: bridge.displayName });
   }
   return index;
 }

@@ -109,7 +109,10 @@ export interface BridgeCrossing extends WorldPoint {
 
 export interface Bridge {
   id: string;
+  /** The raw OSM way name: what the bridge is matched and keyed by. */
   name: string;
+  /** The official spelling to show, when OSM's differs (bridgeDisplayNames.ts). */
+  displayName?: string;
   lines: WorldPoint[][];
   crossings: BridgeCrossing[];
   distractors: string[];
