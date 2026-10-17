@@ -743,8 +743,7 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   - Rules deploy needed for poiStamps (and the stricter gameSessions).
   - No landmark-name question exists, so 'named' stamps never fire.
   - Explorer: Centrum is one 99-building bucket (no Burgwallen-level areas in
-    `boundaries.json`); no "Buildings" item in SiteSwitch yet; decide and state
-    a licence for the models themselves in credits.html; rerun
+    `boundaries.json`); no "Buildings" item in SiteSwitch yet; rerun
     `build:explorer-index` after model installs (add `--check` to check:canal).
   - Clarity findings still open (`docs/preview/gameplay-clarity-review.md`):
     10 zoom badge after the start flight, 11 phone "More" cue over fields,
