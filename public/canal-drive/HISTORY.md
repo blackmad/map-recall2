@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Postcards need spaced recall (2026-10-17)
+
+The user found postcards too easy ("16 of 78" after little play). Before, any
+neighbourhood review state with repetitions ≥ 1 earned one, so a single good
+Pinpoint (≤ ~535 m) or a correct 4-choice Guess Name did; the ride never wrote
+neighbourhood states (the bike mark is drawn on every card, earned or not).
+Now `postcardProgress` in `src/mapRecall/progress.ts` requires recalls on two
+different days with at least one pin ≤ 250 m, or a precise pin (≤ 60 m) plus a
+correct answer ≥ 30 min later, or Guess Name on three different days; synced
+states without a local event log need three good answers in a row. Earned
+cards are never revoked by a later miss. In-progress buurten show faded with
+"1 of 2 days"; the end screen announces only cards the session completed.
+Existing players lose cards that no longer qualify (derived state).
+
 ## Clarity polish, tours keep your settings, Buildings in the switch (2026-10-17)
 
 Clarity findings 10–15 fixed (each pinned in `tests/e2e/clarity-polish.spec.ts`;
