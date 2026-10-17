@@ -1,5 +1,43 @@
 # Canal Recall — what is built
 
+## Public preview batch: one origin, landing, onboarding, notable destinations, report a problem, monitoring (2026-10-17)
+
+Integrated from `preview/*-20261017` lanes (plan
+`~/.claude/plans/imperative-booping-candle.md`).
+- **One origin.** `/` is a static landing page (`landing.html`, no three.js;
+  any query/hash or returning player forwards to `/ride`, `/?home` always shows
+  it). The ride is `/ride` (`ride.html` rewrite); Map Quest builds with
+  `vite --mode quiz` into `dist-quiz` and is served at `/quiz/`, so the two
+  apps share auth and localStorage. edumap 301s to `/quiz/`. Home/Ride/Quiz
+  switch (`SiteSwitch`, `src/siteLinks.ts`) in both apps. e2e
+  `canal-site.spec.ts` against `firebase serve`.
+- **Onboarding and clarity.** Review `docs/preview/gameplay-clarity-review.md`
+  (26/40 before, 17 findings, 10 fixed). Three-step first-run intro
+  (`src/canalRecall/onboarding/`, flag `canalRecall.onboarding.v1`, replay
+  from How to play; automated runs skip it unless `__canalRecallOnboarding`).
+  Score reads "3/4 named · 290 pts"; bonus "new name bonus"/"3 in a row";
+  difficulty and view rows say what they change (`hudCopy.ts`, `setupCopy.ts`).
+- **Notable destinations.** `poiNotability.ts`: sitelinks, 60-day pageviews,
+  P1435 heritage, kind weight and a curated A-list; manual models only a +1
+  tie-break (was a 220 floor). Extract coverage: pageviews 106 → 252,
+  heritage 0 → 133, P31 0 → 350. `pickDestinationNear` samples
+  exp(score/3): from Dam the top pick is 5.7 %, ~36 effective destinations,
+  89 % A-list (T=2 collapsed to ~22 at 98 %). `test:poi-notability` pins the
+  top 20 and the spread. Thin Wikidata one-liners no longer pass the arrival gate.
+- **Report a problem.** Feedback button renamed; `category`
+  (bug/building/data/request/other) and `subject` ({kind pand/model/osm/point,
+  id, lngLat}) on notes, validated in `firestore.rules` (deployed
+  2026-10-17); `CanalFeedback.open({category, subject, label})`;
+  `feedback:queue --category`.
+- **Monitoring.** Sentry (`canal-recall` and `map-quest` projects in org
+  `whizziwig`) and App Check (reCAPTCHA Enterprise), both no-ops until the
+  secrets exist (`docs/MONITORING.md`). The ride loads the Sentry bundle async
+  and only with a DSN (it was a 32 KB gz blocking head script).
+- **Pages and docs.** `credits.html`, `privacy.html`; every lab page gets
+  `noindex` (they stay public by choice). Root `README.md`,
+  `docs/ARCHITECTURE.md`. The deepseek dead-code report is held at 14a6c2284:
+  spot checks found false "high confidence" entries.
+
 ## Bridges shown under their official spelling; bridges.json halved (2026-10-17)
 
 Lane `content/bridge-data-finish-20261017`. Load: `bridges.json` (ride start)
