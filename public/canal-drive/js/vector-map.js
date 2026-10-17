@@ -2065,12 +2065,32 @@ class VectorBasemap {
       this._ownGroundReplay();
       // Overview → city: the basemap takes the own-ground palette at every zoom, not only under the resident cells.
       this._setBasemapGroundHidden(!!this._basemapGroundHidden);
+      void this._ensureOverviewTiles();
     } catch (error) {
       console.warn('Own ground unavailable; the basemap ground stays.', error);
       this._ownGround = null;
     } finally {
       this._ownGroundLoading = false;
     }
+  }
+
+  /**
+   * Adapter (src/canalRecall/overviewTiles/tileset.ts): the own ground seen from above as flat raster tiles over the
+   * basemap's ground, so the overview is the same ground in the same colours as the ride. Skipped (the recoloured
+   * basemap stays) without a manifest, under another `?groundLook`, or with `?overviewTiles=0`.
+   */
+  async _ensureOverviewTiles() {
+    const api = window.CanalRecallOwnGround;
+    if (this._overviewTiles || !this.map || !api || !api.overviewTilesPlan || !canalRecallLookFlag('overviewTiles', '__canalRecallOverviewTiles', true)) return;
+    this._overviewTiles = true;
+    const root = this._absoluteExtractRoot();
+    const manifest = await fetch(`${root}/${api.OVERVIEW_TILES_DIR}/manifest.json`).then(r => (r.ok ? r.json() : null)).catch(() => null);
+    const plan = api.overviewTilesPlan(manifest, root, this.map.getStyle().layers || []);
+    if (plan.skip) { console.info(`Overview tiles off: ${plan.skip}`); return; }
+    try {
+      this.map.addSource(api.OVERVIEW_TILES_SOURCE, plan.source);
+      this.map.addLayer(plan.layer, plan.beforeId);
+    } catch (error) { console.warn('Overview tiles unavailable.', error); }
   }
 
   /** Overlays set before the bundle arrived. */
