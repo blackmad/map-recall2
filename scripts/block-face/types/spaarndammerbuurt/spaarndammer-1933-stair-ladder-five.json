@@ -1,0 +1,199 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "spaarndammer-1933-stair-ladder-five",
+ "district": "spaarndammerbuurt",
+ "description": "Spaarndammerbuurt (BAG 1933), Houtrijkstraat 399-401 and Polanenstraat 240-242: the 15.4 m end fronts of the 1933 ladder-light rows, five axes (wide, small, staircase, small, wide) on four storeys, the staircase axis right of the middle; a 0.5 m glass-block ladder light from the door canopy to under the eaves over a single portiek door; on the ground a wide window, a small one, the door and a long window under the last two axes; a deep white flat-roof overhang",
+ "fit": {
+  "widthM": [
+   14.6,
+   16.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   4,
+   4,
+   4,
+   4
+  ],
+  "axisGrid": 5,
+  "bayWidths": [
+   4.0,
+   3.1,
+   2.55,
+   2.95,
+   2.83
+  ],
+  "bayFill": [
+   0.7,
+   0.35,
+   0.4,
+   0.34,
+   0.8
+  ],
+  "cornice": "none",
+  "windows": "casement-sidelights-toplight",
+  "storeyHeights": [
+   3.4,
+   3.05,
+   3.0,
+   3.0
+  ],
+  "windowHeights": [
+   0.47,
+   0.55,
+   0.52,
+   0.52
+  ],
+  "headLines": [
+   0.78,
+   0.79,
+   0.75,
+   0.75
+  ],
+  "stairLight": {
+   "axis": 2,
+   "breadth": 0.5,
+   "from": [
+    1,
+    0.03
+   ],
+   "to": [
+    3,
+    0.85
+   ],
+   "pane": 0.65
+  },
+  "storeyBayWidths": {
+   "0": [
+    4.0,
+    3.1,
+    2.55,
+    5.78
+   ]
+  },
+  "storeyAxes": {
+   "1": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "2": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "3": [
+    0,
+    1,
+    3,
+    4
+   ]
+  }
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 1.1,
+    "fascia": 0.4,
+    "colour": "#e8e6df",
+    "soffit": "#d6d2c6"
+   },
+   "note": "the row's deep flat-roof overhang: wall top 12.45 m (Houtrijkstraat 381 strip), a white ribbed soffit and a 0.4 m white fascia; chimney stacks stand on the roof behind"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.6,
+    "thickness": 0.15,
+    "overhang": 0.1,
+    "doorOverhang": 0.4,
+    "gap": 0.1,
+    "colour": "#e6e4dc"
+   },
+   "note": "a single portiek door on the staircase axis under a white slab canopy (rectified 80.0-80.8 m on Houtrijkstraat 399)"
+  }
+ },
+ "palettes": {
+  "brown": {
+   "brick": "#6e5444",
+   "frame": "#eeeeea",
+   "door": "#252525",
+   "stone": "#d8d4ca",
+   "cornice": "#e8e6df"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1932,
+   1934
+  ],
+  "eavesM": [
+   11.8,
+   14.2
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "note": "the 15.4 m five-axis end fronts of the 1933 ladder-light rows; the 12.6 m three-axis fronts are spaarndammer-1933-stair-ladder",
+  "mirrorForDoor": "right"
+ },
+ "rhythm": {
+  "bays": "wide, small, staircase, small, wide",
+  "identicalBays": "no",
+  "windowsPerStorey": "ground: wide + small + door + long window | 1-3: wide, small, ladder light, small, wide",
+  "symmetry": "the staircase axis right of the middle; mirrored where the door stands left of it",
+  "groundFloor": "single portiek door under a white slab canopy, a long window beside it",
+  "signage": "none",
+  "roofline": "deep white flat-roof overhang along the row",
+  "photoRows": [
+   4,
+   5,
+   5,
+   5
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "houtrijk-335-409",
+   "pands": [
+    "099132"
+   ],
+   "citation": "strip.jpg 2021-03-19 (40 px/m, camera 2.1 m), ruler crop 59-87.3 m: axes 72.7-75.5 (wide), 77.1-78.2 (small), ladder 80.0-80.55, 82.2-83.2 (small), 85.2-87.2 m (wide); door 80.0-80.8 m; ground long window 82.0-87.2 m; sills/heads as on 381"
+  },
+  {
+   "face": "polanen-184-250",
+   "pands": [
+    "066643"
+   ],
+   "citation": "strip.jpg 2022-12-14, ruler crop 0-28 m: the same front mirrored, ladder light at 6.0-6.5 m"
+  }
+ ],
+ "schemaLimits": [
+  "the overhang soffit is drawn plain; the photo shows a ribbed (coffered) white soffit",
+  "3DBAG reads a pitched roof (ridge 16.4 m) hidden behind the overhang; the front reads flat and the chimney stacks are not drawn",
+  "the long ground window under the last two axes is drawn 2.8 m wide (the ground grid caps a window at 2.8 m); rectified 5.2 m"
+ ],
+ "notes": [
+  "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

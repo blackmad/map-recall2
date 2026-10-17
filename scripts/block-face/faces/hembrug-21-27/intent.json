@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "hembrug-21-27",
+ "street": "Hembrugstraat",
+ "sources": [
+  {
+   "id": "strip-2022-12-14",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "image": "staging/block-face/hembrug-21-27/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the spaarndammerbuurt library (buurt Spaarndammerbuurt-Midden); scores and holds in scripts/block-face/faces/hembrug-21-27/auto-place.json"
+ },
+ "types": [
+  "spaarndammer-1933-stair-ladder"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012139242",
+   "slug": "hembrug-139242",
+   "address": "Hembrugstraat 21",
+   "type": {
+    "type": "spaarndammer-1933-stair-ladder",
+    "measuredPalette": {
+     "brick": "#795a4f",
+     "evidence": "strip 2022-12-14 span 0-503: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: spaarndammer-1933-stair-ladder scored 0.8 on eaves 0.5, storeys 1, stucco 1; strip 2022-12-14 span 0-503"
+   }
+  },
+  {
+   "pandId": "0363100012081333",
+   "slug": "hembrug-081333",
+   "address": "Hembrugstraat 25",
+   "type": {
+    "type": "spaarndammer-1933-stair-ladder",
+    "measuredPalette": {
+     "brick": "#5f493d",
+     "evidence": "strip 2022-12-14 span 503-1008: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: spaarndammer-1933-stair-ladder scored 0.8 on eaves 0.5, storeys 1, stucco 1; strip 2022-12-14 span 503-1008"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}
