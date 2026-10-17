@@ -1,0 +1,269 @@
+{
+ "street": "Hembrugstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:50:18.507Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012102874",
+   "addresses": [
+    "Hembrugstraat 216",
+    "Hembrugstraat 218",
+    "Hembrugstraat 220",
+    "Hembrugstraat 222",
+    "Hembrugstraat 224",
+    "Hembrugstraat 226",
+    "Hembrugstraat 228",
+    "Hembrugstraat 230"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 230",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661903"
+    },
+    {
+     "address": "Hembrugstraat 220",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661893"
+    },
+    {
+     "address": "Hembrugstraat 218",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661891"
+    },
+    {
+     "address": "Hembrugstraat 222",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661895"
+    },
+    {
+     "address": "Hembrugstraat 228",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661901"
+    },
+    {
+     "address": "Hembrugstraat 216",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661889"
+    },
+    {
+     "address": "Hembrugstraat 226",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661899"
+    },
+    {
+     "address": "Hembrugstraat 224",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661897"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115911",
+   "addresses": [
+    "Hembrugstraat 200",
+    "Hembrugstraat 202",
+    "Hembrugstraat 204",
+    "Hembrugstraat 206",
+    "Hembrugstraat 208",
+    "Hembrugstraat 210",
+    "Hembrugstraat 212",
+    "Hembrugstraat 214"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 206",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661879"
+    },
+    {
+     "address": "Hembrugstraat 204",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661877"
+    },
+    {
+     "address": "Hembrugstraat 214",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661887"
+    },
+    {
+     "address": "Hembrugstraat 212",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661885"
+    },
+    {
+     "address": "Hembrugstraat 210",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661883"
+    },
+    {
+     "address": "Hembrugstraat 208",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661881"
+    },
+    {
+     "address": "Hembrugstraat 202",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661875"
+    },
+    {
+     "address": "Hembrugstraat 200",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661873"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125901",
+   "addresses": [
+    "Hembrugstraat 184",
+    "Hembrugstraat 186",
+    "Hembrugstraat 188",
+    "Hembrugstraat 190",
+    "Hembrugstraat 192",
+    "Hembrugstraat 194",
+    "Hembrugstraat 196",
+    "Hembrugstraat 198"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 186",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661851"
+    },
+    {
+     "address": "Hembrugstraat 190",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661855"
+    },
+    {
+     "address": "Hembrugstraat 192",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661865"
+    },
+    {
+     "address": "Hembrugstraat 188",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661853"
+    },
+    {
+     "address": "Hembrugstraat 198",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661871"
+    },
+    {
+     "address": "Hembrugstraat 196",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661869"
+    },
+    {
+     "address": "Hembrugstraat 184",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661849"
+    },
+    {
+     "address": "Hembrugstraat 194",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661867"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067159",
+   "addresses": [
+    "Hembrugstraat 168",
+    "Hembrugstraat 170",
+    "Hembrugstraat 172",
+    "Hembrugstraat 174",
+    "Hembrugstraat 176",
+    "Hembrugstraat 178",
+    "Hembrugstraat 180",
+    "Hembrugstraat 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hembrugstraat 176",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661841"
+    },
+    {
+     "address": "Hembrugstraat 168",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661833"
+    },
+    {
+     "address": "Hembrugstraat 178",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661843"
+    },
+    {
+     "address": "Hembrugstraat 172",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661837"
+    },
+    {
+     "address": "Hembrugstraat 180",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661845"
+    },
+    {
+     "address": "Hembrugstraat 170",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661835"
+    },
+    {
+     "address": "Hembrugstraat 182",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661847"
+    },
+    {
+     "address": "Hembrugstraat 174",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000661839"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

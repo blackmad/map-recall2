@@ -1,0 +1,70 @@
+{
+ "buurt": "spaarndammerbuurt-noordwest",
+ "library": "spaarndammerbuurt",
+ "generatedAt": "2026-10-17T08:48:17.225Z",
+ "seconds": 10.14,
+ "totals": {
+  "faces": 2,
+  "pands": 16,
+  "placed": 7
+ },
+ "faces": [
+  {
+   "face": "hembrug-160-272",
+   "street": "Hembrugstraat",
+   "pands": 8,
+   "placed": 4,
+   "held": 4,
+   "runs": [
+    {
+     "face": "hembrug-160-272-r1",
+     "pands": [
+      "0363100012102874",
+      "0363100012115911",
+      "0363100012125901",
+      "0363100012067159"
+     ]
+    }
+   ],
+   "seconds": 2.61,
+   "byType": {
+    "hembrug-1925-white-attic": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hembrug-44-154",
+   "street": "Hembrugstraat",
+   "pands": 8,
+   "placed": 3,
+   "held": 5,
+   "runs": [
+    {
+     "face": "hembrug-44-154-r1",
+     "pands": [
+      "0363100012110068",
+      "0363100012103688",
+      "0363100012118245"
+     ]
+    }
+   ],
+   "seconds": 2.25,
+   "byType": {
+    "hembrug-1925-white-attic": 3
+   },
+   "holds": {
+    "evidence": 1,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

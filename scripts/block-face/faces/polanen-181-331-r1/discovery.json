@@ -1,0 +1,1639 @@
+{
+ "street": "Polanenstraat",
+ "seed": "0363100012133080",
+ "members": [
+  "0363100012131460",
+  "0363100012087668",
+  "0363100012124377",
+  "0363100012118304",
+  "0363100012151701",
+  "0363100012145428",
+  "0363100012106430",
+  "0363100012104089",
+  "0363100012147151",
+  "0363100012075725",
+  "0363100012087149"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of polanen-181-331: 104770 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012087149 (face continues: 083852 118062)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061268",
+   "reason": "frontage 122.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012061904",
+   "reason": "frontage 77.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012062059",
+   "reason": "sightline to Polanenstraat crosses 0363100012084343"
+  },
+  {
+   "pandId": "0363100012062068",
+   "reason": "frontage 118.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012062577",
+   "reason": "frontage 103.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012062847",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012063104",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012063336",
+   "reason": "frontage 62.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012064058",
+   "reason": "frontage 132.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012064392",
+   "reason": "frontage 37.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012064867",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012064967",
+   "reason": "frontage 145.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012065516",
+   "reason": "frontage 62.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012066154",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012066765",
+   "reason": "frontage 123.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012067159",
+   "reason": "frontage 68.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012067414",
+   "reason": "frontage 62.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012067929",
+   "reason": "frontage 87.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012067991",
+   "reason": "frontage 190.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012069416",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012069837",
+   "reason": "frontage 66.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012069936",
+   "reason": "frontage 37.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012070859",
+   "reason": "frontage 44.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012070877",
+   "reason": "frontage 86.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012071564",
+   "reason": "frontage 122.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012071737",
+   "reason": "frontage 145.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012072402",
+   "reason": "frontage 63.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012072615",
+   "reason": "frontage 36.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012072676",
+   "reason": "frontage 31.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012072779",
+   "reason": "frontage 35.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012073279",
+   "reason": "frontage 117.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012074397",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012075084",
+   "reason": "frontage 35.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012075238",
+   "reason": "frontage 121.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012075860",
+   "reason": "sightline to Polanenstraat crosses 0363100012118062"
+  },
+  {
+   "pandId": "0363100012075951",
+   "reason": "frontage 177.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012076143",
+   "reason": "frontage 138.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012076784",
+   "reason": "frontage 89.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012076965",
+   "reason": "frontage 44.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012078985",
+   "reason": "frontage 62.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012079013",
+   "reason": "sightline to Polanenstraat crosses 0363100012082119"
+  },
+  {
+   "pandId": "0363100012079874",
+   "reason": "frontage 177.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012080072",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012080177",
+   "reason": "frontage 145.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012080216",
+   "reason": "frontage 130.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012081333",
+   "reason": "sightline to Polanenstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012082072",
+   "reason": "frontage 36.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012082941",
+   "reason": "frontage 38.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012083661",
+   "reason": "frontage 110.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012084164",
+   "reason": "frontage 36.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012084343",
+   "reason": "sightline to Polanenstraat crosses 0363100012102822"
+  },
+  {
+   "pandId": "0363100012084821",
+   "reason": "frontage 105.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012086017",
+   "reason": "frontage 62.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012086871",
+   "reason": "frontage 62.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012087028",
+   "reason": "frontage 96.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012088118",
+   "reason": "frontage 147.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012088126",
+   "reason": "frontage 113.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012088214",
+   "reason": "frontage 56.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012088762",
+   "reason": "frontage 62.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012089494",
+   "reason": "frontage 61.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012090115",
+   "reason": "frontage 149.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012090137",
+   "reason": "frontage 135.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012091548",
+   "reason": "frontage 70.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012092325",
+   "reason": "frontage 63.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012093026",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012093478",
+   "reason": "frontage 79.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012093849",
+   "reason": "frontage 34.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012094301",
+   "reason": "frontage 35.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012094679",
+   "reason": "frontage 158.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012094752",
+   "reason": "frontage 98.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012095174",
+   "reason": "frontage 62.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012095236",
+   "reason": "frontage 99.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012095279",
+   "reason": "frontage 35.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012095309",
+   "reason": "frontage 35.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012096286",
+   "reason": "frontage 91.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012098292",
+   "reason": "frontage 193.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012098296",
+   "reason": "frontage 62.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012098297",
+   "reason": "frontage 62.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012099132",
+   "reason": "frontage 38.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012099152",
+   "reason": "frontage 144.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012099626",
+   "reason": "frontage 34.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012100251",
+   "reason": "frontage 145.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012100580",
+   "reason": "sightline to Polanenstraat crosses 0363100012082119"
+  },
+  {
+   "pandId": "0363100012100854",
+   "reason": "frontage 103.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012101696",
+   "reason": "frontage 37.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012101945",
+   "reason": "frontage 83.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012101946",
+   "reason": "frontage 95.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012102111",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012102874",
+   "reason": "frontage 105.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012103614",
+   "reason": "frontage 62.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012103688",
+   "reason": "sightline to Polanenstraat crosses 0363100012118245"
+  },
+  {
+   "pandId": "0363100012103705",
+   "reason": "frontage 130.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012105370",
+   "reason": "frontage 46.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012105975",
+   "reason": "frontage 84.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012106397",
+   "reason": "frontage 36.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012107076",
+   "reason": "frontage 62.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012107192",
+   "reason": "frontage 84.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012107305",
+   "reason": "frontage 56.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012107643",
+   "reason": "frontage 34.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012108381",
+   "reason": "frontage 114.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012109303",
+   "reason": "frontage 61.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012110068",
+   "reason": "frontage 32.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012110089",
+   "reason": "frontage 40.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012110519",
+   "reason": "frontage 34.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012110529",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012110686",
+   "reason": "frontage 115.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012112136",
+   "reason": "frontage 74.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012112925",
+   "reason": "frontage 109.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012113753",
+   "reason": "frontage 83.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012113918",
+   "reason": "frontage 38.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012114359",
+   "reason": "frontage 34.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012115101",
+   "reason": "frontage 99.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012115911",
+   "reason": "frontage 93.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012116313",
+   "reason": "frontage 63.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012116998",
+   "reason": "sightline to Polanenstraat crosses 0363100012147064"
+  },
+  {
+   "pandId": "0363100012117074",
+   "reason": "frontage 37.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012117534",
+   "reason": "frontage 136.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012118245",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012118474",
+   "reason": "frontage 34.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012120378",
+   "reason": "frontage 145.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012123644",
+   "reason": "frontage 147.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012123840",
+   "reason": "frontage 35.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012124565",
+   "reason": "frontage 112.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012125281",
+   "reason": "frontage 116.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012125669",
+   "reason": "frontage 62.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012125901",
+   "reason": "frontage 81.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012126756",
+   "reason": "frontage 142.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012127236",
+   "reason": "frontage 35.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012127492",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012128560",
+   "reason": "frontage 62.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012129108",
+   "reason": "sightline to Polanenstraat crosses 0363100012075860"
+  },
+  {
+   "pandId": "0363100012129783",
+   "reason": "frontage 96.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012130245",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012131899",
+   "reason": "frontage 177.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012133176",
+   "reason": "frontage 88.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012133368",
+   "reason": "sightline to Polanenstraat crosses 0363100012118062"
+  },
+  {
+   "pandId": "0363100012133580",
+   "reason": "frontage 62.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012134041",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012134208",
+   "reason": "frontage 123.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012134911",
+   "reason": "frontage 35.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012135014",
+   "reason": "frontage 35.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012135194",
+   "reason": "frontage 62.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012135409",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012135692",
+   "reason": "frontage 36.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012136307",
+   "reason": "frontage 62.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012136998",
+   "reason": "frontage 102.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012137149",
+   "reason": "frontage 128.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012137286",
+   "reason": "frontage 36.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012137843",
+   "reason": "frontage 177.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012137862",
+   "reason": "frontage 90.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012138043",
+   "reason": "frontage 70.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012138367",
+   "reason": "frontage 76.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012138368",
+   "reason": "frontage 89.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012138541",
+   "reason": "frontage 63.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012139242",
+   "reason": "sightline to Polanenstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012139630",
+   "reason": "frontage 80.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012139631",
+   "reason": "frontage 90.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012141325",
+   "reason": "frontage 70.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012142984",
+   "reason": "frontage 87.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012143580",
+   "reason": "frontage 62.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012144157",
+   "reason": "frontage 36.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012144319",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012144459",
+   "reason": "frontage 35.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012144503",
+   "reason": "frontage 130.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012144723",
+   "reason": "frontage 86.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012145558",
+   "reason": "frontage 111.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012145635",
+   "reason": "frontage 183.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012145777",
+   "reason": "frontage 127.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012145950",
+   "reason": "frontage 35.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012146438",
+   "reason": "frontage 46.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012147064",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012147600",
+   "reason": "sightline to Polanenstraat crosses 0363100012133437"
+  },
+  {
+   "pandId": "0363100012147652",
+   "reason": "frontage 177.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012147653",
+   "reason": "frontage 177.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012148811",
+   "reason": "frontage 108.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012149652",
+   "reason": "frontage 136.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012149945",
+   "reason": "frontage 37.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012151090",
+   "reason": "frontage 132.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012151182",
+   "reason": "frontage 96.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012151399",
+   "reason": "frontage 92.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012152109",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012152129",
+   "reason": "frontage 33.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012152141",
+   "reason": "frontage 102.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012152722",
+   "reason": "frontage 94.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012153068",
+   "reason": "frontage 85.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012153710",
+   "reason": "frontage 101.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012153837",
+   "reason": "frontage 89.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012154331",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012154377",
+   "reason": "frontage 62.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012154716",
+   "reason": "frontage 128.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012155087",
+   "reason": "frontage 34.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012155198",
+   "reason": "frontage 135.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012155312",
+   "reason": "frontage 67.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012155677",
+   "reason": "frontage 102.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012155810",
+   "reason": "frontage 92.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012155968",
+   "reason": "frontage 84.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012156013",
+   "reason": "frontage 62.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012156014",
+   "reason": "frontage 62.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012156301",
+   "reason": "frontage 92.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012156813",
+   "reason": "frontage 177.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012156903",
+   "reason": "frontage 82.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012157531",
+   "reason": "frontage 62.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012159153",
+   "reason": "frontage 98.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012160109",
+   "reason": "frontage 62.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012160526",
+   "reason": "frontage 87.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012161333",
+   "reason": "frontage 95.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012161452",
+   "reason": "frontage 96.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012161608",
+   "reason": "frontage 80.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012161751",
+   "reason": "frontage 87.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012161836",
+   "reason": "frontage 89.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012161965",
+   "reason": "frontage 116.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012162126",
+   "reason": "frontage 77.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012163529",
+   "reason": "frontage 82.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012164619",
+   "reason": "frontage 72.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012164772",
+   "reason": "frontage 103.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012165586",
+   "reason": "frontage 90.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012165868",
+   "reason": "frontage 84.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012165909",
+   "reason": "frontage 115.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012166161",
+   "reason": "frontage 95.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012167134",
+   "reason": "frontage 77.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012167206",
+   "reason": "frontage 73.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012167298",
+   "reason": "frontage 92.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012183605",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012183906",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012185008",
+   "reason": "frontage 78.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012185009",
+   "reason": "frontage 78.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012185106",
+   "reason": "sightline to Polanenstraat crosses 0363100012087251"
+  },
+  {
+   "pandId": "0363100012186106",
+   "reason": "sightline to Polanenstraat crosses 0363100012118304"
+  },
+  {
+   "pandId": "0363100012186283",
+   "reason": "frontage 77.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012186805",
+   "reason": "sightline to Polanenstraat crosses 0363100012145428"
+  },
+  {
+   "pandId": "0363100012186816",
+   "reason": "frontage 80.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012189940",
+   "reason": "sightline to Polanenstraat crosses 0363100012096276"
+  },
+  {
+   "pandId": "0363100012189941",
+   "reason": "sightline to Polanenstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012189942",
+   "reason": "sightline to Polanenstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012189943",
+   "reason": "sightline to Polanenstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012189944",
+   "reason": "sightline to Polanenstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012189945",
+   "reason": "frontage 33.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012189946",
+   "reason": "sightline to Polanenstraat crosses 0363100012096276"
+  },
+  {
+   "pandId": "0363100012189947",
+   "reason": "sightline to Polanenstraat crosses 0363100012096276"
+  },
+  {
+   "pandId": "0363100012189948",
+   "reason": "frontage 31.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012189949",
+   "reason": "sightline to Polanenstraat crosses 0363100012096276"
+  },
+  {
+   "pandId": "0363100012189950",
+   "reason": "sightline to Polanenstraat crosses 0363100012096276"
+  },
+  {
+   "pandId": "0363100012190043",
+   "reason": "frontage 78.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012190044",
+   "reason": "frontage 78.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012190826",
+   "reason": "frontage 73.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012191383",
+   "reason": "frontage 136.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012191812",
+   "reason": "sightline to Polanenstraat crosses 0363100012132207"
+  },
+  {
+   "pandId": "0363100012191813",
+   "reason": "sightline to Polanenstraat crosses 0363100012132207"
+  },
+  {
+   "pandId": "0363100012193693",
+   "reason": "frontage 129.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012194189",
+   "reason": "sightline to Polanenstraat crosses 0363100012131460"
+  },
+  {
+   "pandId": "0363100012194725",
+   "reason": "sightline to Polanenstraat crosses 0363100012068236"
+  },
+  {
+   "pandId": "0363100012194726",
+   "reason": "sightline to Polanenstraat crosses 0363100012068236"
+  },
+  {
+   "pandId": "0363100012195119",
+   "reason": "frontage 103.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012196742",
+   "reason": "frontage 78.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198073",
+   "reason": "frontage 78.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198074",
+   "reason": "frontage 76.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198075",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198123",
+   "reason": "frontage 127.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198124",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198125",
+   "reason": "frontage 120.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198126",
+   "reason": "frontage 121.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198127",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198128",
+   "reason": "frontage 91.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198130",
+   "reason": "frontage 93.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198132",
+   "reason": "frontage 107.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198133",
+   "reason": "frontage 109.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012198134",
+   "reason": "frontage 76.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012199551",
+   "reason": "sightline to Polanenstraat crosses 0363100012142112"
+  },
+  {
+   "pandId": "0363100012199552",
+   "reason": "sightline to Polanenstraat crosses 0363100012074107"
+  },
+  {
+   "pandId": "0363100012199553",
+   "reason": "sightline to Polanenstraat crosses 0363100012074107"
+  },
+  {
+   "pandId": "0363100012199554",
+   "reason": "sightline to Polanenstraat crosses 0363100012074107"
+  },
+  {
+   "pandId": "0363100012199555",
+   "reason": "sightline to Polanenstraat crosses 0363100012074107"
+  },
+  {
+   "pandId": "0363100012199556",
+   "reason": "sightline to Polanenstraat crosses 0363100012092078"
+  },
+  {
+   "pandId": "0363100012199557",
+   "reason": "sightline to Polanenstraat crosses 0363100012092078"
+  },
+  {
+   "pandId": "0363100012199558",
+   "reason": "sightline to Polanenstraat crosses 0363100012092078"
+  },
+  {
+   "pandId": "0363100012199559",
+   "reason": "sightline to Polanenstraat crosses 0363100012142112"
+  },
+  {
+   "pandId": "0363100012199561",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012199562",
+   "reason": "sightline to Polanenstraat crosses 0363100012092078"
+  },
+  {
+   "pandId": "0363100012200217",
+   "reason": "frontage 140.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012200466",
+   "reason": "frontage 127.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012200467",
+   "reason": "frontage 129.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012200531",
+   "reason": "sightline to Polanenstraat crosses 0363100012119661"
+  },
+  {
+   "pandId": "0363100012200532",
+   "reason": "sightline to Polanenstraat crosses 0363100012087251"
+  },
+  {
+   "pandId": "0363100012204252",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012204253",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012204409",
+   "reason": "frontage 76.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012204584",
+   "reason": "frontage 96.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012205490",
+   "reason": "frontage 143.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012205827",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012205828",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012205940",
+   "reason": "frontage 90.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012206008",
+   "reason": "sightline to Polanenstraat crosses 0363100012075725"
+  },
+  {
+   "pandId": "0363100012206879",
+   "reason": "frontage 101.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012207057",
+   "reason": "frontage 78.1 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012207163",
+   "reason": "frontage 82.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012207170",
+   "reason": "sightline to Polanenstraat crosses 0363100012118671"
+  },
+  {
+   "pandId": "0363100012209493",
+   "reason": "sightline to Polanenstraat crosses 0363100012104089"
+  },
+  {
+   "pandId": "0363100012212047",
+   "reason": "frontage 78.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012213930",
+   "reason": "sightline to Polanenstraat crosses 0363100012090336"
+  },
+  {
+   "pandId": "0363100012216778",
+   "reason": "sightline to Polanenstraat crosses 0363100012151701"
+  },
+  {
+   "pandId": "0363100012217587",
+   "reason": "frontage 83.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012219113",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012220440",
+   "reason": "sightline to Polanenstraat crosses 0363100012087149"
+  },
+  {
+   "pandId": "0363100012221510",
+   "reason": "frontage 90.4 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012221511",
+   "reason": "frontage 88.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012221582",
+   "reason": "sightline to Polanenstraat crosses 0363100012118245"
+  },
+  {
+   "pandId": "0363100012221583",
+   "reason": "sightline to Polanenstraat crosses 0363100012118245"
+  },
+  {
+   "pandId": "0363100012222344",
+   "reason": "frontage 118.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012222401",
+   "reason": "sightline to Polanenstraat crosses 0363100012149627"
+  },
+  {
+   "pandId": "0363100012222402",
+   "reason": "sightline to Polanenstraat crosses 0363100012149627"
+  },
+  {
+   "pandId": "0363100012222403",
+   "reason": "sightline to Polanenstraat crosses 0363100012149627"
+  },
+  {
+   "pandId": "0363100012222404",
+   "reason": "sightline to Polanenstraat crosses 0363100012149627"
+  },
+  {
+   "pandId": "0363100012222405",
+   "reason": "sightline to Polanenstraat crosses 0363100012149627"
+  },
+  {
+   "pandId": "0363100012222406",
+   "reason": "sightline to Polanenstraat crosses 0363100012149627"
+  },
+  {
+   "pandId": "0363100012223080",
+   "reason": "frontage 144.0 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012224779",
+   "reason": "sightline to Polanenstraat crosses 0363100012087668"
+  },
+  {
+   "pandId": "0363100012225646",
+   "reason": "frontage 39.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012225647",
+   "reason": "frontage 41.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012226327",
+   "reason": "sightline to Polanenstraat crosses 0363100012083852"
+  },
+  {
+   "pandId": "0363100012226328",
+   "reason": "sightline to Polanenstraat crosses 0363100012083852"
+  },
+  {
+   "pandId": "0363100012227470",
+   "reason": "frontage 79.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012227565",
+   "reason": "frontage 79.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012229045",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012229611",
+   "reason": "sightline to Polanenstraat crosses 0363100012106430"
+  },
+  {
+   "pandId": "0363100012231113",
+   "reason": "frontage 116.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012231130",
+   "reason": "frontage 114.8 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012231332",
+   "reason": "sightline to Polanenstraat crosses 0363100012124377"
+  },
+  {
+   "pandId": "0363100012231574",
+   "reason": "frontage 146.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012231575",
+   "reason": "frontage 145.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233100",
+   "reason": "frontage 189.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233178",
+   "reason": "sightline to Polanenstraat crosses 0363100012147151"
+  },
+  {
+   "pandId": "0363100012233560",
+   "reason": "frontage 34.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233623",
+   "reason": "frontage 102.3 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233655",
+   "reason": "frontage 34.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233656",
+   "reason": "frontage 145.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233961",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012233962",
+   "reason": "no frontage on Polanenstraat: No footprint edge faces Polanenstraat"
+  },
+  {
+   "pandId": "0363100012236461",
+   "reason": "frontage 75.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012236569",
+   "reason": "frontage 74.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012236786",
+   "reason": "frontage 142.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012236797",
+   "reason": "frontage 101.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012236935",
+   "reason": "frontage 122.2 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012237311",
+   "reason": "frontage 145.6 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012244739",
+   "reason": "frontage 178.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012251649",
+   "reason": "frontage 37.5 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012251650",
+   "reason": "frontage 62.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012252835",
+   "reason": "frontage 62.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012254574",
+   "reason": "frontage 74.7 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012254575",
+   "reason": "frontage 71.9 m from Polanenstraat"
+  },
+  {
+   "pandId": "0363100012062969",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065969",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066643",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068236",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072997",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074107",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082119",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096276",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122346",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125074",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130326",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132207",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142112",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147650",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147929",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149627",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158717",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165356",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166827",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012184029",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012131460",
+   "alongM": 38.55,
+   "widthM": 6.12,
+   "eavesM": 14.73,
+   "roofMaxM": 14.76,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012087668",
+   "alongM": 44.71,
+   "widthM": 6.2,
+   "eavesM": 14.68,
+   "roofMaxM": 14.75,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124377",
+   "alongM": 50.93,
+   "widthM": 6.25,
+   "eavesM": 14.66,
+   "roofMaxM": 14.69,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012118304",
+   "alongM": 57.03,
+   "widthM": 5.96,
+   "eavesM": 14.65,
+   "roofMaxM": 14.7,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012151701",
+   "alongM": 63.09,
+   "widthM": 6.16,
+   "eavesM": 14.69,
+   "roofMaxM": 15.69,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012145428",
+   "alongM": 69.21,
+   "widthM": 6.09,
+   "eavesM": 14.7,
+   "roofMaxM": 15.67,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012106430",
+   "alongM": 75.44,
+   "widthM": 6.36,
+   "eavesM": 14.71,
+   "roofMaxM": 14.75,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012104089",
+   "alongM": 81.59,
+   "widthM": 5.94,
+   "eavesM": 14.69,
+   "roofMaxM": 14.72,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012147151",
+   "alongM": 87.93,
+   "widthM": 6.74,
+   "eavesM": 14.73,
+   "roofMaxM": 14.78,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012075725",
+   "alongM": 94.29,
+   "widthM": 5.99,
+   "eavesM": 14.74,
+   "roofMaxM": 14.86,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012087149",
+   "alongM": 100.54,
+   "widthM": 6.51,
+   "eavesM": 14.74,
+   "roofMaxM": 16.12,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "polanen-181-331"
+}

@@ -1,0 +1,993 @@
+{
+ "face": "polanen-181-331",
+ "street": "Polanenstraat",
+ "library": "spaarndammerbuurt",
+ "stripDate": "2022-12-14",
+ "seconds": 4.05,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "polanen-181-331-r1",
+   "pands": [
+    "0363100012131460",
+    "0363100012087668",
+    "0363100012124377",
+    "0363100012118304",
+    "0363100012151701",
+    "0363100012145428",
+    "0363100012106430",
+    "0363100012104089",
+    "0363100012147151",
+    "0363100012075725",
+    "0363100012087149"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012133080",
+   "address": "Polanenstraat 181",
+   "builtYear": 1924,
+   "widthM": 6.59,
+   "eavesM": 15.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735e59",
+    "wallRaw": "#58524c",
+    "skyline": {
+     "eavesM": 15.82,
+     "eavesRow": 126,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 2.13,
+      "topWidthM": 0.07,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 6.59 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 6.59 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.19 m = 5 storeys of 3.04 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.02 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 6 vs 7 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071140",
+   "address": "Polanenstraat 189",
+   "builtYear": 1924,
+   "widthM": 6.38,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705c57",
+    "wallRaw": "#56504a",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 2.93,
+      "topWidthM": 0.05,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 6.38 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 6.38 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.23 m = 5 storeys of 3.05 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.01 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090336",
+   "address": "Polanenstraat 197",
+   "builtYear": 1924,
+   "widthM": 19.25,
+   "eavesM": 14.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745f5a",
+    "wallRaw": "#59534d",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 134,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 2.65,
+      "topWidthM": 2.2,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.02,
+       "widthM": 1,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 19.25 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 19.25 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.18 m = 5 storeys of 2.84 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.79 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.004 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104770",
+   "address": "Polanenstraat 221",
+   "builtYear": 1924,
+   "widthM": 6.56,
+   "eavesM": 15.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776059",
+    "wallRaw": "#5b544c",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 134,
+     "confidence": 0.98,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best hembrug-1925-white-attic: frontage 6.56 m, type 11.8-13 m)",
+   "best": {
+    "type": "hembrug-1925-white-attic",
+    "score": 0,
+    "veto": [
+     "frontage 6.56 m, type 11.8-13 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 15.09 m = 5 storeys of 3.02 m vs the type's 2.94 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.01 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.01 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131460",
+   "address": "Polanenstraat 229",
+   "builtYear": 1935,
+   "widthM": 6.12,
+   "eavesM": 14.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#605051",
+    "wallRaw": "#4a4645",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 108,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1,
+      "riseM": 0.85,
+      "topWidthM": 1,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.35,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.75,
+       "widthM": 1.55,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#605051",
+     "evidence": "strip 2022-12-14 span 1551-1796: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625451)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 087668's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087668",
+   "address": "Polanenstraat 237",
+   "builtYear": 1935,
+   "widthM": 6.2,
+   "eavesM": 14.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625151",
+    "wallRaw": "#4b4745",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#625151",
+     "evidence": "strip 2022-12-14 span 1796-2044: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625553)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124377",
+   "address": "Polanenstraat 245",
+   "builtYear": 1935,
+   "widthM": 6.25,
+   "eavesM": 14.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4e4c",
+    "wallRaw": "#484441",
+    "skyline": {
+     "eavesM": 16.3,
+     "eavesRow": 107,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.022,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#5e4e4c",
+     "evidence": "strip 2022-12-14 span 2044-2294: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #655753)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118304",
+   "address": "Polanenstraat 253",
+   "builtYear": 1935,
+   "widthM": 5.96,
+   "eavesM": 14.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4b49",
+    "wallRaw": "#45413e",
+    "skyline": {
+     "eavesM": 16.55,
+     "eavesRow": 97,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 2.43,
+      "topWidthM": 0.72,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5a4b49",
+     "evidence": "strip 2022-12-14 span 2294-2532: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #675956)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151701",
+   "address": "Polanenstraat 261",
+   "builtYear": 1935,
+   "widthM": 6.16,
+   "eavesM": 14.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4e4d",
+    "wallRaw": "#484442",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 108,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5e4e4d",
+     "evidence": "strip 2022-12-14 span 2532-2778: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625554)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 118304's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145428",
+   "address": "Polanenstraat 269",
+   "builtYear": 1935,
+   "widthM": 6.09,
+   "eavesM": 14.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#635150",
+    "wallRaw": "#4c4744",
+    "skyline": {
+     "eavesM": 16.4,
+     "eavesRow": 103,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#635150",
+     "evidence": "strip 2022-12-14 span 2779-3022: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #594e4c)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012106430",
+   "address": "Polanenstraat 277",
+   "builtYear": 1935,
+   "widthM": 6.36,
+   "eavesM": 14.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624f4f",
+    "wallRaw": "#4b4543",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 98,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#624f4f",
+     "evidence": "strip 2022-12-14 span 3022-3276: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5b4e4e)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 145428's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104089",
+   "address": "Polanenstraat 285",
+   "builtYear": 1935,
+   "widthM": 5.94,
+   "eavesM": 14.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f4e4c",
+    "wallRaw": "#494441",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5f4e4c",
+     "evidence": "strip 2022-12-14 span 3276-3514: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5b4e4d)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147151",
+   "address": "Polanenstraat 293",
+   "builtYear": 1935,
+   "widthM": 6.74,
+   "eavesM": 14.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4948",
+    "wallRaw": "#46403d",
+    "skyline": {
+     "eavesM": 16.4,
+     "eavesRow": 103,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 2.2,
+      "topWidthM": 0.15,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.016,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5b4948",
+     "evidence": "strip 2022-12-14 span 3514-3784: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #685a57)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 104089's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012075725",
+   "address": "Polanenstraat 301",
+   "builtYear": 1935,
+   "widthM": 5.99,
+   "eavesM": 14.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624e4c",
+    "wallRaw": "#4b4441",
+    "skyline": {
+     "eavesM": 16.23,
+     "eavesRow": 110,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#624e4c",
+     "evidence": "strip 2022-12-14 span 3784-4023: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5d4e4d)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087149",
+   "address": "Polanenstraat 309",
+   "builtYear": 1935,
+   "widthM": 6.51,
+   "eavesM": 14.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624f4f",
+    "wallRaw": "#4b4543",
+    "skyline": {
+     "eavesM": 16.15,
+     "eavesRow": 113,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.6,
+       "widthM": 1.55,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "polanen-1935-white-attic",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "hembrug-1925-white-attic",
+    "score": 0
+   },
+   "placement": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#624f4f",
+     "evidence": "strip 2022-12-14 span 4023-4284: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5c4c4b)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, paired with 075725's door",
+    "crown overhang (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
