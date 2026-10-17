@@ -43,7 +43,6 @@ export interface WallClusterOptions {
 
 export const bearingOf = (nx: number, nz: number): number => ((Math.atan2(nx, -nz) * 180) / Math.PI + 360) % 360;
 export const bearingDelta = (a: number, b: number): number => { const d = Math.abs(a - b) % 360; return d > 180 ? 360 - d : d; };
-export const wallUV = (seg: Pick<WallSegment, 't'>, x: number, y: number, z: number): [number, number] => [x * seg.t[0] + z * seg.t[1], y];
 
 /** Clusters near-vertical triangles into planar wall segments, by default keeping only those facing outward from the model centre. */
 export function clusterWalls(soup: TriSoup, opts: WallClusterOptions = {}): WallSegment[] {
