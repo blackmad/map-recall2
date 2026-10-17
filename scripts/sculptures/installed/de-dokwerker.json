@@ -1,0 +1,32 @@
+{
+ "id": "de-dokwerker",
+ "provenance": "scripts/sculptures/rebuild-sources/de-dokwerker.json",
+ "figures": [
+  {
+   "name": "docker",
+   "glb": "scripts/sculptures/installed/de-dokwerker/docker.glb",
+   "at": [
+    0,
+    1.675,
+    0.012
+   ],
+   "cut": {
+    "min": [
+     -2,
+     1.6,
+     -2
+    ],
+    "max": [
+     2,
+     5,
+     2
+    ]
+   },
+   "cutMaterials": [
+    "bronze"
+   ],
+   "material": "bronze",
+   "route": "TRELLIS.2-4B multidiffusion, 3 photos (trellis2-apple MLX port)"
+  }
+ ]
+}

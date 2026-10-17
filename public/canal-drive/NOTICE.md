@@ -200,3 +200,34 @@ credits are in `sculptures/manifest.json` and the full photo list with
 licences in `scripts/sculptures/dokwerker/sources.json`. The statue itself
 is in copyright (Andriessen d. 1979); it is shown under the Dutch freedom
 of panorama (Auteurswet art. 18), see `docs/sculptures.md`.
+
+## Statue figures reconstructed from photographs (2026-10-17)
+
+The figures of these landmark models were reconstructed from Wikimedia
+Commons photographs with TRELLIS.2 (multi-view) or TripoSR (single view),
+decimated to about 6,000 triangles per figure and drawn in the kit's
+bronze/stone material, with no photo colour. Plinths, piers and settings
+are original low-poly kit models. A figure made from any CC BY-SA input is
+licensed CC BY-SA 4.0; one made from CC BY inputs (and CC0/PD) is CC BY
+4.0. Each photograph's title, author, licence and Commons page is in
+`scripts/sculptures/rebuild-sources/<id>.json`; the installed meshes and
+cuts are in `scripts/sculptures/installed/`. Statues still in copyright are
+shown under the Dutch freedom of panorama (Auteurswet art. 18).
+
+- `anne-frank-merwedeplein`: Jet Schepp (2005; in copyright, living). Photos: Ceescamel (CC BY-SA 4.0, x2); Christian Michelides (CC BY-SA 4.0, x2).
+- `carmiggelt-borstbeeld`: Kees Verkade (1988; in copyright, d. 2020). Photos: Ceescamel (CC BY-SA 4.0); Rob Croes / Anefo (CC0, x2).
+- `de-dokwerker`: Mari Andriessen (1952; in copyright, d. 1979). Photos: A.A.W.J. Rietman (CC BY-SA 4.0); Bert Verhoeff for Anefo (CC0); Joop van Bilsen for Anefo (CC0).
+- `gandhi-churchill-laan`: Gautam Pal (1990; in copyright). Photos: Antony Antony (CC BY 2.0); Ceescamel (CC BY-SA 4.0, x3).
+- `johnny-jordaan-groep`: Kees Verkade (Johnny Jordaan, Tante Leen) and others per the plaques (1991; in copyright). Photos: Ceescamel (CC0, x16).
+- `kinderbrug-jongen-konijnen`: Hildo Krop (1931; in copyright, d. 1970). Photos: Paul van Galen (CC BY-SA 4.0).
+- `kinderbrug-meisje-eekhoorns`: Hildo Krop (1931; in copyright, d. 1970). Photos: Alf van Beem (public domain); Paul van Galen (CC BY-SA 4.0).
+- `lieverdje`: Carel Kneulman (1960; in copyright, d. 2008). Photos: Ceescamel (CC0, x4).
+- `multatuli-standbeeld`: Hans Bayens (1987; in copyright, d. 2003). Photos: Brbbl (CC BY-SA 3.0); Paul van Galen (CC BY-SA 4.0, x2); Vysotsky (CC BY-SA 4.0).
+- `rembrandtmonument` (statue only): Louis Royer (1852; public domain). Photos: Elekes Andor (CC BY-SA 4.0); Julien Chatelain (CC BY-SA 2.0); Yair Haklai (CC BY-SA 3.0); Владимир Шеляпин (CC0).
+- `sarphatimonument` (bust only): J.Th. Stracké (1886; public domain). Photos: Alf van Beem (public domain); Huegette D. Eldering (CC BY-SA 4.0); Wikifrits (CC0).
+- `spanjemonument` (flying figures): Eddy Roos (1986; in copyright, living). Photos: Ceescamel (CC BY-SA 4.0, x2); Eddy Roos (CC BY-SA 4.0); Roland Gerrits / Anefo (CC0).
+- `teun-de-jager`: Jan Bronner (1958; in copyright, d. 1972). Photos: Ceescamel (CC BY-SA 4.0, x4).
+- `theo-thijssen-standbeeld`: Hans Bayens (in copyright, d. 2003). Photos: Alf van Beem (public domain, x2); Ceescamel (CC0, x2).
+- `thorbecke-standbeeld`: Ferdinand Leenhoff (1876; public domain). Photos: Brbbl (uploader; CC BY-SA 3.0); Gerard Dukker (CC BY-SA 4.0, x2); Phyzome (uploader; public domain).
+- `vondelmonument`: Louis Royer (1867; public domain). Photos: Ceescamel (CC BY-SA 4.0, x4); Wikifrits (CC0).
+- `wilhelmina-ruiterstandbeeld`: Theresia van der Pant (1972; in copyright, d. 2016). Photos: Gouwenaar (CC0, x2); Pēteris (CC BY 2.0); Stephencdickson (CC BY-SA 4.0).

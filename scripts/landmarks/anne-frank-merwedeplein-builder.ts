@@ -5,7 +5,8 @@ import {POSES, type Pose} from './figure-kit';
 import {headOnFigure} from './bust-kit';
 
 /**
- * Standbeeld Anne Frank, Merwedeplein (Mari Andriessen, unveiled 1977 on the Amsterdam-Zuid square where the Franks lived): a slender girl of about
+ * Standbeeld Anne Frank, Merwedeplein (Jet Schepp, 2005, on the Amsterdam-Zuid square where the Franks lived; Mari Andriessen's 1977 Anne Frank
+ * is the Westermarkt statue): a slender girl of about
  * 1.5 m in a belted coat and pleated skirt, bobbed hair, a bag in the lowered right hand and another tucked under the left arm, on a bronze foot plate on a
  * tall block of polished red granite lettered ANNE FRANK / 1929 - 1945.
  * Original low-poly figure from the Commons photographs (Christian Michelides CC BY-SA 4.0, Franklin Heijnen CC BY-SA 2.0, Maaike98 CC BY-SA 3.0) and

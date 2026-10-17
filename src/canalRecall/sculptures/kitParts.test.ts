@@ -1,6 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {boxOf, cutTriangles, partsOf, type Tri, type V3} from './kitParts.js';
+import {boxOf, cutTriangles, keptTriangles, partsOf, type Tri, type V3} from './kitParts.js';
+
+test('kitParts: keptTriangles drops a builder part only inside a cut of its own material', () => {
+  const flat = (ts: Tri[]) => ts.flatMap(t => [...t.a, ...t.b, ...t.c]);
+  const figure = flat([...quad(0.5, 1.5, 0.5, 'bronze', 0.5), ...quad(5, 1.5, 5, 'bronze', 0.5)]);
+  const cuts = [{box: {min: [-1, 0.5, -1] as V3, max: [3, 4, 3] as V3}, materials: ['bronze']}];
+  assert.deepEqual(keptTriangles(figure, 'bronze', cuts), [2, 3]);
+  assert.deepEqual(keptTriangles(figure, 'stone', cuts), [0, 1, 2, 3]);
+  assert.deepEqual(keptTriangles(figure, 'stone', [{...cuts[0], materials: []}]), [2, 3]);
+});
 
 /** Two triangles forming a unit quad in the xz plane at height y, offset by (x, z). */
 function quad(x: number, y: number, z: number, material: string, s = 1): Tri[] {

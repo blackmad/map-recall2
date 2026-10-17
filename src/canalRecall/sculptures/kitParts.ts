@@ -65,6 +65,24 @@ export function cutTriangles(tris: Tri[], cuts: Box[], materials?: string[]): Se
   return out;
 }
 
+export interface MaterialCut { box: Box; materials: string[] }
+
+/**
+ * The same cut applied to one builder part (a flat non-indexed position array of one material) while the landmark is built:
+ * indices of the triangles to keep. A triangle goes when its centroid lies in a cut whose materials match (by substring, as
+ * in cutTriangles; an empty list matches every material), so an installed reconstruction drops exactly the kit triangles its
+ * comparison sheet dropped.
+ */
+export function keptTriangles(positions: ArrayLike<number>, material: string, cuts: MaterialCut[]): number[] {
+  const live = cuts.filter(c => !c.materials.length || c.materials.some(m => material.includes(m)));
+  const keep: number[] = [];
+  for (let t = 0; t * 9 + 8 < positions.length; t++) {
+    const v = (k: number): V3 => [positions[t * 9 + k * 3], positions[t * 9 + k * 3 + 1], positions[t * 9 + k * 3 + 2]];
+    if (!live.some(c => centroidIn({a: v(0), b: v(1), c: v(2), material}, c.box))) keep.push(t);
+  }
+  return keep;
+}
+
 /** Union box of the dropped triangles: where the replacement stands (base centre) and how tall it is. */
 export function boxOf(tris: Tri[], idx: Iterable<number>): Box | null {
   const min: V3 = [Infinity, Infinity, Infinity], max: V3 = [-Infinity, -Infinity, -Infinity];
