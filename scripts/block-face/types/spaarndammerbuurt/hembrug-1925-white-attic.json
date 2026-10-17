@@ -1,0 +1,207 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "hembrug-1925-white-attic",
+ "district": "spaarndammerbuurt",
+ "description": "Spaarndammerbuurt-Noordwest (Amsterdam School, BAG 1925), Hembrugstraat 100-150 and 160-232: a 12.4 m portiek front of brown brick, two white-framed two-casement windows with toplights either side of a staircase axis on three storeys, the staircase axis between two brick lisenes that stop under the attic, its ground bay laid in dark brick stripes over the portiek door, low four-light windows either side on the ground, and a white-rendered attic storey with a row of small square lights under the row's deep flat-roof overhang",
+ "fit": {
+  "widthM": [
+   11.8,
+   13
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "body": {
+  "storeys": 5,
+  "bays": [
+   3,
+   5,
+   5,
+   5,
+   7
+  ],
+  "axisGrid": 5,
+  "bayWidths": [
+   2.5,
+   2,
+   3.35,
+   2,
+   2.5
+  ],
+  "bayFill": [
+   0.58,
+   0.72,
+   0.43,
+   0.72,
+   0.58
+  ],
+  "storeyBayWidths": {
+   "0": [
+    5,
+    2.35,
+    5
+   ]
+  },
+  "storeyRibbons": {
+   "4": {
+    "from": 0.03,
+    "to": 0.97,
+    "pier": 1.4
+   }
+  },
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-triple",
+   "4": "plain"
+  },
+  "storeyHeights": [
+   2.9,
+   2.95,
+   2.95,
+   2.6,
+   3
+  ],
+  "windowHeights": [
+   0.45,
+   0.53,
+   0.54,
+   0.62,
+   0.17
+  ],
+  "headLines": [
+   0.76,
+   0.83,
+   0.81,
+   0.79,
+   0.65
+  ],
+  "lisenes": {
+   "at": [
+    2,
+    3
+   ],
+   "breadth": 0.3,
+   "stopStorey": 4
+  },
+  "brickStripes": [
+   {
+    "rise": [
+     2.45,
+     3.6
+    ],
+    "pitch": 0.24,
+    "stripe": 0.1,
+    "span": [
+     0.385,
+     0.615
+    ]
+   }
+  ],
+  "paintedStoreys": {
+   "storeys": [
+    4
+   ],
+   "colour": "#e6dfcd"
+  }
+ },
+ "crowns": {
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.9,
+    "fascia": 0.35,
+    "colour": "#e8e3d6",
+    "soffit": "#c99a6e"
+   },
+   "note": "the row's flat roof overhangs the white attic 0.9 m on a white fascia; the soffit reads warm ochre on every sunlit and shaded strip of the row (2022-12-14)"
+  }
+ },
+ "grounds": {
+  "door-centre": {
+   "doorBay": 1,
+   "note": "the portiek door on the staircase axis, under the striped bay"
+  }
+ },
+ "palettes": {
+  "brown": {
+   "brick": "#6b5547",
+   "frame": "#ecebe4",
+   "door": "#2d3a33",
+   "stone": "#d8d2c2",
+   "band": "#3d332d",
+   "cornice": "#e8e3d6"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "match": {
+  "years": [
+   1924,
+   1926
+  ],
+  "eavesM": [
+   14,
+   15.4
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "flat",
+  "stucco": false,
+  "note": "the 12.4 m portiek fronts of the 1925 Hembrugstraat rows; the 1929 corner blocks (octagon lights, point gables) are another type"
+ },
+ "rhythm": {
+  "bays": "two window axes, the staircase axis, two window axes",
+  "identicalBays": "no: 2 + staircase + 2",
+  "windowsPerStorey": "ground: 1 wide + door + 1 wide | 1-3: 5 | attic: 7 small lights",
+  "symmetry": "symmetric about the staircase axis",
+  "groundFloor": "portiek door under a striped bay between two low four-light windows",
+  "signage": "none",
+  "roofline": "flat roof, a deep white-fascia overhang along the whole row",
+  "photoRows": [
+   3,
+   5,
+   5,
+   5,
+   7
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "hembrug-44-154",
+   "pands": [
+    "110068",
+    "103688",
+    "118245",
+    "132207"
+   ],
+   "citation": "strip.jpg 2022-12-14 (40 px/m, camera 2.1 m), ruler crop of Hembrugstraat 132-134 (5.7-18.05 m): window axes 7.0-8.4, 9.0-10.4, staircase 11.7-13.1, 14.4-15.8, 16.4-17.8 m (1.4-1.45 m windows); sills/heads 3.8/5.35, 6.65/8.25, 9.25/10.85 m; ground windows 0.9-2.2 m; lisenes either side of the staircase axis from 3.0 m to the attic; four dark stripes over the door 2.5-3.5 m; white attic 11.35 m to the overhang, seven 0.45 m lights at 12.8-13.3 m; fascia 14.3-15.0 m"
+  },
+  {
+   "face": "hembrug-160-272",
+   "pands": [
+    "102874",
+    "115911",
+    "125901",
+    "067159"
+   ],
+   "citation": "strip.jpg 2022-12-14: the same front on the even side north of the Zaanstraat"
+  }
+ ],
+ "schemaLimits": [
+  "the staircase windows sit half a storey up (landings); they are drawn on the storey lines",
+  "the stone corbels that cap the lisenes under the attic and the stone blocks either side of the door",
+  "the larger centre attic light over the staircase",
+  "the overhang's rounded ends at the corners of the row",
+  "the visual module is centred about 0.5 m right of the BAG pand's centre; the front is drawn symmetric on the pand"
+ ],
+ "notes": [
+  "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

@@ -1,0 +1,306 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "polanen-181-331-r1",
+ "street": "Polanenstraat",
+ "sources": [
+  {
+   "id": "strip-2022-12-14",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-14",
+   "image": "staging/block-face/polanen-181-331-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the spaarndammerbuurt library (buurt Spaarndammerbuurt-Midden); scores and holds in scripts/block-face/faces/polanen-181-331/auto-place.json"
+ },
+ "types": [
+  "polanen-1935-white-attic"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012131460",
+   "slug": "polanen-131460",
+   "address": "Polanenstraat 229",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#605051",
+     "evidence": "strip 2022-12-14 span 1551-1796: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625451)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 1551-1796"
+   }
+  },
+  {
+   "pandId": "0363100012087668",
+   "slug": "polanen-087668",
+   "address": "Polanenstraat 237",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#625151",
+     "evidence": "strip 2022-12-14 span 1796-2044: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625553)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 1796-2044"
+   }
+  },
+  {
+   "pandId": "0363100012124377",
+   "slug": "polanen-124377",
+   "address": "Polanenstraat 245",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#5e4e4c",
+     "evidence": "strip 2022-12-14 span 2044-2294: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #655753)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 2044-2294"
+   }
+  },
+  {
+   "pandId": "0363100012118304",
+   "slug": "polanen-118304",
+   "address": "Polanenstraat 253",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5a4b49",
+     "evidence": "strip 2022-12-14 span 2294-2532: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #675956)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 2294-2532"
+   }
+  },
+  {
+   "pandId": "0363100012151701",
+   "slug": "polanen-151701",
+   "address": "Polanenstraat 261",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5e4e4d",
+     "evidence": "strip 2022-12-14 span 2532-2778: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #625554)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 2532-2778"
+   }
+  },
+  {
+   "pandId": "0363100012145428",
+   "slug": "polanen-145428",
+   "address": "Polanenstraat 269",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#635150",
+     "evidence": "strip 2022-12-14 span 2779-3022: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #594e4c)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 2779-3022"
+   }
+  },
+  {
+   "pandId": "0363100012106430",
+   "slug": "polanen-106430",
+   "address": "Polanenstraat 277",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#624f4f",
+     "evidence": "strip 2022-12-14 span 3022-3276: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5b4e4e)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 3022-3276"
+   }
+  },
+  {
+   "pandId": "0363100012104089",
+   "slug": "polanen-104089",
+   "address": "Polanenstraat 285",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5f4e4c",
+     "evidence": "strip 2022-12-14 span 3276-3514: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5b4e4d)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 3276-3514"
+   }
+  },
+  {
+   "pandId": "0363100012147151",
+   "slug": "polanen-147151",
+   "address": "Polanenstraat 293",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#5b4948",
+     "evidence": "strip 2022-12-14 span 3514-3784: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #685a57)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 3514-3784"
+   }
+  },
+  {
+   "pandId": "0363100012075725",
+   "slug": "polanen-075725",
+   "address": "Polanenstraat 301",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#624e4c",
+     "evidence": "strip 2022-12-14 span 3784-4023: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5d4e4d)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2022-12-14 span 3784-4023"
+   }
+  },
+  {
+   "pandId": "0363100012087149",
+   "slug": "polanen-087149",
+   "address": "Polanenstraat 309",
+   "type": {
+    "type": "polanen-1935-white-attic",
+    "measuredPalette": {
+     "brick": "#624f4f",
+     "evidence": "strip 2022-12-14 span 4023-4284: raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain #5c4c4b)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-12-14",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: polanen-1935-white-attic scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2022-12-14 span 4023-4284"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

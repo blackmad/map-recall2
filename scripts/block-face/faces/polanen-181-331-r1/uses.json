@@ -1,0 +1,416 @@
+{
+ "street": "Polanenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T08:10:01.659Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131460",
+   "addresses": [
+    "Polanenstraat 229",
+    "Polanenstraat 231",
+    "Polanenstraat 233",
+    "Polanenstraat 235"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 233",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779096"
+    },
+    {
+     "address": "Polanenstraat 235",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779098"
+    },
+    {
+     "address": "Polanenstraat 229",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779092"
+    },
+    {
+     "address": "Polanenstraat 231",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779094"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087668",
+   "addresses": [
+    "Polanenstraat 237",
+    "Polanenstraat 239",
+    "Polanenstraat 241",
+    "Polanenstraat 243"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 243",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000779105"
+    },
+    {
+     "address": "Polanenstraat 239",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779101"
+    },
+    {
+     "address": "Polanenstraat 237",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779100"
+    },
+    {
+     "address": "Polanenstraat 241",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779103"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124377",
+   "addresses": [
+    "Polanenstraat 245",
+    "Polanenstraat 247",
+    "Polanenstraat 249",
+    "Polanenstraat 251"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 247",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779109"
+    },
+    {
+     "address": "Polanenstraat 245",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779107"
+    },
+    {
+     "address": "Polanenstraat 251",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779113"
+    },
+    {
+     "address": "Polanenstraat 249",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779111"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118304",
+   "addresses": [
+    "Polanenstraat 253",
+    "Polanenstraat 255",
+    "Polanenstraat 257",
+    "Polanenstraat 259"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 257",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779116"
+    },
+    {
+     "address": "Polanenstraat 255",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779115"
+    },
+    {
+     "address": "Polanenstraat 259",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779117"
+    },
+    {
+     "address": "Polanenstraat 253",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779114"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151701",
+   "addresses": [
+    "Polanenstraat 261",
+    "Polanenstraat 263",
+    "Polanenstraat 265",
+    "Polanenstraat 267"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 263",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779119"
+    },
+    {
+     "address": "Polanenstraat 265",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779120"
+    },
+    {
+     "address": "Polanenstraat 261",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779118"
+    },
+    {
+     "address": "Polanenstraat 267",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779121"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145428",
+   "addresses": [
+    "Polanenstraat 269",
+    "Polanenstraat 271",
+    "Polanenstraat 273",
+    "Polanenstraat 275"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 273",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779124"
+    },
+    {
+     "address": "Polanenstraat 275",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779125"
+    },
+    {
+     "address": "Polanenstraat 271",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779123"
+    },
+    {
+     "address": "Polanenstraat 269",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000779122"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106430",
+   "addresses": [
+    "Polanenstraat 277",
+    "Polanenstraat 279",
+    "Polanenstraat 281",
+    "Polanenstraat 283"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 283",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779129"
+    },
+    {
+     "address": "Polanenstraat 277",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000779126"
+    },
+    {
+     "address": "Polanenstraat 279",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779127"
+    },
+    {
+     "address": "Polanenstraat 281",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779128"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104089",
+   "addresses": [
+    "Polanenstraat 285",
+    "Polanenstraat 287",
+    "Polanenstraat 289",
+    "Polanenstraat 291"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 289",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779132"
+    },
+    {
+     "address": "Polanenstraat 287",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779131"
+    },
+    {
+     "address": "Polanenstraat 285",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779130"
+    },
+    {
+     "address": "Polanenstraat 291",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000779133"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147151",
+   "addresses": [
+    "Polanenstraat 293",
+    "Polanenstraat 295",
+    "Polanenstraat 297",
+    "Polanenstraat 299"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 293",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000779134"
+    },
+    {
+     "address": "Polanenstraat 297",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779136"
+    },
+    {
+     "address": "Polanenstraat 295",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779135"
+    },
+    {
+     "address": "Polanenstraat 299",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779137"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075725",
+   "addresses": [
+    "Polanenstraat 301",
+    "Polanenstraat 303",
+    "Polanenstraat 305",
+    "Polanenstraat 307"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 301",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000779138"
+    },
+    {
+     "address": "Polanenstraat 303",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779139"
+    },
+    {
+     "address": "Polanenstraat 307",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000779141"
+    },
+    {
+     "address": "Polanenstraat 305",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000779140"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087149",
+   "addresses": [
+    "Polanenstraat 309",
+    "Polanenstraat 311",
+    "Polanenstraat 313",
+    "Polanenstraat 315"
+   ],
+   "groundUnits": [
+    {
+     "address": "Polanenstraat 311",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000779143"
+    },
+    {
+     "address": "Polanenstraat 315",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000779145"
+    },
+    {
+     "address": "Polanenstraat 309",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000779142"
+    },
+    {
+     "address": "Polanenstraat 313",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000779144"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

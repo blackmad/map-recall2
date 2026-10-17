@@ -1,0 +1,1721 @@
+{
+ "street": "Hembrugstraat",
+ "seed": "0363100012116313",
+ "members": [
+  "0363100012099152",
+  "0363100012103705",
+  "0363100012073279",
+  "0363100012102874",
+  "0363100012115911",
+  "0363100012125901",
+  "0363100012067159",
+  "0363100012116313"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012110511 37.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012107305 9.8 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061268",
+   "reason": "frontage 33.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012061939",
+   "reason": "frontage 40.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012062014",
+   "reason": "frontage 58.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012062059",
+   "reason": "frontage 143.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012062577",
+   "reason": "frontage 114.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012062729",
+   "reason": "frontage 61.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012063264",
+   "reason": "frontage 129.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012063336",
+   "reason": "sightline to Hembrugstraat crosses 0363100012143580"
+  },
+  {
+   "pandId": "0363100012063407",
+   "reason": "frontage 165.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012064058",
+   "reason": "frontage 48.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012064392",
+   "reason": "sightline to Hembrugstraat crosses 0363100012110089"
+  },
+  {
+   "pandId": "0363100012064967",
+   "reason": "frontage 87.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012065516",
+   "reason": "frontage 70.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012065518",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012065620",
+   "reason": "frontage 132.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012066765",
+   "reason": "frontage 114.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012067376",
+   "reason": "frontage 47.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012067414",
+   "reason": "frontage 109.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012067520",
+   "reason": "frontage 76.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012067869",
+   "reason": "frontage 141.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012067991",
+   "reason": "frontage 100.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012068007",
+   "reason": "sightline to Hembrugstraat crosses 0363100012117213"
+  },
+  {
+   "pandId": "0363100012068054",
+   "reason": "frontage 82.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012068236",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012068362",
+   "reason": "frontage 67.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012069691",
+   "reason": "frontage 153.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012069740",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012069837",
+   "reason": "sightline to Hembrugstraat crosses 0363100012109303"
+  },
+  {
+   "pandId": "0363100012069927",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012069936",
+   "reason": "frontage 34.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012070304",
+   "reason": "frontage 144.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012071140",
+   "reason": "frontage 121.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012071737",
+   "reason": "frontage 38.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012072006",
+   "reason": "frontage 124.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012072402",
+   "reason": "frontage 45.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012072615",
+   "reason": "frontage 123.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012072676",
+   "reason": "frontage 145.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012072922",
+   "reason": "frontage 68.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012072997",
+   "reason": "frontage 201.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012073141",
+   "reason": "frontage 85.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012073565",
+   "reason": "frontage 141.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012074107",
+   "reason": "frontage 35.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012074744",
+   "reason": "frontage 178.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012074814",
+   "reason": "frontage 111.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012074829",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012075084",
+   "reason": "frontage 127.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012075725",
+   "reason": "frontage 34.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012075951",
+   "reason": "frontage 110.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012076443",
+   "reason": "frontage 140.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012076784",
+   "reason": "frontage 33.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012076883",
+   "reason": "frontage 46.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012076965",
+   "reason": "sightline to Hembrugstraat crosses 0363100012145950"
+  },
+  {
+   "pandId": "0363100012077108",
+   "reason": "frontage 77.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012077291",
+   "reason": "frontage 138.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012078548",
+   "reason": "frontage 34.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012078763",
+   "reason": "frontage 172.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012079010",
+   "reason": "frontage 166.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012079013",
+   "reason": "frontage 144.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012079874",
+   "reason": "frontage 77.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012080177",
+   "reason": "frontage 96.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012080385",
+   "reason": "sightline to Hembrugstraat crosses 0363100012099152"
+  },
+  {
+   "pandId": "0363100012081795",
+   "reason": "frontage 53.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012082072",
+   "reason": "frontage 114.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012082119",
+   "reason": "frontage 143.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012082557",
+   "reason": "sightline to Hembrugstraat crosses 0363100012100669"
+  },
+  {
+   "pandId": "0363100012082941",
+   "reason": "frontage 67.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012083661",
+   "reason": "frontage 114.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012083852",
+   "reason": "sightline to Hembrugstraat crosses 0363100012118062"
+  },
+  {
+   "pandId": "0363100012084164",
+   "reason": "frontage 121.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012084343",
+   "reason": "frontage 143.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012084396",
+   "reason": "frontage 89.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012085158",
+   "reason": "frontage 185.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012086871",
+   "reason": "frontage 105.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012087149",
+   "reason": "sightline to Hembrugstraat crosses 0363100012083852"
+  },
+  {
+   "pandId": "0363100012087177",
+   "reason": "frontage 79.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012087668",
+   "reason": "frontage 83.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012088118",
+   "reason": "sightline to Hembrugstraat crosses 0363100012126756"
+  },
+  {
+   "pandId": "0363100012088158",
+   "reason": "frontage 94.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012088214",
+   "reason": "frontage 56.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012090115",
+   "reason": "frontage 105.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012090336",
+   "reason": "frontage 102.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012091874",
+   "reason": "frontage 112.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012092078",
+   "reason": "frontage 48.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012092325",
+   "reason": "frontage 57.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012094000",
+   "reason": "frontage 97.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012094301",
+   "reason": "frontage 169.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012094665",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012095236",
+   "reason": "frontage 40.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012095263",
+   "reason": "frontage 123.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012095279",
+   "reason": "frontage 186.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012095732",
+   "reason": "frontage 84.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012096276",
+   "reason": "sightline to Hembrugstraat crosses 0363100012066643"
+  },
+  {
+   "pandId": "0363100012096324",
+   "reason": "frontage 68.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012098292",
+   "reason": "frontage 93.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012099225",
+   "reason": "sightline to Hembrugstraat crosses 0363100012102016"
+  },
+  {
+   "pandId": "0363100012099226",
+   "reason": "frontage 34.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012100080",
+   "reason": "frontage 74.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012100251",
+   "reason": "frontage 78.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012100580",
+   "reason": "frontage 144.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012101696",
+   "reason": "frontage 50.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012101945",
+   "reason": "frontage 93.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012102822",
+   "reason": "frontage 143.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012103203",
+   "reason": "frontage 77.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012103385",
+   "reason": "frontage 51.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012103614",
+   "reason": "frontage 101.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012104008",
+   "reason": "sightline to Hembrugstraat crosses 0363100012110511"
+  },
+  {
+   "pandId": "0363100012104089",
+   "reason": "frontage 46.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012104770",
+   "reason": "frontage 95.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012105269",
+   "reason": "frontage 87.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012105370",
+   "reason": "frontage 46.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012105616",
+   "reason": "frontage 154.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012105669",
+   "reason": "frontage 143.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012106397",
+   "reason": "frontage 110.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012106430",
+   "reason": "frontage 52.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012106564",
+   "reason": "frontage 41.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012107283",
+   "reason": "frontage 46.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012107452",
+   "reason": "frontage 45.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012108427",
+   "reason": "frontage 30.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012108968",
+   "reason": "frontage 65.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012109748",
+   "reason": "frontage 113.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012109995",
+   "reason": "frontage 30.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012110714",
+   "reason": "frontage 41.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012111401",
+   "reason": "sightline to Hembrugstraat crosses 0363100012073972"
+  },
+  {
+   "pandId": "0363100012111405",
+   "reason": "frontage 56.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012113753",
+   "reason": "frontage 114.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012113918",
+   "reason": "sightline to Hembrugstraat crosses 0363100012099132"
+  },
+  {
+   "pandId": "0363100012114860",
+   "reason": "frontage 106.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012114944",
+   "reason": "frontage 34.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012115849",
+   "reason": "frontage 67.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012117074",
+   "reason": "frontage 33.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012117213",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012117604",
+   "reason": "frontage 128.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012117606",
+   "reason": "frontage 58.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012118304",
+   "reason": "frontage 71.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012118638",
+   "reason": "frontage 150.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012118671",
+   "reason": "frontage 182.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012119633",
+   "reason": "frontage 84.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012119661",
+   "reason": "frontage 169.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012120378",
+   "reason": "frontage 47.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012120652",
+   "reason": "frontage 101.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012121270",
+   "reason": "frontage 153.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012122346",
+   "reason": "frontage 194.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012123360",
+   "reason": "frontage 47.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012123644",
+   "reason": "sightline to Hembrugstraat crosses 0363100012088118"
+  },
+  {
+   "pandId": "0363100012123720",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012123840",
+   "reason": "frontage 33.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012123914",
+   "reason": "frontage 73.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012124377",
+   "reason": "frontage 77.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012124565",
+   "reason": "frontage 33.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012125074",
+   "reason": "frontage 86.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012125281",
+   "reason": "frontage 114.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012125362",
+   "reason": "frontage 207.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012125669",
+   "reason": "frontage 118.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012126325",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012127085",
+   "reason": "frontage 185.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012127236",
+   "reason": "frontage 133.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012129132",
+   "reason": "sightline to Hembrugstraat crosses 0363100012154861"
+  },
+  {
+   "pandId": "0363100012129258",
+   "reason": "frontage 138.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012130326",
+   "reason": "frontage 220.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012130669",
+   "reason": "frontage 66.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012131380",
+   "reason": "frontage 132.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012131460",
+   "reason": "frontage 89.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012131899",
+   "reason": "frontage 70.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012133080",
+   "reason": "frontage 128.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012133437",
+   "reason": "frontage 169.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012133459",
+   "reason": "frontage 153.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012135194",
+   "reason": "frontage 132.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012135269",
+   "reason": "frontage 101.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012135902",
+   "reason": "frontage 74.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012136307",
+   "reason": "frontage 92.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012136579",
+   "reason": "frontage 180.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012136859",
+   "reason": "frontage 137.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012137843",
+   "reason": "frontage 83.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012138541",
+   "reason": "frontage 33.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012139131",
+   "reason": "frontage 54.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012139352",
+   "reason": "frontage 109.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012140055",
+   "reason": "frontage 123.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012141325",
+   "reason": "frontage 114.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012141747",
+   "reason": "frontage 46.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012142112",
+   "reason": "frontage 67.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012142603",
+   "reason": "sightline to Hembrugstraat crosses 0363100012134665"
+  },
+  {
+   "pandId": "0363100012142675",
+   "reason": "frontage 85.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012142927",
+   "reason": "frontage 179.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012143326",
+   "reason": "sightline to Hembrugstraat crosses 0363100012113246"
+  },
+  {
+   "pandId": "0363100012143746",
+   "reason": "sightline to Hembrugstraat crosses 0363100012075697"
+  },
+  {
+   "pandId": "0363100012144053",
+   "reason": "frontage 39.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012144157",
+   "reason": "frontage 139.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012145066",
+   "reason": "frontage 76.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012145428",
+   "reason": "frontage 59.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012146438",
+   "reason": "sightline to Hembrugstraat crosses 0363100012076965"
+  },
+  {
+   "pandId": "0363100012146841",
+   "reason": "frontage 91.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147151",
+   "reason": "frontage 40.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147168",
+   "reason": "frontage 62.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147600",
+   "reason": "frontage 169.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147650",
+   "reason": "frontage 92.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147652",
+   "reason": "frontage 95.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147653",
+   "reason": "frontage 90.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012147929",
+   "reason": "frontage 214.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012148613",
+   "reason": "frontage 105.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012149627",
+   "reason": "frontage 117.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012149652",
+   "reason": "frontage 114.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012150291",
+   "reason": "frontage 69.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012151182",
+   "reason": "frontage 114.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012151701",
+   "reason": "frontage 65.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012152129",
+   "reason": "frontage 143.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012152141",
+   "reason": "frontage 33.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012154377",
+   "reason": "frontage 82.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012155087",
+   "reason": "frontage 105.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012155161",
+   "reason": "frontage 118.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012155179",
+   "reason": "frontage 47.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012156813",
+   "reason": "sightline to Hembrugstraat crosses 0363100012113246"
+  },
+  {
+   "pandId": "0363100012160109",
+   "reason": "frontage 87.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012161965",
+   "reason": "frontage 35.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012165909",
+   "reason": "sightline to Hembrugstraat crosses 0363100012145558"
+  },
+  {
+   "pandId": "0363100012184029",
+   "reason": "frontage 137.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012185008",
+   "reason": "frontage 53.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012185009",
+   "reason": "frontage 50.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012186106",
+   "reason": "frontage 75.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012186283",
+   "reason": "sightline to Hembrugstraat crosses 0363100012095174"
+  },
+  {
+   "pandId": "0363100012186805",
+   "reason": "frontage 62.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012189940",
+   "reason": "sightline to Hembrugstraat crosses 0363100012081333"
+  },
+  {
+   "pandId": "0363100012189941",
+   "reason": "sightline to Hembrugstraat crosses 0363100012139242"
+  },
+  {
+   "pandId": "0363100012189942",
+   "reason": "sightline to Hembrugstraat crosses 0363100012081333"
+  },
+  {
+   "pandId": "0363100012189943",
+   "reason": "sightline to Hembrugstraat crosses 0363100012081333"
+  },
+  {
+   "pandId": "0363100012189944",
+   "reason": "sightline to Hembrugstraat crosses 0363100012081333"
+  },
+  {
+   "pandId": "0363100012189945",
+   "reason": "sightline to Hembrugstraat crosses 0363100012139242"
+  },
+  {
+   "pandId": "0363100012189946",
+   "reason": "frontage 30.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012189947",
+   "reason": "sightline to Hembrugstraat crosses 0363100012139242"
+  },
+  {
+   "pandId": "0363100012189948",
+   "reason": "sightline to Hembrugstraat crosses 0363100012139242"
+  },
+  {
+   "pandId": "0363100012189949",
+   "reason": "sightline to Hembrugstraat crosses 0363100012139242"
+  },
+  {
+   "pandId": "0363100012189950",
+   "reason": "sightline to Hembrugstraat crosses 0363100012081333"
+  },
+  {
+   "pandId": "0363100012190043",
+   "reason": "frontage 66.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012190044",
+   "reason": "frontage 62.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012190826",
+   "reason": "frontage 105.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012191812",
+   "reason": "sightline to Hembrugstraat crosses 0363100012132207"
+  },
+  {
+   "pandId": "0363100012191813",
+   "reason": "sightline to Hembrugstraat crosses 0363100012132207"
+  },
+  {
+   "pandId": "0363100012193693",
+   "reason": "sightline to Hembrugstraat crosses 0363100012137149"
+  },
+  {
+   "pandId": "0363100012194189",
+   "reason": "frontage 89.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012194725",
+   "reason": "frontage 114.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012194726",
+   "reason": "frontage 114.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012195119",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012196742",
+   "reason": "frontage 90.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199551",
+   "reason": "frontage 69.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199552",
+   "reason": "frontage 43.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199553",
+   "reason": "frontage 41.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199554",
+   "reason": "frontage 43.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199555",
+   "reason": "frontage 41.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199556",
+   "reason": "frontage 59.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199557",
+   "reason": "frontage 66.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199558",
+   "reason": "frontage 66.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199559",
+   "reason": "frontage 68.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199561",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012199562",
+   "reason": "frontage 59.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012200217",
+   "reason": "frontage 105.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012200466",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012200467",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012203116",
+   "reason": "frontage 142.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012204409",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012204755",
+   "reason": "frontage 157.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012204759",
+   "reason": "frontage 140.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012204760",
+   "reason": "frontage 130.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012204761",
+   "reason": "frontage 128.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012204764",
+   "reason": "frontage 151.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012205490",
+   "reason": "frontage 105.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206008",
+   "reason": "frontage 37.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206305",
+   "reason": "frontage 76.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206306",
+   "reason": "sightline to Hembrugstraat crosses 0363100012097562"
+  },
+  {
+   "pandId": "0363100012206307",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206308",
+   "reason": "sightline to Hembrugstraat crosses 0363100012097562"
+  },
+  {
+   "pandId": "0363100012206309",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206310",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206311",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206312",
+   "reason": "frontage 65.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206313",
+   "reason": "frontage 63.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206314",
+   "reason": "frontage 55.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206315",
+   "reason": "frontage 52.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206316",
+   "reason": "frontage 74.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206317",
+   "reason": "sightline to Hembrugstraat crosses 0363100012068007"
+  },
+  {
+   "pandId": "0363100012206413",
+   "reason": "sightline to Hembrugstraat crosses 0363100012068007"
+  },
+  {
+   "pandId": "0363100012206414",
+   "reason": "frontage 85.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206415",
+   "reason": "frontage 99.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206416",
+   "reason": "frontage 97.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206417",
+   "reason": "frontage 88.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012206572",
+   "reason": "sightline to Hembrugstraat crosses 0363100012127592"
+  },
+  {
+   "pandId": "0363100012206879",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012207170",
+   "reason": "frontage 188.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012209493",
+   "reason": "frontage 50.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012212047",
+   "reason": "frontage 43.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012213930",
+   "reason": "frontage 105.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012216295",
+   "reason": "frontage 134.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012216297",
+   "reason": "frontage 146.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012216298",
+   "reason": "frontage 159.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012216299",
+   "reason": "frontage 157.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012216778",
+   "reason": "frontage 65.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012219484",
+   "reason": "sightline to Hembrugstraat crosses 0363100012075697"
+  },
+  {
+   "pandId": "0363100012220440",
+   "reason": "frontage 31.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012221510",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012221511",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012221582",
+   "reason": "sightline to Hembrugstraat crosses 0363100012118245"
+  },
+  {
+   "pandId": "0363100012221583",
+   "reason": "sightline to Hembrugstraat crosses 0363100012118245"
+  },
+  {
+   "pandId": "0363100012222401",
+   "reason": "frontage 117.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012222402",
+   "reason": "frontage 130.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012222403",
+   "reason": "frontage 128.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012222404",
+   "reason": "frontage 117.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012222405",
+   "reason": "frontage 130.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012222406",
+   "reason": "frontage 128.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012224779",
+   "reason": "frontage 87.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012225646",
+   "reason": "sightline to Hembrugstraat crosses 0363100012110068"
+  },
+  {
+   "pandId": "0363100012225647",
+   "reason": "sightline to Hembrugstraat crosses 0363100012110068"
+  },
+  {
+   "pandId": "0363100012225945",
+   "reason": "sightline to Hembrugstraat crosses 0363100012064968"
+  },
+  {
+   "pandId": "0363100012226327",
+   "reason": "sightline to Hembrugstraat crosses 0363100012075860"
+  },
+  {
+   "pandId": "0363100012226328",
+   "reason": "sightline to Hembrugstraat crosses 0363100012129108"
+  },
+  {
+   "pandId": "0363100012227470",
+   "reason": "frontage 98.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012227565",
+   "reason": "frontage 95.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012229611",
+   "reason": "frontage 52.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012231113",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012231130",
+   "reason": "frontage 105.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012231332",
+   "reason": "frontage 77.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232006",
+   "reason": "frontage 35.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232007",
+   "reason": "frontage 34.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232009",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232010",
+   "reason": "frontage 73.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232012",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232013",
+   "reason": "frontage 62.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232016",
+   "reason": "sightline to Hembrugstraat crosses 0363100012127592"
+  },
+  {
+   "pandId": "0363100012232017",
+   "reason": "sightline to Hembrugstraat crosses 0363100012108079"
+  },
+  {
+   "pandId": "0363100012232018",
+   "reason": "frontage 31.1 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232020",
+   "reason": "frontage 95.2 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232022",
+   "reason": "frontage 81.9 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012232023",
+   "reason": "frontage 84.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233098",
+   "reason": "frontage 71.7 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233099",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233100",
+   "reason": "frontage 82.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233101",
+   "reason": "frontage 38.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233102",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233103",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233104",
+   "reason": "frontage 69.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233105",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233106",
+   "reason": "frontage 54.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233107",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233108",
+   "reason": "no frontage on Hembrugstraat: No footprint edge faces Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233109",
+   "reason": "sightline to Hembrugstraat crosses 0363100012073983"
+  },
+  {
+   "pandId": "0363100012233178",
+   "reason": "frontage 40.3 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233623",
+   "reason": "frontage 88.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233656",
+   "reason": "frontage 69.0 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012233961",
+   "reason": "sightline to Hembrugstraat crosses 0363100012103688"
+  },
+  {
+   "pandId": "0363100012233962",
+   "reason": "sightline to Hembrugstraat crosses 0363100012103688"
+  },
+  {
+   "pandId": "0363100012233995",
+   "reason": "frontage 74.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012236786",
+   "reason": "sightline to Hembrugstraat crosses 0363100012088118"
+  },
+  {
+   "pandId": "0363100012237311",
+   "reason": "frontage 62.8 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012249762",
+   "reason": "frontage 138.5 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012251649",
+   "reason": "sightline to Hembrugstraat crosses 0363100012064392"
+  },
+  {
+   "pandId": "0363100012251650",
+   "reason": "frontage 30.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012254574",
+   "reason": "frontage 32.4 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012254575",
+   "reason": "frontage 99.6 m from Hembrugstraat"
+  },
+  {
+   "pandId": "0363100012064968",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066473",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066643",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073972",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073983",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075860",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081333",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091396",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094752",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095174",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097562",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099132",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100669",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107192",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108079",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108381",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110089",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112136",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113246",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114675",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115101",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117534",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119170",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126756",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129108",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133368",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134665",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135014",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137149",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139242",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141963",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142984",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143580",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145558",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146365",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154861",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012099152",
+   "alongM": -82.82,
+   "widthM": 7.86,
+   "eavesM": 12.99,
+   "roofMaxM": 17.97,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012103705",
+   "alongM": -72.12,
+   "widthM": 13.53,
+   "eavesM": 12.98,
+   "roofMaxM": 17.79,
+   "storeys3dbag": 5,
+   "builtYear": 1929,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 13.53 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012073279",
+   "alongM": -56.39,
+   "widthM": 5.22,
+   "eavesM": 14.95,
+   "roofMaxM": 14.95,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 8.21 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012102874",
+   "alongM": -46.18,
+   "widthM": 12.24,
+   "eavesM": 14.96,
+   "roofMaxM": 14.98,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 12.24 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012115911",
+   "alongM": -33.78,
+   "widthM": 12.56,
+   "eavesM": 14.98,
+   "roofMaxM": 14.99,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 12.56 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012125901",
+   "alongM": -21.4,
+   "widthM": 12.21,
+   "eavesM": 14.98,
+   "roofMaxM": 15,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 12.21 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012067159",
+   "alongM": -8.99,
+   "widthM": 12.61,
+   "eavesM": 14.99,
+   "roofMaxM": 14.99,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 12.61 m bay front; blockFace/bayOutline.ts)."
+   ]
+  },
+  {
+   "pandId": "0363100012116313",
+   "alongM": 0,
+   "widthM": 5.37,
+   "eavesM": 14.85,
+   "roofMaxM": 14.88,
+   "storeys3dbag": 4,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}
