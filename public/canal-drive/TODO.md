@@ -972,16 +972,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   narrower portiek door, a portiek arch shared across the party wall; brick
   relieving arches; flush wall dormers; a ride spec switch to leave one face's
   chunk out for before frames.
-- **Statue rebuilds, waiting on the user's pick** (2026-10-17, HISTORY
-  "Statue rebuild comparison"): install the picked rebuilds from the lane's
-  `artifacts/sculpture-reconstruction/<id>/rebuild/<id>.glb` (worktree
-  agent-a3b7165a1d9a528bb; keep it until installed), rebuild covers and
-  check:covers, restore the held Kinderbrug groups as rebuilds. Freedom of
-  panorama: 16 of the 20 sculptors died within 70 years or are alive. Then
-  P2 Spinoza (head close-up or kit head on the TRELLIS cloak), Mama Baranka
-  (hole fill, coarser remesh); P3 the 22 Night Watch figures, the
-  Waterdraagster fish, and the kit header crediting the Merwedeplein Anne
-  Frank to Mari Andriessen (it is Jet Schepp, 2005).
+- **Statue rebuilds: the catalogue step is the user's call** (2026-10-17,
+  HISTORY "Statue rebuilds installed"): the lane's write to
+  `manualCatalogue.json` (credits for the 17, the Merwedeplein Anne Frank
+  credited to Jet Schepp 2005, Kinderbrug un-hold) was refused by the auto-mode
+  check. Ready: `node --import tsx scripts/sculptures/install-attribution.ts
+  --unhold=kinderbrug-meisje-eekhoorns,kinderbrug-jongen-konijnen`, then
+  `build-manual-landmarks --only=<17>`, drop the hold assertion in
+  `tests/e2e/whats-new.spec.ts`, frame the Kinderbrug on bridge 420. Then P2
+  Spinoza (head close-up or kit head on the TRELLIS cloak), Mama Baranka (hole
+  fill, coarser remesh); P3 the 22 Night Watch figures, the Waterdraagster
+  fish.
 - **Flags left after the audit** (2026-10-16, HISTORY "Flags decided"):
   `?bagTiles=1` default flip is the user's call (covers consistent now;
   `check:covers --strict` lists 4 Noorderkerk hidden bugs it would fix;
