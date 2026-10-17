@@ -1,0 +1,485 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012154553",
+ "source": {
+  "threeDBag": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012154553",
+  "fetchedAt": "2026-10-16",
+  "streets": "public/data/extracts/amsterdam/streets-routing.json"
+ },
+ "attributes": {
+  "b3_bag_bag_overlap": 0,
+  "b3_bouwlagen": 4,
+  "b3_dak_type": "multiple horizontal",
+  "b3_extrusie": "standard",
+  "b3_h_dak_50p": 12.482999801635742,
+  "b3_h_dak_70p": 12.522000312805176,
+  "b3_h_dak_max": 12.635000228881836,
+  "b3_h_dak_min": 9.701000213623047,
+  "b3_h_maaiveld": 0.22300000488758087,
+  "b3_h_nok": null,
+  "b3_is_glas_dak": false,
+  "b3_kas_warenhuis": false,
+  "b3_kwaliteitsindicator": true,
+  "b3_mutatie_ahn3_ahn4": false,
+  "b3_mutatie_ahn4_ahn5": false,
+  "b3_n_nok": 0,
+  "b3_n_vlakken": 2,
+  "b3_nodata_fractie_ahn3": 0.003636363660916686,
+  "b3_nodata_fractie_ahn4": 0,
+  "b3_nodata_fractie_ahn5": 0.007272727321833372,
+  "b3_nodata_radius_ahn3": 0,
+  "b3_nodata_radius_ahn4": 0,
+  "b3_nodata_radius_ahn5": 0,
+  "b3_opp_buitenmuur": 159.94,
+  "b3_opp_dak_plat": 69.06,
+  "b3_opp_dak_schuin": 0.01,
+  "b3_opp_grond": 69.05,
+  "b3_opp_scheidingsmuur": 258.08,
+  "b3_puntdichtheid_ahn3": 18.23357582092285,
+  "b3_puntdichtheid_ahn4": 30.35636329650879,
+  "b3_puntdichtheid_ahn5": 15.2380952835083,
+  "b3_pw_bron": "ahn5",
+  "b3_pw_datum": 2023,
+  "b3_pw_onvoldoende": false,
+  "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+  "b3_rmse_lod12": 1.1889535188674927,
+  "b3_rmse_lod13": 1.1889535188674927,
+  "b3_rmse_lod22": 0.18121545016765594,
+  "b3_t_run": 36,
+  "b3_val3dity_lod12": "[]",
+  "b3_val3dity_lod13": "[]",
+  "b3_val3dity_lod22": "[]",
+  "b3_volume_lod12": 849.373046875,
+  "b3_volume_lod13": 849.373046875,
+  "b3_volume_lod22": 811.7783813476562,
+  "begingeldigheid": "2023-07-28",
+  "documentdatum": "2023-07-28",
+  "documentnummer": "GV00007101_AC00AC",
+  "eindgeldigheid": null,
+  "eindregistratie": null,
+  "fid": 8173868,
+  "geconstateerd": false,
+  "identificatie": "NL.IMBAG.Pand.0363100012154553",
+  "oorspronkelijkbouwjaar": 1934,
+  "status": "Pand in gebruik",
+  "tijdstipeindregistratielv": null,
+  "tijdstipinactief": null,
+  "tijdstipinactieflv": null,
+  "tijdstipnietbaglv": null,
+  "tijdstipregistratie": "2023-07-28T21:58:25Z",
+  "tijdstipregistratielv": "2023-07-29T00:12:52Z",
+  "voorkomenidentificatie": 2
+ },
+ "bagFootprintRD": [
+  [
+   [
+    122543.2485,
+    483926.89225000003
+   ],
+   [
+    122532.4745,
+    483924.48325
+   ],
+   [
+    122532.5525,
+    483924.13125000003
+   ],
+   [
+    122533.1575,
+    483921.42525000003
+   ],
+   [
+    122533.8085,
+    483918.52125
+   ],
+   [
+    122544.58350000001,
+    483920.92925
+   ]
+  ]
+ ],
+ "surveyFootprintPolygonsRD": [
+  [
+   [
+    [
+     122532.5525,
+     483924.13125000003
+    ],
+    [
+     122532.4745,
+     483924.48325
+    ],
+    [
+     122541.0855,
+     483926.40925
+    ],
+    [
+     122543.2485,
+     483926.89225000003
+    ],
+    [
+     122544.58350000001,
+     483920.92925
+    ],
+    [
+     122542.5145,
+     483920.46725
+    ],
+    [
+     122533.8085,
+     483918.52125
+    ],
+    [
+     122533.1575,
+     483921.42525000003
+    ]
+   ]
+  ]
+ ],
+ "roofsRD": [
+  {
+   "surfaceId": "NL.IMBAG.Pand.0363100012154553-0:lod22:roof:12",
+   "vertices": [
+    [
+     122541.0855,
+     483926.40925,
+     9.812000312805177
+    ],
+    [
+     122542.5145,
+     483920.46725,
+     9.731000312805175
+    ],
+    [
+     122544.58350000001,
+     483920.92925,
+     9.700000312805177
+    ],
+    [
+     122543.2485,
+     483926.89225000003,
+     9.780000312805177
+    ]
+   ],
+   "ringsRD": [
+    [
+     [
+      122541.0855,
+      483926.40925,
+      9.812000312805177
+     ],
+     [
+      122542.5145,
+      483920.46725,
+      9.731000312805175
+     ],
+     [
+      122544.58350000001,
+      483920.92925,
+      9.700000312805177
+     ],
+     [
+      122543.2485,
+      483926.89225000003,
+      9.780000312805177
+     ]
+    ]
+   ],
+   "slopeDeg": 1.118757115085439,
+   "areaM2": 13.25
+  },
+  {
+   "surfaceId": "NL.IMBAG.Pand.0363100012154553-0:lod22:roof:13",
+   "vertices": [
+    [
+     122541.0855,
+     483926.40925,
+     12.415000312805176
+    ],
+    [
+     122532.4745,
+     483924.48325,
+     12.550000312805176
+    ],
+    [
+     122532.5525,
+     483924.13125000003,
+     12.553000312805176
+    ],
+    [
+     122533.1575,
+     483921.42525000003,
+     12.571000312805177
+    ],
+    [
+     122533.8085,
+     483918.52125,
+     12.592000312805176
+    ],
+    [
+     122542.5145,
+     483920.46725,
+     12.455000312805176
+    ]
+   ],
+   "ringsRD": [
+    [
+     [
+      122541.0855,
+      483926.40925,
+      12.415000312805176
+     ],
+     [
+      122532.4745,
+      483924.48325,
+      12.550000312805176
+     ],
+     [
+      122532.5525,
+      483924.13125000003,
+      12.553000312805176
+     ],
+     [
+      122533.1575,
+      483921.42525000003,
+      12.571000312805177
+     ],
+     [
+      122533.8085,
+      483918.52125,
+      12.592000312805176
+     ],
+     [
+      122542.5145,
+      483920.46725,
+      12.455000312805176
+     ]
+    ]
+   ],
+   "slopeDeg": 0.9608886928980288,
+   "areaM2": 54.21
+  }
+ ],
+ "heights": {
+  "groundNAP": 0.22300000488758087,
+  "roofMinM": 9.48,
+  "roofMaxM": 12.37,
+  "ridgeM": 12.412000223994255,
+  "dak50pM": 12.259999796748161,
+  "dak70pM": 12.299000307917595,
+  "storeys": 4,
+  "builtYear": 1934
+ },
+ "fronts": [
+  {
+   "street": "Hoendiepstraat",
+   "endpointsRD": [
+    [
+     122532.4745,
+     483924.48325
+    ],
+    [
+     122533.8085,
+     483918.52125
+    ]
+   ],
+   "chainRD": [
+    [
+     122532.4745,
+     483924.48325
+    ],
+    [
+     122532.5525,
+     483924.13125000003
+    ],
+    [
+     122533.1575,
+     483921.42525000003
+    ],
+    [
+     122533.8085,
+     483918.52125
+    ]
+   ],
+   "widthM": 6.109418957642476,
+   "outwardNormalRD": [
+    -0.9758702163552672,
+    -0.21835137011414416
+   ],
+   "streetDistanceM": 16.011258939827254,
+   "topProfile": [
+    {
+     "alongM": 0.061,
+     "heightM": 12.326348283576428
+    },
+    {
+     "alongM": 0.211,
+     "heightM": 12.327366668317136
+    },
+    {
+     "alongM": 0.36,
+     "heightM": 12.328385053057264
+    },
+    {
+     "alongM": 0.51,
+     "heightM": 12.329403437797973
+    },
+    {
+     "alongM": 0.66,
+     "heightM": 12.33042182253868
+    },
+    {
+     "alongM": 0.809,
+     "heightM": 12.331440207279387
+    },
+    {
+     "alongM": 0.959,
+     "heightM": 12.3324585920199
+    },
+    {
+     "alongM": 1.109,
+     "heightM": 12.33347697676061
+    },
+    {
+     "alongM": 1.259,
+     "heightM": 12.334495361500736
+    },
+    {
+     "alongM": 1.408,
+     "heightM": 12.335513746241444
+    },
+    {
+     "alongM": 1.558,
+     "heightM": 12.336532130982153
+    },
+    {
+     "alongM": 1.708,
+     "heightM": 12.33755051572286
+    },
+    {
+     "alongM": 1.857,
+     "heightM": 12.338568900463374
+    },
+    {
+     "alongM": 2.007,
+     "heightM": 12.33958728520408
+    },
+    {
+     "alongM": 2.157,
+     "heightM": 12.340605669944209
+    },
+    {
+     "alongM": 2.306,
+     "heightM": 12.341624054684917
+    },
+    {
+     "alongM": 2.456,
+     "heightM": 12.342642439425624
+    },
+    {
+     "alongM": 2.606,
+     "heightM": 12.343660824166331
+    },
+    {
+     "alongM": 2.755,
+     "heightM": 12.344679208906845
+    },
+    {
+     "alongM": 2.905,
+     "heightM": 12.345697593647554
+    },
+    {
+     "alongM": 3.055,
+     "heightM": 12.346715978387682
+    },
+    {
+     "alongM": 3.204,
+     "heightM": 12.347734363128387
+    },
+    {
+     "alongM": 3.354,
+     "heightM": 12.348752747869096
+    },
+    {
+     "alongM": 3.504,
+     "heightM": 12.34977113260961
+    },
+    {
+     "alongM": 3.653,
+     "heightM": 12.350789517350318
+    },
+    {
+     "alongM": 3.803,
+     "heightM": 12.351807902091027
+    },
+    {
+     "alongM": 3.953,
+     "heightM": 12.352826286831734
+    },
+    {
+     "alongM": 4.102,
+     "heightM": 12.35384467157186
+    },
+    {
+     "alongM": 4.252,
+     "heightM": 12.354863056312569
+    },
+    {
+     "alongM": 4.402,
+     "heightM": 12.355881441053082
+    },
+    {
+     "alongM": 4.552,
+     "heightM": 12.356899825793791
+    },
+    {
+     "alongM": 4.701,
+     "heightM": 12.357918210534496
+    },
+    {
+     "alongM": 4.851,
+     "heightM": 12.358936595275205
+    },
+    {
+     "alongM": 5.001,
+     "heightM": 12.359954980015333
+    },
+    {
+     "alongM": 5.15,
+     "heightM": 12.360973364756042
+    },
+    {
+     "alongM": 5.3,
+     "heightM": 12.361991749496553
+    },
+    {
+     "alongM": 5.45,
+     "heightM": 12.36301013423726
+    },
+    {
+     "alongM": 5.599,
+     "heightM": 12.36402851897797
+    },
+    {
+     "alongM": 5.749,
+     "heightM": 12.365046903718678
+    },
+    {
+     "alongM": 5.899,
+     "heightM": 12.366065288458804
+    },
+    {
+     "alongM": 6.048,
+     "heightM": 12.367083673199513
+    }
+   ],
+   "eavesM": 12.33042182253868,
+   "topM": 12.367083673199513,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade.",
+    "Frontage rebuilt as the facade chord over a BAG bay outline (was the 6.11 m bay front; blockFace/bayOutline.ts)."
+   ]
+  }
+ ]
+}
