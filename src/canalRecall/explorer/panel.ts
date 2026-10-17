@@ -13,7 +13,7 @@ export const KIND_LABEL: Readonly<Record<ExplorerKind, string>> = {
 };
 
 /** The model licence, as credits.html words the sources; the page links "credits.html" after it. */
-export const LICENCE = 'CC BY 4.0, derived from 3DBAG/BAG/OSM';
+export const LICENCE = 'Built from 3DBAG (CC BY 4.0), BAG and OpenStreetMap (ODbL) data';
 export const LICENCE_LINE = `${LICENCE}; see credits.html`;
 
 /** 162728 -> "159 KB"; 1450000 -> "1.4 MB". */
