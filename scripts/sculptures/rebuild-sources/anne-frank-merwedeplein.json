@@ -1,0 +1,188 @@
+{
+ "id": "anne-frank-merwedeplein",
+ "figures": {
+  "girl": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Anne Frank-Denkmal Amsterdam 03.jpg",
+     "box": [
+      0,
+      0,
+      9999,
+      2980
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Anne Frank 2019, Merwedeplein (3).jpg",
+     "box": [
+      0,
+      0,
+      9999,
+      1580
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Anne Frank 2019, Merwedeplein (1).jpg",
+     "box": [
+      0,
+      0,
+      9999,
+      1600
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Anne Frank-Denkmal Amsterdam 02.jpg",
+     "box": [
+      0,
+      0,
+      9999,
+      3280
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "trellisWall": 470.3,
+    "decimate": 5.6
+   },
+   "freeGbAtStart": 33.3,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/anne-frank-merwedeplein/rebuild/girl/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/anne-frank-merwedeplein/rebuild/girl/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/anne-frank-merwedeplein/rebuild/girl/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/anne-frank-merwedeplein/rebuild/girl/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.3,
+    "generateS": 463.6,
+    "rawVertices": 272435,
+    "rawTriangles": 549150
+   },
+   "placement": {
+    "cutKitTriangles": 1362,
+    "heightM": 1.569,
+    "baseM": [
+     -0.025,
+     1.41,
+     0.141
+    ],
+    "facingDeg": 200
+   },
+   "mesh": {
+    "rawTriangles": 143422,
+    "afterDebris": 143422,
+    "triangles": 6000,
+    "scale": 1.573,
+    "sizeM": [
+     0.62,
+     1.57,
+     0.43
+    ],
+    "watertight": true
+   },
+   "cutMask": 1362
+  }
+ },
+ "sculptor": {
+  "name": "Jet Schepp",
+  "born": 1937,
+  "died": null,
+  "year": 2005,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/anne-frank-merwedeplein.glb",
+ "photos": {
+  "File:Anne Frank-Denkmal Amsterdam 03.jpg": {
+   "title": "File:Anne Frank-Denkmal Amsterdam 03.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_03.jpg",
+   "author": "Christian Michelides",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2016-11-04 08:54:50",
+   "originalSize": [
+    2701,
+    5369
+   ],
+   "sha1": "4bc14d40d1ba2330e659a90eb9a3c897e5821677",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Anne_Frank-Denkmal_Amsterdam_03.jpg/1920px-Anne_Frank-Denkmal_Amsterdam_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/anne-frank-merwedeplein/download/4bc14d40d1.jpg"
+  },
+  "File:Anne Frank 2019, Merwedeplein (3).jpg": {
+   "title": "File:Anne Frank 2019, Merwedeplein (3).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank_2019,_Merwedeplein_(3).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-08-04 12:10:04",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "fc89b780e0ddb99f7a442f0ca5fb6fbf27e4fc3b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Anne_Frank_2019%2C_Merwedeplein_%283%29.jpg/1920px-Anne_Frank_2019%2C_Merwedeplein_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/anne-frank-merwedeplein/download/fc89b780e0.jpg"
+  },
+  "File:Anne Frank 2019, Merwedeplein (1).jpg": {
+   "title": "File:Anne Frank 2019, Merwedeplein (1).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank_2019,_Merwedeplein_(1).jpg",
+   "author": "Ceescamel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-08-04 12:09:41",
+   "originalSize": [
+    2988,
+    5312
+   ],
+   "sha1": "bd98608686ad14d8da986f3dbdd27d54580a2c2b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Anne_Frank_2019%2C_Merwedeplein_%281%29.jpg/1920px-Anne_Frank_2019%2C_Merwedeplein_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/anne-frank-merwedeplein/download/bd98608686.jpg"
+  },
+  "File:Beeld Anne Frank, Merwedeplein.jpg": {
+   "title": "File:Beeld Anne Frank, Merwedeplein.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Beeld_Anne_Frank,_Merwedeplein.jpg",
+   "author": "Alfvanbeem",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2025-03-16 12:08:49",
+   "originalSize": [
+    3024,
+    4032
+   ],
+   "sha1": "d93517cf334595358fc27b29c8fdf3da20c3640b",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Beeld_Anne_Frank%2C_Merwedeplein.jpg/1920px-Beeld_Anne_Frank%2C_Merwedeplein.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/anne-frank-merwedeplein/download/d93517cf33.jpg"
+  },
+  "File:Anne Frank-Denkmal Amsterdam 02.jpg": {
+   "title": "File:Anne Frank-Denkmal Amsterdam 02.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_02.jpg",
+   "author": "Christian Michelides",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2016-11-04 08:54:18",
+   "originalSize": [
+    2533,
+    5605
+   ],
+   "sha1": "4b1259bd131e3c6423572a055b3dbdaad1937054",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Anne_Frank-Denkmal_Amsterdam_02.jpg/1920px-Anne_Frank-Denkmal_Amsterdam_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/anne-frank-merwedeplein/download/4b1259bd13.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/anne-frank-merwedeplein/rebuild/anne-frank-merwedeplein.glb",
+  "triangles": 7034,
+  "keptKitTriangles": 1034,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 1362
+ },
+ "generated": "2026-10-17T08:37:56.248Z",
+ "sheet": "docs/images/sculptures/anne-frank-merwedeplein-rebuild.jpg",
+ "verdict": "better: coat, suitcase, shoulder bag and turned head all read; the kit girl is generic"
+}

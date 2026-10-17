@@ -62,7 +62,11 @@ t["loadS"] = round(time.time() - t0, 1)
 t0 = time.time()
 img = Image.open(args["image"]).convert("RGB")
 if "box" in args:
-    img = img.crop(tuple(int(v) for v in args["box"].split(",")))
+    b = [float(v) for v in args["box"].split(",")]  # pixels, or fractions of the image when all <= 1; clamped to the image
+    if max(b) <= 1:
+        b = [b[0] * img.width, b[1] * img.height, b[2] * img.width, b[3] * img.height]
+    x0, y0, x1, y1 = (int(v) for v in b)
+    img = img.crop((max(0, x0), max(0, y0), min(img.width, x1), min(img.height, y1)))
 session = rembg.new_session(args.get("rembg", "u2net"))
 cut = rembg.remove(img, session=session)
 alpha = np.array(cut)[:, :, 3]

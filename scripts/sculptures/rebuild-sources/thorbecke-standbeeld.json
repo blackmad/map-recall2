@@ -1,0 +1,215 @@
+{
+ "id": "thorbecke-standbeeld",
+ "figures": {
+  "statesman": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:Thorbecke statue Amsterdam.jpg",
+     "box": [
+      0.15,
+      0,
+      0.85,
+      0.45
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Thorbecke statue - amsterdam nl.jpg",
+     "box": [
+      0.32,
+      0,
+      0.9,
+      0.57
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Exterieur OVERZICHT - Amsterdam - 20292626 - RCE.jpg",
+     "box": [
+      0.22,
+      0.04,
+      0.52,
+      0.37
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:Eind, overzicht - Amsterdam - 20021118 - RCE.jpg",
+     "box": [
+      0.27,
+      0.3,
+      0.43,
+      0.62
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "prep": 33.8,
+    "trellisWall": 427.2,
+    "decimate": 6.1
+   },
+   "freeGbAtStart": 34.2,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/thorbecke-standbeeld/rebuild/statesman/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/thorbecke-standbeeld/rebuild/statesman/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/thorbecke-standbeeld/rebuild/statesman/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/thorbecke-standbeeld/rebuild/statesman/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.2,
+    "generateS": 422.1,
+    "rawVertices": 439343,
+    "rawTriangles": 878504
+   },
+   "placement": {
+    "cutKitTriangles": 1048,
+    "heightM": 2.605,
+    "baseM": [
+     -0.374,
+     3.445,
+     0.046
+    ],
+    "facingDeg": 200
+   },
+   "orient": {
+    "front": "-y",
+    "scores": {
+     "+x": {
+      "iou": 0.603,
+      "greyCorr": 0.106,
+      "score": 0.656
+     },
+     "-x": {
+      "iou": 0.6,
+      "greyCorr": 0.071,
+      "score": 0.635
+     },
+     "+y": {
+      "iou": 0.595,
+      "greyCorr": 0.02,
+      "score": 0.606
+     },
+     "-y": {
+      "iou": 0.733,
+      "greyCorr": 0.169,
+      "score": 0.817
+     }
+    }
+   },
+   "front": "-y",
+   "mesh": {
+    "rawTriangles": 221414,
+    "afterDebris": 221170,
+    "triangles": 6128,
+    "scale": 2.61,
+    "sizeM": [
+     1.35,
+     2.61,
+     0.91
+    ],
+    "watertight": true
+   },
+   "cutMask": 1048
+  }
+ },
+ "sculptor": {
+  "name": "Ferdinand Leenhoff",
+  "born": 1841,
+  "died": 1914,
+  "year": 1876,
+  "publicDomain": true
+ },
+ "kit": "public/canal-drive/models/thorbecke-standbeeld.glb",
+ "photos": {
+  "File:Thorbecke statue Amsterdam.jpg": {
+   "title": "File:Thorbecke statue Amsterdam.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Thorbecke_statue_Amsterdam.jpg",
+   "author": "Brbbl (uploader; no Artist field)",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "date": "",
+   "originalSize": [
+    1547,
+    2832
+   ],
+   "sha1": "0e0b2d34b80782652cea79c980c96681292775e0",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Thorbecke_statue_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/thorbecke-standbeeld/download/0e0b2d34b8.jpg"
+  },
+  "File:Thorbecke statue - amsterdam nl.jpg": {
+   "title": "File:Thorbecke statue - amsterdam nl.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Thorbecke_statue_-_amsterdam_nl.jpg",
+   "author": "Phyzome (uploader; no Artist field)",
+   "licence": "Public domain",
+   "licenceUrl": null,
+   "date": "",
+   "originalSize": [
+    1536,
+    2048
+   ],
+   "sha1": "76f6cada121eda88aa6c6cca71290260c4b43c4d",
+   "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Thorbecke_statue_-_amsterdam_nl.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "file": "artifacts/sculpture-reconstruction/thorbecke-standbeeld/download/76f6cada12.jpg"
+  },
+  "File:Johan Rudolph Thorbecke.jpg": {
+   "title": "File:Johan Rudolph Thorbecke.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Johan_Rudolph_Thorbecke.jpg",
+   "author": "Hobbledehoybacteria",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "2019-02-16",
+   "originalSize": [
+    2448,
+    3264
+   ],
+   "sha1": "f027cc9ba41d5aff55f0d985620b21fe5c3cefb4",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Johan_Rudolph_Thorbecke.jpg/1920px-Johan_Rudolph_Thorbecke.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/thorbecke-standbeeld/download/f027cc9ba4.jpg"
+  },
+  "File:Exterieur OVERZICHT - Amsterdam - 20292626 - RCE.jpg": {
+   "title": "File:Exterieur OVERZICHT - Amsterdam - 20292626 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Exterieur_OVERZICHT_-_Amsterdam_-_20292626_-_RCE.jpg",
+   "author": "Gerard Dukker",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "1986-04",
+   "originalSize": [
+    3078,
+    3066
+   ],
+   "sha1": "e602a7246ca13fc0d00b79058a916bb885165a4c",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Exterieur_OVERZICHT_-_Amsterdam_-_20292626_-_RCE.jpg/1920px-Exterieur_OVERZICHT_-_Amsterdam_-_20292626_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/thorbecke-standbeeld/download/e602a7246c.jpg"
+  },
+  "File:Eind, overzicht - Amsterdam - 20021118 - RCE.jpg": {
+   "title": "File:Eind, overzicht - Amsterdam - 20021118 - RCE.jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Eind,_overzicht_-_Amsterdam_-_20021118_-_RCE.jpg",
+   "author": "Gerard Dukker",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "date": "1963",
+   "originalSize": [
+    3309,
+    2224
+   ],
+   "sha1": "62d8fdc39b26a321d94d921d63add04ef762af9d",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Eind%2C_overzicht_-_Amsterdam_-_20021118_-_RCE.jpg/1920px-Eind%2C_overzicht_-_Amsterdam_-_20021118_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/thorbecke-standbeeld/download/62d8fdc39b.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/thorbecke-standbeeld/rebuild/thorbecke-standbeeld.glb",
+  "triangles": 11396,
+  "keptKitTriangles": 5268,
+  "figureTriangles": 6128,
+  "droppedKitTriangles": 1048
+ },
+ "generated": "2026-10-17T09:35:33.120Z",
+ "sheet": "docs/images/sculptures/thorbecke-standbeeld-rebuild.jpg",
+ "verdict": "slightly better: the frock coat drape and the lectern read as one cast; at gallery size close to the kit"
+}

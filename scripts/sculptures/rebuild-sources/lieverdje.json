@@ -1,0 +1,173 @@
+{
+ "id": "lieverdje",
+ "figures": {
+  "boy": {
+   "route": "TRELLIS.2-4B multidiffusion, 4 photos (trellis2-apple MLX port)",
+   "views": [
+    {
+     "title": "File:2024 Lieverdje, Amsterdam (D).jpg",
+     "box": [
+      0,
+      0,
+      1920,
+      2180
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Lieverdje, Amsterdam (E).jpg",
+     "box": [
+      0,
+      0,
+      1920,
+      2080
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Lieverdje, Amsterdam (G).jpg",
+     "box": [
+      0,
+      0,
+      1920,
+      2120
+     ],
+     "keepTop": null
+    },
+    {
+     "title": "File:2024 Lieverdje, Amsterdam (F).jpg",
+     "box": [
+      0,
+      0,
+      1920,
+      2100
+     ],
+     "keepTop": null
+    }
+   ],
+   "timingsS": {
+    "trellisWall": 426.7,
+    "decimate": 4.2
+   },
+   "freeGbAtStart": 22.4,
+   "trellis": {
+    "backend": "mlx",
+    "images": [
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/lieverdje/rebuild/boy/mv-inputs/v0-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/lieverdje/rebuild/boy/mv-inputs/v1-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/lieverdje/rebuild/boy/mv-inputs/v2-rgba.png",
+     "/Users/blackmad/Code/map-recall2/.claude/worktrees/agent-a3b7165a1d9a528bb/artifacts/sculpture-reconstruction/lieverdje/rebuild/boy/mv-inputs/v3-rgba.png"
+    ],
+    "mode": "multidiffusion",
+    "sparseConvBackend": "none",
+    "loadS": 0.5,
+    "generateS": 419.4,
+    "rawVertices": 231262,
+    "rawTriangles": 501460
+   },
+   "placement": {
+    "cutKitTriangles": 576,
+    "heightM": 1.436,
+    "baseM": [
+     -0.015,
+     1.23,
+     -0.026
+    ],
+    "facingDeg": 330
+   },
+   "mesh": {
+    "rawTriangles": 102404,
+    "afterDebris": 102396,
+    "triangles": 6000,
+    "scale": 1.439,
+    "sizeM": [
+     0.55,
+     1.44,
+     0.39
+    ],
+    "watertight": true
+   },
+   "cutMask": 576
+  }
+ },
+ "sculptor": {
+  "name": "Carel Kneulman",
+  "born": 1915,
+  "died": 2008,
+  "year": 1960,
+  "publicDomain": false
+ },
+ "kit": "public/canal-drive/models/lieverdje.glb",
+ "photos": {
+  "File:2024 Lieverdje, Amsterdam (D).jpg": {
+   "title": "File:2024 Lieverdje, Amsterdam (D).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(D).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-03 11:21:21",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "79f5f883104ecd7c6a946ccb2f76c74c5c509c87",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/2024_Lieverdje%2C_Amsterdam_%28D%29.jpg/1920px-2024_Lieverdje%2C_Amsterdam_%28D%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/lieverdje/download/79f5f88310.jpg"
+  },
+  "File:2024 Lieverdje, Amsterdam (E).jpg": {
+   "title": "File:2024 Lieverdje, Amsterdam (E).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(E).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-03 11:21:30",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "edf6484178e383e2a8f7589d9d35a759980e9cf5",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/2024_Lieverdje%2C_Amsterdam_%28E%29.jpg/1920px-2024_Lieverdje%2C_Amsterdam_%28E%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/lieverdje/download/edf6484178.jpg"
+  },
+  "File:2024 Lieverdje, Amsterdam (G).jpg": {
+   "title": "File:2024 Lieverdje, Amsterdam (G).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(G).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-03 11:21:51",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "029873a3aae1dfe15dfdafb364010212e0512180",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/2024_Lieverdje%2C_Amsterdam_%28G%29.jpg/1920px-2024_Lieverdje%2C_Amsterdam_%28G%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/lieverdje/download/029873a3aa.jpg"
+  },
+  "File:2024 Lieverdje, Amsterdam (F).jpg": {
+   "title": "File:2024 Lieverdje, Amsterdam (F).jpg",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:2024_Lieverdje,_Amsterdam_(F).jpg",
+   "author": "Ceescamel",
+   "licence": "CC0",
+   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "date": "2024-02-03 11:21:41",
+   "originalSize": [
+    3468,
+    4624
+   ],
+   "sha1": "edfabebe16dc67ff704bd722bfcdc0f0e15b972f",
+   "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/2024_Lieverdje%2C_Amsterdam_%28F%29.jpg/1920px-2024_Lieverdje%2C_Amsterdam_%28F%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "file": "artifacts/sculpture-reconstruction/lieverdje/download/edfabebe16.jpg"
+  }
+ },
+ "result": {
+  "glb": "artifacts/sculpture-reconstruction/lieverdje/rebuild/lieverdje.glb",
+  "triangles": 6060,
+  "keptKitTriangles": 60,
+  "figureTriangles": 6000,
+  "droppedKitTriangles": 576
+ },
+ "generated": "2026-10-17T08:23:42.775Z",
+ "sheet": "docs/images/sculptures/lieverdje-rebuild.jpg",
+ "verdict": "better: a real hands-on-hips boy with the right front, where the kit is a block figure"
+}
