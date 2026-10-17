@@ -1515,6 +1515,17 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+- **Low-colour brick re-measure (2026-10-17, HISTORY "Tropenmuseum brick")**:
+  19 catalogue landmarks have a brick in the same tan band (Lab hue 55-100,
+  chroma < 20) and may carry a sun reading: kesbeke, kesbeke-shop,
+  brouwerij-het-ij, el-tawheed, fire-station-nico/victor/ijsbrand/weesp/
+  driemond, luther-museum, uilenburger-synagoge, posthoornkerk, oosterkerk,
+  maarten-lutherkerk, torture-museum, lloyd-hotel, de-bazel, grasweg-116,
+  obrechtkerk; re-measure with `brickAlbedo` against diffuse photos. The
+  Tropenmuseum stone #e2d6bc is also a sunlit reading (diffuse trim r/b
+  1.01-1.05). Hoofdbureau draws darker and redder than its sunlit panorama.
+  The rig's sun is less warm than real sun: sunlit low-colour brick reads pink.
+
 - **Centraal Station after the 2026-10-16 rebuild (HISTORY "Centraal Station:
   the Cuypers front…")**: reliefs, tympanum figures and statues are flat
   silhouettes; tile/mosaic fields and heraldic charges are flat tinctures;
