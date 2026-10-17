@@ -10,6 +10,7 @@
  */
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
+import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
 import {awningProblems, deBaarsjesProblems} from './deBaarsjesIntent.ts';
 import {eavesOverhangProblems, type EavesOverhangIntent} from './eavesOverhangIntent.ts';
@@ -483,6 +484,8 @@ export interface FrontIntent {
    * Horizontal brick stripes (buildingRecipe/brickStripes.ts): zones where courses of the band brick alternate with the
    * wall brick (Hembrugstraat 2-32's striped ground storey, the striped portiek bay of Hembrugstraat 100-232). Absent = byte-identical.
    */
+  /** A staircase light through the storeys on one axis of the shared grid (stairLight.ts). Absent = byte-identical. */
+  stairLight?: StairLightIntent;
   brickStripes?: BrickStripeZone[];
   /**
    * Projecting brick hoods (Jan Evertsenstraat): over every upper-storey window, or over a ladder pair as one, a ledge in
@@ -1080,6 +1083,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else problems.push(...liseneAtProblems(f, at));
       if (f.repeat) problems.push(`${at}.lisenes: not on a repeated front`);
     }
+    if (f.stairLight !== undefined) problems.push(...stairLightProblems(f.stairLight, f.storeys, frontGrid(f), !!f.repeat, at));
     if (f.brickStripes !== undefined) problems.push(...brickStripeProblems(f.brickStripes, f.palette?.band ?? intent?.palette?.band, !!f.repeat, at));
     problems.push(...windowProblems(f, at, oneOf));
     problems.push(...deBaarsjesProblems(f, intent?.palette, at));

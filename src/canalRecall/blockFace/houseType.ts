@@ -157,6 +157,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     out.lisenes = {...(rightEnd ? {leftEnd: rightEnd} : {}), ...(leftEnd ? {rightEnd: leftEnd} : {}), ...(at ? {at: at.map(k => grid - k).sort((p, q) => p - q)} : {}), ...rest};
   }
   if (f.brickStripes) out.brickStripes = f.brickStripes.map(mirrorStripeZone);
+  if (f.stairLight) out.stairLight = {...f.stairLight, axis: flipAxis(f.stairLight.axis)};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
   // Dormer indices count left to right as drawn: a mirrored front reverses them (with its dormerAt spans).
   if (f.dormerCap && f.dormers) out.dormerCap = {...f.dormerCap, dormers: f.dormerCap.dormers.map(i => f.dormers! - 1 - i).sort((p, q) => p - q)};

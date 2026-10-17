@@ -10,6 +10,7 @@
 import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, CanalhouseFacadeBlock, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {brickStripeBlocks} from './brickStripes.ts';
+import {stairLightOpenings} from './stairLight.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
@@ -507,6 +508,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       openings.push({id: `basement-b${b}`, kind: 'window', leftM: centre - w / 2, bottomM: souterrain ? round(basement * 0.3) : 0.12, widthM: w, heightM: souterrain ? round(basement * 0.58) : Math.max(0.35, basement - 0.3), trimWidthM: 0.05, ...(f.basementBars ? {verticalBars: [.2, .4, .6, .8], mullionWidthM: .025} : {verticalBars: [.5]}), frameSurface: 'trim', barSurface: 'trim'});
     }
   }
+  // `stairLight` (stairLight.ts): the staircase light on its grid axis, foot and head on the fitted storeys.
+  if (f.stairLight) { const floors = heights.reduce((a, h) => [...a, a[a.length - 1] + h], [basement]); openings.push(...stairLightOpenings(f.stairLight, axisCentres[f.stairLight.axis], floors, width)); }
   const groundBlocks = f.groundFront ? groundFrontLayout(f.groundFront, width, heights[0], openings) : undefined;
   return {openings, glazedBays, balconies, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth, shopSpans, shopGlass, warnings, shopZone, riserTopM, entrance, bayEdges, axisCentres, shopStoreys: twoStorey ? 2 : 1, ...(groundBlocks ? {groundBlocks} : {}), ...(school ? {school} : {})};
 }
