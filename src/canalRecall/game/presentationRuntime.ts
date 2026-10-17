@@ -1510,8 +1510,9 @@ export class GamePresentationRuntime {
 
       // Five stats across a 600 px card is four columns of comfortable space; the
       // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
-      // into each other. On a phone they wrap into rows of at most three.
-      const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+      // into each other. On a phone they wrap into rows of at most three,
+      // balanced: four stats are two rows of two, not three and an orphan.
+      const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
       const statRows = Math.ceil(stats.length / statsPerRow);
       const ROW_H = level >= 2 ? 42 : 48;
       blocks.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
