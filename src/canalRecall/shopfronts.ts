@@ -96,8 +96,6 @@ export function setShopfronts(data: ShopfrontExtract | null): void {
   extract = data && Array.isArray(data.kinds) && data.buildings ? data : null;
 }
 
-export const shopfrontsLoaded = () => extract !== null;
-
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 
 /**

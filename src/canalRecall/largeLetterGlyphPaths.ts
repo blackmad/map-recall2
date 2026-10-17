@@ -156,21 +156,6 @@ export function getLoadedLargeLetterFont(): OtFont | null {
   return cachedFont;
 }
 
-export function clearLargeLetterFontCache(): void {
-  cachedFont = null;
-  cachedFontUrl = null;
-}
-
-/** Advance width for layout (matches draw scale). */
-export function measureGlyphAdvance(
-  font: OtFont,
-  ch: string,
-  fontSize: number,
-): number {
-  const g = font.charToGlyph(ch);
-  return (g.advanceWidth / font.unitsPerEm) * fontSize;
-}
-
 /**
  * Arch envelope: baseline + tops follow the same sine bow with uniform height.
  * No fisheye / stem lean — faces stay coplanar on one billboard ribbon.
@@ -212,18 +197,6 @@ function warpCmd(cmd: PathCmd, env: ArchEnvelope): PathCmd {
   return out;
 }
 
-/** Flat glyph path in canvas space (y down), left at `x`, baseline at `baselineY`. */
-export function glyphPathCommands(
-  font: OtFont,
-  ch: string,
-  x: number,
-  baselineY: number,
-  fontSize: number,
-): PathCmd[] {
-  const path = font.getPath(ch, x, baselineY, fontSize);
-  return path.commands.map((c) => ({ ...c }));
-}
-
 export function warpPathCommands(cmds: PathCmd[], env: ArchEnvelope): PathCmd[] {
   return cmds.map((c) => warpCmd(c, env));
 }
@@ -251,20 +224,6 @@ export function pathCommandsToPath2D(cmds: PathCmd[]): Path2D {
     }
   }
   return p;
-}
-
-/** Build a warped Path2D for one letter (optional arch). */
-export function buildWarpedGlyphPath(
-  font: OtFont,
-  ch: string,
-  x: number,
-  baselineY: number,
-  fontSize: number,
-  env: ArchEnvelope | null,
-): Path2D {
-  let cmds = glyphPathCommands(font, ch, x, baselineY, fontSize);
-  if (env) cmds = warpPathCommands(cmds, env);
-  return pathCommandsToPath2D(cmds);
 }
 
 /** SVG path `d` for debugging / Storybook export. */

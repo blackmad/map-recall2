@@ -33,10 +33,6 @@ export function metresPerPixel(zoom: number, lat: number): number {
   return (2 * Math.PI * EARTH_RADIUS * Math.cos(lat * Math.PI / 180)) / (512 * 2 ** zoom);
 }
 
-export function zoomForMetresPerPixel(mpp: number, lat: number): number {
-  return Math.log2((2 * Math.PI * EARTH_RADIUS * Math.cos(lat * Math.PI / 180)) / (512 * mpp));
-}
-
 export interface CameraFrame {
   eye: Vec3;
   target: Vec3;

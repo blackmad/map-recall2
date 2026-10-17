@@ -1,25 +1,4 @@
-import { City, DistanceUnit } from '../types';
-
-/**
- * Finds the nearest supported city to a given [lat, lng] coordinate
- */
-export function findNearestCity(
-  userCoord: [number, number],
-  cities: City[]
-): { city: City; distanceMeters: number } {
-  let nearestCity = cities[0];
-  let minDistance = calculateHaversineDistanceMeters(userCoord, cities[0].center);
-
-  for (let i = 1; i < cities.length; i++) {
-    const d = calculateHaversineDistanceMeters(userCoord, cities[i].center);
-    if (d < minDistance) {
-      minDistance = d;
-      nearestCity = cities[i];
-    }
-  }
-
-  return { city: nearestCity, distanceMeters: minDistance };
-}
+import { DistanceUnit } from '../types';
 
 /**
  * Calculates distance between two [lat, lng] coordinates in meters using Haversine formula
