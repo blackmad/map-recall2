@@ -21,6 +21,7 @@ import { sounds } from './utils/audio';
 import confetti from 'canvas-confetti';
 
 import { GameHeader } from './components/GameHeader';
+import { canalAssetUrl, mapQuestSite } from './mapQuestSite';
 import { MapComponent } from './components/MapComponent';
 import { PinpointModeOverlay } from './components/PinpointModeOverlay';
 import { GuessNameModeOverlay } from './components/GuessNameModeOverlay';
@@ -65,11 +66,7 @@ const hasBookmarkedCoordinates = bookmarkedLatitudeParam !== null && bookmarkedL
   && bookmarkedLatitude >= -90 && bookmarkedLatitude <= 90
   && bookmarkedLongitude >= -180 && bookmarkedLongitude <= 180;
 const requestedCityId = urlParams.get('city');
-// Canal Recall is deployed to its own host, which does not ship the Map
-// Quest bundle. Builds that serve both from one origin fall back to the
-// sibling path this link used before the split.
-const canalRecallUrl = import.meta.env.VITE_CANAL_RECALL_URL
-  || `${import.meta.env.BASE_URL}canal-drive/`;
+const canalRecallUrl = mapQuestSite.ride;
 const hasUsableBookmarkedLocation = hasBookmarkedCoordinates
   && !(requestedCityId === 'my_location'
     && bookmarkedLatitude === 0
@@ -1226,7 +1223,7 @@ export default function App() {
             <div
               className="mq-setup-vista relative h-[18dvh] shrink-0 lg:h-auto lg:min-h-0 lg:flex-1"
               style={{
-                backgroundImage: `url(${import.meta.env.BASE_URL}canal-drive/assets/media/setup-backdrop.jpg)`,
+                backgroundImage: `url(${canalAssetUrl('assets/media/setup-backdrop.jpg')})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}

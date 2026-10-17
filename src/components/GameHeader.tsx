@@ -18,6 +18,8 @@ import {
   Cloud,
 } from 'lucide-react';
 import { sounds } from '../utils/audio';
+import { mapQuestSite } from '../mapQuestSite';
+import { SiteSwitch } from './SiteSwitch';
 
 interface GameHeaderProps {
   cities: City[];
@@ -396,6 +398,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <X className="w-4 h-4" />
               </button>
             </div>
+
+            <SiteSwitch links={mapQuestSite} current="quiz" id="header-site-switch" />
 
             {/* Account and cloud progress */}
             <div className="enamel-chip p-3">
