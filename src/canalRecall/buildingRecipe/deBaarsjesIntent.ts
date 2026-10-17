@@ -9,7 +9,7 @@
 import type {FrontIntent, PaletteIntent, ShopAwningIntent, WindowKind} from './intent.ts';
 
 /** Window kinds an `axisWindows` entry may name (kept in step with intent.ts WINDOWS; a type-only import keeps the cycle out). */
-export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes'];
+export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'];
 
 /** Problems with a shop awning's rigid-canopy fields (`glassBlocks`, `wallCourses`). */
 export function awningProblems(aw: ShopAwningIntent, at: string): string[] {

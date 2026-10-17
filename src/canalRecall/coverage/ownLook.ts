@@ -35,6 +35,7 @@ export const DISTRICT_LABEL: Record<string, string> = {
   bellamy: 'Bellamybuurt house types',
   'de-baarsjes': 'De Baarsjes house types',
   'indische-buurt': 'Indische Buurt house types',
+  spaarndammerbuurt: 'Spaarndammerbuurt house types',
   'nieuw-west': 'Nieuw-West building types',
   face: 'measured street faces',
 };
