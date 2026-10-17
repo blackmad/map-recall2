@@ -9,6 +9,12 @@ export default defineConfig({
   // off GITHUB_ACTIONS gave every CI build the Pages subpath, so the deploy
   // target has to say so explicitly.
   base: process.env.DEPLOY_TARGET === 'github-pages' ? '/map-recall2/' : '/',
+  build: {
+    // Generate source maps for Sentry without serving them: `hidden` emits
+    // .map files but omits the sourceMappingURL comment. The deploy workflow
+    // injects, uploads, then deletes the maps before publishing.
+    sourcemap: 'hidden',
+  },
   plugins: [react(), tailwindcss()],
   server: {
     port: 3000,
