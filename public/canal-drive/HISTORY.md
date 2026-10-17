@@ -10,6 +10,12 @@ full e2e job crashed at collection (ENOENT); it now reads the file only with
 `HAP_SHOTS`. And holding the Kinderbrug statue model (2026-10-17) took its POI
 out of the game, orphaning its card override (`osm_artwork_4370460330`);
 `test:landmark-cards` now accepts an override whose kit model is held.
+The next run showed two more: `street-chunks.spec.ts` read `chunk.instance` at
+load though chunks.json no longer holds a `chunk-bilder-*` chunk (now skipped
+when absent; `playwright test --list` collects all 986 tests), and eight new
+Boterdiep/Hoendiep block faces had no `chunkWallExposureData.ts` entry
+(regenerated from their strips; the 42 existing entries unchanged). Installs
+must re-run `scripts/look/build-chunk-wall-exposure.ts --write`.
 
 ## Rivierenbuurt (Plan Zuid, 1934): 103 pands from six types (2026-10-17)
 
