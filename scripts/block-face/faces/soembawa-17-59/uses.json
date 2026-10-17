@@ -1,0 +1,433 @@
+{
+ "street": "Soembawastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:40:28.815Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012136795",
+   "addresses": [
+    "Soembawastraat 17A",
+    "Soembawastraat 17C",
+    "Soembawastraat 17E",
+    "Soembawastraat 17G",
+    "Soembawastraat 17H",
+    "Soembawastraat 17B",
+    "Soembawastraat 17D",
+    "Soembawastraat 17K",
+    "Soembawastraat 17F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000813053"
+    },
+    {
+     "address": "Soembawastraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000813055"
+    },
+    {
+     "address": "Soembawastraat 17E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813057"
+    },
+    {
+     "address": "Soembawastraat 17G",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000813059"
+    },
+    {
+     "address": "Soembawastraat 17H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000813060"
+    },
+    {
+     "address": "Soembawastraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000813054"
+    },
+    {
+     "address": "Soembawastraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000813056"
+    },
+    {
+     "address": "Soembawastraat 17K",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000958504"
+    },
+    {
+     "address": "Soembawastraat 17F",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000813058"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123086",
+   "addresses": [
+    "Soembawastraat 19B",
+    "Soembawastraat 19D",
+    "Soembawastraat 19F",
+    "Soembawastraat 19H",
+    "Soembawastraat 19K",
+    "Soembawastraat 19E",
+    "Soembawastraat 19G",
+    "Soembawastraat 19A",
+    "Soembawastraat 19C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813065"
+    },
+    {
+     "address": "Soembawastraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813067"
+    },
+    {
+     "address": "Soembawastraat 19F",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813069"
+    },
+    {
+     "address": "Soembawastraat 19H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000813071"
+    },
+    {
+     "address": "Soembawastraat 19K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000813072"
+    },
+    {
+     "address": "Soembawastraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813068"
+    },
+    {
+     "address": "Soembawastraat 19G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813070"
+    },
+    {
+     "address": "Soembawastraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000813064"
+    },
+    {
+     "address": "Soembawastraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813066"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138643",
+   "addresses": [
+    "Soembawastraat 21A",
+    "Soembawastraat 21B",
+    "Soembawastraat 21D",
+    "Soembawastraat 21F",
+    "Soembawastraat 21H",
+    "Soembawastraat 21K",
+    "Soembawastraat 21C",
+    "Soembawastraat 21G",
+    "Soembawastraat 21E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000813084"
+    },
+    {
+     "address": "Soembawastraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813085"
+    },
+    {
+     "address": "Soembawastraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813087"
+    },
+    {
+     "address": "Soembawastraat 21F",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813089"
+    },
+    {
+     "address": "Soembawastraat 21H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000813091"
+    },
+    {
+     "address": "Soembawastraat 21K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000813092"
+    },
+    {
+     "address": "Soembawastraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813086"
+    },
+    {
+     "address": "Soembawastraat 21G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813090"
+    },
+    {
+     "address": "Soembawastraat 21E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813088"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086289",
+   "addresses": [
+    "Soembawastraat 23A",
+    "Soembawastraat 23B",
+    "Soembawastraat 23D",
+    "Soembawastraat 23F",
+    "Soembawastraat 23H",
+    "Soembawastraat 23K",
+    "Soembawastraat 23C",
+    "Soembawastraat 23E",
+    "Soembawastraat 23G",
+    "Soembawastraat 25A",
+    "Soembawastraat 25B",
+    "Soembawastraat 25C",
+    "Soembawastraat 25D",
+    "Soembawastraat 25E",
+    "Soembawastraat 25F",
+    "Soembawastraat 25G",
+    "Soembawastraat 25H",
+    "Soembawastraat 25K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000813099"
+    },
+    {
+     "address": "Soembawastraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813100"
+    },
+    {
+     "address": "Soembawastraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813102"
+    },
+    {
+     "address": "Soembawastraat 23F",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813112"
+    },
+    {
+     "address": "Soembawastraat 23H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000813114"
+    },
+    {
+     "address": "Soembawastraat 23K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000813115"
+    },
+    {
+     "address": "Soembawastraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813120"
+    },
+    {
+     "address": "Soembawastraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000813121"
+    },
+    {
+     "address": "Soembawastraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813122"
+    },
+    {
+     "address": "Soembawastraat 25D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000813123"
+    },
+    {
+     "address": "Soembawastraat 25E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813124"
+    },
+    {
+     "address": "Soembawastraat 25F",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000813125"
+    },
+    {
+     "address": "Soembawastraat 25G",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000813126"
+    },
+    {
+     "address": "Soembawastraat 25H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000813127"
+    },
+    {
+     "address": "Soembawastraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813101"
+    },
+    {
+     "address": "Soembawastraat 25K",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000813128"
+    },
+    {
+     "address": "Soembawastraat 23E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813111"
+    },
+    {
+     "address": "Soembawastraat 23G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000813113"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062019",
+   "addresses": [
+    "Soembawastraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000813181"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087505",
+   "addresses": [
+    "Soembawastraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000813186"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145814",
+   "addresses": [
+    "Soembawastraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 45-H",
+     "use": "industriefunctie",
+     "areaM2": 227,
+     "bagId": "0363010000813191"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140614",
+   "addresses": [
+    "Soembawastraat 47"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122904",
+   "addresses": [
+    "Soembawastraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soembawastraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000813212"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

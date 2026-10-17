@@ -1,0 +1,316 @@
+{
+ "street": "Niasstraat",
+ "seed": "0363100012068972",
+ "members": [
+  "0363100012095325",
+  "0363100012068972",
+  "0363100012095922",
+  "0363100012122695",
+  "0363100012073326"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012095325 (face continues: 063372 067077)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012073612 26.9 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012070098",
+   "reason": "frontage 32.2 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012084282",
+   "reason": "sightline to Niasstraat crosses 0363100012121865"
+  },
+  {
+   "pandId": "0363100012093121",
+   "reason": "frontage 65.5 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012106412",
+   "reason": "frontage 99.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012062819",
+   "reason": "sightline to Niasstraat crosses 0363100012077692"
+  },
+  {
+   "pandId": "0363100012067440",
+   "reason": "frontage 58.9 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012070662",
+   "reason": "frontage 56.3 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012073196",
+   "reason": "frontage 76.2 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012074712",
+   "reason": "frontage 45.5 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012075561",
+   "reason": "frontage 87.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012077529",
+   "reason": "frontage 67.7 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012077692",
+   "reason": "sightline to Niasstraat crosses 0363100012117117"
+  },
+  {
+   "pandId": "0363100012078200",
+   "reason": "frontage 40.2 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012082819",
+   "reason": "frontage 69.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012082972",
+   "reason": "frontage 68.2 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012083492",
+   "reason": "frontage 35.1 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012083953",
+   "reason": "frontage 64.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012090942",
+   "reason": "frontage 69.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012092612",
+   "reason": "frontage 101.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012092915",
+   "reason": "sightline to Niasstraat crosses 0363100012073612"
+  },
+  {
+   "pandId": "0363100012093374",
+   "reason": "frontage 45.0 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012093577",
+   "reason": "frontage 57.3 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012094616",
+   "reason": "frontage 41.1 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012095980",
+   "reason": "frontage 32.1 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012099162",
+   "reason": "frontage 71.0 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012100172",
+   "reason": "frontage 100.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012100639",
+   "reason": "sightline to Niasstraat crosses 0363100012107819"
+  },
+  {
+   "pandId": "0363100012103629",
+   "reason": "frontage 103.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012104063",
+   "reason": "frontage 31.9 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012105367",
+   "reason": "frontage 94.6 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012107740",
+   "reason": "frontage 58.7 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012108442",
+   "reason": "sightline to Niasstraat crosses 0363100012100639"
+  },
+  {
+   "pandId": "0363100012113567",
+   "reason": "frontage 34.1 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012114783",
+   "reason": "frontage 38.3 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012116980",
+   "reason": "frontage 63.7 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012120831",
+   "reason": "frontage 99.5 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012121865",
+   "reason": "sightline to Niasstraat crosses 0363100012149087"
+  },
+  {
+   "pandId": "0363100012139109",
+   "reason": "frontage 50.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012120886",
+   "reason": "frontage 75.7 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012123464",
+   "reason": "frontage 52.9 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012123849",
+   "reason": "frontage 56.9 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012125128",
+   "reason": "frontage 103.9 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012126596",
+   "reason": "sightline to Niasstraat crosses 0363100012075602"
+  },
+  {
+   "pandId": "0363100012126852",
+   "reason": "frontage 82.2 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012129829",
+   "reason": "frontage 51.2 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012131909",
+   "reason": "sightline to Niasstraat crosses 0363100012077692"
+  },
+  {
+   "pandId": "0363100012135404",
+   "reason": "sightline to Niasstraat crosses 0363100012063372"
+  },
+  {
+   "pandId": "0363100012137316",
+   "reason": "sightline to Niasstraat crosses 0363100012073326"
+  },
+  {
+   "pandId": "0363100012137717",
+   "reason": "frontage 38.1 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012144300",
+   "reason": "frontage 84.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012147131",
+   "reason": "frontage 103.8 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012147474",
+   "reason": "frontage 40.6 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012148266",
+   "reason": "frontage 47.0 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012241861",
+   "reason": "sightline to Niasstraat crosses 0363100012068972"
+  },
+  {
+   "pandId": "0363100012243265",
+   "reason": "frontage 92.6 m from Niasstraat"
+  },
+  {
+   "pandId": "0363100012075602",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117117",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161696",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185380",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012095325",
+   "alongM": -6.41,
+   "widthM": 6.41,
+   "eavesM": 15.51,
+   "roofMaxM": 15.52,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012068972",
+   "alongM": 0,
+   "widthM": 6.41,
+   "eavesM": 15.45,
+   "roofMaxM": 15.5,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012095922",
+   "alongM": 6.41,
+   "widthM": 6.41,
+   "eavesM": 15.41,
+   "roofMaxM": 15.42,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012122695",
+   "alongM": 12.82,
+   "widthM": 6.41,
+   "eavesM": 15.42,
+   "roofMaxM": 15.45,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073326",
+   "alongM": 18.02,
+   "widthM": 3.99,
+   "eavesM": 15.41,
+   "roofMaxM": 16.93,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  }
+ ]
+}

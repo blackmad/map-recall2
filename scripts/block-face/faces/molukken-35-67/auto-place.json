@@ -1,0 +1,1635 @@
+{
+ "face": "molukken-35-67",
+ "street": "Molukkenstraat",
+ "library": "indische-buurt",
+ "stripDate": "2019-12-18",
+ "seconds": 11.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "molukken-35-67-r1",
+   "pands": [
+    "0363100012080763",
+    "0363100012131182",
+    "0363100012111959",
+    "0363100012148990",
+    "0363100012080878",
+    "0363100012107515",
+    "0363100012086183",
+    "0363100012149152",
+    "0363100012092896",
+    "0363100012146291"
+   ],
+   "passed": false,
+   "triangles": 11837
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012080763",
+   "address": "Molukkenstraat 35",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776259",
+    "wallRaw": "#534740",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 227,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 5.43,
+      "topWidthM": 0.1,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#7c7a79",
+      "fascia": true,
+      "name": "Kapsalon TND",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2019-12-18 span 0-246"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#776259",
+     "evidence": "strip 2019-12-18 span 0-246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Molukkenstraat 35: the stair-light pair and the paired house doors under it straddle the party wall with 37, on the right (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012080763",
+    "ncc": 0.65,
+    "nccRaw": 0.65,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#705d54",
+     "model": "#8e756a",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.676
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.65,
+    "indisch-1925-stair-pair~m": 0.234
+   }
+  },
+  {
+   "pandId": "0363100012131182",
+   "address": "Molukkenstraat 37",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70574c",
+    "wallRaw": "#53463f",
+    "skyline": {
+     "eavesM": 14.15,
+     "eavesRow": 231,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 0.97,
+       "centre": 0.09
+      },
+      {
+       "atM": 7.2,
+       "widthM": 1.18,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#473c37",
+      "fascia": true,
+      "name": "Fysiotherapie Molukkenstraat",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (kantoorfunctie, healthcare=physiotherapist); fascia colour measured on the strip 2019-12-18 span 246-492"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#70574c",
+     "evidence": "strip 2019-12-18 span 246-492: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Molukkenstraat 37: the stair-light pair and the paired house doors under it straddle the party wall with 35, on the left (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012131182",
+    "ncc": 0.618,
+    "nccRaw": 0.618,
+    "shiftM": [
+     0.3,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.38 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#71584d",
+     "model": "#896b5d",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.516
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.618,
+    "indisch-1925-stair-pair": 0.248
+   }
+  },
+  {
+   "pandId": "0363100012111959",
+   "address": "Molukkenstraat 39",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776058",
+    "wallRaw": "#50433d",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 3.8,
+      "topWidthM": 0.45,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.22,
+       "widthM": 1.1,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#443a36",
+      "fascia": true,
+      "name": "Ramazan",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2019-12-18 span 491-737"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#776058",
+     "evidence": "strip 2019-12-18 span 491-737: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Molukkenstraat 39: the stair-light pair and the paired house doors under it straddle the party wall with 41, on the right (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012111959",
+    "ncc": 0.636,
+    "nccRaw": 0.636,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.37 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#6f5a52",
+     "model": "#8e7369",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.479
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.636,
+    "indisch-1925-stair-pair~m": 0.217
+   }
+  },
+  {
+   "pandId": "0363100012148990",
+   "address": "Molukkenstraat 41",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705b52",
+    "wallRaw": "#51453e",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 232,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 5.55,
+      "topWidthM": 0.05,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.95,
+       "widthM": 0.9,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#373733",
+      "fascia": true,
+      "name": "Stomerij SuperNette",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=laundry); fascia colour measured on the strip 2019-12-18 span 737-983"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#705b52",
+     "evidence": "strip 2019-12-18 span 737-983: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Molukkenstraat 41: the stair-light pair and the paired house doors under it straddle the party wall with 39, on the left (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012148990",
+    "ncc": 0.628,
+    "nccRaw": 0.628,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#705b52",
+     "model": "#886f64",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.592
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.628,
+    "indisch-1925-stair-pair": 0.247
+   }
+  },
+  {
+   "pandId": "0363100012080878",
+   "address": "Molukkenstraat 43",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786259",
+    "wallRaw": "#52453f",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 179,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.95,
+      "riseM": 2.98,
+      "topWidthM": 0.57,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.17,
+       "widthM": 1.1,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#4a3f38",
+      "fascia": true,
+      "name": "Kapsalon The Friends",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2019-12-18 span 982-1228"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#786259",
+     "evidence": "strip 2019-12-18 span 982-1228: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Molukkenstraat 43: the stair-light pair and the paired house doors under it straddle the party wall with 45, on the right (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012080878",
+    "ncc": 0.592,
+    "nccRaw": 0.592,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#725d56",
+     "model": "#8f756a",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.657
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.592,
+    "indisch-1925-stair-pair~m": 0.281
+   }
+  },
+  {
+   "pandId": "0363100012107515",
+   "address": "Molukkenstraat 45",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776259",
+    "wallRaw": "#51453f",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 213,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 4,
+      "topWidthM": 0.3,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#473e3a",
+      "fascia": true,
+      "name": "Pampering Myself",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2019-12-18 span 1228-1474"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#776259",
+     "evidence": "strip 2019-12-18 span 1228-1474: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Molukkenstraat 45: the stair-light pair and the paired house doors under it straddle the party wall with 43, on the left (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012107515",
+    "ncc": 0.666,
+    "nccRaw": 0.666,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#745e58",
+     "model": "#8e756a",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.684
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.666,
+    "indisch-1925-stair-pair": 0.282
+   }
+  },
+  {
+   "pandId": "0363100012086183",
+   "address": "Molukkenstraat 47",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79645b",
+    "wallRaw": "#554946",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 169,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 4.23,
+      "topWidthM": 1.9,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#483c37",
+      "fascia": true,
+      "name": "Sala Thai Wellness",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (industriefunctie, shop=massage); fascia colour measured on the strip 2019-12-18 span 1474-1720"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#79645b",
+     "evidence": "strip 2019-12-18 span 1474-1720: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Molukkenstraat 47: the stair-light pair and the paired house doors under it straddle the party wall with 49, on the right (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012086183",
+    "ncc": 0.566,
+    "nccRaw": 0.566,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo tall",
+     "columns none vs photo 3"
+    ],
+    "wall": {
+     "photo": "#78645d",
+     "model": "#90776c",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.621
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.566,
+    "indisch-1925-stair-pair~m": 0.245
+   }
+  },
+  {
+   "pandId": "0363100012149152",
+   "address": "Molukkenstraat 49",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534641",
+    "wallRaw": "#524844",
+    "skyline": {
+     "eavesM": 18.32,
+     "eavesRow": 64,
+     "confidence": 0.42,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.6,
+      "topWidthM": 0.4,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#4a403a",
+      "fascia": true,
+      "name": "Kleine Wasjes Grote Wasjes",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=laundry); fascia colour measured on the strip 2019-12-18 span 1719-1965"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#534641",
+     "evidence": "strip 2019-12-18 span 1719-1965: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Molukkenstraat 49: the stair-light pair and the paired house doors under it straddle the party wall with 47, on the left (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012149152",
+    "ncc": 0.574,
+    "nccRaw": 0.574,
+    "shiftM": [
+     -0.25,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#51433f",
+     "model": "#6d5c55",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.615
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.574,
+    "indisch-1925-stair-pair": 0.244
+   }
+  },
+  {
+   "pandId": "0363100012092896",
+   "address": "Molukkenstraat 51",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c3f38",
+    "wallRaw": "#4e413b",
+    "skyline": {
+     "eavesM": 18.38,
+     "eavesRow": 62,
+     "confidence": 0.42,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.55,
+      "topWidthM": 0.57,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.17,
+       "widthM": 1.2,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#443a35",
+      "fascia": true,
+      "name": "Super Toko Nawied",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2019-12-18 span 1965-2211"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4c3f38",
+     "evidence": "strip 2019-12-18 span 1965-2211: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Molukkenstraat 51: the stair-light pair and the paired house doors under it straddle the party wall with 53, on the right (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012092896",
+    "ncc": 0.534,
+    "nccRaw": 0.534,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#4f413b",
+     "model": "#68564c",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.575
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.534,
+    "indisch-1925-stair-pair~m": 0.176
+   }
+  },
+  {
+   "pandId": "0363100012146291",
+   "address": "Molukkenstraat 53",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5349",
+    "wallRaw": "#4d403a",
+    "skyline": {
+     "eavesM": 14.45,
+     "eavesRow": 219,
+     "confidence": 0.47,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 5.48,
+      "topWidthM": 1.2,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "ground": {
+     "shopfront": {
+      "colour": "#443934",
+      "fascia": true,
+      "name": "Chantilly",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2019-12-18 span 2210-2456"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#6d5349",
+     "evidence": "strip 2019-12-18 span 2210-2456: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Molukkenstraat 53: the stair-light pair and the paired house doors under it straddle the party wall with 51, on the left (strip 2019-12-18); the door reading took a shop door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012146291",
+    "ncc": 0.531,
+    "nccRaw": 0.531,
+    "shiftM": [
+     -0.4,
+     -0.35
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38"
+    ],
+    "wall": {
+     "photo": "#71574e",
+     "model": "#87675a",
+     "dL": 0.067
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.529
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.531,
+    "indisch-1925-stair-pair": 0.188
+   }
+  },
+  {
+   "pandId": "0363100012100331",
+   "address": "Molukkenstraat 55",
+   "builtYear": 1916,
+   "widthM": 6.14,
+   "eavesM": 12.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#50423c",
+    "wallRaw": "#51443e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 797,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.27,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.27 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.27,
+       "light": 0.48
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.22,
+       "widthM": 1.13,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.75,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1925-stair-pair: built 1916, type 1924-1926; strip shows balconies (dark open axis 1 m at 0.27 (light 0.48): no brick spandrel between the storeys))",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0,
+    "veto": [
+     "built 1916, type 1924-1926",
+     "strip shows balconies (dark open axis 1 m at 0.27 (light 0.48): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.38 m = 4 storeys of 3.1 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.33 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012121776",
+   "address": "Molukkenstraat 57",
+   "builtYear": 1916,
+   "widthM": 6.14,
+   "eavesM": 12.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#54443e",
+    "wallRaw": "#54453f",
+    "skyline": {
+     "eavesM": 17.93,
+     "eavesRow": 80,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 2,
+      "topWidthM": 0.25,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.67,
+     "balconies": true,
+     "why": "bay-less open axis 1 m at 0.66 (light 0.56): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.66,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.15,
+       "centre": 0.68
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1.6,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1925-stair-pair: built 1916, type 1924-1926; strip shows balconies (bay-less open axis 1 m at 0.66 (light 0.56): no brick spandrel between the storeys))",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0,
+    "veto": [
+     "built 1916, type 1924-1926",
+     "strip shows balconies (bay-less open axis 1 m at 0.66 (light 0.56): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.41 m = 4 storeys of 3.1 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.29 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062224",
+   "address": "Molukkenstraat 59",
+   "builtYear": 1916,
+   "widthM": 5.55,
+   "eavesM": 12.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79625b",
+    "wallRaw": "#524743",
+    "skyline": {
+     "eavesM": 17.52,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.43,
+      "topWidthM": 0.3,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.4 m at 0.33 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.4,
+       "centre": 0.33,
+       "light": 0.4
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.15,
+       "widthM": 1.55,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1925-stair-pair: built 1916, type 1924-1926; strip shows balconies (dark open axis 1.4 m at 0.33 (light 0.4): no brick spandrel between the storeys))",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0,
+    "veto": [
+     "built 1916, type 1924-1926",
+     "strip shows balconies (dark open axis 1.4 m at 0.33 (light 0.4): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.45 m = 4 storeys of 3.11 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.47 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.02 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136396",
+   "address": "Molukkenstraat 61",
+   "builtYear": 1916,
+   "widthM": 5.55,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c3d37",
+    "wallRaw": "#4f4541",
+    "skyline": {
+     "eavesM": 18.73,
+     "eavesRow": 48,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.2,
+      "topWidthM": 0.82,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.4,
+       "widthM": 1.77,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.32,
+       "widthM": 0.95,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1925-stair-pair: built 1916, type 1924-1926)",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0,
+    "veto": [
+     "built 1916, type 1924-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.78 m = 4 storeys of 3.94 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107862",
+   "address": "Molukkenstraat 63",
+   "builtYear": 1916,
+   "widthM": 5.55,
+   "eavesM": 15.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e3c36",
+    "wallRaw": "#4e423f",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 187,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 4.63,
+      "topWidthM": 0.2,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.5,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1925-stair-pair: built 1916, type 1924-1926)",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0,
+    "veto": [
+     "built 1916, type 1924-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.75 m = 4 storeys of 3.94 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.16 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.004 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124634",
+   "address": "Molukkenstraat 65",
+   "builtYear": 1916,
+   "widthM": 5.44,
+   "eavesM": 15.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a3d37",
+    "wallRaw": "#4d4341",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 206,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 5.15,
+      "topWidthM": 0.2,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.97,
+       "widthM": 1.7,
+       "centre": 0.2
+      },
+      {
+       "atM": 9.38,
+       "widthM": 1.15,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1925-stair-pair: built 1916, type 1924-1926)",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0,
+    "veto": [
+     "built 1916, type 1924-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.75 m = 4 storeys of 3.94 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.004 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

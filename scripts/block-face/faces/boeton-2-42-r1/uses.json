@@ -1,0 +1,105 @@
+{
+ "street": "Boetonstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155108",
+   "addresses": [
+    "Boetonstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000590001"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130694",
+   "addresses": [
+    "Boetonstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589991"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110184",
+   "addresses": [
+    "Boetonstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589983"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087501",
+   "addresses": [
+    "Boetonstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589979"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088267",
+   "addresses": [
+    "Boetonstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000589971"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093961",
+   "addresses": [
+    "Boetonstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boetonstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000589963"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

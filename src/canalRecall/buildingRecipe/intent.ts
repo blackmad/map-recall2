@@ -268,6 +268,13 @@ export interface FrontIntent {
    */
   storeyRibbons?: Record<string, {from: number; to: number; pier?: number}>;
   /**
+   * Window width per storey, in metres (Indische Buurt 1925-26 rows, Molukkenstraat 7-29: three 0.75 m square attic
+   * lights over three 1.17 m windows, on the same axes): each window of the listed storey keeps its axis centre and
+   * takes this width instead of the grid's. Key = storey index from the ground, or "last". Only on the shared axes (not
+   * with `storeyRibbons` or `storeyBayWidths` for that storey). Absent = byte-identical.
+   */
+  storeyWindowWidths?: Record<string, number>;
+  /**
    * Gable/crown that covers only part of the front: `{from, to}` as fractions of the front width from the viewer's
    * left (`{from: 0.4, to: 1}` = the right 60 %). Gable windows, the hoist and the crown cap follow it. Default: the whole front.
    */
@@ -445,9 +452,11 @@ export interface FrontIntent {
    * white-painted over the whole width): each listed 0-based storey (the ground only without a shopfront/ground front) is
    * laid as a 4 cm facing from its floor to the next floor (the top storey to 2 cm under the eaves), cut around the
    * openings, in the wall material and `colour`, exported as a measured tint (the paint is drawn as measured, not lifted
-   * into the city brick range). Absent = byte-identical.
+   * into the city brick range). Absent = byte-identical. `from` (m, 0.05..2): the paint starts that far over each listed
+   * storey's floor, brick below it (Gorontalostraat 25-45, 1926: the white top storey begins at its window sills, 0.45 m
+   * over the floor; absent = from the floor).
    */
-  paintedStoreys?: {storeys: number[]; colour: string};
+  paintedStoreys?: {storeys: number[]; colour: string; from?: number};
   /**
    * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
@@ -552,6 +561,15 @@ export interface FrontIntent {
   gridAt?: {from: number; to: number};
   /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
   dormerAt?: {from: number; to: number}[];
+  /**
+   * Measured dormer size and place on the slope: the sill `sill` (m, 0.05..2) over the eaves line, the dormer's height `rise`
+   * (0.6..2.5) and its front's `setback` (0.05..2) behind the facade, instead of the style default (sill 0.05 m, setback
+   * 0.35 m, height 1.45 m; flat 1.8 m). On a low-pitched roof the default sill sits under the roof plane at the setback and
+   * the roof cuts through the dormer frame; a raised sill needs the front set back to where the slope reaches it
+   * (Gorontalostraat 25-45: dormers 13.7-15.2 m over a 12.7 m eaves; Molukkenstraat 35-53: 13.05-13.9 m over 12.8 m).
+   * Not on a mansard. Absent = byte-identical.
+   */
+  dormerSize?: {sill: number; rise: number; setback: number};
   /** A hoist cap on some dormers (`DormerCapIntent`). */
   dormerCap?: DormerCapIntent;
 }
@@ -796,7 +814,7 @@ export interface LargeWallIntent {
    * Group colours when they differ from the house palette (`brick` = this group's wall, `glass` = its glazing, `arch` = the
    * brick arch rings over arched openings, default a shade darker than the wall).
    */
-  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string};
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone' | 'glass'>> & {arch?: string; /** the mesh plinth panel under a layered curtain wall (`ground: "mesh-plinth"`), a matte panel in this colour instead of the door slot (the Rietveld building's white rendered plinth) */ plinth?: string};
   /**
    * Measured window proportions (`measure.ts` from the rectified photo; replaces the `windows` preset's size): `w` window
    * width as a fraction of the bay, `h` height as a fraction of the storey, `sill` sill height as a fraction of the storey.
@@ -870,6 +888,39 @@ export interface LargeWallIntent {
   lantern?: boolean;
   /** Perforated-brick screen (car parks): a concrete lattice of posts and rails over the wall, glass-block perforations in one bay of three; brick-bay-grid only. */
   screen?: boolean;
+  /**
+   * Layered `curtain-wall` with opaque spandrel panels (the Rietveld building, 1967: every storey is a 2 m vision band
+   * between frosted panels over the floor slab and under the ceiling): in every storey above the ground, a panel `sill`
+   * of the storey tall over its floor line and one `head` of the storey under the next floor line (fractions of an upper
+   * storey; the top storey's head panel runs up to the eaves), in `colour` (measured from the crop; default the group's
+   * frame colour). The grid gains transoms at the panel edges. Absent: the plain grid, byte-identical.
+   */
+  spandrels?: {sill?: number; head?: number; colour?: string};
+  /**
+   * The ground storey's height as a fraction of an upper storey (0.3..2.5), when the photo shows it differs from the
+   * ground system's default (a low raised plinth under the Rietveld building's curtain wall: 1.8 m under 4.2 m floors).
+   */
+  groundFactor?: number;
+  /**
+   * The 3DBAG shell (1-based, in facts order) whose surfaces `wallSurfaces` names. A pand of two separate solids (the 2006
+   * Rietveld Academie: the tower and the low block) numbers each shell's wall surfaces from 1, so a bare index claims a
+   * surface in every shell. Absent: every shell, as before.
+   */
+  shell?: number;
+  /**
+   * Openings in only some bays of some storeys: on each entry's `storeys` (1 = first floor) only the listed `bays` (of
+   * `baysPerStorey`, from the viewer's left on the widest panel) keep the storey's windows; the rest of the storey is plain
+   * wall. The 2006 Rietveld Academie tower: ribbon windows across the middle 16 m of a 40 m dimpled-metal front on three
+   * floors, blank metal between. Absent: every bay, byte-identical.
+   */
+  openBays?: {storeys: number[]; bays: number[]}[];
+  /**
+   * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
+   * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving
+   * the slab edges in the wall colour), in `colour`; bays with an opening are left open (the window shows). The 2006
+   * Rietveld Academie low block: white expanded-metal panels over its upper storey between white slab edges. Layered kit only.
+   */
+  meshScreen?: {storeys: number[]; colour: string; from?: number; to?: number; joint?: number};
   /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
@@ -1078,6 +1129,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (!r || typeof r !== 'object' || Object.keys(r).some(x => x !== 'from' && x !== 'to' && x !== 'pier') || !(typeof r.from === 'number' && typeof r.to === 'number' && r.from >= 0 && r.to <= 1 && r.to - r.from >= 0.2)) problems.push(`${at}.storeyRibbons.${k}: {from, to} shares of the front, 0 <= from, to <= 1, at least 0.2 apart`);
       else if (r.pier !== undefined && !(typeof r.pier === 'number' && r.pier >= 0.02 && r.pier <= 1)) problems.push(`${at}.storeyRibbons.${k}.pier: metres between windows, 0.02-1`);
       else if (f.storeyAxes?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyRibbons.${k}: not together with storeyAxes or storeyBayWidths for the same storey`);
+    }
+    for (const [k, v] of Object.entries(f.storeyWindowWidths ?? {})) {
+      const s = Number(k);
+      if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyWindowWidths.${k}: key must be a storey index or "last"`);
+      else if (!(typeof v === 'number' && v >= 0.3 && v <= 2.5)) problems.push(`${at}.storeyWindowWidths.${k}: a window width in metres, 0.3-2.5`);
+      else if (f.storeyRibbons?.[k] || f.storeyBayWidths?.[k]) problems.push(`${at}.storeyWindowWidths.${k}: only on the shared axes (not with storeyRibbons or storeyBayWidths for the same storey)`);
     }
     for (const [k, v] of Object.entries(f.storeyBayWidths ?? {})) {
       const s = k === 'last' ? f.storeys - 1 : Number(k), per = Array.isArray(f.bays) ? f.bays[s] : f.bays;
@@ -1304,8 +1361,9 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
 
 /** Problems with `paintedStoreys` (one or more storeys painted in a second colour). */
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
-  const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown} | undefined;
-  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour}`];
+  const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
+  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?}`];
+  if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 2)) p.push(`${at}.paintedStoreys.from: 0.05..2 m over the storey floor`);
   const l = ps.storeys as number[];
   if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);
   else if (l.includes(0) && (f.shopfront || f.groundFront)) p.push(`${at}.paintedStoreys.storeys: the ground storey holds a shop/ground front; paint the upper storeys`);
@@ -1438,6 +1496,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     const list = Array.isArray(f.dormerAt) ? f.dormerAt : [];
     if (list.length !== (f.dormers ?? 0)) problems.push(`${at}.dormerAt: one span per dormer (dormers ${f.dormers ?? 0})`);
     list.forEach((d, i) => { if (!d || !(d.from >= 0 && d.to <= 1 && d.to - d.from >= 0.1 && (i === 0 || d.from >= list[i - 1].to))) problems.push(`${at}.dormerAt[${i}]: {from, to} ascending, non-overlapping fractions of the front within 0..1, at least 0.1 wide`); });
+  }
+  if (f.dormerSize !== undefined) {
+    const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};
+    if (!f.dormers) problems.push(`${at}.dormerSize: only with dormers`);
+    else if (f.roofFront === 'mansard') problems.push(`${at}.dormerSize: not on a mansard (its dormers stand on the roof face)`);
+    else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['sill', 'rise', 'setback'].includes(k)) || !(typeof z.sill === 'number' && z.sill >= 0.05 && z.sill <= 2) || !(typeof z.rise === 'number' && z.rise >= 0.6 && z.rise <= 2.5) || !(typeof z.setback === 'number' && z.setback >= 0.05 && z.setback <= 2)) problems.push(`${at}.dormerSize: {sill 0.05..2 m over the eaves, rise (dormer height) 0.6..2.5 m, setback 0.05..2 m behind the facade}`);
   }
   return problems;
 }

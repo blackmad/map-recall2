@@ -1,0 +1,229 @@
+{
+ "buurt": "makassarpleinbuurt",
+ "library": "indische-buurt",
+ "generatedAt": "2026-10-17T08:49:05.474Z",
+ "seconds": 11.68,
+ "totals": {
+  "faces": 6,
+  "pands": 69,
+  "placed": 44
+ },
+ "faces": [
+  {
+   "face": "boeton-2-42",
+   "street": "Boetonstraat",
+   "pands": 15,
+   "placed": 6,
+   "held": 9,
+   "runs": [
+    {
+     "face": "boeton-2-42-r1",
+     "pands": [
+      "0363100012155108",
+      "0363100012130694",
+      "0363100012110184",
+      "0363100012087501",
+      "0363100012088267",
+      "0363100012093961"
+     ]
+    }
+   ],
+   "seconds": 3.43,
+   "byType": {
+    "indisch-1926-attic-lights": 6
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "gorontalo-25-47",
+   "street": "Gorontalostraat",
+   "pands": 12,
+   "placed": 10,
+   "held": 2,
+   "runs": [
+    {
+     "face": "gorontalo-25-47-r1",
+     "pands": [
+      "0363100012131909",
+      "0363100012062819",
+      "0363100012083492",
+      "0363100012094616",
+      "0363100012148266",
+      "0363100012123464",
+      "0363100012067440"
+     ],
+     "passed": false,
+     "triangles": 8529
+    },
+    {
+     "face": "gorontalo-25-47-r2",
+     "pands": [
+      "0363100012099162",
+      "0363100012124861",
+      "0363100012089355"
+     ],
+     "passed": false,
+     "triangles": 3674
+    }
+   ],
+   "seconds": 45.97,
+   "byType": {
+    "indisch-1926-white-attic": 10
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "molukken-35-67",
+   "street": "Molukkenstraat",
+   "pands": 16,
+   "placed": 10,
+   "held": 6,
+   "runs": [
+    {
+     "face": "molukken-35-67-r1",
+     "pands": [
+      "0363100012080763",
+      "0363100012131182",
+      "0363100012111959",
+      "0363100012148990",
+      "0363100012080878",
+      "0363100012107515",
+      "0363100012086183",
+      "0363100012149152",
+      "0363100012092896",
+      "0363100012146291"
+     ],
+     "passed": false,
+     "triangles": 11837
+    }
+   ],
+   "seconds": 11.68,
+   "byType": {
+    "indisch-1925-stair-pair": 10
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "molukken-7-29",
+   "street": "Molukkenstraat",
+   "pands": 12,
+   "placed": 8,
+   "held": 4,
+   "runs": [
+    {
+     "face": "molukken-7-29-r1",
+     "pands": [
+      "0363100012147120",
+      "0363100012106655",
+      "0363100012136784",
+      "0363100012131890"
+     ],
+     "passed": true,
+     "triangles": 5954
+    },
+    {
+     "face": "molukken-7-29-r2",
+     "pands": [
+      "0363100012148852",
+      "0363100012088701",
+      "0363100012094377",
+      "0363100012108941"
+     ],
+     "passed": false,
+     "triangles": 5999
+    }
+   ],
+   "seconds": 23.49,
+   "byType": {
+    "indisch-1926-attic-lights": 8
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 4,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "nias-1-13",
+   "street": "Niasstraat",
+   "pands": 7,
+   "placed": 6,
+   "held": 1,
+   "runs": [
+    {
+     "face": "nias-1-13-r1",
+     "pands": [
+      "0363100012102866",
+      "0363100012110430",
+      "0363100012122437",
+      "0363100012131529",
+      "0363100012079465",
+      "0363100012125631"
+     ],
+     "passed": true,
+     "triangles": 8519
+    }
+   ],
+   "seconds": 31.53,
+   "byType": {
+    "indisch-1926-attic-lights": 6
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 1
+   }
+  },
+  {
+   "face": "nias-15-27",
+   "street": "Niasstraat",
+   "pands": 7,
+   "placed": 4,
+   "held": 3,
+   "runs": [
+    {
+     "face": "nias-15-27-r1",
+     "pands": [
+      "0363100012066206",
+      "0363100012146333",
+      "0363100012138107",
+      "0363100012107819"
+     ]
+    }
+   ],
+   "seconds": 1.17,
+   "byType": {
+    "indisch-1926-attic-lights": 4
+   },
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  }
+ ]
+}

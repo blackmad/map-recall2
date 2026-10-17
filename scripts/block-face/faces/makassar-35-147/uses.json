@@ -1,0 +1,202 @@
+{
+ "street": "Makassarstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:47:06.709Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012067802",
+   "addresses": [
+    "Makassarstraat 33",
+    "Makassarstraat 35",
+    "Makassarstraat 35A",
+    "Makassarstraat 35B",
+    "Makassarstraat 35C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 49",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012071138"
+    },
+    {
+     "address": "Makassarstraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012071142"
+    },
+    {
+     "address": "Makassarstraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012071144"
+    },
+    {
+     "address": "Makassarstraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012071174"
+    },
+    {
+     "address": "Gorontalostraat 47A",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001000986"
+    },
+    {
+     "address": "Makassarstraat 33",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001000987"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12716432242,
+     "lngLat": [
+      4.9421756,
+      52.3641376
+     ],
+     "tags": {
+      "name": "Hamitou Kandora",
+      "opening_hours": "Tu-Su 12:00-18:00",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-17T07:47:06.709Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012109485",
+   "addresses": [
+    "Makassarstraat 37",
+    "Makassarstraat 39C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012071178"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090266",
+   "addresses": [
+    "Makassarstraat 39",
+    "Makassarstraat 39D",
+    "Makassarstraat 39A",
+    "Makassarstraat 39B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 39-H",
+     "use": "industriefunctie",
+     "areaM2": 48,
+     "bagId": "0363010000733369"
+    },
+    {
+     "address": "Makassarstraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012071179"
+    },
+    {
+     "address": "Makassarstraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012071180"
+    },
+    {
+     "address": "Makassarstraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012071181"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105799",
+   "addresses": [
+    "Makassarstraat 131",
+    "Makassarstraat 133",
+    "Makassarstraat 135",
+    "Makassarstraat 137",
+    "Makassarstraat 139",
+    "Makassarstraat 141",
+    "Makassarstraat 143",
+    "Makassarstraat 145",
+    "Makassarstraat 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Makassarstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000733519"
+    },
+    {
+     "address": "Makassarstraat 133",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000733520"
+    },
+    {
+     "address": "Makassarstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000733521"
+    },
+    {
+     "address": "Makassarstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000733522"
+    },
+    {
+     "address": "Makassarstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000733523"
+    },
+    {
+     "address": "Makassarstraat 141",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000733524"
+    },
+    {
+     "address": "Makassarstraat 143",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000733525"
+    },
+    {
+     "address": "Makassarstraat 145",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000733526"
+    },
+    {
+     "address": "Makassarstraat 147",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000733527"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

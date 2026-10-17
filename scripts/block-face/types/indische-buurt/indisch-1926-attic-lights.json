@@ -1,0 +1,102 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "indisch-1926-attic-lights",
+ "district": "indische-buurt",
+ "description": "Makassarpleinbuurt 1925-26 perimeter blocks (Molukkenstraat 7-29, Boetonstraat 6-20, Niasstraat 3-13 and 17-27): a flat-roofed 6.0-6.5 m brick front, three white-framed windows with a gridded toplight on each of three equal storeys, a closing top storey of three small square attic lights high under the roof, a darker ground storey with paired house doors at the party walls; a plain parapet with a thin light coping, or (Niasstraat) a deep flat eaves overhang with a white fascia",
+ "fit": {
+  "widthM": [5.6, 6.8],
+  "storeys": [5]
+ },
+ "match": {
+  "years": [1924, 1927],
+  "eavesM": [14.0, 15.6],
+  "storeys3dbag": [4, 5],
+  "roof": "flat",
+  "baysByWidth": [{"maxWidthM": 99, "bays": 3}],
+  "stucco": false,
+  "balconies": false,
+  "note": "flat roof at 14.4-14.9 m, BAG 1925-26, three axes on ~6.2 m; the row of square attic lights 1.5-2 m under the roof line is what tells it from the white-attic type (Gorontalostraat 25-45, eaves 12.7 m)"
+ },
+ "body": {
+  "storeys": 5,
+  "bays": 3,
+  "storeyWindows": {"0": "casement-toplight", "4": "plain"},
+  "storeyWindowWidths": {"4": 0.66},
+  "cornice": "none",
+  "windows": "casement-gridded-toplight",
+  "windowShare": 0.55,
+  "storeyHeights": [3.3, 3.05, 3.05, 3.05, 2.55],
+  "windowHeights": [0.5, 0.57, 0.57, 0.57, 0.3],
+  "headLines": [0.8, 0.71, 0.71, 0.71, 0.53]
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "parapet": {"courses": 4, "coping": true},
+   "note": "Molukkenstraat 7-29, Boetonstraat 6-20: plain brick parapet over the attic lights, a thin light coping at 14.8-15.2 m"
+  },
+  "overhang": {
+   "gable": "flat",
+   "eavesOverhang": {"projection": 0.8, "fascia": 0.35, "colour": "#d8d4c8", "soffit": "#6a5e52"},
+   "note": "Niasstraat 3-13 (and 17-27): a deep flat eaves overhang with a white fascia over the attic lights; its soffit reads brown in the shade"
+  }
+ },
+ "grounds": {
+  "door-left": {"doorBay": 0, "note": "house doors at the left party wall (paired with the neighbour's), two windows beside them"},
+  "door-right": {"doorBay": 2, "note": "house doors at the right party wall"}
+ },
+ "palettes": {
+  "dark-brown": {
+   "brick": "#4e423a",
+   "frame": "#e6e2d6",
+   "door": "#2e2a26",
+   "stone": "#8a8478",
+   "cornice": "#c9c6bc"
+  },
+  "red-brown": {
+   "brick": "#7b6a60",
+   "frame": "#ecebe4",
+   "door": "#1f1f1f",
+   "stone": "#8a8478",
+   "cornice": "#c9c6bc"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "rhythm": {
+  "bays": "3 equal axes; the attic storey's three small lights on the same axes",
+  "identicalBays": "equal axes",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | 4: 3 small square lights",
+  "symmetry": "symmetric above the ground; doors pair across party walls",
+  "groundFloor": "paired house doors at a party wall, or a shop (Molukkenstraat)",
+  "signage": "per shop",
+  "roofline": "flat: plain parapet with a light coping, or a deep eaves overhang (Niasstraat)",
+  "photoRows": [3, 3, 3, 3, 3],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "molukken-7-29",
+   "pands": ["148852", "088701", "094377", "108941"],
+   "citation": "strip.jpg 2023-01-02 (camera 2.1 m) at 40 px/m: parapet coping 15.2 m; attic lights 0.73 x 0.75 m, 13.15-13.9 m; window storeys 3.57-5.30, 6.60-8.35, 9.67-11.40 m (pitch 3.05 m), windows 1.17 m wide with a three-pane toplight over the transom; dark soldier band at 2.6-2.9 m over the ground storey"
+  },
+  {
+   "face": "boeton-2-42",
+   "pands": ["110184", "087501", "088267", "093961"],
+   "citation": "strip.jpg 2025-09-26 (camera 2.1 m): parapet 14.8 m; attic lights ~0.6 m at 12.95-13.45 m; windows 3.80-5.57, 6.80-8.57, 9.93-11.65 m, 1.1 m wide, six-pane toplights; ground windows 0.96-2.67 m; ground storey in a darker brick to 2.8 m; paired doors at the party walls"
+  },
+  {
+   "face": "nias-1-13",
+   "pands": ["110430", "122437", "131529"],
+   "citation": "strip.jpg 2023-01-02 (camera 2.1 m): wall top under the overhang 15.1 m, white fascia above; attic lights 0.95 x 0.75 m at 13.35-14.1 m; windows 3.9-5.7, 7.1-8.87, 10.3-12.05 m, 1.28 m wide; a ledge at 2.6-2.75 m over the ground storey"
+  }
+ ],
+ "schemaLimits": [
+  "the darker ground-storey brick and the soldier-course ledge over it",
+  "the doors stand on the first/last axis, not against the party wall, and a pair is drawn as one door",
+  "the small brick header accents at the storey lines (Boetonstraat)"
+ ],
+ "notes": []
+}

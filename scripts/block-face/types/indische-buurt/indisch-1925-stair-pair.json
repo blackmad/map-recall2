@@ -1,0 +1,83 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "indisch-1925-stair-pair",
+ "district": "indische-buurt",
+ "description": "Molukkenstraat 35-53 (BAG 1925): a 6.1 m dark-brown brick front of four storeys under a dark tiled roof: on storeys 1-2 one wide three-light window and, against the party wall, one light of a stair-window pair shared with the mirrored neighbour (paired house doors under it, a shop beside them); a top storey of three evenly spaced windows over a brick course; a light gutter cornice and a half dormer over the stair pair",
+ "fit": {
+  "widthM": [5.7, 6.6],
+  "storeys": [4]
+ },
+ "match": {
+  "years": [1924, 1926],
+  "eavesM": [12.0, 13.4],
+  "storeys3dbag": [4, 5],
+  "roof": "pitched",
+  "baysByWidth": [{"maxWidthM": 99, "bays": 2}],
+  "stucco": false,
+  "balconies": false,
+  "mirrorForDoor": "right",
+  "note": "drawn with the stair pair and the doors on the right; a pand with its door on the left is mirrored. Shares year and eaves with the white-attic type (Gorontalostraat 25-45); the white top storey and its ribbon of three windows tell them apart on the photo (auto-place --photo-decides)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [2, 2, 2, 3],
+  "axisGrid": 3,
+  "storeyAxes": {"0": [0, 2], "1": [0, 2], "2": [0, 2]},
+  "bayWidths": [4.08, 1.06, 1.0],
+  "bayFill": [0.64, 0.5, 0.83],
+  "storeyBayWidths": {"3": [1, 1, 1]},
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "axisWindows": {"0": "casement-triple"},
+  "storeyHeights": [3.75, 2.91, 2.94, 3.2],
+  "windowHeights": [0.55, 0.54, 0.52, 0.47],
+  "headLines": [0.7, 0.756, 0.75, 0.69]
+ },
+ "crowns": {
+  "gutter": {
+   "gable": "cornice",
+   "eavesOverhang": {"projection": 0.3, "fascia": 0.22, "colour": "#cfcdc4", "soffit": "#5e524a"},
+   "note": "the dark tiled roof rising from the light gutter at 12.8 m. The small white dormers on the roof (13.05-13.9 m, some straddling a party wall over the stair pair) are not drawn: a kit dormer on this attic roof pierces the roof plane or stands proud of the facade silhouette in the GLB audit (flat, box and plain styles with measured dormerSize, 2026-10-17)"
+  }
+ },
+ "grounds": {
+  "door-right": {"doorBay": 1, "note": "the paired house doors under the stair pair, at the right party wall"}
+ },
+ "palettes": {
+  "dark-brown": {
+   "brick": "#4e4038",
+   "frame": "#e8e6de",
+   "door": "#2f4436",
+   "stone": "#7a746a",
+   "cornice": "#cfcdc4"
+  }
+ },
+ "roof": {
+  "material": "black-tile"
+ },
+ "rhythm": {
+  "bays": "storeys 1-2: a wide three-light window and a stair light at the party wall; top storey: 3 equal axes",
+  "identicalBays": "no: a wide and a narrow axis",
+  "windowsPerStorey": "ground: shop + doors | 1: 2 | 2: 2 | 3: 3",
+  "symmetry": "mirrored pairs: the stair lights and doors of two houses meet at their party wall",
+  "groundFloor": "a shop beside paired house doors, or paired doors and a window",
+  "signage": "per shop",
+  "roofline": "a light gutter cornice under a dark tiled roof, a half dormer over the stair pair",
+  "photoRows": [2, 2, 2, 3],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "molukken-35-67",
+   "pands": ["111959", "148990", "080878", "107515"],
+   "citation": "strip.jpg 2019-12-18 (camera 2.1 m) at 40 px/m on 111959 (6.14 m): wide window 0.73-3.34 m, three lights; stair light 5.22-6.05 m, its mirror across the party wall 0.15 m off; storey-1 windows 4.37-5.95 m, storey-2 7.34-8.86 m; top storey 10.3-11.8 m, three 1.12 m windows centred 1.19 / 3.22 / 5.25 m over a brick course at 10.15 m; gutter 12.8 m (3DBAG 12.4-12.9 m), roof to ~15 m; paired doors 0.55-2.6 m under the stair pair"
+  }
+ ],
+ "schemaLimits": [
+  "the small dormer off the stair pair on some houses",
+  "the brick course under the top-storey windows",
+  "the stair pair's light frame between the two lights"
+ ],
+ "notes": []
+}

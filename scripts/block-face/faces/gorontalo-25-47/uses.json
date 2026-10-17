@@ -1,0 +1,397 @@
+{
+ "street": "Gorontalostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:18:46.578Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131909",
+   "addresses": [
+    "Gorontalostraat 25",
+    "Gorontalostraat 25B",
+    "Gorontalostraat 25A",
+    "Gorontalostraat 25C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647473"
+    },
+    {
+     "address": "Gorontalostraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012070890"
+    },
+    {
+     "address": "Gorontalostraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012070891"
+    },
+    {
+     "address": "Gorontalostraat 25C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012070892"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062819",
+   "addresses": [
+    "Gorontalostraat 27",
+    "Gorontalostraat 29B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647477"
+    },
+    {
+     "address": "Gorontalostraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012071023"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083492",
+   "addresses": [
+    "Gorontalostraat 29",
+    "Gorontalostraat 29A",
+    "Gorontalostraat 29C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647481"
+    },
+    {
+     "address": "Gorontalostraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012071022"
+    },
+    {
+     "address": "Gorontalostraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012071024"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094616",
+   "addresses": [
+    "Gorontalostraat 31",
+    "Gorontalostraat 33A",
+    "Gorontalostraat 33D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647485"
+    },
+    {
+     "address": "Gorontalostraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012071026"
+    },
+    {
+     "address": "Gorontalostraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012071030"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148266",
+   "addresses": [
+    "Gorontalostraat 33",
+    "Gorontalostraat 33B",
+    "Gorontalostraat 33C",
+    "Gorontalostraat 33F",
+    "Gorontalostraat 33E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647498"
+    },
+    {
+     "address": "Gorontalostraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012071027"
+    },
+    {
+     "address": "Gorontalostraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012071028"
+    },
+    {
+     "address": "Gorontalostraat 33F",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012071029"
+    },
+    {
+     "address": "Gorontalostraat 33E",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012071031"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123464",
+   "addresses": [
+    "Gorontalostraat 35",
+    "Gorontalostraat 35A",
+    "Gorontalostraat 35B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000647502"
+    },
+    {
+     "address": "Gorontalostraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012071032"
+    },
+    {
+     "address": "Gorontalostraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012071034"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067440",
+   "addresses": [
+    "Gorontalostraat 35C",
+    "Gorontalostraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000647506"
+    },
+    {
+     "address": "Gorontalostraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012071036"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083953",
+   "addresses": [
+    "Gorontalostraat 39",
+    "Gorontalostraat 41B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000647510"
+    },
+    {
+     "address": "Gorontalostraat 41B",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012071072"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099162",
+   "addresses": [
+    "Gorontalostraat 41",
+    "Gorontalostraat 41A",
+    "Gorontalostraat 41C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647514"
+    },
+    {
+     "address": "Gorontalostraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012071071"
+    },
+    {
+     "address": "Gorontalostraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012071074"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124861",
+   "addresses": [
+    "Gorontalostraat 43",
+    "Gorontalostraat 43A",
+    "Gorontalostraat 43B",
+    "Gorontalostraat 43E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647518"
+    },
+    {
+     "address": "Gorontalostraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012071084"
+    },
+    {
+     "address": "Gorontalostraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012071086"
+    },
+    {
+     "address": "Gorontalostraat 43E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012071090"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089355",
+   "addresses": [
+    "Gorontalostraat 43C",
+    "Gorontalostraat 43D",
+    "Gorontalostraat 43F",
+    "Gorontalostraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000647522"
+    },
+    {
+     "address": "Gorontalostraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012071088"
+    },
+    {
+     "address": "Gorontalostraat 43D",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012071089"
+    },
+    {
+     "address": "Gorontalostraat 43F",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012071092"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125447",
+   "addresses": [
+    "Gorontalostraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gorontalostraat 47-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000647530"
+    },
+    {
+     "address": "Gorontalostraat 47",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012071137"
+    },
+    {
+     "address": "Makassarstraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012071175"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12716422354,
+     "lngLat": [
+      4.9421925,
+      52.3641914
+     ],
+     "tags": {
+      "amenity": "language_school",
+      "name": "Animo"
+     },
+     "fetchedAt": "2026-10-17T07:18:46.578Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

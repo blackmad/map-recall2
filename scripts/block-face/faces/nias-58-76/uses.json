@@ -1,0 +1,136 @@
+{
+ "street": "Niasstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012069060",
+   "addresses": [
+    "Niasstraat 66",
+    "Niasstraat 74",
+    "Niasstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000749743"
+    },
+    {
+     "address": "Niasstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012073925"
+    },
+    {
+     "address": "Niasstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000749746"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084455",
+   "addresses": [
+    "Niasstraat 64",
+    "Niasstraat 68",
+    "Niasstraat 70",
+    "Niasstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000749739"
+    },
+    {
+     "address": "Niasstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012073937"
+    },
+    {
+     "address": "Niasstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012073938"
+    },
+    {
+     "address": "Niasstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000749742"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085701",
+   "addresses": [
+    "Niasstraat 60",
+    "Niasstraat 62",
+    "Niasstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000749735"
+    },
+    {
+     "address": "Niasstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012073934"
+    },
+    {
+     "address": "Niasstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000749738"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150586",
+   "addresses": [
+    "Niasstraat 58",
+    "Niasstraat 60",
+    "Niasstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012073924"
+    },
+    {
+     "address": "Niasstraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001041204"
+    },
+    {
+     "address": "Niasstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000749734"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

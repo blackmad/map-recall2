@@ -1,0 +1,251 @@
+{
+ "street": "Baweanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:09:03.456Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012136941",
+   "addresses": [
+    "Baweanstraat 82",
+    "Baweanstraat 84",
+    "Baweanstraat 86",
+    "Baweanstraat 88",
+    "Baweanstraat 90",
+    "Baweanstraat 92",
+    "Baweanstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000578490"
+    },
+    {
+     "address": "Baweanstraat 90",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000578492"
+    },
+    {
+     "address": "Baweanstraat 92",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000578493"
+    },
+    {
+     "address": "Baweanstraat 94",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000578494"
+    },
+    {
+     "address": "Baweanstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000578489"
+    },
+    {
+     "address": "Baweanstraat 82",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000578488"
+    },
+    {
+     "address": "Baweanstraat 88",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000578491"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088818",
+   "addresses": [
+    "Baweanstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000578469"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110121",
+   "addresses": [
+    "Baweanstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000578464"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138187",
+   "addresses": [
+    "Baweanstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000578459"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132700",
+   "addresses": [
+    "Baweanstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000578454"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109510",
+   "addresses": [
+    "Baweanstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000578441"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070299",
+   "addresses": [
+    "Baweanstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000578436"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116758",
+   "addresses": [
+    "Baweanstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000578431"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145314",
+   "addresses": [
+    "Baweanstraat 2A",
+    "Baweanstraat 2B",
+    "Baweanstraat 2C",
+    "Baweanstraat 4A",
+    "Baweanstraat 4B",
+    "Baweanstraat 6A",
+    "Baweanstraat 6B",
+    "Baweanstraat 6D",
+    "Baweanstraat 6C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baweanstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000578414"
+    },
+    {
+     "address": "Baweanstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000578420"
+    },
+    {
+     "address": "Baweanstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000578421"
+    },
+    {
+     "address": "Baweanstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000578423"
+    },
+    {
+     "address": "Baweanstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000578424"
+    },
+    {
+     "address": "Baweanstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000578426"
+    },
+    {
+     "address": "Baweanstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000578427"
+    },
+    {
+     "address": "Baweanstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000578429"
+    },
+    {
+     "address": "Baweanstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000578428"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

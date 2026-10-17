@@ -89,6 +89,8 @@ export interface SystemFit {
   courses?: ('sill' | 'head')[];
   /** the ground storey is a souterrain: SOUTERRAIN.factor of an upper storey (fitLarge), two small windows per bay (`single`: one) (intent `souterrain`) */
   souterrain?: boolean | 'single';
+  /** on each entry's storeys (1 = first floor) only the listed bays (of `bays` per storey) keep the storey's openings; the rest is plain wall (intent `openBays`) */
+  openBays?: { storeys: number[]; bays: number[] }[];
 }
 
 /**
@@ -256,6 +258,16 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   // Glazed upper storeys (Kinkerstraat 32-54: the shops' mezzanine is one glass band over the shop windows): the
   // `glazed` ground row, framed glazing 90 % of each bay down to a low sill, on the listed storeys.
   for (const st of f.glazedStoreys ?? []) if (st > 0) rowOverrides[String(st)] = groundRow({ ...f, ground: 'glazed' }, typical);
+  // Openings in only some bays (2006 Rietveld tower: ribbon windows over the middle of a blank metal front): a cycle per
+  // bay on each listed storey, the storey's row in the listed bays and plain wall in the rest.
+  for (const ob of name === 'blank' ? [] : f.openBays ?? []) {
+    const every = Math.max(1, f.bays ?? 1, ...ob.bays.map(b => b + 1));
+    for (const st of ob.storeys) {
+      if (st < 1) continue;
+      const under = rowOverrides[String(st)] ?? typical;
+      rowOverrides[String(st)] = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (ob.bays.includes(k) ? under : ({ kind: 'wall' } as Row))) };
+    }
+  }
   let ground = name === 'curtain-wall' && f.layered && (f.ground === 'system' || f.ground === 'glazed') ? typical
     : groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, archedStoreys.includes(0) ? archedRow() : typical);
   // Loading-door axis: a cycle of rows per bay with the hoist row at `first` (cycle index = bay % every).

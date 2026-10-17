@@ -1,0 +1,73 @@
+{
+ "street": "Niasstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-17T07:38:51.452Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012066206",
+   "addresses": [
+    "Niasstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 21-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000749629"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146333",
+   "addresses": [
+    "Niasstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000749634"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138107",
+   "addresses": [
+    "Niasstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000749638"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107819",
+   "addresses": [
+    "Niasstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Niasstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000749643"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

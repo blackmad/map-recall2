@@ -12,6 +12,8 @@ import type {CompiledLargeBuilding} from './largeCompile.ts';
 export const LARGE_BUDGET_TRIANGLES = 12000;
 /** Civic and monumental storeys run taller than houses (De Balie, 1880s: ~5.9 m); the canal-house gate stops at 4.6 m. */
 export const LARGE_MAX_STOREY_M = 6.2;
+/** Lowest ground storey under a layered curtain wall whose ground is a mesh plinth (a raised plinth panel, not a storey). */
+export const LARGE_MIN_PLINTH_M = 1.2;
 
 export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding): {gates: Gate[]; topology: ReturnType<typeof topology>} {
   const gates: Gate[] = [], facts = built.facts, recipe = built.recipe, [ax, ay] = recipe.anchorRD;
@@ -49,7 +51,9 @@ export function evaluateLargeGates(tris: Tri[], built: CompiledLargeBuilding): {
     g(`eaves-vs-3dbag/walls[${grp.index}]`, roofEaves !== undefined && Math.abs(grp.eavesM - roofEaves) <= 0.3, {modelM: grp.eavesM, threeDBagM: roofEaves === undefined ? null : +roofEaves.toFixed(2), samples: hs.length}, '|Δ| <= 0.30 m (wall eaves vs LoD2.2 roof 8 cm inside the wall, p10, as the canal-house facts)');
     if (grp.system !== 'blank') {
       const uppers = grp.storeyHeightsM.slice(1);
-      g(`storey-height/walls[${grp.index}]`, uppers.every(h => h >= 2.3 && h <= LARGE_MAX_STOREY_M) && grp.storeyHeightsM[0] >= 2.3, grp.storeyHeightsM, `ground >= 2.3 m, upper storeys 2.3-${LARGE_MAX_STOREY_M} m`);
+      // A mesh plinth under a curtain wall is a closed panel, not a storey with openings: a raised plinth may be lower (the Rietveld building's 1.8 m).
+      const groundMin = grp.ground === 'mesh-plinth' ? LARGE_MIN_PLINTH_M : 2.3;
+      g(`storey-height/walls[${grp.index}]`, uppers.every(h => h >= 2.3 && h <= LARGE_MAX_STOREY_M) && grp.storeyHeightsM[0] >= groundMin, grp.storeyHeightsM, `ground >= ${groundMin} m${grp.ground === 'mesh-plinth' ? ' (mesh plinth)' : ''}, upper storeys 2.3-${LARGE_MAX_STOREY_M} m`);
     }
   }
   const topo = topology(tris);

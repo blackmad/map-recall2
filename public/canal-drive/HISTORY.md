@@ -20,6 +20,44 @@
   volatile, checkedAt 2026-10-17, every "best" attributed). Wiring into the
   ride: `docs/preview/tours-and-stamps-wiring.md`.
 - A-list Wikidata ids checked against landmarks.json; 10 were guesses.
+## Makassarpleinbuurt (Indische Buurt): 34 pands from three interwar types (2026-10-17)
+
+Lane `lane/indische-buurt-20261017` (ed3982426, 48d94a79c, b13ea401a). Chosen
+because 224 of its 447 BAG pands date from 1918–40 (most in 1925–26), far
+more than the other Indische Buurt buurten. 34 pands on Molukken-, Gorontalo-
+and Niasstraat in three measured types (`scripts/block-face/types/indische-buurt/`:
+indisch-1926-attic-lights, indisch-1926-white-attic, indisch-1925-stair-pair);
+coverage shows MG01 as drawn (34 of 514). Kit: `storeyWindowWidths`,
+`paintedStoreys.from`, a measured `dormerSize`; glazing bars 4 cm off the pane
+(opening v20, clears the audit's 30 mm tight overlaps); flat dormer roofs as a
+sheet on a slab (dormer v8); reviewer type and mirror pins
+(`reviewCrowns.ts`; photo-decides confused shop doors with house doors).
+Chunks installed earlier keep their old bars and dormers until recompiled.
+The stair-pair dormers are deliberately undrawn: the kit could not seat them
+in the steep attic roof without piercing it. Held: four Molukken 7-29 shop
+pands (NCC < 0.15), Niasstraat 1 and Gorontalostraat 47 (corners),
+Gorontalostraat 39 (folded front at the street kink).
+
+## Rietveld revisited: the 1967 glass block and the 2006 tower installed (2026-10-17)
+
+User (2026-10-17): "I think we need to revisit Gerrit Rietveld Academie". Lane
+`lane/public-large-20261017` (075dd33bc, 75711e8f3; source crops 721a5eb8b,
+74a9023e1 in source-data). The 1967 Rietveld building (pand 077325, recipe
+`rietveld-gebouw-077325`, 4,100 tris): square 2.07 m modules, 30 across the
+62.9 m north front, a 1.7 m dark plinth under four 4.2 m floors, each floor a
+clear band between frosted spandrel bands, measured spandrel/mullion/glass
+tones and an orthophoto roof; evidence: three north-front captures (incl. a
+2021 leaf-off view from 55 m across the canal) and an east-corner oblique; the
+south and west walls are inferred. The 2006 complex (091838, 5,412 tris),
+refused on 2026-10-14 for missing evidence, reinstalled from 2017-12 and
+2021-04 leaf-off fronts: dark dimpled-metal tower with a glazed ground storey
+and ribbon windows only where the crops have them, white low block with a
+glazed ground and a screen storey. Kit: `spandrels`, `groundFactor`,
+`palette.plinth`, `shell` (3DBAG restarts surface numbers per solid),
+`openBays`, `meshScreen`, `all-walls.ts --max-dist`; fit-golden and
+large-mesh-golden identical for every other house. Likeness FAILs come from
+the glazing classifier reading reflective curtain walls as wall and sunlit
+white as washed out; installed with `--allow-inferred` notes.
 
 ## Neighbourhood explorer: browse, download, report, request (2026-10-17)
 

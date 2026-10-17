@@ -438,8 +438,80 @@ export const CURTAIN_GRID = { postW: 0.1, postOut: 3 * SHEET_PITCH, railH: 0.1, 
  * boxes standing off the glass (mullions at every bay joint, transoms at every storey line and under the top), skipping
  * the openings cut into it (an entrance). Nothing lies on the glass plane, so the grid never z-fights the skin.
  */
-export function drawCurtainGrid(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number): number {
-  return drawLattice(c, cells, levels, slot, top, CURTAIN_GRID, true);
+export function drawCurtainGrid(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number, dims: typeof CURTAIN_GRID = CURTAIN_GRID): number {
+  return drawLattice(c, cells, levels, slot, top, dims, true);
+}
+
+/** Spandrel panels 4.5-9 cm off the glass (their back face clear of the grid members' back faces on the skin); the grid over them moves one layer out (transoms 13.5 cm, mullions 18 cm), so no member face shares a plane with a panel. */
+export const SPANDREL = { back: SHEET_PITCH, out: 2 * SHEET_PITCH, minH: 0.15 };
+export const CURTAIN_GRID_OVER_SPANDRELS = { ...CURTAIN_GRID, postOut: 4 * SHEET_PITCH, railOut: 3 * SHEET_PITCH };
+
+/**
+ * Opaque spandrel panels of a layered curtain wall (the Rietveld building's frosted bands): in every storey above the
+ * ground that `cells` covers, a band `sill` of an upper storey tall over the floor line and one `head` tall under the next
+ * floor line (the top storey's head band runs up to `top`); bands that meet across a floor line are one panel. Closed
+ * boxes 4.5-9 cm off the glass skin (SPANDREL), broken round the openings cut into the wall (an entrance). Returns the
+ * panels drawn, the rail lines at the panel edges, and `gridLevels`: the levels for the grid (`levels` without the floor
+ * lines a panel covers, whose transom would sit inside the panel with its back face on the panel's, plus the panel edges).
+ */
+export function drawSpandrels(c: PanelCtx, cells: Cell[], levels: number[], sp: { sill: number; head: number; slot: Slot }, top: number): { panels: number; rails: number[]; gridLevels: number[] } {
+  const floors = [...new Set(cells.map(x => x.floor))].filter(f => f > 0).sort((a, b) => a - b);
+  if (!floors.length) return { panels: 0, rails: [], gridLevels: levels };
+  // an upper storey's height: the first full upper storey (the top one may be cut short by the eaves)
+  const unit = levels.length > 2 ? levels[2] - levels[1] : top - (levels[1] ?? 0);
+  const bands: [number, number][] = [];
+  for (const f of floors) {
+    const v0 = levels[f], v1 = f + 1 < levels.length ? Math.min(top, levels[f + 1]) : top, last = f === floors[floors.length - 1];
+    if (v0 === undefined || v1 - v0 < 0.5) continue;
+    if (sp.sill > 0) bands.push([v0, Math.min(v1, v0 + sp.sill * unit)]);
+    // the top band stops at the grid's top rail centre: its top face then sits inside the rail, not on the rail's top face
+    if (sp.head > 0) bands.push([Math.max(v0, (last ? Math.min(v1, v0 + unit) : v1) - sp.head * unit), Math.min(last ? top : v1, top - CURTAIN_GRID.railH / 2)]);
+  }
+  bands.sort((a, b) => a[0] - b[0]);
+  const merged: [number, number][] = [];
+  for (const b of bands) { const m = merged[merged.length - 1]; if (m && b[0] <= m[1] + 1e-3) m[1] = Math.max(m[1], b[1]); else merged.push([b[0], b[1]]); }
+  const rails: number[] = [], part = c.part();
+  let n = 0;
+  for (const [v0, v1] of merged) {
+    if (v1 - v0 < SPANDREL.minH) continue;
+    if (v0 > levels[floors[0]] + 0.05) rails.push(v0);
+    if (v1 < top - 0.3) rails.push(v1);
+    const holes = holeSpans(c, v0, v1).map(([a, b]) => [a - 0.02, b + 0.02] as [number, number]);
+    for (const [a0, b0] of intervals(c.p, v0, v1, 0.25)) {
+      let pieces: [number, number][] = [[a0, b0]];
+      for (const [s0, s1] of holes) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.2)) as [number, number][]);
+      for (const [a, b] of pieces) if (b - a > 0.2) { c.box(sp.slot, a, b, v0, v1, SPANDREL.back, SPANDREL.out, part); n++; }
+    }
+  }
+  const edges = [...new Set(rails.map(v => Math.round(v * 1000) / 1000))];
+  const covered = (L: number) => merged.some(([a, b]) => b - a >= SPANDREL.minH && L > a + 0.05 && L < b - 0.05);
+  return { panels: n, rails: edges, gridLevels: [...levels.filter((L, f) => f === 0 || !covered(L)), ...edges].sort((a, b) => a - b) };
+}
+
+/** Screen panels (intent `meshScreen`): defaults for the storey share and joint, and the layer (4.5-9 cm off the wall). */
+export const MESH_SCREEN = { from: 0.15, to: 0.92, joint: 0.06, back: SHEET_PITCH, out: 2 * SHEET_PITCH, minW: 0.4 };
+
+/**
+ * A screen of pale panels over the wall (the 2006 Rietveld Academie low block's white expanded-metal mesh): on each listed
+ * storey, one closed panel per bay from `from` to `to` of the storey's height, `joint` m short of the bay edges so the wall
+ * shows as a joint between panels, 4.5-9 cm off the wall. A bay with an opening cut into it is left open (the window shows
+ * through), as are bays the panel does not fit. Returns the panels drawn.
+ */
+export function drawMeshScreen(c: PanelCtx, cells: Cell[], levels: number[], ms: { storeys: number[]; from: number; to: number; joint: number; slot: Slot }): number {
+  const part = c.part();
+  let n = 0;
+  for (const cell of cells) {
+    if (!ms.storeys.includes(cell.floor)) continue;
+    const L0 = levels[cell.floor], L1 = levels[cell.floor + 1] ?? cell.v1, h = L1 - L0;
+    const v0 = Math.max(cell.v0, L0 + ms.from * h), v1 = Math.min(cell.v1, L0 + ms.to * h);
+    const a = Math.max(c.p.uMin, cell.u0 + ms.joint / 2), b = Math.min(c.p.uMax, cell.u1 - ms.joint / 2);
+    if (v1 - v0 < 0.3 || b - a < MESH_SCREEN.minW) continue;
+    if (holeSpans(c, v0, v1).some(([s0, s1]) => s0 < b && s1 > a)) continue;
+    if (!fitsPanel(c.p, rectPoly(a, b, v0, v1), 0.0)) continue;
+    c.box(ms.slot, a, b, v0, v1, MESH_SCREEN.back, MESH_SCREEN.out, part);
+    n++;
+  }
+  return n;
 }
 
 function drawLattice(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number, dims: typeof SCREEN, postsSkipHoles: boolean): number {

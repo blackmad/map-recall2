@@ -1,0 +1,466 @@
+{
+ "street": "Karimatastraat",
+ "seed": "0363100012093164",
+ "members": [
+  "0363100012127080",
+  "0363100012151593",
+  "0363100012081654",
+  "0363100012114908",
+  "0363100012109591",
+  "0363100012069661",
+  "0363100012093164"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063404",
+   "reason": "frontage 39.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012068895",
+   "reason": "frontage 64.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012069060",
+   "reason": "sightline to Karimatastraat crosses 0363100012093164"
+  },
+  {
+   "pandId": "0363100012070299",
+   "reason": "no frontage on Karimatastraat: No footprint edge faces Karimatastraat"
+  },
+  {
+   "pandId": "0363100012070307",
+   "reason": "frontage 39.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012074619",
+   "reason": "frontage 79.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012075400",
+   "reason": "frontage 39.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012076490",
+   "reason": "frontage 88.4 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012076585",
+   "reason": "frontage 35.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012078149",
+   "reason": "frontage 72.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012081027",
+   "reason": "frontage 64.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012082167",
+   "reason": "frontage 35.3 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012084455",
+   "reason": "sightline to Karimatastraat crosses 0363100012069060"
+  },
+  {
+   "pandId": "0363100012085701",
+   "reason": "sightline to Karimatastraat crosses 0363100012069060"
+  },
+  {
+   "pandId": "0363100012087501",
+   "reason": "frontage 64.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012087570",
+   "reason": "frontage 72.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012088267",
+   "reason": "frontage 64.4 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012088818",
+   "reason": "sightline to Karimatastraat crosses 0363100012110121"
+  },
+  {
+   "pandId": "0363100012090337",
+   "reason": "frontage 35.9 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012091940",
+   "reason": "no frontage on Karimatastraat: No footprint edge faces Karimatastraat"
+  },
+  {
+   "pandId": "0363100012093961",
+   "reason": "frontage 64.3 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012095485",
+   "reason": "sightline to Karimatastraat crosses 0363100012127080"
+  },
+  {
+   "pandId": "0363100012098925",
+   "reason": "frontage 64.3 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012108735",
+   "reason": "frontage 47.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012109510",
+   "reason": "no frontage on Karimatastraat: No footprint edge faces Karimatastraat"
+  },
+  {
+   "pandId": "0363100012110121",
+   "reason": "no frontage on Karimatastraat: No footprint edge faces Karimatastraat"
+  },
+  {
+   "pandId": "0363100012110184",
+   "reason": "frontage 64.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012111477",
+   "reason": "frontage 36.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012111633",
+   "reason": "frontage 31.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012116229",
+   "reason": "frontage 70.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012116393",
+   "reason": "frontage 39.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012116758",
+   "reason": "sightline to Karimatastraat crosses 0363100012070299"
+  },
+  {
+   "pandId": "0363100012122134",
+   "reason": "frontage 35.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012122626",
+   "reason": "sightline to Karimatastraat crosses 0363100012091940"
+  },
+  {
+   "pandId": "0363100012123086",
+   "reason": "frontage 98.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012123827",
+   "reason": "frontage 66.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012128949",
+   "reason": "frontage 35.8 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012130694",
+   "reason": "frontage 64.6 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012131376",
+   "reason": "sightline to Karimatastraat crosses 0363100012131373"
+  },
+  {
+   "pandId": "0363100012133379",
+   "reason": "frontage 68.1 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012133901",
+   "reason": "frontage 65.4 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012134360",
+   "reason": "frontage 64.8 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012135267",
+   "reason": "frontage 64.8 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012136757",
+   "reason": "frontage 79.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012136795",
+   "reason": "frontage 93.4 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012136941",
+   "reason": "sightline to Karimatastraat crosses 0363100012088818"
+  },
+  {
+   "pandId": "0363100012138643",
+   "reason": "frontage 98.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012139070",
+   "reason": "frontage 44.8 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012139404",
+   "reason": "frontage 38.9 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012139619",
+   "reason": "frontage 35.9 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012140837",
+   "reason": "sightline to Karimatastraat crosses 0363100012100973"
+  },
+  {
+   "pandId": "0363100012142420",
+   "reason": "frontage 39.1 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012142460",
+   "reason": "frontage 35.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012143859",
+   "reason": "frontage 37.9 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012144627",
+   "reason": "sightline to Karimatastraat crosses 0363100012091940"
+  },
+  {
+   "pandId": "0363100012145179",
+   "reason": "frontage 39.1 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012145299",
+   "reason": "frontage 33.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012145314",
+   "reason": "sightline to Karimatastraat crosses 0363100012070299"
+  },
+  {
+   "pandId": "0363100012145814",
+   "reason": "frontage 88.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012149514",
+   "reason": "frontage 33.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012150586",
+   "reason": "frontage 35.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012151910",
+   "reason": "frontage 64.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012152259",
+   "reason": "frontage 62.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012153261",
+   "reason": "frontage 39.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012155108",
+   "reason": "frontage 64.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012193462",
+   "reason": "frontage 87.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012194863",
+   "reason": "frontage 86.5 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012194864",
+   "reason": "frontage 85.1 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012194865",
+   "reason": "frontage 85.0 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012194868",
+   "reason": "frontage 86.9 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012196244",
+   "reason": "sightline to Karimatastraat crosses 0363100012140216"
+  },
+  {
+   "pandId": "0363100012197421",
+   "reason": "sightline to Karimatastraat crosses 0363100012140216"
+  },
+  {
+   "pandId": "0363100012206512",
+   "reason": "sightline to Karimatastraat crosses 0363100012140216"
+  },
+  {
+   "pandId": "0363100012218196",
+   "reason": "frontage 87.6 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012224730",
+   "reason": "frontage 84.1 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012225045",
+   "reason": "sightline to Karimatastraat crosses 0363100012071151"
+  },
+  {
+   "pandId": "0363100012227912",
+   "reason": "sightline to Karimatastraat crosses 0363100012094674"
+  },
+  {
+   "pandId": "0363100012229599",
+   "reason": "frontage 83.9 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253328",
+   "reason": "frontage 80.3 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253329",
+   "reason": "frontage 73.2 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253330",
+   "reason": "frontage 70.6 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253331",
+   "reason": "frontage 60.7 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253332",
+   "reason": "frontage 58.3 m from Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253333",
+   "reason": "no frontage on Karimatastraat: No footprint edge faces Karimatastraat"
+  },
+  {
+   "pandId": "0363100012253334",
+   "reason": "no frontage on Karimatastraat: No footprint edge faces Karimatastraat"
+  },
+  {
+   "pandId": "0363100012071151",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094674",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100973",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131373",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132700",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138187",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140216",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012127080",
+   "alongM": -56.63,
+   "widthM": 12.07,
+   "eavesM": 13.94,
+   "roofMaxM": 13.96,
+   "storeys3dbag": 5,
+   "builtYear": 1987,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012151593",
+   "alongM": -40.66,
+   "widthM": 19.88,
+   "eavesM": 13.93,
+   "roofMaxM": 13.96,
+   "storeys3dbag": 5,
+   "builtYear": 1987,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012081654",
+   "alongM": -27.53,
+   "widthM": 6.39,
+   "eavesM": 14.54,
+   "roofMaxM": 14.59,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114908",
+   "alongM": -21.33,
+   "widthM": 6,
+   "eavesM": 14.63,
+   "roofMaxM": 14.65,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109591",
+   "alongM": -15.33,
+   "widthM": 6,
+   "eavesM": 14.66,
+   "roofMaxM": 14.8,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012069661",
+   "alongM": -9.33,
+   "widthM": 6,
+   "eavesM": 15.21,
+   "roofMaxM": 15.52,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093164",
+   "alongM": 0,
+   "widthM": 12.66,
+   "eavesM": 13.18,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ]
+}

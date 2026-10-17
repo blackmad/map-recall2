@@ -1,0 +1,1095 @@
+{
+ "face": "gorontalo-25-47",
+ "street": "Gorontalostraat",
+ "library": "indische-buurt",
+ "stripDate": "2025-09-26",
+ "seconds": 45.97,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "gorontalo-25-47-r1",
+   "pands": [
+    "0363100012131909",
+    "0363100012062819",
+    "0363100012083492",
+    "0363100012094616",
+    "0363100012148266",
+    "0363100012123464",
+    "0363100012067440"
+   ],
+   "passed": false,
+   "triangles": 8529
+  },
+  {
+   "face": "gorontalo-25-47-r2",
+   "pands": [
+    "0363100012099162",
+    "0363100012124861",
+    "0363100012089355"
+   ],
+   "passed": false,
+   "triangles": 3674
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012131909",
+   "address": "Gorontalostraat 25",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80736f",
+    "wallRaw": "#7c7e7b",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.039,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 0.95,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#80736f",
+     "evidence": "strip 2025-09-26 span 0-245: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012131909",
+    "ncc": 0.536,
+    "nccRaw": 0.536,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7a6d6c",
+     "model": "#928682",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.49
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.536
+   }
+  },
+  {
+   "pandId": "0363100012062819",
+   "address": "Gorontalostraat 27",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c706c",
+    "wallRaw": "#7d7e7c",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 1.22,
+      "topWidthM": 0.35,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 1.15,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#7c706c",
+     "evidence": "strip 2025-09-26 span 245-490: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012062819",
+    "ncc": 0.424,
+    "nccRaw": 0.424,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#807370",
+     "model": "#8f837f",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.487
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.424
+   }
+  },
+  {
+   "pandId": "0363100012083492",
+   "address": "Gorontalostraat 29",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#897b76",
+    "wallRaw": "#838480",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 1.7,
+      "topWidthM": 0.65,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 2.13,
+       "centre": 0.81
+      },
+      {
+       "atM": 11.52,
+       "widthM": 1.1,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#897b76",
+     "evidence": "strip 2025-09-26 span 490-735: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012083492",
+    "ncc": 0.475,
+    "nccRaw": 0.475,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.54 mean 0.34 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#817470",
+     "model": "#9a8d89",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.534
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.475
+   }
+  },
+  {
+   "pandId": "0363100012094616",
+   "address": "Gorontalostraat 31",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f807b",
+    "wallRaw": "#80817e",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.9,
+      "topWidthM": 0.53,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 3.85,
+       "centre": 0.54
+      },
+      {
+       "atM": 11.52,
+       "widthM": 1.13,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "measuredPalette": {
+     "brick": "#8f807b",
+     "evidence": "strip 2025-09-26 span 735-980: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012094616",
+    "ncc": 0.418,
+    "nccRaw": 0.418,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#746a68",
+     "model": "#9f928e",
+     "dL": 0.159
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.527
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.418
+   }
+  },
+  {
+   "pandId": "0363100012148266",
+   "address": "Gorontalostraat 33",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#847671",
+    "wallRaw": "#7f807d",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.27,
+      "topWidthM": 0.4,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 1.13,
+       "centre": 0.7
+      },
+      {
+       "atM": 11,
+       "widthM": 0.88,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "measuredPalette": {
+     "brick": "#847671",
+     "evidence": "strip 2025-09-26 span 979-1224: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012148266",
+    "ncc": 0.398,
+    "nccRaw": 0.398,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28"
+    ],
+    "wall": {
+     "photo": "#7f726f",
+     "model": "#968984",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 4,
+     "model": 4
+    },
+    "iou": 0.584
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.398
+   }
+  },
+  {
+   "pandId": "0363100012123464",
+   "address": "Gorontalostraat 35",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e716e",
+    "wallRaw": "#878885",
+    "skyline": {
+     "eavesM": 13.57,
+     "eavesRow": 257,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 1.08,
+      "topWidthM": 1.1,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.77,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.8,
+       "widthM": 0.8,
+       "centre": 0.68
+      },
+      {
+       "atM": 11.43,
+       "widthM": 1.18,
+       "centre": 0.48
+      },
+      {
+       "atM": 9.02,
+       "widthM": 0.82,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.25,
+       "widthM": 0.85,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#7e716e",
+     "evidence": "strip 2025-09-26 span 1224-1469: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012123464",
+    "ncc": 0.371,
+    "nccRaw": 0.371,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.57 mean 0.36 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#817572",
+     "model": "#918481",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.569
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.371
+   }
+  },
+  {
+   "pandId": "0363100012067440",
+   "address": "Gorontalostraat 35C",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#817472",
+    "wallRaw": "#868885",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.2,
+      "topWidthM": 0.33,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.9,
+       "widthM": 2.25,
+       "centre": 0.56
+      },
+      {
+       "atM": 11.52,
+       "widthM": 1.15,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#817472",
+     "evidence": "strip 2025-09-26 span 1469-1714: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012067440",
+    "ncc": 0.377,
+    "nccRaw": 0.377,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24"
+    ],
+    "wall": {
+     "photo": "#807473",
+     "model": "#938785",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.543
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.377
+   }
+  },
+  {
+   "pandId": "0363100012083953",
+   "address": "Gorontalostraat 39",
+   "builtYear": 1926,
+   "widthM": 5.52,
+   "eavesM": 12.71,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.5,
+    "toM": 5.5,
+    "depthM": 0.39,
+    "centre": 1,
+    "lineRD": [
+     [
+      124690.158125,
+      486376.317
+     ],
+     [
+      124690.169125,
+      486372.52999999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8d7f78",
+    "wallRaw": "#828380",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 269,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.55,
+      "topWidthM": 0.38,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.65,
+       "widthM": 0.82,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the front folds where the street kinks (a canted window pair on storeys 1-2, the overhang breaking round the bend): the flat white-attic front drew it as a two-bay house under a black roof; the kit has no folded front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099162",
+   "address": "Gorontalostraat 41",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#837773",
+    "wallRaw": "#878886",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.93,
+       "widthM": 1.45,
+       "centre": 0.13
+      },
+      {
+       "atM": 11.47,
+       "widthM": 1.15,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "measuredPalette": {
+     "brick": "#837773",
+     "evidence": "strip 2025-09-26 span 1934-2177: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012099162",
+    "ncc": 0.381,
+    "nccRaw": 0.381,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#837673",
+     "model": "#958a86",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.496
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.381
+   }
+  },
+  {
+   "pandId": "0363100012124861",
+   "address": "Gorontalostraat 43",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c7d77",
+    "wallRaw": "#838481",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.95,
+       "widthM": 1.73,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8c7d77",
+     "evidence": "strip 2025-09-26 span 2178-2421: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012124861",
+    "ncc": 0.363,
+    "nccRaw": 0.363,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#807471",
+     "model": "#9c8f8a",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.48
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.363
+   }
+  },
+  {
+   "pandId": "0363100012089355",
+   "address": "Gorontalostraat 43C",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 12.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#867974",
+    "wallRaw": "#818280",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 4.1,
+      "topWidthM": 0.3,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1926-white-attic",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1926-white-attic",
+    "measuredPalette": {
+     "brick": "#867974",
+     "evidence": "strip 2025-09-26 span 2421-2664: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown overhang-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012089355",
+    "ncc": 0.447,
+    "nccRaw": 0.447,
+    "shiftM": [
+     -0.2,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.52 mean 0.35 vs photo 0.49"
+    ],
+    "wall": {
+     "photo": "#817570",
+     "model": "#978c87",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.6
+   },
+   "challengers": {
+    "indisch-1926-white-attic": 0.447
+   }
+  },
+  {
+   "pandId": "0363100012125447",
+   "address": "Gorontalostraat 47",
+   "builtYear": 1926,
+   "widthM": 6.14,
+   "eavesM": 15.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f7271",
+    "wallRaw": "#7d7f7d",
+    "skyline": {
+     "eavesM": 16.63,
+     "eavesRow": 135,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 3.38,
+      "topWidthM": 0.1,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.63,
+       "widthM": 1.07,
+       "centre": 0.11
+      },
+      {
+       "atM": 9.65,
+       "widthM": 1.05,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the corner block of the Gorontalostraat row (taller, white erkers, a tower): no type; attic-lights matched it on year and eaves alone",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
