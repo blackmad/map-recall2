@@ -5,17 +5,21 @@
  * Data: ../data/extracts/amsterdam/coverage-v1/buurten.json (map + per-buurt id lists) and contents.json (catalogue,
  * loaded on first selection), both from scripts/coverage/build-coverage.ts.
  * Bundle: npm run build:coverage-page → js/coverage.bundle.js.
- * Test contract: window.coveragePage = {ready, errors, selected, select(code)}.
+ * Own look: buurten the game draws from kit made for their district (house types, measured faces, Nieuw-West
+ * designs) get their own colour scheme (`?colour=look`), an outline on every scheme, a list and a filter (`?own=1`),
+ * and a panel section with kit renders next to photo crops, the 3D views and a ride past an example.
+ * Test contract: window.coveragePage = {ready, errors, selected, select(code), ownList()}.
  */
 import { CONTENT_KINDS, TIERS, parseClusterKey, type BuurtContent, type BuurtCoverage, type TierId } from './coverage';
-import type { ContentItems, Link, Thumb } from './contents';
+import type { ContentItems, Link, LookThumb, Thumb } from './contents';
+import { LOOK_LEGEND, lookBin, noLook, rideHref, type OwnLook } from './ownLook';
 
-type Props = BuurtCoverage & { content: BuurtContent };
+type Props = BuurtCoverage & { content: BuurtContent; look: OwnLook };
 type Feature = { properties: Props; geometry: { type: 'Polygon' | 'MultiPolygon'; coordinates: number[][][] | number[][][][] }; polys: [number, number][][][] };
 type Extract = { features: Feature[]; generatedAt: string; method: string };
 
 const DATA = '../data/extracts/amsterdam/coverage-v1/';
-const state = { ready: false, errors: [] as string[], selected: null as string | null, select: (code: string) => { void code; } };
+const state = { ready: false, errors: [] as string[], selected: null as string | null, select: (code: string) => { void code; }, ownList: (): string[] => [] };
 (window as unknown as { coveragePage: typeof state }).coveragePage = state;
 
 type Kid = Node | string | null | undefined | false;
@@ -35,7 +39,8 @@ const TIER_LABEL = Object.fromEntries(TIERS.map(t => [t.id, t.label])) as Record
 const merc = ([lng, lat]: number[]): [number, number] => [lng, Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)) * 180 / Math.PI];
 const kitTypeBespoke = (p: Props) => p.pands ? (p.tiers.bespoke + p.tiers.chunk + p.tiers.buildingType) / p.pands : 0;
 const kinds = (p: Props) => CONTENT_KINDS.filter(k => p.content[k].length).length;
-const METRICS: Record<string, { label: string; value: (p: Props) => number; bins: number[]; unit?: boolean; legend?: string[] }> = {
+const METRICS: Record<string, { label: string; value: (p: Props) => number; bins: number[]; unit?: boolean; legend?: string[]; palette?: string }> = {
+  look: { label: 'Own look (district kit share)', value: p => lookBin(p.look), bins: [0, 1, 2, 3, 4, 5, 6], legend: LOOK_LEGEND, palette: 'l' },
   content: { label: 'What we have (kinds of kit content)', value: kinds, bins: [0, 1, 2, 3, 4, 5], legend: ['nothing', '1 kind', '2 kinds', '3 kinds', '4 kinds', '5 kinds'] },
   share: { label: 'Modelled share (all tiers, flags on)', value: p => p.share, bins: [0, 0.005, 0.02, 0.05, 0.15, 0.4] },
   shareDefault: { label: 'Modelled share (default game)', value: p => p.shareDefault, bins: [0, 0.005, 0.02, 0.05, 0.15, 0.4] },
@@ -56,6 +61,7 @@ async function main() {
   const data = await res.json() as Extract;
   const feats = data.features;
   for (const f of feats) {
+    f.properties.look ??= noLook();
     const polys = (f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates) as number[][][][];
     f.polys = polys.map(poly => poly.map(ring => ring.map(merc)));
   }
@@ -69,7 +75,8 @@ async function main() {
   const withContent = feats.filter(f => kinds(f.properties) > 0);
   $('summary').textContent = `${feats.length} buurten · ${withContent.length} with some kit content · ` +
     `${feats.filter(f => f.properties.content.faces.length || f.properties.content.types.length).length} with block-face work · ` +
-    `${feats.filter(f => f.properties.content.designs.length).length} with building-type designs. Generated ${data.generatedAt.slice(0, 10)}.`;
+    `${feats.filter(f => f.properties.content.designs.length).length} with building-type designs · ` +
+    `${feats.filter(f => f.properties.look.status === 'drawn').length} with their own look. Generated ${data.generatedAt.slice(0, 10)}.`;
 
   // ---- controls ----
   const metric = $<HTMLSelectElement>('metric');
@@ -77,6 +84,9 @@ async function main() {
   const params = new URLSearchParams(location.search);
   metric.value = params.get('colour') && METRICS[params.get('colour')!] ? params.get('colour')! : 'share';
   const search = $<HTMLInputElement>('search'), names = $('names');
+  const ownOnly = $<HTMLInputElement>('own-only'), ownMark = $<HTMLInputElement>('own-mark');
+  ownOnly.checked = params.get('own') === '1';
+  ownMark.checked = params.get('mark') !== '0';
   for (const f of [...feats].sort((a, b) => a.properties.name.localeCompare(b.properties.name))) names.append(h('option', { value: `${f.properties.name} (${f.properties.code})` }));
 
   // ---- canvas ----
@@ -96,12 +106,23 @@ async function main() {
   function draw() {
     const v = view();
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    const m = METRICS[metric.value], fills = [0, 1, 2, 3, 4, 5, 6].map(i => css(`--s${i}`)), empty = css('--empty'), stroke = css('--stroke');
+    const m = METRICS[metric.value], fills = [0, 1, 2, 3, 4, 5, 6].map(i => css(`--${m.palette ?? 's'}${i}`)), empty = css('--empty'), stroke = css('--stroke');
     for (const f of feats) {
       trace(f, v);
-      ctx.fillStyle = f.properties.pands ? fills[binOf(m.value(f.properties), m.bins, !!m.legend)] : empty;
+      const hidden = ownOnly.checked && f.properties.look.status === 'none';
+      ctx.fillStyle = f.properties.pands && !hidden ? fills[binOf(m.value(f.properties), m.bins, !!m.legend)] : empty;
       ctx.fill('evenodd');
       ctx.strokeStyle = stroke; ctx.lineWidth = 0.75; ctx.stroke();
+    }
+    // Own-look outline on every colour scheme: solid where the district kit draws, dashed where it is only authored.
+    if (ownMark.checked) {
+      ctx.save(); ctx.strokeStyle = css('--own'); ctx.lineJoin = 'round';
+      for (const f of feats) {
+        const st = f.properties.look.status;
+        if (st === 'none') continue;
+        trace(f, v); ctx.setLineDash(st === 'drawn' ? [] : [4, 3]); ctx.lineWidth = st === 'drawn' ? 2.25 : 1.5; ctx.stroke();
+      }
+      ctx.restore();
     }
     for (const [f, w] of [[hovered, 2], [selected, 3]] as const) if (f) { trace(f, v); ctx.strokeStyle = css('--hi'); ctx.lineWidth = w; ctx.stroke(); }
   }
@@ -109,8 +130,9 @@ async function main() {
     const m = METRICS[metric.value], b = m.bins;
     const lab = (i: number) => m.legend ? m.legend[i] : i === 0 ? (m.unit ? '0' : 'none') : i === 6 ? `≥ ${m.unit ? b[5] : pct(b[5])}` : `${m.unit ? b[i - 1] : pct(b[i - 1])}–${m.unit ? b[i] : pct(b[i])}`;
     const n = m.legend ? m.legend.length : 7;
-    $('legend').replaceChildren(...Array.from({ length: n }, (_, i) => h('span', {}, h('span', { class: 'sw', style: `background:var(--s${i})` }), lab(i))),
-      h('span', {}, h('span', { class: 'sw', style: 'background:var(--empty);outline:1px dashed var(--mut)' }), 'no pands'));
+    $('legend').replaceChildren(...Array.from({ length: n }, (_, i) => h('span', {}, h('span', { class: 'sw', style: `background:var(--${m.palette ?? 's'}${i})` }), lab(i))),
+      h('span', {}, h('span', { class: 'sw', style: 'background:var(--empty);outline:1px dashed var(--mut)' }), 'no pands'),
+      ...(ownMark.checked ? [h('span', {}, h('span', { class: 'sw own' }), 'own look drawn'), h('span', {}, h('span', { class: 'sw own authored' }), 'own look authored')] : []));
   }
   function inRing(x: number, y: number, ring: [number, number][]) { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; }
   function hit(cx: number, cy: number): Feature | null {
@@ -122,7 +144,8 @@ async function main() {
   function showTip(f: Feature | null, cx = 0, cy = 0) {
     if (!f) { tip.hidden = true; return; }
     const p = f.properties, k = kinds(p);
-    tip.replaceChildren(h('b', {}, p.name), h('span', {}, ` ${p.code} · ${k ? `${k} kind${k === 1 ? '' : 's'} of kit content` : 'nothing yet'}`));
+    const own = p.look.status === 'drawn' ? ` · own look ${pct(p.look.share)}` : p.look.status === 'authored' ? ' · own look authored' : '';
+    tip.replaceChildren(h('b', {}, p.name), h('span', {}, ` ${p.code} · ${k ? `${k} kind${k === 1 ? '' : 's'} of kit content` : 'nothing yet'}${own}`));
     tip.hidden = false;
     tip.style.left = `${Math.min(canvas.clientWidth - tip.offsetWidth - 6, cx + 12)}px`;
     tip.style.top = `${Math.max(6, cy - tip.offsetHeight - 8)}px`;
@@ -202,6 +225,29 @@ async function main() {
     if (m[1]) void select(m[1]);
   });
   metric.addEventListener('input', () => { legend(); draw(); const u = new URL(location.href); u.searchParams.set('colour', metric.value); history.replaceState(null, '', u); });
+  const setParam = (k: string, v: string | null) => { const u = new URL(location.href); if (v === null) u.searchParams.delete(k); else u.searchParams.set(k, v); history.replaceState(null, '', u); };
+  ownOnly.addEventListener('change', () => { draw(); setParam('own', ownOnly.checked ? '1' : null); });
+  ownMark.addEventListener('change', () => { legend(); draw(); setParam('mark', ownMark.checked ? null : '0'); });
+
+  // ---- buurten with their own look ----
+  const ownFeats = feats.filter(f => f.properties.look.status !== 'none')
+    .sort((a, b) => b.properties.look.pands - a.properties.look.pands || a.properties.name.localeCompare(b.properties.name));
+  state.ownList = () => ownFeats.filter(f => f.properties.look.status === 'drawn').map(f => f.properties.code);
+  const ownItem = (f: Feature) => {
+    const l = f.properties.look, p = f.properties;
+    const b = h('button', { type: 'button', class: 'own-row', 'data-code': p.code },
+      h('span', { class: 'own-name' }, h('b', {}, p.name), h('span', { class: 'mut small' }, ` ${p.code}${p.wijk ? ` · ${p.wijk}` : ''}`)),
+      h('span', { class: 'own-what small' }, l.districts.join(', ') || (l.status === 'authored' ? 'type library or faces authored, nothing drawn yet' : '')),
+      h('span', { class: 'own-n' }, l.status === 'drawn' ? `${fmt(l.pands)} / ${fmt(p.pands)}` : '–', h('i', { class: 'own-bar', style: `width:${Math.min(100, l.share * 100 / 0.5)}%` })));
+    b.addEventListener('click', () => { void select(p.code, true); });
+    return b;
+  };
+  const drawn = ownFeats.filter(f => f.properties.look.status === 'drawn'), authoredOnly = ownFeats.filter(f => f.properties.look.status === 'authored');
+  $('own-list').replaceChildren(
+    h('h2', {}, 'Buurten with their own look', h('span', { class: 'count' }, String(drawn.length))),
+    h('p', { class: 'note' }, 'Drawn from kit made for that district (measured house types and block faces, Nieuw-West building types) instead of the city-wide generic extrusion. Pands drawn by that kit / all pands.'),
+    h('div', { class: 'own-rows' }, ...drawn.map(ownItem)),
+    ...(authoredOnly.length ? [h('details', {}, h('summary', {}, `${plural(authoredOnly.length, 'buurt')} with type libraries or faces authored but nothing drawn yet`), h('div', { class: 'own-rows' }, ...authoredOnly.map(ownItem)))] : []));
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
   new ResizeObserver(() => { fit(); draw(); }).observe(canvas);
   fit(); legend(); draw();
@@ -212,6 +258,67 @@ async function main() {
 }
 
 // ---- panel rendering ------------------------------------------------------------------------------------
+/** Examples shown before the rest fold away (Da Costabuurt-Noord has twenty). */
+const SHOWN_LOOK = 6;
+const STATUS_LOOK: Record<string, string> = { drawn: 'Own look', authored: 'Own look authored', none: 'No own look' };
+
+/** Kit render beside its photo crop; a missing image is said, not left as a gap. */
+function pair(render: LookThumb | undefined, photo: LookThumb | undefined, renderMissing: string): HTMLElement {
+  const fig = (t: LookThumb | undefined, caption: string, missing: string) => {
+    if (!t) return h('figure', {}, h('div', { class: 'ph look' }, missing), h('figcaption', {}, caption));
+    const el = h('img', { src: t.src, alt: `${caption}: ${t.label}`, title: t.label, loading: 'lazy', decoding: 'async', class: 'look' });
+    el.addEventListener('error', () => el.replaceWith(h('div', { class: 'ph look' }, 'Image unavailable')));
+    return h('figure', {}, el, h('figcaption', {}, caption, t.credit ? h('span', { class: 'credit' }, ` · ${t.credit}`) : null));
+  };
+  return h('div', { class: 'pair' }, fig(render, 'Kit render', renderMissing), fig(photo, 'Photo', 'No photo crop archived'));
+}
+const rideLink = (r: OwnLook['rides'][string] | undefined) => r ? { label: 'Ride past it', href: rideHref(r) } : undefined;
+
+function ownLook(p: Props, items: ContentItems): HTMLElement {
+  const l = p.look, look = items.look, c = p.content;
+  const head3 = (extra: Kid) => h('h3', {}, 'Own look', h('span', { class: `badge own ${l.status}` }, STATUS_LOOK[l.status]), extra);
+  if (l.status === 'none') {
+    return h('section', { class: 'sec', id: 'sec-look' }, head3(null),
+      h('p', { class: 'small' }, 'No kit made for this district draws here: the buildings are generic extrusions with the era facade grammar, plus any landmark models and kits listed below. ',
+        h('a', { href: '#own-list' }, 'Buurten that have their own look'), '.'));
+  }
+  const cards: HTMLElement[] = [];
+  for (const [id, n] of l.types) {
+    const t = items.types[id], lt = look?.types[id];
+    cards.push(h('article', { class: 'card look-card' },
+      h('header', {}, h('h4', {}, id), h('span', { class: 'mut small' }, `${t ? `${t.district} house type` : 'house type of one block face'} · ${plural(n, 'pand')} drawn here`)),
+      pair(lt?.render, lt?.photo, 'No installed chunk renders it'),
+      t?.description ? h('p', { class: 'desc' }, t.description) : null,
+      linkEls([...(lt?.links ?? []), rideLink(l.rides[`type:${id}`])].filter((x): x is Link => !!x))));
+  }
+  for (const [family, n] of l.designs) {
+    // The design unit of this family drawn most here names the variant shown.
+    const units = c.designs.filter(([u]) => u.startsWith(`${family}__`)).sort((a, b) => b[1] - a[1]);
+    const unit = units[0]?.[0], d = unit ? items.designs[unit] : undefined;
+    const variant = unit?.split('__').slice(0, 2).join('__') ?? '';
+    const render = look?.designs[variant]?.render, photo = look?.families[family]?.photo;
+    cards.push(h('article', { class: 'card look-card' },
+      h('header', {}, h('h4', {}, family), h('span', { class: 'mut small' }, `Nieuw-West building type${units.length > 1 ? ` · ${units.length} variants` : d ? ` · ${d.variant}` : ''} · ${plural(n, 'pand')} drawn here`)),
+      pair(render, photo, 'No render of this design'),
+      d?.label ? h('p', { class: 'desc' }, d.label) : null,
+      linkEls([...(d?.links ?? []), rideLink(l.rides[`design:${family}`])].filter((x): x is Link => !!x))));
+  }
+  for (const [face, n] of l.faces) {
+    const f = items.faces[face];
+    const model = f?.thumbs.find(t => t.label === 'Model'), photo = f?.thumbs.find(t => t.label !== 'Model');
+    cards.push(h('article', { class: 'card look-card' },
+      h('header', {}, h('h4', {}, f?.title ?? face), h('span', { class: 'mut small' }, `measured houses on one block face · ${plural(n, 'pand')} drawn here`)),
+      pair(model, photo, 'No model thumbnail'),
+      linkEls([...(f?.links ?? []), rideLink(l.rides[`face:${face}`])].filter((x): x is Link => !!x))));
+  }
+  const summary = l.status === 'drawn'
+    ? h('p', { class: 'small' }, h('b', {}, `${fmt(l.pands)} of ${plural(p.pands, 'pand')} (${pct(l.share)})`), ` are drawn from ${l.districts.join(', ')}.`)
+    : h('p', { class: 'small' }, 'House types or block faces are authored for this buurt, but no installed chunk or building-type design draws a pand here yet. Their entries are listed below.');
+  return h('section', { class: 'sec', id: 'sec-look' }, head3(h('span', { class: 'count' }, cards.length ? String(cards.length) : '')), summary,
+    cards.length ? h('div', { class: 'look-cards' }, ...cards.slice(0, SHOWN_LOOK)) : null,
+    cards.length > SHOWN_LOOK ? h('details', { class: 'more' }, h('summary', {}, `${plural(cards.length - SHOWN_LOOK, 'more example')}`), h('div', { class: 'look-cards' }, ...cards.slice(SHOWN_LOOK))) : null);
+}
+
 function head(p: Props): HTMLElement {
   return h('header', { class: 'phead' },
     h('h2', {}, p.name),
@@ -245,6 +352,7 @@ function render(p: Props, items: ContentItems): HTMLElement[] {
       h('td', {}, t.label, t.defaultOn ? '' : ' (flag)'), h('td', { class: 'n' }, fmt(p.tiers[t.id])),
       h('td', { class: 'bar' }, h('i', { style: `width:${p.tiers[t.id] ? Math.max(2, 100 * p.tiers[t.id] / max) : 0}%` }))))))));
 
+  out.push(ownLook(p, items));
   const facesHere = new Set(c.faces.map(([id]) => id));
   const models = c.models.filter(([id]) => { const m = items.models[id]; return !(m?.tier === 'chunk' && facesHere.has(id.replace(/^chunk-face-/, ''))); });
   const anything = CONTENT_KINDS.some(k => c[k].length) || p.survey.streets.length;
@@ -260,6 +368,7 @@ function render(p: Props, items: ContentItems): HTMLElement[] {
     return out;
   }
   out.push(h('nav', { class: 'jump' }, ...[
+    ['look', 'Own look', p.look.types.length + p.look.designs.length + p.look.faces.length],
     ['types', 'Type libraries', c.types.length], ['faces', 'Block faces', c.faces.length], ['designs', 'Building types', c.designs.length],
     ['models', 'Models', models.length], ['kits', 'Landmark kits', c.kits.length], ['surveys', 'Surveys', p.survey.streets.length],
   ].filter(([, , n]) => n).map(([id, label, n]) => h('a', { href: `#sec-${id}` }, `${label} ${n}`))));
