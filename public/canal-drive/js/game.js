@@ -76,6 +76,8 @@ class Game {
     this._routeRerolls = 0;
     this._zoomBadgeTimer = 0;
     this._zoomTouchedByPlayer = false; // player zoom wins over resize/rotation
+    this._playerZoomPending = false; // a player zoom flashes the zoom badge
+    this._tourPrefsRestore = null; // the player's own settings while a tour overrides them
     this.viewport = window.CanalRecallUi.resolveViewport({ windowWidth: CANVAS_W, windowHeight: CANVAS_H });
     this._lastZoomShown = null;
     this._liveRoutePath = null;
@@ -252,8 +254,11 @@ class Game {
       // is done and the next ride is an ordinary one.
       if (this._tour && !this._tour.completed) { this._launchTourLeg(); return; }
       if (this._tour) {
-        this._tour = null;
         if (this._overlay) this._overlay.store.setTourId('');
+        // The tour is done: the player's own settings come back. When they
+        // differ (a boat rider, a Home route), the next ride starts from
+        // them, as Start route would; otherwise ride on from the last stop.
+        if (this._endTour()) { this._startConfiguredRoute(); return; }
       }
       if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
       this._startNextRouteFromArrival();
@@ -392,8 +397,8 @@ class Game {
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
     this._handleChoiceShortcut();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
-    if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) { this.camera.zoomOut(); this._zoomTouchedByPlayer = true; }
-    if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) { this.camera.zoomIn(); this._zoomTouchedByPlayer = true; }
+    if (this.input.isDown('Minus') || this.input.isDown('NumpadSubtract')) { this.camera.zoomOut(); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }
+    if (this.input.isDown('Equal') || this.input.isDown('NumpadAdd')) { this.camera.zoomIn(); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }
     if (this.input.isDown('KeyI')) this.camera.pan(0, -8);
     if (this.input.isDown('KeyK')) this.camera.pan(0, 8);
     if (this.input.isDown('KeyJ')) this.camera.pan(-8, 0);
@@ -451,9 +456,11 @@ class Game {
           this._closeUtilityPanels();
           this._reclaimKeyboardFocus();
         }
-        if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
+        if (this.input.wasPressed('Enter') || this.input.wasPressed('Space')) {
           this._runFinishAction('again');
         }
+        // M is Route setup, as on the pause card (clarity review 14).
+        if (this.input.wasPressed('KeyM')) this._runFinishAction('route');
         if (this.input.wasPressed('KeyC')) this._runFinishAction('copy');
         break;
     }

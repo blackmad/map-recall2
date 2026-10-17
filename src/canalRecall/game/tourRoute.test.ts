@@ -18,6 +18,8 @@ import {
   tourArrival,
   tourCheckedLabel,
   tourFromSearch,
+  persistablePrefs,
+  tourPrefsOverride,
   type Tour,
 } from './tourRoute.ts';
 import { readFileSync } from 'node:fs';
@@ -115,4 +117,21 @@ test('the arrival card, the checked date and ?tour= links', () => {
   assert.equal(tourFromSearch('?tour=t', [tour])?.id, 't');
   assert.equal(tourFromSearch('?tour=nope', [tour]), null);
   assert.equal(tourFromSearch('', [tour]), null);
+});
+
+test('a tour rides by bike without saving that as the player\'s settings', () => {
+  const mine = { travelMode: 'boat', cityId: 'amsterdam', routePattern: 'home', difficulty: 'hard' };
+  const { patch, restore } = tourPrefsOverride(mine);
+  assert.deepEqual(patch, { travelMode: 'car', routePattern: 'surprise' });
+  assert.deepEqual(restore, { travelMode: 'boat', routePattern: 'home' });
+  // Saved mid-tour: the player's own mode and route, plus any other change.
+  const riding = { ...mine, ...patch, difficulty: 'expert' };
+  assert.deepEqual(persistablePrefs(riding, restore), { travelMode: 'boat', cityId: 'amsterdam', routePattern: 'home', difficulty: 'expert' });
+  assert.equal(persistablePrefs(riding, null), riding);
+  // A second tour keeps the first snapshot, not the first tour's overrides.
+  const again = tourPrefsOverride(riding, restore);
+  assert.deepEqual(again.patch, {});
+  assert.deepEqual(again.restore, restore);
+  // Already on a bike in Amsterdam on Surprise: nothing to change or undo.
+  assert.deepEqual(tourPrefsOverride({ travelMode: 'car', cityId: 'amsterdam', routePattern: 'surprise' }), { patch: {}, restore: {} });
 });

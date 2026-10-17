@@ -29,7 +29,12 @@ test('landing page leads to the ride and the quiz on the same origin', async ({ 
   await expect(page).toHaveURL(`${origin}/ride`);
   await expect.poll(() => page.evaluate(() => Boolean((window as { canalRecallGame?: unknown }).canalRecallGame)), { timeout: 60_000 }).toBe(true);
   await expect(page.locator('#setup-site-switch a[data-site="quiz"]')).toHaveAttribute('href', '/quiz/');
+  await expect(page.locator('#setup-site-switch a[data-site="explore"]')).toHaveAttribute('href', '/explore');
   await page.screenshot({ path: `${shots}/ride-setup-${info.project.name}.png` });
+  // Buildings: the switch's fifth surface is the explorer, behind its rewrite.
+  const explore = await page.request.get(`${site}/explore`);
+  expect(explore.status()).toBe(200);
+  expect(await explore.text()).toContain('<title>Buildings');
 
   // Having opened the ride, the bare root forwards a returning player back to it…
   await page.goto(`${site}/`);
@@ -46,6 +51,7 @@ test('landing page leads to the ride and the quiz on the same origin', async ({ 
   await page.locator('#header-menu-btn').click();
   await expect(page.locator('#header-site-switch a[data-site="ride"]')).toHaveAttribute('href', '/ride');
   await expect(page.locator('#header-site-switch a[data-site="quiz"]')).toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('#header-site-switch a[data-site="explore"]')).toHaveAttribute('href', '/explore');
   await page.waitForTimeout(500); // the drawer fades in
   await page.screenshot({ path: `${shots}/quiz-menu-${info.project.name}.png` });
 });

@@ -10,6 +10,7 @@ export {
   MAX_TOUR_LEG_KM, advanceOnArrival, isComplete, legKm, nextLeg, startTour, stopAsRoutePoi,
   tourLegs, tourProgressLabel, withinLegCap,
   hiddenStopLabel, stopNameSpoils, tourArrival, tourCheckedLabel, tourDestination, tourFromSearch,
+  TOUR_RIDE_PREFS, persistablePrefs, tourPrefsOverride,
 } from './tourRoute';
 export type { Tour, TourArrival, TourDestination, TourLeg, TourState, TourStop } from './tourRoute';
 

@@ -36,7 +36,7 @@ import { introFrame, introOverview, introPlan } from './introFlight';
 import { vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
-import { zoomBadgeText } from '../hudCopy';
+import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
 import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
@@ -322,7 +322,7 @@ export class GamePresentationRuntime {
       event.preventDefault();
       const twistDeg = wheelTwistDegrees(event);
       if (twistDeg !== null) { if (twistable()) twist(twistDeg); return; }
-      if (event.ctrlKey) { lastCtrlWheel = performance.now(); this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * .002))); this._zoomTouchedByPlayer = true; }
+      if (event.ctrlKey) { lastCtrlWheel = performance.now(); this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * .002))); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; }
       else this.camera.pan(event.deltaX, event.deltaY);
       syncZoom();
     }, { passive: false });
@@ -345,6 +345,7 @@ export class GamePresentationRuntime {
       if (this.state !== GameState.MENU && livePinch.size < 2 && !wheelZooming && scale !== gestureScale) {
         this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * scale / gestureScale));
         this._zoomTouchedByPlayer = true;
+        this._playerZoomPending = true;
         syncZoom();
       }
       gestureScale = scale;
@@ -375,7 +376,7 @@ export class GamePresentationRuntime {
       if (!changed || points.length !== 2) return;
       event.preventDefault();
       const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-      if (pinchDistance > 0 && distance > 0) { this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance)); this._zoomTouchedByPlayer = true; syncZoom(); }
+      if (pinchDistance > 0 && distance > 0) { this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance)); this._zoomTouchedByPlayer = true; this._playerZoomPending = true; syncZoom(); }
       pinchDistance = distance;
     }, { passive: false });
     const endPinch = (event: TouchEvent) => { for (const touch of event.changedTouches) livePinch.delete(touch.identifier); if (livePinch.size < 2) pinchDistance = 0; };
@@ -623,12 +624,12 @@ export class GamePresentationRuntime {
     const player = this.player;
 
     this.hud.setTime(this.raceTime);
-    // The intro flight changes zoom every frame; that is not the player's zoom.
-    if (this._intro) this._lastZoomShown = this.camera.zoom;
-    if (this._lastZoomShown !== this.camera.zoom) {
-      this._lastZoomShown = this.camera.zoom;
-      this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
-    }
+    // Only the player's own zoom flashes the badge. The intro flight and the
+    // camera settling after it changed zoom too, and the badge fired right
+    // after every start (clarity review finding 10).
+    if (zoomBadgeShouldFlash(this._lastZoomShown, this.camera.zoom, this._playerZoomPending)) this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
+    this._lastZoomShown = this.camera.zoom;
+    this._playerZoomPending = false;
 
     // Transparent game world over the live MapLibre vector basemap.
     this._updateLandmarkSightline();
@@ -1484,17 +1485,17 @@ export class GamePresentationRuntime {
       // One stat row instead of four differently coloured boxes.
       const profile = travelProfile(this.travelMode);
       const recallNoun = profile.recallNoun;
-      const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
       // A ride with no questions ends on what was covered, not on "0% recall".
+      // The tally alone: "1/2 Canals" beside "50% Recall" said one fact twice
+      // (clarity review 14).
       const stats = this.quizAttempts > 0 ? [
         { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
-        { label: 'Recall', value: `${accuracy}%` },
       ] : [];
       stats.push(
         { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
         { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
       );
-      if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
+      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: 'Points', value: String(this.quizPoints) });
 
       const footerBits = [
         this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
@@ -1509,8 +1510,9 @@ export class GamePresentationRuntime {
 
       // Five stats across a 600 px card is four columns of comfortable space; the
       // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
-      // into each other. On a phone they wrap into rows of at most three.
-      const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+      // into each other. On a phone they wrap into rows of at most three,
+      // balanced: four stats are two rows of two, not three and an orphan.
+      const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
       const statRows = Math.ceil(stats.length / statsPerRow);
       const ROW_H = level >= 2 ? 42 : 48;
       blocks.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
@@ -1656,9 +1658,10 @@ export class GamePresentationRuntime {
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
         { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? 'Next stop' : 'Next route' },
       ];
-      // Route setup is a tap target on the phone. The desktop card no longer
-      // offers it on ESC (user request 2026-09-28); the pause menu keeps it.
-      if (compact) actions.push({ id: 'route', key: '', caption: 'Route setup' });
+      // Route setup on both layouts: a tap target on the phone, M on desktop,
+      // the same key as the pause menu. Escape stays unbound here (user
+      // request 2026-09-28); desktop lacked the action (clarity review 14).
+      actions.push({ id: 'route', key: compact ? '' : 'M', caption: 'Route setup' });
       if (this._shareUrl) {
         actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route' });
       }
@@ -1713,7 +1716,10 @@ export class GamePresentationRuntime {
             ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
             ctx.font = '12px system-ui, sans-serif';
             ctx.fillText(action.caption, ax, top + 18);
-            ax += ctx.measureText(action.caption).width + 22;
+            const captionW = ctx.measureText(action.caption).width;
+            // The keycap and its caption are a click target too.
+            finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
+            ax += captionW + 22;
           }
         },
       });

@@ -406,6 +406,9 @@
   function zoomBadgeText(zoom) {
     return `Zoom ${Math.round(zoom * 100)}%`;
   }
+  function zoomBadgeShouldFlash(lastShown, zoom, playerZoomed) {
+    return playerZoomed && lastShown !== null && lastShown !== zoom;
+  }
 
   // src/canalRecall/game/travelProfile.ts
   var PROFILES = {
@@ -4984,6 +4987,7 @@
           lastCtrlWheel = performance.now();
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * 2e-3)));
           this._zoomTouchedByPlayer = true;
+          this._playerZoomPending = true;
         } else this.camera.pan(event.deltaX, event.deltaY);
         syncZoom();
       }, { passive: false });
@@ -5003,6 +5007,7 @@
         if (this.state !== GameState.MENU && livePinch.size < 2 && !wheelZooming && scale !== gestureScale) {
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * scale / gestureScale));
           this._zoomTouchedByPlayer = true;
+          this._playerZoomPending = true;
           syncZoom();
         }
         gestureScale = scale;
@@ -5037,6 +5042,7 @@
         if (pinchDistance > 0 && distance > 0) {
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * distance / pinchDistance));
           this._zoomTouchedByPlayer = true;
+          this._playerZoomPending = true;
           syncZoom();
         }
         pinchDistance = distance;
@@ -5259,11 +5265,9 @@
       if (!this.player) return;
       const player = this.player;
       this.hud.setTime(this.raceTime);
-      if (this._intro) this._lastZoomShown = this.camera.zoom;
-      if (this._lastZoomShown !== this.camera.zoom) {
-        this._lastZoomShown = this.camera.zoom;
-        this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
-      }
+      if (zoomBadgeShouldFlash(this._lastZoomShown, this.camera.zoom, this._playerZoomPending)) this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
+      this._lastZoomShown = this.camera.zoom;
+      this._playerZoomPending = false;
       this._updateLandmarkSightline();
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
@@ -6029,16 +6033,14 @@
         }
         const profile = travelProfile(this.travelMode);
         const recallNoun = profile.recallNoun;
-        const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
         const stats = this.quizAttempts > 0 ? [
-          { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
-          { label: "Recall", value: `${accuracy}%` }
+          { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` }
         ] : [];
         stats.push(
           { label: "Time", value: this.hud.formatTime(this.raceTime).slice(0, -2) },
           { label: "Distance", value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
         );
-        if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: "Points", value: String(this.quizPoints) });
+        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: "Points", value: String(this.quizPoints) });
         const footerBits = [
           this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
           profile.label,
@@ -6047,7 +6049,7 @@
         if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
         const bestInFooter = level2 >= 1 && !!bestText;
         if (bestInFooter) footerBits.unshift(bestText.replace("\u2605  ", "\u2605 "));
-        const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+        const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
         const statRows = Math.ceil(stats.length / statsPerRow);
         const ROW_H = level2 >= 2 ? 42 : 48;
         blocks2.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
@@ -6173,7 +6175,7 @@
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
           { id: "again", key: "ENTER", caption: tour && !tour.completed ? "Next stop" : "Next route" }
         ];
-        if (compact) actions.push({ id: "route", key: "", caption: "Route setup" });
+        actions.push({ id: "route", key: compact ? "" : "M", caption: "Route setup" });
         if (this._shareUrl) {
           actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Share this route" });
         }
@@ -6226,7 +6228,9 @@
               ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
               ctx.font = "12px system-ui, sans-serif";
               ctx.fillText(action.caption, ax, top + 18);
-              ax += ctx.measureText(action.caption).width + 22;
+              const captionW = ctx.measureText(action.caption).width;
+              finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
+              ax += captionW + 22;
             }
           }
         });
